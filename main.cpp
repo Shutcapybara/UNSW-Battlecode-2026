@@ -16,6 +16,7 @@ constexpr char DIR[] = "NESW";
 struct Tile {
     // Only current-turn vision is trusted for pearls and collision checks.
     bool visible = false, pearl = false, occupied = false;
+    bool dragon_head = false;
     // Edges use the same NESW order: "." = open, "w" = kelp,
     // otherwise the string is a portal ID shared by two map edges.
     std::array<std::string, 4> edges = {".", ".", ".", "."};
@@ -34,6 +35,8 @@ class Bot {
     // Setup information stays constant throughout this dragon's lifetime.
     int width = 0, height = 0, id = 0, limit = 64;
     int round = 0, length = 0, units = 0, head = 0;
+    int children_created = 0;
+    int childrenBirthed = 0;
     // Positions such as head are flattened indexes: y * width + x.
     std::vector<Tile> tiles;
     // Visits persist between turns, but are not shared with split children.
@@ -78,7 +81,7 @@ class Bot {
     }
     // Return a safe destination index, -1 for a known collision, or -2 for
     // an unknown destination (outside vision or an unverified portal exit).
-    int destination(int p, int d) const {
+    int destination(int p, int d, bool check_body = true) const {
         const auto& symbol = tiles[p].edges[d];
         if (symbol == "w") return -1;
         int next = pos(p % width + DX[d], p / width + DY[d]);
@@ -94,7 +97,27 @@ class Bot {
         }
         if (!tiles[next].visible) return -2;
         // Even our own tail is blocked: collisions happen before it moves.
-        return tiles[next].occupied ? -1 : next;
+        return check_body && tiles[next].occupied ? -1 : next;
+    }
+    std::vector<int> threats() const {
+        std::vector<int> danger(tiles.size(), 0);
+        // Predict turns and short sprints from every other visible head.
+        // These scores influence movement only, never whether we split.
+        for (int origin = 0; origin < static_cast<int>(tiles.size()); ++origin) {
+            if (!tiles[origin].dragon_head || origin == head) continue;
+            for (int d = 0; d < 4; ++d) {
+                int next = destination(origin, d, false);
+                if (next < 0 || (tiles[next].occupied && next != head)) continue;
+                danger[next] += 100;
+                if (next == head) continue;
+                for (int turn = 0; turn < 4; ++turn) {
+                    int second = destination(next, turn, false);
+                    if (second < 0 || (tiles[second].occupied && second != head)) continue;
+                    danger[second] += 20;
+                }
+            }
+        }
+        return danger;
     }
 
 public:
@@ -143,6 +166,11 @@ public:
             std::istringstream input(text);
             if (!(input >> team >> dragon >> x >> y >> facing >> is_head)) return false;
             tiles[pos(x, y)].occupied = true;
+            tiles[pos(x, y)].dragon_head = is_head != 0;
+            // A spawn location under a body is not collectible. Exclude it
+            // explicitly, including our own head and tail. Fresh vision next
+            // turn can make this tile a target again once it is clear.
+            tiles[pos(x, y)].pearl = false;
         }
         // Horizontal boundaries form 8 rows of 7 edges. Interior boundaries
         // are both the northern tile's south edge and southern tile's north edge.
@@ -169,7 +197,39 @@ public:
         }
         return true;
     }
-    std::string action() const {
+    std::string action() {
+        // Each new process (including a split child) starts with zero children.
+        // Split off the minimum length to keep enough body for the second child
+        // as soon as possible. The engine allows only one split per turn.
+        if (children_created < 2 && length >= 4 && units < limit) {
+            ++children_created;
+            return "SPLIT 2";
+        }
+        const auto danger = threats();
+        std::array<int, 4> risk{};
+        int lowest_risk = 1000000;
+        bool has_escape = false;
+        for (int d = 0; d < 4; ++d) {
+            risk[d] = 1000000;
+            int next = destination(head, d);
+            if (next < 0) continue;
+            bool escape = false;
+            for (int turn = 0; turn < 4; ++turn) {
+                int onward = destination(next, turn);
+                // Only actual obstacles count toward the split decision.
+                // A predicted enemy move must not turn an open exit into a trap.
+                if (onward >= 0 ||
+                    (onward == -2 && tiles[next].edges[turn] == ".")) escape = true;
+            }
+            has_escape = has_escape || escape;
+            risk[d] = danger[next] + (escape ? 0 : 40);
+            if (risk[d] < lowest_risk) lowest_risk = risk[d];
+        }
+        // Preserve early splitting for physical dead ends, independently of
+        // nearby heads. If all exits are merely threatened, keep moving.
+        if (!has_escape && length >= 4 && units < limit)
+            return "SPLIT " + std::to_string(length - 2);
+
         // BFS finds the closest reachable visible pearl, respecting wrapping,
         // kelp, all bodies (including our tail), and verifiable portal exits.
         // Breadth-first search expands positions in increasing step count.
@@ -196,6 +256,8 @@ public:
             // Rotate tie breaking across dragons and rounds to avoid fixed bias.
             for (int offset = 0; offset < 4; ++offset) {
                 int d = (offset + id + round / 12) % 4;
+                // Prefer the least threatened legal direction over a pearl.
+                if (p == head && risk[d] != lowest_risk) continue;
                 int next = destination(p, d);
                 if (next < 0 || distance[next] >= 0) continue;
                 distance[next] = distance[p] + 1;

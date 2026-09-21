@@ -3,12 +3,13 @@
 A C++17 bot for [UNSW Battlecode](https://game.battlecode.au/docs), using the documented wire protocol 2.1.0.
 
 - Searches the current 7×7 view for the nearest reachable pearl and takes one step along a shortest path.
+- Each dragon first creates two children as soon as legally possible, splitting off two segments per child (one child per turn). Children repeat this rule. Dragons below length four collect pearls until they can split; the team unit limit is respected. After these two children, normal movement and emergency splitting continue.
 - Explores less-visited positions when no pearl is reachable, remembering visits between turns.
 - Avoids kelp and all visible dragon segments, including its own tail. Handles wrapping and portals when both ends and the destination are visible.
 - When no known safe move exists, requests `SPLIT length - 2`: the parent keeps two segments and the reversed tail becomes a child running the same bot.
 - Splits only at length 4 or greater and below the team unit limit. If splitting is unavailable, tries an unknown portal before a doomed move.
 
-“About to die” means there is no immediately safe move in the current view. This is a local survival heuristic, not a guarantee: unseen portal exits, future enemy moves, and longer-term traps cannot be predicted reliably. A split consumes the entire parent turn; it does not also move the parent. The child acts later that round.
+The bot predicts tiles other visible heads could reach in one or two moves and favours less threatened directions. These predictions only affect movement: nearby dragons do not trigger splitting. Splitting happens when no known move is available or every available move leads into a physical dead end with no visible onward exit. It ignores pearl targets covered by a dragon. A split consumes the entire parent turn; it does not move the parent or guarantee the child's survival. The child acts later that round.
 
 ## Build and test
 

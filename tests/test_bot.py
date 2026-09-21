@@ -6,7 +6,8 @@ import unittest
 BOT = sys.argv.pop(1)
 
 
-def turn(pearls=(), bodies=(), walls=(), portals=(), head=(5, 5), length=6, units=1):
+def turn(pearls=(), bodies=(), walls=(), portals=(), head=(5, 5), length=6, units=1,
+         other_heads=()):
     x, y = head
     rows = ["ROUND 1", "DIR N", f"LENGTH {length}", f"UNIT_COUNT {units}", "NUM_MSGS 0"]
     for dy in range(-3, 4):
@@ -14,8 +15,10 @@ def turn(pearls=(), bodies=(), walls=(), portals=(), head=(5, 5), length=6, unit
             p = ((x + dx) % 11, (y + dy) % 11)
             rows.append(f"{p[0]} {p[1]} {int(p in pearls)} -1")
     parts = [(x, y), *bodies]
-    rows.append(f"DRAGON_BODIES {len(parts)}")
+    rows.append(f"DRAGON_BODIES {len(parts) + len(other_heads)}")
     rows.extend(f"A 0 {a} {b} N {int(i == 0)}" for i, (a, b) in enumerate(parts))
+    rows.extend(f"{team} {i + 1} {a} {b} W 1"
+                for i, (team, a, b) in enumerate(other_heads))
     horizontal = [["."] * 7 for _ in range(8)]
     vertical = [["."] * 8 for _ in range(7)]
     for direction in walls:
@@ -28,13 +31,71 @@ def turn(pearls=(), bodies=(), walls=(), portals=(), head=(5, 5), length=6, unit
     return "\n".join(rows) + "\n"
 
 
-def run(*turns):
+def run_new_dragon(*turns):
     result = subprocess.run([BOT], input="ID 0\nTEAM A\nMAP 11 11\nUNIT_LIMIT 64\n" +
                             "".join(turns), text=True, capture_output=True, timeout=2, check=True)
     return result.stdout.splitlines()
 
 
+def run(*turns):
+    # Existing movement/survival checks exercise a parent that has already
+    # produced its two children. Reproduction itself is tested separately below.
+    return run_new_dragon(turn(length=6), turn(length=4, units=2), *turns)[4:]
+
+
 class Behaviour(unittest.TestCase):
+    def test_two_children_as_soon_as_possible(self):
+        self.assertEqual(run_new_dragon(turn(length=6), turn(length=4, units=2),
+                                         turn(length=6, units=3, pearls=[(6, 5)])),
+                         ["SPLIT 2", "ENDTURN", "SPLIT 2", "ENDTURN", "MOVE E", "ENDTURN"])
+
+    def test_waits_for_growth_before_second_child(self):
+        self.assertEqual(run_new_dragon(turn(length=4),
+                                         turn(length=2, units=2, pearls=[(6, 5)]),
+                                         turn(length=4, units=2)),
+                         ["SPLIT 2", "ENDTURN", "MOVE E", "ENDTURN", "SPLIT 2", "ENDTURN"])
+
+    def test_reproduction_waits_for_team_capacity(self):
+        self.assertEqual(run_new_dragon(turn(length=6, units=64, pearls=[(6, 5)]),
+                                         turn(length=6, units=63)),
+                         ["MOVE E", "ENDTURN", "SPLIT 2", "ENDTURN"])
+
+    def test_new_child_starts_its_own_reproduction(self):
+        self.assertEqual(run_new_dragon(turn(length=2, pearls=[(6, 5)]), turn(length=4)),
+                         ["MOVE E", "ENDTURN", "SPLIT 2", "ENDTURN"])
+
+    def test_ignore_pearl_target_under_own_body(self):
+        # Even conflicting pearl/body input must never make us chase our tail.
+        self.assertEqual(run(turn(pearls=[(6, 5), (4, 5)],
+                                  bodies=[(6, 5)]))[0], "MOVE W")
+
+    def test_cleared_body_tile_can_be_targeted_next_turn(self):
+        self.assertEqual(run(turn(pearls=[(6, 5), (4, 5)], bodies=[(6, 5)]),
+                             turn(pearls=[(6, 5)])),
+                         ["MOVE W", "ENDTURN", "MOVE E", "ENDTURN"])
+
+    def test_avoidance_prediction_is_preserved(self):
+        for team in ("A", "B"):
+            for x, y in ((7, 5), (6, 4), (8, 5)):
+                action = run(turn(pearls=[(6, 5)], other_heads=[(team, x, y)]))[0]
+                self.assertTrue(action.startswith("MOVE "))
+                self.assertNotEqual(action, "MOVE E")
+
+    def test_nearby_head_does_not_trigger_split(self):
+        for team in ("A", "B"):
+            self.assertEqual(run(turn(walls="NSW",
+                                      other_heads=[(team, 7, 5)]))[0], "MOVE E")
+
+    def test_all_directions_threatened_still_moves(self):
+        self.assertTrue(run(turn(other_heads=[("B", 6, 4), ("B", 4, 6)]))[0].startswith("MOVE "))
+
+    def test_physical_dead_end_still_triggers_early_split(self):
+        self.assertEqual(run(turn(walls="NSW", pearls=[(6, 5)],
+                                  bodies=[(6, 4), (7, 5), (6, 6)]))[0], "SPLIT 4")
+
+    def test_actual_head_still_blocks_movement(self):
+        self.assertEqual(run(turn(walls="NSW", other_heads=[("B", 6, 5)]))[0], "SPLIT 4")
+
     def test_seek_nearest_pearl(self):
         self.assertEqual(run(turn(pearls=[(6, 5), (5, 2)])), ["MOVE E", "ENDTURN"])
 
