@@ -39,21 +39,46 @@ def run_new_dragon(*turns):
 
 def run(*turns):
     # Existing movement/survival checks exercise a parent that has already
-    # produced its two children. Reproduction itself is tested separately below.
-    return run_new_dragon(turn(length=6), turn(length=4, units=2), *turns)[4:]
-
+    # produced its child. Reproduction itself is tested separately below.
+    return run_new_dragon(turn(length=6), *turns)[2:]
 
 class Behaviour(unittest.TestCase):
-    def test_two_children_as_soon_as_possible(self):
-        self.assertEqual(run_new_dragon(turn(length=6), turn(length=4, units=2),
-                                         turn(length=6, units=3, pearls=[(6, 5)])),
-                         ["SPLIT 2", "ENDTURN", "SPLIT 2", "ENDTURN", "MOVE E", "ENDTURN"])
+    def test_two_step_escape_from_short_sprint_threat(self):
+        self.assertIn(run(turn(walls="NSW", other_heads=[("B", 8, 5)]))[0],
+                      ("MOVE EN", "MOVE ES"))
 
-    def test_waits_for_growth_before_second_child(self):
-        self.assertEqual(run_new_dragon(turn(length=4),
-                                         turn(length=2, units=2, pearls=[(6, 5)]),
-                                         turn(length=4, units=2)),
-                         ["SPLIT 2", "ENDTURN", "MOVE E", "ENDTURN", "SPLIT 2", "ENDTURN"])
+    def test_cannot_pay_for_escape_at_length_two(self):
+        self.assertEqual(run(turn(length=2, walls="NSW",
+                                  other_heads=[("B", 8, 5)]))[0], "MOVE E")
+
+    def test_first_step_pearl_can_pay_for_escape(self):
+        self.assertIn(run(turn(length=2, walls="NSW", pearls=[(6, 5)],
+                               other_heads=[("B", 8, 5)]))[0], ("MOVE EN", "MOVE ES"))
+
+    def test_sprint_does_not_cross_body_or_reverse_into_neck(self):
+        self.assertEqual(run(turn(walls="NSW", other_heads=[("B", 8, 5)],
+                                  bodies=[(6, 4), (6, 6), (7, 5)]))[0], "SPLIT 4")
+
+    def test_sprint_requires_visible_safe_onward_space(self):
+        self.assertEqual(run(turn(walls="NSW", other_heads=[("B", 8, 5)],
+                                  bodies=[(6, 3), (7, 4), (6, 6)],
+                                  portals=[("v", 2, 4, "w")]))[0], "MOVE E")
+
+    def test_keep_buffer_instead_of_chasing_contested_pearl(self):
+        self.assertIn(run(turn(pearls=[(6, 5)], other_heads=[("B", 8, 4)]))[0],
+                      ("MOVE S", "MOVE W"))
+
+    def test_safe_normal_move_does_not_spend_segment(self):
+        self.assertEqual(len(run(turn(other_heads=[("B", 8, 5)]))[0]), len("MOVE N"))
+
+    def test_one_child_as_soon_as_possible(self):
+        self.assertEqual(run_new_dragon(turn(length=6), turn(length=4, units=2, pearls=[(6, 5)]),
+                                         turn(length=6, units=3, pearls=[(6, 5)])),
+                         ["SPLIT 2", "ENDTURN", "MOVE E", "ENDTURN", "MOVE E", "ENDTURN"])
+
+    def test_waits_for_growth_before_child(self):
+        self.assertEqual(run_new_dragon(turn(length=2, pearls=[(6, 5)]), turn(length=4)),
+                         ["MOVE E", "ENDTURN", "SPLIT 2", "ENDTURN"])
 
     def test_reproduction_waits_for_team_capacity(self):
         self.assertEqual(run_new_dragon(turn(length=6, units=64, pearls=[(6, 5)]),

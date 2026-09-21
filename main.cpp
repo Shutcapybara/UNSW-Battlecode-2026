@@ -1,4 +1,5 @@
 #include <array>
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <queue>
@@ -17,6 +18,7 @@ struct Tile {
     // Only current-turn vision is trusted for pearls and collision checks.
     bool visible = false, pearl = false, occupied = false;
     bool dragon_head = false;
+    bool enemy_head = false;
     // Edges use the same NESW order: "." = open, "w" = kelp,
     // otherwise the string is a portal ID shared by two map edges.
     std::array<std::string, 4> edges = {".", ".", ".", "."};
@@ -36,7 +38,7 @@ class Bot {
     int width = 0, height = 0, id = 0, limit = 64;
     int round = 0, length = 0, units = 0, head = 0;
     int children_created = 0;
-    int childrenBirthed = 0;
+    std::string my_team;
     // Positions such as head are flattened indexes: y * width + x.
     std::vector<Tile> tiles;
     // Visits persist between turns, but are not shared with split children.
@@ -119,12 +121,64 @@ class Bot {
         }
         return danger;
     }
+    std::vector<int> enemy_distance() const {
+        // Multi-source search measures approach distance through actual open
+        // edges, rather than straight-line distance through kelp or bodies.
+        std::vector<int> distance(tiles.size(), 1000);
+        std::queue<int> pending;
+        for (int p = 0; p < static_cast<int>(tiles.size()); ++p) {
+            if (tiles[p].enemy_head) { distance[p] = 0; pending.push(p); }
+        }
+        while (!pending.empty()) {
+            int p = pending.front(); pending.pop();
+            for (int d = 0; d < 4; ++d) {
+                int next = destination(p, d);
+                if (next < 0 || distance[next] <= distance[p] + 1) continue;
+                distance[next] = distance[p] + 1;
+                pending.push(next);
+            }
+        }
+        return distance;
+    }
+    int buffer_penalty(int distance) const {
+        // Beyond four steps there is no reward for fleeing further from food.
+        return std::max(0, 4 - distance) * 5;
+    }
+    bool sprint_has_room(int first, int finish, const std::vector<int>& danger) const {
+        // Keep the first step occupied as the new neck. Conservatively retain
+        // every current body tile, so neither step relies on a vacating tail.
+        std::vector<bool> seen(tiles.size(), false);
+        std::queue<int> pending;
+        seen[finish] = true;
+        pending.push(finish);
+        int room = 1;
+        bool safe_exit = false;
+        for (int d = 0; d < 4; ++d) {
+            int next = destination(finish, d);
+            if (next >= 0 && next != first && next != finish && danger[next] == 0)
+                safe_exit = true;
+        }
+        if (!safe_exit) return false;
+        const int required = std::min(length, 6);
+        while (!pending.empty() && room < required) {
+            int p = pending.front(); pending.pop();
+            for (int d = 0; d < 4; ++d) {
+                int next = destination(p, d);
+                if (next < 0 || next == first || seen[next]) continue;
+                seen[next] = true;
+                ++room;
+                pending.push(next);
+            }
+        }
+        return room >= required;
+    }
 
 public:
     bool init() {
         // Read the one-time setup block, including the team's split limit.
         std::string team, text, key;
         if (!field("ID", id) || !field("TEAM", team) || !line(text)) return false;
+        my_team = team;
         std::istringstream input(text);
         if (!(input >> key >> width >> height) || key != "MAP" ||
             width < 10 || width > 64 || height < 10 || height > 64) return false;
@@ -167,6 +221,7 @@ public:
             if (!(input >> team >> dragon >> x >> y >> facing >> is_head)) return false;
             tiles[pos(x, y)].occupied = true;
             tiles[pos(x, y)].dragon_head = is_head != 0;
+            tiles[pos(x, y)].enemy_head = is_head != 0 && team != my_team;
             // A spawn location under a body is not collectible. Exclude it
             // explicitly, including our own head and tail. Fresh vision next
             // turn can make this tile a target again once it is clear.
@@ -199,16 +254,18 @@ public:
     }
     std::string action() {
         // Each new process (including a split child) starts with zero children.
-        // Split off the minimum length to keep enough body for the second child
-        // as soon as possible. The engine allows only one split per turn.
-        if (children_created < 2 && length >= 4 && units < limit) {
+        // Preserve the current one-child policy. The engine allows one action
+        // per turn, so a reproduction turn cannot also contain an escape move.
+        if (children_created < 1 && length >= 4 && units < limit) {
             ++children_created;
             return "SPLIT 2";
         }
         const auto danger = threats();
+        const auto distance_to_enemy = enemy_distance();
         std::array<int, 4> risk{};
         int lowest_risk = 1000000;
         bool has_escape = false;
+        int lowest_threat = 1000000;
         for (int d = 0; d < 4; ++d) {
             risk[d] = 1000000;
             int next = destination(head, d);
@@ -222,9 +279,32 @@ public:
                     (onward == -2 && tiles[next].edges[turn] == ".")) escape = true;
             }
             has_escape = has_escape || escape;
-            risk[d] = danger[next] + (escape ? 0 : 40);
+            lowest_threat = std::min(lowest_threat, danger[next]);
+            risk[d] = danger[next] + buffer_penalty(distance_to_enemy[next]) + (escape ? 0 : 40);
             if (risk[d] < lowest_risk) lowest_risk = risk[d];
         }
+        // Spend one segment only when every ordinary move is threatened and a
+        // two-step route ends beyond those threats. Other dragons do not act
+        // between these steps, but walls/bodies must be checked on both steps.
+        std::string sprint;
+        int sprint_score = 1000000;
+        if (lowest_threat > 0 && lowest_threat < 1000000) {
+            for (int d = 0; d < 4; ++d) {
+                int first = destination(head, d);
+                if (first < 0 || length + int(tiles[first].pearl) < 3) continue;
+                for (int second_dir = 0; second_dir < 4; ++second_dir) {
+                    int finish = destination(first, second_dir);
+                    if (finish < 0 || finish == first || danger[finish] != 0) continue;
+                    if (!sprint_has_room(first, finish, danger)) continue;
+                    int score = buffer_penalty(distance_to_enemy[finish]);
+                    if (score < sprint_score) {
+                        sprint_score = score;
+                        sprint = std::string("MOVE ") + DIR[d] + DIR[second_dir];
+                    }
+                }
+            }
+        }
+        if (!sprint.empty()) return sprint;
         // Preserve early splitting for physical dead ends, independently of
         // nearby heads. If all exits are merely threatened, keep moving.
         if (!has_escape && length >= 4 && units < limit)
