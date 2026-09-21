@@ -1,0 +1,6 @@
+/* All table, row, typography, colour and control styling comes from Battlecode. */
+.bcvf-controls { display: inline-flex; align-items: center; gap: .5rem; }
+.bcvf-select { width: auto; min-width: 7rem; }
+.bcvf-version { white-space: nowrap; }
+.bcvf-status:empty { display: none; }
+.bcvf-hidden, .bcvf-controls [hidden] { display: none !important; }

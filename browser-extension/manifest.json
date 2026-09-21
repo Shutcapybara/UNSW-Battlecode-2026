@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Battlecode Bot Version Filter",
+  "version": "1.1.0",
+  "description": "Filter your Battlecode battles by the exact bot submission used in each battle.",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://game.battlecode.au/*"
+      ],
+      "js": [
+        "core.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "battlecode-version-filter@local.invalid",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  }
+}
