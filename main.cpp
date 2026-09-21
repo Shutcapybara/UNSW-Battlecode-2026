@@ -6,15 +6,23 @@
 #include <string>
 #include <vector>
 
-// Battlecode wire protocol 2.1.0. Directions are clockwise from north.
+// Battlecode wire protocol 2.1.0: the engine sends text through stdin and
+// receives one action through stdout each turn. Each dragon runs its own bot.
+// Direction indexes are 0 = north, 1 = east, 2 = south, 3 = west.
+// Map y coordinates increase downward, so north subtracts one from y.
 constexpr int DX[] = {0, 1, 0, -1};
 constexpr int DY[] = {-1, 0, 1, 0};
 constexpr char DIR[] = "NESW";
 struct Tile {
+    // Only current-turn vision is trusted for pearls and collision checks.
     bool visible = false, pearl = false, occupied = false;
+    // Edges use the same NESW order: "." = open, "w" = kelp,
+    // otherwise the string is a portal ID shared by two map edges.
     std::array<std::string, 4> edges = {".", ".", ".", "."};
 };
 struct Edge {
+    // Canonical edge position: north side of (x,y) for horizontal edges,
+    // west side for vertical edges. This identifies an edge from either side.
     int x, y;
     bool horizontal;
     bool operator==(const Edge& other) const {
@@ -23,12 +31,17 @@ struct Edge {
 };
 
 class Bot {
+    // Setup information stays constant throughout this dragon's lifetime.
     int width = 0, height = 0, id = 0, limit = 64;
     int round = 0, length = 0, units = 0, head = 0;
+    // Positions such as head are flattened indexes: y * width + x.
     std::vector<Tile> tiles;
+    // Visits persist between turns, but are not shared with split children.
     std::vector<int> visits;
+    // Portal ID -> distinct physical edges visible this turn.
     std::map<std::string, std::vector<Edge>> portals;
 
+    // Ignore blank lines and protocol comments. EOF means the bot should stop.
     static bool line(std::string& value) {
         while (std::getline(std::cin, value)) {
             value = value.substr(0, value.find('#'));
@@ -36,6 +49,7 @@ class Bot {
         }
         return false;
     }
+    // Read a labelled value (for example "LENGTH 6") and verify the label.
     template<class T> static bool field(const std::string& expected, T& value) {
         std::string text, key;
         if (!line(text)) return false;
@@ -43,10 +57,13 @@ class Bot {
         return bool(input >> key >> value) && key == expected;
     }
     int pos(int x, int y) const {
+        // Both map axes wrap. The extra addition handles negative coordinates
+        // because C++'s remainder can be negative when moving north or west.
         return ((y % height + height) % height) * width + (x % width + width) % width;
     }
     Edge edge_at(int p, int d) const {
         int x = p % width, y = p / width;
+        // East is the next tile's west edge; south is its north edge.
         int anchor = pos(x + (d == 1), y + (d == 2));
         return {anchor % width, anchor / width, d % 2 == 0};
     }
@@ -55,10 +72,12 @@ class Bot {
         if (symbol == "." || symbol == "w") return;
         Edge edge = edge_at(p, d);
         auto& ends = portals[symbol];
+        // Two neighbouring tiles report the same edge: count it only once.
         for (const auto& end : ends) if (end == edge) return;
         ends.push_back(edge);
     }
-    // -1 is blocked; -2 is a portal whose exit cannot be verified this turn.
+    // Return a safe destination index, -1 for a known collision, or -2 for
+    // an unknown destination (outside vision or an unverified portal exit).
     int destination(int p, int d) const {
         const auto& symbol = tiles[p].edges[d];
         if (symbol == "w") return -1;
@@ -69,14 +88,18 @@ class Bot {
             Edge entry = edge_at(p, d);
             Edge exit = found->second[0] == entry ? found->second[1] : found->second[0];
             if (exit.horizontal != entry.horizontal) return -2;
+            // Keep the travel direction through a portal. Going west/north
+            // exits on the tile just before the partner edge's anchor.
             next = pos(exit.x - (d == 3), exit.y - (d == 0));
         }
         if (!tiles[next].visible) return -2;
+        // Even our own tail is blocked: collisions happen before it moves.
         return tiles[next].occupied ? -1 : next;
     }
 
 public:
     bool init() {
+        // Read the one-time setup block, including the team's split limit.
         std::string team, text, key;
         if (!field("ID", id) || !field("TEAM", team) || !line(text)) return false;
         std::istringstream input(text);
@@ -92,22 +115,28 @@ public:
         if (!field("ROUND", round) || !field("DIR", facing) ||
             !field("LENGTH", length) || !field("UNIT_COUNT", units) ||
             !field("NUM_MSGS", count)) return false;
+        // We do not use sonar, but must consume its lines to keep input aligned.
         for (int i = 0; i < count; ++i) if (!line(text)) return false;
+        // Discard old observations: dragons and pearls may have moved/changed.
         tiles.assign(width * height, Tile{});
         portals.clear();
         std::array<int, 49> window{};
+        // The engine sends a 7x7 square in row order, with wrapped coordinates.
+        // window maps each local view position to its absolute board index.
         for (int i = 0; i < 49; ++i) {
             int x, y, pearl, countdown;
             if (!line(text)) return false;
             std::istringstream input(text);
             if (!(input >> x >> y >> pearl >> countdown)) return false;
+            // Spawn countdowns are read but this strategy targets existing pearls.
             int p = window[i] = pos(x, y);
             tiles[p].visible = true;
             tiles[p].pearl = pearl != 0;
         }
-        head = window[24];
+        head = window[24]; // Centre of the view: row 3, column 3 (3 * 7 + 3).
         ++visits[head];
         if (!field("DRAGON_BODIES", count)) return false;
+        // All visible body segments are obstacles, regardless of team or ID.
         for (int i = 0; i < count; ++i) {
             int dragon, x, y, is_head;
             if (!line(text)) return false;
@@ -115,6 +144,8 @@ public:
             if (!(input >> team >> dragon >> x >> y >> facing >> is_head)) return false;
             tiles[pos(x, y)].occupied = true;
         }
+        // Horizontal boundaries form 8 rows of 7 edges. Interior boundaries
+        // are both the northern tile's south edge and southern tile's north edge.
         for (int row = 0; row < 8; ++row) {
             if (!line(text)) return false;
             std::istringstream input(text);
@@ -125,6 +156,7 @@ public:
                 if (row > 0) set_edge(window[(row - 1) * 7 + col], 2, symbol);
             }
         }
+        // Vertical boundaries form 7 rows of 8 edges; likewise record both sides.
         for (int row = 0; row < 7; ++row) {
             if (!line(text)) return false;
             std::istringstream input(text);
@@ -140,6 +172,9 @@ public:
     std::string action() const {
         // BFS finds the closest reachable visible pearl, respecting wrapping,
         // kelp, all bodies (including our tail), and verifiable portal exits.
+        // Breadth-first search expands positions in increasing step count.
+        // distance == -1 means unvisited; first stores the initial direction
+        // along each route so we can act without reconstructing the whole path.
         std::vector<int> distance(tiles.size(), -1), first(tiles.size(), -1);
         std::queue<int> queue;
         distance[head] = 0;
@@ -148,9 +183,13 @@ public:
         while (!queue.empty()) {
             int p = queue.front(); queue.pop();
             if (p != head) {
+                // The first pearl removed from the queue has a shortest route.
                 if (tiles[p].pearl && target < 0) target = p;
                 int exits = 0;
                 for (int d = 0; d < 4; ++d) if (destination(p, d) >= 0) ++exits;
+                // Exploration favours less-visited destinations, with bonuses
+                // for distance and open exits. This is a heuristic, not proof
+                // that a route will remain safe after other dragons act.
                 int score = -visits[p] * 100 + distance[p] * 3 + exits * 2;
                 if (score > best_score) { best_score = score; explore = p; }
             }
@@ -160,13 +199,20 @@ public:
                 int next = destination(p, d);
                 if (next < 0 || distance[next] >= 0) continue;
                 distance[next] = distance[p] + 1;
+                // Inherit the first step of the path as the search moves outward.
                 first[next] = p == head ? d : first[p];
                 queue.push(next);
             }
         }
+        // Commit only one step, then reconsider with fresh vision next turn.
+        // Bodies are treated as stationary during the search; no future moves
+        // or tail movement are simulated. Pearls take priority over exploration.
         if (target >= 0) return std::string("MOVE ") + DIR[first[target]];
         if (explore >= 0) return std::string("MOVE ") + DIR[first[explore]];
         // No known safe move: preserve all but two segments in the child.
+        // Both parent and child must have at least two segments, and the team
+        // must be below its unit limit. Splitting uses the parent's entire turn;
+        // the old tail becomes the child's head and acts later this round.
         if (length >= 4 && units < limit) return "SPLIT " + std::to_string(length - 2);
         // If splitting is illegal, an unseen portal exit is our last chance.
         for (int d = 0; d < 4; ++d)
@@ -179,5 +225,7 @@ public:
 int main() {
     Bot bot;
     if (!bot.init()) return 0;
+    // ENDTURN completes the reply. Flush so the engine can receive the action
+    // before we block waiting for the next turn. Stop when input ends.
     while (bot.update()) std::cout << bot.action() << "\nENDTURN\n" << std::flush;
 }
