@@ -1,12 +1,14 @@
 # Dragon hunters
 
 An aggressive swarm variant. Every dragon repeatedly splits whenever it has
-four segments and the team has capacity, except when it can pursue a reachable
-visible enemy head.
+four segments and the team has capacity. Enemy heads are pursued only while at
+least three friendly dragons are alive, preserving a small force that can
+rebuild the swarm after losses.
 
 Hunters prioritise, in order:
 
-1. colliding with a reachable enemy head (including a two-step sprint),
+1. with at least three friendly dragons, colliding with a reachable enemy head
+   (including a two-step sprint),
 2. reacting to a close-range friendly face-off sonar message,
 3. splitting into more hunters,
 4. spreading away from visible friendly heads,

@@ -225,10 +225,15 @@ public:
         return true;
     }
     std::string action() const {
-        std::string attack = attack_path();
-        if (!attack.empty()) {
-            int steps = std::min<int>({2, static_cast<int>(attack.size()), length - 1});
-            if (steps > 0) return "MOVE " + attack.substr(0, steps);
+        // Preserve a minimum force before trading dragons head-to-head. If the
+        // team drops below three survivors, every remaining dragon rebuilds
+        // the swarm instead of pursuing an enemy head.
+        if (units >= 3) {
+            std::string attack = attack_path();
+            if (!attack.empty()) {
+                int steps = std::min<int>({2, static_cast<int>(attack.size()), length - 1});
+                if (steps > 0) return "MOVE " + attack.substr(0, steps);
+            }
         }
 
         bool signal = should_signal();

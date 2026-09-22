@@ -22,10 +22,23 @@ def run(block, dragon_id=0):
 
 class DragonHunter(unittest.TestCase):
     def test_rams_adjacent_enemy_before_splitting(self):
-        self.assertEqual(run(turn(length=6, other_heads=[("B", 6, 5)]))[0], "MOVE E")
+        self.assertEqual(run(turn(length=6, units=3,
+                                  other_heads=[("B", 6, 5)]))[0], "MOVE E")
 
     def test_sprints_into_enemy_head(self):
-        self.assertEqual(run(turn(length=6, other_heads=[("B", 7, 5)]))[0], "MOVE EE")
+        self.assertEqual(run(turn(length=6, units=3,
+                                  other_heads=[("B", 7, 5)]))[0], "MOVE EE")
+
+    def test_builds_three_dragons_before_kamikazing(self):
+        for units in (1, 2):
+            with self.subTest(units=units):
+                self.assertEqual(run(turn(length=6, units=units,
+                                          other_heads=[("B", 6, 5)]))[0], "SPLIT 2")
+
+    def test_small_unsplittable_force_does_not_kamikaze(self):
+        action = run(turn(length=3, units=2,
+                          other_heads=[("B", 6, 5)]))[0]
+        self.assertNotEqual(action, "MOVE E")
 
     def test_splits_before_collecting_pearl(self):
         self.assertEqual(run(turn(length=6, pearls=[(6, 5)]))[0], "SPLIT 2")
