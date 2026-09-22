@@ -4,9 +4,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(pearl_seeker main.cpp)
 target_compile_options(pearl_seeker PRIVATE -Wall -Wextra -Wpedantic)
+add_executable(dragon_hunter variants/dragon-hunters/hunter.cpp)
+target_compile_options(dragon_hunter PRIVATE -Wall -Wextra -Wpedantic)
 include(CTest)
 if(BUILD_TESTING)
     find_package(Python3 COMPONENTS Interpreter REQUIRED)
     add_test(NAME bot_behaviour COMMAND ${Python3_EXECUTABLE}
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_bot.py $<TARGET_FILE:pearl_seeker>)
+    add_test(NAME dragon_hunter_behaviour COMMAND ${Python3_EXECUTABLE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_hunter.py $<TARGET_FILE:dragon_hunter>)
 endif()
