@@ -149,11 +149,12 @@ class MatchWorkers:
                 stop_process(process)
 
 
-def play(executable, board, a, b, out, label, timeout, replays, workers=None):
+def play(executable, board, a, b, out, label, timeout, replays, workers=None, sandbox=False):
     log_path = out / f'{label}.log'
     replay_path = out / f'{label}.replay'
     run_a, run_b = (workers.bot_path(a), workers.bot_path(b)) if workers else (a, b)
     command = [executable, 'run', str(board), str(run_a), str(run_b)]
+    command += ['--sandbox'] if sandbox else []
     command += ['-o', str(replay_path)] if replays else ['--no-replay']
     start = time.monotonic()
     error = None
@@ -197,6 +198,7 @@ def main(argv=None):
                         help='Concurrent matches (default: up to 4 CPU cores; use 1 for sequential)')
     parser.add_argument('--timeout', type=float, default=180, help='Maximum seconds per match (default: 180)')
     parser.add_argument('--no-replays', action='store_true', help='Save logs/results without replay files')
+    parser.add_argument('--sandbox', action='store_true', help='Run matches in the judge sandbox (metered)')
     parser.add_argument('--dry-run', action='store_true', help='Show the schedule without running or writing anything')
     args = parser.parse_args(argv)
     if args.jobs < 1:
@@ -264,7 +266,8 @@ def main(argv=None):
             label = f'{index:04d}-{board}-{a}-vs-{b}'
             print(f'[{index}/{len(matches)}] Starting {board}: {a} vs {b}', flush=True)
             future = executor.submit(play, executable, maps[board], bots[a], bots[b], out,
-                                     label, args.timeout, not args.no_replays, workers)
+                                     label, args.timeout, not args.no_replays, workers,
+                                     sandbox=args.sandbox)
             active[future] = (index, key)
 
         try:

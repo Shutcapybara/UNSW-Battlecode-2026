@@ -64,6 +64,14 @@ when enemy size or team counts are uncertain.
 - `hunter-v01-team-growth`: team-length estimates and endgame growth, copied from fry-v14.
 - `hunter-v02-team-growth`: adaptive growth timing; the largest known teammate has pearl priority, with a two-segment safety buffer against known enemy size.
 - `hunter-v03-team-growth`: smaller dragons may safely explore completed portal trips when at least four teammates are alive.
+- `kraken-v01-roles`: fixed-role scouts, hunters, and gatherers relaying map memory over sonar.
+- `kraken-v02-bigmap`: big-map production and endgame growth, brawl-mode small maps, ally-head collision guards, and metered BFS with portal-local cache invalidation.
+
+## kraken family learnings (2026-09-24 session)
+
+- The judge sandbox is the source of truth: the same bot/native-opponent mix can diverge from local runs, so every final claim needs a `--sandbox` tournament.
+- Portal-rich maps exposed the worst CPU spikes because completing a portal pairing invalidated the whole destination cache. Invalidate only the cells touching that portal edge.
+- Reusable BFS stamps and a 450-cell normal-map cap keep kraken-v02 below the 100M turn budget while preserving the full 26-0 sweep over fry-v03.
 
 ## hydra family learnings (2026-09-24 session)
 

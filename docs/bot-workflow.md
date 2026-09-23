@@ -84,4 +84,5 @@ Current strategy lineage:
 | `hunter-v01-team-growth` | team-length estimates and endgame growth |
 | `hunter-v02-team-growth` | adaptive growth timing for the largest teammate |
 | `hunter-v03-team-growth` | safe unmatched-portal exploration by smaller dragons |
-| `hunter-v04-team-state-sonar` | directional 64-bit shared dragon state |
+| `kraken-v01-roles` | role-based scouts, hunters, and gatherers with sonar gossip |
+| `kraken-v02-bigmap` | big-map production, brawl mode, and judge-safe metered search |

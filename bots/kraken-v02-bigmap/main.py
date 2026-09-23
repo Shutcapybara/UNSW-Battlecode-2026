@@ -68,7 +68,7 @@ CFG = dict(
     w_spread=1.5,           # per tile of distance from nearest ally head
     spread_cap=10,          # spread distance cap
     # ---- target search (BFS compass) ----
-    bfs_cap=600,            # cells the target search may visit
+    bfs_cap=450,            # cells the target search may visit
     w_dist=-2.0,            # per BFS step
     w_pearl=110.0,          # remembered pearl
     w_spawn=30.0,           # predicted spawn, scaled by how soon
@@ -84,6 +84,7 @@ CFG = dict(
     relay_ttl=2,            # hops a forwarded packet may still take
     relay_max=4,            # relay queue cap
 )
+VISIT_SCORE = tuple(CFG["w_visit"] * min(i, 12) for i in range(256))
 
 # =====================================================================
 # LOW LEVEL IO - one write per turn, minimal parsing.
@@ -102,6 +103,8 @@ def flush_turn():
     sys.stdout.write("\n".join(_out) + "\n")
     sys.stdout.flush()
     del _out[:]
+
+
 
 
 def read_parts():
@@ -143,6 +146,11 @@ fertile = bytearray()   # tile can spawn pearls
 visits = bytearray()    # times our head stood here (cap 255)
 NB = []                 # lazy neighbour table
 dcache = []             # lazy per-cell destination table
+unknown_edges = bytearray()  # count of unknown sides per cell
+bfs_mark = []           # reusable BFS visit stamps
+bfs_dist = []           # reusable BFS distances
+bfs_first = bytearray() # reusable BFS first-step directions
+bfs_stamp = 0
 
 pearls = {}             # cell -> round last confirmed
 spawn_at = {}           # cell -> round a pearl is expected
@@ -179,6 +187,7 @@ head_edges = (".", ".", ".", ".")  # raw tokens for our head tile's sides
 
 def setup():
     global ek, seen, fertile, visits, NB, dcache, NC
+    global unknown_edges, bfs_mark, bfs_dist, bfs_first
     NC = W * H
     ek = bytearray(2 * NC)
     seen = bytearray(NC)
@@ -186,6 +195,23 @@ def setup():
     visits = bytearray(NC)
     NB = [None] * NC
     dcache = [None] * NC
+    unknown_edges = bytearray(b"\x04") * NC
+    bfs_mark = [0] * NC
+    bfs_dist = [0] * NC
+    bfs_first = bytearray(NC)
+
+
+def edge_now_known(k):
+    """One edge left the unknown state; update the one/two cells it borders."""
+    if k < NC:
+        cells = (k, k - W if k >= W else k - W + NC)
+    else:
+        c = k - NC
+        x = c % W
+        cells = (c, c - 1 if x else c + W - 1)
+    for cell in cells:
+        if unknown_edges[cell]:
+            unknown_edges[cell] -= 1
 
 
 def nbr(c):
@@ -215,45 +241,63 @@ def ekey(c, d):
 
 def dest_raw(c, d):
     """Cell reached leaving c towards d; -1 blocked, -2 unknown edge."""
-    k = ekey(c, d)
+    if d == 0:
+        k = c
+    elif d == 2:
+        k = c + W if c < NC - W else c + W - NC
+    elif d == 3:
+        k = NC + c
+    else:
+        x = c % W
+        k = NC + (c + 1 if x + 1 < W else c + 1 - W)
     t = ek[k]
-    if t == 2:
-        return -1
-    if t == 3:
-        ends = pends.get(epid[k])
-        if not ends or len(ends) < 2:
-            return -1
-        pk = ends[0] if ends[1] == k else ends[1]
-        if pk >= NC:            # partner is a vertical edge
-            px = (pk - NC) % W
-            py = (pk - NC) // W
-            if d == 1:          # heading east: emerge east of the partner
-                return py * W + px
-            return py * W + (px - 1 if px else W - 1)
-        px = pk % W
-        py = pk // W
-        if d == 2:              # heading south: emerge south of the partner
-            return pk
-        return (py - 1 if py else H - 1) * W + px
+    if t == 1:
+        return nbr(c)[d]
     if t == 0:
         return -2
-    return nbr(c)[d]
+    if t == 2:
+        return -1
+    ends = pends.get(epid[k])
+    if not ends or len(ends) < 2:
+        return -1
+    pk = ends[0] if ends[1] == k else ends[1]
+    if pk >= NC:                # partner is a vertical edge
+        px = (pk - NC) % W
+        py = (pk - NC) // W
+        if d == 1:              # heading east: emerge east of the partner
+            return py * W + px
+        return py * W + (px - 1 if px else W - 1)
+    px = pk % W
+    py = pk // W
+    if d == 2:                  # heading south: emerge south of the partner
+        return pk
+    return (py - 1 if py else H - 1) * W + px
 
 
 def dest(c, d=None):
     got = dcache[c]
-    if got is None:
-        got = (dest_raw(c, 0), dest_raw(c, 1), dest_raw(c, 2), dest_raw(c, 3))
-        # only cache when all four edges are known: edge values never change
-        # once seen, but an unknown->known transition must not stay poisoned
-        if ek[ekey(c, 0)] and ek[ekey(c, 1)] and ek[ekey(c, 2)] and ek[ekey(c, 3)]:
-            dcache[c] = got
-    return got if d is None else got[d]
+    if got is not None:
+        return got if d is None else got[d]
+    if d is not None:
+        return dest_raw(c, d)
+    got = (dest_raw(c, 0), dest_raw(c, 1), dest_raw(c, 2), dest_raw(c, 3))
+    # only cache when all four edges are known: edge values never change
+    # once seen, but an unknown->known transition must not stay poisoned
+    if not unknown_edges[c]:
+        dcache[c] = got
+    return got
 
 
-def invalidate_dest():
-    for i in range(NC):
-        dcache[i] = None
+def invalidate_portal_edge(k):
+    """Drop cached destinations only for cells touching a newly paired portal."""
+    if k < NC:
+        cells = (k, k - W if k >= W else k - W + NC)
+    else:
+        c = k - NC
+        x = c % W
+        cells = (c, c - 1 if x else c + W - 1)
+    for cell in cells:
+        dcache[cell] = None
 
 
 # =====================================================================
@@ -327,6 +371,7 @@ def apply_packet(kind, payload):
             k = NC + cell if orient else cell
             if ek[k] == 0:
                 ek[k] = 3
+                edge_now_known(k)
                 epid[k] = pid
                 portal_seen = 1
                 if DEBUG:
@@ -335,7 +380,8 @@ def apply_packet(kind, payload):
             if k not in ends and len(ends) < 2:
                 ends.append(k)
                 if len(ends) == 2:
-                    invalidate_dest()
+                    invalidate_portal_edge(ends[0])
+                    invalidate_portal_edge(ends[1])
     elif kind == K_BED:
         cell = (payload >> 9) & 0xFFF
         when = payload & 0x1FF
@@ -358,8 +404,6 @@ def fold_tiles(tile_lines):
     global head, pearl_ever, pearls_wit, bed_count, min_cd
     for i in range(49):
         parts = tile_lines[i]
-        if round_now < 2 and i in (0, 24):
-            trace("RAW r%d i%d %s" % (round_now, i, " ".join(parts)))
         x = int(parts[0])
         y = int(parts[1])
         cell = y * W + x
@@ -439,6 +483,8 @@ def learn_edge(k, token):
     if token == "w":
         if DEBUG and ek[k] in (1, 3):
             trace("EDGE-CONTRADICTION k%d was %d now kelp (round %d)" % (k, ek[k], round_now))
+        if ek[k] == 0:
+            edge_now_known(k)
         ek[k] = 2
         return
     if token == ".":
@@ -446,6 +492,7 @@ def learn_edge(k, token):
             trace("EDGE-CONTRADICTION k%d was %d now open (round %d)" % (k, ek[k], round_now))
         if ek[k] == 0:
             ek[k] = 1
+            edge_now_known(k)
         return
     pid = int(token)
     if DEBUG and ek[k] == 2:
@@ -454,6 +501,8 @@ def learn_edge(k, token):
         if DEBUG:
             trace("EDGE-CONTRADICTION k%d portal %d->%d (round %d)" % (k, epid.get(k, -9), pid, round_now))
         pass
+    if ek[k] == 0:
+        edge_now_known(k)
     ek[k] = 3
     epid[k] = pid
     portal_seen = 1
@@ -461,7 +510,8 @@ def learn_edge(k, token):
     if k not in ends and len(ends) < 2:
         ends.append(k)
         if len(ends) == 2:
-            invalidate_dest()
+            invalidate_portal_edge(ends[0])
+            invalidate_portal_edge(ends[1])
     if pid not in portal_sent:
         portal_sent.add(pid)
         relay_q.append(pack(K_PORTAL, portal_payload(pid)))
@@ -616,54 +666,87 @@ def borders_unknown(cell):
 
 def bfs_compass(danger, own):
     """Capped BFS scoring targets in place; returns the best first step."""
+    global bfs_stamp
     cap = CFG["bfs_cap"] if NC > CFG["bfs_cap"] else NC
     if NC > CFG["big_map_cells"]:
-        cap = 2200  # big rich maps: harvest planning needs longer sightlines
-    dist = [-1] * NC
-    first = [-1] * NC
+        cap = 500  # big rich maps: longer sightlines, but stay judge-safe
+    bfs_stamp += 1
+    stamp = bfs_stamp
+    dist = bfs_dist
+    mark = bfs_mark
+    first = bfs_first
+    mark[head] = stamp
     dist[head] = 0
     queue = [head]
+    qlen = 1
     qi = 0
+    _qappend = queue.append
     best_dir = -1
     best_score = -1e18
     frontier_w = CFG["w_frontier_scout"] if role == 2 else CFG["w_frontier"]
     hunt = role == 1
     w_dist = CFG["w_dist"]
-    w_visit = CFG["w_visit"]
     w_spawn = CFG["w_spawn"]
     horizon = CFG["spawn_horizon"]
-    while qi < len(queue) and len(queue) < cap:
+    # locals: the inner loop is the bot's hottest code under the judge meter
+    _dest = dest
+    _dget = danger.get
+    _oget = own.get
+    _sget = spawn_at.get
+    _fertile = fertile
+    _visits = visits
+    _vscore = VISIT_SCORE
+    _pearls = pearls
+    _blocked = blocked
+    _unknown = unknown_edges
+    _rget = ray_hot.get
+    w_pearl = CFG["w_pearl"]
+    w_ray = CFG["w_ray"]
+    ray_decay = CFG["ray_decay"]
+    # a cell's score can never beat best_score once steps alone cost more
+    # than every bonus combined (pearl + frontier + spawn + ray)
+    max_bonus = w_pearl + frontier_w + w_spawn + (w_ray if hunt else 0.0)
+    while qi < qlen and qlen < cap:
         cell = queue[qi]
         qi += 1
         steps_to = dist[cell] + 1
-        ds = dest(cell)
+        step_cost = w_dist * steps_to
+        if step_cost + max_bonus <= best_score:
+            continue  # this subtree cannot hold a winning target
+        ds = _dest(cell)
         for d in range(4):
             n = ds[d]
-            if n < 0 or dist[n] >= 0 or n in blocked or danger.get(n, 0) >= 2:
+            if n < 0 or mark[n] == stamp or n in _blocked or _dget(n, 0) >= 2:
                 continue
-            j = own.get(n)
+            if step_cost + max_bonus <= best_score:
+                continue  # cannot win itself, and cannot ancestor a winner
+            j = _oget(n)
             if j is not None and steps_to + j <= my_len + 1:
                 continue
+            mark[n] = stamp
             dist[n] = steps_to
             first[n] = d if cell == head else first[cell]
-            queue.append(n)
-            score = w_dist * steps_to + w_visit * min(visits[n], 12)
-            if n in pearls:
-                score += CFG["w_pearl"]
-            when = spawn_at.get(n)
-            if when is not None and fertile[n]:
+            _qappend(n)
+            qlen += 1
+            score = step_cost + _vscore[_visits[n]]
+            if n in _pearls:
+                score += w_pearl
+            when = _sget(n)
+            if when is not None and _fertile[n]:
                 if when <= round_now:
                     score += w_spawn
                 else:
                     lag = when - round_now
                     if lag < horizon:
                         score += w_spawn * (1.0 - lag / horizon)
-            if frontier_w and borders_unknown(n):
+            if frontier_w and _unknown[n]:
                 score += frontier_w
-            if hunt and n in ray_hot:
-                age = round_now - ray_hot[n]
-                if age < CFG["ray_decay"]:
-                    score += CFG["w_ray"] * (1.0 - age / CFG["ray_decay"])
+            if hunt:
+                hot = _rget(n)
+                if hot is not None:
+                    age = round_now - hot
+                    if age < ray_decay:
+                        score += w_ray * (1.0 - age / ray_decay)
             if score > best_score:
                 best_score = score
                 best_dir = first[n]
@@ -673,28 +756,30 @@ def bfs_compass(danger, own):
         decay = CFG["hunt_decay"]
         for pid, (cell, when, _l) in enemies.items():
             age = round_now - when
-            if 0 < dist[cell] and age < decay:
-                score = w_hunt * (1.0 - age / decay) + w_dist * dist[cell]
-                if score > best_score:
-                    best_score = score
-                    best_dir = first[cell]
+            if mark[cell] == stamp and age < decay:
+                steps = dist[cell]
+                if 0 < steps:
+                    score = w_hunt * (1.0 - age / decay) + w_dist * steps
+                    if score > best_score:
+                        best_score = score
+                        best_dir = first[cell]
     return best_dir
 
 
-def nearest_ally_dist(cell):
+def nearest_ally_dist(cell, axy):
     best = 99
     x = cell % W
     y = cell // W
-    for pid, (acell, _l, _r, _round) in ally.items():
-        dx = abs(x - acell % W)
-        dy = abs(y - acell // W)
+    for ax, ay in axy:
+        dx = abs(x - ax)
+        dy = abs(y - ay)
         d = min(dx, W - dx) + min(dy, H - dy)
         if d < best:
             best = d
     return best
 
 
-def choose_move(danger, own, compass):
+def choose_move(danger, own, compass, axy):
     options = []
     ds = dest(head)
     for d in range(4):
@@ -719,8 +804,8 @@ def choose_move(danger, own, compass):
             score += CFG["w_pearl_here"] * (5.0 if brawl else 1.0)
         if d == compass:
             score += CFG["w_compass"]
-        score += CFG["w_visit"] * min(visits[n], 12)
-        spread = nearest_ally_dist(n)
+        score += VISIT_SCORE[visits[n]]
+        spread = nearest_ally_dist(n, axy)
         if spread < 99:
             w_sp = (-1.5 if NC <= 300 else -3.0) if brawl else CFG["w_spread"]
             score += w_sp * min(spread, CFG["spread_cap"])
@@ -1042,7 +1127,6 @@ def take_turn():
     own = own_map()
 
     global brawl
-    trace("chk r%d beds=%d mincd=%d wit=%d" % (round_now, bed_count, min_cd, pearls_wit))
     if not brawl and round_now >= 30 and NC <= 600 and not portal_seen \
             and bed_count >= 20 and pearls_wit * 20 <= bed_count:
         brawl = 1
@@ -1052,25 +1136,23 @@ def take_turn():
     if child and my_len - child >= 2 and units < unit_limit:
         emit("SPLIT %d" % child)
         send_sonar()
-        emit("INDICATOR %s%d u%d" % ("GHS"[role], my_len, units))
         return
 
     path = strike_path()
     if path:
         emit_move(path)
         send_sonar()
-        emit("INDICATOR %s%d u%d STRIKE" % ("GHS"[role], my_len, units))
         return
 
     compass = bfs_compass(danger, own)
-    move = choose_move(danger, own, compass)
+    axy = [(c % W, c // W) for c, _l, _r, _w in ally.values()]
+    move = choose_move(danger, own, compass, axy)
     via = "choose"
     if move < 0 or (not brawl and danger.get(dest(head, move), 0) >= 2):
         esc = escape_path(danger, own)
         if esc:
             emit_move(esc)
             send_sonar()
-            emit("INDICATOR %s%d u%d FLEE" % ("GHS"[role], my_len, units))
             return
     if move < 0:
         move = emergency_step()
@@ -1116,7 +1198,6 @@ def take_turn():
             ",".join(str(c) for c in sorted(blocked))))
     emit("MOVE " + DIR_CH[move])
     send_sonar()
-    emit("INDICATOR %s%d u%d" % ("GHS"[role], my_len, units))
 
 
 # =====================================================================
