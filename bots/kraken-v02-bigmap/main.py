@@ -617,6 +617,8 @@ def borders_unknown(cell):
 def bfs_compass(danger, own):
     """Capped BFS scoring targets in place; returns the best first step."""
     cap = CFG["bfs_cap"] if NC > CFG["bfs_cap"] else NC
+    if NC > CFG["big_map_cells"]:
+        cap = 2200  # big rich maps: harvest planning needs longer sightlines
     dist = [-1] * NC
     first = [-1] * NC
     dist[head] = 0
@@ -802,7 +804,8 @@ def strike_path():
     so the target cannot dodge.  Intermediate tiles must be clear now.
     """
     want = []
-    desperate = units <= 2 or round_now >= CFG["late_round"]
+    desperate = units <= 2
+    endgame = round_now > CFG["growth_round"]
     for cell, pid, is_ally in heads_seen:
         if is_ally:
             continue
@@ -813,6 +816,10 @@ def strike_path():
                 # dead dragons are the only pearl income: trade unless we
                 # are strictly longer by 2+ (don't waste length on stubs)
                 if their < my_len - 1:
+                    continue
+            elif endgame:
+                # length race: a mutual kill only pays if they are longer
+                if their <= my_len:
                     continue
             elif role == 0:
                 continue  # gatherers keep growing; endgame they fight too
