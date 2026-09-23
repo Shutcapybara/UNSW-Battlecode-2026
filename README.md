@@ -5,16 +5,16 @@ All committed branch strategies live together on `main`. Each directory under
 
 | Folder | Source |
 | --- | --- |
-| `bots/pearl-seeker` | Original main / v5-single-child branch tip (two-child strategy) |
-| `bots/danger-levels` | v13-danger-levels; also the root bot on dragon-hunter |
-| `bots/dragon-hunters` | dragon-hunter |
-| `bots/portal-hunters` | Dragon hunters with planned pearl-collecting portal round trips |
-| `bots/escorts` | dragon-hunter variant |
-| `bots/kamikaze-swarm` | dragon-hunter variant |
-| `bots/one-child` | dragon-hunter variant |
-| `bots/two-children` | dragon-hunter variant |
-| `bots/pre-swarm-defense` | dragon-hunter variant |
-| `bots/pearl-seeker-center` | zach |
+| `bots/fry-v09-pearl-seeker` | Original main / v5-single-child branch tip (two-child strategy) |
+| `bots/fry-v01-danger-levels` | v13-fry-v01-danger-levels; also the root bot on dragon-hunter |
+| `bots/fry-v02-dragon-hunters` | dragon-hunter |
+| `bots/fry-v03-portal-hunters` | Dragon hunters with planned pearl-collecting portal round trips |
+| `bots/fry-v04-escorts` | dragon-hunter variant |
+| `bots/fry-v05-kamikaze-swarm` | dragon-hunter variant |
+| `bots/fry-v06-one-child` | dragon-hunter variant |
+| `bots/fry-v07-two-children` | dragon-hunter variant |
+| `bots/fry-v08-pre-swarm-defense` | dragon-hunter variant |
+| `bots/fry-v10-pearl-seeker-center` | zach |
 
 The original branches and existing stash are retained. The stash is unfinished
 work and is not applied to these committed snapshots. Maps, browser extension,
@@ -43,14 +43,14 @@ Preview the schedule, or run a smaller selection:
 
 ```sh
 python3 bots/tournament.py --dry-run
-python3 bots/tournament.py --bots dragon-hunters portal-hunters --maps arena queen_of_spades
+python3 bots/tournament.py --bots fry-v02-dragon-hunters fry-v03-portal-hunters --maps arena queen_of_spades
 python3 bots/tournament.py --jobs 8 --output build/all-bots-parallel
 ```
 
 To test one bot against every other bot on every map, with sides swapped:
 
 ```sh
-python3 bots/tournament.py --focus-bot portal-hunters --jobs 8 --output build/portal-hunters-tournament
+python3 bots/tournament.py --focus-bot fry-v03-portal-hunters --jobs 8 --output build/fry-v03-portal-hunters-tournament
 ```
 
 This runs 198 matches with the current 10 bots and 11 maps. `--maps` still
@@ -86,8 +86,8 @@ node --test browser-extension/tests/core.test.cjs
 Choose bot folders explicitly with the installed `unswbc` toolkit:
 
 ```sh
-unswbc run maps/arena.map bots/dragon-hunters bots/pearl-seeker-center
-unswbc submit bots/dragon-hunters
+unswbc run maps/arena.map bots/fry-v02-dragon-hunters bots/fry-v10-pearl-seeker-center
+unswbc submit bots/fry-v02-dragon-hunters
 python3 bots/compare.py
 ```
 

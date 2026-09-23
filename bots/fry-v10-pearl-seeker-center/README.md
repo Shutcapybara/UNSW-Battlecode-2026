@@ -33,8 +33,8 @@ The executable reads game input from standard input; launch it through the game 
 From the repository root, with the official `unswbc` toolkit installed and a map available:
 
 ```sh
-unswbc run path/to/arena.map bots/pearl-seeker-center bots/pearl-seeker-center
-(cd bots/pearl-seeker-center && zip ../../pearl-seeker-center.zip bot.toml main.cpp)
+unswbc run path/to/arena.map bots/fry-v10-pearl-seeker-center bots/fry-v10-pearl-seeker-center
+(cd bots/fry-v10-pearl-seeker-center && zip ../../fry-v10-pearl-seeker-center.zip bot.toml main.cpp)
 ```
 
 Upload the ZIP as C++ on the game's Submissions page. `bot.toml` must be at the ZIP root. No external C++ dependencies or helper library are required.

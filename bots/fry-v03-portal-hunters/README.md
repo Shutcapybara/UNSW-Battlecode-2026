@@ -1,6 +1,6 @@
 # Portal hunters
 
-A standalone variant of `dragon-hunters`. Between portal trips it retains the
+A standalone variant of `fry-v02-dragon-hunters`. Between portal trips it retains the
 original attacks, swarm splitting, friendly face-off sonar, and exploration.
 
 Starting at round 400 (inclusive), it switches to growth: no deliberate enemy
@@ -43,6 +43,6 @@ From the repository root:
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --target portal_hunter
 ctest --test-dir build -R portal_hunter --output-on-failure
-unswbc run maps/queen_of_spades.map bots/portal-hunters bots/dragon-hunters
-unswbc submit bots/portal-hunters
+unswbc run maps/queen_of_spades.map bots/fry-v03-portal-hunters bots/fry-v02-dragon-hunters
+unswbc submit bots/fry-v03-portal-hunters
 ```

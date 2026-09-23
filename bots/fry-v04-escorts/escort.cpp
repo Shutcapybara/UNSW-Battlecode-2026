@@ -1,5 +1,6 @@
 #include <array>
 #include <algorithm>
+#include <set>
 #include <iostream>
 #include <map>
 #include <queue>
@@ -19,6 +20,7 @@ struct Tile {
     bool visible = false, pearl = false, occupied = false;
     bool dragon_head = false;
     bool enemy_head = false;
+    int friendly_id = -1;
     // Edges use the same NESW order: "." = open, "w" = kelp,
     // otherwise the string is a portal ID shared by two map edges.
     std::array<std::string, 4> edges = {".", ".", ".", "."};
@@ -37,8 +39,12 @@ class Bot {
     // Setup information stays constant throughout this dragon's lifetime.
     int width = 0, height = 0, id = 0, limit = 64;
     int round = 0, length = 0, units = 0, head = 0;
-    int children_created = 0;
+    bool has_child = false;
+    // Lowest known living friendly ID is the captain. Children learn it from
+    // visible friendly segments; no assumed globally shared program memory.
+    int captain_id = -1, captain_position = -1;
     std::string my_team;
+    std::set<int> visible_friends;
     // Positions such as head are flattened indexes: y * width + x.
     std::vector<Tile> tiles;
     // Visits persist between turns, but are not shared with split children.
@@ -103,10 +109,11 @@ class Bot {
     }
     std::vector<int> threats() const {
         std::vector<int> danger(tiles.size(), 0);
-        // Predict turns and short sprints from every other visible head.
+        // Escorts deliberately stay close to the captain. Only enemy heads
+        // contribute predicted danger; actual friendly bodies still block moves.
         // These scores influence movement only, never whether we split.
         for (int origin = 0; origin < static_cast<int>(tiles.size()); ++origin) {
-            if (!tiles[origin].dragon_head || origin == head) continue;
+            if (!tiles[origin].enemy_head || origin == head) continue;
             for (int d = 0; d < 4; ++d) {
                 int next = destination(origin, d, false);
                 if (next < 0 || (tiles[next].occupied && next != head)) continue;
@@ -121,68 +128,99 @@ class Bot {
         }
         return danger;
     }
-    std::vector<int> enemy_distance() const {
-        // Multi-source search measures approach distance through actual open
-        // edges, rather than straight-line distance through kelp or bodies.
-        std::vector<int> distance(tiles.size(), 1000);
-        std::queue<int> pending;
-        for (int p = 0; p < static_cast<int>(tiles.size()); ++p) {
-            if (tiles[p].enemy_head) { distance[p] = 0; pending.push(p); }
+
+    int separation(int a, int b) const {
+        int dx = std::abs(a % width - b % width);
+        int dy = std::abs(a / width - b / width);
+        return std::min(dx, width - dx) + std::min(dy, height - dy);
+    }
+    void update_role() {
+        if (units == 1) captain_id = id;
+        else if (!visible_friends.empty()) {
+            int oldest = *visible_friends.begin();
+            // Only elect ourselves after seeing every living teammate. Seeing
+            // no captain in our small view alone is not evidence it has died.
+            if (static_cast<int>(visible_friends.size()) == units || oldest < id)
+                if (captain_id < 0 || oldest < captain_id ||
+                    static_cast<int>(visible_friends.size()) == units) captain_id = oldest;
         }
+        int nearest_part = -1;
+        for (int p = 0; p < static_cast<int>(tiles.size()); ++p) {
+            if (!tiles[p].visible || tiles[p].friendly_id != captain_id || captain_id < 0) continue;
+            if (tiles[p].dragon_head) { captain_position = p; return; }
+            if (nearest_part < 0 || separation(head, p) < separation(head, nearest_part)) nearest_part = p;
+        }
+        // When the head is beyond vision, follow its visible body or the most
+        // recently observed position. Neither is a guarantee of its new location.
+        if (nearest_part >= 0) captain_position = nearest_part;
+    }
+    std::string escort_action() const {
+        // Find paths through empty tiles, allowing deliberate collisions ONLY
+        // with enemy heads. Friendly heads and all body segments stay blocked.
+        std::vector<int> distance(tiles.size(), -1), first(tiles.size(), -1);
+        std::queue<int> pending;
+        distance[head] = 0;
+        pending.push(head);
+        int intercept = -1, intercept_score = 1000000;
+        int patrol = -1, patrol_score = 1000000;
         while (!pending.empty()) {
             int p = pending.front(); pending.pop();
-            for (int d = 0; d < 4; ++d) {
-                int next = destination(p, d);
-                if (next < 0 || distance[next] <= distance[p] + 1) continue;
+            if (p != head && tiles[p].enemy_head) {
+                // Trade our small escort for a nearby attacker, rather than
+                // chase arbitrary distant heads away from the protected dragon.
+                if ((captain_position >= 0 && separation(p, captain_position) <= 3) || distance[p] == 1) {
+                    int score = distance[p] * 10;
+                    if (score < intercept_score) { intercept_score = score; intercept = p; }
+                }
+                continue; // A head-on collision ends the escort's route.
+            }
+            if (p != head) {
+                int next = destination(head, first[p]);
+                int score = visits[p] * 2 + distance[p];
+                if (captain_position >= 0) {
+                    // Patrol at distance two or three, leaving immediate head
+                    // exits clear. Different IDs prefer different sides.
+                    int gap = separation(p, captain_position);
+                    score += std::abs(gap - 2) * 30;
+                    if (next >= 0 && separation(next, captain_position) <= 1) score += 1000;
+                    int flank = pos(captain_position % width + (id % 2 ? 2 : -2), captain_position / width);
+                    score += separation(p, flank) * 3;
+                }
+                // Young fry-v04-escorts need food to reach their first split. After
+                // producing a child, favour leaving pearls for the captain.
+                if (next >= 0 && tiles[next].pearl) score += has_child ? 50 : -50;
+                if (score < patrol_score) { patrol_score = score; patrol = p; }
+            }
+            for (int offset = 0; offset < 4; ++offset) {
+                int d = (offset + id) % 4;
+                int next = destination(p, d, false);
+                if (next < 0 || distance[next] >= 0 ||
+                    (tiles[next].occupied && !tiles[next].enemy_head)) continue;
                 distance[next] = distance[p] + 1;
+                first[next] = p == head ? d : first[p];
                 pending.push(next);
             }
         }
-        return distance;
-    }
-    int buffer_penalty(int distance) const {
-        // Beyond four steps there is no reward for fleeing further from food.
-        return std::max(0, 4 - distance) * 5;
-    }
-    bool sprint_has_room(int first, int finish, const std::vector<int>& danger) const {
-        // Keep the first step occupied as the new neck. Conservatively retain
-        // every current body tile, so neither step relies on a vacating tail.
-        std::vector<bool> seen(tiles.size(), false);
-        std::queue<int> pending;
-        seen[finish] = true;
-        pending.push(finish);
-        int room = 1;
-        bool safe_exit = false;
-        for (int d = 0; d < 4; ++d) {
-            int next = destination(finish, d);
-            if (next >= 0 && next != first && next != finish && danger[next] == 0)
-                safe_exit = true;
-        }
-        if (!safe_exit) return false;
-        const int required = std::min(length, 6);
-        while (!pending.empty() && room < required) {
-            int p = pending.front(); pending.pop();
-            for (int d = 0; d < 4; ++d) {
-                int next = destination(p, d);
-                if (next < 0 || next == first || seen[next]) continue;
-                seen[next] = true;
-                ++room;
-                pending.push(next);
-            }
-        }
-        return room >= required;
+        int target = intercept >= 0 ? intercept : patrol;
+        if (target >= 0) return std::string("MOVE ") + DIR[first[target]];
+        for (int d = 0; d < 4; ++d)
+            if (destination(head, d) == -2) return std::string("MOVE ") + DIR[d];
+        return "MOVE N"; // No legal safe move after the reproduction check.
     }
 
 public:
+    std::string role_label() const {
+        return captain_id == id ? "CAPTAIN" : "ESCORT captain=" + std::to_string(captain_id);
+    }
     bool init() {
         // Read the one-time setup block, including the team's split limit.
         std::string team, text, key;
         if (!field("ID", id) || !field("TEAM", team) || !line(text)) return false;
-        my_team = team;
         std::istringstream input(text);
         if (!(input >> key >> width >> height) || key != "MAP" ||
             width < 10 || width > 64 || height < 10 || height > 64) return false;
         if (!field("UNIT_LIMIT", limit)) return false;
+        my_team = team;
         visits.assign(width * height, 0);
         return true;
     }
@@ -195,6 +233,7 @@ public:
         // We do not use sonar, but must consume its lines to keep input aligned.
         for (int i = 0; i < count; ++i) if (!line(text)) return false;
         // Discard old observations: dragons and pearls may have moved/changed.
+        visible_friends.clear();
         tiles.assign(width * height, Tile{});
         portals.clear();
         std::array<int, 49> window{};
@@ -222,6 +261,10 @@ public:
             tiles[pos(x, y)].occupied = true;
             tiles[pos(x, y)].dragon_head = is_head != 0;
             tiles[pos(x, y)].enemy_head = is_head != 0 && team != my_team;
+            if (team == my_team) {
+                tiles[pos(x, y)].friendly_id = dragon;
+                visible_friends.insert(dragon);
+            }
             // A spawn location under a body is not collectible. Exclude it
             // explicitly, including our own head and tail. Fresh vision next
             // turn can make this tile a target again once it is clear.
@@ -253,19 +296,31 @@ public:
         return true;
     }
     std::string action() {
-        // Each new process (including a split child) starts with zero children.
-        // Preserve the current one-child policy. The engine allows one action
-        // per turn, so a reproduction turn cannot also contain an escape move.
-        if (children_created < 1 && length >= 4 && units < limit) {
-            ++children_created;
+        update_role();
+        // Every dragon gets one proactive child, regardless of its role.
+        // A child's fresh process starts with has_child=false. Count births,
+        // not surviving children: losing a child does not reset this allowance.
+        if (!has_child && length >= 4 && units < limit) {
+            has_child = true;
             return "SPLIT 2";
         }
+        if (captain_id != id) return escort_action();
         const auto danger = threats();
-        const auto distance_to_enemy = enemy_distance();
+        // After its one birth, the captain prioritises safe adjacent pearls.
+        for (int d = 0; d < 4; ++d) {
+            int next = destination(head, d);
+            if (next < 0 || !tiles[next].pearl || danger[next] != 0) continue;
+            bool escape = false;
+            for (int onward_dir = 0; onward_dir < 4; ++onward_dir) {
+                int onward = destination(next, onward_dir);
+                if (onward >= 0 || (onward == -2 && tiles[next].edges[onward_dir] == "."))
+                    escape = true;
+            }
+            if (escape) return std::string("MOVE ") + DIR[d];
+        }
         std::array<int, 4> risk{};
         int lowest_risk = 1000000;
         bool has_escape = false;
-        int lowest_threat = 1000000;
         for (int d = 0; d < 4; ++d) {
             risk[d] = 1000000;
             int next = destination(head, d);
@@ -279,32 +334,9 @@ public:
                     (onward == -2 && tiles[next].edges[turn] == ".")) escape = true;
             }
             has_escape = has_escape || escape;
-            lowest_threat = std::min(lowest_threat, danger[next]);
-            risk[d] = danger[next] + buffer_penalty(distance_to_enemy[next]) + (escape ? 0 : 40);
+            risk[d] = danger[next] + (escape ? 0 : 40);
             if (risk[d] < lowest_risk) lowest_risk = risk[d];
         }
-        // Spend one segment only when every ordinary move is threatened and a
-        // two-step route ends beyond those threats. Other dragons do not act
-        // between these steps, but walls/bodies must be checked on both steps.
-        std::string sprint;
-        int sprint_score = 1000000;
-        if (lowest_threat > 0 && lowest_threat < 1000000) {
-            for (int d = 0; d < 4; ++d) {
-                int first = destination(head, d);
-                if (first < 0 || length + int(tiles[first].pearl) < 3) continue;
-                for (int second_dir = 0; second_dir < 4; ++second_dir) {
-                    int finish = destination(first, second_dir);
-                    if (finish < 0 || finish == first || danger[finish] != 0) continue;
-                    if (!sprint_has_room(first, finish, danger)) continue;
-                    int score = buffer_penalty(distance_to_enemy[finish]);
-                    if (score < sprint_score) {
-                        sprint_score = score;
-                        sprint = std::string("MOVE ") + DIR[d] + DIR[second_dir];
-                    }
-                }
-            }
-        }
-        if (!sprint.empty()) return sprint;
         // Preserve early splitting for physical dead ends, independently of
         // nearby heads. If all exits are merely threatened, keep moving.
         if (!has_escape && length >= 4 && units < limit)
@@ -369,5 +401,8 @@ int main() {
     if (!bot.init()) return 0;
     // ENDTURN completes the reply. Flush so the engine can receive the action
     // before we block waiting for the next turn. Stop when input ends.
-    while (bot.update()) std::cout << bot.action() << "\nENDTURN\n" << std::flush;
+    while (bot.update()) {
+        const auto action = bot.action();
+        std::cout << "INDICATOR " << bot.role_label() << '\n' << action << "\nENDTURN\n" << std::flush;
+    }
 }

@@ -27,13 +27,13 @@ ctest --test-dir build --output-on-failure
 
 The executable reads game input from standard input; launch it through the game toolkit rather than interactively.
 
-The test opponent in `bots/kamikaze-swarm` repeatedly splits and deliberately
-chases enemy heads, including short attack sprints. `bots/pre-swarm-defense`
+The test opponent in `bots/fry-v05-kamikaze-swarm` repeatedly splits and deliberately
+chases enemy heads, including short attack sprints. `bots/fry-v08-pre-swarm-defense`
 preserves the main bot before these defense changes. For a manual comparison:
 
 ```sh
-unswbc run maps/arena.map bots/danger-levels bots/kamikaze-swarm
-unswbc run maps/arena.map bots/pre-swarm-defense bots/kamikaze-swarm
+unswbc run maps/arena.map bots/fry-v01-danger-levels bots/fry-v05-kamikaze-swarm
+unswbc run maps/arena.map bots/fry-v08-pre-swarm-defense bots/fry-v05-kamikaze-swarm
 ```
 
 `tests/benchmark_swarm.py` runs both defenders on both sides of three maps using
@@ -48,8 +48,8 @@ against a synthetic opponent, not a guarantee against other teams or longer spri
 From the repository root, with the official `unswbc` toolkit installed and a map available:
 
 ```sh
-unswbc run path/to/arena.map bots/danger-levels bots/danger-levels
-(cd bots/danger-levels && zip ../../danger-levels.zip bot.toml main.cpp)
+unswbc run path/to/arena.map bots/fry-v01-danger-levels bots/fry-v01-danger-levels
+(cd bots/fry-v01-danger-levels && zip ../../fry-v01-danger-levels.zip bot.toml main.cpp)
 ```
 
 Upload the ZIP as C++ on the game's Submissions page. `bot.toml` must be at the ZIP root. No external C++ dependencies or helper library are required.

@@ -23,5 +23,5 @@ friendly-repulsion movement.
 Run it with:
 
 ```sh
-unswbc run maps/arena.map bots/dragon-hunters bots/dragon-hunters
+unswbc run maps/arena.map bots/fry-v02-dragon-hunters bots/fry-v02-dragon-hunters
 ```

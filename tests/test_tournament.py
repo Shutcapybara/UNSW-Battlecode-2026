@@ -32,14 +32,14 @@ class Tournament(unittest.TestCase):
                 contextlib.redirect_stderr(io.StringIO()), \
                 patch.object(tournament.shutil, 'which', return_value='/test/unswbc'), \
                 patch.object(tournament, 'play', side_effect=result) as play:
-            args = ['--bots', 'dragon-hunters', 'portal-hunters', 'escorts', '--maps', 'arena',
-                    '--output', directory, '--focus-bot', 'portal-hunters']
+            args = ['--bots', 'fry-v02-dragon-hunters', 'fry-v03-portal-hunters', 'fry-v04-escorts', '--maps', 'arena',
+                    '--output', directory, '--focus-bot', 'fry-v03-portal-hunters']
             self.assertEqual(tournament.main(args), 0)
             self.assertEqual(play.call_count, 4)
             self.assertEqual(tournament.main(args + ['--resume']), 0)
             self.assertEqual(play.call_count, 4)
             with self.assertRaises(SystemExit) as changed:
-                tournament.main(args + ['--resume', '--focus-bot', 'escorts'])
+                tournament.main(args + ['--resume', '--focus-bot', 'fry-v04-escorts'])
             self.assertEqual(changed.exception.code, 2)
             with self.assertRaises(SystemExit) as invalid:
                 tournament.main(['--focus-bot', 'not-a-bot', '--dry-run'])
@@ -65,7 +65,7 @@ class Tournament(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()), \
                 patch.object(tournament.shutil, 'which', return_value='/test/unswbc'), \
                 patch.object(tournament, 'play', side_effect=result) as play:
-            args = ['--bots', 'dragon-hunters', 'portal-hunters', 'escorts', '--maps', 'arena',
+            args = ['--bots', 'fry-v02-dragon-hunters', 'fry-v03-portal-hunters', 'fry-v04-escorts', '--maps', 'arena',
                     '--output', directory, '--jobs', '2']
             self.assertEqual(tournament.main(args), 0)
             self.assertEqual(peak, 2)
@@ -139,7 +139,7 @@ class Tournament(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()), \
                 patch.object(tournament.shutil, 'which', return_value='/test/unswbc'), \
                 patch.object(tournament, 'play', side_effect=result) as play:
-            args = ['--bots', 'dragon-hunters', 'portal-hunters', '--maps', 'arena', '--output', directory]
+            args = ['--bots', 'fry-v02-dragon-hunters', 'fry-v03-portal-hunters', '--maps', 'arena', '--output', directory]
             self.assertEqual(tournament.main(args), 0)
             self.assertEqual(play.call_count, 2)
             self.assertEqual(tournament.main(args + ['--resume']), 0)

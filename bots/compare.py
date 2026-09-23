@@ -9,7 +9,7 @@ out = root / "build" / "child-comparison"
 out.mkdir(parents=True, exist_ok=True)
 results = []
 for board in sorted((root / "maps").glob("*.map")):
-    for a, b in (("one-child", "two-children"), ("two-children", "one-child")):
+    for a, b in (("fry-v06-one-child", "fry-v07-two-children"), ("fry-v07-two-children", "fry-v06-one-child")):
         label = f"{board.stem}-{a}-vs-{b}"
         match = subprocess.run(
             ["unswbc", "run", str(board), str(root / "bots" / a),
@@ -32,4 +32,4 @@ for board in sorted((root / "maps").glob("*.map")):
         if winner == "error":
             raise RuntimeError(f"Match failed; see {out / (label + '.log')}")
 print({name: sum(r['winner'] == name for r in results)
-       for name in ('one-child', 'two-children', 'draw')}, flush=True)
+       for name in ('fry-v06-one-child', 'fry-v07-two-children', 'draw')}, flush=True)

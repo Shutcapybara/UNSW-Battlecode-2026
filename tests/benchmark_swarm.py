@@ -14,15 +14,15 @@ from unswbc.project import Project
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
-parser.add_argument("--escorts", action="store_true", help="Compare baseline and escorts instead of sprint defense")
+parser.add_argument("--fry-v04-escorts", action="store_true", help="Compare baseline and fry-v04-escorts instead of sprint defense")
 args = parser.parse_args()
-OUT = ROOT / "build" / ("escort-benchmark" if args.escorts else "swarm-benchmark")
+OUT = ROOT / "build" / ("escort-benchmark" if args.fry-v04-escorts else "swarm-benchmark")
 OUT.mkdir(parents=True, exist_ok=True)
-projects = {"baseline": ROOT / "bots/pre-swarm-defense",
-            "defense": ROOT / "bots/danger-levels", "swarm": ROOT / "bots/kamikaze-swarm"}
-if args.escorts:
+projects = {"baseline": ROOT / "bots/fry-v08-pre-swarm-defense",
+            "defense": ROOT / "bots/fry-v01-danger-levels", "swarm": ROOT / "bots/fry-v05-kamikaze-swarm"}
+if args.fry-v04-escorts:
     projects.pop("defense")
-    projects["escorts"] = ROOT / "bots/escorts"
+    projects["fry-v04-escorts"] = ROOT / "bots/fry-v04-escorts"
 binaries = {name: str(Project.from_dir(str(path)).compile() / "bot") for name, path in projects.items()}
 engine = EngineModule()
 results = []
@@ -82,7 +82,7 @@ def play(board, defender, side):
 
 
 for board in ("arena", "default_small", "big_empty"):
-    for defender in ("baseline", "escorts" if args.escorts else "defense"):
+    for defender in ("baseline", "fry-v04-escorts" if args.fry-v04-escorts else "defense"):
         for side in ("A", "B"):
             result = play(board, defender, side)
             results.append(result)

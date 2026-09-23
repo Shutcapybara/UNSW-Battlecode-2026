@@ -10,14 +10,14 @@ These are standalone snapshots of the bot, differing only in their proactive
 child target. Every child repeats its variant's rule. Both variants retain
 emergency splitting, so the target is not a lifetime cap on all splits.
 
-- `one-child/`: creates one two-segment child as soon as legal.
-- `two-children/`: creates two two-segment children as soon as legal, one per turn.
+- `fry-v06-one-child/`: creates one two-segment child as soon as legal.
+- `fry-v07-two-children/`: creates two two-segment children as soon as legal, one per turn.
 
 Run from the repository root:
 
 ```sh
-unswbc run maps/arena.map bots/one-child bots/two-children
-unswbc run maps/arena.map bots/two-children bots/one-child
+unswbc run maps/arena.map bots/fry-v06-one-child bots/fry-v07-two-children
+unswbc run maps/arena.map bots/fry-v07-two-children bots/fry-v06-one-child
 ```
 
 Run every map with sides swapped:
@@ -34,14 +34,14 @@ one strategy will beat other teams. The main bot remains independently editable.
 Each version can also be submitted directly:
 
 ```sh
-unswbc submit bots/one-child
-unswbc submit bots/two-children
+unswbc submit bots/fry-v06-one-child
+unswbc submit bots/fry-v07-two-children
 ```
 
 ## Other strategies
 
-- `portal-hunters/`: based on dragon-hunters, with planned portal round trips
+- `fry-v03-portal-hunters/`: based on fry-v02-dragon-hunters, with planned portal round trips
   that collect current and upcoming pearls and reserve an exit route.
-- `dragon-hunters/`: a self-replicating aggressive swarm that hunts enemy
+- `fry-v02-dragon-hunters/`: a self-replicating aggressive swarm that hunts enemy
   heads, spreads friendly dragons across the map, uses close-range face-off
   sonar, and treats pearls as a secondary objective.
