@@ -8,6 +8,7 @@ All committed branch strategies live together on `main`. Each directory under
 | `bots/pearl-seeker` | Original main / v5-single-child branch tip (two-child strategy) |
 | `bots/danger-levels` | v13-danger-levels; also the root bot on dragon-hunter |
 | `bots/dragon-hunters` | dragon-hunter |
+| `bots/portal-hunters` | Dragon hunters with planned pearl-collecting portal round trips |
 | `bots/escorts` | dragon-hunter variant |
 | `bots/kamikaze-swarm` | dragon-hunter variant |
 | `bots/one-child` | dragon-hunter variant |
@@ -18,6 +19,47 @@ All committed branch strategies live together on `main`. Each directory under
 The original branches and existing stash are retained. The stash is unfinished
 work and is not applied to these committed snapshots. Maps, browser extension,
 and shared test tools remain at the repository root.
+
+## All-bot tournament
+
+Run every bot against every other bot on every map, with sides swapped:
+
+```sh
+python3 bots/tournament.py
+```
+
+The script discovers `bots/*/bot.toml` and `maps/*.map` automatically. With 10
+bots and 11 maps, it runs 990 matches, excluding self-matches. By default it
+runs up to four matches concurrently, capped at the detected CPU count. Set
+`--jobs 8` (or `-j 8`) for eight simultaneous matches, or `--jobs 1` for a
+sequential run. Each worker has its own bot builds and reuses them across
+matches. Each run gets a new folder under `build/tournament-TIMESTAMP/` with
+replays, match logs, `results.json`, and a `standings.csv` leaderboard. Wins
+earn 3 points and draws 1; failed matches are recorded separately and do not
+count as losses. Results are saved after every match, and failures do not stop
+the remaining matches. The script exits with status 1 if any matches failed.
+
+Preview the schedule, or run a smaller selection:
+
+```sh
+python3 bots/tournament.py --dry-run
+python3 bots/tournament.py --bots dragon-hunters portal-hunters --maps arena queen_of_spades
+python3 bots/tournament.py --jobs 8 --output build/all-bots-parallel
+```
+
+Choose a results folder so an interrupted run is easy to resume:
+
+```sh
+python3 bots/tournament.py --output build/all-bots
+python3 bots/tournament.py --output build/all-bots --resume
+```
+
+Resume skips successful matches and retries failed ones. Use the same bot/map
+selection and replay settings; changed source files, maps, or runner scripts
+require a fresh results folder to avoid mixing versions. The `--jobs` setting
+can change when resuming. Ctrl+C stops all running matches and preserves saved
+results. Add `--no-replays` to reduce
+disk usage or `--timeout 300` to change the default 180-second match timeout.
 
 ## Build and test all bots
 

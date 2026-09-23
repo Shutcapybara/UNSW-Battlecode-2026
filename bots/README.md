@@ -1,5 +1,11 @@
 # Child-count comparison
 
+For **every bot against every other bot on every map**, use
+`python3 bots/tournament.py` from the repository root. It runs both sides and
+saves results, a leaderboard, logs and replays. See the root README for subset
+selection, dry runs and resuming interrupted tournaments. Use `--jobs 8` to
+run eight matches at once (default: up to four).
+
 These are standalone snapshots of the bot, differing only in their proactive
 child target. Every child repeats its variant's rule. Both variants retain
 emergency splitting, so the target is not a lifetime cap on all splits.
@@ -34,6 +40,8 @@ unswbc submit bots/two-children
 
 ## Other strategies
 
+- `portal-hunters/`: based on dragon-hunters, with planned portal round trips
+  that collect current and upcoming pearls and reserve an exit route.
 - `dragon-hunters/`: a self-replicating aggressive swarm that hunts enemy
   heads, spreads friendly dragons across the map, uses close-range face-off
   sonar, and treats pearls as a secondary objective.
