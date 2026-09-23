@@ -47,8 +47,9 @@ CFG = dict(
     # ---- big-map production (64x64 and up: elimination races, never stop) ----
     big_map_cells=3000,     # maps with more cells than this use big targets
     big_target_early=32,    # desired unit count while scouting on big maps
-    big_target_mid=48,      # desired unit count while hunting on big maps
-    big_late_target=32,     # keep replacing losses up to this after late_round
+    big_target_mid=64,      # desired unit count while hunting on big maps
+    big_late_target=48,     # keep replacing losses up to this after late_round
+    growth_round=400,       # after this round on big maps: eat, don't split
     # ---- combat ----
     strike_steps=3,         # max sprint length when striking a head
     scout_trade=2,          # scout strikes if enemy len >= my len + this
@@ -167,6 +168,8 @@ min_cd = 1 << 30        # smallest spawn countdown ever seen
 brawl = 0               # once set: pure combat economy, harvest the dead
 
 blocked = set()         # every other dragon's visible parts
+ally_cells = set()      # visible ally parts (subset of blocked)
+ally_heads = set()      # visible ally heads: stepping here kills TWO of ours
 heads_seen = []         # (cell, id, is_ally) for visible heads
 enemy_tails = []        # visible tail-end cells of enemy dragons
 elen = {}               # enemy id -> visible segment count this turn
@@ -388,6 +391,8 @@ def fold_tiles(tile_lines):
 
 def fold_bodies(body_lines):
     blocked.clear()
+    ally_cells.clear()
+    ally_heads.clear()
     del heads_seen[:]
     del enemy_tails[:]
     elen.clear()
@@ -407,11 +412,15 @@ def fold_bodies(body_lines):
         pearls.pop(cell, None)
         spawn_at.pop(cell, None)
         is_ally = parts[0] == my_team
-        if not is_ally:
+        if is_ally:
+            ally_cells.add(cell)
+        else:
             elen[pid] = elen.get(pid, 0) + 1
             foe_parts.setdefault(pid, {})[cell] = DIR_CH.index(parts[4][0])
         if is_head:
             heads_seen.append((cell, pid, is_ally))
+            if is_ally:
+                ally_heads.add(cell)
     # A split child is born at the parent's tail and acts the same round.
     # fry-style parents are length 4-6 and often only partially visible, so
     # any enemy showing 3+ segments may be splittable: reserve the
@@ -711,7 +720,7 @@ def choose_move(danger, own, compass):
         score += CFG["w_visit"] * min(visits[n], 12)
         spread = nearest_ally_dist(n)
         if spread < 99:
-            w_sp = -3.0 if brawl else CFG["w_spread"]
+            w_sp = (-1.5 if NC <= 300 else -3.0) if brawl else CFG["w_spread"]
             score += w_sp * min(spread, CFG["spread_cap"])
         score += ((my_id * 31 + round_now * 7 + d * 13) % 10) * 0.01
         options.append((score, d))
@@ -850,9 +859,12 @@ def strike_path():
 
 
 def emergency_step():
-    """Every option looks lethal: pick the least bad non-kelp step.  Last
-    resort: dive through an unpaired portal - anywhere beats certain death."""
+    """Every option looks lethal: pick the least bad non-kelp step.  Never
+    step onto an ally - that kills TWO of ours.  Ranking: open cell, then
+    an enemy part (a head trades), then an unpaired portal dive, and only
+    then an ally body.  An ally head is worse than standing still."""
     fallback = -1
+    ally_fb = -1
     portal = -1
     own = own_map()
     for d, n in enumerate(dest(head)):
@@ -864,11 +876,18 @@ def emergency_step():
             continue
         if n not in blocked:
             return d
-        if fallback < 0:
+        if n in ally_heads:
+            continue  # stepping here kills two of ours: never an option
+        if n in ally_cells:
+            if ally_fb < 0:
+                ally_fb = d
+        elif fallback < 0:
             fallback = d
     if fallback >= 0:
         return fallback
-    return portal if portal >= 0 else -1
+    if portal >= 0:
+        return portal
+    return ally_fb  # -1 when even that is impossible: caller splits/sits
 
 
 def portal_dive():
@@ -892,11 +911,15 @@ def want_split(danger_here):
         t_late = CFG["big_late_target"]
     else:
         t_early = CFG["team_target_early"]
-        t_mid = CFG["team_target_mid"]
+        # fry never caps below the unit limit and wins numbers wars on
+        # medium-large maps; scale our ceiling with room to breathe
+        t_mid = max(CFG["team_target_mid"], min(64, NC // 50))
         t_late = CFG["late_team_floor"]
     if round_now > CFG["late_round"]:
         if not big:
             return 0
+        if round_now > CFG["growth_round"] and units >= CFG["late_team_floor"]:
+            return 0  # length race: length in the body beats heads on the map
         if units >= t_late:
             return 0
         return 3 if my_len >= 5 else 2
@@ -969,7 +992,14 @@ def boot_turn():
             best_d = d
     if best_d < 0:
         best_d = portal_dive()
-    emit("MOVE " + DIR_CH[best_d if best_d >= 0 else facing])
+    if best_d < 0:
+        best_d = facing
+        if dest(head, facing) in ally_heads:
+            for d, n in enumerate(dest(head)):
+                if n not in ally_heads:
+                    best_d = d  # die alone rather than kill an ally
+                    break
+    emit("MOVE " + DIR_CH[best_d])
     send_sonar()
 
 
@@ -1006,7 +1036,7 @@ def take_turn():
 
     global brawl
     trace("chk r%d beds=%d mincd=%d wit=%d" % (round_now, bed_count, min_cd, pearls_wit))
-    if not brawl and round_now >= 30 and NC <= 400 and not portal_seen \
+    if not brawl and round_now >= 30 and NC <= 600 and not portal_seen \
             and bed_count >= 20 and pearls_wit * 20 <= bed_count:
         brawl = 1
         trace("BRAWL MODE r%d beds=%d wit=%d" % (round_now, bed_count, pearls_wit))
@@ -1043,7 +1073,23 @@ def take_turn():
             emit("SPLIT %d" % (my_len - 2))  # cornered: shed the body
             send_sonar()
             return
-        move = facing
+        move = -1
+        for d, n in enumerate(dest(head)):
+            if n >= 0 and n not in own and n not in blocked:
+                move = d
+                break
+        if move < 0:
+            for d, n in enumerate(dest(head)):
+                if n >= 0 and n in ally_cells and n not in ally_heads:
+                    move = d  # die alone rather than take an ally with us
+                    break
+        if move < 0:
+            move = facing
+            if dest(head, facing) in ally_heads:
+                for d, n in enumerate(dest(head)):
+                    if n not in ally_heads:
+                        move = d  # die alone on kelp/own body, spare the ally
+                        break
         via = "facing-fallback"
     if DEBUG:
         n = dest(head, move)
