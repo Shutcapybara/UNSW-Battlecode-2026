@@ -298,7 +298,7 @@ def fold_vision(round_now: int) -> dict:
                         invalidate_steps()
                 if pid not in portal_sent:
                     portal_sent.add(pid)
-                    relay.append((K_PORTAL, portal_payload(pid)))
+                    relay.insert(0, (K_PORTAL, portal_payload(pid)))
             elif edge_kind[ck] == 0:
                 edge_kind[ck] = 1
 
@@ -379,7 +379,10 @@ def unpack(value: int):
 
 
 def with_ttl(kind: int, payload: int) -> int:
-    return (CFG["relay_ttl"] << TTL_SHIFT) | payload
+    # portal pairings are static gold and their partner can be far away:
+    # they travel much further than the volatile enemy/pearl packets
+    ttl = 6 if kind == K_PORTAL else CFG["relay_ttl"]
+    return (ttl << TTL_SHIFT) | payload
 
 
 def portal_payload(pid: int) -> int:

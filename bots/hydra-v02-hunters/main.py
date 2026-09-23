@@ -314,7 +314,7 @@ def fold_vision(round_now: int) -> dict:
                         invalidate_steps()
                 if pid not in portal_sent:
                     portal_sent.add(pid)
-                    relay.append((K_PORTAL, portal_payload(pid)))
+                    relay.insert(0, (K_PORTAL, portal_payload(pid)))
             elif edge_kind[ck] == 0:
                 edge_kind[ck] = 1
 
@@ -399,7 +399,10 @@ def unpack(value: int):
 
 
 def with_ttl(kind: int, payload: int) -> int:
-    return (CFG["relay_ttl"] << TTL_SHIFT) | payload
+    # portal pairings are static gold and their partner can be far away:
+    # they travel much further than the volatile enemy/pearl packets
+    ttl = 6 if kind == K_PORTAL else CFG["relay_ttl"]
+    return (ttl << TTL_SHIFT) | payload
 
 
 def portal_payload(pid: int) -> int:
@@ -679,13 +682,12 @@ def emergency_move(head: int, length: int, blocked: set) -> Direction | None:
 # =====================================================================
 def want_split(length: int, units: int, round_now: int, danger_here: int) -> int:
     """Child size if we should split voluntarily now, else 0."""
-    if (units >= game.get_unit_limit() or danger_here
-            or length < CFG["split_len"]):
-        return 0
+    if units >= game.get_unit_limit() or length < CFG["split_len"]:
+        return 0  # the child forms at our tail: combat is no reason to stall
     if round_now > CFG["late_round"] and units >= CFG["late_team_floor"]:
         return 0
-    if round_now > CFG["grow_after"]:
-        return 0 if units >= CFG["grow_floor"] else 2
+    if round_now > CFG["grow_after"] and units >= CFG["grow_floor"]:
+        return 0
     target = (CFG["early_team_target"] if round_now < CFG["scout_until"]
               else CFG["mid_team_target"])
     target = max(target, min(CFG["big_map_units"], n_cells // CFG["big_map_divisor"]))
@@ -712,7 +714,7 @@ def strike(head: int, snap: dict) -> Direction | None:
             if dest(head, d) != cell:
                 continue
             if (role == ROLE_S and CFG["scout_strikes"]
-                    and ct.get_unit_count() >= 6):
+                    and snap["enemy_parts"] - length >= 4):
                 return DIRS[d]
             if snap["enemy_parts"] - length >= CFG["hunter_trade_gap"]:
                 return DIRS[d]
@@ -778,16 +780,21 @@ def execute_turn() -> None:
             acted = True
     if not acted:
         if move is not None:
-            # hunters sprint the last stretch: a straight second step that is
-            # clear and unthreatened, while we are closing on an enemy
+            # a straight second step through clear, unthreatened tiles when
+            # the far tile actually gains something: double speed toward
+            # food, the frontier, or prey (fry's whole-game tempo trick)
             d = DIRS.index(move)
             nxt = cell_steps(head)[d]
             beyond = cell_steps(nxt)[d]
+            gain = (beyond in snap["pearls"] or beyond in pearls
+                    or not seen[beyond] if beyond >= 0 else False)
             hunted = any(round_now - t < CFG["attack_fresh"]
                          for t, _l in enemies.values())
-            if (role == ROLE_H and hunted and length >= 4
+            if ((gain or (role == ROLE_H and hunted)) and length >= 4
+                    and nxt >= 0 and nxt not in snap["blocked"]
                     and beyond >= 0 and beyond not in snap["blocked"]
                     and danger.get(nxt, 0) == 0 and danger.get(beyond, 0) == 0
+                    and not blocked_for_step(nxt, nxt in snap["pearls"], length)
                     and not blocked_for_step(beyond, beyond in snap["pearls"], length)):
                 out_sprint(move)
                 trail.append(nxt)
