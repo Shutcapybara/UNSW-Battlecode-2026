@@ -15,6 +15,8 @@ All committed branch strategies live together on `main`. Each directory under
 | `bots/fry-v07-two-children` | dragon-hunter variant |
 | `bots/fry-v08-pre-swarm-defense` | dragon-hunter variant |
 | `bots/fry-v10-pearl-seeker-center` | zach |
+| `bots/hydra-v01-core` | Role-based python swarm: split-size roles, sonar gossip map, judge-budget safe |
+| `bots/hydra-v02-hunters` | hydra-v01 + trade-disciplined strikes, sprints, big-map targets |
 
 The original branches and existing stash are retained. The stash is unfinished
 work and is not applied to these committed snapshots. Maps, browser extension,

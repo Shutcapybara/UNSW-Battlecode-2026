@@ -60,12 +60,27 @@ when enemy size or team counts are uncertain.
 - `fry-v11-size-aware-hunters`: baseline size-aware hunter.
 - `fry-v12-stateful-size-aware-hunters`: persistent map, pearl, and enemy memory.
 - `fry-v13-stateful-size-aware-2`: pearl claims over sonar messages.
-- `fry-v14-stateful-size-aware-3`: closest-visible-teammate pearl ownership
-	without explicit claims.
-- `hunter-v01-team-growth`: team-length estimates and endgame growth, copied
-	from fry-v14.
-- `hunter-v02-team-growth`: adaptive growth timing for the largest teammate,
-	with a two-segment safety buffer against known enemy size.
-- `hunter-v03-team-growth`: smaller dragons may safely explore completed portal
-	trips when at least four teammates are alive.
-- `hunter-v04-team-state-sonar`: directional 64-bit shared dragon state.
+- `fry-v14-stateful-size-aware-3`: closest-visible-teammate pearl ownership without explicit claims.
+- `hunter-v01-team-growth`: team-length estimates and endgame growth, copied from fry-v14.
+- `hunter-v02-team-growth`: adaptive growth timing; the largest known teammate has pearl priority, with a two-segment safety buffer against known enemy size.
+- `hunter-v03-team-growth`: smaller dragons may safely explore completed portal trips when at least four teammates are alive.
+
+## hydra family learnings (2026-09-24 session)
+
+- Judge budget: every stdout write costs 2.5M CPU points and the sandbox
+  runs python unbuffered, so a turn's output must leave in ONE write
+  (including the per-turn `PROTOCOL 3` handshake line).
+- A fresh split child's first metered turn must be a cheap boot turn:
+  interpreter boot + imports eat most of the 100M budget; full logic on
+  turn one exceeded it and the kill-restart cascade took out parents too.
+- Collision is checked before movement: stepping onto our own tail is
+  always fatal. The body trail must record the midway cell of sprints and
+  must not append on split (no-move) turns.
+- The boot turn must check the edge on OUR side of the neighbour tile
+  (`get_opposite`), not the far side.
+- Portal gossip cannot hash portal ids: portal-mesh maps carry ~1500 ids
+  and 16-bit hashes collide into poisoned pairings.
+- fry-v03 does NOT sprint broadly (95% single steps); its economy edge on
+  big maps is the plan_trip beam-search harvest plus constant splitting
+  (children form even under threat). hydra still loses the length race
+  there ~2:1; porting the trip planner is the main hydra-v03 item.
