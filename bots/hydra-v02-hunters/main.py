@@ -328,10 +328,14 @@ def fold_vision(round_now: int) -> dict:
 
     snap = dict(heads=heads, blocked=blocked, pearls=vision_pearls,
                 head_cell=head_cell, my_parts=my_parts, enemy_parts=0)
+    per_enemy: dict[int, int] = {}
     for tile in ct.get_vision().get_tiles():
         part = tile.get_dragon()
         if part is not None and part.get_team() != my_team:
-            snap["enemy_parts"] += 1
+            per_enemy[part.get_id()] = per_enemy.get(part.get_id(), 0) + 1
+    # the size of the LARGEST single enemy, not the sum: two small dragons in
+    # view must not masquerade as one fat strike target
+    snap["enemy_parts"] = max(per_enemy.values()) if per_enemy else 0
     seed_trail(snap)
     return snap
 
