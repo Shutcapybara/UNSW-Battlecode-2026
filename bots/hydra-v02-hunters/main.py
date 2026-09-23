@@ -51,7 +51,7 @@ CFG = dict(
     w_visit=-5.0,           # per visit of the target tile by this dragon
     w_spread=-1.6,          # penalty for crowding a known ally head
     # ---- move safety ----
-    w_danger=-1200.0,        # stepping into a threatened tile
+    w_danger=-260.0,        # stepping into a threatened tile
     w_soft=-26.0,           # stepping into a 2-step enemy reach tile
     w_space=2.4,            # per reachable tile after the move
     trap_pen=-500.0,        # reachable space smaller than our length
@@ -302,9 +302,13 @@ def fold_vision(round_now: int) -> dict:
             edge = tile.get_edge(direction)
             et = edge.get_edge_type()
             if et == EdgeType.KELP:
-                edge_kind[ck] = 2
+                if edge_kind[ck] != 2:
+                    edge_kind[ck] = 2
+                    invalidate_steps()  # cached routes through it are stale
             elif et == EdgeType.PORTAL:
-                edge_kind[ck] = 3
+                if edge_kind[ck] != 3:
+                    edge_kind[ck] = 3
+                    invalidate_steps()
                 pid = edge.get_portal_id()
                 portal_id[ck] = pid
                 ends = portal_pair.setdefault(pid, [])

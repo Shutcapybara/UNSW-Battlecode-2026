@@ -286,9 +286,13 @@ def fold_vision(round_now: int) -> dict:
             edge = tile.get_edge(direction)
             et = edge.get_edge_type()
             if et == EdgeType.KELP:
-                edge_kind[ck] = 2
+                if edge_kind[ck] != 2:
+                    edge_kind[ck] = 2
+                    invalidate_steps()  # cached routes through it are stale
             elif et == EdgeType.PORTAL:
-                edge_kind[ck] = 3
+                if edge_kind[ck] != 3:
+                    edge_kind[ck] = 3
+                    invalidate_steps()
                 pid = edge.get_portal_id()
                 portal_id[ck] = pid
                 ends = portal_pair.setdefault(pid, [])
