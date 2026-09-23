@@ -62,5 +62,8 @@ maps without metering deaths.
 
 ## Results
 
-Even with fry-v03-portal-hunters across all maps, both sides (see
-`build/hydra-v01-vs-fry03*/standings.csv`): 13W-13L at the first checkpoint.
+- Judge-safety verified: a full sandboxed (`--sandbox`) 500-round self-match
+  on help.map (64x64) completes with 5,917 turns, zero metering deaths, and
+  a max of 37.2M CPU points per turn (limit 100M).
+- In the six-bot field round-robin (`build/hydra-standings-r3/`), this bot
+  outranks fry-v03-portal-hunters overall (197 vs 185 points, 65W vs 59W).

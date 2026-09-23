@@ -24,10 +24,15 @@ hydra-v01-core plus a combat layer and big-map tuning. Python, protocol 3.
   side of the neighbour tile (`get_opposite`), not the far side — v01
   newborns could step across kelp and die on spawn.
 
-## Known gap vs fry-v03-portal-hunters
+## Results
 
-On portal-heavy large maps fry still out-farms us (measured: ~2x split
-activity on big_empty, so roughly double the pearl intake). Their beam
-search plans portal round-trips explicitly; hydra treats portals only as
-shortcuts inside the ordinary target search. Closing that gap is the main
-hydra-v03 item.
+Beats fry-v03-portal-hunters 17-9 across all maps, both sides
+(`build/hydra-v02-vs-fry03-r4/standings.csv`). Wins every small and mid
+map; the remaining losses are big_empty/devil/help/trophy, where fry's
+beam-search pearl-trip planner out-farms us (~2x split activity measured
+on big_empty). hydra-v03's main item is porting that planner.
+
+## Note on hydra-v01 vs hydra-v02
+
+hydra-v01-core scores higher in broad round-robins (it is less tuned to
+fry-v03 specifically); keep both as benchmarks.
