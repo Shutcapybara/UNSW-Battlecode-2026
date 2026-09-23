@@ -4,21 +4,38 @@
 
 ```sh
 PATH="$PWD/.venv/bin:$PATH" python3 bots/tournament.py \
-  --focus-bot hunter-v02-team-growth \
-  --bots hunter-v01-team-growth hunter-v02-team-growth hunter-v03-team-growth \
+  --focus-bot <most-recent-bot> \
+  --bots <third-most-recent-bot> <second-most-recent-bot> <most-recent-bot> \
   --jobs 8 \
   --no-replays \
-  --output build/hunter-v02-small
+  --output build/<most-recent-bot>-small
 ```
 
-For rapid development, run this twice: once focused on hunter-v02 and once
-focused on hunter-v03, using the pool of hunter-v01, hunter-v02, and hunter-v03.
-This tests each new bot against the other two latest versions on every map and
-with both side assignments. Use a fresh output directory for the second run.
+For rapid development, run two tournaments using the three most recent
+versions as the shared pool. First focus the most recent version, then focus
+the second most recent version. This tests both candidates against each other
+and the third-most-recent version on every map and with both side assignments.
+Use a fresh output directory for each run. For example, with hunter-v02,
+hunter-v03, and hunter-v04:
 
-The pool and focus bot can be changed as new versions are added, but the small
-tournament always means: newest bot and immediately previous bot as focused
-entrants, plus the next most recent bot as the comparison pool.
+```sh
+PATH="$PWD/.venv/bin:$PATH" python3 bots/tournament.py \
+  --focus-bot hunter-v04-team-state-sonar \
+  --bots hunter-v02-team-growth hunter-v03-team-growth hunter-v04-team-state-sonar \
+  --jobs 8 \
+  --no-replays \
+  --output build/hunter-v04-small
+
+PATH="$PWD/.venv/bin:$PATH" python3 bots/tournament.py \
+  --focus-bot hunter-v03-team-growth \
+  --bots hunter-v02-team-growth hunter-v03-team-growth hunter-v04-team-state-sonar \
+  --jobs 8 \
+  --no-replays \
+  --output build/hunter-v03-small
+```
+
+The third-most-recent version is included mainly as a tiebreaker and baseline;
+the primary comparison is between the two focused versions.
 
 ## Full Tournament
 
@@ -67,3 +84,4 @@ Current strategy lineage:
 | `hunter-v01-team-growth` | team-length estimates and endgame growth |
 | `hunter-v02-team-growth` | adaptive growth timing for the largest teammate |
 | `hunter-v03-team-growth` | safe unmatched-portal exploration by smaller dragons |
+| `hunter-v04-team-state-sonar` | directional 64-bit shared dragon state |
