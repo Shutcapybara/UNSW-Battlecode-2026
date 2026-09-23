@@ -69,3 +69,9 @@ Testing/
 .cache/
 # Battlecode replays
 *.replay
+
+# Local generated files
+__pycache__/
+.unswbc-build/
+/main
+.idea/

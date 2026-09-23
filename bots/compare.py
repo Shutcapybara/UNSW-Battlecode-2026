@@ -12,8 +12,8 @@ for board in sorted((root / "maps").glob("*.map")):
     for a, b in (("one-child", "two-children"), ("two-children", "one-child")):
         label = f"{board.stem}-{a}-vs-{b}"
         match = subprocess.run(
-            ["unswbc", "run", str(board), str(root / "variants" / a),
-             str(root / "variants" / b), "-o", str(out / f"{label}.replay")],
+            ["unswbc", "run", str(board), str(root / "bots" / a),
+             str(root / "bots" / b), "-o", str(out / f"{label}.replay")],
             cwd=root, text=True, capture_output=True, timeout=180,
         )
         log = match.stdout + match.stderr
