@@ -13,6 +13,7 @@ constexpr int DX[] = {0, 1, 0, -1};
 constexpr int DY[] = {-1, 0, 1, 0};
 constexpr char DIR[] = "NESW";
 constexpr std::uint32_t MOVE_ASIDE = 1146242894u; // ASCII "DRGN"
+constexpr std::uint32_t FILLER_SONAR = 8008135u;
 
 struct Tile {
     bool visible = false, pearl = false, occupied = false;
@@ -224,7 +225,8 @@ public:
         }
         return true;
     }
-    std::string action() const {
+private:
+    std::string body(bool signal) const {
         // Preserve a minimum force before trading dragons head-to-head. If the
         // team drops below three survivors, every remaining dragon rebuilds
         // the swarm instead of pursuing an enemy head.
@@ -236,18 +238,15 @@ public:
             }
         }
 
-        bool signal = should_signal();
         if (asked_to_move) {
             int move = best_spread_move(true);
             if (move >= 0) return std::string("MOVE ") + DIR[move];
         }
         if (length >= 4 && units < limit) {
-            std::string result = "SPLIT 2";
-            if (signal) result += "\nSONAR " + std::to_string(MOVE_ASIDE);
-            return result;
+            return "SPLIT 2";
         }
         if (signal && destination(head, facing) >= 0)
-            return std::string("MOVE ") + DIR[facing] + "\nSONAR " + std::to_string(MOVE_ASIDE);
+            return std::string("MOVE ") + DIR[facing];
 
         // Pearls are considered only after attacks, sonar reactions, splitting,
         // and the strong friendly-separation term in the route score.
@@ -280,6 +279,12 @@ public:
         for (int d = 0; d < 4; ++d)
             if (destination(head, d) == -2) return std::string("MOVE ") + DIR[d];
         return "MOVE N";
+    }
+
+public:
+    std::string action() const {
+        bool signal = should_signal();
+        return body(signal) + "\nSONAR " + std::to_string(signal ? MOVE_ASIDE : FILLER_SONAR);
     }
 };
 
