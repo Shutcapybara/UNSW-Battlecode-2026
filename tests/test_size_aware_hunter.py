@@ -4,6 +4,8 @@ import sys
 import unittest
 
 BOT = sys.argv.pop(1)
+IS_HUNTER_V1 = BOT.endswith('/hunter_v1')
+IS_HUNTER_V2 = BOT.endswith('/hunter_v2')
 _original_argv = sys.argv
 sys.argv = ['test_bot.py', BOT]
 from test_bot import turn
@@ -50,13 +52,40 @@ class SizeAwareHunter(unittest.TestCase):
             'ROUND 1\n', 'ROUND 2\n', 1)
         self.assertEqual(run_turns(first, second)[3], 'MOVE EE')
 
-    @unittest.skipUnless('hunter_v1' in BOT, 'hunter-v01-team-growth team-state test')
+    @unittest.skipUnless(IS_HUNTER_V1, 'hunter-v01-team-growth team-state test')
     def test_yields_growth_to_larger_teammate(self):
         block = turn(length=6, units=3, pearls=[(6, 5)]).replace(
             'ROUND 1\n', 'ROUND 400\n', 1)
         teammate_status = str(0x80000000 | (2 << 24) | (10 << 12))
         result = run_turns(block.replace('NUM_MSGS 0', 'NUM_MSGS 1\n' + teammate_status, 1))
         self.assertNotEqual(result[0], 'MOVE E')
+
+    @unittest.skipUnless(IS_HUNTER_V2, 'hunter-v02 growth timing test')
+    def test_largest_dragon_focuses_growth_late(self):
+        block = turn(length=6, units=3, pearls=[(6, 5)]).replace(
+            'ROUND 1\n', 'ROUND 450\n', 1)
+        self.assertEqual(run(block), 'MOVE E')
+
+    @unittest.skipUnless(IS_HUNTER_V2, 'hunter-v02 growth timing test')
+    def test_smaller_dragon_does_not_switch_to_growth_late(self):
+        block = turn(length=6, units=3, pearls=[(6, 5)]).replace(
+            'ROUND 1\n', 'ROUND 350\n', 1)
+        teammate_status = str(0x80000000 | (2 << 24) | (10 << 12))
+        block = block.replace('NUM_MSGS 0', 'NUM_MSGS 1\n' + teammate_status, 1)
+        self.assertNotEqual(run(block), 'MOVE E')
+
+    @unittest.skipUnless(IS_HUNTER_V2, 'hunter-v02 growth priority test')
+    def test_largest_dragon_prioritizes_pearl_over_closer_teammate(self):
+        block = turn(length=6, units=64, pearls=[(7, 5)],
+                     other_heads=[('A', 7, 4)]).replace('ROUND 1\n', 'ROUND 450\n', 1)
+        self.assertEqual(run(block), 'MOVE E')
+
+    @unittest.skipUnless(IS_HUNTER_V2, 'hunter-v02 growth buffer test')
+    def test_growth_uses_two_segment_size_buffer(self):
+        block = enemy_with_size(turn(length=10, units=64, pearls=[(4, 5)],
+                                     other_heads=[('B', 7, 5)]), 8)
+        block = block.replace('ROUND 1\n', 'ROUND 400\n', 1)
+        self.assertEqual(run(block), 'MOVE W')
 
 
 if __name__ == '__main__':
