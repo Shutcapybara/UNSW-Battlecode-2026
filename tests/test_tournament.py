@@ -17,6 +17,34 @@ spec.loader.exec_module(tournament)
 
 
 class Tournament(unittest.TestCase):
+    def test_focus_bot_plays_only_its_opponents_on_both_sides(self):
+        matches = tournament.schedule(['a', 'b', 'c', 'd'], ['x', 'y'], 'b')
+        expected = {(board, a, b) for board in ('x', 'y') for opponent in ('a', 'c', 'd')
+                    for a, b in (('b', opponent), (opponent, 'b'))}
+        self.assertEqual(set(matches), expected)
+        self.assertEqual(len(matches), 12)
+
+    def test_focus_bot_selection_and_resume(self):
+        def result(executable, board, a, b, *args):
+            return dict(map=board.stem, team_a=a.name, team_b=b.name,
+                        outcome='draw', winner=None, rounds=500, error=None)
+        with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()), \
+                contextlib.redirect_stderr(io.StringIO()), \
+                patch.object(tournament.shutil, 'which', return_value='/test/unswbc'), \
+                patch.object(tournament, 'play', side_effect=result) as play:
+            args = ['--bots', 'dragon-hunters', 'portal-hunters', 'escorts', '--maps', 'arena',
+                    '--output', directory, '--focus-bot', 'portal-hunters']
+            self.assertEqual(tournament.main(args), 0)
+            self.assertEqual(play.call_count, 4)
+            self.assertEqual(tournament.main(args + ['--resume']), 0)
+            self.assertEqual(play.call_count, 4)
+            with self.assertRaises(SystemExit) as changed:
+                tournament.main(args + ['--resume', '--focus-bot', 'escorts'])
+            self.assertEqual(changed.exception.code, 2)
+            with self.assertRaises(SystemExit) as invalid:
+                tournament.main(['--focus-bot', 'not-a-bot', '--dry-run'])
+            self.assertEqual(invalid.exception.code, 2)
+
     def test_parallel_matches_overlap_and_save_every_result(self):
         barrier = threading.Barrier(2, timeout=5)
         lock = threading.Lock()

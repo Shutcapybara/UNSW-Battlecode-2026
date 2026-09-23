@@ -402,6 +402,44 @@ public:
         return true;
     }
 private:
+    std::string growth_action() const {
+        auto danger = threats();
+        std::vector<int> distance(tiles.size(), -1), first(tiles.size(), -1);
+        std::queue<int> pending;
+        distance[head] = 0;
+        pending.push(head);
+        int target = -1, best_score = std::numeric_limits<int>::min();
+        while (!pending.empty()) {
+            int p = pending.front(); pending.pop();
+            if (p != head && (tiles[p].pearl ||
+                (tiles[p].countdown >= 0 && tiles[p].countdown < distance[p]))) {
+                int score = -distance[p] * 100 + std::min(nearest_friend(p), 10) - visits[p];
+                if (score > best_score) { best_score = score; target = p; }
+            }
+            for (int d = 0; d < 4; ++d) {
+                int next = destination(p, d);
+                if (next < 0 || danger[next] || distance[next] >= 0) continue;
+                // Do not grow into a pocket with no clear onward move.
+                bool onward = false;
+                for (int e = 0; e < 4; ++e) {
+                    int exit = destination(next, e);
+                    if (exit >= 0 && exit != p && !danger[exit]) onward = true;
+                }
+                if (!onward) continue;
+                distance[next] = distance[p] + 1;
+                first[next] = p == head ? d : first[p];
+                pending.push(next);
+            }
+        }
+        if (target >= 0) return std::string("MOVE ") + DIR[first[target]];
+        int move = survival_move();
+        if (move < 0) move = best_spread_move(true);
+        if (move >= 0) return std::string("MOVE ") + DIR[move];
+        // Keep emergency splitting as a last resort when physically trapped.
+        if (length >= 4 && units < limit) return "SPLIT 2";
+        return "MOVE N";
+    }
+
     std::string body(bool signal) {
         std::string portal_move = portal_action();
         if (!portal_move.empty()) return portal_move;
@@ -414,6 +452,7 @@ private:
             if (length >= 4 && units < limit) return "SPLIT 2";
             return "MOVE N";
         }
+        if (round >= 400) return growth_action();
         // Preserve a minimum force before trading dragons head-to-head. If the
         // team drops below three survivors, every remaining dragon rebuilds
         // the swarm instead of pursuing an enemy head.

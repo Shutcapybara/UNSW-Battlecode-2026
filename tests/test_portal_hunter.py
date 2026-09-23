@@ -4,6 +4,10 @@ import sys
 import unittest
 
 BOT = sys.argv.pop(1)
+_original_argv = sys.argv
+sys.argv = ['test_bot.py', BOT]
+from test_bot import turn
+sys.argv = _original_argv
 
 
 class Board:
@@ -81,6 +85,29 @@ class Board:
 
 
 class PortalHunter(unittest.TestCase):
+    def late_action(self, round_number, **kwargs):
+        block = turn(**kwargs).replace('ROUND 1\n', f'ROUND {round_number}\n', 1)
+        result = subprocess.run([BOT], input='ID 0\nTEAM A\nMAP 11 11\nUNIT_LIMIT 64\n'+block,
+                                text=True, capture_output=True, check=True, timeout=3)
+        return result.stdout.splitlines()[0]
+
+    def test_growth_starts_exactly_at_round_400(self):
+        self.assertEqual(self.late_action(399, length=6, pearls=[(6, 5)]), 'SPLIT 2')
+        for round_number in (400, 401, 499):
+            self.assertEqual(self.late_action(round_number, length=6, pearls=[(6, 5)]), 'MOVE E')
+
+    def test_growth_avoids_hunting_enemy_heads(self):
+        options = dict(length=6, units=3, other_heads=[('B', 6, 5)], pearls=[(4, 5)])
+        self.assertEqual(self.late_action(399, **options), 'MOVE E')
+        self.assertEqual(self.late_action(400, **options), 'MOVE W')
+
+    def test_growth_avoids_contested_pearl(self):
+        self.assertEqual(self.late_action(400, length=6, units=3,
+                         other_heads=[('B', 7, 5)], pearls=[(6, 5), (4, 5)]), 'MOVE W')
+
+    def test_growth_keeps_emergency_split_when_trapped(self):
+        self.assertEqual(self.late_action(400, length=6, walls='NESW'), 'SPLIT 2')
+
     def finish_trip(self, board):
         for _ in range(18):
             board.move(board.action())

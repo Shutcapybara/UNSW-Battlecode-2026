@@ -23,9 +23,10 @@ ANSI = re.compile(r'\x1b\[[0-9;]*m')
 OUTCOME = re.compile(r'^(?:team ([AB]) wins|draw) after (\d+) rounds\b', re.MULTILINE)
 
 
-def schedule(bots, maps):
+def schedule(bots, maps, focus_bot=None):
     return [(board, a, b) for board in sorted(maps)
-            for a, b in itertools.permutations(sorted(bots), 2)]
+            for a, b in itertools.permutations(sorted(bots), 2)
+            if focus_bot is None or focus_bot in (a, b)]
 
 
 def parse_result(log, returncode):
@@ -188,6 +189,7 @@ def play(executable, board, a, b, out, label, timeout, replays, workers=None):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--bots', nargs='+', help='Bot folder names (default: all bots/*/bot.toml)')
+    parser.add_argument('--focus-bot', help='Run only matches involving this bot, against every other selected bot')
     parser.add_argument('--maps', nargs='+', help='Map names, with or without .map (default: all maps/*.map)')
     parser.add_argument('--output', type=Path, help='Results directory (default: a new build/tournament-TIMESTAMP directory)')
     parser.add_argument('--resume', action='store_true', help='Skip completed matches in --output; retry errors')
@@ -216,7 +218,9 @@ def main(argv=None):
                     del available[name]
     if len(bots) < 2 or not maps:
         parser.error('select at least two bots and one map')
-    matches = schedule(bots, maps)
+    if args.focus_bot is not None and args.focus_bot not in bots:
+        parser.error('--focus-bot must name an existing bot included in the --bots selection')
+    matches = schedule(bots, maps, args.focus_bot)
     print(f'{len(bots)} bots, {len(maps)} maps, {len(matches)} matches (both sides, no self-matches).', flush=True)
     if args.dry_run:
         for board, a, b in matches:
@@ -227,11 +231,12 @@ def main(argv=None):
         parser.error('unswbc was not found on PATH')
     out = (args.output or ROOT / 'build' / f'tournament-{datetime.now():%Y%m%d-%H%M%S-%f}').resolve()
     manifest = manifest_for(bots, maps, not args.no_replays, executable)
+    manifest['focus_bot'] = args.focus_bot
     if args.resume:
         if not (out / 'manifest.json').is_file():
             parser.error('--output does not contain a tournament manifest')
         if json.loads((out / 'manifest.json').read_text()) != manifest:
-            parser.error('bots, maps, script or replay settings changed; start a new output directory')
+            parser.error('bots, focus bot, maps, script or replay settings changed; start a new output directory')
         results = json.loads((out / 'results.json').read_text()) if (out / 'results.json').exists() else []
     else:
         if out.exists() and any(out.iterdir()):

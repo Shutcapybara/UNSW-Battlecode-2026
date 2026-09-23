@@ -3,6 +3,12 @@
 A standalone variant of `dragon-hunters`. Between portal trips it retains the
 original attacks, swarm splitting, friendly face-off sonar, and exploration.
 
+Starting at round 400 (inclusive), it switches to growth: no deliberate enemy
+head attacks, sprints, or proactive splitting. It seeks nearby safe pearls,
+including spawns due before arrival, while avoiding visible enemy reach and
+dead ends. Committed portal routes still take priority. Emergency splitting
+remains a last resort when no movement is available.
+
 Before crossing a portal, it searches for a complete route that approaches the
 entrance, collects pearls, returns through the same portal's far endpoint, and
 continues for two clear moves beyond the exit. It prefers more pearls, breaking

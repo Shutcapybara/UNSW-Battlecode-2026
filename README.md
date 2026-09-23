@@ -47,7 +47,18 @@ python3 bots/tournament.py --bots dragon-hunters portal-hunters --maps arena que
 python3 bots/tournament.py --jobs 8 --output build/all-bots-parallel
 ```
 
-Choose a results folder so an interrupted run is easy to resume:
+To test one bot against every other bot on every map, with sides swapped:
+
+```sh
+python3 bots/tournament.py --focus-bot portal-hunters --jobs 8 --output build/portal-hunters-tournament
+```
+
+This runs 198 matches with the current 10 bots and 11 maps. `--maps` still
+limits the maps; `--bots` limits the participating bots and must include the
+focus bot. Resume with the same `--focus-bot` setting. In this mode, opponents
+only play the focus bot, so leaderboard point totals cover unequal match counts.
+
+For a full tournament with a chosen output folder:
 
 ```sh
 python3 bots/tournament.py --output build/all-bots
