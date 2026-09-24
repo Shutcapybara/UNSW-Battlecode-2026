@@ -22,3 +22,10 @@ crowns behind. Changes:
 widefast x cross-series, 261 common matchups: **238-23** (v09 234-27,
 v08 219-42, v05 219-42). Per opponent: hydra-v09 56-10, hydra-v10 60-6,
 kraken-v04 60-3, leviathan-v07 62-4.
+
+widefast x C++ swarms (fry-v12, fry-v14, hunter-v04), 198 matchups:
+161-37 (v09 164-34, v08 156-42, v05 141-57).
+
+64x64 maps vs hydra-v09/v10: 8-0 (help: our crown 186-195 vs 97-111).
+
+Judge CPU (sandbox, big_empty): p50 29M, p99 48M, max 69M points/turn.

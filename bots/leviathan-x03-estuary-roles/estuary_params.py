@@ -1,0 +1,45 @@
+"""Exploration knobs: (neutral/default value, useful range, direct consumer).
+
+The master switch is neutral by default. params.py selects the experiment.
+Weights are evaluator units; counts, distances and rounds have literal units.
+"""
+SPEC = {
+    'estuary.enabled': (0, '0/1', 'all Estuary hooks; 0 retains v09'),
+    'estuary.roles': (1, '0/1', 'self/child assignment and role weights'),
+    'estuary.regions': (1, '0/1', 'regional target/waypoint and discovery packets'),
+    'estuary.feeding': (1, '0/1', 'security-gated donor policy; 0 inherited feeding'),
+    'estuary.safety': (1, '0/1', 'bounded continuation and child checks'),
+    'estuary.role_period': (16, '4..40 rounds', 'role reassignment hysteresis'),
+    'estuary.scout_share': (0.22, '0..0.5 fraction', 'desired role mix'),
+    'estuary.scout_retire': (0.80, '0.3..1 coverage fraction', 'scout retirement'),
+    'estuary.scout_until': (340, '100..450 round', 'scout retirement'),
+    'estuary.scout_food': (0.65, '0..2 multiplier', 'scout pearl/spawn weights'),
+    'estuary.scout_gossip': (3, '1..3 rays', 'scout sonar scheduling'),
+    'estuary.hunter_share': (0.25, '0..0.6 fraction', 'desired role mix'),
+    'estuary.chase': (6, '2..12 tiles', 'hunter target horizon'),
+    'estuary.compact_units': (48, '8..64 dragons', 'population ceiling'),
+    'estuary.open_units': (64, '8..64 dragons', 'population ceiling'),
+    'estuary.late_units': (0.4, '0.1..1 fraction', 'banking population target'),
+    'estuary.split_gain': (1.2, '0.5..2 multiplier', 'early split candidate value'),
+    'estuary.density': (3.0, '0..8 evaluator units', 'safe productive-region target'),
+    'estuary.crowd': (0.35, '0..2 evaluator units/head', 'region waypoint congestion'),
+    'estuary.bed_block': (0.65, '0..4 evaluator units', 'next-tick occupied bed cost'),
+    'estuary.zone_period': (4, '2..16 rounds', 'scout discovery packet rate'),
+    'estuary.zone_ttl': (80, '10..200 rounds', 'regional report freshness'),
+    'estuary.bank_start': (280, '150..400 round', 'banking ramp and crown eligibility'),
+    'estuary.bank_full': (400, '320..460 round', 'banking ramp endpoint'),
+    'estuary.bank_min': (6, '4..16 segments', 'early crown eligibility'),
+    'estuary.feed_start': (380, '300..450 round', 'donor activation'),
+    'estuary.feed_reserve': (4, '2..16 dragons', 'minimum force after donation'),
+    'estuary.guard_reserve': (10, '4..24 dragons', 'population floor under observed threat'),
+    'estuary.feed_period': (3, '1..8 rounds', 'ID-staggered donor opportunities'),
+    'estuary.feed_gap': (3, '1..10 segments', 'recipient advantage over donor'),
+    'estuary.feed_radius': (8, '3..15 tiles', 'recent enemy exclusion near recipient'),
+    'estuary.crown_fresh': (12, '2..30 rounds', 'crown election beacon freshness'),
+    'estuary.depth': (5, '2..7 plies', 'long-body continuation'),
+    'estuary.nodes': (120, '30..300 expansions/turn', 'shared continuation budget'),
+    'estuary.long_min': (8, '4..20 segments', 'continuation activation'),
+    'estuary.trap_cost': (35.0, '10..100 evaluator units', 'failed continuation penalty'),
+    'estuary.indicators': (1, '0/1', 'replay role and donor attribution'),
+}
+DEFAULTS = {key: value[0] for key, value in SPEC.items()}
