@@ -85,6 +85,7 @@ Current strategy lineage:
 | `hunter-v02-team-growth` | adaptive growth timing for the largest teammate |
 | `hunter-v03-team-growth` | safe unmatched-portal exploration by smaller dragons |
 | `hunter-v21-emergency-portals` | V20 plus a last-resort portal crossing when ordinary exits are blocked; experimental, 10W/12L vs V20 |
+| `hunter-v22-frontier-exploration` | V21 with frontier-first exploration and multiple shortage-based portal scouts; 9W/13L vs V21 on all maps, no errors |
 | `kraken-v01-roles` | role-based scouts, hunters, and gatherers with sonar gossip |
 | `kraken-v02-bigmap` | big-map production, brawl mode, and judge-safe metered search |
 | `kraken-v03-judge-safe` | snapshot of kraken-v02 after sandbox CPU hardening |

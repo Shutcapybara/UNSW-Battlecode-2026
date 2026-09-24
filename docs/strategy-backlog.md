@@ -65,6 +65,7 @@ when enemy size or team counts are uncertain.
 - `hunter-v02-team-growth`: adaptive growth timing; the largest known teammate has pearl priority, with a two-segment safety buffer against known enemy size.
 - `hunter-v03-team-growth`: smaller dragons may safely explore completed portal trips when at least four teammates are alive.
 - `hunter-v21-emergency-portals`: V20 plus a trapped-dragon escape through an adjacent portal when every ordinary exit is blocked; experimental, 10W/12L vs V20 with no errors, swept 0–2 on Stronghold.
+- `hunter-v22-frontier-exploration`: V21 with frontier-first no-food movement, stronger revisit avoidance, and a small shortage-based group of portal scouts; went 9W/13L vs V21 across all 11 maps and both sides, with no errors.
 - `kraken-v01-roles`: fixed-role scouts, hunters, and gatherers relaying map memory over sonar.
 - `kraken-v02-bigmap`: big-map production and endgame growth, brawl-mode small maps, ally-head collision guards, and metered BFS with portal-local cache invalidation.
 - `kraken-v03-judge-safe`: snapshot of kraken-v02 after sandbox CPU hardening; used as the stable bot-pool evaluation candidate.
