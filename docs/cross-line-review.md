@@ -5,6 +5,13 @@ this repo — **Leviathan** (GPT), **Ouroboros** (Claude), **Kraken** (Kimi),
 **Hydra** (GLM/me) — plus the fry/hunter family they all benchmark against.
 Other lines' work was read and benchmarked, never modified.
 
+> **Addendum (2026-09-25): the hunter line (user) — see §7.** The map set
+> changed to 11 maps (Colloseum, help, queen_of_spades_but_she_ages and
+> small removed; stronghold and trauma added), so every ranking below was
+> measured on the old 13 and does not transfer numerically. On the new
+> map set, hunter-v14/v20 split with ouroboros-v05 (12-10 / 11-11) where
+> fry-v14 lost 6-20 on the old set.
+
 ## 1. Method
 
 - Round-robin of the four flagships + fry-v14 (reference champion):
@@ -228,3 +235,88 @@ deconfliction; hydra dropped it in the fork).
 - Tools used: `tools/leviathan/replay.py` (capnp decoder),
   `tools/hydra_replay.py` (per-round series), `tools/hydra_crossline.py`
   (aggregate), `tools/autopsy.py` (verbose-log autopsy).
+
+## 7. Addendum: the hunter line, v05-v20 (user) — 2026-09-25
+
+The user's hunter line grew from v04 to v20. Code read in full for v20
+(1328-line C++), diffs studied v14->v20. All benchmarks below were run by
+Hydra on the **new 11-map set** (stronghold, trauma added; Colloseum, help,
+queen_of_spades_but_she_ages, small removed) — one focus run per bot,
+`--timeout 1200`, replays kept: `build/hunter-v20-fixture`,
+`build/hunter-v14-fixture`, `build/fry-v14-fixture-newmaps`.
+
+### What the line is now
+
+v20 = the fry ladder + fifteen versions of cumulative additions, each one
+mechanism: sonar team/enemy state with confidence gating (v05-v10),
+route-distance instead of Manhattan spacing (v11-v13), the C++ port
+(v14), shared territory (v15), bounded-DFS **encirclement traps** —
+surround an enemy head on 3 of 4 sides when up 3-4 in exact length
+(v16-v18), a **6-ply survival lookahead** (`safe_continuations`: escape
+depth and path counts) gating growth moves (v18-v19), and **portal
+scouts** — one claimed scout per team explores unmatched portals on
+low-spawn maps, with hotspots/coverage sectors shared over a five-tag
+sonar protocol (v20). It is the only bot in the repo with an encirclement
+attack and a genuine multi-ply survivability search.
+
+### Measured strength (new 11 maps, vs the shared four: ouroboros-v05,
+kraken-v04, leviathan-v07, hydra-v06)
+
+| bot | pts/g | ouro | krak | levi | hydra | kills the numbers war? |
+|---|---|---|---|---|---|---|
+| hunter-v14 | **2.01** | 12-10 | 14-8 | 18-4 | 15-7 | yes |
+| hunter-v20 | 1.81 | 11-11 | 9-12 | 16-6 | 17-5 | yes |
+| fry-v14 (base) | 1.57 | 14-8 | 12-10 | 5-17 | 11-11 | yes |
+
+(within-line: v20 beat v19 13-9 on the user's own 11-map run; v20 lost
+ground to v14 against the field here.)
+
+Context shift: on the old 13 maps ouroboros went 19-7 over fry-v14; on
+the new set fry goes 14-8 and the hunter forks go 12-10 / 11-11. The
+hunter line has caught the field leader; **hunter-v14 is arguably the
+strongest bot in the repo on current maps**.
+
+### What causes the performance differences (replay forensics, medians)
+
+1. **The additions are worth +0.44 pts/game over the fry base**, and the
+   mechanism is visible: hunter eats more (pearls 248/g median vs fry's
+   ~166 profile) and out-splits opponents ~2:1 while trading at a higher
+   rate than anyone (51-54% of its deaths are head-to-heads, vs 42% for
+   ouroboros). The line wins by churn+economy, not by survival — the
+   opposite of ouroboros's low-death profile, and it now matches
+   ouroboros anyway. There is more than one winning style.
+2. **v14 > v20 against the field**: v20's portal scouts convert in-line
+   (13-9 over v19) but cost ~0.2 pts/game here. Mechanism: scouting
+   length-3-6 dragons away from the length race deepens v20's one true
+   weakness (below), and compact boards correctly skip it (the README's
+   own 625-tile cutoff) — but trauma/big_empty/default do not.
+3. **The #1 leak is length concentration.** 34 of v20's 45 losses (29 of
+   v14's 39) are round-500 longest-dragon losses, and the forensics are
+   unambiguous: v20 wins TOTAL length (677 vs 607, 671 vs 401) and loses
+   the LONGEST tiebreak (27 vs 35, 30 vs 35). The line has no crown: it
+   spreads length across 64 units. Every structural recommendation about
+   crowns in the reviews applies here with numbers attached.
+4. **Self-harm is half-fixed, not solved**: wall+self = 36% of deaths
+   (v20 17% self / 19% wall; the 6-ply lookahead helps growth moves but
+   the ladder's sprints and forage still suicide at fry-family rates).
+   ouroboros's exact-simulation profile remains the reference.
+5. **The five-tag radio is the repo's richest and its value is unproven**:
+   v20's extra information (hotspots, sectors, claims) co-incides with a
+   regression vs v14's simpler protocol. Information needs a consumer to
+   be worth a slot; portals/traps have consumers, sector coverage may not.
+
+### Structural recommendations (hunter line)
+
+- Add the crown (elect at ~200-250, stop its splits, everyone else feeds
+  it beds; crown-kill order at ~380). It converts the 34 length losses
+  directly: v20 already wins total length — concentration is the missing
+  half.
+- Gate portal scouting on the production schedule (only at unit parity or
+  better, and only when the crown is not starving), and A/B v20-vs-v14
+  on the fixture before promoting scouts.
+- Port the survival lookahead from growth moves into sprints/forage —
+  the 36% self+wall rate is the next biggest addressable loss.
+- Keep v14 as the field benchmark and v20 as the experimental branch;
+  do not let within-line wins (13-9 over v19) promote a change that
+  gives back 0.2 pts/game to the field (the v07-v10 hydra failure mode,
+  independently re-discovered).

@@ -275,3 +275,29 @@ Target: the finished bot should sit ≥ 240 pts in the five-bot fixture
 - When behind on a big map, is retreat-while-outnumbered net positive if
   gated on income parity? (v09 was +default −big_empty; the gate is the
   hypothesis.)
+
+## 14. Addendum (2026-09-25): hunter-line evidence reshapes priorities
+
+The user's hunter line (v14/v20, C++ ladder + encirclement traps + 6-ply
+survival lookahead + five-tag radio) measured against the fixture on the
+new 11-map set (see `docs/cross-line-review.md` §7):
+
+- **hunter-v14 is the current strongest bot** (2.01 pts/g on shared
+  opposition, 12-10 vs ouroboros-v05); v20 1.81; fry-v14 base 1.57.
+- It wins by **churn + economy** (51-54% head-to-head death share,
+  ~2:1 split ratio) — the opposite of ouroboros's low-death style. Two
+  winning styles exist; P1's survival gate must not be read as "match
+  ouroboros's death count" but as "don't lose addressable deaths": the
+  hunter still gives away 36% of deaths to walls/self.
+- **Length concentration is the confirmed #1 leak of the best non-crown
+  bot**: v20/v14 lose ~30 games each on the round-500 longest-dragon
+  tiebreak while WINNING total length (677 vs 607). This upgrades P4
+  (crown) from "one phase among six" to the highest-value item in the
+  plan: a crown bolted onto hunter-v14's economy would likely clear the
+  whole field. Same conclusion, independent evidence: ouroboros (crown
+  from r200) and kraken (length specialist) hold the top length records.
+- **Within-line wins do not justify field regressions** (v20 13-9 over
+  v19, then -0.2 pts/g vs the field): the promotion gate in §11 already
+  requires the full fixture; the hunter line is the fresh proof.
+- Richer radio ≠ better (v20's five tags vs v14's one tag, v14 ahead):
+  every sonar slot needs a named consumer before it ships.
