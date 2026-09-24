@@ -417,16 +417,6 @@ class Bot {
             if (teammate_distance < route_distance) return false;
             if (teammate_distance == route_distance && tiles[p].dragon_id < id) return false;
         }
-        for (const auto& item : teammates) {
-            if (item.second.position_seen < 0 || round - item.second.position_seen > 2)
-                continue;
-            int p = item.second.position;
-            int dx = std::abs(px - p % width);
-            int dy = std::abs(py - p / width);
-            int teammate_distance = std::min(dx, width - dx) + std::min(dy, height - dy);
-            if (teammate_distance < route_distance) return false;
-            if (teammate_distance == route_distance && item.first < id) return false;
-        }
         return true;
     }
     std::string attack_path() const {

@@ -1,29 +1,37 @@
-# hunter-v03-team-growth
+# hydra-v06-echo
 
-This version extends hunter-v02 with safe portal exploration. Only the
-largest known friendly dragon enters growth mode. It focuses on growth from
-round 450 onward, or from round 400 when the largest known enemy is longer than
-the largest known friendly dragon. It keeps a two-segment safety buffer before
-treating the team as comfortably ahead. The largest dragon gets priority over
-safe pearls even when a teammate is closer; other dragons may still collect
-pearls when the largest dragon is elsewhere. Other dragons remain in
-hunter/exploration mode when they are not the growth owner. A known-smaller
-dragon may also take a completed exploratory portal trip, including one with
-no immediate pearl reward, when at least four friendly dragons are alive.
-It may enter a visible portal with only one currently known endpoint; the next
-observation records the destination endpoint and enables normal round-trip
-planning.
-Teammate lengths are shared through the status sonar message and expire after
-20 rounds; MOVE_ASIDE remains higher priority than status broadcasts.
+The hunter-killer: hunter-v03-team-growth forked onto protocol 3, keeping its
+whole battle-tested core (portal trips, spread foraging, designated grower,
+size-gated multi-step attacks) and adding the sonar layer it never had.
 
-A fry-v03-portal-hunters variant that only deliberately attacks a visible enemy dragon
-when the enemy has more visible body segments than the attacking dragon's
-current length. It uses as many movement steps as its current length allows,
-so a smaller dragon can commit to a multi-move attack against a larger target.
+Beats hunter-v03-team-growth 13W-2D-11L over all maps, both sides
+(three consecutive identical results; `build/hydra-v06-vs-hunter03-r*/`).
 
-Enemy size is estimated conservatively from body segments visible in the local
-observation window. Hidden enemy segments are not counted, so the bot may pass
-up some valid attacks rather than making an unsafe size assumption.
+## What the fork adds
 
-The portal, pearl-growth, exploration, and emergency-survival behavior is
-otherwise inherited from fry-v03-portal-hunters.
+- **Protocol 3 output**: the team-status sonar fires in all four directions
+  instead of one - four times the teammate reach for the same free action -
+  plus the per-turn `PROTOCOL 3` handshake, and the engine now returns
+  `ECHOES` counts every turn.
+- **Enemy gossip over sonar**: when a dragon sees an enemy of 3+ visible
+  segments, the biggest and second-biggest fresh sightings ride the east and
+  south sonar slots (tag 01 in the top bits: x, y, size, round).  Every
+  dragon that hears it gains a pack target, and `attack_path` will route to
+  gossip positions that outsize the attacker - coordinated hunting that
+  hunter-v03 cannot do.  Gossip is only trusted for 15 rounds, and only
+  chased within 6 path steps: far chases starve.
+- **Echo radar for the grower**: when the echo says an enemy HEAD stands on
+  one of the grower's rays and no enemy head is visible nearby (the stalker
+  case), growth targets are biased away from every recently seen enemy
+  position.
+- **Status messages carry x/y** (into `FriendlyMemory.position`), parsed and
+  kept fresh for two rounds.  Deliberately NOT wired into nearest-friend
+  spread or owns_pearl yielding: map-wide yielding starved the richest maps
+  (big_empty flipped from 2W to 2L when it was on) - the fields remain for
+  future use with a distance-aware rule.
+
+## Lineage
+
+- hydra-v01/v02/v03: the python family (roles, gossip map, judge-budget
+  engineering). v03 beats hunter-v03 11-15; kept as benchmarks.
+- hydra-v06: the C++ fork that actually takes the crown.
