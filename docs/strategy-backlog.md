@@ -80,6 +80,15 @@ when enemy size or team counts are uncertain.
   crashes + lost head-to-heads. Priority hypotheses: mid-phase unit target
   too low vs swarm-of-equals bots (fry-v07/v09 9W-17L), hunter trade margin
   too generous, no endgame crown role (51 round-limit losses).
+- Loop validated end-to-end: v04 mirrors v03 (4-4 on screen); first sweeps
+  screened: team_target_mid=40 rejected (9W-15L, losses shift to the round
+  limit), hunter_trade=1 neutral (10W-14L).
+- Bench baseline (`build/kbench-bench-v04`, sandbox): v04 goes 34W-36L,
+  worst CPU max 67.8M (0 over budget). Confirmed: fry-v03 12-0,
+  hydra-v03-grower 8-2 (kraken beats GLM's python hydra), kraken-v03 6-6,
+  hunter-v03 4-8, fry-v07/v09 2-10 each (the structural weakness). Two
+  big_empty hydra matches are harness wall-clock timeouts at 1200s, not
+  judge failures.
 
 ## kraken family learnings (2026-09-24 session)
 
