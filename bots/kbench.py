@@ -33,19 +33,22 @@ ROOT = Path(__file__).resolve().parent.parent
 BOTS = ROOT / "bots"
 
 PRESETS = {
+    # Opponents track the cycle gauntlet in docs/ACTIVE.md (cycle 0:
+    # ouroboros-v10, hunter-v14, hunter-v20, fry-v14, kraken-v04).
     "screen": dict(
-        maps=["arena", "queen_of_spades", "trophy", "help"],
-        opponents=["fry-v07-two-children", "hunter-v03-team-growth",
-                   "kraken-v03-judge-safe"],
-        sandbox=False, timeout=150, jobs=8,
+        maps=["arena", "default_small", "trophy", "queen_of_spades"],
+        opponents=["kraken-v04-eval", "fry-v14-stateful-size-aware-3",
+                   "hunter-v14-cpp-hybrid-route-spacing"],
+        sandbox=False, timeout=1200, jobs=8,
     ),
     "bench": dict(
         maps=["arena", "default_small", "trophy", "queen_of_spades",
               "big_empty", "schooltime"],
-        opponents=["fry-v03-portal-hunters", "fry-v07-two-children",
-                   "fry-v09-pearl-seeker", "hunter-v03-team-growth",
-                   "kraken-v03-judge-safe", "hydra-v03-grower"],
-        sandbox=True, timeout=300, jobs=8,
+        opponents=["kraken-v04-eval", "fry-v14-stateful-size-aware-3",
+                   "hunter-v14-cpp-hybrid-route-spacing",
+                   "hunter-v20-portal-scouts", "ouroboros-v10-beacon",
+                   "hydra-v10-farmclean"],
+        sandbox=True, timeout=1200, jobs=8,
     ),
     "pool": dict(
         maps=None,  # every map

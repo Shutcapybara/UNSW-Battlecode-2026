@@ -254,4 +254,20 @@ First concrete step: kraken-v05 = v04-eval + S5 (probabilistic strike
 pricing, persistent doom map, exit counting, traffic terms), all weights
 in CFG, screened then benched against fry-v14, ouroboros-v05,
 kraken-v03.
+
+## 3. Build log
+
+- **kraken-v05-safety (cycle 1, 2026-09-25): null result, not
+  promoted.** S5 built as specced; full numbers in the bot README.
+  Mirror +6 (14–8), ouroboros-v10 +6 (3–18–1, first kraken wins on v10),
+  but hunter-v20 -8 (8–13–1 vs v04's 12–9–1) — expected-value pricing
+  loses the extreme-aversion length race that was kraken's unique edge.
+  Ablations x01–x05: no single component (trade/ini/exit/doom/p_strike)
+  carries the drop; big_empty vs hunter-v20 is the swing map. Compact
+  maps unchanged (1–37–2 vs field): the compact fix is S3 production,
+  not threat pricing. CPU: no regression (big_empty p99 61.7M vs v04's
+  61.0M; both marginally over the 60M gate at ~64 units — a
+  pre-existing line issue to fix in v06). v04 remains the gauntlet bot.
+  Next: kraken-v06 = S3 production per the build order, with doom
+  memory's big_empty behaviour checked on replays before keeping it.
 """
