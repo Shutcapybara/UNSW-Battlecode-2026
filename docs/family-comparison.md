@@ -170,6 +170,65 @@ multiplayer dimension on the table. The measured 4-4 vs kraken-v03 came
 on 4 maps; on 13 maps it's 8-17. Method is their product; the bot isn't
 yet.
 
+### Hunter (the fry ladder, evolved) — the survival machine with no finish
+
+*Added after the v05–v20 line appeared; benchmark: `build/hunter-v20-crossline`,
+110 matches, hunter-v20 vs the five champions, 11 maps both sides, native,
+1200 s timeout, zero errors, replays kept.*
+
+**Approach.** The fry/hunter priority ladder grown into real tactics
+(1328-line C++, v20): a replicated team state merged from sonar (largest
+friendly/enemy lengths, unit counts, pearl sites — v15), pearl routing
+with route distances (v06), confidence-timestamped teammate/enemy length
+estimates that expire (v09/v10), **boost-and-trap attacks** (v16: a
+≤6-step boost that occupies the tiles around an enemy head so its escapes
+close — genuine 2-ply contact tactics, gated by exact enemy length and
+id-order so only not-yet-moved heads are targeted), **six-move self-trap
+lookahead** (v18/v19: `safe_continuations` counts survivable continuation
+depth/paths before committing to a pearl route), and portal-scout role
+claiming over sonar with TTL (v20). All children are 2 segments.
+
+**What the tests say.** 64W-1D-45L against the champion pool: even with
+ouroboros-v05 (11-11) and fry-v14 (11-11), beats hydra-v06 (17-5) and
+leviathan-v07 (16-6), loses to kraken-v04 (9-12). Replay profile: highest
+peak units of the field (33) and highest median final units (29) — it
+out-survives everyone — but median final longest dragon of **4**, the
+lowest recorded. The loss signature is unambiguous: 34 of 45 losses come
+at the round limit (median round 500) with a median longest-dragon gap of
+6.5, including catastrophes like 5-vs-57 (leviathan, default) and 13-vs-63
+(ouroboros, schooltime). Only 2 of 34 round-limit losses had hunter
+holding the longer dragon. Meanwhile its h2h deaths run at 62/game — it
+wins the trade war and loses the race.
+
+**What causes the performance differences.** Versus the C++ family
+(hydra, fry) the lookahead and confidence models cut self-harm (self+wall
+41/game vs fry's 74) and the boost-trap gives it free kills the ladder
+never had — hence 17-5 over hydra-v06 and parity with fry-v14. Versus
+kraken the matchup inverts: kraken's whole design banks length early and
+often, so hunter's survival-first swarm arrives at round 500 with 29
+short dragons against a 30-55 length monster. Versus ouroboros the deaths
+war is even (hunter's tactics ≈ ouroboros's eval), and the outcome hinges
+on the same endgame gap.
+
+**Criticism.** The line optimised survival and tactics for sixteen
+versions and never rebuilt the endgame: v01/v02's "team-growth" crown idea
+(the largest dragon gets fed) was diluted through the v13→v14 C++ port and
+the trap/portal arc, and `should_focus_growth` fires too late and too
+weakly to matter. A swarm that finishes every game with longest=4 is
+leaving its considerable survival edge unconverted. Also: the C++ meter
+headroom (17M peaks vs Python's 60M+) is spent on lookahead depth, but
+six plies of self-trap search protect a strategy whose losses are
+strategic (no crown), not tactical. The per-version measurement discipline
+(paired fixtures, error exclusion, repeated-fixture agreement in
+`docs/hunter-python-results.md`) is excellent — the best validation
+hygiene outside leviathan.
+
+**Useful claims to trust.** "Only heads that have not acted this round can
+be constrained" — id-order gating of trap attacks is the initiative
+modelling ouroboros lacks (and its side-B fragility shows it). Portal
+scouts skipping compact boards (≤625 tiles) because "exits too contested
+for trips to pay off" is a replay-grounded map-class gate worth copying.
+
 ## Cross-cutting lessons
 
 1. **Everyone converged on the same architecture** (world model →
@@ -186,7 +245,16 @@ yet.
 4. **Wall/self deaths are solved problems** (ouroboros 0.0 wall/game via
    persistent doom memory); kraken's 29.4 wall deaths/game is pure
    addressable loss.
-5. **The benchmark that matters** is fry-v14 plus the other families'
+5. **Survival without conversion is a losing strategy.** hunter-v20
+   out-survives the field (final units 29) and still loses 34/45 games at
+   the round limit with a median length gap of 6.5. Kraken's mirror-image
+   profile (length-race specialist, ground down in eliminations) is why
+   kraken beats hunter 12-9 while losing to ouroboros 4-22. The champion
+   must do both.
+6. **Initiative is real and modelable.** Hunter gates trap attacks by
+   id-order (only not-yet-moved heads); ouroboros loses 13/14 as side B.
+   Move-order state belongs in the threat model, not in vibes.
+7. **The benchmark that matters** is fry-v14 plus the other families'
    champions on all 13 maps both sides — single-map deterministic results
    are exact for the matchup and meaningless for the field (leviathan's
    4-4 vs kraken on 4 maps became 8-17 on 13).
@@ -195,9 +263,15 @@ yet.
 
 - From ouroboros: probabilistic strike model (replace binary danger),
   persistent corridor-doom memory, exit-count terms, crown from mid-game.
+- From hunter-v20: safe-continuation lookahead before committing to a
+  route (depth + path counting, grow-aware body reservation), id-order
+  gating for trap/strike decisions, and the portal-scout map-class gate
+  (compact boards skip portal trips).
 - From hydra: gossip-chased pack hunting with a 6-step chase horizon.
 - From leviathan: material accounting (net length, not gross pearls) and
   the discipline of an action-stream equivalence check before promotion.
 - Drop: size-encoded roles (use 2-segment children, role via gossip
   hand-off — ouroboros proves the parent's back-ray lands on the newborn).
+- Keep: kraken's length-race conversion (best tiebreak rate in the field)
+  — it is the exact module hunter-v20 proves is indispensable.
 """

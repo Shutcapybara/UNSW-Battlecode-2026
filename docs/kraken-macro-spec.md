@@ -42,6 +42,15 @@ Points where the reviews **complement** each other:
 - Claude (status): known weak spots — small maps vs C++ swarms decided by
   round-50 unit count; corridor-map farming tradeoffs; untried: opponent
   strike-propensity learning, 2-ply contact search, map-type detection.
+- Hunter line v05–v20 (`docs/hunter-python-results.md`, v15-v20 READMEs,
+  and `build/hunter-v20-crossline`: 64W-45L vs the champion pool, even
+  with ouroboros 11-11): survival and tactics at the field's best level
+  (peak units 33, final units 29, boost-and-trap 2-ply attacks, six-move
+  self-trap lookahead) but **34 of 45 losses at the round limit with a
+  median longest-dragon gap of 6.5** — survival without a crown module
+  does not convert. Id-order gating of attacks ("only heads that have not
+  acted this round can be constrained") is the field's working answer to
+  the initiative problem.
 
 ## 1. Subsystem breakdown
 
@@ -101,7 +110,11 @@ autopsy, trend down.
   maximal on small maps.
 - **Crown**: from ~round 200 the longest known dragon stops splitting,
   refuses trades, loads survival weights (Ouroboros's crown_memory=40
-  staleness caveat applies: dead crowns must expire fast).
+  staleness caveat applies: dead crowns must expire fast). Hunter-v20 is
+  the negative control: the field's best survival (final units 29) with no
+  crown loses 34/45 games at the round limit by a median length gap of
+  6.5. Kraken already converts well (best tiebreak rate in the field) —
+  this module protects and extends an existing strength.
 **Parameters:** role mixes per phase per map class, team targets, crown
 start/freeze rounds.
 **Signal:** round-50 unit count vs opponent (from replay curves); splits/
@@ -144,9 +157,17 @@ deaths/game. Design:
   B loses more across the field (ouroboros 13/14 losses as B). Track
   whether each visible enemy has already moved this round where the wire
   allows; price accordingly rather than treating all enemies as
-  pre-move (kraken's current conservative approximation).
+  pre-move (kraken's current conservative approximation). Hunter-v20
+  demonstrates the working version: only heads that have not yet acted
+  are trap/strike targets.
 - **Doom memory:** corridors that killed an ally (observed or gossiped)
   are marked; entering one requires the exit to be verified open.
+- **Safe-continuation lookahead:** before committing to a multi-step
+  route (pearl trip, escape), count survivable continuation depth and
+  paths a few plies ahead with grow-aware body reservation (hunter-v18/
+  v19's `safe_continuations`); prefer routes with more continuations at
+  equal depth. In Python this must be shallow (2-3 plies) and capped;
+  hunter's six plies are a C++ luxury.
 - **Exit counting:** 0 or 1 uncontested free neighbours at the
   destination costs points (w_exit0, w_exit1).
 - **Traffic terms:** ally head/body adjacency and crowding penalties —
@@ -182,9 +203,13 @@ existing strike correctness is good; keep it).
 **Pack hunting:** gossip enemy sightings (2 slots) with 15-round trust
 and 6-step chase horizon; hunters within horizon bias target field
 toward the sighting (hydra-v06's one proven combat win).
+**Contact tactics:** hunter-v16/v17's boost-and-trap (a ≤6-step boost
+that closes an enemy head's escape sides, gated by exact length advantage
+and id-order) is the field's working 2-ply contact search — adopt it as
+a gated candidate in the strike evaluator, not a separate mode.
 **Untried, scheduled for later:** opponent strike-propensity learning
-(adjust p_strike per opponent family via observed trades), 2-ply contact
-search (Claude's list — CPU-permitting only).
+(adjust p_strike per opponent family via observed trades), deeper
+minimax in contact (CPU-permitting only).
 **Signal:** h2h up/even/down ratio (kraken currently 6/16/10 in the
 deep-dive loss — too many down-trades); deaths inflicted per death taken.
 
