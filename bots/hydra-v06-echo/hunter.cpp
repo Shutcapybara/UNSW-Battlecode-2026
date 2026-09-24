@@ -436,9 +436,7 @@ class Bot {
                 path[next] = path[p] + DIR[d];
                 if (tiles[next].enemy_head) {
                     auto enemy = enemies.find(tiles[next].dragon_id);
-                    int edge = my_team == "A" ? 1 : 0;  // we act on staler info
-                    if (enemy != enemies.end()
-                        && enemy->second.visible_size > length + edge)
+                    if (enemy != enemies.end() && enemy->second.visible_size > length)
                         return path[next];
                 }
                 for (const auto& item : gossip) {
@@ -801,7 +799,7 @@ public:
         return move + "\nSONAR N " + std::to_string(message)
              + "\nSONAR E " + std::to_string(east)
              + "\nSONAR S " + std::to_string(south)
-             + "\nSONAR W " + std::to_string(east)
+             + "\nSONAR W " + std::to_string(message)
              + "\nPROTOCOL 3";
     }
 };

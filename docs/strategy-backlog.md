@@ -93,3 +93,21 @@ when enemy size or team counts are uncertain.
   big maps is the plan_trip beam-search harvest plus constant splitting
   (children form even under threat). hydra still loses the length race
   there ~2:1; porting the trip planner is the main hydra-v03 item.
+
+## hunter-v03 matchup session (2026-09-24, later)
+
+- Matchup evaluation is deterministic within one runner context but the
+  engine seeds pearl draws per invocation: trust repeated full both-sides
+  tournaments, never single games.
+- hunter-v03 only attacks visible-BIGGER dragons, so a swarm of 3-4 segment
+  dragons is invisible to its offense (hydra-v03's swarm-of-equals + round
+  340 split freeze: 9-17 -> 11-15).
+- The decisive edge was forking hunter-v03 to protocol 3 (hydra-v06-echo):
+  4-direction status sonar, enemy sightings gossiped on two sonar slots with
+  pack hunting, echo-radar stalker fleeing for the grower: 13-2-11.
+- Map-wide radio yielding (owns_pearl over sonar positions) starved the
+  richest map (big_empty 2W -> 2L) - keep yielding vision-local.
+- Duplicating the sighting on a third sonar slot starved the status
+  broadcast and cost 4 maps: crown election needs the status flowing.
+- Next target: fry-v14-stateful-size-aware-3 tops the field (174 vs
+  hydra-v06's 159 in the 5-bot round-robin).
