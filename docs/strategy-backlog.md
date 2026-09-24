@@ -6,14 +6,25 @@ lineage. Detailed Python-era measurements live in
 
 ## Current decision
 
-`hunter-v16-boost-traps` is the current measured candidate. In an 11-map,
-three-bot round robin, V16 finished one win ahead of V15 and won their direct
-matchup. V17 did not improve on V16 and remains experimental.
+`hunter-v16-boost-traps` remains the measured benchmark from the earlier
+11-map, three-bot round robin, where it finished one win ahead of V15 and won
+their direct matchup. V20 now beats V19 head-to-head, pending a wider-pool
+comparison. V17 did not improve on V16 and remains experimental.
 V18 adds self-trap avoidance based on one replay. Its all-map result ties V17
 and V16, so it remains experimental.
 V19 scored highest in a four-bot pool, but tied V18 head-to-head 11–11; it
 remains experimental pending a direct improvement over V18 and validation of
 the self-trap behavior.
+V20 addresses the Trauma replay where hotspot saturation prevented portal
+discovery: distant spawn timers no longer count as hotspots, hotspot reports
+expire after eight rounds, and local food demand controls a bounded scout
+claim. Length-3-to-6 scouts can start with four survivors; boards of at most
+625 tiles skip scouting because replays showed the exits were too contested.
+In the final 11-map, both-side comparison with V19, V20 went 13W/9L with no
+errors. It won 11–3 across all portal maps and 8–2 on the priority set
+(`default`, `queen_of_spades`, `schooltime`, `stronghold`, `trauma`). It remains
+experimental pending validation against the wider field. Results:
+[`V19 vs V20`](../build/hunter-v19-v20-hunter20-verified-all-maps/results.json).
 
 ### V16 evidence
 
@@ -122,16 +133,22 @@ before submission.
 
 10. [ ] Compare portal-trip reward per move with ordinary pearl routes before
     committing to a portal journey.
-11. [ ] Use remembered pearl observations with age/confidence decay; unseen or
+11. [ ] Add a sonar scout handshake: announce the scout, target portal, and
+    expected return before entry, then share safe-return/status reports so
+    portal knowledge propagates. Treat missing reports as uncertain evidence
+    of danger, update a decaying per-portal risk estimate, and gradually raise
+    the scout cooldown/threshold as estimated lethality rises; successful
+    reports should lower that estimate.
+12. [ ] Use remembered pearl observations with age/confidence decay; unseen or
     stale pearls must not be treated as guaranteed food.
-12. [ ] Improve territory ownership on segmented maps, especially `schooltime`,
+13. [ ] Improve territory ownership on segmented maps, especially `schooltime`,
     without suppressing safe exploration by smaller dragons.
 
 ### P3: release checks
 
-13. [ ] Run judge-sandbox checks across maps for the selected C++ candidate and
+14. [ ] Run judge-sandbox checks across maps for the selected C++ candidate and
     inspect CPU-limit and invalid-action deaths.
-14. [ ] Before submission, rerun a wider tournament with the selected candidate
+15. [ ] Before submission, rerun a wider tournament with the selected candidate
     against V14, V15, and the strongest older baselines; report map-specific
     records, draws, errors, and replay locations.
 
@@ -177,6 +194,7 @@ before submission.
 | `hunter-v17-portal-first-traps` | V16 boost attacks yield to planned portal moves; experimental, tied V16 |
 | `hunter-v18-self-trap-lookahead` | V17 with six-move safe-continuation checks for growth and survival routes; experimental, tied V17 at 23W/21L in the V15/V16 all-map pool |
 | `hunter-v19-safe-growth-lookahead` | V18 with survival-aware pearl-route selection and wider equal-depth survival choices; experimental, 37W/29L in the four-bot pool, tied V18 11–11 |
+| `hunter-v20-portal-scouts` | V19 with fresh, near-term hotspot scoring, demand-based single-scout claims, and an eight-step unmatched-portal approach cap; skips scouting on compact boards; experimental, 13W/9L vs V19, 11W/3L on portal maps |
 | `kraken-v01-roles` | Fixed-role scouts, hunters, and gatherers relaying map memory over sonar |
 | `kraken-v02-bigmap` | Big-map production, brawl-mode small maps, ally-head collision guards, and metered BFS with portal-local cache invalidation |
 

@@ -104,6 +104,7 @@ Current strategy lineage:
 | `hunter-v17-portal-first-traps` | portal routes take priority over boost attacks; experimental |
 | `hunter-v18-self-trap-lookahead` | six-move safe-route checks for growth and survival; experimental |
 | `hunter-v19-safe-growth-lookahead` | survival-aware pearl-route selection and wider equal-depth survival choices; experimental |
+| `hunter-v20-portal-scouts` | time-aware pearl hotspots, demand-based single-scout claims, bounded unmatched-portal probing, and a compact-board scout guard; experimental, 13W/9L vs V19 |
 | `kraken-v01-roles` | role-based scouts, hunters, and gatherers with sonar gossip |
 | `kraken-v02-bigmap` | big-map production, brawl mode, and judge-safe metered search |
 
