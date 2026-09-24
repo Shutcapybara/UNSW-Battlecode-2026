@@ -88,6 +88,14 @@ Current strategy lineage:
 | `kraken-v02-bigmap` | big-map production, brawl mode, and judge-safe metered search |
 | `kraken-v03-judge-safe` | snapshot of kraken-v02 after sandbox CPU hardening |
 | `kraken-v04-eval` | v03 with kbench-parameterised CFG; eval-function baseline (identical behavior) |
+| `hydra-v01-core` | python from-scratch swarm with sonar gossip map |
+| `hydra-v02-hunters` | python pack hunting (beats fry-v03 17-9) |
+| `hydra-v03-grower` | python swarm-of-equals + late split freeze |
+| `hydra-v06-echo` | hunter-v03 forked to protocol 3: status radio, enemy gossip, echo radar |
+| `hydra-v07-farm-first` | v06 + gossip chase gated on units>=6 && length>=4 (not promoted) |
+| `hydra-v08-claims` | v07 + whole-swarm r400 farm switch + owns_pearl growth BFS (not promoted) |
+| `hydra-v09-lanchester` | v08 + retreat-while-outnumbered evasion (not promoted) |
+| `hydra-v10-farmclean` | v08 minus stalker-flee in farm mode (not promoted; field 150 vs v06 159) |
 
 ## Iteration loop (kraken)
 

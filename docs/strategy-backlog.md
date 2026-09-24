@@ -151,3 +151,36 @@ when enemy size or team counts are uncertain.
   paths, not names); fixed. Single verbose games swing wildly with the
   per-invocation pearl seed (v07 mirror: 199 splits one game) — the
   tournament is the only counter.
+- Replay diagnostics: `tools/leviathan/replay.py FILE.replay` (GPT's)
+  decodes packed capnp replays to pearls/splits/deaths/trades per team.
+  hydra additions: `tools/hydra_replay.py` (per-round series + head
+  positions).
+- Head-to-head autopsies vs fry-v14 (replay stats): deaths and initiated
+  trades are always SYMMETRIC; the whole matchup is decided by pearl
+  conversion (fry 88 vs hydra 18 on a Colloseum loss). fry out-splits
+  hydra ~3:1 and compounds; hydra's dragons each eat ~2 pearls (barely
+  breeding length) — per-capita feeding is similar, births are not.
+- Self-mirrors are lopsided (25v72, 199v35 splits): individual games are
+  winner-take-all coinflips. The only stable facts: (a) fry-v14 beats
+  EVERY bot in the field on Colloseum/Colosseum, both sides, including
+  fry-v03 — treat those 4 screen games as the field's tax; (b) fry-v03
+  beats fry-v14 on schooltime both sides, so schooltime is winnable;
+  (c) most other maps resolve as side-A coinflips.
+- Variant screens vs fry-v14 (26 games each, single runs): v06 11-2-13,
+  v07-farm-first 10-2-14 (gossip chase gated on units>=6 && len>=4),
+  v08-claims 9-2-15 (+ whole-swarm r400 farm switch + owns_pearl in
+  growth BFS; fixed one help side), v09-lanchester 8-2-16 (+ retreat-
+  while-outnumbered: won default both sides but lost big_empty both),
+  v10-farmclean 10-2-14 (= v08 minus stalker-flee; recovered big_empty
+  side B). All inside the noise band; repeats decide promotion.
+- DETERMINISM (corrects an earlier note): `unswbc run` replays a given
+  (map, botA, botB) identically every time — repeated tournaments return
+  byte-identical records. One 26-game screen is an exact measurement of
+  that matchup, not a sample. "Pearl draws seeded per invocation" was
+  wrong for local non-sandbox runs.
+- Field round-robin verdict (5 bots, 260 games): hydra-v10 150 pts vs
+  hydra-v06's 159 in the same field. Per-opponent: the v07 gossip gate
+  gave back 3 wins to hunter-v03 (10-14 vs 13-11) — the ungated pack
+  chase is load-bearing against hunter-family bots even though it looks
+  passive against fry-v14. Net: v06 stays flagship; fry-v14 (177 in this
+  field) remains ahead of the whole hydra line.
