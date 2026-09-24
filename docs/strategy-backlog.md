@@ -67,6 +67,19 @@ when enemy size or team counts are uncertain.
 - `kraken-v01-roles`: fixed-role scouts, hunters, and gatherers relaying map memory over sonar.
 - `kraken-v02-bigmap`: big-map production and endgame growth, brawl-mode small maps, ally-head collision guards, and metered BFS with portal-local cache invalidation.
 - `kraken-v03-judge-safe`: snapshot of kraken-v02 after sandbox CPU hardening; used as the stable bot-pool evaluation candidate.
+- `kraken-v04-eval`: v03 with a kbench-parameterised CFG (KBENCH-PARAMS override block); identical behavior, the baseline for eval-weight sweeps.
+
+## kraken iteration loop (2026-09-24 session)
+
+- Method + tooling: `docs/kraken-design-framework.md` and `bots/kbench.py`
+  (variant / run screen|bench|pool / analyze / compare). One hypothesis per
+  variant; screen kills bad ideas fast, sandbox bench confirms, full pool
+  regresses.
+- v03 pool data (520 sandbox matches): 73% of losses are mid-game
+  eliminations (median round 234), and ~80% of deaths in losses are body
+  crashes + lost head-to-heads. Priority hypotheses: mid-phase unit target
+  too low vs swarm-of-equals bots (fry-v07/v09 9W-17L), hunter trade margin
+  too generous, no endgame crown role (51 round-limit losses).
 
 ## kraken family learnings (2026-09-24 session)
 
@@ -111,3 +124,30 @@ when enemy size or team counts are uncertain.
   broadcast and cost 4 maps: crown election needs the status flowing.
 - Next target: fry-v14-stateful-size-aware-3 tops the field (174 vs
   hydra-v06's 159 in the 5-bot round-robin).
+
+## fry-v14 matchup session (2026-09-24, evening)
+
+- The v06 field losses to fry-v14 (11-2-13) are a **numbers war**, not a
+  combat problem: verbose Colloseum replays show head-to-head kills are
+  perfectly symmetric (12 vs 12), but fry split 28 times while hydra split
+  9. Both bots share identical `SPLIT 2`-at-length-4 code, so the gap is
+  food conversion, and Colloseum (countdown-100/250 tiles, 66-round games)
+  is a corpse-fed economy: the winner of the early race hoovers the dead
+  and compounds; the loser starves. Mirrors confirm winner-take-all
+  dynamics (winning side reaches 33-40 units).
+- Gate experiment (hydra-v07-farm-first: gossip chase only when
+  `units >= 6 && length >= 4`) did NOT close the split gap in single games
+  — the chase is not the main feeding cost. Do not stack more gates on it
+  before measuring.
+- fry-v14's structural edges over the hydra line (found by diff):
+  (a) whole-swarm `growth_action()` at round 400 vs hydra's
+  largest-only conditional growth — the round-limit length race (help
+  lost on length both sides, ~1700 deaths/game meat grinder), and
+  (b) `owns_pearl` gating in the growth BFS so 64 farmers deconflict.
+  hydra-v08-claims copies both.
+- fry-v14 is still protocol 2 (constant filler sonar); its sonar channel
+  is idle, so hydra's radio advantage stands.
+- tools/autopsy.py needed bot-name->path resolution (`unswbc run` takes
+  paths, not names); fixed. Single verbose games swing wildly with the
+  per-invocation pearl seed (v07 mirror: 199 splits one game) — the
+  tournament is the only counter.

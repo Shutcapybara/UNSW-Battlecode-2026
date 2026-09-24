@@ -87,3 +87,21 @@ Current strategy lineage:
 | `kraken-v01-roles` | role-based scouts, hunters, and gatherers with sonar gossip |
 | `kraken-v02-bigmap` | big-map production, brawl mode, and judge-safe metered search |
 | `kraken-v03-judge-safe` | snapshot of kraken-v02 after sandbox CPU hardening |
+| `kraken-v04-eval` | v03 with kbench-parameterised CFG; eval-function baseline (identical behavior) |
+
+## Iteration loop (kraken)
+
+`docs/kraken-design-framework.md` defines the method; `bots/kbench.py` is
+the tooling:
+
+```sh
+python3 bots/kbench.py variant kraken-v04-eval kraken-v05-<hypo> --set key=value ...
+python3 bots/kbench.py run screen --bots kraken-v05-<hypo>      # fast kill/keep
+python3 bots/kbench.py run bench  --bots kraken-v05-<hypo>      # sandbox confirm
+python3 bots/kbench.py analyze build/kbench-bench-kraken-v05-<hypo>
+python3 bots/kbench.py compare build/kbench-bench-A build/kbench-bench-B
+```
+
+Long runs go through `nohup`; screen is non-sandbox (fast), bench and pool
+are sandboxed (judge-true). One hypothesis per variant; see the framework
+doc for the full rules.
