@@ -259,7 +259,7 @@ kraken-v03.
 
 - **kraken-v05-safety (cycle 1, 2026-09-25): null result, not
   promoted.** S5 built as specced; full numbers in the bot README.
-  Mirror +6 (14–8), ouroboros-v10 +6 (3–18–1, first kraken wins on v10),
+  Mirror +6 (14–8), ouroboros-v10 +6 (3–18–1; v04 went 0–21–1),
   but hunter-v20 -8 (8–13–1 vs v04's 12–9–1) — expected-value pricing
   loses the extreme-aversion length race that was kraken's unique edge.
   Ablations x01–x05: no single component (trade/ini/exit/doom/p_strike)

@@ -95,8 +95,9 @@ pre-existing line issue, not introduced here.
 ## Verdict: **null result — not promoted**
 
 - Fails the promotion rule: hunter-v20 drops 8 net (12–9–1 to 8–13–1),
-  beyond the -3 tolerance, despite +6 vs ouroboros-v10 (first kraken
-  wins ever against v10) and +6 in the mirror.
+  beyond the -3 tolerance, despite +6 vs ouroboros-v10 (v04 went
+  0–21–1 against v10; these are the first kraken wins on record) and
+  +6 in the mirror.
 - **kraken-v04-eval remains the line tip and gauntlet bot** (it keeps
   the only winning record against hunter-v20).
 - Knowledge returned to §4.3 (threat model row): probabilistic pricing
