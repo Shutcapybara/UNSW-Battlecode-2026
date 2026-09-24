@@ -212,12 +212,12 @@ def cmd_analyze(args):
         print(f"  {opp:40s} {dict(c)}")
     print(f"\ndeath causes in wins: {dict(deaths_win)}")
     if cpu:
-        p50, p99, mx = zip(*((c[0], c[1], c[4]) for c in cpu))
+        p50, p99, mx = zip(*((c[0], c[1], c[3]) for c in cpu))
         print(f"\nCPU: p50 median {statistics.median(p50):.1f}M  "
               f"worst p99 {max(p99):.1f}M  worst max {max(mx):.1f}M")
-        for c in sorted(cpu, key=lambda v: -v[4])[:3]:
-            print(f"  max {c[4]:.1f}M p99 {c[1]:.1f}M  {c[5]} vs {c[6]}")
-        over = [c for c in cpu if c[4] > 100]
+        for c in sorted(cpu, key=lambda v: -v[3])[:3]:
+            print(f"  max {c[3]:.1f}M p99 {c[1]:.1f}M  {c[4]} vs {c[5]}")
+        over = [c for c in cpu if c[3] > 100]
         print(f"turns over 100M budget: {len(over)}")
     if errors:
         print(f"\nerrors ({len(errors)}):")
