@@ -89,6 +89,21 @@ Current strategy lineage:
 | `hunter-v02-team-growth` | adaptive growth timing for the largest teammate |
 | `hunter-v03-team-growth` | safe unmatched-portal exploration by smaller dragons |
 | `hunter-v04-team-state-sonar` | directional 64-bit shared dragon state |
+| `hunter-v05-safe-attack-routes` | reachable combat targets |
+| `hunter-v06-pearl-routing` | route-based pearl ownership |
+| `hunter-v07-wide-team-state` | wider sonar IDs and ordered message updates |
+| `hunter-v08-pearl-wide-sonar` | pearl routing with wider sonar |
+| `hunter-v09-confidence-team-state` | freshness-aware teammate lengths |
+| `hunter-v10-confidence-enemy-state` | timestamped enemy-size bounds |
+| `hunter-v11-route-distance-exploration` | route-aware teammate spacing |
+| `hunter-v12-static-map-spacing` | static terrain routes for exploration spacing |
+| `hunter-v13-hybrid-route-spacing` | hybrid portal routing and exploration spacing |
+| `hunter-v14-cpp-hybrid-route-spacing` | C++ port of V13; experimental |
+| `hunter-v15-shared-territory` | shared hotspots and safe portal exploration |
+| `hunter-v16-boost-traps` | size-gated boosts and compact surround; current measured candidate |
+| `hunter-v17-portal-first-traps` | portal routes take priority over boost attacks; experimental |
+| `hunter-v18-self-trap-lookahead` | six-move safe-route checks for growth and survival; experimental |
+| `hunter-v19-safe-growth-lookahead` | survival-aware pearl-route selection and wider equal-depth survival choices; experimental |
 | `kraken-v01-roles` | role-based scouts, hunters, and gatherers with sonar gossip |
 | `kraken-v02-bigmap` | big-map production, brawl mode, and judge-safe metered search |
 

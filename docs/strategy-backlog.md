@@ -9,6 +9,11 @@ lineage. Detailed Python-era measurements live in
 `hunter-v16-boost-traps` is the current measured candidate. In an 11-map,
 three-bot round robin, V16 finished one win ahead of V15 and won their direct
 matchup. V17 did not improve on V16 and remains experimental.
+V18 adds self-trap avoidance based on one replay. Its all-map result ties V17
+and V16, so it remains experimental.
+V19 scored highest in a four-bot pool, but tied V18 head-to-head 11–11; it
+remains experimental pending a direct improvement over V18 and validation of
+the self-trap behavior.
 
 ### V16 evidence
 
@@ -51,6 +56,34 @@ beat V15 in both `big_empty` side assignments; on the remaining maps their
 direct results split 1–1. Direct V16/V17 logs show collisions dominate the
 500-round maps, with no broad outcome gain from changing action priority.
 Artifacts: [results and replays](../build/hunter-v17-vs-v16-v15-small/).
+
+### V18: self-trap lookahead
+
+Replay `M140513` showed Team A's largest dragon reaching length 32 before a
+self-collision at round 495. It entered a closing loop in round 490: the east
+route had only five safe moves ahead, while west had at least six. V18 forks
+V17 and uses a six-move survival lookahead to reject growth routes into such
+short pockets; its survival fallback ranks moves by safe continuation depth.
+In an 11-map, both-sides pool against V15 and V16, V18 scored 23W/21L, matching
+V17's record. It went 12–10 against V15 and 11–11 against V16, the same
+pairwise records as V17; all 44 games completed without errors. Map results
+shifted: V18 swept V15 on `help` and both opponents on `queen_of_spades`, but
+lost both games against each opponent on `queen_of_spades_but_she_ages`; V17
+split those pairings. V18 also split `big_empty` against V15, where V17 won both
+games. This pool shows no aggregate improvement over V17 or V16, so V18 remains
+experimental. Artifacts: [results and logs](../build/hunter-v18-vs-v15-v16-all-maps/).
+
+### V19: safe growth-route selection
+
+V19 forks V18. It checks the six-move continuation from every legal first step
+before searching for pearls, so one unsafe best-scoring route cannot suppress
+other viable growth routes. When survival moves have the same continuation
+depth, V19 prefers the move with more paths at that depth. This remains
+experimental. In an 11-map, both-sides, four-bot pool, V19 scored 37W/29L with
+no errors. It tied V18 11–11, beat V15 13–9, and beat V16 13–9. V19 swept V18
+on `big_empty` but lost both `queen_of_spades` games; the other nine maps split
+1–1. Its stronger total came from its baseline pairings, not its direct V18
+matchup. Artifacts: [results and logs](../build/hunter-v19-vs-v15-v16-v18-all-maps/).
 
 Keep V16 as incumbent until an iteration demonstrates an improvement over it.
 V16 and V15 share weak aggregate records on `default` and `queen_of_spades`;
@@ -142,6 +175,8 @@ before submission.
 | `hunter-v15-shared-territory` | Shared hotspots, safe portals, and territory exploration |
 | `hunter-v16-boost-traps` | V15 plus size-gated boost cutoffs and a compact three-side surround; current measured candidate |
 | `hunter-v17-portal-first-traps` | V16 boost attacks yield to planned portal moves; experimental, tied V16 |
+| `hunter-v18-self-trap-lookahead` | V17 with six-move safe-continuation checks for growth and survival routes; experimental, tied V17 at 23W/21L in the V15/V16 all-map pool |
+| `hunter-v19-safe-growth-lookahead` | V18 with survival-aware pearl-route selection and wider equal-depth survival choices; experimental, 37W/29L in the four-bot pool, tied V18 11–11 |
 | `kraken-v01-roles` | Fixed-role scouts, hunters, and gatherers relaying map memory over sonar |
 | `kraken-v02-bigmap` | Big-map production, brawl-mode small maps, ally-head collision guards, and metered BFS with portal-local cache invalidation |
 
