@@ -83,13 +83,14 @@ def fingerprint(paths):
     return digest.hexdigest()
 
 
-def manifest_for(bots, maps, replays, executable):
+def manifest_for(bots, maps, replays, executable, sandbox=False):
     sources = []
     for bot in bots.values():
         sources.extend(path for path in bot.rglob('*') if path.is_file() and
                        not any(part.startswith('.') or part in ('__pycache__', 'build')
                                for part in path.relative_to(bot).parts))
     return dict(version=1, bots=sorted(bots), maps=sorted(maps), replays=replays,
+                sandbox=sandbox,
                 executable=executable, input_hash=fingerprint(sources + list(maps.values())),
                 script_hash=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
 
@@ -153,8 +154,10 @@ def play(executable, board, a, b, out, label, timeout, replays, workers=None, sa
     log_path = out / f'{label}.log'
     replay_path = out / f'{label}.replay'
     run_a, run_b = (workers.bot_path(a), workers.bot_path(b)) if workers else (a, b)
-    command = [executable, 'run', str(board), str(run_a), str(run_b)]
-    command += ['--sandbox'] if sandbox else []
+    command = [executable, 'run']
+    if sandbox:
+        command += ['--sandbox', '-v']
+    command += [str(board), str(run_a), str(run_b)]
     command += ['-o', str(replay_path)] if replays else ['--no-replay']
     start = time.monotonic()
     error = None
@@ -198,7 +201,8 @@ def main(argv=None):
                         help='Concurrent matches (default: up to 4 CPU cores; use 1 for sequential)')
     parser.add_argument('--timeout', type=float, default=180, help='Maximum seconds per match (default: 180)')
     parser.add_argument('--no-replays', action='store_true', help='Save logs/results without replay files')
-    parser.add_argument('--sandbox', action='store_true', help='Run matches in the judge sandbox (metered)')
+    parser.add_argument('--sandbox', action='store_true',
+                        help='Run bots under judge CPU limits and retain verbose diagnostics')
     parser.add_argument('--dry-run', action='store_true', help='Show the schedule without running or writing anything')
     args = parser.parse_args(argv)
     if args.jobs < 1:
@@ -232,7 +236,7 @@ def main(argv=None):
     if executable is None:
         parser.error('unswbc was not found on PATH')
     out = (args.output or ROOT / 'build' / f'tournament-{datetime.now():%Y%m%d-%H%M%S-%f}').resolve()
-    manifest = manifest_for(bots, maps, not args.no_replays, executable)
+    manifest = manifest_for(bots, maps, not args.no_replays, executable, args.sandbox)
     manifest['focus_bot'] = args.focus_bot
     if args.resume:
         if not (out / 'manifest.json').is_file():
