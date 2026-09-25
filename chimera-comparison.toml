@@ -1,0 +1,20 @@
+# Chimera v01 cross-family tournament. Paths are relative to this file.
+bots = [
+  "bots/avery-v06-late-feed",
+  "bots/ouroboros-v13-ladder",
+  "bots/hunter-v14-cpp-hybrid-route-spacing",
+  "bots/hunter-v20-portal-scouts",
+  "bots/fry-v14-stateful-size-aware-3",
+  "bots/kraken-v04-eval",
+  "bots/leviathan-v09-arrival",
+  "bots/hydra-v10-farmclean",
+]
+
+maps = ["maps"]
+
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 10
