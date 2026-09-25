@@ -1,0 +1,13 @@
+[project]
+language = "c++"
+include = [
+    "main.cpp",
+    "src/*.hpp",
+    "src/state/*.inc",
+    "src/navigation/*.inc",
+    "src/communications/*.inc",
+    "src/brain/*.hpp",
+    "src/brain/*.inc",
+    "src/brain/decisions/*.hpp",
+    "src/brain/decisions/*.inc",
+]
