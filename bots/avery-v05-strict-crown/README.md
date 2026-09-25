@@ -1,46 +1,54 @@
-# avery-v03-swarm-spacing
+# avery-v05-strict-crown — current lineage tip
 
-**Lineage:** avery · **Parent:** avery-v02-id-order-corridors.
+**Lineage:** avery · **Parent:** avery-v03-swarm-spacing (v04's broad crown
+module was measured and rejected; see its README).
 
 ## Hypothesis
 
-v02's replays showed many dragons converging on the same pearls/rooms:
-target selection is near-deterministic, so equidistant allies pile into the
-same pocket; growth and traffic then seal it — the dominant
-team_kill/self-collision engine. Decisive pearl de-confliction plus a soft
-spread drive should cut convergence without hurting foraging.
+The round-500 longest-dragon tiebreak (19 of v03's 20 r500 losses) is worth
+attacking, but the crown must be strictly singular and late so it cannot
+freeze the swarm economy the way v04's did.
 
-## Changes vs v02
+## Changes vs v03
 
-- `own_disc` 0.3 → 0.1: a pearl an ally head is clearly closer to is almost
-  worthless to us.
-- New spread term: reward distance from the nearest recent ally self-report
-  (≤ 3 rounds, ≤ 12 tiles), `w_spread=0.25`, capped at 8 tiles.
-- `w_crowd` 0.20 → 0.30.
+- Crown role from round **300** (v04: 200), only for dragons already
+  **len ≥ 8** (v04: 4), demote margin **2** (v04: 3). CROWN beacons relayed
+  3 hops; self packet carries a crown flag (bit 50).
+- Crown skips voluntary splits; head-risk ×1.5.
+- Crown-kill from round 380: strikes vs enemies ≥ longest known ally +60.
+- **No feeding** (v04's feed-die machinery dropped as too risky).
 
 ## Results
 
-Gauntlet run `experiment_data/avery-v03-swarm-spacing_20260925052848926144`
-(native, both sides, 11 maps; the shared `comparison.toml` had been extended
-by the tew line to 8 opponents, 176 games — tew rows excluded below for
-v01/v02 comparability).
+Run `experiment_data/avery-v05-strict-crown_20260925062900090323` (242 games,
+11 opponents — gauntlet-5 plus six tew-line bots, native, both sides,
+11 maps).
 
-| Opponent | W–L–D | v02 | v01 |
+| Opponent | W–L–D | v03 | v04 (rejected) |
 |---|---|---|---|
-| ouroboros-v10-beacon | **16–6** | 11–11 | 8–11 (+3 TO) |
-| hunter-v14-cpp | 12–10 | 16–6 | 14–8 |
-| hunter-v20-portal-scouts | 13–9 | 12–10 | 11–11 |
-| fry-v14 | 15–7 | 15–7 | 17–5 |
-| kraken-v04-eval | 18–3–1 | 16–5–1 | 16–5–1 |
-| **gauntlet-5 total** | **74–35–1 (67.7%)** | 70–39–1 (64%) | 66–40–1 (62%) |
-| tew-v07/v08/v09 | 9–13 each | — | — |
+| ouroboros-v10-beacon | 15–7 | 16–6 | 10–12 |
+| hunter-v14-cpp | 12–10 | 12–10 | 16–6 |
+| hunter-v20-portal-scouts | **14–8** | 13–9 | 13–9 |
+| fry-v14 | 16–6 | 15–7 | 17–5 |
+| kraken-v04-eval | 18–3–1 | 18–3–1 | 18–3–1 |
+| **gauntlet-5 total** | **75–34–1 (68.6%)** | 74–35–1 (67.7%) | 74–35–1 |
+| tew v07–v12 (each) | 8–9 wins | 9 (v07–v09) | 6–7 |
 
-Death attribution vs v02 (same 110 games): team kills 5939 → 5456,
-self-collisions 1813 → 1691, total deaths 12183 → 11700, pearls ~flat,
-splits 14032 → 13698. Convergence reduced but not eliminated.
+r500 losses: 19, still 18 on the longest tiebreak — the strict crown banks
+without economic damage but still does not outgrow enemy crowns; crown
+**survival** (escorts, safe farming grounds, fight avoidance) is the open
+problem, not crown production.
 
-**Loss profile:** 20 of 36 losses were round-500 rulings; 19 of those 20 on
-the longest-dragon tiebreak (13 by ≤ 6 segments). This motivated v04's
-crown/endgame module. The tew line beats v03 13–9 consistently — open
-question for v05+ (likely early-economy/hunting differences; not yet
-diagnosed with replays).
+## Open questions for v06+
+
+1. Crown survival: escorted crown / farm-in-dead-end (ouroboros-style) /
+   stronger late-game risk aversion. Target: flip the ~18 r500 longest
+   losses, 13 of which were within 6 segments in v03.
+2. tew matchup (~40% score): undiagnosed; their names suggest coordinated
+   hunting. Needs replay review of big_empty/arena losses
+   (`enemy` deaths 1904 on big_empty in the v02 run).
+3. Remaining convergence deaths (team_kills still ~46% of deaths):
+   target-claim packets (hydra-v08-style reservations) untried.
+4. Sandbox CPU checks on big_empty never performed (all runs native;
+   3 whole-game 600 s wall timeouts in the v01 run were machine contention,
+   runtime_faults = 0).

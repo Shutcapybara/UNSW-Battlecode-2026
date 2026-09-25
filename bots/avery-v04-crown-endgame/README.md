@@ -20,7 +20,7 @@
 
 ## Measured result — hypothesis REJECTED as implemented
 
-Run `experiment_data/avery-v04-crown-endgame_2026092505…` (242 games,
+Run `experiment_data/avery-v04-crown-endgame_20260925060524786389` (242 games,
 11 opponents): gauntlet-5 **74–35–1 — exactly flat vs v03**, but a large
 regression vs the tew line (6–7 wins per tew bot vs v03's 9) and vs
 ouroboros (10–12 vs v03's 16–6). Total 113–128–1.
