@@ -1,0 +1,395 @@
+"""DECISION layer: target field + candidate evaluation.
+
+V(candidate) = material + position (route distance to target) - trap - threat
+              - crowding - dithering (+ strike value, + split value)
+All weights live in params.P.
+"""
+import world as w
+import tactics as tx
+import roles
+from params import P
+
+MEM = {"target": -1, "tval": 0.0}
+DBG = []  # (path, score, area) per candidate when tracing
+
+
+def lv_now():
+    if roles.ROLE[0] == "crown":
+        return P["lv_crown"]
+    g = P["grow_from"]
+    if w.RND < g:
+        return P["lv"]
+    f = (w.RND - g) / max(1, 500 - g)
+    return P["lv"] + (P["lv_end"] - P["lv"]) * f
+
+
+def unit_value():
+    return P["unit"]
+
+
+def dragon_value(length):
+    return unit_value() + lv_now() * length
+
+
+# ------------------------------------------------------------------ targets
+def cell_value(c, t, ally, enemy):
+    """Value of reaching cell c after t steps (0 if nothing there)."""
+    rnd = w.RND
+    v = 0.0
+    pr = w.pearls.get(c)
+    if pr is not None:
+        if pr == rnd:
+            v = P["v_pearl"]
+        elif rnd - pr <= P["mem_ttl"]:
+            v = P["v_mem"]
+    elif w.bed[c] == 2:
+        s = w.spawn.get(c)
+        if s is not None:
+            arr = rnd + t
+            if s > arr:
+                v = P["v_bed"] * (1.0 - (s - arr) / P["bed_wait"])
+            elif s > rnd:
+                v = P["v_bed"]
+            else:  # predicted to have spawned while out of view
+                age = rnd - s
+                if age <= P["bed_stale"]:
+                    v = P["v_bed"] * (1.0 - 0.5 * age / P["bed_stale"])
+                else:
+                    v = P["v_bed"] * 0.3
+    elif w.seen[c] == 0:
+        v = P["v_unseen"]
+    if v <= 0:
+        return 0.0
+    role = roles.ROLE[0]
+    if role == "crown":
+        return v
+    if w.crown is not None and w.RND >= roles.feed_from() and roles.fresh() \
+            and w.tdist(c, w.crown[1]) <= P["crown_food"]:
+        return 0.0  # endgame: the crown's surroundings are its food
+    # ownership: a clearly closer head takes it first
+    for hc, hid in ally:
+        dd = w.tdist(hc, c)
+        if dd < t or (dd == t and hid < w.ME):
+            v *= P["own_disc"]
+            break
+    for hc in enemy:
+        if w.tdist(hc, c) < t:
+            v *= P["enemy_disc"]
+            break
+    return v
+
+
+def far_target():
+    """Nothing valuable within the search: a remembered pearl, else the
+    nearest sector with unseen tiles."""
+    best = -1
+    bv = 0.0
+    gamma = P["gamma"]
+    for c, r in w.pearls.items():
+        if w.RND - r <= P["mem_ttl"] and c != w.HEAD:
+            v = P["v_mem"] * gamma ** w.tdist(c, w.HEAD)
+            if v > bv:
+                bv = v
+                best = c
+    if best < 0:
+        best = w.sector_target()
+    return best
+
+
+def choose_target(own_idx):
+    """Route search from the head that scores every reached cell as it is
+    discovered (value x gamma^t) and stops once no farther cell can beat the
+    best found (or at the node cap: CPU).  Returns (target, dist, mask) where
+    mask[c] is the bitmask of first moves that start a shortest route to c."""
+    feeder = roles.ROLE[0] == "feeder"
+    crown = roles.ROLE[0] == "crown"
+    ally = w.ally_heads
+    enemy = [c for c, _ in w.enemy_heads]
+    gamma = P["gamma"]
+    # the best value any unexplored cell could still hold (tight bound -> early stop)
+    vmax = P["v_unseen"]
+    if w.pearls:
+        vmax = P["v_pearl"]
+    elif w.spawn and P["v_bed"] > vmax:
+        vmax = P["v_bed"]
+    if w.pends and P["v_dive"] > vmax:
+        vmax = P["v_dive"]
+    prev = MEM["target"]
+    prev_val = 0.0
+    best = -1
+    bval = 0.0
+    dive = -1
+    vac = w.vac
+    OPT = w.OPT
+    step_opt = w.step_opt
+    pearls = w.pearls
+    bed = w.bed
+    seen = w.seen
+    src = w.HEAD
+    goal = w.crown[1] if feeder else -1
+    dist = {src: 0}
+    mask = {src: 0}
+    q = [src]
+    qi = 0
+    cap = P["big_cap"] if w.RND - w.BORN >= 2 else P["born_cap"]
+    disc = 1.0
+    last_t = 0
+    while qi < len(q) and len(q) < cap:
+        c = q[qi]
+        qi += 1
+        t = dist[c] + 1
+        mc = mask[c]
+        if t != last_t:
+            last_t = t
+            disc = gamma ** t
+            if t > 3 and not feeder and vmax * disc <= bval:
+                break  # nothing farther can beat the best target
+        g = OPT[c]
+        if g is None:
+            g = step_opt(c)
+        for d in range(4):
+            n = g[d]
+            if n < 0:
+                if n == -3 and not crown and not feeder:
+                    v = P["v_dive"]
+                    for hc, hid in ally:
+                        if w.tdist(hc, c) < t - 1:
+                            v *= P["own_disc"]
+                            break
+                    sc = v * disc
+                    if sc > bval:
+                        bval = sc
+                        best = c
+                        dive = d
+                continue
+            m = mc if c != src else (1 << d)
+            tn = dist.get(n)
+            if tn is not None:
+                if tn == t:
+                    mask[n] |= m
+                continue
+            i = own_idx.get(n)
+            if i is not None and t < i + 2:
+                continue
+            v = vac.get(n)
+            if v is not None and t < v:
+                continue
+            dist[n] = t
+            mask[n] = m
+            q.append(n)
+            if feeder:
+                continue
+            if n not in pearls and bed[n] != 2 and seen[n]:
+                continue  # nothing there (fast path)
+            v = cell_value(n, t, ally, enemy)
+            if v > 0:
+                sc = v * disc
+                if n == prev:
+                    prev_val = sc
+                if sc > bval:
+                    bval = sc
+                    best = n
+                    dive = -1
+        if feeder and goal in dist:
+            break
+    if feeder:
+        MEM["target"] = goal
+        MEM["dive"] = -1
+        return goal, dist, mask
+    if dive < 0 and prev >= 0 and prev_val > 0 and prev != best and prev_val * P["hyst"] >= bval:
+        best = prev
+        bval = prev_val
+    if best < 0:
+        best = far_target()
+    MEM["target"] = best
+    MEM["tval"] = bval
+    MEM["dive"] = dive
+    return best, dist, mask
+
+
+# --------------------------------------------------------------- candidates
+def candidates(body):
+    """Move paths worth evaluating: single steps always; 2-3 step sprints only
+    with an enemy head near (strike / escape) or a pearl two steps away."""
+    out = [[d] for d in range(4)]
+    L = w.LEN
+    if L < 3:
+        return out
+    near_threat = False
+    for ec, eid in w.enemy_heads:
+        if w.cheb(ec, w.HEAD) <= 4:
+            near_threat = True
+            break
+    if not near_threat:
+        return out
+    for d1 in range(4):
+        for d2 in range(4):
+            if d2 == (d1 + 2) % 4:
+                continue
+            out.append([d1, d2])
+            if L >= 4:
+                for d3 in range(4):
+                    if d3 == (d2 + 2) % 4:
+                        continue
+                    out.append([d1, d2, d3])
+    return out
+
+
+def evaluate(threat):
+    """Return (score, action) with action = ('move', path) or ('split', n)."""
+    body = w.body
+    L = w.LEN
+    lv = lv_now()
+    own_idx = {c: i for i, c in enumerate(body)}
+    target, dist, mask = choose_target(own_idx)
+    if roles.ROLE[0] == "feeder":
+        ch = roles.crown_visible()
+        if ch >= 0 and w.tdist(ch, w.HEAD) <= P["feed_dist"]:
+            back = (w.FACE + 2) % 4
+            for d in [back, 0, 1, 2, 3]:
+                st = tx.sim([d], body)[0]
+                if st == "dead":
+                    return 0.0, ("move", [d])
+    # progress of each first move towards the target: +1 on a shortest
+    # route, -1 otherwise; beyond the search, torus distance steers
+    prog = [0, 0, 0, 0]
+    if target >= 0 and target != w.HEAD:
+        tm = mask.get(target)
+        if tm is not None:
+            for d in range(4):
+                prog[d] = 1 if (tm >> d) & 1 else -1
+        else:
+            h0 = w.tdist(w.HEAD, target)
+            g = w.dest(w.HEAD)
+            for d in range(4):
+                if g[d] >= 0:
+                    prog[d] = h0 - w.tdist(g[d], target)
+    need = min(max(L + P["slack"], P["min_area"]), P["flood_cap"])
+    best = None
+    best_s = -1e18
+    ally = w.ally_heads
+    for path in candidates(body):
+        st, nb, eaten, hit = tx.sim(path, body)
+        steps = len(path)
+        if st == "dead":
+            s = -1000.0 - steps
+        elif st == "dive":  # unknown landing: risk grows with what we carry
+            s = P["dive_base"] - P["p_blind"] * dragon_value(L)
+            if MEM.get("dive", -1) == path[0] and target == w.HEAD:
+                s += P["v_dive"] * 0.5
+            s -= threat_cost(w.HEAD, L, threat) * 0.5
+        elif st == "h2h":
+            s = strike_value(hit, steps)
+            if s is None:  # a bad trade still beats dying alone; a friend never
+                s = -950.0 if hit in w.elen else -1100.0
+        else:
+            h = nb[-1]
+            dl = len(nb) - L
+            s = lv * dl - P["w_sprint"] * (steps - 1)
+            if tx.BLIND[0]:  # a portal exit we cannot see may hold a head
+                s -= P["p_blind"] * dragon_value(len(nb))
+            if eaten:
+                s += 0.5 * eaten  # tie-break towards material now
+            # position: progress towards the target
+            s += P["w_goal"] * prog[path[0]] * (1.0 if steps == 1 else 0.7)
+            # trap
+            area = tx.flood(nb, need, 0)
+            if area < need:
+                s -= P["w_trap"] * (need - area) / need
+                if area < len(nb):
+                    s -= P["w_trap"]
+            # threat
+            s -= threat_cost(h, len(nb), threat)
+            # crowding
+            for hc, hid in ally:
+                dd = w.tdist(hc, h)
+                if dd <= 2:
+                    s -= P["w_crowd"] * (3 - dd)
+            s -= P["w_visit"] * w.visits[h]
+            if DBG is not None:
+                DBG.append((path, round(s, 1), area))
+            if w.bed[h] == 2 and w.spawn.get(h, -9) == w.RND + 1:
+                s -= P["w_bed_block"]
+        if s > best_s:
+            best_s = s
+            best = ("move", path)
+    sp = split_option(body, threat, need)
+    if sp is not None and sp[0] > best_s:
+        best_s, best = sp
+    return best_s, best
+
+
+def threat_cost(h, newlen, threat):
+    """Expected loss from enemy heads that can reach h before our next turn.
+    Opponents in the pool trade into LONGER targets, so the chance depends
+    on the length comparison."""
+    ts = threat.get(h)
+    if not ts:
+        return 0.0
+    mine = dragon_value(newlen)
+    cost = 0.0
+    for steps, eid, el in ts:
+        if newlen > el:
+            p = P["p_long"]
+        elif newlen == el:
+            p = P["p_eq"]
+        else:
+            p = P["p_short"]
+        if steps > 1:
+            p *= P["p_sprint"]
+        loss = mine - P["k_their"] * dragon_value(el)
+        if loss < P["threat_base"]:
+            loss = P["threat_base"]
+        c = p * loss
+        if c > cost:
+            cost = c
+    return P["w_threat"] * cost
+
+
+def strike_value(eid, steps):
+    if eid not in w.elen:
+        return None  # an ally head
+    if not P["attack"] or w.UNITS < P["atk_units"]:
+        return None
+    theirs = dragon_value(w.elen.get(eid, 1) + (P["cut_extra"] if eid in w.cut else 0))
+    mine = dragon_value(w.LEN)
+    gain = theirs - mine - P["w_sprint"] * (steps - 1)
+    if gain < P["atk_margin"]:
+        return None
+    return 2.0 + gain
+
+
+def split_option(body, threat, need):
+    L = w.LEN
+    n = P["child"]
+    if L < P["split_min"] or L - n < 2 or w.UNITS >= w.LIMIT:
+        return None
+    if w.RND >= P["split_stop"] or w.RND >= P["grow_from"]:
+        return None
+    if roles.ROLE[0] != "forager":
+        return None
+    if len(body) < L:
+        return None  # body not fully known
+    # child: head = old tail, body reversed rear n segments
+    child = body[:n][::-1]
+    ch = child[-1]
+    cown = set(child)
+    pown = set(body[n:])
+    ok = 0
+    for x in w.dest(ch):
+        if x >= 0 and x not in cown and x not in pown and x not in w.occ:
+            ok += 1
+    if not ok:
+        return None
+    if tx.flood(child, P["child_area"], 0) < P["child_area"]:
+        return None
+    parent = body[n:]
+    s = P["split_val"]
+    pneed = min(max(L - n + P["slack"], P["min_area"]), P["flood_cap"])
+    area = tx.flood(parent, pneed, 0)
+    if area < pneed:
+        s -= P["w_trap"] * (pneed - area) / pneed
+    s -= threat_cost(w.HEAD, L - n, threat)
+    if threat.get(ch):
+        s -= 1.0
+    return s, ("split", n)
