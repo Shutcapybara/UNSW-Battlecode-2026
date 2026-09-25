@@ -1,0 +1,18 @@
+# Avery lineage gauntlet: the cycle-0 gauntlet-5 plus tew-v12 (strongest
+# ouroboros-ladder variant in the v05 run) to track the weak matchup.
+bots = [
+  "bots/ouroboros-v10-beacon",
+  "bots/hunter-v14-cpp-hybrid-route-spacing",
+  "bots/hunter-v20-portal-scouts",
+  "bots/fry-v14-stateful-size-aware-3",
+  "bots/kraken-v04-eval",
+  "bots/tew-v12-mid-support",
+]
+maps = ["maps"]
+
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 10
