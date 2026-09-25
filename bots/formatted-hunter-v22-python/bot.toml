@@ -1,0 +1,12 @@
+[project]
+language = "py"
+include = [
+    "*.py",
+    "src/*.py",
+    "src/core/*.py",
+    "src/actions/*.py",
+    "src/state/*.py",
+    "src/communications/*.py",
+    "src/brain/*.py",
+    "src/brain/decisions/*.py",
+]
