@@ -96,9 +96,14 @@ class Obj:
 
     def text(self, index):
         got = self.r.ptr(self.s, self.a + self.dw + index)
+        if got is None:
+            return None
         s, a, tag = got
-        n = (tag >> 2) & 0x3FFFFFFF
-        return self.r.segments[s][a * 8:(a * 8) + n - 1].decode()
+        if tag & 3 != 1 or (tag >> 32) & 7 != 2:
+            raise ValueError('expected a byte list (Text)')
+        count = tag >> 35
+        raw = self.r.segments[s][a * 8:a * 8 + count]
+        return raw[:-1].decode('utf-8', 'replace') if raw.endswith(b'\x00') else raw.decode('utf-8', 'replace')
 
     def struct_list(self, index):
         """List of same-layout structs -> list of Obj."""

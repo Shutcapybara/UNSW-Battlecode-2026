@@ -1,0 +1,21 @@
+# Default comparison roster; copy this file to define your own experiment.
+# Paths are relative to THIS TOML file, not the working directory.
+# A bot entry is a directory containing bot.toml. The candidate itself is skipped.
+bots = [
+  "bots/ouroboros-v10-beacon",
+  "bots/hunter-v14-cpp-hybrid-route-spacing",
+  "bots/hunter-v20-portal-scouts",
+  "bots/fry-v14-stateful-size-aware-3",
+  "bots/kraken-v04-eval",
+]
+
+# Each entry may be a .map file or a directory of .map files (not recursive).
+# Use explicit files when you want a fixed subset, e.g. ["maps/arena.map"].
+maps = ["maps"]
+
+[run]
+sides = ["A", "B"]       # Candidate's side; both sides avoids an initiative bias.
+jobs = 4                 # Concurrent games.
+timeout_seconds = 600
+sandbox = false          # true enables the judge's CPU limits.
+control_every = 10        # Sample the space-control heuristic every N rounds.
