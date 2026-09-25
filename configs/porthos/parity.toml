@@ -1,0 +1,11 @@
+# Parity screen: candidate vs three varied references on four maps, both sides.
+# Used to check complete move/split/sonar stream equivalence between an
+# extraction/refactor and monte_christo-v01-core (source-matched replays).
+bots = ["../../bots/tew-v12-mid-support", "../../bots/hunter-v20-portal-scouts", "../../bots/ouroboros-v13-ladder"]
+maps = ["../../maps/Colosseum.map", "../../maps/devil.map", "../../maps/queen_of_spades.map", "../../maps/trauma.map"]
+[run]
+sides = ["A", "B"]
+jobs = 3
+timeout_seconds = 600
+sandbox = false
+control_every = 25
