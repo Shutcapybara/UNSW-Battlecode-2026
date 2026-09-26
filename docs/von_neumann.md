@@ -183,6 +183,26 @@ This matches the replay-statistics prior (initiated contact is on average
 negative) while explaining why P1's narrow gate was already near-optimal: the
 screen roster rarely offers the kind of trade the gate admits.
 
+### Cycle-2 verdict on aggression (per selection_rule_cycle2.json)
+
+The addendum's validation condition — *some information-conditioned
+aggression variant passes the union gate while aggro-off does not* — resolved
+**in reverse**: aggro-off itself was the only arm to pass (+2 union), and it
+passed the gauntlet (+4). Therefore:
+
+1. **P1's aggression block is not a beneficial optimisable component.** Its
+   two pieces split cleanly: the swarm-push term never engages anywhere
+   measured (0 flips in 60 fixtures incl. saturation maps); the strike-margin
+   relax engages only under saturation on big maps, where it is a small net
+   liability (round-500 length races).
+2. **Better information did not rehabilitate it.** Validated dual windows,
+   self-size/phase factoring and room normalisation produced only
+   flat-to-negative consumers (mb2 −3, tf −1/−3 on dev; +1 at best on the
+   union).
+3. **What remains promising is contact creation** (cycle-1 conclusion,
+   unchanged) and the avery/crown-race matchup hole — both outside the
+   frozen execution layer this cycle.
+
 ### Honest limits of this cycle
 
 - The dev screen barely exercises the aggression machinery (16 flat arms,
@@ -195,6 +215,12 @@ screen roster rarely offers the kind of trade the gate admits.
   not promoted.
 - One cycle, one roster family; the reserve exposed avery-v08 0–4 as an
   unaddressed matchup hole (crown-race endgame, not combat admission).
+- Cycle 2: the fresh reserve family cannot express saturation (0 flips both
+  cycles) — it validates nothing about gate-dependent behaviour; ~10 of the
+  cycle's runs carried harness timeouts under 4-way parallel load and were
+  resumed to zero errors (deterministic outcomes unaffected); grad1's
+  inertness means INFO-1's value is untested, not refuted (its weight can
+  never change an argmax against the goal-progress term at current scale).
 
 ## 7. Next hypotheses (ranked)
 
@@ -226,3 +252,154 @@ screen roster rarely offers the kind of trade the gate admits.
   trace) and `experiment_data/vn-x01-*` (28 sweep arms; two pre-fix no-op runs
   recorded in `invalidated_runs.json`).
 - Study doc: `docs/von_neumann.md` (this file).
+
+## 9. Cycle 2: optimise the information available to aggression
+
+Brief: with aggression at a flat local optimum (cycle 1), freeze the
+execution layer and iterate the feature/information layer — EWMA density
+fields (friendly/enemy, counts and sizes), own size, time, per-instance
+terrain with available-space normalisation, message validation, dual
+windows, and friendly-vs-enemy gradients — with all decisions
+context-dependent (never compass). Then return to aggression.
+
+### Freeze boundary (cycle 2)
+
+Frozen byte-exact from x01: `executors`, `intentions`, `targets`, `tactics`,
+`main`, `world`, `roles`, `radio`, `comms`, `risk_features`, `diagnostics`,
+and all non-information parameters. Iterated: `swarm`, `density` (field
+construction), `features` (fact construction), `decision` (three consumption
+switches), `params` (switches, all default-off). Master source:
+`bots/von_neumann-x06-info` (POLICY_VERSION 4).
+
+A key scope finding: **the entire upgrade is receiver-side.** The radio
+stream is unchanged — the dual windows reinterpret the same packets with a
+second decay constant; space-normalisation uses the per-instance terrain
+already in `world`; and idea #7 (message validation) turned out to be
+already satisfied at the packet port: every packet carries a team-tag byte
+plus a 56-bit mixing checksum, and `comms.unpack` rejects foreign-team or
+corrupted payloads (p ≈ 1−2⁻¹⁶); a regression test now pins this. So
+build-only cells are parity-exact by construction, and consumption cells
+change decisions only.
+
+### Stage A: EWMA choices validated against actual dragon data
+
+`tools/von_neumann/ewma_validate.py` decodes 14 replays (gauntlet + fresh
+reserve + dev screen maps), reconstructs per-round per-dragon ground truth
+(id-keyed heads, teams, split lengths, pearls; lengths approximated
+birth+pearls), and replays the bot's exact EWMA rules across half-lives
+{0.5, 1, 2, 4, 8, 16}; 229,404 dragon-round observations. Frozen record:
+`tools/von_neumann/ewma_frozen.json`.
+
+| h | est_err enemy | contact lag | exit "ghost" |
+|---|---|---|---|
+| 0.5 | 0.039 | 0 | 0.00 |
+| 1.0 | 0.087 | 0 | 0.22 |
+| 2.0 | 0.142 | 0.57 | 0.67 |
+| **4.0 (inherited)** | 0.192 | 0.89 | 0.94 |
+| 8.0 | 0.235 | 1.06 | 1.05 |
+| 16.0 | 0.271 | 1.07 | 1.05 |
+
+- **The inherited half-life 4.0 sits at the stability knee** — exit memory
+  and contact lag saturate beyond it while estimation error keeps growing.
+  The existing constant is data-validated, not replaced.
+- **Short window = 1.0**: zero contact lag with one round of exit memory,
+  2.2× lower error than the long window. The pair (1, 4) yields the
+  rising/falling-contact derivative.
+- The pre-stated choice rule (min lag) was degenerate — a near-raw window
+  always wins on lag; revised to the knee rule after reading the table and
+  before any cycle-2 screen outcome (recorded in the frozen file).
+- Measured cost of fuzzed-position reporting: the send-side position EWMA
+  lags the true head by **3.2 tiles** on average — the spatial resolution
+  ceiling of remote evidence, and a documented trade-off (send-side anonymity
+  vs accuracy), unchanged this cycle.
+
+### Mechanisms (x06 switches; 0 = P1 exactly)
+
+INFO-1 `w_grad` — the early-saturation push toward enemy control follows the
+gradient **damped by bounded room at the landing cell** (`spatial_gain =
+swarm_gain · min(1, room/12)`): the same enemy density in a tight corridor
+is a worse push target than in open water.
+
+INFO-2 `w_mb2` — the strike margin shifts with the **short-window**
+enemy-minus-ally balance, **damped by own length** (a 3-segment forager
+reads +3 enemy segments differently than a 15-segment dragon) and **faded by
+game phase**; evidence-gated (no confidence → no shift). This is CM-1
+retried with the validated window and self-size/phase factoring.
+
+INFO-3 `w_tf` — `threat_cost` scales by `1 + w_tf·contact`, where `contact`
+is the short-window enemy length at the head normalised to [0,1]: standing
+in reach is worse when fresh evidence confirms someone is actually there.
+(Cycle 1's blind threat-05 was +1; this is its evidence-based successor.)
+
+Tests: `tests/test_von_neumann.py` now 11 checks (P1 defaults, mb2
+direction/gate/phase/own-length damping, short-window faster decay,
+threat-scale normalisation, **foreign-team packet rejection**, spatial-gain
+construction, plus the cycle-1 checks).
+
+### Cycle-2 results
+
+Dev screen (24 games, baseline 19–5): build-only cell `info-build` 19–5 exact
+parity (the receiver-side construction changes nothing, as designed);
+`grad1` 19–5 with **zero fixture flips — bit-identical games**;
+`mb2-2`/`mb2-4` 16–8; `tf-05` 18–6, `tf-10` 16–8; `info-all` 14–10.
+Nothing beats the baseline where the baseline is already measured — and the
+flip counts show *why*: on compact fixtures the aggression gate never fires
+and the margin/threat consumers only ever touch rare strike decisions.
+
+**Instrument finding (pre-registered addendum
+`selection_rule_cycle2.json`):** measured from gauntlet replays, the team
+reaches the P1 saturation gate (≥45 units by round 200) on 12/40 gauntlet
+games — always on big maps (big_empty, schooltime, stronghold, trauma,
+trophy) and **never on the dev screen's compact maps**. Cycle-1's flat
+aggression arms were unmeasurable, not neutral. The saturation screen
+(`configs/von_neumann/sat_screen.toml`, 18 games, same roster, big maps) was
+frozen as the second instrument; its baseline record (x06 defaults-off,
+behaviour-identical to x01) is **13–5**, union baseline **32–10**.
+
+Union results (42 games):
+
+| Arm | Dev | Sat | Union | vs 32–10 | Flips |
+|---|---|---|---|---|---|
+| grad1 (INFO-1) | 19–5 | 13–5 | 32–10 | +0 | **0** (fully inert: 0 flips, 0 round changes even where the gate fires) |
+| **re-agro-off** | 19–5 | **15–3** | **34–8** | **+2** | 4, all big_empty round-500 length races (3 losses→wins, 1 win→loss) |
+| re-grad-push4 | 19–5 | 14–4 | 33–9 | +1 | few |
+| re-grad-relax25 | 19–5 | 13–5 | 32–10 | +0 | 0 |
+| tf-05 (INFO-3) | 18–6 | 15–3 | 33–9 | +1 | few |
+| re-tf-grad | 18–6 | 15–3 | 33–9 | +1 | few |
+
+**re-agro-off meets the frozen advance gate** (union ≥ baseline+2, ≥2 flips,
+0 errors) and advanced to the 182-game gauntlet as
+`bots/von_neumann-x07-quiet` (x06 base + `aggro_relax=0, aggro_push=0`;
+everything else default).
+
+### Promotion gates for x07-quiet
+
+| Gate | Requirement | Result | Verdict |
+|---|---|---|---|
+| Gauntlet (182) | ≥ 127 wins (parent record 126–56) | **130–52**, 0 errors | **PASS** (+4; per-opponent: avery 19–7, drake 20–6, hunter 18–8, hydra 23–3, ouroboros 18–8, sinbad 14–9–3, tew 14–9–3) |
+| Fresh reserve (16) | ≥ 9 wins (baseline 8–8 + 1) | 8–8 | **FAIL** — but with **0 flips and 0 round changes**: bit-identical games. The reserve maps never saturate, so the mechanism is unexpressed there, not refuted. |
+| Judge sandbox (4) | 0 TLE / faults, budget clean | 2–2, 0 faults, 0 TLE; stronghold won both sides (longest 40 vs 8 at r500) | PASS |
+
+**No promotion under the frozen rule** (all gates required). The honest
+reading across 240 games: silencing the gate is strictly-better-where-
+expressed (gauntlet +4, union +2) and bit-identical-where-unexpressed (dev
+compact, fresh reserve) — weak dominance, never negative. The rule's reserve
+gate exists to catch dev-overfitting and here fired on a family that cannot
+measure the mechanism; a future reserve family with saturating maps is owed
+before any release. `von_neumann-x07-quiet` is retained as a measured cell;
+the playing recommendation remains porthos-x04 behaviour, with the x07
+gauntlet record attached.
+
+Mechanism reading of the two decisive arms:
+
+- The **swarm push term (P1-1b) is dead in practice**: grad1 shows zero
+  engagement anywhere — with or without room normalisation the push term
+  (≤2.0 × a small balance delta) never overcomes the goal-progress term that
+  steers movement. P1's "+13 aggression" cannot have come through this term
+  on any fixture measured.
+- The **strike-margin relax (P1-1a) is the engaging piece**, and where it
+  fires (saturation + big maps) it is a net −2 liability: every flip is a
+  round-500 longest-dragon race on big_empty, where relaxed trades spend
+  length the endgame needs. The information upgrades (validated windows,
+  self-size/phase factoring, room normalisation) did not rescue it — the
+  consuming arms were flat-to-negative.

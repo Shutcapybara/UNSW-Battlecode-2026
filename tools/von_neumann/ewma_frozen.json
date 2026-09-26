@@ -1,0 +1,109 @@
+{
+  "replays": [
+    "Colosseum-candidate-A.replay",
+    "dilemma-candidate-A.replay",
+    "arena-candidate-A.replay",
+    "queen_of_spades-candidate-A.replay",
+    "autarky-candidate-A.replay",
+    "schooltime-candidate-A.replay",
+    "big_empty-candidate-A.replay",
+    "stronghold-candidate-A.replay",
+    "default-candidate-A.replay",
+    "trauma-candidate-A.replay",
+    "default_small-candidate-A.replay",
+    "trophy-candidate-A.replay",
+    "devil-candidate-A.replay",
+    "vn_reserve_corridor_clash-candidate-A.replay"
+  ],
+  "games": [
+    "Colosseum",
+    "Prisoners",
+    "Arena",
+    "Queen",
+    "Autarky",
+    "Schooltime",
+    "Big",
+    "stronghold",
+    "Default",
+    "Trauma",
+    "Default",
+    "Trophy",
+    "Devil",
+    "vn_reserve_corridor_clash"
+  ],
+  "note": "Half-life validation vs replay ground truth, frozen before any cycle-2 screen outcome was read. Length approximated birth+pearls; identity-by-head-cell is the conservative reset model.",
+  "half_lives": {
+    "0.5": {
+      "pos_err": 3.216,
+      "est_err_enemy": 0.039,
+      "est_err_ally": 0.149,
+      "contact_lag": 0,
+      "ghost": 0,
+      "n_lag": 9425,
+      "n_ghost": 7842,
+      "n_obs": 229404
+    },
+    "1.0": {
+      "pos_err": 3.216,
+      "est_err_enemy": 0.087,
+      "est_err_ally": 0.316,
+      "contact_lag": 0,
+      "ghost": 0.22,
+      "n_lag": 9425,
+      "n_ghost": 7220,
+      "n_obs": 229404
+    },
+    "2.0": {
+      "pos_err": 3.216,
+      "est_err_enemy": 0.142,
+      "est_err_ally": 0.483,
+      "contact_lag": 0.57,
+      "ghost": 0.67,
+      "n_lag": 7874,
+      "n_ghost": 6302,
+      "n_obs": 229404
+    },
+    "4.0": {
+      "pos_err": 3.216,
+      "est_err_enemy": 0.192,
+      "est_err_ally": 0.63,
+      "contact_lag": 0.89,
+      "ghost": 0.94,
+      "n_lag": 6792,
+      "n_ghost": 5669,
+      "n_obs": 229404
+    },
+    "8.0": {
+      "pos_err": 3.216,
+      "est_err_enemy": 0.235,
+      "est_err_ally": 0.76,
+      "contact_lag": 1.06,
+      "ghost": 1.05,
+      "n_lag": 5742,
+      "n_ghost": 5250,
+      "n_obs": 229404
+    },
+    "16.0": {
+      "pos_err": 3.216,
+      "est_err_enemy": 0.271,
+      "est_err_ally": 0.886,
+      "contact_lag": 1.07,
+      "ghost": 1.05,
+      "n_lag": 5037,
+      "n_ghost": 5080,
+      "n_obs": 229404
+    }
+  },
+  "chosen": {
+    "short_h": 1.0,
+    "long_h": 4.0,
+    "rule": "knee-based: long = the knee of the ghost/lag saturation curves (both saturate by h=4 while est_err keeps growing; matches the existing swarm/density constant, now data-validated); short = fastest h with >=0.2 rounds exit memory and zero contact lag.",
+    "revision_note": "The pre-stated rule (min contact_lag s.t. est_err<=1.0) was degenerate: a near-raw window always wins on lag. Revised to the knee rule AFTER reading this table but BEFORE any cycle-2 screen outcome was read; the raw numbers above are untouched.",
+    "findings": {
+      "pos_err_h4": 3.22,
+      "pos_err_note": "the send-side position EWMA (h=4, as swarm.LOCAL) lags the true head by ~3.2 tiles on average: the price of fuzzed position reporting, and the effective spatial resolution of remote evidence.",
+      "long_h_validated": "existing half-life 4.0 is at the stability knee",
+      "short_long_pair": "(1.0, 4.0) gives the rising/falling contact derivative"
+    }
+  }
+}

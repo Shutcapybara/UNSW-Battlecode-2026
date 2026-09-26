@@ -1,0 +1,9 @@
+{
+  "addendum": "Cycle 2 (information layer then aggression), frozen 2026-09-26 before any consumption-arm outcome (grad1's 19-5 W-L recorded; flips unread; mb2/tf/info-all pending).",
+  "motivation": "Mechanism evidence, not outcome peeking: the 24-game dev screen never saturates the team to the P1 aggression gate (0/24 games reach 45 units before r200; measured from gauntlet replays, 12/40 games there do, all on big maps). Cycle-1 aggression arms were therefore unmeasurable, not neutral.",
+  "new_instrument": "configs/von_neumann/sat_screen.toml (18 games, big_empty/schooltime/trophy x dev roster). Baseline record established by an x06-info defaults-off run before any variant is judged on it.",
+  "union_metric": "Consumption and aggression-retest arms are judged on the UNION of dev screen (24) + sat screen (18) vs the corresponding baseline records.",
+  "advance_to_gauntlet": "Union wins >= baseline union wins + 2, zero errors, and at least 2 fixture flips overall (the change must actually engage).",
+  "gauntlet_and_promotion": "Unchanged from selection_rule.json (gauntlet >= 127/182; fresh reserve >= baseline 8-8 + 1; judge clean).",
+  "aggression_verdict_addendum": "The aggression question is re-answered on the union: aggression is validated as optimisable iff some information-conditioned aggression variant passes the advance gate on the union while aggro-off (on the same info base) does not."
+}

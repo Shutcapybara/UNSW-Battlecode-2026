@@ -18,6 +18,7 @@ Deterministic engine: per-fixture outcomes pair exactly against the baseline
 record, so deltas are attributable fixture by fixture.
 """
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -25,7 +26,10 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-FROZEN = ROOT / "bots" / "von_neumann-x01-frozen"
+# Base bot for override-only variants: default the frozen x01 control; set
+# VN_BASE=von_neumann-x06-info (etc.) to sweep a newer master source.
+BASE = ROOT / "bots" / os.environ.get("VN_BASE", "von_neumann-x01-frozen")
+CONFIG = ROOT / os.environ.get("VN_CONFIG", "configs/von_neumann/screen.toml")
 OUT = ROOT / "tools" / "von_neumann" / "sweep_results.json"
 SCREEN = ROOT / "configs" / "von_neumann" / "screen.toml"
 
@@ -81,18 +85,36 @@ def experiments():
         # value-starved, not condition-starved); added before any hunt-arm
         # outcome was read ---------------------------------------------------
         "huntpack": {"hunt_from": 100, "prey_min": 6, "v_hunt": 2.0, "hunt_max_len": 8},
+        # --- cycle 2: information-layer arms (base: von_neumann-x06-info;
+        # run with VN_BASE=von_neumann-x06-info) ----------------------------
+        "info-build": {"field_dual": 1, "field_room": 1},   # build only: parity
+        "grad1": {"w_grad": 1},                              # INFO-1 room-normalised push
+        "mb2-2": {"w_mb2": 2.0},                             # INFO-2 margin shift
+        "mb2-4": {"w_mb2": 4.0},
+        "tf-05": {"w_tf": 0.5},                              # INFO-3 contact-scaled threat
+        "tf-10": {"w_tf": 1.0},
+        "info-all": {"field_dual": 1, "field_room": 1, "w_grad": 1,
+                     "w_mb2": 2.0, "w_tf": 0.5},
+        # --- cycle 2 aggression re-test on the info base (union metric;
+        # registered in selection_rule_cycle2.json before tf/info-all
+        # outcomes were read) ----------------------------------------------
+        "re-agro-off": {"aggro_relax": 0.0, "aggro_push": 0.0},
+        "re-grad-push4": {"w_grad": 1, "aggro_push": 4.0},
+        "re-grad-relax25": {"w_grad": 1, "aggro_relax": 2.5},
+        "re-tf-grad": {"w_grad": 1, "w_tf": 0.5},
     }
 
 
 def variant_dir(name):
-    return ROOT / "bots" / ("vn-x01-" + name)
+    return ROOT / "bots" / (BASE.name.replace("von_neumann", "vn").replace("-x0", "-x0")
+                            + "-" + name)
 
 
 def make_variant(name, override):
     d = variant_dir(name)
     if d.exists():
-        shutil.rmtree(d)
-    shutil.copytree(FROZEN, d, ignore=shutil.ignore_patterns("__pycache__"))
+        shutil.rmtree(d, ignore_errors=True)  # lanes may share arm names
+    shutil.copytree(BASE, d, ignore=shutil.ignore_patterns("__pycache__"))
     (d / "override.py").write_text(
         "# Von Neumann sweep variant (auto-generated; reproducible from tools/von_neumann/sweep.py).\n"
         "OVERRIDE = %r\n" % (override,))
@@ -152,7 +174,8 @@ def save_results(data):
     OUT.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
 
 
-def cmd_run(names, config=SCREEN):
+def cmd_run(names, config=None):
+    config = Path(config) if config else CONFIG
     ex = experiments()
     for name in names:
         if name not in ex:
@@ -170,7 +193,7 @@ def cmd_run(names, config=SCREEN):
             "rows": t["rows"],
         }
         save_results(data)
-        shutil.rmtree(variant_dir(name))
+        shutil.rmtree(variant_dir(name), ignore_errors=True)
         print(f"[{name}] {t['progress']['wins']}-{t['progress']['losses']}"
               f"-{t['progress']['draws']} ({t['progress']['errors']} errors)"
               f" in {secs:.0f}s  run={run_dir.name}", flush=True)
@@ -220,6 +243,7 @@ def _valid_override(run_dir):
     """True iff the run's frozen source snapshot has an override.py that
     actually defines OVERRIDE (guards the comment-only generator bug)."""
     botname = name_of(run_dir)
+    # noqa: base tracking
     p = run_dir / "sources" / "bots" / botname / "override.py"
     if not p.exists():
         return None
@@ -240,8 +264,13 @@ def cmd_rebuild():
     for run_dir in sorted((ROOT / "experiment_data").glob("vn-x01-*")):
         if not (run_dir / "results.json").exists():
             continue
-        name = name_of(run_dir).replace("vn-x01-", "", 1)
-        if name not in ex:
+        botname = name_of(run_dir)
+        name = None
+        for pre in ("vn-x06-info-", "vn-x01-"):
+            if botname.startswith(pre):
+                name = botname[len(pre):]
+                break
+        if name is None or name not in ex:
             continue
         v = _valid_override(run_dir)
         if v is not True:

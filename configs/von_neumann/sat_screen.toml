@@ -1,0 +1,12 @@
+# Saturation-exposing fixtures: maps where the candidate team demonstrably
+# reaches >=45 units before round 200 (measured from gauntlet replays
+# 2026-09-26), so the P1 aggression gate actually fires. Same roster as the
+# dev screen for comparability. 3 x 3 x both sides = 18 games.
+bots = ["../../bots/tew-v12-mid-support", "../../bots/hunter-v20-portal-scouts", "../../bots/ouroboros-v13-ladder"]
+maps = ["../../maps/big_empty.map", "../../maps/schooltime.map", "../../maps/trophy.map"]
+[run]
+sides = ["A", "B"]
+jobs = 3
+timeout_seconds = 900
+sandbox = false
+control_every = 25
