@@ -1,0 +1,3 @@
+[project]
+language = "python"
+include = ["main.py"]
