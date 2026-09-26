@@ -1,0 +1,71 @@
+# Valjean handoff (Claude, French-literary line) — 26 Sep 2026
+
+## Where things are
+
+| Item | Location |
+|---|---|
+| Released bot | `bots/valjean-v01-portal-memory` (standalone; settings in the `RELEASE` block of `params.py`) |
+| Design + full ledger | `docs/valjean.md` (contract, how-to-add-a-feature loop, every experiment incl. failures) |
+| Tools | `tools/valjean/`: `arena.py` (cached deterministic games), `compare.py` (paired fixture diff), `snap.py` (ASCII replay frames), `freeze.py` (variant → `bots/` folder), `make_maps.py` + `fresh/` (frozen validation maps, hashes in `fresh.json`), `maps/` (autarky/dilemma transposes), `pack.sh` (sync archive) |
+| Experiment state | `build/valjean/` (git-ignored): `dev` (working copy, every feature off by default), `exp/e1`–`e5` (frozen bases), `variants/` (base + `override.py`), `cache.jsonl` (every result) |
+| Project note | `claude/valjean-status.md` |
+
+## Architecture
+
+- **Decision rule:** `Q(c) = objective_value(c, features) + executor_value(c)`.
+  - Executor value = Monte Christo's own score for the best previewed move or split, plus progress toward the target (unit: segments of length).
+  - Features enter only through `objective_value`.
+- **Parity:** with all features off it reproduces Monte Christo v01 exactly (54/54 identical games). New features are default-off parameters, so variants compare against cached baselines.
+
+| Layer | Modules | Role |
+|---|---|---|
+| State | `world`, `roles`, `radio`, `mass`, `topology`, `regions` | Observations, memory, shared reports, map shape |
+| Candidates | `candidates` | Objective records `{kind, target, subject, params, candidate_id}`; no commands |
+| Execution | `executors` | Shared move previews (≤52) + one executor per kind; pure |
+| Decision | `policy` | Computes Q; escape split only below a gate; donation always wins |
+| Commit | `main.commit` | Only writer of memory |
+
+- **Kinds:** GATHER, SCOUT, ATTACK, RETREAT, FEED_ALLY, REPRODUCE (Aramis set).
+- **New sonar packet T_MASS (type 7):** sender position + ally/enemy body-segment counts. Feeds game-relative features (direction/distance of enemy and allied mass), never compass directions.
+
+## Results
+
+Native games (not judge sandbox), both sides. R6 roster: ouroboros-v13, leviathan-v09, hunter-v22, aramis-v02, sinbad-v06, avery-v08.
+
+| Bot | 13 maps × R6 | Notes |
+|---|---|---|
+| Monte Christo v01 | 94–62 | dilemma 1–11, autarky 2–10, arena 4–8; loses 10–16 to sinbad-v06 |
+| + portal-exit risk memory | 99–57 | dilemma + autarky 3–21 → 14–10 |
+| **valjean-v01** (above + Sinbad v06 settings) | **101–55** | 16–10 vs sinbad-v06 |
+
+- **Main finding:** Monte Christo charges any portal exit it can't see a full dragon's value as risk, so dragons sit forever in closed portal boxes. v01 estimates the risk from sightings of other dragons near the exit in the last 12 rounds (floor 0.15, 0.5 if unseen, 1 if a body was near).
+- **Sinbad v06 settings in v01:** arrival-only bed values, soft trap weight 5, strike search up to 6 steps, hunting up to length 8, crown threat reach 3.
+- **Rejected (null or negative):**
+  - Split penalties for crowding / enclosed space.
+  - Devaluing pearls in dead ends (halves pearl intake — pocket farming *is* Monte Christo's economy).
+  - Region-level gathering.
+  - Evaluated escape splits.
+  - Capping trap penalty at dragon value.
+  - Delayed tail vacancy for dragons next to a pearl.
+- **Inconclusive:** mass sonar packet, cheaper own units near the unit limit, pressure toward enemy mass (partial big-map runs, ~16 games each, slightly negative).
+- **Noise:** ±6 net wins on 156 fixtures is not a signal. ouroboros-v13 and leviathan-v09 play identical games on autarky and queen_of_spades side A — not independent there.
+- **Lesson:** gains came from diagnosing broken mechanisms (trace + `snap.py`), not re-weighting a locally tuned evaluator.
+
+## Not done
+
+1. Judge CPU sandbox on the v01 source (an all-features build peaked at 81.6M on stronghold; Monte Christo ~67–73M).
+2. v01 and Monte Christo v01 on the three fresh maps (frozen, unplayed) and the TFX holdout maps.
+3. Direct v01 vs Monte Christo v01 head-to-head.
+
+## Open problems
+
+- **Round-500 length losses:** 36 of 55 losses. Material stalls ~60 from round ~120 while ouroboros keeps growing. In one traced stronghold game, 56 of 107 non-feeding self/body/wall deaths were "surprises" (previous turn scored safe), mostly inside our own crowded bed fields.
+- **Arena opening economy:** ouroboros and hunter out-eat us ~2× by round 20.
+
+## Environment notes
+
+- Run games in the cloud container (2 CPUs, unswbc 1.0.0): ~2.5 games/min, ~1/min on big maps. The device is too slow.
+- Sync: `tools/valjean/pack.sh`, commit under a **new filename** each time (overwritten files lag on the device), then `tar xzf <file> --overwrite` at the repo root.
+- Never `pkill -f` a pattern contained in your own command line.
+- `trace=1` logs one JSON line per dragon turn (`LOG VJ`).
+- Workflow: `arena.py run build/valjean/exp/eN --var name:flag=value,... --pool ... --maps <set>`, then `compare.py BASE CAND`. Map sets: `all13`, `walled`, `portal`, `bigset`, `fresh`, `holdout`.

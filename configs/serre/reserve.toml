@@ -1,0 +1,14 @@
+# Fresh Serre reserve: two frozen map families (tools/serre/reserve_frozen.json)
+# x four stylistically varied references x both sides = 16 games. twinlakes
+# tests pure economy/distribution/endgame transition; crossfire tests the
+# contested-centre (devil) leak and portal-exit risk. Maps were frozen before
+# any Serre screen/gauntlet outcome was read.
+bots = ["../../bots/ouroboros-v13-ladder", "../../bots/leviathan-v09-arrival",
+        "../../bots/avery-v08-crown-race", "../../bots/monte_christo-x12-remote-density"]
+maps = ["reserve_maps"]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 25

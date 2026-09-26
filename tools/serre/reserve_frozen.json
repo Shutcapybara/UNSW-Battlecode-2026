@@ -1,0 +1,25 @@
+{
+  "maps": [
+    {
+      "name": "serre_reserve_twinlakes",
+      "family": "twinlakes",
+      "seed": 6209,
+      "size": [
+        30,
+        22
+      ],
+      "sha256": "5a94711db5da2bcff8b47f105c4807d458eb2fe003eea2e6d2c4d2466e4e6e30"
+    },
+    {
+      "name": "serre_reserve_crossfire",
+      "family": "crossfire",
+      "seed": 8864,
+      "size": [
+        26,
+        26
+      ],
+      "sha256": "2a1fb1749c46dc00d08fa0d3432671b480ad0f26d07cb41a6e83abc86140a94b"
+    }
+  ],
+  "note": "Frozen 2026-09-26 before any Serre screen/gauntlet outcome was read; no result-driven adaptation. Roster spans four styles (compact production ladder, arrival economy, crown-race banker, French density radio)."
+}

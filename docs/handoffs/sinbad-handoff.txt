@@ -1,0 +1,70 @@
+# Sinbad handoff
+
+## Status
+- **Current best bot:** `bots/sinbad-v07-divecap`.
+  - Shared comparison (roster in `build/sinbad/sinbad-comparison-v07.toml`, 11 maps, both sides): **150–48**.
+  - Against the five outside bots plus Sinbad v01: 107–25 (v06 went 99–33 on the same opponents).
+  - monte_christo-x12 12–10, athos-x13 17–5, v06 14–8.
+  - Judge CPU: worst turn 66.7M of the 100M limit, from one sandbox game, no timeouts.
+- **Start v08 from `build/sinbad/exp/e23`.** It is v07 plus a bug fix: a newly split dragon misread its own body (and other newborns' bodies), and in one game a 14-long crown died on its first move. Results are unchanged: 72–36 vs v07's 70–38 on 108 games, 18–18 vs 19–17 on flipped maps.
+- **`build/sinbad/dev`** is e23 plus the untried features below, all switched off.
+
+## Version history
+Main pool is ouroboros-v13, leviathan-v09 and hunter-v22 on the 9 quick maps plus their transposes (108 games).
+
+| Version | Change | Main pool |
+|---|---|---|
+| v01 | evaluation function, no sonar | 32–22 on quick maps only; over the CPU limit |
+| v02 | threat model, crown and feeding, food sharing by sonar, CPU budget | 39–15 on quick maps only |
+| v03 | hunting, portal-pair sharing, escape split | 83–25 |
+| v04 | two-level trap penalty, strike search | 84–24 |
+| v05 | dragons up to length 8 hunt | 84–24; big maps 15–1 |
+| v06 | pearl beds count only if the pearl is due when we arrive | 84–24; compact maps vs other pool 25–7 (v05 13–19) |
+| v07 | portal dive incentive cut from 7 to 3 | 88–20; portal maps 45–11 (v06 36–20) |
+
+## Key findings
+- Parameters are at a local optimum.
+  - Single changes move results by ±3–5 per 100 games.
+  - Arbitrary tie-break changes move them by ±10 per 108.
+  - Test new versions on at least 150 games across original, transposed (T), flipped-X (FX) and flipped-Y (FY) maps.
+- The real gains came from reading replays for structural leaks, not from tuning:
+  - v06: dragons wavered between pearl beds that weren't due yet.
+  - v07: portal dives were fatal about 37% of the time, often killing an ally too.
+- Tried and rejected (e20–e26):
+  - valuing fast pearl beds while out of sight
+  - limiting dives by unit count
+  - crowding weight, extra room near allies, blocking cells next to heads
+  - pulling exploration toward the map centre
+  - rotating tie-break order per dragon
+  - rewarding moves that cut an enemy off
+  - turning off hunting or strikes (worse)
+
+## Weak spots
+- **Devil:** 6–12. Enemy swarms take the fast-regrowing pearl beds in the centre by round 40.
+- **Arena:** decided by rounds 20–30. Parameter changes there are noise.
+- **Flipped maps (FX/FY):** we win about 50% against ouroboros-v13, versus about 75% on the originals. Ranked games use 5 random maps, so robustness matters.
+
+## Promising next ideas
+1. Work out the map's symmetry, so what we see on our side tells us the terrain, pearl beds and portal pairs on theirs.
+2. Dedicated dragons that loop around the fast-regrowing (every-round) beds.
+3. Protecting long dragons on big maps: about 9 per big_empty game are killed by short enemy heads.
+4. Unfinished run (no conclusion): endgame settings `feed_base`, `lv_crown` and `crown_from`.
+
+## Tooling
+- **Runner:** `tools/sinbad/arena.py`
+  - Results are cached by source hash; the device and cloud caches can be merged.
+  - Test a parameter change with `--var name:k=v`.
+  - Map sets: quick, quickT, quickFX, big, bigT; the FY maps are in `tools/ouroboros/holdout`.
+- **Replay analysis:**
+  - `tools/sinbad/deaths.py`: death causes; "trapped" means no free exit.
+  - `tools/sinbad/eatmap.py`: where each team harvested bed pearls.
+  - Traces: `touch /tmp/sinbad-trace-on`.
+- **Working pattern:** edit `build/sinbad/dev`, freeze it with `snap.sh`, screen it with `arena.py`, then copy to `bots/sinbad-vNN` with a README and run a sandbox CPU check.
+- **Docs:**
+  - `docs/sinbad-design.md`: framework.
+  - `docs/sinbad-experiments.md`: full experiment log, ending with "State at wrap-up".
+  - Project doc `claude/sinbad-status.md`.
+- **Environment:**
+  - The cloud container does about 3 games a minute.
+  - The device VM swings between about 15 games a minute and unusable. Each call must finish a game within 160 seconds.
+  - Never use `pkill -f` with a pattern that matches your own command line; it kills your own shell.

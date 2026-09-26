@@ -1,0 +1,11 @@
+# Serre judge check: hunter-v22-frontier-exploration x arena + stronghold x
+# both sides under the judge sandbox (100M CPU points / 48MB per dragon turn).
+# arena covers short elimination openings; stronghold runs long and crowded.
+bots = ["../../bots/hunter-v22-frontier-exploration"]
+maps = ["../../maps/arena.map", "../../maps/stronghold.map"]
+[run]
+sides = ["A", "B"]
+jobs = 2
+timeout_seconds = 1500
+sandbox = true
+control_every = 25

@@ -1,0 +1,19 @@
+{
+  "frozen": "2026-09-26, before any Serre screen/gauntlet outcome was read",
+  "parent": "build/sinbad/exp/e23 (= sinbad v07-divecap + newborn body-chain bugfix; sinbad v08 candidate)",
+  "child": "bots/serre-v01-foundation",
+  "sha256_by_file": {
+    "bot.toml": "6d1db21a1671e70116d5a87d5cd0432a8f35295b2c2016a9efdc712617fa8d41",
+    "comms.py": "9fdb2349848c1ae5bfe10a1f9fc242dd6bb5bc57c3b0fcf6801eac17158a7c13",
+    "main.py": "06ee308785d9db854d9ce9bb6e01bbd0e31597ac8c92b7853c779dc7eb7d8a8f",
+    "params.py": "ad23e2f2d89b1f5788c8c839b04bb841a4c79bece5400755a2acf0525d1955d3",
+    "policy.py": "9ac9d887f8cff562805f3a1d3e02aed4a25a51ad9a79eb5d3e7ff701143e244e",
+    "protocol.py": "0c73a7eb0686876b99ed86d6bf3ac3ac65b31ebae9c617aa99d3d7c2e738fdde",
+    "radio.py": "2e48dfde4f59509f13e95f258fffa46ebf91ba2b993d665f4346df825f5b58a9",
+    "roles.py": "4cc52e258de820357ffb4268dbbee5bcd7a85231591a640126bcdab4bd5e8700",
+    "tactics.py": "86d55472bb8c592855980419a0626491fbe4683d3a4cf57fe8b0d790226c039b",
+    "world.py": "44da75f83944fd145a47ac888c49adf6ef112825141792240e60a16c9da888b7"
+  },
+  "mismatches": [],
+  "note": "README.md in serre-v01-foundation is lineage documentation, not part of byte parity."
+}

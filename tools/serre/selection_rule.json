@@ -1,0 +1,17 @@
+{
+  "study": "Serre super-lineage: graft proven mechanisms from other lineages onto the strongest measured foundation (sinbad e23 = serre-v01-foundation), one mechanism at a time",
+  "frozen": "2026-09-26, before any Serre screen/gauntlet/reserve outcome was read",
+  "question": "Can the mechanisms that independent lineage studies proved as wins be composed onto the strongest chassis for additive gains, without the composition regressions that killed earlier unions?",
+  "development_metric": {
+    "screen": "configs/serre/screen.toml (32 games: ouroboros-v13-ladder, leviathan-v09-arrival, porthos-x04-policy, avery-v08-crown-race x devil, queen_of_spades, trauma, Colosseum x both sides)",
+    "baseline_record": "established by the serre-v01-foundation run itself; deterministic engine gives exact per-fixture pairing for every later graft arm"
+  },
+  "graft_rule": "One mechanism per arm, default-off switch, source frozen per arm. Parameter-only retunes of the inherited sinbad evaluator are NOT Serre grafts (sinbad measured its own local optimum); a graft must port a mechanism another lineage proved, or fix a structural leak diagnosed from replays/death maps.",
+  "advance_to_gauntlet": "A graft arm advances iff screen wins >= baseline screen wins + 2 with zero errors/analysis errors, and no map cell loses by more than 2 net games (map-class regression check, per the drake big_empty lesson).",
+  "gauntlet_gate": "configs/serre/gauntlet.toml (7 opponents x 13 maps x both sides = 182 games). Survives iff wins >= baseline v01's own gauntlet wins + 3, with zero faults, and devil + arena combined do not regress by more than 2 net games (the foundation's two known weak maps are watched separately).",
+  "promotion_to_release": "ALL of: gauntlet gate; fresh reserve (configs/serre/reserve.toml, 16 games, maps frozen pre-outcome) wins >= baseline v01's own reserve record on the same fixtures + 1; judge sandbox clean (0 TLE/errors, max CPU < 100M points, max memory < 48MB). The promoted source becomes bots/serre-vNN-<name> with a README recording parent, borrowed code, and measured records.",
+  "combination_rule": "Two individually promoted grafts combine only against both single-graft cells and the current incumbent (2x2), per the strategy brief; a combination that fails the screen gate is recorded, not merged.",
+  "mechanism_metrics": "Every graft arm records its mechanism metric alongside wins (from replay/traces where available): pearls per round, new-unit survival to round+20, attributed length lost by cause, crown conversion (final longest length), bed renewal denials, per-map W-L. Wins decide promotion; mechanism metrics explain and are never the promotion criterion.",
+  "noise_budget": "Inherited measurements: sinbad single-parameter noise +/-3-5 wins per 100 games, tie-break noise +/-10 per 108; valjean +/-6 net wins per 156 fixtures is not signal. Screen differences below the gate are noise, not verdicts.",
+  "independence_note": "Repeated deterministic fixtures are not independent samples; flipped/transposed variants of one map count as one family for robustness claims. The reserve is the only outcome read after all development and is never reused as a development screen."
+}
