@@ -1,0 +1,1220 @@
+nice: setpriority: Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+Fit 2 True {'map': {'log_loss': 0.39295058769755503, 'brier': 0.12456194823971321, 'decisive_accuracy': 0.8208317508545385}, 'cycle': {'log_loss': 0.3879591906213162, 'brier': 0.12278116050745334, 'decisive_accuracy': 0.8230155715913406}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.799, 104), ('Sinbad v05', 0.776, 74), ('Athos x13', 0.776, 112), ('Athos x06', 0.776, 110), ('Monte Christo x13', 0.769, 100), ('Monte Christo v06', 0.763, 116), ('Athos x10', 0.761, 80), ('Athos x18', 0.757, 108), ('Athos x17', 0.755, 106), ('Monte Christo x04', 0.754, 114), ('Avery v09', 0.753, 160), ('Athos v01', 0.753, 112), ('Aramis x01', 0.752, 86), ('Athos x12', 0.746, 100), ('Athos x15', 0.745, 102)]
+Published 53112 fixtures at 2026-09-26T00:29:30.203475+00:00
+Fit 2 True {'map': {'log_loss': 0.40322008046863295, 'brier': 0.12831621192391185, 'decisive_accuracy': 0.8142775881683731}, 'cycle': {'log_loss': 0.39775186918999006, 'brier': 0.12638272866262612, 'decisive_accuracy': 0.8167425104285173}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.793, 108), ('Athos x06', 0.773, 114), ('Athos x13', 0.769, 116), ('Avery v09', 0.764, 166), ('Monte Christo x13', 0.76, 102), ('Monte Christo v06', 0.755, 118), ('Athos x18', 0.755, 108), ('Athos x10', 0.753, 84), ('Athos x17', 0.753, 106), ('Aramis x01', 0.751, 91), ('Monte Christo x04', 0.746, 116), ('Athos x09', 0.745, 86), ('Athos v01', 0.743, 114), ('Athos x15', 0.743, 102), ('Sinbad v05', 0.742, 78)]
+Published 53189 fixtures at 2026-09-26T00:34:30.174517+00:00
+Fit 2 True {'map': {'log_loss': 0.4078538356539623, 'brier': 0.13005163589502913, 'decisive_accuracy': 0.8131576452744336}, 'cycle': {'log_loss': 0.4004862392246085, 'brier': 0.12754677839142453, 'decisive_accuracy': 0.8190349796189212}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.792, 110), ('Athos x06', 0.773, 114), ('Athos x13', 0.771, 116), ('Avery v09', 0.765, 168), ('Monte Christo x13', 0.761, 104), ('Monte Christo v06', 0.756, 118), ('Athos x18', 0.754, 108), ('Athos x17', 0.753, 106), ('Aramis x01', 0.753, 94), ('Athos x09', 0.751, 88), ('Athos x10', 0.751, 84), ('Athos x15', 0.748, 106), ('Monte Christo x04', 0.746, 116), ('Athos x14', 0.745, 104), ('Tew v07', 0.742, 396)]
+Published 53253 fixtures at 2026-09-26T00:39:27.267236+00:00
+Fit 2 True {'map': {'log_loss': 0.41280552631183015, 'brier': 0.13190082671433256, 'decisive_accuracy': 0.8104395604395604}, 'cycle': {'log_loss': 0.4061353582535662, 'brier': 0.12948216748050423, 'decisive_accuracy': 0.8130920803334597}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.79, 112), ('Athos x06', 0.77, 116), ('Athos x13', 0.77, 116), ('Avery v09', 0.765, 168), ('Monte Christo x13', 0.759, 104), ('Monte Christo v06', 0.754, 118), ('Athos x18', 0.753, 108), ('Athos x17', 0.752, 110), ('Aramis x01', 0.751, 94), ('Athos v01', 0.748, 116), ('Tew v07', 0.744, 398), ('Athos x09', 0.744, 90), ('Monte Christo x04', 0.744, 118), ('Athos x14', 0.744, 106), ('Athos x10', 0.742, 86)]
+Published 53307 fixtures at 2026-09-26T00:44:28.671315+00:00
+Fit 2 True {'map': {'log_loss': 0.3991071525319182, 'brier': 0.12628132207594409, 'decisive_accuracy': 0.8156862745098039}, 'cycle': {'log_loss': 0.39291504529872845, 'brier': 0.12403418446869922, 'decisive_accuracy': 0.8185557149689144}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.785, 118), ('Athos x13', 0.773, 118), ('Athos x06', 0.77, 118), ('Monte Christo x13', 0.761, 110), ('Avery v09', 0.757, 174), ('Monte Christo v06', 0.753, 118), ('Athos x17', 0.752, 110), ('Athos x11', 0.747, 110), ('Athos v01', 0.747, 118), ('Athos x18', 0.746, 110), ('Tew v07', 0.745, 398), ('Monte Christo x04', 0.743, 118), ('Athos x10', 0.742, 86), ('Athos x15', 0.742, 109), ('Athos x09', 0.742, 92)]
+Published 53389 fixtures at 2026-09-26T00:49:27.095858+00:00
+Fit 2 True {'map': {'log_loss': 0.4108556109220944, 'brier': 0.13100845793815347, 'decisive_accuracy': 0.8106860158311345}, 'cycle': {'log_loss': 0.40727676706767024, 'brier': 0.12984392339128745, 'decisive_accuracy': 0.8108744817188089}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.785, 118), ('Athos x06', 0.768, 122), ('Athos x13', 0.768, 120), ('Avery v09', 0.757, 174), ('Monte Christo v06', 0.754, 120), ('Athos x17', 0.751, 114), ('Athos x18', 0.748, 114), ('Monte Christo x13', 0.747, 114), ('Athos x11', 0.747, 112), ('Athos v01', 0.746, 120), ('Tew v07', 0.745, 398), ('Monte Christo x04', 0.745, 118), ('Tew v10', 0.744, 352), ('Athos x09', 0.741, 94), ('Athos x15', 0.74, 110)]
+Published 53445 fixtures at 2026-09-26T00:54:31.922063+00:00
+Fit 2 True {'map': {'log_loss': 0.40770314103603683, 'brier': 0.13007836396949166, 'decisive_accuracy': 0.8092759110269758}, 'cycle': {'log_loss': 0.4023623102073516, 'brier': 0.1282624147461435, 'decisive_accuracy': 0.812588736393753}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.784, 118), ('Athos x13', 0.766, 122), ('Athos x06', 0.766, 124), ('Athos x11', 0.753, 116), ('Athos x17', 0.749, 118), ('Avery v09', 0.749, 176), ('Monte Christo v06', 0.749, 122), ('Tew v07', 0.747, 402), ('Athos v01', 0.746, 122), ('Athos x18', 0.745, 116), ('Monte Christo x04', 0.745, 122), ('Tew v10', 0.744, 352), ('Monte Christo x13', 0.744, 114), ('Athos x09', 0.739, 96), ('Athos x15', 0.738, 112)]
+Published 53532 fixtures at 2026-09-26T00:59:32.504537+00:00
+Fit 2 True {'map': {'log_loss': 0.40420870540730697, 'brier': 0.12805997327782748, 'decisive_accuracy': 0.8167248043744697}, 'cycle': {'log_loss': 0.40024695985954417, 'brier': 0.1269543184744511, 'decisive_accuracy': 0.8170076364664844}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.783, 120), ('Athos x13', 0.769, 122), ('Athos x06', 0.759, 126), ('Monte Christo v06', 0.753, 122), ('Athos x17', 0.749, 118), ('Tew v07', 0.749, 402), ('Monte Christo x13', 0.749, 114), ('Athos x11', 0.747, 118), ('Tew v10', 0.747, 354), ('Athos v01', 0.746, 122), ('Athos x15', 0.746, 116), ('Avery v09', 0.745, 180), ('Athos x18', 0.745, 118), ('Monte Christo x04', 0.745, 122), ('Athos x14', 0.741, 112)]
+Published 53600 fixtures at 2026-09-26T01:04:30.809153+00:00
+Fit 2 True {'map': {'log_loss': 0.40428712052551297, 'brier': 0.1284601289980474, 'decisive_accuracy': 0.8141115144745416}, 'cycle': {'log_loss': 0.3997984480491156, 'brier': 0.12694165856502346, 'decisive_accuracy': 0.816438611188681}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.783, 122), ('Athos x13', 0.766, 124), ('Athos x06', 0.759, 130), ('Monte Christo v06', 0.75, 122), ('Athos x17', 0.75, 120), ('Tew v10', 0.748, 356), ('Tew v07', 0.746, 406), ('Athos x11', 0.746, 118), ('Avery v09', 0.745, 180), ('Athos x15', 0.744, 116), ('Monte Christo x04', 0.743, 124), ('Athos v01', 0.741, 124), ('Athos x14', 0.741, 112), ('Athos x18', 0.739, 120), ('Monte Christo x13', 0.738, 118)]
+Published 53664 fixtures at 2026-09-26T01:09:34.444410+00:00
+Fit 2 True {'map': {'log_loss': 0.3943022846957282, 'brier': 0.12497635399550686, 'decisive_accuracy': 0.8152224174604643}, 'cycle': {'log_loss': 0.38993136731694117, 'brier': 0.12351217878123233, 'decisive_accuracy': 0.8179968556367335}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.782, 126), ('Athos x13', 0.767, 124), ('Athos x06', 0.758, 130), ('Monte Christo v06', 0.75, 124), ('Athos x17', 0.75, 120), ('Tew v10', 0.748, 356), ('Tew v07', 0.747, 406), ('Athos x11', 0.745, 120), ('Avery v09', 0.744, 180), ('Athos x15', 0.743, 118), ('Monte Christo x04', 0.742, 124), ('Athos x14', 0.74, 116), ('Athos v01', 0.74, 126), ('Athos x18', 0.739, 120), ('Monte Christo x13', 0.739, 118)]
+Published 53724 fixtures at 2026-09-26T01:14:36.670624+00:00
+Fit 2 True {'map': {'log_loss': 0.40710649844789387, 'brier': 0.1298490811918994, 'decisive_accuracy': 0.8099625946537725}, 'cycle': {'log_loss': 0.4028683771015044, 'brier': 0.1285855034954244, 'decisive_accuracy': 0.810053827205547}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.776, 128), ('Athos x13', 0.766, 124), ('Athos x06', 0.758, 130), ('Monte Christo v06', 0.749, 124), ('Tew v10', 0.749, 360), ('Tew v07', 0.747, 406), ('Athos x11', 0.744, 122), ('Monte Christo x04', 0.743, 124), ('Athos x17', 0.741, 124), ('Athos x14', 0.741, 120), ('Athos x15', 0.74, 119), ('Athos v01', 0.74, 126), ('Avery v09', 0.74, 182), ('Athos x18', 0.739, 120), ('Monte Christo x13', 0.736, 118)]
+Published 53789 fixtures at 2026-09-26T01:19:32.312352+00:00
+Fit 2 True {'map': {'log_loss': 0.4091724780513563, 'brier': 0.13109108285576762, 'decisive_accuracy': 0.8076596547495519}, 'cycle': {'log_loss': 0.402994299736916, 'brier': 0.12870156492478646, 'decisive_accuracy': 0.8122818602018678}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.781, 130), ('Athos x13', 0.766, 126), ('Athos x06', 0.759, 132), ('Monte Christo v06', 0.75, 126), ('Tew v10', 0.749, 362), ('Tew v07', 0.746, 406), ('Athos x15', 0.745, 124), ('Athos x11', 0.744, 124), ('Athos x17', 0.742, 124), ('Athos v01', 0.742, 130), ('Athos x14', 0.741, 122), ('Avery v09', 0.74, 184), ('Athos x01', 0.739, 118), ('Athos x18', 0.739, 122), ('Monte Christo x13', 0.737, 120)]
+Published 53876 fixtures at 2026-09-26T01:24:32.048148+00:00
+Fit 2 True {'map': {'log_loss': 0.41080539008677447, 'brier': 0.1314694624768097, 'decisive_accuracy': 0.8056016215220195}, 'cycle': {'log_loss': 0.403329648445433, 'brier': 0.12884722935786147, 'decisive_accuracy': 0.8094711627049935}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.777, 132), ('Athos x13', 0.762, 130), ('Athos x06', 0.76, 138), ('Tew v10', 0.749, 362), ('Tew v07', 0.746, 406), ('Athos x14', 0.744, 126), ('Athos x15', 0.744, 126), ('Monte Christo v06', 0.742, 128), ('Athos x17', 0.741, 126), ('Athos v01', 0.739, 132), ('Athos x01', 0.738, 120), ('Athos x11', 0.737, 126), ('Monte Christo x13', 0.737, 122), ('Athos x18', 0.737, 124), ('Avery v09', 0.735, 186)]
+Published 53959 fixtures at 2026-09-26T01:29:29.376074+00:00
+Fit 2 True {'map': {'log_loss': 0.40034499260135026, 'brier': 0.12732891771471994, 'decisive_accuracy': 0.814336850037679}, 'cycle': {'log_loss': 0.3961355308743299, 'brier': 0.1261102729970203, 'decisive_accuracy': 0.8141484551620196}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.775, 136), ('Athos x13', 0.758, 132), ('Athos x06', 0.757, 142), ('Tew v10', 0.753, 366), ('Tew v07', 0.747, 406), ('Athos x15', 0.743, 128), ('Monte Christo v06', 0.741, 128), ('Monte Christo x04', 0.738, 128), ('Athos x14', 0.738, 130), ('Monte Christo x13', 0.737, 124), ('Athos v01', 0.736, 134), ('Ouroboros v13', 0.736, 1265), ('Athos x01', 0.734, 124), ('Avery v09', 0.733, 190), ('Tew v11', 0.733, 340)]
+Published 54035 fixtures at 2026-09-26T01:34:29.792603+00:00
+Fit 2 True {'map': {'log_loss': 0.40117841233308654, 'brier': 0.12746335040585954, 'decisive_accuracy': 0.8163591867469879}, 'cycle': {'log_loss': 0.39866479735696647, 'brier': 0.12685272392531244, 'decisive_accuracy': 0.8130647590361446}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.765, 138), ('Athos x13', 0.759, 132), ('Athos x06', 0.749, 146), ('Tew v10', 0.749, 370), ('Athos x15', 0.748, 130), ('Tew v07', 0.745, 408), ('Monte Christo v06', 0.74, 132), ('Athos x14', 0.739, 130), ('Athos x18', 0.739, 128), ('Monte Christo x13', 0.737, 126), ('Athos v01', 0.736, 134), ('Athos x11', 0.735, 130), ('Aramis x01', 0.735, 120), ('Ouroboros v13', 0.735, 1265), ('Athos x01', 0.734, 124)]
+Published 54122 fixtures at 2026-09-26T01:39:35.786519+00:00
+Fit 2 True {'map': {'log_loss': 0.407772687350152, 'brier': 0.13029256277873064, 'decisive_accuracy': 0.809598814046141}, 'cycle': {'log_loss': 0.4026248632974458, 'brier': 0.12856987681802903, 'decisive_accuracy': 0.8123783934031317}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.763, 142), ('Athos x13', 0.756, 136), ('Athos x06', 0.75, 146), ('Tew v10', 0.749, 370), ('Athos x15', 0.748, 134), ('Tew v07', 0.746, 410), ('Athos x18', 0.745, 130), ('Monte Christo v06', 0.74, 132), ('Athos x11', 0.74, 132), ('Athos v01', 0.74, 136), ('Athos x01', 0.739, 126), ('Athos x14', 0.739, 132), ('Monte Christo x13', 0.737, 128), ('Aramis x01', 0.735, 120), ('Ouroboros v13', 0.735, 1265)]
+Published 54198 fixtures at 2026-09-26T01:44:34.597795+00:00
+Fit 2 True {'map': {'log_loss': 0.4137114918643955, 'brier': 0.13275084736166376, 'decisive_accuracy': 0.8028693869945966}, 'cycle': {'log_loss': 0.4114943209501686, 'brier': 0.13223907247633088, 'decisive_accuracy': 0.8016582820942798}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.763, 142), ('Athos x13', 0.755, 136), ('Athos x06', 0.749, 146), ('Tew v10', 0.749, 372), ('Athos x18', 0.746, 136), ('Tew v07', 0.745, 410), ('Athos x15', 0.744, 136), ('Athos x11', 0.741, 134), ('Athos v01', 0.74, 138), ('Monte Christo v06', 0.74, 132), ('Athos x14', 0.739, 134), ('Athos x01', 0.738, 128), ('Monte Christo x13', 0.735, 128), ('Ouroboros v13', 0.734, 1265), ('Aramis x01', 0.734, 126)]
+Published 54252 fixtures at 2026-09-26T01:49:37.080637+00:00
+Fit 2 True {'map': {'log_loss': 0.40128147386749996, 'brier': 0.12764541266083115, 'decisive_accuracy': 0.8117174359932723}, 'cycle': {'log_loss': 0.39655536040806716, 'brier': 0.12575507010621365, 'decisive_accuracy': 0.8140534479536535}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.761, 144), ('Athos x13', 0.751, 138), ('Athos x06', 0.749, 148), ('Tew v10', 0.749, 374), ('Athos x15', 0.746, 138), ('Athos x18', 0.746, 138), ('Tew v07', 0.745, 412), ('Monte Christo v06', 0.739, 132), ('Athos v01', 0.739, 140), ('Athos x14', 0.738, 138), ('Athos x01', 0.737, 130), ('Athos x11', 0.737, 136), ('Sinbad v05', 0.736, 122), ('Monte Christo x13', 0.736, 128), ('Aramis x01', 0.735, 126)]
+Published 54316 fixtures at 2026-09-26T01:54:34.834136+00:00
+Fit 2 True {'map': {'log_loss': 0.4146664603905593, 'brier': 0.1329702954872254, 'decisive_accuracy': 0.8022657054582905}, 'cycle': {'log_loss': 0.41056008460444254, 'brier': 0.13151123801951478, 'decisive_accuracy': 0.8064787941204007}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.764, 144), ('Tew v10', 0.75, 374), ('Athos x13', 0.75, 140), ('Athos x06', 0.749, 148), ('Athos x15', 0.746, 138), ('Athos x18', 0.743, 140), ('Tew v07', 0.743, 412), ('Athos v01', 0.739, 140), ('Athos x14', 0.739, 138), ('Athos x11', 0.738, 136), ('Aramis x01', 0.737, 128), ('Athos x01', 0.735, 132), ('Monte Christo x13', 0.734, 128), ('Ouroboros v13', 0.734, 1267), ('Monte Christo v06', 0.733, 134)]
+Published 54374 fixtures at 2026-09-26T01:59:32.629752+00:00
+Fit 2 True {'map': {'log_loss': 0.40692879581947533, 'brier': 0.12967490494456255, 'decisive_accuracy': 0.8117082533589252}, 'cycle': {'log_loss': 0.4035811799725045, 'brier': 0.1287761366403654, 'decisive_accuracy': 0.8130518234165067}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.762, 146), ('Tew v10', 0.75, 374), ('Athos x13', 0.749, 140), ('Athos x06', 0.747, 152), ('Tew v07', 0.745, 414), ('Athos x15', 0.742, 144), ('Athos x18', 0.739, 144), ('Athos x14', 0.736, 138), ('Ouroboros v13', 0.734, 1267), ('Monte Christo x13', 0.734, 130), ('Avery v09', 0.733, 196), ('Aramis x01', 0.733, 130), ('Athos x11', 0.733, 138), ('Athos v01', 0.732, 144), ('Monte Christo v06', 0.732, 134)]
+Published 54467 fixtures at 2026-09-26T02:04:36.256297+00:00
+Fit 2 True {'map': {'log_loss': 0.41850569983409813, 'brier': 0.13435964567664413, 'decisive_accuracy': 0.8011717319663128}, 'cycle': {'log_loss': 0.41201389156024193, 'brier': 0.1320438436618019, 'decisive_accuracy': 0.8033687294031491}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Monte Christo x12', 0.754, 150), ('Athos x13', 0.75, 140), ('Athos x06', 0.747, 156), ('Tew v10', 0.747, 376), ('Tew v07', 0.743, 416), ('Athos x15', 0.74, 148), ('Athos x18', 0.74, 144), ('Ouroboros v13', 0.736, 1267), ('Monte Christo x13', 0.736, 132), ('Monte Christo v06', 0.735, 136), ('Athos x14', 0.735, 140), ('Monte Christo x04', 0.734, 140), ('Athos x01', 0.732, 140), ('Aramis x01', 0.732, 132), ('Athos v01', 0.732, 144)]
+Published 54562 fixtures at 2026-09-26T02:09:37.843000+00:00
+Fit 2 True {'map': {'log_loss': 0.42012659478600833, 'brier': 0.13518790441479342, 'decisive_accuracy': 0.7974799963211625}, 'cycle': {'log_loss': 0.41521551727039935, 'brier': 0.13321021943368547, 'decisive_accuracy': 0.8010668628713327}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Porthos x04', 0.762, 182), ('Monte Christo x12', 0.749, 150), ('Tew v10', 0.747, 378), ('Athos x06', 0.745, 156), ('Athos x13', 0.744, 142), ('Tew v07', 0.743, 416), ('Athos x15', 0.738, 150), ('Ouroboros v13', 0.737, 1345), ('Athos x18', 0.735, 146), ('Monte Christo v06', 0.734, 136), ('Athos x14', 0.734, 140), ('Monte Christo x04', 0.732, 140), ('Athos x01', 0.732, 140), ('Monte Christo x02', 0.732, 86), ('Monte Christo x13', 0.732, 132)]
+Published 55417 fixtures at 2026-09-26T02:14:35.721402+00:00
+Fit 2 True {'map': {'log_loss': 0.41502405199513637, 'brier': 0.1332327666547378, 'decisive_accuracy': 0.801168522914004}, 'cycle': {'log_loss': 0.4115791380476436, 'brier': 0.13198663008179332, 'decisive_accuracy': 0.8045462844622969}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Porthos x04', 0.762, 182), ('Monte Christo x12', 0.749, 150), ('Tew v10', 0.747, 378), ('Athos x06', 0.745, 158), ('Athos x13', 0.744, 142), ('Tew v07', 0.743, 416), ('Athos x15', 0.738, 150), ('Ouroboros v13', 0.737, 1345), ('Monte Christo v06', 0.734, 136), ('Athos x18', 0.734, 146), ('Athos x14', 0.733, 142), ('Athos x11', 0.733, 142), ('Athos x01', 0.732, 140), ('Monte Christo x04', 0.732, 140), ('Monte Christo x13', 0.732, 132)]
+Published 55468 fixtures at 2026-09-26T02:19:47.527096+00:00
+Fit 2 True {'map': {'log_loss': 0.4142681119706817, 'brier': 0.13249302164827997, 'decisive_accuracy': 0.8049507633932604}, 'cycle': {'log_loss': 0.4109735616601705, 'brier': 0.13138862205396895, 'decisive_accuracy': 0.8072996657331285}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Sinbad v07', 0.788, 18), ('Porthos x04', 0.762, 182), ('Monte Christo x12', 0.749, 150), ('Tew v10', 0.747, 378), ('Athos x06', 0.745, 158), ('Athos x13', 0.744, 142), ('Tew v07', 0.743, 416), ('Athos x15', 0.737, 150), ('Ouroboros v13', 0.737, 1345), ('Athos x18', 0.735, 146), ('Monte Christo v06', 0.734, 136), ('Athos x14', 0.734, 142), ('Athos x11', 0.733, 142), ('Athos x01', 0.732, 140), ('Monte Christo x04', 0.732, 140)]
+Published 55505 fixtures at 2026-09-26T02:25:25.883109+00:00
+Fit 2 True {'map': {'log_loss': 0.4093722409323249, 'brier': 0.13092437417962743, 'decisive_accuracy': 0.8050466954022989}, 'cycle': {'log_loss': 0.4073789150191216, 'brier': 0.1301972783807925, 'decisive_accuracy': 0.8092672413793104}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Sinbad v07', 0.854, 24), ('Porthos x04', 0.762, 182), ('Monte Christo x12', 0.749, 150), ('Tew v10', 0.747, 378), ('Athos x06', 0.744, 158), ('Athos x13', 0.744, 142), ('Tew v07', 0.743, 416), ('Athos x15', 0.737, 150), ('Ouroboros v13', 0.737, 1345), ('Athos x18', 0.735, 146), ('Monte Christo v06', 0.734, 136), ('Athos x14', 0.733, 142), ('Athos x11', 0.732, 142), ('Athos x01', 0.732, 140), ('Monte Christo x02', 0.732, 86)]
+Published 55519 fixtures at 2026-09-26T02:29:56.665927+00:00
+Fit 2 True {'map': {'log_loss': 0.41010952646111276, 'brier': 0.13088728303167416, 'decisive_accuracy': 0.8091057204923968}, 'cycle': {'log_loss': 0.4039969569764693, 'brier': 0.12889938292277114, 'decisive_accuracy': 0.808653149891383}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Sinbad v07', 0.835, 46), ('Porthos x04', 0.762, 182), ('Tew v10', 0.747, 378), ('Monte Christo x12', 0.746, 150), ('Athos x13', 0.745, 142), ('Tew v07', 0.743, 416), ('Athos x06', 0.74, 160), ('Ouroboros v13', 0.737, 1345), ('Athos x15', 0.736, 150), ('Athos x18', 0.735, 146), ('Monte Christo v06', 0.734, 136), ('Athos x01', 0.732, 140), ('Athos x14', 0.732, 142), ('Monte Christo x04', 0.732, 140), ('Athos x11', 0.731, 142)]
+Published 55555 fixtures at 2026-09-26T02:34:50.816096+00:00
+Fit 2 True {'map': {'log_loss': 0.42297867101315756, 'brier': 0.13626599755759625, 'decisive_accuracy': 0.8013094480312812}, 'cycle': {'log_loss': 0.41646479240941403, 'brier': 0.1336873835404107, 'decisive_accuracy': 0.8069473492770756}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Sinbad v07', 0.84, 64), ('Porthos x04', 0.762, 182), ('Monte Christo x12', 0.747, 152), ('Tew v10', 0.747, 378), ('Tew v07', 0.743, 418), ('Athos x13', 0.742, 144), ('Athos x06', 0.741, 160), ('Ouroboros v13', 0.737, 1345), ('Athos x15', 0.736, 150), ('Athos x18', 0.735, 146), ('Monte Christo v06', 0.734, 136), ('Athos x01', 0.733, 140), ('Athos x14', 0.732, 142), ('Monte Christo x04', 0.732, 140), ('Athos x11', 0.732, 142)]
+Published 55585 fixtures at 2026-09-26T02:40:09.694542+00:00
+Fit 2 True {'map': {'log_loss': 0.42027375624289126, 'brier': 0.13460178713030718, 'decisive_accuracy': 0.8038084775244896}, 'cycle': {'log_loss': 0.4168571269945145, 'brier': 0.13378017942987547, 'decisive_accuracy': 0.8032591778815343}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Sinbad v07', 0.855, 72), ('Porthos x04', 0.757, 192), ('Tew v10', 0.747, 378), ('Monte Christo x12', 0.747, 152), ('Athos x13', 0.743, 144), ('Tew v07', 0.742, 418), ('Athos x06', 0.742, 162), ('Ouroboros v13', 0.737, 1345), ('Athos x15', 0.736, 150), ('Athos x18', 0.735, 146), ('Monte Christo v06', 0.733, 136), ('Athos x14', 0.732, 142), ('Athos x11', 0.732, 142), ('Avery v09', 0.732, 208), ('Monte Christo x02', 0.732, 86)]
+Published 55611 fixtures at 2026-09-26T02:45:15.896170+00:00
+Fit 2 True {'map': {'log_loss': 0.4197877996226216, 'brier': 0.13508800832874737, 'decisive_accuracy': 0.800201078512019}, 'cycle': {'log_loss': 0.41467827603540414, 'brier': 0.13293292514028665, 'decisive_accuracy': 0.8044968467233342}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Sinbad v07', 0.85, 76), ('Porthos x04', 0.757, 192), ('Tew v10', 0.747, 378), ('Monte Christo x12', 0.747, 152), ('Athos x13', 0.743, 144), ('Athos x06', 0.742, 162), ('Tew v07', 0.742, 418), ('Ouroboros v13', 0.737, 1345), ('Athos x15', 0.736, 150), ('Athos x18', 0.735, 146), ('Monte Christo v06', 0.733, 136), ('Athos x14', 0.732, 142), ('Athos x11', 0.732, 142), ('Monte Christo x02', 0.731, 86), ('Avery v09', 0.731, 208)]
+Published 55623 fixtures at 2026-09-26T02:50:06.993970+00:00
+Fit 2 True {'map': {'log_loss': 0.4153985982316411, 'brier': 0.13349710834813366, 'decisive_accuracy': 0.8019665502664951}, 'cycle': {'log_loss': 0.4107648628362581, 'brier': 0.13169784825239902, 'decisive_accuracy': 0.8087667708141886}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Sinbad v07', 0.846, 80), ('Porthos x04', 0.763, 196), ('Monte Christo x12', 0.748, 152), ('Tew v10', 0.748, 378), ('Athos x06', 0.743, 162), ('Athos x13', 0.743, 144), ('Tew v07', 0.742, 418), ('Ouroboros v13', 0.737, 1345), ('Athos x18', 0.735, 146), ('Monte Christo v06', 0.733, 136), ('Athos x15', 0.733, 152), ('Aramis x01', 0.732, 136), ('Monte Christo x04', 0.732, 140), ('Athos x11', 0.732, 142), ('Athos x14', 0.732, 142)]
+Published 55670 fixtures at 2026-09-26T02:54:50.342765+00:00
+Fit 2 True {'map': {'log_loss': 0.4117299087173457, 'brier': 0.13167640071576492, 'decisive_accuracy': 0.8055580457194084}, 'cycle': {'log_loss': 0.4074083372149215, 'brier': 0.13005505084833455, 'decisive_accuracy': 0.8090542357687136}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Vn x01', 0.888, 24), ('Von_neumann x01', 0.888, 24), ('Von_neumann x02', 0.888, 24), ('Vn x01', 0.886, 18), ('Von_neumann x04', 0.86, 24), ('Vn x01', 0.849, 22), ('Von_neumann x03', 0.838, 24), ('Sinbad v07', 0.838, 84), ('Porthos x04', 0.765, 214), ('Monte Christo x12', 0.748, 154), ('Tew v10', 0.747, 378), ('Athos x13', 0.744, 144), ('Athos x06', 0.744, 162), ('Tew v07', 0.742, 418), ('Godel x01', 0.738, 24)]
+Published 55945 fixtures at 2026-09-26T03:00:01.375466+00:00
+Fit 2 True {'map': {'log_loss': 0.4123818305345588, 'brier': 0.13220374315078198, 'decisive_accuracy': 0.8026385224274406}, 'cycle': {'log_loss': 0.40929292079783036, 'brier': 0.1312330555855172, 'decisive_accuracy': 0.8080914687774846}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Von_neumann x04', 0.897, 34), ('Von_neumann x01', 0.885, 34), ('Vn x01', 0.881, 40), ('Vn x01', 0.879, 34), ('Von_neumann x02', 0.869, 32), ('Von_neumann x03', 0.85, 28), ('Sinbad v07', 0.84, 90), ('Valjean v01', 0.803, 10), ('Vn x01', 0.78, 32), ('Porthos x04', 0.766, 216), ('Monte Christo x12', 0.749, 154), ('Tew v10', 0.747, 378), ('Athos x06', 0.745, 162), ('Athos x13', 0.744, 144), ('Tew v07', 0.742, 418)]
+Published 56021 fixtures at 2026-09-26T03:04:49.000605+00:00
+Fit 2 True {'map': {'log_loss': 0.41645083891440104, 'brier': 0.13284338892596734, 'decisive_accuracy': 0.8039550561797753}, 'cycle': {'log_loss': 0.41390496830832296, 'brier': 0.13214616388090533, 'decisive_accuracy': 0.8043146067415731}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Vn x01', 0.885, 42), ('Von_neumann x04', 0.876, 38), ('Von_neumann x02', 0.873, 38), ('Von_neumann x03', 0.862, 40), ('Vn x01', 0.861, 36), ('Von_neumann x01', 0.856, 40), ('Valjean v01', 0.844, 14), ('Sinbad v07', 0.844, 96), ('Vn x01', 0.807, 42), ('Porthos x04', 0.761, 224), ('Monte Christo x12', 0.75, 154), ('Tew v10', 0.747, 378), ('Godel x01', 0.747, 28), ('Athos x06', 0.745, 162), ('Vn x01', 0.745, 32)]
+Published 56067 fixtures at 2026-09-26T03:09:38.705670+00:00
+Fit 2 True {'map': {'log_loss': 0.41198332265538223, 'brier': 0.13165147843631053, 'decisive_accuracy': 0.8029739776951673}, 'cycle': {'log_loss': 0.40769293625312086, 'brier': 0.13002229469636079, 'decisive_accuracy': 0.8093467870419543}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Von_neumann x04', 0.889, 42), ('Vn x01', 0.878, 46), ('Von_neumann x02', 0.873, 42), ('Von_neumann x03', 0.868, 42), ('Vn x01', 0.855, 42), ('Von_neumann x01', 0.849, 44), ('Sinbad v07', 0.846, 102), ('Vn x01', 0.817, 46), ('Valjean v01', 0.799, 26), ('Porthos x04', 0.759, 226), ('Godel x01', 0.755, 40), ('Monte Christo x12', 0.751, 154), ('Tew v10', 0.748, 378), ('Athos x06', 0.746, 162), ('Athos x13', 0.745, 144)]
+Published 56107 fixtures at 2026-09-26T03:14:35.473214+00:00
+Fit 2 True {'map': {'log_loss': 0.4119920836618077, 'brier': 0.13170829473989876, 'decisive_accuracy': 0.806700345652752}, 'cycle': {'log_loss': 0.40789676549456727, 'brier': 0.130113690977202, 'decisive_accuracy': 0.8117521935655411}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Von_neumann x04', 0.878, 48), ('Von_neumann x03', 0.857, 50), ('Vn x01', 0.852, 50), ('Sinbad v07', 0.85, 104), ('Von_neumann x01', 0.847, 50), ('Von_neumann x02', 0.845, 48), ('Valjean v01', 0.835, 46), ('Vn x01', 0.822, 52), ('Vn x01', 0.809, 52), ('Porthos x04', 0.761, 232), ('Godel x01', 0.757, 48), ('Monte Christo x12', 0.75, 156), ('Tew v10', 0.747, 378), ('Vn x01', 0.746, 46), ('Athos x13', 0.745, 144)]
+Published 56175 fixtures at 2026-09-26T03:19:39.998233+00:00
+Fit 2 True {'map': {'log_loss': 0.4154911167911243, 'brier': 0.13329967184474822, 'decisive_accuracy': 0.8040808956301914}, 'cycle': {'log_loss': 0.41125431712204974, 'brier': 0.13198240455113233, 'decisive_accuracy': 0.8057060310581438}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Von_neumann x04', 0.873, 52), ('Valjean v01', 0.864, 54), ('Von_neumann x03', 0.856, 55), ('Vn x01', 0.854, 54), ('Sinbad v07', 0.846, 104), ('Von_neumann x02', 0.837, 56), ('Von_neumann x01', 0.833, 56), ('Vn x01', 0.828, 58), ('Vn x01', 0.802, 56), ('Porthos x04', 0.76, 236), ('Vn x01', 0.758, 48), ('Godel x01', 0.75, 54), ('Monte Christo x12', 0.748, 162), ('Tew v10', 0.747, 378), ('Athos x13', 0.745, 144)]
+Published 56230 fixtures at 2026-09-26T03:24:44.672628+00:00
+Fit 2 True {'map': {'log_loss': 0.4198427511681175, 'brier': 0.13464807216189026, 'decisive_accuracy': 0.8023349797934441}, 'cycle': {'log_loss': 0.4147583739087266, 'brier': 0.13285824742704913, 'decisive_accuracy': 0.803682083520431}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Valjean v01', 0.866, 62), ('Sinbad v07', 0.855, 106), ('Von_neumann x04', 0.852, 60), ('Von_neumann x03', 0.844, 58), ('Vn x01', 0.829, 62), ('Vn x01', 0.816, 60), ('Von_neumann x01', 0.814, 62), ('Von_neumann x02', 0.812, 64), ('Vn x01', 0.792, 60), ('Porthos x04', 0.762, 240), ('Vn x01', 0.76, 58), ('Monte Christo x12', 0.749, 162), ('Tew v10', 0.747, 378), ('Athos x06', 0.746, 172), ('Athos x13', 0.745, 146)]
+Published 56299 fixtures at 2026-09-26T03:29:38.242920+00:00
+Fit 2 True {'map': {'log_loss': 0.4098659493810196, 'brier': 0.13098435534570238, 'decisive_accuracy': 0.8075827696689213}, 'cycle': {'log_loss': 0.4062481164984366, 'brier': 0.12988062891853958, 'decisive_accuracy': 0.8070487718049127}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Sinbad v07', 0.848, 108), ('Von_neumann x04', 0.844, 62), ('Von_neumann x03', 0.835, 62), ('Valjean v01', 0.834, 68), ('Vn x01', 0.816, 66), ('Vn x01', 0.803, 64), ('Von_neumann x02', 0.797, 66), ('Von_neumann x01', 0.794, 68), ('Vn x01', 0.771, 68), ('Vn x01', 0.764, 62), ('Porthos x04', 0.76, 240), ('Monte Christo x12', 0.749, 164), ('Tew v10', 0.747, 378), ('Athos x06', 0.747, 174), ('Athos x13', 0.744, 148)]
+Published 56355 fixtures at 2026-09-26T03:34:39.717563+00:00
+Fit 2 True {'map': {'log_loss': 0.418518757156223, 'brier': 0.13398349599980164, 'decisive_accuracy': 0.8013308817091322}, 'cycle': {'log_loss': 0.4158169970283307, 'brier': 0.13318047438794267, 'decisive_accuracy': 0.8015935557306716}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Von_neumann x04', 0.846, 68), ('Sinbad v07', 0.845, 108), ('Von_neumann x03', 0.823, 72), ('Valjean v01', 0.804, 74), ('Vn x01', 0.796, 74), ('Vn x01', 0.789, 68), ('Von_neumann x01', 0.786, 72), ('Von_neumann x02', 0.784, 72), ('Vn x01', 0.775, 72), ('Porthos x04', 0.761, 240), ('Vn x01', 0.754, 66), ('Monte Christo x12', 0.751, 164), ('Athos x06', 0.75, 176), ('Tew v10', 0.747, 378), ('Athos x13', 0.744, 148)]
+Published 56425 fixtures at 2026-09-26T03:39:39.515519+00:00
+Fit 2 True {'map': {'log_loss': 0.4136273411084183, 'brier': 0.1328756850224803, 'decisive_accuracy': 0.8051936696686194}, 'cycle': {'log_loss': 0.4099273029313537, 'brier': 0.13141399192485634, 'decisive_accuracy': 0.8067675089621404}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Sinbad v07', 0.85, 110), ('Von_neumann x04', 0.844, 72), ('Von_neumann x03', 0.82, 76), ('Vn x01', 0.792, 72), ('Valjean v01', 0.789, 78), ('Vn x01', 0.788, 76), ('Von_neumann x02', 0.783, 78), ('Von_neumann x01', 0.782, 78), ('Vn x01', 0.767, 74), ('Vn x01', 0.762, 72), ('Porthos x04', 0.761, 242), ('Monte Christo x12', 0.75, 164), ('Athos x06', 0.748, 176), ('Tew v10', 0.747, 378), ('Athos x13', 0.744, 148)]
+Published 56483 fixtures at 2026-09-26T03:44:41.382431+00:00
+Fit 2 True {'map': {'log_loss': 0.41948620877182163, 'brier': 0.1350169049860926, 'decisive_accuracy': 0.797105382180009}, 'cycle': {'log_loss': 0.41505606682285406, 'brier': 0.13339285861099126, 'decisive_accuracy': 0.7988240615106287}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Sinbad v07', 0.841, 110), ('Von_neumann x04', 0.824, 80), ('Von_neumann x03', 0.806, 82), ('Vn x01', 0.787, 80), ('Von_neumann x01', 0.779, 78), ('Von_neumann x02', 0.778, 82), ('Valjean v01', 0.774, 82), ('Vn x01', 0.771, 78), ('Porthos x04', 0.76, 242), ('Vn x01', 0.758, 76), ('Vn x01', 0.755, 74), ('Monte Christo x12', 0.753, 164), ('Athos x06', 0.748, 176), ('Tew v10', 0.747, 378), ('Athos x13', 0.743, 150)]
+Published 56537 fixtures at 2026-09-26T03:49:41.256298+00:00
+Fit 2 True {'map': {'log_loss': 0.4262656762671884, 'brier': 0.13758128745648, 'decisive_accuracy': 0.7931892949230906}, 'cycle': {'log_loss': 0.42240915024424, 'brier': 0.13599042039264633, 'decisive_accuracy': 0.7979016626655997}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Von_neumann x06', 0.885, 24), ('Vn x06', 0.885, 24), ('Sinbad v07', 0.835, 110), ('Von_neumann x04', 0.816, 82), ('Von_neumann x03', 0.807, 82), ('Godel x14', 0.798, 24), ('Vn x01', 0.79, 80), ('Von_neumann x02', 0.783, 84), ('Von_neumann x01', 0.781, 78), ('Valjean v01', 0.774, 86), ('Godel x18', 0.772, 24), ('Vn x01', 0.77, 78), ('Godel x12', 0.769, 24), ('Godel x07', 0.768, 24), ('Godel x13', 0.768, 24)]
+Published 57013 fixtures at 2026-09-26T03:55:12.077093+00:00
+Fit 2 True {'map': {'log_loss': 0.4212973283636535, 'brier': 0.13579205472433703, 'decisive_accuracy': 0.791958041958042}, 'cycle': {'log_loss': 0.4144345024642236, 'brier': 0.13334230529425214, 'decisive_accuracy': 0.801048951048951}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Vn x06', 0.878, 28), ('Von_neumann x06', 0.871, 26), ('Sinbad v07', 0.834, 112), ('Von_neumann x04', 0.817, 82), ('Von_neumann x03', 0.808, 82), ('Godel x14', 0.798, 24), ('Vn x01', 0.792, 80), ('Von_neumann x02', 0.784, 84), ('Von_neumann x01', 0.782, 78), ('Valjean v01', 0.775, 86), ('Godel x18', 0.772, 24), ('Vn x01', 0.77, 78), ('Godel x12', 0.77, 24), ('Godel x13', 0.768, 24), ('Godel x07', 0.768, 24)]
+Published 57021 fixtures at 2026-09-26T04:00:20.673992+00:00
+Fit 2 True {'map': {'log_loss': 0.4215597317342793, 'brier': 0.13578321241938332, 'decisive_accuracy': 0.7953935405662828}, 'cycle': {'log_loss': 0.4146796078581919, 'brier': 0.133146178617037, 'decisive_accuracy': 0.8030132479002511}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Von_neumann x06', 0.866, 32), ('Vn x06', 0.836, 34), ('Sinbad v07', 0.834, 112), ('Von_neumann x04', 0.829, 86), ('Von_neumann x03', 0.809, 82), ('Vn x01', 0.793, 80), ('Von_neumann x02', 0.785, 84), ('Von_neumann x01', 0.783, 78), ('Valjean v01', 0.776, 86), ('Godel x14', 0.773, 26), ('Vn x01', 0.772, 78), ('Godel x18', 0.771, 24), ('Godel x12', 0.769, 24), ('Godel x07', 0.767, 24), ('Godel x15', 0.767, 24)]
+Published 57035 fixtures at 2026-09-26T04:05:12.002194+00:00
+Fit 2 True {'map': {'log_loss': 0.41884270948143304, 'brier': 0.13506415262536775, 'decisive_accuracy': 0.7979424953838038}, 'cycle': {'log_loss': 0.4148065594433952, 'brier': 0.13351353007972822, 'decisive_accuracy': 0.8016354523872329}}
+Resample 1
+Resample 2
+Resample 3
+Resample 4
+Resample 5
+Resample 6
+Resample 7
+Resample 8
+Resample 9
+Resample 10
+Resample 11
+Resample 12
+Resample 13
+Resample 14
+Resample 15
+Resample 16
+Resample 17
+Resample 18
+Resample 19
+Resample 20
+Resample 21
+Resample 22
+Resample 23
+Resample 24
+Leaders [('Vn x06', 0.84, 36), ('Sinbad v07', 0.84, 114), ('Von_neumann x04', 0.831, 87), ('Von_neumann x06', 0.814, 46), ('Von_neumann x03', 0.808, 82), ('Vn x01', 0.792, 80), ('Feynman x01', 0.789, 14), ('Von_neumann x02', 0.784, 84), ('Von_neumann x01', 0.783, 78), ('Valjean v01', 0.777, 86), ('Vn x01', 0.772, 78), ('Godel x12', 0.769, 26), ('Godel x18', 0.769, 26), ('Godel x07', 0.767, 24), ('Godel x15', 0.766, 26)]
+Published 57067 fixtures at 2026-09-26T04:09:55.426470+00:00

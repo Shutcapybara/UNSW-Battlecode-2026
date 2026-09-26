@@ -1,0 +1,17 @@
+{
+  "pid": 51005,
+  "started": "2026-09-26T00:29:02.156949+00:00",
+  "command": [
+    "/usr/bin/caffeinate",
+    "-i",
+    "/usr/bin/nice",
+    "-n",
+    "10",
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/.venv/bin/python",
+    "-u",
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/tools/benchmark_ratings.py",
+    "--watch",
+    "--interval",
+    "300"
+  ]
+}
