@@ -167,7 +167,7 @@ Native, deterministic fixtures, both sides; zero errors/faults everywhere.
 |---|---|---|
 | Screen (32) | `experiment_data/serre-v01-foundation_20260926043218987725` | **23–9**: ouroboros 6–2, leviathan 7–1, porthos 5–3, avery 5–3 · Colosseum 8–0, queen 7–1, trauma 6–2, **devil 2–6** |
 | Reserve (16) | `experiment_data/serre-v01-foundation_20260926043901052781` | **13–3**: twinlakes 8–0, crossfire 5–3 · avery 4–0, ouroboros 3–1, leviathan 3–1, MC-x12 3–1 |
-| Gauntlet (182) | `experiment_data/serre-v01-foundation_20260926044305646987` | running |
+| Gauntlet (182) | `experiment_data/serre-v01-foundation_20260926044305646987` | **134–48 (73.6%)**, 0 errors: leviathan 22–4, porthos 20–6, avery 19–7, hunter 19–7, ouroboros 18–8, tew 18–8, MC-x12 18–8 · big_empty 14–0, stronghold 14–0, Colosseum 12–2, default 12–2, default_small 12–2, queen 12–2, schooltime 11–3, trauma 11–3, autarky 10–4, trophy 10–4, dilemma 9–5, **arena 5–9, devil 2–12** |
 | Judge sandbox (4) | — | pending |
 
 The devil leak reproduces on fresh fixtures (2–6), confirming it as the

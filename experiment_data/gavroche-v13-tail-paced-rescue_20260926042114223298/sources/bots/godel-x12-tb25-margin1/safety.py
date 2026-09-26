@@ -74,6 +74,7 @@ def lv():
 
 def head_risk(cell, my_len_after, tm, split_cells):
     """Expected material loss from enemy strikes on this head tile before our next turn."""
+    tb, ps2 = combat_pricing()  # also ticks the GM-3 pressure EMA (once per round)
     lst = tm.get(cell)
     rp = RP[ROLE]
     risk = 0.0
