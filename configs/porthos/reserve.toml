@@ -1,0 +1,12 @@
+# Non-gauntlet validation: the Aramis reserve + frontier-reserve map families
+# (6 maps) against three varied references, both sides = 36 games.
+# NOTE: these maps are development evidence (the Aramis study used them);
+# they are off the 13-map gauntlet but not a genuinely fresh family.
+bots = ["../../bots/sinbad-v03-hunt", "../../bots/hunter-v20-portal-scouts", "../../bots/drake-v11-satutfix"]
+maps = ["../aramis/reserve_maps", "../aramis/frontier_reserve_maps"]
+[run]
+sides = ["A", "B"]
+jobs = 3
+timeout_seconds = 900
+sandbox = false
+control_every = 25

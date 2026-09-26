@@ -1,0 +1,9 @@
+# Smoke check: one opponent on three varied maps, both sides (6 games).
+bots = ["../../bots/tew-v12-mid-support"]
+maps = ["../../maps/arena.map", "../../maps/trauma.map", "../../maps/default.map"]
+[run]
+sides = ["A", "B"]
+jobs = 3
+timeout_seconds = 600
+sandbox = false
+control_every = 25
