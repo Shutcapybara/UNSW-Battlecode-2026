@@ -1,0 +1,15 @@
+# Godel cycle-2 dev screen: 6 opponents spanning both opponent-style classes
+# (contact-seeking: hunter-v20, porthos-x04, sinbad-v03; banking/supported:
+# tew-v12, avery-v08, hydra-v09) x the 4 cycle-1 screen maps x both sides =
+# 48 games. The 24 fixtures vs the cycle-1 opponents coincide with the
+# cycle-1 screen exactly (deterministic engine, same maps/sides).
+bots = ["../../bots/hunter-v20-portal-scouts", "../../bots/tew-v12-mid-support",
+        "../../bots/porthos-x04-policy", "../../bots/sinbad-v03-hunt",
+        "../../bots/avery-v08-crown-race", "../../bots/hydra-v09-lanchester"]
+maps = ["../../maps/Colosseum.map", "../../maps/devil.map", "../../maps/queen_of_spades.map", "../../maps/trauma.map"]
+[run]
+sides = ["A", "B"]
+jobs = 6
+timeout_seconds = 600
+sandbox = false
+control_every = 25

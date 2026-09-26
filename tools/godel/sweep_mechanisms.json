@@ -1,0 +1,45 @@
+{
+  "mechanism_cells": "2026-09-26, frozen after descent converged at x14 (15-9), before any mechanism-cell outcome was read",
+  "master": "godel-x21-mech (ladder.py + defaults.py only; switches off = x01 exactly)",
+  "parity_obligations": {
+    "x21 bare (no params.py)": "must reproduce x01 13-11 with identical per-fixture outcomes/rounds",
+    "godel-x22-incumbent": "must reproduce x14 15-9 with identical per-fixture outcomes/rounds"
+  },
+  "arms": {
+    "godel-x22-incumbent": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "p_strike2": 0.5
+      },
+      "hypothesis": "parity cell: refit incumbent params on the mech master; reproduces x14"
+    },
+    "godel-x23-gm1": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "p_strike2": 0.5,
+        "strike_support_radius": 4,
+        "strike_gate_supported": 1
+      },
+      "hypothesis": "GM-1: strike only with local head support (tightens admission)"
+    },
+    "godel-x24-gm2": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "p_strike2": 0.5,
+        "strike_support_radius": 4,
+        "strike_relax_supported": 1
+      },
+      "hypothesis": "GM-2: admit even trades when locally supported (loosens admission under superiority)"
+    },
+    "godel-x25-gm12": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "p_strike2": 0.5,
+        "strike_support_radius": 4,
+        "strike_gate_supported": 1,
+        "strike_relax_supported": 1
+      },
+      "hypothesis": "GM-1+GM-2: strike only when supported, and even trades count then"
+    }
+  }
+}

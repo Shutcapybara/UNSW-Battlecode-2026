@@ -1,0 +1,44 @@
+{
+  "round": 3,
+  "frozen": "2026-09-26, after round 2 (x14 = trade_bias 2.5 + p_strike2 0.5 adopted at 15-9, passes the >=15 advance threshold), before any round-3 arm outcome was read",
+  "incumbent": "godel-x14-tb25-ps2-05 (trade_bias=2.5, p_strike2=0.5)",
+  "arms": {
+    "godel-x16-ps2only": {
+      "PARAMS": {
+        "p_strike2": 0.5
+      },
+      "hypothesis": "missing 2x2 cell: p_strike2=0.5 WITHOUT trade_bias (joint confirmation of the adopted set)"
+    },
+    "godel-x17-ps2-065": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "p_strike2": 0.65
+      },
+      "hypothesis": "push p_strike2 further (0.5 -> 0.65)"
+    },
+    "godel-x18-ps3-030": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "p_strike2": 0.5,
+        "p_strike3": 0.3
+      },
+      "hypothesis": "extend threat caution to 3-step strikes (0.15 -> 0.30)"
+    },
+    "godel-x19-ps1-090": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "p_strike2": 0.5,
+        "p_strike1": 0.9
+      },
+      "hypothesis": "raise 1-step strike probability 0.75 -> 0.90 (complete the caution gradient)"
+    },
+    "godel-x20-inc-margin1": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "p_strike2": 0.5,
+        "hunt.trade_margin": 1
+      },
+      "hypothesis": "retest hunter margin tightening from the new incumbent"
+    }
+  }
+}

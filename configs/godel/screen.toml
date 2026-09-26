@@ -1,0 +1,13 @@
+# Godel dev screen: 3 stylistically distinct strong references x 2 compact +
+# 2 open maps x both sides = 24 games. Compact maps exercise the ladder strike
+# path, open maps the evaluator threat/trade path; both are combat surfaces
+# under study. Deterministic engine => exact per-fixture pairing against the
+# baseline record.
+bots = ["../../bots/hunter-v20-portal-scouts", "../../bots/tew-v12-mid-support", "../../bots/porthos-x04-policy"]
+maps = ["../../maps/Colosseum.map", "../../maps/devil.map", "../../maps/queen_of_spades.map", "../../maps/trauma.map"]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 25

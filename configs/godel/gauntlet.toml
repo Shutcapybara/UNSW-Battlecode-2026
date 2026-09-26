@@ -1,0 +1,17 @@
+# Godel gauntlet: 7 diverse references x all 13 bundled maps x both sides =
+# 182 games. Same roster shape as the Von Neumann gauntlet, with
+# porthos-x04-policy in place of ouroboros-v13-ladder (the candidate descends
+# from ouroboros-v13, so v13 itself cannot be an opponent).
+bots = [
+ "../../bots/sinbad-v03-hunt", "../../bots/tew-v12-mid-support",
+ "../../bots/avery-v06-late-feed", "../../bots/drake-v05-sweep",
+ "../../bots/porthos-x04-policy", "../../bots/hunter-v20-portal-scouts",
+ "../../bots/hydra-v09-lanchester"
+]
+maps = ["../../maps"]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 25

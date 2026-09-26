@@ -1,0 +1,37 @@
+{
+  "study": "Godel cycle 2: opponent-style-conditioned aggression on a widened screen",
+  "frozen": "2026-09-26, after cycle 1 completed (no promotion; x14 refit 112-70 gauntlet tie, 12-4 fresh-reserve win), before any cycle-2 outcome was read",
+  "cycle1_evidence": {
+    "refit_direction": "x14 = {trade_bias 2.5, p_strike2 0.5} (cautious threat pricing) won the 24-game screen 15-9, tied the 182-game gauntlet with 19 flips each way: +4 vs porthos-x04, +2 sinbad-v03, +2 drake-v05, -4 tew-v12, -3 hydra-v09, -2 hunter-v20",
+    "reserve": "x14 12-4 vs x01 9-7 on fresh combat-focused maps: the cautious refit pays where opponents seek contact, costs where they bank",
+    "conclusion": "a GLOBAL cautious constant rebalances matchups to net zero; the conditioning variable is opponent contact-seeking, so price caution CONDITIONALLY"
+  },
+  "hypotheses": {
+    "H1_screen": "the 24-game screen (3 opponents) overfits conditioning; a 48-game screen over 6 opponents spanning both style classes prevents single-direction overfit",
+    "H2_style": "conditioning threat/trade pricing on observed opponent contact pressure captures the x14 gains vs contact-seekers without its losses vs bankers"
+  },
+  "development_metric": {
+    "screen": "configs/godel/screen2.toml (48 games: hunter-v20-portal-scouts, tew-v12-mid-support, porthos-x04-policy, sinbad-v03-hunt, avery-v08-crown-race, hydra-v09-lanchester x Colosseum, devil, queen_of_spades, trauma x both sides). The 24 fixtures vs the three cycle-1 opponents coincide with the cycle-1 screen, preserving subset comparability.",
+    "baseline_record": "established by godel-x01-frozen on screen2 before any arm runs"
+  },
+  "opponent_style_coverage": {
+    "contact_seeking": ["hunter-v20-portal-scouts", "porthos-x04-policy", "sinbad-v03-hunt"],
+    "banking_or_supported": ["tew-v12-mid-support", "avery-v08-crown-race", "hydra-v09-lanchester"],
+    "note": "tew-v12 shares the ouroboros-v13 policy base: correlated evidence, never an independent style; hydra-v09 is the banker that punished x14 most (-3)"
+  },
+  "adopt_rule": "coordinate descent on screen2, one parameter at a time from the incumbent: adopt iff total wins >= incumbent + 2 AND no per-opponent subset is worse than the incumbent's by more than 1",
+  "advance_to_gauntlet": "a cell advances iff total wins >= baseline + 3 AND wins on at least 3 of 6 opponent subsets are >= baseline on that subset - 1",
+  "gauntlet_gate": "configs/godel/gauntlet.toml (182 games), unchanged from cycle 1: wins >= 115 (x01's 112 + 3), zero faults",
+  "promotion": "unchanged from cycle 1 (tools/godel/selection_rule.json): gauntlet gate + fresh reserve (>= x01 reserve + 1 on the same fixtures) + clean judge",
+  "mechanism_GM3": {
+    "spec": "per-dragon local opponent-pressure estimate: EMA (weight 1/style_ema_x4) of visible enemy heads within style_radius of our head, updated at most once per round; when EMA >= style_hi the opponent is contact-seeking and head_risk uses (style_bias_hi, style_ps2_hi) = x14's cautious refit values; otherwise P defaults (or style_lo_* overrides when > 0). Implemented in safety.py::combat_pricing consumed by head_risk; covers both the evaluator path (open maps) and the ladder safety veto (compact maps). Switch style_pressure=0 => expression-for-expression x01 pricing.",
+    "master": "godel-x26-style (diff vs x01: safety.py + defaults.py only)",
+    "parity_obligation": "godel-x26-style bare must reproduce the x01 cycle-1 screen record 13-11 with identical per-fixture outcomes and round counts",
+    "cells": {
+      "godel-x27-gm3hi": "style_pressure=1 on x01 defaults: cautious pricing ONLY under high observed pressure",
+      "godel-x28-gm3lo": "style_pressure=1 with x14 constants as base and style_lo_bias=1.5, style_lo_ps2=0.35: x01 pricing restored under low pressure (same hypothesis from the opposite anchor)"
+    }
+  },
+  "bounds_note": "cycle-1 bounds stand for cycle 2 (pacifist 7-17, berserk 12-12 on the 24-game screen; both failed the advance margin). They are not re-run.",
+  "verdict_rule": "aggression-as-conditioned-component is accepted for cycle 2 iff a conditioning cell passes the full promotion gate while the cycle-1 bounds stand. If style-conditioned cells also fail the gauntlet gate, the next lever is per-opponent evidence through sonar reports, not further global constants."
+}

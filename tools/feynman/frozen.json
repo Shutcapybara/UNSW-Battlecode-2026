@@ -1,0 +1,26 @@
+{
+  "frozen": "2026-09-26, before any Feynman screen outcome was read",
+  "parent": "bots/valjean-v01-portal-memory",
+  "child": "bots/feynman-x01-frozen",
+  "sha256_by_file": {
+    "bot.toml": "6d1db21a1671e70116d5a87d5cd0432a8f35295b2c2016a9efdc712617fa8d41",
+    "candidates.py": "4a179b43d7542c55bbe00262c6800ec2cc825757ee199679566d43fa3d326aeb",
+    "comms.py": "08cbdfc415883fdba0bee6e60230d450efab581332ff7752c6c0e0839a81459c",
+    "density.py": "b77a9d374fdd36d425f30695660c030bcba1ac9d84e7ac99ab50d8fe6faa0ee3",
+    "executors.py": "7d8e632376ae1465686d9bf812b93e7c3697518fcf69c2e29c6c905701773f59",
+    "main.py": "9cda8453456db6e63198346e1b3cc067e88ab323d4cbc68fc1027aa8c84faedb",
+    "mass.py": "cc13274be1888628ca2204f0c23ca7cf0b498aee385432f1849cf9c44138920a",
+    "params.py": "156f6f71b9629c017567fbe44a12ea177d3760c9d7940c25729ddebac21a75d1",
+    "policy.py": "380b6395f2e4ceccc2e3471d268fe69d3e22f5d9853a4e16676cbc10c540bbae",
+    "protocol.py": "0c73a7eb0686876b99ed86d6bf3ac3ac65b31ebae9c617aa99d3d7c2e738fdde",
+    "radio.py": "f008b4dc2ee88db4df46f65424b10fc895631b559a84da634194f4f7cd7acb07",
+    "regions.py": "583aa5dec6423b05be8c1efc2535f2a83fb61849bc3a87deb22ff2ba1f3de889",
+    "roles.py": "4cc52e258de820357ffb4268dbbee5bcd7a85231591a640126bcdab4bd5e8700",
+    "tactics.py": "3283eb155edf91fe416f4257dc645971ff6dbb83ee9219ccdf44cb85014fb272",
+    "topology.py": "1eac4641c7df0fb3bfe143442cb2bfda733219af1d234c61ae342969f1b07207",
+    "valuation.py": "36b41cebe80bb56ad78c32eb6c64e16ce84669650d723f5e52e1dbf07a0d29b7",
+    "world.py": "03c3e54813647c8296e8bcfee9d2fce83fc8e6beab8dac946087a10db46c8ba6"
+  },
+  "mismatches": [],
+  "note": "README.md in feynman-x01-frozen is lineage documentation, not part of byte parity."
+}

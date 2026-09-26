@@ -1,0 +1,23 @@
+{
+  "round": 1,
+  "frozen": "2026-09-26, after bounds arms (baseline 13-11, pacifist 7-17, berserk 12-12), before any round-1 arm outcome was read",
+  "incumbent": "godel-x01-frozen defaults",
+  "rule": "one parameter at a time from the incumbent; adopt iff screen wins strictly improve (>13); joint confirmation run for the adopted set; advance to gauntlet iff >= 15",
+  "evidence_basis": "initiated_h2h -0.172 / team_kills -0.194 (tighten even trades); berserk 4-4 vs porthos vs baseline 2-6 (more aggression may pay vs aggression-policy opponents); pacifist -6 (strikes are load-bearing)",
+  "arms": {
+    "godel-x04-attackunits4":  {"PARAMS": {"ladder_attack_units": 4},
+      "hypothesis": "stricter ladder strike admission (need more local mass before trading up)"},
+    "godel-x05-margin1":       {"PARAMS": {"hunt.trade_margin": 1},
+      "hypothesis": "hunters refuse even trades; only trade up (initiated-contact penalty evidence)"},
+    "godel-x06-strikebonus2":  {"PARAMS": {"hunt.strike_bonus": 2.0},
+      "hypothesis": "pay hunters more per admissible strike (test whether strike frequency is supply-limited)"},
+    "godel-x07-tradebias25":   {"PARAMS": {"trade_bias": 2.5},
+      "hypothesis": "feel even trades as worse in the threat model (tighter engagement everywhere)"},
+    "godel-x08-pstrike06":     {"PARAMS": {"p_strike1": 0.6},
+      "hypothesis": "discount adjacent enemy strike probability 0.75->0.60 (bolder positioning near heads)"},
+    "godel-x09-midhunt55":     {"PARAMS": {"mix_mid": [0.35, 0.55, 0.10]},
+      "hypothesis": "raise midgame hunt allocation 0.45->0.55 (more fighters, fewer gatherers, midgame)"},
+    "godel-x10-crownkill340":  {"PARAMS": {"crown_kill_round": 340},
+      "hypothesis": "start endgame crown-kill aggression 40 rounds earlier"}
+  }
+}

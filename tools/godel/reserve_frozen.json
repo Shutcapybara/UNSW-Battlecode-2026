@@ -1,0 +1,25 @@
+{
+  "maps": [
+    {
+      "name": "godel_reserve_pincer",
+      "family": "pincer",
+      "seed": 7701,
+      "size": [
+        28,
+        24
+      ],
+      "sha256": "ab8185505e7f32b5533f507eda128bb66477175a42131da9729d8824eb6a90b5"
+    },
+    {
+      "name": "godel_reserve_fourgates",
+      "family": "fourgates",
+      "seed": 5150,
+      "size": [
+        24,
+        24
+      ],
+      "sha256": "fef5f39b4938d82d9f4e1eaec68b7263dcfeea5874e3b1b8963948b55b7565ce"
+    }
+  ],
+  "note": "Frozen 2026-09-26 before any Godel screen/sweep outcome was read; no result-driven adaptation. Roster spans four styles (C++ swarm+traps, French aggression policy, crown-race banker, length banker)."
+}

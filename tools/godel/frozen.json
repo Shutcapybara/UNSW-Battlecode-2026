@@ -1,0 +1,19 @@
+{
+  "frozen": "2026-09-26, before any Godel screen/sweep outcome was read",
+  "parent": "bots/ouroboros-v13-ladder",
+  "child": "bots/godel-x01-frozen",
+  "sha256_by_file": {
+    "bot.toml": "42c698a60be737f7994c9b1c5efeacc6c8b94fce732c4f4409fab055b1177d4a",
+    "comms.py": "4e9c36a9a5d4b9d2e03c193157b6e90c92edef1c745f104fa380719c60d7adef",
+    "defaults.py": "0de8cf6cc48f7fb0af3a45d7d676a96f6a7bbb0e254b61a62579e13222bf6408",
+    "evaluate.py": "e02278a39495b72e1bd5f65c945fab781bfa71db456a2a30fc562be62290b3e8",
+    "ladder.py": "0fb0b2c3aff938fa8a2b5751f10a805a4f06ae2b3f3bb146e6b417a38679d7b4",
+    "main.py": "130223635c636614d3d6d71efaa41c68d912f539de9b6d822d0fff61bee6ab4f",
+    "roles.py": "4a6b03c1c99f24c8661d9343b71cede12bff6312cde47f76d7ce9722f5b14f5f",
+    "safety.py": "d836f91e939a2a8395950777a1fcf0ac01cc823bb3f03afd9cf5d33c76c25ada",
+    "targets.py": "053a3a9e7604c4dfb205a630098c1ef093bfb0ff25d90e0a9f1174c3ec9dd7e8",
+    "world.py": "af9aee9ee8ab815a6e13ebcf6e710a810a21383b9277ea3472be0029fbb25e43"
+  },
+  "mismatches": [],
+  "note": "README.md in godel-x01-frozen is lineage documentation, not part of byte parity."
+}

@@ -1,0 +1,42 @@
+{
+  "round": 2,
+  "frozen": "2026-09-26, after round 1 (x07 trade_bias=2.5 adopted at 14-10; all other arms null or worse), before any round-2 arm outcome was read",
+  "incumbent": "godel-x07-tradebias25 (trade_bias=2.5)",
+  "arms": {
+    "godel-x11-tradebias35": {
+      "PARAMS": {
+        "trade_bias": 3.5
+      },
+      "hypothesis": "push the winning coordinate further (2.5 -> 3.5)"
+    },
+    "godel-x12-tb25-margin1": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "hunt.trade_margin": 1
+      },
+      "hypothesis": "hold adopted trade_bias, tighten hunter trade margin (was null from x01; retest from new incumbent)"
+    },
+    "godel-x13-tb25-au4": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "ladder_attack_units": 4
+      },
+      "hypothesis": "hold adopted trade_bias, stricter ladder admission (was null from x01)"
+    },
+    "godel-x14-tb25-ps2-05": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "p_strike2": 0.5
+      },
+      "hypothesis": "hold adopted trade_bias, raise 2-step enemy strike probability 0.35 -> 0.50 (same caution direction)"
+    },
+    "godel-x15-tb25-gs4": {
+      "PARAMS": {
+        "trade_bias": 2.5,
+        "gather.trade_margin": 4,
+        "scout.trade_margin": 4
+      },
+      "hypothesis": "hold adopted trade_bias, tighten gather/scout trade margins 3 -> 4 (non-hunters trade less)"
+    }
+  }
+}

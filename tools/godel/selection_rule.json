@@ -1,0 +1,16 @@
+{
+  "study": "Godel combat/aggression iteration (baseline ouroboros-v13-ladder = godel-x01-frozen)",
+  "frozen": "2026-09-26, before any screen/sweep outcome of this study was read",
+  "question": "Is aggression a valid conditional component of the policy to optimise (and if so, in which conditioning), not a stance to maximise?",
+  "development_metric": {
+    "screen": "configs/godel/screen.toml (24 games: hunter-v20-portal-scouts, tew-v12-mid-support, porthos-x04-policy x Colosseum, devil, queen_of_spades, trauma x both sides)",
+    "baseline_record": "established by the godel-x01-frozen run itself; deterministic engine gives exact per-fixture pairing for every later arm"
+  },
+  "advance_to_gauntlet": "A variant (parameter arm or mechanism cell) advances iff screen wins >= baseline screen wins + 2 with zero errors/analysis errors. Ties at the margin: fewer changed parameters wins (param-only beats code).",
+  "gauntlet_gate": "configs/godel/gauntlet.toml (7 opponents x 13 maps x both sides = 182 games). Survives iff wins >= baseline x01's own gauntlet wins + 3, with zero faults.",
+  "promotion_to_v01_release": "ALL of: gauntlet gate; fresh reserve (configs/godel/reserve.toml, 16 games, maps frozen pre-outcome) wins >= baseline x01's own reserve record on the same fixtures + 1; judge sandbox clean (0 TLE/errors, max CPU < 100M points, max memory < 48MB).",
+  "bounds_arms": "pacifist (all strikes priced out: ladder_attack_units=99, every trade_margin=99, every strike_bonus=-50, crown_kill_round=999) and berserk (ladder_attack_units=2, every trade_margin=-99, hunt strike_bonus=10, crown_kill_round=200) are diagnostics bounding the stance space; they are never promotion candidates regardless of score.",
+  "refit_rule": "Coordinate descent on the screen over combat parameters (ladder_attack_units, ladder_risk_max, p_strike1/2/3, p_split_child, trade_bias, threat_reach, per-role trade_margin/strike_bonus/risk/w_enemy, hunt share of mix_*, crown_kill_round): sweep one parameter at a time from the current incumbent, adopt iff screen wins strictly improve; joint confirmation run required for any adopted set (the combination must independently pass the advance rule). Incumbent starts at the frozen defaults. After any adopted mechanism change the descent is re-run from the new incumbent (the refit).",
+  "aggression_verdict_rule": "Aggression is accepted as an optimisable component iff at least one conditioning of it (parameter setting or mechanism) passes the promotion gate while both bounds arms fail to beat the baseline screen record by the advance margin. If no conditioning passes but pacifist ties the baseline, aggression is decorative on this chassis. If berserk beats the baseline by the advance margin, stance-level aggression suffices on this screen, contradicting the replay evidence; that outcome must be re-tested on the reserve before being believed.",
+  "independence_note": "Von Neumann (porthos-x04 chassis) asks the same question on the French line. Godel's ouroboros chassis is a second, stylistically independent chassis; agreement between the two is evidence the verdict is chassis-robust, disagreement is evidence it is chassis-specific. tew-v12-mid-support shares the ouroboros-v13 policy base and is treated as correlated evidence, never as an independent style."
+}

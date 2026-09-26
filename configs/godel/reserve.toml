@@ -1,0 +1,12 @@
+# Fresh Godel reserve: two combat-focused families vs four stylistically
+# varied references, both sides = 16 games. Maps frozen (tools/godel/
+# reserve_frozen.json) before any outcome was read.
+bots = ["../../bots/hunter-v20-portal-scouts", "../../bots/porthos-x04-policy",
+        "../../bots/avery-v08-crown-race", "../../bots/kraken-v04-eval"]
+maps = ["reserve_maps"]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 25
