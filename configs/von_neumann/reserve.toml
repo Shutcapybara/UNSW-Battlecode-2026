@@ -1,0 +1,11 @@
+# Fresh reserve: two combat-focused families vs four stylistically varied
+# references, both sides = 16 games. Maps frozen before outcomes were read.
+bots = ["../../bots/hunter-v20-portal-scouts", "../../bots/ouroboros-v13-ladder",
+        "../../bots/avery-v08-crown-race", "../../bots/sinbad-v06-arrival"]
+maps = ["reserve_maps"]
+[run]
+sides = ["A", "B"]
+jobs = 2
+timeout_seconds = 600
+sandbox = false
+control_every = 25

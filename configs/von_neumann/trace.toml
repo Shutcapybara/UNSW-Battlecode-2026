@@ -1,0 +1,9 @@
+# Trace diagnostic: 4 games, hunter-v20 on a compact and a long map.
+bots = ["../../bots/hunter-v20-portal-scouts"]
+maps = ["../../maps/Colosseum.map", "../../maps/trauma.map"]
+[run]
+sides = ["A", "B"]
+jobs = 2
+timeout_seconds = 600
+sandbox = false
+control_every = 25

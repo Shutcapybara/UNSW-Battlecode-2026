@@ -1,0 +1,15 @@
+{
+  "study": "Von Neumann combat/aggression iteration (baseline porthos-x04-policy = von_neumann-x01-frozen)",
+  "frozen": "2026-09-26, before any screen/sweep outcome of this study was read",
+  "question": "Is aggression a valid conditional component of the policy to optimise (and if so, in which conditioning), not a stance to maximise?",
+  "development_metric": {
+    "screen": "configs/von_neumann/screen.toml (24 games, identical fixtures to porthos parity screen)",
+    "baseline_record": "19-5-0 (porthos-x04-policy, run porthos-x04-policy_20260925224950114366)"
+  },
+  "advance_to_gauntlet": "A variant (sweep arm or mechanism cell) advances iff screen wins >= 21 of 24 with zero errors/analysis errors. Ties at 21: fewer added mechanisms wins (param-only beats code).",
+  "gauntlet_gate": "configs/von_neumann/gauntlet.toml (182 games). Survives iff wins >= 127 (strictly above the frozen baseline's recorded 126-56).",
+  "promotion_to_v01_release": "ALL of: gauntlet gate; fresh reserve (configs/von_neumann/reserve.toml, 16 games, maps frozen pre-outcome) wins >= baseline x01's own reserve record on the same fixtures + 1; judge sandbox clean (0 TLE/errors, max CPU < 100M points, max memory < 48MB).",
+  "bounds_arms": "pacifist (attack=0, v_hunt=0) and berserk (atk_margin=-99, atk_units=1) are diagnostics bounding the stance space; they are never promotion candidates regardless of score.",
+  "refit_rule": "Coordinate descent on the screen over combat parameters (atk_margin, aggro_*, threat p_*, hunt_*): sweep one parameter at a time from the current incumbent, adopt iff screen wins strictly improve; joint confirmation run required for any adopted set (the combination must independently pass the advance rule). Incumbent starts at the frozen defaults.",
+  "aggression_verdict_rule": "Aggression is accepted as an optimisable component iff at least one conditioning of it (parameter or mechanism) passes the promotion gate while both bounds arms fail to beat the baseline screen record by the advance margin; otherwise aggression stays only as the frozen P1 gate."
+}

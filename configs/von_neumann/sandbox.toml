@@ -1,0 +1,8 @@
+bots = ["../../bots/hunter-v20-portal-scouts"]
+maps = ["../../maps/arena.map", "../../maps/stronghold.map"]
+[run]
+sides = ["A", "B"]
+jobs = 1
+timeout_seconds = 1200
+sandbox = true
+control_every = 25

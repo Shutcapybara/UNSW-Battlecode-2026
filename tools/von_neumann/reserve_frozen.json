@@ -1,0 +1,25 @@
+{
+  "maps": [
+    {
+      "name": "vn_reserve_corridor_clash",
+      "family": "corridor_clash",
+      "seed": 4242,
+      "size": [
+        26,
+        26
+      ],
+      "sha256": "6b593cb8628d7260b0334f4c468003524997ae3a273276bf40cf1d0bf1803942"
+    },
+    {
+      "name": "vn_reserve_open_field",
+      "family": "open_field",
+      "seed": 9090,
+      "size": [
+        32,
+        20
+      ],
+      "sha256": "94a09574c69c2ee523cf26660ffd2e6057a5f90d38088f8fcc3819e3dd0c3c01"
+    }
+  ],
+  "note": "Frozen 2026-09-26 before any screen/sweep outcome of this study was read; no result-driven adaptation. Roster spans four styles to break the sinbad/hunter/drake trio correlation."
+}

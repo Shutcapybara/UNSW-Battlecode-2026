@@ -1,0 +1,27 @@
+{
+  "baseline": "porthos-x04-policy",
+  "copy": "von_neumann-x01-frozen",
+  "source_hashes": {
+    "README.md": "f99558d49776825858b063c43b5feb14d42af1ec3f1b0ff75931501190e09dda",
+    "bot.toml": "6d1db21a1671e70116d5a87d5cd0432a8f35295b2c2016a9efdc712617fa8d41",
+    "comms.py": "7e883a5b86a23d959c26eda8712d829643e147f818b4b53923a62d59cc155c8e",
+    "decision.py": "d6183d213260f33d4c6e7b4f79ecc5296370c3e8286578e84f0a4cd60f872038",
+    "density.py": "0dfdcf6a9bc1d98e08c4d92e6b405000f21d21856df395ff228ebfe50f097b6d",
+    "diagnostics.py": "a4e20589d626c8022ee6b3135adc5e6a6af6143d24060869d30d608a7f94ef1a",
+    "executors.py": "e59476ff27fa8c3cf75e779d62ed6676d3a62c9d4941cca394c70ed4be84204d",
+    "features.py": "6c6de9ffca557cf57cf13a1b858b95d86b39f32ddeef8e4e264ae00a86dacaf4",
+    "intentions.py": "89cd18b229233701a52df1b7e8ecd6bede2df158031eebd380fe922c9b3a5242",
+    "main.py": "b280c3abac60db892e1e52fd4ea8d195a319581bef4a4cd341fa778aac449471",
+    "params.py": "42512cbef51f69c1ea053bf31822cfcf211fcc81752332f0d66e5c6fab04a144",
+    "protocol.py": "0c73a7eb0686876b99ed86d6bf3ac3ac65b31ebae9c617aa99d3d7c2e738fdde",
+    "radio.py": "2aedc9e6e289acfe08426e1bc63ed50f21f296ea8761424423d02c115c8ad0ad",
+    "risk_features.py": "2f6fcee1bd8599731190ea3023e5640a5e8adbe8d62035de348e0442b3c6ef11",
+    "roles.py": "4cc52e258de820357ffb4268dbbee5bcd7a85231591a640126bcdab4bd5e8700",
+    "swarm.py": "c0160ec3fe010b6fb79d8d4f291f91cb9346f5abfa9149a734d1394769c1f611",
+    "tactics.py": "bb8effabe6dd1b990ab991dd84065197fb72e39afb7f42d8cf48279bc5b79d90",
+    "targets.py": "66043fc25b3af626bb0ddc19dd244af5d2e1f98e063b669c727205c461674819",
+    "world.py": "4fb8b5cecf2c9507ed92e7725d8b23fad72c2ce702027e8254e4b1004d55387f"
+  },
+  "verified_byte_identical": true,
+  "created": "2026-09-26"
+}

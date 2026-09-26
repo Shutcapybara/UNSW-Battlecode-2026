@@ -1,0 +1,13 @@
+# Von Neumann dev screen: identical fixtures to configs/porthos/parity.toml
+# (tew-v12 / hunter-v20 / ouroboros-v13 x Colosseum / devil / queen_of_spades /
+# trauma, both sides = 24 games) so results compare directly with the recorded
+# porthos cycle records (x01 control 14-10, x03 15-9, x04 19-5) and the
+# deterministic engine gives exact per-fixture pairing.
+bots = ["../../bots/tew-v12-mid-support", "../../bots/hunter-v20-portal-scouts", "../../bots/ouroboros-v13-ladder"]
+maps = ["../../maps/Colosseum.map", "../../maps/devil.map", "../../maps/queen_of_spades.map", "../../maps/trauma.map"]
+[run]
+sides = ["A", "B"]
+jobs = 3
+timeout_seconds = 600
+sandbox = false
+control_every = 25

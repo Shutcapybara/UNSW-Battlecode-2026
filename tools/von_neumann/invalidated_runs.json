@@ -1,0 +1,5 @@
+{
+  "_invalidated": {
+    "pacifist": "override.py bug: OVERRIDE was inside a comment; run vn-x01-pacifist_20260926021700683602 was byte-identical baseline. Rerun 2026-09-26 after fix."
+  }
+}

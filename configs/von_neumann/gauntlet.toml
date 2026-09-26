@@ -1,0 +1,14 @@
+# Diverse references: strongest Bahamut relatives and three established styles.
+bots = [
+ "../../bots/sinbad-v03-hunt", "../../bots/tew-v12-mid-support",
+ "../../bots/avery-v06-late-feed", "../../bots/drake-v05-sweep",
+ "../../bots/ouroboros-v13-ladder", "../../bots/hunter-v20-portal-scouts",
+ "../../bots/hydra-v09-lanchester"
+]
+maps = ["../../maps"]
+[run]
+sides = ["A", "B"]
+jobs = 3
+timeout_seconds = 600
+sandbox = false
+control_every = 25
