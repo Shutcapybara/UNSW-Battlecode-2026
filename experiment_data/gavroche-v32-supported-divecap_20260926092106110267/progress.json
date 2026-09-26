@@ -1,0 +1,12 @@
+{
+  "status": "interrupted",
+  "scheduled": 96,
+  "recorded": 43,
+  "wins": 23,
+  "draws": 0,
+  "losses": 20,
+  "errors": 0,
+  "analysis_errors": 0,
+  "runtime_faults": 0,
+  "updated": "2026-09-26T09:28:25.898555+00:00"
+}

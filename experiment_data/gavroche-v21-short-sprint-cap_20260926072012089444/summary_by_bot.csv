@@ -1,0 +1,10 @@
+opponent,scheduled,played,wins,draws,losses,errors,analysis_errors,pending,score
+gavroche-v13-tail-paced-rescue,26,26,12,0,14,0,0,0,0.46153846153846156
+gavroche-v15-divecap,26,20,10,0,10,0,0,6,0.5
+gavroche-v16-informed-divecap,26,0,0,0,0,0,0,26,
+gavroche-v17-half-gradient,26,0,0,0,0,0,0,26,
+sinbad-v07-divecap,26,0,0,0,0,0,0,26,
+vn-x06-info-tf-05,26,0,0,0,0,0,0,26,
+vn-x06-info-grad1,26,0,0,0,0,0,0,26,
+von_neumann-x04-support,26,0,0,0,0,0,0,26,
+monte_christo-x12-remote-density,26,0,0,0,0,0,0,26,

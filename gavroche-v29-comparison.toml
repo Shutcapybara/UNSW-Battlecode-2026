@@ -1,0 +1,26 @@
+# Compare the saturation-window sprint cap on replay-loss maps against v17,
+# v23, the previous divecap line, and the strongest pulled model families.
+bots = [
+  "bots/gavroche-v23-selective-sprint-cap",
+  "bots/gavroche-v16-informed-divecap",
+  "bots/gavroche-v17-half-gradient",
+  "bots/sinbad-v07-divecap",
+  "bots/vn-x06-info-tf-05",
+  "bots/vn-x06-info-grad1",
+  "bots/von_neumann-x04-support",
+  "bots/monte_christo-x12-remote-density",
+]
+maps = [
+  "maps/autarky.map",
+  "maps/big_empty.map",
+  "maps/queen_of_spades.map",
+  "maps/schooltime.map",
+  "maps/stronghold.map",
+  "maps/trauma.map",
+]
+[run]
+sides = ["A", "B"]
+jobs = 8
+timeout_seconds = 600
+sandbox = false
+control_every = 10

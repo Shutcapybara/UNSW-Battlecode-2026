@@ -1,0 +1,14 @@
+map,scheduled,played,wins,draws,losses,errors,analysis_errors,pending,score
+Colosseum,18,4,2,0,2,0,0,14,0.5
+arena,18,4,3,0,1,0,0,14,0.75
+autarky,18,4,0,0,4,0,0,14,0.0
+big_empty,18,4,0,0,4,0,0,14,0.0
+default,18,4,2,0,2,0,0,14,0.5
+default_small,18,4,4,0,0,0,0,14,1.0
+devil,18,4,3,0,1,0,0,14,0.75
+dilemma,18,4,1,0,3,0,0,14,0.25
+queen_of_spades,18,4,0,0,4,0,0,14,0.0
+schooltime,18,2,1,0,1,0,0,16,0.5
+stronghold,18,4,4,0,0,0,0,14,1.0
+trauma,18,2,1,0,1,0,0,16,0.5
+trophy,18,2,1,0,1,0,0,16,0.5

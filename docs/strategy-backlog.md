@@ -71,6 +71,38 @@ when enemy size or team counts are uncertain.
 - `kraken-v02-bigmap`: big-map production and endgame growth, brawl-mode small maps, ally-head collision guards, and metered BFS with portal-local cache invalidation.
 - `kraken-v03-judge-safe`: snapshot of kraken-v02 after sandbox CPU hardening; used as the stable bot-pool evaluation candidate.
 - `kraken-v04-eval`: v03 with a kbench-parameterised CFG (KBENCH-PARAMS override block); identical behavior, the baseline for eval-weight sweeps.
+- `gavroche-v01-mass-preserving-opening`: Monte Christo x12 with an early rescue split for long, partially observed spawns; 5–3 vs x12 and Hunter v20 on Autarky and Prisoner's Dilemma.
+- `gavroche-v02-opening-production`: v01 plus stronger early production; separate target-map screens scored 13–3, while a single full-pool screen scored 12–4. It lost one Autarky side to x12 and cascades through four length-2 splits on round 0.
+- `gavroche-v03-head-preserving-opening`: v02 with a head-preserving rescue split and more aggressive production; 1–3 on the Prisoner's Dilemma screen, rejected.
+- `gavroche-v04-mobile-mass-rescue`: v02 with one-shot rescue for initial spawns; 3–5 on the target-map screen, including both Autarky losses to x12, rejected.
+- `gavroche-v05-map-aware-rescue`: v02 with map-aware rescue splitting; 5–3 on the target-map screen, but lost an Autarky side to x12, rejected in favor of v02.
+- `gavroche-v06-first-move-rescue`: v02 with one-shot rescue for initial dragons; 4–4 vs x12 and Hunter v20, no errors.
+- `gavroche-v07-paced-rescue`: allows each large tail-born piece to rescue on a later round after a movement opportunity; 5–3 vs x12 and Hunter v20, no errors.
+- `gavroche-v08-map-aware-opening`: v02 cascade on larger maps and paced rescue on compact maps; 11–5 across x12, Hunter v20, Hydra v07, and Sinbad v04.
+- `gavroche-v09-two-stage-rescue`: v07 with one follow-up rescue; 10–6 across the same four references.
+- `gavroche-v10-balanced-rescue`: v02 with a balanced initial split; split starts 14 as 7+7 on Autarky and 11 as 6+5 on Prisoner's Dilemma. Separate screens scored 12–4; the promoted v12 snapshot scored 10–6 in the single full-pool schedule. Hunter and Hydra each went 2–0 against it on Prisoner's Dilemma.
+- `gavroche-v11-tail-mass-rescue`: v10 with a four-segment original head and larger tail piece; 4–4 vs x12 and Hunter v20, no errors.
+- `gavroche-v12-balanced-opening`: v10 snapshot; scored 10–6 in the full 16-game schedule, and x12 won both Autarky games.
+- `gavroche-v13-tail-paced-rescue`: v09-style `SPLIT (length - 2)` with a movement opportunity before follow-up rescue; scored 12–4 in the full 16-game schedule, swept x12 4–0, no errors. Historical baseline; native tournament results, not sandbox-verified.
+- `gavroche-v14-four-segment-head`: v13 with `SPLIT (length - 4)`; scored 9–7 and x12 won both Autarky games, rejected.
+- `gavroche-v15-divecap`: v13 with Sinbad v07's `v_dive = 3`; 100–82 in the 182-game cross-family panel and 78–52 against five selected model-family references. Strong x06 tf-05 result (19–7).
+- `gavroche-v16-informed-divecap`: v15 plus full-strength room-normalised x06-style early density gradient; 111–71 in the 182-game panel and 77–53 across those five references. Native, not judge CPU-validated.
+- `gavroche-v17-half-gradient`: v16 with `info_aggro_push` halved from 2.0 to 1.0; 125–83 in the 208-game panel and 84–46 across the five model-family references (Sinbad, x06 tf-05, reconstructed sparse grad1, x04 support, Monte Christo x12). Current broad-opponent candidate; native, not judge CPU-validated. Replay-map panel: Big Empty 12–4, Prisoner's Dilemma 14–2, Trophy 9–7.
+- `gavroche-v18-fused-room-flood`: reuse one flood traversal for candidate trap scoring and the early density room factor. Big Empty mirror had no visible timeouts, but peaked at 99.5M CPU; insufficient margin.
+- `gavroche-v19-spatial-density`: radius-window bucket lookup for retained sonar reports. Exact against the full scan on 488,520 grid queries, including wrapped/partial buckets; CPU remained 99.1M max and 82.7–83.3M p99 on Big Empty, so this alone did not solve the budget risk.
+- `gavroche-v20-bounded-feeding`: v19 plus a separate adaptation of Avery v06 feeding (length≤10, start round 410 on 64×64, die beside a visible larger crown); not benchmarked as the CPU base was still too close to cap.
+- `gavroche-v21-short-sprint-cap`: v19 with all three-step sprint candidates disabled while preserving one/two-step options. Big Empty mirror completed 500 rounds at 90.7M/93.1M max and 71.2M/72.1M p99 with zero timeouts, invalid actions or runtime logs. early 46/234 screen stopped at 22–24 with zero errors after losses on all four completed Big Empty, Autarky and Queen games vs v13/v15.
+- `gavroche-v22-bounded-feeding`: v21 plus delayed no-action donation from short donors to a fresh visible longer crown. not screened; inherits v21’s over-broad sprint cutoff.
+
+- `gavroche-v23-selective-sprint-cap`: cap three-step candidates to lengths 4–7; Big Empty max 94.7M, six-map panel 46–38, but v17 beat it 34–14 across the four top family refs.
+- `gavroche-v24-selective-feed`: guarded late crown feeding on v23; Big Empty max 97.3M; stopped after 4–8 in the first 12 vs v23.
+- `gavroche-v25-crown-margin-one`: crown margin 1 on v23; stopped at 54/96, 21–32–1.
+- `gavroche-v26-sprint-cap10` / `v27-sprint-cap9`: Big Empty max 99.3M and 99.0M/99.5M respectively; insufficient headroom.
+- `gavroche-v28-gradient-window-sprint-cap`: no-op due a disabled `info_aggro_push` guard; panel interrupted at 28/96.
+- `gavroche-v29-saturation-window-sprint-cap`: 40–56 on the replay-sensitive six-map panel; rejected.
+- `gavroche-v30-saturated-sprint-cap`: branched directly from v17; Big Empty max 99.8M, panel 54–42.
+- `gavroche-v31-saturated-divecap`: V30 plus `v_dive=3`; panel 55–41, not better than v17/V23 on the top-family aggregate.
+- `gavroche-v32-supported-divecap`: V31 plus x04’s support-weighted trades; 43/96 partial panel at the user-requested pause. Resume from the frozen experiment using `docs/gavroche-resume-2026-09-26.md`.
 
 ## kraken iteration loop (2026-09-24 session)
 

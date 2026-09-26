@@ -1,0 +1,7 @@
+map,scheduled,played,wins,draws,losses,errors,analysis_errors,pending,score
+autarky,16,10,2,0,8,0,0,6,0.2
+big_empty,16,8,3,0,5,0,0,8,0.375
+queen_of_spades,16,10,7,0,3,0,0,6,0.7
+schooltime,16,8,1,0,7,0,0,8,0.125
+stronghold,16,8,3,0,5,0,0,8,0.375
+trauma,16,10,5,1,4,0,0,6,0.55

@@ -76,3 +76,6 @@ __pycache__/
 /main
 .idea/
 .venv/
+# Generated game statistics ledger and local writer lock.
+/game_stats.parquet
+/game_stats/.write.lock

@@ -1,0 +1,9 @@
+opponent,scheduled,played,wins,draws,losses,errors,analysis_errors,pending,score
+gavroche-v13-tail-paced-rescue,26,26,17,0,9,0,0,0,0.6538461538461539
+gavroche-v15-divecap,26,26,11,0,15,0,0,0,0.4230769230769231
+gavroche-v16-informed-divecap,26,26,13,0,13,0,0,0,0.5
+sinbad-v07-divecap,26,26,16,0,10,0,0,0,0.6153846153846154
+vn-x06-info-tf-05,26,26,18,0,8,0,0,0,0.6923076923076923
+vn-x06-info-grad1,26,26,13,0,13,0,0,0,0.5
+von_neumann-x04-support,26,26,19,0,7,0,0,0,0.7307692307692307
+monte_christo-x12-remote-density,26,26,18,0,8,0,0,0,0.6923076923076923

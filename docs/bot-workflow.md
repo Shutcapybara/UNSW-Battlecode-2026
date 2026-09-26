@@ -91,6 +91,38 @@ Current strategy lineage:
 | `kraken-v02-bigmap` | big-map production, brawl mode, and judge-safe metered search |
 | `kraken-v03-judge-safe` | snapshot of kraken-v02 after sandbox CPU hardening |
 | `kraken-v04-eval` | v03 with kbench-parameterised CFG; eval-function baseline (identical behavior) |
+| `gavroche-v01-mass-preserving-opening` | Monte Christo x12 with an early rescue split for long, partially observed spawns |
+| `gavroche-v02-opening-production` | v01 plus early two-segment production; 13–3 in separate screens and 12–4 in one full-pool schedule |
+| `gavroche-v03-head-preserving-opening` | v02 with head-preserving rescue and more aggressive production; rejected |
+| `gavroche-v04-mobile-mass-rescue` | v02 with a one-shot initial-spawn rescue; rejected after Autarky regression |
+| `gavroche-v05-map-aware-rescue` | v02 with map-aware rescue splitting; rejected after losing an Autarky side to x12 |
+| `gavroche-v06-first-move-rescue` | v02 with one-shot rescue for initial dragons; 4–4 vs x12 and Hunter v20 |
+| `gavroche-v07-paced-rescue` | v02 with at most one rescue split per dragon per round; 5–3 vs x12 and Hunter v20 |
+| `gavroche-v08-map-aware-opening` | v02 cascade on larger maps and paced rescue on compact maps; 11–5 across four references |
+| `gavroche-v09-two-stage-rescue` | v07 with one follow-up rescue; 10–6 across four references |
+| `gavroche-v10-balanced-rescue` | v02 with a balanced initial split; separate screens 12–4, later full-pool snapshot scored 10–6 |
+| `gavroche-v11-tail-mass-rescue` | v10 with a four-segment head and larger tail piece; 4–4 vs x12 and Hunter v20 |
+| `gavroche-v12-balanced-opening` | v10 snapshot; 10–6 in the full-pool screen, x12 won both Autarky games |
+| `gavroche-v13-tail-paced-rescue` | v09-style `L-2` rescue with one movement opportunity between splits; historical baseline, 12–4 in the full pool, swept x12 4–0 |
+| `gavroche-v14-four-segment-head` | v13 with a larger original head; 9–7 in the full pool, x12 won both Autarky games |
+| `gavroche-v15-divecap` | v13 with Sinbad v07's lower unpaired-portal value; 100–82 on the native cross-family panel |
+| `gavroche-v16-informed-divecap` | v15 plus full-strength early room-normalised density gradient; 111–71 on the native cross-family panel |
+| `gavroche-v17-half-gradient` | v16 with half-strength early density gradient; 84–46 against five selected model-family references, current broad-opponent candidate; native, not judge CPU-validated |
+| `gavroche-v18-fused-room-flood` | v17 with one flood-fill reused for trap and room-gradient scoring; Big Empty sandbox mirror passed but still reached 99.5M CPU points |
+| `gavroche-v19-spatial-density` | v18 with exact toroidal buckets for density reports; 488,520 full-grid equivalence checks passed, but Big Empty still peaked at 99.1M |
+| `gavroche-v20-bounded-feeding` | v19 with a short-donor, delayed explicit crown-feeding experiment; superseded by v22 for CPU-safe testing |
+| `gavroche-v21-short-sprint-cap` | v19 with all three-step candidate paths disabled; Big Empty sandbox max 93.1M, p99 72.1M, zero timeouts/invalid actions; rejected after an early 46-game screen lost all four Big Empty, Autarky and Queen games vs v13/v15 |
+| `gavroche-v22-bounded-feeding` | v21 plus delayed crown donations from visible, longer crowns to donors of length ≤10; prototype, not screened |
+| `gavroche-v23-selective-sprint-cap` | v19 with three-step candidates retained for lengths 4–7; Big Empty max 94.7M, six-map panel 46–38; loses to v17 4–8 and trails it 34–14 across the top four families |
+| `gavroche-v24-selective-feed` | guarded late feeding on v23; Big Empty max 97.3M, early screen 4–8 vs v23; rejected |
+| `gavroche-v25-crown-margin-one` | v23 with crown margin 1; stopped at 54/96, 21–32–1; rejected |
+| `gavroche-v26-sprint-cap10` | v19 retaining triples only through length 9; Big Empty max 99.3M, insufficient CPU margin |
+| `gavroche-v27-sprint-cap9` | v19 retaining triples only through length 8; Big Empty max 99.0M/99.5M, insufficient margin |
+| `gavroche-v28-gradient-window-sprint-cap` | intended early density-window cap, but guard never activated because `info_aggro_push=0`; panel stopped at 28/96 |
+| `gavroche-v29-saturation-window-sprint-cap` | v19 with cap during early saturation; Big Empty max 99.4M, panel 40–56; rejected |
+| `gavroche-v30-saturated-sprint-cap` | v17 with cap throughout ≥70% saturation; Big Empty max 99.8M, panel 54–42; rejected |
+| `gavroche-v31-saturated-divecap` | v30 plus `v_dive=3`; panel 55–41, equal to v23 29–19 against top four families; not promoted |
+| `gavroche-v32-supported-divecap` | v31 plus x04-style supported trade bonus; panel paused at 43/96, partial 23–20; resume note: `docs/gavroche-resume-2026-09-26.md` |
 | `hydra-v01-core` | python from-scratch swarm with sonar gossip map |
 | `hydra-v02-hunters` | python pack hunting (beats fry-v03 17-9) |
 | `hydra-v03-grower` | python swarm-of-equals + late split freeze |

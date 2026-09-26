@@ -1,0 +1,9 @@
+opponent,scheduled,played,wins,draws,losses,errors,analysis_errors,pending,score
+gavroche-v23-selective-sprint-cap,12,12,8,1,3,0,0,0,0.7083333333333334
+gavroche-v16-informed-divecap,12,12,5,0,7,0,0,0,0.4166666666666667
+gavroche-v17-half-gradient,12,12,3,0,9,0,0,0,0.25
+sinbad-v07-divecap,12,12,2,0,10,0,0,0,0.16666666666666666
+vn-x06-info-tf-05,12,6,3,0,3,0,0,6,0.5
+vn-x06-info-grad1,12,0,0,0,0,0,0,12,
+von_neumann-x04-support,12,0,0,0,0,0,0,12,
+monte_christo-x12-remote-density,12,0,0,0,0,0,0,12,

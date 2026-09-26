@@ -1,0 +1,26 @@
+# Screen the selective sprint cap on replay-loss maps against the prior line
+# and pulled model-family references.
+bots = [
+  "bots/gavroche-v13-tail-paced-rescue",
+  "bots/gavroche-v15-divecap",
+  "bots/gavroche-v17-half-gradient",
+  "bots/gavroche-v23-selective-sprint-cap",
+  "bots/sinbad-v07-divecap",
+  "bots/vn-x06-info-tf-05",
+  "bots/vn-x06-info-grad1",
+  "bots/von_neumann-x04-support",
+]
+maps = [
+  "maps/autarky.map",
+  "maps/big_empty.map",
+  "maps/queen_of_spades.map",
+  "maps/schooltime.map",
+  "maps/stronghold.map",
+  "maps/trauma.map",
+]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 10
