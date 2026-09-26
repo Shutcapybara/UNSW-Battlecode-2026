@@ -257,17 +257,63 @@ refinement. Each needs its own hypothesis card before a screen slot.
   of every confined-map gain must be re-established (drake's big_empty
   collapses twice show the failure direction).
 
+## 8. F1 cell record (2026-09-26) — length-density radio, info-only
+
+**Implementation** (`build/feynman/dev`, all behind default-off params;
+`tools/feynman/test_f1.py`, 20 checks pass): `mass_relay` gates the every-
+other-turn relay of peer mass packets (F1 sets it 0, per javert's no-relay
+discipline); a sender-id aliasing guard refuses to send when id ≥ 512;
+`mass_trace` emits per-turn raw observations (`LOG FM`) for offline estimator
+validation. No comms change was needed: T_MASS is already type 7 in the
+javert layout inside the tag+checksum envelope. With defaults the dev copy
+reproduces x01 on all six parity fixtures exactly.
+
+**Estimator validation** (`tools/feynman/ewma_fit.py` on 4-map trace runs,
+35,385 predicted turns, consumption off): ally length-sum MSE is minimized
+at half-life 5 (hl 5–6 a plateau; the inherited 6 is within 0.4% of optimal
+and stays for parity); enemy MSE is minimized at half-life 2 (hl 2–3 a
+plateau, both overall and conditional on enemy visibility, n=9,079). The
+inherited single half-life of 6 is ~22% worse than optimal on the enemy
+signal — when consumption arrives (F4), a split `mass_half_life_e ≈ 2–3` is
+the candidate parameter. Directionally consistent with drake's enemy-shorter-
+than-ally finding, at shorter absolute values for length sums than counts.
+
+**Info-only screen** (dev@f1a: `mass_rays=1, mass_relay=0` vs x01; pool
+ouroboros-v13 + sinbad-v06; 9 maps covering compact/structured/big/portal
+classes, both sides; 36 fixtures per cell): **f1a 18–18, x01 19–17**; paired
+diff 5 of 36 fixtures changed (3 losses, 2 gains, all length decisions or
+elimination swings), no map class moved systematically. The displaced
+food-gossip ray costs nothing measurable, as required for the channel to
+exist. Sandbox metering on big_empty A vs hunter-v22: worst turn 82.9M
+(x01: 81.4M on the same fixture) — the ray work costs ~1.5M points, inside
+the Gate Zero ceiling.
+
+**Deviation from the §6 protocol, honestly recorded:** the full 24-map + FX
+screen was reduced to this 36-fixture development screen because the live
+benchmark campaign saturates this machine (load 22–34; runs throttled to
+6 jobs to stay clear of the campaign). The full T/FX screen and the fresh
+reserve remain required before any F1B *consumption* cell can promote; FX is
+deferred to the promotion phase. Two big_empty B fixtures flipped to losses
+and are watch items for that screen (drake's big_empty sensitivity), but two
+fixtures establish nothing.
+
 ## Session archive
 
 Freeze manifest: `tools/feynman/frozen.json`. Unit checks:
-`tools/feynman/test_f1.py` (F1 packet discipline, 20 checks). Parent ledger:
+`tools/feynman/test_f1.py` (F1 packet discipline, 20 checks). EWMA
+validation: `tools/feynman/ewma_fit.py` + `build/feynman/traces/fm_*.log`.
+Arena runner preserved as committed bytecode after the sync incident:
+`tools/feynman/arena.cpython-313.pyc` (sources under `tools/valjean/` and
+`tools/sinbad/` were deleted from the working tree by the sync; the result
+cache `build/valjean/cache.jsonl` survived). Parent ledger:
 [docs/valjean.md](valjean.md) (every rejected feature, with results). Method
 references: [docs/javert.md](javert.md) (packet discipline, selection rules),
 drake v08–v11 READMEs (EWMA validation and the dual-EWMA failure),
 [docs/aramis-frontier.md](aramis-frontier.md) (the gradient reserve failure),
 [STRATEGIC_STATS_SUMMARY](STRATEGIC_STATS_SUMMARY.md) (development ordering).
 
-2026-09-26 incident: a repo sync process deleted the untracked Feynman files
-(`docs/feynman.md`, `tools/feynman/`) mid-session; `bots/` and `build/`
-copies survived intact. All files were regenerated from context and committed
-to git for protection.
+2026-09-26 incident: a repo sync process deleted untracked working-tree files
+twice mid-session (`docs/feynman.md`, `tools/feynman/`, later
+`tools/valjean/`, `tools/sinbad/` and parts of `tools/ouroboros/`).
+`bots/`, `build/` and committed files survived. All Feynman artifacts were
+regenerated or preserved and are now committed to git after each step.
