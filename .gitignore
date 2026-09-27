@@ -1,89 +1,20 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
-
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# Build directories
-build/
-Build/
-build-*/
-
-# CMake generated files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt
-compile_commands.json
-
-# Temporary files
-*.tmp
-*.log
-*.bak
-*.swp
-
-# vcpkg
-vcpkg_installed/
-
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
-.cache/
-# Battlecode replays
-*.replay
-
-# Local generated files
+# System & environment
 __pycache__/
-.unswbc-build/
-/main
-.idea/
+*.py[cod]
+*$py.class
+.DS_Store
 .venv/
-# Generated game statistics ledger and local writer lock.
-/game_stats.parquet
-/game_stats/.write.lock
+env/
+.unswbc-build/
 
-# Local credentials (never commit)
-.battlecode-api-key
-experiment_data/
-public_replays/
+# Build, submodules, or uncommitted sandboxes
+unswbc/
+
+# Run statistics & raw sources
 game_stats/sources/
 game_stats/runs/
 *.parquet
+
+# Large datasets & replays
+experiment_data/
+public_replays/
