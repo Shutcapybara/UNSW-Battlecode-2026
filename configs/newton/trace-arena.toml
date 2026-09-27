@@ -1,0 +1,8 @@
+# Newton arena trace: one fixture, TRACE on.
+bots = ["../../bots/ouroboros-v13-ladder"]
+maps = ["../../maps/arena.map"]
+[run]
+sides = ["A"]
+jobs = 1
+timeout_seconds = 600
+sandbox = false

@@ -1,0 +1,20 @@
+# Serre gauntlet: 7 diverse references x all 13 bundled maps x both sides =
+# 182 games. Roster follows the strategy brief's proposed field, strengthened:
+# ouroboros-v13 (compact production), leviathan-v09 (arrival economy),
+# tew-v12 (best-measured support strikes), avery-v08 (crown-race),
+# monte_christo-x12 (French density radio), porthos-x04 (French aggression
+# policy), hunter-v20 (C++ portal scouts). sinbad-v07 is the parent control
+# and is compared per-fixture through the baseline record, not as an opponent.
+bots = [
+ "../../bots/ouroboros-v13-ladder", "../../bots/leviathan-v09-arrival",
+ "../../bots/tew-v12-mid-support", "../../bots/avery-v08-crown-race",
+ "../../bots/monte_christo-x12-remote-density", "../../bots/porthos-x04-policy",
+ "../../bots/hunter-v20-portal-scouts"
+]
+maps = ["../../maps"]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 25

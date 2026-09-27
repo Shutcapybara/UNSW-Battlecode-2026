@@ -13,9 +13,9 @@
 |---|---|---|---|
 | Compact panel 8 (v13+tew, devil+arena) | **3-5** | 0-8 | **PASS** (≥3-5): devil 3-1 (A both, B/tew) |
 | Screen 32 (serre screen) | 25-7 | 25-7 | **FAIL** (+0 < +2): stop-200 cedes devil/B/leviathan grind game |
-| Gauntlet 182 | pending (interim 99-21; arena restored 5-5 after the NC floor) | 140-42 | informational |
+| Gauntlet 182 | **147-35 (+7, timeout-corrected)**: devil 9-5 [5-9], default_small 14-0 [11-3], trophy 11-3 [10-4], arena 6-8 held, big_empty/stronghold 14-0 held, Colosseum 12-2 [13-1] | 140-42 | informational (screen gate already failed) |
 | Reserve 16 | 13-3 | 13-3 | **0/16 fixtures differ — mechanisms inactive (both maps >625 tiles): activation finding, not a pass** |
-| Judge sandbox | pending | clean (fafnir) | — |
+| Judge sandbox | **clean**: 4/4, 0 TLE, 0 faults (arena L/L r56-59, stronghold W/W r500) | clean | ✓ |
 
 - **Not promoted** (screen gate failed). Retained as the measured best
   composite and the cycle-2 starting point. The two mechanisms are

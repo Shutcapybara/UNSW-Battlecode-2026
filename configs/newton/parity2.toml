@@ -1,0 +1,7 @@
+bots = ["../../bots/ouroboros-v13-ladder"]
+maps = ["../../maps/devil.map"]
+[run]
+sides = ["A", "B"]
+jobs = 2
+timeout_seconds = 600
+sandbox = false

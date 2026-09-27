@@ -1,0 +1,26 @@
+{
+  "lineage": "newton",
+  "frozen": "2026-09-26T23:59:00+10:00",
+  "before_any_arm_outcome": true,
+  "baseline": {
+    "bot": "bots/newton-x01-frozen",
+    "identity": "byte-copy of bots/fafnir-v01-phalanx, sha256 in tools/newton/frozen.json",
+    "records": {
+      "screen32": {"record": [25, 7], "run": "experiment_data/f12-sizematch_20260926143914278071", "inherited": "byte-identical source, deterministic engine, fixtures identical to configs/newton/screen.toml"},
+      "compact8": {"record": [0, 8], "run": "experiment_data/fafnir-v01-phalanx_20260926225920357152", "inherited": false},
+      "gauntlet182": {"record": [140, 42], "run": "experiment_data/f12-sizematch_20260926144850071036", "inherited": true},
+      "reserve16": {"record": [13, 3], "run": "experiment_data/fafnir-v01-release_20260926150818154880", "inherited": true}
+    }
+  },
+  "gates": {
+    "parity": {"requirement": "mechanism-off reproduces x01 exactly on >=2 spot fixtures (outcome, rounds, reason, final counters)"},
+    "screen": {"requirement": ">= +2 net wins vs 25-7 on the 32 shared fixtures AND no map cell worse by >= 2"},
+    "compact": {"requirement": ">= 3-5 on the 8 compact-panel fixtures (baseline 0-8)"},
+    "advance": {"requirement": "screen AND compact gates both pass"},
+    "gauntlet": {"requirement": ">= +3 vs 140-42 AND no map cell worse by >= 3 AND big_empty >= 12-2 AND stronghold >= 12-2"},
+    "reserve": {"requirement": ">= 13-3 on the 16 frozen reserve fixtures"},
+    "judge": {"requirement": "sandbox vs hunter-v22 on arena+stronghold both sides: 0 TLE, 0 faults, 0 errors"},
+    "promote": {"requirement": "ALL gates pass; otherwise record honestly, never relax"}
+  },
+  "notes": "Deterministic fixtures are paired exactly, never pooled as independent samples. Mechanism arms carry their own activation counters; an inactive mechanism on a gate set is an activation finding, not a pass. Combos only after singles, evaluated as 2x2 against both parents and x01."
+}

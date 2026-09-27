@@ -1,0 +1,8 @@
+# Newton trace run: one fixture per leak map, TRACE instrumentation on.
+bots = ["../../bots/ouroboros-v13-ladder"]
+maps = ["../../maps/devil.map", "../../maps/arena.map"]
+[run]
+sides = ["A"]
+jobs = 2
+timeout_seconds = 600
+sandbox = false

@@ -1,0 +1,9 @@
+# Newton diagnostic: the two compact-contact killers on the two residual leak
+# maps, both sides, replays retained. 8 games.
+bots = ["../../bots/ouroboros-v13-ladder", "../../bots/tew-v12-mid-support"]
+maps = ["../../maps/devil.map", "../../maps/arena.map"]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false

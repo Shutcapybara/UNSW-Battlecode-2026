@@ -1,0 +1,15 @@
+# Serre dev screen: 4 stylistically distinct strong references x 4 maps x
+# both sides = 32 games. Map choice follows the foundation's measured leaks:
+# devil (contested central fast beds), queen_of_spades (portals), trauma
+# (open), Colosseum (compact). Deterministic engine => exact per-fixture
+# pairing against the serre-v01 baseline record for every later graft arm.
+bots = ["../../bots/ouroboros-v13-ladder", "../../bots/leviathan-v09-arrival",
+        "../../bots/porthos-x04-policy", "../../bots/avery-v08-crown-race"]
+maps = ["../../maps/devil.map", "../../maps/queen_of_spades.map",
+        "../../maps/trauma.map", "../../maps/Colosseum.map"]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 25

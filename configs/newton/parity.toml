@@ -1,0 +1,9 @@
+# Newton parity check: identical fixtures to run fafnir-v01-phalanx_20260926225920357152
+# (devil+arena, both sides, vs ouroboros-v13). Dev copy must match exactly.
+bots = ["../../bots/ouroboros-v13-ladder"]
+maps = ["../../maps/devil.map", "../../maps/arena.map"]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false

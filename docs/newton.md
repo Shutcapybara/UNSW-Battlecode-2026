@@ -170,3 +170,84 @@ Mechanism notes:
   conditions never hold at 3:1 unit deficits. The arena fix needs
   production-rate or newborn-siting mechanisms not yet attempted; the n10
   composite excludes arena from the contest via an NC floor as damage control.
+
+## 7. Cycle 1 verdict (2026-09-27)
+
+All gates evaluated against the frozen `tools/newton/selection_rule.json`,
+paired per fixture. Best composite: **n10** (`bots/newton-x10-candidate` =
+contest 0.9/25 scoped 256–625 tiles + conversion stop 200).
+
+| Gate | Requirement | n10 result | Verdict |
+|---|---|---|---|
+| Parity | off = x01 exact | PASS (re-verified after every code addition) | ✓ |
+| Compact 8 | ≥ 3-5 | **3-5** (devil 3-1: ouro-A, tew-A, tew-B) | **PASS** |
+| Screen 32 | ≥ +2, no cell −2 | 25-7 (+0); devil/B/leviathan lost to the stop | **FAIL** |
+| Gauntlet 182 | ≥ +3, no cell −3 | **147-35 (+7, timeout-corrected)** devil +4, default_small +3, trophy +1, Colosseum −1, big_empty 14-0 intact | informational (advance already failed at the screen gate) |
+| Reserve 16 | ≥ 13-3 | 13-3 but **0/16 fixtures differ** — both reserve maps (660/676 tiles) sit above the 625 scope: mechanisms never fired | **activation finding, not a pass** |
+| Judge | 0 TLE / 0 faults | 4/4 sandbox games clean vs hunter-v22 (arena L/L r56-59, stronghold W/W r500) | ✓ |
+
+**No promotion.** The screen gate failed on the one fixture where the
+conversion stop's opponent-conditional cost bites (grind-game vs an
+evaluator). Per the frozen rule the failed gate is recorded, not relaxed.
+
+Cycle-1 conclusions:
+
+1. **The compact-contact leak is real, specific, and partially repairable.**
+   fafnir-v01's 0-8 against the compact specialists decomposes into: fast-bed
+   cession (fixed by the contest on devil-A: complete reversal, churn-economy
+   parity at 598 splits/1616 pearls), missing endgame conversion (fixed by the
+   stop at 200: devil-B/tew flipped from a 1-segment loss to a 35-17 length
+   win), and two structures no static parameter fixed (below).
+2. **Devil-B under mutual contest is structurally first-mover-favored** (the
+   engine resolves moves in ascending dragon-id order; team A's initial
+   dragons act first every round). No B-side player won a contested center in
+   any observed game; v13-as-B collapses exactly like fafnir-as-B when A
+   contests. A B-side devil answer must avoid the symmetric contest (deny,
+   periphery, or conversion timing), not price it differently.
+3. **Arena is a different leak than devil.** Every value-field arm was neutral
+   or harmful there; the contest costs −4 games. Newborns die before eating
+   two pearls (median lifespan 5-7) on a 121-tile instant-contact map, and
+   production never compounds (1 voluntary split per game in the trace).
+   Repair needs newborn siting/spacing or opening production-rate mechanisms,
+   not bed pricing.
+4. **Conversion timing is opponent-conditional** — the exact godel cycle-1
+   shape: the component is real and worth keeping; the correct conditioning is
+   a stateful property (opponent class / game state), not a global constant.
+
+## 8. Next-cycle recommendations
+
+1. **Swarm-detector conditioning for `unit_stop_round`**: stop for conversion
+   only against high-churn opponents (visible-enemy-unit EWMA or
+   deaths-per-round estimate from local observation + sonar). This alone could
+   pass both failed-gate fixtures (tew-B stop, leviathan-B grind).
+2. **Newborn siting for arena**: choose split sites by local enemy-head
+   distance (the child spawns at the parent's tail — the parent controls where
+   that is); the young-guard pricing arm (n3) was null, so the lever must be
+   positional, not valuation.
+3. **A fresh compact fast-bed reserve family** (≤625 tiles): the serre reserve
+   maps are 660/676 — the current reserve cannot test the compact doctrine at
+   all (n10's 13-3 was mechanism-inactive). Freeze before any cycle-2 screen
+   outcome is read.
+4. **Devil-B**: test conversion-timing and periphery doctrines explicitly as
+   the B-side answer; do not retry symmetric contest pricing (n2b plateau) or
+   unconditional space trades (n5/n6 negative).
+5. The compact_nc boundary question (crossfire at 676 tiles behaves
+   contested-centre but receives no doctrine) is a coverage gap to measure,
+   not evidence for changing the boundary.
+
+**Gauntlet measurement note.** The first n10 gauntlet run recorded two
+big_empty/porthos losses at exactly the 600s harness timeout (concurrent
+judge-sandbox load; rounds empty, no faults). Both fixtures are mechanism-off
+territory (4096 tiles, far outside every scope). A clean re-run with a 1200s
+timeout won both (`n10-release-candidate_20260927011653155766`), restoring
+big_empty to 14-0; the 147-35 total uses the corrected results. Load-sensitive
+harness timeouts are a real hazard when gauntlets run beside sandbox games.
+
+Artifacts: `tools/newton/` (frozen.json, selection_rule.json, arms_cycle1.json,
+pair_gates.py, replay_churn.py, h2h_actor.py, timeline.py, funnel_sum.py),
+`configs/newton/`, `bots/newton-x01-frozen`, `bots/newton-x02-mech`,
+`bots/newton-x10-candidate`; runs under `experiment_data/` `n1-crownsplit_*`,
+`n2-fastbed_*`, `n2b-fastbed100_*`, `n2c-fastbed-compact_*`, `n5-spacetrade_*`,
+`n6-contest-space_*`, `n7-unitstop_*`, `n8-contest-stop_*`, `n9a-stop250_*`,
+`n9b-stop200_*`, `n10-release-candidate_*`, `parity-bot_*`, `dev_*`,
+plus `fafnir-v01-phalanx_20260926225920357152` (compact baseline), 2026-09-26/27.

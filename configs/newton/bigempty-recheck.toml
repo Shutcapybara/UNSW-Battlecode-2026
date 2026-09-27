@@ -1,0 +1,10 @@
+# Newton recheck: the two big_empty/porthos gauntlet fixtures that hit the
+# 600s harness timeout under concurrent load (mechanisms are scoped off on
+# 4096-tile maps; these games should reproduce x01's wins when not starved).
+bots = ["../../bots/porthos-x04-policy"]
+maps = ["../../maps/big_empty.map"]
+[run]
+sides = ["A", "B"]
+jobs = 2
+timeout_seconds = 1200
+sandbox = false
