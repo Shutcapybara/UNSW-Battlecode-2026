@@ -1,6 +1,6 @@
 # Comparison: skadi-v02-fafnir-only
 
-running: 112/120 games recorded; 66W 1D 45L. 0 game errors, 0 analysis errors, 0 reported bot runtime faults.
+complete: 120/120 games recorded; 69W 1D 50L. 0 game errors, 0 analysis errors, 0 reported bot runtime faults.
 
 All W/D/L and scores are from the candidate's perspective. Score = (wins + 0.5 × draws) / played. Errors are not draws and are excluded from scores.
 
@@ -19,4 +19,4 @@ Curves are start-of-round snapshots plus the final state. Event counters are cum
 | vn-x06-info-grad1-skadiholdout | 8 | 0 | 4 | 0 | 0 |
 | von_neumann-x04-support-skadiholdout | 8 | 0 | 4 | 0 | 0 |
 | monte_christo-x12-remote-density-skadiholdout | 7 | 0 | 5 | 0 | 0 |
-| gavroche-final-skadiholdout | 2 | 0 | 2 | 0 | 8 |
+| gavroche-final-skadiholdout | 5 | 0 | 7 | 0 | 0 |
