@@ -82,3 +82,8 @@ __pycache__/
 
 # Local credentials (never commit)
 .battlecode-api-key
+experiment_data/
+public_replays/
+game_stats/sources/
+game_stats/runs/
+*.parquet

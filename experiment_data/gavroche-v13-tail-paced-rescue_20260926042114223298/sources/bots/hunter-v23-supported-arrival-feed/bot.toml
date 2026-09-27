@@ -1,3 +1,0 @@
-[project]
-language = "c++"
-include = ["main.cpp"]
