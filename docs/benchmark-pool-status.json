@@ -1,0 +1,3178 @@
+{
+  "snapshot": "2026-09-26T23:30:52.452920+00:00",
+  "campaign": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/benchmark_20260926223829321330",
+  "primary": [
+    "serre-v01-foundation",
+    "sinbad-v07-divecap",
+    "von_neumann-x03-balance",
+    "von_neumann-x07-quiet",
+    "von_neumann-x04-support",
+    "tew-v12-mid-support",
+    "fry-v13-stateful-size-aware-2",
+    "avery-v09-frontier-bfs",
+    "valjean-v01-portal-memory",
+    "monte_christo-x12-remote-density",
+    "hydra-v01-core",
+    "porthos-x04-policy",
+    "godel-x02-pacifist",
+    "godel-x14-tb25-ps2-05",
+    "avery-v08-crown-race",
+    "avery-v11-maze-sweep",
+    "godel-x19-ps1-090",
+    "sinbad-v03-hunt",
+    "tew-v09-low-gate",
+    "monte_christo-v03-logistic-risk",
+    "godel-x24-gm2",
+    "vn-x01-margin-2",
+    "vn-x01-preymin-6",
+    "godel-x03-berserk"
+  ],
+  "counts": {
+    "deprecated_weak": 65,
+    "reserve": 77,
+    "deprecated_dominated": 51,
+    "duplicate_alias": 14,
+    "primary": 24,
+    "runtime_hold": 11,
+    "needs_evidence": 39,
+    "deprecated_redundant": 5
+  },
+  "decisions": [
+    {
+      "name": "alik_bot_v2",
+      "canonical": "alik_bot_v2",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "alik_test_bot",
+      "canonical": "alik_test_bot",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "aramis-v01-intentions",
+      "canonical": "aramis-v01-intentions",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "aramis-v02-frontier",
+      "canonical": "aramis-v02-frontier",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 3,
+        "cells": 52,
+        "families": 16,
+        "maps": 13,
+        "advantage": 0.24444444444444446,
+        "lower": 0.09558514999703328,
+        "worst_map": -0.08333333333333333
+      }
+    },
+    {
+      "name": "aramis-x09-frontier",
+      "canonical": "aramis-v02-frontier",
+      "status": "duplicate_alias",
+      "replacement": "aramis-v02-frontier",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "aramis-x01-extracted",
+      "canonical": "aramis-x01-extracted",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 4,
+        "cells": 42,
+        "families": 13,
+        "maps": 12,
+        "advantage": 0.4146520146520147,
+        "lower": 0.2941232176389682,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "aramis-x02-intentions",
+      "canonical": "aramis-x02-intentions",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 5,
+        "cells": 77,
+        "families": 18,
+        "maps": 13,
+        "advantage": 0.3606481481481482,
+        "lower": 0.24585842597390023,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "aramis-x03-e0f0",
+      "canonical": "aramis-x03-e0f0",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "aramis-x05-e1f0",
+      "evidence": {
+        "better": 8,
+        "worse": 6,
+        "cells": 52,
+        "families": 21,
+        "maps": 13,
+        "advantage": 0.09268707482993199,
+        "lower": 0.0274956897089095,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "aramis-x04-e0f1",
+      "canonical": "aramis-x04-e0f1",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "aramis-x05-e1f0",
+      "canonical": "aramis-x05-e1f0",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "ouroboros-v13-ladder",
+      "evidence": {
+        "better": 231,
+        "worse": 8,
+        "cells": 59,
+        "families": 20,
+        "maps": 13,
+        "advantage": 0.3566666666666667,
+        "lower": 0.25525223534205105,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "aramis-x06-e1f1",
+      "canonical": "aramis-x06-e1f1",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "aramis-x07-preview-policy",
+      "canonical": "aramis-x07-preview-policy",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "aramis-x08-density-control",
+      "canonical": "aramis-x08-density-control",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "aramis-x10-withdraw",
+      "canonical": "aramis-x10-withdraw",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "ouroboros-v13-ladder",
+      "evidence": {
+        "better": 231,
+        "worse": 12,
+        "cells": 59,
+        "families": 20,
+        "maps": 13,
+        "advantage": 0.2925,
+        "lower": 0.20489696791375459,
+        "worst_map": -0.1
+      }
+    },
+    {
+      "name": "athos-v01-core",
+      "canonical": "athos-v01-core",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "athos-x01-e-trapmargin",
+      "canonical": "athos-x01-e-trapmargin",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 14,
+        "cells": 40,
+        "families": 12,
+        "maps": 12,
+        "advantage": 0.23194444444444445,
+        "lower": 0.05895341539744606,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "athos-x02-e-headblock",
+      "canonical": "athos-x02-e-headblock",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "porthos-x04-policy",
+      "evidence": {
+        "better": 234,
+        "worse": 15,
+        "cells": 40,
+        "families": 14,
+        "maps": 11,
+        "advantage": 0.16071428571428573,
+        "lower": 0.0933450457631298,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "athos-x03-e-sprintpearl",
+      "canonical": "athos-x03-e-sprintpearl",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "athos-x01-e-trapmargin",
+      "evidence": {
+        "better": 14,
+        "worse": 16,
+        "cells": 49,
+        "families": 10,
+        "maps": 11,
+        "advantage": 0.11416666666666667,
+        "lower": 0.042149227087080576,
+        "worst_map": -0.1
+      }
+    },
+    {
+      "name": "athos-x04-f-splitval",
+      "canonical": "athos-x04-f-splitval",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 17,
+        "cells": 43,
+        "families": 15,
+        "maps": 13,
+        "advantage": 0.2327777777777778,
+        "lower": 0.10593572219035563,
+        "worst_map": -0.1
+      }
+    },
+    {
+      "name": "athos-x05-f-threat",
+      "canonical": "athos-x05-f-threat",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "athos-x06-f-crown",
+      "canonical": "athos-x06-f-crown",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "athos-x07-f-menu-feed",
+      "canonical": "athos-x07-f-menu-feed",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "athos-x08-c-trap-split",
+      "canonical": "athos-x08-c-trap-split",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "porthos-x04-policy",
+      "evidence": {
+        "better": 234,
+        "worse": 21,
+        "cells": 42,
+        "families": 11,
+        "maps": 12,
+        "advantage": 0.1996753246753247,
+        "lower": 0.13287695881858996,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "athos-x09-c-trap-crown",
+      "canonical": "athos-x09-c-trap-crown",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "athos-x10-c-split-crown",
+      "canonical": "athos-x10-c-split-crown",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "athos-x11-c-all",
+      "canonical": "athos-x11-c-all",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "athos-x12-menu-strict",
+      "canonical": "athos-x12-menu-strict",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "athos-x13-c-all-menu",
+      "canonical": "athos-x13-c-all-menu",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 26,
+        "cells": 44,
+        "families": 14,
+        "maps": 13,
+        "advantage": 0.2982142857142857,
+        "lower": 0.15416669920152257,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "athos-x14-e-splitn",
+      "canonical": "athos-x14-e-splitn",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "porthos-x04-policy",
+      "evidence": {
+        "better": 234,
+        "worse": 27,
+        "cells": 43,
+        "families": 14,
+        "maps": 12,
+        "advantage": 0.1278061224489796,
+        "lower": 0.021469269987802877,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "athos-x15-f-allyreach",
+      "canonical": "athos-x15-f-allyreach",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 28,
+        "cells": 51,
+        "families": 17,
+        "maps": 12,
+        "advantage": 0.33627450980392165,
+        "lower": 0.1766223106836412,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "athos-x17-f-crownsafe",
+      "canonical": "athos-x17-f-crownsafe",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "athos-x18-f-latesplit",
+      "canonical": "athos-x18-f-latesplit",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "avery-v01-safe-swarm",
+      "canonical": "avery-v01-safe-swarm",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "avery-v08-crown-race",
+      "evidence": {
+        "better": 38,
+        "worse": 31,
+        "cells": 99,
+        "families": 16,
+        "maps": 13,
+        "advantage": 0.07326388888888889,
+        "lower": 0.020124126501459172,
+        "worst_map": -0.07142857142857142
+      }
+    },
+    {
+      "name": "avery-v02-id-order-corridors",
+      "canonical": "avery-v02-id-order-corridors",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "avery-v03-swarm-spacing",
+      "canonical": "avery-v03-swarm-spacing",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "avery-v04-crown-endgame",
+      "canonical": "avery-v04-crown-endgame",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "avery-v05-strict-crown",
+      "canonical": "avery-v05-strict-crown",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "avery-v11-maze-sweep",
+      "evidence": {
+        "better": 41,
+        "worse": 35,
+        "cells": 96,
+        "families": 12,
+        "maps": 13,
+        "advantage": 0.34306850556850554,
+        "lower": 0.21308639560280285,
+        "worst_map": -0.08333333333333333
+      }
+    },
+    {
+      "name": "avery-v06-late-feed",
+      "canonical": "avery-v06-late-feed",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 36,
+        "cells": 76,
+        "families": 10,
+        "maps": 13,
+        "advantage": 0.26445221445221445,
+        "lower": 0.11028577319594975,
+        "worst_map": -0.1
+      }
+    },
+    {
+      "name": "avery-v07-compact-production",
+      "canonical": "avery-v07-compact-production",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "avery-v08-crown-race",
+      "canonical": "avery-v08-crown-race",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "avery-v09-frontier-bfs",
+      "canonical": "avery-v09-frontier-bfs",
+      "status": "primary",
+      "reason": "map leader: default",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "avery-v10-safe-explore",
+      "canonical": "avery-v10-safe-explore",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "avery-v11-maze-sweep",
+      "canonical": "avery-v11-maze-sweep",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "avery-v12-hungry-sweep",
+      "canonical": "avery-v12-hungry-sweep",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "chimera-v01-unified",
+      "canonical": "chimera-v01-unified",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "dartegnan-v01-contract",
+      "canonical": "dartegnan-v01-contract",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "dartegnan-x01-e0p0",
+      "canonical": "dartegnan-x01-e0p0",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "dartegnan-x02-e0p1",
+      "canonical": "dartegnan-x02-e0p1",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "dartegnan-x03-e1p0",
+      "canonical": "dartegnan-x03-e1p0",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "dartegnan-x04-e1p1",
+      "canonical": "dartegnan-x04-e1p1",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "dartegnan-x05-e0p2",
+      "canonical": "dartegnan-x05-e0p2",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "drake-v01-survive-forage",
+      "canonical": "drake-v01-survive-forage",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v02-survive-forage",
+      "canonical": "drake-v01-survive-forage",
+      "status": "duplicate_alias",
+      "replacement": "drake-v01-survive-forage",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "drake-v02-hunt-feed",
+      "canonical": "drake-v02-hunt-feed",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "drake-v03-compact-production",
+      "canonical": "drake-v03-compact-production",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "avery-v09-frontier-bfs",
+      "evidence": {
+        "better": 39,
+        "worse": 52,
+        "cells": 73,
+        "families": 8,
+        "maps": 13,
+        "advantage": 0.2991695804195804,
+        "lower": 0.20251233380280934,
+        "worst_map": -0.08333333333333333
+      }
+    },
+    {
+      "name": "drake-v04-beacon",
+      "canonical": "drake-v04-beacon",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "avery-v08-crown-race",
+      "evidence": {
+        "better": 38,
+        "worse": 53,
+        "cells": 91,
+        "families": 10,
+        "maps": 13,
+        "advantage": 0.26999999999999996,
+        "lower": 0.07911483464237173,
+        "worst_map": -0.0625
+      }
+    },
+    {
+      "name": "drake-v05-sweep",
+      "canonical": "drake-v05-sweep",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "avery-v09-frontier-bfs",
+      "evidence": {
+        "better": 39,
+        "worse": 54,
+        "cells": 48,
+        "families": 8,
+        "maps": 11,
+        "advantage": 0.4436237373737374,
+        "lower": 0.2735533367826521,
+        "worst_map": -0.1
+      }
+    },
+    {
+      "name": "drake-v06-frontier-push",
+      "canonical": "drake-v06-frontier-push",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 55,
+        "cells": 40,
+        "families": 6,
+        "maps": 13,
+        "advantage": 0.6047979797979798,
+        "lower": 0.4345937639751572,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "drake-v07-soft-missions",
+      "canonical": "drake-v07-soft-missions",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "drake-v08-density",
+      "canonical": "drake-v08-density",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "drake-v09-density-tuned",
+      "canonical": "drake-v09-density-tuned",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "drake-v10-dual-ewma",
+      "canonical": "drake-v10-dual-ewma",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "drake-v11-satutfix",
+      "canonical": "drake-v11-satutfix",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fafnir-v01-phalanx",
+      "canonical": "fafnir-v01-phalanx",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "formatted-hunter-v22",
+      "canonical": "formatted-hunter-v22",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v09-low-gate",
+      "evidence": {
+        "better": 250,
+        "worse": 62,
+        "cells": 64,
+        "families": 10,
+        "maps": 13,
+        "advantage": 0.22878787878787876,
+        "lower": 0.13758226792762696,
+        "worst_map": -0.08333333333333333
+      }
+    },
+    {
+      "name": "formatted-hunter-v22-python",
+      "canonical": "formatted-hunter-v22-python",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v01-danger-levels",
+      "canonical": "fry-v01-danger-levels",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v02-dragon-hunters",
+      "canonical": "fry-v02-dragon-hunters",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v03-portal-hunters",
+      "canonical": "fry-v03-portal-hunters",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v04-escorts",
+      "canonical": "fry-v04-escorts",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v05-kamikaze-swarm",
+      "canonical": "fry-v05-kamikaze-swarm",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v06-one-child",
+      "canonical": "fry-v06-one-child",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v07-two-children",
+      "canonical": "fry-v07-two-children",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v08-pre-swarm-defense",
+      "canonical": "fry-v08-pre-swarm-defense",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v09-pearl-seeker",
+      "canonical": "fry-v09-pearl-seeker",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v10-pearl-seeker-center",
+      "canonical": "fry-v10-pearl-seeker-center",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v11-size-aware-hunters",
+      "canonical": "fry-v11-size-aware-hunters",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v12-stateful-size-aware-hunters",
+      "canonical": "fry-v12-stateful-size-aware-hunters",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v13-stateful-size-aware-2",
+      "canonical": "fry-v13-stateful-size-aware-2",
+      "status": "primary",
+      "reason": "map leader: autarky",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "fry-v14-stateful-size-aware-3",
+      "canonical": "fry-v14-stateful-size-aware-3",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "avery-v09-frontier-bfs",
+      "evidence": {
+        "better": 39,
+        "worse": 77,
+        "cells": 45,
+        "families": 8,
+        "maps": 12,
+        "advantage": 0.4362373737373738,
+        "lower": 0.35783122248374755,
+        "worst_map": 0.0
+      }
+    },
+    {
+      "name": "gavroche-v01-mass-preserving-opening",
+      "canonical": "gavroche-v01-mass-preserving-opening",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v02-opening-production",
+      "canonical": "gavroche-v02-opening-production",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v03-head-preserving-opening",
+      "canonical": "gavroche-v03-head-preserving-opening",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v04-mobile-mass-rescue",
+      "canonical": "gavroche-v04-mobile-mass-rescue",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v05-map-aware-rescue",
+      "canonical": "gavroche-v05-map-aware-rescue",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v06-first-move-rescue",
+      "canonical": "gavroche-v06-first-move-rescue",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v07-paced-rescue",
+      "canonical": "gavroche-v07-paced-rescue",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v08-map-aware-opening",
+      "canonical": "gavroche-v08-map-aware-opening",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v09-two-stage-rescue",
+      "canonical": "gavroche-v09-two-stage-rescue",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v13-tail-paced-rescue",
+      "canonical": "gavroche-v09-two-stage-rescue",
+      "status": "duplicate_alias",
+      "replacement": "gavroche-v09-two-stage-rescue",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v11-tail-mass-rescue",
+      "canonical": "gavroche-v11-tail-mass-rescue",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v12-balanced-opening",
+      "canonical": "gavroche-v12-balanced-opening",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v10-balanced-rescue",
+      "canonical": "gavroche-v12-balanced-opening",
+      "status": "duplicate_alias",
+      "replacement": "gavroche-v12-balanced-opening",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v14-four-segment-head",
+      "canonical": "gavroche-v14-four-segment-head",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v15-divecap",
+      "canonical": "gavroche-v15-divecap",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v16-informed-divecap",
+      "canonical": "gavroche-v16-informed-divecap",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v17-half-gradient",
+      "canonical": "gavroche-v17-half-gradient",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v18-fused-room-flood",
+      "canonical": "gavroche-v18-fused-room-flood",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v19-spatial-density",
+      "canonical": "gavroche-v19-spatial-density",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v20-bounded-feeding",
+      "canonical": "gavroche-v20-bounded-feeding",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v21-short-sprint-cap",
+      "canonical": "gavroche-v21-short-sprint-cap",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v22-bounded-feeding",
+      "canonical": "gavroche-v22-bounded-feeding",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v23-selective-sprint-cap",
+      "canonical": "gavroche-v23-selective-sprint-cap",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v24-selective-feed",
+      "canonical": "gavroche-v24-selective-feed",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v25-crown-margin-one",
+      "canonical": "gavroche-v25-crown-margin-one",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v26-sprint-cap10",
+      "canonical": "gavroche-v26-sprint-cap10",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v27-sprint-cap9",
+      "canonical": "gavroche-v27-sprint-cap9",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v28-gradient-window-sprint-cap",
+      "canonical": "gavroche-v28-gradient-window-sprint-cap",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v29-saturation-window-sprint-cap",
+      "canonical": "gavroche-v29-saturation-window-sprint-cap",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v30-saturated-sprint-cap",
+      "canonical": "gavroche-v30-saturated-sprint-cap",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v31-saturated-divecap",
+      "canonical": "gavroche-v31-saturated-divecap",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "gavroche-v32-supported-divecap",
+      "canonical": "gavroche-v32-supported-divecap",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x02-pacifist",
+      "canonical": "godel-x02-pacifist",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x03-berserk",
+      "canonical": "godel-x03-berserk",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x04-attackunits4",
+      "canonical": "godel-x04-attackunits4",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x05-margin1",
+      "canonical": "godel-x05-margin1",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x06-strikebonus2",
+      "canonical": "godel-x06-strikebonus2",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x07-tradebias25",
+      "canonical": "godel-x07-tradebias25",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x08-pstrike06",
+      "canonical": "godel-x08-pstrike06",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x09-midhunt55",
+      "canonical": "godel-x09-midhunt55",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x10-crownkill340",
+      "canonical": "godel-x10-crownkill340",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x11-tradebias35",
+      "canonical": "godel-x11-tradebias35",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x12-tb25-margin1",
+      "canonical": "godel-x12-tb25-margin1",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x13-tb25-au4",
+      "canonical": "godel-x13-tb25-au4",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x14-tb25-ps2-05",
+      "canonical": "godel-x14-tb25-ps2-05",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x15-tb25-gs4",
+      "canonical": "godel-x15-tb25-gs4",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x16-ps2only",
+      "canonical": "godel-x16-ps2only",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x17-ps2-065",
+      "canonical": "godel-x17-ps2-065",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x18-ps3-030",
+      "canonical": "godel-x18-ps3-030",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x19-ps1-090",
+      "canonical": "godel-x19-ps1-090",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x20-inc-margin1",
+      "canonical": "godel-x20-inc-margin1",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x21-mech",
+      "canonical": "godel-x21-mech",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x22-incumbent",
+      "canonical": "godel-x22-incumbent",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x23-gm1",
+      "canonical": "godel-x23-gm1",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x24-gm2",
+      "canonical": "godel-x24-gm2",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x25-gm12",
+      "canonical": "godel-x25-gm12",
+      "status": "deprecated_redundant",
+      "reason": "Strong residual-profile correlation with a primary bot of comparable or better strength, without a >10pp modeled map niche.",
+      "replacement": "godel-x24-gm2",
+      "evidence": {
+        "a": 130,
+        "b": 131,
+        "correlation": 0.8574277585810732,
+        "low": 0.7473473636345606,
+        "high": 0.9237939929257413,
+        "cells": 73,
+        "families": 19,
+        "maps": 13,
+        "basis": "opponent-lineage/map averages"
+      }
+    },
+    {
+      "name": "godel-x27-gm3hi",
+      "canonical": "godel-x27-gm3hi",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x28-gm3lo",
+      "canonical": "godel-x28-gm3lo",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x29-hi10",
+      "canonical": "godel-x29-hi10",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x30-hi25",
+      "canonical": "godel-x30-hi25",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x31-rad3",
+      "canonical": "godel-x31-rad3",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x32-ema2",
+      "canonical": "godel-x32-ema2",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "godel-x33-bias35",
+      "canonical": "godel-x33-bias35",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v01-team-growth",
+      "canonical": "hunter-v01-team-growth",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v02-team-growth",
+      "canonical": "hunter-v02-team-growth",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v03-team-growth",
+      "canonical": "hunter-v03-team-growth",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v04-team-state-sonar",
+      "canonical": "hunter-v04-team-state-sonar",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v05-safe-attack-routes",
+      "canonical": "hunter-v05-safe-attack-routes",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v06-pearl-routing",
+      "canonical": "hunter-v06-pearl-routing",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v07-wide-team-state",
+      "canonical": "hunter-v07-wide-team-state",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v08-pearl-wide-sonar",
+      "canonical": "hunter-v08-pearl-wide-sonar",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v09-confidence-team-state",
+      "canonical": "hunter-v09-confidence-team-state",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v10-confidence-enemy-state",
+      "canonical": "hunter-v10-confidence-enemy-state",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v11-route-distance-exploration",
+      "canonical": "hunter-v11-route-distance-exploration",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 149,
+        "cells": 257,
+        "families": 16,
+        "maps": 13,
+        "advantage": 0.5053154923654245,
+        "lower": 0.3936460926640019,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "tew-v04-route-hunter",
+      "canonical": "hunter-v11-route-distance-exploration",
+      "status": "duplicate_alias",
+      "replacement": "hunter-v11-route-distance-exploration",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "hunter-v12-static-map-spacing",
+      "canonical": "hunter-v12-static-map-spacing",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v13-hybrid-route-spacing",
+      "canonical": "hunter-v13-hybrid-route-spacing",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "avery-v09-frontier-bfs",
+      "evidence": {
+        "better": 39,
+        "worse": 151,
+        "cells": 44,
+        "families": 6,
+        "maps": 11,
+        "advantage": 0.25509259259259265,
+        "lower": 0.169200508007798,
+        "worst_map": -0.08333333333333333
+      }
+    },
+    {
+      "name": "hunter-v14-cpp-hybrid-route-spacing",
+      "canonical": "hunter-v14-cpp-hybrid-route-spacing",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v15-shared-territory",
+      "canonical": "hunter-v15-shared-territory",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v16-boost-traps",
+      "canonical": "hunter-v16-boost-traps",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v17-portal-first-traps",
+      "canonical": "hunter-v17-portal-first-traps",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v18-self-trap-lookahead",
+      "canonical": "hunter-v18-self-trap-lookahead",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v19-safe-growth-lookahead",
+      "canonical": "hunter-v19-safe-growth-lookahead",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v20-portal-scouts",
+      "canonical": "hunter-v20-portal-scouts",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 158,
+        "cells": 1655,
+        "families": 20,
+        "maps": 13,
+        "advantage": 0.20036501396402143,
+        "lower": 0.15707613529693967,
+        "worst_map": -0.07037037037037037
+      }
+    },
+    {
+      "name": "hunter-v21-emergency-portals",
+      "canonical": "hunter-v21-emergency-portals",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hunter-v22-frontier-exploration",
+      "canonical": "hunter-v22-frontier-exploration",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 160,
+        "cells": 218,
+        "families": 8,
+        "maps": 13,
+        "advantage": 0.20439929811459623,
+        "lower": 0.1370149309478525,
+        "worst_map": -0.1
+      }
+    },
+    {
+      "name": "hunter-v23-supported-arrival-feed",
+      "canonical": "hunter-v23-supported-arrival-feed",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hydra-v01-core",
+      "canonical": "hydra-v01-core",
+      "status": "primary",
+      "reason": "map leader: dilemma",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hydra-v02-hunters",
+      "canonical": "hydra-v02-hunters",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hydra-v03-grower",
+      "canonical": "hydra-v03-grower",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hydra-v06-echo",
+      "canonical": "hydra-v06-echo",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hydra-v07-farm-first",
+      "canonical": "hydra-v07-farm-first",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hydra-v08-claims",
+      "canonical": "hydra-v08-claims",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hydra-v09-lanchester",
+      "canonical": "hydra-v09-lanchester",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hydra-v10-farmclean",
+      "canonical": "hydra-v10-farmclean",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "hydra-v11-macro",
+      "canonical": "hydra-v11-macro",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "javert-v01-game-relative",
+      "canonical": "javert-v01-game-relative",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "javert-x03-policy",
+      "canonical": "javert-v01-game-relative",
+      "status": "duplicate_alias",
+      "replacement": "javert-v01-game-relative",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "javert-x01-base",
+      "canonical": "javert-x01-base",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "javert-x02-lendensity",
+      "canonical": "javert-x02-lendensity",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "javert-x04-portals",
+      "canonical": "javert-x04-portals",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "javert-x05-space",
+      "canonical": "javert-x05-space",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-s01-mid40",
+      "canonical": "kraken-s01-mid40",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-s02-trade1",
+      "canonical": "kraken-s02-trade1",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-v01-roles",
+      "canonical": "kraken-v01-roles",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-v03-judge-safe",
+      "canonical": "kraken-v03-judge-safe",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-v02-bigmap",
+      "canonical": "kraken-v03-judge-safe",
+      "status": "duplicate_alias",
+      "replacement": "kraken-v03-judge-safe",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "kraken-v04-eval",
+      "canonical": "kraken-v04-eval",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-v05-safety",
+      "canonical": "kraken-v05-safety",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-x01-notrade",
+      "canonical": "kraken-x01-notrade",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-x02-noini",
+      "canonical": "kraken-x02-noini",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-x03-noexit",
+      "canonical": "kraken-x03-noexit",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-x04-nodoom",
+      "canonical": "kraken-x04-nodoom",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "kraken-x05-pstrong",
+      "canonical": "kraken-x05-pstrong",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-v01-evaluator",
+      "canonical": "leviathan-v01-evaluator",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-v02-expansion",
+      "canonical": "leviathan-v02-expansion",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-v03-population",
+      "canonical": "leviathan-v03-population",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-v04-material",
+      "canonical": "leviathan-v04-material",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-v05-tail-risk",
+      "canonical": "leviathan-v05-tail-risk",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-v06-confirmed-growth",
+      "canonical": "leviathan-v06-confirmed-growth",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-v07-local-cache",
+      "canonical": "leviathan-v07-local-cache",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-v08-core",
+      "canonical": "leviathan-v08-core",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 194,
+        "cells": 40,
+        "families": 11,
+        "maps": 13,
+        "advantage": 0.2643250688705234,
+        "lower": 0.1111790709431599,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "leviathan-v09-arrival",
+      "canonical": "leviathan-v09-arrival",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "valjean-v01-portal-memory",
+      "evidence": {
+        "better": 260,
+        "worse": 195,
+        "cells": 41,
+        "families": 15,
+        "maps": 12,
+        "advantage": 0.27611111111111114,
+        "lower": 0.19725659035299928,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "leviathan-x01-riptide-horizon",
+      "canonical": "leviathan-x01-riptide-horizon",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-x02-riptide-viability",
+      "canonical": "leviathan-x02-riptide-viability",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-x03-estuary-roles",
+      "canonical": "leviathan-x03-estuary-roles",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "leviathan-x04-charybdis-replies",
+      "canonical": "leviathan-x04-charybdis-replies",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-v01-core",
+      "canonical": "monte_christo-v01-core",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 200,
+        "cells": 104,
+        "families": 14,
+        "maps": 13,
+        "advantage": 0.18691784406070122,
+        "lower": 0.11600988378802704,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "porthos-x01-frozen",
+      "canonical": "monte_christo-v01-core",
+      "status": "duplicate_alias",
+      "replacement": "monte_christo-v01-core",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-v02-table-risk",
+      "canonical": "monte_christo-v02-table-risk",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-v03-logistic-risk",
+      "canonical": "monte_christo-v03-logistic-risk",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-v04-supported-risk",
+      "canonical": "monte_christo-v04-supported-risk",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-v05-compact-risk",
+      "canonical": "monte_christo-v05-compact-risk",
+      "status": "deprecated_redundant",
+      "reason": "Strong residual-profile correlation with a primary bot of comparable or better strength, without a >10pp modeled map niche.",
+      "replacement": "monte_christo-v03-logistic-risk",
+      "evidence": {
+        "a": 202,
+        "b": 204,
+        "correlation": 0.8607153983436112,
+        "low": 0.7734440334927891,
+        "high": 0.917402199590513,
+        "cells": 62,
+        "families": 18,
+        "maps": 13,
+        "basis": "opponent-lineage/map averages"
+      }
+    },
+    {
+      "name": "monte_christo-v06-density",
+      "canonical": "monte_christo-v06-density",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x01-density-h1",
+      "canonical": "monte_christo-x01-density-h1",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x02-density-h12",
+      "canonical": "monte_christo-x02-density-h12",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x03-local-density",
+      "canonical": "monte_christo-x03-local-density",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x04-channel-only",
+      "canonical": "monte_christo-x04-channel-only",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x05-period-four",
+      "canonical": "monte_christo-x05-period-four",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x06-control-gradient",
+      "canonical": "monte_christo-x06-control-gradient",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x07-all-density",
+      "canonical": "monte_christo-x07-all-density",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x08-no-relay",
+      "canonical": "monte_christo-x08-no-relay",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x09-fast-observe",
+      "canonical": "monte_christo-x09-fast-observe",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x10-sparse-radio",
+      "canonical": "monte_christo-x10-sparse-radio",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x11-crown-priority",
+      "canonical": "monte_christo-x11-crown-priority",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x12-remote-density",
+      "canonical": "monte_christo-x12-remote-density",
+      "status": "primary",
+      "reason": "map leader: devil; map leader: trophy",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-v07-radio",
+      "canonical": "monte_christo-x12-remote-density",
+      "status": "duplicate_alias",
+      "replacement": "monte_christo-x12-remote-density",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "monte_christo-x13-priority-channel",
+      "canonical": "monte_christo-x13-priority-channel",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "von_neumann-x07-quiet",
+      "evidence": {
+        "better": 271,
+        "worse": 218,
+        "cells": 54,
+        "families": 15,
+        "maps": 13,
+        "advantage": 0.1682275132275132,
+        "lower": 0.08599345633105526,
+        "worst_map": -0.1
+      }
+    },
+    {
+      "name": "ouroboros-v01-eval",
+      "canonical": "ouroboros-v01-eval",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "avery-v11-maze-sweep",
+      "evidence": {
+        "better": 41,
+        "worse": 219,
+        "cells": 51,
+        "families": 7,
+        "maps": 13,
+        "advantage": 0.12029637029637032,
+        "lower": 0.06229730454665592,
+        "worst_map": 0.0
+      }
+    },
+    {
+      "name": "ouroboros-v02-crown",
+      "canonical": "ouroboros-v02-crown",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "avery-v09-frontier-bfs",
+      "evidence": {
+        "better": 39,
+        "worse": 220,
+        "cells": 49,
+        "families": 6,
+        "maps": 11,
+        "advantage": 0.17784992784992784,
+        "lower": 0.08687345401025075,
+        "worst_map": -0.1
+      }
+    },
+    {
+      "name": "ouroboros-v03-forage",
+      "canonical": "ouroboros-v03-forage",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v11-close-support",
+      "evidence": {
+        "better": 252,
+        "worse": 221,
+        "cells": 62,
+        "families": 9,
+        "maps": 13,
+        "advantage": 0.2629068462401796,
+        "lower": 0.18736929911649539,
+        "worst_map": -0.1
+      }
+    },
+    {
+      "name": "ouroboros-v04-race",
+      "canonical": "ouroboros-v04-race",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "ouroboros-v05-spread",
+      "canonical": "ouroboros-v05-spread",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v09-low-gate",
+      "evidence": {
+        "better": 250,
+        "worse": 223,
+        "cells": 60,
+        "families": 7,
+        "maps": 13,
+        "advantage": 0.33686868686868693,
+        "lower": 0.23075824341606135,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "ouroboros-v06-lanchester",
+      "canonical": "ouroboros-v06-lanchester",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v09-low-gate",
+      "evidence": {
+        "better": 250,
+        "worse": 224,
+        "cells": 60,
+        "families": 8,
+        "maps": 13,
+        "advantage": 0.45340909090909093,
+        "lower": 0.3081779180643971,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "ouroboros-v07-forage2",
+      "canonical": "ouroboros-v07-forage2",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 225,
+        "cells": 239,
+        "families": 9,
+        "maps": 13,
+        "advantage": 0.22319775132275133,
+        "lower": 0.12985787919929015,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "ouroboros-v08-contest",
+      "canonical": "ouroboros-v08-contest",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 226,
+        "cells": 252,
+        "families": 9,
+        "maps": 13,
+        "advantage": 0.1656998766737139,
+        "lower": 0.10393005149142036,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "ouroboros-v09-feed",
+      "canonical": "ouroboros-v09-feed",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v09-low-gate",
+      "evidence": {
+        "better": 250,
+        "worse": 227,
+        "cells": 66,
+        "families": 12,
+        "maps": 13,
+        "advantage": 0.2922558922558922,
+        "lower": 0.18398580668733133,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "ouroboros-v10-beacon",
+      "canonical": "ouroboros-v10-beacon",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 228,
+        "cells": 100,
+        "families": 9,
+        "maps": 13,
+        "advantage": 0.4410984726774202,
+        "lower": 0.3625460986215944,
+        "worst_map": 0.16666666666666666
+      }
+    },
+    {
+      "name": "ouroboros-v11-opening",
+      "canonical": "ouroboros-v11-opening",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v09-low-gate",
+      "evidence": {
+        "better": 250,
+        "worse": 229,
+        "cells": 64,
+        "families": 11,
+        "maps": 13,
+        "advantage": 0.12777777777777777,
+        "lower": 0.06916450193908098,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "ouroboros-v12-core",
+      "canonical": "ouroboros-v12-core",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 230,
+        "cells": 242,
+        "families": 10,
+        "maps": 13,
+        "advantage": 0.08835974632469829,
+        "lower": 0.024166801676805245,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "ouroboros-v13-ladder",
+      "canonical": "ouroboros-v13-ladder",
+      "status": "deprecated_redundant",
+      "reason": "Strong residual-profile correlation with a primary bot of comparable or better strength, without a >10pp modeled map niche.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "a": 231,
+        "b": 253,
+        "cells": 737,
+        "families": 19,
+        "maps": 13,
+        "correlation": 0.9128584318924848,
+        "delta": -0.021159840251844603,
+        "low": 0.8803609124419886,
+        "high": 0.9422684377233207,
+        "by_map": {
+          "Colosseum": -0.16265060240963855,
+          "arena": -0.05223880597014925,
+          "autarky": 0.0,
+          "big_empty": 0.0,
+          "default": 0.0,
+          "default_small": 0.0,
+          "devil": 0.012048192771084338,
+          "dilemma": 0.08,
+          "queen_of_spades": 0.0,
+          "schooltime": 0.0,
+          "stronghold": 0.0,
+          "trauma": 0.0,
+          "trophy": -0.10204081632653061
+        },
+        "correlation_low": 0.8803609124419886,
+        "correlation_high": 0.9422684377233207,
+        "basis": "exact shared opponent/map cells"
+      }
+    },
+    {
+      "name": "tew-v07-production-ladder",
+      "canonical": "ouroboros-v13-ladder",
+      "status": "duplicate_alias",
+      "replacement": "ouroboros-v13-ladder",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "godel-x01-frozen",
+      "canonical": "ouroboros-v13-ladder",
+      "status": "duplicate_alias",
+      "replacement": "ouroboros-v13-ladder",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "godel-x26-style",
+      "canonical": "ouroboros-v13-ladder",
+      "status": "duplicate_alias",
+      "replacement": "ouroboros-v13-ladder",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "porthos-x02-intentions",
+      "canonical": "porthos-x02-intentions",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 232,
+        "cells": 61,
+        "families": 14,
+        "maps": 13,
+        "advantage": 0.33081501831501836,
+        "lower": 0.17484444960662246,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "porthos-x03-swarm",
+      "canonical": "porthos-x03-swarm",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "von_neumann-x07-quiet",
+      "evidence": {
+        "better": 271,
+        "worse": 233,
+        "cells": 119,
+        "families": 17,
+        "maps": 13,
+        "advantage": 0.09762982115923294,
+        "lower": 0.048097391851412485,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "porthos-x04-policy",
+      "canonical": "porthos-x04-policy",
+      "status": "primary",
+      "reason": "map leader: trauma",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "von_neumann-x01-frozen",
+      "canonical": "porthos-x04-policy",
+      "status": "duplicate_alias",
+      "replacement": "porthos-x04-policy",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "porthos-x05-recon",
+      "canonical": "porthos-x05-recon",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 235,
+        "cells": 72,
+        "families": 15,
+        "maps": 13,
+        "advantage": 0.28703601953601954,
+        "lower": 0.14508736975036982,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "serre-v01-foundation",
+      "canonical": "serre-v01-foundation",
+      "status": "primary",
+      "reason": "broad overall leader; map leader: big_empty; map leader: queen_of_spades; map leader: schooltime; map leader: stronghold",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "serre-v02-doctrine",
+      "canonical": "serre-v02-doctrine",
+      "status": "needs_evidence",
+      "reason": "Insufficient broad coverage; no weakness or dominance judgement.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "sinbad-v01-core",
+      "canonical": "sinbad-v01-core",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "sinbad-v02-crown",
+      "canonical": "sinbad-v02-crown",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "sinbad-v03-hunt",
+      "canonical": "sinbad-v03-hunt",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "sinbad-v04-strike",
+      "canonical": "sinbad-v04-strike",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "sinbad-v05-hunt8",
+      "canonical": "sinbad-v05-hunt8",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "sinbad-v06-arrival",
+      "canonical": "sinbad-v06-arrival",
+      "status": "runtime_hold",
+      "reason": "Inherited campaign timeout hold; does not establish which participant caused the failure.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "sinbad-v07-divecap",
+      "canonical": "sinbad-v07-divecap",
+      "status": "primary",
+      "reason": "broad overall leader; map leader: Colosseum",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v01-local-forager",
+      "canonical": "tew-v01-local-forager",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v03-cautious-forager",
+      "canonical": "tew-v03-cautious-forager",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v05-early-expansion",
+      "canonical": "tew-v05-early-expansion",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 247,
+        "cells": 89,
+        "families": 17,
+        "maps": 13,
+        "advantage": 0.49268525592055,
+        "lower": 0.3221690990751602,
+        "worst_map": -0.0
+      }
+    },
+    {
+      "name": "tew-v06-safe-fallback",
+      "canonical": "tew-v06-safe-fallback",
+      "status": "deprecated_weak",
+      "reason": "Well-tested: upper strength sensitivity bound below 40%, with no map profile above 60% against the balanced anchor panel.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v08-early-hunter",
+      "canonical": "tew-v08-early-hunter",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v09-low-gate",
+      "canonical": "tew-v09-low-gate",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v10-supported-hunts",
+      "canonical": "tew-v10-supported-hunts",
+      "status": "deprecated_redundant",
+      "reason": "Strong residual-profile correlation with a primary bot of comparable or better strength, without a >10pp modeled map niche.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "a": 251,
+        "b": 253,
+        "cells": 192,
+        "families": 16,
+        "maps": 13,
+        "correlation": 0.9797610139625813,
+        "delta": 0.004050577309236947,
+        "low": 0.9581928292600916,
+        "high": 0.992877914142945,
+        "by_map": {
+          "Colosseum": -0.025,
+          "arena": 0.0,
+          "autarky": 0.0,
+          "big_empty": 0.0,
+          "default": 0.0,
+          "default_small": 0.0,
+          "devil": 0.05263157894736842,
+          "dilemma": 0.0,
+          "queen_of_spades": 0.0,
+          "schooltime": 0.0,
+          "stronghold": 0.0,
+          "trauma": 0.0,
+          "trophy": 0.0
+        },
+        "correlation_low": 0.9581928292600916,
+        "correlation_high": 0.992877914142945,
+        "basis": "exact shared opponent/map cells"
+      }
+    },
+    {
+      "name": "tew-v11-close-support",
+      "canonical": "tew-v11-close-support",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v12-mid-support",
+      "canonical": "tew-v12-mid-support",
+      "status": "primary",
+      "reason": "map leader: arena",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v13-compact-survival",
+      "canonical": "tew-v13-compact-survival",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 254,
+        "cells": 100,
+        "families": 15,
+        "maps": 13,
+        "advantage": 0.11385040885040887,
+        "lower": 0.0627474210706948,
+        "worst_map": 0.0
+      }
+    },
+    {
+      "name": "tew-v14-strict-crown",
+      "canonical": "tew-v14-strict-crown",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v15-crown-banking",
+      "canonical": "tew-v15-crown-banking",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "tew-v16-compact-crown-bank",
+      "canonical": "tew-v16-compact-crown-bank",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 257,
+        "cells": 95,
+        "families": 16,
+        "maps": 13,
+        "advantage": 0.12165404040404043,
+        "lower": 0.05540269519320678,
+        "worst_map": -0.1
+      }
+    },
+    {
+      "name": "tew-v17-balanced-compact-growth",
+      "canonical": "tew-v17-balanced-compact-growth",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "tew-v12-mid-support",
+      "evidence": {
+        "better": 253,
+        "worse": 258,
+        "cells": 88,
+        "families": 14,
+        "maps": 13,
+        "advantage": 0.12924991674991676,
+        "lower": 0.06988896552772325,
+        "worst_map": -0.09090909090909091
+      }
+    },
+    {
+      "name": "tew-v18-open-trade-gate",
+      "canonical": "tew-v18-open-trade-gate",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "valjean-v01-portal-memory",
+      "canonical": "valjean-v01-portal-memory",
+      "status": "primary",
+      "reason": "map leader: default_small",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "feynman-x01-frozen",
+      "canonical": "valjean-v01-portal-memory",
+      "status": "duplicate_alias",
+      "replacement": "valjean-v01-portal-memory",
+      "reason": "Identical effective packaged source; retain history but use one competitor in routine comparisons.",
+      "evidence": null
+    },
+    {
+      "name": "vn-x01-atkunits-1",
+      "canonical": "vn-x01-atkunits-1",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "vn-x01-margin-2",
+      "canonical": "vn-x01-margin-2",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "vn-x01-preymin-6",
+      "canonical": "vn-x01-preymin-6",
+      "status": "primary",
+      "reason": "strong and distinct strength-adjusted profile",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "vn-x01-sat-09",
+      "canonical": "vn-x01-sat-09",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 264,
+        "cells": 66,
+        "families": 14,
+        "maps": 13,
+        "advantage": 0.2656153370439085,
+        "lower": 0.17217197290083794,
+        "worst_map": 0.0
+      }
+    },
+    {
+      "name": "vn-x06-info-grad1",
+      "canonical": "vn-x06-info-grad1",
+      "status": "deprecated_redundant",
+      "reason": "Strong residual-profile correlation with a primary bot of comparable or better strength, without a >10pp modeled map niche.",
+      "replacement": "porthos-x04-policy",
+      "evidence": {
+        "a": 234,
+        "b": 265,
+        "correlation": 0.8554280762276575,
+        "low": 0.754633412540173,
+        "high": 0.9199086453103159,
+        "cells": 95,
+        "families": 18,
+        "maps": 13,
+        "basis": "opponent-lineage/map averages"
+      }
+    },
+    {
+      "name": "vn-x06-info-tf-05",
+      "canonical": "vn-x06-info-tf-05",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "von_neumann-x02-mech",
+      "canonical": "von_neumann-x02-mech",
+      "status": "reserve",
+      "reason": "Broad evidence but not selected for the 24-bot routine budget; retain for targeted or extended tests.",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "von_neumann-x03-balance",
+      "canonical": "von_neumann-x03-balance",
+      "status": "primary",
+      "reason": "broad overall leader",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "von_neumann-x04-support",
+      "canonical": "von_neumann-x04-support",
+      "status": "primary",
+      "reason": "broad overall leader",
+      "replacement": null,
+      "evidence": null
+    },
+    {
+      "name": "von_neumann-x06-info",
+      "canonical": "von_neumann-x06-info",
+      "status": "deprecated_dominated",
+      "reason": "Observed loose dominance on shared fixtures: >2pp lower-bound mean gain, no tested map more than 10pp worse; >=6 families and >=10 maps.",
+      "replacement": "serre-v01-foundation",
+      "evidence": {
+        "better": 236,
+        "worse": 270,
+        "cells": 63,
+        "families": 16,
+        "maps": 13,
+        "advantage": 0.3018229166666667,
+        "lower": 0.1523070374105809,
+        "worst_map": -0.08333333333333333
+      }
+    },
+    {
+      "name": "von_neumann-x07-quiet",
+      "canonical": "von_neumann-x07-quiet",
+      "status": "primary",
+      "reason": "broad overall leader",
+      "replacement": null,
+      "evidence": null
+    }
+  ],
+  "source_hashes": {
+    "alik_bot_v2": "8778d2155db14bd89f4ed07f218db4055c139db360f9d43d4787ec9821b1aabb",
+    "alik_test_bot": "cc9af49743939177cf0a6aad8ba9e84443b6ce9685cb440af95fa484cf791419",
+    "aramis-v01-intentions": "f4e802519698c180649d977452801b94ffe36acff37ff299d30c32eb0460cf30",
+    "aramis-v02-frontier": "462fd70e105b21dbff8888c51cb225917283ed4d28d3bfb2f6d4f74299f43796",
+    "aramis-x01-extracted": "4743641114ace1a2eb044f4966618cc489d30020390f8c495af2e6e9ad11b05a",
+    "aramis-x02-intentions": "aabaa1af5e5b6cfe1e74c17231fa4785c30eef54b24c6e8dff28bc40a4970c55",
+    "aramis-x03-e0f0": "02076ed0c52362e3f7c4caa82a0c4ce7c690cfb77a8cb4210ef98d8daacee659",
+    "aramis-x04-e0f1": "0d923e9cc27f626cebe374b22ce511fde7362c5b669325da1e31fa472d2f1d3c",
+    "aramis-x05-e1f0": "605e5b327a086f68e884a8a317e320cf91322acd144e9f03524db1e2986e8ad6",
+    "aramis-x06-e1f1": "c6f5f09069a9aa9ac6c04723fd913158b7d704345da892709699ab70c692fe04",
+    "aramis-x07-preview-policy": "e60e82af62adecbbd191085dfb1992c7506228b058c61e82da6f1c74680afec9",
+    "aramis-x08-density-control": "a9a043152dfbab45841d0df2f01030cb2053396f97e863998c5e9eccf453655a",
+    "aramis-x09-frontier": "462fd70e105b21dbff8888c51cb225917283ed4d28d3bfb2f6d4f74299f43796",
+    "aramis-x10-withdraw": "6a38bf4b4809bfae6f0a75d5485e98cbed06ca5e5adc4946780239be5639c07b",
+    "athos-v01-core": "6f9d199184ee54013c60eca61fc658ba2976dc654adc9ce77ac3d71c5a1b1233",
+    "athos-x01-e-trapmargin": "634a871f61cceff61d698d4982847324f4c7e4f6890aed1dbadd5548243d3c47",
+    "athos-x02-e-headblock": "a76aebc28043069212318e3f8b5def37f74e16b5b45a70b6c5ed4e20d730a725",
+    "athos-x03-e-sprintpearl": "b1b237745f6be1ef28f56eb5c0a48bf803d44861bb37c1b2bd16f7505a5fb272",
+    "athos-x04-f-splitval": "06cf703275ce113a2bcc22049312e32406e60f2a107b8464e44cdcfbc079ecc4",
+    "athos-x05-f-threat": "4e19015362ca7bf8964ad336d0efbee70f6a7066abd0780d69db820104d6947e",
+    "athos-x06-f-crown": "4cdbb66948430cc2735efe900f5015bff8a9da578398c1b834cb9ec686203e10",
+    "athos-x07-f-menu-feed": "73bd4e0036184f3a9e1f484468068fe8a8e2af1ee86b2b8136ad9a94dd414bbc",
+    "athos-x08-c-trap-split": "8f306f51fffbdbcede60296221ff836ce48ec4aa380b1212c63117b62d01416e",
+    "athos-x09-c-trap-crown": "35e61909781f3bfb8b3a8d95c8cbc087d1ec9f73cf04348502967a40848004db",
+    "athos-x10-c-split-crown": "80bf33067973dfb79a9f01aa5babe7c486e670807cd13103b8362280a93ea7b6",
+    "athos-x11-c-all": "d7a3062b02b1c22716266db795728fb5ace028d46c42a5400591fcbc05f596ca",
+    "athos-x12-menu-strict": "02160bfc183ad269c94a56fc97ca79cd97f50ce907f027e16c59e58c0fb2d4e7",
+    "athos-x13-c-all-menu": "e2da5f968f8db3cbba2599ad83c3dfc5fb0679272b63ef435243d8151996199e",
+    "athos-x14-e-splitn": "f202c04289bd963cb76947bf589ef59c7d448888d5ca8b55d5f9142e09479fbb",
+    "athos-x15-f-allyreach": "0c7fb7ad74d513f0a87b0a2d18c90bbb7e745cfb5f22d1180234f2bed20c3e42",
+    "athos-x17-f-crownsafe": "134ed8ad093391a0c78718a037b187dfdefa806611d2570c329e4925b3709e69",
+    "athos-x18-f-latesplit": "0e64ccbcf3fc8d2a1436d7fffe6b84476dc9766124e124af8672a92177cb75aa",
+    "avery-v01-safe-swarm": "df119923aadfe9a351ed87057c9f5dbf628606871a6a9d0fe7a007a181e4004d",
+    "avery-v02-id-order-corridors": "91e8d18c30c8c4b945172b7073677add39f198bc41ce1bb64db5da195ec3d266",
+    "avery-v03-swarm-spacing": "1d2c2d63f6e2cec99cd9d304718874ac71b541d0d1cdd2b57379465c1ff61311",
+    "avery-v04-crown-endgame": "01681addd04930681bb50b4e9cc0213bb5a1c3009cd2b63306ce4b58ee0a5a82",
+    "avery-v05-strict-crown": "42e2a864f527b62696e91ba7ba7261379716bdcb52f75b6fe3448be4c30d7d83",
+    "avery-v06-late-feed": "d20417c449c5496e04030a0eafd69719ae931dc7b55fc70463a5ef25e181d271",
+    "avery-v07-compact-production": "d13b1496d6c977a2fb105698b7ebfeb9f49bc33d30d226bbaa4e60a96d2784ca",
+    "avery-v08-crown-race": "f486f756473bf96b3141f8f5a2a6cd92c068d3319db6c6ada1a354d957bbb12a",
+    "avery-v09-frontier-bfs": "1d813920d6ae88459fdef6694657de656ceebceb6c2a454df702f990a840a6f0",
+    "avery-v10-safe-explore": "9b74524ef0b57211da381a550254521b30dbe8e8e30ac34cda0a96def2fe059f",
+    "avery-v11-maze-sweep": "b36f62d5da56753ba6832ee499c7d76c317f3cd1470c9ef016aab046ee7c0ce8",
+    "avery-v12-hungry-sweep": "bf88649af3753539676b9bc93381cb60f973e452dd4ff43ea6b4a47719c4df73",
+    "chimera-v01-unified": "75ae15b835a3c7bc23f7dd5bece7cfbe8a71d8760dce7201928cca8c28d6c0b0",
+    "dartegnan-v01-contract": "7cc332c582c7c83578d790e7d039c00302f4e77eccf5f7cf3ccacecbcd423e42",
+    "dartegnan-x01-e0p0": "03598a115cb9ae9c91be60b24d2e4a51f7c693b7a26ddcfa06d84f53339c3471",
+    "dartegnan-x02-e0p1": "971617f2eae39350880ff0d07b81670ed3d6750decebef7d4cd6f94d7af1a2a5",
+    "dartegnan-x03-e1p0": "bbf773aafd8a58401955ae228837c5df3973e5d44fc3b38d64eb646d0252eec7",
+    "dartegnan-x04-e1p1": "5b57eb7631bd02887fd1f47082a2860c3dc665de041222b6f335e437509aea75",
+    "dartegnan-x05-e0p2": "902fc8216c119fa63b5901391ac4573484fdaf8f22030ae4e31544021617872d",
+    "drake-v01-survive-forage": "4fa02af448ce60640ae6659377a171b001eac39111c8be23f15c048b364c2bbc",
+    "drake-v02-hunt-feed": "1ee47d4eec9134dacb89d588b5c16ab93102373da4855006b3b998e44f1b7fae",
+    "drake-v03-compact-production": "49436bc4cea1e477576077cc12915da13ab961695133be1f1e1903640154054a",
+    "drake-v04-beacon": "68e5bf523cebaed4c95411cf820d70923764c9f10c73575d8c04e606f6088bb1",
+    "drake-v05-sweep": "bcf727bc149d02fe458e0382673bb422550f32105468c5baa2d8597d7766f3db",
+    "drake-v06-frontier-push": "475d52ca7acafc4e40cf9b147db69b484f3eec2f6a7f1f6a3d0f408ca3bae4a4",
+    "drake-v07-soft-missions": "62015f5a77be7d28589c4d10afca7a1b2fd64e4b48c9f77fee3d7dcc8ddc7f61",
+    "drake-v08-density": "3fcedcfa2bb58fc30af70bcce6372c52be09840293607ae404ce58862b730b99",
+    "drake-v09-density-tuned": "8e83479f012af216a6a6d91760ffa20b8b0134f02343e5f95fd2924b4e3eafd5",
+    "drake-v10-dual-ewma": "c9dae616e96402979560f01636903a75a58700ae93dbe58c4106ddda8be8930b",
+    "drake-v11-satutfix": "7589db65332ea7785514d3cb8758232728867104ed5c85c77d213ee369e8f0c8",
+    "feynman-x01-frozen": "c1e76d9ab653cc341ca07cbd563ef2bf396537a21ce301f85ac1106968eaf63b",
+    "formatted-hunter-v22": "efe31342b1147acabbde0d515444f93633e6a7c7bf581aa6b4b52b33f7663c7d",
+    "formatted-hunter-v22-python": "d47c4ec8dca4a09b349192219f4698da49a1ba013bd7363b8fa6cb3ba312547f",
+    "fry-v01-danger-levels": "07d8af4eeafc7bdd2f6f159d133902ac9c12e59c6aea225c3e28e69197b7a3de",
+    "fry-v02-dragon-hunters": "6fc999b6afeec8e656bfe3971c2da5473771217b1655fdee76990e414971c4d7",
+    "fry-v03-portal-hunters": "3526067fe3f5c601c80064e15dda9fe66732be4e6fe2bcf79b6c4c00eef67666",
+    "fry-v04-escorts": "6cf33b922e4012e623b70fc3d196b64e8e9fb0398bc332044d728a3fb6254596",
+    "fry-v05-kamikaze-swarm": "11112fe2902ceb0ac2b7ffa422194dc9a67a9784a7f4b155066bbda3fcfd2954",
+    "fry-v06-one-child": "99816c83b24e8b3c36c3aff39c3c86fa64ef8cc0ba94467a830c06dcf38334cb",
+    "fry-v07-two-children": "e5b19b44a78fa7cbfa195ad1050d91cbcc7ab85986e4f1a4453ea452a9495995",
+    "fry-v08-pre-swarm-defense": "6ca207d742e8eaa3291d4dc9f655c26da9f92a847cdfc589618a872cc5de6c10",
+    "fry-v09-pearl-seeker": "404c6abaa94afe5436cb04acc51a427961fa1f4d6df0083ee83cfc8a10892ae7",
+    "fry-v10-pearl-seeker-center": "58618c67ec05655af832737eac3f877feb6b97ea28b69c7572d657e04663dbc3",
+    "fry-v11-size-aware-hunters": "13d57868fffafb2715ed5c5105a77e20dac6ae21013489f655c9e207e863bf28",
+    "fry-v12-stateful-size-aware-hunters": "fc135b0a177210a5c475d9edaecb8fd96eeafe617bacb0409a6d547fa31bfc67",
+    "fry-v13-stateful-size-aware-2": "9e21220885576b4f4e68295c4519d26eaebfde9e5305c7599a6cf4d118ac03bc",
+    "fry-v14-stateful-size-aware-3": "f7ef3907216a268b8f0b80549fdb66293d13247e596e961cb3ab827290a5542a",
+    "godel-x01-frozen": "de4e88c73d63cb4252170de0691e786ee6f5dc54d916773ee02841700bd95bc0",
+    "godel-x02-pacifist": "2c2b61d3f7e0302d54bf56c3519485fdcdb5b5069615089155339a294bcb4557",
+    "godel-x03-berserk": "ba4b14fc3b9c0bd48bdbfbb58a12ec4e7ccc6f95a6950496e54de62ef32126aa",
+    "godel-x04-attackunits4": "77ae8939371480e13d6ba4d59eb6ffd8b5caa1f7909eee98526656e6429696e9",
+    "godel-x05-margin1": "ef22527343d89092c38d5d36c97e050f707fd38282af54d5918a8b9759846350",
+    "godel-x06-strikebonus2": "eac3ae431245858743f98126cbcad83d6f218022e21a389da88d6faa2ba6c9b2",
+    "godel-x07-tradebias25": "eb974d7af181f17383fc4bd422aae8202b91489cd5ea6e03874c0f6f0546943c",
+    "godel-x08-pstrike06": "951ec38c336c2c5e8d4808c08c30533330c93dc1dd90180d5743d7ee540c9e84",
+    "godel-x09-midhunt55": "d78c6cce584c3cb0fde9642a3817eb722e27f0fe66da29f75f9b8e3f343c8d7e",
+    "godel-x10-crownkill340": "92bc5b1f23d2fb66a8c2370627e5a942d3fe59004dec81cc6788d147d3c7f098",
+    "godel-x11-tradebias35": "aecb8a665f003a185248c57684a96f92133b64ca55152d3ca806ace86e1f46d5",
+    "godel-x12-tb25-margin1": "ace9d1c9e2d1c477dbd15d1ae0107c1f134ccff619787f0bf963a753354f84f0",
+    "godel-x13-tb25-au4": "8c595b009cc6f1840be49184c0e5795862af3b793979c8ed2d10e805d7486880",
+    "godel-x14-tb25-ps2-05": "d35a8ac7ba229e28437efb0cd2d4c7fecd2c477038451233658b773bfc7d7b27",
+    "godel-x15-tb25-gs4": "137bfa7b0a044899cc8915af4f9b3ba65a5a5b2c37b2b8c9239ac35f5f8ec6ce",
+    "godel-x16-ps2only": "f14519b03bc74b767ea0f3f543f6cd7d8a707801ef06cf484675af5c6b370109",
+    "godel-x17-ps2-065": "d70894519938ddf426563a3f2a88d44d255f2e62b496da90149867a8f19cf8cf",
+    "godel-x18-ps3-030": "3b8362ea4c9c5698320611fccc079aa1df19833c732ffd57a9b78a341b83019b",
+    "godel-x19-ps1-090": "ab36418f75808306f75d432ae6e4435b5c8a8330e964a2ea0c93f7951ed40265",
+    "godel-x20-inc-margin1": "c4fb24ce92d60513ef446534e9dcd5d6e730aa30ad1033325eb98d680c9f13f3",
+    "godel-x21-mech": "eb9da14589bcfa40ee3383a1d98e0f0e44781f51e2b554099a50718d308a8854",
+    "godel-x22-incumbent": "795f8ae803f88ee6e946e646481608e9ddda8db81ffe650177d4c9b06566da03",
+    "godel-x23-gm1": "ad37cbace0e7ce34ba00ce0c4a59a9563667b0ee723723dbbced074d5429fa65",
+    "godel-x24-gm2": "6514b3c3cde935aab0fca6ebf9f5b763be9fd036e188efaa6675d7ced4f886f6",
+    "godel-x25-gm12": "da76fd4f3735b23aefdf23fe0d25e043dc315690fccbb5b72bb6526384e72e39",
+    "godel-x26-style": "de4e88c73d63cb4252170de0691e786ee6f5dc54d916773ee02841700bd95bc0",
+    "hunter-v01-team-growth": "62e1025301342c165ef34dde6e89c7f012d0d9a92785694980493682115eb0c4",
+    "hunter-v02-team-growth": "e040dcfb09913a7bc4b33c41687970943c0ef90874475e03a6f12be4aee1343f",
+    "hunter-v03-team-growth": "daeda09b9c83ef9018ac0838effb6935baf348a3b9881d4634f669e6083c33c9",
+    "hunter-v04-team-state-sonar": "2330a9626a05caec3178b5abe2eedfead6000cb008335105bb40398c312b183f",
+    "hunter-v05-safe-attack-routes": "59b05d672239842f2e3140b7844e17f645a2ec4b798c2823d15ce21e7af45551",
+    "hunter-v06-pearl-routing": "77db1a76c587ff68027ce1d38bf5e05aff7bb2afb3650bf67f4dde2501cdf023",
+    "hunter-v07-wide-team-state": "a0ceb6a3f629c4e77cff1dcbe039e7b25a8a68527bd4fd4d402104eb11ce5e8d",
+    "hunter-v08-pearl-wide-sonar": "fef633e212e5b739c90999c47ded1b66e696681774f5632ce161cb8f70548448",
+    "hunter-v09-confidence-team-state": "14e7deb0eb3e8be8ae1b0e829d20a78332de9190d3ae41dfdde8ba72eea03a05",
+    "hunter-v10-confidence-enemy-state": "232e5f0aebea27e18a860350575eed97fcee35379df626c00210cd8f63c1d5bf",
+    "hunter-v11-route-distance-exploration": "37dc6ca0d73c47036fb2d3203a51fc4fc133d1cc434a78ee6c171079aa317bc6",
+    "hunter-v12-static-map-spacing": "e345d55cc0035712d84b3961625c19b5138dbaa48aceaa55f418b7b0e137627b",
+    "hunter-v13-hybrid-route-spacing": "8297dcb027da2065ffc9c56ecba9fd527bd1582d583e5134ccdfa0a35546f8e8",
+    "hunter-v14-cpp-hybrid-route-spacing": "639e132ad54c6d2743d4763b6e80773d12effdbfc91cf3578132b60b9dd75cd7",
+    "hunter-v15-shared-territory": "8fb8699ae32ec261319c29a5dd590eceba634ce69eba62976bd78a2b76fbfa8f",
+    "hunter-v16-boost-traps": "6999186baf9024c50a94a6c890c8c8c2705ef357fa2e65206e1ce9640d9a7d26",
+    "hunter-v17-portal-first-traps": "0814920571846191e76add6efbf1f4a5761e2dc27c9c415ee213b20b8b30f1a8",
+    "hunter-v18-self-trap-lookahead": "e702dda9621ffb9def87ff2c8c4c683334c941e5efbc5097e8ce11c184c9252e",
+    "hunter-v19-safe-growth-lookahead": "fbbd8da65545834d6a98b01535a4acb546b4aa0a9fd6b66749cb078a5251b6bc",
+    "hunter-v20-portal-scouts": "b8296d7b67b636d94e002a22e09b525f76b18d8d6b1448f388d56f9e1b19d4c9",
+    "hunter-v21-emergency-portals": "da15ffc5fcd3d71a2d70b52d04bbf00d53f97c40d5e4945336e984d9293aa5d8",
+    "hunter-v22-frontier-exploration": "eced8675bd7555e7555bf0503778f93afaff35d95b9e501d9c09c7412037f7c6",
+    "hunter-v23-supported-arrival-feed": "1882025313eeb83f2dfa359c150254977fa85568b0126b5db196b95eb7782178",
+    "hydra-v01-core": "6584e5b491a2a6e4d6299de1b6b6f47a13f5dc53353a6a4f4c277b8b24de14c1",
+    "hydra-v02-hunters": "22de15d255b6e9507a6a2f8d5fb6e0997e4be00f25c2ea02869b3d65fcec0e94",
+    "hydra-v03-grower": "47e3d8a284e99c2bce0a275feff1cde56713e1c96696fadd34236be1bbd85aa1",
+    "hydra-v06-echo": "5baa069d0d3dc7aec287d17b25acf0be8e036d1473c093d47eacb1e93e671533",
+    "hydra-v07-farm-first": "896e5942c392d7f2334dc6686b4445c168b2d9ece439ee008f025f53bbbd7145",
+    "hydra-v08-claims": "f44a4e0b1d5a2f01cb06beb7d7c583c8aa7d52551503a753e64690ad080676ed",
+    "hydra-v09-lanchester": "dd55710ca3fc60674bb0e1423d266a49ec4632547eaad0cc5e5d890b6087b185",
+    "hydra-v10-farmclean": "db9d59069402f485ce7ce173a293cf9f5420c27ab9be1f8769ab11a84c5f6d4b",
+    "hydra-v11-macro": "928f95830de59b865cdb7ec699a5e810848ba60c7beda13a957f645a15433d3b",
+    "javert-v01-game-relative": "5fbc867fb13d468d290b6d6ba6cacdb9e42d624ae0e44f8b352ed2a961eddee3",
+    "javert-x01-base": "e888dda1bc9190961b35d577e5333bac2df3ed7744195821750bbfa65898c83e",
+    "javert-x02-lendensity": "0b9f29ed4d947ebf4661314911059260bf7d3473b93bf471ff55d6f10e3f1e05",
+    "javert-x03-policy": "5fbc867fb13d468d290b6d6ba6cacdb9e42d624ae0e44f8b352ed2a961eddee3",
+    "javert-x04-portals": "680f4ae9447ba230176854effeb85e966fe2aa92c15bf41e8b0c3dc825110961",
+    "javert-x05-space": "0973f1955d5f78dae16fc35b1a552f75001003edad9585b0a40026959759663d",
+    "kraken-s01-mid40": "e8dbe53c105170c942f40377e8e815b731b4f63629e2bec9ea9a075eb1b1f51f",
+    "kraken-s02-trade1": "ad62eb7803c71ae50b99e54d1fcf633f10cd4278b9c258ddaa35c7911c9adc9b",
+    "kraken-v01-roles": "6e1e5a229e2cd27857c1561a1613b2df0683708cc3e5e0872a0191b3805b75a5",
+    "kraken-v02-bigmap": "ebb3f8a6e1a666ae6bee2f5f764080c00038e2e7683d11d59f764437805e2b7c",
+    "kraken-v03-judge-safe": "ebb3f8a6e1a666ae6bee2f5f764080c00038e2e7683d11d59f764437805e2b7c",
+    "kraken-v04-eval": "779045022672b65e72082d66bc2576414299e3a3d8693d00daf2fd92d903219e",
+    "kraken-v05-safety": "54cae92fd3c42106c6327dc25ddadf9f211a7e45b32a464e023575b31725af19",
+    "kraken-x01-notrade": "c96bd96b3f315e627cc5e5507d3c67492867862cf16acac5cc741b8c92190ffc",
+    "kraken-x02-noini": "2fecd68144246470706f10f9fbdc16aa57d95b8adbb35238a1311fbae80e925a",
+    "kraken-x03-noexit": "bab6970ab175705bdd478f8184ba5455b32ddc6f881f844d8f2bd7f803878a69",
+    "kraken-x04-nodoom": "31fcc9976a34ebddc22e3967e18e6ba6b7eab69455de75683dcbe7af5f7ce038",
+    "kraken-x05-pstrong": "3585f157eb76d3f7fff4b571e1582f9e18cd4b2ce764ddc47a0f33d591f6f696",
+    "leviathan-v01-evaluator": "7a8dd0e8584d8bd2414b5971039664cf63faa28b5c2bfa9eeab6afbd011b6d0e",
+    "leviathan-v02-expansion": "0707004798645fb15adbfe9dd8e24787476e63a8bb272e7a95cbe3cd397e5b48",
+    "leviathan-v03-population": "e170312cd07c6d6454257844d4c03c533eed8ad5223d0d7bcfd39e59a0b31a5b",
+    "leviathan-v04-material": "1638f3c623cf6ad09efb36b91d2bd6f1b7ca854fe61b4049f6d10b978bd2cb3b",
+    "leviathan-v05-tail-risk": "8a79a31119e04c7e81b5a2f8e2a66608a436812cfdd879fc9c3e944c152d926c",
+    "leviathan-v06-confirmed-growth": "3c59149f02809763b9996fc8a1aebb8b02b8b81202db84c089e18e7711b85118",
+    "leviathan-v07-local-cache": "92b0e8cb89f639dd81d16294ba45431a118c1fb44f3bd3a87f830d8553f8ee70",
+    "leviathan-v08-core": "4bc09f2584af0d12586896d18f8c106354afad860b29afb8f663d70a721a508f",
+    "leviathan-v09-arrival": "b8916a1e8dc8be21ac8baa4c7e5561ba9b8b7c00e8ebb84da269ee47a23f7090",
+    "leviathan-x01-riptide-horizon": "b0281cb9dd540f83568bf33f45e7aad434c23b86a448d12d24b1c20808d851ca",
+    "leviathan-x02-riptide-viability": "7cd06780258e82bba3b6cc916237f0ab9fcf15977145a0d7c66f41fb1703772a",
+    "leviathan-x03-estuary-roles": "12fc58a2ae05bf8e1f85060e13cfeb4fae1010850174110691ebe127850efaec",
+    "leviathan-x04-charybdis-replies": "245eb6f8745295dd3ff6354711ad2a8c2626e6a8d27dfcf3a1764990b06053fb",
+    "monte_christo-v01-core": "90ee8a238b2f48686b18196cf76e2f7c3a3e0aefa22a0490766776d237b61ceb",
+    "monte_christo-v02-table-risk": "508f23f526f686148f8ae122a179bbff5b28a2e23aab739525112164a368d525",
+    "monte_christo-v03-logistic-risk": "0158efbb7dcafa9eda2bca4c29248077e369d90c200011f328107256624da99c",
+    "monte_christo-v04-supported-risk": "4cc34966926f9102ef2f988b88ee9dbb7376f4f1d3f83012d16459301afbbd6d",
+    "monte_christo-v05-compact-risk": "33dda33c3561c812acb1761f5f5a84959cf22abefb3e4d0ca41029b656c1e24e",
+    "monte_christo-v06-density": "7cfbb20fd0804f10df2fa1d069c325ea676fe23b52c97443c1e2252f1f9fba55",
+    "monte_christo-v07-radio": "48cb1a89a266faf56c35e1ec01e1cedbd80276210ef620401cf7ff506c521cd9",
+    "monte_christo-x01-density-h1": "fb8ed193bcb772d1840d5525902b2f505ccce7f313faddb36c99bc4a0b8f6651",
+    "monte_christo-x02-density-h12": "ebb58d4a0767eff425a6ec1b374bd49cb283143f51f530a02295ea0913b0977e",
+    "monte_christo-x03-local-density": "bd008336c7d27b222666b1e11b5ffa6631db3e44b3884edfeeefbd0444599e96",
+    "monte_christo-x04-channel-only": "0c6e058f2ec618386a041740694336b4aea10e82d99a0a82ab32dfd5421b9e8e",
+    "monte_christo-x05-period-four": "9f29c0e73db1970ccd225ea2ad6a83b551e2916a826c931f14182daa3ee99e6d",
+    "monte_christo-x06-control-gradient": "15932e0e9d12a7662d909926ecbf50324585ac7cc0964fcc4a9a70bbf612f7d4",
+    "monte_christo-x07-all-density": "7daac8ac211c48980b74f1631b5ea5358f7f16d3b1892a57ba40687e8400c27f",
+    "monte_christo-x08-no-relay": "3c436a2e1f92bed95f09c7a8a5dd3fb85266b8d2d089c1bddf463b40f2f76eed",
+    "monte_christo-x09-fast-observe": "8aa025fb84e8643b8744a52c7ec885cc35f8ad8083a8355dea6ce4088063aed1",
+    "monte_christo-x10-sparse-radio": "3a0a644ee504f1cf00ab5ce440e4b898b1f6ebeffda569153846aa9e57afce6b",
+    "monte_christo-x11-crown-priority": "dd43ca5f53340a938c1f4660d9b2cd14bc4b6474bc9cbb2d9aa8e7d17f561314",
+    "monte_christo-x12-remote-density": "48cb1a89a266faf56c35e1ec01e1cedbd80276210ef620401cf7ff506c521cd9",
+    "monte_christo-x13-priority-channel": "dc8c84fbf3829dd866f34a7f8ce50f1dd6ddee6e3385be43bf3355eac0f771ad",
+    "ouroboros-v01-eval": "9bfa7d40d7952d6ad802264823ac9d90ede8af39ca7b41f5f29228d289b7b271",
+    "ouroboros-v02-crown": "8396d8b6cf1be99a4b27470d7b233aeba467e0fc116fddf8a39a1dee3ce4f06e",
+    "ouroboros-v03-forage": "aab2bd5dbea7ac10d6595d0f8e82336a650ddae04b6f04e3e9e856c2868d3ffd",
+    "ouroboros-v04-race": "408ce9c92797de70e01ff120ca486f9c03424efec810e8f9b23f8e38c7f80cda",
+    "ouroboros-v05-spread": "119749ec2efe5222ef01e7df01433300987de9a18737092e413aa1a6aa8608ab",
+    "ouroboros-v06-lanchester": "1b20a417ad564a23f93a7b6414c7c17e9e5149193ad51c1cac89c86ce5b51336",
+    "ouroboros-v07-forage2": "6d560fe75e4436902d6f9389fdc9cbfc2b022758e92ec977f8753a56d70bf628",
+    "ouroboros-v08-contest": "10f5447db2f6d0e4760720ff7d81c55ab347df4c4da7898ea3ef2e17fe57e5e5",
+    "ouroboros-v09-feed": "e78d9b1b42847f794ccfb3bc5350c54a410c0352c61a61ad331dae3a2ea3e543",
+    "ouroboros-v10-beacon": "e73a2f2796422b8899732208aa7a4a4cd12afc693292923498d1557a581583f3",
+    "ouroboros-v11-opening": "b8884d5d2c4551cdba95bc9b88339ad523236b82d305c3be6e828cb2017b8ae6",
+    "ouroboros-v12-core": "e92e53094a48009aec1e2274ec50d32ca9fb3edc90b4cb05cd95f159501c2a2d",
+    "ouroboros-v13-ladder": "de4e88c73d63cb4252170de0691e786ee6f5dc54d916773ee02841700bd95bc0",
+    "porthos-x01-frozen": "90ee8a238b2f48686b18196cf76e2f7c3a3e0aefa22a0490766776d237b61ceb",
+    "porthos-x02-intentions": "139e503d62c9f8a2b71dc537eb11e06f0f42ca531d5e607597ca3004eeffd878",
+    "porthos-x03-swarm": "ffde9118c3a097a2852d4fd1a4114e4a2136bfb79c16a2ffc8ad2bdd7f08bdd7",
+    "porthos-x04-policy": "c026e3ec9622f89fc2218857972d594bda112b03384803c30d2f9070ac340d6c",
+    "porthos-x05-recon": "5be14e21b40ef47195dacd465b67ae23bd7f6dec9ff2f9274d41aae60e47e485",
+    "serre-v01-foundation": "cd7ad855009eebd65a1b0fa6b61551b6798221dcc5cf923dc68d314a5f63bf1e",
+    "sinbad-v01-core": "f97ffc5b1c95638667500c7c40d15e78448255c2500e03e092628f315ba66f03",
+    "sinbad-v02-crown": "5572ed435463cc47b457aecd53723a9d2e2cbd3dc6fbe05ae4decd7cdf2e4b54",
+    "sinbad-v03-hunt": "2123a16eff8c17b3f60f4615e5cd99aff371785b59741b75fbadb2f5a91ca93a",
+    "sinbad-v04-strike": "f32d9158d93797998334ba63ab1e2d03c4d480d83ec8ef9e81a1d652073f96a8",
+    "sinbad-v05-hunt8": "69d45ed91a8db18401d84346d9ca4f7736d62fdc25da0795d232f058e4aa22f0",
+    "sinbad-v06-arrival": "914274bd20a69c6d8bbd1dea9000cb7f993d642c13f806d31abc97c7a9c0971d",
+    "sinbad-v07-divecap": "51f295b069dda767d02ea33358f374e1db06b30a70a64e1a7eb3c9729084f42f",
+    "tew-v01-local-forager": "7a2ab2eb6c9098ba3d148452a72550cf39402346627740abd16851ba02037cbf",
+    "tew-v02-survive-forage": "4fa02af448ce60640ae6659377a171b001eac39111c8be23f15c048b364c2bbc",
+    "tew-v03-cautious-forager": "edc93e718c018e647f96784454a695d3d3122771c3f1c122d4a2b1d5a0c0738b",
+    "tew-v04-route-hunter": "37dc6ca0d73c47036fb2d3203a51fc4fc133d1cc434a78ee6c171079aa317bc6",
+    "tew-v05-early-expansion": "10626283df80965a7b488955b5fa7a353e504f167e562a4c997e5e2b72db57d8",
+    "tew-v06-safe-fallback": "20d8ecc7dc7fec2d9317a27ed303aeb6e3151f3543607bc3c353c8e7f451dde6",
+    "tew-v07-production-ladder": "de4e88c73d63cb4252170de0691e786ee6f5dc54d916773ee02841700bd95bc0",
+    "tew-v08-early-hunter": "c2af6d5676d81b5be45a45accaf7b2f255b1723df173e77153a692eecdd980fb",
+    "tew-v09-low-gate": "9f6517a1c64c0d883219f310ce2acac3c5b479712db0a4e0d2353a7287738501",
+    "tew-v10-supported-hunts": "34378c8899ee735667d195d408dcbf49435a61d8a01dce01f5275e0010d94d39",
+    "tew-v11-close-support": "6e2167cd1bb00118465b07372311ad7eed10f945d6bddd420fe9dc7bb446bf04",
+    "tew-v12-mid-support": "b0d26f801e4f91e724dd1cfe297335932de3ec53deb3bd7cc84a57425ca3c0fb",
+    "tew-v13-compact-survival": "96c12f254915b5f4a6fb944bd2703b4b6614701f5b2d3743ccbbaa09c7e8725b",
+    "tew-v14-strict-crown": "cda8a8b0c2e3faa2af8bd1856dfb412068f5e00ac49e809f2c3f636db717b2aa",
+    "tew-v15-crown-banking": "8d9fa578f565057d0ad219904a627e98939ad1b7e251f4f71cbf6d973cb35530",
+    "tew-v16-compact-crown-bank": "6b41da535345e478b68101cead16d07a587c8e3bd5eaf8ac56d65f3062c48596",
+    "tew-v17-balanced-compact-growth": "c7165879f0e74a6006b7d3ced14198ddfe2360726659d1cf51384083ee298455",
+    "tew-v18-open-trade-gate": "0158c5209c9e478015798665900601a7a2cf964e05225926bfc3d967002d947c",
+    "valjean-v01-portal-memory": "c1e76d9ab653cc341ca07cbd563ef2bf396537a21ce301f85ac1106968eaf63b",
+    "vn-x01-atkunits-1": "cf3fbb02ba95126805caeeec535621c113c15b5628fd45ee8d3a679e23f0c127",
+    "vn-x01-margin-2": "55c60d692b22a8edce18f7556669145b32bc65795b77f68b76d00a9a11647b5a",
+    "vn-x01-preymin-6": "4d909a2ca072c7dd89306c5e91e730183433c032abde0bacd8d479c25065d392",
+    "vn-x01-sat-09": "d4fed1b4e78ae0b8654d5ce984841b6313b6b1318e09b37fe3b1caef934cb433",
+    "vn-x06-info-grad1": "08109fc449812027ac0854f37d64e27360e2ea2e445cb8cdf203562dd57f867e",
+    "vn-x06-info-tf-05": "a50acdeb7322dd0e41a94731ab657008b51f2d2955a04a5ccb32a104a95e7ea4",
+    "von_neumann-x01-frozen": "c026e3ec9622f89fc2218857972d594bda112b03384803c30d2f9070ac340d6c",
+    "von_neumann-x02-mech": "135476af353a16d53fb809e514307c49707c76c55044e94bd36e40720c20e256",
+    "von_neumann-x03-balance": "62e7fc2c408c1bb83d0c735f5780fb00204b5a20bd679c7d228692fa4435f237",
+    "von_neumann-x04-support": "2d25698dc468a223b2b1dc56e0748e3274c0dd36435d922ae527128ce447c46a",
+    "von_neumann-x06-info": "02dec88738a25f93c052dd1f11bc3a31804c79d9c592323f0811f70dee9e5c0e",
+    "von_neumann-x07-quiet": "6586019df00af14792d62c38268798a003a3fd238333abcaa93701be19b0d60c",
+    "fafnir-v01-phalanx": "48b911aaef0065bce8ef767739cc35dc9d2dc41383497c7ddda4fccf78084e1d",
+    "gavroche-v01-mass-preserving-opening": "7da0db8abd1bbd7593bb3a956e3764150cf10768ddfbb89f8217db99b436366c",
+    "gavroche-v02-opening-production": "e1edda40174f8daf560b90b01243873278e15f8c88a14fa26584c68f71a8b7d3",
+    "gavroche-v03-head-preserving-opening": "9f051e3571e69c446869116f1addbf434e36c28ce6016f28c10ed1fb7b862255",
+    "gavroche-v04-mobile-mass-rescue": "3955e27335d56dc8c17ff872b365fc3349c3f119b7b88b1c8ecf3a125faffe59",
+    "gavroche-v05-map-aware-rescue": "90aaf41cc3c1a4e970e1936b1110f9c6af3a7216e7262e1c0f0e225f785f26c8",
+    "gavroche-v06-first-move-rescue": "98f5215e020fb3e701129b9ff36781d9412d739badfb44bb26438797ba9dcccf",
+    "gavroche-v07-paced-rescue": "0c336ae492774f4149c583cb16a956dbb4ef7e39ae9ee5b352568018470597f7",
+    "gavroche-v08-map-aware-opening": "ac8532acb26b95fb6041cb8608c27ac7f2292a6328716e1122012e58a3b58d3c",
+    "gavroche-v09-two-stage-rescue": "7b21867a9f4207ae71c06bea9b2172f26cc543d21cd397eb5464e0d7df8e7802",
+    "gavroche-v10-balanced-rescue": "4787f4c084ff5343a5162c46a95029d968e83827d8b23bb9abc650720ef551cb",
+    "gavroche-v11-tail-mass-rescue": "0ce390b7920c9365f06e75c716d88efef50c9623642c728d4a479b80aa0cb26c",
+    "gavroche-v12-balanced-opening": "4787f4c084ff5343a5162c46a95029d968e83827d8b23bb9abc650720ef551cb",
+    "gavroche-v13-tail-paced-rescue": "7b21867a9f4207ae71c06bea9b2172f26cc543d21cd397eb5464e0d7df8e7802",
+    "gavroche-v14-four-segment-head": "9aa9b3cb57cad235ac3eea5e34dfb1af0382d25d672dd03f827fa4b43fc36237",
+    "gavroche-v15-divecap": "81a08295440718bc8f68008e4066bd2b2d0d9046bc4fc7f8964916c0b66771eb",
+    "gavroche-v16-informed-divecap": "8486e4a1a3656fd45ec3c62c8394af02a5147c016814634e226ef3546aa6a662",
+    "gavroche-v17-half-gradient": "1e80583493d0ef8c3f90928341039e124d7395d161560bfc402cafbec1517e3c",
+    "gavroche-v18-fused-room-flood": "1d2ece8b3d55bed2c1d8055eb81b9911b01e34ada1b3caf99dd672b5fb0b9dba",
+    "gavroche-v19-spatial-density": "ed197c1355bfbf99b7f8fde4a0fda1f2309f42016c986c293b904527bc145825",
+    "gavroche-v20-bounded-feeding": "88d1ca696c5eb8fb5d47f1d9790f0bda87799aa0bbfdbfdf8eaa3acbe1cae7a0",
+    "gavroche-v21-short-sprint-cap": "3a7554d16970951de44ff0052009ff78bd2cdcb424739650eb16ec26771d4677",
+    "gavroche-v22-bounded-feeding": "e9144f4567f52d9658fb65037bc0bbe7d1c55beb85daf302c41945d01e9f8ff8",
+    "gavroche-v23-selective-sprint-cap": "7186b2e698795c508fbcacb3185407347d519352d676b93f963de23b0e87cc3b",
+    "gavroche-v24-selective-feed": "1dc867627b84128667810510bf71aa303f56b35c06c0d9f55fd84095ed751e62",
+    "gavroche-v25-crown-margin-one": "766b7e89ff4a8383bb62d4355384db08f157930ed8395097d5f3efab0b70ba3c",
+    "gavroche-v26-sprint-cap10": "5f534a0487f9254d7688239617debca1c7e03a1e26cb991e6b04797cf6218937",
+    "gavroche-v27-sprint-cap9": "4948123ddf4da05c1ef6f2edd6941a920215c99c1f213657e90f9acf65fde9ec",
+    "gavroche-v28-gradient-window-sprint-cap": "0824d05845eae69fa77c33392efd8e05b25846fa97f30d58d94812256b9455c5",
+    "gavroche-v29-saturation-window-sprint-cap": "634ff6a7d5f69439c3506600663f16096899ec497611b9c37ba05b1522a54050",
+    "gavroche-v30-saturated-sprint-cap": "2e31f9dcef987b0980f87123a3767c14207cd677250339de638130dfc007a120",
+    "gavroche-v31-saturated-divecap": "60ceab8fac02ac2e56a46701f25456670fa2b774898ec270a07bbb2c4fdc1a59",
+    "gavroche-v32-supported-divecap": "87f96eeb67783a15651894f30f57095c0f29ba519b08b28804c9739bb8f4b3e6",
+    "godel-x27-gm3hi": "26df5e61566468f3d5359a787e35e13c607891f0e0e248f983ea83cd7e34199d",
+    "godel-x28-gm3lo": "2db78130fa696f8059d705c17d3f696d75da686651b6a3644ec0b19f98d2f0d1",
+    "godel-x29-hi10": "5e861480ed7113ba6ae171d020655877a4279567f183a4e61c193871ac1a9dbd",
+    "godel-x30-hi25": "a884b30925bec08ecaca53ebc9890c440833ad3315bb7855be951ebc36cc851a",
+    "godel-x31-rad3": "ad7269ab837bb0e69792758e4dee233fa69befe4e835ddc83ba59890c8b043fe",
+    "godel-x32-ema2": "ed90367d9efd50035c1c5154ca7996880ca0aa031f57d38fb2a548ce0458dbd9",
+    "godel-x33-bias35": "d1294be2d48df1f749cd9ba767d6d3dd1a3679f4e144cbed00706a1c6932bff8",
+    "serre-v02-doctrine": "9a8e9015b0378cf488930850268de291a7f476770b72e3ca97395a2309802b44"
+  },
+  "map_hashes": {
+    "Colosseum": "c7549a41ea26600f613a7d906e5c73e90303f3bc037b28d8aa2751cd17819772",
+    "arena": "b4bab09603289c2d186ca94d6cf5362e5cc8f24637736c497d9651c0dd921937",
+    "autarky": "35737755c5a3123fcd4c3fd1cf1ecb08513adf9ac14c351f00f76c23e9bd6dbd",
+    "big_empty": "6cb3b7be72a4e27ed19363e9009d46742851709f701e61d73b56437314fdd827",
+    "default": "6bd7abf2ed51a7f667552c243ad038f4177e450cf2f9dd9be52f826f9e526f95",
+    "default_small": "8ac4b2eedcf19f8544ab1866acfcbc628b3cb5ff2df87d80aa682dcb5aa9df19",
+    "devil": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+    "dilemma": "d76d7ad9ada3a8d089b52f4a973e7e9acf7ae4b7f695e9f018caf6ae75bdb109",
+    "queen_of_spades": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+    "schooltime": "726c404f3b34b4ed7b21cef83628407e70b717cd919f114e4a0e57f7f6d66520",
+    "stronghold": "02455e481fe56e1e4ceebcb971e977d4e238e9d4fa95a6beb0dbaaae1988e395",
+    "trauma": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+    "trophy": "5f1f6b23d6edb944954a9a31b95f229fd9966bec0875a9f04bca680aa3de33f5"
+  }
+}

@@ -1,0 +1,2964 @@
+{
+  "created_utc": "2026-09-27T00:02:35.690154+00:00",
+  "fixture_manifest": "../../experiment_data/map_coverage_20260927_091715/match_manifest.json",
+  "game_weights": "training_game_weights.csv",
+  "map_weights": "training_map_weights.csv",
+  "maps": [
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/md26_commons_shared_s0.map",
+      "confidence": 0.93,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "centralized_income",
+        "renewable_contest"
+      ],
+      "dataset_split_group": "resource_geography_timing",
+      "default_training_map_weight": 0.03206896551724138,
+      "design_caveat": "Central control and exit congestion can favor particular approaches.",
+      "design_purpose": "Shared commons; prior map card and full evidence retained in the preceding batch.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.03206896551724138,
+      "family_id": "md26_commons",
+      "family_selected_count": 2,
+      "features": {
+        "area": 480,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.2,
+        "bed_density": 0.11667,
+        "bed_distance_mean": {
+          "A": 10.071,
+          "B": 10.071
+        },
+        "beds": 56,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 48,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          480
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.01667,
+        "gap_histogram": {
+          "20:40": 8,
+          "4:12": 48
+        },
+        "height": 20,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 604.61,
+          "50": 290.7,
+          "500": 3111.13
+        },
+        "opposing_head_distances": [
+          28,
+          17,
+          17,
+          28
+        ],
+        "opposing_head_min": 17,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 16,
+        "wall_edges": 58,
+        "wall_fraction": 0.06042,
+        "width": 24
+      },
+      "gameplay_evidence_level": "six_game_panel_reused",
+      "generator_seed": null,
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": false,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "md26_commons_shared_s0",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 6,
+        "games": 6,
+        "median_combined_bed_harvest": 255.5,
+        "median_combined_splits": 147.5,
+        "new_games": 0,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 6,
+        "round_range": [
+          79,
+          315
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "valjean-v01-portal-memory",
+            "side": "A"
+          }
+        ]
+      },
+      "origin": "previously_generated",
+      "path": "md26_commons_shared_s0.map",
+      "plausibility": 0.93,
+      "plausibility_assessment_had_prior_gameplay": true,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "Matched supply with the spread sibling produces a readable renewable contest and many successful splits; actual income and overlap recur on the second layout. Early-contact acceleration is not stable across layouts, so that hypothesis is NOT promoted. A Valjean side sweep and orientation sensitivity remain caveats.",
+      "previous_confidence": 0.845,
+      "previous_disposition": "accepted",
+      "previous_games": 6,
+      "score_rationale": "Readable shared supply with broad gates and fallback food; a conservative extension of renewable reference maps.",
+      "semantic_sha256": "a0dd97c55d311c4ae066f5aa2147de572d2476dfafc701b7794adf0efa435a91",
+      "sha256": "ab0b7775eda3bf0ea5d3fbf836e68045826874b46e6082362010b7a8d1c8c6c4",
+      "source_path": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/map_discovery_20260927_083913/maps/md26_commons_shared_s0.map",
+      "source_sha256": "ab0b7775eda3bf0ea5d3fbf836e68045826874b46e6082362010b7a8d1c8c6c4",
+      "split_group": "resource_geography_timing",
+      "title": "Shared commons",
+      "ungrouped_map_weight": 0.053975623911781775
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/md26_commons_spread_s0.map",
+      "confidence": 0.93,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "distributed_income",
+        "conversion"
+      ],
+      "dataset_split_group": "resource_geography_timing",
+      "default_training_map_weight": 0.03206896551724138,
+      "design_caveat": "Distributed harvesting need not lead to reliable late crown conversion.",
+      "design_purpose": "Spread commons; prior map card and full evidence retained in the preceding batch.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.03206896551724138,
+      "family_id": "md26_commons",
+      "family_selected_count": 2,
+      "features": {
+        "area": 480,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.2,
+        "bed_density": 0.11667,
+        "bed_distance_mean": {
+          "A": 10.071,
+          "B": 10.071
+        },
+        "beds": 56,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 48,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          480
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.01667,
+        "gap_histogram": {
+          "20:40": 8,
+          "4:12": 48
+        },
+        "height": 20,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 604.61,
+          "50": 290.7,
+          "500": 3111.13
+        },
+        "opposing_head_distances": [
+          28,
+          17,
+          17,
+          28
+        ],
+        "opposing_head_min": 17,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 0,
+        "wall_edges": 58,
+        "wall_fraction": 0.06042,
+        "width": 24
+      },
+      "gameplay_evidence_level": "six_game_panel_reused",
+      "generator_seed": null,
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": false,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "md26_commons_spread_s0",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 5,
+        "games": 6,
+        "median_combined_bed_harvest": 996.5,
+        "median_combined_splits": 612.0,
+        "new_games": 0,
+        "no_action_deaths": 14,
+        "portal_crossings": 0,
+        "reused_games": 6,
+        "round_range": [
+          385,
+          500
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "valjean-v01-portal-memory",
+            "side": "A"
+          },
+          {
+            "opponent": "von_neumann-x06-info",
+            "side": "A"
+          }
+        ]
+      },
+      "origin": "previously_generated",
+      "path": "md26_commons_spread_s0.map",
+      "plausibility": 0.93,
+      "plausibility_assessment_had_prior_gameplay": true,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "Matched supply and shore with the shared sibling produce sustained local income, much longer games and meaningful late positions in both layouts. Two primary side-swapped pairs favor A; the second layout and reflection do not reproduce a universal side advantage. Retain with limited fairness evidence and exclude flagged no-action games from training.",
+      "previous_confidence": 0.845,
+      "previous_disposition": "accepted",
+      "previous_games": 6,
+      "score_rationale": "The same resource schedule is spread into multiple viable farming areas, giving a clear distribution contrast.",
+      "semantic_sha256": "a76a337ec6fcf428565e97e0a55ee14f206a2019729544e65aefc9666de4bbdc",
+      "sha256": "728b948e68bb569ecb26dd667b1da981b7b5be42a01ef1e70900a04437f45aa4",
+      "source_path": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/map_discovery_20260927_083913/maps/md26_commons_spread_s0.map",
+      "source_sha256": "728b948e68bb569ecb26dd667b1da981b7b5be42a01ef1e70900a04437f45aa4",
+      "split_group": "resource_geography_timing",
+      "title": "Spread commons",
+      "ungrouped_map_weight": 0.053975623911781775
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/md26_causeway_detour_s0.map",
+      "confidence": 0.9,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "overland_detours",
+        "gate_choice"
+      ],
+      "dataset_split_group": "portal_shortcuts_and_dividers",
+      "default_training_map_weight": 0.03103448275862069,
+      "design_caveat": "Prior side and orientation sensitivity remains unresolved.",
+      "design_purpose": "Overland causeway; prior map card and full evidence retained in the preceding batch.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.03103448275862069,
+      "family_id": "md26_causeway",
+      "family_selected_count": 2,
+      "features": {
+        "area": 768,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.3333,
+        "bed_density": 0.05469,
+        "bed_distance_mean": {
+          "A": 21.714,
+          "B": 21.714
+        },
+        "beds": 42,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 42,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          768
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.00521,
+        "gap_histogram": {
+          "10:30": 24,
+          "3:11": 18
+        },
+        "height": 24,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 360.36,
+          "50": 171.8,
+          "500": 1868.92
+        },
+        "opposing_head_distances": [
+          48,
+          33,
+          33,
+          40
+        ],
+        "opposing_head_min": 33,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 14,
+        "wall_edges": 94,
+        "wall_fraction": 0.0612,
+        "width": 32
+      },
+      "gameplay_evidence_level": "six_game_panel_reused",
+      "generator_seed": null,
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": false,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "md26_causeway_detour_s0",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 6,
+        "games": 6,
+        "median_combined_bed_harvest": 252.5,
+        "median_combined_splits": 129.0,
+        "new_games": 0,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 6,
+        "round_range": [
+          153,
+          282
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "ouroboros-v13-ladder",
+            "side": "A"
+          },
+          {
+            "opponent": "valjean-v01-portal-memory",
+            "side": "A"
+          },
+          {
+            "opponent": "von_neumann-x06-info",
+            "side": "A"
+          }
+        ]
+      },
+      "origin": "previously_generated",
+      "path": "md26_causeway_detour_s0.map",
+      "plausibility": 0.9,
+      "plausibility_assessment_had_prior_gameplay": true,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "Quarantined matched control: A wins all six direct games across three side-swapped opponent pairs, while its second layout and horizontal reflection favor B. This triggers the frozen practical bias warning. Keep for diagnosing initiative/geometry sensitivity; no default training weight.",
+      "previous_confidence": 0.74,
+      "previous_disposition": "quarantined_control",
+      "previous_games": 6,
+      "score_rationale": "A coherent divider and several overland passages create meaningful route choices.",
+      "semantic_sha256": "7516c06b77599bf2cb607ea516019923b5d983451eeaf5007a9a6db6a7361482",
+      "sha256": "b456bc59c49b6da25e4d63f5ccd18f114c7b0213941125dc7e19a284cbf7e397",
+      "source_path": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/map_discovery_20260927_083913/quarantine/md26_causeway_detour_s0.map",
+      "source_sha256": "b456bc59c49b6da25e4d63f5ccd18f114c7b0213941125dc7e19a284cbf7e397",
+      "split_group": "portal_shortcuts_and_dividers",
+      "title": "Overland causeway",
+      "ungrouped_map_weight": 0.0522344747533372
+    },
+    {
+      "balance_status": "not_certified",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/md26_causeway_portal_s0.map",
+      "confidence": 0.92,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "optional_shortcuts",
+        "exit_risk"
+      ],
+      "dataset_split_group": "portal_shortcuts_and_dividers",
+      "default_training_map_weight": 0.031724137931034485,
+      "design_caveat": "Shortcut benefit is established structurally; safe commitment remains policy dependent.",
+      "design_purpose": "Portal causeway; prior map card and full evidence retained in the preceding batch.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.031724137931034485,
+      "family_id": "md26_causeway",
+      "family_selected_count": 2,
+      "features": {
+        "area": 768,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.3333,
+        "bed_density": 0.05469,
+        "bed_distance_mean": {
+          "A": 10.19,
+          "B": 10.19
+        },
+        "beds": 42,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 42,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          768
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.00521,
+        "gap_histogram": {
+          "10:30": 24,
+          "3:11": 18
+        },
+        "height": 24,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 11.524,
+          "B": 11.524
+        },
+        "nominal_attempts": {
+          "100": 360.36,
+          "50": 171.8,
+          "500": 1868.92
+        },
+        "opposing_head_distances": [
+          12,
+          23,
+          23,
+          36
+        ],
+        "opposing_head_min": 12,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 2,
+        "shared_beds_within_2_steps": 6,
+        "wall_edges": 94,
+        "wall_fraction": 0.0612,
+        "width": 32
+      },
+      "gameplay_evidence_level": "six_game_panel_reused",
+      "generator_seed": null,
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": false,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "md26_causeway_portal_s0",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 6,
+        "games": 6,
+        "median_combined_bed_harvest": 408.0,
+        "median_combined_splits": 246.5,
+        "new_games": 0,
+        "no_action_deaths": 0,
+        "portal_crossings": 394,
+        "reused_games": 6,
+        "round_range": [
+          179,
+          500
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": []
+      },
+      "origin": "previously_generated",
+      "path": "md26_causeway_portal_s0.map",
+      "plausibility": 0.92,
+      "plausibility_assessment_had_prior_gameplay": true,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "All portal pairs carry real traffic; the shortcut saves 11.524 mean terrain steps from initial heads to beds and ordinary alternatives remain. Each direct opponent beats Fafnir on both sides, including the held-back policy; the same screening winners recur on the second layout and reflection. This supports comparable opportunity, not a 50:50 target or proof of portal-memory activation.",
+      "previous_confidence": 0.85,
+      "previous_disposition": "accepted",
+      "previous_games": 6,
+      "score_rationale": "Useful paired shortcuts coexist with ordinary routes and food on both sides.",
+      "semantic_sha256": "fe62251cf29ca8fc2500b8d0b5b8f7c52e6285b2fecdcea4bd5339f14cd1ab1e",
+      "sha256": "00e7e652f5602503e3cbbdcdcbb94e76a4ef091e48b6fc125c673ea82ac8c4b2",
+      "source_path": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/map_discovery_20260927_083913/maps/md26_causeway_portal_s0.map",
+      "source_sha256": "00e7e652f5602503e3cbbdcdcbb94e76a4ef091e48b6fc125c673ea82ac8c4b2",
+      "split_group": "portal_shortcuts_and_dividers",
+      "title": "Portal causeway",
+      "ungrouped_map_weight": 0.05339524085896692
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/md26_orchard_narrow_s0.map",
+      "confidence": 0.88,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "productive_rooms",
+        "narrow_exits"
+      ],
+      "dataset_split_group": "productive_rooms_and_deployment",
+      "default_training_map_weight": 0.030344827586206897,
+      "design_caveat": "One-cell exits can congest; prior side sensitivity lowers confidence in balance, not design coherence.",
+      "design_purpose": "Narrow orchard; prior map card and full evidence retained in the preceding batch.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.030344827586206897,
+      "family_id": "md26_orchard",
+      "family_selected_count": 2,
+      "features": {
+        "area": 720,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.25,
+        "bed_density": 0.08056,
+        "bed_distance_mean": {
+          "A": 16.948,
+          "B": 16.948
+        },
+        "beds": 58,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 50,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          720
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.01667,
+        "gap_histogram": {
+          "12:36": 8,
+          "4:16": 50
+        },
+        "height": 24,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 510.87,
+          "50": 244.09,
+          "500": 2644.19
+        },
+        "opposing_head_distances": [
+          38,
+          27,
+          27,
+          38
+        ],
+        "opposing_head_min": 27,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 4,
+        "wall_edges": 106,
+        "wall_fraction": 0.07361,
+        "width": 30
+      },
+      "gameplay_evidence_level": "six_game_panel_reused",
+      "generator_seed": null,
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": false,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "md26_orchard_narrow_s0",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 5,
+        "games": 6,
+        "median_combined_bed_harvest": 827.0,
+        "median_combined_splits": 502.5,
+        "new_games": 0,
+        "no_action_deaths": 24,
+        "portal_crossings": 0,
+        "reused_games": 6,
+        "round_range": [
+          426,
+          500
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "valjean-v01-portal-memory",
+            "side": "A"
+          }
+        ]
+      },
+      "origin": "previously_generated",
+      "path": "md26_orchard_narrow_s0.map",
+      "plausibility": 0.88,
+      "plausibility_assessment_had_prior_gameplay": true,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "Productive rooms and repeated entrance/exit traffic are confirmed on both layouts. Fairness/robustness remains below the 4/5 inclusion requirement: strong side sweeps recur in sibling/reflection controls. The reflected pair spans 107 and 500 rounds and the narrow second layout is an A sweep. Retain as a provisional diagnostic control, not accepted training material.",
+      "previous_confidence": 0.825,
+      "previous_disposition": "quarantined_control",
+      "previous_games": 6,
+      "score_rationale": "Productive rooms each have two distinct exits and an open exterior.",
+      "semantic_sha256": "5997ae8b8bb03c60cfa337149857c80c2f0a0486e514f195754209b30c2e0238",
+      "sha256": "3284b8537f1ccea05b7d6bf1e7033ae1bb7a358856ae017a8be4909495f6f6d1",
+      "source_path": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/map_discovery_20260927_083913/quarantine/md26_orchard_narrow_s0.map",
+      "source_sha256": "3284b8537f1ccea05b7d6bf1e7033ae1bb7a358856ae017a8be4909495f6f6d1",
+      "split_group": "productive_rooms_and_deployment",
+      "title": "Narrow orchard",
+      "ungrouped_map_weight": 0.05107370864770749
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/md26_orchard_wide_s0.map",
+      "confidence": 0.9,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "productive_rooms",
+        "wide_exits"
+      ],
+      "dataset_split_group": "productive_rooms_and_deployment",
+      "default_training_map_weight": 0.03103448275862069,
+      "design_caveat": "The old orientation and side results do not establish fair outcomes.",
+      "design_purpose": "Wide orchard; prior map card and full evidence retained in the preceding batch.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.03103448275862069,
+      "family_id": "md26_orchard",
+      "family_selected_count": 2,
+      "features": {
+        "area": 720,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.25,
+        "bed_density": 0.08056,
+        "bed_distance_mean": {
+          "A": 16.259,
+          "B": 16.259
+        },
+        "beds": 58,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 50,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          720
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.01667,
+        "gap_histogram": {
+          "12:36": 8,
+          "4:16": 50
+        },
+        "height": 24,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 510.87,
+          "50": 244.09,
+          "500": 2644.19
+        },
+        "opposing_head_distances": [
+          38,
+          27,
+          27,
+          38
+        ],
+        "opposing_head_min": 27,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 4,
+        "wall_edges": 98,
+        "wall_fraction": 0.06806,
+        "width": 30
+      },
+      "gameplay_evidence_level": "six_game_panel_reused",
+      "generator_seed": null,
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": false,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "md26_orchard_wide_s0",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 5,
+        "games": 6,
+        "median_combined_bed_harvest": 863.5,
+        "median_combined_splits": 514.0,
+        "new_games": 0,
+        "no_action_deaths": 26,
+        "portal_crossings": 0,
+        "reused_games": 6,
+        "round_range": [
+          429,
+          500
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "ouroboros-v13-ladder",
+            "side": "A"
+          },
+          {
+            "opponent": "valjean-v01-portal-memory",
+            "side": "A"
+          }
+        ]
+      },
+      "origin": "previously_generated",
+      "path": "md26_orchard_wide_s0.map",
+      "plausibility": 0.9,
+      "plausibility_assessment_had_prior_gameplay": true,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "Productive rooms and repeated entrance/exit traffic are confirmed on both layouts. Fairness/robustness remains below the 4/5 inclusion requirement: strong side sweeps recur in sibling/reflection controls. One reflected game eliminates a side at round 33, versus 429\u2013500 rounds on the primary. This is not an initial forced death, but the large sensitivity needs explanation. Retain as a provisional diagnostic control, not accepted training material.",
+      "previous_confidence": 0.825,
+      "previous_disposition": "quarantined_control",
+      "previous_games": 6,
+      "score_rationale": "Wider room exits give readable escape and split space with the same productive footprint.",
+      "semantic_sha256": "367ec24d9c56aca165812dd1ac6cd09375bc1eadb6f0cc2512b1857eebc3f997",
+      "sha256": "0d3570a2c9dc2b70c0cd282bb4ae1f669fa9c9fb7d535687ce72285d62ed693b",
+      "source_path": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/map_discovery_20260927_083913/quarantine/md26_orchard_wide_s0.map",
+      "source_sha256": "0d3570a2c9dc2b70c0cd282bb4ae1f669fa9c9fb7d535687ce72285d62ed693b",
+      "split_group": "productive_rooms_and_deployment",
+      "title": "Wide orchard",
+      "ungrouped_map_weight": 0.0522344747533372
+    },
+    {
+      "balance_status": "not_certified",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/md26_promenade_ring_s0.map",
+      "confidence": 0.87,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "ring_routes",
+        "inner_outer_supply"
+      ],
+      "dataset_split_group": "loops_and_detours",
+      "default_training_map_weight": 0.06,
+      "design_caveat": "This extends familiar ring geometry; its training value is not independently established.",
+      "design_purpose": "Structurally and visually vetted distinct ring grammar. No competitive games or outcomes read. Play behavior unverified.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.06,
+      "family_id": "md26_promenade",
+      "family_selected_count": 1,
+      "features": {
+        "area": 952,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.2143,
+        "bed_density": 0.05252,
+        "bed_distance_mean": {
+          "A": 19.3,
+          "B": 19.3
+        },
+        "beds": 50,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 50,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          952
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.0084,
+        "gap_histogram": {
+          "4:16": 8,
+          "8:24": 42
+        },
+        "height": 28,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 321.75,
+          "50": 150.31,
+          "500": 1691.74
+        },
+        "opposing_head_distances": [
+          46,
+          27,
+          27,
+          46
+        ],
+        "opposing_head_min": 27,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 10,
+        "wall_edges": 110,
+        "wall_fraction": 0.05777,
+        "width": 34
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": null,
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": false,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "md26_promenade_ring_s0",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 466.5,
+        "median_combined_splits": 249.5,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          303,
+          345
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": []
+      },
+      "origin": "previously_generated",
+      "path": "md26_promenade_ring_s0.map",
+      "plausibility": 0.87,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "Structurally and visually vetted distinct ring grammar. No competitive games or outcomes read. Play behavior unverified.",
+      "previous_confidence": 0.45,
+      "previous_disposition": "untouched_reserve",
+      "previous_games": 0,
+      "score_rationale": "Four openings connect an inner market with an outside route and distributed supply.",
+      "semantic_sha256": "0e943cb650da5a14b35db0c5c7559af72362430ea3b15e42b9717d97b3b3e4e2",
+      "sha256": "847a085fc3c58c7b13f5f5c6426071ccbedfd55ec331e6c62f8dae3946da33ff",
+      "source_path": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/map_discovery_20260927_083913/reserve/md26_promenade_ring_s0.map",
+      "source_sha256": "847a085fc3c58c7b13f5f5c6426071ccbedfd55ec331e6c62f8dae3946da33ff",
+      "split_group": "loops_and_detours",
+      "title": "Ring promenade",
+      "ungrouped_map_weight": 0.05049332559489263
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_archipelago.map",
+      "confidence": 0.84,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "reef_detours",
+        "distributed_income",
+        "intentional_inaccessible_terrain"
+      ],
+      "dataset_split_group": "open_navigation",
+      "default_training_map_weight": 0.05793103448275862,
+      "design_caveat": "Sealed interiors are intentional empty terrain; they must not be mistaken for missing rewards.",
+      "design_purpose": "Route around four deliberate sealed reefs to reach several harbors; interiors contain neither resources nor spawns.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.05793103448275862,
+      "family_id": "mc26_archipelago",
+      "family_selected_count": 1,
+      "features": {
+        "area": 1008,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.2857,
+        "bed_density": 0.05952,
+        "bed_distance_mean": {
+          "A": 19.933,
+          "B": 19.933
+        },
+        "beds": 60,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 60,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          938,
+          20,
+          20,
+          15,
+          15
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.01984,
+        "gap_histogram": {
+          "10:30": 24,
+          "4:16": 12,
+          "6:22": 24
+        },
+        "height": 28,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 386.91,
+          "50": 181.15,
+          "500": 2032.61
+        },
+        "opposing_head_distances": [
+          48,
+          29,
+          29,
+          48
+        ],
+        "opposing_head_min": 29,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 12,
+        "wall_edges": 132,
+        "wall_fraction": 0.06548,
+        "width": 36
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          8,
+          20
+        ],
+        [
+          8,
+          21
+        ],
+        [
+          8,
+          22
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          9,
+          11
+        ],
+        [
+          9,
+          20
+        ],
+        [
+          9,
+          21
+        ],
+        [
+          9,
+          22
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          10,
+          20
+        ],
+        [
+          10,
+          21
+        ],
+        [
+          10,
+          22
+        ],
+        [
+          11,
+          8
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          11,
+          20
+        ],
+        [
+          11,
+          21
+        ],
+        [
+          11,
+          22
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          9
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          12,
+          11
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          12,
+          21
+        ],
+        [
+          12,
+          22
+        ],
+        [
+          23,
+          5
+        ],
+        [
+          23,
+          6
+        ],
+        [
+          23,
+          7
+        ],
+        [
+          23,
+          16
+        ],
+        [
+          23,
+          17
+        ],
+        [
+          23,
+          18
+        ],
+        [
+          23,
+          19
+        ],
+        [
+          24,
+          5
+        ],
+        [
+          24,
+          6
+        ],
+        [
+          24,
+          7
+        ],
+        [
+          24,
+          16
+        ],
+        [
+          24,
+          17
+        ],
+        [
+          24,
+          18
+        ],
+        [
+          24,
+          19
+        ],
+        [
+          25,
+          5
+        ],
+        [
+          25,
+          6
+        ],
+        [
+          25,
+          7
+        ],
+        [
+          25,
+          16
+        ],
+        [
+          25,
+          17
+        ],
+        [
+          25,
+          18
+        ],
+        [
+          25,
+          19
+        ],
+        [
+          26,
+          5
+        ],
+        [
+          26,
+          6
+        ],
+        [
+          26,
+          7
+        ],
+        [
+          26,
+          16
+        ],
+        [
+          26,
+          17
+        ],
+        [
+          26,
+          18
+        ],
+        [
+          26,
+          19
+        ],
+        [
+          27,
+          5
+        ],
+        [
+          27,
+          6
+        ],
+        [
+          27,
+          7
+        ],
+        [
+          27,
+          16
+        ],
+        [
+          27,
+          17
+        ],
+        [
+          27,
+          18
+        ],
+        [
+          27,
+          19
+        ]
+      ],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_archipelago",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 390.5,
+        "median_combined_splits": 179.5,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          183,
+          294
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "valjean-v01-portal-memory",
+            "side": "A"
+          }
+        ]
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_archipelago.map",
+      "plausibility": 0.84,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "Four sealed reefs create understandable detours between accessible harbor resources.",
+      "semantic_sha256": "92ba2242c2f838c068b449a8df01ebbe8e5a8baaafbe89678552d91d585370ad",
+      "sha256": "b73c5a110ff7a69acd8c96e68107ba187280bdd2431fbc09d0a86fd4e4efe2a3",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "open_navigation",
+      "title": "Reef archipelago",
+      "ungrouped_map_weight": 0.04875217643644805
+    },
+    {
+      "balance_status": "not_certified",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_crossroads.map",
+      "confidence": 0.89,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "multi_room",
+        "hub_control",
+        "flanking"
+      ],
+      "dataset_split_group": "productive_rooms_and_deployment",
+      "default_training_map_weight": 0.06137931034482759,
+      "design_caveat": "Several rooms share one visual grammar, so this is related to the orchard family.",
+      "design_purpose": "Four porous resource districts connect through a broad cross-shaped junction and an outer route.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.06137931034482759,
+      "family_id": "mc26_crossroads",
+      "family_selected_count": 1,
+      "features": {
+        "area": 1024,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.0,
+        "bed_density": 0.04688,
+        "bed_distance_mean": {
+          "A": 21.833,
+          "B": 21.833
+        },
+        "beds": 48,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 48,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          1024
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.01953,
+        "gap_histogram": {
+          "3:15": 12,
+          "6:24": 36
+        },
+        "height": 32,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 354.64,
+          "50": 167.91,
+          "500": 1847.97
+        },
+        "opposing_head_distances": [
+          48,
+          25,
+          25,
+          48
+        ],
+        "opposing_head_min": 25,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 6,
+        "wall_edges": 168,
+        "wall_fraction": 0.08203,
+        "width": 32
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_crossroads",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 262.0,
+        "median_combined_splits": 126.5,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          109,
+          309
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": []
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_crossroads.map",
+      "plausibility": 0.89,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "Porous districts, a central junction and an outer route offer contest, retreat and flanking.",
+      "semantic_sha256": "9338afb6dd0e20df7deb7fda581046d092b06596b38f189bb1a8f2c33c49a336",
+      "sha256": "b394dc8a52bf51c8430ebb4062630532bbe7899f6747806c0f9241664e7d0c1f",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "productive_rooms_and_deployment",
+      "title": "Four-district crossroads",
+      "ungrouped_map_weight": 0.05165409170052235
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_pinwheel.map",
+      "confidence": 0.85,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "bent_routes",
+        "pockets",
+        "multi_route"
+      ],
+      "dataset_split_group": "loops_and_detours",
+      "default_training_map_weight": 0.05862068965517241,
+      "design_caveat": "Long bodies can still congest the turns; the first closed-basin draft was repaired before play.",
+      "design_purpose": "Two mirrored bent walls create longer sheltered approaches and a contested inner turn without a closed trap.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.05862068965517241,
+      "family_id": "mc26_pinwheel",
+      "family_selected_count": 1,
+      "features": {
+        "area": 1020,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.1333,
+        "bed_density": 0.05294,
+        "bed_distance_mean": {
+          "A": 21.056,
+          "B": 21.056
+        },
+        "beds": 54,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 54,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          1020
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.01373,
+        "gap_histogram": {
+          "10:30": 12,
+          "4:20": 18,
+          "8:24": 24
+        },
+        "height": 30,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 337.98,
+          "50": 157.87,
+          "500": 1777.98
+        },
+        "opposing_head_distances": [
+          48,
+          27,
+          27,
+          48
+        ],
+        "opposing_head_min": 27,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 12,
+        "wall_edges": 120,
+        "wall_fraction": 0.05882,
+        "width": 34
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_pinwheel",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 302.5,
+        "median_combined_splits": 151.0,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          198,
+          237
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "valjean-v01-portal-memory",
+            "side": "A"
+          }
+        ]
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_pinwheel.map",
+      "plausibility": 0.85,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "Bent shelves, broad openings and interior food support sheltered and direct approaches.",
+      "semantic_sha256": "670061c13ca48a9da539320047cf65354e37dcb776873c24939614768ba679af",
+      "sha256": "0853b27480020bbeafb4b7104fbd02e8646ad44cf947fad39fbefcfa41bf7551",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "loops_and_detours",
+      "title": "Winding shelves",
+      "ungrouped_map_weight": 0.04933255948926291
+    },
+    {
+      "balance_status": "not_certified",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_equatorial_belt.map",
+      "confidence": 0.85,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "toroidal",
+        "continuous_resource_band",
+        "gate_choice"
+      ],
+      "dataset_split_group": "wrapped_contact",
+      "default_training_map_weight": 0.05862068965517241,
+      "design_caveat": "A repeated band is more stylized than natural basins; wrapping is not itself strategic novelty.",
+      "design_purpose": "A renewable belt wraps across the horizontal seam, with staggered openings from the outer water.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.05862068965517241,
+      "family_id": "mc26_equatorial_belt",
+      "family_selected_count": 1,
+      "features": {
+        "area": 800,
+        "articulation_tiles": 0,
+        "aspect_ratio": 2.0,
+        "bed_density": 0.215,
+        "bed_distance_mean": {
+          "A": 14.198,
+          "B": 14.198
+        },
+        "beds": 172,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 160,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          800
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.0,
+        "gap_histogram": {
+          "20:60": 12,
+          "8:24": 160
+        },
+        "height": 20,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 957.21,
+          "50": 441.36,
+          "500": 5077.18
+        },
+        "opposing_head_distances": [
+          16,
+          7,
+          7,
+          16
+        ],
+        "opposing_head_min": 7,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 20,
+        "wall_edges": 56,
+        "wall_fraction": 0.035,
+        "width": 40
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_equatorial_belt",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 656.0,
+        "median_combined_splits": 283.5,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          83,
+          245
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": []
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_equatorial_belt.map",
+      "plausibility": 0.85,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "A continuous food belt and staggered gates make both wrapping and access choice purposeful.",
+      "semantic_sha256": "bf0bfae6a696c5a88171913ee89b94046cdf069b6143be3c2205604e59660233",
+      "sha256": "76e7c9ffd6502bd2b3f38091d303f656d2ba06fb774d15c3c6ea1d1f4865f3f9",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "wrapped_contact",
+      "title": "Wrapped resource belt",
+      "ungrouped_map_weight": 0.04933255948926291
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_seam_market.map",
+      "confidence": 0.88,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "cylinder",
+        "large_area_short_contact",
+        "boundary_supply"
+      ],
+      "dataset_split_group": "wrapped_contact",
+      "default_training_map_weight": 0.060689655172413794,
+      "design_caveat": "Boundary awareness may dominate weak navigation policies; the visual center is misleading by design.",
+      "design_purpose": "On a wide horizontal cylinder, meaningful food and contact lie across the wrap seam rather than the visual centre.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.060689655172413794,
+      "family_id": "mc26_seam_market",
+      "family_selected_count": 1,
+      "features": {
+        "area": 1056,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.8333,
+        "bed_density": 0.05114,
+        "bed_distance_mean": {
+          "A": 15.611,
+          "B": 15.611
+        },
+        "beds": 54,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 30,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          1056
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.00379,
+        "gap_histogram": {
+          "18:42": 24,
+          "4:16": 30
+        },
+        "height": 24,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 357.78,
+          "50": 167.19,
+          "500": 1877.69
+        },
+        "opposing_head_distances": [
+          22,
+          7,
+          7,
+          22
+        ],
+        "opposing_head_min": 7,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 16,
+        "wall_edges": 62,
+        "wall_fraction": 0.02936,
+        "width": 44
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_seam_market",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 177.5,
+        "median_combined_splits": 90.0,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          95,
+          101
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "valjean-v01-portal-memory",
+            "side": "B"
+          }
+        ]
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_seam_market.map",
+      "plausibility": 0.88,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "Food near the horizontal seam makes short contact on a wide map meaningful.",
+      "semantic_sha256": "e0cb856b8b67f1dcdb3c8272548a3fa6ee8dc36df874c6e566debc5351849eb1",
+      "sha256": "7a194752b2615b1ae5e1dc5f085b32573e0c4e0aa8e1b0c5fbe51b0f909f9b7a",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "wrapped_contact",
+      "title": "Seam market",
+      "ungrouped_map_weight": 0.05107370864770749
+    },
+    {
+      "balance_status": "not_certified",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_portal_quartet.map",
+      "confidence": 0.76,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "mandatory_portals",
+        "route_memory_opportunity",
+        "multiple_exits"
+      ],
+      "dataset_split_group": "portal_dependency",
+      "default_training_map_weight": 0.05241379310344828,
+      "design_caveat": "Mandatory portals are the strongest extrapolation here and can magnify policy paralysis or congestion.",
+      "design_purpose": "Four sealed districts connect in a portal ring; each district has two separate portal links. All productive regions are portal-reachable.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.05241379310344828,
+      "family_id": "mc26_portal_quartet",
+      "family_selected_count": 1,
+      "features": {
+        "area": 896,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.1429,
+        "bed_density": 0.05357,
+        "bed_distance_mean": {
+          "A": 9.167,
+          "B": 9.167
+        },
+        "beds": 48,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 48,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          896
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.01786,
+        "gap_histogram": {
+          "5:19": 24,
+          "9:27": 24
+        },
+        "height": 28,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 313.67,
+          "50": 147.21,
+          "500": 1647.0
+        },
+        "opposing_head_distances": [
+          21,
+          15,
+          15,
+          19
+        ],
+        "opposing_head_min": 15,
+        "ordinary_beds_unreachable": {
+          "A": 24,
+          "B": 24
+        },
+        "portal_pairs": 4,
+        "shared_beds_within_2_steps": 18,
+        "wall_edges": 120,
+        "wall_fraction": 0.06696,
+        "width": 32
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_portal_quartet",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 1,
+        "games": 2,
+        "median_combined_bed_harvest": 690.0,
+        "median_combined_splits": 391.5,
+        "new_games": 2,
+        "no_action_deaths": 3,
+        "portal_crossings": 364,
+        "reused_games": 0,
+        "round_range": [
+          471,
+          500
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": []
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_portal_quartet.map",
+      "plausibility": 0.76,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "A four-room ring has two distinct links per room and no unreachable active resources.",
+      "semantic_sha256": "b2d8d7fbbdd837f3cd39ac0b2805ad858f0f243ffa1c9563b468774ac9e3d583",
+      "sha256": "07b5250b909049739643f34977e6e09e408c03f5b6a67a13f6347e215bb160df",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "portal_dependency",
+      "title": "Portal quartet",
+      "ungrouped_map_weight": 0.04410911201392919
+    },
+    {
+      "balance_status": "not_certified",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_relay_depots.map",
+      "confidence": 0.82,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "multi_link_portals",
+        "remote_income",
+        "optional_shortcuts"
+      ],
+      "dataset_split_group": "portal_shortcuts_and_dividers",
+      "default_training_map_weight": 0.05655172413793103,
+      "design_caveat": "Four portal pairs add complexity; useful memory or calibrated risk-taking is not proven by crossing counts.",
+      "design_purpose": "Four paired horizontal and vertical links shorten travel between remote depots, with open-water alternatives everywhere.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.05655172413793103,
+      "family_id": "mc26_relay_depots",
+      "family_selected_count": 1,
+      "features": {
+        "area": 1536,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.5,
+        "bed_density": 0.05208,
+        "bed_distance_mean": {
+          "A": 15.162,
+          "B": 15.162
+        },
+        "beds": 80,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 80,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          1536
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.0026,
+        "gap_histogram": {
+          "4:20": 24,
+          "6:22": 24,
+          "8:24": 32
+        },
+        "height": 32,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 10.938,
+          "B": 10.938
+        },
+        "nominal_attempts": {
+          "100": 539.26,
+          "50": 253.35,
+          "500": 2824.97
+        },
+        "opposing_head_distances": [
+          20,
+          31,
+          31,
+          42
+        ],
+        "opposing_head_min": 20,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 4,
+        "shared_beds_within_2_steps": 10,
+        "wall_edges": 80,
+        "wall_fraction": 0.02604,
+        "width": 48
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_relay_depots",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 745.0,
+        "median_combined_splits": 383.5,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 176,
+        "reused_games": 0,
+        "round_range": [
+          251,
+          373
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": []
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_relay_depots.map",
+      "plausibility": 0.82,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "Multiple shortcuts connect remote food depots while ordinary travel remains possible.",
+      "semantic_sha256": "0b33292edd02353f74f81bde8719d3fb4119775e0a59a202c4164eba6d3b643c",
+      "sha256": "7b836c08dad32761befa7bb2533402c4833a2fd54e72a47ff75bccc77ecdeb01",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "portal_shortcuts_and_dividers",
+      "title": "Relay depots",
+      "ungrouped_map_weight": 0.04759141033081834
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_delayed_commons.map",
+      "confidence": 0.83,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "delayed_income",
+        "changing_opportunity",
+        "initial_scarcity"
+      ],
+      "dataset_split_group": "resource_geography_timing",
+      "default_training_map_weight": 0.05724137931034483,
+      "design_caveat": "The 70\u2013110 gap applies to every renewal, not a scripted phase change; late supply may be underused.",
+      "design_purpose": "Small near-side farms supply the opening; the rich interior first becomes available after 70\u2013110 ticks and keeps that renewal range.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.05724137931034483,
+      "family_id": "mc26_delayed_commons",
+      "family_selected_count": 1,
+      "features": {
+        "area": 528,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.0909,
+        "bed_density": 0.17424,
+        "bed_distance_mean": {
+          "A": 12.5,
+          "B": 12.5
+        },
+        "beds": 92,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 12,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          528
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.00758,
+        "gap_histogram": {
+          "4:12": 12,
+          "70:110": 80
+        },
+        "height": 22,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 205.86,
+          "50": 70.38,
+          "500": 1150.29
+        },
+        "opposing_head_distances": [
+          30,
+          17,
+          17,
+          30
+        ],
+        "opposing_head_min": 17,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 20,
+        "wall_edges": 62,
+        "wall_fraction": 0.05871,
+        "width": 24
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_delayed_commons",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 184.5,
+        "median_combined_splits": 106.0,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          154,
+          206
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "ouroboros-v13-ladder",
+            "side": "B"
+          }
+        ]
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_delayed_commons.map",
+      "plausibility": 0.83,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "Opening farms sustain play before the large interior supply begins renewing.",
+      "semantic_sha256": "aa6de5e3f37c36c6592b0ea0f4d57bf08afa666da0b42f747bfa6ce23cfb8157",
+      "sha256": "176b9b5a606397f24f93eaf0dcbf517abc9e1b411ef2b61e067462080dc821d4",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "resource_geography_timing",
+      "title": "Delayed commons",
+      "ungrouped_map_weight": 0.04817179338363319
+    },
+    {
+      "balance_status": "not_certified",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_pulse_farms.map",
+      "confidence": 0.79,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "synchronized_supply",
+        "compact",
+        "timing"
+      ],
+      "dataset_split_group": "resource_geography_timing",
+      "default_training_map_weight": 0.05448275862068966,
+      "design_caveat": "Synchronized timing is deliberately stylized and unusually sensitive to harvesting and occupancy.",
+      "design_purpose": "Fixed 12- and 36-tick bed schedules create predictable harvest pulses around porous shelves. These are recurring waves, not depleting food.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.05448275862068966,
+      "family_id": "mc26_pulse_farms",
+      "family_selected_count": 1,
+      "features": {
+        "area": 396,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.2222,
+        "bed_density": 0.08586,
+        "bed_distance_mean": {
+          "A": 9.5,
+          "B": 9.5
+        },
+        "beds": 34,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 18,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          396
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.0101,
+        "gap_histogram": {
+          "12:12": 18,
+          "36:36": 16
+        },
+        "height": 18,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 176.0,
+          "50": 88.0,
+          "500": 946.0
+        },
+        "opposing_head_distances": [
+          24,
+          15,
+          15,
+          24
+        ],
+        "opposing_head_min": 15,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 8,
+        "wall_edges": 56,
+        "wall_fraction": 0.07071,
+        "width": 22
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_pulse_farms",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 216.0,
+        "median_combined_splits": 123.0,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          219,
+          252
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": []
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_pulse_farms.map",
+      "plausibility": 0.79,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "Two fixed schedules create legible recurring harvest opportunities around porous shelves.",
+      "semantic_sha256": "69d994052d2dbede3c21484a1504e466e8c114cefb60f094df2759ab2cfe9ebb",
+      "sha256": "6d50d460f95527c2625e2df811daeef77593b0aa08913ea69da0a58f1b8eec21",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "resource_geography_timing",
+      "title": "Pulse farms",
+      "ungrouped_map_weight": 0.045850261172373764
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_spring_wells.map",
+      "confidence": 0.85,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "few_fast_beds",
+        "harvest_capacity",
+        "fallback_supply"
+      ],
+      "dataset_split_group": "resource_geography_timing",
+      "default_training_map_weight": 0.05862068965517241,
+      "design_caveat": "A small number of wells may concentrate conflict; nominal output can greatly exceed realized income.",
+      "design_purpose": "A few every-round wells compete with slower fallback farms; open approaches make occupation and collector throughput important.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.05862068965517241,
+      "family_id": "mc26_spring_wells",
+      "family_selected_count": 1,
+      "features": {
+        "area": 572,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.1818,
+        "bed_density": 0.03846,
+        "bed_distance_mean": {
+          "A": 12.045,
+          "B": 12.045
+        },
+        "beds": 22,
+        "beds_max_le_1": 4,
+        "beds_max_le_10": 4,
+        "beds_max_le_30": 4,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          572
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.00699,
+        "gap_histogram": {
+          "1:1": 4,
+          "20:60": 18
+        },
+        "height": 22,
+        "initial_dragons": 4,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 437.04,
+          "50": 214.32,
+          "500": 2217.01
+        },
+        "opposing_head_distances": [
+          32,
+          19,
+          19,
+          32
+        ],
+        "opposing_head_min": 19,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 0,
+        "wall_edges": 60,
+        "wall_fraction": 0.05245,
+        "width": 26
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_spring_wells",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 72.5,
+        "median_combined_splits": 33.0,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          67,
+          122
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "ouroboros-v13-ladder",
+            "side": "A"
+          }
+        ]
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_spring_wells.map",
+      "plausibility": 0.85,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "A few rapid wells and slower fallback farms support a clear occupation-versus-coverage choice.",
+      "semantic_sha256": "30f4f8dc35f2591fdb16a696b8757541d07463b2ba88438c6f32d35a981c8fb2",
+      "sha256": "b111c668c781cbb3c63c89b49fbc6489b1120a059410960cc425ab8a26ddf6d4",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "resource_geography_timing",
+      "title": "Spring wells",
+      "ungrouped_map_weight": 0.04933255948926291
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_far_harbors.map",
+      "confidence": 0.89,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "large_area",
+        "remote_income",
+        "six_spawns",
+        "exploration"
+      ],
+      "dataset_split_group": "open_navigation",
+      "default_training_map_weight": 0.06137931034482759,
+      "design_caveat": "This is a recombination of established large-map and distributed-income ideas, not a wholly new mechanic.",
+      "design_purpose": "Six starting dragons explore several separated harbors in a broad sea; modest departure supply supports the trip.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.06137931034482759,
+      "family_id": "mc26_far_harbors",
+      "family_selected_count": 1,
+      "features": {
+        "area": 1728,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.3333,
+        "bed_density": 0.05787,
+        "bed_distance_mean": {
+          "A": 22.2,
+          "B": 22.2
+        },
+        "beds": 100,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 12,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          1728
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.00231,
+        "gap_histogram": {
+          "10:30": 12,
+          "10:34": 88
+        },
+        "height": 36,
+        "initial_dragons": 6,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 417.54,
+          "50": 186.98,
+          "500": 2257.58
+        },
+        "opposing_head_distances": [
+          64,
+          51,
+          39,
+          51,
+          40,
+          52,
+          39,
+          52,
+          64
+        ],
+        "opposing_head_min": 39,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 18,
+        "wall_edges": 104,
+        "wall_fraction": 0.03009,
+        "width": 48
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_far_harbors",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 965.0,
+        "median_combined_splits": 413.5,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          500,
+          500
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "valjean-v01-portal-memory",
+            "side": "B"
+          }
+        ]
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_far_harbors.map",
+      "plausibility": 0.89,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "Six starts, departure food and separated harbors give a coherent larger navigation problem.",
+      "semantic_sha256": "7f556be61c48222ea02a913a4e0cb6b6a137a7e26e634e85bf711428d727e476",
+      "sha256": "27b079a28af75391bf41c61cf38412f253c8d5ad2d1c216efcfa6bb328b56aff",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "open_navigation",
+      "title": "Far harbors",
+      "ungrouped_map_weight": 0.05165409170052235
+    },
+    {
+      "balance_status": "not_certified",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_scattered_fleets.map",
+      "confidence": 0.81,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "interleaved_deployment",
+        "local_fronts",
+        "six_spawns"
+      ],
+      "dataset_split_group": "distributed_deployment",
+      "default_training_map_weight": 0.05586206896551724,
+      "design_caveat": "Interleaved deployment is a stronger extrapolation and can create strong opening-policy interactions.",
+      "design_purpose": "Each team starts in separated sectors, including a forward group near opposing territory; area is decoupled from local contact.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.05586206896551724,
+      "family_id": "mc26_scattered_fleets",
+      "family_selected_count": 1,
+      "features": {
+        "area": 1260,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.4,
+        "bed_density": 0.04286,
+        "bed_distance_mean": {
+          "A": 14.63,
+          "B": 14.63
+        },
+        "beds": 54,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 54,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          1260
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.00317,
+        "gap_histogram": {
+          "6:26": 54
+        },
+        "height": 30,
+        "initial_dragons": 6,
+        "initial_empty_moves": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "initial_lengths": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 316.05,
+          "50": 147.63,
+          "500": 1666.05
+        },
+        "opposing_head_distances": [
+          56,
+          35,
+          17,
+          35,
+          56,
+          12,
+          17,
+          12,
+          32
+        ],
+        "opposing_head_min": 12,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 18,
+        "wall_edges": 104,
+        "wall_fraction": 0.04127,
+        "width": 42
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_scattered_fleets",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 403.0,
+        "median_combined_splits": 156.5,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          309,
+          323
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": []
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_scattered_fleets.map",
+      "plausibility": 0.81,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "Mirrored forward groups and rear groups create multiple local fronts on a larger map.",
+      "semantic_sha256": "0e7efc1f2637ee48c4f5da97c4be91c118bf359c48989e52fa247840f7c6b1b3",
+      "sha256": "175cbcfbefb936e89be4109d54bb95e8b818569fc756155a438325e62135b172",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "distributed_deployment",
+      "title": "Scattered fleets",
+      "ungrouped_map_weight": 0.047011027278003485
+    },
+    {
+      "balance_status": "unresolved_side_dependence",
+      "candidate_path": "../../experiment_data/map_coverage_20260927_091715/candidates/mc26_nursery_bays.map",
+      "confidence": 0.84,
+      "confidence_kind": "heuristic_map_design_plausibility_0_to_1",
+      "coverage_tags": [
+        "long_initial_bodies",
+        "split_space",
+        "protected_opening"
+      ],
+      "dataset_split_group": "productive_rooms_and_deployment",
+      "default_training_map_weight": 0.05793103448275862,
+      "design_caveat": "Long starts already exist in references; this tests a new deployment/room combination rather than a new rule.",
+      "design_purpose": "One length-eight dragon per side starts in a spacious two-exit bay, allowing meaningful choices between early division and keeping mass.",
+      "disposition": "included_for_coverage",
+      "family_balanced_weight": 0.05793103448275862,
+      "family_id": "mc26_nursery_bays",
+      "family_selected_count": 1,
+      "features": {
+        "area": 768,
+        "articulation_tiles": 0,
+        "aspect_ratio": 1.3333,
+        "bed_density": 0.03125,
+        "bed_distance_mean": {
+          "A": 14,
+          "B": 14
+        },
+        "beds": 24,
+        "beds_max_le_1": 0,
+        "beds_max_le_10": 0,
+        "beds_max_le_30": 24,
+        "beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "components": [
+          768
+        ],
+        "deadend_tiles": 0,
+        "degree_2_fraction": 0.01562,
+        "gap_histogram": {
+          "4:16": 8,
+          "6:18": 16
+        },
+        "height": 24,
+        "initial_dragons": 2,
+        "initial_empty_moves": [
+          3,
+          3
+        ],
+        "initial_lengths": [
+          8,
+          8
+        ],
+        "mean_portal_saving_to_beds": {
+          "A": 0,
+          "B": 0
+        },
+        "nominal_attempts": {
+          "100": 203.74,
+          "50": 97.08,
+          "500": 1057.07
+        },
+        "opposing_head_distances": [
+          22
+        ],
+        "opposing_head_min": 22,
+        "ordinary_beds_unreachable": {
+          "A": 0,
+          "B": 0
+        },
+        "portal_pairs": 0,
+        "shared_beds_within_2_steps": 6,
+        "wall_edges": 128,
+        "wall_fraction": 0.08333,
+        "width": 32
+      },
+      "gameplay_evidence_level": "two_game_smoke",
+      "generator_seed": "explicit-design-v2",
+      "generator_version": "coverage-grammar-v2",
+      "hard_failures": [],
+      "intentional_inaccessible_cells": [],
+      "is_new_this_expansion": true,
+      "is_synthetic": true,
+      "layout_index": 0,
+      "name": "mc26_nursery_bays",
+      "observed": {
+        "both_teams_harvested_in_every_game": true,
+        "conservative_usable_games": 2,
+        "games": 2,
+        "median_combined_bed_harvest": 205.5,
+        "median_combined_splits": 116.5,
+        "new_games": 2,
+        "no_action_deaths": 0,
+        "portal_crossings": 0,
+        "reused_games": 0,
+        "round_range": [
+          224,
+          243
+        ],
+        "runtime_fault_games": 0,
+        "same_side_sweep_pairs": [
+          {
+            "opponent": "valjean-v01-portal-memory",
+            "side": "A"
+          }
+        ]
+      },
+      "origin": "new_this_expansion",
+      "path": "mc26_nursery_bays.map",
+      "plausibility": 0.84,
+      "plausibility_assessment_had_prior_gameplay": false,
+      "plausibility_frozen_before_smoke": true,
+      "previous_balance_notes": "No previous competitive outcomes.",
+      "previous_confidence": null,
+      "previous_disposition": null,
+      "previous_games": 0,
+      "score_rationale": "Length-eight starts have spacious bays and two broad exits, making early division plausible.",
+      "semantic_sha256": "4111f3beee564bb353fcdebfc59c44be4185f3362cb38748b39b6766b42cbe02",
+      "sha256": "df21e490f0ae8e7eeda160f23ce8a11fc176d795c642b948ff3a5992ac49ec30",
+      "source_path": null,
+      "source_sha256": null,
+      "split_group": "productive_rooms_and_deployment",
+      "title": "Nursery bays",
+      "ungrouped_map_weight": 0.04875217643644805
+    }
+  ],
+  "old_reference_atlas": "../../experiment_data/map_coverage_20260927_091715/old_reference_atlas.json",
+  "previous_batch": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/map_discovery_20260927_083913",
+  "schema_version": 2,
+  "summary": {
+    "broader_split_groups": 8,
+    "conservative_usable_games": 60,
+    "games": 64,
+    "maps": 20,
+    "maps_with_same_side_sweep": 12,
+    "motif_families": 17,
+    "new_games": 28,
+    "origins": {
+      "new_this_expansion": 13,
+      "previously_generated": 7
+    },
+    "reused_games": 36,
+    "runtime_fault_games": 0,
+    "unallocated_conservative_game_weight": 0
+  },
+  "weighting_policy": {
+    "alternative": "normalize(plausibility)",
+    "game_weight": "divide each map weight across its selected usable fixtures; never weight by fixture count",
+    "outcomes_change_plausibility": false,
+    "recommended": "normalize(plausibility / selected_maps_in_motif_family)",
+    "score": "heuristic_design_plausibility_not_calibrated_probability"
+  },
+  "evidence_directory": "../../experiment_data/map_coverage_20260927_091715",
+  "path_base": "Directory containing this manifest; maps are directly alongside it."
+}

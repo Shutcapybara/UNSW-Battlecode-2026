@@ -244,3 +244,72 @@ sweep_round{1,2,3}.json`, `sweep_mechanisms.json`; frozen rule
 `tools/godel/selection_rule.json`; reserve fingerprints
 `tools/godel/reserve_frozen.json`; discipline tests `tests/test_godel.py`
 (4 checks, all passing).
+
+---
+
+## 7. Cycle 2: opponent-pressure-conditioned caution on a widened screen
+
+Plan frozen before any cycle-2 outcome was read: `tools/godel/cycle2_plan.json`.
+Dev screen widened to `configs/godel/screen2.toml` (6 opponents spanning both
+style classes x the 4 cycle-1 maps x both sides = 48 games; the 24 fixtures vs
+the cycle-1 opponents coincide with the cycle-1 screen). GM-3 master
+`godel-x26-style` (diff vs x01: `safety.py` + `defaults.py` only) conditions
+the threat pricing on a per-dragon EMA of visible enemy heads within radius 4:
+at/above `style_hi` the dragon feels the cautious prices (trade_bias 2.5,
+p_strike2 0.5 — x14's refit values), otherwise the x01 defaults.
+
+Parity: x26 bare reproduced x01's cycle-1 screen record exactly (13-11, 0 of
+24 fixtures differing in outcome or rounds).
+
+**Cycle-2 screen records (48 games).** Baseline x01: **29-19** (hunter 7-1,
+tew 4-4, porthos 2-6, sinbad 3-5, avery 5-3, hydra 8-0).
+
+| Cell | Change | Screen2 | vs baseline by opponent | Verdict |
+|---|---|---|---|---|
+| x27-gm3hi | style_pressure=1 | **31-17** | porthos +2, avery +1, hunter -1, rest 0 | **adopted** (>= +2, no subset worse by > 1); advance needs 32, one short |
+| x28-gm3lo | x14 constants as base + style_lo = x01 values | 31-17 | identical | semantically the same cell as x27 (style_lo_* equal the P defaults); 48/48 fixtures identical — determinism double-check passed |
+
+**Round-2 descent from x27** (`tools/godel/sweep_cycle2_round2.json`, frozen
+pre-outcome): x29 style_hi 1.0 -> 28-20 (caution too frequent); x30 style_hi
+2.5 -> 28-20 (too rare); x31 style_radius 3 -> 30-18; x32 style_ema_x4 2 ->
+31-17 (tie); x33 style_bias_hi 3.5 -> 29-19. **Converged**: every
+single-coordinate move from x27 is worse or ties.
+
+**Reserve sanity check** (not a promotion attempt; x27 never reached the
+advance bar): x27 8-8 vs x01's 9-7 — the screen gain does not transfer to the
+combat-focused reserve maps. No gauntlet run: x27 missed the frozen advance
+bar (31 < 32), so the gauntlet/reserve/promotion path stops here per
+`tools/godel/cycle2_plan.json`.
+
+**Cycle-2 verdict.** The style-conditioning hypothesis is *directionally*
+confirmed — pressure-conditioned caution gains exactly where cycle 1 said it
+should (porthos +2) without the cycle-1 banker losses (tew 0, hydra 0) — but
+the effect size (+2/48 ~= 4 pp) sits below the pre-registered advance bar, and
+it does not transfer to the reserve maps. Combined across both cycles and
+both lineages (Von Neumann's cycle-2 also produced a gauntlet-only gain,
+130-52, with a 0-flip reserve tie, no promotion): **aggression conditioning
+reliably moves 20-40% of fixtures with sign predictable from opponent style,
+but no conditioning yet dominates across map/opponent distributions.** The
+component is real and optimisable in principle; the returns are small,
+matchup-specific, and currently under the promotion bar.
+
+**Provenance note.** During cycle-2 setup the working tree was switched to a
+detached HEAD by another session; the Godel files were preserved by the
+owner's commit `fe2ad5d` ("stuff") on `main` and restored from there
+(`git checkout fe2ad5d -- docs/godel.md tools/godel configs/godel
+tests/test_godel.py bots/godel-x26-style`). All cycle-1 runs and frozen plans
+survived intact.
+
+**Next cycle recommendations.** (a) The named next lever is per-opponent
+evidence through sonar reports (team-level style estimate shared between
+dragons), not further global or purely local constants — it needs a
+communication budget and an honest full-change classification. (b) Effect
+sizes of +-2/48 mean the dev screen needs either more games per arm or a
+sequential probability-ratio design; otherwise descent stalls one game below
+every bar. (c) big_empty/default remain the weak maps (combat conditioning is
+not the lever there; the replay studies say spatial/economy features behave
+differently on them).
+
+Artifacts: `tools/godel/cycle2_plan.json`, `sweep_cycle2_round2.json`;
+runs `experiment_data/godel-x2[6-9]*`, `godel-x3[0-3]*`;
+discipline tests `tests/test_godel.py` (5 checks, all passing).
