@@ -18,3 +18,22 @@ game_stats/runs/
 # Large datasets & replays
 experiment_data/
 public_replays/
+
+# TEMP
+# Temp
+/main
+.idea/
+.venv/
+# Generated game statistics ledger and local writer lock.
+/game_stats.parquet
+/game_stats/.write.lock
+# Local credentials (never commit)
+.battlecode-api-key
+experiment_data/
+public_replays/
+# test output & cache
+Testing/
+.cache/
+# Battlecode replays
+*.replay
+build/
