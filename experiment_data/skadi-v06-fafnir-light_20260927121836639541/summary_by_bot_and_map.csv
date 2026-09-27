@@ -1,0 +1,3 @@
+opponent,map,scheduled,played,wins,draws,losses,errors,analysis_errors,pending,score
+gavroche-v31-saturated-divecap,big_empty,2,2,1,0,1,0,0,0,0.5
+gavroche-v31-saturated-divecap,trauma,2,2,2,0,0,0,0,0,1.0

@@ -1,0 +1,7 @@
+opponent,map,scheduled,played,wins,draws,losses,errors,analysis_errors,pending,score
+gavroche-final,autarky,2,2,0,0,2,0,0,0,0.0
+gavroche-final,big_empty,2,2,2,0,0,0,0,0,1.0
+gavroche-final,queen_of_spades,2,2,2,0,0,0,0,0,1.0
+gavroche-final,schooltime,2,2,1,0,1,0,0,0,0.5
+gavroche-final,stronghold,2,2,0,0,2,0,0,0,0.0
+gavroche-final,trauma,2,2,0,0,2,0,0,0,0.0
