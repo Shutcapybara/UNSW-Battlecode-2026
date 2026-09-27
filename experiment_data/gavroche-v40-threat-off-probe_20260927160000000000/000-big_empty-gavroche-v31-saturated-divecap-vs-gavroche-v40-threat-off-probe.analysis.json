@@ -1,0 +1,5025 @@
+{
+  "rounds": 500,
+  "outcome": "A",
+  "reason": "length",
+  "teams": {
+    "A": {
+      "deaths": {
+        "head-to-head": 245,
+        "self": 25
+      },
+      "splits": 284,
+      "pearls": 1530,
+      "turns": 25258,
+      "max_points": 0,
+      "timeouts": 0,
+      "initiated_trades": 157,
+      "final": {
+        "units": 17,
+        "longest": 57,
+        "total": 377
+      },
+      "max_points_estimate": 97100000,
+      "p50_points_estimate": 40400000,
+      "p99_points_estimate": 76100000
+    },
+    "B": {
+      "deaths": {
+        "head-to-head": 245,
+        "self": 27,
+        "body": 5
+      },
+      "splits": 292,
+      "pearls": 1532,
+      "turns": 25680,
+      "max_points": 0,
+      "timeouts": 0,
+      "initiated_trades": 88,
+      "final": {
+        "units": 18,
+        "longest": 28,
+        "total": 369
+      },
+      "max_points_estimate": 76700000,
+      "p50_points_estimate": 22400000,
+      "p99_points_estimate": 50300000
+    }
+  },
+  "population": [
+    {
+      "round": 0,
+      "A": 3,
+      "B": 3
+    },
+    {
+      "round": 50,
+      "A": 28,
+      "B": 26
+    },
+    {
+      "round": 100,
+      "A": 64,
+      "B": 64
+    },
+    {
+      "round": 150,
+      "A": 64,
+      "B": 64
+    },
+    {
+      "round": 200,
+      "A": 64,
+      "B": 64
+    },
+    {
+      "round": 250,
+      "A": 64,
+      "B": 64
+    },
+    {
+      "round": 300,
+      "A": 64,
+      "B": 64
+    },
+    {
+      "round": 350,
+      "A": 64,
+      "B": 64
+    },
+    {
+      "round": 400,
+      "A": 44,
+      "B": 54
+    },
+    {
+      "round": 450,
+      "A": 22,
+      "B": 23
+    }
+  ],
+  "death_events": [
+    {
+      "round": 47,
+      "id": 24,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 50,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 47,
+      "id": 50,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 50,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 68,
+      "id": 68,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 82,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 68,
+      "id": 82,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 82,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 70,
+      "id": 89,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 58,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 70,
+      "id": 58,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 58,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 70,
+      "id": 4,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 102,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 70,
+      "id": 102,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 102,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 71,
+      "id": 117,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 66,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 71,
+      "id": 66,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 66,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 73,
+      "id": 57,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 22,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 73,
+      "id": 22,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 22,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 77,
+      "id": 55,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 10,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 77,
+      "id": 10,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 10,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 77,
+      "id": 87,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 43,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 77,
+      "id": 43,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 43,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 89,
+      "id": 85,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 136,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 89,
+      "id": 136,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 136,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 93,
+      "id": 61,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 101,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 93,
+      "id": 101,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 101,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 93,
+      "id": 77,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 127,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 93,
+      "id": 127,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 127,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 95,
+      "id": 72,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 21,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 95,
+      "id": 21,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 21,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 102,
+      "id": 25,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 23,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 102,
+      "id": 23,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 23,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 103,
+      "id": 32,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 132,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 103,
+      "id": 132,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 132,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 106,
+      "id": 95,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 148,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 106,
+      "id": 148,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 148,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 110,
+      "id": 94,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 38,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 110,
+      "id": 38,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 38,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 110,
+      "id": 53,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 59,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 110,
+      "id": 59,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 59,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 110,
+      "id": 146,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 137,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 110,
+      "id": 137,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 137,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 111,
+      "id": 74,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 147,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 111,
+      "id": 147,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 147,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 114,
+      "id": 27,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 6,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 114,
+      "id": 6,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 6,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 114,
+      "id": 13,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 65,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 114,
+      "id": 65,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 65,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 114,
+      "id": 149,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 80,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 114,
+      "id": 80,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 80,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 115,
+      "id": 90,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 110,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 115,
+      "id": 110,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 110,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 115,
+      "id": 139,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 162,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 115,
+      "id": 162,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 162,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 119,
+      "id": 104,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 35,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 119,
+      "id": 35,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 35,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 120,
+      "id": 14,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 63,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 120,
+      "id": 63,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 63,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 120,
+      "id": 56,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 109,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 120,
+      "id": 109,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 109,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 120,
+      "id": 17,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 130,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 120,
+      "id": 130,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 130,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 126,
+      "id": 91,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 5,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 126,
+      "id": 5,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 5,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 128,
+      "id": 171,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 150,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 128,
+      "id": 150,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 150,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 129,
+      "id": 12,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 46,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 129,
+      "id": 46,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 46,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 130,
+      "id": 172,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 120,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 130,
+      "id": 120,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 120,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 132,
+      "id": 164,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 122,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 132,
+      "id": 122,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 122,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 135,
+      "id": 67,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 188,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 135,
+      "id": 188,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 188,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 136,
+      "id": 60,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 52,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 136,
+      "id": 52,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 52,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 139,
+      "id": 182,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 140,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 139,
+      "id": 140,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 140,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 140,
+      "id": 54,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 51,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 140,
+      "id": 51,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 51,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 141,
+      "id": 183,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 15,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 141,
+      "id": 15,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 15,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 143,
+      "id": 157,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 69,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 143,
+      "id": 69,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 69,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 146,
+      "id": 116,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 18,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 146,
+      "id": 18,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 18,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 146,
+      "id": 45,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 128,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 146,
+      "id": 128,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 128,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 147,
+      "id": 3,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 86,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 147,
+      "id": 86,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 86,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 148,
+      "id": 111,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 196,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 148,
+      "id": 196,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 196,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 152,
+      "id": 73,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 16,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 152,
+      "id": 16,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 16,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 152,
+      "id": 36,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 193,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 152,
+      "id": 193,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 193,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 153,
+      "id": 206,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 215,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 153,
+      "id": 215,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 215,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 156,
+      "id": 200,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 191,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 156,
+      "id": 191,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 191,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 157,
+      "id": 93,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 131,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 157,
+      "id": 131,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 131,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 158,
+      "id": 98,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 138,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 158,
+      "id": 138,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 138,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 159,
+      "id": 78,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 202,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 159,
+      "id": 202,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 202,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 162,
+      "id": 30,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 28,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 162,
+      "id": 28,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 28,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 162,
+      "id": 135,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 34,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 162,
+      "id": 34,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 34,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 163,
+      "id": 207,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 100,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 163,
+      "id": 100,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 100,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 165,
+      "id": 156,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 179,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 165,
+      "id": 179,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 179,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 165,
+      "id": 76,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 185,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 165,
+      "id": 185,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 185,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 166,
+      "id": 26,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 155,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 166,
+      "id": 155,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 155,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 169,
+      "id": 222,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 160,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 169,
+      "id": 160,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 160,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 171,
+      "id": 83,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 180,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 171,
+      "id": 180,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 180,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 171,
+      "id": 211,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 242,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 171,
+      "id": 242,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 242,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 173,
+      "id": 218,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 31,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 173,
+      "id": 31,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 31,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 173,
+      "id": 99,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 178,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 173,
+      "id": 178,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 178,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 175,
+      "id": 217,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 167,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 175,
+      "id": 167,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 167,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 177,
+      "id": 133,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 205,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 177,
+      "id": 205,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 205,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 178,
+      "id": 41,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 84,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 178,
+      "id": 84,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 84,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 181,
+      "id": 121,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 29,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 181,
+      "id": 29,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 29,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 181,
+      "id": 224,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 170,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 181,
+      "id": 170,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 170,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 181,
+      "id": 166,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 249,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 181,
+      "id": 249,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 249,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 182,
+      "id": 71,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 8,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 182,
+      "id": 8,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 8,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 182,
+      "id": 230,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 168,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 182,
+      "id": 168,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 168,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 183,
+      "id": 190,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 258,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 183,
+      "id": 258,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 258,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 184,
+      "id": 197,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 223,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 184,
+      "id": 223,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 223,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 187,
+      "id": 233,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 232,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 187,
+      "id": 232,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 232,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 187,
+      "id": 169,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 270,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 187,
+      "id": 270,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 270,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 189,
+      "id": 123,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 177,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 189,
+      "id": 177,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 177,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 191,
+      "id": 113,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 33,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 191,
+      "id": 33,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 33,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 191,
+      "id": 240,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 145,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 191,
+      "id": 145,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 145,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 191,
+      "id": 235,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 227,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 191,
+      "id": 227,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 227,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 194,
+      "id": 48,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 281,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 194,
+      "id": 281,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 281,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 195,
+      "id": 79,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 256,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 195,
+      "id": 256,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 256,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 200,
+      "id": 262,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 195,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 200,
+      "id": 195,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 195,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 201,
+      "id": 246,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 263,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 201,
+      "id": 263,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 263,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 203,
+      "id": 154,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 159,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 203,
+      "id": 159,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 159,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 204,
+      "id": 152,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 181,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 204,
+      "id": 181,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 181,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 204,
+      "id": 192,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 236,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 204,
+      "id": 236,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 236,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 205,
+      "id": 250,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 105,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 205,
+      "id": 105,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 105,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 208,
+      "id": 112,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 254,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 208,
+      "id": 254,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 254,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 209,
+      "id": 19,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 199,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 209,
+      "id": 199,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 199,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 212,
+      "id": 290,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 194,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 212,
+      "id": 194,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 194,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 214,
+      "id": 238,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 219,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 214,
+      "id": 219,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 219,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 214,
+      "id": 151,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 280,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 214,
+      "id": 280,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 280,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 215,
+      "id": 118,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 142,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 215,
+      "id": 142,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 142,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 215,
+      "id": 203,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 253,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 215,
+      "id": 253,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 253,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 217,
+      "id": 37,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 273,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 217,
+      "id": 273,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 273,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 218,
+      "id": 296,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 229,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 218,
+      "id": 229,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 229,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 220,
+      "id": 260,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 303,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 220,
+      "id": 303,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 303,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 221,
+      "id": 309,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 1,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 221,
+      "id": 1,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 1,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 222,
+      "id": 239,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 161,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 222,
+      "id": 161,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 161,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 223,
+      "id": 198,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 321,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 223,
+      "id": 321,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 321,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 226,
+      "id": 114,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 75,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 226,
+      "id": 75,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 75,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 228,
+      "id": 294,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 320,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 228,
+      "id": 320,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 320,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 230,
+      "id": 11,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 184,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 230,
+      "id": 184,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 184,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 230,
+      "id": 252,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 323,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 230,
+      "id": 323,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 323,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 232,
+      "id": 103,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 297,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 232,
+      "id": 297,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 297,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 235,
+      "id": 174,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 47,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 235,
+      "id": 47,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 47,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 236,
+      "id": 42,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 92,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 236,
+      "id": 92,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 92,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 238,
+      "id": 141,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 299,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 238,
+      "id": 299,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 299,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 239,
+      "id": 176,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 7,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 239,
+      "id": 7,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 7,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 243,
+      "id": 107,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 265,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 243,
+      "id": 265,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 265,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 249,
+      "id": 226,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 257,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 249,
+      "id": 257,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 257,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 251,
+      "id": 266,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 317,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 251,
+      "id": 317,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 317,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 252,
+      "id": 274,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 208,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 252,
+      "id": 208,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 208,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 253,
+      "id": 49,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 251,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 253,
+      "id": 251,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 251,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 254,
+      "id": 221,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 332,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 254,
+      "id": 332,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 332,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 255,
+      "id": 276,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 173,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 255,
+      "id": 173,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 173,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 255,
+      "id": 124,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 213,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 255,
+      "id": 213,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 213,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 255,
+      "id": 328,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 324,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 255,
+      "id": 324,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 324,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 256,
+      "id": 189,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 345,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 256,
+      "id": 345,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 345,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 257,
+      "id": 214,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 108,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 257,
+      "id": 108,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 108,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 257,
+      "id": 275,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 204,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 257,
+      "id": 204,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 204,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 258,
+      "id": 247,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 216,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 258,
+      "id": 216,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 216,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 258,
+      "id": 237,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 279,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 258,
+      "id": 279,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 279,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 258,
+      "id": 153,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 347,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 258,
+      "id": 347,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 347,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 258,
+      "id": 278,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 349,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 258,
+      "id": 349,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 349,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 258,
+      "id": 231,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 357,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 258,
+      "id": 357,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 357,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 259,
+      "id": 125,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 271,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 259,
+      "id": 271,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 271,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 259,
+      "id": 144,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 282,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 259,
+      "id": 282,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 282,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 261,
+      "id": 350,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 20,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 261,
+      "id": 20,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 20,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 261,
+      "id": 158,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 277,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 261,
+      "id": 277,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 277,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 264,
+      "id": 293,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 248,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 264,
+      "id": 248,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 248,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 264,
+      "id": 335,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 327,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 264,
+      "id": 327,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 327,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 267,
+      "id": 70,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 380,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 267,
+      "id": 380,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 380,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 268,
+      "id": 316,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 261,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 268,
+      "id": 261,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 261,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 271,
+      "id": 220,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 88,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 271,
+      "id": 88,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 88,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 271,
+      "id": 129,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 374,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 271,
+      "id": 374,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 374,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 278,
+      "id": 344,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 234,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 278,
+      "id": 234,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 234,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 279,
+      "id": 312,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 287,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 279,
+      "id": 287,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 287,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 280,
+      "id": 384,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 348,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 280,
+      "id": 348,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 348,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 280,
+      "id": 268,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 400,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 280,
+      "id": 400,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 400,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 281,
+      "id": 366,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 62,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 281,
+      "id": 62,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 62,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 282,
+      "id": 255,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 359,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 282,
+      "id": 359,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 359,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 285,
+      "id": 305,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 355,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 285,
+      "id": 355,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 355,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 286,
+      "id": 356,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 134,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 286,
+      "id": 134,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 134,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 286,
+      "id": 411,
+      "team": "B",
+      "cause": "self",
+      "actor": 411,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 287,
+      "id": 390,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 313,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 287,
+      "id": 313,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 313,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 288,
+      "id": 338,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 336,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 288,
+      "id": 336,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 336,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 289,
+      "id": 325,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 210,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 289,
+      "id": 210,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 210,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 289,
+      "id": 408,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 403,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 289,
+      "id": 403,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 403,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 292,
+      "id": 243,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 40,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 292,
+      "id": 40,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 40,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 292,
+      "id": 39,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 365,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 292,
+      "id": 365,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 365,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 293,
+      "id": 337,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 165,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 293,
+      "id": 165,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 165,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 297,
+      "id": 407,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 371,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 297,
+      "id": 371,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 371,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 298,
+      "id": 318,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 143,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 298,
+      "id": 143,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 143,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 298,
+      "id": 306,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 241,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 298,
+      "id": 241,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 241,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 299,
+      "id": 375,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 44,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 299,
+      "id": 44,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 44,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 301,
+      "id": 285,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 322,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 301,
+      "id": 322,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 322,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 302,
+      "id": 425,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 419,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 302,
+      "id": 419,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 419,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 303,
+      "id": 244,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 341,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 303,
+      "id": 341,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 341,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 304,
+      "id": 377,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 289,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 304,
+      "id": 289,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 289,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 304,
+      "id": 308,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 368,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 304,
+      "id": 368,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 368,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 305,
+      "id": 373,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 427,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 305,
+      "id": 427,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 427,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 306,
+      "id": 410,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 405,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 306,
+      "id": 405,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 405,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 307,
+      "id": 300,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 378,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 307,
+      "id": 378,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 378,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 307,
+      "id": 64,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 449,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 307,
+      "id": 449,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 449,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 308,
+      "id": 283,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 433,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 308,
+      "id": 433,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 433,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 310,
+      "id": 163,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 330,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 310,
+      "id": 330,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 330,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 310,
+      "id": 340,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 363,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 310,
+      "id": 363,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 363,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 311,
+      "id": 304,
+      "team": "B",
+      "cause": "self",
+      "actor": 304,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 312,
+      "id": 431,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 115,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 312,
+      "id": 115,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 115,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 313,
+      "id": 292,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 388,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 313,
+      "id": 388,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 388,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 314,
+      "id": 364,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 187,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 314,
+      "id": 187,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 187,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 314,
+      "id": 387,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 448,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 314,
+      "id": 448,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 448,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 317,
+      "id": 310,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 362,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 317,
+      "id": 362,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 362,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 318,
+      "id": 402,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 264,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 318,
+      "id": 264,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 264,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 320,
+      "id": 437,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 186,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 320,
+      "id": 186,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 186,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 321,
+      "id": 302,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 81,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 321,
+      "id": 81,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 81,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 321,
+      "id": 446,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 420,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 321,
+      "id": 420,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 420,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 322,
+      "id": 343,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 379,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 322,
+      "id": 379,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 379,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 322,
+      "id": 245,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 391,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 322,
+      "id": 391,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 391,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 322,
+      "id": 96,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 428,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 322,
+      "id": 428,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 428,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 323,
+      "id": 444,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 9,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 323,
+      "id": 9,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 9,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 323,
+      "id": 201,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 458,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 323,
+      "id": 458,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 458,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 328,
+      "id": 393,
+      "team": "B",
+      "cause": "body",
+      "actor": 393,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 328,
+      "id": 435,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 462,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 328,
+      "id": 462,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 462,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 329,
+      "id": 339,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 409,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 329,
+      "id": 409,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 409,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 329,
+      "id": 432,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 463,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 329,
+      "id": 463,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 463,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 329,
+      "id": 466,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 478,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 329,
+      "id": 478,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 478,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 331,
+      "id": 442,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 386,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 331,
+      "id": 386,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 386,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 332,
+      "id": 358,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 351,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 332,
+      "id": 351,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 351,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 333,
+      "id": 467,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 468,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 333,
+      "id": 468,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 468,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 335,
+      "id": 106,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 329,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 335,
+      "id": 329,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 329,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 335,
+      "id": 175,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 413,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 335,
+      "id": 413,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 413,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 337,
+      "id": 301,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 455,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 337,
+      "id": 455,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 455,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 338,
+      "id": 334,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 269,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 338,
+      "id": 269,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 269,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 340,
+      "id": 392,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 422,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 340,
+      "id": 422,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 422,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 340,
+      "id": 97,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 508,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 340,
+      "id": 508,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 508,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 341,
+      "id": 284,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 119,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 341,
+      "id": 119,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 119,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 343,
+      "id": 447,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 326,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 343,
+      "id": 326,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 326,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 343,
+      "id": 298,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 417,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 343,
+      "id": 417,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 417,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 344,
+      "id": 503,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 460,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 344,
+      "id": 460,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 460,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 344,
+      "id": 459,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 489,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 344,
+      "id": 489,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 489,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 345,
+      "id": 376,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 272,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 345,
+      "id": 272,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 272,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 345,
+      "id": 488,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 523,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 345,
+      "id": 523,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 523,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 348,
+      "id": 404,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 487,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 348,
+      "id": 487,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 487,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 349,
+      "id": 397,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 470,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 349,
+      "id": 470,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 470,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 351,
+      "id": 342,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 490,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 351,
+      "id": 490,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 490,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 354,
+      "id": 497,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 389,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 354,
+      "id": 389,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 389,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 354,
+      "id": 479,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 396,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 354,
+      "id": 396,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 396,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 356,
+      "id": 517,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 521,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 356,
+      "id": 521,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 521,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 357,
+      "id": 501,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 369,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 357,
+      "id": 369,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 369,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 358,
+      "id": 493,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 453,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 358,
+      "id": 453,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 453,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 358,
+      "id": 398,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 538,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 358,
+      "id": 538,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 538,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 360,
+      "id": 529,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 430,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 360,
+      "id": 430,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 430,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 364,
+      "id": 307,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 382,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 364,
+      "id": 382,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 382,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 364,
+      "id": 525,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 441,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 364,
+      "id": 441,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 441,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 364,
+      "id": 456,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 498,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 364,
+      "id": 498,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 498,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 365,
+      "id": 267,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 209,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 365,
+      "id": 209,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 209,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 370,
+      "id": 361,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 516,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 370,
+      "id": 516,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 516,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 373,
+      "id": 534,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 439,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 373,
+      "id": 439,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 439,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 373,
+      "id": 434,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 504,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 373,
+      "id": 504,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 504,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 374,
+      "id": 295,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 415,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 374,
+      "id": 415,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 415,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 374,
+      "id": 477,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 474,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 374,
+      "id": 474,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 474,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 375,
+      "id": 549,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 395,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 375,
+      "id": 395,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 395,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 376,
+      "id": 412,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 530,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 376,
+      "id": 530,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 530,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 378,
+      "id": 423,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 524,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 378,
+      "id": 524,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 524,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 378,
+      "id": 473,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 554,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 378,
+      "id": 554,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 554,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 379,
+      "id": 528,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 541,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 379,
+      "id": 541,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 541,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 382,
+      "id": 570,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 438,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 382,
+      "id": 438,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 438,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 382,
+      "id": 454,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 510,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 382,
+      "id": 510,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 510,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 382,
+      "id": 126,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 545,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 382,
+      "id": 545,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 545,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 384,
+      "id": 383,
+      "team": "A",
+      "cause": "self",
+      "actor": 383,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 384,
+      "id": 552,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 480,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 384,
+      "id": 480,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 480,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 385,
+      "id": 2,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 540,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 385,
+      "id": 540,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 540,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 386,
+      "id": 464,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 533,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 386,
+      "id": 533,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 533,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 386,
+      "id": 566,
+      "team": "A",
+      "cause": "self",
+      "actor": 566,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 390,
+      "id": 445,
+      "team": "A",
+      "cause": "self",
+      "actor": 445,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 390,
+      "id": 482,
+      "team": "A",
+      "cause": "self",
+      "actor": 482,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 392,
+      "id": 259,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 572,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 392,
+      "id": 572,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 572,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 393,
+      "id": 331,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 354,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 393,
+      "id": 354,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 354,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 393,
+      "id": 518,
+      "team": "A",
+      "cause": "self",
+      "actor": 518,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 394,
+      "id": 457,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 406,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 394,
+      "id": 406,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 406,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 394,
+      "id": 542,
+      "team": "B",
+      "cause": "self",
+      "actor": 542,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 395,
+      "id": 531,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 225,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 395,
+      "id": 225,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 225,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 395,
+      "id": 291,
+      "team": "A",
+      "cause": "self",
+      "actor": 291,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 395,
+      "id": 547,
+      "team": "A",
+      "cause": "self",
+      "actor": 547,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 397,
+      "id": 543,
+      "team": "A",
+      "cause": "self",
+      "actor": 543,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 398,
+      "id": 560,
+      "team": "A",
+      "cause": "self",
+      "actor": 560,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 401,
+      "id": 537,
+      "team": "A",
+      "cause": "self",
+      "actor": 537,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 401,
+      "id": 563,
+      "team": "B",
+      "cause": "body",
+      "actor": 563,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 403,
+      "id": 360,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 353,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 403,
+      "id": 353,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 353,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 403,
+      "id": 370,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 381,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 403,
+      "id": 381,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 381,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 404,
+      "id": 288,
+      "team": "B",
+      "cause": "body",
+      "actor": 288,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 405,
+      "id": 555,
+      "team": "A",
+      "cause": "self",
+      "actor": 555,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 406,
+      "id": 486,
+      "team": "A",
+      "cause": "self",
+      "actor": 486,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 407,
+      "id": 544,
+      "team": "B",
+      "cause": "body",
+      "actor": 544,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 408,
+      "id": 576,
+      "team": "B",
+      "cause": "self",
+      "actor": 576,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 409,
+      "id": 421,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 553,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 409,
+      "id": 553,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 553,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 410,
+      "id": 372,
+      "team": "A",
+      "cause": "self",
+      "actor": 372,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 410,
+      "id": 539,
+      "team": "A",
+      "cause": "self",
+      "actor": 539,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 410,
+      "id": 559,
+      "team": "B",
+      "cause": "self",
+      "actor": 559,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 412,
+      "id": 492,
+      "team": "A",
+      "cause": "self",
+      "actor": 492,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 412,
+      "id": 558,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 568,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 412,
+      "id": 568,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 568,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 414,
+      "id": 367,
+      "team": "A",
+      "cause": "self",
+      "actor": 367,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 414,
+      "id": 535,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 416,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 414,
+      "id": 416,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 416,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 414,
+      "id": 475,
+      "team": "B",
+      "cause": "self",
+      "actor": 475,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 415,
+      "id": 443,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 429,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 415,
+      "id": 429,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 429,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 415,
+      "id": 575,
+      "team": "B",
+      "cause": "self",
+      "actor": 575,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 417,
+      "id": 469,
+      "team": "B",
+      "cause": "self",
+      "actor": 469,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 417,
+      "id": 550,
+      "team": "B",
+      "cause": "self",
+      "actor": 550,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 421,
+      "id": 502,
+      "team": "B",
+      "cause": "self",
+      "actor": 502,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 421,
+      "id": 515,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 512,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 421,
+      "id": 512,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 512,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 426,
+      "id": 579,
+      "team": "A",
+      "cause": "self",
+      "actor": 579,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 427,
+      "id": 561,
+      "team": "B",
+      "cause": "self",
+      "actor": 561,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 428,
+      "id": 514,
+      "team": "A",
+      "cause": "self",
+      "actor": 514,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 428,
+      "id": 548,
+      "team": "B",
+      "cause": "self",
+      "actor": 548,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 431,
+      "id": 385,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 532,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 431,
+      "id": 532,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 532,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 431,
+      "id": 557,
+      "team": "A",
+      "cause": "self",
+      "actor": 557,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 432,
+      "id": 567,
+      "team": "B",
+      "cause": "self",
+      "actor": 567,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 433,
+      "id": 564,
+      "team": "B",
+      "cause": "self",
+      "actor": 564,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 434,
+      "id": 436,
+      "team": "B",
+      "cause": "self",
+      "actor": 436,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 435,
+      "id": 426,
+      "team": "B",
+      "cause": "self",
+      "actor": 426,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 437,
+      "id": 494,
+      "team": "B",
+      "cause": "self",
+      "actor": 494,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 439,
+      "id": 520,
+      "team": "B",
+      "cause": "self",
+      "actor": 520,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 442,
+      "id": 495,
+      "team": "A",
+      "cause": "self",
+      "actor": 495,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 442,
+      "id": 546,
+      "team": "B",
+      "cause": "self",
+      "actor": 546,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 443,
+      "id": 314,
+      "team": "B",
+      "cause": "self",
+      "actor": 314,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 443,
+      "id": 399,
+      "team": "B",
+      "cause": "self",
+      "actor": 399,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 444,
+      "id": 440,
+      "team": "A",
+      "cause": "self",
+      "actor": 440,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 444,
+      "id": 471,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 522,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 444,
+      "id": 522,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 522,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 446,
+      "id": 465,
+      "team": "B",
+      "cause": "self",
+      "actor": 465,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 446,
+      "id": 569,
+      "team": "B",
+      "cause": "self",
+      "actor": 569,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 446,
+      "id": 577,
+      "team": "B",
+      "cause": "body",
+      "actor": 577,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 447,
+      "id": 346,
+      "team": "B",
+      "cause": "self",
+      "actor": 346,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 447,
+      "id": 527,
+      "team": "A",
+      "cause": "self",
+      "actor": 527,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 449,
+      "id": 565,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 536,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 449,
+      "id": 536,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 536,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 454,
+      "id": 571,
+      "team": "A",
+      "cause": "self",
+      "actor": 571,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 454,
+      "id": 574,
+      "team": "B",
+      "cause": "self",
+      "actor": 574,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 457,
+      "id": 580,
+      "team": "B",
+      "cause": "self",
+      "actor": 580,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 460,
+      "id": 519,
+      "team": "A",
+      "cause": "self",
+      "actor": 519,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 463,
+      "id": 452,
+      "team": "B",
+      "cause": "self",
+      "actor": 452,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 465,
+      "id": 228,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 352,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 465,
+      "id": 352,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 352,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 475,
+      "id": 212,
+      "team": "A",
+      "cause": "head-to-head",
+      "actor": 526,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 475,
+      "id": 526,
+      "team": "B",
+      "cause": "head-to-head",
+      "actor": 526,
+      "decision_round": null,
+      "indicator": null
+    },
+    {
+      "round": 479,
+      "id": 562,
+      "team": "A",
+      "cause": "self",
+      "actor": 562,
+      "decision_round": null,
+      "indicator": null
+    }
+  ]
+}

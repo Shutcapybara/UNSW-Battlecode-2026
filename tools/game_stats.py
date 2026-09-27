@@ -202,7 +202,8 @@ def comparison_records(manifest, results):
             map_sha256=manifest["hashes"][f'maps/{game["map"]}.map'],
             mode="sandbox" if manifest["settings"]["sandbox"] else "native",
             runner_version=manifest["runner_version"], outcome=game["outcome"],
-            rounds=game.get("rounds"), runtime_faults=game.get("runtime_faults")))
+            rounds=game.get("rounds"), runtime_faults=game.get("runtime_faults"),
+            seed=game.get("seed")))
     return records
 
 

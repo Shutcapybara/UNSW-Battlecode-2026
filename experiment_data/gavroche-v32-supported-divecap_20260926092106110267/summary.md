@@ -1,6 +1,6 @@
 # Comparison: gavroche-v32-supported-divecap
 
-interrupted: 43/96 games recorded; 23W 0D 20L. 0 game errors, 0 analysis errors, 0 reported bot runtime faults.
+complete: 96/96 games recorded; 55W 0D 41L. 0 game errors, 0 analysis errors, 0 reported bot runtime faults.
 
 All W/D/L and scores are from the candidate's perspective. Score = (wins + 0.5 × draws) / played. Errors are not draws and are excluded from scores.
 
@@ -13,8 +13,8 @@ Curves are start-of-round snapshots plus the final state. Event counters are cum
 | gavroche-v31-saturated-divecap | 5 | 0 | 7 | 0 | 0 |
 | gavroche-v23-selective-sprint-cap | 9 | 0 | 3 | 0 | 0 |
 | gavroche-v17-half-gradient | 5 | 0 | 7 | 0 | 0 |
-| sinbad-v07-divecap | 4 | 0 | 3 | 0 | 5 |
-| vn-x06-info-tf-05 | 0 | 0 | 0 | 0 | 12 |
-| vn-x06-info-grad1 | 0 | 0 | 0 | 0 | 12 |
-| von_neumann-x04-support | 0 | 0 | 0 | 0 | 12 |
-| monte_christo-x12-remote-density | 0 | 0 | 0 | 0 | 12 |
+| sinbad-v07-divecap | 6 | 0 | 6 | 0 | 0 |
+| vn-x06-info-tf-05 | 5 | 0 | 7 | 0 | 0 |
+| vn-x06-info-grad1 | 8 | 0 | 4 | 0 | 0 |
+| von_neumann-x04-support | 10 | 0 | 2 | 0 | 0 |
+| monte_christo-x12-remote-density | 7 | 0 | 5 | 0 | 0 |

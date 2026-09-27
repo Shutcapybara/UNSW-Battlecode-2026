@@ -32,7 +32,8 @@ from bots.tournament import MatchWorkers, play, atomic_write
 from comparison_metrics import analyse, chart, NOTES
 from game_stats import comparison_records, ensure_run_id, publish_games
 
-DEFAULTS = dict(sides=["A", "B"], jobs=4, timeout_seconds=600, sandbox=False, control_every=10)
+DEFAULTS = dict(sides=["A", "B"], jobs=4, timeout_seconds=600, sandbox=False,
+                control_every=10, seed_policy="random")
 IGNORED = (".git", ".unswbc-build", "__pycache__", "build", ".DS_Store")
 FAULT = re.compile(r'^round \d+: bot \d+ \(team [AB]\) (?!died:).*(?:exited|timed out|ran out of time|timeout|broken pipe|failed).*$', re.M)
 
@@ -74,6 +75,8 @@ def read_config(path, candidate):
         raise ValueError("run.timeout_seconds must be finite and positive")
     if type(settings["sandbox"]) is not bool:
         raise ValueError("run.sandbox must be true or false")
+    if settings["seed_policy"] not in ("random", "fixture_hash_v1"):
+        raise ValueError('run.seed_policy must be "random" or "fixture_hash_v1"')
     sides = settings["sides"]
     if not isinstance(sides, list) or not sides or any(s not in ("A", "B") for s in sides) or len(set(sides)) != len(sides):
         raise ValueError('run.sides must contain "A", "B", or both, without duplicates')
@@ -170,7 +173,8 @@ def save_report(out, manifest, results, status):
             f'{progress["runtime_faults"]} reported bot runtime faults.\n',
             'All W/D/L and scores are from the candidate\'s perspective. Score = (wins + 0.5 × draws) / played. '
             'Errors are not draws and are excluded from scores.\n',
-            f'Mode: {"judge sandbox" if manifest["settings"]["sandbox"] else "native (not judge CPU validation)"}.\n', NOTES,
+            f'Mode: {"judge sandbox" if manifest["settings"]["sandbox"] else "native (not judge CPU validation)"}. '
+            f'Seed policy: {manifest["settings"].get("seed_policy", "random")}.\n', NOTES,
             '\n| Opponent | W | D | L | Errors | Pending |\n|---|---:|---:|---:|---:|---:|']
     text += [f'| {r["opponent"]} | {r["wins"]} | {r["draws"]} | {r["losses"]} | {r["errors"]} | {r["pending"]} |' for r in summaries["bot"]]
     atomic_write(out / "summary.md", "\n".join(text) + "\n")
@@ -192,7 +196,8 @@ def save_report(out, manifest, results, status):
             if r["opponent"] != opponent:
                 continue
             result = "error" if r["outcome"] == "error" else "draw" if r["outcome"] == "draw" else "win" if r["outcome"] == r["side"] else "loss"
-            links = " · ".join(f'<a href="{quote(r[k])}">{k}</a>' for k in ("replay", "graph", "statistics", "series", "log") if r.get(k))
+            links = " · ".join(f'<a href="{quote(r[k])}">{k}</a>' for k in ("replay", "graph", "statistics", "series", "log")
+                                if r.get(k) and (out / r[k]).is_file())
             error = r.get("error") or r.get("analysis_error")
             if error:
                 links += '<br>' + escape(error)
@@ -241,9 +246,16 @@ def match(out, manifest, fixture, workers):
     for sub in ("replays", "graphs", "stats"):
         (folder / sub).mkdir(parents=True, exist_ok=True)
     label = slug(board) + "-candidate-" + side
+    seed = None
+    if settings.get("seed_policy", "random") == "fixture_hash_v1":
+        material = f"gavroche-comparison-seed-v1\0{opponent}\0{board}".encode()
+        seed = int.from_bytes(hashlib.sha256(material).digest()[:8], "big")
     row = play(manifest["runner"], out / "sources/maps" / (board + ".map"), a, b,
-               folder / "replays", label, settings["timeout_seconds"], True, workers, settings["sandbox"])
+               folder / "replays", label, settings["timeout_seconds"], True, workers,
+               settings["sandbox"], seed=seed)
     row.update(opponent=opponent, side=side, analysis_error=None)
+    if seed is not None:
+        row["seed"] = str(seed)
     for key in ("log", "replay"):
         if row[key]:
             row[key] = str((folder / "replays" / row[key]).relative_to(out))
@@ -333,8 +345,11 @@ def main(argv=None):
         print(f"Game ledger error: {exc}. Results preserved; resolve the ledger error and resume.", file=sys.stderr)
         return 1
     by_fixture = {(r["opponent"], r["map"], r["side"]): r for r in results}
+    # A successful match stays complete even if its replay artifact was not
+    # transferred. Replaying it would use a fresh random seed and replace the
+    # recorded sample, because unswbc does not seed matches by default.
     pending = iter(f for f in fixtures if f not in by_fixture or by_fixture[f]["outcome"] == "error"
-                   or by_fixture[f].get("analysis_error") or not (out / by_fixture[f].get("replay", "missing")).is_file())
+                   or by_fixture[f].get("analysis_error"))
     save_report(out, manifest, results, "running")
     with tempfile.TemporaryDirectory(prefix="comparison-builds-") as workspace:
         workers = MatchWorkers(workspace)
