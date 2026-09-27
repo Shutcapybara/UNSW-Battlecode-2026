@@ -131,6 +131,7 @@ Current strategy lineage:
 | `hydra-v08-claims` | v07 + whole-swarm r400 farm switch + owns_pearl growth BFS (not promoted) |
 | `hydra-v09-lanchester` | v08 + retreat-while-outnumbered evasion (not promoted) |
 | `hydra-v10-farmclean` | v08 minus stalker-flee in farm mode (not promoted; field 150 vs v06 159) |
+| `loki-v01-teacher-ranker` | Bifröst v01 fork with an exported gradient-boosted candidate ranker trained on ranked submission #7771 replays; action-imitation holdouts recorded, game-benchmarked status pending |
 
 ## Iteration loop (kraken)
 
@@ -148,3 +149,50 @@ python3 bots/kbench.py compare build/kbench-bench-A build/kbench-bench-B
 Long runs go through `nohup`; screen is non-sandbox (fast), bench and pool
 are sandboxed (judge-true). One hypothesis per variant; see the framework
 doc for the full rules.
+
+## Retrieve server battles and replays for a submission version
+
+Use the submission ID as the identity of a version. The active version can
+change, so do not infer which version played a battle from the team's current
+active submission or from the battle's date alone.
+
+1. Confirm that the local `unswbc` credentials belong to the intended team with
+   `./.venv/bin/unswbc auth status`. Use the credential already stored by
+   `unswbc` (under `~/.unswbc/keys.json` for this setup); never print, log,
+   commit, or paste the key.
+2. Call `GET https://game.battlecode.au/api/v1/submissions` with
+   `Authorization: Bearer <team-key>`. Find the exact submission name and
+   record its numeric ID and upload time. The API returns all versions and
+   their W/D/L totals. The official endpoint reference is
+   [Battlecode API docs](https://game.battlecode.au/docs/api).
+3. Enumerate the team's battles. `GET /battles?limit=200` returns newest first
+   and is capped at 200. In current testing, `offset` and `page` query
+   parameters did not advance this API result. For older battles, use the
+   public site's paginated battle list:
+   `https://game.battlecode.au/battles?teams=<team-id>&page=<page-number>`.
+   The page size was 10 in the 2026-09-27 check. For Just Keep Swimming, the
+   team ID is `7`, so page 2 is
+   `https://game.battlecode.au/battles?teams=7&page=2`. Read the site's page
+   count each time; it can grow. The public list has no submission-version
+   filter, so collect its battle IDs across every page and deduplicate them.
+4. For each candidate, call `GET /battles/<battle-id>` and inspect the games
+   and both teams' submission IDs. Keep a game only when Just Keep Swimming's
+   submission ID exactly equals the target ID. This is the reliable version
+   match. Skip queued or unfinished games; the replay is available only after
+   a game finishes. Compare the matched games' outcomes with the submission's
+   W/D/L totals as a completeness check, allowing for totals to update while
+   battles are still running.
+5. For each finished game with a replay, download
+   `GET /battles/<game-id>/replay` and save it as
+   `replay/<submission-name>/<game-id>.replay`. The replay endpoint redirects
+   to a temporary signed URL. The team key must not be forwarded to that URL;
+   the official API docs note that `curl -L` strips the header when following
+   the cross-host redirect, while Python's `urllib` does not. For another HTTP
+   client, explicitly suppress the `Authorization` header after redirects.
+   Keep requests below the API limit of 120 per minute and honor `Retry-After`
+   on HTTP 429. Root `.gitignore` ignores `*.replay` files.
+
+The installed `unswbc` CLI can manage authentication and local replays but has
+no command for listing server battles by submission ID or downloading a whole
+version's replay set. Use the API for exact submission/game metadata and the
+public pagination for history beyond the API's 200-battle window.

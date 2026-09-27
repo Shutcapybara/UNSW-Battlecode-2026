@@ -1,0 +1,52 @@
+# Bifrost V01: 22 available curated primary references, 8 ranking-frontier
+# families, and the active Gavroche V54 parent control.
+# Six established V54 maps, both sides, deterministic fixture seeds.
+bots = [
+  "bots/gavroche-v54-sparse-room",
+  "bots/gavroche-v32-supported-divecap",
+  "bots/witten-x01-portal-memory",
+  "bots/newton-x10-candidate",
+  "bots/witten-x03-confirmed-fastbed",
+  "bots/scholze-v03-portal-memory",
+  "bots/witten-x02-fastbed-contest",
+  "bots/gavroche-v17-half-gradient",
+  "bots/fafnir-v01-phalanx",
+  "bots/serre-v01-foundation",
+  "bots/sinbad-v07-divecap",
+  "bots/von_neumann-x03-balance",
+  "bots/von_neumann-x07-quiet",
+  "bots/von_neumann-x04-support",
+  "bots/tew-v12-mid-support",
+  "bots/fry-v13-stateful-size-aware-2",
+  "bots/avery-v09-frontier-bfs",
+  "bots/valjean-v01-portal-memory",
+  "bots/monte_christo-x12-remote-density",
+  "bots/hydra-v01-core",
+  "bots/porthos-x04-policy",
+  "bots/godel-x02-pacifist",
+  "bots/godel-x14-tb25-ps2-05",
+  "bots/avery-v08-crown-race",
+  "bots/avery-v11-maze-sweep",
+  "bots/godel-x19-ps1-090",
+  "bots/sinbad-v03-hunt",
+  "bots/tew-v09-low-gate",
+  "bots/monte_christo-v03-logistic-risk",
+  "bots/godel-x24-gm2",
+  "bots/godel-x03-berserk",
+]
+maps = [
+  "maps/autarky.map",
+  "maps/big_empty.map",
+  "maps/queen_of_spades.map",
+  "maps/schooltime.map",
+  "maps/stronghold.map",
+  "maps/trauma.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 8
+timeout_seconds = 600
+sandbox = false
+control_every = 10
+seed_policy = "fixture_hash_v1"
