@@ -79,3 +79,6 @@ __pycache__/
 # Generated game statistics ledger and local writer lock.
 /game_stats.parquet
 /game_stats/.write.lock
+
+# Local credentials (never commit)
+.battlecode-api-key
