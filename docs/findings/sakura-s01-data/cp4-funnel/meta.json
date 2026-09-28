@@ -1,0 +1,17 @@
+{
+ "cand": "sakura-s01-swarm-dissolve",
+ "pool": [
+  "sinbad-v07-divecap"
+ ],
+ "maps": [
+  "portals",
+  "slithery_fight"
+ ],
+ "seeds": [
+  1,
+  2
+ ],
+ "toolkit": "/Users/alik/.venvs/bc122/bin/unswbc",
+ "sandbox": false,
+ "started": "20260928-223853"
+}

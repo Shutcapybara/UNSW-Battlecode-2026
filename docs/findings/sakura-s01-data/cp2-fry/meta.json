@@ -1,0 +1,24 @@
+{
+ "cand": "sakura-s01-swarm-dissolve",
+ "pool": [
+  "fry-v14-stateful-size-aware-3"
+ ],
+ "maps": [
+  "schooltime",
+  "portals",
+  "slithery_fight",
+  "queen_of_spades",
+  "default",
+  "trophy",
+  "dilemma",
+  "autarky",
+  "devil",
+  "trauma"
+ ],
+ "seeds": [
+  1
+ ],
+ "toolkit": "/Users/alik/.venvs/bc122/bin/unswbc",
+ "sandbox": false,
+ "started": "20260928-190000"
+}
