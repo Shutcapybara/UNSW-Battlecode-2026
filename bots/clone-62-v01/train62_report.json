@@ -1,0 +1,210 @@
+{
+ "cap": "m",
+ "test_acc": 0.8044,
+ "test_recall": {
+  "F": 0.914,
+  "L": 0.684,
+  "R": 0.676,
+  "split": 0.807
+ },
+ "n_test": 83839,
+ "games": {
+  "train": 91,
+  "val": 13,
+  "test": 26
+ },
+ "split_rule": {
+  "4": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 6564,
+   "parent_keeps": 2
+  },
+  "5": {
+   "median_n": 3,
+   "mode_n": 3,
+   "n": 879,
+   "parent_keeps": 2
+  },
+  "6": {
+   "median_n": 4,
+   "mode_n": 4,
+   "n": 634,
+   "parent_keeps": 2
+  },
+  "7": {
+   "median_n": 5,
+   "mode_n": 5,
+   "n": 265,
+   "parent_keeps": 2
+  },
+  "8": {
+   "median_n": 6,
+   "mode_n": 6,
+   "n": 275,
+   "parent_keeps": 2
+  },
+  "9": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 239,
+   "parent_keeps": 7
+  },
+  "10": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 119,
+   "parent_keeps": 8
+  },
+  "11": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 99,
+   "parent_keeps": 9
+  },
+  "12": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 58,
+   "parent_keeps": 10
+  },
+  "13": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 36,
+   "parent_keeps": 11
+  },
+  "14": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 36,
+   "parent_keeps": 12
+  },
+  "15": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 20,
+   "parent_keeps": 13
+  },
+  "16": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 16,
+   "parent_keeps": 14
+  },
+  "17": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 12,
+   "parent_keeps": 15
+  },
+  "18": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 18,
+   "parent_keeps": 16
+  },
+  "19": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 5,
+   "parent_keeps": 17
+  },
+  "20": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 3,
+   "parent_keeps": 18
+  },
+  "21": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 4,
+   "parent_keeps": 19
+  },
+  "22": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 3,
+   "parent_keeps": 20
+  },
+  "23": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 3,
+   "parent_keeps": 21
+  },
+  "24": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 3,
+   "parent_keeps": 22
+  },
+  "25": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 3,
+   "parent_keeps": 23
+  },
+  "26": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 1,
+   "parent_keeps": 24
+  },
+  "27": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 2,
+   "parent_keeps": 25
+  },
+  "28": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 1,
+   "parent_keeps": 26
+  },
+  "30": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 1,
+   "parent_keeps": 28
+  },
+  "31": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 1,
+   "parent_keeps": 29
+  },
+  "33": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 1,
+   "parent_keeps": 31
+  },
+  "35": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 1,
+   "parent_keeps": 33
+  },
+  "38": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 1,
+   "parent_keeps": 36
+  },
+  "41": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 1,
+   "parent_keeps": 39
+  },
+  "57": {
+   "median_n": 2,
+   "mode_n": 2,
+   "n": 1,
+   "parent_keeps": 55
+  }
+ }
+}

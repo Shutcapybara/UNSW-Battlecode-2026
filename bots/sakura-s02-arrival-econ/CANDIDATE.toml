@@ -1,0 +1,19 @@
+name = "sakura-s02-arrival-econ"
+lineage = "sakura"
+author = "glm/sakura/session-s02"
+language = "python"
+lineage_parent = "yuna-v05-core"
+credits = "chaewon-y04-probe (atlas + solo-ray portal probe + newborn neck fix), chaewon-y05-hold (HOLD packet), fenrir-v18-arrival-ready-beds (arrival-ready bed valuation idea)"
+hypothesis = "Economy levers on a band host -- arrival-ready bed valuation, confirmed-pearl sprint funding, contested-pearl appetite -- raise units at r100 and total length at r250 on the ten public maps against band-class opponents without raising deaths; the chaewon portal-safety stack (atlas, neck fix, probe, HOLD) and a mid-game portal-dive bias on portal-pair-rich maps cut portal-step deaths."
+mechanism = "sk_econ: beds spawning later than arrival decay over sk_ready_slack=4 (fenrir-v18's lever) with a 1.15 premium when the pearl exists by arrival; straight/one-bend 2-3 step sprints onto confirmed pearls funded +2.0 when an enemy head is within 4 of the pearl (+0.6 tempo otherwise); enemy ownership discount 0.6 -> 0.85 while r<100 and units<26. sk_safety: ten-public-map atlas matched on the first view, neck-by-adjacency newborn reconstruction, one solo ray through an adjacent portal carrying the y05 HOLD packet (my head cell + round), echo read next turn. sk_explore: on maps with >= 6 known portal pairs, mid/end blind-transit risk 0.3/0.5 -> 0.2/0.35 and unpaired-portal target value 3.0 -> 4.5 in the mid game. No production or conversion clock was moved."
+expected_change = "units_r100 >= base + 4 and total_r250 >= base + 15 in exact pairs vs the S2 panel; self+wall deaths <= 5 per 1k dragon-turns (base medians reported per map); portal-step deaths per game down >= 50% on Default/Schooltime/Portals; net pairs >= +3 on Portals/Slithery/Trauma for the explore arm."
+priority = 300
+supersedes = "sakura-s01-swarm-dissolve"
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:atlas", 0, 3, 1], ["ACT:probe", 0, 500, 20], ["ACT:sprint", 0, 250, 10], ["ACT:bed", 0, 250, 10], ["ACT:dive", 60, 400, 1]]
+
+[local_evidence]
+refs = ["build/sakura-s02/{base,econ,safety,explore,all}-s1/results.jsonl (via tools/sakura/panel.py)", "docs/findings/2026-09-29-sakura-s02-arrival-econ.md"]
+summary = "seed-1 paired panels (97-100 pairs/arm) vs fenrir-v18/sinbad-v07/gavroche-v32/m01-mimic/y05-core/chaewon-y04 (+clone-62 for base/all), unswbc 1.2.2: all = 40.0/100, net -22 (sign p~7e-4) vs base 64.0; H-econ and H-portal-safety falsified, H-explore +3 exactly on its named maps; metered 1.0.0 p99 57.9-63.0M, max 81.5M -- the hub gate FAILS marginally (Slithery max; p99 on 3 fixtures). Not a promotion candidate; a complete honest measurement."

@@ -32,10 +32,12 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(ROOT / "tools" / "ouroboros"))
 import replaystats  # noqa: E402
+import mapview  # noqa: E402
 
 LIVE_MAPS = ["schooltime", "portals", "slithery_fight", "queen_of_spades", "default",
              "trophy", "dilemma", "autarky", "devil", "trauma"]
 OUTCOME = re.compile(r"^(?:team ([AB]) wins|draw) after (\d+) rounds", re.MULTILINE)
+DIRNUM = {"north": 0, "east": 1, "south": 2, "west": 3}
 ANSI = re.compile(r"\x1b\[[0-9;]*m")
 
 
@@ -44,6 +46,8 @@ def contract_stats(rep):
     """Per-team activation-contract statistics from a replay event stream."""
     team_of = {}
     body = {}
+    headxy = {}
+    lastact = {}
     nid = 0
     for line in rep.map.splitlines():
         if line.startswith("DRAGON "):
@@ -53,12 +57,26 @@ def contract_stats(rep):
             cells = [(int(parts[3 + 2 * i]), int(parts[4 + 2 * i])) for i in range(n)]
             team_of[nid] = team
             body[nid] = collections.deque(cells)
+            headxy[nid] = cells[0]
             nid += 1
     out = {t: dict(turns=0, deaths_wall=0, deaths_self=0, deaths_body=0, deaths_h2h=0,
                    deaths_noaction=0, splits=0, newborn_deaths10=0, births=0,
-                   first_pearl=10 ** 9, pearls=0,
+                   first_pearl=10 ** 9, pearls=0, portal_deaths=0, mc_errors=0,
                    act=collections.Counter(), act_first={}, act_last={},
                    diss_delivered=0, curve=[]) for t in "AB"}
+    mv = mapview.load_map(rep.map)
+    PH, PV = mv["portal_h"], mv["portal_v"]
+    W_, H_ = mv["W"], mv["H"]
+
+    def portal_step(hx, hy, d):
+        # did a move in direction d from (hx, hy) enter a portal edge?
+        if d == 0:
+            return (hx, hy) in PH
+        if d == 2:
+            return (hx, (hy + 1) % H_) in PH
+        if d == 3:
+            return (hx, hy) in PV
+        return ((hx + 1) % W_, hy) in PV
     rnd = 0
     actor = -1
     born = {}
@@ -90,6 +108,9 @@ def contract_stats(rep):
                 out[t]["turns"] += 1
         elif w == "dragonLog":
             txt = str(ev.dragonLog.text)
+            if txt.startswith("MC_ERROR"):
+                out[team_of.get(ev.dragonLog.id, "A")]["mc_errors"] = \
+                    out[team_of.get(ev.dragonLog.id, "A")].get("mc_errors", 0) + 1
             if txt.startswith("ACT:"):
                 t = team_of.get(ev.dragonLog.id)
                 if t:
@@ -98,6 +119,18 @@ def contract_stats(rep):
                     if tag not in out[t]["act_first"]:
                         out[t]["act_first"][tag] = rnd
                     out[t]["act_last"][tag] = rnd
+        elif w == "dragonAction":
+            a = ev.dragonAction
+            la = None
+            try:
+                if a.action.which() == "move" and len(a.action.move):
+                    la = DIRNUM[str(a.action.move[0])]
+            except Exception:
+                la = None
+            lastact[a.id] = la
+        elif w == "dragonUpdate":
+            u = ev.dragonUpdate
+            headxy[u.id] = (u.head.x, u.head.y)
         elif w == "tileChange":
             tc = ev.tileChange
             if not tc.hasPearl:
@@ -112,6 +145,10 @@ def contract_stats(rep):
             team_of[s.childId] = team
             body[s.parentId] = collections.deque((p.x, p.y) for p in s.parentBody)
             body[s.childId] = collections.deque((p.x, p.y) for p in s.childBody)
+            if s.parentBody:
+                headxy[s.parentId] = (s.parentBody[0].x, s.parentBody[0].y)
+            if s.childBody:
+                headxy[s.childId] = (s.childBody[0].x, s.childBody[0].y)
             alive.add(s.childId)
             born[s.childId] = rnd
             out[team]["splits"] += 1
@@ -124,6 +161,12 @@ def contract_stats(rep):
                 key = reasons.get(str(d.reason))
                 if key:
                     out[team][key] += 1
+                la = lastact.get(i)
+                if la is not None and key in ("deaths_wall", "deaths_self",
+                                              "deaths_body", "deaths_h2h"):
+                    hh = headxy.get(i)
+                    if hh and portal_step(hh[0], hh[1], la):
+                        out[team]["portal_deaths"] += 1
                 b = born.get(i)
                 if b is not None and rnd - b <= 10:
                     out[team]["newborn_deaths10"] += 1
@@ -139,9 +182,12 @@ def contract_stats(rep):
                                             / max(1, d["births"]), 1)
         d["first_pearl"] = d["first_pearl"] if d["first_pearl"] < 10 ** 9 else -1
         cv = d.pop("curve")
-        for want, key in ((100, "units_r100"), (250, "units_r250")):
+        for want, key in ((25, "units_r25"), (50, "units_r50"),
+                          (100, "units_r100"), (250, "units_r250")):
             row = next((r for r in cv if r[0] == want), None)
             d[key] = row[1] if row else -1
+        row = next((r for r in cv if r[0] == 250), None)
+        d["total_r250"] = row[2] if row else -1
         for want, key in ((400, "longest_r400"), (500, "longest_r499")):
             row = next((r for r in cv if r[0] == want), cv[-1] if cv else None)
             d[key] = row[3] if row else -1
@@ -357,9 +403,10 @@ def cmd_report(args):
         for r in rows:
             ct = r.get("contract", {}).get(r["side"])
             if ct:
-                for k in ("units_r100", "units_r250", "longest_r400", "longest_r499",
+                for k in ("units_r25", "units_r50", "units_r100", "units_r250",
+                          "total_r250", "longest_r400", "longest_r499",
                           "wall_self_per_1k", "all_deaths_per_1k", "newborn_deaths_per_100",
-                          "first_pearl", "pearls"):
+                          "first_pearl", "pearls", "portal_deaths"):
                     med[k].append(ct[k])
         if med:
             print("  medians: " + "  ".join("%s=%s" % (k, sorted(v)[len(v) // 2])

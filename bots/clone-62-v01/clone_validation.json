@@ -1,0 +1,46 @@
+{
+ "target": {
+  "units_r100": 18.0,
+  "total_r250": 41.5,
+  "longest_r400": 5.0
+ },
+ "target_sd": {
+  "units_r100": 16.86,
+  "total_r250": 54.34,
+  "longest_r400": 3.2
+ },
+ "by_opp": {
+  "ein-dog-v01-control": {
+   "n": 20,
+   "median": {
+    "units_r100": 12.5,
+    "total_r250": 22.5,
+    "longest_r400": 5.0,
+    "splits": 71.0,
+    "pearls": 234.0
+   },
+   "z": {
+    "units_r100": 0.33,
+    "total_r250": 0.35,
+    "longest_r400": 0.0
+   },
+   "z_max": 0.35
+  },
+  "yuna-v05-core": {
+   "n": 20,
+   "median": {
+    "units_r100": 8.0,
+    "total_r250": 4.0,
+    "longest_r400": 2.0,
+    "splits": 58.0,
+    "pearls": 149.5
+   },
+   "z": {
+    "units_r100": 0.59,
+    "total_r250": 0.69,
+    "longest_r400": 0.94
+   },
+   "z_max": 0.94
+  }
+ }
+}
