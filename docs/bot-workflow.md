@@ -128,6 +128,18 @@ active submission or from the battle's date alone.
    Keep requests below the API limit of 120 per minute and honor `Retry-After`
    on HTTP 429. Root `.gitignore` ignores `*.replay` files.
 
+The maintained downloader enforces this identity check directly:
+
+```sh
+python3 tools/download_team_games.py "Just Keep Swimming" \
+  --submission 8751 --out public_replays
+```
+
+`--submission` accepts the exact submission name or numeric submission ID. It
+fetches each battle's metadata first, downloads only games where the target
+team's submission ID matches exactly, and writes `download_manifest.json` plus
+one provenance JSON file beside each replay.
+
 The installed `unswbc` CLI can manage authentication and local replays but has
 no command for listing server battles by submission ID or downloading a whole
 version's replay set. Use the API for exact submission/game metadata and the

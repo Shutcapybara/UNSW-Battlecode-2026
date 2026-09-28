@@ -74,3 +74,25 @@ def test_download_does_not_leak_key_to_signed_url(tmp_path, monkeypatch):
     MODULE.download_replay(10, destination, "https://game.battlecode.au", "bc_test")
     assert destination.read_bytes() == b"replay-bytes"
     assert seen_blob_authorization == [None]
+
+
+def test_submission_id_for_team_reads_battle_game_sides():
+    game = {
+        "id": 42,
+        "teamA": {"id": 7, "submissionId": 8751},
+        "teamB": {"id": 8, "submissionId": 9001},
+    }
+    assert MODULE.submission_id_for_team(game, 7) == 8751
+    assert MODULE.submission_id_for_team(game, 8) == 9001
+    assert MODULE.submission_id_for_team(game, 9) is None
+
+
+def test_matching_games_filters_by_exact_submission(monkeypatch):
+    payloads = {
+        10: {"games": [{"id": 101, "teamA": {"id": 7, "submissionId": 8751}}]},
+        11: {"games": [{"id": 111, "teamA": {"id": 7, "submissionId": 8752}}]},
+    }
+    monkeypatch.setattr(MODULE, "get_json", lambda _base, path, _key: payloads[int(path.rsplit('/', 1)[-1])])
+    assert MODULE.matching_games([10, 11], 7, 8751, "https://example.test", "key") == [
+        {"game_id": 101, "battle_id": 10, "metadata": payloads[10]["games"][0]}
+    ]
