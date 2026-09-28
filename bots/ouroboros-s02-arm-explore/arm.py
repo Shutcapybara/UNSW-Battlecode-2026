@@ -1,0 +1,1 @@
+ARM = {"bed_atlas": 0, "atlas_far": 0, "pre_wait": 0, "sprint_pearl": 0, "v_contest": 0.0, "enemy_disc": 0.6, "atlas_on": 0, "probe_on": 0, "infer_body": 0}  # s02 ablation: exploration only (no atlas)

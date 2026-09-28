@@ -1,0 +1,70 @@
+[
+ {
+  "map": "schooltime",
+  "side": "A",
+  "turns": 24372,
+  "max": 56.419872,
+  "p99": 44.450892,
+  "p50": 17.657434,
+  "faults": 0,
+  "result": "team A wins after 500 rounds (on length) (6m18s)",
+  "secs": 383
+ },
+ {
+  "map": "slithery_fight",
+  "side": "A",
+  "turns": 24383,
+  "max": 71.616803,
+  "p99": 48.636812,
+  "p50": 17.719472,
+  "faults": 0,
+  "result": "team B wins after 500 rounds (on length) (17m32s)",
+  "secs": 1055
+ }
+][
+ {
+  "map": "portals",
+  "side": "B",
+  "turns": 9436,
+  "max": 74.837487,
+  "p99": 50.360677,
+  "p50": 19.364393,
+  "faults": 0,
+  "result": "team B wins after 500 rounds (on length) (8m04s)",
+  "secs": 488
+ },
+ {
+  "map": "trauma",
+  "side": "B",
+  "turns": 7304,
+  "max": 65.345288,
+  "p99": 45.498304,
+  "p50": 16.442153,
+  "faults": 0,
+  "result": "team A wins after 500 rounds (on length) (3m29s)",
+  "secs": 212
+ }
+][
+ {
+  "map": "portals",
+  "side": "B",
+  "turns": 10245,
+  "max": 80.207917,
+  "p99": 50.810686,
+  "p50": 19.61814,
+  "faults": 0,
+  "result": "draw after 500 rounds (equal length) (8m33s)",
+  "secs": 539
+ },
+ {
+  "map": "trauma",
+  "side": "B",
+  "turns": 8584,
+  "max": 56.371021,
+  "p99": 45.397963,
+  "p50": 16.501016,
+  "faults": 0,
+  "result": "team A wins after 500 rounds (on length) (3m49s)",
+  "secs": 233
+ }
+]

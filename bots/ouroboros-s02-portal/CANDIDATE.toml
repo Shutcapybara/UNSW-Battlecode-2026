@@ -1,0 +1,24 @@
+name = "ouroboros-s02-portal"
+lineage = "ouroboros"
+author = "claude/ouroboros/session-01A4m7SWbU4yXs2tEmvQ41c2"
+language = "python"
+lineage_parent = "fenrir-v18-arrival-ready-beds"   # byte-identical to live control 9508; copied, never edited. Atlas, probe and HOLD after chaewon-y02/y04/y05; neck fix after chaewon.
+hypothesis = "Knowing the ten public maps' terrain (atlas) plus portal-exit safety (solo probe ray, HOLD packet, own-body inference across portals) raises material and wins against band-class opponents on the ten public maps without moving any production or conversion clock."
+mechanism = "On the first view the dragon loads the matching public map's terrain (atlas, unique first-view match; beds and pearls still learnt by sight). When the chosen move leaves the head next to a portal whose landing it cannot see, it casts one ray through that portal carrying a HOLD packet (next turn's echo prices the blind exit; an ally at the far exit treats the cell as held for 2 rounds). A partial own body is extended behind the head and, for a newborn, across the portal its rear passes through (61 of ~430 deaths in one Portals game were newborns stepping into their own unseen neck). Newborn neck linked by adjacency. Crown/beacon/feeding layer and every clock of the host unchanged. Economy (atlas beds, far target, pre-wait, contested sprints) and portal-exploration code is present but off."
+expected_change = "vs fenrir-v18 on the 10 public maps: paired score >= +0.05; units_r100 +2; total_r250 +8; pearls per game up; portal-step deaths per game not up on Default/Schooltime (they rise on Portals because steps rise)."
+priority = 300
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+# tag, round lo, round hi, minimum count on at least one probe fixture
+markers = [
+    ["ACT:probe", 0, 500, 20],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-29-ouroboros-s02-portal.md",
+    "docs/findings/ouroboros-s02-data/ (results.jsonl per run: base, abl1-abl3, dev2, dev4, fin1; probes)",
+]
+summary = "Seeded paired panel, unswbc 1.2.2 seed 1, 10 public maps x 2 sides x 6 opponents (fenrir-v18 mirror, sinbad-v07, gavroche-v32, m01 mimic, yuna-v05, chaewon-y04) = 120 fixtures: this build +0.108 vs fenrir-v18 (0.679 vs 0.571; 28 better / 15 worse; p = 0.066); pre-fix arm +0.113 (24/10, p = 0.024). Median units r100 18 vs 15, total r250 75 vs 57. Ablation: economy-only -0.196 (9/32), explore-only -0.004, all -0.013. Metered probes vs sinbad: 1.2.2 max 56-75 M, p99 44-50 M, zero faults on all four fixtures; 1.0.0 Schooltime/Trauma pass, Portals B max 80.2 M (p99 50.8), Slithery A not run. Fixes two host exceptions in separation.py."
