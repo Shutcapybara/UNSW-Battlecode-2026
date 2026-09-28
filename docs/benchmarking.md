@@ -7,8 +7,9 @@ This checkout has three supported comparison paths:
   [`comparison.toml`](../comparison.toml) is the current five-opponent default.
 - [`bots/tournament.py`](../bots/tournament.py) schedules ordered bot pairs on
   selected maps. Its default discovery includes every `bots/*/bot.toml` and
-  every `.map` directly under `maps/`, so pass explicit selections for routine
-  work. It does not discover `maps/new/` recursively.
+  every `.map` recursively under `maps/`, including the 20 custom maps in
+  `maps/new/`. Pass explicit selections for routine work. Nested map selections
+  use paths relative to `maps/`, such as `new/mc26_archipelago`.
 
 The recovered adaptive collector and ratings tools are available again as
 [`tools/benchmark.py`](../tools/benchmark.py) and

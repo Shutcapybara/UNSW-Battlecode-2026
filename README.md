@@ -2,15 +2,18 @@
 
 Each directory under `bots/` with a `bot.toml` is a standalone bot snapshot.
 Most are preserved experiment versions so comparisons can use the exact source
-that was measured. See [the artifact policy](docs/artifact-policy.md),
-[current status](docs/ACTIVE.md), and the family notes under `docs/` before
-changing a versioned bot.
+that was measured. See [the artifact policy](docs/artifact-policy.md) and the
+family notes under `docs/` before changing a versioned bot.
+
+[`FRONTIER.md`](FRONTIER.md) is the canonical registry of active candidates,
+frontier status, estimated ELOs, comparison defaults, and deployment status.
 
 ## Run a bounded tournament
 
 The tournament runner discovers bot manifests under `bots/` and map files
-directly under `maps/`. Because this repository contains hundreds of historical
-bot snapshots, select a small roster explicitly:
+recursively under `maps/`, including the custom bundle in `maps/new/`. Because
+this repository contains hundreds of historical bot snapshots, select a small
+roster explicitly:
 
 ```sh
 python3 bots/tournament.py \

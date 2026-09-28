@@ -25,7 +25,7 @@ At startup, and between cycles, inspect:
 
 Record a data cutoff, source hashes, map hashes, runtime/engine identity, outcome/replay coverage, weighting version and evidence references. Resolve exact-source aliases; retain separate source revisions. Frozen snapshots outrank a matching directory name. Changed source, engine, map or weights require a new comparison context.
 
-**Dated starting point, verified 27 September 2026:** the current campaign manifest contains 71 active names, 24 reference opponents and 33 maps. The 24-opponent curation deliberately retained strong, distinct profiles and map specialists. Routine `comparison.toml` still uses the original maps, so an unchanged default comparison does not test the expanded environment. Earlier `docs/ACTIVE.md` and lineage gauntlets describe older fields; they do not define the present roster. Recheck all these facts before using them.
+**Dated starting point, verified 27 September 2026:** the current campaign manifest contains 71 active names, 24 reference opponents and 33 maps. The 24-opponent curation deliberately retained strong, distinct profiles and map specialists. Routine `comparison.toml` still uses the original maps, so an unchanged default comparison does not test the expanded environment. The previous status-page snapshot and lineage gauntlets describe older fields; they do not define the present roster. Recheck all these facts before using them.
 
 Produce a short initial gap shortlist, choose an informative tractable question, and begin the first cycle. Do not spend the entire session inventorying everything or rebuilding working infrastructure.
 

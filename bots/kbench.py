@@ -33,8 +33,9 @@ ROOT = Path(__file__).resolve().parent.parent
 BOTS = ROOT / "bots"
 
 PRESETS = {
-    # Opponents track the cycle gauntlet in docs/ACTIVE.md (cycle 0:
-    # ouroboros-v10, hunter-v14, hunter-v20, fry-v14, kraken-v04).
+    # These opponents match the reference roster in FRONTIER.md, first set for
+    # the cycle-0 gauntlet: ouroboros-v10, hunter-v14, hunter-v20, fry-v14,
+    # kraken-v04.
     "screen": dict(
         maps=["arena", "default_small", "trophy", "queen_of_spades"],
         opponents=["kraken-v04-eval", "fry-v14-stateful-size-aware-3",

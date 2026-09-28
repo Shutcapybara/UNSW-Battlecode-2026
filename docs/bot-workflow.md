@@ -3,7 +3,7 @@
 ## Small Tournament
 
 Start with a bounded dry run so the selected fixture count is clear. This
-example compares two current snapshots across the top-level map bundle:
+example compares two current snapshots across the complete recursive map bundle:
 
 ```sh
 python3 bots/tournament.py \
@@ -60,10 +60,12 @@ deployed bot or promotion status:
 | Hunter | `hunter-v23-supported-arrival-feed` | Latest Hunter snapshot; see the Hunter results in this document. |
 | Gavroche | `gavroche-v66-supported-safe` | Latest numbered Gavroche snapshot. |
 | Skadi | `skadi-v13-clear-exit-only` | Latest Skadi snapshot; see [Skadi notes](skadi.md). |
-| Zach's Bifröst | `bifrost-v20-compact-teacher-ranker` | Separate from Rory's renamed Fenrir line; see [Bifröst notes](bifrost-family.md). |
+| Zach's Bifröst | `bifrost-v29-tuned-net-growth-farms` | Latest numbered snapshot; the family notes identify V01 as the strongest tested candidate. Separate from Rory's renamed Fenrir line; see [Bifröst notes](bifrost-family.md). |
 | Rory's Fenrir | `fenrir-v20-crowded-resource-revalue` | Renamed from Rory's `bifrost-*` snapshots; see [Fenrir notes](fenrir-family.md). |
 
-`docs/ACTIVE.md` records the shared comparison roster and deployment status.
+[`FRONTIER.md`](../FRONTIER.md) is the canonical status page: it tracks active
+candidates, frontier status, source-specific estimated ELOs, the comparison
+roster, and deployment status.
 `docs/strategy-backlog.md` tracks open strategy work; family notes contain
 line-specific results.
 

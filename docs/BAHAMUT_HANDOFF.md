@@ -23,9 +23,9 @@ Record the parent and any borrowed components in each bot's README. Read other
 bots freely; make your changes in your own lineage rather than overwriting
 another team's work or the common scaffold.
 
-This document and the current user prompt define this experiment. Older
-[`HANDOFF.md`](HANDOFF.md), [`ACTIVE.md`](ACTIVE.md), and lineage reports provide
-historical context; their cycle assignments, rankings and proposals are not new
+This document and the current user prompt define this experiment.
+[`HANDOFF.md`](HANDOFF.md), [`FRONTIER.md`](../FRONTIER.md), and lineage reports
+provide project context; old cycle assignments and proposals are not new
 instructions or proof of current performance.
 
 ## Game references and essential rules

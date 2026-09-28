@@ -7,7 +7,7 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
 **Read in this order:**
 
 1. This file.
-2. `docs/ACTIVE.md`: which bots matter now.
+2. `FRONTIER.md`: which bots matter now.
 3. Your line's own docs (§3).
 4. `docs/ouroboros-macro-spec.md` §3, if you are building a core bot.
 
@@ -35,7 +35,7 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
   - A stdout write costs 2.5M + 4k/byte.
   - Parsing one round in Python costs about 10M.
   - Python works if engineered for it (ouroboros p99 about 48M). C++ has large headroom (hunter about 17M).
-- **Map bundle:** the checked-in `.map` files directly under `maps/` are the local runner inputs. The class list below is an 11-map historical snapshot; see `comparison.toml` for the current default directory selection.
+- **Map bundle:** the tournament runner uses checked-in `.map` files recursively under `maps/`, including `maps/new/`. The class list below is an 11-map historical snapshot; see `comparison.toml` for the current default directory selection.
   - **Compact**, ≤625 tiles: arena 11×11, Colosseum 16×16, default_small 16×16, devil 32×16, trophy 25×25.
   - **Open**, ≥875 tiles: queen_of_spades 25×35, default 32×32, stronghold 48×24, trauma 48×24, schooltime 60×40, big_empty 64×64.
   - The server's map pool is not known exactly. Test on the transposed and flipped variants too (`tools/ouroboros/mapgen.py`).
@@ -63,13 +63,13 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
 | **Leviathan** | GPT | `leviathan-` | Core bot (strongest-bot track) |
 | **Kraken** | Kimi | `kraken-` | Exploration track |
 | **Hydra** | GLM | `hydra-` | Exploration track |
-| **Hunter** / fry | team member, with LLMs | `hunter-`, `fry-` | Human-led line. The deployed version is not recorded in this checkout; see `docs/ACTIVE.md`. |
+| **Hunter** / fry | team member, with LLMs | `hunter-`, `fry-` | Human-led line. The deployed version is not recorded in this checkout; see `FRONTIER.md`. |
 
 **Rules:**
 
 - **Never edit another line's bots, tools or docs.** Read them, benchmark them, copy them into your own line (say so in the README).
 - Shared files (`README.md`, `bots/tournament.py`, `maps/`) change only when the user asks.
-- `docs/ACTIVE.md` and §11 of this file are edited only by the cycle's unifier (§8).
+- `FRONTIER.md` and §11 of this file are edited only by the cycle's unifier (§8).
 
 **Naming:**
 
@@ -77,7 +77,7 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
 - Exploration forks: `<line>-xNN-<slug>`, for example `hydra-x01-compact-rush`. Kraken's existing `kraken-sNN` sweeps count as the same thing.
 - Parameter-only variants are **not** folders. Use `params.py` overrides (`bot@key=value` in `ouro.py`) and record them in the ledger.
 - Borrowing another line's component: copy it, then write in the README: `Base: <bot>; borrowed: <component> from <bot>`.
-- Never delete old bots; they are the baselines. They leave comparisons through the Archived list in ACTIVE.md.
+- Never delete old bots; they are the baselines. They leave the current candidate pool in `FRONTIER.md` but remain available as comparison opponents.
 
 **Every bot README contains:**
 
@@ -93,7 +93,7 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
 | What | Where |
 |---|---|
 | Bots | `bots/<name>/` (`main.py` or `main.cpp`, `bot.toml`, `README.md`, optional `params.py`) |
-| Maps | `maps/*.map` (the current top-level bundle). The tournament runner does not recurse into `maps/new/`. Variants: `python3 tools/ouroboros/mapgen.py` |
+| Maps | `maps/**/*.map` (the shared bundle, including `maps/new/`). Variants: `python3 tools/ouroboros/mapgen.py` |
 | CLI | `unswbc` (`unswbc run MAP BOT_A BOT_B`, `--sandbox` for judge CPU); `unswbc init python NAME` |
 | Shared tournament | `bots/tournament.py` (round-robin / focus-bot; `--timeout 1200` for Python pools) |
 | Claude harness | `tools/ouroboros/`: `ouro.py run/sweep/report/compare/standings/autopsy`, `phase.py` (win/loss phase stats), `deaths.py`, `replaystats.py`, `replayview.py`, `mapview.py`, `mapgen.py`. See its README. |
@@ -104,7 +104,7 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
 | Cross-line reviews | `docs/cross-line-review.md` (GLM, §7 on hunter), `docs/family-comparison.md` (Kimi, including the hunter section), `docs/leviathan/LINEAGE_REVIEW.md` (GPT) |
 | Line design docs | Ouroboros: `docs/ouroboros-design.md`, `docs/ouroboros-macro-spec.md`. Hydra: `docs/macro-spec.md` (supersedes `design-framework.md`). Kraken: `docs/kraken-macro-spec.md`, `docs/kraken-design-framework.md`. Leviathan: `docs/leviathan/DESIGN.md`, `RESULTS.md`. |
 | Raw results and replays | `build/` (git-ignored, local only). Quote the numbers you rely on in a README or cycle file, or they are lost. |
-| Current status | `docs/ACTIVE.md`. Cycle history: `docs/cycles/cycle-NN.md` |
+| Current status | `FRONTIER.md`. Cycle history: `docs/cycles/cycle-NN.md` |
 
 ---
 
@@ -278,7 +278,7 @@ this table each cycle.
 
 1. **Unifier sets up** (start of cycle):
    - run the gauntlet round-robin (and any new candidates);
-   - update `ACTIVE.md`, component table §4.3 and §11;
+   - update `FRONTIER.md`, component table §4.3 and §11;
    - archive dominated bots;
    - post the cycle's focus questions.
 2. **Lines work in parallel.** Each line ends the cycle with at most **2 candidates**, each with a README carrying its numbers.

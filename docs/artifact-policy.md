@@ -17,9 +17,10 @@ They remain available as provenance; the ignore rule only prevents additional
 local output from being added accidentally. A path being ignored does not remove
 an already tracked file.
 
-The bundled maps used by `bots/tournament.py` are the `.map` files directly
-under `maps/`. Files under `maps/new/` are a separate dataset and are not
-included by that runner’s default discovery.
+The shared maps used by `bots/tournament.py` are every checked-in `.map` file
+under `maps/`, including the custom bundle in `maps/new/`. Nested paths are
+selected relative to `maps/`. Family-specific reserve maps under `configs/`
+remain separate validation fixtures.
 
 The two formerly tracked downloaded ZIPs under `replays/` were removed from the
 current tree during the September 28 synchronization and retained on the local

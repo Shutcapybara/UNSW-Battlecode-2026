@@ -42,6 +42,11 @@ def parse_result(log, returncode):
     return match[1] or 'draw', int(match[2])
 
 
+def map_name(board):
+    """Return a stable map ID relative to the shared maps directory."""
+    return board.relative_to(ROOT / 'maps').with_suffix('').as_posix()
+
+
 def atomic_write(path, text):
     temporary = path.with_suffix(path.suffix + '.tmp')
     temporary.write_text(text, encoding='utf-8')
@@ -191,7 +196,7 @@ def play(executable, board, a, b, out, label, timeout, replays, workers=None, sa
         workers.mark_built(b)
     if outcome == 'error' and error is None:
         error = f'runner exited with {returncode}' if returncode else 'no final match result in log'
-    return dict(map=board.stem, team_a=a.name, team_b=b.name, outcome=outcome,
+    return dict(map=map_name(board), team_a=a.name, team_b=b.name, outcome=outcome,
                 winner=a.name if outcome == 'A' else b.name if outcome == 'B' else None,
                 rounds=rounds, seconds=round(time.monotonic()-start, 3), error=error,
                 log=log_path.name, replay=replay_path.name if replays and replay_path.exists() else None)
@@ -201,7 +206,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--bots', nargs='+', help='Bot folder names (default: all bots/*/bot.toml)')
     parser.add_argument('--focus-bot', help='Run only matches involving this bot, against every other selected bot')
-    parser.add_argument('--maps', nargs='+', help='Map names, with or without .map (default: all maps/*.map)')
+    parser.add_argument('--maps', nargs='+',
+                        help='Map paths relative to maps/, with or without .map (default: all maps/**/*.map)')
     parser.add_argument('--output', type=Path, help='Results directory (default: a new build/tournament-TIMESTAMP directory)')
     parser.add_argument('--resume', action='store_true', help='Skip completed matches in --output; retry errors')
     parser.add_argument('--jobs', '-j', type=int, default=min(4, os.cpu_count() or 1),
@@ -226,7 +232,9 @@ def main(argv=None):
     if args.resume and not args.output:
         parser.error('--resume requires --output')
     bots = {p.parent.name: p.parent for p in (ROOT / 'bots').glob('*/bot.toml')}
-    maps = {p.stem: p for p in (ROOT / 'maps').glob('*.map')}
+    map_root = ROOT / 'maps'
+    maps = {p.relative_to(map_root).with_suffix('').as_posix(): p
+            for p in map_root.rglob('*.map')}
     for selected, available, kind in ((args.bots, bots, 'bot'), (args.maps, maps, 'map')):
         if selected:
             names = {name.removesuffix('.map') if kind == 'map' else name for name in selected}
@@ -297,7 +305,7 @@ def main(argv=None):
                 return
             index, key = item
             board, a, b = key
-            label = f'{index:04d}-{board}-{a}-vs-{b}'
+            label = f'{index:04d}-{board.replace("/", "_")}-{a}-vs-{b}'
             print(f'[{index}/{len(matches)}] Starting {board}: {a} vs {b}', flush=True)
             future = executor.submit(play, executable, maps[board], bots[a], bots[b], out,
                                      label, args.timeout, not args.no_replays, workers,

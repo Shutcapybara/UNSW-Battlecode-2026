@@ -14,7 +14,7 @@ Usage:
 
 Map sets:
     quick  arena default devil queen_of_spades big_empty   (5 diverse maps)
-    full   every maps/*.map
+    full   every map discovered recursively by bots/tournament.py
 
 Both sides of every matchup are always played (schedule permutations),
 exactly as tournament.py --focus-bot does.

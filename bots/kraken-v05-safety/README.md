@@ -45,7 +45,7 @@ Median loss round 180 (v04 control: 132) — v05 survives longer.
 
 **Gauntlet** (11 maps x 2 sides, 110 games; build/kraken-v05-gauntlet):
 
-| Opponent | v05 | v04 reference (ACTIVE.md cycle 0) | net flip |
+| Opponent | v05 | v04 reference (cycle 0) | net flip |
 |---|---|---|---|
 | ouroboros-v10-beacon | 3–18–1 | 0–21–1 | **+6** |
 | hunter-v14 | 7–15 | 8–14 (GLM fixture) | -2 |
