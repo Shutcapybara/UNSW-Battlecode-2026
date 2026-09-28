@@ -1,0 +1,18 @@
+name = "gpt-eunchae-s02-swarm-dissolve"
+lineage = "gpt/eunchae"
+author = "gpt/eunchae/2026-09-28-s02"
+language = "python"
+lineage_parent = "ouroboros-v10-beacon"
+hypothesis = "A tail-heavy swarm to round 100 plus adjacent recipient-first dissolution from a map-conditioned onset raises longest at round 400 against band opponents on the ten public maps."
+mechanism = "SPLIT 2 with map-size targets 40/48/60 through round 100; existing exact exit and threat checks; crown from round 250; direct ally crown confirmation and flank dissolution from round 300 on Portals and Slithery Fight and round 400 elsewhere; existing backward-ray handoff packet."
+expected_change = "units_r100 >= 18; longest_r400 >= 18; wall_self_deaths_per_1k_turns <= 2; newborn_deaths_within_10_rounds down vs base; recipient survival >= 0.5."
+priority = 300
+supersedes = "gpt-eunchae-s01-swarm-dissolve"
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:prod", 0, 100, 20], ["ACT:salv", 0, 500, 1], ["ACT:crown", 250, 500, 1], ["ACT:diss", 300, 500, 3], ["ACT:cert", 0, 500, 5]]
+
+[local_evidence]
+refs = ["docs/findings/2026-09-28-gpt-eunchae-s02-swarm-dissolve.md"]
+summary = "One unswbc 1.0.0 Schooltime control match: candidate lost by elimination at round 332; candidate max CPU 46.6M, p99 40.1M; no paired delta."

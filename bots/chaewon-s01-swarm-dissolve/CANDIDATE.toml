@@ -1,0 +1,22 @@
+name = "chaewon-s01-swarm-dissolve"
+lineage = "chaewon"
+author = "claude/chaewon/cowork-016ueqq"
+language = "python"
+lineage_parent = "ouroboros-v10-beacon"
+hypothesis = "A tail-heavy swarm to ~r100 plus adjacent, recipient-first dissolution from a map-conditioned onset raises longest at r400 against band opponents on the ten public maps."
+mechanism = "lambda_unit swarm production (target = cap, decays r100->r380) with deterministic salvage and a v2 birth certificate over the backward ray; crown elected from r250 (staggered, longest only) with id-carrying beacons; L<=3 dragons escort the crown and dissolve only when adjacent to its visible head from r300 (Portals, Slithery Fight) / r400 (others)."
+expected_change = "units_r100 >= 18; longest_r400 >= 18; wall_self_deaths_per_1k_turns <= 2; newborn_deaths_within_10_rounds down vs base; recipient survival >= 0.5."
+priority = 300
+supersedes = ""
+# Outcome (see README): all three S1 hypotheses' falsifiers fired locally; the arm is a
+# benchmark, not a promotion candidate.  Prefer chaewon-y04-probe (yuna host) for the next gate.
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:prod", 0, 100, 20], ["ACT:salv", 0, 500, 1], ["ACT:crown", 250, 500, 1], ["ACT:diss", 300, 500, 3], ["ACT:cert", 0, 500, 5]]
+# measured on the probe fixtures (1.2.2, seed 1): Schooltime-as-A prod 171, cert 90, salv 68, crown 15, diss 0;
+# Portals-as-B fires all five (Portals onset r300).  ACT:esc (escort) is logged too.
+
+[local_evidence]
+refs = ["build/chaewon/runs/s01_2x2/results.jsonl (cloud mirror; summary in README)", "docs/findings/2026-09-28-chaewon-s01-swarm-dissolve.md"]
+summary = "2x2 on 80 paired fixtures (10 live maps x 2 sides x seed 1 x {yuna-v02, sinbad-v07, m01, v10}), unswbc 1.2.2: control 0.438, prod 0.400 (-0.037, 7/10), diss 0.350 (-0.087, 4/11, p=0.12), both 0.300 (-0.138, 4/15, p=0.019)."

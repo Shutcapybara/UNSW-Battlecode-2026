@@ -1,0 +1,21 @@
+name = "sakura-s01-swarm-dissolve"
+lineage = "sakura"
+author = "glm/sakura/s01"
+language = "python"
+lineage_parent = "ouroboros-v10-beacon"
+hypothesis = "A tail-heavy swarm to ~r100 plus adjacent, recipient-first dissolution from a map-conditioned onset raises longest at r400 against band opponents on the ten public maps."
+mechanism = "SPLIT 2 production to a map-scaled cap (one dragon per 24 cells, floor 18); deterministic salvage (SPLIT L-2, trade, cheapest death); crown elected from r250 with staggered relayed beacons; L<=3 dragons dissolve adjacent to the crown from r300 (Portals / Slithery Fight signature) / r400 (others) with a recipient-eats-first precondition; birth certificate over the backward ray."
+expected_change = "units_r100 >= 18; longest_r400 >= 18; wall_self_deaths_per_1k_turns <= 2; newborn_deaths_within_10_rounds down vs base; recipient survival >= 0.5."
+priority = 300
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+# tag, round lo, round hi, minimum count on at least one probe fixture
+markers = [["ACT:prod", 0, 100, 20], ["ACT:salv", 0, 500, 1], ["ACT:crown", 250, 500, 1],
+           ["ACT:diss", 300, 500, 3], ["ACT:cert", 0, 500, 5], ["ACT:esc", 300, 500, 3],
+           ["ACT:sw", 0, 500, 20]]
+
+[local_evidence]
+refs = ["docs/findings/sakura-s01-data/panel-both/results.jsonl (unswbc 1.2.2, --seed 1, 159 games)", "docs/findings/2026-09-28-sakura-s01-swarm-dissolve.md"]
+summary = "DO NOT PROMOTE. Paired vs ouroboros-v10-beacon control on 139 fixtures (seed 1, ten live maps, both sides, 8-opponent pool): 9 better / 27 worse / 103 equal, net -18, sign-p 0.0039; prod-only -22 (p 0.0003), dissolve-only -15 (p 0.0275). H-prod half falsified (units_r100 median 18.5 ok; wall/self 5.2/1k > 5), H-dissolve falsified (longest_r400 3.0 vs target 18; recipient survival 100% holds), H-cert neutral (delivery verified, outcomes unmoved). Metered: max 63.8M, p99 48.3M, zero faults on both fixtures and both toolkits."

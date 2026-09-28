@@ -1,0 +1,30 @@
+name = "kazuha-s01-swarm-dissolve"
+lineage = "kazuha"
+author = "glm/kazuha/s01"
+language = "python"
+lineage_parent = "ouroboros-v10-beacon"
+hypothesis = "A tail-heavy swarm to ~r100 plus adjacent, recipient-first dissolution from a map-conditioned onset raises longest at r400 against band opponents on the ten public maps."
+mechanism = "SPLIT 2 production toward the 64-unit cap while lam_unit>0 (decay 100->380); deterministic salvage; crown elected from r250 with staggered beacons; L<=3 dragons escort the crown and dissolve only when adjacent to it with the crown able to eat a corpse pearl, from r300 on Portals-like (small + >=6 portal pairs seen) and Slithery-like (width 63) maps, r400 elsewhere; birth certificate over the backward ray at every split."
+expected_change = "units_r100 >= 18; longest_r400 >= 18; wall_self_deaths_per_1k_turns <= 2; newborn_deaths_within_10_rounds down vs base; recipient survival >= 0.5."
+priority = 300
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+# tag, round lo, round hi, minimum count on at least one probe fixture
+markers = [
+    ["ACT:prod", 0, 380, 20],
+    ["ACT:salv", 0, 500, 1],
+    ["ACT:crown", 250, 500, 1],
+    ["ACT:diss", 300, 500, 1],
+    ["ACT:cert", 0, 500, 5],
+    ["ACT:esc", 300, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "experiment_data/{ouroboros-v10-beacon,kazuha-s01-prodonly,kazuha-s01-dissolveonly,kazuha-s01-swarm-dissolve}_2026092* (compare_bot, seeded fixture_hash_v1, unswbc 1.2.2)",
+    "game_stats/runs/ (ledger parquet published by the same runs)",
+    "docs/findings/2026-09-28-kazuha-s01-swarm-dissolve.md",
+]
+summary = "2x2 vs ouroboros-v10-beacon control on 140 shared seeded fixtures (8 opponents x 10 live maps x 2 sides, unswbc 1.2.2): this bot 44.0 (31.4%, 11/18/111 pairs, p=0.26); prod-only arm 53.0 (37.9%, 16/14/110, p=0.86); dissolve-only 42.0 (30.0%, 7/16/117, p=0.093); control 51.0. No arm beats control significantly; the early-onset dissolve is the negative half, production+cert is neutral-to-positive. Metered probes both toolkits: max 39.9-50.2M, p99 30.5-37.5M, zero faults. Fry screen 14-0-6 (70%)."
