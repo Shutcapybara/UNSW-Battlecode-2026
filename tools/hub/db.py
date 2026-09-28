@@ -110,6 +110,12 @@ def event(conn, root, actor, kind, payload=None):
         handle.write(json.dumps(dict(at=at, actor=actor, kind=kind, payload=payload or {}), ensure_ascii=False, default=str) + '\n')
 
 
+def ensure_column(conn, table, column, decl):
+    """ALTER TABLE ADD COLUMN when missing (schema growth without migrations)."""
+    if column not in {c[1] for c in conn.execute(f'PRAGMA table_info({table})')}:
+        conn.execute(f'ALTER TABLE {table} ADD COLUMN {column} {decl}')
+
+
 def upsert(conn, table, row, key):
     """INSERT OR REPLACE by primary key while preserving created_at."""
     row = dict(row)

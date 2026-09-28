@@ -60,7 +60,7 @@ class Client:
             raise RuntimeError('no API key available')
         self._key = key
 
-    def _request(self, path, body=None, content_type='application/json', timeout=40):
+    def _request(self, path, body=None, content_type='application/json', timeout=60):
         assert path.startswith('/api/v1/') and not path.startswith('//')
         headers = {'Authorization': 'Bearer ' + self._key, 'User-Agent': 'JKS-hub/2.0', 'Origin': self.base.rstrip('/')}
         data = None

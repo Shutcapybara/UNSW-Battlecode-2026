@@ -184,13 +184,16 @@ def run_cycle(root, cfg, actor='hub/cycle', force_packet=False, now=None):
     at = parse_iso(rs.get('at', '') or '')
     tick['legacy_worker'] = dict(state=rs.get('state'), at=rs.get('at'), age_seconds=round(now - at) if at else None, jobs=list((rs.get('jobs') or {}).keys()),
                                  attention=(rs.get('attention') or {}).get('reason'), plan_expires=rs.get('plan_expires_epoch'))
-    if at and now - at > cfg['legacy']['stale_seconds']:
+    retired = bool(adopted)   # after the cutover the legacy worker is retired by design: its silence is not attention
+    if retired:
+        tick['legacy_worker']['retired'] = 'adopted at cutover; the hub executor is live'
+    if at and now - at > cfg['legacy']['stale_seconds'] and not retired:
         tick['attention'].append(dict(kind='legacy_worker_stale', detail=f'runner_status.json is {round(now - at)} s old'))
-    if rs.get('state') == 'needs_review':
+    if rs.get('state') == 'needs_review' and not retired:
         tick['attention'].append(dict(kind='legacy_needs_review', detail=(rs.get('attention') or {}).get('reason')))
-    if rs.get('state') == 'stopping':
+    if rs.get('state') == 'stopping' and not retired:
         tick['attention'].append(dict(kind='legacy_stopping', detail='the legacy worker is draining and will exit; kickstart needed unless intentional'))
-    if open_tx:
+    if open_tx and not retired:
         tick['attention'].append(dict(kind='open_transaction', detail=list(open_tx.keys())))
     tick['active_submission'] = rc.get('active')
     tick['expected'] = rc.get('expected')

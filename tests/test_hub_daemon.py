@@ -1,0 +1,276 @@
+"""Daemon-level behaviour that the executor tests do not cover: auto-cutover sequencing and self-redeploy gating.
+Run: python -m unittest tests.test_hub_daemon
+"""
+import json
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO))
+from tools.hub import actuator, db  # noqa: E402
+from tools.hub.config import load_config, set_mode  # noqa: E402
+
+
+def iso(ts):
+    from datetime import datetime, timezone
+    return datetime.fromtimestamp(ts, timezone.utc).isoformat()
+
+
+class DaemonTest(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.root = self.tmp / 'hub'
+        self.root.mkdir()
+        self.live = self.tmp / 'live'
+        (self.live / 'state').mkdir(parents=True)
+        self.repo = self.tmp / 'repo'
+        (self.repo / 'hub-state' / 'control').mkdir(parents=True)
+        (self.root / 'hub.toml').write_text(f'[paths]\nrepo = "{self.repo}"\nlegacy_live = "{self.live}"\nmirror = "{self.repo}/hub-state"\npython = "{sys.executable}"\n[notify]\nosascript = false\n[team]\nid = 7\ndev_opponents = [545, 752]\n')
+        self.cfg = load_config(self.root)
+        self.conn = db.connect(self.root)
+        self.logs = []
+        self.log = self.logs.append
+        (self.live / 'state/state.json').write_text(json.dumps(dict(incumbent=9508, experiments=[], requests=[])))
+        self.status(state='running', jobs={})
+
+    def tearDown(self):
+        self.conn.close()
+        shutil.rmtree(self.tmp)
+
+    def status(self, state='running', jobs=None, age=0):
+        (self.live / 'state/runner_status.json').write_text(json.dumps(dict(at=iso(time.time() - age), state=state, jobs=jobs or {}, incumbent=9508)))
+
+    def test_auto_cutover_waits_for_drain_then_adopts_and_goes_live(self):
+        state = {'mode': 'shadow', 'configured': 'auto', 'cutover_pending': True}
+        db.upsert(self.conn, 'experiments', dict(id='legacy1', candidate_name='yuna', candidate_submission=10013, control_submission=9508, protocol='v1', status='running', map_ids=[1]), 'id')
+        with patch.object(actuator, 'legacy_alive', return_value=True):
+            self.assertEqual(actuator.auto_cutover(self.root, self.cfg, state, self.log), 'draining')
+        self.assertTrue((self.live / 'state/runner.stop').exists())        # stop requested, nothing else yet
+        self.assertEqual(state['mode'], 'shadow')
+        self.status(state='stopping', jobs={'controller': {'pid': 1}})     # still draining a job
+        with patch.object(actuator, 'legacy_alive', return_value=True):
+            self.assertEqual(actuator.auto_cutover(self.root, self.cfg, state, self.log), 'draining')
+        self.assertEqual(self.conn.execute("SELECT status FROM experiments WHERE id='legacy1'").fetchone()[0], 'running')
+        self.status(state='stopping', jobs={})                             # drained
+        with patch.object(actuator, 'legacy_alive', return_value=False):
+            self.assertEqual(actuator.auto_cutover(self.root, self.cfg, state, self.log), 'live')
+        self.assertEqual(state['mode'], 'live')
+        self.assertEqual(self.conn.execute("SELECT status FROM experiments WHERE id='legacy1'").fetchone()[0], 'superseded_by_cutover')
+        self.assertTrue(db.kv_get(self.conn, 'cutover'))
+        self.assertTrue(db.kv_get(self.conn, 'legacy_adopted'))
+        self.assertEqual(db.kv_get(self.conn, 'control'), 9508)
+
+    def test_auto_cutover_never_forces_an_open_transaction(self):
+        state = {'mode': 'shadow', 'configured': 'auto', 'cutover_pending': True, 'cutover_started': time.time() - 4000}
+        (self.live / 'state/runner.stop').touch()
+        (self.live / 'state/state.json').write_text(json.dumps(dict(incumbent=9508, switch=dict(candidate=1, previous=9508))))
+        self.status(state='stopping', jobs={}, age=600)
+        with patch.object(actuator, 'legacy_alive', return_value=False):
+            self.assertEqual(actuator.auto_cutover(self.root, self.cfg, state, self.log), 'draining')
+        self.assertTrue(state.get('cutover_paged'))
+        self.assertEqual(state['mode'], 'shadow')
+
+    def test_redeploy_rejects_hash_mismatch_and_accepts_after_gate(self):
+        ctl = self.repo / 'hub-state' / 'control'
+        (self.repo / 'tools' / 'hub').mkdir(parents=True)
+        (self.repo / 'tools' / 'hub' / 'x.py').write_text('a = 1\n')
+        ctl.joinpath('redeploy.json').write_text(json.dumps(dict(note='t', expect={'tools/hub/x.py': 'deadbeef'})))
+        state = {'mode': 'live'}
+        actuator.redeploy_check(self.root, self.cfg, state, self.log)
+        rej = json.loads((ctl / 'redeploy.rejected.json').read_text())
+        self.assertIn('sha256', rej['reason'])
+        self.assertFalse((ctl / 'redeploy.json').exists())
+        self.assertFalse(state.get('restart'))
+        # correct hash, gate passes (subprocess stubbed), deploy succeeds -> done + restart requested
+        digest = actuator.sha256_file(self.repo / 'tools' / 'hub' / 'x.py')
+        ctl.joinpath('redeploy.json').write_text(json.dumps(dict(note='t2', expect={'tools/hub/x.py': digest})))
+        calls = []
+
+        def fake_run(cmd, **kw):
+            calls.append(cmd)
+            return subprocess.CompletedProcess(cmd, 0, stdout='abc1234\n' if 'rev-parse' in cmd else 'ok', stderr='')
+        with patch.object(actuator.subprocess, 'run', fake_run):
+            actuator.redeploy_check(self.root, self.cfg, state, self.log)
+        done = json.loads((ctl / 'redeploy.done.json').read_text())
+        self.assertTrue(done['sha'].startswith('abc1234-'))
+        self.assertTrue(state.get('restart'))
+        self.assertTrue(any('unittest' in c for c in calls) and any('deploy' in c for c in calls))
+
+    def test_redeploy_rejects_failing_gate(self):
+        ctl = self.repo / 'hub-state' / 'control'
+        ctl.joinpath('redeploy.json').write_text(json.dumps(dict(note='bad', expect={})))
+        state = {'mode': 'live'}
+
+        def fake_run(cmd, **kw):
+            return subprocess.CompletedProcess(cmd, 1 if 'unittest' in cmd else 0, stdout='', stderr='FAILED (errors=1)')
+        with patch.object(actuator.subprocess, 'run', fake_run):
+            actuator.redeploy_check(self.root, self.cfg, state, self.log)
+        rej = json.loads((ctl / 'redeploy.rejected.json').read_text())
+        self.assertEqual(rej['reason'], 'gate tests failed')
+        self.assertFalse(state.get('restart'))
+
+    def test_frozen_status_file_counts_as_drained(self):
+        # the legacy worker died with a controller job still listed in its last status write (28 Sep 13:22 UTC)
+        state = {'mode': 'shadow', 'configured': 'auto', 'cutover_pending': True, 'cutover_started': time.time() - 30}
+        (self.live / 'state/runner.stop').touch()
+        self.status(state='stopping', jobs={'controller': {'pid': 1}}, age=900)
+        with patch.object(actuator, 'legacy_alive', return_value=False):
+            self.assertEqual(actuator.auto_cutover(self.root, self.cfg, state, self.log), 'live')
+        self.assertEqual(state['mode'], 'live')
+
+    def test_register_request_freezes_and_reports(self):
+        bot = self.repo / 'bots' / 'tst-s01'
+        bot.mkdir(parents=True)
+        (bot / 'bot.toml').write_text('[project]\nlanguage = "py"\ninclude = ["*.py"]\n')
+        (bot / 'main.py').write_text('print("PROTOCOL 3")\n')
+        (bot / 'CANDIDATE.toml').write_text('name = "tst-s01"\nlineage = "tst"\nauthor = "t/tst/1"\nlanguage = "python"\nhypothesis = "h"\nmechanism = "m"\nexpected_change = "e"\npriority = 300\n[activation_contract]\nkind = "trace_marker"\nmarkers = [["ACT:x", 0, 500, 1]]\n')
+        ctl = self.repo / 'hub-state' / 'control'
+        ctl.joinpath('register.json').write_text(json.dumps(dict(note='t', candidates=[dict(dir='bots/tst-s01', priority=120), dict(dir='bots/missing')])))
+        actuator.register_check(self.root, self.cfg, {}, self.log)
+        done = json.loads((ctl / 'register.done.json').read_text())
+        self.assertEqual(done['results'][0]['name'], 'tst-s01')
+        self.assertEqual(done['results'][0]['status'], 'needs_runtime')
+        self.assertEqual(done['results'][0]['priority'], 120)
+        self.assertIn('error', done['results'][1])
+        self.assertFalse((ctl / 'register.json').exists())
+        self.assertEqual(self.conn.execute("SELECT priority FROM candidates WHERE name='tst-s01'").fetchone()[0], 120)
+        # re-prioritising an existing candidate by name
+        ctl.joinpath('register.json').write_text(json.dumps(dict(candidates=[dict(name='tst-s01', priority=410, reason='t'), dict(name='nope', priority=1)])))
+        actuator.register_check(self.root, self.cfg, {}, self.log)
+        done = json.loads((ctl / 'register.done.json').read_text())
+        self.assertEqual((done['results'][0]['priority'], done['results'][0]['was']), (410, 120))
+        self.assertIn('unknown', done['results'][1]['error'])
+        self.assertEqual(self.conn.execute("SELECT priority FROM candidates WHERE name='tst-s01'").fetchone()[0], 410)
+        # a second request for the same directory is reported, not applied twice
+        ctl.joinpath('register.json').write_text(json.dumps(dict(candidates=[dict(dir='bots/tst-s01')])))
+        actuator.register_check(self.root, self.cfg, {}, self.log)
+        done = json.loads((ctl / 'register.done.json').read_text())
+        self.assertIn('already registered', done['results'][0]['error'])
+
+    def test_director_restore_control(self):
+        class Client:
+            def __init__(self):
+                self.subs = {9508: dict(id=9508, name='Bifrost v18', status='idle'), 9943: dict(id=9943, name='Heimdall v10', status='active'), 10376: dict(id=10376, name='LV-sakura-ed44cf2d-ai', status='idle')}
+                self.posts = []
+
+            def get(self, path):
+                return list(self.subs.values())
+
+            def post(self, path, body, content_type='application/json'):
+                self.posts.append(path)
+                sid = int(path.split('/')[-2])
+                for s in self.subs.values():
+                    s['status'] = 'active' if s['id'] == sid else 'idle'
+                return dict(ok=True)
+        client = Client()
+        ctl = self.repo / 'hub-state' / 'control'
+        # refused: the active submission is a teammate's bot and no force
+        ctl.joinpath('restore.json').write_text(json.dumps(dict(previous=9508, candidate=9943, reason='t', by='director')))
+        actuator.restore_check(self.root, self.cfg, {}, client, self.log)
+        self.assertIn('refused', json.loads((ctl / 'restore.done.json').read_text())['result'])
+        self.assertFalse(client.posts)
+        # forced by the director: restored and control set
+        ctl.joinpath('restore.json').write_text(json.dumps(dict(previous=9508, candidate=9943, reason='the executor restored to the wrong previous control', by='claude/director/x', force=True)))
+        actuator.restore_check(self.root, self.cfg, {}, client, self.log)
+        out = json.loads((ctl / 'restore.done.json').read_text())
+        self.assertIn('restored 9508', out['result'])
+        self.assertEqual(client.posts, ['/api/v1/submissions/9508/activate'])
+        self.assertEqual(db.kv_get(self.conn, 'control'), 9508)
+        # refused: the named candidate is no longer active
+        ctl.joinpath('restore.json').write_text(json.dumps(dict(previous=9508, candidate=9943, force=True)))
+        actuator.restore_check(self.root, self.cfg, {}, client, self.log)
+        self.assertIn('refused', json.loads((ctl / 'restore.done.json').read_text())['result'])
+
+    def test_git_request_runs_the_keeper_now_with_the_requested_quiet_period(self):
+        ctl = self.repo / 'hub-state' / 'control'
+        ctl.joinpath('git.json').write_text(json.dumps(dict(by='director', note='sync', quiet_minutes=0)))
+        seen = {}
+
+        def fake_sync(repo, root, policy, actor='x', dry_run=False, now=None):
+            seen.update(policy=policy, actor=actor)
+            return dict(committed=['a'], skipped=[], merged=True, pushed=True, errors=[], attention=[])
+        with patch.object(actuator, 'git_sync', fake_sync):
+            actuator.git_check(self.root, self.cfg, {}, self.log)
+        out = json.loads((ctl / 'git.done.json').read_text())
+        self.assertEqual(out['report']['committed'], ['a'])
+        self.assertEqual(seen['policy']['quiet_minutes'], 0)
+        self.assertEqual(seen['actor'], 'director')
+        self.assertFalse((ctl / 'git.json').exists())
+
+    def test_set_mode_rewrites_or_appends_executor_section(self):
+        set_mode(self.root, 'off')
+        text = (self.root / 'hub.toml').read_text()
+        self.assertIn('[executor]\nmode = "off"', text)
+        set_mode(self.root, 'auto')
+        text = (self.root / 'hub.toml').read_text()
+        self.assertEqual(text.count('mode = '), 1)
+        self.assertEqual(load_config(self.root)['executor']['mode'], 'auto')
+
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+class CorpusTest(unittest.TestCase):
+    def setUp(self):
+        from tools.hub import corpus
+        self.corpus = corpus
+        self.tmp = Path(tempfile.mkdtemp())
+        self.root = self.tmp / 'hub'; self.root.mkdir()
+        self.repo = self.tmp / 'repo'; self.repo.mkdir()
+        (self.root / 'hub.toml').write_text(f'[paths]\nrepo = "{self.repo}"\nlegacy_live = "{self.tmp}/live"\nmirror = "{self.repo}/hub-state"\n[team]\nid = 7\n[corpus]\nenabled = true\nper_team = 3\ntop_n = 2\nband = [50, 51]\n')
+        self.cfg = load_config(self.root)
+        self.cfg['corpus']['teams'] = [dict(id=306, games=4, why='top')]
+        self.calls = []
+        test = self
+
+        class Client:
+            base = 'https://example'
+
+            def get(self, path):
+                test.calls.append(path)
+                gid = int(path.rsplit('/', 1)[1])
+                return dict(match=dict(id=gid, seriesId=f's{gid // 5}', teamAId=306 if gid % 2 else 62, teamBId=62 if gid % 2 else 306, submissionAId=None, submissionBId=None,
+                                       ranked=True, requestedAt='2026-09-28T14:05:00Z', requestedBy='autoscrim', mapId=9, winner='a', status='completed', seed='x'), mapName='Schooltime')
+
+            def download_replay(self, gid, dest):
+                test.calls.append(f'replay {gid}')
+                Path(dest).write_bytes(b'REPLAY' + str(gid).encode())
+        self.client = Client()
+        self.ladder = [dict(id=306, rank=1, rating=2147), dict(id=62, rank=40), dict(id=45, rank=59), dict(id=999, rank=50), dict(id=998, rank=51), dict(id=545, rank=15, dev=True), dict(id=7, rank=68)]
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp)
+
+    def test_watch_list_merges_explicit_top_and_band_and_excludes_us(self):
+        w = self.corpus.watch_list(self.cfg, self.ladder)
+        self.assertEqual(w[306]['target'], 4)
+        self.assertIn(62, w)          # top 2 (306, 62); 545 is dev and skipped
+        self.assertIn(999, w); self.assertIn(998, w)   # band 50-51
+        self.assertNotIn(7, w); self.assertNotIn(545, w)
+
+    def test_fetch_pass_downloads_new_games_within_caps_and_indexes_them(self):
+        discovered = {306: [101, 102, 103, 104, 105, 106], 62: [201, 202, 203], 999: [301], 998: []}
+        with patch.object(self.corpus, 'header', lambda p: dict(bot_a='A', bot_b='B', map_hash='h', map_name='Schooltime', version=2)):
+            r1 = self.corpus.fetch_pass(self.root, self.cfg, self.client, None, discover=lambda tid, n: discovered[tid], max_downloads=5, ladder=self.ladder)
+        self.assertEqual(r1['fetched'], 5)
+        index = self.corpus.load_index(self.repo / 'public_replays' / 'corpus')
+        self.assertEqual(len(index), 5)
+        row = index[101]
+        self.assertEqual((row['team_a'], row['watch_team'], row['autoscrim_window'], row['bot_a']), (306, 306, True, 'A'))
+        self.assertTrue((self.repo / 'public_replays' / 'corpus' / 'replays' / '101.replay').exists())
+        self.assertTrue(list((self.repo / 'public_replays' / 'corpus' / 'ladder').glob('*.json')))
+        # second pass: nothing re-downloaded, remaining targets served
+        calls_before = len(self.calls)
+        with patch.object(self.corpus, 'header', lambda p: dict(bot_a='A', bot_b='B', map_hash='h', map_name='Schooltime', version=2)):
+            r2 = self.corpus.fetch_pass(self.root, self.cfg, self.client, None, discover=lambda tid, n: discovered[tid], max_downloads=40, ladder=self.ladder)
+        self.assertFalse(any(c == 'replay 101' for c in self.calls[calls_before:]))
+        self.assertGreater(r2['fetched'], 0)
+        teams = json.loads((self.repo / 'public_replays' / 'corpus' / 'teams.json').read_text())['teams']
+        self.assertIn('306', teams)

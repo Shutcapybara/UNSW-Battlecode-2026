@@ -118,9 +118,10 @@ def register_from_dir(conn, root, directory, actor, priority=None):
                lineage_parent_fingerprint=None, source_ref='dir:' + str(directory), hypothesis=manifest['hypothesis'], mechanism=manifest['mechanism'],
                expected_change=manifest['expected_change'], activation_contract=manifest.get('activation_contract'),
                local_evidence=manifest.get('local_evidence'), priority=int(priority if priority is not None else manifest.get('priority', 100)),
-               status='needs_runtime', registered_by=actor, registered_at=db.now_iso())
+               status='needs_runtime', registered_by=actor, registered_at=db.now_iso(), dev_only=int(bool(manifest.get('dev_only', False))))
+    db.ensure_column(conn, 'candidates', 'dev_only', 'INTEGER DEFAULT 0')
     db.upsert(conn, 'candidates', row, 'name')
-    db.event(conn, root, actor, 'candidate_registered', dict(name=name, fingerprint=full, code_fingerprint=code, lineage=manifest['lineage']))
+    db.event(conn, root, actor, 'candidate_registered', dict(name=name, fingerprint=full, code_fingerprint=code, lineage=manifest['lineage'], dev_only=row['dev_only']))
     return row
 
 
