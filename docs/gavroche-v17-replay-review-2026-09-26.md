@@ -1,6 +1,6 @@
 # Gavroche v17 replay review (2026-09-26)
 
-Inputs: [M274421 replay archive](../replays/battle-M274421-replays.zip) and [M274432 replay archive](../replays/battle-M274432-replays.zip), 11 games each. The user identifies the two sets as v17 versus Nick and Tom. The public replay records label v17 as bot A and leave bot B blank, so the per-archive results below are not assigned to either named opponent.
+Inputs: M274421 and M274432 replay archives, 11 games each; the raw archives are not stored in this repository. The user identifies the two sets as v17 versus Nick and Tom. The public replay records label v17 as bot A and leave bot B blank, so the per-archive results below are not assigned to either named opponent.
 
 ## Results
 

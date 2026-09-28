@@ -20,9 +20,9 @@ cell can be identified.
 ## Confirmed Autarky losses
 
 The replay headers do not identify the family names; the user identified
-Gavroche as side A in both Autarky openers: M376704 (from
-battle-M376704-replays.zip) and M376714 (from
-battle-M376714-replays.zip). Gavroche therefore lost both games.
+Gavroche as side A in both Autarky openers, M376704 and M376714. Gavroche
+therefore lost both games. Their raw archives are kept locally under ignored
+`experiment_data/replays/` and are not part of the shared repository.
 
 - M376704 ended by Gavroche's elimination at round 290. Gavroche collected
   176 pearls and made 9 portal steps; side B collected 348 pearls and made
