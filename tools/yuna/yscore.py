@@ -71,5 +71,10 @@ def main():
                 if ds: print(f'   paired {c_} ({len(ds)}): ' + ' '.join(f'{n}{sum(x[i] for x in ds)/len(ds):+.1f}' for i, n in enumerate(('pearls/longest ', 'total ', 'units '))))
             if d:
                 print(f'{c} vs {a.base}: paired n={len(d)} delta={sum(d):+.1f} ({100*sum(d)/len(d):+.1f} pp)  up={sum(1 for x in d if x>0)} down={sum(1 for x in d if x<0)}')
+                cl = collections.defaultdict(list)
+                for (cc, o, m, s_), v in key.items():
+                    if cc == c and (a.base, o, m, s_) in key: cl[(m, s_)].append(v - key[(a.base, o, m, s_)])
+                cu = sum(1 for x in cl.values() if sum(x) > 0); cd = sum(1 for x in cl.values() if sum(x) < 0)
+                print(f'   map x side clusters: {len(cl)}  up {cu}  down {cd}  flat {len(cl)-cu-cd}')
                 print('   flips by map:', dict(sorted(flips.items())))
 if __name__ == '__main__': main()

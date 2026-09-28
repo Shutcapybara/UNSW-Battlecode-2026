@@ -13,7 +13,7 @@ This checkout has three supported comparison paths:
 The recovered adaptive collector and ratings tools are available again as
 [`tools/benchmark.py`](../tools/benchmark.py) and
 [`tools/benchmark_ratings.py`](../tools/benchmark_ratings.py). The third path is
-the explicit 280-bot/33-map adaptive roster in [`benchmark.toml`](../benchmark.toml).
+the explicit 299-bot/33-map adaptive roster in [`benchmark.toml`](../benchmark.toml).
 See [the adaptive benchmark guide](adaptive-benchmarking.md) for planning,
 runtime modes, map weighting and limitations. It is separate from the small
 comparison default. Existing frozen campaigns are not modified by a Git merge.
@@ -73,3 +73,8 @@ Loki, Skadi, Spike, Tidus and Yuna, including the earlier deferred Ed/Yuna arms.
 Tidus t08 and Yuna x35/x36 remain deferred. Tidus t07 is an unfinished scaffold;
 Loki’s duplicate directory is represented by `loki-v01`. See the current
 campaign’s `roster-expansion.json` for the complete inventory.
+
+The next September 28 expansion adds 19 versions from Jet, Ouroboros, Spike,
+Tidus and Yuna, including the previously deferred Tidus t08 and Yuna x35/x36.
+Yuna v05-core is an exact runtime alias of x32; development controls v04-nonb
+and v05-dev-base remain excluded. All earlier runtime holds are preserved.

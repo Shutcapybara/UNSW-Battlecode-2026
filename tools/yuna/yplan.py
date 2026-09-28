@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from yrun import tree_sha
 PUB = ['autarky', 'default', 'devil', 'dilemma', 'queen_of_spades', 'schooltime', 'trauma', 'trophy', 'pub/portals_rec', 'pub/slithery_rec']
 SYN = ['mc26_portal_quartet', 'mc26_crossroads', 'mc26_relay_depots', 'mc26_pinwheel', 'md26_orchard_narrow_s0', 'mc26_far_harbors']
+VAR = ['var/devil_tr', 'var/trauma_tr', 'var/dilemma_tr', 'var/trophy_tr', 'var/autarky_tr', 'var/default_tr', 'var/queen_of_spades_tr', 'var/portals_tr', 'var/crossroads_tr']
 EXTRA = ['arena', 'Colosseum', 'default_small', 'stronghold', 'big_empty']
 def mpath(R, m):
     for p in (Path('maps') / f'{m}.map', Path('maps/new') / f'{m}.map'):
@@ -19,7 +20,7 @@ def main():
     ap.add_argument('--cand', action='append', required=True); ap.add_argument('--opps', required=True)
     ap.add_argument('--maps', default='pub'); ap.add_argument('--sides', default='AB')
     a = ap.parse_args(); R = Path(a.repo)
-    groups = {'pub': PUB, 'syn': SYN, 'extra': EXTRA}
+    groups = {'pub': PUB, 'syn': SYN, 'extra': EXTRA, 'var': VAR}
     maps = []
     for tok in a.maps.split(','):
         maps += groups.get(tok, [tok])
