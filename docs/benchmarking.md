@@ -11,6 +11,14 @@ This checkout has three supported comparison paths:
   `maps/new/`. Pass explicit selections for routine work. Nested map selections
   use paths relative to `maps/`, such as `new/mc26_archipelago`.
 
+Adaptive benchmark configs keep map names as file stems by default for
+backward compatibility. Set `map_name_policy = "maps_relative"` when the
+campaign needs canonical nested IDs such as `new/mc26_archipelago`; the runner
+then preserves those IDs in its manifest and shared game ledger.
+Verified historical packaged-source aliases can be recorded in a top-level
+`[source_aliases]` table. The target fingerprint must belong to a selected bot,
+and the frozen campaign stores the mapping in its own `aliases.json`.
+
 The recovered adaptive collector and ratings tools are available again as
 [`tools/benchmark.py`](../tools/benchmark.py) and
 [`tools/benchmark_ratings.py`](../tools/benchmark_ratings.py). The third path is
@@ -68,6 +76,24 @@ uv run tools/game_stats.py summary --output /tmp/bot-pairs.csv
 See the [game statistics guide](../game_stats/README.md) for imports, merging,
 identity fields, and conflict handling. Raw replays and run directories remain
 local unless a specific artifact is intentionally shared.
+
+## Build a statistical frontier
+
+Freeze a round-robin config with both sides and the complete shared map bundle.
+The 16-bot panel used for [`FRONTIER.md`](../FRONTIER.md) is recorded in
+[`configs/frontier/all-map-panel.toml`](../configs/frontier/all-map-panel.toml).
+After its campaign has no missing fixtures, run:
+
+```sh
+python3 tools/frontier_panel.py experiment_data/benchmark_<run-id>
+```
+
+The analysis selects one record per directional fixture, fits a Bradley–Terry
+rating with an A-seat term, scores each map with equal opponent-lineage weight,
+and bootstraps paired lineage differences for dominance. It writes a Markdown
+summary and full JSON intervals under the campaign's `frontier/` directory.
+Campaign data stays local by default; copy concise reviewed results into
+`FRONTIER.md` or a dated report under `docs/` when sharing them.
 
 The later September 28 expansion adds 92 candidates from Bifrost, Ed, Fenrir,
 Loki, Skadi, Spike, Tidus and Yuna, including the earlier deferred Ed/Yuna arms.

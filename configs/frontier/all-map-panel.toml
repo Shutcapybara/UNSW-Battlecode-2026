@@ -1,0 +1,73 @@
+# Frozen 16-bot all-map frontier panel. Paths are relative to this file.
+# The two maps under maps/pub/ are recommendations, not part of the shared
+# 35-map frontier bundle.
+pairing = "round_robin"
+map_name_policy = "maps_relative"
+bots = [
+  "../../bots/fenrir-v20-crowded-resource-revalue",
+  "../../bots/gavroche-v33-half-support",
+  "../../bots/bifrost-v01-portal-memory",
+  "../../bots/gavroche-v66-supported-safe",
+  "../../bots/skadi-v13-clear-exit-only",
+  "../../bots/serre-v01-foundation",
+  "../../bots/hunter-v23-supported-arrival-feed",
+  "../../bots/sinbad-v07-divecap",
+  "../../bots/von_neumann-x04-support",
+  "../../bots/hunter-v20-portal-scouts",
+  "../../bots/monte_christo-x12-remote-density",
+  "../../bots/tew-v12-mid-support",
+  "../../bots/fry-v14-stateful-size-aware-3",
+  "../../bots/hunter-v14-cpp-hybrid-route-spacing",
+  "../../bots/ouroboros-v10-beacon",
+  "../../bots/kraken-v04-eval",
+]
+maps = [
+  "../../maps/Colosseum.map",
+  "../../maps/arena.map",
+  "../../maps/autarky.map",
+  "../../maps/big_empty.map",
+  "../../maps/default.map",
+  "../../maps/default_small.map",
+  "../../maps/devil.map",
+  "../../maps/dilemma.map",
+  "../../maps/portals.map",
+  "../../maps/queen_of_spades.map",
+  "../../maps/schooltime.map",
+  "../../maps/slithery_fight.map",
+  "../../maps/stronghold.map",
+  "../../maps/trauma.map",
+  "../../maps/trophy.map",
+  "../../maps/new/mc26_archipelago.map",
+  "../../maps/new/mc26_crossroads.map",
+  "../../maps/new/mc26_delayed_commons.map",
+  "../../maps/new/mc26_equatorial_belt.map",
+  "../../maps/new/mc26_far_harbors.map",
+  "../../maps/new/mc26_nursery_bays.map",
+  "../../maps/new/mc26_pinwheel.map",
+  "../../maps/new/mc26_portal_quartet.map",
+  "../../maps/new/mc26_pulse_farms.map",
+  "../../maps/new/mc26_relay_depots.map",
+  "../../maps/new/mc26_scattered_fleets.map",
+  "../../maps/new/mc26_seam_market.map",
+  "../../maps/new/mc26_spring_wells.map",
+  "../../maps/new/md26_causeway_detour_s0.map",
+  "../../maps/new/md26_causeway_portal_s0.map",
+  "../../maps/new/md26_commons_shared_s0.map",
+  "../../maps/new/md26_commons_spread_s0.map",
+  "../../maps/new/md26_orchard_narrow_s0.map",
+  "../../maps/new/md26_orchard_wide_s0.map",
+  "../../maps/new/md26_promenade_ring_s0.map",
+]
+
+# Bifröst V01 gained documentation after the pilot. The measured Git version
+# eeedb73c90a5 and this checkout have identical package inputs and effective
+# fingerprints; this alias lets the panel recognize that exact pilot source.
+[source_aliases]
+"037872088e6f5ac6660bca00197ac10322b155528f9ece23f4232759816e626a" = "b11a17e5fc4044e4664adc40933e91dbc85e9b8d93d30ac366b35105979e9a02"
+
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 10

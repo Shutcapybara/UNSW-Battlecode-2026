@@ -160,7 +160,8 @@ class MatchWorkers:
                 stop_process(process)
 
 
-def play(executable, board, a, b, out, label, timeout, replays, workers=None, sandbox=False, seed=None):
+def play(executable, board, a, b, out, label, timeout, replays, workers=None, sandbox=False,
+         seed=None, board_id=None):
     log_path = out / f'{label}.log'
     replay_path = out / f'{label}.replay'
     run_a, run_b = (workers.bot_path(a), workers.bot_path(b)) if workers else (a, b)
@@ -196,7 +197,7 @@ def play(executable, board, a, b, out, label, timeout, replays, workers=None, sa
         workers.mark_built(b)
     if outcome == 'error' and error is None:
         error = f'runner exited with {returncode}' if returncode else 'no final match result in log'
-    return dict(map=map_name(board), team_a=a.name, team_b=b.name, outcome=outcome,
+    return dict(map=board_id or map_name(board), team_a=a.name, team_b=b.name, outcome=outcome,
                 winner=a.name if outcome == 'A' else b.name if outcome == 'B' else None,
                 rounds=rounds, seconds=round(time.monotonic()-start, 3), error=error,
                 log=log_path.name, replay=replay_path.name if replays and replay_path.exists() else None)

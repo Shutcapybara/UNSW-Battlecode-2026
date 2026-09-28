@@ -3,51 +3,58 @@
 **Reviewed 2026-09-29.** This is the canonical page for candidate status,
 estimated ELOs, the default comparison roster, and contest deployment notes.
 
-> **TODO — complete the all-map frontier panel.** The 16-bot ratings below use
-> only Colosseum, arena, and autarky. The shared map bundle has **35 maps**: 15
-> established maps and 20 custom maps in `maps/new/`. The six family-specific
-> reserve maps under `configs/` are separate holdouts, not part of this shared
-> bundle. A balanced 16-bot all-pairs panel requires 8,400 distinct directional
-> games. So far, 720 fixtures cover all bots on three maps; a separate 70-game
-> Fenrir V20 vs Hunter V20 sweep covers all 35 maps. It adds 64 fixtures on the
-> 32 maps outside the pilot; its other six fixtures overlap the pilot's two
-> sides on Colosseum, arena, and autarky, and one repeated outcome differed. If
-> using one result per fixture, keep the pilot results for those six and
-> schedule the remaining 7,616 fixtures. The all-map ELOs
-> and frontier remain to be calculated; do not treat the three-map results as
-> final.
+> **COMPLETE — 35-map frontier panel.** All 8,400 directional games were
+> recorded for 16 bots across the shared bundle: 15 established maps and 20
+> custom maps under `maps/new/`. The six family-specific reserve maps under
+> `configs/` remain separate holdouts. Six pilot/sweep repeats were reduced to
+> one result each; the single conflict keeps the pilot result. There were no
+> runner errors or missing fixtures.
+>
+> The paired lineage-bootstrap rule found no supported dominator, so all 16
+> bots remain on the statistical frontier. This frontier records the absence
+> of map-wise dominance under the stated evidence threshold. The ELOs and
+> map-leader scores still separate the candidates. Full ratings, map leaders,
+> and pairwise intervals are summarized in the
+> [panel report](docs/frontier-panel-20260929.md). The 7,616 campaign games are
+> in [`game_stats/runs/187e0e722be944ec90f626a129b4b544.parquet`](game_stats/runs/187e0e722be944ec90f626a129b4b544.parquet);
+> the full per-pair intervals are in the generated local data at
+> `experiment_data/benchmark_20260928083347416650/frontier/frontier.json`.
+> Recreate the analysis with
+> `.venv/bin/python tools/frontier_panel.py experiment_data/benchmark_20260928083347416650`.
 
-| Bot snapshot | 3-map pilot ELO | All-map evidence | Pilot status | Fixtures / opponents / maps | Source fingerprint |
-|---|---:|---|---|---:|---|
-| `fenrir-v20-crowded-resource-revalue` | ~1,750 | 50–20 vs Hunter V20 | 3-map point-frontier candidate | 90 / 15 / 3; plus 70 / 1 / 35 | `dc7717689882` |
-| `gavroche-v33-half-support` | ~1,650 | Pending full panel | Point-dominated; uncertainty remains | 90 / 15 / 3 | `57d123043c7f` |
-| `bifrost-v01-portal-memory` | ~1,640 | Pending full panel | Point-dominated; uncertainty remains | 90 / 15 / 3 | `037872088e6f` |
-| `gavroche-v66-supported-safe` | ~1,630 | Pending full panel | Point-dominated; uncertainty remains | 90 / 15 / 3 | `a5c8dc0f8db5` |
-| `skadi-v13-clear-exit-only` | ~1,600 | Pending full panel | Point-dominated; uncertainty remains | 90 / 15 / 3 | `34d716a3492d` |
-| `serre-v01-foundation` | ~1,560 | Pending full panel | Point-dominated; uncertainty remains | 90 / 15 / 3 | `ae4bcc23254c` |
-| `hunter-v23-supported-arrival-feed` | ~1,560 | Pending full panel | 3-map point-frontier candidate | 90 / 15 / 3 | `b10300e824d4` |
-| `sinbad-v07-divecap` | ~1,560 | Pending full panel | Point-dominated; uncertainty remains | 90 / 15 / 3 | `c759a5c8a8ba` |
-| `von_neumann-x04-support` | ~1,510 | Pending full panel | 3-map point-frontier candidate | 90 / 15 / 3 | `3772d5a35503` |
-| `hunter-v20-portal-scouts` | ~1,480 | 20–50 vs Fenrir V20 | 3-map point-frontier candidate | 90 / 15 / 3; plus 70 / 1 / 35 | `f844fa3ae595` |
-| `monte_christo-x12-remote-density` | ~1,480 | Pending full panel | Point-dominated; uncertainty remains | 90 / 15 / 3 | `5589c30d0525` |
-| `tew-v12-mid-support` | ~1,470 | Pending full panel | Point-dominated; uncertainty remains | 90 / 15 / 3 | `8bff0f54828f` |
-| `fry-v14-stateful-size-aware-3` | ~1,360 | Pending full panel | Dominated on pilot; do not retire | 90 / 15 / 3 | `962541eb674d` |
-| `hunter-v14-cpp-hybrid-route-spacing` | ~1,330 | Pending full panel | Dominated on pilot; do not retire | 90 / 15 / 3 | `6ba4e603ad19` |
-| `ouroboros-v10-beacon` | ~1,260 | Pending full panel | Dominated on pilot; do not retire | 90 / 15 / 3 | `a9eafbaffc51` |
-| `kraken-v04-eval` | ~1,160 | Pending full panel | Dominated on pilot; do not retire | 90 / 15 / 3 | `7d23d380f291` |
+| Bot snapshot | All-map ELO | Statistical frontier | Fixtures / opponents / maps | Source fingerprint |
+|---|---:|---|---:|---|
+| `fenrir-v20-crowded-resource-revalue` | 1,654.3 | Retained; no supported dominator | 1,050 / 15 / 35 | `dc7717689882` |
+| `bifrost-v01-portal-memory` | 1,620.9 | Retained; no supported dominator | 1,050 / 15 / 35 | `037872088e6f` |
+| `gavroche-v33-half-support` | 1,618.0 | Retained; no supported dominator | 1,050 / 15 / 35 | `57d123043c7f` |
+| `gavroche-v66-supported-safe` | 1,617.2 | Retained; no supported dominator | 1,050 / 15 / 35 | `a5c8dc0f8db5` |
+| `von_neumann-x04-support` | 1,586.8 | Retained; no supported dominator | 1,050 / 15 / 35 | `3772d5a35503` |
+| `skadi-v13-clear-exit-only` | 1,586.1 | Retained; no supported dominator | 1,050 / 15 / 35 | `34d716a3492d` |
+| `sinbad-v07-divecap` | 1,572.6 | Retained; no supported dominator | 1,050 / 15 / 35 | `c759a5c8a8ba` |
+| `serre-v01-foundation` | 1,566.2 | Retained; no supported dominator | 1,050 / 15 / 35 | `ae4bcc23254c` |
+| `monte_christo-x12-remote-density` | 1,534.8 | Retained; no supported dominator | 1,050 / 15 / 35 | `5589c30d0525` |
+| `tew-v12-mid-support` | 1,485.1 | Retained; no supported dominator | 1,050 / 15 / 35 | `8bff0f54828f` |
+| `hunter-v20-portal-scouts` | 1,438.6 | Retained; no supported dominator | 1,050 / 15 / 35 | `f844fa3ae595` |
+| `hunter-v23-supported-arrival-feed` | 1,416.7 | Retained; no supported dominator | 1,050 / 15 / 35 | `b10300e824d4` |
+| `ouroboros-v10-beacon` | 1,407.8 | Retained; no supported dominator | 1,050 / 15 / 35 | `a9eafbaffc51` |
+| `hunter-v14-cpp-hybrid-route-spacing` | 1,405.5 | Retained; no supported dominator | 1,050 / 15 / 35 | `6ba4e603ad19` |
+| `fry-v14-stateful-size-aware-3` | 1,356.8 | Retained; no supported dominator | 1,050 / 15 / 35 | `962541eb674d` |
+| `kraken-v04-eval` | 1,132.6 | Retained; no supported dominator | 1,050 / 15 / 35 | `7d23d380f291` |
 
-The pilot ELO estimates are centered at 1,500 across these 16 source
-fingerprints; they are not all-map ratings or official contest ratings. The
-all-map evidence column reports only the completed direct duel; it is not a
-score against the full panel.
+Each bot's coverage is 1,050 games against 15 opponents: both starting sides
+on each of the 35 maps. These preliminary Bradley–Terry estimates are centered
+at 1,500 across the 16 measured source fingerprints; they are not official
+contest ratings. Every candidate pair qualified on all 35 maps, but no pair met
+the paired lineage-bootstrap dominance rule on the full bundle. See the report
+for map leaders and pairwise uncertainty intervals.
 
 ## All-map head-to-head completed
 
 Fenrir V20 played Hunter V20 twice on every map in the 35-map bundle, once from
 each starting side: **70 games, 50–20 for Fenrir, with no draws or runner
 errors**. Fenrir swept both games on 18 maps, Hunter swept 3, and the sides split
-the remaining 14. This is one head-to-head across the map set, not a 16-bot
-frontier or a complete ELO refit.
+the remaining 14. These 70 results document one direct matchup; the complete
+16-bot panel and frontier are summarized above.
 
 The sweep repeats six side/map fixtures from the earlier three-map panel; five
 repeated results matched and one differed on arena. Bots can behave
@@ -76,6 +83,17 @@ screen is met. Details and runtime fingerprints are in
 [the Tyr family notes](docs/tyr-family.md); match logs remain under ignored
 `build/tyr-*/` directories.
 
+Tyr V12 is a Devil-specific scouting arm: it scored **12–0** against Tyr V01
+across six fixed seeds and both seats on Devil in native mode, then **12–0**
+against the documented Yuna V05 Core finalist on the same Devil screen. Over all
+46 repository maps and both seats, it scored **50–42** against Yuna V05 with
+zero runner errors (one unseeded game per map-seat; 32–14 as Team A, 18–28
+as Team B). Across paired map outcomes, Tyr won 14, Yuna won 10, and 22
+split. Queen of Spades split 1–1. Sandbox faults remain; this preliminary
+screen does not promote V12 to the all-map frontier. Details are in
+[the Tyr family notes](docs/tyr-family.md); local results are under
+`build/tyr-v12-yuna-v05-allmaps-20260929/` and
+`build/tyr-v12-devil-vs-tyr1/`.
 ## How the frontier is defined
 
 For each bot, compare its expected score (win = 1, draw = 0.5, loss = 0)
@@ -117,8 +135,8 @@ No bot is retired based on this pilot.
 The pilot ratings use a Bradley–Terry model with win = 1, draw = 0.5, loss = 0,
 an A-seat term, and a 400-point logistic ELO scale. Ratings are centered at
 1,500 over these 16 bots. The estimated A-seat advantage was about 50 ELO. Each
-bot had 90 games against 15 exact opponents on 3 maps; these estimates should be
-refreshed from a frozen all-map panel before promoting or retiring candidates.
+bot had 90 games against 15 exact opponents on 3 maps; these estimates are
+historical pilot ratings alongside the completed 35-map refit above.
 
 The 720-game pilot is saved in
 [`game_stats/runs/bc86c2adc518428f8d77039e11111a97.parquet`](game_stats/runs/bc86c2adc518428f8d77039e11111a97.parquet)
@@ -133,8 +151,9 @@ The exact version currently deployed to the contest is **not recorded in this
 checkout**. The default comparison roster in [`comparison.toml`](comparison.toml)
 is Ouroboros V10, Hunter V14, Hunter V20, Fry V14, and Kraken V04. This is an
 experiment control set, not a deployment record. The three-map pilot flagged
-Fry V14, Hunter V14, Ouroboros V10, and Kraken V04 as dominated on those maps;
-keep them as controls until the full pool has been measured.
+Fry V14, Hunter V14, Ouroboros V10, and Kraken V04 as dominated on those maps.
+The full 35-map analysis found no supported dominator for any candidate; keep
+all four as controls while gathering repeated evidence.
 
 ## Updating this page
 
