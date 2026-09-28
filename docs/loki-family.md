@@ -48,9 +48,48 @@ series on both sides of a split:
 
 These are held-out behavior-cloning metrics for the learned ranker alone, not
 for the integrated Bifröst-plus-model score and not match outcomes. They indicate
-the features carry signal about the teacher's choices. Loki has not yet been
-run in a Battlecode game or judge sandbox, so integrated imitation, win rate,
-and CPU margin remain unknown.
+the features carry signal about the teacher's choices.
+
+### Version history and benchmarks
+
+**Loki v01** is the trained Bifröst v01 baseline. Its native six-map panel was
+47–13 over 60 games; on matched external fixtures it scored 40–8 versus
+Bifröst v01's 43–5. Its original sandbox direct screen against Bifröst v01 was
+0–12 with 93 Loki CPU-limit events.
+
+**Loki v02** preserves v01's model, training data, Bifröst candidate generator,
+and fallback policy. It reduces inference cost with cached geometry, sparse
+six-feature extraction, tail-index simulation, and safe candidate pruning.
+Feature parity was checked on 6,800 synthetic actions; a 2,000-menu randomized
+check confirmed pruning preserves the model's argmax.
+
+The 30-game native v02-source panel against Fenrir v18 scored **11–19** for
+Loki across all 15 bundled maps and both sides, with no game errors. Fenrir
+swept Colosseum, Default, Devil, Portals, Schooltime, Stronghold, and Trophy;
+Loki swept Arena, Default Small, and Queen of Spades. Autarky, Big Empty,
+Dilemma, Slithery Fight, and Trauma split 1–1. The Fenrir README's earlier
+all-map result was 20–10 for Fenrir, which is consistent with this result.
+
+In sandbox, v02 scored 7–5 against Bifröst v01 with zero Loki CPU-limit events.
+The broader Hydra panel was 43–13 in 56 completed games; four Hydra games hit
+the 600-second match timeout, and all 50 logged CPU-limit events belonged to
+Hydra. A sandbox Fenrir panel was interrupted after 23 of 30 fixtures (10–12
+in 22 completed games, one timeout, seven pending). Its saved logs show 94
+Fenrir CPU-limit events and zero Loki events; one event came from an interrupted
+fixture and is not included in the report's recorded-fault total. Loki's
+highest recorded turn cost was 94.1M points against the 100M cap, so CPU faults
+were eliminated in these logs but worst-case headroom remains small. Fenrir's
+own TLEs make that sandbox W/L unsuitable as a clean strategy comparison.
+
+The v02-source experiments above were run before the optimized snapshot was
+moved from the v01 directory into v02, so their artifact directory names retain
+`loki-v01`. Reports: native Fenrir panel at
+`experiment_data/loki-v01-teacher-ranker_20260928073609587715/`, Fenrir sandbox
+at `experiment_data/loki-v01-teacher-ranker_20260928063051000260/`, Bifröst
+sandbox direct screen at
+`experiment_data/loki-v01-teacher-ranker_20260928055412884222/`, and broad
+Hydra panel at
+`experiment_data/loki-v01-teacher-ranker_20260928060127668979/`.
 
 ### Reproduction
 

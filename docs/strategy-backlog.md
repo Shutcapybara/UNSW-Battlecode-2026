@@ -71,7 +71,8 @@ when enemy size or team counts are uncertain.
 - `kraken-v02-bigmap`: big-map production and endgame growth, brawl-mode small maps, ally-head collision guards, and metered BFS with portal-local cache invalidation.
 - `kraken-v03-judge-safe`: snapshot of kraken-v02 after sandbox CPU hardening; used as the stable bot-pool evaluation candidate.
 - `kraken-v04-eval`: v03 with a kbench-parameterised CFG (KBENCH-PARAMS override block); identical behavior, the baseline for eval-weight sweeps.
-- `loki-v01-teacher-ranker`: exact Bifröst v01 fork with a gradient-boosted candidate score trained on public ranked submission #7771 replays; whole-series top-1 action imitation 64.1% and 70.3%, not yet game-benchmarked.
+- `loki-v01-teacher-ranker`: trained Bifröst v01 baseline from public ranked submission #7771; native six-map panel 47–13, 40–8 on 48 matched external fixtures versus Bifröst v01's 43–5, and original sandbox screen 0–12 with 93 Loki CPU-limit events.
+- `loki-v02-teacher-ranker`: v01 model/policy with sparse inference, cached geometry, tail-index simulation, and safe candidate pruning; 7–5 sandbox vs Bifröst v01 with zero Loki faults. Native Fenrir v18 panel 11–19 on 30 games; partial sandbox logs had 94 Fenrir CPU-limit events and no Loki events, with Loki peaking at 94.1M/100M points. See `docs/loki-family.md`.
 - `gavroche-v01-mass-preserving-opening`: Monte Christo x12 with an early rescue split for long, partially observed spawns; 5–3 vs x12 and Hunter v20 on Autarky and Prisoner's Dilemma.
 - `gavroche-v02-opening-production`: v01 plus stronger early production; separate target-map screens scored 13–3, while a single full-pool screen scored 12–4. It lost one Autarky side to x12 and cascades through four length-2 splits on round 0.
 - `gavroche-v03-head-preserving-opening`: v02 with a head-preserving rescue split and more aggressive production; 1–3 on the Prisoner's Dilemma screen, rejected.
