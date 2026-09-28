@@ -1,0 +1,56 @@
+diff --git a/tools/benchmark_ratings.py b/tools/benchmark_ratings.py
+index 36bc1e22d..bb7fb00f0 100644
+--- a/tools/benchmark_ratings.py
++++ b/tools/benchmark_ratings.py
+@@ -40,6 +40,26 @@ def inputs(root=ROOT):
+ 
+ def summary(data):
+     bots={b['id']:b for b in data['bots']}
++    # Minimum-evidence ordering (handoff A1 §3.10): only established rows may order the queue;
++    # raw scores are shrunk toward the established-panel mean with weight n/(n+60) for ranking.
++    try:
++        import importlib.util as _ilu
++        _spec = _ilu.spec_from_file_location('rating_evidence', Path(__file__).resolve().parent / 'analysis' / 'rating_evidence.py')
++        _mod = _ilu.module_from_spec(_spec)
++        _spec.loader.exec_module(_mod)
++        established, panel_prior, shrunk_score = _mod.established, _mod.panel_prior, _mod.shrunk_score
++    except Exception:
++        def established(b, MIN=(60, 5, 8)):
++            return b.get('games', 0) >= MIN[0] and b.get('opponents', 0) >= MIN[1] and b.get('maps', 0) >= MIN[2]
++        _N0 = 60.0
++        _panel = [b['score'] for b in data['bots'] if established(b) and b.get('score') is not None]
++        _prior = sum(_panel) / len(_panel) if _panel else 0.5
++        def panel_prior(_bots, _p=_prior):
++            return _p
++        def shrunk_score(b, prior):
++            n = b.get('games') or 0
++            return prior + (b['score'] - prior) * n / (n + _N0)
++    prior = panel_prior(data['bots'])
+     lines=['# Current bot estimates', '',
+         f"Updated {data['at']}; ledger snapshot taken {data['data_at']}.", '',
+         f"{len(bots)} frozen bot versions, {len(data['maps'])} maps, "
+@@ -57,15 +77,19 @@ def summary(data):
+         'predictions are not direct evidence. Similarity means '
+         'the smallest observed score difference on at least 30 shared paired opponent/map cells; '
+         'it does not establish similar code or tactics. Missing games and errors are excluded.', '',
+-        '| Rank | Bot | Score | Range | Fixtures | Opponents | Maps | Evidence | Closest observed profile |',
+-        '|---:|---|---:|---|---:|---:|---:|---|---|']
+-    for rank,b in enumerate(sorted(bots.values(),key=lambda b:-b['score']),1):
++        'Queue ordering uses only established rows; the Queue score shrinks the raw score toward '
++        'the established-panel mean with weight fixtures/(fixtures+60). Sparse rows are display-only '
++        'and may not order the queue (minimum evidence: 60 fixtures, 5 opponents, 8 maps).', '',
++        '| Rank | Bot | Score | Queue score | Range | Fixtures | Opponents | Maps | Evidence | Queue | Closest observed profile |',
++        '|---:|---|---:|---:|---|---:|---:|---:|---|---|---|']
++    ranked = sorted(bots.values(), key=lambda b: (established(b), shrunk_score(b, prior) or 0.0), reverse=True)
++    for rank,b in enumerate(ranked,1):
+         neighbor=b['similar'][0] if b['similar'] else None
+         similar=(f"{bots[neighbor['id']]['name']} ({neighbor['difference']*100:.1f} pp gap; "
+                  f"{neighbor['shared']} cells)") if neighbor else 'Insufficient overlap'
+-        lines.append(f"| {rank} | {b['name']} | {b['score']:.1%} | {b['low']:.1%}–{b['high']:.1%} "
++        lines.append(f"| {rank} | {b['name']} | {b['score']:.1%} | {shrunk_score(b, prior):.1%} | {b['low']:.1%}–{b['high']:.1%} "
+             f"| {b['games']} | {b['opponents']} | {b['maps']} | "
+-            f"{'Established' if b['established'] else 'Sparse'} | {similar} |")
++            f"{'Established' if b['established'] else 'Sparse'} | {'yes' if established(b) else 'display-only'} | {similar} |")
+     lines+=['', 'Matching record sources: '+json.dumps(data['source_counts'],sort_keys=True)+'.', '',
+         'Reference panel: '+', '.join(bots[i]['name'] for i in data['reference_ids'])+'.', '',
+         'Map distribution: '+json.dumps(data.get('map_weights',{}),sort_keys=True)+'.', '',
