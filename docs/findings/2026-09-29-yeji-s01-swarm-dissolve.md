@@ -67,3 +67,9 @@ per arm**, paired by (map, side, seed, opponent). ouroboros-v10-beacon is the co
 - Next: a crowding- and enemy-aware field (subtract ally/enemy presence per zone), bed pre-positioning by predicted
   countdown for beds seen once (symmetric maps share countdowns between mirror tiles), and a budget-aware degradation
   mode (none exists; the host has none).
+
+## Addendum (29 Sep, later): in-sample vs out-of-sample
+
+- `yeji-s05-young` (s04 + newborn CPU caps) on **seed 2**: 0.597, **+0.174 vs v10 (32/7, p < 0.001)**; Portals max 67.6M.
+- **The owner notes the tournament plays out-of-sample maps** and asks for broad heuristics only (e.g. map size, given at load). The public-map prior (s02–s05) is map-specific knowledge: on unseen maps it does not fire, so its in-sample gain is not tournament evidence. From s06 the prior is off and the lesson is carried by a general mechanism (online fast-bed learning from countdowns in view), evaluated on a **held-out panel of ten synthetic maps** (`maps/new/`: mc26_archipelago, crossroads, delayed_commons, equatorial_belt, nursery_bays, pinwheel, portal_quartet, pulse_farms, seam_market, md26_orchard_wide_s0) that no Yeji version was tuned on.
+- Other map-specific rules in S1 (Portals detection by portal id ≥ 4, Slithery Fight by 63×27) only set the dissolve onset, which is off from s02 on.

@@ -12,3 +12,5 @@ Adds:
 Panel (160 paired fixtures, unswbc 1.2.2, seed 1): **0.519** (control v10 0.494: +0.025, 22/18; vs `yeji-s01p-production` −0.013, 22/24). By map vs P: **devil +0.44**, slithery +0.19, trauma +0.12, dilemma +0.06 — but **default −0.50**, QoS −0.19, trophy −0.12. Compact maps: units r100 26 vs opponents 13, longest r499 32 vs 19. Open maps: units r250 16 vs 32 — the field pulls everyone onto the same beds and the open-map economy stalls (default: pearls 193 vs 405 for P on the same fixture). `@dissolve_on=1` (the S1 dissolve on top): 0.469 (−0.05 vs s02). Screens on 32 compact fixtures vs s02: `w_parity=1` −0.03 (0/1), `unit_cells=16` −0.09 (2/5), `w_field=20` −0.03 (3/4).
 
 Metered: Portals as B p99 56.9M, **max 85.8M** (over the 80M local gate); Schooltime as A: CPU exceeded on turn 0.
+
+> **Out-of-sample caveat (added 29 Sep).** The map prior only fires on the ten public maps it was built from; tournament maps are out of sample, so on them this bot plays without it. The in-sample gains above are not evidence of tournament strength. Held-out evaluation: see `yeji-s06-onlinebeds`.
