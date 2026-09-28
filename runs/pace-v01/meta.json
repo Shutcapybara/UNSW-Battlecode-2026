@@ -1,0 +1,48 @@
+{
+  "toolkit": "unswbc 1.2.2",
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "maps": [
+    "schooltime",
+    "portals",
+    "slithery_fight",
+    "queen_of_spades",
+    "default",
+    "trophy",
+    "dilemma",
+    "autarky",
+    "devil",
+    "trauma"
+  ],
+  "opponents": [
+    "fenrir-v18-arrival-ready-beds",
+    "sinbad-v07-divecap",
+    "gavroche-v32-supported-divecap",
+    "ouroboros-m01-vibing-mimic",
+    "yuna-v05-core",
+    "chaewon-y04-probe"
+  ],
+  "arms": [
+    "host",
+    "pace",
+    "pace-nolimit"
+  ],
+  "jobs": 4,
+  "post_repair_rerun": {
+    "toolkit": "unswbc 1.2.2",
+    "seed": 1,
+    "map": "schooltime",
+    "opponent": "sinbad-v07-divecap",
+    "arms": [
+      "pace"
+    ],
+    "sides": [
+      "A",
+      "B"
+    ],
+    "purpose": "verify empty-action fallback repair; these two rows replace original panel rows"
+  }
+}

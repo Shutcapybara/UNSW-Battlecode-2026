@@ -1,0 +1,18 @@
+name = "pace-v01"
+lineage = "pace"
+author = "Codex/pace/2026-09-29"
+language = "python"
+lineage_parent = "chaewon-y04-probe"
+hypothesis = "Matching the field's production pace (units r100 >= 18, total r250 >= 60 on the ten maps) is sufficient to raise paired win share against band-class opponents."
+mechanism = "A round- and map-conditioned controller increases SPLIT 2 priority while units trail the empirical public-field curve and favors multi-step moves when visible material trails the r250 target; pace also enables newborn shelter and verified-exit, open-space, and visible-threat split guards."
+expected_change = "units_r100 +6 and total_r250 +20 vs host in exact pairs; win share delta >= +0.05 if the hypothesis holds; falsifier: pace attained (>= 80% of games on pace at r100) with delta <= 0."
+priority = 300
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:pace+", 0, 100, 10], ["ACT:pace-", 0, 500, 1]]
+
+[local_evidence]
+refs = ["runs/pace-v01/results.jsonl", "docs/findings/2026-09-29-pace-v01.md"]
+summary = "unswbc 1.2.2: 354 valid exact pairs; pace score delta -0.483 vs host, r100 target attainment 10.4% compact / 28.2% open. Metered gates pass on both toolkits; findings contain timeout and repair caveats."

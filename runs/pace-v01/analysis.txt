@@ -1,0 +1,92 @@
+usable games=1074 errors=6
+host compact n=144
+  r25 units q25=5.00 median=7.00 target=6.00
+  r50 units q25=7.00 median=10.00 target=9.00
+  r100 units q25=7.00 median=13.00 target=13.00 on_pace=0.514
+  r250 total q25=0.00 median=16.00 target=0.00
+  survive r25 0.979
+  survive r50 0.979
+  survive r100 0.972
+  survive r250 0.569
+  survive r400 0.354
+host open n=210
+  r25 units q25=4.00 median=6.50 target=6.00
+  r50 units q25=8.00 median=11.00 target=9.00
+  r100 units q25=11.00 median=18.00 target=15.00 on_pace=0.619
+  r250 total q25=28.00 median=64.00 target=54.50
+  survive r25 1.000
+  survive r50 1.000
+  survive r100 0.990
+  survive r250 0.943
+  survive r400 0.762
+pace compact n=144
+  r25 units q25=3.00 median=6.00 target=6.00
+  r50 units q25=3.00 median=6.00 target=9.00
+  r100 units q25=2.00 median=5.00 target=13.00 on_pace=0.104
+  r250 total q25=0.00 median=0.00 target=0.00
+  survive r25 0.993
+  survive r50 0.958
+  survive r100 0.944
+  survive r250 0.243
+  survive r400 0.194
+pace open n=216
+  r25 units q25=4.00 median=6.00 target=6.00
+  r50 units q25=6.00 median=8.00 target=9.00
+  r100 units q25=7.00 median=11.00 target=15.00 on_pace=0.282
+  r250 total q25=0.00 median=2.00 target=54.50
+  survive r25 1.000
+  survive r50 1.000
+  survive r100 0.995
+  survive r250 0.681
+  survive r400 0.384
+pace-nolimit compact n=144
+  r25 units q25=5.00 median=6.00 target=6.00
+  r50 units q25=5.00 median=6.00 target=9.00
+  r100 units q25=5.00 median=9.00 target=13.00 on_pace=0.194
+  r250 total q25=0.00 median=0.00 target=0.00
+  survive r25 1.000
+  survive r50 1.000
+  survive r100 0.979
+  survive r250 0.333
+  survive r400 0.292
+pace-nolimit open n=216
+  r25 units q25=4.00 median=5.00 target=6.00
+  r50 units q25=4.00 median=6.50 target=9.00
+  r100 units q25=5.00 median=8.00 target=15.00 on_pace=0.125
+  r250 total q25=0.00 median=0.00 target=54.50
+  survive r25 1.000
+  survive r50 1.000
+  survive r100 0.995
+  survive r250 0.440
+  survive r400 0.213
+paired pace vs host n=354 delta=-0.4831 better=5 worse=176 tied=173 sign_p=1.028e-45
+  open delta=-0.5095 n=210
+  compact delta=-0.4444 n=144
+  paired material deltas: units_r25 -1.00, units_r50 -4.00, units_r100 -6.50, total_r250 -35.50
+  marker games 357/360
+paired pace-nolimit vs host n=354 delta=-0.5141 better=0 worse=182 tied=172 sign_p=3.2627e-55
+  open delta=-0.5143 n=210
+  compact delta=-0.5139 n=144
+  paired material deltas: units_r25 -1.00, units_r50 -4.00, units_r100 -7.00, total_r250 -40.00
+  marker games 358/360
+paired pace minus nolimit n=360 delta=0.0278 better=16 worse=6 tied=338 sign_p=0.052479
+  open delta=0.0000 n=216
+  compact delta=0.0694 n=144
+safety pace median wall+self/1k turns 6.264 newborn_deaths/100 births 26.49
+safety pace-nolimit median wall+self/1k turns 8.545 newborn_deaths/100 births 27.27
+ridge logistic coefficients (standardized):
+  splits_100turns 2.99785
+  h2h_deaths_k -2.12822
+  wall_deaths_k -1.91629
+  portal_steps_k 1.07090
+  total_r250 0.93362
+  self_deaths_k -0.50577
+  units_r25 -0.47417
+  newborn_deaths_100births -0.47224
+  units_r100 -0.39343
+  units_r50 0.35783
+  sonar_rays_turn 0.23880
+  longest_r400 0.20020
+  body_deaths_k 0.19983
+overall AUC 0.9378
+leave-one-map-out AUC mean 0.9148 folds 10
