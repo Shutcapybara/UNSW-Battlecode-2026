@@ -1,0 +1,32 @@
+# kazuha s01 live-pool panel: 8 reference opponents x 10 live maps x 2 sides.
+# Seeds: fixture_hash_v1 (one deterministic seed per opponent+map pair).
+bots = [
+  "bots/yuna-v02-core",
+  "bots/gavroche-v32-supported-divecap",
+  "bots/sinbad-v07-divecap",
+  "bots/hunter-v20-portal-scouts",
+  "bots/kraken-v04-eval",
+  "bots/ouroboros-v10-beacon",
+  "bots/ouroboros-m01-vibing-mimic",
+  "bots/witten-x03-confirmed-fastbed",
+]
+
+maps = [
+  "maps/schooltime.map",
+  "maps/portals.map",
+  "maps/slithery_fight.map",
+  "maps/queen_of_spades.map",
+  "maps/default.map",
+  "maps/trophy.map",
+  "maps/dilemma.map",
+  "maps/autarky.map",
+  "maps/devil.map",
+  "maps/trauma.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 900
+sandbox = false
+seed_policy = "fixture_hash_v1"
