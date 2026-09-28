@@ -17,6 +17,10 @@ import sys
 import time
 import tempfile
 import threading
+import uuid
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from tools.stats_store import StatsStore
 
 ROOT = Path(__file__).resolve().parents[1]
 ANSI = re.compile(r'\x1b\[[0-9;]*m')
@@ -257,11 +261,15 @@ def main(argv=None):
         parser.error('unswbc was not found on PATH')
     out = (args.output or ROOT / 'build' / f'tournament-{datetime.now():%Y%m%d-%H%M%S-%f}').resolve()
     manifest = manifest_for(bots, maps, not args.no_replays, executable, args.sandbox)
+    manifest['run_id'] = uuid.uuid4().hex
     manifest['focus_bot'] = args.focus_bot
     if args.resume:
         if not (out / 'manifest.json').is_file():
             parser.error('--output does not contain a tournament manifest')
-        if json.loads((out / 'manifest.json').read_text()) != manifest:
+        saved_manifest = json.loads((out / 'manifest.json').read_text())
+        if saved_manifest.get('run_id'):
+            manifest['run_id'] = saved_manifest['run_id']
+        if saved_manifest != manifest:
             parser.error('bots, focus bot, maps, script or replay settings changed; start a new output directory')
         results = json.loads((out / 'results.json').read_text()) if (out / 'results.json').exists() else []
     else:
@@ -271,6 +279,8 @@ def main(argv=None):
         atomic_write(out / 'manifest.json', json.dumps(manifest, indent=2) + '\n')
         results = []
     print(f'Results: {out}', flush=True)
+    local_stats = StatsStore(queue_only=True)
+    local_run_id = local_stats.start_run(producer='tournament', manifest=manifest, run_id=manifest['run_id'])
     by_match = {(r['map'], r['team_a'], r['team_b']): r for r in results}
     save_results(out, results, bots)
     pending = iter((index, key) for index, key in enumerate(matches, 1)
@@ -306,6 +316,7 @@ def main(argv=None):
                     results = [by_match[item] for item in matches if item in by_match]
                     # Only this coordinating thread writes shared result files.
                     save_results(out, results, bots)
+                    local_stats.append_match(local_run_id, json.dumps([result['map'], result['team_a'], result['team_b']], separators=(',', ':')), result)
                     print(f"[{index}/{len(matches)}] Finished {key[0]}: {key[1]} vs {key[2]}: "
                           f"{result['winner'] or result['outcome']}", flush=True)
                     submit_next()
@@ -316,6 +327,7 @@ def main(argv=None):
         finally:
             workers.cancel()
             executor.shutdown(wait=True, cancel_futures=True)
+            local_stats.close()
     ranked = save_results(out, results, bots)
     print('\nStandings (win 3 points, draw 1):')
     for row in ranked:

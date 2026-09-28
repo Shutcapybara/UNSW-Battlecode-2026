@@ -48,6 +48,11 @@ uv run tools/game_stats.py summary --output /tmp/bot-pairs.csv
 See [the bot workflow](docs/bot-workflow.md) and
 [game statistics guide](game_stats/README.md) for experiment and ledger details.
 
+Local multi-agent statistics use append-only queues under
+`game_stats/local/runs/<run-id>/`. Rebuild them after runs with
+`python3 tools/stats_store.py rebuild`; see
+[`docs/local-stats-protocol.md`](docs/local-stats-protocol.md).
+
 ## Adaptive collection benchmarking
 
 The recovered `tools/benchmark.py` and `tools/benchmark_ratings.py` use the

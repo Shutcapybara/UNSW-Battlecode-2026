@@ -30,6 +30,7 @@ game_stats/sources/
 !/game_stats/runs/*.parquet
 /game_stats.parquet
 game_stats/.write.lock
+/game_stats/local/
 
 # Local credentials
 .battlecode-api-key
