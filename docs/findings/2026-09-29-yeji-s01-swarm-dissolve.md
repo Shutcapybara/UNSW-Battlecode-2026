@@ -73,3 +73,22 @@ per arm**, paired by (map, side, seed, opponent). ouroboros-v10-beacon is the co
 - `yeji-s05-young` (s04 + newborn CPU caps) on **seed 2**: 0.597, **+0.174 vs v10 (32/7, p < 0.001)**; Portals max 67.6M.
 - **The owner notes the tournament plays out-of-sample maps** and asks for broad heuristics only (e.g. map size, given at load). The public-map prior (s02–s05) is map-specific knowledge: on unseen maps it does not fire, so its in-sample gain is not tournament evidence. From s06 the prior is off and the lesson is carried by a general mechanism (online fast-bed learning from countdowns in view), evaluated on a **held-out panel of ten synthetic maps** (`maps/new/`: mc26_archipelago, crossroads, delayed_commons, equatorial_belt, nursery_bays, pinwheel, portal_quartet, pulse_farms, seam_market, md26_orchard_wide_s0) that no Yeji version was tuned on.
 - Other map-specific rules in S1 (Portals detection by portal id ≥ 4, Slithery Fight by 63×27) only set the dissolve onset, which is off from s02 on.
+
+## Addendum 2: held-out panel — the host does not generalise
+
+Held-out panel: the 10 maps listed above × both sides × 5 references (yuna-v02-core, gavroche-v32, sinbad-v07,
+witten-x03, vibing-mimic), unswbc 1.2.2, seed 1, 100 games per bot.
+
+| Bot | held-out | live-map panel |
+|---|---|---|
+| ouroboros-v10-beacon | **0.19** | 0.49 |
+| yeji-s01p-production | **0.18** | 0.53 |
+| yeji-s05-young (prior cannot fire) | **0.23** | 0.60 (seed 2) |
+| yuna-v03-core | **0.42** | (live source family) |
+| yuna-v03-core@v_unseen=8 | 0.37 (−0.05, 11/16) | — |
+| yuna-v03-core@split_val=10 | 0.42 (identical action stream: the split gate, not its value, binds) | — |
+
+The v10 family is eliminated in 70–90 % of held-out games (units r250 5–10 vs 42–51). Its ~0.5 on the live maps
+reflects tuning on those maps. **Decision:** Yeji iterates on the yuna/gavroche host, selected on the held-out panel,
+with only general inputs (map size, view, sonar). Harness: `yrun.py` accepts `maps/new/...` names and yuna-style
+`override.py` variants.

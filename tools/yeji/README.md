@@ -36,3 +36,10 @@ two cores (Slithery Fight and Schooltime dominate).
 The loop: observe (report / stats / ystats / deaths.py / crowns.py) → state one mechanism → add it as an option,
 feature or parameter with a neutral default → screen on the maps where it should act → full panel paired against the
 parent → metered probes (Schooltime as A, Portals as B vs sinbad-v07-divecap) → freeze a new version directory.
+
+## Held-out panel (the selection instrument from s06 on)
+
+Tournament maps are out of sample, so selection uses maps no Yeji version was tuned on: `tools/yeji/HOLDOUT_MAPS`
+(ten synthetic maps from `maps/new/`). `--maps $(cat tools/yeji/HOLDOUT_MAPS)`. Live-map panels are in-sample
+evidence only. Variants of gavroche/yuna-style bots (params.py `P` + override.py) are written as an appended
+`OVERRIDE.update({...})`.

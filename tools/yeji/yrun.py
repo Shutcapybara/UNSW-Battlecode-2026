@@ -76,7 +76,24 @@ def resolve_bot(spec, build):
         shutil.rmtree(tgt)
     shutil.copytree(src, tgt, ignore=shutil.ignore_patterns(".unswbc-build", "__pycache__"))
     scope = {}
-    exec((src / "params.py").read_text(), scope)
+    ptxt = (src / "params.py").read_text()
+    if "PARAMS" not in ptxt:
+        # gavroche/yuna style: params.py defines P and applies override.py's OVERRIDE
+        import sys as _s
+        _s.path.insert(0, str(src))
+        try:
+            exec(ptxt.split("try:  # experiment variants")[0], scope)
+        finally:
+            _s.path.pop(0)
+        for k in kv:
+            if k not in scope["P"]:
+                raise SystemExit("unknown param %s for %s" % (k, name))
+        ov = tgt / "override.py"
+        head = ov.read_text() if ov.exists() else "OVERRIDE = {}\n"
+        ov.write_text(head + "\nOVERRIDE.update(%r)  # yrun variant\n" % (kv,))
+        (tgt / "VARIANT").write_text(spec + "\n")
+        return spec, tgt
+    exec(ptxt, scope)
     base = dict(scope["PARAMS"])
     for k in kv:
         if k not in base:
