@@ -1,6 +1,6 @@
 # FRONTIER — bot pool and current status
 
-**Reviewed 2026-09-28.** This is the canonical page for candidate status,
+**Reviewed 2026-09-29.** This is the canonical page for candidate status,
 estimated ELOs, the default comparison roster, and contest deployment notes.
 
 > **TODO — complete the all-map frontier panel.** The 16-bot ratings below use
@@ -56,6 +56,25 @@ be blindly pooled. The new sweep's 70 outcomes are saved in
 [`game_stats/runs/549ce497d5e14041bf5321a96787d7a0.parquet`](game_stats/runs/549ce497d5e14041bf5321a96787d7a0.parquet)
 and its local logs are under the ignored
 `build/frontier-map-sweep-20260928/` directory.
+
+## Experimental Norse family: Tyr
+
+Tyr V01 combines Fenrir V20's measured core with Yuna V03's direction momentum.
+Against Yuna V03 it scored **38–32 over 70 games on the frozen 35-map set**,
+including a 2–0 Queen of Spades result, with no draws or runner errors. Tyr V04's
+room-return guard scored 34–36 against Yuna on the same panel. Tyr V08 adds a
+two-round, two-tile return penalty and scored **37–33 over 70 games** on the
+same 35 maps, with no errors. Its Queen score was 0–2 in that full run; a
+separate short Queen screen was 1–1 against Yuna and 2–0 against Tyr V01.
+
+V08 runtime-source fingerprint (Python and bot.toml):
+`facd1c5192b0f847f80042dde840754253a640117bf567431b434bacc7503d53`.
+
+These are direct, unseeded screens against one opponent, not frontier admissions or ELO
+ratings. Keep all Tyr variants out of the pilot table until the wider admission
+screen is met. Details and runtime fingerprints are in
+[the Tyr family notes](docs/tyr-family.md); match logs remain under ignored
+`build/tyr-*/` directories.
 
 ## How the frontier is defined
 
