@@ -5,6 +5,10 @@ frozen experiment snapshots kept as exact controls; use
 [`FRONTIER.md`](../FRONTIER.md) to find the current frontier and
 [`docs/`](../docs/) for family results and lineage notes.
 
+Odin is the current experimental cross-line synthesis; see
+[its family record](../docs/odin.md) and
+[version 01](odin-v01-synthesis/README.md). It is not yet a frontier candidate.
+
 Benchmarking and analysis tools live outside the bot roster:
 
 - [`tools/benchmarking/`](../tools/benchmarking/) contains the shared tournament
