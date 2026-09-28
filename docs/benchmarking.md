@@ -1,7 +1,7 @@
 # Collection benchmarking
 
 [`benchmark.toml`](../benchmark.toml) contains 24 curated reference opponents,
-39 unresolved screening bots and 8 new stable candidates (71 total), on 33 maps.
+39 unresolved screening bots and 125 new stable candidates (188 total), on 33 maps.
 The single-candidate [`comparison.toml`](../comparison.toml) still uses the
 24-opponent curated pool and original maps.
 See [the selection analysis](benchmark-pool-20260927.md) and
@@ -17,7 +17,9 @@ sharing, or verify source fingerprints before substituting working directories.
 The scaffold, profiling wrapper and diagnostic trace copies remain excluded.
 Later-created bots are never silently added. The expansion inventory, aliases,
 controls and deferred in-progress versions are recorded in
-`experiment_data/benchmark-expansion-20260927.json`.
+`experiment_data/benchmark-expansion-20260927.json`. Newton x10 and Scholze v05
+were subsequently added; their audit is in the current campaign’s
+`roster-expansion.json`.
 
 `context_manifest` preserves the previous roster's source identities as passive
 rating context. Games against retired opponents still anchor the strength fit
@@ -192,3 +194,17 @@ The latter two preserve source aliases and historical-import provenance across
 machines. Rebuild `game_stats.parquet` with the existing
 `tools/game_stats.py rebuild` command after merging contributions. Experiment
 directories and the generated central Parquet remain local.
+
+The latest roster expansion adds Gavroche v33–v66, excluding diagnostic v40/v41.
+`gavroche-final` is represented by its identical runtime source, v54. The current
+campaign records additions and exclusions in `roster-expansion.json`.
+
+The September 28 expansion adds 83 distinct candidates from Ed, Ein-dog, Jet,
+Ouroboros, Spike, Vicious and Yuna. Exact source aliases and default-off controls
+are excluded. Ed v18 and Yuna x19–x24 are deferred as recent experimental arms.
+The current campaign’s `roster-expansion.json` records every inclusion/exclusion.
+
+Historical re-imports preserve an already-published record if only its
+`runtime_faults` count differs. These discrepancies are listed in the campaign’s
+`import_audit.json` under `metadata_disagreements`; outcomes and identity conflicts
+still fail validation rather than overwriting existing results.

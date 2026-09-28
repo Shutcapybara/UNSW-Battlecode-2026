@@ -35,7 +35,7 @@ from game_stats import comparison_records, ensure_run_id, publish_games
 DEFAULTS = dict(sides=["A", "B"], jobs=4, timeout_seconds=600, sandbox=False,
                 control_every=10, seed_policy="random")
 IGNORED = (".git", ".unswbc-build", "__pycache__", "build", ".DS_Store")
-FAULT = re.compile(r'^round \d+: bot \d+ \(team [AB]\) (?!died:).*(?:exited|timed out|ran out of time|timeout|broken pipe|failed).*$', re.M)
+FAULT = re.compile(r'^round \d+: bot \d+ \(team [AB]\) (?!died:).*(?:exceeded CPU limit|exited|timed out|ran out of time|timeout|broken pipe|failed).*$', re.M)
 
 
 def slug(name):

@@ -1,0 +1,33 @@
+#!/Users/alik/.local/share/uv/tools/unswbc/bin/python3
+"""unswbc 1.0.0 adapter: deterministic engine clock, unchanged engine binary.
+
+This installed engine imports clock_time_get (not random_get). Pin its WASI
+clock for paired fixtures. Bot processes/sandbox CPU accounting keep real clocks.
+"""
+import os
+import sys
+os.environ['UNSWBC_NO_UPDATE'] = '1'
+os.environ['PYTHONPYCACHEPREFIX'] = '/private/tmp/vicious-pycache'
+os.environ['PATH'] = str(__import__('pathlib').Path(sys.executable).parent) + ':' + os.environ['PATH']
+if '--seed' in sys.argv:
+    idx = sys.argv.index('--seed')
+    seed = int(sys.argv[idx + 1])
+    del sys.argv[idx:idx + 2]
+    import unswbc.engine as engine
+    from wasmtime import FuncType, ValType
+    BaseLinker = engine.Linker
+
+    class SeededLinker(BaseLinker):
+        def define_wasi(self):
+            super().define_wasi()
+            self.allow_shadowing = True
+            def clock(caller, clock_id, precision, pointer):
+                now = (1700000000 + seed % 100000000) * 1000000000
+                caller.get('memory').write(caller, now.to_bytes(8, 'little'), pointer)
+                return 0
+            self.define_func('wasi_snapshot_preview1', 'clock_time_get',
+                FuncType([ValType.i32(),ValType.i64(),ValType.i32()],[ValType.i32()]),
+                clock, access_caller=True)
+    engine.Linker = SeededLinker
+from unswbc.cli import main
+sys.exit(main())

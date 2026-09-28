@@ -1,0 +1,29 @@
+# Tidus t05 labeling run: 21 diverse ledger-covered opponents x 13 original
+# maps x both sides = 546 games. Control side comes from the shared ledger's
+# newton-x10 fixtures (762 distinct); pair with pair_label.py.
+bots = [
+ "../../bots/ed-v02-split-intent", "../../bots/fermi-x02-route-support",
+ "../../bots/fermi-x01-attacker-support", "../../bots/serre-v02-doctrine",
+ "../../bots/witten-x03-confirmed-fastbed", "../../bots/gavroche-v32-supported-divecap",
+ "../../bots/scholze-v03-portal-memory", "../../bots/scholze-v05-composite",
+ "../../bots/witten-x02-fastbed-contest", "../../bots/gavroche-v16-informed-divecap",
+ "../../bots/gavroche-v19-spatial-density", "../../bots/fafnir-v01-phalanx",
+ "../../bots/scholze-v04-exit-trapguard", "../../bots/gavroche-v18-fused-room-flood",
+ "../../bots/gavroche-v17-half-gradient", "../../bots/gavroche-v30-saturated-sprint-cap",
+ "../../bots/sinbad-v07-divecap", "../../bots/serre-v01-foundation",
+ "../../bots/gavroche-v20-bounded-feeding", "../../bots/valjean-v01-portal-memory",
+ "../../bots/monte_christo-v03-logistic-risk"
+]
+maps = ["../../maps/devil.map", "../../maps/queen_of_spades.map",
+        "../../maps/trauma.map", "../../maps/Colosseum.map",
+        "../../maps/schooltime.map", "../../maps/stronghold.map",
+        "../../maps/default.map", "../../maps/big_empty.map",
+        "../../maps/autarky.map", "../../maps/trophy.map",
+        "../../maps/dilemma.map", "../../maps/arena.map",
+        "../../maps/default_small.map"]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 50

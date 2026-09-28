@@ -1,0 +1,16 @@
+# Ein_dog broad evaluation: the 7 serre-gauntlet references x all 20
+# synthetic maps x both sides = 280 games. Run for promotion finalists only
+# (the screen 32 + gauntlet 182 + reserve 16 come first).
+bots = [
+ "../../bots/ouroboros-v13-ladder", "../../bots/leviathan-v09-arrival",
+ "../../bots/tew-v12-mid-support", "../../bots/avery-v08-crown-race",
+ "../../bots/monte_christo-x12-remote-density", "../../bots/porthos-x04-policy",
+ "../../bots/hunter-v20-portal-scouts"
+]
+maps = ["../../maps/new/"]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 25

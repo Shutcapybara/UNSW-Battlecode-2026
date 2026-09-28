@@ -1,0 +1,163 @@
+#!/Users/alik/.local/share/uv/tools/unswbc/bin/python3
+"""Experimental screening adapter: actual engine, isolated Python actor modules.
+
+AST inserts a yield at the read_turn boundary of the unmodified controller
+loop. Every actor still receives only its own engine protocol input and starts
+with fresh modules. Requires command/trajectory parity against native before
+use for screening. No judge timing claim; validate finalists with real sandbox.
+"""
+import argparse
+import collections
+import json
+
+METRICS=collections.defaultdict(collections.Counter)
+import ast
+import builtins
+import io
+from pathlib import Path
+import sys
+import time
+import types
+import unswbc.engine as engine
+from wasmtime import FuncType, ValType
+
+CODES={}
+
+
+def code(path):
+    if path not in CODES:
+        tree=ast.parse(path.read_text(),str(path))
+        if path.name=='main.py':
+            hits=0
+            for node in tree.body:
+                if isinstance(node,ast.FunctionDef) and node.name=='main':
+                    for loop in node.body:
+                        if isinstance(loop,ast.While) and ast.unparse(loop.test)=='io.read_turn()':
+                            loop.body[:0]=[ast.Expr(ast.Yield(ast.Constant(None))),
+                                ast.If(ast.UnaryOp(ast.Not(),loop.test),[ast.Return(None)],[])]
+                            loop.test=ast.Constant(True);hits+=1
+            if hits != 1:raise ValueError('Unsupported controller loop: '+str(path))
+        ast.fix_missing_locations(tree)
+        CODES[path]=compile(tree,str(path),'exec')
+    return CODES[path]
+
+
+class Actor:
+    def __init__(self,folder,initial):
+        self.folder=folder;self.modules={};self.logs=io.StringIO()
+        self.sys=types.ModuleType('sys');self.sys.__dict__.update(sys.__dict__)
+        self.sys.stdin=io.StringIO(initial.decode());self.sys.stdout=self.logs;self.sys.stderr=self.logs
+        custom=dict(vars(builtins));custom['__import__']=self.imp
+        def print_(*args,**kwargs):
+            kwargs.setdefault('file',self.sys.stdout);return builtins.print(*args,**kwargs)
+        custom['print']=print_;self.builtins=custom
+        self.main=self.imp('main');self.generator=self.main.main();next(self.generator)
+        self.install_probe()
+    def install_probe(self):
+        if 'temporal' not in self.modules:return
+        t=self.modules['temporal'];w=self.modules['world'];roles=self.modules['roles'];P=self.modules['params'].P
+        c=METRICS[self.folder.name]
+        original_before=t.before_roles
+        def before():
+            old=list(w.crown) if w.crown else None
+            original_before()
+            c['crown_refresh_changed']+=int(old != w.crown)
+            if old and w.crown and old[2]!=w.crown[2]:c['crown_length_changed']+=1
+        t.before_roles=before
+        original_observe=t.observe
+        def observe():
+            old=roles.ROLE[0];original_observe()
+            c['turns']+=1;c['partial_body_turns']+=int(w.LEN>len(w.body))
+            c['phase_'+t.STATE['phase']]+=1
+            if old != roles.ROLE[0]:c['role_'+old+'_to_'+roles.ROLE[0]]+=1
+            if P.get('temporal_conversion'):
+                crown=w.crown
+                receiver=crown is not None and crown[0]!=(w.ME&4095) and 0<=w.RND-crown[3]<=4 and crown[2]>=max(8,2*w.LEN)
+                state=receiver and w.UNITS>=6 and len(w.enemy_heads)<=len(w.ally_heads)+1
+                c['conversion_time_eligible']+=int(t.STATE['late']>0)
+                c['conversion_state_eligible']+=int(state)
+                c['conversion_joint_eligible']+=int(t.STATE['late']>0 and state)
+                c['conversion_feeder_turns']+=int(roles.ROLE[0]=='feeder')
+            if t.STATE.get('intent'):c['intent_'+t.STATE['intent'][2]+'_turns']+=1
+        t.observe=observe
+        original_adjust=t.adjust
+        def adjust(ranked,threat):
+            before=max(ranked,key=lambda p:p[0])[1]
+            out=original_adjust(ranked,threat)
+            c['admission_or_scores_changed']+=int(out!=ranked)
+            c['adjust_selected_changed']+=int(max(out,key=lambda p:p[0])[1]!=before)
+            return out
+        t.adjust=adjust
+        original_donate=t.donation_allowed
+        def donate(ch):
+            c['donation_considered']+=1
+            allowed=original_donate(ch);c['donation_allowed']+=int(allowed)
+            return allowed
+        t.donation_allowed=donate
+        original_hear=t.hear
+        def hear(payload):
+            old=t.STATE.get('intent');original_hear(payload)
+            c['parent_packet_received']+=1
+            c['parent_packet_accepted']+=int(t.STATE.get('intent')!=old)
+        t.hear=hear
+        original_send=t.send
+        def send(work):
+            old=dict(work['messages']);original_send(work)
+            c['parent_packet_sent']+=int(old!=work['messages'])
+        t.send=send
+    def imp(self,name,globals=None,locals=None,fromlist=(),level=0):
+        if name=='sys':return self.sys
+        path=self.folder/(name+'.py')
+        if not level and '.' not in name and path.exists():
+            if name not in self.modules:
+                m=types.ModuleType(name);m.__file__=str(path);m.__dict__['__builtins__']=self.builtins
+                self.modules[name]=m;exec(code(path),m.__dict__)
+            return self.modules[name]
+        return builtins.__import__(name,globals,locals,fromlist,level)
+    def ask(self,data):
+        self.sys.stdin=io.StringIO(data.decode());self.sys.stdout=io.StringIO()
+        next(self.generator)
+        answer=self.sys.stdout.getvalue()
+        if 'MC_ERROR' in answer:builtins.print(answer,flush=True)
+        return answer.encode()
+    def stop(self):
+        self.generator.close();self.modules.clear()
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('command',choices=['run']);p.add_argument('map',type=Path)
+    p.add_argument('a',type=Path);p.add_argument('b',type=Path);p.add_argument('-o',type=Path,required=True)
+    p.add_argument('--seed',type=int,required=True);a=p.parse_args()
+    Base=engine.Linker
+    class SeededLinker(Base):
+        def define_wasi(self):
+            super().define_wasi();self.allow_shadowing=True
+            def clock(caller,clock_id,precision,pointer):
+                now=(1700000000+a.seed%100000000)*1000000000
+                caller.get('memory').write(caller,now.to_bytes(8,'little'),pointer);return 0
+            self.define_func('wasi_snapshot_preview1','clock_time_get',
+                FuncType([ValType.i32(),ValType.i64(),ValType.i32()],[ValType.i32()]),clock,access_caller=True)
+    engine.Linker=SeededLinker
+    live={};failures=[]
+    def spawn(did,data):
+        team=next(x.split()[1] for x in data.decode().splitlines() if x.startswith('TEAM'))
+        live[did]=Actor(a.a if team=='A' else a.b,data)
+    def reply(did,data):
+        try:return live[did].ask(data)
+        except Exception as exc:
+            failures.append((did,repr(exc)));print('FAST_ERROR',did,repr(exc),flush=True)
+            return b'MOVE N\nENDTURN\n'
+    def death(did,rnd,reason):
+        obj=live.pop(did,None)
+        if obj:obj.stop()
+    mod=engine.EngineModule();start=time.monotonic()
+    result=mod.run(a.map.read_bytes(),reply,death,spawn,lambda s:None,engine.DEBUG_ALL)
+    a.o.write_bytes(mod.replay(a.a.name,a.b.name))
+    print(('team '+result.winner+' wins' if result.winner else 'draw')+
+          f' after {result.rounds+1} rounds ({time.monotonic()-start:.2f}s), {len(failures)} adapter errors')
+    a.o.with_suffix(".probe.json").write_text(json.dumps(METRICS,indent=2)+"\n")
+    if failures:return 1
+    return 0
+
+
+if __name__=='__main__':sys.exit(main())

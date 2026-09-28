@@ -1,20 +1,45 @@
-# System & environment
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-.DS_Store
+
+# Local environments and build output
 .venv/
 env/
 .unswbc-build/
-
-# Build, submodules, or uncommitted sandboxes
 unswbc/
+.idea/
+build/
+Testing/
+.cache/
+.pytest_cache/
+.DS_Store
+*.swp
+/main
 
-# Run statistics & raw sources
-game_stats/sources/
-game_stats/runs/
-*.parquet
-
-# Large datasets & replays
+# Generated experiment data and downloaded replays
 experiment_data/
 public_replays/
+*.replay
+
+# Game statistics: per-run contribution Parquets are shared through Git;
+# source metadata, the merged ledger, and the writer lock are local outputs.
+game_stats/sources/
+*.parquet
+!/game_stats/runs/
+!/game_stats/runs/*.parquet
+/game_stats.parquet
+game_stats/.write.lock
+
+# Local credentials
+.battlecode-api-key
+
+# Downloaded replay archives and decoded replay payloads stay local.
+/replays/
+*.replay.gz
+*.replay.zip
+*.replay.json
+
+# Interrupted atomic ledger writes are not contribution files.
+/.game_stats.parquet*.tmp
+/game_stats/runs/.*.tmp

@@ -1,0 +1,15 @@
+# Ein_dog farm-map interaction panel: the three gauntlet-negative maps
+# x all 7 gauntlet references x both sides = 42 games.
+bots = [
+ "../../bots/ouroboros-v13-ladder", "../../bots/leviathan-v09-arrival",
+ "../../bots/tew-v12-mid-support", "../../bots/avery-v08-crown-race",
+ "../../bots/monte_christo-x12-remote-density", "../../bots/porthos-x04-policy",
+ "../../bots/hunter-v20-portal-scouts"
+]
+maps = ["../../maps/schooltime.map", "../../maps/stronghold.map", "../../maps/default.map"]
+[run]
+sides = ["A", "B"]
+jobs = 2
+timeout_seconds = 600
+sandbox = false
+control_every = 25
