@@ -9,4 +9,4 @@ Rich topology, phase, population and route-relative segment features are availab
 The inherited P0 scores are retained. The new contextual scores are disabled;
 their broad and narrowed variants remain separate frozen experiments.
 
-See [the contract and experiment report](../../docs/dartegnan.md) for promotion status, source identities, known limitations, native parity and judge coverage. Tracing is disabled.
+See the contract and experiment report (`../../docs/dartegnan.md`) for promotion status, source identities, known limitations, native parity and judge coverage. Tracing is disabled.

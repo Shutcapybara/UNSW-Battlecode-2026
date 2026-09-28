@@ -14,4 +14,4 @@ Family-level matchup observations and iteration status are tracked in the [Bifr�
 
 ## Test result
 
-Rejected after a 120-game focused screen: 72 wins and 48 losses, with no errors or runtime faults. It lost 3–9 to Bifröst v01. On 108 common external fixtures with exactly matching seeds, v01 scored 88–20 and v03 scored 69–39 (8 gains, 27 regressions). Expanded late feeding is not retained. See the [benchmark report](../../experiment_data/bifrost-v03-expanded-feeding_20260927115819514324/summary.md).
+Rejected after a 120-game focused screen: 72 wins and 48 losses, with no errors or runtime faults. It lost 3–9 to Bifröst v01. On 108 common external fixtures with exactly matching seeds, v01 scored 88–20 and v03 scored 69–39 (8 gains, 27 regressions). Expanded late feeding is not retained. See the benchmark report (`../../experiment_data/bifrost-v03-expanded-feeding_20260927115819514324/summary.md`).

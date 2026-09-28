@@ -7,4 +7,4 @@ The focused screen uses the same fixtures as V04 and V05. See the [family notes]
 
 ## Test result
 
-Rejected after a 60-game focused screen: 32 wins and 28 losses, with no errors or runtime faults. It lost 3–9 to Bifröst v01. On 48 external fixtures paired by opponent, map, side and seed, v01 scored 43–5 and v06 scored 29–19; v06 gained two results and regressed on 16. The local split gate is not retained. See the [candidate report](../../experiment_data/bifrost-v06-local-split-crowding_20260927122649557512/summary.md) and [matched V01 control](../../experiment_data/bifrost-v01-portal-memory_20260927121857063579/summary.md).
+Rejected after a 60-game focused screen: 32 wins and 28 losses, with no errors or runtime faults. It lost 3–9 to Bifröst v01. On 48 external fixtures paired by opponent, map, side and seed, v01 scored 43–5 and v06 scored 29–19; v06 gained two results and regressed on 16. The local split gate is not retained. See the candidate report (`../../experiment_data/bifrost-v06-local-split-crowding_20260927122649557512/summary.md`) and matched V01 control (`../../experiment_data/bifrost-v01-portal-memory_20260927121857063579/summary.md`).

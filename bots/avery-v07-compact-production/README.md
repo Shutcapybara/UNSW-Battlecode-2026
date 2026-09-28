@@ -32,7 +32,7 @@ default_small (256), devil (512). Trophy (625) deliberately excluded.
 
 ## Measured results
 
-Native gauntlet (avery-gauntlet.toml: gauntlet-5 + tew-v12-mid-support,
+Native gauntlet (configs/avery/gauntlet.toml: gauntlet-5 + tew-v12-mid-support,
 both sides, 11 maps, 132 games), run
 `experiment_data/avery-v07-compact-production_20260925121511670436`
 (run id in its manifest.json). Opponent sources hash-verified unchanged

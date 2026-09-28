@@ -21,4 +21,4 @@ Fresh reflected-layout run: **9–15**, comprising 6–12 against external refer
 
 No game, analysis, reported runtime or caught policy errors in these runs.
 Exact run paths, map/side breakdowns, counterexamples and training provenance:
-[Monte Christo handoff](../../docs/monte_christo.md).
+Monte Christo handoff (`../../docs/monte_christo.md`).

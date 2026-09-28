@@ -1,0 +1,30 @@
+# Rating-led cross-family roster for Gavroche v13.
+# Families are represented by their highest-rated runnable bot in
+# experiment_data/bot-ratings/latest.md. Feynman and Godel are sparse-rated.
+bots = [
+  "../../bots/sinbad-v07-divecap",
+  "../../bots/von_neumann-x04-support",
+  "../../bots/feynman-x01-frozen",
+  "../../bots/valjean-v01-portal-memory",
+  "../../bots/godel-x12-tb25-margin1",
+  "../../bots/monte_christo-x12-remote-density",
+  "../../bots/athos-x06-f-crown",
+  "../../bots/tew-v10-supported-hunts",
+  "../../bots/porthos-x04-policy",
+  "../../bots/ouroboros-v13-ladder",
+  "../../bots/aramis-x01-extracted",
+  "../../bots/avery-v09-frontier-bfs",
+  "../../bots/javert-x02-lendensity",
+  "../../bots/dartegnan-x01-e0p0",
+  "../../bots/leviathan-v09-arrival",
+  "../../bots/hunter-v23-supported-arrival-feed",
+]
+
+maps = ["../../maps"]
+
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 10

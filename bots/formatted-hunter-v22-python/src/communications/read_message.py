@@ -6,7 +6,7 @@ from typing import Any
 from helper import Controller, Game
 
 from .signals import Message as Signal
-from .sucide_command import SuicideCommand
+from .suicide_command import SuicideCommand
 
 
 TYPE_SHIFT = 60

@@ -9,4 +9,4 @@ The Javert lineage code carries four further switches (LEN_DENSITY, POLICY3,
 PORTAL_SCOUT, SPACE_TRADE), all off in this cell. Every javert-x0* cell shares
 identical executable files and differs only in `settings.py`; with all
 switches off the behaviour is Aramis v02 mode 0, so switch isolation is the
-comparison unit. See [the Javert report](../../docs/javert.md) for the study.
+comparison unit. See the Javert report (`../../docs/javert.md`) for the study.

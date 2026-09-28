@@ -7,4 +7,4 @@ strike_value; default candidates without the permission keep the inherited
 favourable-trade rule. This prices length-for-space trades the base executor
 would refuse.
 All javert-x0* cells share identical executable files except `settings.py`.
-See [the Javert report](../../docs/javert.md) for the controlled study.
+See the Javert report (`../../docs/javert.md`) for the controlled study.

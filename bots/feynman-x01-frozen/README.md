@@ -10,4 +10,4 @@ behind a default-off parameter; variants add an `override.py` next to a copy.
 
 Design, baseline rationale, freeze boundary and the feature programme:
 [docs/feynman.md](../../docs/feynman.md). Parent design and experiment ledger:
-[docs/valjean.md](../../docs/valjean.md).
+docs/valjean.md (`../../docs/valjean.md`).

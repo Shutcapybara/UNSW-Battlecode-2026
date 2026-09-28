@@ -35,7 +35,7 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
   - A stdout write costs 2.5M + 4k/byte.
   - Parsing one round in Python costs about 10M.
   - Python works if engineered for it (ouroboros p99 about 48M). C++ has large headroom (hunter about 17M).
-- **Local maps (11)** fall into two classes, which matter more than anything else:
+- **Map bundle:** the checked-in `.map` files directly under `maps/` are the local runner inputs. The class list below is an 11-map historical snapshot; see `comparison.toml` for the current default directory selection.
   - **Compact**, ≤625 tiles: arena 11×11, Colosseum 16×16, default_small 16×16, devil 32×16, trophy 25×25.
   - **Open**, ≥875 tiles: queen_of_spades 25×35, default 32×32, stronghold 48×24, trauma 48×24, schooltime 60×40, big_empty 64×64.
   - The server's map pool is not known exactly. Test on the transposed and flipped variants too (`tools/ouroboros/mapgen.py`).
@@ -63,7 +63,7 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
 | **Leviathan** | GPT | `leviathan-` | Core bot (strongest-bot track) |
 | **Kraken** | Kimi | `kraken-` | Exploration track |
 | **Hydra** | GLM | `hydra-` | Exploration track |
-| **Hunter** / fry | team member, with LLMs | `hunter-`, `fry-` | Human-led line. Hunter is currently deployed and co-best in class with ouroboros-v10. |
+| **Hunter** / fry | team member, with LLMs | `hunter-`, `fry-` | Human-led line. The deployed version is not recorded in this checkout; see `docs/ACTIVE.md`. |
 
 **Rules:**
 
@@ -93,7 +93,7 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
 | What | Where |
 |---|---|
 | Bots | `bots/<name>/` (`main.py` or `main.cpp`, `bot.toml`, `README.md`, optional `params.py`) |
-| Maps | `maps/*.map` (11). Variants: `python3 tools/ouroboros/mapgen.py` |
+| Maps | `maps/*.map` (the current top-level bundle). The tournament runner does not recurse into `maps/new/`. Variants: `python3 tools/ouroboros/mapgen.py` |
 | CLI | `unswbc` (`unswbc run MAP BOT_A BOT_B`, `--sandbox` for judge CPU); `unswbc init python NAME` |
 | Shared tournament | `bots/tournament.py` (round-robin / focus-bot; `--timeout 1200` for Python pools) |
 | Claude harness | `tools/ouroboros/`: `ouro.py run/sweep/report/compare/standings/autopsy`, `phase.py` (win/loss phase stats), `deaths.py`, `replaystats.py`, `replayview.py`, `mapview.py`, `mapgen.py`. See its README. |

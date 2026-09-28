@@ -59,6 +59,6 @@ Autarky, 54-8 on Queen of Spades, and 58-4 on Schooltime. These are observed
 fixture results, not an uncertainty-adjusted rating.
 
 Full tables, per-map and per-opponent logs, and replay artifacts are in the
-[benchmark report](../../experiment_data/bifrost-v01-portal-memory_20260927104358397848/summary.md)
-and [interactive report](../../experiment_data/bifrost-v01-portal-memory_20260927104358397848/index.html).
+benchmark report (`../../experiment_data/bifrost-v01-portal-memory_20260927104358397848/summary.md`)
+and interactive report (`../../experiment_data/bifrost-v01-portal-memory_20260927104358397848/index.html`).
 Family-level matchup observations and iteration status are tracked in the [Bifröst family notes](../../docs/bifrost-family.md).

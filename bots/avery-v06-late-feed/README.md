@@ -31,7 +31,7 @@ without touching the economy.
 
 Run `experiment_data/avery-v06-late-feed_20260925075329034170` (132 games,
 6 opponents — gauntlet-5 plus tew-v12-mid-support, native, both sides,
-11 maps, config `avery-gauntlet.toml`). All six opponent directories verified
+11 maps, config `configs/avery/gauntlet.toml`). All six opponent directories verified
 byte-identical to the v05 run's frozen sources.
 
 | Opponent | v06 W–L–D | v05 W–L–D |

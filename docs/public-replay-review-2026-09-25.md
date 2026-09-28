@@ -20,7 +20,7 @@ Among the **29 unique elimination games**, the eventual winner collected more pe
 
 On the represented compact maps, **4,101 of 4,261 splits (96.2%)** created two-segment children. Hunter's basic production model is well aligned with this field behavior. The field is not generally beating this model by waiting for large reproductive units.
 
-Example: [M156379, Devil](../public_replays/battle-M156377-replays/M156379.replay), B has 24 pearls, 13 splits and 16 dragons at round 30, versus A's 14, eight and nine. B wins by elimination after 215 rounds.
+Example: M156379, Devil (`../public_replays/battle-M156377-replays/M156379.replay`), B has 24 pearls, 13 splits and 16 dragons at round 30, versus A's 14, eight and nine. B wins by elimination after 215 rounds.
 
 ### Longest-dragon conversion routinely overrides army and material leads
 
@@ -30,17 +30,17 @@ These are particularly clear examples:
 
 | Replay | Winner | Winner's final units / longest / total | Loser's final units / longest / total |
 |---|---|---:|---:|
-| [M156381, Schooltime](../public_replays/battle-M156377-replays/M156381.replay) | B | 1 / 49 / 49 | 35 / 30 / 413 |
-| [M156355, Trauma](../public_replays/battle-M156352-replays/M156355.replay) | B | 2 / 12 / 22 | 30 / 7 / 93 |
-| [M156221, Stronghold](../public_replays/battle-M156219-replays/M156221.replay) | B | 9 / 64 / 92 | 35 / 7 / 108 |
+| M156381, Schooltime (`../public_replays/battle-M156377-replays/M156381.replay`) | B | 1 / 49 / 49 | 35 / 30 / 413 |
+| M156355, Trauma (`../public_replays/battle-M156352-replays/M156355.replay`) | B | 2 / 12 / 22 | 30 / 7 / 93 |
+| M156221, Stronghold (`../public_replays/battle-M156219-replays/M156221.replay`) | B | 9 / 64 / 92 | 35 / 7 / 108 |
 
 The handoff is right to insist on conversion. A large material lead is not evidence that this part is nearly solved.
 
 ### Feeding and tail handoffs are real field behavior
 
-In [M156369, Stronghold](../public_replays/battle-M156367-replays/M156369.replay), B's final length-50 dragon, ID 371, collects **28 pearls from 11 allied donors after round 380**. All 28 come from explicit suicide actions by dragons that had at least one empty legal next tile. This directly establishes feeding, rather than merely inferring it from declining population.
+In M156369, Stronghold (`../public_replays/battle-M156367-replays/M156369.replay`), B's final length-50 dragon, ID 371, collects **28 pearls from 11 allied donors after round 380**. All 28 come from explicit suicide actions by dragons that had at least one empty legal next tile. This directly establishes feeding, rather than merely inferring it from declining population.
 
-Large rear-body splits also preserve growing dragons. In [M156350, Schooltime](../public_replays/battle-M156347-replays/M156350.replay), a B lineage transfers **28 → child 26 at round 454, 35 → child 33 at 469, and 47 → child 45 at 492**; the last child finishes length 50. The handoff mentions crown handoffs already. The replays reinforce that “two-segment children” is a production default, with an important survival exception.
+Large rear-body splits also preserve growing dragons. In M156350, Schooltime (`../public_replays/battle-M156347-replays/M156350.replay`), a B lineage transfers **28 → child 26 at round 454, 35 → child 33 at 469, and 47 → child 45 at 492**; the last child finishes length 50. The handoff mentions crown handoffs already. The replays reinforce that “two-segment children” is a production default, with an important survival exception.
 
 ## What is missing or understated
 
@@ -50,7 +50,7 @@ Across these games, winners have **more total deaths in 59/76 games**, including
 
 The distinction is visible within a single behavioral style:
 
-- In [M156167, Devil](../public_replays/battle-M156161-replays/M156167.replay), B wins despite 270 self deaths and 90 wall deaths. Every one of those deaths occurs with **zero empty legal one-step exits at the point of failure**. B makes 438 splits and recovers 480 pearls from allied remains. These are trapped units and a resilient replacement economy; they are not evidence of deliberate feeding, nor proof those traps were unavoidable earlier.
+- In M156167, Devil (`../public_replays/battle-M156161-replays/M156167.replay`), B wins despite 270 self deaths and 90 wall deaths. Every one of those deaths occurs with **zero empty legal one-step exits at the point of failure**. B makes 438 splits and recovers 480 pearls from allied remains. These are trapped units and a resilient replacement economy; they are not evidence of deliberate feeding, nor proof those traps were unavoidable earlier.
 - In M156381, B's eventual length-49 winner collects **26 allied corpse pearls from 12 donors after round 380**. Every one comes from a self collision by a donor with an empty legal alternative. Timing, alternatives and the beneficiary together strongly support deliberate feeding through collisions.
 - Across the unique corpus, **1,854 of 2,441 self deaths in rounds 380–499** have an empty legal next tile, compared with 431 of 3,910 in rounds 100–379. An empty tile is only immediate legality, not a guarantee of future safety; the beneficiary traces make the selected feeding examples much stronger evidence than this aggregate alone.
 
@@ -70,7 +70,7 @@ The handoff knows about feeding, but its economic metrics do not distinguish the
 
 The local engine's `TrySpawnPearl` rejects a spawn when **any dragon segment occupies the bed**, then resets its countdown. Standing on a due bed does not harvest a pearl automatically. This adds an economic cost to crowding beyond collisions and route interference.
 
-In [M156377, Stronghold](../public_replays/battle-M156377-replays/M156377.replay), there are **6,902 scheduled bed renewals**. At 2,088 of them the bed is occupied by a body: 1,438 by A and 650 by B. Only 898 renewals produce a new pearl; the other 3,916 find a pearl already present. A maintains roughly 60 dragons much later, collects more bed pearls overall (540 versus 336), yet finishes longest **11 versus 50**.
+In M156377, Stronghold (`../public_replays/battle-M156377-replays/M156377.replay`), there are **6,902 scheduled bed renewals**. At 2,088 of them the bed is occupied by a body: 1,438 by A and 650 by B. Only 898 renewals produce a new pearl; the other 3,916 find a pearl already present. A maintains roughly 60 dragons much later, collects more bed pearls overall (540 versus 336), yet finishes longest **11 versus 50**.
 
 This does not prove that reducing A's population would win: occupancy and routing would change together. It does establish a missing cost. A blanket “reach the unit cap” or “pre-position at the bed” rule needs to account for body occupancy at spawn time and clearance routes.
 
@@ -100,7 +100,7 @@ M156350 illustrates the delayed race: B trails **5–7 dragons at round 30**, th
 
 ### 5. Conversion needs a security condition, not only a clock
 
-A particularly instructive counterexample is [M156175, Trophy](../public_replays/battle-M156170-replays/M156175.replay). B changes from **29 dragons, longest 4 at round 400**, to **four dragons, longest 21 at round 425**. It builds a length-25 dragon, hands 23 segments to child ID 301 at round 460, and has that last survivor killed at **round 470** by A's ID 300, a length-five attacker issuing a three-step move. A wins by elimination, despite having a much smaller longest dragon.
+A particularly instructive counterexample is M156175, Trophy (`../public_replays/battle-M156170-replays/M156175.replay`). B changes from **29 dragons, longest 4 at round 400**, to **four dragons, longest 21 at round 425**. It builds a length-25 dragon, hands 23 segments to child ID 301 at round 460, and has that last survivor killed at **round 470** by A's ID 300, a length-five attacker issuing a three-step move. A wins by elimination, despite having a much smaller longest dragon.
 
 Compare M156381, where retaining only one length-49 dragon works. Reducing the army is neither universally correct nor universally wrong; local access and enemy reach decide whether the stored length survives.
 
@@ -143,7 +143,7 @@ The behavior comparison is more useful than the overall 12–6 result:
 - **Hunter already has a field-relevant expansion strength on Big Empty:** 64 units at round 100 in both local games, versus Ouroboros's 46 and 51. Public winners' median there is 64. Hunter nevertheless loses the length races **34–42 and 47–49**, despite finishing with 64 units and total length 753/801 versus Ouroboros's 13/14 units and total length 257/240. Conversion, not population, is the remaining problem in these games.
 - **Schooltime is a concrete access/expansion concern for both references:** Hunter has 16/24 units at round 100; Ouroboros has 25/38. Public winners' median is 62.5. Opponents differ, so this is a diagnostic target rather than a controlled performance comparison. It makes the 30–100 window worth investigating.
 - **Ouroboros genuinely executes late concentration:** it wins both Stronghold games with longest lengths 37/31 versus Hunter's 9/7, despite lower total living length in both. It records zero wall deaths across the 18 games, consistent with its exact movement checks.
-- **Its crown survival is not solved.** In [the Hunter-A / Ouroboros-B Schooltime game](../build/public-replay-local-comparison/010-schooltime-hunter-v20-portal-scouts-vs-ouroboros-v10-beacon.replay), Ouroboros hands a length-51 crown to a length-49 child at round 415. That child grows to 52 and dies of a self collision at round 419 with no empty legal exit. Ouroboros still wins with a replacement length-37 dragon. A win-only summary would miss this failure of sustained crown survival after a handoff.
+- **Its crown survival is not solved.** In the Hunter-A / Ouroboros-B Schooltime game (`../build/public-replay-local-comparison/010-schooltime-hunter-v20-portal-scouts-vs-ouroboros-v10-beacon.replay`), Ouroboros hands a length-51 crown to a length-49 child at round 415. That child grows to 52 and dies of a self collision at round 419 with no empty legal exit. Ouroboros still wins with a replacement length-37 dragon. A win-only summary would miss this failure of sustained crown survival after a handoff.
 
 The conclusions are therefore stronger than “implement the missing features”: we have working production and conversion strengths, but need earlier resource access on some maps, better integration of the two, and reliable survival of the length we have banked.
 
@@ -160,11 +160,11 @@ I would prioritize these over adding another sonar packet type or a new general 
 
 ## Reproduction and evidence
 
-- [Per-game/team metrics, all 78 files](../build/public-replay-review/all-games.csv), with exact-duplicate flags.
+- Per-game/team metrics, all 78 files (`../build/public-replay-review/all-games.csv`), with exact-duplicate flags.
 - [Event-analysis tool](../tools/public_replay_review.py); existing dependency-free replay decoder and map reader are reused read-only. Pass a fresh `--out` directory to recompute rather than reuse cached files.
 - Detailed corpse transfers and bed-renewal audits: `build/public-replay-review/bed-analysis/` for M156127, M156167, M156175, M156350, M156369, M156377 and M156381. Full start-of-round curves and death/split events for the corpus are under `build/public-replay-review/`.
-- [Local comparison manifest](../build/public-replay-local-comparison/manifest.json) records frozen source/map hashes. [Local results](../build/public-replay-local-comparison/results.json) record both sides and runner checks.
-- Engine references: [movement, splits and corpse drops](../unswbc/engine/src/actions.cc), [bed spawning](../unswbc/engine/src/pearls.cc), [tiebreaks](../unswbc/engine/src/scoring.cc).
+- Local comparison manifest (`../build/public-replay-local-comparison/manifest.json`) records frozen source/map hashes. Local results (`../build/public-replay-local-comparison/results.json`) record both sides and runner checks.
+- Engine references: movement, splits and corpse drops (`../unswbc/engine/src/actions.cc`), bed spawning (`../unswbc/engine/src/pearls.cc`), tiebreaks (`../unswbc/engine/src/scoring.cc`).
 - Current source references: [Hunter growth mode](../bots/hunter-v20-portal-scouts/main.cpp), [Ouroboros parameters and feeding](../bots/ouroboros-v10-beacon/main.py). [HANDOFF](HANDOFF.md) and [ACTIVE](ACTIVE.md) were not edited.
 
 Pearl provenance uses the most recent recorded spawn at a cell: a corpse may overwrite an existing pearl, so this measures pickup provenance rather than net newly created value. “Free exit” is computed from the actual board immediately before death, including portals; it is not a multi-turn safety proof. Replays contain no usable opponent identities or CPU metering. No field head-to-head strength estimate is claimed.

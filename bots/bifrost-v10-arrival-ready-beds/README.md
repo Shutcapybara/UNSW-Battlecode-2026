@@ -7,4 +7,4 @@ The screen uses the same six maps, five opponent entries and deterministic seeds
 
 ## Test result
 
-Rejected after a 60-game focused screen: 1 win and 59 losses, with no errors or runtime faults. It lost all 12 direct games to Bifröst v01. Witten X03's arrival-only bed rule does not transfer as a standalone change. See the [candidate report](../../experiment_data/bifrost-v10-arrival-ready-beds_20260927124438424001/summary.md).
+Rejected after a 60-game focused screen: 1 win and 59 losses, with no errors or runtime faults. It lost all 12 direct games to Bifröst v01. Witten X03's arrival-only bed rule does not transfer as a standalone change. See the candidate report (`../../experiment_data/bifrost-v10-arrival-ready-beds_20260927124438424001/summary.md`).

@@ -14,4 +14,4 @@ recorded in the [family notes](../../docs/bifrost-family.md).
 Rejected after a 60-game focused screen: 35 wins and 25 losses, with no errors
 or runtime faults. It went 3–9 against V01. On 48 external fixtures matched to
 the repeated V01 control, V01 scored 43–5 and V19 scored 32–16 (one gain, 12
-regressions). See the [candidate report](../../experiment_data/bifrost-v19-combined-territory-contest_20260927133408285723/summary.md).
+regressions). See the candidate report (`../../experiment_data/bifrost-v19-combined-territory-contest_20260927133408285723/summary.md`).

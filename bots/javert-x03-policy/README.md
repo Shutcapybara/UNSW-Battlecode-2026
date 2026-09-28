@@ -9,4 +9,4 @@ while early and population-saturated with length balance not hopeless, and
 an approach-only attack may then be selected instead of suppressed. The
 executor and candidate rules are exactly x02's.
 All javert-x0* cells share identical executable files except `settings.py`.
-See [the Javert report](../../docs/javert.md) for the controlled study.
+See the Javert report (`../../docs/javert.md`) for the controlled study.
