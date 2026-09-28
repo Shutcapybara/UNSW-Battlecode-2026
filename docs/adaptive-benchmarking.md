@@ -1,6 +1,6 @@
 # Collection benchmarking
 
-[`benchmark.toml`](../benchmark.toml) contains 299 named bot snapshots, including
+[`benchmark.toml`](../benchmark.toml) contains 340 named bot snapshots, including
 24 reference opponents, on 33 maps. The September 28 roster expansion is
 preserved; inclusion is an exploration choice, not a promotion or strength claim.
 The separate [`comparison.toml`](../comparison.toml) uses the remote repository's five-opponent default; it is independent of this broader adaptive roster.

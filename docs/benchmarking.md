@@ -14,7 +14,7 @@ This checkout has three supported comparison paths:
 The recovered adaptive collector and ratings tools are available again as
 [`tools/benchmark.py`](../tools/benchmark.py) and
 [`tools/benchmark_ratings.py`](../tools/benchmark_ratings.py). The third path is
-the explicit 299-bot/33-map adaptive roster in [`benchmark.toml`](../benchmark.toml).
+the explicit 340-bot/33-map adaptive roster in [`benchmark.toml`](../benchmark.toml).
 See [the adaptive benchmark guide](adaptive-benchmarking.md) for planning,
 runtime modes, map weighting and limitations. It is separate from the small
 comparison default. Existing frozen campaigns are not modified by a Git merge.
@@ -79,3 +79,9 @@ The next September 28 expansion adds 19 versions from Jet, Ouroboros, Spike,
 Tidus and Yuna, including the previously deferred Tidus t08 and Yuna x35/x36.
 Yuna v05-core is an exact runtime alias of x32; development controls v04-nonb
 and v05-dev-base remain excluded. All earlier runtime holds are preserved.
+
+The September 29 expansion adds 41 functional versions from Chaewon, Eunchae,
+Heimdall, Kazuha, Loki, Odin, Sakura, Spike and Tyr. Tyr v02 is excluded because
+its documented undefined function leaves only emergency fallback behavior.
+The Chaewon control contains distinct host fixes and is included. Inclusion
+is for measurement, not promotion to the separate `FRONTIER.md` registry.
