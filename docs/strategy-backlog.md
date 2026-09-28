@@ -107,7 +107,7 @@ when enemy size or team counts are uncertain.
 
 ## kraken iteration loop (2026-09-24 session)
 
-- Method + tooling: `docs/kraken-design-framework.md` and `bots/kbench.py`
+- Method + tooling: `docs/kraken-design-framework.md` and `tools/kraken/kbench.py`
   (variant / run screen|bench|pool / analyze / compare). One hypothesis per
   variant; screen kills bad ideas fast, sandbox bench confirms, full pool
   regresses.

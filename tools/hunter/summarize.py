@@ -1,6 +1,6 @@
 """Compare the two focused runs of a Hunter small tournament.
 
-Usage: python3 bots/summarize_hunter.py build/new-small build/previous-small
+Usage: python3 tools/hunter/summarize.py build/new-small build/previous-small
 Excludes bot failures from the clean comparison, even when the engine returned
 an ordinary winner. Reports duplicate fixtures that changed outcome.
 """

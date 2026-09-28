@@ -52,7 +52,7 @@ def main():
         maps[name] = target
     for name in ['lineage_review.py', 'lab.py', 'replay.py']:
         shutil.copy2(Path(__file__).parent / name, sources / name)
-    shutil.copy2(ROOT / 'bots/tournament.py', sources / 'tournament.py')
+    shutil.copy2(ROOT / 'tools/benchmarking/tournament.py', sources / 'tournament.py')
     manifest = dict(bots=args.bots, maps=boards, sandbox=args.sandbox, hashes=hashes,
                     runner=subprocess.run(['unswbc','--version'], capture_output=True,text=True).stdout.strip())
     (out / 'manifest.json').write_text(json.dumps(manifest, indent=2))

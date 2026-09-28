@@ -4,7 +4,7 @@ import json
 import re
 import subprocess
 
-root = Path(__file__).resolve().parents[1]
+root = Path(__file__).resolve().parents[3]
 out = root / "build" / "child-comparison"
 out.mkdir(parents=True, exist_ok=True)
 results = []

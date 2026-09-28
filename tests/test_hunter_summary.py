@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-spec = importlib.util.spec_from_file_location('summary', Path(__file__).resolve().parents[1] / 'bots/summarize_hunter.py')
+spec = importlib.util.spec_from_file_location('summary', Path(__file__).resolve().parents[1] / 'tools/hunter/summarize.py')
 summary = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(summary)
 

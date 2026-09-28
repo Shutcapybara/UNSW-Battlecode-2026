@@ -18,7 +18,7 @@ and second-newest, on all 11 maps, with both team assignments. Each focus plays
 agree. Their union is a complete 66-game round robin and can also assess the
 incumbent when an experimental version branches from it.
 
-Wins earn 3 points and draws 1. `bots/summarize_hunter.py` verifies identical
+Wins earn 3 points and draws 1. `tools/hunter/summarize.py` verifies identical
 source and map fingerprints, complete schedules, and matching repeated games.
 It also scans logs for bot failures. A map with any such failure is excluded
 from both sides of the tactical comparison so the weights remain equal.

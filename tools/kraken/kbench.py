@@ -29,7 +29,7 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 BOTS = ROOT / "bots"
 
 PRESETS = {
@@ -131,7 +131,7 @@ def cmd_run(args):
     preset = PRESETS[args.preset]
     focus = args.focus or args.bots[0]
     bots = list(dict.fromkeys(args.bots + preset["opponents"]))
-    cmd = [sys.executable, str(BOTS / "tournament.py"),
+    cmd = [sys.executable, str(ROOT / "tools" / "benchmarking" / "tournament.py"),
            "--focus-bot", focus, "--bots", *bots,
            "--no-replays", "--jobs", str(args.jobs or preset["jobs"]),
            "--timeout", str(args.timeout or preset["timeout"])]

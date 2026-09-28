@@ -11,7 +11,7 @@ import sys
 import unittest
 from unittest.mock import patch
 
-spec = importlib.util.spec_from_file_location('tournament', Path(__file__).resolve().parents[1] / 'bots/tournament.py')
+spec = importlib.util.spec_from_file_location('tournament', Path(__file__).resolve().parents[1] / 'tools/benchmarking/tournament.py')
 tournament = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(tournament)
 

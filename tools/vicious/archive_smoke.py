@@ -6,7 +6,7 @@ import tempfile
 import zipfile
 
 from panel import hashes
-from bots.tournament import MatchWorkers, play
+from tools.benchmarking.tournament import MatchWorkers, play
 from verify import parity
 
 ROOT = Path(__file__).resolve().parents[2]

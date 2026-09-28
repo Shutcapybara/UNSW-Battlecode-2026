@@ -154,7 +154,7 @@ target scoring, strike/escape/priority ladder. v04 = v03 refactor with all
 knobs in a CFG dict (behaviour identical).
 
 Code: 1272 lines of tuned Python; the inner BFS loop is hand-optimised
-(reusable stamps, locals caching). kbench.py implements variant/run/
+(reusable stamps, locals caching). `tools/kraken/kbench.py` implements variant/run/
 analyze/compare around the shared tournament runner.
 
 Criticism:

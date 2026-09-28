@@ -16,12 +16,12 @@ this repository contains hundreds of historical bot snapshots, select a small
 roster explicitly:
 
 ```sh
-python3 bots/tournament.py \
+python3 tools/benchmarking/tournament.py \
   --bots hunter-v23-supported-arrival-feed gavroche-v66-supported-safe \
   --maps arena big_empty \
   --dry-run
 
-python3 bots/tournament.py \
+python3 tools/benchmarking/tournament.py \
   --bots hunter-v23-supported-arrival-feed gavroche-v66-supported-safe \
   --maps arena big_empty \
   --no-replays \

@@ -19,7 +19,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
 from replay import analyse
-spec = importlib.util.spec_from_file_location('tournament', ROOT / 'bots/tournament.py')
+spec = importlib.util.spec_from_file_location('tournament', ROOT / 'tools/benchmarking/tournament.py')
 tournament = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(tournament)
 MAPS = dict(quick=['arena', 'default_small', 'default', 'queen_of_spades'],
@@ -172,7 +172,7 @@ def run(args):
         shutil.copy2(Path(args.map_dir) / (board + '.map'), target)
         hashes[board + '.map'] = digest(target)
         map_paths[board] = target
-    shutil.copy2(ROOT / 'bots/tournament.py', sources / 'tournament.py')
+    shutil.copy2(ROOT / 'tools/benchmarking/tournament.py', sources / 'tournament.py')
     for file in Path(__file__).parent.glob('*.py'):
         shutil.copy2(file, sources / ('lab-' + file.name))
     manifest = dict(focus=args.bot, opponents=args.vs, maps=boards, sandbox=args.sandbox,

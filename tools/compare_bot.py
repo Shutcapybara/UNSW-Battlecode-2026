@@ -28,7 +28,7 @@ import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from bots.tournament import MatchWorkers, play, atomic_write
+from tools.benchmarking.tournament import MatchWorkers, play, atomic_write
 from comparison_metrics import analyse, chart, NOTES
 from game_stats import comparison_records, ensure_run_id, publish_games
 from stats_store import StatsStore
@@ -218,7 +218,7 @@ def prepare(candidate, bots, maps, settings, config, executable):
                     analysis_sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                                       for p in (Path(__file__), ROOT / "tools/game_stats.py", ROOT / "tools/comparison_metrics.py",
                                                 ROOT / "tools/public_replay_review.py", ROOT / "tools/leviathan/replay.py",
-                                                ROOT / "tools/ouroboros/mapview.py", ROOT / "bots/tournament.py")},
+                                                ROOT / "tools/ouroboros/mapview.py", ROOT / "tools/benchmarking/tournament.py")},
                     runner_version=subprocess.check_output([executable, "--version"], text=True).strip())
     for name, source in {candidate.name: candidate, **bots}.items():
         before = hashes(source)

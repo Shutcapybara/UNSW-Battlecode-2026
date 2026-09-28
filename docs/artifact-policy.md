@@ -17,7 +17,7 @@ They remain available as provenance; the ignore rule only prevents additional
 local output from being added accidentally. A path being ignored does not remove
 an already tracked file.
 
-The shared maps used by `bots/tournament.py` are every checked-in `.map` file
+The shared maps used by `tools/benchmarking/tournament.py` are every checked-in `.map` file
 under `maps/`, including the custom bundle in `maps/new/`. Nested paths are
 selected relative to `maps/`. Family-specific reserve maps under `configs/`
 remain separate validation fixtures.

@@ -68,7 +68,7 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
 **Rules:**
 
 - **Never edit another line's bots, tools or docs.** Read them, benchmark them, copy them into your own line (say so in the README).
-- Shared files (`README.md`, `bots/tournament.py`, `maps/`) change only when the user asks.
+- Shared files (`README.md`, `tools/benchmarking/tournament.py`, `maps/`) change only when the user asks.
 - `FRONTIER.md` and §11 of this file are edited only by the cycle's unifier (§8).
 
 **Naming:**
@@ -95,12 +95,13 @@ something here is wrong, fix it in the next cycle, and note the change in §11.
 | Bots | `bots/<name>/` (`main.py` or `main.cpp`, `bot.toml`, `README.md`, optional `params.py`) |
 | Maps | `maps/**/*.map` (the shared bundle, including `maps/new/`). Variants: `python3 tools/ouroboros/mapgen.py` |
 | CLI | `unswbc` (`unswbc run MAP BOT_A BOT_B`, `--sandbox` for judge CPU); `unswbc init python NAME` |
-| Shared tournament | `bots/tournament.py` (round-robin / focus-bot; `--timeout 1200` for Python pools) |
+| Shared tournament | `tools/benchmarking/tournament.py` (round-robin / focus-bot; `--timeout 1200` for Python pools) |
 | Claude harness | `tools/ouroboros/`: `ouro.py run/sweep/report/compare/standings/autopsy`, `phase.py` (win/loss phase stats), `deaths.py`, `replaystats.py`, `replayview.py`, `mapview.py`, `mapgen.py`. See its README. |
 | GPT harness | `tools/leviathan/`: lineage review, replay decoder, probes, equivalence checks, regression tests |
-| Kimi harness | `bots/kbench.py`, `docs/kraken-design-framework.md` |
+| Kimi harness | `tools/kraken/kbench.py`, `docs/kraken-design-framework.md` |
 | GLM tools | `tools/hydra_replay.py`, `tools/hydra_crossline.py`, `tools/autopsy.py`, `tools/family_report.py` |
-| Hunter tools and notes | `bots/summarize_hunter.py`, `bots/compare.py`, `docs/hunter-python-results.md`, `docs/strategy-backlog.md`, `docs/bot-workflow.md` |
+| Hunter analysis | `tools/hunter/summarize.py`, `docs/hunter-python-results.md`, `docs/strategy-backlog.md`, `docs/bot-workflow.md` |
+| Historical Fry comparison | `tools/experiments/fry_child_count/compare.py`, `docs/experiments/fry-child-count.md` |
 | Cross-line reviews | `docs/cross-line-review.md` (GLM, §7 on hunter), `docs/family-comparison.md` (Kimi, including the hunter section), `docs/leviathan/LINEAGE_REVIEW.md` (GPT) |
 | Line design docs | Ouroboros: `docs/ouroboros-design.md`, `docs/ouroboros-macro-spec.md`. Hydra: `docs/macro-spec.md` (supersedes `design-framework.md`). Kraken: `docs/kraken-macro-spec.md`, `docs/kraken-design-framework.md`. Leviathan: `docs/leviathan/DESIGN.md`, `RESULTS.md`. |
 | Raw results and replays | `build/` (git-ignored, local only). Quote the numbers you rely on in a README or cycle file, or they are lost. |

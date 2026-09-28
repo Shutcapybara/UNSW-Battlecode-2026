@@ -6,12 +6,12 @@ Start with a bounded dry run so the selected fixture count is clear. This
 example compares two current snapshots across the complete recursive map bundle:
 
 ```sh
-python3 bots/tournament.py \
+python3 tools/benchmarking/tournament.py \
   --focus-bot hunter-v23-supported-arrival-feed \
   --bots hunter-v23-supported-arrival-feed gavroche-v66-supported-safe \
   --dry-run
 
-python3 bots/tournament.py \
+python3 tools/benchmarking/tournament.py \
   --focus-bot hunter-v23-supported-arrival-feed \
   --bots hunter-v23-supported-arrival-feed gavroche-v66-supported-safe \
   --no-replays \
@@ -28,7 +28,7 @@ Use an explicit bot pool for normal iteration. This example compares the two
 latest documented Hunter and Gavroche snapshots against the same small roster:
 
 ```sh
-PATH="$PWD/.venv/bin:$PATH" python3 bots/tournament.py \
+PATH="$PWD/.venv/bin:$PATH" python3 tools/benchmarking/tournament.py \
   --focus-bot hunter-v23-supported-arrival-feed \
   --bots hunter-v14-cpp-hybrid-route-spacing hunter-v20-portal-scouts hunter-v23-supported-arrival-feed \
   --jobs 4 \
@@ -71,15 +71,15 @@ line-specific results.
 
 ## Iteration loop (kraken)
 
-`docs/kraken-design-framework.md` defines the method; `bots/kbench.py` is
+`docs/kraken-design-framework.md` defines the method; `tools/kraken/kbench.py` is
 the tooling:
 
 ```sh
-python3 bots/kbench.py variant kraken-v04-eval kraken-v05-<hypo> --set key=value ...
-python3 bots/kbench.py run screen --bots kraken-v05-<hypo>      # fast kill/keep
-python3 bots/kbench.py run bench  --bots kraken-v05-<hypo>      # sandbox confirm
-python3 bots/kbench.py analyze build/kbench-bench-kraken-v05-<hypo>
-python3 bots/kbench.py compare build/kbench-bench-A build/kbench-bench-B
+python3 tools/kraken/kbench.py variant kraken-v04-eval kraken-v05-<hypo> --set key=value ...
+python3 tools/kraken/kbench.py run screen --bots kraken-v05-<hypo>      # fast kill/keep
+python3 tools/kraken/kbench.py run bench  --bots kraken-v05-<hypo>      # sandbox confirm
+python3 tools/kraken/kbench.py analyze build/kbench-bench-kraken-v05-<hypo>
+python3 tools/kraken/kbench.py compare build/kbench-bench-A build/kbench-bench-B
 ```
 
 Long runs go through `nohup`; screen is non-sandbox (fast), bench and pool

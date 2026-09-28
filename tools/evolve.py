@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Evolve: the fast iteration harness for bot work.
 
-Wraps bots/tournament.py focus runs and aggregates results across an
+Wraps tools/benchmarking/tournament.py focus runs and aggregates results across an
 opponent pool, tagging every run into build/evolve/INDEX.md so versions
 are comparable across sessions.
 
@@ -14,7 +14,7 @@ Usage:
 
 Map sets:
     quick  arena default devil queen_of_spades big_empty   (5 diverse maps)
-    full   every map discovered recursively by bots/tournament.py
+    full   every map discovered recursively by tools/benchmarking/tournament.py
 
 Both sides of every matchup are always played (schedule permutations),
 exactly as tournament.py --focus-bot does.
@@ -54,7 +54,7 @@ def arena(bot: str, pool: list[str], maps: list[str] | None, jobs: int,
     for opponent in pool:
         for run in range(runs):
             out = ROOT / 'build' / 'evolve' / f'{stamp}-{bot}-vs-{opponent}-{run}'
-            cmd = ['python3', 'bots/tournament.py', '--focus-bot', bot,
+            cmd = ['python3', 'tools/benchmarking/tournament.py', '--focus-bot', bot,
                    '--bots', bot, opponent, '--jobs', str(jobs),
                    '--no-replays', '--output', str(out)]
             if maps:

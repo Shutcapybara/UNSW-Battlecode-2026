@@ -19,10 +19,10 @@ import tempfile
 import threading
 import uuid
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from tools.stats_store import StatsStore
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 ANSI = re.compile(r'\x1b\[[0-9;]*m')
 OUTCOME = re.compile(r'^(?:team ([AB]) wins|draw) after (\d+) rounds\b', re.MULTILINE)
 MAX_MATCHES_WITHOUT_CONFIRMATION = 10_000
