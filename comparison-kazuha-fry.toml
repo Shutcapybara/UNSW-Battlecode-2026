@@ -1,0 +1,25 @@
+# kazuha s01 live-pool panel: 8 reference opponents x 10 live maps x 2 sides.
+# Seeds: fixture_hash_v1 (one deterministic seed per opponent+map pair).
+bots = [
+  "bots/fry-v14-stateful-size-aware-3",
+]
+
+maps = [
+  "maps/schooltime.map",
+  "maps/portals.map",
+  "maps/slithery_fight.map",
+  "maps/queen_of_spades.map",
+  "maps/default.map",
+  "maps/trophy.map",
+  "maps/dilemma.map",
+  "maps/autarky.map",
+  "maps/devil.map",
+  "maps/trauma.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 900
+sandbox = false
+seed_policy = "fixture_hash_v1"
