@@ -23,7 +23,8 @@ markers = [
 
 [local_evidence]
 refs = [
-    "game_stats/runs/ (published by tools/compare_bot.py, see README)",
+    "experiment_data/{ouroboros-v10-beacon,kazuha-s01-prodonly,kazuha-s01-dissolveonly,kazuha-s01-swarm-dissolve}_2026092* (compare_bot, seeded fixture_hash_v1, unswbc 1.2.2)",
+    "game_stats/runs/ (ledger parquet published by the same runs)",
     "docs/findings/2026-09-28-kazuha-s01-swarm-dissolve.md",
 ]
-summary = "filled at delivery: paired delta vs ouroboros-v10-beacon control on the seeded live-pool panel, toolkit unswbc 1.2.2, 8 lineage-diverse opponents"
+summary = "2x2 vs ouroboros-v10-beacon control on 140 shared seeded fixtures (8 opponents x 10 live maps x 2 sides, unswbc 1.2.2): this bot 44.0 (31.4%, 11/18/111 pairs, p=0.26); prod-only arm 53.0 (37.9%, 16/14/110, p=0.86); dissolve-only 42.0 (30.0%, 7/16/117, p=0.093); control 51.0. No arm beats control significantly; the early-onset dissolve is the negative half, production+cert is neutral-to-positive. Metered probes both toolkits: max 39.9-50.2M, p99 30.5-37.5M, zero faults. Fry screen 14-0-6 (70%)."
