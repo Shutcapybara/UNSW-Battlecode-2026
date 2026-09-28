@@ -1,5 +1,8 @@
 # Shared game statistics
 
+For the local multi-agent file-queue protocol, read
+[`docs/local-stats-protocol.md`](../docs/local-stats-protocol.md) first.
+
 `game_stats.parquet` at the repository root contains one row per completed game.
 The comparison runner updates it after saving each result, including games with
 replay-analysis errors. Harness errors are excluded; engine outcomes with bot

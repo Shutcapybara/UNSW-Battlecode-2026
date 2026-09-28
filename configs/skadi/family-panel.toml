@@ -1,6 +1,6 @@
 # Repeat the seeded Gavroche V54 panel and include V54 as a direct control.
 bots = [
-  "../../bots/gavroche-final",
+  "../../bots/gavroche-v54-sparse-room",
   "../../bots/gavroche-v33-half-support",
   "../../bots/gavroche-v31-saturated-divecap",
   "../../bots/gavroche-v23-selective-sprint-cap",

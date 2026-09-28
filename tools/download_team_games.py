@@ -6,8 +6,8 @@ the documented API download endpoint, authenticated with BATTLECODE_API_KEY.
 Only Python's standard library is required.
 
 Examples:
-    BATTLECODE_API_KEY=bc_... python3 tools/download_team_games.py "Team Name"
-    python3 tools/download_team_games.py 112 --dry-run --max-games 20
+    BATTLECODE_API_KEY=bc_... python3 tools/download_team_games.py "Team Name" --submission v12
+    python3 tools/download_team_games.py 112 --submission 8751 --dry-run --max-games 20
 """
 
 from __future__ import annotations
@@ -103,6 +103,127 @@ def get_json(base_url: str, path: str, api_key: str) -> Any:
         return json.loads(request(url, api_key=api_key))
     except json.JSONDecodeError as error:
         raise RuntimeError(f"The API returned invalid JSON for {path}.") from error
+
+
+def _items(payload: Any, *keys: str) -> list[dict[str, Any]]:
+    """Return an API collection regardless of its common envelope shape."""
+    if isinstance(payload, list):
+        return [item for item in payload if isinstance(item, dict)]
+    if isinstance(payload, dict):
+        for key in keys:
+            value = payload.get(key)
+            if isinstance(value, list):
+                return [item for item in value if isinstance(item, dict)]
+    return []
+
+
+def _number(value: Any) -> int | None:
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, int):
+        return value
+    if isinstance(value, str) and value.isdecimal():
+        return int(value)
+    return None
+
+
+def _field(node: dict[str, Any], *keys: str) -> Any:
+    for key in keys:
+        if key in node:
+            return node[key]
+    return None
+
+
+def _nested_id(node: Any, *keys: str) -> int | None:
+    if isinstance(node, dict):
+        value = _field(node, *keys)
+        number = _number(value)
+        if number is not None:
+            return number
+        for child in node.values():
+            number = _nested_id(child, *keys)
+            if number is not None:
+                return number
+    elif isinstance(node, list):
+        for child in node:
+            number = _nested_id(child, *keys)
+            if number is not None:
+                return number
+    return None
+
+
+def submission_id_for_team(game: dict[str, Any], team_id: int) -> int | None:
+    """Extract the submission ID belonging to team_id from one game record."""
+    if not isinstance(game, dict):
+        return None
+    direct_team = _number(_field(game, "teamId", "team_id"))
+    direct_submission = _number(_field(game, "submissionId", "submission_id"))
+    if direct_team == team_id and direct_submission is not None:
+        return direct_submission
+    for value in game.values():
+        if isinstance(value, dict):
+            nested_team = _number(_field(value, "id", "teamId", "team_id"))
+            team = value.get("team")
+            if isinstance(team, dict):
+                nested_team = nested_team or _number(_field(team, "id", "teamId", "team_id"))
+            submission = _number(_field(value, "submissionId", "submission_id"))
+            submission_node = value.get("submission")
+            if isinstance(submission_node, dict):
+                submission = submission or _number(_field(submission_node, "id", "submissionId"))
+            if nested_team == team_id and submission is not None:
+                return submission
+            found = submission_id_for_team(value, team_id)
+            if found is not None:
+                return found
+    return None
+
+
+def battle_games(payload: Any, battle_id: int) -> list[dict[str, Any]]:
+    games = _items(payload, "games", "matches", "results")
+    if games:
+        return games
+    if isinstance(payload, dict) and any(key in payload for key in ("teamA", "teamB", "team_a", "team_b")):
+        return [dict(payload, id=payload.get("id", battle_id))]
+    return []
+
+
+def resolve_submission(team_id: int, name_or_id: str | None, base_url: str, api_key: str) -> dict[str, Any]:
+    submissions = _items(get_json(base_url, "/api/v1/submissions", api_key), "submissions", "versions")
+    if not submissions:
+        raise RuntimeError("The submissions API returned no usable submission records.")
+    wanted_id = _number(name_or_id) if name_or_id else None
+    wanted_name = None if wanted_id is not None else (name_or_id or "").casefold().strip()
+    matches = []
+    for submission in submissions:
+        identifier = _number(_field(submission, "id", "submissionId", "submission_id"))
+        name = _field(submission, "name", "submissionName", "submission_name")
+        owner = _number(_field(submission, "teamId", "team_id"))
+        if isinstance(submission.get("team"), dict):
+            owner = owner or _number(_field(submission["team"], "id", "teamId", "team_id"))
+        if identifier is None or (owner is not None and owner != team_id):
+            continue
+        if (wanted_id is not None and identifier == wanted_id) or (wanted_name and isinstance(name, str) and name.casefold() == wanted_name):
+            matches.append(submission)
+    if len(matches) != 1:
+        descriptor = name_or_id or "the requested submission"
+        raise RuntimeError(f"Could not resolve exactly one submission {descriptor!r} for team {team_id}.")
+    result = matches[0]
+    result["id"] = _number(_field(result, "id", "submissionId", "submission_id"))
+    return result
+
+
+def matching_games(game_ids: list[int], team_id: int, submission_id: int, base_url: str, api_key: str, *, delay: float = 0.0) -> list[dict[str, Any]]:
+    """Fetch battle metadata and retain only games using submission_id."""
+    matches = []
+    for index, battle_id in enumerate(game_ids):
+        payload = get_json(base_url, f"/api/v1/battles/{battle_id}", api_key)
+        for game in battle_games(payload, battle_id):
+            game_id = _number(_field(game, "id", "gameId", "game_id")) or battle_id
+            if submission_id_for_team(game, team_id) == submission_id:
+                matches.append({"game_id": game_id, "battle_id": battle_id, "metadata": game})
+        if delay and index + 1 < len(game_ids):
+            time.sleep(delay)
+    return matches
 
 
 def _team_candidates(value: Any) -> Iterable[tuple[int, str]]:
@@ -230,9 +351,10 @@ def download_replay(
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Download all available replay files involving a Battlecode team."
+        description="Download replays played by one exact Battlecode submission version."
     )
     parser.add_argument("team", help="exact team name or numeric team ID")
+    parser.add_argument("--submission", required=True, help="exact submission name or numeric submission ID")
     parser.add_argument("--out", type=Path, default=Path("public_replays"), help="output directory")
     parser.add_argument("--max-games", type=int, help="download only the newest N games")
     parser.add_argument("--delay", type=float, default=0.55, help="seconds between API downloads")
@@ -260,44 +382,64 @@ def load_api_key(key_file: Path = DEFAULT_KEY_FILE) -> str:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     api_key = load_api_key()
-    if not api_key and not args.team.isdecimal():
+    if not api_key:
         print(
-            "Set BATTLECODE_API_KEY or place the bc_... key in .battlecode-api-key.",
+            "Set BATTLECODE_API_KEY or place the bc_... key in .battlecode-api-key; "
+            "submission filtering requires authenticated API metadata.",
             file=sys.stderr,
         )
         return 2
 
     try:
         team_id, team_name = resolve_team(args.team, DEFAULT_BASE_URL, api_key)
+        submission = resolve_submission(team_id, args.submission, DEFAULT_BASE_URL, api_key)
+        submission_id = submission["id"]
         label = team_name or f"team-{team_id}"
         games = discover_games(team_id, DEFAULT_BASE_URL, max_games=args.max_games)
         if not games:
             print(f"No completed games found for {label} (ID {team_id}).", file=sys.stderr)
             return 0
-        output = args.out / f"team-{team_id}"
-        print(f"Found {len(games)} completed game(s) for {label} (ID {team_id}).")
+        print(f"Found {len(games)} candidate battle(s) for {label} (ID {team_id}); "
+              f"filtering for submission {submission.get('name', submission_id)!r} (ID {submission_id}).")
+        matched = matching_games(games, team_id, submission_id, DEFAULT_BASE_URL, api_key, delay=args.delay)
+        output = args.out / f"team-{team_id}" / f"submission-{submission_id}"
+        print(f"Submission filter kept {len(matched)} game(s).")
         if args.dry_run:
-            print("\n".join(map(str, games)))
+            print("\n".join(str(item["game_id"]) for item in matched))
             return 0
-        if not api_key:
-            print("Set BATTLECODE_API_KEY or add .battlecode-api-key to download replays.", file=sys.stderr)
-            return 2
-
         downloaded = skipped = failed = 0
-        for index, game_id in enumerate(games, 1):
+        manifest = {
+            "team_id": team_id,
+            "team_name": team_name,
+            "submission_id": submission_id,
+            "submission": submission,
+            "candidate_battles": games,
+            "matched_games": matched,
+        }
+        (output / "download_manifest.json").parent.mkdir(parents=True, exist_ok=True)
+        (output / "download_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+        for index, item in enumerate(matched, 1):
+            game_id = item["game_id"]
             destination = output / f"{game_id}.replay"
             if destination.exists() and not args.overwrite:
                 skipped += 1
-                print(f"[{index}/{len(games)}] {game_id}: already present")
+                print(f"[{index}/{len(matched)}] {game_id}: already present")
                 continue
             try:
                 download_replay(game_id, destination, DEFAULT_BASE_URL, api_key)
+                destination.with_suffix(".json").write_text(json.dumps({
+                    "team_id": team_id,
+                    "submission_id": submission_id,
+                    "battle_id": item["battle_id"],
+                    "game_id": game_id,
+                    "metadata": item["metadata"],
+                }, indent=2) + "\n")
                 downloaded += 1
-                print(f"[{index}/{len(games)}] {game_id}: downloaded")
+                print(f"[{index}/{len(matched)}] {game_id}: downloaded")
             except (OSError, RuntimeError, urllib.error.URLError) as error:
                 failed += 1
-                print(f"[{index}/{len(games)}] {game_id}: {error}", file=sys.stderr)
-            if index < len(games) and args.delay:
+                print(f"[{index}/{len(matched)}] {game_id}: {error}", file=sys.stderr)
+            if index < len(matched) and args.delay:
                 time.sleep(args.delay)
         print(f"Complete: {downloaded} downloaded, {skipped} skipped, {failed} failed.")
         return 1 if failed else 0

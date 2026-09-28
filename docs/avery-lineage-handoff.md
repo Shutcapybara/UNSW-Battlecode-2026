@@ -201,5 +201,5 @@ most bots; hydra-v07 dominates it).
 - Git: v06 landed in commit `4ea743b`; v07–v12 + this update in cycle-2
   commits (see log).
 - Task brief snapshot: [`handoffs/bahamut-experiment-handoff.txt`](handoffs/bahamut-experiment-handoff.txt); current shared workflow: [`BAHAMUT_HANDOFF.md`](BAHAMUT_HANDOFF.md).
-- Field context: `docs/ACTIVE.md` (cycle-0 gauntlet definition and
+- Field context: `cycles/cycle-00.md` (cycle-0 gauntlet definition and
   cross-line results — maintained by the cycle unifier, do not edit).

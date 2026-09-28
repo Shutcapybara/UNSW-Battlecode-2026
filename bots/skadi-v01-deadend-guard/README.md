@@ -1,7 +1,7 @@
 # Skadi v01: bounded routes and productive pockets
 
 **Skadi** is a Norse-origin family name (Old Norse **Skaði**). This first
-candidate starts from `bots/gavroche-final` and combines its bounded route
+candidate starts from `bots/gavroche-v54-sparse-room` and combines its bounded route
 search with two measured ideas from the other lines:
 
 - Fafnir's **size-matched counter-threat support** discounts an enemy threat

@@ -26,7 +26,7 @@ bots freely; make your changes in your own lineage rather than overwriting
 another team's work or the common scaffold.
 
 This document and the current user prompt define this experiment. Older
-[`HANDOFF.md`](../HANDOFF.md), [`ACTIVE.md`](../ACTIVE.md), and lineage reports provide
+[`HANDOFF.md`](../HANDOFF.md), [`FRONTIER.md`](../../FRONTIER.md), and lineage reports provide
 historical context; their cycle assignments, rankings and proposals are not new
 instructions or proof of current performance.
 

@@ -3,15 +3,15 @@
 ## Small Tournament
 
 Start with a bounded dry run so the selected fixture count is clear. This
-example compares two current snapshots across the top-level map bundle:
+example compares two current snapshots across the complete recursive map bundle:
 
 ```sh
-python3 bots/tournament.py \
+python3 tools/benchmarking/tournament.py \
   --focus-bot hunter-v23-supported-arrival-feed \
   --bots hunter-v23-supported-arrival-feed gavroche-v66-supported-safe \
   --dry-run
 
-python3 bots/tournament.py \
+python3 tools/benchmarking/tournament.py \
   --focus-bot hunter-v23-supported-arrival-feed \
   --bots hunter-v23-supported-arrival-feed gavroche-v66-supported-safe \
   --no-replays \
@@ -28,7 +28,7 @@ Use an explicit bot pool for normal iteration. This example compares the two
 latest documented Hunter and Gavroche snapshots against the same small roster:
 
 ```sh
-PATH="$PWD/.venv/bin:$PATH" python3 bots/tournament.py \
+PATH="$PWD/.venv/bin:$PATH" python3 tools/benchmarking/tournament.py \
   --focus-bot hunter-v23-supported-arrival-feed \
   --bots hunter-v14-cpp-hybrid-route-spacing hunter-v20-portal-scouts hunter-v23-supported-arrival-feed \
   --jobs 4 \
@@ -60,24 +60,26 @@ deployed bot or promotion status:
 | Hunter | `hunter-v23-supported-arrival-feed` | Latest Hunter snapshot; see the Hunter results in this document. |
 | Gavroche | `gavroche-v66-supported-safe` | Latest numbered Gavroche snapshot. |
 | Skadi | `skadi-v13-clear-exit-only` | Latest Skadi snapshot; see [Skadi notes](skadi.md). |
-| Zach's Bifröst | `bifrost-v20-compact-teacher-ranker` | Separate from Rory's renamed Fenrir line; see [Bifröst notes](bifrost-family.md). |
+| Zach's Bifröst | `bifrost-v29-tuned-net-growth-farms` | Latest numbered snapshot; the family notes identify V01 as the strongest tested candidate. Separate from Rory's renamed Fenrir line; see [Bifröst notes](bifrost-family.md). |
 | Rory's Fenrir | `fenrir-v20-crowded-resource-revalue` | Renamed from Rory's `bifrost-*` snapshots; see [Fenrir notes](fenrir-family.md). |
 
-`docs/ACTIVE.md` records the shared comparison roster and deployment status.
+[`FRONTIER.md`](../FRONTIER.md) is the canonical status page: it tracks active
+candidates, frontier status, source-specific estimated ELOs, the comparison
+roster, and deployment status.
 `docs/strategy-backlog.md` tracks open strategy work; family notes contain
 line-specific results.
 
 ## Iteration loop (kraken)
 
-`docs/kraken-design-framework.md` defines the method; `bots/kbench.py` is
+`docs/kraken-design-framework.md` defines the method; `tools/kraken/kbench.py` is
 the tooling:
 
 ```sh
-python3 bots/kbench.py variant kraken-v04-eval kraken-v05-<hypo> --set key=value ...
-python3 bots/kbench.py run screen --bots kraken-v05-<hypo>      # fast kill/keep
-python3 bots/kbench.py run bench  --bots kraken-v05-<hypo>      # sandbox confirm
-python3 bots/kbench.py analyze build/kbench-bench-kraken-v05-<hypo>
-python3 bots/kbench.py compare build/kbench-bench-A build/kbench-bench-B
+python3 tools/kraken/kbench.py variant kraken-v04-eval kraken-v05-<hypo> --set key=value ...
+python3 tools/kraken/kbench.py run screen --bots kraken-v05-<hypo>      # fast kill/keep
+python3 tools/kraken/kbench.py run bench  --bots kraken-v05-<hypo>      # sandbox confirm
+python3 tools/kraken/kbench.py analyze build/kbench-bench-kraken-v05-<hypo>
+python3 tools/kraken/kbench.py compare build/kbench-bench-A build/kbench-bench-B
 ```
 
 Long runs go through `nohup`; screen is non-sandbox (fast), bench and pool
@@ -125,6 +127,18 @@ active submission or from the battle's date alone.
    client, explicitly suppress the `Authorization` header after redirects.
    Keep requests below the API limit of 120 per minute and honor `Retry-After`
    on HTTP 429. Root `.gitignore` ignores `*.replay` files.
+
+The maintained downloader enforces this identity check directly:
+
+```sh
+python3 tools/download_team_games.py "Just Keep Swimming" \
+  --submission 8751 --out public_replays
+```
+
+`--submission` accepts the exact submission name or numeric submission ID. It
+fetches each battle's metadata first, downloads only games where the target
+team's submission ID matches exactly, and writes `download_manifest.json` plus
+one provenance JSON file beside each replay.
 
 The installed `unswbc` CLI can manage authentication and local replays but has
 no command for listing server battles by submission ID or downloading a whole

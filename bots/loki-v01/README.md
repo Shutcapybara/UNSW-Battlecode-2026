@@ -39,9 +39,24 @@ Whole-series held-out action-ranking results:
 
 The average candidate menu had about seven actions. The figures are for the
 learned ranker by itself; Loki also adds its score to Bifröst v01, so they are
-not the integrated policy's measured action accuracy. They do not establish match
-strength, judge CPU safety, or transfer to later submissions. Loki has not been
-game-benchmarked yet.
+not the integrated policy's measured action accuracy. They do not establish
+match strength or transfer to later submissions.
+
+## Baseline performance
+
+The native six-map panel scored **47–13** over 60 games against Bifröst v01
+and four reference bots. On 48 matched fixtures against those references, Loki
+scored **40–8**, while Bifröst v01 scored **43–5** on the same seeds and runner.
+The direct native matchup against Bifröst v01 was **7–5**.
+
+The original sandbox matchup against Bifröst v01 went **0–12** and recorded 93
+Loki `exceeded CPU limit` events. That result is the v01 baseline. The inference
+optimization that addressed those faults is now isolated in
+[`loki-v02-teacher-ranker`](../loki-v02-teacher-ranker/README.md).
+
+Reports: [native panel](../../experiment_data/loki-v01-teacher-ranker_20260927133358001146/summary.md),
+[matched native Bifröst control](../../experiment_data/bifrost-v01-portal-memory_20260927134114388817/summary.md),
+and [original sandbox head-to-head](../../experiment_data/loki-v01-teacher-ranker_20260928053201903911/summary.md).
 
 ## Training
 

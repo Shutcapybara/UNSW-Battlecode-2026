@@ -28,9 +28,10 @@ import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from bots.tournament import MatchWorkers, play, atomic_write
+from tools.benchmarking.tournament import MatchWorkers, play, atomic_write
 from comparison_metrics import analyse, chart, NOTES
 from game_stats import comparison_records, ensure_run_id, publish_games
+from stats_store import StatsStore
 
 DEFAULTS = dict(sides=["A", "B"], jobs=4, timeout_seconds=600, sandbox=False,
                 control_every=10, seed_policy="random")
@@ -217,7 +218,7 @@ def prepare(candidate, bots, maps, settings, config, executable):
                     analysis_sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                                       for p in (Path(__file__), ROOT / "tools/game_stats.py", ROOT / "tools/comparison_metrics.py",
                                                 ROOT / "tools/public_replay_review.py", ROOT / "tools/leviathan/replay.py",
-                                                ROOT / "tools/ouroboros/mapview.py", ROOT / "bots/tournament.py")},
+                                                ROOT / "tools/ouroboros/mapview.py", ROOT / "tools/benchmarking/tournament.py")},
                     runner_version=subprocess.check_output([executable, "--version"], text=True).strip())
     for name, source in {candidate.name: candidate, **bots}.items():
         before = hashes(source)
@@ -337,9 +338,14 @@ def main(argv=None):
     except (ValueError, OSError) as exc:
         parser.error(str(exc))
     print(f"Output: {out}", flush=True)
+    ensure_run_id(out, manifest)
+    local_stats = StatsStore(queue_only=True)
+    local_run_id = local_stats.start_run(producer='compare_bot', manifest=manifest, run_id=manifest['run_id'])
     try:
-        ensure_run_id(out, manifest)
-        ledger = publish_games(comparison_records(manifest, results), ROOT)
+        persisted = comparison_records(manifest, results)
+        for record in persisted:
+            local_stats.append_match(local_run_id, record['game_key'], record)
+        ledger = publish_games(persisted, ROOT)
         print(f'Game ledger: {ledger["total"]} games ({ledger["added"]} added)', flush=True)
     except Exception as exc:
         print(f"Game ledger error: {exc}. Results preserved; resolve the ledger error and resume.", file=sys.stderr)
@@ -376,8 +382,11 @@ def main(argv=None):
                     by_fixture[fixture] = row
                     results = [by_fixture[f] for f in fixtures if f in by_fixture]
                     save_report(out, manifest, results, "running")
+                    records = comparison_records(manifest, [row])
+                    for record in records:
+                        local_stats.append_match(local_run_id, record['game_key'], record)
                     if row["outcome"] != "error":
-                        publish_games(comparison_records(manifest, [row]), ROOT)
+                        publish_games(records, ROOT)
                     print(f'[{len(results)}/{len(fixtures)}] {fixture}: {row["outcome"]}' +
                           (f' — {row.get("error") or row.get("analysis_error")}' if row.get("error") or row.get("analysis_error") else ''), flush=True)
                     submit()
@@ -394,6 +403,7 @@ def main(argv=None):
         finally:
             workers.cancel()
             pool.shutdown(wait=True, cancel_futures=True)
+            local_stats.close()
     errors = sum(r["outcome"] == "error" or bool(r.get("analysis_error")) for r in results)
     save_report(out, manifest, results, "finished with errors" if errors else "complete")
     print(f"Report: {out / 'index.html'}", flush=True)

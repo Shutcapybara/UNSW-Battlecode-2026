@@ -5,10 +5,11 @@ This checkout has three supported comparison paths:
 - [`tools/compare_bot.py`](../tools/compare_bot.py) compares one candidate with
   an explicit TOML roster and saves game logs, replays, summaries, and graphs.
   [`comparison.toml`](../comparison.toml) is the current five-opponent default.
-- [`bots/tournament.py`](../bots/tournament.py) schedules ordered bot pairs on
+- [`tools/benchmarking/tournament.py`](../tools/benchmarking/tournament.py) schedules ordered bot pairs on
   selected maps. Its default discovery includes every `bots/*/bot.toml` and
-  every `.map` directly under `maps/`, so pass explicit selections for routine
-  work. It does not discover `maps/new/` recursively.
+  every `.map` recursively under `maps/`, including the 20 custom maps in
+  `maps/new/`. Pass explicit selections for routine work. Nested map selections
+  use paths relative to `maps/`, such as `new/mc26_archipelago`.
 
 The recovered adaptive collector and ratings tools are available again as
 [`tools/benchmark.py`](../tools/benchmark.py) and
@@ -40,7 +41,7 @@ judge CPU limits. The default comparison writes its experiment directory under
 ## Run a bounded tournament
 
 ```sh
-python3 bots/tournament.py \
+python3 tools/benchmarking/tournament.py \
   --bots hunter-v23-supported-arrival-feed gavroche-v66-supported-safe \
   --maps arena big_empty \
   --dry-run

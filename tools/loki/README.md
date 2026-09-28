@@ -8,8 +8,11 @@ the event stream and is filtered before feature calculation.
 
 `train.py` fits a shallow `GradientBoostingClassifier`, holds out each ranked
 series in turn, checks the exported tree scores against scikit-learn, and writes
-`trained_model.py` plus a training summary and replay hashes. It installs no
-runtime dependency into the bot.
+`trained_model.py` plus a training summary and replay hashes. By default the
+model export goes to `build/loki-v01-teacher-ranker/trained_model.py`; pass
+`--model-out` to choose another destination. This keeps retraining output out of
+the recovered, versioned bot snapshot. It installs no runtime dependency into
+the bot.
 
 Use the repository Python environment:
 

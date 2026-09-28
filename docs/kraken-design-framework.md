@@ -2,7 +2,7 @@
 
 How kraken bots are designed, evaluated, and iterated. Read this before
 changing any kraken bot. The tooling that operationalises this lives in
-`bots/kbench.py`; the method below is what the tooling enforces.
+`tools/kraken/kbench.py`; the method below is what the tooling enforces.
 
 ## 1. The game, reduced to what matters
 

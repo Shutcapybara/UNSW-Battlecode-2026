@@ -1,0 +1,17 @@
+# Direct full-map panel against the measured champions from each requested line.
+bots = [
+  "../../bots/bifrost-v01-portal-memory",
+  "../../bots/fenrir-v18-arrival-ready-beds",
+  "../../bots/loki-v01-teacher-ranker",
+  "../../bots/skadi-v02-fafnir-only",
+  "../../bots/skadi-v13-clear-exit-only",
+]
+maps = ["../../maps"]
+
+[run]
+sides = ["A", "B"]
+jobs = 8
+timeout_seconds = 600
+sandbox = false
+control_every = 10
+seed_policy = "fixture_hash_v1"

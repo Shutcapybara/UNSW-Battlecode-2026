@@ -1,6 +1,6 @@
 # Skadi v12: portal exit memory
 
-Parent: Gavroche V54 (`bots/gavroche-final`). This variant transfers Witten x01's recent-occupancy and recent-visibility memory to estimate the danger of hidden portal landings. Recent body occupancy keeps the baseline risk; a recently surveyed clear landing gets a lower risk.
+Parent: Gavroche V54 (`bots/gavroche-v54-sparse-room`). This variant transfers Witten x01's recent-occupancy and recent-visibility memory to estimate the danger of hidden portal landings. Recent body occupancy keeps the baseline risk; a recently surveyed clear landing gets a lower risk.
 
 ## Results
 

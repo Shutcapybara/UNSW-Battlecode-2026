@@ -1,0 +1,24 @@
+# Core matchup screen, both seats on the nine-map panel.
+bots = [
+  "../../bots/bifrost-v01-portal-memory",
+  "../../bots/fenrir-v18-arrival-ready-beds",
+]
+maps = [
+  "../../maps/arena.map",
+  "../../maps/autarky.map",
+  "../../maps/big_empty.map",
+  "../../maps/default.map",
+  "../../maps/devil.map",
+  "../../maps/dilemma.map",
+  "../../maps/portals.map",
+  "../../maps/queen_of_spades.map",
+  "../../maps/trophy.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 8
+timeout_seconds = 600
+sandbox = false
+control_every = 10
+seed_policy = "fixture_hash_v1"

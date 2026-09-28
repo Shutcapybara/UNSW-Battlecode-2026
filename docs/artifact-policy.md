@@ -17,12 +17,16 @@ They remain available as provenance; the ignore rule only prevents additional
 local output from being added accidentally. A path being ignored does not remove
 an already tracked file.
 
-The bundled maps used by `bots/tournament.py` are the `.map` files directly
-under `maps/`. Files under `maps/new/` are a separate dataset and are not
-included by that runner’s default discovery.
+The shared maps used by `tools/benchmarking/tournament.py` are every checked-in `.map` file
+under `maps/`, including the custom bundle in `maps/new/`. Nested paths are
+selected relative to `maps/`. Family-specific reserve maps under `configs/`
+remain separate validation fixtures.
 
-The two formerly tracked downloaded ZIPs under `replays/` were removed from the
-current tree during the September 28 synchronization and retained on the local
-machine. This does not rewrite historical commits. Interrupted ledger `.tmp`
-files and credentials must not be staged. Small `game_stats/imports/*.json`
-receipts describe completed imports; they contain neither replays nor source code.
+Replay ZIPs are not tracked by default. The M376704 and M376714 archives were
+removed from Git and moved to ignored `experiment_data/replays/` for local
+analysis; their outcomes and summary metrics remain in the Bifröst README. Two
+older tracked replay ZIPs were also removed from the September 28 tree
+synchronization; this does not rewrite historical commits. Interrupted ledger
+`.tmp` files and credentials must not be staged. Small
+`game_stats/imports/*.json` receipts describe completed imports; they contain
+neither replays nor source code.

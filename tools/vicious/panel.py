@@ -12,7 +12,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT), str(ROOT / 'tools')]
-from bots.tournament import MatchWorkers, play, atomic_write
+from tools.benchmarking.tournament import MatchWorkers, play, atomic_write
 from public_replay_review import analyse
 
 

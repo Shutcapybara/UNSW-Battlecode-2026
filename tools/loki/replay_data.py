@@ -13,7 +13,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools" / "leviathan"))
 sys.path.insert(0, str(ROOT / "tools" / "ouroboros"))
-sys.path.insert(0, str(ROOT / "bots" / "loki-v01-teacher-ranker"))
+sys.path.insert(0, str(ROOT / "bots" / "loki-v01"))
 
 from replay import Reader
 from mapview import load_map
@@ -398,4 +398,3 @@ def extract_game(path, teacher_side="A", keep_every=5):
             live.discard(ident)
             bodies.pop(ident, None)
     yield {"_summary": dict(stats)}
-

@@ -2,7 +2,7 @@
 
 ## Current endpoint (2026-09-27)
 
-The user instructed that if V66 did not work, stop experimenting and stage the best Gavroche version that avoids TLE. V66 failed the priority-family gate, so the campaign is closed; do not start V67 unless the user explicitly asks to resume. V54 is staged at `bots/gavroche-final` and has not been submitted.
+The user instructed that if V66 did not work, stop experimenting and stage the best Gavroche version that avoids TLE. V66 failed the priority-family gate, so the campaign is closed; do not start V67 unless the user explicitly asks to resume. V54 (`bots/gavroche-v54-sparse-room`) was staged as the final candidate and has not been submitted.
 
 Keep the pulled model families in `experiment_data/bot-ratings/` in any future panel and retain the replay-review context: `vn-x06-info-tf-05` and `sinbad-v07-divecap` have opposite matchup strengths. No Gavroche candidate from V28–V66 was submitted.
 
@@ -61,6 +61,6 @@ The installed `unswbc 1.1.0` picks a random seed unless `--seed` is supplied. V3
 
 V33 through V37 use `seed_policy = "fixture_hash_v1"`: the same map/opponent seed is shared across both side assignments and candidate versions. The V54 and V66 comparison configs use the same policy, so their common fixtures are paired. Keep each saved manifest and seed policy when resuming a run.
 
-V49–V66 explored search, movement, and support-weight variants. V54 remains the strongest fully measured CPU-safe result: 69–39 overall and 32–16 against Sinbad/tf05/grad1/x04, with four CPU samples at p99 43.0–44.1M and max 52.8–63.7M. V60 tied V54 at 56 wins on their 88 common fixtures but had one fewer priority-family win (27/40 vs 28/40) and less CPU headroom. V65's support increase on V60 did not time out in its recorded samples, but reached 82.7M on Trauma and failed the conservative max gate (<80M; the runner hard ceiling is 100M). V66's support increase on V54 passed CPU but did not improve grad1 and left a priority ceiling of 33, below V36's 37. Final candidate `bots/gavroche-final` is a runtime-identical copy of V54. Do not resume experiments or submit it unless the user asks.
+V49–V66 explored search, movement, and support-weight variants. V54 remains the strongest fully measured CPU-safe result: 69–39 overall and 32–16 against Sinbad/tf05/grad1/x04, with four CPU samples at p99 43.0–44.1M and max 52.8–63.7M. V60 tied V54 at 56 wins on their 88 common fixtures but had one fewer priority-family win (27/40 vs 28/40) and less CPU headroom. V65's support increase on V60 did not time out in its recorded samples, but reached 82.7M on Trauma and failed the conservative max gate (<80M; the runner hard ceiling is 100M). V66's support increase on V54 passed CPU but did not improve grad1 and left a priority ceiling of 33, below V36's 37. The final candidate is `bots/gavroche-v54-sparse-room`. Do not resume experiments or submit it unless the user asks.
 
 Native comparison TOMLs are present for V29–V39, V46, and V48–V66. CPU-only probes and screens without native panels use their saved `experiment_data/` manifests instead. Candidate source folders and run records are preserved in the workspace.

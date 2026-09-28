@@ -134,5 +134,5 @@ tew as the ouroboros-ladder cluster; verify hashes before trusting a
 - Git: v06 landed in commit `4ea743b` ("avery-v06-late-feed: late strict
   crown feeding; gauntlet-5 79-30-1 (72.3%)").
 - Task brief snapshot: [Bahamut experiment handoff](bahamut-experiment-handoff.txt) in this folder; current shared workflow: [Bahamut handoff](../BAHAMUT_HANDOFF.md).
-- Field context: `../ACTIVE.md` (cycle-0 gauntlet definition and
+- Field context: `../cycles/cycle-00.md` (cycle-0 gauntlet definition and
   cross-line results — maintained by the cycle unifier, do not edit).

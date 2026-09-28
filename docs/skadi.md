@@ -6,7 +6,7 @@ design record, not a result claim.
 
 ## Chassis and selected mechanisms
 
-The chassis is a copy of `bots/gavroche-final` (Gavroche V54), the strongest
+The chassis is a copy of `bots/gavroche-v54-sparse-room` (Gavroche V54), the strongest
 Gavroche candidate that completed both a broad seeded panel and the local CPU
 screen. V54 uses bounded target search, bounded room floods, and late-phase
 caps. Its 108-game panel was 69–39, including 32–16 against Sinbad, tf05,

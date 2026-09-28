@@ -1,0 +1,6 @@
+opponent,scheduled,played,wins,draws,losses,errors,analysis_errors,pending,score
+bifrost-v01-portal-memory,30,30,20,0,10,0,0,0,0.6666666666666666
+fenrir-v18-arrival-ready-beds,30,30,16,0,14,0,0,0,0.5333333333333333
+loki-v01-teacher-ranker,30,30,19,0,11,0,0,0,0.6333333333333333
+skadi-v02-fafnir-only,30,30,17,0,13,0,0,0,0.5666666666666667
+skadi-v13-clear-exit-only,30,30,19,0,11,0,0,0,0.6333333333333333

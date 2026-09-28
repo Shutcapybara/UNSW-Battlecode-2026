@@ -17,14 +17,19 @@ import shutil
 import signal
 import sqlite3
 import subprocess
+import sys
 import tempfile
 import time
 import tomllib
 import uuid
 
 from filelock import FileLock
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
 from compare_bot import FAULT, IGNORED, hashes, read_config, write_csv
-from bots.tournament import MatchWorkers, atomic_write, play
+from tools.benchmarking.tournament import MatchWorkers, atomic_write, play
 from benchmark_data import aliases, collect, register_source, sha, with_rating_context
 from game_stats import ROOT, digest, make_record, publish_games, read_parquet, write_parquet
 from benchmark_weights import configured_distribution
