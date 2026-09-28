@@ -92,3 +92,17 @@ The v10 family is eliminated in 70–90 % of held-out games (units r250 5–10 v
 reflects tuning on those maps. **Decision:** Yeji iterates on the yuna/gavroche host, selected on the held-out panel,
 with only general inputs (map size, view, sonar). Harness: `yrun.py` accepts `maps/new/...` names and yuna-style
 `override.py` variants.
+
+## Addendum 3: screens on the yuna host (held-out), and seed variance
+
+Paired with `yuna-v03-core` on the held-out panel (100 games per seed):
+
+- `v_unseen=8`: −0.05 (11/16).
+- `split_val=10`: action-for-action identical. The split gate (`grow_from`, `child_area`) binds, not the value.
+- `donor_mode=1`: −0.02 (0/2).
+- **`portal_mode=0, nb_mode=0, mom_w=0` (= `yeji-s07-plainhost`)**: seed 1 +0.14 (23/9, p = 0.02); seed 2 −0.09 (12/21);
+  pooled +0.025 (35/30, p = 0.62).
+- The base itself scored 0.42 on seed 1 and 0.59 on seed 2.
+
+**Lesson for the loop:** one seed of 100 held-out games swings by ±0.1. Promote nothing on fewer than 3 seeds (300 paired
+games), and always re-run the parent on the same seeds. The early "+0.24 after 29 games" was noise.
