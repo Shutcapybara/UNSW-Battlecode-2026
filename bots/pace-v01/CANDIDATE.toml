@@ -1,0 +1,18 @@
+name = "pace-v01"
+lineage = "pace"
+author = "glm/pace/s01"
+language = "python"
+lineage_parent = "chaewon-y04-probe"   # yuna-v05-core + atlas + newborn fix + portal probe; copied with attribution, host untouched
+hypothesis = "Matching the field's production pace (units r100 >= 18, total r250 >= 60 on the ten maps) is sufficient to raise paired win share against band-class opponents."
+mechanism = "Pace controller on the chaewon-y04 host. Targets are public-corpus winner medians per map class (compact W*H<=625: u25 7, u50 12, u100 23, t25 17, t50 30, t100 58, t250 86; open: u25 6, u50 11, u100 20, t25 15, t50 27, t100 50, t250 116), linearly interpolated and self-anchored at the observed round-0 material. Behind on units: split_val up (+7 at full deficit) and the opening production window extended (<= +30 rounds); ahead on units but behind on total: split_val down (-3 max). Behind on total: pearl/bed/memory values x (1 + 1.2 x deficit) and confirmed-pearl 2-step sprints. Team total is a clamped EWMA of sampled visible lengths x UNIT_COUNT; units are exact from the header. Survival constraints unchanged: exact 1-3 step simulation, split child-exit and child-area gates, child=2, split_min=4."
+expected_change = "units_r100 +6 and total_r250 +20 vs host in exact pairs; win share delta >= +0.05 if the hypothesis holds; falsifier: pace attained (>= 80% of games on pace at r100) with delta <= 0."
+priority = 300
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:pace+", 0, 100, 10], ["ACT:pace-", 0, 500, 1]]   # tag, round lo, round hi, minimum count on at least one probe fixture
+
+[local_evidence]
+refs = ["build/pace-panel/results.jsonl", "docs/findings/2026-09-29-pace-v01.md"]
+summary = "filled after the panel"
