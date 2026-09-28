@@ -1,0 +1,18 @@
+name = "gpt-eunchae-s04-swarm-dissolve"
+lineage = "gpt/eunchae"
+author = "gpt/eunchae/2026-09-28-s04"
+language = "python"
+lineage_parent = "ouroboros-v10-beacon"
+hypothesis = "A tail-heavy swarm to round 100 plus adjacent recipient-first dissolution from a map-conditioned onset raises longest at round 400 against band opponents on the ten public maps."
+mechanism = "SPLIT 2 with targets 40/48/60, danger threshold 0.20, local crowd cap 6; crown eligibility length 4 from round 250; recipient-first direct crown dissolve from map-conditioned onset."
+expected_change = "units_r100 >= 18; longest_r400 >= 18; wall_self_deaths_per_1k_turns <= 2; newborn_deaths_within_10_rounds down vs base; recipient survival >= 0.5."
+priority = 300
+supersedes = "gpt-eunchae-s03-swarm-dissolve"
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:prod", 0, 100, 20], ["ACT:salv", 0, 500, 1], ["ACT:crown", 250, 500, 1], ["ACT:diss", 300, 500, 3], ["ACT:cert", 0, 500, 5]]
+
+[local_evidence]
+refs = ["docs/findings/2026-09-28-gpt-eunchae-s04-swarm-dissolve.md"]
+summary = "Slithery Fight control match: candidate lost by length at round 500; candidate max CPU 44.2M, p99 34.1M; 24 dissolve activations."
