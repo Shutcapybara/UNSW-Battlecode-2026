@@ -1,0 +1,20 @@
+name = "chaewon-y06-lean"
+lineage = "chaewon"
+author = "claude/chaewon/cowork-016ueqq"
+language = "python"
+lineage_parent = "yuna-v05-core"
+hypothesis = "Shipping the public maps' terrain (atlas) and probing blind portal landings with a solo sonar ray removes exploration dives and part of the portal-step deaths without costing CPU."
+mechanism = "atlas_<W>x<H>.py loaded on a unique exact match of the first 7x7 view (terrain + portal pairs); newborn neck linked by adjacency; when the chosen move ends next to a portal with an unseen landing, only that ray is cast and next turn's echo scales the blind-exit risk (x0.2 clear, >=1.0 x V(me) blocked)."
+expected_change = "win rate >= yuna-v05 on the live-pool maps; first-turn CPU unchanged."
+priority = 150
+supersedes = ""
+
+[activation_contract]
+kind = "replay_stat"
+# The yuna host emits no ACT markers; activation is visible as behaviour: no unpaired-portal dives on atlas maps,
+# and single-SONAR turns next to portals (the probe) in the replay's sonar events.
+markers = []
+
+[local_evidence]
+refs = ["bots/chaewon-y04-probe/README.md", "bots/chaewon-y06-lean/README.md", "docs/findings/2026-09-28-chaewon-s01-swarm-dissolve.md"]
+summary = "Same policy as chaewon-y04-probe: +0.036 vs yuna-v05 on 196 paired fixtures (33/26, sign p=0.44), unswbc 1.2.2; a tie, not a promotion. Metered p99 <= 54.4M, max <= 69M on both probe fixtures and both toolkits."

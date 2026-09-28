@@ -9,3 +9,8 @@ Not while crown, not on split turns.
 Panel (8 live maps × 2 sides × {sinbad-v07, gavroche-v32} × seeds 1–3, 96 paired fixtures): **+0.062 vs yuna-v05**
 (20 better / 14 worse, p = 0.39); Dilemma +0.50, Queen of Spades +0.42. Portal-step deaths per game unchanged
 (35.9 vs 31.6): the probe is one round stale exactly when two dragons approach a portal pair from both sides.
+
+Second panel (10 live maps × 2 sides × {yuna-v02, kraken-v04, witten-x03, hunter-v20, m01}, seed 1, 95 paired):
++0.021 (13/11). Pooled 196 fixtures: **+0.036 vs yuna-v05 (33/26, p = 0.44)** — a tie within noise.
+Score on the second panel 0.78 (yuna-v05 0.77). Chaewon's current best; `chaewon-y06-lean` is the same policy with a
+cheaper first turn.

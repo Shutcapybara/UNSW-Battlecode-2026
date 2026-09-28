@@ -57,6 +57,26 @@ unswbc 1.2.2 with `--seed`. Harness `tools/chaewon/panel.py`; statistics from re
    host (s02 vs s01, 20 fixtures), +0.25 on yuna-v02 (y01, 20 fixtures), ±0 on yuna-v05 (y02, 32 fixtures).
    Adding bed-rate expectations and rich-sector far targets (y03) is −0.16: rejected.
 
+## Iterations after s01 (yuna-v05 host)
+
+Paired against `yuna-v05-core` (the Yuna finalist), unswbc 1.2.2:
+
+| Bot | Change | Fixtures | Δ | better/worse | p |
+|---|---|---|---|---|---|
+| y02-atlas | atlas (terrain) + newborn fix | 32 | ±0.000 | 5/5 | 1.0 |
+| y03-richbeds | + bed-rate expectations, rich-sector far targets | 32 (vs y02) | −0.156 | 3/8 | 0.23 |
+| **y04-probe** | y02 + solo portal probe ray | 196 | **+0.036** | 33/26 | 0.44 |
+| y05-hold | y04 + HOLD packet on the probe ray | 196 | +0.008 | 32/31 | 1.0 |
+
+Panels: 8 live maps × 2 sides × {sinbad-v07, gavroche-v32} × seeds 1–3 (96) plus 10 live maps × 2 sides ×
+{yuna-v02, kraken-v04, witten-x03, hunter-v20, m01} × seed 1 (100). On the second panel all three score 0.75–0.78.
+- The HOLD packet removes most friendly head-ons at portal exits (a Default fixture: blind landings on an allied head
+  19 → 6; friendly head-on deaths 0–8 per game) but portal-step deaths per game stay ~35 (Portals' pockets dominate)
+  and win rate does not move.
+- Compact maps are decided by r100 and largely by side (Trophy: side A wins for both yuna-v05 and sinbad-v07).
+- CPU: the atlas moves cost to the first turn (y05 Schooltime: first turns p50 59M / max 74M, other turns p99 34M;
+  Portals-as-B max 69M). `chaewon-y06-lean` = y04 with a cheaper atlas load.
+
 ## What s02 / next should change
 
 - Stop building on the v10 host: against the current local band it scores 0.15–0.30 (yuna-v02, sinbad-v07).
