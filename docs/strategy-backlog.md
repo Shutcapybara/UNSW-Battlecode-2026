@@ -3,6 +3,13 @@
 Priorities are ordered within each tier. Combat changes must remain conservative
 when enemy size or team counts are uncertain.
 
+The 18 live replay notes for 28 September are recorded in the
+[Tyr V01 loss review](findings/2026-09-29-tyr-v01-live-loss-review.md). They
+prioritize distributed early portal and center access, survival of long dragons
+under dash or wall threats, and lower-cost feeding in dead ends. The submission
+attribution is best-supported by the upload time and active status; the battle
+payload did not expose historical submission IDs.
+
 ## P0: Combat Advantage
 
 1. [ ] Add lead-aware equal-size kamikaze attacks. Permit an attack against a
