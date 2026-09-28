@@ -4,4 +4,4 @@
 
 Native matched results: 6–2 versus Ouroboros v13 on the four portal maps used for x01; 2–10 versus Ouroboros v13 and Tew v12 on arena, devil and dilemma. On the latter panel it went 0–4 on arena, 0–4 on devil and 2–2 on dilemma. These are deterministic map/side fixtures, not random replicates. The parent Fafnir's historical reserve did not meet its own +1 gate. No new Witten judge-sandbox run was made.
 
-Full identity, maps, paired controls and replays: [strategy leak report](../../experiment_data/strategy_leaks_20260926T225633Z/REPORT.md).
+Full identity, maps, paired controls and replays: strategy leak report (`../../experiment_data/strategy_leaks_20260926T225633Z/REPORT.md`).

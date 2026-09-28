@@ -18,4 +18,4 @@ No caught errors or native timeouts in the 70-game audit; no judge games run.
 All 70 complete fixtures have identical movement/split/sonar streams to v06
 before round 250. Preserving crowns alone did not fix the later regression.
 Retain as a rejected hypothesis and reusable scheduler control. See the
-[messaging report](../../docs/monte_christo-messaging.md).
+messaging report (`../../docs/monte_christo-messaging.md`).

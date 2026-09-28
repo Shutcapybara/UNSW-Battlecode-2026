@@ -11,7 +11,7 @@ External **12–12** (v01: 9–15), direct parent **4–4**. All 32 games have i
 movement and split streams for BOTH teams to x04's corresponding fixtures;
 sonar differs intentionally. No caught errors or native timeouts. This is a
 mechanism control, not a broadly validated replacement or additional independent
-evidence for x04. See the [messaging report](../../docs/monte_christo-messaging.md)
+evidence for x04. See the messaging report (`../../docs/monte_christo-messaging.md`)
 and `tools/monte_christo/messaging/sparse_equivalence.json`.
 
 Judge cost probe: Hunter v20, Stronghold A, 15,428 metered turns, no timeouts or

@@ -24,8 +24,8 @@ Prior disposition: `None`. Prior balance notes: No previous competitive outcomes
 
 | Fixture | A | B | Winner side | Rounds | Conservative usable |
 |---|---|---|---|---:|---|
-| [Evidence](../../../experiment_data/map_coverage_20260927_091715/games/new_02_mc26_archipelago_fafnir-v01-phalanx_vs_valjean-v01-portal-memory.json) | fafnir-v01-phalanx | valjean-v01-portal-memory | A | 183 | True |
-| [Evidence](../../../experiment_data/map_coverage_20260927_091715/games/new_02_mc26_archipelago_valjean-v01-portal-memory_vs_fafnir-v01-phalanx.json) | valjean-v01-portal-memory | fafnir-v01-phalanx | A | 294 | True |
+| Evidence (`../../../experiment_data/map_coverage_20260927_091715/games/new_02_mc26_archipelago_fafnir-v01-phalanx_vs_valjean-v01-portal-memory.json`) | fafnir-v01-phalanx | valjean-v01-portal-memory | A | 183 | True |
+| Evidence (`../../../experiment_data/map_coverage_20260927_091715/games/new_02_mc26_archipelago_valjean-v01-portal-memory_vs_fafnir-v01-phalanx.json`) | valjean-v01-portal-memory | fafnir-v01-phalanx | A | 294 | True |
 
 The plausibility score is frozen before this batch’s smoke outcomes. Prior results were already known for the six reused primary maps; this is not a blinded reassessment. Scores are judgments, not calibrated probabilities of fairness or finals selection. No-action deaths can be deliberate feeding, so they are separated from runtime faults. The optional conservative game weights exclude ambiguous fixtures; the map weight remains positive.
 

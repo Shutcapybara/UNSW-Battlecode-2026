@@ -1,0 +1,21 @@
+bots = [
+  "../../bots/gavroche-v54-sparse-room",
+  "../../bots/avery-v09-frontier-bfs",
+  "../../bots/hydra-v01-core",
+  "../../bots/godel-x02-pacifist",
+]
+maps = [
+  "../../maps/autarky.map",
+  "../../maps/dilemma.map",
+  "../../maps/default.map",
+  "../../maps/devil.map",
+  "../../maps/queen_of_spades.map",
+  "../../maps/trophy.map",
+]
+[run]
+sides = ["A", "B"]
+jobs = 8
+timeout_seconds = 600
+sandbox = false
+control_every = 10
+seed_policy = "fixture_hash_v1"

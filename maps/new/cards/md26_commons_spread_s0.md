@@ -24,12 +24,12 @@ Prior disposition: `accepted`. Prior balance notes: Matched supply and shore wit
 
 | Fixture | A | B | Winner side | Rounds | Conservative usable |
 |---|---|---|---|---:|---|
-| [Evidence](../../../experiment_data/map_coverage_20260927_091715/games/008_md26_commons_spread_s0_fafnir-v01-phalanx_vs_ouroboros-v13-ladder.json) | fafnir-v01-phalanx | ouroboros-v13-ladder | B | 489 | False |
-| [Evidence](../../../experiment_data/map_coverage_20260927_091715/games/009_md26_commons_spread_s0_ouroboros-v13-ladder_vs_fafnir-v01-phalanx.json) | ouroboros-v13-ladder | fafnir-v01-phalanx | A | 385 | True |
-| [Evidence](../../../experiment_data/map_coverage_20260927_091715/games/010_md26_commons_spread_s0_fafnir-v01-phalanx_vs_valjean-v01-portal-memory.json) | fafnir-v01-phalanx | valjean-v01-portal-memory | A | 500 | True |
-| [Evidence](../../../experiment_data/map_coverage_20260927_091715/games/011_md26_commons_spread_s0_valjean-v01-portal-memory_vs_fafnir-v01-phalanx.json) | valjean-v01-portal-memory | fafnir-v01-phalanx | A | 500 | True |
-| [Evidence](../../../experiment_data/map_coverage_20260927_091715/games/012_md26_commons_spread_s0_fafnir-v01-phalanx_vs_von_neumann-x06-info.json) | fafnir-v01-phalanx | von_neumann-x06-info | A | 447 | True |
-| [Evidence](../../../experiment_data/map_coverage_20260927_091715/games/014_md26_commons_spread_s0_von_neumann-x06-info_vs_fafnir-v01-phalanx.json) | von_neumann-x06-info | fafnir-v01-phalanx | A | 500 | True |
+| Evidence (`../../../experiment_data/map_coverage_20260927_091715/games/008_md26_commons_spread_s0_fafnir-v01-phalanx_vs_ouroboros-v13-ladder.json`) | fafnir-v01-phalanx | ouroboros-v13-ladder | B | 489 | False |
+| Evidence (`../../../experiment_data/map_coverage_20260927_091715/games/009_md26_commons_spread_s0_ouroboros-v13-ladder_vs_fafnir-v01-phalanx.json`) | ouroboros-v13-ladder | fafnir-v01-phalanx | A | 385 | True |
+| Evidence (`../../../experiment_data/map_coverage_20260927_091715/games/010_md26_commons_spread_s0_fafnir-v01-phalanx_vs_valjean-v01-portal-memory.json`) | fafnir-v01-phalanx | valjean-v01-portal-memory | A | 500 | True |
+| Evidence (`../../../experiment_data/map_coverage_20260927_091715/games/011_md26_commons_spread_s0_valjean-v01-portal-memory_vs_fafnir-v01-phalanx.json`) | valjean-v01-portal-memory | fafnir-v01-phalanx | A | 500 | True |
+| Evidence (`../../../experiment_data/map_coverage_20260927_091715/games/012_md26_commons_spread_s0_fafnir-v01-phalanx_vs_von_neumann-x06-info.json`) | fafnir-v01-phalanx | von_neumann-x06-info | A | 447 | True |
+| Evidence (`../../../experiment_data/map_coverage_20260927_091715/games/014_md26_commons_spread_s0_von_neumann-x06-info_vs_fafnir-v01-phalanx.json`) | von_neumann-x06-info | fafnir-v01-phalanx | A | 500 | True |
 
 The plausibility score is frozen before this batch’s smoke outcomes. Prior results were already known for the six reused primary maps; this is not a blinded reassessment. Scores are judgments, not calibrated probabilities of fairness or finals selection. No-action deaths can be deliberate feeding, so they are separated from runtime faults. The optional conservative game weights exclude ambiguous fixtures; the map weight remains positive.
 

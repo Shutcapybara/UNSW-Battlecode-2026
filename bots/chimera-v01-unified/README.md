@@ -86,5 +86,5 @@ unswbc run maps/arena.map bots/chimera-v01-unified bots/ouroboros-v13-ladder
 
 ## Submission bundle
 
-The root-level archive [`chimera-v01-unified.zip`](../../chimera-v01-unified.zip)
+The root-level archive `chimera-v01-unified.zip` (`../../chimera-v01-unified.zip`)
 contains this bot's files with `bot.toml` at the ZIP root.

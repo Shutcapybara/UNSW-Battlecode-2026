@@ -10,6 +10,6 @@ Started 27 September 2026 from `fafnir-v01-phalanx`; no pre-existing Fermi bot w
 
 The early Devil bottleneck is upstream of split scoring: all 38 admitted splits before r100 are chosen; 951/990 checks fail length. Resource access and retained growth remain unresolved. Three x02 judge stress fixtures are clean, peak 76.81M/100M points, maximum memory 22.68MB. This is bounded runtime evidence, not general safety.
 
-Full [report](../experiment_data/strategy_leaks_20260926T225505Z_fermi/REPORT.md), frozen [manifest](../experiment_data/strategy_leaks_20260926T225505Z_fermi/manifest.json), and [decision ledger](../experiment_data/strategy_leaks_20260926T225505Z_fermi/decisions.json). Both candidates fail the predeclared +2/36 advancement gate; the 24-fixture reserve is unplayed. Do not promote either or consume it without a new, justified investigation.
+Full report (`../experiment_data/strategy_leaks_20260926T225505Z_fermi/REPORT.md`), frozen manifest (`../experiment_data/strategy_leaks_20260926T225505Z_fermi/manifest.json`), and decision ledger (`../experiment_data/strategy_leaks_20260926T225505Z_fermi/decisions.json`). Both candidates fail the predeclared +2/36 advancement gate; the 24-fixture reserve is unplayed. Do not promote either or consume it without a new, justified investigation.
 
 Tools: `tools/fermi/`. Tests: `tests/test_fermi.py`. Preserve measured versions; use a new version for subsequent changes.

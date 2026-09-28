@@ -1,6 +1,9 @@
 # Handoff prompt: replay features associated with winning
 
-Work in `/Users/alik/Documents/Projects/UNSW-Battlecode-2026`.
+> Historical handoff based on a local replay corpus inspected on 2026-09-26. The counts and benchmark scripts below are not a current inventory; raw replay artifacts are not included by default. Shared game outcomes are documented in `game_stats/README.md`.
+
+
+Work from the repository root.
 Investigate which measurable replay behaviors predict winning, including whether
 they add information beyond the two bots' underlying strength, map and starting
 side. Produce reproducible statistical evidence and useful hypotheses for bot

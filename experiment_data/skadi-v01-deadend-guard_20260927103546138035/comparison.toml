@@ -1,0 +1,11 @@
+# Match the Gavroche V54 CPU screen: Big Empty and Trauma, both sides.
+bots = ["../../bots/gavroche-v31-saturated-divecap"]
+maps = ["../../maps/big_empty.map", "../../maps/trauma.map"]
+
+[run]
+sides = ["A", "B"]
+jobs = 2
+timeout_seconds = 1500
+sandbox = true
+control_every = 25
+seed_policy = "fixture_hash_v1"

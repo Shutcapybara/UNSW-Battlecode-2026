@@ -130,7 +130,7 @@ roles, diagnostics, risk_features.  New modules in
     median ~28M, stronghold median ~35M, max 76.88M; 22.2 MB.
   - Budget 100M/48MB: worst measured turn across the cycle leaves a 23.1M
     margin (x05 stronghold-B).
-- Reserve validation (configs/porthos/reserve.toml: sinbad-v03-hunt,
+- Reserve validation (configs/porthos/reserve.toml.disabled: sinbad-v03-hunt,
   hunter-v20-portal-scouts, drake-v11-satutfix x 6 aramis reserve/frontier
   maps x both sides = 36 games): x03 **22–14**
   (`porthos-x03-swarm_20260926003350054457`), x04 **22–14**
@@ -143,6 +143,9 @@ roles, diagnostics, risk_features.  New modules in
   **Caveat:** these maps are development evidence — the aramis lineage
   developed on them; a genuinely fresh map family is still owed before any
   final selection (handoff §8.5).
+  The six custom map files are not present in this checkout, so the preserved
+  `configs/porthos/reserve.toml.disabled` is an unavailable historical config,
+  not a runnable current selection.
 - Executor-objective evidence (x05): diagnostic variant
   `bots/porthos-x05-recon-trace` (`override.py {"intent_trace": 1}`, never
   deploy) on trauma recorded 84 `portal-approach` executions and 104
@@ -233,7 +236,7 @@ the named modules change.
 - Tests: `tests/test_porthos_intentions.py` (15 checks),
   `tests/test_porthos_swarm.py` (20 checks).
 - Config: `configs/porthos/parity.toml` (3 refs x 4 maps x both sides),
-  `configs/porthos/smoke.toml`, `configs/porthos/reserve.toml`.
+  `configs/porthos/smoke.toml`, `configs/porthos/reserve.toml.disabled`.
 - Reports: `build/porthos/parity-aramis-x01.json`,
   `build/porthos/parity-porthos-x02.json`, gauntlet stream check above.
 - Runs: `experiment_data/porthos-x02-intentions_*`,

@@ -21,6 +21,7 @@ import threading
 ROOT = Path(__file__).resolve().parents[1]
 ANSI = re.compile(r'\x1b\[[0-9;]*m')
 OUTCOME = re.compile(r'^(?:team ([AB]) wins|draw) after (\d+) rounds\b', re.MULTILINE)
+MAX_MATCHES_WITHOUT_CONFIRMATION = 10_000
 
 
 def schedule(bots, maps, focus_bot=None):
@@ -205,8 +206,15 @@ def main(argv=None):
     parser.add_argument('--no-replays', action='store_true', help='Save logs/results without replay files')
     parser.add_argument('--sandbox', action='store_true',
                         help='Run bots under judge CPU limits and retain verbose diagnostics')
-    parser.add_argument('--dry-run', action='store_true', help='Show the schedule without running or writing anything')
+    parser.add_argument('--dry-run', action='store_true',
+                        help='Print schedule size without running or writing anything')
+    parser.add_argument('--show-schedule', action='store_true',
+                        help='Print every scheduled match (large schedules also require --allow-large)')
+    parser.add_argument('--allow-large', action='store_true',
+                        help='Explicitly allow schedules larger than 10,000 matches')
     args = parser.parse_args(argv)
+    if args.show_schedule and not args.dry_run:
+        parser.error('--show-schedule requires --dry-run')
     if args.jobs < 1:
         parser.error('--jobs must be at least 1')
     if not 0 < args.timeout < float('inf'):
@@ -228,8 +236,18 @@ def main(argv=None):
         parser.error('select at least two bots and one map')
     if args.focus_bot is not None and args.focus_bot not in bots:
         parser.error('--focus-bot must name an existing bot included in the --bots selection')
+    match_count = (2 * (len(bots) - 1) * len(maps) if args.focus_bot is not None
+                   else len(bots) * (len(bots) - 1) * len(maps))
+    print(f'{len(bots)} bots, {len(maps)} maps, {match_count} matches '
+          '(both sides, no self-matches).', flush=True)
+    if match_count > MAX_MATCHES_WITHOUT_CONFIRMATION and not args.allow_large:
+        if args.dry_run and not args.show_schedule:
+            return 0
+        parser.error(f'schedule exceeds {MAX_MATCHES_WITHOUT_CONFIRMATION:,} matches; '
+                     'select fewer bots/maps or pass --allow-large explicitly')
+    if args.dry_run and not args.show_schedule:
+        return 0
     matches = schedule(bots, maps, args.focus_bot)
-    print(f'{len(bots)} bots, {len(maps)} maps, {len(matches)} matches (both sides, no self-matches).', flush=True)
     if args.dry_run:
         for board, a, b in matches:
             print(f'{board}: A={a}, B={b}')

@@ -1,0 +1,21 @@
+# Cross-family evaluation for Gavroche v15/v16.
+# Candidate is compared to every listed runnable reference, including v13.
+bots = [
+  "../../bots/gavroche-v13-tail-paced-rescue",
+  "../../bots/gavroche-v15-divecap",
+  "../../bots/gavroche-v16-informed-divecap",
+  "../../bots/sinbad-v07-divecap",
+  "../../bots/vn-x06-info-tf-05",
+  "../../bots/vn-x06-info-grad1",
+  "../../bots/von_neumann-x04-support",
+  "../../bots/monte_christo-x12-remote-density",
+]
+
+maps = ["../../maps"]
+
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 10

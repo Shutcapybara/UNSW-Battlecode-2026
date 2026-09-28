@@ -8,4 +8,4 @@ type-7 sonar packet beside the type-6 counts on a second reserved ray
 decayed length field. Nothing consumes it in this cell: this isolates the
 information/communication change from its policy use.
 All javert-x0* cells share identical executable files except `settings.py`.
-See [the Javert report](../../docs/javert.md) for the controlled study.
+See the Javert report (`../../docs/javert.md`) for the controlled study.

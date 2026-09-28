@@ -1,3 +1,4 @@
+# This project intentionally builds a selected C++ reference set, not every C++ bot snapshot.
 cmake_minimum_required(VERSION 3.16)
 project(BattlecodeBots LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
@@ -48,6 +49,7 @@ add_executable(two_children bots/fry-v07-two-children/two_children.cpp)
 target_compile_options(two_children PRIVATE -Wall -Wextra -Wpedantic)
 include(CTest)
 if(BUILD_TESTING)
+    # CTest registers an explicit subset; other tests/test_*.py files remain standalone.
     find_package(Python3 COMPONENTS Interpreter REQUIRED)
     add_test(NAME hunter_summary COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_hunter_summary.py)
     add_test(NAME hunter_python_behaviour COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_hunter_python.py)

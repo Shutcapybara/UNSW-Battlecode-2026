@@ -30,6 +30,6 @@ Exact runs: `experiment_data/monte_christo-v06-density_20260925132840215994/`
 (judge). Configuration: `configs/monte_christo_messaging/screen.toml` and
 `sandbox.toml`. Parameters live in `params.py`.
 
-See the [full messaging report](../../docs/monte_christo-messaging.md) for packet
+See the full messaging report (`../../docs/monte_christo-messaging.md`) for packet
 layout, prediction checks, source-matched results, regressions and limitations.
 Checksums reject unrelated packets; they are not adversarial authentication.

@@ -1,6 +1,9 @@
 # Find the strategic leaks hidden by local-pool optimisation
 
-Work in `/Users/alik/Documents/Projects/UNSW-Battlecode-2026`. The objective is to systematically identify, explain and test weaknesses that our bots’ local development pools failed to expose. We now have enough distinct approaches to investigate strength along several axes, including production, resource access, information, combat, survival and endgame conversion.
+> Historical research brief. Its findings and referenced local campaign artifacts describe evidence available around 2026-09-26; recheck availability and source identity before use. This checkout does not include the old collection-wide benchmark tooling.
+
+
+Work from the repository root. The objective is to systematically identify, explain and test weaknesses that our bots’ local development pools failed to expose. We now have enough distinct approaches to investigate strength along several axes, including production, resource access, information, combat, survival and endgame conversion.
 
 Build an evidence-backed account of **which strategy fails, against what, in which conditions, at what point, and through which mechanism**. Use it to design minimal repairs and test whether they generalise. A higher aggregate ranking alone is insufficient: a bot can improve its favourite conditions while retaining a severe, exploitable weakness elsewhere.
 
@@ -175,8 +178,8 @@ Coordinate new experiments with the existing runner and avoid competing campaign
 
 Paths are relative to the repository unless absolute. The two repository handoff copies were verified byte-identical to the supplied Downloads files when this prompt was prepared on 27 September 2026.
 
-- [S] `docs/handoffs/sinbad-handoff.txt`; supplied as `/Users/alik/Downloads/SINBAD_HANDOFF.md`.
-- [V] `docs/handoffs/valjean-handoff.txt`; supplied as `/Users/alik/Downloads/valjean-handoff.md`.
+- [S] `docs/handoffs/sinbad-handoff.txt` (the original external copy is not in this checkout).
+- [V] `docs/handoffs/valjean-handoff.txt` (the original external copy is not in this checkout).
 - [L] `docs/leaklab-findings.md`; preserve its complete failed-arm ledger and reserve caveat.
 - [F] `bots/fafnir-v01-phalanx/README.md`; actual foundation name is `bots/serre-v01-foundation`, not the shorthand `serre-v01`.
 - [A] `experiment_data/strategy_discovery_20260926/REPORT.md`, `snapshot.json`, `behavior.json`, `validation.json`, `ratings.json`, stage/coverage Parquets and bootstrap arrays.

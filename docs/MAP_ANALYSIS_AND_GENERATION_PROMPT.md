@@ -1,6 +1,9 @@
 # Analyse the map space, generate plausible challenges, and cut ruthlessly
 
-Work in `/Users/alik/Documents/Projects/UNSW-Battlecode-2026`.
+> Historical map-research prompt prepared on 2026-09-27. Its engine-source and `experiment_data/` references are not all included in this checkout; treat their findings as dated evidence and verify against the runtime actually used.
+
+
+Work from the repository root.
 
 Build and execute a reproducible process for analysing our existing Battlecode maps and generating **a small, excellent set of new maps that reveal something useful about competing strategies**. The maps should look and play like deliberate additions to this game: coherent terrain, credible resource placement, meaningful routes, understandable risks and counterplay. Novelty by itself is insufficient.
 
@@ -186,10 +189,10 @@ Use existing parsers, renderers, game ledgers and runners where suitable. Coordi
 ## Source and implementation entry points
 
 - [Map files](../maps/): authoritative current layouts; freeze hashes before analysis.
-- [Legacy map metadata code](../tools/leaklab/map_meta.py) and [saved metadata](../tools/leaklab/map_meta.json): audit targets, not trusted ground truth.
-- [Engine map reader](../unswbc/engine/src/config.cc), [resource timing](../unswbc/engine/src/pearls.cc), [engine constants](../unswbc/engine/include/engine/types.h).
+- Legacy map metadata code (`../tools/leaklab/map_meta.py`) and saved metadata (`../tools/leaklab/map_meta.json`): audit targets, not trusted ground truth.
+- Engine map reader (`../unswbc/engine/src/config.cc`), resource timing (`../unswbc/engine/src/pearls.cc`), engine constants (`../unswbc/engine/include/engine/types.h`).
 - [Replay/terrain metrics](../tools/comparison_metrics.py) and [map parser/ASCII view](../tools/ouroboros/mapview.py): reusable starting points with the limitations above.
 - [Leaklab findings](leaklab-findings.md), [Sinbad handoff](handoffs/sinbad-handoff.txt), [Valjean handoff](handoffs/valjean-handoff.txt), [Fafnir record](../bots/fafnir-v01-phalanx/README.md).
-- [Audited replay statistics](../experiment_data/replay_analysis_20260926_evidence/REPORT.md), [strategy atlas](../experiment_data/strategy_discovery_20260926/REPORT.md), [stage-value analysis](../experiment_data/strategy_discovery_20260926/stage_value/REPORT.md).
+- Audited replay statistics (`../experiment_data/replay_analysis_20260926_evidence/REPORT.md`), strategy atlas (`../experiment_data/strategy_discovery_20260926/REPORT.md`), stage-value analysis (`../experiment_data/strategy_discovery_20260926/stage_value/REPORT.md`).
 - [Existing reserve generator](../tools/serre/make_reserve.py) and [freeze manifest](../tools/serre/reserve_frozen.json): examples to audit; do not overwrite or treat their consumed outcomes as new reserves.
 - Outcome/provenance sources: `game_stats/runs/`, `game_stats/sources/`, `experiment_data/benchmark-current.json`, `experiment_data/bot-ratings/` and lineage-specific frozen experiment records.

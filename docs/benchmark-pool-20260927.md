@@ -1,6 +1,10 @@
-# Comparison-pool decision — 27 September 2026
+# Archived comparison-pool analysis — 27 September 2026
 
-Use **24 primary opponents** for routine comparisons, down from 286 names. The running collector, its frozen manifest, the rating worker and the shared ledger were not changed. The central `benchmark.toml` and `comparison.toml` now apply this decision to future runs; previous defaults are archived in `benchmark-all-20260927.toml` and `comparison-before-curation-20260927.toml`. All 24 are the new reference panel. `docs/benchmark-pool-status.json` records every roster decision and source identity for sharing.
+> Historical analysis only. The collector, benchmark TOMLs, live campaign pointer,
+> and rating scripts described in the original report are not present in this
+> checkout. The current five-opponent default is `comparison.toml`; this report
+> records an earlier 24-opponent selection and its then-local evidence.
+
 
 Snapshot: 89,096 ledger games; 78,455 matching named fixtures; 76,767 distinct directional fixtures after exact-source alias pooling; 272 source versions. 222 meet broad-evidence requirements.
 
@@ -61,25 +65,22 @@ Deprecated means removed from routine comparisons, not deleted or excluded from 
 - Weak retirement requires broad evidence, upper strength sensitivity bound <40%, and no modeled map score >60%. Observed dominance requires shared fixtures spanning ≥6 lineages and ≥10 maps: mean advantage lower sensitivity bound >2pp, with no shared map more than 10pp worse. It is conditional on observed coverage, not proof against every possible opponent.
 - Redundancy retirement requires correlation ≥0.85, lower sensitivity bound ≥0.65, a primary representative within 2pp of strength or better, and no modeled map advantage >10pp. Conservative reserves retain cases that do not satisfy these conditions.
 
-## Visuals
+## Visuals and artifacts
 
-[Map profiles](/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/curation-20260927/map-profiles.png) · [Strength-adjusted correlation matrix](/Users/alik/Documents/Projects/UNSW-Battlecode-2026/experiment_data/curation-20260927/residual-correlations.png)
+The analysis plots and frozen Parquet artifacts were stored under the original
+author's local `experiment_data/curation-20260927/` directory and are not in this
+checkout. The reported metrics above are retained as the historical decision
+record; this repository does not contain the source campaign needed to reproduce
+them.
 
-The matrix shows the coarser lineage/map correlations; exact shared-opponent comparisons also inform deprecation when sufficiently supported.
+## Reproduction
 
-## Reproduction and artifacts
-
-All analysis artifacts are in `experiment_data/curation-20260927/`: frozen `games.parquet`, `manifest.json`, aliases, `analysis.json` (pair evidence), `profiles.npz`, `family-profiles.npz`, `decisions.json` (every name and reason), `decisions.md`, and `benchmark-curated.toml`. The working bots may have changed; the TOML points to the measured frozen sources. Those local snapshots must be copied with the TOML when sharing, or source fingerprints verified against a teammate’s checkout.
-
-```sh
-.venv/bin/python tools/curate_benchmarks.py --output experiment_data/curation-20260927
-.venv/bin/python tools/curate_benchmark_profiles.py --output experiment_data/curation-20260927
-.venv/bin/python tools/select_benchmark_pool.py --output experiment_data/curation-20260927
-.venv/bin/python experiment_data/curation-20260927/plot.py
-```
-
-Only add `--apply-default` to the `select_benchmark_pool.py` command when intentionally updating the future default roster. No command here restarts or changes the live campaign. The next actual campaign still requires the normal explicit plan/run step.
+The original curation scripts and benchmark configuration are not present here,
+so the commands from the initial report are intentionally not presented as
+runnable instructions. Current candidate comparisons use
+[`tools/compare_bot.py`](../tools/compare_bot.py) with
+[`comparison.toml`](../comparison.toml), or a copied TOML roster.
 
 ## Collector health discovered during verification
 
-The original 286-bot collector had already failed at 2026-09-26 22:47 UTC with a readonly SQLite error. The saved database passed its integrity and write-lock checks. The same campaign and command were resumed, and subsequent games completed successfully. Its roster, scheduling code and campaign pointer were unchanged; the 24-opponent defaults have not been applied to that live campaign.
+The initial report recorded a collector restart after a read-only SQLite error. That campaign state is not available in this checkout, and its status cannot be independently checked here.

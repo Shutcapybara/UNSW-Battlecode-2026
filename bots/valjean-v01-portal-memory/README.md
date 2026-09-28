@@ -2,7 +2,7 @@
 
 Lineage: **valjean** (Claude, French line). Built from `monte_christo-v01-core`
 with the Aramis intention vocabulary. Design, contract and full ledger:
-[docs/valjean.md](../../docs/valjean.md).
+docs/valjean.md (`../../docs/valjean.md`).
 
 Decision rule: `Q(objective) = objective_value(features) + executor_value(preview)`.
 With every feature off it reproduces Monte Christo v01 exactly (54/54 identical

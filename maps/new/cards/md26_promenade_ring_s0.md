@@ -24,8 +24,8 @@ Prior disposition: `untouched_reserve`. Prior balance notes: Structurally and vi
 
 | Fixture | A | B | Winner side | Rounds | Conservative usable |
 |---|---|---|---|---:|---|
-| [Evidence](../../../experiment_data/map_coverage_20260927_091715/games/new_01_md26_promenade_ring_s0_fafnir-v01-phalanx_vs_ouroboros-v13-ladder.json) | fafnir-v01-phalanx | ouroboros-v13-ladder | A | 345 | True |
-| [Evidence](../../../experiment_data/map_coverage_20260927_091715/games/new_01_md26_promenade_ring_s0_ouroboros-v13-ladder_vs_fafnir-v01-phalanx.json) | ouroboros-v13-ladder | fafnir-v01-phalanx | B | 303 | True |
+| Evidence (`../../../experiment_data/map_coverage_20260927_091715/games/new_01_md26_promenade_ring_s0_fafnir-v01-phalanx_vs_ouroboros-v13-ladder.json`) | fafnir-v01-phalanx | ouroboros-v13-ladder | A | 345 | True |
+| Evidence (`../../../experiment_data/map_coverage_20260927_091715/games/new_01_md26_promenade_ring_s0_ouroboros-v13-ladder_vs_fafnir-v01-phalanx.json`) | ouroboros-v13-ladder | fafnir-v01-phalanx | B | 303 | True |
 
 The plausibility score is frozen before this batch’s smoke outcomes. Prior results were already known for the six reused primary maps; this is not a blinded reassessment. Scores are judgments, not calibrated probabilities of fairness or finals selection. No-action deaths can be deliberate feeding, so they are separated from runtime faults. The optional conservative game weights exclude ambiguous fixtures; the map weight remains positive.
 

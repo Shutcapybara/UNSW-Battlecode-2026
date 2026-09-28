@@ -20,6 +20,6 @@ both sides): 65k metered turns, zero caught errors/timeouts, maximum
 96,956,430 CPU points (3.04M under the 100M limit, inherited worst-case turn),
 22,544,384 bytes. Native screens remain the development evidence.
 
-See [the Javert report](../../docs/javert.md) for the controlled study and
+See the Javert report (`../../docs/javert.md`) for the controlled study and
 `tools/javert/` for frozen sources, rules and run records. Monte Christo v01
 stays available as the previous playing baseline.

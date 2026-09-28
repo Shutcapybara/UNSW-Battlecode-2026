@@ -26,4 +26,4 @@ Original native screen: **20–12**; common external references 16–8, direct v
 
 No game, analysis, reported runtime or caught policy errors in these runs.
 Exact run paths, map/side breakdowns, counterexamples and training provenance:
-[Monte Christo handoff](../../docs/monte_christo.md).
+Monte Christo handoff (`../../docs/monte_christo.md`).

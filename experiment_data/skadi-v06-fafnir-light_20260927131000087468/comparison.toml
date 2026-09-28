@@ -1,0 +1,28 @@
+bots = [
+  "/private/tmp/skadi-seed2/bots/gavroche-v33-half-support-skadiholdout",
+  "/private/tmp/skadi-seed2/bots/gavroche-v31-saturated-divecap-skadiholdout",
+  "/private/tmp/skadi-seed2/bots/gavroche-v23-selective-sprint-cap-skadiholdout",
+  "/private/tmp/skadi-seed2/bots/gavroche-v17-half-gradient-skadiholdout",
+  "/private/tmp/skadi-seed2/bots/sinbad-v07-divecap-skadiholdout",
+  "/private/tmp/skadi-seed2/bots/vn-x06-info-tf-05-skadiholdout",
+  "/private/tmp/skadi-seed2/bots/vn-x06-info-grad1-skadiholdout",
+  "/private/tmp/skadi-seed2/bots/von_neumann-x04-support-skadiholdout",
+  "/private/tmp/skadi-seed2/bots/monte_christo-x12-remote-density-skadiholdout",
+  "/private/tmp/skadi-seed2/bots/gavroche-final-skadiholdout",
+]
+maps = [
+  "/Users/zanderson/Documents/UNSW-Battlecode-2026/maps/autarky.map",
+  "/Users/zanderson/Documents/UNSW-Battlecode-2026/maps/big_empty.map",
+  "/Users/zanderson/Documents/UNSW-Battlecode-2026/maps/queen_of_spades.map",
+  "/Users/zanderson/Documents/UNSW-Battlecode-2026/maps/schooltime.map",
+  "/Users/zanderson/Documents/UNSW-Battlecode-2026/maps/stronghold.map",
+  "/Users/zanderson/Documents/UNSW-Battlecode-2026/maps/trauma.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 8
+timeout_seconds = 600
+sandbox = false
+control_every = 10
+seed_policy = "fixture_hash_v1"

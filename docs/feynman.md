@@ -1,7 +1,7 @@
 # Feynman: context-dependent density decisions on a frozen execution layer
 
 Lineage owner: Kimi. Started 2026-09-26. Mission, from the strategy brief and
-the [strategic statistics summary](STRATEGIC_STATS_SUMMARY.md): pick a sensible
+the strategic statistics summary (`STRATEGIC_STATS_SUMMARY.md`): pick a sensible
 baseline given measured performance and design simplicity, freeze everything
 not related to features, and develop **EWMA-density-based features** —
 friendly and enemy dragon density, size-weighted density, time and topology
@@ -306,11 +306,11 @@ Arena runner preserved as committed bytecode after the sync incident:
 `tools/feynman/arena.cpython-313.pyc` (sources under `tools/valjean/` and
 `tools/sinbad/` were deleted from the working tree by the sync; the result
 cache `build/valjean/cache.jsonl` survived). Parent ledger:
-[docs/valjean.md](valjean.md) (every rejected feature, with results). Method
-references: [docs/javert.md](javert.md) (packet discipline, selection rules),
+docs/valjean.md (`valjean.md`) (every rejected feature, with results). Method
+references: docs/javert.md (`javert.md`) (packet discipline, selection rules),
 drake v08–v11 READMEs (EWMA validation and the dual-EWMA failure),
-[docs/aramis-frontier.md](aramis-frontier.md) (the gradient reserve failure),
-[STRATEGIC_STATS_SUMMARY](STRATEGIC_STATS_SUMMARY.md) (development ordering).
+docs/aramis-frontier.md (`aramis-frontier.md`) (the gradient reserve failure),
+STRATEGIC_STATS_SUMMARY (`STRATEGIC_STATS_SUMMARY.md`) (development ordering).
 
 2026-09-26 incident: a repo sync process deleted untracked working-tree files
 twice mid-session (`docs/feynman.md`, `tools/feynman/`, later

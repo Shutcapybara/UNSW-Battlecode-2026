@@ -25,7 +25,8 @@ class Tournament(unittest.TestCase):
         self.assertEqual(len(matches), 12)
 
     def test_focus_bot_selection_and_resume(self):
-        def result(executable, board, a, b, *args):
+        def result(executable, board, a, b, *args, sandbox=False):
+            self.assertFalse(sandbox)
             return dict(map=board.stem, team_a=a.name, team_b=b.name,
                         outcome='draw', winner=None, rounds=500, error=None)
         with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()), \
@@ -51,7 +52,8 @@ class Tournament(unittest.TestCase):
         active = 0
         peak = 0
 
-        def result(executable, board, a, b, *args):
+        def result(executable, board, a, b, *args, sandbox=False):
+            self.assertFalse(sandbox)
             nonlocal active, peak
             with lock:
                 active += 1
@@ -133,7 +135,8 @@ class Tournament(unittest.TestCase):
             self.assertTrue((Path(directory) / 'standings.csv').exists())
 
     def test_resume_skips_successes_and_retries_errors(self):
-        def result(executable, board, a, b, *args):
+        def result(executable, board, a, b, *args, sandbox=False):
+            self.assertFalse(sandbox)
             return dict(map=board.stem, team_a=a.name, team_b=b.name,
                         outcome='A', winner=a.name, rounds=10, error=None)
         with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()), \

@@ -1,0 +1,23 @@
+# Isolate v22's bounded donor rule on the replay maps where economy, attrition,
+# and longest-dragon banking decided outcomes.
+bots = [
+  "../../bots/gavroche-v21-short-sprint-cap",
+  "../../bots/gavroche-v17-half-gradient",
+  "../../bots/sinbad-v07-divecap",
+  "../../bots/vn-x06-info-tf-05",
+  "../../bots/vn-x06-info-grad1",
+  "../../bots/von_neumann-x04-support",
+]
+maps = [
+  "../../maps/big_empty.map",
+  "../../maps/schooltime.map",
+  "../../maps/stronghold.map",
+  "../../maps/trauma.map",
+  "../../maps/queen_of_spades.map",
+]
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 10

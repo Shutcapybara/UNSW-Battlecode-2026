@@ -15,13 +15,13 @@ cross-version narrative, and what to do next.
   shell with `export PATH="$HOME/.local/bin:$PATH"` (compare_bot.py needs it
   too, including detached runs). Run comparisons from repo root with the
   project venv directly: `.venv/bin/python tools/compare_bot.py
-  bots/<dir> --config avery-gauntlet.toml` — do NOT use `uv run` (it builds
+  bots/<dir> --config configs/avery/gauntlet.toml` — do NOT use `uv run` (it builds
   a separate dependency env; the brief forbids it). The repo `.venv` has no
   pandas; the system `python` does (use it for games.csv analysis only).
 - Single game: `unswbc run maps/<m>.map bots/<A> bots/<B> --no-replay --no-indicator`.
 - Foreground shell cap is ~300 s; run comparisons detached
   (`(export PATH=...; .venv/bin/python tools/compare_bot.py bots/X
-  --config avery-gauntlet.toml > /tmp/x.log 2>&1 &)`) and poll
+  --config configs/avery/gauntlet.toml > /tmp/x.log 2>&1 &)`) and poll
   `experiment_data/<run>/progress.json`. Resume with `--resume <run-dir>`.
   Full 6-opponent gauntlet: ~10 min uncontended.
 - macOS: no `timeout` command. Bots trace to `/tmp` when
@@ -37,7 +37,7 @@ cross-version narrative, and what to do next.
 - The repo is a LIVE shared workspace: other lineages (tew, drake, sinbad,
   ouroboros, kraken…) are being built concurrently by other agents. They
   edit the shared `comparison.toml` and run CPU-heavy tournaments. Use the
-  committed avery-specific `avery-gauntlet.toml` (gauntlet-5 +
+  committed avery-specific `configs/avery/gauntlet.toml` (gauntlet-5 +
   tew-v12-mid-support), and expect wall-clock timeouts under contention
   (600 s game timeouts are environmental when `runtime_faults=0`, not bot
   bugs). Before comparing against an earlier version's numbers, hash-check
@@ -47,8 +47,7 @@ cross-version narrative, and what to do next.
   run id is in the run's `manifest.json`); never `git add` other lineages'
   directories, shared config files, or the root attachment copies
   (`avery-lineage.txt`, `bahamut-experiment.txt`).
-- Root `avery-lineage.txt` / `bahamut-experiment.txt` are uncommitted
-  attachment copies for context; the canonical lineage doc is THIS file.
+- The cycle-1 text snapshot is preserved in [`handoffs/avery-lineage-handoff.txt`](handoffs/avery-lineage-handoff.txt); this page tracks the current Avery lineage.
 
 ## Version ladder (all native, both sides, 11 maps unless noted)
 
@@ -177,7 +176,7 @@ most bots; hydra-v07 dominates it).
 5. **New maps autarky/dilemma** entered `maps/` mid-cycle; v11 went 9–3 /
    2–10 there. dilemma is brutal for most bots (hydra-v07 dominates it);
    v08 has no baseline on them — consider pinning a map list in
-   avery-gauntlet.toml for comparability.
+   configs/avery/gauntlet.toml for comparability.
 6. **Sandbox CPU validation** on big_empty before any deployment claim —
    still never done for avery (all evidence native; v08 run had
    runtime_faults=0 over 132 games).
@@ -186,7 +185,7 @@ most bots; hydra-v07 dominates it).
 
 - Bots: `bots/avery-v01-safe-swarm` … `bots/avery-v12-hungry-sweep`
   (each: `main.py`, `bot.toml`, README; `protocol.py` untouched except the
-  v06 None-command port). Benchmark config: `avery-gauntlet.toml`
+  v06 None-command port). Benchmark config: `configs/avery/gauntlet.toml`
   (gauntlet-5 + tew-v12-mid-support). NOTE: `maps/` grew mid-cycle
   (autarky, dilemma) — v07/v08/v09 runs are 11-map, v11's is 13-map;
   compare per-map on the shared set.
@@ -201,6 +200,6 @@ most bots; hydra-v07 dominates it).
   contributions in `game_stats/runs/`.
 - Git: v06 landed in commit `4ea743b`; v07–v12 + this update in cycle-2
   commits (see log).
-- Task brief copy: `bahamut-experiment-handoff.txt` (repo root).
+- Task brief snapshot: [`handoffs/bahamut-experiment-handoff.txt`](handoffs/bahamut-experiment-handoff.txt); current shared workflow: [`BAHAMUT_HANDOFF.md`](BAHAMUT_HANDOFF.md).
 - Field context: `docs/ACTIVE.md` (cycle-0 gauntlet definition and
   cross-line results — maintained by the cycle unifier, do not edit).

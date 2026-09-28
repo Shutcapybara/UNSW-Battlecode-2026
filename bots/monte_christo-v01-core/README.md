@@ -28,4 +28,4 @@ Native full gauntlet: **106–48** (7 references × 11 maps × both sides). Side
 
 No game, analysis, reported runtime or caught policy errors in these runs.
 Exact run paths, map/side breakdowns, counterexamples and training provenance:
-[Monte Christo handoff](../../docs/monte_christo.md).
+Monte Christo handoff (`../../docs/monte_christo.md`).

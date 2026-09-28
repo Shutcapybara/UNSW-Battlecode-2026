@@ -1,10 +1,10 @@
 # Child-count comparison
 
-For **every bot against every other bot on every map**, use
-`python3 bots/tournament.py` from the repository root. It runs both sides and
-saves results, a leaderboard, logs and replays. See the root README for subset
-selection, dry runs and resuming interrupted tournaments. Use `--jobs 8` to
-run eight matches at once (default: up to four).
+The repository contains hundreds of historical bot snapshots. Select a small
+roster explicitly when using `python3 bots/tournament.py`; large schedules
+require `--allow-large`. The runner plays both sides and saves results, a
+leaderboard, logs and optional replays. See the root README for dry runs and
+resuming interrupted tournaments.
 
 These are standalone snapshots of the bot, differing only in their proactive
 child target. Every child repeats its variant's rule. Both variants retain

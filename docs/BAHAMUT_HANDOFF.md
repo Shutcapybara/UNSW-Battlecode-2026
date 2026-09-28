@@ -177,79 +177,35 @@ avoidance is not a prerequisite for a useful first bot.
 ## Comparison and shared statistics
 
 Use [`tools/compare_bot.py`](../tools/compare_bot.py), with
-[`comparison.toml`](../comparison.toml) as the default roster and editable example.
-It lists bot directories, map files/directories and run settings. Paths resolve
-relative to the TOML. Defaults include five cross-line opponents, all bundled
-maps, both sides, four workers and native execution. The candidate is skipped
-if present in the opponent list.
-
-Use the repository's `.venv/bin/python` and the installed `unswbc` CLI.
-The comparison environment is already installed on this working machine. On a
-fresh checkout, set it up once from the repository root:
+[`comparison.toml`](../comparison.toml) as the default example roster. Copy the
+TOML for a focused comparison; bot and map paths are relative to the TOML. Run
+from the repository root:
 
 ```sh
-uv venv --python 3.13 .venv
-uv pip install --python .venv/bin/python -r tools/requirements-comparison.txt
-```
-
-Installation may need network access; subsequent runs do not. Reuse the existing
-environment. **Invoke its Python directly**, as below: `uv run` on these scripts
-creates a separate dependency environment and may try PyPI even when `.venv`
-already has the packages. Do not choose a new temporary cache for each agent.
-If initial installation is blocked, diagnose setup/network permissions rather
-than treating it as a bot limitation or claiming benchmarking is impossible.
-
-Run comparisons from the repository root:
-
-```sh
-# Replace LINEAGE, NN and slug with your actual bot directory name.
 uv run tools/compare_bot.py bots/LINEAGE-vNN-slug --dry-run
 uv run tools/compare_bot.py bots/LINEAGE-vNN-slug
-
-# Copy comparison.toml, then add your earlier versions and selected references.
 uv run tools/compare_bot.py bots/LINEAGE-vNN-slug --config my-comparison.toml
 uv run tools/compare_bot.py --resume experiment_data/<run-directory>
 ```
 
-Set `sandbox = true` in a configuration for judge checks. Set concurrency with
-`--jobs N`. Run directories are `experiment_data/<bot>_<integer-UTC-datetime>/`.
-They contain frozen inputs/hashes, replays, logs, `index.html`, per-game records,
-per-map/per-opponent W/L/D summaries and per-opponent time-series graphs.
+Set `sandbox = true` in the TOML for judge CPU checks and use `--jobs N` to
+change concurrency. Comparison outputs, replays, and frozen experiment copies
+are local artifacts. The comparison writes each completed game's outcome into
+the game statistics contribution ledger, including source and map fingerprints.
 
-Graphs include population, total/longest length, pearls, splits, deaths, collision
-attribution and a space-control proxy. That proxy assigns tiles to the nearest
-living head by terrain-only path distance, including portals and wrapping;
-it ignores bodies, speed and tactical safety. Suicide labels do not identify
-deliberate feeding. Use these diagnostics to explain wins/regressions, not as
-unquestioned rewards. Details: [comparison guide](comparisons.md).
-
-Completed games automatically enter root `game_stats.parquet`, one row per game,
-with both bot/source identities, map, side, runtime, outcome and W/L/D flags.
-Resume/import deduplicates logical games; a fresh experiment counts again.
-Runtime errors without an outcome are excluded, while completed games retain
-their outcome even if graph analysis fails or a bot had runtime faults.
-
-Share `game_stats/runs/<run-id>.parquet` contributions through Git. The central
-Parquet and experiment artifacts are ignored. After pulling/merging:
+Share `game_stats/runs/<run-id>.parquet` contributions through Git. The merged
+`game_stats.parquet` and `experiment_data/` outputs are local; the existing
+historical files already tracked under `experiment_data/` remain provenance.
+After merging new contributions, rebuild and summarize with:
 
 ```sh
 uv run tools/game_stats.py rebuild
 uv run tools/game_stats.py summary --output /tmp/bot-pairs.csv
 ```
 
-[`tools/game_stats.py`](../tools/game_stats.py) also supports `import` of existing
-comparison directories and `merge` of compatible Parquets. It rejects conflicting
-copies rather than overwriting them. Future runners can use `make_record()` and
-`publish_games()`; other historical runners are not automatically connected.
-See [ledger schema/API and merge resolution](../game_stats/README.md).
-
-For collection-wide coverage, [benchmarking](benchmarking.md) provides an explicit
-stable roster in `benchmark.toml` and `tools/benchmark.py plan/run/report`. It
-imports identifiable historical games and fills missing reference-opponent,
-map and side combinations, prioritizing poorly covered bots. It freezes sources;
-do not edit snapshots or add another agent's unfinished latest version. Make a
-new plan when evaluating a changed source version. Keep using `compare_bot.py`
-for detailed replay graphs and specific experimental comparisons.
+The [benchmarking guide](benchmarking.md) covers the supported single-candidate
+and bounded tournament runners. The previously documented collection-wide
+campaign scripts are absent from this checkout.
 
 ## Iteration and handoff expectations
 

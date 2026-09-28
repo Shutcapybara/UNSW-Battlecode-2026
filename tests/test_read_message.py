@@ -10,7 +10,7 @@ sys.path.insert(0, str(BOT))
 from src.communications.read_message import act_on_messages, read_message, read_messages
 from src.communications.signals import Message as Signal
 from src.actions import Action
-from src.communications.sucide_command import SuicideAction, SuicideCommand, SuicidePayload
+from src.communications.suicide_command import SuicideAction, SuicideCommand, SuicidePayload
 
 
 class FakeController:

@@ -23,7 +23,7 @@ schedule can move to the proven envelope without re-introducing the freeze.
 
 ## Measured results
 
-Native gauntlet (avery-gauntlet.toml, both sides, 11 maps, 132 games), run
+Native gauntlet (configs/avery/gauntlet.toml, both sides, 11 maps, 132 games), run
 `experiment_data/avery-v08-crown-race_20260925122644396505`.
 **100–31–1 (76.1%)**, runtime_faults=0. Gauntlet-5 only: **89–20–1 (81.4%)**
 (v07: 84–25–1, v06: 79–30–1). No map regressed.

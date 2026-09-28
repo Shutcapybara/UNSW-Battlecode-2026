@@ -28,4 +28,4 @@ and receiving/parsing as well as sending. Run:
 `experiment_data/monte_christo-x04-channel-only_20260925144701764829`;
 configuration `configs/monte_christo_messaging/cost-probe.toml`.
 
-See the [messaging report](../../docs/monte_christo-messaging.md) for hypothesis, packet format, predictive errors, map/side regressions, later validation and deployment status.
+See the messaging report (`../../docs/monte_christo-messaging.md`) for hypothesis, packet format, predictive errors, map/side regressions, later validation and deployment status.

@@ -71,6 +71,7 @@ when enemy size or team counts are uncertain.
 - `kraken-v02-bigmap`: big-map production and endgame growth, brawl-mode small maps, ally-head collision guards, and metered BFS with portal-local cache invalidation.
 - `kraken-v03-judge-safe`: snapshot of kraken-v02 after sandbox CPU hardening; used as the stable bot-pool evaluation candidate.
 - `kraken-v04-eval`: v03 with a kbench-parameterised CFG (KBENCH-PARAMS override block); identical behavior, the baseline for eval-weight sweeps.
+- `loki-v01-teacher-ranker`: exact Bifröst v01 fork with a gradient-boosted candidate score trained on public ranked submission #7771 replays; whole-series top-1 action imitation 64.1% and 70.3%, not yet game-benchmarked.
 - `gavroche-v01-mass-preserving-opening`: Monte Christo x12 with an early rescue split for long, partially observed spawns; 5–3 vs x12 and Hunter v20 on Autarky and Prisoner's Dilemma.
 - `gavroche-v02-opening-production`: v01 plus stronger early production; separate target-map screens scored 13–3, while a single full-pool screen scored 12–4. It lost one Autarky side to x12 and cascades through four length-2 splits on round 0.
 - `gavroche-v03-head-preserving-opening`: v02 with a head-preserving rescue split and more aggressive production; 1–3 on the Prisoner's Dilemma screen, rejected.

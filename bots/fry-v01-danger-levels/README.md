@@ -58,6 +58,6 @@ Rules used: [vision](https://game.battlecode.au/docs/vision), [movement](https:/
 
 ## Browser extension
 
-The [Battlecode Bot Version Filter](browser-extension/README.md) adds a bot-version
+The Battlecode Bot Version Filter (`browser-extension/README.md`) adds a bot-version
 filter to your online battle history in Chrome and Firefox. See its README for
 installation, usage, and verification status.

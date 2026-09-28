@@ -1,0 +1,17 @@
+bots = ["../../bots/gavroche-final"]
+maps = [
+  "../../maps/autarky.map",
+  "../../maps/big_empty.map",
+  "../../maps/queen_of_spades.map",
+  "../../maps/schooltime.map",
+  "../../maps/stronghold.map",
+  "../../maps/trauma.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 8
+timeout_seconds = 600
+sandbox = false
+control_every = 10
+seed_policy = "fixture_hash_v1"

@@ -31,7 +31,7 @@ Development regresses on Default/Stronghold and improves Trophy/Queen of Spades.
 Reserve improves Autarky (4→6 wins), regresses Big Empty (9→7) and Trauma (11→10),
 and ties Dilemma (1 each). On Big Empty/Tew B, extra pearl collection and total
 length coexist with a worse final crown. Full counterexamples and opponent/side
-breakdowns are in the [messaging report](../../docs/monte_christo-messaging.md).
+breakdowns are in the messaging report (`../../docs/monte_christo-messaging.md`).
 
 Judge: Hunter v20 on Arena, Stronghold and Big Empty, both sides, **4–2**.
 76,294 metered turns; zero timeouts/caught errors. Median 38.62M, p99 71.00M,
@@ -53,5 +53,5 @@ SHA256: `0a9f9a74b1a970ad2423e378e70aab112c79f447dc143ee7010dcdcf449b2451`.
 Runtime sources match their frozen snapshots. `density_trace` and `training_trace`
 are zero. See `tools/monte_christo/messaging/session_manifest.json` for all source
 identities, settings and actual executions, and the
-[next-generation handoff](../../docs/monte_christo-execution-handoff.md) for the
+next-generation handoff (`../../docs/monte_christo-execution-handoff.md`) for the
 planned execution-layer work. Do not mutate this measured version.

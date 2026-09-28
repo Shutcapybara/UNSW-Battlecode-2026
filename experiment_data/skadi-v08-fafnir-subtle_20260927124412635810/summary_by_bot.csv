@@ -1,0 +1,4 @@
+opponent,scheduled,played,wins,draws,losses,errors,analysis_errors,pending,score
+gavroche-v31-saturated-divecap,12,12,8,0,4,0,0,0,0.6666666666666666
+gavroche-v23-selective-sprint-cap,12,12,8,0,4,0,0,0,0.6666666666666666
+sinbad-v07-divecap,12,12,11,0,1,0,0,0,0.9166666666666666
