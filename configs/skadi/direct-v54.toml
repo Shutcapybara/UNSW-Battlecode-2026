@@ -1,4 +1,4 @@
-bots = ["../../bots/gavroche-final"]
+bots = ["../../bots/gavroche-v54-sparse-room"]
 maps = [
   "../../maps/autarky.map",
   "../../maps/big_empty.map",
