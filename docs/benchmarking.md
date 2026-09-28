@@ -1,5 +1,7 @@
 # Benchmarking and comparisons
 
+**Archived 29 September 2026:** adaptive collection and its ratings worker are stopped. See [the archive record](archive/adaptive-tournament-20260929.md). The configuration and instructions below remain reusable.
+
 This checkout has three supported comparison paths:
 
 - [`tools/compare_bot.py`](../tools/compare_bot.py) compares one candidate with

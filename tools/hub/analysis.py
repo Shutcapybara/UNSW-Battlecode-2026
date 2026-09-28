@@ -87,7 +87,7 @@ def experiment_contrast(games, candidate, control):
     """Stage deltas (candidate − control) over the two arms' verified field games, and per-map score deltas."""
     arms = {candidate: [], control: []}
     for g in games:
-        if g.get('verified') and g.get('origin') == 'controlled' and g.get('pool') == 'field' and g.get('own_submission') in arms:
+        if g.get('verified') and g.get('origin') == 'controlled' and g.get('pool') in ('field', 'dev') and g.get('own_submission') in arms:   # D-026: screens run on dev too
             arms[g['own_submission']].append(g)
     if not arms[candidate] or not arms[control]:
         return None

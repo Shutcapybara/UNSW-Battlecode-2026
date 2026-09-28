@@ -26,13 +26,14 @@ DEFAULTS = {
     'notify': {'osascript': True, 'url': ''},
     # screen: 45 (band-like, share 0.54), 752 (dev test 2, rank 85, dev pool — no field quota), 62 (the elimination stress test);
     # 470 (rank 6, share 0.32) dropped per A1-Q5/Q2: both arms lose to it, so it yields few discordant pairs and no band information
-    'panels': {'screen': [45, 752, 62], 'confirmation': [853, 241, 481, 473, 133, 30, 193, 262, 130, 306, 213, 157]},
+    'panels': {'screen': [545, 752, 45], 'confirmation': [853, 241, 481, 473, 133, 30, 193, 262, 130, 306, 213, 157]},   # D-026: screen on the dev allowance (545 rank-15 swarm, 752 weak) + one field block (45) for calibration
     'executor': {'mode': 'auto', 'interval_seconds': 600, 'auto_cutover_after': 3, 'drain_timeout_seconds': 1800,
                  'snapshot_seconds': 240, 'harvest_seconds': 240},   # time budgets per cycle: a slow server shortens the work, never the safety
     # executor.mode: off | shadow | auto | live. 'auto' = shadow until `auto_cutover_after` consecutive clean cycles, then the daemon
     # itself stops the legacy worker, adopts its record and goes live (docs/hub/EXECUTOR_V2.md §Cutover). 'live' needs the
     # legacy worker stopped by hand (cutover_mac.sh). rollback_mac.sh sets 'off'.
-    'corpus': {'enabled': True, 'dest': 'public_replays/corpus', 'per_team': 60, 'top_n': 30, 'band': [55, 85], 'per_cycle_seconds': 150, 'per_cycle_downloads': 40,
+    'corpus': {'enabled': True, 'dest': 'public_replays/corpus', 'per_team': 60, 'top_n': 30, 'band': [55, 85], 'per_cycle_seconds': 120, 'per_cycle_downloads': 120,
+               'interval_seconds': 5, 'threaded': True, 'refresh_per_pass': 30,   # D-025: continuous, in its own thread, paced by the shared client (≈ 2 API calls per replay)
                # explicit teams: the current top (306 Cutlery, formerly Vibing++: whole history, decoy timeline), the screen/confirmation and dev opponents, the band teams that played us
                'teams': [{'id': 306, 'games': 400, 'why': 'rank 1; suspected decoy submissions between autoscrims'}, {'id': 62, 'games': 120, 'why': 'elimination specialist'},
                          {'id': 545, 'games': 120, 'why': 'dev test 1 (swarm)'}, {'id': 470, 'games': 120, 'why': 'length racer'}, {'id': 45, 'games': 120, 'why': 'band-like screen opponent'},

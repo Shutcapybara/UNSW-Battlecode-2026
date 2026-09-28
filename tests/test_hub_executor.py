@@ -406,6 +406,22 @@ class ExecutorTest(unittest.TestCase):
         self.assertTrue(p['complete'], (len(p['pairs']), p['missing_maps']))
         self.assertGreaterEqual(len(p['pairs']), 2 * len(MAPS))
 
+    def test_screen_blocks_against_dev_teams_draw_on_the_dev_allowance(self):
+        self.cfg['panels']['screen'] = [545, 752, 45]   # D-026
+        self.make_candidate_win()
+        self.cycle()                                    # dev coverage (12 games on dev quota)
+        s = self.cycle(now=self.now + 600)              # first screen block: vs 545, both arms
+        field = [d for d in s['dispatched'] if d['pool'] == 'field']
+        dev = [d for d in s['dispatched'] if d['pool'] == 'dev' and d['opponent'] == 545]
+        self.assertFalse(field)
+        self.assertEqual(len(dev), 4)                   # two waves per arm
+        self.assertEqual(s['quota']['field']['available'], self.cfg['budget']['executor_cap']['field'])
+        s2 = self.cycle(now=self.now + 1200)            # second block: vs 752, still on dev quota
+        self.assertTrue(all(d['pool'] == 'dev' and d['opponent'] == 752 for d in s2['dispatched']) and s2['dispatched'])
+        s3 = self.cycle(now=self.now + 1800)            # third block: the field calibration opponent
+        self.assertTrue(all(d['pool'] == 'field' and d['opponent'] == 45 for d in s3['dispatched']) and s3['dispatched'], (s3['dispatched'], s3['deferred']))
+        self.assertLess(s3['quota']['field']['available'], self.cfg['budget']['executor_cap']['field'])
+
     def test_waves_and_spread(self):
         self.assertEqual(executor.waves_of_distinct_maps(executor.rotation([9, 20, 21])), [[9, 20, 21], [9, 20, 21]])
         self.assertEqual(executor.waves_of_distinct_maps(executor.rotation(list(range(10)))), [list(range(10)), list(range(1, 10)) + [0]])

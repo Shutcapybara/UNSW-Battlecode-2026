@@ -1,5 +1,7 @@
 # Collection benchmarking
 
+**Archived 29 September 2026:** adaptive collection and its ratings worker are stopped. See [the archive record](archive/adaptive-tournament-20260929.md). The configuration and instructions below remain reusable.
+
 [`benchmark.toml`](../benchmark.toml) contains 340 named bot snapshots, including
 24 reference opponents, on 33 maps. The September 28 roster expansion is
 preserved; inclusion is an exploration choice, not a promotion or strength claim.

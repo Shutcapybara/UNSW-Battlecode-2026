@@ -1,0 +1,94 @@
+[
+ {
+  "map": "Trophy",
+  "rounds": 143,
+  "split_rounds": [
+   40,
+   120,
+   140
+  ],
+  "split_residue": [
+   0
+  ],
+  "checks": {
+   "A rays == turns that survived the move": true,
+   "A north share of head rays == 1": true,
+   "A some refraction (rays into own neck)": true,
+   "A no splits": true,
+   "A no sprints": true,
+   "B no rays": true,
+   "B child length always 2": true,
+   "B splits only on one residue mod 20": true
+  },
+  "passed": true
+ },
+ {
+  "map": "Default",
+  "rounds": 243,
+  "split_rounds": [
+   0,
+   60,
+   80,
+   120,
+   140,
+   160
+  ],
+  "split_residue": [
+   0
+  ],
+  "checks": {
+   "A rays == turns that survived the move": true,
+   "A north share of head rays == 1": true,
+   "A some refraction (rays into own neck)": true,
+   "A no splits": true,
+   "A no sprints": true,
+   "B no rays": true,
+   "B child length always 2": true,
+   "B splits only on one residue mod 20": true
+  },
+  "passed": true
+ },
+ {
+  "map": "Portals",
+  "rounds": 17,
+  "split_rounds": [],
+  "split_residue": [],
+  "checks": {
+   "A rays == turns that survived the move": true,
+   "A north share of head rays == 1": true,
+   "A some refraction (rays into own neck)": true,
+   "A no splits": true,
+   "A no sprints": true,
+   "B no rays": true,
+   "B child length always 2": true,
+   "B splits only on one residue mod 20": true
+  },
+  "passed": true
+ },
+ {
+  "map": "Schooltime",
+  "rounds": 257,
+  "split_rounds": [
+   0,
+   60,
+   120,
+   160,
+   180,
+   200
+  ],
+  "split_residue": [
+   0
+  ],
+  "checks": {
+   "A rays == turns that survived the move": true,
+   "A north share of head rays == 1": true,
+   "A some refraction (rays into own neck)": true,
+   "A no splits": true,
+   "A no sprints": true,
+   "B no rays": true,
+   "B child length always 2": true,
+   "B splits only on one residue mod 20": true
+  },
+  "passed": true
+ }
+]

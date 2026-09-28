@@ -1,0 +1,39 @@
+<section class="notes">
+<h3>What the z1 panel shows so far (seed 1, 560 games; the reading is ours, the figures below are the evidence)</h3>
+<ul>
+<li><b>The early game decides most games, and space is the best early measure.</b> Controlling for both bots' zoo ratings,
+the strongest leading predictors of winning are <code>units_share@100</code>, <code>territory@100</code> and <code>total_share@100</code>
+(≈ +1.5 to +1.8 log-odds per within-map sd; within-map AUC 0.80–0.81). Next come bed-weighted territory, the share of the map
+visited and splits in rounds 0–100. Concentrating length early predicts losing: <code>top1_share@100</code> has AUC 0.24.</li>
+<li><b>The zoo is a monoculture in sonar and in production.</b> Seven of eight bots send about 4 rays per dragon-turn in all
+four directions: exactly a quarter of rays are refracted, meaning one ray every turn is aimed into the bot's own neck. The
+eighth bot (ouroboros-m01) sends none. Every bot's median child is 2 segments long. Sonar features therefore identify bots
+(nearest-centroid 49% vs 12.5% chance) and tell us almost nothing about sonar strategy. This is the first place to look in
+the field corpus.</li>
+<li><b>Deaths into kelp are a large, cheap loss.</b> Wall deaths run at 8–9 per 1k dragon-turns for six bots (about a third of
+all deaths), and at 0 for kazuha-s01 and ouroboros-m01. Head-on collisions between allies add 1.5–4.8 per 1k.</li>
+<li><b>Phases.</b> The pooled HMM learns three states that match the anecdote:
+<ul>
+<li><i>opening</i>: exploration +1 sd;</li>
+<li><i>economy</i>: spread out, concentration −0.5 sd;</li>
+<li><i>crown</i>: concentration +1.1 sd, production falling.</li>
+</ul>
+The opening ends at a median of r15–r90 depending on the map.
+Caveat: the crown state also captures collapse. A losing side reduced to one dragon has high concentration, so losers
+"enter the crown" at a median of r185, against r435 for winners, and 52% of winners never enter it. Separating a
+deliberate crown race from attrition needs a growth signal on the longest dragon (in the backlog).</li>
+<li><b>Validation that did not wait for live data.</b>
+<ul>
+<li>All five V0 identities hold on 100% of side-games.</li>
+<li>All four V1 probe checks pass.</li>
+<li>EPG access correlates with the next 10 rounds' bed eats at r ≈ 0.66 within map (τ = 4 is best).</li>
+<li>Territory predicts the next bed-pearl share at r ≈ 0.72; weighting by beds adds little over plain cells (0.71).</li>
+<li>The death hazard falls about 7× from reach 3–5 (18.6 per 1k dragon-turns) to reach 46–61 (2.5 per 1k).</li>
+</ul></li>
+<li><b>Seed stability (V2, 80 fixtures × 3 seeds).</b> Most families have a median ICC of 0.8–0.96 (production 0.95, survival 0.96,
+economy 0.90). The leading r100 winners are noisier: <code>territory@100</code> 0.65 and <code>units_share@100</code> 0.67, so about a third of
+their variance is the seed. Concentration has the lowest family median (0.65).</li>
+<li><b>hunter-v20</b> wins 12% here. It plays passively on open maps (on Queen of Spades: 1 pearl, no splits), which is
+consistent with its compact-map specialism.</li>
+</ul>
+</section>

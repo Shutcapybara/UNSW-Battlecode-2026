@@ -9,6 +9,7 @@ import os
 import shutil
 import subprocess
 import sys
+import threading
 import time
 import traceback
 import uuid
@@ -38,7 +39,8 @@ def write_health(root, cfg, state, extra=None):
                     cutover_pending=bool(state.get('cutover_pending')), cutover_started=state.get('cutover_started'), legacy_adopted=bool(db.kv_get(conn, 'legacy_adopted')),
                     control=db.kv_get(conn, 'control'), control_owner=db.kv_get(conn, 'control_owner'), executor_last=db.kv_get(conn, 'executor_last'),
                     open_intents=len(hub_executor.open_intents(conn)), open_transactions=len(hub_executor.open_txs(conn)),
-                    last_cycle_at=db.kv_get(conn, 'last_cycle_at'), restart=state.get('restart'), recent=list(RECENT), recent_errors=list(RECENT_ERRORS))
+                    last_cycle_at=db.kv_get(conn, 'last_cycle_at'), restart=state.get('restart'), recent=list(RECENT), recent_errors=list(RECENT_ERRORS),
+                    corpus_last=state.get('corpus_last'), corpus_passes=state.get('corpus_passes', 0), executor_busy=bool(state.get('executor_busy')))
         conn.close()
         if extra:
             body.update(extra)
@@ -444,6 +446,36 @@ def redeploy_check(root, cfg, state, log):
 
 
 
+def corpus_thread(root, cfg, state, client, log, stop):
+    """The public-replay corpus runs continuously in its own thread (D-025): it shares the paced client with the
+    executor (so the key's 120/min ceiling is never crossed), stops its pass whenever an executor cycle is running
+    (the executor has the API to itself), and slows down when the server has answered 429."""
+    c = cfg.get('corpus') or {}
+    interval = float(c.get('interval_seconds', 5))
+    log(f"corpus thread: interval {interval} s, per pass {c.get('per_cycle_downloads')} downloads / {c.get('per_cycle_seconds')} s, refresh {c.get('refresh_per_pass')} per pass, client spacing {getattr(client, 'min_interval', None)} s")
+    while not stop.exists() and not state.get('restart'):
+        if state.get('executor_busy'):
+            time.sleep(0.5)
+            continue
+        try:
+            report = hub_corpus.fetch_pass(root, cfg, client, log, should_yield=lambda: bool(state.get('executor_busy')))
+            state['corpus_last'] = report
+            state['corpus_passes'] = state.get('corpus_passes', 0) + 1
+            throttled = (report or {}).get('throttled', 0) - state.get('corpus_throttle_seen', 0)
+            if throttled > 0:
+                state['corpus_throttle_seen'] = (report or {}).get('throttled', 0)
+                state['corpus_backoff_until'] = time.time() + 600
+                log(f'corpus: server answered 429 ({throttled} new); corpus slows to one pass per 5 min for 10 min')
+        except Exception:
+            log('corpus error\n' + traceback.format_exc())
+        pause = 300 if time.time() < state.get('corpus_backoff_until', 0) else interval
+        if (state.get('corpus_last') or {}).get('fetched', 0) == 0 and (state.get('corpus_last') or {}).get('note'):
+            pause = max(pause, 120)   # nothing to fetch: do not hammer the listings
+        deadline = time.time() + pause
+        while time.time() < deadline and not stop.exists() and not state.get('restart'):
+            time.sleep(min(1.0, max(0.05, deadline - time.time())))
+
+
 def serve(root, cfg, log):
     root = Path(root)
     (root / 'control').mkdir(parents=True, exist_ok=True)
@@ -474,6 +506,9 @@ def serve(root, cfg, log):
             log(f'executor client unavailable ({exc}); observer mode only')
             mode = 'off'
     state = {'mode': mode, 'token': token, 'configured': configured}
+    if client is not None and (cfg.get('corpus') or {}).get('enabled') and (cfg.get('corpus') or {}).get('threaded', True):
+        state['corpus_thread'] = threading.Thread(target=corpus_thread, args=(root, cfg, state, client, log, stop), name='corpus', daemon=True)
+        state['corpus_thread'].start()
     next_cycle = 0
     next_exec = 0
     next_git = time.time() + 600  # first git pass ten minutes after start
@@ -515,8 +550,9 @@ def serve(root, cfg, log):
             safety_loop_once(root, cfg, state, log)
         except Exception:
             log('safety loop error\n' + traceback.format_exc())
-        write_health(root, cfg, state, dict(legacy_alive=legacy_alive(cfg)))
+        write_health(root, cfg, state, dict(legacy_alive=legacy_alive(cfg), api_calls=getattr(client, 'calls', None), api_throttled=getattr(client, 'throttled', None)))
         if client is not None and now >= next_exec:
+            state['executor_busy'] = True
             try:
                 conn = db.connect(root)
                 renew_lease(conn, token)
@@ -546,12 +582,13 @@ def serve(root, cfg, log):
                     notify(root, cfg, 'executor_stop', summary['stop'])
             except Exception:
                 log('executor error\n' + traceback.format_exc())
+            state['executor_busy'] = False
             next_exec = now + cfg['executor']['interval_seconds']
         try:
             spawn_preflight(root, cfg, state, log)
         except Exception:
             log('preflight spawn error\n' + traceback.format_exc())
-        if client is not None and (cfg.get('corpus') or {}).get('enabled') and now >= state.get('next_corpus', 0):
+        if client is not None and (cfg.get('corpus') or {}).get('enabled') and not state.get('corpus_thread') and now >= state.get('next_corpus', 0):
             try:
                 write_health(root, cfg, state, dict(executor_phase='corpus', executor_detail='public replay corpus fetch'))
                 report = hub_corpus.fetch_pass(root, cfg, client, log)

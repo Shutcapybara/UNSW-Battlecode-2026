@@ -24,6 +24,8 @@ from pathlib import Path
 from . import db
 
 AUTOSCRIM_MINUTES = 40   # autoscrims start 4–36 min after the even UTC hour (A1-Q9)
+DISCOVERY = {}           # team id -> (monotonic time, ids): the public history pages are re-read at most every DISCOVERY_TTL seconds
+DISCOVERY_TTL = 1800
 
 
 def now_iso():
@@ -92,8 +94,22 @@ def load_index(dest):
     return have
 
 
-def fetch_pass(root, cfg, client, log, discover=None, budget_seconds=None, max_downloads=None, ladder=None):
-    """One bounded pass: pick the team furthest below its target, discover its games, download the new ones."""
+def cached_discover(discover, tid, n, have, kind):
+    """Discovery pages the public site newest-first (no key, but every page is a request): a team's deep listing is
+    reused for DISCOVERY_TTL seconds while it still holds games we do not have; a refresh reads the newest page only."""
+    if kind == 'refresh':
+        return discover(tid, n)
+    cached = DISCOVERY.get(tid)
+    if cached and time.monotonic() - cached[0] < DISCOVERY_TTL and any(g not in have for g in cached[1]):
+        return cached[1]
+    ids = discover(tid, n)
+    DISCOVERY[tid] = (time.monotonic(), list(ids))
+    return ids
+
+
+def fetch_pass(root, cfg, client, log, discover=None, budget_seconds=None, max_downloads=None, ladder=None, should_yield=None):
+    """One bounded pass: pick the team furthest below its target, discover its games, download the new ones.
+    `should_yield()` true stops the pass early (the executor cycle has the API to itself, D-025)."""
     c = cfg.get('corpus') or {}
     if not c.get('enabled'):
         return None
@@ -109,8 +125,11 @@ def fetch_pass(root, cfg, client, log, discover=None, budget_seconds=None, max_d
         ladder = db.kv_get(conn, 'ladder') or []
         conn.close()
     if ladder:
-        stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
-        (dest / 'ladder' / f'{stamp}.json').write_text(json.dumps(ladder))
+        body = json.dumps(ladder)
+        latest = sorted((dest / 'ladder').glob('*.json'))
+        if not latest or latest[-1].read_text() != body:   # one snapshot per ladder change, not per pass
+            stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+            (dest / 'ladder' / f'{stamp}.json').write_text(body)
     teams = watch_list(cfg, ladder)
     have = load_index(dest)
     counts = {}
@@ -118,28 +137,46 @@ def fetch_pass(root, cfg, client, log, discover=None, budget_seconds=None, max_d
         for tid in (row.get('team_a'), row.get('team_b')):
             if tid in teams:
                 counts[tid] = counts.get(tid, 0) + 1
-    progress = {tid: dict(t, have=counts.get(tid, 0)) for tid, t in teams.items()}
-    (dest / 'teams.json').write_text(json.dumps(dict(at=now_iso(), teams=progress), indent=1))
-    todo = sorted((t for t in progress.values() if t['have'] < t['target']), key=lambda t: (t['have'] / max(1, t['target']), t.get('rank', 10**6)))
-    if not todo:
-        return dict(teams=len(teams), fetched=0, note='all targets met')
+    try:
+        previous = json.loads((dest / 'teams.json').read_text()).get('teams') or {}
+    except (OSError, ValueError):
+        previous = {}
+    progress = {tid: dict(t, have=counts.get(tid, 0), checked_at=(previous.get(str(tid)) or {}).get('checked_at')) for tid, t in teams.items()}
+
+    def save_progress():
+        (dest / 'teams.json').write_text(json.dumps(dict(at=now_iso(), teams=progress), indent=1))
+    save_progress()
+    # backfill: the team furthest below its target first; refresh: targets are floors, not caps — teams at target are
+    # re-checked for new games, least recently checked first, with a reserved share of the pass (D-024: continuous corpus)
+    backfill = sorted((t for t in progress.values() if t['have'] < t['target']), key=lambda t: (t['have'] / max(1, t['target']), t.get('rank', 10**6)))
+    refresh = sorted((t for t in progress.values() if t['have'] >= t['target']), key=lambda t: (t.get('checked_at') or '', t.get('rank', 10**6)))
+    refresh = refresh[: int(c.get('refresh_teams_per_pass', 6))]
+    reserve = min(int(c.get('refresh_per_pass', 10)), cap) if refresh else 0
+    plan = [(t, 'refresh') for t in refresh] + [(t, 'backfill') for t in backfill]
+    if not plan:
+        return dict(teams=len(teams), fetched=0, note='nothing to fetch')
     if discover is None:
         sys.path.insert(0, str(repo / 'tools'))
         import download_team_games as dtg  # noqa: WPS433
         discover = lambda tid, n: dtg.discover_games(tid, client.base, max_games=n)
     fetched, errors, tried = 0, [], []
-    for t in todo:
-        if time.monotonic() - started > budget or fetched >= cap:
+    refreshed = 0
+    for t, kind in plan:
+        if time.monotonic() - started > budget or fetched >= cap or (should_yield and should_yield()):
             break
+        if kind == 'refresh' and refreshed >= reserve:
+            continue
         tried.append(t['id'])
+        progress[t['id']]['checked_at'] = now_iso()
         try:
-            ids = discover(t['id'], t['target'] + 20)
+            ids = cached_discover(discover, t['id'], int(c.get('refresh_discover', 25)) if kind == 'refresh' else t['target'] + 20, have, kind)
         except Exception as exc:
             errors.append(dict(team=t['id'], error=f'discover: {type(exc).__name__}: {str(exc)[:120]}'))
             continue
-        new = [g for g in ids if g not in have][: max(0, t['target'] - t['have'])]
+        room = min(reserve - refreshed, int(c.get('refresh_per_team', 15))) if kind == 'refresh' else max(0, t['target'] - t['have'])
+        new = [g for g in ids if g not in have][:room]
         for gid in new:
-            if time.monotonic() - started > budget or fetched >= cap:
+            if time.monotonic() - started > budget or fetched >= cap or (should_yield and should_yield()):
                 break
             try:
                 meta = client.get(f'/api/v1/battles/{gid}')
@@ -162,11 +199,18 @@ def fetch_pass(root, cfg, client, log, discover=None, budget_seconds=None, max_d
                     handle.write(json.dumps(row, default=str) + '\n')
                 have[gid] = row
                 fetched += 1
+                if kind == 'refresh':
+                    refreshed += 1
+                for tid in (row.get('team_a'), row.get('team_b')):
+                    if tid in progress:
+                        progress[tid]['have'] += 1
             except Exception as exc:
                 errors.append(dict(team=t['id'], game=gid, error=f'{type(exc).__name__}: {str(exc)[:120]}'))
                 if len(errors) >= 5:
                     break
-    out = dict(teams=len(teams), tried=tried, fetched=fetched, errors=errors[:5], seconds=round(time.monotonic() - started), have=len(have))
+    save_progress()
+    out = dict(teams=len(teams), tried=tried, fetched=fetched, refreshed=refreshed, errors=errors[:5], seconds=round(time.monotonic() - started), have=len(have),
+               throttled=getattr(client, 'throttled', 0))
     if log:
-        log(f"corpus: fetched {fetched} replays for {tried} in {out['seconds']} s (index {len(have)}); errors {len(errors)}")
+        log(f"corpus: fetched {fetched} replays ({refreshed} refresh) for {tried} in {out['seconds']} s (index {len(have)}); errors {len(errors)}")
     return out

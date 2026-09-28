@@ -336,3 +336,114 @@ submission as "our upload" and skipped 9508 (registered as the legacy candidate 
 `force: true` with a reason to override a non-upload activation) was added and used once: 9508 restored and set as
 control at 15:13:02, before the 16:00 autoscrim. Net exposure: the team's live submission was kazuha-s01 from ~14:26
 to ~14:51, sakura-s01 from ~14:51 to 15:08, Heimdall v10 from 15:08 to 15:13.
+
+## D-021 — A running experiment whose control is no longer the control is frozen, whatever moved the control (28 Sep 16:28 UTC)
+
+**Incident:** after the D-020 director restore (9508 back at 15:13:02) the experiment `aa8dd5be` (yuna-v03 vs 10376)
+stayed `running` with `control_submission = 10376`, because `freeze_running` was only called from the *observer* on
+an activation it classified as external, and the restore path set the control directly. The next-block rule waits
+for `active == the experiment's control`, so from 15:13 to 16:28 the executor dispatched nothing at all (field quota
+45 available the whole time; the only requests were dev coverage), while the team's rating was being decided by
+autoscrims. A teammate's activation of `tyr-v01-yuna-momentum` (10413) at 15:21 was classified correctly as a
+teammate upload and adopted as control — which made the stale experiment doubly stale.
+**Changed:** at the top of the running-experiment step, any `running` v2 experiment with
+`control_submission != control` is frozen through the existing `freeze_running` (reject if the evidence already
+says so, `superseded_incomplete` with ≥ 3 complete confirmation blocks, else `superseded_by_external_activation`;
+`frozen_reason = 'control changed old->new'`), and the candidate is re-opened against the real control in the same
+cycle. The cycle summary now carries `ranked_recent`: our ranked series in the server's recent history (series,
+opponent, our submission, W/L, Elo delta), so the packet says what the rating is actually being decided on.
+Regression test: `test_running_experiment_with_a_stale_control_is_frozen_and_replaced`.
+**Falsifier:** any cycle summary with a `running` experiment whose control differs from `control`; any cycle with
+`quota.field.available ≥ 20`, a `dev_ok` candidate, no ranked series in flight, not in blackout, and nothing
+dispatched.
+**Rating context (corpus ladder snapshots, team 7):** 1754 (14:57) → 1746 (15:04) → 1701 (15:13) → 1701 (15:2x–16:0x)
+→ 1691 (16:15); rank 62 → 95. The −53 fell inside the D-020 exposure window (our S1 bots and Heimdall v10 live
+14:26–15:13, i.e. through the 14:00 autoscrim's start window); the −10 at 16:15 was played by 10413. That is the
+cost of D-020, recorded here so it is not read as a bot regression.
+
+## D-022 — One game per distinct map per request: block arms are posted as two waves, fills are paired (28 Sep 16:43 UTC)
+
+**Incident:** the first v2.1 field block (yuna-v03 10013 vs Tyr V12 10473, opponent 45, 16:31 UTC) asked for 20
+entries per arm (each map twice, rotated — the A1-Q3 pattern) and the server returned 10 games per arm: it creates
+one game per *distinct* map in a request and does not refuse the list. Under the stored parameters (`max_fills 0`,
+`min_pairs 14`) the block would have been excluded once harvested and replaced by another 40-game request every
+cycle — a quota drain with no decision — and the request rows' recorded counts (20) had already halved the
+executor's own hourly cap (field available 5 with 20 games in flight).
+**Changed:** a block arm is two waves posted back to back inside one activation — the block's maps, then the same
+maps rotated by one (`waves_of_distinct_maps(rotation(maps))`) — so consecutive ids give every map both starting
+layouts and the block still has 20 exact pairs from 40 games; each wave is its own request row whose count is the
+games the server created. Fills are paired: both arms request the missing maps back to back, the second arm's odd
+waves led by a spare block map so the two arms' ids align on the same parity (`aligned`), which pairs whatever
+layout the fill lands on; single-arm alternating fills paired only by luck and never when foreign traffic locked
+the parity. Defaults: `max_fills 3`, `min_pairs 10`; running v2 experiments opened with the old values are migrated
+(`params_migrated` event); accepted request counts are corrected to the games created (`request_count_corrected`).
+The 400-refusal fallback to single-orientation blocks stays as dead code (no wave exceeds the map count). The cycle
+summary carries `candidate_games` (requested / verified / unverified by error kind per registered candidate).
+**Falsifier:** any `unexpected_game_count` after this deploy; any block with `fill_attempts ≥ 2`; any field block
+whose two arms' first waves are not parity-aligned when the ids are consecutive.
+
+## D-023 — The battle payload no longer carries submission ids or a replay key; games are attributed by the request (28 Sep 17:02 UTC)
+
+**Incident:** every game fetched since about 14:20 UTC comes back with `match` lacking `submissionAId/BId` and
+`replayKey`, and with `games[].hasReplay` instead (sample recorded in `kv incomplete_payload_sample`, game 506472).
+The executor's verifier treated that as "incomplete API payload" and held the game: the S1 uploads' dev passes
+(kazuha 10357, sakura 10376: 20 games each) never completed, the first v2.1 field block could never verify, and
+the 131-game legacy backlog was the same thing. The last games in our record verified through API-reported ids are
+yuna-v03's dev games (harvested ~14:1x). Replay downloads (`/api/v1/battles/{id}/replay`, signed redirect) are
+unaffected — the corpus fetched 800+ replays through them today.
+**Changed:** a game whose payload reports no submission id is attributed to the submission the executor activated
+for that request (`stats.attribution = 'request'`; API-reported ids, when present, still win and a mismatch still
+excludes the game); the replay is downloaded and verified exactly as before (API winner = replay winner, stages,
+runtime, faults); `hasReplay: false` is the transient "replay not yet available" (re-fetched), and only a
+non-completed status is an infrastructure failure. Harvest keeps re-fetching a transient game for 24 hours after
+its request, every cycle for running blocks and every 30 minutes after six tries otherwise (no attempt cap for
+transient errors). What is lost: the opponent's submission id (pair cells now match on opponent team) and the
+observer's ranked-exposure attribution by submission (`ranked_recent.our_submission` is null).
+**Falsifier:** any verified game whose replay-side runtime fingerprint contradicts the attributed submission (the
+A1-Q6 runtime table per submission is the check: a candidate that suddenly "looks like" the control); any
+`attribution = 'api'` game after this date (the server put the ids back — then the mismatch check is live again).
+
+**D-022 addendum (17:25 UTC).** The 16:43 cycle, still on the pre-D-022 code, had excluded the first block
+(`295b7287`, "0 pairs after 0 fills (min 14)") because its games were all fetched but none verified (D-023). Blocks
+excluded by exactly that rule under a running experiment are reinstated at cycle start (`block_reinstated`); the
+block's 10 exact pairs then triggered the first paired fill at 17:29 — control 509479–509488, candidate
+509489–509498, consecutive ids, both arms on the odd parity, the opposite layout family to the first wave — and no
+`unexpected_game_count`. Kazuha-s01 and sakura-s01 passed their dev gates (20/20 verified, no faults) once D-023
+let their games verify; they queue behind yuna-v03 for screening against 10473.
+
+## D-024 — The corpus keeps collecting after its targets are met (28 Sep 19:13 UTC)
+
+**State at 19:06 UTC:** 1,601 replays (1.2 GB) from 68 watched teams in 4.2 hours, ~380 per hour, zero fetch
+errors; 690 ranked, 688 inside autoscrim windows; 41 ladder snapshots; team-game targets 2,400 of 4,860 reached,
+306 Cutlery 68 of 400 (its public history is paged newest-first, so the backfill continues). At that rate the
+targets would all be met in ~6 hours and the collector would then stop, because targets were caps.
+**Changed:** targets are floors. Each pass reserves 10 of its 40 downloads for *refresh*: the six least recently
+checked teams already at target have their newest public page read and any new game fetched; the remaining 30 go
+to the backfill as before. `teams.json` records `checked_at` per team. Cost stays ≤ 40 replays per ~6 minutes.
+**First reading of the decoy question (A2-Q1), with the caveats that n is small and challengers self-select:**
+as the *target* of other teams' unranked tests, rank-1 306 wins 0.53 of 64 games; the other top-six teams win
+0.78–0.88 of theirs (70: 0.84 of 50; 801: 0.78 of 76; 20: 0.88; 46: 0.88; 566: 0.86). 306 lost 1–4 to rank-96 241
+and 3–7 to rank-55 456 between autoscrims. Its four ranked games in the corpus are 2–2. Since D-023 the API gives
+no submission ids and server replays carry no bot names, so a decoy can only be identified behaviourally from the
+replay (runtime and opening fingerprints) — A2-Q1's method must change accordingly.
+
+## D-025 — Corpus throughput: own thread, shared pacing under the key's 120/min limit (28 Sep 19:23 UTC)
+
+The collector had been self-throttled (40 replays per 5-minute pass, inline with the executor loop, re-paging every
+team's public history each pass): ~380 replays an hour. The documented limit is 120 requests a minute per key
+(30 for `/leaderboard` and `/ratings`), 429 + `Retry-After` over it; a replay costs two API requests. Now: the
+corpus runs in its own thread, continuously, through the one paced client every caller shares (0.55 s spacing under
+a lock ≈ 109/min); it stops its pass while an executor cycle runs; any 429 pauses every caller for the server's
+Retry-After (≤ 2 min) and slows the corpus to one pass per 5 min for 10 min; discovery listings are cached 30 min;
+ladder snapshots are written on change. First full pass: 78 replays in 121 s, ~75 API calls/min, no 429 —
+~2,300 replays an hour.
+
+## D-026 — The screen runs on the dev allowance (28 Sep 19:40 UTC)
+
+Team 545 is the organisers' swarm reference bot at rank 13–15 (1972) and 752 a weak one; games against dev teams
+draw on a separate 60-an-hour allowance that no other team competes for and that never touches the field
+allowance or the rating. Our bots win 10–30% against 545. Screen panel is now `[545, 752, 45]`: two dev blocks and
+one field block (45) for calibration of dev-vs-field transfer; block quota is checked and charged on the opponent's
+pool (`pool_of`), so a dev block is never deferred on the field allowance and the field allowance is left to
+confirmations — roughly three times the screening throughput. Falsifier: a candidate that passes the dev screen and
+fails the field confirmation twice in a row means 545 is not a proxy for the band, and the panel goes back.

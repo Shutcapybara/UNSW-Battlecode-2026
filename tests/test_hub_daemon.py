@@ -236,7 +236,8 @@ class CorpusTest(unittest.TestCase):
             def get(self, path):
                 test.calls.append(path)
                 gid = int(path.rsplit('/', 1)[1])
-                return dict(match=dict(id=gid, seriesId=f's{gid // 5}', teamAId=306 if gid % 2 else 62, teamBId=62 if gid % 2 else 306, submissionAId=None, submissionBId=None,
+                team = {1: 306, 2: 62, 3: 999, 4: 998}.get(gid // 100, 306)   # the fixture's game ids are numbered by team
+                return dict(match=dict(id=gid, seriesId=f's{gid // 5}', teamAId=team if gid % 2 else 45, teamBId=45 if gid % 2 else team, submissionAId=None, submissionBId=None,
                                        ranked=True, requestedAt='2026-09-28T14:05:00Z', requestedBy='autoscrim', mapId=9, winner='a', status='completed', seed='x'), mapName='Schooltime')
 
             def download_replay(self, gid, dest):
@@ -274,3 +275,106 @@ class CorpusTest(unittest.TestCase):
         self.assertGreater(r2['fetched'], 0)
         teams = json.loads((self.repo / 'public_replays' / 'corpus' / 'teams.json').read_text())['teams']
         self.assertIn('306', teams)
+        self.assertTrue(teams['306']['checked_at'])
+
+    def test_targets_are_floors_new_games_keep_arriving_after_backfill(self):
+        discovered = {306: [101, 102, 103, 104], 62: [201, 202, 203], 999: [301, 302, 303], 998: [401, 402, 403]}
+        hdr = lambda p: dict(bot_a='A', bot_b='B', map_hash='h', map_name='Schooltime', version=2)
+        with patch.object(self.corpus, 'header', hdr):
+            for _ in range(3):
+                self.corpus.fetch_pass(self.root, self.cfg, self.client, None, discover=lambda tid, n: discovered[tid], max_downloads=40, ladder=self.ladder)
+        teams = json.loads((self.repo / 'public_replays' / 'corpus' / 'teams.json').read_text())['teams']
+        self.assertTrue(all(v['have'] >= v['target'] for v in teams.values()), teams)
+        # every target met: a new game in 306's public history is still fetched (refresh), and the least recently checked team goes first
+        discovered[306] = [107] + discovered[306]
+        seen = []
+        with patch.object(self.corpus, 'header', hdr):
+            r = self.corpus.fetch_pass(self.root, self.cfg, self.client, None, discover=lambda tid, n: seen.append((tid, n)) or discovered[tid], max_downloads=40, ladder=self.ladder)
+        self.assertEqual(r['refreshed'], 1)
+        self.assertIn(107, self.corpus.load_index(self.repo / 'public_replays' / 'corpus'))
+        self.assertTrue(all(n == 25 for _, n in seen))   # refresh discovery reads the newest page only
+        self.assertNotEqual(r.get('note'), 'all targets met')
+
+
+class ThroughputTest(unittest.TestCase):
+    """D-025: the shared paced client, 429 handling, discovery caching and the corpus thread's yielding."""
+
+    def test_client_pacing_is_shared_across_threads_and_a_429_pauses_everyone(self):
+        import threading
+        from tools.hub.api import Client, APIError
+        c = Client(REPO, min_interval=0.05, key='k')
+        stamps = []
+
+        def worker():
+            for _ in range(5):
+                c.pace()
+                stamps.append(time.monotonic())
+        threads = [threading.Thread(target=worker) for _ in range(3)]
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
+        stamps.sort()
+        gaps = [b - a for a, b in zip(stamps, stamps[1:])]
+        self.assertEqual(len(stamps), 15)
+        self.assertGreaterEqual(min(gaps), 0.045)
+        c.note_throttle(1)
+        t0 = time.monotonic()
+        c.pace()
+        self.assertGreaterEqual(time.monotonic() - t0, 0.9)
+        self.assertEqual(c.throttled, 1)
+        # a 429 on a read is retried after the pause; the second answer succeeds
+        answers = [APIError(429, 'slow down', 1), {'ok': True}]
+        c.paused_until = 0
+
+        def fake_request(path, body=None, content_type='application/json', timeout=60):
+            a = answers.pop(0)
+            if isinstance(a, Exception):
+                c.note_throttle(0.2)
+                raise a
+            return a
+        c._request = fake_request
+        self.assertEqual(c.get('/api/v1/x'), {'ok': True})
+
+    def test_corpus_discovery_is_cached_for_backfill_and_fresh_for_refresh(self):
+        from tools.hub import corpus
+        corpus.DISCOVERY.clear()
+        calls = []
+        discover = lambda tid, n: calls.append((tid, n)) or [1, 2, 3]
+        have = {}
+        self.assertEqual(corpus.cached_discover(discover, 306, 420, have, 'backfill'), [1, 2, 3])
+        self.assertEqual(corpus.cached_discover(discover, 306, 420, have, 'backfill'), [1, 2, 3])
+        self.assertEqual(len(calls), 1)                      # second backfill call within the TTL reuses the listing
+        have = {1: 1, 2: 1, 3: 1}
+        corpus.cached_discover(discover, 306, 420, have, 'backfill')
+        self.assertEqual(len(calls), 2)                      # exhausted listing: re-read
+        corpus.cached_discover(discover, 306, 25, have, 'refresh')
+        self.assertEqual(len(calls), 3)                      # a refresh always reads the newest page
+        corpus.DISCOVERY.clear()
+
+    def test_corpus_thread_yields_to_the_executor_and_stops(self):
+        tmp = Path(tempfile.mkdtemp())
+        try:
+            stop = tmp / 'stop'
+            state = {'executor_busy': True}
+            passes = []
+
+            def fake_pass(root, cfg, client, log, should_yield=None):
+                passes.append(should_yield())
+                return dict(fetched=1, throttled=0)
+            with patch.object(actuator.hub_corpus, 'fetch_pass', fake_pass):
+                import threading
+                th = threading.Thread(target=actuator.corpus_thread, args=(tmp, {'corpus': {'interval_seconds': 0.05}}, state, object(), lambda m: None, stop), daemon=True)
+                th.start()
+                time.sleep(0.3)
+                self.assertEqual(passes, [])                  # busy executor: no pass
+                state['executor_busy'] = False
+                time.sleep(1.5)
+                self.assertGreater(len(passes), 1)            # continuous passes once the executor is idle
+                self.assertTrue(all(p is False for p in passes))
+                stop.write_text('')
+                th.join(3)
+                self.assertFalse(th.is_alive())
+                self.assertEqual(state['corpus_last']['fetched'], 1)
+        finally:
+            shutil.rmtree(tmp)

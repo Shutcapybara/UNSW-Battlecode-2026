@@ -833,6 +833,12 @@ def request_batch(conn, root, cfg, snap, client, actor, submission, opponent, ma
 
 
 # ----------------------------------------------------------------------------------------------- experiments
+def pool_of(snap, opponent):
+    """Dev teams draw on the separate dev allowance (D-026: the screen runs on it — 545 is a rank-15 swarm bot nobody
+    else competes for, 752 a weak one — with one field block for calibration)."""
+    return 'dev' if opponent in getattr(snap, 'dev_ids', set()) else 'field'
+
+
 def screen_panel(cfg, conn, snap):
     return list(cfg['panels']['screen'])
 
@@ -1011,15 +1017,16 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
         if missing_arm is None:
             continue
         req_maps = b.get('request_maps') or b['map_ids']
-        if q['field']['available'] < len(req_maps) or (missing_arm != snap.active and in_blackout(cfg, snap.now)):
-            summary['deferred'].append(dict(reason='missing_arm_wait', block=b['id'], arm=missing_arm))
+        pool = pool_of(snap, b['opponent'])
+        if q[pool]['available'] < len(req_maps) or (missing_arm != snap.active and in_blackout(cfg, snap.now)):
+            summary['deferred'].append(dict(reason='missing_arm_wait', block=b['id'], arm=missing_arm, pool=pool))
             continue
         summary['plan'].append(dict(action='missing_arm', block=b['id'], arm=missing_arm))
         if live:
             waves = waves_of_distinct_maps(req_maps)
-            ids = request_batch(conn, root, cfg, snap, client, actor, missing_arm, b['opponent'], waves[0], 'field', b['id'], summary, waves=waves[1:])
+            ids = request_batch(conn, root, cfg, snap, client, actor, missing_arm, b['opponent'], waves[0], pool, b['id'], summary, waves=waves[1:])
             if ids:
-                q['field']['available'] -= len(ids)
+                q[pool]['available'] -= len(ids)
             elif summary.get('request_shape_refused'):
                 conn.execute("UPDATE blocks SET excluded_reason=?, updated_at=? WHERE id=?", ('20-map request refused by the server; re-planned as single-orientation blocks', now_iso(), b['id']))
                 return
@@ -1047,8 +1054,9 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
         # pair by luck, and never when the arm's parity is locked by regular foreign traffic)
         paired_fill = request_shape(conn, params) == 'double'
         arms = list(b.get('order') or [b['control'], b['candidate']]) if paired_fill else [[b['candidate'], b['control']][b['fill_attempts'] % 2]]
-        if q['field']['available'] < len(arms) * len(p['missing_maps']):
-            summary['deferred'].append(dict(reason='quota', block=b['id']))
+        pool = pool_of(snap, b['opponent'])
+        if q[pool]['available'] < len(arms) * len(p['missing_maps']):
+            summary['deferred'].append(dict(reason='quota', block=b['id'], pool=pool))
             continue
         summary['plan'].append(dict(action='fill', block=b['id'], arms=arms, maps=p['missing_maps']))
         if live:
@@ -1056,9 +1064,9 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
             waves = waves_of_distinct_maps(spread(p['missing_maps']))
             for k, arm in enumerate(arms):
                 arm_waves = [aligned(w, k, b['map_ids']) for w in waves]
-                ids = request_batch(conn, root, cfg, snap, client, actor, arm, b['opponent'], arm_waves[0], 'field', b['id'], summary, waves=arm_waves[1:])
+                ids = request_batch(conn, root, cfg, snap, client, actor, arm, b['opponent'], arm_waves[0], pool, b['id'], summary, waves=arm_waves[1:])
                 if ids:
-                    q['field']['available'] -= len(ids)
+                    q[pool]['available'] -= len(ids)
     # 3b. the next block: both arms in the same cycle or not at all
     d = decide(blocks, results, params)
     phase = 'confirm' if d['verdict'] == 'confirming' else 'screen' if d['verdict'] == 'screening' else None
@@ -1071,13 +1079,16 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
     panel = loads(e['confirmation_opponents'] if phase == 'confirm' else e['screen_opponents'], [])
     used = {b['opponent'] for b in current}
     excluded = {r['team_id'] for r in rows(conn, 'SELECT team_id FROM opponent_exclusions WHERE until>?', (snap.now,))}
-    opponent = next((o for o in panel if o not in used and o not in excluded), None)
-    if opponent is None:
+    candidates_ = [o for o in panel if o not in used and o not in excluded]
+    if not candidates_:
         summary['attention'].append(dict(kind='panel_exhausted', experiment=e['id'], phase=phase))
         return
-    if q['field']['available'] < 2 * maps_n:
-        summary['deferred'].append(dict(reason='quota_for_both_arms', experiment=e['id'], phase=phase, need=2 * maps_n, have=q['field']['available']))
+    opponent = next((o for o in candidates_ if q[pool_of(snap, o)]['available'] >= 2 * maps_n), None)   # any panel opponent whose allowance has room
+    if opponent is None:
+        o = candidates_[0]
+        summary['deferred'].append(dict(reason='quota_for_both_arms', experiment=e['id'], phase=phase, need=2 * maps_n, have=q[pool_of(snap, o)]['available'], pool=pool_of(snap, o)))
         return
+    pool = pool_of(snap, opponent)
     if snap.active != e['control_submission']:
         return
     if in_blackout(cfg, snap.now):
@@ -1091,9 +1102,9 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
         b = new_block(conn, e, phase, opponent, params)
         waves = waves_of_distinct_maps(b['request_maps'])
         for sid in b['order']:
-            ids = request_batch(conn, root, cfg, snap, client, actor, sid, opponent, waves[0], 'field', b['id'], summary, waves=waves[1:])
+            ids = request_batch(conn, root, cfg, snap, client, actor, sid, opponent, waves[0], pool, b['id'], summary, waves=waves[1:])
             if ids:
-                q['field']['available'] -= len(ids)
+                q[pool]['available'] -= len(ids)
             elif summary.get('request_shape_refused'):
                 conn.execute("UPDATE blocks SET excluded_reason=?, updated_at=? WHERE id=?", ('20-map request refused by the server; re-planned as single-orientation blocks', now_iso(), b['id']))
                 return

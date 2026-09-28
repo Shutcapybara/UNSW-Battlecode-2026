@@ -1,0 +1,201 @@
+{
+ "v0": {
+  "corpse_drop_shortfall": 1.0,
+  "final_matches_result": 1.0,
+  "length_conservation": 1.0,
+  "sprint_paid_within_bounds": 1.0,
+  "territory_sums_to_one": 1.0
+ },
+ "v0_n": 720,
+ "probe": "4/4",
+ "probe_detail": [
+  {
+   "map": "Trophy",
+   "rounds": 143,
+   "split_rounds": [
+    40,
+    120,
+    140
+   ],
+   "split_residue": [
+    0
+   ],
+   "checks": {
+    "A rays == turns that survived the move": true,
+    "A north share of head rays == 1": true,
+    "A some refraction (rays into own neck)": true,
+    "A no splits": true,
+    "A no sprints": true,
+    "B no rays": true,
+    "B child length always 2": true,
+    "B splits only on one residue mod 20": true
+   },
+   "passed": true
+  },
+  {
+   "map": "Default",
+   "rounds": 243,
+   "split_rounds": [
+    0,
+    60,
+    80,
+    120,
+    140,
+    160
+   ],
+   "split_residue": [
+    0
+   ],
+   "checks": {
+    "A rays == turns that survived the move": true,
+    "A north share of head rays == 1": true,
+    "A some refraction (rays into own neck)": true,
+    "A no splits": true,
+    "A no sprints": true,
+    "B no rays": true,
+    "B child length always 2": true,
+    "B splits only on one residue mod 20": true
+   },
+   "passed": true
+  },
+  {
+   "map": "Portals",
+   "rounds": 17,
+   "split_rounds": [],
+   "split_residue": [],
+   "checks": {
+    "A rays == turns that survived the move": true,
+    "A north share of head rays == 1": true,
+    "A some refraction (rays into own neck)": true,
+    "A no splits": true,
+    "A no sprints": true,
+    "B no rays": true,
+    "B child length always 2": true,
+    "B splits only on one residue mod 20": true
+   },
+   "passed": true
+  },
+  {
+   "map": "Schooltime",
+   "rounds": 257,
+   "split_rounds": [
+    0,
+    60,
+    120,
+    160,
+    180,
+    200
+   ],
+   "split_residue": [
+    0
+   ],
+   "checks": {
+    "A rays == turns that survived the move": true,
+    "A north share of head rays == 1": true,
+    "A some refraction (rays into own neck)": true,
+    "A no splits": true,
+    "A no sprints": true,
+    "B no rays": true,
+    "B child length always 2": true,
+    "B splits only on one residue mod 20": true
+   },
+   "passed": true
+  }
+ ],
+ "epg_calibration": [
+  {
+   "tau": 1,
+   "mean_within_map_r": 0.6236998705935578
+  },
+  {
+   "tau": 2,
+   "mean_within_map_r": 0.6637573742510046
+  },
+  {
+   "tau": 4,
+   "mean_within_map_r": 0.6759186186752094
+  }
+ ],
+ "territory_vs_next_bed_share_r": {
+  "terr": 0.7214376325897209,
+  "exp": 0.7256784976638966,
+  "cells": 0.7107356774694231
+ },
+ "enclosure_hazard": [
+  {
+   "reach5": "(-1, 2]",
+   "exposure": 530885,
+   "deaths": 180948,
+   "per1k": 340.84217862625616
+  },
+  {
+   "reach5": "(2, 5]",
+   "exposure": 443790,
+   "deaths": 8266,
+   "per1k": 18.62592667703193
+  },
+  {
+   "reach5": "(5, 10]",
+   "exposure": 930535,
+   "deaths": 14670,
+   "per1k": 15.765124363941174
+  },
+  {
+   "reach5": "(10, 15]",
+   "exposure": 949175,
+   "deaths": 12837,
+   "per1k": 13.524376432164775
+  },
+  {
+   "reach5": "(15, 20]",
+   "exposure": 996450,
+   "deaths": 10446,
+   "per1k": 10.483215414722265
+  },
+  {
+   "reach5": "(20, 30]",
+   "exposure": 2016110,
+   "deaths": 15395,
+   "per1k": 7.635992083765271
+  },
+  {
+   "reach5": "(30, 45]",
+   "exposure": 2385110,
+   "deaths": 12387,
+   "per1k": 5.193471160659257
+  },
+  {
+   "reach5": "(45, 61]",
+   "exposure": 1019045,
+   "deaths": 2579,
+   "per1k": 2.530800896918193
+  }
+ ],
+ "density_vs_eats_spearman": 0.44372582147755824,
+ "phase_agreement": {
+  "t1_within15": 0.4588068181818182,
+  "t2_within15": 0.11723329425556858,
+  "t1_cp_hmm": 0.4714285714285714,
+  "t2_cp_hmm": 0.2980132450331126,
+  "t2_missing": {
+   "rule": 0.22013888888888888,
+   "hmm": 0.36875
+  },
+  "k_distribution": {
+   "0.0": 881,
+   "1.0": 471,
+   "2.0": 66,
+   "3.0": 4
+  },
+  "labels": {
+   "opening-crown-crown": 322,
+   "opening-economy-crown": 211,
+   "opening-economy-economy": 160,
+   "opening-opening-crown": 152,
+   "opening-economy-opening": 104,
+   "opening-opening-opening": 79,
+   "economy-economy-economy": 77,
+   "economy-economy-crown": 75
+  }
+ }
+}
