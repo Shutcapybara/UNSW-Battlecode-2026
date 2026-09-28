@@ -45,7 +45,8 @@ def key(a, b, board):
 
 def load_config(path):
     config = tomllib.loads(path.read_text())
-    extra = set(config) - {'bots', 'maps', 'references', 'pairing', 'run', 'map_distribution', 'context_manifest'}
+    extra = set(config) - {'bots', 'maps', 'references', 'pairing', 'run', 'map_distribution',
+                           'context_manifest', 'map_name_policy', 'source_aliases'}
     if extra:
         raise ValueError(f'Unknown configuration keys: {sorted(extra)}')
     # Reuse the comparison runner's path and execution-setting validation.
@@ -55,6 +56,29 @@ def load_config(path):
         text += '\n[run]\n' + '\n'.join(f'{k} = {json.dumps(v)}' for k, v in standard.get('run', {}).items())
         handle.write(text); handle.flush()
         bots, maps, settings = read_config(Path(handle.name), path.parent / '__no_candidate__')
+    map_name_policy = config.get('map_name_policy', 'stem')
+    if map_name_policy not in ('stem', 'maps_relative'):
+        raise ValueError('map_name_policy must be "stem" or "maps_relative"')
+    if map_name_policy == 'maps_relative':
+        map_root = (ROOT / 'maps').resolve()
+        named_maps = {}
+        for source in maps.values():
+            try:
+                name = source.resolve().relative_to(map_root).with_suffix('').as_posix()
+            except ValueError:
+                raise ValueError('maps_relative requires every map to be under maps/') from None
+            if name in named_maps:
+                raise ValueError(f'Duplicate map path: {name}')
+            named_maps[name] = source
+        maps = named_maps
+    source_aliases = config.get('source_aliases', {})
+    if (not isinstance(source_aliases, dict) or
+            any(not isinstance(source, str) or len(source) != 64 or
+                any(ch not in '0123456789abcdef' for ch in source) or
+                not isinstance(effective, str) or len(effective) != 64 or
+                any(ch not in '0123456789abcdef' for ch in effective)
+                for source, effective in source_aliases.items())):
+        raise ValueError('source_aliases must map lowercase SHA-256 fingerprints to fingerprints')
     if set(settings['sides']) != {'A', 'B'}:
         raise ValueError('Benchmarks require both sides')
     references = config.get('references', [])
@@ -225,7 +249,7 @@ def prepare(config):
         mode='sandbox' if settings['sandbox'] else 'native', runner=executable,
         runner_version=subprocess.check_output([executable,'--version'],text=True).strip(),
         hashes={}, effective_hashes={}, map_hashes={}, map_weights=weights,
-        map_weight_policy=weight_policy)
+        map_weight_policy=weight_policy, source_aliases=spec.get('source_aliases', {}))
     if context is not None:
         manifest['rating_context'] = dict(manifest=str(context_path), sha256=sha(context_path),
             effective_hashes={n: h for n, h in with_rating_context(context)['effective_hashes'].items()
@@ -241,7 +265,7 @@ def prepare(config):
         manifest['effective_hashes'][name]=register_source(before,target)
     (out/'sources/maps').mkdir(parents=True)
     for name, source in maps.items():
-        target=out/'sources/maps'/(name+'.map'); before=sha(source)
+        target=out/'sources/maps'/(name+'.map'); target.parent.mkdir(parents=True, exist_ok=True); before=sha(source)
         shutil.copy2(source,target)
         if sha(target)!=before or sha(source)!=before:
             raise ValueError(f'Map changed during snapshot: {name}')
@@ -253,7 +277,14 @@ def prepare(config):
         shutil.copy2(weight_policy['manifest'], out/'map-suite-manifest.json')
     shutil.copy2(config,out/'benchmark.toml')
     save(out/'manifest.json',manifest); save(out/'import_audit.json',audit)
-    source_aliases=aliases(); save(out/'aliases.json',source_aliases)
+    source_aliases=aliases()
+    for source, effective in manifest['source_aliases'].items():
+        if effective not in manifest['effective_hashes'].values():
+            raise ValueError(f'Source alias target is not in this bot roster: {source}')
+        if source in source_aliases and source_aliases[source] != effective:
+            raise ValueError(f'Conflicting source alias: {source}')
+        source_aliases[source] = effective
+    save(out/'aliases.json',source_aliases)
     rows=read_parquet(ROOT/'game_stats.parquet'); write_parquet(out/'initial_games.parquet',rows)
     queue=[] if pairing=='adaptive' else ordered_gaps(manifest,observed(manifest,rows,source_aliases))
     save(out/'plan.json',queue)
@@ -357,7 +388,8 @@ def run(out, limit=None, jobs=None, replays=True, retry_errors=False):
                                 label=digest(f)[:20]
                                 future=pool.submit(play,manifest['runner'],out/'sources/maps'/(board+'.map'),
                                     out/'sources/bots'/a,out/'sources/bots'/b,out/'games',label,
-                                    settings['timeout_seconds'],replays,workers,settings['sandbox'])
+                                    settings['timeout_seconds'],replays,workers,settings['sandbox'],
+                                    board_id=board)
                                 futures[future]=f; submitted+=1
                             if stopped:
                                 workers.cancel(); exhausted=True
