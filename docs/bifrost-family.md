@@ -167,67 +167,58 @@ This provides a stable baseline for the candidate results on these fixtures.
   4–8 against V01. On the 48 shared external fixtures, V01 scored 43–5 and V20
   scored 33–15, with no gains and 10 regressions. The narrow spawn-site room
   cost did not improve the reported congestion case. See
-  [`experiment_data/bifrost-v20-child-site-room_20260928012909413185`](../experiment_data/bifrost-v20-child-site-room_20260928012909413185/summary.md).
+  `experiment_data/bifrost-v20-child-site-room_20260928012909413185` (`../experiment_data/bifrost-v20-child-site-room_20260928012909413185/summary.md`).
 - **V21 — route-based pearl ownership:** rejected. It scored 36–24 overall
   and went 3–9 against V01. On the 48 shared external fixtures, V01 scored
   43–5 and V21 scored 33–15, with three gains and 13 regressions. Its compact
   maps aggregated to 20–4 versus V01's 19–5, while larger maps lost broadly.
   See
-  [`experiment_data/bifrost-v21-route-pearl-ownership_20260928013455638120`](../experiment_data/bifrost-v21-route-pearl-ownership_20260928013455638120/summary.md).
+  `experiment_data/bifrost-v21-route-pearl-ownership_20260928013455638120` (`../experiment_data/bifrost-v21-route-pearl-ownership_20260928013455638120/summary.md`).
 - **V22 — selective route-based ownership:** rejected. It scored 38–22
   overall and went 3–9 against V01. On the shared external fixtures, V01 scored
   43–5 and V22 scored 35–13 (three gains, 11 regressions). Devil and Trophy
   improved, but the broad route correction did not yield a net gain. See
-  [`experiment_data/bifrost-v22-selective-route-ownership_20260928013945059841`](../experiment_data/bifrost-v22-selective-route-ownership_20260928013945059841/summary.md).
+  `experiment_data/bifrost-v22-selective-route-ownership_20260928013945059841` (`../experiment_data/bifrost-v22-selective-route-ownership_20260928013945059841/summary.md`).
 - **V23 — resource-only route ownership:** rejected. It scored 43–17 overall
   (7–5 head-to-head with V01). On the 48 external fixtures it scored 36–12
   against the V01 control's 43–5: three fixture gains and ten regressions.
   Devil and Trophy each improved by one result, while Queen of Spades fell
   from 8–0 to 3–5; Autarky and Default also regressed. The losses outside the
   route-enabled compact maps are not evidence of a route-rule effect because
-  native runs do not seed bot random streams. See the [V23 report]
-  (../experiment_data/bifrost-v23-resource-route-ownership_20260928014715138158/summary.md)
-  and [per-map summary]
-  (../experiment_data/bifrost-v23-resource-route-ownership_20260928014715138158/summary_by_map.csv).
+  native runs do not seed bot random streams. See the V23 report (`../experiment_data/bifrost-v23-resource-route-ownership_20260928014715138158/summary.md`)
+  and per-map summary (`../experiment_data/bifrost-v23-resource-route-ownership_20260928014715138158/summary_by_map.csv`).
 
 - **V24 — pearl-only route ownership:** rejected. It scored 42–18 overall and
   went 7–5 against V01. On the 48 external fixtures it scored 35–13 against
   V01's 43–5, with two gains and ten regressions. It tied V23 on Devil and
   Dilemma, lost one Trophy result, and did not improve the broader panel.
   Excluding predicted beds therefore removed no clear regressions and weakened
-  the Trophy result. See the [V24 report]
-  (../experiment_data/bifrost-v24-pearl-route-ownership_20260928021215101985/summary.md)
-  and [per-map summary]
-  (../experiment_data/bifrost-v24-pearl-route-ownership_20260928021215101985/summary_by_map.csv).
+  the Trophy result. See the V24 report (`../experiment_data/bifrost-v24-pearl-route-ownership_20260928021215101985/summary.md`)
+  and per-map summary (`../experiment_data/bifrost-v24-pearl-route-ownership_20260928021215101985/summary_by_map.csv`).
 - **V25 — wider route coverage:** rejected. It scored 41–19 overall and went
   7–5 against V01. On the 48 external fixtures it scored 34–14 against V01's
   43–5, with one paired gain and ten regressions. Devil returned to the
   control's 5–3 and Trophy stayed even at 7–1; doubling the route cap did not
-  improve the compact maps. See the [V25 report]
-  (../experiment_data/bifrost-v25-wider-route-coverage_20260928021724221846/summary.md)
-  and [per-map summary]
-  (../experiment_data/bifrost-v25-wider-route-coverage_20260928021724221846/summary_by_map.csv).
+  improve the compact maps. See the V25 report (`../experiment_data/bifrost-v25-wider-route-coverage_20260928021724221846/summary.md`)
+  and per-map summary (`../experiment_data/bifrost-v25-wider-route-coverage_20260928021724221846/summary_by_map.csv`).
 - **V23 route-disabled placebo:** a same-folder native screen with
   `ally_route_count=0` scored 33–15 on the 48 external fixtures. Against it,
   V23's route-enabled screen scored 36–12: four gains, one regression, and no
   changed outcomes on Autarky, Default, or Queen of Spades. Devil gained one,
   Dilemma gained two net, and Trophy gained one. This isolates the route rule
   within the stripped V23 profile; it does not establish the same effect with
-  V01's omitted base tuning. See the [placebo report]
-  (../experiment_data/bifrost-v23-resource-route-ownership_20260928022855213207/summary.md).
+  V01's omitted base tuning. See the placebo report (`../experiment_data/bifrost-v23-resource-route-ownership_20260928022855213207/summary.md`).
 - **V26 — tuned resource-route ownership:** rejected. This is the first clean
   delta from V01: all 13 V01 overrides are retained, with only V23's route
   ownership settings added. It scored 46–14 overall (7–5 against V01) and
   39–9 on the 48 external fixtures, versus V01's 43–5. It gained one fixture
   and regressed on five; Dilemma fell to 4–4 and Devil to 4–4, while the other
   four maps matched the V01 control. The route rule does not transfer as a net
-  gain with the full V01 tuning. See the [V26 report]
-  (../experiment_data/bifrost-v26-tuned-route-ownership_20260928023520192209/summary.md)
-  and [per-map summary]
-  (../experiment_data/bifrost-v26-tuned-route-ownership_20260928023520192209/summary_by_map.csv).
+  gain with the full V01 tuning. See the V26 report (`../experiment_data/bifrost-v26-tuned-route-ownership_20260928023520192209/summary.md`)
+  and per-map summary (`../experiment_data/bifrost-v26-tuned-route-ownership_20260928023520192209/summary_by_map.csv`).
 
 The seeded sandbox control experiment at
-[`experiment_data/bifrost-v01-portal-memory_20260928015543201069`](../experiment_data/bifrost-v01-portal-memory_20260928015543201069/summary.md)
+`experiment_data/bifrost-v01-portal-memory_20260928015543201069` (`../experiment_data/bifrost-v01-portal-memory_20260928015543201069/summary.md`)
 was interrupted after 24/48 fixtures: active 500-round games estimated 13–26
 minutes each under judge metering, exceeding the runner's 600-second per-game
 timeout. That partial run is not used as benchmark evidence.
@@ -236,18 +227,14 @@ timeout. That partial run is not used as benchmark evidence.
   V01 overrides and added V16's capped penalty for repeated visits to empty,
   uncontested cells. It scored 48–12 overall (6–6 against V01) and 42–6 on the
   48 external fixtures versus V01's 43–5, with zero gains and one regression
-  on Dilemma. Devil matched the control at 5–3. See the [V27 report]
-  (../experiment_data/bifrost-v27-tuned-empty-repeat_20260928034315709619/summary.md)
-  and [per-map summary]
-  (../experiment_data/bifrost-v27-tuned-empty-repeat_20260928034315709619/summary_by_map.csv).
+  on Dilemma. Devil matched the control at 5–3. See the V27 report (`../experiment_data/bifrost-v27-tuned-empty-repeat_20260928034315709619/summary.md`)
+  and per-map summary (`../experiment_data/bifrost-v27-tuned-empty-repeat_20260928034315709619/summary_by_map.csv`).
 - **V28 — tuned Trophy sector spread:** not promoted. It retained all 13 V01
   overrides and limited V08's identity-based opening bonus to the unique
   625-cell Trophy map. It scored 50–10 overall (7–5 against V01) and matched
   the V01 control on all 48 external fixtures at 43–5. The two direct Trophy
-  games were wins, but no external result changed. See the [V28 report]
-  (../experiment_data/bifrost-v28-tuned-trophy-sector_20260928034815674521/summary.md)
-  and [per-map summary]
-  (../experiment_data/bifrost-v28-tuned-trophy-sector_20260928034815674521/summary_by_map.csv).
+  games were wins, but no external result changed. See the V28 report (`../experiment_data/bifrost-v28-tuned-trophy-sector_20260928034815674521/summary.md`)
+  and per-map summary (`../experiment_data/bifrost-v28-tuned-trophy-sector_20260928034815674521/summary_by_map.csv`).
 - **V29 — tuned net-growth farms:** rejected. It retained all 13 V01
   overrides and added V04's rule requiring a pocket farm to yield at least one
   net segment after the escape split. The 60-game native screen scored 47–13
@@ -258,10 +245,8 @@ timeout. That partial run is not used as benchmark evidence.
   Dilemma (6–2 versus 7–1), and once on Default (7–1 versus 8–0); Queen of
   Spades and Trophy tied the control. Across the targeted Autarky and Dilemma
   maps together, V29 scored 12–4 versus the control's 15–1, so the change is
-  not promoted. See the [V29 report]
-  (../experiment_data/bifrost-v29-tuned-net-growth-farms_20260928050537354662/summary.md)
-  and [per-map summary]
-  (../experiment_data/bifrost-v29-tuned-net-growth-farms_20260928050537354662/summary_by_map.csv).
+  not promoted. See the V29 report (`../experiment_data/bifrost-v29-tuned-net-growth-farms_20260928050537354662/summary.md`)
+  and per-map summary (`../experiment_data/bifrost-v29-tuned-net-growth-farms_20260928050537354662/summary_by_map.csv`).
 
 **Strongest tested candidate remains V01.** Its repeated focused control scored
 43–5 on the same 48 external fixtures. V28 tied those external outcomes exactly

@@ -13,7 +13,7 @@ and four regressions. Devil improved by one result, while Autarky regressed by
 two, Dilemma by one and Default by one. Queen of Spades and Trophy matched the
 control. The net-growth farm rule was rejected and is not the strongest family.
 
-See the [benchmark report](../../experiment_data/bifrost-v29-tuned-net-growth-farms_20260928050537354662/summary.md),
-[per-map summary](../../experiment_data/bifrost-v29-tuned-net-growth-farms_20260928050537354662/summary_by_map.csv),
+See the benchmark report (`../../experiment_data/bifrost-v29-tuned-net-growth-farms_20260928050537354662/summary.md`),
+per-map summary (`../../experiment_data/bifrost-v29-tuned-net-growth-farms_20260928050537354662/summary_by_map.csv`),
 and [family notes](../../docs/bifrost-family.md). The strongest tested
 candidate remains V01; V28 tied its external panel but did not change outcomes.

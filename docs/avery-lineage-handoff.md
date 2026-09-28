@@ -47,8 +47,7 @@ cross-version narrative, and what to do next.
   run id is in the run's `manifest.json`); never `git add` other lineages'
   directories, shared config files, or the root attachment copies
   (`avery-lineage.txt`, `bahamut-experiment.txt`).
-- Root `avery-lineage.txt` / `bahamut-experiment.txt` are uncommitted
-  attachment copies for context; the canonical lineage doc is THIS file.
+- The cycle-1 text snapshot is preserved in [`handoffs/avery-lineage-handoff.txt`](handoffs/avery-lineage-handoff.txt); this page tracks the current Avery lineage.
 
 ## Version ladder (all native, both sides, 11 maps unless noted)
 
@@ -201,6 +200,6 @@ most bots; hydra-v07 dominates it).
   contributions in `game_stats/runs/`.
 - Git: v06 landed in commit `4ea743b`; v07–v12 + this update in cycle-2
   commits (see log).
-- Task brief copy: `bahamut-experiment-handoff.txt` (repo root).
+- Task brief snapshot: [`handoffs/bahamut-experiment-handoff.txt`](handoffs/bahamut-experiment-handoff.txt); current shared workflow: [`BAHAMUT_HANDOFF.md`](BAHAMUT_HANDOFF.md).
 - Field context: `docs/ACTIVE.md` (cycle-0 gauntlet definition and
   cross-line results — maintained by the cycle unifier, do not edit).

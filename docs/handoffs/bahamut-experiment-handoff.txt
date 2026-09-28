@@ -1,4 +1,6 @@
-# Bahamut experimentation handoff
+# Bahamut experimentation handoff — historical snapshot
+
+> This task-brief snapshot is retained for context. See the maintained [Bahamut handoff](../BAHAMUT_HANDOFF.md) for the current workflow.
 
 ## Task and base
 
@@ -8,10 +10,10 @@ and communication; compare versions using the shared statistics tools. Simple
 hand-tuned designs and small learned models are both valid. The aim is useful
 experiments and stronger bots, not implementing every idea below.
 
-**Start from [`examples/bahamut-scaffold/`](../examples/bahamut-scaffold/)**:
-[`main.py`](../examples/bahamut-scaffold/main.py),
-[`protocol.py`](../examples/bahamut-scaffold/protocol.py), and
-[`bot.toml`](../examples/bahamut-scaffold/bot.toml).
+**Start from [`examples/bahamut-scaffold/`](../../examples/bahamut-scaffold/)**:
+[`main.py`](../../examples/bahamut-scaffold/main.py),
+[`protocol.py`](../../examples/bahamut-scaffold/protocol.py), and
+[`bot.toml`](../../examples/bahamut-scaffold/bot.toml).
 This is the newer scaffold with separate intent and engine-command sets.
 `bots/bahamut-scaffold/` is the older alternative; do not accidentally use it as
 this brief's base. Both are placeholders, not meaningful benchmark opponents.
@@ -24,7 +26,7 @@ bots freely; make your changes in your own lineage rather than overwriting
 another team's work or the common scaffold.
 
 This document and the current user prompt define this experiment. Older
-[`HANDOFF.md`](HANDOFF.md), [`ACTIVE.md`](ACTIVE.md), and lineage reports provide
+[`HANDOFF.md`](../HANDOFF.md), [`ACTIVE.md`](../ACTIVE.md), and lineage reports provide
 historical context; their cycle assignments, rankings and proposals are not new
 instructions or proof of current performance.
 
@@ -176,8 +178,8 @@ avoidance is not a prerequisite for a useful first bot.
 
 ## Comparison and shared statistics
 
-Use [`tools/compare_bot.py`](../tools/compare_bot.py), with
-[`comparison.toml`](../comparison.toml) as the default roster and editable example.
+Use [`tools/compare_bot.py`](../../tools/compare_bot.py), with
+[`comparison.toml`](../../comparison.toml) as the default roster and editable example.
 It lists bot directories, map files/directories and run settings. Paths resolve
 relative to the TOML. Defaults include five cross-line opponents, all bundled
 maps, both sides, four workers and native execution. The candidate is skipped
@@ -205,7 +207,7 @@ attribution and a space-control proxy. That proxy assigns tiles to the nearest
 living head by terrain-only path distance, including portals and wrapping;
 it ignores bodies, speed and tactical safety. Suicide labels do not identify
 deliberate feeding. Use these diagnostics to explain wins/regressions, not as
-unquestioned rewards. Details: [comparison guide](comparisons.md).
+unquestioned rewards. Details: [comparison guide](../benchmarking.md).
 
 Completed games automatically enter root `game_stats.parquet`, one row per game,
 with both bot/source identities, map, side, runtime, outcome and W/L/D flags.
@@ -221,11 +223,11 @@ uv run tools/game_stats.py rebuild
 uv run tools/game_stats.py summary --output /tmp/bot-pairs.csv
 ```
 
-[`tools/game_stats.py`](../tools/game_stats.py) also supports `import` of existing
+[`tools/game_stats.py`](../../tools/game_stats.py) also supports `import` of existing
 comparison directories and `merge` of compatible Parquets. It rejects conflicting
 copies rather than overwriting them. Future runners can use `make_record()` and
 `publish_games()`; other historical runners are not automatically connected.
-See [ledger schema/API and merge resolution](../game_stats/README.md).
+See [ledger schema/API and merge resolution](../../game_stats/README.md).
 
 ## Iteration and handoff expectations
 
