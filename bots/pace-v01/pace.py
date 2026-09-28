@@ -141,7 +141,7 @@ def update():
         P["v_pearl"] = BASE["v_pearl"] * f
         P["v_bed"] = BASE["v_bed"] * f
         P["v_mem"] = BASE["v_mem"] * f
-        P["pace_sprint_pearl"] = 1 if (tg > 0.15 and r < 300) else 0
+        P["pace_sprint_pearl"] = 1 if (tg > P["pace_sprint_tg"] and r < 300) else 0
     else:
         P["v_pearl"] = BASE["v_pearl"]
         P["v_bed"] = BASE["v_bed"]

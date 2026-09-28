@@ -123,7 +123,7 @@ def main():
             ws = statistics.mean(score(r) for r in sel)
             onpace = statistics.mean(1.0 if r["mine"]["u100"] >=
                                      0.9 * TARGET[cls]["u100"] else 0.0 for r in sel)
-            surv = [statistics.mean(1.0 if r["mine"]["u%d" % st] > 0 else 0.0
+            surv = [statistics.mean(1.0 if r["mine"].get("u%d" % st, 1) > 0 else 0.0
                                     for r in sel) for st in (100, 250, 400)]
             print("  %-8s n=%-3d ws %.3f onpace@r100 %.2f | u25 %-8s u50 %-8s u100 %-8s "
                   "t250 %-8s | surv r100/250/400 %.2f/%.2f/%.2f | d_wall+self/1k %s "
@@ -143,11 +143,13 @@ def main():
     X, Y, M = [], [], []
     for r in rows:
         m, o = r["mine"], r["theirs"]
-        x = [m["u25"] - o["u25"], m["u50"] - o["u50"], m["u100"] - o["u100"],
-             m["t250"] - o["t250"], m["l400"] - o["l400"],
-             m["d_wall"], m["d_self"], m["d_body"], m["d_h2h"],
-             m["splits"] / 100.0, m["newborn10"] / 10.0,
-             m["portal_steps"] / 100.0, m["sonar"] / max(1, m["turns"]) / 10.0]
+        x = [m.get("u25", 0) - o.get("u25", 0), m.get("u50", 0) - o.get("u50", 0),
+             m.get("u100", 0) - o.get("u100", 0),
+             m.get("t250", 0) - o.get("t250", 0), m.get("l400", 0) - o.get("l400", 0),
+             m.get("d_wall", 0), m.get("d_self", 0), m.get("d_body", 0), m.get("d_h2h", 0),
+             m.get("splits", 0) / 100.0, m.get("newborn10", 0) / 10.0,
+             m.get("portal_steps", 0) / 100.0,
+             m.get("sonar", 0) / max(1, m.get("turns", 1)) / 10.0]
         X.append(x)
         Y.append(1.0 if r["res"] == "W" else 0.0 if r["res"] == "L" else 0.5)
         M.append(r["map"])

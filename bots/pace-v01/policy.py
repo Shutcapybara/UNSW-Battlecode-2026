@@ -266,21 +266,51 @@ def candidates(body, sprint3_limit=None):
         if w.cheb(ec, w.HEAD) <= 4:
             near_threat = True
             break
-    pace_pearl = False
+    pace_pearl = None
     if not near_threat and P.get("pace_sprint_pearl") and L <= P["pace_sprint_len"]:
+        bd = 3
         for c, r in w.pearls.items():
-            if r == w.RND and w.tdist(c, w.HEAD) <= 2:
-                pace_pearl = True
-                break
-    if not near_threat and not pace_pearl:
+            if r == w.RND:
+                dd = w.tdist(c, w.HEAD)
+                if dd <= 2 and dd < bd:
+                    bd = dd
+                    pace_pearl = c
+    if not near_threat and pace_pearl is None:
+        return out
+    if pace_pearl is not None:
+        # enumerate only sprints whose first step approaches the pearl (CPU)
+        dx = (pace_pearl % w.W) - (w.HEAD % w.W)
+        if dx * 2 > w.W:
+            dx -= w.W
+        elif dx * 2 < -w.W:
+            dx += w.W
+        dy = (pace_pearl // w.W) - (w.HEAD // w.W)
+        if dy * 2 > w.H:
+            dy -= w.H
+        elif dy * 2 < -w.H:
+            dy += w.H
+        dirs = []
+        if dx > 0:
+            dirs.append(1)
+        elif dx < 0:
+            dirs.append(3)
+        if dy > 0:
+            dirs.append(2)
+        elif dy < 0:
+            dirs.append(0)
+        if not dirs:
+            return out
+        for d1 in dirs:
+            for d2 in range(4):
+                if d2 != (d1 + 2) % 4:
+                    out.append([d1, d2])
         return out
     for d1 in range(4):
         for d2 in range(4):
             if d2 == (d1 + 2) % 4:
                 continue
             out.append([d1, d2])
-            if near_threat and 4 <= L < sprint3_limit:
-                # 3-step sprints stay threat-only: the pace arm pays CPU for them
+            if 4 <= L < sprint3_limit:
                 for d3 in range(4):
                     if d3 == (d2 + 2) % 4:
                         continue

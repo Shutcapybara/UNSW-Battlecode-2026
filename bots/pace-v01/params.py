@@ -175,7 +175,8 @@ P = {
     "pace_t_band": 0.05,       # |total gap| fraction that counts as off pace
     "pace_ewma": 0.25,         # smoothing of the team-total estimate
     "pace_sprint_pearl": 0,    # set by the controller: 2-step sprints at confirmed pearls
-    "pace_sprint_len": 8,      # ... only short dragons (flood cost scales with body)
+    "pace_sprint_len": 6,      # ... only short dragons (flood cost scales with body)
+    "pace_sprint_tg": 0.25,    # ... and only at a deep total deficit (slithery p99 margin)
 }
 
 try:  # experiment variants drop an override.py next to this file

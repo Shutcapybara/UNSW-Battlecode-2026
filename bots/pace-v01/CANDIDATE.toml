@@ -15,4 +15,4 @@ markers = [["ACT:pace+", 0, 100, 10], ["ACT:pace-", 0, 500, 1]]   # tag, round l
 
 [local_evidence]
 refs = ["build/pace-panel/results.jsonl", "docs/findings/2026-09-29-pace-v01.md"]
-summary = "filled after the panel"
+summary = "1080 seeded games (unswbc 1.2.2, seeds 1-3, ten live maps, both sides, six band-class opponents). Paired vs host (chaewon-y04-probe): -0.017 overall (49/56/255, p 0.56); compact +0.052, open -0.062. Pace NOT attained (21-45% of games on pace at r100, attainment deltas ~0 vs host): the material deficit against band opponents is death-limited, not production-limited. Constraints-off arm: -0.200 with zero pace gain. Zero runtime faults; max < 80M on all eight probe cells, p99 < 60M on 7/8 (Slithery 60.1-60.9M vs 58.6M host baseline)."
