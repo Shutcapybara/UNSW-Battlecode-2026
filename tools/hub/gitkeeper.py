@@ -174,10 +174,14 @@ def sync(repo, root, policy, actor='hub/gitkeeper', dry_run=False, now=None):
         ahead = git(repo, 'rev-list', '--count', f'origin/{policy["branch"]}..HEAD').stdout.strip()
         report['behind'], report['ahead'] = int(behind or 0), int(ahead or 0)
         if report['behind'] and not dry_run:
-            dirty = git(repo, '--no-optional-locks', 'status', '--porcelain=v1', '--untracked-files=no').stdout.strip()
-            if dirty:
-                report['attention'].append('origin is ahead but tracked files are modified and not quiet; merge deferred')
+            dirty = [line[3:].strip() for line in git(repo, '--no-optional-locks', 'status', '--porcelain=v1', '--untracked-files=no').stdout.splitlines() if line.strip()]
+            incoming = set(git(repo, '--no-optional-locks', 'diff', '--name-only', f'HEAD...origin/{policy["branch"]}').stdout.split())
+            clash = sorted(set(dirty) & incoming)
+            if clash:
+                report['attention'].append(f'origin is ahead and touches locally modified files {clash[:5]}; merge deferred until they are quiet')
             else:
+                if dirty:
+                    report['attention'].append(f'merged with {len(dirty)} locally modified tracked file(s) untouched by origin (left as they are)')
                 merge = git(repo, 'merge', '--no-edit', f'origin/{policy["branch"]}', timeout=300)
                 if merge.returncode:
                     git(repo, 'merge', '--abort')

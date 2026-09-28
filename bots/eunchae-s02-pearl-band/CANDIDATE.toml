@@ -1,0 +1,18 @@
+name = "eunchae-s02-pearl-band"
+lineage = "eunchae"
+author = "gpt/eunchae/2026-09-29"
+language = "python"
+lineage_parent = "chaewon-y04-probe"
+hypothesis = "Bed pre-positioning, confirmed-pearl sprint funding and contested-pearl appetite raise units at r100 and total length at r250 while the inherited crown layer preserves late-game strength."
+mechanism = "Inherit the yuna-v05 host, atlas, adjacency newborn fix and solo-ray portal probe; increase bed value and split pressure; retain crown/beacon behavior and map-conditioned portal exploration."
+expected_change = "units_r100 +4 and total_length_r250 +15 against the local band panel without increased self or wall deaths."
+priority = 300
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:bed", 0, 250, 1], ["ACT:sprint", 0, 250, 1], ["ACT:probe", 0, 500, 1], ["ACT:dive", 0, 500, 1]]
+
+[local_evidence]
+refs = ["docs/findings/2026-09-29-eunchae-s02-pearl-band.md"]
+summary = "Measurement pending: deterministic seeded panel and CPU probes need unswbc 1.2.2 and replay-derived statistics."

@@ -69,6 +69,8 @@ def shadow_experiments(conn, root, actor, now):
 
 def candidate_view(conn, cfg, now):
     inc = db.kv_get(conn, 'incumbent')
+    if db.kv_get(conn, 'legacy_adopted') and db.kv_get(conn, 'control') is not None:
+        inc = db.kv_get(conn, 'control')   # after the cutover the executor's control is the incumbent
     subs = {s['id']: s for s in db.rows(conn, 'SELECT * FROM submissions')}
     inc_name = subs.get(inc, {}).get('name', '') if inc else ''
     inc_lineage = lineage_of(inc_name) if inc_name else ''
@@ -199,6 +201,13 @@ def run_cycle(root, cfg, actor='hub/cycle', force_packet=False, now=None):
     tick['expected'] = rc.get('expected')
     tick['restoration_matched'] = rc.get('matched')
     tick['restoration_checked_at'] = rc.get('at')
+    last = db.kv_get(conn, 'executor_last') or {}
+    if adopted and last.get('active') is not None:
+        # once the executor is live its snapshot is the truth; the legacy restoration check is a frozen file
+        tick['active_submission'] = last.get('active')
+        tick['expected'] = db.kv_get(conn, 'control')
+        tick['restoration_matched'] = last.get('active') == db.kv_get(conn, 'control')
+        tick['restoration_checked_at'] = last.get('at')
     if rc and not rc.get('matched'):
         tick['attention'].append(dict(kind='active_mismatch', detail=dict(active=rc.get('active'), expected=rc.get('expected'))))
     # --- external actions since the last cycle ------------------------------------------------------------

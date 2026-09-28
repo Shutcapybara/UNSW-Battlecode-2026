@@ -76,6 +76,11 @@ def load_config(root=None):
     cfg['root'] = str(root)
     if not cfg['paths'].get('mirror'):
         cfg['paths']['mirror'] = str(Path(cfg['paths']['repo']) / 'hub-state')
+    # the git include/never lists in a hub.toml written by an earlier version are a floor, not a ceiling
+    for key in ('include', 'never'):
+        merged = list(cfg['git'].get(key) or [])
+        merged += [x for x in DEFAULTS['git'][key] if x not in merged]
+        cfg['git'][key] = merged
     return cfg
 
 
