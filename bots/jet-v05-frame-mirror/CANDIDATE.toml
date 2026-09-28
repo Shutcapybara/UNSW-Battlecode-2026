@@ -1,0 +1,19 @@
+name = "jet-v05-frame-mirror"
+lineage = "jet"
+author = "claude/jet/cowork-01618tfq"
+language = "python"
+lineage_parent = "gavroche-v32-supported-divecap"
+hypothesis = "Seat advantage on the symmetric live maps comes from coordinate-order bias inside the bots; if seat B plays in seat A's frame (the map's own symmetry) it plays the mirror of its stronger seat-A game."
+mechanism = "Protocol-level frame wrapper: observations (tiles, bodies, edges, facing) transformed by an x-mirror or 180-degree rotation keyed on (W, H, team), MOVE/SONAR directions transformed back; seat B uses r on 180-degree maps and fx on x-mirror maps; seat A unchanged."
+expected_change = "Seat-B win rate on the ten live maps approaches seat-A win rate; no change as seat A."
+priority = 350
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:frame", 0, 500, 1]]
+# fires once per dragon as seat B on every live-pool size; never as seat A.
+
+[local_evidence]
+refs = ["experiment_data/cohort_research_20260927T011500Z_jet/cycle_23_frame_choice/REPORT.md", "experiment_data/cohort_research_20260927T011500Z_jet/cycle_22_seat_asymmetry/REPORT.md"]
+summary = "Stage 2 on fresh opponents (6 x 10 live maps x 2 seats, unswbc 1.0.0): 99 vs v32 86 of 120, paired up 16 / down 3, no map worse; wrapper exactness proven by 500-round mirror-game identity."

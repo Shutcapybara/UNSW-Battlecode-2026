@@ -25,10 +25,13 @@ Tests: `tests/test_hub_executor.py` (a fake server that replays today's incident
 5. **Stop only for humans.** Dispatch stops for: an ambiguous intent older than six hours, an upload name matching
    two submissions or none after six hours, an archive that does not match its frozen files, a promotion whose
    acknowledgement was lost. Everything else logs, backs off and continues; harvest never stops.
-6. **Exact pairs, honest completion.** Blocks pair on (map, side, opponent submission, starting layout). A block
-   that lost an arm gets the missing arm requested; a block with unpaired maps gets fills (alternating arms, at most
-   six); after six fills a block with ≥ 8 exact pairs is complete on the pairs it has, fewer is excluded. Both arms
-   of a new block are requested in one cycle or not at all.
+6. **Exact pairs, honest completion.** Blocks pair on (map, side, opponent submission, starting layout). The server
+   creates one game per distinct map per request (D-022), so a block arm is two waves posted back to back — the
+   block's maps, then the same maps rotated by one — which gives every map both starting layouts on consecutive ids
+   (A1-Q3: layout = f(map, id parity)); 40 games, 20 exact pairs per block. A block that lost an arm gets the missing
+   arm requested; a block with unpaired maps gets *paired* fills (both arms back to back, the second arm's odd waves
+   led by a spare map so the ids align; at most three); after that a block with ≥ 10 exact pairs is complete on the
+   pairs it has, fewer is excluded. Both arms of a new block are requested in one cycle or not at all.
 7. **Ranked exposure guard.** No temporary activation from 8 minutes before to 12 minutes after each even UTC hour.
 8. **Quota from the server's own record** (every member's requests in the rolling hour) plus reservations; a 429
    blocks the pool for the server's stated wait; an executor cap leaves headroom for teammates.

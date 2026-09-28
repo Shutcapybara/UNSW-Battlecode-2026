@@ -30,13 +30,16 @@ class FakeServer:
         self.next_id = 1000
         self.fail_posts = 0            # next N POSTs raise 502 AFTER applying the effect (lost acknowledgement)
         self.reject_posts = None       # (status, message) for next POST
-        self.partial_ids = set()       # game ids whose detail payload lacks submission ids
+        self.partial_ids = set()       # game ids whose replay is not available yet (new shape: hasReplay false; old shape: no submission ids/replayKey)
+        self.old_shape = False         # True: the pre-28-Sep payload (submission ids and replayKey in `match`); False: no ids, games[].hasReplay
         self.members = {'me'}
         self.calls = []
         self.layout_flip = set()       # (submission, map) that get the opposite layout (legacy fake; unused when parity_layouts)
         self.parity_layouts = True     # the real rule (A1-Q3): starting orientation = f(map, game id parity)
-        self.max_maps = 20             # server limit per request; 10 makes the executor fall back to single-orientation blocks
+        self.max_maps = 20             # server limit per request (refusal path); the real server instead creates one game per distinct map
+        self.dedupe_maps = True        # the real behaviour (D-022): a request listing a map twice yields one game for it
         self.gap = 0                   # foreign games created after each of our batches (shifts the next batch's id parity)
+        self.gap_schedule = []         # per-POST gaps consumed first (then `gap`): odd values between an arm's two waves split its layouts
         self.auto_activate_upload = False
         self.winner = {}               # game id -> 'a'/'b'
 
@@ -66,10 +69,15 @@ class FakeServer:
                         m['mapId'] = g['mapId']
                         m['seed'] = g['seed']
                         m['winner'] = self.winner.get(gid, 'a')
-                        if gid in self.partial_ids:
-                            for k in ('submissionAId', 'submissionBId', 'replayKey', 'mapHash'):
-                                m.pop(k, None)
-                        return dict(match={k: v for k, v in m.items() if not k.startswith('_')}, mapName=f"map{g['mapId']}", games=[dict(id=x['id'], status=m['status']) for x in s['games']])
+                        if self.old_shape:
+                            if gid in self.partial_ids:
+                                for k in ('submissionAId', 'submissionBId', 'replayKey', 'mapHash'):
+                                    m.pop(k, None)
+                            return dict(match={k: v for k, v in m.items() if not k.startswith('_')}, mapName=f"map{g['mapId']}", games=[dict(id=x['id'], status=m['status']) for x in s['games']])
+                        for k in ('submissionAId', 'submissionBId', 'replayKey', 'mapHash'):
+                            m.pop(k, None)
+                        return dict(match={k: v for k, v in m.items() if not k.startswith('_')}, mapName=f"map{g['mapId']}", wait=None,
+                                    games=[dict(id=x['id'], status=m['status'], hasReplay=x['id'] not in self.partial_ids, mapName=f"map{x['mapId']}") for x in s['games']])
             raise APIError(404, 'no such battle')
         raise APIError(404, path)
 
@@ -89,7 +97,7 @@ class FakeServer:
                 raise APIError(400, f'{{"error":"at most {self.max_maps} maps per request"}}')
             ids = []
             sid = self.next_id
-            for m in body['mapIds']:
+            for m in (dict.fromkeys(body['mapIds']) if self.dedupe_maps else body['mapIds']):
                 gid = self.next_id
                 self.next_id += 1
                 ids.append(dict(id=gid, mapId=m, seed=f'seed{gid}'))
@@ -97,7 +105,7 @@ class FakeServer:
             self.series[sid] = dict(match=dict(id=sid, seriesId=f's{sid}', requestedBy='me', requestedAt=ISO(self.now), _requested=self.now, teamAId=TEAM, teamBId=body['teamId'],
                                                submissionAId=a_sub, submissionBId=1, ranked=False, status='completed', winner='a', replayKey='r', mapHash='x'), games=ids)
             result = dict(ids=[g['id'] for g in ids])
-            self.next_id += self.gap
+            self.next_id += self.gap_schedule.pop(0) if self.gap_schedule else self.gap
         elif path == '/api/v1/submissions':
             sid = 9990 + len(self.subs)
             self.subs[sid] = dict(id=sid, name='LV-newbot-bbbbbbbb-ai', status='active' if self.auto_activate_upload else 'idle', language='python', sourceHash='hnew')
@@ -237,12 +245,55 @@ class ExecutorTest(unittest.TestCase):
         self.cycle(now=self.now + 60)
         row = self.conn.execute('SELECT verified, error, own_submission, score FROM games WHERE game_id=?', (gid,)).fetchone()
         self.assertEqual(row['verified'], 0)
-        self.assertIn('incomplete', row['error'])
+        self.assertIn('not yet', row['error'])
         self.assertIsNotNone(row['own_submission'])
         self.assertIsNone(row['score'])
         self.server.partial_ids.discard(gid)
         self.cycle(now=self.now + 120)
         self.assertEqual(self.conn.execute('SELECT verified FROM games WHERE game_id=?', (gid,)).fetchone()[0], 1)
+
+    def test_games_are_attributed_by_the_request_when_the_api_omits_submission_ids(self):
+        self.cycle()
+        self.cycle(now=self.now + 60)
+        rows_ = db.rows(self.conn, "SELECT game_id, own_submission, verified, stats FROM games WHERE pool='dev'")
+        self.assertTrue(rows_ and all(r['verified'] for r in rows_))
+        self.assertEqual({r['own_submission'] for r in rows_}, {9508, 9980})
+        self.assertTrue(all(json.loads(r['stats'])['attribution'] == 'request' for r in rows_))
+        # the old shape still verifies through the API-reported ids, and a mismatch is excluded
+        self.server.old_shape = True
+        self.conn.execute('UPDATE games SET verified=0, harvest_attempts=0')
+        self.cycle(now=self.now + 120)
+        rows_ = db.rows(self.conn, "SELECT stats FROM games WHERE pool='dev' AND verified=1")
+        self.assertTrue(rows_ and all(json.loads(r['stats'])['attribution'] == 'api' for r in rows_))
+        for sid in self.server.series.values():
+            sid['match']['submissionAId'] = 4242
+        self.conn.execute('UPDATE games SET verified=0, harvest_attempts=0')
+        self.cycle(now=self.now + 180)
+        self.assertTrue(all('mismatch' in (r['error'] or '') for r in db.rows(self.conn, "SELECT error FROM games WHERE pool='dev'")))
+
+    def test_incomplete_payloads_are_refetched_for_a_day_with_backoff(self):
+        self.cycle()
+        ids = [g['id'] for s in self.server.series.values() for g in s['games']]
+        self.server.partial_ids.update(ids)   # the server's replay pipeline lags: every dev game comes back with hasReplay false
+        for i in range(1, 7):
+            self.cycle(now=self.now + 600 * i)
+        gets = lambda: len([c for c in self.server.calls if c[0] == 'GET' and c[1].startswith(f'/api/v1/battles/{ids[0]}')])
+        before = gets()
+        self.assertEqual(self.conn.execute('SELECT harvest_attempts FROM games WHERE game_id=?', (ids[0],)).fetchone()[0], 6)
+        self.cycle(now=self.now + 600 * 7)        # attempts ≥ 6 and the last try 10 min ago: backlog backoff, not re-fetched
+        self.assertEqual(gets(), before)
+        self.cycle(now=self.now + 600 * 9)        # 30 min after the last try it is re-fetched again (no attempt cap)
+        self.assertEqual(gets(), before + 1)
+        row = self.conn.execute('SELECT harvest_attempts, verified FROM games WHERE game_id=?', (ids[0],)).fetchone()
+        self.assertEqual((row['harvest_attempts'], row['verified']), (7, 0))
+        self.server.partial_ids.clear()
+        self.cycle(now=self.now + 600 * 12)
+        self.assertEqual(self.conn.execute('SELECT verified FROM games WHERE game_id=?', (ids[0],)).fetchone()[0], 1)
+        self.server.partial_ids.update(ids)
+        self.conn.execute('UPDATE games SET verified=0, harvest_attempts=0')
+        n = len(self.server.calls)
+        self.cycle(now=self.now + executor.HARVEST_HORIZON + 7200)   # beyond the horizon nothing is fetched for those requests
+        self.assertFalse([c for c in self.server.calls[n:] if c[0] == 'GET' and c[1] in {f'/api/v1/battles/{i}' for i in ids}])
 
     def make_candidate_win(self):
         original_post = self.server.post
@@ -302,12 +353,27 @@ class ExecutorTest(unittest.TestCase):
         self.assertGreater(blocked['until'], self.now + 2000)
 
     def test_two_orientation_blocks_pair_completely_without_fills(self):
-        self.server.gap = 1   # foreign traffic between our batches: under single-orientation requests this would flip the layout family
         for i in range(4):
             self.cycle(now=self.now + 600 * i)
         blocks = db.rows(self.conn, "SELECT id, request_maps, fill_attempts, requests FROM blocks WHERE phase='screen'")
         self.assertTrue(blocks)
         self.assertEqual(json.loads(blocks[0]['request_maps']), executor.rotation(MAPS))
+        groups = json.loads(blocks[0]['requests'])
+        self.assertEqual(len(groups), 4)                                   # two waves per arm (D-022)
+        self.assertTrue(all(len(g) == len(MAPS) for g in groups))          # one game per distinct map per wave
+        posted = [c for c in self.server.calls if c == ('POST', '/api/v1/battles')]
+        self.assertGreaterEqual(len(posted), 4)
+        shaped0, results0 = executor.legacy_shapes(self.conn)
+        layouts = {}
+        for b in shaped0:
+            if b['phase'] != 'screen':
+                continue
+            for g in b['requests']:
+                for i in g:
+                    r = results0.get(str(i))
+                    if r:
+                        layouts.setdefault((r['submission'], r['map_id']), set()).add(r['map_hash'])
+        self.assertTrue(all(len(v) == 2 for v in layouts.values()), layouts)   # every arm saw both starting layouts of every map
         for maps in ([9, 20, 21], list(range(10)), [1, 2]):
             r = executor.rotation(maps)
             for m in maps:
@@ -321,22 +387,61 @@ class ExecutorTest(unittest.TestCase):
         self.assertTrue(done)
         self.assertEqual(len(done[0]['pairs']), 2 * len(MAPS))
         self.assertEqual(len({(x['map_id'], x['side']) for x in done[0]['pairs']}), len(MAPS))
-        self.assertEqual(len(json.loads(blocks[0]['requests'])), 2)
 
-    def test_refused_double_request_falls_back_to_single_orientation_blocks(self):
-        self.server.max_maps = len(MAPS)
-        self.server.gap = 2   # with 3-map batches an odd id gap between the arms (3 + 2) flips the layout family: single-orientation blocks then need fills
-        seen = False
-        for i in range(3):   # cycle 1 is dev coverage; the first screen block (and the refusal) comes next
+    def test_interleaved_foreign_games_are_repaired_by_paired_fills(self):
+        self.cycle()   # dev coverage (4 dev POSTs); the first screen block comes next
+        self.server.gap_schedule = [1]   # one foreign game between the first arm's two waves: that arm repeats a layout instead of covering
+        # both, and every later request lands on the parity the arm order dictates, so a single-arm fill could never re-pair (locked parity)
+        for i in range(1, 8):
             s = self.cycle(now=self.now + 600 * i)
-            seen = seen or any(a['kind'] == 'request_shape_unsupported' for a in s['attention'])
-        self.assertTrue(seen)
-        self.assertEqual(db.kv_get(self.conn, 'request_shape'), 'single')
-        self.assertTrue(db.rows(self.conn, "SELECT id FROM blocks WHERE excluded_reason LIKE '20-map%'"))
-        self.assertEqual(self.server.active, 9508)
-        for i in range(3, 16):
+        blocks = db.rows(self.conn, "SELECT id, fill_attempts, requests, excluded_reason FROM blocks WHERE phase='screen' ORDER BY created_at")
+        self.assertTrue(blocks)
+        first = blocks[0]
+        self.assertGreaterEqual(first['fill_attempts'], 1)
+        self.assertIsNone(first['excluded_reason'])
+        groups = json.loads(first['requests'])
+        self.assertGreaterEqual(len(groups), 6)   # four waves plus paired fills (both arms each)
+        shaped, results = executor.legacy_shapes(self.conn)
+        p = next(x for x in stats.paired_blocks_v2(shaped, results) if x['block'] == first['id'])
+        self.assertTrue(p['complete'], (len(p['pairs']), p['missing_maps']))
+        self.assertGreaterEqual(len(p['pairs']), 2 * len(MAPS))
+
+    def test_waves_and_spread(self):
+        self.assertEqual(executor.waves_of_distinct_maps(executor.rotation([9, 20, 21])), [[9, 20, 21], [9, 20, 21]])
+        self.assertEqual(executor.waves_of_distinct_maps(executor.rotation(list(range(10)))), [list(range(10)), list(range(1, 10)) + [0]])
+        self.assertEqual(executor.waves_of_distinct_maps([]), [])
+        self.assertEqual(executor.spread([9, 9, 20, 21, 21]), [9, 20, 21, 9, 21])
+        self.assertEqual(executor.waves_of_distinct_maps(executor.spread([9, 9, 20, 21, 21])), [[9, 20, 21], [9, 21]])
+        self.assertEqual(executor.aligned([9, 21], 1, MAPS), [9, 21])            # even wave: same order aligns consecutive ids
+        self.assertEqual(executor.aligned([9], 1, MAPS), [20, 9])               # odd wave: a spare map in front shifts the parity
+        self.assertEqual(executor.aligned([9, 20, 21], 1, MAPS), [20, 21, 9])   # no spare left: rotate (the wrapped map waits for the next fill)
+        self.assertEqual(executor.aligned([9, 20, 21], 0, MAPS), [9, 20, 21])
+
+    def test_running_experiment_params_are_migrated(self):
+        self.make_candidate_win()
+        self.cycle(); self.cycle(now=self.now + 600)
+        e = db.rows(self.conn, "SELECT id, params FROM experiments WHERE status='running'")[0]
+        old = dict(json.loads(e['params']), max_fills=0, min_pairs=14)
+        self.conn.execute('UPDATE experiments SET params=? WHERE id=?', (json.dumps(old), e['id']))
+        s = self.cycle(now=self.now + 1200)
+        self.assertEqual([m['experiment'] for m in s.get('migrated', [])], [e['id']])
+        p = json.loads(db.rows(self.conn, "SELECT params FROM experiments WHERE id=?", (e['id'],))[0]['params'])
+        self.assertEqual((p['max_fills'], p['min_pairs']), (3, 10))
+        self.assertFalse(self.cycle(now=self.now + 1800).get('migrated'))
+        # a block the old rule excluded before its games were verified is reinstated and then filled
+        b = db.rows(self.conn, "SELECT id FROM blocks WHERE experiment_id=? ORDER BY created_at", (e['id'],))[0]
+        self.conn.execute("UPDATE blocks SET excluded_reason=? WHERE id=?", ('0 pairs after 0 fills (min 14)', b['id']))
+        s = self.cycle(now=self.now + 2400)
+        self.assertTrue(any(m.get('block') == b['id'] for m in s.get('migrated', [])))
+        self.assertIsNone(db.rows(self.conn, "SELECT excluded_reason FROM blocks WHERE id=?", (b['id'],))[0]['excluded_reason'])
+
+    def test_single_orientation_shape_still_works_with_fills(self):
+        db.kv_set(self.conn, 'request_shape', 'single')   # the legacy shape (kept for a server that refuses the waves)
+        self.server.gap = 2   # with 3-map batches an odd id gap between the arms (3 + 2) flips the layout family: single-orientation blocks then need fills
+        for i in range(16):
             self.cycle(now=self.now + 600 * i)
-        blocks = db.rows(self.conn, "SELECT id, request_maps, fill_attempts, excluded_reason FROM blocks WHERE phase='screen' AND excluded_reason IS NULL OR excluded_reason NOT LIKE '20-map%'")
+        self.assertEqual(self.server.active, 9508)
+        blocks = db.rows(self.conn, "SELECT id, request_maps, fill_attempts, excluded_reason FROM blocks WHERE phase='screen'")
         live_blocks = [b for b in blocks if b['request_maps'] and len(json.loads(b['request_maps'])) == len(MAPS)]
         self.assertTrue(live_blocks)
         self.assertTrue(any((b['fill_attempts'] or 0) >= 1 for b in live_blocks))   # legacy fill path still works
@@ -384,6 +489,21 @@ class ExecutorTest(unittest.TestCase):
         self.assertEqual(self.server.active, 9508)
         self.assertEqual(db.kv_get(self.conn, 'control'), 9508)
         self.assertFalse(s['external_actions'])
+
+    def test_running_experiment_with_a_stale_control_is_frozen_and_replaced(self):
+        self.make_candidate_win()
+        self.cycle(); self.cycle(now=self.now + 600)
+        e = db.rows(self.conn, "SELECT id, control_submission FROM experiments WHERE status='running'")
+        self.assertTrue(e)
+        # the control moves without the observer seeing an activation (director restore path): 9508 -> 9990
+        self.server.subs[9990] = dict(id=9990, name='Heimdall v10', status='active', language='python', sourceHash='h')
+        self.server.subs[9508]['status'] = 'idle'
+        db.kv_set(self.conn, 'control', 9990); db.kv_set(self.conn, 'control_owner', 'director')
+        s = self.cycle(now=self.now + 1200)
+        self.assertEqual(self.conn.execute("SELECT status FROM experiments WHERE id=?", (e[0]['id'],)).fetchone()[0], 'superseded_by_external_activation')
+        running = db.rows(self.conn, "SELECT control_submission FROM experiments WHERE status='running'")
+        self.assertTrue(running and all(r['control_submission'] == 9990 for r in running))
+        self.assertIn('ranked_recent', s)
 
     def test_slow_server_budgets_never_dispatch_on_unknown_quota(self):
         # snapshot budget exhausted before the history is read: harvest/evaluate proceed, requests do not

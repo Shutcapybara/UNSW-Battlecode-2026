@@ -25,10 +25,13 @@ from .contracts import evaluate as evaluate_contract
 
 TEAM_ID_DEFAULT = 7
 HARVEST_LIMIT = 60
-MAX_HARVEST_ATTEMPTS = 20
+MAX_HARVEST_ATTEMPTS = 20      # kept for the tests' fake failures; the live rule is the horizon and the backoff below (D-023)
+HARVEST_HORIZON = 24 * 3600    # a game is re-fetched for a day after its request: the server's replay pipeline lags for hours under load
+HARVEST_BACKOFF = 1800         # after six tries a backlog game is re-fetched every 30 min, so fresh games keep the per-cycle budget
 INTENT_GRACE = 600            # seconds before a battle intent with no matching series is released
 INTENT_STALE = 6 * 3600       # seconds after which an unreconciled intent pauses dispatch and pages
-DEFAULT_PARAMS = dict(screen_blocks=3, confirm_blocks=6, alpha=0.025, orientations=2, max_fills=0, min_pairs=14, min_confirm_on_supersede=3, futility_fraction=0.4, pair_test=True)   # protocol v2.1 (D-019)
+DEFAULT_PARAMS = dict(screen_blocks=3, confirm_blocks=6, alpha=0.025, orientations=2, max_fills=3, min_pairs=10, min_confirm_on_supersede=3, futility_fraction=0.4, pair_test=True)   # protocol v2.1 (D-019); fills per D-022
+PARAMS_MIGRATIONS = ({'max_fills': 0, 'min_pairs': 14}, {'max_fills': 3, 'min_pairs': 10})   # (old values, new values) applied to running v2 experiments (D-022)
 LEGACY_SHAPE_PARAMS = dict(orientations=1, max_fills=6, min_pairs=8)   # applied when the server refuses 20-map requests (kv request_shape='single')
 TERMINAL = ('completed', 'failed', 'error', 'cancelled')
 STAGE_ROUNDS = (25, 50, 100, 200, 250, 300, 320, 360, 380, 400, 450, 499)   # r25/r50 added 28 Sep (A1-Q1: the deficit is set before r100)
@@ -57,6 +60,8 @@ def ensure_columns(conn):
     have = {c[1] for c in conn.execute('PRAGMA table_info(games)')}
     if 'harvest_attempts' not in have:
         conn.execute('ALTER TABLE games ADD COLUMN harvest_attempts INTEGER DEFAULT 0')
+    if 'harvest_at' not in have:
+        conn.execute('ALTER TABLE games ADD COLUMN harvest_at REAL')   # epoch of the last fetch on the cycle's clock (backoff)
     have_b = {c[1] for c in conn.execute('PRAGMA table_info(blocks)')}
     if 'request_maps' not in have_b:
         conn.execute('ALTER TABLE blocks ADD COLUMN request_maps TEXT')
@@ -298,7 +303,7 @@ def freeze_running(conn, root, cfg, actor, old, new, summary):
         else:
             status, verdict = 'superseded_by_external_activation', None
         conn.execute('UPDATE experiments SET status=?, verdict=?, decision=?, frozen_reason=?, closed_at=?, updated_at=? WHERE id=?',
-                     (status, verdict, db.j({k: v for k, v in d.items() if k != 'pairs'} | {'pairs_summary': summarize_pairs(d)}), f'external activation {old}->{new}', now_iso(), now_iso(), e['id']))
+                     (status, verdict, db.j({k: v for k, v in d.items() if k != 'pairs'} | {'pairs_summary': summarize_pairs(d)}), f'control changed {old}->{new}', now_iso(), now_iso(), e['id']))
         record_decision(conn, root, actor, e['id'], 'superseded', status, d, 'v2')
         summary['frozen'].append(dict(experiment=e['id'], status=status))
 
@@ -496,12 +501,23 @@ def harvest(conn, root, cfg, snap, client, actor, summary, limit=HARVEST_LIMIT):
     """Verify pending games within a time budget: running v2 blocks first, then dev coverage, then the backlog."""
     running = {b['id'] for b in rows(conn, "SELECT b.id FROM blocks b JOIN experiments e ON e.id=b.experiment_id WHERE e.status='running' AND e.protocol='v2'")}
     pending = []
+    now = cycle_now()
     for r in rows(conn, "SELECT * FROM requests WHERE status='accepted' ORDER BY at"):
+        if (r['at'] or now) < now - HARVEST_HORIZON:
+            continue
         for gid in loads(r['game_ids'], []) or []:
-            g = conn.execute('SELECT verified, harvest_attempts, error FROM games WHERE game_id=?', (gid,)).fetchone()
-            if g is None or (not g['verified'] and (g['harvest_attempts'] or 0) < MAX_HARVEST_ATTEMPTS and g['error'] != 'server infrastructure failure'):
-                rank = 0 if r['block_id'] in running else 1 if r['pool'] == 'dev' else 2
-                pending.append((rank, gid, r))
+            g = conn.execute('SELECT verified, harvest_attempts, error, harvest_at FROM games WHERE game_id=?', (gid,)).fetchone()
+            rank = 0 if r['block_id'] in running else 1 if r['pool'] == 'dev' else 2
+            if g is not None:
+                if g['verified'] or g['error'] == 'server infrastructure failure':
+                    continue
+                attempts = g['harvest_attempts'] or 0
+                incomplete = (g['error'] or '').startswith(('incomplete API payload', 'replay not yet available'))
+                if attempts >= MAX_HARVEST_ATTEMPTS and not incomplete:
+                    continue   # a decode/download failure that repeats is not going to change
+                if rank and attempts >= 6 and now - (g['harvest_at'] or 0) < HARVEST_BACKOFF:
+                    continue   # backlog backoff; running blocks are always re-fetched
+            pending.append((rank, gid, r))
     pending.sort(key=lambda x: (x[0], x[1]))
     deadline = time.monotonic() + budget_seconds(cfg, 'harvest_seconds', 240)
     done = 0
@@ -517,10 +533,34 @@ def harvest(conn, root, cfg, snap, client, actor, summary, limit=HARVEST_LIMIT):
             prior = conn.execute('SELECT harvest_attempts FROM games WHERE game_id=?', (gid,)).fetchone()
             attempts = ((prior['harvest_attempts'] if prior else 0) or 0) + 1
             db.upsert(conn, 'games', dict(game_id=gid, own_submission=req['submission'], opponent_team=req['opponent_team'], pool=req['pool'], origin=req['origin'] or 'controlled',
-                                          verified=0, status='unverified', error='harvest error: ' + type(exc).__name__ + ': ' + str(exc)[:200], harvest_attempts=attempts,
+                                          verified=0, status='unverified', error='harvest error: ' + type(exc).__name__ + ': ' + str(exc)[:200], harvest_attempts=attempts, harvest_at=cycle_now(),
                                           block_id=req['block_id'], ingested_at=now_iso()), 'game_id')
             summary['harvest_errors'].append(dict(game_id=gid, error=str(exc)[:120]))
     summary['harvest'] = dict(pending=len(pending), attempted=done, backlog=max(0, len(pending) - done))
+    summary['candidate_games'] = candidate_games(conn)
+    summary['incomplete_payload_sample'] = db.kv_get(conn, 'incomplete_payload_sample')
+
+
+def candidate_games(conn):
+    """Per registered candidate with a submission: requested / verified / unverified games by pool and the unverified
+    error kinds, so a candidate stuck at 'uploaded' can be read from the mirror without opening the database."""
+    out = {}
+    for c in rows(conn, "SELECT name, submission_id, status FROM candidates WHERE submission_id IS NOT NULL AND status IN ('uploaded','dev_ok','dev_done','runtime_ok')"):
+        sid = c['submission_id']
+        requested = {}
+        for r in rows(conn, "SELECT pool, game_ids, status FROM requests WHERE submission=? AND status IN ('reserved','accepted')", (sid,)):
+            requested[r['pool']] = requested.get(r['pool'], 0) + len(loads(r['game_ids'], []) or [])
+        games = rows(conn, "SELECT pool, verified, error, harvest_attempts FROM games WHERE own_submission=?", (sid,))
+        verified = {}
+        errors = {}
+        for g in games:
+            if g['verified']:
+                verified[g['pool']] = verified.get(g['pool'], 0) + 1
+            else:
+                key = (g['error'] or 'pending')[:60]
+                errors[key] = errors.get(key, 0) + 1
+        out[c['name']] = dict(submission=sid, status=c['status'], requested=requested, verified=verified, unverified=errors)
+    return out
 
 
 def harvest_one(conn, root, cfg, snap, client, gid, req):
@@ -530,16 +570,22 @@ def harvest_one(conn, root, cfg, snap, client, gid, req):
         return
     side = 'A' if m.get('teamAId') == snap.team_id else 'B'
     other = 'B' if side == 'A' else 'A'
-    row = dict(game_id=gid, submission=m.get('submission' + side + 'Id'), side=side, map_id=m.get('mapId'), map_name=payload.get('mapName'), series=m.get('seriesId'),
+    listed = next((g for g in (payload.get('games') or []) if isinstance(g, dict) and g.get('id') == gid), {})
+    reported = m.get('submission' + side + 'Id')
+    row = dict(game_id=gid, submission=reported if reported is not None else req['submission'], side=side, map_id=m.get('mapId'), map_name=payload.get('mapName'), series=m.get('seriesId'),
                requested=m.get('requestedAt'), seed=m.get('seed'), pool=req['pool'], verified=False, origin=req['origin'] or 'controlled',
-               opponent=m.get('team' + other + 'Id'), opponent_submission=m.get('submission' + other + 'Id'), faults=None)
+               opponent=m.get('team' + other + 'Id'), opponent_submission=m.get('submission' + other + 'Id'), faults=None,
+               attribution='api' if reported is not None else 'request')   # D-023: since 28 Sep the payload carries no submission ids; the request's activation attributes the game
     prior = conn.execute('SELECT harvest_attempts FROM games WHERE game_id=?', (gid,)).fetchone()
     attempts = ((prior['harvest_attempts'] if prior else 0) or 0) + 1
-    if row['submission'] is None:
-        row['submission'] = req['submission']
-        row['error'] = 'incomplete API payload: no submission ids'
-    elif m.get('status') != 'completed' or not m.get('replayKey'):
+    has_replay = bool(m.get('replayKey')) or bool(listed.get('hasReplay')) or ('replayKey' not in m and 'hasReplay' not in listed)   # unknown shape: try the download
+    if reported is None and not getattr(snap, 'incomplete_sample_logged', False):   # one raw sample per cycle, so the server's payload shape is on record
+        snap.incomplete_sample_logged = True
+        db.kv_set(conn, 'incomplete_payload_sample', dict(game_id=gid, payload=payload))
+    if m.get('status') != 'completed':
         row['error'] = 'server infrastructure failure'
+    elif not has_replay:
+        row['error'] = 'replay not yet available'   # transient: re-fetched under the harvest horizon
     else:
         raw_dir = Path(root) / 'replays' / 'raw'
         raw_dir.mkdir(parents=True, exist_ok=True)
@@ -568,7 +614,7 @@ def harvest_one(conn, root, cfg, snap, client, gid, req):
                        exception_examples=exceptions[:10], cpu_max=st.get('cpu_max'), cpu_recorded=st.get('cpu_recorded', 0), map_hash=a['map_hash'],
                        replay_sha256=hashlib.sha256(raw).hexdigest(), decoded_sha256=hashlib.sha256(packed).hexdigest(), stages=stages, opponent_stages=other_stages,
                        early_elimination=a['rounds'] < 320 and final[side]['units'] == 0, stats=st)
-            if row['submission'] != req['submission']:
+            if reported is not None and reported != req['submission']:
                 row['verified'] = False
                 row['error'] = 'submission mismatch: excluded from inference'
         except Exception as exc:
@@ -581,7 +627,7 @@ def harvest_one(conn, root, cfg, snap, client, gid, req):
                                   reason=row.get('reason'), faults=row.get('faults'), caught_errors=row.get('caught_errors'), cpu_max=row.get('cpu_max'), cpu_recorded=row.get('cpu_recorded'),
                                   turns=row.get('turns'), execution_mode='server', decoder_revision=DECODER_REVISION, schema_version=3, replay_sha256=row.get('replay_sha256'),
                                   decoded_sha256=row.get('decoded_sha256'), block_id=req['block_id'], stages=row.get('stages'), opponent_stages=row.get('opponent_stages'), stats=row,
-                                  harvest_attempts=attempts, ingested_at=now_iso()), 'game_id')
+                                  harvest_attempts=attempts, harvest_at=cycle_now(), ingested_at=now_iso()), 'game_id')
 
 
 # ----------------------------------------------------------------------------------------------- ledger views
@@ -593,7 +639,7 @@ def legacy_shapes(conn, experiment_id=None):
             continue
         blocks.append(dict(id=b['id'], phase=b['phase'], control=b['control_submission'], candidate=b['candidate_submission'], opponent=b['opponent_team'],
                            map_ids=loads(b['map_ids'], []) or [], request_maps=loads(b.get('request_maps'), []) or None, experiment=b['experiment_id'],
-                           requests=loads(b['requests'], []) or [], fill_attempts=b['fill_attempts'] or 0))
+                           requests=loads(b['requests'], []) or [], fill_attempts=b['fill_attempts'] or 0, order=loads(b.get('order_json'), None)))
     results = {}
     for g in rows(conn, 'SELECT game_id, stats FROM games'):
         r = loads(g['stats'])
@@ -649,6 +695,24 @@ def in_blackout(cfg, now):
     return stats.in_blackout(minute, g['blackout_before_even_utc_hour_minutes'], g['blackout_after_even_utc_hour_minutes'])
 
 
+def ranked_recent(snap, limit=12):
+    """Our ranked series in the server's recent history, newest first: what the rating is being decided on."""
+    out = []
+    for payload in getattr(snap, 'history', []) or []:
+        m = payload.get('match') or {}
+        if not m.get('ranked') or snap.team_id not in (m.get('teamAId'), m.get('teamBId')):
+            continue
+        side = 'A' if m.get('teamAId') == snap.team_id else 'B'
+        games = payload.get('games') or []
+        wins = sum(1 for g in games if (g.get('winner') or '').lower() == side.lower())
+        losses = sum(1 for g in games if (g.get('winner') or '').lower() == ('b' if side == 'A' else 'a'))
+        out.append(dict(series=m.get('seriesId') or m.get('id'), at=m.get('requestedAt'), started=m.get('startedAt'), requested_by=m.get('requestedBy'),
+                        opponent=m.get('teamBId') if side == 'A' else m.get('teamAId'), side=side, our_submission=m.get('submission' + side + 'Id'),
+                        status=m.get('status'), games=len(games), wins=wins, losses=losses, elo=m.get('eloChange' + side) if m.get('eloChange' + side) is not None else m.get('eloChangeA' if side == 'A' else 'eloChangeB')))
+    out.sort(key=lambda r: r.get('at') or '', reverse=True)
+    return out[:limit]
+
+
 def ranked_in_flight(snap):
     """A ranked series involving us that is not terminal (autoscrims start 4–36 min after the even hour, and other
     teams challenge at arbitrary times — A1-Q9): a candidate must not be active while one could bind."""
@@ -665,8 +729,47 @@ def reserve(conn, pool, opponent, submission, map_ids, block_id, origin='control
     return rid
 
 
-def request_batch(conn, root, cfg, snap, client, actor, submission, opponent, map_ids, pool, block_id, summary):
-    """Reserve, (switch), POST, attach, restore. Returns game ids or None. Raises Stop on a lost acknowledgement."""
+def waves_of_distinct_maps(maps):
+    """One server request creates at most one game per distinct map (D-022: a 20-entry request came back as 10 games).
+    Split a request list into consecutive waves with no repeated map, preserving order, so the two halves of the
+    rotation pattern (M0..M9 then M1..M9,M0) stay whole and consecutive ids keep their parity relationship."""
+    waves, cur, seen = [], [], set()
+    for m in maps:
+        if m in seen:
+            waves.append(cur)
+            cur, seen = [], set()
+        cur.append(m)
+        seen.add(m)
+    if cur:
+        waves.append(cur)
+    return waves
+
+
+def aligned(wave, k, map_ids):
+    """The k-th arm's order for a fill wave. Arms post back to back, so the second arm's ids sit len(wave) after the
+    first's: an even wave keeps its order (same parity per position); an odd wave gets a spare block map in front, which
+    shifts every position by one (the spare game is a harmless extra); with no spare map left, rotate by one (every
+    map but the wrapped one aligns, and the next fill finishes it)."""
+    wave = list(wave)
+    if k == 0 or len(wave) % 2 == 0:
+        return wave
+    spare = next((m for m in map_ids if m not in wave), None)
+    return [spare] + wave if spare is not None else wave[1:] + wave[:1]
+
+
+def spread(maps):
+    """[m1, m1, m2] -> [m1, m2, m1]: first occurrences of every map, then second ones, so fills split into few waves."""
+    order = list(dict.fromkeys(maps))
+    counts = {m: maps.count(m) for m in order}
+    return [m for k in range(max(counts.values(), default=0)) for m in order if counts[m] > k]
+
+
+def request_batch(conn, root, cfg, snap, client, actor, submission, opponent, map_ids, pool, block_id, summary, waves=None):
+    """Reserve, (switch), POST, attach, restore. Returns game ids or None. Raises Stop on a lost acknowledgement.
+
+    `waves`: further map lists posted back to back inside the same activation, each its own request row (D-022:
+    a block arm is two waves of the block's distinct maps, the second rotated by one, so that consecutive ids give
+    every map both starting layouts)."""
     if pool == 'field' and opponent in snap.dev_ids:
         pool = 'dev'
     active = snap.active
@@ -676,23 +779,28 @@ def request_batch(conn, root, cfg, snap, client, actor, submission, opponent, ma
     if submission != active and ranked_in_flight(snap):
         summary['deferred'].append(dict(reason='ranked_series_in_flight', series=ranked_in_flight(snap), submission=submission, opponent=opponent))
         return None
-    rid = reserve(conn, pool, opponent, submission, map_ids, block_id)
+    all_waves = [list(map_ids)] + [list(w) for w in (waves or []) if w]
+    rid = None
+    all_ids = []
     switched = None
     try:
         if submission != active:
             switched = open_tx(conn, 'switch', dict(previous=active, candidate=submission))
             mutate(conn, client, 'activate', f'/api/v1/submissions/{submission}/activate', {}, 'temporary activation for a test batch', dict(submission=submission, previous=active))
-        out = mutate(conn, client, 'battle', '/api/v1/battles', dict(teamId=opponent, ranked=False, mapIds=map_ids), f'request unranked games block {block_id}',
-                     dict(at=snap.now, request_id=rid, submission=submission, opponent=opponent, map_ids=map_ids))
-        ids = out.get('ids') or []
-        conn.execute("UPDATE requests SET status='accepted', game_ids=?, updated_at=? WHERE id=?", (db.j(ids), now_iso(), rid))
-        if block_id:
-            attach_to_block(conn, dict(block_id=block_id), ids)
-        if len(ids) != len(map_ids):
-            summary['attention'].append(dict(kind='unexpected_game_count', ids=ids, requested=len(map_ids)))
-        db.event(conn, root, actor, 'batch_requested', dict(submission=submission, opponent=opponent, maps=len(map_ids), ids=ids, pool=pool, block=block_id))
-        summary['dispatched'].append(dict(submission=submission, opponent=opponent, maps=len(map_ids), ids=ids, pool=pool))
-        return ids
+        for wave in all_waves:
+            rid = reserve(conn, pool, opponent, submission, wave, block_id)
+            out = mutate(conn, client, 'battle', '/api/v1/battles', dict(teamId=opponent, ranked=False, mapIds=wave), f'request unranked games block {block_id}',
+                         dict(at=snap.now, request_id=rid, submission=submission, opponent=opponent, map_ids=wave))
+            ids = out.get('ids') or []
+            conn.execute("UPDATE requests SET status='accepted', game_ids=?, count=?, updated_at=? WHERE id=?", (db.j(ids), len(ids), now_iso(), rid))
+            if block_id:
+                attach_to_block(conn, dict(block_id=block_id), ids)
+            if len(ids) != len(wave):
+                summary['attention'].append(dict(kind='unexpected_game_count', ids=ids, requested=len(wave)))
+            db.event(conn, root, actor, 'batch_requested', dict(submission=submission, opponent=opponent, maps=len(wave), ids=ids, pool=pool, block=block_id))
+            summary['dispatched'].append(dict(submission=submission, opponent=opponent, maps=len(wave), ids=ids, pool=pool))
+            all_ids.extend(ids)
+        return all_ids
     except APIError as e:
         if 400 <= e.status < 500:
             conn.execute("UPDATE requests SET status='rejected', updated_at=? WHERE id=?", (now_iso(), rid))
@@ -709,7 +817,7 @@ def request_batch(conn, root, cfg, snap, client, actor, submission, opponent, ma
             elif e.status in (400, 403, 404):
                 conn.execute('INSERT OR REPLACE INTO opponent_exclusions(team_id,until,reason) VALUES(?,?,?)', (opponent, snap.now + 3600, e.message[:200]))
             db.event(conn, root, actor, 'batch_rejected', dict(status=e.status, opponent=opponent, pool=pool, message=e.message[:200]))
-            return None
+            return all_ids or None
         raise
     except UncertainMutation as e:
         db.event(conn, root, actor, 'mutation_uncertain', dict(intent=e.intent_id, error=str(e.error)[:200]))
@@ -756,7 +864,8 @@ def open_experiment(conn, root, cfg, snap, actor, cand, summary):
 
 
 def request_shape(conn, params):
-    """'double' (each map on both starting orientations in one request: M0..M9, M1..M9, M0 — A1-Q3) unless the server refused it."""
+    """'double' (each map on both starting orientations: the waves M0..M9 and M1..M9,M0 posted back to back — A1-Q3, D-022)
+    unless the server refused it."""
     if params.get('orientations', 1) == 2 and db.kv_get(conn, 'request_shape') != 'single':
         return 'double'
     return 'single'
@@ -868,6 +977,11 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
             if status == 'dev_done':
                 db.event(conn, root, actor, 'dev_only_done', dict(candidate=c['name'], submission=c['submission_id']))
     # 3. the running experiment (or open one)
+    # any running experiment whose control is no longer the control is frozen, however the control changed
+    # (28 Sep 15:13 UTC: a director restore left yuna-v03 vs 10376 'running' with control 9508, then 10413 — nothing
+    # was dispatched for an hour because the next-block rule waits for active == the experiment's control)
+    for stale in rows(conn, "SELECT * FROM experiments WHERE status='running' AND protocol='v2' AND control_submission != ?", (ctrl,)):
+        freeze_running(conn, root, cfg, actor, stale['control_submission'], ctrl, summary)
     running = rows(conn, "SELECT * FROM experiments WHERE status='running' AND protocol='v2'")
     e = running[0] if running else None
     if not e:
@@ -887,10 +1001,10 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
     maps_n = len(rotation(loads(e['map_ids'], []))) if request_shape(conn, params) == 'double' else len(loads(e['map_ids'], []))
     # 3a-i. blocks that lost an arm (deferred, rejected or released): request the missing arm first
     for b in blocks:
-        if len(b['requests']) >= 2:
-            continue
         pending = rows(conn, "SELECT submission FROM requests WHERE block_id=? AND status IN ('reserved','accepted')", (b['id'],))
         have = {r['submission'] for r in pending}
+        if b['control'] in have and b['candidate'] in have:
+            continue
         if len(have) >= 2 or any(i['payload'].get('request_id') in {r['id'] for r in rows(conn, 'SELECT id FROM requests WHERE block_id=?', (b['id'],))} for i in open_intents(conn)):
             continue
         missing_arm = next((sid for sid in (b['control'], b['candidate']) if sid not in have), None)
@@ -902,7 +1016,8 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
             continue
         summary['plan'].append(dict(action='missing_arm', block=b['id'], arm=missing_arm))
         if live:
-            ids = request_batch(conn, root, cfg, snap, client, actor, missing_arm, b['opponent'], req_maps, 'field', b['id'], summary)
+            waves = waves_of_distinct_maps(req_maps)
+            ids = request_batch(conn, root, cfg, snap, client, actor, missing_arm, b['opponent'], waves[0], 'field', b['id'], summary, waves=waves[1:])
             if ids:
                 q['field']['available'] -= len(ids)
             elif summary.get('request_shape_refused'):
@@ -927,16 +1042,23 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
                 conn.execute("UPDATE blocks SET excluded_reason=?, updated_at=? WHERE id=?", (f"{len(p['pairs'])} pairs after {params['max_fills']} fills (min {params['min_pairs']})", now_iso(), b['id']))
                 db.event(conn, root, actor, 'block_excluded', dict(block=b['id'], pairs=len(p['pairs'])))
             continue
-        arm = [b['candidate'], b['control']][b['fill_attempts'] % 2]
-        if q['field']['available'] < len(p['missing_maps']):
+        # a fill is paired (D-022): both arms request the missing maps back to back, the second arm's waves aligned so that
+        # consecutive ids give the two arms the same starting layouts whatever parity they land on (single-arm fills only
+        # pair by luck, and never when the arm's parity is locked by regular foreign traffic)
+        paired_fill = request_shape(conn, params) == 'double'
+        arms = list(b.get('order') or [b['control'], b['candidate']]) if paired_fill else [[b['candidate'], b['control']][b['fill_attempts'] % 2]]
+        if q['field']['available'] < len(arms) * len(p['missing_maps']):
             summary['deferred'].append(dict(reason='quota', block=b['id']))
             continue
-        summary['plan'].append(dict(action='fill', block=b['id'], arm=arm, maps=p['missing_maps']))
+        summary['plan'].append(dict(action='fill', block=b['id'], arms=arms, maps=p['missing_maps']))
         if live:
             conn.execute('UPDATE blocks SET fill_attempts=fill_attempts+1, updated_at=? WHERE id=?', (now_iso(), b['id']))
-            ids = request_batch(conn, root, cfg, snap, client, actor, arm, b['opponent'], p['missing_maps'], 'field', b['id'], summary)
-            if ids:
-                q['field']['available'] -= len(ids)
+            waves = waves_of_distinct_maps(spread(p['missing_maps']))
+            for k, arm in enumerate(arms):
+                arm_waves = [aligned(w, k, b['map_ids']) for w in waves]
+                ids = request_batch(conn, root, cfg, snap, client, actor, arm, b['opponent'], arm_waves[0], 'field', b['id'], summary, waves=arm_waves[1:])
+                if ids:
+                    q['field']['available'] -= len(ids)
     # 3b. the next block: both arms in the same cycle or not at all
     d = decide(blocks, results, params)
     phase = 'confirm' if d['verdict'] == 'confirming' else 'screen' if d['verdict'] == 'screening' else None
@@ -967,8 +1089,9 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
     summary['plan'].append(dict(action='block', experiment=e['id'], phase=phase, opponent=opponent, games_per_arm=maps_n, shape=request_shape(conn, params)))
     if live:
         b = new_block(conn, e, phase, opponent, params)
+        waves = waves_of_distinct_maps(b['request_maps'])
         for sid in b['order']:
-            ids = request_batch(conn, root, cfg, snap, client, actor, sid, opponent, b['request_maps'], 'field', b['id'], summary)
+            ids = request_batch(conn, root, cfg, snap, client, actor, sid, opponent, waves[0], 'field', b['id'], summary, waves=waves[1:])
             if ids:
                 q['field']['available'] -= len(ids)
             elif summary.get('request_shape_refused'):
@@ -1015,6 +1138,34 @@ def upload(conn, root, cfg, snap, client, actor, cand, summary):
 
 
 # ----------------------------------------------------------------------------------------------- the cycle
+def migrate_params(conn, root, actor, summary):
+    """Running v2 experiments opened with parameters a later decision replaced (D-022: fills) take the new values; the
+    change is recorded as an event and in the summary. Closed experiments keep the parameters they were decided under.
+    Accepted requests whose recorded count exceeds the games the server created (the 20-entry requests of 28 Sep) are
+    corrected, so the executor's own hourly cap counts games, not entries."""
+    for r in rows(conn, "SELECT id, count, game_ids FROM requests WHERE status='accepted'"):
+        n = len(loads(r['game_ids'], []) or [])
+        if r['count'] != n:
+            conn.execute('UPDATE requests SET count=?, updated_at=? WHERE id=?', (n, now_iso(), r['id']))
+            db.event(conn, root, actor, 'request_count_corrected', dict(request=r['id'], recorded=r['count'], games=n))
+    # blocks excluded by the pre-D-022 rule (no fills allowed, 14 pairs required) while their games were still unverified
+    # are reinstated: the fill logic now completes them
+    for b in rows(conn, "SELECT b.id, b.excluded_reason FROM blocks b JOIN experiments e ON e.id=b.experiment_id WHERE e.status='running' AND e.protocol='v2' AND b.excluded_reason LIKE '%after 0 fills (min 14)'"):
+        conn.execute('UPDATE blocks SET excluded_reason=NULL, updated_at=? WHERE id=?', (now_iso(), b['id']))
+        db.event(conn, root, actor, 'block_reinstated', dict(block=b['id'], was=b['excluded_reason']))
+        summary.setdefault('migrated', []).append(dict(block=b['id'], reinstated=b['excluded_reason']))
+    for e in rows(conn, "SELECT id, params FROM experiments WHERE status='running' AND protocol='v2'"):
+        params = loads(e['params'], None) or dict(DEFAULT_PARAMS)
+        changed = {}
+        for old, new in zip(PARAMS_MIGRATIONS[::2], PARAMS_MIGRATIONS[1::2]):
+            if all(params.get(k) == v for k, v in old.items()):
+                changed.update(new)
+        if changed:
+            conn.execute('UPDATE experiments SET params=?, updated_at=? WHERE id=?', (db.j(dict(params, **changed)), now_iso(), e['id']))
+            db.event(conn, root, actor, 'params_migrated', dict(experiment=e['id'], changed=changed))
+            summary.setdefault('migrated', []).append(dict(experiment=e['id'], changed=changed))
+
+
 def run_cycle(conn, root, cfg, client, mode='shadow', actor='hub/executor', now=None, progress=None):
     """One reconciling cycle. `progress(phase, detail)` is called at phase boundaries and during long phases so the
     daemon can mirror what a slow server is costing (the cadence is a minimum gap between cycle starts, not a deadline)."""
@@ -1031,6 +1182,7 @@ def run_cycle(conn, root, cfg, client, mode='shadow', actor='hub/executor', now=
         summary['attention'].append(dict(kind='snapshot_failed', detail=str(s)))
         return summary
     summary['active'] = snap.active
+    summary['ranked_recent'] = ranked_recent(snap)
     if snap.history_incomplete:
         summary['attention'].append(dict(kind='quota_unknown', detail='history refresh cut short by the snapshot budget; no requests this cycle'))
     progress('reconcile')
@@ -1058,6 +1210,7 @@ def run_cycle(conn, root, cfg, client, mode='shadow', actor='hub/executor', now=
         for tx in open_txs(conn, 'switch'):
             close_tx(conn, tx['id'], 'restored by cycle')
     try:
+        migrate_params(conn, root, actor, summary)
         monitor_probation(conn, root, cfg, snap, client, actor, summary)
         evaluate(conn, root, cfg, snap, client, actor, summary)
         plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary)
