@@ -83,6 +83,17 @@ screen is met. Details and runtime fingerprints are in
 [the Tyr family notes](docs/tyr-family.md); match logs remain under ignored
 `build/tyr-*/` directories.
 
+Tyr V12 is a Devil-specific scouting arm: it scored **12–0** against Tyr V01
+across six fixed seeds and both seats on Devil in native mode, then **12–0**
+against the documented Yuna V05 Core finalist on the same Devil screen. Over all
+46 repository maps and both seats, it scored **50–42** against Yuna V05 with
+zero runner errors (one unseeded game per map-seat; 32–14 as Team A, 18–28
+as Team B). Across paired map outcomes, Tyr won 14, Yuna won 10, and 22
+split. Queen of Spades split 1–1. Sandbox faults remain; this preliminary
+screen does not promote V12 to the all-map frontier. Details are in
+[the Tyr family notes](docs/tyr-family.md); local results are under
+`build/tyr-v12-yuna-v05-allmaps-20260929/` and
+`build/tyr-v12-devil-vs-tyr1/`.
 ## How the frontier is defined
 
 For each bot, compare its expected score (win = 1, draw = 0.5, loss = 0)
