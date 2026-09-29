@@ -1,0 +1,12 @@
+name = "renoir-21a-attack0"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "head-on strike threshold 0.5->0.0 (take equal trades when supported)"
+expected_change = "total_share@250 up, enemy corpse pearls up; econ~ up slightly"
+hypothesis = ""
+params = ["attack_margin=0.0"]
+status = "candidate (not registered)"
+fingerprint = "8e89c22007747098c155555157022a641bfd71c86a89a2052560aa3816e5371a"

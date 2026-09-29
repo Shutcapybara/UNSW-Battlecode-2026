@@ -31,6 +31,7 @@ GEN_OPPS = ['yuna-v05-core', 'chaewon-y04-probe', 'fenrir-v18-arrival-ready-beds
 GEN_MAPS = sorted(str(Path(p).relative_to(ROOT / 'maps'))[:-4] for p in
                   glob.glob(str(ROOT / 'maps/new/*.map')) + glob.glob(str(ROOT / 'maps/var/*_tr.map')) +
                   glob.glob(str(ROOT / 'maps/pub/*_rec.map')))
+HEAVY = {'slithery_fight', 'schooltime', 'portals', 'pub/slithery_rec', 'pub/portals_rec', 'var/portals_tr'}
 CPU_MAPS = ['schooltime', 'portals', 'trauma', 'big_empty']
 RESULT = re.compile(r'team (A|B) wins after (\d+) rounds \(([^)]*)\)')
 RUNS = ROOT / 'build/ra/runs'
@@ -105,6 +106,8 @@ def cmd_run(a):
             fx = fx[::-1]
         todo = [f for f in fx if not (root / 'replays' / (f['game'] + '.replay')).exists()
                 and f['game'] not in claimed(root)]
+        if a.budget:  # chunked host: long games first, and never start one late (it would be killed)
+            todo.sort(key=lambda f: f['map'] not in HEAVY)
         print(f'[{panel}] {len(fx)} fixtures, {len(todo)} to run', flush=True)
         done = 0
         with open(root / f'index-{HOST}.jsonl', 'a') as idx, ThreadPoolExecutor(a.jobs) as ex:
@@ -115,6 +118,8 @@ def cmd_run(a):
                     if f is None:
                         return
                     if f['game'] in claimed(root):
+                        continue
+                    if a.budget and f['map'] in HEAVY and time.time() - t0 > max(5.0, a.budget - 90):
                         continue
                     live.add(ex.submit(run_one, f, root))
             fill()
@@ -237,6 +242,26 @@ def paired(Fc, Fp, key):
     return dict(better=b, same=int(len(m) - n), worse=w, p=round(p, 4))
 
 
+def bootstrap(Fc, Fp, n=400, seed=7):
+    """paired bootstrap over fixtures: 90% interval of the econ~ and win deltas"""
+    import numpy as np
+    k = ['seed', 'mapkey', 'opp', 'side']
+    cols = [c + '|n' for c in ECON]
+    m = Fc[k + cols + ['win']].merge(Fp[k + cols + ['win']], on=k, suffixes=('_c', '_p'))
+    if len(m) < 10:
+        return {}
+    rng = np.random.default_rng(seed)
+    C = m[[c + '_c' for c in cols]].to_numpy(float); P = m[[c + '_p' for c in cols]].to_numpy(float)
+    wc = m['win_c'].to_numpy(float); wp = m['win_p'].to_numpy(float)
+    de, dw = [], []
+    for _ in range(n):
+        i = rng.integers(0, len(m), len(m))
+        de.append(float(np.mean(np.nanmedian(C[i], axis=0) - np.nanmedian(P[i], axis=0))))
+        dw.append(float(wc[i].mean() - wp[i].mean()))
+    q = lambda a: [round(float(np.percentile(a, 5)), 3), round(float(np.percentile(a, 95)), 3)]
+    return {'econ~_delta_90': q(de), 'win_delta_90': q(dw), 'n': int(len(m))}
+
+
 def gate(sc, sp, gc, gp):
     """BENCHMARKS step 4 on the pool + non-negative gen. Returns (verdict, reasons)."""
     why, ok = [], True
@@ -289,6 +314,7 @@ def cmd_score(a):
                 Fp = normalise(Fp, panel)
                 res[panel]['parent'] = summary(Fp)
                 res[panel]['pairs'] = {k: paired(Fc, Fp, k) for k in ('pearls@100', 'total@100', 'units@100', 'win')}
+                res[panel]['boot'] = bootstrap(Fc, Fp)
                 # per-map econ delta (diagnostic)
                 mc = Fc.groupby('mapkey')['econ|n'].mean(); mp = Fp.groupby('mapkey')['econ|n'].mean()
                 res[panel]['map_econ_delta'] = {k: round(float(mc[k] - mp[k]), 3) for k in mc.index if k in mp.index}
@@ -318,6 +344,8 @@ def show(res):
         row('cand', res[panel]['cand']); row('parent', res[panel].get('parent'))
         if 'pairs' in res[panel]:
             print('  pairs ' + ' '.join(f"{k}:{v['better']}/{v['same']}/{v['worse']} p={v['p']}" for k, v in res[panel]['pairs'].items()))
+            if res[panel].get('boot'):
+                print('  bootstrap 90%: ' + json.dumps(res[panel]['boot']))
             print('  map econ delta ' + ' '.join(f'{k}:{v:+.3f}' for k, v in sorted(res[panel]['map_econ_delta'].items())))
     if 'verdict' in res:
         print('VERDICT', res['verdict'], '; '.join(res['why']))

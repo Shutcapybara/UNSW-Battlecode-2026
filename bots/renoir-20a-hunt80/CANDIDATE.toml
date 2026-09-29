@@ -1,0 +1,12 @@
+name = "renoir-20a-hunt80"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "hunters earlier: small dragons (len<=5) may target long enemy prey from round 80 (was 200)"
+expected_change = "enemy corpse pearls up, pearls@150/@250|map up; h2h_enemy deaths up"
+hypothesis = ""
+params = ["hunt_from=80"]
+status = "candidate (not registered)"
+fingerprint = "0de968c65d700e300da6f95533f5ce8f3ba2d9f5c31d9baa245fc9a24bdf21c6"

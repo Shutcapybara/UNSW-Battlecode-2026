@@ -1,0 +1,12 @@
+name = "renoir-17b-threat15"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "risk appetite: enemy threat cost x1.5"
+expected_change = "enemy-caused deaths down; econ sign unknown"
+hypothesis = ""
+params = ["threat_weight=1.5"]
+status = "candidate (not registered)"
+fingerprint = "517069e8a3ebb82dba4e83bd802aa22f7996c37f0245548f968954794322992e"

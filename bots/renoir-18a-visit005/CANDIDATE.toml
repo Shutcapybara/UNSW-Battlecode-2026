@@ -1,0 +1,12 @@
+name = "renoir-18a-visit005"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "revisit penalty 0.15->0.05"
+expected_change = "dragons stay on productive farms; pearls/100dt up"
+hypothesis = ""
+params = ["visit_weight=0.05"]
+status = "candidate (not registered)"
+fingerprint = "ac8ea654f0bd98cd8705b18008d59e1929fe6cd64ba191cbc30856efe7159ea5"

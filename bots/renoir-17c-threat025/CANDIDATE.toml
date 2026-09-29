@@ -1,0 +1,12 @@
+name = "renoir-17c-threat025"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "risk appetite: threat cost x0.25 (sweep continues 17a +0.021)"
+expected_change = "econ~ up further if monotone"
+hypothesis = ""
+params = ["threat_weight=0.25"]
+status = "candidate (not registered)"
+fingerprint = "d18aea0ebd846633accf48eac0d368fd1abca15a9a9cbe00627c039d1684a153"
