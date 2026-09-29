@@ -121,10 +121,79 @@ and Yuna experiments. The earlier three-map pilot is preserved in
 [`bc86c2ad.parquet`](game_stats/runs/bc86c2adc518428f8d77039e11111a97.parquet);
 its dominance findings are limited to those three maps.
 
+## Experimental C++ family: Ares
+
+Ares V01 copies Anna A02's C++ scaffold and adds safe split launches, escape-sized
+emergency splits, weak opening tie-breaks, and a soft recent-portal-return cost.
+On the seed-1 BENCHMARKS.md panel it scored **21 wins, 1 draw, 138 losses** in
+160 games, matching Anna A02 on the same fixtures. Its mean map-normalised
+pearl curve improved by 0.030 field medians, short of the +0.05 gate, while
+ally-body deaths rose 44.3%, over the 10% hygiene guardrail. Keep V01
+experimental and outside the all-map ratings. In a separate native seed-1
+screen, Tyr V12 swept Ares **20–0** across the same ten live maps, winning both
+seats on every map (unswbc 1.2.2). The source fingerprint, full scorecard, and
+matchup details are in [the Ares family notes](docs/ares-family.md) and
+[the V01 finding](docs/findings/2026-09-29-ares-v01-safe-launch-routing.md).
+
+Ares V02 is a separate experimental C++ translation of Tyr V12's policy on
+the Anna A02 scaffold, including sonar reports and newborn separation. Anna's
+hard safety tiers and room-valid split checks adapt Tyr's action ordering. It
+passes a C++20 executable compile-check. In a separate native seed-1 direct
+screen, Tyr V12 won Ares **20–0** across ten live maps and both seats (unswbc
+1.2.2); this one-opponent screen does not meet the fixed-panel acceptance
+benchmark. V02 is not ranked or admitted to the frontier. See the
+[V02 port notes](docs/ares-family.md#v02--tyr-v12-c-policy-port),
+[source snapshot](bots/ares-v02-tyr12-cpp-port/), and
+[matchup report](docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md).
+
+Ares V03 is a separate pure C++ port of Tyr V12's strategy on the Anna runtime
+scaffold. Anna's action tiers, nearby-enemy split veto, hard parent-room split
+gate, and atlas lookup are removed from the active policy. Tyr beat V03 **12–8**
+on the same ten live maps and both seats; the extractor processed all 20
+replays. This is still a one-seed direct screen, not the fixed-panel gate. V03
+remains experimental and is not admitted to the frontier. See the
+[V03 port notes](docs/ares-family.md#v03--pure-tyr-v12-c-policy-port),
+[source snapshot](bots/ares-v03-tyr12-pure-cpp-port/), and
+[matchup report](docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md).
+
+Ares V04 is the behavioral-parity C++ port of Tyr V12 on the Anna runtime
+scaffold. On identical ordered inputs from ten live maps and both seats, it
+matched all move, split, and sonar outputs across 168,123 turns from 5,089
+dragons, with zero divergences. Its seed-1 panel against the current eight-bot
+roster scored **117–43 with no draws** over 160 games. The absolute economy and
+hygiene scorecard does not establish the BENCHMARKS.md parent-relative gate;
+V04 remains experimental and is not admitted to the all-map frontier. See the
+[V04 notes](docs/ares-family.md#v04--tyr-v12-behavioral-parity-port),
+[source snapshot](bots/ares-v04-tyr12-behavior-parity/), and
+[parity and benchmark finding](docs/findings/2026-09-29-ares-v04-behavior-parity.md).
+
+Ares V05 fixes the inherited Tyr V12 zero-bed-wait division and newborn pearl-pause
+counter exceptions. Its seed-1 panel improved expected score slightly, but the
+normalized economy gain was +0.007 (below +0.05) and normalized r100 dragons
+fell. It remains experimental and is not submitted. See the [V05 notes](docs/ares-family.md#v05--separation-exception-fixes),
+[source snapshot](bots/ares-v05-tyr12-separation-bugfix/), and
+[bugfix finding](docs/findings/2026-09-29-ares-v05-separation-bugfix.md).
+
+Ares V06 restores larger bounded target/room/triple search and adds visible,
+size-matched allied support to threat scoring, drawing on Tyr, Bifröst, Skadi,
+and Fafnir experiments. Its seed-1 panel scored **122–38–0**, improving the
+V05 parent by 3.5 expected-score points. The normalized pearl mean rose only
++0.0133, below the +0.05 gate, while r100 dragons and length improved; all
+Tier-2 rates stayed within the 10% guardrail. Four sandbox Schooltime/Portals
+games had zero runner errors (p99 max-of-games 7.4M points, maximum 8.6M).
+V06 remains experimental and is not submitted or admitted to the frontier. See
+the [Ares V06 notes](docs/ares-family.md#v06--expanded-search-and-supported-threat-evaluation),
+[source snapshot](bots/ares-v06-expanded-search-support/), and
+[benchmark finding](docs/findings/2026-09-29-ares-v06-expanded-search-support.md).
+
 ## Defaults and upkeep
 
-The deployed contest version is not recorded here. [`comparison.toml`](comparison.toml)
-keeps Ouroboros V10, Hunter V14, Hunter V20, Fry V14, and Kraken V04 as controls.
+The contest API currently lists **Ares V04 — `ares-v04-tyr12-behavior-parity-ai`,
+submission v83 (ID 11244)** as active, uploaded 2026-09-29 06:47 UTC. The
+requested upload auto-activated when processed. This server deployment state
+does not promote V04 locally: it remains experimental and lacks the
+parent-relative acceptance result. [`comparison.toml`](comparison.toml) keeps
+Ouroboros V10, Hunter V14, Hunter V20, Fry V14, and Kraken V04 as controls.
 See [`docs/benchmarking.md`](docs/benchmarking.md) for the workflow,
 [`game_stats/README.md`](game_stats/README.md) for the ledger, and
 [`maps/new/EXPLAINER.md`](maps/new/EXPLAINER.md) for custom maps. Update this

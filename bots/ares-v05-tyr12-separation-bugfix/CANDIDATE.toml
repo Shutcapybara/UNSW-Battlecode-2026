@@ -1,0 +1,31 @@
+name = "ares-v05-tyr12-separation-bugfix"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v04-tyr12-behavior-parity"
+hypothesis = "Fix the two confirmed separation exceptions preserved by Ares V04 so newborn resource pauses and zero-wait bed scoring operate without falling back."
+mechanism = "Build on the exact V04 port; score a zero-wait bed at full value only when due now, and restore the bounded six-pearl newborn pause using the normal route/mask instead of raising on the missing Python global."
+expected_change = "Remove the two separation-triggered exception fallbacks without changing unrelated policy decisions; measure the intentional divergence and fixed-panel effect before any promotion."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+]
+summary = "Fixes Tyr V12 separation division-by-zero and missing-global fallback paths inherited by V04. Not submitted; V04 submission v83 remains untouched. Validation and benchmark results are recorded in the V05 finding."

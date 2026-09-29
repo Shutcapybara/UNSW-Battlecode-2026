@@ -106,3 +106,44 @@ replays/h, 9,000+ so far, no submission ids — the API dropped them on 28 Sep),
 split of labour that has worked: narrow, measured fixes on the bot from people who watch games; structure,
 instruments and the live pipeline from the director side. Both report through `docs/findings/` in the six-line
 format (what, the number, pairs, sandbox, what failed, next).
+
+
+### Ares V04 — Tyr V12 C++ parity port
+
+Ares V04 on the Anna A02 runtime scaffold now matches Tyr V12's move, split,
+and sonar outputs on identical ordered transcripts from ten live maps and both
+seats: 168,123 turns across 5,089 dragons with zero divergences. On the
+BENCHMARKS.md seed-1 panel (eight opponents × ten maps × both seats), it scored
+117–43 with no draws. The field-normalized pearl checkpoint mean was 1.090;
+r100 dragons were 1.118 and length 1.000. Its four principal self-inflicted death rates remain
+above their absolute targets (no-valid-action deaths are zero), and no
+parent-relative acceptance delta was measured, so it stays experimental. The
+requested upload completed as contest submission v83 (ID 11244), which the API
+lists as active; this server state is separate from local frontier promotion.
+Full parity scope and field-reference scorecard:
+[the V04 finding](findings/2026-09-29-ares-v04-behavior-parity.md).
+
+
+### Ares V05 — Tyr V12 separation exception fixes
+
+V05 fixes the zero-`bed_wait` division and the missing newborn resource-pause
+counter. On the matched 160-game seed-1 panel it scored 118–41–1 versus V04's
+117–43–0. The normalized pearl mean improved +0.007, but r100 units fell
+(1.118 to 1.071), so the documented +0.05/no-drop gate is not met. Tier-2
+self-inflicted death rates stayed within the 10% guardrail. V05 remains
+experimental; V04 and active submission v83 are unchanged. Details:
+[the V05 finding](findings/2026-09-29-ares-v05-separation-bugfix.md).
+
+
+### Ares V06 — expanded search and supported threat evaluation
+
+V06 restores bounded high-effort search settings from historical Tyr,
+Bifröst, and Skadi work, and adds Skadi/Fafnir size-matched threat support.
+Its seed-1 160-game panel scored 122–38–0 versus V05's 118–41–1. The
+normalized pearl mean rose +0.013, below the +0.05 acceptance gate, while
+r100 dragons rose from 1.071 to 1.200 and length from 1.009 to 1.035. No
+Tier-2 death rate rose more than 10%. Four dense-map sandbox matches completed
+with no timeout/crash errors (p99 max-of-games 7.4M points; maximum 8.6M).
+V06 remains experimental and is not submitted; no follow-up iteration was run.
+Details and artifacts:
+[the V06 finding](findings/2026-09-29-ares-v06-expanded-search-support.md).

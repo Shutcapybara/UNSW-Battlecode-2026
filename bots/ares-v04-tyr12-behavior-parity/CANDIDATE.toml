@@ -1,0 +1,30 @@
+name = "ares-v04-tyr12-behavior-parity"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "anna-a02-chassis"
+hypothesis = "A native C++ translation of Tyr V12's active policy on Anna A02's protocol scaffold can reproduce Tyr V12's ordered action and sonar outputs on identical input transcripts."
+mechanism = "Translate Tyr V12's policy and state-update semantics, including movement and split scoring, partial-body reconstruction, topology, radio freshness, crown memory, separation state, and fallback behavior; retain Anna's runtime adapter only."
+expected_change = "Exact action and sonar parity with Tyr V12 on the saved ten-map, two-seat transcripts; remain experimental pending the documented fixed-panel review."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+]
+summary = "Warning-clean C++20 build. Exact ordered action and sonar parity on ten live maps, both seats: 168,123 turns across 5,089 dragons with zero differences. Seed-1 fixed panel: 117 wins, 43 losses, no draws in 160 games; no parent-relative acceptance delta. Uploaded as active contest submission v83 (ID 11244); local frontier status remains experimental."

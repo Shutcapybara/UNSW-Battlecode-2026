@@ -1,0 +1,28 @@
+name = "ares-v02-tyr12-cpp-port"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "anna-a02-chassis"
+hypothesis = "A native C++ translation of Tyr V12's local target and movement policy on Anna A02's protocol-3 chassis will preserve its resource-routing and Devil scouting behavior without a Python runtime."
+mechanism = "Translate Tyr V12's discounted targets, hysteresis, direction EWMA, length/endgame valuation, split decisions, threat/trade scoring, sprint candidates, Devil bonuses, sonar food/density/crown/prey protocols, paired-portal sharing and newborn separation into C++; retain Anna's protocol, map atlas and room-safe action substrate."
+expected_change = "Provide a Python-free C++ policy with Tyr V12 local decision priorities; measure parity and performance separately before making strategy claims."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+]
+summary = "C++20 executable compile-check passed. Native seed-1 direct screen: Tyr V12 beat Ares V02 20-0 across ten live maps and both seats (unswbc 1.2.2). This is not the BENCHMARKS.md fixed-panel acceptance run. Anna's hard safety tiers and room-valid split checks make action ordering an adaptation, not exact Tyr V12 behavior."

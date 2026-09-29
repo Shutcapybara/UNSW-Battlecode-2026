@@ -1,0 +1,27 @@
+name = "ares-v01-safe-launch-routing"
+lineage = "ares"
+author = "codex/ares/C1-inspired"
+language = "c++"
+lineage_parent = "anna-a02-chassis"
+hypothesis = "A safe launch and recovery policy can keep the Anna C++ economy while lowering newborn, trapped, and rapid portal-return losses; a weak positive-only opening tie-break spreads resource access without sacrificing route length."
+mechanism = "Gate routine splits on a nearby known resource and allied-head clearance; choose an escape-sized child only when all immediate moves are blocked; add tiny identity-only opening target bonuses and a soft recent portal-return cost."
+expected_change = "Against the same fixed panel on the 10 live maps, raise the mean map-normalised pearl curve without lowering units or total length at r100; reduce newborn and self-inflicted deaths without more than a 10% rise in any Tier-2 rate; do not reduce panel score. Keep the atlas off on the generalisation panel."
+priority = 200
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 100, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/findings/2026-09-30-cx-c01-eff.md",
+    "docs/findings/2026-09-30-cx-d01-portals.md",
+    "docs/analysis/BENCHMARKS.md",
+]
+summary = "Seed-1 fixed panel on unswbc 1.2.1: 160 games each for Ares and Anna against the same 8 opponents x 10 live maps x 2 seats, plus 20 direct games. Economy gain +0.030 is below +0.05; ally-body deaths rise 44.3%; panel score matches Anna. Separate native screen vs Tyr V12 on unswbc 1.2.2: Tyr wins 20-0, both seats on all 10 live maps. Experimental; details in docs/findings/2026-09-29-ares-v01-safe-launch-routing.md."
