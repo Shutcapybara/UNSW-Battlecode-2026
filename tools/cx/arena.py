@@ -105,8 +105,12 @@ def _walk_portals(head, dirs, pe):
 
 
 def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool = False,
-             record: str | None = None, purge: bool = True, replay_out: str | None = None) -> dict:
-    """record: 'A' or 'B' to keep that team's transcripts (by dragon id)."""
+             record: str | None = None, purge: bool = True, replay_out: str | None = None,
+             meter_prefix: str | None = None) -> dict:
+    """record: 'A' or 'B' to keep that team's transcripts (by dragon id).
+    meter_prefix: collect stderr lines starting with this prefix from each bot
+    (one list per team, payload after the prefix). Used by meter.py's -DCX_METER
+    builds; stderr never reaches the engine or the replay, so it is free."""
     if sandbox:
         from unswbc.sandbox import SandboxBot, SandboxPool, WasmPool, warm_interpreter
         pool_type, bot_type = SandboxPool, SandboxBot
@@ -142,6 +146,7 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
     points = {"A": [], "B": []}
     boot = {"A": [], "B": []}   # first turn of each dragon (setup is charged)
     booted = set()
+    meter_lines = {"A": [], "B": []}
     deaths = []
     errors = []
     pe = _portal_edges(map_path)
@@ -202,6 +207,12 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
             eaten_cp[team][rnd] = eaten[team]
         if bot.error is not None:
             errors.append((rnd, did, team, bot.error))
+        if meter_prefix is not None:
+            drain = getattr(bot, "take_stderr", None)
+            if drain is not None:
+                for mline in drain().decode(errors="replace").splitlines():
+                    if mline.startswith(meter_prefix):
+                        meter_lines[team].append(mline[len(meter_prefix):].strip())
         m = getattr(bot, "live", None)
         if m and m[0]:
             points[team].append(m[0])
@@ -294,6 +305,7 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
         "sandbox": sandbox, "winner": res.winner, "end_reason": res.end_reason,
         "rounds": res.rounds + 1, "a_length": res.a_length, "b_length": res.b_length,
         "stats": stats, "deaths": deaths, "errors": errors[:50], "secs": round(time.time() - t0, 1),
+        "meter": meter_lines if meter_prefix else None,
         "transcripts": trans if record else None,
     }
 

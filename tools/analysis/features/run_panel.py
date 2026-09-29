@@ -45,6 +45,26 @@ def run(fx, root, exe, version, no_logs=False):
     row['replay'] = str(rep.relative_to(root))
     return row
 
+def prebuild(bots):
+    """Build every bot once, serially, before the parallel games start: two
+    concurrent `unswbc run` processes racing on the same .unswbc-build caused
+    Ares V04's transient startup error. A compile error fails loudly here
+    instead of as one failed fixture per game."""
+    try:
+        from unswbc.project import Project
+    except ImportError as e:
+        print(f"WARN prebuild skipped ({e}); first parallel games may race on .unswbc-build")
+        return
+    for b in sorted(set(bots)):
+        d = Path(b)
+        if not (d / 'bot.toml').is_file():
+            continue
+        try:
+            Project.from_dir(d).compile()
+        except Exception as e:  # ProjectError, ToolError, ...: any build failure is loud
+            raise SystemExit(f'BUILD FAILED {b}: {e}')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--panel', default='z1'); ap.add_argument('--jobs', type=int, default=2)
@@ -66,6 +86,7 @@ def main():
     todo = [f for f in fx if f['game'] not in skip and not (root / 'replays' / (f['game'] + '.replay')).exists()]
     if a.reverse:
         todo = todo[::-1]
+    prebuild({f[b] for f in fx for b in ('botA', 'botB')})
     print(f'{len(fx)} fixtures, {len(todo)} to run, {version}', flush=True)
     with open(root / 'index.jsonl', 'a') as idx, ThreadPoolExecutor(a.jobs) as ex:
         futs = [ex.submit(run, f, root, a.unswbc, version, a.no_logs) for f in todo]

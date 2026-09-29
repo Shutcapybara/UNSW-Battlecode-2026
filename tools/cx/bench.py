@@ -56,7 +56,7 @@ def _one(job: dict) -> dict:
             "errors": [e for e in r["errors"] if e[2] == us][:10], "secs": r["secs"]}
 
 
-def run(args) -> None:
+def run(args) -> int:
     maps = {"live": LIVE, "compact": COMPACT, "panel": PANEL, "var": PANEL_VAR + PANEL_PUB,
             "new": PANEL_NEW}.get(args.maps, None)
     opps = PANEL_OPPS if args.opp == "panel" else args.opp.split(",")
@@ -84,13 +84,15 @@ def run(args) -> None:
         k, n = map(int, args.shard.split("/"))
         todo = [j for i, j in enumerate(todo) if i % n == k]
     print(f"{len(jobs)} fixtures, {len(todo)} to run", flush=True)
-    # build each bot once before the pool starts (no concurrent compiles)
+    # build each bot once before the pool starts (no concurrent compiles); a
+    # compile error aborts the run instead of failing every fixture in flight
     from unswbc.run import _resolve
-    for b in {args.cand, *opps}:
+    for b in sorted({args.cand, *opps}):
         try:
             _resolve(b, args.sandbox)
         except Exception as e:
-            print("build failed", b, e, flush=True)
+            print(f"BUILD FAILED {b}: {e}", flush=True)
+            return 2
     with ProcessPoolExecutor(max_workers=args.jobs) as ex, out.open("a") as fh:
         futs = {ex.submit(_one, {"cand": args.cand, "opp": o, "map": m, "side": sd,
                                  "seed": s, "sandbox": args.sandbox,
@@ -194,7 +196,9 @@ def main() -> int:
     if args.summary:
         summary(args.summary, args.vs, args.key)
         return 0
-    run(args)
+    rc = run(args)
+    if rc:
+        return rc
     summary(args.out)
     return 0
 
