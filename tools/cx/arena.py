@@ -106,8 +106,12 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
     trans: dict[int, dict] = {}
     rows: dict[int, dict] = {}          # round -> team -> [units_seen, total_len]
     last: dict[int, tuple] = {}         # dragon -> (length, spent_by_action)
+    sprint = {"A": 0, "B": 0}           # segments spent on sprints (MOVE n>1), whole game
+    sprint100 = {"A": 0, "B": 0}
     eaten = {"A": 0, "B": 0}
     eaten100 = {"A": 0, "B": 0}
+    eaten_cp = {"A": {}, "B": {}}   # cumulative pearls at r50/r100/r150/r250
+    portal_steps = {"A": 0, "B": 0}
     first_pearl = {"A": None, "B": None}
     turns = {"A": 0, "B": 0}
     points = {"A": [], "B": []}
@@ -168,6 +172,12 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
                     if (key[0] == "h" and key[1:] in ph) or (key[0] == "v" and key[1:] in pv):
                         ds["portal"] = rnd
         last[did] = (ln, spent)
+        if spent and act.startswith("M"):
+            sprint[team] += spent
+            if rnd <= 100:
+                sprint100[team] += spent
+        if rnd in (50, 100, 150, 250):
+            eaten_cp[team][rnd] = eaten[team]
         if bot.error is not None:
             errors.append((rnd, did, team, bot.error))
         m = getattr(bot, "live", None)
