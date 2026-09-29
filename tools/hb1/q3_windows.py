@@ -23,10 +23,9 @@ DEC = ('gate', 'direction', 'alloc')
 
 
 def gbt(Xa, ya, Xb, yb):
-    from sklearn.ensemble import HistGradientBoostingClassifier
     if len(np.unique(ya)) < 2 or len(yb) == 0:
         return None
-    m = HistGradientBoostingClassifier(max_iter=120, max_leaf_nodes=63, random_state=Q1.SEED).fit(Xa, ya)
+    m = Q1._XGB(120).fit(Xa, ya)
     return float((m.predict(Xb) == yb).mean())
 
 

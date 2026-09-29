@@ -101,11 +101,34 @@ def fit_tree(Xtr, ytr, Xte, yte, depth=4):
     return m, m.predict_proba(Xte)
 
 
+class _XGB:
+    """XGBoost on the GPU with HistGBT-like settings (63 leaves, lr 0.1, early stop on 10 %), sklearn-shaped.
+    The desktop's cores are shared with the R-lane panels; CPU boosting starves there."""
+
+    def __init__(self, iters):
+        self.iters = iters
+
+    def fit(self, X, y):
+        import xgboost as xgb
+        self.classes_ = np.unique(y)
+        yi = np.searchsorted(self.classes_, y)
+        va = np.random.default_rng(SEED).random(len(yi)) < 0.1
+        obj = dict(objective='binary:logistic') if len(self.classes_) == 2 else dict(objective='multi:softprob')
+        self.m = xgb.XGBClassifier(device='cuda', tree_method='hist', grow_policy='lossguide', max_leaves=63,
+                                   max_depth=0, learning_rate=0.1, n_estimators=self.iters, early_stopping_rounds=15,
+                                   random_state=SEED, **obj)
+        self.m.fit(X[~va], yi[~va], eval_set=[(X[va], yi[va])], verbose=False)
+        return self
+
+    def predict_proba(self, X):
+        return self.m.predict_proba(X)
+
+    def predict(self, X):
+        return self.classes_[self.predict_proba(X).argmax(1)]
+
+
 def fit_gbt(Xtr, ytr, Xte, yte, iters=300):
-    from sklearn.ensemble import HistGradientBoostingClassifier
-    m = HistGradientBoostingClassifier(max_iter=iters, learning_rate=0.1, max_leaf_nodes=63, early_stopping=True,
-                                       validation_fraction=0.1, n_iter_no_change=15, random_state=SEED)
-    m.fit(Xtr, ytr)
+    m = _XGB(iters).fit(Xtr, ytr)
     return m, m.predict_proba(Xte)
 
 
