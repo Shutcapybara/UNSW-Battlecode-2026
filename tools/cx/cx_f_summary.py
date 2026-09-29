@@ -86,14 +86,16 @@ def main():
     summary = {"generated": "2026-09-30", "task": "C1-F",
                "base": "bots/cx-f00-base (= anna-a02-chassis + ATLAS_ENABLED)",
                "arms": {}}
+    base_off = load("f00-off-live")
     for a in arms:
         rows = load(f"{a}-live")
         if not rows:
             continue
+        base = base_off if a.endswith("-off") else base_live  # match the atlas cell
         entry = {"n_live": len(rows),
-                 "pairs": {k: pairs(base_live, rows, k) for k in
+                 "pairs": {k: pairs(base, rows, k) for k in
                            ("len_r100", "eaten_r100", "units_r100", "len_r250", "win")},
-                 "portal": portal_stats(base_live, rows)}
+                 "portal": portal_stats(base, rows)}
         prows = load(f"{a}-panel") if "-noatlas" in a or a in ("f05-off",) else load(f"{a}-panel")
         # panel arm files: fXX-noatlas panel runs are named fXXb-panel etc; keep simple:
         summary["arms"][a] = entry

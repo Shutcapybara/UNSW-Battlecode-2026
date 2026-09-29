@@ -2467,28 +2467,28 @@
    "n_live": 240,
    "pairs": {
     "len_r100": {
-     "b": 113,
-     "s": 20,
-     "w": 107,
-     "p": 0.7361
+     "b": 49,
+     "s": 137,
+     "w": 54,
+     "p": 0.6937
     },
     "eaten_r100": {
-     "b": 106,
-     "s": 9,
-     "w": 125,
-     "p": 0.2362
+     "b": 47,
+     "s": 139,
+     "w": 54,
+     "p": 0.5507
     },
     "units_r100": {
-     "b": 87,
-     "s": 60,
-     "w": 93,
-     "p": 0.7095
+     "b": 42,
+     "s": 145,
+     "w": 53,
+     "p": 0.3049
     },
     "len_r250": {
-     "b": 97,
-     "s": 43,
-     "w": 100,
-     "p": 0.8867
+     "b": 77,
+     "s": 85,
+     "w": 78,
+     "p": 1.0
     },
     "win": {
      "b": 0,
@@ -2499,115 +2499,115 @@
    },
    "portal": {
     "steps": [
-     3100,
+     2363,
      2399
     ],
     "deaths": [
-     804,
+     503,
      473
     ],
     "per100": [
-     25.9,
+     21.3,
      19.7
     ],
     "eaten_r100": [
-     15075,
+     13712,
      13540
     ],
     "sprint_per_pearl": 0.0,
     "per_map": {
      "portals": {
       "steps": [
-       562,
+       762,
        765
       ],
       "deaths": [
-       79,
+       166,
        153
       ],
       "eaten": [
-       306,
+       389,
        373
       ],
       "sprint": 0,
       "per100": [
-       14.1,
+       21.8,
        20.0
       ]
      },
      "schooltime": {
       "steps": [
-       567,
+       233,
        186
       ],
       "deaths": [
-       159,
+       53,
        53
       ],
       "eaten": [
-       2058,
+       1519,
        1497
       ],
       "sprint": 0,
       "per100": [
-       28.0,
+       22.7,
        28.5
       ]
      },
      "default": {
       "steps": [
-       210,
+       188,
        197
       ],
       "deaths": [
-       64,
+       47,
        42
       ],
       "eaten": [
-       571,
+       525,
        530
       ],
       "sprint": 0,
       "per100": [
-       30.5,
+       25.0,
        21.3
       ]
      },
      "autarky": {
       "steps": [
-       289,
+       170,
        185
       ],
       "deaths": [
-       64,
+       36,
        36
       ],
       "eaten": [
-       905,
+       864,
        863
       ],
       "sprint": 0,
       "per100": [
-       22.1,
+       21.2,
        19.5
       ]
      },
      "trauma": {
       "steps": [
-       132,
+       351,
        384
       ],
       "deaths": [
-       6,
+       21,
        6
       ],
       "eaten": [
-       141,
+       173,
        173
       ],
       "sprint": 0,
       "per100": [
-       4.5,
+       6.0,
        1.6
       ]
      },
@@ -2617,7 +2617,7 @@
        18
       ],
       "deaths": [
-       4,
+       0,
        0
       ],
       "eaten": [
@@ -2626,64 +2626,64 @@
       ],
       "sprint": 0,
       "per100": [
-       26.7,
+       0.0,
        0.0
       ]
      },
      "slithery_fight": {
       "steps": [
-       617,
+       330,
        300
       ],
       "deaths": [
-       188,
+       69,
        67
       ],
       "eaten": [
-       7225,
+       6956,
        6805
       ],
       "sprint": 0,
       "per100": [
-       30.5,
+       20.9,
        22.3
       ]
      },
      "queen_of_spades": {
       "steps": [
-       639,
+       271,
        299
       ],
       "deaths": [
-       215,
+       102,
        97
       ],
       "eaten": [
-       944,
+       482,
        507
       ],
       "sprint": 0,
       "per100": [
-       33.6,
+       37.6,
        32.4
       ]
      },
      "trophy": {
       "steps": [
-       69,
+       43,
        65
       ],
       "deaths": [
-       25,
+       9,
        19
       ],
       "eaten": [
-       1298,
+       1338,
        1344
       ],
       "sprint": 0,
       "per100": [
-       36.2,
+       20.9,
        29.2
       ]
      },
@@ -2697,7 +2697,7 @@
        0
       ],
       "eaten": [
-       1411,
+       1250,
        1247
       ],
       "sprint": 0,
@@ -2725,5 +2725,79 @@
    "p": 0.5258
   },
   "note": "on-panel vs off-panel: the atlas matches nothing off-pool (mirrored/transposed/new); differences are engine-path noise from the ~4% of games where a view coincidentally matched"
+ },
+ "f05_panel_cells": {
+  "on": {
+   "len_r100": {
+    "b": 264,
+    "s": 237,
+    "w": 243,
+    "p": 0.3744
+   },
+   "eaten_r100": {
+    "b": 242,
+    "s": 246,
+    "w": 256,
+    "p": 0.5602
+   },
+   "units_r100": {
+    "b": 249,
+    "s": 267,
+    "w": 228,
+    "p": 0.3598
+   }
+  },
+  "off": {
+   "len_r100": {
+    "b": 270,
+    "s": 228,
+    "w": 246,
+    "p": 0.3113
+   },
+   "eaten_r100": {
+    "b": 244,
+    "s": 236,
+    "w": 264,
+    "p": 0.3993
+   },
+   "units_r100": {
+    "b": 258,
+    "s": 261,
+    "w": 225,
+    "p": 0.1453
+   }
+  }
+ },
+ "f02_replay_crosscheck": {
+  "base": {
+   "games": 48,
+   "steps_game_med": 8,
+   "near_deaths": 153,
+   "per100": 20.5,
+   "wall": 21,
+   "self": 0,
+   "h2h": 61,
+   "same_pair_doubles": 40
+  },
+  "f02d": {
+   "games": 48,
+   "steps_game_med": 2,
+   "near_deaths": 112,
+   "per100": 21.2,
+   "wall": 19,
+   "self": 0,
+   "h2h": 45,
+   "same_pair_doubles": 39
+  },
+  "verified_walks": 1776964,
+  "mismatches": 0
+ },
+ "sandbox_probes": {
+  "cx-f00-base": "p50 3.9M p99 4.6M max 4.9M faults 0",
+  "cx-f01-escape": "p50 3.9M p99 4.7M max 4.9M faults 0",
+  "cx-f02d-memoryonly": "p50 3.9M p99 4.8M max 5.1M faults 0",
+  "cx-f03b-closerace": "p50 3.9M p99 4.7M max 4.9M faults 0",
+  "cx-f04-kelp": "p50 3.9M p99 4.6M max 4.9M faults 0",
+  "cx-f05-combined": "p50 3.9M p99 4.7M max 4.9M faults 0"
  }
 }

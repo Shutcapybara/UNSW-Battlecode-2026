@@ -84,8 +84,16 @@ The atlas finding is the one positive discovery: on the chassis it buys +17% pea
 (p=0.08) and doubles portal deaths (p=0.000) — remembered landings make transits
 tempting but not safe. Off-pool it matches nothing (683/744 identical to atlas-off).
 
-## In flight
+## Final state (30 Sep) — task complete
 
-f05 4-cell matrix (~2000 games); F-2 replay cross-check (portal_deaths.py on saved
-replays, base vs f02d); f05 sandbox probe; then findings finalize, summary JSON,
-CANDIDATE decision (likely: none passes → no registration; report negatives), commit.
+- f05 four-cell matrix done: neutral in every cell (live on 37/166/37 p=1.0; live off
+  49/137/54 p=0.69; panel on 264/237/243 p=0.37; panel off 270/228/246 p=0.31), zero
+  regressions, probe p50 3.9M / p99 4.7M / max 4.9M / 0 faults.
+- F-2 replay cross-check (C1-D instrument, 889k verified walks): base 8 steps/game,
+  20.5/100, doubles 40 → f02d 2 steps/game, 21.2/100, doubles 39 — volume throttle,
+  rate flat, the doubles leak does not exist at chassis volume.
+- Findings complete: `docs/findings/2026-09-30-cx-f01-leaks.md` (§1 tables, per-fix
+  verdicts with falsifiers, f05 matrix, probes, the director's read). Shared summary:
+  `game_stats/runs/cx-f-benchmarks-20260930.json`. **No CANDIDATE.toml — no fix met
+  its acceptance bar; nothing promoted.** The deliverable for C1-B is the measured
+  switch set on `bots/cx-f05-combined` + the negative-results map + `exit_known(pair)`.
