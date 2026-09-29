@@ -197,17 +197,37 @@ def detect(g):
                 sup[t].add(i)
         sA, sB = len(sup['A']), len(sup['B'])
         # ---- first adjacency => initiator; first contact => closer ----
+        # adjacency is checked on POST-move positions (snapshot r+1 for survivors, the death
+        # cell for heads that died that round): heads that collide mid-round never sit <= 1
+        # apart in a start-of-round snapshot.
+        def _after(i, r):
+            nxt = heads[r + 1] if r + 1 <= R else {}
+            if i in nxt:
+                return nxt[i][1]
+            rec = died.get(i)
+            return rec['head'] if rec and rec['round'] == r else None
+
         first_adj, initiator, closer = None, None, None
-        for r in range(r0, rE + 1):
+        for r in range(r0, min(rE, R - 1) + 1):
             aliv = [(i, heads[r][i][1]) for i in partsA if i in heads[r]]
             bliv = [(i, heads[r][i][1]) for i in partsB if i in heads[r]]
             if not aliv or not bliv:
                 continue
-            dmin, (ia, pa), (ib, pb) = min((wd(a[1], b[1], W, H), a, b) for a in aliv for b in bliv)
+            post = {i: _after(i, r) for i, _ in aliv + bliv}
+            if any(p is None for p in post.values()):
+                continue
+            best = min((wd(post[a], post[b], W, H), a, b) for (a, _) in aliv for (b, _) in bliv)
             if r == r0:
+                d0, (ia, _), (ib, _) = min((wd(pa[1], pb[1], W, H), pa, pb) for pa in aliv for pb in bliv)
                 closer = _closer(heads, ia, ib, r0, W, H)
-            if dmin <= 1:
-                first_adj, initiator = r, (_closer(heads, ia, ib, r, W, H) or 'even')
+            if best[0] <= 1:
+                first_adj = r
+                _, ia, ib = best
+                pre_a, pre_b = heads[r][ia][1], heads[r][ib][1]
+                prev = wd(pre_a, pre_b, W, H)
+                da = prev - wd(post[ia], pre_b, W, H)
+                db = prev - wd(pre_a, post[ib], W, H)
+                initiator = 'A' if da > db else 'B' if db > da else 'even'
                 break
         # ---- participant deaths in the resolve window ----
         d = {'A': 0, 'B': 0}
@@ -437,7 +457,7 @@ def _cohort_block(sd, universe):
         b['synch_share'], _, _ = _prop_ci(gw['spread'] <= 1)      # entries into the window within 1 round
         b['rays_pre_per_head'] = float(gg['rays'].sum() / gg['den'].sum()) if gg['den'].sum() else float('nan')
         b['pearl_delta_next10'], _, _ = _mean_ci(gg['p10'] - gg['opp_p10'])
-        b['lenlost_delta_next10'], _, _ = _mean_ci(gg['own_ll10'] - gg['opp_ll10'])
+        b['lenlost_delta_next10'], _, _ = _mean_ci(gg['ll10'] - gg['opp_ll10'])
         b['bed_flip_share'], _, _ = _prop_ci(gg['bed_flip'])
         out[c] = b
     return out

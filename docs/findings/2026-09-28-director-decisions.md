@@ -483,3 +483,18 @@ an unseen test and leave the generalisation panel.
 **Falsifiers:** Ares V06 failing the dev screen against 545 (then the local panel has been fooling us again);
 a depth rung that raises the panel expected score but not the unseen-panel numbers (memorised pool); any sandbox
 max over 80 M on the dense fixtures.
+
+**D-029 addendum — C1-F read (29 Sep 12:10 UTC).** GLM's leak fixes are in (`docs/findings/2026-09-30-cx-f01-leaks.md`,
+merged from `cx/f`; main's C1-B versions of `tools/cx/{arena,bench,ablate}.py` were kept where the two branches
+conflicted — `benchmarks_table.py` and `cx_f_summary.py` came in intact; reconcile the tool divergence when either
+tool is next touched). Verdict: **no fix passes on the chassis, because the chassis does not have the leaks** —
+it transits 6 times a game where yuna transits 75 on Portals, its trapped losses are small, it never sprints
+usefully. F-1 neutral (37/167/36); F-2 rejected in five configurations, all reducing to a volume throttle (steps −31 %,
+deaths −30 %, per-step flat, pearls −4.4 %: the sakura trap), confirmed with the replay-level instrument; F-3
+negative; F-4 never flips a decision. Two findings stand regardless: the atlas is an *economy* switch, not a safety
+switch (+17 % pearls, doubled portal deaths, inert off-pool — the generalisation panel is a real gate, 35/683/26);
+and gating the trapped split by room size is fatal on Slithery (it is the survival pump: 356 trapped vs 27 greedy
+splits per 100 rounds). The delivered plumbing (`pair_mem`, `exit_known(pair)`, one-ray probe with echo attribution,
+enclosure probe, corpse gate) is all `params.hpp` switches. **Consequence:** this is the strongest evidence yet for
+D-029.4 — the leaks are in the Tyr/yuna lineage code and must be fixed there. The F-1/F-2 switches are re-tested on
+Ares V06 at its real transit volume (49/game live), where C1-D's numbers say the gates pay.
