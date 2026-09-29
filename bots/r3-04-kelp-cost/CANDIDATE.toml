@@ -1,0 +1,26 @@
+name = "r3-04-kelp-cost"
+lineage = "ares"
+author = "glm/r3"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "On cramped ground (room flood below need), a landing with fewer than 3 known-open edges is a kelp corridor mouth; a small surcharge steers cramped steps to the roomiest cell - the F-4 analog re-targeted at Ares's wall leak (8.2/1k pooled, 29.5/1k on Slithery)."
+mechanism = "Ares V06 + r3_kelp_cost: inside the existing trap penalty (area < need), count the landing's known-open edges; below r3_kelp_min_edges the path pays r3_kelp_penalty on top of the trap weight."
+expected_change = "Targeted row: wall len/1k falls from 19.8 pooled (Slithery worst) without pearls/100dt dropping; identical decisions elsewhere (on the chassis this rule never flipped a decision - the room tie-break already covered it; the Ares test may measure the same no-op)."
+priority = 220
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-r3-ares-leaks.md",
+    "docs/findings/2026-09-30-cx-f01-leaks.md",
+    "docs/findings/2026-09-30-cx-c01-eff.md",
+    "docs/findings/2026-09-30-cx-d01-portals.md",
+]
+summary = "FAIL on the gate, hold-shape trade: the biggest row movements of the four switches - wall 19.8->14.5 len/1k (-27%), trapped 36.1->25.4 (-30%), newborn 19.3->16.4 (-15%), wall deaths 8.2->6.1/1k - at economy 1.1107->1.0388 (-0.072) and win share -7.81pp. The hygiene-for-economy trade BENCHMARKS forbids. Unlike the portal switches this is not volume throttling."
