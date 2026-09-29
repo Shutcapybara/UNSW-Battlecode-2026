@@ -401,6 +401,37 @@ def git_check(root, cfg, state, log):
     return out
 
 
+def mode_check(root, cfg, state, log):
+    """Director-requested executor mode (`<mirror>/control/mode.json`: {"mode": "off|shadow|auto|live", "by": …, "note": …}).
+
+    Writes `[executor] mode` into HUB/hub.toml (the same knob `hubctl executor set-mode` sets) and restarts the daemon so
+    the new mode takes effect on the next serve. `shadow` keeps harvest, corpus, register and git running but posts
+    nothing: no uploads, no game requests, no activations (D-031: teammates own the submission interface)."""
+    ctl = Path(cfg['paths']['mirror']) / 'control'
+    req = ctl / 'mode.json'
+    if not req.exists():
+        return None
+    try:
+        body = json.loads(req.read_text())
+    except ValueError:
+        body = {}
+    mode = str(body.get('mode', '')).strip()
+    if mode not in ('off', 'shadow', 'auto', 'live'):
+        out = dict(at=db.now_iso(), note=body.get('note'), error=f'mode must be off|shadow|auto|live, got {mode!r}')
+    else:
+        from .config import set_mode
+        set_mode(root, mode)
+        conn = db.connect(root)
+        db.event(conn, root, body.get('by') or 'hub/actuator/mode-request', 'set_mode', dict(mode=mode, previous=state.get('configured'), note=body.get('note')))
+        conn.close()
+        out = dict(at=db.now_iso(), note=body.get('note'), mode=mode, previous=state.get('configured'), restart=True)
+        state['restart'] = f'set_mode {mode}'
+    (ctl / 'mode.done.json').write_text(json.dumps(out, indent=1, default=str))
+    req.unlink(missing_ok=True)
+    log(f"mode request: {out.get('mode') or out.get('error')}")
+    return out
+
+
 GATE_TESTS = ['tests.test_hub_core', 'tests.test_hub_git', 'tests.test_hub_legacy_ops', 'tests.test_hub_executor', 'tests.test_hub_daemon', 'tests.test_hub_quota_filler', 'tests.test_hub_discord_bot', 'tests.test_hub_api']
 
 
