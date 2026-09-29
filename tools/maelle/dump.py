@@ -14,7 +14,7 @@ import numpy as np
 
 MAGIC = 0x31444c4d
 TNAMES = ["food", "food_unseen", "ally", "enemy", "threat", "death", "age", "food_sat", "food_clock",
-          "ally_clock", "enemy_clock", "sparse"]
+          "ally_clock", "enemy_clock", "sparse", "food_free"]  # maelle-02 dumps carry the first 12
 MNAMES = ["food", "ally", "enemy", "threat", "death", "age"]
 TCOLS = ["logscore", "steps", "pearl_now", "memory", "bed", "unseen"] + TNAMES
 MCOLS = ["score", "steps"] + MNAMES
@@ -43,6 +43,7 @@ def tables(paths):
     for gi, p in enumerate(paths):
         for dec, (h, rows) in enumerate(read(p)):
             cols = TCOLS if h["kind"] == 0 else MCOLS
+            cols = (cols + [f"x{k}" for k in range(len(cols), rows.shape[1])])[:rows.shape[1]]
             df = pd.DataFrame(rows, columns=cols)
             df["chosen"] = (np.arange(h["n"]) == h["chosen"]).astype(np.int8)
             for k in ("rnd", "me", "team", "len", "units", "why"):
@@ -60,6 +61,8 @@ def stats(paths):
             continue
         print(f"== {name}: {df['dec'].nunique()} decisions, {len(df)} rows")
         for f in feats:
+            if f not in df:
+                continue
             x = df[f].to_numpy()
             nz = x[x > 0]
             q = np.percentile(nz, [10, 50, 90]) if len(nz) else [0, 0, 0]

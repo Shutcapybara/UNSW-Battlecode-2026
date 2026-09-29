@@ -318,8 +318,10 @@ def cmd_selfplay(a):
                 R.append(dict(file=fi, me=me, rnd=r0, logscore=float(row[0]), steps=float(row[1]),
                               pearl_now=float(row[2]), memory=float(row[3]), bed=float(row[4]), unseen=float(row[5]),
                               eaten=max(0, eaten), died=int(died), len=h['len'],
-                              **{n: float(row[6 + k]) for k, n in enumerate(TNAMES)}))
+                              **{n: float(row[6 + k]) for k, n in enumerate(TNAMES) if 6 + k < len(row)}))
     D = pd.DataFrame(R)
+    if 'food_free' not in D:  # maelle-02 dumps predate the feature: food_unseen * (1 - ally)
+        D['food_free'] = D['food_unseen'] * (1.0 - D['ally'])
     OUT.mkdir(parents=True, exist_ok=True)
     D.to_parquet(OUT / 'selfplay_outcomes.parquet')
     feats = a.features.split(',')

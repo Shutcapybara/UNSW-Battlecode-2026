@@ -28,3 +28,24 @@ The desktop is shared with lanes hb1, rb, rc (load average 97–130 on 16 cores 
 
 | Version | Feature | Ledger row | Fitted weight [interval] | Surface | Pool Δecon~ [90 %] | Gen Δecon~ [90 %] | Per-checkpoint | CPU max | Verdict |
 |---|---|---|---|---|---|---|---|---|---|
+
+## Priors (fit.py, corpus, 30 Sep)
+
+Conditional logit over "which known pearl a top-30 dragon ate first" (candidates: pearls it knows within BFS 20;
+features rebuilt from its own 7×7 views with state.hpp's rules; controls: steps, visible, ally/enemy head nearer).
+Implied bot weight w = b · log(0.93) / b_steps (bootstrap by game, 90 %). Pearl targets only — says nothing about
+bed/unseen targets (`food_free`'s scope).
+
+| Feature | top-30 sides (106 games, 107,939 decisions) | winning top-30 sides (56 games, 74,526) |
+|---|---|---|
+| steps (b) | −1.24 [−1.30, −1.15] | −1.29 [−1.35, −1.20] |
+| food | −0.082 [−0.170, +0.022] | −0.087 [−0.163, +0.011] |
+| ally | −0.061 [−0.143, +0.016] | **−0.067 [−0.175, −0.006]** |
+| enemy | **−0.025 [−0.033, −0.018]** | **−0.027 [−0.036, −0.016]** |
+| threat | +0.008 [−0.005, +0.031] | +0.006 [−0.004, +0.030] |
+| death | +0.006 [−0.004, +0.014] | **+0.016 [+0.005, +0.023]** |
+| food·ally | +0.040 [−0.042, +0.126] | +0.044 [−0.027, +0.153] |
+
+Reading: top sides are distance-dominated; conditional on distance they shade away from ally- and enemy-dense
+pearls (the crowding / risk costs have the expected sign) and slightly toward death cells (corpse food). All
+implied weights are small in bot units (|w| < 0.1), so the scans centre near zero for pearl-scoped features.
