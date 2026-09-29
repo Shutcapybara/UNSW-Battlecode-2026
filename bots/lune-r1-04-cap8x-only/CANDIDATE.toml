@@ -1,0 +1,14 @@
+name = "lune-r1-04-cap8x-only"
+lineage = "lune"
+author = "claude-opus-5.5/lune"
+language = "c++"
+lineage_parent = "lune-r1-00-base"
+hypothesis = "R-1 search-depth ladder on Ares V06: does more bounded search (the only lever with a measured positive slope) keep paying, and where is the CPU wall?"
+mechanism = "R-1 decomposition: only the target-search node caps x8 (1280/512/480, late 384, sparse 512)."
+expected_change = "target-search cap x8; see docs/findings/2026-09-30-r1-search-ladder.md"
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-09-30-r1-search-ladder.md", "docs/findings/2026-09-29-ares-v06-expanded-search-support.md"]
+summary = "Lune lineage (Claude Opus 5.5). Params-only change from the parent; all runs atlas-off (the atlas is dead code)."

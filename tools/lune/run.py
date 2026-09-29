@@ -83,7 +83,7 @@ def main() -> int:
     for b in {a.cand, *opps}:
         _resolve(b, a.sandbox)
     est, ran = a.est, 0
-    with ProcessPoolExecutor(max_workers=a.jobs) as ex, out.open("a") as fh:
+    with ProcessPoolExecutor(max_workers=a.jobs, max_tasks_per_child=1) as ex, out.open("a") as fh:
         running = {}
         it = iter(todo)
         def fill():
