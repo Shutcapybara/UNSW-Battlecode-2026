@@ -79,6 +79,81 @@ Several measured variants tried to stop dragons from leaving a portal room and q
 
 The Queen of Spades screens were unseeded and showed substantial run-to-run variation. The V08 return penalty is a targeted heuristic, not a hard prohibition; its full-panel Queen result did not improve over Yuna. Tyr V12 also split 1–1 against Yuna V05 on Queen of Spades in the all-map screen; no replay was retained, so this does not verify or resolve the reported portal re-entry sequence. The explicit return guards are retained as research arms, not merged into V01. In the two V01-versus-Yuna Queen replays reviewed, an approximate five-round/four-tile detector found no rapid room return by either bot. Those replays do not validate the user-observed sequence; no matching replay was supplied.
 
+## Live loss review follow-up
+
+`tyr-v16-live-loss-response` is a V01-based research candidate for the 28
+September replay observations in
+[`2026-09-29-tyr-v01-live-loss-review.md`](findings/2026-09-29-tyr-v01-live-loss-review.md).
+It adds pearl-funded enemy sprint reach and raises the risk assigned to those
+specific paths, earlier unpaired portal valuation plus a weak ID-based opening
+lane cue, and a checked escape split when no movement leaves body-sized
+reachable room. The split search chooses the largest tail group with enough
+flood-filled space to leave.
+
+On 2026-09-29, V16 scored **7–11** against V12 over 18 native games on the nine
+maps named in the review, with both starting sides and zero runner errors.
+Results split 1–1 on Autarky, Default, Dilemma, Portals, Queen of Spades,
+Slithery Fight, and Trophy; V12 swept Devil and Trauma 2–0 each. This was one
+unseeded game per map and side under `unswbc 1.2.2`, without sandbox limits.
+The run is `build/tyr-v16-vs-v12-loss-review-20260929/`, ID
+`7d8b117e3b824f1fa699cc5e2421bf90`; its manifest input hash is
+`1ed074d9aa6b5aa8eaa856a1240448181102ca12a3d61a5aee6be1a3bddce2ac`.
+
+This focused screen does not establish an all-map ranking or validate the
+individual mechanisms. Keep V01 as the all-map baseline and V12 as the Devil
+specialist. Follow up with a matched V01 comparison and wider opponent panel;
+report portal/center arrival and pearl lead by round 30, dead-end segment loss,
+largest-dragon survival, wall deaths, and runtime faults separately. V16 has no
+frontier ELO or promotion claim.
+
+### V12 matchup iterations
+
+The first V12 follow-ups used the same nine maps and both seats, then moved to
+paired fixed seeds after a byte-for-byte V12 clone (`tyr-v24-v12-mirror-control`)
+scored 11–7 in an unseeded screen. That mirror result showed how much an
+unseeded result can vary.
+
+| Candidate | Focus | Result against V12 |
+|---|---|---|
+| V17 | Earlier feeding plus broad opening, threat, and escape changes | 6–12, unseeded; rejected. |
+| V18 | Isolated 40-round earlier feeding | 9–9, then 6–12 on a repeat unseeded screen; feeding won Slithery Fight and Trauma repeatedly but hurt other maps. |
+| V19 | V18 plus pearl-funded sprint threat | 6–12, unseeded; rejected. |
+| V20 | Isolated early portal value increase | 8–10, unseeded; rejected. |
+| V21/V22 | Earlier feeding combined with stronger/weaker portal value | 7–11 and 6–12, unseeded; interaction did not preserve the individual gains. |
+| V23 | Gate earlier feeding to Slithery Fight and Trauma | 13–23 across two paired seeds; rejected. |
+| V25 | Isolated pearl-funded sprint threat (`p_pearl_sprint=0.6`) | 17–19 across two paired seeds. |
+| V26 | Raise visible-pearl target value briefly on Trophy | Same outcomes and round-50 stats as V25 on four paired fixtures; no effect. |
+| V27/V28 | Direct early pearl pickup reward on Trophy, at +5/+8 | Both scored 1–3 on the same four paired fixtures, versus V25's 0–4. |
+| V29 | Disable Devil center reward after detecting long-delay center beds | 0–4 on paired Dilemma fixtures; rejected. |
+| V30 | Stronger early split production on V25 | Exact same outcomes, rounds, and pearl totals as V25 across 36 paired games; rejected as a no-op. |
+| V32 | V25 plus stronger portal priority on every map | 17–19 across two paired seeds; portal gains were offset on Autarky and Queen of Spades. |
+| **V33** | V25 plus 32x16 early portal priority and a 25x25 Trophy pearl detour | **55–53 over six paired seeds (108 games), zero draws or errors.** |
+| V34 | Reduce the V25 pearl-funded sprint threat floor from 0.6 to 0.2 | 37–71 over six fresh paired seeds (108 games); V12 swept 26 map/seed pairs to V34's 9, with 19 split. Rejected. |
+
+The V33 six-seed panel pairs each map, seed, and starting side against V12.
+Across 54 map/seed pairs, V33 swept 13, V12 swept 12, and 29 split. V33's map
+scores were Portals 9–3, Trauma 9–3, Slithery Fight 8–4, Queen of Spades 7–5,
+Devil 7–5, Default 6–6, Trophy 5–7, Autarky 2–10, and Prisoners' Dilemma 2–10.
+The direct pearl detour improved Trophy by one win over the sprint-only arm;
+the combined screen's strongest gains were Portals and Trauma. The 55–53 edge
+is narrow and limited to this nine-map panel. Keep V33 experimental, with no
+all-map ELO or promotion claim.
+
+The fixed-seed results are in
+`build/tyr-v33-paired-v12-seeds1-6-20260929/`; V33's source and result summary
+are in [`tyr-v33-targeted-resource-defense`](../bots/tyr-v33-targeted-resource-defense/README.md).
+
+A fresh-seed validation on seeds 7–18 gave V33 a 91–125 record over 216 games,
+with zero draws or runner errors. Across 108 map/seed pairs, V33 swept 27,
+V12 swept 44, and 37 split. V33 scored 23–1 on Trauma but 0–24 on Autarky and
+4–20 on Dilemma. Combining seeds 1–18, it scored 146–178 over 324 games, so the
+initial 55–53 edge did not generalize. V33 remains a possible Trauma-focused
+specialist, not a broad improvement. V34 then scored 37–71 on seeds 19–24,
+including 0–12 on both Autarky and Dilemma. Keep V01 as the family all-map
+baseline and V12 as the Devil-specialist reference; neither V33 nor V34 beat
+V12 across this focused panel. V34's results are in
+`build/tyr-v34-vs-v12-seeds19-24-20260929/`.
+
 ## Lineage and version notes
 
 - **V01 — Fenrir + Yuna momentum:** baseline all-map candidate; 38–32 in its completed 35-map duel against Yuna V03.
