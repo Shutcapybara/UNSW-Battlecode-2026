@@ -1,0 +1,12 @@
+name = "renoir-18b-visit030"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "revisit penalty 0.15->0.30"
+expected_change = "more roaming; seen_share up"
+hypothesis = ""
+params = ["visit_weight=0.30"]
+status = "candidate (not registered)"
+fingerprint = "b96d6cb605d8cb965448736082aea1f5693c327604de3beb35d36f6fa85c3fde"

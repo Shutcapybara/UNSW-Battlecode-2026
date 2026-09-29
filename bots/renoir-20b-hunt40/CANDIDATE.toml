@@ -1,0 +1,12 @@
+name = "renoir-20b-hunt40"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "hunters from round 40"
+expected_change = "as 20a, stronger"
+hypothesis = ""
+params = ["hunt_from=40"]
+status = "candidate (not registered)"
+fingerprint = "ba08454707c8994ed92540379bf244720c9717472b4e4a1268a12282a0084f65"

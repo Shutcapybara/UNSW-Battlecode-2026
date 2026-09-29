@@ -1,0 +1,12 @@
+name = "renoir-19a-edens0"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "no enemy-density devaluation of targets"
+expected_change = "pearls@100 up where contested"
+hypothesis = ""
+params = ["density_enemy_weight=0.0"]
+status = "candidate (not registered)"
+fingerprint = "8d68161cf8f5da8086f0177d6a4377cffca06f5a3fc2ef5869a9f62c443c7e6b"

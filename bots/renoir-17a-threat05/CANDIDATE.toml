@@ -1,0 +1,12 @@
+name = "renoir-17a-threat05"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "risk appetite: enemy threat cost x0.5"
+expected_change = "pearls@100 up in contested areas; h2h_enemy deaths up"
+hypothesis = ""
+params = ["threat_weight=0.5"]
+status = "candidate (not registered)"
+fingerprint = "8c6706d34e9a68dea0a676a049138236e246bd7dd441b344ca06255e89215e56"

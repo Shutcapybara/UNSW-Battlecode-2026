@@ -1,0 +1,12 @@
+name = "renoir-16-infogain"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "exploration by information gain: an unseen target cell is worth unseen_value x clamp(k/infogain_ref, infogain_floor, infogain_cap) where k = never-seen cells in the 7x7 view it would reveal (ref 14, floor 0.3, cap 2.0)"
+expected_change = "seen_share@50 up, pearls@50|map up on sparse/unknown maps; econ~ up"
+hypothesis = ""
+params = []
+status = "candidate (not registered)"
+fingerprint = "53bcbaf1b237fdd81c7d8c810d80dc81d5de6d3f751b24e03f4dbb832d81180d"
