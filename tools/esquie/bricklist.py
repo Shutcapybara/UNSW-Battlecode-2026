@@ -46,7 +46,7 @@ def per_map(rows: pd.DataFrame, med, refs) -> pd.DataFrame:
     out = []
     for m, g in H.groupby('map'):
         r = {'map': m, 'n': len(g), 'win': float(g['won'].mean())}
-        for c in CHECKPOINTS + TIER1:
+        for c in list(CHECKPOINTS) + TIER1:
             r[c] = float(g[c].median())
             r[f'{c}|map'] = float(g[f'{c}|map'].median()) if f'{c}|map' in g else np.nan
             r[f'{c}|top'] = float(g[f'{c}|top'].median()) if f'{c}|top' in g else np.nan

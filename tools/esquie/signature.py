@@ -33,7 +33,8 @@ GEN = [f'var/{p.stem}' for p in sorted((ROOT / 'maps/var').glob('*_tr.map'))] \
 FEATURES = [
     'tile_count', 'open_share', 'kelp_density', 'deg_le2_share', 'deg1_share', 'mean_deg',
     'portal_pairs', 'portals_per100', 'portal_pair_dist',
-    'bed_count', 'bed_density', 'bed_gap_mean', 'bed_gap_fast_share', 'bed_nnd',
+    'bed_count', 'bed_density', 'bed_gap_mean', 'bed_gap_fast_share', 'bed_ripe50', 'bed_nnd',
+    'spawn_bed_path', 'bed_detour_ratio', 'spawn_bed_supply', 'spawn_supply50',
     'spawn_bed_dist', 'spawn_contact',
     'wrap_open_share', 'wrap_edge_use',
 ]
@@ -94,18 +95,31 @@ def signature(path):
     W, H, edges = m['W'], m['H'], m['edges']
     n_cells = W * H
 
-    def dest(c, d):
+    # neighbour function that walks through portals (pairs table has both ends)
+    pair_of = {}
+    for pid, (side_a, side_b) in m['pairs']:
+        for a in side_a:
+            for b in side_b:
+                pair_of.setdefault(a, set()).add(b)
+                pair_of.setdefault(b, set()).add(a)
+
+    def nbrs(c):
         x, y = c
-        key = ((0, x, y), (1, (x + 1) % W, y), (0, x, (y + 1) % H), (1, x, y))[d]
-        k = edges.get(key, 0)
-        if k == 1:
-            return None
-        return ((x + (0, 1, 0, -1)[d]) % W, (y + (-1, 0, 1, 0)[d]) % H)
+        out = []
+        for d in range(4):
+            key = ((0, x, y), (1, (x + 1) % W, y), (0, x, (y + 1) % H), (1, x, y))[d]
+            k = edges.get(key, 0)
+            if k == 1:
+                continue
+            out.append(((x + (0, 1, 0, -1)[d]) % W, (y + (-1, 0, 1, 0)[d]) % H))
+            if k == 2:
+                out.extend(q for q in pair_of.get(c, ()) if q not in out)
+        return out
 
     degs, deg1 = collections.Counter(), 0
     cells = [(x, y) for y in range(H) for x in range(W)]
     for c in cells:
-        d = sum(1 for i in range(4) if dest(c, i) is not None)
+        d = len(nbrs(c))
         degs[d] += 1
         if d == 1:
             deg1 += 1
@@ -136,7 +150,63 @@ def signature(path):
     spawn_bed = float(np.mean([min(tdist(h, b, W, H) for b in bed_cells)
                                for h in heads0 + heads1])) if bed_cells else float('nan')
     contact = min((tdist(a, b, W, H) for a in heads0 for b in heads1), default=float('nan'))
+
+    # BFS through open edges (portals crossed): true walking distance from each
+    # initial head to the nearest bed, and the detour ratio over torus manhattan
+    def bfs_to_bed(start):
+        if not bed_cells:
+            return float('nan')
+        seen = {start: 0}
+        frontier = [start]
+        for depth in range(1, 4 * max(W, H)):
+            nxt = []
+            for c in frontier:
+                for q in nbrs(c):
+                    if q not in seen:
+                        seen[q] = depth
+                        nxt.append(q)
+            frontier = nxt
+            if any(c in bed_set for c in frontier):
+                return float(depth)
+            if not frontier:
+                break
+        return float('nan')
+
+    bed_set = set(bed_cells)
+    paths = [bfs_to_bed(h) for h in heads0 + heads1]
+    spawn_bed_path = float(np.nanmean(paths))
+    detour = [p / max(tdist(h, min(bed_cells, key=lambda b: tdist(h, b, W, H)), W, H), 1)
+              for h, p in zip(heads0 + heads1, paths)]
+    bed_detour_ratio = float(np.nanmean(detour))
+
+    # local supply at the opening: beds within BFS distance 8 of each spawn
+    # head, raw and expected-ripe-by-r50 (uniform gap draw); per head
+    p_ripe = {c: min(max((50 - mn + 1) / (mx - mn + 1), 0.0), 1.0) for c, (mn, mx) in beds.items()}
+
+    def bfs_ball(start, radius):
+        seen = {start}
+        frontier = [start]
+        for _ in range(radius):
+            nxt = []
+            for c in frontier:
+                for q in nbrs(c):
+                    if q not in seen:
+                        seen.add(q)
+                        nxt.append(q)
+            frontier = nxt
+        return seen
+
+    balls = [bfs_ball(h, 8) for h in heads0 + heads1]
+    supply = [sum(1 for c in b if c in bed_set) for b in balls]
+    supply50 = [sum(p_ripe[c] for c in b if c in bed_set) for b in balls]
+    spawn_bed_supply = float(np.mean(supply))
+    spawn_supply50 = float(np.mean(supply50))
     gaps = [mx for mn, mx in beds.values()]
+    mins = [mn for mn, mx in beds.values()]
+    # expected share of beds holding a pearl at round 50, if each bed's initial
+    # countdown is drawn uniformly from [minGap, maxGap]: E[countdown <= 50]
+    ripe50 = float(np.mean([min(max((50 - mn + 1) / (mx - mn + 1), 0.0), 1.0)
+                            for mn, mx in beds.values()])) if beds else float('nan')
 
     try:
         rel = pathlib.Path(path).resolve().relative_to(ROOT)
@@ -162,8 +232,13 @@ def signature(path):
         'bed_density': len(beds) / max(open_cells, 1),
         'bed_gap_mean': float(np.mean(gaps)) if gaps else float('nan'),
         'bed_gap_fast_share': float(np.mean([g <= 10 for g in gaps])) if gaps else float('nan'),
+        'bed_ripe50': ripe50,
         'bed_nnd': bed_nnd,
         'spawn_bed_dist': spawn_bed,
+        'spawn_bed_path': spawn_bed_path,
+        'spawn_bed_supply': spawn_bed_supply,
+        'spawn_supply50': spawn_supply50,
+        'bed_detour_ratio': bed_detour_ratio,
         'spawn_contact': contact,
         'wrap_open_share': seam_edge_open / len(seam),
         'wrap_edge_use': seam_edge_open / max(all_open, 1),
@@ -178,22 +253,20 @@ def cluster(rows, k):
     mu, sd = X.mean(0), X.std(0)
     sd[sd == 0] = 1.0
     Z = (X - mu) / sd
-    n = len(rows)
-    groups = [[i] for i in range(n)]
-    centroids = {i: Z[i] for i in range(n)}
+    groups = [[i] for i in range(len(rows))]
+    cents = [Z[i] for i in range(len(rows))]
     while len(groups) > k:
         best = None
         for a in range(len(groups)):
             for b in range(a + 1, len(groups)):
-                d = float(np.linalg.norm(centroids[a] - centroids[b]))
+                d = float(np.linalg.norm(cents[a] - cents[b]))
                 if best is None or d < best[0]:
                     best = (d, a, b)
         _, a, b = best
-        merged = groups[a] + groups[b]
-        centroids[a] = np.mean([Z[i] for i in merged], axis=0)
-        groups[a] = merged
+        groups[a] = groups[a] + groups[b]
+        cents[a] = Z[groups[a]].mean(axis=0)
         del groups[b]
-        del centroids[b]
+        del cents[b]
     return groups
 
 
