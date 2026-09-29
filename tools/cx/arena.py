@@ -59,8 +59,28 @@ def purge_wasm_cache(bot: str) -> None:
             p.unlink(missing_ok=True)
 
 
+def _portal_edges(map_path: str):
+    """(W, H, set of ('h', x, y) north sides, set of ('v', x, y) west sides) that are portals."""
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "ouroboros"))
+    try:
+        from mapview import load_map
+    except ImportError:
+        return None
+    m = load_map(pathlib.Path(map_path).read_text())
+    return m["W"], m["H"], set(m["portal_h"]), set(m["portal_v"])
+
+
+def _own_head(block: bytes, did: int):
+    sid = str(did).encode()
+    for line in block.split(b"\n"):
+        f = line.split()
+        if len(f) == 6 and f[1] == sid and f[5] == b"1":
+            return int(f[2]), int(f[3])
+    return None
+
+
 def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool = False,
-             record: str | None = None, purge: bool = True) -> dict:
+             record: str | None = None, purge: bool = True, replay_out: str | None = None) -> dict:
     """record: 'A' or 'B' to keep that team's transcripts (by dragon id)."""
     if sandbox:
         from unswbc.sandbox import SandboxBot, SandboxPool, WasmPool, warm_interpreter
@@ -95,11 +115,15 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
     booted = set()
     deaths = []
     errors = []
+    pe = _portal_edges(map_path)
+    dst: dict[int, dict] = {}           # per dragon: born, len, first_eat, last_portal, moves/turns r100
+    cur = {"round": -1}
 
     def spawn(did: int, init: bytes) -> None:
         team = next((l.split()[1] for l in init.decode().splitlines() if l.startswith("TEAM")), "A")
         teams[did] = team
         live[did] = bot_type(pools[team], init=init, name=str(did))
+        dst[did] = {"born": cur["round"], "len": 0, "first_eat": None, "portal": -99, "moves100": 0}
         if record == team:
             trans[did] = {"init": init.decode(), "turns": []}
 
@@ -110,6 +134,10 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
         h = _parse_block(block)
         rnd = int(h.get("ROUND", 0))
         ln = int(h.get("LENGTH", 0))
+        cur["round"] = rnd
+        ds = dst.get(did)
+        if ds is not None:
+            ds["len"] = ln
         row = rows.setdefault(rnd, {"A": [0, 0], "B": [0, 0]})
         row[team][0] += 1
         row[team][1] += ln
@@ -123,7 +151,22 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
                     eaten100[team] += got
                 if first_pearl[team] is None:
                     first_pearl[team] = rnd
+                if ds is not None and ds["first_eat"] is None:
+                    ds["first_eat"] = rnd
         act, spent = _reply_cost(out)
+        if ds is not None and act.startswith("M") and len(act) > 1:
+            if rnd <= 100:
+                ds["moves100"] += len(act) - 1
+            if pe is not None:
+                hp = _own_head(block, did)
+                if hp is not None:
+                    W, H, ph, pv = pe
+                    x, y = hp
+                    d = act[1]
+                    key = (("h", x, y) if d == "N" else ("h", x, (y + 1) % H) if d == "S" else
+                           ("v", x, y) if d == "W" else ("v", (x + 1) % W, y))
+                    if (key[0] == "h" and key[1:] in ph) or (key[0] == "v" and key[1:] in pv):
+                        ds["portal"] = rnd
         last[did] = (ln, spent)
         if bot.error is not None:
             errors.append((rnd, did, team, bot.error))
@@ -138,8 +181,10 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
         return out
 
     def death(did: int, rnd: int, reason: str) -> None:
+        ds = dst.get(did, {})
         deaths.append({"round": rnd, "id": did, "team": teams.get(did, "?"),
-                       "cause": CAUSE.get(reason, reason)})
+                       "cause": CAUSE.get(reason, reason), "len": ds.get("len", 0),
+                       "born": ds.get("born", -1), "portal": rnd - ds.get("portal", -99) <= 2})
         b = live.pop(did, None)
         if b is not None:
             b.stop()
@@ -149,6 +194,9 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
     try:
         res = engine.run(pathlib.Path(map_path).read_bytes(), reply, death, spawn,
                          lambda line: None, DEBUG_ALL, seed)
+        if replay_out:
+            pathlib.Path(replay_out).parent.mkdir(parents=True, exist_ok=True)
+            pathlib.Path(replay_out).write_bytes(engine.replay(pathlib.Path(bot_a).name, pathlib.Path(bot_b).name))
     finally:
         for b in live.values():
             b.stop()
@@ -173,6 +221,27 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
                 dc[d["cause"]] = dc.get(d["cause"], 0) + 1
         s["deaths"] = dc
         s["deaths_r100"] = sum(1 for d in deaths if d["team"] == team and d["round"] <= 100)
+        # early-game ledger (C1): causes by r100, portal-step deaths, newborns, length lost
+        mine = [d for d in deaths if d["team"] == team]
+        c100 = {}
+        for d in mine:
+            if d["round"] <= 100:
+                c100[d["cause"]] = c100.get(d["cause"], 0) + 1
+        s["deaths_cause_r100"] = c100
+        s["portal_deaths_r100"] = sum(1 for d in mine if d["round"] <= 100 and d["portal"])
+        s["lenlost_r150"] = sum(d["len"] for d in mine if d["round"] <= 150)
+        kids = [v for k, v in dst.items() if teams.get(k) == team and v["born"] >= 0]
+        kid_ids = {k for k, v in dst.items() if teams.get(k) == team and v["born"] >= 0}
+        s["births_r100"] = sum(1 for v in kids if v["born"] <= 100)
+        s["newborn_dead10_r100"] = sum(1 for d in mine if d["id"] in kid_ids and d["born"] <= 100
+                                       and d["round"] - d["born"] <= 10)
+        lags = sorted(v["first_eat"] - v["born"] for v in kids if v["first_eat"] is not None and v["born"] <= 100)
+        s["child_first_pearl_lag"] = lags[len(lags) // 2] if lags else None
+        turns100 = sum(rows[r][team][0] for r in rows if r <= 100)
+        moves100 = sum(v["moves100"] for k, v in dst.items() if teams.get(k) == team)
+        s["turns_r100"] = turns100
+        s["pearls_per_100dt"] = round(100 * eaten100[team] / turns100, 2) if turns100 else 0
+        s["moves_per_pearl"] = round(moves100 / eaten100[team], 2) if eaten100[team] else None
         pts = sorted(points[team])
         if pts:
             def pc(q):
