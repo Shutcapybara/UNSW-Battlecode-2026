@@ -125,3 +125,50 @@ def test_no_reference_maps_degrade_gracefully():
     H = apply_field_rel(G, refs)
     assert np.isnan(H.loc[1, 'pearls@100|pct']) and np.isnan(H.loc[1, 'pearls@100|top'])
     assert 'pearls@50|pct' not in H.columns
+
+
+# ---- R-4 Part 3: scorecard gate and tables -----------------------------------
+
+def _stats(econ=1.0, units=1.0, total=1.0, wall=5.0, self_=3.0, ally=2.0, h2h=1.0, invalid=0.0,
+           exp=0.75, n=160):
+    cps = {'pearls@50': econ, 'pearls@100': econ, 'pearls@150': econ, 'pearls@250': econ}
+    return {'n': n, 'wld': [100, 60, 0], 'exp_share': exp, 'checkpoints': cps,
+            'checkpoints_raw': {k: 50.0 for k in cps}, 'economy_mean': econ,
+            'tier1': {'units@100|map': units, 'total@100|map': total, 'births@100|map': 1.0},
+            'tier1_raw': {'units@100': 10, 'total@100': 30, 'births@100': 20,
+                          'pearls@50': 50, 'pearls@100': 50, 'pearls@150': 50, 'pearls@250': 50},
+            'tier2': {'death_wall_per1k': wall, 'death_self_per1k': self_,
+                      'death_ally_body_per1k': ally, 'death_h2h_ally_per1k': h2h,
+                      'death_invalid_per1k': invalid}}
+
+
+def test_gate_pass_fail_hold():
+    from tools.analysis.features.scorecard import gate_line
+    base = _stats()
+    v, why = gate_line(_stats(econ=1.06), base)
+    assert v == 'pass' and '+0.0600' in why
+    # economy down or win rate down or a tier-2 rate up >10% -> fail
+    assert gate_line(_stats(econ=0.98), base)[0] == 'fail'
+    assert gate_line(_stats(exp=0.70), base)[0] == 'fail'
+    assert gate_line(_stats(wall=5.6), base)[0] == 'fail'       # +12%
+    assert gate_line(_stats(invalid=0.5), base)[0] == 'fail'    # from zero
+    # economy up but short of +0.05, everything else fine -> hold (the V06 case)
+    v, why = gate_line(_stats(econ=1.0133, units=1.13, exp=0.7625, wall=5.06), base)
+    assert v == 'hold' and '+0.0133' in why
+    # economy at the bar but dragons falling -> not pass, not fail -> hold
+    assert gate_line(_stats(econ=1.06, units=0.99), base)[0] == 'hold'
+    assert gate_line(base, None)[0] == 'n/a'
+
+
+def test_scorecard_tables():
+    from tools.analysis.features.scorecard import tier1_rows, tier2_rows, raw_rows
+    cs, ps = _stats(econ=1.1, wall=4.0), _stats()
+    t1 = tier1_rows(cs, ps)
+    assert t1[0][1] == '100–60–0' and 'expected-score points' in t1[0][3]
+    assert t1[2][0] == 'Mean of normalized pearl checkpoints' and t1[2][3] == '+0.1000'
+    assert any(r[0] == 'Dragons at r100, normalized' for r in t1)
+    t2 = tier2_rows(cs, ps)
+    assert t2[0] == ('Wall', '5.000', '4.000', '-20.0%')
+    assert t2[4] == ('Invalid action', '0.000', '0.000', 'unchanged')
+    rr = raw_rows(cs, ps)
+    assert len(rr) == 7 and all(r[3] == '+0.0' for r in rr)

@@ -11,7 +11,8 @@ Replay → features → report, for local panels and (unchanged) for the field c
 | `checks.py` | V0 bookkeeping identities |
 | `phases.py` | rule markers, exact changepoints, pooled left-to-right HMM |
 | `report.py` | quantiles by map × result, strength, stability, identity, flags, interactive HTML |
-| `run_panel.py` | seeded round-robin panel runner (resumable, shardable) |
+| `run_panel.py` | seeded round-robin panel runner (resumable, shardable); `--panel gen` (maps/new all 20 + maps/var/*_tr) and `--bot bots/<x>` candidate grids keyed by the runtime-source fingerprint |
+| `scorecard.py` | one-command single-bot scorecard (R-4): panel -> features -> fixed references -> V06-style tier-1/tier-2 tables, W-L-D, gen block, CPU probe, GATE line |
 | `probe_check.py`, `probes/` | V1 probe bots with known feature values |
 | `test_features.py`, `fixtures/` | tests on a committed replay |
 
@@ -20,6 +21,7 @@ python -m tools.analysis.features.run_panel --panel z1 --jobs 2 --unswbc ~/.venv
 python -m tools.analysis.features extract 'build/zoo/z1/replays/*.replay' --index build/zoo/z1/index.jsonl --out build/zoo/z1/features --cache build/zoo/z1/frames --jobs 4
 python -m tools.analysis.features.probe_check --unswbc ~/.venvs/bc122/bin/unswbc
 python -m tools.analysis.features.report --run build/zoo/z1/features --index build/zoo/z1/index.jsonl --out build/zoo/z1/report --notes docs/analysis/f1-z1-notes.html
+python -m tools.analysis.features.scorecard bots/<candidate> --parent bots/<parent> --panel z1 [--seed 1,2] [--atlas off]
 python -m tools.analysis.features registry > registry.md
 ```
 Needs Python ≥ 3.10 with pandas, pyarrow, numpy (plotly for the report); unswbc 1.2.2 (Python ≥ 3.11) for panels.
