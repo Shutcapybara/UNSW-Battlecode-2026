@@ -390,8 +390,18 @@ def git_check(root, cfg, state, log):
                 merged_branches.append(dict(branch=branch, error=(res.stderr or res.stdout)[-400:]))
             else:
                 merged_branches.append(dict(branch=branch, merged=True))
+        # optional: push named local branches (lane and worktree branches the keeper never pushes on its own) so other
+        # hosts can fetch them. `-u` sets the upstream; a failed push is reported, nothing else is touched.
+        pushed_branches = []
+        for branch in body.get('push_branches') or []:
+            if not re.match(r'^[A-Za-z0-9._/-]{1,80}$', str(branch)):
+                pushed_branches.append(dict(branch=branch, error='bad branch name'))
+                continue
+            repo = cfg['paths']['repo']
+            res = subprocess.run(['git', '-C', repo, 'push', '-u', 'origin', f'{branch}:{branch}'], capture_output=True, text=True, check=False, timeout=300)
+            pushed_branches.append(dict(branch=branch, pushed=True) if res.returncode == 0 else dict(branch=branch, error=(res.stderr or res.stdout)[-300:]))
         report = git_sync(cfg['paths']['repo'], root, policy, actor=body.get('by') or 'hub/actuator/git-request')
-        out = dict(at=db.now_iso(), note=body.get('note'), quiet_minutes=policy['quiet_minutes'], merged_branches=merged_branches, report=report)
+        out = dict(at=db.now_iso(), note=body.get('note'), quiet_minutes=policy['quiet_minutes'], merged_branches=merged_branches, pushed_branches=pushed_branches, report=report)
     except Exception as exc:
         out = dict(at=db.now_iso(), note=body.get('note'), error=f'{type(exc).__name__}: {str(exc)[:300]}')
     (ctl / 'git.done.json').write_text(json.dumps(out, indent=1, default=str))

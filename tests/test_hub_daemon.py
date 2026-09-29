@@ -240,6 +240,25 @@ class DaemonTest(unittest.TestCase):
         self.assertEqual(out['merged_branches'][0], dict(branch='cx/f', merged=True))
         self.assertIn('error', out['merged_branches'][1])
 
+    def test_git_request_pushes_named_branches_to_origin(self):
+        ctl = self.repo / 'hub-state' / 'control'
+        r = subprocess.run
+        env = dict(os.environ, GIT_AUTHOR_NAME='t', GIT_AUTHOR_EMAIL='t@t', GIT_COMMITTER_NAME='t', GIT_COMMITTER_EMAIL='t@t')
+        os.environ.update({k: env[k] for k in ('GIT_AUTHOR_NAME', 'GIT_AUTHOR_EMAIL', 'GIT_COMMITTER_NAME', 'GIT_COMMITTER_EMAIL')})
+        origin = self.tmp / 'origin.git'
+        r(['git', 'init', '-q', '--bare', str(origin)], check=True)
+        for cmd in (['git', 'init', '-q', '-b', 'main'], ['git', 'commit', '-q', '--allow-empty', '-m', 'root'], ['git', 'remote', 'add', 'origin', str(origin)],
+                    ['git', 'checkout', '-q', '-b', 'r/ra'], ['git', 'commit', '-q', '--allow-empty', '-m', 'lane'], ['git', 'checkout', '-q', 'main']):
+            r(cmd, cwd=self.repo, env=env, check=True)
+        ctl.joinpath('git.json').write_text(json.dumps(dict(by='director', note='push', quiet_minutes=0, push_branches=['r/ra', 'no/such', 'bad name'])))
+        with patch.object(actuator, 'git_sync', lambda repo, root, policy, actor='x', dry_run=False, now=None: dict(committed=[], skipped=[], merged=None, pushed=None, errors=[], attention=[])):
+            actuator.git_check(self.root, self.cfg, {}, self.log)
+        out = json.loads((ctl / 'git.done.json').read_text())
+        self.assertEqual(out['pushed_branches'][0], dict(branch='r/ra', pushed=True))
+        self.assertIn('error', out['pushed_branches'][1])
+        self.assertEqual(out['pushed_branches'][2]['error'], 'bad branch name')
+        self.assertIn('r/ra', r(['git', 'branch', '--list', 'r/ra'], cwd=origin, capture_output=True, text=True).stdout)
+
     def test_set_mode_rewrites_or_appends_executor_section(self):
         set_mode(self.root, 'off')
         text = (self.root / 'hub.toml').read_text()
