@@ -38,6 +38,8 @@ trapped 36.1, newborn 19.3, portal 6.3, crowd23 11.4 len/1k.
 | sciel-03a-ewfood | EW food-density memory: eaten-pearl field (×0.98/round) scales unseen and bed values | **REJECT on guards, economy cleared** | econ~ **+0.067** (> +0.05 bar), pearls@100 pairs 103/9/48 p≈0 — killed by h2h_ally +34% (up in 100/130 pairs), units/total medians down |
 | sciel-03b-ewguard | same + visible ally-saturation guard | REJECT (h2h_ally +31%) | econ~ +0.071; gen econ +9.5%, pearls pairs p=1e-4 — the mechanism generalises |
 | sciel-03c-ewradio | same + radio-informed guard (density reports, stronger) | **REJECT (h2h_ally +38%, win −0.028) — family closed** | econ~ +0.105 pool, +16.3% gen; gen dragons 1.589 / length 1.675 of base; pearls pairs p≈0 on both panels |
+| sciel-04a-row | right-of-way on 03c (landing adjacent to lower-id ally head costs 2.5) | REJECT (h2h_ally +29%, win −0.044) | gen win 0.597 best yet, ally_body below base — hygiene real, head-ons hold |
+| sciel-04b-rowpath | right-of-way v2 on bare 03a (guards off), every newly occupied path cell | REJECT (median econ +0.039 with **mean +0.103**, h2h_ally +24%, win −0.050) | h2h 34→29→24 across row variants; each deconfliction layer trades pool win (vs 03a p=0.023) |
 
 
 ## What the accepted/in-flight stack is
@@ -69,7 +71,13 @@ either lane (ra's eight scored rejections span −0.065..+0.033 econ~).
   economy is real but not yet monetisable. **The named unlock for the next iteration is
   arrival-level deconfliction: target claims (a dragon broadcasts the bed it is walking to; others
   re-target at choice time because the claim captures intent before departure, not presence at
-  arrival).** That is a different mechanism (a coordination packet), sketched as sciel-04.
+  arrival)** — sciel-05, needing one new sonar packet type. Movement-level right-of-way (04a/b,
+  id-ordered yield, path-wide) bought the rest of the hygiene book (wall/self/ally_body down; gen
+  ally_body below base) and moved head-ons +34→+24%, but could not reach the +10% guardrail and
+  cost pool win rate at every step (0.787→0.756→0.734→0.719→0.713 across 03a→04b). Second
+  observation for the director: **the gate's median-per-side-game convention bites when gains are
+  map-concentrated** — 04b's economy is +0.103 on the mean and +0.039 on the median, because
+  schooltime (+0.5) and a tail of maps carry it while the median map gains modestly.
 
 ## Reproduce
 
