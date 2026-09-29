@@ -1,0 +1,12 @@
+name = "gustave-02a-sciel03a"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "DIAGNOSTIC replication: sciel-03a verbatim on gustave-01 (ref 0.5, weight 0.6, floor 0.4, cap 2.5, no ally discount)"
+expected_change = "reproduces sciel-03a: econ~ up ~+0.06, ally h2h up ~+30 %"
+hypothesis = "replication of the only L12 result on the D-033 base"
+params = ["ew_weight=0.6", "ew_ref=0.5", "ew_floor=0.4", "ew_cap=2.5", "ew_ally_k=0.0"]
+status = "candidate (not registered)"
+fingerprint = "e2aa0ac75c94cdc764fcd6e96591fa8886ec19d549d51c8e85f263c3c5546dc5"

@@ -1,0 +1,12 @@
+name = "gustave-03a-ewbonus-w3"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "L12: EW food-density memory as a bonus only (sciel-03a field: +1 per eaten pearl, x0.98/round, 5x5 kernel; ref 0, floor 1, cap 2, so a zero field is the parent) scaling unseen-cell and bed values, with the ally-saturation discount on the bonus (k 1, radius 5, ttl 4); weight 3 (one eaten pearl in the kernel = +12 %)"
+expected_change = "econ~ up via beds/unseen cells in proven fields; ally h2h and ally body within +10 % (the discount spreads the swarm); units@100 not down. Open-loop factor histogram: 94.8 % of evaluations at 1.0, 5.2 % in (1, 1.5]."
+hypothesis = "L12 (0.7): per-unit decaying pearl density improves targets; sciel-03a's gain was a flat x0.70 cut (95.5 % of evaluations), so this is the first test of the density term itself"
+params = ["ew_weight=3.0"]
+status = "candidate (not registered)"
+fingerprint = "8396c8410d41b79e042d55335a7baa2d4a70c4d48568b6f3b9b76b0e54c02a81"
