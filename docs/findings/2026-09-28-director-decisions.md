@@ -568,3 +568,24 @@ continues on the desktop if GLM is re-issued there; two new desktop lanes are is
 findings or ledger, an independent draw) and `rc` (Cézanne, ledger-guided). Monoco (GPT's lane) has no branch on
 origin and is read when it is pushed.
 
+**D-035 — R-3 and R-4 read; merged to main (30 Sep 00:20 UTC).** R-4 delivered all four parts on `r/r4` (tools/cx
+reconciled — cx/f's multi-direction portal walk and `eaten_r*` fields restored; C++ parity incl. `meter.py --mode cxx`
+and `golden.py suite`; `run_panel --panel gen` with `GEN_MAPS` and fingerprint-keyed candidate grids; the single-bot
+scorecard with a `GATE:` line). R-3 delivered on `r/r3` (contains r4). Both merged with `-X theirs` on
+`tools/cx/bench.py` (main's `map_name` fix re-applied by hand). R-3's reading: **Ares V06 carries the Tyr leak
+profile at real transit volume** (trapped 36.1 len/1k vs top-10 18.5; portal deaths 29.4/100 steps vs 306's 12.5;
+crowd23 4× the top ten) — the lineage claim holds. But every pre-entry portal rule is a throttle on Ares too
+(r3-01/02: transit volume −22 %/−68 %, per-100-steps *worse*, economy −0.05/−0.12), so C1-F's result transfers; the
+kelp/room surcharge (r3-04) is the strongest hygiene lever measured (wall −27 %, trapped −30 %, newborn −15 %) and
+fails on economy (−0.072, −0.107 stacked); and r3-03 escape-early is a **production lever, not an escape fix**:
++5.0 pp win replicated at two seeds, economy +0.026 pooled, length +0.049, own-body +11 % (the churn of the extra
+cramped splits), neutral off-pool. Sciel-02a already tested R-3's "post-transit navigation" open item (portal leak
+−21 %, economy paid). Consequences: (1) R-4's scorecard becomes the lanes' gate tool and gets one more task: the
+D-032 interval form and a corpse-share diagnostic (L29). (2) r3-03 is a hold under D-032 (own-body +11 % vs the
+10 % guard) — the attribution to pay down is newborn churn from `ACT:tsplit` children; the guided lane may take it
+after the density line. (3) The portal leak is closed as a *crossing-side* problem on both hosts: what remains is
+the exits (contact and post-transit navigation), which Sciel's steering did not solve either; the ledger row for
+portal fixes drops to 0.2 with that stated as the shape of any revival. (4) Every finding this phase agrees:
+hygiene bought with caution costs economy one for one on this lineage; the economy levers that have appeared are
+state (Sciel-03a), search phase (Lune) and production (r3-03).
+

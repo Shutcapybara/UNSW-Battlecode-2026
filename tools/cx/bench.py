@@ -47,7 +47,8 @@ def _one(job: dict) -> dict:
     cand, opp, m, side, seed, sandbox = (job[k] for k in ("cand", "opp", "map", "side", "seed", "sandbox"))
     a, b = (cand, opp) if side == "A" else (opp, cand)
     rep = replay_name(m, side, seed, opp, job["replay_dir"]) if job.get("replay_dir") else None
-    r = run_game(str(REPO / "maps" / f"{m}.map"), a, b, seed, sandbox, replay_out=rep)
+    map_name = m if m.endswith(".map") else f"{m}.map"   # main's fix, re-applied after the r/r3 -X theirs merge
+    r = run_game(str(REPO / "maps" / map_name), a, b, seed, sandbox, replay_out=rep)
     r.pop("transcripts", None)
     us, them = ("A", "B") if side == "A" else ("B", "A")
     return {"map": m, "side": side, "seed": seed, "cand": cand, "opp": pathlib.Path(opp).name, "sandbox": sandbox,
