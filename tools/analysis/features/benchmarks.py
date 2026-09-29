@@ -40,10 +40,14 @@ def derive(F, ref_medians=None):
         m = F[key + ['side']].merge(other, on=key + ['side'], how='left')[c].to_numpy(float)
         a = F[c].to_numpy(float)
         F[f'{c}|rel'] = np.where(a + m > 0, a / (a + m), 0.5)
-    # map-normalised versions: value / per-map reference median
+    # map-normalised versions: value / per-map reference median; a metric with
+    # no saved reference (e.g. maps outside the live pool) is skipped rather
+    # than raising — the caller reports those raw (BENCHMARKS guardrails)
     if ref_medians is not None:
         for c in ('pearls@50', 'pearls@100', 'pearls@150', 'pearls@250', 'total@100', 'units@100', 'avoidable_deaths_per1k',
                   'pearls_per100dt_0_100', 'births@100'):
+            if c not in ref_medians:
+                continue
             med = F['map'].map(ref_medians[c]).replace(0, np.nan)
             F[f'{c}|map'] = F[c] / med
     return F
@@ -96,6 +100,8 @@ def apply_field_rel(F, refs):
     |pct (percentile in the field on the same map, oriented so higher = better, all metrics)"""
     F = F.copy()
     for c, d in FIELD_REL:
+        if c not in refs:
+            continue  # no saved field reference for this metric: leave its | columns off
         mp = F['map']
         get = lambda k: mp.map({m: v[k] for m, v in refs[c].items()}).astype(float)
         x = F[c].astype(float)

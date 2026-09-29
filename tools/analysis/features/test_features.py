@@ -60,3 +60,68 @@ def test_sonar_decoded(game):
     s = game['events']['sonar']
     assert s and {'dir', 'origin', 'end', 'hit_kind'} <= set(s[0])
     assert {x['hit_kind'] for x in s} <= {'kelp', 'ally', 'ally_head', 'enemy', 'enemy_head', 'empty', 'unknown'}
+
+
+# ---- R-4 Part 4: generalisation panel + no-reference degradation -------------
+
+def test_gen_panel_fixtures():
+    from tools.analysis.features.run_panel import GEN_MAPS, fixtures, runtime_fingerprint, ZOO
+    import itertools
+    # GEN_MAPS = all 20 maps/new + the 9 maps/var transpositions, name-flattened in game ids
+    assert len([m for m in GEN_MAPS if m.startswith('new/')]) == 20
+    assert len([m for m in GEN_MAPS if m.startswith('var/')]) == 9
+    # z1 ids are unchanged (replay reuse): compare against the pre-R4 generator
+    want = [f's1__{m}__{x}__{y}' for a, b in itertools.combinations(ZOO, 2)
+            for m in ['schooltime', 'portals', 'slithery_fight', 'queen_of_spades', 'default',
+                      'trophy', 'dilemma', 'autarky', 'devil', 'trauma']
+            for x, y in ((a, b), (b, a))]
+    got = [f['game'] for f in fixtures('z1') if f['seed'] == 1]
+    assert got == want
+    # gen round robin: 28 pairs x 29 maps x 2 seats at seed 1
+    assert len(fixtures('gen')) == 28 * 29 * 2
+    # candidate grid: 8 opponents x 10 live maps x 2 seats = 160 (the Ares V06 protocol)
+    assert len(fixtures('z1', bot='bots/whatever-bot')) == 8 * 10 * 2
+    assert len(fixtures('z1', bot='bots/whatever-bot', seeds=(1, 2))) == 320
+    assert len(fixtures('gen', bot='bots/whatever-bot')) == 8 * 29 * 2
+    # slashed map names are flattened into file-safe game ids
+    assert all('/' not in f['game'] for f in fixtures('gen'))
+
+
+def test_runtime_fingerprint_tracks_sources(tmp_path):
+    from tools.analysis.features.run_panel import runtime_fingerprint
+    d = tmp_path / 'bot'
+    d.mkdir()
+    (d / 'bot.toml').write_text('[project]\nlanguage = "c++"\ninclude = ["*.cpp"]\n')
+    (d / 'main.cpp').write_text('int main() {}\n')
+    (d / 'util.hpp').write_text('#pragma once\n')
+    fp0 = runtime_fingerprint(d)
+    assert len(fp0) == 64
+    (d / '.unswbc-build').mkdir()
+    (d / '.unswbc-build' / 'bot').write_bytes(b'\x00binary')
+    assert runtime_fingerprint(d) == fp0          # build output ignored
+    (d / 'util.hpp').write_text('#pragma once\n// edit\n')
+    assert runtime_fingerprint(d) != fp0          # header edit moves the fingerprint
+
+
+def test_no_reference_maps_degrade_gracefully():
+    import numpy as np
+    import pandas as pd
+    from tools.analysis.features.benchmarks import derive, apply_field_rel
+    cols = {'pearls@50': 10, 'pearls@100': 20, 'pearls@150': 30, 'pearls@250': 40,
+            'bed_pearls@50': 5, 'bed_pearls@100': 5, 'bed_pearls@150': 5, 'bed_pearls@250': 5,
+            'pearls_per100dt_0_100': 1, 'births@100': 2, 'total@100': 10, 'units@100': 3,
+            'death_wall_per1k': 1, 'death_self_per1k': 1, 'death_ally_body_per1k': 1,
+            'death_h2h_ally_per1k': 1, 'death_invalid_per1k': 0, 'death_enemy_body_per1k': 1,
+            'death_h2h_enemy_per1k': 1, 'deaths_per1k': 3, 'bed_capacity': 10}
+    F = pd.DataFrame([dict(game='g1', side='A', map='Portals', **cols),
+                      dict(game='g2', side='A', map='new/md26_promenade_ring_s0', **cols)])
+    ref = {'pearls@100': {'Portals': 20}}
+    G = derive(F, ref)  # partial reference set: no KeyError
+    assert G.loc[0, 'pearls@100|map'] == 1.0
+    assert np.isnan(G.loc[1, 'pearls@100|map'])   # unknown map -> unavailable, not a number
+    assert 'pearls@50|map' not in G.columns       # unreferenced metric -> column absent
+    refs = {'pearls@100': {'Portals': dict(median=20.0, p10=1, p25=1, p75=1, p90=40.0, top10=40.0,
+                                           n=10, sorted=[1, 20, 20, 40])}}
+    H = apply_field_rel(G, refs)
+    assert np.isnan(H.loc[1, 'pearls@100|pct']) and np.isnan(H.loc[1, 'pearls@100|top'])
+    assert 'pearls@50|pct' not in H.columns
