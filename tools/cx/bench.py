@@ -30,48 +30,69 @@ LIVE = ["portals", "schooltime", "default", "autarky", "trauma", "dilemma", "sli
         "queen_of_spades", "trophy", "devil"]
 COMPACT = ["portals", "dilemma", "devil", "trophy"]
 PROBE = [("schooltime", "A"), ("portals", "B"), ("slithery_fight", "A"), ("trauma", "B")]
+PANEL_VAR = sorted("var/" + p.stem for p in (REPO / "maps" / "var").glob("*.map"))
+PANEL_PUB = sorted("pub/" + p.stem for p in (REPO / "maps" / "pub").glob("*.map"))
+PANEL_NEW = sorted("new/" + p.stem for p in (REPO / "maps" / "new").glob("*.map"))
+PANEL = PANEL_VAR + PANEL_PUB + PANEL_NEW
+PANEL_OPPS = ["bots/yuna-v03-core", "bots/fenrir-v18-arrival-ready-beds", "bots/kazuha-s01-swarm-dissolve",
+              "bots/ouroboros-s02-portal"]
 
 
 def _one(job: dict) -> dict:
     from arena import run_game
     cand, opp, m, side, seed, sandbox = (job[k] for k in ("cand", "opp", "map", "side", "seed", "sandbox"))
     a, b = (cand, opp) if side == "A" else (opp, cand)
-    r = run_game(str(REPO / "maps" / f"{m}.map"), a, b, seed, sandbox)
+    rep = job.get("replay_dir")
+    rep = str(pathlib.Path(rep) / f"{m.replace('/', '_')}_{side}_s{seed}_{pathlib.Path(opp).name}.replay") if rep else None
+    r = run_game(str(REPO / "maps" / f"{m}.map"), a, b, seed, sandbox, replay_out=rep)
     r.pop("transcripts", None)
     us, them = ("A", "B") if side == "A" else ("B", "A")
-    return {"map": m, "side": side, "seed": seed, "cand": cand, "opp": opp, "sandbox": sandbox,
+    return {"map": m, "side": side, "seed": seed, "cand": cand, "opp": pathlib.Path(opp).name, "sandbox": sandbox,
             "result": "win" if r["winner"] == us else "loss" if r["winner"] == them else "draw",
             "rounds": r["rounds"], "us": r["stats"][us], "them": r["stats"][them],
             "errors": [e for e in r["errors"] if e[2] == us][:10], "secs": r["secs"]}
 
 
 def run(args) -> None:
-    maps = {"live": LIVE, "compact": COMPACT}.get(args.maps, None)
+    maps = {"live": LIVE, "compact": COMPACT, "panel": PANEL, "var": PANEL_VAR + PANEL_PUB,
+            "new": PANEL_NEW}.get(args.maps, None)
+    opps = PANEL_OPPS if args.opp == "panel" else args.opp.split(",")
     jobs = []
     seeds = [int(s) for s in args.seeds.split(",")]
-    if args.maps == "probe":
-        for m, side in PROBE:
-            for s in seeds:
-                jobs.append((m, side, s))
-    else:
-        maps = maps or args.maps.split(",")
-        for m in maps:
-            for side in args.sides:
+    for opp in opps:
+        if args.maps == "probe":
+            for m, side in PROBE:
                 for s in seeds:
-                    jobs.append((m, side, s))
+                    jobs.append((m, side, s, opp))
+        else:
+            for m in (maps or args.maps.split(",")):
+                for side in args.sides:
+                    for s in seeds:
+                        jobs.append((m, side, s, opp))
     out = pathlib.Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     done = set()
     if out.exists():
         for line in out.read_text().splitlines():
             d = json.loads(line)
-            done.add((d["map"], d["side"], d["seed"]))
-    todo = [j for j in jobs if j not in done]
+            done.add((d["map"], d["side"], d["seed"], d["opp"]))
+    todo = [j for j in jobs if (j[0], j[1], j[2], pathlib.Path(j[3]).name) not in done]
+    if args.shard:
+        k, n = map(int, args.shard.split("/"))
+        todo = [j for i, j in enumerate(todo) if i % n == k]
     print(f"{len(jobs)} fixtures, {len(todo)} to run", flush=True)
+    # build each bot once before the pool starts (no concurrent compiles)
+    from unswbc.run import _resolve
+    for b in {args.cand, *opps}:
+        try:
+            _resolve(b, args.sandbox)
+        except Exception as e:
+            print("build failed", b, e, flush=True)
     with ProcessPoolExecutor(max_workers=args.jobs) as ex, out.open("a") as fh:
-        futs = {ex.submit(_one, {"cand": args.cand, "opp": args.opp, "map": m, "side": sd,
-                                 "seed": s, "sandbox": args.sandbox}): (m, sd, s)
-                for m, sd, s in todo}
+        futs = {ex.submit(_one, {"cand": args.cand, "opp": o, "map": m, "side": sd,
+                                 "seed": s, "sandbox": args.sandbox,
+                                 "replay_dir": args.replay_dir}): (m, sd, s, o)
+                for m, sd, s, o in todo}
         for f in as_completed(futs):
             try:
                 d = f.result()
@@ -81,9 +102,9 @@ def run(args) -> None:
             fh.write(json.dumps(d) + "\n")
             fh.flush()
             u = d["us"]
-            print(f'{d["map"]:>16} {d["side"]} s{d["seed"]} {d["result"]:>4} '
+            print(f'{d["map"]:>24} {d["side"]} s{d["seed"]} {d["opp"][:12]:>12} {d["result"]:>4} '
                   f'u25/50/100 {u["units_r25"]}/{u["units_r50"]}/{u["units_r100"]} '
-                  f'len100 {u["len_r100"]} eat100 {u["eaten_r100"]} deaths {u["deaths"]} '
+                  f'len100 {u["len_r100"]} eat100 {u["eaten_r100"]} d100 {u.get("deaths_cause_r100")} '
                   f'({d["secs"]}s)', flush=True)
 
 
@@ -133,13 +154,15 @@ def summary(path: str, vs: str | None = None, key: str = "len_r100") -> None:
                 max(p["p50"] for p in pts) / 1e6, max(p["p99"] for p in pts) / 1e6,
                 max(p["max"] for p in pts) / 1e6))
     if vs:
-        other = {(r["map"], r["side"], r["seed"]): r for r in load(vs)}
+        other = {(r["map"], r["side"], r["seed"], r.get("opp")): r for r in load(vs)}
         b = s = w = 0
         for r in rows:
-            o = other.get((r["map"], r["side"], r["seed"]))
+            o = other.get((r["map"], r["side"], r["seed"], r.get("opp")))
             if not o:
                 continue
-            x, y = r["us"][key], o["us"][key]
+            x, y = r["us"].get(key), o["us"].get(key)
+            if x is None or y is None:
+                continue
             if x > y:
                 b += 1
             elif x < y:
@@ -160,6 +183,8 @@ def main() -> int:
     ap.add_argument("--jobs", type=int, default=max(1, (os.cpu_count() or 2)))
     ap.add_argument("--sandbox", action="store_true")
     ap.add_argument("--summary")
+    ap.add_argument("--shard", help="k/n: run every n-th pending fixture starting at k")
+    ap.add_argument("--replay-dir", help="write each game's .replay here (named map_side_seed_opp)")
     ap.add_argument("--vs")
     ap.add_argument("--key", default="len_r100")
     args = ap.parse_args()
