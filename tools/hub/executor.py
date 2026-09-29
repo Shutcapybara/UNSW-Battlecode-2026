@@ -14,6 +14,7 @@ import gzip
 import hashlib
 import json
 import random
+import re
 import time
 import uuid
 from datetime import datetime, timezone
@@ -1128,7 +1129,15 @@ def upload(conn, root, cfg, snap, client, actor, cand, summary):
         return
     boundary = 'hub' + uuid.uuid4().hex
     parts = []
-    lang = {'python': 'python', 'cpp': 'cpp', 'c': 'c'}[cand['language']]
+    lang = {'python': 'python', 'cpp': 'c++', 'c': 'c'}[cand['language']]   # the server takes the CLI's spelling: `unswbc init cpp` writes language = "c++" and submits it verbatim
+    try:   # prefer the bot's own bot.toml spelling when the frozen tree carries one
+        src = Path(cand['source_ref'][4:]) if str(cand.get('source_ref', '')).startswith('dir:') else None
+        if src and (src / 'bot.toml').is_file():
+            m = re.search(r'^\s*language\s*=\s*"([^"]+)"', (src / 'bot.toml').read_text(), re.M)
+            if m:
+                lang = m.group(1)
+    except OSError:
+        pass
     for key, value in {'name': name, 'language': lang, 'description': 'Automated unranked validation; frozen candidate ' + cand['fingerprint']}.items():
         parts.append(f'--{boundary}\r\nContent-Disposition: form-data; name="{key}"\r\n\r\n{value}\r\n'.encode())
     parts.append(f'--{boundary}\r\nContent-Disposition: form-data; name="zip"; filename="bot.zip"\r\nContent-Type: application/zip\r\n\r\n'.encode() + archive.read_bytes() + b'\r\n')

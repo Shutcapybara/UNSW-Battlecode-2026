@@ -205,6 +205,15 @@ markers = [["ACT:prod", 0, 100, 1]]
         row2 = candidates.register_from_dir(self.conn, self.root, self.bot, 'test/x/1')
         self.assertEqual(row2['name'], 'x-s02-docs')
 
+    def test_cpp_manifest_registers_with_the_cli_spelling(self):
+        (self.bot / 'bot.toml').write_text('[project]\nlanguage = "c++"\ninclude = ["*.cpp", "*.hpp"]\n')
+        (self.bot / 'main.py').unlink()
+        (self.bot / 'main.cpp').write_text('int main(){return 0;}\n')
+        (self.bot / 'CANDIDATE.toml').write_text((self.bot / 'CANDIDATE.toml').read_text().replace('language = "python"', 'language = "c++"'))
+        row = candidates.register_from_dir(self.conn, self.root, self.bot, 'test/x/1')
+        self.assertEqual(row['language'], 'cpp')
+        self.assertEqual(row['status'], 'needs_runtime')
+
     def test_manifest_validation(self):
         (self.bot / 'CANDIDATE.toml').write_text('name = "BAD NAME"\n')
         with self.assertRaises(ValueError):

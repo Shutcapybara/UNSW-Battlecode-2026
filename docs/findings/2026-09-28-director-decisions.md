@@ -447,3 +447,39 @@ one field block (45) for calibration of dev-vs-field transfer; block quota is ch
 pool (`pool_of`), so a dev block is never deferred on the field allowance and the field allowance is left to
 confirmations — roughly three times the screening throughput. Falsifier: a candidate that passes the dev screen and
 fails the field confirmation twice in a row means 545 is not a proxy for the band, and the panel goes back.
+
+## D-029 — Ares is the production line; the cx work folds into it (29 Sep 11:55 UTC)
+
+**What came in overnight.** The teammates ported Tyr V12 to C++ on the anna-a02 runtime scaffold (`ares-v02…v04`),
+proved output parity with the golden harness (168,123 turns, 5,089 dragons, zero divergences), fixed the two
+`separation.py` exceptions (`ares-v05`) and restored the historical Bifröst/Skadi search profile plus a size-matched
+support rule (`ares-v06`): 160 target nodes, deeper room floods, the 12-length three-step horizon — at p99 7.4 M and
+max 8.6 M points a turn. On the 8-bot fixed panel V06 is 122–38 (76.3 % expected score) against V05's 118–41;
+dragons at r100 +12.9 % normalised, length r100 +2.6 %, r100 pearls +4.8 %, hygiene within the 10 % guard. It was
+held back only by the +0.05 economy-mean gate. C1-B (Opus) delivered the router and the ablation the same night:
+on the live pool the router beats the cheap chassis on length and pearls (176/61 pairs) but not on units (p = 0.69);
+on the unseen panel the pearl edge vanishes and only +2 length survives (p = 0.036); the atlas carried two thirds of
+the pool gain and the mill on Dilemma/Autarky/Slithery carried the rest. **Routing is not the lever; survival is.**
+It also found that `maps/pub/*_rec.map` share edges with Portals/Slithery, so the atlas matches them: they are not
+an unseen test and leave the generalisation panel.
+
+**Decisions.**
+1. **Ares is the production C++ line.** It is Tyr V12's strength with the exceptions fixed and 90 M points of
+   headroom; the cx chassis line is the survival-first clean room and stays as a testbed. Ares V06 (500) and V05
+   (480) are registered; the hub accepts `c++` manifests and uploads with the CLI's spelling (this deploy). The dev
+   screen against 545 decides; nothing is hand-activated.
+2. **The gate for retention changes is the BENCHMARKS logic, not the +0.05 economy delta**: hygiene and retention
+   may improve while the economy curve holds. V06's r50 dip (−0.017) is inside that; V06 passes on those terms and
+   goes to the live pipeline for the field to decide. It still needs seed 2 and the unseen panel with the atlas off
+   (Ares carries `atlas.hpp` from the scaffold; whether its policy consumes it must be measured, not assumed).
+3. **Search depth is the next lever on Ares, not on cx.** V06 used 8.6 M of 100 M. A depth ladder (2×, 4×, 8× node
+   caps and horizons under the same saturation/late guards), each rung measured on both panels with the CPU probe
+   on the dense fixtures (Schooltime late game at 60 units, Slithery), finds where the curve flattens or the budget
+   binds. The out-of-sample rule applies: caps key on tile count and unit count, not on the map.
+4. **The cx work transfers as parts, not as a bot**: the 2-core dead-end peel and tree costing, arrival maps, the
+   enclosure-aware room check (tuned not to cost pace), and the panel/atlas-off measurement discipline go into Ares
+   as `params.hpp` switches; C1-F's leak fixes are re-targeted at Ares (its wall 7.7 and self 3.7 per 1k are now the
+   top leaks on a proven economy) rather than at the chassis.
+**Falsifiers:** Ares V06 failing the dev screen against 545 (then the local panel has been fooling us again);
+a depth rung that raises the panel expected score but not the unseen-panel numbers (memorised pool); any sandbox
+max over 80 M on the dense fixtures.

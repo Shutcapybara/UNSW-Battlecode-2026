@@ -15,6 +15,7 @@ EXCLUDE_DIRS = {'__pycache__', 'build', '.unswbc-build', '.git'}
 EXCLUDE_FILES = {'.DS_Store'}
 CONTRACT_KINDS = {'divergence_window', 'behavioural_signature', 'trace_marker', 'legacy_none'}
 REQUIRED = ('name', 'lineage', 'author', 'language', 'hypothesis', 'mechanism', 'expected_change')
+LANGUAGES = {'python': 'python', 'py': 'python', 'c': 'c', 'cpp': 'cpp', 'c++': 'cpp', 'cxx': 'cpp'}   # manifest spellings -> stored language (the CLI's own aliases)
 
 
 def sha256_file(path):
@@ -54,8 +55,8 @@ def validate_manifest(manifest):
         problems.append('name must be lowercase [a-z0-9-], 3-61 chars')
     if manifest.get('name', '').endswith('-ai'):
         problems.append('name must not end with -ai (the upload name gets the suffix)')
-    if manifest.get('language') not in ('python', 'c', 'cpp'):
-        problems.append('language must be python|c|cpp')
+    if LANGUAGES.get(str(manifest.get('language', '')).lower()) is None:
+        problems.append('language must be python|c|cpp|c++')
     contract = manifest.get('activation_contract') or {}
     if contract.get('kind') not in CONTRACT_KINDS:
         problems.append('activation_contract.kind must be one of ' + ', '.join(sorted(CONTRACT_KINDS)))
@@ -93,7 +94,7 @@ def register_from_dir(conn, root, directory, actor, priority=None):
         rejected = conn.execute("SELECT verdict FROM experiments WHERE candidate_name=? AND verdict LIKE 'reject%' OR candidate_name=? AND verdict LIKE 'strategy_lost%'", (parent, parent)).fetchone()
         if rejected and not str(manifest.get('supersedes', '')).strip():
             raise ValueError(f'lineage_parent {parent} was live-rejected; `supersedes` (name + one-line mechanism difference) is required')
-    if manifest['language'] == 'python':
+    if LANGUAGES[str(manifest['language']).lower()] == 'python':
         for rel in before:
             if rel.endswith('.py'):
                 ast.parse((directory / rel).read_text(), filename=rel)
@@ -114,7 +115,7 @@ def register_from_dir(conn, root, directory, actor, priority=None):
                 archive.unlink()
                 raise ValueError(f'archive byte-check failed for {rel}')
     row = dict(name=name, fingerprint=full, code_fingerprint=code, archive_path=str(archive), archive_sha256=sha256_file(archive), source_files=before,
-               language=manifest['language'], lineage=manifest['lineage'], author=manifest['author'], lineage_parent_name=parent or None,
+               language=LANGUAGES[str(manifest['language']).lower()], lineage=manifest['lineage'], author=manifest['author'], lineage_parent_name=parent or None,
                lineage_parent_fingerprint=None, source_ref='dir:' + str(directory), hypothesis=manifest['hypothesis'], mechanism=manifest['mechanism'],
                expected_change=manifest['expected_change'], activation_contract=manifest.get('activation_contract'),
                local_evidence=manifest.get('local_evidence'), priority=int(priority if priority is not None else manifest.get('priority', 100)),
