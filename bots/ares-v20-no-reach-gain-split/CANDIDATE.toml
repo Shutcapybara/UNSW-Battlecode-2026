@@ -1,0 +1,25 @@
+name = "ares-v20-no-reach-gain-split"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v19-critical-enclosure-split"
+hypothesis = "V19's critical-state split reduced overall trapped loss but split too often on moves that already improved reach, worsening Portals' trapped length loss. Trigger only when no legal move improves reach."
+mechanism = "Keep V19's <=8 current-reach gate and existing tail split. Change only the second trigger test: require the selected legal move's reach to be <= the current reach, rather than merely <=8."
+expected_change = "Retain V19's reduction in critical enclosure deaths while reducing unnecessary split activations, meeting the trapped-length gate on Portals and Slithery Fight with r100 pearls flat and no W/L regression versus V09."
+priority = 215
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "bots/ares-v19-critical-enclosure-split/README.md",
+]
+summary = "All-10-map V09 screen: 10-10 W/L; trapped loss 49.93 vs 55.13 per 1k dt; <=8 hazard 618.53 vs 670.60. Portals trapped loss rose and the 30% gate was missed, so V20 stopped without full validation."

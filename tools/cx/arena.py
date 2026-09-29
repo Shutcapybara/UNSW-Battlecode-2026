@@ -112,6 +112,8 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
     eaten100 = {"A": 0, "B": 0}
     eaten_cp = {"A": {}, "B": {}}   # cumulative pearls at r50/r100/r150/r250
     portal_steps = {"A": 0, "B": 0}
+    sprint_extra = {"A": 0, "B": 0}
+    sprint_actions = {"A": 0, "B": 0}
     first_pearl = {"A": None, "B": None}
     turns = {"A": 0, "B": 0}
     points = {"A": [], "B": []}
@@ -171,6 +173,9 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
                            ("v", x, y) if d == "W" else ("v", (x + 1) % W, y))
                     if (key[0] == "h" and key[1:] in ph) or (key[0] == "v" and key[1:] in pv):
                         ds["portal"] = rnd
+        if spent > 0:
+            sprint_extra[team] += spent
+            sprint_actions[team] += 1
         last[did] = (ln, spent)
         if spent and act.startswith("M"):
             sprint[team] += spent
@@ -221,7 +226,11 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
 
     stats = {}
     for team in "AB":
-        s = {"eaten": eaten[team], "eaten_r100": eaten100[team], "first_pearl": first_pearl[team], "turns": turns[team]}
+        s = {"eaten": eaten[team], "eaten_r100": eaten100[team], "first_pearl": first_pearl[team],
+             "turns": turns[team], "sprint_extra": sprint_extra[team],
+             "sprint_actions": sprint_actions[team],
+             "sprint_per_eaten": sprint_extra[team] / max(1, eaten[team]),
+             "sprint_per_eaten_r100": sprint_extra[team] / max(1, eaten100[team])}
         for r in CHECK_ROUNDS:
             s[f"units_r{r}"] = at(r, team, 0)
             s[f"len_r{r}"] = at(r, team, 1)

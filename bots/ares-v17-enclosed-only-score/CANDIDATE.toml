@@ -1,0 +1,24 @@
+name = "ares-v17-enclosed-only-score"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v16-critical-enclosure-score"
+hypothesis = "Applying V16's reach score throughout the benchmark-defined enclosed state will lower enclosed deaths while preserving V16's near-baseline economy."
+mechanism = "Use the same five-step post-move reach delta and 0.35 score weight as V16; change only the activation threshold from current reach <=8 to current reach <=15 cells."
+expected_change = "Lower pooled death_rate_enclosed_per1k than V09 over all 10 active maps while keeping all-map W/L and r100 economy close to V09, with no sandbox CPU faults."
+priority = 212
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "bots/ares-v16-critical-enclosure-score/README.md",
+]
+summary = "All-10-map V09 screen: 8-12 W/L; enclosed-death rate improved 88.08 to 78.61 per 1k, but r100 total length fell 49.4 to 37.8. Death hazard is concentrated at reach <=8 cells."

@@ -2,11 +2,13 @@
 import copy
 import json
 import os
+import sys
 from pathlib import Path
 
 from .toml_lite import loads as toml_loads
 
 DEFAULT_ROOT = '/Users/alik/Documents/Projects/battlecode-hub'
+REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULTS = {
     'paths': {
         'repo': '/Users/alik/Documents/Projects/UNSW-Battlecode-2026',
@@ -19,6 +21,10 @@ DEFAULTS = {
     'team': {'id': 7, 'dev_opponents': [545, 752]},
     'cadence': {'safety_seconds': 60, 'cycle_seconds': 600, 'plan_horizon_seconds': 7200, 'review_every_seconds': 7200},
     'budget': {'hourly_games': {'field': 60, 'dev': 60}, 'executor_cap': {'field': 45, 'dev': 50}, 'harvest_per_cycle': 60},
+    # Opt-in automatic quota filler.  The normal candidate planner runs first;
+    # the filler spends only the unused part of each rolling 60-game pool.
+    'quota_filler': {'enabled': False, 'top_n': 10, 'batch_games': 10, 'cycle_games': 10,
+                     'field_opponents': [], 'reserve_games': {}, 'include_ladder_devs': True},
     'runtime': {'local_gate': {'max_points': 80_000_000, 'p99_points': 60_000_000}, 'live_gate': {'max_points': 95_000_000},
                 'toolkit_pin': '1.0.0', 'probe_fixtures': [[9, 'A'], [20, 'B'], [21, 'A'], [15, 'B']], 'probe_opponent': 'bots/sinbad-v07-divecap'},   # + Slithery Fight A, Trauma B (A1-Q6: yuna-v02 peaked 97.5 M on never-probed Slithery)
     'ranked_exposure_guard': {'blackout_before_even_utc_hour_minutes': 8, 'blackout_after_even_utc_hour_minutes': 12},
@@ -55,6 +61,12 @@ def hub_root():
         text = pointer.read_text().strip()
         if text:
             return Path(text).expanduser()
+    # The historical default is the Mac deployment path.  A checkout on
+    # another host should remain usable without requiring an impossible
+    # /Users/alik directory; hub-state/ is already the repository's ignored
+    # local mirror/control surface.
+    if sys.platform != 'darwin':
+        return REPO_ROOT / 'hub-state'
     return Path(DEFAULT_ROOT)
 
 
@@ -74,6 +86,16 @@ def load_config(root=None):
     path = root / 'hub.toml'
     if path.exists():
         cfg = _merge(cfg, toml_loads(path.read_text()))
+    if sys.platform != 'darwin':
+        # Normalize only the bundled Mac defaults.  Explicit local/remote
+        # paths in hub.toml remain authoritative.
+        paths = cfg['paths']
+        if paths.get('repo') == DEFAULTS['paths']['repo']:
+            paths['repo'] = str(REPO_ROOT)
+        if paths.get('python') == DEFAULTS['paths']['python']:
+            paths['python'] = sys.executable
+        if paths.get('key_file') == DEFAULTS['paths']['key_file']:
+            paths['key_file'] = str(REPO_ROOT / '.battlecode-api-key')
     cfg['root'] = str(root)
     if not cfg['paths'].get('mirror'):
         cfg['paths']['mirror'] = str(Path(cfg['paths']['repo']) / 'hub-state')
@@ -93,7 +115,12 @@ def write_default_config(root):
     if path.exists():
         return path
     lines = ['# JKS hub configuration (Part B §4.6). Edit and restart the actuator.', '']
-    for section, values in DEFAULTS.items():
+    defaults = copy.deepcopy(DEFAULTS)
+    if sys.platform != 'darwin':
+        defaults['paths']['repo'] = str(REPO_ROOT)
+        defaults['paths']['python'] = sys.executable
+        defaults['paths']['key_file'] = str(REPO_ROOT / '.battlecode-api-key')
+    for section, values in defaults.items():
         lines.append(f'[{section}]')
         for key, value in values.items():
             lines.append(f'{key} = {_toml_value(value)}')
@@ -133,3 +160,54 @@ def set_mode(root, mode):
         text = text.rstrip('\n') + f'\n\n[executor]\nmode = "{mode}"\n'
     path.write_text(text)
     return mode
+
+
+def set_quota_filler_enabled(root, enabled):
+    """Toggle the automatic quota filler in the external hub config."""
+    import re
+    root = Path(root)
+    path = root / 'hub.toml'
+    if not path.exists():
+        write_default_config(root)
+    text = path.read_text()
+    # Stop at the next TOML table header, not at an inline array such as
+    # ``field_opponents = []`` inside this table.
+    section = re.search(r'^\[quota_filler\][\s\S]*?(?=^\[[A-Za-z0-9_.-]+\]\s*$|\Z)', text, re.M)
+    value = 'true' if enabled else 'false'
+    if section:
+        body = section.group(0)
+        if re.search(r'^enabled\s*=', body, re.M):
+            body2 = re.sub(r'^enabled\s*=.*$', f'enabled = {value}', body, count=1, flags=re.M)
+        else:
+            body2 = body.rstrip('\n') + f'\nenabled = {value}\n'
+        text = text.replace(body, body2)
+    else:
+        text = text.rstrip('\n') + f'\n\n[quota_filler]\nenabled = {value}\n'
+    path.write_text(text)
+    return bool(enabled)
+
+
+def set_quota_filler_reserve(root, games):
+    """Set the same manual-test reserve for the field and dev pools."""
+    import re
+    games = max(0, int(games))
+    root = Path(root)
+    path = root / 'hub.toml'
+    if not path.exists():
+        write_default_config(root)
+    text = path.read_text()
+    # Stop at the next TOML table header, not at an inline array such as
+    # ``field_opponents = []`` inside this table.
+    section = re.search(r'^\[quota_filler\][\s\S]*?(?=^\[[A-Za-z0-9_.-]+\]\s*$|\Z)', text, re.M)
+    value = f'{{field = {games}, dev = {games}}}'
+    if section:
+        body = section.group(0)
+        if re.search(r'^reserve_games\s*=', body, re.M):
+            body2 = re.sub(r'^reserve_games\s*=.*$', f'reserve_games = {value}', body, count=1, flags=re.M)
+        else:
+            body2 = body.rstrip('\n') + f'\nreserve_games = {value}\n'
+        text = text.replace(body, body2)
+    else:
+        text = text.rstrip('\n') + f'\n\n[quota_filler]\nreserve_games = {value}\n'
+    path.write_text(text)
+    return {'field': games, 'dev': games}

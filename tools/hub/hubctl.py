@@ -11,6 +11,7 @@
     python -m tools.hub.hubctl deploy --sha SHA
     python -m tools.hub.hubctl git status | git sync [--dry-run]
     python -m tools.hub.hubctl legacy status | legacy restart | legacy clear-review --note TEXT
+    python -m tools.hub.hubctl quota status | quota on | quota off
     python -m tools.hub.hubctl executor status | executor once --mode shadow|live | executor adopt-legacy | executor release-legacy | executor set-mode off|shadow|auto|live
 """
 import argparse
@@ -23,7 +24,7 @@ from pathlib import Path
 
 from . import db, records
 from .candidates import register_from_dir, stage_live
-from .config import hub_root, load_config, write_default_config
+from .config import hub_root, load_config, set_quota_filler_enabled, write_default_config
 from .cycle import run_cycle, mirror
 from .gitkeeper import classify, sync as git_sync
 from . import legacy_ops
@@ -45,7 +46,9 @@ def cmd_status(conn, root, cfg, a):
     status = dict(at=tick.get('at'), incumbent=tick.get('incumbent'), incumbent_name=tick.get('incumbent_name'), active=tick.get('active_submission'),
                   restoration_matched=tick.get('restoration_matched'), legacy_worker=tick.get('legacy_worker'), quota=tick.get('quota'), attention=tick.get('attention'),
                   experiments=tick.get('experiments'), queue=[dict(name=c['name'], status=c['status'], legacy_priority=c['legacy_priority'], hub_score=c['hub_score'], submission=c.get('submission')) for c in tick.get('queue', [])],
-                  plan=tick.get('plan'), open_tasks=tick.get('open_tasks'), packet=db.kv_get(conn, 'last_packet_epoch'))
+                  plan=tick.get('plan'), open_tasks=tick.get('open_tasks'), packet=db.kv_get(conn, 'last_packet_epoch'),
+                  quota_filler=dict(configured=bool((cfg.get('quota_filler') or {}).get('enabled', False)),
+                                    last=(db.kv_get(conn, 'executor_last', {}) or {}).get('quota_filler')))
     if a.json:
         out(status, True)
         return
@@ -53,6 +56,7 @@ def cmd_status(conn, root, cfg, a):
     w = status.get('legacy_worker') or {}
     print(f"legacy worker: {w.get('state')} age {w.get('age_seconds')}s jobs {w.get('jobs')} attention {w.get('attention')}")
     print(f"quota: {status.get('quota')}")
+    print(f"quota filler: {status['quota_filler']['configured']} last={status['quota_filler']['last']}")
     print('attention: ' + (', '.join(a['kind'] for a in status.get('attention') or []) or 'none'))
     for e in status.get('experiments') or []:
         print(f"experiment {e['id'][:8]} {e['candidate']} vs {e['control']} {e['status']} [{e['protocol']}] screen {e['complete_blocks']['screen']}/3 net {e['screen_net']:+.0f} confirm {e['complete_blocks']['confirm']}/12 recorded={e['recorded_verdict']} computed={e['computed_verdict']}")
@@ -84,6 +88,19 @@ def cmd_candidate(conn, root, cfg, a):
         conn.execute('UPDATE candidates SET priority=?, updated_at=? WHERE name=?', (a.priority, db.now_iso(), a.name))
         db.event(conn, root, a.agent, 'candidate_prioritized', dict(name=a.name, priority=a.priority))
         out({'name': a.name, 'priority': a.priority}, a.json)
+
+
+def cmd_quota(conn, root, cfg, a):
+    enabled = bool((cfg.get('quota_filler') or {}).get('enabled', False))
+    if a.sub == 'status':
+        out(dict(enabled=enabled, settings=cfg.get('quota_filler') or {},
+                 last=(db.kv_get(conn, 'executor_last', {}) or {}).get('quota_filler'),
+                 quota=(db.kv_get(conn, 'executor_last', {}) or {}).get('quota')), a.json)
+    else:
+        enabled = a.sub == 'on'
+        set_quota_filler_enabled(root, enabled)
+        db.event(conn, root, a.agent, 'quota_filler_toggled', dict(enabled=enabled))
+        out(dict(enabled=enabled, note='takes effect on the next executor cycle'), a.json)
 
 
 def cmd_task(conn, root, cfg, a):
@@ -269,6 +286,11 @@ def main(argv=None):
     lg.add_parser('restart')
     lc = lg.add_parser('clear-review')
     lc.add_argument('--note', required=True)
+    quota = sp.add_parser('quota', help='toggle the automatic top-10/dev quota filler')
+    qs = quota.add_subparsers(dest='sub', required=True)
+    qs.add_parser('status')
+    qs.add_parser('on')
+    qs.add_parser('off')
     ex = sp.add_parser('executor').add_subparsers(dest='sub', required=True)
     ex.add_parser('status')
     eo = ex.add_parser('once')
@@ -332,6 +354,8 @@ def main(argv=None):
                 ok = legacy_ops.clear_review(live, f'{a.agent}: {a.note}')
                 db.event(conn, root, a.agent, 'legacy_review_cleared', dict(note=a.note, cleared=ok))
                 out({'cleared': ok}, a.json)
+        elif a.cmd == 'quota':
+            cmd_quota(conn, root, cfg, a)
         elif a.cmd == 'executor':
             if a.sub == 'status':
                 out(dict(mode=cfg['executor']['mode'], last=db.kv_get(conn, 'executor_last'), control=db.kv_get(conn, 'control'), control_owner=db.kv_get(conn, 'control_owner'),

@@ -1,0 +1,25 @@
+name = "ares-v10-open-room-priority"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v09-deeper-bounded-search"
+hypothesis = "Prioritizing moves with enough time-aware room for the whole post-move dragon will reduce trapped and mill deaths without materially reducing pearl acquisition."
+mechanism = "On each turn, use the existing time-aware room flood to score every legal move; when at least one move leaves enough room for the post-move dragon, choose only among those open-room moves, even if a tighter move reaches food."
+expected_change = "Reduce trapped/enclosed deaths relative to V09 while preserving pearls and r100 retention; verify CPU remains below the sandbox limit."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+    "bots/ares-v09-deeper-bounded-search/README.md",
+]
+summary = "Ares V09 child that gives open-room move candidates priority when any exist; short development-run results will be recorded before requesting full validation."

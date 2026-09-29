@@ -1,0 +1,35 @@
+name = "robert-v02-trap-pearl-gate"
+lineage = "robert"
+author = "codex/robert"
+language = "c++"
+lineage_parent = "robert-v01-deeper-bounded-search"
+hypothesis = "Reject low-yield trapped-space entries while retaining Robert V01's deeper bounded search and larger-dragon convergence."
+mechanism = "Require at least three reachable pearls whenever the post-move room cannot fit the simulated dragon body, including the emergency fallback path."
+expected_change = "Reduce deaths and lost growth from low-yield enclosures without sacrificing justified three-pearl trap farming or bounded CPU usage."
+priority = 220
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/bifrost-family.md",
+    "docs/skadi.md",
+    "docs/fenrir-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Robert V02 derives from Robert V01 and gates trapped-space moves on at least three reachable pearls. Robert V01, Ares V06, and active V04 v83 remain untouched."

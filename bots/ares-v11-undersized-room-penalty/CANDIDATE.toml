@@ -1,0 +1,26 @@
+name = "ares-v11-undersized-room-penalty"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v09-deeper-bounded-search"
+hypothesis = "The farm discount can favor dead ends when reachable room is too small for the dragon; retaining the full enclosure penalty in that case will reduce trapped deaths while preserving viable farm routes."
+mechanism = "Keep Ares V09 route selection. Extend its time-aware room probe to the full post-move body and apply the existing trap penalty without the farm discount only when reachable room is smaller than that body."
+expected_change = "Reduce trapped/enclosed deaths while preserving pearl rate, r100 units/length, and V09 head-to-head score; stay below the sandbox CPU limit."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+    "bots/ares-v09-deeper-bounded-search/README.md",
+    "bots/robert-v01-deeper-bounded-search/README.md",
+]
+summary = "Ares V09 child that withholds the farm discount only when the room probe cannot fit the full post-move body. Short development-run results pending."

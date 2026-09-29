@@ -1,10 +1,12 @@
 """Battlecode API client for the hub executor.
 
 Read-only calls retry bounded transport failures; mutations never retry (the executor's durable intents reconcile
-them by exact identity instead). The credential is read through `tools/download_team_games.py::load_api_key` and is
-never logged. Replays are downloaded with `NoRedirect` so the bearer header is not forwarded to the signed URL.
+them by exact identity instead). The credential is read from `BATTLECODE_API_KEY`, the `unswbc auth` key store, or
+the repository-local ignored key file, and is never logged. Replays are downloaded with `NoRedirect` so the bearer
+header is not forwarded to the signed URL.
 """
 import json
+import os
 import re
 import sys
 import threading
@@ -42,6 +44,26 @@ def parse_retry_after(status, headers, body):
     return int(m.group(1)) * 60 if m else 3605
 
 
+def load_hub_api_key(repo, base, download):
+    """Resolve the hub credential without requiring a second plaintext copy.
+
+    ``unswbc auth set`` stores keys in ``~/.unswbc/keys.json``.  Prefer that
+    store over the older repository-local file so rotating the CLI credential
+    immediately fixes the actuator without copying a secret into the repo.
+    """
+    environment_key = os.environ.get('BATTLECODE_API_KEY', '').strip()
+    if environment_key:
+        return environment_key
+    try:
+        store = json.loads((Path.home() / '.unswbc' / 'keys.json').read_text())
+        key = store.get(base.rstrip('/'))
+        if isinstance(key, str) and key.strip():
+            return key.strip()
+    except (OSError, ValueError, AttributeError):
+        pass
+    return download.load_api_key(Path(repo) / '.battlecode-api-key')
+
+
 class Client:
     """One paced client per process, shared by every thread (executor, observer, corpus): calls are spaced at least
     `min_interval` apart under a lock, so the documented 120/min ceiling is never crossed however many callers there
@@ -60,7 +82,7 @@ class Client:
             sys.path.insert(0, str(self.repo / 'tools'))
             import download_team_games as download  # noqa: WPS433
             self._download = download
-            key = download.load_api_key(self.repo / '.battlecode-api-key')
+            key = load_hub_api_key(self.repo, self.base, download)
             self.opener = urllib.request.build_opener(download.NoRedirect())
         else:
             self._download = None

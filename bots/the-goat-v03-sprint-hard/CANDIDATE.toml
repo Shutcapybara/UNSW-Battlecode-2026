@@ -1,0 +1,18 @@
+name = "the-goat-v03-sprint-hard"
+lineage = "THE GOAT"
+author = "codex/goat/2026-09-29"
+language = "python"
+lineage_parent = "the-goat-v02-sprint-discipline"
+hypothesis = "A stronger sprint cost can remove more of the measured sprint tax while preserving immediate pearl income."
+mechanism = "override.py changes only w_sprint from 1.5 in THE GOAT v02 to 2.0; all other behavior is inherited byte-for-byte from v02."
+expected_change = "Sprint length per pearl falls further, pearls eaten by r100 stay within 5% of v02, and exact-pair length r100 is non-negative on the leak-focused panel."
+priority = 90
+supersedes = "the-goat-v02-sprint-discipline"
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:goat-v03", 0, 500, 1]]
+
+[local_evidence]
+refs = ["docs/TEAM-SUMMARY-2026-09-29.md", "docs/analysis/C1-efficiency-ledger.md"]
+summary = "Rejected sibling. On the same seed-1 leak-focused fixtures versus v02: length r100 better/same/worse 1/7/0, r250 4/2/2, eaten r100 0/8/0; the harder sprint weight did not improve the target metric and was not retained."

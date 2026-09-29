@@ -1,0 +1,18 @@
+name = "the-goat-v04-bounded-sprint"
+lineage = "THE GOAT"
+author = "codex/goat/2026-09-29"
+language = "python"
+lineage_parent = "the-goat-v02-sprint-discipline"
+hypothesis = "The retained v02 material gain can survive the pinned sandbox by bounding expensive search work without changing the policy doctrine."
+mechanism = "Keep w_sprint at 1.5; lower born_cap 60->40, big_cap 160->128, sprint3_limit 12->8, escape node caps 120/180->96/144, and flood caps 24/40->20/32."
+expected_change = "Zero CPU-limit/no_action deaths on the four probe fixtures, max below 80M and p99 below 60M, with no material loss of v02's live-panel r100 length or pearls."
+priority = 100
+supersedes = "the-goat-v02-sprint-discipline"
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:goat-v04", 0, 500, 1]]
+
+[local_evidence]
+refs = ["docs/TEAM-SUMMARY-2026-09-29.md", "docs/findings/2026-09-29-the-goat-v02-sprint-discipline.md"]
+summary = "Rejected runtime successor. The first pinned Trauma B probe recorded ten CPU-limit errors and max 99,906,163 points, so the cap changes did not clear the runtime gate."

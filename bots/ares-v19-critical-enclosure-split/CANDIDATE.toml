@@ -1,0 +1,25 @@
+name = "ares-v19-critical-enclosure-split"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v09-deeper-bounded-search"
+hypothesis = "The highest trapped-death hazard occurs at reach <=8, where a legal move can keep the dragon trapped and Ares 9 only splits when every move is invalid. A controlled tail split when the best legal move remains critically enclosed will reduce those deaths."
+mechanism = "Start from Ares V09. Probe five-step body-blocked reach for each legal move. If current reach is <=8 and the highest-scoring legal move still has reach <=8, use Ares 9's existing escape split when available; otherwise preserve the original decision."
+expected_change = "Reduce reach<=8 wall/body/self death hazard and pooled death_rate_enclosed_per1k across all 10 active maps while retaining V09-like W/L and r100 economy, with no sandbox CPU faults."
+priority = 214
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+]
+summary = "All-10-map V09 screen: 11-9 W/L; trapped length loss 49.93 vs 55.13 per 1k dt; <=8 hazard 614.98 vs 679.58. Retention was flat, but Portals trapped loss rose 65.0 to 75.8 and the 30% top-map gate was missed."

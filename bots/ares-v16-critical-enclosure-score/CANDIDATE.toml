@@ -1,0 +1,24 @@
+name = "ares-v16-critical-enclosure-score"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v15-bounded-enclosure-cost"
+hypothesis = "Restricting the five-step reach score to dragons with at most eight reachable cells will reduce deaths in critically tight pockets while avoiding V15's broad economy loss."
+mechanism = "Use V15's same post-move reach delta and score weight, but apply it only when the dragon's current body-blocked reach is at most eight cells. No score adjustment applies while current reach is above eight."
+expected_change = "Lower death_rate_enclosed_per1k than V09 on all 10 active maps while retaining V09-like r100 economy and W/L, with no sandbox CPU faults."
+priority = 211
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "bots/ares-v15-bounded-enclosure-cost/README.md",
+]
+summary = "All-10-map V09 screen: 9-11 W/L with near-baseline r100 economy, but pooled death_rate_enclosed_per1k was 83.59 vs 80.21. The <=8-cell gate did not fix the leak."

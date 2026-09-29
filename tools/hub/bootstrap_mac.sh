@@ -22,7 +22,7 @@ mkdir -p ~/.config/jkshub && echo "$HUB" > ~/.config/jkshub/root
 
 echo "== tests (gate: the hub's own modules; other lineages' test files run afterwards without gating)"
 cd "$REPO"
-JKS_HUB_FIXTURE="$REPO/build/hub-fixture" "$PY" -m unittest tests.test_hub_core tests.test_hub_git tests.test_hub_legacy_ops tests.test_hub_executor tests.test_hub_daemon
+JKS_HUB_FIXTURE="$REPO/build/hub-fixture" "$PY" -m unittest tests.test_hub_core tests.test_hub_git tests.test_hub_legacy_ops tests.test_hub_executor tests.test_hub_daemon tests.test_hub_quota_filler tests.test_hub_discord_bot tests.test_hub_api
 JKS_HUB_FIXTURE="$REPO/build/hub-fixture" "$PY" -m unittest discover -s tests -p 'test_hub_*.py' 2>&1 | tail -3 || true
 
 echo "== init"

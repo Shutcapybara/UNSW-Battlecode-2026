@@ -1,0 +1,17 @@
+[Unit]
+Description=JKS hub actuator and quota executor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/CLionProjects/UNSW-Battlecode-2026-good
+Environment=JKS_HUB_ROOT=%h/CLionProjects/UNSW-Battlecode-2026-good/hub-state
+Environment=JKS_AGENT=hub/actuator/systemd
+Environment=PYTHONUNBUFFERED=1
+ExecStart=%h/anaconda3/bin/python -m tools.hub.actuator --serve
+Restart=on-failure
+RestartSec=60
+
+[Install]
+WantedBy=default.target

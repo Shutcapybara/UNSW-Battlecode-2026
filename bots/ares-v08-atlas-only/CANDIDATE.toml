@@ -1,0 +1,38 @@
+name = "ares-v08-atlas-only"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Activating the existing unique public-map matcher should expose full known terrain and portal topology earlier, reducing exploration cost; map-specific gains must generalize across the fixed live panel."
+mechanism = "Try the exact visible-edge atlas match after each observation until a unique map matches; install its edge topology, portal pairs and bed locations. Record the first activation."
+expected_change = "Increase the mean of the four map-normalized pearl checkpoints by at least 0.05 versus V06, without losing normalized r100 units or length, raising any tier-2 rate by more than 10%, or lowering fixed-panel expected score."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:atla", 0, 500, 1],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/bifrost-family.md",
+    "docs/skadi.md",
+    "docs/fenrir-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+    "bots/chaewon-y01-atlas/README.md",
+    "docs/findings/2026-09-30-ares-v07-chae-won-components.md",
+]
+summary = "Isolated V06 child that activates Ares’s unique public-map atlas and registers atlas-loaded portal ids with the existing radio scheduler. Seed-1 panel raised normalized pearl mean by 0.188, but r100 retention fell, three tier-2 rates exceeded the 10% guardrail, and expected score fell; reject under BENCHMARKS.md."

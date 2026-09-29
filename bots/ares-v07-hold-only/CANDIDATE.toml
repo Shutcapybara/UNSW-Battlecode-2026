@@ -1,0 +1,40 @@
+name = "ares-v07-hold-only"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "A two-round allied head report sent through a known distant portal can lower blind head-on losses by raising occupancy risk for that landing without changing target search or map knowledge."
+mechanism = "When a non-crown MOVE ends beside a known paired portal with a landing outside vision, replace outgoing sonar with one HOLD packet containing the post-move head cell and round. Receivers trust the cell for two rounds and raise blind landing risk to the existing occupied-body level."
+expected_change = "Reduce ally head-on deaths while preserving the parent’s normalized economy, r100 units and length, fixed-panel expected score, and tier-2 10% guardrail."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:hold", 0, 500, 1],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/bifrost-family.md",
+    "docs/skadi.md",
+    "docs/fenrir-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+    "bots/chaewon-y05-hold/README.md",
+    "bots/chaewon-y05-hold/comms.py",
+    "bots/chaewon-y05-hold/main.py",
+    "docs/findings/2026-09-30-ares-v07-chae-won-components.md",
+]
+summary = "Isolated V06 child port of Chaewon Y05 HOLD using new packet type 8, a solo ray through a known distant portal, and a two-round receiver cache. Ally head-on deaths fell 13.2%, but normalized pearl mean rose only 0.005, r100 units and panel expected score fell; reject under BENCHMARKS.md."

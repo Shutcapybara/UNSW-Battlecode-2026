@@ -1,0 +1,19 @@
+[Unit]
+Description=JKS hub Discord quota controller
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# This checkout uses the user's Anaconda Python. Change only ExecStart if a
+# different virtual environment contains discord.py.
+WorkingDirectory=%h/CLionProjects/UNSW-Battlecode-2026-good
+Environment=JKS_HUB_ROOT=%h/CLionProjects/UNSW-Battlecode-2026-good/hub-state
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=%h/.config/jkshub/discord.env
+ExecStart=%h/anaconda3/bin/python -m tools.hub.discord_bot
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

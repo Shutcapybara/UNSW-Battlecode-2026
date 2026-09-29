@@ -1,0 +1,18 @@
+name = "the-goat-v02-sprint-discipline"
+lineage = "THE GOAT"
+author = "codex/goat/2026-09-29"
+language = "python"
+lineage_parent = "fenrir-v20-crowded-resource-revalue"
+hypothesis = "The live-line sprint tax can be reduced by increasing the existing sprint cost while preserving immediate pearl income."
+mechanism = "override.py changes only w_sprint from 1.0 to 1.5; all routing, density, newborn, portal, and crown logic is inherited byte-for-byte from the parent snapshot."
+expected_change = "Sprint length per pearl falls by at least 25%, pearls eaten by r100 stay within 5% of the parent, and exact-pair length r100 is non-negative on the live and generalisation panels."
+priority = 100
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [["ACT:goat-v02", 0, 500, 1]]
+
+[local_evidence]
+refs = ["docs/TEAM-SUMMARY-2026-09-29.md", "docs/analysis/C1-efficiency-ledger.md"]
+summary = "Retained native research candidate, not runtime-ready. Leak-focused exact pair vs fenrir-v20 on 16 fixtures: length r100 better/same/worse 8/7/1, sign-test p=0.039, zero errors. Full live seed-1 panel: 10-10 vs Fenrir V20, 10-10 vs Bifrost V01, 11-9 vs Gavroche V33, 14-6 vs Gavroche V66, zero errors. Generalisation panel: 62 games across all transformed/public/synthetic maps, 33-29, zero errors. The sprint metric moved only slightly (mean sprint_extra/eaten 0.811 to 0.796; r100 14.426 to 14.331). First pinned Schooltime sandbox probe recorded two CPU-limit/no-action deaths and max 87,580,567, so v02 is not promoted."
