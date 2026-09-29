@@ -30,7 +30,10 @@ Base `<lineage>-00-base` = `lune-r1-07-latecap8x-only` verbatim (golden parity),
    `threat_ew` (+1 per enemy head within k, ×λ), `death_ew` (+1 at every observed death cell, ×λ — the ledger's
    trapped/portal leak as a map). Smoothing: a 3×3 or 5×5 box-blur view read at query time, not stored (CPU is
    free: R-1 measured 9 M of 100 M points; keep it under 20 M anyway and probe).
-2. **Mode (L31)**: a per-dragon discrete state (forage / transit / post-transit / escape / hunt / feed / crown) with entry and exit conditions on measured state and hysteresis, exposed as a one-hot feature so weights can be mode-conditioned (the feature interface below makes `w_i` per mode a natural extension); first modes to build: transit/post-transit and escape.
+2. **Mode (L31)**: a per-dragon discrete state (forage / transit / post-transit / escape / hunt / feed / crown) with entry and exit conditions on measured state and hysteresis, exposed as a one-hot feature so weights can be mode-conditioned (the feature interface below makes `w_i` per mode a natural extension); first modes to build: transit/post-transit and escape. Then, as its own version (L32), replace the switch with a belief
+   vector over modes updated by observation (sticky transition matrix, per-mode emission likelihoods over the features)
+   and by the bot's own choice (a mode-change candidate scored like a move, with a switching cost); weights become the
+   belief-weighted mixture of per-mode weights; fit transition/emission with the tuner; report belief entropy per turn.
 3. **Scalars**: momentum (Ares has it; the soft version of mode), local pearl sparsity (pearls seen inside the last search horizon), units in
    view, clock (round / 500 and its square), own length, pending-split state.
 4. **The feature interface.** Every place the policy scores a candidate target cell or a candidate move gets a
