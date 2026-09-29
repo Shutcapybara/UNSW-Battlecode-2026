@@ -534,3 +534,37 @@ which writes `[executor] mode` into `HUB/hub.toml` and restarts the daemon (`act
 (`ares-v05`, `ares-v06`, `ouroboros-s02-portal`) stay queued; nothing is uploaded until the mode is set back to
 `live` by the same control, which is the switch to flip when systematic live tests resume. Local panels
 (BENCHMARKS gate) are the only gate in the meantime.
+
+**D-032 — the lane gate is revised: paired, multi-seed, interval-based, phase-aware (29 Sep 23:40 UTC).** Three lanes
+reported against the +0.05 single-seed economy bar: Renoir (33 mechanisms, 0 accepted; best real effects +0.01 to
++0.02; the seed alone moves the same bot's economy by +0.071), Lune (the recommended search level at +0.026 with every
+r100+ metric up and no hygiene cost, failing the bar because a late-phase change cannot move p@50/p@100), and Sciel
+(one mechanism at +0.067, killed by a guard). Renoir's reading is adopted: fishtest works because its bound matches
+patch size. The gate becomes two-tier. **Accept into a lane's stack:** paired fixtures, seeds 1–3, live pool and
+generalisation panel, both seats; bootstrap 90 % lower bound of Δ(economy mean) > 0 on the pool; generalisation
+Δ(economy) lower bound > −0.02; units@100 and length@100 lower bounds not < −0.02; no tier-2 rate up > 10 %; win
+lower bound > −0.02; per-checkpoint deltas reported, and a change that acts only after a phase boundary is judged on
+the checkpoints it can move with the earlier ones as guards. **Promote to the dev screen:** the accumulated stack
+against Ares V06 at the original +0.05 (or the phase-aware equivalent), on both panels. The desktop's throughput
+(~2,900 games/h) makes the 1,200-game accept test a 25-minute step. Consequences: BENCHMARKS §"How to use it" step 4
+is superseded for lanes by this decision; R-4's scorecard implements the interval form; Renoir's 17a/17d/18a/18c and
+Lune's late-cap level are re-scored under it before anything else runs.
+
+**D-033 — Ares V06 carries map identity, and the lanes' base drops it (29 Sep 23:40 UTC).** Renoir found three
+`policy.hpp` terms that fire only when `W == 32 && H == 16` (`devil_center_bonus`, `devil_lane_bonus`,
+`ally_body_buffer`): Devil is won 16/16 with them and 17 % on the transposed Devil; they *hurt* on Prisoners
+Dilemma, the other 32×16 map; Trophy likewise falls from 80 % to 17 % transposed. This is the out-of-sample rule's
+case exactly. Decisions: (1) every R lane's base from now is `lune-r1-07-latecap8x-only` with those three terms
+inactive (`<lane>-01-nodevil`), so lane deltas are measured on a bot that does not know the pool; (2) the finding
+goes to the teammates as a Qualifier risk with a proposed structural replacement (a midline race keyed on observed
+spawn geometry), which is theirs to build on Ares; (3) the ledger gets a row (L28) and the pool-vs-generalisation
+gap of V06 (0.762 vs 0.524 win) is the number to close.
+
+**D-034 — registrations and lane state (29 Sep 23:40 UTC).** `lune-r1-07-latecap8x-only` is registered for the dev
+screen (priority 510, above Ares V06) — queued only, since the executor is in shadow (D-031). Sciel-03b (the
+ally-saturation discount on the EW food-density memory) is the single most promising unbuilt mechanism in the
+programme and is the first item in the guided lane's prompt. Lane `ra` (Renoir) is closed with its report; `sciel`
+continues on the desktop if GLM is re-issued there; two new desktop lanes are issued: `rb` (Basquiat, blind — reads no
+findings or ledger, an independent draw) and `rc` (Cézanne, ledger-guided). Monoco (GPT's lane) has no branch on
+origin and is read when it is pushed.
+

@@ -12,3 +12,7 @@ supersedes = ""
 [local_evidence]
 refs = ["docs/findings/2026-09-30-r1-search-ladder.md", "docs/findings/2026-09-29-ares-v06-expanded-search-support.md"]
 summary = "Lune lineage (Claude Opus 5.5). Params-only change from the parent; all runs atlas-off (the atlas is dead code)."
+
+[activation_contract]
+kind = "legacy_none"
+note = "params-only change from Ares V06 (late search cap); no runtime marker; identity by fingerprint"
