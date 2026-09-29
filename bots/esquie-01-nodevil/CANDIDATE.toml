@@ -1,0 +1,18 @@
+name = "esquie-01-nodevil"
+lineage = "esquie"
+author = "glm-5.3/esquie"
+language = "c++"
+lineage_parent = "lune-r1-07-latecap8x-only"
+hypothesis = "M-1 map anatomy: the lanes' honest base. Lune R-1's latecap8x-only (Ares V06 + search_cap_late 48->384, sparse 64->512) with the W==32&&H==16 map-identity terms (devil_center_bonus, devil_lane_bonus, ally_body_buffer) off (D-033, L28)."
+mechanism = "lune-r1-07 policy verbatim behind Params::shape_terms=false; the three 32x16-only terms return 0. Switch-on (shape_terms=true) is golden-parity with lune-r1-07."
+expected_change = "loses Devil/Dilemma-specific opening help on the pool, gains honesty on unseen maps; establishes the per-map brick list (Part 1)"
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-09-30-r1-search-ladder.md", "docs/findings/2026-09-30-ra-lane.md", "docs/hub/prompts/2026-09-30-M1-map-anatomy-glm.md"]
+summary = "Esquie lineage (GLM 5.3, M-1 map anatomy). Base = lune-r1-07 + nodevil ablation (renoir-23 form). Atlas dead code in V06 lineage, so atlas-off by construction."
+
+[activation_contract]
+kind = "legacy_none"
+note = "params-only change from lune-r1-07 (three shape terms off); identity by fingerprint"
