@@ -79,6 +79,31 @@ def _own_head(block: bytes, did: int):
     return None
 
 
+def _walk_portals(head, dirs, pe):
+    """Walk a MOVE reply from head over dirs (NESW); return (crossed, rounds_walked).
+
+    crossed is True when any stepped edge is a portal edge (wrapping the map).
+    After a transit the geometric walk is wrong, so it stops there: one transit
+    per reply is counted, which is what portal_steps means.
+    """
+    W, H, ph, pv = pe
+    x, y = head
+    for n, d in enumerate(dirs):
+        key = (("h", x, y) if d == "N" else ("h", x, (y + 1) % H) if d == "S" else
+               ("v", x, y) if d == "W" else ("v", (x + 1) % W, y))
+        if (key[0] == "h" and key[1:] in ph) or (key[0] == "v" and key[1:] in pv):
+            return True, n + 1
+        if d == "N":
+            y = (y - 1) % H
+        elif d == "S":
+            y = (y + 1) % H
+        elif d == "W":
+            x = (x - 1) % W
+        else:
+            x = (x + 1) % W
+    return False, len(dirs)
+
+
 def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool = False,
              record: str | None = None, purge: bool = True, replay_out: str | None = None) -> dict:
     """record: 'A' or 'B' to keep that team's transcripts (by dragon id)."""
@@ -164,12 +189,9 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
             if pe is not None:
                 hp = _own_head(block, did)
                 if hp is not None:
-                    W, H, ph, pv = pe
-                    x, y = hp
-                    d = act[1]
-                    key = (("h", x, y) if d == "N" else ("h", x, (y + 1) % H) if d == "S" else
-                           ("v", x, y) if d == "W" else ("v", (x + 1) % W, y))
-                    if (key[0] == "h" and key[1:] in ph) or (key[0] == "v" and key[1:] in pv):
+                    crossed, _ = _walk_portals(hp, act[1:], pe)
+                    if crossed:
+                        portal_steps[team] += 1
                         ds["portal"] = rnd
         last[did] = (ln, spent)
         if spent and act.startswith("M"):
@@ -250,6 +272,12 @@ def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool
         turns100 = sum(rows[r][team][0] for r in rows if r <= 100)
         moves100 = sum(v["moves100"] for k, v in dst.items() if teams.get(k) == team)
         s["turns_r100"] = turns100
+        for r in (50, 100, 150, 250):
+            s[f"eaten_r{r}"] = eaten_cp[team].get(r, 0)
+        s["sprint_segs"] = sprint[team]
+        s["sprint_segs_r100"] = sprint100[team]
+        s["portal_steps"] = portal_steps[team]
+        s["portal_deaths"] = sum(1 for d in mine if d["portal"])
         s["pearls_per_100dt"] = round(100 * eaten100[team] / turns100, 2) if turns100 else 0
         s["moves_per_pearl"] = round(moves100 / eaten100[team], 2) if eaten100[team] else None
         pts = sorted(points[team])
