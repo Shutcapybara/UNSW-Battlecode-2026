@@ -1,0 +1,652 @@
+{
+ "_meta": {
+  "cohort_rule": "team 7 fixed; top10 = rank<=10, r11_30 = 11-30, band = 55-85 in the ladder snapshot nearest game start",
+  "definitions": "C2-0 fight anatomy: contact/fight events on F1 frames (no new decoder).\n\nDefinitions (kept simple and identical for every cohort; distances are wrap-aware Manhattan\non the replay's own geometry, portals not followed - a portal can only hide a contact, never\ninvent one, and the bias is the same for everyone):\n\n  contact     an enemy head within 4 cells of a friendly head\n  cluster     connected component of heads joined by cross-team contact edges\n  fight       a cluster event where >= 3 heads of one side and >= 1 of the other stand within\n              6 cells of the cluster centre; 1v1, 2v1 and 2v2 contacts are separate classes\n  event       clusters linked across rounds by shared participants, ended by 5 contact-less rounds\n  initiator   the side whose head first stands adjacent (<= 1 cell) to an enemy head, credited by\n              who closed more distance in the round that created the adjacency\n  outcome     participant deaths up to last contact + 5 rounds: trade (both lose a head),\n              kill for X (only Y loses one), disengage (neither)\n  next-10     material change over the 10 rounds after first contact, and whether the nearest\n              3 beds' next pearl went to a different side than their previous one\n\n",
+  "generated_at": "2026-09-29T12:22:41.776975+00:00",
+  "n_events": 182788,
+  "n_games_with_events": 10331,
+  "n_ranked_side_games": 11659,
+  "universe": {
+   "band": 6534,
+   "r11_30": 3101,
+   "team7": 114,
+   "top10": 1910
+  }
+ },
+ "classes_per_game": {
+  "band": {
+   "1v1": 8.632996632996633,
+   "1v1_initiator_share": 0.5077124563445867,
+   "2v1": 0.35001530456075913,
+   "2v2": 0.06014692378328742,
+   "group": 8.585705540250995,
+   "pair": 0.00030609121518212427
+  },
+  "r11_30": {
+   "1v1": 8.410835214446953,
+   "1v1_initiator_share": 0.48294762484774667,
+   "2v1": 0.3431151241534989,
+   "2v2": 0.05965817478232828,
+   "group": 9.405030635278942,
+   "pair": 0.0003224766204450177
+  },
+  "team7": {
+   "1v1": 8.859649122807017,
+   "1v1_initiator_share": 0.47058823529411764,
+   "2v1": 0.2982456140350877,
+   "2v2": 0.043859649122807015,
+   "group": 7.552631578947368,
+   "pair": 0.0
+  },
+  "top10": {
+   "1v1": 8.852356020942409,
+   "1v1_initiator_share": 0.5127677100494233,
+   "2v1": 0.3643979057591623,
+   "2v2": 0.06387434554973823,
+   "group": 8.971204188481675,
+   "pair": 0.0005235602094240838
+  }
+ },
+ "conditional_win": {
+  "band": {
+   "net_even": {
+    "n": 2433,
+    "win_rate": 0.47348951911220716
+   },
+   "net_kill+": {
+    "n": 1873,
+    "win_rate": 0.47303790710090765
+   },
+   "net_kill-": {
+    "n": 1981,
+    "win_rate": 0.47602221100454317
+   },
+   "no_group_fight": {
+    "n": 247,
+    "win_rate": 0.4493927125506073
+   }
+  },
+  "r11_30": {
+   "net_even": {
+    "n": 1155,
+    "win_rate": 0.5341991341991342
+   },
+   "net_kill+": {
+    "n": 864,
+    "win_rate": 0.5231481481481481
+   },
+   "net_kill-": {
+    "n": 949,
+    "win_rate": 0.5700737618545838
+   },
+   "no_group_fight": {
+    "n": 133,
+    "win_rate": 0.5488721804511278
+   }
+  },
+  "team7": {
+   "net_even": {
+    "n": 51,
+    "win_rate": 0.6862745098039216
+   },
+   "net_kill+": {
+    "n": 31,
+    "win_rate": 0.5483870967741935
+   },
+   "net_kill-": {
+    "n": 30,
+    "win_rate": 0.6666666666666666
+   },
+   "no_group_fight": {
+    "n": 2,
+    "win_rate": 0.5
+   }
+  },
+  "top10": {
+   "net_even": {
+    "n": 759,
+    "win_rate": 0.6548089591567853
+   },
+   "net_kill+": {
+    "n": 621,
+    "win_rate": 0.6682769726247987
+   },
+   "net_kill-": {
+    "n": 454,
+    "win_rate": 0.5814977973568282
+   },
+   "no_group_fight": {
+    "n": 76,
+    "win_rate": 0.7236842105263158
+   }
+  }
+ },
+ "era": {
+  "early": {
+   "band": {
+    "conv_ratio": 0.1326989713048186,
+    "initiator_share": 0.4939965694682676,
+    "n": 18471,
+    "share": 0.32925720601080233,
+    "trade_share": 0.4149748254019815
+   },
+   "r11_30": {
+    "conv_ratio": 0.12695278672624616,
+    "initiator_share": 0.4895697522816167,
+    "n": 9705,
+    "share": 0.33276187210697755,
+    "trade_share": 0.4255538382277177
+   },
+   "team7": {
+    "conv_ratio": 0.07701468836840016,
+    "initiator_share": 0.42857142857142855,
+    "n": 287,
+    "share": 0.3333333333333333,
+    "trade_share": 0.4146341463414634
+   },
+   "top10": {
+    "conv_ratio": 0.15875747385795938,
+    "initiator_share": 0.5224137931034483,
+    "n": 6335,
+    "share": 0.36971111759556463,
+    "trade_share": 0.46456195737963696
+   }
+  },
+  "late": {
+   "band": {
+    "conv_ratio": 0.6421701039031571,
+    "initiator_share": 0.5048107761385503,
+    "n": 17113,
+    "share": 0.3050500008912815,
+    "trade_share": 0.28031321217787647
+   },
+   "r11_30": {
+    "conv_ratio": 0.6118868690971869,
+    "initiator_share": 0.49529411764705883,
+    "n": 9078,
+    "share": 0.31126350077147263,
+    "trade_share": 0.2936770213703459
+   },
+   "team7": {
+    "conv_ratio": 0.680161943319838,
+    "initiator_share": 0.6923076923076923,
+    "n": 262,
+    "share": 0.3042973286875726,
+    "trade_share": 0.2480916030534351
+   },
+   "top10": {
+    "conv_ratio": 0.6702545611108122,
+    "initiator_share": 0.5748218527315915,
+    "n": 4665,
+    "share": 0.2722497811496936,
+    "trade_share": 0.2756698821007503
+   }
+  },
+  "mid": {
+   "band": {
+    "conv_ratio": 0.46112815453158,
+    "initiator_share": 0.5005122950819673,
+    "n": 20515,
+    "share": 0.3656927930979162,
+    "trade_share": 0.2939312698025835
+   },
+   "r11_30": {
+    "conv_ratio": 0.46495688373476063,
+    "initiator_share": 0.5,
+    "n": 10382,
+    "share": 0.3559746271215498,
+    "trade_share": 0.2889616644191871
+   },
+   "team7": {
+    "conv_ratio": 0.47928331466965285,
+    "initiator_share": 0.48,
+    "n": 312,
+    "share": 0.3623693379790941,
+    "trade_share": 0.26282051282051283
+   },
+   "top10": {
+    "conv_ratio": 0.5161193623109416,
+    "initiator_share": 0.5344563552833078,
+    "n": 6135,
+    "share": 0.35803910125474175,
+    "trade_share": 0.30366748166259167
+   }
+  }
+ },
+ "geometry": {
+  "bed_dist": {
+   "bed3-6": {
+    "band": {
+     "conv_ratio": 0.3639395826516503,
+     "events_per_game": 1.8575145393327213,
+     "initiator_share": 0.5007656967840735,
+     "n": 12137,
+     "trade_share": 0.29710801680810744
+    },
+    "top10": {
+     "conv_ratio": 0.35539343408025015,
+     "events_per_game": 2.007329842931937,
+     "initiator_share": 0.5398058252427185,
+     "n": 3834,
+     "trade_share": 0.319509650495566
+    }
+   },
+   "bed<=2": {
+    "band": {
+     "conv_ratio": 0.24930641200310796,
+     "events_per_game": 6.4436792164064896,
+     "initiator_share": 0.49774022401257617,
+     "n": 42103,
+     "trade_share": 0.3505213405220531
+    },
+    "top10": {
+     "conv_ratio": 0.27620443547496115,
+     "events_per_game": 6.669633507853403,
+     "initiator_share": 0.5357561547479485,
+     "n": 12739,
+     "trade_share": 0.37860114608682
+    }
+   },
+   "bed>6": {
+    "band": {
+     "conv_ratio": 0.3553184942045338,
+     "events_per_game": 0.2845117845117845,
+     "initiator_share": 0.5483870967741935,
+     "n": 1859,
+     "trade_share": 0.06885422270037654
+    },
+    "top10": {
+     "conv_ratio": 0.3937037037037037,
+     "events_per_game": 0.2942408376963351,
+     "initiator_share": 0.38461538461538464,
+     "n": 562,
+     "trade_share": 0.07829181494661921
+    }
+   }
+  },
+  "corridor_degree": {
+   "open>0.75": {
+    "band": {
+     "conv_ratio": 0.30115061112782815,
+     "events_per_game": 5.860575451484542,
+     "initiator_share": 0.4949182501104728,
+     "n": 38293,
+     "trade_share": 0.3172642519520539
+    },
+    "top10": {
+     "conv_ratio": 0.3435688703997446,
+     "events_per_game": 6.26020942408377,
+     "initiator_share": 0.5478208232445521,
+     "n": 11957,
+     "trade_share": 0.3492514844860751
+    }
+   },
+   "tight<=0.75": {
+    "band": {
+     "conv_ratio": 0.22115934919466929,
+     "events_per_game": 2.7251300887664525,
+     "initiator_share": 0.5073684210526316,
+     "n": 17806,
+     "trade_share": 0.35622823767269457
+    },
+    "top10": {
+     "conv_ratio": 0.21812168160849507,
+     "events_per_game": 2.7109947643979058,
+     "initiator_share": 0.5017182130584192,
+     "n": 5178,
+     "trade_share": 0.3700270374662032
+    }
+   }
+  },
+  "open_ratio": {
+   "open>=0.75": {
+    "band": {
+     "conv_ratio": 0.30267240328824646,
+     "events_per_game": 1.616008570554025,
+     "initiator_share": 0.5166163141993958,
+     "n": 10559,
+     "trade_share": 0.36092432995548823
+    },
+    "top10": {
+     "conv_ratio": 0.33132124034808186,
+     "events_per_game": 1.8848167539267016,
+     "initiator_share": 0.5152905198776758,
+     "n": 3600,
+     "trade_share": 0.39694444444444443
+    }
+   },
+   "tight<0.75": {
+    "band": {
+     "conv_ratio": 0.2627157129881926,
+     "events_per_game": 6.96969696969697,
+     "initiator_share": 0.4923496122406204,
+     "n": 45540,
+     "trade_share": 0.32237593324549846
+    },
+    "top10": {
+     "conv_ratio": 0.2831613408819587,
+     "events_per_game": 7.0863874345549736,
+     "initiator_share": 0.5443037974683544,
+     "n": 13535,
+     "trade_share": 0.3445142223864056
+    }
+   }
+  },
+  "portal3": {
+   "no_portal": {
+    "band": {
+     "conv_ratio": 0.2677929693587171,
+     "events_per_game": 6.277012549739823,
+     "initiator_share": 0.494996664442962,
+     "n": 41014,
+     "trade_share": 0.3467108792119764
+    },
+    "top10": {
+     "conv_ratio": 0.29553728810767177,
+     "events_per_game": 6.449738219895288,
+     "initiator_share": 0.5436953807740325,
+     "n": 12319,
+     "trade_share": 0.3779527559055118
+    }
+   },
+   "portal<=3": {
+    "band": {
+     "conv_ratio": 0.2768281289066098,
+     "events_per_game": 2.3086929905111724,
+     "initiator_share": 0.5069984447900466,
+     "n": 15085,
+     "trade_share": 0.28319522704673517
+    },
+    "top10": {
+     "conv_ratio": 0.28461071451001735,
+     "events_per_game": 2.5214659685863876,
+     "initiator_share": 0.5158227848101266,
+     "n": 4816,
+     "trade_share": 0.29817275747508304
+    }
+   }
+  }
+ },
+ "map_class_descriptive": {
+  "compact": {
+   "band": {
+    "conv_ratio": 0.2182557722215576,
+    "events_per_game": 2.3434343434343434,
+    "initiator_share": 0.49365397461589844,
+    "n": 15312,
+    "trade_share": 0.35841170323928945
+   },
+   "team7": {
+    "conv_ratio": 0.11778029445073612,
+    "events_per_game": 1.719298245614035,
+    "initiator_share": 0.3684210526315789,
+    "n": 196,
+    "trade_share": 0.3112244897959184
+   },
+   "top10": {
+    "conv_ratio": 0.2611720938777385,
+    "events_per_game": 2.269633507853403,
+    "initiator_share": 0.5123809523809524,
+    "n": 4335,
+    "trade_share": 0.44359861591695504
+   }
+  },
+  "open": {
+   "band": {
+    "conv_ratio": 0.2918146013042299,
+    "events_per_game": 6.2422711968166515,
+    "initiator_share": 0.5001014404544533,
+    "n": 40787,
+    "trade_share": 0.3188270772550077
+   },
+   "team7": {
+    "conv_ratio": 0.2026185876797596,
+    "events_per_game": 5.833333333333333,
+    "initiator_share": 0.5147058823529411,
+    "n": 665,
+    "trade_share": 0.3082706766917293
+   },
+   "top10": {
+    "conv_ratio": 0.30329467391563913,
+    "events_per_game": 6.701570680628272,
+    "initiator_share": 0.5430076067875951,
+    "n": 12800,
+    "trade_share": 0.325703125
+   }
+  }
+ },
+ "per_cohort": {
+  "band": {
+   "bed_flip_share": 0.3475919448232248,
+   "conv_ge2_n": 48442,
+   "conv_ge2_share": 0.8058915816853144,
+   "conv_ratio": 0.2702059205451386,
+   "deaths_opp_per_fight": 6.834738587140591,
+   "deaths_own_per_fight": 6.840442788641509,
+   "disengage_share": 0.40829604805789765,
+   "even_adj_share": 0.20647426870354196,
+   "group_events_per_game": 8.585705540250995,
+   "initiator_ci95": 0.012225144785352757,
+   "initiator_n": 6426,
+   "initiator_share": 0.49859943977591037,
+   "kill_against_share": 0.13283659245262838,
+   "kill_for_share": 0.12923581525517389,
+   "lenlost_delta_next10": -0.49227258952922515,
+   "lenlost_opp_per_fight": 19.016167846129164,
+   "lenlost_own_per_fight": 18.93222695591722,
+   "n_group_events": 56099,
+   "n_side_games": 6534,
+   "n_trades": 18492,
+   "pearl_delta_next10": -0.8087844703114138,
+   "rays_pre_per_head": 2.484065274651513,
+   "synch_share": 0.23768630527228438,
+   "trade_ahead_share": 0.4419208306294614,
+   "trade_share": 0.3296315442343001,
+   "trade_units_margin": 0.0
+  },
+  "r11_30": {
+   "bed_flip_share": 0.31235469045688025,
+   "conv_ge2_n": 25353,
+   "conv_ge2_share": 0.8070445312191851,
+   "conv_ratio": 0.26245825654048344,
+   "deaths_opp_per_fight": 6.737287845019716,
+   "deaths_own_per_fight": 7.1810389165095145,
+   "disengage_share": 0.3908451911537803,
+   "even_adj_share": 0.19286816389507971,
+   "group_events_per_game": 9.405030635278942,
+   "initiator_ci95": 0.016870308112789546,
+   "initiator_n": 3374,
+   "initiator_share": 0.49407231772377,
+   "kill_against_share": 0.14561974969998287,
+   "kill_for_share": 0.12765300874335675,
+   "lenlost_delta_next10": 1.377301560089148,
+   "lenlost_opp_per_fight": 18.246905537459284,
+   "lenlost_own_per_fight": 18.981484656266073,
+   "n_group_events": 29165,
+   "n_side_games": 3101,
+   "n_trades": 9796,
+   "pearl_delta_next10": 2.7741813817932455,
+   "rays_pre_per_head": 2.762754631054219,
+   "synch_share": 0.22474657831420344,
+   "trade_ahead_share": 0.46498570845242954,
+   "trade_share": 0.33588205040288016,
+   "trade_units_margin": 0.0
+  },
+  "team7": {
+   "bed_flip_share": 0.2918138987043581,
+   "conv_ge2_n": 711,
+   "conv_ge2_share": 0.8185654008438819,
+   "conv_ratio": 0.17929961089494165,
+   "deaths_opp_per_fight": 11.868757259001162,
+   "deaths_own_per_fight": 11.613240418118467,
+   "disengage_share": 0.429732868757259,
+   "even_adj_share": 0.2148664343786295,
+   "group_events_per_game": 7.552631578947368,
+   "initiator_ci95": 0.10500454430009448,
+   "initiator_n": 87,
+   "initiator_share": 0.4827586206896552,
+   "kill_against_share": 0.12311265969802555,
+   "kill_for_share": 0.13821138211382114,
+   "lenlost_delta_next10": 1.8617886178861789,
+   "lenlost_opp_per_fight": 32.19512195121951,
+   "lenlost_own_per_fight": 32.87456445993031,
+   "n_group_events": 861,
+   "n_side_games": 114,
+   "n_trades": 266,
+   "pearl_delta_next10": 4.005807200929152,
+   "rays_pre_per_head": 2.6611673151750974,
+   "synch_share": 0.2616033755274262,
+   "trade_ahead_share": 0.424812030075188,
+   "trade_share": 0.3089430894308943,
+   "trade_units_margin": 0.0
+  },
+  "top10": {
+   "bed_flip_share": 0.34497007261568374,
+   "conv_ge2_n": 15010,
+   "conv_ge2_share": 0.8360426382411725,
+   "conv_ratio": 0.2924521052413801,
+   "deaths_opp_per_fight": 6.77134519988328,
+   "deaths_own_per_fight": 6.418208345491684,
+   "disengage_share": 0.3918295885614239,
+   "even_adj_share": 0.19614823460752845,
+   "group_events_per_game": 8.971204188481675,
+   "initiator_ci95": 0.020680820806199488,
+   "initiator_n": 2234,
+   "initiator_share": 0.535810205908684,
+   "kill_against_share": 0.10854975196965276,
+   "kill_for_share": 0.14409104172745843,
+   "lenlost_delta_next10": 0.4169244236941932,
+   "lenlost_opp_per_fight": 18.658943682521155,
+   "lenlost_own_per_fight": 18.166734753428656,
+   "n_group_events": 17135,
+   "n_side_games": 1910,
+   "n_trades": 6092,
+   "pearl_delta_next10": 1.0784359498103298,
+   "rays_pre_per_head": 2.6593250696033053,
+   "synch_share": 0.22818121252498336,
+   "trade_ahead_share": 0.5505581089954038,
+   "trade_share": 0.35552961774146485,
+   "trade_units_margin": 1.0
+  }
+ },
+ "s3_comparisons": {
+  "team7_minus_band": {
+   "conv_ge2_share": {
+    "a": 0.8185654008438819,
+    "b": 0.8058915816853144,
+    "ci95_a": 0.028327484966420482,
+    "ci95_b": 0.003522131233933347,
+    "delta": 0.012673819158567468,
+    "n_a": 711,
+    "n_b": 48442
+   },
+   "conv_ratio": {
+    "a": 0.17929961089494165,
+    "b": 0.2702059205451386
+   },
+   "disengage_share": {
+    "a": 0.429732868757259,
+    "b": 0.40829604805789765,
+    "ci95_a": 0.03306685966667095,
+    "ci95_b": 0.004067413583033883,
+    "delta": 0.02143682069936137,
+    "n_a": 861,
+    "n_b": 56099
+   },
+   "group_events_per_game": {
+    "a": 7.552631578947368,
+    "b": 8.585705540250995
+   },
+   "initiator_share": {
+    "a": 0.4827586206896552,
+    "b": 0.49859943977591037,
+    "ci95_a": 0.10500454430009448,
+    "ci95_b": 0.012225144785352757,
+    "delta": -0.015840819086255176,
+    "n_a": 87,
+    "n_b": 6426
+   },
+   "kill_for_share": {
+    "a": 0.13821138211382114,
+    "b": 0.12923581525517389,
+    "ci95_a": 0.023052964288739767,
+    "ci95_b": 0.0027760049347901345,
+    "delta": 0.008975566858647255,
+    "n_a": 861,
+    "n_b": 56099
+   },
+   "trade_ahead_share": {
+    "a": 0.424812030075188,
+    "b": 0.4419208306294614
+   },
+   "trade_share": {
+    "a": 0.3089430894308943,
+    "b": 0.3296315442343001,
+    "ci95_a": 0.03086388878434605,
+    "ci95_b": 0.0038900006971655595,
+    "delta": -0.020688454803405754,
+    "n_a": 861,
+    "n_b": 56099
+   }
+  },
+  "top10_minus_band": {
+   "conv_ge2_share": {
+    "a": 0.8360426382411725,
+    "b": 0.8058915816853144,
+    "ci95_a": 0.0059230500095166375,
+    "ci95_b": 0.003522131233933347,
+    "delta": 0.030151056555858147,
+    "n_a": 15010,
+    "n_b": 48442
+   },
+   "conv_ratio": {
+    "a": 0.2924521052413801,
+    "b": 0.2702059205451386
+   },
+   "disengage_share": {
+    "a": 0.39182958856142397,
+    "b": 0.40829604805789765,
+    "ci95_a": 0.007309291371998829,
+    "ci95_b": 0.004067413583033883,
+    "delta": -0.016466459496473684,
+    "n_a": 17135,
+    "n_b": 56099
+   },
+   "group_events_per_game": {
+    "a": 8.971204188481675,
+    "b": 8.585705540250995
+   },
+   "initiator_share": {
+    "a": 0.535810205908684,
+    "b": 0.49859943977591037,
+    "ci95_a": 0.020680820806199488,
+    "ci95_b": 0.012225144785352757,
+    "delta": 0.03721076613277363,
+    "n_a": 2234,
+    "n_b": 6426
+   },
+   "kill_for_share": {
+    "a": 0.14409104172745843,
+    "b": 0.12923581525517389,
+    "ci95_a": 0.005258311300972259,
+    "ci95_b": 0.0027760049347901345,
+    "delta": 0.014855226472284544,
+    "n_a": 17135,
+    "n_b": 56099
+   },
+   "trade_ahead_share": {
+    "a": 0.5505581089954038,
+    "b": 0.4419208306294614
+   },
+   "trade_share": {
+    "a": 0.35552961774146485,
+    "b": 0.3296315442343001,
+    "ci95_a": 0.007167263834889141,
+    "ci95_b": 0.0038900006971655595,
+    "delta": 0.025898073507164776,
+    "n_a": 17135,
+    "n_b": 56099
+   }
+  }
+ }
+}

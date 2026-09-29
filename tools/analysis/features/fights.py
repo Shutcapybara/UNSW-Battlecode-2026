@@ -589,6 +589,22 @@ def report(events_path, index_path, ladder_dir, out_md, out_json):
                              'b': float(gb['conv'].sum() / gb['den'].sum()) if gb['den'].sum() else float('nan')}
         s3[f'{a}_minus_{b}'] = row
 
+    # parity decomposition: initiator share by unit parity at contact (the confound-killer for
+    # "the top ten initiate more": composition vs behaviour at matched parity)
+    parity = {}
+    for c in COHORTS:
+        gg = g[g['cohort'] == c]
+        row = {'n': int(len(gg)), 'mix': {p: float((gg['units'] > gg['opp_units'] if p == 'ahead' else
+                                                     gg['units'] == gg['opp_units'] if p == 'even' else
+                                                     gg['units'] < gg['opp_units']).mean()) for p in ('ahead', 'even', 'behind')}}
+        for p in ('ahead', 'even', 'behind'):
+            x = gg[('units' > gg['opp_units']) if False else (
+                gg['units'] > gg['opp_units'] if p == 'ahead' else
+                gg['units'] == gg['opp_units'] if p == 'even' else
+                gg['units'] < gg['opp_units'])]['own_init'].dropna()
+            row[p] = {'initiator_share': float(x.mean()) if len(x) else float('nan'), 'n': int(len(x))}
+        parity[c] = row
+
     out = {'_meta': {
         'generated_at': datetime.now(timezone.utc).isoformat(),
         'n_events': int(len(ev)), 'n_games_with_events': int(ev['game'].nunique()),
@@ -597,7 +613,8 @@ def report(events_path, index_path, ladder_dir, out_md, out_json):
         'cohort_rule': 'team 7 fixed; top10 = rank<=10, r11_30 = 11-30, band = 55-85 in the ladder snapshot nearest game start',
     },
         'per_cohort': per_cohort, 'classes_per_game': classes, 'conditional_win': cond_win,
-        'era': era, 'map_class_descriptive': mapclass, 'geometry': geometry, 's3_comparisons': s3}
+        'era': era, 'map_class_descriptive': mapclass, 'geometry': geometry,
+        'parity_at_contact': parity, 's3_comparisons': s3}
 
     def clean(o):
         if isinstance(o, dict):
