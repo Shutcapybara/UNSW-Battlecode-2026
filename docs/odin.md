@@ -66,6 +66,45 @@ gap. The screen below is Odin's first matchup evidence: it lost overall to all
 four references, with its weakest map totals on Dilemma and Scattered Fleets.
 The large seat imbalance still needs paired-seed follow-up.
 
+## Odin iteration results
+
+The first measured interventions were kept as separate snapshots. Odin v02
+added Bifröst-style opening production and rescue, but regressed on the
+13-map screen at 47–57 against the four references. Odin v03 gated that arm to
+compact maps and restored arrival-only bed valuation. It became the measured
+champion at 58–46 on the same 13-map screen, with 0 errors:
+
+| Opponent | Odin v03 wins | Odin v03 losses |
+|---|---:|---:|
+| Fenrir V20 | 11 | 15 |
+| Heimdall V10 | 14 | 12 |
+| Yuna V03 | 14 | 12 |
+| Bifröst V01 | 19 | 7 |
+| **Total** | **58** | **46** |
+
+The v04 density revaluation scored 57–47. The v05 newborn-separation arm
+improved the focused Dilemma panel but regressed to 50–54 on the 13-map
+screen. v06 gated that separation arm to compact boards and scored 57–47, so
+neither separation variant replaced v03.
+
+As a fresh-map check, v03 played all 20 maps under `maps/new/` against the
+same four references, both seats: 87–73 with 0 errors. Combined with the
+13-map screen, v03 is 145–119 across 264 directional games (54.9% wins):
+
+| Opponent | Established 13 | Fresh 20 | Combined |
+|---|---:|---:|---:|
+| Fenrir V20 | 11–15 | 18–22 | 29–37 |
+| Heimdall V10 | 14–12 | 24–16 | 38–28 |
+| Yuna V03 | 14–12 | 20–20 | 34–32 |
+| Bifröst V01 | 19–7 | 25–15 | 44–22 |
+| **Total** | **58–46** | **87–73** | **145–119** |
+
+The v03 two-map judge-sandbox smoke screen completed 16/16 games with 0
+errors and finished 9–7. These are native unseeded screens because the
+installed `unswbc` does not expose a seed option; they establish the current
+Odin champion but do not justify frontier promotion on their own. Result
+artifacts are under the ignored `build/odin-v03-*` directories.
+
 ## Validation status
 
 ### Four-family 35-map screen (2026-09-28)

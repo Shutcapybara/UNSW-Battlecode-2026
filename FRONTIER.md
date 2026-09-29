@@ -48,6 +48,32 @@ contest ratings. Every candidate pair qualified on all 35 maps, but no pair met
 the paired lineage-bootstrap dominance rule on the full bundle. See the report
 for map leaders and pairwise uncertainty intervals.
 
+## Gaia experimental lineage
+
+`gaia-v47-medium-map-threat-pearl` is the current retained Gaia snapshot,
+forked from Fenrir V20 through the V08 parent-aware line and V44's compact-map
+dispersion policy. It adds a bounded enemy-threat pearl-exit check on ordinary
+compact maps while retaining V44's tiny-arena and Big Empty behavior. The
+repeated four-map 48-game panel scored 13W-11L for V47 versus 12W-12L for V44
+and 8W-16L for V08, with zero runner errors or TLEs. Against Fenrir, V47
+matched V44 at 3W-5L and won the direct V47-vs-V44 comparison 5W-3L. These are
+family-development results, not frontier-qualified evidence. V09–V63 remain
+immutable lane, pearl, breeding, pathfinding, split, portal, and density
+controls; V51–V63 did not produce a significant repeatable gain. V56 improved
+portal traversal on the portal-heavy screen but lost to Fenrir, while V57/V58
+traded early population for lower newborn risk. Post-V63 Arena diagnostics
+tested immediate-threat veto, Arena child siting, and stronger opposing lanes;
+each lost both Fenrir orientations and was rejected. No Gaia version has
+triggered the C++ fallback threshold: all tested panels completed with zero
+runner errors and zero TLEs. Additional contact-penalty relaxations also
+scored 0-8 on the four-map screen, so V47 remains the retained Gaia
+candidate.
+The serial harness is now the promotion gate (`--jobs 1`): concurrent
+low-level runs were not reproducible and an apparent pearl-value 8-0 was
+reversed by replay-producing and serial runs at 0-8. Serial V54 four-way
+lanes and the subsequent contact/pearl controls also failed their focused
+screens, so no Gaia V64 has been promoted.
+
 ## All-map head-to-head completed
 
 Fenrir V20 played Hunter V20 twice on every map in the 35-map bundle, once from
