@@ -224,7 +224,7 @@ struct Params {
     static constexpr double r3_escape_score = -10.0; // r3-03
     // Kelp-wall cost on cramped ground (the F-4 analog): a landing whose free
     // edges are mostly kelp pays while the room flood is below need.
-    static constexpr bool r3_kelp_cost = false;    // r3-04
+    static constexpr bool r3_kelp_cost = true;     // r3-04 (stacked)
     static constexpr double r3_kelp_penalty = 2.0;
     static constexpr int r3_kelp_min_edges = 3;    // penalize when free-and-open edges < this
 

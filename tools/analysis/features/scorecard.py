@@ -152,6 +152,11 @@ def score(rows: pd.DataFrame, med, refs) -> dict:
 def fmt(x, nd=3):
     return '—' if x is None or (isinstance(x, float) and np.isnan(x)) else f'{x:.{nd}f}'
 
+def fmt_delta(p, c, nd=3):
+    if p is None or c is None or np.isnan(p) or np.isnan(c):
+        return '— (no reference)'
+    return f'{c - p:+.{nd}f}'
+
 
 def wld_s(s):
     w, l, d = s['wld']
@@ -166,7 +171,7 @@ def tier1_rows(cs, ps):
                      f'{cs["exp_share"] * cs["n"] - ps["exp_share"] * ps["n"]:+.1f} expected-score points'))
         rows.append(('Expected-score share', f'{pg:.2f}%', f'{cg:.2f}%', f'{cg - pg:+.2f} percentage points'))
         rows.append(('Mean of normalized pearl checkpoints', fmt(ps['economy_mean'], 4),
-                     fmt(cs['economy_mean'], 4), f'{cs["economy_mean"] - ps["economy_mean"]:+.4f}'))
+                     fmt(cs['economy_mean'], 4), fmt_delta(ps['economy_mean'], cs['economy_mean'], 4)))
     else:
         rows.append(('Wins–losses–draws', '—', wld_s(cs), ''))
         rows.append(('Expected-score share', '—', f'{cs["exp_share"] * 100:.2f}%', ''))
@@ -175,10 +180,10 @@ def tier1_rows(cs, ps):
         r = c.split('@')[1]
         lab = f'Pearls at r{r}, normalized'
         rows.append((lab, fmt(ps['checkpoints'][c]) if ps else '—', fmt(cs['checkpoints'][c]),
-                     f'{cs["checkpoints"][c] - ps["checkpoints"][c]:+.3f}' if ps else ''))
+                     fmt_delta(ps['checkpoints'][c], cs['checkpoints'][c]) if ps else ''))
     for k, lab in TIER1:
         rows.append((lab, fmt(ps['tier1'][k]) if ps else '—', fmt(cs['tier1'][k]),
-                     f'{cs["tier1"][k] - ps["tier1"][k]:+.3f}' if ps else ''))
+                     fmt_delta(ps['tier1'][k], cs['tier1'][k]) if ps else ''))
     return rows
 
 
@@ -258,7 +263,8 @@ def run_one(bot_dir: str, panel: str, seeds, jobs, med, refs) -> dict:
     root = ensure_panel(panel, bot_dir, seeds, jobs)
     F = extract_features(root, jobs)
     name = pathlib.Path(bot_dir).name
-    rows = F[F['bot'] == name].copy()
+    want = tuple(f's{s}__' for s in seeds)
+    rows = F[(F['bot'] == name) & F['game'].str.startswith(want)].copy()
     if not len(rows):
         raise SystemExit(f'no side-rows for bot {name} in the extracted features')
     return score(rows, med, refs)
@@ -325,6 +331,10 @@ def main(argv=None) -> int:
             md.append(md_table(['Metric (raw)', parent_name or '—', cand_name, 'Change'], raw_rows(C, P)))
 
     deciding = 'z1' if 'z1' in panels else panels[0]
+    if deciding == 'gen':
+        report['panels']['gen']['gate'] = {
+            'verdict': 'n/a', 'why': 'no field reference on gen maps: the gate is decided on the '
+            'z1 panel; the gen block is reported beside it (raw vs parent per guardrails)'}
     report['gate'] = report['panels'][deciding]['gate']
 
     if a.sandbox:

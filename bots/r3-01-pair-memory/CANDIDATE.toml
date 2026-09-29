@@ -22,4 +22,4 @@ refs = [
     "docs/findings/2026-09-30-cx-f01-leaks.md",
     "docs/findings/2026-09-30-cx-d01-portals.md",
 ]
-summary = "Pending: golden parity (all-off carrier 0/15178 turns; flag-on diverges on 29/8487 Portals transcript turns), CPU probe, z1+gen seed-1 panels vs V06."
+summary = "z1 seed 1 vs V06 (160 games): FAIL - economy mean 1.1107->1.0600 (-0.051), win share -5.62pp, own-body +14%. Targeted row moved via volume, not safety: portal len/1k 6.3->4.9 but steps/game 62.5->48.5 (-22%) and per-100-steps 29.4->31.8 (worse); wall+self per 100 steps 12.9->14.3. Same throttle signature as C1-F. Golden: all-off carrier 0/15178 turns; flag-on 29/8487 Portals turns."

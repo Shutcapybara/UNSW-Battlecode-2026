@@ -31,13 +31,14 @@ RESULT = re.compile(r'team (A|B) wins after (\d+) rounds \(([^)]*)\)')
 # runtime-source fingerprint: SHA-256 over the sorted source names and contents
 # (bot.toml plus every c/c++/python source), name and bytes NUL-separated — the
 # convention the Ares findings quote. Any source edit moves the panel directory.
-FP_SUFFIXES = ('.c', '.cc', '.cpp', '.cxx', '.c++', '.h', '.hh', '.hpp', '.hxx', '.py', '.toml')
+FP_SUFFIXES = ('.c', '.cc', '.cpp', '.cxx', '.c++', '.h', '.hh', '.hpp', '.hxx', '.py')
 
 
 def runtime_fingerprint(botdir):
     root = Path(botdir)
     names = sorted(p.relative_to(root).as_posix() for p in root.rglob('*')
-                   if p.is_file() and p.suffix in FP_SUFFIXES and '.unswbc-build' not in p.parts)
+                   if p.is_file() and (p.suffix in FP_SUFFIXES or p.name == 'bot.toml')
+                   and '.unswbc-build' not in p.parts)
     h = hashlib.sha256()
     for n in names:
         h.update(n.encode())

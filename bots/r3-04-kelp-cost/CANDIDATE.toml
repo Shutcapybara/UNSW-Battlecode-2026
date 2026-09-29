@@ -23,4 +23,4 @@ refs = [
     "docs/findings/2026-09-30-cx-c01-eff.md",
     "docs/findings/2026-09-30-cx-d01-portals.md",
 ]
-summary = "Pending: golden parity (all-off carrier 0/15178 turns), CPU probe, z1+gen seed-1 panels vs V06."
+summary = "FAIL on the gate, hold-shape trade: the biggest row movements of the four switches - wall 19.8->14.5 len/1k (-27%), trapped 36.1->25.4 (-30%), newborn 19.3->16.4 (-15%), wall deaths 8.2->6.1/1k - at economy 1.1107->1.0388 (-0.072) and win share -7.81pp. The hygiene-for-economy trade BENCHMARKS forbids. Unlike the portal switches this is not volume throttling."

@@ -23,4 +23,4 @@ refs = [
     "docs/findings/2026-09-30-cx-c01-eff.md",
     "docs/findings/2026-09-30-cx-d01-portals.md",
 ]
-summary = "Pending: golden parity (all-off carrier 0/15178 turns), CPU probe, z1+gen seed-1 panels vs V06."
+summary = "HOLD, not registered. z1 seed 1: W-L-D 130-30 vs 122-38 (+5.0pp), economy 1.1107->1.1454 (+0.035), length +0.052; seed 2: 129-31 vs 121-39 (+5.0pp), economy +0.013; pooled 320: +5.00pp, own-body +11.0% BOTH seeds (the 10% guardrail). Targeted trapped row NOT moved (36.1->33.8; Slithery worse) - a split-when-cramped production lever, not trap escape. Gen (464): 288-176 vs 294-170, neutral. CPU probe 4.7/7.3/8.7M, 0 errors = V06 envelope. v1 wiring was inert (160 games bit-identical to V06); v2 competes at -10 while enclosed."

@@ -1,0 +1,121 @@
+{
+ "portal": {
+  "games": 160,
+  "mismatched_walks": 0,
+  "verified_walks": 2360677,
+  "per_map": {
+   "bot": {
+    "ALL": {
+     "games": 160,
+     "steps_total": 19851,
+     "steps_per_game_med": 62.0,
+     "near_total": 5772,
+     "near_per_game_med": 13.5,
+     "near_per_100_steps": 29.1,
+     "near_wall_self": 2456,
+     "same_pair_double": 2318
+    },
+    "Autarky": {
+     "games": 16,
+     "steps_total": 1312,
+     "steps_per_game_med": 74.0,
+     "near_total": 287,
+     "near_per_game_med": 16.0,
+     "near_per_100_steps": 21.9,
+     "near_wall_self": 19,
+     "same_pair_double": 94
+    },
+    "Default": {
+     "games": 16,
+     "steps_total": 4452,
+     "steps_per_game_med": 295.5,
+     "near_total": 720,
+     "near_per_game_med": 47.0,
+     "near_per_100_steps": 16.2,
+     "near_wall_self": 17,
+     "same_pair_double": 290
+    },
+    "Devil": {
+     "games": 16,
+     "steps_total": 0,
+     "steps_per_game_med": 0.0,
+     "near_total": 0,
+     "near_per_game_med": 0.0,
+     "near_per_100_steps": null,
+     "near_wall_self": 0,
+     "same_pair_double": 0
+    },
+    "Portals": {
+     "games": 16,
+     "steps_total": 7838,
+     "steps_per_game_med": 487.5,
+     "near_total": 3317,
+     "near_per_game_med": 200.5,
+     "near_per_100_steps": 42.3,
+     "near_wall_self": 2217,
+     "same_pair_double": 1419
+    },
+    "Prisoners Dilemma": {
+     "games": 16,
+     "steps_total": 306,
+     "steps_per_game_med": 16.5,
+     "near_total": 44,
+     "near_per_game_med": 2.0,
+     "near_per_100_steps": 14.4,
+     "near_wall_self": 4,
+     "same_pair_double": 10
+    },
+    "Queen Of Spades": {
+     "games": 16,
+     "steps_total": 566,
+     "steps_per_game_med": 29.0,
+     "near_total": 214,
+     "near_per_game_med": 10.5,
+     "near_per_100_steps": 37.8,
+     "near_wall_self": 67,
+     "same_pair_double": 92
+    },
+    "Schooltime": {
+     "games": 16,
+     "steps_total": 2300,
+     "steps_per_game_med": 163.0,
+     "near_total": 610,
+     "near_per_game_med": 45.5,
+     "near_per_100_steps": 26.5,
+     "near_wall_self": 29,
+     "same_pair_double": 127
+    },
+    "Slithery Fight": {
+     "games": 16,
+     "steps_total": 940,
+     "steps_per_game_med": 61.0,
+     "near_total": 266,
+     "near_per_game_med": 16.0,
+     "near_per_100_steps": 28.3,
+     "near_wall_self": 70,
+     "same_pair_double": 141
+    },
+    "Trauma": {
+     "games": 16,
+     "steps_total": 1907,
+     "steps_per_game_med": 121.0,
+     "near_total": 217,
+     "near_per_game_med": 13.0,
+     "near_per_100_steps": 11.4,
+     "near_wall_self": 22,
+     "same_pair_double": 87
+    },
+    "Trophy": {
+     "games": 16,
+     "steps_total": 230,
+     "steps_per_game_med": 14.5,
+     "near_total": 97,
+     "near_per_game_med": 4.5,
+     "near_per_100_steps": 42.2,
+     "near_wall_self": 11,
+     "same_pair_double": 58
+    }
+   }
+  }
+ }
+}
