@@ -1,0 +1,18 @@
+name = "maelle-00-base"
+lineage = "maelle"
+author = "claude-opus-5.5/maelle"
+language = "c++"
+lineage_parent = "lune-r1-07-latecap8x-only"
+hypothesis = "SF-1 state-and-features lane (Maelle): base is lune-r1-07 verbatim (golden parity)."
+mechanism = "none: verbatim copy of lune-r1-07-latecap8x-only"
+expected_change = "none (parity)"
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-09-30-r1-search-ladder.md"]
+summary = "Maelle lineage (Claude Opus 5.5, SF-1). Verbatim copy of lune-r1-07; golden parity is the only evidence."
+
+[activation_contract]
+kind = "legacy_none"
+note = "verbatim copy of lune-r1-07; identity by fingerprint"

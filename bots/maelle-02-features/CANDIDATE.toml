@@ -1,0 +1,18 @@
+name = "maelle-02-features"
+lineage = "maelle"
+author = "claude-opus-5.5/maelle"
+language = "c++"
+lineage_parent = "maelle-01-nodevil"
+hypothesis = "SF-1 platform: per-dragon decayed state grids (food, ally, enemy, threat, death; seen age) and a feature interface on the target and move scores, every weight runtime-overridable (MAELLE_PARAMS) and 0 by default."
+mechanism = "state.hpp grids + scalars; target score x exp(sum wt_i f_i), move score + sum wm_j g_j; L02 cap selector (capsel); MAELLE_DUMP decision dump. All weights 0: behaviour-identical to maelle-01 (golden 0/61,667 divergent)."
+expected_change = "none at the compiled defaults (platform only; not an accept candidate)"
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-09-30-r1-search-ladder.md"]
+summary = "Maelle lineage platform (SF-1 Part 1). Parity with maelle-01 proven by the golden harness with and without the dump."
+
+[activation_contract]
+kind = "legacy_none"
+note = "platform; identity by fingerprint"
