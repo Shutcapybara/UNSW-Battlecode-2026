@@ -94,3 +94,28 @@
 
 Candidate findings, not yet filed as `docs/findings/`: the sonar and child-size monoculture, kelp deaths, early territory.
 Each needs a decision and a falsifier agreed with the user.
+
+## Field comparison (29 Sep, later): `tools/analysis/features/compare.py`, outputs in `docs/analysis/a2-field/`
+
+- **Data.** 4,563 corpus games (9,126 side-games, 143 teams, 28 Sep 10:15–20:43 UTC), compared with the z1 seed-1 zoo. The
+  interactive report is published as the artifact "Zoo Field Coverage"; the same page is `a2-field/compare.html`, and the
+  reading is in `a2-field-notes.html`.
+- **Server replays blank bed timings.** `beds.py` recovers them from `maps/` by an exact kelp-layout match (120 of 120
+  checked; every countdown cell is a recovered bed). The 10-dragon Prisoners Dilemma is kept out of the coverage tables.
+- **Sampling.** Raw vs team-weighted coverage differs by a median of 1.7 pp (worst 6.6 pp). Team identity explains a median of
+  19% of within-map variance. The hierarchical (team-effect) view is what shows the strategy gaps: a median of 25% of teams,
+  and 79% of teams in the fighting family, lie outside the range our eight bots span.
+- **Coverage.** A median of 19% of field side-games fall outside the zoo's per-map 5–95% range (10% would mean
+  representative). The largest gaps:
+  - sonar composition and volume;
+  - trade volume: kills are mostly mutual head-on collisions, so they are symmetric within a game;
+  - an earlier first dragon of length 20 or 30;
+  - more splitting in the crown phase;
+  - a lower death rate while enclosed.
+- **Transfer.** The zoo's early predictors hold live beyond Elo with nearly the same effects: `total_share@100` 1.55 vs 1.52,
+  `territory@100` 1.63 vs 1.78, `units_share@100` 1.46 vs 1.58.
+- **Regenerate.**
+  - Run `extract` on the corpus replays (≈1.1 s per game per core, frames cached).
+  - Then run `compare --zoo build/zoo/z1/features --zoo-report build/zoo/z1/report --field <dirs> --index
+    public_replays/corpus/index.jsonl --ladder public_replays/corpus/ladder --out <dir>`.
+  - Field feature and death tables are in `build/a2-field/`.

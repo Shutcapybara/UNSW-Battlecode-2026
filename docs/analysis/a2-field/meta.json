@@ -1,0 +1,29 @@
+{
+ "field_side_games": 9126,
+ "field_games": 4563,
+ "teams": 143,
+ "ours_side_games": 164,
+ "zoo_side_games": 1120,
+ "features": 236,
+ "index_lines": 4818,
+ "newest_finished": "2026-09-28T20:43:02.469Z",
+ "elo_only_accuracy": 0.6504345888121239,
+ "top10": [
+  306,
+  70,
+  801,
+  264,
+  20,
+  46,
+  91,
+  213,
+  249,
+  470
+ ],
+ "games_per_team_quantiles": {
+  "0.5": 62.0,
+  "0.9": 124.0,
+  "0.99": 227.02000000000024
+ },
+ "max_team_share": 0.04591277668200745
+}

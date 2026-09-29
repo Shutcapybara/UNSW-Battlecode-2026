@@ -1,0 +1,25 @@
+name = "anna-a02-chassis"
+lineage = "anna"
+author = "claude-opus-5.5/anna/C1-A"
+language = "c++"
+lineage_parent = "anna-a01-chassis"
+hypothesis = "A cheap C++ opening (split 2 to r100, nearest pearl / bed ripe by arrival, exact one-step safety, time-aware room flood, public-map atlas) with split-when-trapped reaches more units and length at r100 than the same chassis without it, at < 5 M points per turn."
+mechanism = "anna-a01-chassis + policy: when every candidate step is certain death (kelp, own body, occupied), SPLIT 2 instead (legal, the head stays put); the child starts at our tail."
+expected_change = "vs anna-a01-chassis on paired fixtures: len_r100 and units_r100 up (sign test p < 0.05); sandbox max < 5 M, boot < 5 M; zero illegal actions. Wall deaths per 1k dragon-turns rise (children of boxed-in dragons die)."
+priority = 200
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 100, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "build/cx/a01-legal60.jsonl, build/cx/a01-v4.jsonl (the a02 run) — tools/cx/bench.py, 10 live maps x 2 sides x seeds 1-3 vs yuna-v03-core, unswbc 1.2.2 native",
+    "build/cx/a02-sandbox-probe.jsonl, build/cx/meter-a01.json — sandbox",
+    "docs/findings/2026-09-29-cx-a01-chassis.md",
+]
+summary = "vs a01 on 60 paired fixtures: len_r100 33/23/4 (p<0.001), units_r100 30/25/5, eaten_r100 27/28/5. vs yuna-v03: 0/60 wins; median units r25/50/100 6/8/10, len_r100 24. Sandbox vs yuna on the 4 probe fixtures: p50 3.7-3.9M, p99 <= 4.6M, max 4.86M, boot <= 4.86M, 0 faults. The a02 run predates the two LOG ACT markers (added after; +~0.05M on split turns only)."

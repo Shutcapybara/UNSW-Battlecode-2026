@@ -50,7 +50,7 @@ def test_side_rows_are_mirror_consistent(out):
 
 def test_registry_covers_extracted_features(out):
     row = out['side_rows'][0]
-    context = {'game', 'map', 'map_class', 'map_hash', 'cells', 'beds', 'bed_capacity', 'rounds', 'reason', 'side', 'bot',
+    context = {'game', 'map', 'map_class', 'map_hash', 'cells', 'dragons_start', 'beds', 'beds_source', 'bed_capacity', 'rounds', 'reason', 'side', 'bot',
                'opponent', 'won', 'result'}
     missing = [k for k in row if k not in context and k not in REGISTRY]
     assert not missing, missing

@@ -64,8 +64,27 @@ def terrain(maptext):
     return m, W, H, nbr, beds, portal_cells
 
 
+def _reader(path):
+    """Reader over raw or gzip-served replay bytes (the public corpus stores what the server sent)"""
+    import struct
+    from replay import unpack
+    data = Path(path).read_bytes()
+    if data[:2] == b'\x1f\x8b':
+        data = gzip.decompress(data)
+    r = Reader.__new__(Reader)
+    r.raw = unpack(data)
+    count = struct.unpack_from('<I', r.raw)[0] + 1
+    sizes = struct.unpack_from('<' + 'I' * count, r.raw, 4)
+    offset = ((count + 2) // 2) * 8
+    r.segments = []
+    for size in sizes:
+        r.segments.append(memoryview(r.raw)[offset:offset + size * 8])
+        offset += size * 8
+    return r
+
+
 def decode(path):
-    r = Reader(path)
+    r = _reader(path)
     root = r.object(0, 0)
     version = root.num(0, 'I')
     if version not in (0, 1, 2):

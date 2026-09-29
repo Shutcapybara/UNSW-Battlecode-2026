@@ -1,0 +1,215 @@
+#!/usr/bin/env python3
+"""cx arena: play one local game through unswbc 1.2.2's own engine and bot
+pools (the same code path as `unswbc run`, optionally `--sandbox`) and return
+early-game statistics, deaths by cause, CPU points per turn and, on request,
+the full stdin/stdout transcript of every dragon of one team.
+
+The bots are launched exactly as `unswbc run` launches them (bot.toml, same
+compile), so a recorded bot is unchanged. Nothing here edits a bot.
+
+    python3 tools/cx/arena.py MAP BOT_A BOT_B [--seed N] [--sandbox] [--json OUT]
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import pathlib
+import sys
+import time
+
+from unswbc.bot import Bot, Pool
+from unswbc.engine import DEBUG_ALL, EngineModule
+from unswbc.run import _resolve
+
+CHECK_ROUNDS = (25, 50, 100, 250)
+CAUSE = {"W": "wall", "S": "self", "O": "body", "H": "h2h", "A": "no_action"}
+
+
+def _parse_block(block: bytes) -> dict:
+    """Round header of a turn block: round, length, unit count."""
+    out = {}
+    for line in block.split(b"\n", 6)[:6]:
+        f = line.split()
+        if len(f) >= 2 and f[0] in (b"ROUND", b"LENGTH", b"UNIT_COUNT", b"DIR"):
+            out[f[0].decode()] = f[1].decode()
+    return out
+
+
+def _reply_cost(reply: bytes) -> tuple[str, int]:
+    """(action, segments spent by the action itself): sprint n-1, split k."""
+    act, spent = "", 0
+    for line in reply.split(b"\n"):
+        f = line.split()
+        if not f:
+            continue
+        if f[0] == b"MOVE" and len(f) > 1:
+            act, spent = "M" + f[1].decode(), len(f[1]) - 1
+        elif f[0] == b"SPLIT" and len(f) > 1:
+            act, spent = "S" + f[1].decode(), int(f[1])
+    return act, spent
+
+
+def purge_wasm_cache(bot: str) -> None:
+    """unswbc 1.2.2 keys its sandbox wasm cache on .c/.cpp contents only, so a
+    header-only edit reuses a stale build. Drop this bot's cached builds."""
+    from unswbc.sandbox import _cache_dir
+    name = pathlib.Path(bot).resolve().name
+    for p in (_cache_dir() / "wasmbots").glob(f"{name}-*.wasm"):
+        if len(p.stem) == len(name) + 33:  # name-<32 hex>
+            p.unlink(missing_ok=True)
+
+
+def run_game(map_path: str, bot_a: str, bot_b: str, seed: int = 1, sandbox: bool = False,
+             record: str | None = None, purge: bool = True) -> dict:
+    """record: 'A' or 'B' to keep that team's transcripts (by dragon id)."""
+    if sandbox:
+        from unswbc.sandbox import SandboxBot, SandboxPool, WasmPool, warm_interpreter
+        pool_type, bot_type = SandboxPool, SandboxBot
+    else:
+        pool_type, bot_type = Pool, Bot
+    if sandbox and purge:
+        for b in {bot_a, bot_b}:
+            if not (pathlib.Path(b) / "main.py").is_file():
+                purge_wasm_cache(b)
+    ra = _resolve(bot_a, sandbox)
+    rb = ra if bot_b == bot_a else _resolve(bot_b, sandbox)
+    if sandbox and "python" in (ra[2], rb[2]):
+        warm_interpreter()
+    pools = {}
+    for team, (argv, botdir, kind) in (("A", ra), ("B", rb)):
+        maker = pool_type
+        if sandbox and kind == "wasm":
+            maker = WasmPool
+        pools[team] = maker(argv, cwd=str(botdir), key=f"{seed:016x}-{team.lower()}")
+
+    live, teams = {}, {}
+    trans: dict[int, dict] = {}
+    rows: dict[int, dict] = {}          # round -> team -> [units_seen, total_len]
+    last: dict[int, tuple] = {}         # dragon -> (length, spent_by_action)
+    eaten = {"A": 0, "B": 0}
+    eaten100 = {"A": 0, "B": 0}
+    first_pearl = {"A": None, "B": None}
+    turns = {"A": 0, "B": 0}
+    points = {"A": [], "B": []}
+    boot = {"A": [], "B": []}   # first turn of each dragon (setup is charged)
+    booted = set()
+    deaths = []
+    errors = []
+
+    def spawn(did: int, init: bytes) -> None:
+        team = next((l.split()[1] for l in init.decode().splitlines() if l.startswith("TEAM")), "A")
+        teams[did] = team
+        live[did] = bot_type(pools[team], init=init, name=str(did))
+        if record == team:
+            trans[did] = {"init": init.decode(), "turns": []}
+
+    def reply(did: int, block: bytes) -> bytes:
+        bot = live[did]
+        out = bot.ask(block)
+        team = teams[did]
+        h = _parse_block(block)
+        rnd = int(h.get("ROUND", 0))
+        ln = int(h.get("LENGTH", 0))
+        row = rows.setdefault(rnd, {"A": [0, 0], "B": [0, 0]})
+        row[team][0] += 1
+        row[team][1] += ln
+        turns[team] += 1
+        if did in last:
+            pl, spent = last[did]
+            got = ln - pl + spent
+            if got > 0:
+                eaten[team] += got
+                if rnd <= 100:
+                    eaten100[team] += got
+                if first_pearl[team] is None:
+                    first_pearl[team] = rnd
+        act, spent = _reply_cost(out)
+        last[did] = (ln, spent)
+        if bot.error is not None:
+            errors.append((rnd, did, team, bot.error))
+        m = getattr(bot, "live", None)
+        if m and m[0]:
+            points[team].append(m[0])
+            if did not in booted:
+                boot[team].append(m[0])
+        booted.add(did)
+        if did in trans:
+            trans[did]["turns"].append({"round": rnd, "input": block.decode(), "output": out.decode()})
+        return out
+
+    def death(did: int, rnd: int, reason: str) -> None:
+        deaths.append({"round": rnd, "id": did, "team": teams.get(did, "?"),
+                       "cause": CAUSE.get(reason, reason)})
+        b = live.pop(did, None)
+        if b is not None:
+            b.stop()
+
+    t0 = time.time()
+    engine = EngineModule()
+    try:
+        res = engine.run(pathlib.Path(map_path).read_bytes(), reply, death, spawn,
+                         lambda line: None, DEBUG_ALL, seed)
+    finally:
+        for b in live.values():
+            b.stop()
+        for p in pools.values():
+            p.close()
+
+    def at(r, team, k):
+        # last round <= r that has a row (team may be dead -> 0)
+        if r in rows:
+            return rows[r][team][k]
+        return 0
+
+    stats = {}
+    for team in "AB":
+        s = {"eaten": eaten[team], "eaten_r100": eaten100[team], "first_pearl": first_pearl[team], "turns": turns[team]}
+        for r in CHECK_ROUNDS:
+            s[f"units_r{r}"] = at(r, team, 0)
+            s[f"len_r{r}"] = at(r, team, 1)
+        dc = {}
+        for d in deaths:
+            if d["team"] == team:
+                dc[d["cause"]] = dc.get(d["cause"], 0) + 1
+        s["deaths"] = dc
+        s["deaths_r100"] = sum(1 for d in deaths if d["team"] == team and d["round"] <= 100)
+        pts = sorted(points[team])
+        if pts:
+            def pc(q):
+                return pts[max(0, -(-q * len(pts) // 100) - 1)]
+            s["points"] = {"p50": pc(50), "p99": pc(99), "max": pts[-1], "n": len(pts)}
+        if boot[team]:
+            b = sorted(boot[team])
+            s["boot"] = {"p50": b[len(b) // 2], "max": b[-1], "n": len(b)}
+        stats[team] = s
+    return {
+        "map": pathlib.Path(map_path).stem, "a": bot_a, "b": bot_b, "seed": seed,
+        "sandbox": sandbox, "winner": res.winner, "end_reason": res.end_reason,
+        "rounds": res.rounds + 1, "a_length": res.a_length, "b_length": res.b_length,
+        "stats": stats, "deaths": deaths, "errors": errors[:50], "secs": round(time.time() - t0, 1),
+        "transcripts": trans if record else None,
+    }
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("map")
+    ap.add_argument("a")
+    ap.add_argument("b")
+    ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--sandbox", action="store_true")
+    ap.add_argument("--json")
+    args = ap.parse_args()
+    r = run_game(args.map, args.a, args.b, args.seed, args.sandbox)
+    r.pop("transcripts", None)
+    txt = json.dumps(r, indent=1)
+    if args.json:
+        pathlib.Path(args.json).write_text(txt)
+    print(json.dumps({k: r[k] for k in ("map", "winner", "rounds", "a_length", "b_length", "secs")}))
+    for t in "AB":
+        print(t, json.dumps(r["stats"][t]))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

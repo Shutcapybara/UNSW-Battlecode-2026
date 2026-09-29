@@ -1,0 +1,39 @@
+<section class="notes">
+<h3>Reading (4,563 field games, 143 teams, 28 Sep 10:15–20:43 UTC; zoo = z1 seed 1)</h3>
+<ul>
+<li><b>Raw pooled or hierarchical: the sampling barely moves game-level answers.</b> Weighting teams equally instead of pooling
+games shifts the out-of-range share by a median of 1.7 percentage points (90th percentile 3.6, worst 6.6 on
+<code>seen_share@499</code>). Team identity explains a median of 19% of within-map variance. The hierarchy matters for a
+different question: whether we have the strategies at all. A median 25% of teams, and 79% of teams in the fighting family,
+sit outside the range our eight bots span.</li>
+<li><b>The zoo is moderately unrepresentative.</b> A median 19% of field side-games fall outside the zoo's per-map 5–95% range,
+against 10% if the zoo were representative. The figure is 18% for winners and 19% for the top-10 teams. The largest gaps:
+<ul>
+<li><i>Sonar.</i> Field rays hit kelp far less often (47% of games below the zoo) and allies far more (44% above), refract
+into their own neck less, and use different compass mixes. The median field side sends about 4 IQR fewer rays per
+dragon-turn than the zoo median. The zoo's 5–95% range still covers the field only because ouroboros-m01 sends none.</li>
+<li><i>Trading.</i> Kills at r100–r250 are 23–32% above the zoo, and 82–85% of teams sit outside our bots' range. Most kills
+are mutual head-on collisions, both heads dying, so kill counts measure the <i>volume of trades</i> and are symmetric
+within a game (AUC 0.50). <code>kill_length_ratio</code> is the dominance measure.</li>
+<li><i>Tempo.</i> The first dragon of length 30 arrives earlier in the field (29% below the zoo, median shift −1.9 IQR) and
+the first dragon of length 20 is also earlier. The field keeps splitting in its crown phase (28% above).</li>
+<li><i>Risk.</i> The death rate while enclosed is lower in the field (23% below).</li>
+</ul></li>
+<li><b>What decides games transfers.</b> With the Elo expected score as a fixed offset, the top early predictors live are the
+ones the zoo found, with near-identical effects (log-odds per within-map sd, field vs zoo):
+<ul>
+<li><code>total_share@100</code>: 1.55 vs 1.52;</li>
+<li><code>territory@100</code>: 1.63 vs 1.78;</li>
+<li><code>units_share@100</code>: 1.46 vs 1.58.</li>
+</ul>
+Elo alone calls 65% of results. At team level, a higher rating goes with more dragons and more length at r100–r150
+(Spearman ≈ 0.7) and with more trading.</li>
+<li><b>Caveats.</b>
+<ul>
+<li>Submission ids are absent from the corpus, so a team is pooled over whatever versions it ran during the day.</li>
+<li>Ratings are the nearest earlier ladder snapshot; the snapshots start at 14:57, so earlier games use the first one.</li>
+<li>Bed timings for server replays are recovered from <code>maps/</code> by exact kelp match (120 of 120 checked).</li>
+<li>The 10-dragon Prisoners Dilemma is kept out of the coverage tables because the zoo never plays it.</li>
+</ul></li>
+</ul>
+</section>

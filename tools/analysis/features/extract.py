@@ -6,6 +6,7 @@ so any split is a filter. Feature metadata lives in registry.REGISTRY.
 Units: side-game rows are one side of one game; series rows are one side of one round; dragon rows one dragon.
 """
 import collections, math
+import numpy as np
 from statistics import pstdev
 
 CHECKPOINTS = (25, 50, 100, 150, 250, 400, 499)
@@ -58,7 +59,9 @@ def bfs(nbr, sources, limit=None, blocked=None):
 
 def extract(g, meta=None):
     meta = meta or {}
-    W, H, nbr, beds = g['W'], g['H'], g['nbr'], g['beds']
+    from .beds import resolve
+    beds, beds_source = resolve(g)          # server replays blank bed timings; recovered from REPO/maps by terrain match
+    W, H, nbr = g['W'], g['H'], g['nbr']
     cells = W * H
     R = len(g['rounds']) - 1            # rounds[R] is the final state
     ev = g['events']
@@ -241,6 +244,7 @@ def extract(g, meta=None):
                            newborn=(not d['initial']) and d['age'] <= 10, reach5=rch, static_reach5=static_reach[body[0]],
                            enclosed=rch <= ENCLOSED, near_portal=near_portal, killer_team=d.get('killer_team')))
     # sonar: direction, relative direction to own team centre and to nearest enemy head, hit kinds
+    team_cache, foe_cache = {}, {}
     for p in ev['sonar']:
         t = p['team']
         if t is None or p['round'] < 0 or p['round'] > R:
@@ -252,18 +256,37 @@ def extract(g, meta=None):
         else:
             E[t]['rays_' + 'NESW'[p['dir'] % 4]][r] += 1   # compass share over rays that left the head
         E[t]['ray_' + p['hit_kind']][r] += 1
-        snap = g['rounds'][r]
         ox, oy = p['origin']
         vx, vy = ((0, -1), (1, 0), (0, 1), (-1, 0))[p['dir'] % 4]
-        allies = [b[0] for i, (tt, b) in snap.items() if tt == t and i != p['id']]
-        if allies:
-            cx = circ_mean([a[0] for a in allies], W)
-            cy = circ_mean([a[1] for a in allies], H)
+        key = (r, t)
+        if key not in team_cache:   # per round and team: angle sums of allied heads, foe heads
+            snap = g['rounds'][r]
+            hs = {i: b[0] for i, (tt, b) in snap.items() if tt == t}
+            ang = {i: (math.sin(2 * math.pi * h[0] / W), math.cos(2 * math.pi * h[0] / W),
+                       math.sin(2 * math.pi * h[1] / H), math.cos(2 * math.pi * h[1] / H)) for i, h in hs.items()}
+            tot = [sum(a[k] for a in ang.values()) for k in range(4)]
+            fl = [b[0] for i, (tt, b) in snap.items() if tt != t]
+            team_cache[key] = (ang, tot, (np.array([h[0] for h in fl]), np.array([h[1] for h in fl])) if fl else None)
+        ang, tot, foes = team_cache[key]
+        n_al = len(ang) - (1 if p['id'] in ang else 0)
+        if n_al > 0:
+            own = ang.get(p['id'], (0, 0, 0, 0))
+            sx, cx_, sy, cy_ = (tot[k] - own[k] for k in range(4))
+            cx = (math.atan2(sx, cx_) % (2 * math.pi)) * W / (2 * math.pi) if abs(sx) + abs(cx_) > 1e-9 else ox
+            cy = (math.atan2(sy, cy_) % (2 * math.pi)) * H / (2 * math.pi) if abs(sy) + abs(cy_) > 1e-9 else oy
             dot = vx * tdelta(ox, cx, W) + vy * tdelta(oy, cy, H)
             E[t]['rays_toward_com' if dot > 0.5 else 'rays_away_com' if dot < -0.5 else 'rays_side_com'][r] += 1
-        foes = [b[0] for i, (tt, b) in snap.items() if tt != t]
-        if foes:
-            f = min(foes, key=lambda h: abs(tdelta(ox, h[0], W)) + abs(tdelta(oy, h[1], H)))
+        if foes is not None:
+            okey = (r, ox, oy, t)
+            f = foe_cache.get(okey)
+            if f is None:
+                fx, fy = foes
+                dx, dy = (fx - ox) % W, (fy - oy) % H
+                dx = np.where(dx > W / 2, dx - W, dx)
+                dy = np.where(dy > H / 2, dy - H, dy)
+                k = int(np.argmin(np.abs(dx) + np.abs(dy)))
+                f = (int(fx[k]), int(fy[k]))
+                foe_cache[okey] = f
             dot = vx * tdelta(ox, f[0], W) + vy * tdelta(oy, f[1], H)
             E[t]['rays_toward_enemy' if dot > 0 else 'rays_away_enemy' if dot < 0 else 'rays_side_enemy'][r] += 1
     # dragon-turn denominators per round
@@ -305,7 +328,7 @@ def extract(g, meta=None):
 
     # ---------------- assemble ----------------
     base = dict(game=g['id'], map=g['map'], map_class='compact' if g['map'] in COMPACT else 'open', map_hash=g['map_hash'],
-                cells=cells, beds=len(beds), bed_capacity=capacity, rounds=R, reason=g['reason'], **meta)
+                cells=cells, dragons_start=g.get('n_initial'), beds=len(beds), beds_source=beds_source, bed_capacity=capacity, rounds=R, reason=g['reason'], **meta)
     series = []
     for t in 'AB':
         for r in range(R + 1):

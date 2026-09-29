@@ -398,7 +398,7 @@ def main(argv=None):
         json.dump(val, fh, indent=1, default=str)
     html = build_html(a, F, F1, S, P, Q, ST, STAB, ID, val, haz, SM1, tr, DE, DR, EX, FL)
     with open(os.path.join(a.out, 'report_body.html'), 'w') as fh:
-        fh.write(html)
+        fh.write(inline_plotly(html))
     with open(os.path.join(a.out, 'report.html'), 'w') as fh:
         fh.write('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
                  f'<title>F1 feature lab</title></head><body>{html}</body></html>')
@@ -411,7 +411,7 @@ def build_html(a, F, F1, S, P, Q, ST, STAB, ID, val, haz, SM1, tr, DE, DR, EX, F
     figs = []
 
     def add(section, title, caption, fig):
-        figs.append((section, title, caption, fig.to_html(full_html=False, include_plotlyjs=False, config=dict(displaylogo=False, responsive=True))))
+        figs.append((section, title, caption, fig.to_html(full_html=False, include_plotlyjs=False, config=dict(displaylogo=False, responsive=True, modeBarButtonsToRemove=['toImage']))))
 
     bots = sorted(F1['bot'].unique())
     bc = {b: CAT[i % 8] for i, b in enumerate(bots)}
@@ -679,7 +679,7 @@ nav a {{ color:var(--ink2); text-decoration:none; font-size:13px; text-transform
 th, td {{ text-align:left; padding:4px 8px; border-bottom:1px solid var(--line); white-space:nowrap; }} th {{ position:sticky; top:0; background:var(--card); }}
 .js-plotly-plot {{ max-width:100%; }}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.35.2/plotly.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@{_pjs_version()}/plotly.min.js"></script>
 <main>
 <h1>{a.title}</h1>
 <p>Seeded round robin of {F1['bot'].nunique()} bots on {len(maps)} live maps, both seats, {F1['toolkit'].iloc[0] if 'toolkit' in F1 else 'unswbc ?'}, seed 1
@@ -697,6 +697,18 @@ th, td {{ text-align:left; padding:4px 8px; border-bottom:1px solid var(--line);
 <nav>{''.join(toc)}</nav>
 {''.join(body)}
 </main>"""
+
+
+def _pjs_version():
+    from plotly.offline import get_plotlyjs_version
+    return get_plotlyjs_version()   # the figures' JSON needs the plotly.js this plotly.py was built against
+
+
+def inline_plotly(html):
+    """swap the CDN tag for the bundled plotly.js (for hosts that block CDNs or pin other versions)"""
+    import re, plotly
+    js = plotly.offline.get_plotlyjs().replace('\ufffd', '\\ufffd')
+    return re.sub(r'<script src="https://cdn.jsdelivr.net/npm/plotly[^"]*"></script>', lambda m: '<script>' + js + '</script>', html)
 
 
 def BIN_(p):
