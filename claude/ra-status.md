@@ -3,7 +3,7 @@
 Updated 30 Sep ~04:00 UTC. Lineage **Renoir** (`bots/renoir-NN-slug/`), branch `r/ra`, tooling `tools/ra/`
 (see `tools/ra/README.md`). Report: `docs/findings/2026-09-30-ra-lane.md`.
 
-**State:** 28 candidates screened (incl. one ablation), **0 accepted, 0 holds**; nothing registered. Best directions are the risk-taking
+**State (30 Sep ~07:40 UTC):** best lead is 07c (exploration value 5->4): pool econ~ +0.061, but units@100 down, ally h2h +22 %, and the gen panel is flat (−0.016), so it is rejected as pool-fitted. Earlier state: 33 candidates screened (incl. one ablation), **0 accepted, 0 holds**; nothing registered. Best directions are the risk-taking
 moves (threat cost down, revisit penalty down, trap weight down) at +0.012 to +0.023 econ~ on 160 games, 3-5x
 short of the +0.05 bar. Queue continues in the cloud container.
 
@@ -34,6 +34,12 @@ short of the +0.05 bar. Queue continues in the cloud container.
 | 18c visit0 | revisit penalty off | 160 | +0.012 | [−0.010, 0.035] | +0.019 | −0.06/−0.02 | REJECT |
 | 13b slack1 | trap need len+1 | 80 | +0.008 | [−0.016, 0.040] | 0 | −0.01/−0.02 | REJECT |
 | 22 scarcity | NEW: starving dragons explore x1.6 | 160 | −0.024 | [−0.061, 0.019] | −0.069 | −0.08/0 | REJECT |
+| 24 farm2 | NEW: pocket-farm discount only when the pocket holds >=2 visible pearls | 80 | −0.002 | [−0.057, 0.044] | −0.088 | −0.01/0 | REJECT (Autarky −0.15) |
+| 09b crowd12 | ally-head crowding penalty 0.6 -> 1.2 | 80 | −0.021 | [−0.065, 0.018] | −0.062 | 0/+0.08 | REJECT; kelp −9 %, ally h2h −5 % |
+| 18a (seed 2) | revisit penalty 0.05, repeated at seed 2 | 160 | −0.003 | [−0.029, 0.021] | +0.006 | 0/−0.03 | seeds 1+2 pooled: +0.015 [−0.006, 0.033]. Null. |
+| **07a unseen3** | exploration value 5 -> 3 | 160 | **+0.110** | [0.070, 0.152] | −0.041 | −0.08/−0.04 | REJECT: churn economy. Kelp +11 %, self +11 %, ally body +14 %, ally h2h +51 % |
+| **07c unseen4** | exploration value 5 -> 4 | 160 | **+0.061** | [0.026, 0.090] | +0.007 | −0.06/0.00 | REJECT: units@100 down, ally h2h +22 %. **gen econ~ −0.016 [−0.034, 0.010], win −0.008: does not generalise.** |
+| 25 crowdexplore | NEW: exploration value 4 when alone, 6 when an ally head is within 3 | 80 | +0.041 | [−0.037, 0.078] | −0.075 | −0.05/−0.04 | REJECT; ally h2h back to base (2.26), Schooltime +0.83 |
 | 23 nodevil | ABLATION: 32x16 terms off | 160 | −0.042 | [−0.103, −0.006] | −0.075 | −0.15/−0.04 | diagnostic: Devil win 1.00->0.31, Dilemma 0.62->0.75 |
 | 19a edens0 | no enemy-density devaluation of targets | 80 | −0.003 | [−0.088, 0.051] | −0.050 | −0.13/−0.03 | REJECT |
 | 20b hunt40 | hunters (len<=5 vs prey>=8) from round 40 (was 200) | 80 | 0.000 | [−0.010, 0.017] | −0.013 | −0.02/0 | REJECT (inert) |

@@ -1,0 +1,12 @@
+name = "renoir-07d-unseen2"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "exploration value 5->2 (sweep beyond 07a)"
+expected_change = "econ~ up if monotone; hygiene up"
+hypothesis = ""
+params = ["unseen_value=2.0"]
+status = "candidate (not registered)"
+fingerprint = "cc3575ebcbb6732f5bac8acd09937ffaae970f3748dbd609d3460b60f348d84b"

@@ -1,0 +1,150 @@
+{
+ "bot": "renoir-07a-unseen3",
+ "parent": "renoir-00-base",
+ "seeds": [
+  1
+ ],
+ "pool": {
+  "cand": {
+   "n": 160,
+   "win": 0.721875,
+   "pearls@50|n": 1.2884266386152163,
+   "pearls@100|n": 1.4301206900586132,
+   "pearls@150|n": 1.441230608195377,
+   "pearls@250|n": 1.4690640932613621,
+   "units@100|n": 1.2899718045112782,
+   "total@100|n": 1.221469466795536,
+   "births@100|n": 1.4066798389318609,
+   "econ|n": 1.4072105075326422,
+   "pearls@50|n~": 1.1428571428571428,
+   "pearls@100|n~": 1.2070113056163385,
+   "pearls@150|n~": 1.2147290640394088,
+   "pearls@250|n~": 1.3183520599250937,
+   "units@100|n~": 1.1180555555555556,
+   "total@100|n~": 1.0,
+   "births@100|n~": 1.1764705882352942,
+   "econ|n~": 1.2207373931094958,
+   "pearls@50": 52.76875,
+   "pearls@100": 147.05625,
+   "pearls@150": 255.11875,
+   "pearls@250": 475.65,
+   "units@100": 22.2,
+   "total@100": 54.3125,
+   "births@100": 61.53125,
+   "death_wall_per1k": 9.718227145690278,
+   "death_self_per1k": 6.364252827032884,
+   "death_ally_body_per1k": 3.1520209997223048,
+   "death_h2h_ally_per1k": 3.635747240466274,
+   "death_invalid_per1k": 0.0,
+   "newborn_deaths10_per100": 39.3355994352775,
+   "top1_share@100": 0.11979735045650146,
+   "total_share@250": 0.6525328593678124,
+   "sprint_cost_per_pearl": 0.03840275106426482,
+   "deaths_per1k": 28.077141409287908,
+   "death_h2h_enemy_per1k": 4.896935531507841,
+   "death_enemy_body_per1k": 0.3099576648683316,
+   "enclosed_death_share": 0.7097542112625618,
+   "portal_death_share": 0.37263065260983896
+  },
+  "parent": {
+   "n": 160,
+   "win": 0.7625,
+   "pearls@50|n": 1.130652586653102,
+   "pearls@100|n": 1.292265245895069,
+   "pearls@150|n": 1.3283707931149786,
+   "pearls@250|n": 1.3377483102609855,
+   "units@100|n": 1.3331473214285716,
+   "total@100|n": 1.2547247969477677,
+   "births@100|n": 1.2712477198391146,
+   "econ|n": 1.2722592339810337,
+   "pearls@50|n~": 0.9704433497536946,
+   "pearls@100|n~": 1.1017505470459519,
+   "pearls@150|n~": 1.1521317829457365,
+   "pearls@250|n~": 1.218505245324819,
+   "units@100|n~": 1.2,
+   "total@100|n~": 1.0350877192982457,
+   "births@100|n~": 1.085427135678392,
+   "econ|n~": 1.1107077312675506,
+   "pearls@50": 48.6375,
+   "pearls@100": 139.78125,
+   "pearls@150": 246.5375,
+   "pearls@250": 458.6375,
+   "units@100": 23.25625,
+   "total@100": 56.875,
+   "births@100": 58.375,
+   "death_wall_per1k": 8.730610496920878,
+   "death_self_per1k": 5.736301990455215,
+   "death_ally_body_per1k": 2.764763634631243,
+   "death_h2h_ally_per1k": 2.4005954853611238,
+   "death_invalid_per1k": 0.0,
+   "newborn_deaths10_per100": 34.50681154718531,
+   "top1_share@100": 0.10937725200089983,
+   "total_share@250": 0.6728616896460251,
+   "sprint_cost_per_pearl": 0.03908060925063167,
+   "deaths_per1k": 24.63518229360979,
+   "death_h2h_enemy_per1k": 4.766919473391448,
+   "death_enemy_body_per1k": 0.23599121284988245,
+   "enclosed_death_share": 0.7056346823461725,
+   "portal_death_share": 0.3323181234086414
+  },
+  "pairs": {
+   "pearls@100": {
+    "better": 96,
+    "same": 5,
+    "worse": 59,
+    "p": 0.0037
+   },
+   "total@100": {
+    "better": 64,
+    "same": 7,
+    "worse": 89,
+    "p": 0.052
+   },
+   "units@100": {
+    "better": 56,
+    "same": 15,
+    "worse": 89,
+    "p": 0.0077
+   },
+   "win": {
+    "better": 17,
+    "same": 119,
+    "worse": 24,
+    "p": 0.3489
+   }
+  },
+  "boot": {
+   "econ~_delta_90": [
+    0.07,
+    0.152
+   ],
+   "win_delta_90": [
+    -0.109,
+    0.025
+   ],
+   "n": 160
+  },
+  "map_econ_delta": {
+   "autarky": 0.004,
+   "default": 0.281,
+   "devil": -0.035,
+   "dilemma": 0.11,
+   "portals": 0.031,
+   "queen_of_spades": 0.376,
+   "schooltime": 0.056,
+   "slithery_fight": 0.037,
+   "trauma": 0.531,
+   "trophy": -0.041
+  }
+ },
+ "verdict": "REJECT",
+ "why": [
+  "units@100|n~ down -0.082",
+  "total@100|n~ down -0.035",
+  "death_wall_per1k +11%",
+  "death_self_per1k +11%",
+  "death_ally_body_per1k +14%",
+  "death_h2h_ally_per1k +51%",
+  "pool win -0.041"
+ ]
+}
