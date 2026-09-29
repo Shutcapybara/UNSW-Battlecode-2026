@@ -30,15 +30,16 @@ Base `<lineage>-00-base` = `lune-r1-07-latecap8x-only` verbatim (golden parity),
    `threat_ew` (+1 per enemy head within k, ×λ), `death_ew` (+1 at every observed death cell, ×λ — the ledger's
    trapped/portal leak as a map). Smoothing: a 3×3 or 5×5 box-blur view read at query time, not stored (CPU is
    free: R-1 measured 9 M of 100 M points; keep it under 20 M anyway and probe).
-2. **Scalars**: momentum (Ares has it), local pearl sparsity (pearls seen inside the last search horizon), units in
+2. **Mode (L31)**: a per-dragon discrete state (forage / transit / post-transit / escape / hunt / feed / crown) with entry and exit conditions on measured state and hysteresis, exposed as a one-hot feature so weights can be mode-conditioned (the feature interface below makes `w_i` per mode a natural extension); first modes to build: transit/post-transit and escape.
+3. **Scalars**: momentum (Ares has it; the soft version of mode), local pearl sparsity (pearls seen inside the last search horizon), units in
    view, clock (round / 500 and its square), own length, pending-split state.
-3. **The feature interface.** Every place the policy scores a candidate target cell or a candidate move gets a
+4. **The feature interface.** Every place the policy scores a candidate target cell or a candidate move gets a
    feature vector `f(cell)` / `f(move)` assembled from the grids and scalars, and the score becomes
    `existing_score + Σ w_i · f_i` with every `w_i` a runtime-overridable parameter (`ARES_PARAMS`-style env
    override for local games, compiled defaults for shipping — the R-5 Part 1 design). With all `w_i = 0` the bot
    is byte-identical in behaviour to the parent: prove it with the golden harness. That is version
    `<lineage>-02-features` and it is the platform for everything after.
-4. **A feature dump.** A build flag that logs, per decision, the feature vector of every candidate and the one
+5. **A feature dump.** A build flag that logs, per decision, the feature vector of every candidate and the one
    chosen, to a compact binary/parquet under `build/<lineage>/` — the training data for Part 3. Off in shipped bots.
 
 ## Part 2 — one feature at a time, weight fitted (the loop)
