@@ -62,6 +62,7 @@ def main():
     ap.add_argument("--names")
     ap.add_argument("--filter", choices=["live", "panel"])
     ap.add_argument("--metrics")
+    ap.add_argument("--exclude", help="comma-separated map prefixes to drop, e.g. pub/")
     a = ap.parse_args()
     names = a.names.split(",") if a.names else [pathlib.Path(p).stem for p in a.arms]
     data = [rows(p) for p in a.arms]
@@ -70,6 +71,9 @@ def main():
         keys &= set(d)
     if a.filter:
         keys = {k for k in keys if pool_of(k[0]) == a.filter}
+    if a.exclude:
+        pre = a.exclude.split(",")
+        keys = {k for k in keys if not any(k[0].startswith(p) for p in pre)}
     keys = sorted(keys)
     mets = [m for m in METRICS if not a.metrics or m[0] in a.metrics.split(",")]
     print(f"{len(keys)} common fixtures" + (f" ({a.filter})" if a.filter else ""))
