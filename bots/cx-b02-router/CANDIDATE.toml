@@ -1,0 +1,25 @@
+name = "cx-b02-router"
+lineage = "cx"
+author = "claude-opus-5.5/C1-B"
+language = "c++"
+lineage_parent = "anna-a02-chassis"
+hypothesis = "Spending the chassis' spare CPU on per-dragon arrival maps, bed valuation against enemy arrival, spaced assignment and patrol timing converts into pearls and length by r100 on the live pool and on unseen maps."
+mechanism = "router.hpp on anna-a02-chassis: own/enemy/ally BFS arrival maps; bed value = pearls eaten before the enemy's earliest arrival (observed gaps, later ripenings down-weighted); greedy assignment with 3-cell spacing + pair swap + hysteresis; patrol timing; dead-end trees (2-core peel) with a feeding rule; pearl-gated 2+2 splits needing a child target; big-child split when trapped; known-exit portals as routes. Horizons and caps keyed on tile count; atlas switch CX_ATLAS."
+expected_change = "vs anna-a02-chassis in exact pairs: len_r100 up on the live pool and on the var/new panel; eaten_r100 up on the live pool; units_r100 flat; newborn and wall deaths up on the live pool (mill maps). vs yuna-v03 (545's lineage): behind on units and on the panel — not expected to pass the dev screen as is."
+priority = 150
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 100, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "build/cx/b/abl/{a_yuna,b_a02_all,c_b02,c_b02na}.jsonl — tools/cx/bench.py, 4 opponents (yuna-v03, fenrir-v18, kazuha-s01, ouroboros-s02-portal), 10 live maps x 2 sides x seeds 1-3 + 31 panel maps x 2 sides x seed 1, unswbc 1.2.2 native",
+    "build/cx/b/abl/sbx_*.jsonl, build/cx/b/meter-b01.json — sandbox",
+    "docs/findings/2026-09-30-cx-b01-router.md",
+]
+summary = "vs anna-a02 (arm b): live pool len_r100 176/3/61 (p<0.001; median 36 vs 23), eaten_r100 194/1/45 (100 vs 35), units_r100 118/11/111 (p=0.69); var+new panel len_r100 126/12/94 (p=0.036; 26 vs 24), eaten 104/9/119 (n.s.), units n.s. Atlas off on the live pool: len 158/9/73 vs a02 but 68/29/143 vs atlas on. Newborn deaths r100 median 18 vs 2 on the live pool (mill maps). Sandbox vs yuna on the probe fixtures: p50 4.4-6.6M, p99 <= 11.7M, max 16.2M, boot <= 12.6M, 0 faults."
