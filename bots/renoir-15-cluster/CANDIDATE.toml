@@ -1,0 +1,12 @@
+name = "renoir-15-cluster"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "cluster-aware target value: a target"s value is multiplied by (1 + cluster_weight*S), S = sum over known food within torus distance 2 (pearl 1.0, bed due by arrival+2 0.8) x 0.6^(d-1), capped at cluster_cap=4"
+expected_change = "pearls/100dt and pearls@100|map up (dragons go to rich clusters/fast beds); econ~ +0.05"
+hypothesis = ""
+params = []
+status = "candidate (not registered)"
+fingerprint = "8d1c4d69f8c150fc8adc49187d98562e6d47b5bf9b9a9e596a9821769be531e3"

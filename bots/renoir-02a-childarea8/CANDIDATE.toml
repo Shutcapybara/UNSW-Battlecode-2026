@@ -1,0 +1,12 @@
+name = "renoir-02a-childarea8"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "split viability: child needs 8 reachable cells (was 4)"
+expected_change = "newborn_deaths10 and wall deaths down; births down; econ flat-or-up"
+hypothesis = ""
+params = ["child_area=8"]
+status = "candidate (not registered)"
+fingerprint = "c83ef6811bfdd56998c98107f59b6b06b2abd6388f5f9db829ed3face3f32292"

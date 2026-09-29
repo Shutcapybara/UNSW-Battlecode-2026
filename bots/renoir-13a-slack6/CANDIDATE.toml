@@ -1,0 +1,12 @@
+name = "renoir-13a-slack6"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "trap check: room needed = len+6 (was len+3)"
+expected_change = "enclosed deaths down for longer dragons; length@100 up"
+hypothesis = ""
+params = ["slack=6"]
+status = "candidate (not registered)"
+fingerprint = "44812efe4e60ee6df369f7ff055790ef12a152a80b0360b9382648f88526f7f6"

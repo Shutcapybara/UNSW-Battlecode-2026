@@ -1,0 +1,12 @@
+name = "renoir-12a-minarea8"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "trap check: minimum room for any move 5->8 cells (small dragons avoid tight pockets)"
+expected_change = "wall/self (enclosed) deaths down >=10%, newborn deaths down; econ flat-or-up"
+hypothesis = ""
+params = ["min_area=8"]
+status = "candidate (not registered)"
+fingerprint = "c4f9f497c16e79eab68ca2596f9b1cc70db94b4f80709ad777c7a0dafbb12121"

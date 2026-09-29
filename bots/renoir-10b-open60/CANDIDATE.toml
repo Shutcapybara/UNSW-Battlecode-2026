@@ -1,0 +1,12 @@
+name = "renoir-10b-open60"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "opening production split window 30->60"
+expected_change = "units@100 up, pearls@100 up"
+hypothesis = ""
+params = ["opening_production_until=60"]
+status = "candidate (not registered)"
+fingerprint = "28dd35ca949f923bf9f30d8a96f74b3897abacb86806b7f6f96cf9777479c03d"

@@ -1,0 +1,12 @@
+name = "renoir-14b-trapw20"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "trap penalty weight 30->20"
+expected_change = "sweep point"
+hypothesis = ""
+params = ["trap_weight=20.0"]
+status = "candidate (not registered)"
+fingerprint = "896eab895edde29d049a6e98c4272f5dadfa22039fe13a357f73f85ea7c29c44"

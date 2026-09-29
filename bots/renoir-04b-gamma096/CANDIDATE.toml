@@ -1,0 +1,12 @@
+name = "renoir-04b-gamma096"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "target discount 0.96: farther targets"
+expected_change = "pearls@100/250 up via bed reach"
+hypothesis = ""
+params = ["target_gamma=0.96"]
+status = "candidate (not registered)"
+fingerprint = "540468f132691c6e88b5bf2dca054617a1e4db3eb3e3617d8ccae2fe227d70b4"

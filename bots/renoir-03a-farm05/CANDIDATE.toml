@@ -1,0 +1,12 @@
+name = "renoir-03a-farm05"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "pocket farming discount weakened (trap penalty x0.5 not x0.15 when pearls in pocket)"
+expected_change = "wall/self (enclosed) deaths down; pearls@100 flat"
+hypothesis = ""
+params = ["trap_farm_factor=0.5"]
+status = "candidate (not registered)"
+fingerprint = "d07467d84ab2dc43caff06e12ace323da4ae518343f981150b974fb67f242884"

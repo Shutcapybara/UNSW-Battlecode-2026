@@ -598,10 +598,10 @@ def report(events_path, index_path, ladder_dir, out_md, out_json):
                                                      gg['units'] == gg['opp_units'] if p == 'even' else
                                                      gg['units'] < gg['opp_units']).mean()) for p in ('ahead', 'even', 'behind')}}
         for p in ('ahead', 'even', 'behind'):
-            x = gg[('units' > gg['opp_units']) if False else (
-                gg['units'] > gg['opp_units'] if p == 'ahead' else
-                gg['units'] == gg['opp_units'] if p == 'even' else
-                gg['units'] < gg['opp_units'])]['own_init'].dropna()
+            sel = (gg['units'] > gg['opp_units'] if p == 'ahead' else
+                   gg['units'] == gg['opp_units'] if p == 'even' else
+                   gg['units'] < gg['opp_units'])
+            x = gg[sel]['own_init'].dropna()
             row[p] = {'initiator_share': float(x.mean()) if len(x) else float('nan'), 'n': int(len(x))}
         parity[c] = row
 
@@ -687,6 +687,15 @@ def render_md(out):
         for c, v in row.items():
             L.append(f'- {mc} / {LABEL[c]}: n={v["n"]}, {f(v["events_per_game"])}/game, initiator {f(v["initiator_share"], True)}, '
                      f'trades {f(v["trade_share"], True)}, conv {f(v["conv_ratio"])}')
+    L += ['', '## Initiator share by unit parity at contact (the confound-killer)', '',
+          '| cohort | ahead mix | even | behind | init ahead | init even | init behind |', '|---|---|---|---|---|---|---|']
+    for c in COHORTS:
+        p = out['parity_at_contact'][c]
+        L.append('| %s | %s | %s | %s | %s (n=%d) | %s (n=%d) | %s (n=%d) |' % (
+            LABEL[c], f(p['mix']['ahead'], True), f(p['mix']['even'], True), f(p['mix']['behind'], True),
+            f(p['ahead']['initiator_share'], True), p['ahead']['n'],
+            f(p['even']['initiator_share'], True), p['even']['n'],
+            f(p['behind']['initiator_share'], True), p['behind']['n']))
     L += ['', '## The S-3 comparisons', '']
     for name, row in out['s3_comparisons'].items():
         a, b = name.split('_minus_')
@@ -705,9 +714,57 @@ def render_md(out):
             elif isinstance(v, dict):
                 L.append('| %s | %s | — | %s | — | %s |' % (k, f(v['a']), f(v['b']), f(v['a'] - v['b']) if v['a'] == v['a'] and v['b'] == v['b'] else '—'))
         L.append('')
-    L += ['## Reading', '']
-    L += ['(written at the end of the run — see the JSON for every number behind these lines.)']
-    L += ['']
+    L += ['## Reading', '',
+          '**S-3 verdict: a pricing rule, not a protocol.** The top ten fight at the band\'s rate with the band\'s '
+          'visible coordination; what they price differently is *when* to trade and what they do in the ten rounds after.', '']
+    L += [
+        '1. Everyone fights the same amount: 7.6–9.4 group fights per side-game in every cohort (top 10: 8.96, band: '
+        '8.58, team 7: 7.55) plus ~8.6 one-on-ones. h2h volume is a field-wide constant, as the C1-C death ledger says.',
+        '2. The top ten\'s pooled initiator share is +3.7pp over the band (53.6% vs 49.9%, CIs separated) — but the '
+        'parity decomposition removes the behavioural read: at matched unit parity they initiate at 50.3% (even) and '
+        '50.2% (behind) vs the band\'s 50.9% / 45.0%. They are simply **ahead at contact more often** (53.6% of their '
+        'fights vs the band\'s 44.8%) — the same behaviour at a better economy.',
+        '3. Convergence is identical: pre-contact heads-toward-centre ratio 0.29 vs 0.27; ≥2 convergers in 83.6% vs '
+        '80.6% of fights; synced group entries ~23% for both; pre-fight sonar 2.7 vs 2.5 rays per head. There is no '
+        'observable group-coordination signature in the top ten.',
+        '4. What separates them is pricing and conversion: they trade while ahead in units 55.1% of the time vs the '
+        'band\'s 44.2%; their kill balance is +3.5pp net (14.4% kill-for vs 10.9% kill-against; the band is −0.4pp); '
+        'and the next-10 material swing after a fight is +1.08 pearls for them vs −0.81 for the band.',
+        '5. Their engagement is selective by geometry: the initiator edge appears at fights within 6 cells of a bed '
+        '(53.6–54.0% vs band 49.8–50.1%) and disappears far from beds (bed>6: they initiate 38.5% vs the band\'s 54.8% '
+        '— they refuse fights that buy nothing) and in tight corridors (50.2 vs 50.7).',
+        '6. Fight outcomes do not decide band or ranks-11–30 games (win rate flat at 47–57% across net-kill buckets) '
+        'but do move the top ten (+8.7pp from fights-won to fights-lost, 66.8% → 58.1%); their best bucket is games '
+        'with **no group fights at all** (70.9%, n=79). Fighting is something they survive, not something they win by.',
+        '7. Era: 37% of top-10 fights happen before r100 (46.5% of them trades — the opening bloodbath is field-wide); '
+        'the initiator edge grows late (57.5% vs the band\'s 50.5%), again the pattern of engaging with a lead.',
+        '8. Team 7 minus band: initiation is NOT our gap (48.3% vs 49.9%; 1v1 47.1% vs 50.8%). Our gaps are '
+        'reinforcement and cost: convergence 0.18 vs 0.27 (0.12 vs 0.22 on compact maps), and fights twice as bloody '
+        '— 11.6 own deaths and 32.9 length lost per fight vs the band\'s 6.8 / 18.9. On compact maps we initiate only '
+        '36.8% of group fights (n=196 events): we take contacts, we do not make them.',
+        '9. The 2v1 class is rare everywhere (~0.3 per side-game): gangs do not roam looking for singles; groups meet '
+        'head-on. The 1v1 initiator share is ~50% for every cohort — no skill signal in symmetric duels.',
+        '10. A fight flips the eater of about a third of the nearest beds in every cohort (~31–35%) — fights contest '
+        'beds, but nobody converts location differentially; the *pricing* is the skill, not the venue.',
+    ]
+    L += ['', '## Caveats', '']
+    L += [c for c in [
+        'Distances are wrap-aware Manhattan; portals are not followed (a portal can only hide a contact, never invent '
+        'one; identical bias for all cohorts). Adjacency uses post-move positions (snapshot r+1 for survivors, the '
+        'death cell for heads that died that round) — start-of-round snapshots alone miss every mid-round collision.',
+        'Deaths are priced to event participants within last-contact+5 rounds; overlapping events can each claim a '
+        'shared death (pooled participant deaths ≈ 60% of all deaths on a 30-game cross-check).',
+        'Team 7 has 114 ranked side-games (861 group events); its cells carry ±3–10pp CIs and the parity split is '
+        'directional only (n=9–43 per cell).',
+        'Bed cells are observed from bed-origin spawn events (live-true, but a bed that never spawned in a game is '
+        'unseen; the local map files disagree with live beds on four maps per C1-E).',
+        'Cohorts pool team versions (no submission ids since 28 Sep, D-023); rank comes from the ladder snapshot '
+        'nearest each game start. ~50% of games sit in autoscrim windows; C1-E found in/out medians nearly identical '
+        '— pooled here too. 9 of 10,340 games produced zero contact events and stay in the denominators.',
+        'Event linking is greedy on shared participants; simultaneous clusters that share heads merge into one event.',
+        'No map-identity conclusions (out-of-sample rule): buckets are local geometry; the map-class table is '
+        'descriptive only.',
+    ]]
     return '\n'.join(L) + '\n'
 
 

@@ -77,6 +77,23 @@ class DaemonTest(unittest.TestCase):
         self.assertTrue(state.get('cutover_paged'))
         self.assertEqual(state['mode'], 'shadow')
 
+    def test_mode_request_sets_hub_toml_and_restarts(self):
+        ctl = self.repo / 'hub-state' / 'control'
+        ctl.joinpath('mode.json').write_text(json.dumps(dict(mode='shadow', by='director', note='teammates own uploads')))
+        state = {'mode': 'live', 'configured': 'auto'}
+        actuator.mode_check(self.root, self.cfg, state, self.log)
+        done = json.loads((ctl / 'mode.done.json').read_text())
+        self.assertEqual(done['mode'], 'shadow')
+        self.assertEqual(state['restart'], 'set_mode shadow')
+        self.assertFalse((ctl / 'mode.json').exists())
+        self.assertEqual(load_config(self.root)['executor']['mode'], 'shadow')
+        ctl.joinpath('mode.json').write_text(json.dumps(dict(mode='bogus')))
+        state = {'mode': 'live', 'configured': 'shadow'}
+        actuator.mode_check(self.root, self.cfg, state, self.log)
+        self.assertIn('error', json.loads((ctl / 'mode.done.json').read_text()))
+        self.assertFalse(state.get('restart'))
+        self.assertEqual(load_config(self.root)['executor']['mode'], 'shadow')
+
     def test_redeploy_rejects_hash_mismatch_and_accepts_after_gate(self):
         ctl = self.repo / 'hub-state' / 'control'
         (self.repo / 'tools' / 'hub').mkdir(parents=True)

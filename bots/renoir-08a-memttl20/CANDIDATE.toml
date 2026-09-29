@@ -1,0 +1,12 @@
+name = "renoir-08a-memttl20"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "remembered-pearl trust 40->20 rounds"
+expected_change = "fewer wasted trips to eaten pearls; pearls/100dt up"
+hypothesis = ""
+params = ["memory_ttl=20"]
+status = "candidate (not registered)"
+fingerprint = "44a438fd791bf3e3a5c9325f1b70f15fead088547d1344c205f74ac70ea70992"

@@ -1,0 +1,12 @@
+name = "renoir-01c-bedwait16"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "bed anticipation sweep point 16"
+expected_change = "as 01a"
+hypothesis = ""
+params = ["bed_wait=16.0"]
+status = "candidate (not registered)"
+fingerprint = "51a25f8d705ea60dfcb0c2ec7e0f432370f8948508f81c9a45b76a12692ca56d"

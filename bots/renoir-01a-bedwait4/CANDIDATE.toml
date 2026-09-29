@@ -1,0 +1,12 @@
+name = "renoir-01a-bedwait4"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "bed anticipation (S-6 guard propensity): value beds that ripen up to bed_wait rounds after arrival (Tyr override had 0)"
+expected_change = "bed_capture_share up, pearls@100|map and @250 up; sweep 4/8/16"
+hypothesis = ""
+params = ["bed_wait=4.0"]
+status = "candidate (not registered)"
+fingerprint = "d24d4b4c5b0d5edd0da9049fb5ae800bcffb4024833358c7e019a97fb958d29e"

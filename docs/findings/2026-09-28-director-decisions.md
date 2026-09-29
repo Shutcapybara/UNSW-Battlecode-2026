@@ -498,3 +498,39 @@ splits per 100 rounds). The delivered plumbing (`pair_mem`, `exit_known(pair)`, 
 enclosure probe, corpse gate) is all `params.hpp` switches. **Consequence:** this is the strongest evidence yet for
 D-029.4 — the leaks are in the Tyr/yuna lineage code and must be fixed there. The F-1/F-2 switches are re-tested on
 Ares V06 at its real transit volume (49/game live), where C1-D's numbers say the gates pay.
+
+**D-030 — C2-0 read: S-3 (leader-coordinated fights) is dropped; fights enter the programme as a cost, not a
+protocol (29 Sep 12:55 UTC).** GLM 5.3's corpus study (`docs/analysis/C2-fight-anatomy.md`, 182,788 contact events
+over 10,331 ranked games, `claude/c2-0-status.md`) finds no movement-observable coordination signature in the top
+ten: fight rate (8.96 vs 8.58 group fights per side-game), pre-contact convergence (0.29 vs 0.27), synced entries
+(~23 % both) and pre-fight sonar (2.7 vs 2.5 rays/head) all match the 55–85 band. The pooled +3.7 pp initiator edge
+is composition: the top ten arrive ahead in units at 53.6 % of contacts vs 44.8 %, and at matched parity initiate at
+the band's rate. Director's reading beyond GLM's: the "trade while ahead" separation (55.1 % vs 44.2 %) is also
+mostly composition (the ahead-at-contact mix differs by 8.8 pp), and the top ten initiate *more* than the band
+when behind (50.2 % vs 45.0 %), so "never trade when behind" is not supported; what survives as a behavioural
+signal is the refusal of fights far from beds (initiate 38.5 % vs 54.8 % at bed distance >6, n=562) and the
+post-fight material swing (+1.08 vs −0.81 pearls over the next ten rounds). Fights do not decide non-top-ten
+games (win rate flat across net-kill buckets in the band and ranks 11–30). Team 7's gaps are not initiation
+(48.3 % vs 49.9 %) but reinforcement (convergence 0.18 vs 0.27; 0.12 on compact maps) and cost: 11.6 own deaths and
+32.9 length lost per fight against the band's 6.8 / 18.9 — the same trapped/newborn/crowd leak picture as C1-C.
+**Consequences:** (1) S-3 as a messaging protocol is dropped; nothing protocol-shaped is built without a
+payload-decoding study of teams that do send fight direction. (2) The fight cost lands on R-3 (leaks on Ares),
+which is where twice-as-bloody fights are actually fixed. (3) Two cheap local rules go to the R-2 open lanes as
+candidate mechanisms with their expected sign stated: refuse to initiate contact when the nearest observed bed is
+>6 cells (expected: kill-against and own deaths per fight down, economy flat), and converge-or-refuse (do not
+enter a group contact without a second own head within the window; expected: length lost per fight down).
+GLM's note that these would go "on the C1-A chassis" is overridden by D-029: everything is on Ares. (4) The
+parity-at-contact decomposition is the method to keep — every cohort comparison in this programme should be
+checked for composition before it is read as behaviour.
+
+**D-031 — executor to shadow: no automated uploads, game requests or activations while the teammates own the
+submission interface (29 Sep 12:50 UTC, lead's instruction).** The hub executor had been live since the 28 Sep
+cutover (uploads with the `-ai` suffix, unranked A/B requests, automatic promotion after confirmation). The lead's
+teammates are handling the submission system by hand, so the executor now runs in `shadow`: it still harvests,
+keeps the corpus, registers candidates, runs the git keeper and logs the plans it would have dispatched, but posts
+nothing. Mechanism: a new control, `hub-state/control/mode.json` ({"mode": "off|shadow|auto|live", "by", "note"}),
+which writes `[executor] mode` into `HUB/hub.toml` and restarts the daemon (`actuator.mode_check`, gate test
+`test_mode_request_sets_hub_toml_and_restarts`; app `c52433c10-20260929T124718Z`). Registered candidates
+(`ares-v05`, `ares-v06`, `ouroboros-s02-portal`) stay queued; nothing is uploaded until the mode is set back to
+`live` by the same control, which is the switch to flip when systematic live tests resume. Local panels
+(BENCHMARKS gate) are the only gate in the meantime.

@@ -1,0 +1,12 @@
+name = "renoir-12b-minarea12"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "trap check min room 5->12"
+expected_change = "as 12a, stronger"
+hypothesis = ""
+params = ["min_area=12"]
+status = "candidate (not registered)"
+fingerprint = "0b029069fa5de0ef494c7c768b92b77647c28fa5d321d5d64d82e7311fe1ee03"

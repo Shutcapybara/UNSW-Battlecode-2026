@@ -1,0 +1,12 @@
+name = "renoir-06b-owndisc04"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "target exclusivity weaker (x0.4)"
+expected_change = "sweep point; sign unknown"
+hypothesis = ""
+params = ["own_target_discount=0.4"]
+status = "candidate (not registered)"
+fingerprint = "4340c2e0acc563c4ba219ea21b8bc9b7d5f019d450e391931a2a1ca46d17a5b7"

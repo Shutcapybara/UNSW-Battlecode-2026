@@ -1,0 +1,12 @@
+name = "renoir-07a-unseen3"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "exploration value of never-seen cells 5->3"
+expected_change = "pearls@50 down, pearls@100 up if known food is underexploited"
+hypothesis = ""
+params = ["unseen_value=3.0"]
+status = "candidate (not registered)"
+fingerprint = "c72badb7406678c3b573c395e13ac95b3da4008146efc2e48736c602a31f32e3"

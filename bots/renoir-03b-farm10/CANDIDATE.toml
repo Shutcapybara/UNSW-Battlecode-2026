@@ -1,0 +1,12 @@
+name = "renoir-03b-farm10"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "pocket farming off (full trap penalty)"
+expected_change = "as 03a"
+hypothesis = ""
+params = ["trap_farm_factor=1.0"]
+status = "candidate (not registered)"
+fingerprint = "141996a078c179cb1c8f1b19c41eec98083d348d93037404b2279c3a6a1a6d29"

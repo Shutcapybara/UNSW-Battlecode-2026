@@ -1,0 +1,12 @@
+name = "renoir-09a-crowd03"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "ally-head crowding penalty 0.6->0.3"
+expected_change = "sign unknown"
+hypothesis = ""
+params = ["crowd_weight=0.3"]
+status = "candidate (not registered)"
+fingerprint = "b781f48545444a8950c3c0a0abec1da6e6c85c0e077d220057d139794be838a2"

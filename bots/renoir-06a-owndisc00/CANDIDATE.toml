@@ -1,0 +1,12 @@
+name = "renoir-06a-owndisc00"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "target exclusivity: a target an ally head is nearer to is worth 0 (was x0.15)"
+expected_change = "pearls@100 up via less duplicated travel; units flat"
+hypothesis = ""
+params = ["own_target_discount=0.0"]
+status = "candidate (not registered)"
+fingerprint = "fc7ba953fec1a6df717e8b502a3991e4e28e8a3e28d91dac48d4b576f3654a49"

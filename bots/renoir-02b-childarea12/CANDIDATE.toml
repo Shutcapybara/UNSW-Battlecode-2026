@@ -1,0 +1,12 @@
+name = "renoir-02b-childarea12"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "split viability sweep point 12"
+expected_change = "as 02a"
+hypothesis = ""
+params = ["child_area=12"]
+status = "candidate (not registered)"
+fingerprint = "5ccf32f735c5559e650249e02c8d5e8f0ed287c46e45467898613951813e1450"

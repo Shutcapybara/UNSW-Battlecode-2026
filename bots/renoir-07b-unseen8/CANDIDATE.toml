@@ -1,0 +1,12 @@
+name = "renoir-07b-unseen8"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "exploration value 5->8"
+expected_change = "pearls@50 up on sparse-start maps; seen_share up"
+hypothesis = ""
+params = ["unseen_value=8.0"]
+status = "candidate (not registered)"
+fingerprint = "ff6611fce04ac24e68e5d071972b9ad5e94bdc95190f6e48069b6986d3836ce4"

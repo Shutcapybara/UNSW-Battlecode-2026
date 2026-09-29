@@ -1,0 +1,12 @@
+name = "renoir-05a-splitval6"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "split propensity down (split_value 8->6)"
+expected_change = "length@100 up, births down"
+hypothesis = ""
+params = ["split_value=6.0"]
+status = "candidate (not registered)"
+fingerprint = "19a27df4f3b4510291a9c3df3d0feeaceb59bbdc09d42ee3f909ad33c00de48d"

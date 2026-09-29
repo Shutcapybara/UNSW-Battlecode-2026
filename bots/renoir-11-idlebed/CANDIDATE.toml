@@ -1,0 +1,12 @@
+name = "renoir-11-idlebed"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "idle bed anticipation: when a dragon"s best target is only exploration (unseen/dive) or none, it may instead head for a known bed that ripens within idle_bed_wait=16 rounds after arrival (value bed_value*(1-slack/16), same discounts)"
+expected_change = "pearls@50/@100|map up on sparse-start maps (QoS/Trauma signal in 01c) without the dense-map loss of 01a-c; econ~ >= +0.05"
+hypothesis = ""
+params = []
+status = "candidate (not registered)"
+fingerprint = "9f7e4c5f1be7617b884b772e7b347339cc9e2fc715ebbef1b85710ab02ed388c"
