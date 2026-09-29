@@ -1,0 +1,27 @@
+name = "ra-07-monoco-crowd-spread"
+lineage = "monoco"
+author = "codex/ra"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Stronger ally-density discounting will reduce nearby friendly head-to-head deaths and spread pearl search enough to improve retained material and economy."
+mechanism = "When enabled, raise the existing smoothed ally-density weight from 0.10 to 0.50; switch-off restores the Ares V06 value."
+expected_change = "Raise the mean of the four map-normalized pearl checkpoints by at least 0.05 and reduce death_h2h_ally_per1k by at least 10%; r100 dragons and length must not fall."
+priority = 205
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/hub/prompts/2026-09-29-R-index.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-30-cx-c01-eff.md",
+    "docs/findings/2026-09-30-cx-f01-leaks.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Ares V06, atlas off: default-on switch for stronger ally-density cost in target valuation; switch-off restores parent behavior."
