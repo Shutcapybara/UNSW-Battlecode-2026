@@ -1,0 +1,27 @@
+name = "ares-v12-no-underroom-farm-credit"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v11-undersized-room-penalty"
+hypothesis = "Removing the farm discount whenever reachable room falls short of the policy room requirement will reduce trapped/mill deaths without materially reducing pearl rate or r100 retention."
+mechanism = "Keep V11 full-body room probing and V09 route selection; do not reduce the existing enclosure penalty for any food-farming candidate whose reachable room is below the required room."
+expected_change = "Lower the exact enclosed-death rate against V09 across all ten active maps while holding pearls, r100 units/length, W/L, and sandbox CPU within the existing guardrails."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+    "bots/ares-v09-deeper-bounded-search/README.md",
+    "bots/ares-v11-undersized-room-penalty/README.md",
+    "bots/robert-v01-deeper-bounded-search/README.md",
+]
+summary = "Ares V11 child that withholds the farm discount whenever the time-aware room probe falls short of the required room. All-10-map short screen pending."

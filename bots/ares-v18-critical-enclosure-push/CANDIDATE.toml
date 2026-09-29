@@ -1,0 +1,25 @@
+name = "ares-v18-critical-enclosure-push"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v16-critical-enclosure-score"
+hypothesis = "Matching the reach reward to the base route-progress scale will help a dragon escape the <=8-cell highest-risk state, while the narrow gate protects ordinary farming and growth."
+mechanism = "Keep V16's current reach <=8 activation gate and five-step post-move reach delta. Change only the score weight from 0.35 to 1.2, equal to the existing per-step goal progress weight."
+expected_change = "Lower reach<=8 death hazard and pooled death_rate_enclosed_per1k than V09 on all 10 active maps, without V17's broad r100 retention loss or worse W/L; no sandbox CPU faults."
+priority = 213
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "bots/ares-v16-critical-enclosure-score/README.md",
+    "bots/ares-v17-enclosed-only-score/README.md",
+]
+summary = "All-10-map V09 screen: 7-13 W/L; pooled enclosure deaths 87.35 vs 82.99 per 1k and critical <=8 hazard 694.69 vs 653.24. Rejected; stronger narrow-gate score worsened both."

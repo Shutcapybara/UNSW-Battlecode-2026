@@ -1,0 +1,92 @@
+// Ares V06 — C++ implementation on Anna A02 protocol-3 runtime scaffold.
+//
+// Turn loop: helper parse -> World::sense (memory) -> Policy::decide -> reply.
+// The official helper.hpp is untouched; everything else lives in world.hpp,
+// nav.hpp, policy.hpp and params.hpp.
+#include <cstdio>
+#include <iostream>
+
+#include "helper.hpp"
+#include "nav.hpp"
+#include "params.hpp"
+#include "policy.hpp"
+#include "world.hpp"
+
+// Metering hooks (tools/cx/meter.sh builds copies with these set):
+// 1 = helper parse only, 2 = parse + World::sense, 3 = full turn + 10 extra
+// whole-map BFS (flood-fill cost = (3 - 0) / 10).
+#ifndef ARES_MEASURE
+#define ARES_MEASURE 0
+#endif
+
+int main() {
+    auto [ct, game] = unswbc::init();
+    ares::World w;
+    ares::Policy pol;
+    w.init(ct, game);
+
+    while (unswbc::update(ct, game)) {
+        ares::Decision dec;
+        bool ok = true;
+        if (ARES_MEASURE == 1) {
+            std::cout << "MOVE " << ct.get_dir().value << "\n";
+            unswbc::end_turn();
+            continue;
+        }
+        try {
+            w.sense(ct, game);
+            if (ARES_MEASURE == 2) {
+                std::cout << "MOVE " << ct.get_dir().value << "\n";
+                unswbc::end_turn();
+                continue;
+            }
+            dec = pol.decide(w);
+            pol.prepare_radio_for_decision(w, dec);
+            if (ARES_MEASURE == 3) {
+                static ares::Grid g;
+                static std::vector<uint16_t> m;
+                ares::build_block_mask(w, m);
+                for (int i = 0; i < 10; i++) ares::dist(w, w.head, m, g);
+            }
+        } catch (...) {
+            ok = false;
+        }
+        if (!ok) {
+            // Match Tyr main.fallback(): first direction whose exact one-step
+            // simulation is OK, otherwise keep the current facing.
+            int fallback_dir = ares::dir_index(ct.get_dir());
+            for (int d = 0; d < 4; d++) {
+                if (pol.simulate(w, {d}).status == ares::Policy::SimStatus::OK) {
+                    fallback_dir = d;
+                    break;
+                }
+            }
+            std::cout << "MOVE " << ares::dir_char(fallback_dir) << "\nLOG ares_fallback\n";
+            unswbc::end_turn();
+            continue;
+        }
+        if (dec.act == ares::Act::SPLIT) {
+            ct.do_split(dec.split);
+            // activation markers (one short LOG line, ~0.05 M points)
+            std::cout << (dec.why == 't' ? "LOG ACT:tsplit\n" : "LOG ACT:split\n");
+        } else {
+            std::cout << "MOVE ";
+            for (int d : dec.dirs) std::cout << ares::dir_char(d);
+            std::cout << "\n";
+            w.commit_move(dec.dirs);
+        }
+        if (w.atlas_matched_this_turn) std::cout << "LOG ACT:atla\n";
+#ifdef ARES_DEBUG
+        fprintf(stderr, "C r%d act=%c why=%c tgt=%d head=%d len=%d off=%d inf=%d\n", w.rnd,
+                dec.act == ares::Act::SPLIT ? 'S' : ares::dir_char(dec.dirs.empty() ? 0 : dec.dirs[0]),
+                dec.why, dec.target, w.head, w.len);
+#endif
+        std::cout << "PROTOCOL " << unswbc::Constants::PROTOCOL_MAJOR << "\n";
+        if (ares::Params::indicator) {
+            std::cout << "INDICATOR " << dec.why << " t" << dec.target << "\n";
+        }
+        pol.send_radio(ct);
+        std::cout << "ENDTURN\n" << std::flush;
+    }
+    return 0;
+}

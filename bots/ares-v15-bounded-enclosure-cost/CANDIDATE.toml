@@ -1,0 +1,25 @@
+name = "ares-v15-bounded-enclosure-cost"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v14-enclosed-only-escape"
+hypothesis = "A post-move probe matching the benchmark's five-step, 15-cell enclosure rule will reduce deaths while dragons are trapped without losing the pearl economy."
+mechanism = "Measure five-step reach for each post-move candidate with the simulated body and visible other bodies blocked. Apply a capped score adjustment proportional to the change in reach when currently enclosed or when a move would enter an enclosed state; preserve normal route ranking otherwise."
+expected_change = "Lower death_rate_enclosed_per1k on the all-10-map V09 screen while keeping the score close to V09 for pearls, r100 units/length, and W/L, with no sandbox CPU faults."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+    "bots/ares-v14-enclosed-only-escape/README.md",
+]
+summary = "All-10-map V09 screen: 6-14 W/L; pooled death_rate_enclosed_per1k improved 82.95 to 71.00, but mean r100 pearls fell 134.0 to 74.4. Rejected due to economy and W/L loss."

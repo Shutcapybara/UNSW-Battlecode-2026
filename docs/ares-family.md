@@ -134,6 +134,25 @@ with p99 max-of-games 7.4M points and an 8.6M maximum. It remains experimental,
 not admitted to the frontier, and not submitted; no seed-2 confirmation or
 further Ares iteration was run.
 
+## V07 experiment — isolated Chaewon components
+
+The V07 experiment tested two Chaewon-derived components in separate children of V06: atlas-only activated the unique public-map matcher, while [HOLD-only](../bots/ares-v07-hold-only/) sent a post-move head report through a known distant portal. Each variant had its own activation marker and neither included the other component. The atlas-only snapshot is now named [Ares V08](../bots/ares-v08-atlas-only/); its source and measured behavior are unchanged by the rename.
+
+On identical seed-1 panels of 160 fixtures, atlas-only (now V08) scored 119–41–0 and raised the normalized pearl mean by 0.188, but lost r100 retention, breached three tier-2 death-rate guardrails, and reduced expected score. HOLD-only scored 114–46–0; ally head-on deaths fell 13.2%, but the pearl mean rose only 0.005, r100 units fell, and expected score dropped 5 percentage points. Both measured variants fail [`BENCHMARKS.md`](analysis/BENCHMARKS.md) and remain experimental. Four dense-map sandbox fixtures per variant had no timeouts/crashes. Full metrics and artifacts are in the [V07 finding](findings/2026-09-30-ares-v07-chae-won-components.md).
+
+## V08 — atlas-only
+
+Ares V08 is the unchanged atlas-only V07 snapshot, renamed after its isolated comparison. Its existing 160-game seed-1 result is 119–41–0; it fails the documented acceptance gate and remains experimental, not admitted to the frontier or submitted. No new benchmark was run for the rename. See the [V07 finding](findings/2026-09-30-ares-v07-chae-won-components.md) for the full measurements and artifact paths.
+
+## V09 — deeper bounded search
+
+Ares V09 is a separate child of V06 that applies Robert V01's deeper bounded
+search parameters: first-pass target depth 20, target caps of 256/96/80,
+frontier depth 6, and room-flood caps of 32/48. V06's late-round and sparse
+caps and all other policy behavior are retained. The new snapshot is
+[here](../bots/ares-v09-deeper-bounded-search/). It has not been benchmarked;
+score and CPU/TLE behavior remain unmeasured.
+
 ## Direct matchup screens: Tyr V12
 
 ### Ares V01

@@ -1,0 +1,25 @@
+name = "ares-v14-enclosed-only-escape"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v13-enclosure-reach-priority"
+hypothesis = "A post-move probe matching the benchmark's five-step, 15-cell enclosure rule will reduce deaths while dragons are trapped without losing the pearl economy."
+mechanism = "Measure current five-step reach with the simulated body and visible other bodies blocked. Only when the current dragon is enclosed at 15 cells or less, prefer legal post-move candidates that clear the threshold; if none does, choose the move with the largest reachable area."
+expected_change = "Lower death_rate_enclosed_per1k on the all-10-map V09 screen while retaining r100 pearls, units, and length and staying below the sandbox CPU limit."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+    "bots/ares-v13-enclosure-reach-priority/README.md",
+]
+summary = "Ares V13 child that activates benchmark-aligned escape priority only when the current dragon is enclosed. Short all-active-map screen pending."

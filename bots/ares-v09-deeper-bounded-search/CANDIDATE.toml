@@ -1,0 +1,25 @@
+name = "ares-v09-deeper-bounded-search"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Deeper bounded target and room searches may improve resource acquisition over Ares V06 while the inherited late and sparse guards contain runtime cost."
+mechanism = "Apply Robert V01's deeper search profile to Ares V06: increase first-pass depth, target node caps, frontier depth, and room-flood caps while preserving all other V06 policy behavior."
+expected_change = "Improve the parent-relative benchmark score without exceeding the documented CPU/TLE budget or violating the BENCHMARKS.md acceptance gates."
+priority = 210
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+    "bots/robert-v01-deeper-bounded-search/README.md",
+]
+summary = "Ares V06-derived snapshot using Robert V01's deeper target and room search parameters. No benchmark or CPU/TLE result has been recorded for V09."

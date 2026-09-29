@@ -1,0 +1,7 @@
+# Ares V19 — critical enclosure split
+
+V19 starts from Ares V09 and adds a five-step, body-blocked reach probe to the movement evaluator. If current reach is <=8 and the highest-scoring legal move still leaves reach <=8, V19 uses V09's existing tail escape split when the split is available. Otherwise it preserves the original decision.
+
+The all-10-map seed-1 replay screens measured the largest hazard at reach <=8: about 650-675 deaths per 1k sampled exposures, roughly 6-7x the 9-15-cell band. Soft reach-score versions either failed to change this critical hazard or reduced deaths at a substantial r100 retention and W/L cost. Ares V09's emergency escape split runs only when every move is invalid; V19 tests it when every scored legal move remains in the critical enclosed state.
+
+Completed development screen: all 10 active maps, both seats, seed 1 against V09; 20/20 replays decoded without errors. V19 scored 11-9. Pooled `death_rate_enclosed_per1k` was 80.94 vs V09's 86.01; trapped length lost in rounds 0-99 was 49.93 vs 55.13 per 1k dragon-turns. The <=8 reach hazard fell from 679.58 to 614.98 deaths per 1k sampled exposures. Mean r100 pearls were 115.3 vs 119.2, units 19.0 vs 18.8, total length 46.1 vs 45.7. The conditional escape split emitted 1,442 `ACT:tsplit` markers; maximum sandbox points were 8.78M. By map, trapped length loss fell on Slithery Fight (103.9 to 82.8) but rose on Portals (65.0 to 75.8), so the team's 30% reduction gate was not met. No full validation was run.
