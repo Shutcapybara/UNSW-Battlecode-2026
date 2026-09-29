@@ -589,3 +589,9 @@ portal fixes drops to 0.2 with that stated as the shape of any revival. (4) Ever
 hygiene bought with caution costs economy one for one on this lineage; the economy levers that have appeared are
 state (Sciel-03a), search phase (Lune) and production (r3-03).
 
+**D-036 — the per-map line (30 Sep 00:50 UTC, lead's direction).** Diagnose per map, fix per structural signature,
+measure globally, with a transfer test against the unseen maps that share the signature. Adds a "local hold" verdict
+tier to D-032 for mechanisms whose gain transfers within a signature cluster while the pooled interval is not negative;
+those become structure-gated switches (gate = observable structure, never the map) and are tested as such. Issued as
+M-1 (GLM 5.3). All lanes report per-map deltas from now on so the map × mechanism table accumulates.
+
