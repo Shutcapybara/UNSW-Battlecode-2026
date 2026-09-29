@@ -1,0 +1,26 @@
+name = "r3-02-exit-known"
+lineage = "ares"
+author = "glm/r3"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Gating portal entry on a known-clear exit (fresh terrain, no remembered exit danger, transit survived recently, or an enemy-free last sonar fan) cuts near-portal deaths on Ares, whose transit volume is field-real (62.5 steps/game) unlike the C1-F chassis."
+mechanism = "Ares V06 + F-2 exit-known gate: a portal-entering step whose landing fails the clear test is skipped while a livable ungated option exists; the gate yields (pass 2) only when every alternative is certain death, avoiding the sakura portal-avoidance trap."
+expected_change = "Targeted row: near-portal deaths per 100 portal steps fall from 29.4 (V06 z1 seed 1) toward team 306's 12.5, with portal len/1k (6.3 pooled, 57.7 on Portals) down and pearls/100dt not down >10% on portal-heavy maps; BENCHMARKS gate on the rest."
+priority = 220
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-r3-ares-leaks.md",
+    "docs/findings/2026-09-30-cx-f01-leaks.md",
+    "docs/findings/2026-09-30-cx-c01-eff.md",
+    "docs/findings/2026-09-30-cx-d01-portals.md",
+]
+summary = "Pending: golden parity (all-off carrier 0/15178 turns), CPU probe, z1+gen seed-1 panels vs V06."

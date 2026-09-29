@@ -1,0 +1,26 @@
+name = "r3-03-escape-early"
+lineage = "ares"
+author = "glm/r3"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Ares V06 only escape-splits when every single step is dead (best_score < -900); firing the trapped split earlier - while the room flood is below 75% of need - frees dragons from enclosures before the mill costs length."
+mechanism = "Ares V06 + r3_escape_early: compute the room flood of the current body each decision; when cells < 0.75*need, the escape split (child keeps len-2, head at tail, >=1 legal child step - never gated by room size per C1-F) competes at -500 instead of only at all-dead."
+expected_change = "Targeted row: trapped len/1k falls from 36.1 pooled (101.5 Slithery, 75.7 Portals) toward the top-10's 18.5, with newborn len/1k not rising >10% and pearls/100dt flat; BENCHMARKS gate on the rest."
+priority = 220
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-r3-ares-leaks.md",
+    "docs/findings/2026-09-30-cx-f01-leaks.md",
+    "docs/findings/2026-09-30-cx-c01-eff.md",
+    "docs/findings/2026-09-30-cx-d01-portals.md",
+]
+summary = "Pending: golden parity (all-off carrier 0/15178 turns), CPU probe, z1+gen seed-1 panels vs V06."
