@@ -40,6 +40,10 @@ ten-day plan are cross-referenced. Evidence pointers are findings files, decisio
 | L20 | Single-parameter moves on V06 can pass the gate | 0.2 | a few +0.02 moves (threat, revisit) | `ra` 25 screened / 0 accepted | joint moves (R-5) or structural changes are the route; revives if a knob shows a consistent seat-independent +0.03 |
 | L21 | The +0.05 economy gate is the right shape for a search/retention gain | 0.5 | it protects against splitting-into-dust and hygiene-by-playing-small | V06 is the best evidence in the programme and failed it; its gain is retention, which the gate does not credit | R-1 per-phase decomposition; if retention gains convert to r150/r250 pearls, the gate is fine; if not, add a retention clause (decision, not lane-by-lane) |
 | L22 | Complex logic costs the early game (the C++ question as first posed) | 0.2 | — | C1-A: the cheap C++ policy loses 60/60 to yuna-v03; Ares V06 (more logic) is the best bot | revives if R-1 shows an early-game loss that is CPU-caused (it is not: 9 M of 100 M) |
+| L23 (T) | HOLD packet: a dragon whose move leaves it beside a known paired portal with a blind landing spends a sonar ray on its post-move cell; allies treat the landing as occupied for two rounds (Chaewon Y05 → Ares V07) | 0.3 | V07: ally head-on deaths −13.2 %, no tier-2 rate up >10 % | V07: econ +0.005 only, r100 units down, expected score −5 pts (fails the gate) | a cheaper trigger (only when an ally is within k of the pair) or stacking on a leak fix; revives if the head-on saving survives with economy flat |
+| L24 (T) | The trapped/enclosure hazard is concentrated at ≤8 reachable cells (five-step, body-blocked reach): ~650–675 deaths per 1k exposures, 6–7× the 9–15 band; hard open-room filters destroy the economy, soft reach scores do little, and the escape *split* at reach ≤8 is the first form that moves the hazard without a large cost (teammates' Ares V10–V19) | 0.5 | V19 vs V09: 11–9, enclosed deaths 80.9 vs 86.0/1k, ≤8-band hazard 680→615, trapped length lost r0–99 −9 %; reach-band histogram is a real measurement | all screens are 20 games vs one opponent (V09) on the pool — below BENCHMARKS resolution; V19 r100 pearls −3 %; V10/V13/V15 lost 6–14 with pearls halved | R-3 takes the reach-band measurement as its ledger row and V19 as a switch to re-test on the fixed panel; weight moves on a 160-game panel result |
+| L25 (T) | Robert V01/Ares V09 search profile (depth-1 pass 16→20, caps 256/96/80, frontier 6, flood 32/48) is a better fixed level than V06 | 0.5 (= L01) | same lever as L01 | unbenchmarked by the teammates; V09 is the base of V10–V19 without a measured parent delta | R-1's ladder brackets it (between L1 and L2); report it as a named point |
+| L26 (T) | Atlas-only on Ares (V08): +0.188 econ but own-body +25 %, ally-body +22 %, ally head-on +205 % | 0.1 (by rule) | the economy number is the largest single effect measured in the programme | fails the gate on hygiene; excluded by the OOS rule; note that the atlas *raised* deaths — memorised beds pull dragons into contested cells | rule; the hygiene result is worth keeping as evidence that bed pull without safety pricing is the mechanism L11 must avoid |
 
 ## How a lane uses this
 
@@ -49,8 +53,29 @@ two independent rejections on the right host are needed to reach dormancy. A hol
 not move the weight; it is queued for stacking. Every finding file ends with the rows it touched and the proposed
 new weight, and the director applies it here.
 
+## Teammates' work as a hypothesis source (lead, 29 Sep)
+
+Communication with the teammates' line (Track A: Ares, Robert, the Sprint build) is not guaranteed to be tight.
+So every time a pull brings a new wave of their work (new `bots/ares-*`, `bots/robert-*`, findings, or a keeper
+commit with their name on it), the director reads their READMEs, CANDIDATE files and findings, and for each
+version writes down: the hypothesis it embodies (what they believed would move which number), the evidence they
+recorded, the method's resolution (one-opponent 20-game screens are read as directional only), and what it
+implies for the R lanes. Each becomes a `(T)` row here with a weight set from *their* evidence at *its*
+resolution, and a question for them if the why is not in the text. This is done before any R task in the same
+area is issued or continued, so lanes build on their measurements rather than repeating them. Their trees are
+never edited; their bots are copied when used.
+
+Wave 1 (read 29 Sep 19:10 UTC, commits `35dd3dc4b`, `f87641e61` and the earlier V07–V09): L23–L26 above. Their
+series V10–V19 is the same problem as R-3 (trapped/enclosure leak on Ares); R-3 must start from their reach-band
+measurement and V19, not from the C1-F switches alone. Their screens are 20 games vs a single opponent on the
+pool; the R lanes' job on the same ideas is the 160-game fixed panel plus the generalisation panel. Questions
+for them: why V09's profile rather than a measured level; whether V19's escape split was tried at reach ≤15; and
+whether any of V10–V19 was run atlas-on (V08 shows the atlas changes the hazard picture).
+
 ## Log
 
 - 29 Sep 18:50 UTC — ledger created from H1–H11, S-1–S-7 and the C1/C2/`ra` results; L02 added (selective depth /
   clock-aware search, lead's note); L07 and L11 are the two rows whose old "rejected" reading was really
   "rejected on the wrong host or in the wrong form" and are kept live at 0.2 / 0.4 with explicit triggers.
+- 29 Sep 19:10 UTC — teammates' wave 1 read: L23–L26 added; teammate-source procedure added; R-3 pointed at
+  V10–V19 and the reach-band hazard.
