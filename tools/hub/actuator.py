@@ -6,6 +6,7 @@ Run: `python -m hub.actuator --serve` (deployed copy) or `python -m tools.hub.ac
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -373,9 +374,23 @@ def git_check(root, cfg, state, log):
     policy = dict(cfg['git'])
     if body.get('quiet_minutes') is not None:
         policy['quiet_minutes'] = int(body['quiet_minutes'])
+    merged_branches = []
     try:
+        # optional: merge local work branches (the C1 worktree branches, e.g. cx/f) into main before the ordinary pass.
+        # A conflict aborts that merge and is reported; nothing else is touched.
+        for branch in body.get('merge') or []:
+            if not re.match(r'^[A-Za-z0-9._/-]{1,80}$', str(branch)):
+                merged_branches.append(dict(branch=branch, error='bad branch name'))
+                continue
+            repo = cfg['paths']['repo']
+            res = subprocess.run(['git', '-C', repo, 'merge', '--no-ff', '--no-edit', '-m', f'Merge {branch} into main (director request)', str(branch)], capture_output=True, text=True, check=False, timeout=300)
+            if res.returncode:
+                subprocess.run(['git', '-C', repo, 'merge', '--abort'], capture_output=True, text=True, check=False, timeout=120)
+                merged_branches.append(dict(branch=branch, error=(res.stderr or res.stdout)[-400:]))
+            else:
+                merged_branches.append(dict(branch=branch, merged=True))
         report = git_sync(cfg['paths']['repo'], root, policy, actor=body.get('by') or 'hub/actuator/git-request')
-        out = dict(at=db.now_iso(), note=body.get('note'), quiet_minutes=policy['quiet_minutes'], report=report)
+        out = dict(at=db.now_iso(), note=body.get('note'), quiet_minutes=policy['quiet_minutes'], merged_branches=merged_branches, report=report)
     except Exception as exc:
         out = dict(at=db.now_iso(), note=body.get('note'), error=f'{type(exc).__name__}: {str(exc)[:300]}')
     (ctl / 'git.done.json').write_text(json.dumps(out, indent=1, default=str))

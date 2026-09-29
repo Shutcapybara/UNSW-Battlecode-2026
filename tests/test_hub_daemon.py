@@ -2,6 +2,7 @@
 Run: python -m unittest tests.test_hub_daemon
 """
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -202,6 +203,24 @@ class DaemonTest(unittest.TestCase):
         self.assertEqual(seen['policy']['quiet_minutes'], 0)
         self.assertEqual(seen['actor'], 'director')
         self.assertFalse((ctl / 'git.json').exists())
+
+    def test_git_request_merges_named_local_branches_first(self):
+        ctl = self.repo / 'hub-state' / 'control'
+        r = subprocess.run
+        env = dict(os.environ, GIT_AUTHOR_NAME='t', GIT_AUTHOR_EMAIL='t@t', GIT_COMMITTER_NAME='t', GIT_COMMITTER_EMAIL='t@t')
+        for cmd in (['git', 'init', '-q', '-b', 'main'], ['git', 'commit', '-q', '--allow-empty', '-m', 'root'], ['git', 'checkout', '-q', '-b', 'cx/f'],):
+            r(cmd, cwd=self.repo, env=env, check=True)
+        (self.repo / 'from_branch.md').write_text('x\n')
+        r(['git', 'add', 'from_branch.md'], cwd=self.repo, env=env, check=True)
+        r(['git', 'commit', '-q', '-m', 'branch work'], cwd=self.repo, env=env, check=True)
+        r(['git', 'checkout', '-q', 'main'], cwd=self.repo, env=env, check=True)
+        ctl.joinpath('git.json').write_text(json.dumps(dict(by='director', note='merge', quiet_minutes=0, merge=['cx/f', 'no/such'])))
+        with patch.object(actuator, 'git_sync', lambda repo, root, policy, actor='x', dry_run=False, now=None: dict(committed=[], skipped=[], merged=None, pushed=None, errors=[], attention=[])):
+            actuator.git_check(self.root, self.cfg, {}, self.log)
+        out = json.loads((ctl / 'git.done.json').read_text())
+        self.assertTrue((self.repo / 'from_branch.md').exists())
+        self.assertEqual(out['merged_branches'][0], dict(branch='cx/f', merged=True))
+        self.assertIn('error', out['merged_branches'][1])
 
     def test_set_mode_rewrites_or_appends_executor_section(self):
         set_mode(self.root, 'off')
