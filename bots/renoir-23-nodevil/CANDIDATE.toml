@@ -1,0 +1,12 @@
+name = "renoir-23-nodevil"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "ablation: turn off the three W==32&&H==16 terms (devil_center_bonus, devil_lane_bonus, ally_body_buffer) - measures how much pool edge is map-shape keyed"
+expected_change = "pool Devil econ and win down; gen unchanged (no 32x16 gen map)"
+hypothesis = ""
+params = []
+status = "candidate (not registered)"
+fingerprint = "055721777c94f3ae2426aa7370b3e8dfdb75e204f9e1164e47454f567f540ac9"

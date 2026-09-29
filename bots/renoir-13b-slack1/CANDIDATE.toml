@@ -1,0 +1,12 @@
+name = "renoir-13b-slack1"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "trap check: room needed = len+1 (was len+3); inverse of the 12a finding"
+expected_change = "econ~ up, enclosed deaths up"
+hypothesis = ""
+params = ["slack=1"]
+status = "candidate (not registered)"
+fingerprint = "8bbe3b80a8281d0e1c39c5e8a5e2d11f34efb4365c298d14935e171dd73be4fc"
