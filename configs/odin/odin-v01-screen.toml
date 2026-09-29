@@ -1,0 +1,30 @@
+bots = [
+  "../../bots/fenrir-v20-crowded-resource-revalue",
+  "../../bots/heimdall-v10-isolated-echo-lanes",
+  "../../bots/yuna-v03-core",
+  "../../bots/bifrost-v01-portal-memory",
+]
+
+maps = [
+  "../../maps/Colosseum.map",
+  "../../maps/arena.map",
+  "../../maps/autarky.map",
+  "../../maps/big_empty.map",
+  "../../maps/default.map",
+  "../../maps/default_small.map",
+  "../../maps/devil.map",
+  "../../maps/dilemma.map",
+  "../../maps/portals.map",
+  "../../maps/queen_of_spades.map",
+  "../../maps/schooltime.map",
+  "../../maps/stronghold.map",
+  "../../maps/trophy.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 300
+sandbox = false
+control_every = 10
+seed_policy = "fixture_hash_v1"

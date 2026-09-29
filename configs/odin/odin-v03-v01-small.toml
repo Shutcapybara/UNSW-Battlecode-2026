@@ -1,0 +1,18 @@
+bots = ["../../bots/odin-v01-synthesis"]
+
+maps = [
+  "../../maps/Colosseum.map",
+  "../../maps/default_small.map",
+  "../../maps/dilemma.map",
+  "../../maps/queen_of_spades.map",
+  "../../maps/schooltime.map",
+  "../../maps/trophy.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 300
+sandbox = false
+control_every = 10
+seed_policy = "random"

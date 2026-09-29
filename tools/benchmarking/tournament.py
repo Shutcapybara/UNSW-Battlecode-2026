@@ -44,7 +44,13 @@ def parse_result(log, returncode):
 
 def map_name(board):
     """Return a stable map ID relative to the shared maps directory."""
-    return board.relative_to(ROOT / 'maps').with_suffix('').as_posix()
+    try:
+        return board.relative_to(ROOT / 'maps').with_suffix('').as_posix()
+    except ValueError:
+        # compare_bot runs against frozen copies under experiment_data/.
+        # Preserve the stable map ID even when the copied path is outside
+        # the repository's maps directory.
+        return board.stem
 
 
 def atomic_write(path, text):

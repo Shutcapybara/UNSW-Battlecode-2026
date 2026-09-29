@@ -1,0 +1,10 @@
+# Replay extraction and CPU fallback
+numpy>=2.0
+pandas>=2.2
+scikit-learn>=1.6
+pycapnp>=2.0
+
+# Install the CUDA wheel matching the host driver. For the RTX 3060, use a
+# current cu12x wheel selected by the installed NVIDIA driver.
+torch>=2.5
+
