@@ -1,0 +1,22 @@
+name = "the-goat-v01-room-rescue"
+lineage = "THE GOAT"
+author = "codex/goat/2026-09-29"
+language = "c++"
+lineage_parent = "anna-a02-chassis"
+hypothesis = "Pre-empting a room-cramped dead-end entry with a certified two-half split reduces trapped/mill losses without sacrificing pearls by r100."
+mechanism = "When no known candidate move reaches the normal room threshold, use the existing split_has_room check and split 2 before entering the least-bad cramped move; retain all parent chassis behavior and never split unless both bodies have room."
+expected_change = "Trapped length lost down on Portals, Slithery Fight, and Schooltime exact pairs; pearls eaten by r100 flat or up; no illegal actions; sandbox max under 10 M. Falsifier: trapped loss moves without an economy gain, or the generalisation panel regresses."
+priority = 100
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:goat-room", 0, 500, 1],
+    ["ACT:split", 0, 100, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = ["docs/TEAM-SUMMARY-2026-09-29.md", "docs/findings/2026-09-29-cx-a01-chassis.md"]
+summary = "Rejected local arm. Four-map exact smoke versus anna-a02: length r100 better/same/worse 1/6/1, zero errors. Ten-map one-seed screen versus Fenrir V20: 1-19, zero errors; the cheap C++ chassis is not yet a competitive THE GOAT host."

@@ -42,9 +42,10 @@ def _one(job: dict) -> dict:
     from arena import run_game
     cand, opp, m, side, seed, sandbox = (job[k] for k in ("cand", "opp", "map", "side", "seed", "sandbox"))
     a, b = (cand, opp) if side == "A" else (opp, cand)
+    map_name = m if m.endswith(".map") else f"{m}.map"
     rep = job.get("replay_dir")
     rep = str(pathlib.Path(rep) / f"{m.replace('/', '_')}_{side}_s{seed}_{pathlib.Path(opp).name}.replay") if rep else None
-    r = run_game(str(REPO / "maps" / f"{m}.map"), a, b, seed, sandbox, replay_out=rep)
+    r = run_game(str(REPO / "maps" / map_name), a, b, seed, sandbox, replay_out=rep)
     r.pop("transcripts", None)
     us, them = ("A", "B") if side == "A" else ("B", "A")
     return {"map": m, "side": side, "seed": seed, "cand": cand, "opp": pathlib.Path(opp).name, "sandbox": sandbox,
