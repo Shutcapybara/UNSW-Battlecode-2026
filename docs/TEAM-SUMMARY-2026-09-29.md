@@ -30,6 +30,17 @@ Qualifiers **10 Oct** (eligible teams, top 10 advance, seed = rating rank after 
    r100; bodies tiny (75 % length ≤ 2); portal use is a by-product. `docs/analysis/C1-E-schooltime-spec.md`.
 7. **Prisoners Dilemma inverts**: the top ten win it with fewer, shorter dragons. No length race there.
 
+## 1b. The tournament maps are unseen — the rule that governs everything below
+
+The Sprint and Qualifier rounds are played on maps we have not seen. The public pool shows the organisers'
+preferences (sizes, kelp densities, portal counts, bed layouts), not their guarantees. So: **no decision in any bot
+may depend on map identity** — no map-name or atlas branches; anything map-dependent keys on structure the bot
+measures in play (tile count, kelp density seen, portals found, bed density and spawn rates observed). The C++
+chassis's map atlas is an optimisation with a hard off-switch, never a dependency; every candidate is measured with
+it off on the generalisation panel (`maps/var` transforms, `maps/new` synthetic suite) beside the live pool, and a
+candidate whose edge disappears off-pool is rejected. Full rule: `docs/hub/prompts/2026-09-29-C1-out-of-sample-rule.md`.
+This cuts the other way too: teams above us have tuned to the ten maps for weeks; part of their edge is memorised.
+
 ## 2. Hypotheses on the table (each with what would falsify it)
 
 | # | Hypothesis | Test | Falsified if |
@@ -37,8 +48,9 @@ Qualifiers **10 Oct** (eligible teams, top 10 advance, seed = rating rank after 
 | H1 | Compute headroom converts: a C++ bot with per-dragon routing out-paces the Python line on pearls/100dt and units r100 | C1-B three-arm ablation (yuna-v03 / cheap C++ policy / C++ router), exact pairs, then dev screen vs 545 | router − cheap < +2 units r100 with p > 0.2 |
 | H2 | The material gap closes by closing leaks, not by eating more | Each leak fix alone on the chassis, exact pairs; accept only if its statistic moves *and* pearls-by-r100 rises | a fix moves its statistic but not pearls (leak moved, not closed) |
 | H3 | Portal-exit knowledge (atlas + exit memory + probe) halves near-portal wall/self deaths without cutting transits | C1-D rules ablated on Portals/Default/Schooltime | deaths fall < 25 %, or pearls-by-r100 fall > 10 % on portal-heavy maps |
-| H4 | The Schooltime swarm flywheel is reproducible: split-at-4 + stay-home bed patrol reaches ≥ 40 units by r100 | chassis + router on Schooltime vs the corpus curve | < 30 units at r100 or trapped deaths above the band's |
+| H4 | The swarm flywheel (split-at-4, stay-home bed patrol) is reproducible and triggers on measured bed density, not on the map | chassis + router on Schooltime vs the corpus curve, then on `maps/new` maps with similar bed density | < 30 units at r100 on Schooltime, or the trigger fails to fire/misfires off-pool |
 | H5 | Dev team 545 (rank ~15 swarm bot, separate 60 games/h allowance) is a proxy for the field band | dev screen → field confirmation, both measured | two dev-screen passes fail field confirmation (one strike so far: yuna-v03) |
+| H7 | Every gain measured on the live pool survives with the atlas off on the generalisation panel | exact pairs on `maps/var` + `maps/new`, atlas off, for every candidate | edge on the pool, none on the panel |
 | H6 | Later: per-dragon spatial state (EW densities), action memory, and leader-coordinated fights pay in play once compute allows | phase C2, after C1 | prediction without play gain (as before) |
 
 ## 3. The pipeline (how a change becomes the live bot)
