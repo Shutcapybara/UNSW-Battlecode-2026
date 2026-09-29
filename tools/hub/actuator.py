@@ -383,7 +383,8 @@ def git_check(root, cfg, state, log):
                 merged_branches.append(dict(branch=branch, error='bad branch name'))
                 continue
             repo = cfg['paths']['repo']
-            res = subprocess.run(['git', '-C', repo, 'merge', '--no-ff', '--no-edit', '-m', f'Merge {branch} into main (director request)', str(branch)], capture_output=True, text=True, check=False, timeout=300)
+            opts = ['-X', body['strategy_option']] if body.get('strategy_option') in ('ours', 'theirs') else []   # conflict hunks only; non-conflicting hunks merge normally
+            res = subprocess.run(['git', '-C', repo, 'merge', '--no-ff', '--no-edit', *opts, '-m', f'Merge {branch} into main (director request)', str(branch)], capture_output=True, text=True, check=False, timeout=300)
             if res.returncode:
                 subprocess.run(['git', '-C', repo, 'merge', '--abort'], capture_output=True, text=True, check=False, timeout=120)
                 merged_branches.append(dict(branch=branch, error=(res.stderr or res.stdout)[-400:]))

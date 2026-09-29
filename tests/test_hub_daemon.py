@@ -208,6 +208,7 @@ class DaemonTest(unittest.TestCase):
         ctl = self.repo / 'hub-state' / 'control'
         r = subprocess.run
         env = dict(os.environ, GIT_AUTHOR_NAME='t', GIT_AUTHOR_EMAIL='t@t', GIT_COMMITTER_NAME='t', GIT_COMMITTER_EMAIL='t@t')
+        os.environ.update({k: env[k] for k in ('GIT_AUTHOR_NAME', 'GIT_AUTHOR_EMAIL', 'GIT_COMMITTER_NAME', 'GIT_COMMITTER_EMAIL')})   # the merge commit needs an identity on a bare VM too
         for cmd in (['git', 'init', '-q', '-b', 'main'], ['git', 'commit', '-q', '--allow-empty', '-m', 'root'], ['git', 'checkout', '-q', '-b', 'cx/f'],):
             r(cmd, cwd=self.repo, env=env, check=True)
         (self.repo / 'from_branch.md').write_text('x\n')
