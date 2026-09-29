@@ -1,0 +1,12 @@
+name = "renoir-25-crowdexplore"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "crowd-conditioned exploration: never-seen cells are worth explore_alone=4.0 when no ally head is within explore_crowd_r=3 (cheb) of our head, and explore_crowded=6.0 when one is (was a flat 5.0). Exploit known food when alone, disperse when crowded."
+expected_change = "econ~ +0.05 as in 07c (flat 4.0: +0.061) without its h2h_ally +22 pct and units@100 -0.06"
+hypothesis = ""
+params = []
+status = "candidate (not registered)"
+fingerprint = "5b8248451ce20314335e09da44135efd74636a047be708aee6025a32367987cc"

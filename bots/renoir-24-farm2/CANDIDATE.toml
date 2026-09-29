@@ -1,0 +1,12 @@
+name = "renoir-24-farm2"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "selective pocket farming: the trap-penalty farm discount applies only when the pocket holds >= farm_min_pearls=2 visible pearls (was: any count satisfying body+pearls>=4)"
+expected_change = "enclosed deaths down without the 03b/12a economy loss (keeps real farms, drops speculative pockets); econ~ flat-or-up"
+hypothesis = ""
+params = []
+status = "candidate (not registered)"
+fingerprint = "63cdcaf510bb8656b2046f7c30a69cc0982fb20a2aa712db0ab4d0a1b1a43549"
