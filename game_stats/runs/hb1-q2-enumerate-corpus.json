@@ -1,0 +1,182 @@
+{
+ "set": "corpus",
+ "games": 817,
+ "state_x_action": {
+  "ally": {
+   "none+elig": 17,
+   "none-elig": 21753,
+   "ord+elig": 1,
+   "ord-elig": 11,
+   "portalOnly+elig": 0,
+   "portalOnly-elig": 0
+  },
+  "enemy": {
+   "none+elig": 0,
+   "none-elig": 236,
+   "ord+elig": 0,
+   "ord-elig": 0,
+   "portalOnly+elig": 0,
+   "portalOnly-elig": 0
+  },
+  "enemyHead": {
+   "none+elig": 69,
+   "none-elig": 754,
+   "ord+elig": 306,
+   "ord-elig": 9269,
+   "portalOnly+elig": 0,
+   "portalOnly-elig": 26
+  },
+  "free": {
+   "none+elig": 0,
+   "none-elig": 0,
+   "ord+elig": 1884697,
+   "ord-elig": 5119591,
+   "portalOnly+elig": 0,
+   "portalOnly-elig": 0
+  },
+  "own": {
+   "none+elig": 0,
+   "none-elig": 353,
+   "ord+elig": 0,
+   "ord-elig": 0,
+   "portalOnly+elig": 0,
+   "portalOnly-elig": 0
+  },
+  "portal": {
+   "none+elig": 0,
+   "none-elig": 0,
+   "ord+elig": 3151,
+   "ord-elig": 68222,
+   "portalOnly+elig": 7204,
+   "portalOnly-elig": 20387
+  },
+  "split": {
+   "none+elig": 89986,
+   "none-elig": 0,
+   "ord+elig": 91067,
+   "ord-elig": 0,
+   "portalOnly+elig": 5387,
+   "portalOnly-elig": 0
+  },
+  "wall": {
+   "none+elig": 0,
+   "none-elig": 84085,
+   "ord+elig": 0,
+   "ord-elig": 0,
+   "portalOnly+elig": 0,
+   "portalOnly-elig": 0
+  }
+ },
+ "exitless_offers": {
+  "ally|ally|wall -> ally": 6467,
+  "ally|ally|ally -> ally": 3744,
+  "ally|wall|wall -> ally": 11022,
+  "enemyHead|wall|wall -> enemyHead": 484,
+  "ally|wall|wall -> wall": 29085,
+  "wall|wall|wall -> wall": 46785,
+  "ally|ally|wall -> wall": 904,
+  "ally|enemy|wall -> ally": 55,
+  "enemy|enemyHead|wall -> enemyHead": 90,
+  "enemy|wall|wall -> wall": 370,
+  "enemy|wall|wall -> enemy": 124,
+  "enemy|enemy|enemy -> enemy": 18,
+  "own|wall|wall -> wall": 6849,
+  "ally|ally|own -> ally": 263,
+  "ally|own|own -> own": 131,
+  "ally|own|wall -> ally": 124,
+  "own|own|wall -> own": 109,
+  "enemy|enemy|enemyHead -> enemyHead": 19,
+  "ally|enemy|enemyHead -> enemyHead": 14,
+  "ally|enemyHead|enemyHead -> enemyHead": 2,
+  "ally|enemy|enemy -> enemy": 12,
+  "enemyHead|enemyHead|wall -> enemyHead": 31,
+  "ally|own|wall -> wall": 47,
+  "own|own|own -> own": 94,
+  "enemyHead|enemyHead|enemyHead -> enemyHead": 2,
+  "ally|enemyHead|wall -> enemyHead": 75,
+  "ally|enemy|wall -> wall": 27,
+  "enemy|enemy|wall -> enemy": 43,
+  "enemy|enemy|wall -> wall": 7,
+  "ally|own|own -> ally": 23,
+  "ally|enemy|wall -> enemy": 34,
+  "ally|ally|enemy -> ally": 51,
+  "own|own|wall -> wall": 11,
+  "enemyHead|own|wall -> enemyHead": 2,
+  "own|wall|wall -> own": 15,
+  "ally|ally|enemyHead -> enemyHead": 18,
+  "ally|enemy|own -> ally": 2,
+  "enemy|enemyHead|enemyHead -> enemyHead": 14,
+  "ally|own|wall -> own": 2,
+  "ally|ally|enemy -> enemy": 4,
+  "enemy|enemy|own -> enemy": 1,
+  "ally|enemyHead|own -> enemyHead": 1,
+  "enemy|own|own -> own": 2,
+  "enemyHead|own|own -> enemyHead": 2,
+  "ally|enemy|enemyHead -> ally": 1,
+  "ally|enemy|enemy -> ally": 1
+ },
+ "invalid_splits": 0,
+ "splits": 186440,
+ "target_x_death": {
+  "": {
+   "ally": 0,
+   "enemy": 0,
+   "enemyHead": 0,
+   "free": 6993592,
+   "own": 0,
+   "portal": 89812,
+   "split": 186440,
+   "wall": 0
+  },
+  "hitHeadToHead": {
+   "ally": 13257,
+   "enemy": 0,
+   "enemyHead": 10424,
+   "free": 10661,
+   "own": 0,
+   "portal": 5137,
+   "split": 0,
+   "wall": 0
+  },
+  "hitOtherBody": {
+   "ally": 8525,
+   "enemy": 236,
+   "enemyHead": 0,
+   "free": 8,
+   "own": 0,
+   "portal": 3908,
+   "split": 0,
+   "wall": 0
+  },
+  "hitSelf": {
+   "ally": 0,
+   "enemy": 0,
+   "enemyHead": 0,
+   "free": 0,
+   "own": 353,
+   "portal": 67,
+   "split": 0,
+   "wall": 0
+  },
+  "hitWall": {
+   "ally": 0,
+   "enemy": 0,
+   "enemyHead": 0,
+   "free": 4,
+   "own": 0,
+   "portal": 27,
+   "split": 0,
+   "wall": 84085
+  },
+  "noValidAction": {
+   "ally": 0,
+   "enemy": 0,
+   "enemyHead": 0,
+   "free": 23,
+   "own": 0,
+   "portal": 13,
+   "split": 0,
+   "wall": 0
+  }
+ }
+}
