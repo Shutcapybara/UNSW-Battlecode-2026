@@ -1,0 +1,122 @@
+{
+ "_meta": {
+  "train_games": 654,
+  "test_games": 163,
+  "seed": 62,
+  "excluded": [
+   "H",
+   "W",
+   "dragon",
+   "facing_abs",
+   "game",
+   "map",
+   "x",
+   "xn",
+   "y",
+   "yn"
+  ]
+ },
+ "alloc": {
+  "n_train": 151995,
+  "n_test": 34445,
+  "classes": {
+   "2": 141370,
+   "3": 11419,
+   "4": 16296,
+   "5": 7165,
+   "6": 8831,
+   "8": 1359
+  },
+  "baselines": {
+   "majority": 0.752649150820148,
+   "child2": 0.752649150820148,
+   "len_minus_2": 0.7791842067063435
+  },
+  "tree4": {
+   "acc": 0.9183626070547249,
+   "macro_f1": 0.7145197555893187,
+   "logloss": 0.2301885859888914,
+   "sec": 1.0
+  },
+  "tree4_rules": "|--- length <= 4.50\n|   |--- class: 2\n|--- length >  4.50\n|   |--- length <= 6.50\n|   |   |--- length <= 5.50\n|   |   |   |--- free_dirs <= 0.50\n|   |   |   |   |--- class: 3\n|   |   |   |--- free_dirs >  0.50\n|   |   |   |   |--- class: 2\n|   |   |--- length >  5.50\n|   |   |   |--- free_dirs <= 0.50\n|   |   |   |   |--- class: 4\n|   |   |   |--- free_dirs >  0.50\n|   |   |   |   |--- class: 2\n|   |--- length >  6.50\n|   |   |--- length <= 7.50\n|   |   |   |--- free_dirs <= 0.50\n|   |   |   |   |--- class: 5\n|   |   |   |--- free_dirs >  0.50\n|   |   |   |   |--- class: 2\n|   |   |--- length >  7.50\n|   |   |   |--- mem_msgs_total <= 8.50\n|   |   |   |   |--- class: 6\n|   |   |   |--- mem_msgs_total >  8.50\n|   |   |   |   |--- class: 2\n",
+  "gbt": {
+   "acc": 0.9557555523298011,
+   "macro_f1": 0.8680873298132329,
+   "logloss": 0.11253218491218203,
+   "sec": 15.9
+  },
+  "mlp": {
+   "acc": 0.9431847873421396,
+   "macro_f1": 0.7982253329373239,
+   "logloss": 0.14740412783734777,
+   "sec": 2.1
+  },
+  "gap_tree_to_mlp": 0.024822180287414675,
+  "gap_tree_to_gbt": 0.037392945275076195
+ },
+ "gate": {
+  "n_train": 533434,
+  "n_test": 128379,
+  "classes": {
+   "0": 592492,
+   "1": 69321
+  },
+  "baselines": {
+   "majority": 0.9030604693914114,
+   "split_iff_no_ordinary_exit": 0.9382219833461859
+  },
+  "tree4": {
+   "acc": 0.9522351786507139,
+   "macro_f1": 0.8441124613860231,
+   "logloss": 0.12970050872937203,
+   "sec": 3.8
+  },
+  "tree4_rules": "|--- n_exit_any <= 0.50\n|   |--- cF_block <= 6.50\n|   |   |--- cR_block <= 5.50\n|   |   |   |--- cL_block <= 5.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- cL_block >  5.50\n|   |   |   |   |--- class: 1\n|   |   |--- cR_block >  5.50\n|   |   |   |--- class: 1\n|   |--- cF_block >  6.50\n|   |   |--- class: 1\n|--- n_exit_any >  0.50\n|   |--- mem_len_delta <= 0.50\n|   |   |--- round <= 65.50\n|   |   |   |--- round <= 1.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- round >  1.50\n|   |   |   |   |--- class: 0\n|   |   |--- round >  65.50\n|   |   |   |--- length <= 4.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- length >  4.50\n|   |   |   |   |--- class: 0\n|   |--- mem_len_delta >  0.50\n|   |   |--- length <= 4.50\n|   |   |   |--- near_enemy_head <= 52.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- near_enemy_head >  52.50\n|   |   |   |   |--- class: 0\n|   |   |--- length >  4.50\n|   |   |   |--- length <= 5.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- length >  5.50\n|   |   |   |   |--- class: 0\n",
+  "gbt": {
+   "acc": 0.9744506500284315,
+   "macro_f1": 0.9245586915020929,
+   "logloss": 0.0639007625045035,
+   "sec": 31.6
+  },
+  "mlp": {
+   "acc": 0.970244354606283,
+   "macro_f1": 0.9126673239212949,
+   "logloss": 0.07981134093474315,
+   "sec": 4.5
+  },
+  "gap_tree_to_mlp": 0.018009175955569057,
+  "gap_tree_to_gbt": 0.02221547137771751,
+  "ablate": {
+   "cand": {
+    "n_cols": 72,
+    "d_acc": -0.011808784925883553,
+    "d_logloss": 0.037304217475973095
+   },
+   "grid": {
+    "n_cols": 147,
+    "d_acc": -0.0010515738555371135,
+    "d_logloss": 0.003058886643646841
+   },
+   "local": {
+    "n_cols": 23,
+    "d_acc": -0.0028353546919667183,
+    "d_logloss": 0.008064402777699167
+   },
+   "memory": {
+    "n_cols": 16,
+    "d_acc": -0.002741881460363471,
+    "d_logloss": 0.007741680367899309
+   },
+   "msgs": {
+    "n_cols": 7,
+    "d_acc": -0.00080231190459501,
+    "d_logloss": 0.0029671780051016283
+   },
+   "scalar": {
+    "n_cols": 6,
+    "d_acc": -0.0077582782230738445,
+    "d_logloss": 0.019947839076712423
+   }
+  }
+ }
+}
