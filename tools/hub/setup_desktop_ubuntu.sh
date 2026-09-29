@@ -40,7 +40,8 @@ if ! grep -qiE 'ubuntu|debian' /etc/os-release; then warn "not Ubuntu/Debian; ap
 # ---------------------------------------------------------------- 0. shell env
 step "0. shell environment (~/.bashrc)"
 touch ~/.bashrc
-grep -q 'JKS_ROOT=' ~/.bashrc || printf '\n# JKS battlecode\nexport JKS_ROOT="%s"\nexport ROOT="$JKS_ROOT"\nexport JKS_HUB_ROOT="%s"\n' "$ROOT" "$HUB" >> ~/.bashrc
+sed -i '/^# JKS battlecode$/,/^export JKS_HUB_ROOT=/d; /^# JKS venv$/,+1d' ~/.bashrc   # rewrite on every run so a changed ROOT wins
+printf '\n# JKS battlecode\nexport JKS_ROOT="%s"\nexport ROOT="$JKS_ROOT"\nexport JKS_HUB_ROOT="%s"\n' "$ROOT" "$HUB" >> ~/.bashrc
 export JKS_HUB_ROOT="$HUB"; ok "ROOT=$ROOT  HUB=$HUB  log=$LOG"
 
 # ---------------------------------------------------------------- 1. packages
@@ -75,7 +76,7 @@ git config user.email >/dev/null || warn "git user.email unset: git config --glo
   "$PY" -m pip install -q 'numpy>=2.0' 'pandas>=2.2' 'scikit-learn>=1.6' 'pycapnp>=2.0' scipy
 "$PY" -m pip install -q pyarrow polars lightgbm xgboost matplotlib
 ok "unswbc $("$VENV/bin/unswbc" --version 2>&1 | head -1)"
-grep -q 'JKS venv' ~/.bashrc || printf '# JKS venv\n[ -f "%s/bin/activate" ] && . "%s/bin/activate"\n' "$VENV" "$VENV" >> ~/.bashrc
+printf '# JKS venv\n[ -f "%s/bin/activate" ] && . "%s/bin/activate"\n' "$VENV" "$VENV" >> ~/.bashrc
 
 step "3b. worktrees for the R lanes"
 for lane in r1 ra rg r3 r4 r5; do
