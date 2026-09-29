@@ -112,12 +112,17 @@ struct Params {
     //      (move order) is adjacent to the landing now or was within 2 rounds
     // A visible, free landing or a fresh verified-clear memory needs no probe.
     // Discipline yields only when every other step is certain death.
-    static constexpr bool f2_portal = true;
+    // Measured configuration (see findings): every transit-gating variant
+    // (full / confident / swarmwise / memory-only) was a volume throttle with
+    // no per-step safety gain, and confidence-only was bit-identical to the
+    // chassis. The gates ship OFF; the memory + probe plumbing + exit_known()
+    // stay for C1-B's router.
+    static constexpr bool f2_portal = false;
     static constexpr int f2_exit_fresh = 8;    // rounds a survived/verified exit stays trusted
     static constexpr int f2_block_ttl = 6;     // rounds a seen-blocked exit bans the pair
-    static constexpr bool f2_probe = true;
-    static constexpr bool f2_parity = true;
-    static constexpr bool f2_id_sim = true;
+    static constexpr bool f2_probe = false;
+    static constexpr bool f2_parity = false;
+    static constexpr bool f2_id_sim = false;
     static constexpr int f2_id_sim_dist = 1;   // lower-id head within this tdist of the landing blocks
 
     // ------------------------------------------------ C1-F fix 3: sprint discipline
@@ -129,7 +134,8 @@ struct Params {
     // strictly first. Path legality is the exact engine simulation (tail
     // vacates step by step; each step after the first cuts one segment), plus
     // no danger-marked cell on the path and a room check at the landing.
-    static constexpr bool f3_sprint = true;
+    // Measured negative (both trigger variants); the governor ships OFF.
+    static constexpr bool f3_sprint = false;
     static constexpr int f3_max = 3;                 // longest sprint (steps)
     static constexpr int f3_window = 24;             // rate-cap window (rounds)
     static constexpr int f3_max_per_window = 4;      // sprints allowed per window
