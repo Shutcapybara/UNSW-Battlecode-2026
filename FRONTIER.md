@@ -1,52 +1,55 @@
-# FRONTIER — bot pool and current status
+# Current bot frontier
 
-**Reviewed 2026-09-29.** This is the canonical page for candidate status,
-estimated ELOs, the default comparison roster, and contest deployment notes.
+**Updated 2026-09-29.** Rows are ordered by displayed ELO. Numbers in the first
+column are 35-map panel ranks; `Screen` entries have provisional 10-map ratings.
 
-> **COMPLETE — 35-map frontier panel.** All 8,400 directional games were
-> recorded for 16 bots across the shared bundle: 15 established maps and 20
-> custom maps under `maps/new/`. The six family-specific reserve maps under
-> `configs/` remain separate holdouts. Six pilot/sweep repeats were reduced to
-> one result each; the single conflict keeps the pilot result. There were no
-> runner errors or missing fixtures.
->
-> The paired lineage-bootstrap rule found no supported dominator, so all 16
-> bots remain on the statistical frontier. This frontier records the absence
-> of map-wise dominance under the stated evidence threshold. The ELOs and
-> map-leader scores still separate the candidates. Full ratings, map leaders,
-> and pairwise intervals are summarized in the
-> [panel report](docs/frontier-panel-20260929.md). The 7,616 campaign games are
-> in [`game_stats/runs/187e0e722be944ec90f626a129b4b544.parquet`](game_stats/runs/187e0e722be944ec90f626a129b4b544.parquet);
-> the full per-pair intervals are in the generated local data at
-> `experiment_data/benchmark_20260928083347416650/frontier/frontier.json`.
-> Recreate the analysis with
-> `.venv/bin/python tools/frontier_panel.py experiment_data/benchmark_20260928083347416650`.
+| Rank / status | Bot snapshot | ELO (evidence) | Source fingerprint |
+|---:|---|---:|---|
+| Screen | `tyr-v12-devil-scout-tiebreak` | 1,786 (10-map) | `d2f691c4fc0c` |
+| 1 | `fenrir-v20-crowded-resource-revalue` | 1,654.3 (35-map) | `dc7717689882` |
+| 2 | `bifrost-v01-portal-memory` | 1,620.9 (35-map) | `037872088e6f` |
+| 3 | `gavroche-v33-half-support` | 1,618.0 (35-map) | `57d123043c7f` |
+| 4 | `gavroche-v66-supported-safe` | 1,617.2 (35-map) | `a5c8dc0f8db5` |
+| 5 | `von_neumann-x04-support` | 1,586.8 (35-map) | `3772d5a35503` |
+| 6 | `skadi-v13-clear-exit-only` | 1,586.1 (35-map) | `34d716a3492d` |
+| Screen | `eunchae-s02-pearl-band` | 1,576 (10-map) | `46ffdb69ce64` |
+| 7 | `sinbad-v07-divecap` | 1,572.6 (35-map) | `c759a5c8a8ba` |
+| 8 | `serre-v01-foundation` | 1,566.2 (35-map) | `ae4bcc23254c` |
+| 9 | `monte_christo-x12-remote-density` | 1,534.8 (35-map) | `5589c30d0525` |
+| 10 | `tew-v12-mid-support` | 1,485.1 (35-map) | `8bff0f54828f` |
+| 11 | `hunter-v20-portal-scouts` | 1,438.6 (35-map) | `f844fa3ae595` |
+| 12 | `hunter-v23-supported-arrival-feed` | 1,416.7 (35-map) | `b10300e824d4` |
+| 13 | `ouroboros-v10-beacon` | 1,407.8 (35-map) | `a9eafbaffc51` |
+| 14 | `hunter-v14-cpp-hybrid-route-spacing` | 1,405.5 (35-map) | `6ba4e603ad19` |
+| 15 | `fry-v14-stateful-size-aware-3` | 1,356.8 (35-map) | `962541eb674d` |
+| 16 | `kraken-v04-eval` | 1,132.6 (35-map) | `7d23d380f291` |
 
-| Bot snapshot | All-map ELO | Statistical frontier | Fixtures / opponents / maps | Source fingerprint |
-|---|---:|---|---:|---|
-| `fenrir-v20-crowded-resource-revalue` | 1,654.3 | Retained; no supported dominator | 1,050 / 15 / 35 | `dc7717689882` |
-| `bifrost-v01-portal-memory` | 1,620.9 | Retained; no supported dominator | 1,050 / 15 / 35 | `037872088e6f` |
-| `gavroche-v33-half-support` | 1,618.0 | Retained; no supported dominator | 1,050 / 15 / 35 | `57d123043c7f` |
-| `gavroche-v66-supported-safe` | 1,617.2 | Retained; no supported dominator | 1,050 / 15 / 35 | `a5c8dc0f8db5` |
-| `von_neumann-x04-support` | 1,586.8 | Retained; no supported dominator | 1,050 / 15 / 35 | `3772d5a35503` |
-| `skadi-v13-clear-exit-only` | 1,586.1 | Retained; no supported dominator | 1,050 / 15 / 35 | `34d716a3492d` |
-| `sinbad-v07-divecap` | 1,572.6 | Retained; no supported dominator | 1,050 / 15 / 35 | `c759a5c8a8ba` |
-| `serre-v01-foundation` | 1,566.2 | Retained; no supported dominator | 1,050 / 15 / 35 | `ae4bcc23254c` |
-| `monte_christo-x12-remote-density` | 1,534.8 | Retained; no supported dominator | 1,050 / 15 / 35 | `5589c30d0525` |
-| `tew-v12-mid-support` | 1,485.1 | Retained; no supported dominator | 1,050 / 15 / 35 | `8bff0f54828f` |
-| `hunter-v20-portal-scouts` | 1,438.6 | Retained; no supported dominator | 1,050 / 15 / 35 | `f844fa3ae595` |
-| `hunter-v23-supported-arrival-feed` | 1,416.7 | Retained; no supported dominator | 1,050 / 15 / 35 | `b10300e824d4` |
-| `ouroboros-v10-beacon` | 1,407.8 | Retained; no supported dominator | 1,050 / 15 / 35 | `a9eafbaffc51` |
-| `hunter-v14-cpp-hybrid-route-spacing` | 1,405.5 | Retained; no supported dominator | 1,050 / 15 / 35 | `6ba4e603ad19` |
-| `fry-v14-stateful-size-aware-3` | 1,356.8 | Retained; no supported dominator | 1,050 / 15 / 35 | `962541eb674d` |
-| `kraken-v04-eval` | 1,132.6 | Retained; no supported dominator | 1,050 / 15 / 35 | `7d23d380f291` |
+These provisional screen ELOs are anchored to the 16-bot panel. Map-bootstrap
+95% intervals from 2,000 resamples (seed 20260929): Tyr 1,682–1,924; Eunchae
+1,436–1,716. The fit uses 160 recent screen games across five screen bots,
+holding panel ratings and the +19.1 ELO A-seat term fixed. Intervals do not
+capture all run-to-run behavior randomness.
 
-Each bot's coverage is 1,050 games against 15 opponents: both starting sides
-on each of the 35 maps. These preliminary Bradley–Terry estimates are centered
-at 1,500 across the 16 measured source fingerprints; they are not official
-contest ratings. Every candidate pair qualified on all 35 maps, but no pair met
-the paired lineage-bootstrap dominance rule on the full bundle. See the report
-for map leaders and pairwise uncertainty intervals.
+## Panel and admission
+
+The official ratings cover 35 maps (15 established, 20 custom), both starting
+sides, and 15 opponents per bot: 8,400 unique games total. Preliminary
+Bradley–Terry ELOs are centered at 1,500 across these source fingerprints;
+they are not contest ratings. A paired lineage bootstrap found no supported
+map-wise dominator, so all 16 remain on the statistical frontier.
+
+A map qualifies for dominance analysis when both bots have both sides against
+at least three opponents there. A bot dominates another only when the paired
+95% interval is nonnegative on every qualified map and positive on at least
+one. New candidates need 200 distinct directional fixtures, 15 exact-source
+opponents, 6 lineages, 10 maps, and at least 3 paired opponents on 10 maps
+before admission. Screen rows above do not meet that threshold.
+
+Full ratings and intervals are in the [35-map panel report](docs/frontier-panel-20260929.md).
+The 7,616-game campaign contribution is
+[`game_stats/runs/187e0e722be944ec90f626a129b4b544.parquet`](game_stats/runs/187e0e722be944ec90f626a129b4b544.parquet).
+Recreate the analysis with
+`.venv/bin/python tools/frontier_panel.py experiment_data/benchmark_20260928083347416650`.
 
 ## Gaia experimental lineage
 
@@ -68,133 +71,62 @@ triggered the C++ fallback threshold: all tested panels completed with zero
 runner errors and zero TLEs. Additional contact-penalty relaxations also
 scored 0-8 on the four-map screen, so V47 remains the retained Gaia
 candidate.
+
 The serial harness is now the promotion gate (`--jobs 1`): concurrent
 low-level runs were not reproducible and an apparent pearl-value 8-0 was
 reversed by replay-producing and serial runs at 0-8. Serial V54 four-way
 lanes and the subsequent contact/pearl controls also failed their focused
 screens, so no Gaia V64 has been promoted.
 
-## All-map head-to-head completed
+## Recent screens
 
-Fenrir V20 played Hunter V20 twice on every map in the 35-map bundle, once from
-each starting side: **70 games, 50–20 for Fenrir, with no draws or runner
-errors**. Fenrir swept both games on 18 maps, Hunter swept 3, and the sides split
-the remaining 14. These 70 results document one direct matchup; the complete
-16-bot panel and frontier are summarized above.
+- **Tyr V12:** 14–6 against Fenrir on 10 maps; it won at least one game on
+  nine maps and swept both seats on five. The other candidates in that screen
+  were Chaewon Y04 (10–10), Heimdall V10 (8–12), and Tyr V01 (8–12). Outcomes:
+  [`db75c3f2.parquet`](game_stats/runs/db75c3f2093b4e71b67afebb3e91736c.parquet),
+  [`27f41a20.parquet`](game_stats/runs/27f41a20010e40019846871a99347b23.parquet).
+- **Eunchae S02:** 10–10 against parent Chaewon Y04, 9–11 against Fenrir,
+  6–14 against Bifröst, and 5–15 against Tyr V12. It went 7–1 on Crossroads
+  and 6–2 on Scattered Fleets, but 1–7 each on Portal Quartet, Queen of Spades,
+  and Stronghold. No draws or runner errors. Results:
+  [`ed4cbcaa.parquet`](game_stats/runs/ed4cbcaa5ccc48de92f1dd1c9a2cb3bc.parquet);
+  logs: `build/frontier-eunchae-s02-screen-20260929/`.
+- **Fenrir V20 vs Hunter V20:** 50–20 over 70 games on all 35 maps, with no
+  draws or runner errors. Results:
+  [`549ce497.parquet`](game_stats/runs/549ce497d5e14041bf5321a96787d7a0.parquet).
+- **Tyr V16:** `tyr-v16-live-loss-response` scored 7–11 against Tyr V12 in an
+  18-game screen on the nine review maps, both sides, zero runner errors. V16
+  split 1–1 on seven maps and lost both Devil and Trauma games. This unseeded
+  focused screen gives V16 no all-map ELO; keep V01 as the baseline and V12 as
+  the Devil specialist. See the [Tyr family notes](docs/tyr-family.md); results
+  are in `build/tyr-v16-vs-v12-loss-review-20260929/`.
+- **Tyr V33:** `tyr-v33-targeted-resource-defense` scored 55–53 against V12
+  over six fixed seeds, both sides on the same nine maps (108 games, no draws
+  or errors). Fresh seeds 7–18 reversed that edge: 91–125 over 216 games.
+  Across seeds 1–18, V33 scored 146–178; it went 32–4 on Trauma, 2–34 on
+  Autarky, and 6–30 on Dilemma. Keep it experimental, not a general V12
+  improvement; see the [Tyr family notes](docs/tyr-family.md), the
+  [V33 result](bots/tyr-v33-targeted-resource-defense/README.md), and
+  `build/tyr-v33-fresh-v12-seeds7-18-absolute-20260929/`.
+- **Tyr V34:** lowering V25's pearl-funded sprint threat floor to 0.2 scored
+  37–71 against V12 on fresh seeds 19–24 (108 games, zero errors); V12 swept
+  26 paired map/seed sets to V34's 9, with 19 split. Rejected. V01 remains the
+  all-map baseline and V12 the Devil-specialist reference; see the [Tyr family
+  notes](docs/tyr-family.md) and [V34 result](bots/tyr-v34-calibrated-pearl-sprint/README.md).
 
-The sweep repeats six side/map fixtures from the earlier three-map panel; five
-repeated results matched and one differed on arena. Bots can behave
-non-deterministically, so these runs are not independent evidence and must not
-be blindly pooled. The new sweep's 70 outcomes are saved in
-[`game_stats/runs/549ce497d5e14041bf5321a96787d7a0.parquet`](game_stats/runs/549ce497d5e14041bf5321a96787d7a0.parquet)
-and its local logs are under the ignored
-`build/frontier-map-sweep-20260928/` directory.
+The V12, Eunchae, and Fenrir screens above used native `unswbc 1.2.1` with both
+starting sides. Tyr V16 used native `unswbc 1.2.2` on its focused nine-map
+screen. The [Tyr family notes](docs/tyr-family.md) contain its earlier Devil
+and Yuna experiments. The earlier three-map pilot is preserved in
+[`bc86c2ad.parquet`](game_stats/runs/bc86c2adc518428f8d77039e11111a97.parquet);
+its dominance findings are limited to those three maps.
 
-## Experimental Norse family: Tyr
+## Defaults and upkeep
 
-Tyr V01 combines Fenrir V20's measured core with Yuna V03's direction momentum.
-Against Yuna V03 it scored **38–32 over 70 games on the frozen 35-map set**,
-including a 2–0 Queen of Spades result, with no draws or runner errors. Tyr V04's
-room-return guard scored 34–36 against Yuna on the same panel. Tyr V08 adds a
-two-round, two-tile return penalty and scored **37–33 over 70 games** on the
-same 35 maps, with no errors. Its Queen score was 0–2 in that full run; a
-separate short Queen screen was 1–1 against Yuna and 2–0 against Tyr V01.
-
-V08 runtime-source fingerprint (Python and bot.toml):
-`facd1c5192b0f847f80042dde840754253a640117bf567431b434bacc7503d53`.
-
-These are direct, unseeded screens against one opponent, not frontier admissions or ELO
-ratings. Keep all Tyr variants out of the pilot table until the wider admission
-screen is met. Details and runtime fingerprints are in
-[the Tyr family notes](docs/tyr-family.md); match logs remain under ignored
-`build/tyr-*/` directories.
-
-Tyr V12 is a Devil-specific scouting arm: it scored **12–0** against Tyr V01
-across six fixed seeds and both seats on Devil in native mode, then **12–0**
-against the documented Yuna V05 Core finalist on the same Devil screen. Over all
-46 repository maps and both seats, it scored **50–42** against Yuna V05 with
-zero runner errors (one unseeded game per map-seat; 32–14 as Team A, 18–28
-as Team B). Across paired map outcomes, Tyr won 14, Yuna won 10, and 22
-split. Queen of Spades split 1–1. Sandbox faults remain; this preliminary
-screen does not promote V12 to the all-map frontier. Details are in
-[the Tyr family notes](docs/tyr-family.md); local results are under
-`build/tyr-v12-yuna-v05-allmaps-20260929/` and
-`build/tyr-v12-devil-vs-tyr1/`.
-## How the frontier is defined
-
-For each bot, compare its expected score (win = 1, draw = 0.5, loss = 0)
-against the same panel on each map, using both starting sides. Weight maps and
-opponent lineages equally. Bot A dominates bot B when A is no worse on every
-qualified map and better on at least one. The frontier is the set of bots not
-dominated by another. This preserves map specialists with different strengths.
-
-For a dominance call, use paired evidence: compare the bots against the same
-opponents, keep both starting sides together, group opponents by lineage, and
-bootstrap whole lineages. Require the 95% interval for A−B to stay at or above
-zero on every qualified map and above zero on at least one. A map qualifies
-when both bots have both sides against at least three opponents on it. Missing
-coverage means “under-tested,” not “dominated.”
-
-The broader admission screen retained from the previous campaign is at least
-200 distinct directional fixtures, 15 exact-source opponents, 6 opponent
-lineages, 10 maps, and 10 maps with at least 3 paired opponents. These are
-screening thresholds, not guarantees of statistical power. The earlier
-24-bot shortlist is in
-[`docs/benchmark-pool-20260927.md`](docs/benchmark-pool-20260927.md); it was a
-loose empirical selection, not an exact Pareto frontier.
-
-The 16-bot pilot played both sides against the other 15 bots on Colosseum,
-arena, and autarky: 720 native games, 90 per bot. Its four point-estimate
-survivors were Fenrir V20, Hunter V20, Hunter V23, and von Neumann X04. A
-2,000-replicate paired lineage bootstrap found pilot-level dominance for these
-pairs: Bifröst V01 over Hunter V14, Kraken, and Ouroboros; Fenrir V20 over Fry
-V14, Hunter V14, Kraken, and Ouroboros; Fry V14 over Kraken; Gavroche V33 over
-Fry V14, Hunter V14, Kraken, and Ouroboros; Gavroche V66 over Hunter V14,
-Kraken, and Ouroboros; Hunter V23 over Kraken and Ouroboros; Serre V01 over
-Kraken and Ouroboros; Sinbad V07 over Kraken and Ouroboros; and Skadi V13 over
-Kraken and Ouroboros. These are only three-map findings. The bootstrap does not
-capture all behavior randomness or adjust for the many pairwise comparisons.
-No bot is retired based on this pilot.
-
-## ELO method and pilot artifact
-
-The pilot ratings use a Bradley–Terry model with win = 1, draw = 0.5, loss = 0,
-an A-seat term, and a 400-point logistic ELO scale. Ratings are centered at
-1,500 over these 16 bots. The estimated A-seat advantage was about 50 ELO. Each
-bot had 90 games against 15 exact opponents on 3 maps; these estimates are
-historical pilot ratings alongside the completed 35-map refit above.
-
-The 720-game pilot is saved in
-[`game_stats/runs/bc86c2adc518428f8d77039e11111a97.parquet`](game_stats/runs/bc86c2adc518428f8d77039e11111a97.parquet)
-(run ID `bc86c2adc518428f8d77039e11111a97`, `unswbc 1.2.1`). Bifröst V29 was
-not included because the family notes do not promote it; Bifröst V01 is the
-strongest tested Zach Bifröst candidate. Rory Peterson's renamed Fenrir line
-remains separate.
-
-## Contest deployment and comparison defaults
-
-The exact version currently deployed to the contest is **not recorded in this
-checkout**. The default comparison roster in [`comparison.toml`](comparison.toml)
-is Ouroboros V10, Hunter V14, Hunter V20, Fry V14, and Kraken V04. This is an
-experiment control set, not a deployment record. The three-map pilot flagged
-Fry V14, Hunter V14, Ouroboros V10, and Kraken V04 as dominated on those maps.
-The full 35-map analysis found no supported dominator for any candidate; keep
-all four as controls while gathering repeated evidence.
-
-## Updating this page
-
-1. Add the exact source fingerprint for each new version; a changed source is a
-   new measured bot even if its folder name stays the same.
-2. Benchmark the frozen candidate pool on the same 35 maps, against the same
-   opponents, with both starting sides. Repeat games to characterize unseeded
-   behavior.
-3. Refresh ELOs and per-map profiles from the same frozen panel. Keep ratings
-   labeled preliminary until the broader screen is met.
-4. Before removing a bot, record its direct frontier replacement, per-map
-   evidence, uncertainty result, date, and both source fingerprints.
-5. Update the review date and link the frozen result contributions or report.
-
-For experiment setup see [`docs/benchmarking.md`](docs/benchmarking.md), the
-ledger schema in [`game_stats/README.md`](game_stats/README.md), the custom map
-catalog in [`maps/new/EXPLAINER.md`](maps/new/EXPLAINER.md), and the line
-histories under `docs/`.
+The deployed contest version is not recorded here. [`comparison.toml`](comparison.toml)
+keeps Ouroboros V10, Hunter V14, Hunter V20, Fry V14, and Kraken V04 as controls.
+See [`docs/benchmarking.md`](docs/benchmarking.md) for the workflow,
+[`game_stats/README.md`](game_stats/README.md) for the ledger, and
+[`maps/new/EXPLAINER.md`](maps/new/EXPLAINER.md) for custom maps. Update this
+table with exact source fingerprints and linked results when a candidate is
+screened or admitted.
