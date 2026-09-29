@@ -401,7 +401,7 @@ def git_check(root, cfg, state, log):
     return out
 
 
-GATE_TESTS = ['tests.test_hub_core', 'tests.test_hub_git', 'tests.test_hub_legacy_ops', 'tests.test_hub_executor', 'tests.test_hub_daemon']
+GATE_TESTS = ['tests.test_hub_core', 'tests.test_hub_git', 'tests.test_hub_legacy_ops', 'tests.test_hub_executor', 'tests.test_hub_daemon', 'tests.test_hub_quota_filler', 'tests.test_hub_discord_bot', 'tests.test_hub_api']
 
 
 def redeploy_check(root, cfg, state, log):
@@ -577,7 +577,12 @@ def serve(root, cfg, log):
 
                 def progress(phase, detail=None, _mode='live' if live_ok else 'shadow'):
                     write_health(root, cfg, state, dict(executor_phase=phase, executor_detail=detail, executor_cycle_started=cycle_started, executor_mode=_mode))
-                summary = hub_executor.run_cycle(conn, root, cfg, client, mode='live' if live_ok else 'shadow', actor='hub/executor', progress=progress)
+                # Reload the external config for each executor cycle so quota
+                # filler on/off changes take effect without restarting the
+                # long-lived daemon. Other daemon settings retain their
+                # startup semantics.
+                cycle_cfg = load_config(root)
+                summary = hub_executor.run_cycle(conn, root, cycle_cfg, client, mode='live' if live_ok else 'shadow', actor='hub/executor', progress=progress)
                 conn.close()
                 conn = db.connect(root)
                 clean = not summary['stop'] and not [a for a in summary['attention'] if a['kind'] in ('snapshot_failed', 'upload_ambiguous', 'intent_ambiguous', 'restore_uncertain')]

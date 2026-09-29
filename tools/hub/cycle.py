@@ -461,7 +461,11 @@ def mirror(conn, root, cfg, tick):
     (out / 'calibration.json').write_text(db.j(dict(as_of=as_of, rows=db.rows(conn, 'SELECT * FROM calibration ORDER BY at DESC LIMIT 500'))))
     latest = Path(root) / 'review' / 'packet-latest.md'
     if latest.exists():
-        shutil.copy2(latest, out / 'review' / 'packet-latest.md')
+        latest_target = out / 'review' / 'packet-latest.md'
+        if latest.resolve() != latest_target.resolve():
+            shutil.copy2(latest, latest_target)
         for p in sorted((Path(root) / 'review').glob('packet-*.md'))[-6:]:
-            shutil.copy2(p, out / 'review' / p.name)
+            target = out / 'review' / p.name
+            if p.resolve() != target.resolve():
+                shutil.copy2(p, target)
     return out

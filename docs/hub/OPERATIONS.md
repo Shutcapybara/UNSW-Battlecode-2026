@@ -17,7 +17,14 @@ packet, and kickstarts the legacy worker if it has exited without a stop request
     .venv/bin/python -m tools.hub.hubctl packet            # the latest two-hour review packet
     .venv/bin/python -m tools.hub.hubctl cycle --packet    # force a cycle and a packet now
     .venv/bin/python -m tools.hub.hubctl doctor            # paths, toolkit version, launchd state
+    .venv/bin/python -m tools.hub.hubctl quota on          # enable automatic top-10/dev quota filling
+    .venv/bin/python -m tools.hub.hubctl quota status
+    .venv/bin/python -m tools.hub.hubctl quota off         # stop new filler challenges
     tail -f "$HUB/logs/actuator.log"
+
+The quota filler is documented in [QUOTA_FILLER.md](QUOTA_FILLER.md). It is
+opt-in, shares the executor's durable request ledger, and uses only the
+remaining part of each rolling 60-game allowance.
 
 Stop / resume the hub daemon: `touch "$HUB/control/stop"` (graceful) then `launchctl bootout gui/$(id -u)/au.battlecode.jks-hub`;
 `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/au.battlecode.jks-hub.plist` to resume.

@@ -1,8 +1,10 @@
 # JKS hub — the shared research and live-validation record
 
 The hub is the single source of truth for candidates, live experiments, verdicts, findings, tasks and calibration for
-Just Keep Swimming (team 7). It lives outside Git at `HUB` (default `/Users/alik/Documents/Projects/battlecode-hub`,
-override with `JKS_HUB_ROOT` or `~/.config/jkshub/root`); its code is `tools/hub/` in this repository. The design is
+Just Keep Swimming (team 7). It lives outside Git at `HUB` (default
+`/Users/alik/Documents/Projects/battlecode-hub` on the Mac deployment;
+Linux checkouts fall back to `<repo>/hub-state`), override with
+`JKS_HUB_ROOT` or `~/.config/jkshub/root`; its code is `tools/hub/` in this repository. The design is
 Part B of the director's brief (`docs/hub/prompts/` holds the prompts the director issues); this page is the entry
 point for any agent.
 
@@ -57,6 +59,15 @@ mounted folder). Do not open `hub.sqlite` over a network mount.
    and `.toml` files only (the legacy preflight copies nothing else).
 4. Remote agents push a branch `candidate/<lineage>/<name>` and ask a local agent (or the two-hour director turn) to
    run steps 2–3; the automated intake is not built yet.
+
+## Automatic quota filling
+
+After the executor is live, the opt-in [`QUOTA_FILLER.md`](QUOTA_FILLER.md)
+mode can spend unused rolling-hour allowance on the current top-10 field
+panel and dev panel. Toggle it with `hubctl quota on|off`; it is deliberately
+separate from candidate promotion and never activates a submission. An
+allowlisted Discord controller is documented in
+[`DISCORD_BOT.md`](DISCORD_BOT.md).
 
 ## Findings, tasks, decisions
 

@@ -3,7 +3,7 @@
     python3 tools/hub/request_redeploy.py --note "why" [tools/hub/executor.py ...]
 
 Writes `hub-state/control/redeploy.json` with the sha256 of each listed file (default: every file under tools/hub and
-the four gate test modules). The daemon (macOS) verifies the hashes against its own view of the checkout, runs the gate
+the hub gate test modules). The daemon (macOS) verifies the hashes against its own view of the checkout, runs the gate
 tests, snapshots tools/hub into HUB/app/<sha>, relinks `current` and restarts itself; it answers with
 `redeploy.done.json` or `redeploy.rejected.json` in the same directory. No hub root, database or API access needed.
 """
@@ -15,7 +15,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-GATE = ['tests/test_hub_core.py', 'tests/test_hub_git.py', 'tests/test_hub_legacy_ops.py', 'tests/test_hub_executor.py', 'tests/test_hub_daemon.py']
+GATE = ['tests/test_hub_core.py', 'tests/test_hub_git.py', 'tests/test_hub_legacy_ops.py', 'tests/test_hub_executor.py', 'tests/test_hub_daemon.py', 'tests/test_hub_quota_filler.py', 'tests/test_hub_discord_bot.py', 'tests/test_hub_api.py']
 
 
 def main(argv=None):

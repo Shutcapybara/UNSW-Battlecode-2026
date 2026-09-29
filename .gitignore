@@ -36,6 +36,7 @@ Testing/
 !/game_stats/runs/*.parquet
 
 # Other local game-statistics state
+/hub-state/
 /game_stats/sources/
 /game_stats/local/
 /game_stats/.write.lock

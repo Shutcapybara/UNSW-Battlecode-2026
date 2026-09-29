@@ -23,6 +23,7 @@ from pathlib import Path
 from . import db, stats
 from .api import APIError
 from .contracts import evaluate as evaluate_contract
+from . import quota_filler
 
 TEAM_ID_DEFAULT = 7
 HARVEST_LIMIT = 60
@@ -116,7 +117,8 @@ class Snapshot:
             db.kv_set(conn, 'ladder_fetched_at', now)
         else:
             self.ladder = db.kv_get(conn, 'ladder') or []
-        self.dev_ids = {x['id'] for x in self.ladder if x.get('dev')}
+        configured_devs = set(cfg.get('team', {}).get('dev_opponents') or [])
+        self.dev_ids = {x['id'] for x in self.ladder if x.get('dev')} | configured_devs
         recent = client.get('/api/v1/battles?limit=200')
         self.history = []
         refresh_budget = 20
@@ -799,7 +801,7 @@ def request_batch(conn, root, cfg, snap, client, actor, submission, opponent, ma
             if len(ids) != len(wave):
                 summary['attention'].append(dict(kind='unexpected_game_count', ids=ids, requested=len(wave)))
             db.event(conn, root, actor, 'batch_requested', dict(submission=submission, opponent=opponent, maps=len(wave), ids=ids, pool=pool, block=block_id))
-            summary['dispatched'].append(dict(submission=submission, opponent=opponent, maps=len(wave), ids=ids, pool=pool))
+            summary['dispatched'].append(dict(submission=submission, opponent=opponent, maps=len(wave), games=len(ids), ids=ids, pool=pool))
             all_ids.extend(ids)
         return all_ids
     except APIError as e:
@@ -831,6 +833,74 @@ def request_batch(conn, root, cfg, snap, client, actor, submission, opponent, ma
             except (APIError, UncertainMutation) as e:
                 db.event(conn, root, actor, 'restore_uncertain', dict(error=str(e)[:200]))
                 summary['attention'].append(dict(kind='restore_uncertain', candidate=submission, previous=active))
+
+
+def dispatch_quota_fill(conn, root, cfg, snap, client, actor, q, summary):
+    """Spend unused hourly allowance on the active submission's top/dev panel.
+
+    This runs after candidate work, so controlled experiments retain their
+    existing executor caps.  The filler itself never activates a submission,
+    never touches experiments, and never dispatches when the quota snapshot is
+    unknown or a ranked series is in flight.
+    """
+    settings = cfg.get('quota_filler') or {}
+    if not settings.get('enabled', False) or summary.get('stop'):
+        return
+    if snap.active != control(conn):
+        summary['deferred'].append(dict(reason='quota_filler_control_changed', active=snap.active, control=control(conn)))
+        summary['quota_filler'] = dict(enabled=True, planned=0, planned_games=0, dispatched_games=0,
+                                       deferred='control_changed')
+        return
+    if ranked_in_flight(snap):
+        summary['deferred'].append(dict(reason='quota_filler_ranked_series_in_flight'))
+        summary['quota_filler'] = dict(enabled=True, planned=0, planned_games=0, dispatched_games=0,
+                                       deferred='ranked_series_in_flight')
+        return
+    field_targets, dev_targets = quota_filler.target_pools(cfg, snap.ladder, snap.team_id)
+    if not field_targets and not dev_targets:
+        summary['attention'].append(dict(kind='quota_filler_no_targets'))
+        summary['quota_filler'] = dict(enabled=True, planned=0, planned_games=0, dispatched_games=0,
+                                       deferred='no_targets')
+        return
+    state = db.kv_get(conn, 'quota_filler_cursor') or {}
+    planned = []
+    planned_total = 0
+    dispatched_total = 0
+    target_map = {'dev': dev_targets, 'field': field_targets}
+    for pool in ('dev', 'field'):
+        already = sum(int(item.get('games', item.get('maps', 0)) or 0)
+                      for item in summary.get('dispatched', []) if item.get('pool') == pool)
+        remaining = quota_filler.hourly_remaining(cfg, q, pool, already)
+        # Keep the filler paced: one small slice per pool per executor cycle,
+        # rather than draining the whole currently available rolling quota in
+        # a single burst. The normal executor work remains accounted for in
+        # ``already`` and still reduces the hourly allowance.
+        try:
+            cycle_games = max(0, int(settings.get('cycle_games', settings.get('batch_games', 10))))
+        except (TypeError, ValueError):
+            cycle_games = 10
+        remaining = min(remaining, cycle_games)
+        batches, state = quota_filler.plan_batches(pool, target_map[pool], snap.map_ids, remaining,
+                                                   settings.get('batch_games', 10), state)
+        for batch in batches:
+            item = dict(action='quota_fill', pool=pool, opponent=batch['opponent'], games=batch['games'])
+            summary['plan'].append(item)
+            planned.append(item)
+            planned_total += batch['games']
+            if summary['mode'] == 'live':
+                ids = request_batch(conn, root, cfg, snap, client, actor, snap.active,
+                                    batch['opponent'], batch['map_ids'], pool, None, summary)
+                used = len(ids or [])
+                if any(a.get('kind') == 'quota_rejection' for a in summary.get('attention', [])):
+                    dispatched_total += used
+                    break
+            else:
+                used = batch['games']
+            dispatched_total += used
+    db.kv_set(conn, 'quota_filler_cursor', state)
+    summary['quota_filler'] = dict(enabled=True, planned=len(planned), planned_games=planned_total,
+                                   dispatched_games=dispatched_total,
+                                   field_targets=field_targets, dev_targets=dev_targets)
 
 
 # ----------------------------------------------------------------------------------------------- experiments
@@ -958,6 +1028,10 @@ def monitor_probation(conn, root, cfg, snap, client, actor, summary):
 def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
     live = summary['mode'] == 'live'
     ctrl = control(conn)
+
+    def finish():
+        dispatch_quota_fill(conn, root, cfg, snap, client, actor, q, summary)
+
     # 1. uploads: one per cycle
     for c in rows(conn, "SELECT * FROM candidates WHERE status='runtime_ok' AND submission_id IS NULL ORDER BY priority DESC LIMIT 1"):
         summary['plan'].append(dict(action='upload', candidate=c['name']))
@@ -1000,7 +1074,7 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
             if e:
                 break
     if not e:
-        return
+        return finish()
     params = effective_params(conn, loads(e['params'], DEFAULT_PARAMS) or DEFAULT_PARAMS)
     blocks, results = legacy_shapes(conn, e['id'])
     paired = stats.paired_blocks_v2(blocks, results)
@@ -1030,7 +1104,7 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
                 q[pool]['available'] -= len(ids)
             elif summary.get('request_shape_refused'):
                 conn.execute("UPDATE blocks SET excluded_reason=?, updated_at=? WHERE id=?", ('20-map request refused by the server; re-planned as single-orientation blocks', now_iso(), b['id']))
-                return
+                return finish()
     blocks, results = legacy_shapes(conn, e['id'])
     paired = stats.paired_blocks_v2(blocks, results)
     by_id = {p['block']: p for p in paired}
@@ -1072,32 +1146,32 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
     d = decide(blocks, results, params)
     phase = 'confirm' if d['verdict'] == 'confirming' else 'screen' if d['verdict'] == 'screening' else None
     if phase is None:
-        return
+        return finish()
     target = params['confirm_blocks'] if phase == 'confirm' else params['screen_blocks']
     current = [b for b in blocks if b['phase'] == phase]
     if len(current) >= target:
-        return
+        return finish()
     panel = loads(e['confirmation_opponents'] if phase == 'confirm' else e['screen_opponents'], [])
     used = {b['opponent'] for b in current}
     excluded = {r['team_id'] for r in rows(conn, 'SELECT team_id FROM opponent_exclusions WHERE until>?', (snap.now,))}
     candidates_ = [o for o in panel if o not in used and o not in excluded]
     if not candidates_:
         summary['attention'].append(dict(kind='panel_exhausted', experiment=e['id'], phase=phase))
-        return
+        return finish()
     opponent = next((o for o in candidates_ if q[pool_of(snap, o)]['available'] >= 2 * maps_n), None)   # any panel opponent whose allowance has room
     if opponent is None:
         o = candidates_[0]
         summary['deferred'].append(dict(reason='quota_for_both_arms', experiment=e['id'], phase=phase, need=2 * maps_n, have=q[pool_of(snap, o)]['available'], pool=pool_of(snap, o)))
-        return
+        return finish()
     pool = pool_of(snap, opponent)
     if snap.active != e['control_submission']:
-        return
+        return finish()
     if in_blackout(cfg, snap.now):
         summary['deferred'].append(dict(reason='ranked_exposure_blackout', experiment=e['id'], phase=phase))
-        return
+        return finish()
     if ranked_in_flight(snap):
         summary['deferred'].append(dict(reason='ranked_series_in_flight', series=ranked_in_flight(snap), experiment=e['id'], phase=phase))
-        return
+        return finish()
     summary['plan'].append(dict(action='block', experiment=e['id'], phase=phase, opponent=opponent, games_per_arm=maps_n, shape=request_shape(conn, params)))
     if live:
         b = new_block(conn, e, phase, opponent, params)
@@ -1108,7 +1182,9 @@ def plan_and_dispatch(conn, root, cfg, snap, client, actor, q, summary):
                 q[pool]['available'] -= len(ids)
             elif summary.get('request_shape_refused'):
                 conn.execute("UPDATE blocks SET excluded_reason=?, updated_at=? WHERE id=?", ('20-map request refused by the server; re-planned as single-orientation blocks', now_iso(), b['id']))
-                return
+                return finish()
+
+    finish()
 
 
 def upload(conn, root, cfg, snap, client, actor, cand, summary):
