@@ -1,8 +1,8 @@
 # R-1 status — search-depth ladder on Ares (Lune lineage, Claude Opus 5.5)
 
-**State (30 Sep):** main results complete; finding at `docs/findings/2026-09-30-r1-search-ladder.md`. Three
-decomposition runs (flood-only, sprint-only and the whole-map late search) are still running and will be appended to
-the finding's addendum.
+**State (30 Sep):** complete; finding at `docs/findings/2026-09-30-r1-search-ladder.md` (addendum included).
+The flood-only and sprint-only arms at 8× are inert through r100. The whole-map late search is identical to the
+late cap at 384, so the late cap saturates by 384.
 
 ## Results
 
