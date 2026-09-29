@@ -1,0 +1,12 @@
+name = "renoir-22-scarcity"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "scarcity-conditioned exploration: a dragon whose own eat rate over the last 30 turns is below 1 per scarcity_turns=12 values never-seen cells at unseen_value x scarcity_boost=1.6 (5->8); fed dragons unchanged"
+expected_change = "QoS/Trauma/Dilemma econ up (07b showed +0.5 QoS) without the dense-map losses of 07b; econ~ +0.05"
+hypothesis = ""
+params = []
+status = "candidate (not registered)"
+fingerprint = "9956be2950e957895f4dd1306f321b3ae3d2ae1ab99aaa32348173cf37227659"

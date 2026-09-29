@@ -1,0 +1,12 @@
+name = "renoir-18c-visit0"
+lineage = "renoir"
+lane = "ra"
+author = "claude-opus/ra"
+language = "c++"
+lineage_parent = "renoir-00-base"
+mechanism = "revisit penalty off (sweep end point after 18a +0.033)"
+expected_change = "econ~ up if monotone"
+hypothesis = ""
+params = ["visit_weight=0.0"]
+status = "candidate (not registered)"
+fingerprint = "3b91fa930a7f1e2c45292c2ff09f453f71512045a16868073f5c0d48ca7d9530"

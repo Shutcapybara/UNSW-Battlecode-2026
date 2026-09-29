@@ -3,7 +3,7 @@
 Updated 30 Sep ~04:00 UTC. Lineage **Renoir** (`bots/renoir-NN-slug/`), branch `r/ra`, tooling `tools/ra/`
 (see `tools/ra/README.md`). Report: `docs/findings/2026-09-30-ra-lane.md`.
 
-**State:** 25 candidates screened, **0 accepted, 0 holds**; nothing registered. Best directions are the risk-taking
+**State:** 28 candidates screened (incl. one ablation), **0 accepted, 0 holds**; nothing registered. Best directions are the risk-taking
 moves (threat cost down, revisit penalty down, trap weight down) at +0.012 to +0.023 econ~ on 160 games, 3-5x
 short of the +0.05 bar. Queue continues in the cloud container.
 
@@ -31,7 +31,10 @@ short of the +0.05 bar. Queue continues in the cloud container.
 | 17c threat025 | threat cost x0.25 | 80 | +0.016 | [−0.033, 0.045] | +0.025 | −0.05/−0.03 | REJECT |
 | 17d threat0 | threat cost off | 160 | +0.019 | [−0.017, 0.041] | −0.037 | −0.08/−0.04 | REJECT (seat-A screen said +0.044) |
 | 18a visit005 | revisit penalty 0.15 -> 0.05 | 160 | +0.019 | [−0.001, 0.042] | +0.013 | −0.07/−0.01 | REJECT (seat-A screen said +0.033) |
-| 18c visit0 | revisit penalty off | 80 | +0.023 | [−0.007, 0.054] | +0.038 | +0.03/+0.03 | screen positive; seat B running |
+| 18c visit0 | revisit penalty off | 160 | +0.012 | [−0.010, 0.035] | +0.019 | −0.06/−0.02 | REJECT |
+| 13b slack1 | trap need len+1 | 80 | +0.008 | [−0.016, 0.040] | 0 | −0.01/−0.02 | REJECT |
+| 22 scarcity | NEW: starving dragons explore x1.6 | 160 | −0.024 | [−0.061, 0.019] | −0.069 | −0.08/0 | REJECT |
+| 23 nodevil | ABLATION: 32x16 terms off | 160 | −0.042 | [−0.103, −0.006] | −0.075 | −0.15/−0.04 | diagnostic: Devil win 1.00->0.31, Dilemma 0.62->0.75 |
 | 19a edens0 | no enemy-density devaluation of targets | 80 | −0.003 | [−0.088, 0.051] | −0.050 | −0.13/−0.03 | REJECT |
 | 20b hunt40 | hunters (len<=5 vs prey>=8) from round 40 (was 200) | 80 | 0.000 | [−0.010, 0.017] | −0.013 | −0.02/0 | REJECT (inert) |
 | 21a attack0 | head-on strike threshold 0.5 -> 0 | 80 | −0.039 | [−0.083, −0.002] | −0.050 | −0.08/−0.08 | REJECT |

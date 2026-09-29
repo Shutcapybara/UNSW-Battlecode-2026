@@ -1,0 +1,147 @@
+{
+ "bot": "renoir-17a-threat05",
+ "parent": "renoir-00-base",
+ "seeds": [
+  1
+ ],
+ "pool": {
+  "cand": {
+   "n": 160,
+   "win": 0.75,
+   "pearls@50|n": 1.1276029303056805,
+   "pearls@100|n": 1.2877858453751792,
+   "pearls@150|n": 1.304426573820569,
+   "pearls@250|n": 1.3062120084043845,
+   "units@100|n": 1.3007706766917293,
+   "total@100|n": 1.2321814231686181,
+   "births@100|n": 1.2602131629236308,
+   "econ|n": 1.2565068394764531,
+   "pearls@50|n~": 0.9792782180338402,
+   "pearls@100|n~": 1.104055428426138,
+   "pearls@150|n~": 1.1739171421483503,
+   "pearls@250|n~": 1.235538909696213,
+   "units@100|n~": 1.1622807017543861,
+   "total@100|n~": 1.0087719298245614,
+   "births@100|n~": 1.0952380952380953,
+   "econ|n~": 1.1231974245761354,
+   "pearls@50": 48.69375,
+   "pearls@100": 139.75625,
+   "pearls@150": 244.425,
+   "pearls@250": 450.2125,
+   "units@100": 22.8875,
+   "total@100": 56.225,
+   "births@100": 58.1625,
+   "death_wall_per1k": 8.735277092562875,
+   "death_self_per1k": 5.656027067521661,
+   "death_ally_body_per1k": 2.5597956940189506,
+   "death_h2h_ally_per1k": 2.368690225648641,
+   "death_invalid_per1k": 0.0,
+   "newborn_deaths10_per100": 34.13321860111769,
+   "top1_share@100": 0.1091005838879984,
+   "total_share@250": 0.674341752121442,
+   "sprint_cost_per_pearl": 0.024208008855123888,
+   "deaths_per1k": 25.10030601311235,
+   "death_h2h_enemy_per1k": 5.591512101070137,
+   "death_enemy_body_per1k": 0.18900383229008572,
+   "enclosed_death_share": 0.6902122941616488,
+   "portal_death_share": 0.32530527697515826
+  },
+  "parent": {
+   "n": 160,
+   "win": 0.7625,
+   "pearls@50|n": 1.130652586653102,
+   "pearls@100|n": 1.292265245895069,
+   "pearls@150|n": 1.3283707931149786,
+   "pearls@250|n": 1.3377483102609855,
+   "units@100|n": 1.3331473214285716,
+   "total@100|n": 1.2547247969477677,
+   "births@100|n": 1.2712477198391146,
+   "econ|n": 1.2722592339810337,
+   "pearls@50|n~": 0.9704433497536946,
+   "pearls@100|n~": 1.1017505470459519,
+   "pearls@150|n~": 1.1521317829457365,
+   "pearls@250|n~": 1.218505245324819,
+   "units@100|n~": 1.2,
+   "total@100|n~": 1.0350877192982457,
+   "births@100|n~": 1.085427135678392,
+   "econ|n~": 1.1107077312675506,
+   "pearls@50": 48.6375,
+   "pearls@100": 139.78125,
+   "pearls@150": 246.5375,
+   "pearls@250": 458.6375,
+   "units@100": 23.25625,
+   "total@100": 56.875,
+   "births@100": 58.375,
+   "death_wall_per1k": 8.730610496920878,
+   "death_self_per1k": 5.736301990455215,
+   "death_ally_body_per1k": 2.764763634631243,
+   "death_h2h_ally_per1k": 2.4005954853611238,
+   "death_invalid_per1k": 0.0,
+   "newborn_deaths10_per100": 34.50681154718531,
+   "top1_share@100": 0.10937725200089983,
+   "total_share@250": 0.6728616896460251,
+   "sprint_cost_per_pearl": 0.03908060925063167,
+   "deaths_per1k": 24.63518229360979,
+   "death_h2h_enemy_per1k": 4.766919473391448,
+   "death_enemy_body_per1k": 0.23599121284988245,
+   "enclosed_death_share": 0.7056346823461725,
+   "portal_death_share": 0.3323181234086414
+  },
+  "pairs": {
+   "pearls@100": {
+    "better": 53,
+    "same": 63,
+    "worse": 44,
+    "p": 0.4168
+   },
+   "total@100": {
+    "better": 41,
+    "same": 71,
+    "worse": 48,
+    "p": 0.525
+   },
+   "units@100": {
+    "better": 38,
+    "same": 83,
+    "worse": 39,
+    "p": 1.0
+   },
+   "win": {
+    "better": 13,
+    "same": 132,
+    "worse": 15,
+    "p": 0.8506
+   }
+  },
+  "boot": {
+   "econ~_delta_90": [
+    -0.023,
+    0.029
+   ],
+   "win_delta_90": [
+    -0.075,
+    0.038
+   ],
+   "n": 160
+  },
+  "map_econ_delta": {
+   "autarky": 0.002,
+   "default": -0.034,
+   "devil": -0.177,
+   "dilemma": 0.055,
+   "portals": 0.0,
+   "queen_of_spades": -0.013,
+   "schooltime": 0.044,
+   "slithery_fight": 0.006,
+   "trauma": 0.0,
+   "trophy": -0.04
+  }
+ },
+ "verdict": "REJECT",
+ "why": [
+  "pool econ~ +0.012 < +0.05 (mean -0.016)",
+  "units@100|n~ down -0.038",
+  "total@100|n~ down -0.026",
+  "pool win -0.012"
+ ]
+}
