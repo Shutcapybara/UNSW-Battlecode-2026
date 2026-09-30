@@ -23,9 +23,15 @@ kept) names a findings file, not opened.
   x 2 seats x seeds 1-3 = 696. Pool economy / field per-map median; gen economy / parent per-map mean.
 - Host shared with another lane (hb1), so a full gate takes ~1.5 h rather than ~25 min.
 
+## Screening rule
+
+Seed 1 of both panels first (160 + 232 games); a candidate whose pool Δecon point estimate is ≤ 0 stops there
+(logged as REJECT at screen). Otherwise the full D-032 gate (seeds 1–3, both panels) decides.
+
 ## Versions
 
 | version | mechanism | expected | pool Δecon [90 %] | gen Δecon [90 %] | CPU max | verdict | why |
 |---|---|---|---|---|---|---|---|
 | 00-base | verbatim copy | = | — | — | — | control | golden parity 0 divergent |
-| 01-nodevil | devil terms off (map identity) | ≤ 0 on devil only | pending | pending | — | parent (forced) | lane rule |
+| 01-nodevil | devil terms off (map identity) | ≤ 0 on devil only | (vs 00 pending) | — | — | parent (forced) | lane rule |
+| 02-bedwait | bed_wait 0 → 6 (value beds spawning ≤ 6 rounds after arrival) | + on fast-bed maps | −0.032 [−0.073, +0.010] (s1) | −0.033 [−0.086, +0.022] (s1, partial) | — (params) | REJECT at screen | gen p@50 −0.057 [−0.092, −0.023]; hovering at beds costs exploration |
