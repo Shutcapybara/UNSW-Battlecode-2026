@@ -1,0 +1,24 @@
+name = "ares-v36-no-pearl-portal-scout"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v35-crown-clipped-dash-threat"
+hypothesis = "When a dragon has no fresh pearl target, V35 can turn away from a visible unpaired portal toward lower-value unexplored ground."
+mechanism = "Retain V35 crown threat and split-time portal handoff. After a dragon's first three rounds, value a visible unpaired portal at 8 while it has no fresh pearl memory; ordinary unseen ground stays at 5, while known pearls and beds keep their existing values."
+expected_change = "In match 674727, dragon 1 routes south into the Queen of Spades portal at (6,17) instead of turning north at round 52."
+priority = 228
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v36-no-pearl-portal-scout.md",
+    "https://game.battlecode.au/visualiser?match=674727",
+]
+summary = "Match 674727 records V35 dragon 1 approaching the unpaired Queen of Spades portal edge at (6,17), then turning north on round 52. Its prior pearl was eaten at round 33 and cleared from local memory; its next pearl is round 86. V36 increases the no-fresh-pearl portal target value to 8 (unseen ground is 5), keeps fresh pearl and bed values, and waits until dragon age 3. Seed-1 sandbox live10 screen: 13-7 vs V35 and 9-11 vs V19 with zero runner errors; the full-match screen does not replay-drive the saved turn. The API lists submission v91 (ID 12728) as active; locally V36 remains experimental and the portal value is being narrowed."

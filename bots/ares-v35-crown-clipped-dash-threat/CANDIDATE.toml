@@ -1,0 +1,24 @@
+name = "ares-v35-crown-clipped-dash-threat"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v33-split-portal-route-handoff"
+hypothesis = "The elected length leader can die to an enemy dash that ends adjacent to it, while a clipped enemy tail makes V33 underestimate the opponent's dash reach."
+mechanism = "Retain V33 portal handoff. For crowned dragons only, interpret a clipped enemy chain as capable of the full legal dash and apply the existing threat penalty to adjacent head-contact cells as well as exact enemy endpoints."
+expected_change = "In match 669722, the round-477 king avoids the adjacent contact cell reached by enemy 414's dash and retains its length."
+priority = 227
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v35-crown-clipped-dash-threat.md",
+    "https://game.battlecode.au/visualiser?match=658574",
+]
+summary = "V35 targets match 669722: the clipped enemy gets maximum dash reach, and crown threat cost covers adjacent head-contact cells. Replay-driven round-477 action changes from S to WN. Seed-1 direct screens on ten live maps and both seats: 10-10 vs V33, 6-14 vs V32, 9-11 vs V28, 13-7 vs V19 (38-42 overall), zero runner errors. Uploaded as v90 (ID 12675), API status active; remains experimental and outside FRONTIER.md. API source hash: 870f4bbb1b20371e472728363fe05479ecf92c0a9d260ce70c4c21106eb04c1d."

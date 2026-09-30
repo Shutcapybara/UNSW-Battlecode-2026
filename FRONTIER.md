@@ -188,16 +188,20 @@ the [Ares V06 notes](docs/ares-family.md#v06--expanded-search-and-supported-thre
 
 ## Defaults and upkeep
 
-The contest API lists **Ares V33 — `ares-v33-split-portal-route-handoff-ai`,
-submission v89 (ID 12584)** as active, uploaded 2026-09-30 05:24 UTC. The
+The contest API lists **Ares V36 — `ares-v36-no-pearl-portal-scout-ai`,
+submission v91 (ID 12728)** as active, uploaded 2026-09-30 07:02 UTC. The
 upload auto-activated when processed. Its API source hash is
-`fd313ece33ff0dfc14bb1d04dd96c8e6e291f269ac015146f2c226c95c8ea776`. This
-server deployment does not promote V33 locally: it remains experimental and
-has only replay-state route verification, with no fresh full-match screen. The
-previous active upload was Ares V32, submission v88 (ID 12501); V32's finding
-records its earlier 11–9 one-seed screen against V19. See the [V28 finding](docs/findings/2026-09-30-ares-v28-minimum-sacrifice-enclosure-split.md),
+`8d5e4b3dba5ec9f948d4985581349267928b88933da47dc4dda847d57b6aa0b1`. Server
+deployment does not promote V36 locally: it remains experimental, with its
+seed-1 screen showing 13–7 vs V35 and 9–11 vs V19, and seed-2 checks pending.
+The previous active upload was Ares V35, submission v90 (ID 12675), whose API
+source hash was
+`870f4bbb1b20371e472728363fe05479ecf92c0a9d260ce70c4c21106eb04c1d`. See the
+[V28 finding](docs/findings/2026-09-30-ares-v28-minimum-sacrifice-enclosure-split.md),
 [V32 finding](docs/findings/2026-09-30-ares-v32-dead-end-split-orientation.md),
-and [V33 finding](docs/findings/2026-09-30-ares-v33-split-portal-route-handoff.md).
+[V33 finding](docs/findings/2026-09-30-ares-v33-split-portal-route-handoff.md),
+[V35 finding](docs/findings/2026-09-30-ares-v35-crown-clipped-dash-threat.md),
+and [V36 finding](docs/findings/2026-09-30-ares-v36-no-pearl-portal-scout.md).
 [`comparison.toml`](comparison.toml) keeps Ouroboros V10, Hunter V14, Hunter
 V20, Fry V14, and Kraken V04 as controls. See [`docs/benchmarking.md`](docs/benchmarking.md)
 for the workflow, [`game_stats/README.md`](game_stats/README.md) for the ledger,
