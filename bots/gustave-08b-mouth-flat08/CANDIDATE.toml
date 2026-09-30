@@ -1,0 +1,12 @@
+name = "gustave-08b-mouth-flat08"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "STACK sweep point: 07c"s portal-mouth rule on a milder flat cut, x0.80 on unseen-cell and bed values (Renoir 07c unseen 4 = x0.8: +0.061, ally h2h +22 %). 08a (x0.70) left wall +11 %, self +12 %, ally h2h +11 %."
+expected_change = "econ~ ~+0.05 vs gustave-01 with every tier-2 rate within +10 %"
+hypothesis = "the self/wall excess scales with the cut depth; the mouth rule handles the ally h2h"
+params = ["ew_floor=0.8", "ew_cap=0.8"]
+status = "candidate (not registered)"
+fingerprint = "4c204e43d75522750dba0d8f6d5f554b44164ba3284017df08555e400d38d7d2"
