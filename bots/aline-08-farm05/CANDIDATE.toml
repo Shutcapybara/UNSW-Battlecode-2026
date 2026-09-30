@@ -1,0 +1,12 @@
+name = "aline-08-farm05"
+lineage = "aline"
+lane = "rb"
+author = "claude-opus-5.5/rb"
+language = "c++"
+lineage_parent = "aline-01-nodevil"
+mechanism = "trap_farm_factor 0.15 -> 0.05: cheaper pocket farming (enter a pocket we can split out of)"
+expected_change = "small + economy (03 showed the farm pays: removing it cost -0.068); wall deaths slightly up"
+hypothesis = ""
+params = ["trap_farm_factor=0.05"]
+status = "candidate (not registered)"
+fingerprint = "3d65bf18c2d2770d8fc57b1e681a202f67610fda512456d2f16a8eb895eec01b"

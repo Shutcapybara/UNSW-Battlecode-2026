@@ -35,3 +35,5 @@ Seed 1 of both panels first (160 + 232 games); a candidate whose pool Δecon poi
 | 00-base | verbatim copy | = | — | — | — | control | golden parity 0 divergent |
 | 01-nodevil | devil terms off (map identity) | ≤ 0 on devil only | (vs 00 pending) | — | — | parent (forced) | lane rule |
 | 02-bedwait | bed_wait 0 → 6 (value beds spawning ≤ 6 rounds after arrival) | + on fast-bed maps | −0.032 [−0.073, +0.010] (s1) | −0.033 [−0.086, +0.022] (s1, partial) | — (params) | REJECT at screen | gen p@50 −0.057 [−0.092, −0.023]; hovering at beds costs exploration |
+| 03-nofarm | trap_farm_factor 0.15 → 1.0 (no pocket-farm discount) | hygiene ↓, econ ? | −0.068 [−0.099, −0.037] (s1) | not run | — (params) | REJECT at screen | every checkpoint down; wall deaths only −6 %: the split-out pocket farm pays |
+| 04-dive5 | dive_value 3 → 5 (unpaired portal = unseen cell as a target) | + p@50 on portal-gated maps | +0.191 [+0.134, +0.252] (s1) | +0.119 [+0.075, +0.167] (s1) | — (params) | screen passed; full gate running | p@50 +0.30; tier-2 up 9–23 % (more blind crossings) and units/length@100 lo < −0.02 at s1 |
