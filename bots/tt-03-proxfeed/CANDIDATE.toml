@@ -1,0 +1,35 @@
+name = "tt-03-proxfeed"
+lineage = "tt"
+author = "claude/tt"
+language = "c++"
+lineage_parent = "hb1-14-prior-r540"
+hypothesis = "Fixed-round earlier feeding (tt-01/tt-02) dissolves the swarm at once and gives up elimination wins. Stockfish converts gradually: from r250 a small dragon next to an ally head kills itself at ~3 % per turn (1.2 % at distance 2). A slow proximity feed grows the longest dragon while the swarm keeps its elimination pressure."
+mechanism = "One block vs hb1-14 (uploadable Ares + Heartbreaker direction prior): from r250, length <= 3, not the crown, a strictly longer ally head adjacent -> self-kill with p = 0.03 per turn (distance 2: 0.012), via the feeder's own fatal-move routine. Rates and start round are Stockfish's measured values, fixed before screening. Crown/feeder logic unchanged."
+expected_change = "Longer longest dragon at r400/r490 and fewer round-limit losses with a material lead, without the loss of elimination wins seen in tt-01/tt-02."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/bifrost-family.md",
+    "docs/skadi.md",
+    "docs/fenrir-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Restores high-effort target/flood/triple search and Fafnir size-matched threat support in C++. V05 and active V04 v83 remain untouched. Benchmark and sandbox CPU/TLE results are recorded in the V06 finding."
