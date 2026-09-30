@@ -613,3 +613,15 @@ reports the r25/r50 per-map percentiles from now on; RL-1's curve-matching rewar
 `cx/b`. `cx/a` (two commits of pre-R-4 chassis tooling) conflicts with the reconciled `tools/cx` and stays
 unmerged as history. The desktop lanes (HB-1, rb, rc, SF-1 "Sophie", RL-1) have no branches on origin yet.
 
+**D-038 — HB-1 read; `hb1-12-direction-prior` and `hb1-13-phased-prior` registered at the head of the queue; X-1
+issued (1 Oct 02:00 UTC).** HB-1 found Heartbreaker to be a rule wrapper around one learned decision (direction), a
+static policy 27–29 Sep, and — the result that matters — that its direction model used as a prior inside Ares's
+search gives 139–21 on the z1 panel (V06: 122–38) with economy +0.03–0.04 and every death rate down 30–40 %,
+replicated at seed 2 (hb1-12; hb1-13 fades the prior after r150 with similar numbers). Under D-032 this is an
+accept on every guard; it is registered for the dev screen at 530/525 (executor still shadow). The lead's
+three-tier design (CNN/RNN representation → XGBoost decision heads → policy improvement, cycled, over an
+algorithmic map memory) is issued as X-1 with expert iteration (search relabels, trees distil) as the improvement
+operator and hb1-12's search-plus-prior as the starting architecture; RL-1 may be folded into it. Sonar is split
+into receiving (observations, learned use) and sending (a head under a fixed L32/L33 protocol); emergent
+communication is out of scope. Ledger: L27 → 0.7.
+

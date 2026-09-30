@@ -124,6 +124,12 @@ def corpus_queue(games, teams, done):
 
 
 # ------------------------------------------------------------------ one game
+def bot_name(path):
+    """bot directory name from the replay header path (drops build dirs such as .unswbc-build and trailing slashes)"""
+    parts = [p for p in str(path).replace('\\', '/').split('/') if p and not p.startswith('.unswbc') and p not in ('build', 'src')]
+    return parts[-1] if parts else str(path)
+
+
 def process(args):
     path, gid, meta = args
     from tools.analysis.features.frame import decode
@@ -138,7 +144,7 @@ def process(args):
     except Exception as e:
         return dict(error=f'{type(e).__name__}: {e}', game=gid, path=str(path))
     R = x['R']
-    side_team = {'A': meta.get('team_a', g['botA'].rstrip('/').split('/')[-1]), 'B': meta.get('team_b', g['botB'].rstrip('/').split('/')[-1])}
+    side_team = {'A': meta.get('team_a', bot_name(g['botA'])), 'B': meta.get('team_b', bot_name(g['botB']))}
     mapname = 'Prisoners Dilemma 10' if g['map'] == 'Prisoners Dilemma' and g.get('n_initial') == 10 else g['map']
     ctx = dict(game=gid, map=mapname, source=meta.get('source', ''), run=meta.get('run', ''))
     # ---- sides
