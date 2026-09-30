@@ -84,3 +84,12 @@ memory test is worth running on a game subset, and a local-view mimic should be 
   suicide is now its own command class `X`. Heartbreaker's results are unaffected (no such rows). `q2_command`'s
   per-game sample now scales with `HB_CAP_FACTOR` (its fixed 1,500 rows/game ≈ 15 GB for 4,126 games; the first run
   was terminated at load, likely by memory pressure).
+
+### cheji bt — Q3 stability (`game_stats/runs/tt70-q3-windows.json`)
+
+Static across the well-sampled span: windows 12–16 (28 Sep 18:00 – 30 Sep 00:00 UTC, 94k–287k rows each) agree
+within ~1 pp whether fitted within the window, forward or backward (direction 0.726–0.737, gate 0.807–0.824, child
+size 0.896–0.912). Change-points at 28 Sep 11:00 and 13:00 UTC coincide with the corpus going from ~5 to 100+ games
+per window — most likely sampling, not a new policy. Possible change on 30 Sep: child size fitted on 30 Sep 00–06
+scores 0.844 on 06–12 (usual ~0.90), the window with the lowest win rate (0.70, 308 games) — thin, flagged only.
+Ladder: Elo 2060–2141, rank 1–5 over 274 snapshots, 2096 at the last.
