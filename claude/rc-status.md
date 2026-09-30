@@ -49,7 +49,11 @@ in ~61 %. Visible contests (05a's target) are ~1 %. → 07a (mouth occupancy rul
 | 08b-mouth-flat08 | STACK: 07c on a ×0.80 cut | L14, L29, L23 | +0.009 [−0.019, +0.036] (seeds 1–3, 480; seed 1 alone +0.027) | +0.010 [−0.002, +0.028] (744) | −0.020 / +0.027 / +0.008 / +0.019 | +0.000 [−0.048, +0.027] / −0.021 [−0.043, +0.024] | ally h2h −8 %, wall +5 %, self +4 %, ally body −8 %, nb10 +4 % | 8.72 M | **REJECT** (econ, units, length lb) | Hygiene-clean and neutral: the ×0.8 cut with the mouth rule buys nothing measurable on either panel. 08a/08b bracket the trade: the cut's economy comes with its retention cost. |
 | 09a-portalintent | Stateful portal intention on 07c: commit to the route's mouth, keep immunity for 6 rounds after the route last crossed it, clear on crossing | L30 (proposed), L23 | vs 01: −0.005 [−0.030, +0.033]; **vs 07c: −0.005 [−0.027, +0.013]** (seed 1, 160) | not run | vs 07c: −0.006 / −0.010 / −0.010 / +0.004 | vs 07c: +0.018 / +0.009 | vs 07c: **ally h2h +11 %** (2.06→2.30); vs 01: ally h2h −12 % | – | REJECT vs 07c (HOLD vs 01) | Persistence adds immunity without economy: 07c's per-turn route exemption had already removed the transit tax (07b→07c), so the extra immune rounds are loitering. Win vs 01 +0.056 [0.000, +0.113]. Statefulness is not the missing piece for the portal case; L30's general layer (commitments with abandonment rules) stays proposed for the next phase. |
 
-## State at end of phase (30 Sep, 17:55 ACST)
+## State at end of phase (30 Sep, 17:55 ACST) — lane paused by the director
+
+Wrap-up, all versions, final ledger proposals, open directives and resume instructions:
+`docs/findings/2026-09-30-rc-lane.md` §Session wrap-up and handoff.
+
 
 - Accepted stack: `gustave-01-nodevil` (nothing has passed D-032).
 - HOLD: `gustave-07c-mouthroute`, confirmed at seeds 1–3 on both panels. The first mechanism in the programme to
