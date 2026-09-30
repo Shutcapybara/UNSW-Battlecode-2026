@@ -269,3 +269,12 @@ Measurement: the R-4 scorecard (`tools.analysis.features.scorecard`, copied from
 parent Ares V06**, for hb1-04 and the three ports, as one detached chain (`tools/hb1/q4q5_chain.sh`; log
 `build/hb1/games/q4q5_chain.log`). Scope cut from z1+gen to z1 only: at the shared host's measured ~2 games/min
 (load ~100), z1+gen for five bots is ~26 h; z1 (the gate panel) is ~7 h. The gen panel follows if wanted.
+
+### Q5 result 1 — hb1-10-escape-split vs Ares V06, z1 panel seed 1 (`game_stats/runs/hb1-10-escape-split-z1-s1.{json,md}`)
+
+**GATE: fail** (verdict recorded as-is). W–L 132–28 vs parent 122–38 (+6.25 pp expected-score share); economy mean
++0.040 (r50 +0.044, r100 +0.031, r150 +0.017, r250 +0.068); length r100 +0.059; births r100 +0.043; dragons r100
+−0.005. Tier-2: own-body deaths 3.66 → 4.05 /1k (**+10.5 %**, over the 10 % limit), wall +1.5 %, ally body −4.4 %,
+ally head-on −0.8 %. The port helps on every economy checkpoint and on wins; it fails on one hygiene rate by 0.5 pp,
+plausibly parent and child tangling after a split in a cramped space. One seed; a paired seed 2 (D-032) is the next
+measurement for this row. Ledger: L24 (escape split at low reach) — supportive.
