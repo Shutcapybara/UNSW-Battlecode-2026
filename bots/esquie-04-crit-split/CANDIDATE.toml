@@ -1,0 +1,18 @@
+name = "esquie-04-crit-split"
+lineage = "esquie"
+author = "glm-5.3/esquie"
+language = "c++"
+lineage_parent = "esquie-01-nodevil"
+hypothesis = "M-1 Part 3 for the leak cluster (Slithery trapped 101.3, Portals 81.9, Devil 68.8 per 1k dt vs top-10 18.5): the teammates' V19 critical-enclosure split - when a five-step body-blocked reach probe says the dragon is critically enclosed (<=8 cells) and the best legal move stays there, fire the tail escape split (L24, BASELINES item 4; only ever 20-game screened)."
+mechanism = "V19 port onto the esquie base: enclosure_reach probe + trigger before the momentum update; the base's own tyr_escape_split provides the split. Switch-off = parent."
+expected_change = "trapped row down on Slithery/Portals with economy not down; per the screens, some own-body churn cost is possible"
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["bots/ares-v19-critical-enclosure-split/README.md", "docs/findings/2026-10-01-esquie-map-anatomy.md"]
+summary = "Esquie M-1. V19 screens: 11-9 vs V09, <=8 hazard 680->615, Slithery trapped 103.9->82.8 but Portals 65->75.8. Fixed panel + gen + per-map table = this run."
+
+[activation_contract]
+kind = "legacy_none"
+note = "one params switch (esquie_crit_split); identity by fingerprint"
