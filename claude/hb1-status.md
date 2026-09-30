@@ -307,3 +307,12 @@ the field-relative yardstick: by far the most productive bot on the panel early,
 material without conversion, as in the corpus. Note: 2 of 160 fixtures (Slithery Fight vs the Python Vibing++ mimic)
 ran past run_panel's 1800 s and were refilled with a 7200 s timeout (`tools/hb1/run_panel_long.py`); one duplicate
 index row from overlapping runners was removed (backup `index.jsonl.bak-dups`).
+
+### Q5 result 4 — hb1-13-phased-prior vs Ares V06, z1 seed 1 (`game_stats/runs/hb1-13-phased-prior-z1-s1.{json,md}`)
+
+**GATE: hold**, but worse than hb1-12: W–L 132–28 (hb1-12 139–21); economy +0.0447 (hb1-12 +0.0393); r50/r100/r150
+identical to hb1-12 (the two bots play the same games until r150); r250 −0.067 (hb1-12 −0.089); wall −22.8 %,
+ally body −17.5 %, ally head-on −10.3 %, own body +1.4 % (hb1-12: −36.5 / −39.1 / −34.0 / −8.1 %). Fading the prior
+recovers only 0.022 of the r250 loss and gives back 7 wins and most of the late hygiene gain. The late-economy dip
+is not the prior acting late; it follows from the state the prior builds early (more dragons) — L03's composition
+caveat, not a phase-profile case. hb1-12 remains the Q5 lead; paired seed 2 decides it.
