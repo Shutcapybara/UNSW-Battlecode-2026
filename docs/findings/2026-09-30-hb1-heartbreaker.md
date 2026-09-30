@@ -125,18 +125,31 @@ parent V06 (122–38, economy 1.1107):
   prior inside Ares's search, is the best single change measured this phase (+10.6 pp, every death rate down,
   pearls r50 +0.160). Its gate, transplanted alone, starves Ares of dragons: it encodes Heartbreaker's eating rhythm,
   which comes from its own steering.
-- hb1-12 misses the economy gate only through late economy (r250 −0.089 against r50 +0.160): the H10/L03 phase
-  bifurcation. `hb1-13-phased-prior` (prior faded r150 → r250, fixed before screening) and paired seed 2 for
-  hb1-10 / hb1-12 / hb1-13 are running (`tools/hb1/q5_chain2.sh`); results are appended to `claude/hb1-status.md`.
-- hb1-10 improves every pearl checkpoint and wins, failing on one hygiene rate by 0.5 pp; seed 2 decides it.
+- Paired seed 2 (D-032; `game_stats/runs/hb1-1{0,2,3}-*-z1-s2.*`):
+
+| version | seed 1 | seed 2 |
+|---|---|---|
+| hb1-12-direction-prior | hold: 139–21, economy +0.039, all tier-2 down | hold: 139–21, economy +0.028, wall −29 %, own −18 %, ally body −43 %, ally head-on −49 % |
+| hb1-13-phased-prior (prior faded r150 → r250) | hold: 132–28, economy +0.045 | hold: +9.38 pp, economy +0.027 |
+| hb1-10-escape-split | fail: own body +10.5 %; economy +0.040, +6.25 pp | fail: wall +10 %, ally head-on +19 %; economy +0.049, +1.25 pp |
+
+  The seed changes pearl respawns more than outcomes (W–L identical for V06 and hb1-12 across seeds), so seed 2 is
+  weaker independent evidence than a new opponent set would be.
+- **hb1-12 is the Q5 result**: Heartbreaker's learned direction choice, used as a prior inside Ares's search,
+  holds on both seeds with +10.6 pp and every death rate down; it misses the +0.05 economy gate only through late
+  economy (r250 −0.089 / −0.061). Fading the prior late (hb1-13) keeps the early gain but does not recover the late
+  economy and costs wins on both seeds — the dip follows from the state the prior builds early (L03 composition),
+  not from the prior acting late.
+- The escape split (hb1-10) adds economy on both seeds but fails hygiene on both; its win gain does not replicate.
+- Not run: the generalisation panel (cut for time on the shared host).
 
 ## Ledger rows touched and proposed weights
 
 | row | current | proposed | evidence |
 |---|---:|---:|---|
 | L27 learned decision functions beat hand rules for a specific decision at ≈ 0 live CPU | 0.5 | **0.7** | First C++ learned decision measured end-to-end (exact export, ≤ 3 M marginal points), a significant dose–response in the mimic (p = 0.011), and on our own bot a learned *prior* over Ares's hand-weighted move score: hold, +10.6 pp, all death rates down (hb1-12). Caveat from hb1-11: a learned decision whose inputs depend on the donor's other decisions does not transfer alone. |
-| L24 trapped hazard ≤ 8 reach; escape split | 0.5 | **0.6** | Heartbreaker's W1 escape split on Ares: economy +0.040, wins +6.25 pp, every pearl checkpoint up; fails own-body hygiene by 0.5 pp on one seed (hb1-10). Seed 2 pending. |
+| L24 trapped hazard ≤ 8 reach; escape split | 0.5 | 0.5 (unchanged) | Heartbreaker's W1 escape split on Ares adds economy on both seeds (+0.040, +0.049) but fails collision hygiene on both (own body +10.5 %; wall +10 %, ally head-on +19 %) and its win gain does not replicate (+6.25 → +1.25 pp): the form moves economy, the hazard cost is real (hb1-10). |
 | L05 leaks fixable on Ares | 0.7 | 0.7 (unchanged) | hb1-12 cuts wall −36.5 %, ally body −39.1 %, ally head-on −34.0 % on Ares — leaks are fixable, but via steering rather than a leak switch; the lineage claim is not tested here. |
 | L04 / L20 weights | 0.6 / 0.2 | unchanged | Not tested by HB-1 so far. |
 | new: a strong opponent's strength can concentrate in one learned decision, and imitation strength is steep in that decision's accuracy | — | 0.7 | Q1 gap table; hb1-01/02/03 dose–response vs Ares V04. |
-| new: a donor's learned steering transfers to our search as a prior better than its rules do | — | 0.6 | hb1-12 hold (+10.6 pp) vs hb1-11 fail (−11.6 pp) on the same panel; one seed each. |
+| new: a donor's learned steering transfers to our search as a prior better than its rules do | — | 0.7 | hb1-12 hold on two seeds (+10.6 pp both) vs hb1-11 fail (−11.6 pp) on the same panel. |
