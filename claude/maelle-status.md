@@ -59,3 +59,18 @@ bed/unseen targets (`food_free`'s scope).
 Reading: top sides are distance-dominated; conditional on distance they shade away from ally- and enemy-dense
 pearls (the crowding / risk costs have the expected sign) and slightly toward death cells (corpse food). All
 implied weights are small in bot units (|w| < 0.1), so the scans centre near zero for pearl-scoped features.
+
+## Feature 1 — `food_free` (L12; maelle-03-foodfree), scan in progress
+
+Feature: food_ew box mean on bed/unseen target candidates × (1 − ally_ew), log-linear on the target value.
+Expected sign before the run: positive (Sciel-03a +0.067 econ with a positive food weight), with ally head-on not
+rising. Scan 1, pool seed 1, 160 paired fixtures per value vs maelle-02 (w = 0):
+
+| w | dJ | d econ | d p50 | d p100 | d p150 | d p250 | d units@100 | d length@100 | d win | d ally h2h /1k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| −0.5 | +0.030 | +0.023 | −0.003 | +0.008 | +0.026 | +0.059 | +0.001 | +0.009 | +0.031 | −0.06 |
+| +0.75 | −0.092 | −0.070 | −0.109 | −0.067 | −0.040 | −0.065 | −0.061 | −0.070 | 0.000 | −0.14 |
+| +1.5 | −0.225 | −0.172 | −0.176 | −0.191 | −0.158 | −0.165 | −0.140 | −0.158 | −0.050 | −0.27 |
+
+The expected sign was wrong: on this parent, pulling exploration toward food-dense uncrowded beds/unseen cells costs
+economy monotonically; the optimum is at the negative edge of the range. Extending to −1.0, −2.0.
