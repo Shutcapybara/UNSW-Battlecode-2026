@@ -325,3 +325,9 @@ more than outcomes, so seed 2 is less independent evidence than a new opponent s
 −18.1 %, ally body −43.3 %, ally head-on −48.8 %. Two-seed reading: +10.6 pp win share and every death rate down on
 both seeds, early economy up, late economy (r250) down on both; two-seed economy mean +0.034 — hold by the letter of
 the gate. hb1-12 is the Q5 candidate to hand to the director (register request is the director's call).
+
+### Q5 result 6 — hb1-13-phased-prior, paired seed 2 (`game_stats/runs/hb1-13-phased-prior-z1-s2.{json,md}`)
+
+**GATE: hold**: economy +0.0268 (hb1-12 s2 +0.0284), dragons +0.293, length +0.255 (identical to hb1-12 through
+r150), win share +9.38 pp (hb1-12 +10.63 pp), no tier-2 rate up > 10 %. Two seeds agree: fading the prior late does
+not recover the late economy and costs wins. hb1-12 (unfaded) stays the Q5 candidate.
