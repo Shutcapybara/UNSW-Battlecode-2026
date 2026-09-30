@@ -24,6 +24,8 @@ Q = B / 'q1'
 OUT = ROOT / 'game_stats' / 'runs' / f'{TAG}-q1-gaps.json'
 SEED = 62
 CAP = dict(gate=1200, direction=1200, sonar=600, alloc=None, late=None)
+# HB_CAP_FACTOR scales the per-game caps so that teams with many games (lane tt) keep ~1 M rows per decision.
+CAP = {k: (int(v * float(os.environ.get('HB_CAP_FACTOR', 1))) if v else v) for k, v in CAP.items()}
 MAP_ID = {'W', 'H', 'x', 'y', 'xn', 'yn', 'facing_abs', 'map', 'game', 'dragon'}
 LABELS = {'y_family', 'y_first', 'y_nsteps', 'y_seq', 'y_split', 'y_child', 'y_parent', 'y_sonar_n',
           'y_sonar_mask', 'y_sonar_v', 'y_sonar_vset', 'post_died', 'post_reason'}
