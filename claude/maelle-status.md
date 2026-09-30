@@ -39,6 +39,7 @@ The desktop is shared with lanes hb1, rb, rc (load average 97–130 on 16 cores 
 | Version | Feature | Ledger row | Fitted weight [interval] | Surface | Pool Δecon~ [90 %] | Gen Δecon~ [90 %] | Per-checkpoint | CPU max | Verdict |
 |---|---|---|---|---|---|---|---|---|---|
 | maelle-03-foodfree | food_free = food_ew × (1 − ally_ew) on bed/unseen targets | L12 | −1.3 [−1.90, −1.00] (pool s1 scan) | plateau −2..−0.5 (dJ +0.03..+0.05 on seed 1), steep loss for w > 0 | −0.030 [−0.057, +0.000] | −0.019 [−0.041, +0.003] | pool p50 −0.061, p100 −0.041, p150 −0.001, p250 −0.015; gen p150 −0.045, p250 −0.033 | < 11.98 M (all-on probe) | **REJECT** (pool econ lb ≤ 0; units lb −0.040; pool win lb −0.050; gen econ lb −0.041; gen win −0.044) |
+| maelle-04-allycrowd | ally_ew crowding cost on targets | L12 (S-1) | −1.4 [−1.55, −1.25] (pool s1+2 scan) | interior optimum; material/hygiene rise to −1.5, economy peaks −1..−1.5, −3 under-eats | −0.012 [−0.037, +0.011] (mean form +0.025 [−0.002, +0.051]) | −0.021 [−0.041, +0.007] | pool flat at every checkpoint; gen p50 0.000, p100 +0.002, p150 −0.025, **p250 −0.061** | < 11.98 M (all-on probe) | **REJECT** (pool econ lb ≤ 0; pool win lb −0.021; gen econ lb −0.041; gen win −0.069) — units/length@100 +0.04..+0.05 on both panels, every death rate down (gen self −27 %, ally-body −37 %) |
 
 ## Priors (fit.py, corpus, 30 Sep)
 
@@ -142,3 +143,12 @@ it is being re-run on the parent (maelle-02, w = 0), values −3, −1.5, −0.5
 Surface: dJ = −0.063 w² − 0.179 w; interior argmax **−1.41, 90 % [−1.55, −1.25]**. Economy peaks near −1 to
 −1.5 (+0.03); material and ally head-on improve strongly to −1.5; beyond that the swarm under-eats (−3: econ
 −0.11). Compiled into `maelle-04-allycrowd` (wt_ally = −1.4, parent maelle-02); D-032 gate running.
+
+### maelle-04 verdict (D-032, seeds 1–3): REJECT, with a phase signature
+
+The crowding cost buys material (units/length@100 +0.04..+0.05, pairs p < 0.001 on both panels) and the largest
+hygiene gain in the lane (gen self −27 %, ally-body −37 %, wall −11 %), with economy flat early and **late economy
+lost off-pool** (gen p@250 −0.061 [−0.090, −0.026], gen win −0.069). Per-seed pool mean-form econ +0.060 / +0.013 /
++0.002; gen econ~ +0.000 / +0.018 / −0.046. Reading (L03): spreading pays in the opening and midgame and costs late,
+when food is scarce and concentrated. Next: the clock interaction on the same feature — target term
+ally·(wt_ally + wt_ally_clock·round/500) — scanned on top of maelle-04 over pool + gen, seeds 1+2.
