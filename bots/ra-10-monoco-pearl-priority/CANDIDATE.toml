@@ -1,0 +1,26 @@
+name = "ra-10-monoco-pearl-priority"
+lineage = "monoco"
+author = "codex/ra"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Placing more value on a visible pearl than on other target types will improve near-term pearl conversion without sacrificing retained material."
+mechanism = "When enabled, raise the existing immediate pearl target value from 10.0 to 12.0; switch-off restores the Ares V06 value."
+expected_change = "Raise the mean of the four map-normalized pearl checkpoints by at least 0.05; r100 dragons and length must not fall."
+priority = 202
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/hub/prompts/2026-09-29-R-index.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-30-cx-c01-eff.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Ares V06, atlas off: default-on switch for stronger immediate pearl value; switching off restores parent behavior."
