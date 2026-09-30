@@ -26,5 +26,9 @@ The seed-1 sandbox screen used unswbc 1.2.2, the ten live maps, and both
 seats, with zero runner errors. V37 scored **17–3 vs V35** and **10–10 vs
 V19**. On Queen of Spades it scored 2–0 against both opponents. V35's saved
 V19 screen was 13–7, so V37 still does not improve on the best V19 result. It
-is unsubmitted and remains experimental. Results are in the ignored
+remains experimental and outside the local frontier. It was uploaded as
+submission v92 (ID 12851) on 2026-09-30 08:44 UTC and became active. Its API
+source hash is
+`d0b6e74c95f9d98e1cbceb58c8d82179d21ad676b699aa2ab3e11d2248ca683f`.
+Results are in the ignored
 `build/ares-v37-vs-v35-vs-v19-live10-seed1-20260930/` directory.

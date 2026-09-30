@@ -374,10 +374,50 @@ unseen ground at value 5 for a nearby portal approach like the one in match
 40-round pearl-memory check and age-3 gate. V37's seed-1 sandbox screen on
 the ten live maps and both seats scored 17–3 vs V35 and 10–10 vs V19, with
 zero errors. It went 2–0 against both opponents
-on Queen of Spades, but did not improve on V35's 13–7 V19 result. V37 remains
-unsubmitted and experimental. See the
-[V37 finding](findings/2026-09-30-ares-v37-near-portal-scout.md) and
-[source snapshot](../bots/ares-v37-near-portal-scout/).
+on Queen of Spades, but did not improve on V35's 13–7 V19 result. V37 was
+uploaded as submission v92 (ID 12851) on 2026-09-30 08:44 UTC and became active;
+its API source hash is
+`d0b6e74c95f9d98e1cbceb58c8d82179d21ad676b699aa2ab3e11d2248ca683f`. The upload
+does not change its local experimental status or admit it to the frontier. For
+details, see the
+[V37 finding](findings/2026-09-30-ares-v37-near-portal-scout.md) and [source snapshot](../bots/ares-v37-near-portal-scout/).
+
+## Ares V38 — purposeful short sprints
+
+V38 branches from V37 and adds a score premium to two-step moves by length-3
+dragons. The premium is repaid only when the extra step collects a pearl or
+reaches a selected high-value target; a sufficiently strong tactical score can
+still justify the dash. Its focused regression distinguishes V37's EN dash
+from V38's one-step E in a dense-threat stress fixture and preserves dashes to
+a pearl and ripe bed. The seed-1 ten-map panel lost **7–13** to V37. Replay
+action counts showed V38 dashing on 3.89% of length-3 turns, versus 1.12% for
+V37, so the 4.0 reimbursement overcompensates. The local replay reconstruction
+omits persistent policy and radio state, so it does not reproduce the exact
+match-686866 action. V38 remains an experimental control. See the
+[V38 finding](findings/2026-09-30-ares-v38-purposeful-sprints.md) and
+[source snapshot](../bots/ares-v38-purposeful-sprints/).
+
+## Ares V39 — reduced short-sprint reimbursement
+
+V39 lowers V38's length-3 dash reimbursement to 2.5 and removes the refund for
+escape-plan arrivals. Its seed-1 ten-map panel also lost **7–13** to V37, so
+lowering the bonus did not change the direct result. See the
+[V39 finding](findings/2026-09-30-ares-v39-balanced-short-sprints.md) and
+[source snapshot](../bots/ares-v39-balanced-short-sprints/).
+
+## Ares V40 — length-priced sprints
+
+V40 branches from V37 and removes the duplicate sprint charge: the simulator
+already accounts for each extra move by removing one tail segment. Successful
+moves score that length change once, pearls do not receive a separate generic
+growth bonus, and uncontested pearls collected on a dash get a small future-
+growth opportunity cost. A pearl within two tiles of an enemy instead receives
+a one-segment denial value. On the seed-1 ten-map panel, V40 beat V37 **11–9**
+with zero runner errors. Length-3 dash rates were 2.43% for V40 and 1.94% for
+V37 on this panel. This is a positive one-seed development screen, not a
+promotion result; V40 remains experimental outside FRONTIER.md. See the
+[V40 finding](findings/2026-09-30-ares-v40-length-priced-sprints.md) and
+[source snapshot](../bots/ares-v40-length-priced-sprints/).
 
 ## Direct matchup screens: Tyr V12
 

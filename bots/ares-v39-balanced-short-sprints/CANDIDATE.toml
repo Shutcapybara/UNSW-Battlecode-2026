@@ -1,0 +1,25 @@
+name = "ares-v39-balanced-short-sprints"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v38-purposeful-sprints"
+hypothesis = "V38's large dash reimbursement overcompensates the length-3 cost, so a near-break-even reimbursement and no escape-target refund should reduce wasteful short dashes while keeping dashes to real rewards available."
+mechanism = "Keep V38's 1.5 score premium but lower the payoff from 4.0 to 2.5, equal to the existing 1.0 sprint cost plus the added premium. Do not reimburse escape-plan arrivals; direct safety value remains in the normal threat score."
+expected_change = "Reduce length-3 dash frequency relative to V37 and V38 while retaining dashes that collect a pearl or land on a selected resource, portal, prey, or crown target."
+priority = 231
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v39-balanced-short-sprints.md",
+    "docs/findings/2026-09-30-ares-v38-purposeful-sprints.md",
+    "https://game.battlecode.au/visualiser?match=686866",
+]
+summary = "V38 lost a ten-map seed-1 V37 comparison 7–13 and used length-3 dashes on 3.9% of length-3 turns versus V37's 1.1%. V39 reduces the 4.0 reimbursement to 2.5 and stops reimbursing escape-plan arrivals, but also lost 7–13 to V37."

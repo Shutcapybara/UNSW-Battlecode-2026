@@ -1,0 +1,25 @@
+name = "ares-v40-length-priced-sprints"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v37-near-portal-scout"
+hypothesis = "V37's movement score charges an extra sprint cost after its simulator has already removed the consumed body segments; scoring the body delta once should value each extra move as one segment and treat an uncontested dash pearl as length-neutral with a small lost-future-growth cost."
+mechanism = "Remove the duplicate per-step sprint cost from successful movement scoring and price H2H sprint moves at lv_now per extra step. Remove the generic eaten-pearl bonus; award one segment value only when a nearby enemy head is within two tiles of a collected pearl, and apply a 0.25 segment opportunity cost to a pearl collected after the first move when no enemy is nearby."
+expected_change = "Discourage uncontested pearl dashes, retain dashes that deny an imminent pearl to an enemy, and make multi-step length cost scale one segment per extra move."
+priority = 232
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v40-length-priced-sprints.md",
+    "docs/findings/2026-09-30-ares-v38-purposeful-sprints.md",
+    "https://game.battlecode.au/visualiser?match=686866",
+]
+summary = "V40 beat V37 11–9 on the seed-1 ten-map panel, with zero runner errors. In this panel V40's length-3 dash rate was 2.43% versus V37's 1.94%; focused checks reject an uncontested pearl dash and retain a contested one."

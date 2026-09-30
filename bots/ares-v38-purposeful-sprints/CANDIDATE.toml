@@ -1,0 +1,24 @@
+name = "ares-v38-purposeful-sprints"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v37-near-portal-scout"
+hypothesis = "A length-3 dragon should spend one of its three segments on a dash only when the extra step collects food, reaches a selected high-value target, or the existing movement score shows a strong enough tactical payoff."
+mechanism = "Keep V37's sprint candidates but add a 1.5 score premium for length-3 dashes. Reimburse it with a 4.0 bonus only when the second step adds a pearl pickup or lands on the selected pearl, bed, portal, prey, escape, or crown target."
+expected_change = "Routine length-3 dashes opened by nearby enemy pressure lose to one-step alternatives unless the extra step gains a pearl, reaches a selected high-value target, or earns enough tactical score to repay the added cost."
+priority = 230
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v38-purposeful-sprints.md",
+    "https://game.battlecode.au/visualiser?match=686866",
+]
+summary = "The seed-1 ten-map panel lost 7–13 to V37. Replay action counts showed length-3 dashes on 3.89% of V38 turns versus 1.12% for V37; the 4.0 reimbursement overcompensates. Match 686866's replay omits persistent bot and radio inputs, so the local fixture is not an exact policy replay."
