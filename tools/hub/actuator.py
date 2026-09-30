@@ -383,6 +383,12 @@ def git_check(root, cfg, state, log):
                 merged_branches.append(dict(branch=branch, error='bad branch name'))
                 continue
             repo = cfg['paths']['repo']
+            if str(branch).startswith('origin/'):
+                # a lane pushed from another host: the keeper only fetches main, so fetch this branch first
+                fr = subprocess.run(['git', '-C', repo, 'fetch', '--quiet', 'origin', str(branch)[len('origin/'):]], capture_output=True, text=True, check=False, timeout=300)
+                if fr.returncode:
+                    merged_branches.append(dict(branch=branch, error='fetch: ' + (fr.stderr or fr.stdout)[-300:]))
+                    continue
             opts = ['-X', body['strategy_option']] if body.get('strategy_option') in ('ours', 'theirs') else []   # conflict hunks only; non-conflicting hunks merge normally
             res = subprocess.run(['git', '-C', repo, 'merge', '--no-ff', '--no-edit', *opts, '-m', f'Merge {branch} into main (director request)', str(branch)], capture_output=True, text=True, check=False, timeout=300)
             if res.returncode:
