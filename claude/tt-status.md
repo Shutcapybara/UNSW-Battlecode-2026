@@ -305,3 +305,19 @@ election and leaves the swarm away from the long dragon alive.
 
 Port 4 — `tt-04-feedlong` (on hb1-14, uploadable): cheji bt's rate table from r330 for length ≤ 3, nearest ally head
 within distance 3 and visibly longer.
+
+## Port 4 — tt-04-feedlong vs hb1-14, z1 seed 1 (`game_stats/runs/tt-04-feedlong-z1-s1.{json,md}`)
+
+**GATE: fail** — W–L 136–24 vs 141–19 (−3.12 pp), own-body deaths +74 %. The rule fires (r400: 21 dragons vs the
+parent's 32) but the material does not arrive: longest 12 at r400 and 27 at r490 (parent 9 and 27) while total length
+falls (r400 81 vs 100; r490 56 vs 73). Small dragons die beside the long one and it does not eat them. Same lesson
+as hb1-11: a donor's rule works only with the donor's other behaviour — cheji bt's long dragons evidently collect what
+dies beside them; Ares's steering does not. Ares's own crown + feeder logic is co-designed (feeders walk to the crown,
+the crown harvests), which is why tt-01 — that logic started earlier — is the one port that concentrated (33).
+
+| port on the direction-prior base | mechanism | z1 W–L vs parent | longest r490 | limit losses with lead | verdict |
+|---|---|---|---:|---:|---|
+| tt-01-feed300 (on hb1-12) | Ares feeders from ~r300 | 136–24 vs 139–21 | 33 (28.5) | 20 % (57 %) | fail; concentrates, loses eliminations |
+| tt-02-feed250 (on hb1-12) | Ares feeders from ~r250 | 131–29 vs 139–21 | 34.5 | 24 % | fail; over-converts |
+| tt-03-proxfeed (on hb1-14) | flat 3 % beside a longer ally from r250 | 137–23 vs 141–19 | 28 (27) | 44 % (50 %) | fail; no concentration |
+| tt-04-feedlong (on hb1-14) | cheji bt's rate table from r330 | 136–24 vs 141–19 | 27 (27) | 29 % (50 %) | fail; kills without feeding |
