@@ -1,0 +1,12 @@
+name = "gustave-09a-portalintent"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "Stateful portal intention on 07c: when the route to the target crosses a portal mouth within 3 steps, the dragon commits to that mouth; the commitment persists intent_ttl (6) rounds after the route last crossed it and clears when the dragon crosses any portal. The committed mouth is immune to the -4 mouth ward even when the target flickers; every other mouth stays warded. 07c exempted only the current turn"s route (stateless)."
+expected_change = "vs 07c: portal-map economy up (fewer stalled approaches when the target flickers), ally h2h not up; vs gustave-01: ally h2h down >= 20 %, economy >= 0"
+hypothesis = "user direction: the mouth tax is solved by stateful intention - a dragon that intends to use the portal is immune, one that does not is warded away"
+params = ["intent_enabled=true", "intent_ttl=6"]
+status = "candidate (not registered)"
+fingerprint = "31eb79ae0b062039549aa0e0ec5a57c9a12c0b550c5813196af85293394fa0e0"
