@@ -1,0 +1,12 @@
+name = "gustave-06b-bedguard6"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "L11 sweep: structure-keyed bed guard with the sparse key at <= 6 known beds within Manhattan 8 (06a"s <= 2 was on in 6 % of decisions: inert). Wait window 8, enemy contact 4."
+expected_change = "econ up on bed-sparse maps without the flat wait"s dense-map loss; tier-2 flat"
+hypothesis = "L11 (0.35): bed guarding keyed on structure"
+params = ["guard_max_beds=6"]
+status = "candidate (not registered)"
+fingerprint = "e6196fe16a956c0a3026fcfac5ca947a1456a6ab763d72cef666a39cfb78d3d5"
