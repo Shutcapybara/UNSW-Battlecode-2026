@@ -19,19 +19,35 @@ uncommitted Q0 scaffolding was rebuilt from the session transcript, then pushed 
 Extraction: 997/997 games, 0 errors, 7m46s on 14 jobs; ~10k actor-turn rows/game, 294 columns. Corpus and era
 sets do not overlap. The corpus covers only 10 maps (era set 14), so map-cliff comparisons must use the era set.
 
-## Q1 — in progress (`tools/hb1/q1_decisions.py`, raw `game_stats/runs/hb1-q1-gaps.json`)
+## Q1 — five decisions (done; `tools/hb1/q1_decisions.py`, raw `game_stats/runs/hb1-q1-gaps.json`)
 
 Holdout = 163 of 817 corpus games (by game, seed 62); map-identifying columns (W, H, x, y, facing_abs, map) excluded.
+GBT = XGBoost on the GPU (63 leaves, lr 0.1, early stop) — CPU boosting starved under the R-lane panel load;
+on gate/alloc it matches sklearn HistGBT to 0.05 pp. MLP = 256-128 ReLU, 12 epochs.
 
-| decision | n test | majority | tree depth 4 | GBT | MLP | gap tree→MLP |
-|---|---:|---:|---:|---:|---:|---:|
-| gate (split-eligible turns) | — | — | 0.9522 | 0.9745 | 0.9702 | +0.018 |
-| alloc (child size) | 34,445 | 0.7526 | 0.9184 | 0.9558 | 0.9432 | +0.025 |
-| direction (F/R/L) | — | — | 0.6852 | pending | pending | |
-| sonar mask, late gate | pending | | | | | |
+| decision | n test | majority | tree depth 4 | GBT | MLP | gap tree→MLP | largest drop-family Δacc |
+|---|---:|---:|---:|---:|---:|---:|---|
+| gate (split-eligible turns) | 128,379 | 0.903 | 0.952 | 0.975 | 0.970 | +0.018 | candidates −1.27 pp |
+| direction (F/R/L) | 179,436 | 0.534 | 0.685 | 0.829 | 0.814 | **+0.129** | candidates −14.0 pp |
+| sonar mask | 94,761 | 0.699 | 0.937 | 0.981 | 0.966 | +0.029 | action taken −9.6 pp |
+| alloc (child size) | 34,445 | 0.753 | 0.918 | 0.957 | 0.943 | +0.025 | scalars (length) −0.99 pp |
+| late gate (r≥350, len≥8) | 48,345 | 0.960 | 0.9993 | 0.9994 | 0.9988 | −0.001 | candidates −0.93 pp |
 
-Gate drop-family ablations (GBT, Δacc): candidates −1.18 pp, scalars −0.78, local summaries −0.28, memory −0.27,
-grid −0.11, messages −0.08. The gate lives in the candidate cells and length/units; messages carry almost nothing.
+Reading: **direction is the learned part; the other four are rules.**
+- Late gate = "split iff no exit of any kind (portals included)" (tree 99.93 %; "no ordinary exit" alone 99.54 %).
+  Late splitting is only an escape reflex — no productive late splits, consistent with the concentration weakness.
+- Gate depth-4 tree: no exit → split; in the open → split iff it just ate and length ≤ 4 (the 2+2 production
+  split), plus an opening split at r0–1. The tree→GBT 2.3 pp is the fuzzy edge of that production rule.
+- Alloc: `length−2` baseline 77.9 %, child-2 75.3 %; only length/units matter (other families < 0.5 pp).
+- Sonar: keyed to the action just taken and own-body layout (grid −1.4 pp); received messages −0.05 pp
+  (no receiver response, as on 27 Sep).
+- Direction ablations: candidates −14.0, grid −2.0, local −1.2, memory −0.96, scalars −0.89, messages −0.86 pp.
+  Messages matter 9× more for direction than for the gate: the echo counts inform steering.
+
+Follow-up queued (`tools/hb1/q1_history.py`, user's suggestion): does memory beyond v5 help direction / gate —
+action history (last 6 actions, turn EWMA) and a decayed spatial "trail" family (enemy/ally segment and head mass +
+centroid in the egocentric frame at decay 0.7/0.9, own-position trail, echo-count EWMAs, Δdensity×step gradient).
+Conventions verified on data: single-step displacement matches the frame tables 99.8 %, neck at g_-1_0 99.8 %.
 
 Sonar (Q1d, descriptive): emitted on every turn the actor survives, always 4 rays. At length 2 the mask is all four
 directions; at length ≥3 a turn (L or R) drops the new back (neck) ray ~91 %; a forward move drops it only ~28 %.
