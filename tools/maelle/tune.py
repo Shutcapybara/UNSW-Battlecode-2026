@@ -261,7 +261,8 @@ def cmd_spsa(a):
         m = paired(Fs['plus'], Fs['minus'])
         dj = float((m['J_c'] - m['J_p']).mean()) if len(m) else 0.0
         g = {n: dj / (2 * ck * delta[n]) for n in names}
-        nxt = {n: float(min(hi[n], max(lo[n], theta[n] + ak * g[n]))) for n in names}
+        step = {n: max(-a.max_step, min(a.max_step, ak * g[n])) for n in names}  # one noisy batch cannot jump
+        nxt = {n: float(min(hi[n], max(lo[n], theta[n] + step[n]))) for n in names}
         rec = dict(k=k, ck=ck, ak=ak, theta=theta, delta=delta, plus=plus, minus=minus, n=len(m), dJ=dj,
                    d_econ=float((m['econ|n_c'] - m['econ|n_p']).mean()) if len(m) else 0.0, theta_next=nxt)
         with open(hist, 'a') as o:
@@ -290,6 +291,7 @@ def main():
     p.add_argument('--iters', type=int, default=12); p.add_argument('--batch', type=int, default=40)
     p.add_argument('--a', type=float, default=0.5); p.add_argument('--c', type=float, default=0.3)
     p.add_argument('--bound', type=float, default=3.0); p.add_argument('--seed', type=int, default=1)
+    p.add_argument('--max-step', type=float, default=0.25)
     p.add_argument('--panel', default='pool+gen'); p.add_argument('--seeds', default='1,2,3')
     p.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 4) - 2)); p.add_argument('--name')
     a = ap.parse_args()

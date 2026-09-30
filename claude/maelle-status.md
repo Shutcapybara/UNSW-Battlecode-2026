@@ -202,3 +202,19 @@ round-keyed caps; sparsity = 1 / (1 + pearls known inside the last search horizo
 Loses at every hi, from the opening on (p@50 −0.014..−0.019: the dense-opening cap falls from 160 to 48). The
 round schedule (R-1's late-cap level) beats a pure sparsity selector. Variant queued: capsel_lo = 160 (sparsity
 only raises the cap).
+
+### Feature 5 variant — selector with the opening floor kept (capsel_lo = 160; pool seeds 1+2, vs selector off)
+
+| hi | dJ | d econ | d p50 | d p100 | d p150 | d p250 | d units@100 | d length@100 | d win | d ally h2h /1k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 384 | −0.010 | −0.015 | −0.020 | −0.023 | −0.009 | −0.009 | +0.007 | −0.001 | +0.014 | −0.05 |
+| 768 | −0.029 | −0.029 | −0.018 | −0.026 | −0.034 | −0.038 | +0.011 | +0.002 | +0.025 | +0.04 |
+
+Still negative on economy at both; the sparsity selector does not beat the round schedule. Closed (L02 → 0.6).
+
+## Joint re-tune (every fifth feature)
+
+First SPSA run (a = 4) diverged: one 48-fixture batch gave dJ(+/−) = +1.10 and the unclipped step moved every
+weight by ~3 into regions the single scans had already shown lose (food_free +3). Kept as
+`build/maelle/tune/spsa-joint5-diverged`, not used. Relaunched with a = 0.6, per-coordinate step clipped at 0.25,
+16 iterations × 96 games (pool + gen, seeds 1–3), from wt_ally −1.4.
