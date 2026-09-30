@@ -37,3 +37,22 @@ this session; desktop lanes run separately). Tooling: R-4 scorecard + run_panel 
   rounds; age >= 12). Switch-off 0 divergent / 19,403 turns; acts only where designed (trauma 35,
   dilemma 30 divergent turns; **portals 0**, schooltime 26/13,578). z1 s1+2 and gen s1 panels
   running.
+
+- **Part 3 done: two mechanisms, four versions, one LOCAL HOLD.**
+  - **starve-wait (bed anticipation gated on the dragon's own food knowledge):** v02 REJECT
+    (pooled −0.024, Trophy leak — gate bug: stale-ripe beds invisible to the gate); v03 fixed the
+    gate (trauma_tr +0.31 win transfer, win +0.62pp, paired −0.0041 [−0.025,+0.017]); v03b
+    min_age 12→24: **LOCAL HOLD at seeds 1–3** — paired Δecon +0.0018 [−0.0024, +0.0062], win
+    +1.0pp, Trauma +6pp win, Dilemma +2pp/+11 p@250, Devil/Portals bit-identical, off-cluster
+    silent. Next parameter: min_age 16–18 (the Trauma r50 opening gain lives in r12–24).
+  - **crit-enclosure split (V19 port):** REJECT at panel scale with clean attribution — Slithery
+    trapped −19 %/newborn −28 % (the mechanism works there) but pooled trapped ROSE 37→39.7,
+    own-body +24 %, econ −0.035. It is a Slithery-shaped mechanism; a churn-profile-gated form is
+    queued.
+  - Ledger rows proposed: **L31 new** (starved openings, weight 0.5, evidence 02/03/03b),
+    **L24 → 0.35** (V19 panel-scale), L28/L29 annotated (Portals is also 32x16; Slithery churn is
+    load-bearing).
+  - Map × mechanism table and all per-map reads in
+    `docs/findings/2026-10-01-esquie-map-anatomy.md`. Raw: game_stats/runs/esquie-*.
+  - Not registered (no candidate passes the accept gate; 03b is the hold the director can promote
+    or hand to the structure-gated-switch test).
