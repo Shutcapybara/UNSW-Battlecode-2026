@@ -94,6 +94,9 @@ def main():
     ap.add_argument('--pairs', type=int, default=8)
     ap.add_argument('--sigma', type=float, default=0.20)
     ap.add_argument('--lr', type=float, default=0.05)
+    ap.add_argument('--opt', default='adam', choices=['adam', 'sgd'],
+                    help='sgd: step = lr * gradient, so a signal-free coordinate barely moves (s1 finding: Adam '
+                         'normalises noise into a fixed-size random walk)')
     ap.add_argument('--beta', type=float, default=None, help='terminal weight; default by stage (1,2: 0; 3: 0.25->0.5)')
     ap.add_argument('--seed-base', type=int, default=1000)
     ap.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 4) - 2))
@@ -163,10 +166,12 @@ def main():
         ranks = centred_ranks([plus[k] for k in valid] + [minus[k] for k in valid])
         rp, rm = ranks[:len(valid)], ranks[len(valid):]
         g = sum((rp[i] - rm[i]) * eps[k] for i, k in enumerate(valid)) / (len(valid) * a.sigma)
-        # Adam ascent
         t = gen + 1
         m = 0.9 * m + 0.1 * g; v = 0.999 * v + 0.001 * g * g
-        step = a.lr * (m / (1 - 0.9 ** t)) / (np.sqrt(v / (1 - 0.999 ** t)) + 1e-8)
+        if a.opt == 'sgd':
+            step = a.lr * g
+        else:  # Adam ascent
+            step = a.lr * (m / (1 - 0.9 ** t)) / (np.sqrt(v / (1 - 0.999 ** t)) + 1e-8)
         u_prev = u.copy()
         u = np.clip(u + step, -U_MAX, U_MAX)
         dt = time.time() - t0
@@ -184,7 +189,7 @@ def main():
         say('  largest moves: ' + ', '.join(f'{n}{x:+.2f}' for (n, _), x in moved))
         ck.write_text(json.dumps(dict(run=a.run, stage=a.stage, gen=gen, u=u.tolist(), u_prev=u_prev.tolist(),
                                       m=m.tolist(), v=v.tolist(), params=decode(u, d0), space=SPACE,
-                                      sigma=a.sigma, lr=a.lr, pairs=a.pairs, seed_base=a.seed_base), indent=1))
+                                      sigma=a.sigma, lr=a.lr, opt=a.opt, pairs=a.pairs, seed_base=a.seed_base), indent=1))
         (out / f'ckpt-g{gen:02d}.json').write_text(ck.read_text())
     say('done')
 
