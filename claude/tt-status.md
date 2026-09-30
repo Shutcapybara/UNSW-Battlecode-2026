@@ -67,3 +67,20 @@ rule (splits on 27.5 % of eligible turns vs Heartbreaker's 9.7 %; "split iff no 
 size is more varied (40k splits in the 8+ class). The late-gate tree branches on messages received and ally-head
 echoes. Decisions depend on something the local view lacks — search, longer memory or shared information — so the
 memory test is worth running on a game subset, and a local-view mimic should be expected to copy it less well.
+
+### cheji bt — calibration and wrapper (Q1 cal, Q2 enumeration; `game_stats/runs/tt70-q1-calibration.json`, `tt70-q2-enumerate-corpus.json`)
+
+- Direction calibration: ECE 0.021; acc 0.751 at mean max-p 0.730; near-deterministic (≥ 0.95) only 17 % of moves
+  (Heartbreaker 28 %), near-ties 22 % (13 %) holding 42 % of errors. More of cheji bt's steering is undetermined by
+  the local view.
+- **Deliberate suicide.** 1.24 % of cheji bt's turns are an invalid command that kills the dragon (`noValidAction`;
+  19,590 of 1.58 M turns in a 207-game sample), almost always at length 2, spread over r50–r400, at any unit count.
+  Heartbreaker: 0 in 7.3 M turns. Real splits never kill the splitter (33,808 splits, 0 deaths).
+- Wrapper, all 4,126 games: trapped & split legal → split 113,501 (98 %), suicide 1,935; **trapped & split not
+  legal → suicide 229,728** (Heartbreaker stepped into a wall or an ally head — the latter killing the ally too);
+  free exit & split not legal → suicide 141,469 (0.5 %, culling); 0 invalid splits of 694,397. cheji bt dies in place
+  rather than take an ally with it, and culls small dragons.
+- Tool fix (applies to all teams): HB-1's enumeration and `wrapper.label()` treated every non-move action as a split;
+  suicide is now its own command class `X`. Heartbreaker's results are unaffected (no such rows). `q2_command`'s
+  per-game sample now scales with `HB_CAP_FACTOR` (its fixed 1,500 rows/game ≈ 15 GB for 4,126 games; the first run
+  was terminated at load, likely by memory pressure).
