@@ -61,3 +61,12 @@ written.
 ## Update procedure
 See `docs/TAXONOMY.md` §"Keeping this current". Each later update appends a dated section here: sources diffed, ids
 added or amended, verdicts changed, and §6 re-ranking.
+
+## Update — 30 Sep 2026 (lead's request: pieces, puzzles, and the information horizon)
+- Added `docs/PIECES-AND-PUZZLES.md`: a horizon ladder (R0 now … R5 structure/learned), an audit of what Ares V06
+  carries between turns with time constants and line pointers, the evidence table for information beyond the turn,
+  twelve mechanism-free puzzles with the rung Ares answers each at, the pieces by layer, and a strip-and-build order.
+  Linked from `docs/TAXONOMY.md`. No taxonomy entries changed.
+- Proposed ledger addition: a row for the **memory ablation of V06** (`ares-bare`, then leave-one-in per channel) —
+  never run; it is the baseline every L12/L13/L31–L34 build needs. And a row for **offline belief scoring** (score an R2
+  food/hazard belief by predictive likelihood on replays before wiring it into a bot).

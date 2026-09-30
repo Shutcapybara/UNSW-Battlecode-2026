@@ -18,7 +18,8 @@ decisions `D-nnn`. Host marks in §4: ● measured on the Ares C++ line (the pro
 elsewhere, ○ only on Python hosts, the cx chassis or older lines. Verdict codes in §5: A accept · H hold · LH local hold ·
 R reject · N never measured · D dropped · U in use · O built, off · Op open · C closed.
 
-**Registers** (detail too large for this page): [map × mechanism](taxonomy/map-mechanism.md) (553 rows) ·
+**Reference for building:** [PIECES-AND-PUZZLES.md](PIECES-AND-PUZZLES.md) — the same material reduced to pieces,
+puzzles and the information-horizon ladder. **Registers** (detail too large for this page): [map × mechanism](taxonomy/map-mechanism.md) (553 rows) ·
 [contradictions](taxonomy/contradictions.md) (C-01…C-84) · [dead code, dimension-keyed terms, never-measured and
 undelivered work](taxonomy/dead-and-unmeasured.md) · [full matrices](taxonomy/matrices.md).
 
