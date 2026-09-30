@@ -73,4 +73,14 @@ rising. Scan 1, pool seed 1, 160 paired fixtures per value vs maelle-02 (w = 0):
 | +1.5 | −0.225 | −0.172 | −0.176 | −0.191 | −0.158 | −0.165 | −0.140 | −0.158 | −0.050 | −0.27 |
 
 The expected sign was wrong: on this parent, pulling exploration toward food-dense uncrowded beds/unseen cells costs
-economy monotonically; the optimum is at the negative edge of the range. Extending to −1.0, −2.0.
+economy monotonically; the optimum is at the negative edge of the range. Extended:
+
+| w | dJ | d econ | d p50 | d p100 | d p150 | d p250 | d units@100 | d length@100 | d win | d ally h2h /1k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| −2.0 | +0.040 | +0.011 | +0.029 | +0.010 | +0.012 | −0.007 | +0.040 | +0.041 | +0.038 | −0.11 |
+| −1.0 | +0.048 | +0.017 | +0.013 | +0.040 | +0.022 | −0.007 | +0.041 | +0.043 | 0.000 | −0.12 |
+
+Surface: quadratic dJ = −0.035 w² − 0.092 w; argmax **−1.3, bootstrap 90 % [−1.90, −1.00]** — a plateau from
+−2 to −0.5 (dJ +0.03..+0.05), steep loss for w > 0. The gain is material and hygiene (units/length +0.04, ally
+head-on down), not churn. Compiled into `maelle-03-foodfree` (wt_food_free = −1.3); D-032 gate running (pool + gen,
+seeds 1–3, vs maelle-02-features w = 0).

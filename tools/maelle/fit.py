@@ -313,6 +313,8 @@ def cmd_selfplay(a):
                 r1 = r0 + 20
                 died = last < r1 and last < last_round - 1
                 end = min(r1, last)
+                import bisect
+                end = rounds[bisect.bisect_right(rounds, end) - 1]  # nearest logged round at or before
                 eaten = L[end] - L[r0] + sum(v for k, v in spent.items() if r0 <= k < end)
                 row = rows[h['chosen']]
                 R.append(dict(file=fi, me=me, rnd=r0, logscore=float(row[0]), steps=float(row[1]),

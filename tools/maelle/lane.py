@@ -131,6 +131,8 @@ def cmd_run(a):
     seeds = [int(s) for s in a.seeds.split(',')]
     bot, params = arm_spec(a.bot)
     prebuild(bot)
+    for o in set(ZOO) | set(GEN_OPPS):  # opponents too: concurrent first builds race on .unswbc-build
+        prebuild(o)
     panels = ['pool', 'gen'] if a.panel == 'both' else [a.panel]
     t0 = time.time()
     for panel in panels:

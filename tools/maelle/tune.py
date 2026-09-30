@@ -68,7 +68,7 @@ def play(jobs_list, jobs):
             (root / 'arm.json').write_text(json.dumps(dict(arm=arm, bot=bot, params=params)))
         if not (root / 'replays' / (fx['game'] + '.replay')).exists() and fx['game'] not in lane.claimed(root):
             todo.append((root, params, fx))
-    for b in bots:
+    for b in bots | set(lane.ZOO) | set(lane.GEN_OPPS):
         lane.prebuild(b)
     todo.sort(key=lambda t: t[2]['map'] not in lane.HEAVY)
     t0 = time.time()
