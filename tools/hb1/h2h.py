@@ -7,7 +7,7 @@
 every arm meets the same fixtures. Resumable: finished fixtures in the output are skipped.
 Writes game_stats/runs/hb1-h2h-<NAME>.json.
 """
-import argparse, hashlib, json, re, subprocess, time
+import argparse, hashlib, json, os, re, subprocess, time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -57,7 +57,7 @@ def main():
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
     maps = LIVE if a.maps == 'live' else a.maps.split(',')
-    out = ROOT / 'game_stats' / 'runs' / f'hb1-h2h-{a.out}.json'
+    out = ROOT / 'game_stats' / 'runs' / f"{os.environ.get('HB_TAG', 'hb1')}-h2h-{a.out}.json"
     rdir = ROOT / 'build' / 'hb1' / 'games' / a.out
     rdir.mkdir(parents=True, exist_ok=True)
     rows = json.loads(out.read_text())['games'] if out.exists() else []
