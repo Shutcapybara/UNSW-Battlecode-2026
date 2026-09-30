@@ -50,23 +50,21 @@ max-p ≥ 0.95 at 99.2 % accuracy (rule-like); 12.8 % are near-ties (top-2 gap <
 all direction errors. A copy that samples from these probabilities would agree 73 % move-for-move (argmax 83 %).
 The residual is what a sampled policy or unseen state produces; the replays cannot tell which.
 
-Follow-up queued (`tools/hb1/q1_history.py`, user's suggestion): does memory beyond v5 help direction / gate —
-action history (last 6 actions, turn EWMA) and a decayed spatial "trail" family (enemy/ally segment and head mass +
-centroid in the egocentric frame at decay 0.7/0.9, own-position trail, echo-count EWMAs, Δdensity×step gradient).
-Conventions verified on data: single-step displacement matches the frame tables 99.8 %, neck at g_-1_0 99.8 %.
+Memory beyond the current view (`tools/hb1/q1_history.py`, `game_stats/runs/hb1-q1-history.json`; user's suggestion):
+action history (last 6 actions, turn / left-right EWMAs, since-turn, eats in 10) and a decayed spatial "trail"
+(enemy/ally segment and head mass + centroid in the egocentric frame at decay 0.7/0.9, own-position trail, EWMAs of
+the five echo counts, Δdensity×step gradient). Same rows as Q1 (verified), same held-out games, GPU GBT:
 
-Sonar (Q1d, descriptive): emitted on every turn the actor survives, always 4 rays. At length 2 the mask is all four
-directions; at length ≥3 a turn (L or R) drops the new back (neck) ray ~91 %; a forward move drops it only ~28 %.
+| decision | v5 | + history | + trail | + both | MLP + both |
+|---|---:|---:|---:|---:|---:|
+| direction | 0.8287 | 0.8302 | 0.8296 | 0.8306 | 0.8167 |
+| gate | 0.9747 | 0.9746 | 0.9746 | 0.9745 | 0.9702 |
 
-Q1(e) late concentration, from the per-game trajectories (`build/hb1/q1/traj_summary.csv`):
-
-| set | games | elim W / L | round-limit W / L | limit losses with total-material lead | median longest in those losses (self / opp) |
-|---|---:|---|---|---:|---|
-| corpus (27–29 Sep) | 817 | 380 / 44 | 102 / 291 | 223 / 291 (77 %) | 12 / 27 |
-| era (≤27 Sep) | 180 | 84 / 12 | 27 / 57 | 44 / 57 | 12 / 24 |
-
-Paired within-game medians in round-limit games, r400→end: Δunits 0, Δtotal +21, Δlongest +2 (corpus); the
-27 Sep packet's −1 / +19 / +2. The weakness is unchanged and now covers 87 % of all their losses.
++0.19 pp at most. The top 24 features by GBT gain are all current-view candidate features (forward run, blocked
+neighbours, reachable area, pearl distance, ally heads within 2); the first memory feature is the turn EWMA at #25.
+Steering is a function of the current local view — consistent with a memoryless (feed-forward) policy, though these
+summaries only show that no predictable memory signal of this form exists. The engine's echo is five aggregate counts
+(no direction), so an echo EWMA is the most any bot could keep from sonar. Conventions verified on data before use.
 
 ## Q2 — wrapper vs policy (done; `tools/hb1/wrapper.py`, `q2_enumerate.py`, `q2_command.py`)
 
