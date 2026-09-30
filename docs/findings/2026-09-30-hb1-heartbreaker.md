@@ -104,20 +104,39 @@ map that moved, moved toward Heartbreaker's record; the weak maps are the same m
   compounds to 60 % of Heartbreaker's material at r100 — i.e. direction quality.
 - Deployability (hb1-04, judge sandbox): clang 20 wasm build OK; 30.6 MB per dragon process (cap 48 MiB);
   p50 7.6 M / p99 8.0 M / max 8.4 M points per turn; 0 fallbacks in 10,560 turns.
-- Scorecard (z1 + generalisation panels, field-relative): running at the time of writing; appended below when done.
+- Scorecard (R-4 tool, z1 panel, seed 1, parent Ares V06; `game_stats/runs/hb1-04-deployable-z1-s1.md`): W–L
+  94–66 vs V06's 122–38 (−17.5 pp); economy mean **+0.212** (r50 +0.429, r100 +0.363, r150 +0.111, r250 −0.055);
+  length r100 +0.485; own-body deaths 0 (wrapper), ally head-on +147 % (the W2 fallback). Heartbreaker's signature
+  on the field-relative yardstick: the most productive bot on the panel early, and still losing more games —
+  material without conversion. The generalisation panel was cut for time (~2 games/min on the shared host).
 
 ## Q5 — what transfers
 
-Pending. Components with measured fidelity: the wrapper (exact), the split gate (0.975), child size (0.957), the
-direction scorer (0.854). Each is to be ported alone into a copy of Ares V06 as a switch (`hb1-1x-<component>`)
-and run through the gate.
+Each component alone as one switch on a verbatim Ares V06 copy, R-4 scorecard, z1 panel (160 side-games), seed 1,
+parent V06 (122–38, economy 1.1107):
+
+| version | component | gate | W–L | economy | dragons r100 | length r100 | tier-2 |
+|---|---|---|---|---:|---:|---:|---|
+| hb1-10-escape-split | wrapper W1: no free exit and no portal → split | **fail** (narrow) | 132–28 | +0.040 | −0.005 | +0.059 | own body +10.5 % (limit 10 %) |
+| hb1-11-split-gate | Heartbreaker's gate replaces production admission | **fail** | 103–56 | −0.135 | −0.233 | +0.018 | own body +18 % |
+| hb1-12-direction-prior | λ·log p_HB(first step) in Ares's path score, λ = 1 | **hold** | **139–21** | +0.039 | **+0.194** | **+0.229** | wall −36.5 %, ally body −39.1 %, ally head-on −34.0 %, own body −8.1 % |
+
+- **The learned part transfers; the rule tuned to it does not.** Heartbreaker's direction model, used only as a
+  prior inside Ares's search, is the best single change measured this phase (+10.6 pp, every death rate down,
+  pearls r50 +0.160). Its gate, transplanted alone, starves Ares of dragons: it encodes Heartbreaker's eating rhythm,
+  which comes from its own steering.
+- hb1-12 misses the economy gate only through late economy (r250 −0.089 against r50 +0.160): the H10/L03 phase
+  bifurcation. `hb1-13-phased-prior` (prior faded r150 → r250, fixed before screening) and paired seed 2 for
+  hb1-10 / hb1-12 / hb1-13 are running (`tools/hb1/q5_chain2.sh`); results are appended to `claude/hb1-status.md`.
+- hb1-10 improves every pearl checkpoint and wins, failing on one hygiene rate by 0.5 pp; seed 2 decides it.
 
 ## Ledger rows touched and proposed weights
 
 | row | current | proposed | evidence |
 |---|---:|---:|---|
-| L27 learned decision functions beat hand rules for a specific decision at ≈ 0 live CPU | 0.5 | **0.6** | First C++ learned decision measured end-to-end: exact export, ≤ 3 M marginal points, and a steep, significant dose–response between one learned decision's accuracy and strength (hb1-01→03, p = 0.011). "Beats our hand rules" is Q5's test; weight moves again on the first hb1-1x result. |
-| L24 trapped hazard ≤ 8 reach; escape split | 0.5 | 0.5 (unchanged) | Heartbreaker splits on 99.9 % of exit-less eligible turns and walls only under total blockade — supportive of the escape-split form, but descriptive until Q5 ports W1 to Ares. |
-| L05 leaks fixable on Ares | 0.7 | 0.7 (unchanged) | The wrapper is a leak fix by construction (0 invalid commands, wall moves only under blockade); measured on Ares in Q5. |
+| L27 learned decision functions beat hand rules for a specific decision at ≈ 0 live CPU | 0.5 | **0.7** | First C++ learned decision measured end-to-end (exact export, ≤ 3 M marginal points), a significant dose–response in the mimic (p = 0.011), and on our own bot a learned *prior* over Ares's hand-weighted move score: hold, +10.6 pp, all death rates down (hb1-12). Caveat from hb1-11: a learned decision whose inputs depend on the donor's other decisions does not transfer alone. |
+| L24 trapped hazard ≤ 8 reach; escape split | 0.5 | **0.6** | Heartbreaker's W1 escape split on Ares: economy +0.040, wins +6.25 pp, every pearl checkpoint up; fails own-body hygiene by 0.5 pp on one seed (hb1-10). Seed 2 pending. |
+| L05 leaks fixable on Ares | 0.7 | 0.7 (unchanged) | hb1-12 cuts wall −36.5 %, ally body −39.1 %, ally head-on −34.0 % on Ares — leaks are fixable, but via steering rather than a leak switch; the lineage claim is not tested here. |
 | L04 / L20 weights | 0.6 / 0.2 | unchanged | Not tested by HB-1 so far. |
 | new: a strong opponent's strength can concentrate in one learned decision, and imitation strength is steep in that decision's accuracy | — | 0.7 | Q1 gap table; hb1-01/02/03 dose–response vs Ares V04. |
+| new: a donor's learned steering transfers to our search as a prior better than its rules do | — | 0.6 | hb1-12 hold (+10.6 pp) vs hb1-11 fail (−11.6 pp) on the same panel; one seed each. |
