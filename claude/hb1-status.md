@@ -278,3 +278,11 @@ parent Ares V06**, for hb1-04 and the three ports, as one detached chain (`tools
 ally head-on −0.8 %. The port helps on every economy checkpoint and on wins; it fails on one hygiene rate by 0.5 pp,
 plausibly parent and child tangling after a split in a cramped space. One seed; a paired seed 2 (D-032) is the next
 measurement for this row. Ledger: L24 (escape split at low reach) — supportive.
+
+### Q5 result 2 — hb1-11-split-gate vs Ares V06, z1 panel seed 1 (`game_stats/runs/hb1-11-split-gate-z1-s1.{json,md}`)
+
+**GATE: fail**, clearly: economy mean −0.135, dragons r100 −0.233, win share −11.56 pp, own-body deaths +18 %,
+length r100 +0.018. Heartbreaker's production admission (split right after eating at length ≤ 4, very selective in
+the open) starves Ares of dragons. The gate is tuned to Heartbreaker's own eating rhythm, i.e. to its direction
+policy; transplanted alone onto Ares's steering it does not transfer. Ledger L27: a learned decision function does
+not transfer when its inputs' distribution depends on the donor's other decisions.
