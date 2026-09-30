@@ -172,4 +172,47 @@ Divergence profile (mechanism acts only where designed): switch-off 0 divergent 
 vs esquie-01 recordings (trauma/dilemma/portals-A); switch-on: trauma 35, dilemma 30,
 portals **0**, schooltime 26/13,578.
 
-Results: (running — filled in below)
+Results: **REJECT (first form) — with the local gain real and the leak diagnosed.**
+
+| read | number (paired vs esquie-01, z1 seeds 1+2 unless said) |
+|---|---|
+| pooled gate | econ −0.0241, win −2.19pp, dragons −0.023, length −0.039; no tier-2 rate up >10 % (ally-body −12 %) → **fail** |
+| **local gain** | Trauma p@50\|map **0.111 → 0.222** (opening doubled), Dilemma p@250\|map 0.863 → **0.970**, Dilemma win 0.812 → **0.875** |
+| guards held | Portals bit-identical (all cells equal), Devil ≈ unchanged (0.680 → 0.675, win 0.500 → 0.531) — the gate does what it was designed to do |
+| leak | **Trophy** econ_pct 0.594 → **0.470**, win 0.719 → **0.562**; Default 0.518 → 0.506; Schooltime win 0.688 → 0.594 |
+| transfer (gen s1) | pinwheel **+0.125 win, +17 p@250** (the supply-0 map — transfers ✓); portal_quartet +0.125; trauma_tr p@250 **−29**; equatorial_belt p@250 **−53**; 17/29 gen maps bit-identical medians (the gate never fires there) |
+
+**Diagnosis (the gate observable was wrong, not the mechanism):** `food_soon` counted a bed as
+food only while its countdown ran (`spawn_at ≥ rnd`). A known bed whose countdown had *passed*
+plausibly holds a sitting pearl — the parent's own `cell_value` gives it full value through the
+`bed_stale` = 60 window — but the gate could not see it. On slow-dense maps (Trophy: 100 %-bed,
+ripe50 0.09) dragons were "starved" while known pearls sat elsewhere, and they loitered at
+ripening beds instead of collecting them: exactly the Trophy/late-Trauma losses. Transcript
+check: v02 diverges 14 turns on a trophy recording; the fixed gate (esquie-03) diverges **1**.
+
+### esquie-03-starve-wait2 — the gate observable fixed (stale-ripe beds are food)
+
+One change: `food_soon` widened to `spawn_at − rnd ≤ 8 && rnd − spawn_at ≤ bed_stale` (the same
+staleness window `cell_value` uses). Divergence: trauma 21 turns (down from 35 — the false-starve
+loitering gone), dilemma 30, portals 0, trophy 1.
+
+Results: **local gains kept, leak closed, transfer positive — pooled economy still a hair
+negative (reject-as-is; the D-032 interval straddles zero).**
+
+| read | number (paired vs esquie-01, z1 seeds 1+2) |
+|---|---|
+| paired Δeconomy | **−0.0041**, bootstrap 90 % [−0.0248, +0.0170] (n=320) |
+| pooled gate | economy mean −0.021 (median form), **win +0.62pp** (229–91), dragons −0.010, length −0.021; no tier-2 up >10 % |
+| local gain | Trauma p@50\|map **0.222 held** (opening doubled), p@250 restored 1.022 → **1.130**, win 0.750 → **0.812**; Dilemma p@250 **0.970**, win **0.875** |
+| leak closed | Trophy p@250 1.068 → **1.132** (base 1.265), win 0.562 → 0.656; equatorial_belt p@250 −53 → **0** |
+| **transfer (gen s1)** | **trauma_tr +0.312 win, +31.5 p@250** (the cluster twin — the v1 loss fully inverted), trophy_tr +0.188 win, pinwheel +0.125 win held, spring_wells +14.5 p@250, Autarky tr +0.125 win; 20/29 gen maps bit-identical; losses: default_tr −0.125 win / −6 p@250 only |
+| residual | pooled r50 −0.026: the *transient* starve — rounds 12–24 where even rich maps have seen no food yet and the wait buys nothing |
+
+### esquie-03b-starve-wait3 — one parameter: min_age 12 → 24
+
+Skips the opening transient. Divergence profile now surgical: trauma 21 turns (the true starved
+state, which lasts to r80+ there, still caught), **schooltime 0** (was 26/13,578 in v1),
+**trophy 0** (was 14 in v1). If the panels keep the local gains with the pooled r50 recovered,
+this is the local-hold candidate.
+
+Results: (panels queued after esquie-04)
