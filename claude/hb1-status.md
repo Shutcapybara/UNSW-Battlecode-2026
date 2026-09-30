@@ -159,3 +159,29 @@ process per dragon fed the exact round blocks they received (`game_stats/runs/hb
 
 The live bot keeps ~99 % of the offline agreement; the residual is the open-loop memory drift (each process
 remembers its own choices while the boards follow the replay).
+
+### Q4 strength — head-to-head vs our deployed Ares V04 (`tools/hb1/h2h.py`, `game_stats/runs/hb1-h2h-mimic-vs-ares-v04.json`)
+
+Heartbreaker played our live Ares V04 (submission v83, active from 29 Sep 06:47 UTC) 40 times in the corpus, 4 per
+live map, and won 28 (0.70). The mimic vs `bots/ares-v04-tyr12-behavior-parity`, same ten maps, both seats × 2
+seeds, native, fixed seeds:
+
+| map | mimic | real Heartbreaker |
+|---|---:|---:|
+| Prisoners Dilemma | 4/4 | 4/4 |
+| Autarky | 3/4 | 4/4 |
+| Devil | 2/4 | 3/4 |
+| Trauma | 2/4 | 4/4 |
+| Default | 1/4 | 3/4 |
+| Queen of Spades | 1/4 | 4/4 |
+| Trophy | 1/4 | 4/4 |
+| Portals | 0/4 (all on length, r500) | 1/4 |
+| Schooltime | 0/4 | 1/4 |
+| Slithery Fight | 0/4 (all on length, r500) | 0/4 |
+| **total** | **14/40 (0.35)** | **28/40 (0.70)** |
+
+Reading: the mimic reproduces Heartbreaker's map *shape* — the same weak maps, lost the same way (round-limit length),
+and the Prisoners Dilemma sweep by early elimination — at half its strength. 82 % per-turn command agreement does not
+carry 70 % of the win rate: the gap sits on the maps Heartbreaker sweeps (Queen of Spades, Trophy, Trauma, Default).
+Caveat: the real games are live-server scrims (unranked, server seeds); the local V04 copy is the submitted source.
+Next: find where the strength goes (trajectory comparison against their real games on the same maps).
