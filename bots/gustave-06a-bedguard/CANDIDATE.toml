@@ -1,0 +1,12 @@
+name = "gustave-06a-bedguard"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "L11: structure-keyed bed guard. A bed ripening after arrival keeps bed_value x (1 - wait/8) only when <= 2 beds are known within Manhattan 8 of the head and no visible enemy head is within 4; elsewhere the parent's bed_wait = 0."
+expected_change = "econ up on bed-sparse maps (Renoir's flat wait: QoS +0.16, Trauma +0.14) without the dense-map loss (Devil -0.72, Schooltime -0.41: the key is off there); tier-2 flat; changes which beds are waited on, not how many"
+hypothesis = "L11 (0.35): bed guarding pays when keyed on structure (bed density within reach, contact distance), not as a flat wait"
+params = ["guard_enabled=true", "guard_wait=8", "guard_radius=8", "guard_max_beds=2", "guard_contact=4"]
+status = "candidate (not registered)"
+fingerprint = "e86817c454557db2211554e20bf66ff9eac66b0129966164953d5fd2cf49a1fa"
