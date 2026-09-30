@@ -207,3 +207,23 @@ opponents. The zoo panel is weak enough that hb1-12 eliminates over half its opp
 wins 49 % by elimination. Against opponents that cannot be eliminated the round limit decides, so this panel
 understates early conversion for ladder play. Points to a conditional conversion (keep the swarm while elimination is
 on, convert when it is not) rather than a fixed earlier round.
+
+## Port 2 — tt-02-feed250 (hb1-12 + feeding from ~r250) vs hb1-12, z1 seed 1 (`game_stats/runs/tt-02-feed250-z1-s1.{json,md}`)
+
+**GATE: fail.** W–L 131–29 vs 139–21 (−5.00 pp); economy mean +0.0000; own-body deaths +49 % (the mechanism).
+Trajectory: total length at r300 91 (tt-01 107, hb1-12 112) — feeding from r250 cuts growth while the swarm is still
+compounding; r490 4 dragons / longest 34.5 (tt-01 33); round-limit W/L 59–21 = 0.74 (tt-01 61–15 = 0.80, hb1-12 0.78);
+elimination W/L 72–8.
+
+| | hb1-12 | tt-01 (~r300) | tt-02 (~r250) |
+|---|---:|---:|---:|
+| W–L (160) | 139–21 | 136–24 | 131–29 |
+| total length r300 | 112 | 107 | 91 |
+| longest r490 | 28.5 | 33 | 34.5 |
+| round-limit win rate | 0.78 | 0.80 | 0.74 |
+| elimination W/L | ~85–6 | 75–9 | 72–8 |
+
+Reading: r250 is too early for Ares. Stockfish starts at r250 because its feed is slow (~2 %/turn, near allies only);
+Ares's feeder is all-or-nothing within 4 cells of the crown, so copying Stockfish's start round without its rate
+over-converts. What transfers is the rate schedule, not a start round. On this (weak, eliminable) panel the order is
+monotone: the earlier the swarm is dissolved, the more elimination wins are lost.
