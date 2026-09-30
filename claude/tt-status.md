@@ -353,3 +353,22 @@ profile. **tt-05 is the uploadable early converter for a ladder comparison again
 |---|---|---:|---|
 | hb1-14-prior-r540 | 141–19 vs V06's 122–38 | 27 | late (Ares default, ~r400) |
 | tt-05-feed300-up | 141–19 (= hb1-14) | 32 | from ~r300 (cheji bt's timing) |
+
+## Interpolating hb1-14 → tt-05 through the game (user request, 1 Oct; local, though uploadable)
+
+hb1-14 and tt-05 are the same bot except for one decision — when a dragon near the crown starts feeding it (tt-05
+~r300, hb1-14 ~r400). The interpolation hands that decision over gradually: each dragon, each turn, uses tt-05's onset
+with probability rising linearly across a window, hb1-14's otherwise (`tools/tt/make_ramp.py`). z1 seed 1, same 160
+fixtures:
+
+| bot | W–L | round-limit W/L | elimination W/L | longest r490 | share in longest | gate vs hb1-14 |
+|---|---|---:|---:|---:|---:|---|
+| hb1-14 (onset ~r400) | 141–19 | 62–14 | 79–5 | 27 | 0.34 | — |
+| **tt-05 (switch at ~r300)** | **141–19** | **67–13** | 74–6 | **32** | **0.56** | level (fail only on own-body) |
+| tt-06-ramp-300-400 | 138–22 | 61–17 | 77–5 | 31.5 | 0.46 | fail (−1.87 pp) |
+| tt-07-ramp-250-450 | 132–28 | 58–23 | 74–5 | 30 | 0.43 | fail (−5.63 pp) |
+
+The ramps keep hb1-14's elimination wins and lose round-limit games the sharp switch wins; the wider ramp loses more.
+A swarm that is partly converting gets less concentration than tt-05 without keeping hb1-14's elimination edge. On
+this panel the validated choice is a clean switch at ~r300, not an interpolation. Head-to-heads (hb1-14 vs tt-05, each
+ramp vs both endpoints, ten live maps) running.
