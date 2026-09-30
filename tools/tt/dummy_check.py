@@ -74,7 +74,7 @@ def main():
         med = R[c].median()
         mad = (R[c] - med).abs().median() * 1.4826 + 1e-9
         z[c] = ((d[c] - med) / mad).abs()
-    d['outlier'] = (z > 4).sum(1) >= 2                       # at least two features far outside ranked play
+    d["outlier"] = (z > 4).sum(axis=1) >= 2                       # at least two features far outside ranked play
     res['outlier_share'] = dict(ranked=float(d[d.ranked].outlier.mean()), unranked=float(d[~d.ranked].outlier.mean()))
     t0 = d.t.min().floor('h')
     d['win6h'] = ((d.t - t0) / pd.Timedelta(hours=6)).astype(int)

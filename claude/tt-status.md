@@ -388,3 +388,18 @@ on tt-06):
 43/80). In direct play hb1-14, tt-05 and the ramps are equal; against the zoo the ramps are worse (−3 and −9 games).
 Interpolating the feeding onset adds nothing and a wide ramp costs round-limit games; the validated choice is a clean
 switch, and hb1-14 and tt-05 are interchangeable on every local measure.
+
+## Dummy-bot check (user warning, 1 Oct: some teams — reported for Cutlery and possibly others at its university —
+## hide their bot when ranked scrims are not forced and upload a dummy) — `tools/tt/dummy_check.py`
+
+Ranked scrims are forced, so ranked games are the real bot. Per game, a behavioural fingerprint (split rate on
+eligible turns, self-kill rate, forward share, turns per round, units / longest / total at r100 and r250); ranked vs
+unranked compared, plus the share of games with ≥ 2 fingerprint features > 4 robust-z outside ranked play.
+
+| team | ranked / unranked games | split rate (R / U) | self-kill rate | forward share | outlier share (R / U) | verdict |
+|---|---|---|---|---|---|---|
+| cheji bt (70) | 619 / 3,507 | 0.311 / 0.326 | 0.007 / 0.007 | 0.495 / 0.495 | 8.1 % / 5.9 % | same bot |
+| Stockfish (206) | 414 / 1,518 | 0.237 / 0.215 | 0.005 / 0.006 | 0.523 / 0.520 | 4.8 % / 8.9 % | same bot |
+
+Unranked games show slightly more material and wins (weaker unranked opponents), no dummy cluster: the cheji bt and
+Stockfish analyses (all games) stand. The same check runs first on every new team.
