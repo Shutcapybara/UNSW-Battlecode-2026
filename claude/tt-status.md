@@ -48,3 +48,22 @@ Extraction (`HB_TEAM=… tools/hb1/build_dataset.py --jobs 14`): cheji bt 4,126 
 caps × 0.25 for cheji bt, × 0.5 for Stockfish, keeping ~1 M rows per decision as in HB-1). The memory test
 (`q1_history.py`, ~16 s/game in Python) is deferred: it runs on a game subset only if Q1 points to state beyond
 the current view.
+
+## Q1 — cheji bt (team 70) (`game_stats/runs/tt70-q1-gaps.json`)
+
+Held-out = 20 % of 4,126 games (by game, seed 62); sampling caps × 0.25.
+
+| decision | n test | majority | tree depth 4 | GBT | MLP | gap tree→MLP | Heartbreaker GBT | top drop-family Δacc |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| split gate | 191,397 | 0.725 | 0.779 | **0.829** | 0.817 | +0.038 | 0.975 | scalar −1.43, local −1.22, cand −1.18 pp |
+| direction | 246,010 | 0.485 | 0.638 | **0.751** | 0.738 | +0.100 | 0.829 | cand −11.46, grid −1.78 pp |
+| sonar mask | 115,986 | 0.775 | 0.950 | 0.983 | 0.975 | +0.025 | 0.981 | action −10.26 pp |
+| child size | 138,771 | 0.790 | 0.858 | 0.911 | 0.898 | +0.041 | 0.957 | scalar −1.22 pp |
+| late gate | 257,731 | 0.965 | 0.981 | 0.983 | 0.982 | +0.001 | 0.9994 | cand −0.61 pp |
+
+Reading: cheji bt is far less predictable from the dragon's own 7×7 view than Heartbreaker. Its split gate is not a
+rule (splits on 27.5 % of eligible turns vs Heartbreaker's 9.7 %; "split iff no ordinary exit" 0.766; GBT only
+0.829, no family dominates); direction tops out at 0.751 (Heartbreaker 0.829) with a similar tree→GBT gap; child
+size is more varied (40k splits in the 8+ class). The late-gate tree branches on messages received and ally-head
+echoes. Decisions depend on something the local view lacks — search, longer memory or shared information — so the
+memory test is worth running on a game subset, and a local-view mimic should be expected to copy it less well.
