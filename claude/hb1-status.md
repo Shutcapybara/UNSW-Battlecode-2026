@@ -136,3 +136,9 @@ cannot say whether it is RL; per the prompt, no further spend on the question.
   payload 0 (observed on all 475k sonar turns), the model's dropped slot redrawn from the other three (approximation
   of the observed neck-ray substitution).
 - Smoke: native, Autarky, seed 1 — beats Ares V06 by elimination at r477 (40 vs 2 dragons at r451). One game.
+- Sandbox (judge wasm, CPU priced): Portals, seed 2, vs Ares V06 — mimic p50 6.1M / p99 6.6M / max 6.9M points per
+  turn (Ares V06 same game: p50 4.5M, max 8.4M; screen wall 60M), 4.6 MB memory per dragon process, 0 fallbacks in
+  9,447 turns; splits 183 escape (W1) / 177 gate-admitted. Result: loses on length at r500 — Heartbreaker's own
+  Portals / round-limit profile. Two smoke games only; fidelity and panels are the measurement.
+- **Deployable and testable** as of 30 Sep ~11:00 ACST. Next: held-out decision agreement and closed-loop divergence
+  (`tools/team_recon_claude/closed_loop.py`), then the z1 / generalisation panels and head-to-heads.
