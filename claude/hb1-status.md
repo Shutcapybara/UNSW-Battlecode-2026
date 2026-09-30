@@ -331,3 +331,18 @@ the gate. hb1-12 is the Q5 candidate to hand to the director (register request i
 **GATE: hold**: economy +0.0268 (hb1-12 s2 +0.0284), dragons +0.293, length +0.255 (identical to hb1-12 through
 r150), win share +9.38 pp (hb1-12 +10.63 pp), no tier-2 rate up > 10 %. Two seeds agree: fading the prior late does
 not recover the late economy and costs wins. hb1-12 (unfaded) stays the Q5 candidate.
+
+### Q5 result 7 — hb1-10-escape-split, paired seed 2 (`game_stats/runs/hb1-10-escape-split-z1-s2.{json,md}`)
+
+**GATE: fail** again, on different hygiene rates: economy +0.0486, dragons +0.047, length +0.067, win share +1.25 pp;
+wall 7.47 → 8.23/1k (+10 %), ally head-on 1.08 → 1.28/1k (+19 %). Two seeds: the escape split reliably adds economy
+(+0.040, +0.049) but costs collision hygiene on both (own body +10.5 % on s1; wall and ally head-on on s2) and its
+win-share gain does not replicate (+6.25 → +1.25 pp). Consistent fail, not noise. L24 stays 0.5–0.6: the form moves
+economy, the hazard cost is real.
+
+## Close (30 Sep, 21:15 ACST)
+
+All five questions answered; every run above is complete. Candidate for the director: **hb1-12-direction-prior**
+(hold on both seeds: 139–21 vs V06's 122–38, every death rate down, economy +0.039 / +0.028 against the +0.05
+gate). Deployable mimic: **hb1-04-deployable**. Register requests are the director's call. Not run: the
+generalisation panel (~3–3.5 h per bot pair at the evening rate).
