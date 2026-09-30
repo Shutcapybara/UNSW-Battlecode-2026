@@ -467,3 +467,31 @@ memory matters for its gate, unlike every other team. Its steering has the large
 0.584 → 0.758) — the strongest candidate for a learned direction policy. Child size 2 in 94.5 %. Sonar is unlike any
 other team: the most common ray pattern covers only 28 % of turns (others 64–78 %), GBT 0.928, and candidate features
 matter (−4.35 pp) — state-dependent signalling, likely real communication.
+
+Cache me outside (ranked) — calibration, wrapper, command, stability: ECE 0.021, acc 0.757 at mean max-p 0.736,
+near-ties 22 %. Self-kill by the **backward step** (as Stockfish): trapped & split not legal → back 93,842, ally
+31,816, wall 5,775; free exit → back 23,336 (culling); 0 invalid splits of 221,047. Command GBT 0.765 / 0.753 wrapped.
+Q3: gate transfer 0.955–0.986; one change-point at 28 Sep 21:00 UTC; **Elo 1842 → 2096 (rank 35 → 1)** over the span
+— a fast-improving team, which the ranked-only restriction keeps on its current bot.
+
+## The conversion across all four top teams (`tools/tt/concentration.py`, `cull_model.py`, `cull_target.py`)
+
+| round | forgot to mention (dragons / longest / total) | Cache me outside, ranked |
+|---:|---|---|
+| 200 | 36 / 4 / 90 | 36 / 4 / 87 |
+| 300 | 41 / 5 / 106 | 36 / 7 / 101 |
+| 400 | 22 / 18 / 108 | 28 / 23 / 112 |
+| 490 | 9 / 36 / 94 | 14 / 35 / 110 |
+
+| | Heartbreaker | cheji bt | Stockfish | forgot to mention | Cache me outside (ranked) |
+|---|---:|---:|---:|---:|---:|
+| longest at r490 | 13 | 40 | 46 | 36 | 35 |
+| round-limit win rate | 0.26 | 0.75 | 0.72 | 0.64 | 0.55 (vs strong ranked opponents, their longest 35) |
+| self-kill method | none | invalid command | backward step | invalid command | backward step |
+| cull rate, length ≤ 3, by round | — | < 1.1 % → ~10 % from r350 | 0.4 % → ~2 % from r250 | ~2 % → 6–7 % from r400 | ~1.6 % → ~3 % from r250 |
+| cull beside an ally of length 1–2 / 5–6 / 10–14 / 15+ | — | 6 / 45 / 74 / 82 % | 3.6 / 6.4 / 8.8 / 11.7 % | 6.3 / 11.7 / 23.5 / 37 % | 7.5 / 11.2 / 18.4 / 21 % |
+
+**All four top teams convert, all four cull their small dragons, and all four feed the long one** — a small dragon
+beside a long ally is several times likelier to kill itself than one beside a short ally. The strength and timing
+differ (cheji bt extreme, Stockfish gentle, the two new teams between). Heartbreaker (rank ~40) is the one that never
+does. Four independent top teams converging on one mechanism makes it the lane's most robust finding.

@@ -232,5 +232,161 @@
     "o_total": 67.0
    }
   ]
+ },
+ "forgot to mention": {
+  "summary": {
+   "games": 2792,
+   "win": 0.7009312320916905,
+   "elim_win": 1051,
+   "elim_loss": 318,
+   "limit_win": 906,
+   "limit_loss": 517,
+   "limit_win_rate": 0.6366830639494027,
+   "limit_loss_with_material_lead": 0.3849129593810445,
+   "end_longest_median_limit": 37.0,
+   "end_total_median_limit": 96.0,
+   "end_units_median_limit": 8.0,
+   "opp_end_longest_median_limit": 29.0
+  },
+  "by_round": [
+   {
+    "round": 50,
+    "units": 11.0,
+    "longest": 3.0,
+    "total": 27.0,
+    "share": 0.12,
+    "o_units": 9.0,
+    "o_longest": 3.0,
+    "o_total": 22.0
+   },
+   {
+    "round": 100,
+    "units": 23.0,
+    "longest": 4.0,
+    "total": 55.0,
+    "share": 0.07,
+    "o_units": 15.0,
+    "o_longest": 4.0,
+    "o_total": 37.0
+   },
+   {
+    "round": 200,
+    "units": 36.0,
+    "longest": 4.0,
+    "total": 90.0,
+    "share": 0.05,
+    "o_units": 29.0,
+    "o_longest": 4.0,
+    "o_total": 74.0
+   },
+   {
+    "round": 300,
+    "units": 41.0,
+    "longest": 5.0,
+    "total": 106.0,
+    "share": 0.05,
+    "o_units": 31.0,
+    "o_longest": 6.0,
+    "o_total": 84.0
+   },
+   {
+    "round": 400,
+    "units": 22.0,
+    "longest": 18.0,
+    "total": 108.0,
+    "share": 0.17,
+    "o_units": 19.0,
+    "o_longest": 15.0,
+    "o_total": 82.0
+   },
+   {
+    "round": 490,
+    "units": 9.0,
+    "longest": 36.0,
+    "total": 94.0,
+    "share": 0.35,
+    "o_units": 6.0,
+    "o_longest": 28.0,
+    "o_total": 67.0
+   }
+  ]
+ },
+ "Cache me outside (ranked)": {
+  "summary": {
+   "games": 598,
+   "win": 0.5836120401337793,
+   "elim_win": 174,
+   "elim_loss": 106,
+   "limit_win": 175,
+   "limit_loss": 143,
+   "limit_win_rate": 0.550314465408805,
+   "limit_loss_with_material_lead": 0.46853146853146854,
+   "end_longest_median_limit": 36.0,
+   "end_total_median_limit": 107.0,
+   "end_units_median_limit": 12.0,
+   "opp_end_longest_median_limit": 35.0
+  },
+  "by_round": [
+   {
+    "round": 50,
+    "units": 13.0,
+    "longest": 4.0,
+    "total": 32.0,
+    "share": 0.11,
+    "o_units": 10.0,
+    "o_longest": 3.0,
+    "o_total": 24.0
+   },
+   {
+    "round": 100,
+    "units": 26.0,
+    "longest": 4.0,
+    "total": 61.0,
+    "share": 0.07,
+    "o_units": 19.0,
+    "o_longest": 4.0,
+    "o_total": 45.0
+   },
+   {
+    "round": 200,
+    "units": 36.0,
+    "longest": 4.0,
+    "total": 87.0,
+    "share": 0.05,
+    "o_units": 32.0,
+    "o_longest": 4.0,
+    "o_total": 76.0
+   },
+   {
+    "round": 300,
+    "units": 36.0,
+    "longest": 7.0,
+    "total": 101.0,
+    "share": 0.09,
+    "o_units": 30.0,
+    "o_longest": 7.0,
+    "o_total": 82.0
+   },
+   {
+    "round": 400,
+    "units": 28.0,
+    "longest": 23.0,
+    "total": 112.0,
+    "share": 0.21,
+    "o_units": 16.0,
+    "o_longest": 18.0,
+    "o_total": 77.0
+   },
+   {
+    "round": 490,
+    "units": 14.0,
+    "longest": 35.0,
+    "total": 110.0,
+    "share": 0.31,
+    "o_units": 7.0,
+    "o_longest": 34.0,
+    "o_total": 69.0
+   }
+  ]
  }
 }

@@ -12,7 +12,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 TEAMS = {'Heartbreaker': ROOT.parent / 'wt-hb1/build/hb1/v5/corpus', 'cheji bt': ROOT / 'build/tt/team70/v5/corpus',
-         'Stockfish': ROOT / 'build/tt/team206/v5/corpus'}
+         'Stockfish': ROOT / 'build/tt/team206/v5/corpus', 'forgot to mention': ROOT / 'build/tt/team264/v5/corpus',
+         'Cache me outside (ranked)': ROOT / 'build/tt/team952r/v5/corpus'}
 ROUNDS = (50, 100, 200, 300, 400, 490)
 
 out = {}
