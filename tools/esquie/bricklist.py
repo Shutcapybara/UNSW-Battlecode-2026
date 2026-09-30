@@ -96,7 +96,7 @@ def main(argv=None) -> int:
     if a.parent:
         for panel, pt in tables.items():
             def keyed(bot):
-                H = apply_field_rel(derive(rows_for(panel_root(panel, f'bots/{bot}'), bot, seeds), med, refs), refs)
+                H = apply_field_rel(derive(rows_for(panel_root(panel, f'bots/{bot}'), bot, seeds), med), refs)
                 H = H.copy()
                 H['seed'] = H['game'].str.split('__').str[0]
                 return H.set_index(['map', 'seed', 'opponent', 'side'])
@@ -107,7 +107,7 @@ def main(argv=None) -> int:
             out = []
             for m, gj in joined.groupby('map'):
                 r = {'map': m, 'n': len(gj), 'dwin': float(gj['won'].mean() - gj['won_p'].mean())}
-                for c in CHECKPOINTS + ['units@100', 'total@100'] + TIER2:
+                for c in list(CHECKPOINTS) + ['units@100', 'total@100'] + TIER2:
                     r[f'd{c}'] = float((gj[c] - gj[c + '_p']).median())
                 out.append(r)
             d = pd.DataFrame(out).set_index('map')

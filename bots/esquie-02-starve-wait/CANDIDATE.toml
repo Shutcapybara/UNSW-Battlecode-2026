@@ -7,6 +7,7 @@ hypothesis = "M-1 Part 3 for the starved-opening cluster (Trauma/Dilemma/QoS/pin
 mechanism = "bed_wait_eff = esquie_wait (64) iff starved (age >= 12 and no food observable in map knowledge), else 0 = parent. One params switch; golden parity carried by the switch-off build."
 expected_change = "Trauma/Dilemma r50-r100 economy up (r50 = 0.111/0.78 of field median on the base); Devil/Schooltime/Portals untouched (gate never fires: 0 divergent turns on portals recordings)"
 priority = 0
+verdict = "REJECT (M-1 local rule: pooled interval negative -0.024, win -2.19pp; transfer mixed: pinwheel +0.125 win / +17 r250 transfers, but trauma_tr r250 -29 and equatorial_belt -53; the gate observable has a bug - stale-ripe beds (spawn_at < rnd, pearl sitting) do not count as food, causing false-starve loitering on slow-dense maps: Trophy econ_pct 0.594->0.470, win 0.719->0.562. Local gains real: Trauma r50|map 0.111->0.222, Dilemma r250|map 0.863->0.970 win 0.812->0.875, Portals/Devil unchanged as designed. v2 gate = esquie-03.)"
 supersedes = ""
 
 [local_evidence]
