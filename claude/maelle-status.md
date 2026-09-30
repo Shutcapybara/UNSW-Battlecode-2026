@@ -84,3 +84,23 @@ Surface: quadratic dJ = −0.035 w² − 0.092 w; argmax **−1.3, bootstrap 90 
 −2 to −0.5 (dJ +0.03..+0.05), steep loss for w > 0. The gain is material and hygiene (units/length +0.04, ally
 head-on down), not churn. Compiled into `maelle-03-foodfree` (wt_food_free = −1.3); D-032 gate running (pool + gen,
 seeds 1–3, vs maelle-02-features w = 0).
+
+## Priors (fit.py selfplay, parent maelle-02 pool dumps, seeds 1–3)
+
+Chosen target's features vs its outcome over the next 20 rounds; 4,071,445 decisions; controls: base log-score,
+steps, target type; bootstrap by game (30), 90 %. Off-policy and confounded — a sign prior, not a weight.
+
+| Feature | pearls eaten (Poisson, log-rate) | died (logistic) |
+|---|---|---|
+| food | +1.75 [+1.66, +1.84] | +2.42 [+2.36, +2.49] |
+| food_unseen | −0.81 [−0.89, −0.74] | −1.27 [−1.34, −1.18] |
+| food_free | −0.02 [−0.08, +0.06] | +0.11 [+0.05, +0.16] |
+| ally | **−0.42 [−0.46, −0.39]** | +0.01 [−0.03, +0.04] |
+| enemy | −0.19 [−0.24, −0.14] | −0.01 [−0.07, +0.07] |
+| threat | −0.00 [−0.05, +0.03] | **+0.85 [+0.81, +0.90]** |
+| death | −0.01 [−0.04, +0.03] | −0.01 [−0.04, +0.01] |
+| age | −0.32 [−0.37, −0.29] | +0.40 [+0.35, +0.49] |
+
+Reading: food-dense targets pay in pearls and cost in deaths (the churn trade, L29) — consistent with the negative
+food_free optimum; crowded targets pay less (supports a negative wt_ally); threat is the death signal (for the move
+consumer, wm_threat).
