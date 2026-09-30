@@ -284,6 +284,101 @@ standings, results, and per-game logs are in the ignored
 `build/ares-v33-v32-v28-v19-live10-seed1-20260930/` directory; replays were
 not saved.
 
+
+## Ares V34–V35 — crown dash survival
+
+Match [669722](https://game.battlecode.au/visualiser?match=669722) exposed a
+round-477 failure. Ares Team A's 24-length crown, dragon 20 at `(20,10)`, moved
+south to `(20,11)`. Enemy dragon 414 was length 4 at `(22,12)`, but its visible
+chain was clipped by the crown's vision. V33 estimated only three segments and
+two dash steps. The enemy moved north-west; after its second step it was at
+`(21,11)`, adjacent to the crown, and both died head-to-head. Team A was
+eliminated.
+
+V34 tried a broad crown retreat bonus, treated clipped enemies as full-dash
+threats, and prohibited crown-initiated head trades. Its seed-1 screen against
+V33 scored **7–13** on ten maps and both seats, with zero runner errors. It lost
+both games on Portals, Queen of Spades, and Slithery Fight. The general retreat
+bonus was too costly and V34 is rejected.
+
+V35 branches from V33, retaining its target and movement scoring. It changes
+only crown threat accounting: a clipped enemy can dash the maximum three cells,
+and the existing threat penalty also covers adjacent head-contact cells around
+predicted endpoints. This models the round-477 collision without broadly
+steering the king away from every visible enemy. In a controlled replay drive
+that kept V33's local decisions through round 476 and enabled the V35 threat
+rule at round 477, the crown chose `WN` instead of the replayed `S`. From the
+recorded head at `(20,10)`, `WN` ends at `(19,9)`, two Chebyshev cells from the
+attacker's recorded contact cell `(21,11)`. The local replay driver differs
+from the live V33 action at round 473, so this checks the decision from saved
+observations rather than a full counterfactual game.
+
+| Candidate | Direct result vs V33 | Decision |
+|---|---:|---|
+| V34 broad retreat | 7–13 | Rejected |
+| V35 clipped dash and adjacent contact | **10–10** | Retain as experimental |
+
+V35's map records were Autarky 1–1, Default 1–1, Devil 1–1, Dilemma 1–1,
+Portals 2–0, Queen of Spades 1–1, Schooltime 0–2, Slithery Fight 1–1, Trauma
+1–1, and Trophy 1–1. That 20-game screen used unswbc 1.2.2, seed 1, sandbox
+execution, and both seats, with no errors. V35 was then screened against the
+other three versions on the same fixtures:
+
+| Opponent | V35 wins–losses |
+|---|---:|
+| V33 | 10–10 |
+| V32 | 6–14 |
+| V28 | 9–11 |
+| V19 | 13–7 |
+
+Across these four matchups, V35 went **38–42** in 80 games. Combining those
+results with the existing three-way comparisons gives one-seed five-bot
+standings of V32 **46–34**, V33 **43–37**, V28 **41–39**, V35 **38–42**, and
+V19 **32–48**. There were no runner errors. This is a single-seed screen, not
+a promotion gate. V35 remains experimental and outside `FRONTIER.md`; its
+upload as submission v90 (ID 12675) does not promote it locally. The API source
+hash is `870f4bbb1b20371e472728363fe05479ecf92c0a9d260ce70c4c21106eb04c1d`.
+The new 60-game results are in the ignored
+`build/ares-v35-vs-v19-v28-v32-live10-seed1-20260930/`; the V33 results are
+in `build/ares-v35-vs-v33-live10-seed1-20260930/`. See the
+[V35 finding](findings/2026-09-30-ares-v35-crown-clipped-dash-threat.md).
+
+## Ares V36 — no-pearl portal scout
+
+Match [674727](https://game.battlecode.au/visualiser?match=674727) shows V35
+turning north at round 52 beside the unpaired Queen of Spades portal at
+`(6,17)`. Dragon 1 last ate a pearl on round 33 and next ate one on round 86.
+V35's target score is 3 for a portal and 5 for unseen ground, so an
+unexplored-ground target can pull it away even without a fresh pearl lead.
+
+V36 branches from V35. From dragon age 3, it scores an unpaired portal at 8
+when there is no fresh pearl memory; ordinary unseen ground remains 5, and
+pearl and bed targets retain their existing values. This also makes the
+existing 40-round memory TTL determine whether a pearl still suppresses
+portal scouting. V36 was uploaded as submission v91 (ID 12728) on 2026-09-30
+07:02 UTC and became active. Its API source hash is
+`8d5e4b3dba5ec9f948d4985581349267928b88933da47dc4dda847d57b6aa0b1`. It remains
+experimental locally and outside FRONTIER.md. Its seed-1 sandbox screen over
+the ten live maps and both seats scored 13–7 vs V35 and 9–11 vs V19, with zero
+errors. V35 scored
+13–7 vs V19 on the same fixture, so V36's value of 8 is too aggressive for
+promotion. This was a full-match screen, not a counterfactual replay of the
+reported turn. See the [V36 finding](findings/2026-09-30-ares-v36-no-pearl-portal-scout.md)
+and [source snapshot](../bots/ares-v36-no-pearl-portal-scout/).
+
+## Ares V37 — near-portal scout
+
+V37 narrows V36's no-pearl portal value from 8 to 6. This still outranks
+unseen ground at value 5 for a nearby portal approach like the one in match
+674727, while reducing the pull toward more distant portals. It retains V36's
+40-round pearl-memory check and age-3 gate. V37's seed-1 sandbox screen on
+the ten live maps and both seats scored 17–3 vs V35 and 10–10 vs V19, with
+zero errors. It went 2–0 against both opponents
+on Queen of Spades, but did not improve on V35's 13–7 V19 result. V37 remains
+unsubmitted and experimental. See the
+[V37 finding](findings/2026-09-30-ares-v37-near-portal-scout.md) and
+[source snapshot](../bots/ares-v37-near-portal-scout/).
+
 ## Direct matchup screens: Tyr V12
 
 ### Ares V01

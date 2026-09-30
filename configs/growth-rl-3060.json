@@ -1,0 +1,98 @@
+{
+  "output": "build/growth-rl-3060",
+  "seed": 1701,
+  "poll_seconds": 900,
+  "min_free_gb": 5,
+  "max_games": 1000,
+  "rows_per_side": 48,
+  "replays": ["public_replays"],
+  "holdout_map_names": ["mc26_portal_quartet", "md26_orchard_wide_s0", "Portals tr"],
+  "collection": {"top_n": 10, "max_downloads": 60, "recent_games": 40, "ranked_only": false, "delay": 0.65},
+  "training": {"device": "cuda", "hidden": 64, "batch_size": 512, "epochs": 80, "population_weight": 0.25, "temperature": 0.5},
+  "bootstrap": {
+    "enabled": true,
+    "teacher": "bots/ouroboros-m01-vibing-mimic",
+    "maps": ["maps/arena.map", "maps/autarky.map", "maps/schooltime.map"],
+    "opponents": ["bots/yuna-v03-core", "bots/ouroboros-v10-beacon"],
+    "seed": 1701
+  },
+  "evaluation": {
+    "incumbent": "D:\\JKS\\growth-rl-3060\\reference-bots-20260930\\bots\\renoir-23-nodevil",
+    "opponents": [
+      "bots/fenrir-v18-arrival-ready-beds",
+      "bots/yuna-v05-core",
+      "bots/chaewon-y04-probe",
+      "bots/sinbad-v07-divecap",
+      "bots/gavroche-v32-supported-divecap",
+      "bots/ouroboros-m01-vibing-mimic",
+      "bots/kazuha-s01-swarm-dissolve",
+      "bots/hunter-v20-portal-scouts",
+      "D:\\JKS\\growth-rl-3060\\reference-bots-20260930\\bots\\lune-r1-07-latecap8x-only"
+    ],
+    "seeds": [1, 2, 3],
+    "jobs": 3,
+    "bootstrap": 4000,
+    "min_clusters": 4,
+    "panels": [
+      {
+        "name": "pool",
+        "maps": [
+          "maps/schooltime.map",
+          "maps/portals.map",
+          "maps/slithery_fight.map",
+          "maps/queen_of_spades.map",
+          "maps/default.map",
+          "maps/trophy.map",
+          "maps/dilemma.map",
+          "maps/autarky.map",
+          "maps/devil.map",
+          "maps/trauma.map"
+        ]
+      },
+      {
+        "name": "generalization",
+        "maps": [
+          "maps/new/mc26_archipelago.map",
+          "maps/new/mc26_crossroads.map",
+          "maps/new/mc26_delayed_commons.map",
+          "maps/new/mc26_equatorial_belt.map",
+          "maps/new/mc26_far_harbors.map",
+          "maps/new/mc26_nursery_bays.map",
+          "maps/new/mc26_pinwheel.map",
+          "maps/new/mc26_portal_quartet.map",
+          "maps/new/mc26_pulse_farms.map",
+          "maps/new/mc26_relay_depots.map",
+          "maps/new/mc26_scattered_fleets.map",
+          "maps/new/mc26_seam_market.map",
+          "maps/new/mc26_spring_wells.map",
+          "maps/new/md26_causeway_detour_s0.map",
+          "maps/new/md26_causeway_portal_s0.map",
+          "maps/new/md26_commons_shared_s0.map",
+          "maps/new/md26_commons_spread_s0.map",
+          "maps/new/md26_orchard_narrow_s0.map",
+          "maps/new/md26_orchard_wide_s0.map",
+          "maps/new/md26_promenade_ring_s0.map",
+          "maps/var/autarky_tr.map",
+          "maps/var/crossroads_tr.map",
+          "maps/var/default_tr.map",
+          "maps/var/devil_tr.map",
+          "maps/var/dilemma_tr.map",
+          "maps/var/portals_tr.map",
+          "maps/var/queen_of_spades_tr.map",
+          "maps/var/trauma_tr.map",
+          "maps/var/trophy_tr.map"
+        ]
+      }
+    ]
+  },
+  "rollouts": {
+    "temperature": 0.5,
+    "maps": ["maps/arena.map", "maps/autarky.map", "maps/schooltime.map"],
+    "opponents": [
+      "D:\\JKS\\growth-rl-3060\\reference-bots-20260930\\bots\\renoir-23-nodevil",
+      "D:\\JKS\\growth-rl-3060\\reference-bots-20260930\\bots\\lune-r1-07-latecap8x-only",
+      "bots/yuna-v05-core"
+    ]
+  },
+  "locked_test_maps": ["maps/new/mc26_portal_quartet.map", "maps/new/md26_orchard_wide_s0.map", "maps/var/portals_tr.map"]
+}

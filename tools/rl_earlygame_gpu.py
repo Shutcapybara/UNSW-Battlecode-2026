@@ -163,6 +163,7 @@ def loader_for(torch, DataLoader, TensorDataset, arrays, batch_size, shuffle):
         torch.from_numpy(arrays["reward"]),
         torch.from_numpy(arrays["done"]),
         torch.from_numpy(arrays["weight"]),
+        torch.from_numpy(arrays["chosen_index"]),
     )
     return DataLoader(
         TensorDataset(*tensors), batch_size=batch_size, shuffle=shuffle,
@@ -258,15 +259,18 @@ def train_network(args):
         batches = 0
         for batch in train_loader:
             (context, chosen, current_all, current_mask, next_context, next_all,
-             next_mask, reward, done, weight) = [
+             next_mask, reward, done, weight, chosen_index) = [
                  item.to(device, non_blocking=True) for item in batch
              ]
             optimizer.zero_grad(set_to_none=True)
             with torch.amp.autocast(device_type="cuda", enabled=amp_enabled):
-                q_chosen = model(context, chosen)
+                # A singleton dueling forward cancels its own advantage.
+                # Train exactly the same all-action Q values used at inference.
+                current_q = model(context, current_all)
+                q_chosen = current_q.gather(1, chosen_index[:, None]).squeeze(1)
                 with torch.no_grad():
                     online_next = model(next_context, next_all)
-                    online_next = online_next.masked_fill(~next_mask, -1e9)
+                    online_next = online_next.masked_fill(~next_mask, float('-inf'))
                     next_index = online_next.argmax(dim=1)
                     target_next = target(next_context, next_all)
                     next_q = target_next.gather(1, next_index[:, None]).squeeze(1)
@@ -278,7 +282,7 @@ def train_network(args):
                 # Conservative-Q regularization over the fixed action menu.
                 # Runtime legality still removes kelp actions; the reward
                 # shaping makes their learned score unattractive as well.
-                q_all = model(context, current_all).masked_fill(~current_mask, -1e9)
+                q_all = current_q.masked_fill(~current_mask, float('-inf'))
                 cql_loss = (
                     torch.logsumexp(q_all / args.cql_temperature, dim=1)
                     * args.cql_temperature - q_chosen

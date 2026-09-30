@@ -40,6 +40,7 @@ class GamePageParser(html.parser.HTMLParser):
         self.team_path = f"/teams/{team_id}"
         self.game_ids: list[int] = []
         self.total: int | None = None
+        self.team_rows = 0
         self._row_depth = 0
         self._row_hrefs: list[str] = []
         self._text: list[str] = []
@@ -60,6 +61,7 @@ class GamePageParser(html.parser.HTMLParser):
         if self._row_depth:
             return
         if any(urllib.parse.urlsplit(href).path == self.team_path for href in self._row_hrefs):
+            self.team_rows += 1
             for href in self._row_hrefs:
                 match = re.fullmatch(r"/battles/(\d+)", urllib.parse.urlsplit(href).path)
                 if match:
@@ -274,21 +276,28 @@ def discover_games(
     *,
     max_games: int | None = None,
     timeout: float = 30,
+    kind: str | None = None,
+    max_pages: int = 200,
 ) -> list[int]:
     found: list[int] = []
     seen: set[int] = set()
     page = 1
     expected_total: int | None = None
+    visited_rows = 0
 
-    while max_games is None or len(found) < max_games:
-        query = urllib.parse.urlencode({"teams": team_id, "page": page})
+    while page <= max_pages and (max_games is None or len(found) < max_games):
+        params = {"teams": team_id, "page": page}
+        if kind is not None:
+            params["kind"] = kind
+        query = urllib.parse.urlencode(params)
         url = f"{base_url.rstrip('/')}/games?{query}"
         parser = GamePageParser(team_id)
         parser.feed(request(url, timeout=timeout).decode("utf-8", "replace"))
         parser.close()
         expected_total = parser.total if parser.total is not None else expected_total
+        visited_rows += parser.team_rows
         new_ids = [game_id for game_id in parser.game_ids if game_id not in seen]
-        if not new_ids:
+        if not new_ids and not parser.team_rows:
             break
         for game_id in new_ids:
             seen.add(game_id)
@@ -296,7 +305,7 @@ def discover_games(
             if max_games is not None and len(found) >= max_games:
                 break
         print(f"History page {page}: found {len(found)} game(s)", file=sys.stderr)
-        if expected_total is not None and len(found) >= expected_total:
+        if expected_total is not None and visited_rows >= expected_total:
             break
         page += 1
     return found
@@ -369,12 +378,19 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 
 def load_api_key(key_file: Path = DEFAULT_KEY_FILE) -> str:
-    """Read the environment override or the repository-local ignored key file."""
+    """Read the environment, unswbc auth store, or repository-local key file."""
     environment_key = os.environ.get("BATTLECODE_API_KEY", "").strip()
     if environment_key:
         return environment_key
     try:
-        return key_file.read_text().strip()
+        store = json.loads((Path.home() / ".unswbc" / "keys.json").read_text(encoding="utf-8"))
+        stored_key = store.get(DEFAULT_BASE_URL.rstrip("/")) if isinstance(store, dict) else None
+        if isinstance(stored_key, str) and stored_key.strip():
+            return stored_key.strip()
+    except (OSError, ValueError, AttributeError):
+        pass
+    try:
+        return key_file.read_text(encoding="utf-8").strip()
     except FileNotFoundError:
         return ""
 
@@ -384,7 +400,7 @@ def main(argv: list[str] | None = None) -> int:
     api_key = load_api_key()
     if not api_key:
         print(
-            "Set BATTLECODE_API_KEY or place the bc_... key in .battlecode-api-key; "
+            "Run `unswbc auth set` or set BATTLECODE_API_KEY / .battlecode-api-key; "
             "submission filtering requires authenticated API metadata.",
             file=sys.stderr,
         )

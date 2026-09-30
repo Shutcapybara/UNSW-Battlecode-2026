@@ -116,7 +116,7 @@ def plan_batches(pool, targets, map_ids, games, batch_games=10, state=None):
     return batches, state
 
 
-def hourly_remaining(cfg, quota, pool, dispatched=0):
+def hourly_remaining(cfg, quota, pool, dispatched=0, now=None):
     """Return filler games still available after the executor's current plan.
 
     ``quota[pool]['used']`` is the snapshot's rolling-hour count.  ``dispatched``
@@ -126,9 +126,17 @@ def hourly_remaining(cfg, quota, pool, dispatched=0):
     """
     budget = cfg.get('budget') or {}
     hourly = budget.get('hourly_games') or {}
+    current = quota.get(pool) or {}
+    try:
+        blocked_until = float(current.get('blocked_until') or 0)
+        blocked = blocked_until > 0 and (now is None or blocked_until > float(now))
+    except (TypeError, ValueError):
+        return 0
+    if current.get('unknown') or blocked:
+        return 0
     try:
         cap = max(0, int(hourly.get(pool, 0)))
-        used = max(0, int((quota.get(pool) or {}).get('used', 0)))
+        used = max(0, int(current.get('used', 0)))
         dispatched = max(0, int(dispatched))
     except (TypeError, ValueError):
         return 0
@@ -137,6 +145,4 @@ def hourly_remaining(cfg, quota, pool, dispatched=0):
         reserve = max(0, int(reserve.get(pool, 0)))
     except (TypeError, ValueError):
         reserve = 0
-    if (quota.get(pool) or {}).get('unknown') or (quota.get(pool) or {}).get('blocked_until', 0):
-        return 0
     return max(0, cap - used - dispatched - reserve)

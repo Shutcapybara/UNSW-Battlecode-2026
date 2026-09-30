@@ -1,5 +1,43 @@
 # Automatic quota filler
 
+## Windows workstation runner
+
+The Discord controller changes `hub-state/hub.toml`; it needs a separate
+scheduled match runner. For the Windows workstation authorized by its owner,
+install/start the task from the repository root:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/hub/Register-QuotaRunnerTask.ps1
+```
+
+`JKS Automatic Match Runner` runs at logon and every ten minutes while the
+user is logged in. It also runs on battery. Each invocation is limited to
+nine minutes and overlapping task instances are ignored. A shared database
+lease excludes another local executor and expires after fifteen minutes if
+a process is killed. Do not enable this task alongside an independently
+managed executor on another host; local leases cannot coordinate hosts.
+
+The runner uses `tools.hub.quota_runner` and the existing quota planner,
+server-history accounting, request ledger, and lost-acknowledgement
+reconciliation. Its only permitted mutation is an unranked battle request.
+It follows the active submission, reloads the Discord toggle/reserve each
+cycle, and pauses for unfinished candidate-executor work. It uses the saved
+Windows `unswbc auth` credential. It does not depend on the Mac toolkit paths
+or Mac cutover process.
+
+Read `hub-state/quota-runner.json`, `hub-state/quota-runner.log`, or
+`/quota status` for the last cycle. A read-only planning check is:
+
+```powershell
+./build/discord-venv/Scripts/python.exe -m tools.hub.quota_runner
+```
+
+Use `/quota off` to stop new automatic requests. Disable the scheduled task
+to retire the Windows runner. Sleep/logoff prevents runs until the next
+available trigger; this is not an always-on server.
+
+## Full hub executor
+
 The hub can keep the two unranked challenge allowances busy without opening a
 candidate experiment. When enabled, each executor cycle:
 
