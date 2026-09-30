@@ -246,3 +246,23 @@ Reading: no local opponent converts early, so no local test can show whether mat
 against teams that do. That needs games against them, or a faithful stand-in — and Q1 says a local-view mimic of
 either would copy ~0.74–0.76 of their commands (Heartbreaker 0.83 gave a mimic at half strength), too weak to stand in.
 Also a side result worth keeping: hb1-12 beats the Heartbreaker mimic 33/40.
+
+## Memory test (`tools/hb1/q1_history.py`, 400-game subset per team, `game_stats/runs/tt{70,206}-q1-history.json`)
+
+| direction accuracy | v5 | + history | + trail | + both | gain |
+|---|---:|---:|---:|---:|---:|
+| Heartbreaker (HB-1, all 817 games) | 0.8287 | 0.8302 | 0.8296 | 0.8306 | +0.19 pp |
+| cheji bt | 0.7448 | 0.7498 | 0.7543 | 0.7545 | +0.97 pp |
+| Stockfish | 0.7624 | 0.7635 | 0.7667 | 0.7663 | +0.39 pp |
+
+Gate: no gain for either (cheji bt 0.8625 → 0.8608, Stockfish 0.9349 → 0.9345). cheji bt uses some memory — the
+features that help are its own-position trail (where it has recently been) — but memory does not close the gap: about
+a quarter of both teams' moves stay undetermined by the current view plus simple memory of it (global information,
+communication, search, or randomness). Supports "not worth a local-view mimic".
+
+## Close of the first pass (30 Sep, ~23:40 ACST)
+
+Q0–Q3 done for both teams, the conversion analysis and cull models done, two ports measured (both fail the gate),
+three head-to-heads done. Finding: `docs/findings/2026-09-30-tt-top-teams.md`. Open: conditional (state-keyed)
+conversion as the next mechanism; whether the top teams' timing pays against converting opponents (not measurable
+locally).

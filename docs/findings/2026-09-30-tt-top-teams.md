@@ -50,7 +50,10 @@ best (0.79). Held-out = 20 % of each team's games (by game, seed 62); map-identi
 - cheji bt splits on 27.5 % of eligible turns (Heartbreaker 9.7 %), with no simple rule; child sizes are more varied
   (many 8+ children). Stockfish's gate tree: no exit → split; in the open, split after eating at length ≤ 4, with
   branches at rounds ~250 and ~350. Stockfish also emits single-direction sonar rays, which neither other team does.
-- Memory beyond the current view (400-game subset per team): see `claude/tt-status.md`.
+- Memory beyond the current view (action history + decayed spatial trail; 400-game subset per team): direction
+  +0.97 pp for cheji bt (0.7448 → 0.7545, mostly its own-position trail), +0.39 pp for Stockfish, +0.19 pp for
+  Heartbreaker; the split gate gains nothing. Memory does not close the gap: a quarter of their moves stay
+  undetermined by the current view plus simple memory of it.
 
 ## Q2 — behaviour around blocked states (all games)
 
