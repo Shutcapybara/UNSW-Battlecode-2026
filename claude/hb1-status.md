@@ -62,7 +62,7 @@ Q1(e) late concentration, from the per-game trajectories (`build/hb1/q1/traj_sum
 Paired within-game medians in round-limit games, r400→end: Δunits 0, Δtotal +21, Δlongest +2 (corpus); the
 27 Sep packet's −1 / +19 / +2. The weakness is unchanged and now covers 87 % of all their losses.
 
-## Q2 — in progress (`tools/hb1/wrapper.py`, `q2_enumerate.py`, `q2_command.py`)
+## Q2 — wrapper vs policy (done; `tools/hb1/wrapper.py`, `q2_enumerate.py`, `q2_command.py`)
 
 Enumeration over all 7.3 M corpus actor-turns (`game_stats/runs/hb1-q2-enumerate-corpus.json`):
 
@@ -75,16 +75,22 @@ Enumeration over all 7.3 M corpus actor-turns (`game_stats/runs/hb1-q2-enumerate
 | no exit at all, not eligible | ally **head** if adjacent (F>R>L), else forward — deterministic in a 1/3 sample; every such move dies |
 | split sizes / capacity | 0 invalid of 186,440 |
 
-Command-level accuracy (10 classes: F/R/L, SPLIT 2..8), held-out corpus games / era set:
+Command-level accuracy (10 classes: F/R/L, SPLIT 2..8; raw `game_stats/runs/hb1-q2-command.json`). Trained on the
+654 corpus training games; tested on the 163 held-out corpus games and on the 180-game era set (≤27 Sep, older
+submissions — the era the 27 Sep packet's 66.45 % was measured on).
 
-| policy | raw | wrapped | era raw | era wrapped |
-|---|---:|---:|---:|---:|
-| class prior | 0.522 | 0.641 | 0.497 | 0.612 |
-| tree depth 4 | 0.670 | 0.675 | 0.650 | 0.654 |
-| GBT, MLP | pending | | | |
+| policy | corpus raw | corpus wrapped | era raw | era wrapped | raw invalid picks (corpus / era) |
+|---|---:|---:|---:|---:|---|
+| class prior | 0.522 | 0.641 | 0.497 | 0.612 | 18.1 % / 17.7 % |
+| tree depth 4 | 0.670 | 0.675 | 0.650 | 0.654 | 1.8 % / 1.3 % |
+| GBT | 0.826 | 0.826 | 0.799 | 0.799 | 0.9 % / 0.8 % |
+| MLP | 0.806 | 0.807 | **0.655** | **0.703** | 1.0 % / 7.8 % |
 
-Observed commands outside the wrapper: 0.0014 % (corpus). The wrapper forces 0.9 % of rows at 98.9 % agreement.
-27 Sep reference: 66.45 % command accuracy (greedy local routing 62.43 %).
+Reading: the 66 % ceiling is broken by capacity and the v5 candidate features (GBT 82.6 % / 79.9 %), not by the
+wrapper — in distribution both learners have absorbed the wrapper. The prompt's test holds where it matters: the
+same MLP out of time (era) is at 65.5 % raw with 7.8 % invalid picks and 70.3 % wrapped. The wrapper is the part to
+copy verbatim (it is exact and costs nothing); it protects a learned component when that component is off
+distribution. Observed commands outside the wrapper: 0.0014 % (corpus), 0.0032 % (era). The wrapper forces 0.9 % of
+rows at 98.9 % agreement.
 
-Note: the desktop is shared with the R-lane panels (load ~100 on 16 cores at 08:25 ACST); the GBT fits are running
-very slowly under that contention.
+Next: Q3 (`tools/hb1/q3_windows.py`, queued after the memory-feature test).
