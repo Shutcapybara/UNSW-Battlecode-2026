@@ -321,3 +321,21 @@ the crown harvests), which is why tt-01 — that logic started earlier — is th
 | tt-02-feed250 (on hb1-12) | Ares feeders from ~r250 | 131–29 vs 139–21 | 34.5 | 24 % | fail; over-converts |
 | tt-03-proxfeed (on hb1-14) | flat 3 % beside a longer ally from r250 | 137–23 vs 141–19 | 28 (27) | 44 % (50 %) | fail; no concentration |
 | tt-04-feedlong (on hb1-14) | cheji bt's rate table from r330 | 136–24 vs 141–19 | 27 (27) | 29 % (50 %) | fail; kills without feeding |
+
+## Is there a state that says "convert now"? And is there a converting opponent locally? (`tools/tt/elim_state.py`, `by_opponent.py`)
+
+hb1-14's 160 z1 games: 79 elimination wins, **62 of them before r300**; 96 games alive at r300 → 62 round-limit
+wins, 17 late elimination wins, 14 round-limit losses, 3 elimination losses.
+- Own unit count at r300 (observable) does not predict a late elimination (spread over every bucket).
+- The opponent's unit count does: ≤ 5 opponent dragons at r300 → 14 of 17 elimination wins; > 5 → 3 of 79. Not
+  directly observable; "no enemy met for a long time" would be the stand-in.
+- Earlier conversion did not reduce round-limit losses (tt-01 15 vs hb1-12's ~14); it changed their kind.
+
+By opponent, round-limit games, median longest at the end (ours / theirs): hb1-14 — chaewon 33.5 / 24, fenrir 25 / 20,
+gavroche 32 / 22, hunter 33 / 5, kazuha-s01-swarm-dissolve 24.5 / 17, ouroboros-m01-vibing-mimic 28 / 13, sinbad 31 /
+18.5, yuna 27.5 / 24.5. tt-01 raises ours to 30–45 (kazuha 10–0 at the round limit) with no more wins overall.
+
+**No zoo opponent converts like the top teams** (their longest 5–24.5; cheji bt 40, Stockfish 46). The value of the
+top teams' conversion against converting opponents cannot be measured on this panel — only on the ladder. For that
+test an uploadable early converter is needed: `tt-05-feed300-up` = hb1-14 + `feed_base` 140 (tt-01's change on the
+uploadable base).
