@@ -1,0 +1,226 @@
+{
+ "games": 1608,
+ "ranked": 598,
+ "unranked": 1010,
+ "ranked_vs_unranked": {
+  "won": {
+   "ranked_median": 1.0,
+   "unranked_median": 1.0,
+   "ranked_mean": 0.5836120401337793,
+   "unranked_mean": 0.5782178217821782
+  },
+  "split_rate": {
+   "ranked_median": 0.5395325203252033,
+   "unranked_median": 0.4496113762896429,
+   "ranked_mean": 0.6336591678990647,
+   "unranked_mean": 0.5587541885720738
+  },
+  "selfkill_rate": {
+   "ranked_median": 0.013008338433292535,
+   "unranked_median": 0.013420526195681275,
+   "ranked_mean": 0.016652437029377555,
+   "unranked_mean": 0.01679814108303097
+  },
+  "fwd_share": {
+   "ranked_median": 0.3963295423981378,
+   "unranked_median": 0.3942095980504611,
+   "ranked_mean": 0.3948189918000308,
+   "unranked_mean": 0.40606822608517434
+  },
+  "turns_per_round": {
+   "ranked_median": 26.726,
+   "unranked_median": 28.705559585492228,
+   "ranked_mean": 25.586754513756638,
+   "unranked_mean": 29.133745547771788
+  },
+  "u100": {
+   "ranked_median": 26.0,
+   "unranked_median": 27.0,
+   "ranked_mean": 27.73076923076923,
+   "unranked_mean": 30.787409700722396
+  },
+  "L100": {
+   "ranked_median": 4.0,
+   "unranked_median": 4.0,
+   "ranked_mean": 4.148351648351649,
+   "unranked_mean": 3.954592363261094
+  },
+  "T100": {
+   "ranked_median": 61.0,
+   "unranked_median": 63.0,
+   "ranked_mean": 66.99267399267399,
+   "unranked_mean": 74.51702786377709
+  },
+  "u250": {
+   "ranked_median": 38.0,
+   "unranked_median": 42.0,
+   "ranked_mean": 40.5,
+   "unranked_mean": 42.1475
+  },
+  "L250": {
+   "ranked_median": 4.0,
+   "unranked_median": 4.0,
+   "ranked_mean": 7.782296650717703,
+   "unranked_mean": 7.39375
+  },
+  "T250": {
+   "ranked_median": 96.5,
+   "unranked_median": 105.0,
+   "ranked_mean": 107.00717703349282,
+   "unranked_mean": 113.27
+  },
+  "end_round": {
+   "ranked_median": 500.0,
+   "unranked_median": 500.0,
+   "ranked_mean": 365.3779264214047,
+   "unranked_mean": 401.27623762376237
+  }
+ },
+ "outlier_share": {
+  "ranked": 0.020066889632107024,
+  "unranked": 0.01485148514851485
+ },
+ "by_window": {
+  "0|U": {
+   "games": 1,
+   "outlier": 0.0,
+   "won": 0.0,
+   "split_rate": 0.3,
+   "u250": 63.0
+  },
+  "0|R": {
+   "games": 5,
+   "outlier": 0.0,
+   "won": 0.2,
+   "split_rate": 0.402,
+   "u250": 47.0
+  },
+  "1|U": {
+   "games": 4,
+   "outlier": 0.0,
+   "won": 0.75,
+   "split_rate": 0.296,
+   "u250": 48.0
+  },
+  "3|U": {
+   "games": 22,
+   "outlier": 0.0,
+   "won": 0.364,
+   "split_rate": 0.34,
+   "u250": 20.5
+  },
+  "4|U": {
+   "games": 98,
+   "outlier": 0.0,
+   "won": 0.673,
+   "split_rate": 0.397,
+   "u250": 40.0
+  },
+  "4|R": {
+   "games": 55,
+   "outlier": 0.018,
+   "won": 0.6,
+   "split_rate": 0.523,
+   "u250": 38.0
+  },
+  "5|U": {
+   "games": 69,
+   "outlier": 0.0,
+   "won": 0.42,
+   "split_rate": 0.989,
+   "u250": 14.0
+  },
+  "5|R": {
+   "games": 35,
+   "outlier": 0.0,
+   "won": 0.6,
+   "split_rate": 0.901,
+   "u250": 37.0
+  },
+  "6|U": {
+   "games": 42,
+   "outlier": 0.0,
+   "won": 0.619,
+   "split_rate": 0.541,
+   "u250": 52.0
+  },
+  "6|R": {
+   "games": 31,
+   "outlier": 0.032,
+   "won": 0.645,
+   "split_rate": 0.974,
+   "u250": 40.5
+  },
+  "7|U": {
+   "games": 151,
+   "outlier": 0.013,
+   "won": 0.517,
+   "split_rate": 0.544,
+   "u250": 37.0
+  },
+  "7|R": {
+   "games": 112,
+   "outlier": 0.018,
+   "won": 0.598,
+   "split_rate": 0.54,
+   "u250": 37.0
+  },
+  "8|U": {
+   "games": 247,
+   "outlier": 0.02,
+   "won": 0.538,
+   "split_rate": 0.453,
+   "u250": 42.0
+  },
+  "8|R": {
+   "games": 146,
+   "outlier": 0.034,
+   "won": 0.527,
+   "split_rate": 0.555,
+   "u250": 41.0
+  },
+  "9|U": {
+   "games": 103,
+   "outlier": 0.01,
+   "won": 0.544,
+   "split_rate": 0.43,
+   "u250": 43.5
+  },
+  "9|R": {
+   "games": 71,
+   "outlier": 0.0,
+   "won": 0.577,
+   "split_rate": 0.533,
+   "u250": 38.0
+  },
+  "10|U": {
+   "games": 222,
+   "outlier": 0.027,
+   "won": 0.644,
+   "split_rate": 0.378,
+   "u250": 51.0
+  },
+  "10|R": {
+   "games": 72,
+   "outlier": 0.028,
+   "won": 0.583,
+   "split_rate": 0.502,
+   "u250": 38.5
+  },
+  "11|U": {
+   "games": 51,
+   "outlier": 0.02,
+   "won": 0.824,
+   "split_rate": 0.508,
+   "u250": 48.0
+  },
+  "11|R": {
+   "games": 71,
+   "outlier": 0.014,
+   "won": 0.662,
+   "split_rate": 0.452,
+   "u250": 39.5
+  }
+ },
+ "t0": "2026-09-27 18:00:00+00:00"
+}
