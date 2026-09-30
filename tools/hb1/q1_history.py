@@ -153,7 +153,11 @@ def main():
     if not all(p.exists() for p in paths.values()):
         parts = {k: [] for k in paths}
         with Pool(a.jobs) as pool:
-            for o in pool.imap_unordered(_one, sorted(glob.glob(str(B / 'v5' / 'corpus' / '*.parquet'))), chunksize=4):
+            files = sorted(glob.glob(str(B / 'v5' / 'corpus' / '*.parquet')))
+            n = int(os.environ.get('HB_HIST_GAMES', 0))          # lane tt: evenly spaced game subset (16 s/game)
+            if n and len(files) > n:
+                files = files[::len(files) // n][:n]
+            for o in pool.imap_unordered(_one, files, chunksize=4):
                 for k, v in o.items():
                     parts[k].append(v)
         for k, p in paths.items():
