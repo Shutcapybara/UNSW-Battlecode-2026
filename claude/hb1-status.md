@@ -286,3 +286,13 @@ length r100 +0.018. Heartbreaker's production admission (split right after eatin
 the open) starves Ares of dragons. The gate is tuned to Heartbreaker's own eating rhythm, i.e. to its direction
 policy; transplanted alone onto Ares's steering it does not transfer. Ledger L27: a learned decision function does
 not transfer when its inputs' distribution depends on the donor's other decisions.
+
+### Q5 result 3 — hb1-12-direction-prior vs Ares V06, z1 panel seed 1 (`game_stats/runs/hb1-12-direction-prior-z1-s1.{json,md}`)
+
+**GATE: hold** — the strongest Q5 result. W–L 139–21 vs parent 122–38 (+10.62 pp share, +17.0 expected-score points);
+pearls r50 +0.160, r100 +0.079, r150 +0.007, **r250 −0.089** (economy mean +0.0393, short of +0.05); dragons r100
++0.194; length r100 +0.229; births r100 +0.068. Tier-2 all down: wall −36.5 %, own body −8.1 %, ally body −39.1 %,
+ally head-on −34.0 %. Heartbreaker's learned direction choice, used only as a prior (λ = 1.0, fixed before
+screening) inside Ares's search, makes Ares much better early and much cleaner; the one negative is late economy
+(r250). That is the H10/L03 phase-bifurcation pattern — the ledger's prescription is phase-conditional logic
+(the prior strong early, faded late), which is the next single-mechanism version, plus a paired seed 2.
