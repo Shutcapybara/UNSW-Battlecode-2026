@@ -247,3 +247,7 @@ hb1-03's decisions, so hb1-03's 22/40 carries over. Native g++ compile: 1 m 55 s
 Note: the 56 MB generated header is above GitHub's 50 MB recommendation (hard limit 100 MB) and is the kind of
 large generated artifact `docs/artifact-policy.md` discourages; it is committed because a registered bot must be
 self-contained. Alternative for the lead: generate it at build time from the exporter.
+- **Sandbox (judge wasm, CPU priced), Portals seed 2 vs Ares V06:** builds under the judge's clang 20; **30.6 MB per
+  dragon process** (cap 48 MiB); **p50 7.6M / p99 8.0M / max 8.4M points per turn** (Ares V06 same game p50 4.5M,
+  max 8.4M; screen wall 60M); 0 fallbacks in 10,560 turns; loses on length at r500 (Heartbreaker's Portals profile).
+  hb1-04 is deployable. Wall time 8 m 50 s including the build.
