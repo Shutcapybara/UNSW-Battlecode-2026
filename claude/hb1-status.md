@@ -211,3 +211,26 @@ capacity alone. The 0.854 model is 7,035 trees / 3.58 M nodes (86 MB) — far ov
 **hb1-03-direction-scaled** is a local-only experiment: the model is memory-mapped from
 `build/hb1/export/direction_v03.bin` (blob parity vs XGBoost margins: 2,000 rows, 0 mismatches). It answers whether
 direction accuracy buys the missing strength; a deployable version would need distillation.
+
+### hb1-03-direction-scaled vs Ares V04 (`game_stats/runs/hb1-h2h-scaled-vs-ares-v04.json`)
+
+Same 40 fixtures: **22/40 (0.55)** vs hb1-01 14/40 and real Heartbreaker 28/40. Paired on identical fixtures:
+9 flipped L→W, 1 W→L, 13 W/W, 17 L/L — one-sided sign test p = 0.011.
+
+| map | hb1-01 | hb1-03 | real Heartbreaker |
+|---|---:|---:|---:|
+| Autarky | 3/4 | 3/4 | 4/4 |
+| Default | 1/4 | 2/4 | 3/4 |
+| Devil | 2/4 | 4/4 | 3/4 |
+| Prisoners Dilemma | 4/4 | 4/4 | 4/4 |
+| Portals | 0/4 | 0/4 | 1/4 |
+| Queen of Spades | 1/4 | 2/4 | 4/4 |
+| Schooltime | 0/4 | 1/4 | 1/4 |
+| Slithery Fight | 0/4 | 0/4 | 0/4 |
+| Trauma | 2/4 | 3/4 | 4/4 |
+| Trophy | 1/4 | 3/4 | 4/4 |
+
+Dose–response between held-out direction agreement and win rate vs Ares V04: ~0.73 (sampled, hb1-02) → 0.075;
+0.829 (hb1-01) → 0.35; 0.854 (hb1-03) → 0.55; real Heartbreaker → 0.70. Roughly +8 pp of win rate per point of
+direction accuracy in this range, and every map that moved, moved toward Heartbreaker's own record. The mimic's
+strength is limited by the direction model, and the direction model is still data/capacity-limited.
