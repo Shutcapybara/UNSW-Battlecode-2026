@@ -97,4 +97,42 @@ copy verbatim (it is exact and costs nothing); it protects a learned component w
 distribution. Observed commands outside the wrapper: 0.0014 % (corpus), 0.0032 % (era). The wrapper forces 0.9 % of
 rows at 98.9 % agreement.
 
-Next: Q3 (`tools/hb1/q3_windows.py`, queued after the memory-feature test).
+
+## Q3 — is a training loop running? (done; `tools/hb1/q3_windows.py`, `game_stats/runs/hb1-q3-windows.json`)
+
+Corpus split into 6-hour windows from 27 Sep 20:00 UTC (9 windows; windows 0–2 hold only 5–25 games). GPU GBT,
+accuracy on each window: 'within' = by-game half split inside the window; 'from_era' = fitted on the ≤27 Sep era set;
+forward = fitted on the previous window; backward = fitted on the next window.
+
+| decision | windows 3–7 (105k–193k rows each): within | from era | forward | backward |
+|---|---|---|---|---|
+| direction | 0.807–0.812 | 0.805–0.813 | 0.812–0.820 | 0.803–0.820 |
+| gate | 0.967–0.974 | 0.965–0.969 | 0.967–0.972 | 0.965–0.973 |
+| alloc | 0.941–0.955 | 0.937–0.949 | 0.946–0.948 | 0.941–0.953 |
+
+- No continued superset drift: backward is not systematically above forward (it is higher in 3 of 5 large windows for
+  direction, by ≤ 0.7 pp, and lower in the other 2).
+- The era model (older submissions, ≤27 Sep) predicts 28–29 Sep as well as a model fitted inside the window: the
+  policy has not changed since at least 27 Sep 14:00 UTC.
+- Hourly change-points (open-position split rate, forward-when-free rate; penalised mean-shift DP over 36 hours):
+  **none**. Hourly open-split rate 0.036–0.093, forward-when-free 0.605–0.682, all within sampling noise.
+- Ladder (194 snapshots, 28 Sep 14:57 – 29 Sep 22:02 UTC): Elo 1788–1874, rank 30–52, no trend (1813 → 1840).
+
+Reading: no training loop is visible in this span — the policy is static, and its rating wanders with the schedule.
+Every observable here would look the same for a frozen RL policy and a static hand-written bot, so the replays still
+cannot say whether it is RL; per the prompt, no further spend on the question.
+
+## Q4 — structured mimic `bots/hb1-01-structured` (in progress)
+
+- Ares V06 copied verbatim; `Params::hb1_mode = true` switches `main.cpp` to the mimic, Ares untouched otherwise.
+- `hb1_features.hpp`: C++ port of the v5 row. Parity vs the Python rows on 3 held-out games: 19,553 rows × 276
+  columns, **0 mismatches** (`tools/hb1/cpp/{dump_blocks.py,feat_parity.cpp,check_parity.py}`).
+- Direction scorer choice (`tools/hb1/q4_scorer_offline.py`): per-candidate linear 0.733, per-candidate MLP 0.776,
+  GBT 100 rounds 0.813, full GBT **0.829** — cross-candidate interactions matter, so the GBT is exported.
+- `hb1_models.hpp` (5.2 MB; `tools/hb1/q4_fit_export.py`): gate 120 rounds (held-out 0.974), alloc 40 (0.953),
+  direction 300 (0.829), sonar 40 (0.980), fitted on the 654 training games without `mem_initial`. C++ evaluator
+  (`hb1_gbt.hpp`) matches XGBoost margins on 2,000 held-out rows per model, 0 mismatches.
+- `hb1_policy.hpp`: wrapper W0–W4 as rules; gate / child size / direction from the models; sonar = rays N,E,S,W,
+  payload 0 (observed on all 475k sonar turns), the model's dropped slot redrawn from the other three (approximation
+  of the observed neck-ray substitution).
+- Smoke: native, Autarky, seed 1 — beats Ares V06 by elimination at r477 (40 vs 2 dragons at r451). One game.
