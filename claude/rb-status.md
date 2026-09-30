@@ -61,5 +61,5 @@ Note (13/15): on trauma_tr replays the extra wall deaths with symmetry are pocke
 | 14-sym-dive4 | 13 + dive_value 4 | — | not run (stopped at start) | — | — | withdrawn | parent 13 not accepted; rebuilt on 17 as 19 |
 | 23-hungrydive | dive value 6 only for a dragon that has seen no food for 8 rounds, on 17 | + p@50 on starved maps, no unit cost | +0.022 [−0.015, +0.062] (s1) | not run | — | REJECT at screen | trauma +0.333, default +0.096 as aimed, but pool win −0.087 [−0.144, −0.037]: early diving wins the opening on starved maps and loses games |
 
-Report 2: `docs/findings/2026-09-30-rb-lane-2.md` (versions 07–23). **Lane on hold after 23 at the user's request
-(freeing host resources); queue runner stopped. Accepted stack: 01 → 17.**
+Report 2: `docs/findings/2026-09-30-rb-lane-2.md` (versions 07–23). **Lane closed after 23 at the user's request; queue runner
+stopped. Accepted stack: 01 → 17.** Closing summary: `docs/findings/2026-09-30-rb-lane-summary.md`.
