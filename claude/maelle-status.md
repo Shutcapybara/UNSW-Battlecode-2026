@@ -237,3 +237,22 @@ for 3 accepts (lead: hold; exploratory scorer not started).
 Lead: resume, but yield to the competition-mimic instance (`wt-tt`), which has priority. Only the joint SPSA
 (`spsa-joint5b`) is resumed, at `nice -n 19` with 4 games in parallel (bots inherit the niceness). The threat scan and
 the rest of the Part 2 queue stay parked until the host frees up.
+
+## WRAPPED UP (30 Sep, lead's instruction)
+
+All Maelle jobs stopped. Final state:
+
+| Item | Outcome |
+|---|---|
+| Part 1 platform (00, 01, 02; 05 = joint platform) | done; golden parity at every step |
+| F1 food_free (maelle-03) | REJECT; zero-weight optimum across seeds |
+| F2 ally crowding (maelle-04, −1.4) | REJECT; the live lever (units/length +0.04–0.05, all death rates down; late off-pool economy −0.061) — held for stacking |
+| F2b ally × clock | no optimum; not gated |
+| F3 enemy target cost | zero-weight optimum |
+| F4 death move cost | zero-weight optimum |
+| F5 L02 sparsity cap selector (lo 48 and lo 160) | loses at every setting |
+| F6 threat move cost | stopped at ~200/960; no result |
+| Joint SPSA | stopped at 12/16; did not converge (batch noise); joint did not beat sequential |
+| Part 3 learned scorer | not started (trigger of 3 accepts never fired; lead: hold) |
+
+Summary and recommendations: `docs/findings/2026-09-30-maelle-state-features.md`. Nothing registered.

@@ -70,12 +70,30 @@ the feature factor (bound × exp(Σ max(0, wt))). CPU (sandbox pricing, 6 dense 
 - **Corpus priors are small in bot units** (|w| < 0.1 for every feature): top sides are distance-dominated
   (−1.24 per step). Useful for signs, not for magnitudes.
 
-## In progress
+## Joint re-tune and the lane's stopping point
 
-Joint re-tune (SPSA over wt_ally, wt_food_free, wt_ally_clock, wt_enemy from ally −1.4; pool + gen, seeds 1–3,
-12 × 96 games) on `maelle-05-joint`; the L02 variant with the opening floor kept (capsel_lo = 160). Remaining
-single features: threat (move cost; self-play death prior +0.85), clock terms, momentum (L13). Part 3 (learned
-scorer) waits for three accepted features, per the prompt; none yet.
+- **Joint SPSA** (wt_ally, wt_food_free, wt_ally_clock, wt_enemy from ally −1.4; 96 paired games per iteration over
+  pool + gen, seeds 1–3; step clipped at 0.25) was stopped at iteration 12/16 when the lane was wrapped up. It did
+  not converge: per-iteration dJ(+/−) swung from −0.59 to +0.74, and θ drifted to ally −0.91, ally×clock +0.07,
+  enemy +0.59, food_free −0.16. The enemy drift contradicts the enemy scan (+0.5 lost 0.021 econ on 320 fixtures), so
+  the drift is 48-fixture batch noise. **Joint did not beat sequential**; the result is undetermined, and nothing
+  from it was gated. A first run with an unclipped step (a = 4) diverged after one noisy batch and was discarded.
+- **Feature 6** (threat_ew as a move cost, wm_threat −2 / −0.75 / +0.75) was stopped at ~200/960 games; no result.
+- Not run: food/enemy × clock, momentum (L13), other interactions, Part 3 (learned scorer; its trigger, three
+  accepted features, never fired). The lane was put on hold, resumed at low priority behind the competition-mimic
+  instance, and wrapped up on the lead's instruction on 30 Sep.
+
+## Recommendations
+
+1. **Stack `wt_ally −1.4` with a late-economy restorer** rather than tuning it further alone: it is the one feature
+   with a large, seat- and panel-consistent material and hygiene effect. A candidate restorer is a late-phase
+   economy mechanism from another lane; the clock fade (2b) is not one.
+2. **SPSA on this host needs ≥ 150 paired fixtures per iteration** (or common random numbers across iterations);
+   at 48 the gradient is noise at these effect sizes. Paired scans on seeds 1+2 (320 fixtures) were reliable enough
+   to find optima; single-seed scans were not.
+3. **Report the per-game-mean economy beside econ~ in D-032**: they disagreed in sign for maelle-04.
+4. Resume points (commands) are in `claude/maelle-status.md`; the parent's panel (1,224 games) and its 3.5 GB of
+   decision dumps are on the desktop under `build/maelle/` for Part 3 if it is revived.
 
 ## Ledger rows touched (proposed weights)
 
@@ -87,4 +105,5 @@ scorer) waits for three accepted features, per the prompt; none yet.
 | L27 | 0.5 | 0.5 | the corpus → state → conditional-logit pipeline exists and runs in minutes; its priors had the right signs (ally, enemy) but small magnitudes; no C++ decision measured from it yet |
 | L29 | 0.8 | 0.8 | confirmed indirectly: food-seeking features trade pearls for deaths one for one |
 
-Proposed next weights: `wt_ally −1.4` held for stacking with a late-economy restorer; every other feature at 0.
+Proposed next weights: `wt_ally −1.4` held for stacking with a late-economy restorer; every other feature at 0
+(zero-weight optima: food_free, enemy, death; the sparsity cap selector off).
