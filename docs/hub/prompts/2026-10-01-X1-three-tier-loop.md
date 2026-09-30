@@ -46,6 +46,44 @@ trained on the same targets, embedding added to tier 2, refit → (2) tier 3 rel
 panels after every cycle, plus fidelity (held-out agreement per head) and a fixed opponent set so cycles are
 comparable. Stop a tier when its refit stops moving the gate.
 
+## How tier 4 feeds route selection (the lead's question)
+
+The map memory is consumed twice, and the two consumers are different objects:
+
+1. **By the search, as targets and edge costs.** Ares's target search already runs over memory (remembered
+   pearls, beds with ripening times, portal pairs, seen-age → unseen value). Tier 4 extends what it runs over: the
+   decayed grids become **edge costs** on the memory graph — `enemy_ew` and `death_ew` as risk, `ally_ew` as
+   congestion, seen-age as uncertainty, `food_ew` as attraction — and the belief/mode variable selects which cost
+   vector is active. Route selection is then "search over the memory graph with learned costs"; tier 3's ES fits
+   the cost weights on the D-032 objective. This is SF-1's Part 2 and it needs no neural component.
+2. **By the heads, as features.** HB-1's candidate features (forward run, blocked neighbours, reachable area,
+   pearl distance, ally heads within 2) are computed from the *view*; they carried 14 pp of direction accuracy.
+   Tier 4 supplies the same quantities computed over the *memory* — distance to the nearest remembered pearl and
+   ripening bed along the memory graph, reachable area beyond the view, corridor degree and dead-end depth ahead,
+   hazard along each candidate's first k steps, the ally/enemy inclination received over sonar — as features of
+   each candidate first step. That is how the direction head sees routes it cannot see.
+
+HB-1's "memory adds ≤ 0.2 pp" was measured on Heartbreaker's choices, which are a function of the view because
+their policy is; it is not evidence about what our bot could use. The test in cycle 1 is the direction head with
+and without the tier-4 route features at equal data, on our own relabelled targets, not theirs.
+
+## Phases (the lead's proposal — yes, with one caution)
+
+Learn an opening policy, a mid-game policy and a crown-race policy, and a switch between them. The evidence
+supports the split: the search's phase bifurcation (L03: wide search hurts before r40 and helps after), the
+opening gap (L36: the loss is r0–25 economy), Heartbreaker's late gate being pure escape (no productive late
+splits — a different regime), and the tempo metric. The caution is data: three separate model sets triple what
+each head needs. So build it in two steps: first **phase as a feature** (a phase belief from measured state —
+units, total length, contact made, bed saturation, tempo lag, clock as a soft prior — never a round threshold) with
+per-phase sample weighting, and check the per-phase held-out accuracy; split into **separate heads per phase**
+only where the single model's per-phase accuracy is worse than a phase-specific model's on the same data. The
+switch is L32 at game scale: a belief over {opening, mid, crown race} updated by observation, with the transition
+learnable from where each phase's heads out-score the others (train it as a mixture-of-experts gate: relabel each
+logged state with the head that the search preferred, fit the gate on state features). The crown race in
+particular is its own problem (S-4, C1-E's finding that the winner's longest margin is 0–1 in decided games); its
+heads may be simpler than the opening's. Report the phase boundaries the gate learns as a function of state and
+whether they vary by map cluster (D-036) — that is a finding in itself.
+
 ## Sonar
 
 Two separate problems; do not conflate them. (a) **Receiving**: packets and echo counts are observations — inputs
