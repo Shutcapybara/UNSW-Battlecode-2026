@@ -218,3 +218,16 @@ First SPSA run (a = 4) diverged: one 48-fixture batch gave dJ(+/−) = +1.10 and
 weight by ~3 into regions the single scans had already shown lose (food_free +3). Kept as
 `build/maelle/tune/spsa-joint5-diverged`, not used. Relaunched with a = 0.6, per-coordinate step clipped at 0.25,
 16 iterations × 96 games (pool + gen, seeds 1–3), from wt_ally −1.4.
+
+## ON HOLD (30 Sep 20:55 ACST, lead's instruction: pause until the host frees up)
+
+Stopped mid-run, both resumable (finished games are kept; `.tmp` replays of killed games are simply re-played):
+
+- Joint SPSA `spsa-joint5b` at iteration 6/16 (θ: wt_ally −1.12, wt_ally_clock +0.26, wt_enemy +0.31,
+  wt_food_free +0.07). Resume: re-run the same command; tune.py resumes from `build/maelle/tune/spsa-joint5b/history.jsonl`:
+  `.venv/bin/python tools/maelle/tune.py spsa --bot maelle-05-joint --vars "wt_ally=-1.4,wt_food_free=0,wt_ally_clock=0,wt_enemy=0" --iters 16 --batch 48 --a 0.6 --c 0.4 --max-step 0.25 --bound 3 --panel pool+gen --seeds 1,2,3 --jobs 14 --name spsa-joint5b`
+- Feature 6 scan `scan-threat-move` (wm_threat −2, −0.75, +0.75; pool seeds 1+2) at ~200/960. Resume:
+  `.venv/bin/python tools/maelle/tune.py scan --bot maelle-02-features --var wm_threat --values=-2,-0.75,0.75 --parent maelle-02-features --panel pool --seeds 1,2 --jobs 8 --name scan-threat-move`
+
+Queued after those: food/enemy × clock, momentum (L13), interactions, second joint re-tune, report 2. Part 3 waits
+for 3 accepts (lead: hold; exploratory scorer not started).
