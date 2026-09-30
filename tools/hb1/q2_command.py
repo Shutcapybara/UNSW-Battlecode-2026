@@ -5,7 +5,7 @@
 Same held-out corpus games as Q1 (seed 62), plus the era-labelled set (the 27 Sep packet's 66.45 % was measured
 on that era). Writes game_stats/runs/hb1-q2-command.json.
 """
-import argparse, glob, json, sys, time
+import argparse, glob, json, sys, time, os
 from multiprocessing import Pool
 from pathlib import Path
 import numpy as np
@@ -16,9 +16,10 @@ import wrapper as W
 import q1_decisions as Q1
 
 ROOT = Path(__file__).resolve().parents[2]
-B = ROOT / 'build' / 'hb1'
-OUT = ROOT / 'game_stats' / 'runs' / 'hb1-q2-command.json'
-PER = 1500
+B = ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1')   # HB_BUILD/HB_TEAM/HB_TAG: other teams (lane tt)
+TAG = os.environ.get('HB_TAG', 'hb1')
+OUT = ROOT / 'game_stats' / 'runs' / f'{TAG}-q2-command.json'
+PER = int(1500 * float(os.environ.get('HB_CAP_FACTOR', 1)))   # scaled like q1_decisions' caps (memory)
 
 
 def _sample(path):
@@ -76,25 +77,27 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--jobs', type=int, default=14)
     a = ap.parse_args()
-    cor, era = load('corpus', a.jobs), load('era', a.jobs)
+    cor = load('corpus', a.jobs)
+    has_era = any((B / 'v5' / 'era').glob('*.parquet'))
+    era = load('era', a.jobs) if has_era else cor.iloc[:0]
     games = sorted(pd.read_parquet(B / 'games.parquet').query("set == 'corpus'").game.astype(int))
     rng = np.random.default_rng(Q1.SEED)
     test_games = set(rng.choice(games, len(games) // 5, replace=False).tolist())
     te = cor.game.astype(int).isin(test_games).to_numpy()
     X = feats(cor)
     y = W.label(cor)
-    Xe, ye = feats(era, list(X.columns)), W.label(era)
+    Xe, ye = (feats(era, list(X.columns)), W.label(era)) if has_era else (X.iloc[:0], y[:0])
     res = dict(train_rows=int((~te).sum()), test_rows=int(te.sum()), era_rows=len(era),
                label_dist={W.CMDS[i]: int((y == i).sum()) for i in range(len(W.CMDS))})
     prior = np.bincount(y[~te], minlength=len(W.CMDS)) / (~te).sum()
     res['prior'] = dict(test=evaluate(cor[te], y[te], np.tile(prior, (te.sum(), 1))),
-                        era=evaluate(era, ye, np.tile(prior, (len(era), 1))))
+                        era=evaluate(era, ye, np.tile(prior, (len(era), 1))) if has_era else None)
     print('prior', res['prior'], flush=True)
     for name, f in (('tree4', Q1.fit_tree), ('gbt', Q1.fit_gbt), ('mlp', Q1.fit_mlp)):
         t0 = time.time()
         m, p = f(X[~te], y[~te], X[te], y[te])
         classes = m[1] if name == 'mlp' else m.classes_
-        if name == 'mlp':
+        if name == 'mlp' and has_era:
             import torch
             net = m[0]
             mu, sd = X[~te].astype(np.float64).mean(0), X[~te].astype(np.float64).std(0) + 1e-6
@@ -103,8 +106,9 @@ def main():
                                   device=next(net.parameters()).device)
                 pe = torch.cat([net(c).softmax(1) for c in xe.split(65536)]).cpu().numpy()
         else:
-            pe = m.predict_proba(Xe)
-        res[name] = dict(test=evaluate(cor[te], y[te], full(p, classes)), era=evaluate(era, ye, full(pe, classes)),
+            pe = m.predict_proba(Xe) if has_era else None
+        res[name] = dict(test=evaluate(cor[te], y[te], full(p, classes)),
+                         era=evaluate(era, ye, full(pe, classes)) if has_era else None,
                          sec=round(time.time() - t0, 1))
         print(name, json.dumps(res[name]), flush=True)
         OUT.write_text(json.dumps(res, indent=1))
@@ -112,8 +116,9 @@ def main():
     print('|---|---:|---:|---:|---:|---:|')
     for k in ('prior', 'tree4', 'gbt', 'mlp'):
         r = res[k]
-        print(f"| {k} | {r['test']['raw']:.4f} | {r['test']['wrapped']:.4f} | {r['era']['raw']:.4f} | "
-              f"{r['era']['wrapped']:.4f} | {r['test']['raw_invalid']:.4f} |")
+        e = r['era'] or dict(raw=float('nan'), wrapped=float('nan'))
+        print(f"| {k} | {r['test']['raw']:.4f} | {r['test']['wrapped']:.4f} | {e['raw']:.4f} | "
+              f"{e['wrapped']:.4f} | {r['test']['raw_invalid']:.4f} |")
 
 
 if __name__ == '__main__':

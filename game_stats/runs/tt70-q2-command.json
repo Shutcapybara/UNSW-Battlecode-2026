@@ -1,0 +1,81 @@
+{
+ "train_rows": 1224665,
+ "test_rows": 306751,
+ "era_rows": 0,
+ "label_dist": {
+  "F": 715404,
+  "R": 379132,
+  "L": 380436,
+  "S2": 32930,
+  "S3": 4000,
+  "S4": 1610,
+  "S5": 372,
+  "S6": 184,
+  "S7": 89,
+  "S8": 964,
+  "X": 16295
+ },
+ "prior": {
+  "test": {
+   "n": 306751,
+   "raw": 0.4674149391526026,
+   "wrapped": 0.6074992420562606,
+   "family_wrapped": 0.9672372706201446,
+   "raw_invalid": 0.20661057339666375,
+   "forced_rows": 0.007703316370606779,
+   "forced_acc": 0.019889970376639865,
+   "obs_outside_wrapper": 9.779919217867261e-05,
+   "move_rows_wrapped": 0.6286408752995978,
+   "split_rows_wrapped": 0.0575077058564509
+  },
+  "era": null
+ },
+ "tree4": {
+  "test": {
+   "n": 306751,
+   "raw": 0.6236947882810489,
+   "wrapped": 0.6164283083021734,
+   "family_wrapped": 0.9672372706201446,
+   "raw_invalid": 0.0,
+   "forced_rows": 0.007703316370606779,
+   "forced_acc": 0.019889970376639865,
+   "obs_outside_wrapper": 9.779919217867261e-05,
+   "move_rows_wrapped": 0.6379131741797451,
+   "split_rows_wrapped": 0.0575077058564509
+  },
+  "era": null,
+  "sec": 13.7
+ },
+ "gbt": {
+  "test": {
+   "n": 306751,
+   "raw": 0.7406398023152329,
+   "wrapped": 0.7331549041404918,
+   "family_wrapped": 0.9725901464053907,
+   "raw_invalid": 3.25997307262242e-06,
+   "forced_rows": 0.007703316370606779,
+   "forced_acc": 0.019889970376639865,
+   "obs_outside_wrapper": 9.779919217867261e-05,
+   "move_rows_wrapped": 0.7434494712182967,
+   "split_rows_wrapped": 0.4653456627036548
+  },
+  "era": null,
+  "sec": 41.1
+ },
+ "mlp": {
+  "test": {
+   "n": 306751,
+   "raw": 0.7243334170059755,
+   "wrapped": 0.7169952176195025,
+   "family_wrapped": 0.9703309850660633,
+   "raw_invalid": 0.00018907843821210036,
+   "forced_rows": 0.007703316370606779,
+   "forced_acc": 0.019889970376639865,
+   "obs_outside_wrapper": 9.779919217867261e-05,
+   "move_rows_wrapped": 0.7287302468550692,
+   "split_rows_wrapped": 0.41171290180537207
+  },
+  "era": null,
+  "sec": 10.8
+ }
+}

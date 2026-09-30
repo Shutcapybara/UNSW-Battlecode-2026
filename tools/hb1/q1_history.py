@@ -15,7 +15,7 @@ Two families, both derived per dragon from its own earlier v5 rows (information 
 The direction and gate rows are re-drawn exactly as q1_decisions (same per-game seed and cap) and fitted with the
 same GPU GBT on the same held-out games. Writes game_stats/runs/hb1-q1-history.json.
 """
-import argparse, glob, json, sys
+import argparse, glob, json, sys, os
 from multiprocessing import Pool
 from pathlib import Path
 import numpy as np
@@ -25,8 +25,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import q1_decisions as Q1
 
 ROOT = Path(__file__).resolve().parents[2]
-B = ROOT / 'build' / 'hb1'
-OUT = ROOT / 'game_stats' / 'runs' / 'hb1-q1-history.json'
+B = ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1')   # HB_BUILD/HB_TEAM/HB_TAG: other teams (lane tt)
+TAG = os.environ.get('HB_TAG', 'hb1')
+OUT = ROOT / 'game_stats' / 'runs' / f'{TAG}-q1-history.json'
 K = 6
 CODE = {'F': 0, 'R': 1, 'L': 2, 'split': 3}
 FWD = np.array([(0, -1), (1, 0), (0, 1), (-1, 0)], float)     # N E S W, y grows southward
@@ -152,7 +153,11 @@ def main():
     if not all(p.exists() for p in paths.values()):
         parts = {k: [] for k in paths}
         with Pool(a.jobs) as pool:
-            for o in pool.imap_unordered(_one, sorted(glob.glob(str(B / 'v5' / 'corpus' / '*.parquet'))), chunksize=4):
+            files = sorted(glob.glob(str(B / 'v5' / 'corpus' / '*.parquet')))
+            n = int(os.environ.get('HB_HIST_GAMES', 0))          # lane tt: evenly spaced game subset (16 s/game)
+            if n and len(files) > n:
+                files = files[::len(files) // n][:n]
+            for o in pool.imap_unordered(_one, files, chunksize=4):
                 for k, v in o.items():
                     parts[k].append(v)
         for k, p in paths.items():

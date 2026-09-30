@@ -346,3 +346,21 @@ All five questions answered; every run above is complete. Candidate for the dire
 (hold on both seeds: 139–21 vs V06's 122–38, every death rate down, economy +0.039 / +0.028 against the +0.05
 gate). Deployable mimic: **hb1-04-deployable**. Register requests are the director's call. Not run: the
 generalisation panel (~3–3.5 h per bot pair at the evening rate).
+
+## Upload limit and the uploadable direction-prior bot (1 Oct, on branch `r/tt`)
+
+`unswbc submit` rejects an upload zip over **4 MiB** (`submit.py` `MAX_ZIP_BYTES`, deflate of `project.include`).
+hb1-12 zips to 17.11 MiB (direction model 16.08, unused hb1-01 model tables 0.98, Ares 0.04) and hb1-04 likewise, so
+both are local-only. The direction model costs ~4.5 zipped bytes per node; truncating the same GBT to its first N
+rounds and dropping the unused tables (`tools/hb1/q4_compact_direction.py BOTDIR ROUNDS BLOB`, `tools/hb1/zip_size.py`):
+
+| bot | rounds | zip | z1 s1 W–L (V06 122–38) | win share | economy | tier-2 | gate |
+|---|---:|---:|---|---:|---:|---|---|
+| hb1-12-direction-prior | 2,345 | 17.11 MiB | 139–21 | +10.63 pp | +0.039 | wall −36.5 %, ally body −39.1 %, ally head-on −34.0 % | hold |
+| **hb1-14-prior-r540** | 540 | **3.74 MiB** | **141–19** | **+11.88 pp** | +0.016 | wall −34.7 %, own −12.1 %, ally body −37.7 %, ally head-on −39.8 % | **hold** |
+| hb1-15-prior-r100 | 100 | 0.71 MiB | 133–27 | +6.88 pp | −0.018 | wall −29.9 %, own −12.8 %, ally body −37.6 %, ally head-on −32.5 % | fail |
+
+hb1-14 keeps all of hb1-12's win gain inside the limit; 100 rounds keeps the hygiene gain but ~60 % of the wins and
+loses economy. Judge sandbox for hb1-14 (Portals, seed 2, vs V06): builds under clang 20, 6.9 MB per dragon process,
+p50 6.3M / p99 8.9M / max 10.0M points per turn, 0 fallbacks, wins on length. **hb1-14-prior-r540 is the uploadable
+Ares + Heartbreaker-prior bot.** (hb1-04, the mimic itself, is not uploadable as built; it was not re-packaged.)

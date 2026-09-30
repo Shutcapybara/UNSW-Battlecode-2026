@@ -11,8 +11,9 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
-B = ROOT / 'build' / 'hb1'
-TEAM = 62
+B = ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1')   # HB_BUILD/HB_TEAM/HB_TAG: other teams (lane tt)
+TAG = os.environ.get('HB_TAG', 'hb1')
+TEAM = int(os.environ.get('HB_TEAM', 62))
 
 
 def games_table():
@@ -28,7 +29,8 @@ def games_table():
         rows.append(dict(game=r['game_id'], set='corpus', side=side, opp=r['team_b'] if side == 'A' else r['team_a'],
                          opp_name='', sub=None, map=r['map_name'], ranked=r['ranked'], t=r['finished_at'],
                          series=r['series_id'], won=(r['winner'] or '').upper() == side, path=str(p)))
-    for l in open(ROOT / 'experiment_data/team_recon_62_20260927_glm/manifest.jsonl'):
+    man = ROOT / 'experiment_data/team_recon_62_20260927_glm/manifest.jsonl'
+    for l in (open(man) if TEAM == 62 and man.exists() else []):   # era set (submission ids) exists for team 62 only
         r = json.loads(l)
         p = ROOT / f"public_replays/team-62/{r['game_id']}.replay"
         if not p.exists():
@@ -50,9 +52,11 @@ if __name__ == '__main__':
     B.mkdir(parents=True, exist_ok=True)
     G = games_table()
     G.to_parquet(B / 'games.parquet')
-    print(G.groupby('set').size().to_dict(), 'overlap', len(set(G[G.set == 'corpus'].game) & set(G[G.set == 'era'].game)))
+    print('team', TEAM, G.groupby('set').size().to_dict(), 'overlap', len(set(G[G.set == 'corpus'].game) & set(G[G.set == 'era'].game)))
     for s in ('corpus', 'era'):
         g = G[G.set == s]
+        if g.empty:
+            continue
         sides = {str(r.game): r.side for r in g.itertuples()}
         sp = B / f'sides_{s}.json'
         sp.write_text(json.dumps(sides))

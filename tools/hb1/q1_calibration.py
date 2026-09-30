@@ -8,7 +8,7 @@ the share of rows where the policy looks near-deterministic (max p >= 0.95) vs n
 If the model is calibrated, mean max-probability is the accuracy it expects; residual mass on near-tied rows is
 what a sampled policy or unseen state would produce. Writes game_stats/runs/hb1-q1-calibration.json.
 """
-import json, sys
+import json, sys, os
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -17,8 +17,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import q1_decisions as Q1
 
 ROOT = Path(__file__).resolve().parents[2]
-B = ROOT / 'build' / 'hb1'
-OUT = ROOT / 'game_stats' / 'runs' / 'hb1-q1-calibration.json'
+B = ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1')   # HB_BUILD/HB_TEAM/HB_TAG: other teams (lane tt)
+TAG = os.environ.get('HB_TAG', 'hb1')
+OUT = ROOT / 'game_stats' / 'runs' / f'{TAG}-q1-calibration.json'
 
 
 def main():

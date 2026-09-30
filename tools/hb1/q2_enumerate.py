@@ -6,14 +6,15 @@ Per actor-turn: state class (ordinary exits / portal exits / split-eligible) x w
 first step's target: free / portal / wall / own / ally / enemy body / enemy head). Also split-size validity.
 Writes game_stats/runs/hb1-q2-enumerate-<set>.json.
 """
-import argparse, glob, json
+import argparse, glob, json, os
 from multiprocessing import Pool
 from pathlib import Path
 import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
-B = ROOT / 'build' / 'hb1'
+B = ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1')   # HB_BUILD/HB_TEAM/HB_TAG: other teams (lane tt)
+TAG = os.environ.get('HB_TAG', 'hb1')
 COLS = ['round', 'length', 'units', 'unit_limit', 'split_elig', 'n_exit_ord', 'n_exit_portal', 'y_family', 'y_first',
         'y_child', 'post_died', 'post_reason'] + [f'c{r}_{k}' for r in 'FRLB' for k in ('block', 'portal')]
 TARGET = {0: 'free', 1: 'wall', 2: 'own', 3: 'own', 4: 'ally', 5: 'ally', 6: 'enemy', 7: 'enemyHead'}
@@ -29,7 +30,8 @@ def one(path):
     d = pd.read_parquet(path, columns=COLS)
     st = np.where(d.n_exit_ord > 0, 'ord', np.where(d.n_exit_portal > 0, 'portalOnly', 'none'))
     st = pd.Series(st) + np.where(d.split_elig == 1, '+elig', '-elig')
-    act = pd.Series('split', index=d.index)
+    act = pd.Series(np.where(d.y_family == 'split', 'split', d.y_family.astype(str)), index=d.index)
+    act[(d.y_family == 'move') & ~d.y_first.isin(['F', 'R', 'L'])] = 'back'     # backward step into the own neck
     mv = d.y_family == 'move'
     for r in 'FRL':
         m = mv & (d.y_first == r)
@@ -73,7 +75,7 @@ def main():
     print('\naction target x own death reason\n', died)
     res = dict(set=a.set, games=len(fs), state_x_action=tab.to_dict(), exitless_offers=offer, invalid_splits=bad,
                splits=nsp, target_x_death=died.to_dict())
-    (ROOT / 'game_stats' / 'runs' / f'hb1-q2-enumerate-{a.set}.json').write_text(json.dumps(res, indent=1))
+    (ROOT / 'game_stats' / 'runs' / f'{TAG}-q2-enumerate-{a.set}.json').write_text(json.dumps(res, indent=1))
 
 
 if __name__ == '__main__':
