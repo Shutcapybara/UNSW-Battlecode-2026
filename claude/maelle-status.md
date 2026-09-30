@@ -152,3 +152,14 @@ lost off-pool** (gen p@250 −0.061 [−0.090, −0.026], gen win −0.069). Per
 +0.002; gen econ~ +0.000 / +0.018 / −0.046. Reading (L03): spreading pays in the opening and midgame and costs late,
 when food is scarce and concentrated. Next: the clock interaction on the same feature — target term
 ally·(wt_ally + wt_ally_clock·round/500) — scanned on top of maelle-04 over pool + gen, seeds 1+2.
+
+### Feature 2b — clock interaction on the crowding cost (wt_ally_clock on maelle-04; pool + gen, seeds 1+2, 816 paired)
+
+| w | dJ | d econ | d p50 | d p100 | d p150 | d p250 | d units@100 | d length@100 | d win | d ally h2h /1k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| +1.4 | −0.049 | −0.013 | −0.003 | −0.010 | −0.023 | −0.015 | −0.052 | −0.058 | −0.015 | +0.11 |
+| +2.8 | +0.016 | +0.016 | +0.008 | +0.013 | +0.009 | +0.036 | +0.003 | +0.004 | −0.011 | +0.03 |
+
+Not monotone, convex fit, both points near noise: fading the crowding cost with the clock does not repair
+maelle-04's late loss (win stays negative). Not gated. L03 is not supported for this feature; the late cost is
+likely map-dependent rather than a clock effect.
