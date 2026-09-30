@@ -19,6 +19,16 @@ medians food 0.44, ally 0.21, enemy 0.20, threat 0.41, death 0.64 (3 % of candid
 Parent arm for every Part 2 measurement: `maelle-02-features` with no overrides (= maelle-01 behaviour), pool +
 gen, seeds 1–3, run with the decision dump (the training data for `fit.py selfplay`).
 
+## CPU (sandbox judge pricing, 6 dense fixtures × both seats vs ares-v06)
+
+| Build | p50 range | Max turn | Worst | Errors |
+|---|---|---:|---|---:|
+| maelle-01-nodevil (parent) | 4.50–5.18 M | 8.72 M | schooltime B | 0 |
+| maelle-02 all-on probe (every `wt_*` = 0.3, move `wm_*` ±0.5, capsel 48→512) | 5.32–7.26 M | **11.98 M** | schooltime B | 0 |
+
+The worst case of the whole feature set is under the 20 M lane ceiling; per-version probes still run for any
+version that adds a grid.
+
 ## Host note
 
 The desktop is shared with lanes hb1, rb, rc (load average 97–130 on 16 cores on 30 Sep morning): measured
