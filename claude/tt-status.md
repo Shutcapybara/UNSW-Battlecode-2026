@@ -281,3 +281,27 @@ r400 33 dragons / longest 10 (parent 32 / 9); r490 7 / 28 (7 / 27); round-limit 
 78–5 (79–5). The gradual feed keeps the elimination wins, as intended, but does not concentrate: feeding *any*
 strictly longer ally scatters material (a length-3 dragon dying next to a length-4 one). "Near an ally head" is too
 loose a reading of Stockfish's rule — which ally matters. (hb1-14's own trajectory: `build/tt/conc_hb1-14-prior-r540.log`.)
+
+### Which ally does a small dragon die next to? (`tools/tt/cull_target.py`, `game_stats/runs/tt{70,206}-cull-target.json`)
+
+Rows: length ≤ 3 after each team's onset round (300-game sample); the nearest ally head and the visible length of its
+dragon (flood over connected ally cells in the 7×7 grid — approximate where two allies touch).
+
+| nearest ally's visible length | cheji bt (r ≥ 330): adjacent / distance 2–3 | Stockfish (r ≥ 250): adjacent / distance 2–3 |
+|---|---|---|
+| 1–2 | 6.2 % / 4.4 % | 3.6 % / 1.6 % |
+| 3–4 | 23.9 % / 10.0 % | 4.2 % / 2.4 % |
+| 5–6 | 45.0 % / 23.7 % | 6.4 % / 3.4 % |
+| 7–9 | 57.4 % / 37.5 % | 7.1 % / 4.1 % |
+| 10–14 | 74.1 % / 52.2 % | 8.8 % / 5.1 % |
+| 15+ | 81.5 % / 56.4 % | 11.7 % / 9.1 % |
+| no ally head in view | 4.3 % | 0.3 % |
+
+**Correction to the "timed mass cull" reading above:** cheji bt's ~10 %/turn is an average. The rule is targeted —
+after r330 a small dragon beside a long ally almost always kills itself, one with no ally in view almost never does:
+it feeds the long dragon. Stockfish follows the same rule much more gently. tt-03 (flat 3 % beside any longer ally)
+encoded the wrong thing. Unlike Ares's feeder (travel to one radio-elected crown, die within 4 cells), this needs no
+election and leaves the swarm away from the long dragon alive.
+
+Port 4 — `tt-04-feedlong` (on hb1-14, uploadable): cheji bt's rate table from r330 for length ≤ 3, nearest ally head
+within distance 3 and visibly longer.
