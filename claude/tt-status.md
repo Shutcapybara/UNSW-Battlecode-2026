@@ -190,3 +190,20 @@ cheji bt command-level accuracy (`tt70-q2-command.json`, scaled sample): GBT 0.7
 0.717, tree 0.624. Whole-command predictability from the local view: Heartbreaker 0.826, Stockfish 0.763, cheji bt
 0.741 — the stronger the team, the less of its play a local-view model captures; and the Heartbreaker-measured
 wrapper slightly hurts both.
+
+## Port 1 — tt-01-feed300 (hb1-12 + feeding from ~r300) vs hb1-12, z1 seed 1 (`game_stats/runs/tt-01-feed300-z1-s1.{json,md}`)
+
+**GATE: fail.** W–L 136–24 vs hb1-12's 139–21 (−1.88 pp); economy mean +0.0000 (pearls to r250 cannot move — the
+mechanism starts at r300); own-body deaths 3.37 → 4.62/1k (+37 %) — that rate *is* the mechanism (a feeder dies by
+stepping into its own neck), so the hygiene gate penalises deliberate feeding by construction.
+
+Trajectory (`tools/tt/concentration_bot.py`): r400 15 dragons / longest 22 (hb1-12: 45 / 9; cheji bt 8 / 25); r490
+4 / 33, share in the longest 0.49 (hb1-12 8 / 28.5, 0.30; cheji bt 4 / 40, 0.46). Round-limit win rate 0.80 (0.78);
+round-limit losses with a material lead 20 % (57 %). Elimination W/L 75–9 over 160 games (hb1-12 ~85–6).
+
+Reading: the conversion works as designed — cheji bt's schedule reproduced, material no longer wasted at the round
+limit — and it costs elimination wins: dissolving the swarm at r300 removes the pressure that eliminates zoo
+opponents. The zoo panel is weak enough that hb1-12 eliminates over half its opponents; cheji bt on the live ladder
+wins 49 % by elimination. Against opponents that cannot be eliminated the round limit decides, so this panel
+understates early conversion for ladder play. Points to a conditional conversion (keep the swarm while elimination is
+on, convert when it is not) rather than a fixed earlier round.
