@@ -1,0 +1,29 @@
+# TT status — top teams: cheji bt (team 70) and Stockfish (team 206)
+
+User request (30 Sep 2026, ~21:30 ACST): run an HB-1-style analysis on the top two teams, cheji bt and Stockfish,
+using what HB-1 learned. Branch `r/tt` (from `r/hb1` at `bfd67c37`), worktree `../wt-tt`. HB-1 method and tools:
+`docs/findings/2026-09-30-hb1-heartbreaker.md`, `tools/hb1/`.
+
+## Targets and data
+
+Ladder snapshot 30 Sep 12:11 UTC: #1 cheji bt (id 70, Elo 2096), #4 Stockfish (id 206, 2079; #2–#4 within 2 Elo).
+Mac corpus: cheji bt 4,130 games (25 Sep 18:20 – 30 Sep 11:57 UTC), Stockfish 1,931 (26 Sep 22:12 – 30 Sep 12:11).
+No submission ids (as for Heartbreaker after 28 Sep).
+
+## Tooling
+
+HB-1's Q0–Q3 scripts are parameterised by `HB_TEAM` (team id), `HB_BUILD` (build dir under `build/`) and `HB_TAG`
+(output prefix in `game_stats/runs/`); team 62 defaults unchanged. `tools/hb1/sync_team.sh TEAM` pulls a team's
+replays from the Mac. Per team: `HB_TEAM=70 HB_BUILD=tt/team70 HB_TAG=tt70`, `HB_TEAM=206 HB_BUILD=tt/team206
+HB_TAG=tt206`.
+
+## Plan
+
+1. Q0 data: sync, extract v5 rows for every game.
+2. Q1 structure per team: the five decisions' tree / GBT / MLP gap table and drop-family ablations; the memory test.
+   What decides the rest: a large tree→GBT gap with high accuracy on one decision means a learnable policy
+   (Heartbreaker's shape); low accuracy with no gap and memory features helping means search or state beyond the
+   7×7 view, which a local-view mimic cannot copy — that changes what is worth porting.
+3. Q2 wrapper enumeration; Q3 stability over time windows (plus ladder).
+4. Q4 mimic and Q5 component ports onto Ares V06 only where Q1 says they pay (HB-1: a learned direction prior was the
+   only port that held; hb1-12).
