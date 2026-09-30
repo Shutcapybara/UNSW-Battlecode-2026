@@ -231,3 +231,9 @@ Stopped mid-run, both resumable (finished games are kept; `.tmp` replays of kill
 
 Queued after those: food/enemy × clock, momentum (L13), interactions, second joint re-tune, report 2. Part 3 waits
 for 3 accepts (lead: hold; exploratory scorer not started).
+
+## Resumed selectively (30 Sep 22:05 ACST)
+
+Lead: resume, but yield to the competition-mimic instance (`wt-tt`), which has priority. Only the joint SPSA
+(`spsa-joint5b`) is resumed, at `nice -n 19` with 4 games in parallel (bots inherit the niceness). The threat scan and
+the rest of the Part 2 queue stay parked until the host frees up.
