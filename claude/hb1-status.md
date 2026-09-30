@@ -193,3 +193,21 @@ Rejected, and informative: (1) Heartbreaker's residual is not useful randomness 
 is mostly model error, so copying it as noise hurts; (2) strength is steep in direction accuracy: ~0.83 agreement
 (argmax) → 0.35 win rate, ~0.73 expected agreement (sampled) → 0.075. The lever is a more accurate direction model;
 the v5 direction GBT was trained on a 1,200-row/game sample (~0.7 M of ~6 M move turns) and hit its 300-round cap.
+
+### Direction-model scaling (`tools/hb1/q4_direction_scale.py`, `game_stats/runs/hb1-q4-direction-scale.json`)
+
+Same held-out rows as hb1-01's 0.829 (179,436 move turns, 163 games); GPU XGBoost, early stop 30, ≤ 3,000 rounds:
+
+| rows per training game | leaves | rounds | held-out direction accuracy |
+|---:|---:|---:|---:|
+| 1,200 (hb1-01 data) | 63 | 2,995 (cap) | 0.8432 |
+| 1,200 | 255 | 1,069 | 0.8449 |
+| 3,000 | 63 | 3,000 (cap) | 0.8495 |
+| 3,000 | 255 | 2,345 | **0.8543** |
+| 6,000 | — | — | not completed (process ended without output at the 3.2 M-row load; likely memory on the shared host) |
+
+hb1-01's direction model (1,200 rows, 63 leaves, 300-round cap) was under-fitted: +2.5 pp is available from data and
+capacity alone. The 0.854 model is 7,035 trees / 3.58 M nodes (86 MB) — far over the header budget — so
+**hb1-03-direction-scaled** is a local-only experiment: the model is memory-mapped from
+`build/hb1/export/direction_v03.bin` (blob parity vs XGBoost margins: 2,000 rows, 0 mismatches). It answers whether
+direction accuracy buys the missing strength; a deployable version would need distillation.
