@@ -71,7 +71,7 @@ decision.
    On the shared host the throughput will be well under 2,900 games/h; cycle sizes are set from the measured rate
    and reported.
 4. **Leakage.** Three fences. (i) Training games never use a panel fixture: data games are played on
-   `maps/{arena,big_empty,Colosseum,default_small,dilemma_10,stronghold}` (in neither panel) and on the live pool
+   `maps/{arena,big_empty,Colosseum,default_small,stronghold}` (in neither panel) and on the live pool
    at seeds ≥ 101; the generalisation panel's maps (`maps/new`, `maps/var/*_tr`, `maps/pub/*_rec`) never enter a
    training set. (ii) Held-out agreement is always by game. (iii) Features carry no map identity: the v5 block
    drops `W, H, x, y, xn, yn, facing_abs`; the dump header keeps `W, H, head` for joins only. The generalisation

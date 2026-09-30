@@ -32,7 +32,7 @@ YCOLS = [f'{k}_{h}' for h in HORIZONS for k in ('dlen', 'dunits', 'died', 'bed',
         ['ttd', 'reason', 'won', 'final_margin']
 VIEW_R, VIEW_C = 5, 18
 VIEW_N = 2 * VIEW_R + 1
-REASON = {'wall': 1, 'self': 2, 'otherDragon': 3, 'headToHead': 4, 'noValidAction': 5}
+REASON = {'hitWall': 1, 'hitSelf': 2, 'hitOtherBody': 3, 'hitHeadToHead': 4, 'noValidAction': 5}
 
 
 def outcomes(replay):
@@ -187,6 +187,27 @@ def load(arm, panel='train', games=None, cols=None, limit=None):
             [Path(f).stem for f in fs])
 
 
+def _rey(args):
+    npz, replay = args
+    z = np.load(npz)
+    Y = y_rows(outcomes(replay), z['H'])
+    tmp = Path(str(npz)[:-4] + '.tmp.npz')
+    np.savez_compressed(tmp, H=z['H'], X=z['X'], Y=Y)
+    os.replace(tmp, npz)
+    return 1
+
+
+def cmd_reyield(a):
+    """recompute the outcome table of existing arrays from their replays (after a change to y_rows)"""
+    out = C.B / 'data' / a.arm / a.panel
+    runs = C.B / 'runs' / a.arm / a.panel / 'replays'
+    work = [(f, str(runs / (Path(f).stem + '.replay'))) for f in sorted(glob.glob(str(out / '*.npz')))
+            if not f.endswith(('.tmp.npz', '.view.npz'))]
+    with Pool(a.jobs) as pool:
+        n = sum(pool.imap_unordered(_rey, work))
+    print(f'recomputed outcomes of {n} games')
+
+
 def cmd_info(a):
     H, X, Y, G, names = load(a.arm, a.panel)
     y = {c: Y[:, i] for i, c in enumerate(YCOLS)}
@@ -203,8 +224,10 @@ def main():
     b = sub.add_parser('build'); b.add_argument('arm'); b.add_argument('--panel', default='train')
     b.add_argument('--jobs', type=int, default=8); b.add_argument('--keep-raw', action='store_true')
     i = sub.add_parser('info'); i.add_argument('arm'); i.add_argument('--panel', default='train')
+    r = sub.add_parser('reyield'); r.add_argument('arm'); r.add_argument('--panel', default='train')
+    r.add_argument('--jobs', type=int, default=8)
     a = ap.parse_args()
-    {'build': cmd_build, 'info': cmd_info}[a.cmd](a)
+    {'build': cmd_build, 'info': cmd_info, 'reyield': cmd_reyield}[a.cmd](a)
 
 
 if __name__ == '__main__':

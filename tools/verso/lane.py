@@ -15,6 +15,8 @@ A bare bot directory name is an arm with no params. Panels (fixed): pool = run_p
 (160 games / seed); gen = GEN_OPPS x maps/new + maps/var/*_tr + maps/pub/*_rec x both seats (248 games / seed).
 train = data games only, never scored: TRAIN_MAPS (in neither panel) + LIVE_MAPS, vs ZOO and a mirror game, at
 seeds >= 101 (the D-032 panels use seeds 1-3; the generalisation maps never enter a training set).
+synth = data games on the seeded random maps of tools/verso/mapgen.py (build/verso/maps/vt_*.map): three zoo
+opponents per map, both seats, plus a mirror game.
 Outputs under build/verso/runs/<ARM>/<panel>/; dumps under build/verso/dumps/<ARM>/<panel>/<game>.bin.
 Games run at nice VERSO_NICE (default 19): the host is shared and another lane has priority.
 
@@ -43,7 +45,7 @@ GEN_MAPS = sorted(str(Path(p).relative_to(ROOT / 'maps'))[:-4] for p in
 HEAVY = {'slithery_fight', 'schooltime', 'portals', 'pub/slithery_rec', 'pub/portals_rec', 'var/portals_tr'}
 CPU_MAPS = ['schooltime', 'portals', 'trauma', 'big_empty']
 RESULT = re.compile(r'team (A|B) wins after (\d+) rounds \(([^)]*)\)')
-TRAIN_MAPS = ['arena', 'big_empty', 'Colosseum', 'default_small', 'dilemma_10', 'stronghold']
+TRAIN_MAPS = ['arena', 'big_empty', 'Colosseum', 'default_small', 'stronghold']  # dilemma_10.map does not load
 RUNS = ROOT / 'build/verso/runs'
 DUMPS = ROOT / 'build/verso/dumps'
 ARMS = ROOT / 'build/verso/arms.json'
@@ -103,18 +105,23 @@ def cmd_import(a):
 
 
 def fixtures(bot, panel, seeds):
-    if panel == 'train' and min(seeds) < 101:
-        raise SystemExit('train games use seeds >= 101 (the panels own the low seeds)')
-    if panel != 'train' and max(seeds) >= 101:
-        raise SystemExit('seeds >= 101 are reserved for train games')
+    data = panel in ('train', 'synth')
+    if data and min(seeds) < 101:
+        raise SystemExit('data games use seeds >= 101 (the panels own the low seeds)')
+    if not data and max(seeds) >= 101:
+        raise SystemExit('seeds >= 101 are reserved for data games')
+    synth = sorted(p.stem for p in (ROOT / 'build/verso/maps').glob('vt_*.map'))
     opps, maps = {'pool': (ZOO, LIVE_MAPS), 'gen': (GEN_OPPS, GEN_MAPS),
-                  'train': (ZOO + [bot], TRAIN_MAPS + LIVE_MAPS)}[panel]
+                  'train': (ZOO + [bot], TRAIN_MAPS + LIVE_MAPS), 'synth': (ZOO + [bot], synth)}[panel]
     out = []
     for seed in seeds:
-        for opp in opps:
-            if opp == bot and panel != 'train':
+        for oi, opp in enumerate(opps):
+            if opp == bot and not data:
                 continue
-            for m in maps:
+            for mi, m in enumerate(maps):
+                # synthetic maps: three zoo opponents per map (rotating with the map and the seed) plus the mirror
+                if panel == 'synth' and opp != bot and (oi - mi - seed) % len(ZOO) >= 3:
+                    continue
                 for a, b in (((bot, opp),) if opp == bot else ((bot, opp), (opp, bot))):
                     tag = m.replace('/', '+')
                     out.append(dict(panel=panel, map=m, seed=seed, botA=a, botB=b, opp=opp,
@@ -128,8 +135,10 @@ def run_one(fx, root, spec, dump=None):
         return None
     t = time.time()
     env = {k: v for k, v in os.environ.items() if not k.startswith(('VERSO_', 'MAELLE_'))}
-    if spec['params'] or fx['panel'] == 'train':
-        env['VERSO_PARAMS'] = ','.join(x for x in (spec['params'], f"seed={fx['seed']}" if fx['panel'] == 'train' else '') if x)
+    data = fx['panel'] in ('train', 'synth')
+    if spec['params'] or data:
+        env['VERSO_PARAMS'] = ','.join(x for x in (spec['params'], f"seed={fx['seed']}" if data else '') if x)
+    mp = f"build/verso/maps/{fx['map']}.map" if fx['panel'] == 'synth' else f"maps/{fx['map']}.map"
     if spec['policy']:
         env['VERSO_POLICY'] = str((ROOT / spec['policy']).resolve())
     if dump is not None:
@@ -140,7 +149,7 @@ def run_one(fx, root, spec, dump=None):
         env['VERSO_DUMP'] = str(df)
     try:
         p = subprocess.run((['nice', '-n', str(NICE)] if NICE else []) + [UNSWBC, 'run', '--seed', str(fx['seed']), '--no-logs', '--no-indicator', '--no-draw',
-                            '-o', str(rep) + '.tmp', f"maps/{fx['map']}.map", f"bots/{fx['botA']}", f"bots/{fx['botB']}"],
+                            '-o', str(rep) + '.tmp', mp, f"bots/{fx['botA']}", f"bots/{fx['botB']}"],
                            capture_output=True, text=True, timeout=1800, cwd=ROOT, env=env)
         out, rc = p.stdout + p.stderr, p.returncode
     except subprocess.TimeoutExpired:
@@ -219,7 +228,7 @@ def cmd_run(a):
             break
     if a.extract:
         for panel in panels:
-            if panel != 'train':
+            if panel not in ('train', 'synth'):
                 extract(a.bot, panel)
 
 
@@ -483,7 +492,7 @@ def cmd_genref(a):
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest='cmd', required=True)
-    r = sub.add_parser('run'); r.add_argument('bot'); r.add_argument('--panel', default='both', choices=['pool', 'gen', 'both', 'train'])
+    r = sub.add_parser('run'); r.add_argument('bot'); r.add_argument('--panel', default='both', choices=['pool', 'gen', 'both', 'train', 'synth'])
     r.add_argument('--seeds', default='1,2,3'); r.add_argument('--jobs', type=int, default=12); r.add_argument('--shard')
     r.add_argument('--dump', action='store_true')
     r.add_argument('--extract', action='store_true'); r.add_argument('--budget', type=float, default=0)

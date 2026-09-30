@@ -253,6 +253,110 @@ def cmd_own(a):
     print(json.dumps(meta, indent=1))
 
 
+# ------------------------------------------------------------------------------------ hindsight targets (B)
+def load_hind(arms, panel, cols, horizon, limit=0):
+    """-> H, X, R (hindsight [n, 9]), game index; only rows with a hindsight label."""
+    import dataset as D
+    import relabel as RL
+    import glob
+    Hs, Xs, Rs, Gs, gi = [], [], [], [], 0
+    for arm in arms.split(','):
+        fs = sorted(f for f in glob.glob(str(C.B / 'data' / arm / panel / '*.npz'))
+                    if not f.endswith(('.tmp.npz', '.view.npz')))
+        for f in (fs[:limit] if limit else fs):
+            hp = RL.hind_path(f, horizon)
+            if not hp.exists():
+                continue
+            z = np.load(f)
+            R = np.load(hp)
+            ok = ~np.isnan(R[:, 0])
+            Hs.append(z['H'][ok]); Xs.append(z['X'][ok][:, cols]); Rs.append(R[ok])
+            Gs.append(np.full(int(ok.sum()), gi, np.int32)); gi += 1
+    return np.concatenate(Hs), np.concatenate(Xs), np.concatenate(Rs), np.concatenate(Gs), gi
+
+
+def offline_policy(X, names, A=None, beta=0.0, lam=1.0):
+    """The bot's one-step choice rebuilt from its own dumped numbers: argmax over F/R/L of the hand score of the
+    one-step path + lam * h_dir + beta * (A_k - max A), over steps that are OK or a dive. -1 when none is live."""
+    idx = {n: i for i, n in enumerate(names)}
+    base = np.stack([X[:, idx[f'a{r}_score']] + lam * X[:, idx[f'h_dir_{r}']] for r in C.RELS], 1).astype(np.float64)
+    live = np.stack([np.isin(X[:, idx[f'a{r}_status']], (0, 2)) for r in C.RELS], 1)
+    if A is not None and beta:
+        base = base + beta * (A - A.max(1, keepdims=True))
+    base[~live] = -1e9
+    ch = base.argmax(1)
+    ch[~live.any(1)] = -1
+    return ch
+
+
+def cmd_hind(a):
+    """Tier 3 (B): fit, per first step, the hindsight advantage (value of the step minus the best step's value in
+    the recorded future, clipped) on every logged move; the `q` head is the three regressors."""
+    _, names = C.schema(a.bot)
+    cols, feats = select_features(names, set(a.blocks.split(',')))
+    full_cols = list(range(len(names)))
+    out = C.MODELS / a.name
+    out.mkdir(parents=True, exist_ok=True)
+    t0 = time.time()
+    H, Xall, R, G, ng = load_hind(a.data, a.panel, full_cols, a.horizon, a.limit)
+    X = Xall[:, cols]
+    val, alive = R[:, 0::3], R[:, 1::3]
+    adv = np.clip(val - val.max(1, keepdims=True), -a.clip, 0.0).astype(np.float32)
+    rng = np.random.default_rng(C.SEED)
+    fold = np.empty(ng, np.int8)
+    fold[rng.permutation(ng)] = np.arange(ng) % 5
+    f = fold[G]
+    te, va = f == 0, f == 1
+    tr = ~te & ~va
+    print(f'rows {len(adv)}, games {ng}, features {len(feats)}, mean adv {adv.mean(0).round(3).tolist()}, '
+          f'load {time.time() - t0:.0f}s', flush=True)
+    Xm, _ = C.mirror(X, np.zeros(len(X), np.int8), feats)
+    advm = adv[:, [0, 2, 1]]
+    A = np.zeros_like(adv)
+    meta = dict(name=a.name, data=a.data, blocks=a.blocks, horizon=a.horizon, clip=a.clip, rows=int(len(adv)),
+                games=int(ng), features=len(feats), heads={})
+    for kk in range(3):
+        Xk = np.concatenate([X[tr], Xm[tr]]); yk = np.concatenate([adv[tr, kk], advm[tr, kk]])
+        b = fit_reg(Xk, yk, X[va], adv[va, kk], feats, a.leaves, a.rounds, a.lr)
+        del Xk
+        b.save_model(str(out / f'q_{C.RELS[kk]}.ubj'))
+        (out / f'q_{C.RELS[kk]}.ubj.features.json').write_text(json.dumps(feats))
+        A[:, kk] = predict(b, X, feats)
+        meta['heads'][C.RELS[kk]] = dict(rounds=int(b.num_boosted_rounds()),
+                                         r2=1 - float(((adv[te, kk] - A[te, kk]) ** 2).mean() / adv[te, kk].var()))
+        print(kk, meta['heads'][C.RELS[kk]], f'{time.time() - t0:.0f}s', flush=True)
+    # ---- held-out: regret and fatal-choice rate of the rebuilt policy at several beta
+    Xt, At, advt, alt, Ht = Xall[te], A[te], adv[te], alive[te], H[te]
+    i = np.arange(len(Xt))
+    uniq = (advt == 0).sum(1) == 1
+    can_live = alt.max(1) == 1
+
+    def stats(ch):
+        ok = ch >= 0
+        return dict(n=int(ok.sum()), regret=float(-advt[i[ok], ch[ok]].mean()),
+                    fatal=float(((alt[i[ok], ch[ok]] == 0) & can_live[ok]).mean()),
+                    best=float((advt[i[ok], ch[ok]] == 0).mean()),
+                    best_when_unique=float((advt[i[ok & uniq], ch[ok & uniq]] == 0).mean()))
+    rep = {}
+    rel = rel_of(Ht)
+    plain = (rel >= 0) & ((Ht[:, 14] & 1) == 0)
+    base = offline_policy(Xt, names)
+    rep['offline_vs_recorded_agreement'] = float((base[plain] == rel[plain]).mean())
+    rep['recorded_greedy'] = stats(np.where(plain, rel, -1))
+    rep['head_alone'] = stats(np.where(Xt[:, names.index('aF_status')] >= 0, At.argmax(1), -1))
+    for beta in (0.0, 0.5, 1.0, 2.0, 4.0, 8.0):
+        rep[f'policy_beta_{beta}'] = stats(offline_policy(Xt, names, At, beta))
+    for lam in (0.0,):
+        for beta in (0.0, 1.0, 2.0, 4.0):
+            rep[f'nodir_beta_{beta}'] = stats(offline_policy(Xt, names, At, beta, lam=0.0))
+    meta['heldout'] = rep
+    meta['sec'] = round(time.time() - t0)
+    chk = Xall[te][:3000].astype(np.float32)
+    np.save(out / 'check.npy', chk)
+    (out / 'meta.json').write_text(json.dumps(meta, indent=1))
+    print(json.dumps(meta, indent=1))
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest='cmd', required=True)
@@ -264,16 +368,25 @@ def main():
     c.add_argument('--bot', default='verso-00-base')
     o = sub.add_parser('own')
     o.add_argument('--name', required=True); o.add_argument('--data', required=True, help='arm[,arm] under build/verso/data')
-    o.add_argument('--panel', default='train'); o.add_argument('--blocks', default='v5,ares,t4')
+    o.add_argument('--panel', default='train'); o.add_argument('--blocks', default='v5,ares,t4,h')
     o.add_argument('--horizon', type=int, default=20); o.add_argument('--unit-value', type=float, default=3.0)
     o.add_argument('--leaves', type=int, default=63); o.add_argument('--rounds', type=int, default=1500)
     o.add_argument('--lr', type=float, default=0.05); o.add_argument('--limit', type=int, default=0)
-    o.add_argument('--bot', default='verso-00-base')
+    o.add_argument('--bot', default='verso-p2-platform')
+    h = sub.add_parser('hind')
+    h.add_argument('--name', required=True); h.add_argument('--data', required=True)
+    h.add_argument('--panel', default='train'); h.add_argument('--blocks', default='v5,ares,t4,h')
+    h.add_argument('--horizon', type=int, default=20); h.add_argument('--clip', type=float, default=10.0)
+    h.add_argument('--leaves', type=int, default=127); h.add_argument('--rounds', type=int, default=1500)
+    h.add_argument('--lr', type=float, default=0.1); h.add_argument('--limit', type=int, default=0)
+    h.add_argument('--bot', default='verso-p2-platform')
     a = ap.parse_args()
     if a.cmd == 'corpus':
         cmd_corpus(a)
     elif a.cmd == 'own':
         cmd_own(a)
+    elif a.cmd == 'hind':
+        cmd_hind(a)
 
 
 if __name__ == '__main__':
