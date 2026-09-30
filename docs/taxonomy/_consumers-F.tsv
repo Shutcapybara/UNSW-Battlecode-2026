@@ -1,0 +1,40 @@
+F-01	Terrain edges, kelp and the dest table	A-02,A-04,A-08,A-09,A-10,A-19,A-20	all planning bots (Python hosts, ares/V06 lanes, anna/cx)	r3-04 kelp-edge cost econ -0.072, wall -27%	in use
+F-02	Portal pairs (pair table, radio type 5, 2·NC≤8192 gate)	A-02,A-04,A-10,A-12,A-13,A-17	SIN/MC hosts, ares/V06 lanes, ouroboros	sinbad e11 portal sharing 44-10 vs 43-11	in use
+F-03	Seen-age and sector-unseen (incl. dead v_stale)	A-02,A-03,A-09,A-10,A-13,A-17	SIN/MC hosts, ares/V06 lanes	nothing on seen-age itself (unseen_value sweeps are A-03); v_stale dead	in use (v_stale, seen_count dead)
+F-04	Pearl memory (memory_ttl; dead pearl_ttl; confirmed-only)	A-02,A-03,A-04,A-05,A-13	all hosts, ares/V06 lanes, ouroboros, leviathan	TTL moves small: renoir-08a -0.013, ra-05 +0.0024; ra-04 exactly 0 (dead)	in use (pearl_ttl dead)
+F-05	Bed timing (bed/spawn_at, bed_wait=0, bed_stale, bper, respawn-gap memory)	A-02,A-03,A-04,A-09,A-12,A-13,A-14,A-19	all hosts, ares/V06 lanes, cx-b02 (gap memory)	arrival rule leviathan-v09 22-8 vs 15-14; renoir-01a/c -0.06	in use (bed_wait branch unreachable; bed_wait_max, bed_tie dead)
+F-06	Other-dragon memory and vacancy (parts/vac, DragonMem, hidden_tail)	A-02,A-04,A-10,A-11,A-14	SIN/MC hosts, ares/V06 lanes	nothing isolated	in use (DragonMem.cell/facing/first_round unread)
+F-07	Own body / trail reconstruction (incl. newborn neck)	A-02,A-04,A-06,A-07,A-08	all bots; neck fix chaewon/sakura	opening rescue for incomplete bodies gavroche-v02 13-3, scholze-v02 24-12; neck fix never measured	in use (last_exit_*, last_move unread)
+F-08	Visit counts (anti-dither)	A-04,A-09	SIN/MC hosts, ares/V06 lanes	renoir-18a pooled +0.015 [-0.006,0.033] null	in use (visit_ttl_count dead)
+F-09	Room flood (time-aware flood_room, flood_need, caps)	A-04,A-06,A-07,A-08,A-19,A-20	SIN/MC hosts, ares/V06 lanes, anna/cx, ouroboros	renoir-12a min_area 8 -0.183; ra-01 trap 60 -0.084	in use (head_block branch unreachable)
+F-10	Five-step body-blocked reach / enclosure	A-04,A-07,A-08,A-27	ares-v13..v33, esquie-04, cx-f01; F1/C1-C analysis	≤8 hazard 650-695/1k (6-7x); v19 11-9; esquie-04 econ -0.035	in use
+F-11	Threat map and support counts	A-02,A-04,A-05,A-06,A-10,A-11	all hosts, ares/V06 lanes, ouroboros, kraken, hydra	fafnir f12 size-matched support gauntlet +6; renoir-17d threat 0 +0.019 n.s.	in use
+F-12	Ally/enemy density fields (local EWMA + radio reports)	A-03,A-04,A-12,A-13,A-16	MC/gavroche/yuna/tyr hosts, ares/V06 lanes, drake, javert, VN	javert x02 info layer 10-2; consumers null/negative (ra-07 -0.017)	in use
+F-13	EW food-density memory (sciel food_ew)	A-03,A-17	sciel-03a..04b	sciel-03a econ +0.067 (h2h_ally +34%)	built, off
+F-14	Direction momentum (EWMA of first steps)	A-04,A-14	yuna, tyr, ares/V06 lanes, ein-dog	yuna +6, plateau at 0.6; never varied on Ares	in use
+F-15	Target hysteresis memory	A-02	SIN/MC hosts, ares/V06 lanes, ouroboros	ra-06 hysteresis 1.75 econ -0.0435	in use
+F-16	Crown / feeder / prey state	A-03,A-04,A-06,A-12,A-13,A-14	all hosts, ares/V06 lanes, ouroboros, hydra, hunter, avery	ouroboros crown/feed/beacon series 219-42 -> 238-23; hunt_from inert on Ares	in use (type-3 receiver dead)
+F-17	Newborn escape state and split handoff / birth certificate	A-04,A-09,A-10,A-12,A-13,A-14,A-26	fenrir/tyr/ares separation; S1 certificates; ouroboros K_HANDOFF	cert delivery 35-49%; kazuha newborn 24.7 vs 27.9%; ra-09 +0.011 hold	in use
+F-18	Portal transit and exit memory	A-04,A-09,A-10,A-12	host blind_mem; cx-f02; r3; sciel-02a; yeji; tyr-v08	pre-entry forms throttle volume: r3-02 steps -68% econ -0.120; valjean 3-21 -> 14-10	in use (host); built, off (cx/r3/sciel); last_exit dead
+F-19	Sonar echo counts	A-02,A-03,A-04,A-10,A-11,A-12,A-23	heimdall, hydra-v06, kraken-v05, cx-f02, chaewon-y04, r3-02, m01; stored-only in Ares	heimdall v10 panel 91-59; chaewon-y04 probe +0.062 n.s.	in use (unused in Ares)
+F-20	Sonar packet layout (team tag, types 1-9, 64-bit)	A-12,A-13	all radio-using lineages	sinbad food gossip +3; javert length packets 10-2; Riptide radio off 4-20 vs on 2-22	in use (type 3 dead; type-7 collision; id aliasing)
+F-21	Atlas / public-map prior	A-02,A-03,A-10,A-17,A-19	anna/cx, cx-b router, ares-v01/v02/v08, chaewon, pace, sakura-s02, yeji, ouroboros-s02	ares-v08 econ +0.188 (ally h2h +205%); off-pool inert	dead code (Ares V03+); built, off (OOS rule)
+F-22	Map dimensions and size thresholds	A-04,A-10,A-12,A-13,A-14,A-16,A-17,A-18,A-19,A-23,A-25	every bot; identity terms in tyr/ares/V06 lanes, S1 lines, jet	renoir-23 nodevil econ -0.042, Devil win 1.00 -> 0.31	in use
+F-23	Game clock, phase and unit-count state	A-02,A-04,A-05,A-06,A-10,A-14,A-15,A-24,A-26	all bots	lune-r1-07 late cap econ +0.026; yuna t1 60 vs 120 (-3)	in use
+F-24	Dead-end peel / 2-core trees and doom memory	A-04,A-06,A-12,A-13,A-19	cx-b01/b02 router, ouroboros, kraken-v05	K_DOOM devil 4-10 vs 7-7 (+2 bench); kraken nodoom = other ablations	built, off (not ported to Ares)
+F-25	Arrival maps (own/enemy/ally BFS arrival times)	A-19	cx-b01/b02 router only	router length r100 176/3/61 (atlas ~2/3); units n.s.	built, off
+F-26	Mode / role state (roles at birth, modes)	A-04,A-06,A-14,A-17,A-21,A-24,A-26	host roles; ouroboros slices; kraken/hydra birth roles; estuary; gaia	orphan_role=1 -11 net compact; kraken newborn deaths 28.0% vs 15.1%	in use (host); archived (birth roles)
+F-27	Learned-feature vectors	A-11,A-23	ouroboros-m01, loki, clone-62, team-recon v4, MC hazard	m01 accuracy 0.739 (ceiling ~0.74); zoo 51-53	in use (opponents); dead (risk_features in hosts)
+F-28	Pearl ownership / claims state	A-03,A-12,A-13,A-16,A-19	Ares/host discounts; fry-v13/v14; hunter; bifrost; riptide; router; sciel-05 proposed	renoir-06a owndisc 0 econ +0.021 win -0.113; avery-v03 74-35 vs 70-39	in use (discounts); claims built, off / unbuilt
+F-40	Economy curve, map-normalised (econ~, p@k)	A-27	analysis; ra/renoir, monoco, sciel, R-4, lune, esquie	map share 0.74 -> 0.13; seed shift +0.071 > gate bar	in use
+F-41	Three-number form and field references	A-27	analysis (BENCHMARKS, F1)	percentile map share 0.22 vs 0.45	in use
+F-42	Tier-2 hygiene rates and newborn10	A-27	analysis; all lane scorecards	ICC 0.91-0.98, rating rho ~0; guard decided sciel-03a, renoir-07a	in use
+F-43	Efficiency ledger and leak classes (C1-C; r3_ledger)	A-27	analysis; cx-c01, r3, sciel	team 7 - band Portals trapped +62.6 len/1k; V06 carries profile	in use
+F-44	Portal-step walk (C1-D)	A-27	analysis; cx-d01, r3, cx arena	28.2 vs 12.5 deaths/100 steps (team 7 vs 306); basis of D-035	in use
+F-45	F1 feature lab (237 features)	A-19,A-27	analysis (tools/analysis/features)	territory@100 +1.5-1.8 log-odds/sd; EPG/HMM no consumer	in use (V4/V5 not run)
+F-46	Fight anatomy (C2)	A-27	analysis	team 7 32.9 vs band 18.9 length lost per fight; rules never built	in use (diagnostic)
+F-47	Pace targets and live bed maps (C1-E)	A-06,A-27	analysis; pace-v01..v03 (precursor curve)	pace controller -0.008 (360 pairs); live beds unconsumed	in use (no bot consumer of C1-E files)
+F-48	Map signature and brick list (esquie 21 features)	A-14,A-18,A-27	esquie, leaklab; S1 bot-side signatures	gen suite lacks pool brick motifs; kazuha/sakura early onset -4 Portals/Slithery	in use
+F-49	Scorecards, panels and parity harnesses	A-01,A-27	R-4, ra/monoco/sciel lanes, lune, cx golden, ouroboros/leviathan/jet tools	R-4 reproduces V06 exactly; caught r3-03 v1 inert wiring	in use
+F-50	Outcome models and ratings	A-27	analysis (ratings, frontier, pace, S1, replay studies)	local vs live Spearman +0.10/-0.20; frontier all 16 undominated	in use (ratings barred from queue)
+F-51	Corpus and team-recon pipelines	A-23,A-27	analysis (team_recon claude/codex/GLM, hub)	2,361,735/2,361,735 steps exact; replay-drive 1,195,129 exact	in use
