@@ -151,3 +151,14 @@ schedule: 57 % of its round-limit losses are with a material lead — the late-e
 Experiment (one constant each, on hb1-12): `tt-01-feed300` (`feed_base` 40 → 140, feeding from ~r300, cheji bt's
 timing) and `tt-02-feed250` (190, ~r250, Stockfish's). Note the scorecard's economy mean uses pearls to r250, so
 these can move win share, not the economy gate.
+
+### Stockfish — calibration and Q3 (`game_stats/runs/tt206-q1-calibration.json`, `tt206-q3-windows.json`)
+
+- Calibration: ECE 0.014; acc 0.771 at mean max-p 0.757; near-deterministic 21 % of moves (99.7 % correct), near-ties
+  18 % (Heartbreaker 28 % / 13 %, cheji bt 17 % / 22 %).
+- Q3: decisions stable across all eight well-sampled windows (28 Sep 16:00 – 30 Sep 16:00 UTC, 52k–292k rows):
+  direction 0.742–0.770, gate 0.903–0.927, child size 0.964–0.980, within / forward / backward within ~1 pp.
+  Change-points only at the start of dense data (28 Sep 15:00, 17:00 UTC). Ladder: Elo 1980 → 2079 over the span
+  (range 1918–2098, rank 21 → 1–4): the rating rose ~100 while the five per-turn decisions stayed the same — still
+  converging, or improvement outside these decisions (concentration timing, directed sonar).
+- Self-kill: backward step into the own neck, 0.9 % of turns, 100 % fatal, 65 % at length 2, 56 % with an exit open.
