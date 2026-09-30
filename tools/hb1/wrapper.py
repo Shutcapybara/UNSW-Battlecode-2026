@@ -14,7 +14,7 @@ is the policy.
 """
 import numpy as np
 
-CMDS = ['F', 'R', 'L'] + [f'S{k}' for k in range(2, 9)]
+CMDS = ['F', 'R', 'L'] + [f'S{k}' for k in range(2, 9)] + ['X']   # X: deliberate invalid command / suicide (lane tt)
 MOVES = ['F', 'R', 'L']
 
 
@@ -33,6 +33,7 @@ def masks(d):
         ok[:, j] = free | portal | ehead
     for k in range(2, 9):
         ok[:, CMDS.index(f'S{k}')] = elig & (k <= L - 2)
+    ok[:, CMDS.index('X')] = True                            # suicide is always available: policy, not wrapper
     forced = np.full(n, -1)
     exitless = (n_ord == 0) & (n_por == 0)
     # W1: split-eligible and exit-less: only splits
@@ -63,4 +64,6 @@ def label(d):
     y = d['y_first'].map({'F': 0, 'R': 1, 'L': 2}).to_numpy(copy=True)
     sp = d['y_family'].to_numpy() == 'split'
     y = np.where(sp, 3 + np.clip(d['y_child'].to_numpy(), 2, 8) - 2, y)
+    other = ~sp & (d['y_family'].to_numpy() != 'move')         # suicide / other non-move actions
+    y = np.where(other, CMDS.index('X'), y)
     return y.astype(int)

@@ -30,7 +30,7 @@ def one(path):
     d = pd.read_parquet(path, columns=COLS)
     st = np.where(d.n_exit_ord > 0, 'ord', np.where(d.n_exit_portal > 0, 'portalOnly', 'none'))
     st = pd.Series(st) + np.where(d.split_elig == 1, '+elig', '-elig')
-    act = pd.Series('split', index=d.index)
+    act = pd.Series(np.where(d.y_family == 'split', 'split', d.y_family.astype(str)), index=d.index)
     mv = d.y_family == 'move'
     for r in 'FRL':
         m = mv & (d.y_first == r)

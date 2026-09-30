@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[2]
 B = ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1')   # HB_BUILD/HB_TEAM/HB_TAG: other teams (lane tt)
 TAG = os.environ.get('HB_TAG', 'hb1')
 OUT = ROOT / 'game_stats' / 'runs' / f'{TAG}-q2-command.json'
-PER = 1500
+PER = int(1500 * float(os.environ.get('HB_CAP_FACTOR', 1)))   # scaled like q1_decisions' caps (memory)
 
 
 def _sample(path):
