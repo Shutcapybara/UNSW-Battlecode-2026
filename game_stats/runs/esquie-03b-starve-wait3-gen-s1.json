@@ -1,0 +1,90 @@
+{
+ "candidate": "esquie-03b-starve-wait3",
+ "candidate_dir": "bots/esquie-03b-starve-wait3",
+ "parent": null,
+ "note": "",
+ "seeds": [
+  1
+ ],
+ "fingerprint": "0ab8d09a92aaa4bae713ca9e32ea4cd645af1875cd7b7c4f59c32239a35e6a11",
+ "gate": {
+  "verdict": "n/a",
+  "why": "no field reference on gen maps: the gate is decided on the z1 panel; the gen block is reported beside it (raw vs parent per guardrails)"
+ },
+ "panel": "gen",
+ "candidate_stats": {
+  "n": 464,
+  "wld": [
+   300,
+   164,
+   0
+  ],
+  "exp_share": 0.646551724137931,
+  "checkpoints": {
+   "pearls@50": NaN,
+   "pearls@100": NaN,
+   "pearls@150": NaN,
+   "pearls@250": NaN
+  },
+  "checkpoints_raw": {
+   "pearls@50": 32.5,
+   "pearls@100": 97.0,
+   "pearls@150": 164.5,
+   "pearls@250": 258.5
+  },
+  "economy_mean": NaN,
+  "tier1": {
+   "units@100|map": NaN,
+   "total@100|map": NaN,
+   "births@100|map": NaN
+  },
+  "tier1_raw": {
+   "pearls@50": 32.5,
+   "pearls@100": 97.0,
+   "pearls@150": 164.5,
+   "pearls@250": 258.5,
+   "units@100": 21.0,
+   "total@100": 50.5,
+   "births@100": 39.0
+  },
+  "tier2": {
+   "death_wall_per1k": 0.0804279711192849,
+   "death_self_per1k": 1.4144637483747824,
+   "death_ally_body_per1k": 1.7362813064901337,
+   "death_h2h_ally_per1k": 0.0,
+   "death_invalid_per1k": 0.0
+  },
+  "unreferenced_maps": [
+   "Autarky tr",
+   "Default tr",
+   "Devil tr",
+   "Portals tr",
+   "Prisoners Dilemma tr",
+   "Queen Of Spades tr",
+   "Trauma tr",
+   "Trophy tr",
+   "mc26_archipelago",
+   "mc26_crossroads",
+   "mc26_crossroads tr",
+   "mc26_delayed_commons",
+   "mc26_equatorial_belt",
+   "mc26_far_harbors",
+   "mc26_nursery_bays",
+   "mc26_pinwheel",
+   "mc26_portal_quartet",
+   "mc26_pulse_farms",
+   "mc26_relay_depots",
+   "mc26_scattered_fleets",
+   "mc26_seam_market",
+   "mc26_spring_wells",
+   "md26_causeway_detour_s0",
+   "md26_causeway_portal_s0",
+   "md26_commons_shared_s0",
+   "md26_commons_spread_s0",
+   "md26_orchard_narrow_s0",
+   "md26_orchard_wide_s0",
+   "md26_promenade_ring_s0"
+  ]
+ },
+ "parent_stats": null
+}

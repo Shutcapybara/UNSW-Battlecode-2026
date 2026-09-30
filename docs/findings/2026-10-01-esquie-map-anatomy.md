@@ -228,7 +228,20 @@ Results: **local hold candidate — pooled flat, win up, cluster gains held, off
 
 The gate is itself the structure-gated switch the lead's verdict rules describe (keyed on the
 dragon's observed food knowledge — map identity, size and hash are never read), so no separate
-gated build is needed: 03b as shipped is the structure-gated form of 02/03. Seeds 1–3 read below.
+gated build is needed: 03b as shipped is the structure-gated form of 02/03.
+
+**Seeds 1–3 (480 paired side-games, z1): paired Δeconomy +0.0018, bootstrap 90 %
+[−0.0024, +0.0062]; win share 0.708 vs 0.698 (+1.0pp).** Per map: Trauma win 0.771 vs 0.708
+(+6pp), p@250 263 vs 252; Dilemma win 0.854 vs 0.833, p@250 102 vs 91; Devil and Portals
+**bit-identical**; Trophy p@250 222 vs 216 with win −2pp (n.s. at 48 games); Schooltime +2pp.
+
+**Verdict: LOCAL HOLD** per the M-1 rules — the gain transfers to the cluster (trauma_tr
++0.25 win on gen, Trauma/Dilemma pool wins), the pooled interval is not negative (+0.0018,
+LB −0.0024), and the only paying maps are outside the cluster (default_tr, pulse_farms at
+−0.062 win each). Not an accept (+0.002 ≪ +0.05, correctly: the mechanism only acts on starved
+states, which the pool undersupplies), and not registered per the task rules. The untested
+next parameter is min_age 16–18 — the r50 opening gain on Trauma (0.111 → 0.222 at 12,
+reverted at 24) lives exactly in that window.
 
 ### esquie-04-crit-split — the teammates' V19 critical-enclosure split at panel scale (target: the leak cluster)
 

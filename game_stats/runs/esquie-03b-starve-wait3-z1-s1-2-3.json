@@ -1,0 +1,62 @@
+{
+ "candidate": "esquie-03b-starve-wait3",
+ "candidate_dir": "bots/esquie-03b-starve-wait3",
+ "parent": null,
+ "note": "",
+ "seeds": [
+  1,
+  2,
+  3
+ ],
+ "fingerprint": "0ab8d09a92aaa4bae713ca9e32ea4cd645af1875cd7b7c4f59c32239a35e6a11",
+ "gate": {
+  "verdict": "n/a",
+  "why": "no parent given: absolute numbers only (the V04-style report)"
+ },
+ "panel": "z1",
+ "candidate_stats": {
+  "n": 480,
+  "wld": [
+   340,
+   140,
+   0
+  ],
+  "exp_share": 0.7083333333333334,
+  "checkpoints": {
+   "pearls@50": 0.9761904761904762,
+   "pearls@100": 1.0719461697722568,
+   "pearls@150": 1.1375,
+   "pearls@250": 1.2340597255851493
+  },
+  "checkpoints_raw": {
+   "pearls@50": 27.0,
+   "pearls@100": 84.0,
+   "pearls@150": 147.5,
+   "pearls@250": 285.5
+  },
+  "economy_mean": 1.1049240928869706,
+  "tier1": {
+   "units@100|map": 1.1,
+   "total@100|map": 1.0182058920887123,
+   "births@100|map": 1.0659966499162479
+  },
+  "tier1_raw": {
+   "pearls@50": 27.0,
+   "pearls@100": 84.0,
+   "pearls@150": 147.5,
+   "pearls@250": 285.5,
+   "units@100": 17.0,
+   "total@100": 41.0,
+   "births@100": 35.5
+  },
+  "tier2": {
+   "death_wall_per1k": 7.024751416425708,
+   "death_self_per1k": 4.223500369505542,
+   "death_ally_body_per1k": 2.7284254651243156,
+   "death_h2h_ally_per1k": 1.0628606379261791,
+   "death_invalid_per1k": 0.0
+  },
+  "unreferenced_maps": []
+ },
+ "parent_stats": null
+}
