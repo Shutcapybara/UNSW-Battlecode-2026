@@ -1,0 +1,12 @@
+name = "gustave-08a-mouth-flat07"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "STACK of a HOLD on the exploration-value lever (stated: two changes vs the accepted parent). (1) gustave-07c's portal-mouth rule (-4 for ending on any portal mouth unless the route to the target crosses it within 3 steps, the dragon faces into it, or it crossed a portal this turn); HOLD alone: ally h2h -21 %, econ +0.001, win +0.050. (2) gustave-02b's flat x0.70 on unseen-cell and bed values (= sciel-03a); alone: econ +0.087 [+0.050, +0.136], ally h2h +35 %."
+expected_change = "econ~ ~+0.08 vs gustave-01 with ally h2h within +10 % (the cut's churn channel is the portal mouth); units/length@100 not down; gen econ not down"
+hypothesis = "the exploration-value economy is real and its cost is one located leak; closing the leak keeps the economy (L14/L29/L23)"
+params = ["ew_floor=0.7", "ew_cap=0.7", "mouth_weight=4.0", "mouth_any=true", "mouth_route_steps=3"]
+status = "candidate (not registered)"
+fingerprint = "e0e8ba6bf0ca4f22cfac03f272fb2c144b0bfb08866c4ff56b0d062f938485f6"
