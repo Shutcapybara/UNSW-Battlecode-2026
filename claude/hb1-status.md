@@ -44,6 +44,12 @@ Reading: **direction is the learned part; the other four are rules.**
 - Direction ablations: candidates −14.0, grid −2.0, local −1.2, memory −0.96, scalars −0.89, messages −0.86 pp.
   Messages matter 9× more for direction than for the gate: the echo counts inform steering.
 
+Direction calibration (`tools/hb1/q1_calibration.py`, `game_stats/runs/hb1-q1-calibration.json`): the v5 GBT is
+calibrated and slightly under-confident (ECE 0.022; acc 0.829 at mean max-p 0.808). 28 % of held-out moves have
+max-p ≥ 0.95 at 99.2 % accuracy (rule-like); 12.8 % are near-ties (top-2 gap < 0.2) at 52 % accuracy and hold 36 % of
+all direction errors. A copy that samples from these probabilities would agree 73 % move-for-move (argmax 83 %).
+The residual is what a sampled policy or unseen state produces; the replays cannot tell which.
+
 Follow-up queued (`tools/hb1/q1_history.py`, user's suggestion): does memory beyond v5 help direction / gate —
 action history (last 6 actions, turn EWMA) and a decayed spatial "trail" family (enemy/ally segment and head mass +
 centroid in the egocentric frame at decay 0.7/0.9, own-position trail, echo-count EWMAs, Δdensity×step gradient).
