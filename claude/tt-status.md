@@ -423,3 +423,18 @@ higher in ranked games within the same 6-hour windows (+0.10 and +0.17) — stat
 forgot to mention: same bot — all games used. Cache me outside: not a dummy (a dummy would collapse), but its
 unranked direction policy differs systematically — a variant (older version / other settings). **Distilled from its
 598 ranked games only** (`build/tt/team952r`, symlinked ranked subset; caps × 1).
+
+### Q1 — forgot to mention (264; all 2,792 games; caps × 0.3; `game_stats/runs/tt264-q1-gaps.json`)
+
+| decision | n test | majority | tree depth 4 | GBT | MLP | gap tree→MLP | top drop-family Δacc |
+|---|---:|---:|---:|---:|---:|---:|---|
+| split gate | 140,151 | 0.693 | 0.900 | **0.975** | 0.942 | +0.042 | scalar −5.24, cand −1.56 pp |
+| direction | 197,597 | 0.442 | 0.631 | **0.735** | 0.720 | +0.089 | cand −12.44, msgs −0.85 pp |
+| sonar mask | 98,966 | 0.644 | 0.893 | 0.964 | 0.942 | +0.049 | action −9.8 pp |
+| child size | 171,750 | 0.842 | 0.947 | 0.988 | 0.980 | +0.034 | scalar −1.45 pp |
+| late gate | 145,681 | 0.971 | 0.985 | 0.986 | 0.985 | −0.001 | cand −0.74 pp |
+
+A rule-driven production machine: its gate is as predictable as Heartbreaker's (0.975) but far more aggressive
+(splits on 31 % of eligible turns vs 10 %): split whenever it has just eaten, while units ≤ 61, until ~r350, with
+further round thresholds near 260 and 350 (scalars carry −5.2 pp, the most of any team). Child size is 2 in 84 % of
+splits (0.988). Direction is the hardest of any team so far (0.735). Sonar uses single-direction rays, as Stockfish.
