@@ -106,6 +106,21 @@ actor-turns per game a 500-game cycle is a few hours end to end); (4) leakage: t
 and evaluate; the D-032 panels are held out from every training set; the out-of-sample rule applies to features
 (no map identity) and the generalisation panel decides.
 
+## Autonomy — iterate and test without asking
+
+The design above is the lead's sketch, not a specification; it will not survive contact with the data intact,
+and it is not meant to. You have the compute (~2,900 games/h, the 4090) and the authority to change any part of
+it — tier boundaries, model classes, the improvement operator, the phase split, the feature set, the order of
+the cycle — **provided every change is a measured experiment, not a decision**: state the alternative, run it
+against the current version on the same fixtures, keep whichever the D-032 scorecard (and the fidelity table)
+prefers, and log both in the status file with the number. Do not stop to ask which of two options to take; run
+both. Do not stop because a tier does not help; drop it, record why, and continue. Do not stop at a design that
+works; keep cycling until the gate stops moving for three cycles, then write the finding. The only things that
+need the lead are: a change to the gate itself, registering a candidate, and anything that would touch another
+lane's tree. Report in `claude/<lineage>-status.md` after every cycle in a form that can be read in one minute
+(the cycle table plus three lines: what changed, what it did, what is next), so the lead can check in without
+steering.
+
 ## Deliverables
 
 `tools/<lineage>/{dataset,train_repr,train_heads,relabel,export,cycle}.py` (resumable, logged), the C++ side
