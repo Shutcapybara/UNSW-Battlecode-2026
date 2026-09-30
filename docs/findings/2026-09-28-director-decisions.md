@@ -595,3 +595,21 @@ tier to D-032 for mechanisms whose gain transfers within a signature cluster whi
 those become structure-gated switches (gate = observable structure, never the map) and are tested as such. Issued as
 M-1 (GLM 5.3). All lanes report per-map deltas from now on so the map × mechanism table accumulates.
 
+**D-037 — the per-map, per-phase programme: optimise the opening per map aggressively and measure what it costs
+(1 Oct 00:30 UTC, lead's direction).** S-1 Q3 measured where the loss is: the gap to the top ten opens in the first
+25 rounds and is economy, not deaths — bed conversion, production, early portal use, territory (L36). Esquie's
+map anatomy shows the bricks are different kinds of opening (starved, bed-desert, transit-collision) and that a
+structure-gated opening mechanism can be silent off its cluster (L35). So the programme adds a phase axis to the
+map axis of D-036: for each map cluster and each of the four components, mechanisms are optimised against the
+field's *per-map opening percentiles* (r25, r50) with r100/r250 economy, hygiene and the off-pool panel as guards
+— not as targets. Local gains are kept as local holds and structure-gated; global losses are recorded, not
+avoided, because the point is to find what the components are actually coupled to (the lead's diagnosis: too many
+changes pull on other threads, yet other teams optimise these independently, so the coupling is in our bot, not
+the game). Overfitting risk is bounded by the D-036 transfer test and by K-1's synthetic maps. Gate arithmetic
+adopts S-1 Q2: per-map contributions weighted by predictability. Every open lane (rc, SF-1, RL-1, M-1, K-1, S-1)
+reports the r25/r50 per-map percentiles from now on; RL-1's curve-matching reward is this decision in learned form.
+
+**Git state at D-037.** Merged into main: `r/ra` (Renoir's final commits), `r/monoco`, `r/sciel`, `r/esquie` (M-1),
+`cx/b`. `cx/a` (two commits of pre-R-4 chassis tooling) conflicts with the reconciled `tools/cx` and stays
+unmerged as history. The desktop lanes (HB-1, rb, rc, SF-1 "Sophie", RL-1) have no branches on origin yet.
+
