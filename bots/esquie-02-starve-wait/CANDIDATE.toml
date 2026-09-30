@@ -1,0 +1,18 @@
+name = "esquie-02-starve-wait"
+lineage = "esquie"
+author = "glm-5.3/esquie"
+language = "c++"
+lineage_parent = "esquie-01-nodevil"
+hypothesis = "M-1 Part 3 for the starved-opening cluster (Trauma/Dilemma/QoS/pinwheel): bed anticipation helps exactly when the dragon knows no food (no pearl visible or remembered, no seen bed ripening within 8 rounds); flat bed-waits lose dense/fast maps (Renoir 01a/01c, L11)."
+mechanism = "bed_wait_eff = esquie_wait (64) iff starved (age >= 12 and no food observable in map knowledge), else 0 = parent. One params switch; golden parity carried by the switch-off build."
+expected_change = "Trauma/Dilemma r50-r100 economy up (r50 = 0.111/0.78 of field median on the base); Devil/Schooltime/Portals untouched (gate never fires: 0 divergent turns on portals recordings)"
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-10-01-esquie-map-anatomy.md", "docs/findings/2026-09-30-ra-lane.md"]
+summary = "Esquie M-1. Divergence: acts on trauma (35 turns) and dilemma (30), 0 on portals, 26/13578 on schooltime; switch-off 0/19403."
+
+[activation_contract]
+kind = "legacy_none"
+note = "one params switch (esquie_gated_wait); identity by fingerprint"
