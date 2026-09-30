@@ -13,16 +13,15 @@ unchanged). The host is shared with the top-teams mimic lane (`r/tt`), which has
 | — | `verso-00-base` | platform: runtime for heads, dump, exploration; inert | — | golden vs maelle-01-nodevil: 61,667 turns, 0 divergent | = maelle-02-features (8 re-played fixtures identical) | = | (maelle-02: 8.7 M) | base |
 | 0 | `verso-01-hb-dir-prior` (arm `c0-hb-small~l1`) | `dir` head on Heartbreaker's corpus moves (v5 features), prior `λ·log p`, λ = 1 | direction 0.829 (their moves) | 0.885 of the base's commands (57,213 turns, 4 games) | win +0.150 [+0.110, +0.188]; econ~ **+0.052 [+0.019, +0.081]**; units +0.193, length +0.151; all four death rates down | win +0.050 [+0.012, +0.089]; econ~ +0.013 [−0.017, +0.042]; units +0.305, length +0.327 | 11.53 M | **ACCEPT** |
 | 1 | screening (platforms `verso-p2/p3-platform`) | tier 3 on own data: Monte-Carlo `q`; hindsight-search `q` (5 label versions); tempo-credit labels; opening donor ensembles | MC 0.015; hindsight 0.76–0.86 | — | best so far `c0x-both-sf`: tempo −2.6 [−4.5, −0.8] rounds, econ~ −0.026 (seed 1); every `q` head REJECT | — | — | no accept yet |
+| 2 | `verso-02-hb540-prior` (arm `c3-big540`) | new base: the 540-round Heartbreaker prior (hb1-14's size) on the Verso base; platform p4 | direction 0.843 (their moves) | 0.87 of cycle 0's commands (trauma, not yet all 4 games) | vs cycle 0: win +0.000 [−0.032, +0.033]; econ~ −0.001 [−0.028, +0.026]; tempo −1.0 | vs cycle 0: win **+0.097 [+0.064, +0.130]**; econ~ **+0.107 [+0.081, +0.135]**; tempo −6.3 [−8.4, −4.2] | probing | REJECT by the letter (pool lower bounds); off-pool gain — lead's call |
 
-Three lines: **what changed** — tier 3 has been tried as a learned first-step term in two forms (Monte-Carlo Q, a
-hindsight search over the recorded future) with five label definitions, plus opening-phase donor ensembles on a
-phase platform, all measured on pool seed 1 against the cycle-0 arm, now with S-1's tempo gate beside D-032.
-**What it did** — no learned correction beats the cycle-0 prior: hindsight labels are learnable (R² 0.8) and buy
-large hygiene gains, but every version costs bed pearls; once the labels use tempo credit (unrecovered loss) the head
-is neutral (tempo +2.5 rounds, NO GAIN / REJECT). Adding Stockfish's prior to Heartbreaker's in the opening is the
-first positive tempo move (−2.6 rounds). Tier 1 adds nothing over the hand features (dropped); tier 4 adds a little.
-**Next** — replicate the opening ensemble at seeds 2–3; SPSA on the opening knobs with the net-income objective on
-data fixtures (queued overnight); then D-032 + tempo on both panels for whatever holds.
+Three lines: **what changed** — on the lead's steer, hb1-14 / tt-05 / tt-06 (the uploadable HB-1 and mimic-lane
+bots) were measured on the Verso panels and taken apart on the Verso base; the base is now `verso-02-hb540-prior`
+(540-round prior). **What it did** — the larger prior is the whole of their off-pool edge: generalisation win
++9.7 pp and economy +0.107 over cycle 0 at seeds 1–3, pool unchanged; V06's late cap and tt's late feeding (fixed or
+ramped hb→tt over r300–400) add nothing measurable on these panels; the HB+Stockfish opening ensemble did not
+replicate (−0.5 rounds at seeds 1–3). **Next** — SPSA on the opening knobs on the new base (running), a fidelity
+record for cycle 2, then the next head on top of it.
 
 ## Platform (30 Sep)
 
@@ -215,3 +214,46 @@ cheji bt and with an opening-specialist Heartbreaker head.
   on its state: reach within 8 steps R² 0.75, food density 0.48, corridor length 0.46, beds known 0.49, Ares's
   target type 50 % (majority 29 %): it learned a compressor of the hand state, not new state.
 - Monte-Carlo Q (operator A) is also out at this budget (above).
+
+## Cycle 2 — the base question (lead, 1 Oct: try hb1-14 or tt-05 as base, or an hb → tt interpolation)
+
+hb1-14 = hb1-12 with its prior cut to 540 rounds (uploadable); tt-05 = hb1-14 feeding the crown from ~r300
+(`feed_base` 140); tt-06 = the hb1-14 → tt-05 hand-over of the feeding onset between r300 and r400. Copied into the
+Verso tree unmodified for measurement (not committed here). All three are V06 underneath (late cap 48, the
+`W == 32 && H == 16` terms on). Against cycle 0 (arm `c0-hb-small~l1`), seed 1:
+
+| Bot | Pool win | Pool econ~ | Gen win | Gen econ~ [90 %] | Tempo pool / gen (rounds) |
+|---|---|---|---|---|---|
+| hb1-14 | 0.863 → 0.881 | −0.040 | 0.641 → 0.724 (+0.083 [+0.022, +0.141]) | +0.098 [+0.057, +0.146] | −7.2 / −0.8 |
+| tt-05 | 0.881 | −0.040 | 0.702 | +0.098 | −7.2 / −0.8 |
+| tt-06 | 0.863 | −0.040 | 0.714 | +0.098 | −7.2 / −0.8 |
+
+(identical through r250 — the three differ only after ~r300). Taken apart on the Verso base (p4 platform), seed 1,
+against cycle 0:
+
+| Arm | Change | Pool win / econ~ | Gen win [90 %] | Gen econ~ [90 %] | Tempo pool / gen |
+|---|---|---|---|---|---|
+| `c2-feed140` | tt-05's feeding from ~r300, whole game | −0.013 / 0 | −0.004 | 0 (identical to r250) | 0 / 0 |
+| `c2-ramp140` | hb → tt feeding onset ramped over r300–400 | −0.031 / 0 | +0.028 [+0.004, +0.052] | 0 | 0 / 0 |
+| `c3-cap48` | V06's late search cap | −0.056 / −0.037 | +0.012 | −0.023 | +0.5 / −0.9 |
+| `c3-big540` | **540-round prior** | −0.025 / −0.028 | **+0.057 [+0.004, +0.109]** | **+0.115 [+0.065, +0.166]** | −6.1 / −1.1 |
+| `c3-big540-cap48` | both | +0.019 / −0.084 | +0.052 | +0.053 | −0.7 / −3.8 |
+| `c3-big540-ramp140` (vs c3-big540) | + the hb → tt ramp | +0.006 / 0 | +0.016 | 0 | — |
+
+Late feeding raises own-body deaths 13–23 % and changes nothing the panels can see (no zoo opponent converts; the
+mimic lane's reading) — it stays a ladder question. **Decision: the base becomes `c3-big540`** and its D-032 run
+against cycle 0 (seeds 1–3) reads:
+
+| Panel | n paired | win | d econ~ [90 %] | d p50 / p100 / p150 / p250 | d units@100 | d length@100 | tempo (rounds) |
+|---|---:|---|---|---|---:|---:|---|
+| pool | 480 | 0.848 → 0.848 | −0.001 [−0.028, +0.026] | +0.021 / −0.029 / −0.022 / +0.025 | +0.079 | +0.040 | −1.0 [−2.1, +0.1] NO GAIN |
+| gen | 744 | 0.618 → 0.716 (+0.097 [+0.064, +0.130]) | **+0.107 [+0.081, +0.135]** | +0.092 / +0.130 / +0.114 / +0.093 | +0.179 | +0.130 | −6.3 [−8.4, −4.2] INCONCLUSIVE (map guard: spring_wells) |
+
+D-032 by the letter: REJECT (pool econ~ lower bound −0.028 ≤ 0, pool win lower bound −0.032). Both pool point
+estimates are 0; the off-pool gain is the largest measured in this lane. Kept as the lane's parent (the lead may
+read the letter differently for promotion); `bots/verso-02-hb540-prior` embeds the head (reproduces the arm, 0
+divergent; upload zip 3.68 MiB).
+
+HB + Stockfish opening ensemble (`c0x-both-sf`), seeds 1–3 vs cycle 0: tempo −0.5 [−1.7, +0.7] NO GAIN, econ~ −0.062
+[−0.103, −0.027] — the seed-1 −2.6 was noise. Also NO GAIN: + cheji bt in the opening (+0.8), + an opening-only
+Heartbreaker head (+1.5, econ~ −0.101).
