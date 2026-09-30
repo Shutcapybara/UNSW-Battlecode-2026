@@ -1,7 +1,7 @@
 """HB-1 Q4 (hb1-04): re-encode the direction blob (direction_v03.bin) as 8-byte nodes in a C++ header that fits the
 judge's 48 MiB per-process wasm memory (unswbc sandbox.MAX_MEMORY_PAGES = 768).
 
-    .venv/bin/python tools/hb1/q4_compact_direction.py BOTDIR
+    .venv/bin/python tools/hb1/q4_compact_direction.py BOTDIR [ROUNDS [BLOB]]
 
 Node word (uint64): bits 0-31 float32 (threshold, or leaf value); bits 32-46 feature index (0x7FFF = leaf);
 bit 47 missing-goes-left; bits 48-63 right-child offset from this node. Nodes are stored in depth-first preorder so
@@ -54,8 +54,12 @@ def encode_tree(nd):
     return out
 
 
-def main(botdir):
-    K, names, base, classes, starts, nodes = read_blob(ROOT / 'build/hb1/export/direction_v03.bin')
+def main(botdir, rounds=None, blob=None):
+    K, names, base, classes, starts, nodes = read_blob(blob or ROOT / 'build/hb1/export/direction_v03.bin')
+    if rounds:                                   # keep the first `rounds` boosting rounds (K trees each): upload size
+        keep = min(len(starts), int(rounds) * K)
+        nodes = nodes[:(starts[keep] if keep < len(starts) else len(nodes))]
+        starts = starts[:keep]
     words, tstart = [], []
     ends = list(starts[1:]) + [len(nodes)]
     for s, e in zip(starts, ends):
@@ -83,4 +87,5 @@ def main(botdir):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    # BOTDIR [ROUNDS [BLOB]]
+    main(sys.argv[1], *(sys.argv[2:4]))
