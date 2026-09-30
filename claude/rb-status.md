@@ -56,3 +56,8 @@ Note (13/15): on trauma_tr replays the extra wall deaths with symmetry are pocke
 | 20-spread | density_ally_weight 0.10 → 0.40 on 17 | + p@50 on open maps | +0.018 [−0.016, +0.055] (s1) | +0.009 [−0.024, +0.042] (s1) | — (params) | REJECT (full pool s1–3: +0.015 [−0.007, +0.037]) | everything flat over 3 seeds (units −0.001, length +0.001, win +0.013), tier-2 flat: s1 was optimistic; gen s2–3 not run |
 | 21-symconf4 | sym_min_conf 8 → 4 on 17 | + p@50 where detection is late | +0.005 [−0.003, +0.013] (s1) | not run | — (params) | REJECT (null) | late detection (trauma) is lack of mirrored observations, not confirmation count; trauma +0.002 |
 | 22-sym-noterrain | 17 without terrain mirroring (pairs + beds kept) | dilemma recovers | −0.047 [−0.084, −0.011] (s1) | not run | ≈ 17 | REJECT at screen | dilemma +0.165 as predicted (fountain eats 32.6 → 60.2 in replays), but portals −0.227, queen −0.330, win −0.084: terrain mirroring carries most of 17's gain; the dilemma loss is the room check treating known 1-wide pass-through corridors as traps |
+| 08-farm05, 09-spread | built on 01 | — | not run | not run | — | superseded | rebuilt on the accepted 17 as 18 and 20 |
+| 10-dive5-yield, 11-dive5-exit | 05 / 06 stacked on 04 | — | not run | not run | — | dropped | 05 and 06 were null on direct replay checks |
+| 14-sym-dive4 | 13 + dive_value 4 | — | not run (stopped at start) | — | — | withdrawn | parent 13 not accepted; rebuilt on 17 as 19 |
+
+Report 2: `docs/findings/2026-09-30-rb-lane-2.md` (versions 07–23). Lane on hold after 23 at the user's request (resources).
