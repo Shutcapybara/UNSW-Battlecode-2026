@@ -9,6 +9,7 @@ evidence:
   - Focused C++ pearl-contest policy regression
   - C++20 full-bot compile
   - Seed-1 ten-map direct comparison against V37, with replay action counts
+  - Contest API submission v93 (ID 13010), active
 ---
 
 # Ares V40 — length-priced sprints
@@ -41,6 +42,11 @@ the other five maps split. In the same panel, V40 length-3 dragons dashed on
 1,170 of 48,092 turns (2.43%), while V37 dashed on 998 of 51,467 turns
 (1.94%). The result is a positive one-seed development screen, not a
 promotion benchmark; V40 remains experimental and outside FRONTIER.md.
+
+The contest API accepted the V40 source as submission v93 (ID 13010) and
+reports it active. Its API source hash is
+`1a4ee3dc7148ef7b8c2488879d09c75d8b9cfbc32364d8c03e96e35013597737`. This
+server activation does not change the local experimental status.
 
 Verification:
 

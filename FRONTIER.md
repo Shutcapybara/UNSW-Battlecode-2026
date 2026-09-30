@@ -188,14 +188,13 @@ the [Ares V06 notes](docs/ares-family.md#v06--expanded-search-and-supported-thre
 
 ## Defaults and upkeep
 
-The contest API lists **Ares V37 — `ares-v37-near-portal-scout-ai`, submission
-v92 (ID 12851)** as active, uploaded 2026-09-30 08:44 UTC. The upload
-auto-activated when processed. Its API source hash is
-`d0b6e74c95f9d98e1cbceb58c8d82179d21ad676b699aa2ab3e11d2248ca683f`. Server
-deployment does not promote V37 locally: it remains experimental, with its
-seed-1 screen showing 17–3 vs V35 and 10–10 vs V19. The previous active upload
-was Ares V36, submission v91 (ID 12728), whose API source hash was
-`8d5e4b3dba5ec9f948d4985581349267928b88933da47dc4dda847d57b6aa0b1`. See the
+The contest API lists **Ares V40 — `Ares V40 length-priced sprints`, submission
+v93 (ID 13010)** as active. Its API source hash is
+`1a4ee3dc7148ef7b8c2488879d09c75d8b9cfbc32364d8c03e96e35013597737`. Server
+deployment does not promote V40 locally: it remains experimental after an
+11–9 one-seed screen against V37. The previous active upload was Ares V37,
+submission v92 (ID 12851), whose API source hash was
+`d0b6e74c95f9d98e1cbceb58c8d82179d21ad676b699aa2ab3e11d2248ca683f`. See the
 [V28 finding](docs/findings/2026-09-30-ares-v28-minimum-sacrifice-enclosure-split.md),
 [V32 finding](docs/findings/2026-09-30-ares-v32-dead-end-split-orientation.md),
 [V33 finding](docs/findings/2026-09-30-ares-v33-split-portal-route-handoff.md),

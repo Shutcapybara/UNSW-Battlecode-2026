@@ -20,3 +20,8 @@ panel, V40 beat V37 **11–9** with zero runner errors. Length-3 dash rates were
 2.43% for V40 (1,170/48,092 turns) and 1.94% for V37 (998/51,467 turns) in
 that panel. This is a development screen, not a promotion result. See the
 [V40 finding](../../docs/findings/2026-09-30-ares-v40-length-priced-sprints.md).
+
+The snapshot is active on the contest server as submission v93 (ID 13010),
+with API source hash
+`1a4ee3dc7148ef7b8c2488879d09c75d8b9cfbc32364d8c03e96e35013597737`. Server
+activation does not promote V40 in the local frontier.
