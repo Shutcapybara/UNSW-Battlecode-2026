@@ -27,3 +27,18 @@ HB_TAG=tt206`.
 3. Q2 wrapper enumeration; Q3 stability over time windows (plus ladder).
 4. Q4 mimic and Q5 component ports onto Ares V06 only where Q1 says they pay (HB-1: a learned direction prior was the
    only port that held; hb1-12).
+
+## Q0 — data (corpus index profile, 30 Sep)
+
+Synced 5,953 replays (4.8 GB; `tools/hb1/sync_team.sh`, 3.5 min): cheji bt 4,126 completed games, Stockfish 1,932,
+105 shared (their head-to-heads).
+
+| | cheji bt (70) | Stockfish (206) |
+|---|---|---|
+| games / win rate | 4,141 / 0.806 | 1,932 / 0.692 |
+| ranked share / opponents / maps | 0.15 / 116 / 12 | 0.21 / 71 / 10 |
+| best maps | Queen of Spades 0.97, Schooltime 0.90, Default 0.88 | Portals 0.80, Schooltime 0.80, Slithery Fight 0.79 |
+| weakest maps | Slithery Fight 0.62, Prisoners Dilemma 0.72 | Prisoners Dilemma 0.52, Devil 0.54 |
+| head-to-head | 69 / 105 (0.66) | 36 / 105 |
+
+cheji bt's weakest map is Stockfish's best (Slithery Fight — also Heartbreaker's weakest).
