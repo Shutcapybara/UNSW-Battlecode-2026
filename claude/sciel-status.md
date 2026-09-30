@@ -1,0 +1,42 @@
+# R-2 `sciel` status — Sciel lineage (GLM 5.3)
+
+Base: `ares-v06-expanded-search-support`, atlas off (no `claude/r1-status.md` exists in any worktree
+as of lane start, so the brief's default V06 base applies; Ares V06's atlas helper has no call site
+either way). Worktree `../wt-sciel`, branch `r/sciel`. Run env `~/.venvs/bc122` (unswbc 1.2.2).
+
+`sciel-00-base` = byte-identical Ares V06 policy + documenting `Params::atlas_enabled=false`.
+Golden parity vs the ra lane's Ares V06 transcripts: **52,728 turns / 1,842 dragons across
+schooltime-A, portals-B, slithery_fight-A, trauma-B (seed 1), 0 divergent**.
+Fingerprint `779808b9c98f99b4d8f432398f78f290dade2f2061e8d54736a2b6d2ecfff205`.
+Lane tooling copied from `tools/ra/` (ra's lane.py/variant.py/gen_reference.json, paths moved to
+`tools/sciel/`, `build/sciel/runs`) — thanks ra; scoring logic unchanged.
+
+Mechanism picks read (before choosing): ra has rejected, all vs its base — bed anticipation
+(01a-c), child-room gate 4→8 (02a), pearl-TTL 40→20 (08a), threat ×0.25 (17c), revisit 0.05 (18a),
+enemy-density devaluation off (19a), hunters from r40 (20b), strike margin 0 (21a); r3 rejected
+pair-memory, exit-known, kelp-cost, escape-early held (+5pp win, own-body +11% guardrail).
+**Untried per the R-3 director-read and the C1-C ledger: newborn siting and post-transit
+navigation** — this lane starts with the first and holds the second.
+
+| Version | Mechanism | Pool delta | Generalisation panel delta | CPU max | Verdict | Why |
+|---|---|---|---|---:|---|---|
+| sciel-01a-siting | Newborn siting: split score gains siting term for child spawn cell (food arrival-earliness within 4 via parent knowledge − reference 5.0, ×0.8; ally-crowd at spawn, cap 2.0) | econ~ −0.003 (mean −0.004); win 0.725 vs 0.762 (pairs 2/150/8, p=0.11); nb10 34.6→34.6 (statistic unmoved) | ≡ base (pearls 1/244/3; win 0.540 vs 0.520; var+devil_tr +0.100 the only mover) | 8.60M | **REJECT** | Mechanism barely fires (golden: 1 divergence in 13,649 schooltime turns): a len-4 parent just ate, so its tail is near food by construction; where it did fire (portals −0.018, devil −0.015) econ fell — the delay costs more than the sit buys. Kill number: pool econ~ −0.003 vs +0.05 gate. Switch stays (sit_enabled, default off in future parents). Untested variant for later: hand the child its first target in the birth packet (needs a new payload field), rather than shaping timing. |
+| sciel-02a-ptnav | Post-transit navigation: 4 rounds of decayed steering after our own transit — clear the exit mouth (1.2/step from landing), mouth-zone malus, 3.0 re-transit brake; suppressed during newborn escape | econ~ −0.004 (mean −0.005); units@100\|n~ −0.057; win 0.725 vs 0.762 (13/128/19); portals-map econ −0.045 | win 0.512 vs 0.520; portal-heavy gen maps down (quartet −0.037, portals_rec −0.025); var+queen_of_spades_tr +0.205 outlier | 8.53M | **REJECT** | The statistic MOVED (ledger: portal 6.3→5.0 len/1k −21%, trapped 36.1→34.8, newborn 19.3→18.6; h2h_ally −12%) but pearls/units fell with it — H2's "leak moved, not closed" fired: steering off mouths and braking re-transits gives hygiene at an economy cost on the maps where transits are productive. Same shape as r3-04 (kelp cost). Kill number: pool econ~ −0.004 with units −0.057 vs gate. Switch stays (pt_enabled). No sweep point: the failure is multi-axis, and pooled portal leak is only 6.3 len/1k to harvest. |
+| sciel-03a-ewfood | EW food-density memory: food_ew[c] += 1 per pearl eaten, ×0.98/round; valuation scaled by clamp(1+0.6·(density−0.5), 0.4, 2.5) on unseen cells AND bed values | **econ~ +0.067 (1.178 vs 1.111 — above the +0.05 bar)**; pearls@100 +0.146 (pairs 103/9/48, p≈0.0); schooltime +0.600, default +0.184, trauma +0.100; win 0.787 vs 0.762; births +0.113 | not run (pool verdict first) | 8.68M | **REJECT on guards** | First mechanism in the lane to clear the economy bar — the stateful-valuation direction pays. Killed by convergence crowding, as pre-declared: h2h_ally +34% (3.24 vs 2.41/1k), units@100\|n~ −0.075 (births UP but nb10 37.5 vs 34.6 — children die in the crush), total@100 −0.018. Fix is inside the mechanism: discount the EW factor by ally saturation of the target field (03b). |
+| sciel-03b-ewguard | same + visible ally-saturation guard (×max(0.3, 1−0.25·heads within 4)) | econ~ +0.071; pearls pairs 90/8/62 p=0.028; win 0.756 (pairs p=1.0); h2h_ally +31% | econ +9.5% (1.095 vs 1.000 base-normalised); pearls pairs 153/4/91 p=1e-4; win 0.581 vs 0.520; u100 1.454, t100 1.484; h2h_ally +66% (panel context) | 8.68M | **REJECT (h2h_ally)** | The guard moved nothing: convergers are beyond the 7×7 view until arrival, so a visible-heads discount cannot see them. Gen shows the mechanism generalises (+9.5% on 31 unseen maps, win +0.061). |
+| sciel-03c-ewradio | same + radio-informed guard (visible heads + density reports, cost 0.40, floor 0.15, cap 6) | **econ~ +0.105 (1.216)**; pearls pairs 103/7/50 p=0.0; schooltime +0.495, default +0.220, trophy +0.248; win 0.734 vs 0.762 (pairs 21/113/26 p=0.56); **h2h_ally +38%** | **econ +16.3% (1.163)**; pearls pairs 159/2/87 p=0.0; u100 1.589, t100 1.675; win 0.558 (+0.038); h2h_ally +38% | 8.70M | **REJECT (h2h_ally, win) — family closed** | Three guard variants (+34/31/38% h2h_ally): valuation-time deconfliction cannot hold the guardrail. The collisions are arrival-time, between dragons whose targets were chosen when the field was uncontested; and the mechanism's larger sustained population (gen dragons +21%) raises contact rates structurally. The economy signal is real, large, and generalises — the unlock must be arrival-level deconfliction (target claims), which is a different mechanism (04). |
+| sciel-04a-row | right-of-way on 03c: landing adjacent to a lower-id ally head (contact ≤3) costs 2.5 | econ~ +0.063; pearls pairs 98/8/54 p=4e-4; h2h_ally +29%; win 0.719 (−0.044) | econ +13.3%; u100 1.662, t100 1.765; win 0.597 (+0.077, best yet); ally_body −21% BELOW base | 8.57M | **REJECT (h2h_ally +29%, win)** | Real hygiene bought (vs 03c: wall −7%, self −9%, ally_body −15%; gen ally_body below base) but the head-on class holds and pool win keeps sliding (0.787→0.756→0.734→0.719 across 03a→04a — the guards and now the yield rule each cost pool win). |
+| sciel-04b-rowpath | right-of-way v2 on the bare 03a core (guards off), penalty on EVERY newly occupied path cell | econ~ +0.039 median (**mean +0.103**); pearls pairs 92/8/60 p=0.012; h2h_ally **+24%**; win 0.713 (−0.050) | econ +6.3%; u100 1.658, t100 1.697; win 0.569; h2h_ally +30% | 8.66M | **REJECT (econ median, h2h_ally +24%, win −0.050)** | The sprint-path gap was real (h2h 34→24 across row v0/v1/v2) but each layer of deconfliction trades pool win for hygiene (vs 03a: win pairs 6/136/18, p=0.023). Note for the director: mean econ +0.103 vs median +0.039 — the gains are a heavy right tail (schooltime +0.5), and the lane gate reads the median. |
+
+**Where the lane stands after 7 versions (0 accepted, 2 mechanisms dead, 1 direction proven):**
+the EW harvest-memory family is the only thing that has ever cleared the economy bar on this chassis
+(+0.039…+0.105 pool median, +0.103 mean, +6…+16% gen, pearls pairs p≤0.01 everywhere) and it is
+blocked by exactly one guardrail (h2h_ally +24…+38% vs the +10% limit) that neither valuation-time
+guards (03b/c) nor movement-level right-of-way (04a/b) can hold without paying pool win rate.
+**sciel-05 should be target claims** (broadcast the bed I am walking to; others re-target at choice
+time) — the one arrival-deconfliction idea not yet tried; it needs a new sonar packet type (12-bit
+cell + id + round fits the 44-bit payload). The alternative reading, also recorded: the gate's
+median convention bites when gains are map-concentrated (04b mean +0.103 / median +0.039).
+
+Base reference numbers (seed 1, 160 side-games): econ~ 1.111, win 0.762, u100|n~ 1.20, t100|n~ 1.04,
+wall 8.74, self 5.74, nb10 34.6. Gen (248): econ 1.098 abs, win 0.520.
