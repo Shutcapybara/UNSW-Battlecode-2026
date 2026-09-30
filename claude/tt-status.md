@@ -272,3 +272,12 @@ locally).
 The upload zip is capped at 4 MiB, so hb1-12 (17.1 MiB) and the tt-01/tt-02 copies built on it are local-only.
 `hb1-14-prior-r540` (the same prior, 540 rounds, 3.74 MiB; 141–19 on z1 s1, hold) is the uploadable base — see
 `claude/hb1-status.md`. Further TT ports are built on hb1-14.
+
+## Port 3 — tt-03-proxfeed (hb1-14 + Stockfish-rate proximity feed) vs hb1-14, z1 seed 1 (`game_stats/runs/tt-03-proxfeed-z1-s1.{json,md}`)
+
+From r250, length ≤ 3, not the crown: a strictly longer ally head adjacent → self-kill p = 0.03/turn (distance 2:
+0.012). **GATE: fail** — W–L 137–23 vs 141–19 (−2.50 pp), own-body deaths +10.8 %. Trajectory almost unchanged:
+r400 33 dragons / longest 10 (parent 32 / 9); r490 7 / 28 (7 / 27); round-limit W/L 59–18 (62–14); elimination W/L
+78–5 (79–5). The gradual feed keeps the elimination wins, as intended, but does not concentrate: feeding *any*
+strictly longer ally scatters material (a length-3 dragon dying next to a length-4 one). "Near an ally head" is too
+loose a reading of Stockfish's rule — which ally matters. (hb1-14's own trajectory: `build/tt/conc_hb1-14-prior-r540.log`.)
