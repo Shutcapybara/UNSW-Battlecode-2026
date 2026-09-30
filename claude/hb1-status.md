@@ -316,3 +316,12 @@ ally body −17.5 %, ally head-on −10.3 %, own body +1.4 % (hb1-12: −36.5 / 
 recovers only 0.022 of the r250 loss and gives back 7 wins and most of the late hygiene gain. The late-economy dip
 is not the prior acting late; it follows from the state the prior builds early (more dragons) — L03's composition
 caveat, not a phase-profile case. hb1-12 remains the Q5 lead; paired seed 2 decides it.
+
+### Q5 result 5 — hb1-12-direction-prior, paired seed 2 (`game_stats/runs/hb1-12-direction-prior-z1-s2.{json,md}`)
+
+**GATE: hold** again. W–L 139–21 vs parent 122–38 (identical to seed 1 for both bots — the seed moves pearl respawns
+more than outcomes, so seed 2 is less independent evidence than a new opponent set would be); economy +0.0284 (r50
++0.098, r100 +0.047, r150 +0.030, r250 −0.061); dragons r100 +0.293; length r100 +0.255; wall −29.2 %, own body
+−18.1 %, ally body −43.3 %, ally head-on −48.8 %. Two-seed reading: +10.6 pp win share and every death rate down on
+both seeds, early economy up, late economy (r250) down on both; two-seed economy mean +0.034 — hold by the letter of
+the gate. hb1-12 is the Q5 candidate to hand to the director (register request is the director's call).
