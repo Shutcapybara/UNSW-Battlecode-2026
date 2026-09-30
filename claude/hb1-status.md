@@ -251,3 +251,19 @@ self-contained. Alternative for the lead: generate it at build time from the exp
   dragon process** (cap 48 MiB); **p50 7.6M / p99 8.0M / max 8.4M points per turn** (Ares V06 same game p50 4.5M,
   max 8.4M; screen wall 60M); 0 fallbacks in 10,560 turns; loses on length at r500 (Heartbreaker's Portals profile).
   hb1-04 is deployable. Wall time 8 m 50 s including the build.
+
+## Q5 — what transfers (in progress)
+
+Three one-mechanism ports onto verbatim Ares V06 copies (each fed by a per-process v5 row where needed):
+- `hb1-10-escape-split` — wrapper W1: no free ordinary F/R/L step and no portal, split legal → split length−2
+  (Ares escape-splits only when every scored path is already dead and the child has an exit).
+- `hb1-11-split-gate` — Heartbreaker's gate GBT (0.974) replaces Ares's production-split admission
+  (`tyr_split_option` / opening production); child size, escape split and moves unchanged.
+- `hb1-12-direction-prior` — λ·log p_HB(first step) added to Ares's OK/DIVE path scores, λ = 1.0 fixed before
+  screening (Ares move terms are O(1): goal 1.2, momentum 0.6, crowd 0.6; trap 30).
+Smoke (Trophy vs V06, native): all three play full games, 0 `ares_fallback`.
+
+Measurement: the R-4 scorecard (`tools.analysis.features.scorecard`, copied from origin/main), **z1 panel, seed 1,
+parent Ares V06**, for hb1-04 and the three ports, as one detached chain (`tools/hb1/q4q5_chain.sh`; log
+`build/hb1/games/q4q5_chain.log`). Scope cut from z1+gen to z1 only: at the shared host's measured ~2 games/min
+(load ~100), z1+gen for five bots is ~26 h; z1 (the gate panel) is ~7 h. The gen panel follows if wanted.
