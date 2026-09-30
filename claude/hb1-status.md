@@ -234,3 +234,16 @@ Dose–response between held-out direction agreement and win rate vs Ares V04: ~
 0.829 (hb1-01) → 0.35; 0.854 (hb1-03) → 0.55; real Heartbreaker → 0.70. Roughly +8 pp of win rate per point of
 direction accuracy in this range, and every map that moved, moved toward Heartbreaker's own record. The mimic's
 strength is limited by the direction model, and the direction model is still data/capacity-limited.
+
+### hb1-04-deployable — hb1-03's behaviour inside the judge's limits
+
+The judge runs each dragon as a wasm instance capped at 768 pages = **48 MiB** (`unswbc/sandbox.py`
+`MAX_MEMORY_PAGES`), built by clang 20 in wasm (2 GiB build memory). hb1-03's model at 24 B/node is 86 MB, so it
+cannot ship as-is. Truncation costs accuracy (30k held-out rows: 100 rounds 0.827, 400 0.842, 1,000 0.847,
+1,900 0.849, all 2,345 0.850 — `build/hb1/export/direction_v03_curve.csv`), so instead the full model is re-encoded
+as 8-byte preorder nodes (`tools/hb1/q4_compact_direction.py`): 3.58 M nodes = 28.6 MB of data, a 56 MB header.
+Parity vs the blob on 30,000 held-out rows: **0 argmax differences, max |Δp| = 0** (bit-identical) — hb1-04 makes
+hb1-03's decisions, so hb1-03's 22/40 carries over. Native g++ compile: 1 m 55 s, 1.3 GB peak.
+Note: the 56 MB generated header is above GitHub's 50 MB recommendation (hard limit 100 MB) and is the kind of
+large generated artifact `docs/artifact-policy.md` discourages; it is committed because a registered bot must be
+self-contained. Alternative for the lead: generate it at build time from the exporter.
