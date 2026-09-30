@@ -162,3 +162,26 @@ these can move win share, not the economy gate.
   (range 1918–2098, rank 21 → 1–4): the rating rose ~100 while the five per-turn decisions stayed the same — still
   converging, or improvement outside these decisions (concentration timing, directed sonar).
 - Self-kill: backward step into the own neck, 0.9 % of turns, 100 % fatal, 65 % at length 2, 56 % with an exit open.
+
+### The cull decision (`tools/tt/cull_model.py`, `game_stats/runs/tt{70,206}-cull.json`)
+
+Turns at length ≤ 3; label = self-kill; same held-out games as Q1; every cull kept and re-weighted to the base rate.
+
+| | cheji bt | Stockfish |
+|---|---|---|
+| base rate (length ≤ 3 turns) | 1.3 % | 1.0 % |
+| by round | < 1.1 % to r300; 2.5 % r300–350; **9.4–10.5 % from r350** | 0.4–0.5 % to r250; **1.8–2.5 % from r250** |
+| by distance to nearest ally head | 3.7 % adjacent, ~1 % beyond | 2.9 % adjacent, 1.2 % at 2, 0.6 % at 4, ≤ 0.2 % beyond 5 |
+| when trapped (no exit) | 96.8 % | 26.4 % |
+| depth-4 tree / GBT (AUC) | 0.954 / 0.991 (recall 0.77 at p ≥ 0.5) | 0.945 / 0.975 (recall 0.43) |
+| tree's round threshold | ~r330 | r250 |
+
+Two conversion styles. cheji bt: a **timed mass cull** — from ~r330 every small dragon has ~10 % per turn of killing
+itself wherever it is (and trapped small dragons always do). Stockfish: a slower, **proximity-weighted feed from
+r250** — small dragons near an ally head die; no elected crown needed. Ares: feeder within 4 cells of an elected crown
+steps backward into its neck, from ~r400–430.
+
+Stockfish command-level accuracy (11 classes incl. self-kill; `tt206-q2-command.json`): GBT 0.763 raw / 0.760
+wrapped, MLP 0.740 / 0.738 — the Heartbreaker-measured wrapper slightly hurts, since Stockfish handles trapped states
+differently (wrapper rules are team-specific). cheji bt's command run was killed twice by `earlyoom` (43 GB, then
+40 GB from a stale full-size sample cache); cache removed, re-running at the scaled size.
