@@ -339,3 +339,17 @@ gavroche 32 / 22, hunter 33 / 5, kazuha-s01-swarm-dissolve 24.5 / 17, ouroboros-
 top teams' conversion against converting opponents cannot be measured on this panel — only on the ladder. For that
 test an uploadable early converter is needed: `tt-05-feed300-up` = hb1-14 + `feed_base` 140 (tt-01's change on the
 uploadable base).
+
+## Port 5 — tt-05-feed300-up (hb1-14 + feeders from ~r300; uploadable, 3.74 MiB) vs hb1-14, z1 seed 1
+
+W–L **141–19, identical to hb1-14** (win share +0.00 pp, economy +0.0000). GATE reads fail only on own-body deaths
++60 % (3.22 → 5.16/1k) — the feeding mechanism itself. Trajectory: r400 12 dragons / longest 21.5 (hb1-14 32 / 9;
+cheji bt 8 / 25); r490 longest 32, 56 % of material in it (27, 34 %; cheji bt 40, 46 %). Round-limit W/L 67–13
+(62–14); round-limit losses with a material lead 8 % (50 %); elimination W/L 74–6 (79–5). Five elimination wins
+traded for five round-limit wins: break-even on a panel with no converting opponent, with the top teams' conversion
+profile. **tt-05 is the uploadable early converter for a ladder comparison against hb1-14.**
+
+| uploadable bot | z1 s1 vs Ares V06 / vs hb1-14 | longest r490 | conversion |
+|---|---|---:|---|
+| hb1-14-prior-r540 | 141–19 vs V06's 122–38 | 27 | late (Ares default, ~r400) |
+| tt-05-feed300-up | 141–19 (= hb1-14) | 32 | from ~r300 (cheji bt's timing) |
