@@ -422,6 +422,79 @@ Activation does not promote the local candidate. See the
 [V40 finding](findings/2026-09-30-ares-v40-length-priced-sprints.md) and
 [source snapshot](../bots/ares-v40-length-priced-sprints/).
 
+## Ares V41 — portal-bed dispersion
+
+V41 branches from V40 and lowers pearl or bed target value when visible allied
+heads are already within two tiles. This covers the case where a portal makes
+the candidate's route shorter than the covering ally's Manhattan distance, so
+V40's nearest-ally test does not yield. It also tracks the landing and pair of
+the most recent crossing; for 12 rounds, while within two tiles of that
+landing, it lowers targets routed through the same pair and penalizes crossing
+back. The decoded Queen of Spades replay 700279 showed dragon 18 returning
+through P0 after five rounds and child 82 returning after eleven rounds while
+three allied heads clustered around its landing. The focused regression passes
+and the V41 bot compiles. In a ten-map, both-seat screen, V41 beat V40 **11–9**
+with zero runner errors; `unswbc` generated the per-game seeds. V41 swept
+Dilemma, Portals, and Slithery Fight, V40 swept Default and Devil, and the other
+five maps split. This is one development screen; V41 remains experimental
+outside FRONTIER.md. The upload auto-activated as submission v94 (ID 13086) on
+2026-09-30 11:49 UTC. Its API source hash is
+`1c1f1fa7bd0b672ab3f6641373ba532514d5ecaca2a6c267832ae4b79cab9088`; activation
+does not change local experimental status. See the
+[V41 finding](findings/2026-09-30-ares-v41-portal-bed-dispersion.md) and
+[source snapshot](../bots/ares-v41-portal-bed-dispersion/).
+
+## Ares V42 — memory and teammate dispersion
+
+V42 branches from V41, removes the Devil lane bonus, discounts exploration in
+remembered sectors with no known pearl beds, and adds a bounded cost when a
+move closes distance to a visible teammate head. The sector discount also
+applies to fallback exploration targets. This is intended to send explorers
+toward fresher or pearl-bearing areas and reduce convergence around visible
+allies while preserving the inherited resource and hunt scoring. In a native
+ten-map, both-seat screen against V41, V42 scored **8–12**, with no runner
+errors, replay-analysis errors, or runtime faults. It swept Portals and
+Slithery Fight; V41 swept Autarky, Default, Devil, and Trophy, and four maps
+split. This is one generated-seed development screen; V42 remains experimental.
+See the
+[V42 finding](findings/2026-09-30-ares-v42-memory-team-dispersion.md) and
+[source snapshot](../bots/ares-v42-memory-team-dispersion/).
+
+## Ares V43 — exploration-only teammate separation
+
+V43 keeps V42's Devil lane bonus removal and bedless-sector exploration
+discount, but applies the visible-teammate approach cost only while pursuing
+exploration. This avoids charging moves toward known pearls and prey. In a
+native ten-map, both-seat screen against V41, V43 scored **12–8** with no
+runner errors, replay-analysis errors, or runtime faults. It swept Default,
+Dilemma, Queen of Spades, Slithery Fight, and Trophy; V41 swept Devil, Portals,
+and Schooltime; Autarky and Trauma split. This is one generated-seed screen,
+and the V42 screen used different seeds, so the 8–12 to 12–8 change is only a
+promising comparison, not a controlled estimate. V43 remains experimental.
+See the [V43 finding](findings/2026-09-30-ares-v43-exploration-only-dispersion.md)
+and [source snapshot](../bots/ares-v43-exploration-only-dispersion/).
+The contest accepted V43 as submission v95, reported as processing; this does
+not promote it locally.
+
+## Ares V44 — shared sector exploration
+
+V44 forks V43 and relays the strongest single-dragon coverage estimate for
+each 8×8 sector, plus whether any pearl bed was observed there. Reports merge
+by maximum coverage and positive bed sightings, so overlapping surveys cannot
+inflate confidence. Explorers also publish eight-round sector claims, refreshed
+every three rounds. Teammates discount unseen cells in claimed sectors and
+prefer unclaimed sectors; claims and improved sector reports relay through
+available sonar lanes. V44 keeps V43's visible-teammate approach penalty.
+
+This change responds to match 710870, where Ares V43 (submission 13183) played
+as Team A on Autarky. The replay showed repeated scouting into low-value areas;
+target diagnostics were not recorded. In a three-seed screen against V43 on
+the ten live maps and both sides, V44 scored **32–28** over 60 games with no
+runner errors. It went 4–2 on Autarky. This small screen is inconclusive; V44
+remains experimental and is not promoted. See the
+[V44 finding](findings/2026-09-30-ares-v44-shared-sector-exploration.md) and
+[source snapshot](../bots/ares-v44-shared-sector-exploration/).
+
 ## Direct matchup screens: Tyr V12
 
 ### Ares V01

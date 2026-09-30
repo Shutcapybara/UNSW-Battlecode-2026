@@ -1,0 +1,25 @@
+name = "ares-v44-shared-sector-exploration"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v43-exploration-only-dispersion"
+hypothesis = "Private barren-sector maps and unclaimed exploration goals cause dragons to repeat each other's scouting."
+mechanism = "Relay monotone sector coverage and positive bed sightings over sonar, then lease exploration target sectors for eight rounds and discount goals claimed by another dragon."
+expected_change = "Reduce duplicate exploration while preserving pearl, prey, and survival scoring; stale claims expire quickly."
+priority = 236
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v43-exploration-only-dispersion.md",
+    "docs/findings/2026-09-30-ares-v44-shared-sector-exploration.md",
+    "https://game.battlecode.au/visualiser?match=710870",
+]
+summary = "Experimental child of V43 adding confidence-weighted shared sector memory and expiring exploration claims after replay review found repeated edge scouting."

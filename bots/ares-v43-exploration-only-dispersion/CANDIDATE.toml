@@ -1,0 +1,28 @@
+name = "ares-v43-exploration-only-dispersion"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v42-memory-team-dispersion"
+hypothesis = "V42's unconditional visible-teammate approach cost can reduce pearl and prey collection even when the dragon is not exploring."
+mechanism = "Keep V42's lane-bonus removal and remembered bedless-sector discount, but charge the bounded teammate approach cost only while pursuing an exploration target."
+expected_change = "Keep explorers dispersed from visible teammates while allowing pearl and prey routes to retain their full movement score."
+priority = 235
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v42-memory-team-dispersion.md",
+    "docs/findings/2026-09-30-ares-v43-exploration-only-dispersion.md",
+    "docs/findings/2026-09-30-ares-v41-portal-bed-dispersion.md",
+    "docs/findings/2026-09-30-ares-v40-length-priced-sprints.md",
+    "https://game.battlecode.au/visualiser?match=703779",
+    "https://game.battlecode.au/visualiser?match=700279",
+]
+summary = "Experimental child of V42 restricting visible teammate approach cost to exploration goals after the 8-12 V42 screen."

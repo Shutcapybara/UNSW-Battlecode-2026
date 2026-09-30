@@ -186,6 +186,22 @@ the [Ares V06 notes](docs/ares-family.md#v06--expanded-search-and-supported-thre
 [source snapshot](bots/ares-v06-expanded-search-support/), and
 [benchmark finding](docs/findings/2026-09-29-ares-v06-expanded-search-support.md).
 
+The later Ares line includes experimental V41 portal-bed dispersion and V42's
+memory-aware exploration and teammate approach penalties. V42 scored 8–12
+against V41 on one ten-map, both-seat screen. V43 scopes the teammate approach
+cost to exploration and scored 12–8 against V41 on a separate screen with
+different generated seeds. Both remain experimental and outside the all-map
+frontier. See the [Ares family notes](docs/ares-family.md), [V42 finding](docs/findings/2026-09-30-ares-v42-memory-team-dispersion.md),
+and [V43 finding](docs/findings/2026-09-30-ares-v43-exploration-only-dispersion.md).
+The server accepted V43 as submission v95 and reported it as processing.
+
+V44 adds confidence-weighted sonar reports of explored sectors and short-lived
+claims on exploration targets after Ares V43 replay 710870 showed repeated
+low-value scouting. Its three-seed, ten-map, both-side screen against V43
+scored 32–28 over 60 games, with no runner errors; this small margin is
+inconclusive. V44 remains experimental. See the [Ares V44 finding](docs/findings/2026-09-30-ares-v44-shared-sector-exploration.md)
+and [source snapshot](bots/ares-v44-shared-sector-exploration/).
+
 ## Defaults and upkeep
 
 The contest API lists **Ares V40 — `Ares V40 length-priced sprints`, submission

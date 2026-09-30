@@ -1,0 +1,25 @@
+name = "ares-v41-portal-bed-dispersion"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v40-length-priced-sprints"
+hypothesis = "V40 can send a dragon back through a portal toward an allied-covered bed, and repeated same-pair crossings can keep split dragons congested around the exits."
+mechanism = "Discount pearl and bed targets near visible allied heads, and for 12 rounds penalize routes and moves that return through the most recently crossed portal pair while the dragon remains near its landing cell."
+expected_change = "After exiting a portal, a dragon should disperse toward uncovered resources, unseen territory, or a valid hunt instead of re-entering the same crowded portal pair."
+priority = 233
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v41-portal-bed-dispersion.md",
+    "docs/findings/2026-09-30-ares-v40-length-priced-sprints.md",
+    "https://game.battlecode.au/visualiser?match=700279",
+]
+summary = "Experimental child of V40 targeting allied pearl-bed congestion and same-pair portal churn observed in decoded match 700279."

@@ -1,0 +1,27 @@
+name = "ares-v42-memory-team-dispersion"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v41-portal-bed-dispersion"
+hypothesis = "Portal-split dragons can waste exploration effort revisiting partly remembered sectors without pearl beds and moving toward teammate heads, even after the immediate portal-return preference is reduced."
+mechanism = "Remove the Devil lane movement bonus; discount unseen exploration cells in sufficiently remembered sectors with no known pearl beds, use the same discount for fallback sector targets, and apply a bounded action cost when a visible teammate head gets closer."
+expected_change = "Exploring dragons should spread into less explored or pearl-bed sectors and avoid converging on visible teammates, while existing resource collection and hunt scoring remain available."
+priority = 234
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v42-memory-team-dispersion.md",
+    "docs/findings/2026-09-30-ares-v41-portal-bed-dispersion.md",
+    "docs/findings/2026-09-30-ares-v40-length-priced-sprints.md",
+    "https://game.battlecode.au/visualiser?match=703779",
+    "https://game.battlecode.au/visualiser?match=700279",
+]
+summary = "Experimental child of V41 replacing lane attraction with remembered bedless-sector and visible teammate approach penalties."
