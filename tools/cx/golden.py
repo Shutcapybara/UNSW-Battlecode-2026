@@ -146,9 +146,9 @@ class Proc:
             pass
 
 
-def replay(args) -> int:
-    meta, dragons = load(args.transcript)
-    argv, cwd = launcher(args.bot)
+def replay_one(transcript: str, argv, cwd, args) -> tuple[int, int, str | None]:
+    """replay one transcript file; returns (turns, divergences, first divergence)."""
+    meta, dragons = load(transcript)
     sonar = "ignore" if args.ignore_sonar else "free" if args.free_sonar else "exact"
     want = set(int(x) for x in args.dragons.split(",")) if args.dragons else None
     n_turns = n_div = 0
@@ -174,15 +174,49 @@ def replay(args) -> int:
                         first = msg
                     if not args.all:
                         proc.close()
-                        print(f"first divergence after {n_turns} turns")
-                        return 1
+                        return n_turns, n_div, first
                     if got is None:
                         break
         finally:
             proc.close()
-    print(f"replayed {n_turns} turns of {len(dragons) if want is None else len(want)} dragons "
+    return n_turns, n_div, first
+
+
+def replay(args) -> int:
+    argv, cwd = launcher(args.bot)
+    n_turns, n_div, _ = replay_one(args.transcript, argv, cwd, args)
+    meta, dragons = load(args.transcript)
+    print(f"replayed {n_turns} turns of {len(dragons)} dragons "
           f"({meta.get('map')}-{meta.get('side')}-{meta.get('seed')}): {n_div} divergent")
     return 1 if n_div else 0
+
+
+def suite(args) -> int:
+    """Replay a bot against every recorded transcript in a directory (the
+    Ares V04 parity run as one command: a C++ bot against Python-recorded
+    transcripts). Aggregates turns and divergences; exit 1 if any diverged."""
+    root = pathlib.Path(args.transcripts)
+    files = sorted(p for p in root.rglob("*.jsonl*") if p.name != "index.jsonl")
+    if not files:
+        print(f"no transcripts under {root}")
+        return 2
+    argv, cwd = launcher(args.bot)
+    tot_turns = tot_div = 0
+    bad = []
+    for p in files:
+        n_turns, n_div, _ = replay_one(str(p), argv, cwd, args)
+        tot_turns += n_turns
+        tot_div += n_div
+        mark = "OK" if not n_div else f"{n_div} DIVERGENT"
+        print(f"{mark:>12}  {p.relative_to(root)}  ({n_turns} turns)", flush=True)
+        if n_div:
+            bad.append(str(p))
+            if not args.all:
+                print(f"stopping at first divergent transcript; use --all to keep going")
+                break
+    print(f"suite: {len(files)} transcripts, {tot_turns} turns, {tot_div} divergent "
+          f"({pathlib.Path(args.bot).name} vs {root})")
+    return 1 if tot_div else 0
 
 
 def main() -> int:
@@ -205,8 +239,21 @@ def main() -> int:
     p.add_argument("--free-sonar", action="store_true")
     p.add_argument("--keep-debug", action="store_true")
     p.add_argument("--dragons")
+    s = sub.add_parser("suite", help="replay a bot against every transcript under a directory "
+                                    "(default: the Python reference recordings in build/cx/golden)")
+    s.add_argument("bot")
+    s.add_argument("--transcripts", default=str(REPO / "build" / "cx" / "golden"))
+    s.add_argument("--all", action="store_true")
+    s.add_argument("--ignore-sonar", action="store_true")
+    s.add_argument("--free-sonar", action="store_true")
+    s.add_argument("--keep-debug", action="store_true")
+    s.add_argument("--dragons")
     args = ap.parse_args()
-    return record(args) if args.cmd == "record" else replay(args)
+    if args.cmd == "record":
+        return record(args)
+    if args.cmd == "suite":
+        return suite(args)
+    return replay(args)
 
 
 if __name__ == "__main__":
