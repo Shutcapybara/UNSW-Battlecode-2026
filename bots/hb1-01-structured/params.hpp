@@ -199,6 +199,8 @@ struct Params {
     // ------------------------------------------------------------ debugging
     // Emit an INDICATOR line per turn (costs ~4k points per byte).
     static constexpr bool indicator = false;
+    // HB-1: run the Heartbreaker structured mimic (hb1_policy.hpp) instead of the Ares policy.
+    static constexpr bool hb1_mode = true;
 };
 
 }  // namespace ares

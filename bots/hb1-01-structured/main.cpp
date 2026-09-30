@@ -11,6 +11,7 @@
 #include "params.hpp"
 #include "policy.hpp"
 #include "world.hpp"
+#include "hb1_policy.hpp"
 
 // Metering hooks (tools/cx/meter.sh builds copies with these set):
 // 1 = helper parse only, 2 = parse + World::sense, 3 = full turn + 10 extra
@@ -24,8 +25,38 @@ int main() {
     ares::World w;
     ares::Policy pol;
     w.init(ct, game);
+    hb1::Mimic mim(ct, game);
 
     while (unswbc::update(ct, game)) {
+        if (ares::Params::hb1_mode) {
+            // HB-1 mimic: v5 features -> wrapper rules + exported GBTs -> command and sonar.
+            char const facing = ct.get_dir().value;
+            hb1::Choice ch;
+            std::vector<char> rays;
+            bool hb_ok = true;
+            try {
+                hb1::Row const row = mim.proc.features(hb1::block_from(ct, game));
+                ch = mim.decide(row);
+                rays = mim.sonar_dirs(row, ch, facing);
+            } catch (...) {
+                hb_ok = false;
+            }
+            if (!hb_ok) {
+                std::cout << "MOVE " << facing << "\nLOG hb1_fallback\n";
+                mim.proc.record_move("F");
+            } else if (ch.split) {
+                ct.do_split(ch.child);
+                std::cout << "LOG ACT:split" << ch.why << "\n";
+                mim.proc.record_split(ch.child);
+            } else {
+                std::cout << "MOVE " << hb1::rel_to_abs(facing, ch.rel) << "\n";
+                mim.proc.record_move(std::string(1, ch.rel));
+            }
+            std::cout << "PROTOCOL " << unswbc::Constants::PROTOCOL_MAJOR << "\n";
+            for (char d : rays) std::cout << "SONAR " << d << " 0\n";
+            std::cout << "ENDTURN\n" << std::flush;
+            continue;
+        }
         ares::Decision dec;
         bool ok = true;
         if (ARES_MEASURE == 1) {
