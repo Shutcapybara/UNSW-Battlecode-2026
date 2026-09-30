@@ -10,16 +10,17 @@
 
 Views: games, teams (corpus); sides (feature-lab row + s1 extras + elo, gap, cohort, crank, name, opp_*);
 series (every round 0-150, every 5 to 500, terminal state carried forward, ended flag; c_* = cumulative events);
-series_n (every numeric column divided by the field median on the same map and round); series_d (rounds %5 == 0,
-d5_<col> = change over the previous 5 rounds); sides_n (per-map field-median ratio); deaths, transits, splits.
+series_n (every numeric column divided by the field median on the same map and round); series_z (the same as a
+field z-score: (x - field mean) / field SD, same map and round; robust for low counts); series_d (rounds %5 == 0,
+d5_<col> = change over the previous 5 rounds); sides_n / sides_z (per-map field-median ratio / z-score); deaths, transits, splits.
 The field = every corpus side-game in the store. Local stores are normalised against the corpus field.
 """
-import argparse, os, sys, time
+import argparse, os, re, sys, time
 from pathlib import Path
 
 ROOT = Path.cwd()
 PY = ROOT / 'build' / 's1-pylib'
-if PY.exists():
+if sys.platform.startswith('linux') and PY.exists():
     sys.path.append(str(PY))
 import duckdb
 import pandas as pd
@@ -28,6 +29,41 @@ S1 = ROOT / 'build' / 's1'
 TABLES = ('sides', 'series', 'deaths', 'transits', 'splits')
 KEYS = {'game', 'side', 'round', 'map', 'team', 'opp', 'source', 'run', 'ended', 'id', 'R', 'rounds', 'cells'}
 COHORTS = ['top10', 'r11_30', 'r31_50', 'us']
+NORM_GAMES = int(os.environ.get('S1_NORM_GAMES', '1500'))   # field sample per map for the medians / means / SDs
+# derived per side-round columns (cumulative ratios up to the round); added to series, normalised like the rest
+DERIVED_LIST = [
+    ('pearls_per_dt', 'c_eats / nullif(c_dragon_turns, 0)'),
+    ('bed_pearls_per_dt', 'c_eats_bed / nullif(c_dragon_turns, 0)'),
+    ('corpse_pearl_share', '(c_eats - c_eats_bed) / nullif(c_eats, 0)'),
+    ('steps_per_pearl', 'c_steps / nullif(c_eats, 0)'),
+    ('bed_capture', 'c_eats_bed / nullif(c_bed_spawns, 0)'),
+    ('births_per_dt', 'c_splits / nullif(c_dragon_turns, 0)'),
+    ('deaths_per1k', '1000 * c_deaths / nullif(c_dragon_turns, 0)'),
+    ('own_goals_per1k', '1000 * c_own_goals / nullif(c_dragon_turns, 0)'),
+    ('own_goal_share', 'c_own_goals / nullif(c_deaths, 0)'),
+    ('transits_per_dt', 'c_transits / nullif(c_dragon_turns, 0)'),
+    ('transit_died3_share', 'c_transit_died3 / nullif(c_transits, 0)'),
+    ('transit_blind_share', 'c_transit_blind / nullif(c_transits, 0)'),
+    ('transit_double_share', 'c_transit_double / nullif(c_transits, 0)'),
+    ('rays_per_dt', 'c_rays / nullif(c_dragon_turns, 0)'),
+    ('sonar_recv_per_dt', 'c_sonar_recv / nullif(c_dragon_turns, 0)'),
+    ('idle_share', 'c_idle / nullif(c_dragon_turns, 0)'),
+    ('turnaround_share', 'c_turnaround / nullif(c_moves, 0)'),
+    ('units_share', 'units / nullif(units + opp_units, 0)'),
+    ('total_share', 'total / nullif(total + opp_total, 0)'),
+    ('pearls_share', 'c_eats / nullif(c_eats + opp_c_eats, 0)'),
+    ('material_gap_rel', '(total - opp_total) / nullif(greatest(total, opp_total), 0)'),
+]
+
+
+def derived_sql(con, view):
+    """derived columns; a cumulative event column absent from every part means zero events (substituted by 0)"""
+    have = set(con.execute(f'describe {view}').df().column_name)
+    out = []
+    for n, e in DERIVED_LIST:
+        e2 = re.sub(r'\b(c_[a-z0-9_]+|opp_[a-z0-9_]+)\b', lambda m: m.group(1) if m.group(1) in have else '0', e)
+        out.append(f'{e2} as "{n}"')
+    return ', '.join(out)
 pd.set_option('display.width', 250)
 pd.set_option('display.max_columns', 60)
 pd.set_option('display.max_rows', 400)
@@ -50,21 +86,60 @@ def q(c):
     return '"' + c.replace('"', '""') + '"'
 
 
+def _int(x):
+    try:
+        return int(x)
+    except ValueError:
+        return 0
+
+
 def ensure_norms(con, force=False):
     """per map x round field medians of every numeric series column, and per map medians of every sides column"""
     parts = sorted(p.name for p in (S1 / 'corpus' / 'sides').glob('part-*.parquet'))
     stamp = S1 / 'corpus' / 'norms.stamp'
     fs, fd = S1 / 'corpus' / 'norm_series.parquet', S1 / 'corpus' / 'norm_sides.parquet'
-    key = f'{len(parts)}:{parts[-1] if parts else ""}'
-    if not force and fs.exists() and fd.exists() and stamp.exists() and stamp.read_text() == key:
+    key = str(len(parts))
+    # rebuilt when forced (q.py norms) or when the store has grown by more than 50 % since the last build
+    if not force and fs.exists() and fd.exists() and stamp.exists() and (os.environ.get('S1_FREEZE') or len(parts) <= 1.5 * _int(stamp.read_text())):
         return
     t0 = time.time()
-    cols = numeric_cols(con, 'c_series_raw')
-    aggs = ', '.join(f'median({q(c)}) as {q(c)}' for c in cols)
-    con.execute(f"copy (select map, round, count(*) as n_field, {aggs} from c_series_raw group by map, round) to '{fs}' (format parquet)")
-    cols = numeric_cols(con, 'c_sides_raw')
-    aggs = ', '.join(f'median({q(c)}) as {q(c)}' for c in cols)
-    con.execute(f"copy (select map, count(*) as n_field, {aggs} from c_sides_raw group by map) to '{fd}' (format parquet)")
+    # exact medians / means / SDs over a fixed hash sample of up to NORM_GAMES games per map (both sides), one map and a
+    # batch of columns at a time; per-map results are cached so an interrupted rebuild resumes
+    maps = [r[0] for r in con.execute("select distinct map from c_sides_raw").fetchall()]
+    tmp = S1 / 'corpus' / 'norms_parts'
+    tmp.mkdir(exist_ok=True)
+    ck = tmp / 'current.key'          # an interrupted rebuild keeps its key, so the cached maps stay valid
+    if ck.exists():
+        key = ck.read_text()
+    else:
+        ck.write_text(key)
+    budget = float(os.environ.get('S1_NORM_BUDGET', '1e9'))
+    for view, keys, out in (('c_series_b', ['map', 'round'], fs), ('c_sides_raw', ['map'], fd)):
+        cols = numeric_cols(con, view)
+        frames = []
+        for m in maps:
+            pf = tmp / f'{view}-{m.replace(" ", "_")}-{key}.parquet'
+            if pf.exists():
+                frames.append(pd.read_parquet(pf))
+                continue
+            if time.time() - t0 > budget:
+                raise SystemExit(f'[norms: budget reached at {view} {m}; re-run to continue]')
+            sample = (f"game in (select game from c_sides_raw where map = '{m}' group by game "
+                      f"order by hash(game) limit {NORM_GAMES})")
+            parts_m = []
+            for i in range(0, len(cols), 16):
+                aggs = ', '.join(f'median({q(c)}) as {q(c)}, avg({q(c)}) as {q("mu:" + c)}, stddev_samp({q(c)}) as {q("sd:" + c)}'
+                                 for c in cols[i:i + 16])
+                parts_m.append(con.execute(f"select {', '.join(keys)}, count(*) as n_field, {aggs} from {view} "
+                                           f"where map = ? and {sample} group by all order by all", [m]).df().set_index(keys))
+            d = parts_m[0]
+            for x in parts_m[1:]:
+                d = d.join(x.drop(columns='n_field'))
+            d = d.reset_index()
+            d.to_parquet(pf, index=False)
+            frames.append(d)
+        pd.concat(frames).to_parquet(out, index=False)
+    ck.rename(tmp / f'done-{key}.key')
     stamp.write_text(key)
     print(f'[norms rebuilt in {time.time() - t0:.0f}s]', file=sys.stderr)
 
@@ -72,6 +147,12 @@ def ensure_norms(con, force=False):
 def connect(db='corpus', norms=True):
     con = duckdb.connect()
     con.execute("set threads to 4")
+    (S1 / 'tmp').mkdir(parents=True, exist_ok=True)
+    con.execute(f"set memory_limit = '{os.environ.get('S1_MEM', '1500MB')}'")
+    # spill directory: the Cowork VM cannot delete inside the connected folder, so it spills to its own /tmp
+    tmpdir = '/tmp/s1-duckdb' if sys.platform.startswith('linux') and str(ROOT).startswith('/sessions') else str(S1 / 'tmp')
+    con.execute(f"set temp_directory = '{tmpdir}'")
+    con.execute("set preserve_insertion_order = false")
     have = {}
     for store, pre in (('corpus', 'c_'), ('local', 'l_')):
         have[store] = _has(store, 'sides')
@@ -101,9 +182,15 @@ def connect(db='corpus', norms=True):
     for store, pre in (('corpus', 'c_'), ('local', 'l_')):
         if not have[store]:
             continue
-        con.execute(f"""create view {pre}key as select game, side, cohort, crank, name, won, result, reason, map_class, opp_cohort, opp_name, run
-                        from {pre}sides""")
-        con.execute(f"create view {pre}series as select s.*, k.* exclude (game, side) from {pre}series_raw s join {pre}key k using (game, side)")
+        sa = 'started_at' if store == 'corpus' else 'cast(null as timestamptz) as started_at'
+        con.execute(f"""create view {pre}key as select game, side, cohort, crank, name, won, result, reason, map_class, opp_cohort, opp_name, run,
+                        {sa} from {pre}sides""")
+        # a missing cumulative event value means the game never had that event: zero, not unknown
+        cz = [c for c in con.execute(f'describe {pre}series_raw').df().column_name if c.startswith(('c_', 'opp_c_'))]
+        rep = ', '.join(f'coalesce({q(c)}, 0) as {q(c)}' for c in cz)
+        con.execute(f"create view {pre}series_z0 as select * replace ({rep}) from {pre}series_raw")
+        con.execute(f"create view {pre}series_b as select *, {derived_sql(con, pre + 'series_z0')} from {pre}series_z0")
+        con.execute(f"create view {pre}series as select s.*, k.* exclude (game, side) from {pre}series_b s join {pre}key k using (game, side)")
         for t in ('deaths', 'transits', 'splits'):
             if _has(store, t):
                 con.execute(f"create view {pre}{t} as select x.*, k.* exclude (game, side) from {pre}{t}_raw x join {pre}key k using (game, side)")
@@ -113,14 +200,25 @@ def connect(db='corpus', norms=True):
         con.execute(f"create view norm_series as select * from '{fs}'")
         con.execute(f"create view norm_sides as select * from '{fd}'")
         ncols = set(numeric_cols(con, 'norm_series'))
+        zcols = {c[3:] for c in ncols if c.startswith('mu:')}
         for pre in ('c_', 'l_'):
             if not con.execute(f"select count(*) from information_schema.tables where table_name = '{pre}series'").fetchone()[0]:
                 continue
-            cols = [c for c in numeric_cols(con, f'{pre}series') if c in ncols and c != 'n_field']
+            cols = [c for c in numeric_cols(con, f'{pre}series') if c in ncols and c != 'n_field' and ':' not in c]
             sel = ', '.join(f's.{q(c)} / nullif(n.{q(c)}, 0) as {q(c)}' for c in cols)
             con.execute(f"create view {pre}series_n as select s.game, s.side, s.round, s.map, s.team, s.ended, s.cohort, s.crank, s.name, s.won, "
-                        f"s.run, n.n_field, {sel} from {pre}series s left join norm_series n using (map, round)")
+                        f"s.run, s.started_at, n.n_field, {sel} from {pre}series s left join norm_series n using (map, round)")
+            zc = [c for c in numeric_cols(con, f'{pre}series') if c in zcols]
+            sel = ', '.join(f'(s.{q(c)} - n.{q("mu:" + c)}) / nullif(n.{q("sd:" + c)}, 0) as {q(c)}' for c in zc)
+            if zc:
+                con.execute(f"create view {pre}series_z as select s.game, s.side, s.round, s.map, s.team, s.ended, s.cohort, s.crank, s.name, "
+                            f"s.won, s.run, s.started_at, n.n_field, {sel} from {pre}series s left join norm_series n using (map, round)")
             scols = [c for c in numeric_cols(con, f'{pre}sides') if c in set(numeric_cols(con, 'norm_sides')) and c != 'n_field']
+            zs = [c for c in scols if 'mu:' + c in set(numeric_cols(con, 'norm_sides'))]
+            if zs:
+                sel = ', '.join(f'(s.{q(c)} - n.{q("mu:" + c)}) / nullif(n.{q("sd:" + c)}, 0) as {q(c)}' for c in zs)
+                con.execute(f"create view {pre}sides_z as select s.game, s.side, s.map, s.team, s.cohort, s.crank, s.name, s.won, s.run, "
+                            f"n.n_field, {sel} from {pre}sides s left join norm_sides n using (map)")
             sel = ', '.join(f's.{q(c)} / nullif(n.{q(c)}, 0) as {q(c)}' for c in scols)
             con.execute(f"create view {pre}sides_n as select s.game, s.side, s.map, s.team, s.cohort, s.crank, s.name, s.won, s.run, "
                         f"n.n_field, {sel} from {pre}sides s left join norm_sides n using (map)")
@@ -131,7 +229,7 @@ def connect(db='corpus', norms=True):
             con.execute(f"create view {pre}series_d as select *, {sel} from {pre}series where round % 5 = 0 "
                         f"window w as (partition by game, side order by round)")
     pre = 'c_' if db == 'corpus' else 'l_'
-    for v in ('sides', 'series', 'series_n', 'series_d', 'sides_n', 'deaths', 'transits', 'splits'):
+    for v in ('sides', 'series', 'series_n', 'series_z', 'series_d', 'sides_n', 'sides_z', 'deaths', 'transits', 'splits'):
         if con.execute(f"select count(*) from information_schema.tables where table_name = '{pre}{v}'").fetchone()[0]:
             con.execute(f"create view {v} as select * from {pre}{v}")
     return con

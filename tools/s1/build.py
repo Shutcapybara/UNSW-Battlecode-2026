@@ -16,8 +16,8 @@ from pathlib import Path
 
 ROOT = Path.cwd()
 sys.path.insert(0, str(ROOT))
-for p in (ROOT / 'build' / 's1-pylib',):
-    if p.exists() and str(p) not in sys.path:
+for p in (ROOT / 'build' / 's1-pylib',):   # Linux (Cowork VM) only: packages installed with pip --target
+    if sys.platform.startswith('linux') and p.exists() and str(p) not in sys.path:
         sys.path.append(str(p))
 import numpy as np
 import pandas as pd
@@ -26,6 +26,15 @@ CORPUS = ROOT / 'public_replays' / 'corpus'
 OUT = ROOT / 'build' / 's1'
 US = 7
 TABLES = ('sides', 'series', 'deaths', 'transits', 'splits')
+# event columns always present in series (cumulated as c_<name>), so every part has the same schema
+XEV = ('idle', 'turnaround', 'steps', 'transits', 'transit_blind', 'transit_double', 'transit_contested', 'transit_died3',
+       'transit_died_same', 'sonar_recv', 'sonar_recv_ally', 'sonar_recv_enemy', 'sonar_recv_self', 'own_goals',
+       'deaths_post_transit', 'deaths_crowd', 'deaths_enclosed', 'deaths_newborn', 'deaths_near_portal')
+FEV = ('eats', 'eats_bed', 'eats_ally_corpse', 'eats_enemy_corpse', 'eats_unknown', 'bed_spawns', 'splits', 'moves', 'sprints',
+       'sprint_cost', 'suicides', 'no_action', 'tle', 'deaths', 'death_wall', 'death_self', 'death_ally_body', 'death_enemy_body',
+       'death_h2h_enemy', 'death_h2h_ally', 'death_suicide', 'death_invalid', 'length_lost', 'kills', 'kill_length', 'rays',
+       'rays_refracted', 'rays_N', 'rays_E', 'rays_S', 'rays_W', 'ray_kelp', 'ray_ally', 'ray_ally_head', 'ray_enemy',
+       'ray_enemy_head', 'ray_empty', 'dragon_turns')
 STR_COLS = {'game', 'map', 'side', 'team', 'opp', 'bot', 'opponent', 'cls', 'cause', 'map_class', 'map_hash', 'reason',
             'result', 'entry', 'exit', 'pair', 'beds_source', 'death_cause', 'killer_team', 'source', 'run', 'cohort',
             'opp_cohort', 'toolkit', 'seed', 'file', 'decoded_winner', 'path', 'error'}
@@ -154,7 +163,9 @@ def process(args):
     rounds_all = X.stored_rounds()
     for t in 'AB':
         cum = {k: np.cumsum([ser[(t, r)].get(k, 0.0) for r in range(R + 1)]) for k in sorted(ev_keys)}
-        xe = {k: np.cumsum(v) for k, v in x['events'][t].items()}
+        xe = {k: np.cumsum(x['events'][t][k]) if k in x['events'][t] else np.zeros(R + 1) for k in set(XEV) | set(x['events'][t])}
+        for k in FEV:
+            cum.setdefault(k, np.zeros(R + 1))
         xc = x['cols'][t]
         last_s = None
         for r in rounds_all:
@@ -237,18 +248,19 @@ def clean_orphans(store):
     """drop parts whose batch never committed (no sides part with the same stamp) and stale temp files"""
     ok = {f.name for f in (store / 'sides').glob('part-*.parquet')}
     trash = store / '_orphans'     # moved, not deleted (the Cowork VM cannot delete without a prompt)
+    old = lambda f: time.time() - f.stat().st_mtime > 1800   # never touch a batch another host may still be writing
     for t in TABLES:
-        bad = list((store / t).glob('.part-*.tmp'))
+        bad = [f for f in (store / t).glob('.part-*.tmp') if old(f)]
         if t != 'sides':
-            bad += [f for f in (store / t).glob('part-*.parquet') if f.name not in ok]
+            bad += [f for f in (store / t).glob('part-*.parquet') if f.name not in ok and old(f)]
         for f in bad:
             trash.mkdir(exist_ok=True)
             f.rename(trash / f'{t}-{f.name}')
 
 
-def done_games(store):
+def done_games(store, clean=True):
     import pyarrow.parquet as pq
-    if (store / 'sides').exists():
+    if clean and (store / 'sides').exists():
         clean_orphans(store)
     done = set()
     for f in (store / 'sides').glob('part-*.parquet'):
@@ -263,7 +275,7 @@ def run_batch(store, tasks, jobs, budget, flush_every=200):
     import multiprocessing as mp
     t0 = time.time()
     batch, n_ok, n_err = [], 0, 0
-    ctx = mp.get_context('fork')
+    ctx = mp.get_context('fork' if sys.platform.startswith('linux') else 'spawn')
     with ctx.Pool(jobs, maxtasksperchild=50) as pool:
         it = iter(tasks)
         pending = collections.deque()
@@ -329,7 +341,7 @@ def cmd_status(a):
     for s in ('corpus', 'local'):
         store = OUT / s
         if store.exists():
-            d = done_games(store)
+            d = done_games(store, clean=False)
             parts = {t: len(list((store / t).glob('part-*.parquet'))) for t in TABLES}
             print(s, 'games done', len(d), 'parts', parts)
 
