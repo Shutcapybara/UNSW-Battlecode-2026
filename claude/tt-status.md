@@ -227,3 +227,22 @@ Reading: r250 is too early for Ares. Stockfish starts at r250 because its feed i
 Ares's feeder is all-or-nothing within 4 cells of the crown, so copying Stockfish's start round without its rate
 over-converts. What transfers is the rate schedule, not a start round. On this (weak, eliminable) panel the order is
 monotone: the earlier the swarm is dissolved, the more elimination wins are lost.
+
+## Head-to-heads — does earlier conversion win when elimination is off the table? (`game_stats/runs/tt-h2h-*.json`)
+
+Ten live maps, both seats × 2 seeds, the same 40 fixed fixtures as HB-1 (`tools/hb1/h2h.py`):
+
+| match | result | how |
+|---|---|---|
+| hb1-12 vs hb1-04 (Heartbreaker mimic) | **33/40** | W: 19 on length, 14 by elimination; L: 6 by elimination, 1 on length |
+| tt-01 vs hb1-04 | 29/40 | W: 19 on length, 10 by elimination; L: 7 by elimination, 4 on length |
+| tt-01 vs hb1-12 | 19/40 | 9–9 by elimination, 10–12 on length |
+
+Paired vs the mimic: tt-01 turns 4 of hb1-12's wins into losses and gains none. The mimic, like Heartbreaker, never
+converts, so hb1-12's late conversion already wins 19 of 20 round-limit games against it; converting earlier only
+gives up elimination wins. Direct, early vs late conversion is even.
+
+Reading: no local opponent converts early, so no local test can show whether matching the top teams' timing matters
+against teams that do. That needs games against them, or a faithful stand-in — and Q1 says a local-view mimic of
+either would copy ~0.74–0.76 of their commands (Heartbreaker 0.83 gave a mimic at half strength), too weak to stand in.
+Also a side result worth keeping: hb1-12 beats the Heartbreaker mimic 33/40.
