@@ -115,3 +115,39 @@ switches by round number, typical of hand-written logic). Child size is the most
 though a depth-4 tree gets only 0.871). Direction is as hard as cheji bt's (0.771): for both top teams about a
 quarter of moves are not determined by the local view (Heartbreaker: a sixth). Sonar differs: single-direction ray
 masks (1, 2, 4, 8) appear, which neither other team emits — directed signalling.
+
+## Headline so far — the top teams' edge is the endgame conversion (`tools/tt/concentration.py`, `game_stats/runs/tt-concentration.json`)
+
+Both top teams deliberately kill their own small dragons (~1 % of turns): cheji bt by an invalid command
+(`noValidAction`), Stockfish by stepping backward into its own neck (`hitSelf`, 17,317 of 1.92 M turns in a 194-game
+sample, 100 % fatal, 65 % at length 2, 56 % with an exit available). Heartbreaker never does.
+
+Medians over running games, subject's dragons / longest / total length:
+
+| round | Heartbreaker | cheji bt | Stockfish | Ares V06 (z1 panel) | hb1-12 (z1 panel) |
+|---:|---|---|---|---|---|
+| 100 | 19 / 6 / 53 | 22 / 4 / 52 | 24 / 4 / 57 | 20 / 4 / 47 | 24 / 4 / 57 |
+| 200 | 25 / 9 / 78 | 40 / 4 / 95 | 40 / 5 / 100 | 29 / 4 / 69 | 36 / 4 / 87 |
+| 300 | 28 / 10 / 98 | 51 / 5 / 123 | 35 / 15 / 100 | 30 / 5.5 / 75 | 45 / 6 / 112 |
+| 400 | 27 / 11 / 109 | 8 / 25 / 86 | 21 / 32 / 105 | 26 / 9 / 88 | 45 / 9 / 133 |
+| 490 | 27 / 13 / 124 | 4 / 40 / 77 | 11.5 / 46 / 100 | 5 / 25 / 63 | 8 / 28.5 / 91 |
+
+| | Heartbreaker | cheji bt | Stockfish | Ares V06 | hb1-12 |
+|---|---:|---:|---:|---:|---:|
+| round-limit win rate | 0.26 | 0.75 | 0.72 | 0.69 | 0.78 |
+| round-limit losses with a material lead | 0.77 | 0.32 | 0.43 | 0.33 | 0.57 |
+| longest / total at r490 | 0.10 | 0.46 | 0.37 | 0.39 | 0.30 |
+
+(Our bots' rows are vs the zoo panel, the teams' vs the live ladder — timing comparable, levels not.)
+
+Reading: all run the same swarm economy to ~r200. cheji bt then dissolves its swarm between r300 and r400 (51 → 8
+dragons, longest 5 → 25); Stockfish starts ~r250 (its gate tree has round thresholds at ~250 and ~350) and ends
+longest (46). Heartbreaker never converts (26 % at the round limit). Ares has the same tactic in code — a feeder
+within 4 cells of the crown steps backward into its own neck (`policy.hpp`, why 'f') — but feeders activate only from
+`feed_from = 500 − feed_base − 0.6·(W+H)` ≈ r400–r430, ~100–150 rounds after the top teams; it ends at longest 25.
+hb1-12 (Heartbreaker's steering on Ares) builds the largest swarm (133 total at r400) and converts on the same late
+schedule: 57 % of its round-limit losses are with a material lead — the late-economy dip that kept it at hold.
+
+Experiment (one constant each, on hb1-12): `tt-01-feed300` (`feed_base` 40 → 140, feeding from ~r300, cheji bt's
+timing) and `tt-02-feed250` (190, ~r250, Stockfish's). Note the scorecard's economy mean uses pearls to r250, so
+these can move win share, not the economy gate.
