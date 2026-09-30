@@ -275,6 +275,121 @@ marks a reason not stated by the source.
 | **A-23** | **Learned and imitation components** | | | | | |
 | [S-55](taxonomy/S-55.md) | Offline fitted-Q early game (tools/rl_earlygame) | ○ tools only (Python), no bot | none recorded | never measured | Not stated; never panelled, no consumer before Ares move |  |
 
-## 5–6
+## 5. Cross-reference matrices
 
-In progress (T-1 initial build).
+### 5a. Problems × solutions
+
+| Problem | Solutions tried (verdict) |
+|---|---|
+| [P-01](taxonomy/P-01.md) | [S-01](taxonomy/S-01.md) R · [S-02](taxonomy/S-02.md) R · [S-03](taxonomy/S-03.md) R · [S-04](taxonomy/S-04.md) R · [S-05](taxonomy/S-05.md) LH · [S-06](taxonomy/S-06.md) H · [S-07](taxonomy/S-07.md) R · [S-08](taxonomy/S-08.md) R · [S-09](taxonomy/S-09.md) R · [S-60](taxonomy/S-60.md) R |
+| [P-02](taxonomy/P-02.md) | [S-10](taxonomy/S-10.md) H · [S-11](taxonomy/S-11.md) R · [S-12](taxonomy/S-12.md) R · [S-13](taxonomy/S-13.md) R · [S-14](taxonomy/S-14.md) LH |
+| [P-03](taxonomy/P-03.md) | [S-14](taxonomy/S-14.md) LH · [S-15](taxonomy/S-15.md) R · [S-16](taxonomy/S-16.md) H · [S-17](taxonomy/S-17.md) R · [S-18](taxonomy/S-18.md) R · [S-19](taxonomy/S-19.md) A |
+| [P-04](taxonomy/P-04.md) | [S-17](taxonomy/S-17.md) R · [S-21](taxonomy/S-21.md) R · [S-22](taxonomy/S-22.md) R · [S-23](taxonomy/S-23.md) H · [S-24](taxonomy/S-24.md) R |
+| [P-05](taxonomy/P-05.md) | [S-02](taxonomy/S-02.md) R · [S-59](taxonomy/S-59.md) D |
+| [P-06](taxonomy/P-06.md) | [S-06](taxonomy/S-06.md) H · [S-11](taxonomy/S-11.md) R · [S-24](taxonomy/S-24.md) R |
+| [P-07](taxonomy/P-07.md) | [S-09](taxonomy/S-09.md) R · [S-49](taxonomy/S-49.md) U |
+| [P-08](taxonomy/P-08.md) | [S-31](taxonomy/S-31.md) A · [S-32](taxonomy/S-32.md) H |
+| [P-09](taxonomy/P-09.md) | [S-26](taxonomy/S-26.md) R · [S-27](taxonomy/S-27.md) R · [S-28](taxonomy/S-28.md) LH |
+| [P-10](taxonomy/P-10.md) | [S-01](taxonomy/S-01.md) R · [S-19](taxonomy/S-19.md) A · [S-20](taxonomy/S-20.md) D · [S-25](taxonomy/S-25.md) R · [S-26](taxonomy/S-26.md) R · [S-27](taxonomy/S-27.md) R · [S-29](taxonomy/S-29.md) H · [S-30](taxonomy/S-30.md) R · [S-31](taxonomy/S-31.md) A · [S-32](taxonomy/S-32.md) H · [S-36](taxonomy/S-36.md) R · [S-38](taxonomy/S-38.md) R · [S-58](taxonomy/S-58.md) R · [S-61](taxonomy/S-61.md) H · [S-62](taxonomy/S-62.md) H |
+| [P-11](taxonomy/P-11.md) | [S-06](taxonomy/S-06.md) H · [S-24](taxonomy/S-24.md) R · [S-35](taxonomy/S-35.md) R · [S-36](taxonomy/S-36.md) R · [S-56](taxonomy/S-56.md) R |
+| [P-12](taxonomy/P-12.md) | [S-38](taxonomy/S-38.md) R · [S-39](taxonomy/S-39.md) U · [S-40](taxonomy/S-40.md) N · [S-41](taxonomy/S-41.md) D · [S-42](taxonomy/S-42.md) R · [S-60](taxonomy/S-60.md) R |
+| [P-13](taxonomy/P-13.md) | [S-24](taxonomy/S-24.md) R · [S-43](taxonomy/S-43.md) U · [S-44](taxonomy/S-44.md) R · [S-56](taxonomy/S-56.md) R |
+| [P-14](taxonomy/P-14.md) | [S-20](taxonomy/S-20.md) D · [S-45](taxonomy/S-45.md) Op · [S-46](taxonomy/S-46.md) LH |
+| [P-15](taxonomy/P-15.md) | [S-46](taxonomy/S-46.md) LH · [S-49](taxonomy/S-49.md) U · [S-52](taxonomy/S-52.md) O · [S-53](taxonomy/S-53.md) R |
+| [P-16](taxonomy/P-16.md) | [S-47](taxonomy/S-47.md) H · [S-48](taxonomy/S-48.md) O |
+| [P-17](taxonomy/P-17.md) | [S-33](taxonomy/S-33.md) C · [S-34](taxonomy/S-34.md) A · [S-54](taxonomy/S-54.md) R |
+| [P-18](taxonomy/P-18.md) | [S-57](taxonomy/S-57.md) R |
+| [P-19](taxonomy/P-19.md) | [S-34](taxonomy/S-34.md) A · [S-50](taxonomy/S-50.md) U |
+| [P-20](taxonomy/P-20.md) | [S-48](taxonomy/S-48.md) O · [S-49](taxonomy/S-49.md) U · [S-51](taxonomy/S-51.md) U |
+| [P-21](taxonomy/P-21.md) | [S-49](taxonomy/S-49.md) U · [S-50](taxonomy/S-50.md) U |
+| [P-22](taxonomy/P-22.md) | [S-51](taxonomy/S-51.md) U · [S-52](taxonomy/S-52.md) O |
+| [P-23](taxonomy/P-23.md) | **none** |
+| [P-24](taxonomy/P-24.md) | [S-27](taxonomy/S-27.md) R |
+| [P-25](taxonomy/P-25.md) | [S-37](taxonomy/S-37.md) A |
+
+Cells with no direct attempt: **[P-06](taxonomy/P-06.md) own-body** (it is the guard that blocked r3-03 at +11 % and
+esquie-04 at +24 %, but no mechanism targets it), **[P-23](taxonomy/P-23.md)** and **[P-24](taxonomy/P-24.md)**.
+[P-12](taxonomy/P-12.md) fight cost has only single-knob threat weights on Ares; its two corpus-derived rules
+([S-40](taxonomy/S-40.md)) were never built. [P-16](taxonomy/P-16.md) seat asymmetry and [P-18](taxonomy/P-18.md)
+oscillation have no attempt on Ares beyond one hysteresis knob. [P-24](taxonomy/P-24.md) is listed against
+[S-27](taxonomy/S-27.md) only as an adjacent mechanism.
+
+### 5b. Solutions × lineages (summary; full table in [matrices.md](taxonomy/matrices.md))
+
+Of 62 solution families, 39 have at least one variant measured on the Ares line (31 in the V06-derived lanes, 16 in the
+teammates' V01–V33), 29 on Python hosts, 15 on model or older lines, 9 on the cx chassis; 3 are infrastructure and 3 were
+never built into a bot ([S-40](taxonomy/S-40.md), [S-41](taxonomy/S-41.md), [S-55](taxonomy/S-55.md)). **Seventeen were never measured on the production host:** [S-07](taxonomy/S-07.md) chassis enclosure probe,
+[S-08](taxonomy/S-08.md) trapped-split grafts, [S-11](taxonomy/S-11.md) birth certificate, [S-16](taxonomy/S-16.md)
+blind-exit memory (present in Ares via the Tyr port as `blind_*`, never varied), [S-19](taxonomy/S-19.md) dive caps and
+phase-scheduled portals (Ares carries `dive_value 3` from Tyr's override, never varied), [S-24](taxonomy/S-24.md) S1
+dissolve, [S-33](taxonomy/S-33.md) CPU caps, [S-35](taxonomy/S-35.md) pace controller, [S-42](taxonomy/S-42.md)
+aggression refits, [S-47](taxonomy/S-47.md) frame mirror, [S-53](taxonomy/S-53.md), [S-54](taxonomy/S-54.md), [S-56](taxonomy/S-56.md) learned
+components, [S-58](taxonomy/S-58.md) router, [S-59](taxonomy/S-59.md) doom memory, [S-60](taxonomy/S-60.md) look-ahead,
+[S-61](taxonomy/S-61.md) roles at creation. The teammates' line (V07–V33) and the R lanes overlap on the enclosure
+problem only; their screens are 20 games against one opponent, the lanes' are 160–480-game paired panels.
+
+### 5c. Features × consumers (summary; full table in [matrices.md](taxonomy/matrices.md))
+
+Every feature has at least one consumer somewhere, but on the production line: 5 are computed and unread (echoes, atlas,
+DragonMem position fields, `last_exit_*`, `seen_count`), 4 exist only in off-line bots (dead-end peel, arrival maps,
+respawn-gap memory, EW food density), and 1 is switched off (portal transit memory). The analysis side feeds only the gate
+([A-27](taxonomy/A-27.md)); no analysis feature has reached a bot as a term or a switch except the leak ledger's reach
+definition (≤15 cells in 5 steps), which the teammates adopted in V13–V33 ([F-10](taxonomy/F-10.md)).
+
+### 5d. Map × mechanism (summary; 553 rows in [map-mechanism.md](taxonomy/map-mechanism.md))
+
+Base standing is Esquie's brick list for the lanes' base (V06 + late cap ×8, 32×16 terms off; z1 seeds 1+2).
+
+| Pool map | Win | econ_pct | Largest leak (len/1k) · worst tier-2 (pct) | Largest positive (Ares line) | Largest negative (Ares line) |
+|---|---:|---:|---|---|---|
+| Autarky | 0.750 | 0.657 | trapped 38.2 · wall 0.239 | ares-v32 2–0 vs V19 ([S-05](taxonomy/S-05.md); 20-game screen); ares-v33 4–2 in RR ([S-14](taxonomy/S-14.md)) | renoir-24 farm2 −0.15 econ~ ([S-09](taxonomy/S-09.md)) |
+| Default | 0.750 | 0.518 | portal 11.8 · ally-body 0.116 | sciel-03c +0.220 econ~ ([S-22](taxonomy/S-22.md)); sciel-03a +0.184 ([S-25](taxonomy/S-25.md)) | ares-v33 0–6 in RR ([S-14](taxonomy/S-14.md)); esquie-02 econ_pct −0.012 ([S-28](taxonomy/S-28.md)) |
+| Devil | 0.500 | 0.680 | trapped 68.8 · self 0.190 | none above noise on the pool; esquie-02 win 0.500→0.531 ([S-28](taxonomy/S-28.md)). Off-pool: renoir-07c devil_tr +1.03 ([S-26](taxonomy/S-26.md)) | renoir-23 shape terms off: econ~ −1.22, win 1.00→0.31 ([S-45](taxonomy/S-45.md)); renoir-01c −0.72 ([S-27](taxonomy/S-27.md)) |
+| Portals | 0.844 | 0.506 | trapped 81.9, portal 74.6 · h2h 0.056 | r3-02 exit-known: trapped 75.7→32.0, at pooled econ −0.120 ([S-15](taxonomy/S-15.md)); ares-v28 2–0 ([S-05](taxonomy/S-05.md)) | sciel-02a −0.045 econ~ ([S-18](taxonomy/S-18.md)); ares-v19 trapped 65.0→75.8 and esquie-04 81.9→87.5 ([S-03](taxonomy/S-03.md)) |
+| Prisoners Dilemma | 0.812 | 0.413 | trapped 45.6 · h2h 0.143 | renoir-23 shape terms off: econ~ +0.13, win 0.62→0.75 ([S-45](taxonomy/S-45.md)); lune-r1-07 wins 22→29 ([S-32](taxonomy/S-32.md)) | esquie-04 trapped 45.6→54.6 (+20 %) ([S-03](taxonomy/S-03.md)) |
+| Queen of Spades | 0.688 | 0.609 | trapped 35.4 · self 0.263 | renoir-07b unseen 8: +0.51 econ~ ([S-26](taxonomy/S-26.md)); ares-v33 6–0 ([S-14](taxonomy/S-14.md)) | esquie-04 trapped 35.4→40.5 (+14 %) ([S-03](taxonomy/S-03.md)) |
+| Schooltime | 0.688 | 0.790 | trapped 34.5 · ally-body 0.146 | renoir-25 crowdexplore +0.83 econ~ ([S-26](taxonomy/S-26.md)); sciel-03a +0.600 ([S-25](taxonomy/S-25.md)) | renoir-01c −0.41 econ~ ([S-27](taxonomy/S-27.md)); renoir-22 −0.38 ([S-26](taxonomy/S-26.md)); esquie-02 win −9 pp ([S-28](taxonomy/S-28.md)) |
+| Slithery Fight | 0.594 | 0.640 | trapped 101.3, newborn 73.6 · h2h 0.226 | esquie-04 trapped −19 %, newborn −28 % ([S-03](taxonomy/S-03.md)); ares-v33 5–1 ([S-14](taxonomy/S-14.md)) | r3-03 escape-early trapped 101.5→112.1 ([S-06](taxonomy/S-06.md)); lune-r1-07 p@250 −4 % ([S-32](taxonomy/S-32.md)) |
+| Trauma | 0.750 | 0.375 | trapped 14.0 · wall 0.353 | esquie-03b win +6 pp, seeds 1–3 ([S-28](taxonomy/S-28.md)); renoir-01c +0.14 econ~ ([S-27](taxonomy/S-27.md)) | esquie-04 newborn 4.3→12.0, ×3 ([S-03](taxonomy/S-03.md)); ares-v28 0–2 ([S-05](taxonomy/S-05.md)) |
+| Trophy | 0.719 | 0.594 | portal 13.2 · wall 0.177 | sciel-03c +0.248 econ~ ([S-22](taxonomy/S-22.md)); esquie-03b p@250 +0.14 ([S-28](taxonomy/S-28.md)); lune-r1-07 dragons@100 19.2→23.0 ([S-32](taxonomy/S-32.md)) | esquie-02 (gate-bug form) econ_pct 0.594→0.470, win 0.719→0.562 ([S-28](taxonomy/S-28.md)) |
+
+## 6. The opportunity space
+
+Derived from §5 and the stop reasons in §4, not asserted. Size = the problem's measured gap or the largest effect the line
+has shown; cost = what the decisive test needs (L ≈ one D-032 run on the desktop, ~25 min per 1,200 games; M = a new
+switch on Ares plus a run; H = new infrastructure). Lanes are the existing ones (R-index, 30 Sep).
+
+| # | Opportunity | Derived from | Size | Cost | Lane |
+|---|---|---|---|---|---|
+| 1 | Arrival-level deconfliction on Ares: target claims over sonar (Sciel's proposed sciel-05 packet) or a port of the router's greedy bed assignment and de-convergence | [P-04](taxonomy/P-04.md) × [S-23](taxonomy/S-23.md) empty on Ares; the ally head-on guard rejected every economy gain ≥ +0.05 (mean) measured on Ares: sciel-03a…04b +0.039…+0.105 econ (gen +6…+16 %), renoir-07a +0.110, V08 +0.188 | H | M | rc (guided; its first item, Sciel-03b, is spent) |
+| 2 | Run the re-scores nobody ran: those D-032 mandated (renoir-17a/17d/18a/18c, lune-r1-07; 18a has only a seed-2 repeat, pooled +0.015) and the Monoco ones the ledger queued under it (ra-03 +0.021, 2 seeds; ra-05); pool the threat-weight family (four settings — renoir-17a/17c/17d, ra-11 — all Δecon +0.002…+0.019) | [S-30](taxonomy/S-30.md), [S-38](taxonomy/S-38.md), [S-62](taxonomy/S-62.md), [S-32](taxonomy/S-32.md) stopped on the +0.05 bar that D-032 replaced | M | L | R-4b / director |
+| 3 | Panel-measure the live teammate bots V28, V32, V33 under D-032 on both panels, with and without the 32×16 terms (V33 is live and still carries them; they also fire on Portals and Dilemma) | [S-05](taxonomy/S-05.md), [S-14](taxonomy/S-14.md) screened on 20 games vs one opponent; [S-45](taxonomy/S-45.md); L24 wave 2 unread | M–H | L | M-1 (Esquie) or R-3 |
+| 4 | Execute the D-029.4 transfer (dead-end peel and tree values, arrival maps) plus cx-b02's respawn-gap memory as Ares switches | [F-24](taxonomy/F-24.md), [F-25](taxonomy/F-25.md), [F-05](taxonomy/F-05.md) live only on the chassis; targets the mill ([P-01](taxonomy/P-01.md), Slithery 101 len/1k) and starved openings ([P-09](taxonomy/P-09.md)) | H | M | R-3 successor / rc |
+| 5 | Finish the structure-gated forms: esquie `min_age` 16–18; V19 split gated on the fast-bed + churn signature; bed waiting keyed on structure (flat waits won QoS +0.16 and Trauma +0.14, lost Devil −0.72) — issue R-6 | [S-28](taxonomy/S-28.md) local hold, [S-03](taxonomy/S-03.md), [S-27](taxonomy/S-27.md); R-6 never issued | M | L | M-1; R-6 |
+| 6 | Put parameter liveness into the gate: refuse to score a variant whose flag-on build shows zero divergence from its parent in the golden replay, and make every lane runner purge the header-only wasm cache (cx `arena.py` already does) | [P-19](taxonomy/P-19.md): ra-04 measured a dead parameter (Δ 0), ra-05/09/10 committed switched off, r3-03 v1 inert for 160 games, V09 counts a dead `search_depth1` | protects every lane | L | R-4b |
+| 7 | Seat-B analysis on Ares, then the frame mirror as a C++ wrapper | [P-16](taxonomy/P-16.md) × Ares empty; lune-r1-07's gain sits in seat B (dragons +0.106, length +0.101; seat A retention flat); jet: seat A 32/48 on symmetric maps; [S-47](taxonomy/S-47.md) Python only | M | L–M | S-1 (corpus), then rb/rc |
+| 8 | Decisive tests for four open contradictions: C-05 (deaths vs economy, one joint per-map regression), C-06 (r3-03 seed 3 against a units-matched control), C-10 (base against itself over 5 seeds for the null spread), C-01 (V05 vs V06 under both scorecards) | [contradictions.md](taxonomy/contradictions.md) §A | frames all of P-01…P-11 | L | S-1 / K-1; R-3; R-4b |
+| 9 | Synthetic generalisation maps with dead ends and portal mouths (the gen panel has 0/20 dead ends and 3/20 portal mouths, so L14, L24 and every portal mechanism cannot be tested off-pool) | [P-15](taxonomy/P-15.md), [F-48](taxonomy/F-48.md); K-1 Parts 3–4 not started | M | M | K-1 |
+| 10 | Build the two local fight rules (refuse contact > 6 cells from a bed; converge-or-refuse) | [S-40](taxonomy/S-40.md) never built; [P-12](taxonomy/P-12.md): 11.6 own deaths and 32.9 length per fight vs band 6.8 / 18.9 | M (fights do not decide non-top-ten games, C2) | L–M | rb / rc |
+| 11 | One learned decision in C++ (split now? enter this portal?) trained on the corpus and exported as a header | every learned attempt ([S-53](taxonomy/S-53.md)–[S-56](taxonomy/S-56.md)) was whole-policy Python and stopped on CPU, host transfer or the teacher ceiling — none of which binds a single C++ decision | unknown | H | RL-1 / SF-1 |
+| 12 | Vary momentum and add modes on Ares | [A-24](taxonomy/A-24.md) never built; `momentum_*` never varied on Ares (L13); Sciel-02a's two-state steering moved its row | M | M | SF-1 |
+| 13 | Key the search budget on observed local sparsity instead of round 40 | [S-32](taxonomy/S-32.md) hold at a round threshold; R-1's own recommendation; L02 volatility keying never measured | M | L–M | SF-1 / R-5 |
+| 14 | Crown and feeding on Ares: first the corpus test (does r500 margin predict the win?), then vary `crown_*`/`feed_*`, none of which any lane has moved | [A-14](taxonomy/A-14.md) never varied; [P-13](taxonomy/P-13.md); L15 test not delivered | L–M | L | S-1 |
+| 15 | Measure body suppression of bed spawns on our own games | [P-24](taxonomy/P-24.md) no attempt; one public game: 2,088 of 6,902 renewals blocked | unknown | L | S-1 |
+
+Lines that stopped for reasons that no longer hold, and are not in the list above because a stronger form is listed:
+the router ([S-58](taxonomy/S-58.md), measured on a chassis at 0.44–0.47 of field economy; L07's revival trigger has not
+fired), blind-exit memory and dive caps ([S-16](taxonomy/S-16.md), [S-19](taxonomy/S-19.md); present in Ares, never
+varied — cheap sweeps inside #2), Python CPU cuts ([S-33](taxonomy/S-33.md); the threat radius 7, reach clamp 1–3, density
+source cap and separation BFS caps are still Python-era limits in Ares and were never widened; R-1 widened only search,
+flood and sprint caps). Lines that stopped for reasons that still hold: pre-entry portal gates ([S-15](taxonomy/S-15.md),
+volume throttles on both hosts), the atlas ([S-20](taxonomy/S-20.md), out-of-sample rule), swarm dissolve
+([S-24](taxonomy/S-24.md)), pace forcing ([S-35](taxonomy/S-35.md)).
+
+## Keeping this current
+
+On each update request: `git log --since=<last T-1 commit>` over `docs/findings/`, `docs/hub/HYPOTHESES.md`, the
+decisions file, `claude/*-status.md` and every `origin/r/*` branch; add or amend the entries touched (new ids are appended,
+never renumbered; a changed verdict is a new line in the entry's change log, the old one stays); regenerate
+`taxonomy/matrices.md` from the `_*.tsv` summaries; re-derive §6; report the diff in `claude/t1-status.md`. Ledger changes
+are proposed there, never made here.
