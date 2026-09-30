@@ -142,3 +142,20 @@ cannot say whether it is RL; per the prompt, no further spend on the question.
   Portals / round-limit profile. Two smoke games only; fidelity and panels are the measurement.
 - **Deployable and testable** as of 30 Sep ~11:00 ACST. Next: held-out decision agreement and closed-loop divergence
   (`tools/team_recon_claude/closed_loop.py`), then the z1 / generalisation panels and head-to-heads.
+
+### Q4 fidelity — deployed binary, open-loop conditional replay (`tools/hb1/replay_drive_cpp.py`)
+
+40 of the 163 held-out corpus games (never used for fitting), 356,944 Heartbreaker actor-turns; one fresh native
+process per dragon fed the exact round blocks they received (`game_stats/runs/hb1-q4-fidelity-open.json`):
+
+| component | agreement | offline model on the same held-out set |
+|---|---:|---:|
+| family (move vs split) | 0.993 | — |
+| direction, both moved | 0.824 | 0.829 |
+| child size, both split | 0.944 | 0.953 |
+| whole command | **0.821** (per game 0.742–0.893, median 0.817) | 0.826 |
+| sonar direction multiset | 0.681 | mask 0.980 (the dropped slot is redrawn at random) |
+| no reply / crash | 0 | |
+
+The live bot keeps ~99 % of the offline agreement; the residual is the open-loop memory drift (each process
+remembers its own choices while the boards follow the replay).
