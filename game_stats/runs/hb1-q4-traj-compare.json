@@ -1,0 +1,688 @@
+{
+ "pooled": [
+  {
+   "src": "mimic",
+   "round": 25,
+   "units": 5.0,
+   "longest": 3.5,
+   "total": 14.0,
+   "o_units": 6.0,
+   "o_longest": 3.0,
+   "o_total": 13.0,
+   "games_running": 40
+  },
+  {
+   "src": "mimic",
+   "round": 50,
+   "units": 9.0,
+   "longest": 4.0,
+   "total": 23.0,
+   "o_units": 9.5,
+   "o_longest": 3.0,
+   "o_total": 23.5,
+   "games_running": 40
+  },
+  {
+   "src": "mimic",
+   "round": 100,
+   "units": 12.0,
+   "longest": 6.0,
+   "total": 34.0,
+   "o_units": 18.0,
+   "o_longest": 3.0,
+   "o_total": 42.0,
+   "games_running": 35
+  },
+  {
+   "src": "mimic",
+   "round": 150,
+   "units": 15.0,
+   "longest": 8.0,
+   "total": 52.0,
+   "o_units": 23.0,
+   "o_longest": 4.0,
+   "o_total": 58.0,
+   "games_running": 31
+  },
+  {
+   "src": "mimic",
+   "round": 200,
+   "units": 21.0,
+   "longest": 9.0,
+   "total": 68.0,
+   "o_units": 26.0,
+   "o_longest": 4.0,
+   "o_total": 67.0,
+   "games_running": 29
+  },
+  {
+   "src": "mimic",
+   "round": 300,
+   "units": 21.0,
+   "longest": 8.0,
+   "total": 74.0,
+   "o_units": 30.0,
+   "o_longest": 6.0,
+   "o_total": 78.0,
+   "games_running": 25
+  },
+  {
+   "src": "mimic",
+   "round": 400,
+   "units": 23.5,
+   "longest": 9.5,
+   "total": 86.5,
+   "o_units": 23.5,
+   "o_longest": 10.0,
+   "o_total": 83.0,
+   "games_running": 20
+  },
+  {
+   "src": "mimic",
+   "round": 499,
+   "units": 24.0,
+   "longest": 11.0,
+   "total": 106.0,
+   "o_units": 3.0,
+   "o_longest": 27.0,
+   "o_total": 40.0,
+   "games_running": 17
+  },
+  {
+   "src": "real",
+   "round": 25,
+   "units": 6.0,
+   "longest": 3.5,
+   "total": 16.5,
+   "o_units": 5.0,
+   "o_longest": 3.0,
+   "o_total": 12.0,
+   "games_running": 40
+  },
+  {
+   "src": "real",
+   "round": 50,
+   "units": 12.0,
+   "longest": 4.0,
+   "total": 29.0,
+   "o_units": 7.0,
+   "o_longest": 3.0,
+   "o_total": 17.0,
+   "games_running": 39
+  },
+  {
+   "src": "real",
+   "round": 100,
+   "units": 19.0,
+   "longest": 7.0,
+   "total": 56.0,
+   "o_units": 10.0,
+   "o_longest": 3.0,
+   "o_total": 25.0,
+   "games_running": 33
+  },
+  {
+   "src": "real",
+   "round": 150,
+   "units": 22.5,
+   "longest": 7.0,
+   "total": 66.5,
+   "o_units": 21.0,
+   "o_longest": 3.5,
+   "o_total": 49.5,
+   "games_running": 28
+  },
+  {
+   "src": "real",
+   "round": 200,
+   "units": 24.0,
+   "longest": 9.0,
+   "total": 78.0,
+   "o_units": 22.0,
+   "o_longest": 4.0,
+   "o_total": 54.0,
+   "games_running": 25
+  },
+  {
+   "src": "real",
+   "round": 300,
+   "units": 31.0,
+   "longest": 9.0,
+   "total": 121.0,
+   "o_units": 24.0,
+   "o_longest": 6.0,
+   "o_total": 58.0,
+   "games_running": 23
+  },
+  {
+   "src": "real",
+   "round": 400,
+   "units": 24.0,
+   "longest": 12.0,
+   "total": 109.5,
+   "o_units": 23.0,
+   "o_longest": 8.0,
+   "o_total": 81.5,
+   "games_running": 20
+  },
+  {
+   "src": "real",
+   "round": 499,
+   "units": 19.0,
+   "longest": 14.0,
+   "total": 120.0,
+   "o_units": 6.0,
+   "o_longest": 23.0,
+   "o_total": 53.0,
+   "games_running": 17
+  }
+ ],
+ "per_map": [
+  {
+   "map": "Autarky",
+   "round": 50,
+   "src": "mimic",
+   "units": 15.0,
+   "total": 36.0,
+   "o_units": 14.0,
+   "o_total": 34.5
+  },
+  {
+   "map": "Autarky",
+   "round": 50,
+   "src": "real",
+   "units": 16.0,
+   "total": 40.0,
+   "o_units": 11.0,
+   "o_total": 26.0
+  },
+  {
+   "map": "Autarky",
+   "round": 100,
+   "src": "mimic",
+   "units": 19.5,
+   "total": 49.0,
+   "o_units": 13.5,
+   "o_total": 30.0
+  },
+  {
+   "map": "Autarky",
+   "round": 100,
+   "src": "real",
+   "units": 25.0,
+   "total": 65.0,
+   "o_units": 6.0,
+   "o_total": 14.0
+  },
+  {
+   "map": "Autarky",
+   "round": 200,
+   "src": "mimic",
+   "units": 23.0,
+   "total": 80.0,
+   "o_units": 13.0,
+   "o_total": 28.5
+  },
+  {
+   "map": "Autarky",
+   "round": 200,
+   "src": "real",
+   "units": 21.5,
+   "total": 88.0,
+   "o_units": 9.0,
+   "o_total": 20.5
+  },
+  {
+   "map": "Default",
+   "round": 50,
+   "src": "mimic",
+   "units": 10.5,
+   "total": 23.0,
+   "o_units": 5.5,
+   "o_total": 15.0
+  },
+  {
+   "map": "Default",
+   "round": 50,
+   "src": "real",
+   "units": 10.0,
+   "total": 26.5,
+   "o_units": 7.0,
+   "o_total": 16.0
+  },
+  {
+   "map": "Default",
+   "round": 100,
+   "src": "mimic",
+   "units": 11.0,
+   "total": 32.0,
+   "o_units": 12.0,
+   "o_total": 32.0
+  },
+  {
+   "map": "Default",
+   "round": 100,
+   "src": "real",
+   "units": 16.0,
+   "total": 55.0,
+   "o_units": 10.0,
+   "o_total": 25.0
+  },
+  {
+   "map": "Default",
+   "round": 200,
+   "src": "mimic",
+   "units": 6.0,
+   "total": 40.0,
+   "o_units": 30.0,
+   "o_total": 74.0
+  },
+  {
+   "map": "Default",
+   "round": 200,
+   "src": "real",
+   "units": 14.0,
+   "total": 49.0,
+   "o_units": 9.0,
+   "o_total": 21.0
+  },
+  {
+   "map": "Devil",
+   "round": 50,
+   "src": "mimic",
+   "units": 10.0,
+   "total": 24.0,
+   "o_units": 9.5,
+   "o_total": 24.5
+  },
+  {
+   "map": "Devil",
+   "round": 50,
+   "src": "real",
+   "units": 13.5,
+   "total": 34.0,
+   "o_units": 7.0,
+   "o_total": 16.5
+  },
+  {
+   "map": "Devil",
+   "round": 100,
+   "src": "mimic",
+   "units": 14.5,
+   "total": 38.0,
+   "o_units": 15.0,
+   "o_total": 38.5
+  },
+  {
+   "map": "Devil",
+   "round": 100,
+   "src": "real",
+   "units": 28.0,
+   "total": 82.0,
+   "o_units": 5.0,
+   "o_total": 10.0
+  },
+  {
+   "map": "Devil",
+   "round": 200,
+   "src": "mimic",
+   "units": 34.0,
+   "total": 118.0,
+   "o_units": 6.0,
+   "o_total": 13.0
+  },
+  {
+   "map": "Devil",
+   "round": 200,
+   "src": "real",
+   "units": 3.0,
+   "total": 9.0,
+   "o_units": 38.0,
+   "o_total": 92.0
+  },
+  {
+   "map": "Portals",
+   "round": 50,
+   "src": "mimic",
+   "units": 10.0,
+   "total": 23.5,
+   "o_units": 11.5,
+   "o_total": 25.5
+  },
+  {
+   "map": "Portals",
+   "round": 50,
+   "src": "real",
+   "units": 20.0,
+   "total": 49.5,
+   "o_units": 10.0,
+   "o_total": 23.0
+  },
+  {
+   "map": "Portals",
+   "round": 100,
+   "src": "mimic",
+   "units": 15.5,
+   "total": 34.0,
+   "o_units": 19.0,
+   "o_total": 42.5
+  },
+  {
+   "map": "Portals",
+   "round": 100,
+   "src": "real",
+   "units": 27.0,
+   "total": 66.5,
+   "o_units": 22.0,
+   "o_total": 52.5
+  },
+  {
+   "map": "Portals",
+   "round": 200,
+   "src": "mimic",
+   "units": 25.5,
+   "total": 72.0,
+   "o_units": 20.0,
+   "o_total": 52.5
+  },
+  {
+   "map": "Portals",
+   "round": 200,
+   "src": "real",
+   "units": 26.0,
+   "total": 71.5,
+   "o_units": 22.5,
+   "o_total": 55.5
+  },
+  {
+   "map": "Prisoners Dilemma",
+   "round": 50,
+   "src": "mimic",
+   "units": 7.5,
+   "total": 21.0,
+   "o_units": 1.5,
+   "o_total": 3.5
+  },
+  {
+   "map": "Prisoners Dilemma",
+   "round": 50,
+   "src": "real",
+   "units": 11.0,
+   "total": 29.0,
+   "o_units": 1.0,
+   "o_total": 2.0
+  },
+  {
+   "map": "Queen Of Spades",
+   "round": 50,
+   "src": "mimic",
+   "units": 5.0,
+   "total": 12.5,
+   "o_units": 5.0,
+   "o_total": 11.0
+  },
+  {
+   "map": "Queen Of Spades",
+   "round": 50,
+   "src": "real",
+   "units": 7.0,
+   "total": 18.0,
+   "o_units": 5.0,
+   "o_total": 13.5
+  },
+  {
+   "map": "Queen Of Spades",
+   "round": 100,
+   "src": "mimic",
+   "units": 6.5,
+   "total": 18.5,
+   "o_units": 10.0,
+   "o_total": 24.0
+  },
+  {
+   "map": "Queen Of Spades",
+   "round": 100,
+   "src": "real",
+   "units": 11.5,
+   "total": 37.5,
+   "o_units": 3.5,
+   "o_total": 9.0
+  },
+  {
+   "map": "Queen Of Spades",
+   "round": 200,
+   "src": "mimic",
+   "units": 9.0,
+   "total": 31.0,
+   "o_units": 18.0,
+   "o_total": 43.5
+  },
+  {
+   "map": "Queen Of Spades",
+   "round": 200,
+   "src": "real",
+   "units": 19.0,
+   "total": 66.5,
+   "o_units": 4.0,
+   "o_total": 10.5
+  },
+  {
+   "map": "Schooltime",
+   "round": 50,
+   "src": "mimic",
+   "units": 7.5,
+   "total": 20.0,
+   "o_units": 10.5,
+   "o_total": 25.0
+  },
+  {
+   "map": "Schooltime",
+   "round": 50,
+   "src": "real",
+   "units": 10.0,
+   "total": 28.0,
+   "o_units": 7.0,
+   "o_total": 17.0
+  },
+  {
+   "map": "Schooltime",
+   "round": 100,
+   "src": "mimic",
+   "units": 13.0,
+   "total": 46.0,
+   "o_units": 47.5,
+   "o_total": 115.0
+  },
+  {
+   "map": "Schooltime",
+   "round": 100,
+   "src": "real",
+   "units": 25.0,
+   "total": 75.5,
+   "o_units": 19.5,
+   "o_total": 45.0
+  },
+  {
+   "map": "Schooltime",
+   "round": 200,
+   "src": "mimic",
+   "units": 15.0,
+   "total": 56.0,
+   "o_units": 64.0,
+   "o_total": 286.0
+  },
+  {
+   "map": "Schooltime",
+   "round": 200,
+   "src": "real",
+   "units": 39.0,
+   "total": 148.5,
+   "o_units": 40.0,
+   "o_total": 95.0
+  },
+  {
+   "map": "Slithery Fight",
+   "round": 50,
+   "src": "mimic",
+   "units": 41.0,
+   "total": 115.0,
+   "o_units": 38.5,
+   "o_total": 95.0
+  },
+  {
+   "map": "Slithery Fight",
+   "round": 50,
+   "src": "real",
+   "units": 48.0,
+   "total": 127.5,
+   "o_units": 38.5,
+   "o_total": 96.5
+  },
+  {
+   "map": "Slithery Fight",
+   "round": 100,
+   "src": "mimic",
+   "units": 53.5,
+   "total": 157.0,
+   "o_units": 55.5,
+   "o_total": 135.5
+  },
+  {
+   "map": "Slithery Fight",
+   "round": 100,
+   "src": "real",
+   "units": 58.0,
+   "total": 172.5,
+   "o_units": 45.0,
+   "o_total": 115.0
+  },
+  {
+   "map": "Slithery Fight",
+   "round": 200,
+   "src": "mimic",
+   "units": 62.5,
+   "total": 213.5,
+   "o_units": 62.0,
+   "o_total": 151.0
+  },
+  {
+   "map": "Slithery Fight",
+   "round": 200,
+   "src": "real",
+   "units": 61.5,
+   "total": 232.0,
+   "o_units": 59.5,
+   "o_total": 153.5
+  },
+  {
+   "map": "Trauma",
+   "round": 50,
+   "src": "mimic",
+   "units": 3.0,
+   "total": 11.0,
+   "o_units": 4.0,
+   "o_total": 9.5
+  },
+  {
+   "map": "Trauma",
+   "round": 50,
+   "src": "real",
+   "units": 5.5,
+   "total": 16.5,
+   "o_units": 5.0,
+   "o_total": 11.0
+  },
+  {
+   "map": "Trauma",
+   "round": 100,
+   "src": "mimic",
+   "units": 6.5,
+   "total": 21.0,
+   "o_units": 6.0,
+   "o_total": 15.5
+  },
+  {
+   "map": "Trauma",
+   "round": 100,
+   "src": "real",
+   "units": 14.0,
+   "total": 45.0,
+   "o_units": 8.0,
+   "o_total": 20.0
+  },
+  {
+   "map": "Trauma",
+   "round": 200,
+   "src": "mimic",
+   "units": 20.0,
+   "total": 68.5,
+   "o_units": 20.5,
+   "o_total": 50.0
+  },
+  {
+   "map": "Trauma",
+   "round": 200,
+   "src": "real",
+   "units": 22.5,
+   "total": 85.5,
+   "o_units": 11.5,
+   "o_total": 26.5
+  },
+  {
+   "map": "Trophy",
+   "round": 50,
+   "src": "mimic",
+   "units": 12.0,
+   "total": 27.0,
+   "o_units": 14.0,
+   "o_total": 37.0
+  },
+  {
+   "map": "Trophy",
+   "round": 50,
+   "src": "real",
+   "units": 10.5,
+   "total": 25.0,
+   "o_units": 7.0,
+   "o_total": 17.5
+  },
+  {
+   "map": "Trophy",
+   "round": 100,
+   "src": "mimic",
+   "units": 13.5,
+   "total": 29.0,
+   "o_units": 24.0,
+   "o_total": 54.0
+  },
+  {
+   "map": "Trophy",
+   "round": 100,
+   "src": "real",
+   "units": 19.0,
+   "total": 62.0,
+   "o_units": 4.0,
+   "o_total": 11.0
+  },
+  {
+   "map": "Trophy",
+   "round": 200,
+   "src": "mimic",
+   "units": 4.0,
+   "total": 12.0,
+   "o_units": 38.0,
+   "o_total": 90.5
+  },
+  {
+   "map": "Trophy",
+   "round": 200,
+   "src": "real",
+   "units": 23.0,
+   "total": 85.0,
+   "o_units": 7.0,
+   "o_total": 15.0
+  }
+ ],
+ "n_real": 40,
+ "n_mimic": 40
+}

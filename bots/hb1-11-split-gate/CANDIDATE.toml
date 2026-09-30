@@ -1,0 +1,35 @@
+name = "hb1-11-split-gate"
+lineage = "hb1"
+author = "claude/hb1"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Heartbreaker's production rule (split right after eating at length <= 4, opening split, tighter selection in the open) differs from Ares's value-scored tyr_split_option; its learned gate may admit better splits."
+mechanism = "One switch on a verbatim V06 copy (Params::hb1_split_gate): the exported Heartbreaker gate GBT (p >= 0.5 on split-eligible turns) replaces tyr_split_option and opening production; Ares child size (2), escape split and all moves unchanged."
+expected_change = "Split timing moves toward Heartbreaker's; economy at r50/r100 and dragons at r100 change; gate decides."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/bifrost-family.md",
+    "docs/skadi.md",
+    "docs/fenrir-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Restores high-effort target/flood/triple search and Fafnir size-matched threat support in C++. V05 and active V04 v83 remain untouched. Benchmark and sandbox CPU/TLE results are recorded in the V06 finding."

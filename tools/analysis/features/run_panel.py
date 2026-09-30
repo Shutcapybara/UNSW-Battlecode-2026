@@ -79,7 +79,7 @@ def run(fx, root, exe, version, no_logs=False):
         return None
     t = time.time()
     p = subprocess.run([exe, 'run', '--seed', str(fx['seed'])] + (['--no-logs'] if no_logs else []) + ['--no-indicator', '--no-draw', '-o', str(rep) + '.tmp',
-                        f"maps/{fx['map']}.map", bot_path(fx['botA']), bot_path(fx['botB'])], capture_output=True, text=True, timeout=1800)
+                        f"maps/{fx['map']}.map", bot_path(fx['botA']), bot_path(fx['botB'])], capture_output=True, text=True, timeout=int(os.environ.get('RUN_PANEL_TIMEOUT', 1800)))
     out = p.stdout + p.stderr
     m = RESULT.search(out)
     row = dict(fx, toolkit=version, sandbox=False, logs=not no_logs, host=os.uname().nodename, seconds=round(time.time() - t, 1), rc=p.returncode,
