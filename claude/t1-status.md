@@ -51,6 +51,8 @@ written.
 - Absent from the snapshot: `docs/findings/sakura-s01-data/` result files, `docs/findings/yeji-s1-runs/`, `docs/athos.md`,
   the aramis/dartegnan/javert experiment reports, `tools/*.py` sources for rl_earlygame/loki/ouroboros/leviathan,
   `ouroboros-m01` `model.json`. Their mechanisms are recorded from READMEs only and marked so.
+- Cited but uncommitted when read: `docs/findings/2026-09-30-s1-Q1-map-specialists.md` and `…-s1-Q2-map-predictability.md`
+  (S-1's files, present in the Mac working tree, not yet in git).
 - Lanes with nothing on origin yet: R-2b (Basquiat), R-2c (Cézanne), SF-1, RL-1, HB-1, K-1 (Sophie's branch unpushed;
   read from the project status file).
 - Branch `r/t1` is committed in the local repository; the session's machine has no GitHub credentials, so it has not
