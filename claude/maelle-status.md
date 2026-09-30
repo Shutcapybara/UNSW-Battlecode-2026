@@ -176,3 +176,29 @@ Pre-registered sign: negative (corpus −0.025; self-play pearls −0.19).
 
 **Zero-weight optimum** (argmax −0.02, 90 % [−0.53, +0.50]); both directions lose. The corpus shading away from
 enemy-dense pearls is already carried by the bot's enemy_target_discount and threat cost. Not gated.
+
+## Feature 4 — `death` cost on moves (wm_death), scan on the parent (pool seeds 1+2, 320 paired)
+
+| w | dJ | d econ | d p50 | d p100 | d p150 | d p250 | d units@100 | d length@100 | d win | d ally h2h /1k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| −2.0 | −0.041 | −0.048 | −0.019 | −0.040 | −0.050 | −0.082 | −0.012 | −0.009 | −0.013 | −0.16 |
+| −0.75 | −0.015 | −0.006 | −0.008 | −0.008 | −0.006 | −0.003 | −0.007 | −0.006 | +0.023 | +0.07 |
+| +0.75 | −0.000 | −0.010 | +0.008 | −0.003 | −0.012 | −0.032 | −0.010 | −0.006 | +0.020 | −0.17 |
+
+**Zero-weight optimum**: flat inside ±0.75, a clear loss at −2 (late economy). The death grid (a corpse observed
+in the 7×7 view, 3 % of candidates nonzero) is too sparse to steer routes. Not gated.
+
+## Feature 5 — L02 search-cap selector keyed on local pearl sparsity (capsel), scan vs the parent (selector off)
+
+cap = capsel_lo + (capsel_hi − capsel_lo) · sparsity for every dragon older than 2 rounds, replacing the
+round-keyed caps; sparsity = 1 / (1 + pearls known inside the last search horizon / 2). capsel_lo = 48.
+
+| hi | dJ | d econ | d p50 | d p100 | d p150 | d p250 | d units@100 | d length@100 | d win | d ally h2h /1k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 160 | −0.036 | −0.022 | −0.014 | −0.026 | −0.023 | −0.024 | −0.017 | −0.026 | −0.020 | +0.04 |
+| 384 | −0.045 | −0.031 | −0.019 | −0.026 | −0.027 | −0.051 | −0.024 | −0.025 | −0.022 | +0.03 |
+| 768 | −0.022 | −0.020 | −0.017 | −0.021 | −0.023 | −0.018 | +0.005 | −0.002 | +0.005 | +0.04 |
+
+Loses at every hi, from the opening on (p@50 −0.014..−0.019: the dense-opening cap falls from 160 to 48). The
+round schedule (R-1's late-cap level) beats a pure sparsity selector. Variant queued: capsel_lo = 160 (sparsity
+only raises the cap).
