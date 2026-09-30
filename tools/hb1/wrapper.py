@@ -14,7 +14,7 @@ is the policy.
 """
 import numpy as np
 
-CMDS = ['F', 'R', 'L'] + [f'S{k}' for k in range(2, 9)] + ['X']   # X: deliberate invalid command / suicide (lane tt)
+CMDS = ['F', 'R', 'L'] + [f'S{k}' for k in range(2, 9)] + ['X']   # X: deliberate self-kill - invalid command or backward step (lane tt)
 MOVES = ['F', 'R', 'L']
 
 
@@ -64,6 +64,7 @@ def label(d):
     y = d['y_first'].map({'F': 0, 'R': 1, 'L': 2}).to_numpy(copy=True)
     sp = d['y_family'].to_numpy() == 'split'
     y = np.where(sp, 3 + np.clip(d['y_child'].to_numpy(), 2, 8) - 2, y)
-    other = ~sp & (d['y_family'].to_numpy() != 'move')         # suicide / other non-move actions
+    # X = deliberate self-kill: an invalid command (cheji bt) or a backward step into the own neck (Stockfish)
+    other = ~sp & ~d['y_first'].isin(['F', 'R', 'L']).to_numpy()
     y = np.where(other, CMDS.index('X'), y)
     return y.astype(int)
