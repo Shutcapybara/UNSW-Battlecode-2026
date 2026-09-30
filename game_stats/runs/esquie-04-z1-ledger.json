@@ -1,0 +1,169 @@
+{
+ "ledger": {
+  "bot": "esquie-04-crit-split",
+  "n_side_games": 320,
+  "window": "0-99",
+  "per_map": {
+   "lk_newborn": {
+    "Autarky": 12.3,
+    "Default": 5.5,
+    "Devil": 35.8,
+    "Prisoners Dilemma": 28.8,
+    "Portals": 44.3,
+    "Queen Of Spades": 21.5,
+    "Schooltime": 20.7,
+    "Slithery Fight": 52.7,
+    "Trauma": 12.0,
+    "Trophy": 8.3
+   },
+   "lk_trapped": {
+    "Autarky": 36.0,
+    "Default": 3.9,
+    "Devil": 69.7,
+    "Prisoners Dilemma": 54.6,
+    "Portals": 87.5,
+    "Queen Of Spades": 40.5,
+    "Schooltime": 35.8,
+    "Slithery Fight": 81.9,
+    "Trauma": 16.8,
+    "Trophy": 11.3
+   },
+   "lk_portal": {
+    "Autarky": 3.7,
+    "Default": 11.8,
+    "Devil": 0.0,
+    "Prisoners Dilemma": 1.7,
+    "Portals": 76.0,
+    "Queen Of Spades": 29.6,
+    "Schooltime": 3.4,
+    "Slithery Fight": 3.9,
+    "Trauma": 0.0,
+    "Trophy": 13.2
+   },
+   "lk_crowd23": {
+    "Autarky": 2.0,
+    "Default": 8.5,
+    "Devil": 36.0,
+    "Prisoners Dilemma": 31.1,
+    "Portals": 39.5,
+    "Queen Of Spades": 20.6,
+    "Schooltime": 13.0,
+    "Slithery Fight": 31.9,
+    "Trauma": 3.5,
+    "Trophy": 9.5
+   },
+   "cause_wall": {
+    "Autarky": 33.1,
+    "Default": 0.0,
+    "Devil": 13.2,
+    "Prisoners Dilemma": 25.4,
+    "Portals": 53.1,
+    "Queen Of Spades": 14.5,
+    "Schooltime": 18.8,
+    "Slithery Fight": 34.2,
+    "Trauma": 16.8,
+    "Trophy": 4.2
+   },
+   "cause_self": {
+    "Autarky": 0.0,
+    "Default": 0.0,
+    "Devil": 25.8,
+    "Prisoners Dilemma": 28.4,
+    "Portals": 12.8,
+    "Queen Of Spades": 5.3,
+    "Schooltime": 6.6,
+    "Slithery Fight": 32.7,
+    "Trauma": 0.0,
+    "Trophy": 2.0
+   },
+   "cause_ally_body": {
+    "Autarky": 0.0,
+    "Default": 0.0,
+    "Devil": 14.3,
+    "Prisoners Dilemma": 2.6,
+    "Portals": 7.7,
+    "Queen Of Spades": 3.8,
+    "Schooltime": 5.8,
+    "Slithery Fight": 11.5,
+    "Trauma": 0.0,
+    "Trophy": 2.9
+   },
+   "cause_enemy_body": {
+    "Autarky": 0.0,
+    "Default": 0.0,
+    "Devil": 0.0,
+    "Prisoners Dilemma": 0.0,
+    "Portals": 0.0,
+    "Queen Of Spades": 0.0,
+    "Schooltime": 0.0,
+    "Slithery Fight": 0.0,
+    "Trauma": 0.0,
+    "Trophy": 0.0
+   },
+   "cause_h2h_enemy": {
+    "Autarky": 13.6,
+    "Default": 11.0,
+    "Devil": 24.8,
+    "Prisoners Dilemma": 9.5,
+    "Portals": 0.0,
+    "Queen Of Spades": 5.2,
+    "Schooltime": 7.0,
+    "Slithery Fight": 10.2,
+    "Trauma": 0.0,
+    "Trophy": 17.4
+   },
+   "cause_h2h_ally": {
+    "Autarky": 0.0,
+    "Default": 5.2,
+    "Devil": 0.0,
+    "Prisoners Dilemma": 0.0,
+    "Portals": 21.0,
+    "Queen Of Spades": 9.8,
+    "Schooltime": 0.0,
+    "Slithery Fight": 2.1,
+    "Trauma": 0.0,
+    "Trophy": 3.0
+   },
+   "cause_suicide": {
+    "Autarky": 0.0,
+    "Default": 0.0,
+    "Devil": 0.0,
+    "Prisoners Dilemma": 0.0,
+    "Portals": 0.0,
+    "Queen Of Spades": 0.0,
+    "Schooltime": 0.0,
+    "Slithery Fight": 0.0,
+    "Trauma": 0.0,
+    "Trophy": 0.0
+   },
+   "cause_invalid": {
+    "Autarky": 0.0,
+    "Default": 0.0,
+    "Devil": 0.0,
+    "Prisoners Dilemma": 0.0,
+    "Portals": 0.0,
+    "Queen Of Spades": 0.0,
+    "Schooltime": 0.0,
+    "Slithery Fight": 0.0,
+    "Trauma": 0.0,
+    "Trophy": 0.0
+   }
+  },
+  "pooled": {
+   "lk_newborn_len_per1k": 21.2,
+   "lk_trapped_len_per1k": 39.7,
+   "lk_portal_len_per1k": 5.3,
+   "lk_crowd23_len_per1k": 16.3,
+   "cause_wall_len_per1k": 20.5,
+   "cause_self_len_per1k": 7.0,
+   "cause_ally_body_len_per1k": 3.6,
+   "cause_enemy_body_len_per1k": 0.0,
+   "cause_h2h_enemy_len_per1k": 9.0,
+   "cause_h2h_ally_len_per1k": 0.0,
+   "cause_suicide_len_per1k": 0.0,
+   "cause_invalid_len_per1k": 0.0,
+   "newborn_deaths_per100_births": 25.7,
+   "wall_deaths_per1k": 8.39
+  }
+ }
+}

@@ -215,4 +215,65 @@ state, which lasts to r80+ there, still caught), **schooltime 0** (was 26/13,578
 **trophy 0** (was 14 in v1). If the panels keep the local gains with the pooled r50 recovered,
 this is the local-hold candidate.
 
-Results: (panels queued after esquie-04)
+### esquie-04-crit-split — the teammates' V19 critical-enclosure split at panel scale (target: the leak cluster)
+
+Switch-off parity 0/18,387 (portals/dilemma/trophy transcripts); acts at 1.8–1.9 % of turns on
+the target maps (slithery 465/24,489, portals 149/8,147).
+
+Results: **REJECT — with the cleanest per-map attribution of the lane.**
+
+| read | number (z1 seeds 1+2, paired vs esquie-01) |
+|---|---|
+| pooled gate | econ −0.0345, **win −2.81pp**, births −0.046, wall **+15 %**, own-body **+24 %** → fail |
+| target row, where it works | **Slithery trapped 101.3 → 81.9 (−19 %), newborn 73.6 → 52.7 (−28 %)** — the mechanism does what V19 claimed, on this one map |
+| target row, elsewhere | pooled trapped **rose** 37.0 → 39.7: Portals 81.9 → 87.5 (the teammates saw the same sign: 65→75.8), Dilemma 45.6 → 54.6, QoS 35.4 → 40.5, Trauma newborn 4.3 → 12.0 |
+| retention | dragons +0.010, length +0.010 — the extra splits live, but the pearls they cost are the −0.035 |
+
+**Reading for the table:** the critical-enclosure split is a *Slithery-shaped* mechanism — it pays
+on fast-bed churn maps (Slithery: bed gap 1251 with fast_share 0.41, constant splitting, trapped
+deaths are the recycling cost) and costs on every slow/corridor map where a split is a donation.
+The panel confirms the teammates' 20-game screen at 16× the fixtures and adds the sign flip on
+four maps they never separated. A structure-gated form (fire only when the observed local profile
+is fast-renewing beds + high own-newborn churn) is the queued follow-up — observably keyable
+without map identity, but a new version, not this one.
+
+## The map × mechanism table (Part 3 deliverable)
+
+Mechanisms as rows (this lane's, plus the r3 results re-read per map from their replays where
+available); effects per cluster. +/− = measured at panel scale this lane.
+
+| mechanism | starved-opening (Trauma, Dilemma, QoS, pinwheel) | corridor leak (Slithery) | portal leak (Portals) | dense/fast (Devil, Schooltime, Portals) | slow-dense (Trophy, Default) | fight-loss gen (pinwheel, seam, commons) |
+|---|---|---|---|---|---|---|
+| starve-wait v1 (02) | **+** (Trauma r50 ×2, Dilemma late, pinwheel transfers) | 0 | 0 (bit-identical) | 0 (Devil) / win −9pp (Schooltime) | **−** (Trophy −0.12 pct) | n/a |
+| starve-wait v2 (03) | **+** (same + trauma_tr +0.31 win) | +0.03 win | 0 | Schooltime win −6pp | ~0 (Trophy restored) | n/a |
+| starve-wait v3 (03b) | (pending) | | | | | |
+| crit-enclosure split (04, = V19) | − (Trauma newborn ×3) | **+** (trapped −19 %, newborn −28 %) | **−** (trapped +7 %) | − (Dilemma trapped +20 %) | 0 (bit-identical) | n/a |
+| flat bed-wait (Renoir 01a/c) | + (QoS +0.14, Trauma +0.14) | ? | ? | **−** (Devil −0.72, Schooltime −0.41) | ? | n/a |
+| exploration value ↓ (Renoir 07a/c) | — | — | — | pool +0.11 but off-pool flat (learned the ten maps) | — | − (transposed QoS/Trauma −0.35) |
+
+What the table says so far: the two structural mechanisms are cluster-sharp — starve-wait owns
+the starved openings, the enclosure split owns Slithery and nothing else — and both need their
+gate, not their strength, tuned. The QoS/Trauma-vs-Devil/Schooltime trade Renoir saw in a third
+of its candidates is now nameable: it is the starved-opening cluster paying against the
+slow-dense cluster, and the observable that separates them is *known-bed ripeness*, which v2/v3
+of the gate measures directly.
+
+## Ledger rows (proposed weights)
+
+- **L28 (map identity in V06)** — unchanged (0.9). This lane adds: the terms were also live on
+  **Portals** (32×16), and the nodevil cost lands on Devil win (1.00 → 0.50 in paired pool play)
+  and devil_tr/trophy_tr on gen (0.44/0.25) — the identity-loss classification stands; the
+  structural replacement (spawn-geometry midline race) remains open work for whoever takes it.
+- **L29 (churn in the metric)** — unchanged (0.8). Slithery's 101.3 trapped / 73.6 newborn on
+  this base are the recycling cost of the highest-economy pool style; the enclosure split trades
+  them for pearls at −0.035 econ — churn is load-bearing there, not pure waste.
+- **L31 (new, starved openings)** — *we lose the opening on maps where the expected ripe-bed
+  supply within walking range of the spawns is low (supply50 ≤ ~1) or the bed field is slow and
+  sparse; a bed-anticipation term gated on the dragon's own food knowledge (starve-wait) doubles
+  the Trauma opening and transfers to the cluster twins.* Weight: **0.5** (evidence: 02/03/03b
+  sequence, one lane, two seeds; the pooled-economy form is interval-negative at v2 — the v3
+  panel decides whether it holds). Moves: up on 03b landing a clean local hold; down if the
+  pooled cost persists with the clean gate.
+- **L24 (enclosure hazard, teammates' T row)** — the V19 form is now measured at panel scale:
+  Slithery-only, −19 % trapped / −28 % newborn there, pooled trapped up, econ −0.035. Proposed
+  0.5 → **0.35**: the mechanism is real but only a gated form can carry it.
