@@ -38,6 +38,7 @@ The desktop is shared with lanes hb1, rb, rc (load average 97–130 on 16 cores 
 
 | Version | Feature | Ledger row | Fitted weight [interval] | Surface | Pool Δecon~ [90 %] | Gen Δecon~ [90 %] | Per-checkpoint | CPU max | Verdict |
 |---|---|---|---|---|---|---|---|---|---|
+| maelle-03-foodfree | food_free = food_ew × (1 − ally_ew) on bed/unseen targets | L12 | −1.3 [−1.90, −1.00] (pool s1 scan) | plateau −2..−0.5 (dJ +0.03..+0.05 on seed 1), steep loss for w > 0 | −0.030 [−0.057, +0.000] | −0.019 [−0.041, +0.003] | pool p50 −0.061, p100 −0.041, p150 −0.001, p250 −0.015; gen p150 −0.045, p250 −0.033 | < 11.98 M (all-on probe) | **REJECT** (pool econ lb ≤ 0; units lb −0.040; pool win lb −0.050; gen econ lb −0.041; gen win −0.044) |
 
 ## Priors (fit.py, corpus, 30 Sep)
 
@@ -118,3 +119,14 @@ vs maelle-03-foodfree (wt_ally = 0):
 
 Monotone, optimum at the edge (−1.5); extending to −3, −5. Largest effect in the lane so far, with material and
 win rate rising with the economy.
+
+### maelle-03 verdict (D-032, seeds 1–3, 480 pool + 744 gen paired fixtures): REJECT
+
+Per seed (pool, per-game-mean econ): s1 +0.005, s2 −0.019, s3 −0.083. The seed-1 scan's plateau was inside
+single-seed noise (and J's gain was mostly the material terms, which did not hold: units@100 +0.003, length +0.013).
+Surface kept: the weight's sign is not positive on this parent (w > 0 loses steeply on seed 1) and its negative
+optimum does not pay across seeds — **a zero-weight optimum for food_free**. Method change from here: scans use
+pool seeds 1+2 (320 paired fixtures per value; the parent already has seeds 1–3).
+
+Feature 2's scan was run on the maelle-03 base (−1.5: dJ +0.130, econ +0.067, units +0.116); with 03 rejected
+it is being re-run on the parent (maelle-02, w = 0), values −3, −1.5, −0.5, seeds 1+2.
