@@ -266,3 +266,9 @@ Q0–Q3 done for both teams, the conversion analysis and cull models done, two p
 three head-to-heads done. Finding: `docs/findings/2026-09-30-tt-top-teams.md`. Open: conditional (state-keyed)
 conversion as the next mechanism; whether the top teams' timing pays against converting opponents (not measurable
 locally).
+
+## Upload limit (1 Oct)
+
+The upload zip is capped at 4 MiB, so hb1-12 (17.1 MiB) and the tt-01/tt-02 copies built on it are local-only.
+`hb1-14-prior-r540` (the same prior, 540 rounds, 3.74 MiB; 141–19 on z1 s1, hold) is the uploadable base — see
+`claude/hb1-status.md`. Further TT ports are built on hb1-14.
