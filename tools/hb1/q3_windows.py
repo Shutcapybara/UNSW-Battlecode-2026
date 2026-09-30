@@ -8,7 +8,7 @@ scores i+1 (forward) and one fitted on i+1 scores i (backward); 'within' is a by
 window (the ceiling a static policy would show). An era-set model (27 Sep, submission ids) scores every window.
 Writes game_stats/runs/hb1-q3-windows.json.
 """
-import argparse, glob, json, sys
+import argparse, glob, json, sys, os
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -17,8 +17,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import q1_decisions as Q1
 
 ROOT = Path(__file__).resolve().parents[2]
-B = ROOT / 'build' / 'hb1'
-OUT = ROOT / 'game_stats' / 'runs' / 'hb1-q3-windows.json'
+B = ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1')   # HB_BUILD/HB_TEAM/HB_TAG: other teams (lane tt)
+TAG = os.environ.get('HB_TAG', 'hb1')
+OUT = ROOT / 'game_stats' / 'runs' / f'{TAG}-q3-windows.json'
 DEC = ('gate', 'direction', 'alloc')
 
 
@@ -48,7 +49,7 @@ def ladder():
     for f in sorted(glob.glob(str(ROOT / 'public_replays/corpus/ladder/*.json'))):
         t = pd.Timestamp(Path(f).stem.replace('Z', ''), tz='UTC')
         for r in json.load(open(f)):
-            if r['id'] == 62:
+            if r['id'] == int(os.environ.get('HB_TEAM', 62)):
                 rows.append(dict(t=t, elo=r['elo'], rank=r['rank'], wins=r['wins']))
     return pd.DataFrame(rows)
 
@@ -89,14 +90,16 @@ def main():
     wins = sorted(g.win.unique())
     res = dict(t0=str(t0), hours=a.hours, windows={int(w): dict(start=str(t0 + pd.Timedelta(hours=a.hours * w)),
                games=int((g.win == w).sum()), win_rate=float(g[g.win == w].won.mean())) for w in wins})
-    era = era_samples()
+    has_era = any((B / 'v5' / 'era').glob('*.parquet'))
+    era = era_samples() if has_era else None
     for k in DEC:
         d = pd.read_parquet(B / 'q1' / f'{k}.parquet')
         d['game'] = d.game.astype(int)
         d = d.merge(g[['game', 'win']], on='game')
         X, y = Q1.xy(k, d)
-        Xe, ye = Q1.xy(k, era[k])
-        Xe = Xe.reindex(columns=X.columns, fill_value=0)
+        if has_era:
+            Xe, ye = Q1.xy(k, era[k])
+            Xe = Xe.reindex(columns=X.columns, fill_value=0)
         w = d.win.to_numpy()
         r = []
         for i in wins:
@@ -105,7 +108,7 @@ def main():
             gi = np.array(sorted(d.game[a_].unique()))
             half = np.isin(d.game.to_numpy(), gi[::2])
             row['within'] = gbt(X[a_ & half], y[a_ & half], X[a_ & ~half], y[a_ & ~half])
-            row['from_era'] = gbt(Xe, ye, X[a_], y[a_])
+            row['from_era'] = gbt(Xe, ye, X[a_], y[a_]) if has_era else None
             if i + 1 in wins:
                 b_ = w == i + 1
                 row['forward'] = gbt(X[a_], y[a_], X[b_], y[b_])     # fit i, score i+1
