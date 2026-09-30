@@ -1,0 +1,358 @@
+{
+ "_meta": {
+  "train_games": 3301,
+  "test_games": 825,
+  "seed": 62,
+  "excluded": [
+   "H",
+   "W",
+   "dragon",
+   "facing_abs",
+   "game",
+   "map",
+   "x",
+   "xn",
+   "y",
+   "yn"
+  ]
+ },
+ "gate": {
+  "n_train": 783184,
+  "n_test": 191397,
+  "classes": {
+   "0": 706222,
+   "1": 268359
+  },
+  "baselines": {
+   "majority": 0.7245150132969691,
+   "split_iff_no_ordinary_exit": 0.7658166010961509
+  },
+  "tree4": {
+   "acc": 0.7791031207385696,
+   "macro_f1": 0.672858167540123,
+   "logloss": 0.4106028626563329,
+   "sec": 6.3
+  },
+  "tree4_rules": "|--- round <= 324.50\n|   |--- n_exit_ord <= 0.50\n|   |   |--- n_exit_portal <= 0.50\n|   |   |   |--- cF_block <= 4.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- cF_block >  4.50\n|   |   |   |   |--- class: 1\n|   |   |--- n_exit_portal >  0.50\n|   |   |   |--- mem_disp <= 5.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- mem_disp >  5.50\n|   |   |   |   |--- class: 1\n|   |--- n_exit_ord >  0.50\n|   |   |--- vis_ally_heads <= 1.50\n|   |   |   |--- near_enemy_head <= 5.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- near_enemy_head >  5.50\n|   |   |   |   |--- class: 0\n|   |   |--- vis_ally_heads >  1.50\n|   |   |   |--- mem_last_rel <= 1.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- mem_last_rel >  1.50\n|   |   |   |   |--- class: 1\n|--- round >  324.50\n|   |--- n_exit_any <= 0.50\n|   |   |--- near_ally_head <= 1.50\n|   |   |   |--- n_msgs <= 0.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- n_msgs >  0.50\n|   |   |   |   |--- class: 1\n|   |   |--- near_ally_head >  1.50\n|   |   |   |--- vis_ally_seg <= 17.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- vis_ally_seg >  17.50\n|   |   |   |   |--- class: 1\n|   |--- n_exit_any >  0.50\n|   |   |--- cF_area <= 8.50\n|   |   |   |--- round <= 329.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- round >  329.50\n|   |   |   |   |--- class: 0\n|   |   |--- cF_area >  8.50\n|   |   |   |--- round <= 329.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- round >  329.50\n|   |   |   |   |--- class: 0\n",
+  "gbt": {
+   "acc": 0.8290934549653338,
+   "macro_f1": 0.774301191383408,
+   "logloss": 0.33331772391477865,
+   "sec": 5.3
+  },
+  "mlp": {
+   "acc": 0.8172698631639994,
+   "macro_f1": 0.7593157369528809,
+   "logloss": 0.3550678520089581,
+   "sec": 9.8
+  },
+  "gap_tree_to_mlp": 0.038166742425429834,
+  "gap_tree_to_gbt": 0.049990334226764244,
+  "ablate": {
+   "cand": {
+    "n_cols": 72,
+    "d_acc": -0.011760894893859342,
+    "d_logloss": 0.024499677149254995
+   },
+   "grid": {
+    "n_cols": 147,
+    "d_acc": -0.0016144453674822312,
+    "d_logloss": 0.003564246623161238
+   },
+   "local": {
+    "n_cols": 23,
+    "d_acc": -0.012204997988474187,
+    "d_logloss": 0.01737696643920461
+   },
+   "memory": {
+    "n_cols": 16,
+    "d_acc": -0.0025601237218974005,
+    "d_logloss": 0.006732766533938173
+   },
+   "msgs": {
+    "n_cols": 7,
+    "d_acc": -0.004488053626754862,
+    "d_logloss": 0.006925777814586198
+   },
+   "scalar": {
+    "n_cols": 6,
+    "d_acc": -0.014321018615756742,
+    "d_logloss": 0.03491030185841737
+   }
+  }
+ },
+ "direction": {
+  "n_train": 982824,
+  "n_test": 246010,
+  "classes": {
+   "0": 595020,
+   "1": 316598,
+   "2": 317216
+  },
+  "baselines": {
+   "majority": 0.4849071175968457
+  },
+  "tree4": {
+   "acc": 0.6381325962359253,
+   "macro_f1": 0.5383626418199698,
+   "logloss": 0.7261971010322027,
+   "sec": 6.7
+  },
+  "tree4_rules": "|--- cF_block <= 0.50\n|   |--- cL_block <= 0.50\n|   |   |--- cF_run <= 2.50\n|   |   |   |--- cR_block <= 0.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- cR_block >  0.50\n|   |   |   |   |--- class: 0\n|   |   |--- cF_run >  2.50\n|   |   |   |--- cL_pdist <= 1.50\n|   |   |   |   |--- class: 2\n|   |   |   |--- cL_pdist >  1.50\n|   |   |   |   |--- class: 0\n|   |--- cL_block >  0.50\n|   |   |--- n_exit_any <= 1.50\n|   |   |   |--- cL_block <= 6.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- cL_block >  6.50\n|   |   |   |   |--- class: 0\n|   |   |--- n_exit_any >  1.50\n|   |   |   |--- cF_run <= 2.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- cF_run >  2.50\n|   |   |   |   |--- class: 0\n|--- cF_block >  0.50\n|   |--- cL_block <= 0.50\n|   |   |--- n_exit_any <= 1.50\n|   |   |   |--- cF_block <= 6.50\n|   |   |   |   |--- class: 2\n|   |   |   |--- cF_block >  6.50\n|   |   |   |   |--- class: 2\n|   |   |--- n_exit_any >  1.50\n|   |   |   |--- cR_pdist <= 5.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- cR_pdist >  5.50\n|   |   |   |   |--- class: 2\n|   |--- cL_block >  0.50\n|   |   |--- cF_block <= 6.50\n|   |   |   |--- cL_block <= 6.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- cL_block >  6.50\n|   |   |   |   |--- class: 2\n|   |   |--- cF_block >  6.50\n|   |   |   |--- cR_area <= 1.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- cR_area >  1.50\n|   |   |   |   |--- class: 0\n",
+  "gbt": {
+   "acc": 0.7514247388317548,
+   "macro_f1": 0.7252240863904215,
+   "logloss": 0.5489002000172486,
+   "sec": 13.4
+  },
+  "mlp": {
+   "acc": 0.738230153245803,
+   "macro_f1": 0.7119457582089352,
+   "logloss": 0.5685570614665002,
+   "sec": 6.0
+  },
+  "gap_tree_to_mlp": 0.10009755700987766,
+  "gap_tree_to_gbt": 0.11329214259582943,
+  "ablate": {
+   "cand": {
+    "n_cols": 72,
+    "d_acc": -0.11456038372423882,
+    "d_logloss": 0.23873937111234844
+   },
+   "grid": {
+    "n_cols": 147,
+    "d_acc": -0.017767570423966483,
+    "d_logloss": 0.02580744648464095
+   },
+   "local": {
+    "n_cols": 23,
+    "d_acc": -0.012466972887280936,
+    "d_logloss": 0.021242909868548043
+   },
+   "memory": {
+    "n_cols": 16,
+    "d_acc": -0.011296288768749219,
+    "d_logloss": 0.018928842496248488
+   },
+   "msgs": {
+    "n_cols": 7,
+    "d_acc": -0.006548514288037044,
+    "d_logloss": 0.01153890430838389
+   },
+   "scalar": {
+    "n_cols": 6,
+    "d_acc": -0.007434657127759037,
+    "d_logloss": 0.012409887932520736
+   }
+  }
+ },
+ "sonar": {
+  "n_train": 467510,
+  "n_test": 115986,
+  "classes": {
+   "7": 54943,
+   "11": 20231,
+   "13": 54837,
+   "14": 520,
+   "15": 452965
+  },
+  "baselines": {
+   "majority": 0.7754125497904919,
+   "all_but_new_back": 0.2438311520355905
+  },
+  "tree4": {
+   "acc": 0.9496146086596658,
+   "macro_f1": 0.6802823431987046,
+   "logloss": 0.14655768220749174,
+   "sec": 3.4
+  },
+  "tree4_rules": "|--- length <= 2.50\n|   |--- cR_pdist <= 0.50\n|   |   |--- act_R <= 0.50\n|   |   |   |--- cL_pearl <= 0.50\n|   |   |   |   |--- class: 15\n|   |   |   |--- cL_pearl >  0.50\n|   |   |   |   |--- class: 13\n|   |   |--- act_R >  0.50\n|   |   |   |--- echo_enemyHead <= 0.50\n|   |   |   |   |--- class: 7\n|   |   |   |--- echo_enemyHead >  0.50\n|   |   |   |   |--- class: 7\n|   |--- cR_pdist >  0.50\n|   |   |--- cL_pdist <= 0.50\n|   |   |   |--- act_L <= 0.50\n|   |   |   |   |--- class: 15\n|   |   |   |--- act_L >  0.50\n|   |   |   |   |--- class: 13\n|   |   |--- cL_pdist >  0.50\n|   |   |   |--- n_exit_ord <= 0.50\n|   |   |   |   |--- class: 15\n|   |   |   |--- n_exit_ord >  0.50\n|   |   |   |   |--- class: 15\n|--- length >  2.50\n|   |--- act_L <= 0.50\n|   |   |--- act_R <= 0.50\n|   |   |   |--- vis_own_seg <= 3.50\n|   |   |   |   |--- class: 15\n|   |   |   |--- vis_own_seg >  3.50\n|   |   |   |   |--- class: 11\n|   |   |--- act_R >  0.50\n|   |   |   |--- length <= 3.50\n|   |   |   |   |--- class: 7\n|   |   |   |--- length >  3.50\n|   |   |   |   |--- class: 7\n|   |--- act_L >  0.50\n|   |   |--- length <= 3.50\n|   |   |   |--- cL_pearl <= 0.50\n|   |   |   |   |--- class: 13\n|   |   |   |--- cL_pearl >  0.50\n|   |   |   |   |--- class: 13\n|   |   |--- length >  3.50\n|   |   |   |--- g_-1_1_occ <= 1.00\n|   |   |   |   |--- class: 13\n|   |   |   |--- g_-1_1_occ >  1.00\n|   |   |   |   |--- class: 13\n",
+  "gbt": {
+   "acc": 0.9826185918990223,
+   "macro_f1": 0.8011316137901195,
+   "logloss": 0.05399235340830316,
+   "sec": 8.6
+  },
+  "mlp": {
+   "acc": 0.9747469522183712,
+   "macro_f1": 0.7536930530606313,
+   "logloss": 0.0733693104531345,
+   "sec": 3.1
+  },
+  "gap_tree_to_mlp": 0.025132343558705306,
+  "gap_tree_to_gbt": 0.033003983239356494,
+  "ablate": {
+   "action": {
+    "n_cols": 4,
+    "d_acc": -0.10258996775472906,
+    "d_logloss": 0.21978325311402064
+   },
+   "cand": {
+    "n_cols": 72,
+    "d_acc": -0.00035349093856162916,
+    "d_logloss": 0.0024888478024579705
+   },
+   "grid": {
+    "n_cols": 147,
+    "d_acc": -0.004543651820047345,
+    "d_logloss": 0.006830544792272762
+   },
+   "local": {
+    "n_cols": 23,
+    "d_acc": -0.00047419516148505814,
+    "d_logloss": 0.001096124250076859
+   },
+   "memory": {
+    "n_cols": 16,
+    "d_acc": -0.0006121428448261357,
+    "d_logloss": 0.0013916555505981282
+   },
+   "msgs": {
+    "n_cols": 7,
+    "d_acc": 6.0352111461714486e-05,
+    "d_logloss": -0.0001988508846735501
+   },
+   "scalar": {
+    "n_cols": 6,
+    "d_acc": -0.0041729174210680675,
+    "d_logloss": 0.010236645535215944
+   }
+  }
+ },
+ "alloc": {
+  "n_train": 555626,
+  "n_test": 138771,
+  "classes": {
+   "2": 544119,
+   "3": 66159,
+   "4": 25936,
+   "5": 8203,
+   "6": 6196,
+   "7": 3820,
+   "8": 39964
+  },
+  "baselines": {
+   "majority": 0.7898191985357171,
+   "child2": 0.7898191985357171,
+   "len_minus_2": 0.8305265509364348
+  },
+  "tree4": {
+   "acc": 0.8579169999495572,
+   "macro_f1": 0.39894969492380294,
+   "logloss": 0.3052034996853654,
+   "sec": 2.3
+  },
+  "tree4_rules": "|--- length <= 4.50\n|   |--- class: 2\n|--- length >  4.50\n|   |--- length <= 9.50\n|   |   |--- length <= 5.50\n|   |   |   |--- n_exit_any <= 0.50\n|   |   |   |   |--- class: 3\n|   |   |   |--- n_exit_any >  0.50\n|   |   |   |   |--- class: 2\n|   |   |--- length >  5.50\n|   |   |   |--- length <= 6.50\n|   |   |   |   |--- class: 4\n|   |   |   |--- length >  6.50\n|   |   |   |   |--- class: 2\n|   |--- length >  9.50\n|   |   |--- round <= 314.50\n|   |   |   |--- units_frac <= 0.98\n|   |   |   |   |--- class: 8\n|   |   |   |--- units_frac >  0.98\n|   |   |   |   |--- class: 2\n|   |   |--- round >  314.50\n|   |   |   |--- mem_since_split <= 1.50\n|   |   |   |   |--- class: 2\n|   |   |   |--- mem_since_split >  1.50\n|   |   |   |   |--- class: 8\n",
+  "gbt": {
+   "acc": 0.9107378342737316,
+   "macro_f1": 0.7412914599360677,
+   "logloss": 0.19603185642247173,
+   "sec": 18.3
+  },
+  "mlp": {
+   "acc": 0.8983937566206196,
+   "macro_f1": 0.7032330707469351,
+   "logloss": 0.2311660591100146,
+   "sec": 3.3
+  },
+  "gap_tree_to_mlp": 0.04047675667106243,
+  "gap_tree_to_gbt": 0.05282083432417439,
+  "ablate": {
+   "cand": {
+    "n_cols": 72,
+    "d_acc": -0.00429484546483061,
+    "d_logloss": 0.008026258931188995
+   },
+   "grid": {
+    "n_cols": 147,
+    "d_acc": -0.0007998789372419823,
+    "d_logloss": 0.0008445333188733251
+   },
+   "local": {
+    "n_cols": 23,
+    "d_acc": -0.0035670276931059064,
+    "d_logloss": 0.007952150316590412
+   },
+   "memory": {
+    "n_cols": 16,
+    "d_acc": -0.0010376807834490132,
+    "d_logloss": 0.0019517339843450054
+   },
+   "msgs": {
+    "n_cols": 7,
+    "d_acc": -0.0007422300048280928,
+    "d_logloss": 0.0027358549024472656
+   },
+   "scalar": {
+    "n_cols": 6,
+    "d_acc": -0.012199955322077405,
+    "d_logloss": 0.03977855757819529
+   }
+  }
+ },
+ "late": {
+  "n_train": 1040533,
+  "n_test": 257731,
+  "classes": {
+   "0": 1251958,
+   "1": 46306
+  },
+  "baselines": {
+   "majority": 0.9649828697362755,
+   "split_iff_no_ordinary_exit": 0.9734219011294722
+  },
+  "tree4": {
+   "acc": 0.9812905704009219,
+   "macro_f1": 0.814301133889013,
+   "logloss": 0.07882011232311543,
+   "sec": 8.2
+  },
+  "tree4_rules": "|--- n_exit_any <= 0.50\n|   |--- near_ally_head <= 1.50\n|   |   |--- mem_msgs_total <= 4.50\n|   |   |   |--- units_frac <= 0.09\n|   |   |   |   |--- class: 1\n|   |   |   |--- units_frac >  0.09\n|   |   |   |   |--- class: 1\n|   |   |--- mem_msgs_total >  4.50\n|   |   |   |--- echo_allyHead <= 0.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- echo_allyHead >  0.50\n|   |   |   |   |--- class: 0\n|   |--- near_ally_head >  1.50\n|   |   |--- echo_allyHead <= 0.50\n|   |   |   |--- mem_len_delta <= -2.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- mem_len_delta >  -2.50\n|   |   |   |   |--- class: 1\n|   |   |--- echo_allyHead >  0.50\n|   |   |   |--- near_ally_head <= 2.50\n|   |   |   |   |--- class: 1\n|   |   |   |--- near_ally_head >  2.50\n|   |   |   |   |--- class: 1\n|--- n_exit_any >  0.50\n|   |--- cF_area <= 9.50\n|   |   |--- mem_visited <= 8.50\n|   |   |   |--- mem_since_eat <= 2.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- mem_since_eat >  2.50\n|   |   |   |   |--- class: 0\n|   |   |--- mem_visited >  8.50\n|   |   |   |--- mem_last_family <= 1.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- mem_last_family >  1.50\n|   |   |   |   |--- class: 0\n|   |--- cF_area >  9.50\n|   |   |--- cF_area <= 17.50\n|   |   |   |--- mem_len_delta <= -0.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- mem_len_delta >  -0.50\n|   |   |   |   |--- class: 0\n|   |   |--- cF_area >  17.50\n|   |   |   |--- near_enemy_head <= 4.50\n|   |   |   |   |--- class: 0\n|   |   |   |--- near_enemy_head >  4.50\n|   |   |   |   |--- class: 0\n",
+  "gbt": {
+   "acc": 0.9830753770404026,
+   "macro_f1": 0.8453982351145284,
+   "logloss": 0.055336245779867656,
+   "sec": 6.1
+  },
+  "mlp": {
+   "acc": 0.9818221323783325,
+   "macro_f1": 0.8376508767125843,
+   "logloss": 0.06375936202860574,
+   "sec": 6.6
+  },
+  "gap_tree_to_mlp": 0.0005315619774105551,
+  "gap_tree_to_gbt": 0.0017848066394806628,
+  "ablate": {
+   "cand": {
+    "n_cols": 72,
+    "d_acc": -0.0061110227330045674,
+    "d_logloss": 0.022459808908314567
+   },
+   "grid": {
+    "n_cols": 147,
+    "d_acc": -0.0003298012268605488,
+    "d_logloss": 0.0010623913972377524
+   },
+   "local": {
+    "n_cols": 23,
+    "d_acc": -0.00032204119799328357,
+    "d_logloss": 0.002993319087782463
+   },
+   "memory": {
+    "n_cols": 16,
+    "d_acc": -0.0005160419196759136,
+    "d_logloss": 0.001873717245455063
+   },
+   "msgs": {
+    "n_cols": 7,
+    "d_acc": -0.0002716010103557265,
+    "d_logloss": 0.001474763764811926
+   },
+   "scalar": {
+    "n_cols": 6,
+    "d_acc": -0.0003453212845951903,
+    "d_logloss": 0.0013038112220036188
+   }
+  }
+ }
+}

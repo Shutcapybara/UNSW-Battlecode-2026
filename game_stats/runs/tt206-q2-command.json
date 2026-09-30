@@ -1,0 +1,81 @@
+{
+ "train_rows": 1108104,
+ "test_rows": 277726,
+ "era_rows": 0,
+ "label_dist": {
+  "F": 684972,
+  "R": 324671,
+  "L": 328720,
+  "S2": 30294,
+  "S3": 4112,
+  "S4": 1295,
+  "S5": 507,
+  "S6": 316,
+  "S7": 221,
+  "S8": 676,
+  "X": 10046
+ },
+ "prior": {
+  "test": {
+   "n": 277726,
+   "raw": 0.49759835233287486,
+   "wrapped": 0.6321770377998459,
+   "family_wrapped": 0.9730849830408388,
+   "raw_invalid": 0.21074728329360592,
+   "forced_rows": 0.012703167870491059,
+   "forced_acc": 0.20436507936507936,
+   "obs_outside_wrapper": 2.1604026990631052e-05,
+   "move_rows_wrapped": 0.6511357495574397,
+   "split_rows_wrapped": 0.09105414317625785
+  },
+  "era": null
+ },
+ "tree4": {
+  "test": {
+   "n": 277726,
+   "raw": 0.647451084882222,
+   "wrapped": 0.6463960882308463,
+   "family_wrapped": 0.9730849830408388,
+   "raw_invalid": 0.0,
+   "forced_rows": 0.012703167870491059,
+   "forced_acc": 0.20436507936507936,
+   "obs_outside_wrapper": 2.1604026990631052e-05,
+   "move_rows_wrapped": 0.6658529768005218,
+   "split_rows_wrapped": 0.09105414317625785
+  },
+  "era": null,
+  "sec": 13.2
+ },
+ "gbt": {
+  "test": {
+   "n": 277726,
+   "raw": 0.7628453943815127,
+   "wrapped": 0.7595183742249555,
+   "family_wrapped": 0.9824107213584612,
+   "raw_invalid": 0.007604617500702131,
+   "forced_rows": 0.012703167870491059,
+   "forced_acc": 0.20436507936507936,
+   "obs_outside_wrapper": 2.1604026990631052e-05,
+   "move_rows_wrapped": 0.7645355445821299,
+   "split_rows_wrapped": 0.6163174130411658
+  },
+  "era": null,
+  "sec": 47.7
+ },
+ "mlp": {
+  "test": {
+   "n": 277726,
+   "raw": 0.740362803626596,
+   "wrapped": 0.7376010888429603,
+   "family_wrapped": 0.9795589897956979,
+   "raw_invalid": 0.008818043683342575,
+   "forced_rows": 0.012703167870491059,
+   "forced_acc": 0.20436507936507936,
+   "obs_outside_wrapper": 2.1604026990631052e-05,
+   "move_rows_wrapped": 0.7449399049659927,
+   "split_rows_wrapped": 0.5281353047548133
+  },
+  "era": null,
+  "sec": 13.1
+ }
+}

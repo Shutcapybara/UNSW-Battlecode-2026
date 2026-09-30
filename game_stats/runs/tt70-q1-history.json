@@ -1,0 +1,370 @@
+{
+ "gate": {
+  "rows_match_q1_sample": false,
+  "n_train": 181969,
+  "n_test": 41152,
+  "hist_cols": [
+   "hist_a1",
+   "hist_a2",
+   "hist_a3",
+   "hist_a4",
+   "hist_a5",
+   "hist_a6",
+   "hist_turn_ewm",
+   "hist_lr_ewm",
+   "hist_since_turn",
+   "hist_eat10"
+  ],
+  "trail_cols": [
+   "trail_eseg_m0.7",
+   "trail_eseg_f0.7",
+   "trail_eseg_r0.7",
+   "trail_ehead_m0.7",
+   "trail_ehead_f0.7",
+   "trail_ehead_r0.7",
+   "trail_aseg_m0.7",
+   "trail_aseg_f0.7",
+   "trail_aseg_r0.7",
+   "trail_ahead_m0.7",
+   "trail_ahead_f0.7",
+   "trail_ahead_r0.7",
+   "trail_self_f0.7",
+   "trail_self_r0.7",
+   "trail_eseg_m0.9",
+   "trail_eseg_f0.9",
+   "trail_eseg_r0.9",
+   "trail_ehead_m0.9",
+   "trail_ehead_f0.9",
+   "trail_ehead_r0.9",
+   "trail_aseg_m0.9",
+   "trail_aseg_f0.9",
+   "trail_aseg_r0.9",
+   "trail_ahead_m0.9",
+   "trail_ahead_f0.9",
+   "trail_ahead_r0.9",
+   "trail_self_f0.9",
+   "trail_self_r0.9",
+   "trail_echo_kelp",
+   "trail_echo_ally",
+   "trail_echo_allyHead",
+   "trail_echo_enemy",
+   "trail_echo_enemyHead",
+   "trail_echo_total",
+   "trail_grad_e_f",
+   "trail_grad_e_r",
+   "trail_grad_a_f",
+   "trail_grad_a_r"
+  ],
+  "v5": {
+   "acc": 0.8625340202177294,
+   "macro_f1": 0.7905871135146649,
+   "logloss": 0.27279842059294895
+  },
+  "v5+hist": {
+   "acc": 0.8618779160186625,
+   "macro_f1": 0.7896332585226692,
+   "logloss": 0.27328295361163
+  },
+  "v5+trail": {
+   "acc": 0.8619265163297045,
+   "macro_f1": 0.7880835012347086,
+   "logloss": 0.27509054686320517
+  },
+  "v5+hist+trail": {
+   "acc": 0.8607844090202177,
+   "macro_f1": 0.787237495190583,
+   "logloss": 0.2745414503631464
+  },
+  "top_gain": [
+   [
+    "round",
+    233144.671875
+   ],
+   [
+    "n_exit_ord",
+    46817.9375
+   ],
+   [
+    "n_exit_any",
+    39955.6328125
+   ],
+   [
+    "vis_ally_heads",
+    15609.021484375
+   ],
+   [
+    "length",
+    15498.484375
+   ],
+   [
+    "vis_own_seg",
+    7861.923828125
+   ],
+   [
+    "cF_area",
+    6849.46142578125
+   ],
+   [
+    "vis_kelp",
+    5894.21484375
+   ],
+   [
+    "cR_area",
+    5663.09521484375
+   ],
+   [
+    "hist_turn_ewm",
+    5581.83935546875
+   ],
+   [
+    "mem_since_eat",
+    5313.7265625
+   ],
+   [
+    "cL_area",
+    5243.99169921875
+   ],
+   [
+    "near_enemy_head",
+    3545.34423828125
+   ],
+   [
+    "trail_self_f0.7",
+    3408.97216796875
+   ],
+   [
+    "trail_echo_kelp",
+    2886.500732421875
+   ],
+   [
+    "mem_portals_seen",
+    2795.0703125
+   ],
+   [
+    "cF_unvisited",
+    2573.35400390625
+   ],
+   [
+    "trail_ehead_m0.7",
+    2554.093017578125
+   ],
+   [
+    "mem_disp",
+    2427.3935546875
+   ],
+   [
+    "vis_enemy_heads",
+    2411.248291015625
+   ],
+   [
+    "trail_echo_total",
+    2243.189453125
+   ],
+   [
+    "trail_self_f0.9",
+    2017.483642578125
+   ],
+   [
+    "trail_echo_ally",
+    1977.7962646484375
+   ],
+   [
+    "units",
+    1887.920654296875
+   ],
+   [
+    "n_exit_portal",
+    1796.2586669921875
+   ]
+  ],
+  "mlp_v5+hist+trail": {
+   "acc": 0.8466903188180405,
+   "macro_f1": 0.7655746881995025,
+   "logloss": 0.316203284235545
+  }
+ },
+ "direction": {
+  "rows_match_q1_sample": false,
+  "n_train": 365066,
+  "n_test": 77225,
+  "hist_cols": [
+   "hist_a1",
+   "hist_a2",
+   "hist_a3",
+   "hist_a4",
+   "hist_a5",
+   "hist_a6",
+   "hist_turn_ewm",
+   "hist_lr_ewm",
+   "hist_since_turn",
+   "hist_eat10"
+  ],
+  "trail_cols": [
+   "trail_eseg_m0.7",
+   "trail_eseg_f0.7",
+   "trail_eseg_r0.7",
+   "trail_ehead_m0.7",
+   "trail_ehead_f0.7",
+   "trail_ehead_r0.7",
+   "trail_aseg_m0.7",
+   "trail_aseg_f0.7",
+   "trail_aseg_r0.7",
+   "trail_ahead_m0.7",
+   "trail_ahead_f0.7",
+   "trail_ahead_r0.7",
+   "trail_self_f0.7",
+   "trail_self_r0.7",
+   "trail_eseg_m0.9",
+   "trail_eseg_f0.9",
+   "trail_eseg_r0.9",
+   "trail_ehead_m0.9",
+   "trail_ehead_f0.9",
+   "trail_ehead_r0.9",
+   "trail_aseg_m0.9",
+   "trail_aseg_f0.9",
+   "trail_aseg_r0.9",
+   "trail_ahead_m0.9",
+   "trail_ahead_f0.9",
+   "trail_ahead_r0.9",
+   "trail_self_f0.9",
+   "trail_self_r0.9",
+   "trail_echo_kelp",
+   "trail_echo_ally",
+   "trail_echo_allyHead",
+   "trail_echo_enemy",
+   "trail_echo_enemyHead",
+   "trail_echo_total",
+   "trail_grad_e_f",
+   "trail_grad_e_r",
+   "trail_grad_a_f",
+   "trail_grad_a_r"
+  ],
+  "v5": {
+   "acc": 0.7447588216251214,
+   "macro_f1": 0.7150773783106835,
+   "logloss": 0.5551217645077663
+  },
+  "v5+hist": {
+   "acc": 0.7498219488507608,
+   "macro_f1": 0.722225567530954,
+   "logloss": 0.5462620525726142
+  },
+  "v5+trail": {
+   "acc": 0.7542764648753641,
+   "macro_f1": 0.7280834049532944,
+   "logloss": 0.5379781576141159
+  },
+  "v5+hist+trail": {
+   "acc": 0.7545354483651667,
+   "macro_f1": 0.7284205802999516,
+   "logloss": 0.5368671198668528
+  },
+  "top_gain": [
+   [
+    "cF_block",
+    325036.8125
+   ],
+   [
+    "n_exit_any",
+    281012.25
+   ],
+   [
+    "cL_block",
+    205893.75
+   ],
+   [
+    "cR_block",
+    200011.21875
+   ],
+   [
+    "cF_unvisited",
+    80378.546875
+   ],
+   [
+    "trail_self_r0.7",
+    59462.3125
+   ],
+   [
+    "cF_run",
+    53422.5859375
+   ],
+   [
+    "cR_pdist",
+    34874.66796875
+   ],
+   [
+    "cF_area",
+    34576.91796875
+   ],
+   [
+    "cL_pdist",
+    33627.20703125
+   ],
+   [
+    "cF_pdist",
+    27306.86328125
+   ],
+   [
+    "vis_kelp",
+    23462.44921875
+   ],
+   [
+    "trail_self_f0.9",
+    19320.341796875
+   ],
+   [
+    "cL_run",
+    17912.255859375
+   ],
+   [
+    "trail_self_f0.7",
+    17604.193359375
+   ],
+   [
+    "cR_run",
+    17167.693359375
+   ],
+   [
+    "cR_area",
+    14527.5087890625
+   ],
+   [
+    "cL_area",
+    13135.8583984375
+   ],
+   [
+    "cL_unvisited",
+    12126.1015625
+   ],
+   [
+    "ally_front",
+    11315.70703125
+   ],
+   [
+    "cR_unvisited",
+    10809.5771484375
+   ],
+   [
+    "trail_self_r0.9",
+    10275.001953125
+   ],
+   [
+    "hist_lr_ewm",
+    9600.7060546875
+   ],
+   [
+    "pearl_left",
+    8490.876953125
+   ],
+   [
+    "round",
+    8384.2548828125
+   ]
+  ],
+  "mlp_v5+hist+trail": {
+   "acc": 0.7401877630301068,
+   "macro_f1": 0.7145920795094639,
+   "logloss": 0.5702989908896685
+  }
+ }
+}

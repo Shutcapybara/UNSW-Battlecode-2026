@@ -153,3 +153,11 @@ parent V06 (122–38, economy 1.1107):
 | L04 / L20 weights | 0.6 / 0.2 | unchanged | Not tested by HB-1 so far. |
 | new: a strong opponent's strength can concentrate in one learned decision, and imitation strength is steep in that decision's accuracy | — | 0.7 | Q1 gap table; hb1-01/02/03 dose–response vs Ares V04. |
 | new: a donor's learned steering transfers to our search as a prior better than its rules do | — | 0.7 | hb1-12 hold on two seeds (+10.6 pp both) vs hb1-11 fail (−11.6 pp) on the same panel. |
+
+## Addendum (1 Oct) — the upload limit
+
+`unswbc submit` caps the upload zip at 4 MiB. hb1-12 (17.1 MiB) and hb1-04 are therefore local-only.
+**`hb1-14-prior-r540`** is hb1-12 with the same direction GBT truncated to its first 540 rounds and the unused model
+tables dropped: 3.74 MiB zip, judge sandbox 6.9 MB per process and ≤ 10.0 M points per turn, and on the z1 panel
+(seed 1, parent Ares V06) **141–19, +11.88 pp, hold** — all of hb1-12's win gain (139–21). A 100-round version
+(`hb1-15`, 0.71 MiB) keeps the hygiene gain but only +6.88 pp and fails on economy. Table in `claude/hb1-status.md`.

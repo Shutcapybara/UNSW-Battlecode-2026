@@ -1,0 +1,103 @@
+{
+ "candidate": "tt-01-feed300",
+ "candidate_dir": "bots/tt-01-feed300",
+ "parent": "hb1-12-direction-prior",
+ "note": "",
+ "seeds": [
+  1
+ ],
+ "fingerprint": "e9a6beb51e007717769481b7b65b858ce99a54fa8f04f20e4e697554e25cb01e",
+ "gate": {
+  "verdict": "fail",
+  "why": "economy mean +0.0000, dragons +0.000, length +0.000, win share -1.88pp, tier-2: Own body 3.37->4.62/1k (+37%)"
+ },
+ "panel": "z1",
+ "candidate_stats": {
+  "n": 160,
+  "wld": [
+   136,
+   24,
+   0
+  ],
+  "exp_share": 0.85,
+  "checkpoints": {
+   "pearls@50": 1.1304347826086956,
+   "pearls@100": 1.180445386579139,
+   "pearls@150": 1.159122701838529,
+   "pearls@250": 1.1299435028248588
+  },
+  "checkpoints_raw": {
+   "pearls@50": 38.0,
+   "pearls@100": 115.5,
+   "pearls@150": 177.5,
+   "pearls@250": 257.5
+  },
+  "economy_mean": 1.1499865934628055,
+  "tier1": {
+   "units@100|map": 1.3944444444444444,
+   "total@100|map": 1.2641509433962264,
+   "births@100|map": 1.1531546621998883
+  },
+  "tier1_raw": {
+   "pearls@50": 38.0,
+   "pearls@100": 115.5,
+   "pearls@150": 177.5,
+   "pearls@250": 257.5,
+   "units@100": 22.5,
+   "total@100": 55.0,
+   "births@100": 45.5
+  },
+  "tier2": {
+   "death_wall_per1k": 4.987729639514843,
+   "death_self_per1k": 4.624719571969376,
+   "death_ally_body_per1k": 1.3801563776482197,
+   "death_h2h_ally_per1k": 0.6093592432425744,
+   "death_invalid_per1k": 0.0
+  },
+  "unreferenced_maps": []
+ },
+ "parent_stats": {
+  "n": 160,
+  "wld": [
+   139,
+   21,
+   0
+  ],
+  "exp_share": 0.86875,
+  "checkpoints": {
+   "pearls@50": 1.1304347826086956,
+   "pearls@100": 1.180445386579139,
+   "pearls@150": 1.159122701838529,
+   "pearls@250": 1.1299435028248588
+  },
+  "checkpoints_raw": {
+   "pearls@50": 38.0,
+   "pearls@100": 115.5,
+   "pearls@150": 177.5,
+   "pearls@250": 257.5
+  },
+  "economy_mean": 1.1499865934628055,
+  "tier1": {
+   "units@100|map": 1.3944444444444444,
+   "total@100|map": 1.2641509433962264,
+   "births@100|map": 1.1531546621998883
+  },
+  "tier1_raw": {
+   "pearls@50": 38.0,
+   "pearls@100": 115.5,
+   "pearls@150": 177.5,
+   "pearls@250": 257.5,
+   "units@100": 22.5,
+   "total@100": 55.0,
+   "births@100": 45.5
+  },
+  "tier2": {
+   "death_wall_per1k": 4.925692897721721,
+   "death_self_per1k": 3.3668221216579557,
+   "death_ally_body_per1k": 1.5009474666103402,
+   "death_h2h_ally_per1k": 0.6425256402614998,
+   "death_invalid_per1k": 0.0
+  },
+  "unreferenced_maps": []
+ }
+}

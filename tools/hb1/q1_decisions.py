@@ -11,18 +11,21 @@ Decisions (all on Heartbreaker's own actor-turn rows from build/hb1/v5/corpus, f
 Holdout is by game (20 %, fixed seed); map-identifying columns are excluded (OOS rule).
 Writes build/hb1/q1/<decision>.parquet samples and game_stats/runs/hb1-q1-gaps.json.
 """
-import argparse, glob, json, re, time
+import argparse, glob, json, re, time, os
 from multiprocessing import Pool
 from pathlib import Path
 import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
-B = ROOT / 'build' / 'hb1'
+B = ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1')   # HB_BUILD/HB_TEAM/HB_TAG: other teams (lane tt)
+TAG = os.environ.get('HB_TAG', 'hb1')
 Q = B / 'q1'
-OUT = ROOT / 'game_stats' / 'runs' / 'hb1-q1-gaps.json'
+OUT = ROOT / 'game_stats' / 'runs' / f'{TAG}-q1-gaps.json'
 SEED = 62
 CAP = dict(gate=1200, direction=1200, sonar=600, alloc=None, late=None)
+# HB_CAP_FACTOR scales the per-game caps so that teams with many games (lane tt) keep ~1 M rows per decision.
+CAP = {k: (int(v * float(os.environ.get('HB_CAP_FACTOR', 1))) if v else v) for k, v in CAP.items()}
 MAP_ID = {'W', 'H', 'x', 'y', 'xn', 'yn', 'facing_abs', 'map', 'game', 'dragon'}
 LABELS = {'y_family', 'y_first', 'y_nsteps', 'y_seq', 'y_split', 'y_child', 'y_parent', 'y_sonar_n',
           'y_sonar_mask', 'y_sonar_v', 'y_sonar_vset', 'post_died', 'post_reason'}

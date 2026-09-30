@@ -1,0 +1,35 @@
+name = "tt-01-feed300"
+lineage = "tt"
+author = "claude/tt"
+language = "c++"
+lineage_parent = "hb1-12-direction-prior"
+hypothesis = "The top teams convert their swarm into one long dragon 100-150 rounds before Ares does (cheji bt from ~r300, Stockfish from ~r250; Ares feeders from ~r400-430). hb1-12 builds the largest swarm and converts late: 57 % of its round-limit losses are with a material lead. Starting the existing feeder behaviour earlier converts that material."
+mechanism = "One constant vs hb1-12: Params::feed_base 40 -> 140, so feed_from = 500 - feed_base - 0.6(W+H) is ~r300 on a 60x40 map (cheji bt's measured timing). Feeder behaviour itself unchanged."
+expected_change = "Longer longest dragon at r400/r490, higher round-limit win rate, fewer round-limit losses with a material lead; economy mean (pearls to r250) roughly unchanged."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/bifrost-family.md",
+    "docs/skadi.md",
+    "docs/fenrir-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Restores high-effort target/flood/triple search and Fafnir size-matched threat support in C++. V05 and active V04 v83 remain untouched. Benchmark and sandbox CPU/TLE results are recorded in the V06 finding."
