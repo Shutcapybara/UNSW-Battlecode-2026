@@ -1,0 +1,18 @@
+name = "hb1-03-direction-scaled"
+lineage = "hb1"
+author = "claude/hb1"
+language = "c++"
+lineage_parent = "hb1-01-structured"
+hypothesis = "hb1-01's strength gap vs real Heartbreaker is direction accuracy (hb1-02 showed strength is steep in it); a direction GBT fitted on more data with larger trees (held-out 0.829 -> ~0.854) recovers much of the gap."
+mechanism = "One change vs hb1-01: the direction model is the scaled GBT (3,000 rows per training game, 255 leaves, early-stopped), memory-mapped from build/hb1/export/direction_v03.bin. Gate, child size, sonar and wrapper unchanged."
+expected_change = "Head-to-head vs Ares V04 moves from 14/40 toward Heartbreaker's 28/40. LOCAL-ONLY: the blob is outside the bot directory and far above the header budget; a deployable version needs distillation."
+priority = 0
+supersedes = ""
+status = "local-only experiment (not registered, not deployable)"
+
+[local_evidence]
+refs = [
+    "docs/hub/prompts/2026-09-30-HB1-heartbreaker-anatomy.md",
+    "claude/hb1-status.md",
+]
+summary = "HB-1 Q4. Q1/Q2 numbers in claude/hb1-status.md."
