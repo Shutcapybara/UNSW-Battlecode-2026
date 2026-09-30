@@ -37,6 +37,16 @@ def run(fx, arm, opp, rdir):
     return dict(map=mp, seat=seat, k=k, seed=seed, result=res, rounds=rounds, how=how, secs=round(time.time() - t))
 
 
+def prebuild(bots):
+    """Build each bot once, serially, before parallel games (concurrent `unswbc run`s race on .unswbc-build;
+    same fix as origin/main tools/analysis/features/run_panel.py)."""
+    from unswbc.project import Project
+    for b in bots:
+        t = time.time()
+        Project.from_dir(ROOT / b).compile()
+        print(f'built {b} in {time.time() - t:.0f}s', flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--arm', required=True)
@@ -62,6 +72,7 @@ def main():
                                        win_rate=w / max(1, n), games=rows), indent=1))
         return w, n
 
+    prebuild([a.arm, a.opp])
     with ThreadPoolExecutor(a.jobs) as ex:
         for r in ex.map(lambda f: run(f, a.arm, a.opp, rdir), fixtures):
             rows.append(r)
