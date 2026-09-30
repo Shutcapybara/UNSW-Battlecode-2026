@@ -104,3 +104,17 @@ steps, target type; bootstrap by game (30), 90 %. Off-policy and confounded — 
 Reading: food-dense targets pay in pearls and cost in deaths (the churn trade, L29) — consistent with the negative
 food_free optimum; crowded targets pay less (supports a negative wt_ally); threat is the death signal (for the move
 consumer, wm_threat).
+
+## Feature 2 — `ally` crowding cost on targets (L12/S-1; wt_ally), scan on the maelle-03 base
+
+Pre-registered sign: negative (corpus winners −0.067; self-play pearls −0.42). Pool seed 1, 160 paired fixtures
+vs maelle-03-foodfree (wt_ally = 0):
+
+| w | dJ | d econ | d p50 | d p100 | d p150 | d p250 | d units@100 | d length@100 | d win | d ally h2h /1k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| −1.5 | **+0.130** | **+0.067** | −0.023 | +0.068 | +0.097 | +0.124 | +0.116 | +0.113 | +0.044 | −0.08 |
+| −0.5 | +0.068 | +0.046 | −0.005 | +0.039 | +0.064 | +0.084 | +0.066 | +0.049 | +0.053 | +0.08 |
+| +0.5 | −0.012 | +0.016 | −0.020 | +0.010 | +0.012 | +0.062 | −0.010 | −0.045 | −0.063 | +0.18 |
+
+Monotone, optimum at the edge (−1.5); extending to −3, −5. Largest effect in the lane so far, with material and
+win rate rising with the economy.
