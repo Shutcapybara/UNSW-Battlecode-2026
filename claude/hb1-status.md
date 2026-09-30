@@ -296,3 +296,14 @@ ally head-on −34.0 %. Heartbreaker's learned direction choice, used only as a 
 screening) inside Ares's search, makes Ares much better early and much cleaner; the one negative is late economy
 (r250). That is the H10/L03 phase-bifurcation pattern — the ledger's prescription is phase-conditional logic
 (the prior strong early, faded late), which is the next single-mechanism version, plus a paired seed 2.
+
+### hb1-04-deployable (the mimic) vs Ares V06, z1 panel seed 1 (`game_stats/runs/hb1-04-deployable-z1-s1.{json,md}`)
+
+**GATE: fail** (as expected of a mimic, not a candidate). W–L 94–66 vs parent 122–38 (−17.50 pp); economy mean
+**+0.212** (r50 +0.429, r100 +0.363, r150 +0.111, r250 −0.055); dragons r100 +0.100; length r100 +0.485; births
++0.232. Tier-2: own body 3.66 → **0.00** (the wrapper never steps onto its own body), wall −19.1 %, ally body −54.3 %,
+**ally head-on +147 %** (0.97 → 2.41/1k — the W2 exit-less fallback into an ally head). Heartbreaker's signature on
+the field-relative yardstick: by far the most productive bot on the panel early, and it still loses more games —
+material without conversion, as in the corpus. Note: 2 of 160 fixtures (Slithery Fight vs the Python Vibing++ mimic)
+ran past run_panel's 1800 s and were refilled with a 7200 s timeout (`tools/hb1/run_panel_long.py`); one duplicate
+index row from overlapping runners was removed (backup `index.jsonl.bak-dups`).
