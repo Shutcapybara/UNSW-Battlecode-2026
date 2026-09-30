@@ -93,3 +93,25 @@ size 0.896–0.912). Change-points at 28 Sep 11:00 and 13:00 UTC coincide with t
 per window — most likely sampling, not a new policy. Possible change on 30 Sep: child size fitted on 30 Sep 00–06
 scores 0.844 on 06–12 (usual ~0.90), the window with the lowest win rate (0.70, 308 games) — thin, flagged only.
 Ladder: Elo 2060–2141, rank 1–5 over 274 snapshots, 2096 at the last.
+
+## Q1 — Stockfish (team 206) (`game_stats/runs/tt206-q1-gaps.json`)
+
+Held-out = 20 % of 1,932 games; sampling caps × 0.5.
+
+| decision | n test | majority | tree depth 4 | GBT | MLP | gap tree→MLP | top drop-family Δacc |
+|---|---:|---:|---:|---:|---:|---:|---|
+| split gate | 167,190 | 0.805 | 0.872 | **0.934** | 0.912 | +0.039 | scalar −1.66, cand −1.65, grid −1.05 pp |
+| direction | 224,125 | 0.516 | 0.664 | **0.771** | 0.753 | +0.090 | cand −11.02, grid −1.77 pp |
+| sonar mask | 114,558 | 0.726 | 0.925 | 0.971 | 0.953 | +0.029 | action −11.0 pp |
+| child size | 104,022 | 0.740 | 0.871 | **0.980** | 0.962 | +0.092 | scalar −2.16, cand −1.13 pp |
+| late gate | 137,277 | 0.961 | 0.978 | 0.979 | 0.977 | −0.002 | cand −0.75 pp |
+
+Three teams, GBT held-out: gate 0.975 (Heartbreaker) / 0.829 (cheji bt) / 0.934 (Stockfish); direction 0.829 /
+0.751 / 0.771; child size 0.957 / 0.911 / 0.980; sonar 0.981 / 0.983 / 0.971; late gate 0.9994 / 0.983 / 0.979.
+
+Reading: Stockfish sits between the two. Its production gate is rule-like with **round thresholds** (tree: no exit →
+split; in the open, split after eating at length ≤ 4 as Heartbreaker does; branches at rounds ~250 and ~350 — phase
+switches by round number, typical of hand-written logic). Child size is the most predictable of the three (0.980,
+though a depth-4 tree gets only 0.871). Direction is as hard as cheji bt's (0.771): for both top teams about a
+quarter of moves are not determined by the local view (Heartbreaker: a sixth). Sonar differs: single-direction ray
+masks (1, 2, 4, 8) appear, which neither other team emits — directed signalling.
