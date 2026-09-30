@@ -372,3 +372,19 @@ The ramps keep hb1-14's elimination wins and lose round-limit games the sharp sw
 A swarm that is partly converting gets less concentration than tt-05 without keeping hb1-14's elimination edge. On
 this panel the validated choice is a clean switch at ~r300, not an interpolation. Head-to-heads (hb1-14 vs tt-05, each
 ramp vs both endpoints, ten live maps) running.
+
+Head-to-heads, ten live maps (`game_stats/runs/tt-h2h-*.json`; 40 fixtures, extended to 80 for the three that bear
+on tt-06):
+
+| match | 40 fixtures | 80 fixtures | one-sided p (80) |
+|---|---:|---:|---:|
+| hb1-14 vs tt-05 | 21/40 | 37/80 | — |
+| tt-06-ramp-300-400 vs hb1-14 | 24/40 | 40/80 | 0.54 |
+| tt-06-ramp-300-400 vs tt-05 | 23/40 | 43/80 | 0.29 |
+| tt-07-ramp-250-450 vs hb1-14 | 20/40 | — | — |
+| tt-07-ramp-250-450 vs tt-05 | 21/40 | — | — |
+
+**Conclusion.** tt-06's apparent direct-play edge at 40 fixtures (47/80 combined, p ≈ 0.07) vanished at 80 (40/80,
+43/80). In direct play hb1-14, tt-05 and the ramps are equal; against the zoo the ramps are worse (−3 and −9 games).
+Interpolating the feeding onset adds nothing and a wide ramp costs round-limit games; the validated choice is a clean
+switch, and hb1-14 and tt-05 are interchangeable on every local measure.
