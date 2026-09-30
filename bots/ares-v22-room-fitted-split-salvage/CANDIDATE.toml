@@ -1,0 +1,27 @@
+name = "ares-v22-room-fitted-split-salvage"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v19-critical-enclosure-split"
+hypothesis = "A routine size-2 split can leave an overlong parent with too little room after feeding a dead end. A slightly larger tail child may let both resulting dragons fit their forecast rooms while sacrificing fewer trapped segments than the largest possible split."
+mechanism = "Preserve V19 except when the size-2 routine split leaves the parent under-room. Evaluate larger child sizes and choose the smallest legal size for which child and parent both meet their room requirements; otherwise keep the size-2 split."
+expected_change = "Reduce segments lost in dead-end feeding and improve direct W/L versus V19 without lowering r100 economy or causing sandbox CPU faults."
+priority = 217
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "bots/ares-v19-critical-enclosure-split/README.md",
+    "bots/ares-v21-critical-split-salvage/README.md",
+]
+summary = "V22 direct seed-1 all-map screen versus V19: 10-10, zero errors. Rejected."

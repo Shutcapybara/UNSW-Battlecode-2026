@@ -1,0 +1,27 @@
+name = "ares-v24-established-farm-salvage"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v23-farm-gated-salvage-split"
+hypothesis = "V23's farm-gated split can fire on newborns during their escape handoff and disrupt early routing. Restricting it to established dragons should preserve useful dead-end salvage while preventing newborn re-splitting."
+mechanism = "Keep V23's farm-gated size upgrade, but require escape_active to be false before replacing a smaller selected split with the len-2 tail child."
+expected_change = "Retain V23's favorable Slithery Fight outcome, restore V19's Portal result, and improve direct W/L versus V19 while reducing trapped segments lost at farm exits."
+priority = 219
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "bots/ares-v19-critical-enclosure-split/README.md",
+    "bots/ares-v23-farm-gated-salvage-split/README.md",
+]
+summary = "V24 direct seed-1 all-map screen versus V19: 10-10, zero errors. Rejected."

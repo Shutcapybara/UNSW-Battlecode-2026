@@ -1,0 +1,24 @@
+name = "ares-v33-split-portal-route-handoff"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v32-save-long-child-at-dead-end"
+hypothesis = "A newborn can see a pearl beyond an exit portal while its parent knows only the entry edge; handing that edge to the child at birth lets it choose the portal route immediately."
+mechanism = "On a split, broadcast the nearest known portal edge as a type-9 packet. A newborn decodes the single edge, routes to its reachable side, commits through it, and drops the waypoint after transit or timeout."
+expected_change = "In match 658574, the split child follows the parent's known endpoint, crosses portal 1, and collects the pearl at (10,32) on round 22."
+priority = 225
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v33-split-portal-route-handoff.md",
+    "https://game.battlecode.au/visualiser?match=658574",
+]
+summary = "Replay-derived stateful simulation: parent reproduced its recorded round-0–15 actions and broadcast portal 1 edge 954 at the split. Replacing the two recorded parent-to-child split-turn deliveries with V33's packet made the child cross the portal and eat (10,32) on round 22. No full-match rerun or broader panel; submission v89 (ID 12584) is active, while the local candidate remains experimental."
