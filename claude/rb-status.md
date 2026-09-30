@@ -27,7 +27,7 @@ kept) names a findings file, not opened.
 
 Seed 1 of both panels first (160 + 232 games); a candidate stops there (REJECT at screen) when its pool Δecon
 point estimate is ≤ 0, or (from 04 on) when units@100, length@100 or win has a point estimate below −0.03.
-Otherwise the full D-032 gate (seeds 1–3, both panels) decides. Null mechanisms may be rejected on a direct
+Also (from 21 on): stop when the pool Δecon upper bound is below +0.02 (too small for 3 seeds to clear 0). Otherwise the full D-032 gate (seeds 1–3, both panels) decides. Null mechanisms may be rejected on a direct
 replay check (counting the targeted event) without a screen.
 
 Report 1: `docs/findings/2026-09-30-rb-lane.md` (versions 01–06).
@@ -54,3 +54,4 @@ Note (13/15): on trauma_tr replays the extra wall deaths with symmetry are pocke
 | 18-farm05 | trap_farm_factor 0.15 → 0.05 on 17 | small + econ, wall ↑ | +0.048 [+0.025, +0.073] (s1) | +0.005 [−0.006, +0.016] (s1) | — (params) | REJECT at screen | pool wall +25 %, self +19 %; units/length flat, win −0.022: the extra pearls are paid in dead dragons. The farm discount is a two-sided cliff at 0.15 |
 | 19-dive4 | dive_value 3 → 4 on 17 | + p@50, units flat | +0.077 [+0.041, +0.114] (s1) | −0.002 [−0.014, +0.009] (s1) | — (params) | REJECT at screen | gen win −0.043 [−0.078, −0.013], gen units −0.028, length −0.025: symmetry does not make dives safe on unseen maps |
 | 20-spread | density_ally_weight 0.10 → 0.40 on 17 | + p@50 on open maps | +0.018 [−0.016, +0.055] (s1) | +0.009 [−0.024, +0.042] (s1) | — (params) | REJECT (full pool s1–3: +0.015 [−0.007, +0.037]) | everything flat over 3 seeds (units −0.001, length +0.001, win +0.013), tier-2 flat: s1 was optimistic; gen s2–3 not run |
+| 21-symconf4 | sym_min_conf 8 → 4 on 17 | + p@50 where detection is late | +0.005 [−0.003, +0.013] (s1) | not run | — (params) | REJECT (null) | late detection (trauma) is lack of mirrored observations, not confirmation count; trauma +0.002 |
