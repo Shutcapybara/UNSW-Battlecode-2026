@@ -68,6 +68,15 @@ cost; `enemy_ew` as a risk cost on routes and targets; `death_ew`; local sparsit
 
 ## Part 3 — the learned scorer (when Part 2 has ≥ 3 accepted features)
 
+Two learned forms, in this order (L34): first a **CNN embedding** of the local view (9×9 to 15×15 window; channels:
+terrain, kelp, pearls, bed timing, ally/enemy parts, seen-age, the EW grids) replacing the hand feature vector for
+the scorer at the same training target — fidelity and gate at equal CPU; then a **small GRU (64–128)** over the
+per-turn embedding as accumulated state, tested against the EW grids + mode belief on the same target and gate.
+Probe the hidden state (linear probes for enclosure, food density, mode): if the probes recover the hand-built
+state, the hand state was the right inductive bias; if the net wins with state the probes cannot name, say so.
+Export both as weight arrays with a deterministic forward pass; the training log must match the live feature
+computation bit for bit (this is what sank the three Python attempts).
+
 Replace the linear `Σ w_i f_i` for the target scorer with a small learned scorer trained on the feature dump
 plus outcomes: first a GBT (exported to a C++ header via `export_hgb.py`'s path), then, if it beats the linear
 form at equal CPU, a tiny MLP (≤ 4k weights, exported as arrays; the 4090 trains it in minutes, the bot runs it in

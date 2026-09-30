@@ -33,8 +33,9 @@ Decide and justify, with the programme's evidence, each of:
    (a) *parameters*: the policy is a vector of evaluation weights (`params.hpp` exposed at runtime; the SF-1
    interface), trained by evolution strategies / CMA-ES / SPSA on game outcomes — no model in the bot, nothing to
    export but numbers; the cheapest loop and the one most likely to pass the gate first;
-   (b) *scorer*: a small net (≤ 4k weights) that scores candidate targets and/or candidate moves from the
-   feature vector, trained by policy gradient on logged candidate sets with a stochastic (softmax-temperature)
+   (b) *scorer*: a small net (≤ 4k weights; or, per L34, a small CNN over the local view plus a GRU-64 carrying
+   accumulated state — ~50 k multiply-adds a turn, still negligible) that scores candidate targets and/or candidate
+   moves from the feature vector or the learned embedding, trained by policy gradient on logged candidate sets with a stochastic (softmax-temperature)
    version of the bot at training time and argmax at ship time; exported as arrays into a C++ header;
    (c) *full action policy*: imitation-pretrained on the corpus (top-30 sides), RL-fine-tuned; the highest ceiling
    and the one the programme has tried three times in Python without reaching a panel (L27).
