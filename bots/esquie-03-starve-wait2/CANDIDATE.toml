@@ -1,0 +1,18 @@
+name = "esquie-03-starve-wait2"
+lineage = "esquie"
+author = "glm-5.3/esquie"
+language = "c++"
+lineage_parent = "esquie-01-nodevil"
+hypothesis = "esquie-02's gated bed anticipation with the gate observable fixed: a known bed whose countdown has passed (spawn_at < rnd, within bed_stale) plausibly holds a sitting pearl and counts as food. v02's false-starve made dragons loiter at ripening beds while known pearls sat elsewhere (Trophy econ_pct -0.12, trauma_tr r250 -29)."
+mechanism = "same switch as esquie-02, food_soon condition widened to the bed_stale window (the same staleness cell_value uses). One observable change; switch-off = parent."
+expected_change = "keeps v02's local gains (Trauma r50, Dilemma late, pinwheel) and removes the slow-dense-map leak (Trophy/Default unchanged again)"
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-10-01-esquie-map-anatomy.md"]
+summary = "Esquie M-1 v2 gate. Parity and divergence profile re-verified at build; panels below."
+
+[activation_contract]
+kind = "legacy_none"
+note = "one params switch (esquie_gated_wait); identity by fingerprint"
