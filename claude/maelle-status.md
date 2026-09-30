@@ -163,3 +163,16 @@ ally·(wt_ally + wt_ally_clock·round/500) — scanned on top of maelle-04 over 
 Not monotone, convex fit, both points near noise: fading the crowding cost with the clock does not repair
 maelle-04's late loss (win stays negative). Not gated. L03 is not supported for this feature; the late cost is
 likely map-dependent rather than a clock effect.
+
+## Feature 3 — `enemy` risk cost on targets (L12/S-1; wt_enemy), scan on the parent (pool seeds 1+2, 320 paired)
+
+Pre-registered sign: negative (corpus −0.025; self-play pearls −0.19).
+
+| w | dJ | d econ | d p50 | d p100 | d p150 | d p250 | d units@100 | d length@100 | d win | d ally h2h /1k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| −1.5 | −0.060 | −0.054 | −0.012 | −0.056 | −0.078 | −0.071 | −0.030 | −0.023 | −0.086 | −0.09 |
+| −0.5 | −0.020 | −0.022 | −0.016 | −0.011 | −0.028 | −0.034 | −0.016 | −0.017 | −0.044 | −0.13 |
+| +0.5 | −0.018 | −0.021 | −0.023 | −0.029 | −0.015 | −0.018 | −0.013 | −0.017 | +0.016 | −0.13 |
+
+**Zero-weight optimum** (argmax −0.02, 90 % [−0.53, +0.50]); both directions lose. The corpus shading away from
+enemy-dense pearls is already carried by the bot's enemy_target_discount and threat cost. Not gated.

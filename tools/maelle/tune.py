@@ -138,11 +138,13 @@ def cmd_scan(a):
         register(arm, a.bot, params_str(p))
         arms_[v] = arm
     parent = a.parent
-    if base:  # value 0 on a non-empty base is its own arm
+    if base and not a.ref:  # value 0 on a non-empty base is its own arm
         arms_[0.0] = f"{a.bot}~{params_str(base)}"
         register(arms_[0.0], a.bot, params_str(base))
     jl = []
-    for arm in list(arms_.values()) + ([parent] if not base else []):
+    if a.ref:  # explicit reference arm (e.g. a switch off), no value-0 arm
+        parent = a.ref
+    for arm in list(arms_.values()) + ([parent] if (not base or a.ref) else []):
         bot, _ = lane.arm_spec(arm)
         for panel in panels:
             for fx in lane.fixtures(bot, panel, seeds):
@@ -166,7 +168,7 @@ def cmd_scan(a):
         D[v] = m
         rows.append(dict(value=v, n=len(m), **{f'd_{k}': float((m[k + '_c'] - m[k + '_p']).mean()) for k in METRICS}))
     # quadratic fit of the paired dJ over values (0 -> 0 by construction), bootstrap over fixtures
-    xs = [0.0] + [r['value'] for r in rows]
+    xs = ([] if a.ref else [0.0]) + [r['value'] for r in rows]
     common = None
     for v, m in D.items():
         kk = set(map(tuple, m[KEY + ['panel']].astype(str).to_numpy()))
@@ -182,7 +184,7 @@ def cmd_scan(a):
     lo, hi = min(xs), max(xs)
 
     def fit(ix):
-        X = np.array(xs); y = np.array([0.0] + [Y[v][ix].mean() for v in sorted(Y)])
+        X = np.array(xs); y = np.array(([] if a.ref else [0.0]) + [Y[v][ix].mean() for v in sorted(Y)])
         c = np.polyfit(X, y, 2)
         grid = np.linspace(lo, hi, 201)
         g = np.polyval(c, grid)
@@ -282,6 +284,7 @@ def main():
     s.add_argument('--panel', default='pool'); s.add_argument('--seeds', default='1')
     s.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 4) - 2)); s.add_argument('--name')
     s.add_argument('--score-only', action='store_true')
+    s.add_argument('--ref', help='reference arm instead of value 0 on the base (the quadratic is then fitted without a 0 point)')
     p = sub.add_parser('spsa')
     p.add_argument('--bot', required=True); p.add_argument('--vars', required=True); p.add_argument('--base', default='')
     p.add_argument('--iters', type=int, default=12); p.add_argument('--batch', type=int, default=40)
