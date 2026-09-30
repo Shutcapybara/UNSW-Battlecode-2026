@@ -215,6 +215,21 @@ state, which lasts to r80+ there, still caught), **schooltime 0** (was 26/13,578
 **trophy 0** (was 14 in v1). If the panels keep the local gains with the pooled r50 recovered,
 this is the local-hold candidate.
 
+Results: **local hold candidate — pooled flat, win up, cluster gains held, off-cluster silent.**
+
+| read | number (paired vs esquie-01, z1 seeds 1+2) |
+|---|---|
+| paired Δeconomy | **+0.0006**, bootstrap 90 % [−0.0051, +0.0064] — dead flat |
+| pooled gate | econ mean −0.005 (median form), **win +0.94pp** (231 wins vs 227), every checkpoint ≥ −0.008, tier-2 none up >10 % |
+| cluster gains held | Dilemma win 0.812 → **0.875**, p@250\|map 0.863 → **0.970**; Trauma win 0.750 → **0.812**, p@250\|map 1.148 → **1.208** (best of all three forms) |
+| leak gone | Trophy **restored and up**: win 0.719 (= base), p@250\|map 1.265 → **1.404**, econ_pct 0.594 → 0.606; Schooltime win back to 0.688 (= base) |
+| transfer (gen s1) | trauma_tr **+0.250 win** (03: +0.312), far_harbors +0.125, Autarky tr / relay_depots +0.062; losses default_tr / pulse_farms −0.062; pearl deltas ≈ 0 everywhere — the gate barely fires off-cluster |
+| the trade | **Trauma's r50 gain reverted** (0.222 → 0.111): the opening gain lived in the age-12–24 window. min_age trades the starved-opening r50 against the rich-map transient; **min_age 16–18 is the untested middle** |
+
+The gate is itself the structure-gated switch the lead's verdict rules describe (keyed on the
+dragon's observed food knowledge — map identity, size and hash are never read), so no separate
+gated build is needed: 03b as shipped is the structure-gated form of 02/03. Seeds 1–3 read below.
+
 ### esquie-04-crit-split — the teammates' V19 critical-enclosure split at panel scale (target: the leak cluster)
 
 Switch-off parity 0/18,387 (portals/dilemma/trophy transcripts); acts at 1.8–1.9 % of turns on
@@ -246,7 +261,7 @@ available); effects per cluster. +/− = measured at panel scale this lane.
 |---|---|---|---|---|---|---|
 | starve-wait v1 (02) | **+** (Trauma r50 ×2, Dilemma late, pinwheel transfers) | 0 | 0 (bit-identical) | 0 (Devil) / win −9pp (Schooltime) | **−** (Trophy −0.12 pct) | n/a |
 | starve-wait v2 (03) | **+** (same + trauma_tr +0.31 win) | +0.03 win | 0 | Schooltime win −6pp | ~0 (Trophy restored) | n/a |
-| starve-wait v3 (03b) | (pending) | | | | | |
+| starve-wait v3 (03b) | + late only (r50 reverted; min_age 16–18 untested) | +0.03 win | 0 (bit-identical) | 0 (all = base) | **+** (Trophy r250 +0.14) | n/a |
 | crit-enclosure split (04, = V19) | − (Trauma newborn ×3) | **+** (trapped −19 %, newborn −28 %) | **−** (trapped +7 %) | − (Dilemma trapped +20 %) | 0 (bit-identical) | n/a |
 | flat bed-wait (Renoir 01a/c) | + (QoS +0.14, Trauma +0.14) | ? | ? | **−** (Devil −0.72, Schooltime −0.41) | ? | n/a |
 | exploration value ↓ (Renoir 07a/c) | — | — | — | pool +0.11 but off-pool flat (learned the ten maps) | — | − (transposed QoS/Trauma −0.35) |
