@@ -1,0 +1,12 @@
+name = "gustave-05a-yield"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "Asymmetric yield for contested cells: when the first cell a path enters is one legal step from a visible ally head, the higher-id dragon takes -4 and the lower-id dragon drops the symmetric crowd penalty for that ally (the parent penalised both by crowd_weight 0.6 x (3 - d)). Changes which dragon enters a contested cell, not how many cells are entered."
+expected_change = "death_h2h_ally down >= 20 % (the pearl pull ~2.7 beats the -1.2 crowd term for both dragons, so both enter); economy flat or up (the priority dragon no longer pays the crowd term); other tier-2 flat. Alone: a HOLD candidate for stacking on the exploration-value lever."
+hypothesis = "L29/L05: ally head-on is the churn channel of the exploration-value economy (02a/02b +35 %); a coordination rule that assigns the contested cell removes deaths without the caution cost Renoir measured"
+params = ["yield_enabled=true", "yield_penalty=4.0"]
+status = "candidate (not registered)"
+fingerprint = "23efe3156e9b032456fcea62c0175176be1db5fa8d9761c66267e7d5de5710ea"
