@@ -1,0 +1,26 @@
+name = "ares-v23-farm-gated-salvage-split"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v19-critical-enclosure-split"
+hypothesis = "A routine size-2 split during pearl-rich dead-end feeding can leave a long parent at the spawner and strand extra segments. The existing farm signal can target that case; a maximal safe tail child leaves only two segments at the feed point."
+mechanism = "Preserve V19 except when the best movement candidate is an under-room pearl farm and a smaller split is selected. Replace it with V19's len-2 safe tail escape split when available."
+expected_change = "Reduce segments lost in dead-end feeding on Autarky, Prisoners Dilemma, and Slithery Fight while retaining V19-like economy and improving direct W/L versus V19 without sandbox faults."
+priority = 218
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "bots/ares-v19-critical-enclosure-split/README.md",
+]
+summary = "V23 direct seed-1 all-map screen versus V19: 10-10, zero errors. Rejected."

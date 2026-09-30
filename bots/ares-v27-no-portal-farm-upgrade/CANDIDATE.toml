@@ -1,0 +1,27 @@
+name = "ares-v27-no-portal-farm-upgrade"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v26-critical-farm-salvage"
+hypothesis = "The critical farm upgrade flips the Portal fixture because the farming route intersects learned portal topology. Restricting the new upgrade to portal-free known terrain should preserve its Slithery gain and remove the Portal regression."
+mechanism = "Keep V26's farm, critical reach, and newborn gates; additionally require that no portal edge is known in the matched atlas or remembered edge grid. Existing V19 emergency behavior is unchanged."
+expected_change = "Keep the favorable Slithery Fight result while restoring the V19 Portal result and produce a direct seed-1 win over V19."
+priority = 222
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "bots/ares-v19-critical-enclosure-split/README.md",
+    "bots/ares-v26-critical-farm-salvage/README.md",
+]
+summary = "Four-game seed-1 Portal/Slithery diagnostic versus V19: 0-4, zero errors. Rejected."

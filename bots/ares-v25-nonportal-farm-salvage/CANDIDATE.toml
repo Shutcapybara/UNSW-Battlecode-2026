@@ -1,0 +1,27 @@
+name = "ares-v25-nonportal-farm-salvage"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v24-established-farm-salvage"
+hypothesis = "V23's farm-specific split upgrade flipped one Portal fixture against V19. Requiring an ordinary open tail exit should preserve the useful Slithery result while avoiding portal-route splits."
+mechanism = "Keep V24, but use the len-2 farm salvage split only when the detached child has an immediately open non-portal exit. V19's critical fallback is unchanged."
+expected_change = "Win the favorable Slithery fixture without flipping the Portal result, yielding a direct seed-1 advantage over V19 and retaining the dead-end salvage behavior."
+priority = 220
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "bots/ares-v19-critical-enclosure-split/README.md",
+    "bots/ares-v23-farm-gated-salvage-split/README.md",
+]
+summary = "Four-game seed-1 Portal/Slithery diagnostic versus V19: 2-2, zero errors. Portal remained 0-2 and Slithery 2-0; rejected."

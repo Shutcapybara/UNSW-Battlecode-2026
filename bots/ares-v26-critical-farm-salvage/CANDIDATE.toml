@@ -1,0 +1,27 @@
+name = "ares-v26-critical-farm-salvage"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v23-farm-gated-salvage-split"
+hypothesis = "The farm-only split override changes too many unconstrained resource routes. Requiring the critical reach probe as well should preserve useful farm salvage only when movement remains trapped."
+mechanism = "Keep V23's farm-gated len-2 split upgrade, but require current and best-move reach to remain <=8 and require the dragon not to be in an active newborn escape handoff."
+expected_change = "Retain the favorable Slithery Fight split result, avoid the Portal regression, and beat V19 in the direct all-map seed-1 panel without sandbox faults."
+priority = 221
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "bots/ares-v19-critical-enclosure-split/README.md",
+    "bots/ares-v23-farm-gated-salvage-split/README.md",
+]
+summary = "Four-game seed-1 Portal/Slithery diagnostic versus V19: 2-2, zero errors. Portal remained 0-2 and Slithery 2-0; rejected."

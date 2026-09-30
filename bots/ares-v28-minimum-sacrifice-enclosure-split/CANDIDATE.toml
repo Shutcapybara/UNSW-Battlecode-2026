@@ -1,0 +1,26 @@
+name = "ares-v28-minimum-sacrifice-enclosure-split"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v19-critical-enclosure-split"
+hypothesis = "V19's critical-enclosure fallback splits off a child of len-2, leaving only a two-segment head parent in the enclosure. The live loss review instead describes sacrificing two tail segments so the longer dragon can continue out."
+mechanism = "Keep V19's reach detection and all other policy decisions. When the critical-enclosure fallback fires, split off only Params::split_child tail segments rather than len-2."
+expected_change = "Improve matched outcomes on dead-end and enclosed routes, especially Autarky and Dilemma, without sandbox errors."
+priority = 223
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "bots/ares-v19-critical-enclosure-split/README.md",
+]
+summary = "Seed-1 screen versus V19: diagnostic 6-2; all-10-map panel 12-8, zero errors, all 20 replays decoded. Submitted v87 (ID 12440), API status active."
