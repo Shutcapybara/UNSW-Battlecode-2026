@@ -5,6 +5,7 @@
     $PY tools/verso/cycle.py blob     NAME --bot BOT dir=... q=...           # boosters -> head blob + C++ parity
     $PY tools/verso/cycle.py screen   ARM --parent P [--jobs 13]             # pool seed 1, scored
     $PY tools/verso/cycle.py gate     ARM --parent P [--jobs 13]             # D-032: pool + gen, seeds 1-3
+    $PY tools/verso/cycle.py tempo    ARM --parent P [--panels pool,gen]     # S-1's tempo gate on the same fixtures
     $PY tools/verso/cycle.py record   ARM                                     # fidelity transcripts of an arm
     $PY tools/verso/cycle.py fidelity ARM --to PREV_ARM                       # decision agreement with PREV_ARM
     $PY tools/verso/cycle.py table                                            # the status table from the scores
@@ -69,6 +70,22 @@ def cmd_screen(a):
        '--json', C.B / 'scores' / f'{a.arm}--{a.parent}--pool-s1.json')
 
 
+def cmd_tempo(a):
+    """S-1's tempo gate (opening: rounds behind the top-ten net-income curve, r10-150) on the paired fixtures."""
+    (C.B / 'scores').mkdir(exist_ok=True)
+    for panel in a.panels.split(','):
+        cd, pd_ = L.RUNS / a.arm / panel, L.RUNS / a.parent / panel
+        if not (cd / 'replays').is_dir() or not (pd_ / 'replays').is_dir():
+            print(f'[{panel}] replays missing for {a.arm} or {a.parent}; skipped')
+            continue
+        p = subprocess.run(['nice', '-n', '19', PY, 'tools/s1/tempo_gate.py', str(cd), str(pd_), '--jobs', '8'],
+                           capture_output=True, text=True, cwd=C.ROOT)
+        (C.B / 'scores' / f'{a.arm}--{a.parent}--tempo-{panel}.txt').write_text(p.stdout + p.stderr)
+        for line in p.stdout.splitlines():
+            if line.startswith(('tempo delta', 'VERDICT', '  total length', '  win share')):
+                print(f'[{panel}] {line}')
+
+
 def cmd_gate(a):
     sh(PY, 'tools/verso/lane.py', 'run', a.arm, '--panel', 'both', '--seeds', '1,2,3', '--jobs', a.jobs, '--extract')
     (C.B / 'scores').mkdir(exist_ok=True)
@@ -131,6 +148,7 @@ def main():
     b = sub.add_parser('blob'); b.add_argument('name'); b.add_argument('heads', nargs='+'); b.add_argument('--bot', required=True)
     for n in ('screen', 'gate'):
         s = sub.add_parser(n); s.add_argument('arm'); s.add_argument('--parent', required=True); s.add_argument('--jobs', default='13')
+    t = sub.add_parser('tempo'); t.add_argument('arm'); t.add_argument('--parent', required=True); t.add_argument('--panels', default='pool')
     r = sub.add_parser('record'); r.add_argument('arm')
     f = sub.add_parser('fidelity'); f.add_argument('arm'); f.add_argument('--to', required=True)
     sub.add_parser('table')

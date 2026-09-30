@@ -20,7 +20,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common as C
 
-KIND = {'dir': 0, 'q': 1}
+KIND = {'dir': 0, 'dir2': 0, 'q': 1}
 
 
 def load_booster(path):

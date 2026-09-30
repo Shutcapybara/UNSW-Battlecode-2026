@@ -6,7 +6,10 @@
 hindsight (operator B): for every logged one-step move of our dragons, tools/verso/cpp/hindsight.cpp searches the
 *recorded* next rounds of that game — true terrain, every other dragon moving as it did, pearls appearing as
 they did — and returns, for each first step F/R/L, the best value reachable (discounted pearls minus the loss of
-the dragon if every continuation dies) and whether any continuation survives the horizon. Written next to the
+the dragon if every continuation dies) and whether any continuation survives the horizon. Reactive deaths are
+not pinned on a cell: a recorded ram on this dragon kills it wherever it stands within the attacker's reach at
+that moment, and an enemy head that entered a cell we would occupy is a head-to-head only with probability
+--p-adj (an ally is assumed to see us and yield). Written next to the
 game's arrays as <game>.hind-h<H>.npy: float32 [n, 9] in the row order of H (NaN rows where there was no move).
 The label is clairvoyant about the future and assumes the others do not react; the head trained on it sees only
 the live features, so it learns the expectation of the hindsight value given what the dragon could observe.
@@ -79,8 +82,11 @@ def tape(replay, path):
             cur['snapped'] = g.round
         elif kind == 'split':
             born[k['child'].id] = g.round; parent[k['child'].id] = k['parent'].id
+        elif kind == 'action':
+            cur['steps'] = len(k['action'][1]) if k['action'][0] == 'move' else 0
         elif kind == 'death' and k['reason'] == 'hitHeadToHead' and k['actor'] is not None and k['actor'] != k['dragon'].id:
-            atk.append((g.round, cell(k['dragon'].body[0]), k['actor'], k['dragon'].id))   # the victim's head cell
+            # the victim's head cell, and how many steps the attacker's move had
+            atk.append((g.round, cell(k['dragon'].body[0]), k['actor'], k['dragon'].id, max(1, cur.get('steps', 1))))
         elif kind == 'pearl_eat' and k['dragon'] is not None and eater:
             c = cell(k['tile'])
             eater[-1][c] = k['dragon'].id + 1
@@ -101,9 +107,9 @@ def tape(replay, path):
     brn = np.array([born.get(i, -1) for i in range(NID)], np.int32)
     team = np.array([1 if (i in g.dragons and g.dragons[i].team == 'B') else 0 for i in range(NID)], np.int32)
     ea = np.array(sorted(eats, key=lambda e: (e[2], e[0])), np.int32).reshape(-1, 3)
-    at = np.array(atk, np.int32).reshape(-1, 4)
+    at = np.array(atk, np.int32).reshape(-1, 5)
     with open(path, 'wb') as f:
-        f.write(np.array([0x33544856, W, H, NC, NR, NID, len(cells), len(ea), len(at)], np.int32).tobytes())
+        f.write(np.array([0x34544856, W, H, NC, NR, NID, len(cells), len(ea), len(at)], np.int32).tobytes())
         for a in (dest, np.stack(occ), np.stack(pearl), np.stack(eater), head, par, brn, team, off,
                   np.array(cells, np.int32), ea, at):
             f.write(np.ascontiguousarray(a).tobytes())
@@ -111,7 +117,7 @@ def tape(replay, path):
 
 
 def _one(args):
-    npz, replay, out, horizon, gamma, unit = args
+    npz, replay, out, horizon, gamma, unit, gd, padj, esc, rho, kappa = args
     try:
         H = np.load(npz)['H']
         q = (H[:, 11] == 0) & (H[:, 12] >= 0)
@@ -120,8 +126,8 @@ def _one(args):
             tp, qp, op = Path(td) / 't.bin', Path(td) / 'q.bin', Path(td) / 'o.bin'
             tape(replay, tp)
             Q.tofile(qp)
-            subprocess.run([str(EXE), str(tp), str(qp), str(len(Q)), str(op), str(horizon), str(gamma), str(unit)],
-                           check=True)
+            subprocess.run([str(EXE), str(tp), str(qp), str(len(Q)), str(op), str(horizon), str(gamma), str(unit),
+                            str(gd), str(padj), str(esc), str(rho), str(kappa)], check=True)
             R = np.fromfile(op, np.float32).reshape(len(Q), 9)
         full = np.full((len(H), 9), np.nan, np.float32)
         full[q] = R
@@ -131,8 +137,9 @@ def _one(args):
         return Path(npz).stem, f'ERR {type(e).__name__}: {e}'
 
 
-def hind_path(npz, horizon):
-    return Path(str(npz)[:-4] + f'.hind-h{horizon}.npy')
+def hind_path(npz, tag):
+    """tag: the horizon (default label set, gamma 0.97) or the name of a variant (--tag)"""
+    return Path(str(npz)[:-4] + f'.hind-h{tag}.npy')
 
 
 def cmd_hindsight(a):
@@ -143,10 +150,11 @@ def cmd_hindsight(a):
     for f in sorted(glob.glob(str(data / '*.npz'))):
         if f.endswith(('.tmp.npz', '.view.npz')):
             continue
-        out = hind_path(f, a.horizon)
+        out = hind_path(f, a.tag or a.horizon)
         rep = reps / (Path(f).stem + '.replay')
         if rep.exists() and not out.exists():
-            work.append((f, str(rep), out, a.horizon, a.gamma, a.unit_value))
+            work.append((f, str(rep), out, a.horizon, a.gamma, a.unit_value,
+                         a.gamma if a.gamma_death is None else a.gamma_death, a.p_adj, a.esc, a.rho, a.kappa))
     print(f'{len(work)} games to relabel', flush=True)
     n = 0
     with Pool(a.jobs) as pool:
@@ -166,11 +174,11 @@ def cmd_audit(a):
     by_ttd = {}
     hcol = D.YCOLS.index(f'died_{a.horizon}')
     for f in sorted(glob.glob(str(data / '*.npz'))):
-        if f.endswith(('.tmp.npz', '.view.npz')) or not hind_path(f, a.horizon).exists():
+        if f.endswith(('.tmp.npz', '.view.npz')) or not hind_path(f, a.tag or a.horizon).exists():
             continue
         z = np.load(f)
         H, Y = z['H'], z['Y']
-        R = np.load(hind_path(f, a.horizon))
+        R = np.load(hind_path(f, a.tag or a.horizon))
         ok = ~np.isnan(R[:, 0]) & (H[:, 13] == 1)
         rel = (H[:, 12] - H[:, 7]) % 4
         k = np.where(rel == 0, 0, np.where(rel == 1, 1, np.where(rel == 3, 2, -1)))
@@ -209,6 +217,15 @@ def main():
         p = sub.add_parser(c); p.add_argument('arm'); p.add_argument('--panel', default='train')
         p.add_argument('--horizon', type=int, default=20); p.add_argument('--jobs', type=int, default=8)
         p.add_argument('--gamma', type=float, default=0.97); p.add_argument('--unit-value', type=float, default=3.0)
+        p.add_argument('--gamma-death', type=float, default=None, help='discount of the death term (default: gamma)')
+        p.add_argument('--tag', default='', help='name of the label set (default: the horizon)')
+        p.add_argument('--p-adj', type=float, default=0.5,
+                       help='probability that an enemy head entering our cell is a head-to-head')
+        p.add_argument('--esc', type=float, default=2.0,
+                       help='loss when a dragon of length >= 4 runs out of moves (escape split); < 0: a full loss')
+        p.add_argument('--rho', type=float, default=1.0,
+                       help='share of a dead dragon the side does not eat back (tempo credit: ~0.55 measured)')
+        p.add_argument('--kappa', type=float, default=1.0, help='share of a killed enemy the side eats')
     a = ap.parse_args()
     {'hindsight': cmd_hindsight, 'audit': cmd_audit}[a.cmd](a)
 

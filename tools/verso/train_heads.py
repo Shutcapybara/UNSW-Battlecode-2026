@@ -29,9 +29,11 @@ TEAM_ROOT = {62: C.ROOT.parent / 'wt-hb1/build/hb1', 70: C.ROOT.parent / 'wt-tt/
 
 def _rows(args):
     import pandas as pd
-    path, cap, cols = args
+    path, cap, cols, max_round = args
     d = pd.read_parquet(path, columns=cols + ['y_family', 'y_first'])
     d = d[(d.y_family == 'move') & d.y_first.isin(C.RELS)]
+    if max_round:
+        d = d[d['round'] <= max_round]
     if cap and len(d) > cap:
         rng = np.random.default_rng(int(Path(path).stem) + 7)
         d = d.iloc[np.sort(rng.choice(len(d), cap, replace=False))]
@@ -39,7 +41,7 @@ def _rows(args):
     return d[cols].to_numpy(np.float32), y
 
 
-def corpus_xy(team, cols, cap, jobs, won_only=False):
+def corpus_xy(team, cols, cap, jobs, won_only=False, max_round=0):
     import pandas as pd
     root = TEAM_ROOT[team]
     G = pd.read_parquet(root / 'games.parquet')
@@ -53,7 +55,7 @@ def corpus_xy(team, cols, cap, jobs, won_only=False):
         paths = [str(root / 'v5' / 'corpus' / f'{g}.parquet') for g in games]
         paths = [p for p in paths if Path(p).exists()]
         with Pool(jobs) as pool:
-            parts = pool.map(_rows, [(p, cap, cols) for p in paths], chunksize=8)
+            parts = pool.map(_rows, [(p, cap, cols, max_round) for p in paths], chunksize=8)
         out[part] = (np.concatenate([p[0] for p in parts]), np.concatenate([p[1] for p in parts]), len(paths))
     return out
 
@@ -82,7 +84,7 @@ def cmd_corpus(a):
     tr, te, meta = [], {}, dict(name=a.name, teams=teams, cap=a.cap, leaves=a.leaves, mirror=a.mirror,
                                 won_only=a.won_only, features=len(feats), by_team={})
     for t in teams:
-        d = corpus_xy(t, feats, caps.get(t, a.cap), a.jobs, a.won_only)
+        d = corpus_xy(t, feats, caps.get(t, a.cap), a.jobs, a.won_only, a.max_round)
         tr.append(d['train'][:2]); te[t] = d['test'][:2]
         meta['by_team'][t] = dict(train_games=d['train'][2], test_games=d['test'][2],
                                   train_rows=int(len(d['train'][1])), test_rows=int(len(d['test'][1])))
@@ -254,7 +256,7 @@ def cmd_own(a):
 
 
 # ------------------------------------------------------------------------------------ hindsight targets (B)
-def load_hind(arms, panel, cols, horizon, limit=0):
+def load_hind(arms, panel, cols, horizon, limit=0, emb=''):
     """-> H, X, R (hindsight [n, 9]), game index; only rows with a hindsight label."""
     import dataset as D
     import relabel as RL
@@ -270,7 +272,10 @@ def load_hind(arms, panel, cols, horizon, limit=0):
             z = np.load(f)
             R = np.load(hp)
             ok = ~np.isnan(R[:, 0])
-            Hs.append(z['H'][ok]); Xs.append(z['X'][ok][:, cols]); Rs.append(R[ok])
+            X = z['X'][ok][:, cols]
+            if emb:   # tier-1 state of the same rows (tools/verso/train_repr.py embed), appended as extra columns
+                X = np.concatenate([X, np.load(f[:-4] + f'.emb-{emb}.npy')[ok]], 1)
+            Hs.append(z['H'][ok]); Xs.append(X); Rs.append(R[ok])
             Gs.append(np.full(int(ok.sum()), gi, np.int32)); gi += 1
     return np.concatenate(Hs), np.concatenate(Xs), np.concatenate(Rs), np.concatenate(Gs), gi
 
@@ -298,7 +303,10 @@ def cmd_hind(a):
     out = C.MODELS / a.name
     out.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    H, Xall, R, G, ng = load_hind(a.data, a.panel, full_cols, a.horizon, a.limit)
+    H, Xall, R, G, ng = load_hind(a.data, a.panel, full_cols, a.tag or a.horizon, a.limit, a.emb)
+    n_emb = Xall.shape[1] - len(names)
+    cols = cols + list(range(len(names), len(names) + n_emb))
+    feats = feats + [f'e_{i}' for i in range(n_emb)]
     X = Xall[:, cols]
     val, alive = R[:, 0::3], R[:, 1::3]
     adv = np.clip(val - val.max(1, keepdims=True), -a.clip, 0.0).astype(np.float32)
@@ -310,13 +318,16 @@ def cmd_hind(a):
     tr = ~te & ~va
     print(f'rows {len(adv)}, games {ng}, features {len(feats)}, mean adv {adv.mean(0).round(3).tolist()}, '
           f'load {time.time() - t0:.0f}s', flush=True)
-    Xm, _ = C.mirror(X, np.zeros(len(X), np.int8), feats)
+    mirror = not a.no_mirror and not n_emb   # the embedding has no mirror map
+    if mirror:
+        Xm, _ = C.mirror(X, np.zeros(len(X), np.int8), feats)
     advm = adv[:, [0, 2, 1]]
     A = np.zeros_like(adv)
-    meta = dict(name=a.name, data=a.data, blocks=a.blocks, horizon=a.horizon, clip=a.clip, rows=int(len(adv)),
+    meta = dict(name=a.name, data=a.data, blocks=a.blocks, tag=a.tag, emb=a.emb, mirror=bool(mirror), horizon=a.horizon, clip=a.clip, rows=int(len(adv)),
                 games=int(ng), features=len(feats), heads={})
     for kk in range(3):
-        Xk = np.concatenate([X[tr], Xm[tr]]); yk = np.concatenate([adv[tr, kk], advm[tr, kk]])
+        Xk = np.concatenate([X[tr], Xm[tr]]) if mirror else X[tr]
+        yk = np.concatenate([adv[tr, kk], advm[tr, kk]]) if mirror else adv[tr, kk]
         b = fit_reg(Xk, yk, X[va], adv[va, kk], feats, a.leaves, a.rounds, a.lr)
         del Xk
         b.save_model(str(out / f'q_{C.RELS[kk]}.ubj'))
@@ -326,7 +337,7 @@ def cmd_hind(a):
                                          r2=1 - float(((adv[te, kk] - A[te, kk]) ** 2).mean() / adv[te, kk].var()))
         print(kk, meta['heads'][C.RELS[kk]], f'{time.time() - t0:.0f}s', flush=True)
     # ---- held-out: regret and fatal-choice rate of the rebuilt policy at several beta
-    Xt, At, advt, alt, Ht = Xall[te], A[te], adv[te], alive[te], H[te]
+    Xt, At, advt, alt, Ht = Xall[te][:, :len(names)], A[te], adv[te], alive[te], H[te]
     i = np.arange(len(Xt))
     uniq = (advt == 0).sum(1) == 1
     can_live = alt.max(1) == 1
@@ -351,7 +362,7 @@ def cmd_hind(a):
             rep[f'nodir_beta_{beta}'] = stats(offline_policy(Xt, names, At, beta, lam=0.0))
     meta['heldout'] = rep
     meta['sec'] = round(time.time() - t0)
-    chk = Xall[te][:3000].astype(np.float32)
+    chk = Xall[te][:3000, :len(names)].astype(np.float32)
     np.save(out / 'check.npy', chk)
     (out / 'meta.json').write_text(json.dumps(meta, indent=1))
     print(json.dumps(meta, indent=1))
@@ -365,6 +376,7 @@ def main():
     c.add_argument('--cap', type=int, default=3000); c.add_argument('--leaves', type=int, default=255)
     c.add_argument('--rounds', type=int, default=3000); c.add_argument('--mirror', action='store_true')
     c.add_argument('--won-only', action='store_true'); c.add_argument('--jobs', type=int, default=8)
+    c.add_argument('--max-round', type=int, default=0, help='opening specialist: only rows up to this round')
     c.add_argument('--bot', default='verso-00-base')
     o = sub.add_parser('own')
     o.add_argument('--name', required=True); o.add_argument('--data', required=True, help='arm[,arm] under build/verso/data')
@@ -377,6 +389,9 @@ def main():
     h.add_argument('--name', required=True); h.add_argument('--data', required=True)
     h.add_argument('--panel', default='train'); h.add_argument('--blocks', default='v5,ares,t4,h')
     h.add_argument('--horizon', type=int, default=20); h.add_argument('--clip', type=float, default=10.0)
+    h.add_argument('--tag', default='', help='label set written by relabel.py --tag')
+    h.add_argument('--emb', default='', help='append the tier-1 state <game>.emb-NAME.npy (offline comparison)')
+    h.add_argument('--no-mirror', action='store_true')
     h.add_argument('--leaves', type=int, default=127); h.add_argument('--rounds', type=int, default=1500)
     h.add_argument('--lr', type=float, default=0.1); h.add_argument('--limit', type=int, default=0)
     h.add_argument('--bot', default='verso-p2-platform')

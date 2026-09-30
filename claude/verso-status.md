@@ -12,14 +12,17 @@ unchanged). The host is shared with the top-teams mimic lane (`r/tt`), which has
 |---|---|---|---|---|---|---|---|---|
 | — | `verso-00-base` | platform: runtime for heads, dump, exploration; inert | — | golden vs maelle-01-nodevil: 61,667 turns, 0 divergent | = maelle-02-features (8 re-played fixtures identical) | = | (maelle-02: 8.7 M) | base |
 | 0 | `verso-01-hb-dir-prior` (arm `c0-hb-small~l1`) | `dir` head on Heartbreaker's corpus moves (v5 features), prior `λ·log p`, λ = 1 | direction 0.829 (their moves) | 0.885 of the base's commands (57,213 turns, 4 games) | win +0.150 [+0.110, +0.188]; econ~ **+0.052 [+0.019, +0.081]**; units +0.193, length +0.151; all four death rates down | win +0.050 [+0.012, +0.089]; econ~ +0.013 [−0.017, +0.042]; units +0.305, length +0.327 | 11.53 M | **ACCEPT** |
-| 1 | screening (platform `verso-p2-platform`) | tier 3 on own data: (A) Monte-Carlo `q` head, (B) hindsight-search `q` head | A: advantage R² 0.012–0.017; B: 0.76–0.78 | — | A: REJECT at β = 1, 3 (seed 1); B: running | — | — | in progress |
+| 1 | screening (platforms `verso-p2/p3-platform`) | tier 3 on own data: Monte-Carlo `q`; hindsight-search `q` (5 label versions); tempo-credit labels; opening donor ensembles | MC 0.015; hindsight 0.76–0.86 | — | best so far `c0x-both-sf`: tempo −2.6 [−4.5, −0.8] rounds, econ~ −0.026 (seed 1); every `q` head REJECT | — | — | no accept yet |
 
-Three lines: **what changed** — cycle 0 is accepted; cycle 1's data (255 exploratory games, 2.5 M rows) and both
-improvement operators exist. **What it did** — the prior is the first D-032 accept (+15 pp win on the pool, +5 pp
-off-pool, material +15–33 %); the Monte-Carlo Q head is noise at this budget and loses; the hindsight search
-labels are learnable (R² 0.77) and cut the offline fatal-choice rate from 1.5 % to 1.05 %. **Next** — the
-hindsight head's screens and gate; then distil it into our own `dir` head (no donor), synthetic training maps,
-the tier-4 and tier-1 ablations.
+Three lines: **what changed** — tier 3 has been tried as a learned first-step term in two forms (Monte-Carlo Q, a
+hindsight search over the recorded future) with five label definitions, plus opening-phase donor ensembles on a
+phase platform, all measured on pool seed 1 against the cycle-0 arm, now with S-1's tempo gate beside D-032.
+**What it did** — no learned correction beats the cycle-0 prior: hindsight labels are learnable (R² 0.8) and buy
+large hygiene gains, but every version costs bed pearls; once the labels use tempo credit (unrecovered loss) the head
+is neutral (tempo +2.5 rounds, NO GAIN / REJECT). Adding Stockfish's prior to Heartbreaker's in the opening is the
+first positive tempo move (−2.6 rounds). Tier 1 adds nothing over the hand features (dropped); tier 4 adds a little.
+**Next** — replicate the opening ensemble at seeds 2–3; SPSA on the opening knobs with the net-income objective on
+data fixtures (queued overnight); then D-032 + tempo on both panels for whatever holds.
 
 ## Platform (30 Sep)
 
@@ -49,7 +52,7 @@ C++ evaluator parity vs XGBoost margins on 3,000 held-out rows per model: max |�
 | `c0-hb` | Heartbreaker (62), 3,000 rows/game | 1.45 M | 2,251 | 0.856 | 27.5 MB |
 | `c0-cj` | cheji bt (70), 600 rows/game | 1.73 M | 2,217 | 0.774 | 27.1 MB |
 | `c0-sf` | Stockfish (206), 1,200 rows/game | 1.55 M | 1,979 | 0.787 | 24.2 MB |
-| `c0-top3` | all three pooled | — | — | running | — |
+| `c0-top3` | all three pooled | — | — | 0.787 | 36.7 MB |
 
 Screens (pool, seed 1, 160 paired fixtures vs `verso-00-base`; λ = 1, fixed before screening):
 
@@ -148,3 +151,67 @@ rebuilt from its own dumped scores (agrees with the recorded greedy choice on 98
 | + hindsight head, β = 1 / 4 / 8 | 0.238 / 0.229 / 0.227 | 1.26 % / 1.09 % / 1.05 % |
 | hand + hindsight head, **no donor prior**, β = 4 | 0.232 | 1.13 % |
 | hindsight head alone | 0.217 | 1.02 % |
+
+The escape-split-free labels above over-punished dead ends. Later label versions (all hindsight, 20 rounds, all
+screened at β = 1 against the cycle-0 arm, pool seed 1, 160 paired):
+
+| Head | Label change | R² (F/R/L) | d econ~ [90 %] | bed pearls r100 / r250 | d win | Tempo (rounds) | Wall deaths /1k (parent 7.13) |
+|---|---|---|---|---|---:|---|---:|
+| `c1-hA` | material loss (length + 3), ram pinned on the cell we took | 0.76–0.78 | −0.361 [−0.415, −0.297] | −18 % / −18 % | −0.031 | — | 2.0 at β = 4 |
+| `c1-hC` | ram modelled as a zone around the attacker (reactive), enemy head arrivals at p = 0.5 | 0.83–0.84 | −0.386 [−0.448, −0.289] | −19 % / −20 % | −0.044 | — | 3.86 |
+| `c1-hD` | + pearls discounted 0.8 (earliness) | 0.82–0.84 | −0.274 [−0.317, −0.199] | −11 % / −11 % | −0.072 | — | 4.73 |
+| `c1-hE` | + escape split: a dragon ≥ 4 that runs out of moves loses only the stub | 0.85–0.86 | −0.112 [−0.169, −0.057] | −5 % / −4 % | −0.019 | +2.7 [+1.1, +4.3] REJECT | 5.96 |
+| `c1-hT` | tempo credit: loss = 0.6 × length (we eat back 45 % of our dead, measured), enemy kill +0.45 × length, no unit term, pearls 0.9 | 0.79–0.81 | −0.006 [−0.061, +0.042] | 0 % / −1 % | −0.025 | +2.5 [+1.0, +3.9] REJECT | 6.78 |
+| `c1-hT` β = 2 | same | | −0.038 [−0.087, +0.024] | −1 % / 0 % | −0.025 | +1.7 [+0.1, +3.3] REJECT | 6.52 |
+
+Hindsight β sweep of `c1-hA`: β 0.5 / 1 / 2 / 4 / 8 → d econ~ −0.19 / −0.36 / −0.57 / −0.60 / −0.61, d win −0.04 / −0.03 /
+−0.14 / −0.15 / −0.24: monotone harm.
+
+Reading: every modelling fix moved the head toward neutral, none past it. The first versions were a lesson in
+credit: charging a death at full material when the side eats back 45 % of its dead (S-1's tempo accounting) makes
+the learned term too cautious, and a cautious dragon leaves contested beds (bed pearls −18 %) while its wall deaths
+fall 70 %. With tempo credit the head stops hurting and stops helping: in the offline rebuild it changes 1.6 % of
+choices and lowers the hindsight fatal-choice rate 1.2 % → 1.1 %; in games that is inside the noise. On this
+policy the first-step choice is no longer where the tempo is lost — L36's components (bed conversion, production,
+early transit, territory) are macro decisions the steering term does not reach.
+
+### Opening controller (lead's direction, 1 Oct): tempo as the opening objective
+
+S-1's tempo gate on the cycle-0 arms (vs `verso-00-base`): pool −7.6 rounds [−8.9, −6.4] ACCEPT (seeds 1–3); gen
+−7.7 [−9.5, −5.9], INCONCLUSIVE only through the per-map guard (`crossroads_tr`, `portal_quartet`, `pulse_farms`,
+`seam_market` slower). Donor priors, seed 1: Heartbreaker 27 MB −9.8, cheji bt −9.1, Stockfish −7.5, pooled −6.6.
+
+Platform `verso-p3-platform`: 27 Ares knobs made runtime values and blended by an opening belief
+`b = sigmoid(8 (0.6 − units/limit − 1.5 round/500 − 0·contact))` (measured state, clock as a soft prior; ~0.5 by
+round 100): `value = base + b (opening − base)`; a second direction head (`dir2`) with its own phase weight.
+Golden parity at the defaults and with the cycle-0 head (0 divergent). Screens against the cycle-0 arm (pool,
+seed 1):
+
+| Arm | Opening (b high) | Later | d econ~ [90 %] | d p50 | d win | Tempo (rounds) [95 %] |
+|---|---|---|---|---:|---:|---|
+| `c0x-open-sf` | Stockfish small prior only | Heartbreaker | −0.059 [−0.107, −0.011] | −0.034 | −0.069 | +1.4 [−0.6, +3.4] NO GAIN |
+| `c0x-open-cj` | cheji bt small prior only | Heartbreaker | −0.230 [−0.305, −0.134] | −0.266 | −0.056 | +5.7 [+3.5, +7.9] REJECT |
+| `c0x-spec-sf` | Stockfish prior fitted on rounds ≤ 120 only | Heartbreaker | −0.049 [−0.125, −0.002] | +0.041 | −0.044 | +2.3 [+0.2, +4.4] REJECT |
+| **`c0x-both-sf`** | Heartbreaker **+** Stockfish (both λ = 1) | Heartbreaker | −0.026 [−0.081, +0.015] | +0.109 | −0.009 | **−2.6 [−4.5, −0.8]** INCONCLUSIVE |
+
+Reading: Heartbreaker's prior is the better opening controller on its own; a second donor added to it (not
+replacing it) is the first move that makes the opening faster than cycle 0. Seeds 2–3 queued, plus the same with
+cheji bt and with an opening-specialist Heartbreaker head.
+
+### Tier questions (offline, tempo-credit hindsight targets, equal data, no mirror augmentation)
+
+| Features | Advantage R² F / R / L | Head-alone hindsight regret |
+|---|---|---:|
+| v5 (+ prior output) | 0.776 / 0.795 / 0.797 | 0.142 |
+| + Ares search outputs | 0.781 / 0.799 / 0.800 | 0.133 |
+| + tier-4 map memory (no Ares) | 0.782 / 0.801 / 0.802 | 0.132 |
+| v5 + Ares + tier 4 | 0.784 / 0.804 / 0.803 | **0.129** |
+| v5 + Ares + tier 4 + tier-1 state | 0.783 / 0.802 / 0.803 | 0.130 |
+| v5 + tier-1 state | 0.776 / 0.793 / 0.794 | 0.141 |
+
+- **Tier 4** (route features over the map memory) earns a small, consistent place: +0.6 pp R², −7 % regret over v5.
+- **Tier 1** (CNN over an 11×11 ego window of the map memory, 18 channels + GRU-96; 8 epochs, held-out policy
+  accuracy 0.82) adds nothing at equal data (≤ ±0.2 pp) — **dropped** under the pre-registered rule. Linear probes
+  on its state: reach within 8 steps R² 0.75, food density 0.48, corridor length 0.46, beds known 0.49, Ares's
+  target type 50 % (majority 29 %): it learned a compressor of the hand state, not new state.
+- Monte-Carlo Q (operator A) is also out at this budget (above).
