@@ -450,3 +450,20 @@ forgot to mention — calibration, wrapper, command, stability (`tt264-q1-calibr
 - Command-level GBT 0.741 raw / 0.726 wrapped (Heartbreaker's wrapper hurts again); MLP 0.717.
 - Q3: direction stable (within / forward / backward 0.705–0.735); one behavioural change-point at 29 Sep 18:00 UTC and
   a gate forward-transfer dip to 0.919 — likely an upload. Ladder Elo 2040 → 2094 (range 1992–2098, rank 1–8).
+
+### Q1 — Cache me outside (952; 598 ranked games only; caps × 1; `game_stats/runs/tt952-q1-gaps.json`)
+
+| decision | n test | majority | tree depth 4 | GBT | MLP | gap tree→MLP | top drop-family Δacc |
+|---|---:|---:|---:|---:|---:|---:|---|
+| split gate | 71,197 | 0.582 | 0.945 | **0.970** | 0.952 | +0.007 | scalar −1.69, memory −1.28 pp |
+| direction | 127,269 | 0.383 | **0.584** | **0.758** | 0.734 | **+0.150** | cand −11.71, grid −2.16 pp |
+| sonar mask | 44,637 | **0.277** | 0.613 | 0.928 | 0.879 | +0.266 | action −10.81, **cand −4.35** pp |
+| child size | 43,212 | 0.945 | 0.977 | 0.997 | 0.986 | +0.009 | scalar −0.41 pp |
+| late gate | 27,137 | 0.974 | 0.984 | 0.987 | 0.982 | −0.002 | cand −0.62 pp |
+
+A third style. Most aggressive production of any team (splits on 42 % of eligible turns): split right after eating at
+length ≤ 4 until ~r450 (Heartbreaker's rule) and **again within 4 turns of the previous split** (chain-splitting);
+memory matters for its gate, unlike every other team. Its steering has the largest tree→GBT gap of any team (+17 pp,
+0.584 → 0.758) — the strongest candidate for a learned direction policy. Child size 2 in 94.5 %. Sonar is unlike any
+other team: the most common ray pattern covers only 28 % of turns (others 64–78 %), GBT 0.928, and candidate features
+matter (−4.35 pp) — state-dependent signalling, likely real communication.
