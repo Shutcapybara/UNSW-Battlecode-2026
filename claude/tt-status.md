@@ -403,3 +403,23 @@ unranked compared, plus the share of games with ≥ 2 fingerprint features > 4 r
 
 Unranked games show slightly more material and wins (weaker unranked opponents), no dummy cluster: the cheji bt and
 Stockfish analyses (all games) stand. The same check runs first on every new team.
+
+## Next two teams (1 Oct): Cache me outside (952, #1, Elo 2096) and forgot to mention (264, #2, 2094)
+
+Ladder 30 Sep 17:15 UTC: #1 Cache me outside, #2 forgot to mention, #3 SSS, #4 cheji bt, #5 Stockfish, #7 Cutlery.
+Synced and extracted: Cache me outside 1,608 games (598 ranked), forgot to mention 2,792 (495 ranked), 0 errors.
+
+Dummy check. Fingerprints match (outlier share 2.0 % / 1.5 % and 0.8 % / 1.7 %, ranked / unranked), but split rate is
+higher in ranked games within the same 6-hour windows (+0.10 and +0.17) — state or a different policy? Decisive test
+(`tools/tt/dummy_policy.py`): GBT fitted on 70 % of ranked games, scored on held-out ranked vs unranked:
+
+| team | decision | ranked held-out | unranked | gap | per window |
+|---|---|---:|---:|---:|---|
+| forgot to mention | gate | 0.963 | 0.969 | −0.6 pp | equal in all 8 |
+| | direction | 0.729 | 0.725 | +0.4 pp | equal in all 8 |
+| Cache me outside | gate | 0.981 | 0.976 | +0.5 pp | equal |
+| | direction | 0.763 | 0.741 | **+2.2 pp** | ranked ahead in 7 of 8 (+1 to +4 pp) |
+
+forgot to mention: same bot — all games used. Cache me outside: not a dummy (a dummy would collapse), but its
+unranked direction policy differs systematically — a variant (older version / other settings). **Distilled from its
+598 ranked games only** (`build/tt/team952r`, symlinked ranked subset; caps × 1).
