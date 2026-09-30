@@ -130,3 +130,15 @@ pool seeds 1+2 (320 paired fixtures per value; the parent already has seeds 1–
 
 Feature 2's scan was run on the maelle-03 base (−1.5: dJ +0.130, econ +0.067, units +0.116); with 03 rejected
 it is being re-run on the parent (maelle-02, w = 0), values −3, −1.5, −0.5, seeds 1+2.
+
+### Feature 2 on the parent (pool seeds 1+2, 320 paired fixtures per value vs maelle-02 w = 0)
+
+| w | dJ | d econ | d p50 | d p100 | d p150 | d p250 | d units@100 | d length@100 | d win | d ally h2h /1k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| −3.0 | −0.047 | −0.112 | −0.068 | −0.071 | −0.113 | −0.195 | +0.060 | +0.071 | −0.084 | −0.39 |
+| −1.5 | **+0.126** | +0.030 | +0.014 | +0.063 | +0.041 | +0.002 | **+0.141** | **+0.146** | −0.009 | −0.31 |
+| −0.5 | +0.036 | +0.015 | +0.014 | +0.014 | +0.021 | +0.012 | +0.030 | +0.038 | +0.011 | −0.05 |
+
+Surface: dJ = −0.063 w² − 0.179 w; interior argmax **−1.41, 90 % [−1.55, −1.25]**. Economy peaks near −1 to
+−1.5 (+0.03); material and ally head-on improve strongly to −1.5; beyond that the swarm under-eats (−3: econ
+−0.11). Compiled into `maelle-04-allycrowd` (wt_ally = −1.4, parent maelle-02); D-032 gate running.
