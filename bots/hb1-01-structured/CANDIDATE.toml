@@ -1,0 +1,18 @@
+name = "hb1-01-structured"
+lineage = "hb1"
+author = "claude/hb1"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Heartbreaker (team 62) is a rule wrapper around one learned decision (direction); a structured mimic of that shape reproduces its behaviour and part of its strength."
+mechanism = "Behind Params::hb1_mode: v5 local-view features ported to C++, the Q2 validity wrapper as rules, split gate / late gate / child size from exported trees, direction from a fitted candidate scorer, sonar by the observed emission rule. Ares V06 is unchanged when the switch is off."
+expected_change = "Fidelity first: decision agreement with held-out Heartbreaker games near the offline numbers (command ~0.8) and low closed-loop divergence; strength is measured, not assumed."
+priority = 0
+supersedes = ""
+status = "in progress (not registered) - step 0 is a verbatim copy of ares-v06-expanded-search-support"
+
+[local_evidence]
+refs = [
+    "docs/hub/prompts/2026-09-30-HB1-heartbreaker-anatomy.md",
+    "claude/hb1-status.md",
+]
+summary = "HB-1 Q4. Q1/Q2 numbers in claude/hb1-status.md."
