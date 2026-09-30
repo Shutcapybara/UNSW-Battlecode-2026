@@ -77,6 +77,20 @@ def boot(delta, n=2000, seed=11):
     return float(delta.mean()), float(np.percentile(m, 5)), float(np.percentile(m, 95))
 
 
+def cluster_boot(keys, delta, n=2000, seed=13):
+    """robustness check: resample (map, side, opp) clusters with all their seeds together"""
+    cl = {}
+    for i, k in enumerate(keys):
+        cl.setdefault((k[0], k[1], k[3]), []).append(i)
+    groups = list(cl.values())
+    delta = np.asarray(delta, float)
+    sums = np.array([delta[g].sum() for g in groups]); cnts = np.array([len(g) for g in groups])
+    rng = np.random.default_rng(seed)
+    idx = rng.integers(0, len(groups), (n, len(groups)))
+    m = sums[idx].sum(axis=1) / cnts[idx].sum(axis=1)
+    return float(np.percentile(m, 5)), float(np.percentile(m, 95))
+
+
 def panel_stats(C, P, panel):
     keys = sorted(set(C) & set(P))
     if not keys:
@@ -106,6 +120,9 @@ def panel_stats(C, P, panel):
     out["econ"] = dict(cand=float(ce.mean()), parent=float(pe.mean()), ci=boot(ce - pe))
     cw = np.array([win(C[x]) for x in keys]); pw = np.array([win(P[x]) for x in keys])
     out["win"] = dict(cand=float(cw.mean()), parent=float(pw.mean()), ci=boot(cw - pw))
+    out["cluster"] = {"econ": cluster_boot(keys, ce - pe), "win": cluster_boot(keys, cw - pw),
+                      "units@100": cluster_boot(keys, cols["units@100"][0] - cols["units@100"][1]),
+                      "length@100": cluster_boot(keys, cols["length@100"][0] - cols["length@100"][1])}
     for side, arr in (("cand", C), ("parent", P)):
         turns = sum(arr[x]["us"]["turns"] for x in keys)
         for h in HYG:
@@ -165,6 +182,7 @@ def cmd_score(a):
         print(f"[{p}] n={s['n']}  econ {s['econ']['cand']:.3f} vs {s['econ']['parent']:.3f}  d {fmt(s['econ']['ci'])}")
         print("   " + "  ".join(f"{l} {fmt(s[l]['ci'])}" for l, _, _ in ECON))
         print("   " + "  ".join(f"{l} {fmt(s[l]['ci'])}" for l, _, _ in SCALE) + f"  win {s['win']['cand']:.3f} d {fmt(s['win']['ci'])}")
+        print("   cluster-bootstrap 90 % (fixture clusters, all seeds together): " + "  ".join(f"{k} [{v[0]:+.3f},{v[1]:+.3f}]" for k, v in s["cluster"].items()))
         print("   tier2/1k " + "  ".join(f"{h} {x['cand']:.2f}/{x['parent']:.2f}" for h, x in s["hyg"].items()) + f"  errors {s['errors']}")
         print("   map econ d " + " ".join(f"{m.split('/')[-1][:14]}:{d:+.3f}" for m, d in s["map_econ"].items()))
     print("VERDICT", v, "; ".join(why))
