@@ -1,0 +1,422 @@
+{
+ "arm": "bots/hb1-02-sampled",
+ "opp": "bots/ares-v04-tyr12-behavior-parity",
+ "maps": [
+  "autarky",
+  "default",
+  "devil",
+  "dilemma",
+  "portals",
+  "queen_of_spades",
+  "schooltime",
+  "slithery_fight",
+  "trauma",
+  "trophy"
+ ],
+ "seeds": 2,
+ "played": 40,
+ "wins": 3,
+ "win_rate": 0.075,
+ "games": [
+  {
+   "map": "autarky",
+   "seat": "A",
+   "k": 0,
+   "seed": 12378697,
+   "result": "L",
+   "rounds": 271,
+   "how": "by elimination",
+   "secs": 101
+  },
+  {
+   "map": "autarky",
+   "seat": "A",
+   "k": 1,
+   "seed": 6869622,
+   "result": "L",
+   "rounds": 271,
+   "how": "by elimination",
+   "secs": 111
+  },
+  {
+   "map": "autarky",
+   "seat": "B",
+   "k": 0,
+   "seed": 14911851,
+   "result": "L",
+   "rounds": 236,
+   "how": "by elimination",
+   "secs": 92
+  },
+  {
+   "map": "autarky",
+   "seat": "B",
+   "k": 1,
+   "seed": 2706787,
+   "result": "L",
+   "rounds": 268,
+   "how": "by elimination",
+   "secs": 96
+  },
+  {
+   "map": "default",
+   "seat": "A",
+   "k": 0,
+   "seed": 9971755,
+   "result": "L",
+   "rounds": 243,
+   "how": "by elimination",
+   "secs": 63
+  },
+  {
+   "map": "default",
+   "seat": "A",
+   "k": 1,
+   "seed": 16742713,
+   "result": "L",
+   "rounds": 394,
+   "how": "by elimination",
+   "secs": 181
+  },
+  {
+   "map": "default",
+   "seat": "B",
+   "k": 0,
+   "seed": 12268593,
+   "result": "L",
+   "rounds": 259,
+   "how": "by elimination",
+   "secs": 73
+  },
+  {
+   "map": "default",
+   "seat": "B",
+   "k": 1,
+   "seed": 11217704,
+   "result": "L",
+   "rounds": 270,
+   "how": "by elimination",
+   "secs": 89
+  },
+  {
+   "map": "devil",
+   "seat": "A",
+   "k": 0,
+   "seed": 181985,
+   "result": "L",
+   "rounds": 194,
+   "how": "by elimination",
+   "secs": 95
+  },
+  {
+   "map": "devil",
+   "seat": "A",
+   "k": 1,
+   "seed": 16157380,
+   "result": "L",
+   "rounds": 231,
+   "how": "by elimination",
+   "secs": 110
+  },
+  {
+   "map": "devil",
+   "seat": "B",
+   "k": 0,
+   "seed": 4406455,
+   "result": "L",
+   "rounds": 140,
+   "how": "by elimination",
+   "secs": 55
+  },
+  {
+   "map": "devil",
+   "seat": "B",
+   "k": 1,
+   "seed": 12553043,
+   "result": "L",
+   "rounds": 181,
+   "how": "by elimination",
+   "secs": 74
+  },
+  {
+   "map": "dilemma",
+   "seat": "A",
+   "k": 0,
+   "seed": 9185887,
+   "result": "L",
+   "rounds": 335,
+   "how": "by elimination",
+   "secs": 55
+  },
+  {
+   "map": "dilemma",
+   "seat": "A",
+   "k": 1,
+   "seed": 4839533,
+   "result": "L",
+   "rounds": 332,
+   "how": "by elimination",
+   "secs": 52
+  },
+  {
+   "map": "dilemma",
+   "seat": "B",
+   "k": 0,
+   "seed": 4911740,
+   "result": "L",
+   "rounds": 216,
+   "how": "by elimination",
+   "secs": 36
+  },
+  {
+   "map": "dilemma",
+   "seat": "B",
+   "k": 1,
+   "seed": 12605630,
+   "result": "L",
+   "rounds": 203,
+   "how": "by elimination",
+   "secs": 38
+  },
+  {
+   "map": "portals",
+   "seat": "A",
+   "k": 0,
+   "seed": 4170102,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 227
+  },
+  {
+   "map": "portals",
+   "seat": "A",
+   "k": 1,
+   "seed": 7266425,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 272
+  },
+  {
+   "map": "portals",
+   "seat": "B",
+   "k": 0,
+   "seed": 11967780,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 258
+  },
+  {
+   "map": "portals",
+   "seat": "B",
+   "k": 1,
+   "seed": 1128498,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 258
+  },
+  {
+   "map": "queen_of_spades",
+   "seat": "A",
+   "k": 0,
+   "seed": 8635688,
+   "result": "L",
+   "rounds": 296,
+   "how": "by elimination",
+   "secs": 59
+  },
+  {
+   "map": "queen_of_spades",
+   "seat": "A",
+   "k": 1,
+   "seed": 3416326,
+   "result": "L",
+   "rounds": 216,
+   "how": "by elimination",
+   "secs": 46
+  },
+  {
+   "map": "queen_of_spades",
+   "seat": "B",
+   "k": 0,
+   "seed": 4789002,
+   "result": "L",
+   "rounds": 308,
+   "how": "by elimination",
+   "secs": 73
+  },
+  {
+   "map": "queen_of_spades",
+   "seat": "B",
+   "k": 1,
+   "seed": 8110291,
+   "result": "L",
+   "rounds": 201,
+   "how": "by elimination",
+   "secs": 43
+  },
+  {
+   "map": "schooltime",
+   "seat": "A",
+   "k": 0,
+   "seed": 9972863,
+   "result": "L",
+   "rounds": 208,
+   "how": "by elimination",
+   "secs": 93
+  },
+  {
+   "map": "schooltime",
+   "seat": "A",
+   "k": 1,
+   "seed": 1980938,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 187
+  },
+  {
+   "map": "schooltime",
+   "seat": "B",
+   "k": 0,
+   "seed": 12229418,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 219
+  },
+  {
+   "map": "schooltime",
+   "seat": "B",
+   "k": 1,
+   "seed": 237150,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 202
+  },
+  {
+   "map": "slithery_fight",
+   "seat": "A",
+   "k": 0,
+   "seed": 4386436,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 566
+  },
+  {
+   "map": "slithery_fight",
+   "seat": "A",
+   "k": 1,
+   "seed": 11315659,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 538
+  },
+  {
+   "map": "slithery_fight",
+   "seat": "B",
+   "k": 0,
+   "seed": 4926303,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 556
+  },
+  {
+   "map": "slithery_fight",
+   "seat": "B",
+   "k": 1,
+   "seed": 5115775,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 532
+  },
+  {
+   "map": "trauma",
+   "seat": "A",
+   "k": 0,
+   "seed": 10577749,
+   "result": "W",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 145
+  },
+  {
+   "map": "trauma",
+   "seat": "A",
+   "k": 1,
+   "seed": 13023650,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 119
+  },
+  {
+   "map": "trauma",
+   "seat": "B",
+   "k": 0,
+   "seed": 4382395,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 114
+  },
+  {
+   "map": "trauma",
+   "seat": "B",
+   "k": 1,
+   "seed": 6380951,
+   "result": "L",
+   "rounds": 500,
+   "how": "on length",
+   "secs": 73
+  },
+  {
+   "map": "trophy",
+   "seat": "A",
+   "k": 0,
+   "seed": 14512425,
+   "result": "W",
+   "rounds": 163,
+   "how": "by elimination",
+   "secs": 48
+  },
+  {
+   "map": "trophy",
+   "seat": "A",
+   "k": 1,
+   "seed": 14584099,
+   "result": "W",
+   "rounds": 338,
+   "how": "by elimination",
+   "secs": 89
+  },
+  {
+   "map": "trophy",
+   "seat": "B",
+   "k": 0,
+   "seed": 4809816,
+   "result": "L",
+   "rounds": 178,
+   "how": "by elimination",
+   "secs": 42
+  },
+  {
+   "map": "trophy",
+   "seat": "B",
+   "k": 1,
+   "seed": 3539697,
+   "result": "L",
+   "rounds": 91,
+   "how": "by elimination",
+   "secs": 14
+  }
+ ]
+}

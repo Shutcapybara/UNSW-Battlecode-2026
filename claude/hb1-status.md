@@ -185,3 +185,11 @@ and the Prisoners Dilemma sweep by early elimination — at half its strength. 8
 carry 70 % of the win rate: the gap sits on the maps Heartbreaker sweeps (Queen of Spades, Trophy, Trauma, Default).
 Caveat: the real games are live-server scrims (unranked, server seeds); the local V04 copy is the submitted source.
 Next: find where the strength goes (trajectory comparison against their real games on the same maps).
+
+### hb1-02-sampled — direction sampled instead of argmax (`game_stats/runs/hb1-h2h-sampled-vs-ares-v04.json`)
+
+Same 40 fixtures vs Ares V04: **3/40 (0.075)** vs hb1-01's 14/40 (25 losses by elimination, 15 on length).
+Rejected, and informative: (1) Heartbreaker's residual is not useful randomness — the direction model's uncertainty
+is mostly model error, so copying it as noise hurts; (2) strength is steep in direction accuracy: ~0.83 agreement
+(argmax) → 0.35 win rate, ~0.73 expected agreement (sampled) → 0.075. The lever is a more accurate direction model;
+the v5 direction GBT was trained on a 1,200-row/game sample (~0.7 M of ~6 M move turns) and hit its 300-round cap.
