@@ -185,3 +185,8 @@ Stockfish command-level accuracy (11 classes incl. self-kill; `tt206-q2-command.
 wrapped, MLP 0.740 / 0.738 — the Heartbreaker-measured wrapper slightly hurts, since Stockfish handles trapped states
 differently (wrapper rules are team-specific). cheji bt's command run was killed twice by `earlyoom` (43 GB, then
 40 GB from a stale full-size sample cache); cache removed, re-running at the scaled size.
+
+cheji bt command-level accuracy (`tt70-q2-command.json`, scaled sample): GBT 0.741 raw / 0.733 wrapped, MLP 0.724 /
+0.717, tree 0.624. Whole-command predictability from the local view: Heartbreaker 0.826, Stockfish 0.763, cheji bt
+0.741 — the stronger the team, the less of its play a local-view model captures; and the Heartbreaker-measured
+wrapper slightly hurts both.
