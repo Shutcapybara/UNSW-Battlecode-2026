@@ -438,3 +438,15 @@ A rule-driven production machine: its gate is as predictable as Heartbreaker's (
 (splits on 31 % of eligible turns vs 10 %): split whenever it has just eaten, while units ≤ 61, until ~r350, with
 further round thresholds near 260 and 350 (scalars carry −5.2 pp, the most of any team). Child size is 2 in 84 % of
 splits (0.988). Direction is the hardest of any team so far (0.735). Sonar uses single-direction rays, as Stockfish.
+
+forgot to mention — calibration, wrapper, command, stability (`tt264-q1-calibration.json`, `tt264-q2-*.json`,
+`tt264-q3-windows.json`):
+- Calibration: ECE 0.013; acc 0.735 at mean max-p 0.722; near-deterministic 24 % (99.8 %), near-ties **25 %** holding
+  49 % of errors — the most undetermined steering of any team.
+- Wrapper: trapped & split legal → split 231,837 but **suicide 99,817 (30 %)**; trapped & not legal → suicide 436,938
+  (~98 %); free exit → suicide 29,811 (eligible) / 41,089 (not); 0 invalid splits of 835,879. Self-kill ≈ 2.3 % of
+  turns, by invalid command (as cheji bt) — the most aggressive culling of any team; it chooses death over a legal
+  split 30 % of the time when trapped.
+- Command-level GBT 0.741 raw / 0.726 wrapped (Heartbreaker's wrapper hurts again); MLP 0.717.
+- Q3: direction stable (within / forward / backward 0.705–0.735); one behavioural change-point at 29 Sep 18:00 UTC and
+  a gate forward-transfer dip to 0.919 — likely an upload. Ladder Elo 2040 → 2094 (range 1992–2098, rank 1–8).
