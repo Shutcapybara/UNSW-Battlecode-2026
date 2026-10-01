@@ -272,3 +272,242 @@ locally).
 The upload zip is capped at 4 MiB, so hb1-12 (17.1 MiB) and the tt-01/tt-02 copies built on it are local-only.
 `hb1-14-prior-r540` (the same prior, 540 rounds, 3.74 MiB; 141–19 on z1 s1, hold) is the uploadable base — see
 `claude/hb1-status.md`. Further TT ports are built on hb1-14.
+
+## Port 3 — tt-03-proxfeed (hb1-14 + Stockfish-rate proximity feed) vs hb1-14, z1 seed 1 (`game_stats/runs/tt-03-proxfeed-z1-s1.{json,md}`)
+
+From r250, length ≤ 3, not the crown: a strictly longer ally head adjacent → self-kill p = 0.03/turn (distance 2:
+0.012). **GATE: fail** — W–L 137–23 vs 141–19 (−2.50 pp), own-body deaths +10.8 %. Trajectory almost unchanged:
+r400 33 dragons / longest 10 (parent 32 / 9); r490 7 / 28 (7 / 27); round-limit W/L 59–18 (62–14); elimination W/L
+78–5 (79–5). The gradual feed keeps the elimination wins, as intended, but does not concentrate: feeding *any*
+strictly longer ally scatters material (a length-3 dragon dying next to a length-4 one). "Near an ally head" is too
+loose a reading of Stockfish's rule — which ally matters. (hb1-14's own trajectory: `build/tt/conc_hb1-14-prior-r540.log`.)
+
+### Which ally does a small dragon die next to? (`tools/tt/cull_target.py`, `game_stats/runs/tt{70,206}-cull-target.json`)
+
+Rows: length ≤ 3 after each team's onset round (300-game sample); the nearest ally head and the visible length of its
+dragon (flood over connected ally cells in the 7×7 grid — approximate where two allies touch).
+
+| nearest ally's visible length | cheji bt (r ≥ 330): adjacent / distance 2–3 | Stockfish (r ≥ 250): adjacent / distance 2–3 |
+|---|---|---|
+| 1–2 | 6.2 % / 4.4 % | 3.6 % / 1.6 % |
+| 3–4 | 23.9 % / 10.0 % | 4.2 % / 2.4 % |
+| 5–6 | 45.0 % / 23.7 % | 6.4 % / 3.4 % |
+| 7–9 | 57.4 % / 37.5 % | 7.1 % / 4.1 % |
+| 10–14 | 74.1 % / 52.2 % | 8.8 % / 5.1 % |
+| 15+ | 81.5 % / 56.4 % | 11.7 % / 9.1 % |
+| no ally head in view | 4.3 % | 0.3 % |
+
+**Correction to the "timed mass cull" reading above:** cheji bt's ~10 %/turn is an average. The rule is targeted —
+after r330 a small dragon beside a long ally almost always kills itself, one with no ally in view almost never does:
+it feeds the long dragon. Stockfish follows the same rule much more gently. tt-03 (flat 3 % beside any longer ally)
+encoded the wrong thing. Unlike Ares's feeder (travel to one radio-elected crown, die within 4 cells), this needs no
+election and leaves the swarm away from the long dragon alive.
+
+Port 4 — `tt-04-feedlong` (on hb1-14, uploadable): cheji bt's rate table from r330 for length ≤ 3, nearest ally head
+within distance 3 and visibly longer.
+
+## Port 4 — tt-04-feedlong vs hb1-14, z1 seed 1 (`game_stats/runs/tt-04-feedlong-z1-s1.{json,md}`)
+
+**GATE: fail** — W–L 136–24 vs 141–19 (−3.12 pp), own-body deaths +74 %. The rule fires (r400: 21 dragons vs the
+parent's 32) but the material does not arrive: longest 12 at r400 and 27 at r490 (parent 9 and 27) while total length
+falls (r400 81 vs 100; r490 56 vs 73). Small dragons die beside the long one and it does not eat them. Same lesson
+as hb1-11: a donor's rule works only with the donor's other behaviour — cheji bt's long dragons evidently collect what
+dies beside them; Ares's steering does not. Ares's own crown + feeder logic is co-designed (feeders walk to the crown,
+the crown harvests), which is why tt-01 — that logic started earlier — is the one port that concentrated (33).
+
+| port on the direction-prior base | mechanism | z1 W–L vs parent | longest r490 | limit losses with lead | verdict |
+|---|---|---|---:|---:|---|
+| tt-01-feed300 (on hb1-12) | Ares feeders from ~r300 | 136–24 vs 139–21 | 33 (28.5) | 20 % (57 %) | fail; concentrates, loses eliminations |
+| tt-02-feed250 (on hb1-12) | Ares feeders from ~r250 | 131–29 vs 139–21 | 34.5 | 24 % | fail; over-converts |
+| tt-03-proxfeed (on hb1-14) | flat 3 % beside a longer ally from r250 | 137–23 vs 141–19 | 28 (27) | 44 % (50 %) | fail; no concentration |
+| tt-04-feedlong (on hb1-14) | cheji bt's rate table from r330 | 136–24 vs 141–19 | 27 (27) | 29 % (50 %) | fail; kills without feeding |
+
+## Is there a state that says "convert now"? And is there a converting opponent locally? (`tools/tt/elim_state.py`, `by_opponent.py`)
+
+hb1-14's 160 z1 games: 79 elimination wins, **62 of them before r300**; 96 games alive at r300 → 62 round-limit
+wins, 17 late elimination wins, 14 round-limit losses, 3 elimination losses.
+- Own unit count at r300 (observable) does not predict a late elimination (spread over every bucket).
+- The opponent's unit count does: ≤ 5 opponent dragons at r300 → 14 of 17 elimination wins; > 5 → 3 of 79. Not
+  directly observable; "no enemy met for a long time" would be the stand-in.
+- Earlier conversion did not reduce round-limit losses (tt-01 15 vs hb1-12's ~14); it changed their kind.
+
+By opponent, round-limit games, median longest at the end (ours / theirs): hb1-14 — chaewon 33.5 / 24, fenrir 25 / 20,
+gavroche 32 / 22, hunter 33 / 5, kazuha-s01-swarm-dissolve 24.5 / 17, ouroboros-m01-vibing-mimic 28 / 13, sinbad 31 /
+18.5, yuna 27.5 / 24.5. tt-01 raises ours to 30–45 (kazuha 10–0 at the round limit) with no more wins overall.
+
+**No zoo opponent converts like the top teams** (their longest 5–24.5; cheji bt 40, Stockfish 46). The value of the
+top teams' conversion against converting opponents cannot be measured on this panel — only on the ladder. For that
+test an uploadable early converter is needed: `tt-05-feed300-up` = hb1-14 + `feed_base` 140 (tt-01's change on the
+uploadable base).
+
+## Port 5 — tt-05-feed300-up (hb1-14 + feeders from ~r300; uploadable, 3.74 MiB) vs hb1-14, z1 seed 1
+
+W–L **141–19, identical to hb1-14** (win share +0.00 pp, economy +0.0000). GATE reads fail only on own-body deaths
++60 % (3.22 → 5.16/1k) — the feeding mechanism itself. Trajectory: r400 12 dragons / longest 21.5 (hb1-14 32 / 9;
+cheji bt 8 / 25); r490 longest 32, 56 % of material in it (27, 34 %; cheji bt 40, 46 %). Round-limit W/L 67–13
+(62–14); round-limit losses with a material lead 8 % (50 %); elimination W/L 74–6 (79–5). Five elimination wins
+traded for five round-limit wins: break-even on a panel with no converting opponent, with the top teams' conversion
+profile. **tt-05 is the uploadable early converter for a ladder comparison against hb1-14.**
+
+| uploadable bot | z1 s1 vs Ares V06 / vs hb1-14 | longest r490 | conversion |
+|---|---|---:|---|
+| hb1-14-prior-r540 | 141–19 vs V06's 122–38 | 27 | late (Ares default, ~r400) |
+| tt-05-feed300-up | 141–19 (= hb1-14) | 32 | from ~r300 (cheji bt's timing) |
+
+## Interpolating hb1-14 → tt-05 through the game (user request, 1 Oct; local, though uploadable)
+
+hb1-14 and tt-05 are the same bot except for one decision — when a dragon near the crown starts feeding it (tt-05
+~r300, hb1-14 ~r400). The interpolation hands that decision over gradually: each dragon, each turn, uses tt-05's onset
+with probability rising linearly across a window, hb1-14's otherwise (`tools/tt/make_ramp.py`). z1 seed 1, same 160
+fixtures:
+
+| bot | W–L | round-limit W/L | elimination W/L | longest r490 | share in longest | gate vs hb1-14 |
+|---|---|---:|---:|---:|---:|---|
+| hb1-14 (onset ~r400) | 141–19 | 62–14 | 79–5 | 27 | 0.34 | — |
+| **tt-05 (switch at ~r300)** | **141–19** | **67–13** | 74–6 | **32** | **0.56** | level (fail only on own-body) |
+| tt-06-ramp-300-400 | 138–22 | 61–17 | 77–5 | 31.5 | 0.46 | fail (−1.87 pp) |
+| tt-07-ramp-250-450 | 132–28 | 58–23 | 74–5 | 30 | 0.43 | fail (−5.63 pp) |
+
+The ramps keep hb1-14's elimination wins and lose round-limit games the sharp switch wins; the wider ramp loses more.
+A swarm that is partly converting gets less concentration than tt-05 without keeping hb1-14's elimination edge. On
+this panel the validated choice is a clean switch at ~r300, not an interpolation. Head-to-heads (hb1-14 vs tt-05, each
+ramp vs both endpoints, ten live maps) running.
+
+Head-to-heads, ten live maps (`game_stats/runs/tt-h2h-*.json`; 40 fixtures, extended to 80 for the three that bear
+on tt-06):
+
+| match | 40 fixtures | 80 fixtures | one-sided p (80) |
+|---|---:|---:|---:|
+| hb1-14 vs tt-05 | 21/40 | 37/80 | — |
+| tt-06-ramp-300-400 vs hb1-14 | 24/40 | 40/80 | 0.54 |
+| tt-06-ramp-300-400 vs tt-05 | 23/40 | 43/80 | 0.29 |
+| tt-07-ramp-250-450 vs hb1-14 | 20/40 | — | — |
+| tt-07-ramp-250-450 vs tt-05 | 21/40 | — | — |
+
+**Conclusion.** tt-06's apparent direct-play edge at 40 fixtures (47/80 combined, p ≈ 0.07) vanished at 80 (40/80,
+43/80). In direct play hb1-14, tt-05 and the ramps are equal; against the zoo the ramps are worse (−3 and −9 games).
+Interpolating the feeding onset adds nothing and a wide ramp costs round-limit games; the validated choice is a clean
+switch, and hb1-14 and tt-05 are interchangeable on every local measure.
+
+## Dummy-bot check (user warning, 1 Oct: some teams — reported for Cutlery and possibly others at its university —
+## hide their bot when ranked scrims are not forced and upload a dummy) — `tools/tt/dummy_check.py`
+
+Ranked scrims are forced, so ranked games are the real bot. Per game, a behavioural fingerprint (split rate on
+eligible turns, self-kill rate, forward share, turns per round, units / longest / total at r100 and r250); ranked vs
+unranked compared, plus the share of games with ≥ 2 fingerprint features > 4 robust-z outside ranked play.
+
+| team | ranked / unranked games | split rate (R / U) | self-kill rate | forward share | outlier share (R / U) | verdict |
+|---|---|---|---|---|---|---|
+| cheji bt (70) | 619 / 3,507 | 0.311 / 0.326 | 0.007 / 0.007 | 0.495 / 0.495 | 8.1 % / 5.9 % | same bot |
+| Stockfish (206) | 414 / 1,518 | 0.237 / 0.215 | 0.005 / 0.006 | 0.523 / 0.520 | 4.8 % / 8.9 % | same bot |
+
+Unranked games show slightly more material and wins (weaker unranked opponents), no dummy cluster: the cheji bt and
+Stockfish analyses (all games) stand. The same check runs first on every new team.
+
+## Next two teams (1 Oct): Cache me outside (952, #1, Elo 2096) and forgot to mention (264, #2, 2094)
+
+Ladder 30 Sep 17:15 UTC: #1 Cache me outside, #2 forgot to mention, #3 SSS, #4 cheji bt, #5 Stockfish, #7 Cutlery.
+Synced and extracted: Cache me outside 1,608 games (598 ranked), forgot to mention 2,792 (495 ranked), 0 errors.
+
+Dummy check. Fingerprints match (outlier share 2.0 % / 1.5 % and 0.8 % / 1.7 %, ranked / unranked), but split rate is
+higher in ranked games within the same 6-hour windows (+0.10 and +0.17) — state or a different policy? Decisive test
+(`tools/tt/dummy_policy.py`): GBT fitted on 70 % of ranked games, scored on held-out ranked vs unranked:
+
+| team | decision | ranked held-out | unranked | gap | per window |
+|---|---|---:|---:|---:|---|
+| forgot to mention | gate | 0.963 | 0.969 | −0.6 pp | equal in all 8 |
+| | direction | 0.729 | 0.725 | +0.4 pp | equal in all 8 |
+| Cache me outside | gate | 0.981 | 0.976 | +0.5 pp | equal |
+| | direction | 0.763 | 0.741 | **+2.2 pp** | ranked ahead in 7 of 8 (+1 to +4 pp) |
+
+forgot to mention: same bot — all games used. Cache me outside: not a dummy (a dummy would collapse), but its
+unranked direction policy differs systematically — a variant (older version / other settings). **Distilled from its
+598 ranked games only** (`build/tt/team952r`, symlinked ranked subset; caps × 1).
+
+### Q1 — forgot to mention (264; all 2,792 games; caps × 0.3; `game_stats/runs/tt264-q1-gaps.json`)
+
+| decision | n test | majority | tree depth 4 | GBT | MLP | gap tree→MLP | top drop-family Δacc |
+|---|---:|---:|---:|---:|---:|---:|---|
+| split gate | 140,151 | 0.693 | 0.900 | **0.975** | 0.942 | +0.042 | scalar −5.24, cand −1.56 pp |
+| direction | 197,597 | 0.442 | 0.631 | **0.735** | 0.720 | +0.089 | cand −12.44, msgs −0.85 pp |
+| sonar mask | 98,966 | 0.644 | 0.893 | 0.964 | 0.942 | +0.049 | action −9.8 pp |
+| child size | 171,750 | 0.842 | 0.947 | 0.988 | 0.980 | +0.034 | scalar −1.45 pp |
+| late gate | 145,681 | 0.971 | 0.985 | 0.986 | 0.985 | −0.001 | cand −0.74 pp |
+
+A rule-driven production machine: its gate is as predictable as Heartbreaker's (0.975) but far more aggressive
+(splits on 31 % of eligible turns vs 10 %): split whenever it has just eaten, while units ≤ 61, until ~r350, with
+further round thresholds near 260 and 350 (scalars carry −5.2 pp, the most of any team). Child size is 2 in 84 % of
+splits (0.988). Direction is the hardest of any team so far (0.735). Sonar uses single-direction rays, as Stockfish.
+
+forgot to mention — calibration, wrapper, command, stability (`tt264-q1-calibration.json`, `tt264-q2-*.json`,
+`tt264-q3-windows.json`):
+- Calibration: ECE 0.013; acc 0.735 at mean max-p 0.722; near-deterministic 24 % (99.8 %), near-ties **25 %** holding
+  49 % of errors — the most undetermined steering of any team.
+- Wrapper: trapped & split legal → split 231,837 but **suicide 99,817 (30 %)**; trapped & not legal → suicide 436,938
+  (~98 %); free exit → suicide 29,811 (eligible) / 41,089 (not); 0 invalid splits of 835,879. Self-kill ≈ 2.3 % of
+  turns, by invalid command (as cheji bt) — the most aggressive culling of any team; it chooses death over a legal
+  split 30 % of the time when trapped.
+- Command-level GBT 0.741 raw / 0.726 wrapped (Heartbreaker's wrapper hurts again); MLP 0.717.
+- Q3: direction stable (within / forward / backward 0.705–0.735); one behavioural change-point at 29 Sep 18:00 UTC and
+  a gate forward-transfer dip to 0.919 — likely an upload. Ladder Elo 2040 → 2094 (range 1992–2098, rank 1–8).
+
+### Q1 — Cache me outside (952; 598 ranked games only; caps × 1; `game_stats/runs/tt952-q1-gaps.json`)
+
+| decision | n test | majority | tree depth 4 | GBT | MLP | gap tree→MLP | top drop-family Δacc |
+|---|---:|---:|---:|---:|---:|---:|---|
+| split gate | 71,197 | 0.582 | 0.945 | **0.970** | 0.952 | +0.007 | scalar −1.69, memory −1.28 pp |
+| direction | 127,269 | 0.383 | **0.584** | **0.758** | 0.734 | **+0.150** | cand −11.71, grid −2.16 pp |
+| sonar mask | 44,637 | **0.277** | 0.613 | 0.928 | 0.879 | +0.266 | action −10.81, **cand −4.35** pp |
+| child size | 43,212 | 0.945 | 0.977 | 0.997 | 0.986 | +0.009 | scalar −0.41 pp |
+| late gate | 27,137 | 0.974 | 0.984 | 0.987 | 0.982 | −0.002 | cand −0.62 pp |
+
+A third style. Most aggressive production of any team (splits on 42 % of eligible turns): split right after eating at
+length ≤ 4 until ~r450 (Heartbreaker's rule) and **again within 4 turns of the previous split** (chain-splitting);
+memory matters for its gate, unlike every other team. Its steering has the largest tree→GBT gap of any team (+17 pp,
+0.584 → 0.758) — the strongest candidate for a learned direction policy. Child size 2 in 94.5 %. Sonar is unlike any
+other team: the most common ray pattern covers only 28 % of turns (others 64–78 %), GBT 0.928, and candidate features
+matter (−4.35 pp) — state-dependent signalling, likely real communication.
+
+Cache me outside (ranked) — calibration, wrapper, command, stability: ECE 0.021, acc 0.757 at mean max-p 0.736,
+near-ties 22 %. Self-kill by the **backward step** (as Stockfish): trapped & split not legal → back 93,842, ally
+31,816, wall 5,775; free exit → back 23,336 (culling); 0 invalid splits of 221,047. Command GBT 0.765 / 0.753 wrapped.
+Q3: gate transfer 0.955–0.986; one change-point at 28 Sep 21:00 UTC; **Elo 1842 → 2096 (rank 35 → 1)** over the span
+— a fast-improving team, which the ranked-only restriction keeps on its current bot.
+
+## The conversion across all four top teams (`tools/tt/concentration.py`, `cull_model.py`, `cull_target.py`)
+
+| round | forgot to mention (dragons / longest / total) | Cache me outside, ranked |
+|---:|---|---|
+| 200 | 36 / 4 / 90 | 36 / 4 / 87 |
+| 300 | 41 / 5 / 106 | 36 / 7 / 101 |
+| 400 | 22 / 18 / 108 | 28 / 23 / 112 |
+| 490 | 9 / 36 / 94 | 14 / 35 / 110 |
+
+| | Heartbreaker | cheji bt | Stockfish | forgot to mention | Cache me outside (ranked) |
+|---|---:|---:|---:|---:|---:|
+| longest at r490 | 13 | 40 | 46 | 36 | 35 |
+| round-limit win rate | 0.26 | 0.75 | 0.72 | 0.64 | 0.55 (vs strong ranked opponents, their longest 35) |
+| self-kill method | none | invalid command | backward step | invalid command | backward step |
+| cull rate, length ≤ 3, by round | — | < 1.1 % → ~10 % from r350 | 0.4 % → ~2 % from r250 | ~2 % → 6–7 % from r400 | ~1.6 % → ~3 % from r250 |
+| cull beside an ally of length 1–2 / 5–6 / 10–14 / 15+ | — | 6 / 45 / 74 / 82 % | 3.6 / 6.4 / 8.8 / 11.7 % | 6.3 / 11.7 / 23.5 / 37 % | 7.5 / 11.2 / 18.4 / 21 % |
+
+**All four top teams convert, all four cull their small dragons, and all four feed the long one** — a small dragon
+beside a long ally is several times likelier to kill itself than one beside a short ally. The strength and timing
+differ (cheji bt extreme, Stockfish gentle, the two new teams between). Heartbreaker (rank ~40) is the one that never
+does. Four independent top teams converging on one mechanism makes it the lane's most robust finding.
+
+## Memory as a predictor, all five teams (user question, 1 Oct)
+
+Base v5 memory family (in every model) — drop-family Δacc, gate / direction: Heartbreaker −0.31 / −0.96, cheji bt
+−0.26 / −1.13, Stockfish −1.02 / −0.57, forgot to mention −0.61 / −0.52, Cache me outside −1.28 / −1.31 (messages
+−1.13). History + decayed spatial "trail" test (`q1_history.py`; Cache me outside all 598 ranked games, forgot to
+mention 400): direction gain Heartbreaker +0.19, cheji bt +0.97, Stockfish +0.39, forgot to mention +0.52 (0.7327 →
+0.7379), **Cache me outside +0.94** (0.7566 → 0.7650; gate +0.22, the only team whose gate gains). The two
+learned-looking steerers use the most momentum and memory (Cache me outside's top memory features: its left/right and
+turn-rate EWMAs, echo-total EWMA), but under a point — not where their unexplained quarter lives.
+
+Internal map (never tried before): `tools/tt/features_map.py` — per-dragon remembered edges, cell sightings, pearls,
+beds; per candidate a wall-aware BFS (radius 12) gives reach beyond the view, frontier distance, remembered-pearl and
+ready-bed distances, staleness. Validated on a cheji bt game (blocked agreement with v5 100 %; reach median 78 vs in-view
+area 39; 1.4 ms/turn). Extraction (400 games per team, Cache me outside's 598 ranked, Heartbreaker as control) and the
+v5 vs v5+map comparison running (`tools/tt/run_map.sh`, `mapmem_chain.sh`).

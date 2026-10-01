@@ -109,6 +109,56 @@ Head-to-heads, ten live maps, 40 fixed fixtures: hb1-12 vs the Heartbreaker mimi
 - Two notes on the gate for this kind of change: the economy mean uses pearls to r250, so a conversion change cannot
   move it; and the own-body hygiene rate counts feeder suicides, so it penalises deliberate feeding by construction.
 
+## Follow-up (1 Oct): the upload limit, the cull target, and three more ports
+
+- **Upload limit.** The upload zip is capped at 4 MiB; hb1-12 zips to 17.1 MiB. `hb1-14-prior-r540` (same prior,
+  540 rounds, 3.74 MiB) scores 141–19 on the z1 panel vs Ares V06 (hb1-12: 139–21) and is the uploadable base.
+- **Which ally a small dragon dies next to** (`tools/tt/cull_target.py`): cheji bt after r330 — 6 % beside an ally
+  of visible length 1–2, 24 % at 3–4, 45 % at 5–6, 57 % at 7–9, 74 % at 10–14, 82 % at 15+, 4 % with no ally in view.
+  Stockfish after r250 — 3.6 % rising to 11.7 %. **This corrects the "timed mass cull" reading above**: cheji bt feeds
+  the long dragon; its ~10 %/turn is an average.
+- **Ports on hb1-14** (z1 seed 1, parent 141–19, longest 27 at r490):
+
+| version | mechanism | W–L | longest r490 | round-limit W/L | verdict |
+|---|---|---|---:|---|---|
+| tt-03-proxfeed | flat 3 % beside any longer ally from r250 | 137–23 | 28 | 59–18 | fail; no concentration |
+| tt-04-feedlong | cheji bt's rate table from r330 | 136–24 | 27 | 60–17 | fail; dragons die, the long one does not eat them |
+| **tt-05-feed300-up** | Ares's own feeders from ~r300 (tt-01's change, uploadable) | **141–19** | **32** | **67–13** | level with the parent; gate fails only on own-body deaths (the mechanism) |
+
+- A donor's cull rule does not transfer without the donor's harvesting behaviour (tt-04), as its split gate did not
+  (hb1-11). Ares's own co-designed crown + feeder logic, started on the top teams' schedule, does concentrate.
+- hb1-14's 160 panel games: 62 of 79 elimination wins end before r300; a late elimination is predicted by the
+  opponent's unit count (≤ 5 at r300: 14 of 17), not by our own. No zoo opponent converts like the top teams (their
+  longest in round-limit games 5–24.5; ours 24.5–33.5; cheji bt 40, Stockfish 46).
+
+## Follow-up (1 Oct): the next two teams — Cache me outside (#1) and forgot to mention (#2)
+
+Ladder 30 Sep 17:15 UTC. **Dummy-bot check first** (some teams hide their bot when ranked scrims are not forced):
+a GBT trained on 70 % of a team's ranked games scores its held-out ranked vs its unranked games
+(`tools/tt/dummy_policy.py`). forgot to mention: equal (gate 0.963 / 0.969, direction 0.729 / 0.725, all windows) —
+same bot, all 2,792 games used. Cache me outside: gate equal, direction 0.763 / 0.741, ranked ahead in 7 of 8 windows —
+not a dummy but a variant in unranked play, so **distilled from its 598 ranked games only**. cheji bt and Stockfish
+pass the behavioural check (ranked and unranked fingerprints match), so their earlier analyses stand.
+
+| GBT held-out | Heartbreaker | cheji bt | Stockfish | forgot to mention | Cache me outside (ranked) |
+|---|---:|---:|---:|---:|---:|
+| split gate | 0.975 | 0.829 | 0.934 | 0.975 | 0.970 |
+| direction (tree depth 4) | 0.829 (0.685) | 0.751 (0.638) | 0.771 (0.664) | 0.735 (0.631) | 0.758 (0.584) |
+| child size | 0.957 | 0.911 | 0.980 | 0.988 | 0.997 |
+| sonar mask | 0.981 | 0.983 | 0.971 | 0.964 | 0.928 |
+| whole command | 0.826 | 0.741 | 0.763 | 0.741 | 0.765 |
+| split rate (eligible turns) | 10 % | 28 % | 20 % | 31 % | 42 % |
+
+- forgot to mention: rule-driven aggressive production (split whenever it has just eaten, units ≤ 61, until ~r350);
+  the hardest steering (0.735, 25 % near-ties); the most self-kills (~2.3 % of turns, by invalid command; it chooses
+  death over a legal split 30 % of the time when trapped).
+- Cache me outside: chain-splitting (split again within 4 turns of a split); the largest tree→GBT steering gap of any
+  team (+17 pp — the strongest candidate for a learned direction policy); state-dependent sonar unlike any other team
+  (most common pattern only 28 % of turns) — likely real communication; Elo 1842 → 2096 over the span.
+- **Conversion, all four top teams:** longest at r490 40 / 46 / 36 / 35 (Heartbreaker 13); all four cull small
+  dragons and **feed the long one** — cull rate beside an ally of length 15+ vs 1–2: cheji bt 82 vs 6 %, Stockfish 11.7
+  vs 3.6 %, forgot to mention 37 vs 6.3 %, Cache me outside 21 vs 7.5 %.
+
 ## What to take, and what is open
 
 - **Conditional conversion, not a fixed earlier round.** Keep the swarm while elimination is on; convert on the top
@@ -120,7 +170,8 @@ Head-to-heads, ten live maps, 40 fixed fixtures: hb1-12 vs the Heartbreaker mimi
   gave a mimic at half strength. Their strength is in decisions that depend on more than the local view, and in the
   conversion, which is a rule we can write.
 - **Open, not measurable locally:** whether matching their conversion timing wins against teams that convert. It needs
-  games against such teams.
+  games against such teams. Two uploadable bots exist for that comparison: `hb1-14-prior-r540` (late conversion) and
+  `tt-05-feed300-up` (from ~r300), level with each other on the zoo panel.
 
 ## Ledger rows touched and proposed weights
 

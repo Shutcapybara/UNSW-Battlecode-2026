@@ -1,0 +1,136 @@
+{
+ "set": "corpus",
+ "games": 2792,
+ "state_x_action": {
+  "back": {
+   "none+elig": 43,
+   "none-elig": 874,
+   "ord+elig": 0,
+   "ord-elig": 297,
+   "portalOnly+elig": 0,
+   "portalOnly-elig": 0
+  },
+  "enemyHead": {
+   "none+elig": 368,
+   "none-elig": 5813,
+   "ord+elig": 506,
+   "ord-elig": 27475,
+   "portalOnly+elig": 3,
+   "portalOnly-elig": 91
+  },
+  "free": {
+   "none+elig": 0,
+   "none-elig": 0,
+   "ord+elig": 3652680,
+   "ord-elig": 22097020,
+   "portalOnly+elig": 0,
+   "portalOnly-elig": 0
+  },
+  "portal": {
+   "none+elig": 0,
+   "none-elig": 0,
+   "ord+elig": 3403,
+   "ord-elig": 223471,
+   "portalOnly+elig": 17507,
+   "portalOnly-elig": 160774
+  },
+  "split": {
+   "none+elig": 231837,
+   "none-elig": 0,
+   "ord+elig": 546123,
+   "ord-elig": 0,
+   "portalOnly+elig": 57919,
+   "portalOnly-elig": 0
+  },
+  "suicide": {
+   "none+elig": 99817,
+   "none-elig": 436938,
+   "ord+elig": 29811,
+   "ord-elig": 41089,
+   "portalOnly+elig": 217,
+   "portalOnly-elig": 1924
+  }
+ },
+ "exitless_offers": {
+  "wall|wall|wall -> suicide": 172146,
+  "enemyHead|wall|wall -> enemyHead": 3920,
+  "ally|wall|wall -> suicide": 172469,
+  "ally|ally|ally -> suicide": 23611,
+  "ally|ally|wall -> suicide": 63071,
+  "enemy|wall|wall -> suicide": 3219,
+  "ally|ally|enemy -> suicide": 696,
+  "ally|enemy|enemy -> suicide": 138,
+  "enemy|enemyHead|wall -> enemyHead": 663,
+  "ally|enemyHead|wall -> enemyHead": 520,
+  "ally|ally|enemyHead -> enemyHead": 145,
+  "ally|enemy|own -> suicide": 1,
+  "enemy|enemy|enemy -> suicide": 110,
+  "ally|enemy|wall -> suicide": 872,
+  "ally|ally|wall -> back": 782,
+  "enemy|enemy|enemyHead -> enemyHead": 93,
+  "enemy|enemy|wall -> suicide": 499,
+  "enemyHead|own|wall -> enemyHead": 1,
+  "enemyHead|enemyHead|wall -> enemyHead": 204,
+  "ally|enemy|enemyHead -> enemyHead": 169,
+  "enemy|enemyHead|enemyHead -> enemyHead": 48,
+  "own|wall|wall -> suicide": 49,
+  "ally|ally|own -> suicide": 17,
+  "enemy|own|wall -> suicide": 1,
+  "enemyHead|wall|wall -> suicide": 18,
+  "ally|enemyHead|enemyHead -> enemyHead": 33,
+  "ally|wall|wall -> back": 89,
+  "ally|ally|ally -> back": 1,
+  "ally|own|wall -> suicide": 3,
+  "enemy|enemyHead|wall -> suicide": 4,
+  "ally|own|own -> suicide": 9,
+  "enemyHead|enemyHead|enemyHead -> enemyHead": 17,
+  "enemyHead|enemyHead|wall -> suicide": 2,
+  "own|own|wall -> suicide": 3,
+  "enemy|wall|wall -> back": 1,
+  "enemyHead|wall|wall -> back": 1
+ },
+ "invalid_splits": 0,
+ "splits": 835879,
+ "target_x_death": {
+  "": {
+   "back": 0,
+   "enemyHead": 0,
+   "free": 25718545,
+   "portal": 365417,
+   "split": 835879,
+   "suicide": 0
+  },
+  "hitHeadToHead": {
+   "back": 0,
+   "enemyHead": 34256,
+   "free": 31155,
+   "portal": 24237,
+   "split": 0,
+   "suicide": 0
+  },
+  "hitOtherBody": {
+   "back": 0,
+   "enemyHead": 0,
+   "free": 0,
+   "portal": 15500,
+   "split": 0,
+   "suicide": 0
+  },
+  "hitSelf": {
+   "back": 1214,
+   "enemyHead": 0,
+   "free": 0,
+   "portal": 1,
+   "split": 0,
+   "suicide": 0
+  },
+  "noValidAction": {
+   "back": 0,
+   "enemyHead": 0,
+   "free": 0,
+   "portal": 0,
+   "split": 0,
+   "suicide": 609796
+  }
+ }
+}

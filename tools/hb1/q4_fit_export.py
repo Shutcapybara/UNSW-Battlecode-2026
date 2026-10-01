@@ -11,7 +11,7 @@ untouched for fidelity. mem_initial is dropped (the bot cannot observe it).
 Writes bots/hb1-01-structured/hb1_models.hpp and build/hb1/export/<model>_check.csv (held-out feature rows with the
 Python margins) for the C++ evaluator parity check, and game_stats/runs/hb1-q4-export.json.
 """
-import json, sys
+import glob, json, os, sys
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -20,14 +20,48 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import q1_decisions as Q1
 
 ROOT = Path(__file__).resolve().parents[2]
-B = ROOT / 'build' / 'hb1'
+B = ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1')    # lane tt: other teams
+TAG = os.environ.get('HB_TAG', 'hb1')
 EXP = B / 'export'
-HDR = ROOT / 'bots' / 'hb1-01-structured' / 'hb1_models.hpp'
-OUT = ROOT / 'game_stats' / 'runs' / 'hb1-q4-export.json'
+HDR = ROOT / 'bots' / os.environ.get('HB_BOT', 'hb1-01-structured') / 'hb1_models.hpp'
+OUT = ROOT / 'game_stats' / 'runs' / f'{TAG}-q4-export.json'
 DROP = {'mem_initial'}
-MODELS = ('gate', 'alloc', 'direction', 'sonar')
+MODELS = tuple(os.environ.get('HB_MODELS', 'gate,alloc,direction,sonar').split(','))
 # boosting-round caps: the near-rule decisions need far fewer trees than direction (header size; see status)
-ROUNDS = dict(gate=120, alloc=40, direction=300, sonar=40)
+ROUNDS = dict(gate=120, alloc=40, direction=300, sonar=40, cull=120)
+CULL_PER_GAME = 400
+
+
+def _cull_rows(path):
+    """All turns (self-kill = an invalid command or a backward step), sampled uniformly per game - unweighted, so the
+    model's probabilities stay calibrated to the team's real self-kill rate."""
+    import numpy as np
+    d = pd.read_parquet(path)
+    if len(d) > CULL_PER_GAME:
+        d = d.iloc[np.sort(np.random.default_rng(int(Path(path).stem) + 3).choice(len(d), CULL_PER_GAME, replace=False))]
+    for c in d.columns:
+        if not pd.api.types.is_numeric_dtype(d[c]) and c not in Q1.LABELS and c not in Q1.MAP_ID:
+            d[c] = d[c].astype(str)
+    return d
+
+
+def load(k):
+    if k != 'cull':
+        return pd.read_parquet(B / 'q1' / f'{k}.parquet')
+    p = B / 'q1' / 'cull.parquet'
+    if not p.exists():
+        from multiprocessing import Pool
+        with Pool(12) as pool:
+            pd.concat(pool.map(_cull_rows, sorted(glob.glob(str(B / 'v5' / 'corpus' / '*.parquet'))), chunksize=8),
+                      ignore_index=True).to_parquet(p)
+    return pd.read_parquet(p)
+
+
+def xy(k, d):
+    if k != 'cull':
+        return Q1.xy(k, d)
+    X, _ = Q1.xy('gate', d)
+    return X, (~d.y_first.isin(['F', 'R', 'L', 'split'])).astype(int).to_numpy()
 
 
 def flatten(booster, feats):
@@ -71,9 +105,9 @@ def main():
     test_games = set(np.random.default_rng(Q1.SEED).choice(games, len(games) // 5, replace=False).tolist())
     res, blobs = {}, []
     for k in MODELS:
-        d = pd.read_parquet(B / 'q1' / f'{k}.parquet')
+        d = load(k)
         te = d.game.astype(int).isin(test_games).to_numpy()
-        X, y = Q1.xy(k, d)
+        X, y = xy(k, d)
         X = X[[c for c in X.columns if c not in DROP]]
         m = Q1._XGB(ROUNDS[k]).fit(X[~te], y[~te])
         p = m.predict_proba(X[te])
