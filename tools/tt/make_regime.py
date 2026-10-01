@@ -15,8 +15,14 @@ import re, shutil, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-name, fb = sys.argv[1], int(sys.argv[2])
-base = sys.argv[3] if len(sys.argv) > 3 else 'hb1-17-prior-lam20'
+import argparse
+ap = argparse.ArgumentParser()
+ap.add_argument('name'); ap.add_argument('feed_base_limit', type=int); ap.add_argument('base', nargs='?', default='hb1-17-prior-lam20')
+ap.add_argument('--area', type=int, default=1100, help='W*H threshold; 0 disables the size rule')
+ap.add_argument('--portals', type=float, default=4.0, help='portal edges per 100 seen cells')
+a = ap.parse_args()
+name, fb, base = a.name, a.feed_base_limit, a.base
+area = a.area if a.area > 0 else 1 << 30
 d = ROOT / 'bots' / name
 if d.exists():
     shutil.rmtree(d)
@@ -27,8 +33,8 @@ assert s.count(old) == 1
 s = s.replace(old, f'''    static constexpr int feed_base = 40;
     // TT regime selector: feeding onset on maps whose local features predict a round-limit game.
     static constexpr int feed_base_limit = {fb};
-    static constexpr int regime_area = 1100;          // W * H at or above: large map
-    static constexpr double regime_portals = 4.0;     // portal edges per 100 seen cells at or above: portal-dense
+    static constexpr int regime_area = {area};          // W * H at or above: large map
+    static constexpr double regime_portals = {a.portals};     // portal edges per 100 seen cells at or above: portal-dense
     static constexpr int regime_min_seen = 64;''')
 p.write_text(s)
 p = d / 'policy.hpp'; s = p.read_text()
@@ -55,5 +61,5 @@ p.write_text(s)
 p = d / 'CANDIDATE.toml'
 if p.exists():
     s = p.read_text().replace(base, name)
-    p.write_text(s + f'\n# TT regime selector: feed_base {fb} on large (W*H>=1100) or portal-dense (>=4 portal edges per 100 seen cells) maps, base {base} otherwise.\n')
+    p.write_text(s + f'\n# TT regime selector: feed_base {fb} on large (W*H>={area}) or portal-dense (>={a.portals} portal edges per 100 seen cells) maps, base {base} otherwise.\n')
 print('built', d)

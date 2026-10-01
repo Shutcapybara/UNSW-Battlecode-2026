@@ -122,6 +122,7 @@ def main():
     ap.add_argument('--reverse', action='store_true', help='run the shard from the end (to meet another host in the middle)')
     ap.add_argument('--no-logs', action='store_true', help='keep LOG lines out of the replay (features do not use them)')
     ap.add_argument('--out', default=None, help='replay root (default build/zoo/<panel>[-<bot>-<fp8>])')
+    ap.add_argument('--maps', default=None, help='comma list of maps to keep (e.g. portals,schooltime)')
     a = ap.parse_args()
     bot = a.bot
     seeds = tuple(int(s) for s in a.seed.split(',')) if a.seed else (1,)
@@ -135,6 +136,8 @@ def main():
     (root / 'replays').mkdir(parents=True, exist_ok=True)
     version = subprocess.run([a.unswbc, '--version'], capture_output=True, text=True).stdout.strip()
     fx = fixtures(a.panel, bot, seeds)
+    if a.maps:
+        fx = [f for f in fx if f['map'] in set(a.maps.split(','))]
     if a.shards is not None:
         keep = {int(x) for x in a.shards.split(',')}
         fx = [f for i, f in enumerate(fx) if i % a.of in keep]
