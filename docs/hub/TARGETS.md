@@ -33,6 +33,16 @@ below is **provisional**.
 | all | r500 | longest at end (RL), median | 28 | 42.5 | — | ≥ 42 (top-10) | post | queen.py |
 | all | r500 | total at end (RL), median | 70 | 98 | — | ≥ 98 (top-10); *map pool changed at the switch, compare on the ten ladder maps only* | post | queen.py |
 
+
+**Win potential Φ (shaped-reward and early-game benchmark; replaces tempo as the opening guard proposal).** Opponent-relative
+shares (total, longest, pearls, territory, deaths), two regimes, no map identity; LOMO AUC at r50 0.86 (elimination maps) /
+0.63 (round-limit maps), calibrated; tempo-family own-income AUC 0.64. Coefficients `tools/antioch/phi_post_v1.json`.
+
+| regime | phase | metric | top-10 | r11–30 | field | target | era | query |
+|---|---|---|---|---|---|---|---|---|
+| elimination maps | r50 / r100 | mean Φ | 0.632 / 0.698 | 0.580 / 0.606 | 0.5 | ≥ top-10 | post | value_target.py |
+| round-limit maps | r50 / r100 | mean Φ | 0.546 / 0.570 | 0.522 / 0.535 | 0.5 | ≥ top-10, and the queen (Φ adds `queen_diff` from r250) | post | value_target.py |
+
 **Opening (S-1 Q3's four components: bed conversion, production, early portal use, territory):** pending. The post-change
 store build is running (`tools/s1/build.py corpus --era post`, 1,143 games). Post-change references and their stability
 come in my next unit.

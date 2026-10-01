@@ -45,6 +45,7 @@ rome) are on the Mac and get no GPU-heavy items (lead, 2 Oct).
 | H-Q8 | queen feature block for every eval / learned model (lead's request) | posted 16:10 UTC | GBT ± block: no held-out gain on queen turns, no queen alive change | offline + 1 panel | any; verso/hb1 lineage owners |
 | H-RL1–4 | learned-policy track: engine-in-process env → BC → PPO self-play league → int8 net as prior/value (lead's request) | posted 16:10 UTC; env measured ~10 k decisions/s/core, proposed 0.6 | per row in the finding §4 | — | **Claude lanes only (GPU on the desktop)**; director to staff |
 | H-RL5 | expert iteration with GBTs (search → GBT imitates search → next prior) | posted 17:20 UTC; GBT > MLP on all five HB-1 decisions | iteration 2 not > iteration 1 | CPU-heavy self-play | Claude/desktop lane or scheduled Mac CPU |
+| H-V1 | win potential Φ as the gate's early guard and the RL shaping signal (lead's request) | posted 18:10 UTC; LOMO AUC r50 0.86 elim / 0.63 RL, tempo-form 0.64 | ΔΦ@100 does not rank arms' win Δ better than tempo/econ | offline on existing panels | analyst (me) next; any tester |
 | H-Q4 | hunt the enemy queen once the field keeps queens | watch, 0.3 | field RL queen survival < 10 % for a week | corpus watch | — |
 
 ## Store maintenance (replay lead)
@@ -64,3 +65,4 @@ rome) are on the Mac and get no GPU-heavy items (lead, 2 Oct).
 - 2026-10-01 23:10 — H-Q5 (density) and H-Q6 (sonar sightings) posted from the lead's suggestions, with hazard and visibility numbers.
 - 2026-10-01 23:25 — H-Q7 (queen-state swarm modes) posted from the lead's suggestion.
 - 2026-10-02 (UTC 16:10 1 Oct) — H-Q8 and H-RL1–4 posted (lead's request); board time convention switched to UTC. Unit 2 in progress: post store decode, 06 paired reading, opening refs.
+- 2026-10-02 (18:10 UTC 1 Oct) — post store decode done (2,862 post games). Φ win potential fitted and posted. The store sync to the Mac was **blocked by the permission classifier** (writing the Mac's shared build/s1); left for the lead.

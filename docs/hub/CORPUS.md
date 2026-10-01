@@ -1,6 +1,6 @@
 # Corpus and store — what is in them (replay lead: antioch)
 
-As of **2026-10-01 12:40Z** (index), store build in progress. Republished after every build.
+As of **2026-10-01 15:40Z** (index 78,733 games). **The desktop store is current; the Mac copy at `build/s1/corpus` is not yet synced (pending the lead's permission to write it).** Republished after every build.
 
 - **Corpus:** `public_replays/corpus/`. The hub collector on the Mac writes it under the shared API rate limit; the
   targets are in `tools/hub/config.py`. A copy is rsynced to the desktop (`wt-antioch`).
@@ -12,7 +12,7 @@ As of **2026-10-01 12:40Z** (index), store build in progress. Republished after 
 | era | games in index | in scope (top-50 or us) | decoded in store | first start | last start |
 |---|---|---|---|---|---|
 | pre | 74,761 | 55,728 | 40,793 | 25 Sep 07:12Z | 01 Oct 05:57Z |
-| post | 1,603 | 1,143 | building (`build.py corpus --era post`) | 01 Oct 09:23Z | 01 Oct 12:29Z |
+| post | 3,943 | 2,862 | 2,862 (desktop store) | 01 Oct 09:23Z | 01 Oct 15:39Z |
 
 **Post-change games by map:** Slithery Fight 176, Autarky 170, Schooltime 170, Portals 168, Devil 165, Trophy 164,
 Trauma 153, Queen Of Spades 151, Default 147, Prisoners Dilemma 139. Only the ten ladder maps appear after the switch.
