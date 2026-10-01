@@ -1,0 +1,281 @@
+{
+ "new+mc26_archipelago": {
+  "pearls@50": 48.0,
+  "pearls@100": 112.5,
+  "pearls@150": 155.5,
+  "pearls@250": 156.5,
+  "units@100": 14.5,
+  "total@100": 35.0,
+  "births@100": 42.5
+ },
+ "new+mc26_crossroads": {
+  "pearls@50": 25.0,
+  "pearls@100": 96.5,
+  "pearls@150": 182.0,
+  "pearls@250": 329.5,
+  "units@100": 20.0,
+  "total@100": 51.0,
+  "births@100": 39.0
+ },
+ "new+mc26_delayed_commons": {
+  "pearls@50": 17.0,
+  "pearls@100": 67.0,
+  "pearls@150": 117.0,
+  "pearls@250": 117.0,
+  "units@100": 12.0,
+  "total@100": 29.5,
+  "births@100": 26.0
+ },
+ "new+mc26_equatorial_belt": {
+  "pearls@50": 149.0,
+  "pearls@100": 398.5,
+  "pearls@150": 643.5,
+  "pearls@250": 901.5,
+  "units@100": 39.0,
+  "total@100": 92.5,
+  "births@100": 145.0
+ },
+ "new+mc26_far_harbors": {
+  "pearls@50": 57.5,
+  "pearls@100": 165.5,
+  "pearls@150": 306.5,
+  "pearls@250": 526.5,
+  "units@100": 49.0,
+  "total@100": 112.5,
+  "births@100": 69.5
+ },
+ "new+mc26_nursery_bays": {
+  "pearls@50": 34.0,
+  "pearls@100": 73.5,
+  "pearls@150": 132.5,
+  "pearls@250": 207.0,
+  "units@100": 15.5,
+  "total@100": 35.0,
+  "births@100": 29.0
+ },
+ "new+mc26_pinwheel": {
+  "pearls@50": 34.0,
+  "pearls@100": 84.0,
+  "pearls@150": 125.5,
+  "pearls@250": 148.5,
+  "units@100": 19.5,
+  "total@100": 44.5,
+  "births@100": 34.0
+ },
+ "new+mc26_portal_quartet": {
+  "pearls@50": 54.0,
+  "pearls@100": 131.0,
+  "pearls@150": 220.0,
+  "pearls@250": 374.0,
+  "units@100": 21.0,
+  "total@100": 49.5,
+  "births@100": 53.0
+ },
+ "new+mc26_pulse_farms": {
+  "pearls@50": 34.0,
+  "pearls@100": 102.5,
+  "pearls@150": 129.0,
+  "pearls@250": 129.0,
+  "units@100": 16.0,
+  "total@100": 38.5,
+  "births@100": 39.0
+ },
+ "new+mc26_relay_depots": {
+  "pearls@50": 29.0,
+  "pearls@100": 69.5,
+  "pearls@150": 81.0,
+  "pearls@250": 83.0,
+  "units@100": 8.0,
+  "total@100": 17.5,
+  "births@100": 26.5
+ },
+ "new+mc26_scattered_fleets": {
+  "pearls@50": 27.0,
+  "pearls@100": 101.0,
+  "pearls@150": 172.0,
+  "pearls@250": 280.5,
+  "units@100": 28.0,
+  "total@100": 64.0,
+  "births@100": 40.0
+ },
+ "new+mc26_seam_market": {
+  "pearls@50": 49.0,
+  "pearls@100": 58.0,
+  "pearls@150": 58.0,
+  "pearls@250": 58.0,
+  "units@100": 2.0,
+  "total@100": 4.5,
+  "births@100": 21.0
+ },
+ "new+mc26_spring_wells": {
+  "pearls@50": 14.5,
+  "pearls@100": 61.0,
+  "pearls@150": 90.0,
+  "pearls@250": 90.0,
+  "units@100": 20.0,
+  "total@100": 50.0,
+  "births@100": 24.0
+ },
+ "new+md26_causeway_detour_s0": {
+  "pearls@50": 14.0,
+  "pearls@100": 44.0,
+  "pearls@150": 70.0,
+  "pearls@250": 93.0,
+  "units@100": 10.0,
+  "total@100": 22.5,
+  "births@100": 18.0
+ },
+ "new+md26_causeway_portal_s0": {
+  "pearls@50": 14.5,
+  "pearls@100": 55.0,
+  "pearls@150": 101.0,
+  "pearls@250": 142.5,
+  "units@100": 10.0,
+  "total@100": 24.0,
+  "births@100": 20.0
+ },
+ "new+md26_commons_shared_s0": {
+  "pearls@50": 77.0,
+  "pearls@100": 171.0,
+  "pearls@150": 171.5,
+  "pearls@250": 171.5,
+  "units@100": 18.0,
+  "total@100": 41.0,
+  "births@100": 62.5
+ },
+ "new+md26_commons_spread_s0": {
+  "pearls@50": 84.5,
+  "pearls@100": 192.0,
+  "pearls@150": 299.5,
+  "pearls@250": 525.0,
+  "units@100": 25.0,
+  "total@100": 58.0,
+  "births@100": 77.5
+ },
+ "new+md26_orchard_narrow_s0": {
+  "pearls@50": 53.5,
+  "pearls@100": 141.5,
+  "pearls@150": 248.0,
+  "pearls@250": 456.5,
+  "units@100": 23.0,
+  "total@100": 54.0,
+  "births@100": 59.5
+ },
+ "new+md26_orchard_wide_s0": {
+  "pearls@50": 57.5,
+  "pearls@100": 150.0,
+  "pearls@150": 255.0,
+  "pearls@250": 469.0,
+  "units@100": 24.0,
+  "total@100": 56.0,
+  "births@100": 61.5
+ },
+ "new+md26_promenade_ring_s0": {
+  "pearls@50": 41.0,
+  "pearls@100": 140.0,
+  "pearls@150": 230.0,
+  "pearls@250": 232.5,
+  "units@100": 32.0,
+  "total@100": 77.0,
+  "births@100": 56.5
+ },
+ "pub+portals_rec": {
+  "pearls@50": 36.0,
+  "pearls@100": 147.0,
+  "pearls@150": 325.0,
+  "pearls@250": 685.5,
+  "units@100": 18.5,
+  "total@100": 44.5,
+  "births@100": 54.0
+ },
+ "pub+slithery_rec": {
+  "pearls@50": 208.5,
+  "pearls@100": 504.0,
+  "pearls@150": 851.0,
+  "pearls@250": 1507.0,
+  "units@100": 56.0,
+  "total@100": 138.0,
+  "births@100": 218.5
+ },
+ "var+autarky_tr": {
+  "pearls@50": 56.0,
+  "pearls@100": 107.5,
+  "pearls@150": 139.5,
+  "pearls@250": 255.5,
+  "units@100": 17.5,
+  "total@100": 39.5,
+  "births@100": 47.0
+ },
+ "var+crossroads_tr": {
+  "pearls@50": 27.0,
+  "pearls@100": 81.0,
+  "pearls@150": 149.5,
+  "pearls@250": 246.0,
+  "units@100": 18.5,
+  "total@100": 41.5,
+  "births@100": 31.5
+ },
+ "var+default_tr": {
+  "pearls@50": 10.0,
+  "pearls@100": 40.0,
+  "pearls@150": 77.5,
+  "pearls@250": 184.0,
+  "units@100": 15.0,
+  "total@100": 36.0,
+  "births@100": 19.5
+ },
+ "var+devil_tr": {
+  "pearls@50": 24.0,
+  "pearls@100": 49.0,
+  "pearls@150": 64.0,
+  "pearls@250": 82.0,
+  "units@100": 10.5,
+  "total@100": 23.5,
+  "births@100": 21.0
+ },
+ "var+dilemma_tr": {
+  "pearls@50": 36.0,
+  "pearls@100": 64.5,
+  "pearls@150": 86.0,
+  "pearls@250": 120.0,
+  "units@100": 7.0,
+  "total@100": 14.0,
+  "births@100": 29.0
+ },
+ "var+portals_tr": {
+  "pearls@50": 49.0,
+  "pearls@100": 196.0,
+  "pearls@150": 373.5,
+  "pearls@250": 757.0,
+  "units@100": 20.0,
+  "total@100": 52.0,
+  "births@100": 76.5
+ },
+ "var+queen_of_spades_tr": {
+  "pearls@50": 3.5,
+  "pearls@100": 20.0,
+  "pearls@150": 45.0,
+  "pearls@250": 91.5,
+  "units@100": 7.5,
+  "total@100": 18.5,
+  "births@100": 9.0
+ },
+ "var+trauma_tr": {
+  "pearls@50": 1.5,
+  "pearls@100": 15.0,
+  "pearls@150": 55.5,
+  "pearls@250": 217.5,
+  "units@100": 7.5,
+  "total@100": 19.0,
+  "births@100": 7.5
+ },
+ "var+trophy_tr": {
+  "pearls@50": 18.5,
+  "pearls@100": 43.0,
+  "pearls@150": 55.0,
+  "pearls@250": 69.5,
+  "units@100": 7.0,
+  "total@100": 16.5,
+  "births@100": 17.0
+ }
+}
