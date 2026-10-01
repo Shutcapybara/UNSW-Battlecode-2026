@@ -121,6 +121,57 @@ def measurement_sensitivity(keys, child, parent, child_features, parent_features
     return out
 
 
+def map_diagnostics(wanted, child, parent, child_features, parent_features):
+    """Retain every planned map, including missing ones, and expose matchup effects.
+
+    All slices are descriptive. Complete seeds describe coverage, not statistical
+    confirmation; a pooled result cannot certify a map-specific mechanism.
+    """
+    paired = set(child) & set(parent)
+    if not paired <= wanted:
+        raise ValueError('Unexpected paired fixture in map diagnostics')
+    fields = ('pearls@25', 'pearls@50', 'pearls@100', 'units@100', 'total@100', 'total@250')
+
+    def summary(keys):
+        keys = sorted(keys)
+        if not keys:
+            return dict(paired=0, parent_points=None, candidate_points=None,
+                        win_delta=None, better=0, worse=0, tied=0, raw_mean_deltas=None)
+        pw = [c.panel.gate.win(parent[k]) for k in keys]
+        cw = [c.panel.gate.win(child[k]) for k in keys]
+        return dict(paired=len(keys), parent_points=sum(pw), candidate_points=sum(cw),
+            win_delta=mean([a - b for a, b in zip(cw, pw)]),
+            better=sum(a > b for a, b in zip(cw, pw)), worse=sum(a < b for a, b in zip(cw, pw)),
+            tied=sum(a == b for a, b in zip(cw, pw)),
+            raw_mean_deltas={f: mean([child_features[k][f] - parent_features[k][f] for k in keys])
+                             for f in fields})
+
+    maps = {}
+    for m in sorted({k[0] for k in wanted}):
+        planned = {k for k in wanted if k[0] == m}
+        matched = paired & planned
+        seeds = {}
+        for seed in sorted({k[2] for k in planned}):
+            required = {k for k in planned if k[2] == seed}
+            observed = matched & required
+            seeds[str(seed)] = dict(summary(observed), required_pairs=len(required), complete=observed == required)
+        complete_seeds = [int(seed) for seed, value in seeds.items() if value['complete']]
+        maps[m] = dict(summary(matched), required_pairs=len(planned), complete=matched == planned,
+            complete_seeds=complete_seeds, by_seed=seeds,
+            by_seat={seat: summary({k for k in matched if k[1] == seat})
+                     for seat in sorted({k[1] for k in planned})},
+            by_opponent={opp: summary({k for k in matched if k[3] == opp})
+                         for opp in sorted({k[3] for k in planned})},
+            evidence='DESCRIPTIVE; NO CONFIRMED MAP SPECIALISM',
+            missing_pairs=len(planned - matched))
+    return dict(maps=maps, collective=summary(paired),
+        leave_one_map_out={m: summary({k for k in paired if k[0] != m}) for m in maps},
+        limitations='Map, opponent and seat slices use the same paired fixtures. Missing data are not zero effects. '
+        'Leave-one-map-out uses available fixtures and diagnoses concentration only; it is not held-out validation. '
+        'Do not choose map-specific settings from this screen. Confirm frozen mechanism hypotheses on additional '
+        'seeds and structural/transposed maps, with all original pooled and map guards retained.')
+
+
 def build_report(candidate):
     aid = analysis_id()
     report = dict(candidate=candidate, parent=c.panel.PARENT, analysis_sha256=aid, report_sha256=c.sha(Path(__file__)),
@@ -134,6 +185,8 @@ def build_report(candidate):
                 if json.loads((dest / 'contract.json').read_text()) != c.contract(bot, pn):
                     raise ValueError(f'Frozen inputs changed: {dest}')
             rows[bot] = c.read_rows(bot, pn)
+        for bot in (c.panel.PARENT, candidate):
+            dest = c.run_dir(bot, pn)
             feats[bot] = {}
             for key, row in rows[bot].items():
                 feature, differences, checks = canonical(row, dest, aid)
@@ -149,6 +202,8 @@ def build_report(candidate):
             paired=len(paired), required_pairs=len(wanted), complete=complete,
             maps=sorted({k[0] for k in paired}), seats=sorted({k[1] for k in paired}),
             seeds=sorted({k[2] for k in paired}))
+        report['panels'][pn]['map_diagnostics'] = map_diagnostics(
+            wanted, child, parent, feats[candidate], feats[c.panel.PARENT])
         if paired:
             report['panels'][pn]['descriptive_only'] = {
                 field: sum(feats[candidate][k][field] - feats[c.panel.PARENT][k][field]

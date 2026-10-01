@@ -148,5 +148,39 @@ class EconomyEstimandTests(unittest.TestCase):
                 economy_estimands(child, parent)
 
 
+class MapDiagnosticTests(unittest.TestCase):
+    def test_map_cancellation_and_missing_coverage_remain_visible(self):
+        from report import map_diagnostics
+        wanted = {(m, seat, seed, 'opp') for m in ('gain', 'loss', 'missing')
+                  for seat in ('A', 'B') for seed in (1, 2, 3)}
+        keys = {k for k in wanted if k[0] != 'missing' and k[2] == 1}
+        child = {k: {'result': 'win' if k[0] == 'gain' else 'loss'} for k in keys}
+        parent = {k: {'result': 'loss' if k[0] == 'gain' else 'win'} for k in keys}
+        features = {k: dict.fromkeys(('pearls@25', 'pearls@50', 'pearls@100',
+                                     'units@100', 'total@100', 'total@250'), 0) for k in keys}
+        result = map_diagnostics(wanted, child, parent, features, features)
+        self.assertEqual(result['collective']['win_delta'], 0)
+        self.assertEqual(result['maps']['gain']['win_delta'], 1)
+        self.assertEqual(result['maps']['loss']['win_delta'], -1)
+        self.assertEqual(result['leave_one_map_out']['gain']['win_delta'], -1)
+        self.assertEqual(result['maps']['gain']['complete_seeds'], [1])
+        self.assertFalse(result['maps']['gain']['complete'])
+        self.assertEqual(result['maps']['missing']['missing_pairs'], 6)
+        self.assertIsNone(result['maps']['missing']['win_delta'])
+        self.assertIsNone(result['maps']['gain']['by_seed']['2']['raw_mean_deltas'])
+        self.assertEqual(result['maps']['gain']['by_opponent']['opp']['paired'], 2)
+
+    def test_draw_points_and_unpaired_games(self):
+        from report import map_diagnostics
+        a, b = ('map', 'A', 1, 'opp'), ('map', 'B', 1, 'opp')
+        fields = ('pearls@25', 'pearls@50', 'pearls@100', 'units@100', 'total@100', 'total@250')
+        features = {a: dict.fromkeys(fields, 0)}
+        result = map_diagnostics({a, b}, {a: {'result': 'draw'}, b: {'result': 'win'}},
+                                 {a: {'result': 'loss'}}, features, features)
+        self.assertEqual(result['collective']['paired'], 1)
+        self.assertEqual(result['collective']['win_delta'], .5)
+        self.assertFalse(result['maps']['map']['by_seed']['1']['complete'])
+
+
 if __name__ == '__main__':
     unittest.main()

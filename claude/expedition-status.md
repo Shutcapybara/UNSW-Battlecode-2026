@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–10
+# Expedition — H-1 hypothesis steward, passes 1–11
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -14,6 +14,133 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 11 — map-level research is a standing requirement (2026-10-01)
+
+**User steering:** work the problem by map as well as collectively. Map-specific
+strength, including gaps among strong teams, is useful signal; do not dismiss it
+as noise or optimize only the pooled number. This governs future Expedition passes.
+Each meaningful stage must update the all-map view below, inspect opponent/seat
+concentration, and connect differences to mechanisms while retaining the frozen
+collective panels and guards.
+
+Existing external-team context is the dated repository finding
+`docs/findings/2026-09-30-s1-Q2-map-predictability.md`, especially Q2c sections 4–5.
+Its cleaned held-out analysis reports a larger improvement from map-specific team
+strength on Portals and Slithery than elsewhere. Its examples include cheji bt's
+QoS 0.97 versus Elo-expected 0.77, but Slithery 0.63 versus expected 0.78; calc's
+Autarky 0.91 versus expected 0.72, but Slithery 0.61 versus expected 0.72. These are
+attributed historical observations, not fresh live ranks or evidence that our
+candidate will transfer. Keep the historical field study distinct from the frozen
+local opponent roster; local matchup cells are not rankings of the current top teams.
+
+### Current all-map research board
+
+Mouth 09 versus parent 01: **16 matched fixtures per map, seed 1 only**. Economy
+is canonical replay mean normalized delta; tempo is candidate minus parent rounds
+(positive = slower). Material is mean total-length delta at r150. Every map remains
+exploratory until additional seed/structural evidence and guards are assessed.
+
+| Map | Wins parent→09 | Economy | Tempo | Material | Mechanism to investigate |
+|---|---:|---:|---:|---:|---|
+| Autarky | 16→16 | −.0027 | +1.028 | −7.94 | Win ceiling masks an opening/material cost; inspect opponent and seat exposure. |
+| Default | 13→12 | −.0569 | +1.108 | −4.69 | Lower transit exposure accompanies lost intake; trace route versus resource access. |
+| Devil | 15→15 | .0000 | .000 | .00 | No-portal negative control; preserve exact null behavior. |
+| Dilemma | 15→15 | −.0085 | +2.768 | −1.44 | Fewer transits but greater death fraction; audit conditional exposure and early contact. |
+| Portals | 10→13 | −.2077 | +3.098 | −2.25 | More wins despite economy loss; distinguish survival/concentration from general strength. |
+| Queen of Spades | 16→12 | −.2582 | +9.083 | −8.25 | Largest opening regression; trace foregone access versus mouth avoidance. |
+| Schooltime | 15→14 | −.0092 | +.156 | +12.00 | More material does not convert to wins; inspect length concentration and late losses. |
+| Slithery Fight | 12→12 | +.0030 | +.116 | −3.00 | Offsetting matchup changes and increased collision/churn; inspect density and routing. |
+| Trauma | 12→11 | +.0582 | −1.447 | +8.56 | Faster production with more own goals/newborn deaths; trace net survival and conversion. |
+| Trophy | 13→13 | −.0774 | +4.686 | −5.63 | Collision savings cost opening material in an early-contact map. |
+| Collective, equal maps | 137→133 | −.0559 | — | — | Keep full-panel win, economy, material and hygiene guards alongside every map finding. |
+
+**First map questions:** Queen of Spades' opening cost, Portals' win/economy
+tradeoff, Slithery's collision increase, and Trauma's production/churn tradeoff.
+These priorities select replay analyses, not new map-specific constants or a
+change to the fixed game queue. Lower-priority maps and negative controls remain
+in every report; a specialist gain cannot disappear into an average, and a pooled
+gain cannot conceal a large map regression.
+
+### Reporting implemented, not just a change in narrative
+
+`report.py` now includes every planned map for **both pool and gen**, even with
+zero games. Each map has exact paired coverage, missing-pair counts, per-seed
+coverage, opponent and starting-side breakdowns, win points including half-point
+draws, paired improvements/regressions/ties, raw opening intake and r100/r250
+material deltas. Existing pool mean/median economy and reference percentiles stay
+alongside this view; gen raw metrics are not assigned invented field references.
+
+The same report includes the collective result and a leave-one-map-out diagnostic
+to expose concentration. That diagnostic uses available paired fixtures; it is
+**not held-out validation**, an alternative gate, or grounds to exclude an awkward
+map. Complete-seed flags describe coverage, not confirmed specialism. Missing data
+are null, not a zero effect. Row indexes for each pair of bots are read before
+slower canonical extraction, reducing staggered snapshot skew during active games.
+
+Verification: **17 no-game tests passed**. New cases check a pooled zero hiding
+opposite map effects, missing-map visibility, single-seed incompleteness, opponent
+coverage, half-point draws and exclusion of unpaired games. Whitespace checks pass.
+No bot runtime, measured snapshot, frozen contract, shared ledger or gate changed.
+
+### First matchup and concentration findings
+
+The expanded report validates batch 012's **406 games / 203 pairs**: pool 160
+pairs and gen 43, with 402 arena/replay measurement discrepancies retained.
+Batch 012 completed 96 games in 1,057.8 seconds; the lock was free and batch 013
+resumed the exact gen fixture with one CPU worker and the same bounded settings.
+The report contains all 10 pool and 29 gen maps. Gen has five complete seed-1
+map slices, one partial slice and 23 unobserved maps; none are collapsed into
+zero-effect rows. Map, opponent and seat partition counts reconcile exactly.
+
+- **Queen of Spades:** A is 8→7 wins; B 8→5. Regressions are Gavroche (one),
+  Kazuha (one), and Yuna (both sides). This is not solely one opponent or one
+  starting side, but the larger B cost needs explicit confirmation.
+- **Portals:** A is 5→6; B 5→7. Improvements occur against Chaewon, Fenrir,
+  Gavroche and Yuna; one regression occurs against Sinbad. This breadth is useful
+  exploratory evidence, still only two fixtures per opponent.
+- **Slithery:** each seat has unchanged win totals, yet opponent outcomes change:
+  Chaewon 2→0, Sinbad 2→1, and one improvement each against Fenrir, Gavroche and
+  Yuna. Flat map totals conceal substantial matchup changes.
+- **Trauma:** A improves 6→7 but B falls 6→4. The improvement is against Gavroche;
+  regressions are Kazuha and Sinbad. Check side-dependent access and survival
+  before claiming a general production benefit.
+
+Leaving out Queen of Spades makes the pooled win delta zero; leaving out Portals
+makes it −.048611. Thus the aggregate four-win deficit is highly concentrated,
+while economy remains a separate concern. **Keep both maps in the evaluation**;
+this sensitivity directs mechanism work and does not justify excluding either.
+The immutable audit snapshot is `build/expedition/audit-013-map-diagnostics.json`
+with its corresponding log. Later batch-013 games are outside this snapshot.
+
+### Preventing overfit while using map differences
+
+- Freeze each future behavior proposal's mechanism, observable trigger, primary
+  metric, expected map/phase signature and failure conditions before its games.
+  Prefer transferable features such as portal geometry, resource access,
+  bottlenecks and observed crowding over constants selected to fit map names.
+- Seed 1 findings above are discovery evidence. Keep the present candidate frozen
+  for seeds 2–3 and structural/transposed gen comparisons; check both starting
+  sides and whether a result is concentrated in one opponent. Additional seeds
+  reduce seed sensitivity but do not create a new opponent/map sample.
+- If later behavior choices use those confirmation results, those data become
+  development data for that new version. Reserve new untouched validation before
+  claiming a transferable improvement. Track viewed data; do not relabel already
+  inspected gen slices as an untouched holdout.
+- Report every predeclared map and all original collective guards. Treat this
+  board as multiple exploratory comparisons; inspect sign/size stability and
+  matched replay mechanisms, with fixture-cluster uncertainty at full coverage.
+  Any formal map-specific acceptance rule is a proposal requiring predeclaration
+  and multiplicity treatment, not a threshold chosen after seeing these results.
+
+**Reconciliation:** L37's decisive work now explicitly includes map × opponent
+specialism and mechanism transfer, alongside historical weighting/cluster re-scores.
+L36/L38/L40 gain map/phase signatures; planning weights and the ranked ten remain
+unchanged. Map-aware analysis is now a permanent requirement, not a reason to
+relax gates or abandon the collective evaluation. Next: continue batch 013 and the
+frozen gen/remaining-seed campaign, tracing the named map × opponent × side
+contrasts against replay mechanisms before proposing a new version. No registration
+or promotion.
 
 ## Pass 10 — first complete seed-1 pool and cohort-correct weights (2026-10-01)
 
@@ -1010,7 +1137,7 @@ Owners are recommendations only; no messages or jobs were sent to other lanes.
 | Rank | Row | Weight × size × cheapness | One decisive test | Suggested owner |
 |---:|---|---:|---|---|
 | 1 | L36 opening components | .8×5×5 = 20.0 | Exact-source split-eligibility/intake decomposition, r25–50, ranked controls and matched fixtures | S1 + Expedition |
-| 2 | L37 map specialism / gate | .8×4×5 = 16.0 | Re-score paired archives with equal/old-Q2/clean-Q2 weights and cluster intervals; list flips | Expedition + R4 |
+| 2 | L37 map specialism / gate | .8×4×5 = 16.0 | Map × opponent mechanism contrasts, confirmed across seeds/structural maps; retain historical weight/cluster re-scores | Expedition + R4 |
 | 3 | L39 conversion | .7×5×4 = 14.0 | g01 vs identical post-r150 Ares with crown/feeding disabled; elimination, material and round-limit guards | S1 + TT |
 | 4 | L38 symmetry | .7×4×4 = 11.2 | Expedition-08 vs 01 on both panels, symmetry firing/detection and per-map openings | Expedition |
 | 5 | L03 phase handover | .7×4×4 = 11.2 | Fixed r150 vs actor-observable state trigger, same crown setting; independent seeds and structural OOS | S1 + TT |
