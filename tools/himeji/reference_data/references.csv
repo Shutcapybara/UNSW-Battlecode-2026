@@ -1,0 +1,411 @@
+map,metric,direction,era,field_sides,sampled_games,top10_sides,top10_teams,us_sides,field_median,field_p10,field_p90,top10_median,top10_field_pct,us_median,us_field_pct,top10_minus_us,reference_status,cluster
+Autarky,pearls@50,up,post,80,40,9,4,0,46.0,19.8,64.10000000000001,55.0,0.6875,,,,provisional; no gate use,c1
+Autarky,pearls@100,up,post,80,40,9,4,0,104.0,38.8,143.10000000000002,118.0,0.64375,,,,provisional; no gate use,c1
+Autarky,pearls@150,up,post,80,40,9,4,0,170.5,53.9,233.70000000000016,205.0,0.79375,,,,provisional; no gate use,c1
+Autarky,pearls@250,up,post,80,40,9,4,0,290.5,79.0,426.70000000000016,396.0,0.84375,,,,provisional; no gate use,c1
+Autarky,units@100,up,post,80,40,9,4,0,18.0,7.9,31.10000000000001,27.0,0.79375,,,,provisional; no gate use,c1
+Autarky,total@100,up,post,80,40,9,4,0,47.0,22.8,72.30000000000003,64.0,0.80625,,,,provisional; no gate use,c1
+Autarky,births@100,up,post,80,40,9,4,0,48.0,21.9,69.10000000000001,57.0,0.68125,,,,provisional; no gate use,c1
+Autarky,avoidable_deaths_per1k,down,post,80,40,9,4,0,12.000307638267213,1.550297435010246,24.93780469136525,12.863240367187045,0.44375,,,,provisional; no gate use,c1
+Autarky,death_wall_per1k,down,post,80,40,9,4,0,7.209801738984332,0.0,13.020268927712117,8.922880815806247,0.33125,,,,provisional; no gate use,c1
+Autarky,death_self_per1k,down,post,80,40,9,4,0,0.949772323318568,0.0,9.270030323561253,2.514178799041104,0.36875,,,,provisional; no gate use,c1
+Autarky,death_ally_body_per1k,down,post,80,40,9,4,0,0.7694191937768804,0.0,2.1297300715603864,1.1663807890222986,0.31875,,,,provisional; no gate use,c1
+Autarky,death_h2h_ally_per1k,down,post,80,40,9,4,0,0.0,0.0,1.5793420142733567,0.0,0.7125,,,,provisional; no gate use,c1
+Autarky,bed_eats@25,up,post,80,40,9,4,0,15.0,9.0,20.10000000000001,18.0,0.7875,,,,provisional; no gate use,c1
+Autarky,bed_capture@25,up,post,80,40,9,4,0,0.3843582887700534,0.2697138314785374,0.4900000000000001,0.4411764705882353,0.65625,,,,provisional; no gate use,c1
+Autarky,splits@25,up,post,80,40,9,4,0,14.0,9.0,17.10000000000001,15.0,0.65625,,,,provisional; no gate use,c1
+Autarky,transits@25,up,post,80,40,9,4,0,0.0,0.0,6.0,4.0,0.7375,,,,provisional; no gate use,c1
+Autarky,territory@25,up,post,80,40,9,4,0,0.5,0.4204732510288065,0.5795267489711934,0.4953703703703703,0.44375,,,,provisional; no gate use,c1
+Autarky,bed_eats@50,up,post,80,40,9,4,0,27.0,15.0,40.0,39.0,0.88125,,,,provisional; no gate use,c1
+Autarky,bed_capture@50,up,post,80,40,9,4,0,0.4421898118790953,0.2446448087431694,0.5716627634660422,0.4938271604938271,0.66875,,,,provisional; no gate use,c1
+Autarky,splits@50,up,post,80,40,9,4,0,25.0,13.9,33.0,30.0,0.8,,,,provisional; no gate use,c1
+Autarky,transits@50,up,post,80,40,9,4,0,1.0,0.0,17.0,12.0,0.76875,,,,provisional; no gate use,c1
+Autarky,territory@50,up,post,80,40,9,4,0,0.5,0.3351337448559671,0.6648662551440331,0.5324074074074074,0.64375,,,,provisional; no gate use,c1
+Autarky,bed_eats@100,up,post,80,40,9,4,0,60.0,25.8,83.30000000000003,74.0,0.7625,,,,provisional; no gate use,c1
+Autarky,bed_capture@100,up,post,80,40,9,4,0,0.4677868658131816,0.2231191588785046,0.6951612903225808,0.51875,0.66875,,,,provisional; no gate use,c1
+Autarky,splits@100,up,post,80,40,9,4,0,48.0,21.9,69.10000000000001,57.0,0.68125,,,,provisional; no gate use,c1
+Autarky,transits@100,up,post,80,40,9,4,0,3.5,0.0,33.10000000000001,20.0,0.70625,,,,provisional; no gate use,c1
+Autarky,territory@100,up,post,80,40,9,4,0,0.5,0.2222736625514403,0.7777263374485597,0.565843621399177,0.60625,,,,provisional; no gate use,c1
+Autarky,bed_eats@150,up,post,80,40,9,4,0,90.5,35.0,142.10000000000002,123.0,0.81875,,,,provisional; no gate use,c1
+Autarky,bed_capture@150,up,post,80,40,9,4,0,0.4873709095433619,0.1992559523809523,0.7503349628824915,0.5234042553191489,0.58125,,,,provisional; no gate use,c1
+Autarky,splits@150,up,post,80,40,9,4,0,76.0,27.0,105.60000000000004,97.0,0.81875,,,,provisional; no gate use,c1
+Autarky,transits@150,up,post,80,40,9,4,0,9.0,0.0,52.0,34.0,0.66875,,,,provisional; no gate use,c1
+Autarky,territory@150,up,post,80,40,9,4,0,0.5,0.1834876543209877,0.8165123456790132,0.5895061728395061,0.63125,,,,provisional; no gate use,c1
+Autarky,bed_eats@250,up,post,80,40,9,4,0,160.0,45.7,241.30000000000013,228.0,0.84375,,,,provisional; no gate use,c1
+Autarky,bed_capture@250,up,post,80,40,9,4,0,0.4951791762263738,0.1639298878519332,0.8137229682869932,0.673352435530086,0.73125,,,,provisional; no gate use,c1
+Autarky,splits@250,up,post,80,40,9,4,0,121.5,34.6,190.2,174.0,0.84375,,,,provisional; no gate use,c1
+Autarky,transits@250,up,post,80,40,9,4,0,19.5,0.0,97.1,56.0,0.70625,,,,provisional; no gate use,c1
+Autarky,territory@250,up,post,80,40,9,4,0,0.5,0.0109567901234567,0.9890432098765432,0.6893004115226338,0.66875,,,,provisional; no gate use,c1
+Autarky,queen_alive490,up,post,48,40,4,4,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c1
+Autarky,queen_length490,up,post,48,40,4,4,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c1
+Autarky,longest490,up,post,48,40,4,4,0,31.0,11.4,58.3,43.5,0.7083333333333334,,,,provisional; no gate use,c1
+Autarky,total490,up,post,48,40,4,4,0,66.0,28.4,111.70000000000005,93.5,0.7291666666666666,,,,provisional; no gate use,c1
+Default,pearls@50,up,post,80,40,5,3,0,14.0,6.800000000000001,29.0,24.0,0.8625,,,,provisional; no gate use,c5
+Default,pearls@100,up,post,80,40,5,3,0,39.5,17.9,77.10000000000001,66.0,0.83125,,,,provisional; no gate use,c5
+Default,pearls@150,up,post,80,40,5,3,0,79.0,24.0,141.40000000000003,123.0,0.84375,,,,provisional; no gate use,c5
+Default,pearls@250,up,post,80,40,5,3,0,155.5,27.9,261.80000000000007,241.0,0.83125,,,,provisional; no gate use,c5
+Default,units@100,up,post,80,40,5,3,0,13.5,5.0,26.0,28.0,0.9375,,,,provisional; no gate use,c5
+Default,total@100,up,post,80,40,5,3,0,33.5,10.9,64.0,66.0,0.94375,,,,provisional; no gate use,c5
+Default,births@100,up,post,80,40,5,3,0,19.0,8.9,32.20000000000002,31.0,0.875,,,,provisional; no gate use,c5
+Default,avoidable_deaths_per1k,down,post,80,40,5,3,0,5.6498196369491005,0.0,12.236722557026846,4.7647409172126265,0.58125,,,,provisional; no gate use,c5
+Default,death_wall_per1k,down,post,80,40,5,3,0,1.1466042279826492,0.0,3.951337516531836,2.3823704586063132,0.21875,,,,provisional; no gate use,c5
+Default,death_self_per1k,down,post,80,40,5,3,0,0.4738383441995397,0.0,3.366804077461105,0.5925173522938886,0.46875,,,,provisional; no gate use,c5
+Default,death_ally_body_per1k,down,post,80,40,5,3,0,1.1577964198223571,0.0,2.7149095793351607,1.2139605462822458,0.46875,,,,provisional; no gate use,c5
+Default,death_h2h_ally_per1k,down,post,80,40,5,3,0,0.7609618604236431,0.0,4.777538592388447,0.0,0.79375,,,,provisional; no gate use,c5
+Default,bed_eats@25,up,post,80,40,5,3,0,3.0,1.0,6.1000000000000085,3.0,0.51875,,,,provisional; no gate use,c5
+Default,bed_capture@25,up,post,80,40,5,3,0,0.1464285714285714,0.06625,0.3350000000000001,0.15,0.51875,,,,provisional; no gate use,c5
+Default,splits@25,up,post,80,40,5,3,0,5.0,4.0,7.0,6.0,0.80625,,,,provisional; no gate use,c5
+Default,transits@25,up,post,80,40,5,3,0,1.0,0.0,3.200000000000017,0.0,0.225,,,,provisional; no gate use,c5
+Default,territory@25,up,post,80,40,5,3,0,0.5,0.336376953125,0.6636230468750001,0.564453125,0.64375,,,,provisional; no gate use,c5
+Default,bed_eats@50,up,post,80,40,5,3,0,10.0,4.0,19.0,18.0,0.83125,,,,provisional; no gate use,c5
+Default,bed_capture@50,up,post,80,40,5,3,0,0.2886904761904761,0.1107142857142857,0.5680645161290324,0.5294117647058824,0.88125,,,,provisional; no gate use,c5
+Default,splits@50,up,post,80,40,5,3,0,8.5,5.0,14.0,12.0,0.8375,,,,provisional; no gate use,c5
+Default,transits@50,up,post,80,40,5,3,0,2.5,0.0,16.10000000000001,1.0,0.2625,,,,provisional; no gate use,c5
+Default,territory@50,up,post,80,40,5,3,0,0.5,0.256201171875,0.7437988281250003,0.740234375,0.89375,,,,provisional; no gate use,c5
+Default,bed_eats@100,up,post,80,40,5,3,0,28.0,13.9,54.10000000000001,54.0,0.8875,,,,provisional; no gate use,c5
+Default,bed_capture@100,up,post,80,40,5,3,0,0.3882853094000944,0.1717303370786517,0.7081996726677579,0.7211538461538461,0.93125,,,,provisional; no gate use,c5
+Default,splits@100,up,post,80,40,5,3,0,19.0,8.9,32.20000000000002,31.0,0.875,,,,provisional; no gate use,c5
+Default,transits@100,up,post,80,40,5,3,0,14.5,0.0,58.400000000000034,30.0,0.73125,,,,provisional; no gate use,c5
+Default,territory@100,up,post,80,40,5,3,0,0.5,0.166748046875,0.8332519531250001,0.6064453125,0.69375,,,,provisional; no gate use,c5
+Default,bed_eats@150,up,post,80,40,5,3,0,51.0,18.0,92.1,84.0,0.85,,,,provisional; no gate use,c5
+Default,bed_capture@150,up,post,80,40,5,3,0,0.4368338284116722,0.1586051743532058,0.7796235836374111,0.8195488721804511,0.95625,,,,provisional; no gate use,c5
+Default,splits@150,up,post,80,40,5,3,0,34.5,11.9,61.20000000000002,55.0,0.85,,,,provisional; no gate use,c5
+Default,transits@150,up,post,80,40,5,3,0,30.0,0.0,118.40000000000003,80.0,0.78125,,,,provisional; no gate use,c5
+Default,territory@150,up,post,80,40,5,3,0,0.5,0.102734375,0.8972656250000002,0.7197265625,0.70625,,,,provisional; no gate use,c5
+Default,bed_eats@250,up,post,80,40,5,3,0,93.5,22.6,160.3,148.0,0.8125,,,,provisional; no gate use,c5
+Default,bed_capture@250,up,post,80,40,5,3,0,0.4857397504456328,0.1368530020703933,0.8283764451146425,0.8630705394190872,0.94375,,,,provisional; no gate use,c5
+Default,splits@250,up,post,80,40,5,3,0,67.0,13.0,107.40000000000003,97.0,0.7875,,,,provisional; no gate use,c5
+Default,transits@250,up,post,80,40,5,3,0,67.0,0.9000000000000004,223.50000000000009,139.0,0.7,,,,provisional; no gate use,c5
+Default,territory@250,up,post,80,40,5,3,0,0.5,0.0,1.0,1.0,0.90625,,,,provisional; no gate use,c5
+Default,queen_alive490,up,post,28,40,1,3,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c5
+Default,queen_length490,up,post,28,40,1,3,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c5
+Default,longest490,up,post,28,40,1,3,0,18.0,8.4,37.900000000000006,14.0,0.3392857142857143,,,,provisional; no gate use,c5
+Default,total490,up,post,28,40,1,3,0,59.0,14.7,131.9,51.0,0.4464285714285714,,,,provisional; no gate use,c5
+Devil,pearls@50,up,post,80,40,7,4,0,34.5,14.0,69.10000000000001,23.0,0.225,,,,provisional; no gate use,c0
+Devil,pearls@100,up,post,80,40,7,4,0,110.5,26.9,216.50000000000009,54.0,0.24375,,,,provisional; no gate use,c0
+Devil,pearls@150,up,post,80,40,7,4,0,171.5,29.8,406.1,106.0,0.36875,,,,provisional; no gate use,c0
+Devil,pearls@250,up,post,80,40,7,4,0,228.0,29.8,752.2,109.0,0.31875,,,,provisional; no gate use,c0
+Devil,units@100,up,post,80,40,7,4,0,13.5,3.0,36.0,7.0,0.2875,,,,provisional; no gate use,c0
+Devil,total@100,up,post,80,40,7,4,0,32.0,6.0,86.20000000000002,16.0,0.26875,,,,provisional; no gate use,c0
+Devil,births@100,up,post,80,40,7,4,0,46.0,11.8,89.60000000000005,23.0,0.25,,,,provisional; no gate use,c0
+Devil,avoidable_deaths_per1k,down,post,80,40,7,4,0,12.985731492634116,0.0,32.106922225039035,7.761966364812419,0.65625,,,,provisional; no gate use,c0
+Devil,death_wall_per1k,down,post,80,40,7,4,0,1.5717688131481236,0.0,17.590020009422528,2.5873221216041395,0.45625,,,,provisional; no gate use,c0
+Devil,death_self_per1k,down,post,80,40,7,4,0,2.6776991630051876,0.0,17.004805596539867,0.0,0.8,,,,provisional; no gate use,c0
+Devil,death_ally_body_per1k,down,post,80,40,7,4,0,0.6454934876810313,0.0,8.73740682018017,0.0,0.7625,,,,provisional; no gate use,c0
+Devil,death_h2h_ally_per1k,down,post,80,40,7,4,0,0.0,0.0,0.0,0.0,0.525,,,,provisional; no gate use,c0
+Devil,bed_eats@25,up,post,80,40,7,4,0,8.0,3.0,16.0,6.0,0.28125,,,,provisional; no gate use,c0
+Devil,bed_capture@25,up,post,80,40,7,4,0,0.2124435847840103,0.0966205837173579,0.3624884366327475,0.15,0.23125,,,,provisional; no gate use,c0
+Devil,splits@25,up,post,80,40,7,4,0,6.0,4.0,8.0,6.0,0.575,,,,provisional; no gate use,c0
+Devil,transits@25,up,post,80,40,7,4,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c0
+Devil,territory@25,up,post,80,40,7,4,0,0.5,0.40576171875,0.59423828125,0.474609375,0.3875,,,,provisional; no gate use,c0
+Devil,bed_eats@50,up,post,80,40,7,4,0,27.5,11.9,48.0,15.0,0.1875,,,,provisional; no gate use,c0
+Devil,bed_capture@50,up,post,80,40,7,4,0,0.3775641025641025,0.1666666666666666,0.6078354430379748,0.2054794520547945,0.19375,,,,provisional; no gate use,c0
+Devil,splits@50,up,post,80,40,7,4,0,17.0,7.0,29.10000000000001,9.0,0.15,,,,provisional; no gate use,c0
+Devil,transits@50,up,post,80,40,7,4,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c0
+Devil,territory@50,up,post,80,40,7,4,0,0.5,0.35986328125,0.64013671875,0.4423828125,0.43125,,,,provisional; no gate use,c0
+Devil,bed_eats@100,up,post,80,40,7,4,0,63.5,19.9,139.3,35.0,0.275,,,,provisional; no gate use,c0
+Devil,bed_capture@100,up,post,80,40,7,4,0,0.4452380952380952,0.1349852071005917,0.774915095941586,0.2108433734939759,0.26875,,,,provisional; no gate use,c0
+Devil,splits@100,up,post,80,40,7,4,0,46.0,11.8,89.60000000000005,23.0,0.25,,,,provisional; no gate use,c0
+Devil,transits@100,up,post,80,40,7,4,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c0
+Devil,territory@100,up,post,80,40,7,4,0,0.5,0.2109375,0.7890625,0.3857421875,0.41875,,,,provisional; no gate use,c0
+Devil,bed_eats@150,up,post,80,40,7,4,0,107.5,23.0,238.1,54.0,0.31875,,,,provisional; no gate use,c0
+Devil,bed_capture@150,up,post,80,40,7,4,0,0.4175,0.1079001837701905,0.8286081733073458,0.2,0.30625,,,,provisional; no gate use,c0
+Devil,splits@150,up,post,80,40,7,4,0,72.5,12.8,166.10000000000002,37.0,0.30625,,,,provisional; no gate use,c0
+Devil,transits@150,up,post,80,40,7,4,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c0
+Devil,territory@150,up,post,80,40,7,4,0,0.5,0.0,1.0,0.3544921875,0.43125,,,,provisional; no gate use,c0
+Devil,bed_eats@250,up,post,80,40,7,4,0,137.0,23.0,373.2000000000001,54.0,0.26875,,,,provisional; no gate use,c0
+Devil,bed_capture@250,up,post,80,40,7,4,0,0.4208762886597938,0.0923286840509399,0.8716911764705882,0.1875,0.35625,,,,provisional; no gate use,c0
+Devil,splits@250,up,post,80,40,7,4,0,94.5,12.9,293.1,37.0,0.2625,,,,provisional; no gate use,c0
+Devil,transits@250,up,post,80,40,7,4,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c0
+Devil,territory@250,up,post,80,40,7,4,0,0.5,0.0,1.0,0.0,0.175,,,,provisional; no gate use,c0
+Devil,queen_alive490,up,post,12,40,0,4,0,0.0,0.0,0.0,,,,,,provisional; no gate use,c0
+Devil,queen_length490,up,post,12,40,0,4,0,0.0,0.0,0.0,,,,,,provisional; no gate use,c0
+Devil,longest490,up,post,12,40,0,4,0,29.5,10.4,36.9,,,,,,provisional; no gate use,c0
+Devil,total490,up,post,12,40,0,4,0,65.5,17.7,113.9,,,,,,provisional; no gate use,c0
+Portals,pearls@50,up,post,80,40,7,4,0,40.5,24.700000000000003,84.10000000000001,43.0,0.5625,,,,provisional; no gate use,c2
+Portals,pearls@100,up,post,80,40,7,4,0,135.0,59.1,264.20000000000005,105.0,0.3625,,,,provisional; no gate use,c2
+Portals,pearls@150,up,post,80,40,7,4,0,268.5,103.8,478.6,244.0,0.45625,,,,provisional; no gate use,c2
+Portals,pearls@250,up,post,80,40,7,4,0,606.0,305.8,899.5000000000003,583.0,0.46875,,,,provisional; no gate use,c2
+Portals,units@100,up,post,80,40,7,4,0,21.0,12.9,31.0,16.0,0.275,,,,provisional; no gate use,c2
+Portals,total@100,up,post,80,40,7,4,0,53.0,32.0,76.0,42.0,0.29375,,,,provisional; no gate use,c2
+Portals,births@100,up,post,80,40,7,4,0,54.5,21.9,110.0,45.0,0.36875,,,,provisional; no gate use,c2
+Portals,avoidable_deaths_per1k,down,post,80,40,7,4,0,37.6856753991124,9.59172636645969,55.71741532249607,40.820450641608566,0.43125,,,,provisional; no gate use,c2
+Portals,death_wall_per1k,down,post,80,40,7,4,0,13.750047533831316,0.0,29.718163718235097,27.95425667090216,0.15625,,,,provisional; no gate use,c2
+Portals,death_self_per1k,down,post,80,40,7,4,0,4.79895900838489,0.0,27.04613234227551,0.1141813199360584,0.83125,,,,provisional; no gate use,c2
+Portals,death_ally_body_per1k,down,post,80,40,7,4,0,5.816010614772225,1.1569274399282845,9.957671589517522,6.672328035909256,0.43125,,,,provisional; no gate use,c2
+Portals,death_h2h_ally_per1k,down,post,80,40,7,4,0,4.900556361801597,1.2383928144721223,10.72616242913014,3.885083324813414,0.65625,,,,provisional; no gate use,c2
+Portals,bed_eats@25,up,post,80,40,7,4,0,12.0,7.0,26.0,11.0,0.425,,,,provisional; no gate use,c2
+Portals,bed_capture@25,up,post,80,40,7,4,0,0.1016287076271186,0.0568646734854445,0.201752364782925,0.0948275862068965,0.4375,,,,provisional; no gate use,c2
+Portals,splits@25,up,post,80,40,7,4,0,6.0,2.9000000000000004,12.0,5.0,0.4125,,,,provisional; no gate use,c2
+Portals,transits@25,up,post,80,40,7,4,0,3.0,0.0,11.100000000000009,2.0,0.375,,,,provisional; no gate use,c2
+Portals,territory@25,up,post,80,40,7,4,0,0.5,0.5,0.5,0.5,0.5,,,,provisional; no gate use,c2
+Portals,bed_eats@50,up,post,80,40,7,4,0,32.0,19.0,66.0,37.0,0.5625,,,,provisional; no gate use,c2
+Portals,bed_capture@50,up,post,80,40,7,4,0,0.216123499142367,0.1276138996138996,0.3710629700303064,0.2215568862275449,0.51875,,,,provisional; no gate use,c2
+Portals,splits@50,up,post,80,40,7,4,0,17.0,8.9,34.10000000000001,17.0,0.51875,,,,provisional; no gate use,c2
+Portals,transits@50,up,post,80,40,7,4,0,13.5,2.0,33.10000000000001,7.0,0.35,,,,provisional; no gate use,c2
+Portals,territory@50,up,post,80,40,7,4,0,0.5,0.5,0.5,0.5,0.5,,,,provisional; no gate use,c2
+Portals,bed_eats@100,up,post,80,40,7,4,0,98.0,45.6,161.0,71.0,0.35625,,,,provisional; no gate use,c2
+Portals,bed_capture@100,up,post,80,40,7,4,0,0.3510031219612058,0.1832705755782678,0.5549103942652329,0.3163265306122449,0.39375,,,,provisional; no gate use,c2
+Portals,splits@100,up,post,80,40,7,4,0,54.5,21.9,110.0,45.0,0.36875,,,,provisional; no gate use,c2
+Portals,transits@100,up,post,80,40,7,4,0,49.5,6.0,102.30000000000004,21.0,0.31875,,,,provisional; no gate use,c2
+Portals,territory@100,up,post,80,40,7,4,0,0.5,0.5,0.5,0.5,0.5,,,,provisional; no gate use,c2
+Portals,bed_eats@150,up,post,80,40,7,4,0,167.5,76.0,252.2,148.0,0.40625,,,,provisional; no gate use,c2
+Portals,bed_capture@150,up,post,80,40,7,4,0,0.4259459459459459,0.2367970738938481,0.5914536416036341,0.4533333333333333,0.58125,,,,provisional; no gate use,c2
+Portals,splits@150,up,post,80,40,7,4,0,101.5,41.6,195.0,95.0,0.45625,,,,provisional; no gate use,c2
+Portals,transits@150,up,post,80,40,7,4,0,101.0,18.9,187.1,78.0,0.40625,,,,provisional; no gate use,c2
+Portals,territory@150,up,post,80,40,7,4,0,0.5,0.5,0.5,0.5,0.5,,,,provisional; no gate use,c2
+Portals,bed_eats@250,up,post,80,40,7,4,0,316.5,182.1,432.0000000000001,313.0,0.46875,,,,provisional; no gate use,c2
+Portals,bed_capture@250,up,post,80,40,7,4,0,0.4589526416505798,0.2877387159243259,0.5991701269929666,0.4737516005121639,0.56875,,,,provisional; no gate use,c2
+Portals,splits@250,up,post,80,40,7,4,0,235.5,99.4,359.20000000000016,232.0,0.48125,,,,provisional; no gate use,c2
+Portals,transits@250,up,post,80,40,7,4,0,211.5,59.6,347.1,223.0,0.53125,,,,provisional; no gate use,c2
+Portals,territory@250,up,post,80,40,7,4,0,0.5,0.5,0.5,0.5,0.5,,,,provisional; no gate use,c2
+Portals,queen_alive490,up,post,78,40,7,4,0,0.0,0.0,0.0,0.0,0.4871794871794871,,,,provisional; no gate use,c2
+Portals,queen_length490,up,post,78,40,7,4,0,0.0,0.0,0.0,0.0,0.4871794871794871,,,,provisional; no gate use,c2
+Portals,longest490,up,post,78,40,7,4,0,24.5,10.7,40.599999999999994,33.0,0.6794871794871795,,,,provisional; no gate use,c2
+Portals,total490,up,post,78,40,7,4,0,56.0,29.8,83.3,65.0,0.6538461538461539,,,,provisional; no gate use,c2
+Prisoners Dilemma,pearls@50,up,post,80,40,10,5,0,34.0,15.0,51.0,34.5,0.525,,,,provisional; no gate use,c1
+Prisoners Dilemma,pearls@100,up,post,80,40,10,5,0,54.0,15.9,93.30000000000004,65.0,0.6125,,,,provisional; no gate use,c1
+Prisoners Dilemma,pearls@150,up,post,80,40,10,5,0,66.0,15.9,129.3,73.0,0.55,,,,provisional; no gate use,c1
+Prisoners Dilemma,pearls@250,up,post,80,40,10,5,0,71.0,15.9,199.90000000000023,79.0,0.525,,,,provisional; no gate use,c1
+Prisoners Dilemma,units@100,up,post,80,40,10,5,0,4.5,0.0,15.100000000000009,9.0,0.65625,,,,provisional; no gate use,c1
+Prisoners Dilemma,total@100,up,post,80,40,10,5,0,16.5,0.0,36.0,23.0,0.6875,,,,provisional; no gate use,c1
+Prisoners Dilemma,births@100,up,post,80,40,10,5,0,26.5,9.8,43.10000000000001,30.0,0.5875,,,,provisional; no gate use,c1
+Prisoners Dilemma,avoidable_deaths_per1k,down,post,80,40,10,5,0,21.467662242704897,6.2756460743828635,50.513119484482935,29.201098666919236,0.3,,,,provisional; no gate use,c1
+Prisoners Dilemma,death_wall_per1k,down,post,80,40,10,5,0,10.323821252283809,0.0,29.8769103676167,12.9206481096801,0.4125,,,,provisional; no gate use,c1
+Prisoners Dilemma,death_self_per1k,down,post,80,40,10,5,0,2.228561240862899,0.0,22.21005366334469,1.2031625988312136,0.525,,,,provisional; no gate use,c1
+Prisoners Dilemma,death_ally_body_per1k,down,post,80,40,10,5,0,0.0,0.0,3.105906500265729,0.0,0.7,,,,provisional; no gate use,c1
+Prisoners Dilemma,death_h2h_ally_per1k,down,post,80,40,10,5,0,0.0,0.0,0.0157853196527243,0.0,0.55,,,,provisional; no gate use,c1
+Prisoners Dilemma,bed_eats@25,up,post,80,40,10,5,0,9.0,5.0,14.100000000000009,10.0,0.625,,,,provisional; no gate use,c1
+Prisoners Dilemma,bed_capture@25,up,post,80,40,10,5,0,0.4,0.2618421052631579,0.5678947368421053,0.4083333333333333,0.5125,,,,provisional; no gate use,c1
+Prisoners Dilemma,splits@25,up,post,80,40,10,5,0,11.0,7.0,14.0,10.0,0.40625,,,,provisional; no gate use,c1
+Prisoners Dilemma,transits@25,up,post,80,40,10,5,0,2.0,0.0,6.0,4.0,0.73125,,,,provisional; no gate use,c1
+Prisoners Dilemma,territory@25,up,post,80,40,10,5,0,0.5,0.2587890625,0.7412109375000002,0.5244140625,0.51875,,,,provisional; no gate use,c1
+Prisoners Dilemma,bed_eats@50,up,post,80,40,10,5,0,15.0,6.9,27.0,16.5,0.5625,,,,provisional; no gate use,c1
+Prisoners Dilemma,bed_capture@50,up,post,80,40,10,5,0,0.4634146341463415,0.249390243902439,0.613151364764268,0.424015009380863,0.4375,,,,provisional; no gate use,c1
+Prisoners Dilemma,splits@50,up,post,80,40,10,5,0,17.0,8.0,24.0,17.0,0.475,,,,provisional; no gate use,c1
+Prisoners Dilemma,transits@50,up,post,80,40,10,5,0,2.0,0.0,8.0,6.0,0.8125,,,,provisional; no gate use,c1
+Prisoners Dilemma,territory@50,up,post,80,40,10,5,0,0.5,0.11611328125,0.8838867187500001,0.55712890625,0.575,,,,provisional; no gate use,c1
+Prisoners Dilemma,bed_eats@100,up,post,80,40,10,5,0,26.0,7.0,46.10000000000001,31.5,0.5875,,,,provisional; no gate use,c1
+Prisoners Dilemma,bed_capture@100,up,post,80,40,10,5,0,0.4709457209457209,0.2153243050605844,0.7414098360655739,0.4971491922711434,0.5625,,,,provisional; no gate use,c1
+Prisoners Dilemma,splits@100,up,post,80,40,10,5,0,26.5,9.8,43.10000000000001,30.0,0.5875,,,,provisional; no gate use,c1
+Prisoners Dilemma,transits@100,up,post,80,40,10,5,0,3.5,0.0,11.100000000000009,7.0,0.75,,,,provisional; no gate use,c1
+Prisoners Dilemma,territory@100,up,post,80,40,10,5,0,0.5,0.0,1.0,0.7041015625,0.6125,,,,provisional; no gate use,c1
+Prisoners Dilemma,bed_eats@150,up,post,80,40,10,5,0,30.5,7.0,65.0,41.0,0.5625,,,,provisional; no gate use,c1
+Prisoners Dilemma,bed_capture@150,up,post,80,40,10,5,0,0.4805097451274362,0.1876056338028169,0.787979797979798,0.4910288758059994,0.5375,,,,provisional; no gate use,c1
+Prisoners Dilemma,splits@150,up,post,80,40,10,5,0,31.0,9.8,60.300000000000026,36.0,0.5375,,,,provisional; no gate use,c1
+Prisoners Dilemma,transits@150,up,post,80,40,10,5,0,4.0,0.0,16.300000000000026,7.0,0.725,,,,provisional; no gate use,c1
+Prisoners Dilemma,territory@150,up,post,80,40,10,5,0,0.5,0.0,1.0,0.89453125,0.6375,,,,provisional; no gate use,c1
+Prisoners Dilemma,bed_eats@250,up,post,80,40,10,5,0,30.5,7.0,115.80000000000008,41.0,0.54375,,,,provisional; no gate use,c1
+Prisoners Dilemma,bed_capture@250,up,post,80,40,10,5,0,0.473075388911049,0.1654320987654321,0.79,0.4889355516071717,0.5375,,,,provisional; no gate use,c1
+Prisoners Dilemma,splits@250,up,post,80,40,10,5,0,33.0,9.8,95.0,37.5,0.525,,,,provisional; no gate use,c1
+Prisoners Dilemma,transits@250,up,post,80,40,10,5,0,4.0,0.0,22.10000000000001,8.0,0.7,,,,provisional; no gate use,c1
+Prisoners Dilemma,territory@250,up,post,80,40,10,5,0,0.5,0.0,1.0,0.99462890625,0.625,,,,provisional; no gate use,c1
+Prisoners Dilemma,queen_alive490,up,post,18,40,1,5,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c1
+Prisoners Dilemma,queen_length490,up,post,18,40,1,5,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c1
+Prisoners Dilemma,longest490,up,post,18,40,1,5,0,17.0,7.1000000000000005,46.500000000000014,57.0,0.9166666666666666,,,,provisional; no gate use,c1
+Prisoners Dilemma,total490,up,post,18,40,1,5,0,44.0,12.7,67.0,76.0,0.9722222222222222,,,,provisional; no gate use,c1
+Queen Of Spades,pearls@50,up,post,80,40,7,4,0,13.0,2.9000000000000004,23.10000000000001,21.0,0.8,,,,provisional; no gate use,c4
+Queen Of Spades,pearls@100,up,post,80,40,7,4,0,41.0,10.9,68.20000000000002,63.0,0.79375,,,,provisional; no gate use,c4
+Queen Of Spades,pearls@150,up,post,80,40,7,4,0,71.0,16.9,129.40000000000003,101.0,0.775,,,,provisional; no gate use,c4
+Queen Of Spades,pearls@250,up,post,80,40,7,4,0,135.5,23.0,237.0,224.0,0.86875,,,,provisional; no gate use,c4
+Queen Of Spades,units@100,up,post,80,40,7,4,0,7.5,2.9000000000000004,14.100000000000009,13.0,0.80625,,,,provisional; no gate use,c4
+Queen Of Spades,total@100,up,post,80,40,7,4,0,20.0,6.9,37.10000000000001,30.0,0.775,,,,provisional; no gate use,c4
+Queen Of Spades,births@100,up,post,80,40,7,4,0,16.0,4.800000000000001,28.0,25.0,0.7875,,,,provisional; no gate use,c4
+Queen Of Spades,avoidable_deaths_per1k,down,post,80,40,7,4,0,11.481114945902055,0.0,22.812200490292884,10.77121930202499,0.55625,,,,provisional; no gate use,c4
+Queen Of Spades,death_wall_per1k,down,post,80,40,7,4,0,3.5009724923589887,0.0,14.57985647530041,3.612114476243401,0.49375,,,,provisional; no gate use,c4
+Queen Of Spades,death_self_per1k,down,post,80,40,7,4,0,0.5481439162494965,0.0,10.80999770360623,0.3152585119798234,0.56875,,,,provisional; no gate use,c4
+Queen Of Spades,death_ally_body_per1k,down,post,80,40,7,4,0,0.7795790940495873,0.0,3.468915292314326,1.3544018058690743,0.33125,,,,provisional; no gate use,c4
+Queen Of Spades,death_h2h_ally_per1k,down,post,80,40,7,4,0,0.4001665333045,0.0,3.696159377347715,0.3152585119798234,0.53125,,,,provisional; no gate use,c4
+Queen Of Spades,bed_eats@25,up,post,80,40,7,4,0,2.0,0.0,7.0,6.0,0.8125,,,,provisional; no gate use,c4
+Queen Of Spades,bed_capture@25,up,post,80,40,7,4,0,0.1043557168784029,0.0,0.2857142857142857,0.25,0.825,,,,provisional; no gate use,c4
+Queen Of Spades,splits@25,up,post,80,40,7,4,0,1.0,0.0,3.1000000000000085,3.0,0.81875,,,,provisional; no gate use,c4
+Queen Of Spades,transits@25,up,post,80,40,7,4,0,1.0,0.0,3.0,2.0,0.775,,,,provisional; no gate use,c4
+Queen Of Spades,territory@25,up,post,80,40,7,4,0,0.5,0.3072871572871573,0.692712842712843,0.575036075036075,0.70625,,,,provisional; no gate use,c4
+Queen Of Spades,bed_eats@50,up,post,80,40,7,4,0,11.5,2.0,18.10000000000001,16.0,0.70625,,,,provisional; no gate use,c4
+Queen Of Spades,bed_capture@50,up,post,80,40,7,4,0,0.2316821465428276,0.046938775510204,0.3901917199222006,0.3432835820895522,0.79375,,,,provisional; no gate use,c4
+Queen Of Spades,splits@50,up,post,80,40,7,4,0,6.0,1.0,10.0,9.0,0.81875,,,,provisional; no gate use,c4
+Queen Of Spades,transits@50,up,post,80,40,7,4,0,3.0,0.0,6.200000000000017,5.0,0.7625,,,,provisional; no gate use,c4
+Queen Of Spades,territory@50,up,post,80,40,7,4,0,0.5,0.255988455988456,0.744011544011544,0.6493506493506493,0.78125,,,,provisional; no gate use,c4
+Queen Of Spades,bed_eats@100,up,post,80,40,7,4,0,30.5,6.0,51.0,49.0,0.875,,,,provisional; no gate use,c4
+Queen Of Spades,bed_capture@100,up,post,80,40,7,4,0,0.3561270212351451,0.0947534766118837,0.5721804511278196,0.4622641509433962,0.79375,,,,provisional; no gate use,c4
+Queen Of Spades,splits@100,up,post,80,40,7,4,0,16.0,4.800000000000001,28.0,25.0,0.7875,,,,provisional; no gate use,c4
+Queen Of Spades,transits@100,up,post,80,40,7,4,0,9.0,0.0,24.200000000000017,15.0,0.74375,,,,provisional; no gate use,c4
+Queen Of Spades,territory@100,up,post,80,40,7,4,0,0.5,0.264069264069264,0.7359307359307359,0.5447330447330447,0.58125,,,,provisional; no gate use,c4
+Queen Of Spades,bed_eats@150,up,post,80,40,7,4,0,44.5,13.6,86.10000000000001,68.0,0.81875,,,,provisional; no gate use,c4
+Queen Of Spades,bed_capture@150,up,post,80,40,7,4,0,0.354824513147761,0.1021176470588235,0.6379418204566781,0.4892086330935252,0.78125,,,,provisional; no gate use,c4
+Queen Of Spades,splits@150,up,post,80,40,7,4,0,28.0,7.0,53.20000000000002,40.0,0.775,,,,provisional; no gate use,c4
+Queen Of Spades,transits@150,up,post,80,40,7,4,0,16.0,0.9000000000000004,44.10000000000001,26.0,0.75,,,,provisional; no gate use,c4
+Queen Of Spades,territory@150,up,post,80,40,7,4,0,0.5,0.061038961038961,0.938961038961039,0.7431457431457431,0.73125,,,,provisional; no gate use,c4
+Queen Of Spades,bed_eats@250,up,post,80,40,7,4,0,76.0,17.0,133.3,132.0,0.86875,,,,provisional; no gate use,c4
+Queen Of Spades,bed_capture@250,up,post,80,40,7,4,0,0.3609330484330484,0.0897135416666666,0.6570250000000001,0.6,0.83125,,,,provisional; no gate use,c4
+Queen Of Spades,splits@250,up,post,80,40,7,4,0,54.0,8.0,92.40000000000003,84.0,0.84375,,,,provisional; no gate use,c4
+Queen Of Spades,transits@250,up,post,80,40,7,4,0,28.0,0.9000000000000004,74.80000000000007,57.0,0.8125,,,,provisional; no gate use,c4
+Queen Of Spades,territory@250,up,post,80,40,7,4,0,0.5,0.0,1.0,0.9148629148629148,0.74375,,,,provisional; no gate use,c4
+Queen Of Spades,queen_alive490,up,post,22,40,1,4,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c4
+Queen Of Spades,queen_length490,up,post,22,40,1,4,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c4
+Queen Of Spades,longest490,up,post,22,40,1,4,0,12.0,6.1,26.400000000000013,18.0,0.75,,,,provisional; no gate use,c4
+Queen Of Spades,total490,up,post,22,40,1,4,0,38.5,9.0,86.50000000000001,65.0,0.7954545454545454,,,,provisional; no gate use,c4
+Schooltime,pearls@50,up,post,80,40,10,3,0,11.5,3.9,34.0,11.5,0.5,,,,provisional; no gate use,c3
+Schooltime,pearls@100,up,post,80,40,10,3,0,42.5,15.9,199.30000000000013,38.5,0.4,,,,provisional; no gate use,c3
+Schooltime,pearls@150,up,post,80,40,10,3,0,99.5,33.7,455.2000000000001,95.5,0.4625,,,,provisional; no gate use,c3
+Schooltime,pearls@250,up,post,80,40,10,3,0,279.0,72.0,898.3000000000001,242.0,0.4375,,,,provisional; no gate use,c3
+Schooltime,units@100,up,post,80,40,10,3,0,19.0,7.9,47.10000000000001,19.0,0.49375,,,,provisional; no gate use,c3
+Schooltime,total@100,up,post,80,40,10,3,0,47.0,20.9,125.0,42.0,0.4375,,,,provisional; no gate use,c3
+Schooltime,births@100,up,post,80,40,10,3,0,19.0,8.0,81.0,18.5,0.4375,,,,provisional; no gate use,c3
+Schooltime,avoidable_deaths_per1k,down,post,80,40,10,3,0,6.225679939877006,0.9139766381718124,18.768265857329222,8.033200371904103,0.4125,,,,provisional; no gate use,c3
+Schooltime,death_wall_per1k,down,post,80,40,10,3,0,1.6119536402435086,0.0,7.6548910023395,2.902233805362494,0.3874999999999999,,,,provisional; no gate use,c3
+Schooltime,death_self_per1k,down,post,80,40,10,3,0,0.8393185379213598,0.0,5.241983571807525,0.6614453487892265,0.55,,,,provisional; no gate use,c3
+Schooltime,death_ally_body_per1k,down,post,80,40,10,3,0,0.9936561407536942,0.0,3.8712319986305728,1.297239311688919,0.4,,,,provisional; no gate use,c3
+Schooltime,death_h2h_ally_per1k,down,post,80,40,10,3,0,0.2852669071346875,0.0,2.0325039569634584,0.0,0.8375,,,,provisional; no gate use,c3
+Schooltime,bed_eats@25,up,post,80,40,10,3,0,1.0,0.0,3.1000000000000085,0.5,0.2875,,,,provisional; no gate use,c3
+Schooltime,bed_capture@25,up,post,78,40,10,3,0,0.05,0.0,0.2,0.025,0.3974358974358974,,,,provisional; no gate use,c3
+Schooltime,splits@25,up,post,80,40,10,3,0,3.0,3.0,4.0,3.0,0.475,,,,provisional; no gate use,c3
+Schooltime,transits@25,up,post,80,40,10,3,0,1.0,0.0,6.0,4.0,0.76875,,,,provisional; no gate use,c3
+Schooltime,territory@25,up,post,80,40,10,3,0,0.5,0.25635305528613,0.7436469447138702,0.5107904946653734,0.5125,,,,provisional; no gate use,c3
+Schooltime,bed_eats@50,up,post,80,40,10,3,0,11.0,3.9,34.0,11.5,0.575,,,,provisional; no gate use,c3
+Schooltime,bed_capture@50,up,post,78,40,10,3,0,0.1467903636091575,0.0647481766891427,0.2478915662650602,0.2071393682839465,0.7692307692307693,,,,provisional; no gate use,c3
+Schooltime,splits@50,up,post,80,40,10,3,0,7.0,3.0,15.0,7.5,0.575,,,,provisional; no gate use,c3
+Schooltime,transits@50,up,post,80,40,10,3,0,5.0,0.0,12.100000000000009,8.0,0.68125,,,,provisional; no gate use,c3
+Schooltime,territory@50,up,post,80,40,10,3,0,0.5,0.3125363724539282,0.6874636275460718,0.5515276430649854,0.6375,,,,provisional; no gate use,c3
+Schooltime,bed_eats@100,up,post,80,40,10,3,0,39.5,13.8,157.10000000000002,34.5,0.4125,,,,provisional; no gate use,c3
+Schooltime,bed_capture@100,up,post,78,40,10,3,0,0.3,0.1262043111527647,0.5040334634690463,0.331715210355987,0.5769230769230769,,,,provisional; no gate use,c3
+Schooltime,splits@100,up,post,80,40,10,3,0,19.0,8.0,81.0,18.5,0.4375,,,,provisional; no gate use,c3
+Schooltime,transits@100,up,post,80,40,10,3,0,17.0,0.0,41.10000000000001,24.0,0.65,,,,provisional; no gate use,c3
+Schooltime,territory@100,up,post,80,40,10,3,0,0.5,0.257274490785645,0.742725509214355,0.5851115421920465,0.675,,,,provisional; no gate use,c3
+Schooltime,bed_eats@150,up,post,80,40,10,3,0,84.5,27.8,295.20000000000016,78.5,0.4625,,,,provisional; no gate use,c3
+Schooltime,bed_capture@150,up,post,78,40,10,3,0,0.366997627922738,0.1738949938949939,0.5851542711432214,0.4093023255813953,0.5769230769230769,,,,provisional; no gate use,c3
+Schooltime,splits@150,up,post,80,40,10,3,0,41.5,13.9,157.0,41.0,0.4875,,,,provisional; no gate use,c3
+Schooltime,transits@150,up,post,80,40,10,3,0,36.0,1.0,91.1,58.0,0.70625,,,,provisional; no gate use,c3
+Schooltime,territory@150,up,post,80,40,10,3,0,0.5,0.2100145489815713,0.7899854510184288,0.5689864209505334,0.625,,,,provisional; no gate use,c3
+Schooltime,bed_eats@250,up,post,80,40,10,3,0,187.0,49.7,547.9000000000002,173.5,0.475,,,,provisional; no gate use,c3
+Schooltime,bed_capture@250,up,post,78,40,10,3,0,0.4539041716194034,0.1676914392847423,0.6746708463949843,0.4750769349501731,0.5769230769230769,,,,provisional; no gate use,c3
+Schooltime,splits@250,up,post,80,40,10,3,0,106.0,23.6,288.40000000000003,99.5,0.4625,,,,provisional; no gate use,c3
+Schooltime,transits@250,up,post,80,40,10,3,0,82.0,2.0,213.50000000000009,155.0,0.7375,,,,provisional; no gate use,c3
+Schooltime,territory@250,up,post,80,40,10,3,0,0.5,0.1014306498545102,0.89856935014549,0.5634093113482056,0.6,,,,provisional; no gate use,c3
+Schooltime,queen_alive490,up,post,68,40,10,3,0,0.0,0.0,0.0,0.0,0.4926470588235294,,,,provisional; no gate use,c3
+Schooltime,queen_length490,up,post,68,40,10,3,0,0.0,0.0,0.0,0.0,0.4926470588235294,,,,provisional; no gate use,c3
+Schooltime,longest490,up,post,68,40,10,3,0,27.0,9.0,51.3,34.0,0.6764705882352942,,,,provisional; no gate use,c3
+Schooltime,total490,up,post,68,40,10,3,0,148.0,28.7,260.30000000000007,166.0,0.5882352941176471,,,,provisional; no gate use,c3
+Slithery Fight,pearls@50,up,post,80,40,11,5,0,217.0,88.0,281.1,226.0,0.54375,,,,provisional; no gate use,c0
+Slithery Fight,pearls@100,up,post,80,40,11,5,0,492.0,242.2,649.9000000000002,531.0,0.58125,,,,provisional; no gate use,c0
+Slithery Fight,pearls@150,up,post,80,40,11,5,0,785.0,436.3,1043.1,884.0,0.64375,,,,provisional; no gate use,c0
+Slithery Fight,pearls@250,up,post,80,40,11,5,0,1154.5,784.3000000000001,1810.5,1491.0,0.69375,,,,provisional; no gate use,c0
+Slithery Fight,units@100,up,post,80,40,11,5,0,58.0,38.7,64.0,60.0,0.64375,,,,provisional; no gate use,c0
+Slithery Fight,total@100,up,post,80,40,11,5,0,147.0,111.6,185.0,169.0,0.81875,,,,provisional; no gate use,c0
+Slithery Fight,births@100,up,post,80,40,11,5,0,213.5,110.5,285.1,246.0,0.63125,,,,provisional; no gate use,c0
+Slithery Fight,avoidable_deaths_per1k,down,post,80,40,11,5,0,25.149760423263327,3.674301809308661,51.19505909202219,36.14914682957657,0.28125,,,,provisional; no gate use,c0
+Slithery Fight,death_wall_per1k,down,post,80,40,11,5,0,11.30137522672046,0.0,33.556826693524826,9.594712954853094,0.54375,,,,provisional; no gate use,c0
+Slithery Fight,death_self_per1k,down,post,80,40,11,5,0,4.983805409337324,0.0,17.504526009552336,4.24818769974277,0.54375,,,,provisional; no gate use,c0
+Slithery Fight,death_ally_body_per1k,down,post,80,40,11,5,0,3.2232403504587896,0.0701067414817451,6.5049277023489775,2.7668283808368708,0.54375,,,,provisional; no gate use,c0
+Slithery Fight,death_h2h_ally_per1k,down,post,80,40,11,5,0,0.1391420901923485,0.0,0.7885598528827219,0.0784744565643883,0.65625,,,,provisional; no gate use,c0
+Slithery Fight,bed_eats@25,up,post,80,40,11,5,0,66.0,41.9,84.0,69.0,0.58125,,,,provisional; no gate use,c0
+Slithery Fight,bed_capture@25,up,post,80,40,11,5,0,0.3373163076045085,0.2086328086328086,0.4224567263893107,0.3837209302325581,0.69375,,,,provisional; no gate use,c0
+Slithery Fight,splits@25,up,post,80,40,11,5,0,50.0,29.0,60.10000000000001,51.0,0.55625,,,,provisional; no gate use,c0
+Slithery Fight,transits@25,up,post,80,40,11,5,0,2.0,0.0,5.1000000000000085,3.0,0.68125,,,,provisional; no gate use,c0
+Slithery Fight,territory@25,up,post,80,40,11,5,0,0.5,0.4590347263095939,0.5409652736904061,0.5214832254267217,0.73125,,,,provisional; no gate use,c0
+Slithery Fight,bed_eats@50,up,post,80,40,11,5,0,143.0,83.7,182.1,161.0,0.65625,,,,provisional; no gate use,c0
+Slithery Fight,bed_capture@50,up,post,80,40,11,5,0,0.4313757695208896,0.27253861003861,0.5217270861833107,0.4903474903474903,0.73125,,,,provisional; no gate use,c0
+Slithery Fight,splits@50,up,post,80,40,11,5,0,104.5,48.9,132.10000000000002,109.0,0.55,,,,provisional; no gate use,c0
+Slithery Fight,transits@50,up,post,80,40,11,5,0,4.0,0.0,11.0,6.0,0.64375,,,,provisional; no gate use,c0
+Slithery Fight,territory@50,up,post,80,40,11,5,0,0.5,0.4428193054738081,0.5571806945261919,0.5150088287227781,0.60625,,,,provisional; no gate use,c0
+Slithery Fight,bed_eats@100,up,post,80,40,11,5,0,296.5,177.6,392.0,326.0,0.60625,,,,provisional; no gate use,c0
+Slithery Fight,bed_capture@100,up,post,80,40,11,5,0,0.458727528332561,0.3129174155846804,0.6008585345600937,0.5118764845605701,0.66875,,,,provisional; no gate use,c0
+Slithery Fight,splits@100,up,post,80,40,11,5,0,213.5,110.5,285.1,246.0,0.63125,,,,provisional; no gate use,c0
+Slithery Fight,transits@100,up,post,80,40,11,5,0,10.0,0.0,19.10000000000001,11.0,0.55,,,,provisional; no gate use,c0
+Slithery Fight,territory@100,up,post,80,40,11,5,0,0.5,0.4357563272513243,0.5642436727486757,0.5014714537963508,0.51875,,,,provisional; no gate use,c0
+Slithery Fight,bed_eats@150,up,post,80,40,11,5,0,448.0,279.4,582.4000000000001,473.0,0.56875,,,,provisional; no gate use,c0
+Slithery Fight,bed_capture@150,up,post,80,40,11,5,0,0.4685966559353536,0.3329691528849514,0.6239367873198661,0.5402777777777777,0.74375,,,,provisional; no gate use,c0
+Slithery Fight,splits@150,up,post,80,40,11,5,0,309.0,173.9,443.50000000000006,384.0,0.70625,,,,provisional; no gate use,c0
+Slithery Fight,transits@150,up,post,80,40,11,5,0,15.0,0.0,28.10000000000001,11.0,0.3875,,,,provisional; no gate use,c0
+Slithery Fight,territory@150,up,post,80,40,11,5,0,0.5,0.4366391995291347,0.5633608004708653,0.5058858151854032,0.51875,,,,provisional; no gate use,c0
+Slithery Fight,bed_eats@250,up,post,80,40,11,5,0,660.5,461.7,957.0,765.0,0.66875,,,,provisional; no gate use,c0
+Slithery Fight,bed_capture@250,up,post,80,40,11,5,0,0.4843642553765253,0.3430771505207969,0.6127967702507501,0.5555555555555556,0.73125,,,,provisional; no gate use,c0
+Slithery Fight,splits@250,up,post,80,40,11,5,0,434.0,273.1,725.4000000000001,562.0,0.68125,,,,provisional; no gate use,c0
+Slithery Fight,transits@250,up,post,80,40,11,5,0,26.5,5.0,46.10000000000001,21.0,0.41875,,,,provisional; no gate use,c0
+Slithery Fight,territory@250,up,post,80,40,11,5,0,0.5,0.4294879340788699,0.57051206592113,0.4826368452030606,0.41875,,,,provisional; no gate use,c0
+Slithery Fight,queen_alive490,up,post,80,40,11,5,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c0
+Slithery Fight,queen_length490,up,post,80,40,11,5,0,0.0,0.0,0.0,0.0,0.5,,,,provisional; no gate use,c0
+Slithery Fight,longest490,up,post,80,40,11,5,0,45.0,22.9,75.10000000000001,62.0,0.71875,,,,provisional; no gate use,c0
+Slithery Fight,total490,up,post,80,40,11,5,0,172.0,94.1,261.0,230.0,0.825,,,,provisional; no gate use,c0
+Trauma,pearls@50,up,post,80,40,11,4,0,14.5,0.9000000000000004,32.0,20.0,0.7375,,,,provisional; no gate use,c0
+Trauma,pearls@100,up,post,80,40,11,4,0,47.0,5.0,88.20000000000002,65.0,0.7,,,,provisional; no gate use,c0
+Trauma,pearls@150,up,post,80,40,11,4,0,95.0,9.9,177.20000000000002,116.0,0.63125,,,,provisional; no gate use,c0
+Trauma,pearls@250,up,post,80,40,11,4,0,251.0,23.200000000000003,383.3,358.0,0.79375,,,,provisional; no gate use,c0
+Trauma,units@100,up,post,80,40,11,4,0,12.0,4.0,23.10000000000001,18.0,0.78125,,,,provisional; no gate use,c0
+Trauma,total@100,up,post,80,40,11,4,0,30.0,10.9,52.20000000000002,44.0,0.78125,,,,provisional; no gate use,c0
+Trauma,births@100,up,post,80,40,11,4,0,22.5,3.0,42.0,29.0,0.675,,,,provisional; no gate use,c0
+Trauma,avoidable_deaths_per1k,down,post,80,40,11,4,0,19.60812329704855,1.9096462686020264,26.157206853075525,21.29016824814608,0.34375,,,,provisional; no gate use,c0
+Trauma,death_wall_per1k,down,post,80,40,11,4,0,9.126870718547949,0.0,17.349295015431448,10.218408736349454,0.4187499999999999,,,,provisional; no gate use,c0
+Trauma,death_self_per1k,down,post,80,40,11,4,0,2.1293246190136106,0.0,10.583956018580626,4.115917681646367,0.31875,,,,provisional; no gate use,c0
+Trauma,death_ally_body_per1k,down,post,80,40,11,4,0,1.38229954845577,0.0,3.8310737935133425,1.570055893989826,0.44375,,,,provisional; no gate use,c0
+Trauma,death_h2h_ally_per1k,down,post,80,40,11,4,0,0.5440789731479763,0.0,1.4388713969702582,0.125604471519186,0.63125,,,,provisional; no gate use,c0
+Trauma,bed_eats@25,up,post,80,40,11,4,0,1.0,0.0,6.0,5.0,0.7625,,,,provisional; no gate use,c0
+Trauma,bed_capture@25,up,post,80,40,11,4,0,0.0416666666666666,0.0,0.2145962732919255,0.1470588235294117,0.69375,,,,provisional; no gate use,c0
+Trauma,splits@25,up,post,80,40,11,4,0,2.0,2.0,4.0,2.0,0.33125,,,,provisional; no gate use,c0
+Trauma,transits@25,up,post,80,40,11,4,0,1.0,0.0,3.0,2.0,0.65,,,,provisional; no gate use,c0
+Trauma,territory@25,up,post,80,40,11,4,0,0.5,0.4226835664335664,0.5773164335664336,0.5078671328671329,0.64375,,,,provisional; no gate use,c0
+Trauma,bed_eats@50,up,post,80,40,11,4,0,12.0,0.9000000000000004,24.10000000000001,15.0,0.69375,,,,provisional; no gate use,c0
+Trauma,bed_capture@50,up,post,80,40,11,4,0,0.2056809024979854,0.0152542372881355,0.3472527472527473,0.2678571428571428,0.65625,,,,provisional; no gate use,c0
+Trauma,splits@50,up,post,80,40,11,4,0,7.5,2.0,16.0,10.0,0.70625,,,,provisional; no gate use,c0
+Trauma,transits@50,up,post,80,40,11,4,0,4.0,0.0,7.0,6.0,0.775,,,,provisional; no gate use,c0
+Trauma,territory@50,up,post,80,40,11,4,0,0.5,0.3425262237762237,0.6574737762237762,0.5690559440559441,0.7375,,,,provisional; no gate use,c0
+Trauma,bed_eats@100,up,post,80,40,11,4,0,36.5,5.0,66.20000000000002,54.0,0.775,,,,provisional; no gate use,c0
+Trauma,bed_capture@100,up,post,80,40,11,4,0,0.2727207977207977,0.0410660516368761,0.4468756381458036,0.3873873873873873,0.78125,,,,provisional; no gate use,c0
+Trauma,splits@100,up,post,80,40,11,4,0,22.5,3.0,42.0,29.0,0.675,,,,provisional; no gate use,c0
+Trauma,transits@100,up,post,80,40,11,4,0,12.5,0.0,23.0,18.0,0.73125,,,,provisional; no gate use,c0
+Trauma,territory@100,up,post,80,40,11,4,0,0.5,0.3307255244755245,0.6692744755244756,0.5061188811188811,0.71875,,,,provisional; no gate use,c0
+Trauma,bed_eats@150,up,post,80,40,11,4,0,72.5,9.9,125.20000000000002,94.0,0.69375,,,,provisional; no gate use,c0
+Trauma,bed_capture@150,up,post,80,40,11,4,0,0.3484433286777575,0.0516704888981549,0.5597855917667239,0.4714285714285714,0.73125,,,,provisional; no gate use,c0
+Trauma,splits@150,up,post,80,40,11,4,0,41.0,4.0,82.0,52.0,0.6375,,,,provisional; no gate use,c0
+Trauma,transits@150,up,post,80,40,11,4,0,21.5,0.0,46.0,30.0,0.68125,,,,provisional; no gate use,c0
+Trauma,territory@150,up,post,80,40,11,4,0,0.5,0.2830856643356643,0.7169143356643357,0.5563811188811189,0.7375,,,,provisional; no gate use,c0
+Trauma,bed_eats@250,up,post,80,40,11,4,0,156.5,21.4,247.80000000000007,228.0,0.81875,,,,provisional; no gate use,c0
+Trauma,bed_capture@250,up,post,80,40,11,4,0,0.4367816091954023,0.0718985040085957,0.6978082789646262,0.5861182519280206,0.68125,,,,provisional; no gate use,c0
+Trauma,splits@250,up,post,80,40,11,4,0,108.5,8.9,165.0,156.0,0.79375,,,,provisional; no gate use,c0
+Trauma,transits@250,up,post,80,40,11,4,0,49.0,1.9000000000000004,94.1,87.0,0.8125,,,,provisional; no gate use,c0
+Trauma,territory@250,up,post,80,40,11,4,0,0.5,0.2687062937062937,0.7312937062937064,0.6328671328671329,0.75625,,,,provisional; no gate use,c0
+Trauma,queen_alive490,up,post,70,40,9,4,0,0.0,0.0,1.0,0.0,0.4214285714285714,,,,provisional; no gate use,c0
+Trauma,queen_length490,up,post,70,40,9,4,0,0.0,0.0,8.100000000000001,0.0,0.4214285714285714,,,,provisional; no gate use,c0
+Trauma,longest490,up,post,70,40,9,4,0,20.5,7.0,34.0,33.0,0.8785714285714286,,,,provisional; no gate use,c0
+Trauma,total490,up,post,70,40,9,4,0,54.0,23.0,99.2,91.0,0.8357142857142857,,,,provisional; no gate use,c0
+Trophy,pearls@50,up,post,80,40,11,5,0,22.0,8.0,50.0,49.0,0.875,,,,provisional; no gate use,c6
+Trophy,pearls@100,up,post,80,40,11,5,0,72.0,12.0,145.3,145.0,0.89375,,,,provisional; no gate use,c6
+Trophy,pearls@150,up,post,80,40,11,5,0,109.0,12.0,216.2,194.0,0.81875,,,,provisional; no gate use,c6
+Trophy,pearls@250,up,post,80,40,11,5,0,135.5,12.0,337.4000000000001,194.0,0.63125,,,,provisional; no gate use,c6
+Trophy,units@100,up,post,80,40,11,5,0,18.0,0.0,43.10000000000001,40.0,0.85,,,,provisional; no gate use,c6
+Trophy,total@100,up,post,80,40,11,5,0,44.5,0.0,104.40000000000003,100.0,0.875,,,,provisional; no gate use,c6
+Trophy,births@100,up,post,80,40,11,5,0,28.0,2.0,56.20000000000002,58.0,0.90625,,,,provisional; no gate use,c6
+Trophy,avoidable_deaths_per1k,down,post,80,40,11,5,0,2.5889040083144934,0.0,7.3350906519223456,2.7662517289073305,0.4812499999999999,,,,provisional; no gate use,c6
+Trophy,death_wall_per1k,down,post,80,40,11,5,0,0.0,0.0,2.5671345629509723,0.0,0.71875,,,,provisional; no gate use,c6
+Trophy,death_self_per1k,down,post,80,40,11,5,0,0.0,0.0,2.2188657079510037,0.0,0.68125,,,,provisional; no gate use,c6
+Trophy,death_ally_body_per1k,down,post,80,40,11,5,0,0.0265392781316348,0.0,1.584369730878597,0.6264355815410315,0.28125,,,,provisional; no gate use,c6
+Trophy,death_h2h_ally_per1k,down,post,80,40,11,5,0,0.0,0.0,1.6363765212181354,0.0,0.6625,,,,provisional; no gate use,c6
+Trophy,bed_eats@25,up,post,80,40,11,5,0,7.0,1.0,14.0,12.0,0.80625,,,,provisional; no gate use,c6
+Trophy,bed_capture@25,up,post,80,40,11,5,0,0.2174831081081081,0.0384615384615384,0.4461538461538463,0.3076923076923077,0.68125,,,,provisional; no gate use,c6
+Trophy,splits@25,up,post,80,40,11,5,0,3.0,0.0,6.0,4.0,0.6125,,,,provisional; no gate use,c6
+Trophy,transits@25,up,post,80,40,11,5,0,0.0,0.0,2.0,1.0,0.66875,,,,provisional; no gate use,c6
+Trophy,territory@25,up,post,80,40,11,5,0,0.5,0.35024,0.6497600000000001,0.544,0.58125,,,,provisional; no gate use,c6
+Trophy,bed_eats@50,up,post,80,40,11,5,0,20.5,5.0,46.0,42.0,0.83125,,,,provisional; no gate use,c6
+Trophy,bed_capture@50,up,post,80,40,11,5,0,0.3299319727891156,0.1275058275058275,0.6758500435919791,0.6571428571428571,0.85625,,,,provisional; no gate use,c6
+Trophy,splits@50,up,post,80,40,11,5,0,9.5,1.9000000000000004,19.10000000000001,19.0,0.86875,,,,provisional; no gate use,c6
+Trophy,transits@50,up,post,80,40,11,5,0,1.0,0.0,5.0,3.0,0.74375,,,,provisional; no gate use,c6
+Trophy,territory@50,up,post,80,40,11,5,0,0.5,0.1792,0.8208000000000002,0.64,0.70625,,,,provisional; no gate use,c6
+Trophy,bed_eats@100,up,post,80,40,11,5,0,55.5,9.6,113.40000000000003,113.0,0.89375,,,,provisional; no gate use,c6
+Trophy,bed_capture@100,up,post,80,40,11,5,0,0.4634920634920635,0.1153533069530808,0.8321678321678325,0.7687074829931972,0.80625,,,,provisional; no gate use,c6
+Trophy,splits@100,up,post,80,40,11,5,0,28.0,2.0,56.20000000000002,58.0,0.90625,,,,provisional; no gate use,c6
+Trophy,transits@100,up,post,80,40,11,5,0,3.0,0.0,14.100000000000009,6.0,0.675,,,,provisional; no gate use,c6
+Trophy,territory@100,up,post,80,40,11,5,0,0.5,0.0,1.0,0.8792,0.74375,,,,provisional; no gate use,c6
+Trophy,bed_eats@150,up,post,80,40,11,5,0,76.0,9.6,157.80000000000007,123.0,0.78125,,,,provisional; no gate use,c6
+Trophy,bed_capture@150,up,post,80,40,11,5,0,0.4445653386898783,0.1153533069530808,0.8507538704070496,0.8155339805825242,0.81875,,,,provisional; no gate use,c6
+Trophy,splits@150,up,post,80,40,11,5,0,42.0,2.0,81.50000000000004,76.0,0.81875,,,,provisional; no gate use,c6
+Trophy,transits@150,up,post,80,40,11,5,0,3.0,0.0,19.10000000000001,8.0,0.66875,,,,provisional; no gate use,c6
+Trophy,territory@150,up,post,80,40,11,5,0,0.5,0.0,1.0,0.9712,0.73125,,,,provisional; no gate use,c6
+Trophy,bed_eats@250,up,post,80,40,11,5,0,93.5,9.6,211.00000000000009,147.0,0.69375,,,,provisional; no gate use,c6
+Trophy,bed_capture@250,up,post,80,40,11,5,0,0.4501050945851266,0.1153533069530808,0.8562842562842563,0.8155339805825242,0.80625,,,,provisional; no gate use,c6
+Trophy,splits@250,up,post,80,40,11,5,0,55.0,2.0,132.3,76.0,0.66875,,,,provisional; no gate use,c6
+Trophy,transits@250,up,post,80,40,11,5,0,5.0,0.0,30.200000000000017,10.0,0.6625,,,,provisional; no gate use,c6
+Trophy,territory@250,up,post,80,40,11,5,0,0.5,0.0,1.0,1.0,0.81875,,,,provisional; no gate use,c6
+Trophy,queen_alive490,up,post,2,40,0,5,0,0.0,0.0,0.0,,,,,,provisional; no gate use,c6
+Trophy,queen_length490,up,post,2,40,0,5,0,0.0,0.0,0.0,,,,,,provisional; no gate use,c6
+Trophy,longest490,up,post,2,40,0,5,0,17.0,5.0,29.0,,,,,,provisional; no gate use,c6
+Trophy,total490,up,post,2,40,0,5,0,52.0,16.8,87.2,,,,,,provisional; no gate use,c6

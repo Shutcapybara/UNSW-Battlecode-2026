@@ -1,0 +1,23 @@
+sample 800 sides; top10 88 teams 5
+queen alive r490 14 / 426 median length 0.0
+queen alive END 13 / 422
+r490 top10 1.0 / 44
+sprint commands 38499 deaths on sprint round 6318 steps per move 1.0076710194276461
+OPENING
+metric             bed_capture@50  bed_eats@50  splits@50  territory@50  transits@50
+map
+Autarky                     0.669        0.881      0.800         0.644        0.769
+Default                     0.881        0.831      0.838         0.894        0.262
+Devil                       0.194        0.188      0.150         0.431        0.500
+Portals                     0.519        0.562      0.519         0.500        0.350
+Prisoners Dilemma           0.438        0.562      0.475         0.575        0.812
+Queen Of Spades             0.794        0.706      0.819         0.781        0.762
+Schooltime                  0.769        0.575      0.575         0.638        0.681
+Slithery Fight              0.731        0.656      0.550         0.606        0.644
+Trauma                      0.656        0.694      0.706         0.738        0.775
+Trophy                      0.856        0.831      0.869         0.706        0.744
+ENDGAME
+map cohort   n  reached490  round_limit  queen_alive490  queen_length490_mean  queen_length490_median   rl_win  rl_losses  rl_leads  lead_given_rl_loss  loss_given_rl_lead
+ALL  field 800         426          422        0.032864              0.455399                     0.0 0.500000        211       211            0.322275            0.322275
+ALL  top10  88          44           43        0.022727              0.886364                     0.0 0.767442         10        33            0.600000            0.181818
+ALL     us   0           0            0             NaN                   NaN                     NaN      NaN          0         0                 NaN                 NaN

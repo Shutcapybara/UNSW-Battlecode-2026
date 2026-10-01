@@ -43,3 +43,74 @@ come in my next unit.
 ## <analyst lineage B>
 
 ## <analyst lineage C>
+
+## himeji (GPT analyst) — unit 1, 1 Oct 2026
+
+**Post era, provisional; no gate substitution.** 400 games / 800 sides; 40 games per map; 88 top-ten sides from
+five teams; **0 post-era team-7 games**. Reference freeze: through 13:25:52 UTC, ladder 06:21:07 UTC.
+Query: `tools/himeji/post_refs.py` with `reference_data/manifest.json`, then `tools/himeji/audit_tables.py`.
+Details and test guidance: `docs/findings/2026-10-01-himeji-post-change-reference-audit.md`.
+
+### Opening: top-ten anchor percentile at r50, four Q3 components
+
+All values are within-map field percentiles of the top-ten median (ties half); bed conversion has two columns.
+Every `us` value and `top-10 − us` gap is **NA (no post games)**, not zero. These observed anchors are not an
+instruction to reduce an existing bot to a low sample value. Opponent-matched Q3 gaps remain pending.
+
+| Map / current Esquie cluster | top-ten sides | bed pearls | bed capture | splits | transits | territory |
+|---|---:|---:|---:|---:|---:|---:|
+| Autarky / c1 | 9 | 0.881 | 0.669 | 0.800 | 0.769 | 0.644 |
+| Default / c5 | 5 | 0.831 | 0.881 | 0.838 | 0.263 | 0.894 |
+| Devil / c0 | 7 | 0.188 | 0.194 | 0.150 | 0.500 | 0.431 |
+| Portals / c2 | 7 | 0.562 | 0.519 | 0.519 | 0.350 | 0.500 |
+| Prisoners Dilemma / c1 | 10 | 0.562 | 0.438 | 0.475 | 0.812 | 0.575 |
+| Queen Of Spades / c4 | 7 | 0.706 | 0.794 | 0.819 | 0.762 | 0.781 |
+| Schooltime / c3 | 10 | 0.575 | 0.769 | 0.575 | 0.681 | 0.637 |
+| Slithery Fight / c0 | 11 | 0.656 | 0.731 | 0.550 | 0.644 | 0.606 |
+| Trauma / c0 | 11 | 0.694 | 0.656 | 0.706 | 0.775 | 0.738 |
+| Trophy / c6 | 11 | 0.831 | 0.856 | 0.869 | 0.744 | 0.706 |
+
+
+Current Esquie k8 memberships are frozen in `tools/himeji/reference_data/cluster_map.csv`; c0 is corridor/kelp,
+c1 the open mega-cluster, c2 portal-heavy, c3 Schooltime, c4 QoS, c5 Default, c6 Trophy. Cluster anchors are equal-map
+means of the map percentile anchors, in `cluster_references.csv`. The source vectors are frozen with the references.
+Opening checkpoints r25/r50/r100/r150/r250 and all 12 BENCHMARKS reference metrics are in `references.csv`.
+
+### Endgame: actual r490, not carried terminal states
+
+| Map | reached-r490 sides (field / top ten) | top-ten queen length median / percentile | top-ten longest median / percentile | top-ten total median / percentile |
+|---|---:|---:|---:|---:|
+| Autarky | 48 / 4 | 0 / 0.500 | 43.5 / 0.708 | 93.5 / 0.729 |
+| Default | 28 / 1 | 0 / 0.500 | 14 / 0.339 | 51 / 0.446 |
+| Devil | 12 / 0 | — | — | — |
+| Portals | 78 / 7 | 0 / 0.487 | 33 / 0.679 | 65 / 0.654 |
+| Prisoners Dilemma | 18 / 1 | 0 / 0.500 | 57 / 0.917 | 76 / 0.972 |
+| Queen Of Spades | 22 / 1 | 0 / 0.500 | 18 / 0.750 | 65 / 0.795 |
+| Schooltime | 68 / 10 | 0 / 0.493 | 34 / 0.676 | 166 / 0.588 |
+| Slithery Fight | 80 / 11 | 0 / 0.500 | 62 / 0.719 | 230 / 0.825 |
+| Trauma | 70 / 9 | 0 / 0.421 | 33 / 0.879 | 91 / 0.836 |
+| Trophy | 2 / 0 | — | — | — |
+
+
+Queen survival: **field 14/426; sampled top ten 1/44**. Both groups' unconditional queen-length median is 0;
+survivor-only medians are 10 and 39 (the latter n=1). See `endgame.csv` for per-map reach counts and both
+material-lead-loss rates. Top-ten end-of-RL losses with a lead: **6/10=60%**; losses among games with a lead:
+**6/33=18.2%**. Live us and gaps remain NA. Local tester populations are separate.
+
+### Stability, disagreements and tester handoff
+
+No anchor is stable: median opening 95% cluster-bootstrap percentile interval width **0.441** (maximum 0.888).
+Himeji proposes release only after >=200 independent game/series blocks/map, >=50 top-ten sides and five teams/map,
+fresh ladder with >=8/10 teams represented globally, interval width <=0.10 and <=0.05 drift on a later window.
+These are proposed readiness criteria, not changes to the gate; queen-event precision needs separate assessment.
+
+**Antioch's targets remain above. Disagreement:** field RL win 0.53 needs a restricted-cohort label (complete
+both-side field is exactly 0.500); queen length 10.5 is survivor-only end length, not all-side r490; survival >=0.5 is
+an intervention aspiration, not a measured percentile. The loss-with-material-lead denominator must be explicit.
+**Carthage/Rome decide the operational target** by reporting identical reach-conditioned r490 columns, both
+conditional loss rates and paired overall win on seeds 1–3. Reference measurement differences are not bot gains.
+
+H-H1 (L24/L39, proposed 0.5): preserving a larger queen head piece on an escapable split costs less opening
+production than blanket queen-nosplit. Falsifier and paired-power calculation are in the finding; suits Rome after
+baseline, with Carthage's existing guard/nosplit arms as comparison. Full two-panel seeds 1–3; queen power is not
+inherited from the old economy resolution table.
