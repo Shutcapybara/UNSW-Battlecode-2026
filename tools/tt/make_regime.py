@@ -21,6 +21,7 @@ ap.add_argument('name'); ap.add_argument('feed_base_limit', type=int); ap.add_ar
 ap.add_argument('--area', type=int, default=1100, help='W*H threshold; 0 disables the size rule')
 ap.add_argument('--portals', type=float, default=4.0, help='portal edges per 100 seen cells')
 ap.add_argument("--min-seen", type=int, default=64, help="cells seen before the portal rule may fire")
+ap.add_argument("--per-area", action="store_true", help="portal edges per 100 map cells (W*H), not per 100 seen cells: only grows with exploration, so local clusters cannot trip it")
 a = ap.parse_args()
 name, fb, base = a.name, a.feed_base_limit, a.base
 area = a.area if a.area > 0 else 1 << 30
@@ -48,7 +49,7 @@ helper = '''    // TT regime selector: large or portal-dense maps go to the roun
         if (w.seen_count < Params::regime_min_seen) return false;
         int portals = 0;
         for (uint8_t k : w.ek) portals += k == EK_PORTAL;
-        return 100.0 * portals / w.seen_count >= Params::regime_portals;
+        return 100.0 * portals / DENOM >= Params::regime_portals;
     }
     int feed_from_regime(const World& w) const {
         int const base = limit_regime(w) ? Params::feed_base_limit : Params::feed_base;
@@ -56,6 +57,7 @@ helper = '''    // TT regime selector: large or portal-dense maps go to the roun
     }
 
     double lv_now(const World& w) const {'''
+helper = helper.replace('DENOM', '(w.W * w.H)' if a.per_area else 'w.seen_count')
 assert s.count('    double lv_now(const World& w) const {') == 1
 s = s.replace('    double lv_now(const World& w) const {', helper)
 p.write_text(s)
