@@ -70,7 +70,11 @@ def boot(x, n=2000, seed=0):
 def report(a):
     import pandas as pd
     d = pd.read_parquet(a.path)
-    d['pocket'] = d.map.str.replace('new+', '', regex=False).isin(POCKET)
+    b0 = d[d.arm == a.base]
+    early = b0.assign(e=b0.queen_death_round.fillna(999) <= 10).groupby('map').e.mean()
+    pocket = set(early[early >= 0.9].index)      # maps where the base's queen dies by r10 in >= 90 % of games
+    print('pocket maps (base queen dead by r10 in >= 90 %):', sorted(pocket))
+    d['pocket'] = d['map'].isin(pocket)
     base = d[d.arm == a.base].set_index('fixture')
     fmt = lambda t: f'{t[0]:+.3f} [{t[1]:+.3f}, {t[2]:+.3f}]'
     for arm in [x for x in d.arm.unique() if x != a.base]:

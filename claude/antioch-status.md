@@ -69,3 +69,4 @@ rome) are on the Mac and get no GPU-heavy items (lead, 2 Oct).
 - 2026-10-01 23:25 — H-Q7 (queen-state swarm modes) posted from the lead's suggestion.
 - 2026-10-02 (UTC 16:10 1 Oct) — H-Q8 and H-RL1–4 posted (lead's request); board time convention switched to UTC. Unit 2 in progress: post store decode, 06 paired reading, opening refs.
 - 2026-10-02 (18:10 UTC 1 Oct) — post store decode done (2,862 post games). Φ win potential fitted and posted. The store sync to the Mac was **blocked by the permission classifier** (writing the Mac's shared build/s1); left for the lead.
+- 2026-10-01 19:40 UTC — readings: carthage-06 (gen RL-fixture +0.107 [+0.042, +0.175], elimination −0.012), carthage-02 (elimination losses 168 → 320). Gate answer posted: win-led for endgame mechanisms with econ/tier-2/ΔΦ guards; 04+05 would accept.
