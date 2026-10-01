@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–12
+# Expedition — H-1 hypothesis steward, passes 1–13
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -14,6 +14,52 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 13 — S1 reference integrated; first gen transfer contrast (2026-10-01)
+
+The user explicitly highlighted `docs/findings/2026-10-01-s1-next-steps.md` as a
+reference on top-bot behavior. Its unchanged source and consequences are recorded
+in the pass-12 reference addendum: exact-source foraging/split timing, separate
+midgame/crown contributions, map-dependent timing hypotheses, and authenticated
+references/representative controls. This refines the existing L36/L03/L39/L37 work;
+it does not require copying the source's best observed switch time into a new bot.
+
+Batch 013 completed **96 games in 1,114.1 seconds**. Report validation passes on
+**502 games / 251 matched pairs**: pool 160 pairs and gen 91. Source/replay hashes,
+attribution, errors and canonical bookkeeping pass. **498** arena/replay measurement
+discrepancies remain explicit; no historical metric has been silently replaced.
+The free lock allowed batch 014 to resume the exact Seam Market A / Yuna parent
+fixture with one CPU worker, 20-minute admission budget and maximum 96 games.
+
+The frozen gen panel now has **11 complete seed-1 map slices**, Seam Market partly
+observed (3 of 8 pairs), and 17 unobserved maps. Current gen wins are **58 parent /
+56 mouth**, with 0 improvements, 2 regressions and 89 ties. This is an ordered
+partial panel, not a gen gate verdict or a strength estimate.
+
+Both regressions are on the complete **Portal Quartet** slice: parent 8/8 wins,
+mouth 6/8. One regression is against Chaewon and one against Yuna; Ares and Fenrir
+remain 2/2 each for both bots. Across both seats, each opponent cell has lower raw
+r100 pearls and r250 material for the candidate. The other ten complete gen maps
+have unchanged win counts. Do not infer identical behavior from identical outcomes.
+
+This is a concrete structural-transfer question for the map board: the +3-win
+Portals discovery does not yet transfer to Portal Quartet. Keep both results and
+trace the quartet's tempo, transit exposure and material trajectory before making
+a mechanism claim. It is still one seed with four opponents and cannot settle a
+universal portal rule. Raw gen features remain raw until the appropriate frozen
+parent-reference analysis; no field reference is invented.
+
+Evidence: `build/expedition/audit-014.json`, `audit-014.log`, and batch-013's saved
+index/replays. Later batch-014 results are outside this snapshot. No tool behavior
+or measured candidate changed in this pass; previous 19 checks remain applicable.
+All unrelated files are preserved, including the user-highlighted S1 document.
+
+**Reconciliation:** add Portal Quartet to L40's map-transfer questions; keep the
+pass-11 all-pool board and ranked ten, now informed by the S1 behavior reference.
+No weight/gate/acceptance change. Tempo stays the opening goal, winning the overall
+goal; midgame/endgame and benchmark validity remain active research questions.
+Next: finish and validate batch 014, audit the quartet's opening/phase contrast,
+and continue the predeclared paired campaign. No registration or promotion.
 
 ## Pass 12 — opening access, later divergence, and win-first validation (2026-10-01)
 
@@ -31,6 +77,41 @@ Expedition's evaluation without routine intervention. Preserve prior contracts a
 scores so comparisons remain interpretable; version revised criteria and bridge
 old/new results instead of rewriting historical verdicts. Shared lane/ledger
 changes remain proposals in this status, and contest promotion remains prohibited.
+
+### User-highlighted reference: S1 next steps, 1 October
+
+Re-read `docs/findings/2026-10-01-s1-next-steps.md` at the user's suggestion.
+Its hash remains `547d56e1344edcc97aada2803cd849353feb939630d332c42a3a77ff95f73210`;
+pass 6 already independently checked the graft arithmetic and opening-boundary
+claims. The file is other-lane work and remains untouched. Use it as a primary
+research reference alongside BENCHMARKS, with these concrete consequences:
+
+1. **Foraging and split timing (L36):** the observed top teams decline eligible
+   splits more often and eat more afterward. Test exact-source Expedition 01's
+   opportunity cost of splitting versus continuing a nearby food run, by map and
+   r20–39/r40–59 windows, including safe child intake and full-follow-up survival.
+   Prioritize Trauma and Dilemma, where the source reports large early intake gaps.
+   Do not infer that more splits is the target, or that the observed .53 versus
+   .27 next-five-round intake is a causal benefit of declining: those states were
+   selected by different policies. Separate bed/enemy income from recycled food.
+2. **Midgame and crown conversion (L03/L39):** g01's win improvement with nearly
+   unchanged opening is direct motivation for separate later-phase work. The
+   full-Ares handover changes more than crown behavior. Test handover and crown
+   contribution separately rather than attributing the whole gain to feeding.
+3. **Map-dependent timing (L37):** r150 wins overall in that screen, while Portals
+   favors r250; Schooltime/Devil remain weaknesses. Treat this as a discovery
+   signature for structural/state-dependent phase transitions, not a validated
+   map-name switch table. Confirm on unused fixtures and protect the opening.
+4. **Reference and roster quality:** the authenticated atlas says the strong local
+   family resembles live ranks 11–30 more than several leading behavioral niches.
+   For the next reference/roster version, use authenticated field games and seek
+   representative stronger/diverse controls, with old/new benchmark comparisons.
+   Do not silently rebuild references inside the current paired experiment.
+
+These directions refine the existing ranked work, without changing weights or
+claiming that the 61.6 MB full-mimic graft transfers unchanged to Expedition's
+compact direction-prior base. The observed QoS food-access trace supplies a
+concrete local foraging example; it does not settle the separate split-timing test.
 
 ### Queen of Spades: separate early access cost from all four losses
 
