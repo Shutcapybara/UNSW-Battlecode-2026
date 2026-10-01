@@ -70,3 +70,4 @@ rome) are on the Mac and get no GPU-heavy items (lead, 2 Oct).
 - 2026-10-02 (18:10 UTC 1 Oct) — post store decode done (2,862 post games). Φ win potential fitted and posted. The store sync to the Mac was **blocked by the permission classifier** (writing the Mac's shared build/s1); left for the lead.
 - 2026-10-01 19:40 UTC — readings: carthage-06 (gen RL-fixture +0.107 [+0.042, +0.175], elimination −0.012), carthage-02 (elimination losses 168 → 320). Gate answer posted: win-led for endgame mechanisms with econ/tier-2/ΔΦ guards; 04+05 would accept.
 - 2026-10-01 20:10 UTC — opening refs published (field unchanged; transits now the largest gap); RL-readiness decision note.
+- 2026-10-01 20:40 UTC — carthage-04/05 reading: reproduces exactly; gain is round-limit longest races (05 pool +0.103, gen +0.068 on RL fixtures), no queen effect. Candidate under the win-led rule.
