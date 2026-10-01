@@ -165,6 +165,17 @@ for queen verdicts; none reaches the 0.5 survival bar.
 the same production collapse on gen as 02. On the pool the queen verdicts flip from 1–7 to 37–7, yet pool win falls
 2 pp: the production loss costs more games elsewhere than the queen wins.
 
+## carthage-09-queen-avoid-yield (06 + 07 stacked; parent 00, also scored vs 06)
+
+| | pool vs 00 | gen vs 00 | pool vs 06 | gen vs 06 |
+|---|---|---|---|---|
+| Δecon~ [5 %, 95 %] | +0.029 [+0.009, +0.055] | −0.084 [−0.105, −0.052] | +0.046 [+0.027, +0.068] | −0.044 [−0.065, −0.021] |
+| Δwin | −0.005 [−0.031, +0.021] | −0.044 [−0.072, −0.015] | −0.003 [−0.030, +0.023] | −0.057 [−0.083, −0.031] |
+| queen alive@490 (excl. pocket) | 3.0 % | 20.4 % | (06: 2.9 %) | (06: 23.6 %) |
+
+**Verdict: REJECT.** As a repair for 06 the yield does nothing for the queen (pool 2.9 → 3.0 %, gen 23.6 → 20.4 %);
+it reproduces 07's map-shaped economy (pool up, gen down). Yield is closed for this lane.
+
 Next: the sprint arms (04, 05) are on the panel; for H-Q1 the next design is a phase change rather than a premium —
 the queen produces in the opening as now, then retires to a safe, low-traffic region and stays small (tail shed by
 splitting) until a late regrowth window. and 03 (01+02) are on the panel; then an avoidance mechanism (keep the queen
