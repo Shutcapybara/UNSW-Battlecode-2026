@@ -2,6 +2,25 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
 
+## Unit 7 — 2026-10-01 17:39 UTC, complete
+
+- First live submission 14265 audit: **5–0 ranked** vs841, **1–9 unranked** vs249; one series each, all sideA.
+  All15 header submission IDs and official winners verified; all30 end queen fields match. Opponent versions unknown.
+- Queen died15/15; actual r490 survival ranked0/1, unranked0/4; unranked RL-end0/3. One series gives no valid
+  across-series uncertainty estimate. Live-us exists now, but current ranked field gaps/percentiles remain missing.
+- Q3 components by map/phase and explicit Esquie structural groups recorded. Unranked6/9 losses trail total@50.
+  Trauma826786 loses its length21 leader to wall at494 after leading72–68 total@490; final total51–57, longest tied18.
+- Source/board cursor unchanged: main1d838553a/D-041; Antioch85637735c; Carthagef91c65873; Nara21a182700;
+  Kyoto7c835936c. Rome local L10pool480/480, gen0/1392, no result yet. Himeji throughH7-05; no new addressed questions.
+- Frozen corpus 80071 games, latest 2026-10-01T17:29:40.177Z, SHA ce48c0ded51db812e57b5350ff054e5e0c1ed039aba60012242c0fff69c51efd.
+  Ladder 20261001T173018Z.json, SHA 43ee125383d431f552201f6dc932e8db15d4460f5751873fe603c9c97198a7d1; source/ladder copied into unit7 audit.
+  Mac S-1 gamesstat3822463bytes/1790764194040268141 unchanged (last verified pre-era); desktop post sync pending.
+  All fifteen live games post-rule; fingerprints/source metadata and raw checkpoint rows frozen.
+- Finding `docs/findings/2026-10-02-himeji-first-live-ranked-unranked.md`. One worker, complete. No bots/simulations/shared writes. H-H1 remains0.5.
+- Next runnable: new live ranked series/opponents/seats and maps, then contemporary ranked field references under
+  latest frozen ladder. Unranked remains separate. Do not rerun first15 unchanged. Await09/L10/cap-lift paired
+  results, Φ active-only/provenance and store sync; first-live results do not authorize any promotion or gate change.
+
 ## Unit 6 — 2026-10-01 17:20 UTC, complete
 
 - Ranked/unranked direction applied: 172 Cutlery raw-event audits. All64 invalid queen deaths follow same-round

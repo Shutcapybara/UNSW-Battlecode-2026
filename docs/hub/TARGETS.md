@@ -172,3 +172,24 @@ from the old live-us0.80SD gap. Its stability bootstrap resamples sides independ
 request whole-series ranked resampling with current ladder before adopting ±8pp precision. Live-us gap remainsNA.
 MainD-041 activation14265 at17:00 makes first collected live games next priority; corpus here has0post-team7.
 Evidence/query/counts: `docs/findings/2026-10-02-himeji-ranked-cutlery-split-actions.md`. All historical gates/references preserved.
+
+
+### Unit 7 first-live populations — 2026-10-01 17:39 UTC
+
+Submission 14265 now has 5 ranked games (one series, opponent841, five maps) and 10 unranked games
+(one series, opponent249, ten maps), all sideA. This supersedes the *current* “no live games” condition;
+historical zero counts stay frozen. Results5–0/1–9 are separate diagnostics, not comparable mode effects.
+
+| Era / population | Phase / component | Available us games | Current field percentile / top-ten-minus-us | Stability |
+|---|---|---:|---|---|
+| post / ranked | r25/50: bed conversion, production, transit, territory | 5, one series | NA: matched fresh field reference pending | insufficient |
+| post / unranked test | r25/50: same four components | 10, one series | NA: separate testing population | insufficient |
+| post / ranked | queen alive@490 / reached | 0/1 | no percentile target | insufficient |
+| post / unranked test | queen alive@490 / reached | 0/4 (RL-end0/3) | no percentile target | insufficient |
+
+Reproducible raw per-map/structural-group deltas for r25/50/100/150/250 are in `tools/himeji/unit7_audit/`;
+the structural groups use Esquie's explicit mappings, leaving unspecified memberships as map singletons.
+Uncertainty across series cannot be estimated with one per population. Every field-percentile cell stays missing;
+no local panel is substituted. Material-lead loss fractions require checkpoint: unrankedRL r490 is1/2 losses or1/1
+leads, versus final-state0/2 losses orNA(0leads). H-H1 and all frozen gates remain unchanged.
+Query, ladder, counts, identity and provenance: `docs/findings/2026-10-02-himeji-first-live-ranked-unranked.md`.

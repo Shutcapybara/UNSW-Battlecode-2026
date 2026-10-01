@@ -1,0 +1,58 @@
+[
+  {
+    "ranked": true,
+    "n": 5,
+    "series": 1,
+    "opponents": [
+      "841"
+    ],
+    "wins": 5,
+    "losses": 0,
+    "draws": 0,
+    "last_round_min": 162,
+    "queen_deaths": 5,
+    "queen_death_round_median": 5,
+    "reached490": 1,
+    "queen_alive490": 0,
+    "queen_length490_median": 0,
+    "round_limit": 1,
+    "rl_losses": 0,
+    "rl_material_leads490": 0,
+    "rl_losses_with_lead490": 0,
+    "rl_material_leads_end": 0,
+    "rl_losses_with_lead_end": 0,
+    "lost_and_material_behind25": 0,
+    "lost_and_material_behind50": 0,
+    "old_decoder_disagreements": 0,
+    "uncertainty": "No generalization CI: one independent series per population; maps and opponents unbalanced.",
+    "stability": "first-live diagnostic only; not a field percentile or gate reference"
+  },
+  {
+    "ranked": false,
+    "n": 10,
+    "series": 1,
+    "opponents": [
+      "249"
+    ],
+    "wins": 1,
+    "losses": 9,
+    "draws": 0,
+    "last_round_min": 86,
+    "queen_deaths": 10,
+    "queen_death_round_median": 59.5,
+    "reached490": 4,
+    "queen_alive490": 0,
+    "queen_length490_median": 0.0,
+    "round_limit": 3,
+    "rl_losses": 2,
+    "rl_material_leads490": 1,
+    "rl_losses_with_lead490": 1,
+    "rl_material_leads_end": 0,
+    "rl_losses_with_lead_end": 0,
+    "lost_and_material_behind25": 6,
+    "lost_and_material_behind50": 6,
+    "old_decoder_disagreements": 0,
+    "uncertainty": "No generalization CI: one independent series per population; maps and opponents unbalanced.",
+    "stability": "first-live diagnostic only; not a field percentile or gate reference"
+  }
+]
