@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–6
+# Expedition — H-1 hypothesis steward, passes 1–7
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -14,6 +14,73 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 7 — Queen of Spades and newborn observation window (2026-10-01)
+
+Resumed from `c6b8b8f21`. No newer committed lane findings, ledger or gate changes;
+the provisional S1 next-steps and tempo-tool hashes are unchanged. All unrelated
+edits remain untouched. Batch 008 completed **60 games in 1,142.6 seconds**, stopping
+within its admission budget before Schooltime seat B. Its complete saved output
+passed source/replay attribution and canonical bookkeeping: **208 games / 104
+pairs**, six complete seed-1 maps plus Schooltime seat A. Batch 009 resumed with
+one worker, the same 20-minute budget and maximum 96 games. No GPU work.
+
+### Complete Queen of Spades seed-1 slice
+
+Eight frozen opponents × both seats, 16 paired fixtures. Parent 01 wins **16/16**;
+mouth 09 wins **12/16**. Four regressions, no improvements (two-sided exact sign
+p = 0.125, without map/selection adjustment). This is still one seed, not a gate
+rejection or an independent second failure.
+
+| Measure through r150 | Parent 01 | Mouth 09 |
+|---|---:|---:|
+| Transits | 256 | 160 |
+| Transits followed by death within three rounds | 64/256 = 25.00% | 42/160 = 26.25% |
+| Ally head-on deaths / dragon turns | 32/20,286 = 1.577 per 1k | 16/16,133 = 0.992 per 1k |
+| Own goals / dragon turns | 174/20,286 = 8.577 per 1k | 137/16,133 = 8.492 per 1k |
+| Newborn deaths / splits observed by r150 | 110/492 = 22.36% | 97/393 = 24.68% |
+| Mean total length r150 | 44.3125 | 36.0625 |
+| Candidate − parent opening tempo | — | **+9.083 rounds (slower)** |
+
+Mean economy delta: **−0.252202 arena / −0.258158 replay**. Raw pearls r25 delta
+0; r50 delta −4.3125 and mean r50 field-percentile delta −0.141074. Reduced ally
+head-on counts do not establish a beneficial transfer: this slice also has less
+transit, lower material, slower tempo and fewer wins. **L40 stays 0.5** while the
+fixed full panels continue; do not retune against the prefix or relax a guard.
+
+### Gate audit: distinguish snapshot ratios from child survival
+
+The S1/Expedition displayed newborn ratio is deaths observed by r150 divided by
+splits observed by r150. It is not a fully observed ten-round death probability:
+children born near the cutoff have less follow-up. Audited the same 16 paired
+Portals fixtures directly from cached replay frames, using births through r140
+and requiring ten observed rounds (birth ≤ min(140, final round − 10)):
+
+| Portals newborn measure | Parent 01 | Mouth 09 |
+|---|---:|---:|
+| Existing r150 snapshot ratio | 804/1,945 = 41.34% | 518/1,442 = 35.92% |
+| Complete ten-round birth cohort | 719/1,709 = 42.07% | 453/1,258 = 36.01% |
+| Births excluded for late observation | 236 | 184 |
+
+The direction persists (candidate − parent −5.41 percentage points snapshot,
+−6.06 points complete cohort), so this check supplies **no sign reversal**. It
+also changes the birth window and is not a replacement estimate for births
+through r150. Proposal: label the existing snapshot ratio precisely and show an
+explicit full-follow-up birth cohort alongside it; re-score historical panels
+before changing any guard threshold or verdict. No shared scorer is edited.
+
+Reproduce from saved evidence with `report.py`,
+`phase_report.py --map queen_of_spades`, and the retained small audit
+`build/expedition/audit_newborn_window.py`. Results:
+`build/expedition/audit-009.log`, `phase-queen_of_spades.log`,
+`newborn-window-portals.json`, and the source/replay-keyed report caches.
+The source/reference hashes remain those in pass 5.
+
+**Reconciliation and priorities:** reviewed L05/L29/L36/L40; no new independent
+full-panel result, historical verdict flip, or proposed weight change. The ranked
+ten from pass 6 remain current. Next: finish Schooltime and the remaining seed-1
+pool maps, audit completed map slices, then proceed to the predeclared gen panel
+and seeds 2–3. No registration or promotion.
 
 ## Pass 6 — audit the new S1 handover evidence (2026-10-01)
 
