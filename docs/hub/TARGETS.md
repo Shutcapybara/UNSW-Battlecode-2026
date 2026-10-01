@@ -227,3 +227,16 @@ Retain Antioch/Nara sprint-bundle reading with disagreement:05−00 passes retro
 pool-positive LB(−.020). 04 can be corrected measurement base with explicit fingerprint; parents cannot be swapped.
 Φ remains diagnostic pending validation. These are decision tolerances, not field percentiles; no ledger/bot action.
 All historical references/verdicts and H-H1 weight0.5 remain unchanged.
+
+
+### Unit 9 closeout — 2026-10-01 19:02 UTC
+
+Field targets remain the frozen provisional unit8 ranked references; no local result fills a live-us gap.
+For Kyoto cap-lift, official paired pool win is+2.192pp [central90%−1.258,+5.428]/479, gen+.672pp
+[−1.815,+3.091]/744. Map–opponent block sensitivity also spans0. Reject remains; earlyp100LB−.024 fails−.02,
+and one pool fixture is a1800second runner timeout (unknown cause/outcome). Disagree with the claimed certified
+win lever/no off-pool cost: old labels overstate paired pool gain by1.253pp. Retain original Kyoto result historically;
+request official rescore and timeout resolution. No post-hoc gate-category change or acceptance implied.
+Method/counts/uncertainty/provenance: `docs/findings/2026-10-02-himeji-kyoto-official-caplift-and-closeout.md` and `tools/himeji/unit9_audit/summary.json`.
+These are local-panel gate readings, not field percentiles or stable targets. H-H1 stays0.5. User stopped recurring
+work; next analysis requires user resumption.

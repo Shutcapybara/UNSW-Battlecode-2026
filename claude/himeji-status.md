@@ -2,6 +2,27 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
 
+## Unit 9 — 2026-10-01 19:02 UTC, complete; recurring task stopped
+
+- User requested wrap-up/commit/push and stop. Automation `himeji-analyst-iteration` confirmed PAUSED.
+  No active Himeji worker. Resume only on user direction; the older recurring contract below is historical.
+- Kyoto cap-lift official audit complete:2,447/2,447 terminated headers match runner; all old labels match features.
+  Pool base396–83–1; cap-lift406–73–0 (479completed). Paired gain+2.192pp [central90%−1.258,+5.428],
+  reduced fromold+3.445pp; block sensitivity[−.731,+5.104]. Gen+.672pp [−1.815,+3.091]/744.
+- Missing pool fixture is seed2Slithery/A/vsouroboros, runner1800.1second timeout rc−9, not proven engine TLE.
+  Baseline wins; full480 point bounds+1.979..+2.188pp. Reject stands: unresolved positive win, earlyp100 guard,
+  incomplete/error-unresolved panel. No bot experiment or rerun. H9-01..05; H-H1 remains0.5.
+- Source commits: main1d838553a, Antiochcdac8bd96, Carthage3ff5dd9aa, Nara21a182700,
+  Kyoto75cb6c17a through18:20cap-lift board; Rome localL10pool480/gen842 of1392 atwake.
+- Wake corpus81,045 latest18:27:11.705Z indexSHAcc0202def565c004efd170be2c0cc7c803d8262e718830c54aed803d560dc51d;
+  ladder182238Z top952/206/801/314/20/213/249/375/87/46. StoreSHAbfe4516582393c959f1cbfcf8279946d7c6a01466a5a75f65cd4e7da618e18c2
+  unchanged; unit8postdecoded2,862 through15:39Z. Era1.2.3 local pertesterprovenance; fieldpopulation separate.
+- Live post-team7 now28games (ranked5unchanged/unranked23);13newunranked queued, not decoded or scored here.
+  If user resumes: analyze13newunranked separately, then fresh ranked data; PD10alias, later references,
+  Kyoto timeout/rescore and Φ validation remain pending. Finished audits must not rerun unchanged.
+- Finding `docs/findings/2026-10-02-himeji-kyoto-official-caplift-and-closeout.md`; compact verifiedoutputs `tools/himeji/unit9_audit/`.
+  Shared main, corpus/store and peer files untouched. Scope committed and pushed onr/himeji atcloseout.
+
 ## Unit 8 — 2026-10-01 18:15 UTC, complete
 
 - Answered delegated analyst gate question H8-01/02: win-led local evaluation with economy/material/safety guards;
