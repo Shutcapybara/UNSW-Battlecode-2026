@@ -113,6 +113,27 @@ enemy body 9 — **our own dragons kill the queen 97 times, the enemy 45**. At d
 3 in 86; 88 deaths come within 3 rounds of the queen's own production split; 138 have an ally body within 2 and no
 enemy head within 3. This is what carthage-07 (the swarm yields to the queen) addresses.
 
+## carthage-07-queen-yield (switch `queen_yield`; parent 00)
+
+Mechanism: non-queen dragons pay 20 for ending adjacent to a visible ally queen's head (6 at distance 2); the queen pays
+the same next to any visible ally head. Expected: fewer ally-caused queen deaths, economy flat.
+
+| | pool | gen |
+|---|---|---|
+| Δecon~ [5 %, 95 %] | **+0.029 [+0.011, +0.052]** | −0.041 [−0.064, −0.021] |
+| p50 / p100 / p150 / p250 | +0.047 / +0.043 / +0.024 / +0.000 | −0.046 / −0.044 / −0.053 / −0.020 |
+| Δunits@100 / Δtotal@100 | +0.073 [+0.018] / +0.064 [+0.022] | −0.051 / −0.068 |
+| Δwin [5 %, 95 %] | +0.003 [−0.025, +0.030] | −0.040 [−0.061, −0.013] |
+| queen alive@490 (excl. pocket) | 1.2 % → 0.0 % | 0.8 % → 0.0 % |
+
+**Verdict: REJECT** (pool win lb −0.025; gen econ lb −0.064). The mechanism did not touch its target: queen deaths by
+cause and killer on the pool, base → 07: enemy h2h 111 → 124, wall 74 → 67, ally body 27 → 34, ally h2h 35 → 31, self
+40 → 26. Its pool economy gain is a side effect in the opening (p50 +0.047): the starting dragons spread away from the
+queen's spawn. It reverses on gen, so it is map-shaped, not a spacing law.
+
+**Correction** to the 06 reading above: on the *base*, the queen's killers off the pocket maps are enemy 112, ally 62
+(h2h 35, body 27), wall 74, self 40. Own dragons outnumber the enemy only after 06 removes most enemy head-ons.
+
 Next: the sprint arms (04, 05) are on the panel; for H-Q1 the next design is a phase change rather than a premium —
 the queen produces in the opening as now, then retires to a safe, low-traffic region and stays small (tail shed by
 splitting) until a late regrowth window. and 03 (01+02) are on the panel; then an avoidance mechanism (keep the queen
