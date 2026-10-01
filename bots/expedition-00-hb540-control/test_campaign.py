@@ -119,5 +119,34 @@ class FieldPercentileTests(unittest.TestCase):
         self.assertIsNone(percentile(10, []))
 
 
+class EconomyEstimandTests(unittest.TestCase):
+    def test_mean_and_median_can_reverse_sign(self):
+        from report import economy_estimands
+        result = economy_estimands([[0] * 4, [1] * 4, [100] * 4], [[2] * 4] * 3)
+        self.assertAlmostEqual(result['mean_delta'], 95 / 3)
+        self.assertEqual(result['mean_checkpoint_median_delta'], -1)
+
+    def test_difference_of_medians_is_not_median_paired_difference(self):
+        from report import economy_estimands
+        result = economy_estimands([[0] * 4, [100] * 4, [101] * 4],
+                                   [[0] * 4, [1] * 4, [100] * 4])
+        self.assertEqual(result['mean_checkpoint_median_delta'], 99)
+        # Paired differences are 0, 99, 1, whose median would be 1.
+
+    def test_checkpoint_medians_precede_checkpoint_averaging(self):
+        from report import economy_estimands
+        result = economy_estimands([[0, 0, 100, 100], [0, 100, 0, 100], [100, 0, 0, 100]],
+                                   [[0] * 4] * 3)
+        self.assertEqual(result['mean_checkpoint_median_delta'], 25)
+        self.assertEqual(result['mean_delta'], 50)
+
+    def test_incomplete_or_nonfinite_rows_rejected(self):
+        from report import economy_estimands
+        for child, parent in [([], []), ([[1] * 4], []), ([[1] * 3], [[1] * 4]),
+                              ([[float('nan')] * 4], [[1] * 4])]:
+            with self.subTest(child=child, parent=parent), self.assertRaises(ValueError):
+                economy_estimands(child, parent)
+
+
 if __name__ == '__main__':
     unittest.main()

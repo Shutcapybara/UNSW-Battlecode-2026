@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–8
+# Expedition — H-1 hypothesis steward, passes 1–9
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -14,6 +14,76 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 9 — paired mean/median economy sensitivity (2026-10-01)
+
+Resumed from `c6d518cd8`; no newer committed lane findings, and the provisional S1
+next-steps and tempo-tool hashes remain unchanged. Batch 010 completed **16 games
+in 1,236.1 seconds**; a 155.3-second admitted game finished beyond the budget.
+The saved index validates **251 games / 125 matched pairs plus one parent**:
+seven complete seed-1 map slices and 13 Slithery Fight pairs. Source/replay hashes,
+errors, attribution and canonical bookkeeping pass; **249 arena/replay measurement
+discrepancies** remain explicit. No gen games yet; pool requires 480 pairs and gen
+696 pairs for this candidate. There is no complete-panel or sandbox verdict.
+
+The lock was free. Batch 011 resumed the exact missing mouth-09 Slithery Fight B
+fixture against Ouroboros, with one worker, maximum 96 games and the same 20-minute
+admission budget. Recent Slithery Fight throughput is much slower than the early
+24-game batches: the admission timer, not the maximum count, bounds current work.
+No overlapping campaign or GPU work; all unrelated edits remain preserved.
+
+### Same games, same references, different economy statistic
+
+Extended `report.py` to show both the mean of normalized paired checkpoint deltas
+and the mean of four **candidate-minus-parent checkpoint medians**, separately
+for arena intake and canonical replay intake. The median is taken per side at
+each checkpoint before averaging; it is neither a median of paired differences
+nor a median of per-game economy means. Both statistics use exactly the same
+matched fixtures and frozen field denominators. Checked all four economy fields:
+`field_references.json` medians equal `map_reference_medians.json` values on every
+listed map, so the differences below are not a denominator substitution.
+
+Each completed slice has 16 pairs, eight opponents × both seats, seed 1 only:
+
+| Map | Arena mean | Arena median form | Replay mean | Replay median form |
+|---|---:|---:|---:|---:|
+| Autarky | −.001287 | +.013223 | −.002696 | +.009435 |
+| Default | −.059894 | −.079430 | −.056943 | −.084095 |
+| Devil | .000000 | .000000 | .000000 | .000000 |
+| Dilemma | −.008886 | +.019061 | −.008457 | +.021264 |
+| Portals | −.201548 | −.203544 | −.207703 | −.212597 |
+| Queen of Spades | −.252202 | −.118145 | −.258158 | −.148846 |
+| Schooltime | −.014689 | +.003575 | −.009187 | +.025172 |
+
+**Three of seven complete map slices change sign under the statistic choice**,
+in both measurement pipelines. This is an observed sensitivity, not evidence to
+choose the more favorable statistic. No historical or current ACCEPT flips are
+claimed: these are map-level points without complete panels, independent-seed
+uncertainty or the other guard decisions. The incomplete Slithery slice is kept
+in the machine report with its 13-pair coverage; it is excluded from this table.
+Do not average these map medians and call that a pooled checkpoint median.
+
+Verification: **15 no-game tests pass**, including hand-checked mean/median sign
+reversal, distinction from median paired differences, checkpoint aggregation order,
+and refusal of missing/nonfinite inputs. On all eight available map slices the
+new mean calculation matches the previous report mean within 1e−12. Existing
+means, arena rows, replay caches, runtime sources, contracts and gates are unchanged.
+Re-ran report validation with the extended output. Evidence is retained in
+`build/expedition/audit-011.json`, `audit-011-estimands.json`, their corresponding
+logs, and `test-012.log`; reproduce with `report.py` and `test_campaign.py`.
+
+**Reconciliation and gate proposal:** L37 now has direct Expedition evidence that
+specifying the economy statistic is necessary; retain its 0.8 planning weight and
+the pass-6 ranked ten. L29/L40 annotations gain this sensitivity, with no weight
+changes or retrospective gate relaxation. The proposal remains to name and report
+both statistics, preserve existing verdicts and separately re-score historical
+paired archives. Full-panel median/cluster intervals, opening/tempo, phase/map
+and sandbox guards remain required before any acceptance proposal. No shared
+ledger or gate edits, registration, upload or promotion.
+
+**Next runnable action:** let batch 011 finish, validate its exact saved pairs,
+complete the Slithery Fight/Trauma/Trophy seed-1 slices and continue the frozen gen
+panel and seeds 2–3. Then proceed through symmetry and the remaining fixed arms.
 
 ## Pass 8 — Schooltime tradeoff and trap activation (2026-10-01)
 

@@ -8,6 +8,7 @@ from bisect import bisect_left, bisect_right
 import hashlib
 import json
 import math
+from statistics import mean, median
 from pathlib import Path
 import campaign as c
 from tools.analysis.features.extract import extract_one
@@ -60,6 +61,24 @@ def percentile(value, distribution):
     return (bisect_left(distribution, value) + bisect_right(distribution, value)) / (2 * len(distribution))
 
 
+def economy_estimands(child, parent):
+    """Paired rows × four normalized checkpoints; medians are taken per side.
+
+    A difference of checkpoint medians is not the median of paired differences,
+    nor the median of per-game checkpoint means. Keep all three separate.
+    """
+    if not child or len(child) != len(parent):
+        raise ValueError('Economy comparison requires nonempty matched rows')
+    if any(len(row) != 4 or not all(math.isfinite(v) for v in row)
+           for rows in (child, parent) for row in rows):
+        raise ValueError('Economy comparison requires four finite checkpoints')
+    checkpoints = [median([row[i] for row in child]) - median([row[i] for row in parent])
+                   for i in range(4)]
+    return dict(mean_delta=mean([mean(crow) - mean(prow) for crow, prow in zip(child, parent)]),
+                mean_checkpoint_median_delta=mean(checkpoints),
+                checkpoint_median_deltas=dict(zip(('50', '100', '150', '250'), checkpoints)))
+
+
 def measurement_sensitivity(keys, child, parent, child_features, parent_features):
     """Pool-map descriptions only; same fixtures and frozen denominators for both estimands."""
     base = c.ROOT / 'docs/analysis/benchmarks'
@@ -72,12 +91,17 @@ def measurement_sensitivity(keys, child, parent, child_features, parent_features
         def avg(values):
             return sum(values) / len(values)
         arena, replay = [], []
+        arena_child, arena_parent, replay_child, replay_parent = [], [], [], []
         for _, arena_key, canonical_key in c.panel.gate.ECON:
             reference = refs[canonical_key][name]['median']
             if reference <= 0:
                 raise ValueError(f'Undefined economy denominator: {name}: {canonical_key}')
             arena += [(child[k]['us'][arena_key] - parent[k]['us'][arena_key]) / reference for k in paired]
             replay += [(child_features[k][canonical_key] - parent_features[k][canonical_key]) / reference for k in paired]
+            arena_child.append([child[k]['us'][arena_key] / reference for k in paired])
+            arena_parent.append([parent[k]['us'][arena_key] / reference for k in paired])
+            replay_child.append([child_features[k][canonical_key] / reference for k in paired])
+            replay_parent.append([parent_features[k][canonical_key] / reference for k in paired])
         opening = {}
         for r in (25, 50):
             key = f'pearls@{r}'
@@ -89,6 +113,10 @@ def measurement_sensitivity(keys, child, parent, child_features, parent_features
         out[m] = dict(paired=len(paired), seeds=sorted({k[2] for k in paired}),
             seats=sorted({k[1] for k in paired}), arena_mean_economy_delta=avg(arena),
             replay_mean_economy_delta=avg(replay), opening=opening,
+            arena_estimands=economy_estimands(list(zip(*arena_child)), list(zip(*arena_parent))),
+            replay_estimands=economy_estimands(list(zip(*replay_child)), list(zip(*replay_parent))),
+            estimand_scope='Per-map matched fixtures, identical frozen field denominators; '
+                           'descriptive sensitivity, not a full-panel median gate',
             status='DESCRIPTIVE ESTIMAND SENSITIVITY; NO GATE VERDICT')
     return out
 
