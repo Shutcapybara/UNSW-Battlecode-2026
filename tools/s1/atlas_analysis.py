@@ -34,6 +34,7 @@ F50 = ['pearls_per_dt', 'births_per_dt', 'disp_per_turn', 'transits_per_dt', 'cl
 FS = ['death_suicide_per1k', 'death_invalid_per1k', 'child_len_le3_share', 'sprint_share', 'first_split', 'first_pearl',
       'rays_toward_enemy_share', 'ray_refracted_share', 'seen50']
 # outcome-flavoured columns kept out of the behaviour vector (they measure how well, not how)
+FIGSFX = ''
 STRENGTHY = {'pearls_per_dt', 'bed_pearls_per_dt', 'pearls_per_dt_r50', 'mean_len', 'steps_per_pearl'}
 pd.set_option('display.width', 250)
 pd.set_option('display.max_columns', 40)
@@ -152,11 +153,17 @@ def main():
     ap.add_argument('--refresh', action='store_true', help='recompute cached parts')
     ap.add_argument('--k', type=int, default=0, help='niches (0 = choose by silhouette, 6..14)')
     ap.add_argument('--live-min', type=int, default=40)
+    ap.add_argument('--auth', action='store_true', help='live side: ranked + fingerprint-authenticated games only (tools/s1/authenticity.py)')
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     FIG.mkdir(parents=True, exist_ok=True)
     run = 'atlas-panel' if a.source == 'panel' else 'atlas-existing'
-    cl, cv, ct = OUT / f'cache_local_{a.source}.pkl', OUT / 'cache_live.pkl', OUT / 'cache_live_tempo.pkl'
+    sfx = '_auth' if a.auth else ''
+    RO = OUT / 'auth' if a.auth else OUT
+    RO.mkdir(parents=True, exist_ok=True)
+    global FIGSFX
+    FIGSFX = sfx
+    cl, cv, ct = OUT / f'cache_local_{a.source}.pkl', OUT / f'cache_live{sfx}.pkl', OUT / f'cache_live_tempo{sfx}.pkl'
     state = {}
 
     def con():
@@ -166,6 +173,8 @@ def main():
             c.execute("""create temp table lv as select game, side, team, cohort, crank, name,
                          team || '@' || strftime(started_at, '%m-%d') as unit, elo, won
                          from c_sides where cohort in ('top10', 'r11_30', 'r31_50', 'us') and started_at is not null""")
+            if a.auth:
+                c.execute(f"delete from lv where (game, side) not in (select game, side from read_parquet('{ROOT}/build/s1/corpus/authenticity.parquet') where authentic)")
             c.execute("create temp view lvs as select s.*, lv.unit from c_series_z s join lv using (game, side)")
             c.execute("create temp view lvd as select d.*, lv.unit from c_sides_z d join lv using (game, side)")
             state['c'] = c
@@ -265,12 +274,12 @@ def main():
         anc.append(dict(live_unit=u, niche=row.niche, nearest=', '.join(f'{Lx.index[i]} ({d[i]:.2f})' for i in o)))
     AN = pd.DataFrame(anc)
     # ---------------- save
-    load.to_csv(OUT / 'loadings.csv')
-    Lx.to_csv(OUT / 'local_bots.csv')
-    Vx.to_csv(OUT / 'live_versions.csv')
-    SB.to_csv(OUT / 'strength_vs_behaviour.csv', index=False)
-    NT.to_csv(OUT / 'niches.csv', index=False)
-    AN.to_csv(OUT / 'anchors.csv', index=False)
+    load.to_csv(RO / 'loadings.csv')
+    Lx.to_csv(RO / 'local_bots.csv')
+    Vx.to_csv(RO / 'live_versions.csv')
+    SB.to_csv(RO / 'strength_vs_behaviour.csv', index=False)
+    NT.to_csv(RO / 'niches.csv', index=False)
+    AN.to_csv(RO / 'anchors.csv', index=False)
     print(f'source {a.source}: {len(Lx)} local bots, {len(Vx)} live team-versions, {len(beh)} behaviour features, k={k}')
     print('variance explained:', np.round(ev, 3).tolist())
     for i in range(4):
@@ -307,7 +316,7 @@ def figures(Lx, Vx, C, ev):
     axes[0].legend(fontsize=8, loc='best')
     fig.colorbar(sc, ax=axes[1], label='local strength (panel Elo)')
     fig.suptitle('Strategy atlas: local bots and live team-versions in one behaviour space (numbers = niche centres)')
-    fig.tight_layout(); fig.savefig(FIG / 'atlas-pca.png', dpi=90); plt.close(fig)
+    fig.tight_layout(); fig.savefig(FIG / f'atlas-pca{FIGSFX}.png', dpi=90); plt.close(fig)
 
 
 if __name__ == '__main__':

@@ -207,6 +207,8 @@ def main():
     slow_maps = [r[0] for r in rows if r[7] > MAP_GUARD]
     if D <= -DELTA and hi < 0 and not slow_maps:
         v = 'ACCEPT'
+    elif D <= -DELTA and hi < 0:
+        v = 'MAP GUARD - faster overall, but significantly slower on ' + ', '.join(slow_maps) + '; fix those maps before accepting'
     elif lo > 0:
         v = 'REJECT (slower than the parent)'
     elif lo > -DELTA:

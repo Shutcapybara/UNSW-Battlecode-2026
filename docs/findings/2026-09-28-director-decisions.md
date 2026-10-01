@@ -625,3 +625,17 @@ operator and hb1-12's search-plus-prior as the starting architecture; RL-1 may b
 into receiving (observations, learned use) and sending (a head under a fixed L32/L33 protocol); emergent
 communication is out of scope. Ledger: L27 → 0.7.
 
+**D-039 — the desktop lanes read; the queue re-ordered for the 4 MiB upload cap (1 Oct 03:00 UTC).** Merged to main:
+`r/verso` (X-1), `r/tt` (top-team anatomy: cheji bt, Stockfish), `r/rb` (Aline, blind lane, closed), `r/rc` (Gustave,
+paused), `r/maelle` (SF-1, wrapped), `r/alicia` (RL-1, running). Readings: (1) the two mechanisms that passed D-032 are
+both information mechanisms — Heartbreaker's direction prior inside Ares's search (verso-01: win +0.15, econ +0.052)
+and Aline's symmetry inference (econ +0.025, dragons +0.05, win +6 pp); every continuous weight move on V06's
+evaluation sits in a flat bowl (Maelle's zero-weight optima, Alicia's ES drift), which is the local minimum the lead
+described, now measured; (2) the TT lane found the submission zip is capped at 4 MiB, so `hb1-12`/`hb1-13` (17 MiB)
+can never upload — `hb1-14-prior-r540` (3.74 MiB, 141–19) and `verso-05-hb800-prior` (3.38 MiB) are registered
+ahead of them (540/535), `aline-17-sym-seal` at 515 and `gustave-07c-mouthroute` at 505 (their manifests repaired
+as director housekeeping); registration now rejects archives over 4 MiB; (3) the top teams' edge after r200 is
+deliberate endgame conversion (L39) and their rules do not port — the trigger to build is Ares's own feeder logic
+keyed on state (opponent units at r300), which is the phase switch of L31/L32 at game scale; (4) Maelle and Alicia
+are closed as weight-tuning efforts; their platforms (state module, feature dump, ES loop) are inherited by Verso.
+

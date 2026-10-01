@@ -15,3 +15,7 @@ pool = "n=480 econ +0.025 [+0.005, +0.045]; p@50 +0.027, p@100 +0.054, p@150 +0.
 gen = "n=696 econ +0.012 [-0.003, +0.027]; units@100 +0.076 [+0.045, +0.108]; length@100 +0.071 [+0.040, +0.104]; win +0.029 [-0.001, +0.058]; tier-2 wall +8.7 %, self -6 %, body -13 %, h2h -2 %"
 robustness = "fixture-cluster bootstrap: pool econ [-0.000, +0.049], win [+0.025, +0.098]; gen win [-0.003, +0.062]"
 runs = "build/rb/runs/aline-17-sym-seal-{z1,gen}.jsonl vs build/rb/runs/aline-01-nodevil-{z1,gen}.jsonl; tools/rb/gate.py score aline-17-sym-seal --parent aline-01-nodevil --seeds 1,2,3"
+
+[activation_contract]
+kind = "legacy_none"
+note = "director housekeeping (D-039): identity by fingerprint"

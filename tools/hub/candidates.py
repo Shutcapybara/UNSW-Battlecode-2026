@@ -15,6 +15,7 @@ EXCLUDE_DIRS = {'__pycache__', 'build', '.unswbc-build', '.git'}
 EXCLUDE_FILES = {'.DS_Store'}
 CONTRACT_KINDS = {'divergence_window', 'behavioural_signature', 'trace_marker', 'legacy_none'}
 REQUIRED = ('name', 'lineage', 'author', 'language', 'hypothesis', 'mechanism', 'expected_change')
+UPLOAD_LIMIT_BYTES = 4 * 2**20   # the submission zip cap observed by the TT lane (1 Oct): hb1-12 at 17 MiB was refused
 LANGUAGES = {'python': 'python', 'py': 'python', 'c': 'c', 'cpp': 'cpp', 'c++': 'cpp', 'cxx': 'cpp'}   # manifest spellings -> stored language (the CLI's own aliases)
 
 
@@ -114,6 +115,10 @@ def register_from_dir(conn, root, directory, actor, priority=None):
             if hashlib.sha256(z.read(rel)).hexdigest() != digest:
                 archive.unlink()
                 raise ValueError(f'archive byte-check failed for {rel}')
+    size = archive.stat().st_size
+    if size > UPLOAD_LIMIT_BYTES:
+        archive.unlink()
+        raise ValueError(f'archive is {size / 2**20:.2f} MiB; the server rejects uploads over {UPLOAD_LIMIT_BYTES / 2**20:.0f} MiB (TT lane, 1 Oct) — shrink the bot (one copy of large headers, compact model streams)')
     row = dict(name=name, fingerprint=full, code_fingerprint=code, archive_path=str(archive), archive_sha256=sha256_file(archive), source_files=before,
                language=LANGUAGES[str(manifest['language']).lower()], lineage=manifest['lineage'], author=manifest['author'], lineage_parent_name=parent or None,
                lineage_parent_fingerprint=None, source_ref='dir:' + str(directory), hypothesis=manifest['hypothesis'], mechanism=manifest['mechanism'],
