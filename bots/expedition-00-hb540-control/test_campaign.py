@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+"""No-game checks for campaign recovery and evidence validation."""
+import copy
+import json
+from pathlib import Path
+import tempfile
+import unittest
+from unittest.mock import patch
+import campaign as c
+
+
+class CampaignTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.bot = c.QUEUE[0]
+        self.key = ('autarky', 'A', 1, 'opponent')
+        self.dest = self.root / 'run'
+        self.dest.mkdir()
+        self.patches = [patch.object(c, 'run_dir', return_value=self.dest),
+                        patch.object(c, 'source_id', side_effect=lambda b: b + '-hash'),
+                        patch.object(c.panel, 'expected', return_value={self.key})]
+        for p in self.patches:
+            p.start()
+            self.addCleanup(p.stop)
+        self.rep = self.dest / 'replays' / (c.fixture_tag(self.bot, self.key) + '.replay')
+        self.rep.parent.mkdir()
+        self.rep.write_bytes(b'completed replay')
+        self.row = dict(map='autarky', side='A', seed=1, opp='opponent',
+            cand='bots/' + self.bot, errors=[], result='win',
+            candidate_fingerprint=self.bot + '-hash', opponent_fingerprint='opponent-hash',
+            replay=str(self.rep.relative_to(self.dest)), replay_sha256=c.sha(self.rep))
+
+    def pending(self):
+        p = self.dest / (c.fixture_tag(self.bot, self.key) + '.pending.json')
+        p.write_text(json.dumps(self.row))
+        return p
+
+    def test_recover_before_replay_publication(self):
+        self.pending()
+        self.rep.rename(self.rep.with_suffix('.replay.tmp'))
+        c.recover(self.bot, 'z1')
+        self.assertEqual(c.read_rows(self.bot, 'z1'), {self.key: self.row})
+
+    def test_recover_after_replay_publication(self):
+        self.pending()
+        c.recover(self.bot, 'z1')
+        c.recover(self.bot, 'z1')
+        self.assertEqual(len(c.read_rows(self.bot, 'z1')), 1)
+
+    def test_recover_after_index_publication(self):
+        self.pending()
+        c.append_row(self.dest, self.row)
+        c.recover(self.bot, 'z1')
+        self.assertEqual(len(c.read_rows(self.bot, 'z1')), 1)
+
+    def test_invalid_evidence_rejected(self):
+        for field, value in [('result', 'oops'), ('errors', ['error']),
+                             ('opponent_fingerprint', 'changed'), ('candidate_fingerprint', 'changed'),
+                             ('replay', '../unrelated.replay'), ('seed', 7)]:
+            with self.subTest(field=field):
+                row = copy.deepcopy(self.row)
+                row[field] = value
+                with self.assertRaises(ValueError):
+                    c.validate_row(row, self.bot, 'z1', self.dest)
+        self.rep.write_bytes(b'corrupt replay')
+        with self.assertRaises(ValueError):
+            c.validate_row(self.row, self.bot, 'z1', self.dest)
+
+    def test_duplicates_rejected(self):
+        c.append_row(self.dest, self.row)
+        c.append_row(self.dest, self.row)
+        with self.assertRaises(ValueError):
+            c.read_rows(self.bot, 'z1')
+
+    def test_interrupted_index_write_not_published(self):
+        c.append_row(self.dest, self.row)
+        (self.dest / 'rows.jsonl.tmp').write_text('{partial')
+        self.assertEqual(c.read_rows(self.bot, 'z1'), {self.key: self.row})
+
+    def test_unjournaled_replay_refuses_new_game(self):
+        self.rep.rename(self.rep.with_suffix('.replay.tmp'))
+        with patch.object(c, 'freeze', return_value=self.dest), patch.object(c.arena_lune, 'run_game') as game:
+            with self.assertRaises(ValueError):
+                c.play(self.bot, 'z1', self.key)
+            game.assert_not_called()
+
+
+if __name__ == '__main__':
+    unittest.main()

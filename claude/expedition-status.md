@@ -1,16 +1,84 @@
-# Expedition — H-1 hypothesis steward, pass 1
+# Expedition — H-1 hypothesis steward, passes 1–2
 
 **2026-10-01, MacBook; branch `r/expedition`.** Evidence cutoff: starting commit
 `757315abc`. No previous Expedition pass exists. The ledger's last update was
 `53a9833bb`; this pass reconciles its accumulated evidence, including findings
 whose addenda supersede their own headlines. Next pass starts from this pass's commit.
 
-**State: evidence audit and experiment preparation complete; game experiments pending.**
-No GPU training, new games, registrations, promotions, ledger edits, or gate edits.
-The attached H-1 brief reserves games for the desktop. The user was asked whether
-bounded MacBook games are permitted; no answer was available during this pass.
-Native compilation and replaying already-recorded input blocks used the Mac CPU.
-No desktop connection was assumed. Existing unrelated working-tree changes were preserved.
+**Current state: autonomous CPU campaign active; no gate verdict yet.** The first
+pass created and verified the 14 snapshots, reconciled the ledger, and pushed
+`d8bbf8628` to `origin/r/expedition`. The user then approved the push and explicitly
+requested long-horizon iteration without routine intervention. Their MacBook
+instruction and continuation approval govern the execution adaptation: bounded,
+serial CPU-only local games, no GPU training. No contest registration, upload,
+activation or promotion; shared ledger/gate edits remain proposals. Preserve
+unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 2 — durable continuation and measurement audit (2026-10-01)
+
+- Active same-chat heartbeat: `expedition-autonomous-iteration`, every 30 minutes.
+  It continues the next decisive work, stays quiet on unchanged state, and reports
+  meaningful findings, completed stages, or failures requiring attention. Local
+  scheduled work requires the Mac and app to remain running.
+- First native throughput pilot: four parent games, Schooltime, seed 1, A/B vs
+  Fenrir-18 and Yuna-05; four wins, 500 rounds each, 26.7–48.5 s/game, no bot errors.
+  These old rows lack replays and are **throughput evidence only**, at
+  `build/expedition/panels/expedition-01-nodevil-d7ba8adac780/z1.jsonl`.
+- New replay-saving pilot: parent 01 and mouth 09, Autarky, seed 1, seat A,
+  Chaewon-04 and Fenrir-18: **2 paired fixtures / 4 games**, all wins, no errors;
+  8.3–16.5 s/game, 48.6 s total with overhead. All four saved replays passed the
+  nine extraction checks (36 zero residuals). This tiny, ordered prefix is not a
+  strength estimate; no ledger weight or frontier change follows.
+- Four of four games differ between arena and canonical replay measurements.
+  Concrete same-game example, 09 vs Fenrir: arena intake r100 **81**, replay **86**;
+  arena units/length r100 **14/35**, replay **13/33**. The arena infers intake from
+  a dragon's later input and sums actors at their turn; replay extraction counts
+  events and round-start material. Source inspection explains why the estimands
+  differ; no claim that one universal offset reconciles them. Preserve both raw
+  sources and re-score the same saved games. Do not silently feed changed metrics
+  into historical gate thresholds. No historical accept/hold flips inferred.
+- `campaign.py`: serial, bounded, paired fixture resumption, frozen candidate and
+  opponent hashes, map/reference/arena hashes and toolkit version; replay hashes,
+  both-team errors, exclusive campaign lock, atomic result index, pending-result
+  recovery. A failure or orphan replay stops blind reruns for inspection.
+- `report.py`: canonical extraction cached by analysis-source and replay hashes,
+  attribution/bookkeeping checks, coverage, per-fixture measurement discrepancies.
+  Incomplete coverage produces **no gate verdict**. Complete panels permit the
+  inherited arena mean-form diagnostic only; all other gate requirements remain.
+- Seven no-game tests pass: recovery before/after replay publication and after
+  index publication, corrupt/misattributed/error/source-mismatched evidence,
+  duplicates, interrupted index writes, and refusal to rerun an orphan replay.
+  No shared bot/tool source changed. `PYTHONPYCACHEPREFIX=/tmp/expedition-pycache`
+  avoids macOS's default compiled-Python cache outside the allowed folder.
+
+### Next runnable action and continuation contract
+
+Use **campaign.py**, not the older panel.py launcher, for all new games. Queue:
+09 mouth, 08 symmetry, 06 crowding, four risk parameters, then all five sparsity
+settings. Seed 1 covers both panels before seeds 2–3; every candidate fixture is
+paired with the reusable parent. Freeze/validate sources on every continuation;
+never combine changed sources. An active lock means leave that batch alone.
+
+```sh
+PYTHONPYCACHEPREFIX=/tmp/expedition-pycache .venv/bin/python bots/expedition-00-hb540-control/campaign.py
+PYTHONPYCACHEPREFIX=/tmp/expedition-pycache .venv/bin/python bots/expedition-00-hb540-control/campaign.py --execute --minutes 20 --max-games 24
+PYTHONPYCACHEPREFIX=/tmp/expedition-pycache .venv/bin/python bots/expedition-00-hb540-control/report.py --candidate expedition-09-mouthroute
+PYTHONPYCACHEPREFIX=/tmp/expedition-pycache .venv/bin/python bots/expedition-00-hb540-control/test_campaign.py
+```
+
+Live, untracked evidence: `build/expedition/replay-panels/`, `progress.json`, and
+`<candidate>-report.json`; pilot log `build/expedition/replay-pilot.log`, audit log
+`build/expedition/replay-audit.log`. Reports are snapshots; read the row counts
+for current coverage. Contracts give full hashes; parent prefix `d7ba8adac780`,
+mouth prefix `4876038b4978`. Generated replays/indices/cache remain out of Git.
+
+At each experimental stage, inspect changed findings since the preceding pass,
+reconcile the existing proposals below, and update the ranked ten. Finish
+canonical/arena sensitivity, tempo, opening percentiles and guard reporting
+before an accept proposal. Neither a one-seed screen nor native CPU timing is
+sandbox acceptance. No new independent strategy result in this infrastructure
+pass: **all proposed weights and ranked ten below remain unchanged**. Rows
+reviewed here: L21/L29/L37 (measurement/gate), L40 (paired pilot still incomplete).
 
 ## First-pass experiment contract
 
@@ -75,7 +143,7 @@ Recorded inputs: `build/ra/golden/ares06-schooltime-A-1.jsonl` and
 `build/cx/golden/{portals-B-1,trauma-B-1}/yuna-v03-core.jsonl.gz`.
 Open-loop replay parity verifies implementation, not closed-loop strength.
 
-### Pending desktop execution
+### Predeclared panel (execution superseded by pass 2 above)
 
 Predeclared panel: seed 1–3, both seats; pool = eight ZOO opponents × ten maps
 (**480 fixtures/arm**); gen = four Aline opponents × 29 `maps/new` and transposed
@@ -83,9 +151,11 @@ maps (**696/arm**). Exclude `maps/pub/*_rec` under D-029. Opponents and maps are
 read from `tools/rb/run.py` and `tools/rb/gate.py`; the dry run prints source-keyed
 output paths. There are 12 mechanism candidates plus one reusable parent:
 **15,288 games** for all complete panels, before the separate base ablation.
-Do not describe this whole scan as a 25-minute task or start it on the Mac implicitly.
+Do not describe this whole scan as a 25-minute task. The pass-2 continuation above
+authorizes bounded Mac execution and supersedes the original desktop-only plan.
 
-The bounded launcher defaults to a dry run and one worker. On the authorized host:
+The original launcher below is retained for provenance. **Use campaign.py above
+for new execution**, because these older launch commands do not retain replays:
 
 ```sh
 # Repeat a bounded invocation to resume; build output stays in Expedition's folder.
