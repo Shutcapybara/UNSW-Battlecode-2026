@@ -21,6 +21,8 @@ ap.add_argument('name'); ap.add_argument('feed_base_limit', type=int); ap.add_ar
 ap.add_argument('--area', type=int, default=1100, help='W*H threshold; 0 disables the size rule')
 ap.add_argument('--portals', type=float, default=4.0, help='portal edges per 100 seen cells')
 ap.add_argument("--min-seen", type=int, default=64, help="cells seen before the portal rule may fire")
+ap.add_argument("--max-span", type=int, default=0, help="portal rule only when W + H <= this (0 = any); Ares' onset already moves earlier with W + H on larger maps")
+ap.add_argument("--per-area", action="store_true", help="portal edges per 100 map cells (W*H), not per 100 seen cells: only grows with exploration, so local clusters cannot trip it")
 a = ap.parse_args()
 name, fb, base = a.name, a.feed_base_limit, a.base
 area = a.area if a.area > 0 else 1 << 30
@@ -36,7 +38,8 @@ s = s.replace(old, f'''    static constexpr int feed_base = 40;
     static constexpr int feed_base_limit = {fb};
     static constexpr int regime_area = {area};          // W * H at or above: large map
     static constexpr double regime_portals = {a.portals};     // portal edges per 100 seen cells at or above: portal-dense
-    static constexpr int regime_min_seen = {a.min_seen};''')
+    static constexpr int regime_min_seen = {a.min_seen};
+    static constexpr int regime_max_span = {a.max_span};   // portal rule only on maps with W + H at most this (0 = any)''')
 p.write_text(s)
 p = d / 'policy.hpp'; s = p.read_text()
 line = 'int feed_from = 500 - Params::feed_base - static_cast<int>((w.W + w.H) * Params::feed_k);'
@@ -46,9 +49,10 @@ helper = '''    // TT regime selector: large or portal-dense maps go to the roun
     bool limit_regime(const World& w) const {
         if (w.W * w.H >= Params::regime_area) return true;
         if (w.seen_count < Params::regime_min_seen) return false;
+        if (Params::regime_max_span > 0 && w.W + w.H > Params::regime_max_span) return false;
         int portals = 0;
         for (uint8_t k : w.ek) portals += k == EK_PORTAL;
-        return 100.0 * portals / w.seen_count >= Params::regime_portals;
+        return 100.0 * portals / DENOM >= Params::regime_portals;
     }
     int feed_from_regime(const World& w) const {
         int const base = limit_regime(w) ? Params::feed_base_limit : Params::feed_base;
@@ -56,6 +60,7 @@ helper = '''    // TT regime selector: large or portal-dense maps go to the roun
     }
 
     double lv_now(const World& w) const {'''
+helper = helper.replace('DENOM', '(w.W * w.H)' if a.per_area else 'w.seen_count')
 assert s.count('    double lv_now(const World& w) const {') == 1
 s = s.replace('    double lv_now(const World& w) const {', helper)
 p.write_text(s)

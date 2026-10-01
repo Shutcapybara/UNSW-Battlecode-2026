@@ -1,0 +1,39 @@
+name = "hb1-24-portal-small"
+lineage = "hb1"
+author = "claude/hb1"
+language = "c++"
+lineage_parent = "hb1-12-direction-prior"
+hypothesis = "hb1-12 cannot be uploaded (its zip is 17.1 MiB against the 4 MiB limit). The direction prior keeps most of its value with a smaller model: the first 540 boosting rounds of the same GBT (held-out direction accuracy ~0.843 vs 0.850 for all 2,345 rounds on the same rows)."
+mechanism = "One change vs hb1-12: the direction model is truncated to its first 540 rounds (same trees, same order, same encoding) and the unused hb1-01 model tables are dropped, so the upload zip fits 4 MiB. Prior weight and everything else unchanged."
+expected_change = "Uploadable. z1 panel vs Ares V06 close to hb1-12 (139-21, all death rates down)."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/bifrost-family.md",
+    "docs/skadi.md",
+    "docs/fenrir-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Restores high-effort target/flood/triple search and Fafnir size-matched threat support in C++. V05 and active V04 v83 remain untouched. Benchmark and sandbox CPU/TLE results are recorded in the V06 finding."
+# prior-weight sweep: hb1-14 with hb1_dir_lambda = 2.0
+
+# TT regime selector: feed_base 140 on large (W*H>=1073741824) or portal-dense (>=5.0 portal edges per 100 seen cells) maps, base hb1-17-prior-lam20 otherwise.
+# Endgame gate vs hb1-17: ACCEPT, +2.0 pp [+0.14, +3.84] over 704 paired fixtures (Portals +8.75 pp; other maps identical). z1 147-13 / 141-19.

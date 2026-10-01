@@ -630,3 +630,10 @@ threshold 5/100), tested on Portals over 10 seeds (`build/tt/mapduel/`, `run_pan
   0.0; Default −1.25 pp [−3.75, +1.25], with the rule firing in 46 of 160 Default games (local portal clusters).
   Overall +1.7 pp [−0.4, +3.8] → INCONCLUSIVE. hb1-22 tightens the rule (6 portal edges per 100 seen cells, at least
   150 cells seen); running on Portals and Default seeds 1–10.
+- hb1-22 (6/100 seen, ≥150 seen): Portals gain lost. hb1-23 (per map area): Default clean but Portals gain lost
+  (young dragons never see enough). **hb1-24 = hb1-21's rule only when W + H ≤ 56: endgame gate ACCEPT vs hb1-17,
+  +2.0 pp [+0.14, +3.84] over 704 paired fixtures; Portals +8.75 pp; everything else identical; z1 147–13 / 141–19;
+  uploadable.** Upload candidate. (`game_stats/runs/tt-endgame-hb1-24-vs-hb1-17.json`)
+- Disk filled (/ at 100 %, 2 GB free) during the hb1-24 s1 run; that run was redone cleanly after removing its
+  partial games. Freed the replays of the rejected hb1-22/23 and the determinism rerun (index rows kept). The main
+  consumer is `~/Documents/Projects/2026/melee_replays` (512 GB, not this lane).
