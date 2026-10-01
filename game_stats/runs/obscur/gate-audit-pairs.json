@@ -1,0 +1,158 @@
+[
+ {
+  "name": "verso-01 vs 00 (ACCEPT)",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "c0-hb-small~l1",
+   "verso-00-base"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "verso-00-base",
+   "maelle-02-features"
+  ]
+ },
+ {
+  "name": "cyc2 540 vs cyc0 (REJECT letter)",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "c3-big540",
+   "verso-p4-platform"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "c0-hb-small~l1",
+   "verso-00-base"
+  ]
+ },
+ {
+  "name": "verso-05 vs cyc2 (lane parent)",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "verso-05-hb800-prior",
+   "verso-05-hb800-prior"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "c3-big540",
+   "verso-p4-platform"
+  ]
+ },
+ {
+  "name": "gustave-07c vs 01 (HOLD)",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-rc/build/rc/runs",
+   "gustave-07c-mouthroute",
+   "gustave-07c-mouthroute"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-rc/build/rc/runs",
+   "gustave-01-nodevil",
+   "gustave-01-nodevil"
+  ]
+ },
+ {
+  "name": "gustave-08a vs 01 (REJECT)",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-rc/build/rc/runs",
+   "gustave-08a-mouth-flat07",
+   "gustave-08a-mouth-flat07"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-rc/build/rc/runs",
+   "gustave-01-nodevil",
+   "gustave-01-nodevil"
+  ]
+ },
+ {
+  "name": "gustave-04a vs 01 (REJECT)",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-rc/build/rc/runs",
+   "gustave-04a-sparsewide",
+   "gustave-04a-sparsewide"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-rc/build/rc/runs",
+   "gustave-01-nodevil",
+   "gustave-01-nodevil"
+  ]
+ },
+ {
+  "name": "maelle-04 vs 02 (REJECT)",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-maelle/build/maelle/runs",
+   "maelle-04-allycrowd",
+   "maelle-04-allycrowd"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-maelle/build/maelle/runs",
+   "maelle-02-features",
+   "maelle-02-features"
+  ]
+ },
+ {
+  "name": "maelle-03 vs 02 (REJECT)",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-maelle/build/maelle/runs",
+   "maelle-03-foodfree",
+   "maelle-03-foodfree"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-maelle/build/maelle/runs",
+   "maelle-02-features",
+   "maelle-02-features"
+  ]
+ },
+ {
+  "name": "verso-06 vs 05 (REJECT)",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "verso-06-hb800-moredata",
+   "verso-06-hb800-moredata"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "verso-05-hb800-prior",
+   "verso-05-hb800-prior"
+  ]
+ },
+ {
+  "name": "verso-05 vs cyc0",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "verso-05-hb800-prior",
+   "verso-05-hb800-prior"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "c0-hb-small~l1",
+   "verso-00-base"
+  ]
+ },
+ {
+  "name": "alicia-03 vs 01 (REJECT)",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-alicia/build/rc/runs",
+   "alicia-03-es-curve-pool",
+   "alicia-03-es-curve-pool"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-alicia/build/rc/runs",
+   "alicia-01-nodevil",
+   "alicia-01-nodevil"
+  ]
+ },
+ {
+  "name": "c0x-both-sf vs cyc0",
+  "cand": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "c0x-both-sf",
+   "verso-p2-platform"
+  ],
+  "parent": [
+   "/home/alik/Documents/Projects/2026/wt-verso/build/verso/runs",
+   "c0-hb-small~l1",
+   "verso-00-base"
+  ]
+ }
+]
