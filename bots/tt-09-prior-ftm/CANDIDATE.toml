@@ -1,0 +1,35 @@
+name = "tt-09-prior-ftm"
+lineage = "tt"
+author = "claude/tt"
+language = "c++"
+lineage_parent = "hb1-14-prior-r540"
+hypothesis = "Heartbreaker's learned steering, used as a prior inside Ares's search, was the best single change measured (hb1-14: 141-19 vs Ares V06's 122-38). The #2 team's steering (forgot to mention, held-out direction 0.750) may be a better prior."
+mechanism = "One change vs hb1-14: the direction prior is forgot to mention's scaled direction GBT (first 540 rounds) instead of Heartbreaker's; lambda and everything else unchanged. Uploadable."
+expected_change = "z1 panel vs Ares V06 at or above hb1-14."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/bifrost-family.md",
+    "docs/skadi.md",
+    "docs/fenrir-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Restores high-effort target/flood/triple search and Fafnir size-matched threat support in C++. V05 and active V04 v83 remain untouched. Benchmark and sandbox CPU/TLE results are recorded in the V06 finding."
