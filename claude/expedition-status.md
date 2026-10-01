@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–5
+# Expedition — H-1 hypothesis steward, passes 1–6
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -14,6 +14,153 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 6 — audit the new S1 handover evidence (2026-10-01)
+
+Resumed from `1a4887f8b`. Batch 007 finished 24 games in 523.0 seconds; all 148
+saved games passed canonical attribution/bookkeeping. Batch 008 resumed with
+one worker, up to 96 games in the same 20-minute admission budget. The source
+contracts and reference hashes still match. Portals is materially slower than
+recent maps, so the time budget, not the game cap, may bind.
+
+A new, untracked lane finding appeared:
+`docs/findings/2026-10-01-s1-next-steps.md`. It remains untouched and provisional.
+Audited source SHA-256:
+`547d56e1344edcc97aada2803cd849353feb939630d332c42a3a77ff95f73210`.
+Unlike another small Expedition prefix, its completed saved panel supports a
+substantial new reconciliation. No extra games were run for this audit.
+
+### What the saved data actually establish
+
+Read `build/s1/tmp/graft/g01` through `g04` portable tempo extracts and the
+`atlas-panel` rows in `build/s1/local/sides/*.parquet`. Each graft has exactly the
+same **120 unique fixtures**, seed 1, ten maps × six opponents × two seats, as
+both hb1-04 and hb1-12. Identity pairing masks only the candidate bot token in
+the fixture basename; all per-map cells contain 12 games.
+
+| Policy | Wins / 120 | Better / worse than hb1-04 | Two-sided exact sign-test p |
+|---|---:|---:|---:|
+| hb1-04 mimic | 77 | — | — |
+| hb1-12 direction-prior reference | 101 | — | — |
+| g01, handover r150 | 101 | 26 / 2 | 0.0000030324 |
+| g02, handover r250 | 95 | 21 / 3 | 0.00027716 |
+| g03, handover r350 | 94 | 19 / 2 | 0.00022125 |
+| g04, handover r100 | 97 | 23 / 3 | 0.000087976 |
+
+The reported arithmetic checks out. g01 versus hb1-12 has 11 better / 11 worse
+fixtures. These are win-count ties, not equivalence tests. The sign tests treat
+fixtures as independent; they do not account for map clustering or selection of
+the best among four handover settings. This is one-seed pool evidence, not D-032
+acceptance, independent-seed confirmation, OOS transfer or upload readiness.
+
+The portable extracts contain names, outcomes and curves, not complete original
+runtime-error logs or frozen opponent source manifests. Their hashes preserve
+the audited evidence; they do not retroactively certify full run provenance or
+sandbox CPU. This audit verifies reported arithmetic and selected feature parity.
+
+**Opening boundary correction:** matched S1 series supply 31 checkpoints r0–150
+for income and loss on 120 fixtures: 7,440 scalar comparisons per graft. g02/g03
+match hb1-04 exactly. g01 differs in **69 values, all at r150**; every sampled
+checkpoint before r150 matches. Its mean tempo delta is **+0.00258196 rounds**,
+which displays as +0.00. Thus the reported rounded tempo is correct, while
+“identical opening through r150” is too strong: Ares acts at the boundary. This
+does not remove the whole-game win gain. It also does not prove every action or
+trajectory identical; this audit checked the saved income/loss curves.
+
+**Mechanism attribution:** inspected g01's `main.cpp`: before r150 it runs the
+mimic while updating Ares memory; at r150 it switches the **entire policy** to
+Ares. This changes mid-game decisions, later split cutoff and crown/feeding
+logic together. “The handover works on this panel” is supported; “crown feeding
+alone causes the gain” is not isolated. The r150 point estimate being better
+than r250/r350 is itself a reason to test the mid-game contribution.
+
+**Packaging correction:** hb1-14 supplies a compact direction prior to Ares
+search (`hb1_dir_lambda`), whereas hb1-04/g01 use a full mimic policy and its
+wrappers. Substituting the former is a behavioral transfer experiment, not just
+packing the same graft into 4 MiB. No uploadable-graft claim is justified yet.
+
+### Expedition Portals slice: outcome and economy disagree
+
+Completed all 16 paired seed-1 Portals fixtures. Parent 01 won **10/16**, mouth
+09 **13/16**: four paired improvements and one regression (two-sided sign-test
+p = 0.375). Five discordances are insufficient to establish a win gain. The
+latest canonical audit snapshot validates **176 games / 88 pairs** overall,
+including all five completed map slices; batch 008 is still running.
+
+| Portals measure through r150 | Parent 01 | Mouth 09 |
+|---|---:|---:|
+| Transits | 2,104 | 1,543 |
+| Transits followed by death within three rounds | 908/2,104 = 43.16% | 608/1,543 = 39.40% |
+| Ally head-on deaths / dragon turns | 404/37,805 = 10.686 per 1k | 252/31,667 = 7.958 per 1k |
+| Own goals / dragon turns | 1,567/37,805 = 41.450 per 1k | 1,075/31,667 = 33.947 per 1k |
+| Newborn deaths / splits | 804/1,945 = 41.34% | 518/1,442 = 35.92% |
+| Mean total length r150 | 66.625 | 64.375 |
+| Candidate − parent opening tempo | — | **+3.098 rounds (slower)** |
+
+Gross economy delta is **−0.201548 arena / −0.207703 replay** under the same
+frozen normalisation. Pearls r50 fall by 5.625 (mean field percentile −0.047072);
+mean total length r100 falls 52.625→43.625. Thus lower churn and more wins in
+this prefix coexist with lower intake and opening material. This is a useful
+**L29/L40 gate tension**, not evidence to waive the economy or material guards.
+The fixed panel, independent seeds and existing full-gate requirements remain.
+
+All parent games hit the round limit (16 longest-decided). The candidate has
+15 round-limit games (14 longest, one total) and one elimination loss. Mean own
+longest at r499 falls 29→26.6875, so the win difference cannot be described as
+simply growing a larger own crown. The candidate mean carries the terminal
+state forward for its one early-ending game. Comparative opponent effects and
+paired trajectories would be needed for a causal account. **L40 stays 0.5**.
+
+Evidence: `build/expedition/phase-portals.log`, `portals-terminal.json`,
+`audit-008-mid.log`, and
+`build/expedition/replay-panels/expedition-09-mouthroute-z1-portals-phase.json`.
+Phase/reference hashes are unchanged from pass 5. Next: complete batch 008,
+validate its full output, and audit Queen of Spades/Schooltime at complete
+map/seed boundaries; continue the predeclared mechanism queue.
+
+### Ledger proposals and the next decisive tests
+
+- **L03 0.7→0.7:** add direct evidence for a useful fixed-round policy handover.
+  State-conditioned handover remains untested. Raise its decisive-test priority:
+  same crown settings, fixed r150 versus an actor-observable state trigger,
+  independent seeds and structural OOS maps. No map-name switch.
+- **L39 0.7→0.7; L15 0.3→0.3:** conversion remains plausible, but the whole-policy
+  switch is not a crown-only ablation or a test of decaying-consensus crown
+  location. Ask S1/TT to compare g01 with only its post-handover crown/feeding
+  disabled, keeping the other Ares decisions; retain elimination and total-material
+  guards and report material-leading round-limit losses. Owners are recommendations,
+  not dispatched tasks. This is the updated rank-3 test below.
+- **L31 0.5→0.5; L32 0.4→0.4:** a clock-driven whole-policy switch does not test
+  per-dragon state modes, hysteresis, or belief-weighted evaluation. Do not credit
+  those mechanisms with this gain.
+- **L27 0.8→0.8:** retain the distinction between a learned direction prior and a
+  full mimic. The existing L16 increase proposal remains unchanged; no second
+  step for the same teacher/transfer family.
+- **L36 0.8→0.8:** new split-stall tables agree with our earlier cached audit:
+  .107/.089−1 = 20.2% more intake per turn in r20–39; high split rates conditional
+  on eligibility do not mean a reluctance to split. The “us” cohort is mixed
+  historical team-7 bots, not exact-source Expedition 01. Keep rank 1's matched
+  source/cohort test; timing/foraging causality is still an intervention question.
+- **L37 0.8→0.8:** the authenticated atlas supersedes “the best local niche has
+  no live occupants”: it overlaps the roughly 1960–2040-Elo group. Verified
+  **65,412/81,186 = 80.57%** authentic side-games, with 3,006 decoy flags. Treat
+  decoy and unranked-variant labels separately. A future authenticated reference
+  may restore appropriate SSS/Cutlery samples, but never rebuild this experiment's
+  frozen reference in place. Guarded tempo still measures an opening, not all-game
+  performance; the graft's win gain and near-zero tempo change illustrate that.
+
+Audit artifacts: `build/expedition/graft-audit.json`, `graft-opening-parity.json`,
+`graft-parent-rows.json`, and `s1-next-steps-audited.md`. Extract-set fingerprint:
+`745250a3b38d4c5617a9663191bb6522cf5cbe32b881bb11d6c822c87d5637e4`;
+parent-row fingerprint:
+`5a4cea6787851dc1259c640cb57718c9a17022aeba96f2646b17256d28e053d1`.
+The small reproducibility scripts are `build/expedition/audit_graft{,_opening}.py`.
+No replay payloads, cache state, or other lane edits are staged.
+
+**Ranked ten:** updated below to include L03's now-cheap handover test, displacing
+L12 from the issue list (its prepared Expedition experiment remains queued).
+Weights themselves do not change in this pass. Rows reviewed: **L03, L15, L16,
+L27, L31, L32, L36, L37, L39, L40**. No historical gate verdict is rewritten.
 
 ## Pass 5 — third portal-map slice and bounded throughput (2026-10-01)
 
@@ -549,16 +696,17 @@ Owners are recommendations only; no messages or jobs were sent to other lanes.
 |---:|---|---:|---|---|
 | 1 | L36 opening components | .8×5×5 = 20.0 | Exact-source split-eligibility/intake decomposition, r25–50, ranked controls and matched fixtures | S1 + Expedition |
 | 2 | L37 map specialism / gate | .8×4×5 = 16.0 | Re-score paired archives with equal/old-Q2/clean-Q2 weights and cluster intervals; list flips | Expedition + R4 |
-| 3 | L39 conversion | .7×5×4 = 14.0 | TT05 vs HB14 against converting opponents; all-game outcome and feeding-attribution guards | TT |
+| 3 | L39 conversion | .7×5×4 = 14.0 | g01 vs identical post-r150 Ares with crown/feeding disabled; elimination, material and round-limit guards | S1 + TT |
 | 4 | L38 symmetry | .7×4×4 = 11.2 | Expedition-08 vs 01 on both panels, symmetry firing/detection and per-map openings | Expedition |
-| 5 | L27 direction prior | .8×4×3 = 9.6 | Same identity-free base and fixtures for HB540 vs Verso800, frozen features and budget | Verso |
-| 6 | L40 mouth loitering | .5×4×4 = 8.0 | Expedition-09 vs 01: ally head-on per transit, volume, economy/material guards | Expedition |
-| 7 | L29 churn metric | .8×3×3 = 7.2 | Same archived exploration-cut fixtures, gross economy vs net-income tempo and corpse source | S1/R4 |
-| 8 | L05 fixable leaks | .8×3×3 = 7.2 | Rebuild trapped/newborn/portal ledger on 01; check whether prior already removed each target | R3 |
-| 9 | L02 selective caps | .5×3×4 = 6.0 | Predeclared five-point Expedition-07 scan; equal-source parent, phase and CPU reporting | Expedition |
-| 10 | L12 target density | .3×4×4 = 4.8 | Expedition-06 ally-only consumer; compare r100 retention with off-pool r250 cost | Expedition |
+| 5 | L03 phase handover | .7×4×4 = 11.2 | Fixed r150 vs actor-observable state trigger, same crown setting; independent seeds and structural OOS | S1 + TT |
+| 6 | L27 direction prior | .8×4×3 = 9.6 | Same identity-free base and fixtures for HB540 vs Verso800, frozen features and budget | Verso |
+| 7 | L40 mouth loitering | .5×4×4 = 8.0 | Expedition-09 vs 01: ally head-on per transit, volume, economy/material guards | Expedition |
+| 8 | L29 churn metric | .8×3×3 = 7.2 | Same archived exploration-cut fixtures, gross economy vs net-income tempo and corpse source | S1/R4 |
+| 9 | L05 fixable leaks | .8×3×3 = 7.2 | Rebuild trapped/newborn/portal ledger on 01; check whether prior already removed each target | R3 |
+| 10 | L02 selective caps | .5×3×4 = 6.0 | Predeclared five-point Expedition-07 scan; equal-source parent, phase and CPU reporting | Expedition |
 
-Next below the cut: L04 .3×3×5=4.5 (the four prepared parameter ports are cheap
+Next below the cut: L12 .3×4×4=4.8 (ally-only prior transfer, already queued);
+L04 .3×3×5=4.5 (the four prepared parameter ports are cheap
 once parent panels exist). L13 remains untested, not silently settled. L31/L32/L33
 remain live but cost more and lack a first hard-mode success; no GPU-heavy L34
 training is scheduled on this Mac.
