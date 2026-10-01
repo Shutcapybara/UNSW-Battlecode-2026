@@ -1,0 +1,18 @@
+name = "verso-01-hb-dir-prior"
+lineage = "verso"
+author = "claude-opus-5.5/verso"
+language = "c++"
+lineage_parent = "verso-00-base"
+hypothesis = "X-1 cycle 0: a direction head fitted on a strong team's first steps (v5 actor-local features only), used as a prior inside Ares's path scoring, improves steering on the lanes' base (late cap, map-identity terms off) as hb1-12 did on V06, and holds off-pool."
+mechanism = "lam_dir * log p_dir(first step) added to the OK and DIVE path scores, lam_dir = 1.0 fixed before screening; p_dir = 300-round, 63-leaf GBT on Heartbreaker's corpus moves (held-out 0.829), embedded as 8-byte nodes (verso_heads.hpp, 0.9 MB of nodes). Everything else is verso-00-base."
+expected_change = "Win rate and material up, every self-inflicted death rate down; economy up on the pool; CPU max 11.5 M points/turn."
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-10-01-verso-three-tier-loop.md", "claude/verso-status.md"]
+summary = "D-032 ACCEPT vs verso-00-base, seeds 1-3. Pool (480 paired): win 0.698 -> 0.848 (+0.150 [+0.110, +0.188]), econ~ +0.052 [+0.019, +0.081], units@100 +0.193, length@100 +0.151, wall/self/ally-body/ally-head-on deaths all down 17-32 %. Generalisation (744 paired): win 0.568 -> 0.618 (+0.050 [+0.012, +0.089]), econ~ +0.013 [-0.017, +0.042], units@100 +0.305, length@100 +0.327. Sandbox CPU max 11.53 M points/turn. Not registered (lead's call)."
+
+[activation_contract]
+kind = "legacy_none"
+note = "learned prior on every move; identity by fingerprint"

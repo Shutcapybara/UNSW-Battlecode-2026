@@ -1,0 +1,18 @@
+name = "verso-02-hb540-prior"
+lineage = "verso"
+author = "claude-opus-5.5/verso"
+language = "c++"
+lineage_parent = "verso-01-hb-dir-prior"
+hypothesis = "hb1-14's off-pool edge over verso-01 comes from its larger direction prior (540 boosting rounds, held-out 0.843), not from V06's search caps or its map-identity terms; on the Verso base the larger prior keeps the pool and wins off-pool."
+mechanism = "One change vs verso-01: the embedded dir head is the first 540 rounds (255 leaves) of the full Heartbreaker GBT (c0-hb, 2,251 rounds) instead of the 300-round 63-leaf model; lam_dir = 1. Built on verso-p4-platform (phase knobs, second head slot, late-phase ramp), all inert at the defaults."
+expected_change = "Pool unchanged; generalisation win and economy up."
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-10-01-verso-three-tier-loop.md", "claude/verso-status.md"]
+summary = "vs verso-01 (arm c0-hb-small~l1), seeds 1-3: pool (480 paired) win 0.848 = 0.848, econ~ -0.001 [-0.028, +0.026]; generalisation (744 paired) win 0.618 -> 0.716 (+0.097 [+0.064, +0.130]), econ~ +0.107 [+0.081, +0.135], every checkpoint +0.09..+0.13, units@100 +0.179, length@100 +0.130; tempo pool -1.0 [-2.1, +0.1], gen -6.3 [-8.4, -4.2] rounds. D-032 verdict by the letter: REJECT (the pool lower bounds, econ~ -0.028 and win -0.032, sit below the accept line although both point estimates are 0). Upload zip 3.68 MiB. Not registered."
+
+[activation_contract]
+kind = "legacy_none"
+note = "learned prior on every move; identity by fingerprint"

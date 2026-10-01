@@ -1,0 +1,18 @@
+name = "verso-00-base"
+lineage = "verso"
+author = "claude-opus-5.5/verso"
+language = "c++"
+lineage_parent = "maelle-02-features"
+hypothesis = "X-1 platform: the runtime for learned tiers (feature schema, compiled-tree heads, per-turn dump, exploration) on the lanes' base (lune-r1-07 late cap, map-identity terms off, SF-1 state module)."
+mechanism = "verso.hpp: VERSO_POLICY head blob / embedded heads, VERSO_PARAMS (lam_dir, beta_q, eps), VERSO_DUMP; policy.hpp scores every path by hand first, then adds the learned first-step terms and selects. No head, no dump, eps = 0: behaviour-identical to maelle-02-features at zero weights (= maelle-01-nodevil)."
+expected_change = "none at the compiled defaults (platform only; not an accept candidate)"
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-10-01-verso-three-tier-loop.md", "claude/verso-status.md"]
+summary = "Golden replay of maelle-01-nodevil's transcripts (schooltime A, portals B, trauma B, devil A, big_empty B; seed 1): 61,667 turns, 0 divergent; with the dump on, 0 divergent. 8 pool fixtures re-played: metrics identical to maelle-02-features' recorded runs."
+
+[activation_contract]
+kind = "legacy_none"
+note = "platform; identity by fingerprint"
