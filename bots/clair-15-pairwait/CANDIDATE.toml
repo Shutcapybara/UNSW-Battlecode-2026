@@ -1,0 +1,25 @@
+name = "clair-15-pairwait"
+lineage = "clair"
+author = "claude/clair"
+language = "c++"
+lineage_parent = "hb1-17-prior-lam20"
+hypothesis = "sending-side pair-wait warding (L33 plain form; S-1 Q4 own-traffic)"
+mechanism = "an ally head that stood on a portal-mouth cell last turn and is gone from view now stamps that mouth busy for 3 rounds; our own dive there is discounted x0.6. Targets same-pair doubles (ours 0.37 of portal deaths vs top ten 0.28) and landings into own traffic - the leak Tests 2/3 showed is the binding guard on this base."
+expected_change = "H-1 pass 2 (fresh-mechanism mandate + risk mandate); D-032 panels vs hb1-17-prior-lam20 through tools/clair/lane.py."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+  "docs/hub/HYPOTHESES.md",
+  "docs/analysis/BENCHMARKS.md",
+  "claude/clair-status.md",
+]
+summary = "H-1 pass 2."

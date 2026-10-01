@@ -1,0 +1,25 @@
+name = "clair-11-trapw20-unseen3"
+lineage = "clair"
+author = "claude/clair"
+language = "c++"
+lineage_parent = "hb1-17-prior-lam20"
+hypothesis = "stack of the two reopened levers on the lambda-2 base"
+mechanism = "trap_weight 30->20 AND unseen_value 5->3 vs hb1-17-prior-lam20 (two compiled knobs; the stack question: do the economies add, do the guards compound?)."
+expected_change = "H-1 pass 2 (fresh-mechanism mandate + risk mandate); D-032 panels vs hb1-17-prior-lam20 through tools/clair/lane.py."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+  "docs/hub/HYPOTHESES.md",
+  "docs/analysis/BENCHMARKS.md",
+  "claude/clair-status.md",
+]
+summary = "H-1 pass 2."
