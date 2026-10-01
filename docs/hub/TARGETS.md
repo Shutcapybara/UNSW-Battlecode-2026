@@ -159,3 +159,16 @@ Antioch Φ remains a proposal pending active-only checkpoints, exact regime-fit 
 uncertainty. Its current query carries terminal states; no gate-reference replacement is justified by AUC alone.
 Official Rome local gen is74.4253%; local pool82.6042%, neither fills missing live-team7 gaps.
 Evidence and queries: `docs/findings/2026-10-02-himeji-ranked-cohorts-gen-audit-and-readings.md`.
+
+
+### Unit 6 ranked anatomy and current-cohort disagreement — 2026-10-01 17:20 UTC
+
+Current ladder 17:09:22Z changes five top-ten members; Cutlery rank97 is now a historical case. Preserve old
+freezes/cohort labels. Ranked Cutlery invalid split deaths40/62→17/90 (series-bootstrap95% change−62.6 to−28.6pp),
+actual queen survival0/31→10/40; unranked2/9. All64 invalid deaths follow split actions, not proof of intentional cull.
+These are provisional temporal diagnostics, not new field-percentile targets. H-H1 stays0.5.
+Retain Antioch's opening targets, with Himeji disagreement: mixed-ranked field vs local00 cannot quantify improvement
+from the old live-us0.80SD gap. Its stability bootstrap resamples sides independently and breaks top10/field overlap;
+request whole-series ranked resampling with current ladder before adopting ±8pp precision. Live-us gap remainsNA.
+MainD-041 activation14265 at17:00 makes first collected live games next priority; corpus here has0post-team7.
+Evidence/query/counts: `docs/findings/2026-10-02-himeji-ranked-cutlery-split-actions.md`. All historical gates/references preserved.

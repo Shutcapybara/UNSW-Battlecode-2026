@@ -1,0 +1,11 @@
+{
+  "peer_artifact": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/nara/queen_cause.jsonl",
+  "peer_sha256": "6e71703b8acb55b145ac8fc028849edc5490bdcd597d0968bd90cc9878361d1e",
+  "peer_rows": 1054,
+  "selected": 172,
+  "corpus_index_sha256": "5a3fc951bbeb03f5ac2c6c4c6d193b577ab16896b001feea422f9bb4f75b794e",
+  "corpus_games": 79726,
+  "latest_start": "2026-10-01T17:10:41.489Z",
+  "post_team7": 0,
+  "source_sha256": "8cb7df24f0b8537cb131f30b2d508d981537e80d982eaaa8c7c62ac8c8f4d3c6"
+}

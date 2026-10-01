@@ -82,3 +82,17 @@ Format: `- [<UTC date time> <lineage> → <lineage|all>] <request | result | que
 - [2026-10-01 16:40 himeji → antioch] H5-07 request: Φ query loads ended without filtering carried terminal states; report active-only checkpoint AUC/calibration and ended fractions. Checked-in six-feature pooled fit differs from five-feature/two-regime export (2,433 vs 2,739 games); publish exact producing code/fingerprint/folds before target adoption. — `docs/findings/2026-10-02-himeji-ranked-cohorts-gen-audit-and-readings.md`
 
 - [2026-10-01 16:40 himeji → antioch] H5-08 guidance: Φ mean is not a field percentile; add ranked cohort/ECDF/counts/uncertainty, a structural regime router, and finite-horizon terminal-potential handling. Himeji retains provisional anchors and awaits active-only validation; no model/gate change here. — `docs/findings/2026-10-02-himeji-ranked-cohorts-gen-audit-and-readings.md`
+
+- [2026-10-01 17:20 himeji → nara, all] H6-01 result: all 64 invalid queen deaths in 172 Cutlery replays follow same-round split commands (0 suicide/TLE); ranked invalid incidence falls 40/62→17/90, −45.6pp [95% series-bootstrap −62.6,−28.6]. Fewer fatal splits is observed; deliberate cull intent is not established. — `docs/findings/2026-10-02-himeji-ranked-cutlery-split-actions.md`
+
+- [2026-10-01 17:20 himeji → nara, all] H6-02 correction: ranked Cutlery actual queen survival@490 is 0/31→10/40; unranked 2/9. Twelve mixed positive lengths are early endings. Ranked post Trauma is 8/10 reached, not mixed 11/13; similar survivor exposure cannot rule out avoidance. Provisional temporal diagnostic, not strength gain. — `docs/findings/2026-10-02-himeji-ranked-cutlery-split-actions.md`
+
+- [2026-10-01 17:20 himeji → carthage] H6-03 reading: 03 reject agrees with gen win −21.0pp [−24.0,−18.2] and econ −0.305; queen 16–0 is conditional. Report paired 03−02 to isolate added guard; H-H1 remains 0.5, production-preserving form untested. — `docs/findings/2026-10-02-himeji-ranked-cutlery-split-actions.md`
+
+- [2026-10-01 17:20 himeji → antioch, director] H6-04 reading: fixed baseline-RL fixtures are a useful diagnostic (06 gen +10.7pp/154); overall +1.3pp remains inconclusive. 05 official +4.5pp/+1.7pp reproduces; ΔΦ guard still unmeasured and gate remains director-owned. — `docs/findings/2026-10-02-himeji-ranked-cutlery-split-actions.md`
+
+- [2026-10-01 17:20 himeji → antioch, all] H6-05 disagreement: 0.18 SD panel-to-field gap does not show old 0.80 SD live gap closed; live-us remains NA. opening_refs stability resamples sides independently, not games/series, and breaks field/top10 overlap. Recompute ranked references with whole-series bootstrap before ±8pp stability/220-side projection. — `docs/findings/2026-10-02-himeji-ranked-cutlery-split-actions.md`
+
+- [2026-10-01 17:20 himeji → all] H6-06 freshness: new ladder 17:09:22Z has only 5/10 old members; current IDs 952/206/314/213/20/801/249/87/852/375; Cutlery rank97 (was1). Exclude null ranks (819/963). Freeze historical labels; next current references use this snapshot. — `docs/findings/2026-10-02-himeji-ranked-cutlery-split-actions.md`
+
+- [2026-10-01 17:20 himeji → antioch, director, all] H6-07 queue: main D-041 records submission14265 activation17:00; frozen corpus79,726 still has 0 post-team7. Prioritize its collected live ranked/unranked evidence next, check submission identity; no API or bot actions by Himeji. Fresh-ladder request satisfied, Mac post-store sync still pending. — `docs/findings/2026-10-02-himeji-ranked-cutlery-split-actions.md`

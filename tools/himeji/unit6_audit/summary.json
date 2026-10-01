@@ -1,0 +1,980 @@
+{
+  "n": 172,
+  "groups": [
+    {
+      "ranked": true,
+      "after13": false,
+      "n": 62,
+      "series": 14,
+      "maps": {
+        "Slithery Fight": 7,
+        "Schooltime": 5,
+        "Trauma": 9,
+        "Trophy": 10,
+        "Devil": 6,
+        "Autarky": 9,
+        "Default": 4,
+        "Portals": 5,
+        "Prisoners Dilemma": 3,
+        "Queen Of Spades": 4
+      },
+      "deaths": 61,
+      "causes": {
+        "invalid": 40,
+        "h2h": 19,
+        "survived_end": 1,
+        "body": 2
+      },
+      "invalid_actions": {
+        "split": 40
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 40,
+      "reach490": 31,
+      "alive490": 0,
+      "clipped_positive": 1,
+      "positive_early_end": 1,
+      "rl_n": 31,
+      "rl_final_alive": 0,
+      "wins": 43
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "n": 90,
+      "series": 19,
+      "maps": {
+        "Slithery Fight": 11,
+        "Schooltime": 8,
+        "Default": 10,
+        "Trauma": 11,
+        "Trophy": 12,
+        "Portals": 5,
+        "Devil": 10,
+        "Prisoners Dilemma": 10,
+        "Queen Of Spades": 6,
+        "Autarky": 7
+      },
+      "deaths": 74,
+      "causes": {
+        "invalid": 17,
+        "h2h": 34,
+        "survived_end": 16,
+        "self": 22,
+        "body": 1
+      },
+      "invalid_actions": {
+        "split": 17
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 17,
+      "reach490": 40,
+      "alive490": 10,
+      "clipped_positive": 16,
+      "positive_early_end": 6,
+      "rl_n": 40,
+      "rl_final_alive": 10,
+      "wins": 32
+    },
+    {
+      "ranked": false,
+      "after13": false,
+      "n": 0,
+      "series": 0,
+      "maps": {},
+      "deaths": 0,
+      "causes": {},
+      "invalid_actions": {},
+      "invalid_tle": 0,
+      "invalid_same_round": 0,
+      "reach490": 0,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 0,
+      "rl_final_alive": 0,
+      "wins": 0
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "n": 20,
+      "series": 3,
+      "maps": {
+        "Schooltime": 3,
+        "Autarky": 2,
+        "Default": 2,
+        "Portals": 2,
+        "Trauma": 2,
+        "Trophy": 2,
+        "Devil": 2,
+        "Queen Of Spades": 2,
+        "Prisoners Dilemma": 2,
+        "Slithery Fight": 1
+      },
+      "deaths": 13,
+      "causes": {
+        "survived_end": 7,
+        "invalid": 7,
+        "h2h": 5,
+        "body": 1
+      },
+      "invalid_actions": {
+        "split": 7
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 7,
+      "reach490": 9,
+      "alive490": 2,
+      "clipped_positive": 7,
+      "positive_early_end": 5,
+      "rl_n": 9,
+      "rl_final_alive": 2,
+      "wins": 16
+    }
+  ],
+  "map_groups": [
+    {
+      "ranked": true,
+      "after13": false,
+      "map": "Autarky",
+      "n": 9,
+      "series": 9,
+      "maps": {
+        "Autarky": 9
+      },
+      "deaths": 9,
+      "causes": {
+        "invalid": 9
+      },
+      "invalid_actions": {
+        "split": 9
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 9,
+      "reach490": 6,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 6,
+      "rl_final_alive": 0,
+      "wins": 8
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "map": "Default",
+      "n": 4,
+      "series": 4,
+      "maps": {
+        "Default": 4
+      },
+      "deaths": 4,
+      "causes": {
+        "invalid": 1,
+        "h2h": 2,
+        "body": 1
+      },
+      "invalid_actions": {
+        "split": 1
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 1,
+      "reach490": 1,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 1,
+      "rl_final_alive": 0,
+      "wins": 2
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "map": "Devil",
+      "n": 6,
+      "series": 6,
+      "maps": {
+        "Devil": 6
+      },
+      "deaths": 6,
+      "causes": {
+        "invalid": 5,
+        "h2h": 1
+      },
+      "invalid_actions": {
+        "split": 5
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 5,
+      "reach490": 0,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 0,
+      "rl_final_alive": 0,
+      "wins": 4
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "map": "Portals",
+      "n": 5,
+      "series": 5,
+      "maps": {
+        "Portals": 5
+      },
+      "deaths": 5,
+      "causes": {
+        "invalid": 4,
+        "body": 1
+      },
+      "invalid_actions": {
+        "split": 4
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 4,
+      "reach490": 5,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 5,
+      "rl_final_alive": 0,
+      "wins": 2
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "map": "Prisoners Dilemma",
+      "n": 3,
+      "series": 3,
+      "maps": {
+        "Prisoners Dilemma": 3
+      },
+      "deaths": 3,
+      "causes": {
+        "invalid": 3
+      },
+      "invalid_actions": {
+        "split": 3
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 3,
+      "reach490": 0,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 0,
+      "rl_final_alive": 0,
+      "wins": 1
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "map": "Queen Of Spades",
+      "n": 4,
+      "series": 4,
+      "maps": {
+        "Queen Of Spades": 4
+      },
+      "deaths": 4,
+      "causes": {
+        "h2h": 2,
+        "invalid": 2
+      },
+      "invalid_actions": {
+        "split": 2
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 2,
+      "reach490": 0,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 0,
+      "rl_final_alive": 0,
+      "wins": 4
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "map": "Schooltime",
+      "n": 5,
+      "series": 5,
+      "maps": {
+        "Schooltime": 5
+      },
+      "deaths": 5,
+      "causes": {
+        "h2h": 4,
+        "invalid": 1
+      },
+      "invalid_actions": {
+        "split": 1
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 1,
+      "reach490": 4,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 4,
+      "rl_final_alive": 0,
+      "wins": 4
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "map": "Slithery Fight",
+      "n": 7,
+      "series": 7,
+      "maps": {
+        "Slithery Fight": 7
+      },
+      "deaths": 7,
+      "causes": {
+        "invalid": 7
+      },
+      "invalid_actions": {
+        "split": 7
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 7,
+      "reach490": 7,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 7,
+      "rl_final_alive": 0,
+      "wins": 4
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "map": "Trauma",
+      "n": 9,
+      "series": 9,
+      "maps": {
+        "Trauma": 9
+      },
+      "deaths": 9,
+      "causes": {
+        "invalid": 8,
+        "h2h": 1
+      },
+      "invalid_actions": {
+        "split": 8
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 8,
+      "reach490": 8,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 8,
+      "rl_final_alive": 0,
+      "wins": 6
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "map": "Trophy",
+      "n": 10,
+      "series": 10,
+      "maps": {
+        "Trophy": 10
+      },
+      "deaths": 9,
+      "causes": {
+        "h2h": 9,
+        "survived_end": 1
+      },
+      "invalid_actions": {},
+      "invalid_tle": 0,
+      "invalid_same_round": 0,
+      "reach490": 0,
+      "alive490": 0,
+      "clipped_positive": 1,
+      "positive_early_end": 1,
+      "rl_n": 0,
+      "rl_final_alive": 0,
+      "wins": 8
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "map": "Autarky",
+      "n": 7,
+      "series": 7,
+      "maps": {
+        "Autarky": 7
+      },
+      "deaths": 7,
+      "causes": {
+        "self": 5,
+        "invalid": 2
+      },
+      "invalid_actions": {
+        "split": 2
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 2,
+      "reach490": 1,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 1,
+      "rl_final_alive": 0,
+      "wins": 2
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "map": "Default",
+      "n": 10,
+      "series": 10,
+      "maps": {
+        "Default": 10
+      },
+      "deaths": 8,
+      "causes": {
+        "h2h": 8,
+        "survived_end": 2
+      },
+      "invalid_actions": {},
+      "invalid_tle": 0,
+      "invalid_same_round": 0,
+      "reach490": 4,
+      "alive490": 0,
+      "clipped_positive": 2,
+      "positive_early_end": 2,
+      "rl_n": 4,
+      "rl_final_alive": 0,
+      "wins": 4
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "map": "Devil",
+      "n": 10,
+      "series": 10,
+      "maps": {
+        "Devil": 10
+      },
+      "deaths": 10,
+      "causes": {
+        "invalid": 2,
+        "h2h": 6,
+        "self": 2
+      },
+      "invalid_actions": {
+        "split": 2
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 2,
+      "reach490": 1,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 1,
+      "rl_final_alive": 0,
+      "wins": 2
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "map": "Portals",
+      "n": 5,
+      "series": 5,
+      "maps": {
+        "Portals": 5
+      },
+      "deaths": 4,
+      "causes": {
+        "invalid": 1,
+        "self": 3,
+        "survived_end": 1
+      },
+      "invalid_actions": {
+        "split": 1
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 1,
+      "reach490": 5,
+      "alive490": 1,
+      "clipped_positive": 1,
+      "positive_early_end": 0,
+      "rl_n": 5,
+      "rl_final_alive": 1,
+      "wins": 1
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "map": "Prisoners Dilemma",
+      "n": 10,
+      "series": 10,
+      "maps": {
+        "Prisoners Dilemma": 10
+      },
+      "deaths": 10,
+      "causes": {
+        "invalid": 4,
+        "self": 6
+      },
+      "invalid_actions": {
+        "split": 4
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 4,
+      "reach490": 0,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 0,
+      "rl_final_alive": 0,
+      "wins": 0
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "map": "Queen Of Spades",
+      "n": 6,
+      "series": 6,
+      "maps": {
+        "Queen Of Spades": 6
+      },
+      "deaths": 5,
+      "causes": {
+        "h2h": 4,
+        "body": 1,
+        "survived_end": 1
+      },
+      "invalid_actions": {},
+      "invalid_tle": 0,
+      "invalid_same_round": 0,
+      "reach490": 1,
+      "alive490": 0,
+      "clipped_positive": 1,
+      "positive_early_end": 1,
+      "rl_n": 1,
+      "rl_final_alive": 0,
+      "wins": 2
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "map": "Schooltime",
+      "n": 8,
+      "series": 8,
+      "maps": {
+        "Schooltime": 8
+      },
+      "deaths": 7,
+      "causes": {
+        "h2h": 6,
+        "survived_end": 1,
+        "invalid": 1
+      },
+      "invalid_actions": {
+        "split": 1
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 1,
+      "reach490": 8,
+      "alive490": 1,
+      "clipped_positive": 1,
+      "positive_early_end": 0,
+      "rl_n": 8,
+      "rl_final_alive": 1,
+      "wins": 5
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "map": "Slithery Fight",
+      "n": 11,
+      "series": 11,
+      "maps": {
+        "Slithery Fight": 11
+      },
+      "deaths": 11,
+      "causes": {
+        "invalid": 5,
+        "self": 6
+      },
+      "invalid_actions": {
+        "split": 5
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 5,
+      "reach490": 10,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 10,
+      "rl_final_alive": 0,
+      "wins": 3
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "map": "Trauma",
+      "n": 11,
+      "series": 11,
+      "maps": {
+        "Trauma": 11
+      },
+      "deaths": 2,
+      "causes": {
+        "survived_end": 9,
+        "h2h": 2
+      },
+      "invalid_actions": {},
+      "invalid_tle": 0,
+      "invalid_same_round": 0,
+      "reach490": 10,
+      "alive490": 8,
+      "clipped_positive": 9,
+      "positive_early_end": 1,
+      "rl_n": 10,
+      "rl_final_alive": 8,
+      "wins": 9
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "map": "Trophy",
+      "n": 12,
+      "series": 12,
+      "maps": {
+        "Trophy": 12
+      },
+      "deaths": 10,
+      "causes": {
+        "invalid": 2,
+        "h2h": 8,
+        "survived_end": 2
+      },
+      "invalid_actions": {
+        "split": 2
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 2,
+      "reach490": 0,
+      "alive490": 0,
+      "clipped_positive": 2,
+      "positive_early_end": 2,
+      "rl_n": 0,
+      "rl_final_alive": 0,
+      "wins": 4
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "map": "Autarky",
+      "n": 2,
+      "series": 2,
+      "maps": {
+        "Autarky": 2
+      },
+      "deaths": 2,
+      "causes": {
+        "invalid": 2
+      },
+      "invalid_actions": {
+        "split": 2
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 2,
+      "reach490": 1,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 1,
+      "rl_final_alive": 0,
+      "wins": 2
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "map": "Default",
+      "n": 2,
+      "series": 2,
+      "maps": {
+        "Default": 2
+      },
+      "deaths": 1,
+      "causes": {
+        "survived_end": 1,
+        "h2h": 1
+      },
+      "invalid_actions": {},
+      "invalid_tle": 0,
+      "invalid_same_round": 0,
+      "reach490": 1,
+      "alive490": 0,
+      "clipped_positive": 1,
+      "positive_early_end": 1,
+      "rl_n": 1,
+      "rl_final_alive": 0,
+      "wins": 1
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "map": "Devil",
+      "n": 2,
+      "series": 2,
+      "maps": {
+        "Devil": 2
+      },
+      "deaths": 2,
+      "causes": {
+        "invalid": 1,
+        "h2h": 1
+      },
+      "invalid_actions": {
+        "split": 1
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 1,
+      "reach490": 1,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 1,
+      "rl_final_alive": 0,
+      "wins": 1
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "map": "Portals",
+      "n": 2,
+      "series": 2,
+      "maps": {
+        "Portals": 2
+      },
+      "deaths": 2,
+      "causes": {
+        "h2h": 1,
+        "body": 1
+      },
+      "invalid_actions": {},
+      "invalid_tle": 0,
+      "invalid_same_round": 0,
+      "reach490": 1,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 1,
+      "rl_final_alive": 0,
+      "wins": 2
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "map": "Prisoners Dilemma",
+      "n": 2,
+      "series": 2,
+      "maps": {
+        "Prisoners Dilemma": 2
+      },
+      "deaths": 2,
+      "causes": {
+        "invalid": 2
+      },
+      "invalid_actions": {
+        "split": 2
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 2,
+      "reach490": 0,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 0,
+      "rl_final_alive": 0,
+      "wins": 2
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "map": "Queen Of Spades",
+      "n": 2,
+      "series": 2,
+      "maps": {
+        "Queen Of Spades": 2
+      },
+      "deaths": 1,
+      "causes": {
+        "h2h": 1,
+        "survived_end": 1
+      },
+      "invalid_actions": {},
+      "invalid_tle": 0,
+      "invalid_same_round": 0,
+      "reach490": 1,
+      "alive490": 0,
+      "clipped_positive": 1,
+      "positive_early_end": 1,
+      "rl_n": 1,
+      "rl_final_alive": 0,
+      "wins": 1
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "map": "Schooltime",
+      "n": 3,
+      "series": 3,
+      "maps": {
+        "Schooltime": 3
+      },
+      "deaths": 1,
+      "causes": {
+        "survived_end": 2,
+        "h2h": 1
+      },
+      "invalid_actions": {},
+      "invalid_tle": 0,
+      "invalid_same_round": 0,
+      "reach490": 2,
+      "alive490": 1,
+      "clipped_positive": 2,
+      "positive_early_end": 1,
+      "rl_n": 2,
+      "rl_final_alive": 1,
+      "wins": 3
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "map": "Slithery Fight",
+      "n": 1,
+      "series": 1,
+      "maps": {
+        "Slithery Fight": 1
+      },
+      "deaths": 1,
+      "causes": {
+        "invalid": 1
+      },
+      "invalid_actions": {
+        "split": 1
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 1,
+      "reach490": 1,
+      "alive490": 0,
+      "clipped_positive": 0,
+      "positive_early_end": 0,
+      "rl_n": 1,
+      "rl_final_alive": 0,
+      "wins": 1
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "map": "Trauma",
+      "n": 2,
+      "series": 2,
+      "maps": {
+        "Trauma": 2
+      },
+      "deaths": 0,
+      "causes": {
+        "survived_end": 2
+      },
+      "invalid_actions": {},
+      "invalid_tle": 0,
+      "invalid_same_round": 0,
+      "reach490": 1,
+      "alive490": 1,
+      "clipped_positive": 2,
+      "positive_early_end": 1,
+      "rl_n": 1,
+      "rl_final_alive": 1,
+      "wins": 2
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "map": "Trophy",
+      "n": 2,
+      "series": 2,
+      "maps": {
+        "Trophy": 2
+      },
+      "deaths": 1,
+      "causes": {
+        "survived_end": 1,
+        "invalid": 1
+      },
+      "invalid_actions": {
+        "split": 1
+      },
+      "invalid_tle": 0,
+      "invalid_same_round": 1,
+      "reach490": 0,
+      "alive490": 0,
+      "clipped_positive": 1,
+      "positive_early_end": 1,
+      "rl_n": 0,
+      "rl_final_alive": 0,
+      "wins": 1
+    }
+  ],
+  "contrasts": [
+    {
+      "metric": "invalid",
+      "nonpocket": false,
+      "before": 0.6451612903225806,
+      "after": 0.18888888888888888,
+      "difference": -0.45627240143369174,
+      "ci95": [
+        -0.6263736263736264,
+        -0.28579987913927507
+      ],
+      "independent_series": [
+        14,
+        19
+      ],
+      "replicates": 2000
+    },
+    {
+      "metric": "invalid",
+      "nonpocket": true,
+      "before": 0.4883720930232558,
+      "after": 0.0967741935483871,
+      "difference": -0.39159789947486867,
+      "ci95": [
+        -0.5920208955548862,
+        -0.20237847113395602
+      ],
+      "independent_series": [
+        14,
+        19
+      ],
+      "replicates": 2000
+    },
+    {
+      "metric": "rl_final_alive",
+      "nonpocket": false,
+      "before": 0.0,
+      "after": 0.25,
+      "difference": 0.25,
+      "ci95": [
+        0.13157894736842105,
+        0.3783783783783784
+      ],
+      "independent_series": [
+        14,
+        19
+      ],
+      "replicates": 2000
+    }
+  ],
+  "uncertainty": "Independent series-block percentile bootstrap within before/after windows; descriptive temporal association, no map/opponent randomization or deployment fingerprint."
+}

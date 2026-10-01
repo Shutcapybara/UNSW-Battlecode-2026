@@ -2,6 +2,26 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
 
+## Unit 6 — 2026-10-01 17:20 UTC, complete
+
+- Ranked/unranked direction applied: 172 Cutlery raw-event audits. All64 invalid queen deaths follow same-round
+  split commands,0suicide/TLE. Ranked incidence40/62→17/90, −45.6pp [95% series-bootstrap−62.6,−28.6]; causal intent
+  unproven. Actual ranked queen survival0/31→10/40; unranked2/9. Not a stable target or deployment-strength claim.
+- Read new Carthage03 (reject), Antioch06/04/05 official analyses; opening-reference disagreements H6-04/05.
+  No live-us inference fromlocalpanels; side-IID uncertainty needs whole-series correction.
+- **New ladder17:09:22Z** (hash54c9e98e367a12378f1fdd84a87de0cc8e315b071cb3f59dd5cc11f7f9c685aa):5/10cohort
+  turnover,Cutlery97. Fresh-ladder request closed; exclude819nullranks. Frozen old labels remain historical.
+- MainD-041 says submission14265 activated17:00. Next runnable action: inspect first collected post-team7 games by
+  ranked/unranked, map/phase and available submission identity; then refreshed ranked-only references/currenttop10.
+- Source/board cursor: main1d838553a throughD-041; Antioch85637735c through20:40-labelled04/05read;
+  Carthagef91c65873 through03; Nara21a182700 unit3; Kyoto7c835936c unchanged; Rome localL10pool370/480. HimejiH6-07.
+- Corpus frozen79,726 latest17:10:41.489Z SHA5a3fc951bbeb03f5ac2c6c4c6d193b577ab16896b001feea422f9bb4f75b794e;
+  0post-team7. MacS1 gamesstat3822463bytes/1790764194040268141 unchanged, last verifiedpre-era. Desktoppost2862
+  reported, syncpending. All172auditgamesstart11:50–16:10, afternew-ruleboundary. Sourcehashes inunit6manifest.
+- Finding `docs/findings/2026-10-02-himeji-ranked-cutlery-split-actions.md`; tools/unit6compactoutputs. One queryworker, complete. No bots/simulations/shared writes.
+- Pending: Φactive-only/provenance/terminal validation; Macpoststoresync; Nara correctedcheckpoint/intentlabels;
+  tester09/L10/cap-lift. Finishedwinner/exposuresamples must not rerun unchanged. H-H1 weight0.5 unchanged.
+
 ## Unit 5 — 2026-10-01 16:40 UTC, complete
 
 - **Standing user direction:** weight ranked/unranked separation more heavily after the rule change. Recent ranked supports deployed-strength claims; unranked remains a separate live-testing cohort, not automatically a legacy decoy. Next references split cohorts; preserve old mixed freeze as historical/provisional.
