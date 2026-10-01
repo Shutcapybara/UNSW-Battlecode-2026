@@ -1,0 +1,18 @@
+name = "maelle-04-allycrowd"
+lineage = "maelle"
+author = "claude-opus-5.5/maelle"
+language = "c++"
+lineage_parent = "maelle-02-features"
+hypothesis = "L12/S-1: a per-dragon EW ally-density memory, used as a crowding cost on target choice, spreads the swarm: fewer ally collisions and more material without losing economy."
+mechanism = "target score x exp(wt_ally * ally), ally = saturated 5x5 box mean of ally_ew (x0.90/round); wt_ally = -1.4 (fitted)."
+expected_change = "pre-registered: negative weight, ally h2h down, units/length up, econ not down. Scan (seeds 1+2, -1.5): econ +0.030, units +0.141, length +0.146, ally h2h -0.31/1k."
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-09-30-r1-search-ladder.md"]
+summary = "Maelle feature 2 (SF-1 Part 2). Gate: D-032 vs maelle-02-features (w=0)."
+
+[activation_contract]
+kind = "legacy_none"
+note = "platform; identity by fingerprint"

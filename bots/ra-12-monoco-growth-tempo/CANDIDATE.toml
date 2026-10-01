@@ -1,0 +1,24 @@
+name = "ra-12-monoco-growth-tempo"
+lineage = "monoco"
+author = "codex/ra"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Starting the existing growth discount earlier will trade a little early expansion for better midgame population retention and increase normalized pearl economy."
+mechanism = "When enabled, move the existing growth-value schedule start from round 380 to round 340; switch-off restores the Ares V06 value."
+expected_change = "Raise the mean of the four map-normalized pearl checkpoints by at least 0.05; r100 dragons and length must not fall, and no hygiene rate may rise by more than 10%."
+priority = 202
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/analysis/BENCHMARKS.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+]
+summary = "Ares V06, atlas off: default-on clock schedule switch moves the late-game growth-value ramp 40 rounds earlier; switch-off restores parent behavior."

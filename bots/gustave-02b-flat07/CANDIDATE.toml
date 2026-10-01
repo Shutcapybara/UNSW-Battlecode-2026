@@ -1,0 +1,12 @@
+name = "gustave-02b-flat07"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "DIAGNOSTIC control: sciel-03a"s factor clamped to exactly 0.7 (floor = cap = 0.7, weight 0, no ally discount): unseen-cell and bed values x0.70 in cell_value, no density memory in the decision"
+expected_change = "indistinguishable from gustave-02a on every tier-1 and tier-2 metric (paired)"
+hypothesis = "sciel-03a"s gain is the flat x0.70 exploration/bed cut (Renoir 07a/07c lever), not the density memory"
+params = ["ew_weight=0.0", "ew_floor=0.7", "ew_cap=0.7", "ew_ally_k=0.0"]
+status = "candidate (not registered)"
+fingerprint = "418247227f5263ce893c4ad24e5b78787af4ea8cfcbd0fe361beb99051293228"

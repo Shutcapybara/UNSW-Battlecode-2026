@@ -1,0 +1,54 @@
+{
+ "games": 2,
+ "turns": 5888,
+ "no_reply": 0,
+ "family": 0.9915081521739131,
+ "direction_given_both_move": 0.8339451144904737,
+ "split_size_given_both_split": 0.905982905982906,
+ "command": 0.8282948369565217,
+ "sonar_multiset": 0.7063903281519862,
+ "recorded_mix": {
+  "L": 1265,
+  "F": 3258,
+  "R": 1211,
+  "split": 154
+ },
+ "per_game": [
+  {
+   "game": 457933,
+   "secs": 3.9,
+   "turns": 360,
+   "family_n": 360,
+   "family_ok": 360,
+   "dir_n": 341,
+   "dir_ok": 261,
+   "cmd_ok": 280,
+   "sonar_n": 357,
+   "sonar_ok": 295,
+   "rec_L": 87,
+   "rec_F": 168,
+   "rec_R": 86,
+   "size_n": 19,
+   "size_ok": 19,
+   "rec_split": 19
+  },
+  {
+   "game": 551141,
+   "secs": 54.0,
+   "turns": 5528,
+   "family_n": 5528,
+   "family_ok": 5478,
+   "dir_n": 5380,
+   "dir_ok": 4510,
+   "cmd_ok": 4597,
+   "sonar_n": 5433,
+   "sonar_ok": 3795,
+   "rec_F": 3090,
+   "rec_R": 1125,
+   "rec_L": 1178,
+   "size_n": 98,
+   "size_ok": 87,
+   "rec_split": 135
+  }
+ ]
+}

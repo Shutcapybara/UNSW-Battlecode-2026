@@ -1,0 +1,18 @@
+name = "maelle-01-nodevil"
+lineage = "maelle"
+author = "claude-opus-5.5/maelle"
+language = "c++"
+lineage_parent = "maelle-00-base"
+hypothesis = "D-033: the lane parent must not know the pool; the three W==32 && H==16 terms are map identity."
+mechanism = "Params::map_identity_terms = false: devil_center_bonus, devil_lane_bonus and ally_body_buffer return 0."
+expected_change = "Devil economy and win rate down (Renoir-23: -0.042 econ, Devil 1.00 -> 0.31 win); Prisoners Dilemma up; off-pool neutral. Not an accept candidate: the D-033 parent."
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-09-30-r1-search-ladder.md"]
+summary = "Maelle lineage parent for every SF-1 version (D-033)."
+
+[activation_contract]
+kind = "legacy_none"
+note = "params switch map_identity_terms=false"

@@ -38,13 +38,16 @@ PANEL_OPPS = ["bots/yuna-v03-core", "bots/fenrir-v18-arrival-ready-beds", "bots/
               "bots/ouroboros-s02-portal"]
 
 
+def replay_name(m: str, side: str, seed: int, opp: str, replay_dir: str) -> str:
+    return str(pathlib.Path(replay_dir) / f"{m.replace('/', '_')}_{side}_s{seed}_{pathlib.Path(opp).name}.replay")
+
+
 def _one(job: dict) -> dict:
     from arena import run_game
     cand, opp, m, side, seed, sandbox = (job[k] for k in ("cand", "opp", "map", "side", "seed", "sandbox"))
     a, b = (cand, opp) if side == "A" else (opp, cand)
-    map_name = m if m.endswith(".map") else f"{m}.map"
-    rep = job.get("replay_dir")
-    rep = str(pathlib.Path(rep) / f"{m.replace('/', '_')}_{side}_s{seed}_{pathlib.Path(opp).name}.replay") if rep else None
+    rep = replay_name(m, side, seed, opp, job["replay_dir"]) if job.get("replay_dir") else None
+    map_name = m if m.endswith(".map") else f"{m}.map"   # main's fix, re-applied after the r/r3 -X theirs merge
     r = run_game(str(REPO / "maps" / map_name), a, b, seed, sandbox, replay_out=rep)
     r.pop("transcripts", None)
     us, them = ("A", "B") if side == "A" else ("B", "A")
@@ -54,7 +57,7 @@ def _one(job: dict) -> dict:
             "errors": [e for e in r["errors"] if e[2] == us][:10], "secs": r["secs"]}
 
 
-def run(args) -> None:
+def run(args) -> int:
     maps = {"live": LIVE, "compact": COMPACT, "panel": PANEL, "var": PANEL_VAR + PANEL_PUB,
             "new": PANEL_NEW}.get(args.maps, None)
     opps = PANEL_OPPS if args.opp == "panel" else args.opp.split(",")
@@ -82,16 +85,19 @@ def run(args) -> None:
         k, n = map(int, args.shard.split("/"))
         todo = [j for i, j in enumerate(todo) if i % n == k]
     print(f"{len(jobs)} fixtures, {len(todo)} to run", flush=True)
-    # build each bot once before the pool starts (no concurrent compiles)
+    # build each bot once before the pool starts (no concurrent compiles); a
+    # compile error aborts the run instead of failing every fixture in flight
     from unswbc.run import _resolve
-    for b in {args.cand, *opps}:
+    for b in sorted({args.cand, *opps}):
         try:
             _resolve(b, args.sandbox)
         except Exception as e:
-            print("build failed", b, e, flush=True)
+            print(f"BUILD FAILED {b}: {e}", flush=True)
+            return 2
     with ProcessPoolExecutor(max_workers=args.jobs) as ex, out.open("a") as fh:
         futs = {ex.submit(_one, {"cand": args.cand, "opp": o, "map": m, "side": sd,
-                                 "seed": s, "sandbox": args.sandbox}): (m, sd, s, o)
+                                 "seed": s, "sandbox": args.sandbox,
+                                 "replay_dir": args.replay_dir}): (m, sd, s, o)
                 for m, sd, s, o in todo}
         for f in as_completed(futs):
             try:
@@ -184,13 +190,16 @@ def main() -> int:
     ap.add_argument("--sandbox", action="store_true")
     ap.add_argument("--summary")
     ap.add_argument("--shard", help="k/n: run every n-th pending fixture starting at k")
+    ap.add_argument("--replay-dir", help="write each game's .replay here (named map_side_seed_opp)")
     ap.add_argument("--vs")
     ap.add_argument("--key", default="len_r100")
     args = ap.parse_args()
     if args.summary:
         summary(args.summary, args.vs, args.key)
         return 0
-    run(args)
+    rc = run(args)
+    if rc:
+        return rc
     summary(args.out)
     return 0
 

@@ -1,0 +1,16 @@
+name = "gustave-07c-mouthroute"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "Portal-mouth rule with route intent: -4 for ending on any portal mouth (paired or not) unless the dragon's own route to its target crosses that mouth's portal within its next 3 steps (or it is the dive cell), or it crossed a portal this turn, or it faces into the portal. 07b (no route exemption) cut ally h2h -71 % but economy -0.128 (Portals -0.69): it taxed legitimate crossings that need a turn on the mouth."
+expected_change = "ally h2h down >= 40 %, economy within the gate's interval of 0 (portal maps no longer taxed), units/length not down"
+hypothesis = "L23/L05: ally head-on is portal-mouth loitering; tax loitering, not transit"
+params = ["mouth_weight=4.0", "mouth_any=true", "mouth_route_steps=3"]
+status = "candidate (not registered)"
+fingerprint = "47cbfcde08e6f28dde6c6415e4ead1fc970759b9db5ee3705398bf2562f9a5d1"
+
+[activation_contract]
+kind = "legacy_none"
+note = "director housekeeping (D-039): params-only switch on the Ares chassis; identity by fingerprint"

@@ -1,0 +1,18 @@
+name = "maelle-05-joint"
+lineage = "maelle"
+author = "claude-opus-5.5/maelle"
+language = "c++"
+lineage_parent = "maelle-02-features"
+hypothesis = "Platform for the joint re-tune (SF-1 Part 2 step 4): the maelle-03 feature set with every weight 0."
+mechanism = "none at the compiled defaults (all weights 0 = maelle-02 behaviour); weights set by MAELLE_PARAMS in local tuning only."
+expected_change = "none (platform)"
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-09-30-r1-search-ladder.md"]
+summary = "Maelle feature 1 (SF-1 Part 2). Gate: D-032 vs maelle-02-features (w=0)."
+
+[activation_contract]
+kind = "legacy_none"
+note = "platform; identity by fingerprint"

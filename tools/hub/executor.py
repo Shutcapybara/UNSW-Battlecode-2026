@@ -870,7 +870,7 @@ def dispatch_quota_fill(conn, root, cfg, snap, client, actor, q, summary):
     for pool in ('dev', 'field'):
         already = sum(int(item.get('games', item.get('maps', 0)) or 0)
                       for item in summary.get('dispatched', []) if item.get('pool') == pool)
-        remaining = quota_filler.hourly_remaining(cfg, q, pool, already)
+        remaining = quota_filler.hourly_remaining(cfg, q, pool, already, now=snap.now)
         # Keep the filler paced: one small slice per pool per executor cycle,
         # rather than draining the whole currently available rolling quota in
         # a single burst. The normal executor work remains accounted for in

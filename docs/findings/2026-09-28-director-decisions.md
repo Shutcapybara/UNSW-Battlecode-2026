@@ -568,3 +568,74 @@ continues on the desktop if GLM is re-issued there; two new desktop lanes are is
 findings or ledger, an independent draw) and `rc` (Cézanne, ledger-guided). Monoco (GPT's lane) has no branch on
 origin and is read when it is pushed.
 
+**D-035 — R-3 and R-4 read; merged to main (30 Sep 00:20 UTC).** R-4 delivered all four parts on `r/r4` (tools/cx
+reconciled — cx/f's multi-direction portal walk and `eaten_r*` fields restored; C++ parity incl. `meter.py --mode cxx`
+and `golden.py suite`; `run_panel --panel gen` with `GEN_MAPS` and fingerprint-keyed candidate grids; the single-bot
+scorecard with a `GATE:` line). R-3 delivered on `r/r3` (contains r4). Both merged with `-X theirs` on
+`tools/cx/bench.py` (main's `map_name` fix re-applied by hand). R-3's reading: **Ares V06 carries the Tyr leak
+profile at real transit volume** (trapped 36.1 len/1k vs top-10 18.5; portal deaths 29.4/100 steps vs 306's 12.5;
+crowd23 4× the top ten) — the lineage claim holds. But every pre-entry portal rule is a throttle on Ares too
+(r3-01/02: transit volume −22 %/−68 %, per-100-steps *worse*, economy −0.05/−0.12), so C1-F's result transfers; the
+kelp/room surcharge (r3-04) is the strongest hygiene lever measured (wall −27 %, trapped −30 %, newborn −15 %) and
+fails on economy (−0.072, −0.107 stacked); and r3-03 escape-early is a **production lever, not an escape fix**:
++5.0 pp win replicated at two seeds, economy +0.026 pooled, length +0.049, own-body +11 % (the churn of the extra
+cramped splits), neutral off-pool. Sciel-02a already tested R-3's "post-transit navigation" open item (portal leak
+−21 %, economy paid). Consequences: (1) R-4's scorecard becomes the lanes' gate tool and gets one more task: the
+D-032 interval form and a corpse-share diagnostic (L29). (2) r3-03 is a hold under D-032 (own-body +11 % vs the
+10 % guard) — the attribution to pay down is newborn churn from `ACT:tsplit` children; the guided lane may take it
+after the density line. (3) The portal leak is closed as a *crossing-side* problem on both hosts: what remains is
+the exits (contact and post-transit navigation), which Sciel's steering did not solve either; the ledger row for
+portal fixes drops to 0.2 with that stated as the shape of any revival. (4) Every finding this phase agrees:
+hygiene bought with caution costs economy one for one on this lineage; the economy levers that have appeared are
+state (Sciel-03a), search phase (Lune) and production (r3-03).
+
+**D-036 — the per-map line (30 Sep 00:50 UTC, lead's direction).** Diagnose per map, fix per structural signature,
+measure globally, with a transfer test against the unseen maps that share the signature. Adds a "local hold" verdict
+tier to D-032 for mechanisms whose gain transfers within a signature cluster while the pooled interval is not negative;
+those become structure-gated switches (gate = observable structure, never the map) and are tested as such. Issued as
+M-1 (GLM 5.3). All lanes report per-map deltas from now on so the map × mechanism table accumulates.
+
+**D-037 — the per-map, per-phase programme: optimise the opening per map aggressively and measure what it costs
+(1 Oct 00:30 UTC, lead's direction).** S-1 Q3 measured where the loss is: the gap to the top ten opens in the first
+25 rounds and is economy, not deaths — bed conversion, production, early portal use, territory (L36). Esquie's
+map anatomy shows the bricks are different kinds of opening (starved, bed-desert, transit-collision) and that a
+structure-gated opening mechanism can be silent off its cluster (L35). So the programme adds a phase axis to the
+map axis of D-036: for each map cluster and each of the four components, mechanisms are optimised against the
+field's *per-map opening percentiles* (r25, r50) with r100/r250 economy, hygiene and the off-pool panel as guards
+— not as targets. Local gains are kept as local holds and structure-gated; global losses are recorded, not
+avoided, because the point is to find what the components are actually coupled to (the lead's diagnosis: too many
+changes pull on other threads, yet other teams optimise these independently, so the coupling is in our bot, not
+the game). Overfitting risk is bounded by the D-036 transfer test and by K-1's synthetic maps. Gate arithmetic
+adopts S-1 Q2: per-map contributions weighted by predictability. Every open lane (rc, SF-1, RL-1, M-1, K-1, S-1)
+reports the r25/r50 per-map percentiles from now on; RL-1's curve-matching reward is this decision in learned form.
+
+**Git state at D-037.** Merged into main: `r/ra` (Renoir's final commits), `r/monoco`, `r/sciel`, `r/esquie` (M-1),
+`cx/b`. `cx/a` (two commits of pre-R-4 chassis tooling) conflicts with the reconciled `tools/cx` and stays
+unmerged as history. The desktop lanes (HB-1, rb, rc, SF-1 "Sophie", RL-1) have no branches on origin yet.
+
+**D-038 — HB-1 read; `hb1-12-direction-prior` and `hb1-13-phased-prior` registered at the head of the queue; X-1
+issued (1 Oct 02:00 UTC).** HB-1 found Heartbreaker to be a rule wrapper around one learned decision (direction), a
+static policy 27–29 Sep, and — the result that matters — that its direction model used as a prior inside Ares's
+search gives 139–21 on the z1 panel (V06: 122–38) with economy +0.03–0.04 and every death rate down 30–40 %,
+replicated at seed 2 (hb1-12; hb1-13 fades the prior after r150 with similar numbers). Under D-032 this is an
+accept on every guard; it is registered for the dev screen at 530/525 (executor still shadow). The lead's
+three-tier design (CNN/RNN representation → XGBoost decision heads → policy improvement, cycled, over an
+algorithmic map memory) is issued as X-1 with expert iteration (search relabels, trees distil) as the improvement
+operator and hb1-12's search-plus-prior as the starting architecture; RL-1 may be folded into it. Sonar is split
+into receiving (observations, learned use) and sending (a head under a fixed L32/L33 protocol); emergent
+communication is out of scope. Ledger: L27 → 0.7.
+
+**D-039 — the desktop lanes read; the queue re-ordered for the 4 MiB upload cap (1 Oct 03:00 UTC).** Merged to main:
+`r/verso` (X-1), `r/tt` (top-team anatomy: cheji bt, Stockfish), `r/rb` (Aline, blind lane, closed), `r/rc` (Gustave,
+paused), `r/maelle` (SF-1, wrapped), `r/alicia` (RL-1, running). Readings: (1) the two mechanisms that passed D-032 are
+both information mechanisms — Heartbreaker's direction prior inside Ares's search (verso-01: win +0.15, econ +0.052)
+and Aline's symmetry inference (econ +0.025, dragons +0.05, win +6 pp); every continuous weight move on V06's
+evaluation sits in a flat bowl (Maelle's zero-weight optima, Alicia's ES drift), which is the local minimum the lead
+described, now measured; (2) the TT lane found the submission zip is capped at 4 MiB, so `hb1-12`/`hb1-13` (17 MiB)
+can never upload — `hb1-14-prior-r540` (3.74 MiB, 141–19) and `verso-05-hb800-prior` (3.38 MiB) are registered
+ahead of them (540/535), `aline-17-sym-seal` at 515 and `gustave-07c-mouthroute` at 505 (their manifests repaired
+as director housekeeping); registration now rejects archives over 4 MiB; (3) the top teams' edge after r200 is
+deliberate endgame conversion (L39) and their rules do not port — the trigger to build is Ares's own feeder logic
+keyed on state (opponent units at r300), which is the phase switch of L31/L32 at game scale; (4) Maelle and Alicia
+are closed as weight-tuning efforts; their platforms (state module, feature dump, ES loop) are inherited by Verso.
+

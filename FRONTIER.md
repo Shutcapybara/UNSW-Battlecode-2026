@@ -1,6 +1,6 @@
 # Current bot frontier
 
-**Updated 2026-09-29.** Rows are ordered by displayed ELO. Numbers in the first
+**Updated 2026-09-30.** Rows are ordered by displayed ELO. Numbers in the first
 column are 35-map panel ranks; `Screen` entries have provisional 10-map ratings.
 
 | Rank / status | Bot snapshot | ELO (evidence) | Source fingerprint |
@@ -188,14 +188,22 @@ the [Ares V06 notes](docs/ares-family.md#v06--expanded-search-and-supported-thre
 
 ## Defaults and upkeep
 
-The contest API currently lists **Ares V04 — `ares-v04-tyr12-behavior-parity-ai`,
-submission v83 (ID 11244)** as active, uploaded 2026-09-29 06:47 UTC. The
-requested upload auto-activated when processed. This server deployment state
-does not promote V04 locally: it remains experimental and lacks the
-parent-relative acceptance result. [`comparison.toml`](comparison.toml) keeps
-Ouroboros V10, Hunter V14, Hunter V20, Fry V14, and Kraken V04 as controls.
-See [`docs/benchmarking.md`](docs/benchmarking.md) for the workflow,
-[`game_stats/README.md`](game_stats/README.md) for the ledger, and
-[`maps/new/EXPLAINER.md`](maps/new/EXPLAINER.md) for custom maps. Update this
-table with exact source fingerprints and linked results when a candidate is
-screened or admitted.
+The contest API lists **Ares V36 — `ares-v36-no-pearl-portal-scout-ai`,
+submission v91 (ID 12728)** as active, uploaded 2026-09-30 07:02 UTC. The
+upload auto-activated when processed. Its API source hash is
+`8d5e4b3dba5ec9f948d4985581349267928b88933da47dc4dda847d57b6aa0b1`. Server
+deployment does not promote V36 locally: it remains experimental, with its
+seed-1 screen showing 13–7 vs V35 and 9–11 vs V19, and seed-2 checks pending.
+The previous active upload was Ares V35, submission v90 (ID 12675), whose API
+source hash was
+`870f4bbb1b20371e472728363fe05479ecf92c0a9d260ce70c4c21106eb04c1d`. See the
+[V28 finding](docs/findings/2026-09-30-ares-v28-minimum-sacrifice-enclosure-split.md),
+[V32 finding](docs/findings/2026-09-30-ares-v32-dead-end-split-orientation.md),
+[V33 finding](docs/findings/2026-09-30-ares-v33-split-portal-route-handoff.md),
+[V35 finding](docs/findings/2026-09-30-ares-v35-crown-clipped-dash-threat.md),
+and [V36 finding](docs/findings/2026-09-30-ares-v36-no-pearl-portal-scout.md).
+[`comparison.toml`](comparison.toml) keeps Ouroboros V10, Hunter V14, Hunter
+V20, Fry V14, and Kraken V04 as controls. See [`docs/benchmarking.md`](docs/benchmarking.md)
+for the workflow, [`game_stats/README.md`](game_stats/README.md) for the ledger,
+and [`maps/new/EXPLAINER.md`](maps/new/EXPLAINER.md) for custom maps. Update this table with exact source
+fingerprints and linked results when a candidate is screened or admitted.

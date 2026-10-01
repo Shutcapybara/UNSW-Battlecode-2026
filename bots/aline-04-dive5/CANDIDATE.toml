@@ -1,0 +1,12 @@
+name = "aline-04-dive5"
+lineage = "aline"
+lane = "rb"
+author = "claude-opus-5.5/rb"
+language = "c++"
+lineage_parent = "aline-01-nodevil"
+mechanism = "dive_value 3 -> 5: an unpaired portal is worth as much as an unseen cell as an exploration target"
+expected_change = "+ p@50/p@100 on portal-gated maps (portals, trauma, gen portal maps); portal/blind deaths slightly up"
+hypothesis = ""
+params = ["dive_value=5.0"]
+status = "candidate (not registered)"
+fingerprint = "d66e7739a14090972ccd7a23708aa6b2c39d241ed3b6926d8748a57115b3a11f"

@@ -1,0 +1,25 @@
+name = "ares-v30-dead-end-pearl-before-split"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v29-dead-end-feed-before-split"
+hypothesis = "Match 658569 showed V28 splitting a length-4 dragon one move before a known pearl at a dead-end, then wall-dying after collecting it. A split should wait while a move advances toward a known pearl or bed and both the current and next positions remain critically enclosed."
+mechanism = "Retain the V29 under-room farm guard and add an enclosure guard: when the selected movement advances toward a pearl or bed target and five-step body-aware reach is critical before and after that move, defer routine, opening, and emergency splits. The guard clears when the target route or critical enclosure ends."
+expected_change = "On constrained pearl runs, move to the known resource before producing a tail child; resume splitting once the resource run or critical enclosure ends."
+priority = 224
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v28-minimum-sacrifice-enclosure-split.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "bots/ares-v28-minimum-sacrifice-enclosure-split/README.md",
+]
+summary = "V30 adds a current/next body-aware enclosure test because V29's under-room farm predicate missed the original round-25 approach; focused screen pending."

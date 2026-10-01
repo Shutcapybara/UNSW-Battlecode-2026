@@ -376,6 +376,10 @@ def git_check(root, cfg, state, log):
         policy['quiet_minutes'] = int(body['quiet_minutes'])
     merged_branches = []
     try:
+        if body.get('fetch_all'):
+            # bring every remote branch in (lanes push from other hosts); reported, never fatal
+            fa = subprocess.run(['git', '-C', cfg['paths']['repo'], 'fetch', '--quiet', '--prune', 'origin'], capture_output=True, text=True, check=False, timeout=600)
+            body['_fetch_all'] = 'ok' if fa.returncode == 0 else (fa.stderr or fa.stdout)[-300:]
         # optional: merge local work branches (the C1 worktree branches, e.g. cx/f) into main before the ordinary pass.
         # A conflict aborts that merge and is reported; nothing else is touched.
         for branch in body.get('merge') or []:
@@ -383,6 +387,12 @@ def git_check(root, cfg, state, log):
                 merged_branches.append(dict(branch=branch, error='bad branch name'))
                 continue
             repo = cfg['paths']['repo']
+            if str(branch).startswith('origin/'):
+                # a lane pushed from another host: the keeper only fetches main, so fetch this branch first
+                fr = subprocess.run(['git', '-C', repo, 'fetch', '--quiet', 'origin', str(branch)[len('origin/'):]], capture_output=True, text=True, check=False, timeout=300)
+                if fr.returncode:
+                    merged_branches.append(dict(branch=branch, error='fetch: ' + (fr.stderr or fr.stdout)[-300:]))
+                    continue
             opts = ['-X', body['strategy_option']] if body.get('strategy_option') in ('ours', 'theirs') else []   # conflict hunks only; non-conflicting hunks merge normally
             res = subprocess.run(['git', '-C', repo, 'merge', '--no-ff', '--no-edit', *opts, '-m', f'Merge {branch} into main (director request)', str(branch)], capture_output=True, text=True, check=False, timeout=300)
             if res.returncode:
@@ -401,7 +411,7 @@ def git_check(root, cfg, state, log):
             res = subprocess.run(['git', '-C', repo, 'push', '-u', 'origin', f'{branch}:{branch}'], capture_output=True, text=True, check=False, timeout=300)
             pushed_branches.append(dict(branch=branch, pushed=True) if res.returncode == 0 else dict(branch=branch, error=(res.stderr or res.stdout)[-300:]))
         report = git_sync(cfg['paths']['repo'], root, policy, actor=body.get('by') or 'hub/actuator/git-request')
-        out = dict(at=db.now_iso(), note=body.get('note'), quiet_minutes=policy['quiet_minutes'], merged_branches=merged_branches, pushed_branches=pushed_branches, report=report)
+        out = dict(at=db.now_iso(), note=body.get('note'), quiet_minutes=policy['quiet_minutes'], merged_branches=merged_branches, pushed_branches=pushed_branches, fetch_all=body.get('_fetch_all'), report=report)
     except Exception as exc:
         out = dict(at=db.now_iso(), note=body.get('note'), error=f'{type(exc).__name__}: {str(exc)[:300]}')
     (ctl / 'git.done.json').write_text(json.dumps(out, indent=1, default=str))

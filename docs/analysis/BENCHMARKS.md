@@ -1,6 +1,154 @@
 # Benchmark features for local optimisation
 
 29 September 2026 · claude/analysis/F1 (with the user). Exported from the Claude Doc of the same name; data and code in `docs/analysis/benchmarks/` and `tools/analysis/features/benchmarks.py`.
+Revised 30 September 2026 (s1): the two sections below are new, and marked notes correct the older sections in place.
+
+## Start here (30 Sep revision)
+
+The original analysis below (29 Sep, 4,563 field games) still holds for what it measured. Six things changed after the
+40,593-game top-50 corpus store (`tools/s1/`, findings `docs/findings/2026-09-30-s1-*.md`) and the lane results of 29–30 Sep.
+
+**What to run on a candidate**
+
+| Question | Command | Decides |
+|---|---|---|
+| Is the opening faster? | `python3 tools/s1/tempo_gate.py <candidate run dir> <parent run dir>` | ACCEPT / NO GAIN / REJECT / INCONCLUSIVE for early-game changes (see **Tempo** below) |
+| Full tables: economy, hygiene, W-L-D | `python -m tools.analysis.features.scorecard bots/<candidate> --parent bots/<parent>` | the D-032 lane gate (paired, seeds 1–3, interval) |
+| Where does it stand against the field per map? | `python3 tools/s1/q.py` / `tools/s1/q3.py` on the s1 store | diagnosis, not acceptance |
+
+The two gates answer different questions: tempo is about the first 150 rounds, D-032 about the whole game. An opening
+change should pass tempo and not fail D-032's guards. A late-game change is judged by D-032, with tempo as a guard: it
+must not come out REJECT.
+
+**What changed, and why**
+
+1. **Tempo is the headline for the opening.** It is one number in rounds behind the top ten's curve, with a decision
+   threshold. It predicts the result better than the pearls curve (within-map AUC 0.815 vs 0.77–0.80) and ranks teams by
+   rating as well (ρ 0.65). It measures *net income* (bed and enemy-corpse pearls, minus unrecovered length), so feeding
+   the swarm to itself does not raise it.
+2. **The gross pearls curve is a diagnostic, not a target.**
+   - It counts our own corpses eaten back as economy (L29: 38 % of the base's pearls).
+   - Renoir 07c (lower exploration value) passed the old economy bar on the pool (+0.11) through churn.
+   - On the same fixtures the tempo gate says **NO GAIN**: −1.2 rounds, CI [−2.4, 0.0] on the pool and +0.1 on the
+     generalisation maps. Ally head-on deaths rose 42 %.
+3. **Chosen deaths are not hygiene failures.**
+   - The top ten die a lot by choice: 4.6 suicides and 2.1 invalid-action deaths per 1k dragon-turns in rounds 0–150,
+     mostly enclosed length-2 dragons, as recycling.
+   - The "0 per 1k" top-ten medians in the tables below are per-side-game medians on 28 Sep data. Pooled rates on the
+     40k store are 5.3 wall and 3.8 own-body per 1k for the top ten (ours 11.9 and 6.8).
+   - The invalid-action row still means "bug" for **our** bots: all 835 of our live invalid deaths are newborns at age 0.
+4. **Ally head-on deaths are a portal-exit event, not a general hygiene rate.**
+   - 93–99 % happen within 2 steps of a portal, about half within 3 rounds of a transit.
+   - Watch them together with per-transit death within 3 rounds (top ten 0.20, us 0.28) and seen-landing deaths
+     (0.21 vs 0.33).
+   - Taking portals early is *not* the problem: it is +EV on all ten ladder maps (S1-Q5).
+5. **Report per map, pair by seat.**
+   - Map-specific skill is real (50/51 top teams have significant map effects, ~150 Elo spread).
+   - Side B is favoured on 8 of 10 maps at equal Elo.
+   - Pooled numbers can hide a map regression. Both gates print per-map rows and pair fixtures by seed, map, opponent and
+     seat (D-036).
+6. **The field references are frozen snapshots.**
+   - `field_references.json` / `field_distributions.json` / `map_reference_medians.json` are the 28 Sep references;
+     keep them for continuity with past scorecards.
+   - `tempo_reference.json` is the 30 Sep top-ten curve set. It excludes SSS (91) and Cutlery (306), whose unranked
+     games are not the bot their rating belongs to (SSS wins 36 % of unranked games at an Elo-expected 64 %).
+   - Neither is ever rebuilt between a candidate and its parent.
+
+## Tempo: the early-game benchmark
+
+**In one sentence.** *How many rounds behind the top ten are we, averaged over rounds 10–150?*
+
+- If we have eaten at round 60 what the top ten had eaten by round 48, we are 12 rounds behind at round 60.
+- A constant lag means we are late but keeping pace. A growing lag (drift) means we are falling further behind.
+
+**What is counted.**
+
+- **Income:** bed pearls plus enemy-corpse pearls eaten. This is new mass. Eating our own corpses back is not income, so
+  churn cannot raise the score.
+- **Loss:** length lost to our deaths, minus the corpse pearls we ate back.
+  - A death that feeds our own dragon costs nothing.
+  - A death that feeds the enemy, or rots, costs its full length.
+  - Loss beyond the top ten's at the same round is charged as income not earned; less loss is credited.
+- **The curve we are measured against:** the median of eight top-ten teams on the same map
+  (`benchmarks/tempo_reference.json`).
+- **Maps without that curve** (maps/new, `_tr` variants) use the parent's own curve. There, tempo reads as rounds
+  ahead of or behind the parent.
+
+**One command.**
+
+```
+python3 tools/s1/tempo_gate.py build/zoo/<panel>-<candidate>-<fp8> build/zoo/<panel>-<parent>-<fp8>
+python3 tools/s1/tempo_gate.py build/ra/runs/<cand-run>/pool build/ra/runs/<parent-run>/pool      # renoir-style runs
+```
+
+- Either argument can be a run folder with `replays/` inside, or the replays folder itself.
+- It pairs games on the file name `s<seed>__<map>__<A>__<B>.replay`.
+- It needs nothing else (no corpus store, no DuckDB), and caches decoded replays in `build/s1/tempo_cache/`.
+- Decoding runs at ~1 replay/s per core the first time. Re-runs take seconds.
+
+**Reading the output** (renoir-07c vs renoir-00-base, pool, 125 paired fixtures):
+
+```
+map                      ref        n    cand  parent   delta   95% CI
+Default                  top10     12    -1.6     4.7    -6.3   [-11.1, -1.9]
+Trophy                   top10     12    14.7    12.5    +2.2   [-1.7, +6.2]
+...
+tempo delta (candidate - parent, rounds, maps weighted equally; negative = faster): -1.17  95% CI [-2.42, +0.04]
+guards ...  ally head-on /1k  2.013 -> 2.849 (worse by >10%)
+VERDICT: NO GAIN (a 3-round improvement is excluded; keep the parent)
+```
+
+| Verdict | Rule | What to do |
+|---|---|---|
+| **ACCEPT** | delta ≤ −3 rounds, the 95 % CI is entirely below 0, and no map is significantly slower by more than 5 rounds | keep the change |
+| **NO GAIN** | the CI rules out a 3-round gain (lower bound > −3) | keep the parent; the change is too small to matter for the opening |
+| **REJECT** | the CI is entirely above 0 | the candidate is slower |
+| **INCONCLUSIVE** | anything else | add seeds (the line says how many fixtures would settle it); do not tune on the same games |
+
+**Why 3 rounds.**
+
+- In the field, 3 rounds of tempo is worth ≈ 5 win points at 50 % (≈ 50 Elo); 10 rounds ≈ 16 points.
+- Our live gap to the top ten is ~23–26 rounds. 3 rounds is an eighth of it.
+- It is resolvable on current panels. The within-map spread of tempo on the local pool is ~10 rounds (field 20), so a
+  3-round change needs ~85–170 side-games per arm depending on how well seeds pair. That is one pool run.
+
+**Where everyone stands** (live corpus, rounds behind the eight-team reference; median per map, maps weighted equally):
+
+| cohort | rounds behind |
+|---|---|
+| top 10 | 3.1 (includes SSS and Cutlery) |
+| ranks 11–30 | 12.0 |
+| ranks 31–50 | 14.1 |
+| us (all team-7 games) | 26.1 |
+| us since 29 Sep 06:00 | 22.9 |
+
+Per map, us / top 10:
+
+| map | us | top 10 |
+|---|---|---|
+| PD 10 | 60 | 5 |
+| PD | 43 | 3 |
+| Devil | 35 | 7 |
+| Trophy | 34 | 3 |
+| Autarky | 32 | 1 |
+| Trauma | 29 | 4 |
+| QoS | 26 | 4 |
+| Portals | 14 | 3 |
+| Default | 12 | 2 |
+| Slithery | 8 | 1 |
+| Schooltime | −5 | 1 |
+
+Almost all of our gap is income, not loss: churn costs us the pearls dead newborns never eat, not the length itself.
+
+**Pitfalls.**
+
+- **Tempo depends on the opponents.** Compare a candidate only with its parent on the same panel. Absolute local
+  numbers are not field numbers: the base scores ~5 rounds behind on the local pool, and ~23 live.
+- **Ignore drift on its own.** Every cohort's drift is positive against a median reference; compare it between arms.
+- **Eliminated sides** keep their last state, so their lag grows one round per round. That is intended.
+
+Validation, definitions and the corpus numbers: `docs/findings/2026-09-30-s1-T-tempo-metric.md`.
+
 
 ## Summary
 
@@ -13,7 +161,7 @@ Optimise locally against three things. First, a **map-normalised economy curve**
 - **The economy gap is about 20% and consistent.** The zoo's median economy sits at 0.91–1.03 of the field median at every checkpoint. Field winners sit at 1.17–1.25 and the top ten teams at 1.13–1.17. Our best bots (chaewon-y04 1.28, yuna-v05 1.20 at r100) already match winners early.
 - **Self-inflicted deaths behave like hygiene, not strategy.**
   - They are the most stable metrics we have (seed ICC 0.91–0.98, opponent share ≤ 0.09). They are the most bot-owned (the same team ranks the same on other maps: 0.6–0.86 correlation in the field).
-  - The top ten teams have a median of 0 wall and self deaths, against 4.0 and 3.0 per 1k dragon-turns in the zoo.
+  - The top ten teams have a median of 0 wall and self deaths, against 4.0 and 3.0 per 1k dragon-turns in the zoo. *(30 Sep: that is a per-side-game median. Pooled over 40k games the top ten run 5.3 wall and 3.8 own-body per 1k in rounds 0–150, plus 6.7 chosen deaths (suicide and invalid). See "Start here", point 3.)*
   - But they do not predict a team's rating (ρ ≈ 0). Within a game they even come slightly with winning (+0.20 log-odds live), because busy, winning swarms also bump into themselves more.
   - So they are safe to push down, as long as the economy curve does not drop.
 
@@ -110,7 +258,8 @@ The best zoo bots already eat like field winners. yuna-v05 is at 1.20 and chaewo
 
 | Tier | Metric | Direction | Zoo | Field | Field winners | Top 10 | Target |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 Economy | Economy curve `pearls@{50,100,150,250}\|map` | up | chart | 1.00 | chart | chart | ≥ 1.20 at every checkpoint |
+| 0 Opening | **Tempo**: rounds behind the top-ten net-income curve, r10–150 (`tools/s1/tempo_gate.py`) | down | panel-relative | — | — | 3.1 (us live 26) | each step: ≤ −3 rounds vs parent (gate) |
+| 1 Economy | Economy curve `pearls@{50,100,150,250}\|map` *(diagnostic since 30 Sep: counts recycled corpses, L29)* | up | chart | 1.00 | chart | chart | ≥ 1.20 at every checkpoint |
 | 1 Economy | Dragons at r100 `units@100\|map` | up | 0.89 | 1.00 | 1.28 | 1.14 | ≥ 1.15 |
 | 1 Economy | Length at r100 `total@100\|map` | up | 0.87 | 1.00 | 1.26 | 1.15 | ≥ 1.15 |
 | 1 Economy | Births by r100 `births@100\|map` | up | 0.91 | 1.00 | 1.23 | 1.16 | ≥ 1.15 |
@@ -118,8 +267,8 @@ The best zoo bots already eat like field winners. yuna-v05 is at 1.20 and chaewo
 | 2 Hygiene | Kelp deaths `death_wall_per1k` | down | 4.01 | 2.22 | 2.12 | 0.00 | < 1 |
 | 2 Hygiene | Own-body deaths `death_self_per1k` | down | 3.00 | 1.81 | 2.15 | 0.00 | < 1 |
 | 2 Hygiene | Ally-body deaths `death_ally_body_per1k` | down | 1.51 | 0.98 | 1.14 | 0.56 | < 0.8 |
-| 2 Hygiene | Ally head-on deaths `death_h2h_ally_per1k` | down | 0.79 | 0.31 | 0.45 | 0.50 | < 0.5 |
-| 2 Hygiene | No-valid-action deaths `death_invalid_per1k` | down | 0.00 | 0.00 | 0.00 | 0.00 | 0 (ouroboros-m01 has 10.9: a bug) |
+| 2 Hygiene | Ally head-on deaths `death_h2h_ally_per1k` | down | 0.79 | 0.31 | 0.45 | 0.50 | < 0.5 *(a portal-exit event; read it with per-transit death within 3 rounds: top ten 0.20, us 0.28)* |
+| 2 Hygiene | No-valid-action deaths `death_invalid_per1k` | down | 0.00 | 0.00 | 0.00 | 0.00 | 0 for our bots (ouroboros-m01 has 10.9: a bug; our 835 live ones are all age-0 newborns). The top ten use invalid actions and suicides on purpose (2.1 + 4.6 per 1k): not a target for them |
 | 3 Proxy | Bed capture `bed_capture_share` | up | 0.46 | 0.46 | 0.61 | 0.54 | beat the same panel |
 | 3 Proxy | Pearl share at r150 `pearls@150\|rel` | up | 0.50 | 0.50 | 0.62 | 0.55 | beat the same panel |
 | 3 Proxy | Territory at r100 `territory@100` | up | 0.50 | 0.50 | 0.58 | 0.52 | beat the same panel |
@@ -134,6 +283,7 @@ Six of eight zoo bots share the kelp and self-collision habit; kazuha-s01 and ou
 Optimise tier 1 and tier 2 jointly, and accept a change only if the win rate against the panel does not drop. Each metric below has a cheap way to game it that loses games.
 
 - **Fewer self-inflicted deaths by playing small.** kazuha-s01 and hunter-v20 have the fewest self-inflicted deaths in the zoo (7.9 and 9.7 per 1k) and win 19% and 12%. Hygiene counts only when the economy curve holds or rises in the same run.
+- **Economy curve by feeding the swarm to itself** (30 Sep). Pearls eaten from our own corpses count as economy. Renoir 07c passed the +0.05 bar on the pool through churn, while the tempo gate, which ignores recycled corpses, says NO GAIN and ally head-on rose 42 %. Decide opening changes on tempo.
 - **Economy curve by splitting into dust.** Births and pearls rise when a bot splits constantly into 2-segment children. Guard with `newborn_deaths10_per100` (zoo 33 per 100 births; the field is the same, winners 31). Also guard with length at r100, which must rise with pearls. The retention gap in the chart is this failure already happening.
 - **Low concentration by never building a crown.** `top1_share@100` should be low early. `total_share@250` (log-odds 2.2 zoo, 2.4 field) and the final longest dragon still decide games, so check the r250 share whenever early concentration moves.
 - **Relative shares by picking soft opponents.** A tier 3 metric is only comparable against the same panel on the same maps and seeds. Never compare tier 3 numbers across panels.
@@ -146,6 +296,8 @@ Three tempting metrics should stay diagnostics, not targets:
 - `enemy_caused_deaths_per1k` — it strongly predicts losing (−1.5). But it is 16% opponent and shows no cross-map consistency in the zoo (−0.03), so it is not a bot trait.
 
 ## How to use it
+
+*(30 Sep: for lanes, step 4 is superseded by D-032: paired fixtures, seeds 1–3, an interval gate, implemented in `scorecard.py`. For changes aimed at the opening, run the tempo gate as well; see "Start here" at the top.)*
 
 One candidate against the z1 panel is 140 side-games: 7 opponents × 10 live maps × 2 seats, at seed 1. That is enough to see a change of half the typical gap between two zoo bots on every tier 1 and tier 2 metric.
 
@@ -169,7 +321,7 @@ These are 80% power and 5% two-sided, from the residual spread after map, bot an
 
    Otherwise rerun at seed 2 before deciding.
 
-A single-bot scorecard (one command, one row per candidate, deltas against its parent) does not exist yet. It is the obvious next thing to build on top of `benchmarks.py`.
+The single-bot scorecard now exists (R-4): `python -m tools.analysis.features.scorecard bots/<candidate> --parent bots/<parent>`. It prints the tier tables, W-L-D and the D-032 gate line. The tempo gate is `python3 tools/s1/tempo_gate.py <candidate run> <parent run>`.
 
 ## Evidence
 

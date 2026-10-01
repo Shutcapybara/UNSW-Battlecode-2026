@@ -10,6 +10,23 @@ import numpy as np
 from statistics import pstdev
 
 CHECKPOINTS = (25, 50, 100, 150, 250, 400, 499)
+
+
+def extract_one(args):
+    """Pool worker for the CLI: (path, cache, meta) -> extract() output or an
+    error row. Module-level (not __main__) so spawn-based process pools can
+    pickle it on platforms without fork (macOS)."""
+    path, cache, meta = args
+    from tools.analysis.features.frame import load
+    from tools.analysis.features.extract import extract
+    from tools.analysis.features.checks import v0_checks
+    try:
+        g = load(path, cache)
+        out = extract(g, meta)
+        out['checks'] = v0_checks(g, out)
+        return out
+    except Exception as e:  # keep going; report
+        return dict(error=f'{path}: {type(e).__name__}: {e}')
 SAMPLE = 5                   # rounds between territory / EPG / enclosure samples
 VIEW = 3                     # 7x7 view = Chebyshev radius 3
 REACH_STEPS = 5              # enclosure: cells reachable within 5 steps, bodies blocked

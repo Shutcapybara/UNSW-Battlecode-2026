@@ -10,17 +10,9 @@ from pathlib import Path
 
 
 def _one(args):
-    path, cache, meta = args
-    from tools.analysis.features.frame import load
-    from tools.analysis.features.extract import extract
-    from tools.analysis.features.checks import v0_checks
-    try:
-        g = load(path, cache)
-        out = extract(g, meta)
-        out['checks'] = v0_checks(g, out)
-        return out
-    except Exception as e:  # keep going; report
-        return dict(error=f'{path}: {type(e).__name__}: {e}')
+    # kept for compatibility; the CLI uses the importable extract.extract_one
+    from tools.analysis.features.extract import extract_one
+    return extract_one(args)
 
 
 def main(argv=None):
@@ -66,7 +58,8 @@ def main(argv=None):
     acc = {k: [] for k in ('side_rows', 'series', 'samples', 'dragons', 'deaths', 'checks', 'exposure')}
     errors = []
     with ProcessPoolExecutor(a.jobs) as ex:
-        for n, out in enumerate(ex.map(_one, jobs, chunksize=4), 1):
+        from tools.analysis.features.extract import extract_one
+        for n, out in enumerate(ex.map(extract_one, jobs, chunksize=4), 1):
             if 'error' in out:
                 errors.append(out['error'])
                 continue

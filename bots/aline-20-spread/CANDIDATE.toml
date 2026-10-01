@@ -1,0 +1,12 @@
+name = "aline-20-spread"
+lineage = "aline"
+lane = "rb"
+author = "claude-opus-5.5/rb"
+language = "c++"
+lineage_parent = "aline-17-sym-seal"
+mechanism = "density_ally_weight 0.10 -> 0.40 on 17: targets in regions allies report as busy are discounted more"
+expected_change = "+ p@50/p@100 on open maps (default, trophy, queen); flat elsewhere"
+hypothesis = ""
+params = ["density_ally_weight=0.40"]
+status = "candidate (not registered)"
+fingerprint = "d44aaed1d7636af74e30a2260f349ba2762fe99abf13d7713599801b4fa21d83"

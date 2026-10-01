@@ -1,0 +1,122 @@
+[
+ {
+  "bucket": "0-24",
+  "src": "mimic",
+  "turns": 6829,
+  "split_rate_elig": 0.4097777777777778,
+  "eats_per100": 11.55366817982135,
+  "death_hitHeadToHead_per100": 1.1129008639625129,
+  "death_hitWall_per100": 2.5772441060184508,
+  "death_hitOtherBody_per100": 0.014643432420559379,
+  "death_hitSelf_per100": 0.0,
+  "death_noValidAction_per100": 0.0
+ },
+ {
+  "bucket": "0-24",
+  "src": "real",
+  "turns": 7587,
+  "split_rate_elig": 0.4441512752858399,
+  "eats_per100": 11.625148279952551,
+  "death_hitHeadToHead_per100": 0.9489916963226572,
+  "death_hitWall_per100": 2.332937920126532,
+  "death_hitOtherBody_per100": 0.039541320680110716,
+  "death_hitSelf_per100": 0.0,
+  "death_noValidAction_per100": 0.0
+ },
+ {
+  "bucket": "100-199",
+  "src": "mimic",
+  "turns": 63965,
+  "split_rate_elig": 0.12076312856487248,
+  "eats_per100": 7.982490424450871,
+  "death_hitHeadToHead_per100": 0.9880403345579614,
+  "death_hitWall_per100": 1.6118189634956617,
+  "death_hitOtherBody_per100": 0.11256155710153991,
+  "death_hitSelf_per100": 0.0,
+  "death_noValidAction_per100": 0.0
+ },
+ {
+  "bucket": "100-199",
+  "src": "real",
+  "turns": 80128,
+  "split_rate_elig": 0.11572594959176428,
+  "eats_per100": 8.261781150159745,
+  "death_hitHeadToHead_per100": 1.1593949680511182,
+  "death_hitWall_per100": 1.290435303514377,
+  "death_hitOtherBody_per100": 0.15600039936102236,
+  "death_hitSelf_per100": 0.0,
+  "death_noValidAction_per100": 0.0
+ },
+ {
+  "bucket": "200-499",
+  "src": "mimic",
+  "turns": 175903,
+  "split_rate_elig": 0.05954449546977783,
+  "eats_per100": 6.9930586743830405,
+  "death_hitHeadToHead_per100": 0.7919137251780811,
+  "death_hitWall_per100": 1.221127553253782,
+  "death_hitOtherBody_per100": 0.15690465768065354,
+  "death_hitSelf_per100": 0.008527427047861606,
+  "death_noValidAction_per100": 0.0
+ },
+ {
+  "bucket": "200-499",
+  "src": "real",
+  "turns": 214249,
+  "split_rate_elig": 0.06017275360785196,
+  "eats_per100": 7.144024009446952,
+  "death_hitHeadToHead_per100": 0.8536795971043039,
+  "death_hitWall_per100": 1.0282428389397384,
+  "death_hitOtherBody_per100": 0.21096947943747696,
+  "death_hitSelf_per100": 0.012135412534014161,
+  "death_noValidAction_per100": 0.0004667466359236216
+ },
+ {
+  "bucket": "25-49",
+  "src": "mimic",
+  "turns": 11033,
+  "split_rate_elig": 0.43870402802101577,
+  "eats_per100": 10.749569473397989,
+  "death_hitHeadToHead_per100": 1.2417293573823982,
+  "death_hitWall_per100": 1.9758905102873199,
+  "death_hitOtherBody_per100": 0.03625487174839119,
+  "death_hitSelf_per100": 0.0,
+  "death_noValidAction_per100": 0.0
+ },
+ {
+  "bucket": "25-49",
+  "src": "real",
+  "turns": 13297,
+  "split_rate_elig": 0.47452471482889735,
+  "eats_per100": 11.31082198992254,
+  "death_hitHeadToHead_per100": 1.097992028277055,
+  "death_hitWall_per100": 1.887643829435211,
+  "death_hitOtherBody_per100": 0.10528690682108746,
+  "death_hitSelf_per100": 0.0,
+  "death_noValidAction_per100": 0.0
+ },
+ {
+  "bucket": "50-99",
+  "src": "mimic",
+  "turns": 29657,
+  "split_rate_elig": 0.28890097932535364,
+  "eats_per100": 9.222106079509054,
+  "death_hitHeadToHead_per100": 1.1700441716963954,
+  "death_hitWall_per100": 1.638736217419159,
+  "death_hitOtherBody_per100": 0.09104090096773106,
+  "death_hitSelf_per100": 0.0,
+  "death_noValidAction_per100": 0.0
+ },
+ {
+  "bucket": "50-99",
+  "src": "real",
+  "turns": 37048,
+  "split_rate_elig": 0.29667149059334297,
+  "eats_per100": 10.259663139710646,
+  "death_hitHeadToHead_per100": 1.3037141006262147,
+  "death_hitWall_per100": 1.6546102353703305,
+  "death_hitOtherBody_per100": 0.12416324767868711,
+  "death_hitSelf_per100": 0.0,
+  "death_noValidAction_per100": 0.0
+ }
+]

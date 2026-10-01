@@ -47,6 +47,12 @@ class QuotaFillerTest(unittest.TestCase):
         self.assertEqual(quota_filler.hourly_remaining(self.cfg, quota, 'dev', 0), 10)
         self.assertEqual(quota_filler.hourly_remaining(self.cfg, {'field': {'unknown': True}}, 'field'), 0)
 
+    def test_expired_quota_block_does_not_hide_available_hourly_allowance(self):
+        expired = {'field': {'used': 0, 'unknown': False, 'blocked_until': 90}}
+        active = {'field': {'used': 0, 'unknown': False, 'blocked_until': 110}}
+        self.assertEqual(quota_filler.hourly_remaining(self.cfg, expired, 'field', now=100), 60)
+        self.assertEqual(quota_filler.hourly_remaining(self.cfg, active, 'field', now=100), 0)
+
     def test_toggle_persists_and_is_easy_to_reverse(self):
         root = Path(tempfile.mkdtemp())
         try:

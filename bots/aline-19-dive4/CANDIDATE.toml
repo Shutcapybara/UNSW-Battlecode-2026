@@ -1,0 +1,12 @@
+name = "aline-19-dive4"
+lineage = "aline"
+lane = "rb"
+author = "claude-opus-5.5/rb"
+language = "c++"
+lineage_parent = "aline-17-sym-seal"
+mechanism = "dive_value 3 -> 4 on the accepted 17 (symmetry known)"
+expected_change = "+ p@50/p@100 on portal-gated maps; units flat (portals replays: sym+dive4 units 20.1 vs sym 20.3; dive5 alone 14.0)"
+hypothesis = ""
+params = ["dive_value=4.0"]
+status = "candidate (not registered)"
+fingerprint = "747d3170a41e49f50acfd7fb4d0c938288d2058880d08f776dd9c4c7d262598b"

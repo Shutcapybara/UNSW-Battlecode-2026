@@ -1,0 +1,27 @@
+name = "ra-09-monoco-newborn-escape"
+lineage = "monoco"
+author = "codex/ra"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Starting the existing newborn escape routine in slightly more constrained spawn topology will reduce early child deaths and improve retained material."
+mechanism = "When enabled, raise the measured topology-area threshold for newborn escape from 11 to 15; switch-off restores the Ares V06 value."
+expected_change = "Reduce newborn_deaths10_per100 by at least 25% and raise mean map-normalized pearl economy by at least 0.05; r100 dragons and length must not fall."
+priority = 203
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/hub/prompts/2026-09-29-R-index.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-30-cx-c01-eff.md",
+    "docs/findings/2026-09-30-cx-f01-leaks.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Ares V06, atlas off: default-on switch for a slightly more permissive existing newborn escape trigger; parent value restored by switch-off."

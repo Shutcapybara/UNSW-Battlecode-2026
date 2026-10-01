@@ -1,0 +1,12 @@
+name = "aline-12-dive4"
+lineage = "aline"
+lane = "rb"
+author = "claude-opus-5.5/rb"
+language = "c++"
+lineage_parent = "aline-01-nodevil"
+mechanism = "dive_value 3 -> 4 (dose test between 01 and dive5)"
+expected_change = "most of dive5"s p@50 gain with a smaller tier-2 rise"
+hypothesis = ""
+params = ["dive_value=4.0"]
+status = "candidate (not registered)"
+fingerprint = "f104f38c7e44d1441ee66305e1ee203b7e5dbec088e8dbd4f13d92fe86d16fb6"

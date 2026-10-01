@@ -1,0 +1,18 @@
+name = "verso-04-hb1000-fastdecode"
+lineage = "verso"
+author = "claude-opus-5.5/verso"
+language = "c++"
+lineage_parent = "verso-03-hb1000-prior"
+hypothesis = "A larger Heartbreaker direction prior generalises better off-pool (300 -> 540 -> 2,251 rounds measured); the question is how much of it fits the 4 MiB upload and the judge's first-turn CPU budget."
+mechanism = "verso-03 with a single-pass (non-recursive) decoder. lam_dir = 1. Platform verso-p5-platform (= p4 + compact and direct embedded-head formats), inert otherwise."
+expected_change = "Generalisation win and economy up vs verso-02; pool unchanged."
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-10-01-verso-three-tier-loop.md", "claude/verso-status.md"]
+summary = "NOT DEPLOYABLE: same first-turn CPU failure in the sandbox; decisions identical to verso-03 natively (0 divergent). Not registered."
+
+[activation_contract]
+kind = "legacy_none"
+note = "learned prior on every move; identity by fingerprint"

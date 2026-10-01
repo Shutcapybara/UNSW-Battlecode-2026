@@ -1,0 +1,25 @@
+name = "ares-v31-take-pearl-before-split"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v30-dead-end-pearl-before-split"
+hypothesis = "Match 658569 showed V28 splitting a length-4 dragon one move before the final pearl at a dead-end. If the best movement immediately eats that pearl, taking it first preserves the added length for the next split decision."
+mechanism = "Retain V30's farm and constrained-route guards. Also, when the best legal movement simulation immediately eats one or more pearls and the current five-step body-aware reach is critical, defer routine, opening, and emergency splits for that action."
+expected_change = "On a critical approach to a pearl, collect it before splitting so the longer parent reaches the next split decision."
+priority = 224
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v28-minimum-sacrifice-enclosure-split.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "bots/ares-v28-minimum-sacrifice-enclosure-split/README.md",
+]
+summary = "V31 supplements V30's route guard with a direct immediate-pearl check after V30 produced no action changes on the matched local screen; focused screen pending."

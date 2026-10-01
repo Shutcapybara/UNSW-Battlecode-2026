@@ -1,0 +1,24 @@
+name = "ares-v34-crown-dash-avoidance"
+lineage = "ares"
+author = "codex/ares"
+language = "c++"
+lineage_parent = "ares-v33-split-portal-route-handoff"
+hypothesis = "The elected length leader should preserve its length and keep away from nearby enemy heads that can dash into head-to-head contact, including when the enemy tail is clipped by vision."
+mechanism = "Retain V33 portal handoff. For crown moves, treat clipped enemy bodies as capable of the full dash, penalize predicted enemy head positions and their adjacent head-contact cells, and prefer increasing distance from nearby enemy heads. Crowns never initiate a head-to-head trade."
+expected_change = "In match 669722, the round-477 king avoids moving into the adjacent contact envelope of enemy dragon 414 and survives its dash, preserving the team's length lead."
+priority = 226
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-ares-v34-crown-dash-avoidance.md",
+    "https://game.battlecode.au/visualiser?match=658574",
+]
+summary = "Rejected experimental branch. The broad crown retreat variant scored 7–13 vs V33 over ten live maps and both seats on seed 1, with zero runner errors; losses concentrated on Portals, Queen of Spades, and Slithery Fight. See docs/findings/2026-09-30-ares-v35-crown-clipped-dash-threat.md."

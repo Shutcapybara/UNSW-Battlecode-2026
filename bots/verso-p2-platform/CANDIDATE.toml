@@ -1,0 +1,18 @@
+name = "verso-p2-platform"
+lineage = "verso"
+author = "claude-opus-5.5/verso"
+language = "c++"
+lineage_parent = "verso-00-base"
+hypothesis = "X-1 platform revision 2: head outputs as features for later heads, a split output on the q head, split exploration for data games."
+mechanism = "Schema + h_dir_{F,R,L}; q head K = 4 adds beta_s * (q[S] - max q[move]) to the production / opening split scores; eps_split flips production-split decisions in data games. Inert at the compiled defaults."
+expected_change = "none at the compiled defaults (platform only; not an accept candidate)"
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-10-01-verso-three-tier-loop.md", "claude/verso-status.md"]
+summary = "Golden parity with maelle-01-nodevil (13,982 turns, 0 divergent) and with the c0-hb-small~l1 arm at lam_dir = 1 (12,217 turns, 0 divergent)."
+
+[activation_contract]
+kind = "legacy_none"
+note = "platform; identity by fingerprint"

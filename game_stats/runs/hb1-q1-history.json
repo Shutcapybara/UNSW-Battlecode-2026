@@ -1,0 +1,370 @@
+{
+ "gate": {
+  "rows_match_q1_sample": true,
+  "n_train": 533434,
+  "n_test": 128379,
+  "hist_cols": [
+   "hist_a1",
+   "hist_a2",
+   "hist_a3",
+   "hist_a4",
+   "hist_a5",
+   "hist_a6",
+   "hist_turn_ewm",
+   "hist_lr_ewm",
+   "hist_since_turn",
+   "hist_eat10"
+  ],
+  "trail_cols": [
+   "trail_eseg_m0.7",
+   "trail_eseg_f0.7",
+   "trail_eseg_r0.7",
+   "trail_ehead_m0.7",
+   "trail_ehead_f0.7",
+   "trail_ehead_r0.7",
+   "trail_aseg_m0.7",
+   "trail_aseg_f0.7",
+   "trail_aseg_r0.7",
+   "trail_ahead_m0.7",
+   "trail_ahead_f0.7",
+   "trail_ahead_r0.7",
+   "trail_self_f0.7",
+   "trail_self_r0.7",
+   "trail_eseg_m0.9",
+   "trail_eseg_f0.9",
+   "trail_eseg_r0.9",
+   "trail_ehead_m0.9",
+   "trail_ehead_f0.9",
+   "trail_ehead_r0.9",
+   "trail_aseg_m0.9",
+   "trail_aseg_f0.9",
+   "trail_aseg_r0.9",
+   "trail_ahead_m0.9",
+   "trail_ahead_f0.9",
+   "trail_ahead_r0.9",
+   "trail_self_f0.9",
+   "trail_self_r0.9",
+   "trail_echo_kelp",
+   "trail_echo_ally",
+   "trail_echo_allyHead",
+   "trail_echo_enemy",
+   "trail_echo_enemyHead",
+   "trail_echo_total",
+   "trail_grad_e_f",
+   "trail_grad_e_r",
+   "trail_grad_a_f",
+   "trail_grad_a_r"
+  ],
+  "v5": {
+   "acc": 0.9746843331074397,
+   "macro_f1": 0.9251759179725567,
+   "logloss": 0.06325741340407204
+  },
+  "v5+hist": {
+   "acc": 0.974645385927605,
+   "macro_f1": 0.9249286206300145,
+   "logloss": 0.06329688910288982
+  },
+  "v5+trail": {
+   "acc": 0.9745752810039026,
+   "macro_f1": 0.9248198066488025,
+   "logloss": 0.06386793941115906
+  },
+  "v5+hist+trail": {
+   "acc": 0.9744973866442331,
+   "macro_f1": 0.9245159163478274,
+   "logloss": 0.06379239896147147
+  },
+  "top_gain": [
+   [
+    "n_exit_any",
+    276374.65625
+   ],
+   [
+    "mem_since_eat",
+    240091.703125
+   ],
+   [
+    "length",
+    211493.109375
+   ],
+   [
+    "n_exit_ord",
+    177796.359375
+   ],
+   [
+    "mem_len_delta",
+    129626.4453125
+   ],
+   [
+    "round",
+    91515.953125
+   ],
+   [
+    "vis_enemy_heads",
+    37056.25
+   ],
+   [
+    "units",
+    19377.462890625
+   ],
+   [
+    "vis_kelp",
+    17384.47265625
+   ],
+   [
+    "mem_since_split",
+    9787.2861328125
+   ],
+   [
+    "cL_area",
+    8375.482421875
+   ],
+   [
+    "cR_area",
+    8358.5888671875
+   ],
+   [
+    "ally_back",
+    7568.5419921875
+   ],
+   [
+    "vis_enemy_seg",
+    7344.5458984375
+   ],
+   [
+    "trail_ehead_m0.7",
+    7132.5771484375
+   ],
+   [
+    "cF_area",
+    7007.39306640625
+   ],
+   [
+    "pearl_back",
+    6605.06787109375
+   ],
+   [
+    "near_enemy_head",
+    6439.15478515625
+   ],
+   [
+    "vis_ally_heads",
+    6139.19921875
+   ],
+   [
+    "cF_pearl",
+    6071.091796875
+   ],
+   [
+    "trail_self_f0.7",
+    5312.57763671875
+   ],
+   [
+    "near_pearl",
+    4934.6396484375
+   ],
+   [
+    "n_exit_portal",
+    4884.0908203125
+   ],
+   [
+    "cF_block",
+    4836.98828125
+   ],
+   [
+    "cF_eh_adj",
+    4677.25244140625
+   ]
+  ],
+  "mlp_v5+hist+trail": {
+   "acc": 0.9701586708106466,
+   "macro_f1": 0.912633093409149,
+   "logloss": 0.08174207698387213
+  }
+ },
+ "direction": {
+  "rows_match_q1_sample": true,
+  "n_train": 728039,
+  "n_test": 179436,
+  "hist_cols": [
+   "hist_a1",
+   "hist_a2",
+   "hist_a3",
+   "hist_a4",
+   "hist_a5",
+   "hist_a6",
+   "hist_turn_ewm",
+   "hist_lr_ewm",
+   "hist_since_turn",
+   "hist_eat10"
+  ],
+  "trail_cols": [
+   "trail_eseg_m0.7",
+   "trail_eseg_f0.7",
+   "trail_eseg_r0.7",
+   "trail_ehead_m0.7",
+   "trail_ehead_f0.7",
+   "trail_ehead_r0.7",
+   "trail_aseg_m0.7",
+   "trail_aseg_f0.7",
+   "trail_aseg_r0.7",
+   "trail_ahead_m0.7",
+   "trail_ahead_f0.7",
+   "trail_ahead_r0.7",
+   "trail_self_f0.7",
+   "trail_self_r0.7",
+   "trail_eseg_m0.9",
+   "trail_eseg_f0.9",
+   "trail_eseg_r0.9",
+   "trail_ehead_m0.9",
+   "trail_ehead_f0.9",
+   "trail_ehead_r0.9",
+   "trail_aseg_m0.9",
+   "trail_aseg_f0.9",
+   "trail_aseg_r0.9",
+   "trail_ahead_m0.9",
+   "trail_ahead_f0.9",
+   "trail_ahead_r0.9",
+   "trail_self_f0.9",
+   "trail_self_r0.9",
+   "trail_echo_kelp",
+   "trail_echo_ally",
+   "trail_echo_allyHead",
+   "trail_echo_enemy",
+   "trail_echo_enemyHead",
+   "trail_echo_total",
+   "trail_grad_e_f",
+   "trail_grad_e_r",
+   "trail_grad_a_f",
+   "trail_grad_a_r"
+  ],
+  "v5": {
+   "acc": 0.828668717537172,
+   "macro_f1": 0.8024640133336431,
+   "logloss": 0.4132824625202216
+  },
+  "v5+hist": {
+   "acc": 0.8302403085222586,
+   "macro_f1": 0.8044706548845908,
+   "logloss": 0.41071963156918917
+  },
+  "v5+trail": {
+   "acc": 0.8295938384716557,
+   "macro_f1": 0.8036626932765287,
+   "logloss": 0.4118864501209457
+  },
+  "v5+hist+trail": {
+   "acc": 0.8305691165652378,
+   "macro_f1": 0.8049653095192778,
+   "logloss": 0.41019276789780634
+  },
+  "top_gain": [
+   [
+    "cF_run",
+    709649.375
+   ],
+   [
+    "cL_block",
+    442962.71875
+   ],
+   [
+    "n_exit_any",
+    406135.8125
+   ],
+   [
+    "cR_block",
+    390892.8125
+   ],
+   [
+    "cF_block",
+    344161.25
+   ],
+   [
+    "cF_area",
+    200843.6875
+   ],
+   [
+    "cF_allyh2",
+    107795.8359375
+   ],
+   [
+    "cL_pdist",
+    103835.15625
+   ],
+   [
+    "cR_pdist",
+    91786.875
+   ],
+   [
+    "cL_area",
+    88550.125
+   ],
+   [
+    "cL_run",
+    86775.9375
+   ],
+   [
+    "cR_area",
+    78075.75
+   ],
+   [
+    "cF_pdist",
+    69942.8203125
+   ],
+   [
+    "cR_run",
+    69891.6015625
+   ],
+   [
+    "cR_allyh2",
+    65717.0
+   ],
+   [
+    "cL_allyh2",
+    62993.31640625
+   ],
+   [
+    "pearl_front",
+    39500.65234375
+   ],
+   [
+    "vis_kelp",
+    35133.859375
+   ],
+   [
+    "cF_unvisited",
+    30679.287109375
+   ],
+   [
+    "g_1_0_pearl",
+    28590.7421875
+   ],
+   [
+    "pearl_left",
+    28142.62109375
+   ],
+   [
+    "pearl_right",
+    27958.083984375
+   ],
+   [
+    "length",
+    27831.03515625
+   ],
+   [
+    "g_2_1_occ",
+    26647.501953125
+   ],
+   [
+    "hist_turn_ewm",
+    25196.083984375
+   ]
+  ],
+  "mlp_v5+hist+trail": {
+   "acc": 0.816731313671727,
+   "macro_f1": 0.7898132751672117,
+   "logloss": 0.4389974572359121
+  }
+ }
+}

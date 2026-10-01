@@ -1,0 +1,4 @@
+# created by hand for the tools/cx meter test (template: `unswbc init --cpp`)
+[project]
+language = "c++"
+include = [ "*.cpp", "*.hpp", "*.cc", "*.hh", "*.c", "*.h" ]

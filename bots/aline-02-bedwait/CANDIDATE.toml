@@ -1,0 +1,12 @@
+name = "aline-02-bedwait"
+lineage = "aline"
+lane = "rb"
+author = "claude-opus-5.5/rb"
+language = "c++"
+lineage_parent = "aline-01-nodevil"
+mechanism = "bed_wait 0 -> 6: a bed that spawns up to 6 rounds after our arrival keeps a linearly discounted target value instead of 0"
+expected_change = "+ economy on fast-bed maps (portals, gen panel); hygiene flat"
+hypothesis = ""
+params = ["bed_wait=6.0"]
+status = "candidate (not registered)"
+fingerprint = "00e4901999f2e96ad6fa3b268ed8614cd6f15bb591bc58795ac220ace1b0801b"

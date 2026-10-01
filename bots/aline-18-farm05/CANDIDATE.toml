@@ -1,0 +1,12 @@
+name = "aline-18-farm05"
+lineage = "aline"
+lane = "rb"
+author = "claude-opus-5.5/rb"
+language = "c++"
+lineage_parent = "aline-17-sym-seal"
+mechanism = "trap_farm_factor 0.15 -> 0.05 on the accepted 17: cheaper pocket farming"
+expected_change = "small + economy (dearer farming is a cliff: 16 at 0.25 -0.074, 03 at 1.0 -0.068); wall deaths up"
+hypothesis = ""
+params = ["trap_farm_factor=0.05"]
+status = "candidate (not registered)"
+fingerprint = "f7d69bee198ad88b388548da3d2986a69b0e86a2c6324f447cfa65ae3b605038"

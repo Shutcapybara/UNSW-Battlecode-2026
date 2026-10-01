@@ -62,6 +62,38 @@ When a guild allowlist is configured, slash commands are synced to those
 guilds immediately. Without one, Discord global-command propagation can take
 up to about an hour.
 
+### Windows workstation
+
+This checkout includes a separate Windows environment and launcher. Install
+the optional package without changing the RL or game-tool environments:
+
+```powershell
+./build/discord-venv/Scripts/python.exe -m pip install -r tools/requirements-discord.txt
+```
+
+Put `DISCORD_BOT_TOKEN` and the access policy in
+`%LOCALAPPDATA%\JKS\discord.env`. For all members in one server, set
+`JKS_DISCORD_ALLOW_ALL_USERS=true`, put that server's ID in
+`JKS_DISCORD_ALLOWED_GUILD_IDS`, and leave the user and channel lists empty.
+An empty guild list allows all guilds where the bot is installed. For
+user-specific control, keep `JKS_DISCORD_ALLOW_ALL_USERS=false` and populate
+`JKS_DISCORD_ALLOWED_USER_IDS`. The token belongs in this local file, outside
+the repository, and values should not be quoted. Validate without connecting,
+then run in the foreground:
+
+```powershell
+./tools/hub/Run-DiscordBot.ps1 -ValidateOnly
+./tools/hub/Run-DiscordBot.ps1
+```
+
+To start it hidden now and again at the current Windows user's next logon, use
+the task installer. It first validates the token and user allowlist and will
+refuse to register an incomplete setup:
+
+```powershell
+./tools/hub/Register-DiscordBotTask.ps1
+```
+
 ## Keeping it running
 
 Run the module under the same supervisor as the hub actuator (systemd,

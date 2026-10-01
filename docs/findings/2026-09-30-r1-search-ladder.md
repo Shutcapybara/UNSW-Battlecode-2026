@@ -98,8 +98,7 @@ Tier 2 per 1,000 dragon-turns (change against L0):
 | cap ×8 only | −5 % | +4 % | +3 % | −7 % | 68/19/73 | 74/7/79 |
 | late cap ×8 only | −2 % | +2 % | −3 % | −3 % | 75/27/58 (p = 0.17) | **88/11/61 (p = 0.033)** |
 
-Decomposition runs still in progress when this was written (flood-only, sprint-only, whole-map late search) are
-appended in §Addendum.
+The flood-only, sprint-only and whole-map late-search arms are in §Addendum.
 
 ### Why wide search hurts the opening and helps later
 
@@ -202,6 +201,24 @@ Fixtures: Schooltime, Portals, Trauma, Big Empty, and the three densest `maps/ne
 
 Superseded partial runs are in `game_stats/runs/stale/`; they lacked the r50, r150 and r250 checkpoints.
 
-## Addendum — remaining decomposition runs
+## Addendum — remaining decomposition runs (z1 seed 1, deltas against L0)
 
-(filled below when the runs finish)
+| Arm | W–L | Econ mean | p@50 | p@100 | p@250 | Dragons@100 | Length@100 | Paired dragons / length@100 | Tier 2 |
+|---|---|---:|---:|---:|---:|---:|---:|---|---|
+| flood ×8 only (`lune-r1-05`) | 122–38 | +0.000 | +0.000 | +0.000 | +0.000 | +0.000 | +0.000 | 0/160/0 · 0/160/0 | all within ±1 % |
+| sprint ×8 only (`lune-r1-06`) | 120–40 | −0.001 | +0.000 | +0.000 | −0.005 | +0.000 | +0.000 | 0/160/0 · 0/160/0 | all within ±1 % |
+| late cap ×8 only (`lune-r1-07`) | 115–45 | +0.031 | +0.002 | −0.002 | +0.099 | +0.050 | +0.050 | 75/27/58 · 88/11/61 | −3 to +2 % |
+| late cap whole map (`lune-r1-08`) | 116–44 | +0.031 | +0.002 | −0.002 | +0.099 | +0.050 | +0.050 | 75/27/58 · 88/11/61 | −3 to +2 % |
+
+- **Flood caps.** They are inert at this scale. Every fixture is identical through r100, and only a handful of late
+  decisions differ. `flood_need` caps the room requirement at `len + 3 + len/3`, so the 24/40 → 64/112 change binds
+  only for dragons longer than about 28, which are rare and late.
+- **Sprint threshold.** It is also inert through r100: every fixture is identical. The only differences are after
+  r250 (two win flips, p@250 −0.005). This **refutes** the earlier hypothesis that the 3-step sprint threshold
+  explains the opening loss. The opening loss is all target-search reach (the "cap ×8 only" row).
+- **Late cap saturation.** The late cap saturates by 384. Removing it entirely changes one game's result and no
+  tier 1 metric at 3 d.p., so the value-bound prune stops the late search before 384 cells in practice. The late-cap
+  slope lies between 48 and 384. The next measurement for R-5 is the small end (96 and 192) and the phase boundary
+  (`search_cap_late_from`, now 40), not larger values.
+- **Verdict.** The recommendation is unchanged: `lune-r1-07-latecap8x-only`. `lune-r1-08` behaves the same and has no
+  cap left to bound it, so 07 is the safer choice.

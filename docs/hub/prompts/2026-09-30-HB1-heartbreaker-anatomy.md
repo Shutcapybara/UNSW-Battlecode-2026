@@ -54,7 +54,9 @@ with local-view features (`tools/team_recon_claude/features_v4.py` is the actor-
 name versioned), the accuracy of a shallow tree, a deep GBT, and a small MLP at predicting their choice, and the
 **information each feature family carries** (drop-family ablations). The gap between the shallow tree and the
 MLP on each decision is the measure of how much of that decision is a rule and how much is learned. Report the
-five gaps as the first table.
+five gaps as the first table. Add (L31): fit a regime model (HMM or change-point detection) to per-dragon action and
+feature sequences for Heartbreaker, three other top-30 teams and us; report whether behaviour segments into a few
+discrete regimes with sharp transitions (a state machine) or drifts continuously (a scored evaluator), and which.
 
 **Q2 — What is the wrapper, what is the policy.** The 27 Sep finding says validity is enforced outside the
 learned part (no invalid commands, wall moves only under total blockade). Test the wrapper hypothesis directly:

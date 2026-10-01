@@ -1,4 +1,5 @@
 import importlib.util
+import json
 from pathlib import Path
 import urllib.error
 
@@ -27,7 +28,16 @@ def test_load_api_key_uses_ignored_file_and_environment_override(tmp_path, monke
     key_file = tmp_path / ".battlecode-api-key"
     key_file.write_text("bc_from_file\n")
     monkeypatch.delenv("BATTLECODE_API_KEY", raising=False)
+    class HomePath:
+        @staticmethod
+        def home():
+            return tmp_path
+    monkeypatch.setattr(MODULE, "Path", HomePath)
     assert MODULE.load_api_key(key_file) == "bc_from_file"
+    store = tmp_path / ".unswbc" / "keys.json"
+    store.parent.mkdir()
+    store.write_text(json.dumps({MODULE.DEFAULT_BASE_URL: "bc_from_cli_store"}))
+    assert MODULE.load_api_key(key_file) == "bc_from_cli_store"
     monkeypatch.setenv("BATTLECODE_API_KEY", "bc_from_environment")
     assert MODULE.load_api_key(key_file) == "bc_from_environment"
 
@@ -43,6 +53,15 @@ def test_discovers_pages(monkeypatch):
 
     monkeypatch.setattr(MODULE, "request", fake_request)
     assert MODULE.discover_games(7, "https://game.battlecode.au") == [10, 11]
+
+
+def test_discovers_older_completed_games_after_pending_page(monkeypatch):
+    def fake_request(url, **_kwargs):
+        assert 'kind=ranked' in url
+        replay = '' if 'page=1' in url else "<a href='/battles/42'>Watch</a>"
+        return f"<p>1 of 2 games</p><table><tr><td><a href='/teams/7'>Team</a>{replay}</td></tr></table>".encode()
+    monkeypatch.setattr(MODULE, 'request', fake_request)
+    assert MODULE.discover_games(7, 'https://example.test', kind='ranked') == [42]
 
 
 def test_download_does_not_leak_key_to_signed_url(tmp_path, monkeypatch):

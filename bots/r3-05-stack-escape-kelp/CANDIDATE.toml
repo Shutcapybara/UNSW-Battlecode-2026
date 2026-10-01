@@ -1,0 +1,23 @@
+name = "r3-05-stack-escape-kelp"
+lineage = "ares"
+author = "glm/r3"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Step-3 stack of the two complementary step-2 holds: r3-04's kelp cost moved wall -27%/trapped -30%/newborn -15% but cost economy -0.072; r3-03's early escape split gained win share +5pp/economy +0.035 without moving its row. Stacked, the hygiene lever may pay its economy cost out of the escape split's production gain."
+mechanism = "Ares V06 + r3_escape_early AND r3_kelp_cost (the r3-03 v2 wiring: trapped-now escape split competes at -10; cramped landings with <3 known-open edges pay the kelp surcharge inside the trap penalty)."
+expected_change = "z1 seed 1: economy within -0.02 of V06 with wall/trapped/newborn rows down >=20% and win share not down; if the economy still pays >0.05 the stack fails and the leak programme needs post-transit navigation mechanisms instead."
+priority = 220
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-r3-ares-leaks.md",
+]
+summary = "FAIL, stack stops here per protocol. z1 seed 1 vs V06 seed 1: economy 1.1107->1.0042 (-0.107), win -1.25pp, births -0.161; hygiene wins survive (wall -33%, trapped 36.1->25.6, newborn ->17.3) but the two component costs compound (r3-04 alone -0.072) instead of composing. Gen panel not run."

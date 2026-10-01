@@ -259,6 +259,25 @@ class DaemonTest(unittest.TestCase):
         self.assertEqual(out['pushed_branches'][2]['error'], 'bad branch name')
         self.assertIn('r/ra', r(['git', 'branch', '--list', 'r/ra'], cwd=origin, capture_output=True, text=True).stdout)
 
+    def test_git_request_fetches_remote_branch_before_merging(self):
+        ctl = self.repo / 'hub-state' / 'control'
+        r = subprocess.run
+        env = dict(os.environ, GIT_AUTHOR_NAME='t', GIT_AUTHOR_EMAIL='t@t', GIT_COMMITTER_NAME='t', GIT_COMMITTER_EMAIL='t@t')
+        os.environ.update({k: env[k] for k in ('GIT_AUTHOR_NAME', 'GIT_AUTHOR_EMAIL', 'GIT_COMMITTER_NAME', 'GIT_COMMITTER_EMAIL')})
+        origin = self.tmp / 'origin.git'; other = self.tmp / 'other'
+        r(['git', 'init', '-q', '--bare', '-b', 'main', str(origin)], check=True)
+        for cmd in (['git', 'init', '-q', '-b', 'main'], ['git', 'commit', '-q', '--allow-empty', '-m', 'root'], ['git', 'remote', 'add', 'origin', str(origin)], ['git', 'push', '-q', '-u', 'origin', 'main']):
+            r(cmd, cwd=self.repo, env=env, check=True)
+        r(['git', 'clone', '-q', str(origin), str(other)], env=env, check=True)     # another host pushes a lane branch
+        for cmd in (['git', 'checkout', '-q', '-b', 'r/hb1'], ['git', 'commit', '-q', '--allow-empty', '-m', 'lane'], ['git', 'push', '-q', '-u', 'origin', 'r/hb1']):
+            r(cmd, cwd=other, env=env, check=True)
+        ctl.joinpath('git.json').write_text(json.dumps(dict(by='director', note='merge', quiet_minutes=0, merge=['origin/r/hb1'])))
+        with patch.object(actuator, 'git_sync', lambda repo, root, policy, actor='x', dry_run=False, now=None: dict(committed=[], skipped=[], merged=None, pushed=None, errors=[], attention=[])):
+            actuator.git_check(self.root, self.cfg, {}, self.log)
+        out = json.loads((ctl / 'git.done.json').read_text())
+        self.assertEqual(out['merged_branches'][0], dict(branch='origin/r/hb1', merged=True))
+        self.assertIn('lane', r(['git', 'log', '--oneline', '-3'], cwd=self.repo, capture_output=True, text=True).stdout)
+
     def test_set_mode_rewrites_or_appends_executor_section(self):
         set_mode(self.root, 'off')
         text = (self.root / 'hub.toml').read_text()

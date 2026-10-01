@@ -1,0 +1,12 @@
+name = "aline-21-symconf4"
+lineage = "aline"
+lane = "rb"
+author = "claude-opus-5.5/rb"
+language = "c++"
+lineage_parent = "aline-17-sym-seal"
+mechanism = "sym_min_conf 8 -> 4 on 17: decide the map symmetry on fewer confirmations"
+expected_change = "+ p@50/p@100 where detection is late (trauma first decision r120); flat elsewhere; wrong early decisions are withdrawn on contradiction"
+hypothesis = ""
+params = ["sym_min_conf=4"]
+status = "candidate (not registered)"
+fingerprint = "671016d7783bd9b121c57dfcd61ebb6ef3ec2bed136fb556c7d2af3cda84397d"

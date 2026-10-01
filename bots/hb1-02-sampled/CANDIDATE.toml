@@ -1,0 +1,18 @@
+name = "hb1-02-sampled"
+lineage = "hb1"
+author = "claude/hb1"
+language = "c++"
+lineage_parent = "hb1-01-structured"
+hypothesis = "hb1-01's argmax direction is a deterministic copy of a policy whose residual looks stochastic (Q1 calibration); argmax copies of stochastic policies fall into repetitive traps, which matches hb1-01's lower eat rate and higher wall-death rate vs real Heartbreaker."
+mechanism = "One change vs hb1-01: the direction is sampled from the direction GBT's probabilities over the wrapper-allowed moves (seeded per dragon) instead of the argmax. Gate, child size, sonar and wrapper unchanged."
+expected_change = "Closer to Heartbreaker's head-to-head record vs Ares V04 (28/40) and its early economy; per-turn agreement falls toward the sampled expectation (~0.73 direction)."
+priority = 0
+supersedes = ""
+status = "experiment (not registered)"
+
+[local_evidence]
+refs = [
+    "docs/hub/prompts/2026-09-30-HB1-heartbreaker-anatomy.md",
+    "claude/hb1-status.md",
+]
+summary = "HB-1 Q4. Q1/Q2 numbers in claude/hb1-status.md."

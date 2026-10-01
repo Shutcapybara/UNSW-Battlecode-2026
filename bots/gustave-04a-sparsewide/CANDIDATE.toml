@@ -1,0 +1,12 @@
+name = "gustave-04a-sparsewide"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "L02/L03: search width keyed on observed sparsity, no round threshold. The parent's round rules (late cap min(cap,384), which never binds since cap <= 160; and from r150 with <= 20 units max(cap,512)) are replaced by: a dragon whose previous target search met no pearl (seen or remembered) and no bed searches with max(cap, 1280) this turn."
+expected_change = "p@50/p@100 unchanged (opening dragons meet food within 160 nodes); p@150/p@250 up (late dragons in emptied areas find real targets rather than sector heuristics); tier-2 flat. Judged with --phase late as well as all."
+hypothesis = "L02 (0.7) / L03 (0.7): Lune's recommended selector - a cap scaled by pearls seen within the last search horizon rather than the round"
+params = ["sparse_wide=true", "sparse_wide_cap=1280"]
+status = "candidate (not registered)"
+fingerprint = "f611f1abd1858f4c685773e23058a6178d22784fc6c72d4c4003ba7c3ef54fd4"

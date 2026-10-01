@@ -1,0 +1,25 @@
+name = "r3-01-pair-memory"
+lineage = "ares"
+author = "glm/r3"
+language = "c++"
+lineage_parent = "ares-v06-expanded-search-support"
+hypothesis = "Ares transits at field volume (62.5 portal steps/game) and dies at 29.4/100 steps (team 306: 12.5); remembering survived transits per pair and the last-seen enemy danger at exits, then charging unverified entries, targets the wall+self near-portal bucket (44% of V06's near-portal deaths)."
+mechanism = "Ares V06 + F-1 pair memory: World records the last survived transit per portal pair (being alive verifies it) and derives exit-side danger from enemy DragonMem; a portal-entering step whose exit is not verified within r3_pair_fresh rounds pays r3_pair_cost, r3_pair_danger_cost when an enemy was remembered at the exit recently."
+expected_change = "Targeted row: near-portal deaths per 100 portal steps fall from 29.4 with wall+self near-portal deaths down, at unchanged transit volume (not a throttle: verified pairs cost nothing); pearls/100dt within 10%; BENCHMARKS gate on the rest."
+priority = 220
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-09-30-r3-ares-leaks.md",
+    "docs/findings/2026-09-30-cx-f01-leaks.md",
+    "docs/findings/2026-09-30-cx-d01-portals.md",
+]
+summary = "z1 seed 1 vs V06 (160 games): FAIL - economy mean 1.1107->1.0600 (-0.051), win share -5.62pp, own-body +14%. Targeted row moved via volume, not safety: portal len/1k 6.3->4.9 but steps/game 62.5->48.5 (-22%) and per-100-steps 29.4->31.8 (worse); wall+self per 100 steps 12.9->14.3. Same throttle signature as C1-F. Golden: all-off carrier 0/15178 turns; flag-on 29/8487 Portals turns."

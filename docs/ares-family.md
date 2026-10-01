@@ -153,6 +153,232 @@ caps and all other policy behavior are retained. The new snapshot is
 [here](../bots/ares-v09-deeper-bounded-search/). It has not been benchmarked;
 score and CPU/TLE behavior remain unmeasured.
 
+## Ares V21–V28 — dead-end split iterations
+
+These snapshots iterate from V19 against the dead-end feeding observations in the
+[September 29 live-loss review](findings/2026-09-29-tyr-v01-live-loss-review.md).
+All screens used unswbc 1.2.2, seed 1, sandbox execution, and direct Ares V19
+matchups. V21 through V24 received the full ten-map, both-seat panel; V25 through
+V27 were narrowed diagnostics; V28 advanced from an eight-game diagnostic to
+the full panel.
+
+| Version | Split change | Matched result | Decision |
+|---|---|---:|---|
+| V21 | Upgrade smaller selected splits to the largest safe child in critical enclosures | 9–11 | Rejected |
+| V22 | Fit split size to forecast child and parent room | 10–10 | Rejected |
+| V23 | Apply largest-child upgrade to pearl-rich under-room farms | 10–10 | Rejected |
+| V24 | Add a newborn handoff guard to V23 | 10–10 | Rejected |
+| V25 | Require an ordinary non-portal child exit | 2–2 on Portal and Slithery | Rejected; Portal 0–2 |
+| V26 | Require both farm and critical-reach signals | 2–2 on Portal and Slithery | Rejected; Portal 0–2 |
+| V27 | Also suppress the farm upgrade when portal topology is known | 0–4 on Portal and Slithery | Rejected |
+| V28 | Keep V19's critical trigger, but detach only two tail segments | **12–8** | Best measured child; experimental |
+
+[V28](../bots/ares-v28-minimum-sacrifice-enclosure-split/) changes only the
+split size used by V19's critical-enclosure fallback: `SPLIT 2` leaves the
+longer head parent intact, following the review's minimum-sacrifice
+recommendation. Its four-map diagnostic scored 6–2. In the
+full panel, it won both seats on Default, Portals, and Slithery Fight, and lost
+both seats on Trauma; the remaining maps split 1–1. The V19 mirror baseline was
+10–10, so V28 won two additional games, with zero runner errors. Replay decoding
+succeeded on all 20 games. Maximum observed sandbox usage was 9.14M points.
+The seed-1 matchup is a development screen only; V28 has not passed the broader
+promotion gate and remains outside FRONTIER.md. The contest upload later became
+active as submission v87 (ID 12440); deployment does not change its local
+experimental status.
+
+The completed V28 panel, summaries, and replays are under the ignored
+`build/ares-v28-vs-v19-all10-seed1-20260930/` directory. See the
+[V28 finding](findings/2026-09-30-ares-v28-minimum-sacrifice-enclosure-split.md)
+for the map-by-map score and replay-derived split counts.
+
+## Ares V29–V33 — dead-end recovery and child routing
+
+V29–V31 investigate the Autarky loss in match 658569. The successive changes
+delay the split through the last pearl; V31's replay still used `SPLIT 2`,
+leaving the trapped length-3 parent to die while the length-2 child survived.
+V32 keeps that feed-before-split behavior and, only when every one-step head
+move is fatal in a critical enclosure, searches from the largest tail child
+downward for a child with a free exit and enough forecast room
+([source](../bots/ares-v32-save-long-child-at-dead-end/policy.hpp:1162)).
+
+In the saved Autarky A-side replay against V28, dragon 61 moves onto the final
+pearl at round 65, then issues `SPLIT 3` at round 66. The length-3 child 76
+exits south; the original length-2 dragon wall-dies at round 67. Child 76 later
+dies in a head-to-head at round 102, away from the dead end. V32 won this
+233-round A-side game with no runner errors.
+
+The direct seed-1 sandbox panel against V19 covered ten maps and both sides.
+V32 won **11–9**, with no runner errors; all 20 replays decoded and their
+winners matched the result records. By map: Autarky 2–0, Default 2–0, Devil
+1–1, Prisoners Dilemma 1–1, Portals 1–1, Queen of Spades 1–1, Schooltime 0–2,
+Slithery Fight 1–1, Trauma 1–1, Trophy 1–1. V28 scored 12–8 on this same
+panel, so the specific fix retains a positive result against V19 but does not
+improve on V28's score. This one deterministic seed is not the broader
+promotion gate. The target-case replay, transcript, and review are in
+`build/ares-v32-dead-end-screen-658569-seed1/`; the V19 panel games and decoded
+reviews are in `build/ares-v32-vs-v19-all10-seed1-20260930/` and
+`build/ares-v32-vs-v19-replay-review-20260930/`. See the
+[V32 finding](findings/2026-09-30-ares-v32-dead-end-split-orientation.md).
+The contest upload completed as submission v88 (ID 12501), named
+`ares-v32-save-long-child-at-dead-end-ai`; it was active before the later V33
+upload. Server deployment is recorded separately from local frontier
+admission.
+
+## Ares V33 — split-time portal route handoff
+
+V33 branches from V32 to address match 658574. Its parent had already seen one
+edge of portal 1, but the newborn did not inherit that route and moved away
+from the pearl-side portal. At a split, V33 sends the nearest known edge and
+portal ID in a type-9 sonar packet; the child routes to that endpoint and drops
+the waypoint after transit or timeout.
+
+A stateful run over the replay's recorded parent turns emitted portal 1 / edge
+954 at the round-15 split. Replacing the replay's two parent-to-child split-turn
+radio deliveries with that packet made the replay-state child travel to
+`(4,3)`, cross to `(8,33)` at round 19, and collect the pearl at `(10,32)` at
+round 22. On the same initial child observation, V32 moves east while V33 moves
+south toward the handed-off endpoint. This is a targeted replay-state
+simulation, not a fresh full-game
+match or a broad screen. V33 was uploaded as submission v89 (ID 12584) at
+2026-09-30 05:24 UTC and is active. Its API source hash is
+`fd313ece33ff0dfc14bb1d04dd96c8e6e291f269ac015146f2c226c95c8ea776`. The
+local candidate remains experimental. See the [V33 finding](findings/2026-09-30-ares-v33-split-portal-route-handoff.md).
+
+### Four-version live-map comparison
+
+The seed-1 sandbox screen used unswbc 1.2.2 on the same ten live
+maps, every pairing, and both seats (120 games; 60 per version). There were no
+draws or runner errors. Overall records were V33 **33–27**, V32 **32–28**, V28
+**30–30**, and V19 **25–35**. The six direct head-to-head results were:
+
+| Pairing | First version's wins–losses |
+|---|---:|
+| V33–V32 | 10–10 |
+| V33–V28 | 11–9 |
+| V33–V19 | 12–8 |
+| V32–V28 | 11–9 |
+| V32–V19 | 11–9 |
+| V28–V19 | 12–8 |
+
+Each cell below is wins–losses over that bot's six games on the map (three
+opponents, both seats):
+
+| Map | V33 | V32 | V28 | V19 |
+|---|---:|---:|---:|---:|
+| Autarky | 4–2 | 6–0 | 1–5 | 1–5 |
+| Default | 0–6 | 5–1 | 5–1 | 2–4 |
+| Devil | 3–3 | 3–3 | 3–3 | 3–3 |
+| Dilemma | 2–4 | 4–2 | 3–3 | 3–3 |
+| Portals | 4–2 | 2–4 | 5–1 | 1–5 |
+| Queen of Spades | 6–0 | 2–4 | 2–4 | 2–4 |
+| Schooltime | 3–3 | 2–4 | 3–3 | 4–2 |
+| Slithery Fight | 5–1 | 2–4 | 3–3 | 2–4 |
+| Trauma | 3–3 | 3–3 | 2–4 | 4–2 |
+| Trophy | 3–3 | 3–3 | 3–3 | 3–3 |
+
+V33's overall lead over V32 is one win, while their direct series is even.
+V33 swept Queen of Spades and went 5–1 on Slithery Fight; it lost all six
+Default games. This single deterministic screen is developmental evidence,
+not the broader promotion gate, so V33 remains experimental. The manifest,
+standings, results, and per-game logs are in the ignored
+`build/ares-v33-v32-v28-v19-live10-seed1-20260930/` directory; replays were
+not saved.
+
+
+## Ares V34–V35 — crown dash survival
+
+Match [669722](https://game.battlecode.au/visualiser?match=669722) exposed a
+round-477 failure. Ares Team A's 24-length crown, dragon 20 at `(20,10)`, moved
+south to `(20,11)`. Enemy dragon 414 was length 4 at `(22,12)`, but its visible
+chain was clipped by the crown's vision. V33 estimated only three segments and
+two dash steps. The enemy moved north-west; after its second step it was at
+`(21,11)`, adjacent to the crown, and both died head-to-head. Team A was
+eliminated.
+
+V34 tried a broad crown retreat bonus, treated clipped enemies as full-dash
+threats, and prohibited crown-initiated head trades. Its seed-1 screen against
+V33 scored **7–13** on ten maps and both seats, with zero runner errors. It lost
+both games on Portals, Queen of Spades, and Slithery Fight. The general retreat
+bonus was too costly and V34 is rejected.
+
+V35 branches from V33, retaining its target and movement scoring. It changes
+only crown threat accounting: a clipped enemy can dash the maximum three cells,
+and the existing threat penalty also covers adjacent head-contact cells around
+predicted endpoints. This models the round-477 collision without broadly
+steering the king away from every visible enemy. In a controlled replay drive
+that kept V33's local decisions through round 476 and enabled the V35 threat
+rule at round 477, the crown chose `WN` instead of the replayed `S`. From the
+recorded head at `(20,10)`, `WN` ends at `(19,9)`, two Chebyshev cells from the
+attacker's recorded contact cell `(21,11)`. The local replay driver differs
+from the live V33 action at round 473, so this checks the decision from saved
+observations rather than a full counterfactual game.
+
+| Candidate | Direct result vs V33 | Decision |
+|---|---:|---|
+| V34 broad retreat | 7–13 | Rejected |
+| V35 clipped dash and adjacent contact | **10–10** | Retain as experimental |
+
+V35's map records were Autarky 1–1, Default 1–1, Devil 1–1, Dilemma 1–1,
+Portals 2–0, Queen of Spades 1–1, Schooltime 0–2, Slithery Fight 1–1, Trauma
+1–1, and Trophy 1–1. That 20-game screen used unswbc 1.2.2, seed 1, sandbox
+execution, and both seats, with no errors. V35 was then screened against the
+other three versions on the same fixtures:
+
+| Opponent | V35 wins–losses |
+|---|---:|
+| V33 | 10–10 |
+| V32 | 6–14 |
+| V28 | 9–11 |
+| V19 | 13–7 |
+
+Across these four matchups, V35 went **38–42** in 80 games. Combining those
+results with the existing three-way comparisons gives one-seed five-bot
+standings of V32 **46–34**, V33 **43–37**, V28 **41–39**, V35 **38–42**, and
+V19 **32–48**. There were no runner errors. This is a single-seed screen, not
+a promotion gate. V35 remains experimental and outside `FRONTIER.md`; its
+upload as submission v90 (ID 12675) does not promote it locally. The API source
+hash is `870f4bbb1b20371e472728363fe05479ecf92c0a9d260ce70c4c21106eb04c1d`.
+The new 60-game results are in the ignored
+`build/ares-v35-vs-v19-v28-v32-live10-seed1-20260930/`; the V33 results are
+in `build/ares-v35-vs-v33-live10-seed1-20260930/`. See the
+[V35 finding](findings/2026-09-30-ares-v35-crown-clipped-dash-threat.md).
+
+## Ares V36 — no-pearl portal scout
+
+Match [674727](https://game.battlecode.au/visualiser?match=674727) shows V35
+turning north at round 52 beside the unpaired Queen of Spades portal at
+`(6,17)`. Dragon 1 last ate a pearl on round 33 and next ate one on round 86.
+V35's target score is 3 for a portal and 5 for unseen ground, so an
+unexplored-ground target can pull it away even without a fresh pearl lead.
+
+V36 branches from V35. From dragon age 3, it scores an unpaired portal at 8
+when there is no fresh pearl memory; ordinary unseen ground remains 5, and
+pearl and bed targets retain their existing values. This also makes the
+existing 40-round memory TTL determine whether a pearl still suppresses
+portal scouting. V36 was uploaded as submission v91 (ID 12728) on 2026-09-30
+07:02 UTC and became active. Its API source hash is
+`8d5e4b3dba5ec9f948d4985581349267928b88933da47dc4dda847d57b6aa0b1`. It remains
+experimental locally and outside FRONTIER.md. Its seed-1 sandbox screen over
+the ten live maps and both seats scored 13–7 vs V35 and 9–11 vs V19, with zero
+errors. V35 scored
+13–7 vs V19 on the same fixture, so V36's value of 8 is too aggressive for
+promotion. This was a full-match screen, not a counterfactual replay of the
+reported turn. See the [V36 finding](findings/2026-09-30-ares-v36-no-pearl-portal-scout.md)
+and [source snapshot](../bots/ares-v36-no-pearl-portal-scout/).
+
+## Ares V37 — near-portal scout
+
+V37 narrows V36's no-pearl portal value from 8 to 6. This still outranks
+unseen ground at value 5 for a nearby portal approach like the one in match
+674727, while reducing the pull toward more distant portals. It retains V36's
+40-round pearl-memory check and age-3 gate. V37's seed-1 sandbox screen on
+the ten live maps and both seats scored 17–3 vs V35 and 10–10 vs V19, with
+zero errors. It went 2–0 against both opponents
+on Queen of Spades, but did not improve on V35's 13–7 V19 result. V37 remains
+unsubmitted and experimental. See the
+[V37 finding](findings/2026-09-30-ares-v37-near-portal-scout.md) and
+[source snapshot](../bots/ares-v37-near-portal-scout/).
+
 ## Direct matchup screens: Tyr V12
 
 ### Ares V01
