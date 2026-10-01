@@ -1,0 +1,18 @@
+name = "maelle-03-foodfree"
+lineage = "maelle"
+author = "claude-opus-5.5/maelle"
+language = "c++"
+lineage_parent = "maelle-02-features"
+hypothesis = "L12: an EW food-density memory, discounted by ally saturation (Sciel-03b), improves target choice on bed/unseen cells."
+mechanism = "target feature food_free = food_ew box mean x (1 - ally_ew) on bed/unseen candidates; log-linear weight wt_food_free = -1.3 (fitted; the expected positive sign was wrong)."
+expected_change = "pre-registered: positive weight, econ up, ally h2h not up. Scan found the sign negative: econ +0.01..0.02, units/length@100 +0.04, ally h2h down."
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["docs/findings/2026-09-30-r1-search-ladder.md"]
+summary = "Maelle feature 1 (SF-1 Part 2). Gate: D-032 vs maelle-02-features (w=0)."
+
+[activation_contract]
+kind = "legacy_none"
+note = "platform; identity by fingerprint"
