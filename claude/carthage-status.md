@@ -32,7 +32,7 @@ nice 10 with `--jobs 14`.
 | 03-queen-guard-nosplit | 01 + 02 stacked | 00 | both | stopped at 40 games (both parts rejected) | | | | | not run |
 | 06-queen-avoid | queen: −40 for a cell an enemy head can reach next turn, −3/cell inside radius 6 of each enemy head, never strikes (`queen_avoid`) | 00 | queen h2h deaths ↓↓, queen alive@490 ↑, econ − small | −0.017 [−0.033, +0.003] | −0.054 | −0.002 [−0.032]; gen +0.013 [−0.012] | ±3 % | pool 2.9 %, gen 23.6 % (excl. pocket); gen queen W/L 33/0 | reject |
 | 07-queen-yield | swarm yields to the queen: −20 ending adjacent to the queen's head (−6 at 2) for non-queens; the queen pays the same next to any ally head (`queen_yield`) | 00 | ally-caused queen deaths ↓ (97 of 271 on 06 pool), queen alive ↑, econ ≈ | queued | | | | | |
-| 04-sprint123 | sprint price = max(0, steps − ⌈L/4⌉) in simulator and score (`sprint_rules_123`) | 00 | small: sprints only near threats | queued | | | | | |
+| 04-sprint123 | sprint price = max(0, steps − ⌈L/4⌉) in simulator and score (`sprint_rules_123`) | 00 | small: sprints only near threats | −0.001 [−0.003, +0.002] | −0.001 | **+0.040 [+0.016, +0.065]**; gen +0.003 [−0.011] | ±1 % | — | reject (econ lb ≤ 0 only; neutral rules fix; pool win gain does not transfer to twins) |
 | 05-free-sprint | on-route 2/3-step moves while foraging when free (`free_sprint`) | 04 | econ ↑ (travel 2×), deaths ≈ | queued | | | | | |
 
 ## Base re-measured under unswbc 1.2.3 (the new zero; 1,224 games, seeds 1–3, both seats; absolute numbers — no
