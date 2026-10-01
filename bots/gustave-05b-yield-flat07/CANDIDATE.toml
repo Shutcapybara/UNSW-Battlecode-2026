@@ -1,0 +1,12 @@
+name = "gustave-05b-yield-flat07"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "STACK (two changes vs the accepted parent, stated): gustave-05a's asymmetric yield on gustave-02b-flat07 (unseen and bed values x0.70). The flat cut is Renoir's 07a/07c / Sciel-03a lever (+0.09 econ, ally h2h +35 %); the yield is the hygiene fix for its churn channel."
+expected_change = "econ~ ~+0.08 vs gustave-01 (the cut) with ally h2h back within +10 % and units/length@100 not down"
+hypothesis = "the exploration-value economy is real and its cost is one coordination failure (ally head-on); fix the failure, keep the economy"
+params = ["yield_enabled=true", "yield_penalty=4.0", "ew_floor=0.7", "ew_cap=0.7"]
+status = "candidate (not registered)"
+fingerprint = "94694b293fb78debec51614461eeb95e4c6ea2d789414614bd0f21a2427200b1"

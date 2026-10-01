@@ -1,0 +1,12 @@
+name = "gustave-07a-mouthclear"
+lineage = "gustave"
+lane = "rc"
+author = "claude-opus-5.5/rc"
+language = "c++"
+lineage_parent = "gustave-01-nodevil"
+mechanism = "Keep off portal mouths unless crossing: a move whose final head is the mouth cell of a known paired portal costs 1.5 unless the final heading points into that portal or the move crossed a portal this turn (the arrival cell is exempt)."
+expected_change = "death_h2h_ally down >= 25 % (rc anatomy on 02b: 98 % of ally head-on deaths are blind portal landings on an ally head; ~61 % of those allies were on the mouth without heading in); transits not reduced; economy flat; a HOLD candidate for the exploration-value lever (whose cost is ally h2h +35 %)"
+hypothesis = "L05/L06/L29: ally head-on is a portal-mouth occupancy problem, not a visible-contest problem (05a/05b moved it -3 to -5 %); change where dragons stand, not how many transit (unlike sciel-02a's zone + re-transit brake)"
+params = ["mouth_enabled=true", "mouth_weight=1.5"]
+status = "candidate (not registered)"
+fingerprint = "2fbcf50432a3f34a92ab24f1d125f4c5e4432bf1eaa7cb9f7c5261c4edc4674e"
