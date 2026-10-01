@@ -13,15 +13,18 @@ unchanged). The host is shared with the top-teams mimic lane (`r/tt`), which has
 | — | `verso-00-base` | platform: runtime for heads, dump, exploration; inert | — | golden vs maelle-01-nodevil: 61,667 turns, 0 divergent | = maelle-02-features (8 re-played fixtures identical) | = | (maelle-02: 8.7 M) | base |
 | 0 | `verso-01-hb-dir-prior` (arm `c0-hb-small~l1`) | `dir` head on Heartbreaker's corpus moves (v5 features), prior `λ·log p`, λ = 1 | direction 0.829 (their moves) | 0.885 of the base's commands (57,213 turns, 4 games) | win +0.150 [+0.110, +0.188]; econ~ **+0.052 [+0.019, +0.081]**; units +0.193, length +0.151; all four death rates down | win +0.050 [+0.012, +0.089]; econ~ +0.013 [−0.017, +0.042]; units +0.305, length +0.327 | 11.53 M | **ACCEPT** |
 | 1 | screening (platforms `verso-p2/p3-platform`) | tier 3 on own data: Monte-Carlo `q`; hindsight-search `q` (5 label versions); tempo-credit labels; opening donor ensembles | MC 0.015; hindsight 0.76–0.86 | — | best so far `c0x-both-sf`: tempo −2.6 [−4.5, −0.8] rounds, econ~ −0.026 (seed 1); every `q` head REJECT | — | — | no accept yet |
-| 2 | `verso-02-hb540-prior` (arm `c3-big540`) | new base: the 540-round Heartbreaker prior (hb1-14's size) on the Verso base; platform p4 | direction 0.843 (their moves) | 0.87 of cycle 0's commands (trauma, not yet all 4 games) | vs cycle 0: win +0.000 [−0.032, +0.033]; econ~ −0.001 [−0.028, +0.026]; tempo −1.0 | vs cycle 0: win **+0.097 [+0.064, +0.130]**; econ~ **+0.107 [+0.081, +0.135]**; tempo −6.3 [−8.4, −4.2] | probing | REJECT by the letter (pool lower bounds); off-pool gain — lead's call |
+| 2 | `verso-02-hb540-prior` (arm `c3-big540`) | new base: the 540-round Heartbreaker prior (hb1-14's size) on the Verso base; platform p4 | direction 0.843 (their moves) | pending | vs cycle 0: win +0.000 [−0.032, +0.033]; econ~ −0.001 [−0.028, +0.026]; tempo −1.0 | vs cycle 0: win **+0.097 [+0.064, +0.130]**; econ~ **+0.107 [+0.081, +0.135]**; tempo −6.3 [−8.4, −4.2] | 11.73 M | REJECT by the letter (pool lower bounds); off-pool gain — lead's call |
+| 3 | `verso-03-hb1000-prior` (native) | 1,000-round prior, compact streams decoded at boot | 0.847 | — | vs cycle 2: win +0.021, econ~ +0.008 [−0.020, +0.036] | vs cycle 2: win +0.034 [+0.007, +0.060], econ~ +0.044 [+0.021, +0.067] | **fails in the sandbox** (boot decode > 100 M points) | not deployable |
+| 3′ | **`verso-05-hb800-prior`** | 800-round prior, evaluated in place (no boot decode), zip 3.38 MiB | — | 0 divergent vs its file-loaded arm | vs cycle 2: win **+0.033 [+0.003, +0.065]**, econ~ −0.017 [−0.038, +0.013] | vs cycle 2: win +0.024 [−0.003, +0.049], econ~ +0.017 [−0.006, +0.040], length@100 +0.085; vs cycle 0: win +0.121, econ~ +0.124 | **12.01 M** | best deployable; REJECT by the letter (pool lower bounds) |
 
-Three lines: **what changed** — on the lead's steer, hb1-14 / tt-05 / tt-06 (the uploadable HB-1 and mimic-lane
-bots) were measured on the Verso panels and taken apart on the Verso base; the base is now `verso-02-hb540-prior`
-(540-round prior). **What it did** — the larger prior is the whole of their off-pool edge: generalisation win
-+9.7 pp and economy +0.107 over cycle 0 at seeds 1–3, pool unchanged; V06's late cap and tt's late feeding (fixed or
-ramped hb→tt over r300–400) add nothing measurable on these panels; the HB+Stockfish opening ensemble did not
-replicate (−0.5 rounds at seeds 1–3). **Next** — SPSA on the opening knobs on the new base (running), a fidelity
-record for cycle 2, then the next head on top of it.
+Three lines: **what changed** — the prior's size is the lever (300 → 540 → 1,000 → 2,251 rounds all measured); the
+work since cycle 2 was fitting more of it into the 4 MiB upload and the judge's first-turn CPU budget. **What it
+did** — a 1,000-round prior in a compressed format plays better natively but cannot boot in the sandbox (decoding
+1.5 M nodes costs > 100 M points); an 800-round prior evaluated in place (`verso-05-hb800-prior`, 3.38 MiB, 12.0 M
+max) is the best deployable bot: vs cycle 0 off-pool win +12.1 pp, economy +0.124; vs cycle 2 pool win +3.3 pp.
+Opening-knob SPSA was stopped at 6 iterations as noise-limited (SE 0.07 per iteration against effects < 0.05).
+**Next** — the lead's call on the D-032 letter (pool lower bounds) vs the off-pool gains; then a better donor model
+(more Heartbreaker data, or distillation of the full model into fewer nodes).
 
 ## Platform (30 Sep)
 
@@ -257,3 +260,28 @@ divergent; upload zip 3.68 MiB).
 HB + Stockfish opening ensemble (`c0x-both-sf`), seeds 1–3 vs cycle 0: tempo −0.5 [−1.7, +0.7] NO GAIN, econ~ −0.062
 [−0.103, −0.027] — the seed-1 −2.6 was noise. Also NO GAIN: + cheji bt in the opening (+0.8), + an opening-only
 Heartbreaker head (+1.5, econ~ −0.101).
+
+## Cycle 3 — how much prior fits (1 Oct)
+
+Against the 540-round base (`c3-big540`), seed 1 unless stated:
+
+| Arm | Prior | Pool win / econ~ | Gen win [90 %] | Gen econ~ [90 %] |
+|---|---|---|---|---|
+| `c3-full` (seeds 1–3) | all 2,251 rounds (27 MB, local only) | +0.017 / **+0.044 [+0.015, +0.080]** | +0.011 [−0.016, +0.036] | **+0.037 [+0.009, +0.068]** |
+| `c3-hb1000` | 1,000 rounds | +0.025 / +0.038 | +0.040 [−0.012, +0.089] | +0.043 [−0.002, +0.092] |
+| `c3-big540~l0.7` | λ 0.7 | +0.006 / −0.000 | +0.044 | −0.015 |
+| `c3-big540~l1.5` | λ 1.5 | +0.031 / −0.025 | −0.028 | −0.059 |
+| `c3-mirror540` | 540 rounds, mirror-augmented fit (held-out 0.847) | +0.009 / −0.052 | +0.012 | +0.018 |
+| `verso-03-hb1000-prior` (seeds 1–3, native) | 1,000 rounds, compact | +0.021 / +0.008 | +0.034 [+0.007, +0.060] | +0.044 [+0.021, +0.067] |
+| `verso-05-hb800-prior` (seeds 1–3) | 800 rounds, direct | **+0.033 [+0.003, +0.065]** / −0.017 | +0.024 [−0.003, +0.049] | +0.017 [−0.006, +0.040] |
+
+Formats (zip of the bot's sources; limit 4 MiB): 8-byte hex words 540 rounds = 3.68 MiB (`verso-02`); compact
+streams (shape bits, feature ids, threshold index into per-feature tables, default bits, float16 leaves) 1,000 rounds =
+3.37 MiB but needs a boot decode the judge prices at ~185 points per node — 1,000 rounds (1.53 M nodes) fails turn 0
+(`verso-03`, `verso-04` with a single-pass decoder, both "exceeded CPU limit" on every dragon; 300 rounds alone
+costs 89 M); direct form (three uint16 arrays per node, same tables, float16 leaves; evaluated in place) 800 rounds
+= 3.38 MiB, boot 7.8 M points. float16 leaves changed no decision in 10–12 k-turn transcripts.
+
+SPSA on the opening knobs (`es2`, base `c3-big540`, net-income objective on data fixtures): stopped after 6
+iterations; per-iteration J standard error 0.07–0.11, check vs base at iteration 6 −0.015 ± 0.067. Resumable from
+`build/verso/es/es2/history.jsonl`.
