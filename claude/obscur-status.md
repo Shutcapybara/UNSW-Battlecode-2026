@@ -5,6 +5,64 @@ Prompt: `docs/hub/prompts/2026-10-01-H1-hypothesis-steward.md`. Branch `r/obscur
 SF-1 weights via `M:` params, 2 h per-game timeout; `rescore.py` / `gates.py` = the gate audit). Nothing registered,
 no other lane's tree edited. Everything below is a **proposal** for the director; ledger edits are not made here.
 
+## Wrap-up — 1 Oct 2026, ~20:30 ACST (lead's instruction; lane paused)
+
+**State.** Paused on the lead's instruction after the desktop disk filled (1.8 TB; Obscur held 18 GB, mostly
+replays). All Obscur jobs are stopped. I deleted only my own regenerable replays for four arms that had finished
+(`obscur-02-mouth`, `o-ally14`, `o-threat05`, `o-visit005`); their features and verdicts are kept.
+Nothing is registered. No other lane's files were touched.
+
+**First-pass tests: results.** All on `verso-05-hb800-prior`, using Verso's byte-identical parent games. Clair ran
+the same tests independently on `hb1-14`.
+
+| Test | Arm | Seeds | Pool econ~ [lb] | Gen econ~ [lb] | Win pool / gen | Blocked by | Reading |
+|---|---|---|---|---|---|---|---|
+| Additivity (bare) | `obscur-01-sym` | 1–3 | **+0.031 [+0.003]** | **+0.021 [+0.009]** | +0.004 / **+0.018 [+0.002]** | pool units lb −0.073, length lb −0.029, pool win lb −0.025, ally h2h +21 % / +20 % | symmetry's gain **adds to the prior** on both panels; its cost is portal head-ons on the prior's convoy traffic |
+| Additivity (accepted stack) | `obscur-03-symseal` | 1–3 | +0.029 [+0.000] | **+0.028 [+0.016]** | +0.002 / +0.005 | pool units lb −0.066, h2h +25 % / +20 % | the seal no longer pays for the head-ons; Clair: same on hb1-14 (gen all lb > 0) |
+| Mouth rule | `obscur-02-mouth` | 1 (stopped) | **−0.126 [−0.173]** | +0.015 | −0.069 / +0.002 | everything on pool | REJECT, three hosts (Clair −0.078 at s1–3, Expedition) |
+| Bowl | `o-unseen3` | 1 | **+0.148 [+0.083]** | **+0.061 [+0.021]** | −0.044 / +0.028 | pool win lb, h2h +29 % | moves on the prior base; Clair s1–3: tempo ACCEPT −3.5 rounds, gen win +0.045 |
+| Bowl | `o-trap20` | 1 | **+0.041 [+0.012]** | +0.007 | −0.041 / −0.038 [−0.067] | wins on both panels | economy without outcome (the L29 trap); Clair s1–3: both panels lb > 0, blocked by units |
+| Bowl | `o-capsel384` | 1 | −0.002 | +0.025 (mean +0.070, outlier-carried) | −0.031 / +0.038 | pool | a late/off-pool lever (Clair: p@250 lb > 0 both panels) |
+| Bowl | `o-ally14` | 1 | +0.046 | −0.013 | −0.062 / −0.040 | wins | worse than on Maelle's base; identical on hb1-14 (−0.062) |
+| Bowl | `o-threat05`, `o-visit005` | 1 | −0.015 / +0.005 | +0.030 / −0.014 | −0.031 / −0.044 | pool | flat on both bases |
+
+Answers to the three questions in the brief:
+1. **The bowl was V06's, not Ares's.** On two prior bases the weight moves now shift economy and net income
+   (unseen3, trap20, capsel). Every row that rests on "V06 says no" re-opens (L20 → 0.3). What has *not* moved,
+   at seed 1 on either base, is pool wins: the prior already wins 88 % of pool games.
+2. **The two information gains are additive** in economy and off-pool win, on both bases. The stack is blocked
+   by portal head-on deaths, which the old seal no longer offsets.
+3. **The mouth rule does not survive the prior.** It still cuts head-ons by about 20 %, but it taxes the prior's
+   productive traffic.
+
+**Main contributions** (details in the sections below):
+- **Gate audit:** the shared gate tool does not implement D-032. Its econ~ statistic and plain bootstrap
+  mis-scored three past decisions. Economy is blind to endgame conversion.
+- **Phase gate** (`tools/obscur/phasegate.py`): opening tempo, midgame share@250 and endgame late win, each
+  conditioned on the parent's game, with minimum effect sizes. It agrees with every judgment call already made
+  and keeps every rejection. Offered as four amendments to Clair's BENCHMARKS revision.
+- **Per-map twin rule:** per-map effects transfer to unseen transposed and recorded twins (correlation
+  +0.4…+0.9), so structure-gated switches are a non-overfit route to map specialisation (L46).
+- **Corrections:**
+  - lune-r1-07's late cap is clamped to 160, not 384.
+  - hb1-12 was a HOLD on z1 two-seed pairs, not a D-032 accept.
+  - L39 misquotes TT's figures.
+  - My own 07c call (pass 2).
+
+**Unfinished, with resume commands:**
+- `o-regime-donor` (out-of-basin: Heartbreaker prior on elimination-regime maps, Stockfish on round-limit maps)
+  stopped at 49/160 pool seed-1 games. Its control `o-sf-all` has not started. The two-head model file was
+  deleted to free space; rebuild it (17 s) with:
+  `.venv/bin/python tools/verso/export.py blob build/obscur/models/hb800+sf.bin dir=<wt-verso>/build/verso/models/c3-hb800/dir.ubj dir2=<wt-verso>/build/verso/models/c0-sf/dir.ubj --bot verso-05-hb800-prior`.
+  Parity (Stockfish weight 0) was byte-identical. Then run `build/obscur/queue5.sh`.
+- Seeds 2–3 for `o-unseen3`, `o-trap20` and `o-capsel384` (`build/obscur/queue4.sh` minus its first step; finished
+  games are skipped).
+- Phase-gate re-score: 10 of 16 pairs done (`build/obscur/phase.txt`). Resume with
+  `.venv/bin/python tools/obscur/phasegate.py build/obscur/pairs-phase.json`. Tempo decoding is cached through the
+  `build/s1/tempo_cache` symlink to Verso's cache.
+- Ranked ten (pass 2): items 2 (running), 4 and 8 are the out-of-basin slots. Items 3 (split restraint) and 9
+  (Dilemma corridor check) are the cheapest unbuilt exploits.
+
 ## Pass 2 — 1 Oct 2026, ~19:00 ACST (update)
 
 **Parallel work read since pass 1b:** Clair (`r/clair`, a third H-1 steward, MacBook) ran the same first-pass tests

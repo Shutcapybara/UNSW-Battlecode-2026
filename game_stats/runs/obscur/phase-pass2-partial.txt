@@ -1,0 +1,502 @@
+{
+ "pair": "verso-01 vs 00 (ACCEPT)",
+ "verdict": "ACCEPT",
+ "gains": [
+  "opening",
+  "midgame",
+  "endgame"
+ ],
+ "reasons": [],
+ "opening_tempo": "-7.66 [-9.17, -6.13]",
+ "midgame_share250": "+0.116 [+0.089, +0.141]",
+ "endgame_latewin": "+0.123 [+0.072, +0.165]",
+ "outcome_win": "+0.100 [+0.066, +0.130]",
+ "units100": "+0.171 [+0.023, +0.297]",
+ "length100": "+0.219 [+0.060, +0.361]",
+ "diag_econ_med": "+0.032 [+0.001, +0.059]",
+ "diag_econ_mean": "+0.066 [+0.014, +0.119]",
+ "per_panel": {
+  "pool": {
+   "tempo": -7.64,
+   "mid": 0.13,
+   "end": 0.142,
+   "win": 0.15,
+   "econ~": 0.052,
+   "econ_mean": 0.069
+  },
+  "gen": {
+   "tempo": -7.689,
+   "mid": 0.101,
+   "end": 0.103,
+   "win": 0.05,
+   "econ~": 0.013,
+   "econ_mean": 0.063
+  }
+ },
+ "tier2": {
+  "pool": {
+   "wall": -0.168,
+   "self": -0.184,
+   "ally": -0.325,
+   "h2h": -0.275
+  },
+  "gen": {
+   "wall": -0.232,
+   "self": -0.334,
+   "ally": -0.544,
+   "h2h": -0.269
+  }
+ }
+}
+{
+ "pair": "cyc2 540 vs cyc0 (REJECT letter)",
+ "verdict": "ACCEPT",
+ "gains": [
+  "opening",
+  "midgame"
+ ],
+ "reasons": [],
+ "opening_tempo": "-3.66 [-5.16, -2.33]",
+ "midgame_share250": "+0.079 [+0.054, +0.105]",
+ "endgame_latewin": "+0.049 [-0.003, +0.096]",
+ "outcome_win": "+0.049 [+0.022, +0.075]",
+ "units100": "+0.114 [+0.068, +0.157]",
+ "length100": "+0.082 [+0.036, +0.130]",
+ "diag_econ_med": "+0.053 [+0.031, +0.080]",
+ "diag_econ_mean": "+0.066 [+0.039, +0.095]",
+ "per_panel": {
+  "pool": {
+   "tempo": -0.996,
+   "mid": 0.037,
+   "end": -0.004,
+   "win": 0.0,
+   "econ~": -0.001,
+   "econ_mean": -0.005
+  },
+  "gen": {
+   "tempo": -6.315,
+   "mid": 0.12,
+   "end": 0.101,
+   "win": 0.097,
+   "econ~": 0.107,
+   "econ_mean": 0.136
+  }
+ },
+ "tier2": {
+  "pool": {
+   "wall": -0.058,
+   "self": -0.072,
+   "ally": -0.048,
+   "h2h": 0.018
+  },
+  "gen": {
+   "wall": 0.029,
+   "self": -0.021,
+   "ally": -0.076,
+   "h2h": 0.022
+  }
+ }
+}
+{
+ "pair": "verso-05 vs cyc2 (lane parent)",
+ "verdict": "ACCEPT",
+ "gains": [
+  "opening",
+  "midgame",
+  "endgame"
+ ],
+ "reasons": [],
+ "opening_tempo": "-1.53 [-2.47, -0.66]",
+ "midgame_share250": "+0.036 [+0.019, +0.054]",
+ "endgame_latewin": "+0.101 [+0.056, +0.146]",
+ "outcome_win": "+0.028 [+0.007, +0.050]",
+ "units100": "+0.142 [+0.065, +0.233]",
+ "length100": "+0.156 [+0.071, +0.251]",
+ "diag_econ_med": "+0.000 [-0.019, +0.025]",
+ "diag_econ_mean": "+0.032 [+0.008, +0.058]",
+ "per_panel": {
+  "pool": {
+   "tempo": 0.207,
+   "mid": 0.013,
+   "end": 0.075,
+   "win": 0.033,
+   "econ~": -0.017,
+   "econ_mean": -0.005
+  },
+  "gen": {
+   "tempo": -3.266,
+   "mid": 0.059,
+   "end": 0.127,
+   "win": 0.024,
+   "econ~": 0.017,
+   "econ_mean": 0.07
+  }
+ },
+ "tier2": {
+  "pool": {
+   "wall": -0.026,
+   "self": 0.019,
+   "ally": -0.004,
+   "h2h": -0.019
+  },
+  "gen": {
+   "wall": -0.05,
+   "self": -0.008,
+   "ally": 0.038,
+   "h2h": -0.021
+  }
+ }
+}
+{
+ "pair": "gustave-07c vs 01 (HOLD)",
+ "verdict": "ACCEPT",
+ "gains": [
+  "opening"
+ ],
+ "reasons": [],
+ "opening_tempo": "-0.60 [-1.05, -0.18]",
+ "midgame_share250": "+0.010 [-0.001, +0.023]",
+ "endgame_latewin": "+0.035 [-0.002, +0.069]",
+ "outcome_win": "+0.024 [+0.004, +0.045]",
+ "units100": "-0.008 [-0.026, +0.012]",
+ "length100": "-0.010 [-0.026, +0.007]",
+ "diag_econ_med": "-0.002 [-0.014, +0.010]",
+ "diag_econ_mean": "-0.016 [-0.028, -0.003]",
+ "per_panel": {
+  "pool": {
+   "tempo": 0.158,
+   "mid": 0.006,
+   "end": 0.036,
+   "win": 0.025,
+   "econ~": 0.001,
+   "econ_mean": -0.044
+  },
+  "gen": {
+   "tempo": -1.362,
+   "mid": 0.015,
+   "end": 0.033,
+   "win": 0.022,
+   "econ~": -0.005,
+   "econ_mean": 0.013
+  }
+ },
+ "tier2": {
+  "pool": {
+   "wall": 0.021,
+   "self": 0.001,
+   "ally": -0.039,
+   "h2h": -0.183
+  },
+  "gen": {
+   "wall": 0.008,
+   "self": -0.002,
+   "ally": -0.044,
+   "h2h": -0.23
+  }
+ }
+}
+{
+ "pair": "gustave-08a vs 01 (REJECT)",
+ "verdict": "REJECT",
+ "gains": [],
+ "reasons": [
+  "units@100 lb -0.036",
+  "total@100 lb -0.032",
+  "tier-2 up >10% on both panels: wall,h2h"
+ ],
+ "opening_tempo": "+0.48 [-0.22, +1.17]",
+ "midgame_share250": "+0.004 [-0.011, +0.021]",
+ "endgame_latewin": "+0.013 [-0.031, +0.057]",
+ "outcome_win": "-0.010 [-0.037, +0.017]",
+ "units100": "+0.021 [-0.036, +0.090]",
+ "length100": "+0.028 [-0.032, +0.100]",
+ "diag_econ_med": "+0.029 [+0.012, +0.048]",
+ "diag_econ_mean": "+0.043 [+0.017, +0.069]",
+ "per_panel": {
+  "pool": {
+   "tempo": 1.07,
+   "mid": -0.011,
+   "end": 0.008,
+   "win": -0.024,
+   "econ~": 0.032,
+   "econ_mean": 0.016
+  },
+  "gen": {
+   "tempo": -0.118,
+   "mid": 0.019,
+   "end": 0.017,
+   "win": 0.005,
+   "econ~": 0.027,
+   "econ_mean": 0.071
+  }
+ },
+ "tier2": {
+  "pool": {
+   "wall": 0.106,
+   "self": 0.085,
+   "ally": -0.021,
+   "h2h": 0.105
+  },
+  "gen": {
+   "wall": 0.112,
+   "self": 0.065,
+   "ally": 0.006,
+   "h2h": 0.148
+  }
+ }
+}
+{
+ "pair": "maelle-04 vs 02 (REJECT)",
+ "verdict": "REJECT",
+ "gains": [
+  "opening",
+  "endgame"
+ ],
+ "reasons": [
+  "gen win ub -0.027",
+  "units@100 lb -0.158",
+  "total@100 lb -0.163"
+ ],
+ "opening_tempo": "-2.07 [-3.07, -1.14]",
+ "midgame_share250": "+0.013 [-0.008, +0.035]",
+ "endgame_latewin": "+0.055 [+0.013, +0.095]",
+ "outcome_win": "-0.024 [-0.053, +0.006]",
+ "units100": "-0.041 [-0.158, +0.064]",
+ "length100": "-0.040 [-0.163, +0.066]",
+ "diag_econ_med": "-0.017 [-0.035, +0.007]",
+ "diag_econ_mean": "-0.006 [-0.034, +0.021]",
+ "per_panel": {
+  "pool": {
+   "tempo": -2.941,
+   "mid": 0.029,
+   "end": 0.05,
+   "win": 0.021,
+   "econ~": -0.012,
+   "econ_mean": 0.025
+  },
+  "gen": {
+   "tempo": -1.207,
+   "mid": -0.002,
+   "end": 0.06,
+   "win": -0.069,
+   "econ~": -0.021,
+   "econ_mean": -0.038
+  }
+ },
+ "tier2": {
+  "pool": {
+   "wall": -0.063,
+   "self": -0.117,
+   "ally": -0.127,
+   "h2h": -0.073
+  },
+  "gen": {
+   "wall": -0.114,
+   "self": -0.269,
+   "ally": -0.363,
+   "h2h": -0.062
+  }
+ }
+}
+{
+ "pair": "maelle-03 vs 02 (REJECT)",
+ "verdict": "REJECT",
+ "gains": [
+  "endgame"
+ ],
+ "reasons": [
+  "gen win ub -0.008",
+  "units@100 lb -0.107",
+  "total@100 lb -0.103"
+ ],
+ "opening_tempo": "-0.02 [-0.74, +0.72]",
+ "midgame_share250": "+0.002 [-0.019, +0.021]",
+ "endgame_latewin": "+0.052 [+0.013, +0.091]",
+ "outcome_win": "-0.028 [-0.055, -0.001]",
+ "units100": "-0.045 [-0.107, +0.011]",
+ "length100": "-0.041 [-0.103, +0.016]",
+ "diag_econ_med": "-0.025 [-0.043, -0.000]",
+ "diag_econ_mean": "-0.021 [-0.043, +0.003]",
+ "per_panel": {
+  "pool": {
+   "tempo": -0.642,
+   "mid": -0.01,
+   "end": 0.028,
+   "win": -0.011,
+   "econ~": -0.03,
+   "econ_mean": -0.032
+  },
+  "gen": {
+   "tempo": 0.599,
+   "mid": 0.014,
+   "end": 0.076,
+   "win": -0.044,
+   "econ~": -0.02,
+   "econ_mean": -0.01
+  }
+ },
+ "tier2": {
+  "pool": {
+   "wall": -0.019,
+   "self": -0.026,
+   "ally": -0.075,
+   "h2h": -0.09
+  },
+  "gen": {
+   "wall": -0.01,
+   "self": -0.065,
+   "ally": -0.116,
+   "h2h": -0.113
+  }
+ }
+}
+{
+ "pair": "verso-06 vs 05 (REJECT)",
+ "verdict": "ACCEPT",
+ "gains": [
+  "midgame"
+ ],
+ "reasons": [],
+ "opening_tempo": "+0.19 [-0.63, +1.12]",
+ "midgame_share250": "+0.052 [+0.030, +0.075]",
+ "endgame_latewin": "+0.038 [-0.007, +0.078]",
+ "outcome_win": "+0.022 [+0.002, +0.045]",
+ "units100": "+0.055 [-0.024, +0.134]",
+ "length100": "+0.072 [-0.014, +0.162]",
+ "diag_econ_med": "-0.008 [-0.035, +0.013]",
+ "diag_econ_mean": "-0.035 [-0.060, -0.010]",
+ "per_panel": {
+  "pool": {
+   "tempo": -1.555,
+   "mid": 0.049,
+   "end": 0.066,
+   "win": 0.04,
+   "econ~": 0.005,
+   "econ_mean": -0.015
+  },
+  "gen": {
+   "tempo": 1.938,
+   "mid": 0.056,
+   "end": 0.009,
+   "win": 0.005,
+   "econ~": -0.021,
+   "econ_mean": -0.054
+  }
+ },
+ "tier2": {
+  "pool": {
+   "wall": -0.022,
+   "self": -0.032,
+   "ally": 0.019,
+   "h2h": -0.12
+  },
+  "gen": {
+   "wall": -0.056,
+   "self": -0.09,
+   "ally": -0.036,
+   "h2h": -0.106
+  }
+ }
+}
+{
+ "pair": "verso-05 vs cyc0",
+ "verdict": "ACCEPT",
+ "gains": [
+  "opening",
+  "midgame",
+  "endgame"
+ ],
+ "reasons": [],
+ "opening_tempo": "-4.46 [-5.88, -3.09]",
+ "midgame_share250": "+0.093 [+0.067, +0.121]",
+ "endgame_latewin": "+0.110 [+0.067, +0.159]",
+ "outcome_win": "+0.077 [+0.052, +0.104]",
+ "units100": "+0.256 [+0.167, +0.355]",
+ "length100": "+0.238 [+0.141, +0.345]",
+ "diag_econ_med": "+0.053 [+0.027, +0.086]",
+ "diag_econ_mean": "+0.098 [+0.066, +0.128]",
+ "per_panel": {
+  "pool": {
+   "tempo": -0.789,
+   "mid": 0.042,
+   "end": 0.065,
+   "win": 0.033,
+   "econ~": -0.018,
+   "econ_mean": -0.01
+  },
+  "gen": {
+   "tempo": -8.139,
+   "mid": 0.144,
+   "end": 0.155,
+   "win": 0.121,
+   "econ~": 0.124,
+   "econ_mean": 0.206
+  }
+ },
+ "tier2": {
+  "pool": {
+   "wall": -0.083,
+   "self": -0.055,
+   "ally": -0.052,
+   "h2h": -0.001
+  },
+  "gen": {
+   "wall": -0.023,
+   "self": -0.029,
+   "ally": -0.04,
+   "h2h": 0.001
+  }
+ }
+}
+{
+ "pair": "alicia-03 vs 01 (REJECT)",
+ "verdict": "REJECT",
+ "gains": [
+  "midgame",
+  "endgame"
+ ],
+ "reasons": [
+  "units@100 lb -0.136",
+  "total@100 lb -0.141"
+ ],
+ "opening_tempo": "-0.34 [-1.08, +0.49]",
+ "midgame_share250": "+0.023 [+0.002, +0.042]",
+ "endgame_latewin": "+0.051 [+0.001, +0.098]",
+ "outcome_win": "+0.007 [-0.023, +0.036]",
+ "units100": "-0.048 [-0.136, +0.026]",
+ "length100": "-0.050 [-0.141, +0.024]",
+ "diag_econ_med": "-0.064 [-0.086, -0.037]",
+ "diag_econ_mean": "-0.046 [-0.073, -0.021]",
+ "per_panel": {
+  "pool": {
+   "tempo": 0.112,
+   "mid": -0.002,
+   "end": 0.02,
+   "win": 0.004,
+   "econ~": -0.097,
+   "econ_mean": -0.074
+  },
+  "gen": {
+   "tempo": -0.788,
+   "mid": 0.048,
+   "end": 0.081,
+   "win": 0.01,
+   "econ~": -0.03,
+   "econ_mean": -0.019
+  }
+ },
+ "tier2": {
+  "pool": {
+   "wall": -0.05,
+   "self": -0.06,
+   "ally": -0.059,
+   "h2h": -0.141
+  },
+  "gen": {
+   "wall": -0.038,
+   "self": -0.094,
+   "ally": -0.086,
+   "h2h": -0.118
+  }
+ }
+}
