@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–20
+# Expedition — H-1 hypothesis steward, passes 1–21
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -28,7 +28,176 @@ contract still match exactly. The heartbeat now targets this isolated path and
 pushes scoped commits from detached HEAD to origin/r/expedition. This supersedes
 pass 14's instruction to run games from the shared project directory.
 
+## Pass 21 — terminal-state bias in opening diagnostics; continue symmetry
+
+**2026-10-01; isolated checkout from `9735bb232`.** The original 01/08 gen
+contracts still match exactly; the campaign lock was free. Batch
+**025-symmetry-gen** resumed the saved Autarky transpose B/seed1/Chaewon parent
+fixture with one CPU game worker, 20-minute admission budget and cap 96. Initial
+load 2.29. No runtime, map, opponent, reference, fixture or gate change.
+
+### Completed batch and changed concentration
+
+Batch 025 completed **96 games in 674.3 seconds**, 48 parent and 48 candidate.
+`audit-029-symmetry.json` validates **643 indexed records** (208 pool parent,
+222 gen parent, 213 gen candidate), with **632** arena/replay discrepancies
+preserved. Runtime/replay hashes, fixture attribution, errors and canonical
+bookkeeping pass; inferred-turn versus replay-event/round-start measures remain
+separate. No source or evidence was overwritten.
+
+Coverage is **213/696 gen pairs**, all seed 1: 26 complete maps plus five Queen
+of Spades transpose pairs. Candidate pool is still 0/480. The unmatched newly
+played parent is QoS transpose B/Chaewon; eight older parent-only Quartet seed-2
+rows await their queue positions. **INCOMPLETE; NO GATE VERDICT**.
+
+Expected-score points are now **154.5 parent / 162 candidate**, not 154.5 wins
+(the parent has a draw). The newly added 48 pairs score **38.5/44**. Eleven
+outcomes improve, three worsen, 199 tie. Excluding Delayed Commons now gives
+**150.5/155**, so pass 20's claim that all net gain depends on that map no longer
+holds for the enlarged sample. Map composition changed; the frozen bot did not.
+
+| Transposed map | Pairs | Parent / 08 points | Δ material r250 |
+|---|---:|---:|---:|
+| Autarky | 8 | 7 / 8 | +12.500 |
+| Crossroads | 8 | 4 / 4 | −3.250 |
+| Default | 8 | 6 / 8 | +7.125 |
+| Devil | 8 | 8 / 8 | +2.375 |
+| Dilemma | 8 | 7 / 8 | −12.625 |
+| Portals | 8 | 7.5 / 8 | −9.000 |
+| Queen of Spades (partial) | 5 | 3 / 5 | +16.200 |
+
+Generated `new/` maps contribute **112/113 over 160 pairs**, versus **42.5/49
+over 53 `var/` transpose pairs**. This is a descriptive map-family contrast, not
+independent evidence of generalization or orientation invariance: native-map
+candidate comparators and later seeds are not complete. Many local opponents
+are saturated at 8/8, and these transposes derive from familiar map structures.
+
+Ares remains negative **39.5/38** (54 pairs); Chaewon 41/43, Fenrir 33/38, Yuna
+41/43 (53 each). Seat A **76.5/84** (108 pairs), B **78/78** (105). Do not hide
+these behind the aggregate +3.52 percentage-point expected-score delta. Mean
+material deltas +.535 at r100 and −1.099 at r250 require terminal-exposure checks
+before any causal interpretation, as the audit below demonstrates.
+
+### Correction to pass 20: Pulse Farms was not a demonstrated foraging regression
+
+The reported numbers remain correct, but their interpretation was too strong.
+`pulse-farms-survival-audit-pass21.json` checks all eight paired seed-one games:
+**no pair is jointly live at r150**. Six fixtures are wins for both arms; four
+finish earlier with 08. Against Chaewon and Yuna on seat A, wins shorten
+**r117→r74**; on B, **r101→r86**. Ares B instead slows r80→r97, Fenrir B
+r121→r126. The two shared losses last longer. Those are different terminal
+transitions, not a universal foraging change.
+
+At the last common live five-round checkpoint for each pair (r70–145), mean bed
+intake delta is **−1.50**, material **+1.125**, units **+.50**. The carried r150
+values were **−14.75**, **−12.25**, **−6.75**. Comparisons at different
+outcome-dependent times are not a replacement strength estimator, but they show
+why attributing the full r150 gap to poor repeated bed visits was unjustified.
+Earlier elimination wins stop accumulating food and production; terminal-state
+padding can penalize success as well as failure.
+
+`pulse-farms-tempo-sensitivity-pass21.json` retains the original **+17.514-round**
+tempo delta and compares **−1.471** over each pair's common live ten-round
+checkpoints, keeping the same original reference and equal pair weights. Every
+pair has usable checkpoints. The original tempo remains the frozen statistic;
+this is a retrospective sensitivity diagnostic, not an amended gate or an
+acceptance claim. In particular, dropping short games outright would introduce
+another survival bias. Keep all-game wins and explicit terminal transitions.
+
+### Cross-check against completed experiments and prospective gate proposal
+
+`tempo-terminal-sensitivity-pass21.json` applies that same definition to all
+three already-closed screens, verifying replay/reference/phase hashes and
+reproducing every original seed-level mean before calculating the alternative.
+There are no missing common prefixes. All reported historical decisions stand.
+
+| Screen / seed | Original tempo delta | Common-live diagnostic | Both live at r150 |
+|---|---:|---:|---:|
+| Mouth contest / 1 | +.124 | +.124 | 47/56 |
+| Mouth contest / 2 | −.176 | −.176 | 50/56 |
+| Exploration frontier / 1 | −8.823 | −8.694 | 33/40 |
+| Exploration frontier / 2 | −2.567 | −2.588 | 35/40 |
+| Food hold / 3 | +3.037 | +2.579 | 36/40 |
+| Food hold / 4 | −1.035 | −1.206 | 35/40 |
+
+The negative exploration and food-hold verdicts fail outcome checks; none is
+rescued. Mouth remains eligible for broader testing, not accepted. The large
+Pulse Farms sensitivity is not evidence that all tempo findings are wrong.
+
+**Prospective proposal, not adopted:** require terminal exposure and paired
+elimination/round-limit transitions next to every fixed-horizon opening curve;
+show the original and common-live sensitivity side by side. Before assigning a
+new acceptance rule, freeze its treatment of early winning and losing finishes,
+then validate it on independent controls/seeds. The current common-live statistic
+conditions on both outcomes and changes checkpoint support, so it should not
+silently replace the objective. The S1 tempo document explicitly intends padding
+to penalize eliminated losers; it does not resolve the symmetric penalty to an
+early winner. Winning remains primary. No shared benchmark or ledger edits.
+
+### Recorded-action reproduction before mechanism attribution
+
+The bounded conditional-replay trace in `symmetry-trace-pass21/` uses a copied
+instrumented 08 runtime only; the frozen bot is untouched. Both selected saved
+openings reproduce **all 3,676 recorded actions** with zero mismatches, fallback
+or missing trace: Delayed Commons A/Chaewon 2,959 turns through r150; Pulse Farms
+A/Chaewon 717 turns through its final r73. The initial driver lacked `pycapnp`;
+2.2.4 and its dependencies were installed only in ignored `build/expedition/audit-deps`,
+not the shared environment. Initial failure and successful logs are retained.
+
+Symmetry first activates at **r21 and r22**, respectively. Both traces choose
+rotation (type 2); no sampled post-turn revocation is observed. First own-action
+divergences from 01 occur at **r57** (dragon 8, N→S) and **r58** (dragon 26,
+E→N). Thus late first activation does not explain the later divergence on these
+two fixtures. They do not prove the inferred route was useful, nor full sonar
+payload parity. The trace's unobserved-memory counts can include radio knowledge;
+do not attribute every such cell uniquely to symmetry. Unequal game lifetimes
+also prevent interpreting raw active-turn counts as comparative effectiveness.
+Only two post-hoc fixtures were traced; no new games or behavior changes.
+
+### Reconciliation, fresh alternatives and ranked ten
+
+Read-only refresh about 11:29 UTC: Clair **11dd72764**, TT **fa53ab708**, Obscur
+**a8bf0a566**, HB **bfd67c37b**, main **cb2e920c7**, unchanged; no new remote lane
+or emerging branch. No merges/messages. Their reported claims retain the prior
+cutoffs and are not Expedition replications.
+
+Ledger proposals: L29/L37 gain a concrete terminal-exposure counterexample;
+L38/L27 gain validated activation timing but not component causality. Withdraw
+the strong Pulse Farms resource-scheduling diagnosis from pass 20, while retaining
+resource assignment and observable-pressure handover as competing architectural
+proposals. Delayed Commons' r150 gain still precedes its candidate's r154/r196
+wins; it is not the same short-game truncation case. Do not turn either mechanism
+into a new local dose scan or a named-map switch. Keep all earlier negative
+screen verdicts and original outstanding scans intact.
+
+1. L38/L27: finish original symmetry transfer across maps, seats and seeds.
+2. L29: audit terminal exposure before interpreting tempo/material guard failures.
+3. L37: confirm concentrated gains and transpose effects with complete coverage.
+4. L03: observable-pressure handover, with elimination and conversion separated.
+5. L39: winning concentration versus material growth; retain all-game outcomes.
+6. L27: remembered-resource assignment, still a proposal rather than a proven fix.
+7. L38: trace the first divergent decision before proposing any symmetry repair.
+8. L36: parent/child opportunity value; preserve failed immediate-meal screen.
+9. L14/L20/L02: original prior-base and cap scans with their frozen contracts.
+10. L40/gates: outstanding mouth/full-panel and sandbox obligations.
+
+Next runnable action: continue `campaign.py --candidate expedition-08-symmetry
+--panel gen --execute --minutes 20 --max-games 96`, log **batch-026**, from
+**var/queen_of_spades_tr, B, seed 1, ChaewonY04** against the saved exact parent.
+Batch 025 has exited and no game batch is active at publication. Complete the
+remaining seed-one maps, then follow the original seed-two/three order. Run
+`report.py --candidate expedition-08-symmetry` afterward and preserve the next
+numbered audit. Mean/median, original pool, phase/map and sandbox obligations
+remain unresolved; no acceptance or promotion. No repository runtime/tool change
+this pass: verification consists of the evidence audits, cross-screen numerical
+reproduction and 3,676 matching recorded actions. Commit only the status; keep
+analysis artifacts, dependencies and measured snapshots untouched.
+
 ## Pass 20 — symmetry transfer, phase mechanisms and map contradictions
+
+**Interpretation addendum:** pass 21 shows that Pulse Farms' carried r150/tempo
+gap is strongly confounded by earlier winning finishes. Keep these original
+measurements, but use pass 21's survival audit before inferring a foraging defect.
 
 **2026-10-01; isolated checkout from `f251006ac`.** Read the latest status and
 verified both original gen contracts exactly: 01/08 runtimes, all 29 maps, four
