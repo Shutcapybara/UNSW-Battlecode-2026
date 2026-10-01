@@ -16,7 +16,8 @@ from now on the desktop copy of the store is the one I build. Never call the API
 - **Gate win share is computed with the old tiebreak.** `frame.decode` infers the winner as longest → total
   (`frame.py:224-233`); the scorecard's win share (`scorecard.py:141` via `extract.py:411`) inherits it. The fix (read the
   engine's own verdict and the queen field) is in `tools/antioch/patches/frame-engine-verdict.patch`, for the director to
-  apply. FRAME_VERSION goes 5 → 6.
+  apply. FRAME_VERSION goes 5 → 6. Validated: the patched decoder matches the server's recorded winner on 300/300
+  sampled corpus games (135 pre, 165 post, incl. 2 queen-decided).
 
 - **Queen value:** where exactly one queen survives a round-limit game it won 36/36, 26 of those from behind on total.
   RL queen survival: field 2.2 %, top ten 0.7 %. Pocket maps (Slithery, Autarky, PD) kill every queen on r4–5.
