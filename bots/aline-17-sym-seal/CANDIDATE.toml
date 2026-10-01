@@ -1,0 +1,17 @@
+name = "aline-17-sym-seal"
+lineage = "aline"
+lane = "rb"
+author = "claude-opus-5.5/rb"
+language = "c++"
+lineage_parent = "aline-01-nodevil"
+mechanism = "stack re-test of two measured mechanisms vs the accepted parent: symmetry inference (aline-13, byte-identical change set) + ally right-of-way seal convention (aline-07, byte-identical change set)"
+expected_change = "pool econ positive (13: +0.038, 07: -0.020), wins up (13 pool +0.054; 07 gen +0.060), wall/self/body death rates inside +10 % on both panels (13 gen wall +10.3 % offset by 07's self -7 %, body -9..-11 %)"
+hypothesis = "13 fails only on gen hygiene (farm deaths that pay) and a gen win lower bound; 07 is a hygiene/win lever with a small pool economy cost; they act on different deaths"
+status = "accepted in lane rb (not registered)"
+
+[gate]
+kind = "D-032 paired fixtures, seeds 1-3, both seats; paired fixture bootstrap 90 %"
+pool = "n=480 econ +0.025 [+0.005, +0.045]; p@50 +0.027, p@100 +0.054, p@150 +0.021, p@250 -0.004; units@100 +0.052 [+0.022, +0.083]; length@100 +0.048 [+0.023, +0.076]; win +0.061 [+0.025, +0.096]; tier-2 wall -1 %, self -3 %, body -5 %, h2h +7 %"
+gen = "n=696 econ +0.012 [-0.003, +0.027]; units@100 +0.076 [+0.045, +0.108]; length@100 +0.071 [+0.040, +0.104]; win +0.029 [-0.001, +0.058]; tier-2 wall +8.7 %, self -6 %, body -13 %, h2h -2 %"
+robustness = "fixture-cluster bootstrap: pool econ [-0.000, +0.049], win [+0.025, +0.098]; gen win [-0.003, +0.062]"
+runs = "build/rb/runs/aline-17-sym-seal-{z1,gen}.jsonl vs build/rb/runs/aline-01-nodevil-{z1,gen}.jsonl; tools/rb/gate.py score aline-17-sym-seal --parent aline-01-nodevil --seeds 1,2,3"
