@@ -22,6 +22,10 @@ nice 10 with `--jobs 14`.
 - Base `carthage-00-base` = `hb1-14-prior-r540` + `shape_terms` switch (D-033 terms off). Golden parity: switch-on
   copy identical to hb1-14 on Devil (657 turns) and Trauma (9,454 turns); switch-off diverges only on Devil.
 
+- **Open gate question, for the analysts to decide** (lead's instruction, 2 Oct): economy-led D-032 rejects every
+  1.2.3 adaptation that moves wins with flat economy (04, 05; queen arms on gen). Full question and table at the end
+  of both findings. Until they rule: report both readings, stack nothing that fails the letter.
+
 ## Running table
 
 | Version | Mechanism (switch) | Parent | Expected sign | Pool Δecon~ [lo, hi] | Gen Δecon~ lo | Win Δ [lo] | Tier-2 worst | Queen alive@490 | Verdict |
