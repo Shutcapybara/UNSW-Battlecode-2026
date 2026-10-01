@@ -37,6 +37,8 @@ from now on the desktop copy of the store is the one I build. Never call the API
 | H-Q5 | queen-local enemy density penalty + ally escort (lead's idea) | posted 23:10; hazard 5 / 34 / 76 per 1k at 0 / 1 / 2+ enemy heads within 3 | survival not above H-Q1 arm, or econ LB < −0.02 | stacked on H-Q1 | any tester |
 | H-Q6 | timestamped queen sightings over sonar (lead's idea) | posted 23:10; enemy queen seen 25 % of rounds, median gap 5 | no gain over H-Q1/H-Q5 noise | as H-Q1 | after H-Q5 |
 | H-Q7 | queen-state swarm modes (turtle / hunt / longest race / queen race), with a sonar heartbeat so the swarm knows (lead's idea) | posted 23:25; 71 % of side-rounds are played queenless, median 294 rounds left | mode-switch arm not > constant policy vs an H-Q1 opponent (RL win LB > 0) | pool + gen, seeds 1–3 vs an H-Q1 mimic | after H-Q1 + H-Q6 |
+| H-Q8 | queen feature block for every eval / learned model (lead's request) | posted 16:10 UTC | GBT ± block: no held-out gain on queen turns, no queen alive change | offline + 1 panel | any; verso/hb1 lineage owners |
+| H-RL1–4 | learned-policy track: fast sim → BC → PPO self-play league → int8 net as prior/value (lead's request) | posted 16:10 UTC; H-RL1 (sim ≥ 10⁵ games/h) is the long pole, proposed 0.6 | per row in the finding §4 | — | director to staff |
 | H-Q4 | hunt the enemy queen once the field keeps queens | watch, 0.3 | field RL queen survival < 10 % for a week | corpus watch | — |
 
 ## Store maintenance (replay lead)
@@ -55,3 +57,4 @@ from now on the desktop copy of the store is the one I build. Never call the API
   closed. Opening references pending the build.
 - 2026-10-01 23:10 — H-Q5 (density) and H-Q6 (sonar sightings) posted from the lead's suggestions, with hazard and visibility numbers.
 - 2026-10-01 23:25 — H-Q7 (queen-state swarm modes) posted from the lead's suggestion.
+- 2026-10-02 (UTC 16:10 1 Oct) — H-Q8 and H-RL1–4 posted (lead's request); board time convention switched to UTC. Unit 2 in progress: post store decode, 06 paired reading, opening refs.
