@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–18
+# Expedition — H-1 hypothesis steward, passes 1–19
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -27,6 +27,115 @@ untracked too. All six original source contracts and the fixed mouth-screen
 contract still match exactly. The heartbeat now targets this isolated path and
 pushes scoped commits from detached HEAD to origin/r/expedition. This supersedes
 pass 14's instruction to run games from the shared project directory.
+
+## Pass 19 — close the food-retention test; move to information transfer
+
+**2026-10-01; isolated checkout from `ebf4e835b`.** Batch 022 completed its last
+**89 games in 921.9 seconds**, with no next fixture. Final audit
+`audit-024-final-foodhold.json` validates **160 records / all 80 paired fixtures**,
+with **158** arena/replay discrepancies retained. Hashes, attribution, errors
+and canonical bookkeeping pass; different event/round-start versus inferred
+turn-time estimands remain separate. No runtime or experiment rule was changed.
+The complete phase/screen report is being applied to the saved replays.
+
+### Complete outcomes and frozen checks
+
+Discovery expected-score points: **23.5 parent / 23 candidate** (40 pairs).
+Confirmation: **17 / 14** (40 pairs, no draws). The positive-confirmation,
+opponent-nonharm and per-map checks all fail: HB17 confirmation 9/6, g01 8/8,
+and QoS 3/1. Removing the tempo veto prospectively did not rescue this outcome.
+The old-rule comparison and richer phase diagnostics stay visible in the final
+report. No automatic food-hold dose, radius or round-boundary successor.
+
+| Map | Discovery s3 parent / 11 | Confirmation s4 parent / 11 |
+|---|---:|---:|
+| Autarky | 2 / 2 | 0 / 1 |
+| Default | 4 / 4 | 2 / 2 |
+| Devil | 3 / 2 | 0 / 1 |
+| Dilemma | 2 / 1 | 2 / 1 |
+| Portals | 1.5 / 3 | 2 / 1 |
+| Queen of Spades | 3 / 3 | 3 / 1 |
+| Schooltime | 2 / 3 | 4 / 3 |
+| Slithery Fight | 2 / 1 | 1 / 0 |
+| Trauma | 2 / 2 | 0 / 1 |
+| Trophy | 2 / 2 | 3 / 3 |
+
+There are four pairs per map/seed. Portals and Schooltime's discovery gains
+reverse; Dilemma and Slithery losses repeat. HB17 points are 8/6 then 9/6;
+g01 15.5/17 then 8/8. The first-seed near-tie did not confirm. This tests our
+narrow immediate-meal guard; it does not reject all resource-aware production
+or establish that the opposite split rule is optimal. It is a complete bounded
+screen, not complete original D-032 evidence or a sandbox certification.
+
+### Next decisive mechanism: already-frozen symmetry, unfamiliar maps first
+
+Move to **expedition-08-symmetry**, the original Aline-13 information mechanism
+on 01: terrain, bed timing, portal pairing and sonar type 8, without the ally
+right-of-way seal. It is a different information/coordination question from
+food allocation, not another local split tweak or a new stack. Other lanes
+report off-pool symmetry benefits with collision costs; our identity-free base
+and bare symmetry component need their own evidence. Recorded activation and
+switch-off parity were already verified at creation; current source manifests
+for 01/08 match exactly. 08 fingerprint: `75825d87f153ff9a0aaacbaf0eb6cf6307c73595c71bed903826c802b370f234`.
+
+Prioritize the **entire existing gen panel**: all 29 frozen maps, four original
+opponents, both seats, seeds 1–3 = **696 pairs**; seed 1 first, then 2 and 3.
+This changes scheduling only. Original z1/gen source, opponent, map, reference
+and seed contracts stand; no favorable subset or replacement gate. The 147 exact
+saved parent gen fixtures can be reused; 08 has zero at this cutoff. Opponents
+remain Yuna05, ChaewonY04, Fenrir18 and Ares06, so these are unfamiliar-topology
+checks against an older local roster, not an authenticated competitive frontier.
+Even completed gen alone cannot produce an original full D-032 accept. The
+remaining original pool, prior-base scans and mouth panels remain due.
+
+Added `campaign.py --panel gen` scheduling for original panels only. It cannot
+subset a focused screen. **33 no-game tests pass**, including every original gen
+fixture/seed, exact parent reuse, missing-child resumption and rejection of a
+panel filter on frozen screens. All **ten existing run contracts** still compare
+exactly equal. No repeated native build was needed for unchanged measured source.
+
+### Parallel reconciliation and gate audit
+
+Read-only refresh about 10:29 UTC: Clair advances to **11dd72764**; TT remains
+**fa53ab708**, Obscur **a8bf0a566**, HB **bfd67c37b**. No merges or messages.
+Clair now reports λ=.5 worse on both panels and λ=2 still pool-positive/gen-
+negative; λ=1 is best among those tested settings under its generalization rule.
+That bounds the tested settings, not a proof of a continuous/global optimum.
+Keep our fixed HB17 challenge result in context, without replacing its opponent
+or reinterpreting it as contest strength.
+
+Clair also extends trap20 to five pool seeds: economy +.040 [.027,.053], win
+−.001 [−.021,.020], units point −.008 but lower bound −.056. It proposes director
+review of a mean-versus-lower-bound guard, without changing the rule for its own
+candidate. That is a useful prospective calibration question, not permission to
+relax a historical failed gate here. Retain old/new comparisons and test revised
+criteria on separate evidence. More precise economy estimates are still not a
+win gain. No shared benchmark or ledger edits.
+
+Ledger proposals: add the complete negative immediate-meal screen to L36 while
+retaining opportunity-value splitting as untested; preserve L29's opening/win
+separation and opponent dependence. L38 now gets its outstanding identity-free
+information test. Keep L39 delivery/pressure and L27 remembered geometry as
+competing architectures, not assumed solutions. No numerical posterior change
+or promotion from these small local screens.
+
+Ranked ten:
+1. L38/L27: frozen symmetry transfer on all original generated maps.
+2. L29/L37: diverse opposition and unfamiliar topology for any promising result.
+3. L39: concentration/delivery conditioned on pressure, not recency alone.
+4. L03: middle-game elimination pressure rather than material-only growth.
+5. L27/L34: remembered geometry in steering, with strength rather than imitation as the endpoint.
+6. L36: compare parent/child intake value; no immediate guard retuning after failure.
+7. L37: repeated Dilemma/Slithery failure and transpose consistency.
+8. L14/L20: original prior-base trap/exploration scans, preserving their contracts.
+9. L02: original cap scans and actual bound activation.
+10. L40/gates: preserve mouth conclusions and outstanding pool/sandbox obligations.
+
+Next runnable action: `campaign.py --candidate expedition-08-symmetry --panel gen
+--execute --minutes 20 --max-games 96`, only with the exclusive lock free. Audit
+08 with `report.py --candidate expedition-08-symmetry` after each batch; retain
+selected/partial coverage and map/phase guards. Do not restart closed food-hold,
+exploration or focused mouth screens, and do not silently abandon old full panels.
 
 ## Pass 18 — food/production tradeoffs and a stronger check on control quality
 

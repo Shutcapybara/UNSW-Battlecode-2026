@@ -87,6 +87,42 @@ class CampaignTests(unittest.TestCase):
             game.assert_not_called()
 
 
+class PanelSchedulingTests(unittest.TestCase):
+    def test_gen_scheduling_keeps_every_original_fixture_and_pair(self):
+        def rows(bot, pn):
+            self.assertEqual(pn, 'gen')
+            return {}
+        with patch.object(c, 'read_rows', side_effect=rows):
+            jobs = list(c.jobs('expedition-08-symmetry', panel_filter='gen'))
+        expected = c.expected('gen', [1, 2, 3])
+        self.assertEqual(len(jobs), 2 * len(expected))
+        self.assertEqual({key for _, _, key in jobs}, expected)
+        for parent, child in zip(jobs[::2], jobs[1::2]):
+            self.assertEqual(parent[0], c.panel.PARENT)
+            self.assertEqual(child[0], 'expedition-08-symmetry')
+            self.assertEqual(parent[1:], child[1:])
+        self.assertEqual([k[2] for _, _, k in jobs], sorted(k[2] for _, _, k in jobs))
+
+    def test_gen_reuses_exact_parents_and_resumes_missing_children(self):
+        wanted = sorted(c.expected('gen', [1, 2, 3]))
+        def rows(bot, pn):
+            self.assertEqual(pn, 'gen')
+            return {k: {} for k in (wanted if bot == c.panel.PARENT else wanted[:7])}
+        with patch.object(c, 'read_rows', side_effect=rows):
+            jobs = list(c.jobs('expedition-08-symmetry', panel_filter='gen'))
+        self.assertEqual(len(jobs), len(wanted) - 7)
+        self.assertTrue(all(bot == 'expedition-08-symmetry' for bot, _, _ in jobs))
+        self.assertEqual({key for _, _, key in jobs}, set(wanted[7:]))
+
+    def test_panel_filter_cannot_shrink_a_frozen_screen(self):
+        for screen in c.SCREENS:
+            with self.assertRaises(ValueError):
+                list(c.jobs(c.SCREENS[screen]['candidate'], screen, 'gen'))
+        with self.assertRaises(ValueError):
+            c.execution_panels(panel_filter='typo')
+        self.assertEqual(c.execution_panels(), ['z1', 'gen'])
+
+
 class FocusedScreenTests(unittest.TestCase):
     def test_production_uses_fresh_seeds_and_separate_panel(self):
         fixtures = list(c.fixture_order('food-hold-v1'))
