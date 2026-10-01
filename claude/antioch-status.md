@@ -34,6 +34,8 @@ from now on the desktop copy of the store is the one I build. Never call the API
 | H-Q1 | queen preservation from r0 raises RL win ≥ 10 pp at ≤ 0.02 economy | posted 1 Oct, proposed ledger 0.7 | queen alive r490 on pool < 0.5, or RL win Δ LB ≤ 0 | pool + gen, seeds 1–3 | Claude tester |
 | H-Q2 | feed the queen late (TT's cull-into-the-long-one, keyed on the queen) | posted, after H-Q1 | both-alive RL win ≤ 0.5 vs queen-keepers | ~200 games mirror | after H-Q1 |
 | H-Q3 | pocket escape by splitting | **falsified** 1 Oct (engine probe) | — | — | — |
+| H-Q5 | queen-local enemy density penalty + ally escort (lead's idea) | posted 23:10; hazard 5 / 34 / 76 per 1k at 0 / 1 / 2+ enemy heads within 3 | survival not above H-Q1 arm, or econ LB < −0.02 | stacked on H-Q1 | any tester |
+| H-Q6 | timestamped queen sightings over sonar (lead's idea) | posted 23:10; enemy queen seen 25 % of rounds, median gap 5 | no gain over H-Q1/H-Q5 noise | as H-Q1 | after H-Q5 |
 | H-Q4 | hunt the enemy queen once the field keeps queens | watch, 0.3 | field RL queen survival < 10 % for a week | corpus watch | — |
 
 ## Store maintenance (replay lead)
@@ -50,3 +52,4 @@ from now on the desktop copy of the store is the one I build. Never call the API
 - 2026-10-01 22:20 — launched. Era established, store tagged, queen semantics, decoder bug found.
 - 2026-10-01 22:45 — unit 1 posted: finding, TARGETS endgame columns, 7 board lines, CORPUS.md, frame patch. H-Q3
   closed. Opening references pending the build.
+- 2026-10-01 23:10 — H-Q5 (density) and H-Q6 (sonar sightings) posted from the lead's suggestions, with hazard and visibility numbers.
