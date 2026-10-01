@@ -4,6 +4,48 @@ Worktree `../wt-antioch` (desktop), branch `r/antioch`, tools `tools/antioch/`, 
 Data: the corpus and the S-1 store are rsynced from the Mac into this worktree (`public_replays/corpus/`, `build/s1/`);
 from now on the desktop copy of the store is the one I build. Never call the API; the hub collector stays on the Mac.
 
+## Handoff — session wrap-up (2026-10-01 21:00 UTC)
+
+**Delivered (all on `r/antioch`; findings in `docs/findings/2026-10-0{1,2}-antioch-*.md`):**
+1. **Era:** the switch is 05:57:53Z → 09:26:58Z, and `games.era` is in the store. The live map pool changed too.
+2. **Queen:**
+   - semantics: the original lowest-id dragon, no succession, keeps the head on a split;
+   - field survival in round-limit games 2.2 % (top ten 0.7 %);
+   - three pocket maps kill it by design;
+   - where one queen survives a round-limit game, its side won 36/36.
+3. **Decoder bug:** `frame.py` uses the old tiebreak. The patch is validated 300/300 against server winners:
+   `tools/antioch/patches/frame-engine-verdict.patch`. The director should apply it on main.
+4. **Store:** 2,862 post-change in-scope games decoded. `S1_ERA` in `q.py` and `build.py corpus --era` added. **Synced
+   to the Mac** (`build/s1/corpus`, additive; the lead authorised re-syncs after each build).
+5. **Targets** (`docs/hub/TARGETS.md` § antioch):
+   - endgame and queen columns;
+   - post-change opening references: the field did not move; stable to ±4–5 %; top-ten − us now led by transits 0.56 SD;
+   - win potential Φ: LOMO AUC r50 0.86 (elimination maps) / 0.63 (round-limit maps), calibrated; tempo-form 0.64.
+     Coefficients in `tools/antioch/phi_post_v1.json`.
+6. **Readings:**
+   - carthage-06: gen round-limit fixtures +0.107 [+0.042, +0.175];
+   - carthage-02: elimination losses 168 → 320;
+   - carthage-04/05: reproduce exactly; the gain is longest races on round-limit fixtures;
+   - gate answer: win-led with guards, under which 04+05 accepts.
+7. **Hypotheses posted:** H-Q1/2/4/5/6/7/8 (queen), H-S1/2/3 (portal memory, scouts, queen-directed latent states;
+   portal danger 57 % vs 19 %; rays cross portals), H-V1 (Φ), H-RL1–5 (learned track; the engine runs in-process at
+   ~10 k decisions/s/core; GBT expert iteration first).
+8. **RL readiness:** groundwork now (G1 env, G2 encoder parity, G3 GBT per-KB). Training after four entry conditions;
+   see `2026-10-02-antioch-rl-readiness.md`.
+
+**Open, for the next session (in order):**
+1. Read the board since 20:50 UTC; answer the director's rulings on the gate rule and the frame patch.
+2. Re-sync the corpus from the Mac, then `build.py games && build.py corpus --era post`, then re-sync the store to the
+   Mac.
+3. H-V1: does ΔΦ@100 rank carthage's arms' win Δ better than tempo / economy? This needs local stores per arm.
+4. Refit Φ and the queen tables once the missing top-ten teams appear (collector request open).
+5. Readings of carthage-08/09 and kyoto-02/03 as they land.
+
+**Environment:**
+- Every desktop venv is on unswbc 1.2.3, the latest (the parent `.venv` was upgraded from 1.2.2 on the lead's say-so).
+- `duckdb` lives in `build/s1-pylib` (PYTHONPATH, or `q.py` adds it).
+- Push by SSH URL: `git push git@github.com:Shutcapybara/UNSW-Battlecode-2026.git r/antioch`.
+
 ## Top — read this first (updated 2026-10-01 22:20 ACST)
 
 - **Era switch:** the live server adopted 1.2.3 between **05:57:53Z** (last old-rule game) and **09:26:58Z** (first
@@ -71,3 +113,4 @@ rome) are on the Mac and get no GPU-heavy items (lead, 2 Oct).
 - 2026-10-01 19:40 UTC — readings: carthage-06 (gen RL-fixture +0.107 [+0.042, +0.175], elimination −0.012), carthage-02 (elimination losses 168 → 320). Gate answer posted: win-led for endgame mechanisms with econ/tier-2/ΔΦ guards; 04+05 would accept.
 - 2026-10-01 20:10 UTC — opening refs published (field unchanged; transits now the largest gap); RL-readiness decision note.
 - 2026-10-01 20:40 UTC — carthage-04/05 reading: reproduces exactly; gain is round-limit longest races (05 pool +0.103, gen +0.068 on RL fixtures), no queen effect. Candidate under the win-led rule.
+- 2026-10-01 21:00 UTC — session wrap-up: handoff section added; desktop venvs all on 1.2.3.
