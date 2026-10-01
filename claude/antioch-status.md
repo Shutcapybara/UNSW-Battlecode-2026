@@ -36,6 +36,7 @@ from now on the desktop copy of the store is the one I build. Never call the API
 | H-Q3 | pocket escape by splitting | **falsified** 1 Oct (engine probe) | — | — | — |
 | H-Q5 | queen-local enemy density penalty + ally escort (lead's idea) | posted 23:10; hazard 5 / 34 / 76 per 1k at 0 / 1 / 2+ enemy heads within 3 | survival not above H-Q1 arm, or econ LB < −0.02 | stacked on H-Q1 | any tester |
 | H-Q6 | timestamped queen sightings over sonar (lead's idea) | posted 23:10; enemy queen seen 25 % of rounds, median gap 5 | no gain over H-Q1/H-Q5 noise | as H-Q1 | after H-Q5 |
+| H-Q7 | queen-state swarm modes (turtle / hunt / longest race / queen race), with a sonar heartbeat so the swarm knows (lead's idea) | posted 23:25; 71 % of side-rounds are played queenless, median 294 rounds left | mode-switch arm not > constant policy vs an H-Q1 opponent (RL win LB > 0) | pool + gen, seeds 1–3 vs an H-Q1 mimic | after H-Q1 + H-Q6 |
 | H-Q4 | hunt the enemy queen once the field keeps queens | watch, 0.3 | field RL queen survival < 10 % for a week | corpus watch | — |
 
 ## Store maintenance (replay lead)
@@ -53,3 +54,4 @@ from now on the desktop copy of the store is the one I build. Never call the API
 - 2026-10-01 22:45 — unit 1 posted: finding, TARGETS endgame columns, 7 board lines, CORPUS.md, frame patch. H-Q3
   closed. Opening references pending the build.
 - 2026-10-01 23:10 — H-Q5 (density) and H-Q6 (sonar sightings) posted from the lead's suggestions, with hazard and visibility numbers.
+- 2026-10-01 23:25 — H-Q7 (queen-state swarm modes) posted from the lead's suggestion.
