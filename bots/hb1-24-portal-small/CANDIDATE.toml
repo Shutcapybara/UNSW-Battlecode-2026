@@ -36,3 +36,4 @@ summary = "Restores high-effort target/flood/triple search and Fafnir size-match
 # prior-weight sweep: hb1-14 with hb1_dir_lambda = 2.0
 
 # TT regime selector: feed_base 140 on large (W*H>=1073741824) or portal-dense (>=5.0 portal edges per 100 seen cells) maps, base hb1-17-prior-lam20 otherwise.
+# Endgame gate vs hb1-17: ACCEPT, +2.0 pp [+0.14, +3.84] over 704 paired fixtures (Portals +8.75 pp; other maps identical). z1 147-13 / 141-19.

@@ -266,6 +266,33 @@ tempo vocabulary (ACCEPT / REJECT / NO GAIN / INCONCLUSIVE). It is proposed alon
 - Its split-stall result is the mid-game counterpart of the regime story. The top ten split 52 % of eligible turns
   (ours 75–95 %), and hold length while food is near.
 
+## Follow-up (1 Oct, evening): hb1-24, the selector that passes
+
+Iterations on the portal rule (all hb1-17 plus tt-05's feeding onset when the rule fires; paired endgame gate):
+
+| bot | rule | Portals vs hb1-17 | Default | verdict |
+|---|---|---|---|---|
+| hb1-21 | ≥ 5 portal edges per 100 *seen* cells | +8.75 pp [+0.6, +16.9] | rule fires in 46 of 160 games (local portal clusters), −1.25 pp n.s. | INCONCLUSIVE overall (+1.7 [−0.4, +3.8]) |
+| hb1-22 | ≥ 6 per 100 seen, ≥ 150 seen | −1.9 pp (gain lost) | still fires | — |
+| hb1-23 | ≥ 4 per 100 *map* cells | +1.25 pp (gain lost) | never fires | NO GAIN vs hb1-21 |
+| **hb1-24** | hb1-21's rule, only when W + H ≤ 56 | **+8.75 pp [+0.6, +16.9]** | never fires | **ACCEPT** |
+
+- Why hb1-23 failed: each dragon is its own process with its own map, and a child starts with nothing. A dragon born
+  at r250 never sees enough of the map for an area-normalised count to cross the threshold. A density over the cells
+  it has seen works for young dragons.
+- Why the W + H gate is principled rather than a map list: Ares' onset is `500 − feed_base − 0.6·(W + H)`, so it is
+  already early on large maps (the size-based rule in hb1-19 hurt Schooltime). The earlier onset is only missing where
+  the map is small *and* elimination is blocked by portals.
+- **hb1-24 vs hb1-17** (z1 seeds 1–2, plus Portals, Default and Schooltime seeds 1–10; 704 paired fixtures):
+  - overall **+2.0 pp [+0.14, +3.84]**;
+  - round-limit maps +3.65 pp [+0.5, +7.0]; elimination maps identical (0 of 320 games changed);
+  - Portals conversion failures 23 → 1, and the longest dragon at the end rises from 30 to 36.
+
+  z1 scorecards are 147–13 and 141–19 (pass, pass); hb1-17 got 144–16 and 139–21. The bot is deterministic: hb1-24
+  reproduces hb1-21 game for game on Portals and hb1-17 everywhere else. Uploadable (3.74 MiB).
+- **Upload candidate: `hb1-24-portal-small`.** The open question is the ladder. The local zoo has no strong converting
+  opponent, and the effect is per-map, so a live check would compare Portals games before and after.
+
 ## What to take, and what is open
 
 - **Conditional conversion, not a fixed earlier round.** Keep the swarm while elimination is on; convert on the top
