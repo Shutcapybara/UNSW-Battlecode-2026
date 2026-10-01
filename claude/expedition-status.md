@@ -1,9 +1,10 @@
-# Expedition — H-1 hypothesis steward, passes 1–4
+# Expedition — H-1 hypothesis steward, passes 1–5
 
-**2026-10-01, MacBook; branch `r/expedition`.** Evidence cutoff: starting commit
-`757315abc`. No previous Expedition pass exists. The ledger's last update was
-`53a9833bb`; this pass reconciles its accumulated evidence, including findings
-whose addenda supersede their own headlines. Next pass starts from this pass's commit.
+**2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
+`757315abc`; Expedition was created in pass 1. The ledger baseline is
+`53a9833bb`. Each pass below records its own continuation cutoff, including
+findings whose addenda supersede their headlines. Resume from the latest pushed
+Expedition commit and the saved fixture index.
 
 **Current state: autonomous CPU campaign active; no gate verdict yet.** The first
 pass created and verified the 14 snapshots, reconciled the ledger, and pushed
@@ -13,6 +14,73 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 5 — third portal-map slice and bounded throughput (2026-10-01)
+
+Resumed from pushed commit `99fc1b782`. Batch 006 completed 24 games in 99.8
+seconds; the 124-game snapshot passed the canonical evidence audit. The remaining
+Prisoners Dilemma fixtures then completed and passed phase/bookkeeping checks:
+four complete seed-1 maps, **64 pairs / 128 validated games**. Batch 007 continues
+on Portals. Full pool and gen coverage remain incomplete.
+
+**Prisoners Dilemma, seed 1, eight opponents × both seats:** parent 01 and mouth
+09 each won 15/16. Measures below use identical paired games through r150.
+
+| Measure | Parent 01 | Mouth 09 |
+|---|---:|---:|
+| Transits | 205 | 126 |
+| Transits followed by death within three rounds | 18/205 = 8.78% | 19/126 = 15.08% |
+| Ally head-on deaths / dragon turns | 16/17,394 = 0.920 per 1k | 14/15,489 = 0.904 per 1k |
+| Own goals / dragon turns | 318/17,394 = 18.282 per 1k | 298/15,489 = 19.239 per 1k |
+| Newborn deaths / splits | 185/492 = 37.60% | 194/466 = 41.63% |
+| Mean total length at r150 | 19.625 | 18.1875 |
+| Candidate − parent opening tempo | — | **+2.768 rounds (slower)** |
+
+The apparent safety improvement on Autarky/Default **does not generalise even to
+all completed seed-1 portal maps**: here exposure falls while transit-associated
+death incidence rises. Neither the 6.30 percentage-point rate increase nor the
+other descriptive differences is an independent-seed estimate. Do not count
+maps from this scan as independent rejections. **L40 stays 0.5**, and no variant
+is tuned against this prefix.
+
+Matched economy sensitivity on this complete map: arena **−0.008886**, replay
+**−0.008457**, using the previously specified four-checkpoint normalisation.
+Again no sign reversal. Raw pearls r25 delta **+0.4375**, r50 **−0.6875**; mean
+r50 field-percentile delta **−0.009275**. The r25 percentile remains unavailable.
+This adds a phase-specific warning: a small early intake gain does not establish
+sustained opening benefit. Whole-game wins are unchanged despite slower tempo;
+keep outcome, material and hygiene measures distinct. No gate verdict is issued.
+
+### Source reconciliation and run bounds
+
+- No newer committed lane findings, ledger, or gate changes. An unrelated
+  working-tree edit to `tools/s1/tempo_gate.py` adds portable `.tempo.json` export
+  and import. Reviewed the diff: `extract`, `lag`, and `tempo` formulas are
+  unchanged. Left it and the new Ouroboros snapshot untouched.
+- Conservative phase-cache hashing detects that source change. New phase hash:
+  `e18ca759e9f96c2ade68fa57787537112df68366be87aecdca9fa33e63868d50`;
+  current tempo module hash:
+  `ebea67941aabc5e14a2e7e5d4a6af9f0a2c4e0beaf7e0959ad9a459d64e5e38c`.
+  The frozen reference hash remains unchanged. This is a source-version boundary,
+  not a new scoring formula; prior reports remain intact under their old hashes.
+- Recent 24-game batches took 99.8–336.4 seconds. Host load at this pass was about
+  14 on 18 logical CPUs. Updated the heartbeat to permit **up to 96 games within
+  the same 20-minute admission budget**, still one game worker and an exclusive
+  lock. The current 24-game batch finishes as launched. A started game may finish
+  after the admission budget; reduce the cap if throughput/load warrants it.
+  No change to fixture order, source contracts, stopping criteria or GPU policy.
+
+Evidence: `build/expedition/audit-007.log`, `phase-dilemma.log`,
+`dilemma-sensitivity.json`, and
+`build/expedition/replay-panels/expedition-09-mouthroute-z1-dilemma-phase.json`.
+Only this status changes in this pass; shared tools and measured bot snapshots
+are untouched. Next: validate the finished Portals batch, complete its map/seed
+slice, and continue the fixed panels using the larger bounded invocation below.
+
+**Rows reviewed:** L29/L36/L37 (phase and gate interpretation), L40 (map-dependent
+mouth-rule transfer). **Proposed weights and ranked ten remain unchanged**:
+there is no independent full-panel result or historical verdict flip to justify
+re-ranking or another weight step.
 
 ## Pass 4 — second map and measurement sensitivity (2026-10-01)
 
@@ -219,7 +287,7 @@ never combine changed sources. An active lock means leave that batch alone.
 
 ```sh
 PYTHONPYCACHEPREFIX=/tmp/expedition-pycache .venv/bin/python bots/expedition-00-hb540-control/campaign.py
-PYTHONPYCACHEPREFIX=/tmp/expedition-pycache .venv/bin/python bots/expedition-00-hb540-control/campaign.py --execute --minutes 20 --max-games 24
+PYTHONPYCACHEPREFIX=/tmp/expedition-pycache .venv/bin/python bots/expedition-00-hb540-control/campaign.py --execute --minutes 20 --max-games 96
 PYTHONPYCACHEPREFIX=/tmp/expedition-pycache .venv/bin/python bots/expedition-00-hb540-control/report.py --candidate expedition-09-mouthroute
 PYTHONPYCACHEPREFIX=/tmp/expedition-pycache .venv/bin/python bots/expedition-00-hb540-control/test_campaign.py
 ```
@@ -247,7 +315,7 @@ therefore needs an explicit ablation before treating this as an OOS parent:
 
 - `expedition-00-hb540-control`: exact runtime-source copy of hb1-14, provenance only.
 - `expedition-01-nodevil`: only those three identity terms disabled. Common parent
-  for every mechanism below; **not yet measured or accepted**. Search caps retained.
+  for every mechanism below; **partially measured, not accepted**. Search caps retained.
 
 This makes the test a prior-bearing, identity-free HB base test, not a literal
 unchanged-hb1-14 gate. Report 01 versus 00 separately; never attribute that delta
@@ -257,7 +325,7 @@ to a tested mechanism. No Lune cap change is bundled into this base.
 |---|---|---|
 | Is the tuning surface still flat on the prior base? | 02 threat weight 1→0.5; 03 revisit 0.15→0.05; 04 trap 30→20; 05 exploration 5→3; 06 Maelle ally target weight −1.4; 07a–e Maelle sparsity selector `(lo,hi)=(48,160),(48,384),(48,768),(160,384),(160,768)` | **UNMEASURED.** No new weight change from these builds. A robust pass reopens the corresponding prior-base question; no passes would bound these tested settings, not establish that every Tyr evaluation is a flat bowl. |
 | Are information gains additive? | 08 symmetry inference, exactly the Aline-13 component retained in Aline-17, on 01 | **UNMEASURED.** L38 stays 0.7. The Aline-17 ally right-of-way seal is excluded to isolate symmetry; a later separate seal/stack test is needed to reproduce the full accepted Aline package. |
-| Does the mouth rule survive the prior? | 09 Gustave-07c: weight 4, any portal mouth, route exemption within 3 steps, on 01 | **UNMEASURED.** L40 stays 0.5; a hygiene-only hold does not raise it. |
+| Does the mouth rule survive the prior? | 09 Gustave-07c: weight 4, any portal mouth, route exemption within 3 steps, on 01 | **INCOMPLETE.** Seed-1 map slices above; no gate verdict. L40 stays 0.5; a hygiene-only hold does not raise it. |
 
 The sparsity settings reproduce **all five completed Maelle F5 settings**, rather
 than choosing one after seeing a new result. Maelle's original parent used Lune
