@@ -14,8 +14,8 @@ terms off (D-033) = `kyoto-01-nodevil`.
 |---|---|---|---|
 | kyoto-00-base | byte-copy of hb1-14-prior-r540 | golden parity ✓ (devil A s1: 657 turns, 0 divergent) | — |
 | kyoto-01-nodevil | shape_terms=false (renoir-23 form) | **the lane zero**; D-033 cost arm vs kyoto-00 at s1 running | unit-1 finding |
-| kyoto-02-queenguard | H-Q1 combined queen guard | **SHELVED** — carthage claimed H-Q1 first (board 23:15 ACST); probes: queen death r41→r171/r214, killers enemy-h2h + ally-body | this file |
-| kyoto-03-latecap | search_cap_late 48→160, sparse 64→512 (lune-r1-07 effective profile on the prior base) | running after the zero; expected p@150/250 up, p@50 flat | unit-1 finding |
+| kyoto-02-queenguard | H-Q1 combined queen guard (veto dive/h2h, threat+blind ×4, no production splits, tail-shed >5) | running (carthage's request, second host point for their stack); probes: queen death r41→r171/r214 | this file + finding |
+| kyoto-03-latecap | search_cap_late 48→160, sparse 64→512 (lune-r1-07 effective profile on the prior base) | **REJECT (boundary)**: pool econ~ +0.015 [−0.002,+0.033], econ_late +0.025 [−0.001,+0.056], p@250 +0.045 [+0.007,+0.093], win +0.034 [+0.005,+0.065], gen −0.000 flat; letter fails lb by 0.002/0.001; twins agree except trauma | finding §5 |
 
 ## Unit 1 (1 Oct) — base under 1.2.3, queen measurements, first analyst item
 
