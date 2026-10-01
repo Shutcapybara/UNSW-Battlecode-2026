@@ -87,5 +87,25 @@ class CampaignTests(unittest.TestCase):
             game.assert_not_called()
 
 
+class PhaseExposureTests(unittest.TestCase):
+    def test_unequal_exposure_uses_counts(self):
+        from phase_report import summarize
+        def row(transits, deaths):
+            return dict(won=1, totals=dict(c_transits=transits, c_transit_died3=deaths,
+                c_death_h2h_ally=0, c_own_goals=0, c_dragon_turns=100,
+                c_splits=0, c_deaths_newborn=0, total=20))
+        result = summarize([row(10, 2), row(1, 1)])
+        self.assertAlmostEqual(result['transit_died3'], 3 / 11)
+        self.assertIsNone(result['newborn_death_per_split'])
+        self.assertEqual(result['totals']['c_transits'], 11)
+
+    def test_no_transits_is_unmeasured_not_safe(self):
+        from phase_report import summarize
+        row = dict(won=0, totals=dict(c_transits=0, c_transit_died3=0,
+            c_death_h2h_ally=0, c_own_goals=0, c_dragon_turns=100,
+            c_splits=0, c_deaths_newborn=0, total=0))
+        self.assertIsNone(summarize([row])['transit_died3'])
+
+
 if __name__ == '__main__':
     unittest.main()

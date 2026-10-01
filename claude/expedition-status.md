@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–2
+# Expedition — H-1 hypothesis steward, passes 1–3
 
 **2026-10-01, MacBook; branch `r/expedition`.** Evidence cutoff: starting commit
 `757315abc`. No previous Expedition pass exists. The ledger's last update was
@@ -13,6 +13,86 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 3 — first map slice and phase audit (2026-10-01)
+
+Resumed from pushed commit `74d0caaeb`. No tracked lane findings, ledger, or gate
+commits changed after that cutoff. A newly present, untracked S1 candidate roster
+is treated as provisional evidence and left untouched. Batch 002 completed 24
+new games in 265.3 seconds; all 28 then-saved replays passed attribution and
+bookkeeping. Batch 003 resumed under the exclusive lock. Host load was about
+21 on 18 logical CPUs, so retained one game worker and the 24-game cap.
+
+**First complete map × seed slice:** Autarky, seed 1, eight frozen zoo opponents,
+both seats, 16 paired fixtures / 32 games. Parent 01 and mouth 09 each won 16/16.
+These are ordered-prefix data, not a completed panel or an independent-seed test.
+All figures below use the same paired games and events through r150; a transit
+at r150 may be associated with its death up to three rounds later.
+
+| Measure | Parent 01 | Mouth 09 | Interpretation at this resolution |
+|---|---:|---:|---|
+| Transit volume | 372 | 349 | −6.2%; reduced exposure must accompany the survival number |
+| Transits followed by death within 3 rounds | 51/372 = 13.71% | 39/349 = 11.17% | Descriptive improvement, not causal attribution to the portal |
+| Ally head-on deaths / dragon turns | 30/49,534 = 0.606 per 1k | 32/48,170 = 0.664 per 1k | All locations, **not** ally head-on per transit |
+| Own goals / dragon turns | 565/49,534 = 11.406 per 1k | 528/48,170 = 10.961 per 1k | Modest descriptive improvement |
+| Newborn deaths / splits | 200/1,196 = 16.72% | 200/1,114 = 17.95% | Worse ratio despite unchanged death numerator |
+| Mean total length at r150 | 73.00 | 65.0625 | −10.9%; prevents treating hygiene alone as success |
+| Opening tempo, candidate − parent | — | **+1.028 rounds** | Slower; frozen top-ten Autarky reference, no CI claim |
+
+The retained reference hash is
+`c4c4138fd99f45379f58ab9598059d76af1698a4dab9019a055f483561a3740f`.
+This slice establishes a measurable mechanism tradeoff, not acceptance or
+rejection. **L40 remains 0.5**. Do not terminate the predeclared test based on this
+map, make a tuned mouth variant from it, or count it as an independent rejection.
+
+`phase_report.py` now validates source/replay contracts and canonical bookkeeping,
+pairs exact fixtures, computes S1 opening tempo, and retains numerators and
+exposures for guard rates. It emits no verdict. Its income/loss curves, outcome,
+and transit-death rate matched the existing S1 tempo extractor exactly on a
+saved pilot replay. Nine no-game tests pass, including unequal exposure pooling
+and a no-transit case that must remain unmeasured rather than become zero risk.
+No shared tools or measured bot sources changed.
+
+```sh
+PYTHONPYCACHEPREFIX=/tmp/expedition-pycache .venv/bin/python bots/expedition-00-hb540-control/phase_report.py --candidate expedition-09-mouthroute --panel z1 --map autarky
+```
+
+Evidence: `build/expedition/replay-panels/expedition-09-mouthroute-z1-autarky-phase.json`,
+`build/expedition/phase-autarky.log`, and source/replay-keyed `phase-analysis/` caches.
+The phase report's analysis hash is
+`1848177d5b4b740462d2aad9655e7301fa94c7d0fba3014ec12e61de1e837792`.
+Next: finish the current mouth panel, refreshing `report.py` after each batch and
+this phase report at completed map/seed stages; then proceed through the existing
+queue. All other full-gate requirements and promotion restrictions remain.
+
+### Reconciliation, contradiction and gate notes
+
+- **L29, L36, L37:** the provisional
+  `docs/analysis/benchmarks/candidates-2026-10-01.md` points to the existing S1
+  atlas: 20,243 games / 247 bots; reported local tempo–strength Spearman −0.84.
+  It also lists hb1-04 tempo −10.7 but win share 0.64 versus hb1-12's −3.8 and
+  0.84. Tempo is associated with strength, not sufficient to select a winner.
+  Retain whole-game and material/conversion guards. Do not switch the frozen
+  opponent panel mid-experiment to its proposed 20-bot roster.
+- **L39 apparent contradiction:** the existing
+  `docs/findings/2026-10-01-s1-atlas.md` reports top-one length share negatively
+  associated with strength (local −0.79; live −0.46). That observational,
+  aggregate association does not refute TT's late conversion mechanism. Phase
+  and selection differ. The decisive test remains a paired conversion ablation
+  reporting r490 concentration conditional on survival, all-game outcomes, and
+  material-leading round-limit losses, with elimination and total-material guards.
+  **L39 stays 0.7**, and a generally higher concentration is not the objective.
+- **Gate audit:** S1 `tempo_gate.py` prints its guard rates as context rather than
+  including them in the tempo verdict, and its guard display averages side-game
+  rates. Expedition's phase audit uses exact paired exposure totals and prints
+  no verdict. The two displays answer different aggregation questions; do not
+  silently replace historical thresholds. The Autarky slice illustrates why a
+  lower post-transit death rate alone is insufficient. No historical verdict flip
+  is supported by this slice.
+
+**Weights and ranked ten:** unchanged from pass 1. The existing ranked table
+below remains the current issue list; this single-map test supplies no new
+independent full-panel result. Rows reviewed: **L29, L36, L37, L39, L40**.
 
 ## Pass 2 — durable continuation and measurement audit (2026-10-01)
 
