@@ -616,3 +616,17 @@ bit-identical; Default/Autarky game lengths differ because the portal rule fires
 Schooltime 27 → 24, Slithery 24 → 23, Trauma 31 → 31. Ares' onset already scales with W + H, so large maps are already
 early; the small portal-dense map is where the earlier onset helps. → `hb1-21-portal-feed140` (portal rule only,
 threshold 5/100), tested on Portals over 10 seeds (`build/tt/mapduel/`, `run_panel --maps`).
+
+## r150 hand-offs (after the s1 lane's graft result) and the portal rule's Default leak (1 Oct)
+
+- The s1 lane (`docs/findings/2026-10-01-s1-next-steps.md`, Mac) found r150 the best hand-over for the Heartbreaker
+  mimic: 0.64 → 0.84, tying hb1-12. I tested r150 for the two new mimics (z1 vs V06, which went 244–76 over two seeds):
+  - tt-16 (Cache me outside → Ares V06 at r150): 112–48 and 120–40 = **232–88**.
+  - tt-17 (forgot to mention → Ares V06 at r150): 114–46 and 120–40 = **234–86**.
+
+  Both are below V06 and far below hb1-17 and hb1-21 (283–287). Their openings have more economy (+0.25 at r50–250)
+  but do not win games; Heartbreaker's did. **The mimic hand-off line is closed.**
+- hb1-21 vs hb1-17 with Schooltime and Default seeds 1–10 (704 pairs): Portals +8.75 pp [+0.6, +16.9]; Schooltime
+  0.0; Default −1.25 pp [−3.75, +1.25], with the rule firing in 46 of 160 Default games (local portal clusters).
+  Overall +1.7 pp [−0.4, +3.8] → INCONCLUSIVE. hb1-22 tightens the rule (6 portal edges per 100 seen cells, at least
+  150 cells seen); running on Portals and Default seeds 1–10.

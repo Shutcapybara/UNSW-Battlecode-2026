@@ -20,6 +20,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('name'); ap.add_argument('feed_base_limit', type=int); ap.add_argument('base', nargs='?', default='hb1-17-prior-lam20')
 ap.add_argument('--area', type=int, default=1100, help='W*H threshold; 0 disables the size rule')
 ap.add_argument('--portals', type=float, default=4.0, help='portal edges per 100 seen cells')
+ap.add_argument("--min-seen", type=int, default=64, help="cells seen before the portal rule may fire")
 a = ap.parse_args()
 name, fb, base = a.name, a.feed_base_limit, a.base
 area = a.area if a.area > 0 else 1 << 30
@@ -35,7 +36,7 @@ s = s.replace(old, f'''    static constexpr int feed_base = 40;
     static constexpr int feed_base_limit = {fb};
     static constexpr int regime_area = {area};          // W * H at or above: large map
     static constexpr double regime_portals = {a.portals};     // portal edges per 100 seen cells at or above: portal-dense
-    static constexpr int regime_min_seen = 64;''')
+    static constexpr int regime_min_seen = {a.min_seen};''')
 p.write_text(s)
 p = d / 'policy.hpp'; s = p.read_text()
 line = 'int feed_from = 500 - Params::feed_base - static_cast<int>((w.W + w.H) * Params::feed_k);'
