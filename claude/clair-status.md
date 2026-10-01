@@ -218,6 +218,29 @@ specialisation under the OOS rule. The per-map tables for every future Clair can
 `build/clair/bymap-*.txt`; the discipline is: gate on observable structure (D-036), check tr-consistency before
 believing any per-map gain, weight pooled claims by Q2 slope² when deciding registration order.
 
+## Pass 3 (1 Oct, night) — two measurements that close registration questions
+
+1. **The λ curve on both panels** (seed 1, common reference hb1-14; λ=2 at seeds 1–3 from pass 2):
+
+| λ | pool econ~ | gen econ~ | pool units | gen units | reading |
+|---|---|---|---|---|---|
+| 0.5 (hb1-16) | negative (p50 −0.139) | mixed-negative (p50 −0.090) | −0.101 | −0.207 | worse on **both** panels |
+| **1.0 (hb1-14)** | reference | reference | reference | reference | **the interior optimum for the OOS rule** |
+| 2.0 (hb1-17) | **+0.112** | **−0.080 [−0.114, −0.036]** | +0.21 | −0.13 | pool up, gen down |
+
+   **λ=1 stands.** The pool-only sweep that said "λ=2 passes" was reading the pool gradient; the joint read says
+   the λ lever is pool-shaped end-to-end. Registration proposal (final form): **hb1-14 remains the registered
+   uploadable; the λ lever is closed unless a prior mechanism turns gen-positive first.**
+
+2. **trapw20 at five seeds** (pool n=800, gen unchanged n=744): pool econ~ **+0.040 [+0.027, +0.053]** — every
+   checkpoint lb positive, births +0.051, win −0.001 [−0.021, +0.020]; gen econ~ +0.022 [+0.013, +0.032], all
+   material positive. Units point estimate −0.008 (mean-zero at n=800); the letter still rejects on the units
+   **lower bound** (−0.056 — a fat left tail, not a mean effect) and a 0.001 miss on the win lb. **A
+   registration-candidate shape blocked only by the guard's lb-form** — flagged for the director as the first
+   test case for the guard-form question (units as a mean guard, `point ≥ −0.02`, vs the lb guard). Not edited
+   by the steward: changing a guard that would admit the steward's own candidate is the conflict to avoid; the
+   evidence table above is the input the director needs either way.
+
 ## Standing duty 1 — reconcile (evidence since the last ledger log, 1 Oct 03:00 UTC)
 
 Read for this pass: `origin/r/tt` (new: four-top-team anatomy, tt-01..07 conversion ports, dummy-bot check,
@@ -355,6 +378,8 @@ All as proposals in standing duty 1 plus the three test sections; the director a
 - 13:0x — screens done; four knobs ≥ +0.03 → extension queue (clair-03/04/05/06 + the clair-09 dose arm),
   4,280 more games. No runner errors at any point (0 games with rc ≠ 0).
 - 17:17 — pass 1 complete (11,224 games; see above).
+- 19:1x–19:4x — pass 3: hb1-16 λ=0.5 both panels s1 (408), clair-03 s4+s5 (320) + parent s4+s5 (320),
+  rescore at 5 seeds; 1,368 games. No runner errors.
 - 18:0x–19:0x — pass 2: hb1-17 parent full (1,224) + hb1-17-vs-hb1-14 head-to-head on existing runs + 7 screens
   (clair-11/13/14/15/16/17/18, 160 each) ≈ 2,540 games. No runner errors. Queues q3–q6, logs /tmp/clair-q*.log.
 - 17:17 — pass 1 runs complete. Totals: 11,224 games this pass (parent 1,224; 6 screens 960; c07/c08 2,448;
