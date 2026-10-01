@@ -2,6 +2,17 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
 
+## Unit 5 — 2026-10-01 16:40 UTC, complete
+
+- **Standing user direction:** weight ranked/unranked separation more heavily after the rule change. Recent ranked supports deployed-strength claims; unranked remains a separate live-testing cohort, not automatically a legacy decoy. Next references split cohorts; preserve old mixed freeze as historical/provisional.
+- Rome gen official 1,036–356–0  = 74.4253%, old 74.7845%; all 1,392 terminated headers/runner winners agree, 7 flips net −5. Both Rome winner audits complete.
+- Cutlery ranked RL survival 0/31→9/31 around 13:00; unranked 2/9. All 146 RL labels checked, 3 stored winner errors. Supports a ranked behavioural change; does not establish deployment timestamp or causal effect.
+- Read Carthage 08, Kyoto baseline/queen/D-033 and Rome gen/CPU results; board H5-02..06. Requested Φ active-only/provenance/terminal checks H5-07..08. No peer/shared-store writes, training or bots.
+- Finding `docs/findings/2026-10-02-himeji-ranked-cohorts-gen-audit-and-readings.md`; frozen outputs `tools/himeji/unit5_audit/`. Up to 3 read workers, now finished; compact outputs under 4 MiB.
+- Source/board cursor: main cb2e920c7; Antioch 48c7906cf through Φ/store sync blocker; Carthage f9b86bf5b through 08; Nara f7ad05a41 through unit 2; Kyoto 7c835936c through baseline/D-033; Rome local gen complete/L10 claimed. Himeji through H5-08.
+- Corpus 79,343, latest 2026-10-01T16:31:38.148Z, SHA `8825b60273a3e2060520d97c3a8ada10030743a702870b8618ef6ad4e4bf723e`; 0 post-team7; ladder 20261001T062107Z.json. Antioch post store 2,862 games complete on desktop, Mac sync blocked by its permission review; Himeji does not write store.
+- Next: new 09/L10/cap-lift readings; if absent, ranked-only temporal/structural Cutlery anatomy. Await Φ active-only query and corrected Nara/Kyoto checkpoint labels. Three-seed exposure and Rome pool/gen audits are finished; do not rerun unchanged inputs.
+
 ## Unit 4 — 2026-10-01 16:16 UTC, complete
 
 - Corrected Rome official pool baseline: 396–83–1, score 82.6042%; old inference 401–78–1 / 83.6458%. Seven flips, net five wins removed; all 480 runner outcomes match headers. Board H4-01/H4-06; gen not audited yet.

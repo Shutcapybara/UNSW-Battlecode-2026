@@ -146,3 +146,16 @@ Local diagnostic only: Rome held-out seed 2/3 grouped split-risk RR 4.98 [3.16,7
 112 non-pocket games per seed, 95% within-seed fixture bootstrap. H-H1 still weight 0.5; policy gain untested.
 Official Rome pool expected-score share is 396.5/480=82.6042%, superseding old-decoder 83.6458%; gen pending audit.
 These do not replace live-field targets or fill missing team-7 gaps. Query, counts and limitations: `docs/findings/2026-10-02-himeji-replication-and-rome-winner-correction.md`.
+
+
+### Unit 5 ranked/unranked rule and current disagreements — 2026-10-01 16:40 UTC
+
+User direction: deployed-strength anchors should use recent ranked games; keep unranked live testing separate and
+reassess legacy decoy assumptions. The old 400-game mixed freeze is historical/provisional, not reclassified.
+Cutlery ranked RL queen survival is 0/31 before13:00 vs9/31 after (14 series each); unranked after2/9. These are
+small temporal diagnostics, not causal gains or stable percentile targets. Himeji disagrees with mixing those
+cohorts and early endings into Nara's r490 anchor; retain both accounts with the correction here.
+Antioch Φ remains a proposal pending active-only checkpoints, exact regime-fit provenance, ECDF percentiles and
+uncertainty. Its current query carries terminal states; no gate-reference replacement is justified by AUC alone.
+Official Rome local gen is74.4253%; local pool82.6042%, neither fills missing live-team7 gaps.
+Evidence and queries: `docs/findings/2026-10-02-himeji-ranked-cohorts-gen-audit-and-readings.md`.

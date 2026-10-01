@@ -1,0 +1,39 @@
+{
+  "n": 146,
+  "rl_disagreements": 0,
+  "winner_disagreements": 3,
+  "groups": [
+    {
+      "ranked": false,
+      "after13": false,
+      "n": 0,
+      "rl_n": 0,
+      "q490_positive_in_rl": 0,
+      "final_positive_in_rl": 0
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "n": 20,
+      "rl_n": 9,
+      "q490_positive_in_rl": 2,
+      "final_positive_in_rl": 2
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "n": 62,
+      "rl_n": 31,
+      "q490_positive_in_rl": 0,
+      "final_positive_in_rl": 0
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "n": 64,
+      "rl_n": 31,
+      "q490_positive_in_rl": 9,
+      "final_positive_in_rl": 9
+    }
+  ]
+}
