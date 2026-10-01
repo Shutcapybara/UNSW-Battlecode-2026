@@ -24,6 +24,8 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+import sys
+sys.path.insert(0, str(ROOT))
 CHECK = (100, 250, 400, 490)
 GAME = re.compile(r's(\d+)__(.+)__(.+)__(.+)$')
 
@@ -138,7 +140,7 @@ def main():
         df.to_parquet(out, index=False)
 
         us = df[df['side'].notna()].copy()
-        ours = us[us['game'].str.contains(a.run)] if 'game' in us else us
+        ours = us[us['seat_bot'] == a.run] if 'seat_bot' in us else us
         print(f'\n=== {a.run} [{panel}] {len(reps)} games, {len(df)} side-rows -> {out.name} ===')
         for name, sub in (('ours', ours), ('opps', us[~us.index.isin(ours.index)])):
             if not len(sub):
