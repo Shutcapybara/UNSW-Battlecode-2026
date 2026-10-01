@@ -108,6 +108,11 @@ trapped deaths (body +26, wall +18): fleeing heads pushes a length-2–4 queen i
 hazard is the ordinary small-forager hazard spread over ~100 rounds; avoiding one cause moves it to the next. The
 pool's per-map numbers say the cost is concentrated on Portals and the open maps where the queen forages most.
 
+Queen deaths on 06's pool, off the pocket maps (271): wall 92, ally h2h 52, ally body 45, self 37, enemy h2h 36,
+enemy body 9 — **our own dragons kill the queen 97 times, the enemy 45**. At death the queen is length 2 in 158 and
+3 in 86; 88 deaths come within 3 rounds of the queen's own production split; 138 have an ally body within 2 and no
+enemy head within 3. This is what carthage-07 (the swarm yields to the queen) addresses.
+
 Next: the sprint arms (04, 05) are on the panel; for H-Q1 the next design is a phase change rather than a premium —
 the queen produces in the opening as now, then retires to a safe, low-traffic region and stays small (tail shed by
 splitting) until a late regrowth window. and 03 (01+02) are on the panel; then an avoidance mechanism (keep the queen
