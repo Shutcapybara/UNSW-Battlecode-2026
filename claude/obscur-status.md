@@ -5,6 +5,8 @@ Prompt: `docs/hub/prompts/2026-10-01-H1-hypothesis-steward.md`. Branch `r/obscur
 SF-1 weights via `M:` params, 2 h per-game timeout; `rescore.py` / `gates.py` = the gate audit). Nothing registered,
 no other lane's tree edited. Everything below is a **proposal** for the director; ledger edits are not made here.
 
+**Pass 1b — 1 Oct 2026, ~17:30 ACST** (update): seed-1 results for six arms (§1), the per-map/twin view (§1b), new evidence from Verso's final report, Alicia's closing report, TT's map-specialist/λ/regime commits and the Expedition lane; rows revised in place (marked "pass 1b").
+
 **Pass 1 — 1 Oct 2026, 15:00 ACST.** Read: HYPOTHESES (L01–L40 and log), D-029–D-039, BENCHMARKS, every lane's status
 and findings on `origin/main` plus the commits not yet merged (`r/tt` +7, `r/alicia` +1). Re-scored ten past gate
 decisions from the finished runs on this desktop (`build/{verso,rc,maelle}` and `wt-alicia/build/rc`) under the
@@ -44,21 +46,66 @@ runtime parameters on it (`M:wt_ally`, `M:capsel`, `p.<knob>`), so the bowl scan
 byte-identical (`cmp`), so they were imported, not re-played. hb1-14 and verso-05 carry the same learned prior
 (540 vs 800 rounds); the bowl question is about the prior, not the size.
 
-| Arm | What (one change vs verso-05) | Question | Seed 1 (pool / gen) | Seeds 1–3 D-032 |
-|---|---|---|---|---|
-| `o-ally14` | `M:wt_ally=-1.4` (Maelle F2, maelle-04) | bowl: Maelle's live lever | running | — |
-| `o-capsel384` | `M:capsel=1, capsel_hi=384` (Maelle F5, L02 selector) | bowl | queued | — |
-| `o-threat05` | `p.threat_weight=0.5` (Renoir 17a) | bowl | queued | — |
-| `o-visit005` | `p.visit_weight=0.05` (Renoir 18a) | bowl | queued | — |
-| `o-trap20` | `p.trap_weight=20` (Renoir 14b) | bowl | queued | — |
-| `o-unseen3` | `p.unseen_value=3` (Renoir 07a) | bowl; also the exploration contradiction (C3) | queued | — |
-| `obscur-01-sym` | aline-13's symmetry change set alone | additivity, bare mechanism (aline-13 alone was a REJECT on gen hygiene) | running | — |
-| `obscur-03-symseal` | obscur-01 + aline-07 seal (= aline-17 on verso-05) | additivity of what was accepted | running | — |
-| `obscur-02-mouth` | gustave-07c's mouth rule | does the mouth rule survive the prior | queued | — |
+| Arm | What (one change vs verso-05) | Question | Seed 1 pool: econ~ / mean / units / win [lb] | Seed 1 gen: econ~ / mean [lb] / win | Ally h2h pool / gen | Seed-1 reading |
+|---|---|---|---|---|---|---|
+| `obscur-01-sym` | aline-13's symmetry change set alone | additivity, bare mechanism | +0.047 [+0.009] / +0.028 / −0.045 [−0.100] / +0.006 [−0.044] | +0.021 / **+0.049 [+0.022]** / +0.016 | +18 % / +25 % | economy additive on both panels (gen gain broad: 17 maps up, 6 down); fails material/win lbs and the h2h guard → seeds 2–3 |
+| `obscur-03-symseal` | obscur-01 + aline-07 seal (= aline-17 on verso-05) | additivity of what was accepted | +0.040 [−0.001] / +0.015 / −0.045 [−0.100] / −0.013 [−0.062] | +0.019 / **+0.062 [+0.030]** / +0.016 | +23 % / +26 % | the seal **no longer pays for symmetry's head-on cost** on the prior base → seeds 2–3 running |
+| `obscur-02-mouth` | gustave-07c's mouth rule | does the mouth rule survive the prior | **−0.126 [−0.173, −0.057]** / −0.087 / −0.191 / **−0.069 [−0.125, −0.013]** | +0.015 / −0.026 [−0.052, −0.001] / +0.002 | −20 % / −22 % | **REJECT, stopped** (pool upper bounds < 0). Same direction as Expedition's independent seed-1 screen on its own base (pool econ −0.056, win −2.5 pp): second host |
+| `o-ally14` | `M:wt_ally=-1.4` (Maelle F2) | bowl | +0.046 [−0.010] / +0.010 / −0.045 / **−0.062 [−0.113, −0.006]** | −0.013 / −0.051 [−0.092, −0.011] / −0.040 | −5 % / +4 % | worse than on Maelle's base: the material gain is gone (gen units −0.137, length −0.171) → seeds 2–3 (pool econ ub > 0) |
+| `o-capsel384` | `M:capsel=1, capsel_hi=384` (L02 selector) | bowl | −0.002 [−0.052] / −0.023 / −0.059 / −0.031 [−0.087] | +0.025 / +0.070 [+0.028] / +0.038 [+0.000] | — | pool flat, gen up — but the gen mean is carried by seam_market (+1.22) and crossroads_tr (+0.71); map-trimmed +0.031, 18 maps up / 12 down → seeds 2–3 |
+| `o-threat05` | `p.threat_weight=0.5` (Renoir 17a) | bowl | −0.015 [−0.037] / −0.004 / +0.055 / −0.031 [−0.081] | +0.030 / +0.061 [+0.023] / +0.028 | — | same shape as capsel and the same outlier maps (seam_market +0.96); trimmed +0.028 → seeds 2–3 |
+| `o-visit005` | `p.visit_weight=0.05` (Renoir 18a) | bowl | running | | | |
+| `o-trap20` | `p.trap_weight=20` (Renoir 14b) | bowl | queued | | | |
+| `o-unseen3` | `p.unseen_value=3` (Renoir 07a) | bowl; contradiction C3 | queued | | | |
 
 Protocol: seed 1 on every arm first; an arm goes to seeds 2–3 unless its seed-1 pool economy *and* win upper bounds
-are both below 0 (it cannot pass). Reported with the current gate and the proposed one (§4). Result table and weight
-proposals follow in pass 1b.
+are both below 0 (it cannot pass). Reported with the current gate and the proposed one (§4). Scores:
+`build/obscur/scores/<arm>--s1.txt`. Seed-1 numbers are screens, not verdicts: no weight moves on them except L40's
+(two hosts, both clearly negative).
+
+## 1b. Per-map view (lead, 1 Oct: "factor in per-map performance as well as overall")
+
+`tools/obscur/permap.py` (per-map paired mean economy and win deltas; clusters from structure a bot can observe —
+tiles, portal edges and beds per 100 tiles — plus the parent's regime on the map as a label; fixture-cluster
+bootstrap) on the six seed-1 arms. Output `build/obscur/permap-s1.{txt,csv}`.
+
+**Per-map effects are structure, not noise.** Each pool map has a transposed (`var/*_tr`) or recorded (`pub/*_rec`)
+twin in the gen panel, which the bot has never seen. At seed 1 alone the per-map economy deltas on the nine pairs
+correlate +0.37 (ally), +0.42 (capsel), +0.67 (symmetry), +0.70 (sym+seal), +0.92 (threat ×0.5), and agree in sign
+on 7–9 of 9 pairs for every arm. A map-local gain that reappears on its twin is a property of the map's structure
+the mechanism responds to — the legitimate form of map specialisation (D-036), and the overfitting check: **a per-map
+gain counts only if its twin agrees.**
+
+| Map family (pool / twin) | sym | sym+seal | ally −1.4 | capsel | threat ×0.5 | mouth | Reading |
+|---|---|---|---|---|---|---|---|
+| Portals / portals_tr, portals_rec | **+0.23 / +0.06, +0.17** | +0.22 / +0.05, +0.16 | **+0.55 / +0.02, +0.48** | 0.00 | 0.00 | −0.06 / −0.26 | portal-dense maps: symmetry pairs portals; crowding spreads the swarm over pairs (pool win −0.19 on 16 games: material, not yet wins) |
+| Queen of Spades / _tr | **+0.19 / +0.54** | +0.19 / +0.40 | −0.14 / −0.20 | +0.03 / −0.44 | +0.03 / +0.13 | −0.10 / −0.50 | symmetry's best family |
+| Default / _tr | **+0.13 / +0.21** | +0.13 / +0.21 | +0.09 / +0.05 | +0.05 / +0.06 | +0.03 / +0.06 | −0.16 / −0.04 | |
+| Devil / _tr | −0.04 / +0.10 | −0.01 / +0.06 | +0.04 / −0.11 | **+0.14 / +0.43** | −0.04 / −0.18 | 0 | the L02 selector's family (open 32×16) |
+| **Dilemma / _tr** | **−0.17 / −0.13** | −0.17 / −0.13 | −0.12 / −0.18 | −0.05 / −0.03 | −0.10 / −0.18 | −0.10 / −0.08 | **every arm loses here** — and it is our worst live map (TT: −25 pp residual; tempo 43 rounds behind) |
+| Trauma / _tr | −0.13 / 0.00 | −0.13 / +0.02 | −0.02 / −0.07 | −0.22 / −0.04 | 0 | 0 | starved opening (L35); only the pool map moves |
+| Trophy / _tr | +0.03 / +0.15 | 0.00 / +0.16 | +0.03 / +0.26 | −0.07 / −0.09 | +0.04 / +0.15 | **−0.35** / −0.02 | |
+
+Clusters (gen, 31 maps; pool, 10): symmetry's gain is **bed-rich** (gen +0.145 [+0.067, +0.229] vs bed-poor +0.010)
+— its bed-countdown channel, as Aline's ablation found; it loses on large / bed-poor pool maps. Crowding gains on
+portal-dense maps (gen +0.247 [+0.111, +0.398]) and limit-regime maps (+0.088 [+0.026]) and loses on elimination-
+regime maps (−0.084 [−0.128, −0.036]). The cap selector gains on elimination-regime gen maps (+0.086 [+0.034]) and
+loses on large / round-limit pool maps (−0.10 to −0.14). The mouth rule loses on small elimination maps.
+
+**What this changes.**
+1. The pooled REJECTs of `o-ally14` and `o-capsel384` hide **structure-gated candidates** with twin transfer:
+   crowding keyed on portal density (≥ 3 portal edges / 100 tiles, observable after a few transits — TT's
+   regime selector uses the same signal), the cap selector keyed on regime (W·H < 1,100). Both are one-switch
+   versions to build after seeds 2–3 confirm the cluster effects (D-036 local hold; tested on the twin first).
+2. **Dilemma is the programme's common brick.** Five of six mechanisms lose there and on its transpose; it is our
+   worst live map. Aline's 22-noterrain ablation found the cause for symmetry (the room check treats known 1-wide
+   pass-through corridors as traps). A corridor-aware room check is the highest-leverage single-map fix on the list
+   (ranked item 3 below), and it is structural (corridor geometry), not identity.
+3. **Gate (G7, new):** every candidate reports the per-map table with twins; a D-036 local hold requires its
+   cluster gain to replicate on the cluster's unseen twins (sign agreement and ≥ half the effect), and the pooled
+   interval not to be negative. Per-map variation is also how two mechanisms with opposite map profiles (crowding
+   on portal maps, symmetry on bed-rich maps) can be stacked through structure gates instead of averaged away.
+   Top teams are specialists by ±25–37 pp per map (TT, S-1 Q1) — the edge is real; the twin rule keeps it ours.
 
 ## 2. Rows re-scored (proposals; grid 0.9/0.7/0.5/0.3/0.1, one step per result)
 
@@ -76,8 +123,8 @@ evidence is wrong or stale and must be corrected whether or not the weight moves
 | L09 | 0.15 | 0.15 | TT: Cache me outside's sonar is state-dependent (`claude/tt-status.md` ~469), handoff: niche N7 near-silent | evidence both ways; decisive test is a payload decode of Cache me outside (ranked list) |
 | L10 | 0.4 | 0.5 | S-1 atlas: contact share −0.82 local / −0.46 live with strength; Q3 contact −0.46..−0.71 SD | corpus-only, but on-sign and cheap to test; untested on any bot (Gustave's directive 1 never ran) |
 | L11 | 0.35 | **0.3** | Gustave 06b −0.016 [−0.038, −0.001]; 06a inert | a right-host rejection of the structure-keyed guard; L35 is its information-keyed survivor |
-| L12 | 0.5 | **0.3** | Gustave 02b (Sciel-03a = flat ×0.70 value cut, 95.5 % of evaluations at exactly 0.70), 03a/03b density alone +0.008 / −0.005; Maelle F1 −0.030 [−0.057, 0.000] | the row's flagship evidence (Sciel-03a) was not density; two right-host nulls/rejections of density as a target term. Ally *crowding* (maelle-04) is a density term that does move material: give it its own row (L43) |
-| L13 | 0.4 | **0.3** + text | Alicia ES varied `momentum_weight` jointly, no slope (`claude/alicia-status.md:25-33`); Monoco ra-06 hysteresis −0.044; Gustave 09a portal intent −0.005 | "not yet varied on Ares" is stale; commitment-shaped continuous changes are flat or negative |
+| L12 | 0.5 | **0.3** (pass 1b: + Verso pearls-per-crowding w 0.5, gen length@100 −0.174 — a third flat-or-negative density consumer) | Gustave 02b (Sciel-03a = flat ×0.70 value cut, 95.5 % of evaluations at exactly 0.70), 03a/03b density alone +0.008 / −0.005; Maelle F1 −0.030 [−0.057, 0.000] | the row's flagship evidence (Sciel-03a) was not density; two right-host nulls/rejections of density as a target term. Ally *crowding* (maelle-04) is a density term that does move material: give it its own row (L43) |
+| L13 | 0.4 | 0.4 + text (pass 1b: my 0.3 withdrawn) | Alicia ES varied `momentum_weight` jointly (no slope, abs t < 1.5); Monoco ra-06 hysteresis −0.044; Gustave 09a portal intent −0.005 | Expedition is right: momentum itself was never scanned (Maelle listed it as not run); a no-slope joint ES is not a rejection. Text: "not yet varied on Ares" → "varied only jointly (Alicia ES), no slope; commitment cousins (ra-06, 09a) negative" |
 | L14 | 0.3 | 0.3 + re-scope | Aline 04/12/19/23 (more exploration pressure: units, length or win lower bounds fail), Renoir 07b/16; Gustave 08a gen +0.027 | the *pressure* form has two independent right-host rejection sets → dormant as a sub-claim; scout splits (the row's actual claim) untested. My `o-unseen3` arm tests the other direction on the prior base |
 | L15 | 0.3 | 0.3 + text | — | C1-E's "margin 0–1" is from elimination games (wrong population). Do **not** raise on "longest-margin sign predicts the round-limit result in 99 %": round-limit games are *decided* on length, so that is the rule, not evidence. TT: top teams feed without electing a crown — the location-consensus need is unshown |
 | L21 | 0.3 | **0.1** (by rule) | D-032 | superseded; the gate-shape question moves to the gate audit and new row L44 |
@@ -90,7 +137,9 @@ evidence is wrong or stale and must be corrected whether or not the weight moves
 | L37 | 0.8 | split: L37a 0.9 / L37b **0.5** | S-1 Q2b/Q2c (`docs/findings/2026-09-30-s1-Q2-map-predictability.md:141-172`) | (a) everyone is a map specialist — replicated split-half → 0.9; (b) "Portals is the least predictable map → weight by slope²" — Q2c's clean sample gives slopes 0.42–0.64 (ratio² ≈ 0.43, not 1/9) and Q2b finds Portals the *most* specialist map: two results against → 0.5, and D-037's slope² weighting suspended (G6) |
 | L38 | 0.7 | 0.7 | test 2 running | text: aline-13 (symmetry alone) was a REJECT (gen wall +10.3 %, gen win lb −0.032); the accept is the stack with the seal, and its cluster-bootstrap pool lb is −0.000 |
 | L39 | 0.7 | 0.7 + text | `claude/tt-status.md:130-140, 326-333, 345-350` | "hb1-12 loses 57 % of its round-limit games with a lead" → 57 % of its round-limit **losses** had a lead (round-limit win rate 0.78); "opponent units at r300 is the observable" → TT: *not* observable, stand-in "no enemy met for a long time" (D-039.3 repeats the error); tt-05 was level (141–19), failing only own-body — the own-body guard rejects feeder suicides by construction (G5) |
-| L40 | 0.5 | 0.5 + text | §0.1 | the mechanism claim stands (ally h2h −18/−23 %); the fix is a REJECT by the letter, not a HOLD |
+| L40 | 0.5 | 0.5 for the mechanism; **the fix (mouth tax) dormant as a lever** | §0.1; pass 1b: `obscur-02-mouth` seed 1 pool econ −0.126 [−0.173, −0.057], win −0.069 [−0.125, −0.013]; Expedition `expedition-09-mouthroute` seed 1 pool econ −0.056, win −2.5 pp (MacBook, its own base) | the head-on mechanism claim stands (−20 % again); the tax is negative on three bases and two hosts. Withdraw gustave-07c's registration (505). Revival: a mouth rule that pays its economy back (the L42 sender-side gate) |
+
+Pass 1b notes: **L16** stays 0.5 — Alicia proposes 0.4 (own-target learning does not transfer off-pool: alicia-04 gen win −0.066 [−0.099, −0.031]), Expedition 0.7 (distilled donor direction transfers); both are right about different halves — split the row into "imitation distilled to a table" (0.7, the L27 evidence) and "self-generated targets beat a donor" (0.3: Verso MC-Q/hindsight, Alicia ES). **L04** stays 0.3 (Alicia's "0.6→0.5" starts from a stale weight; alicia-04 is a pool-only fit, the bowl's off-pool face). **L27**: TT's λ sweep on hb1-14 — λ 2 → 144–16 (z1 seed 1, old gate), λ 4 → 140–20; the prior's *weight* is a second dose axis beside its size; untested under D-032. **L39**: TT's regime table — elimination maps (≤ 1,024 tiles) vs round-limit maps (Portals, Slithery, Trauma, Schooltime) where the longest dragon at r500 decides; TT's structure-keyed selector (`hb1-19/20-regime-feed*`: W·H ≥ 1,100 or ≥ 4 portal edges per 100 seen cells) is the state-keyed conversion test (ranked item 2), already running in TT.
 
 Untouched this pass: L07, L08, L16–L20, L22, L23, L25 (but see L01 text: V09's late cap 80 *would* bind), L26,
 L30–L33, L36. Stale text in L30: Sciel-01a already tested C1-C fix #2 (siting) on V06 — inert.
@@ -102,6 +151,8 @@ L30–L33, L36. Stale text in L30: Sciel-01a already tested C1-C fix #2 (siting)
 | L41 | Early portal use (r0–50) is an opening component we under-use: top teams transit 5 by r50 vs our 2; a rush is +EV within-team on all ten maps | 0.5 | S-1 Q3, Q5 | one switch per D-037 cluster (portal-gated openings), tempo gate + D-032 guards |
 | L42 | Own-traffic transit control: no newborn transits, one transit per pair per 2 rounds (same-pair doubles 0.37 vs 0.28; newborn transits 0.41 vs 0.25) | 0.5 | S-1 Q4 | sender-side rule on the prior base, measured on per-transit died-3 at equal transit volume (not a throttle: volume must hold) |
 | L43 | Ally-crowding cost on targets (wt_ally −1.4) is a material/hygiene lever that needs a late-economy restorer | 0.5 | maelle-04: units/length@100 +0.043/+0.044 pool (medians; gen *means* −0.205 — sign depends on the statistic), every death rate down, gen p@250 −0.061, gen win −0.069 | `o-ally14` (running) on the prior base |
+| L45 | Deployable model size is bound by the judge's first-turn CPU (boot is charged to turn 0) as well as the 4 MiB zip | 0.9 | Verso: verso-03/04 die on turn 0 decoding 1.5 M nodes; the in-place format boots at 7.8 M | rule for every learned-head lane: CPU-probe turn 0 |
+| L46 | Mechanism effects are map-structural: per-map deltas transfer to the unseen transposed/recorded twins, so structure-gated switches (D-036) are a real, non-overfit route to map specialisation | 0.7 | §1b: twin correlation +0.37…+0.92, sign agreement 7–9/9 on six arms at seed 1; TT/S-1: top teams are ±25–37 pp map specialists | seeds 2–3 on the same arms; then one structure-gated switch (crowding on portal density) tested on its twins first |
 | L44 | The lane gate's economy clause measures what we want only if it (a) is paired-mean, (b) cluster-bootstrapped, (c) credits off-pool gains, (d) sees endgame conversion | 0.7 | §4 | the director's decision on G1–G6 |
 
 ## 3. Contradictions and their decisive tests
@@ -134,7 +185,7 @@ cluster bootstrap reported but not gated. `tools/analysis/features/scorecard.py`
 - **G1 — statistic.** D-032 says "Δ(economy mean)"; the lanes gate a difference of medians. The two disagree in sign
   on gustave-07c pool (+0.001 vs −0.044), maelle-04 pool (−0.012 vs +0.025), and for material maelle-04 gen units
   (+0.052 median vs −0.205 mean). The median hides large per-map losses (07c Schooltime −0.32). **Fix:** gate on the
-  paired per-game mean (D-032's text), report econ~ beside it.
+  paired per-game mean (D-032's text), report econ~ beside it. Pass 1b amendment: the per-game mean is tail-sensitive on gen (seam_market +1.22 and crossroads_tr +0.71 carry half of o-capsel384's +0.070; map-trimmed +0.031), so also require the map-trimmed mean (two best and two worst maps dropped) to agree in sign.
 - **G2 — bootstrap.** Seeds only move pearl respawns; 3/160 pool and 8/232 gen fixtures are identical across seeds, and
   W–L barely changes with the seed (hb1-12: 139–21 at both). Row resampling treats the three seeds of a fixture as
   independent → intervals too narrow by up to √3 on win. **Fix:** resample fixture clusters (map × opponent × seat,
@@ -158,6 +209,7 @@ cluster bootstrap reported but not gated. `tools/analysis/features/scorecard.py`
 - **G6 — map weighting.** D-037's slope² weights rest on S-1 Q2 v1, which Q2c corrects (C8). Nothing implements them
   anyway. **Fix:** weight maps within a panel by the inverse variance of their paired deltas (from the parent's own
   seeds 1–3), capped at 3× the mean weight, *or* keep equal weights — not slope².
+- **G7 — per-map with twins** (pass 1b, lead's steer): see §1b. Per-map table with unseen twins for every candidate; a local hold needs twin replication.
 - **Not a fix, a fact:** `field_distributions.json` has no r25 reference, so D-037's r25 percentile cannot be computed
   from the frozen references; it needs the S-1 store, which is not on the desktop (no `build/s1`, no duckdb in
   `.venv`). Lanes on the desktop can run `tools/s1/tempo_gate.py` (no store needed).
@@ -190,8 +242,9 @@ through the endgame term alone.
 | # | Row(s) | Experiment that moves it most | Lane | Cost |
 |---|---|---|---|---|
 | 1 | L44 (gate) | adopt G1–G4 (code exists in `tools/obscur/gates.py`; port into the shared gate) and re-issue verso-05 / cycle 2 / 07c verdicts | director → Obscur | hours, no games |
-| 2 | L39, C4 | state-keyed conversion trigger ("no enemy seen ≥ N rounds", r ≥ 300) on verso-05, scored on conversion; opponents incl. tt-05/08/10 | Verso (late `l.*` knobs exist) | 1 arm |
-| 3 | L38, L40, L43, bowl | the running first pass (9 arms) | Obscur | running |
+| 2 | L39, C4 | (superseded in pass 1b by TT's running regime selector hb1-19/20 — score it with the conversion term and both panels under D-032, not z1 only; Verso is paused) state-keyed conversion trigger ("no enemy seen ≥ N rounds", r ≥ 300) on verso-05, scored on conversion; opponents incl. tt-05/08/10 | Verso (late `l.*` knobs exist) | 1 arm |
+| 3 | L36, L46, Dilemma | corridor-aware room check (known 1-wide pass-through corridors are not traps; Aline-22's diagnosis) on verso-05 + symmetry, judged on the Dilemma family (pool + dilemma_tr) with D-032 guards — every mechanism tested loses on Dilemma, our worst live map | Obscur next | 1 arm |
+| 3b | L38, L43, L46, bowl | the running first pass; then the structure-gated crowding switch (portal density) tested on its twins | Obscur | running |
 | 4 | L01/L25, C5 | effective late cap 160 vs 384 (clamp → override) on verso-05; V09's 80 as a third point | Obscur | 2 arms, one-line change |
 | 5 | L27, C1 | prior on v5 vs v5 + map-memory features, same size | Verso | 1 training + 1 arm |
 | 6 | L42 / L33 | own-traffic transit gate (newborn ban + same-pair 2-round) on the prior base, volume held | rc (Gustave) if revived, else Obscur | 1 arm |
@@ -213,6 +266,7 @@ version built; nothing cheap moves them).
 - Gustave's proposed "L30 (new)" collides with the existing L30; it belongs in L31's evidence.
 - BENCHMARKS (:30-32, :286) and `s1-T-tempo-metric.md` attribute "+0.11" and "ally h2h +42 %" to Renoir 07c; 07c was
   +0.061 [+0.026, +0.090] (h2h +22 %); +0.110 / +51 % is 07a.
+- **Two H-1 stewards are running**: Expedition (`r/expedition`, MacBook, serial one-CPU, base `expedition-01-nodevil` and an hb540 control) runs the same first-pass tests as Obscur. Its seed-1 mouth screen replicates mine (useful: a second host). Suggest a split — Expedition keeps the nodevil-base arms and the Q2 weighting audit (its pass 10 corrects the slope² cohorts: in-scope .350, top-50 .116, clean .431), Obscur keeps the prior-base arms and the per-map/twin analysis — or retire one. Disagreements: L13 (I now agree with Expedition: hold 0.4), L16 (split, above).
 - `docs/TAXONOMY.md` (T-1) and an S-1 status file do not exist on any ref; the H-1 prompt lists both.
 
 ## Resume
