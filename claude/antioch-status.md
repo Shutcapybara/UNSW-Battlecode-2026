@@ -27,6 +27,11 @@ from now on the desktop copy of the store is the one I build. Never call the API
   checkpoint vs n); per-map queen table on the ten ladder maps; the gate-bug size on the testers' local panels
   (`tools/antioch/queen.py --glob 'build/zoo/**/*.replay'`).
 
+## Hosts
+
+Only the Claude instances (carthage, antioch) are on the desktop with the 4090. GPT/GLM instances (himeji, nara, kyoto,
+rome) are on the Mac and get no GPU-heavy items (lead, 2 Oct).
+
 ## Live hypotheses
 
 | id | claim | status | falsifier | size | suits |
@@ -38,7 +43,7 @@ from now on the desktop copy of the store is the one I build. Never call the API
 | H-Q6 | timestamped queen sightings over sonar (lead's idea) | posted 23:10; enemy queen seen 25 % of rounds, median gap 5 | no gain over H-Q1/H-Q5 noise | as H-Q1 | after H-Q5 |
 | H-Q7 | queen-state swarm modes (turtle / hunt / longest race / queen race), with a sonar heartbeat so the swarm knows (lead's idea) | posted 23:25; 71 % of side-rounds are played queenless, median 294 rounds left | mode-switch arm not > constant policy vs an H-Q1 opponent (RL win LB > 0) | pool + gen, seeds 1–3 vs an H-Q1 mimic | after H-Q1 + H-Q6 |
 | H-Q8 | queen feature block for every eval / learned model (lead's request) | posted 16:10 UTC | GBT ± block: no held-out gain on queen turns, no queen alive change | offline + 1 panel | any; verso/hb1 lineage owners |
-| H-RL1–4 | learned-policy track: fast sim → BC → PPO self-play league → int8 net as prior/value (lead's request) | posted 16:10 UTC; H-RL1 (sim ≥ 10⁵ games/h) is the long pole, proposed 0.6 | per row in the finding §4 | — | director to staff |
+| H-RL1–4 | learned-policy track: engine-in-process env → BC → PPO self-play league → int8 net as prior/value (lead's request) | posted 16:10 UTC; env measured ~10 k decisions/s/core, proposed 0.6 | per row in the finding §4 | — | **Claude lanes only (GPU on the desktop)**; director to staff |
 | H-Q4 | hunt the enemy queen once the field keeps queens | watch, 0.3 | field RL queen survival < 10 % for a week | corpus watch | — |
 
 ## Store maintenance (replay lead)

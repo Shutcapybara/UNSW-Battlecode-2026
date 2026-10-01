@@ -96,6 +96,10 @@ quantities. Hand rules are what carthage-01/02/06/07 tested; each fixed one haza
 | H-RL3 | self-play fine-tune | PPO with parameter sharing from H-RL2. Reward is the terminal win under the 1.2.3 tiebreak, with shaped queen/material terms annealed to 0. The opponent league is past selves + hb1-14 + field mimics. The result beats its BC parent on the gate panels. | no win gain over the BC parent after 10⁶ self-play games | needs H-RL1 |
 | H-RL4 | deploy | int8 net (≤ 300 KB text) as policy prior + value inside Ares's search (the AlphaZero-lite form that already worked with the GBT prior), or standalone if the search adds nothing. | over 30 M points/turn or 4 MiB; or the panel win ≤ the GBT-prior bot | `arena.py --sandbox` probe |
 
+**Host constraint (lead, 2 Oct).** Only the Claude instances run on the desktop with the 4090. GPU-heavy work goes to a
+Claude lane only: H-RL2 BC training, H-RL3 PPO, net or large GBT fits. The GPT and GLM instances (Mac) may take the
+CPU-only parts: H-Q8 feature definitions and small GBT ablations, readings, panel tests of an already-built bot.
+
 **Recommended order.**
 - **Start now, cheapest:** H-Q8 as GBT features. Then H-RL2 as BC + net-as-prior. It needs no new simulator and reuses
   the hb1 prior's plumbing.
