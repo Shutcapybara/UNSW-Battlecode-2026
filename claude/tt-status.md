@@ -573,3 +573,23 @@ longest dragon at r490 is 10–12.5 against the real teams' 35–36, so they los
 material. The cull model learned *when* a dragon dies, but the feeding target (which ally is "the long one") is a
 team-level choice a local-view policy does not see. Ares' crown rule supplies it, which is why the priors win the
 round limit.
+
+## Hand-off: Cache me outside swarm early, Ares late (user: "continue reasonable next steps", 1 Oct)
+
+`tools/tt/make_handoff.py NAME MIMIC ROUND`: the mimic decides before ROUND, Ares V06 from it; Ares' World is sensed
+every turn and the mimic's moves committed to it, so the map memory is complete at the switch. Local only.
+
+| bot | z1 vs V06 (122–38) | round-limit W/L | limit losses with material lead | longest r490 | elim W/L |
+|---|---:|---:|---:|---:|---:|
+| tt-10 mimic (no handoff) | 78–82 | 33–71 | 79 % | 10 | 45–11 |
+| tt-12 handoff r250 | 121–39 | 66–24 | 38 % | 25 | 55–15 |
+| tt-13 handoff r300 | 121–39 | 59–25 | 8 % | 26 | 62–14 |
+| tt-14 handoff r350 | 118–42 | 66–30 | 20 % | 26 | 52–12 |
+| hb1-14 (reference) | 141–19 | 62–8 | — | — | 79–5 |
+
+- The hand-off repairs the conversion (longest 10 → 26) and brings the mimic level with V06, not above it. Economy is
+  +0.24 up to r250 (+0.44 at r50, fading to +0.08 by r250), wall deaths −78 %, own-body deaths up (the copied culls).
+- Against hb1-14 it gives up elimination wins (62 vs 79), loses 6 eliminations to the Vibing mimic (hb1-14: 2) and is
+  2–8 at the round limit against yuna. The early swarm's material does not turn into kills.
+- Next: tt-15 = same swarm handing off to hb1-14 (Heartbreaker prior) at r300 (`tools/tt/make_handoff_hb.py`;
+  both direction models in one binary, Heartbreaker's renamed `dirhb_*`).
