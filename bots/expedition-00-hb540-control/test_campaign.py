@@ -182,5 +182,18 @@ class MapDiagnosticTests(unittest.TestCase):
         self.assertFalse(result['maps']['map']['by_seed']['1']['complete'])
 
 
+class OpeningAuditTests(unittest.TestCase):
+    def test_missing_event_is_not_zero_and_both_sides_share_pairs(self):
+        from opening_audit import paired_measure
+        result = paired_measure([0, None, 8], [4, 2, None])
+        self.assertEqual(result, dict(paired=1, missing_pairs=2, parent=0, candidate=4, delta=4))
+        self.assertIsNone(paired_measure([], [])['delta'])
+
+    def test_misaligned_event_arrays_rejected(self):
+        from opening_audit import paired_measure
+        with self.assertRaises(ValueError):
+            paired_measure([1, 2], [1])
+
+
 if __name__ == '__main__':
     unittest.main()

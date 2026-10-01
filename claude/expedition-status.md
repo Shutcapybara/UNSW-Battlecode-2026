@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–11
+# Expedition — H-1 hypothesis steward, passes 1–12
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -14,6 +14,174 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 12 — opening access, later divergence, and win-first validation (2026-10-01)
+
+Resumed from `bca4da4b3`. Batch 013 still owns the exclusive campaign lock, so no
+second batch was started. This pass uses existing, source/replay-validated Queen
+of Spades seed-1 evidence; the latest complete cross-panel report remains **406
+games / 203 pairs** from pass 11. Current gen games continue on one CPU worker.
+Measured bot snapshots and all unrelated work remain unchanged.
+
+**New standing user instruction:** winning is the objective. Benchmark and
+validation criteria may be revised when evidence justifies doing so; local
+evaluation can be outgrown or wrong. Existing gates are testable proxies, not an
+immutable definition of success. This authorizes evidence-backed revisions to
+Expedition's evaluation without routine intervention. Preserve prior contracts and
+scores so comparisons remain interpretable; version revised criteria and bridge
+old/new results instead of rewriting historical verdicts. Shared lane/ledger
+changes remain proposals in this status, and contest promotion remains prohibited.
+
+### Queen of Spades: separate early access cost from all four losses
+
+Added `opening_audit.py`: complete map/seed coverage is required, sources/replays
+and canonical bookkeeping are checked, and five-round trajectories are retained
+for all 16 pairs, each starting side, and individual fixtures. Outcome-selected
+cohorts are labelled post-hoc. Missing first events are omitted only as matched
+pairs and their missing counts are explicit, never replaced with zero.
+
+Across all 16 fixtures, candidate minus parent at r50 is:
+
+| Cumulative or state measure | Mean difference |
+|---|---:|
+| Bed food collected | −4.1875 |
+| Enemy-corpse food | .0000 |
+| Ally-corpse food | −.1250 |
+| Length lost to deaths | −.8125 |
+| Splits | −1.6875 |
+| Transits | −.5625 |
+| Total length at checkpoint | −3.6875 |
+
+The food shortfall is principally bed intake and occurs despite lower cumulative
+length loss, consistent with an access/production cost rather than simply more
+early deaths. At r25 these audited measures are equal; the mean bed-intake gap is
+−.0625 at r30 and −1.375 at r40. By r100 bed intake is −9.5 and total length −7.5.
+These are observations, not an action-score attribution or a material-balance
+identity between differently timed counters/snapshots.
+
+First food and first split are each delayed **.9375 rounds** across all games,
+with the entire delay coming from **Gavroche, side B** (+15 rounds). Side A has
+no first-food delay; side B averages +1.875. This rules out an explanation that
+all four win regressions stem from delayed first food.
+
+The earliest differing five-round aggregate checkpoint and actual round-start
+state divergence differ, so both were audited on the four win regressions:
+
+| Fixture | First changed audited checkpoint | First changed round-start state | First differing move round |
+|---|---:|---:|---:|
+| Yuna, A | 70 | 70 | 69 |
+| Gavroche, B | 35 | 34 | 33 |
+| Kazuha, B | 115 | 106 | 105 |
+| Yuna, B | None through r150 | 214 | 213 |
+
+In particular, Yuna B's recorded round-start states match through r213 and its
+opening measurements match through r150, yet the match outcome reverses. An
+opening-only guard cannot detect that loss. Aggregate checkpoint equality also
+cannot establish trajectory equality (Kazuha diverges before its counters do).
+
+### Concrete access trace: Gavroche B
+
+Both replays have identical round-start dragon states and pearl positions through
+r33. At r33 dragon 1 starts at **(4,4)**. Parent 01 moves north to **(4,3)**, a portal
+mouth; mouth 09 moves west to **(3,4)**. The parent's next west move crosses from
+(4,3) to **(8,33)** and eats bed food at r34. Mouth 09's first food is instead at
+r49, eaten by dragon 3. At r50 the parent has collected 16 bed pearls versus 1,
+made 9 splits versus 1, and has 19 total length versus 7; it has also lost more
+length, 9 versus 2. Avoiding losses is not sufficient if access/production suffers.
+
+This locates a useful first-action contrast consistent with penalizing a portal
+approach. It does **not** show the bot's known-portal state, chosen target, score
+terms or which route exemption failed. Next mechanism audit: reconstruct that
+recorded decision's observation/target/exemption state before proposing any new
+behavior. Do not patch a map-specific direction or assume all QoS losses share it.
+
+### Tempo remains the chosen opening goal; later phases remain open
+
+The user clarified that the benchmark document records deliberate exploration of
+summary statistics and the selection of a tempo curve as the early goal. Read
+`docs/analysis/BENCHMARKS.md` (SHA-256
+`b108d1b165f9361d2e662bb22c056a8655fa720ef98876987661e9534fee5095`),
+including its 30 September revision. Its current opening objective is tempo over
+r10–150; the older gross-economy summary is explicitly superseded for opening
+optimization. Tempo's income excludes recycled own corpses and adjusts for
+unrecovered losses. Preserve that rationale; do not treat another gross-economy
+summary as a replacement merely because it is convenient to score.
+
+The opening audit now includes the **full paired tempo-lag curve** at r10,20,…,150,
+its mean, component trajectories and exact reference hash. It applies the existing
+S1 lag function per fixture before aggregation. QoS candidate-minus-parent lag is
+0 at r10/r20, **+.156 at r30, +7.500 at r50, +13.437 at r100, +15.662 at r150**;
+the 15-checkpoint mean is **+9.082835**, matching the independently saved phase
+audit within 1e−12. This is growing opening lag, not just a single endpoint loss.
+New maps use the matched parent curve with explicit provisional labeling; no
+nonexistent top-team reference is invented.
+
+The research program now states three distinct phase questions on each map:
+
+- **Opening:** improve the chosen tempo curve and understand its income/loss
+  components, with matched fixtures and the established opening safeguards.
+  A better opening curve is an early goal, not proof of a complete winning policy.
+- **Midgame:** retain useful material and access as contact, crowding and opponent
+  adaptation change. Diagnose r150/r250/r400 transitions, survival, territory and
+  productive resource access against the same opponents. These are candidate
+  diagnostics, not an already-validated replacement scalar objective. QoS Yuna B's
+  first divergence at r214 belongs in this separate investigation.
+- **Endgame:** convert surviving resources into the actual win conditions, tracking
+  elimination and round-limit outcomes, longest/total margins and conversion of
+  leads. Report the survivor count for late checkpoints alongside all-fixture
+  outcomes so early elimination is not filtered away. Do not infer strength from
+  concentration produced by destroying the swarm.
+
+Keep the game's actual outcome above the full program, tempo as the current
+opening objective, and midgame/endgame as unresolved problems. A change aimed at
+one phase needs checks for damage to the others; phase boundaries and map win modes
+must be reported rather than assumed interchangeable. Criteria may still evolve
+under the preceding user authorization, with evidence and versioned comparisons.
+
+### Benchmarks must earn their role
+
+Overall Expedition triage leads with paired win/score outcomes and their map,
+opponent, side and seed dependence. Tempo remains the primary opening objective;
+economy, material and hygiene diagnose mechanisms and risks; a positive proxy is not success, and a negative proxy alone
+must not terminate investigation of a credible winning specialist.
+
+Current benchmark-challenge register:
+
+| Potential failure of evaluation | Evidence now | Decisive follow-up / current consequence |
+|---|---|---|
+| Economy misses a winning specialist | Portals +3 wins while canonical economy −.2077; one seed | Confirm win direction across seeds/opponents and structural portal maps; retain as an active specialist question, not an accepted result. |
+| Production/tempo overstates competitive benefit | Trauma faster/more material, one fewer win | Trace survival/conversion and replicate; do not call proxy gains strength. |
+| Opening-only validation misses later damage | QoS Yuna B first state divergence r214, outcome loss | Retain late-phase/outcome evaluation and trace r213 decision; early metrics alone are insufficient. |
+| Pooled score hides map/matchup effects | QoS carries four-win deficit; Slithery has cancelling matchup changes | Keep map × opponent × side reporting, concentration diagnostics and collective results together. |
+| Fixed roster or local engine loses relevance | Known dated-field authenticity/reference limitations; no new direct proof this pass | Compare source-matched candidate rankings against stronger/relevant controls or independent held-out results before replacing the roster; no silent reference swap. |
+
+A revised benchmark/criterion should state the failure being corrected, why the
+new measure better predicts winning, new roster/maps/seeds/reference hashes, and
+old/new candidate rankings on common evidence. Then check on evidence not used to
+choose the revision. Record changed conclusions, including favored candidates
+that worsen. Revision need not wait for an impossible perfect local proxy, but
+requires a concrete comparison, not retrospective relief for a failed gate.
+There is **no justification yet to reverse the whole-panel mouth conclusion**:
+the complete seed-1 pool has both fewer actual wins and lower economy. Current
+contracts continue while the benchmark itself remains open to challenge.
+
+**Verification and reproducibility:** 19 no-game tests pass, including paired
+missing-event handling and unequal-array refusal; whitespace checks pass. The
+full opening/tempo-curve audit re-ran successfully after the checks. Evidence:
+`build/expedition/opening-queen-of-spades.log`, the source-keyed
+`*-queen_of_spades-s1-opening.json`, `qos-gavroche-first-divergence.json` and
+`qos-regressions-first-divergence.json`. Trace scripts/logs stay under `build/`.
+No games were added by these audits. The new tracked tool reproduces all-map/seat
+opening trajectories with `opening_audit.py --map queen_of_spades`.
+
+**Reconciliation:** refine the pass-11 QoS board entry to an access-cost case plus
+separate later divergences; all numerical map/collective results remain unchanged.
+L29/L36/L37/L40 gain these annotations, with no weight change. Ranked ten remain
+current; L37 now includes explicit win-predictive benchmark challenge. The latest
+user instruction supersedes treating an inherited gate as a permanent veto on
+research or future evaluation revisions. Next: validate batch 013 when it finishes,
+continue the frozen paired campaign, and audit the r33/r213 decisions before any
+new candidate. No shared gate/ledger changes or contest promotion.
 
 ## Pass 11 — map-level research is a standing requirement (2026-10-01)
 
@@ -48,7 +216,7 @@ exploratory until additional seed/structural evidence and guards are assessed.
 | Devil | 15→15 | .0000 | .000 | .00 | No-portal negative control; preserve exact null behavior. |
 | Dilemma | 15→15 | −.0085 | +2.768 | −1.44 | Fewer transits but greater death fraction; audit conditional exposure and early contact. |
 | Portals | 10→13 | −.2077 | +3.098 | −2.25 | More wins despite economy loss; distinguish survival/concentration from general strength. |
-| Queen of Spades | 16→12 | −.2582 | +9.083 | −8.25 | Largest opening regression; trace foregone access versus mouth avoidance. |
+| Queen of Spades | 16→12 | −.2582 | +9.083 | −8.25 | Access-cost trace on Gavroche B; other loss divergences extend to r214 (pass 12). |
 | Schooltime | 15→14 | −.0092 | +.156 | +12.00 | More material does not convert to wins; inspect length concentration and late losses. |
 | Slithery Fight | 12→12 | +.0030 | +.116 | −3.00 | Offsetting matchup changes and increased collision/churn; inspect density and routing. |
 | Trauma | 12→11 | +.0582 | −1.447 | +8.56 | Faster production with more own goals/newborn deaths; trace net survival and conversion. |
