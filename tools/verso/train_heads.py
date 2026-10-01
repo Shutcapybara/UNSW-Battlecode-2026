@@ -41,14 +41,23 @@ def _rows(args):
     return d[cols].to_numpy(np.float32), y
 
 
+SINCE = ''
+EXTRA_HOLDOUT = {}   # team -> build dir whose own held-out games must also stay out of training
+
+
 def corpus_xy(team, cols, cap, jobs, won_only=False, max_round=0):
     import pandas as pd
     root = TEAM_ROOT[team]
     G = pd.read_parquet(root / 'games.parquet')
     G = G[G.set == 'corpus']
     test = C.holdout(G.game.astype(int).tolist())
+    if team in EXTRA_HOLDOUT:   # e.g. HB-1's 163 held-out games, so old and new models share a test set
+        G0 = pd.read_parquet(Path(EXTRA_HOLDOUT[team]) / 'games.parquet')
+        test |= C.holdout(G0[G0.set == 'corpus'].game.astype(int).tolist())
     if won_only:
         G = G[G.won]
+    if SINCE:
+        G = G[G.t >= pd.Timestamp(SINCE, tz='UTC')]
     out = {}
     for part, games in (('train', [g for g in G.game.astype(int) if g not in test]),
                         ('test', [g for g in G.game.astype(int) if g in test])):
@@ -76,6 +85,14 @@ def cmd_corpus(a):
     _, names = C.schema(a.bot)
     blk = C.block(names)
     feats = [n for n, b in zip(names, blk) if b == 'v5']
+    global SINCE
+    SINCE = a.since or ''
+    for eh in (a.extra_holdout or []):
+        k, v = eh.split('=')
+        EXTRA_HOLDOUT[int(k)] = v
+    for tr_ in (a.team_root or []):
+        k, v = tr_.split('=')
+        TEAM_ROOT[int(k)] = Path(v).resolve()
     teams = [int(t.split(':')[0]) for t in a.teams.split(',')]
     caps = {int(t.split(':')[0]): int(t.split(':')[1]) for t in a.teams.split(',') if ':' in t}
     out = C.MODELS / a.name
@@ -102,7 +119,8 @@ def cmd_corpus(a):
     b = fit_softmax(Xtr, ytr, Xva, yva, feats, a.leaves, a.rounds)
     b.save_model(str(out / 'dir.ubj'))
     (out / 'dir.ubj.features.json').write_text(json.dumps(feats))
-    meta.update(rounds=int(b.num_boosted_rounds()), train_rows=int(len(ytr)), sec=round(time.time() - t0))
+    meta.update(rounds=int(b.num_boosted_rounds()), train_rows=int(len(ytr)), sec=round(time.time() - t0),
+                roots={t: str(TEAM_ROOT[t]) for t in teams})
     for t, (Xt, yt) in te.items():
         p = b.predict(xgb.DMatrix(Xt, feature_names=feats))
         meta['by_team'][t]['acc'] = float((p.argmax(1) == yt).mean())
@@ -377,6 +395,9 @@ def main():
     c.add_argument('--rounds', type=int, default=3000); c.add_argument('--mirror', action='store_true')
     c.add_argument('--won-only', action='store_true'); c.add_argument('--jobs', type=int, default=8)
     c.add_argument('--max-round', type=int, default=0, help='opening specialist: only rows up to this round')
+    c.add_argument('--team-root', action='append', help='TEAM=PATH: read that team\'s v5 rows from another build dir')
+    c.add_argument('--extra-holdout', action='append', help='TEAM=PATH: also hold out that build dir\'s test games')
+    c.add_argument('--since', default='', help='only games finished at or after this UTC date (one policy era)')
     c.add_argument('--bot', default='verso-00-base')
     o = sub.add_parser('own')
     o.add_argument('--name', required=True); o.add_argument('--data', required=True, help='arm[,arm] under build/verso/data')
