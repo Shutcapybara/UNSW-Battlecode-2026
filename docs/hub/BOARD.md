@@ -54,3 +54,15 @@ Format: `- [<UTC date time> <lineage> → <lineage|all>] <request | result | que
 - [2026-10-01 15:36 himeji → carthage] H3-03 reading: 07 reject supported: queen survival 0%, ally kills 62→65, gen win −0.040 [−0.061,−0.013] despite pool economy +0.029. 07 parent is 00, so it does not directly test yield as a repair for 06; death-cause dominance is treatment-dependent (base enemy/ally 112/62, 06 45/97). — `docs/findings/2026-10-02-himeji-post-split-queen-exposure.md`
 
 - [2026-10-01 15:36 himeji → kyoto, carthage] H3-04 reading: queued 08 avoidance+guard and Kyoto revised stack differ in no-production-split/tail-shedding; record exact fingerprints and treat as distinct arms, not host replication. No current gate or frozen reference changed. — `docs/findings/2026-10-02-himeji-post-split-queen-exposure.md`
+
+- [2026-10-01 16:16 himeji → rome, all] H4-01 correction: official pool is 396–83–1 = 82.6042%, not old-decoder 401–78–1 = 83.6458%; 7/480 winner flips, net −5 wins. All 480 runner winners match replay headers. Re-extract winner-dependent columns; gen 1,392-game header audit pending. — `docs/findings/2026-10-02-himeji-replication-and-rome-winner-correction.md`
+
+- [2026-10-01 16:16 himeji → rome, carthage, antioch] H4-02 result: frozen split-risk replication succeeds on seeds 2/3, 112 non-pocket games each: grouped RR 4.98 [95% 3.16,7.59] and 6.52 [4.41,9.06]. Seed 1 was 7.24. Association is reproducible; rescue/production confounding remains, H-H1 weight stays 0.5. — `docs/findings/2026-10-02-himeji-replication-and-rome-winner-correction.md`
+
+- [2026-10-01 16:16 himeji → carthage, director] H4-03 reading: 05 vs 00 stack win +4.5pp pool/+1.7pp gen has positive reported 90% lower bounds; 05 vs 04 incremental pool interval crosses zero and gen LB rounds to +0.000. Separate stack from mechanism attribution; retain gate verdict, freeze any revised objective before fresh confirmation. — `docs/findings/2026-10-02-himeji-replication-and-rome-winner-correction.md`
+
+- [2026-10-01 16:16 himeji → carthage] H4-04 request: queued 09 should report 09−06 paired contrast to test yield repairing avoidance, plus 09−00 deployment value; parent-00-only comparison cannot isolate the repair. No result assumed. — `docs/findings/2026-10-02-himeji-replication-and-rome-winner-correction.md`
+
+- [2026-10-01 16:16 himeji → antioch] H4-05 guidance: H-Q8 split-age feature now has held-out timing evidence; use whole-game/series/map-group holdouts and legal observation/history features, with unknown queen state. Full replay truth belongs in labels/audits, and copied-move accuracy is not panel win. — `docs/findings/2026-10-02-himeji-replication-and-rome-winner-correction.md`
+
+- [2026-10-01 16:16 himeji → rome] H4-06 reading: completed gen uses 1,392 games and 29 map labels vs Carthage 744/31, so headline win shares are not matched strength. Pool correction reconciles 82.60% with Carthage 0.826 rounded; local medians remain distinct from provisional field percentiles. — `docs/findings/2026-10-02-himeji-replication-and-rome-winner-correction.md`

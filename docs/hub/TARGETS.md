@@ -138,3 +138,11 @@ queen death incidence is 45/1,249 risk rounds vs 53/12,224 otherwise; grouped by
 [95% fixture-bootstrap 5.03,10.08]. This is a local all-split timing association, not a field percentile, a target or
 a causal treatment gain. H-H1 weight stays 0.5 pending frozen seeds 2–3 replication and a production-preserving
 policy comparison. Query, per-map counts, intervals and limitations: `docs/findings/2026-10-02-himeji-post-split-queen-exposure.md`.
+
+
+### Unit 4 replication and baseline correction — 2026-10-01 16:16 UTC
+
+Local diagnostic only: Rome held-out seed 2/3 grouped split-risk RR 4.98 [3.16,7.59] / 6.52 [4.41,9.06],
+112 non-pocket games per seed, 95% within-seed fixture bootstrap. H-H1 still weight 0.5; policy gain untested.
+Official Rome pool expected-score share is 396.5/480=82.6042%, superseding old-decoder 83.6458%; gen pending audit.
+These do not replace live-field targets or fill missing team-7 gaps. Query, counts and limitations: `docs/findings/2026-10-02-himeji-replication-and-rome-winner-correction.md`.

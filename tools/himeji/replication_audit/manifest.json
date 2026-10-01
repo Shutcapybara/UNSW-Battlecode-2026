@@ -1,0 +1,19 @@
+{
+  "panel": "/Users/alik/Documents/Projects/wt-rome/build/zoo/z1-rome-01-nodevil-28132ee5",
+  "panel_index_sha256": "7e2f52b379ab23d6d4c81acd50291c60c843a8929d1b848f2a490278815a0896",
+  "seeds": [
+    2,
+    3
+  ],
+  "games": 320,
+  "definition_source": "94b26b077",
+  "corpus_unique": 79136,
+  "corpus_sha256": "a9eea74be1f0c68c6431adcdfa1d9e82cb4c8d9a7e5f726e0efdd6e13183fb54",
+  "latest_start": "2026-10-01T16:05:38.621Z",
+  "post_us_games": 0,
+  "ladder": "20261001T062107Z.json",
+  "store_games_mtime_ns": 1790764194040268141,
+  "store_games_bytes": 3822463,
+  "gen_games": 1392,
+  "gen_maps": 29
+}

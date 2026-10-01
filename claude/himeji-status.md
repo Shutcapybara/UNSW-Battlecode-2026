@@ -2,6 +2,16 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
 
+## Unit 4 — 2026-10-01 16:16 UTC, complete
+
+- Corrected Rome official pool baseline: 396–83–1, score 82.6042%; old inference 401–78–1 / 83.6458%. Seven flips, net five wins removed; all 480 runner outcomes match headers. Board H4-01/H4-06; gen not audited yet.
+- Split-age association replicated unchanged on seed 2 RR 4.98 [3.16,7.59], seed 3 RR 6.52 [4.41,9.06]; 112 non-pocket games each. H-H1 weight stays 0.5: production/rescue selection not resolved. This three-seed diagnostic is complete; do not rerun on timer.
+- Read Carthage 05 stack vs incremental contrasts (H4-03); requested 09−06 plus 09−00 (H4-04). H-Q8 feature holdout/observability guidance H4-05. No bot work/GPU training.
+- Finding `docs/findings/2026-10-02-himeji-replication-and-rome-winner-correction.md`. `tools/himeji/replication_audit/` freezes counts, input hashes and rows. All 320 held-out game/engine/seed/death-accounting checks passed; at most three read workers, now finished.
+- Source/board cursor: main cb2e920c7; Antioch 1d3d5214e through H-Q8/RL/host notes; Carthage 5bd2db494 through 05 and 09 queue; Nara 762ae51df; Kyoto 5d7f3863b; Rome local complete 480/1392 baseline. Himeji writes through H4-06.
+- Corpus 79,136, latest 2026-10-01T16:05:38.621Z, SHA `a9eea74be1f0c68c6431adcdfa1d9e82cb4c8d9a7e5f726e0efdd6e13183fb54`; 0 post-team7; ladder 20261001T062107Z.json. Mac store file unchanged since inspected pre-era version. Live targets remain frozen/provisional.
+- Pending: post-store sync, fresh ladder, Nara claimed five Cutlery IDs, tester 08/09 outcomes. Next independent runnable action: official Rome gen header audit, then fixed-population map/phase reading.
+
 ## Unit 3 — 2026-10-01 15:36 UTC, complete
 
 - Rome seed-1 exposure audit: all 160 pool games, 112 non-pocket; 45/1,249 queen deaths after splits vs 53/12,224 other risk rounds. Crude RR 8.31 [5.80,12.23]; map/phase/length 7.24 [5.03,10.08]. All-split association, not causality; 35/45 exposed deaths wall/ally.

@@ -1,0 +1,118 @@
+{
+  "n": 480,
+  "index_sha256": "7e2f52b379ab23d6d4c81acd50291c60c843a8929d1b848f2a490278815a0896",
+  "old_wld": [
+    401,
+    78,
+    1
+  ],
+  "official_wld": [
+    396,
+    83,
+    1
+  ],
+  "old_share": 0.8364583333333333,
+  "official_share": 0.8260416666666667,
+  "changed": 7,
+  "runner_agrees": 480,
+  "flips": [
+    {
+      "game": "s1__default__yuna-v05-core__rome-01-nodevil",
+      "map": "default",
+      "seed": 1,
+      "side": "B",
+      "old": "A",
+      "official": "B",
+      "runner": "B",
+      "queen_a": 0,
+      "queen_b": 9,
+      "end_reason": 1,
+      "old_score": 0,
+      "official_score": 1
+    },
+    {
+      "game": "s1__portals__ouroboros-m01-vibing-mimic__rome-01-nodevil",
+      "map": "portals",
+      "seed": 1,
+      "side": "B",
+      "old": "B",
+      "official": "A",
+      "runner": "A",
+      "queen_a": 3,
+      "queen_b": 0,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0
+    },
+    {
+      "game": "s1__trauma__fenrir-v18-arrival-ready-beds__rome-01-nodevil",
+      "map": "trauma",
+      "seed": 1,
+      "side": "B",
+      "old": "B",
+      "official": "A",
+      "runner": "A",
+      "queen_a": 11,
+      "queen_b": 0,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0
+    },
+    {
+      "game": "s2__portals__ouroboros-m01-vibing-mimic__rome-01-nodevil",
+      "map": "portals",
+      "seed": 2,
+      "side": "B",
+      "old": "B",
+      "official": "A",
+      "runner": "A",
+      "queen_a": 3,
+      "queen_b": 0,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0
+    },
+    {
+      "game": "s2__portals__rome-01-nodevil__hunter-v20-portal-scouts",
+      "map": "portals",
+      "seed": 2,
+      "side": "A",
+      "old": "A",
+      "official": "B",
+      "runner": "B",
+      "queen_a": 0,
+      "queen_b": 4,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0
+    },
+    {
+      "game": "s2__portals__rome-01-nodevil__ouroboros-m01-vibing-mimic",
+      "map": "portals",
+      "seed": 2,
+      "side": "A",
+      "old": "A",
+      "official": "B",
+      "runner": "B",
+      "queen_a": 0,
+      "queen_b": 3,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0
+    },
+    {
+      "game": "s2__trauma__hunter-v20-portal-scouts__rome-01-nodevil",
+      "map": "trauma",
+      "seed": 2,
+      "side": "B",
+      "old": "B",
+      "official": "A",
+      "runner": "A",
+      "queen_a": 5,
+      "queen_b": 0,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0
+    }
+  ]
+}

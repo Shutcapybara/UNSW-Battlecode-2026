@@ -44,8 +44,8 @@ def one(arg):
 
 def main():
     from concurrent.futures import ProcessPoolExecutor
-    ap=argparse.ArgumentParser();ap.add_argument('--repo',type=Path,required=True);ap.add_argument('--panel',type=Path,required=True);ap.add_argument('--out',type=Path,required=True);ap.add_argument('--jobs',type=int,default=2);a=ap.parse_args()
-    paths=sorted((a.panel/'replays').glob('s1__*.replay')); assert len(paths)==160,len(paths)
+    ap=argparse.ArgumentParser();ap.add_argument('--repo',type=Path,required=True);ap.add_argument('--panel',type=Path,required=True);ap.add_argument('--out',type=Path,required=True);ap.add_argument('--jobs',type=int,default=2);ap.add_argument('--seed',type=int,default=1);a=ap.parse_args()
+    paths=sorted((a.panel/'replays').glob(f's{a.seed}__*.replay')); assert len(paths)==160,len(paths)
     a.out.mkdir(parents=True,exist_ok=True); op=a.out/'exposure-rows.jsonl'
     done={}
     if op.exists():done={r['game']:r for r in map(json.loads,op.read_text().splitlines())}
