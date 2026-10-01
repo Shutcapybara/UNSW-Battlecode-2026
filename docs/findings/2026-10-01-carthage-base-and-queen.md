@@ -82,5 +82,33 @@ the queen verdicts from 1–7 to 23–6 on the pool — but buying it with produ
 producing (Antioch's "shed length by splitting its tail") and be kept safe some other way. 03 (01 + 02) was stopped
 after 40 games and not scored.
 
-Next: 06 (queen avoidance), then 02 (queen never production-splits) and 03 (01+02) are on the panel; then an avoidance mechanism (keep the queen
+## carthage-06-queen-avoid (switch `queen_avoid`; parent 00)
+
+Mechanism: for the queen only, −40 for a move ending on a cell an enemy head can reach next turn, −3 per cell inside
+torus distance 6 of each visible enemy head, and no head-on strikes; production splits unchanged. Expected: queen
+head-on deaths down sharply, queen alive up, small economy cost.
+
+| | pool | gen |
+|---|---|---|
+| Δecon~ [5 %, 95 %] | −0.017 [−0.033, +0.003] | −0.040 [−0.054, −0.016] |
+| Δwin [5 %, 95 %] | −0.002 [−0.032, +0.028] | +0.013 [−0.012, +0.037] |
+| Δunits@100 / Δtotal@100 lb | −0.115 / −0.107 | −0.087 / −0.110 |
+| queen alive@490 (excl. pocket) | 1.2 % → 2.9 % | 0.8 % → **23.6 %** |
+| queen deaths h2h / wall / body / self (excl. pocket) | 146/74/28/40 → 88/92/54/37 | 464/47/22/28 → 235/51/53/47 |
+| median queen death (excl. pocket) | r94 → r136 | r73 → r152 |
+| queen-decided W/L | 5 / 7 | **33 / 0** |
+
+Per-map pool Δecon: trauma +0.018, trophy +0.012, queen_of_spades −0.021, schooltime −0.044, devil −0.048, default
+−0.049, portals −0.079. **Verdict: REJECT** (pool econ lb −0.033, units/total@100 lb −0.115/−0.107, pool win lb −0.032,
+gen econ lb −0.054).
+
+Reading: distance halves the queen's head-on deaths on both panels and makes the gen queen survive a quarter of
+r490 games (every queen verdict won, 33–0), at a ~2–4 % economy cost. On the pool the head-ons it saves come back as
+trapped deaths (body +26, wall +18): fleeing heads pushes a length-2–4 queen into pockets and other bodies. The queen's
+hazard is the ordinary small-forager hazard spread over ~100 rounds; avoiding one cause moves it to the next. The
+pool's per-map numbers say the cost is concentrated on Portals and the open maps where the queen forages most.
+
+Next: the sprint arms (04, 05) are on the panel; for H-Q1 the next design is a phase change rather than a premium —
+the queen produces in the opening as now, then retires to a safe, low-traffic region and stays small (tail shed by
+splitting) until a late regrowth window. and 03 (01+02) are on the panel; then an avoidance mechanism (keep the queen
 beyond enemy heads' reach, sprint-aware) and Antioch's tail-shedding variant.
