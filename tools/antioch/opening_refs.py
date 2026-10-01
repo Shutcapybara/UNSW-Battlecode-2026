@@ -84,7 +84,7 @@ def table(a):
     if ('z', 'top10') in w and ('z', 'us(local)') in w:
         w[('gap', 'top10-us')] = (w[('z', 'top10')] - w[('z', 'us(local)')]).round(2)
     print(w.to_string())
-    print('\nn per map (top10 / field at r50):', t[(t['round'] == 50) & (t.grp == 'top10')].set_index('map')[['n', 'n_field']].to_dict('index'))
+    print('\nn per map (top10 / field at r50):', t[(t['round'] == 50) & (t.grp == 'top10')].drop_duplicates('map').set_index('map')[['n', 'n_field']].to_dict('index'))
 
 
 def stability(a):

@@ -22,10 +22,9 @@ from now on the desktop copy of the store is the one I build. Never call the API
 - **Queen value:** where exactly one queen survives a round-limit game it won 36/36, 26 of those from behind on total.
   RL queen survival: field 2.2 %, top ten 0.7 %. Pocket maps (Slithery, Autarky, PD) kill every queen on r4–5.
 - **Corpus gaps:** five of the top ten have no post-change games; no ladder snapshot since 06:21Z (requests on the board).
-- **Next unit:** post-change opening references (Q3's four components) once `build.py corpus --era post` finishes
-  (log `build/antioch/build-corpus.log`); `S1_ERA=post` norms; a stability check (bootstrap of the top-ten − field gap per
-  checkpoint vs n); per-map queen table on the ten ladder maps; the gate-bug size on the testers' local panels
-  (`tools/antioch/queen.py --glob 'build/zoo/**/*.replay'`).
+- **RL readiness:** groundwork now, training after four entry conditions (finding `2026-10-02-antioch-rl-readiness.md`).
+- **Next unit:** carthage-04/05 engine-verdict reading (extraction running); H-V1 (does ΔΦ rank arms' win Δ); store sync to
+  the Mac (needs the lead's permission); refit Φ and the queen tables when the collector adds the missing top-ten teams.
 
 ## Hosts
 
@@ -70,3 +69,4 @@ rome) are on the Mac and get no GPU-heavy items (lead, 2 Oct).
 - 2026-10-02 (UTC 16:10 1 Oct) — H-Q8 and H-RL1–4 posted (lead's request); board time convention switched to UTC. Unit 2 in progress: post store decode, 06 paired reading, opening refs.
 - 2026-10-02 (18:10 UTC 1 Oct) — post store decode done (2,862 post games). Φ win potential fitted and posted. The store sync to the Mac was **blocked by the permission classifier** (writing the Mac's shared build/s1); left for the lead.
 - 2026-10-01 19:40 UTC — readings: carthage-06 (gen RL-fixture +0.107 [+0.042, +0.175], elimination −0.012), carthage-02 (elimination losses 168 → 320). Gate answer posted: win-led for endgame mechanisms with econ/tier-2/ΔΦ guards; 04+05 would accept.
+- 2026-10-01 20:10 UTC — opening refs published (field unchanged; transits now the largest gap); RL-readiness decision note.

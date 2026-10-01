@@ -43,9 +43,30 @@ shares (total, longest, pearls, territory, deaths), two regimes, no map identity
 | elimination maps | r50 / r100 | mean Φ | 0.632 / 0.698 | 0.580 / 0.606 | 0.5 | ≥ top-10 | post | value_target.py |
 | round-limit maps | r50 / r100 | mean Φ | 0.546 / 0.570 | 0.522 / 0.535 | 0.5 | ≥ top-10, and the queen (Φ adds `queen_diff` from r250) | post | value_target.py |
 
-**Opening (S-1 Q3's four components: bed conversion, production, early portal use, territory):** pending. The post-change
-store build is running (`tools/s1/build.py corpus --era post`, 1,143 games). Post-change references and their stability
-come in my next unit.
+**Opening, post-change (S-1 Q3's components; 2,862 post-change corpus games, ten ladder maps).**
+- **Field stability at r50:** the 90 % half-width of the field median is ±4–5 % (bed pearls, splits, total) and ±12 %
+  (transits). The top-ten percentile is known to ±8 points (about 87 top-ten side-games per map, only 5 teams); ±5 needs
+  ~220 per map.
+- **The field did not move:** post/pre field medians are 1.00 at r25 and r50 for every component (transits +10 % from
+  r100; Trauma and Schooltime +9–20 % at r50). Pre-change opening references stay valid to r50 (agrees with nara N3).
+- **"us"** is carthage-00-base's 1.2.3 pool panel (480 side-games), normalised against the post-change field. Its
+  opponents are panel bots, so the absolute values are indicative and arm-to-arm deltas are what count.
+
+| component | stat | r25 top-10 / us pctile | r50 top-10 / us pctile | top-10 − us (z) r25 / r50 / r100 | era | query |
+|---|---|---|---|---|---|---|
+| early portal use | transits (cum.) | 0.79 / 0.56 | 0.67 / 0.47 | **0.69 / 0.56 / 0.41** | post | opening_refs.py table |
+| bed conversion | bed pearls (cum.) | 0.68 / 0.60 | 0.66 / 0.56 | 0.23 / **0.31** / 0.21 | post | same |
+| | bed capture | 0.60 / 0.60 | 0.62 / 0.61 | 0.21 / 0.21 / −0.02 | post | same |
+| production | splits (cum.) | 0.68 / 0.79 | 0.70 / 0.59 | 0.13 / **0.28** / 0.26 | post | same |
+| territory | BFS territory | 0.59 / 0.62 | 0.66 / 0.68 | −0.09 / −0.15 / −0.21 (we lead) | post | same |
+| outcome | total length | 0.69 / 0.67 | 0.67 / 0.61 | 0.14 / 0.18 / 0.13 | post | same |
+| | units | 0.74 / 0.79 | 0.68 / 0.76 | −0.12 / −0.01 / −0.03 | post | same |
+
+**Reading:**
+- Phase 1's opening gap (total 0.80 SD at r50 for the live bot) is mostly closed by the prior base: 0.18.
+- What remains is portal use first, then bed pearls and production at r50.
+- Targets: transits@50 at the top-ten percentile (0.67) without raising transit died3. That is H-S1's job: portal memory
+  makes the extra transits safe.
 
 **Disagreement slots:** none yet.
 
