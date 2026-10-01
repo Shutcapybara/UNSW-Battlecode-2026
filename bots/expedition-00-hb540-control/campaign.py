@@ -34,22 +34,26 @@ FOCUSED_CANDIDATE = 'expedition-10-mouthcontest'
 SCREENS = {'mouth-contest-v1': dict(candidate=FOCUSED_CANDIDATE, seeds=[1, 2],
     maps=[('z1', 'queen_of_spades'), ('z1', 'portals'), ('z1', 'devil'),
           ('gen', 'new/mc26_portal_quartet')])}
-CANDIDATES = QUEUE + [FOCUSED_CANDIDATE]
+CANDIDATES = QUEUE + [FOCUSED_CANDIDATE, 'expedition-11-foodhold']
 CHALLENGE_PANEL = 'frontier-v1'
+CHALLENGE_PANELS = {'frontier-v1': [1, 2], 'production-v1': [3, 4]}
 CHALLENGE_OPPONENTS = ('hb1-17-prior-lam20', 'ouroboros-g01-hbmimic-ares-r150')
 SCREENS['explore-frontier-v1'] = dict(candidate='expedition-05-explore3', seeds=[1, 2],
     maps=[(CHALLENGE_PANEL, m) for m in sorted(panel.runner.LIVE)],
     declaration='bots/expedition-00-hb540-control/frontier-contract.md')
+SCREENS['food-hold-v1'] = dict(candidate='expedition-11-foodhold', seeds=[3, 4],
+    maps=[('production-v1', m) for m in sorted(panel.runner.LIVE)],
+    declaration='bots/expedition-00-hb540-control/production-contract.md')
 
 
 def panel_seeds(pn):
-    return [1, 2] if pn == CHALLENGE_PANEL else [1, 2, 3]
+    return CHALLENGE_PANELS[pn] if pn in CHALLENGE_PANELS else [1, 2, 3]
 
 
 def expected(pn, seeds):
     if pn in ('z1', 'gen'):
         return panel.expected(pn, seeds)
-    if pn != CHALLENGE_PANEL:
+    if pn not in CHALLENGE_PANELS:
         raise ValueError(f'Unknown panel: {pn}')
     return {(m, side, seed, opp) for m in panel.runner.LIVE for side in 'AB'
             for seed in seeds if seed in panel_seeds(pn) for opp in CHALLENGE_OPPONENTS}
@@ -57,6 +61,14 @@ def expected(pn, seeds):
 
 def screen_panels(screen):
     return sorted({pn for pn, _ in SCREENS[screen]['maps']}) if screen else ['z1', 'gen']
+
+
+def execution_panels(screen=None, panel_filter=None):
+    if panel_filter is not None:
+        if screen or panel_filter not in ('z1', 'gen'):
+            raise ValueError('Panel scheduling is only for the original z1/gen campaign')
+        return [panel_filter]
+    return screen_panels(screen)
 
 
 def sha(path):
@@ -244,12 +256,14 @@ def freeze_screen(candidate, screen):
         dest.write_text(json.dumps(data, indent=2) + '\n')
 
 
-def jobs(candidate, screen=None):
+def jobs(candidate, screen=None, panel_filter=None):
     # Seed 1 gets both complete panels before seeds 2 and 3. Every new
     # candidate fixture is immediately paired with the shared parent fixture.
     rows = {pn: [(bot, read_rows(bot, pn)) for bot in (panel.PARENT, candidate)]
-            for pn in screen_panels(screen)}
+            for pn in execution_panels(screen, panel_filter)}
     for pn, key in fixture_order(screen):
+        if pn not in rows:
+            continue
         for bot, done in rows[pn]:
             if key not in done:
                 yield bot, pn, key
@@ -259,10 +273,14 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--candidate', choices=CANDIDATES)
     ap.add_argument('--screen', choices=SCREENS)
+    ap.add_argument('--panel', choices=('z1', 'gen'),
+                    help='Prioritize one entire original panel without changing its fixtures or gate')
     ap.add_argument('--execute', action='store_true')
     ap.add_argument('--minutes', type=float, default=20)
     ap.add_argument('--max-games', type=int, default=24)
     a = ap.parse_args()
+    if a.screen and a.panel:
+        ap.error('--panel cannot subset a frozen focused screen')
     if a.screen:
         selected = SCREENS[a.screen]['candidate']
         if a.candidate and a.candidate != selected:
@@ -272,13 +290,13 @@ def main():
         ap.error('Use a 0–60 minute admission budget and 1–200 games')
     os.environ['PYTHONPYCACHEPREFIX'] = '/tmp/expedition-pycache'
     os.chdir(ROOT)
-    candidate = a.candidate or next((b for b in QUEUE if next(jobs(b), None) is not None), None)
+    candidate = a.candidate or next((b for b in QUEUE if next(jobs(b, panel_filter=a.panel), None) is not None), None)
     if candidate is None:
         print('All predeclared fixtures complete. Score and audit before adding experiments.')
         return
-    first = next(jobs(candidate, a.screen), None)
+    first = next(jobs(candidate, a.screen, a.panel), None)
     print(json.dumps(dict(candidate=candidate, next_fixture=first, execute=a.execute,
-                          screen=a.screen, max_games=a.max_games, minutes=a.minutes, workers=1), indent=2), flush=True)
+                          screen=a.screen, panel=a.panel, max_games=a.max_games, minutes=a.minutes, workers=1), indent=2), flush=True)
     if not a.execute or first is None:
         return
     STORE.mkdir(parents=True, exist_ok=True)
@@ -294,18 +312,18 @@ def main():
         lock.flush()
         freeze_screen(candidate, a.screen)
         for bot in (panel.PARENT, candidate):
-            for pn in screen_panels(a.screen):
+            for pn in execution_panels(a.screen, a.panel):
                 freeze(bot, pn)
                 recover(bot, pn)
         started = time.monotonic(); estimate = 30.0; completed = 0
-        for bot, pn, key in jobs(candidate, a.screen):
+        for bot, pn, key in jobs(candidate, a.screen, a.panel):
             if completed >= a.max_games or time.monotonic() - started + estimate > a.minutes * 60:
                 break
             row = play(bot, pn, key)
             estimate = max(30.0, row['secs'] * 1.25)
             completed += 1
-        progress = dict(candidate=candidate, screen=a.screen, completed_this_batch=completed, seconds=round(time.monotonic()-started,1),
-                        next_fixture=next(jobs(candidate, a.screen),None), host=socket.gethostname())
+        progress = dict(candidate=candidate, screen=a.screen, panel=a.panel, completed_this_batch=completed, seconds=round(time.monotonic()-started,1),
+                        next_fixture=next(jobs(candidate, a.screen, a.panel),None), host=socket.gethostname())
         (STORE / 'progress.json').write_text(json.dumps(progress,indent=2)+'\n')
         print(json.dumps(progress,indent=2),flush=True)
 

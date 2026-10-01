@@ -5,6 +5,7 @@ original arena rows intact. Partial panels produce descriptive evidence only.
 """
 import argparse
 from bisect import bisect_left, bisect_right
+from collections import Counter
 import hashlib
 import json
 import math
@@ -121,6 +122,35 @@ def measurement_sensitivity(keys, child, parent, child_features, parent_features
     return out
 
 
+def terminal_diagnostics(keys, child, parent):
+    """Expose terminal padding without filtering outcomes or changing any gate.
+
+    A game with N rounds has live round-start states 0..N-1. Common-live
+    counts are diagnostics; selecting only survivors would change the estimand.
+    """
+    keys = list(keys)
+    checkpoints = {}
+    for r in (25, 50, 100, 150, 250, 400):
+        counts = Counter((parent[k]['rounds'] > r, child[k]['rounds'] > r) for k in keys)
+        checkpoints[str(r)] = dict(both_live=counts[True, True],
+            parent_only_live=counts[True, False], candidate_only_live=counts[False, True],
+            neither_live=counts[False, False])
+    timing = {}
+    for result in ('win', 'draw', 'loss'):
+        matched = [k for k in keys if parent[k]['result'] == child[k]['result'] == result]
+        timing[result] = dict(pairs=len(matched),
+            candidate_earlier=sum(child[k]['rounds'] < parent[k]['rounds'] for k in matched),
+            same_round=sum(child[k]['rounds'] == parent[k]['rounds'] for k in matched),
+            candidate_later=sum(child[k]['rounds'] > parent[k]['rounds'] for k in matched))
+    transitions = Counter(f"{parent[k]['result']}:{parent[k]['end_reason']} -> "
+                          f"{child[k]['result']}:{child[k]['end_reason']}" for k in keys)
+    return dict(checkpoints=checkpoints, same_outcome_finish_timing=timing,
+        outcome_reason_transitions=dict(sorted(transitions.items())),
+        limitation='Same paired fixtures as the score; no survivor filtering. '
+                    'Transition labels retain raw result:end_reason. Terminal padding is not active play; '
+                    'earlier shared wins and later shared losses need separate interpretation.')
+
+
 def map_diagnostics(wanted, child, parent, child_features, parent_features):
     """Retain every planned map, including missing ones, and expose matchup effects.
 
@@ -136,13 +166,15 @@ def map_diagnostics(wanted, child, parent, child_features, parent_features):
         keys = sorted(keys)
         if not keys:
             return dict(paired=0, parent_points=None, candidate_points=None,
-                        win_delta=None, better=0, worse=0, tied=0, raw_mean_deltas=None)
+                        win_delta=None, better=0, worse=0, tied=0, raw_mean_deltas=None,
+                        terminal_exposure=terminal_diagnostics(keys, child, parent))
         pw = [c.panel.gate.win(parent[k]) for k in keys]
         cw = [c.panel.gate.win(child[k]) for k in keys]
         return dict(paired=len(keys), parent_points=sum(pw), candidate_points=sum(cw),
             win_delta=mean([a - b for a, b in zip(cw, pw)]),
             better=sum(a > b for a, b in zip(cw, pw)), worse=sum(a < b for a, b in zip(cw, pw)),
             tied=sum(a == b for a, b in zip(cw, pw)),
+            terminal_exposure=terminal_diagnostics(keys, child, parent),
             raw_mean_deltas={f: mean([child_features[k][f] - parent_features[k][f] for k in keys])
                              for f in fields})
 
@@ -232,7 +264,7 @@ def build_report(candidate, panels=('z1', 'gen')):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--candidate', choices=c.CANDIDATES, default=c.QUEUE[0])
-    ap.add_argument('--panel', choices=('z1', 'gen', c.CHALLENGE_PANEL), action='append')
+    ap.add_argument('--panel', choices=('z1', 'gen', *c.CHALLENGE_PANELS), action='append')
     a = ap.parse_args()
     panels = list(dict.fromkeys(a.panel)) if a.panel else ['z1', 'gen']
     report = build_report(a.candidate, panels)

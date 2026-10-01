@@ -87,7 +87,58 @@ class CampaignTests(unittest.TestCase):
             game.assert_not_called()
 
 
+class PanelSchedulingTests(unittest.TestCase):
+    def test_gen_scheduling_keeps_every_original_fixture_and_pair(self):
+        def rows(bot, pn):
+            self.assertEqual(pn, 'gen')
+            return {}
+        with patch.object(c, 'read_rows', side_effect=rows):
+            jobs = list(c.jobs('expedition-08-symmetry', panel_filter='gen'))
+        expected = c.expected('gen', [1, 2, 3])
+        self.assertEqual(len(jobs), 2 * len(expected))
+        self.assertEqual({key for _, _, key in jobs}, expected)
+        for parent, child in zip(jobs[::2], jobs[1::2]):
+            self.assertEqual(parent[0], c.panel.PARENT)
+            self.assertEqual(child[0], 'expedition-08-symmetry')
+            self.assertEqual(parent[1:], child[1:])
+        self.assertEqual([k[2] for _, _, k in jobs], sorted(k[2] for _, _, k in jobs))
+
+    def test_gen_reuses_exact_parents_and_resumes_missing_children(self):
+        wanted = sorted(c.expected('gen', [1, 2, 3]))
+        def rows(bot, pn):
+            self.assertEqual(pn, 'gen')
+            return {k: {} for k in (wanted if bot == c.panel.PARENT else wanted[:7])}
+        with patch.object(c, 'read_rows', side_effect=rows):
+            jobs = list(c.jobs('expedition-08-symmetry', panel_filter='gen'))
+        self.assertEqual(len(jobs), len(wanted) - 7)
+        self.assertTrue(all(bot == 'expedition-08-symmetry' for bot, _, _ in jobs))
+        self.assertEqual({key for _, _, key in jobs}, set(wanted[7:]))
+
+    def test_panel_filter_cannot_shrink_a_frozen_screen(self):
+        for screen in c.SCREENS:
+            with self.assertRaises(ValueError):
+                list(c.jobs(c.SCREENS[screen]['candidate'], screen, 'gen'))
+        with self.assertRaises(ValueError):
+            c.execution_panels(panel_filter='typo')
+        self.assertEqual(c.execution_panels(), ['z1', 'gen'])
+
+
 class FocusedScreenTests(unittest.TestCase):
+    def test_production_uses_fresh_seeds_and_separate_panel(self):
+        fixtures = list(c.fixture_order('food-hold-v1'))
+        self.assertEqual(len(fixtures), 80)
+        self.assertEqual(len(set(fixtures)), 80)
+        self.assertEqual({pn for pn, _ in fixtures}, {'production-v1'})
+        self.assertEqual({k[2] for _, k in fixtures}, {3, 4})
+        self.assertEqual({k[0] for _, k in fixtures}, set(c.panel.runner.LIVE))
+        self.assertEqual({k[3] for _, k in fixtures}, set(c.CHALLENGE_OPPONENTS))
+        self.assertEqual(c.expected('production-v1', [1, 2]), set())
+        self.assertEqual(c.panel_seeds('frontier-v1'), [1, 2])
+        with patch.object(c, 'read_rows', return_value={}):
+            jobs = list(c.jobs('expedition-11-foodhold', 'food-hold-v1'))
+        self.assertEqual(len(jobs), 160)
+        self.assertTrue(all(pn == 'production-v1' for _, pn, _ in jobs))
+
     def test_frontier_is_distinct_and_complete(self):
         fixtures = list(c.fixture_order('explore-frontier-v1'))
         self.assertEqual(len(fixtures), 80)
@@ -223,8 +274,8 @@ class MapDiagnosticTests(unittest.TestCase):
         wanted = {(m, seat, seed, 'opp') for m in ('gain', 'loss', 'missing')
                   for seat in ('A', 'B') for seed in (1, 2, 3)}
         keys = {k for k in wanted if k[0] != 'missing' and k[2] == 1}
-        child = {k: {'result': 'win' if k[0] == 'gain' else 'loss'} for k in keys}
-        parent = {k: {'result': 'loss' if k[0] == 'gain' else 'win'} for k in keys}
+        child = {k: {'result': 'win' if k[0] == 'gain' else 'loss', 'rounds': 500, 'end_reason': '1'} for k in keys}
+        parent = {k: {'result': 'loss' if k[0] == 'gain' else 'win', 'rounds': 500, 'end_reason': '1'} for k in keys}
         features = {k: dict.fromkeys(('pearls@25', 'pearls@50', 'pearls@100',
                                      'units@100', 'total@100', 'total@250'), 0) for k in keys}
         result = map_diagnostics(wanted, child, parent, features, features)
@@ -244,14 +295,54 @@ class MapDiagnosticTests(unittest.TestCase):
         a, b = ('map', 'A', 1, 'opp'), ('map', 'B', 1, 'opp')
         fields = ('pearls@25', 'pearls@50', 'pearls@100', 'units@100', 'total@100', 'total@250')
         features = {a: dict.fromkeys(fields, 0)}
-        result = map_diagnostics({a, b}, {a: {'result': 'draw'}, b: {'result': 'win'}},
-                                 {a: {'result': 'loss'}}, features, features)
+        result = map_diagnostics({a, b}, {a: {'result': 'draw', 'rounds': 500, 'end_reason': '1'},
+                                          b: {'result': 'win', 'rounds': 74, 'end_reason': '0'}},
+                                 {a: {'result': 'loss', 'rounds': 150, 'end_reason': '0'}}, features, features)
         self.assertEqual(result['collective']['paired'], 1)
         self.assertEqual(result['collective']['win_delta'], .5)
         self.assertFalse(result['maps']['map']['by_seed']['1']['complete'])
 
 
+class TerminalDiagnosticTests(unittest.TestCase):
+    def test_early_wins_late_losses_and_terminal_boundary_are_distinct(self):
+        from report import terminal_diagnostics
+        parent = {0: dict(result='win', rounds=500, end_reason='1'),
+                  1: dict(result='loss', rounds=74, end_reason='0'),
+                  2: dict(result='loss', rounds=150, end_reason='0')}
+        child = {0: dict(result='win', rounds=74, end_reason='0'),
+                 1: dict(result='loss', rounds=500, end_reason='1'),
+                 2: dict(result='win', rounds=150, end_reason='0')}
+        out = terminal_diagnostics(parent.keys(), child, parent)
+        self.assertEqual(out['checkpoints']['150'], dict(both_live=0,
+            parent_only_live=1, candidate_only_live=1, neither_live=1))
+        self.assertEqual(out['checkpoints']['50']['both_live'], 3)
+        self.assertEqual(out['same_outcome_finish_timing']['win']['candidate_earlier'], 1)
+        self.assertEqual(out['same_outcome_finish_timing']['loss']['candidate_later'], 1)
+        self.assertEqual(out['outcome_reason_transitions']['loss:0 -> win:0'], 1)
+        self.assertEqual(sum(out['outcome_reason_transitions'].values()), 3)
+
+    def test_empty_slice_is_not_evidence_of_live_play(self):
+        from report import terminal_diagnostics
+        out = terminal_diagnostics([], {}, {})
+        self.assertEqual(sum(out['checkpoints']['150'].values()), 0)
+        self.assertEqual(out['outcome_reason_transitions'], {})
+
+
 class OpeningAuditTests(unittest.TestCase):
+    def test_seed_validation_follows_each_frozen_panel(self):
+        from contextlib import redirect_stderr
+        from io import StringIO
+        from opening_audit import parse_args
+        for panel in ('z1', 'gen', *c.CHALLENGE_PANELS):
+            for seed in (1, 2, 3, 4, 5):
+                args = ['--map', 'autarky', '--panel', panel, '--seed', str(seed)]
+                if seed in c.panel_seeds(panel):
+                    self.assertEqual(parse_args(args).seed, seed)
+                else:
+                    with redirect_stderr(StringIO()), self.assertRaises(SystemExit) as error:
+                        parse_args(args)
+                    self.assertEqual(error.exception.code, 2)
+
     def test_missing_event_is_not_zero_and_both_sides_share_pairs(self):
         from opening_audit import paired_measure
         result = paired_measure([0, None, 8], [4, 2, None])
@@ -262,6 +353,58 @@ class OpeningAuditTests(unittest.TestCase):
         from opening_audit import paired_measure
         with self.assertRaises(ValueError):
             paired_measure([1, 2], [1])
+
+
+class ParentPhaseTests(unittest.TestCase):
+    def test_early_candidate_win_stays_in_parent_late_cohort(self):
+        from screen_report import parent_phase_cohort
+        row = dict(parent=dict(rounds=500, result='loss'), child=dict(rounds=100, result='win'),
+                   parent_features={'total_share@250': .4, 'longest_margin_end': -2},
+                   candidate_features={'total_share@250': 1., 'longest_margin_end': 5})
+        excluded = dict(row, parent=dict(rounds=200, result='loss'), child=dict(rounds=500, result='loss'))
+        result = parent_phase_cohort([row, excluded], 400)
+        self.assertEqual(result['pairs'], 1)
+        self.assertEqual(result['expected_score_delta'], 1)
+        self.assertEqual(result['longest_margin_end_delta'], 7)
+        self.assertIsNone(parent_phase_cohort([excluded], 400)['expected_score_delta'])
+
+
+class MapClusterUncertaintyTests(unittest.TestCase):
+    def fixture(self, map_name, seed, parent, child, tempo=0):
+        return dict(panel='frontier-v1', key=(map_name, 'A', seed, 'opp'),
+                    parent=dict(result=parent), child=dict(result=child), tempo=tempo)
+
+    def test_repeating_seeds_does_not_invent_independent_maps(self):
+        from screen_report import map_cluster_uncertainty as audit
+        rows = [self.fixture('gain', 1, 'loss', 'win', -4),
+                self.fixture('loss', 1, 'win', 'loss', 4)]
+        repeated = [dict(x, key=(x['key'][0], 'A', seed, 'opp'))
+                    for x in rows for seed in range(1, 11)]
+        base = audit(rows, repeats=1000)
+        replicated = audit(repeated, repeats=1000)
+        self.assertEqual(base['metrics'], replicated['metrics'])
+        self.assertEqual(replicated['clusters'], 2)
+        self.assertEqual(base['metrics']['expected_score']['interval95'], [-1, 1])
+        self.assertEqual(base, audit(list(reversed(rows)), repeats=1000))
+
+    def test_draws_and_unequal_map_sizes(self):
+        from screen_report import map_cluster_uncertainty as audit
+        rows = [self.fixture('a', s, 'loss', 'draw') for s in (1, 2, 3)]
+        rows.append(self.fixture('b', 1, 'win', 'loss'))
+        self.assertEqual(audit(rows, repeats=100)['metrics']['expected_score']['mean_delta'], .125)
+        single = audit(rows[:3], repeats=100)
+        self.assertEqual(single['metrics']['expected_score']['mean_delta'], .5)
+        self.assertIsNone(single['metrics']['expected_score']['interval95'])
+
+    def test_missing_duplicate_and_nonfinite_pairs_rejected(self):
+        from screen_report import map_cluster_uncertainty as audit
+        row = self.fixture('a', 1, 'loss', 'win')
+        for rows in ([], [row, row], [dict(row, tempo=float('nan'))]):
+            with self.assertRaises(ValueError):
+                audit(rows, repeats=100)
+        with self.assertRaises(KeyError):
+            audit([dict(panel='frontier-v1', key=('a', 'A', 1, 'opp'),
+                        parent=dict(result='win'), tempo=0)], repeats=100)
 
 
 if __name__ == '__main__':
