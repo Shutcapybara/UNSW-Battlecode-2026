@@ -174,7 +174,15 @@ Ranked ten:
 9. L02: finish cap scans and distinguish actual bounds from nominal parameters.
 10. L40/gates: preserve the mouth repair, unfamiliar-map validation and sandbox obligations.
 
-Next runnable action: run **food-hold-v1**, never restart the now-complete
+**Execution continuation:** source/contract commit `f5af5f7e6` preceded all new
+games. Batch **021-foodhold** is now running `food-hold-v1`, one CPU game worker,
+20-minute admission budget and maximum 96 games, starting Autarky A seed 3/HB17.
+Its exclusive lock must be respected. Log: `build/expedition/batch-021-foodhold.log`.
+The completed frontier result was regenerated with the final reporter source;
+its recorded source hash matches and its four original checks retain the same
+negative verdict. No new-arm game result is claimed yet.
+
+Next runnable action: inspect **021-foodhold** and continue **food-hold-v1**, never restart the now-complete
 explore-frontier-v1 screen or the default mouth queue. Use
 `campaign.py --screen food-hold-v1 --execute --minutes 20 --max-games 96` under
 the shared exclusive lock. After each batch run
