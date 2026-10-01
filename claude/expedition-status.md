@@ -15,6 +15,19 @@ serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
 
+**Execution root changed during pass 15:** use the attached
+`/Users/alik/.codex/worktrees/expedition-publish/UNSW-Battlecode-2026` explicitly.
+The shared project was switched to main by another workflow, which stashed its
+work as `mac-checkout-wip`. Do not switch it back, edit it, or apply/drop its
+stashes. Only Expedition's latest files were recovered into the isolated checkout.
+Its `build` and `.venv` symlinks point to the preserved original data/environment;
+keep them untracked. The declared HB17 opponent's runtime files were materialized
+from TT `1673a7ce3` locally, without its registration file; keep that dependency
+untracked too. All six original source contracts and the fixed mouth-screen
+contract still match exactly. The heartbeat now targets this isolated path and
+pushes scoped commits from detached HEAD to origin/r/expedition. This supersedes
+pass 14's instruction to run games from the shared project directory.
+
 ## Pass 15 — finish the bounded test; challenge the base with stronger opposition
 
 **User clarification:** local iteration is allowed when it helps win, but the
@@ -44,6 +57,43 @@ net win, with costs and benefits on different maps. QoS seed 2 also has 16/16
 wins and exactly equal measured opening trajectories. The remaining confirmation
 slices must finish; no advancement verdict from this prefix. The numerical
 checks stay those fixed before games, including Quartet's confirmation tempo.
+
+**Confirmation map update:** Portals seed 2 finishes **14 parent / 13 candidate**
+wins, despite the seed-1 gain. Tempo is +0.122569 rounds slower, with identical
+reported food/loss/split/material values through r100; by r150 bed food is −.875
+and total material −1.1875 on average. Of the five changed outcomes, the first
+whole-state/food divergence is r110 (Chaewon A, loss), r136 (Yuna B, loss),
+r171 (Gavroche A, gain), r197 (Sinbad A, gain), r241 (Fenrir B, loss). The last
+three have equal pre-r150 states: the opening curve alone cannot explain them.
+These outcome-selected traces describe timing, not an action-score attribution.
+Evidence: `mouthcontest-portals-s2-opening.log` and
+`portals-confirmation-divergence.json` under `build/expedition/`.
+
+**Fixed-game coverage now complete:** batch 016 stopped at 72 games / 1,180.0
+seconds under the admission budget; isolated batch 017 finished the last four
+games in 95.6 seconds. Final report `audit-018-final-mouth.json` validates all
+**112 paired screen fixtures** (96 pool, 16 gen), within **467 indexed records**,
+with **464** arena/replay discrepancies retained. Both original full panels
+remain incomplete; this is complete screen coverage only. Aggregate wins are
+49/50 in discovery and **49/49 in confirmation**. Confirmation Quartet is 3/4,
+which offsets Portals' 14/13; QoS is 16/16 and Devil 16/16. Devil has exact arena
+stat/outcome/round/termination parity on all 32 fixtures. The closing screen
+report is regenerating phase caches under the isolated source hash before
+issuing its decision; no rule has changed.
+
+The source-isolated canonical hash returns to the original `0a8122e…`; the first
+702 common old/new canonical cache records compare exactly equal. Keep both
+cache versions. The declared TT opponent is locally materialized from its Git
+commit because the publication branch deliberately excludes unrelated TT merges.
+The two current control fingerprints are HB17 `5ec09f086b40…` and g01
+`4ce9231d8b43…`, fully stored in the new run contracts.
+
+**Next independent experiment is running:** after 017 released the shared game
+lock, batch **018-frontier** started `explore-frontier-v1`, maximum 96 games in
+20 minutes, one CPU game worker. It does not depend on a favorable mouth verdict;
+closing replay analysis runs alongside it. Never overlap another game batch.
+Use `report.py --candidate expedition-05-explore3 --panel frontier-v1` after its
+batch and keep all partial-map results explicitly descriptive.
 
 ### Fresh opposition experiment, declared before execution
 
@@ -108,9 +158,9 @@ Ranked next work (priority, not a new posterior-weight claim):
 No new numeric ledger proposal this pass. The L20 reopening and downward L40
 review remain proposals; original failed gates remain failed. Full mean/median,
 map/phase, canonical-versus-arena and sandbox questions remain visible. Next:
-finish 10's fixed confirmation, run the full current-candidate report and screen
-report, then start the predeclared frontier challenge only after the game lock
-is free. Publish only scoped changes through the attached publication worktree.
+finish 10's closing phase/screen report, then inspect and validate batch
+018-frontier. Resume `campaign.py --screen explore-frontier-v1 --execute --minutes
+20 --max-games 96` only after its lock is free, until the 80 fixed pairs finish. Publish only scoped changes through the attached publication worktree.
 
 ## Pass 14 — bounded behavior test and wider research reset (2026-10-01)
 

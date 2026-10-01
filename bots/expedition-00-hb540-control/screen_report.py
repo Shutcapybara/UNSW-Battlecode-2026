@@ -96,7 +96,10 @@ def main():
             candidate_points=sum(c.panel.gate.win(x['child']) for x in items),
             tempo_delta=mean(x['tempo'] for x in items),
             canonical_mean_deltas={k: mean(x['candidate_features'][k] - x['parent_features'][k] for x in items)
-                for k in ('total@100', 'total@250', 'longest_margin_end', 'total_margin_end')},
+                for k in ('total@100', 'total@150', 'total@250', 'kills@150', 'kills@250',
+                          'longest_margin_end', 'total_margin_end')},
+            midgame_kills_delta=mean((x['candidate_features']['kills@250'] - x['candidate_features']['kills@150']) -
+                                    (x['parent_features']['kills@250'] - x['parent_features']['kills@150']) for x in items),
             end_reasons={arm: dict(Counter(x[arm]['end_reason'] for x in items)) for arm in ('parent','child')},
             better=sum(c.panel.gate.win(x['child']) > c.panel.gate.win(x['parent']) for x in items),
             worse=sum(c.panel.gate.win(x['child']) < c.panel.gate.win(x['parent']) for x in items))
