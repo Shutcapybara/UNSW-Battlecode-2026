@@ -274,8 +274,8 @@ class MapDiagnosticTests(unittest.TestCase):
         wanted = {(m, seat, seed, 'opp') for m in ('gain', 'loss', 'missing')
                   for seat in ('A', 'B') for seed in (1, 2, 3)}
         keys = {k for k in wanted if k[0] != 'missing' and k[2] == 1}
-        child = {k: {'result': 'win' if k[0] == 'gain' else 'loss'} for k in keys}
-        parent = {k: {'result': 'loss' if k[0] == 'gain' else 'win'} for k in keys}
+        child = {k: {'result': 'win' if k[0] == 'gain' else 'loss', 'rounds': 500, 'end_reason': '1'} for k in keys}
+        parent = {k: {'result': 'loss' if k[0] == 'gain' else 'win', 'rounds': 500, 'end_reason': '1'} for k in keys}
         features = {k: dict.fromkeys(('pearls@25', 'pearls@50', 'pearls@100',
                                      'units@100', 'total@100', 'total@250'), 0) for k in keys}
         result = map_diagnostics(wanted, child, parent, features, features)
@@ -295,11 +295,37 @@ class MapDiagnosticTests(unittest.TestCase):
         a, b = ('map', 'A', 1, 'opp'), ('map', 'B', 1, 'opp')
         fields = ('pearls@25', 'pearls@50', 'pearls@100', 'units@100', 'total@100', 'total@250')
         features = {a: dict.fromkeys(fields, 0)}
-        result = map_diagnostics({a, b}, {a: {'result': 'draw'}, b: {'result': 'win'}},
-                                 {a: {'result': 'loss'}}, features, features)
+        result = map_diagnostics({a, b}, {a: {'result': 'draw', 'rounds': 500, 'end_reason': '1'},
+                                          b: {'result': 'win', 'rounds': 74, 'end_reason': '0'}},
+                                 {a: {'result': 'loss', 'rounds': 150, 'end_reason': '0'}}, features, features)
         self.assertEqual(result['collective']['paired'], 1)
         self.assertEqual(result['collective']['win_delta'], .5)
         self.assertFalse(result['maps']['map']['by_seed']['1']['complete'])
+
+
+class TerminalDiagnosticTests(unittest.TestCase):
+    def test_early_wins_late_losses_and_terminal_boundary_are_distinct(self):
+        from report import terminal_diagnostics
+        parent = {0: dict(result='win', rounds=500, end_reason='1'),
+                  1: dict(result='loss', rounds=74, end_reason='0'),
+                  2: dict(result='loss', rounds=150, end_reason='0')}
+        child = {0: dict(result='win', rounds=74, end_reason='0'),
+                 1: dict(result='loss', rounds=500, end_reason='1'),
+                 2: dict(result='win', rounds=150, end_reason='0')}
+        out = terminal_diagnostics(parent.keys(), child, parent)
+        self.assertEqual(out['checkpoints']['150'], dict(both_live=0,
+            parent_only_live=1, candidate_only_live=1, neither_live=1))
+        self.assertEqual(out['checkpoints']['50']['both_live'], 3)
+        self.assertEqual(out['same_outcome_finish_timing']['win']['candidate_earlier'], 1)
+        self.assertEqual(out['same_outcome_finish_timing']['loss']['candidate_later'], 1)
+        self.assertEqual(out['outcome_reason_transitions']['loss:0 -> win:0'], 1)
+        self.assertEqual(sum(out['outcome_reason_transitions'].values()), 3)
+
+    def test_empty_slice_is_not_evidence_of_live_play(self):
+        from report import terminal_diagnostics
+        out = terminal_diagnostics([], {}, {})
+        self.assertEqual(sum(out['checkpoints']['150'].values()), 0)
+        self.assertEqual(out['outcome_reason_transitions'], {})
 
 
 class OpeningAuditTests(unittest.TestCase):

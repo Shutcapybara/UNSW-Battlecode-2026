@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–21
+# Expedition — H-1 hypothesis steward, passes 1–22
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -27,6 +27,132 @@ untracked too. All six original source contracts and the fixed mouth-screen
 contract still match exactly. The heartbeat now targets this isolated path and
 pushes scoped commits from detached HEAD to origin/r/expedition. This supersedes
 pass 14's instruction to run games from the shared project directory.
+
+## Pass 22 — complete first symmetry seed; expose terminal timing in every report
+
+**2026-10-01; isolated checkout from `3cf6a2b8b`.** Original 01/08 gen
+contracts match; one CPU worker resumed batch **026-symmetry-gen** from the
+saved QoS transpose B/seed1/Chaewon parent. Initial load 2.15, lock free,
+20-minute admission budget, cap 96. No runtime, fixture or gate change.
+
+### Complete first seed versus incomplete second seed
+
+Batch 026 completed **96 games in 506.2 seconds**, 48 parent and 48 candidate.
+`audit-030-symmetry.json` validates **739 indexed records**: 208 pool parent,
+270 gen parent, 261 gen candidate. It preserves **722** arena/replay measurement
+discrepancies. Source/replay hashes, fixture attribution, error checks and canonical
+bookkeeping pass; the allowed corpse-drop shortfall remains distinct from invalid
+bookkeeping. Inferred-turn intake and replay-event/round-start measures remain
+separate. Original records and numbered audits are unchanged.
+
+Gen coverage is **261/696 pairs**: all **232 seed-one pairs across 29 maps**, plus
+29 seed-two pairs. Candidate pool remains 0/480. Nine parent-only records comprise
+the saved next Equatorial Belt fixture and eight older Quartet seed-two rows.
+The mixed prefix scores **184.5 parent / 197 candidate**, 16 better, three worse,
+242 tied. It remains **INCOMPLETE; NO GATE VERDICT**.
+
+Use the complete seed-one slice (`symmetry-seed1-pass22.json`) for the new stage:
+**168.5/181 points, +5.388 percentage points**, 16 better/3 worse/213 tied.
+A descriptive whole-map bootstrap resampling all eight opponent/seat pairs
+within each sampled map (10,000 draws, seed 20261001) gives 90% empirical bounds
+**[+1.078, +10.345] pp**. This is a single seed and a selected older local roster;
+it supplies neither full D-032 acceptance nor competitive-frontier evidence.
+
+| Complete seed-one slice | Pairs | Parent / 08 points |
+|---|---:|---:|
+| Generated `new/` maps | 160 | 112 / 113 |
+| Familiar-map transposes `var/` | 72 | 56.5 / 68 |
+| Ares | 58 | 43.5 / 42 |
+| Chaewon | 58 | 44 / 48 |
+| Fenrir | 58 | 37 / 43 |
+| Yuna | 58 | 44 / 48 |
+| Seat A | 116 | 82.5 / 92 |
+| Seat B | 116 | 86 / 89 |
+| Excluding Delayed Commons | 224 | 164.5 / 174 |
+
+Eight maps improve, three regress, eighteen tie. The largest gain is now **QoS
+transpose 3/8→8/8**, followed by Delayed Commons 4/8→7/8; Default transpose
+6/8→8/8 and Trauma transpose 6/8→8/8. Nursery Bays, Autarky transpose and Dilemma
+transpose each add one point; Portals transpose adds half a point. Quartet and
+both Orchard maps each lose one point. Trophy transpose remains 8/8 for both.
+Thus the gain is no longer dependent on Delayed Commons, but **11.5 of 12.5 net
+points come from transposes**. Native-map comparators and later seeds are still
+required before claiming orientation invariance or general transfer. This panel
+contains established repository structures, not globally untouched holdouts.
+
+`symmetry-seed2-prefix-pass22.json` holds map/opponent/seat composition fixed:
+the first **29 seed-two pairs score 16/16 with no outcome changes**, versus
+**15/18 on the same seed-one fixtures**. Archipelago and Crossroads are complete
+and tied in both seeds; five Equatorial Belt pairs are also tied. Delayed Commons
+is **8/8 for both arms in seed two**, versus 4/8→7/8 in seed one. Its seed-one
+outcome gain does not repeat here, with a saturated parent leaving no headroom.
+This does not establish a harmful second-seed effect or full confirmation.
+
+### Terminal exposure becomes a standard diagnostic, not a new gate
+
+`report.py` now reports both-live/parent-only/candidate-only/neither-live counts
+at r25/50/100/150/250/400 in every collective, map, seed, seat, opponent and
+leave-one-map-out summary. It also separates earlier/later shared wins and
+losses, and preserves raw result/end-reason transitions. A game ending after N
+rounds is live at round starts 0 through N−1; the exact terminal boundary is
+covered. No fixture is dropped, score altered, or historical verdict rewritten.
+
+Only **154/232** complete-seed pairs are jointly live at r150, **92/232** at
+r250, **36/232** at r400. Of 165 shared wins, 08 finishes earlier in 69, at the
+same round in 36, later in 60. Of 48 shared losses, it finishes earlier in seven,
+at the same round in 16, later in 25. These are descriptive timing changes;
+shorter games are not uniformly beneficial or harmful. Pulse Farms retains the
+pass-21 finding: zero jointly live r150 pairs and four earlier shared wins.
+
+Verification: **36 campaign/report tests pass**. The archived 213-pair audit-029
+regression reproduces **every previous map/seed/seat/opponent/leave-one-out value
+exactly** after removing only the newly added diagnostic field. Evidence:
+`report-terminal-regression-pass22.json`. Report hash
+`69bdfcdd58aef47ff7b590417d33645dae406959d5c8777436b37f668c3d8d78`;
+canonical extractor remains
+`0a8122e4906460c602332752cd52e6eeb9c1541ca757c5b2754a80900ff8f76e`.
+No changes to mean/median estimands, frozen tempo reference, bootstrap gates,
+opening rules, sandbox requirements or the three closed focused screens.
+
+### Reconciliation, competing explanations and ranked ten
+
+Read-only refresh about **11:59 UTC**: Clair **11dd72764**, TT **fa53ab708**,
+Obscur **a8bf0a566**, HB **bfd67c37b**, main **cb2e920c7**, unchanged; no new
+remote lane exposed. A local chat inventory exposed no newly active parallel
+Battlecode chat. This is a visibility cutoff, not proof of no external work.
+No messages, merges or modifications to those lanes. Their prior reported claims
+remain separate from Expedition replication.
+
+Ledger proposals: L38/L27 now have complete seed-one evidence of a strongly
+map-family-dependent transfer with an Ares regression. L37 should retain those
+slices and matched-composition seed comparisons; L29 now has reusable terminal
+exposure rather than an isolated caveat. No shared ledger or gate change.
+The core limitations remain: new-map gain is only one point, Seam Market stays
+0/8 and Far Harbors 2/8 in seed one, and the roster is behind the authenticated
+frontier. Symmetry information alone has not solved those strategic weaknesses.
+Keep remembered-resource assignment, observable-pressure phase handover and
+late conversion as distinct alternatives; do not infer a routing repair from
+padded material curves or start another local symmetry dose scan.
+
+1. L38/L27: finish frozen symmetry seeds; test whether transpose gains repeat.
+2. L37: retain Ares/seat/map-family contrasts and exact-composition seed checks.
+3. L03: observable-pressure handover versus fixed timing, with elimination guards.
+4. L39: conversion mechanisms versus material accumulation, all-game outcomes.
+5. L27: remembered-resource assignment as a fresh competing architecture.
+6. L29: validate early-finish treatment on independent controls before any new gate.
+7. L38: conditional first-divergence traces; no component-causality claim yet.
+8. L36: parent/child opportunity value without reopening the failed food-hold dose.
+9. L14/L20/L02: original prior-base and cap scans, contracts unchanged.
+10. L40/gates: mouth/full-panel, mean/median and sandbox obligations remain open.
+
+Next runnable action: `campaign.py --candidate expedition-08-symmetry --panel gen
+--execute --minutes 20 --max-games 96`, **batch-027-symmetry-gen**, from
+**new/mc26_equatorial_belt, B, seed 2, ChaewonY04**, candidate against the saved
+exact parent. Continue the declared seed order; run the current report and save
+**audit-031** after the batch. Batch 026 and report 030 exited successfully; no
+game worker is active at publication. Only report/test/status source changes are
+published. Keep runtime snapshots, contracts, dependencies and generated artifacts
+untouched. No acceptance, registration or promotion.
 
 ## Pass 21 — terminal-state bias in opening diagnostics; continue symmetry
 
