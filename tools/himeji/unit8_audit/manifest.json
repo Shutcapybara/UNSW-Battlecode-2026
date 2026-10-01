@@ -1,0 +1,131 @@
+{
+  "store": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus",
+  "games_sha256": "bfe4516582393c959f1cbfcf8279946d7c6a01466a5a75f65cd4e7da618e18c2",
+  "ladder": "20261001T175107Z.json",
+  "ladder_sha256": "10b8594ec920eb326a219a9251aa4cad0d12c74a557df19f4d12b35ad9b51dd7",
+  "top10_ids": [
+    "952",
+    "206",
+    "314",
+    "20",
+    "213",
+    "249",
+    "801",
+    "112",
+    "87",
+    "375"
+  ],
+  "indexed_eras": [
+    {
+      "era": "pre",
+      "ranked": false,
+      "n": 42707,
+      "first_start": "2026-09-25 16:42:09.308+09:30",
+      "last_start": "2026-10-01 15:27:06.388+09:30"
+    },
+    {
+      "era": "pre",
+      "ranked": true,
+      "n": 32083,
+      "first_start": "2026-09-25 17:30:02.025+09:30",
+      "last_start": "2026-10-01 13:30:37.334+09:30"
+    },
+    {
+      "era": "post",
+      "ranked": true,
+      "n": 2944,
+      "first_start": "2026-10-01 18:53:44.121+09:30",
+      "last_start": "2026-10-02 01:09:31.985+09:30"
+    },
+    {
+      "era": "post",
+      "ranked": false,
+      "n": 999,
+      "first_start": "2026-10-01 19:03:05.52+09:30",
+      "last_start": "2026-10-02 01:00:47.802+09:30"
+    }
+  ],
+  "canonical_post_games": 2862,
+  "post_series_files": {
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261001T223647-1669084.parquet": {
+      "size": 11436375,
+      "mtime_ns": 1790860012000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261001T223838-1669084.parquet": {
+      "size": 11517618,
+      "mtime_ns": 1790860122000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261001T224011-1669084.parquet": {
+      "size": 12014976,
+      "mtime_ns": 1790860215000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261001T224142-1669084.parquet": {
+      "size": 11935525,
+      "mtime_ns": 1790860307000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261001T224251-1669084.parquet": {
+      "size": 11935110,
+      "mtime_ns": 1790860375000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261001T224400-1669084.parquet": {
+      "size": 9286294,
+      "mtime_ns": 1790860442000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261002T011541-440954.parquet": {
+      "size": 12274611,
+      "mtime_ns": 1790869546000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261002T011806-440954.parquet": {
+      "size": 12480897,
+      "mtime_ns": 1790869694000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261002T012056-440954.parquet": {
+      "size": 12392328,
+      "mtime_ns": 1790869864000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261002T012330-440954.parquet": {
+      "size": 11931290,
+      "mtime_ns": 1790870019000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261002T012618-440954.parquet": {
+      "size": 12085707,
+      "mtime_ns": 1790870184000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261002T012856-440954.parquet": {
+      "size": 12184323,
+      "mtime_ns": 1790870345000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261002T013131-440954.parquet": {
+      "size": 12487114,
+      "mtime_ns": 1790870494000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261002T013446-440954.parquet": {
+      "size": 12866148,
+      "mtime_ns": 1790870698000000000
+    },
+    "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/s1/corpus/series/part-20261002T013721-440954.parquet": {
+      "size": 8255764,
+      "mtime_ns": 1790870845000000000
+    }
+  },
+  "cohorts": [
+    {
+      "ranked": false,
+      "games": 790,
+      "sides": 1580,
+      "series": 201,
+      "top10_sides": 488
+    },
+    {
+      "ranked": true,
+      "games": 2072,
+      "sides": 4144,
+      "series": 482,
+      "top10_sides": 878
+    }
+  ],
+  "first_start": "2026-10-01 18:56:46.26+09:30",
+  "last_start": "2026-10-02 01:09:31.985+09:30",
+  "opening_rows_sha256": "716b2a02076ff3ccf618b1052a1c10408e5f6d0f1c53eaa806e9287f66449216",
+  "method": "earliest filename per game; both sides; post-era; separate ranked/unranked; terminal state carry included and counted"
+}

@@ -193,3 +193,37 @@ Uncertainty across series cannot be estimated with one per population. Every fie
 no local panel is substituted. Material-lead loss fractions require checkpoint: unrankedRL r490 is1/2 losses or1/1
 leads, versus final-state0/2 losses orNA(0leads). H-H1 and all frozen gates remain unchanged.
 Query, ladder, counts, identity and provenance: `docs/findings/2026-10-02-himeji-first-live-ranked-unranked.md`.
+
+
+### Unit 8 ranked references and analyst ruling — 2026-10-01 18:15 UTC
+
+New provisional ranked-only references:2,072 games/482 series,878 current-top10 sides/9teams; ladder17:51:07Z,
+decoded window09:26–15:39Z. Current leader952 absent. See `tools/himeji/unit8_audit/annotated-references.csv` for
+154 map×r25/50×metric rows, raw values/field percentiles/counts/95% series-bootstrap CIs and stability labels.
+Frozen unit1 signature clusters used; PD10 retained separately/unassigned (95ranked games previously excluded by
+Antioch's label filter). Terminal carry explicit:52 ended ranked sides@25,116@50 of4144. All rows remain provisional.
+
+| Map (cluster) | Field games / top10 sides | Bed pearls pct | Splits pct | Transits pct | Territory pct | Total pct |
+|---|---:|---:|---:|---:|---:|---:|
+| Autarky (c1) | 214 / 90 | 65.2 | 54.7 | 67.1 | 65.3 | 74.4 |
+| Default (c5) | 189 / 79 | 53.6 | 52.4 | 45.8 | 58.9 | 62.0 |
+| Devil (c0) | 208 / 84 | 66.8 | 67.7 | 50.0 | 70.6 | 67.1 |
+| Portals (c2) | 206 / 81 | 43.1 | 44.3 | 33.3 | 50.0 | 46.6 |
+| Prisoners Dilemma (c1) | 99 / 51 | 49.5 | 51.0 | 47.5 | 60.6 | 50.5 |
+| Prisoners Dilemma 10 (unassigned replay-label variant) | 95 / 40 | 50.0 | 43.4 | 47.1 | 53.7 | 40.5 |
+| Queen Of Spades (c4) | 208 / 84 | 58.7 | 53.0 | 60.9 | 69.1 | 54.6 |
+| Schooltime (c3) | 201 / 87 | 61.8 | 60.3 | 46.4 | 67.2 | 61.3 |
+| Slithery Fight (c0) | 220 / 91 | 60.0 | 58.6 | 52.3 | 55.0 | 57.3 |
+| Trauma (c0) | 210 / 82 | 62.9 | 67.1 | 74.2 | 55.2 | 67.0 |
+| Trophy (c6) | 222 / 109 | 61.6 | 56.8 | 46.2 | 58.2 | 57.3 |
+
+Live us has one ranked series/five maps. Its observed field percentiles and unmatched raw differences are recorded,
+but matched inferential gaps remainNA; absent maps stay missing and unranked is not substituted. No stable target
+or current-strength claim follows. Query/era/cohort/counts/uncertainty and limitations: `docs/findings/2026-10-02-himeji-ranked-store-references-and-gate-ruling.md`.
+
+Himeji's ruling on delegated gate question: for predeclared1.2.3 adaptations, overall pool win LB>0/gen>−.02,
+economy LB>−.03 both panels, retain material/early/tier2/CPU guards. Queen falsifier is diagnostic, no exemption.
+Retain Antioch/Nara sprint-bundle reading with disagreement:05−00 passes retrospective screen,05−04 fails required
+pool-positive LB(−.020). 04 can be corrected measurement base with explicit fingerprint; parents cannot be swapped.
+Φ remains diagnostic pending validation. These are decision tolerances, not field percentiles; no ledger/bot action.
+All historical references/verdicts and H-H1 weight0.5 remain unchanged.

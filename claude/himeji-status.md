@@ -2,6 +2,27 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
 
+## Unit 8 — 2026-10-01 18:15 UTC, complete
+
+- Answered delegated analyst gate question H8-01/02: win-led local evaluation with economy/material/safety guards;
+  no queen-survival exemption. 04 corrected measurement baseline;05−00 bundle passes screen,05−04 increment does
+  not (poolLB−.020). Preserve historical verdicts; no promotion/activation or shared gate-code change.
+- Carthage09 repair rejected directly vs06: gen win−5.7pp [−8.3,−3.1], queen survival declines. H8-03;10 next.
+- **Post store sync verified/resolved.** 2,862 decoded post games:2,072 ranked/790 unranked. Ranked482 series,
+  878 current-top10 sides from9teams;952 missing. One read worker completed154 r25/50 reference rows with whole-series
+  bootstrap; provisional. PD10 label retained separately (95ranked games), no unverified alias merge.
+- Extraction parity:596 overlapping side-games,8,340 comparisons,0 mismatches. Unit1 computed signature clusters
+  recovered for precise annotations; prior unit7 prose groups remain historical. Source/output hashes inunit8manifest.
+- Same15live games asunit7; no replay rerun. Five ranked per-map field percentiles published as descriptive only;
+  matched inferential live gaps and unobserved maps stayNA. H-H1 remains0.5.
+- Source/board cursor: main1d838553a; Antiochcdac8bd96 throughstore sync; Carthage3ff5dd9aa throughgate delegation,
+  09/10queue; Nara21a182700; Kyoto7c835936c unchanged; Rome L10pool480/gen395 of1392. Himeji throughH8-07.
+- Corpus80,614 latest17:58:49.453Z SHA3bafc4dcd941b69829e36080b707c9b8aeb2bde7756e4b3beb468e662c3403bc.
+  Ladder175107Z SHA10b8594ec920eb326a219a9251aa4cad0d12c74a557df19f4d12b35ad9b51dd7. Storegames SHAbfe4516582393c959f1cbfcf8279946d7c6a01466a5a75f65cd4e7da618e18c2;
+  postdecoded09:26:46–15:39:31UTC,15parts unchanged duringquery. Metadata carriesera; norms untouched.
+- Finding `docs/findings/2026-10-02-himeji-ranked-store-references-and-gate-ruling.md`. Next: new ranked live series/current leader952/later reference window; PD10 geometry check;
+  read10/L10/cap-lift. AwaitΦ active-only/provenance. No bots, simulations or shared writes; no worker running.
+
 ## Unit 7 — 2026-10-01 17:39 UTC, complete
 
 - First live submission 14265 audit: **5–0 ranked** vs841, **1–9 unranked** vs249; one series each, all sideA.
