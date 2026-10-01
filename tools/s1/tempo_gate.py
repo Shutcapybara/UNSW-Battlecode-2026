@@ -1,6 +1,7 @@
 """Tempo gate: is the candidate faster than its parent in the opening? One command, one verdict.
 
   python3 tools/s1/tempo_gate.py CAND PARENT [--jobs N] [--maps pool|gen|all]
+  python3 tools/s1/tempo_gate.py CAND - --export DIR     (write portable extracts; a folder of them is a valid CAND/PARENT)
 
 CAND and PARENT are replay folders from the same panel: a scorecard/run_panel dir (with replays/ inside), a replays/ dir,
 or a renoir-style run dir. Fixtures are paired on the file name s<seed>__<map>__<A>__<B>.replay with the bot's own name
@@ -83,7 +84,11 @@ def load_dir(d, jobs):
     rd = d / 'replays' if (d / 'replays').is_dir() else d
     files = sorted(rd.glob('*.replay'))
     if not files:
-        raise SystemExit(f'no .replay files under {d}')
+        ex = sorted(rd.glob('*.tempo.json'))      # portable extracts (--export), e.g. from another machine
+        if ex:
+            print(f'{d}: {len(ex)} exported extracts', file=sys.stderr)
+            return [json.loads(p.read_text()) for p in ex]
+        raise SystemExit(f'no .replay or .tempo.json files under {d}')
     import multiprocessing as mp
     ctx = mp.get_context('fork' if sys.platform.startswith('linux') else 'spawn')
     t0 = time.time()
@@ -141,7 +146,13 @@ def main():
     ap.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 2) - 1))
     ap.add_argument('--maps', default='all', choices=['all', 'pool', 'gen'])
     ap.add_argument('--boots', type=int, default=4000)
+    ap.add_argument('--export', metavar='DIR', help='only extract CAND replays and write <game>.tempo.json files to DIR (portable)')
     a = ap.parse_args()
+    if a.export:
+        out = Path(a.export); out.mkdir(parents=True, exist_ok=True)
+        for g in load_dir(a.cand, a.jobs):
+            (out / f"{g['game']}.tempo.json").write_text(json.dumps(g))
+        return
     ref = json.loads(REF.read_text())
     Gc, Gp = load_dir(a.cand, a.jobs), load_dir(a.parent, a.jobs)
     bc, bp = protagonist(Gc), protagonist(Gp)
