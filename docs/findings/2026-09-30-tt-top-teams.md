@@ -223,7 +223,48 @@ often with a material lead: V06 12 of 31, hb1-17 5 of 9, tt-05 (feeding from ~r3
 **Selector** (`tools/tt/make_regime.py`; no map names): hb1-17 with tt-05's earlier feeding onset only when the
 dragon's own information says round-limit regime — W·H ≥ 1,100 (known at init), or ≥ 4 portal edges per 100 seen
 cells (Portals 7.8; elimination maps ≤ 2.3). `hb1-19-regime-feed140` (tt-05's onset) and `hb1-20-regime-feed200`
-(earlier still); both uploadable. Validation on z1 seeds 1 and 2 against hb1-17 is running.
+(earlier still); both uploadable.
+
+| bot | rule | z1 s1 | z1 s2 | total |
+|---|---|---:|---:|---:|
+| hb1-17 | — | 144–16 | 139–21 | 283–37 |
+| hb1-19 | onset 140 if W·H ≥ 1100 or ≥ 4 portal edges/100 seen cells | 142–18 | 141–19 | 283–37 |
+| hb1-20 | same, onset 200 | 135–25 | 132–28 | 267–53 |
+| **hb1-21** | onset 140 if ≥ 5 portal edges/100 seen cells (no size rule) | **147–13** | **140–20** | **287–33** |
+
+Size was the wrong switch. Ares' onset already moves earlier with W + H, so on large maps the earlier onset only cost
+games (Schooltime 27 → 24 of 32). The small portal-dense map was the gap: Ares fed late there, yet games still run to
+r500. hb1-21 against hb1-17 with the endgame gate (`tools/tt/endgame_gate.py`; 448 paired fixtures, z1 seeds 1–2
+plus Portals seeds 1–10):
+- **Portals +8.75 pp, 95 % CI [+0.6, +16.9]** (141 vs 127 of 160). Conversion failures (round-limit losses with a
+  material lead) fall from 23 to 1, and the longest dragon at the end rises from 30 to 36.
+- Elimination maps are identical. Devil, Dilemma, Queen of Spades and Trophy are bit-identical; on Default and Autarky
+  the rule fires now and then, changing game lengths but no results.
+- Overall +2.9 pp [0.0, +6.0] → INCONCLUSIVE by the gate's rule (lower bound must be above 0). More Schooltime and
+  Default seeds are queued, the two maps where the rule sometimes fires.
+
+**Why an endgame gate.** The scorecard gate is the older BENCHMARKS step-4 rule, and it misjudges late-game changes:
+- Its economy term is measured up to r250, so a change acting from r300 can at best "hold".
+- Its hygiene term counts chosen deaths (culls) as failures, which BENCHMARKS' 30 Sep revision says not to do.
+- Its win share is unpaired and from one seed.
+
+Tempo covers r10–150 by design. The endgame gate pairs fixtures (seed, map, opponent, seat) so the opening is shared.
+It reports the win difference with a bootstrap CI overall, per regime (elimination / round-limit maps) and per map,
+plus per-arm round-limit record, elimination losses, conversion failures and longest at the end. Its verdicts use the
+tempo vocabulary (ACCEPT / REJECT / NO GAIN / INCONCLUSIVE). It is proposed alongside tempo, not as a replacement:
+- tempo for opening changes;
+- this gate for changes that act after ~r150;
+- the scorecard tables for diagnosis.
+
+**Cross-reference: the s1 lane's findings** (`docs/findings/2026-10-01-s1-next-steps.md`, Mac checkout):
+- The s1 lane grafted Ares onto the Heartbreaker mimic (hb1-04) and found **r150 the best hand-over**: 0.64 → 0.84,
+  tying hb1-12. r250 gave 0.79 and r350 0.78.
+- The lane traced the mimic's losses to the missing crown: longest dragon 12 vs 24 on Portals, Slithery, Default and
+  Schooltime. That is the same conversion gap found here.
+- My Cache me outside hand-offs used r250–350 only. r150 hand-offs for both new mimics (tt-16 Cache me outside, tt-17
+  forgot to mention) are queued.
+- Its split-stall result is the mid-game counterpart of the regime story. The top ten split 52 % of eligible turns
+  (ours 75–95 %), and hold length while food is near.
 
 ## What to take, and what is open
 
