@@ -53,9 +53,17 @@ wiring but warns the condition may remove nearly all useful mouth behavior.
 Runtime archive **3,921,304 bytes**, unchanged HB540 direction model, no GPU.
 Evidence: `build/expedition/mouth-contest-verification.{json,log}`.
 
-Batch 014 completed **96 games in 839.3 seconds**. Its 09 validation report is
-running (`audit-015.log`); until it completes, pass 13's 502-game report is the
-last canonical cross-panel validation. After lock release, batch 015 launched
+Batch 014 completed **96 games in 839.3 seconds**. Its 09 validation now passes
+on **598 games / 299 pairs** (pool 160, gen 139), with **594** arena/replay
+measurement discrepancies retained (`audit-015.{json,log}`). Gen wins are 93
+parent / 90 mouth: the previous two Quartet regressions plus Causeway Portal B
+versus Fenrir. These remain partial panels, not a gate verdict.
+
+The concurrent TT merge added a map filter to run_panel.py, changing the broad
+analysis-source hash to `5cfbc573…` and forcing cache regeneration even though
+extraction code did not change. The 502 old/new canonical cache records are
+**all exactly equal** (`canonical-bridge-015.json`); retain both versions.
+After lock release, batch 015 launched
 10's focused screen with one worker, maximum 96 games and 20-minute admission
 budget. Resume by screen name, not by the default queue. No game overlap.
 
@@ -74,6 +82,14 @@ ate at r49. Both 01 and 10 win this fixture. The 10 replay hash is
 01's is the previously frozen `36ee7796…`. Full events are saved in
 `build/expedition/mouthcontest-gavroche-access.json`. This confirms the intended
 access repair on a design fixture, not out-of-sample strength or a gate pass.
+
+**Completed discovery slice:** all 16 QoS seed-1 pairs pass replay/source,
+attribution and canonical bookkeeping checks in opening_audit.py. Both 01 and
+10 win 16/16. Mean opening tempo delta is exactly 0, and every individual
+reported opening delta (curve, first events and five-round checkpoints) is zero.
+This is recovery of the parent's behavior, not improvement over it; the other
+maps and confirmation seed remain decisive. Evidence:
+`build/expedition/replay-panels/expedition-10-mouthcontest-z1-queen_of_spades-s1-opening.json`.
 
 ### Parallel-work review and genuinely different alternatives
 
