@@ -229,7 +229,7 @@ def build_report(candidate):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--candidate', choices=c.QUEUE, default=c.QUEUE[0])
+    ap.add_argument('--candidate', choices=c.CANDIDATES, default=c.QUEUE[0])
     a = ap.parse_args()
     report = build_report(a.candidate)
     dest = c.STORE / f'{a.candidate}-report.json'

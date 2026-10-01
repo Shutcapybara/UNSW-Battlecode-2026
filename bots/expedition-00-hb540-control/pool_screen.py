@@ -29,7 +29,7 @@ def normalized_weights(slopes):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--candidate', choices=c.QUEUE, default=c.QUEUE[0])
+    ap.add_argument('--candidate', choices=c.CANDIDATES, default=c.QUEUE[0])
     args = ap.parse_args()
     if c.sha(Q2) != Q2_SHA:
         raise ValueError('Q2 source changed; reconcile before applying frozen slopes')

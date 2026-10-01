@@ -87,6 +87,40 @@ class CampaignTests(unittest.TestCase):
             game.assert_not_called()
 
 
+class FocusedScreenTests(unittest.TestCase):
+    def test_exact_focused_coverage(self):
+        fixtures = list(c.fixture_order('mouth-contest-v1'))
+        self.assertEqual(len(fixtures), 112)
+        self.assertEqual(len(set(fixtures)), 112)
+        self.assertEqual(fixtures[0][1][0], 'queen_of_spades')
+        self.assertEqual({key[2] for _, key in fixtures[:56]}, {1})
+        self.assertEqual({key[2] for _, key in fixtures[56:]}, {2})
+        for pn, key in fixtures:
+            self.assertIn(key, c.panel.expected(pn, [1, 2, 3]))
+        self.assertEqual(len(list(c.fixture_order())), 1176)
+
+    def test_reuses_parent_and_resumes_candidate(self):
+        fixtures = list(c.fixture_order('mouth-contest-v1'))
+        completed = fixtures[:3]
+        def rows(bot, pn):
+            return {key: {} for p, key in (fixtures if bot == c.panel.PARENT else completed) if p == pn}
+        with patch.object(c, 'read_rows', side_effect=rows):
+            jobs = list(c.jobs(c.FOCUSED_CANDIDATE, 'mouth-contest-v1'))
+        self.assertEqual(len(jobs), 109)
+        self.assertEqual([(pn, key) for _, pn, key in jobs], fixtures[3:])
+        self.assertTrue(all(bot == c.FOCUSED_CANDIDATE for bot, _, _ in jobs))
+
+    def test_frozen_screen_rejects_declaration_change(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(c, 'STORE', Path(tmp)), \
+                patch.object(c, 'source_id', return_value='runtime'), \
+                patch.object(c, 'sha', return_value='declaration') as digest:
+            c.freeze_screen(c.FOCUSED_CANDIDATE, 'mouth-contest-v1')
+            c.freeze_screen(c.FOCUSED_CANDIDATE, 'mouth-contest-v1')
+            digest.return_value = 'changed'
+            with self.assertRaises(ValueError):
+                c.freeze_screen(c.FOCUSED_CANDIDATE, 'mouth-contest-v1')
+
+
 class PhaseExposureTests(unittest.TestCase):
     def test_unequal_exposure_uses_counts(self):
         from phase_report import summarize

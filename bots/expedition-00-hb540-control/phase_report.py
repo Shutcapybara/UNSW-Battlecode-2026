@@ -62,7 +62,7 @@ def summarize(rows):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--candidate', choices=c.QUEUE, default=c.QUEUE[0])
+    ap.add_argument('--candidate', choices=c.CANDIDATES, default=c.QUEUE[0])
     ap.add_argument('--panel', choices=('z1', 'gen'), default='z1')
     ap.add_argument('--map', help='Optional exact fixture map key, e.g. autarky')
     args = ap.parse_args()

@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–13
+# Expedition — H-1 hypothesis steward, passes 1–14
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -14,6 +14,138 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 14 — bounded behavior test and wider research reset (2026-10-01)
+
+**Standing direction, updated by the user:** each pass must revisit fresh ideas,
+competing explanations and newly arrived work, not default to increasingly local
+variants of the last experiment. Sunk effort is not a reason to prioritize a
+mechanism. Periodically review TT, HB, Obscur, Clair and other emerging work;
+record cutoffs, distinguish lane reports from replication, and preserve their
+files. The 30-minute heartbeat now includes these instructions, the per-map and
+phase objectives, and prospective benchmark revision. No chat messages were sent.
+
+Created **expedition-10-mouthcontest**, a single behavior change from frozen 09:
+apply its existing mouth penalty only where a visible allied head occupies the
+proposed final cell or can reach it through one known step, including paired
+portals. It uses no map names. This is a congestion hypothesis; unseen allies,
+sprints and uncertainty about ally intentions remain limitations. The original
+09 is unchanged. The fixed contract is in the new bot's README and runtime hashes
+in source-manifest.json, both written before games.
+
+**Bounded screen:** `mouth-contest-v1`, two seats, all original opponents on
+Queen of Spades / Portals / Devil / Portal Quartet, seeds 1 and 2 = **112 pairs**.
+Seed 1 is discovery; seed 2 is confirmation, with no intervening source tuning.
+Both must complete. Advancement requires the declared food-access repair,
+no-portal parity, nonnegative aggregate confirmation wins with no map worse by
+more than one win, and no slower confirmation opening tempo on QoS or Quartet.
+It is a screen, not D-032 acceptance. Existing full panels remain unchanged;
+focused scheduling reuses their exact rows and does not count absent games as
+complete. Campaign/report tools now explicitly support the new candidate and
+freeze the screen's declaration, fixture list and runtime fingerprint.
+
+Verification: **22 no-game tooling tests pass**; native topology checks include
+remote portal landings, blocked/unknown/unpaired edges, wrapped geometry, occupied
+mouths and enemy exclusion. **1,316 recorded turns**, 7 command/sonar differences
+from 09 and zero from 01. Switching off the ally condition reproduces 09 exactly;
+switching off the mouth penalty reproduces 01. The small sample therefore verifies
+wiring but warns the condition may remove nearly all useful mouth behavior.
+Runtime archive **3,921,304 bytes**, unchanged HB540 direction model, no GPU.
+Evidence: `build/expedition/mouth-contest-verification.{json,log}`.
+
+Batch 014 completed **96 games in 839.3 seconds**. Its 09 validation report is
+running (`audit-015.log`); until it completes, pass 13's 502-game report is the
+last canonical cross-panel validation. After lock release, batch 015 launched
+10's focused screen with one worker, maximum 96 games and 20-minute admission
+budget. Resume by screen name, not by the default queue. No game overlap.
+
+Publication safety: a concurrent keeper stashed tracked workspace edits during
+this pass (`keeper checkout_main`). Only our six tooling files were recovered
+from that stash; unrelated entries and the stash remain untouched. The shared
+branch also contains TT/Obscur merges not yet on origin/r/expedition. Publish
+scoped changes from the attached `expedition-publish` worktree based on
+origin/r/expedition; do not push the shared checkout's mixed HEAD. Games continue
+in the original project path because their contracts and replay store live there.
+
+**First directly checked repair:** QoS B / Gavroche seed 1, 10 now moves N at r33,
+then W through the portal at r34 and eats bed food at r34, as 01 does. 09 first
+ate at r49. Both 01 and 10 win this fixture. The 10 replay hash is
+`5ad2c740b7fc55589f2d5fb5ea40360becbb55e616278ac3c48f7ae78f01197a`;
+01's is the previously frozen `36ee7796…`. Full events are saved in
+`build/expedition/mouthcontest-gavroche-access.json`. This confirms the intended
+access repair on a design fixture, not out-of-sample strength or a gate pass.
+
+### Parallel-work review and genuinely different alternatives
+
+Read current local TT/HB/Obscur and the unmerged Clair remote-tracking branch;
+do not import its benchmark edits into our frozen experiments. Cutoffs:
+TT `1673a7ce3`, HB `bfd67c37b`, Obscur `a9e6fa647`, Clair `0c55d4b4f`.
+These are available local refs, not a claim that remote servers were freshly
+polled. Clair's status and benchmark version are saved under `build/expedition/`
+for reproducible comparison. None of these lane results is an Expedition rerun.
+
+- **Clair:** full-panel unseen3 reports economy +.151/+.065 and opening tempo
+  −3.5 rounds, while h2h rises 37% and newborn deaths rise 12%; trap20 reports
+  positive economy on both panels but fails a units guard. This contradicts a
+  universal prior-base flat-bowl claim. Its base retains the HB identity terms,
+  and its gen panel has 31 maps versus our 29, so do not merge scores. Prioritize
+  our already-frozen explore/trap arms when the broader scan resumes; no new
+  dose sweep is justified merely by Clair's best result.
+- **Obscur:** the mouth rule loses economy/wins on its HB800/prior base too;
+  all six seed-1 arms lose economy on Dilemma and its transpose. That points to
+  an unsolved structural failure, rather than another small mouth-weight edit.
+  Symmetry's gen gains come with more allied head-ons: information and safe use
+  of it remain separate mechanisms.
+- **TT:** a fast CMO opening handed to Ares at r300 improves conversion but
+  reaches only 121 wins versus HB540's 141; adding the HB prior after r300 gives
+  122. Early material is not sufficient for later elimination. Its portal feeding
+  selector gains on Portals but loses elsewhere; avoid a global round switch.
+  The new paired endgame evaluator is useful precedent, but its fixture bootstrap
+  and hard-coded map regimes need separate scrutiny before adopting it here.
+- **HB:** unfading beats fading the prior across both reported seeds. The late
+  economy dip can be inherited from the opening's population, so a late symptom
+  does not by itself justify changing late behavior.
+- **Gate review:** Clair's 1-Oct branch adds endgame/cull treatment, either-panel
+  economy acceptance and cluster-bootstrap authority, while explicitly leaving
+  r150–250 under-instrumented. Treat this as a versioned proposed comparison for
+  Expedition. Preserve historical gate results and collect an independent bridge;
+  do not call a printed old-gate line the only definition of success.
+
+Fresh candidates to weigh after this bounded screen: **resource-aware child
+placement** (child's reachable food and parent's forgone intake, not just empty
+room); **midgame pressure** (whether food/territory becomes enemy eliminations);
+**state-triggered conversion** (whether a surviving material lead can still be
+turned into a winning longest dragon). These are different causal interventions,
+not successors that automatically inherit 10. Freeze the next mechanism only
+after comparing its information value with existing ready arms and new evidence.
+
+### Reconciled ranked ten and gate state
+
+1. L36: parent/child food opportunity at splitting; inspect Trauma and Dilemma.
+2. L37: explain Dilemma's structural failure across mechanisms and transpose.
+3. L39: conversion trigger and delivery, distinct from full-policy handover.
+4. L03: midgame pressure/retention versus mere early population growth.
+5. L20/L14: reproduce the explore/trap effects on the identity-free HB540 base
+   using frozen 05/04; Clair is evidence to reopen, not an acceptance shortcut.
+6. L38: information gain from frozen symmetry 08 and its collision cost.
+7. L27: stronger/map-aware prior versus larger opening population; CPU-only ports.
+8. L40: finish the bounded 10 test and 09 evidence; **no automatic mouth sequel**.
+9. L29/L37: versioned midgame net-income reference and benchmark predictivity.
+10. L02: complete prior-base cap scans with the effective clamp verified.
+
+Ledger changes remain proposals: L20 should be reopened in light of Clair's
+reported full panels; L40 deserves downward review from the independent negative
+09/Obscur/Clair evidence, without treating unlike bases as pooled replication.
+No numeric ledger edit, acceptance, promotion or sandbox-validity claim this pass.
+Mean/median discrepancies, per-map cancellation, tempo versus wins, phase guards,
+reference representativeness and CPU sandbox cost remain explicit constraints.
+
+Next runnable action: finish batch 015, run report.py for 10, audit complete
+map/seed slices, then resume `campaign.py --screen mouth-contest-v1 --execute
+--minutes 20 --max-games 96` until the fixed 112 pairs are complete. Judge its
+predeclared screen, then choose among the distinct mechanisms above; re-review
+parallel work before allocating the next batch. The original scans remain due,
+but ordered completion is not a reason to ignore higher-value new evidence.
 
 ## Pass 13 — S1 reference integrated; first gen transfer contrast (2026-10-01)
 
