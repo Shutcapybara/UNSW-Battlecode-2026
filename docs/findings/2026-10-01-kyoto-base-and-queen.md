@@ -82,7 +82,19 @@ lifted profile (effective late 160 / sparse 512). kyoto-03 = late 48→160, spar
 Expected sign: p@150/p@250 up, p@50/p@100 flat (R-1 measured econ +0.026 on V06), units/length
 flat. Scored with the lane gate and `--phase late`.
 
-PLACEHOLDER gate result.
+**Result: REJECT (boundary), both cuts.** Pool (n=479 paired, seeds 1–3): econ~ +0.015
+[−0.002, +0.033], econ_late~ +0.025 [−0.001, +0.056], p@250 **+0.045 [+0.007, +0.093]**, win
+**+0.034 [+0.005, +0.065]**, units +0.000, total@100 +0.040; gen (n=744): econ~ −0.000 [−0.016,
++0.018] — exactly flat, no off-pool cost. The letter fails on the pool economy lower bound by
+0.002 (all-phase) / 0.001 (late) and the pearls@100 guard by 0.004; every point estimate is
+positive or flat. Per-map: gains on 8/10 pool maps (trauma +0.186, devil +0.068, QoS +0.041,
+default +0.039), schooltime −0.087 the outlier. Twin check (D-036/G7): devil +0.068 / devil_tr
++0.427, QoS +0.041 / +0.200, default +0.039 / +0.030 agree; trauma +0.186 / trauma_tr −0.129
+disagrees. CPU max 10.25 M (probe). Reading: the lune cap lift on the prior base is a real
+late-economy + win lever that the current gate's bootstrap cannot certify — exactly the boundary
+shape obscur's G1/G2 audit (paired-mean, cluster bootstrap) is about. Not stacked; kyoto-01
+remains the zero. Rows: L01/L25 gain a prior-base data point (late-cap lift does not hurt the
+prior base; direction matches R-1); the boundary itself belongs to the G2 audit.
 
 ## Rows touched (proposal to the director)
 
