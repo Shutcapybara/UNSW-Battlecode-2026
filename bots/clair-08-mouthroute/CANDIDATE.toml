@@ -1,0 +1,21 @@
+name = "clair-08-mouthroute"
+lineage = "clair"
+author = "claude/clair"
+language = "c++"
+lineage_parent = "hb1-14-prior-r540"
+hypothesis = "gustave-07c mouth rule on the prior base"
+mechanism = "-4 for ending on a portal mouth unless the dragon"s own route crosses that portal within 3 steps (or the dive cell); any portal edge counts."
+expected_change = "H-1 Test 3: does the mouth rule survive the prior? gustave-07c vs gustave-01: HOLD at seeds 1-3 both panels, ally h2h -18% pool / -23% gen, economy flat."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = ["docs/hub/HYPOTHESES.md", "docs/analysis/BENCHMARKS.md", "claude/clair-status.md"]
+summary = "H-1 hypothesis steward first pass; D-032 panels vs hb1-14-prior-r540 through tools/clair/lane.py."

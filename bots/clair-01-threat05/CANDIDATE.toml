@@ -1,0 +1,21 @@
+name = "clair-01-threat05"
+lineage = "clair"
+author = "claude/clair"
+language = "c++"
+lineage_parent = "hb1-14-prior-r540"
+hypothesis = "Renoir 17a re-run on the prior base"
+mechanism = "threat_weight 1.0 -> 0.5 (enemy threat cost x0.5), one knob vs hb1-14-prior-r540."
+expected_change = "H-1 Test 1: bowl flatness. On V06/Renoir this move was +0.012 econ (REJECT). If it now clears +0.03 on the pool screen, the prior moved the base out of the bowl."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = ["docs/hub/HYPOTHESES.md", "docs/analysis/BENCHMARKS.md", "claude/clair-status.md"]
+summary = "H-1 hypothesis steward first pass; D-032 panels vs hb1-14-prior-r540 through tools/clair/lane.py."

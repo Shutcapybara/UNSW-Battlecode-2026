@@ -1,0 +1,21 @@
+name = "clair-06-capsel"
+lineage = "clair"
+author = "claude/clair"
+language = "c++"
+lineage_parent = "hb1-14-prior-r540"
+hypothesis = "Maelle F5 (L02 sparsity cap selector) on the prior base"
+mechanism = "SF-1 state.hpp + Tun ported verbatim onto hb1-14; capsel = 1 (lo 48, hi 384): late cap = lo + (hi-lo)*sparsity, replacing round-keyed caps for age>=2."
+expected_change = "H-1 Test 1. On maelle-02: loses at every setting (econ -0.02..-0.03). Zero-capsel parity vs hb1-14: 0 divergent."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = ["docs/hub/HYPOTHESES.md", "docs/analysis/BENCHMARKS.md", "claude/clair-status.md"]
+summary = "H-1 hypothesis steward first pass; D-032 panels vs hb1-14-prior-r540 through tools/clair/lane.py."
