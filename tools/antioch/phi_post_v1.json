@@ -1,0 +1,132 @@
+{
+ "version": "phi-post-v1",
+ "fitted": "2026-10-02, post-change corpus, 2739 games",
+ "form": "Phi = sigmoid(sum_k beta_k * (x_k - 0.5)); x = opponent-relative shares; linear-interpolate beta between checkpoints; Phi(them) = 1 - Phi(us)",
+ "features": {
+  "total_share": "total/(total+opp_total)",
+  "longest_rel": "(L-L_opp)/max(L,L_opp)/2+0.5",
+  "pearls_share": "c_eats/(c_eats+opp_c_eats)",
+  "territory_share": "territory/(territory+opp_territory) (BFS sample)",
+  "deaths_share": "c_deaths/(c_deaths+opp_c_deaths)"
+ },
+ "regimes": {
+  "elimination": [
+   "Autarky",
+   "Default",
+   "Devil",
+   "Prisoners Dilemma",
+   "Queen Of Spades",
+   "Trophy"
+  ],
+  "round_limit": [
+   "Portals",
+   "Schooltime",
+   "Slithery Fight",
+   "Trauma"
+  ]
+ },
+ "beta": {
+  "elimination": {
+   "10": {
+    "total_share": 1.974,
+    "longest_rel": 0.082,
+    "pearls_share": 0.966,
+    "territory_share": 2.26,
+    "deaths_share": -1.925
+   },
+   "25": {
+    "total_share": 2.912,
+    "longest_rel": 0.603,
+    "pearls_share": 3.312,
+    "territory_share": 3.558,
+    "deaths_share": -0.358
+   },
+   "50": {
+    "total_share": 4.424,
+    "longest_rel": 0.709,
+    "pearls_share": 2.947,
+    "territory_share": 3.025,
+    "deaths_share": 0.125
+   },
+   "100": {
+    "total_share": 5.185,
+    "longest_rel": 1.623,
+    "pearls_share": 2.338,
+    "territory_share": 3.118,
+    "deaths_share": -0.327
+   },
+   "150": {
+    "total_share": 4.448,
+    "longest_rel": 1.968,
+    "pearls_share": 1.392,
+    "territory_share": 3.965,
+    "deaths_share": -0.198
+   },
+   "250": {
+    "total_share": 4.153,
+    "longest_rel": 2.234,
+    "pearls_share": 1.224,
+    "territory_share": 2.247,
+    "deaths_share": -0.061
+   },
+   "400": {
+    "total_share": 2.98,
+    "longest_rel": 3.585,
+    "pearls_share": 0.327,
+    "territory_share": 2.69,
+    "deaths_share": -0.327
+   }
+  },
+  "round_limit": {
+   "10": {
+    "total_share": 1.044,
+    "longest_rel": 0.093,
+    "pearls_share": 0.357,
+    "territory_share": 1.32,
+    "deaths_share": -0.054
+   },
+   "25": {
+    "total_share": 2.226,
+    "longest_rel": 0.059,
+    "pearls_share": 0.263,
+    "territory_share": 1.748,
+    "deaths_share": -0.129
+   },
+   "50": {
+    "total_share": 1.913,
+    "longest_rel": 0.432,
+    "pearls_share": 1.193,
+    "territory_share": 2.411,
+    "deaths_share": -0.838
+   },
+   "100": {
+    "total_share": 2.592,
+    "longest_rel": 0.707,
+    "pearls_share": 1.193,
+    "territory_share": 2.09,
+    "deaths_share": -0.847
+   },
+   "150": {
+    "total_share": 3.032,
+    "longest_rel": 0.778,
+    "pearls_share": 1.008,
+    "territory_share": 2.04,
+    "deaths_share": -0.855
+   },
+   "250": {
+    "total_share": 2.455,
+    "longest_rel": 1.89,
+    "pearls_share": 0.896,
+    "territory_share": 1.694,
+    "deaths_share": -0.391
+   },
+   "400": {
+    "total_share": 1.511,
+    "longest_rel": 4.546,
+    "pearls_share": 0.101,
+    "territory_share": 1.288,
+    "deaths_share": -0.582
+   }
+  }
+ }
+}
