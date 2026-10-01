@@ -1,0 +1,35 @@
+name = "kyoto-02-queenguard"
+lineage = "kyoto"
+author = "glm/kyoto (P2-T tester)"
+language = "c++"
+lineage_parent = "kyoto-01-nodevil"
+hypothesis = "H-Q1 (antioch, board 1 Oct): protect the lowest-id dragon from r0 -- the 1.2.3 round-limit tiebreak is queen first, and where exactly one queen survived an RL game it won 36/36. [parent carries D-033 nodevil: W==32 && H==16 terms off (its zip is 17.1 MiB against the 4 MiB limit). The direction prior keeps most of its value with a smaller model: the first 540 boosting rounds of the same GBT (held-out direction accuracy ~0.843 vs 0.850 for all 2,345 rounds on the same rows)."
+mechanism = "One change vs kyoto-01-nodevil: Params::queen_guard -- the queen (own id == team min, A=0/B=1) vetoes dive/h2h path choices (-1000, escape split still reachable), multiplies its threat_cost and blind-risk response by 4, skips routine production splits (carthage: 88 queen deaths within 3 rounds of own split, at len 2-3), and sheds its tail by splitting above length 5 (round/role gates bypassed for it, geometry gates kept; queen stays >= 3). Rescue splits stay. Everything else unchanged. [inherited: nodevil (shape_terms=false); direction model truncated to its first 540 rounds (same trees, same order, same encoding) and the unused hb1-01 model tables are dropped, so the upload zip fits 4 MiB. Prior weight and everything else unchanged."
+expected_change = "queen alive@490 up on non-pocket maps (falsifier: < 0.5 on pool RL maps); econ~ ~flat (queen is 1 of ~15 dragons); win up on RL games; tier-2 not up. Measured under unswbc 1.2.3."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/bifrost-family.md",
+    "docs/skadi.md",
+    "docs/fenrir-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Restores high-effort target/flood/triple search and Fafnir size-matched threat support in C++. V05 and active V04 v83 remain untouched. Benchmark and sandbox CPU/TLE results are recorded in the V06 finding."

@@ -1,0 +1,35 @@
+name = "kyoto-03-latecap"
+lineage = "kyoto"
+author = "glm/kyoto (P2-T tester)"
+language = "c++"
+lineage_parent = "kyoto-01-nodevil"
+hypothesis = "H-1 ranked item 4 / C5 flavour: the late target-search cap lift that paid on V06 (lune-r1-07: econ +0.026, holds off-pool) has never been measured on the prior base -- hb1-14 still carries the un-lifted V06 caps (late 48, sparse 64), unlike verso-05. [parent carries D-033 nodevil: W==32 && H==16 terms off (its zip is 17.1 MiB against the 4 MiB limit). The direction prior keeps most of its value with a smaller model: the first 540 boosting rounds of the same GBT (held-out direction accuracy ~0.843 vs 0.850 for all 2,345 rounds on the same rows)."
+mechanism = "One change vs kyoto-01-nodevil: search_cap_late 48 -> 160 and search_cap_sparse 64 -> 512 (lune-r1-07 effective profile; opening r<40 untouched). Prior unchanged. [inherited: nodevil (shape_terms=false); direction model truncated to its first 540 rounds (same trees, same order, same encoding) and the unused hb1-01 model tables are dropped, so the upload zip fits 4 MiB. Prior weight and everything else unchanged."
+expected_change = "p@150/p@250 up (late-phase mechanism; R-1 measured +0.026 econ on V06), p@50 flat (opening untouched), units/length flat, CPU within budget (probe). Scored also with --phase late."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/tyr-family.md",
+    "docs/bifrost-family.md",
+    "docs/skadi.md",
+    "docs/fenrir-family.md",
+    "docs/TEAM-SUMMARY-2026-09-29.md",
+    "docs/findings/2026-09-29-tyr-v01-live-loss-review.md",
+    "docs/analysis/BENCHMARKS.md",
+    "docs/findings/2026-09-29-ares-v01-safe-launch-routing.md",
+    "docs/findings/2026-09-29-ares-v02-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v03-vs-tyr-v12.md",
+    "docs/findings/2026-09-29-ares-v04-behavior-parity.md",
+    "docs/findings/2026-09-29-ares-v05-separation-bugfix.md",
+    "docs/findings/2026-09-29-ares-v06-expanded-search-support.md",
+]
+summary = "Restores high-effort target/flood/triple search and Fafnir size-matched threat support in C++. V05 and active V04 v83 remain untouched. Benchmark and sandbox CPU/TLE results are recorded in the V06 finding."
