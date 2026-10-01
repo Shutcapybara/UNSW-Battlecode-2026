@@ -7,7 +7,7 @@ Training rows: move turns (F/R/L) from the 654 Q1 training games, capped per gam
 so every number is comparable with hb1-01's 0.829. GPU XGBoost, lr 0.1, early stop 30 on a 10 % validation split,
 up to 3,000 rounds. mem_initial and map-identifying columns excluded. Writes game_stats/runs/hb1-q4-direction-scale.json.
 """
-import argparse, glob, json, sys, time
+import argparse, os, glob, json, sys, time
 from multiprocessing import Pool
 from pathlib import Path
 import numpy as np
@@ -17,8 +17,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import q1_decisions as Q1
 
 ROOT = Path(__file__).resolve().parents[2]
-B = ROOT / 'build' / 'hb1'
-OUT = ROOT / 'game_stats' / 'runs' / 'hb1-q4-direction-scale.json'
+B = ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1')   # lane tt: other teams
+TAG = os.environ.get('HB_TAG', 'hb1')
+OUT = ROOT / 'game_stats' / 'runs' / f'{TAG}-q4-direction-scale.json'
 CAPS = (1200, 3000, 6000)
 LEAVES = (63, 255)
 
