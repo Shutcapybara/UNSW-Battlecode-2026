@@ -26,7 +26,7 @@ ZOO = ['fenrir-v18-arrival-ready-beds', 'yuna-v05-core', 'chaewon-y04-probe', 's
        'hunter-v20-portal-scouts']  # == tools.analysis.features.run_panel.ZOO
 POOL = ['schooltime', 'portals', 'slithery_fight', 'queen_of_spades', 'default', 'trophy', 'dilemma',
         'autarky', 'devil', 'trauma']
-HELD_IN = ['arena', 'big_empty', 'Colosseum', 'default_small', 'stronghold', 'dilemma_10']  # on neither panel
+HELD_IN = ['arena', 'big_empty', 'Colosseum', 'default_small', 'stronghold']  # on neither panel (dilemma_10.map fails the engine's map check)
 
 # (name, kind). kind: log = th0*e^u; gamma = horizon 1/(1-g) moves log; hyst = 1 + (h0-1)e^u; clip1 = min(1, th0 e^u);
 # int = round(th0 e^u) >= 1

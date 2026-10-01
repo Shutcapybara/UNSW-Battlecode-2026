@@ -14,7 +14,13 @@
    - The run `s1` surrogate (119 members) has no significant slope, and a curvature of −0.053 per unit |u|²
      (t ≈ −6.6).
    - σ 0.2 in 24 dimensions, with Adam, drifted the centre out of the floor from generation 4.
-3. **The gate-shaped reward finds a direction.**
+3. **`alicia-04-es-gate-pool` is a REJECT, and it has learned the pool.**
+   - It is the first version in this lane with a positive pool economy lower bound: +0.046 [+0.022, +0.066].
+   - It loses the generalisation panel: economy −0.018 [−0.034, −0.001], win **−0.066 [−0.099, −0.031]**.
+   - It also fails the pool units@100 bound (−0.029, lb −0.062), the length bound (lb −0.031) and the win bound
+     (lb −0.042).
+   - This is the generalisation gap stage 2 starts from.
+4. **The gate-shaped reward finds a direction.**
    - Run `s1c`: the economy percentile is the objective, units/length@100 and death rates are hinge guards, with σ 0.1
      and SGD.
    - The centre beats the parent on the economy objective by **+0.016 ± 0.007 per generation** (15 paired generations,
@@ -135,14 +141,45 @@ ES has to stay inside.
 
 - **What it is.** The `s1c` centre after generation 14, evaluated in generation 15 at ΔR +0.045, baked in.
 - **Parity.** With the learned part off, 0 of 30,558 turns diverge.
-- **D-032.** The panels started 2026-10-01 12:10, and the results are appended here.
+- **D-032 scorecard** against `alicia-01-nodevil`, paired, seeds 1–3, complete:
+
+| Panel | n | Δecon~ [90 % CI] | p@50 | p@100 | p@150 | p@250 | units@100 | length@100 | births@100 | Δwin |
+|---|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Pool | 480 | **+0.046 [+0.022, +0.066]** | +0.024 | +0.068 | +0.056 | +0.037 | −0.029 [−0.062, +0.002] | −0.007 [−0.031, +0.032] | +0.060 | −0.002 [−0.042, +0.037] |
+| Generalisation | 744 | −0.018 [−0.034, −0.001] | +0.000 | −0.003 | −0.037 | −0.032 | +0.000 [−0.034, +0.042] | +0.007 [−0.021, +0.038] | −0.002 | **−0.066 [−0.099, −0.031]** |
+
+- **Pool tier 2.** All rates are within ±4 %: wall +4 %, self −3 %, ally body −4 %, ally head-on −1 %, newborn deaths
+  equal.
+- **Pool pairs.** p@100 better/worse 262/204 (p = 0.008).
+- **Pool map economy.**
+  - Gains: Schooltime +0.24, Portals +0.16, Autarky +0.09, Slithery +0.04.
+  - Losses: Devil −0.24; the rest are within ±0.03.
+- **Generalisation.** Win better/worse 105/153 (p = 0.003).
+  - Economy losses concentrate on seam_market −0.54, pulse_farms −0.29, pinwheel −0.21, trauma_tr −0.21 and
+    crossroads(_tr) −0.12/−0.18.
+  - The transposed pool maps mostly gain (devil_tr +0.51, trophy_tr +0.28, queen_tr +0.15).
+- **Verdict: REJECT.**
+  - It fails units@100 (lb −0.062), length@100 (lb −0.031), pool win (lb −0.042) and generalisation economy
+    (lb −0.034).
+  - Under the lane's own rule (pool up, generalisation down) it is also rejected as a pool fit.
+- **Generalisation gap of stage 1 (stage 2's first number).** Pool vs generalisation is +0.046 vs −0.018 on economy
+  and 0.00 vs −0.066 on win. A 20-fixture-a-generation pool optimiser found real pool slopes (t 3–4) that do not
+  carry to unseen maps.
+- **CPU.** Not probed (rejected). Its caps are lower than the parent's (`search_cap` 143, `search_cap_late` 355).
 
 ## Ledger rows touched (proposed weights)
 
-- **L16** (offline-learned weight table), 0.5 → **0.5**, unchanged pending 04. The curve reward found no direction;
-  the gate-shaped reward finds a measurable one (t ≈ 2.3 on the centre; slopes at t 3–4). If 04 passes the gate,
-  → 0.6. If it fails on the pool economy, → 0.4.
-- **L04** (fitted weights beat hand weights), 0.6 → **0.6**. Same trigger as L16.
+- **L16** (offline-learned weight table), 0.5 → **0.5**, unchanged.
+  - For: the gate-shaped reward finds pool slopes, and 04 is the first lower bound > 0 on pool economy in this lane.
+  - Against: 04 is a pool fit (generalisation win −0.066).
+  - The pre-stated trigger (pool-economy failure → 0.4) did not fire, and the off-pool failure is what stage 2
+    tests.
+- **L04** (fitted weights beat hand weights), 0.6 → **0.6**. Same reading: fitted weights beat hand weights on the
+  maps they were fitted to and lose off them.
+- **L28** (V06's pool edge is partly map identity), 0.9. A global weight vector with no map input reproduces the same
+  pool-vs-generalisation split (pool econ +0.046, generalisation win −0.066). Ten maps are enough for a 24-dimensional
+  optimiser to learn their geometry, so the OOS rule binds on training data, not only on map-keyed code. No weight
+  change; noted as evidence.
 - **L29** (the metric rewards churn), 0.8 → **0.9**. This is an independent second mechanism: a less-churning policy
   loses 0.10 economy at equal material and win rate. Recommend that the corpse-share diagnostic become a scorecard
   column.
