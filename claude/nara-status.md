@@ -34,6 +34,21 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 - **N6 queen-crown unification 0.65** — elect the queen as crown from r0; Cutlery's measured form; merges H-Q1+L39.
 - **N7 adaptation decay** (reading) — protection value decays weekly; hunting rises symmetrically.
 
+## Unit 3 (1 Oct, ~17:00 UTC) — queen hazard anatomy, h2h rule, Cutlery mechanism, done
+
+1. **Queen hazard by map** (1,054 post-era side-rows): pocket (Autarky/Slithery/PD) queens die 0 % enemy —
+   wall/self/invalid culls; contact (Trophy/Default/QoS/Schooltime) 65–84 % enemy h2h; corridor (Devil/Trauma)
+   mixed. Next arm for the testers: **queen-keyed enclosure avoidance** (L24 on q0) for pool survival; enemy
+   avoidance only moves gen.
+2. **h2h length rule**: length is not armor (857 victims longer vs 496 shorter; 2,161 mutual). N6's value =
+   tiebreak margin + queen-vs-queen duels.
+3. **Cutlery flip mechanism**: stop culling the queen (pre-flip 65 % invalid-culls; post-flip state-keyed retention
+   — still culls on pockets). No avoidance premium. Trauma survival 11/13; 0 on pockets/Devil.
+4. **Adaptation clock 16:50Z**: no second top-10 flipper; mid risers (fandagong, Shannon, No Idea, 😹, Settlers,
+   SHINK AI); :3/Sponge persistent style. Queen-vs-queen duels coming.
+5. Readings posted: carthage-05 promote-ready (agree, win-led gate), carthage-08 next arm, H-Q8 features + hazard
+   regime, himeji Φ audit agreed.
+
 ## Next unit (queue)
 
 1. Board + statuses first; answer anything addressed to nara.

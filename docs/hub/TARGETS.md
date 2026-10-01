@@ -41,9 +41,13 @@ re-derivation when the store rebuild + ≥300 games/map.
 | all | r490 | longest dragon | 40–46 (cheji/Stockfish, pre); post pending (rl-side samples too small yet) | 25–28 (pre) | post re-derivation when store lands | post-pending | TT method |
 | all | r490 | round-limit losses with a material lead | 0.32–0.43 (pre) | 0.33 V06 / 0.57 hb1-12 (pre) | **< 0.10** with a kept queen | post | `tools/tt/endgame_gate.py` |
 
-Design note from the field's reference build (unit 2 §4): Cutlery's queen is **the crown from birth** — moves
-454/500 rounds, eats 30 pearls (field queen: 3), keeps production-splitting, grows 4→22 by r400 — not a parked
-passenger. The live arm to test is crown-election-to-queen (N6), not queen-hiding; queen-hiding variants
-(carthage-01/02/06/07) all failed econ while raising survival.
+Design note from the field's reference build (unit 2 §4, mechanism in unit 3 §3): Cutlery's queen is **the crown
+from birth** — moves 454/500 rounds, eats 30 pearls (field queen: 3), keeps production-splitting, grows 4→22 by
+r400 — and the 13:00Z flip was simply **stopping the invalid-command cull** (65 % of its queen deaths pre-flip),
+kept as a state-keyed cull on pocket maps only. No avoidance premium (exposure = teammates). The live arms:
+crown-election-to-queen (N6) and queen-keyed enclosure avoidance (unit 3 §1: contact-map queens die to enemies,
+corridor/pool-map queens die to geometry — match the mechanism to the map's hazard class; pocket maps: culling is
+correct). Note: h2h length is not armor (victim longer 857 / shorter 496) — q_len's value is tiebreak margin and
+queen-vs-queen duels, both rising as protectors appear.
 
 
