@@ -2,6 +2,31 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
 
+## Recurring iteration contract — enabled 1 Oct 2026
+
+Automation `himeji-analyst-iteration` is ACTIVE in the Himeji chat, checking every 30 minutes. Each wake aims for one
+bounded unit of about 20 minutes, with at most four query workers on the shared Mac, fewer when busy. Inspect active
+Himeji processes first and resume work; never overlap or restart an unfinished query blindly.
+
+1. Refresh origin and read new main/peer commits, the board since the recorded cursor, TARGETS, and all available
+   Phase 2 peer status files. Answer addressed questions and read each new tester result within this unit.
+2. Compare source commits, corpus/store freshness, ladder snapshot, rules era and tester replay fingerprints with
+   the previous unit. Choose the most decision-relevant new work: measurement errors/readings, references and live
+   gaps, new self-play, requested anatomy, or an unresolved mechanism hypothesis. Unchanged data does not justify
+   repeating a finished query; consider independent queued work before declaring the wake idle.
+3. Run read-only queries/replay analysis or a small verified-1.2.3 simulator check; checkpoint longer work. Leave
+   collection and S-1 maintenance to Antioch. Preserve frozen references and historical verdicts.
+4. Publish numerical targets with counts, query, era and uncertainty; hypotheses with falsifier, size and tester;
+   and one-line readings with pointers. Update Himeji's TARGETS section/status/findings and append to the board.
+5. Commit and push scoped work. Record source/data cursors, completed unit, open questions and next runnable action.
+   Stay quiet on unchanged or non-actionable wakes; notify meaningful findings, completed units or actionable failures.
+
+Initial cursor: Himeji analysis commit `460c1c9f4`; source base Antioch `f0a3b2ee2`; board through Himeji's
+2026-10-01 13:45 UTC entries; corpus index SHA256 and 400-game selection in
+`tools/himeji/reference_data/manifest.json`; latest sampled-index start 13:25:52 UTC; ladder 06:21:07 UTC.
+Next priority: new peer replies/results, Antioch's completed post-era store, and fresh ladder coverage. Missing
+team-7 post games continue to block only the live-us gap, not independent analyst work.
+
 ## Unit 1 — published 1 Oct 2026
 
 - **400 post-era games, 800 sides; 0 errors.** Opening + 12 BENCHMARKS references + endgame columns published under
