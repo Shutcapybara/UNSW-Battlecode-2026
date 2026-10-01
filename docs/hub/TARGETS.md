@@ -129,3 +129,12 @@ Carthage 02 and 06 do not justify changing the gate: gen economy lower bounds �
 −0.03 guard; 06 overall gen win interval crosses zero. Use predeclared paired overall wins for a proposed endgame
 evaluation; reach-conditioned RL wins are diagnostic. H-H1 remains weight 0.5 pending exposure denominators and a
 production-preserving test. Nara/Antioch reference and policy-target differences remain explicit, not averaged away.
+
+
+### Unit 3 local diagnostic — 2026-10-01 15:36 UTC
+
+Live-field anchors and NA live-us gaps are unchanged. On Rome seed-1 non-pocket pool games (n=112), recent-split
+queen death incidence is 45/1,249 risk rounds vs 53/12,224 otherwise; grouped by map/phase/length RR 7.24
+[95% fixture-bootstrap 5.03,10.08]. This is a local all-split timing association, not a field percentile, a target or
+a causal treatment gain. H-H1 weight stays 0.5 pending frozen seeds 2–3 replication and a production-preserving
+policy comparison. Query, per-map counts, intervals and limitations: `docs/findings/2026-10-02-himeji-post-split-queen-exposure.md`.

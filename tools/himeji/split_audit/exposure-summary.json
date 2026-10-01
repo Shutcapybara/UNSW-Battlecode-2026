@@ -1,0 +1,143 @@
+{
+  "n_games": 160,
+  "nonpocket_games": 112,
+  "fixture_blocks": 56,
+  "pocket_games": 48,
+  "seed": 1,
+  "cache_sources": {
+    "existing-cache": 160
+  },
+  "all_queen_deaths": 147,
+  "nonpocket_queen_deaths": 99,
+  "total": {
+    "other_risk": 12224,
+    "other_deaths": 53,
+    "after1-3_risk": 1249,
+    "after1-3_deaths": 45,
+    "split-round_risk": 470,
+    "split-round_deaths": 1
+  },
+  "per_map": {
+    "Default": {
+      "other_risk": 2340,
+      "other_deaths": 10,
+      "after1-3_risk": 187,
+      "after1-3_deaths": 2,
+      "split-round_risk": 65,
+      "split-round_deaths": 1
+    },
+    "Devil": {
+      "after1-3_risk": 122,
+      "after1-3_deaths": 7,
+      "other_risk": 975,
+      "other_deaths": 5,
+      "split-round_risk": 45,
+      "split-round_deaths": 0
+    },
+    "Portals": {
+      "after1-3_risk": 254,
+      "after1-3_deaths": 10,
+      "other_risk": 1221,
+      "other_deaths": 6,
+      "split-round_risk": 102,
+      "split-round_deaths": 0
+    },
+    "Queen Of Spades": {
+      "other_risk": 2468,
+      "other_deaths": 6,
+      "after1-3_risk": 132,
+      "after1-3_deaths": 6,
+      "split-round_risk": 51,
+      "split-round_deaths": 0
+    },
+    "Schooltime": {
+      "after1-3_risk": 247,
+      "after1-3_deaths": 5,
+      "other_risk": 1493,
+      "other_deaths": 11,
+      "split-round_risk": 90,
+      "split-round_deaths": 0
+    },
+    "Trauma": {
+      "after1-3_risk": 204,
+      "after1-3_deaths": 13,
+      "other_risk": 2569,
+      "other_deaths": 2,
+      "split-round_risk": 82,
+      "split-round_deaths": 0
+    },
+    "Trophy": {
+      "after1-3_risk": 103,
+      "after1-3_deaths": 2,
+      "other_risk": 1158,
+      "other_deaths": 13,
+      "split-round_risk": 35,
+      "split-round_deaths": 0
+    }
+  },
+  "crude_rr": 8.309742133329305,
+  "crude_ci95": [
+    5.804232629060361,
+    12.231478998988965
+  ],
+  "adjusted": [
+    {
+      "strata": [
+        "map",
+        "phase"
+      ],
+      "rate_ratio": 6.955558652921443,
+      "ci95": [
+        4.872958400324555,
+        9.433697200732686
+      ],
+      "bootstrap_valid": 1000,
+      "common_strata": 20,
+      "all_strata": 21,
+      "common_after_risk": 1249,
+      "all_after_risk": 1249,
+      "common_other_risk": 12179,
+      "all_other_risk": 12224
+    },
+    {
+      "strata": [
+        "map",
+        "phase",
+        "length"
+      ],
+      "rate_ratio": 7.239489565777936,
+      "ci95": [
+        5.0289490278012,
+        10.084446010174775
+      ],
+      "bootstrap_valid": 1000,
+      "common_strata": 24,
+      "all_strata": 32,
+      "common_after_risk": 1249,
+      "all_after_risk": 1249,
+      "common_other_risk": 11832,
+      "all_other_risk": 12224
+    },
+    {
+      "strata": [
+        "map",
+        "phase",
+        "length",
+        "ally2",
+        "enemy3"
+      ],
+      "rate_ratio": 7.0903340824670575,
+      "ci95": [
+        4.4570498129589184,
+        10.656087833858663
+      ],
+      "bootstrap_valid": 1000,
+      "common_strata": 72,
+      "all_strata": 106,
+      "common_after_risk": 1245,
+      "all_after_risk": 1249,
+      "common_other_risk": 11536,
+      "all_other_risk": 12224
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "other": {
+    "h2h:enemy": 33,
+    "h2h:ally": 4,
+    "self:unknown": 4,
+    "body:ally": 4,
+    "wall:unknown": 8
+  },
+  "after1-3": {
+    "wall:unknown": 19,
+    "h2h:enemy": 5,
+    "body:ally": 10,
+    "self:unknown": 5,
+    "h2h:ally": 6
+  },
+  "split-round": {
+    "h2h:ally": 1
+  }
+}

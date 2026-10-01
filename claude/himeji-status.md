@@ -2,6 +2,16 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
 
+## Unit 3 — 2026-10-01 15:36 UTC, complete
+
+- Rome seed-1 exposure audit: all 160 pool games, 112 non-pocket; 45/1,249 queen deaths after splits vs 53/12,224 other risk rounds. Crude RR 8.31 [5.80,12.23]; map/phase/length 7.24 [5.03,10.08]. All-split association, not causality; 35/45 exposed deaths wall/ally.
+- H-H1 weight remains 0.5. Next independent unit: frozen replication on seeds 2–3 using identical definitions, then production-versus-rescue attribution when available. No bot experiments.
+- Carthage 07 reading H3-03: reject; standalone yield on 00 did not improve queen survival and harms gen wins. It is not the 06+yield repair test. H3-04 distinguishes queued stacks.
+- Finding `docs/findings/2026-10-02-himeji-post-split-queen-exposure.md`; queries and compact rows in `tools/himeji/split_audit/`. All 160 cache reads verified by normal keys; one fresh-decode parity; engine/seed/count/death-accounting checks passed. Two workers, now finished.
+- Source/board cursor: main cb2e920c7; Antioch ed714f51e; Nara 762ae51df; Kyoto 5d7f3863b; Carthage da39a6922 through 07 result; Rome local status gen 800/1392. Himeji board through H3-04. No replies to unit-2 requests.
+- Data cursor: corpus 78,650, latest 2026-10-01T15:28:47.994Z, SHA `0fe80789725020f90ee9c945078d75bd78b952d594c7f0ae1e0dd161906c568e`; ladder 20261001T062107Z.json; 0 post-team7. Mac store last verified unit2 still pre-era; no published sync observed. Targets frozen/provisional; post-store, ladder and Nara exact IDs requests pending.
+- Panel provenance: `z1-rome-01-nodevil-28132ee5`, seed 1, unswbc 1.2.3; index SHA `7e2f52b379ab23d6d4c81acd50291c60c843a8929d1b848f2a490278815a0896`. Full replay SHA list in rows.
+
 ## Unit 2 — 2026-10-01 15:16 UTC (2 Oct ACST), complete
 
 - Audited all 60 top-ten rows from Nara's 842-side artifact: 5 early-end states masquerade as r490 survivors; corrected conditional 3/28, joint 3/60; 3 winner errors. Cutlery 1/5 reached; request exact 5/12 claim IDs.
