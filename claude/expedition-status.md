@@ -78,8 +78,19 @@ remain incomplete; this is complete screen coverage only. Aggregate wins are
 49/50 in discovery and **49/49 in confirmation**. Confirmation Quartet is 3/4,
 which offsets Portals' 14/13; QoS is 16/16 and Devil 16/16. Devil has exact arena
 stat/outcome/round/termination parity on all 32 fixtures. The closing screen
-report is regenerating phase caches under the isolated source hash before
-issuing its decision; no rule has changed.
+report now passes every predeclared check: **ELIGIBLE FOR BROADER TESTING; NOT
+ACCEPTED**. QoS confirmation tempo remains unchanged and Quartet confirmation
+tempo is −1.478748 rounds faster, so both opening guards pass. Across 112 games
+there are only five improvements and four regressions versus 01; confirmation
+wins are tied. This establishes a limited repair with no demonstrated reliable
+strength gain. No automatic mouth successor or broad expansion is scheduled.
+
+The richer phase diagnostics stay mixed: mean final total-margin delta is
+−2.821 / +3.661 across seeds 1/2; longest-margin delta −1.143 / +.179;
+r150–250 credited-kill delta +.964 / −.339. Kills are an observed pressure proxy,
+not a claim of deliberate aggression. The final structured decision and full
+map/opponent/seat splits are in `mouth-contest-v1-result.json`; the broader full
+D-032 panels and sandbox checks remain unfinished. No rule was changed.
 
 The source-isolated canonical hash returns to the original `0a8122e…`; the first
 702 common old/new canonical cache records compare exactly equal. Keep both
@@ -132,6 +143,15 @@ checks; its output is only eligibility for broader testing or a negative screen.
 parent/candidate pairing, panel isolation and prevention of an original-gate
 verdict on selected coverage. A planning-only challenge run starts no games.
 
+**First frontier audit:** `frontier-first-slices.json` validates 17 matched
+pairs from 35 records (33 arena/replay discrepancies), still only a partial
+first seed. Completed first-seed slices have parent/05 wins: Autarky **0/0 of
+4 each**, Default **2/3**, Devil **2/2**, Dilemma **2/1**. Autarky's parent was
+16/16 against the old roster; the new 0/4 does not estimate contest strength,
+but it directly demonstrates that the old unbeaten map score did not transfer
+to these controls. The Default gain cancels the Dilemma loss on this prefix.
+Keep all ten maps and both seeds; do not select or tune against the prefix.
+
 ### Parallel-work check and reconciliation
 
 Refreshed origin refs without merging. TT `1673a7ce3`, HB `bfd67c37b`, Obscur
@@ -158,8 +178,7 @@ Ranked next work (priority, not a new posterior-weight claim):
 No new numeric ledger proposal this pass. The L20 reopening and downward L40
 review remain proposals; original failed gates remain failed. Full mean/median,
 map/phase, canonical-versus-arena and sandbox questions remain visible. Next:
-finish 10's closing phase/screen report, then inspect and validate batch
-018-frontier. Resume `campaign.py --screen explore-frontier-v1 --execute --minutes
+inspect and validate batch 018-frontier after it finishes. Resume `campaign.py --screen explore-frontier-v1 --execute --minutes
 20 --max-games 96` only after its lock is free, until the 80 fixed pairs finish. Publish only scoped changes through the attached publication worktree.
 
 ## Pass 14 — bounded behavior test and wider research reset (2026-10-01)
