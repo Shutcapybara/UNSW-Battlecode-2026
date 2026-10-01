@@ -80,6 +80,19 @@ class GitKeeperTest(unittest.TestCase):
         self.assertNotIn('bots/x-s01', status)
         self.assertIn('.battlecode-api-key', status)
 
+    def test_stale_index_lock(self):
+        lock = self.repo / '.git' / 'index.lock'
+        lock.write_text('')
+        report = gitkeeper.sync(self.repo, self.root, self.policy, dry_run=True)
+        self.assertTrue(any('index.lock present' in a for a in report['attention']))
+        self.assertTrue(lock.exists())  # fresh lock: a git command may hold it
+        t = time.time() - gitkeeper.STALE_LOCK_SECONDS - 60
+        os.utime(lock, (t, t))
+        report = gitkeeper.sync(self.repo, self.root, self.policy, dry_run=True)
+        self.assertTrue(any('stale .git/index.lock removed' in a for a in report['attention']))
+        self.assertFalse(lock.exists())
+        self.assertFalse(any('index.lock present' in a for a in report['attention']))
+
     def test_merge_and_conflict(self):
         other = self.tmp / 'other'
         run('git', 'clone', '-q', str(self.origin), str(other), cwd=self.tmp)

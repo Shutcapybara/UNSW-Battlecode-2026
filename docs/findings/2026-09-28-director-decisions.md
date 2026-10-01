@@ -639,3 +639,33 @@ deliberate endgame conversion (L39) and their rules do not port — the trigger 
 keyed on state (opponent units at r300), which is the phase switch of L31/L32 at game scale; (4) Maelle and Alicia
 are closed as weight-tuning efforts; their platforms (state module, feature dump, ES loop) are inherited by Verso.
 
+**D-040 — the rules changed with `unswbc 1.2.3`; phase 2 opens with six instances (1 Oct 22:30 UTC).** The toolkit on
+PyPI moved to 1.2.3 (protocol 3 unchanged; engine wasm, helper comments and the verdict logic changed). Verified by
+diff and by running it: (1) sprint cost — a dragon of length L takes its first ⌈L/4⌉ steps free and pays one segment
+per step after, keeping at least 2 (was x−1 per x steps); (2) round-limit tiebreak — queen length (the team's
+lowest-id robot) first, then longest dragon, then total length (was longest, total). The docs site still shows the old
+text. Consequences: all pre-1-Oct numbers are pre-rules; the corpus and the BENCHMARKS references must be split by era
+once the live server's switch time is observed; sprint caps and the cramped-split/conversion findings need
+re-measurement; the endgame is a queen race, which changes L39's trigger to a queen trigger. Phase 2 (`docs/hub/PHASE2-PROTOCOL.md`):
+three analysts (hypotheses, targets, readings; the Claude analyst is the sole replay puller) and three testers
+(gate-tested experiments), one per model, sharing the repository through per-lineage status files, `docs/hub/BOARD.md`
+(append-only traffic), `docs/hub/TARGETS.md` (analysts' targets) and the ledger; prompts `P2-analyst` and `P2-tester`.
+The desktop venv and the Mac hub venv move to 1.2.3 (lead and director respectively); the harness pin follows.
+
+
+## D-041 — Manual submit control; hb1-14 uploaded and activated for the new server round (1 Oct)
+
+The lead reported a new server round with nothing of ours live and asked for the best bot to go up. The executor
+stays in shadow (D-031); instead a director-only control `hub-state/control/submit.json` `{candidate, activate, by,
+note}` was added to the actuator (`submit_check`): it verifies the frozen archive against the registered
+`source_files`, uploads it as `LV-<name>-<fp8>-ai`, records the submission id on the candidate row and, on
+`activate`, activates it and takes hub control as `director`. Two server-side facts learned: the server rejects
+`language = "c++"` ("Pick a language.") — the CLI normalises bot.toml's spelling to `python|cpp|c` before posting,
+and the actuator and executor now do the same; and activation of a fresh upload returns 409 until the build is
+ready (~2 min), so activate is retried. Choice: `hb1-14-prior-r540` (the Heartbreaker direction prior inside
+Ares's search, 141–19 on z1, 3.74 MiB; hb1-12 at 139–21 is 17 MiB and cannot be uploaded; verso-05 is the same
+mechanism with a smaller prior). Uploaded as submission **14265** `LV-hb1-14-prior-r540-ed7e4515-ai`, activated
+17:00 UTC; hub `control = 14265`, owner director. Caveat: its 141–19 was measured under pre-change rules
+(unswbc 1.2.2); nothing has been measured for it under 1.2.3 yet — the live games it now plays are the first
+post-change evidence and the P2 analysts should read them as such. Teammates may activate over it at will;
+the executor will not restore it.

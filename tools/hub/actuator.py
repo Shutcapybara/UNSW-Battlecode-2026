@@ -376,6 +376,30 @@ def git_check(root, cfg, state, log):
         policy['quiet_minutes'] = int(body['quiet_minutes'])
     merged_branches = []
     try:
+        if body.get('checkout_main'):
+            # a session left the main checkout on another branch; return it to main (D-040). Local-only commits on that
+            # branch that are the keeper's own merge commits are dropped (reset to its origin); local edits are stashed over.
+            repo = cfg['paths']['repo']
+            g = lambda *a, t=120: subprocess.run(['git', '-C', repo, *a], capture_output=True, text=True, check=False, timeout=t)
+            cur = g('branch', '--show-current').stdout.strip()
+            notes = []
+            if cur and cur != policy['branch']:
+                extra = g('log', '--format=%s', f'origin/{cur}..{cur}').stdout.strip().splitlines() if g('rev-parse', '--verify', '-q', f'origin/{cur}').returncode == 0 else []
+                if extra and all(m.startswith('Merge ') and m.endswith('(director request)') for m in extra):
+                    g('reset', '--hard', '--quiet', f'origin/{cur}'); notes.append(f'dropped {len(extra)} keeper merge commits from {cur}')
+                elif extra:
+                    notes.append(f'{cur} has {len(extra)} local commits of its own; left alone')
+                dirty = g('status', '--porcelain', '--untracked-files=no').stdout.strip()
+                if dirty:
+                    st = g('stash', 'push', '--quiet', '-m', 'keeper checkout_main'); notes.append('stashed local edits' if st.returncode == 0 else 'stash failed')
+                co = g('checkout', '--quiet', policy['branch'])
+                notes.append(f'{cur} -> {policy["branch"]}' if co.returncode == 0 else 'checkout failed: ' + (co.stderr or co.stdout)[-200:])
+                if dirty and co.returncode == 0:
+                    sp = g('stash', 'pop', '--quiet'); notes.append('edits restored' if sp.returncode == 0 else 'stash pop failed: ' + (sp.stderr or sp.stdout)[-200:])
+            else:
+                notes.append(f'already on {policy["branch"]}')
+            body['_checkout_main'] = '; '.join(notes)
+        on_branch = subprocess.run(['git', '-C', cfg['paths']['repo'], 'branch', '--show-current'], capture_output=True, text=True, check=False, timeout=60).stdout.strip() == policy['branch']
         if body.get('fetch_all'):
             # bring every remote branch in (lanes push from other hosts); reported, never fatal
             fa = subprocess.run(['git', '-C', cfg['paths']['repo'], 'fetch', '--quiet', '--prune', 'origin'], capture_output=True, text=True, check=False, timeout=600)
@@ -383,6 +407,9 @@ def git_check(root, cfg, state, log):
         # optional: merge local work branches (the C1 worktree branches, e.g. cx/f) into main before the ordinary pass.
         # A conflict aborts that merge and is reported; nothing else is touched.
         for branch in body.get('merge') or []:
+            if not on_branch:
+                merged_branches.append(dict(branch=branch, error=f"checkout is not on {policy['branch']}; merge refused"))
+                continue
             if not re.match(r'^[A-Za-z0-9._/-]{1,80}$', str(branch)):
                 merged_branches.append(dict(branch=branch, error='bad branch name'))
                 continue
@@ -411,13 +438,85 @@ def git_check(root, cfg, state, log):
             res = subprocess.run(['git', '-C', repo, 'push', '-u', 'origin', f'{branch}:{branch}'], capture_output=True, text=True, check=False, timeout=300)
             pushed_branches.append(dict(branch=branch, pushed=True) if res.returncode == 0 else dict(branch=branch, error=(res.stderr or res.stdout)[-300:]))
         report = git_sync(cfg['paths']['repo'], root, policy, actor=body.get('by') or 'hub/actuator/git-request')
-        out = dict(at=db.now_iso(), note=body.get('note'), quiet_minutes=policy['quiet_minutes'], merged_branches=merged_branches, pushed_branches=pushed_branches, fetch_all=body.get('_fetch_all'), report=report)
+        out = dict(at=db.now_iso(), note=body.get('note'), quiet_minutes=policy['quiet_minutes'], merged_branches=merged_branches, pushed_branches=pushed_branches, fetch_all=body.get('_fetch_all'), checkout_main=body.get('_checkout_main'), report=report)
     except Exception as exc:
         out = dict(at=db.now_iso(), note=body.get('note'), error=f'{type(exc).__name__}: {str(exc)[:300]}')
     (ctl / 'git.done.json').write_text(json.dumps(out, indent=1, default=str))
     req.unlink(missing_ok=True)
     rep = out.get('report') or {}
     log(f"git request: committed {len(rep.get('committed', []))} skipped {len(rep.get('skipped', []))} merged {rep.get('merged')} pushed {rep.get('pushed')} errors {rep.get('errors')} attention {rep.get('attention')} {out.get('error') or ''}")
+    return out
+
+
+def submit_check(root, cfg, state, client, log):
+    """Director-requested manual upload (+ optional activation) of a registered candidate
+    (`<mirror>/control/submit.json`: {"candidate": name, "activate": true, "by": …, "note": …}).
+
+    Bypasses the executor's probe/screen path (D-041: a new server round left nothing live). The upload carries the
+    programme's `LV-<name>-<fp8>-ai` naming; activation sets the hub's control record so the executor's
+    stale-control rules see the change as ours."""
+    ctl = Path(cfg['paths']['mirror']) / 'control'
+    req = ctl / 'submit.json'
+    if not req.exists():
+        return None
+    try:
+        body = json.loads(req.read_text())
+    except ValueError:
+        body = {}
+    out = dict(at=db.now_iso(), note=body.get('note'), candidate=body.get('candidate'))
+    try:
+        if client is None:
+            raise RuntimeError('no API client (executor mode off)')
+        conn = db.connect(root)
+        row = conn.execute('SELECT * FROM candidates WHERE name=?', (body.get('candidate'),)).fetchone()
+        if not row:
+            raise ValueError(f"unknown candidate {body.get('candidate')!r}; register it first")
+        cand = db.loads_row(row, 'source_files', 'activation_contract', 'local_evidence')
+        import zipfile, hashlib as _h
+        archive = Path(cand['archive_path'])
+        with zipfile.ZipFile(archive) as z:
+            packed = {n: _h.sha256(z.read(n)).hexdigest() for n in z.namelist()}
+        if packed != (cand['source_files'] or {}):
+            raise ValueError('archive does not match the frozen files')
+        name = f"LV-{cand['name']}-{cand['fingerprint'][:8]}-ai"
+        subs = client.get('/api/v1/submissions')
+        prior = [x for x in subs if x.get('name') == name]
+        if prior:
+            sid = prior[0]['id']; out['upload'] = 'already present'
+        else:
+            boundary = 'hub' + uuid.uuid4().hex
+            lang = {'python': 'python', 'py': 'python', 'cpp': 'cpp', 'c++': 'cpp', 'cxx': 'cpp', 'c': 'c'}.get(str(cand['language']).lower(), 'cpp')   # the CLI normalises bot.toml's spelling to python|cpp|c before POSTing (unswbc submit.py); the server rejects 'c++' (1 Oct)
+            src = Path(cand['source_ref'][4:]) if str(cand.get('source_ref', '')).startswith('dir:') else None
+            if src and (src / 'bot.toml').is_file():
+                m = re.search(r'^\s*language\s*=\s*"([^"]+)"', (src / 'bot.toml').read_text(), re.M)
+                if m:
+                    lang = {'py': 'python', 'python': 'python', 'cpp': 'cpp', 'c++': 'cpp', 'cxx': 'cpp', 'c': 'c'}.get(m.group(1).lower(), lang)
+            parts = []
+            for key, value in {'name': name, 'language': lang, 'description': 'Director upload; frozen candidate ' + cand['fingerprint']}.items():
+                parts.append(f'--{boundary}\r\nContent-Disposition: form-data; name="{key}"\r\n\r\n{value}\r\n'.encode())
+            parts.append(f'--{boundary}\r\nContent-Disposition: form-data; name="zip"; filename="bot.zip"\r\nContent-Type: application/zip\r\n\r\n'.encode() + archive.read_bytes() + b'\r\n')
+            parts.append(f'--{boundary}--\r\n'.encode())
+            res = client.post('/api/v1/submissions', b''.join(parts), 'multipart/form-data; boundary=' + boundary)
+            sid = (res or {}).get('id') if isinstance(res, dict) else None
+            if sid is None:
+                subs = client.get('/api/v1/submissions')
+                prior = [x for x in subs if x.get('name') == name]
+                sid = prior[0]['id'] if prior else None
+            out['upload'] = 'uploaded'
+            db.event(conn, root, body.get('by') or 'director', 'uploaded', dict(candidate=cand['name'], name=name, submission=sid, manual=True))
+        out['submission'] = sid; out['name'] = name
+        conn.execute("UPDATE candidates SET submission_id=?, upload_name=?, status='uploaded', updated_at=? WHERE name=?", (sid, name, db.now_iso(), cand['name']))
+        if body.get('activate') and sid is not None:
+            client.post(f'/api/v1/submissions/{sid}/activate', {})
+            hub_executor.set_control(conn, root, body.get('by') or 'director', sid, 'director', body.get('note') or 'manual activation (submit control)')
+            out['activated'] = True
+        conn.close()
+    except Exception as exc:
+        out['error'] = f'{type(exc).__name__}: {str(exc)[:300]}'
+    (ctl / 'submit.done.json').write_text(json.dumps(out, indent=1, default=str))
+    req.unlink(missing_ok=True)
+    notify(root, cfg, 'submit', f"{out.get('candidate')}: {out.get('upload')} {out.get('submission')} {'activated' if out.get('activated') else ''} {out.get('error') or ''}")
+    log(f"submit request: {out}")
     return out
 
 
@@ -599,6 +698,10 @@ def serve(root, cfg, log):
                 break
         except Exception:
             log('redeploy error\n' + traceback.format_exc())
+        try:
+            submit_check(root, cfg, state, client, log)
+        except Exception:
+            log('submit request error\n' + traceback.format_exc())
         try:
             mode_check(root, cfg, state, log)
             if state.get('restart'):

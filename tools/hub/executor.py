@@ -870,7 +870,7 @@ def dispatch_quota_fill(conn, root, cfg, snap, client, actor, q, summary):
     for pool in ('dev', 'field'):
         already = sum(int(item.get('games', item.get('maps', 0)) or 0)
                       for item in summary.get('dispatched', []) if item.get('pool') == pool)
-        remaining = quota_filler.hourly_remaining(cfg, q, pool, already, now=snap.now)
+        remaining = quota_filler.hourly_remaining(cfg, q, pool, already)
         # Keep the filler paced: one small slice per pool per executor cycle,
         # rather than draining the whole currently available rolling quota in
         # a single burst. The normal executor work remains accounted for in
@@ -1205,13 +1205,13 @@ def upload(conn, root, cfg, snap, client, actor, cand, summary):
         return
     boundary = 'hub' + uuid.uuid4().hex
     parts = []
-    lang = {'python': 'python', 'cpp': 'c++', 'c': 'c'}[cand['language']]   # the server takes the CLI's spelling: `unswbc init cpp` writes language = "c++" and submits it verbatim
+    lang = {'python': 'python', 'py': 'python', 'cpp': 'cpp', 'c++': 'cpp', 'cxx': 'cpp', 'c': 'c'}.get(str(cand['language']).lower(), 'cpp')   # the CLI normalises bot.toml's spelling to python|cpp|c before POSTing (unswbc submit.py); the server rejects 'c++' (1 Oct)   # the server takes the CLI's spelling: `unswbc init cpp` writes language = "c++" and submits it verbatim
     try:   # prefer the bot's own bot.toml spelling when the frozen tree carries one
         src = Path(cand['source_ref'][4:]) if str(cand.get('source_ref', '')).startswith('dir:') else None
         if src and (src / 'bot.toml').is_file():
             m = re.search(r'^\s*language\s*=\s*"([^"]+)"', (src / 'bot.toml').read_text(), re.M)
             if m:
-                lang = m.group(1)
+                lang = {'py': 'python', 'python': 'python', 'cpp': 'cpp', 'c++': 'cpp', 'cxx': 'cpp', 'c': 'c'}.get(m.group(1).lower(), lang)
     except OSError:
         pass
     for key, value in {'name': name, 'language': lang, 'description': 'Automated unranked validation; frozen candidate ' + cand['fingerprint']}.items():

@@ -21,6 +21,7 @@ DEFAULT_POLICY = dict(enabled=True, interval_seconds=10800, branch='main', push=
                       never=['.battlecode-api-key', 'experiment_data/*', 'build/*', 'public_replays/*', 'hub-state/*', '*.replay', '*.replay.gz',
                              'game_stats.parquet', 'game_stats/sources/*', '*.tgz', '*.zip', '*.lock', '.venv/*', 'unswbc/*', 'replays/*', '*.log'])
 TRAILER = 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01NuyM2R5hEK6qXBdiZEEFub'
+STALE_LOCK_SECONDS = 3600  # .git/index.lock older than this is removed before a pass (D-041 housekeeping)
 
 
 def git(repo, *args, timeout=120, check=False):
@@ -142,6 +143,15 @@ def sync(repo, root, policy, actor='hub/gitkeeper', dry_run=False, now=None):
         if branch != policy['branch']:
             report['attention'].append(f'checkout is on {branch}, not {policy["branch"]}; nothing done')
             return finish(root, report)
+        lock = repo / '.git' / 'index.lock'
+        if lock.exists() and (now or time.time()) - lock.stat().st_mtime > STALE_LOCK_SECONDS:
+            # an index.lock no git process has touched for an hour is a crash leftover (1 Oct: three in four days,
+            # each blocking every commit until a human removed it); git holds the lock only for the length of one command
+            try:
+                lock.unlink()
+                report['attention'].append('stale .git/index.lock removed (older than %d min)' % (STALE_LOCK_SECONDS // 60))
+            except OSError as exc:
+                report['attention'].append(f'stale .git/index.lock could not be removed: {exc}')
         for marker in ('MERGE_HEAD', 'CHERRY_PICK_HEAD', 'index.lock', 'rebase-merge', 'rebase-apply'):
             if (repo / '.git' / marker).exists():
                 report['attention'].append(f'.git/{marker} present; a human must finish or clear it; nothing done')
