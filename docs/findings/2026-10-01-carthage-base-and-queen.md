@@ -134,6 +134,23 @@ queen's spawn. It reverses on gen, so it is map-shaped, not a spacing law.
 **Correction** to the 06 reading above: on the *base*, the queen's killers off the pocket maps are enemy 112, ally 62
 (h2h 35, body 27), wall 74, self 40. Own dragons outnumber the enemy only after 06 removes most enemy head-ons.
 
+## carthage-08-queen-avoid-guard (06 + 01 stacked; parent 00)
+
+| | pool | gen |
+|---|---|---|
+| Δecon~ [5 %, 95 %] | −0.004 [−0.021, +0.020] | −0.031 [−0.050, −0.010] |
+| Δwin [5 %, 95 %] | −0.009 [−0.037, +0.021] | +0.022 [−0.003, +0.048] |
+| Δunits@100 / Δtotal@100 lb | −0.086 / −0.084 | −0.107 / −0.128 |
+| queen alive@490 (excl. pocket) | 4.7 % (06: 2.9 %) | **33.3 %** (06: 23.6 %) |
+| median queen death (excl. pocket) | r162 | r154 |
+| queen deaths h2h / wall / body / self | 88 / 77 / 46 / 48 | 230 / 47 / 51 / 39 |
+| queen-decided W/L | 6 / 5 | **46 / 0** |
+
+**Verdict: REJECT** (pool econ lb −0.021, units/total@100 lb −0.086/−0.084, pool win lb −0.037, gen econ lb −0.050).
+The trap/blind premium adds ~10 points of queen survival on gen over 06 and lengthens pool queen lives by ~25 rounds,
+but the pool queen still dies trapped (wall + body + self 171 of 259). Every queen arm so far trades 2–4 % gen economy
+for queen verdicts; none reaches the 0.5 survival bar.
+
 Next: the sprint arms (04, 05) are on the panel; for H-Q1 the next design is a phase change rather than a premium —
 the queen produces in the opening as now, then retires to a safe, low-traffic region and stays small (tail shed by
 splitting) until a late regrowth window. and 03 (01+02) are on the panel; then an avoidance mechanism (keep the queen
