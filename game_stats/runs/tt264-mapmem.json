@@ -1,0 +1,144 @@
+{
+ "games": 400,
+ "test_games": 80,
+ "direction": {
+  "n_train": 186219,
+  "n_test": 46882,
+  "map_cols": [
+   "mm_known",
+   "mm_seen_frac",
+   "mm_pearls_known",
+   "mm_beds_known",
+   "cF_mm_reach",
+   "cF_mm_frontier",
+   "cF_mm_pearl",
+   "cF_mm_bed",
+   "cF_mm_stale",
+   "cR_mm_reach",
+   "cR_mm_frontier",
+   "cR_mm_pearl",
+   "cR_mm_bed",
+   "cR_mm_stale",
+   "cL_mm_reach",
+   "cL_mm_frontier",
+   "cL_mm_pearl",
+   "cL_mm_bed",
+   "cL_mm_stale"
+  ],
+  "v5": {
+   "acc": 0.7199138262019539,
+   "macro_f1": 0.6992294422578659,
+   "logloss": 0.5809904538519634
+  },
+  "v5+map": {
+   "acc": 0.7335224606458769,
+   "macro_f1": 0.7169192070473179,
+   "logloss": 0.562346912437768
+  },
+  "map_feature_ranks": [
+   [
+    6,
+    "cF_mm_pearl"
+   ],
+   [
+    7,
+    "cR_mm_frontier"
+   ],
+   [
+    8,
+    "cF_mm_reach"
+   ],
+   [
+    10,
+    "cL_mm_frontier"
+   ],
+   [
+    11,
+    "cR_mm_reach"
+   ],
+   [
+    12,
+    "cL_mm_reach"
+   ],
+   [
+    13,
+    "cF_mm_frontier"
+   ],
+   [
+    14,
+    "cL_mm_pearl"
+   ]
+  ],
+  "gain_pp": 1.3608634443923018
+ },
+ "gate": {
+  "n_train": 124431,
+  "n_test": 25254,
+  "map_cols": [
+   "mm_known",
+   "mm_seen_frac",
+   "mm_pearls_known",
+   "mm_beds_known",
+   "cF_mm_reach",
+   "cF_mm_frontier",
+   "cF_mm_pearl",
+   "cF_mm_bed",
+   "cF_mm_stale",
+   "cR_mm_reach",
+   "cR_mm_frontier",
+   "cR_mm_pearl",
+   "cR_mm_bed",
+   "cR_mm_stale",
+   "cL_mm_reach",
+   "cL_mm_frontier",
+   "cL_mm_pearl",
+   "cL_mm_bed",
+   "cL_mm_stale"
+  ],
+  "v5": {
+   "acc": 0.9705789181911776,
+   "macro_f1": 0.9659041848881144,
+   "logloss": 0.08827431282501642
+  },
+  "v5+map": {
+   "acc": 0.9724796071909401,
+   "macro_f1": 0.9680895096931864,
+   "logloss": 0.08428121493361214
+  },
+  "map_feature_ranks": [
+   [
+    6,
+    "cF_mm_reach"
+   ],
+   [
+    10,
+    "cL_mm_frontier"
+   ],
+   [
+    11,
+    "cL_mm_reach"
+   ],
+   [
+    13,
+    "cR_mm_reach"
+   ],
+   [
+    15,
+    "cR_mm_frontier"
+   ],
+   [
+    17,
+    "cF_mm_frontier"
+   ],
+   [
+    19,
+    "mm_seen_frac"
+   ],
+   [
+    24,
+    "mm_known"
+   ]
+  ],
+  "gain_pp": 0.19006889997624787
+ }
+}

@@ -511,3 +511,20 @@ beds; per candidate a wall-aware BFS (radius 12) gives reach beyond the view, fr
 ready-bed distances, staleness. Validated on a cheji bt game (blocked agreement with v5 100 %; reach median 78 vs in-view
 area 39; 1.4 ms/turn). Extraction (400 games per team, Cache me outside's 598 ranked, Heartbreaker as control) and the
 v5 vs v5+map comparison running (`tools/tt/run_map.sh`, `mapmem_chain.sh`).
+
+### Internal map results (`tools/tt/features_map.py`, `q1_mapmem.py`; `game_stats/runs/*-mapmem.json`)
+
+400 games per team (Cache me outside: all 598 ranked), held-out 20 % of those games, GPU GBT, v5 vs v5 + map:
+
+| team | direction v5 → v5 + map | gain | (history + trail gain) | top map features (gain rank of ~300) | gate change |
+|---|---|---:|---:|---|---:|
+| Heartbreaker | 0.8245 → 0.8325 | +0.80 pp | +0.19 | remembered-pearl BFS distance (8, 9, 11) | −0.05 |
+| **cheji bt** | 0.7395 → 0.7654 | **+2.59 pp** | +0.97 | **distance to unexplored cells** (5, 7, 8), reach (9) | +0.06 |
+| Stockfish | 0.7616 → 0.7713 | +0.97 pp | +0.39 | remembered reach (5, 6, 7), pearl (9) | −0.08 |
+| forgot to mention | 0.7199 → 0.7335 | +1.36 pp | +0.52 | pearl (6), frontier (7, 10), reach (8) | +0.19 |
+| Cache me outside | 0.7551 → 0.7626 | +0.75 pp | +0.94 | reach (9, 10, 13), pearl (11) | +0.01 |
+
+Every team's steering uses a remembered map more than momentum or decayed density; cheji bt most — it steers toward
+cells it has not seen (exploration). Gates do not use it. For the mimics this means a C++ port of the map memory would
+add ~1–2.6 pp of direction agreement; Ares already keeps such a map (`world.hpp`), so a map-aware prior on Ares is
+also cheap to compute.
