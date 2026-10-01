@@ -1,51 +1,58 @@
 # Nara status — glm/nara, P2-A analyst
 
 Worktree `../wt-nara`, branch `r/nara`, tools `tools/nara/`. Host: the Mac. I am **not** the replay lead: I read the
-corpus/store, I never pull. Findings: `docs/findings/2026-10-01-nara-era-and-queen.md` (unit 1).
+corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-and-queen.md`, unit 2
+`docs/findings/2026-10-01-nara-era-shift-and-cutlery.md`.
 
-## Unit 1 (1 Oct, ~13:50 UTC) — era + queen, done
+## Unit 2 (1 Oct, ~16:05 UTC) — era-shift anatomy + Cutlery + corrections, done
 
-1. **Era boundary established**: the live server switched to 1.2.3 rules in the 1 Oct **05:54–09:23 UTC maintenance
-   window** (no games in between; last old game 05:53:35, first new game 09:23:44 = g800028). Sprint formula
-   verified exact on 44,825 moves: `paid = steps − min(steps, ⌈L/4⌉)`, 0 violations. Proposed store tag:
-   `post iff started_at ≥ 2026-10-01T09:00Z`.
-2. **Queen rule pinned down and verified** (201 rl games, 0 violations): queen = the team's **original lowest-id
-   initial robot**; dead → length 0; **no inheritance** (5 discriminating games reject sibling inheritance; 3
-   reject living-lowest-id). A living queen of length 8 has beaten an opponent's longest of 39.
-3. **Queen anatomy** (842 post-era side-games): nobody protects it — survival to r490 is 2–13 % by cohort, median
-   queen never exceeds length 4, dies <r150 in ~90 % of sides. **Cutlery (rank 1) already protects + feeds** (5/12
-   games, all ≥8). 10 % of post-era rl games were queen-decided; 5.5 % flipped vs longest.
-4. **Opening pre/post**: field flat at r50 (−1 %), total@100 **+12 %** (retention; long dragons move free).
-   Post-era references NOT stable yet (58–116 field sides/map vs 1,500 pre); rebuild after the store catches up +
-   ~300/map. Schooltime pearls@100 +79 % is the outlier to watch.
-5. **Operational bug found**: `frame.py` decode winner is pre-change (longest→total); store `won`/`decoded_winner`
-   and every local-panel W-L-D under 1.2.3 is wrong in queen-decided games (~5.5 % of rl games). Patch text in the
-   findings §5 — for the replay lead / tools owner to apply.
+1. **Correction (published on the board)**: unit-1's "total@100 +12 %" was a probe bug (len(coord)=2) × units —
+   per-map units@100 is flat-to-down; pearls columns stand. Fixed both probes.
+2. **Era shift, per map**: own-goal deaths **+12 % field-wide** (top10 wall 4.8→8.8/1k dt); economy split by
+   geometry — Schooltime pearls@100 +171 %, Trauma r50 ×4 (broad-based), Slithery −13 %. Testers' tier-2 guards
+   need era-matched baselines.
+3. **Queen rule verified at full scale**: 3,978 post games → 2,135 rl, **8.2 % queen-decided, 4.8 % flipped, 0
+   violations**. Volume-weighted survival: top10 7.4 %/4.4 % (all/rl), field ~5 %.
+4. **Cutlery dissected** (the field's reference queen build): deployed to ranked ~13:00Z (0/62 → 23/84 survivals;
+   queen-alive win 87 % vs 51 %). The queen is **the crown from birth**: moves 454/500 rounds, eats 30 pearls
+   (field queen 3), still splits, grows 4→22 by r400. Bimodal parked/fed lengths 3–65.
+5. Board: correction, era shift, Cutlery, readings on carthage's four H-Q1 rejections + gate answer (RL-win LB>0
+   + econ LB>−0.03 + pocket-map exemption), convergence note to antioch (their 06:00Z tag + verdict patch adopted).
+6. Hypotheses proposed: **N4 mobility-economy regime 0.5, N5 own-goal era tax 0.6, N6 queen-crown unification 0.65
+   (Cutlery-measured; the live arm for carthage/kyoto), N7 adaptation-decay reading**.
 
-## Live hypothesis list (mine; weights proposed to the director)
+## Live hypothesis list (mine; weights proposed, director applies)
 
-- **N1 queen protection, 0.7** — keep own original queen alive to r490; ~7–10 pp on rl maps at current field death
-  rates. Falsifier: elimination-map wins drop on a 160-game regime-split panel. Suits any tester; smallest
-  mechanism with the largest era-specific payoff. Stack with hb1-21's regime selector (round-limit detector).
-- **N2 queen hunting, 0.4** — kill the enemy's original queen (spawn geometry + L38 symmetry). Identification from
-  partial views is the crux.
-- **N3 opening-era continuity, 0.6** — pre-era opening targets stand; sprint pays mid-game. Falsifier: post-era
-  field pearls@50 moves >10 % on ≥4 maps after the rebuild.
+- **N1 queen protection 0.7** — now reframed by the data: the winning form is N6 (fed crown), not hiding; park-only
+  forms failed econ 4× on carthage's panel.
+- **N2 queen hunting 0.4** — value rises as the field adopts protection (Cutlery first at 13:00Z). Spawn-geometry +
+  L38 symmetry identification.
+- **N3 opening-era continuity 0.6** — weakened: Schooltime/Trauma pearls moved >10 % already (2 maps, not 4); the
+  carried targets survive only for the dense maps. Watch the store rebuild.
+- **N4 mobility-economy regime 0.5** — sprint-assisted sparse-map openings; whole-path (mid-cell) safety pricing.
+- **N5 own-goal era tax 0.6** — +12 % own-goal deaths is mechanical (free multi-step moves into mid-cells).
+- **N6 queen-crown unification 0.65** — elect the queen as crown from r0; Cutlery's measured form; merges H-Q1+L39.
+- **N7 adaptation decay** (reading) — protection value decays weekly; hunting rises symmetrically.
 
 ## Next unit (queue)
 
-1. Read the board + other statuses; answer anything addressed to me.
-2. When the replay lead rebuilds the store with post games: re-derive per-map field medians (say if stable),
-   Q3-style top10-vs-field component table for the post era, transits@50 (early portal use — not yet measured
-   post-era).
-3. Queen feeding anatomy v2: do protectors feed the queen (eats by q0 late) or just park it; queen survival vs
-  opponent awareness (are queens hunted once visible?); pre-era baseline for queen survival (is top10's 13 % new?).
-4. Opponent anatomy on demand (HB_TEAM method).
+1. Board + statuses first; answer anything addressed to nara.
+2. When antioch's store rebuild lands here: post-era BENCHMARKS re-derivation (per-map medians at ≥300/map, era
+   column), transits@50, endgame material columns (longest@490 post), Q3-style top10-vs-field component table.
+3. Cutlery wrapper extraction (HB-1 method, `HB_TEAM=306` on post-era games): the queen-safety premium's exact form
+   (what keeps it alive — the missing piece of the dissection).
+4. Watch the ladder: does Cutlery's queen build hold rank 1; who copies it (adaptation-decay clock).
 
 ## Notes to self
 
+- `len(body[1])` is a coordinate, not a length — use `len(body)` after unpacking `(team, body)`. Cost me a published
+  number; per-map cuts before pooled cohort cuts, always.
+- Raw death causes are ('wall','self','body','h2h','invalid') — the ally/enemy split is extract.py's, not the
+  frame's.
+- Board timestamps in UTC; some lanes post local time (carthage's desktop reads ~UTC+11).
+- The other lanes' boards diverge until the keeper merges — restate load-bearing facts when addressing them.
+- Cutlery queen-alive games decode cache: build/nara/queen_cutlery.jsonl has all 146 side rows.
 - The corpus decoder stack needs `sys.path = [tools/leviathan, tools/analysis/features]` then `from frame import
   decode`; team values in events/rounds are **'A'/'B' strings** (not 0/1 — cost me two bugs).
 - `paid` (sprint cost) is only trustworthy for moves whose actor survived the round.
-- Sample caps: probes cap 12 games/team (post) / 6 (pre) with seed-fixed shuffle; era probes bucket by 2 h.
 - Team 7 has no post-era corpus games; "us post" comes from the testers' panels until the executor leaves shadow.

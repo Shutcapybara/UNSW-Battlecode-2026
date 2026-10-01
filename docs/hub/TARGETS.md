@@ -16,32 +16,34 @@ in `docs/analysis/benchmarks/`; post-era references are published here as they s
 
 ## Nara (glm, P2-A)
 
-**Era rule (my findings §1–2, `docs/findings/2026-10-01-nara-era-and-queen.md`):** the live server switched in the
-1 Oct 05:54–09:23 UTC maintenance window. Tag **`post` ⟺ started_at ≥ 2026-10-01T09:00Z** (no games in the gap).
-Sprint formula verified exact (`paid = steps − min(steps, ⌈L/4⌉)`, 44,825 moves, 0 violations). Round-limit
-tiebreak verified on 201 rl games (0 violations): **queen = the team's original lowest-id initial robot, dead →
-length 0, no inheritance**, then longest, then total. ⚠ Until `frame.py`'s winner is patched (findings §5), every
-replay-derived W-L-D is wrong in queen-decided games (~5.5 % of rl games) — testers, read wins from the runner's
-verdict line, not from feature extraction, on 1.2.3 panels.
+**Era rule (unit 1, refined unit 2):** server switched in the 1 Oct 05:54–09:23 UTC window; I adopt the replay
+lead's store tag (**post ⟺ started_at ≥ 2026-10-01T06:00Z**, equivalent — no games in the gap) and their
+engine-verdict patch as the decoder fix (better than recomputing; my independent derivation agrees: 2,135 rl games,
+0 violations). Queen = **original lowest-id initial robot, dead → 0, no inheritance**; then longest, then total.
+⚠ Until the verdict patch lands, replay-extracted W-L-D is wrong in queen-decided games (8.2 % of rl games
+queen-decided, 4.8 % flipped, full post sample).
 
-**Post-era reference status: NOT stable.** My per-map post samples are 58–116 field side-games (vs ~1,500 pre).
-Field medians pre→post: pearls@50 −1 %, pearls@100 +2.5 %, splits@50 −4 %, total@100 **+12 %** (retention). I will
-re-derive formally when the store rebuild lands + ≥300 games/map. Until then pre-era opening targets stand (the
-field has not moved); **r250+ references are stale** (retention shift + queen rule change results).
+**Post-era reference status: NOT stable** (58–132 field sides/map in my samples vs ~1,500 pre). Per-map pre→post
+medians (unit 2, corrected): pearls@50 flat on most maps but **Schooltime +67 %/+171 %** at r50/r100 and
+**Trauma ×4** at r50 (broad-based, not one team); Slithery −13 %; units@100 flat-to-down (median −3 %);
+**own-goal deaths +12 % field-wide** (7/10 maps up 10–24 %) — tier-2 guards need era-matched baselines. Formal
+re-derivation when the store rebuild + ≥300 games/map.
 
 | cluster / map | phase | metric | top-10 value | us | gap / target | era | query |
 |---|---|---|---|---|---|---|---|
 | all | r0–25 | total length vs same opposition (field SD) | +0.11 | −0.49 (pre) | 0.60 SD | pre (carried) | S-1 Q3; post pending store |
 | all | r50 | bed pearls ÷ field median | 1.07 | 0.83 (pre) | target ≥ 1.0 | pre (carried) | S-1 Q3; `tools/nara/opening_probe.py` |
-| all | r0–50 | splits (births) | 14–18 | 10 (0.84×) | target ≥ 13 | pre (carried) | S-1 Q3 |
-| all | r0–50 | transits (early portal use) | 5 | 2 | target ≥ 4 | pre (carried) | post value pending store rebuild |
-| **round-limit maps** (Slithery, Portals, Trauma, Schooltime: rl share 100/98/91/73 %) | r490 | **queen survival** (own lowest-id initial robot alive) | 11 % today (nobody protects; Cutlery 42 %) | — | **target ≥ 0.95** for a protector build; guard: elimination-map wins flat | post | `tools/nara/queen_probe.py --since 2026-10-01T09:23` |
-| round-limit maps | r490 | **queen length** | 0 (field); ≥ 8 in Cutlery's fed form | — | ≥ 1 beats every dead queen today; ≥ 8 future-proofs vs other protectors | post | same |
-| round-limit maps | r490 | **queen-decided losses** (ours dead, theirs alive) | — | — | **target 0** | post | same (join index winner) |
-| all | r490 | longest dragon | 40–46 (cheji/Stockfish, pre) | 25–28 (pre) | post re-derivation pending (retention +12 % suggests ≥ pre) | post-pending | TT method |
-| all | r490 | round-limit losses with a material lead | 0.32–0.43 (pre) | 0.33 V06 / 0.57 hb1-12 (pre) | **target < 0.10** with queen protection (alive queen converts these) | post | `tools/tt/endgame_gate.py` |
+| sparse/large (Schooltime, Trauma, QoS) | r50–100 | pearls ÷ field median | +67 %/+171 % (Schooltime, post vs pre field) | — | the era's economy mover; watch item until store volume | post (provisional) | unit 2 §2 table |
+| all | r0–150 | own-goal deaths /1k dt | pre-era references stale (+12 % era shift) | — | compare vs era-matched parent only | post | `tools/nara/era_shift_probe.py` |
+| **rl maps excl. pockets** (Portals, Trauma, Schooltime; NOT Slithery/Autarky/PD — H-Q3: queen dies r4–5 in a spawn pocket there, mechanically) | r490 | **queen survival** | field ~5 % (vol-weighted); Cutlery 26 % since 13:00Z | base 0.9–1 % (carthage-00) | **target ≥ 0.5** short-term (antioch's line), ≥ 0.9 for a full build; guard: econ LB > −0.03, elimination wins flat | post | `tools/nara/queen_probe.py` |
+| rl maps excl. pockets | r490 | **queen length** (fed form) | Cutlery: 22 by r400, up to 65; field 0 | — | ≥ 1 beats every dead queen; **20–30 by r400** is the measured fed form | post | same |
+| rl maps | r490 | **queen-decided losses** (ours dead, theirs alive) | — | — | target 0 | post | same (join index winner) |
+| all | r490 | longest dragon | 40–46 (cheji/Stockfish, pre); post pending (rl-side samples too small yet) | 25–28 (pre) | post re-derivation when store lands | post-pending | TT method |
+| all | r490 | round-limit losses with a material lead | 0.32–0.43 (pre) | 0.33 V06 / 0.57 hb1-12 (pre) | **< 0.10** with a kept queen | post | `tools/tt/endgame_gate.py` |
 
-Weighting note for gate design: at current field queen-death rates (87–98 % of sides), a protector's expected gain
-is ~7–10 pp win on round-limit maps (rl share × P(opp queen dead) × P(we would lose the longest tiebreak)) — the
-era's cheapest large lever. It decays as the field learns; the first mover banks the most.
+Design note from the field's reference build (unit 2 §4): Cutlery's queen is **the crown from birth** — moves
+454/500 rounds, eats 30 pearls (field queen: 3), keeps production-splitting, grows 4→22 by r400 — not a parked
+passenger. The live arm to test is crown-election-to-queen (N6), not queen-hiding; queen-hiding variants
+(carthage-01/02/06/07) all failed econ while raising survival.
+
 
