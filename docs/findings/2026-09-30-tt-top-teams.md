@@ -159,6 +159,30 @@ pass the behavioural check (ranked and unranked fingerprints match), so their ea
   dragons and **feed the long one** — cull rate beside an ally of length 15+ vs 1–2: cheji bt 82 vs 6 %, Stockfish 11.7
   vs 3.6 %, forgot to mention 37 vs 6.3 %, Cache me outside 21 vs 7.5 %.
 
+## Follow-up (1 Oct): mimics and priors for forgot to mention and Cache me outside
+
+Built on hb1-04's chassis (`tools/tt/make_mimic.py`) with a learned cull model run first, die-in-place when trapped,
+and each team's scaled direction GBT (compact parity exact on 20,000 held-out rows). Cache me outside uses ranked
+games only.
+
+| bot | what | fidelity (40 held-out games): command / direction / self-kill recall | z1 vs Ares V06 (122–38) | gate |
+|---|---|---|---:|---|
+| tt-08-ftm-mimic | forgot to mention mimic (local) | 0.761 / 0.755 / 0.90 | 91–69 | fail (economy +0.08) |
+| tt-09-prior-ftm | hb1-14 + ftm direction (uploadable 3.74 MiB) | — | 117–43 | fail |
+| tt-10-cmo-mimic | Cache me outside mimic (local) | 0.806 / 0.804 / 0.80 | 78–82 | fail (economy **+0.24**) |
+| tt-11-prior-cmo | hb1-14 + cmo direction (uploadable 3.73 MiB) | — | 127–33 | hold |
+| hb1-14-prior-r540 | reference: Heartbreaker direction | — | 141–19 | hold |
+
+- **The mimics have the economy but not the conversion.** Median longest dragon at r490 is 10–12.5 for the mimics
+  against 35–36 for the real teams; 71–79 % of the mimics' round-limit losses come with a material lead. The cull
+  model reproduces *when* a dragon dies (recall 0.80–0.90), but whom it feeds is a team-level choice that the local
+  view does not show. Ares' crown rule supplies it, which is why the Ares-based priors win 63–72 % of round-limit
+  games.
+- **Heartbreaker's steering remains the best prior for Ares.** Cache me outside's is level with V06 (+3 pp); forgot
+  to mention's is slightly worse.
+- **Next if pursued:** a mimic with the swarm plus Ares' crown election for conversion. This would combine tt-10's
+  economy (+0.24) with a written conversion rule. The C++ map-memory features would add about 1 pp of direction.
+
 ## What to take, and what is open
 
 - **Conditional conversion, not a fixed earlier round.** Keep the swarm while elimination is on; convert on the top

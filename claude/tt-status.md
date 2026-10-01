@@ -553,4 +553,23 @@ Cache me outside (ranked games only — its unranked bot is a variant):
   0.804 / precision 0.729 (9,037 recorded), **command 0.806**, sonar multiset 0.499 (many rays per turn), 0 missing
   replies. (`game_stats/runs/tt952-fidelity-mimic.json`)
 - `tt-11-prior-cmo` (uploadable, 3.73 MiB): hb1-14 with Cache me outside's direction model (540 rounds).
-- Scorecards (tt-11 then tt-10) running.
+- Scorecards vs Ares V06 (z1 seed 1; V06 122–38):
+  - tt-11-prior-cmo: **127–33, hold** (economy +0.000, length +0.059, win share +3.1 pp). Below hb1-14 (141–19).
+  - tt-10-cmo-mimic: **78–82, gate fail** (economy **+0.242**, length +0.265, win share −27.5 pp; own-body
+    3.7 → 13.8 /1k).
+
+Why the mimics have the economy but lose (`build/tt/conc_*.log`, medians over 160 games):
+
+| bot | win | round-limit W/L | round-limit losses with a material lead | longest at r490 | units at r490 |
+|---|---:|---:|---:|---:|---:|
+| tt-08 ftm mimic | 0.569 | 28–56 | 71 % | 12.5 | 21 |
+| tt-10 cmo mimic | 0.488 | 33–71 | 79 % | 10 | 50 |
+| tt-09 prior-ftm (Ares) | 0.731 | 49–29 | 10 % | 25 | 5 |
+| tt-11 prior-cmo (Ares) | 0.794 | 58–23 | 26 % | 25 | 5 |
+| real forgot to mention / Cache me outside (ladder) | — | — | — | 36 / 35 | — |
+
+The mimics copy the swarm (more total material than Ares) and the per-dragon culls, but not the conversion: their
+longest dragon at r490 is 10–12.5 against the real teams' 35–36, so they lose round-limit games they lead on
+material. The cull model learned *when* a dragon dies, but the feeding target (which ally is "the long one") is a
+team-level choice a local-view policy does not see. Ares' crown rule supplies it, which is why the priors win the
+round limit.
