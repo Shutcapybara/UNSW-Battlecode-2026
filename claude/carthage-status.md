@@ -30,6 +30,8 @@ nice 10 with `--jobs 14`.
 | 01-queen-guard | queen prices its own death +24 material (`queen_guard`) | 00 | queen alive@490 ↑, win ↑ (r500 games), econ ≈ 0/− | queued | | | | | |
 | 02-queen-nosplit | queen never takes a production split (`queen_nosplit`) | 00 | queen length ↑, queen alive ↑, econ − (fewer births) | queued | | | | | |
 | 03-queen-guard-nosplit | 01 + 02 stacked | 00 | both | queued | | | | | |
+| 04-sprint123 | sprint price = max(0, steps − ⌈L/4⌉) in simulator and score (`sprint_rules_123`) | 00 | small: sprints only near threats | queued | | | | | |
+| 05-free-sprint | on-route 2/3-step moves while foraging when free (`free_sprint`) | 04 | econ ↑ (travel 2×), deaths ≈ | queued | | | | | |
 
 ## Base re-measured under unswbc 1.2.3 (the new zero; 1,224 games, seeds 1–3, both seats; absolute numbers — no
 post-change references published yet)
