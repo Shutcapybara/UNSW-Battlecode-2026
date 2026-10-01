@@ -59,5 +59,28 @@ both dragons whatever their lengths, so a value premium (which mostly changes co
 trading its head for ours; the queen has to stay out of enemy heads' reach. The −2 pp pool win with no economy loss is
 unexplained at this point (20 better / 29 worse pairs, p = 0.25).
 
-Next: 02 (queen never production-splits) and 03 (01+02) are on the panel; then an avoidance mechanism (keep the queen
+## carthage-02-queen-nosplit (switch `queen_nosplit`; parent 00)
+
+Mechanism: the queen never takes a production split (`tyr_split_option`, opening production split); rescue and
+escape splits kept. Expected: queen length and survival up, economy down (fewer births).
+
+| | pool | gen |
+|---|---|---|
+| Δecon~ [5 %, 95 %] | −0.036 [−0.056, −0.008] | −0.317 [−0.352, −0.284] |
+| Δwin [5 %, 95 %] | −0.016 [−0.047, +0.013] | −0.221 [−0.249, −0.193] |
+| Δunits@100 / Δtotal@100 lb | −0.146 / −0.072 | −0.565 / −0.511 |
+| queen alive@490 (excl. pocket) | 1.2 % → 13.3 % | 0.8 % → 8.7 % |
+| queen length at r490 when alive | 21.1 | 21.5 |
+| queen-decided W/L | **23 / 6** (base 1 / 7) | 11 / 2 |
+
+Per-map pool Δecon: trauma +0.187, autarky −0.013, default −0.015, trophy −0.076, queen_of_spades −0.115, portals
+−0.166, devil −0.168, schooltime −0.422. **Verdict: REJECT** on every economy and material guard; gen collapses.
+
+Reading: the queen is a large share of the opening material, so taking it out of production costs births at once
+(units@100 −0.47 on gen), and gen's hunters punish the thinner swarm. The tiebreak effect is real — a kept queen turned
+the queen verdicts from 1–7 to 23–6 on the pool — but buying it with production is the wrong price. The queen must keep
+producing (Antioch's "shed length by splitting its tail") and be kept safe some other way. 03 (01 + 02) was stopped
+after 40 games and not scored.
+
+Next: 06 (queen avoidance), then 02 (queen never production-splits) and 03 (01+02) are on the panel; then an avoidance mechanism (keep the queen
 beyond enemy heads' reach, sprint-aware) and Antioch's tail-shedding variant.

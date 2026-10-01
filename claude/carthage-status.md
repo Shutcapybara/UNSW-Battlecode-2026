@@ -28,8 +28,8 @@ nice 10 with `--jobs 14`.
 |---|---|---|---|---|---|---|---|---|---|
 | 00-base | hb1-14, D-033 terms off | hb1-14 | — | abs: pool econ~ 1.139, win 0.826; gen econ~ 1.111, win 0.689 | — | — | wall 6.89 self 4.62 /1k (pool) | pool 0.9 %, gen 0.6 % | base (the 1.2.3 zero) |
 | 01-queen-guard | queen prices its own death +24 material (`queen_guard`) | 00 | queen alive@490 ↑, win ↑ (r500 games), econ ≈ 0/− | +0.008 [−0.008, +0.027] | −0.046 | −0.020 [−0.046] | ±3 % | pool 3.6 %, gen 8.6 % (excl. pocket) | reject |
-| 02-queen-nosplit | queen never takes a production split (`queen_nosplit`) | 00 | queen length ↑, queen alive ↑, econ − (fewer births) | queued | | | | | |
-| 03-queen-guard-nosplit | 01 + 02 stacked | 00 | both | queued | | | | | |
+| 02-queen-nosplit | queen never takes a production split (`queen_nosplit`) | 00 | queen length ↑, queen alive ↑, econ − (fewer births) | −0.036 [−0.056, −0.008] | −0.352 | −0.016 [−0.047]; gen −0.221 | ±4 % | pool 13.3 %, gen 8.7 % (excl. pocket); queen W/L 23/6 | reject |
+| 03-queen-guard-nosplit | 01 + 02 stacked | 00 | both | stopped at 40 games (both parts rejected) | | | | | not run |
 | 06-queen-avoid | queen: −40 for a cell an enemy head can reach next turn, −3/cell inside radius 6 of each enemy head, never strikes (`queen_avoid`) | 00 | queen h2h deaths ↓↓, queen alive@490 ↑, econ − small | queued (after 03) | | | | | |
 | 04-sprint123 | sprint price = max(0, steps − ⌈L/4⌉) in simulator and score (`sprint_rules_123`) | 00 | small: sprints only near threats | queued | | | | | |
 | 05-free-sprint | on-route 2/3-step moves while foraging when free (`free_sprint`) | 04 | econ ↑ (travel 2×), deaths ≈ | queued | | | | | |
