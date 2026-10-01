@@ -6,7 +6,26 @@ same D-032 gate, frozen `gen_reference.json`). This is the lane's first pass: th
 brief names, plus the standing duties (reconcile, settle, contradictions, gate audit, ranked ten).
 
 **Ledger edits are proposed here; the director applies them.** Nothing outside `bots/clair-*`, `tools/clair/`
-and this file is touched.
+and this file is touched — with one exception, applied under the lead's explicit authorization (1 Oct): the
+gate revision in `docs/analysis/BENCHMARKS.md` §"Start here (1 Oct revision)".
+
+## Pass summary (read this first)
+
+1. **The bowl is broken.** The direction prior moved hb1-14 off the V06 local optimum: four of six re-run
+   weight moves now clear +0.03 pool economy where they measured +0.01–0.03 on V06/nodevil; trapw20 clears
+   *both* panels with positive lower bounds (+0.037/+0.022) and unseen3 posts +0.151/+0.065 with a tempo-gate
+   ACCEPT. L20 re-opens; every dormant "V06 says no" weight row re-opens on the prior base.
+2. **The two live levers are map-class mechanisms**, not global knobs: unseen3's gain is the starved-opening
+   cluster (trauma +1.64, qos_tr +1.48 — Esquie's L35 class, and s1's split-stall names the same maps and the
+   same lever); trapw20's is corridor/sparse maps and is *exactly zero* on dense maps.
+3. **Additivity holds off-pool; holds do not transfer.** symseal on the prior base: every gen metric positive
+   lb (Test 2, L38 → 0.75); the mouth rule's economy-flat hold becomes −0.078 pool (Test 3, L40 → 0.3) — the
+   prior changed what the mechanisms tax.
+4. **The gate was revised** (applied under authorization): endgame tier + cull exemption, either-panel accept,
+   cluster-bootstrap authority, mid-game gap named with its instrument.
+5. **Rows**: L20 → 0.4 (re-opened), L38 → 0.75, L40 → 0.3, L39 → 0.8, L12 → 0.3, L02 → 0.4, L11 → 0.3,
+   L34 → 0.3, L31 → 0.6, L36 → 0.85, L21 → 0.1 dormant, L14 → 0.4, new **L41** (local-panel selectivity: our
+   family is the second tier's niche). All with pointers in standing duty 1 and the test sections.
 
 ## First pass — the three tests
 
@@ -53,7 +72,7 @@ clair-03/04/05/06 plus the dose arm `clair-09-unseen4` (unseen_value 4). Full D-
 | clair-04-unseen3 | **+0.151 [+0.118, +0.187]** | **+0.065 [+0.046, +0.091]** | units +0.214/+0.100, length +0.141/+0.153, gen win **+0.045 [+0.018, +0.073]** | **REJECT**: tier-2 h2h +37 %, ally-body +10 %, pool win lb −0.027 (noise-level). **Tempo gate: ACCEPT, −3.5 rounds [−4.4, −2.5]** — real net income, not corpse churn; the cost is per-transit deaths +17 % and newborns10 +12 % |
 | clair-05-allycrowd | +0.029 [+0.003, +0.054] | **−0.058 [−0.089, −0.029]** (every gen checkpoint negative) | pool units +0.048, gen win −0.030 | REJECT — pool-fitted; Maelle-04's late off-pool loss reproduced on the prior base |
 | clair-06-capsel | +0.006 [−0.012, +0.026] (s1's +0.037 was seed noise) | +0.015 [−0.002, +0.035]; p@250 +0.053 pool / +0.043 gen (lb > 0 both); **gen win +0.039 [+0.015, +0.066]** | econ_late +0.022/+0.027 | REJECT (pool econ lb) — a late-phase lever: p@250 positive on both panels, gen win up; hold-shaped under `--phase late`, but per-map tr-inconsistent (below) |
-| clair-09-unseen4 | +0.000 [−0.031, +0.036] (s1 screen) | *(full gate in the run log)* | — | null at dose 4: the exploration lever is a **cliff between 4 and 3** on this base, not a slope |
+| clair-09-unseen4 | +0.008 [−0.019, +0.026] (null) | **+0.033 [+0.012, +0.054], win +0.040 [+0.017, +0.062]** | h2h +11 % | REJECT (pool win lb −0.042; also under the new either-panel rule). The dose-response is *pool-side*: dose 4 helps only off-pool, dose 3 helps everywhere — the cliff lives on the dense pool maps, the gen response is graded. |
 
 **What the four extensions settle.** (1) L20's revival condition — "a knob shows a consistent seat-independent
 +0.03" — is met by trapw20 (+0.037/+0.022 both panels, lb > 0) and materially by unseen3; the bowl is a property
@@ -157,6 +176,10 @@ row moves, one step per result:
 | L21 | 0.3 → **0.1 (dormant, settled by rule)** | D-032 replaced the +0.05 single-seed bar for lanes (retention clause via units/length lower bounds and per-checkpoint deltas). The row's question — "is +0.05 the right shape" — was answered by decision, not data; record it as settled. Revival trigger: evidence that D-032's interval form accepts churn-shaped gains it should not. |
 | L14 | 0.3 → **0.4** | tt internal-map test: cheji bt's steering steers toward cells it has *not* seen (+2.59 pp direction from map-memory features; every top team +0.75–1.36 pp). Exploration driven by remembered map is what the top teams do; the pool's "known maps" penalty is a panel artefact, not a verdict on the mechanism. Re-test on the gen panel / in a map-aware prior (tt-09/11). |
 | L20 | 0.1 (dormant) → **re-open, 0.3 pending seeds** | this pass, Test 1: four of six single-knob moves screen ≥ +0.03 pool econ on hb1-14 (trapw20 +0.037 lb>0, unseen3 +0.192, allycrowd +0.057, capsel +0.037) where the same knobs measured +0.01–0.03 on V06/nodevil — the revival trigger ("a consistent seat-independent +0.03") has fired at screen level; the extensions at seeds 1–3 decide whether "consistent" holds. |
+| L31 | 0.5 → **0.6** | s1's crown graft (`2026-10-01-s1-next-steps.md`, uncommitted in the main checkout): a hard game-scale phase switch — hb1-04's mimic policy to r150, Ares V06 after — lifts panel win 0.64 → 0.84 (26/2 fixtures, p < 1e-4), ties hb1-12, r150 the best of four hand-over points (r100 0.81 with tempo REJECT, r250 0.79, r350 0.78). A committed switch at game scale works and is worth three lines in main.cpp; the uploadable form needs hb1-14-style truncation (61.6 MB → 4 MiB). The per-map variant (mimic longer where its opening dominates, hand over early on Schooltime/Devil) is the lead's per-map direction in architecture form. |
+| L36 | 0.8 → **0.85** | s1 split-stall: the production component is now measured and it is *timing*, not rate — we split on 76 % of eligible dragon-turns (95 % with two free exits) against the top ten's 52 %/46 %; their declined dragons eat 0.53 pearls in 5 rounds, ours 0.27; they eat 20 % more per dragon-turn in r20–39, worst on Trauma (0.073 vs 0.021) and PD. Evaluation-term implication stated by s1: value a split by the parent's expected intake over ~5 rounds against the child's safe intake — a concrete term for the reopened tuning surface (this pass: L20). |
+| L37 | 0.8 (note) | s1 authenticity tags: SSS's sonar-silent decoy 76 % flagged, Cutlery 46 % (flagged games −0.38 vs Elo); 80.6 % of side-games authentic. All corpus statistics should move to authentic-only (the next tempo reference included — it can then readmit SSS/Cutlery, excluded since 30 Sep). No weight change; a method requirement on every S-1-derived row. |
+| (new) L41 | **0.6** | s1 authenticated atlas: our best local family (hb1-12, fenrir-v19, sciel) plays like the ranks 11–30 second tier (Sabotage-d, SKKU, Peanut Butter, Heartbreaker, ~1960–2040); the top ten occupy niches 9 (calc, Stockfish, SSS), 12 (中国必须人能飞, Cache me outside — tighter clustering, more births/transits by r50), 1 (cheji bt, forgot to mention), 11 (Cutlery — deliberate recycling), and no local bot fills them except the Heartbreaker mimics. The local panel can only select within our niche: beating the zoo by more is not moving toward the top ten. This is a standing caveat on every local accept, mine included, and the argument for ladder A/Bs (tt-05 vs hb1-14) and niche-targeted mechanisms (L39 conversion, L14 map-driven exploration, niche-12 clustering) over more local panel points. |
 | L04 | 0.3 (no move; pointer) | alicia `s1c` is the first positive continuous signal in the programme (+0.016/gen over 15 gens, gate-shaped reward) but it is a reward slope, not a gate result, and the same lane's s1 reward gains died at the gate (alicia-03: −0.097). Re-score at alicia-04's D-032. |
 
 ## Standing duty 2 — rows the data has settled silently
@@ -247,8 +270,9 @@ the same director note so the registry order reflects one rule.
 | # | row / question | why it ranks | the one experiment | lane |
 |---|---|---|---|---|
 | 1 | **L20 re-opened: the tuning surface on the prior base** | this pass: two knobs clear both panels' economy (trapw20 +0.037/+0.022, unseen3 +0.151/+0.065 tempo-ACCEPT) where V06 measured +0.02 — the cheapest large direction in the programme | (a) trapw20 + a retention nudge (units lb is the only failing guard); (b) unseen3 with its transit/newborn churn paid down (fitted mouth cost / L30 siting); (c) a two-value scan each side of both knobs to map the cliff (dose 4 is null, 3 is huge) | clair follow-up, then lanes |
-| 2 | **unseen3 as a structure-gated starved-opening switch (L14 × L35)** | per-map: the whole gain is the starved cluster (trauma +1.64, qos_tr +1.48, default +0.43) — Esquie's L35 class; gate on own food knowledge (esquie-03b's key), not round | unseen cut only when the dragon has seen no food for k rounds / no bed ripening within 8 (esquie-03b's min_age form) — keeps the starved gains, should drop the dense-map h2h churn | clair or M-1 continuation |
+| 2 | **unseen3 as a structure-gated starved-opening switch (L14 × L35)** | two independent instruments now converge on the same lever: clair-04's per-map gain is the starved cluster (trauma +1.64, qos_tr +1.48) *and* s1's split-stall finds our worst foraging gap exactly on Trauma (0.073 vs 0.021 pearls/dragon-turn) with the fix named (split valued by the parent's expected intake) | per-map: the whole gain is the starved cluster (trauma +1.64, qos_tr +1.48, default +0.43) — Esquie's L35 class; gate on own food knowledge (esquie-03b's key), not round | unseen cut only when the dragon has seen no food for k rounds / no bed ripening within 8 (esquie-03b's min_age form) — keeps the starved gains, should drop the dense-map h2h churn | clair or M-1 continuation |
 | 3 | L39 state-keyed conversion | 0.8 this pass; 60 % of hb1-14's round-limit losses carry a material lead (measured here, 21/35); all four top teams convert | elim-state trigger ("no enemy met for 30+ rounds" for opponent-units ≤5) + co-designed crown/feeder, judged under the proposed phase-`end` tier | tt or re-issue |
+| 3.5 | crown-graft packaging (L31 evidence) | g01 = mimic→Ares at r150 ties hb1-12 (0.84) with the fastest opening; needs the 4 MiB truncation to upload; per-map hand-over round is the per-map direction | hb1 lane packaging (three lines + truncated model) |
 | 4 | L27 map-aware prior | every top team's steering uses remembered-map geometry (+0.75–2.59 pp); Ares already keeps the map | tt-09 / tt-11 panel results (running), then map features into the 540-round prior | tt / verso |
 | 5 | L38→ stacking: symseal + fitted warding on hb1-14 | Test 2: additive off-pool (all gen lbs positive); symseal's h2h +19 % is exactly what a *fitted* mouth/warding term taxes (Test 3 shows the flat −4 is too blunt on this base) | clair-10 = clair-07 + mouth cost at 07a's −1.5 dose (or fitted to observed mouth traffic), full D-032 | clair follow-up |
 | 6 | gate revision (a)+(b)+(c) | the gate cannot see the programme's two biggest live directions: endgame conversion (tt-05 flips to accept-shaped under phase-`end`) and off-pool gains (verso-05); clair-05 shows the gen panel catching what the pool rewards | adopt the three changes in one revision with the re-scored history (this file, standing duty 4); one recompute pass on the desktop | director |
@@ -268,3 +292,11 @@ All as proposals in standing duty 1 plus the three test sections; the director a
 - Screening rule (pre-registered): a Test-1 knob extends to seeds 1–3 + gen only if its pool s1 econ~ point
   estimate ≥ +0.03 (Renoir's V06 effects were +0.01..+0.02, all REJECT; anything ≤ +0.01 reads "bowl holds");
   +0.01..+0.03 adds seed 2 pool only.
+- 13:0x — screens done; four knobs ≥ +0.03 → extension queue (clair-03/04/05/06 + the clair-09 dose arm),
+  4,280 more games. No runner errors at any point (0 games with rc ≠ 0).
+- 17:17 — all runs complete. Totals: 11,224 games this pass (parent 1,224; 6 screens 960; c07/c08 2,448;
+  extensions 4,280 + extracts). Scorecards: `build/clair/score-*.json`; per-map tables
+  `build/clair/bymap-*.txt`; combined/endgame: `tools/clair/score_extra.py`.
+- Instruments used: D-032 lane gate (`tools/clair/lane.py`), tempo gate (`tools/s1/tempo_gate.py` — clair-04
+  ACCEPT −3.5 rounds, clair-03 NO GAIN), per-map decomposition (`tools/clair/by_map.py`), combined-panel +
+  endgame (`tools/clair/score_extra.py`).
