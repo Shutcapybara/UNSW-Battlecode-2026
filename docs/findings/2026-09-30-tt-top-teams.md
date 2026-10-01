@@ -183,6 +183,48 @@ games only.
 - **Next if pursued:** a mimic with the swarm plus Ares' crown election for conversion. This would combine tt-10's
   economy (+0.24) with a written conversion rule. The C++ map-memory features would add about 1 pp of direction.
 
+## Follow-up (1 Oct): per-map specialists, and a map-regime selector
+
+**Who is a specialist where** (`tools/tt/map_specialists.py`; Bradley-Terry over 25,124 ranked ladder games, team
+strength + per-map side advantage; residual = actual − expected win rate on the map, pp; * = beyond 2 SE). The all-games
+fit (64,594 games) agrees on every large effect.
+
+| team | strong on | weak on |
+|---|---|---|
+| Heartbreaker | Trophy +29*, Queen of Spades +27*, Autarky +11*, Dilemma +8* | Portals −37*, Slithery −36*, Schooltime −24*, Trauma −11* |
+| cheji bt | Queen of Spades +25*, Schooltime +15* | Autarky −24*, Slithery −11* |
+| Stockfish | Portals +23*, Schooltime +20* | Dilemma −24*, Devil −22*, Autarky −16* |
+| forgot to mention | Autarky +24*, Queen of Spades +14* | Schooltime −17*, Portals −14* |
+| Cache me outside | Trauma +26*, Default +23* | Schooltime −23*, Slithery −18* |
+| us (7) | Schooltime +32*, Portals +18 | Dilemma −25, Trauma −20*, Autarky −12 |
+
+**Why** (`tools/tt/map_mechanism.py`, each team's replays by map). The maps split by how games end:
+- *Elimination maps* (Trophy, Devil, Queen of Spades, Dilemma, Default, Autarky; all ≤ 1,024 tiles): the top teams
+  win 45–96 % of games by elimination. Heartbreaker and forgot to mention, early swarmers (2–6× the opponent's units
+  at r100), win here.
+- *Round-limit maps* (Portals and Slithery 0–2 % eliminations, Trauma 3–21 %, Schooltime mixed; Schooltime 2,400,
+  Slithery 1,701 and Trauma 1,152 tiles; Portals has 20 portal pairs on 512 tiles): the longest dragon at r500
+  decides. Stockfish ends with a longest dragon of 49–64 against 30–42 and wins. Heartbreaker's longest is 11–19
+  against 24–28, and it loses 82–84 % of games on Slithery and Portals.
+- The specialists lose the other regime in the matching way. Stockfish is *eliminated* in 41–48 % of games on Devil
+  and Dilemma, with 11 units at r100 against Heartbreaker's 13–20. cheji bt is the only team strong in both regimes,
+  through both an early swarm and an elected crown (Schooltime: total 256, longest 58).
+
+**Locally** (`tools/tt/local_map_table.py`, z1 panel, 16 games per map per seed): our mimics reproduce their team's
+regime profile — hb1-04 (Heartbreaker) wins 77 % on elimination maps vs 31 % on round-limit maps; tt-08 (forgot to
+mention) 79 vs 23 %; tt-10 (Cache me outside) 67 vs 22 %. Ares V06 is flat (77 / 76 %). Heartbreaker's direction
+prior lifts Ares mostly on elimination maps (hb1-14: 93 / 81 %). On round-limit maps every loss is at the round limit,
+often with a material lead: V06 12 of 31, hb1-17 5 of 9, tt-05 (feeding from ~r300) only 1 of 9.
+
+**Prior-weight sweep** (hb1-14 with λ for Heartbreaker's direction prior; z1 seed 1, vs V06 122–38):
+λ 0.5 → 129–31 (fail), 1.0 → 141–19 (hold), **2.0 → 144–16 (pass**; economy +0.11, win share +13.8 pp; uploadable
+3.74 MiB: `hb1-17-prior-lam20`), 4.0 → 140–20 (pass).
+
+**Selector** (`tools/tt/make_regime.py`; no map names): hb1-17 with tt-05's earlier feeding onset only when the
+dragon's own information says round-limit regime — W·H ≥ 1,100 (known at init), or ≥ 4 portal edges per 100 seen
+cells (Portals 7.8; elimination maps ≤ 2.3). `hb1-19-regime-feed140` (tt-05's onset) and `hb1-20-regime-feed200`
+(earlier still); both uploadable. Validation on z1 seeds 1 and 2 against hb1-17 is running.
+
 ## What to take, and what is open
 
 - **Conditional conversion, not a fixed earlier round.** Keep the swarm while elimination is on; convert on the top
