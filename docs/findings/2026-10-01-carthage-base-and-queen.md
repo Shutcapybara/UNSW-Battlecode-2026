@@ -151,6 +151,20 @@ The trap/blind premium adds ~10 points of queen survival on gen over 06 and leng
 but the pool queen still dies trapped (wall + body + self 171 of 259). Every queen arm so far trades 2–4 % gen economy
 for queen verdicts; none reaches the 0.5 survival bar.
 
+## carthage-03-queen-guard-nosplit (01 + 02 stacked; parent 00; re-run in full)
+
+| | pool | gen |
+|---|---|---|
+| Δecon~ [5 %, 95 %] | −0.044 [−0.062, −0.016] | −0.305 [−0.343, −0.272] |
+| Δwin [5 %, 95 %] | −0.022 [−0.052, +0.008] | −0.210 [−0.240, −0.182] |
+| Δunits@100 lb | −0.166 | −0.537 |
+| queen alive@490 (excl. pocket) | **22.6 %** (length 19.5 when alive) | 11.9 % (20.7) |
+| queen-decided W/L | **37 / 7** | 16 / 0 |
+
+**Verdict: REJECT.** The highest pool queen survival of any arm (a long, cautious queen survives the pool's traps), at
+the same production collapse on gen as 02. On the pool the queen verdicts flip from 1–7 to 37–7, yet pool win falls
+2 pp: the production loss costs more games elsewhere than the queen wins.
+
 Next: the sprint arms (04, 05) are on the panel; for H-Q1 the next design is a phase change rather than a premium —
 the queen produces in the opening as now, then retires to a safe, low-traffic region and stays small (tail shed by
 splitting) until a late regrowth window. and 03 (01+02) are on the panel; then an avoidance mechanism (keep the queen
