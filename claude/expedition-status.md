@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–15
+# Expedition — H-1 hypothesis steward, passes 1–16
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -27,6 +27,115 @@ untracked too. All six original source contracts and the fixed mouth-screen
 contract still match exactly. The heartbeat now targets this isolated path and
 pushes scoped commits from detached HEAD to origin/r/expedition. This supersedes
 pass 14's instruction to run games from the shared project directory.
+
+## Pass 16 — faster openings can lose the length race (2026-10-01)
+
+Continued in the isolated checkout from `88e4911ee`; the shared main checkout,
+its stashes and the three untracked dependencies remain untouched. Batch 018
+owned the exclusive game lock on entry, so no overlapping batch was started.
+The frozen 05/01 stronger-opponent screen stays unchanged through both seeds.
+
+
+Batch 018 closed **62 games / 31 matched pairs in 1,137.1 seconds**. The saved
+`audit-019-frontier.json` validates all 62 indexed records, with **59** arena/replay
+measurement discrepancies preserved and no source/replay/attribution/bookkeeping
+failures. These retain different estimands: inferred turn-time intake/material
+versus replay events/round-start snapshots. The partial aggregate is **18 parent / 13 candidate wins**, with five improved
+and ten worsened fixtures; it is not a complete-seed comparison. Confirmation
+has not started at this snapshot; 49 of 80 pairs remain. Batch **019-frontier** subsequently resumed the
+exact missing Slithery B/g01 parent fixture, one worker, the same 20-minute and
+96-game bounds. Its lock is now active; do not launch overlapping games.
+
+### Map and phase evidence
+
+Completed first-seed slices already show that productive opening choices need
+not win. Schooltime is **4 parent / 1 candidate wins** in four pairs, although
+05's opening tempo is **3.568 rounds faster**. All eight games reach r500. In
+seat B versus HB17, 05 has total-material margin **+150** at termination but
+longest-dragon margin **−22** and loses; 01 wins with margins +3 and +24. In
+seat A versus HB17, 05 has more r100 material (99 versus 52) and higher r250
+material share (.351 versus .289), yet finishes at longest margin −18 versus
++15. Seat A versus g01 also changes from win to loss (longest margin +18 to −4).
+This is observed phase/conversion evidence, not proof that a particular action
+or concentration rule caused the regression. Do not call better tempo a strength
+improvement. Saved replay-backed details: `frontier-schooltime-s1-phases.json`
+and the corresponding opening audit under `build/expedition/`.
+
+Other completed first-seed slices: Portals **4/2** despite tempo **−4.167**;
+QoS **3/3** with tempo **−7.296**; Default **2/3** with tempo **−20.026**.
+Positive delta means slower. These four slices have four paired fixtures each;
+keep the remaining maps and seed 2, rather than selecting the favorable maps.
+Autarky is 0/0 and **+5.410** rounds slower; Devil 2/2 and **+9.824**;
+Dilemma 2/1 and **+7.014**. These complete opening slices are heterogeneous even
+before later phases. No screen or full D-032 verdict is available from this prefix.
+
+### Gate audit and implementation
+
+Added the uncertainty analysis required by the already-frozen frontier contract:
+10,000 deterministic whole-map bootstrap resamples, retaining every paired seed,
+seat and opponent within each selected map. Reports cover expected-score and
+opening-tempo deltas overall, by seed and by opponent. Intervals describe the
+sampled maps and related local controls, not the contest field; single-map
+intervals are unavailable. Unequal map sizes retain fixture weights. These
+intervals **do not alter or participate in the frozen advancement rules**.
+Explicit win/draw/loss counts and the report-source hash are now included.
+
+All **28 no-game tests pass**. New tests verify that repeating observations over
+seeds cannot invent independent maps or narrow the interval, draw scoring and
+unequal cluster weighting, single-map uncertainty, and rejection of missing,
+duplicate or nonfinite pairs. Bot runtime files and contracts are unchanged.
+The original mean/median, tempo, opening/phase/map, canonical-versus-arena and
+sandbox obligations remain; no acceptance, registration or promotion.
+
+### New parallel-work cutoff and competing explanations
+
+Origin refreshed about 09:04 UTC: TT **17514485b**, Obscur **a8bf0a566**;
+HB **bfd67c37b** and Clair **0c55d4b4f** are unchanged. Read-only inspection,
+no merge or messages to other chats. These are their reports, not Expedition
+replications:
+
+- TT's r150 Cache-me-outside and forgot-to-mention handovers score 232/320 and
+  234/320 against V06's 244/320, despite stronger economy. Its portal-feeding
+  rule reports a Portals gain but a Default leak; the new hb1-23 area denominator
+  is an implementation, not yet evidence of a transferable gain. The frozen
+  Expedition HB17 control stays fixed, not replaced during this experiment.
+- Obscur proposes parent-conditioned r250 material share and r400 late-win
+  cohorts, minimum useful effect sizes, and unseen map twins. Parent conditioning
+  avoids selecting a changing candidate survivor set; it still measures a
+  baseline-defined cohort, not pure causal phase attribution. Its tool resamples
+  **map × opponent × seat** clusters with seeds together, which is a different
+  uncertainty assumption from Expedition's whole-map resampling. Do not equate
+  their confidence intervals or silently import the new gate.
+- Obscur is testing regime-dependent donor priors and proposes split restraint,
+  stronger converter opponents, and opponent-type inference. Avoid duplicating
+  its donor experiment before reading results. Its retrospective gate agreement
+  is useful calibration, not independent validation of a rule chosen using those
+  same historical outcomes. Our old failed verdicts remain unchanged.
+
+**Ledger proposals:** retain L20 reopening and downward L40 review; add text to
+L36/L39 that opening improvement and material accumulation can coexist with a
+lost length race against stronger controls. No numerical posterior change from
+this small first-seed sample. S1's split-restraint association remains a mechanism
+to test, not an instruction to copy an observed split rate.
+
+Ranked ten after this reconciliation:
+1. Complete 05's frozen stronger-opponent screen; separate map, phase and outcome.
+2. L39: state-triggered concentration/delivery, with longest-margin and late wins.
+3. L36: resource-aware split restraint/child placement versus forgone parent food.
+4. L03: midgame pressure and elimination, rather than population alone.
+5. L29/L37: prospectively compare phase metrics and map twins on held-out evidence.
+6. L27: read Obscur donor-regime results; seek a distinct architecture, not a clone.
+7. L37: diagnose Dilemma/transpose failures across mechanisms.
+8. L38: finish frozen symmetry information/collision transfer.
+9. L14/L20/L02: finish prior-base exploration/trap/cap scans without another dose sweep.
+10. L40: preserve the completed mouth repair and unfinished full panels; no automatic sequel.
+
+Next runnable action: inspect active batch 019-frontier; after it releases the
+lock, run `report.py --candidate expedition-05-explore3 --panel frontier-v1`,
+preserve its audit snapshot, then resume only missing fixed fixtures with
+`campaign.py --screen explore-frontier-v1 --execute --minutes 20 --max-games 96`.
+Apply `screen_report.py --screen explore-frontier-v1` only after all 80 pairs are
+present. No new mechanism is admitted before this bounded screen is completed.
 
 ## Pass 15 — finish the bounded test; challenge the base with stronger opposition
 

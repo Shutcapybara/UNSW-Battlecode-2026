@@ -4,6 +4,8 @@ Uses existing replays; stale opening audits are regenerated without new games.
 """
 import argparse
 import json
+import math
+import random
 from pathlib import Path
 from statistics import mean
 from collections import Counter
@@ -19,6 +21,58 @@ def decision(screen, checks):
     return dict(screen=screen, failed=failed,
                 verdict='NEGATIVE SCREEN; DO NOT ADVANCE' if failed else
                         'ELIGIBLE FOR BROADER TESTING; NOT ACCEPTED')
+
+
+def map_cluster_uncertainty(items, repeats=10000, rng_seed=20261001):
+    """Descriptive percentile intervals, resampling whole paired map clusters.
+
+    Keep every seed, seat and opponent within its selected map. The estimand is
+    the fixture-weighted mean delta, so unequal map sizes retain their weights.
+    These intervals describe this local map sample, not the contest population.
+    They do not participate in any frozen advancement rule.
+    """
+    if not items or repeats < 100:
+        raise ValueError('Need paired observations and at least 100 resamples')
+    clusters = {}
+    seen = set()
+    for x in items:
+        key = (x['panel'], tuple(x['key']))
+        if key in seen:
+            raise ValueError('Duplicate paired fixture')
+        seen.add(key)
+        values = (c.panel.gate.win(x['child']) - c.panel.gate.win(x['parent']),
+                  x['tempo'])
+        if not all(math.isfinite(v) for v in values):
+            raise ValueError('Nonfinite paired metric')
+        clusters.setdefault((x['panel'], x['key'][0]), []).append(values)
+    groups = [clusters[k] for k in sorted(clusters)]
+    sums = [(len(g), *[sum(v[i] for v in g) for i in range(2)]) for g in groups]
+    n = len(items)
+    estimates = [sum(g[i + 1] for g in sums) / n for i in range(2)]
+    draws = [[], []]
+    if len(groups) > 1:
+        rng = random.Random(rng_seed)
+        for _ in range(repeats):
+            selected = rng.choices(sums, k=len(groups))
+            count = sum(g[0] for g in selected)
+            for i in range(2):
+                draws[i].append(sum(g[i + 1] for g in selected) / count)
+    def interval(values):
+        if not values:
+            return None  # One map cannot estimate between-map uncertainty.
+        values.sort()
+        def quantile(q):
+            j = (len(values) - 1) * q
+            lo = int(j); hi = min(lo + 1, len(values) - 1)
+            return values[lo] + (values[hi] - values[lo]) * (j - lo)
+        return [quantile(.025), quantile(.975)]
+    return dict(method='paired whole-map cluster percentile bootstrap',
+        clusters=len(groups), pairs=n, resamples=repeats, rng_seed=rng_seed,
+        metrics={name: dict(mean_delta=estimates[i], interval95=interval(draws[i]))
+                 for i, name in enumerate(('expected_score', 'opening_tempo'))},
+        limitation='Descriptive only; few fixed maps and related controls cannot establish field '
+                   'generalization. Seeds, seats and opponents are kept together within maps. '
+                   'Not an advancement test; a single map has no interval.')
 
 
 def load_opening(candidate, pn, map_name, seed, rows):
@@ -92,6 +146,8 @@ def main():
     def summarize(items):
         return dict(n=len(items), parent_wins=sum(x['parent']['result'] == 'win' for x in items),
             candidate_wins=sum(x['child']['result'] == 'win' for x in items),
+            outcomes={arm: {result: sum(x[arm]['result'] == result for x in items)
+                           for result in ('win', 'draw', 'loss')} for arm in ('parent', 'child')},
             parent_points=sum(c.panel.gate.win(x['parent']) for x in items),
             candidate_points=sum(c.panel.gate.win(x['child']) for x in items),
             tempo_delta=mean(x['tempo'] for x in items),
@@ -111,6 +167,13 @@ def main():
                                  for o in sorted({x['key'][3] for x in measures}) for s in spec['seeds']}
     output['by_seat_seed'] = {f'{side}/s{s}': summarize([x for x in measures if x['key'][1] == side and x['key'][2] == s])
                              for side in 'AB' for s in spec['seeds']}
+    output['map_cluster_uncertainty'] = dict(
+        all=map_cluster_uncertainty(measures),
+        by_seed={str(seed): map_cluster_uncertainty([x for x in measures if x['key'][2] == seed])
+                 for seed in spec['seeds']},
+        by_opponent={o: map_cluster_uncertainty([x for x in measures if x['key'][3] == o])
+                     for o in sorted({x['key'][3] for x in measures})})
+    output['report_source_sha256'] = c.sha(Path(__file__))
     confirm = output['by_seed']['2']
     maps2 = [v for k, v in output['by_map_seed'].items() if k.endswith('/s2')]
     if screen == 'mouth-contest-v1':

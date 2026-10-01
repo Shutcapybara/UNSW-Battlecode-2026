@@ -264,5 +264,43 @@ class OpeningAuditTests(unittest.TestCase):
             paired_measure([1, 2], [1])
 
 
+class MapClusterUncertaintyTests(unittest.TestCase):
+    def fixture(self, map_name, seed, parent, child, tempo=0):
+        return dict(panel='frontier-v1', key=(map_name, 'A', seed, 'opp'),
+                    parent=dict(result=parent), child=dict(result=child), tempo=tempo)
+
+    def test_repeating_seeds_does_not_invent_independent_maps(self):
+        from screen_report import map_cluster_uncertainty as audit
+        rows = [self.fixture('gain', 1, 'loss', 'win', -4),
+                self.fixture('loss', 1, 'win', 'loss', 4)]
+        repeated = [dict(x, key=(x['key'][0], 'A', seed, 'opp'))
+                    for x in rows for seed in range(1, 11)]
+        base = audit(rows, repeats=1000)
+        replicated = audit(repeated, repeats=1000)
+        self.assertEqual(base['metrics'], replicated['metrics'])
+        self.assertEqual(replicated['clusters'], 2)
+        self.assertEqual(base['metrics']['expected_score']['interval95'], [-1, 1])
+        self.assertEqual(base, audit(list(reversed(rows)), repeats=1000))
+
+    def test_draws_and_unequal_map_sizes(self):
+        from screen_report import map_cluster_uncertainty as audit
+        rows = [self.fixture('a', s, 'loss', 'draw') for s in (1, 2, 3)]
+        rows.append(self.fixture('b', 1, 'win', 'loss'))
+        self.assertEqual(audit(rows, repeats=100)['metrics']['expected_score']['mean_delta'], .125)
+        single = audit(rows[:3], repeats=100)
+        self.assertEqual(single['metrics']['expected_score']['mean_delta'], .5)
+        self.assertIsNone(single['metrics']['expected_score']['interval95'])
+
+    def test_missing_duplicate_and_nonfinite_pairs_rejected(self):
+        from screen_report import map_cluster_uncertainty as audit
+        row = self.fixture('a', 1, 'loss', 'win')
+        for rows in ([], [row, row], [dict(row, tempo=float('nan'))]):
+            with self.assertRaises(ValueError):
+                audit(rows, repeats=100)
+        with self.assertRaises(KeyError):
+            audit([dict(panel='frontier-v1', key=('a', 'A', 1, 'opp'),
+                        parent=dict(result='win'), tempo=0)], repeats=100)
+
+
 if __name__ == '__main__':
     unittest.main()
