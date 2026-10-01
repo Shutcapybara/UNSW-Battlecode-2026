@@ -26,10 +26,27 @@ nice 10 with `--jobs 14`.
 
 | Version | Mechanism (switch) | Parent | Expected sign | Pool Δecon~ [lo, hi] | Gen Δecon~ lo | Win Δ [lo] | Tier-2 worst | Queen alive@490 | Verdict |
 |---|---|---|---|---|---|---|---|---|---|
-| 00-base | hb1-14, D-033 terms off | hb1-14 | — | (re-measure, running) | | | | | base |
+| 00-base | hb1-14, D-033 terms off | hb1-14 | — | abs: pool econ~ 1.139, win 0.826; gen econ~ 1.111, win 0.689 | — | — | wall 6.89 self 4.62 /1k (pool) | pool 0.9 %, gen 0.6 % | base (the 1.2.3 zero) |
 | 01-queen-guard | queen prices its own death +24 material (`queen_guard`) | 00 | queen alive@490 ↑, win ↑ (r500 games), econ ≈ 0/− | queued | | | | | |
 | 02-queen-nosplit | queen never takes a production split (`queen_nosplit`) | 00 | queen length ↑, queen alive ↑, econ − (fewer births) | queued | | | | | |
 | 03-queen-guard-nosplit | 01 + 02 stacked | 00 | both | queued | | | | | |
+
+## Base re-measured under unswbc 1.2.3 (the new zero; 1,224 games, seeds 1–3, both seats; absolute numbers — no
+post-change references published yet)
+
+| Panel | n | win | econ~ | p50 / p100 / p150 / p250 (median, normalised) | units@100 | total@100 | wall / self / ally body / ally h2h per 1k |
+|---|---|---|---|---|---|---|---|
+| pool | 480 | 0.826 | 1.139 | 1.09 / 1.14 / 1.16 / 1.17 | 1.32 | 1.20 | 6.89 / 4.62 / 1.83 / 1.86 |
+| gen | 744 | 0.689 | 1.111 | 1.16 / 1.11 / 1.11 / 1.07 | 1.40 | 1.42 | 2.92 / 2.04 / 0.95 / 0.96 |
+
+Queen (`tools/carthage/queen.py carthage-00-base --maps`): pool — 219 of 480 games reach r490; queen alive at r490
+in 2 (0.9 %), queen length at r490 mean 0.1 (15 when alive), queen is the longest own dragon in 0.9 %; the zoo's
+queen alive in 3.2 %. Verdicts: elimination 262, longest 199, total 10, **queen 8 (we won 1, lost 7)**. Median queen
+death r65; causes wall 170, h2h 146, self 88, body 28. Gen — 157 of 744 reach r490; queen alive 0.6 %; median death
+r66, h2h 464 of 633 (gen opponents are hunters). Per map: Portals, Schooltime, Slithery, Trauma (and their gen twins)
+are the maps that reach r490 (46–48 of 48); Devil, Dilemma, Trophy never do.
+
+CPU probe (`lane.py cpu`): 00 max 10.83 M points/turn; 05-free-sprint max 11.30 M (limit 30 M), 0 errors.
 
 ## Queen on the base (first look, 83 pool games, seed 1, partial)
 
