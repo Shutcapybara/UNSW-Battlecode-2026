@@ -286,3 +286,22 @@ costs 89 M); direct form (three uint16 arrays per node, same tables, float16 lea
 SPSA on the opening knobs (`es2`, base `c3-big540`, net-income objective on data fixtures): stopped after 6
 iterations; per-iteration J standard error 0.07–0.11, check vs base at iteration 6 −0.015 ± 0.067. Resumable from
 `build/verso/es/es2/history.jsonl`.
+
+## PAUSED (1 Oct 15:30 ACST, lead: wrap up, resume when resources allow)
+
+All Verso jobs stopped. Parent: `verso-05-hb800-prior`. Finding: `docs/findings/2026-10-01-verso-three-tier-loop.md`.
+
+Results since the last table: pearls-per-crowding own maps w 0.5 vs verso-05 (seed 1): pool win −0.013, econ~ +0.025;
+gen win 0.000, econ~ −0.033, length −0.174 — no gain. Memory sweep (direction accuracy over v5 alone, 1,200 games
+each, held out by game): cheji bt v5 0.7601, best +0.0042 (own path window 4), seen-dragon density +0.0037 at decay
+0.9, sonar ≤ 0, pearl density +0.0019, remembered pearls +0.0007; Stockfish v5 0.7795, best +0.0010 (path 4), all
+others ≤ +0.0007; longer windows / decays do not help more. Heartbreaker control stopped after the base fit (0.8400).
+
+Resume:
+- Queue: lines 52–54 of `build/verso/queue.txt` (pearls-per-crowding w 1 own maps; w 1 and 0.5 with the broadcast);
+  restart `build/verso/queue_runner.sh` after setting `build/verso/queue.pos` to 51 (line 52 was killed mid-run;
+  finished games are kept).
+- Opening SPSA: `tools/verso/es.py run es2 --arm c3-big540` resumes from its history (noise-limited; low priority).
+- Data: Heartbreaker v5 rows for 3,872 games in `build/hb1/v5/corpus` (this worktree); cycle-1 own data in
+  `build/verso/data/c1a`; models in `build/verso/models`.
+- Copies of hb1-14 / tt-05 / tt-06 sit untracked in `bots/` for measurement only.
