@@ -1,0 +1,62 @@
+{
+ "candidate": "rome-01-nodevil",
+ "candidate_dir": "bots/rome-01-nodevil",
+ "parent": null,
+ "note": "",
+ "seeds": [
+  1,
+  2,
+  3
+ ],
+ "fingerprint": "28132ee52d63c033a40a72e543a6497ce6522adbb824cbdfce052d43e7823c45",
+ "gate": {
+  "verdict": "n/a",
+  "why": "no parent given: absolute numbers only (the V04-style report)"
+ },
+ "panel": "z1",
+ "candidate_stats": {
+  "n": 480,
+  "wld": [
+   401,
+   78,
+   1
+  ],
+  "exp_share": 0.8364583333333333,
+  "checkpoints": {
+   "pearls@50": 1.0910973084886129,
+   "pearls@100": 1.135667396061269,
+   "pearls@150": 1.1572097803484787,
+   "pearls@250": 1.1751412429378532
+  },
+  "checkpoints_raw": {
+   "pearls@50": 30.0,
+   "pearls@100": 97.0,
+   "pearls@150": 164.0,
+   "pearls@250": 264.0
+  },
+  "economy_mean": 1.1397789319590534,
+  "tier1": {
+   "units@100|map": 1.3157894736842106,
+   "total@100|map": 1.2,
+   "births@100|map": 1.1191250369494532
+  },
+  "tier1_raw": {
+   "pearls@50": 30.0,
+   "pearls@100": 97.0,
+   "pearls@150": 164.0,
+   "pearls@250": 264.0,
+   "units@100": 22.0,
+   "total@100": 51.0,
+   "births@100": 40.0
+  },
+  "tier2": {
+   "death_wall_per1k": 5.6628748074716295,
+   "death_self_per1k": 3.765440645086558,
+   "death_ally_body_per1k": 1.550683947468103,
+   "death_h2h_ally_per1k": 0.6279592501109584,
+   "death_invalid_per1k": 0.0
+  },
+  "unreferenced_maps": []
+ },
+ "parent_stats": null
+}

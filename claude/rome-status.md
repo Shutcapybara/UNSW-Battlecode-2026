@@ -1,0 +1,34 @@
+# Rome status — P2 tester
+
+**Lineage:** Rome · **branch:** `r/rome` · **worktree:** `../wt-rome` · **host:** MacBook Pro (18 cores).
+Bot snapshots live under `bots/rome-<nn>-<slug>/`; tools under `tools/rome/`.
+
+## Setup
+
+- `rome-00-hb1-base` is an exact copy of `bots/hb1-14-prior-r540`.
+- `rome-01-nodevil` is the measurement base: same prior with D-033's three `W==32 && H==16` terms gated off through `Params::shape_terms=false`.
+- `tools/rome/lane.py` copies the Verso D-032 runner; only the output paths and descriptive name point to Rome. `queen_metrics.py` measures queen survival, mean/median length and longest-dragon share from panel replays, and audits sprint charges and tiebreak messages.
+- Golden check of the exact copy: recorded from `hb1-14-prior-r540` and replayed to `rome-00-hb1-base` on Schooltime, seed 1 vs Yuna: **0 divergent / 21,479 turns**. Runtime available here was `unswbc 1.2.2`.
+- D-033 ablation parity on the same Schooltime transcript: `rome-01-nodevil` **0 divergent / 21,479 turns** (terms are inactive on this map).
+
+## Measurements
+
+- The repository venv was upgraded from `unswbc 1.2.2` to **1.2.3** at the user's direction (via `uv pip`, because the venv had no pip module). The isolated `/tmp/rome-venv` attempt had failed; it is not used.
+- Required base scorecard completed from `rome-01-nodevil` with `--panel both --seed 1,2,3 --jobs 16`. Pool and gen fixtures are complete (**480/480**, **1,392/1,392**); scorecard and queen reports are written. The Mac host rejected `nice -n 10` (`setpriority: Operation not permitted`); panels used 16 workers on 18 cores, leaving two cores unused.
+- Baseline absolute scorecard (new 1.2.3 zero; no parent comparison): pool W-L-D **401-78-1**, expected-score share **83.65%**, normalized pearl checkpoints mean **1.1398** (r50/r100/r150/r250: **1.091/1.136/1.157/1.175**), dragons@100 **1.316**, length@100 **1.200**, births@100 **1.119**. Tier-2 deaths per 1k dragon-turns: wall **5.663**, own body **3.765**, ally body **1.551**, ally head-on **0.628**, invalid **0**. Gen W-L-D **1,041-351-0**, expected-score share **74.78%**; normalized field references unavailable, raw per-map medians: pearls r50/r100/r150/r250 **35/114/176/235**, dragons@100 **27**, length@100 **65**, births@100 **46**. Gen tier-2 rates per 1k: wall **0.047**, own body **0.423**, ally body **0.459**, ally head-on **0**, invalid **0**. Post-rule field targets/references are not yet published; these are absolute base values, not a gate verdict.
+- Queen audit: pool (480 games) survival at r490 **0.42% (2/480)**; mean length dead-as-zero **0.063**, median **0**; longest at r490 **0.42% overall (2/480), 100% when alive (2/2)**; longest over recorded r0–490 rounds **11.17% (18,728 / 167,682 team-round checks)**. Gen (1,392 games) survival **0.43% (6/1,392)**; mean length dead-as-zero **0.096**, median **0**; longest at r490 **0.43% overall (6/1,392), 100% when alive (6/6)**; longest over recorded r0–490 rounds **17.14%**. D-040 checks across both panels: all **72,334/72,334** measurable successful sprint charges matched `max(0, steps - ceil(start_length/4))`; 422/422 longest-dragon tiebreaks had tied queen lengths; all 38 queen-tiebreak winners matched queen lengths.
+- D-040 replay preflight from finished r500 Trauma fixtures: the engine reported `longest dragon, 19 to 11`; both lowest-id queens were dead (length 0), so the queens tied before the longest-dragon tiebreak. One replay had a queen tiebreak with queen lengths 11–0 at r490; another used the longest-dragon tiebreak with queen lengths 0–0 at r490. In the second replay, 36 sprint actions included 33 measurable successes, all of which matched `max(0, steps - ceil(start_length / 4))`; 3 fatal actions were excluded because they do not expose the charge in resulting length.
+- Do not use old-rule results as the new zero. The 1.2.3 base and queen panel aggregates above are complete.
+
+## Queue
+
+1. Complete: measured both 1.2.3 panels and recorded `rome-01-nodevil` as the post-rule zero.
+2. Complete: queen, sprint-cost, and tiebreak audits cover pool and gen replays.
+3. L10 claimed: `rome-02-far-contact` skips direct head-on paths when the contact cell is >6 Manhattan cells from any currently known bed. Preregistered expectation: reduce enemy head-on losses per 1k dragon-turns; economy neutral-to-positive; D-032 pool/gen guards and per-map deltas decide. CPU probe passed: max 10.82M points, 0 errors on schooltime, portals, trauma, big_empty.
+
+## Cycle table
+
+| Version / arm | Mechanism | Pool | Gen | CPU | Verdict |
+|---|---|---|---|---|---|
+| rome-01-nodevil | Post-rule base baseline | 480 games; W-L-D 401-78-1; exp-score 83.65%; norm pearls 1.1398 | 1,392 games; W-L-D 1,041-351-0; exp-score 74.78% | 16/18 workers; host denied nice 10 | measured; new zero |
+| rome-02-far-contact | L10: skip head-on paths >6 Manhattan cells from known beds | pool 480/480; W-L-D 405-74-1, econ 1.1398, exp-score 84.48% | gen 1,253/1,392 at user wrap-up; unscored | 10.82M max / 0 errors | incomplete; no D-032 verdict |
