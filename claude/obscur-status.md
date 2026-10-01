@@ -5,6 +5,171 @@ Prompt: `docs/hub/prompts/2026-10-01-H1-hypothesis-steward.md`. Branch `r/obscur
 SF-1 weights via `M:` params, 2 h per-game timeout; `rescore.py` / `gates.py` = the gate audit). Nothing registered,
 no other lane's tree edited. Everything below is a **proposal** for the director; ledger edits are not made here.
 
+## Wrap-up — 1 Oct 2026, ~20:30 ACST (lead's instruction; lane paused)
+
+**State.** Paused on the lead's instruction after the desktop disk filled (1.8 TB; Obscur held 18 GB, mostly
+replays). All Obscur jobs are stopped. I deleted only my own regenerable replays for four arms that had finished
+(`obscur-02-mouth`, `o-ally14`, `o-threat05`, `o-visit005`); their features and verdicts are kept.
+Nothing is registered. No other lane's files were touched.
+
+**First-pass tests: results.** All on `verso-05-hb800-prior`, using Verso's byte-identical parent games. Clair ran
+the same tests independently on `hb1-14`.
+
+| Test | Arm | Seeds | Pool econ~ [lb] | Gen econ~ [lb] | Win pool / gen | Blocked by | Reading |
+|---|---|---|---|---|---|---|---|
+| Additivity (bare) | `obscur-01-sym` | 1–3 | **+0.031 [+0.003]** | **+0.021 [+0.009]** | +0.004 / **+0.018 [+0.002]** | pool units lb −0.073, length lb −0.029, pool win lb −0.025, ally h2h +21 % / +20 % | symmetry's gain **adds to the prior** on both panels; its cost is portal head-ons on the prior's convoy traffic |
+| Additivity (accepted stack) | `obscur-03-symseal` | 1–3 | +0.029 [+0.000] | **+0.028 [+0.016]** | +0.002 / +0.005 | pool units lb −0.066, h2h +25 % / +20 % | the seal no longer pays for the head-ons; Clair: same on hb1-14 (gen all lb > 0) |
+| Mouth rule | `obscur-02-mouth` | 1 (stopped) | **−0.126 [−0.173]** | +0.015 | −0.069 / +0.002 | everything on pool | REJECT, three hosts (Clair −0.078 at s1–3, Expedition) |
+| Bowl | `o-unseen3` | 1 | **+0.148 [+0.083]** | **+0.061 [+0.021]** | −0.044 / +0.028 | pool win lb, h2h +29 % | moves on the prior base; Clair s1–3: tempo ACCEPT −3.5 rounds, gen win +0.045 |
+| Bowl | `o-trap20` | 1 | **+0.041 [+0.012]** | +0.007 | −0.041 / −0.038 [−0.067] | wins on both panels | economy without outcome (the L29 trap); Clair s1–3: both panels lb > 0, blocked by units |
+| Bowl | `o-capsel384` | 1 | −0.002 | +0.025 (mean +0.070, outlier-carried) | −0.031 / +0.038 | pool | a late/off-pool lever (Clair: p@250 lb > 0 both panels) |
+| Bowl | `o-ally14` | 1 | +0.046 | −0.013 | −0.062 / −0.040 | wins | worse than on Maelle's base; identical on hb1-14 (−0.062) |
+| Bowl | `o-threat05`, `o-visit005` | 1 | −0.015 / +0.005 | +0.030 / −0.014 | −0.031 / −0.044 | pool | flat on both bases |
+
+Answers to the three questions in the brief:
+1. **The bowl was V06's, not Ares's.** On two prior bases the weight moves now shift economy and net income
+   (unseen3, trap20, capsel). Every row that rests on "V06 says no" re-opens (L20 → 0.3). What has *not* moved,
+   at seed 1 on either base, is pool wins: the prior already wins 88 % of pool games.
+2. **The two information gains are additive** in economy and off-pool win, on both bases. The stack is blocked
+   by portal head-on deaths, which the old seal no longer offsets.
+3. **The mouth rule does not survive the prior.** It still cuts head-ons by about 20 %, but it taxes the prior's
+   productive traffic.
+
+**Main contributions** (details in the sections below):
+- **Gate audit:** the shared gate tool does not implement D-032. Its econ~ statistic and plain bootstrap
+  mis-scored three past decisions. Economy is blind to endgame conversion.
+- **Phase gate** (`tools/obscur/phasegate.py`): opening tempo, midgame share@250 and endgame late win, each
+  conditioned on the parent's game, with minimum effect sizes. It agrees with every judgment call already made
+  and keeps every rejection. Offered as four amendments to Clair's BENCHMARKS revision.
+- **Per-map twin rule:** per-map effects transfer to unseen transposed and recorded twins (correlation
+  +0.4…+0.9), so structure-gated switches are a non-overfit route to map specialisation (L46).
+- **Corrections:**
+  - lune-r1-07's late cap is clamped to 160, not 384.
+  - hb1-12 was a HOLD on z1 two-seed pairs, not a D-032 accept.
+  - L39 misquotes TT's figures.
+  - My own 07c call (pass 2).
+
+**Unfinished, with resume commands:**
+- `o-regime-donor` (out-of-basin: Heartbreaker prior on elimination-regime maps, Stockfish on round-limit maps)
+  stopped at 49/160 pool seed-1 games. Its control `o-sf-all` has not started. The two-head model file was
+  deleted to free space; rebuild it (17 s) with:
+  `.venv/bin/python tools/verso/export.py blob build/obscur/models/hb800+sf.bin dir=<wt-verso>/build/verso/models/c3-hb800/dir.ubj dir2=<wt-verso>/build/verso/models/c0-sf/dir.ubj --bot verso-05-hb800-prior`.
+  Parity (Stockfish weight 0) was byte-identical. Then run `build/obscur/queue5.sh`.
+- Seeds 2–3 for `o-unseen3`, `o-trap20` and `o-capsel384` (`build/obscur/queue4.sh` minus its first step; finished
+  games are skipped).
+- Phase-gate re-score: 10 of 16 pairs done (`build/obscur/phase.txt`). Resume with
+  `.venv/bin/python tools/obscur/phasegate.py build/obscur/pairs-phase.json`. Tempo decoding is cached through the
+  `build/s1/tempo_cache` symlink to Verso's cache.
+- Ranked ten (pass 2): items 2 (running), 4 and 8 are the out-of-basin slots. Items 3 (split restraint) and 9
+  (Dilemma corridor check) are the cheapest unbuilt exploits.
+
+## Pass 2 — 1 Oct 2026, ~19:00 ACST (update)
+
+**Parallel work read since pass 1b:** Clair (`r/clair`, a third H-1 steward, MacBook) ran the same first-pass tests
+on `hb1-14` to seeds 1–3 and applied a gate revision to BENCHMARKS on its branch; Expedition (`r/expedition`)
+continued its nodevil-base screens; TT (`r/tt`, merged to main) — regime selector, λ sweep, r150 hand-offs,
+tt-15; S-1's next-steps finding (`docs/findings/2026-10-01-s1-next-steps.md`, now on main) and its 20-bot candidate
+gauntlet (`docs/analysis/benchmarks/candidates-2026-10-01.md`); Verso's and Alicia's closing reports.
+
+### What the parallel work settles
+
+- **Two prior bases, one picture (my verso-05 seed-1 screens vs Clair's hb1-14 seeds 1–3).** The six weight moves
+  shift the economy on the prior base where they did not on V06 — same signs and sizes on both bases (unseen3
+  +0.148 / +0.192 pool s1; trap20 +0.041 / +0.037; ally −1.4 win −0.062 on *both*). Clair's three-seed rows:
+  unseen3 pool +0.151 [+0.118, +0.187], gen +0.065 [+0.046, +0.091], gen win +0.045 [+0.018, +0.073], **tempo
+  ACCEPT −3.5 rounds** (net income, not churn), blocked by ally head-on +37 %; trap20 both panels lb > 0
+  (+0.037 / +0.022), blocked by pool units lb; capsel a late lever (p@250 lb > 0 both panels, gen win +0.039);
+  ally −1.4 pool-fitted (gen −0.058). **Reading: the bowl was a property of V06's evaluation; the prior moved the
+  base off it.** It moved *economy and net income*; pool wins did not move at seed 1 on either base (the prior
+  already wins 88 %), which is why the off-pool panel and the phase measures matter.
+- **Additivity (L38):** Clair's symseal on hb1-14 — gen economy, units, length and win all lb > 0; pool near-miss on
+  ally head-on +19 %. My obscur-03 on verso-05 (seeds 1–3): pool econ~ +0.029 [+0.000], gen +0.028 [+0.016],
+  gen units +0.060, h2h +25 % / +20 %. Same result on two bases: **symmetry adds off-pool; its cost is portal
+  head-ons on the prior's convoy traffic.**
+- **Mouth rule (L40):** REJECT on both prior bases (Clair −0.078 pool at seeds 1–3; mine −0.126 at seed 1) and
+  negative on Expedition's base: the tax now lands on the prior's productive convoys. Three hosts.
+- **Correction to pass 1 §0.1.** gustave-07c on its own parent is **not** a reject on the evidence: its pool
+  mean-economy loss is not reduced recycling (own-corpse pearls@250 200.9 → 196.5, other pearls 260.6 → 258.1 —
+  both down a little), and under the phase gate it is opening tempo −0.60 [−1.05, −0.18], win +0.024 [+0.004,
+  +0.045], midgame and endgame flat: a small, real hold. Its registration question is moot anyway: it is
+  negative on the production (prior) base.
+- **S-1 next steps: we split too eagerly, not too little.** 75 % of eligible dragon-turns vs the top ten's 52 %;
+  a declined split eats 0.53 pearls in five rounds vs our 0.27; top ten +20 % intake per dragon-turn in r20–39,
+  children die less (37 % vs 44 %). This reverses the production framing of L30/L36 and is untested as a
+  mechanism.
+- **TT:** the Heartbreaker prior after r300 adds nothing (tt-15 = V06), so hb1-14's gain is steering in the first
+  300 rounds; the mimic hand-off line is closed for Cache me outside and forgot to mention (both below V06); λ 2
+  passes z1 at two seeds (hb1-17, 283–37); the portal-density feeding rule gains on Portals (+8.75 pp [+0.6,
+  +16.9], 10 seeds) and leaks on Default (fixed in hb1-22).
+
+### The gate — Clair's revision plus four amendments
+
+Clair (branch `r/clair`, BENCHMARKS "Start here (1 Oct revision)") and I reached the same four changes
+independently — an endgame tier, the cull exemption from the own-body guard, panel symmetry (off-pool gains can
+accept), the cluster bootstrap as authority. Two stewards converging is evidence those four are right. To avoid
+a workspace clash on BENCHMARKS.md I do **not** write a competing revision; I propose four amendments to Clair's
+block, each built and re-scored (`tools/obscur/phasegate.py`):
+
+1. **Midgame instrument (Clair's named gap):** total_share@250 — our length over both sides' at r250, BENCHMARKS'
+   strongest win predictor (log-odds 2.2, cross-map 0.59) and net of churn because length is what is left after
+   recycling. Usable now, unlike a tempo reference rebuilt to r300 (needs the S-1 corpus, not on the desktop).
+2. **Condition each phase on the parent's game, never the candidate's.** Midgame on fixtures whose *parent* game
+   is still running at r250; endgame = win on fixtures whose parent game reaches r400. Clair's lead-loss rate is
+   conditioned on the candidate's own round-limit games, so a candidate that eliminates more early is judged on
+   a harder residue (verso-01's longest@499 fell 6 while it won 10 pp more).
+3. **Minimum useful size beside significance:** a phase counts as a gain only if significant *and* tempo ≤ −1.5
+   rounds, share@250 ≥ +0.01, late win ≥ +0.02 (without it, 07c's −0.6-round tempo would accept).
+4. **Per-map with twins (pass 1b G7):** a local hold must replicate on the cluster's unseen transposed/recorded
+   twins.
+
+Re-scored with the phase gate so far (9 of 16 pairs; the rest are decoding):
+
+| Pair | Recorded | Phase gate | Opening tempo | Midgame share@250 | Endgame late win | Win |
+|---|---|---|---|---|---|---|
+| verso-01 vs verso-00 | ACCEPT | ACCEPT (all three phases) | −7.66 [−9.17, −6.13] | +0.116 [+0.089, +0.141] | +0.123 [+0.072, +0.165] | +0.100 [+0.066, +0.130] |
+| cycle 2 vs cycle 0 | REJECT (letter) | **ACCEPT** (opening, midgame) | −3.66 [−5.16, −2.33] | +0.079 [+0.054, +0.105] | +0.049 [−0.003, +0.096] | +0.049 [+0.022, +0.075] |
+| verso-05 vs cycle 2 | lane parent (lead) | **ACCEPT** (midgame, endgame) | −1.53 [−2.47, −0.66] | +0.036 [+0.019, +0.054] | +0.101 [+0.056, +0.146] | +0.028 [+0.007, +0.050] |
+| verso-05 vs cycle 0 | — | **ACCEPT** (all three) | −4.46 [−5.88, −3.09] | +0.093 [+0.067, +0.121] | +0.110 [+0.067, +0.159] | +0.077 [+0.052, +0.104] |
+| gustave-07c vs 01 | HOLD | HOLD (with amendment 3) | −0.60 [−1.05, −0.18] | +0.010 [−0.001, +0.023] | +0.035 [−0.002, +0.069] | +0.024 [+0.004, +0.045] |
+| verso-06 vs 05 | REJECT (HOLD in Verso) | **ACCEPT** (midgame) | +0.19 [−0.63, +1.12] | +0.052 [+0.030, +0.075] | +0.038 [−0.007, +0.078] | +0.022 [+0.002, +0.045] |
+| gustave-08a vs 01 | REJECT | REJECT (dust guards, wall/h2h on both panels) | +0.48 | +0.004 | +0.013 | −0.010 |
+| maelle-04 vs 02 | REJECT | REJECT (gen win ub −0.027; units) | −2.07 [−3.07, −1.14] | +0.013 | +0.055 [+0.013, +0.095] | −0.024 |
+| maelle-03 vs 02 | REJECT | REJECT (gen win ub −0.008; units) | −0.02 | +0.002 | +0.052 [+0.013, +0.091] | −0.028 [−0.055, −0.001] |
+
+Reading: the phase gate agrees with every decision the director or the lead already took by judgment (keep the
+large prior, keep verso-05), with Verso's own HOLD-over-letter for verso-06 (midgame +0.052), and with every
+rejection; no rejection becomes an accept through a phase measure. The phases separate cleanly where the economy
+statistic blurred them: verso-05's gain over cycle 2 is midgame and endgame, cycle 2's is opening and midgame.
+The economy statistics stay as printed diagnostics (they disagree with the outcome on o-trap20: pool econ +0.041
+[+0.012], win −0.041 on both panels — the L29 trap the phase gate was built to avoid).
+
+### Rows (pass 2; pointers above)
+
+| Row | Pass-1b proposal | Pass 2 | Why |
+|---|---|---|---|
+| L04 | 0.3 | 0.3 + text | "flat bowl" holds for V06's evaluation only; on the prior base hand moves shift economy (above). Fitted weights still do not transfer off-pool (alicia-04) |
+| L20 | 0.1 | **0.3** (revival) | its trigger ("a knob shows a consistent seat-independent +0.03") fired on two prior bases (trap20 +0.037/+0.022 both panels lb > 0 on hb1-14; +0.041 [+0.012] on verso-05; unseen3 on both). One step: no knob has yet passed every guard |
+| L30 | 0.5 | **0.3** | S-1: we over-split (75 % vs 52 % of eligible turns) and our children die more; more cramped splits is the wrong direction |
+| L38 | 0.7 | 0.7 | additive off-pool on two prior bases; pool blocked by head-ons on both (Clair proposes 0.75 — off-grid) |
+| L40 | mechanism 0.5, fix dormant | same | three hosts now |
+| L46 | 0.7 (new) | 0.7 | Clair's per-map decomposition independently finds the live levers are map-class (unseen3 on the starved cluster, trap20 on corridor/sparse maps, exactly zero on dense maps) |
+| L47 (new) | — | 0.5 | **Split restraint**: declining a split when food is near (the top ten decline 48 % of eligible splits and eat 2× in the next five rounds) raises intake in r20–50 and newborn survival. S-1 next steps; untested |
+
+### Ranked ten (pass 2) — seven exploit, three out-of-basin
+
+| # | Kind | Row(s) | Test | Lane |
+|---|---|---|---|---|
+| 1 | gate | L44 | director merges Clair's BENCHMARKS revision with the four amendments above; `phasegate.py` as the shared tool | director |
+| 2 | **out-of-basin** | L46, L27 | **donor prior by map regime**: Heartbreaker where games end by elimination, Stockfish where they go to the round limit (TT's structure test, no map names) — `obscur-04-regime-donor` + Stockfish-everywhere control, **running** | Obscur |
+| 3 | exploit | L47, L36 | split restraint when a known pearl is within k steps and the head has room; tempo + phase gate | open lane (rc/M-1) or Obscur |
+| 4 | **out-of-basin** | panel | **converters and top-ten-like bots in the panel**: our zoo never converts, so neither economy nor conversion is tested against the play that beats us; add tt-05/tt-10/hb1-04 (S-1's gauntlet style slots) as a third panel, scored by the phase gate | Obscur (panel), director (adoption) |
+| 5 | exploit | L14, C3 | unseen3's churn paid down (its head-on +37–40 % on both bases) — unseen3 + a fitted portal-mouth cost (gustave-07a's −1.5 dose), not the −4 tax | Clair (has the 3-seed parent) |
+| 6 | exploit | L38, L40 | symmetry + a head-on fix that does not tax the convoy (sender-side own-traffic gate, L42) | open |
+| 7 | exploit | L39 | TT's hb1-21/22 portal-feeding rule and λ 2 under the phase gate on both panels (z1-only so far) | TT |
+| 8 | **out-of-basin** | new | **opponent-type inference**: from enemy units/lengths our dragons have seen by r100–150, classify swarmer vs converter and time our conversion on it (TT: opponent units at r300 predicts late eliminations; our own sightings are the observable stand-in) | open |
+| 9 | exploit | L36, Dilemma | corridor-aware room check (Aline-22's diagnosis) — Dilemma loses under every mechanism | Obscur after #2 |
+| 10 | exploit | L01/L25 | late cap clamp 160 vs 384 vs 80 (pass 1) | Obscur |
+
 **Pass 1b — 1 Oct 2026, ~17:30 ACST** (update): seed-1 results for six arms (§1), the per-map/twin view (§1b), new evidence from Verso's final report, Alicia's closing report, TT's map-specialist/λ/regime commits and the Expedition lane; rows revised in place (marked "pass 1b").
 
 **Pass 1 — 1 Oct 2026, 15:00 ACST.** Read: HYPOTHESES (L01–L40 and log), D-029–D-039, BENCHMARKS, every lane's status
@@ -15,7 +180,7 @@ nice 10 on the lead's instruction, ~75–100 games/h).
 
 ## 0. Three things the director should see first
 
-1. **`gustave-07c-mouthroute` is not a HOLD; it is a REJECT under the lanes' own letter** and under any economy
+1. *(Corrected in pass 2: on the evidence 07c is a small real HOLD on its own parent, and a REJECT on the prior base — see Pass 2.)* **`gustave-07c-mouthroute` is not a HOLD; it is a REJECT under the lanes' own letter** and under any economy
    statistic but the median: pool units@100 lb −0.055, length@100 lb −0.054 (guards −0.02), pool per-game-mean
    economy −0.044 [−0.063, −0.023] (Schooltime −0.32). It is registered at 505 (D-039.2) on the HOLD reading.
    The ally head-on cut (pool −18 %, gen −23 %) is real; the economy cost is real too. Proposal: drop it from the

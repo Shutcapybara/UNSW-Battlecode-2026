@@ -1,0 +1,18 @@
+name = "obscur-04-regime-donor"
+lineage = "obscur"
+author = "claude-opus-5.5/obscur"
+language = "c++"
+lineage_parent = "verso-05-hb800-prior"
+hypothesis = "Top teams are map-regime specialists (TT: Heartbreaker +29/+27 pp on Trophy/QoS, -37/-36 on Portals/Slithery; Stockfish +23/+20 on Portals/Schooltime). A direction prior taken from the donor that is strong in the map's regime beats one donor everywhere (Verso's pooled-donor prior was worse than either: a regime choice, not a mixture)."
+mechanism = "One change vs verso-05: in a round-limit-regime map (W*H >= 1100, or >= 6 portal edges per 100 cells seen with >= 150 seen; TT's hb1-22 test, structure only) the prior weights become (lam_dir_lim, lam_dir2_lim) - run with the Heartbreaker 800-round head as dir and Stockfish's as dir2 from build/obscur/models/hb800+sf.bin. Off by default (lam_dir_lim < 0 = parent)."
+expected_change = "Round-limit maps (Portals, Slithery, Schooltime, Trauma and their twins) up in win and endgame; elimination maps identical. Local only: the two-head blob is 34 MB (not uploadable); a pass is a reason to distil, not to register."
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["claude/obscur-status.md", "docs/findings/2026-09-30-tt-top-teams.md"]
+summary = "H-1 out-of-basin test; not registered."
+
+[activation_contract]
+kind = "legacy_none"
+note = "learned prior on every move; donor chosen by observed map structure"
