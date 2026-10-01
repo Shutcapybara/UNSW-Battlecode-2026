@@ -1,0 +1,247 @@
+#!/usr/bin/env python3
+"""Audit saved Expedition replays and paired coverage; never run games or promote.
+Writes an analysis cache keyed by replay and analysis source hashes, leaving the
+original arena rows intact. Partial panels produce descriptive evidence only.
+"""
+import argparse
+from bisect import bisect_left, bisect_right
+import hashlib
+import json
+import math
+from statistics import mean, median
+from pathlib import Path
+import campaign as c
+from tools.analysis.features.extract import extract_one
+
+
+def analysis_id():
+    paths = list((c.ROOT / 'tools/analysis/features').glob('*.py'))
+    paths += list((c.ROOT / 'tools/hub/vendor/leviathan').glob('*.py'))
+    paths += list((c.ROOT / 'tools/hub/vendor/ouroboros').glob('*.py'))
+    return hashlib.sha256(''.join(str(p.relative_to(c.ROOT)) + c.sha(p)
+                                  for p in sorted(paths)).encode()).hexdigest()
+
+
+def canonical(row, dest, aid):
+    cache = c.STORE / 'analysis' / aid
+    cache.mkdir(parents=True, exist_ok=True)
+    path = cache / (row['replay_sha256'] + '.json')
+    if not path.exists():
+        out = extract_one((str(dest / row['replay']), str(cache / 'frames'),
+                           {'seed': row['seed'], 'sandbox': False}))
+        if 'error' in out:
+            raise ValueError(out['error'])
+        small = {k: out[k] for k in ('side_rows', 'checks')}
+        tmp = path.with_suffix('.tmp')
+        tmp.write_text(json.dumps(small, indent=2) + '\n')
+        tmp.replace(path)
+    out = json.loads(path.read_text())
+    failures = [x for x in out['checks'] if x['check'] != 'corpse_drop_shortfall'
+                and (not math.isfinite(x['residual']) or abs(x['residual']) > 1e-6)]
+    if failures:
+        raise ValueError(f'Replay bookkeeping failed: {path}: {failures}')
+    sides = {x['side']: x for x in out['side_rows']}
+    feature = sides[row['side']]
+    if (feature['bot'] != Path(row['cand']).name or feature['opponent'] != row['opp']
+            or feature['result'] != row['result'] or feature['rounds'] != row['rounds']):
+        raise ValueError(f'Replay/index attribution mismatch: {path}')
+    # Round-level snapshots and inferred intake are different estimands. Record
+    # the discrepancy without silently replacing the historical gate's inputs.
+    pairs = [(f'eaten_r{r}', f'pearls@{r}') for r in (50, 100, 150, 250)]
+    pairs += [('units_r100', 'units@100'), ('len_r100', 'total@100')]
+    discrepancies = {a: {'arena': row['us'][a], 'replay': feature[b]}
+                     for a, b in pairs if row['us'][a] != feature[b]}
+    return feature, discrepancies, out['checks']
+
+
+def percentile(value, distribution):
+    """Fraction below, counting ties half; no extrapolation of missing references."""
+    if not distribution:
+        return None
+    return (bisect_left(distribution, value) + bisect_right(distribution, value)) / (2 * len(distribution))
+
+
+def economy_estimands(child, parent):
+    """Paired rows × four normalized checkpoints; medians are taken per side.
+
+    A difference of checkpoint medians is not the median of paired differences,
+    nor the median of per-game checkpoint means. Keep all three separate.
+    """
+    if not child or len(child) != len(parent):
+        raise ValueError('Economy comparison requires nonempty matched rows')
+    if any(len(row) != 4 or not all(math.isfinite(v) for v in row)
+           for rows in (child, parent) for row in rows):
+        raise ValueError('Economy comparison requires four finite checkpoints')
+    checkpoints = [median([row[i] for row in child]) - median([row[i] for row in parent])
+                   for i in range(4)]
+    return dict(mean_delta=mean([mean(crow) - mean(prow) for crow, prow in zip(child, parent)]),
+                mean_checkpoint_median_delta=mean(checkpoints),
+                checkpoint_median_deltas=dict(zip(('50', '100', '150', '250'), checkpoints)))
+
+
+def measurement_sensitivity(keys, child, parent, child_features, parent_features):
+    """Pool-map descriptions only; same fixtures and frozen denominators for both estimands."""
+    base = c.ROOT / 'docs/analysis/benchmarks'
+    refs = json.loads((base / 'field_references.json').read_text())
+    distributions = json.loads((base / 'field_distributions.json').read_text())
+    out = {}
+    for m in sorted({k[0] for k in keys}):
+        paired = [k for k in keys if k[0] == m]
+        name = c.panel.gate.NAME[m]
+        def avg(values):
+            return sum(values) / len(values)
+        arena, replay = [], []
+        arena_child, arena_parent, replay_child, replay_parent = [], [], [], []
+        for _, arena_key, canonical_key in c.panel.gate.ECON:
+            reference = refs[canonical_key][name]['median']
+            if reference <= 0:
+                raise ValueError(f'Undefined economy denominator: {name}: {canonical_key}')
+            arena += [(child[k]['us'][arena_key] - parent[k]['us'][arena_key]) / reference for k in paired]
+            replay += [(child_features[k][canonical_key] - parent_features[k][canonical_key]) / reference for k in paired]
+            arena_child.append([child[k]['us'][arena_key] / reference for k in paired])
+            arena_parent.append([parent[k]['us'][arena_key] / reference for k in paired])
+            replay_child.append([child_features[k][canonical_key] / reference for k in paired])
+            replay_parent.append([parent_features[k][canonical_key] / reference for k in paired])
+        opening = {}
+        for r in (25, 50):
+            key = f'pearls@{r}'
+            dist = distributions.get(key, {}).get(name)
+            opening[key] = dict(raw_mean_delta=avg([child_features[k][key] - parent_features[k][key] for k in paired]),
+                field_percentile_mean_delta=(avg([percentile(child_features[k][key], dist) -
+                    percentile(parent_features[k][key], dist) for k in paired]) if dist else None),
+                percentile_reference='frozen field distribution' if dist else 'UNAVAILABLE in frozen references')
+        out[m] = dict(paired=len(paired), seeds=sorted({k[2] for k in paired}),
+            seats=sorted({k[1] for k in paired}), arena_mean_economy_delta=avg(arena),
+            replay_mean_economy_delta=avg(replay), opening=opening,
+            arena_estimands=economy_estimands(list(zip(*arena_child)), list(zip(*arena_parent))),
+            replay_estimands=economy_estimands(list(zip(*replay_child)), list(zip(*replay_parent))),
+            estimand_scope='Per-map matched fixtures, identical frozen field denominators; '
+                           'descriptive sensitivity, not a full-panel median gate',
+            status='DESCRIPTIVE ESTIMAND SENSITIVITY; NO GATE VERDICT')
+    return out
+
+
+def map_diagnostics(wanted, child, parent, child_features, parent_features):
+    """Retain every planned map, including missing ones, and expose matchup effects.
+
+    All slices are descriptive. Complete seeds describe coverage, not statistical
+    confirmation; a pooled result cannot certify a map-specific mechanism.
+    """
+    paired = set(child) & set(parent)
+    if not paired <= wanted:
+        raise ValueError('Unexpected paired fixture in map diagnostics')
+    fields = ('pearls@25', 'pearls@50', 'pearls@100', 'units@100', 'total@100', 'total@250')
+
+    def summary(keys):
+        keys = sorted(keys)
+        if not keys:
+            return dict(paired=0, parent_points=None, candidate_points=None,
+                        win_delta=None, better=0, worse=0, tied=0, raw_mean_deltas=None)
+        pw = [c.panel.gate.win(parent[k]) for k in keys]
+        cw = [c.panel.gate.win(child[k]) for k in keys]
+        return dict(paired=len(keys), parent_points=sum(pw), candidate_points=sum(cw),
+            win_delta=mean([a - b for a, b in zip(cw, pw)]),
+            better=sum(a > b for a, b in zip(cw, pw)), worse=sum(a < b for a, b in zip(cw, pw)),
+            tied=sum(a == b for a, b in zip(cw, pw)),
+            raw_mean_deltas={f: mean([child_features[k][f] - parent_features[k][f] for k in keys])
+                             for f in fields})
+
+    maps = {}
+    for m in sorted({k[0] for k in wanted}):
+        planned = {k for k in wanted if k[0] == m}
+        matched = paired & planned
+        seeds = {}
+        for seed in sorted({k[2] for k in planned}):
+            required = {k for k in planned if k[2] == seed}
+            observed = matched & required
+            seeds[str(seed)] = dict(summary(observed), required_pairs=len(required), complete=observed == required)
+        complete_seeds = [int(seed) for seed, value in seeds.items() if value['complete']]
+        maps[m] = dict(summary(matched), required_pairs=len(planned), complete=matched == planned,
+            complete_seeds=complete_seeds, by_seed=seeds,
+            by_seat={seat: summary({k for k in matched if k[1] == seat})
+                     for seat in sorted({k[1] for k in planned})},
+            by_opponent={opp: summary({k for k in matched if k[3] == opp})
+                         for opp in sorted({k[3] for k in planned})},
+            evidence='DESCRIPTIVE; NO CONFIRMED MAP SPECIALISM',
+            missing_pairs=len(planned - matched))
+    return dict(maps=maps, collective=summary(paired),
+        leave_one_map_out={m: summary({k for k in paired if k[0] != m}) for m in maps},
+        limitations='Map, opponent and seat slices use the same paired fixtures. Missing data are not zero effects. '
+        'Leave-one-map-out uses available fixtures and diagnoses concentration only; it is not held-out validation. '
+        'Do not choose map-specific settings from this screen. Confirm frozen mechanism hypotheses on additional '
+        'seeds and structural/transposed maps, with all original pooled and map guards retained.')
+
+
+def build_report(candidate, panels=('z1', 'gen')):
+    aid = analysis_id()
+    report = dict(candidate=candidate, parent=c.panel.PARENT, analysis_sha256=aid, report_sha256=c.sha(Path(__file__)),
+                  promotion='NOT AUTHORIZED', panels={}, measurement_discrepancies=[])
+    all_rows = {}
+    for pn in panels:
+        rows, feats = {}, {}
+        for bot in (c.panel.PARENT, candidate):
+            dest = c.run_dir(bot, pn)
+            if dest.exists():
+                if json.loads((dest / 'contract.json').read_text()) != c.contract(bot, pn):
+                    raise ValueError(f'Frozen inputs changed: {dest}')
+            rows[bot] = c.read_rows(bot, pn)
+        for bot in (c.panel.PARENT, candidate):
+            dest = c.run_dir(bot, pn)
+            feats[bot] = {}
+            for key, row in rows[bot].items():
+                feature, differences, checks = canonical(row, dest, aid)
+                feats[bot][key] = feature
+                if differences:
+                    report['measurement_discrepancies'].append(
+                        dict(bot=bot, panel=pn, fixture=key, differences=differences))
+        parent, child = rows[c.panel.PARENT], rows[candidate]
+        paired = sorted(parent.keys() & child.keys())
+        wanted = c.expected(pn, c.panel_seeds(pn))
+        complete = set(parent) == set(child) == wanted
+        report['panels'][pn] = dict(parent_games=len(parent), candidate_games=len(child),
+            paired=len(paired), required_pairs=len(wanted), complete=complete,
+            maps=sorted({k[0] for k in paired}), seats=sorted({k[1] for k in paired}),
+            seeds=sorted({k[2] for k in paired}))
+        report['panels'][pn]['map_diagnostics'] = map_diagnostics(
+            wanted, child, parent, feats[candidate], feats[c.panel.PARENT])
+        if paired:
+            report['panels'][pn]['descriptive_only'] = {
+                field: sum(feats[candidate][k][field] - feats[c.panel.PARENT][k][field]
+                           for k in paired) / len(paired)
+                for field in ('won', 'pearls@25', 'pearls@50', 'pearls@100', 'units@100', 'total@100')}
+            if pn in ('z1', c.CHALLENGE_PANEL):
+                report['panels'][pn]['measurement_sensitivity_by_map'] = measurement_sensitivity(
+                    paired, child, parent, feats[candidate], feats[c.panel.PARENT])
+        all_rows[pn] = rows
+    complete = all(p['complete'] for p in report['panels'].values())
+    original_panels = set(panels) == {'z1', 'gen'}
+    report['status'] = ('COMPLETE COVERAGE; GATE AUDIT STILL REQUIRED' if original_panels else
+                       'COMPLETE SELECTED COVERAGE; NO STRENGTH VERDICT') if complete else 'INCOMPLETE; NO GATE VERDICT'
+    if complete and original_panels:
+        stats = {pn: c.panel.gate.panel_stats(rows[candidate], rows[c.panel.PARENT], pn)
+                 for pn, rows in all_rows.items()}
+        verdict, reasons = c.panel.gate.gate(stats)
+        report['historical_arena_mean_gate_diagnostic'] = dict(verdict=verdict, reasons=reasons, panels=stats)
+    report['limitations'] = ('Descriptive partial coverage is not a strength estimate. Arena inferred intake and '
+        'turn-time material differ from replay event counts and round-start material. The historical gate '
+        'diagnostic is only emitted at complete three-seed coverage. Median form, tempo, opening percentiles, '
+        'per-map guards and sandbox CPU validation remain separate requirements.')
+    return report
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--candidate', choices=c.CANDIDATES, default=c.QUEUE[0])
+    ap.add_argument('--panel', choices=('z1', 'gen', c.CHALLENGE_PANEL), action='append')
+    a = ap.parse_args()
+    panels = list(dict.fromkeys(a.panel)) if a.panel else ['z1', 'gen']
+    report = build_report(a.candidate, panels)
+    suffix = '-' + '-'.join(panels) if a.panel else ''
+    dest = c.STORE / f'{a.candidate}{suffix}-report.json'
+    dest.write_text(json.dumps(report, indent=2) + '\n')
+    print(json.dumps({k: v for k, v in report.items() if k != 'measurement_discrepancies'}, indent=2))
+    print(f'{len(report["measurement_discrepancies"])} discrepant game records; full details: {dest}')
+
+
+if __name__ == '__main__':
+    main()
