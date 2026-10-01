@@ -30,7 +30,7 @@ def paired_measure(parent, child):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--map', required=True)
-    ap.add_argument('--panel', choices=('z1', 'gen', c.CHALLENGE_PANEL), default='z1')
+    ap.add_argument('--panel', choices=('z1', 'gen', *c.CHALLENGE_PANELS), default='z1')
     ap.add_argument('--seed', type=int, choices=(1, 2, 3), default=1)
     ap.add_argument('--candidate', choices=c.CANDIDATES, default=c.QUEUE[0])
     args = ap.parse_args()

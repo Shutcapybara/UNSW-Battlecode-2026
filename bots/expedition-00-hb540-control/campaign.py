@@ -34,22 +34,26 @@ FOCUSED_CANDIDATE = 'expedition-10-mouthcontest'
 SCREENS = {'mouth-contest-v1': dict(candidate=FOCUSED_CANDIDATE, seeds=[1, 2],
     maps=[('z1', 'queen_of_spades'), ('z1', 'portals'), ('z1', 'devil'),
           ('gen', 'new/mc26_portal_quartet')])}
-CANDIDATES = QUEUE + [FOCUSED_CANDIDATE]
+CANDIDATES = QUEUE + [FOCUSED_CANDIDATE, 'expedition-11-foodhold']
 CHALLENGE_PANEL = 'frontier-v1'
+CHALLENGE_PANELS = {'frontier-v1': [1, 2], 'production-v1': [3, 4]}
 CHALLENGE_OPPONENTS = ('hb1-17-prior-lam20', 'ouroboros-g01-hbmimic-ares-r150')
 SCREENS['explore-frontier-v1'] = dict(candidate='expedition-05-explore3', seeds=[1, 2],
     maps=[(CHALLENGE_PANEL, m) for m in sorted(panel.runner.LIVE)],
     declaration='bots/expedition-00-hb540-control/frontier-contract.md')
+SCREENS['food-hold-v1'] = dict(candidate='expedition-11-foodhold', seeds=[3, 4],
+    maps=[('production-v1', m) for m in sorted(panel.runner.LIVE)],
+    declaration='bots/expedition-00-hb540-control/production-contract.md')
 
 
 def panel_seeds(pn):
-    return [1, 2] if pn == CHALLENGE_PANEL else [1, 2, 3]
+    return CHALLENGE_PANELS[pn] if pn in CHALLENGE_PANELS else [1, 2, 3]
 
 
 def expected(pn, seeds):
     if pn in ('z1', 'gen'):
         return panel.expected(pn, seeds)
-    if pn != CHALLENGE_PANEL:
+    if pn not in CHALLENGE_PANELS:
         raise ValueError(f'Unknown panel: {pn}')
     return {(m, side, seed, opp) for m in panel.runner.LIVE for side in 'AB'
             for seed in seeds if seed in panel_seeds(pn) for opp in CHALLENGE_OPPONENTS}

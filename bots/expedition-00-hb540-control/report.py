@@ -232,7 +232,7 @@ def build_report(candidate, panels=('z1', 'gen')):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--candidate', choices=c.CANDIDATES, default=c.QUEUE[0])
-    ap.add_argument('--panel', choices=('z1', 'gen', c.CHALLENGE_PANEL), action='append')
+    ap.add_argument('--panel', choices=('z1', 'gen', *c.CHALLENGE_PANELS), action='append')
     a = ap.parse_args()
     panels = list(dict.fromkeys(a.panel)) if a.panel else ['z1', 'gen']
     report = build_report(a.candidate, panels)

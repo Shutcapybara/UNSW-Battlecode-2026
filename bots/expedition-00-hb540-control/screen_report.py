@@ -75,6 +75,20 @@ def map_cluster_uncertainty(items, repeats=10000, rng_seed=20261001):
                    'Not an advancement test; a single map has no interval.')
 
 
+def parent_phase_cohort(items, boundary):
+    """Keep the same paired fixtures using only the parent's survival boundary."""
+    selected = [x for x in items if x['parent']['rounds'] >= boundary]
+    return dict(pairs=len(selected), parent_round_boundary=boundary,
+        expected_score_delta=mean(c.panel.gate.win(x['child']) - c.panel.gate.win(x['parent'])
+                                  for x in selected) if selected else None,
+        material_share250_delta=mean(x['candidate_features']['total_share@250'] -
+                                     x['parent_features']['total_share@250']
+                                     for x in selected) if selected else None,
+        longest_margin_end_delta=mean(x['candidate_features']['longest_margin_end'] -
+                                      x['parent_features']['longest_margin_end']
+                                      for x in selected) if selected else None)
+
+
 def load_opening(candidate, pn, map_name, seed, rows):
     auditor = c.HERE / 'opening_audit.py'
     dest = c.STORE / f'{candidate}-{pn}-{map_name.replace("/", "+")}-s{seed}-opening.json'
@@ -131,6 +145,7 @@ def main():
                   frozen_contract_sha256=c.sha(frozen), promotion='NOT AUTHORIZED')
     measures = []
     aid = report.analysis_id()
+    phase_aid = phase.analysis_id()
     for seed in spec['seeds']:
         for pn, map_name in spec['maps']:
             data = load_opening(candidate, pn, map_name, seed, rows[pn])
@@ -140,7 +155,9 @@ def main():
                 cf, _, _ = report.canonical(child, c.run_dir(candidate, pn), aid)
                 measures.append(dict(panel=pn, key=key, parent=parent, child=child,
                     tempo=f['tempo_mean']['delta'], first_food_delta=f['events']['first_pearl']['delta'],
-                    parent_features=pf, candidate_features=cf))
+                    parent_features=pf, candidate_features=cf,
+                    parent_opening=phase.extract(parent, c.run_dir(c.panel.PARENT, pn), phase_aid),
+                    child_opening=phase.extract(child, c.run_dir(candidate, pn), phase_aid)))
             output['maps'][f'{map_name}/s{seed}'] = data['cohorts']['all']
             print('Validated', map_name, seed, flush=True)
     def summarize(items):
@@ -156,6 +173,15 @@ def main():
                           'longest_margin_end', 'total_margin_end')},
             midgame_kills_delta=mean((x['candidate_features']['kills@250'] - x['candidate_features']['kills@150']) -
                                     (x['parent_features']['kills@250'] - x['parent_features']['kills@150']) for x in items),
+            parent_conditioned_phases={str(boundary): parent_phase_cohort(items, boundary)
+                                       for boundary in (250, 400)},
+            opening_exposures={arm: phase.summarize([x[arm + '_opening'] for x in items])
+                               for arm in ('parent', 'child')},
+            r500_material_lead_losses={arm: dict(
+                games=sum(x[arm]['rounds'] == 500 for x in items),
+                losses_with_material_lead=sum(x[arm]['rounds'] == 500 and x[arm]['result'] == 'loss' and
+                    x[feature]['total_margin_end'] > 0 for x in items))
+                for arm, feature in (('parent','parent_features'),('child','candidate_features'))},
             end_reasons={arm: dict(Counter(x[arm]['end_reason'] for x in items)) for arm in ('parent','child')},
             better=sum(c.panel.gate.win(x['child']) > c.panel.gate.win(x['parent']) for x in items),
             worse=sum(c.panel.gate.win(x['child']) < c.panel.gate.win(x['parent']) for x in items))
@@ -174,8 +200,9 @@ def main():
         by_opponent={o: map_cluster_uncertainty([x for x in measures if x['key'][3] == o])
                      for o in sorted({x['key'][3] for x in measures})})
     output['report_source_sha256'] = c.sha(Path(__file__))
-    confirm = output['by_seed']['2']
-    maps2 = [v for k, v in output['by_map_seed'].items() if k.endswith('/s2')]
+    confirmation_seed = str(spec['seeds'][-1])
+    confirm = output['by_seed'][confirmation_seed]
+    maps2 = [v for k, v in output['by_map_seed'].items() if k.endswith('/s' + confirmation_seed)]
     if screen == 'mouth-contest-v1':
         devil = [x for x in measures if x['key'][0] == 'devil']
         access = next(x for x in measures if x['key'] ==
@@ -187,12 +214,16 @@ def main():
             confirmation_map_wins=all(v['candidate_wins'] >= v['parent_wins'] - 1 for v in maps2),
             confirmation_qos_tempo=output['maps']['queen_of_spades/s2']['tempo_mean']['delta'] <= 0,
             confirmation_quartet_tempo=output['maps']['new/mc26_portal_quartet/s2']['tempo_mean']['delta'] <= 0)
-    elif screen == 'explore-frontier-v1':
-        opps2 = [v for k,v in output['by_opponent_seed'].items() if k.endswith('/s2')]
+    elif screen in ('explore-frontier-v1', 'food-hold-v1'):
+        opps2 = [v for k,v in output['by_opponent_seed'].items() if k.endswith('/s' + confirmation_seed)]
         checks = dict(confirmation_gain=confirm['candidate_points'] > confirm['parent_points'],
             opponent_nonharm=all(v['candidate_points'] >= v['parent_points'] for v in opps2),
             map_guard=all(v['candidate_points'] >= v['parent_points'] - 1 for v in maps2),
             opening_nonharm=confirm['tempo_delta'] <= 0)
+        output['opening_nonharm_diagnostic'] = checks['opening_nonharm']
+        if screen == 'food-hold-v1':
+            output['prior_frontier_rule_comparison'] = decision(screen, checks)
+            checks.pop('opening_nonharm')
     else:
         raise ValueError(f'No registered decision rule for {screen}')
     output.update(decision(screen, checks)); output['checks'] = checks

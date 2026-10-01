@@ -88,6 +88,21 @@ class CampaignTests(unittest.TestCase):
 
 
 class FocusedScreenTests(unittest.TestCase):
+    def test_production_uses_fresh_seeds_and_separate_panel(self):
+        fixtures = list(c.fixture_order('food-hold-v1'))
+        self.assertEqual(len(fixtures), 80)
+        self.assertEqual(len(set(fixtures)), 80)
+        self.assertEqual({pn for pn, _ in fixtures}, {'production-v1'})
+        self.assertEqual({k[2] for _, k in fixtures}, {3, 4})
+        self.assertEqual({k[0] for _, k in fixtures}, set(c.panel.runner.LIVE))
+        self.assertEqual({k[3] for _, k in fixtures}, set(c.CHALLENGE_OPPONENTS))
+        self.assertEqual(c.expected('production-v1', [1, 2]), set())
+        self.assertEqual(c.panel_seeds('frontier-v1'), [1, 2])
+        with patch.object(c, 'read_rows', return_value={}):
+            jobs = list(c.jobs('expedition-11-foodhold', 'food-hold-v1'))
+        self.assertEqual(len(jobs), 160)
+        self.assertTrue(all(pn == 'production-v1' for _, pn, _ in jobs))
+
     def test_frontier_is_distinct_and_complete(self):
         fixtures = list(c.fixture_order('explore-frontier-v1'))
         self.assertEqual(len(fixtures), 80)
@@ -262,6 +277,20 @@ class OpeningAuditTests(unittest.TestCase):
         from opening_audit import paired_measure
         with self.assertRaises(ValueError):
             paired_measure([1, 2], [1])
+
+
+class ParentPhaseTests(unittest.TestCase):
+    def test_early_candidate_win_stays_in_parent_late_cohort(self):
+        from screen_report import parent_phase_cohort
+        row = dict(parent=dict(rounds=500, result='loss'), child=dict(rounds=100, result='win'),
+                   parent_features={'total_share@250': .4, 'longest_margin_end': -2},
+                   candidate_features={'total_share@250': 1., 'longest_margin_end': 5})
+        excluded = dict(row, parent=dict(rounds=200, result='loss'), child=dict(rounds=500, result='loss'))
+        result = parent_phase_cohort([row, excluded], 400)
+        self.assertEqual(result['pairs'], 1)
+        self.assertEqual(result['expected_score_delta'], 1)
+        self.assertEqual(result['longest_margin_end_delta'], 7)
+        self.assertIsNone(parent_phase_cohort([excluded], 400)['expected_score_delta'])
 
 
 class MapClusterUncertaintyTests(unittest.TestCase):
