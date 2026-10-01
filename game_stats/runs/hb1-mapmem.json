@@ -1,0 +1,144 @@
+{
+ "games": 400,
+ "test_games": 80,
+ "direction": {
+  "n_train": 185577,
+  "n_test": 46716,
+  "map_cols": [
+   "mm_known",
+   "mm_seen_frac",
+   "mm_pearls_known",
+   "mm_beds_known",
+   "cF_mm_reach",
+   "cF_mm_frontier",
+   "cF_mm_pearl",
+   "cF_mm_bed",
+   "cF_mm_stale",
+   "cR_mm_reach",
+   "cR_mm_frontier",
+   "cR_mm_pearl",
+   "cR_mm_bed",
+   "cR_mm_stale",
+   "cL_mm_reach",
+   "cL_mm_frontier",
+   "cL_mm_pearl",
+   "cL_mm_bed",
+   "cL_mm_stale"
+  ],
+  "v5": {
+   "acc": 0.8245354910523162,
+   "macro_f1": 0.7979697668972788,
+   "logloss": 0.4201408764687778
+  },
+  "v5+map": {
+   "acc": 0.8325199075263293,
+   "macro_f1": 0.8077368873995635,
+   "logloss": 0.4066317290158963
+  },
+  "map_feature_ranks": [
+   [
+    8,
+    "cF_mm_pearl"
+   ],
+   [
+    9,
+    "cR_mm_pearl"
+   ],
+   [
+    11,
+    "cL_mm_pearl"
+   ],
+   [
+    17,
+    "cR_mm_reach"
+   ],
+   [
+    18,
+    "cL_mm_reach"
+   ],
+   [
+    20,
+    "cF_mm_reach"
+   ],
+   [
+    21,
+    "cF_mm_stale"
+   ],
+   [
+    28,
+    "cF_mm_frontier"
+   ]
+  ],
+  "gain_pp": 0.7984416474013156
+ },
+ "gate": {
+  "n_train": 144942,
+  "n_test": 33948,
+  "map_cols": [
+   "mm_known",
+   "mm_seen_frac",
+   "mm_pearls_known",
+   "mm_beds_known",
+   "cF_mm_reach",
+   "cF_mm_frontier",
+   "cF_mm_pearl",
+   "cF_mm_bed",
+   "cF_mm_stale",
+   "cR_mm_reach",
+   "cR_mm_frontier",
+   "cR_mm_pearl",
+   "cR_mm_bed",
+   "cR_mm_stale",
+   "cL_mm_reach",
+   "cL_mm_frontier",
+   "cL_mm_pearl",
+   "cL_mm_bed",
+   "cL_mm_stale"
+  ],
+  "v5": {
+   "acc": 0.9685695770001178,
+   "macro_f1": 0.9249331867317993,
+   "logloss": 0.07959395615521891
+  },
+  "v5+map": {
+   "acc": 0.9680393543065865,
+   "macro_f1": 0.9237812722043972,
+   "logloss": 0.07970700549349126
+  },
+  "map_feature_ranks": [
+   [
+    10,
+    "mm_seen_frac"
+   ],
+   [
+    15,
+    "cL_mm_reach"
+   ],
+   [
+    17,
+    "mm_known"
+   ],
+   [
+    20,
+    "cR_mm_reach"
+   ],
+   [
+    22,
+    "cF_mm_frontier"
+   ],
+   [
+    27,
+    "cF_mm_reach"
+   ],
+   [
+    35,
+    "cF_mm_stale"
+   ],
+   [
+    36,
+    "mm_pearls_known"
+   ]
+  ],
+  "gain_pp": -0.05302226935313126
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "hb1-21-portal-feed140":{
+  "trophy":0.90625,
+  "devil":1.0,
+  "queen_of_spades":0.96875,
+  "dilemma":0.8125,
+  "default":0.8125,
+  "autarky":1.0,
+  "schooltime":0.8125,
+  "trauma":0.96875,
+  "slithery_fight":0.75,
+  "portals":0.9375,
+  "elim maps":0.9166666667,
+  "limit maps":0.8671875,
+  "all":0.896875,
+  "n":320
+ },
+ "hb1-17-prior-lam20":{
+  "trophy":0.90625,
+  "devil":1.0,
+  "queen_of_spades":0.96875,
+  "dilemma":0.8125,
+  "default":0.8125,
+  "autarky":1.0,
+  "schooltime":0.84375,
+  "trauma":0.96875,
+  "slithery_fight":0.75,
+  "portals":0.78125,
+  "elim maps":0.9166666667,
+  "limit maps":0.8359375,
+  "all":0.884375,
+  "n":320
+ }
+}
