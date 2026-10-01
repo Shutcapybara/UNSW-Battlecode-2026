@@ -1,0 +1,18 @@
+name = "obscur-03-symseal"
+lineage = "obscur"
+author = "claude-opus-5.5/obscur"
+language = "c++"
+lineage_parent = "obscur-01-sym"
+hypothesis = "aline-17 (symmetry inference + ally right-of-way seal; ACCEPTED vs aline-01) adds to the learned prior. Stack test: obscur-01-sym + the seal; aline-13 (symmetry alone) was a REJECT on gen hygiene."
+mechanism = "obscur-01-sym + aline-07 seal change set (seal_weight 1.0, ally_seal_cost in the move score), applied from aline-13-symmetry -> aline-17-sym-seal. Together = aline-17 on verso-05."
+expected_change = "pool econ and win up as on aline (+0.025 / +6 pp) if additive; ~0 if the prior already captures it."
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["claude/obscur-status.md"]
+summary = "H-1 first-pass additivity test; not registered."
+
+[activation_contract]
+kind = "legacy_none"
+note = "learned prior on every move; identity by fingerprint"

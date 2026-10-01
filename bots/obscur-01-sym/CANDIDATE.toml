@@ -1,0 +1,18 @@
+name = "obscur-01-sym"
+lineage = "obscur"
+author = "claude-opus-5.5/obscur"
+language = "c++"
+lineage_parent = "verso-05-hb800-prior"
+hypothesis = "The two information gains that passed D-032 (the learned direction prior; symmetry inference) are additive: the prior does not already exploit symmetry."
+mechanism = "One change vs verso-05: aline-13's symmetry inference change set (params sym_infer/sym_min_conf 8, world.hpp inference and mirroring, sonar type 8 adoption/broadcast), applied byte-for-byte from aline-01-nodevil -> aline-13-symmetry. The ally seal half of aline-17 is not included (one mechanism)."
+expected_change = "pool econ and win up as on aline (+0.025 / +6 pp) if additive; ~0 if the prior already captures it."
+priority = 0
+supersedes = ""
+
+[local_evidence]
+refs = ["claude/obscur-status.md"]
+summary = "H-1 first-pass additivity test; not registered."
+
+[activation_contract]
+kind = "legacy_none"
+note = "learned prior on every move; identity by fingerprint"
