@@ -585,7 +585,7 @@ every turn and the mimic's moves committed to it, so the map memory is complete 
 | tt-12 handoff r250 | 121–39 | 66–24 | 38 % | 25 | 55–15 |
 | tt-13 handoff r300 | 121–39 | 59–25 | 8 % | 26 | 62–14 |
 | tt-14 handoff r350 | 118–42 | 66–30 | 20 % | 26 | 52–12 |
-| hb1-14 (reference) | 141–19 | 62–8 | — | — | 79–5 |
+| hb1-14 (reference) | 141–19 | 62–14 | — | — | 79–5 |
 
 - The hand-off repairs the conversion (longest 10 → 26) and brings the mimic level with V06, not above it. Economy is
   +0.24 up to r250 (+0.44 at r50, fading to +0.08 by r250), wall deaths −78 %, own-body deaths up (the copied culls).
