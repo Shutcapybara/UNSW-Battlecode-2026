@@ -596,3 +596,23 @@ every turn and the mimic's moves committed to it, so the map memory is complete 
   hand-off. The Heartbreaker prior after r300 adds nothing, so hb1-14's +19 wins come from its steering in the first
   300 rounds, which is exactly the phase the swarm replaces. **The early-swarm line is closed** for this panel.
 - Next: a prior-weight sweep on hb1-14 (λ was fixed at 1.0 before screening and never swept).
+
+## Prior-weight sweep and map-regime selector (1 Oct)
+
+Prior weight λ on hb1-14 (z1 vs V06 122–38): 0.5 → 129–31 fail; 1.0 → 141–19 hold; **2.0 → 144–16 pass** (seed 2:
+139–21 pass; `hb1-17-prior-lam20`, uploadable); 4.0 → 140–20 pass.
+
+Per-map analysis → see findings ("per-map specialists"). Selector `tools/tt/make_regime.py` (feeding onset by local
+regime features, no map names), two z1 seeds each (320 games):
+
+| bot | rule | s1 | s2 | total |
+|---|---|---:|---:|---:|
+| hb1-17 | — | 144–16 | 139–21 | 283–37 |
+| hb1-19 | feed_base 140 if W·H ≥ 1100 or ≥ 4 portal edges/100 seen cells | 142–18 | 141–19 | 283–37 |
+| hb1-20 | same, feed_base 200 | 135–25 | 132–28 | 267–53 |
+
+Per map (hb1-19 vs hb1-17, 32 games each): elimination maps identical in wins (Devil, Dilemma, Queen, Trophy
+bit-identical; Default/Autarky game lengths differ because the portal rule fires locally on Default); Portals 25 → 29,
+Schooltime 27 → 24, Slithery 24 → 23, Trauma 31 → 31. Ares' onset already scales with W + H, so large maps are already
+early; the small portal-dense map is where the earlier onset helps. → `hb1-21-portal-feed140` (portal rule only,
+threshold 5/100), tested on Portals over 10 seeds (`build/tt/mapduel/`, `run_panel --maps`).
