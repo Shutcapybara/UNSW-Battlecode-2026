@@ -1,0 +1,18 @@
+name = "tt-10-cmo-mimic"
+lineage = "tt"
+author = "claude/tt"
+language = "c++"
+lineage_parent = "hb1-04-deployable"
+hypothesis = "A structured mimic of Cache me outside: the HB-1 recipe (v5 features in C++, exported GBTs) with the top teams' self-kill as a learned decision and their trapped-state behaviour."
+mechanism = "Cache me outside's own models (gate, child size, sonar mask, self-kill, scaled direction) on hb1-04's mimic chassis; cull model first, die in place when trapped with no legal split, one sonar ray per mask bit."
+expected_change = "Fidelity and strength comparable to Cache me outside; LOCAL ONLY (the full direction model exceeds the 4 MiB upload zip)."
+priority = 0
+supersedes = ""
+status = "local-only mimic"
+
+[local_evidence]
+refs = [
+    "docs/hub/prompts/2026-09-30-HB1-heartbreaker-anatomy.md",
+    "claude/hb1-status.md",
+]
+summary = "HB-1 Q4. Q1/Q2 numbers in claude/hb1-status.md."

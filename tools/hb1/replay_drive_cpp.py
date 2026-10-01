@@ -8,7 +8,7 @@ as on the judge; a dragon's process keeps its own memory of its own choices whil
 BIN is a native build of a bot dir (e.g. g++ -O2 -std=c++20 -I bots/hb1-01-structured bots/hb1-01-structured/main.cpp).
 Games: the Q1 held-out corpus games (seed 62), never used for fitting. Writes game_stats/runs/hb1-<NAME>.json.
 """
-import argparse, collections, json, subprocess, sys, time
+import argparse, collections, json, os, subprocess, sys, time
 from multiprocessing import Pool
 from pathlib import Path
 import numpy as np
@@ -56,8 +56,20 @@ def drive(args):
         mine, msonar = pend['mine'], pend['msonar']
         rec, rsonar, facing = pend['rec'], pend['rsonar'], pend['facing']
         st['turns'] += 1
+        # lane tt: a self-kill is an invalid command (recorded as 'suicide') or a backward step into the own neck
+        rec_kill = rec[0] == 'suicide' or (rec[0] == 'move' and FV.abs_to_rel(facing, rec[1][0]) == 'B')
+        mine_kill = mine is not None and mine[0] == 'move' and FV.abs_to_rel(facing, mine[1][0]) == 'B'
+        if mine is not None and (rec_kill or mine_kill):
+            st['kill_rec'] += rec_kill
+            st['kill_mine'] += mine_kill
+            st['kill_both'] += rec_kill and mine_kill
         if mine is None:
             st['no_reply'] += 1
+        elif rec_kill:
+            st['family_n'] += 1
+            st['family_ok'] += mine_kill
+            st['cmd_ok'] += mine_kill
+            st['rec_kill'] += 1
         elif rec[0] in ('move', 'split'):
             st['family_n'] += 1
             st['family_ok'] += mine[0] == rec[0]
@@ -131,7 +143,7 @@ def main():
     ap.add_argument('--jobs', type=int, default=8)
     ap.add_argument('--out', default='q4-fidelity-open')
     a = ap.parse_args()
-    gt = pd.read_parquet(ROOT / 'build/hb1/games.parquet')
+    gt = pd.read_parquet(ROOT / 'build' / os.environ.get('HB_BUILD', 'hb1') / 'games.parquet')   # lane tt: other teams
     games = sorted(gt[gt.set == 'corpus'].game.astype(int))
     test = sorted(np.random.default_rng(62).choice(games, len(games) // 5, replace=False).tolist())
     pick = test[:: max(1, len(test) // a.games)][:a.games]
@@ -144,12 +156,15 @@ def main():
             print(json.dumps(r), flush=True)
     d = pd.DataFrame(rows).fillna(0)
     tot = d.sum(numeric_only=True)
-    res = dict(games=len(d), turns=int(tot.turns), no_reply=int(tot.get('no_reply', 0)),
+    kr, km, kb = (float(tot.get(k, 0)) for k in ('kill_rec', 'kill_mine', 'kill_both'))
+    res = dict(selfkill_recall=kb / max(1, kr), selfkill_precision=kb / max(1, km), selfkill_recorded=int(kr),
+               selfkill_mine=int(km))
+    res.update(games=len(d), turns=int(tot.turns), no_reply=int(tot.get('no_reply', 0)),
                family=tot.family_ok / tot.family_n, direction_given_both_move=tot.dir_ok / tot.dir_n,
                split_size_given_both_split=tot.size_ok / max(1, tot.size_n), command=tot.cmd_ok / tot.family_n,
                sonar_multiset=tot.sonar_ok / max(1, tot.sonar_n),
                recorded_mix={k[4:]: int(tot[k]) for k in tot.index if k.startswith('rec_')}, per_game=rows)
-    (ROOT / 'game_stats' / 'runs' / f'hb1-{a.out}.json').write_text(json.dumps(res, indent=1, default=float))
+    (ROOT / 'game_stats' / 'runs' / f"{os.environ.get('HB_TAG', 'hb1')}-{a.out}.json").write_text(json.dumps(res, indent=1, default=float))
     print(json.dumps({k: v for k, v in res.items() if k != 'per_game'}, indent=1, default=float))
 
 

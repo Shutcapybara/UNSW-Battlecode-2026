@@ -37,6 +37,7 @@ def main():
     ap.add_argument('--jobs', type=int, default=8)
     a = ap.parse_args()
     assert NODE.itemsize == 24, NODE.itemsize
+    (B / 'export').mkdir(parents=True, exist_ok=True)
     games = sorted(pd.read_parquet(B / 'games.parquet').query("set == 'corpus'").game.astype(int))
     test_games = set(np.random.default_rng(Q1.SEED).choice(games, len(games) // 5, replace=False).tolist())
     paths = [p for p in sorted(B.glob('v5/corpus/*.parquet')) if int(p.stem) not in test_games]

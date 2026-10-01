@@ -511,3 +511,108 @@ beds; per candidate a wall-aware BFS (radius 12) gives reach beyond the view, fr
 ready-bed distances, staleness. Validated on a cheji bt game (blocked agreement with v5 100 %; reach median 78 vs in-view
 area 39; 1.4 ms/turn). Extraction (400 games per team, Cache me outside's 598 ranked, Heartbreaker as control) and the
 v5 vs v5+map comparison running (`tools/tt/run_map.sh`, `mapmem_chain.sh`).
+
+### Internal map results (`tools/tt/features_map.py`, `q1_mapmem.py`; `game_stats/runs/*-mapmem.json`)
+
+400 games per team (Cache me outside: all 598 ranked), held-out 20 % of those games, GPU GBT, v5 vs v5 + map:
+
+| team | direction v5 → v5 + map | gain | (history + trail gain) | top map features (gain rank of ~300) | gate change |
+|---|---|---:|---:|---|---:|
+| Heartbreaker | 0.8245 → 0.8325 | +0.80 pp | +0.19 | remembered-pearl BFS distance (8, 9, 11) | −0.05 |
+| **cheji bt** | 0.7395 → 0.7654 | **+2.59 pp** | +0.97 | **distance to unexplored cells** (5, 7, 8), reach (9) | +0.06 |
+| Stockfish | 0.7616 → 0.7713 | +0.97 pp | +0.39 | remembered reach (5, 6, 7), pearl (9) | −0.08 |
+| forgot to mention | 0.7199 → 0.7335 | +1.36 pp | +0.52 | pearl (6), frontier (7, 10), reach (8) | +0.19 |
+| Cache me outside | 0.7551 → 0.7626 | +0.75 pp | +0.94 | reach (9, 10, 13), pearl (11) | +0.01 |
+
+Every team's steering uses a remembered map more than momentum or decayed density; cheji bt most — it steers toward
+cells it has not seen (exploration). Gates do not use it. For the mimics this means a C++ port of the map memory would
+add ~1–2.6 pp of direction agreement; Ares already keeps such a map (`world.hpp`), so a map-aware prior on Ares is
+also cheap to compute.
+
+## Mimics and priors for the next two teams (user request, 1 Oct)
+
+forgot to mention:
+- `tt-08-ftm-mimic` (local only; `tools/tt/make_mimic.py` on hb1-04's chassis): cull model first (held-out 0.9986),
+  die in place when trapped with no legal split, mask-driven sonar; gate 0.972, child size 0.987, sonar 0.957; scaled
+  direction GBT (650 rows/game, 255 leaves, 1,282 rounds, 3,846 trees, held-out 0.750; compact parity exact on
+  20,000 rows; 15.7 MB at run time).
+- Fidelity (`replay_drive_cpp.py`, 40 held-out games, 428,216 turns; now scoring self-kills): family 0.9935,
+  direction 0.7545, child size 0.986, **self-kill recall 0.904 / precision 0.983** (10,128 recorded), command
+  **0.761**, sonar multiset 0.585, 0 missing replies. (`game_stats/runs/tt264-fidelity-mimic.json`)
+- `tt-09-prior-ftm` (uploadable, 3.74 MiB): hb1-14 with forgot to mention's direction model (540 rounds) as the prior.
+- Scorecards vs Ares V06 (z1 seed 1, 160 side-games; V06 122–38):
+  - tt-09-prior-ftm: **117–43, gate fail** (economy −0.066, win share −3.1 pp). The forgot-to-mention steering is a
+    worse prior for Ares than Heartbreaker's (hb1-14).
+  - tt-08-ftm-mimic: **91–69, gate fail** (economy +0.081, length +0.074, win share −19.4 pp; own-body deaths
+    3.7 → 13.3 /1k — the copied culls). Stronger than the Heartbreaker mimic hb1-01 was against the zoo, but well below Ares.
+
+Cache me outside (ranked games only — its unranked bot is a variant):
+- `tt-10-cmo-mimic` (local only): gate 0.969, child size 0.996, sonar 0.906, cull 0.995; scaled direction GBT
+  (6,096 trees, 3.1M nodes, held-out 0.788; compact parity exact on 20,000 rows; 48.7 MB header).
+- Fidelity (40 held-out ranked games, 421,569 turns): family 0.990, direction 0.804, child size 0.993, self-kill recall
+  0.804 / precision 0.729 (9,037 recorded), **command 0.806**, sonar multiset 0.499 (many rays per turn), 0 missing
+  replies. (`game_stats/runs/tt952-fidelity-mimic.json`)
+- `tt-11-prior-cmo` (uploadable, 3.73 MiB): hb1-14 with Cache me outside's direction model (540 rounds).
+- Scorecards vs Ares V06 (z1 seed 1; V06 122–38):
+  - tt-11-prior-cmo: **127–33, hold** (economy +0.000, length +0.059, win share +3.1 pp). Below hb1-14 (141–19).
+  - tt-10-cmo-mimic: **78–82, gate fail** (economy **+0.242**, length +0.265, win share −27.5 pp; own-body
+    3.7 → 13.8 /1k).
+
+Why the mimics have the economy but lose (`build/tt/conc_*.log`, medians over 160 games):
+
+| bot | win | round-limit W/L | round-limit losses with a material lead | longest at r490 | units at r490 |
+|---|---:|---:|---:|---:|---:|
+| tt-08 ftm mimic | 0.569 | 28–56 | 71 % | 12.5 | 21 |
+| tt-10 cmo mimic | 0.488 | 33–71 | 79 % | 10 | 50 |
+| tt-09 prior-ftm (Ares) | 0.731 | 49–29 | 10 % | 25 | 5 |
+| tt-11 prior-cmo (Ares) | 0.794 | 58–23 | 26 % | 25 | 5 |
+| real forgot to mention / Cache me outside (ladder) | — | — | — | 36 / 35 | — |
+
+The mimics copy the swarm (more total material than Ares) and the per-dragon culls, but not the conversion: their
+longest dragon at r490 is 10–12.5 against the real teams' 35–36, so they lose round-limit games they lead on
+material. The cull model learned *when* a dragon dies, but the feeding target (which ally is "the long one") is a
+team-level choice a local-view policy does not see. Ares' crown rule supplies it, which is why the priors win the
+round limit.
+
+## Hand-off: Cache me outside swarm early, Ares late (user: "continue reasonable next steps", 1 Oct)
+
+`tools/tt/make_handoff.py NAME MIMIC ROUND`: the mimic decides before ROUND, Ares V06 from it; Ares' World is sensed
+every turn and the mimic's moves committed to it, so the map memory is complete at the switch. Local only.
+
+| bot | z1 vs V06 (122–38) | round-limit W/L | limit losses with material lead | longest r490 | elim W/L |
+|---|---:|---:|---:|---:|---:|
+| tt-10 mimic (no handoff) | 78–82 | 33–71 | 79 % | 10 | 45–11 |
+| tt-12 handoff r250 | 121–39 | 66–24 | 38 % | 25 | 55–15 |
+| tt-13 handoff r300 | 121–39 | 59–25 | 8 % | 26 | 62–14 |
+| tt-14 handoff r350 | 118–42 | 66–30 | 20 % | 26 | 52–12 |
+| hb1-14 (reference) | 141–19 | 62–14 | — | — | 79–5 |
+
+- The hand-off repairs the conversion (longest 10 → 26) and brings the mimic level with V06, not above it. Economy is
+  +0.24 up to r250 (+0.44 at r50, fading to +0.08 by r250), wall deaths −78 %, own-body deaths up (the copied culls).
+- Against hb1-14 it gives up elimination wins (62 vs 79), loses 6 eliminations to the Vibing mimic (hb1-14: 2) and is
+  2–8 at the round limit against yuna. The early swarm's material does not turn into kills.
+- tt-15 = same swarm handing off to hb1-14 (Heartbreaker prior) at r300 (`tools/tt/make_handoff_hb.py`; both
+  direction models in one binary, Heartbreaker's renamed `dirhb_*`): **122–38**, identical to V06 and to the plain
+  hand-off. The Heartbreaker prior after r300 adds nothing, so hb1-14's +19 wins come from its steering in the first
+  300 rounds, which is exactly the phase the swarm replaces. **The early-swarm line is closed** for this panel.
+- Next: a prior-weight sweep on hb1-14 (λ was fixed at 1.0 before screening and never swept).
+
+## Prior-weight sweep and map-regime selector (1 Oct)
+
+Prior weight λ on hb1-14 (z1 vs V06 122–38): 0.5 → 129–31 fail; 1.0 → 141–19 hold; **2.0 → 144–16 pass** (seed 2:
+139–21 pass; `hb1-17-prior-lam20`, uploadable); 4.0 → 140–20 pass.
+
+Per-map analysis → see findings ("per-map specialists"). Selector `tools/tt/make_regime.py` (feeding onset by local
+regime features, no map names), two z1 seeds each (320 games):
+
+| bot | rule | s1 | s2 | total |
+|---|---|---:|---:|---:|
+| hb1-17 | — | 144–16 | 139–21 | 283–37 |
+| hb1-19 | feed_base 140 if W·H ≥ 1100 or ≥ 4 portal edges/100 seen cells | 142–18 | 141–19 | 283–37 |
+| hb1-20 | same, feed_base 200 | 135–25 | 132–28 | 267–53 |
+
+Per map (hb1-19 vs hb1-17, 32 games each): elimination maps identical in wins (Devil, Dilemma, Queen, Trophy
+bit-identical; Default/Autarky game lengths differ because the portal rule fires locally on Default); Portals 25 → 29,
+Schooltime 27 → 24, Slithery 24 → 23, Trauma 31 → 31. Ares' onset already scales with W + H, so large maps are already
+early; the small portal-dense map is where the earlier onset helps. → `hb1-21-portal-feed140` (portal rule only,
+threshold 5/100), tested on Portals over 10 seeds (`build/tt/mapduel/`, `run_panel --maps`).

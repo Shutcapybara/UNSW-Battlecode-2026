@@ -159,6 +159,113 @@ pass the behavioural check (ranked and unranked fingerprints match), so their ea
   dragons and **feed the long one** — cull rate beside an ally of length 15+ vs 1–2: cheji bt 82 vs 6 %, Stockfish 11.7
   vs 3.6 %, forgot to mention 37 vs 6.3 %, Cache me outside 21 vs 7.5 %.
 
+## Follow-up (1 Oct): mimics and priors for forgot to mention and Cache me outside
+
+Built on hb1-04's chassis (`tools/tt/make_mimic.py`) with a learned cull model run first, die-in-place when trapped,
+and each team's scaled direction GBT (compact parity exact on 20,000 held-out rows). Cache me outside uses ranked
+games only.
+
+| bot | what | fidelity (40 held-out games): command / direction / self-kill recall | z1 vs Ares V06 (122–38) | gate |
+|---|---|---|---:|---|
+| tt-08-ftm-mimic | forgot to mention mimic (local) | 0.761 / 0.755 / 0.90 | 91–69 | fail (economy +0.08) |
+| tt-09-prior-ftm | hb1-14 + ftm direction (uploadable 3.74 MiB) | — | 117–43 | fail |
+| tt-10-cmo-mimic | Cache me outside mimic (local) | 0.806 / 0.804 / 0.80 | 78–82 | fail (economy **+0.24**) |
+| tt-11-prior-cmo | hb1-14 + cmo direction (uploadable 3.73 MiB) | — | 127–33 | hold |
+| hb1-14-prior-r540 | reference: Heartbreaker direction | — | 141–19 | hold |
+
+- **The mimics have the economy but not the conversion.** Median longest dragon at r490 is 10–12.5 for the mimics
+  against 35–36 for the real teams; 71–79 % of the mimics' round-limit losses come with a material lead. The cull
+  model reproduces *when* a dragon dies (recall 0.80–0.90), but whom it feeds is a team-level choice that the local
+  view does not show. Ares' crown rule supplies it, which is why the Ares-based priors win 63–72 % of round-limit
+  games.
+- **Heartbreaker's steering remains the best prior for Ares.** Cache me outside's is level with V06 (+3 pp); forgot
+  to mention's is slightly worse.
+- **Next if pursued:** a mimic with the swarm plus Ares' crown election for conversion. This would combine tt-10's
+  economy (+0.24) with a written conversion rule. The C++ map-memory features would add about 1 pp of direction.
+
+## Follow-up (1 Oct): per-map specialists, and a map-regime selector
+
+**Who is a specialist where** (`tools/tt/map_specialists.py`; Bradley-Terry over 25,124 ranked ladder games, team
+strength + per-map side advantage; residual = actual − expected win rate on the map, pp; * = beyond 2 SE). The all-games
+fit (64,594 games) agrees on every large effect.
+
+| team | strong on | weak on |
+|---|---|---|
+| Heartbreaker | Trophy +29*, Queen of Spades +27*, Autarky +11*, Dilemma +8* | Portals −37*, Slithery −36*, Schooltime −24*, Trauma −11* |
+| cheji bt | Queen of Spades +25*, Schooltime +15* | Autarky −24*, Slithery −11* |
+| Stockfish | Portals +23*, Schooltime +20* | Dilemma −24*, Devil −22*, Autarky −16* |
+| forgot to mention | Autarky +24*, Queen of Spades +14* | Schooltime −17*, Portals −14* |
+| Cache me outside | Trauma +26*, Default +23* | Schooltime −23*, Slithery −18* |
+| us (7) | Schooltime +32*, Portals +18 | Dilemma −25, Trauma −20*, Autarky −12 |
+
+**Why** (`tools/tt/map_mechanism.py`, each team's replays by map). The maps split by how games end:
+- *Elimination maps* (Trophy, Devil, Queen of Spades, Dilemma, Default, Autarky; all ≤ 1,024 tiles): the top teams
+  win 45–96 % of games by elimination. Heartbreaker and forgot to mention, early swarmers (2–6× the opponent's units
+  at r100), win here.
+- *Round-limit maps* (Portals and Slithery 0–2 % eliminations, Trauma 3–21 %, Schooltime mixed; Schooltime 2,400,
+  Slithery 1,701 and Trauma 1,152 tiles; Portals has 20 portal pairs on 512 tiles): the longest dragon at r500
+  decides. Stockfish ends with a longest dragon of 49–64 against 30–42 and wins. Heartbreaker's longest is 11–19
+  against 24–28, and it loses 82–84 % of games on Slithery and Portals.
+- The specialists lose the other regime in the matching way. Stockfish is *eliminated* in 41–48 % of games on Devil
+  and Dilemma, with 11 units at r100 against Heartbreaker's 13–20. cheji bt is the only team strong in both regimes,
+  through both an early swarm and an elected crown (Schooltime: total 256, longest 58).
+
+**Locally** (`tools/tt/local_map_table.py`, z1 panel, 16 games per map per seed): our mimics reproduce their team's
+regime profile — hb1-04 (Heartbreaker) wins 77 % on elimination maps vs 31 % on round-limit maps; tt-08 (forgot to
+mention) 79 vs 23 %; tt-10 (Cache me outside) 67 vs 22 %. Ares V06 is flat (77 / 76 %). Heartbreaker's direction
+prior lifts Ares mostly on elimination maps (hb1-14: 93 / 81 %). On round-limit maps every loss is at the round limit,
+often with a material lead: V06 12 of 31, hb1-17 5 of 9, tt-05 (feeding from ~r300) only 1 of 9.
+
+**Prior-weight sweep** (hb1-14 with λ for Heartbreaker's direction prior; z1 seed 1, vs V06 122–38):
+λ 0.5 → 129–31 (fail), 1.0 → 141–19 (hold), **2.0 → 144–16 (pass**; economy +0.11, win share +13.8 pp; uploadable
+3.74 MiB: `hb1-17-prior-lam20`), 4.0 → 140–20 (pass).
+
+**Selector** (`tools/tt/make_regime.py`; no map names): hb1-17 with tt-05's earlier feeding onset only when the
+dragon's own information says round-limit regime — W·H ≥ 1,100 (known at init), or ≥ 4 portal edges per 100 seen
+cells (Portals 7.8; elimination maps ≤ 2.3). `hb1-19-regime-feed140` (tt-05's onset) and `hb1-20-regime-feed200`
+(earlier still); both uploadable.
+
+| bot | rule | z1 s1 | z1 s2 | total |
+|---|---|---:|---:|---:|
+| hb1-17 | — | 144–16 | 139–21 | 283–37 |
+| hb1-19 | onset 140 if W·H ≥ 1100 or ≥ 4 portal edges/100 seen cells | 142–18 | 141–19 | 283–37 |
+| hb1-20 | same, onset 200 | 135–25 | 132–28 | 267–53 |
+| **hb1-21** | onset 140 if ≥ 5 portal edges/100 seen cells (no size rule) | **147–13** | **140–20** | **287–33** |
+
+Size was the wrong switch. Ares' onset already moves earlier with W + H, so on large maps the earlier onset only cost
+games (Schooltime 27 → 24 of 32). The small portal-dense map was the gap: Ares fed late there, yet games still run to
+r500. hb1-21 against hb1-17 with the endgame gate (`tools/tt/endgame_gate.py`; 448 paired fixtures, z1 seeds 1–2
+plus Portals seeds 1–10):
+- **Portals +8.75 pp, 95 % CI [+0.6, +16.9]** (141 vs 127 of 160). Conversion failures (round-limit losses with a
+  material lead) fall from 23 to 1, and the longest dragon at the end rises from 30 to 36.
+- Elimination maps are identical. Devil, Dilemma, Queen of Spades and Trophy are bit-identical; on Default and Autarky
+  the rule fires now and then, changing game lengths but no results.
+- Overall +2.9 pp [0.0, +6.0] → INCONCLUSIVE by the gate's rule (lower bound must be above 0). More Schooltime and
+  Default seeds are queued, the two maps where the rule sometimes fires.
+
+**Why an endgame gate.** The scorecard gate is the older BENCHMARKS step-4 rule, and it misjudges late-game changes:
+- Its economy term is measured up to r250, so a change acting from r300 can at best "hold".
+- Its hygiene term counts chosen deaths (culls) as failures, which BENCHMARKS' 30 Sep revision says not to do.
+- Its win share is unpaired and from one seed.
+
+Tempo covers r10–150 by design. The endgame gate pairs fixtures (seed, map, opponent, seat) so the opening is shared.
+It reports the win difference with a bootstrap CI overall, per regime (elimination / round-limit maps) and per map,
+plus per-arm round-limit record, elimination losses, conversion failures and longest at the end. Its verdicts use the
+tempo vocabulary (ACCEPT / REJECT / NO GAIN / INCONCLUSIVE). It is proposed alongside tempo, not as a replacement:
+- tempo for opening changes;
+- this gate for changes that act after ~r150;
+- the scorecard tables for diagnosis.
+
+**Cross-reference: the s1 lane's findings** (`docs/findings/2026-10-01-s1-next-steps.md`, Mac checkout):
+- The s1 lane grafted Ares onto the Heartbreaker mimic (hb1-04) and found **r150 the best hand-over**: 0.64 → 0.84,
+  tying hb1-12. r250 gave 0.79 and r350 0.78.
+- The lane traced the mimic's losses to the missing crown: longest dragon 12 vs 24 on Portals, Slithery, Default and
+  Schooltime. That is the same conversion gap found here.
+- My Cache me outside hand-offs used r250–350 only. r150 hand-offs for both new mimics (tt-16 Cache me outside, tt-17
+  forgot to mention) are queued.
+- Its split-stall result is the mid-game counterpart of the regime story. The top ten split 52 % of eligible turns
+  (ours 75–95 %), and hold length while food is near.
+
 ## What to take, and what is open
 
 - **Conditional conversion, not a fixed earlier round.** Keep the swarm while elimination is on; convert on the top
