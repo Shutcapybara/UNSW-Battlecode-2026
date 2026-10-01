@@ -38,8 +38,10 @@ evidence: the post-change queen tables (docs/findings/2026-10-01-antioch-era-and
   - Steps 1 and 5 already exist in pieces: Heartbreaker direction GBT as a prior inside Ares's search
     (`hb1-14-prior-r540`, `verso-05`). That is the only mechanism that moved the gate in phase 1 (win +0.15).
   - Steps 2–4 do not exist.
-  - The blocker is not model size. It is **simulator throughput**: 2,900 games/h on the desktop with real bots is
-    roughly 3–4 orders of magnitude short of what PPO self-play used in Lux S2 or Hungry Geese (~10⁷ games).
+  - The blocker is not model size. It is **simulator throughput**. Revised 2 Oct: the official engine runs in-process
+    at about 10 k decisions/s per core (H-RL1), roughly 10⁸ agent-decisions/h on the desktop when the CPU is free.
+    A real-bot panel game is 20–40 k decisions, so that is enough for BC-initialised PPO runs of 10⁸–10⁹ decisions in
+    hours to a day.
 
 ## 2. Budget arithmetic (4 MiB zipped, 30 M points/turn, first-turn boot)
 
@@ -89,7 +91,7 @@ quantities. Hand rules are what carthage-01/02/06/07 tested; each fixed one haza
 
 | id | step | claim | falsifier | size / prerequisite |
 |---|---|---|---|---|
-| H-RL1 | fast simulator | A batched, headless reimplementation of the 1.2.3 rules (C++ or JAX), validated move-for-move against the engine, reaches ≥ 10⁵ games/h on the desktop (the 4090 for a JAX version). | parity failures on > 0.1 % of turns over 1,000 replayed corpus games, or < 10⁴ games/h | engineering; the Maelle state module and Ares's simulator are the start; golden parity tools exist |
+| H-RL1 | environment | **Revised 2 Oct: no reimplementation needed.** The official 1.2.3 engine runs in-process: `unswbc.engine.EngineModule.run(map, bot_reply)` calls Python once per dragon turn with the exact observation text the bot receives. Measured with a trivial policy (`tools/antioch/rl/engine_bench.py`): about **10 k decisions/s per core** including start-up, about 80 µs per decision. With ~12 free cores that is ~10⁸ agent-decisions/h raw, and ~2–5×10⁷/h once batched GPU inference is in the loop. The claim: a vectorised wrapper (one engine per process or thread, a shared GPU inference server batching across games) sustains ≥ 2×10⁷ decisions/h. | < 5×10⁶ decisions/h with batched inference | about a day of engineering; exact rules for free, so no parity work |
 | H-RL2 | behaviour cloning | A shared per-dragon conv policy (§2 shape, §3 block) cloned from the top ten's post-change replays plus the H-Q1 mimic matches hb1's direction accuracy (≥ 0.83) on held-out turns, and adds split/sprint heads. | held-out direction accuracy < hb1 GBT's 0.829, or the panel win of the net-as-prior < `hb1-14` | the corpus (now 78 k games; the top ten's post-change sample grows daily); 4090 |
 | H-RL3 | self-play fine-tune | PPO with parameter sharing from H-RL2. Reward is the terminal win under the 1.2.3 tiebreak, with shaped queen/material terms annealed to 0. The opponent league is past selves + hb1-14 + field mimics. The result beats its BC parent on the gate panels. | no win gain over the BC parent after 10⁶ self-play games | needs H-RL1 |
 | H-RL4 | deploy | int8 net (≤ 300 KB text) as policy prior + value inside Ares's search (the AlphaZero-lite form that already worked with the GBT prior), or standalone if the search adds nothing. | over 30 M points/turn or 4 MiB; or the panel win ≤ the GBT-prior bot | `arena.py --sandbox` probe |
@@ -97,8 +99,8 @@ quantities. Hand rules are what carthage-01/02/06/07 tested; each fixed one haza
 **Recommended order.**
 - **Start now, cheapest:** H-Q8 as GBT features. Then H-RL2 as BC + net-as-prior. It needs no new simulator and reuses
   the hb1 prior's plumbing.
-- **The real long pole:** H-RL1 decides whether H-RL3 is possible this season. If it is out of reach, the realistic
-  learned ceiling is BC on the field (which ~25 % of top-team moves defeat: view plus simple memory does not determine
-  them) plus the search we already have.
-- **Ledger:** L16 / L27 / L34 cover parts of this. Proposed: a new row for H-RL1 (fast simulator) at 0.6. It is the
-  prerequisite every RL claim hangs on.
+- **H-RL1 is now short:** the engine is the environment. The long pole moves to:
+  - credit assignment (20–40 agents, a terminal reward at r500: shaped rewards and per-agent value heads, as Lux S2);
+  - a C++ port of the observation encoder and net for upload, with a golden parity test (done before for the GBT);
+  - CPU contention with the testers' panels: a director scheduling call (the Mac's 18 cores can host rollouts too).
+- **Ledger:** L16 / L27 / L34 cover parts of this. Proposed: a new row for the learned-policy track at 0.6 (H-RL1 now cheap).
