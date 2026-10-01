@@ -540,4 +540,17 @@ forgot to mention:
   direction 0.7545, child size 0.986, **self-kill recall 0.904 / precision 0.983** (10,128 recorded), command
   **0.761**, sonar multiset 0.585, 0 missing replies. (`game_stats/runs/tt264-fidelity-mimic.json`)
 - `tt-09-prior-ftm` (uploadable, 3.74 MiB): hb1-14 with forgot to mention's direction model (540 rounds) as the prior.
-- Scorecards vs Ares V06 (z1 seed 1) running for both.
+- Scorecards vs Ares V06 (z1 seed 1, 160 side-games; V06 122–38):
+  - tt-09-prior-ftm: **117–43, gate fail** (economy −0.066, win share −3.1 pp). The forgot-to-mention steering is a
+    worse prior for Ares than Heartbreaker's (hb1-14).
+  - tt-08-ftm-mimic: **91–69, gate fail** (economy +0.081, length +0.074, win share −19.4 pp; own-body deaths
+    3.7 → 13.3 /1k — the copied culls). Stronger than the Heartbreaker mimic hb1-01 was against the zoo, but well below Ares.
+
+Cache me outside (ranked games only — its unranked bot is a variant):
+- `tt-10-cmo-mimic` (local only): gate 0.969, child size 0.996, sonar 0.906, cull 0.995; scaled direction GBT
+  (6,096 trees, 3.1M nodes, held-out 0.788; compact parity exact on 20,000 rows; 48.7 MB header).
+- Fidelity (40 held-out ranked games, 421,569 turns): family 0.990, direction 0.804, child size 0.993, self-kill recall
+  0.804 / precision 0.729 (9,037 recorded), **command 0.806**, sonar multiset 0.499 (many rays per turn), 0 missing
+  replies. (`game_stats/runs/tt952-fidelity-mimic.json`)
+- `tt-11-prior-cmo` (uploadable, 3.73 MiB): hb1-14 with Cache me outside's direction model (540 rounds).
+- Scorecards (tt-11 then tt-10) running.
