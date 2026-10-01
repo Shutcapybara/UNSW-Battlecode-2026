@@ -20,7 +20,7 @@ for p in (_V / 'leviathan', _V / 'ouroboros'):
 from replay import Reader  # noqa: E402
 from mapview import load_map  # noqa: E402
 
-FRAME_VERSION = 6
+FRAME_VERSION = 7
 # unswbc >= 1.2.3 ranks a game that reaches the round limit by (queen length, longest dragon, total length); the queen
 # is the team's starting dragon (id 0 or 1; a split child takes a new id, the parent keeps its own) and a dead queen
 # counts 0. FRAME_RULES=pre123 restores the old (longest, total) ranking for replays played under unswbc <= 1.2.2.
@@ -226,19 +226,31 @@ def decode(path):
     finalize()
     snap()  # final state after the last round
     res = root.child(4)
-    final = {t: dict(units=res.child(n).num(), longest=res.child(n).num(4), total=res.child(n).num(8)) for n, t in enumerate('AB')}
-    for i in (0, 1):  # the queens: one starting dragon per team
+    # TeamStanding: dragonCount, longestDragon, totalLength and, from unswbc 1.2.3, a fourth int32: the queen's length (the
+    # team's original lowest-id dragon; 0 once it has died, no succession; always 0 in replays written before 1.2.3)
+    final = {t: dict(units=res.child(n).num(), longest=res.child(n).num(4), total=res.child(n).num(8), queen=res.child(n).num(12))
+             for n, t in enumerate('AB')}
+    for i in (0, 1):  # the queens inferred from the body track (ids 0 and 1): for analysis of pre-1.2.3 replays, whose header has no queen field
         if i in teams:
-            final[teams[i]]['queen'] = len(body[i]) if i in live else 0
+            final[teams[i]]['queen_body'] = len(body[i]) if i in live else 0
     fa, fb = final['A'], final['B']
-    alive_a, alive_b = fa['units'] > 0, fb['units'] > 0
-    if alive_a != alive_b:
-        winner, reason = ('A' if alive_a else 'B'), 'elimination'
-    else:
-        keys = ('longest', 'total') if RULES == 'pre123' else ('queen', 'longest', 'total')
-        ka, kb = tuple(fa.get(k, 0) for k in keys), tuple(fb.get(k, 0) for k in keys)
-        winner = 'A' if ka > kb else 'B' if kb > ka else 'draw'
-        reason = next((k for k in keys if fa.get(k, 0) != fb.get(k, 0)), 'tie')
+    keys = ('longest', 'total') if RULES == 'pre123' else ('queen', 'longest', 'total')
+    if res.num(0, 'B') & 1:
+        # the engine's own verdict (GameResult: endReason u16 @2, union tag u16 @4 = 1 for a winner, winner u16 @6, 0 = A).
+        # Authoritative under every rule set (Antioch, validated 300/300 against server winners, 1 Oct)
+        winner = ('A', 'B')[res.num(6, 'H')] if res.num(4, 'H') == 1 else 'draw'
+        if res.num(2, 'H') == 0:
+            reason = 'elimination'
+        else:
+            reason = next((k for k in keys if fa.get(k, 0) != fb.get(k, 0)), 'tie')
+    else:   # unterminated record: infer (FRAME_RULES=pre123 restores the old ranking for replays played under <= 1.2.2)
+        alive_a, alive_b = fa['units'] > 0, fb['units'] > 0
+        if alive_a != alive_b:
+            winner, reason = ('A' if alive_a else 'B'), 'elimination'
+        else:
+            ka, kb = tuple(fa.get(k, 0) for k in keys), tuple(fb.get(k, 0) for k in keys)
+            winner = 'A' if ka > kb else 'B' if kb > ka else 'draw'
+            reason = next((k for k in keys if fa.get(k, 0) != fb.get(k, 0)), 'tie')
     return dict(
         frame_version=FRAME_VERSION, file=str(path), id=Path(path).stem, version=version,
         botA=root.text(1), botB=root.text(2), map=name, map_hash=hashlib.sha256(maptext.encode()).hexdigest()[:12],

@@ -669,3 +669,27 @@ mechanism with a smaller prior). Uploaded as submission **14265** `LV-hb1-14-pri
 (unswbc 1.2.2); nothing has been measured for it under 1.2.3 yet — the live games it now plays are the first
 post-change evidence and the P2 analysts should read them as such. Teammates may activate over it at will;
 the executor will not restore it.
+
+## D-042 — Phase 2 first-wave rulings and the handoff (1 Oct 19:40Z / 2 Oct ACST)
+
+All ten lane branches read and merged to `main` (`41f23e04e`): analysts Antioch, Himeji, Nara; testers Carthage, Kyoto,
+Rome; stewards Clair, Obscur, Expedition; TT. Summary in `docs/PHASE2-SUMMARY-2026-10-02.md`, handoff in
+`docs/HANDOFF-2026-10-02.md`. Rulings: (1) era rule `started_at ≥ 2026-10-01T06:00Z` (Antioch's; Nara's 09:00Z is
+equivalent — no game started between 05:58Z and 09:23Z); (2) decoder: FRAME_VERSION 7 on main combines Carthage's
+body-inferred queen (`queen_body`, `FRAME_RULES=pre123`) with Antioch's engine verdict and header queen field
+(validated 300/300); every FRAME_VERSION 5 score on post-change replays is superseded by Himeji's official re-reads;
+(3) gate: Himeji's win-led rule for predeclared 1.2.3 adaptations (pool win lb > 0, gen win lb > −0.02, econ lb > −0.03
+both panels, units/total lb ≥ −0.02, no Φ guard, no queen exemption); Clair's BENCHMARKS 1 Oct revision stands as
+written, its implied flips (verso-02/05, tt-05) are accept-shaped holds until recomputed on the desktop; the units
+guard form is referred to the analysts; (4) `carthage-05-free-sprint` passes the win-led rule as a bundle (pool win
++0.045 [+0.019, +0.074], gen +0.017 [+0.003, +0.031], econ flat) — CANDIDATE.toml written by the director as
+housekeeping, registered at 545, next upload after hb1-14; the 05−04 increment is inconclusive and gets a five-seed
+run; (5) `carthage-04` is the rules-era baseline once its fingerprint is frozen; (6) ledger moves (log line 1 Oct
+19:30Z): L02 0.5, L04 0.2, L11 0.3, L12 0.3, L14 0.4, L16 0.7, L20 0.3, L21 0.1, L24 0.3, L29 0.9, L30 0.3, L31 0.6,
+L34 0.3, L36 0.85, L38 0.75, L39 0.8 (re-keyed to the queen), L40 0.3; L41–L47 (Obscur's numbering), L48 (Clair's
+atlas row), L49 (queen survival, 0.5), L50 (sprint adaptation, 0.8); L03 kept at 0.7 against Obscur's 0.5; (7) one
+ledger steward (Clair); Obscur's `gates.py`/`phasegate.py` to be ported into the shared scorecard; Expedition paused
+until it has a post-change roster; gustave-07c's registration to be withdrawn (mouth tax negative on three hosts);
+(8) `.gitattributes` with `merge=union` for BOARD/TARGETS/CORPUS/HYPOTHESES, and the keeper's include list extended
+to it. Outstanding for the director: Mac hub venv → 1.2.3 and the harness repin; collector targets for the five
+teams Antioch named; the gustave-07c withdrawal.

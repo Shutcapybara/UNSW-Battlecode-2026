@@ -42,12 +42,16 @@ DEFAULTS = {
                'interval_seconds': 5, 'threaded': True, 'refresh_per_pass': 30,   # D-025: continuous, in its own thread, paced by the shared client (≈ 2 API calls per replay)
                # explicit teams: the current top (306 Cutlery, formerly Vibing++: whole history, decoy timeline), the screen/confirmation and dev opponents, the band teams that played us
                'teams': [{'id': 306, 'games': 3000, 'why': 'rank 1; suspected decoy submissions between autoscrims'}, {'id': 62, 'games': 6000, 'why': 'elimination specialist; HB-1 anatomy target (lead, 29 Sep): whole history'},
+                         # D-042 (Antioch's request): five top-ten teams had 0 post-change games; targets set above their pre-change totals so the collector keeps pulling their new games
+                         {'id': 264, 'games': 4000, 'why': 'forgot to mention; post-change reference'}, {'id': 91, 'games': 3000, 'why': 'SSS; post-change reference'},
+                         {'id': 70, 'games': 5500, 'why': 'cheji bt; post-change reference'}, {'id': 27, 'games': 2200, 'why': 'PPP; post-change reference'},
+                         {'id': 952, 'games': 2800, 'why': 'Cache me outside; post-change reference'}, {'id': 206, 'games': 3200, 'why': 'Stockfish; post-change reference'},
                          {'id': 545, 'games': 600, 'why': 'dev test 1 (swarm)'}, {'id': 470, 'games': 600, 'why': 'length racer'}, {'id': 45, 'games': 600, 'why': 'band-like screen opponent'},
                          {'id': 752, 'games': 300, 'why': 'dev test 2'}, {'id': 790, 'games': 300, 'why': 'band'}, {'id': 133, 'games': 300, 'why': 'band'}, {'id': 977, 'games': 300, 'why': 'band'},
                          {'id': 75, 'games': 300, 'why': 'band'}, {'id': 19, 'games': 300, 'why': 'band'}, {'id': 406, 'games': 300, 'why': 'band'}, {'id': 534, 'games': 300, 'why': 'band'},
                          {'id': 875, 'games': 300, 'why': 'band'}, {'id': 473, 'games': 300, 'why': 'band'}, {'id': 241, 'games': 300, 'why': 'band'}]},
     'git': {'enabled': True, 'interval_seconds': 10800, 'branch': 'main', 'push': True, 'quiet_minutes': 60,
-            'include': ['bots/*', 'docs/*', 'game_stats/runs/*.parquet', 'game_stats/imports/*.json', 'game_stats/*.json', 'claude/*', 'tools/*', 'tests/*', 'maps/*.map', 'benchmark.toml', 'comparison.toml', 'comparison-*.toml', 'README.md', '.gitignore'],
+            'include': ['bots/*', 'docs/*', 'game_stats/runs/*.parquet', 'game_stats/imports/*.json', 'game_stats/*.json', 'claude/*', 'tools/*', 'tests/*', 'maps/*.map', 'benchmark.toml', 'comparison.toml', 'comparison-*.toml', 'README.md', '.gitignore', '.gitattributes'],
             'never': ['.battlecode-api-key', 'experiment_data/*', 'build/*', 'public_replays/*', 'hub-state/*', '*.replay', '*.replay.gz', 'game_stats.parquet', 'game_stats/sources/*', '*.tgz', '*.zip', '*.lock', '.venv/*', 'unswbc/*', 'replays/*', '*.log']},
 }
 
