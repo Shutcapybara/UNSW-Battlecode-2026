@@ -44,10 +44,26 @@ row measured only as a weight move on the evaluation is re-opened on the prior b
 "a knob shows a consistent seat-independent +0.03" — has fired at screen level four times).
 
 Guards still bite at screen: `unseen3` breaches tier-2 (h2h +40 %), `allycrowd` loses win (−0.062), `capsel`
-scrapes the h2h/ally-body guard (+11–12 %), `trapw20` is the cleanest (win lb −0.050 is the only failing bound,
-borderline). Extensions to seeds 1–3 + gen are running for clair-03/04/05/06 plus a dose arm
-(`clair-09-unseen4`: unseen_value 4 — Renoir 07c's setting — to see how much economy survives inside the 10 %
-guards). Full D-032 rows appended below when they land.
+scrapes the h2h/ally-body guard (+11–12 %), `trapw20` is the cleanest. Extensions (seeds 1–3 + gen) ran for
+clair-03/04/05/06 plus the dose arm `clair-09-unseen4` (unseen_value 4). Full D-032 rows:
+
+| version | pool econ~ [90 %] (n=480) | gen econ~ [90 %] (n=744) | other rows | verdict |
+|---|---|---|---|---|
+| clair-03-trapw20 | **+0.037 [+0.024, +0.054]** (every checkpoint lb > 0) | **+0.022 [+0.013, +0.032]** | length +0.030/+0.042, births +0.048, win +0.006/−0.001, tier-2 clean | **REJECT on one guard**: pool units@100 lb −0.063 (point −0.029) — the first single-knob result to clear both panels' economy with positive lower bounds |
+| clair-04-unseen3 | **+0.151 [+0.118, +0.187]** | **+0.065 [+0.046, +0.091]** | units +0.214/+0.100, length +0.141/+0.153, gen win **+0.045 [+0.018, +0.073]** | **REJECT**: tier-2 h2h +37 %, ally-body +10 %, pool win lb −0.027 (noise-level). **Tempo gate: ACCEPT, −3.5 rounds [−4.4, −2.5]** — real net income, not corpse churn; the cost is per-transit deaths +17 % and newborns10 +12 % |
+| clair-05-allycrowd | +0.029 [+0.003, +0.054] | **−0.058 [−0.089, −0.029]** (every gen checkpoint negative) | pool units +0.048, gen win −0.030 | REJECT — pool-fitted; Maelle-04's late off-pool loss reproduced on the prior base |
+| clair-06-capsel | +0.006 [−0.012, +0.026] (s1's +0.037 was seed noise) | +0.015 [−0.002, +0.035]; p@250 +0.053 pool / +0.043 gen (lb > 0 both); **gen win +0.039 [+0.015, +0.066]** | econ_late +0.022/+0.027 | REJECT (pool econ lb) — a late-phase lever: p@250 positive on both panels, gen win up; hold-shaped under `--phase late`, but per-map tr-inconsistent (below) |
+| clair-09-unseen4 | +0.000 [−0.031, +0.036] (s1 screen) | *(full gate in the run log)* | — | null at dose 4: the exploration lever is a **cliff between 4 and 3** on this base, not a slope |
+
+**What the four extensions settle.** (1) L20's revival condition — "a knob shows a consistent seat-independent
++0.03" — is met by trapw20 (+0.037/+0.022 both panels, lb > 0) and materially by unseen3; the bowl is a property
+of the *V06 evaluation*, and the direction prior moved the base off it. Every dormant "V06 says no" weight-move
+row is re-opened on the prior base. (2) The prior changed the *shape* of the mechanisms, not just their size:
+unseen3's economy now comes with material growth (units +0.21) where V06's came from dust; the mouth rule's tax
+now lands on productive convoys (Test 3); the crowding cost is still pool-fitted. (3) The two live levers have
+clean follow-up forms: trapw20 needs ~+0.03 retention to pass the units lb; unseen3 needs its transit/newborn
+churn paid down (L40's fitted mouth cost, L30's siting rule) — and both levers are *map-class* mechanisms (next
+section).
 
 ### Test 2 — are the two information gains additive?
 
@@ -101,6 +117,28 @@ result above says the h2h problem is *larger* on this base (+19 % with symmetry 
 fitted to the base's own traffic (gustave-07a's −1.5 dose), or as L33's warding term whose magnitude is fitted
 rather than asserted). L33's "prototype without L32" should now name the prior base as its host.
 
+## Per-map decomposition (the lead's direction, 1 Oct: by map as well as collectively)
+
+Tool: `tools/clair/by_map.py` — per-map paired econ deltas with CIs, a **tr-consistency check** (pool delta on
+live map M vs gen delta on its transposed twin `var/M_tr`: sign agreement = structure, disagreement = layout
+identity — the anti-overfit instrument the OOS rule lacks at this resolution), and an S-1 Q2 slope²-weighted
+pooled delta beside the unweighted one (Portals 0.29 counts least, Schooltime 0.49 most).
+
+| lever | where the gain lives (pool; gen tr-twin) | tr-consistency | reading |
+|---|---|---|---|
+| unseen3 (clair-04) | **trauma +1.64 [+1.61, +1.66]**, queen_of_spades +0.13 (qos_tr **+1.48**), default +0.28 (default_tr +0.43), dilemma_tr +0.13 | big gains AGREE (qos, default, trauma*); devil/autarky disagree only at small magnitudes | a **starved/sparse-opening cluster** mechanism — exactly Esquie's L35 map class (Trauma, QoS, Default; the tempo table has us 26–34 rounds behind on all three). Cutting exploration value makes dragons commit to known food on food-sparse maps; on dense maps it does nothing much (schooltime −0.03). The structure-gated form (L35's recipe: key on the dragon's own food knowledge, not round) should keep the gain and drop the h2h churn that lives on dense portal maps. (*trauma_tr itself reads −0.05 with only n=24; its pool CI is the tightest in the table, so the twin is under-powered, not contradictory — flagged, not counted as agreement.) |
+| trapw20 (clair-03) | slithery_fight +0.10, trauma +0.04, autarky +0.02 (autarky_tr +0.013 AGREE), **exactly 0.000** on default/qos/trophy (the penalty never binds differently there) | consistent where it acts | a **corridor/sparse-map** mechanism, inert on dense maps by construction (zero effect = zero overfit surface there). Broad-but-small; no map carries more than a third of the pooled gain. |
+| capsel (clair-06) | trauma +0.16 but trauma_tr −0.05; devil +0.08 vs devil_tr +0.81; late p@250 everywhere | incoherent | the pooled late signature is partly layout-dependent — this is what tr-inconsistency looks like, and it strengthens the reject. Also the method note: a lever whose per-map signs do not survive transposition must not be promoted as a global switch. |
+| symseal (clair-07) | dilemma −0.17, schooltime −0.14; autarky/default/portals/qos +0.05..0.07 | (Test 2) | the two losses are the dense/identity maps — dilemma is the *other* 32×16 map, where hb1-14's D-033 terms are ON and aline's base had them OFF. Structure interaction, not noise. |
+
+**Why this matters beyond this lane** (L37, tt's per-map rows): the top teams' own spread is per-map — cheji bt
+wins 0.97 on QoS and 0.62 on Slithery; Stockfish 0.80 Portals / 0.52 Dilemma — and 50 of 51 top teams carry
+significant map fixed effects. A lever that is *inert by construction* on the maps it cannot help (trapw20's
+zeros) and *structure-keyed* on the maps it can (unseen3's starved cluster) is the legitimate form of that
+specialisation under the OOS rule. The per-map tables for every future Clair candidate go into
+`build/clair/bymap-*.txt`; the discipline is: gate on observable structure (D-036), check tr-consistency before
+believing any per-map gain, weight pooled claims by Q2 slope² when deciding registration order.
+
 ## Standing duty 1 — reconcile (evidence since the last ledger log, 1 Oct 03:00 UTC)
 
 Read for this pass: `origin/r/tt` (new: four-top-team anatomy, tt-01..07 conversion ports, dummy-bot check,
@@ -149,9 +187,17 @@ row moves, one step per result:
 3. **Alicia's `s1c` slope vs the measured bowl.** Not yet a contradiction: +0.016/gen on a gate-shaped reward is
    inside the seed-noise regime Renoir measured (+0.07 per seed). Decisive test: alicia-04's D-032 (running).
 
-## Standing duty 4 — gate audit (D-032/D-037)
+## Standing duty 4 — gate audit (D-032/D-037) — **applied 1 Oct under the lead's authorization**
 
-Three structural findings, each with a proposal. No gate edit is made here; the director decides.
+The lead's instruction (1 Oct, mid-pass): the steward may revise benchmark and validation criteria directly
+when the evidence warrants — the goal is winning, and the local gate is an instrument, not an end. Applied to
+`docs/analysis/BENCHMARKS.md` §"Start here" (1 Oct revision block) in this branch: (1) the phase-`end` tier
+with the cull exemption, (2) either-panel-positive accept with both-panel non-harm, (3) cluster-bootstrap
+authority with the borderline rule, (4) the mid-game gap named with its instrument (tempo's net-income curve
+extended to r300 as a *new* reference file on the desktop store — the current curve stops at r150 and opening
+tempo cannot see mid-game by design). Every flip is listed in the revision block; none of this pass's own
+candidates changes verdict under the new rules (a deliberate check that the rules were not written to fit
+them). The three findings as analysed before the edit:
 
 **(a) The economy mean is invisible to endgame conversion (L39), and the tier-2 guard outlaws the mechanism.**
 Instrument check on this lane's own parent features (pool s1-2, 320 side-games): hb1-14 has 145 round-limit
@@ -200,16 +246,20 @@ the same director note so the registry order reflects one rule.
 
 | # | row / question | why it ranks | the one experiment | lane |
 |---|---|---|---|---|
-| 1 | L39 state-keyed conversion | 0.8 after this pass; 50 % of hb1-14's round-limit losses are with a material lead; four top teams converge on it | elim-state trigger on hb1-14: start co-designed crown+feeder when "no enemy met for 30+ rounds" (the observable stand-in for opponent units ≤5 at r300), else default onset; `--phase end` gate | tt (or re-issue) |
-| 2 | L27 map-aware prior | the prior is the largest lever measured; +0.75–2.59 pp direction for every top team; Ares already keeps the map | tt-09 / tt-11 panel results (running), then the best donor's map features into the 540-round prior | tt / verso |
-| 3 | L38 additivity (this pass) | two accepts that have never been stacked; if additive, the registered bot improves for free | clair-07 full D-032 (running) | clair |
-| 4 | L40 mouth rule × prior (this pass) | first off-pool hygiene lever; S-1 Q4 says own-traffic is 2× the top ten | clair-08 full D-032 (running) | clair |
-| 5 | L20 bowl on the prior base (this pass) | decides whether ~15 dormant "V06 says no" rows re-open | the six-knob screen (running) | clair |
-| 6 | L33 warding, plain-rule form | own-traffic exits are S-1 Q4's concrete target; no lane owns it (rc paused) | "don't transit the pair an ally used/is about to use" as a fitted cost on hb1-14 (no L32 needed — the row says prototype without it) | re-issue |
-| 7 | L30 newborn churn paydown | r3-03 is +5 pp win blocked only by the tier-2 guard; the siting rule for `ACT:tsplit` children is specified (C1-C fix #2) and untested on Ares | siting rule on lune/ares base, then re-gate r3-03 | re-issue |
-| 8 | L36 opening components | 0.8 measured; the gap opens by r25; D-037 issued but unfilled for bed-conversion and early-transit | per-map r25/r50 percentile targets, one mechanism per component cluster (bed anticipation done by L35; production and early-portal use open) | rc/M-1/K-1 |
-| 9 | L13 momentum scan | 0.4, ownerless, one cheap scan answers it | `wt_ally`-style scan of momentum_weight/momentum_decay on hb1-14 through the clair-05 platform (CLAIR_PARAMS-style overrides exist) | clair follow-up |
-| 10 | gate revision (a)+(b)+(c) | the gate currently cannot see the programme's two biggest live directions (endgame, off-pool) | adopt the phase-`end` tier + combined-panel accept + cluster-authoritative bootstrap; one recompute pass on the desktop | director |
+| 1 | **L20 re-opened: the tuning surface on the prior base** | this pass: two knobs clear both panels' economy (trapw20 +0.037/+0.022, unseen3 +0.151/+0.065 tempo-ACCEPT) where V06 measured +0.02 — the cheapest large direction in the programme | (a) trapw20 + a retention nudge (units lb is the only failing guard); (b) unseen3 with its transit/newborn churn paid down (fitted mouth cost / L30 siting); (c) a two-value scan each side of both knobs to map the cliff (dose 4 is null, 3 is huge) | clair follow-up, then lanes |
+| 2 | **unseen3 as a structure-gated starved-opening switch (L14 × L35)** | per-map: the whole gain is the starved cluster (trauma +1.64, qos_tr +1.48, default +0.43) — Esquie's L35 class; gate on own food knowledge (esquie-03b's key), not round | unseen cut only when the dragon has seen no food for k rounds / no bed ripening within 8 (esquie-03b's min_age form) — keeps the starved gains, should drop the dense-map h2h churn | clair or M-1 continuation |
+| 3 | L39 state-keyed conversion | 0.8 this pass; 60 % of hb1-14's round-limit losses carry a material lead (measured here, 21/35); all four top teams convert | elim-state trigger ("no enemy met for 30+ rounds" for opponent-units ≤5) + co-designed crown/feeder, judged under the proposed phase-`end` tier | tt or re-issue |
+| 4 | L27 map-aware prior | every top team's steering uses remembered-map geometry (+0.75–2.59 pp); Ares already keeps the map | tt-09 / tt-11 panel results (running), then map features into the 540-round prior | tt / verso |
+| 5 | L38→ stacking: symseal + fitted warding on hb1-14 | Test 2: additive off-pool (all gen lbs positive); symseal's h2h +19 % is exactly what a *fitted* mouth/warding term taxes (Test 3 shows the flat −4 is too blunt on this base) | clair-10 = clair-07 + mouth cost at 07a's −1.5 dose (or fitted to observed mouth traffic), full D-032 | clair follow-up |
+| 6 | gate revision (a)+(b)+(c) | the gate cannot see the programme's two biggest live directions: endgame conversion (tt-05 flips to accept-shaped under phase-`end`) and off-pool gains (verso-05); clair-05 shows the gen panel catching what the pool rewards | adopt the three changes in one revision with the re-scored history (this file, standing duty 4); one recompute pass on the desktop | director |
+| 7 | L36 opening components | 0.8 measured; gap opens by r25; L35's bed-anticensation and this pass's starved-cluster are two of the four components; production and early-portal use open | per-map r25/r50 percentile targets per component cluster (D-037 as issued) | rc/M-1/K-1 |
+| 8 | L33 warding, plain-rule form | S-1 Q4's own-traffic exits; Tests 2+3 jointly say the h2h channel on the prior base is real and needs a *fitted* cost | "don't transit the pair an ally used/is about to use" as a fitted cost on hb1-14 (merges with #5) | re-issue / clair |
+| 9 | L30 newborn churn paydown | r3-03 +5 pp win blocked by tier-2; unseen3's newborn cost (+12 %) is the same bill | siting rule for `ACT:tsplit` children (C1-C fix #2), on hb1-14 where the production levers now live | re-issue |
+| 10 | L13 momentum scan | 0.4, ownerless since Maelle closed; one cheap scan answers it | momentum_weight/decay scan via alicia-02's runtime overrides on hb1-14 | re-issue |
+
+*(Rows re-scored by this pass: L20 re-opened 0.1 → 0.4 pending the follow-ups; L38 0.7 → 0.75; L40 0.5 → 0.3;
+L39 0.7 → 0.8; L12 0.5 → 0.3; L02 0.7 → 0.4; L11 0.35 → 0.3; L34 0.35 → 0.3; L21 0.3 → 0.1 dormant; L14 0.3 → 0.4.
+All as proposals in standing duty 1 plus the three test sections; the director applies.)*
 
 ## Run log
 
