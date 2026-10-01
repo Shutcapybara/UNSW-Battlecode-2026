@@ -96,6 +96,24 @@ quantities. Hand rules are what carthage-01/02/06/07 tested; each fixed one haza
 | H-RL3 | self-play fine-tune | PPO with parameter sharing from H-RL2. Reward is the terminal win under the 1.2.3 tiebreak, with shaped queen/material terms annealed to 0. The opponent league is past selves + hb1-14 + field mimics. The result beats its BC parent on the gate panels. | no win gain over the BC parent after 10⁶ self-play games | needs H-RL1 |
 | H-RL4 | deploy | int8 net (≤ 300 KB text) as policy prior + value inside Ares's search (the AlphaZero-lite form that already worked with the GBT prior), or standalone if the search adds nothing. | over 30 M points/turn or 4 MiB; or the panel win ≤ the GBT-prior bot | `arena.py --sandbox` probe |
 
+**Trees or nets (lead, 2 Oct: not married to a neural architecture).**
+- **In-house evidence favours GBTs on the decisions we have.** HB-1's structure table (same features, held-out games):
+  GBT beat MLP on all five decisions. Direction 0.829 vs 0.814 (depth-4 tree 0.685), split gate 0.975 vs 0.970, sonar
+  0.981 vs 0.966, child size 0.957 vs 0.943; the late gate tied. That fits the general result for tabular hand features.
+- **Where nets win in prior art:** raw spatial input (the 7×7 view as channels; Lux AI, Hungry Geese) and when the
+  policy must be trained by policy gradient.
+- **The cost is bytes, not accuracy.** 1.5 M nodes = 3.4 MiB is today's prior. The useful question is accuracy per KB:
+  the direction GBT's accuracy as a function of trees × depth should be measured before choosing (offline, CPU, cheap).
+- **H-RL5 — expert iteration with trees** (the AlphaZero loop with a supervised learner):
+  - the loop: Ares's search, guided by the current GBT prior, plays self-play games in the in-process engine (H-RL1);
+    a GBT is fitted to the *search's* chosen moves and the game outcomes (policy + value); it becomes the next prior;
+  - it needs no differentiable policy, reuses the hb1 export/parity path, and every iteration is a gate-testable bot;
+  - falsifier: iteration 2's bot does not beat iteration 1's on the panels (win LB > 0);
+  - size: CPU-heavy self-play (search per move), so **a Claude/desktop lane**, or the Mac's CPU if scheduled; GPU not
+    needed.
+- **Recommendation:** GBT first, for the BC prior (H-RL2) with the H-Q8 block, and for H-RL5. A small CNN only if the
+  per-KB curve shows the trees saturating, or for PPO (H-RL3).
+
 **Host constraint (lead, 2 Oct).** Only the Claude instances run on the desktop with the 4090. GPU-heavy work goes to a
 Claude lane only: H-RL2 BC training, H-RL3 PPO, net or large GBT fits. The GPT and GLM instances (Mac) may take the
 CPU-only parts: H-Q8 feature definitions and small GBT ablations, readings, panel tests of an already-built bot.

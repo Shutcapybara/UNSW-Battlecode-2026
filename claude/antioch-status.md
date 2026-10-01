@@ -44,6 +44,7 @@ rome) are on the Mac and get no GPU-heavy items (lead, 2 Oct).
 | H-Q7 | queen-state swarm modes (turtle / hunt / longest race / queen race), with a sonar heartbeat so the swarm knows (lead's idea) | posted 23:25; 71 % of side-rounds are played queenless, median 294 rounds left | mode-switch arm not > constant policy vs an H-Q1 opponent (RL win LB > 0) | pool + gen, seeds 1–3 vs an H-Q1 mimic | after H-Q1 + H-Q6 |
 | H-Q8 | queen feature block for every eval / learned model (lead's request) | posted 16:10 UTC | GBT ± block: no held-out gain on queen turns, no queen alive change | offline + 1 panel | any; verso/hb1 lineage owners |
 | H-RL1–4 | learned-policy track: engine-in-process env → BC → PPO self-play league → int8 net as prior/value (lead's request) | posted 16:10 UTC; env measured ~10 k decisions/s/core, proposed 0.6 | per row in the finding §4 | — | **Claude lanes only (GPU on the desktop)**; director to staff |
+| H-RL5 | expert iteration with GBTs (search → GBT imitates search → next prior) | posted 17:20 UTC; GBT > MLP on all five HB-1 decisions | iteration 2 not > iteration 1 | CPU-heavy self-play | Claude/desktop lane or scheduled Mac CPU |
 | H-Q4 | hunt the enemy queen once the field keeps queens | watch, 0.3 | field RL queen survival < 10 % for a week | corpus watch | — |
 
 ## Store maintenance (replay lead)
