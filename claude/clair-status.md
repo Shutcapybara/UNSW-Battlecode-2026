@@ -136,6 +136,66 @@ result above says the h2h problem is *larger* on this base (+19 % with symmetry 
 fitted to the base's own traffic (gustave-07a's −1.5 dose), or as L33's warding term whose magnitude is fitted
 rather than asserted). L33's "prototype without L32" should now name the prior base as its host.
 
+## Pass 2 (1 Oct, evening) — fresh mechanisms and risk, per the lead's standing instructions
+
+Lead's instructions recorded as lane rules: *don't overfit to work already done — fresh ideas, not hard local
+iteration; local optimisation allowed but not exclusively; taking risks to find information is allowed.* Pass 2
+therefore: one dose probe and one stack as **closures** (clair-13/11), three fresh ownerless mechanisms
+(clair-14/15/16), and a base move to `hb1-17-prior-lam20`.
+
+**Base change**: tt's prior-weight sweep (λ was fixed at 1.0 before screening and never swept) found λ=2 →
+144–16, replicated 139–21 at seed 2 — **`hb1-17-prior-lam20` is the best uploadable bot and this pass's
+parent** (copied from r/tt for measurement, one line: `hb1_dir_lambda 1.0 → 2.0`). **Registration proposal:
+hb1-17-prior-lam20 at the head of the queue, above hb1-14 (540).**
+
+Reconcile additions (evidence read this pass: r/tt tt-09..21, r/alicia closing, r/verso final):
+
+| row | move | pointer |
+|---|---|---|
+| L27 | note (no move) | tt-09 (forgot-to-mention prior) 117–43 fail; tt-11 (Cache-me-outside prior) 127–33 hold — both below hb1-14's 141–19. Prior quality tracks the donor's *predictability from the local view* (Heartbreaker 0.83–0.86 vs 0.75–0.79), not the donor's strength. The map-aware route (mapmem features into the HB model) is the live form, not donor swap. λ=2 (hb1-17) beats both donor swaps at zero modelling cost. |
+| L04 | 0.3 → **0.2** | alicia-04 REJECT ("learned the pool"); stage-2 ES interrupted at 8/16 with pool +0.036 / held-in −0.014. Third closure with the same signature: pool-shaped optima exist and do not generalise (clair-05 allycrowd, verso crowding w0.5, alicia s1c). The reward taught the pool — the ES route is closed until the reward is gen-shaped. |
+| L39 | note | tt's regime selector (feeding onset by local regime features, no map names) ties hb1-17 (283–37 = 283–37); hb1-21 (portal-only onset) in per-map test. clair-16 below is the *game-state* trigger (enemy recency), a different observable than map regime — both are L39's "keyed on state, not round". |
+| L31 | note | early-swarm hand-off line closed: tt-12..15 (top-team swarm mimic → Ares hand-off at r250–350) reach V06's level, not above; hb1-14's +19 wins come from its steering in the first 300 rounds. g01's mimic→Ares graft (0.64→0.84) remains the phase-switch evidence. |
+| L12 | note | verso's memory sweep (path windows, decayed densities, sonar on direction): best +0.0042 for cheji bt — the EW-density family is dead for the fourth time; map *geometry* (tt's mapmem) remains the only live memory form. |
+
+**Pass-2 candidates** (all on hb1-17, D-032 panels; pre-registered extension rules):
+
+| version | mechanism | origin | extends when |
+|---|---|---|---|
+| clair-13-unseen32 | dose probe unseen 3.2 (between null-4 and huge-3) | pass-1 cliff | never — a measurement: 3.2 null ⇒ the cliff is the dive_value (3.0) tie-flip; 3.2 large ⇒ smooth response |
+| clair-11-trapw20-unseen3 | the two reopened levers stacked | pass-1 | screen only (closure: economies add? guards compound?) |
+| clair-14-splitdefer | mid-game split defers while a known pearl/ripening bed is within 8 of the head (−2 vs split_value 8); escape/opening splits untouched | s1 split-stall (we split 95 % of two-exit turns vs top ten 46 %; declined dragons eat 0.53 vs 0.27) | pool s1 econ ≥ +0.02 |
+| clair-15-pairwait | ally head vanishing on a portal mouth stamps it busy 3 rounds; our dive there ×0.6 | L33 plain form; S-1 Q4 own-traffic (same-pair doubles 0.37 vs 0.28) | h2h down ≥ 10 % with econ ≥ −0.01 |
+| clair-16-elimfeed | feed_base 140 (tt-05 onset) but the feeder role only while contested (enemy head seen within 60 rounds); dominant → stay swarm, close the elimination | L39 untested form; tt elim-state (opponent ≤5 units at r300 ⇒ 14/17 late eliminations) | pool s1 win ≥ +0.02 (judged on win + phase-`end`, not r250 economy) |
+
+**Pass-2 results** (screens, pool seed 1, 160 fixtures, vs hb1-17 unless said; no extension bars met):
+
+| version | econ~ [90 %] | win | tier-2 | verdict & reading |
+|---|---|---|---|---|
+| clair-13-unseen32 | +0.059 [+0.009, +0.123] | −0.050 | h2h +18 % | the 4→3 response is a **steep slope, not a knife-edge** at dive_value: 4 → +0.000, 3.2 → +0.059, 3.0 → +0.151. The cliff reading from pass 1 is corrected: under-sampled, not discontinuous. |
+| clair-11 stack | +0.160 [+0.110, +0.221] | **−0.062 [−0.119, −0.006]** | wall +12 %, self +19 %, h2h +29 % | economies add (+0.081 + trapw20's ≈ +0.08 = +0.160, confirmed by the c17 control); **win and hygiene costs compound** (unseen3 alone on this base: win −0.025). The next registered bot must not be a blind stack. |
+| clair-14-splitdefer | +0.002 [−0.021, +0.026] | −0.050 [−0.088, −0.012] | flat | REJECT at screen. The **defer-rule** form of split timing does not transfer: s1's implication needs the *value* form (a split priced by the parent's expected intake vs the child's safe intake), not a penalty bolted on a threshold policy. |
+| clair-15-pairwait | +0.000 | −0.006 | h2h −2 % | NULL — the vanish-detection key almost never fires from one 7×7 view. Design miss, not mechanism miss; corrected key in clair-18. |
+| clair-16-elimfeed | +0.000 (identical to r250, as designed) | **−0.044 [−0.088, 0.000]** | self +13 % (the culls fire) | REJECT at screen: the enemy-recency trigger does not separate eliminations from round-limit wins. The correct observable is **pressure** (own-vs-visible-enemy units), not recency; tt's original (opponent unit count) is not directly observable. |
+| clair-17 control | +0.081 [+0.039, +0.140] | −0.025 | h2h +22 % | unseen3 alone on λ=2: the starved-cluster signature is **base-robust** (trauma +1.31, QoS +0.57, default +0.23 per-map). |
+| clair-18-pairwait2 | +0.002 | 0.000 | h2h within ±10 % | NULL — even the visible-key discount (ally head within 1 of my dive cell, ×0.6) does not move the h2h rate: the collisions are not decided at the dive decision this bot sees. The leak's true key is still not found; L33's fitted-cost form (a *cost* on the mouth, not a dive discount) remains the live shape. |
+
+**The hard facts of this pass came from the closure cells**: (1) **hb1-17 (λ=2) is pool-fitted** — vs hb1-14 at
+seeds 1–3 both panels: pool econ +0.112 [+0.070, +0.148] but **gen econ −0.080 [−0.114, −0.036]**, gen win
+−0.033, every gen checkpoint negative. The λ sweep was z1-only; under both the old and the revised lane gate
+hb1-17 does **not** supersede hb1-14 (gen non-harm fails). Registration proposal **withdrawn and inverted: do
+not register hb1-17 above hb1-14 on z1 evidence; the λ sweep needs a gen-panel read (λ 1.5, or accept λ=1 as
+the robust point)**. This is the fourth instrument to find pool-shaped optima that do not generalise
+(clair-05, verso crowding, alicia s1c, hb1-17) — and the reason the either-panel rule exists. (2) The unseen
+lever is a steep monotone slope whose per-map structure (starved cluster) is base-robust; its churn cost is
+also base-robust (h2h +22 % on λ=2, +37 % on λ=1).
+
+**Fresh-mechanism ledger notes**: L36 — the production component's defer-form is dead at screen; the value-form
+(split priced by expected intake) is the remaining shape. L33 — dive-discount keys (vanish, visible-crowd) do
+not reach the h2h channel on this base; the mouth-*cost* form (fitted, as clair-08 showed at −4) is what moves
+it, so the fitted dose (−1..−1.5) on a symseal-like stack stays the live experiment. L39 — the recency trigger
+is dead; the pressure trigger is the remaining stand-in.
+
 ## Per-map decomposition (the lead's direction, 1 Oct: by map as well as collectively)
 
 Tool: `tools/clair/by_map.py` — per-map paired econ deltas with CIs, a **tr-consistency check** (pool delta on
@@ -294,7 +354,10 @@ All as proposals in standing duty 1 plus the three test sections; the director a
   +0.01..+0.03 adds seed 2 pool only.
 - 13:0x — screens done; four knobs ≥ +0.03 → extension queue (clair-03/04/05/06 + the clair-09 dose arm),
   4,280 more games. No runner errors at any point (0 games with rc ≠ 0).
-- 17:17 — all runs complete. Totals: 11,224 games this pass (parent 1,224; 6 screens 960; c07/c08 2,448;
+- 17:17 — pass 1 complete (11,224 games; see above).
+- 18:0x–19:0x — pass 2: hb1-17 parent full (1,224) + hb1-17-vs-hb1-14 head-to-head on existing runs + 7 screens
+  (clair-11/13/14/15/16/17/18, 160 each) ≈ 2,540 games. No runner errors. Queues q3–q6, logs /tmp/clair-q*.log.
+- 17:17 — pass 1 runs complete. Totals: 11,224 games this pass (parent 1,224; 6 screens 960; c07/c08 2,448;
   extensions 4,280 + extracts). Scorecards: `build/clair/score-*.json`; per-map tables
   `build/clair/bymap-*.txt`; combined/endgame: `tools/clair/score_extra.py`.
 - Instruments used: D-032 lane gate (`tools/clair/lane.py`), tempo gate (`tools/s1/tempo_gate.py` — clair-04
