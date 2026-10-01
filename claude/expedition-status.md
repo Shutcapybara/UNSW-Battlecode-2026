@@ -133,6 +133,47 @@ fixture/seed, exact parent reuse, missing-child resumption and rejection of a
 panel filter on frozen screens. All **ten existing run contracts** still compare
 exactly equal. No repeated native build was needed for unchanged frozen runtime.
 
+### Symmetry batch 023: valid, partial and concentrated
+
+Batch 023 completed **96 new games in 686.5 seconds**, CPU-only with one game
+worker; every parent fixture was reused exactly. `audit-025-symmetry-live.json`
+records the earlier 62-pair snapshot. Final `audit-026-symmetry.json` validates
+**451 indexed records** (208 old pool parent, 147 gen parent, 96 gen candidate),
+with **448** arena/replay discrepancies preserved and no hash/error/attribution
+or bookkeeping failures. All 96 paired fixtures are seed 1, covering both seats
+and all four opponents on the first 12 generated maps. This is **96/696 gen
+pairs**, zero candidate pool games: **INCOMPLETE; NO GATE VERDICT**.
+
+| Generated map (mc26 prefix) | Parent / 08 wins, 8 pairs | Δ material r100 | Δ material r250 |
+|---|---:|---:|---:|
+| archipelago | 6 / 6 | −.125 | −9.125 |
+| crossroads | 4 / 4 | 0 | +10.625 |
+| delayed_commons | 4 / 7 | +16.125 | +36.500 |
+| equatorial_belt | 4 / 4 | +21.250 | −16.625 |
+| far_harbors | 2 / 2 | −.750 | −6.000 |
+| nursery_bays | 6 / 7 | +2.000 | +7.875 |
+| pinwheel | 7 / 7 | −2.875 | +27.375 |
+| portal_quartet | 8 / 7 | +1.125 | −7.750 |
+| pulse_farms | 6 / 6 | −8.000 | −12.875 |
+| relay_depots | 4 / 4 | +1.125 | −2.125 |
+| scattered_fleets | 7 / 7 | −4.875 | −24.000 |
+| seam_market | 0 / 0 | +.750 | +2.875 |
+
+Collectively **58 / 61 wins**, four better outcomes, one worse and 91 tied.
+Removing Delayed Commons gives **54/54**; this diagnoses concentration and is
+not a held-out estimate. Ares is 15/14, Chaewon 16/17, Fenrir 11/13, Yuna 16/17
+(24 pairs each). Seat A 26/29; B 32/32 (48 pairs each). Mean material deltas
++r100 2.146 and +r250 .563 conceal opposite map changes. No universal information
+benefit or confirmed map specialism follows. Retain Ares pressure, ally collision
+costs and later material loss as competing explanations to inspect on complete
+seed coverage; neither a named-map selector nor a source change is justified.
+
+Batch 023 released its lock and no next game batch is active at publication.
+The next exact fixture is **08, gen, new/mc26_spring_wells, A, seed 1, Ares06**.
+Continue the same frozen panel; missing future parent fixtures will run serially
+before their children. Keep the 96-game cap within the 20-minute admission budget,
+reducing it if throughput/load changes.
+
 ### Parallel reconciliation and gate audit
 
 Read-only refresh about 10:29 UTC: Clair advances to **11dd72764**; TT remains
