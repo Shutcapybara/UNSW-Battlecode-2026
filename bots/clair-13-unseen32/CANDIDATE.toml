@@ -1,0 +1,25 @@
+name = "clair-13-unseen32"
+lineage = "clair"
+author = "claude/clair"
+language = "c++"
+lineage_parent = "hb1-17-prior-lam20"
+hypothesis = "dose probe between 4 and 3"
+mechanism = "unseen_value 5->3.2 vs hb1-17-prior-lam20. unseen4 is null (+0.000), unseen3 is +0.151 pool: if 3.2 is null the cliff is the tie-flip with dive_value (3.0) - target-class priority, not a slope; if 3.2 is large the response is smooth and the cliff reading is wrong."
+expected_change = "H-1 pass 2 (fresh-mechanism mandate + risk mandate); D-032 panels vs hb1-17-prior-lam20 through tools/clair/lane.py."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+  "docs/hub/HYPOTHESES.md",
+  "docs/analysis/BENCHMARKS.md",
+  "claude/clair-status.md",
+]
+summary = "H-1 pass 2."

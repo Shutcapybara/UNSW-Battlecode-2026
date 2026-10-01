@@ -1,0 +1,21 @@
+name = "clair-07-symseal"
+lineage = "clair"
+author = "claude/clair"
+language = "c++"
+lineage_parent = "hb1-14-prior-r540"
+hypothesis = "aline-17 change set as a switch on the prior base"
+mechanism = "aline-13 symmetry inference (x-mirror/y-mirror/180 detection from observed edges+bed countdowns, mirrored terrain/beds/portal pairs, sonar type 8) + aline-07 ally right-of-way seal, diff applied to hb1-14."
+expected_change = "H-1 Test 2: additivity of the two information gains. aline-17 vs aline-01 (nodevil, no prior): pool econ +0.025 lb>0, win +6.1pp, ACCEPT under D-032."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = ["docs/hub/HYPOTHESES.md", "docs/analysis/BENCHMARKS.md", "claude/clair-status.md"]
+summary = "H-1 hypothesis steward first pass; D-032 panels vs hb1-14-prior-r540 through tools/clair/lane.py."

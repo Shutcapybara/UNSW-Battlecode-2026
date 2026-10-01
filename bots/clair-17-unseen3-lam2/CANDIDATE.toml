@@ -1,0 +1,25 @@
+name = "clair-17-unseen3-lam2"
+lineage = "clair"
+author = "claude/clair"
+language = "c++"
+lineage_parent = "hb1-17-prior-lam20"
+hypothesis = "control cell: unseen_value 5->3 alone on the lambda-2 base (reads the stack against its single-knob parent)"
+mechanism = "one knob vs hb1-17-prior-lam20: unseen_value 3. clair-11 (stack) is +0.160 econ with win -0.062; this cell separates the stack interaction from the knob-on-new-base effect."
+expected_change = "H-1 pass 2 (fresh-mechanism mandate + risk mandate); D-032 panels vs hb1-17-prior-lam20 through tools/clair/lane.py."
+priority = 0
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+  "docs/hub/HYPOTHESES.md",
+  "docs/analysis/BENCHMARKS.md",
+  "claude/clair-status.md",
+]
+summary = "H-1 pass 2."

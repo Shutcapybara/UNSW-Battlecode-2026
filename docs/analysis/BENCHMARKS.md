@@ -14,7 +14,56 @@ The original analysis below (29 Sep, 4,563 field games) still holds for what it 
 |---|---|---|
 | Is the opening faster? | `python3 tools/s1/tempo_gate.py <candidate run dir> <parent run dir>` | ACCEPT / NO GAIN / REJECT / INCONCLUSIVE for early-game changes (see **Tempo** below) |
 | Full tables: economy, hygiene, W-L-D | `python -m tools.analysis.features.scorecard bots/<candidate> --parent bots/<parent>` | the D-032 lane gate (paired, seeds 1–3, interval) |
+| Endgame tier for late mechanisms | `python tools/clair/score_extra.py <bot> --parent <parent>` | longest/total margin at end + round-limit-losses-with-lead (see the 1 Oct revision below) |
 | Where does it stand against the field per map? | `python3 tools/s1/q.py` / `tools/s1/q3.py` on the s1 store | diagnosis, not acceptance |
+
+## Start here (1 Oct revision — H-1 steward; applied under the lead's authorization to revise the gate when the evidence warrants)
+
+Three changes to the lane gate (D-032), each fixing a measured blindness. None of them flips any 1 Oct lane
+verdict except where named. Evidence and analysis: `claude/clair-status.md` standing duty 4.
+
+1. **A phase-`end` tier for changes that act after r250** (the `--phase late` pattern extended; the economy
+   checkpoints stop at r250 and *cannot* move for a later mechanism — tt-01/02 measured exactly +0.0000).
+   Judged on: final `longest` and `total` length margins (`longest_margin_end`, in the feature extract since
+   R-4), the round-limit-loss-with-material-lead rate (loss, non-elimination, `total_margin_end > 0`), and
+   overall win, with p@50..p@250 and units/length@100 as guards. Rationale: 60 % of hb1-14's round-limit
+   losses carry a material lead (clair's own panels, 21/35; tt measured 50 %), and every one is a `longest`
+   loss; all four top teams convert deliberately (tt's four-team table) while the current gate cannot credit
+   it. **Deliberate self-kills logged as culls are exempt from the tier-2 10 % guard in this tier** (30 Sep
+   point 3 already classifies chosen deaths as non-hygiene; the `ACT:` marker pattern is the trace).
+   Re-scored history: `tt-05-feed300-up` fail → **accept-shaped endgame hold** (141–19 level, longest 32 vs
+   27, lead losses 8 % vs 50 %); tt-01 hold pending seeds 2–3; tt-02/03/04 stay fail (win / no concentration /
+   no delivery); hb1-12/14, verso c2-feed140, esquie-03b unchanged.
+2. **Accept = positive economy lower bound on at least one panel, non-harm on the other** (each panel's econ
+   lb > −0.02, win lb > −0.02 on both), instead of "positive on the pool, non-harm on gen". The pool is ten
+   known maps (identity-contaminated by rule, L28); the gen panel is the out-of-sample object, and the old
+   form rejected the largest off-pool gain measured (verso-05: pool econ −0.017, gen econ +0.017, pool win
+   lb +0.003 — kept by the lead over the letter). clair-05 (pool +0.029 lb>0, gen −0.058) shows the gen panel
+   catching pool-fitted levers, so the non-harm side stays strict. Re-scored: verso-02 and verso-05
+   REJECT → accept-shaped; aline-17, verso-01, maelle-04, gustave-07c/08a, esquie-03b, and every clair-01..08
+   verdict unchanged.
+3. **The fixture-cluster bootstrap is authoritative for ACCEPT** (fixtures within a seed×map cell share the
+   layout; the plain form overstates independence — aline-17's accept rests on plain lb +0.005 vs cluster
+   −0.000). Borderline rule so a corroborated accept is not chilled: accept when cluster lb > 0, or cluster
+   lb > −0.005 **and** pool win lb > +0.02. Under it aline-17 stays ACCEPT. Report both forms until the end
+   of the October cycle.
+
+4. **What remains uncovered: the mid-game (r150–250).** The phase picture after this revision — opening:
+tempo (net income, rounds 10–150) ✓; end: the phase-`end` tier ✓; mid-game: only the p@150/p@250 pearl
+checkpoints, which count own-corpse recycling as economy (L29: 38 % of the base's pearls) and say nothing
+about pressure or retention between the phases. The right instrument already exists in the tempo gate's
+accounting (bed + enemy-corpse pearls, own corpses excluded, loss = unrecovered length): extend the reference
+curves beyond r150 — `tempo_reference.json` carries rounds 0–150 only and is frozen. First step (desktop,
+minutes against `build/s1/corpus/`, which is not committed): rebuild the reference to r300 as
+`tempo_reference_r300.json` (do not overwrite the frozen file — every existing tempo number must stay
+comparable), then judge mid-game changes on net-income lag at r150–250 with the phase-`end` tier as the
+downstream guard. Until that reference exists, mid-game changes are judged on D-032 with the corpse-share
+diagnostic (still unexecuted from D-035) reported beside it.
+
+**Rollback (falsifier):** any bot promoted under these rules whose live screen or ladder share falls materially
+below its panel prediction (D-019's probation rule is the template) — then the changed clause reverts and the
+flip-set is re-scored against it. The gate serves winning, not the reverse; if local and live disagree, live
+wins and this file changes again.
 
 The two gates answer different questions: tempo is about the first 150 rounds, D-032 about the whole game. An opening
 change should pass tempo and not fail D-032's guards. A late-game change is judged by D-032, with tempo as a guard: it
@@ -297,7 +346,7 @@ Three tempting metrics should stay diagnostics, not targets:
 
 ## How to use it
 
-*(30 Sep: for lanes, step 4 is superseded by D-032: paired fixtures, seeds 1–3, an interval gate, implemented in `scorecard.py`. For changes aimed at the opening, run the tempo gate as well; see "Start here" at the top.)*
+*(30 Sep: for lanes, step 4 is superseded by D-032: paired fixtures, seeds 1–3, an interval gate, implemented in `scorecard.py`. For changes aimed at the opening, run the tempo gate as well; see "Start here" at the top. 1 Oct: D-032 itself is revised by the H-1 steward — the phase-`end` tier, the either-panel accept rule and the cluster-bootstrap authority; see "Start here (1 Oct revision)" above. `scorecard.py`'s printed GATE line still implements the 30 Sep letter and is superseded for lane decisions by the lane scorers (`tools/*/lane.py`) plus `tools/clair/score_extra.py` for the endgame tier.)*
 
 One candidate against the z1 panel is 140 side-games: 7 opponents × 10 live maps × 2 seats, at seed 1. That is enough to see a change of half the typical gap between two zoo bots on every tier 1 and tier 2 metric.
 

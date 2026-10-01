@@ -1,0 +1,4 @@
+# clair-16-elimfeed
+
+state-keyed conversion (L39's untested form). feed_base 40->140 (tt-05's ~r300 onset) AND the feeder role is granted only while the game is contested (an enemy head seen within the last 60 rounds); when no enemy has been seen for 60 rounds the bot stays a swarm to close the elimination. tt's elim-state observable: opponent <=5 units at r300 carried 14/17 late eliminations; tt-05's unconditional feed traded 5 eliminations for 5 round-limit wins. Judged on win + the phase-end tier, not the r250 economy. Parent: `bots/hb1-17-prior-lam20` (copied from r/tt for measurement; hb1-14 + hb1_dir_lambda 2.0).
+Gate: `tools/clair/lane.py score clair-16-elimfeed --parent hb1-17-prior-lam20`.
