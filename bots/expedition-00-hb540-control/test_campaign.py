@@ -303,6 +303,20 @@ class MapDiagnosticTests(unittest.TestCase):
 
 
 class OpeningAuditTests(unittest.TestCase):
+    def test_seed_validation_follows_each_frozen_panel(self):
+        from contextlib import redirect_stderr
+        from io import StringIO
+        from opening_audit import parse_args
+        for panel in ('z1', 'gen', *c.CHALLENGE_PANELS):
+            for seed in (1, 2, 3, 4, 5):
+                args = ['--map', 'autarky', '--panel', panel, '--seed', str(seed)]
+                if seed in c.panel_seeds(panel):
+                    self.assertEqual(parse_args(args).seed, seed)
+                else:
+                    with redirect_stderr(StringIO()), self.assertRaises(SystemExit) as error:
+                        parse_args(args)
+                    self.assertEqual(error.exception.code, 2)
+
     def test_missing_event_is_not_zero_and_both_sides_share_pairs(self):
         from opening_audit import paired_measure
         result = paired_measure([0, None, 8], [4, 2, None])

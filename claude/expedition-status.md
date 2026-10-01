@@ -36,7 +36,13 @@ pass 14's instruction to run games from the shared project directory.
 with **158** arena/replay discrepancies retained. Hashes, attribution, errors
 and canonical bookkeeping pass; different event/round-start versus inferred
 turn-time estimands remain separate. No runtime or experiment rule was changed.
-The complete phase/screen report is being applied to the saved replays.
+The complete `food-hold-v1-result.json` phase/screen report now confirms
+**NEGATIVE SCREEN; DO NOT ADVANCE** on all three frozen outcome checks.
+Its reporter hash matches the current source; all 20 map/seed opening audits
+completed. The first closing attempt exposed a stale CLI restriction to seeds
+1–3. `opening_audit.py` now validates seeds against each frozen panel (including
+production seeds 3/4), with a regression test: **34 no-game tests pass**.
+This repairs reporting only; no game, runtime, fixture or gate was changed.
 
 ### Complete outcomes and frozen checks
 
@@ -44,8 +50,9 @@ Discovery expected-score points: **23.5 parent / 23 candidate** (40 pairs).
 Confirmation: **17 / 14** (40 pairs, no draws). The positive-confirmation,
 opponent-nonharm and per-map checks all fail: HB17 confirmation 9/6, g01 8/8,
 and QoS 3/1. Removing the tempo veto prospectively did not rescue this outcome.
-The old-rule comparison and richer phase diagnostics stay visible in the final
-report. No automatic food-hold dose, radius or round-boundary successor.
+The old frontier rule gives the same negative verdict: confirmation tempo
+improves, so its additional tempo guard passes. No automatic food-hold dose,
+radius or round-boundary successor.
 
 | Map | Discovery s3 parent / 11 | Confirmation s4 parent / 11 |
 |---|---:|---:|
@@ -67,6 +74,37 @@ narrow immediate-meal guard; it does not reject all resource-aware production
 or establish that the opposite split rule is optimal. It is a complete bounded
 screen, not complete original D-032 evidence or a sandbox certification.
 
+### Phase reconciliation: better confirmation opening, fewer wins
+
+Tempo deltas are **+3.037 discovery / −1.035 confirmation** (negative is faster).
+Confirmation material rises +7.55 at r150 and +1.85 at r250, while end longest
+margin falls −2.20 and total margin −5.875. Opening newborn deaths per split
+improve .362→.352, ally head-ons per 1,000 dragon turns 1.776→1.651, and own goals
+16.925→15.754. These improvements still accompany three fewer wins. Discovery
+instead loses r150 material −6.125 and slightly worsens newborn/head-on rates;
+there is no seed-stable claim that this guard repairs opening production.
+
+Map contrasts matter: confirmation Slithery gains +16.75 r150 material and
+slightly faster tempo but loses one win; Portals gains +4.25 material and also
+loses one. QoS loses two wins, slows tempo +21.428 and loses −13.75 material;
+its failure is already visible in the opening. Dilemma also slows +9.725 and
+loses one. Thus opening damage and later conversion are competing explanations,
+not one universal bottleneck. Seat A loses two confirmation wins and B loses one.
+
+Among fixtures whose **parent reaches r400**, expected-score delta is +.0227
+in discovery (22 pairs), −.0952 in confirmation (21 pairs); end longest margin
+changes +4.727 then −2.333. These parent-selected cohorts retain candidate early
+finishes, but remain diagnostic, not a randomized phase-only intervention.
+Confirmation r150–250 kills delta is −.30; discovery +2.90. A longer body or
+better survival alone does not demonstrate delivery or elimination pressure.
+
+Whole-map paired bootstrap (10 fixed maps, 10,000 resamples) gives pooled score
+−.04375, 95% interval [−.1375,+.0375]; confirmation −.075 [−.225,+.075]. Pooled
+tempo +1.001 [−2.487,+4.666]. These are descriptive uncertainty, not new gates or
+proof of population harm. The bounded screen fails its declared advancement
+rule; full-panel, mean/median gate, field generalization and sandbox obligations
+remain unresolved.
+
 ### Next decisive mechanism: already-frozen symmetry, unfamiliar maps first
 
 Move to **expedition-08-symmetry**, the original Aline-13 information mechanism
@@ -85,6 +123,7 @@ and seed contracts stand; no favorable subset or replacement gate. The 147 exact
 saved parent gen fixtures can be reused; 08 has zero at this cutoff. Opponents
 remain Yuna05, ChaewonY04, Fenrir18 and Ares06, so these are unfamiliar-topology
 checks against an older local roster, not an authenticated competitive frontier.
+These maps are established across the repository, not globally untouched holdouts.
 Even completed gen alone cannot produce an original full D-032 accept. The
 remaining original pool, prior-base scans and mouth panels remain due.
 
@@ -92,7 +131,7 @@ Added `campaign.py --panel gen` scheduling for original panels only. It cannot
 subset a focused screen. **33 no-game tests pass**, including every original gen
 fixture/seed, exact parent reuse, missing-child resumption and rejection of a
 panel filter on frozen screens. All **ten existing run contracts** still compare
-exactly equal. No repeated native build was needed for unchanged measured source.
+exactly equal. No repeated native build was needed for unchanged frozen runtime.
 
 ### Parallel reconciliation and gate audit
 
