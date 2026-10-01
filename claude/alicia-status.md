@@ -1,12 +1,12 @@
 # RL-1 status — learning-driven training on Ares (Alicia lineage, Claude Opus 5.5, desktop)
 
-**State (30 Sep):**
+**State (1 Oct, wrap-up):** the lane is paused.
 
-- The §0 decision memo is done and pushed: `docs/findings/2026-09-30-alicia-rl-design.md`.
-- The infrastructure is built.
-- Stage 1 run `s1` stopped after 7 generations (below).
-- `alicia-03-es-curve-pool` is on the D-032 panels.
-- Conservative restart `s1b` is running (σ 0.1, SGD).
+- Closing report: `docs/findings/2026-10-01-alicia-rl-report.md`.
+- Stage 1: two versions, both **REJECT** (`alicia-03` learned less churn; `alicia-04` learned the pool).
+- Stage 2 run `s2` was **interrupted** after 8 / 16 generations: centre economy pool +0.036 ± 0.015, held-in
+  −0.014 ± 0.018; no version made.
+- Stages 3–4 were not started. Nothing is registered.
 
 ## Versions
 
@@ -15,7 +15,8 @@
 | `alicia-01-nodevil` | `lune-r1-07-latecap8x-only` | D-033 base: the three 32×16 terms off (`shape_terms = false`) | — (lane base) |
 | `alicia-02-tunable` | `alicia-01-nodevil` | runtime override of 89 `Params` fields from `ALICIA_PARAMS` (local only; the sandbox passes no environment) | golden parity vs 01: 0 divergent / 30,558 turns (3 fixtures, seed 11); a perturbed override diverges at turn 18 |
 
-| `alicia-03-es-curve-pool` | `alicia-01-nodevil` (built from 02) | stage 1: the ES centre after `s1` generation 2 baked in as defaults (24 weights, all within ±16 %) | parity with the learned part off: 0 divergent / 30,558 turns; D-032 panels running |
+| `alicia-03-es-curve-pool` | `alicia-01-nodevil` (built from 02) | stage 1: the ES centre after `s1` generation 2 baked in as defaults (24 weights, all within ±16 %) | parity with the learned part off: 0 divergent / 30,558 turns; D-032 **REJECT**: pool econ~ −0.097 [−0.131, −0.060], units/length flat, win flat; all tier-2 down; gen (interrupted 572/744) econ −0.030, length +0.036 |
+| `alicia-04-es-gate-pool` | `alicia-01-nodevil` (built from 02) | stage 1: `s1c` centre after gen 14 (gate-shaped reward: economy objective, material and death-rate guards) | parity OK; D-032 **REJECT**: pool econ~ +0.046 [+0.022, +0.066], units lb −0.062, win lb −0.042; gen econ −0.018 [−0.034, −0.001], win −0.066 [−0.099, −0.031] |
 
 ## Stage 1, run `s1` (σ 0.2, Adam lr 0.05, 8 pairs × 20 pool fixtures, seeds 1000+)
 

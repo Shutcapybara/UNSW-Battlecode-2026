@@ -2,8 +2,63 @@
 
 Prompt: `docs/hub/prompts/2026-10-01-X1-three-tier-loop.md`. Lineage **Verso**, branch `r/verso`, worktree
 `../wt-verso`, bots `bots/verso-*`, tools `tools/verso/`. Running log with every table: `claude/verso-status.md`.
-Desktop, from 30 Sep 2026 23:00 ACST. The host is shared with the top-teams mimic lane (`r/tt`), which has
-priority; Verso games run at `nice 19`.
+Desktop, 30 Sep 23:00 – 1 Oct 15:30 ACST. The host was shared with the top-teams mimic lane (`r/tt`), which had
+priority; Verso games ran at `nice 19`. Paused on the lead's instruction (1 Oct) pending resources.
+
+## Headline
+
+1. **The learned part that pays is a donor's direction model used as a prior inside Ares's search, and it pays in
+   proportion to its quality and size.** Cycle 0 (`verso-01-hb-dir-prior`, Heartbreaker prior, 300 rounds) is the
+   first D-032 **ACCEPT** on the lanes' base: pool win 0.698 → 0.848, econ~ +0.052 [+0.019, +0.081]; off-pool win
+   +5.0 pp; tempo −7.6 rounds. Raising the prior to 540 → 800 rounds (`verso-02`, `verso-05`) adds +12 pp off-pool
+   win over cycle 0 (0.618 → 0.739) and +0.124 off-pool economy, pool unchanged to +3 pp; more Heartbreaker data at
+   the same size (`verso-06`) adds +4 pp pool win (HOLD). **`verso-05-hb800-prior` is the lane parent** (the lead kept
+   it despite D-032's letter, whose pool lower bounds sit just below the line), deployable: zip 3.38 MiB, sandbox max
+   12.0 M points/turn.
+2. **Learning our own targets did not beat imitation.** Monte-Carlo Q (20-round returns from ε-exploration) is noise
+   at 214 k exploratory rows (advantage R² 0.015) and loses. Hindsight search over the recorded future gives very
+   learnable labels (R² 0.76–0.86) and cuts wall deaths up to 70 %, but every version cost bed pearls; with S-1's
+   tempo credit (we eat back 45 % of our own dead) the head becomes neutral. On this policy the first-step choice is
+   no longer where tempo is lost.
+3. **Tier 1 (CNN over the map-memory window + GRU) adds nothing over the hand features** (≤ ±0.2 pp at equal data;
+   probes show it re-derives reach, food density, corridor length): dropped under the pre-registered rule. **Tier 4**
+   (route features over the map memory) adds a little (+0.6 pp R², −7 % regret). Hand-built memory (seen-dragon
+   densities, sonar, own-path window, pearl density, remembered pearls; four lengths each) adds at most +0.4 pp to
+   imitating cheji bt (0.760) and +0.1 pp for Stockfish (0.779): the quarter of the top teams' moves the view does not
+   determine is not this kind of memory.
+4. **Phases.** Tempo as the opening objective: donor ensembles and opening-only heads give no lasting gain (HB +
+   Stockfish −2.6 rounds at seed 1, −0.5 at seeds 1–3); SPSA over 18 opening knobs is noise-limited (per-iteration SE
+   0.07–0.11 > effects). Late conversion (tt-05's earlier feeding, fixed or ramped hb → tt over r300–400) is neutral on
+   these panels: no zoo opponent converts, so it is a ladder question.
+5. **Deployment constraints found:** the judge charges the boot to turn 0 (100 M points); decoding a compressed
+   1,000-round model costs ~185 points/node and kills every dragon on turn 0 (`verso-03/04`, not deployable). An
+   in-place 16-bit node format fits 800 rounds in 3.38 MiB with no decode.
+
+## Version table (seeds 1–3, D-032 paired, both panels)
+
+| Bot | Change | vs | Pool win / econ~ | Gen win / econ~ | Tempo pool / gen | CPU max | Verdict |
+|---|---|---|---|---|---|---|---|
+| `verso-00-base` | platform (inert) | maelle-02 | identical | identical | — | — | base |
+| `verso-01-hb-dir-prior` | Heartbreaker prior 300 rounds, λ 1 | 00 | +0.150 / +0.052 [+0.019, +0.081] | +0.050 / +0.013 | −7.6 / −7.7 | 11.5 M | **ACCEPT** |
+| `verso-02-hb540-prior` | 540 rounds | 01 | +0.000 / −0.001 | **+0.097 / +0.107** | −1.0 / −6.3 | 11.7 M | REJECT (letter) |
+| `verso-03-hb1000-prior` | 1,000 rounds, compact | 02 | +0.021 / +0.008 | +0.034 / +0.044 | — | **fails turn 0** | not deployable |
+| `verso-05-hb800-prior` | 800 rounds, in place | 02 | **+0.033** / −0.017 | +0.024 / +0.017 | — | 12.0 M | **lane parent** |
+| `verso-06-hb800-moredata` | 800 rounds, 2.3× data | 05 | **+0.040** / +0.005 | +0.005 / −0.021 | −1.6 / +1.9 | 12.3 M | HOLD |
+
+Screens (pool seed 1 unless stated) of everything else are in the status file: donors (cheji bt, Stockfish, pooled),
+MC-Q, five hindsight label versions, opening ensembles, hb1-14 / tt-05 / tt-06 and their parts on the Verso base,
+λ 0.7 / 1.5, mirror-trained prior, the full 2,251-round model, pearls-per-crowding (below).
+
+## Not finished at the pause
+
+- **Pearls per crowding** (lead's design: decayed pearl / ally maps, a broadcast of the pearl-density centre and mass
+  with ally and enemy counts, target value × exp(w (P − κA))) is built (`verso-p6-platform`, parity 0 divergent). One
+  screen finished: own maps only, w = 0.5, vs `verso-05` seed 1 — pool win −0.013, econ~ +0.025 [−0.043, +0.062];
+  gen win 0.000, econ~ −0.033, length@100 −0.174; ally head-on unchanged. No gain at that setting; w = 1 and the
+  broadcast arms (w 0.5 / 1) were stopped unplayed (arms `c5-pd-*` registered; queue lines 52–54).
+- Memory sweep for Heartbreaker (control) stopped after the base fit (0.840); the "all families" fits did not print.
+- Tier 1 on top teams' imitation (the one untested place memory could matter) needs view tensors for corpus games
+  (replay-drive the C++ bot); not built.
 
 ## §0 Decision memo — is the design reasonable? (written before the first training run)
 
@@ -84,3 +139,16 @@ Stockfish (206) and pooled — screened on the pool, the best taken through D-03
 data with ε-exploration → `q` head (A), with and without the tier-4 block; tier-1 embedding test. Cycle 2+:
 re-collect with the improved policy, refit, ES over `λ`, `β`. Phases enter as features first. Every cycle gets a
 row in the status table whether or not it moves the gate.
+
+
+## Ledger rows touched and proposed weights
+
+| Row | Current | Proposed | Evidence |
+|---|---:|---:|---|
+| L27 learned decision functions beat hand rules for a specific decision at ≈ 0 live CPU | 0.7 | **0.8** | Cycle 0 ACCEPT under D-032 on the lanes' base (pool +15 pp win, econ~ +0.052); the size/quality dose–response (300 → 540 → 800 rounds, +12 pp off-pool) at 12 M points/turn |
+| L16 offline-learned policy distilled to a cheap live table | 0.5 | 0.5 | Imitation transfers; learning our own targets did not (MC-Q noise, hindsight neutral under tempo credit). Unchanged until a self-generated target beats a donor's |
+| L34 learned state compression (CNN + RNN) | 0.4 | **0.25** | Equal-data test: +0 pp over hand + tier-4 features; probes recover the hand state. Revive only through top-team imitation with corpus view tensors (untested) |
+| L12 decayed food density improves targets | 0.7 | 0.6 | Pearls-per-crowding (own maps, w 0.5): no gain; broadcast untested. Third flat-or-negative density consumer on this lineage |
+| L33 coordination as coupled beliefs over sonar | 0.5 | 0.5 | Broadcast built, not measured |
+| L03 phase-conditional logic | 0.7 | 0.6 | Opening-specific donors / heads / knobs gave no lasting tempo gain; the gains came from a whole-game prior |
+| new: deployable model size is bound by the judge's first-turn budget (boot = turn 0) as well as the 4 MiB zip | — | 0.9 | `verso-03/04` die on turn 0 decoding 1.5 M nodes; in-place format boots at 7.8 M |

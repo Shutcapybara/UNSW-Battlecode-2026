@@ -26,7 +26,7 @@ ZOO = ['fenrir-v18-arrival-ready-beds', 'yuna-v05-core', 'chaewon-y04-probe', 's
        'hunter-v20-portal-scouts']  # == tools.analysis.features.run_panel.ZOO
 POOL = ['schooltime', 'portals', 'slithery_fight', 'queen_of_spades', 'default', 'trophy', 'dilemma',
         'autarky', 'devil', 'trauma']
-HELD_IN = ['arena', 'big_empty', 'Colosseum', 'default_small', 'stronghold', 'dilemma_10']  # on neither panel
+HELD_IN = ['arena', 'big_empty', 'Colosseum', 'default_small', 'stronghold']  # on neither panel (dilemma_10.map fails the engine's map check)
 
 # (name, kind). kind: log = th0*e^u; gamma = horizon 1/(1-g) moves log; hyst = 1 + (h0-1)e^u; clip1 = min(1, th0 e^u);
 # int = round(th0 e^u) >= 1
@@ -94,6 +94,7 @@ def main():
     ap.add_argument('--pairs', type=int, default=8)
     ap.add_argument('--sigma', type=float, default=0.20)
     ap.add_argument('--lr', type=float, default=0.05)
+    ap.add_argument('--reward', default='curve', choices=['curve', 'gate'])
     ap.add_argument('--opt', default='adam', choices=['adam', 'sgd'],
                     help='sgd: step = lr * gradient, so a signal-free coordinate barely moves (s1 finding: Adam '
                          'normalises noise into a fixed-size random walk)')
@@ -155,7 +156,7 @@ def main():
         summ = {}
         for tag, lst in by.items():
             rs = [lst[i][1] for i in sorted(ok)]
-            summ[tag] = policy_reward(rs, par if tag != 'parent' else None, beta, curve)
+            summ[tag] = policy_reward(rs, par if tag != 'parent' else None, beta, curve, a.reward)
         if summ['parent'] is None:
             say('no usable fixtures this generation; skipping update'); continue
         # the parent's own penalty is 0 by definition

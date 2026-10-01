@@ -10,6 +10,11 @@ Design and justification: docs/findings/2026-09-30-alicia-rl-design.md §0.2.
         the D-032 gate still checks every rate separately.
     R = mean_fixtures[(1 - beta) C + beta T] - P
 
+mode 'gate' (after alicia-03: the curve's units/length half bought less churn, which the D-032 economy reads as a
+loss) makes the objective the gate's own shape:
+    C = mean(pct p@50, p@100, p@150, p@250)
+    P += 2 * max(0, pct(parent) - pct - 0.01) for units@100 and total@100   (material guards, mean pct over fixtures)
+
 pct is the mid-rank percentile among field sides on the same map (docs/analysis/benchmarks/field_distributions.json).
 A map without field references uses the base's own per-map medians (tools/alicia/base_refs.json) mapped onto the
 pooled field scale: pct = F_pool(x / (median_base(map) / rho)), rho = the base's pool-median ratio to the field median.
@@ -120,7 +125,10 @@ def penalty(rates, parent_rates):
     return p, parts
 
 
-def policy_reward(rows, parent_rows, beta, curve):
+MAT_GUARD_W, MAT_GUARD_FREE = 2.0, 0.01
+
+
+def policy_reward(rows, parent_rows, beta, curve, mode='curve'):
     """rows/parent_rows: env rows of one policy / the parent on the same fixtures (paired by fixture key).
     Returns a summary dict with R and its parts."""
     cs, ts, pcs = [], [], {s: [] for s in CURVE}
@@ -129,7 +137,7 @@ def policy_reward(rows, parent_rows, beta, curve):
         t = terminal(r)
         if ct is None or t is None:
             continue
-        cs.append(ct['C']); ts.append(t)
+        cs.append(ct['C'] if mode == 'curve' else sum(ct['pct'][x] for x in ECON) / 4); ts.append(t)
         for s in CURVE:
             pcs[s].append(ct['pct'][s])
     if not cs:
@@ -137,7 +145,14 @@ def policy_reward(rows, parent_rows, beta, curve):
     C, T = sum(cs) / len(cs), sum(ts) / len(ts)
     rates = agg_rates(rows)
     P, parts = penalty(rates, agg_rates(parent_rows)) if parent_rows else (0.0, {})
-    out = {'R': (1 - beta) * C + beta * T - P, 'C': C, 'T': T, 'P': P, 'P_parts': parts, 'n': len(cs),
+    if mode == 'gate' and parent_rows:
+        par = [curve.curve_terms(r) for r in parent_rows]
+        par = [x for x in par if x]
+        for s_ in MAT:
+            d = sum(x['pct'][s_] for x in par) / len(par) - sum(pcs[s_]) / len(pcs[s_]) - MAT_GUARD_FREE
+            parts['mat_' + s_] = round(max(0.0, d) * MAT_GUARD_W, 4)
+            P += max(0.0, d) * MAT_GUARD_W
+    out = {'R': (1 - beta) * C + beta * T - P, 'mode': mode, 'C': C, 'T': T, 'P': P, 'P_parts': parts, 'n': len(cs),
            'win': sum(r['won'] for r in rows) / len(rows), 'rates': {k: round(v, 3) for k, v in rates.items()}}
     for s in CURVE:
         out['pct_' + s] = sum(pcs[s]) / len(pcs[s])

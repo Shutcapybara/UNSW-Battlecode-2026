@@ -1,0 +1,60 @@
+{
+ "note": "base (alicia-02-tunable, no override) per-map medians on held-in maps; rho = base pool median ratio to field median; training seeds only",
+ "seeds": "1000,1001",
+ "n_pool": 320,
+ "rho": {
+  "pearls@50": 0.9792782180338402,
+  "pearls@100": 1.0681892199967433,
+  "pearls@150": 1.1133093525179856,
+  "pearls@250": 1.2543031100872142,
+  "units@100": 1.0952380952380953,
+  "total@100": 1.0188679245283019
+ },
+ "maps": {
+  "arena": {
+   "pearls@50": 129.0,
+   "pearls@100": 144.5,
+   "pearls@150": 144.5,
+   "pearls@250": 144.5,
+   "units@100": 18.0,
+   "total@100": 48.5,
+   "n": 32
+  },
+  "big_empty": {
+   "pearls@50": 98.5,
+   "pearls@100": 284.5,
+   "pearls@150": 409.0,
+   "pearls@250": 726.5,
+   "units@100": 64.0,
+   "total@100": 206.0,
+   "n": 32
+  },
+  "Colosseum": {
+   "pearls@50": 54.0,
+   "pearls@100": 113.5,
+   "pearls@150": 113.5,
+   "pearls@250": 113.5,
+   "units@100": 21.5,
+   "total@100": 52.5,
+   "n": 32
+  },
+  "default_small": {
+   "pearls@50": 27.0,
+   "pearls@100": 68.5,
+   "pearls@150": 84.0,
+   "pearls@250": 84.0,
+   "units@100": 17.0,
+   "total@100": 39.0,
+   "n": 32
+  },
+  "stronghold": {
+   "pearls@50": 15.0,
+   "pearls@100": 32.0,
+   "pearls@150": 62.5,
+   "pearls@250": 194.5,
+   "units@100": 16.0,
+   "total@100": 38.0,
+   "n": 32
+  }
+ }
+}

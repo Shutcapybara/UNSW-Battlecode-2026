@@ -61,6 +61,8 @@ def features(d):
     x, y = d.x.to_numpy(), d.y.to_numpy()
     W, H = d.W.to_numpy(), d.H.to_numpy()
     drg, rnd = d.dragon.to_numpy(), d['round'].to_numpy()
+    pm = np.stack([d[f'g_{f}_{r}_pearl'].to_numpy() for f, r in OFF], 1) > 0
+    cur['pearl'] = (pm.sum(1).astype(float), (pm * offf).sum(1)[:, None] * FWD[fac] + (pm * offr).sum(1)[:, None] * RGT[fac])
     son = np.concatenate([np.stack([d[f'echo_{e}'].to_numpy() for e in ECHO], 1), d.n_msgs.to_numpy()[:, None]], 1).astype(float)
     act = d.y_first.map({'F': 0, 'R': 1, 'L': 2, 'split': 3}).fillna(4).to_numpy().astype(int)
     ate = (d.mem_len_delta.to_numpy() > 0).astype(float)
@@ -69,10 +71,13 @@ def features(d):
         for k in KINDS:
             names += [f'dens_{k}_m_{lam}', f'dens_{k}_f_{lam}', f'dens_{k}_r_{lam}']
         names += [f'sonar_{e}_{lam}' for e in ECHO] + [f'sonar_msgs_{lam}']
+        names += [f'pearl_m_{lam}', f'pearl_f_{lam}', f'pearl_r_{lam}']
     for w in WINS:
         names += [f'path_nF_{w}', f'path_nR_{w}', f'path_nL_{w}', f'path_nS_{w}', f'path_lr_{w}', f'path_eat_{w}',
                   f'path_straight_{w}', f'path_distinct_{w}']
     names += ['path_since_turn']
+    for ttl in (20, 40, 80):
+        names += [f'known_n_{ttl}', f'known_d_{ttl}', f'known_f_{ttl}', f'known_r_{ttl}']
     F = np.zeros((n, len(names)), np.float32)
     st = None
     for i in range(n):
@@ -82,7 +87,8 @@ def features(d):
             dy = (y[i] - y[i - 1] + H[i] // 2) % H[i] - H[i] // 2
             jump = abs(dx) + abs(dy) > 3          # portal: the spatial memory frame is lost
         if new:
-            st = dict(M={(lam, k): 0.0 for lam in LAMS for k in KINDS}, S={(lam, k): np.zeros(2) for lam in LAMS for k in KINDS},
+            st = dict(M={(lam, k): 0.0 for lam in LAMS for k in list(KINDS) + ['pearl']},
+                      S={(lam, k): np.zeros(2) for lam in LAMS for k in list(KINDS) + ['pearl']}, known={},
                       son={lam: son[i].copy() for lam in LAMS}, pos=[np.zeros(2)], acts=[], ate=[], since=99)
             delta = np.zeros(2)
         else:
@@ -104,6 +110,12 @@ def features(d):
                 c = st['S'][key] / st['M'][key] if st['M'][key] > 1e-9 else np.zeros(2)
                 row += [st['M'][key], c @ fv, c @ rv]
             row += list(st['son'][lam])
+            m, v = cur['pearl']
+            key = (lam, 'pearl')
+            st['S'][key] = lam * (st['S'][key] - st['M'][key] * delta) + v[i]
+            st['M'][key] = lam * st['M'][key] + m[i]
+            c = st['S'][key] / st['M'][key] if st['M'][key] > 1e-9 else np.zeros(2)
+            row += [st['M'][key], c @ fv, c @ rv]
         # the path window uses actions *before* this turn (the label is this turn's action)
         A, E, P = st['acts'], st['ate'], st['pos']
         for w in WINS:
@@ -114,6 +126,25 @@ def features(d):
             disp = np.abs(p[-1] - p[0]).sum() if len(p) > 1 else 0.0
             row += [disp / max(1, len(p) - 1), len({(round(q[0]), round(q[1])) for q in p}) / len(p)]
         row += [st['since']]
+        # remembered pearls, in the dragon's own path frame (positions relative to where it started this sequence;
+        # cleared on a portal jump). A cell seen empty forgets its pearl.
+        here = st['pos'][-1]
+        if not new and jump:
+            st['known'] = {}
+        for j, (f_, r_) in enumerate(OFF):
+            cell = (round(here[0] + f_ * fv[0] + r_ * rv[0]), round(here[1] + f_ * fv[1] + r_ * rv[1]))
+            if pm[i, j]:
+                st['known'][cell] = rnd[i]
+            elif cell in st['known']:
+                del st['known'][cell]
+        for ttl in (20, 40, 80):
+            ks = [(np.array(c_, float) - here, rnd[i] - r0) for c_, r0 in st['known'].items() if rnd[i] - r0 <= ttl]
+            if ks:
+                dist = [np.abs(v_).sum() for v_, _ in ks]
+                j = int(np.argmin(dist)); v_ = ks[j][0]
+                row += [len(ks), dist[j], v_ @ fv, v_ @ rv]
+            else:
+                row += [0, 99, 0, 0]
         F[i] = row
         st['acts'].append(int(act[i])); st['ate'].append(ate[i])
         st['since'] = 0 if act[i] in (1, 2) else min(99, st['since'] + 1)
@@ -170,7 +201,12 @@ def cmd_fit(a):
         sets[f'+sonar {lam}'] = base + [c for c in fam('sonar_') if c.endswith(f'_{lam}')]
     for w in WINS:
         sets[f'+path {w}'] = base + [c for c in fam('path_') if c.endswith(f'_{w}')] + ['path_since_turn']
-    sets['+all'] = base + fam('dens_') + fam('sonar_') + fam('path_')
+    for lam in LAMS:
+        sets[f'+pearl {lam}'] = base + [c for c in fam('pearl_') if c.endswith(f'_{lam}')]
+    for ttl in (20, 40, 80):
+        sets[f'+known {ttl}'] = base + [c for c in fam('known_') if c.endswith(f'_{ttl}')]
+    sets['+pearl+known'] = base + fam('pearl_') + fam('known_')
+    sets['+all'] = base + fam('dens_') + fam('sonar_') + fam('path_') + fam('pearl_') + fam('known_')
     res = dict(team=a.team, games=len(games), test_games=len(te_g), n_train=int(tr.sum()), n_test=int(te.sum()))
     for name, cols in sets.items():
         X = D[cols].to_numpy(np.float32)

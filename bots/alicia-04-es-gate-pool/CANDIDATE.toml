@@ -1,0 +1,49 @@
+name = "alicia-04-es-gate-pool"
+lineage = "alicia"
+lane = "rl-1"
+author = "claude-opus-5.5/alicia"
+language = "c++"
+lineage_parent = "alicia-01-nodevil"
+hypothesis = "L16/L04: a jointly learned Ares weight vector (ES on the benchmark-curve reward) beats the hand weights"
+mechanism = "stage 1, gate-shaped reward (economy percentile objective, units/length@100 and death-rate hinge guards): ES run s1c centre after generation 14 (evaluated in gen 15); sigma 0.1, SGD; 24 weights within +/-16 percent"
+expected_change = "economy +0.015-0.02 field percentile on the pool, units and length held"
+priority = 0
+supersedes = ""
+status = "candidate (not registered)"
+fingerprint = "676208231a65879b3dbd5b628de2dd1542e4d15791264d406576b434897e606d"
+
+[training]
+run = "s1c"
+stage = 1
+generation = 14
+checkpoint = "build/alicia/train/s1c/ckpt-g14.json"
+
+[params]
+bed_value = 7.60259  # was 8.0
+crowd_weight = 0.561662  # was 0.6
+density_ally_weight = 0.101999  # was 0.10
+density_enemy_weight = 0.419084  # was 0.40
+dive_value = 3.03438  # was 3.0
+enemy_target_discount = 0.689722  # was 0.60
+goal_weight = 1.39677  # was 1.2
+material_unit_value = 3.05332  # was 3.0
+memory_value = 5.78204  # was 6.0
+momentum_weight = 0.587039  # was 0.6
+own_target_discount = 0.151825  # was 0.15
+pearl_value = 10.8825  # was 10.0
+search_cap = 143  # was 160
+search_cap_late = 355  # was 384
+split_value = 7.50879  # was 8.0
+sprint_cost = 0.967357  # was 1.0
+target_gamma = 0.920474  # was 0.93
+target_hysteresis = 1.2621  # was 1.25
+threat_weight = 1.03721  # was 1.0
+trap_weight = 28.9078  # was 30.0
+unseen_value = 5.17016  # was 5.0
+visit_weight = 0.150175  # was 0.15
+w_bed_block = 0.517744  # was 0.5
+w_flank = 2.89889  # was 3.0
+
+[activation_contract]
+kind = "legacy_none"
+note = "params-only change (compiled-in defaults); ALICIA_PARAMS is read only in local games"
