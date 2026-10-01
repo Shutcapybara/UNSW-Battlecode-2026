@@ -10,7 +10,7 @@ Event layout follows the viewer's capnp schema (engine event variant order 0..12
 RoundStart TurnStart PearlCountdown TileChange DragonAction EngineLog DragonLog DragonIndicator DebugDraw
 DragonUpdate DragonSplit DragonDeath SonarPing.
 """
-import collections, gzip, hashlib, pickle, sys
+import collections, gzip, hashlib, os, pickle, sys
 from pathlib import Path
 
 _V = Path(__file__).resolve().parents[2] / 'hub' / 'vendor'
@@ -20,7 +20,11 @@ for p in (_V / 'leviathan', _V / 'ouroboros'):
 from replay import Reader  # noqa: E402
 from mapview import load_map  # noqa: E402
 
-FRAME_VERSION = 5
+FRAME_VERSION = 6
+# unswbc >= 1.2.3 ranks a game that reaches the round limit by (queen length, longest dragon, total length); the queen
+# is the team's starting dragon (id 0 or 1; a split child takes a new id, the parent keeps its own) and a dead queen
+# counts 0. FRAME_RULES=pre123 restores the old (longest, total) ranking for replays played under unswbc <= 1.2.2.
+RULES = os.environ.get('FRAME_RULES', '123')
 DIRS = 'NESW'
 DEATH_CAUSES = ('wall', 'self', 'body', 'h2h', 'invalid')
 HIT_KINDS = ('unknown', 'empty', 'kelp', 'ally', 'ally_head', 'enemy', 'enemy_head')
@@ -223,14 +227,18 @@ def decode(path):
     snap()  # final state after the last round
     res = root.child(4)
     final = {t: dict(units=res.child(n).num(), longest=res.child(n).num(4), total=res.child(n).num(8)) for n, t in enumerate('AB')}
+    for i in (0, 1):  # the queens: one starting dragon per team
+        if i in teams:
+            final[teams[i]]['queen'] = len(body[i]) if i in live else 0
     fa, fb = final['A'], final['B']
     alive_a, alive_b = fa['units'] > 0, fb['units'] > 0
     if alive_a != alive_b:
         winner, reason = ('A' if alive_a else 'B'), 'elimination'
     else:
-        ka, kb = (fa['longest'], fa['total']), (fb['longest'], fb['total'])
+        keys = ('longest', 'total') if RULES == 'pre123' else ('queen', 'longest', 'total')
+        ka, kb = tuple(fa.get(k, 0) for k in keys), tuple(fb.get(k, 0) for k in keys)
         winner = 'A' if ka > kb else 'B' if kb > ka else 'draw'
-        reason = 'longest' if fa['longest'] != fb['longest'] else 'total' if fa['total'] != fb['total'] else 'tie'
+        reason = next((k for k in keys if fa.get(k, 0) != fb.get(k, 0)), 'tie')
     return dict(
         frame_version=FRAME_VERSION, file=str(path), id=Path(path).stem, version=version,
         botA=root.text(1), botB=root.text(2), map=name, map_hash=hashlib.sha256(maptext.encode()).hexdigest()[:12],
@@ -245,7 +253,7 @@ def load(path, cache_dir=None):
     if cache_dir is None:
         return decode(path)
     st = path.stat()
-    key = hashlib.sha1(f'{path.resolve()}|{st.st_size}|{st.st_mtime_ns}|{FRAME_VERSION}'.encode()).hexdigest()[:16]
+    key = hashlib.sha1(f'{path.resolve()}|{st.st_size}|{st.st_mtime_ns}|{FRAME_VERSION}|{RULES}'.encode()).hexdigest()[:16]
     cp = Path(cache_dir) / f'{path.stem}.{key}.pkl.gz'
     if cp.exists():
         with gzip.open(cp, 'rb') as f:
