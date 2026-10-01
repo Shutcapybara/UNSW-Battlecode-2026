@@ -1,18 +1,12 @@
 # RL-1 status — learning-driven training on Ares (Alicia lineage, Claude Opus 5.5, desktop)
 
-**State (30 Sep):**
+**State (1 Oct, wrap-up):** the lane is paused.
 
-- The §0 decision memo is done and pushed: `docs/findings/2026-09-30-alicia-rl-design.md`.
-- The infrastructure is built.
-**State (1 Oct):**
-
-- `alicia-03-es-curve-pool`: **REJECT** (pool econ −0.097; it learned less churn).
-- Run `s1c` (gate-shaped reward) is complete: the centre's economy is +0.016 ± 0.007 per generation over 15 paired
-  generations.
-- `alicia-04-es-gate-pool`: **REJECT**. Pool econ +0.046 [+0.022, +0.066], but generalisation win −0.066
-  [−0.099, −0.031], econ −0.018: a pool fit.
-- Stage 2 run `s2` is running (pool + 5 held-in maps, gate reward, seeds 4000+).
-- Finding: `docs/findings/2026-10-01-alicia-stage1.md`. `s1b` was stopped in generation 1 (same reward as `s1`).
+- Closing report: `docs/findings/2026-10-01-alicia-rl-report.md`.
+- Stage 1: two versions, both **REJECT** (`alicia-03` learned less churn; `alicia-04` learned the pool).
+- Stage 2 run `s2` was **interrupted** after 8 / 16 generations: centre economy pool +0.036 ± 0.015, held-in
+  −0.014 ± 0.018; no version made.
+- Stages 3–4 were not started. Nothing is registered.
 
 ## Versions
 
