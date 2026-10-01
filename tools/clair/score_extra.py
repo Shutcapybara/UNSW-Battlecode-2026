@@ -53,9 +53,8 @@ def paired_frames(bot, parent, seeds):
         if Fc is None or Fp is None or not len(Fc) or not len(Fp):
             continue
         Fc, Fp = normalise(Fc, panel), normalise(Fp, panel)
-        m = Fc[K + ['econ|n', 'win', 'longest_margin_end', 'total_margin_end', 'result', 'reason']].merge(
-            Fp[K + ['econ|n', 'win', 'longest_margin_end', 'total_margin_end', 'result', 'reason']],
-            on=K, suffixes=('_c', '_p'))
+        cols = [c + '|n' for c in ECON] + ['econ|n', 'win', 'longest_margin_end', 'total_margin_end', 'result', 'reason']
+        m = Fc[K + cols].merge(Fp[K + cols], on=K, suffixes=('_c', '_p'))
         out[panel] = m
     return out
 
@@ -79,7 +78,7 @@ def combined_boot(panels, n=1000, seed=11):
         w = float(d['win_c'].mean() - d['win_p'].mean())
         rows.append((ec_mean, w))
     a = np.array(rows)
-    point_ec = float(np.mean([panels_pooled_median_delta(panels, c) for c in ECON]))
+    point_ec = float(np.mean([panels_pooled_median_delta(panels, c + '|n') for c in ECON]))
     point_w = float(np.mean([m['win_c'].mean() - m['win_p'].mean() for m in panels.values()]))
     q = lambda x: [round(float(np.percentile(a[:, x], 5)), 3), round(float(np.percentile(a[:, x], 95)), 3)]
     return {'econ~': round(point_ec, 3), 'econ~ci': q(0), 'win': round(point_w, 3), 'winci': q(1)}
