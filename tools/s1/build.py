@@ -2,6 +2,7 @@
 
   python3 tools/s1/build.py games                         # corpus games + teams tables from index + ladder (seconds)
   python3 tools/s1/build.py corpus --jobs 4 --time 170     # decode the next batch of corpus games (incremental, resumable)
+  python3 tools/s1/build.py corpus --era post              # only games of one rules era (games.era, ERA_SWITCH below)
   python3 tools/s1/build.py local --glob 'build/ra/runs/*/*/replays/*.replay' --jobs 4
   python3 tools/s1/build.py status
 
@@ -25,6 +26,9 @@ import pandas as pd
 CORPUS = ROOT / 'public_replays' / 'corpus'
 OUT = ROOT / 'build' / 's1'
 US = 7
+# unswbc 1.2.3 rules on the live server (sprint ceil(L/4) free steps; tiebreak queen -> longest -> total). Last old-rule
+# game finished 2026-10-01 05:57:53Z, first new-rule game 09:26:58Z, none in between (tools/antioch/era.py, sprint pricing)
+ERA_SWITCH = '2026-10-01T06:00:00+00:00'
 TABLES = ('sides', 'series', 'deaths', 'transits', 'splits')
 # event columns always present in series (cumulated as c_<name>), so every part has the same schema
 XEV = ('idle', 'turnaround', 'steps', 'transits', 'transit_blind', 'transit_double', 'transit_contested', 'transit_died3',
@@ -84,7 +88,7 @@ def build_games():
                          map_hash=g.get('map_hash', '')[:12],
                          elo_a=ra.get('elo'), elo_b=rb.get('elo'), rank_a=ra.get('rank'), rank_b=rb.get('rank'),
                          snap_lag_min=(t - snap_t) / 60, snap_before=t >= snap_t,
-                         result_a=1.0 if w == 'a' else 0.0 if w == 'b' else 0.5,
+                         result_a=1.0 if w == 'a' else 0.0 if w == 'b' else 0.5, era='post' if t >= ts(ERA_SWITCH) else 'pre',
                          in_scope=(g['team_a'] in crank and crank[g['team_a']] <= 50) or (g['team_b'] in crank and crank[g['team_b']] <= 50)
                          or US in (g['team_a'], g['team_b'])))
     games = pd.DataFrame(rows).drop_duplicates('game')
@@ -317,6 +321,8 @@ def cmd_corpus(a):
     games, teams = build_games()
     store = OUT / 'corpus'
     done = done_games(store)
+    if a.era:
+        games = games[games.era == a.era]
     q = corpus_queue(games, teams, done)
     if a.limit:
         q = q[:a.limit]
@@ -360,6 +366,7 @@ def main():
     ap.add_argument('--limit', type=int, default=0)
     ap.add_argument('--glob', action='append', default=[])
     ap.add_argument('--tag', default='')
+    ap.add_argument('--era', default='', help="corpus: decode only games of this rules era ('pre' / 'post')")
     a = ap.parse_args()
     dict(games=lambda a: build_games(), corpus=cmd_corpus, local=cmd_local, status=cmd_status)[a.cmd](a)
 

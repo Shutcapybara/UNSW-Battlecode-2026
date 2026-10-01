@@ -1,0 +1,48 @@
+--- a/tools/analysis/features/frame.py	2026-10-01 21:59:43.779388190 +0930
++++ b/tools/analysis/features/frame.py	2026-10-01 22:11:47.651498478 +0930
+@@ -20,7 +20,7 @@
+ from replay import Reader  # noqa: E402
+ from mapview import load_map  # noqa: E402
+ 
+-FRAME_VERSION = 5
++FRAME_VERSION = 6
+ DIRS = 'NESW'
+ DEATH_CAUSES = ('wall', 'self', 'body', 'h2h', 'invalid')
+ HIT_KINDS = ('unknown', 'empty', 'kelp', 'ally', 'ally_head', 'enemy', 'enemy_head')
+@@ -222,15 +222,28 @@
+     finalize()
+     snap()  # final state after the last round
+     res = root.child(4)
+-    final = {t: dict(units=res.child(n).num(), longest=res.child(n).num(4), total=res.child(n).num(8)) for n, t in enumerate('AB')}
++    # TeamStanding: dragonCount, longestDragon, totalLength, and from unswbc 1.2.3 a 4th int32, the queen's length (the
++    # team's original lowest-id dragon; 0 once it has died, no succession; always 0 in older replays)
++    final = {t: dict(units=res.child(n).num(), longest=res.child(n).num(4), total=res.child(n).num(8), queen=res.child(n).num(12))
++             for n, t in enumerate('AB')}
+     fa, fb = final['A'], final['B']
+-    alive_a, alive_b = fa['units'] > 0, fb['units'] > 0
+-    if alive_a != alive_b:
+-        winner, reason = ('A' if alive_a else 'B'), 'elimination'
+-    else:
+-        ka, kb = (fa['longest'], fa['total']), (fb['longest'], fb['total'])
+-        winner = 'A' if ka > kb else 'B' if kb > ka else 'draw'
+-        reason = 'longest' if fa['longest'] != fb['longest'] else 'total' if fa['total'] != fb['total'] else 'tie'
++    keys = ('queen', 'longest', 'total')
++    if res.num(0, 'B') & 1:
++        # the engine's own verdict (GameResult: endReason u16 @2, union tag u16 @4 = 1 for a winner, winner u16 @6, 0 = a).
++        # Authoritative under every rule set; the 1 Oct tiebreak is queen -> longest -> total
++        winner = ('A', 'B')[res.num(6, 'H')] if res.num(4, 'H') == 1 else 'draw'
++        if res.num(2, 'H') == 0:
++            reason = 'elimination'
++        else:
++            reason = next((k for k in keys if fa[k] != fb[k]), 'tie')
++    else:   # unterminated record: infer as before (queen first; 0 = 0 in pre-1.2.3 replays)
++        alive_a, alive_b = fa['units'] > 0, fb['units'] > 0
++        if alive_a != alive_b:
++            winner, reason = ('A' if alive_a else 'B'), 'elimination'
++        else:
++            ka, kb = tuple(fa[k] for k in keys), tuple(fb[k] for k in keys)
++            winner = 'A' if ka > kb else 'B' if kb > ka else 'draw'
++            reason = next((k for k in keys if fa[k] != fb[k]), 'tie')
+     return dict(
+         frame_version=FRAME_VERSION, file=str(path), id=Path(path).stem, version=version,
+         botA=root.text(1), botB=root.text(2), map=name, map_hash=hashlib.sha256(maptext.encode()).hexdigest()[:12],

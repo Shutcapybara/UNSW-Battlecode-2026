@@ -29,7 +29,10 @@ S1 = ROOT / 'build' / 's1'
 TABLES = ('sides', 'series', 'deaths', 'transits', 'splits')
 KEYS = {'game', 'side', 'round', 'map', 'team', 'opp', 'source', 'run', 'ended', 'id', 'R', 'rounds', 'cells'}
 COHORTS = ['top10', 'r11_30', 'r31_50', 'us']
-NORM_GAMES = int(os.environ.get('S1_NORM_GAMES', '1500'))   # field sample per map for the medians / means / SDs
+NORM_GAMES = int(os.environ.get('S1_NORM_GAMES', '1500'))
+# S1_ERA=pre|post restricts the corpus views and the field norms to one rules era (games.era; unswbc 1.2.3 switch-over
+# 2026-10-01 06:00Z); norms are cached per era. Unset = both eras pooled (the pre-1-Oct behaviour)
+ERA = os.environ.get('S1_ERA', '')   # field sample per map for the medians / means / SDs
 # derived per side-round columns (cumulative ratios up to the round); added to series, normalised like the rest
 DERIVED_LIST = [
     ('pearls_per_dt', 'c_eats / nullif(c_dragon_turns, 0)'),
@@ -96,8 +99,9 @@ def _int(x):
 def ensure_norms(con, force=False):
     """per map x round field medians of every numeric series column, and per map medians of every sides column"""
     parts = sorted(p.name for p in (S1 / 'corpus' / 'sides').glob('part-*.parquet'))
-    stamp = S1 / 'corpus' / 'norms.stamp'
-    fs, fd = S1 / 'corpus' / 'norm_series.parquet', S1 / 'corpus' / 'norm_sides.parquet'
+    sfx = f'_{ERA}' if ERA else ''
+    stamp = S1 / 'corpus' / f'norms{sfx}.stamp'
+    fs, fd = S1 / 'corpus' / f'norm_series{sfx}.parquet', S1 / 'corpus' / f'norm_sides{sfx}.parquet'
     key = str(len(parts))
     # rebuilt when forced (q.py norms) or when the store has grown by more than 50 % since the last build
     if not force and fs.exists() and fd.exists() and stamp.exists() and (os.environ.get('S1_FREEZE') or len(parts) <= 1.5 * _int(stamp.read_text())):
@@ -105,26 +109,26 @@ def ensure_norms(con, force=False):
     t0 = time.time()
     # exact medians / means / SDs over a fixed hash sample of up to NORM_GAMES games per map (both sides), one map and a
     # batch of columns at a time; per-map results are cached so an interrupted rebuild resumes
-    maps = [r[0] for r in con.execute("select distinct map from c_sides_raw").fetchall()]
+    maps = [r[0] for r in con.execute("select distinct map from c_sides").fetchall()]
     tmp = S1 / 'corpus' / 'norms_parts'
     tmp.mkdir(exist_ok=True)
-    ck = tmp / 'current.key'          # an interrupted rebuild keeps its key, so the cached maps stay valid
+    ck = tmp / f'current{sfx}.key'          # an interrupted rebuild keeps its key, so the cached maps stay valid
     if ck.exists():
         key = ck.read_text()
     else:
         ck.write_text(key)
     budget = float(os.environ.get('S1_NORM_BUDGET', '1e9'))
-    for view, keys, out in (('c_series_b', ['map', 'round'], fs), ('c_sides_raw', ['map'], fd)):
+    for view, keys, out in (('c_series_e', ['map', 'round'], fs), ('c_sides_e', ['map'], fd)):
         cols = numeric_cols(con, view)
         frames = []
         for m in maps:
-            pf = tmp / f'{view}-{m.replace(" ", "_")}-{key}.parquet'
+            pf = tmp / f'{view}-{m.replace(" ", "_")}-{key}{sfx}.parquet'
             if pf.exists():
                 frames.append(pd.read_parquet(pf))
                 continue
             if time.time() - t0 > budget:
                 raise SystemExit(f'[norms: budget reached at {view} {m}; re-run to continue]')
-            sample = (f"game in (select game from c_sides_raw where map = '{m}' group by game "
+            sample = (f"game in (select game from c_sides where map = '{m}' group by game "
                       f"order by hash(game) limit {NORM_GAMES})")
             parts_m = []
             for i in range(0, len(cols), 16):
@@ -139,7 +143,7 @@ def ensure_norms(con, force=False):
             d.to_parquet(pf, index=False)
             frames.append(d)
         pd.concat(frames).to_parquet(out, index=False)
-    ck.rename(tmp / f'done-{key}.key')
+    ck.rename(tmp / f'done-{key}{sfx}.key')
     stamp.write_text(key)
     print(f'[norms rebuilt in {time.time() - t0:.0f}s]', file=sys.stderr)
 
@@ -171,32 +175,37 @@ def connect(db='corpus', norms=True):
     if have['corpus']:
         con.execute(f"create view games as select * from '{S1 / 'corpus' / 'games.parquet'}'")
         con.execute(f"create view teams as select * from '{S1 / 'corpus' / 'teams.parquet'}'")
-        con.execute("""create view c_sides as select s.*, g.ranked, g.autoscrim, g.started_at, g.series_id,
+        ew = f"where g.era = '{ERA}'" if ERA else ''
+        con.execute(f"""create view c_sides as select s.*, g.ranked, g.autoscrim, g.started_at, g.series_id, g.era,
             case when s.side = 'A' then g.elo_a else g.elo_b end as elo, case when s.side = 'A' then g.elo_b else g.elo_a end as opp_elo,
             case when s.side = 'A' then g.elo_a - g.elo_b else g.elo_b - g.elo_a end as gap,
             coalesce(t.cohort, 'other') as cohort, t.crank, t.name, coalesce(o.cohort, 'other') as opp_cohort, o.crank as opp_crank, o.name as opp_name
-            from c_sides_raw s left join games g on g.game = s.game left join teams t on t.team = s.team left join teams o on o.team = s.opp""")
+            from c_sides_raw s left join games g on g.game = s.game left join teams t on t.team = s.team left join teams o on o.team = s.opp {ew}""")
     if have['local']:
-        con.execute("""create view l_sides as select s.*, s.team as name, 'local' as cohort, cast(null as double) as crank,
+        con.execute("""create view l_sides as select s.*, s.team as name, 'local' as cohort, cast(null as double) as crank, 'local' as era,
             s.opp as opp_name, 'local' as opp_cohort from l_sides_raw s""")
     for store, pre in (('corpus', 'c_'), ('local', 'l_')):
         if not have[store]:
             continue
         sa = 'started_at' if store == 'corpus' else 'cast(null as timestamptz) as started_at'
         con.execute(f"""create view {pre}key as select game, side, cohort, crank, name, won, result, reason, map_class, opp_cohort, opp_name, run,
-                        {sa} from {pre}sides""")
+                        {sa}, era from {pre}sides""")
         # a missing cumulative event value means the game never had that event: zero, not unknown
         cz = [c for c in con.execute(f'describe {pre}series_raw').df().column_name if c.startswith(('c_', 'opp_c_'))]
         rep = ', '.join(f'coalesce({q(c)}, 0) as {q(c)}' for c in cz)
         con.execute(f"create view {pre}series_z0 as select * replace ({rep}) from {pre}series_raw")
         con.execute(f"create view {pre}series_b as select *, {derived_sql(con, pre + 'series_z0')} from {pre}series_z0")
         con.execute(f"create view {pre}series as select s.*, k.* exclude (game, side) from {pre}series_b s join {pre}key k using (game, side)")
+        if store == 'corpus':   # the norms read this (era-scoped through c_key)
+            con.execute("create view c_series_e as select s.* from c_series_b s semi join c_key k using (game, side)")
         for t in ('deaths', 'transits', 'splits'):
             if _has(store, t):
                 con.execute(f"create view {pre}{t} as select x.*, k.* exclude (game, side) from {pre}{t}_raw x join {pre}key k using (game, side)")
     if have['corpus'] and norms:
+        con.execute("create view c_sides_e as select s.* from c_sides_raw s semi join c_key k using (game, side)")
         ensure_norms(con)
-        fs, fd = S1 / 'corpus' / 'norm_series.parquet', S1 / 'corpus' / 'norm_sides.parquet'
+        sfx = f'_{ERA}' if ERA else ''
+        fs, fd = S1 / 'corpus' / f'norm_series{sfx}.parquet', S1 / 'corpus' / f'norm_sides{sfx}.parquet'
         con.execute(f"create view norm_series as select * from '{fs}'")
         con.execute(f"create view norm_sides as select * from '{fd}'")
         ncols = set(numeric_cols(con, 'norm_series'))
