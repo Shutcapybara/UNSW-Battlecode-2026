@@ -495,3 +495,19 @@ Q3: gate transfer 0.955–0.986; one change-point at 28 Sep 21:00 UTC; **Elo 184
 beside a long ally is several times likelier to kill itself than one beside a short ally. The strength and timing
 differ (cheji bt extreme, Stockfish gentle, the two new teams between). Heartbreaker (rank ~40) is the one that never
 does. Four independent top teams converging on one mechanism makes it the lane's most robust finding.
+
+## Memory as a predictor, all five teams (user question, 1 Oct)
+
+Base v5 memory family (in every model) — drop-family Δacc, gate / direction: Heartbreaker −0.31 / −0.96, cheji bt
+−0.26 / −1.13, Stockfish −1.02 / −0.57, forgot to mention −0.61 / −0.52, Cache me outside −1.28 / −1.31 (messages
+−1.13). History + decayed spatial "trail" test (`q1_history.py`; Cache me outside all 598 ranked games, forgot to
+mention 400): direction gain Heartbreaker +0.19, cheji bt +0.97, Stockfish +0.39, forgot to mention +0.52 (0.7327 →
+0.7379), **Cache me outside +0.94** (0.7566 → 0.7650; gate +0.22, the only team whose gate gains). The two
+learned-looking steerers use the most momentum and memory (Cache me outside's top memory features: its left/right and
+turn-rate EWMAs, echo-total EWMA), but under a point — not where their unexplained quarter lives.
+
+Internal map (never tried before): `tools/tt/features_map.py` — per-dragon remembered edges, cell sightings, pearls,
+beds; per candidate a wall-aware BFS (radius 12) gives reach beyond the view, frontier distance, remembered-pearl and
+ready-bed distances, staleness. Validated on a cheji bt game (blocked agreement with v5 100 %; reach median 78 vs in-view
+area 39; 1.4 ms/turn). Extraction (400 games per team, Cache me outside's 598 ranked, Heartbreaker as control) and the
+v5 vs v5+map comparison running (`tools/tt/run_map.sh`, `mapmem_chain.sh`).
