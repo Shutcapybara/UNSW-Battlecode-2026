@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–19
+# Expedition — H-1 hypothesis steward, passes 1–20
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -27,6 +27,159 @@ untracked too. All six original source contracts and the fixed mouth-screen
 contract still match exactly. The heartbeat now targets this isolated path and
 pushes scoped commits from detached HEAD to origin/r/expedition. This supersedes
 pass 14's instruction to run games from the shared project directory.
+
+## Pass 20 — symmetry transfer, phase mechanisms and map contradictions
+
+**2026-10-01; isolated checkout from `f251006ac`.** Read the latest status and
+verified both original gen contracts exactly: 01/08 runtimes, all 29 maps, four
+opponents, seats and seeds 1–3 unchanged. The exclusive game lock was free.
+Batch **024-symmetry-gen** resumed at Spring Wells A/seed1/Ares with one CPU
+worker, 20-minute admission budget and 96-game cap. Initial host load 1.58;
+158 GiB available. Original sources and rules remain frozen. Focused mouth,
+exploration and food-hold screens are already closed; none was restarted.
+
+### Completed batch and changed evidence
+
+Batch 024 completed **96 games in 647.9 seconds: 27 parent and 69 candidate**.
+`audit-028-symmetry.json` validates **547 indexed records** (208 pool parent,
+174 gen parent, 165 gen candidate), with **542** arena/replay discrepancies
+retained. Frozen source/replay hashes, attribution, errors and canonical
+bookkeeping pass. Different inferred-turn and replay-event/round-start estimands
+remain separate. No game or analysis-source change, and no replay was overwritten.
+
+Now **165/696 gen pairs**, all seed 1: 20 complete maps plus five Autarky transpose
+fixtures. Candidate pool remains 0/480. **INCOMPLETE; NO GATE VERDICT**. The next
+candidate fixture has a saved parent; eight additional parent-only Quartet seed-2
+rows predate this batch and await their ordinary place in the frozen queue.
+
+Wins move from the earlier 58/61 to **116 parent / 118 candidate**; the new 69
+pairs alone are **58/57**. Five outcomes improve, three worsen, 157 tie. Excluding
+Delayed Commons gives **112/111**, so the small net gain remains concentrated.
+Ares is 29/27 (42 pairs), Chaewon 31/32, Fenrir 25/27, Yuna 31/32 (41 each).
+Seat A 57/60 (84 pairs), B 59/58 (81); the incomplete transpose explains the
+unequal exposure, not a deliberate weighting choice. Mean material delta is
++.764 at r100 and **−1.545 at r250**, versus +2.146/+.563 in the earlier prefix.
+These expanding prefixes have different map composition; this is not a temporal
+change to the bot or a confirmed regression estimate.
+
+New maps since pass 19 (parent/candidate wins):
+
+| Map | Pairs | Wins | Δ material r250 |
+|---|---:|---:|---:|
+| Spring Wells | 8 | 4 / 4 | −6.625 |
+| Causeway Detour | 8 | 6 / 6 | −24.000 |
+| Causeway Portal | 8 | 6 / 6 | +7.250 |
+| Commons Shared | 8 | 8 / 8 | 0 |
+| Commons Spread | 8 | 8 / 8 | 0 |
+| Orchard Narrow | 8 | 8 / 7 | −4.375 |
+| Orchard Wide | 8 | 8 / 7 | −21.250 |
+| Promenade Ring | 8 | 6 / 6 | +5.750 |
+| Autarky transpose (partial) | 5 | 4 / 5 | +7.400 |
+
+Both orchard regimes lose one win. The two commons regimes match the parent's
+reported economy/material checkpoints and outcomes; full win saturation against
+this roster limits their outcome sensitivity. Do not infer no internal activation
+from matching aggregates. Complete the transpose and remaining maps before any
+orientation or broad transfer claim.
+
+### Existing-data audits: information helps some maps, not every phase
+
+`phase-027-symmetry-prefix.json` is a separately preserved **109-pair** snapshot:
+13 complete seed-one maps and five Causeway Detour fixtures. Its partial map is
+explicit. Analysis hash remains `f643ffbc3f58005bd6f59a1799b0b1a2e89f61de78933db786261ef45a388ef6`.
+All generated-map tempo curves here use the **matched parent median**, provisional
+until complete coverage; they do not measure distance from authenticated top ten.
+Do not compare these absolute lags as if every map had the same reference slope.
+
+Two complete eight-pair map audits explain opposite opening trajectories without
+selecting future fixtures or modifying 08:
+
+- **Delayed Commons:** tempo −13.089 rounds; all reported r50 counters/states and
+  first events match. By r150 bed intake +16.875, enemy-corpse intake +6.500,
+  length lost −3.500, splits +12.875, units +13, total length +31.375, longest
+  unchanged. Newborn deaths per split .147→.129. All three outcome reversals
+  are elimination losses at r252/269 becoming wins at r154/196. This is consistent
+  with improved resource use and swarm growth after r50, not evidence of an
+  endgame crown improvement or faster first access. Route/detection telemetry is
+  absent, so it does not identify which symmetry component causes the change.
+- **Pulse Farms:** tempo +17.514 rounds, yet wins remain 6/6. By r150 bed intake
+  −14.750, enemy-corpse intake −1.250, splits −9.625, units −6.750, material
+  −12.250; length lost also falls −7.000. Newborn deaths per split .111→.156
+  despite fewer raw deaths. First events match and every bed is reached by r100.
+  Thus knowing/reaching beds is not sufficient for productive repeated visits;
+  the loss is not explained by simply taking more deaths. Resource scheduling,
+  traffic and symmetry activation are competing explanations, not established
+  diagnoses or a justification for a named-map switch.
+
+Ally head-on rates are zero on these two maps. Portal Quartet changes only
+1.597→1.607 per 1,000 dragon-turns; Relay Depots improves 1.062→.665. The current
+prefix does not support a universal ally-collision cost. Portal Quartet's one
+reversal instead changes an r387 elimination win into an r500 loss, with lower
+r250 material and a material lead at the losing terminal state. Preserve that
+conversion concern separately from the Delayed Commons opening mechanism.
+
+`late-027-symmetry-prefix.json` fixes the **previously published 96 pairs**, with
+per-fixture replay hashes and the audit-026 hash. Mean r150 material +4.646 shrinks
+to +.563 at r250; final longest margin −1.125 despite total margin +4.979.
+Parent-reaches-r400 cohort: 16 pairs, score +.0625, longest margin −2.125.
+Round-limit games increase 10→17 and losses among those 5→11; these are different
+survivor sets, not a paired estimate of late-game harm. Material-leading losses
+are 0/10 versus 1/17 round-limit games, not a general crown deficit. Terminal
+states carried to r250 make the large Delayed Commons share gain partly an
+outcome consequence; do not re-label it independent economy evidence. These
+phase patterns retain early wins and do not select only candidate survivors.
+
+### Fresh alternatives, source reconciliation and gate audit
+
+Read-only origin refresh about 10:59 UTC: Clair **11dd72764**, TT **fa53ab708**,
+Obscur **a8bf0a566**, HB **bfd67c37b**, main **cb2e920c7**; no new remote lane
+commits or emerging branch since pass 19. No merges, messages or other-lane edits.
+Re-read S1's `2026-10-01-s1-next-steps.md` at main's cutoff, alongside the older
+handoff and local benchmark definitions. Its authenticated atlas and split-stall
+analysis supersede the earlier claim that low production proves split reluctance.
+Our negative immediate-meal guard does not refute the broader five-round
+parent/child opportunity-value hypothesis. Nor do the field correlations prove
+that matching a top-team style will win on this source and opponent roster.
+
+Keep two different architectural alternatives live while completing the frozen
+information test: **resource assignment/visit scheduling from remembered beds**
+(distinct from a generic ally-density bonus or another split-delay radius), and
+**phase handover driven by observable pressure with warm memory**, separating
+elimination from longest-body conversion. These are research proposals, not new
+registered experiments or threshold selections. S1's fixed-r150 graft is reported
+evidence for a controller handover; its advantage is not yet replicated on our
+source. Local symmetry repair alone would not establish reaching the frontier.
+
+Ledger proposals: annotate L38/L27 with map-dependent information-transfer
+trajectories and the unresolved component attribution; L37 with concentrated
+wins and the Pulse Farms outcome/tempo disagreement; L39/L03 with distinct
+elimination and round-limit transitions. Keep L36's failed guard verdict.
+No posterior-weight, benchmark-rule, shared-ledger or historical-verdict changes.
+Original full panels, mean/median comparisons, map/phase guards and sandbox
+checks are still required before an accept proposal. No acceptance or promotion.
+
+Ranked ten:
+1. L38/L27: complete frozen symmetry transfer across all generated maps/seeds.
+2. L37/L29: test whether concentrated map gains survive more seeds and opposition.
+3. L27: resource visit scheduling/assignment from remembered geometry, not density alone.
+4. L03: observable-pressure handover with warm memory and elimination guards.
+5. L39: separate winning concentration from material growth and survival selection.
+6. L38: attribute activation/route changes before proposing a symmetry repair.
+7. L36: five-round parent/child opportunity value remains open; no guard retuning now.
+8. L14/L20: outstanding original prior-base trap/exploration scans.
+9. L02: original cap scan with measured bound activation and CPU cost.
+10. L40/gates: preserve closed mouth result and remaining full-panel/sandbox obligations.
+
+Next runnable action: resume `campaign.py --candidate expedition-08-symmetry
+--panel gen --execute --minutes 20 --max-games 96` from **var/autarky_tr, B,
+seed 1, ChaewonY04**, playing 08 against the saved exact parent fixture. Batch 024
+has exited; no game batch remains active at publication. Use log batch-025,
+retain exclusive locking, then run `report.py --candidate expedition-08-symmetry`
+and preserve the next numbered audit. Finish remaining seed-one maps before the
+existing seed-two/three order; no restart of the default mouth queue. No runtime
+or tooling changed this pass, so earlier 34-tool-test validation stands without
+unnecessary repetition. Only the scoped status is committed; generated evidence,
+build/environment links and the materialized HB17 dependency stay untracked.
 
 ## Pass 19 — close the food-retention test; move to information transfer
 
