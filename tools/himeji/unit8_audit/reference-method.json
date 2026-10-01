@@ -1,0 +1,14 @@
+{
+  "seed": 8123,
+  "replicates": 1000,
+  "confidence": 0.95,
+  "bootstrap": "whole series within map, both sides retained; same draw defines field and its top10 subset",
+  "percentile": "midrank: mean(field < top10 median) + 0.5*mean(field == top10 median)",
+  "caveats": [
+    "current top10 membership applied retrospectively",
+    "collector/in-scope selection",
+    "terminal carry counted",
+    "no live-us rows in store",
+    "no temporal validation"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "index_unique": 80071,
+  "index_sha256": "ce48c0ded51db812e57b5350ff054e5e0c1ed039aba60012242c0fff69c51efd",
+  "latest_start": "2026-10-01T17:29:40.177Z",
+  "games": 15,
+  "game_source_sha256": "530e7b97b95ccfc2f6dbc136ce0e321610b71be27e52a7a9c0d96a23688975d2",
+  "ladder": "20261001T173018Z.json",
+  "ladder_sha256": "43ee125383d431f552201f6dc932e8db15d4460f5751873fe603c9c97198a7d1",
+  "cohort_counts": {
+    "ranked": 5,
+    "unranked": 10
+  },
+  "post_start": "2026-10-01T09:23",
+  "decoder_parent": "99b9dbd11",
+  "selection": "All completed collected post-rule team-7 games at freeze; no sampling or exclusions"
+}

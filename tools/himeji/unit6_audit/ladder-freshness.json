@@ -1,0 +1,88 @@
+{
+  "path": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/public_replays/corpus/ladder/20261001T170922Z.json",
+  "sha256": "54c9e98e367a12378f1fdd84a87de0cc8e315b071cb3f59dd5cc11f7f9c685aa",
+  "rows": 963,
+  "ranked_rows": 144,
+  "top10": [
+    {
+      "dev": false,
+      "elo": 2138,
+      "id": 952,
+      "name": "Cache me outside",
+      "rank": 1,
+      "wins": 4134
+    },
+    {
+      "dev": false,
+      "elo": 1984,
+      "id": 206,
+      "name": "Stockfish",
+      "rank": 2,
+      "wins": 9359
+    },
+    {
+      "dev": false,
+      "elo": 1973,
+      "id": 314,
+      "name": "3.14159265",
+      "rank": 3,
+      "wins": 5868
+    },
+    {
+      "dev": false,
+      "elo": 1972,
+      "id": 213,
+      "name": "Sponge(Albert and Bob)",
+      "rank": 4,
+      "wins": 14145
+    },
+    {
+      "dev": false,
+      "elo": 1964,
+      "id": 20,
+      "name": "calc",
+      "rank": 5,
+      "wins": 9982
+    },
+    {
+      "dev": false,
+      "elo": 1915,
+      "id": 801,
+      "name": "\u4e2d\u56fd\u5fc5\u987b\u4eba\u80fd\u98de\ud83d\ude21",
+      "rank": 6,
+      "wins": 10472
+    },
+    {
+      "dev": false,
+      "elo": 1908,
+      "id": 249,
+      "name": "Team SKKU",
+      "rank": 7,
+      "wins": 9560
+    },
+    {
+      "dev": false,
+      "elo": 1906,
+      "id": 87,
+      "name": "WeHaveQuizzes",
+      "rank": 8,
+      "wins": 5598
+    },
+    {
+      "dev": false,
+      "elo": 1900,
+      "id": 852,
+      "name": "C--",
+      "rank": 9,
+      "wins": 3146
+    },
+    {
+      "dev": false,
+      "elo": 1897,
+      "id": 375,
+      "name": "Delusion Tax",
+      "rank": 10,
+      "wins": 2745
+    }
+  ]
+}

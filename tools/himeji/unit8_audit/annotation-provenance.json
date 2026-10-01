@@ -1,0 +1,9 @@
+{
+  "live_source": "/Users/alik/Documents/Projects/wt-himeji/tools/himeji/unit7_audit/sides.jsonl",
+  "live_sha256": "1826f3ce709abc2036a206bdd4c963077661fcca9019d5bcb3cbf9f3f93729ac",
+  "clusters_source": "/Users/alik/Documents/Projects/wt-himeji/tools/himeji/reference_data/cluster_map.csv",
+  "clusters_sha256": "5f9fdebb795142a46f050c82a0b3503489f590e62a37b49d22be111d781f83a1",
+  "live_ranked_games": 5,
+  "live_series": 1,
+  "description": "Unit1 frozen computed signature clusters, not unit7 prose groupings. PD10 has no verified assignment."
+}

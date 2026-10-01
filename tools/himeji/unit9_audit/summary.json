@@ -1,0 +1,397 @@
+{
+  "header_count": 2447,
+  "all_terminated": true,
+  "runner_agrees": 2447,
+  "old_matches_features": 2447,
+  "method": "1000 paired fixture bootstrap and sensitivity: map-opponent blocks retaining seeds/seats; seed7, central90% intervals; local unswbc1.2.3 declared by tester, not live",
+  "panels": {
+    "pool": {
+      "base": {
+        "n": 480,
+        "official_wld": [
+          396,
+          83,
+          1
+        ],
+        "old_wld": [
+          401,
+          78,
+          1
+        ],
+        "official_share": 0.8260416666666667,
+        "old_share": 0.8364583333333333,
+        "flips": 7,
+        "net_correction": -5.0
+      },
+      "candidate": {
+        "n": 479,
+        "official_wld": [
+          406,
+          73,
+          0
+        ],
+        "old_wld": [
+          417,
+          62,
+          0
+        ],
+        "official_share": 0.8475991649269311,
+        "old_share": 0.8705636743215032,
+        "flips": 11,
+        "net_correction": -11.0
+      },
+      "official": {
+        "n": 479,
+        "delta": 0.021920668058455117,
+        "better": 50,
+        "worse": 39,
+        "ties": 390,
+        "fixture_ci90": [
+          -0.012578288100208767,
+          0.054279749478079335
+        ],
+        "map_opponent_blocks": 80,
+        "block_ci90": [
+          -0.0073076536717883315,
+          0.051041666666666666
+        ]
+      },
+      "old": {
+        "n": 479,
+        "delta": 0.03444676409185804,
+        "better": 49,
+        "worse": 32,
+        "ties": 398,
+        "fixture_ci90": [
+          0.0020876826722338203,
+          0.06680584551148225
+        ],
+        "map_opponent_blocks": 80,
+        "block_ci90": [
+          0.007321411413247613,
+          0.060669456066945605
+        ]
+      },
+      "missing_candidate": [
+        {
+          "bot": "kyoto-01-nodevil",
+          "panel": "pool",
+          "game": "s2__slithery_fight__kyoto-01-nodevil__ouroboros-m01-vibing-mimic",
+          "map": "slithery_fight",
+          "seed": 2,
+          "opp": "ouroboros-m01-vibing-mimic",
+          "side": "A",
+          "terminated": true,
+          "end_reason": 1,
+          "official": "A",
+          "old": "A",
+          "runner": "A",
+          "official_score": 1.0,
+          "old_score": 1.0,
+          "final": [
+            {
+              "units": 4,
+              "longest": 44,
+              "total": 54,
+              "queen": 0
+            },
+            {
+              "units": 56,
+              "longest": 20,
+              "total": 256,
+              "queen": 0
+            }
+          ],
+          "replay_sha256": "03a8bbbbe9b546c13413f1fc5168d83c4d55a007f861b0f8316aad39ec9ddec3"
+        }
+      ],
+      "missing_base": [],
+      "map_deltas": {
+        "autarky": {
+          "n": 48,
+          "official_delta": 0.020833333333333332,
+          "old_delta": 0.020833333333333332
+        },
+        "default": {
+          "n": 48,
+          "official_delta": 0.10416666666666667,
+          "old_delta": 0.125
+        },
+        "devil": {
+          "n": 48,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "dilemma": {
+          "n": 48,
+          "official_delta": 0.08333333333333333,
+          "old_delta": 0.08333333333333333
+        },
+        "portals": {
+          "n": 48,
+          "official_delta": 0.052083333333333336,
+          "old_delta": 0.09375
+        },
+        "queen_of_spades": {
+          "n": 48,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "schooltime": {
+          "n": 48,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "slithery_fight": {
+          "n": 47,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "trauma": {
+          "n": 48,
+          "official_delta": -0.041666666666666664,
+          "old_delta": 0.020833333333333332
+        },
+        "trophy": {
+          "n": 48,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        }
+      },
+      "correction_delta": -0.012526096033402923,
+      "complete_panel_point_bounds": [
+        0.019791666666666666,
+        0.021875
+      ],
+      "missing_candidate_baseline_score": 1.0
+    },
+    "gen": {
+      "base": {
+        "n": 744,
+        "official_wld": [
+          515,
+          228,
+          1
+        ],
+        "old_wld": [
+          515,
+          228,
+          1
+        ],
+        "official_share": 0.6928763440860215,
+        "old_share": 0.6928763440860215,
+        "flips": 0,
+        "net_correction": 0.0
+      },
+      "candidate": {
+        "n": 744,
+        "official_wld": [
+          520,
+          223,
+          1
+        ],
+        "old_wld": [
+          520,
+          223,
+          1
+        ],
+        "official_share": 0.6995967741935484,
+        "old_share": 0.6995967741935484,
+        "flips": 0,
+        "net_correction": 0.0
+      },
+      "official": {
+        "n": 744,
+        "delta": 0.006720430107526882,
+        "better": 62,
+        "worse": 57,
+        "ties": 625,
+        "fixture_ci90": [
+          -0.018145161290322582,
+          0.030913978494623656
+        ],
+        "map_opponent_blocks": 124,
+        "block_ci90": [
+          -0.018145161290322582,
+          0.03024193548387097
+        ]
+      },
+      "old": {
+        "n": 744,
+        "delta": 0.006720430107526882,
+        "better": 62,
+        "worse": 57,
+        "ties": 625,
+        "fixture_ci90": [
+          -0.018145161290322582,
+          0.030913978494623656
+        ],
+        "map_opponent_blocks": 124,
+        "block_ci90": [
+          -0.018145161290322582,
+          0.03024193548387097
+        ]
+      },
+      "missing_candidate": [],
+      "missing_base": [],
+      "map_deltas": {
+        "new/mc26_archipelago": {
+          "n": 24,
+          "official_delta": 0.16666666666666666,
+          "old_delta": 0.16666666666666666
+        },
+        "new/mc26_crossroads": {
+          "n": 24,
+          "official_delta": 0.25,
+          "old_delta": 0.25
+        },
+        "new/mc26_delayed_commons": {
+          "n": 24,
+          "official_delta": -0.041666666666666664,
+          "old_delta": -0.041666666666666664
+        },
+        "new/mc26_equatorial_belt": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "new/mc26_far_harbors": {
+          "n": 24,
+          "official_delta": 0.08333333333333333,
+          "old_delta": 0.08333333333333333
+        },
+        "new/mc26_nursery_bays": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "new/mc26_pinwheel": {
+          "n": 24,
+          "official_delta": -0.125,
+          "old_delta": -0.125
+        },
+        "new/mc26_portal_quartet": {
+          "n": 24,
+          "official_delta": -0.125,
+          "old_delta": -0.125
+        },
+        "new/mc26_pulse_farms": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "new/mc26_relay_depots": {
+          "n": 24,
+          "official_delta": 0.08333333333333333,
+          "old_delta": 0.08333333333333333
+        },
+        "new/mc26_scattered_fleets": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "new/mc26_seam_market": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "new/mc26_spring_wells": {
+          "n": 24,
+          "official_delta": -0.041666666666666664,
+          "old_delta": -0.041666666666666664
+        },
+        "new/md26_causeway_detour_s0": {
+          "n": 24,
+          "official_delta": -0.08333333333333333,
+          "old_delta": -0.08333333333333333
+        },
+        "new/md26_causeway_portal_s0": {
+          "n": 24,
+          "official_delta": -0.041666666666666664,
+          "old_delta": -0.041666666666666664
+        },
+        "new/md26_commons_shared_s0": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "new/md26_commons_spread_s0": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "new/md26_orchard_narrow_s0": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "new/md26_orchard_wide_s0": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "new/md26_promenade_ring_s0": {
+          "n": 24,
+          "official_delta": 0.041666666666666664,
+          "old_delta": 0.041666666666666664
+        },
+        "pub/portals_rec": {
+          "n": 24,
+          "official_delta": 0.0625,
+          "old_delta": 0.0625
+        },
+        "pub/slithery_rec": {
+          "n": 24,
+          "official_delta": -0.20833333333333334,
+          "old_delta": -0.20833333333333334
+        },
+        "var/autarky_tr": {
+          "n": 24,
+          "official_delta": 0.08333333333333333,
+          "old_delta": 0.08333333333333333
+        },
+        "var/crossroads_tr": {
+          "n": 24,
+          "official_delta": -0.041666666666666664,
+          "old_delta": -0.041666666666666664
+        },
+        "var/default_tr": {
+          "n": 24,
+          "official_delta": 0.25,
+          "old_delta": 0.25
+        },
+        "var/devil_tr": {
+          "n": 24,
+          "official_delta": 0.08333333333333333,
+          "old_delta": 0.08333333333333333
+        },
+        "var/dilemma_tr": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        },
+        "var/portals_tr": {
+          "n": 24,
+          "official_delta": -0.3541666666666667,
+          "old_delta": -0.3541666666666667
+        },
+        "var/queen_of_spades_tr": {
+          "n": 24,
+          "official_delta": 0.08333333333333333,
+          "old_delta": 0.08333333333333333
+        },
+        "var/trauma_tr": {
+          "n": 24,
+          "official_delta": 0.08333333333333333,
+          "old_delta": 0.08333333333333333
+        },
+        "var/trophy_tr": {
+          "n": 24,
+          "official_delta": 0.0,
+          "old_delta": 0.0
+        }
+      },
+      "correction_delta": 0.0
+    }
+  }
+}

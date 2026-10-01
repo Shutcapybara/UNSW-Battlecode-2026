@@ -1,0 +1,24 @@
+{
+  "panel": "/Users/alik/Documents/Projects/wt-rome/build/zoo/z1-rome-01-nodevil-28132ee5",
+  "panel_index_sha256": "7e2f52b379ab23d6d4c81acd50291c60c843a8929d1b848f2a490278815a0896",
+  "toolkit": "unswbc 1.2.3",
+  "games": 160,
+  "seed": 1,
+  "maps": 10,
+  "opponents": 8,
+  "seats": 2,
+  "frame_version": 5,
+  "cache_parity_game": "s1__autarky__chaewon-y04-probe__rome-01-nodevil",
+  "cache_parity_fields": [
+    "rounds",
+    "events",
+    "last_round",
+    "W",
+    "H"
+  ],
+  "corpus_unique": 78650,
+  "corpus_sha256": "0fe80789725020f90ee9c945078d75bd78b952d594c7f0ae1e0dd161906c568e",
+  "latest_start": "2026-10-01T15:28:47.994Z",
+  "post_us_games": 0,
+  "ladder": "20261001T062107Z.json"
+}

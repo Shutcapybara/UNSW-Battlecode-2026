@@ -1,0 +1,127 @@
+{
+  "source_sha256": "594b19555b5f65b5097f35e266f44c61c806c2de14b76e676ece6819b1dc3781",
+  "source_rows": 7956,
+  "cutlery_rows": 146,
+  "groups": [
+    {
+      "after13": false,
+      "n": 62,
+      "positive": 1,
+      "rl_n": 31,
+      "rl_positive": 0,
+      "early_positive": [
+        "816665"
+      ],
+      "positive_ids": [
+        "816665"
+      ]
+    },
+    {
+      "after13": true,
+      "n": 84,
+      "positive": 22,
+      "rl_n": 40,
+      "rl_positive": 11,
+      "early_positive": [
+        "822725",
+        "821430",
+        "821145",
+        "820964",
+        "820955",
+        "819730",
+        "819725",
+        "819729",
+        "819734",
+        "818715",
+        "818694"
+      ],
+      "positive_ids": [
+        "822725",
+        "821430",
+        "821433",
+        "821431",
+        "821145",
+        "821146",
+        "820964",
+        "820962",
+        "820955",
+        "820956",
+        "820198",
+        "819730",
+        "819725",
+        "819729",
+        "819734",
+        "818715",
+        "818716",
+        "818693",
+        "818694",
+        "818689",
+        "818691",
+        "818674"
+      ]
+    }
+  ],
+  "positive_ranked": {
+    "816665": true,
+    "818674": true,
+    "818689": true,
+    "818691": true,
+    "818693": true,
+    "818694": true,
+    "818715": true,
+    "818716": true,
+    "819725": false,
+    "819729": false,
+    "819730": false,
+    "819734": false,
+    "820198": true,
+    "820955": true,
+    "820956": true,
+    "820962": true,
+    "820964": true,
+    "821145": true,
+    "821146": true,
+    "821430": false,
+    "821431": false,
+    "821433": false,
+    "822725": true
+  },
+  "ranked_split": [
+    {
+      "ranked": false,
+      "after13": false,
+      "n": 0,
+      "positive": 0,
+      "rl_n": 0,
+      "rl_positive": 0,
+      "series": 0
+    },
+    {
+      "ranked": false,
+      "after13": true,
+      "n": 20,
+      "positive": 7,
+      "rl_n": 9,
+      "rl_positive": 2,
+      "series": 3
+    },
+    {
+      "ranked": true,
+      "after13": false,
+      "n": 62,
+      "positive": 1,
+      "rl_n": 31,
+      "rl_positive": 0,
+      "series": 14
+    },
+    {
+      "ranked": true,
+      "after13": true,
+      "n": 64,
+      "positive": 15,
+      "rl_n": 31,
+      "rl_positive": 9,
+      "series": 14
+    }
+  ]
+}

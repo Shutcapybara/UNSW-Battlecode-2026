@@ -1,0 +1,395 @@
+{
+  "n": 1392,
+  "index_sha256": "eb26af65ff27e47b9096a8140a697e606b5cbb329a88938702256129e6f8925b",
+  "old_wld": [
+    1041,
+    351,
+    0
+  ],
+  "official_wld": [
+    1036,
+    356,
+    0
+  ],
+  "old_share": 0.7478448275862069,
+  "official_share": 0.7442528735632183,
+  "changed": 7,
+  "runner_agrees": 1392,
+  "flips": [
+    {
+      "game": "s1__var_portals_tr__ouroboros-m01-vibing-mimic__rome-01-nodevil",
+      "map": "var/portals_tr",
+      "seed": 1,
+      "side": "B",
+      "terminated": true,
+      "old": "B",
+      "official": "A",
+      "runner": "A",
+      "queen_a": 3,
+      "queen_b": 0,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0,
+      "toolkit": "unswbc 1.2.3"
+    },
+    {
+      "game": "s1__var_trauma_tr__hunter-v20-portal-scouts__rome-01-nodevil",
+      "map": "var/trauma_tr",
+      "seed": 1,
+      "side": "B",
+      "terminated": true,
+      "old": "B",
+      "official": "A",
+      "runner": "A",
+      "queen_a": 3,
+      "queen_b": 0,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0,
+      "toolkit": "unswbc 1.2.3"
+    },
+    {
+      "game": "s2__var_portals_tr__ouroboros-m01-vibing-mimic__rome-01-nodevil",
+      "map": "var/portals_tr",
+      "seed": 2,
+      "side": "B",
+      "terminated": true,
+      "old": "B",
+      "official": "A",
+      "runner": "A",
+      "queen_a": 2,
+      "queen_b": 0,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0,
+      "toolkit": "unswbc 1.2.3"
+    },
+    {
+      "game": "s2__var_portals_tr__rome-01-nodevil__ouroboros-m01-vibing-mimic",
+      "map": "var/portals_tr",
+      "seed": 2,
+      "side": "A",
+      "terminated": true,
+      "old": "A",
+      "official": "B",
+      "runner": "B",
+      "queen_a": 0,
+      "queen_b": 3,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0,
+      "toolkit": "unswbc 1.2.3"
+    },
+    {
+      "game": "s3__new_mc26_crossroads__rome-01-nodevil__sinbad-v07-divecap",
+      "map": "new/mc26_crossroads",
+      "seed": 3,
+      "side": "A",
+      "terminated": true,
+      "old": "B",
+      "official": "A",
+      "runner": "A",
+      "queen_a": 2,
+      "queen_b": 0,
+      "end_reason": 1,
+      "old_score": 0,
+      "official_score": 1,
+      "toolkit": "unswbc 1.2.3"
+    },
+    {
+      "game": "s3__var_portals_tr__ouroboros-m01-vibing-mimic__rome-01-nodevil",
+      "map": "var/portals_tr",
+      "seed": 3,
+      "side": "B",
+      "terminated": true,
+      "old": "B",
+      "official": "A",
+      "runner": "A",
+      "queen_a": 3,
+      "queen_b": 0,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0,
+      "toolkit": "unswbc 1.2.3"
+    },
+    {
+      "game": "s3__var_portals_tr__rome-01-nodevil__ouroboros-m01-vibing-mimic",
+      "map": "var/portals_tr",
+      "seed": 3,
+      "side": "A",
+      "terminated": true,
+      "old": "A",
+      "official": "B",
+      "runner": "B",
+      "queen_a": 0,
+      "queen_b": 3,
+      "end_reason": 1,
+      "old_score": 1,
+      "official_score": 0,
+      "toolkit": "unswbc 1.2.3"
+    }
+  ],
+  "per_map": {
+    "new/mc26_archipelago": {
+      "n": 48,
+      "wins": 39,
+      "losses": 9,
+      "draws": 0,
+      "rl": 1,
+      "old_score": 39,
+      "official_score": 39
+    },
+    "new/mc26_crossroads": {
+      "n": 48,
+      "wins": 21,
+      "losses": 27,
+      "draws": 0,
+      "rl": 10,
+      "old_score": 20,
+      "official_score": 21
+    },
+    "new/mc26_delayed_commons": {
+      "n": 48,
+      "wins": 40,
+      "losses": 8,
+      "draws": 0,
+      "rl": 0,
+      "old_score": 40,
+      "official_score": 40
+    },
+    "new/mc26_equatorial_belt": {
+      "n": 48,
+      "wins": 27,
+      "losses": 21,
+      "draws": 0,
+      "rl": 3,
+      "old_score": 27,
+      "official_score": 27
+    },
+    "new/mc26_far_harbors": {
+      "n": 48,
+      "wins": 23,
+      "losses": 25,
+      "draws": 0,
+      "rl": 21,
+      "old_score": 23,
+      "official_score": 23
+    },
+    "new/mc26_nursery_bays": {
+      "n": 48,
+      "wins": 41,
+      "losses": 7,
+      "draws": 0,
+      "rl": 1,
+      "old_score": 41,
+      "official_score": 41
+    },
+    "new/mc26_pinwheel": {
+      "n": 48,
+      "wins": 40,
+      "losses": 8,
+      "draws": 0,
+      "rl": 1,
+      "old_score": 40,
+      "official_score": 40
+    },
+    "new/mc26_portal_quartet": {
+      "n": 48,
+      "wins": 41,
+      "losses": 7,
+      "draws": 0,
+      "rl": 24,
+      "old_score": 41,
+      "official_score": 41
+    },
+    "new/mc26_pulse_farms": {
+      "n": 48,
+      "wins": 36,
+      "losses": 12,
+      "draws": 0,
+      "rl": 0,
+      "old_score": 36,
+      "official_score": 36
+    },
+    "new/mc26_relay_depots": {
+      "n": 48,
+      "wins": 35,
+      "losses": 13,
+      "draws": 0,
+      "rl": 14,
+      "old_score": 35,
+      "official_score": 35
+    },
+    "new/mc26_scattered_fleets": {
+      "n": 48,
+      "wins": 44,
+      "losses": 4,
+      "draws": 0,
+      "rl": 2,
+      "old_score": 44,
+      "official_score": 44
+    },
+    "new/mc26_seam_market": {
+      "n": 48,
+      "wins": 5,
+      "losses": 43,
+      "draws": 0,
+      "rl": 6,
+      "old_score": 5,
+      "official_score": 5
+    },
+    "new/mc26_spring_wells": {
+      "n": 48,
+      "wins": 22,
+      "losses": 26,
+      "draws": 0,
+      "rl": 6,
+      "old_score": 22,
+      "official_score": 22
+    },
+    "new/md26_causeway_detour_s0": {
+      "n": 48,
+      "wins": 37,
+      "losses": 11,
+      "draws": 0,
+      "rl": 4,
+      "old_score": 37,
+      "official_score": 37
+    },
+    "new/md26_causeway_portal_s0": {
+      "n": 48,
+      "wins": 35,
+      "losses": 13,
+      "draws": 0,
+      "rl": 2,
+      "old_score": 35,
+      "official_score": 35
+    },
+    "new/md26_commons_shared_s0": {
+      "n": 48,
+      "wins": 43,
+      "losses": 5,
+      "draws": 0,
+      "rl": 0,
+      "old_score": 43,
+      "official_score": 43
+    },
+    "new/md26_commons_spread_s0": {
+      "n": 48,
+      "wins": 39,
+      "losses": 9,
+      "draws": 0,
+      "rl": 5,
+      "old_score": 39,
+      "official_score": 39
+    },
+    "new/md26_orchard_narrow_s0": {
+      "n": 48,
+      "wins": 39,
+      "losses": 9,
+      "draws": 0,
+      "rl": 8,
+      "old_score": 39,
+      "official_score": 39
+    },
+    "new/md26_orchard_wide_s0": {
+      "n": 48,
+      "wins": 42,
+      "losses": 6,
+      "draws": 0,
+      "rl": 4,
+      "old_score": 42,
+      "official_score": 42
+    },
+    "new/md26_promenade_ring_s0": {
+      "n": 48,
+      "wins": 37,
+      "losses": 11,
+      "draws": 0,
+      "rl": 1,
+      "old_score": 37,
+      "official_score": 37
+    },
+    "var/autarky_tr": {
+      "n": 48,
+      "wins": 47,
+      "losses": 1,
+      "draws": 0,
+      "rl": 7,
+      "old_score": 47,
+      "official_score": 47
+    },
+    "var/crossroads_tr": {
+      "n": 48,
+      "wins": 25,
+      "losses": 23,
+      "draws": 0,
+      "rl": 2,
+      "old_score": 25,
+      "official_score": 25
+    },
+    "var/default_tr": {
+      "n": 48,
+      "wins": 36,
+      "losses": 12,
+      "draws": 0,
+      "rl": 14,
+      "old_score": 36,
+      "official_score": 36
+    },
+    "var/devil_tr": {
+      "n": 48,
+      "wins": 44,
+      "losses": 4,
+      "draws": 0,
+      "rl": 2,
+      "old_score": 44,
+      "official_score": 44
+    },
+    "var/dilemma_tr": {
+      "n": 48,
+      "wins": 46,
+      "losses": 2,
+      "draws": 0,
+      "rl": 3,
+      "old_score": 46,
+      "official_score": 46
+    },
+    "var/portals_tr": {
+      "n": 48,
+      "wins": 34,
+      "losses": 14,
+      "draws": 0,
+      "rl": 48,
+      "old_score": 39,
+      "official_score": 34
+    },
+    "var/queen_of_spades_tr": {
+      "n": 48,
+      "wins": 31,
+      "losses": 17,
+      "draws": 0,
+      "rl": 11,
+      "old_score": 31,
+      "official_score": 31
+    },
+    "var/trauma_tr": {
+      "n": 48,
+      "wins": 42,
+      "losses": 6,
+      "draws": 0,
+      "rl": 44,
+      "old_score": 43,
+      "official_score": 42
+    },
+    "var/trophy_tr": {
+      "n": 48,
+      "wins": 45,
+      "losses": 3,
+      "draws": 0,
+      "rl": 0,
+      "old_score": 45,
+      "official_score": 45
+    }
+  }
+}

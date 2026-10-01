@@ -1,0 +1,30 @@
+{
+  "base": "kyoto-01-nodevil",
+  "candidate": "kyoto-03-latecap",
+  "source_indexes": {
+    "/Users/alik/Documents/Projects/wt-kyoto/build/kyoto/runs/kyoto-01-nodevil/pool/index-Als-MacBook-.jsonl": "57ef75fd04d78e461c1b28af642ae79568afb22ea383cdd1b3e39fcaeb70f943",
+    "/Users/alik/Documents/Projects/wt-kyoto/build/kyoto/runs/kyoto-01-nodevil/gen/index-Als-MacBook-.jsonl": "e622d3b3e07db47a1fe251da8bd7a39e84be2ff4081db0ef53f62e9b7b70b892",
+    "/Users/alik/Documents/Projects/wt-kyoto/build/kyoto/runs/kyoto-03-latecap/pool/index-Als-MacBook-.jsonl": "2fbe8370fdd4394743e5085f219f33a41b5ec15507a916b9a39a7bcc070401f1",
+    "/Users/alik/Documents/Projects/wt-kyoto/build/kyoto/runs/kyoto-03-latecap/gen/index-Als-MacBook-.jsonl": "0e47726783b6be5e59c712bbe808a6382909137819d616be10fdb321d753adbf"
+  },
+  "failures": [
+    {
+      "bot": "kyoto-03-latecap",
+      "panel": "pool",
+      "map": "slithery_fight",
+      "seed": 2,
+      "botA": "kyoto-03-latecap",
+      "botB": "ouroboros-m01-vibing-mimic",
+      "opp": "ouroboros-m01-vibing-mimic",
+      "seat": "A",
+      "game": "s2__slithery_fight__kyoto-03-latecap__ouroboros-m01-vibing-mimic",
+      "seconds": 1800.1,
+      "rc": -9,
+      "host": "Als-MacBook-Pro.local",
+      "winner": null,
+      "rounds": null,
+      "reason": "timeout",
+      "replay": "replays/s2__slithery_fight__kyoto-03-latecap__ouroboros-m01-vibing-mimic.replay"
+    }
+  ]
+}

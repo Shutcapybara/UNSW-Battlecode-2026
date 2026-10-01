@@ -1,0 +1,71 @@
+map,metric,blocks,valid_bootstraps,pct_lo,pct_hi,status
+Autarky,bed_eats@50,40,500,0.64671875,0.9375,provisional
+Autarky,bed_capture@50,40,500,0.55,0.9095312499999998,provisional
+Autarky,splits@50,40,500,0.4625,0.91875,provisional
+Autarky,transits@50,40,500,0.225,0.875,provisional
+Autarky,territory@50,40,499,0.4528125,0.7875,provisional
+Autarky,queen_alive490,24,478,0.5,0.5,provisional
+Autarky,queen_length490,24,483,0.5,0.5,provisional
+Default,bed_eats@50,40,495,0.13968750000000002,0.9875,provisional
+Default,bed_capture@50,40,496,0.08125,0.925,provisional
+Default,splits@50,40,495,0.09375,0.98125,provisional
+Default,transits@50,40,496,0.0625,0.875,provisional
+Default,territory@50,40,497,0.2675,0.95,provisional
+Default,queen_alive490,14,309,0.5,0.5,provisional
+Default,queen_length490,14,324,0.5,0.5,provisional
+Devil,bed_eats@50,40,500,0.05,0.6157812499999998,provisional
+Devil,bed_capture@50,40,500,0.05625,0.59375,provisional
+Devil,splits@50,40,499,0.075,0.7284375000000001,provisional
+Devil,transits@50,40,500,0.5,0.5,provisional
+Devil,territory@50,40,500,0.040468750000000005,0.7220312499999998,provisional
+Devil,queen_alive490,6,0,,,provisional
+Devil,queen_length490,6,0,,,provisional
+Portals,bed_eats@50,40,500,0.1809375,0.6875,provisional
+Portals,bed_capture@50,40,500,0.17171875,0.7125,provisional
+Portals,splits@50,40,500,0.3,0.675,provisional
+Portals,transits@50,40,499,0.2465625,0.5875,provisional
+Portals,territory@50,40,500,0.5,0.5,provisional
+Portals,queen_alive490,39,499,0.46794871794871795,0.5,provisional
+Portals,queen_length490,39,500,0.46794871794871795,0.5,provisional
+Prisoners Dilemma,bed_eats@50,40,500,0.425,0.85,provisional
+Prisoners Dilemma,bed_capture@50,40,500,0.25593750000000004,0.8595312499999999,provisional
+Prisoners Dilemma,splits@50,40,500,0.3,0.8595312499999999,provisional
+Prisoners Dilemma,transits@50,40,500,0.675,0.9220312499999999,provisional
+Prisoners Dilemma,territory@50,40,500,0.3875,0.9125,provisional
+Prisoners Dilemma,queen_alive490,9,336,0.5,0.5,provisional
+Prisoners Dilemma,queen_length490,9,314,0.5,0.5,provisional
+Queen Of Spades,bed_eats@50,40,500,0.625,0.975,provisional
+Queen Of Spades,bed_capture@50,40,500,0.60625,0.9657812499999998,provisional
+Queen Of Spades,splits@50,40,500,0.60921875,0.975,provisional
+Queen Of Spades,transits@50,40,500,0.625,0.9625,provisional
+Queen Of Spades,territory@50,40,499,0.63125,0.86875,provisional
+Queen Of Spades,queen_alive490,11,306,0.5,0.5,provisional
+Queen Of Spades,queen_length490,11,328,0.5,0.5,provisional
+Schooltime,bed_eats@50,40,500,0.26875,0.85,provisional
+Schooltime,bed_capture@50,39,500,0.3748397435897436,0.8782051282051282,provisional
+Schooltime,splits@50,40,500,0.275,0.8595312499999999,provisional
+Schooltime,transits@50,40,500,0.41875,0.8407812499999998,provisional
+Schooltime,territory@50,40,500,0.35921875000000003,0.7625,provisional
+Schooltime,queen_alive490,34,500,0.47794117647058826,0.5,provisional
+Schooltime,queen_length490,34,500,0.47794117647058826,0.5,provisional
+Slithery Fight,bed_eats@50,40,500,0.3125,0.79375,provisional
+Slithery Fight,bed_capture@50,40,500,0.38125,0.825,provisional
+Slithery Fight,splits@50,40,500,0.4,0.675,provisional
+Slithery Fight,transits@50,40,500,0.475,0.8157812499999998,provisional
+Slithery Fight,territory@50,40,500,0.2934375,0.75,provisional
+Slithery Fight,queen_alive490,40,500,0.5,0.5,provisional
+Slithery Fight,queen_length490,40,500,0.5,0.5,provisional
+Trauma,bed_eats@50,40,500,0.48421875000000003,0.9,provisional
+Trauma,bed_capture@50,40,500,0.54671875,0.8595312499999999,provisional
+Trauma,splits@50,40,500,0.455625,0.9095312499999998,provisional
+Trauma,transits@50,40,500,0.625,0.84375,provisional
+Trauma,territory@50,40,500,0.575,0.8845312499999998,provisional
+Trauma,queen_alive490,35,500,0.38571428571428573,0.4642857142857143,provisional
+Trauma,queen_length490,35,500,0.3748214285714286,0.4642857142857143,provisional
+Trophy,bed_eats@50,40,500,0.49046875,0.9375,provisional
+Trophy,bed_capture@50,40,500,0.475,0.9220312499999999,provisional
+Trophy,splits@50,40,500,0.5125,0.95,provisional
+Trophy,transits@50,40,500,0.52765625,0.85625,provisional
+Trophy,territory@50,40,500,0.49046875,0.825,provisional
+Trophy,queen_alive490,1,0,,,provisional
+Trophy,queen_length490,1,0,,,provisional
