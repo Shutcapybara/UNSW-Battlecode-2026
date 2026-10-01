@@ -107,5 +107,17 @@ class PhaseExposureTests(unittest.TestCase):
         self.assertIsNone(summarize([row])['transit_died3'])
 
 
+class FieldPercentileTests(unittest.TestCase):
+    def test_zero_inflated_ties_count_half(self):
+        from report import percentile
+        self.assertEqual(percentile(0, [0, 0, 0, 0, 10]), 0.4)
+        self.assertEqual(percentile(5, [0, 0, 0, 0, 10]), 0.8)
+        self.assertEqual(percentile(10, [0, 0, 0, 0, 10]), 0.9)
+
+    def test_missing_reference_is_not_zero(self):
+        from report import percentile
+        self.assertIsNone(percentile(10, []))
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–3
+# Expedition — H-1 hypothesis steward, passes 1–4
 
 **2026-10-01, MacBook; branch `r/expedition`.** Evidence cutoff: starting commit
 `757315abc`. No previous Expedition pass exists. The ledger's last update was
@@ -13,6 +13,84 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 4 — second map and measurement sensitivity (2026-10-01)
+
+Resumed from pushed commit `346aef836`; no newer tracked lane, ledger or gate
+commits. Unrelated working-tree changes remain untouched. Batch 004 completed
+24 games in 223.4 seconds; its 76 saved games passed replay attribution and
+bookkeeping. Batch 005 resumed at Devil A, Sinbad under the exclusive lock.
+Host load was about 26 on 18 logical CPUs; kept one game worker and the existing
+24-game cap rather than increasing concurrency.
+
+**Default, seed 1: complete 16 paired fixtures**, all eight frozen opponents,
+both seats. Parent wins 13/16, mouth wins 12/16. Through r150:
+
+| Measure | Parent 01 | Mouth 09 |
+|---|---:|---:|
+| Transit volume | 707 | 573 |
+| Transits followed by death within three rounds | 90/707 = 12.73% | 62/573 = 10.82% |
+| Ally head-on deaths / dragon turns | 42/30,231 = 1.389 per 1k | 42/28,850 = 1.456 per 1k |
+| Own goals / dragon turns | 98/30,231 = 3.242 per 1k | 75/28,850 = 2.600 per 1k |
+| Newborn deaths / splits | 77/527 = 14.61% | 73/479 = 15.24% |
+| Mean total length at r150 | 50.375 | 45.6875 |
+| Candidate − parent opening tempo | — | **+1.108 rounds (slower)** |
+
+As on Autarky, lower post-transit death incidence accompanies lower transit
+volume and retained material. This is a second map within the **same seed and
+same experiment**, not an independent rejection. **L40 stays 0.5**; continue the
+predeclared panels without tuning against this prefix.
+
+**Zero-portal control:** Devil has zero portal edges. All 16 seed-1 paired
+fixtures match on every arena statistic for both teams, outcome, round count,
+error list and end reason. This supports the intended inactive mechanism on a
+map with no portal mouths; it is not evidence for a strategy gain. The canonical
+phase report also matches exactly: zero transits, an unmeasured transit-death
+rate (not zero risk), and zero tempo delta. Batch 005
+completed its 24 games in 147.9 seconds, bringing saved coverage to 100 games
+(50 pairs), all subsequently passing canonical attribution and bookkeeping. Batch 006 resumed on Prisoners Dilemma under the same bounds.
+
+### Gate sensitivity on the completed map slices
+
+`report.py` now displays arena and replay mean-economy deltas on identical paired
+fixtures and the same frozen per-map field-median denominators. For each fixture,
+normalise pearls at 50/100/150/250 by the corresponding field median, average the
+four checkpoint deltas, then average fixtures. These are descriptive point
+estimates, not confidence intervals or gate outcomes. Replay measurements do not
+silently replace the historical arena diagnostic.
+
+| Map, 16 pairs each | Arena mean-economy delta | Replay mean-economy delta | Raw pearls r25 delta | Raw pearls r50 delta | Mean r50 field-percentile delta |
+|---|---:|---:|---:|---:|---:|
+| Autarky | −0.001287 | −0.002696 | −0.0625 | +0.5000 | +0.011208 |
+| Default | −0.059894 | −0.056943 | 0.0000 | −0.1875 | −0.008366 |
+
+**No sign reversal on either completed map.** The arena/replay discrepancy is
+real but does not explain away these two point-estimate declines. This is not a
+re-scoring of a historical verdict and supports no retroactive accept/hold flip.
+
+**Reference coverage gap:** the frozen `field_references.json` and
+`field_distributions.json` include pearls r50 but no pearls r25. The report
+computes empirical percentiles with ties counted half at r50, reports raw r25,
+and marks its percentile as unavailable. It does not substitute r50 or infer an
+r25 distribution. To fully implement D-037, the director needs a separately
+versioned r25 reference derived from the appropriately filtered field corpus;
+keep its source/version distinct from this frozen experiment contract. This is
+an explicit prerequisite to a full opening-percentile claim, not a gate waiver.
+
+Verification: 11 no-game checks passed; added zero-inflated tie handling and
+missing-reference tests. The report records its own source hash separately from
+the canonical extraction hash. Existing source-frozen game contracts and all bot
+snapshots remain unchanged. Evidence: `build/expedition/phase-default.log`,
+`build/expedition/replay-panels/expedition-09-mouthroute-z1-default-phase.json`,
+`build/expedition/sensitivity-005.log`, and the latest `<candidate>-report.json`.
+The phase/reference hashes remain those recorded in pass 3.
+
+**Reconciliation / ranked ten:** no new independent full-panel result; all
+proposed weights and the ranked ten below remain unchanged. Reviewed **L29,
+L36, L37, L40**. The apparent hygiene/strength contradiction now has an explicit
+exposure and material explanation to test across the remaining maps and seeds.
+Next: finish the running mouth batch, validate it, and resume at the next fixture;
+refresh phase reports at complete map/seed boundaries. No registration or promotion.
 
 ## Pass 3 — first map slice and phase audit (2026-10-01)
 

@@ -4,6 +4,7 @@ Writes an analysis cache keyed by replay and analysis source hashes, leaving the
 original arena rows intact. Partial panels produce descriptive evidence only.
 """
 import argparse
+from bisect import bisect_left, bisect_right
 import hashlib
 import json
 import math
@@ -52,9 +53,49 @@ def canonical(row, dest, aid):
     return feature, discrepancies, out['checks']
 
 
+def percentile(value, distribution):
+    """Fraction below, counting ties half; no extrapolation of missing references."""
+    if not distribution:
+        return None
+    return (bisect_left(distribution, value) + bisect_right(distribution, value)) / (2 * len(distribution))
+
+
+def measurement_sensitivity(keys, child, parent, child_features, parent_features):
+    """Pool-map descriptions only; same fixtures and frozen denominators for both estimands."""
+    base = c.ROOT / 'docs/analysis/benchmarks'
+    refs = json.loads((base / 'field_references.json').read_text())
+    distributions = json.loads((base / 'field_distributions.json').read_text())
+    out = {}
+    for m in sorted({k[0] for k in keys}):
+        paired = [k for k in keys if k[0] == m]
+        name = c.panel.gate.NAME[m]
+        def avg(values):
+            return sum(values) / len(values)
+        arena, replay = [], []
+        for _, arena_key, canonical_key in c.panel.gate.ECON:
+            reference = refs[canonical_key][name]['median']
+            if reference <= 0:
+                raise ValueError(f'Undefined economy denominator: {name}: {canonical_key}')
+            arena += [(child[k]['us'][arena_key] - parent[k]['us'][arena_key]) / reference for k in paired]
+            replay += [(child_features[k][canonical_key] - parent_features[k][canonical_key]) / reference for k in paired]
+        opening = {}
+        for r in (25, 50):
+            key = f'pearls@{r}'
+            dist = distributions.get(key, {}).get(name)
+            opening[key] = dict(raw_mean_delta=avg([child_features[k][key] - parent_features[k][key] for k in paired]),
+                field_percentile_mean_delta=(avg([percentile(child_features[k][key], dist) -
+                    percentile(parent_features[k][key], dist) for k in paired]) if dist else None),
+                percentile_reference='frozen field distribution' if dist else 'UNAVAILABLE in frozen references')
+        out[m] = dict(paired=len(paired), seeds=sorted({k[2] for k in paired}),
+            seats=sorted({k[1] for k in paired}), arena_mean_economy_delta=avg(arena),
+            replay_mean_economy_delta=avg(replay), opening=opening,
+            status='DESCRIPTIVE ESTIMAND SENSITIVITY; NO GATE VERDICT')
+    return out
+
+
 def build_report(candidate):
     aid = analysis_id()
-    report = dict(candidate=candidate, parent=c.panel.PARENT, analysis_sha256=aid,
+    report = dict(candidate=candidate, parent=c.panel.PARENT, analysis_sha256=aid, report_sha256=c.sha(Path(__file__)),
                   promotion='NOT AUTHORIZED', panels={}, measurement_discrepancies=[])
     all_rows = {}
     for pn in ('z1', 'gen'):
@@ -84,7 +125,10 @@ def build_report(candidate):
             report['panels'][pn]['descriptive_only'] = {
                 field: sum(feats[candidate][k][field] - feats[c.panel.PARENT][k][field]
                            for k in paired) / len(paired)
-                for field in ('won', 'pearls@50', 'pearls@100', 'units@100', 'total@100')}
+                for field in ('won', 'pearls@25', 'pearls@50', 'pearls@100', 'units@100', 'total@100')}
+            if pn == 'z1':
+                report['panels'][pn]['measurement_sensitivity_by_map'] = measurement_sensitivity(
+                    paired, child, parent, feats[candidate], feats[c.panel.PARENT])
         all_rows[pn] = rows
     complete = all(p['complete'] for p in report['panels'].values())
     report['status'] = 'COMPLETE COVERAGE; GATE AUDIT STILL REQUIRED' if complete else 'INCOMPLETE; NO GATE VERDICT'
