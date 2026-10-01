@@ -57,6 +57,28 @@ def responses(exe, samples):
     return result
 
 
+def trap_activation_test():
+    # Independent recorded inputs that bind the trap penalty on the frozen prior.
+    # The broad original sample has zero trap-arm divergences; keep that fact and
+    # this targeted activation check separate from closed-loop performance.
+    path = ROOT / 'build/cx/golden/slithery_fight-A-1/yuna-v03-core.jsonl.gz'
+    expected_sha = '486b93ae2be32f8f2c57631c53438ea4cc58d56620d28f2b9c724cb2a154ac9b'
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == expected_sha
+    _, dragons = load(str(path))
+    dragon = dragons[360]
+    sample = [{'init': dragon['init'], 'turns': dragon['turns'][:500]}]
+    parent = responses(OUT / BASE, sample)
+    changed = responses(OUT / 'expedition-04-trap20', sample)
+    assert len(parent) == len(changed) == 423
+    different = [i for i, (a, b) in enumerate(zip(parent, changed)) if a != b]
+    assert len(different) == 2 and different[0] == 166, different
+    assert parent[166][0] == 'MOVE N' and changed[166][0] == 'MOVE W'
+    assert dragon['turns'][166]['round'] == 243
+    return dict(fixture=str(path.relative_to(ROOT)), sha256=expected_sha,
+                dragon=360, turns=423, divergences=len(different), first_turn_index=166,
+                first_round=243, parent_move='N', trap20_move='W', game_performance='NOT TESTED')
+
+
 def donor_feature_test():
     outputs = []
     for label, header, typ, expression in [
@@ -128,6 +150,8 @@ def main():
         n = sum(a != b for a, b in zip(baseline, got))
         results['recorded_input_checks'].append({'bot': name, 'enabled_divergences': n})
         print(name, 'enabled divergences:', n, flush=True)
+    results['trap_activation'] = trap_activation_test()
+    print('Trap penalty: targeted recorded-input activation confirmed', flush=True)
     # Parameter-only arms restore byte-identical source to their parent.
     for name, key, changed, original in [
         ('expedition-02-threat05','threat_weight','0.5','1.0'),

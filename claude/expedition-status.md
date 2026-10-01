@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–7
+# Expedition — H-1 hypothesis steward, passes 1–8
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -14,6 +14,74 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 8 — Schooltime tradeoff and trap activation (2026-10-01)
+
+Resumed from `b96493bc9`. No newer committed lane findings; the audited provisional
+S1 next-steps and tempo-tool hashes remain unchanged. Batch 009 completed **27
+games in 1,265.4 seconds**: its last admitted parent game took 151.7 seconds and
+finished after the 20-minute admission budget. This is the declared finish-current-
+game behavior, not an overlapping batch. Report validation now covers **235 games,
+117 matched pairs plus one parent awaiting its child**, with seven complete
+seed-1 map slices. Replay/source attribution, errors and canonical bookkeeping
+checks passed. The report retains **233 arena/replay measurement discrepancies**
+and their explanations; they are not silently replaced or treated as corrupt games.
+Batch 010 resumed that exact child fixture on Slithery Fight, with one CPU worker,
+20-minute admission budget and maximum 96 games. Later games in that running batch
+are outside this validated snapshot. No GPU work.
+
+### Complete Schooltime seed-1 slice
+
+Eight frozen opponents × both seats, 16 paired fixtures. Parent 01 wins **15/16**;
+mouth 09 wins **14/16**. Hygiene and material improve here without a win gain:
+
+| Measure through r150 | Parent 01 | Mouth 09 |
+|---|---:|---:|
+| Transits | 501 | 457 |
+| Transits followed by death within three rounds | 72/501 = 14.37% | 56/457 = 12.25% |
+| Ally head-on deaths / dragon turns | 28/79,016 = 0.354 per 1k | 14/80,099 = 0.175 per 1k |
+| Own goals / dragon turns | 580/79,016 = 7.340 per 1k | 533/80,099 = 6.654 per 1k |
+| Newborn deaths / splits observed by r150 | 319/1,872 = 17.04% | 300/1,802 = 16.65% |
+| Mean total length r150 | 206.8125 | 218.8125 |
+| Candidate − parent opening tempo | — | **+0.156 rounds (slower)** |
+
+Mean economy delta: **−0.014689 arena / −0.009187 replay**. Raw pearls r25 delta
++0.125; r50 −0.75; mean r50 field-percentile delta −0.009842. The newborn row retains
+the pass-7 snapshot-window caveat. This slice qualifies any claim that mouth
+routing always lowers material, while still providing no general beneficial
+transfer or acceptance evidence. L40 remains 0.5; no retuning from this prefix.
+
+### Trap arm now has a binding recorded-input case
+
+The original broad sample remains **zero trap divergences in 1,316 turns**.
+An additional recorded-input fixture, Slithery Fight A seed 1 / Yuna-v03 dragon
+360, supplies 423 turns and **two reply divergences**. The first is turn index 166,
+round 243: parent 01 moves north; trap20 moves west, with identical sonar output.
+All preceding replies match. Later differences may include internal-state effects;
+this establishes decision activation, not improved closed-loop performance.
+
+Fixture SHA-256:
+`486b93ae2be32f8f2c57631c53438ea4cc58d56620d28f2b9c724cb2a154ac9b`.
+Added a targeted regression to `verify.py`, preserving the original sample and
+checking exact input hash, reply coverage and first changed decision. Repeated
+recorded-input runs agree, no fallback/missing replies occurred, and restoring
+trap weight 30 still restores byte-identical parent runtime source. The narrow
+activation check, Python compilation and whitespace checks pass; unchanged runtime
+snapshots were not rebuilt or edited. Generated inputs/results stay under `build/`.
+
+**Gate audit and reconciliation:** reviewed L04/L05/L29/L36/L40. Activation removes
+one interpretation ambiguity for the pending trap performance test; it does not
+raise L04's weight. Schooltime adds a map-specific material counterexample, not a
+full-panel verdict. Mean/median, opening/tempo, phase/map, complete-seed coverage,
+and sandbox guards remain unresolved as previously recorded. No gate relaxation,
+shared-ledger edits or historical verdict flips. The pass-6 ranked ten remain current.
+
+Evidence: `build/expedition/audit-010.log`, `phase-schooltime.log`,
+`trap-activation-expanded.json`, and the source/replay-keyed report caches.
+Reproduce the map audit with `report.py` and `phase_report.py --map schooltime`.
+**Next runnable action:** let batch 010 finish without overlap, validate its saved
+rows/replays, finish remaining seed-1 pool slices, then the frozen gen and seeds
+2–3 before moving to symmetry and the remaining predeclared arms. No promotion.
 
 ## Pass 7 — Queen of Spades and newborn observation window (2026-10-01)
 
@@ -563,8 +631,8 @@ It does not silently enable food, enemy, death, or move-feature consumers.
   from 00. Restoring the four parameter-only arms gives byte-identical parent source.
 - Enabled command divergences versus 01: threat 1, revisit 9, trap **0**, exploration
   17, crowding 24, sparsity 96/119/120/119/120, symmetry 164, mouth 7. Trap is wired
-  into live scoring but did not alter a sampled decision: seek a binding trap case
-  before interpreting a null game result. These are activation checks, not wins.
+  into live scoring but did not alter that sample; pass 8 adds a binding trap case
+  from additional recorded inputs. These are activation checks, not wins.
 - Runtime-source ZIPs are 3,919,960–3,921,422 bytes, below 4 MiB. This is a local
   packaging check, not a judge sandbox CPU probe or confirmation of submission acceptance.
 - Required bounded tournament dry run: 01 vs 09, Trauma/Portals/Schooltime,
