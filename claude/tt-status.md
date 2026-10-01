@@ -528,3 +528,16 @@ Every team's steering uses a remembered map more than momentum or decayed densit
 cells it has not seen (exploration). Gates do not use it. For the mimics this means a C++ port of the map memory would
 add ~1–2.6 pp of direction agreement; Ares already keeps such a map (`world.hpp`), so a map-aware prior on Ares is
 also cheap to compute.
+
+## Mimics and priors for the next two teams (user request, 1 Oct)
+
+forgot to mention:
+- `tt-08-ftm-mimic` (local only; `tools/tt/make_mimic.py` on hb1-04's chassis): cull model first (held-out 0.9986),
+  die in place when trapped with no legal split, mask-driven sonar; gate 0.972, child size 0.987, sonar 0.957; scaled
+  direction GBT (650 rows/game, 255 leaves, 1,282 rounds, 3,846 trees, held-out 0.750; compact parity exact on
+  20,000 rows; 15.7 MB at run time).
+- Fidelity (`replay_drive_cpp.py`, 40 held-out games, 428,216 turns; now scoring self-kills): family 0.9935,
+  direction 0.7545, child size 0.986, **self-kill recall 0.904 / precision 0.983** (10,128 recorded), command
+  **0.761**, sonar multiset 0.585, 0 missing replies. (`game_stats/runs/tt264-fidelity-mimic.json`)
+- `tt-09-prior-ftm` (uploadable, 3.74 MiB): hb1-14 with forgot to mention's direction model (540 rounds) as the prior.
+- Scorecards vs Ares V06 (z1 seed 1) running for both.
