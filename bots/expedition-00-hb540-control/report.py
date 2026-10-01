@@ -172,12 +172,12 @@ def map_diagnostics(wanted, child, parent, child_features, parent_features):
         'seeds and structural/transposed maps, with all original pooled and map guards retained.')
 
 
-def build_report(candidate):
+def build_report(candidate, panels=('z1', 'gen')):
     aid = analysis_id()
     report = dict(candidate=candidate, parent=c.panel.PARENT, analysis_sha256=aid, report_sha256=c.sha(Path(__file__)),
                   promotion='NOT AUTHORIZED', panels={}, measurement_discrepancies=[])
     all_rows = {}
-    for pn in ('z1', 'gen'):
+    for pn in panels:
         rows, feats = {}, {}
         for bot in (c.panel.PARENT, candidate):
             dest = c.run_dir(bot, pn)
@@ -196,7 +196,7 @@ def build_report(candidate):
                         dict(bot=bot, panel=pn, fixture=key, differences=differences))
         parent, child = rows[c.panel.PARENT], rows[candidate]
         paired = sorted(parent.keys() & child.keys())
-        wanted = c.panel.expected(pn, [1, 2, 3])
+        wanted = c.expected(pn, c.panel_seeds(pn))
         complete = set(parent) == set(child) == wanted
         report['panels'][pn] = dict(parent_games=len(parent), candidate_games=len(child),
             paired=len(paired), required_pairs=len(wanted), complete=complete,
@@ -209,13 +209,15 @@ def build_report(candidate):
                 field: sum(feats[candidate][k][field] - feats[c.panel.PARENT][k][field]
                            for k in paired) / len(paired)
                 for field in ('won', 'pearls@25', 'pearls@50', 'pearls@100', 'units@100', 'total@100')}
-            if pn == 'z1':
+            if pn in ('z1', c.CHALLENGE_PANEL):
                 report['panels'][pn]['measurement_sensitivity_by_map'] = measurement_sensitivity(
                     paired, child, parent, feats[candidate], feats[c.panel.PARENT])
         all_rows[pn] = rows
     complete = all(p['complete'] for p in report['panels'].values())
-    report['status'] = 'COMPLETE COVERAGE; GATE AUDIT STILL REQUIRED' if complete else 'INCOMPLETE; NO GATE VERDICT'
-    if complete:
+    original_panels = set(panels) == {'z1', 'gen'}
+    report['status'] = ('COMPLETE COVERAGE; GATE AUDIT STILL REQUIRED' if original_panels else
+                       'COMPLETE SELECTED COVERAGE; NO STRENGTH VERDICT') if complete else 'INCOMPLETE; NO GATE VERDICT'
+    if complete and original_panels:
         stats = {pn: c.panel.gate.panel_stats(rows[candidate], rows[c.panel.PARENT], pn)
                  for pn, rows in all_rows.items()}
         verdict, reasons = c.panel.gate.gate(stats)
@@ -230,9 +232,12 @@ def build_report(candidate):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--candidate', choices=c.CANDIDATES, default=c.QUEUE[0])
+    ap.add_argument('--panel', choices=('z1', 'gen', c.CHALLENGE_PANEL), action='append')
     a = ap.parse_args()
-    report = build_report(a.candidate)
-    dest = c.STORE / f'{a.candidate}-report.json'
+    panels = list(dict.fromkeys(a.panel)) if a.panel else ['z1', 'gen']
+    report = build_report(a.candidate, panels)
+    suffix = '-' + '-'.join(panels) if a.panel else ''
+    dest = c.STORE / f'{a.candidate}{suffix}-report.json'
     dest.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps({k: v for k, v in report.items() if k != 'measurement_discrepancies'}, indent=2))
     print(f'{len(report["measurement_discrepancies"])} discrepant game records; full details: {dest}')

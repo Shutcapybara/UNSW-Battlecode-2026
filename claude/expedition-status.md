@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–14
+# Expedition — H-1 hypothesis steward, passes 1–15
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -14,6 +14,103 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 15 — finish the bounded test; challenge the base with stronger opposition
+
+**User clarification:** local iteration is allowed when it helps win, but the
+current strategy is behind the curve. Do not confuse repairing an inherited
+regression, outperforming old opponents, or improving an opening statistic with
+catching the competitive frontier. Keep local hypotheses accountable to broader
+alternatives and unfamiliar opposition. This supplements pass 14's research reset.
+
+Batch 015 completed **92 games in 1,168.2 seconds**, respecting the 20-minute
+admission bound. `audit-016.json` validates **74 matched pairs** (66 pool, 8 gen)
+from 391 indexed records, with **388** arena/replay discrepancies preserved.
+Source/replay hashes, attribution and canonical bookkeeping pass. Batch 016
+resumes the remaining fixed screen, one CPU worker; no overlapping game batch.
+
+Completed seed-1 map slices, 01 parent / 10 candidate wins:
+
+| Map | Pairs | Parent | Candidate | Opening tempo delta |
+|---|---:|---:|---:|---:|
+| Queen of Spades | 16 | 16 | 16 | 0.000 |
+| Portals | 16 | 10 | 12 | +0.112 |
+| Devil | 16 | 15 | 15 | 0.000 |
+| Portal Quartet | 8 | 8 | 7 | +0.647 |
+
+All four opening audits validate their sources/replays and bookkeeping. Positive
+tempo delta is slower. The first-seed aggregate is **49 / 50 wins**, a single
+net win, with costs and benefits on different maps. QoS seed 2 also has 16/16
+wins and exactly equal measured opening trajectories. The remaining confirmation
+slices must finish; no advancement verdict from this prefix. The numerical
+checks stay those fixed before games, including Quartet's confirmation tempo.
+
+### Fresh opposition experiment, declared before execution
+
+Prepared `frontier-contract.md` and screen **explore-frontier-v1**. It tests the
+already-frozen **expedition-05-explore3** against 01, on every one of the ten
+LIVE maps, both seats, seeds 1 and 2, against **hb1-17-prior-lam20** and
+**ouroboros-g01-hbmimic-ares-r150**: 80 fixtures/arm, 160 new games before reuse.
+This answers an outstanding prior-base question while challenging reliance on
+the older roster. It is an additional bounded screen, not a mouth sequel,
+parameter sweep, replacement of full pool/gen evidence or contest promotion.
+
+Clair's exploration finding motivates the mechanism; TT motivates the stronger
+prior reference; S1's candidate list and graft results motivate the second style.
+Source inspection confirms HB17's lambda 2.0 and g01's r150 switch. Their README
+and registry prose partly describe ancestors, so frozen runtime fingerprints are
+authoritative. No training or GPU is required. We have not changed either control.
+
+The advancement rule requires positive seed-2 expected-score gain, neither
+opponent harmed, no map losing more than one expected-score point, and no slower
+overall opening tempo. Equality is not improvement. Full map/opponent/seat and
+seed breakdowns, middle/final material and termination accompany the opening
+curve. Both controls still share local HB/Ares ancestry; a pass will require
+more diverse authenticated opposition and unfamiliar topology, not an assertion
+that these controls represent today's contest leaders. The S1 recommendation of
+three or more seeds remains appropriate for broader validation; our two seeds
+are explicitly screening only.
+
+Campaign tooling stores the challenge under its own `frontier-v1` panel and
+freezes its source/map/opponent/reference hashes separately. All **six existing
+parent/09/10 source contracts still compare exactly equal** after this addition.
+The report supports explicitly selected panels and cannot call a complete
+challenge a full D-032 pass. `screen_report.py` refuses incomplete coverage,
+refreshes stale replay-backed opening audits and applies the declared screen
+checks; its output is only eligibility for broader testing or a negative screen.
+**25 no-game tests pass**, including old-panel invariance, roster coverage,
+parent/candidate pairing, panel isolation and prevention of an original-gate
+verdict on selected coverage. A planning-only challenge run starts no games.
+
+### Parallel-work check and reconciliation
+
+Refreshed origin refs without merging. TT `1673a7ce3`, HB `bfd67c37b`, Obscur
+`a9e6fa647`, Clair `0c55d4b4f` are unchanged since pass 14; no new remote branch
+result supersedes that reconciliation. Newly reviewed local S1 candidate/ratings
+work remains untouched. Its 20,243-game candidate list explicitly warns that
+within-band ratings overlap, map rankings correlate only moderately, and most
+opponents represent second-tier styles. The local Elo script now includes
+Expedition rows but has no field calibration; do not use its single pooled
+rating as the research objective or infer causality from a partial campaign.
+
+Ranked next work (priority, not a new posterior-weight claim):
+1. L36/L20: 05 versus stronger/different opening opposition, with actual wins.
+2. L36: resource-aware child placement and the parent's forgone food opportunity.
+3. L03: turn middle-game material into pressure/eliminations, not just population.
+4. L39: state-triggered concentration and delivery for round-limit conversion.
+5. L37: Dilemma and transpose failure across otherwise useful mechanisms.
+6. L38: frozen symmetry information gain versus allied collision cost.
+7. L14/L20: finish frozen explore/trap replication on the identity-free base.
+8. L27: compare opening architectures/stronger priors, without GPU training.
+9. L29/L37: independent opponent/reference checks and a versioned midgame curve.
+10. L02/L40: finish cap scans and existing mouth evidence without automatic tuning.
+
+No new numeric ledger proposal this pass. The L20 reopening and downward L40
+review remain proposals; original failed gates remain failed. Full mean/median,
+map/phase, canonical-versus-arena and sandbox questions remain visible. Next:
+finish 10's fixed confirmation, run the full current-candidate report and screen
+report, then start the predeclared frontier challenge only after the game lock
+is free. Publish only scoped changes through the attached publication worktree.
 
 ## Pass 14 — bounded behavior test and wider research reset (2026-10-01)
 

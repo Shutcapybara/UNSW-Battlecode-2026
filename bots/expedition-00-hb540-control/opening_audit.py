@@ -30,11 +30,11 @@ def paired_measure(parent, child):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--map', required=True)
-    ap.add_argument('--panel', choices=('z1', 'gen'), default='z1')
+    ap.add_argument('--panel', choices=('z1', 'gen', c.CHALLENGE_PANEL), default='z1')
     ap.add_argument('--seed', type=int, choices=(1, 2, 3), default=1)
     ap.add_argument('--candidate', choices=c.CANDIDATES, default=c.QUEUE[0])
     args = ap.parse_args()
-    wanted = {k for k in c.panel.expected(args.panel, [args.seed]) if k[0] == args.map}
+    wanted = {k for k in c.expected(args.panel, [args.seed]) if k[0] == args.map}
     if not wanted:
         raise ValueError('Map not in frozen panel')
     rows, data = {}, {}

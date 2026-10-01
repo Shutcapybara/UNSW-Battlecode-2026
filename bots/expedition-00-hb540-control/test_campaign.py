@@ -88,6 +88,41 @@ class CampaignTests(unittest.TestCase):
 
 
 class FocusedScreenTests(unittest.TestCase):
+    def test_frontier_is_distinct_and_complete(self):
+        fixtures = list(c.fixture_order('explore-frontier-v1'))
+        self.assertEqual(len(fixtures), 80)
+        self.assertEqual(len(set(fixtures)), 80)
+        self.assertEqual({pn for pn, _ in fixtures}, {c.CHALLENGE_PANEL})
+        self.assertEqual({k[0] for _, k in fixtures}, set(c.panel.runner.LIVE))
+        self.assertEqual({k[3] for _, k in fixtures}, set(c.CHALLENGE_OPPONENTS))
+        self.assertEqual(c.expected(c.CHALLENGE_PANEL, [3]), set())
+        with self.assertRaises(ValueError):
+            c.expected('typo', [1])
+        for pn in ('z1', 'gen'):
+            self.assertEqual(c.expected(pn, [1, 2, 3]), c.panel.expected(pn, [1, 2, 3]))
+
+    def test_frontier_does_not_reuse_old_panel_rows(self):
+        def rows(bot, pn):
+            self.assertEqual(pn, c.CHALLENGE_PANEL)
+            return {}
+        with patch.object(c, 'read_rows', side_effect=rows):
+            jobs = list(c.jobs('expedition-05-explore3', 'explore-frontier-v1'))
+        self.assertEqual(len(jobs), 160)
+        for parent, child in zip(jobs[::2], jobs[1::2]):
+            self.assertEqual(parent[0], c.panel.PARENT)
+            self.assertEqual(child[0], 'expedition-05-explore3')
+            self.assertEqual(parent[1:], child[1:])
+
+    def test_selected_panel_cannot_emit_original_gate(self):
+        import report
+        with patch.object(c, 'read_rows', return_value={}), \
+                patch.object(c, 'expected', return_value=set()), \
+                patch.object(c, 'run_dir', return_value=Path('/not-an-expedition-run')), \
+                patch.object(c.panel.gate, 'gate') as gate:
+            result = report.build_report('expedition-05-explore3', [c.CHALLENGE_PANEL])
+        gate.assert_not_called()
+        self.assertEqual(result['status'], 'COMPLETE SELECTED COVERAGE; NO STRENGTH VERDICT')
+
     def test_exact_focused_coverage(self):
         fixtures = list(c.fixture_order('mouth-contest-v1'))
         self.assertEqual(len(fixtures), 112)

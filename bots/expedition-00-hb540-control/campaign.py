@@ -35,6 +35,28 @@ SCREENS = {'mouth-contest-v1': dict(candidate=FOCUSED_CANDIDATE, seeds=[1, 2],
     maps=[('z1', 'queen_of_spades'), ('z1', 'portals'), ('z1', 'devil'),
           ('gen', 'new/mc26_portal_quartet')])}
 CANDIDATES = QUEUE + [FOCUSED_CANDIDATE]
+CHALLENGE_PANEL = 'frontier-v1'
+CHALLENGE_OPPONENTS = ('hb1-17-prior-lam20', 'ouroboros-g01-hbmimic-ares-r150')
+SCREENS['explore-frontier-v1'] = dict(candidate='expedition-05-explore3', seeds=[1, 2],
+    maps=[(CHALLENGE_PANEL, m) for m in sorted(panel.runner.LIVE)],
+    declaration='bots/expedition-00-hb540-control/frontier-contract.md')
+
+
+def panel_seeds(pn):
+    return [1, 2] if pn == CHALLENGE_PANEL else [1, 2, 3]
+
+
+def expected(pn, seeds):
+    if pn in ('z1', 'gen'):
+        return panel.expected(pn, seeds)
+    if pn != CHALLENGE_PANEL:
+        raise ValueError(f'Unknown panel: {pn}')
+    return {(m, side, seed, opp) for m in panel.runner.LIVE for side in 'AB'
+            for seed in seeds if seed in panel_seeds(pn) for opp in CHALLENGE_OPPONENTS}
+
+
+def screen_panels(screen):
+    return sorted({pn for pn, _ in SCREENS[screen]['maps']}) if screen else ['z1', 'gen']
 
 
 def sha(path):
@@ -50,11 +72,11 @@ def run_dir(bot, pn):
 
 
 def contract(bot, pn):
-    fixture_keys = sorted(panel.expected(pn, [1, 2, 3]))
+    fixture_keys = sorted(expected(pn, panel_seeds(pn)))
     opps = sorted({k[3] for k in fixture_keys})
     maps = sorted({k[0] for k in fixture_keys})
     refs = ['field_references.json', 'field_distributions.json', 'map_reference_medians.json', 'tempo_reference.json']
-    return dict(bot=bot, fingerprint=source_id(bot), panel=pn, seeds=[1, 2, 3],
+    return dict(bot=bot, fingerprint=source_id(bot), panel=pn, seeds=panel_seeds(pn),
                 opponents={o: source_id(o) for o in opps}, maps={m: sha(ROOT / 'maps' / f'{m}.map') for m in maps},
                 references={r: sha(ROOT / 'docs/analysis/benchmarks' / r) for r in refs},
                 arena_sha256=sha(ROOT / 'tools/rb/arena_lune.py'), unswbc_version=version('unswbc'),
@@ -76,7 +98,7 @@ def freeze(bot, pn):
 
 def validate_row(row, bot, pn, dest, replay=None):
     key = (row['map'], row['side'], row['seed'], row['opp'])
-    if (key not in panel.expected(pn, [1, 2, 3]) or row.get('errors')
+    if (key not in expected(pn, panel_seeds(pn)) or row.get('errors')
             or Path(row['cand']).name != bot or row['result'] not in ('win', 'loss', 'draw')):
         raise ValueError(f'Invalid fixture: {key}')
     expected_replay = f'replays/{fixture_tag(bot, key)}.replay'
@@ -194,13 +216,13 @@ def fixture_order(screen=None):
         spec = SCREENS[screen]
         for seed in spec['seeds']:
             for pn, map_name in spec['maps']:
-                for key in sorted(panel.expected(pn, [seed])):
+                for key in sorted(expected(pn, [seed])):
                     if key[0] == map_name:
                         yield pn, key
     else:
         for seed in (1, 2, 3):
             for pn in ('z1', 'gen'):
-                for key in sorted(panel.expected(pn, [seed])):
+                for key in sorted(expected(pn, [seed])):
                     yield pn, key
 
 
@@ -209,7 +231,7 @@ def freeze_screen(candidate, screen):
         return
     if SCREENS[screen]['candidate'] != candidate:
         raise ValueError('Screen belongs to a different candidate')
-    contract_path = ROOT / 'bots' / candidate / 'README.md'
+    contract_path = ROOT / SCREENS[screen].get('declaration', f'bots/{candidate}/README.md')
     data = dict(spec=SCREENS[screen], candidate_fingerprint=source_id(candidate),
                 declaration_sha256=sha(contract_path), fixtures=list(fixture_order(screen)))
     # Normalize tuple/list representation before comparing the durable contract.
@@ -226,7 +248,7 @@ def jobs(candidate, screen=None):
     # Seed 1 gets both complete panels before seeds 2 and 3. Every new
     # candidate fixture is immediately paired with the shared parent fixture.
     rows = {pn: [(bot, read_rows(bot, pn)) for bot in (panel.PARENT, candidate)]
-            for pn in ('z1', 'gen')}
+            for pn in screen_panels(screen)}
     for pn, key in fixture_order(screen):
         for bot, done in rows[pn]:
             if key not in done:
@@ -272,7 +294,7 @@ def main():
         lock.flush()
         freeze_screen(candidate, a.screen)
         for bot in (panel.PARENT, candidate):
-            for pn in ('z1','gen'):
+            for pn in screen_panels(a.screen):
                 freeze(bot, pn)
                 recover(bot, pn)
         started = time.monotonic(); estimate = 30.0; completed = 0
