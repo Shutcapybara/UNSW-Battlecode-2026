@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–17
+# Expedition — H-1 hypothesis steward, passes 1–18
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -6,7 +6,7 @@
 findings whose addenda supersede their headlines. Resume from the latest pushed
 Expedition commit and the saved fixture index.
 
-**Current state: autonomous CPU campaign active; no gate verdict yet.** The first
+**Current state: autonomous CPU campaign active; no full D-032 accept.** The first
 pass created and verified the 14 snapshots, reconciled the ledger, and pushed
 `d8bbf8628` to `origin/r/expedition`. The user then approved the push and explicitly
 requested long-horizon iteration without routine intervention. Their MacBook
@@ -27,6 +27,141 @@ untracked too. All six original source contracts and the fixed mouth-screen
 contract still match exactly. The heartbeat now targets this isolated path and
 pushes scoped commits from detached HEAD to origin/r/expedition. This supersedes
 pass 14's instruction to run games from the shared project directory.
+
+## Pass 18 — food/production tradeoffs and a stronger check on control quality
+
+**2026-10-01, isolated checkout from `691416a1f`.** Read the frozen production
+contract and respected batch 021's existing lock. It finished **71 games in
+1,171.8 seconds**, stopping with 11's Trauma B seed-3/g01 fixture next. The live
+prefix audit `audit-022-foodhold-live.json` validates **62 records / 31 pairs**,
+with **62** arena/replay discrepancies retained, hashes/attribution/bookkeeping
+passing. It is explicitly a snapshot taken before batch 021 ended, not complete
+batch coverage or a screen verdict. Runtime, fixtures and rules are unchanged.
+
+**Completed-batch audit:** `audit-023-foodhold.json` validates all **71 indexed
+records** (36 parent, 35 candidate), **35 matched pairs**, and **69** retained
+arena/replay discrepancies. No errors, source/replay mismatches, attribution or
+canonical bookkeeping failures. The unmatched parent is the exact Trauma B/g01
+fixture where admission stopped; it is not scored as a candidate loss. Current
+paired points are **20.5 parent / 20 candidate**, five better/five worse/25 ties.
+Slithery is now complete at 2/1; Trauma has three pairs at 1/1; Trophy and all
+confirmation fixtures are still absent from this saved snapshot.
+
+Batch **022-foodhold** then resumed the missing candidate fixture under the
+same exclusive lock: one worker, 20-minute admission bound, cap 96. Log
+`build/expedition/batch-022-foodhold.log`. Do not overlap it. The 71-record audit
+was saved separately from the earlier 62-record live prefix.
+
+### Observed discovery tradeoff, not a decision
+
+At that audited prefix, expected-score points are **19.5 parent / 19 candidate**
+over 31 pairs (five improved, five worsened, 21 tied fixtures). The half point
+is a draw, so these are not raw win totals. Complete map slices have Autarky
+2/2, Default 4/4, Devil 3/2, Dilemma 2/1, Portals 1.5/3, QoS 3/3 and Schooltime
+2/3. Slithery is incomplete at this snapshot; Trauma and Trophy are absent.
+Do not infer missing maps or seed 4 from this prefix.
+
+Saved opening audits for completed map/seed slices validate exact replays and
+show the production tradeoff. On **Devil seed 3**, 11 has 16.820-round slower
+mean tempo; at r100, split count −16.25, deaths −7.75, bed food −21.00, material
+−18.00 and units −8.25 per paired game. Fewer deaths alone is not a gain when
+production and collection also fall. **Dilemma** is +9.725 rounds slower with
+r100 splits −4.00 and bed food −5.00. **Portals**, despite its positive outcome
+prefix, is +.585 rounds slower; r100 splits −6.25, bed food −8.00, losses −17.25
+and material +1.75. This is lower collection with lower losses, not universally
+better foraging. Autarky tempo −1.004; Default +1.589; QoS +.627. Four fixtures
+per completed map remain small and only discovery evidence. Confirmation stays
+seed 4, with no source tuning or extra gate invented from these results.
+
+The other completed openings complicate a simple "growth versus survival"
+account: **Schooltime** has +.910-round slower tempo, r100 units −8.00 and
+splits −10.50, but material +1.00 and longest length +5.75. **Slithery** is
+−1.529 rounds faster with r100 bed food +3.75 and material +1.25, yet its
+first-seed outcome falls from 2 to 1. These are cumulative game consequences,
+not isolated action effects or reliable map-specific strength estimates.
+
+### Newly published cross-lane findings and contradictions
+
+Fetched at approximately 09:59 UTC: **Clair `9f03cfedf`**, **TT `fa53ab708`**,
+Obscur `a8bf0a566`, HB `bfd67c37b`. Read their versioned status and relevant source,
+not just headlines. These findings are lane reports, not Expedition replication.
+S1's suggested next-steps document was also reread from `origin/main` cutoff
+`cb2e920c73aea0d66535232d4f706a73603cff33`.
+
+- **Clair's splitdefer loses:** its −2 split-value penalty near remembered food
+  or a known bed within distance 8 reports economy +.002 and win −.050 on its
+  pool seed-1 screen, versus HB17. Source inspection confirms remembered pearls
+  within the memory TTL or any known spawn time qualify; it does not require
+  that the already-best move eats now. Expedition 11 instead requires a current
+  one-step meal, full represented body, room, and r<150, on identity-free 01.
+  Related hypothesis, different mechanism/base/opposition: finish the already
+  bounded test, but do not dismiss that negative result or claim all split
+  deferral is solved. No automatic radius/penalty/round-boundary sweep follows.
+- **HB17 does not establish broad strength:** Clair's three-seed comparison to
+  HB14 reports pool economy +.112 but generated-map economy −.080
+  [−.114, −.036], generated-map win −.033 and every generated checkpoint
+  negative. It explicitly withdraws its older proposal to put HB17 above HB14.
+  Keep HB17 fixed in our active contract; describe it as a stronger **old-roster**
+  reference, not a universally superior bot or an authenticated top-team proxy.
+  Our earlier warnings about two related controls are now supported by a new
+  external transfer failure. Do not "fix" the active roster mid-test.
+- **Clair's other first forms fail or are null:** nearby portal-dive discounts
+  did not move the collision channel; enemy-recency feeding loses win; stacking
+  trap/exploration improves economy but compounds win and collision costs.
+  Pressure-based conversion and opportunity-value splitting remain hypotheses,
+  not proven corrections. Prefer a different decisive mechanism after closure,
+  rather than stacking these arms or taking a suggested correction as evidence.
+- **TT now reports hb1-24 passes its endgame gate:** +1.989 percentage points
+  [+.142, +3.835] over 704 paired fixtures; Portals +8.75 points, all other map
+  rows zero. Its saved summary shows 160 fixtures each for Portals, Default and
+  Schooltime, 32 each elsewhere. Reweighting those **reported map means equally**
+  yields **+.875 points**, not +1.989. These are different estimands, not an
+  arithmetic error. The source bootstraps individual fixtures and uses named
+  map regimes; it is not Expedition's whole-map uncertainty calculation. The
+  small-map rule followed several selector revisions on these known maps, so
+  the nominal interval does not resolve selection/transfer uncertainty.
+  Preserve it as a reported local endgame gain; require fresh topology/validation
+  before treating it as a general rule. No adoption or registration here.
+
+A stale cross-reference in Clair still calls tt-09/tt-11 map-aware priors;
+current TT names those the forgot-to-mention/Cache-me-outside donor swaps. TT's
+map-memory table is an **offline direction-agreement** result (+.75–2.59 points),
+not evidence that a deployed map-aware prior won more games. Remembered geometry
+remains a promising architectural alternative, distinct from repeatedly rejected
+decayed-density value terms. No GPU training was started. The TT disk-full note
+is not this host's state: this Mac had 157 GiB available; no cleanup was needed.
+
+### Ledger, gate audit and ranked ten
+
+Proposals only: strengthen the L29/L37 control/roster-transfer caveat; qualify
+L36 with Clair's negative broad defer rule and Expedition's still-partial narrow
+meal tradeoff. Keep L20's economy/tempo reopening separate from strength. L39's
+recency proxy remains unproven/negative; pressure and delivery are alternatives
+requiring tests. No numerical posterior update, gate relaxation or bot promotion.
+Mouth and exploration screen verdicts remain as closed in passes 15/17. The
+original full prior-base/symmetry/cap panels and sandbox obligations remain due.
+
+Ranked ten after this fresh comparison:
+1. Finish food-hold-v1 exactly, including seed-4 map/opponent/phase outcomes.
+2. L29/L37: unfamiliar-topology and diverse-opponent validation of promising arms.
+3. L38/L27: finish the frozen symmetry mechanism as an information alternative.
+4. L39: pressure-aware concentration/delivery, rather than enemy recency alone.
+5. L03: test middle-game elimination pressure against material-only growth.
+6. L36: compare parent/child intake opportunity, only after the bounded defer test.
+7. L27/L34: remembered geometry in steering; distinguish imitation from strength.
+8. L37: Dilemma and unseen transpose failures across architectures.
+9. L14/L20/L02: finish original frozen prior-base trap/exploration/cap scans.
+10. L40: preserve limited mouth repair and cost evidence; no automatic dose tuning.
+
+Next runnable action: inspect **batch 022-foodhold**, not the completed
+frontier/mouth screens. After it releases the lock, run
+`report.py --candidate expedition-11-foodhold --panel production-v1`, preserve
+the next audit snapshot, and resume remaining exact fixtures with
+`campaign.py --screen food-hold-v1 --execute --minutes 20 --max-games 96`.
+At 80 pairs, run `screen_report.py --screen food-hold-v1` for both prospectively
+specified rule comparisons and full map/opponent/seat/phase diagnostics. Do not
+change sources or select a successor from the discovery prefix. No code change
+or repeated build test was needed this pass; the previous 30 checks stand.
 
 ## Pass 17 — close the opponent-dependent exploration screen; test production choice
 
