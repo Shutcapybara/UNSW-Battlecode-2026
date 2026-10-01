@@ -1,0 +1,49 @@
+name = "alicia-03-es-curve-pool"
+lineage = "alicia"
+lane = "rl-1"
+author = "claude-opus-5.5/alicia"
+language = "c++"
+lineage_parent = "alicia-01-nodevil"
+hypothesis = "L16/L04: a jointly learned Ares weight vector (ES on the benchmark-curve reward) beats the hand weights"
+mechanism = "stage 1 (curve only, pool, zoo): ES centre after generation 2 of run s1, the best-evaluated checkpoint (paired +0.019/+0.028/+0.021 reward over the parent in gens 1-3 on 20 fixtures each); 24 weights moved by at most 16 percent"
+expected_change = "dragons and length at r100 up about +0.04 field-percentile points; pearls flat"
+priority = 0
+supersedes = ""
+status = "candidate (not registered)"
+fingerprint = "67607e90e2ad8b58be6e9a7531ffc1e27633bf2d89e68606e6af744200266ba2"
+
+[training]
+run = "s1"
+stage = 1
+generation = 2
+checkpoint = "build/alicia/train/s1/ckpt-g02.json"
+
+[params]
+bed_value = 7.23895  # was 8.0
+crowd_weight = 0.554175  # was 0.6
+density_ally_weight = 0.106194  # was 0.10
+density_enemy_weight = 0.365224  # was 0.40
+dive_value = 2.72452  # was 3.0
+enemy_target_discount = 0.667698  # was 0.60
+goal_weight = 1.08751  # was 1.2
+material_unit_value = 2.76423  # was 3.0
+memory_value = 5.29781  # was 6.0
+momentum_weight = 0.686874  # was 0.6
+own_target_discount = 0.150197  # was 0.15
+pearl_value = 10.7392  # was 10.0
+search_cap = 176  # was 160
+search_cap_late = 395  # was 384
+split_value = 8.24129  # was 8.0
+sprint_cost = 0.863566  # was 1.0
+target_gamma = 0.925612  # was 0.93
+target_hysteresis = 1.28345  # was 1.25
+threat_weight = 0.937716  # was 1.0
+trap_weight = 33.0555  # was 30.0
+unseen_value = 5.71532  # was 5.0
+visit_weight = 0.151012  # was 0.15
+w_bed_block = 0.43346  # was 0.5
+w_flank = 3.12931  # was 3.0
+
+[activation_contract]
+kind = "legacy_none"
+note = "params-only change (compiled-in defaults); ALICIA_PARAMS is read only in local games"
