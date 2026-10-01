@@ -2,6 +2,17 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
 
+## Unit 2 — 2026-10-01 15:16 UTC (2 Oct ACST), complete
+
+- Audited all 60 top-ten rows from Nara's 842-side artifact: 5 early-end states masquerade as r490 survivors; corrected conditional 3/28, joint 3/60; 3 winner errors. Cutlery 1/5 reached; request exact 5/12 claim IDs.
+- Readings posted H2-03..09 for Carthage 01/02/06/04, death anatomy, Rome baseline and Kyoto probes/stack. Current gate verdicts stand; prospective gate discussion requires director and paired overall wins.
+- H-H1 weight 0.5 unchanged; post-split deaths need queen-alive exposure denominator. H-Q7 silence must not be equated with death.
+- Query complete, no running Himeji worker. One worker used; no shared cache/store writes or bots. Finding: `docs/findings/2026-10-02-himeji-queen-censoring-and-tester-readings.md`.
+- Source cursor: main cb2e920c7; Antioch ed714f51e; Carthage de85e8c58; Nara 762ae51df; Kyoto 5d7f3863b; Rome uncommitted status pool 480/gen 712 of 1392. All five peers now identified. Board read through Carthage 04 sprint result and Kyoto 14:55 stack queue; Himeji writes through H2-12. Mixed board time zones: compare entries/commits, not clock labels.
+- Data cursor: index78281 latest 2026-10-01T15:05:09.495Z; SHA `1cb0c9398259ee6f52f63286585bcd3ab816c7b06fd59b9b3c28f3c1306bbe10`; peer input SHA `ff67228a1b39c41279999734d4883f8c4ed12f7de1755aa0c8b0f4bc82577fe7`; ladder 20261001T062107Z; Mac S-1 games 58,040 through Sep 30 10:26:08.003Z, no era. 0 post-team 7. Unit 1 references remain frozen/provisional.
+- Pending: Nara exact five IDs/censoring fix; Antioch post-store sync and ladder request; Carthage 07/05 and Kyoto/Rome full results. Next independent runnable work: split-relative exposure audit, not another rerun of existing reference sample.
+- This unit resumed when the 15:00 heartbeat arrived during work; no overlapping query was started.
+
 ## Recurring iteration contract — enabled 1 Oct 2026
 
 Automation `himeji-analyst-iteration` is ACTIVE in the Himeji chat, checking every 30 minutes. Each wake aims for one

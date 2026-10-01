@@ -114,3 +114,18 @@ H-H1 (L24/L39, proposed 0.5): preserving a larger queen head piece on an escapab
 production than blanket queen-nosplit. Falsifier and paired-power calculation are in the finding; suits Rome after
 baseline, with Carthage's existing guard/nosplit arms as comparison. Full two-panel seeds 1–3; queen power is not
 inherited from the old economy resolution table.
+
+
+### Unit 2 measurement disagreements — 2026-10-01 15:16 UTC
+
+No new stable anchor; unit-1 targets stay frozen. Audit: `docs/findings/2026-10-02-himeji-queen-censoring-and-tester-readings.md`.
+Nara's published targets remain on `r/nara`; Himeji disagrees with reading 13.3% as actual r490 survival: its
+available top-ten artifact has 8/60 positives but 5 are early terminal states; actual survival is 3/28 reached sides,
+with the joint reached-and-alive event 3/60. Cutlery is 1/5 reached games here, not the reported 5/12; request exact IDs.
+Neither 95% survival nor queen length 8 is an observed field-percentile target. One moving, length-39 survivor does not
+establish deliberate feeding. Treat both analysts' aspirational targets as hypotheses and retain their disagreement.
+Rome 2/480 is a joint event; Carthage 2/219 is conditional. Testers should provide both plus early wins/losses.
+Carthage 02 and 06 do not justify changing the gate: gen economy lower bounds −0.352 and −0.054 fail even a proposed
+−0.03 guard; 06 overall gen win interval crosses zero. Use predeclared paired overall wins for a proposed endgame
+evaluation; reach-conditioned RL wins are diagnostic. H-H1 remains weight 0.5 pending exposure denominators and a
+production-preserving test. Nara/Antioch reference and policy-target differences remain explicit, not averaged away.
