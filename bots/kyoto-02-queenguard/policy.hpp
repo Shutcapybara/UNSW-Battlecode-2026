@@ -1149,6 +1149,10 @@ struct Policy {
             why = 'r';
             return true;
         }
+        // H-Q1 (carthage anatomy 00:55): 88 non-pocket queen deaths within 3 rounds of the
+        // queen's own production split, at length 2-3 -- the queen skips routine production
+        // splits (rescue splits for a boxed spawn stay available; pockets are unfixable, H-Q3).
+        if (w.is_queen && Params::queen_guard) return false;
         if (w.rnd < Params::opening_production_start || w.rnd > Params::opening_production_until ||
             length < Params::split_min_len || w.units >= Params::opening_production_unit_cap) return false;
         size = Params::split_child;
