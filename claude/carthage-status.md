@@ -34,7 +34,7 @@ nice 10 with `--jobs 14`.
 | 07-queen-yield | swarm yields to the queen: −20 ending adjacent to the queen's head (−6 at 2) for non-queens; the queen pays the same next to any ally head (`queen_yield`) | 00 | ally-caused queen deaths ↓ (97 of 271 on 06 pool), queen alive ↑, econ ≈ | **+0.029 [+0.011, +0.052]** | −0.064 | +0.003 [−0.025]; gen −0.040 [−0.061] | ±2 % | 0 % both panels (ally kills 62 → 65) | reject (queen unchanged; pool opening gain from spawn spacing, reverses on gen) |
 | 08-queen-avoid-guard | 06 + 01 stacked (joint H-Q1 re-test; Kyoto's combined form) | 00 | queen alive ↑ on pool (trap premium covers 06's trapped deaths) | queued after 05 | | | | | |
 | 04-sprint123 | sprint price = max(0, steps − ⌈L/4⌉) in simulator and score (`sprint_rules_123`) | 00 | small: sprints only near threats | −0.001 [−0.003, +0.002] | −0.001 | **+0.040 [+0.016, +0.065]**; gen +0.003 [−0.011] | ±1 % | — | reject (econ lb ≤ 0 only; neutral rules fix; pool win gain does not transfer to twins) |
-| 05-free-sprint | on-route 2/3-step moves while foraging when free (`free_sprint`) | 04 | econ ↑ (travel 2×), deaths ≈ | queued | | | | | |
+| 05-free-sprint | on-route 2/3-step moves while foraging when free (`free_sprint`) | 04 | econ ↑ (travel 2×), deaths ≈ | vs 00: +0.001 [−0.003, +0.004]; vs 04: +0.002 [−0.002] | −0.005 | **vs 00 pool +0.045 [+0.019], gen +0.017 [+0.003]**; vs 04 pool +0.005, gen +0.014 [+0.000] | ally body/h2h +5–6 % | — | reject by letter (econ lb only); win-positive on both panels — candidate if the gate is win-led |
 
 ## Base re-measured under unswbc 1.2.3 (the new zero; 1,224 games, seeds 1–3, both seats; absolute numbers — no
 post-change references published yet)
