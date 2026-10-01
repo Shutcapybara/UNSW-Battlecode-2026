@@ -40,7 +40,7 @@ def frame(con, local_run=None):
             l = con.execute(f"select game, side, map, round, team, {cols} from l_series where round in {CPS} and run = ?",
                             [local_run]).df()
             l = l[l.team.str.contains(local_run, regex=False)]
-            l['map'] = l.map.map(lambda m: LOCALMAP.get(m.lower().replace(' ', '_'), m))
+            l['map'] = l['map'].map(lambda m: LOCALMAP.get(m.lower().replace(' ', '_'), m))
             l['grp'] = 'us(local)'
             out.append(l)
     return pd.concat(out, ignore_index=True)
@@ -64,10 +64,10 @@ def table(a):
         for cp in CPS:
             per = []
             for m in LADDER:
-                f = field[(field.map == m) & (field['round'] == cp)][st].to_numpy(float)
+                f = field[(field['map'] == m) & (field['round'] == cp)][st].to_numpy(float)
                 mu, sd = np.nanmean(f), np.nanstd(f)
                 for g in ('top10', 'us(local)'):
-                    x = d[(d.map == m) & (d['round'] == cp) & (d.grp == g)][st].to_numpy(float)
+                    x = d[(d['map'] == m) & (d['round'] == cp) & (d.grp == g)][st].to_numpy(float)
                     if len(x) < 5:
                         continue
                     per.append(dict(stat=lab, round=cp, map=m, grp=g, n=len(x), n_field=len(f), median=np.nanmedian(x),
@@ -96,7 +96,7 @@ def stability(a):
     rows = []
     for st in ('c_eats_bed', 'c_splits', 'total', 'c_transits'):
         for m in LADDER:
-            x = d[(d.map == m) & (d['round'] == 50)]
+            x = d[(d['map'] == m) & (d['round'] == 50)]
             f = x[st].to_numpy(float)
             t = x[x.grp == 'top10'][st].to_numpy(float)
             if len(f) < 20:

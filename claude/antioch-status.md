@@ -46,6 +46,9 @@ rome) are on the Mac and get no GPU-heavy items (lead, 2 Oct).
 | H-RL1–4 | learned-policy track: engine-in-process env → BC → PPO self-play league → int8 net as prior/value (lead's request) | posted 16:10 UTC; env measured ~10 k decisions/s/core, proposed 0.6 | per row in the finding §4 | — | **Claude lanes only (GPU on the desktop)**; director to staff |
 | H-RL5 | expert iteration with GBTs (search → GBT imitates search → next prior) | posted 17:20 UTC; GBT > MLP on all five HB-1 decisions | iteration 2 not > iteration 1 | CPU-heavy self-play | Claude/desktop lane or scheduled Mac CPU |
 | H-V1 | win potential Φ as the gate's early guard and the RL shaping signal (lead's request) | posted 18:10 UTC; LOMO AUC r50 0.86 elim / 0.63 RL, tempo-form 0.64 | ΔΦ@100 does not rank arms' win Δ better than tempo/econ | offline on existing panels | analyst (me) next; any tester |
+| H-S1 | portal memory: skip pairs whose last own transit died (57 % vs 19 % die3) | posted 19:10 UTC | died3 not −25 %, or econ LB < −0.02 | pool + gen s1–3 | any tester |
+| H-S2 | scout-and-return; queen never transits unscouted pairs (lead's idea) | posted 19:10 UTC; rays cross portals | not < H-S1 alone on died3, or no queen gain | after H-S1, H-Q1 | Claude tester |
+| H-S3 | latent-state swarm directed by the queen (lead's idea; L31/L32/L33 concrete) | posted 19:10 UTC | stacked arm not > best single queen arm | 2–3 arms, after H-Q1 | Claude tester; H-RL5 later |
 | H-Q4 | hunt the enemy queen once the field keeps queens | watch, 0.3 | field RL queen survival < 10 % for a week | corpus watch | — |
 
 ## Store maintenance (replay lead)
