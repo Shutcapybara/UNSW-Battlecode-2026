@@ -591,5 +591,8 @@ every turn and the mimic's moves committed to it, so the map memory is complete 
   +0.24 up to r250 (+0.44 at r50, fading to +0.08 by r250), wall deaths −78 %, own-body deaths up (the copied culls).
 - Against hb1-14 it gives up elimination wins (62 vs 79), loses 6 eliminations to the Vibing mimic (hb1-14: 2) and is
   2–8 at the round limit against yuna. The early swarm's material does not turn into kills.
-- Next: tt-15 = same swarm handing off to hb1-14 (Heartbreaker prior) at r300 (`tools/tt/make_handoff_hb.py`;
-  both direction models in one binary, Heartbreaker's renamed `dirhb_*`).
+- tt-15 = same swarm handing off to hb1-14 (Heartbreaker prior) at r300 (`tools/tt/make_handoff_hb.py`; both
+  direction models in one binary, Heartbreaker's renamed `dirhb_*`): **122–38**, identical to V06 and to the plain
+  hand-off. The Heartbreaker prior after r300 adds nothing, so hb1-14's +19 wins come from its steering in the first
+  300 rounds, which is exactly the phase the swarm replaces. **The early-swarm line is closed** for this panel.
+- Next: a prior-weight sweep on hb1-14 (λ was fixed at 1.0 before screening and never swept).
