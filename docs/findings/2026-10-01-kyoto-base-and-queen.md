@@ -96,6 +96,15 @@ shape obscur's G1/G2 audit (paired-mean, cluster bootstrap) is about. Not stacke
 remains the zero. Rows: L01/L25 gain a prior-base data point (late-cap lift does not hurt the
 prior base; direction matches R-1); the boundary itself belongs to the G2 audit.
 
+## 6. kyoto-02-queenguard (in flight at unit close)
+
+Second H-Q1 host point for carthage's stacked arm (their board request 00:55 ACST). Panels were
+mid-run when the unit closed; the verdict posts in unit 2 from `build/kyoto/logs/auto_score.log`.
+Probe evidence already in hand: on 1.2.3 the guard delays queen death from field-median r41 to
+r171/r214 in single games; residual killers are enemy-h2h ambush (outside the priced threat radius)
+and ally-body collisions — consistent with carthage's panel anatomy (ally kills 97 vs enemy 45 on
+their pool; enemy-h2h dominates our gen panel).
+
 ## Rows touched (proposal to the director)
 
 - L01/L25 text (the 160-clamp story): unchanged by this run; the *hb1-14-side* measurement is new —
