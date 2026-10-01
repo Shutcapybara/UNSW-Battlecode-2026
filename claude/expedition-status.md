@@ -1,4 +1,4 @@
-# Expedition — H-1 hypothesis steward, passes 1–9
+# Expedition — H-1 hypothesis steward, passes 1–10
 
 **2026-10-01, MacBook; branch `r/expedition`.** Initial evidence cutoff:
 `757315abc`; Expedition was created in pass 1. The ledger baseline is
@@ -14,6 +14,114 @@ instruction and continuation approval govern the execution adaptation: bounded,
 serial CPU-only local games, no GPU training. No contest registration, upload,
 activation or promotion; shared ledger/gate edits remain proposals. Preserve
 unrelated working-tree changes (including files that appear while this work runs).
+
+## Pass 10 — first complete seed-1 pool and cohort-correct weights (2026-10-01)
+
+Resumed from `c164ddf31`. No newer committed lane findings; the audited provisional
+S1 next-steps and tempo-tool hashes are unchanged. Batch 011 completed **59 games
+in 1,170.4 seconds**, ending before Trophy B / Hunter. It left **310 games / 155 matched pairs**. The concurrent audit validated 312
+records with those same 155 pairs: its later child-index read included two newly
+finished Trophy children after its parent-index read. This is a staggered report
+snapshot, not missing or orphaned parent games. Source/replay, errors, attribution
+and canonical bookkeeping checks passed, with **308** explicitly retained
+arena/replay measurement discrepancies. All unrelated edits and measured runtime
+sources remain untouched. The free lock permitted batch 012 to resume with one CPU worker,
+20-minute admission budget and maximum 96 games.
+
+Batch 012's first ten games finished Trophy and the seed-1 pool. The new
+`pool_screen.py` independently validates all **320 games / 160 exact pairs** in
+that pool, requires complete fixed coverage before describing a pool result, and
+keeps generalization games outside this screen. Batch 012 is now running the
+predeclared gen fixtures. Seeds 2–3, full gen coverage and sandbox guards remain
+outstanding; this is not complete D-032 evidence.
+
+### Complete seed-1 pool screen
+
+Ten frozen maps × eight opponents × both seats. Parent 01 wins **137/160**, mouth
+09 **133/160** (no draws): 12 paired improvements and 16 regressions, with 132 ties.
+Equal-map win delta is −0.025. Economy deltas use all 160 normalized rows per side:
+
+| Measurement | Mean economy delta | Mean of checkpoint-median differences |
+|---|---:|---:|
+| Arena | −.056038 | −.062544 |
+| Canonical replay | −.055938 | −.057967 |
+
+Thus the three earlier map-level median sign reversals do **not** reverse the
+pooled economy sign. Pooled medians are computed from pooled normalized rows;
+they are not averages of the ten map medians. These are descriptive point
+estimates from one seed, without an acceptance claim or independent-seed interval.
+
+### Q2 weighting correction and actual same-fixture sensitivity
+
+Re-read the original Q2 slope table and its Q2c addendum. The published
+(.16/.49)² = .107 Portals/Schooltime illustration mixed the **top-50-pairs** Portals
+slope with the **in-scope** Schooltime slope. Within-cohort ratios are:
+
+- Old in-scope: (.29/.49)² = **.350**.
+- Old top-50 pairs: (.16/.47)² = **.116**.
+- Clean sample excluding SSS/STAR/Cutlery: (.42/.64)² = **.431**.
+
+The old “about one-ninth” number remains close to the coherent top-50 comparison,
+but must not be described as the same-cohort predecessor of the clean estimate.
+`pool_screen.py` records all rounded source slopes and the source SHA-256
+`7eccf8b55040e6de6bc6af54bfee2eb4aefaa010042e0a8fea551e436c2f9ad3`,
+refuses a changed Q2 source, and normalizes squared slopes separately per cohort.
+On the identical 160 paired fixtures:
+
+| Map-weight policy | Arena mean economy | Replay mean economy | Win-point delta |
+|---|---:|---:|---:|
+| Equal | −.056038 | −.055938 | −.025000 |
+| Old in-scope slope² | −.051549 | −.051194 | −.039467 |
+| Old top-50-pair slope² | −.064676 | −.064616 | −.070570 |
+| Clean-sample slope² | −.050276 | −.049902 | −.035129 |
+
+**No point-sign reversal under any tested weighting.** These are counterfactual
+weights from a win-predictability study, not validated economy reliability weights.
+Do not adopt any weights or change a guard from this screen. The source correction
+also applies to the earlier status comparison, now clarified below.
+
+### Newly completed map slices
+
+All three have 16 seed-1 pairs. Slithery Fight remains **12→12 wins**, with three
+paired improvements offset by three regressions; replay mean economy +.002977.
+Through r150 its transit count is **233→235**, deaths within three rounds of
+transit **40/233 (17.17%)→53/235 (22.55%)**, ally head-on rate **.330→.398 per 1k
+dragon turns**, own-goal rate **25.656→27.318**, and newborn snapshot ratio
+**2,236/4,467 (50.06%)→2,398/4,610 (52.02%)**. Mean total length is
+**168.125→165.125**, tempo **+0.116 rounds slower**. Mouth routing does not uniformly
+reduce transit exposure or improve the intended safety metrics.
+
+Trophy remains **13→13 wins**, one improvement and one regression; replay mean
+economy −.077416. Through r150, transits **163→146**, transit-associated deaths
+**49/163 (30.06%)→31/146 (21.23%)**, ally head-on rate **.576→.228 per 1k turns**,
+own-goal rate **2.078→1.276**, newborn snapshot ratio **118/1,126 (10.48%)→110/1,072
+(10.26%)**. Mean total length **95.0625→89.4375**, tempo **+4.686 rounds slower**.
+Collision reductions coexist with opening/material costs.
+
+Trauma wins **12→11** (one improvement, two regressions), despite replay mean
+economy **+.058207**, mean total length r150 **26.9375→35.5**, and tempo **−1.447
+rounds (faster)**. Through r150, transits **145→136**, no transit-associated deaths
+or ally head-on deaths on either side, own goals **35/14,579→57/15,424 dragon turns**
+(**2.401→3.696 per 1k**), and newborn snapshot deaths/splits **6/188 (3.19%)→22/271
+(8.12%)**. Better opening production does not by itself establish better survival
+or match outcomes. Newborn and transit association caveats remain those in passes 7–8.
+
+**Verification and evidence:** Python compilation and whitespace checks pass;
+checked weight normalization, within-cohort Portals/Schooltime ratios and invalid
+weight-vector rejection. All ten maps have 16 pairs. Equal-weight map means match
+independently pooled means within 1e−12. Saved evidence: `build/expedition/audit-012.json`,
+`pool-seed1-screen.log`, the source-keyed `*-seed1-pool-screen.json`, and
+`phase-{slithery_fight,trauma,trophy}.log`. Reproduce with `report.py`,
+`pool_screen.py`, and the three corresponding `phase_report.py --map` invocations.
+
+**Ledger/gate reconciliation:** L29/L37/L40 gain complete-seed descriptive evidence
+and the cohort correction; no weights change. Keep the pass-6 ranked ten. The L37
+current-screen counterfactual is now computed; historical verdict re-scores,
+multi-seed clusters and the full-panel estimand/guard audit remain outstanding.
+No historical accept flips, no gate relaxation, no shared ledger/gate edits, and no
+registration, upload or promotion. **Next runnable action:** finish the active gen
+batch, validate saved evidence, continue the frozen gen panel and seeds 2–3, then
+symmetry and the remaining predeclared arms.
 
 ## Pass 9 — paired mean/median economy sensitivity (2026-10-01)
 
@@ -808,9 +916,11 @@ Reproduce: `tools/s1/splitstall.py report`; Expedition's checked audit summary i
    statistical tests. Preserve both records. Compare exact fingerprints on one
    frozen panel and print mean and median estimands, not a merged “HB passed.”
 3. **Portals noise / reproducible specialism.** Q2c's cleaned slope gives relative
-   squared weight (.42/.64)² = **.431**, versus the old (.16/.49)² = **.107**.
-   Re-score identical fixture data under equal, old-Q2, and clean-Q2 weights before
-   adopting any. Keep a portal-signature guard so global rating fit cannot erase
+   squared weight (.42/.64)² = **.431**. The published old (.16/.49)² =
+   **.107** mixed cohorts: coherent old ratios are **.350** in-scope or **.116**
+   top-50 pairs. Pass 10 re-scores the complete seed-1 Expedition pool under equal
+   and all three coherent slope² policies: no economy point-sign flip. Historical
+   verdict re-scoring remains outstanding; adopt none from this screen. Keep a portal-signature guard so global rating fit cannot erase
    specialist losses.
 4. **Endgame conversions fail / top teams all convert.** TT05 breaks even overall
    while changing win modes; “57%” in the older HB12 result is the fraction of
