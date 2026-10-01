@@ -8,8 +8,8 @@ nice 10 with `--jobs 14`.
 
 - **2026-10-01 22:00** lane opened. The Phase-2 contract docs named in the tester brief (`docs/hub/PHASE2-PROTOCOL.md`,
   `BOARD.md`, `TARGETS.md`, `docs/PHASE1-SUMMARY.md`, `docs/TAXONOMY.md`) are on no branch yet (checked origin/*
-  at 22:00); working from the brief, D-032 as coded in `tools/verso/lane.py`, and the ledger. Board lines are held in
-  §Board drafts below until `BOARD.md` exists.
+  at 22:00); working from the brief, D-032 as coded in `tools/verso/lane.py`, and the ledger. Board lines were held in
+  §Board drafts until `BOARD.md` appeared (Antioch, `r/antioch`, 22:36); now posted on this branch's copy.
 - The shared `.venv` was on `unswbc 1.2.2`; upgraded to 1.2.3 (no other lane was running games at the time).
 - **Rules change in 1.2.3** (diffed the wheel; confirmed on game.battlecode.au/docs): (1) a game that reaches r500 is
   ranked by **queen length**, then longest dragon, then total length; the queen is the team's starting dragon with
@@ -27,7 +27,7 @@ nice 10 with `--jobs 14`.
 | Version | Mechanism (switch) | Parent | Expected sign | Pool Δecon~ [lo, hi] | Gen Δecon~ lo | Win Δ [lo] | Tier-2 worst | Queen alive@490 | Verdict |
 |---|---|---|---|---|---|---|---|---|---|
 | 00-base | hb1-14, D-033 terms off | hb1-14 | — | abs: pool econ~ 1.139, win 0.826; gen econ~ 1.111, win 0.689 | — | — | wall 6.89 self 4.62 /1k (pool) | pool 0.9 %, gen 0.6 % | base (the 1.2.3 zero) |
-| 01-queen-guard | queen prices its own death +24 material (`queen_guard`) | 00 | queen alive@490 ↑, win ↑ (r500 games), econ ≈ 0/− | queued | | | | | |
+| 01-queen-guard | queen prices its own death +24 material (`queen_guard`) | 00 | queen alive@490 ↑, win ↑ (r500 games), econ ≈ 0/− | +0.008 [−0.008, +0.027] | −0.046 | −0.020 [−0.046] | ±3 % | pool 3.6 %, gen 8.6 % (excl. pocket) | reject |
 | 02-queen-nosplit | queen never takes a production split (`queen_nosplit`) | 00 | queen length ↑, queen alive ↑, econ − (fewer births) | queued | | | | | |
 | 03-queen-guard-nosplit | 01 + 02 stacked | 00 | both | queued | | | | | |
 | 04-sprint123 | sprint price = max(0, steps − ⌈L/4⌉) in simulator and score (`sprint_rules_123`) | 00 | small: sprints only near threats | queued | | | | | |
