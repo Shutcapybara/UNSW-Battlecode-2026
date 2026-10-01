@@ -4,9 +4,13 @@
 
 - The §0 decision memo is done and pushed: `docs/findings/2026-09-30-alicia-rl-design.md`.
 - The infrastructure is built.
-- Stage 1 run `s1` stopped after 7 generations (below).
-- `alicia-03-es-curve-pool` is on the D-032 panels.
-- Conservative restart `s1b` is running (σ 0.1, SGD).
+**State (1 Oct):**
+
+- `alicia-03-es-curve-pool`: **REJECT** (pool econ −0.097; it learned less churn).
+- Run `s1c` (gate-shaped reward) is complete: the centre's economy is +0.016 ± 0.007 per generation over 15 paired
+  generations.
+- `alicia-04-es-gate-pool` is on the D-032 panels.
+- Finding: `docs/findings/2026-10-01-alicia-stage1.md`. `s1b` was stopped in generation 1 (same reward as `s1`).
 
 ## Versions
 
@@ -15,7 +19,8 @@
 | `alicia-01-nodevil` | `lune-r1-07-latecap8x-only` | D-033 base: the three 32×16 terms off (`shape_terms = false`) | — (lane base) |
 | `alicia-02-tunable` | `alicia-01-nodevil` | runtime override of 89 `Params` fields from `ALICIA_PARAMS` (local only; the sandbox passes no environment) | golden parity vs 01: 0 divergent / 30,558 turns (3 fixtures, seed 11); a perturbed override diverges at turn 18 |
 
-| `alicia-03-es-curve-pool` | `alicia-01-nodevil` (built from 02) | stage 1: the ES centre after `s1` generation 2 baked in as defaults (24 weights, all within ±16 %) | parity with the learned part off: 0 divergent / 30,558 turns; D-032 panels running |
+| `alicia-03-es-curve-pool` | `alicia-01-nodevil` (built from 02) | stage 1: the ES centre after `s1` generation 2 baked in as defaults (24 weights, all within ±16 %) | parity with the learned part off: 0 divergent / 30,558 turns; D-032 **REJECT**: pool econ~ −0.097 [−0.131, −0.060], units/length flat, win flat; all tier-2 down; gen (interrupted 572/744) econ −0.030, length +0.036 |
+| `alicia-04-es-gate-pool` | `alicia-01-nodevil` (built from 02) | stage 1: `s1c` centre after gen 14 (gate-shaped reward: economy objective, material and death-rate guards) | parity OK; D-032 panels running |
 
 ## Stage 1, run `s1` (σ 0.2, Adam lr 0.05, 8 pairs × 20 pool fixtures, seeds 1000+)
 
