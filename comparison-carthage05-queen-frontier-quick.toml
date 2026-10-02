@@ -1,0 +1,22 @@
+# Small, matched screen of Carthage 05 against the pre-rules frontier leaders.
+# Use the serial worker setting for repeatable follow-up runs.
+bots = [
+  "bots/tyr-v12-devil-scout-tiebreak",
+  "bots/fenrir-v20-crowded-resource-revalue",
+  "bots/bifrost-v01-portal-memory",
+  "bots/gavroche-v33-half-support",
+]
+
+maps = [
+  "maps/schooltime.map",
+  "maps/queen_of_spades.map",
+  "maps/devil.map",
+  "maps/trauma.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 1
+timeout_seconds = 900
+sandbox = false
+seed_policy = "fixture_hash_v1"
