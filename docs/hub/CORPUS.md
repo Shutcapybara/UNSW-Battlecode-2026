@@ -46,3 +46,16 @@ since.
 
 - `tools/antioch/era.py`: per-game era signals (sprint pricing, queen field, engine verdict).
 - `tools/antioch/queen.py`: per-side queen and endgame rows. Output: `build/antioch/queen.parquet`.
+
+
+## Current Himeji ownership and versioned refresh — 2026-10-03 22:38 UTC
+
+User reassigned live-data connection/download oversight and analysis to Himeji on4October. Historical Antioch
+snapshot above is preserved. Existing shared hub collector remains sole downloader; database read-only access
+verified, continuous downloads40/pass with0errors in inspected passes. Freeze113,915games at22:23Z3Oct;
+ladder221421Z top306/91/264/213/952/842/552/87/82/566. Eight top10 directchecks stale>24h;catch-up ongoing.
+Legacy `build/s1/corpus` unchanged. Fresh pinnedFRAME_VERSION7store:
+`/Users/alik/Documents/Codex/2026-10-01/p2-a-analyst-one-claude-opus/work/himeji-live-store`.
+Metadata113,915;decoded119recent currenttop10/us games,238sides;0errors/238officialwinneragreements.
+Window03:43:50–22:16:32UTC3Oct;17APImaps/18labels. Balancedcoverage sample,31eligiblegames stillqueued inthisfreeze;
+no sharednorm rebuild. Sourcehashes and scope: `tools/himeji/unit10_audit/`; report `docs/findings/2026-10-04-himeji-resumed-live-data-and-top-team-regimes.md`.

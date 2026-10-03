@@ -1,6 +1,38 @@
 # Himeji — P2-A GPT analyst
 
-Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
+Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
+
+## Unit 10 — 2026-10-03 22:38 UTC; resumed and complete
+
+- User resumed operations, assigned live DB/downloading/top-team/spoofing analysis; prior Antioch-only restriction
+  superseded. Half-hour automation ACTIVE with updated scope and non-overlap/checkpoint rules.
+- Live hub SQLite read-only connection verified. Existing daemon collecting40games/pass,0errors; no competing
+  client, credentials exposed, deployment or collector configuration changes. Raw corpus113,915 atfreeze22:23Z;
+  later114,008 at22:28Z. Eight top10 direct checks>24h old; queuecatch-up observed for566. Verify others next.
+- New versioned FRAME_VERSION7 store at `/Users/alik/Documents/Codex/2026-10-01/p2-a-analyst-one-claude-opus/work/himeji-live-store`.
+  Metadata113,915;119recent games decoded/238sides,0errors, all238winner labels agree.119header/hash audits,
+  72RLqueen→longest→total checks,0violations. Old S-1 and norms preserved. No worker running;31/150queue remain.
+- Currenttop10 rankedRLqueen survival25/53(27series),95%seriesCI[32.3,63.1]%;solequeenwins19/19.
+  Unranked9/21(5series);selection/map/cohort caveats preclude population trend.17API maps/18decoderlabels.
+- Spoof screen:155top10side-games in24h,0submissionIDs/0headernames;0matched mode strata for everyteam.
+  Team82 9/11ranked vs1/6unranked is unresolved, not deception evidence. H-H2 proposed repeated regime switching,
+  falsifier/40independentseries-per-regime sample rationale in finding. H-H1 stays0.5.
+- Communication lane `tools/himeji/COMMUNICATION.md`: addressed board+evidence+reply IDs; direct analyst routing
+  when a current chat is identified. Antioch/Nara not visible in app; no fictitious messages or peer restarts.
+  Rome resumed inexistingchat; no new completed L10 verdict. D-042 ruling acknowledged.
+- Source/board cursors: main0298966ec/D-042; Antioch2c7113f66; Carthage5b69fa9d0; Kyoto fccea71c0;
+  Nara21a182700; Romead611b51c plus resumedchat. HimejiH10-01..06. Branchkeptseparate after automaticreview
+  rejected mainfast-forward; currentmain usedasread-only dependency with sourcehashes.
+- SnapshotSHA039af5161d7e50db94a995ef6a7971940da185214f9d1911eeb08109a32b5d61;
+  ladder20261003T221421Z top306/91/264/213/952/842/552/87/82/566. Era cutoff06:00Z1Oct, queenruleverified;
+  latestdecoded22:16:32Z3Oct. Fresh sprint check pending. Store itself lacksqueencheckpointcolumns; headerartifact
+  reportsRLterminal only, r490pending. Oldanchorsprovisional. Matchedlive-us gapsNA.
+- Pending H10-05: Nara behavior/matchedregimes; Antioch independentqueen/feedingread whenresumed.
+  Next: confirmtoprefresh, freeze newdata and extend31-gamequeue; longqueen food/split/movement anatomy.
+  Reproduce with `freeze_live_snapshot.py --corpus MAIN/public_replays/corpus --out NEWSNAPSHOT`, then
+  `resume_store.py --repo MAIN --snapshot NEWSNAPSHOT --store /Users/alik/Documents/Codex/2026-10-01/p2-a-analyst-one-claude-opus/work/himeji-live-store --jobs 2 --seconds 180`.
+  The store checks decoder hashes and lock; do not importq.py/rebuildsharednorms. Remaining scripts use--help.
+- Finding `docs/findings/2026-10-04-himeji-resumed-live-data-and-top-team-regimes.md`. Compact artifacts `tools/himeji/unit10_audit/`.
 
 ## Unit 9 — 2026-10-01 19:02 UTC, complete; recurring task stopped
 

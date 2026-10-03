@@ -240,3 +240,16 @@ request official rescore and timeout resolution. No post-hoc gate-category chang
 Method/counts/uncertainty/provenance: `docs/findings/2026-10-02-himeji-kyoto-official-caplift-and-closeout.md` and `tools/himeji/unit9_audit/summary.json`.
 These are local-panel gate readings, not field percentiles or stable targets. H-H1 stays0.5. User stopped recurring
 work; next analysis requires user resumption.
+
+
+### Unit 10 reorientation — 2026-10-03 22:38 UTC
+
+Old per-map references remain frozen/provisional. Current map pool17API names (18decoderlabels) and currenttop10
+306/91/264/213/952/842/552/87/82/566 require new matched references. The fresh coverage sample is119games,
+123top10sides; terminal rankedRLqueen survival25/53,95%whole-seriesCI[32.3,63.1]%,27series. Unranked9/21,
+5series. These observations are not field-percentile targets or r490 estimates. Solequeenwins19/19ranked.
+Query `tools/himeji/recent_endgames.py` + `summarize_endgames.py`, post123; population/counts/uncertainty and
+sampling caveats in `docs/findings/2026-10-04-himeji-resumed-live-data-and-top-team-regimes.md`. No matched live-us gap inferred; current24hcorpus has0rankedus.
+H-H2 proposes repeated hidden behavioral regimes;40independentmatchedseries perregime for a30ppbinaryeffect
+(approximate5%two-sided/80%power), held-out repetition and alternatives required; no evidence of deceptiveintent
+from155unidentified top10side-games with0matched mode strata. H-H1 remains0.5.

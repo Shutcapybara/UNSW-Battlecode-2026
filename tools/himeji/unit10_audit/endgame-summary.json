@@ -1,0 +1,228 @@
+{
+  "audited_games": 119,
+  "round_limit_games": 72,
+  "queen_then_longest_then_total_mismatches": [],
+  "cohorts": [
+    {
+      "queen_alive_ci95": [
+        0.32306451612903225,
+        0.6305392976588629
+      ],
+      "ranked": true,
+      "rl_sides": 53,
+      "series": 27,
+      "queen_alive": 25,
+      "sole_queen": 19,
+      "sole_queen_wins": 19,
+      "losses": 11,
+      "losses_with_final_total_lead": 3,
+      "final_total_leads": 35,
+      "losses_given_final_total_lead": 3
+    },
+    {
+      "queen_alive_ci95": [
+        0.3333333333333333,
+        0.5717261904761902
+      ],
+      "ranked": false,
+      "rl_sides": 21,
+      "series": 5,
+      "queen_alive": 9,
+      "sole_queen": 3,
+      "sole_queen_wins": 3,
+      "losses": 7,
+      "losses_with_final_total_lead": 3,
+      "final_total_leads": 12,
+      "losses_given_final_total_lead": 3
+    }
+  ],
+  "teams": [
+    {
+      "team": 82,
+      "ranked": true,
+      "rl_n": 7,
+      "queen_alive": 5,
+      "positive_queen_lengths": [
+        51,
+        32,
+        37,
+        19,
+        16
+      ]
+    },
+    {
+      "team": 82,
+      "ranked": false,
+      "rl_n": 0,
+      "queen_alive": 0,
+      "positive_queen_lengths": []
+    },
+    {
+      "team": 87,
+      "ranked": true,
+      "rl_n": 5,
+      "queen_alive": 1,
+      "positive_queen_lengths": [
+        60
+      ]
+    },
+    {
+      "team": 87,
+      "ranked": false,
+      "rl_n": 0,
+      "queen_alive": 0,
+      "positive_queen_lengths": []
+    },
+    {
+      "team": 91,
+      "ranked": true,
+      "rl_n": 3,
+      "queen_alive": 2,
+      "positive_queen_lengths": [
+        73,
+        35
+      ]
+    },
+    {
+      "team": 91,
+      "ranked": false,
+      "rl_n": 1,
+      "queen_alive": 0,
+      "positive_queen_lengths": []
+    },
+    {
+      "team": 213,
+      "ranked": true,
+      "rl_n": 9,
+      "queen_alive": 4,
+      "positive_queen_lengths": [
+        15,
+        45,
+        3,
+        55
+      ]
+    },
+    {
+      "team": 213,
+      "ranked": false,
+      "rl_n": 2,
+      "queen_alive": 2,
+      "positive_queen_lengths": [
+        29,
+        11
+      ]
+    },
+    {
+      "team": 264,
+      "ranked": true,
+      "rl_n": 7,
+      "queen_alive": 2,
+      "positive_queen_lengths": [
+        23,
+        3
+      ]
+    },
+    {
+      "team": 264,
+      "ranked": false,
+      "rl_n": 8,
+      "queen_alive": 3,
+      "positive_queen_lengths": [
+        38,
+        3,
+        24
+      ]
+    },
+    {
+      "team": 306,
+      "ranked": true,
+      "rl_n": 7,
+      "queen_alive": 4,
+      "positive_queen_lengths": [
+        37,
+        3,
+        123,
+        25
+      ]
+    },
+    {
+      "team": 306,
+      "ranked": false,
+      "rl_n": 0,
+      "queen_alive": 0,
+      "positive_queen_lengths": []
+    },
+    {
+      "team": 552,
+      "ranked": true,
+      "rl_n": 5,
+      "queen_alive": 1,
+      "positive_queen_lengths": [
+        3
+      ]
+    },
+    {
+      "team": 552,
+      "ranked": false,
+      "rl_n": 0,
+      "queen_alive": 0,
+      "positive_queen_lengths": []
+    },
+    {
+      "team": 566,
+      "ranked": true,
+      "rl_n": 3,
+      "queen_alive": 3,
+      "positive_queen_lengths": [
+        6,
+        21,
+        3
+      ]
+    },
+    {
+      "team": 566,
+      "ranked": false,
+      "rl_n": 0,
+      "queen_alive": 0,
+      "positive_queen_lengths": []
+    },
+    {
+      "team": 842,
+      "ranked": true,
+      "rl_n": 1,
+      "queen_alive": 1,
+      "positive_queen_lengths": [
+        41
+      ]
+    },
+    {
+      "team": 842,
+      "ranked": false,
+      "rl_n": 10,
+      "queen_alive": 4,
+      "positive_queen_lengths": [
+        89,
+        34,
+        3,
+        35
+      ]
+    },
+    {
+      "team": 952,
+      "ranked": true,
+      "rl_n": 6,
+      "queen_alive": 2,
+      "positive_queen_lengths": [
+        13,
+        14
+      ]
+    },
+    {
+      "team": 952,
+      "ranked": false,
+      "rl_n": 0,
+      "queen_alive": 0,
+      "positive_queen_lengths": []
+    }
+  ]
+}
