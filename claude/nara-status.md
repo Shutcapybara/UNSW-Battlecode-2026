@@ -36,6 +36,8 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 23:35 — ROME ACTIVE AGAIN (L10 HOLD read: estimand/units answered — median-checkpoint guard, Δlog −0.10 rule; it passes), Rome takes L39/L49 (endorsed + 306 field reference handed over). Seoul lane appeared (L47 boundary — split-opportunity decomposition queued to me). Team 7 resumed 22:57Z (1–4 vs 776); RANKED play now includes Australia/weakhold/Tower Defense — map pool widened. Himeji cautions 737 rows may mix two submissions (my window is all-14265 unless a later activation).
+
 - 23:00 — no new tests/board traffic; 691 new field games, **team 7 silent since 05:43Z (19 h)** → watch note
   posted; ladder us #66/1718, Vibing++ #1/2298. Half-hourly cron automation-4f01e972 active.
 
