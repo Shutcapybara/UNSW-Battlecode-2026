@@ -309,3 +309,50 @@ correct). Note: h2h length is not armor (victim longer 857 / shorter 496) — q_
 queen-vs-queen duels, both rising as protectors appear.
 
 
+
+## Shenzhen (Claude analyst, replay lead) — unit 1, 4 Oct 2026 ~09:45 ACST
+
+Source: `docs/findings/2026-10-04-shenzhen-live-queen-and-map-swap.md`; queries `tools/shenzhen/q_*.py` on the lean table
+(`build/shenzhen/lean/`). **Era: post-m2** = started ≥ 2026-10-02T03:49Z (1.2.3 rules *and* the six replaced maps). "us" =
+carthage-05 live (submission 14585), not a panel. Cohorts by the 3 Oct ladder. Field = every in-scope side on that map.
+Every target below is on **live maps**; the repo's `maps/` hold the old versions of six of them. Use `unswbc==1.2.9`
+(engine identical to 1.2.3) and its `templates/maps/` for any panel.
+
+**Map era supersedes the pocket-map exemptions.** Antioch's "Slithery, Autarky, PD: none possible" row and every
+"excluding pocket maps" clause (Antioch, Nara, L49's falsifier) apply to maps the server stopped playing on 2 Oct 03:49Z.
+On live maps the top ten lose the queen by r10 in 0–4 % of games on all three. Disagreement stated for the record; I ask
+Antioch's and Nara's successors to drop the exemption or show a live map where it still holds.
+
+**Endgame and queen (post-m2, side-games; RL = reached round 499)**
+
+| cluster / map | phase | metric | top-10 | field (vs top-50) | us live | target | n top-10 / us | query |
+|---|---|---|---|---|---|---|---|---|
+| all | r0 | queen self-death at r0, live Schooltime | 0/123 | — | **21/21** | **0** (H-SZ1; a bug, not a strategy) | 123 / 21 | q_us.py, finding §2 |
+| all | r10 | queen dead by r10, Autarky / Slithery / PD | 0.00 / 0.01 / 0.00–0.04 | 0.00–0.29 | 0.00 / 0.00 / 0.25 (n 4) | ≤ 0.02 | 120 / 16 | q_queen.py maps |
+| all | r500 | **queen alive at the end of RL games** | **0.42** | 0.25–0.34 | **0.00** (0/159) | ≥ 0.42 (top-10); first step ≥ 0.25 (field) | 1,227 / 159 | q_queen.py cohort |
+| all | r500 | share of RL games decided by the queen | — | 0.40 | 0.29 of ours (46/159), all lost | — (context: the tiebreak now decides two RL games in five) | 3,220 games | q_queen.py |
+| all | r500 | queen-decided record | 383–186 | 279–371 (below 50) | **0–46** | ≥ .500 | | q_queen.py cohort |
+| all | r500 | queen length when alive (median) | 16.5 (crown teams 27–39; runner teams 5–6) | 3–4 | — | **alive first**: length 1 flips 60 % of our RL losses, length 5 78 %, length 15 83 % (static upper bound) | | q_us.py SZ_SUB=carthage-05 |
+| all | r500 | RL win | 0.69 | 0.39–0.55 | 0.27 | ≥ 0.55 (ranks 11–30) | | q_queen.py cohort |
+| all | r500 | RL losses with a total lead | 0.41 | 0.30–0.40 | 0.19 | — (no longer a useful target: the queen decides) | | q_queen.py cohort |
+| all | r500 | longest / total at end (RL, median) | 47 / 137 | 24–36 / 75–110 | 33 / 71 | ≥ 36 / 110 (ranks 11–30) | | q_queen.py cohort |
+| non-pocket-ex maps | game | queen killers | h2h .61, invalid .15, self .10, wall .08 | — | h2h .48, **wall .34**, self .14 | wall ≤ .10 | 1,086 / 203 deaths | q_queen.py causes |
+
+**Opening, live top-10 − us (post-m2; z vs field of the same map, 90 % bootstrap over sides)**
+
+| component | r25 | r50 | r100 | r150 | r50 median top-10 / us | target (r50) |
+|---|---|---|---|---|---|---|
+| transits (cum.) | 0.62 | **0.65** [0.58, 0.72] | 0.64 | 0.61 | 4 / 2 | ≥ 3 at r50 without transit died3 up (H-S1) |
+| total length | 0.54 | 0.47 [0.37, 0.57] | 0.62 | 0.69 | 26 / 25 | gap ≤ 0.25 SD |
+| units | 0.34 | 0.40 [0.30, 0.49] | 0.50 | 0.48 | 11 / 10 | |
+| splits (cum.) | 0.43 | 0.38 [0.28, 0.48] | 0.47 | 0.57 | 14 / 11.5 | |
+| bed pearls (cum.) | 0.25 | 0.33 [0.23, 0.43] | 0.45 | 0.55 | 23 / 20 | |
+| longest | 0.46 | 0.34 [0.28, 0.40] | 0.41 | 0.55 | 4 / 3 | |
+
+Same-opposition check (both sides vs a top-ten team; 566 / 129 sides): r50 gaps within 0.1 of the table. **Disagreement
+with Antioch's r50 total gap 0.18** (panel "us"): the live gap is 0.47; the panel's opponents are weaker than the live
+field. Both stay; a tester can settle it by scoring carthage-05's own panel replays against the same post-m2 field norms.
+
+**Stability:** top-ten values are known to ±0.07 SD (n ≈ 2,000); ours to ±0.10 (n = 256). The lean table holds 5,164
+of 10,588 post-m2 in-scope games; I will refresh after the next decode batch and say if anything moves by more than the
+interval.

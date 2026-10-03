@@ -67,7 +67,7 @@ def build_games():
     snaps = load_ladders()
     times = [s[0] for s in snaps]
     latest = snaps[-1][1]
-    order = sorted((x for x in latest.values() if not x.get('dev')), key=lambda x: x['rank'])
+    order = sorted((x for x in latest.values() if not x.get('dev') and x.get('rank') is not None), key=lambda x: x['rank'])  # unranked teams carry rank None (ladder of 3 Oct)
     crank = {x['id']: k + 1 for k, x in enumerate(order)}
     teams = pd.DataFrame([dict(team=str(i), name=x['name'], ladder_rank=x['rank'], elo_now=x['elo'], dev=bool(x.get('dev')),
                                crank=crank.get(i), cohort='us' if i == US else ('dev' if x.get('dev') else cohort_of(crank.get(i))))
@@ -318,7 +318,10 @@ def run_batch(store, tasks, jobs, budget, flush_every=200):
 
 
 def cmd_corpus(a):
-    games, teams = build_games()
+    if a.no_games and (OUT / 'corpus' / 'games.parquet').exists():   # reuse the last games table (short VM calls)
+        games, teams = pd.read_parquet(OUT / 'corpus' / 'games.parquet'), pd.read_parquet(OUT / 'corpus' / 'teams.parquet')
+    else:
+        games, teams = build_games()
     store = OUT / 'corpus'
     done = done_games(store)
     if a.era:
@@ -330,7 +333,7 @@ def cmd_corpus(a):
     meta = games.set_index('game')[['team_a', 'team_b']].to_dict('index')
     tasks = ((CORPUS / 'replays' / f'{gid}.replay', gid, dict(meta[gid], source='corpus')) for gid in q
              if (CORPUS / 'replays' / f'{gid}.replay').exists())
-    run_batch(store, tasks, a.jobs, a.time)
+    run_batch(store, tasks, a.jobs, a.time, a.flush)
 
 
 def cmd_local(a):
@@ -364,6 +367,8 @@ def main():
     ap.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 2)))
     ap.add_argument('--time', type=float, default=1e9, help='stop submitting new games after this many seconds')
     ap.add_argument('--limit', type=int, default=0)
+    ap.add_argument('--no-games', action='store_true', help='corpus: reuse games.parquet instead of rebuilding it')
+    ap.add_argument('--flush', type=int, default=200, help='games per committed part')
     ap.add_argument('--glob', action='append', default=[])
     ap.add_argument('--tag', default='')
     ap.add_argument('--era', default='', help="corpus: decode only games of this rules era ('pre' / 'post')")
