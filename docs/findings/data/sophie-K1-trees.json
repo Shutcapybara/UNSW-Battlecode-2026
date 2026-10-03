@@ -1,0 +1,5950 @@
+{
+ "wall": {
+  "base_field_per1k": 7.752308927205217,
+  "base_us_per1k": 9.631103709588706,
+  "leaves": [
+   {
+    "rule": "deg <= 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      "<=",
+      1.5
+     ]
+    ],
+    "field_rate_per1k": 357.1718126281326,
+    "us_rate_per1k": 488.8167732493398,
+    "field_ratio": 46.07295916377994,
+    "us_ratio": 50.75397254446288,
+    "us_over_field": 1.3685760073073532,
+    "field_expo_share": 0.009632349916436267,
+    "field_death_share": 0.44379086435120724,
+    "us_expo_share": 0.009234894391192136,
+    "us_death_share": 0.46870757638157995,
+    "per_terrain": {
+     "Autarky": {
+      "field": 56.834246488813946,
+      "field_expo_share": 0.015755151730392828,
+      "field_death_share": 0.8954321769138096,
+      "us": 50.54880818165738,
+      "us_expo_share": 0.01812607635317098,
+      "us_death_share": 0.9162515566625156
+     },
+     "Portals": {
+      "field": 29.073095074721955,
+      "field_expo_share": 0.01933898117867762,
+      "field_death_share": 0.5622440384559528,
+      "us": 30.080175190655705,
+      "us_expo_share": 0.024235598697652988,
+      "us_death_share": 0.729011054675829
+     },
+     "Prisoners Dilemma": {
+      "field": 21.170476127682186,
+      "field_expo_share": 0.04490989760449146,
+      "field_death_share": 0.9507639151325379,
+      "us": 48.66432119949781,
+      "us_expo_share": 0.01722634647003139,
+      "us_death_share": 0.8383084577114428
+     },
+     "Queen Of Spades": {
+      "field": 74.23222820628857,
+      "field_expo_share": 0.00393762617505905,
+      "field_death_share": 0.2922987648180386,
+      "us": 77.19923863636363,
+      "us_expo_share": 0.004062687264491098,
+      "us_death_share": 0.31363636363636366
+     },
+     "Schooltime": {
+      "field": 101.62575270513985,
+      "field_expo_share": 0.0009670045701354928,
+      "field_death_share": 0.09827256730932965,
+      "us": 196.7096826039875,
+      "us_expo_share": 0.0007294307517330334,
+      "us_death_share": 0.143486091654993
+     },
+     "Slithery Fight": {
+      "field": 28.394261244569403,
+      "field_expo_share": 0.014446229119945647,
+      "field_death_share": 0.4101900036306426,
+      "us": 29.943619428715728,
+      "us_expo_share": 0.014275866611051348,
+      "us_death_share": 0.4274711168164313
+     },
+     "Trauma": {
+      "field": 47.51229812251504,
+      "field_expo_share": 0.009315050024843596,
+      "field_death_share": 0.4425794338065101,
+      "us": 49.8518626623465,
+      "us_expo_share": 0.0070669800934329155,
+      "us_death_share": 0.35230212105535436
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 7,
+    "n_maps": 7
+   },
+   {
+    "rule": "cluster > 6.5 & deg > 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "cluster",
+      ">",
+      6.5
+     ]
+    ],
+    "field_rate_per1k": 56.84900605137517,
+    "us_rate_per1k": 56.89581102095397,
+    "field_ratio": 7.333170876598412,
+    "us_ratio": 5.907506837903596,
+    "us_over_field": 1.0008233208076938,
+    "field_expo_share": 0.03365439259619206,
+    "field_death_share": 0.24679341165600477,
+    "us_expo_share": 0.04855789797808376,
+    "us_death_share": 0.28685611433975505,
+    "per_terrain": {
+     "Autarky": {
+      "field": 2.1949460745440494,
+      "field_expo_share": 0.0011721683243450867,
+      "field_death_share": 0.0025728462622261247,
+      "us": 0.5708328866089911,
+      "us_expo_share": 0.0021816017290999666,
+      "us_death_share": 0.0012453300124533001
+     },
+     "Default": {
+      "field": 19.189083925541127,
+      "field_expo_share": 0.033283230261194986,
+      "field_death_share": 0.6386746987951807,
+      "us": 23.595896419807655,
+      "us_expo_share": 0.02943331680005552,
+      "us_death_share": 0.6945054945054945
+     },
+     "Devil": {
+      "field": 2.5822930404089095,
+      "field_expo_share": 0.037194258202842105,
+      "field_death_share": 0.09604647410037115,
+      "us": 1.450388463515044,
+      "us_expo_share": 0.031249665105612293,
+      "us_death_share": 0.045324153757888695
+     },
+     "Prisoners Dilemma": {
+      "field": 1.486526633875584,
+      "field_expo_share": 0.008716200667744136,
+      "field_death_share": 0.01295686443880581,
+      "us": 3.9390817117567978,
+      "us_expo_share": 0.00631508146081411,
+      "us_death_share": 0.024875621890547265
+     },
+     "Queen Of Spades": {
+      "field": 8.192623226213568,
+      "field_expo_share": 0.058475559283433905,
+      "field_death_share": 0.47906822515128905,
+      "us": 6.487221948905366,
+      "us_expo_share": 0.07882628964928852,
+      "us_death_share": 0.5113636363636364
+     },
+     "Schooltime": {
+      "field": 12.742667511279441,
+      "field_expo_share": 0.035521037766971526,
+      "field_death_share": 0.4526327739201181,
+      "us": 14.243501533997012,
+      "us_expo_share": 0.03481570436451205,
+      "us_death_share": 0.49589753852311386
+     },
+     "Slithery Fight": {
+      "field": 7.550635801799788,
+      "field_expo_share": 0.05692015651904957,
+      "field_death_share": 0.42978337165678326,
+      "us": 4.75787941213039,
+      "us_expo_share": 0.08791332791815767,
+      "us_death_share": 0.4182810129536702
+     },
+     "Trauma": {
+      "field": 2.884711745716575,
+      "field_expo_share": 0.029755295708865183,
+      "field_death_share": 0.0858354510286334,
+      "us": 3.7168691200814,
+      "us_expo_share": 0.037858184306840834,
+      "us_death_share": 0.14071391619244697
+     },
+     "Trophy": {
+      "field": 22.35511920909885,
+      "field_expo_share": 0.03795012774006266,
+      "field_death_share": 0.8483796296296297,
+      "us": 17.702211302211303,
+      "us_expo_share": 0.043859649122807015,
+      "us_death_share": 0.7764127764127764
+     }
+    },
+    "maps_ratio_gt1_field": 9,
+    "maps_ratio_gt1_us": 8,
+    "n_maps": 9
+   },
+   {
+    "rule": "cluster <= 6.5 & deg > 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "cluster",
+      "<=",
+      6.5
+     ]
+    ],
+    "field_rate_per1k": 18.19263534388461,
+    "us_rate_per1k": 20.16193531573792,
+    "field_ratio": 2.3467376641868727,
+    "us_ratio": 2.0934189812186057,
+    "us_over_field": 1.1082470975001038,
+    "field_expo_share": 0.08494526188733215,
+    "field_death_share": 0.19934424546521998,
+    "us_expo_share": 0.08173855532416004,
+    "us_death_share": 0.17111304321298373,
+    "per_terrain": {
+     "Autarky": {
+      "field": 1.6217669876311167,
+      "field_expo_share": 0.049910104721305415,
+      "field_death_share": 0.08094256018622506,
+      "us": 1.018838151525599,
+      "us_expo_share": 0.06050405113327709,
+      "us_death_share": 0.06164383561643835
+     },
+     "Devil": {
+      "field": 3.0430540173996827,
+      "field_expo_share": 0.2168226810218922,
+      "field_death_share": 0.6598031305470389,
+      "us": 4.237222866304597,
+      "us_expo_share": 0.18753014049489353,
+      "us_death_share": 0.7946069994262766
+     },
+     "Portals": {
+      "field": 1.6850722074592035,
+      "field_expo_share": 0.15060238100411774,
+      "field_death_share": 0.25377588660722067,
+      "us": 1.1450894530973426,
+      "us_expo_share": 0.18570874233779777,
+      "us_death_share": 0.21265312219898416
+     },
+     "Prisoners Dilemma": {
+      "field": 0.25076265031488576,
+      "field_expo_share": 0.07384480398977794,
+      "field_death_share": 0.01851751876045997,
+      "us": 1.5057738679166044,
+      "us_expo_share": 0.0759927258233272,
+      "us_death_share": 0.11442786069651742
+     },
+     "Queen Of Spades": {
+      "field": 1.4426075833657226,
+      "field_expo_share": 0.009941285915980253,
+      "field_death_share": 0.014341374450799967,
+      "us": 1.6434784283513098,
+      "us_expo_share": 0.008988695572686554,
+      "us_death_share": 0.014772727272727272
+     },
+     "Schooltime": {
+      "field": 5.774003006515683,
+      "field_expo_share": 0.046819286655030996,
+      "field_death_share": 0.27033470190906855,
+      "us": 5.127461670614981,
+      "us_expo_share": 0.0469129448542727,
+      "us_death_share": 0.24054432659595756
+     },
+     "Slithery Fight": {
+      "field": 1.5162538527526097,
+      "field_expo_share": 0.06486385802174964,
+      "field_death_share": 0.09835007462987616,
+      "us": 1.5908897216190292,
+      "us_expo_share": 0.053145704814383875,
+      "us_death_share": 0.08454895553740227
+     },
+     "Trauma": {
+      "field": 1.6795871983278636,
+      "field_expo_share": 0.247970019040113,
+      "field_death_share": 0.4164872695488904,
+      "us": 1.9323210971150218,
+      "us_expo_share": 0.23461630017555865,
+      "us_death_share": 0.4533540265563028
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 8,
+    "n_maps": 8
+   },
+   {
+    "rule": "bed6 > 0.389091 & kelp_d <= 0.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "kelp_d",
+      "<=",
+      0.5
+     ],
+     [
+      "bed6",
+      ">",
+      0.3890909105539322
+     ]
+    ],
+    "field_rate_per1k": 6.158057262749125,
+    "us_rate_per1k": 5.354300688085887,
+    "field_ratio": 0.7943513759028131,
+    "us_ratio": 0.5559384313092961,
+    "us_over_field": 0.8694788729027799,
+    "field_expo_share": 0.09919389934757165,
+    "field_death_share": 0.0787948104279087,
+    "us_expo_share": 0.09710051758423084,
+    "us_death_share": 0.053981909425098,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.09546081327921356,
+      "field_expo_share": 0.019893037878755848,
+      "field_death_share": 0.0018990055745002348,
+      "us": 0.017903740004560825,
+      "us_expo_share": 0.01738924398109086,
+      "us_death_share": 0.00031133250311332503
+     },
+     "Devil": {
+      "field": 1.2348178536333547,
+      "field_expo_share": 0.14712173845195223,
+      "field_death_share": 0.18166854929804743,
+      "us": 0.878315971181163,
+      "us_expo_share": 0.13390774418712648,
+      "us_death_share": 0.11761331038439472
+     },
+     "Portals": {
+      "field": 0.40541568664408917,
+      "field_expo_share": 0.433530980758575,
+      "field_death_share": 0.17576026024572308,
+      "us": 0.13069639443106085,
+      "us_expo_share": 0.4211998205331862,
+      "us_death_share": 0.05504929787869734
+     },
+     "Prisoners Dilemma": {
+      "field": 0.12800992746706344,
+      "field_expo_share": 0.10416983470573907,
+      "field_death_share": 0.013334772984937645,
+      "us": 0.256651385992746,
+      "us_expo_share": 0.0678466444123362,
+      "us_death_share": 0.017412935323383085
+     },
+     "Queen Of Spades": {
+      "field": 1.474368889300724,
+      "field_expo_share": 0.11481384246425179,
+      "field_death_share": 0.16927795739036725,
+      "us": 1.265268859338659,
+      "us_expo_share": 0.1095706755233249,
+      "us_death_share": 0.13863636363636364
+     },
+     "Schooltime": {
+      "field": 1.8246482424784571,
+      "field_expo_share": 0.03528687122395296,
+      "field_death_share": 0.0643861275613494,
+      "us": 1.7750989512646955,
+      "us_expo_share": 0.03359575049401778,
+      "us_death_share": 0.05963578146888133
+     },
+     "Slithery Fight": {
+      "field": 0.48732230186894887,
+      "field_expo_share": 0.11008894038116565,
+      "field_death_share": 0.053648795836863127,
+      "us": 0.5541401432281224,
+      "us_expo_share": 0.11151061447608175,
+      "us_death_share": 0.06179250787723188
+     },
+     "Trauma": {
+      "field": 0.04724469906886395,
+      "field_expo_share": 0.004796451032141803,
+      "field_death_share": 0.00022660688561208138,
+      "us": 0.0,
+      "us_expo_share": 0.0033876870889993156,
+      "us_death_share": 0.0
+     },
+     "Trophy": {
+      "field": 3.9317180237562406,
+      "field_expo_share": 0.011127451087706085,
+      "field_death_share": 0.04375,
+      "us": 8.410529642776442,
+      "us_expo_share": 0.014898838792482938,
+      "us_death_share": 0.12530712530712532
+     }
+    },
+    "maps_ratio_gt1_field": 4,
+    "maps_ratio_gt1_us": 3,
+    "n_maps": 9
+   },
+   {
+    "rule": "bed6 <= 0.389091 & kelp_d <= 0.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "kelp_d",
+      "<=",
+      0.5
+     ],
+     [
+      "bed6",
+      "<=",
+      0.3890909105539322
+     ]
+    ],
+    "field_rate_per1k": 1.2829002828937652,
+    "us_rate_per1k": 1.0015034815531234,
+    "field_ratio": 0.16548621771143265,
+    "us_ratio": 0.10398636664622651,
+    "us_over_field": 0.7806557492481715,
+    "field_expo_share": 0.18889200244908716,
+    "field_death_share": 0.03125902304123811,
+    "us_expo_share": 0.17969142977355101,
+    "us_death_share": 0.01868545889961714,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.11486505878780372,
+      "field_expo_share": 0.16674706185996938,
+      "field_death_share": 0.019153411063238927,
+      "us": 0.0729709005754121,
+      "us_expo_share": 0.19626035899628982,
+      "us_death_share": 0.014321295143212951
+     },
+     "Default": {
+      "field": 0.9785537229264258,
+      "field_expo_share": 0.3692442149463736,
+      "field_death_share": 0.36132530120481926,
+      "us": 0.9116597593461204,
+      "us_expo_share": 0.33268629023863033,
+      "us_death_share": 0.3032967032967033
+     },
+     "Devil": {
+      "field": 0.2691579601225901,
+      "field_expo_share": 0.23213820622687395,
+      "field_death_share": 0.062481846054542524,
+      "us": 0.16113015744415532,
+      "us_expo_share": 0.26348597372999116,
+      "us_death_share": 0.042455536431440045
+     },
+     "Portals": {
+      "field": 0.1313194893783839,
+      "field_expo_share": 0.062428134382141294,
+      "field_death_share": 0.008198030729907926,
+      "us": 0.06294964538029472,
+      "us_expo_share": 0.05102223327047953,
+      "us_death_share": 0.0032118314908873616
+     },
+     "Prisoners Dilemma": {
+      "field": 0.03695945233010947,
+      "field_expo_share": 0.11685656958224948,
+      "field_death_share": 0.004318954812935269,
+      "us": 0.01687322091805252,
+      "us_expo_share": 0.1474266354441732,
+      "us_death_share": 0.0024875621890547263
+     },
+     "Queen Of Spades": {
+      "field": 0.17903943922371904,
+      "field_expo_share": 0.25141766744062566,
+      "field_death_share": 0.0450136781895051,
+      "us": 0.07992143316901179,
+      "us_expo_share": 0.24171465715997847,
+      "us_death_share": 0.019318181818181818
+     },
+     "Schooltime": {
+      "field": 0.4586128465196762,
+      "field_expo_share": 0.2493908100658216,
+      "field_death_share": 0.11437382930013433,
+      "us": 0.23582497466623736,
+      "us_expo_share": 0.24269838546729952,
+      "us_death_share": 0.05723434060436262
+     },
+     "Slithery Fight": {
+      "field": 0.08311617609019992,
+      "field_expo_share": 0.09629352958912452,
+      "field_death_share": 0.00800354996167655,
+      "us": 0.10403275045701282,
+      "us_expo_share": 0.07599920967706526,
+      "us_death_share": 0.007906406815264324
+     },
+     "Trauma": {
+      "field": 0.16484894763268243,
+      "field_expo_share": 0.33285768285654127,
+      "field_death_share": 0.054871238730353995,
+      "us": 0.1457573999713289,
+      "us_expo_share": 0.36793971494033983,
+      "us_death_share": 0.053629936195895844
+     },
+     "Trophy": {
+      "field": 0.9839399669959391,
+      "field_expo_share": 0.10422007412645282,
+      "field_death_share": 0.1025462962962963,
+      "us": 0.9349257602481519,
+      "us_expo_share": 0.09986471368733252,
+      "us_death_share": 0.09336609336609336
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 10
+   },
+   {
+    "rule": "kelp_d > 0.5 & reach5 <= 36.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "kelp_d",
+      ">",
+      0.5
+     ],
+     [
+      "reach5",
+      "<=",
+      36.5
+     ]
+    ],
+    "field_rate_per1k": 0.001586486309614702,
+    "us_rate_per1k": 0.0,
+    "field_ratio": 0.00020464694125478378,
+    "us_ratio": 0.0,
+    "us_over_field": 0.0,
+    "field_expo_share": 0.06270687302814187,
+    "field_death_share": 1.2832769760861335e-05,
+    "us_expo_share": 0.07485608948895021,
+    "us_death_share": 0.0,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.0,
+      "field_expo_share": 0.045121113597062876,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.04471561159976421,
+      "us_death_share": 0.0
+     },
+     "Default": {
+      "field": 0.0,
+      "field_expo_share": 0.0073388731624795915,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.008981039800294334,
+      "us_death_share": 0.0
+     },
+     "Devil": {
+      "field": 0.0,
+      "field_expo_share": 0.012525839076266074,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.047671099775308194,
+      "us_death_share": 0.0
+     },
+     "Portals": {
+      "field": 0.0001659533759852145,
+      "field_expo_share": 0.08751036675684387,
+      "field_death_share": 1.4522640797002528e-05,
+      "us": 0.0,
+      "us_expo_share": 0.08669884134769876,
+      "us_death_share": 0.0
+     },
+     "Prisoners Dilemma": {
+      "field": 0.0026954437821558987,
+      "field_expo_share": 0.040057919604251924,
+      "field_death_share": 0.00010797387032338174,
+      "us": 0.0,
+      "us_expo_share": 0.01979223755667381,
+      "us_death_share": 0.0
+     },
+     "Queen Of Spades": {
+      "field": 0.0,
+      "field_expo_share": 0.08452828584552492,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.09962724844348295,
+      "us_death_share": 0.0
+     },
+     "Schooltime": {
+      "field": 0.0,
+      "field_expo_share": 0.07123213667473821,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.06892040436387666,
+      "us_death_share": 0.0
+     },
+     "Slithery Fight": {
+      "field": 0.00021148791132840603,
+      "field_expo_share": 0.07629840087553354,
+      "field_death_share": 1.6136189438864012e-05,
+      "us": 0.0,
+      "us_expo_share": 0.09647603784768721,
+      "us_death_share": 0.0
+     },
+     "Trauma": {
+      "field": 0.0,
+      "field_expo_share": 0.05694408420994645,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.07064450858452108,
+      "us_death_share": 0.0
+     },
+     "Trophy": {
+      "field": 0.0,
+      "field_expo_share": 0.08530069813720619,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.09643485877323066,
+      "us_death_share": 0.0
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 10
+   },
+   {
+    "rule": "kelp_d > 0.5 & reach5 > 36.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "kelp_d",
+      ">",
+      0.5
+     ],
+     [
+      "reach5",
+      ">",
+      36.5
+     ]
+    ],
+    "field_rate_per1k": 7.160868090078565e-05,
+    "us_rate_per1k": 0.012415022061205481,
+    "field_ratio": 9.237077827160493e-06,
+    "us_ratio": 0.0012890549656157386,
+    "us_over_field": 173.37314282337618,
+    "field_expo_share": 0.5209752207752388,
+    "field_death_share": 4.812288660323001e-06,
+    "us_expo_share": 0.508820615459832,
+    "us_death_share": 0.0006558977409661526,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.0,
+      "field_expo_share": 0.7014013618881686,
+      "field_death_share": 0.0,
+      "us": 0.009422567817175457,
+      "us_expo_share": 0.6608230562073071,
+      "us_death_share": 0.0062266500622665
+     },
+     "Default": {
+      "field": 0.0,
+      "field_expo_share": 0.5901336816299518,
+      "field_death_share": 0.0,
+      "us": 0.0034946803280293485,
+      "us_expo_share": 0.6288993531610199,
+      "us_death_share": 0.002197802197802198
+     },
+     "Devil": {
+      "field": 0.0,
+      "field_expo_share": 0.35419727702017345,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.3361553767070683,
+      "us_death_share": 0.0
+     },
+     "Portals": {
+      "field": 2.944703862349687e-05,
+      "field_expo_share": 0.2465891559196445,
+      "field_death_share": 7.261320398501264e-06,
+      "us": 0.00032316106140746134,
+      "us_expo_share": 0.23113476381318473,
+      "us_death_share": 7.469375560203167e-05
+     },
+     "Prisoners Dilemma": {
+      "field": 0.0,
+      "field_expo_share": 0.611444773845746,
+      "field_death_share": 0.0,
+      "us": 0.0037384444841180365,
+      "us_expo_share": 0.6654003288326441,
+      "us_death_share": 0.0024875621890547263
+     },
+     "Queen Of Spades": {
+      "field": 0.0,
+      "field_expo_share": 0.4768857328751244,
+      "field_death_share": 0.0,
+      "us": 0.004970863571234554,
+      "us_expo_share": 0.4572097463867475,
+      "us_death_share": 0.0022727272727272726
+     },
+     "Schooltime": {
+      "field": 0.0,
+      "field_expo_share": 0.5607828530433492,
+      "field_death_share": 0.0,
+      "us": 0.005594562249225247,
+      "us_expo_share": 0.5723273797042883,
+      "us_death_share": 0.003201921152691615
+     },
+     "Slithery Fight": {
+      "field": 1.3884441641971838e-05,
+      "field_expo_share": 0.5810888854934314,
+      "field_death_share": 8.068094719432006e-06,
+      "us": 0.0,
+      "us_expo_share": 0.5606792386555729,
+      "us_death_share": 0.0
+     },
+     "Trauma": {
+      "field": 0.0,
+      "field_expo_share": 0.31836141712754873,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.2784866248103074,
+      "us_death_share": 0.0
+     },
+     "Trophy": {
+      "field": 0.0,
+      "field_expo_share": 0.761378388614387,
+      "field_death_share": 0.0,
+      "us": 0.006596685824835655,
+      "us_expo_share": 0.744920259125322,
+      "us_death_share": 0.004914004914004914
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 10
+   }
+  ],
+  "lomo_top_leaf": {
+   "Autarky": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 23.792064810043517,
+    "us": 20.688502232892066
+   },
+   "Default": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   },
+   "Devil": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   },
+   "Portals": {
+    "rule": "bed3 > 1.04545 & region <= 0.5",
+    "field": 4.8128748092965665,
+    "us": 3.817488395776987
+   },
+   "Prisoners Dilemma": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 9.285061413275553,
+    "us": 21.074781881304823
+   },
+   "Queen Of Spades": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 74.23222820628857,
+    "us": 77.19923863636363
+   },
+   "Schooltime": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 71.68562673452203,
+    "us": 151.05198369858036
+   },
+   "Slithery Fight": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 13.879010133388768,
+    "us": 18.92996134831645
+   },
+   "Trauma": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 12.573661680041933,
+    "us": 13.043865740327405
+   },
+   "Trophy": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   }
+  }
+ },
+ "self": {
+  "base_field_per1k": 6.189807139609359,
+  "base_us_per1k": 7.48713678608869,
+  "leaves": [
+   {
+    "rule": "deg <= 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      "<=",
+      1.5
+     ]
+    ],
+    "field_rate_per1k": 157.18937034914043,
+    "us_rate_per1k": 88.92494670866343,
+    "field_ratio": 25.394873669530956,
+    "us_ratio": 11.877029797811156,
+    "us_over_field": 0.565718575697251,
+    "field_expo_share": 0.009632349916436267,
+    "field_death_share": 0.24461230926861607,
+    "us_expo_share": 0.009234894391192136,
+    "us_death_share": 0.10968311586382812,
+    "per_terrain": {
+     "Autarky": {
+      "field": 35.27242071047874,
+      "field_expo_share": 0.015755151730392828,
+      "field_death_share": 0.555722340191843,
+      "us": 1.4556500679084083,
+      "us_expo_share": 0.01812607635317098,
+      "us_death_share": 0.026385224274406333
+     },
+     "Portals": {
+      "field": 13.09891328543183,
+      "field_expo_share": 0.01933898117867762,
+      "field_death_share": 0.2533196374880964,
+      "us": 6.255793600035508,
+      "us_expo_share": 0.024235598697652988,
+      "us_death_share": 0.15161290322580645
+     },
+     "Prisoners Dilemma": {
+      "field": 18.076698086644747,
+      "field_expo_share": 0.04490989760449146,
+      "field_death_share": 0.8118226600985222,
+      "us": 42.07695555329092,
+      "us_expo_share": 0.01722634647003139,
+      "us_death_share": 0.7248322147651006
+     },
+     "Queen Of Spades": {
+      "field": 66.27375209312434,
+      "field_expo_share": 0.00393762617505905,
+      "field_death_share": 0.260961260961261,
+      "us": 103.24409651669086,
+      "us_expo_share": 0.004062687264491098,
+      "us_death_share": 0.41944847605224966
+     },
+     "Schooltime": {
+      "field": 56.60626012102376,
+      "field_expo_share": 0.0009670045701354928,
+      "field_death_share": 0.05473851223530848,
+      "us": 29.641774178359544,
+      "us_expo_share": 0.0007294307517330334,
+      "us_death_share": 0.021621621621621623
+     },
+     "Slithery Fight": {
+      "field": 18.47216395536934,
+      "field_expo_share": 0.014446229119945647,
+      "field_death_share": 0.2668531128404669,
+      "us": 7.7298562495937375,
+      "us_expo_share": 0.014275866611051348,
+      "us_death_share": 0.11035039674180185
+     },
+     "Trauma": {
+      "field": 21.60342787680129,
+      "field_expo_share": 0.009315050024843596,
+      "field_death_share": 0.2012370113805047,
+      "us": 16.881228441081564,
+      "us_expo_share": 0.0070669800934329155,
+      "us_death_share": 0.11929930534581698
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 7,
+    "n_maps": 7
+   },
+   {
+    "rule": "deg > 1.5 & portal_d > 25.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "portal_d",
+      ">",
+      25.5
+     ]
+    ],
+    "field_rate_per1k": 33.947850303284625,
+    "us_rate_per1k": 54.503231752422295,
+    "field_ratio": 5.484476258726712,
+    "us_ratio": 7.279582744326353,
+    "us_over_field": 1.6054987654740787,
+    "field_expo_share": 0.03650868887236688,
+    "field_death_share": 0.20023103735773623,
+    "us_expo_share": 0.048457707115960494,
+    "us_death_share": 0.35275188855096634,
+    "per_terrain": {
+     "Devil": {
+      "field": 2.6025688616726503,
+      "field_expo_share": 0.2540169392247343,
+      "field_death_share": 0.6610965763636875,
+      "us": 2.681929322965478,
+      "us_expo_share": 0.21877980560050583,
+      "us_death_share": 0.5867519759126835
+     },
+     "Queen Of Spades": {
+      "field": 1.1574042078082092,
+      "field_expo_share": 0.009206818658617178,
+      "field_death_share": 0.010656010656010656,
+      "us": 1.6403815989567054,
+      "us_expo_share": 0.027428217394395524,
+      "us_death_share": 0.04499274310595065
+     },
+     "Slithery Fight": {
+      "field": 4.014906618045033,
+      "field_expo_share": 0.09215414144643272,
+      "field_death_share": 0.3699902723735409,
+      "us": 4.978833557169011,
+      "us_expo_share": 0.11556541019955655,
+      "us_death_share": 0.5753809423495541
+     }
+    },
+    "maps_ratio_gt1_field": 3,
+    "maps_ratio_gt1_us": 3,
+    "n_maps": 3
+   },
+   {
+    "rule": "deg > 1.5 & portal_d <= 25.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "portal_d",
+      "<=",
+      25.5
+     ]
+    ],
+    "field_rate_per1k": 11.540942959238594,
+    "us_rate_per1k": 13.662384194644547,
+    "field_ratio": 1.8645076815700183,
+    "us_ratio": 1.8247808988917686,
+    "us_over_field": 1.18381870899966,
+    "field_expo_share": 0.08209096561115732,
+    "field_death_share": 0.15305923596950308,
+    "us_expo_share": 0.08183874618628331,
+    "us_death_share": 0.14933778082998136,
+    "per_terrain": {
+     "Autarky": {
+      "field": 1.9078864864958767,
+      "field_expo_share": 0.0510822730456505,
+      "field_death_share": 0.09745917844328915,
+      "us": 5.135142117040252,
+      "us_expo_share": 0.06268565286237705,
+      "us_death_share": 0.32189973614775724
+     },
+     "Default": {
+      "field": 6.999197293465017,
+      "field_expo_share": 0.033283230261194986,
+      "field_death_share": 0.23295589516192888,
+      "us": 8.144974993111369,
+      "us_expo_share": 0.02943331680005552,
+      "us_death_share": 0.2397336293007769
+     },
+     "Portals": {
+      "field": 1.8170324130148399,
+      "field_expo_share": 0.15060238100411774,
+      "field_death_share": 0.2736494077616923,
+      "us": 1.6625806436567623,
+      "us_expo_share": 0.18570874233779777,
+      "us_death_share": 0.3087557603686636
+     },
+     "Prisoners Dilemma": {
+      "field": 0.44683417338996123,
+      "field_expo_share": 0.08256100465752209,
+      "field_death_share": 0.036891078270388615,
+      "us": 1.1959254865636393,
+      "us_expo_share": 0.0823078072841413,
+      "us_death_share": 0.09843400447427293
+     },
+     "Queen Of Spades": {
+      "field": 6.6157611236584835,
+      "field_expo_share": 0.05921002654079698,
+      "field_death_share": 0.39171939171939174,
+      "us": 3.7494156830201373,
+      "us_expo_share": 0.060386767827579554,
+      "us_death_share": 0.22641509433962265
+     },
+     "Schooltime": {
+      "field": 3.5348907948004435,
+      "field_expo_share": 0.08234032442200252,
+      "field_death_share": 0.29106405484021886,
+      "us": 4.0956841687014975,
+      "us_expo_share": 0.08172864921878475,
+      "us_death_share": 0.33473473473473475
+     },
+     "Slithery Fight": {
+      "field": 1.012163375726469,
+      "field_expo_share": 0.029629873094366477,
+      "field_death_share": 0.029990272373540856,
+      "us": 1.0893675895942325,
+      "us_expo_share": 0.025493622532985007,
+      "us_death_share": 0.02777192612878309
+     },
+     "Trauma": {
+      "field": 1.6072110205177415,
+      "field_expo_share": 0.2777253147489782,
+      "field_death_share": 0.4463631865413162,
+      "us": 1.9065290479119168,
+      "us_expo_share": 0.2724744844823995,
+      "us_death_share": 0.5194805194805194
+     },
+     "Trophy": {
+      "field": 9.496265642055006,
+      "field_expo_share": 0.03795012774006266,
+      "field_death_share": 0.36038449416955565,
+      "us": 11.292452830188678,
+      "us_expo_share": 0.043859649122807015,
+      "us_death_share": 0.49528301886792453
+     }
+    },
+    "maps_ratio_gt1_field": 8,
+    "maps_ratio_gt1_us": 9,
+    "n_maps": 9
+   },
+   {
+    "rule": "bed3 > 0.443788 & bed6 > 0.62845 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed6",
+      ">",
+      0.6284500062465668
+     ],
+     [
+      "bed3",
+      ">",
+      0.44378846883773804
+     ]
+    ],
+    "field_rate_per1k": 7.753576025146762,
+    "us_rate_per1k": 10.97603748541457,
+    "field_ratio": 1.2526361242389359,
+    "us_ratio": 1.4659859702053735,
+    "us_over_field": 1.4156097070328026,
+    "field_expo_share": 0.09327738608046422,
+    "field_death_share": 0.11684262337897158,
+    "us_expo_share": 0.12816879310263776,
+    "us_death_share": 0.18789365250662218,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.36004090340909545,
+      "field_expo_share": 0.03772565265202282,
+      "field_death_share": 0.013582778062532035,
+      "us": 0.45943611954663877,
+      "us_expo_share": 0.04594366555323108,
+      "us_death_share": 0.021108179419525065
+     },
+     "Devil": {
+      "field": 1.2942570064972636,
+      "field_expo_share": 0.11443922198692469,
+      "field_death_share": 0.14811376487467298,
+      "us": 2.211331829326395,
+      "us_expo_share": 0.11556446225784903,
+      "us_death_share": 0.25555137372977044
+     },
+     "Portals": {
+      "field": 1.2065593736664304,
+      "field_expo_share": 0.1424038155097547,
+      "field_death_share": 0.17181865844915953,
+      "us": 2.277359886982249,
+      "us_expo_share": 0.17690668331989354,
+      "us_death_share": 0.40288018433179723
+     },
+     "Prisoners Dilemma": {
+      "field": 0.2551315023696126,
+      "field_expo_share": 0.09439522863037092,
+      "field_death_share": 0.0240831964969896,
+      "us": 0.25445525629548144,
+      "us_expo_share": 0.1142942553933536,
+      "us_death_share": 0.029082774049217
+     },
+     "Queen Of Spades": {
+      "field": 1.7835670433500246,
+      "field_expo_share": 0.07573986948839592,
+      "field_death_share": 0.13508713508713507,
+      "us": 1.2571707051317522,
+      "us_expo_share": 0.06580537696659455,
+      "us_death_share": 0.08272859216255443
+     },
+     "Schooltime": {
+      "field": 3.2534836389944264,
+      "field_expo_share": 0.035699881348819684,
+      "field_death_share": 0.11614897988242713,
+      "us": 3.899027148478203,
+      "us_expo_share": 0.03732868225920207,
+      "us_death_share": 0.14554554554554555
+     },
+     "Slithery Fight": {
+      "field": 0.6762872182089845,
+      "field_expo_share": 0.20450984326214122,
+      "field_death_share": 0.13830739299610895,
+      "us": 0.5927103078044571,
+      "us_expo_share": 0.26869530855524576,
+      "us_death_share": 0.1592584790393933
+     },
+     "Trauma": {
+      "field": 0.07737041651516621,
+      "field_expo_share": 0.004796451032141803,
+      "field_death_share": 0.0003711034141514102,
+      "us": 0.0,
+      "us_expo_share": 0.0033876870889993156,
+      "us_death_share": 0.0
+     },
+     "Trophy": {
+      "field": 1.986245747105087,
+      "field_expo_share": 0.05132999625646089,
+      "field_death_share": 0.10195398676331548,
+      "us": 2.597011318922435,
+      "us_expo_share": 0.05358118479589979,
+      "us_death_share": 0.1391509433962264
+     }
+    },
+    "maps_ratio_gt1_field": 5,
+    "maps_ratio_gt1_us": 5,
+    "n_maps": 9
+   },
+   {
+    "rule": "bed3 <= 0.443788 & bed6 > 0.62845 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed6",
+      ">",
+      0.6284500062465668
+     ],
+     [
+      "bed3",
+      "<=",
+      0.44378846883773804
+     ]
+    ],
+    "field_rate_per1k": 3.9204269702798413,
+    "us_rate_per1k": 3.2252400985128973,
+    "field_ratio": 0.6333681941707897,
+    "us_ratio": 0.4307708261061136,
+    "us_over_field": 0.8226757245991191,
+    "field_expo_share": 0.17449285874418774,
+    "field_death_share": 0.11051822683850489,
+    "us_expo_share": 0.15145141595250072,
+    "us_death_share": 0.06524085156479938,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.35345420979381725,
+      "field_expo_share": 0.1743273997196482,
+      "field_death_share": 0.06161675331331918,
+      "us": 0.6774565308175623,
+      "us_expo_share": 0.12852668200048545,
+      "us_death_share": 0.0870712401055409
+     },
+     "Devil": {
+      "field": 0.4760684306013432,
+      "field_expo_share": 0.15352065312832777,
+      "field_death_share": 0.07308633639969618,
+      "us": 0.39220325386125665,
+      "us_expo_share": 0.13626540067657597,
+      "us_death_share": 0.05344373353406097
+     },
+     "Portals": {
+      "field": 0.4820051540252513,
+      "field_expo_share": 0.554767259518403,
+      "field_death_share": 0.2674006783723344,
+      "us": 0.2361378904848944,
+      "us_expo_share": 0.5000788198844379,
+      "us_death_share": 0.11808755760368664
+     },
+     "Prisoners Dilemma": {
+      "field": 0.24787255517175757,
+      "field_expo_share": 0.36810236590279355,
+      "field_death_share": 0.09124247400109468,
+      "us": 0.3841318505786681,
+      "us_expo_share": 0.22713118429575008,
+      "us_death_share": 0.087248322147651
+     },
+     "Queen Of Spades": {
+      "field": 1.5548132278587128,
+      "field_expo_share": 0.012279300658068492,
+      "field_death_share": 0.019092019092019092,
+      "us": 2.087559285669212,
+      "us_expo_share": 0.014600282356764882,
+      "us_death_share": 0.030478955007256895
+     },
+     "Schooltime": {
+      "field": 0.9897804685277088,
+      "field_expo_share": 0.017160379479821394,
+      "field_death_share": 0.016985008441650903,
+      "us": 0.8861845085308773,
+      "us_expo_share": 0.016491615994103558,
+      "us_death_share": 0.014614614614614614
+     },
+     "Slithery Fight": {
+      "field": 0.3914379310538215,
+      "field_expo_share": 0.27708871934677665,
+      "field_death_share": 0.10846303501945526,
+      "us": 0.2851660676945747,
+      "us_expo_share": 0.24033193563258765,
+      "us_death_share": 0.06853451302577067
+     },
+     "Trophy": {
+      "field": 1.1416058786169416,
+      "field_expo_share": 0.10559544163910094,
+      "field_death_share": 0.12054837693034982,
+      "us": 0.9082738771324282,
+      "us_expo_share": 0.10386693377041219,
+      "us_death_share": 0.09433962264150944
+     }
+    },
+    "maps_ratio_gt1_field": 2,
+    "maps_ratio_gt1_us": 1,
+    "n_maps": 8
+   },
+   {
+    "rule": "bed6 <= 0.62845 & 0.5 < region <= 421",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed6",
+      "<=",
+      0.6284500062465668
+     ],
+     [
+      "region",
+      "<=",
+      421.0
+     ]
+    ],
+    "field_rate_per1k": 2.624693488690059,
+    "us_rate_per1k": 2.5423322300570823,
+    "field_ratio": 0.4240347767694268,
+    "us_ratio": 0.3395600084107996,
+    "us_over_field": 0.9686206183739642,
+    "field_expo_share": 0.13011604960391351,
+    "field_death_share": 0.05517373004791514,
+    "us_expo_share": 0.12862831952011808,
+    "us_death_share": 0.043677033258118315,
+    "per_terrain": {
+     "Devil": {
+      "field": 0.24622931667933376,
+      "field_expo_share": 0.47802318566001323,
+      "field_death_share": 0.11770332236194335,
+      "us": 0.19693014894127148,
+      "us_expo_share": 0.5293903314650692,
+      "us_death_share": 0.10425291682348513
+     },
+     "Portals": {
+      "field": 0.2544377910097715,
+      "field_expo_share": 0.1328875627890469,
+      "field_death_share": 0.033811617928717404,
+      "us": 0.1650620744666261,
+      "us_expo_share": 0.11307015576021778,
+      "us_death_share": 0.018663594470046084
+     },
+     "Queen Of Spades": {
+      "field": 0.5045179008398218,
+      "field_expo_share": 0.04642258160124096,
+      "field_death_share": 0.02342102342102342,
+      "us": 0.32877691661083464,
+      "us_expo_share": 0.04855926952882984,
+      "us_death_share": 0.015965166908563134
+     },
+     "Schooltime": {
+      "field": 1.2834205049885097,
+      "field_expo_share": 0.0719558604352107,
+      "field_death_share": 0.09234962673664084,
+      "us": 1.358158143406642,
+      "us_expo_share": 0.06898584980588755,
+      "us_death_share": 0.0936936936936937
+     },
+     "Slithery Fight": {
+      "field": 0.2714275794367812,
+      "field_expo_share": 0.020410170845489916,
+      "field_death_share": 0.00553988326848249,
+      "us": 0.17002426898517942,
+      "us_expo_share": 0.023127922548352397,
+      "us_death_share": 0.003932308124429464
+     },
+     "Trauma": {
+      "field": 0.49710110116028283,
+      "field_expo_share": 0.7081631841940365,
+      "field_death_share": 0.3520286986640277,
+      "us": 0.5037440526446063,
+      "us_expo_share": 0.7170708483351683,
+      "us_death_share": 0.36122017517366356
+     }
+    },
+    "maps_ratio_gt1_field": 1,
+    "maps_ratio_gt1_us": 1,
+    "n_maps": 6
+   },
+   {
+    "rule": "bed6 <= 0.62845 & region > 421",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed6",
+      "<=",
+      0.6284500062465668
+     ],
+     [
+      "region",
+      ">",
+      421.0
+     ]
+    ],
+    "field_rate_per1k": 1.5617207862719513,
+    "us_rate_per1k": 1.513514426628498,
+    "field_ratio": 0.2523052416735737,
+    "us_ratio": 0.20214862768911213,
+    "us_over_field": 0.9691325363232638,
+    "field_expo_share": 0.47388170117147405,
+    "field_death_share": 0.119562837138753,
+    "us_expo_share": 0.4522201237313075,
+    "us_death_share": 0.0914156774256843,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.3766680946254206,
+      "field_expo_share": 0.7211095228522857,
+      "field_death_share": 0.27161894998901664,
+      "us": 0.729854355720088,
+      "us_expo_share": 0.7447179232307355,
+      "us_death_share": 0.5435356200527705
+     },
+     "Default": {
+      "field": 0.7934527762928092,
+      "field_expo_share": 0.966716769738805,
+      "field_death_share": 0.7670441048380711,
+      "us": 0.783322139384216,
+      "us_expo_share": 0.9705666831999444,
+      "us_death_share": 0.7602663706992231
+     },
+     "Prisoners Dilemma": {
+      "field": 0.08770202009342104,
+      "field_expo_share": 0.41003150320482196,
+      "field_death_share": 0.03596059113300493,
+      "us": 0.10804708184833071,
+      "us_expo_share": 0.5590404065567236,
+      "us_death_share": 0.06040268456375839
+     },
+     "Queen Of Spades": {
+      "field": 0.2005325285883754,
+      "field_expo_share": 0.7932037768778214,
+      "field_death_share": 0.15906315906315907,
+      "us": 0.23098153560886067,
+      "us_expo_share": 0.7791573986613446,
+      "us_death_share": 0.1799709724238026
+     },
+     "Schooltime": {
+      "field": 0.5413897128313043,
+      "field_expo_share": 0.7918765497440102,
+      "field_death_share": 0.4287138178637538,
+      "us": 0.4904646343317763,
+      "us_expo_share": 0.794735771970289,
+      "us_death_share": 0.3897897897897898
+     },
+     "Slithery Fight": {
+      "field": 0.22350675173246082,
+      "field_expo_share": 0.3617610228848474,
+      "field_death_share": 0.08085603112840467,
+      "us": 0.17526301933253038,
+      "us_expo_share": 0.3125099339202213,
+      "us_death_share": 0.05477143459026754
+     },
+     "Trophy": {
+      "field": 0.5122160643753136,
+      "field_expo_share": 0.8051011740701902,
+      "field_death_share": 0.4123857548061771,
+      "us": 0.32483226240849455,
+      "us_expo_share": 0.798670551812056,
+      "us_death_share": 0.25943396226415094
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 7
+   }
+  ],
+  "lomo_top_leaf": {
+   "Autarky": {
+    "rule": "bed3 > 1.95455 & bed6 > 0.361818 & region <= 0.5",
+    "field": 15.034239361932743,
+    "us": 0.8340712485408249
+   },
+   "Default": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   },
+   "Devil": {
+    "rule": "deg <= 1.5"
+   },
+   "Portals": {
+    "rule": "bed3 > 1.04545 & region <= 0.5",
+    "field": 2.6048756069031795,
+    "us": 1.2621016609220108
+   },
+   "Prisoners Dilemma": {
+    "rule": "bed6 > 0.361818 & reach5 <= 24.5 & region <= 0.5",
+    "field": 11.050798173116076,
+    "us": 28.098710540898768
+   },
+   "Queen Of Spades": {
+    "rule": "bed6 > 0.361818 & reach5 <= 24.5 & region <= 0.5",
+    "field": 13.340291889324087,
+    "us": 17.911256128183826
+   },
+   "Schooltime": {
+    "rule": "bed3 > 0.146606 & cluster <= 3.5 & region <= 0.5"
+   },
+   "Slithery Fight": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 9.129315346192849,
+    "us": 4.89448715355187
+   },
+   "Trauma": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 6.271299131430878,
+    "us": 4.736390098779821
+   },
+   "Trophy": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   }
+  }
+ },
+ "ally_body": {
+  "base_field_per1k": 2.4174762434417305,
+  "base_us_per1k": 3.4454197791452574,
+  "leaves": [
+   {
+    "rule": "portal_d <= 0.5",
+    "conds": [
+     [
+      "portal_d",
+      "<=",
+      0.5
+     ]
+    ],
+    "field_rate_per1k": 14.513959214471516,
+    "us_rate_per1k": 15.14420612762981,
+    "field_ratio": 6.003764981701816,
+    "us_ratio": 4.395460378818281,
+    "us_over_field": 1.0434235003588745,
+    "field_expo_share": 0.040080746855186755,
+    "field_death_share": 0.24063538440962542,
+    "us_expo_share": 0.048725960069387314,
+    "us_death_share": 0.21417302690487358,
+    "per_terrain": {
+     "Autarky": {
+      "field": 10.591971636822539,
+      "field_expo_share": 0.03116822351478048,
+      "field_death_share": 0.33013293943870015,
+      "us": 9.489285450984365,
+      "us_expo_share": 0.05982211999676371,
+      "us_death_share": 0.5676691729323309
+     },
+     "Default": {
+      "field": 7.592933105877371,
+      "field_expo_share": 0.09154602133254117,
+      "field_death_share": 0.6951028160872078,
+      "us": 7.438547238549516,
+      "us_expo_share": 0.10350852484380135,
+      "us_death_share": 0.7699530516431925
+     },
+     "Portals": {
+      "field": 3.165416583760103,
+      "field_expo_share": 0.13105595151436136,
+      "field_death_share": 0.4148466823240194,
+      "us": 3.0636784802082104,
+      "us_expo_share": 0.1904606719091995,
+      "us_death_share": 0.583510261854211
+     },
+     "Prisoners Dilemma": {
+      "field": 4.726507005029665,
+      "field_expo_share": 0.022480180971848972,
+      "field_death_share": 0.10625273283777875,
+      "us": 3.987994677082435,
+      "us_expo_share": 0.08075083453739226,
+      "us_death_share": 0.3220338983050847
+     },
+     "Queen Of Spades": {
+      "field": 13.859468324381155,
+      "field_expo_share": 0.03549413390526789,
+      "field_death_share": 0.4919298245614035,
+      "us": 16.538991824451184,
+      "us_expo_share": 0.037518916887575283,
+      "us_death_share": 0.6205250596658711
+     },
+     "Schooltime": {
+      "field": 7.771090842092406,
+      "field_expo_share": 0.04382942477887387,
+      "field_death_share": 0.3406024415132847,
+      "us": 6.910206022991938,
+      "us_expo_share": 0.047196329972106266,
+      "us_death_share": 0.3261363636363636
+     },
+     "Slithery Fight": {
+      "field": 6.343803669458516,
+      "field_expo_share": 0.005121711696242378,
+      "field_death_share": 0.032491133452531,
+      "us": 4.996477954715589,
+      "us_expo_share": 0.00948124080700753,
+      "us_death_share": 0.04737281067556297
+     },
+     "Trauma": {
+      "field": 7.453767057748699,
+      "field_expo_share": 0.026178735935099562,
+      "field_death_share": 0.19513019952654717,
+      "us": 5.750814907139785,
+      "us_expo_share": 0.03077037521944833,
+      "us_death_share": 0.17695473251028807
+     },
+     "Trophy": {
+      "field": 24.3618284302646,
+      "field_expo_share": 0.013791986199256983,
+      "field_death_share": 0.3359980014988758,
+      "us": 19.268115397147653,
+      "us_expo_share": 0.018146577516455497,
+      "us_death_share": 0.34965034965034963
+     }
+    },
+    "maps_ratio_gt1_field": 9,
+    "maps_ratio_gt1_us": 9,
+    "n_maps": 9
+   },
+   {
+    "rule": "bed6 > 0.357049 & portal_d > 25.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "bed6",
+      ">",
+      0.35704900324344635
+     ],
+     [
+      "portal_d",
+      ">",
+      25.5
+     ]
+    ],
+    "field_rate_per1k": 7.18233356037505,
+    "us_rate_per1k": 11.309106215799074,
+    "field_ratio": 2.9710048153977526,
+    "us_ratio": 3.282359462917069,
+    "us_over_field": 1.5745726818079624,
+    "field_expo_share": 0.10003129007789914,
+    "field_death_share": 0.2971934445118877,
+    "us_expo_share": 0.1361111959909552,
+    "us_death_share": 0.4467658721698717,
+    "per_terrain": {
+     "Devil": {
+      "field": 1.6816046572077865,
+      "field_expo_share": 0.48998636202290435,
+      "field_death_share": 0.8239633483460165,
+      "us": 2.002267346632239,
+      "us_expo_share": 0.42808611876158736,
+      "us_death_share": 0.8571428571428571
+     },
+     "Slithery Fight": {
+      "field": 2.3816180599484693,
+      "field_expo_share": 0.290226914422976,
+      "field_death_share": 0.6912096608728786,
+      "us": 2.1805333882393314,
+      "us_expo_share": 0.354184101336963,
+      "us_death_share": 0.7723102585487907
+     }
+    },
+    "maps_ratio_gt1_field": 2,
+    "maps_ratio_gt1_us": 2,
+    "n_maps": 2
+   },
+   {
+    "rule": "bed6 > 0.357049 & 0.5 < portal_d <= 25.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "bed6",
+      ">",
+      0.35704900324344635
+     ],
+     [
+      "portal_d",
+      "<=",
+      25.5
+     ]
+    ],
+    "field_rate_per1k": 2.7036342697332993,
+    "us_rate_per1k": 2.686300731027113,
+    "field_ratio": 1.1183705639581258,
+    "us_ratio": 0.7796729871021792,
+    "us_over_field": 0.9935888004896846,
+    "field_expo_share": 0.26117056527126165,
+    "field_death_share": 0.2920854723716834,
+    "us_expo_share": 0.23783650614190552,
+    "us_death_share": 0.18543469918560526,
+    "per_terrain": {
+     "Autarky": {
+      "field": 1.1286047669034154,
+      "field_expo_share": 0.2607106576352436,
+      "field_death_share": 0.2942392909896603,
+      "us": 0.4741152327917053,
+      "us_expo_share": 0.2299494908632786,
+      "us_death_share": 0.10902255639097744
+     },
+     "Portals": {
+      "field": 0.6847177904170233,
+      "field_expo_share": 0.8342988224450698,
+      "field_death_share": 0.5712592462521127,
+      "us": 0.5152371443330214,
+      "us_expo_share": 0.7898025258741428,
+      "us_death_share": 0.40693559801840057
+     },
+     "Prisoners Dilemma": {
+      "field": 1.390932389625608,
+      "field_expo_share": 0.5655343366092539,
+      "field_death_share": 0.7866200262352426,
+      "us": 1.589811036173924,
+      "us_expo_share": 0.3838000099646256,
+      "us_death_share": 0.6101694915254238
+     },
+     "Queen Of Spades": {
+      "field": 1.8549876348704677,
+      "field_expo_share": 0.22345320054144327,
+      "field_death_share": 0.4145029239766082,
+      "us": 1.2961255031367513,
+      "us_expo_share": 0.2154392272768823,
+      "us_death_share": 0.27923627684964203
+     },
+     "Schooltime": {
+      "field": 2.88843198499773,
+      "field_expo_share": 0.15040885452916591,
+      "field_death_share": 0.4344457462489134,
+      "us": 2.9620541130433886,
+      "us_expo_share": 0.14616699389387672,
+      "us_death_share": 0.4329545454545455
+     },
+     "Slithery Fight": {
+      "field": 0.5565283829347428,
+      "field_expo_share": 0.29559575999670673,
+      "field_death_share": 0.16450743031333354,
+      "us": 0.40558676106529057,
+      "us_expo_share": 0.27616781190314155,
+      "us_death_share": 0.11201000834028357
+     },
+     "Trauma": {
+      "field": 1.7155171203090271,
+      "field_expo_share": 0.05317592733420176,
+      "field_death_share": 0.09122421373013188,
+      "us": 0.3199960524117395,
+      "us_expo_share": 0.03643734936174011,
+      "us_death_share": 0.011659807956104253
+     },
+     "Trophy": {
+      "field": 1.2590268959365507,
+      "field_expo_share": 0.27659363116726177,
+      "field_death_share": 0.3482388208843368,
+      "us": 1.1614014457651767,
+      "us_expo_share": 0.2669389737319076,
+      "us_death_share": 0.31002331002331
+     }
+    },
+    "maps_ratio_gt1_field": 6,
+    "maps_ratio_gt1_us": 4,
+    "n_maps": 8
+   },
+   {
+    "rule": "bed6 <= 0.357049 & portal_d > 0.5 & region <= 0.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "bed6",
+      "<=",
+      0.35704900324344635
+     ],
+     [
+      "region",
+      "<=",
+      0.5
+     ]
+    ],
+    "field_rate_per1k": 2.6274831715726514,
+    "us_rate_per1k": 3.6904190833369674,
+    "field_ratio": 1.0868703172164111,
+    "us_ratio": 1.0711086949911484,
+    "us_over_field": 1.404545278639447,
+    "field_expo_share": 0.05099158532929344,
+    "field_death_share": 0.05542124052221685,
+    "us_expo_share": 0.05389974567387022,
+    "us_death_share": 0.05773248624909393,
+    "per_terrain": {
+     "Autarky": {
+      "field": 3.233738044683398,
+      "field_expo_share": 0.018179819512470736,
+      "field_death_share": 0.05878877400295421,
+      "us": 3.2648371241780736,
+      "us_expo_share": 0.025332585905985968,
+      "us_death_share": 0.08270676691729323
+     },
+     "Default": {
+      "field": 2.3422769551066875,
+      "field_expo_share": 0.033283230261194986,
+      "field_death_share": 0.07795854323230655,
+      "us": 2.5202189838057474,
+      "us_expo_share": 0.02943331680005552,
+      "us_death_share": 0.07417840375586854
+     },
+     "Devil": {
+      "field": 0.24516167074683223,
+      "field_expo_share": 0.03199045231708242,
+      "field_death_share": 0.007842832738002795,
+      "us": 0.33098354747905834,
+      "us_expo_share": 0.04252354977334348,
+      "us_death_share": 0.014074595355383532
+     },
+     "Portals": {
+      "field": 1.1189823384967987,
+      "field_expo_share": 0.0030404249193294293,
+      "field_death_share": 0.0034021817862551857,
+      "us": 3.1703196945471066,
+      "us_expo_share": 0.0012277712768214973,
+      "us_death_share": 0.00389242745930644
+     },
+     "Prisoners Dilemma": {
+      "field": 1.3063491854400495,
+      "field_expo_share": 0.02443416018592408,
+      "field_death_share": 0.031919545255793616,
+      "us": 0.29652337387488875,
+      "us_expo_share": 0.05715958347865079,
+      "us_death_share": 0.01694915254237288
+     },
+     "Queen Of Spades": {
+      "field": 0.5199180918586838,
+      "field_expo_share": 0.023395498022724403,
+      "field_death_share": 0.012163742690058479,
+      "us": 0.5217932796178557,
+      "us_expo_share": 0.04116517870745605,
+      "us_death_share": 0.021479713603818614
+     },
+     "Schooltime": {
+      "field": 1.0213329159805937,
+      "field_expo_share": 0.04773632209894805,
+      "field_death_share": 0.048754677047507466,
+      "us": 1.0193614687950392,
+      "us_expo_share": 0.04821422898279992,
+      "us_death_share": 0.049147727272727273
+     },
+     "Slithery Fight": {
+      "field": 0.885318679988162,
+      "field_expo_share": 0.0327104471755625,
+      "field_death_share": 0.028959169915291495,
+      "us": 0.5002049035198776,
+      "us_expo_share": 0.03168009483875217,
+      "us_death_share": 0.0158465387823186
+     },
+     "Trauma": {
+      "field": 1.9940802545417504,
+      "field_expo_share": 0.2297127239442136,
+      "field_death_share": 0.4580656070341562,
+      "us": 2.290782762733938,
+      "us_expo_share": 0.2389249263546285,
+      "us_death_share": 0.5473251028806584
+     },
+     "Trophy": {
+      "field": 2.512884944392212,
+      "field_expo_share": 0.03648445555587177,
+      "field_death_share": 0.09168123907069697,
+      "us": 2.8337572505014363,
+      "us_expo_share": 0.04195176522621433,
+      "us_death_share": 0.11888111888111888
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 6,
+    "n_maps": 10
+   },
+   {
+    "rule": "bed6 <= 0.357049 & portal_d > 0.5 & region > 0.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "bed6",
+      "<=",
+      0.35704900324344635
+     ],
+     [
+      "region",
+      ">",
+      0.5
+     ]
+    ],
+    "field_rate_per1k": 0.506090086169494,
+    "us_rate_per1k": 0.6312151466936704,
+    "field_ratio": 0.20934645688554107,
+    "us_ratio": 0.183204133938728,
+    "us_over_field": 1.2472387109402316,
+    "field_expo_share": 0.547725812466359,
+    "field_death_share": 0.11466445818458658,
+    "us_expo_share": 0.5234265921238818,
+    "us_death_share": 0.09589391549055558,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.4592260180292443,
+      "field_expo_share": 0.6899412993375051,
+      "field_death_share": 0.3168389955686854,
+      "us": 0.35129650761957587,
+      "us_expo_share": 0.6848958032339717,
+      "us_death_share": 0.24060150375939848
+     },
+     "Default": {
+      "field": 0.25930784489055864,
+      "field_expo_share": 0.8751707484062639,
+      "field_death_share": 0.22693864068048558,
+      "us": 0.17976711607956078,
+      "us_expo_share": 0.8670581583561431,
+      "us_death_share": 0.15586854460093896
+     },
+     "Devil": {
+      "field": 0.351852847229059,
+      "field_expo_share": 0.47802318566001323,
+      "field_death_share": 0.16819381891598073,
+      "us": 0.24326577167618108,
+      "us_expo_share": 0.5293903314650692,
+      "us_death_share": 0.12878254750175933
+     },
+     "Portals": {
+      "field": 0.331971386162651,
+      "field_expo_share": 0.03160480112123945,
+      "field_death_share": 0.010491889637612765,
+      "us": 0.3058892000605304,
+      "us_expo_share": 0.018509030939836177,
+      "us_death_share": 0.005661712668082095
+     },
+     "Prisoners Dilemma": {
+      "field": 0.19405867392699674,
+      "field_expo_share": 0.387551322232973,
+      "field_death_share": 0.07520769567118496,
+      "us": 0.10631103122830264,
+      "us_expo_share": 0.47828957201933137,
+      "us_death_share": 0.05084745762711865
+     },
+     "Queen Of Spades": {
+      "field": 0.11342952102329963,
+      "field_expo_share": 0.7176571675305644,
+      "field_death_share": 0.08140350877192983,
+      "us": 0.11157607615129758,
+      "us_expo_share": 0.7058766771280863,
+      "us_death_share": 0.07875894988066826
+     },
+     "Schooltime": {
+      "field": 0.23244225789444237,
+      "field_expo_share": 0.7580253985930122,
+      "field_death_share": 0.17619713519029442,
+      "us": 0.25284241567039156,
+      "us_expo_share": 0.7584224471512171,
+      "us_death_share": 0.19176136363636365
+     },
+     "Slithery Fight": {
+      "field": 0.22009743388074657,
+      "field_expo_share": 0.37634516670851237,
+      "field_death_share": 0.08283260544596535,
+      "us": 0.15970319495417443,
+      "us_expo_share": 0.3284867511141358,
+      "us_death_share": 0.0524603836530442
+     },
+     "Trauma": {
+      "field": 0.36990579830705594,
+      "field_expo_share": 0.6909326127864851,
+      "field_death_share": 0.2555799797091647,
+      "us": 0.38056316817484886,
+      "us_expo_share": 0.693867349064183,
+      "us_death_share": 0.26406035665294925
+     },
+     "Trophy": {
+      "field": 0.3328955221452434,
+      "field_expo_share": 0.6731299270776094,
+      "field_death_share": 0.22408193854609043,
+      "us": 0.3290601795112104,
+      "us_expo_share": 0.6729626835254225,
+      "us_death_share": 0.22144522144522144
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 10
+   }
+  ],
+  "lomo_top_leaf": {
+   "Autarky": {
+    "rule": "bed3 > 0.380886 & cluster > 3.5 & deg <= 2.5"
+   },
+   "Default": {
+    "rule": "bed3 > 0.198048 & deg <= 2.5 & reach5 > 21.5"
+   },
+   "Devil": {
+    "rule": "portal_d <= 0.5"
+   },
+   "Portals": {
+    "rule": "bed3 > 0.198048 & cluster > 3.5 & deg <= 2.5",
+    "field": 3.040380105476823,
+    "us": 2.912392653026774
+   },
+   "Prisoners Dilemma": {
+    "rule": "portal_d <= 0.5",
+    "field": 4.726507005029665,
+    "us": 3.987994677082435
+   },
+   "Queen Of Spades": {
+    "rule": "portal_d <= 0.5",
+    "field": 13.859468324381155,
+    "us": 16.538991824451184
+   },
+   "Schooltime": {
+    "rule": "bed3 > 0.386488 & cluster > 3.5 & deg <= 2.5"
+   },
+   "Slithery Fight": {
+    "rule": "portal_d <= 0.5",
+    "field": 6.343803669458516,
+    "us": 4.996477954715589
+   },
+   "Trauma": {
+    "rule": "bed3 > 0.380886 & cluster > 3.5 & deg <= 2.5",
+    "field": 1.4808618373986375,
+    "us": 0.22594941900257579
+   },
+   "Trophy": {
+    "rule": "bed3 > 0.198048 & cluster > 3.5 & region <= 4"
+   }
+  }
+ },
+ "h2h_ally": {
+  "base_field_per1k": 1.4056783346167547,
+  "base_us_per1k": 2.205961855781571,
+  "leaves": [
+   {
+    "rule": "portal_d <= 0.5",
+    "conds": [
+     [
+      "portal_d",
+      "<=",
+      1.5
+     ],
+     [
+      "portal_d",
+      "<=",
+      0.5
+     ]
+    ],
+    "field_rate_per1k": 21.514664125017376,
+    "us_rate_per1k": 32.317488648629094,
+    "field_ratio": 15.305538682064947,
+    "us_ratio": 14.65006684677194,
+    "us_over_field": 1.5021144862331424,
+    "field_expo_share": 0.040080746855186755,
+    "field_death_share": 0.6134574213981139,
+    "us_expo_share": 0.048725960069387314,
+    "us_death_share": 0.7138385721896644,
+    "per_terrain": {
+     "Autarky": {
+      "field": 20.787814279987042,
+      "field_expo_share": 0.03116822351478048,
+      "field_death_share": 0.6479192418623816,
+      "us": 11.896208990191102,
+      "us_expo_share": 0.05982211999676371,
+      "us_death_share": 0.7116564417177914
+     },
+     "Default": {
+      "field": 7.793135458119524,
+      "field_expo_share": 0.09154602133254117,
+      "field_death_share": 0.7134305448963929,
+      "us": 6.9994554781993426,
+      "us_expo_share": 0.10350852484380135,
+      "us_death_share": 0.7245033112582782
+     },
+     "Portals": {
+      "field": 5.294394605485625,
+      "field_expo_share": 0.13105595151436136,
+      "field_death_share": 0.6938619227144204,
+      "us": 3.79204633828959,
+      "us_expo_share": 0.1904606719091995,
+      "us_death_share": 0.7222356935014549
+     },
+     "Prisoners Dilemma": {
+      "field": 21.662599926419237,
+      "field_expo_share": 0.022480180971848972,
+      "field_death_share": 0.4869791666666667,
+      "us": 8.403274498137987,
+      "us_expo_share": 0.08075083453739226,
+      "us_death_share": 0.6785714285714286
+     },
+     "Queen Of Spades": {
+      "field": 18.598170919005714,
+      "field_expo_share": 0.03549413390526789,
+      "field_death_share": 0.6601259689922481,
+      "us": 18.984134138991326,
+      "us_expo_share": 0.037518916887575283,
+      "us_death_share": 0.7122641509433962
+     },
+     "Schooltime": {
+      "field": 13.834302029840508,
+      "field_expo_share": 0.04382942477887387,
+      "field_death_share": 0.6063495001851166,
+      "us": 15.38368852569367,
+      "us_expo_share": 0.047196329972106266,
+      "us_death_share": 0.7260536398467433
+     },
+     "Slithery Fight": {
+      "field": 79.59326961596518,
+      "field_expo_share": 0.005121711696242378,
+      "field_death_share": 0.407653779934262,
+      "us": 74.34449384088173,
+      "us_expo_share": 0.00948124080700753,
+      "us_death_share": 0.7048780487804878
+     },
+     "Trauma": {
+      "field": 20.87231761089349,
+      "field_expo_share": 0.026178735935099562,
+      "field_death_share": 0.5464108910891089,
+      "us": 19.10016676930698,
+      "us_expo_share": 0.03077037521944833,
+      "us_death_share": 0.5877192982456141
+     },
+     "Trophy": {
+      "field": 46.419961159882945,
+      "field_expo_share": 0.013791986199256983,
+      "field_death_share": 0.6402234636871509,
+      "us": 40.76082229923872,
+      "us_expo_share": 0.018146577516455497,
+      "us_death_share": 0.7396694214876033
+     }
+    },
+    "maps_ratio_gt1_field": 9,
+    "maps_ratio_gt1_us": 9,
+    "n_maps": 9
+   },
+   {
+    "rule": "cluster > 2.5 & 0.5 < portal_d <= 1.5",
+    "conds": [
+     [
+      "portal_d",
+      "<=",
+      1.5
+     ],
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "cluster",
+      ">",
+      2.5
+     ]
+    ],
+    "field_rate_per1k": 5.724749372014687,
+    "us_rate_per1k": 10.971514948766556,
+    "field_ratio": 4.0725884656787334,
+    "us_ratio": 4.973574189422852,
+    "us_over_field": 1.9165057255432998,
+    "field_expo_share": 0.043381525508315165,
+    "field_death_share": 0.17667510040871212,
+    "us_expo_share": 0.04742700463992403,
+    "us_death_share": 0.235881726158764,
+    "per_terrain": {
+     "Autarky": {
+      "field": 2.6105415670899883,
+      "field_expo_share": 0.03851141156919502,
+      "field_death_share": 0.10053564070869386,
+      "us": 2.522057515014184,
+      "us_expo_share": 0.07540829182029381,
+      "us_death_share": 0.1901840490797546
+     },
+     "Default": {
+      "field": 1.6487343493291553,
+      "field_expo_share": 0.15886974064175802,
+      "field_death_share": 0.2619339984650806,
+      "us": 1.6294949748264158,
+      "us_expo_share": 0.1678495104312736,
+      "us_death_share": 0.27350993377483446
+     },
+     "Portals": {
+      "field": 1.4963737384900182,
+      "field_expo_share": 0.1623990938820743,
+      "field_death_share": 0.24300973923971098,
+      "us": 1.3535331410403881,
+      "us_expo_share": 0.2019895957752542,
+      "us_death_share": 0.2733996120271581
+     },
+     "Queen Of Spades": {
+      "field": 3.771330509216707,
+      "field_expo_share": 0.06282096042024438,
+      "field_death_share": 0.2369186046511628,
+      "us": 4.587909475939715,
+      "us_expo_share": 0.061173913485074706,
+      "us_death_share": 0.2806603773584906
+     },
+     "Schooltime": {
+      "field": 2.628558039564926,
+      "field_expo_share": 0.01031728610537061,
+      "field_death_share": 0.02711958533876342,
+      "us": 2.313275084554679,
+      "us_expo_share": 0.01352623853910524,
+      "us_death_share": 0.031289910600255426
+     },
+     "Slithery Fight": {
+      "field": 13.00952944588057,
+      "field_expo_share": 0.010166283874169128,
+      "field_death_share": 0.13225856941618408,
+      "us": 16.797850469721812,
+      "us_expo_share": 0.016872077451647604,
+      "us_death_share": 0.28341463414634144
+     },
+     "Trophy": {
+      "field": 6.578844651671826,
+      "field_expo_share": 0.03112227361987097,
+      "field_death_share": 0.2047486033519553,
+      "us": 6.32911223673687,
+      "us_expo_share": 0.04113224237063246,
+      "us_death_share": 0.2603305785123967
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 7,
+    "n_maps": 7
+   },
+   {
+    "rule": "bed6 > 0.357049 & land > 7.5 & portal_d > 1.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      1.5
+     ],
+     [
+      "bed6",
+      ">",
+      0.35704900324344635
+     ],
+     [
+      "land",
+      ">",
+      7.5
+     ]
+    ],
+    "field_rate_per1k": 2.020219011253343,
+    "us_rate_per1k": 0.18358116791001183,
+    "field_ratio": 1.4371844265524212,
+    "us_ratio": 0.08322046341321217,
+    "us_over_field": 0.09087191383082677,
+    "field_expo_share": 0.022178251025663436,
+    "field_death_share": 0.03187423698225376,
+    "us_expo_share": 0.017605091693736807,
+    "us_death_share": 0.0014651038891848695,
+    "per_terrain": {
+     "Devil": {
+      "field": 1.7987441010382395,
+      "field_expo_share": 0.48998636202290435,
+      "field_death_share": 0.8813600782778865,
+      "us": 2.141313690148367,
+      "us_expo_share": 0.42808611876158736,
+      "us_death_share": 0.9166666666666666
+     }
+    },
+    "maps_ratio_gt1_field": 1,
+    "maps_ratio_gt1_us": 1,
+    "n_maps": 1
+   },
+   {
+    "rule": "cluster <= 2.5 & 0.5 < portal_d <= 1.5",
+    "conds": [
+     [
+      "portal_d",
+      "<=",
+      1.5
+     ],
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "cluster",
+      "<=",
+      2.5
+     ]
+    ],
+    "field_rate_per1k": 1.852470879510416,
+    "us_rate_per1k": 2.125390208358566,
+    "field_ratio": 1.3178483539873829,
+    "us_ratio": 0.9634755028914774,
+    "us_over_field": 1.1473271897911177,
+    "field_expo_share": 0.033853148384707245,
+    "field_death_share": 0.04461331587607707,
+    "us_expo_share": 0.03760139550298751,
+    "us_death_share": 0.036228023441662226,
+    "per_terrain": {
+     "Autarky": {
+      "field": 5.237443307137494,
+      "field_expo_share": 0.03190081270251741,
+      "field_death_share": 0.16707869798104655,
+      "us": 2.151539065599371,
+      "us_expo_share": 0.045622926755972674,
+      "us_death_share": 0.09815950920245399
+     },
+     "Portals": {
+      "field": 0.03811826355482956,
+      "field_expo_share": 0.0860254080609004,
+      "field_death_share": 0.00327913917687716,
+      "us": 0.0,
+      "us_expo_share": 0.09283769773180625,
+      "us_death_share": 0.0
+     },
+     "Prisoners Dilemma": {
+      "field": 3.9705365106101773,
+      "field_expo_share": 0.04853458287522928,
+      "field_death_share": 0.19270833333333334,
+      "us": 1.795170186335404,
+      "us_expo_share": 0.1790518658761397,
+      "us_death_share": 0.32142857142857145
+     },
+     "Schooltime": {
+      "field": 2.103849698503194,
+      "field_expo_share": 0.08442589808031874,
+      "field_death_share": 0.17761940022213996,
+      "us": 2.5140190447400244,
+      "us_expo_share": 0.08407515424156357,
+      "us_death_share": 0.21136653895274585
+     },
+     "Trauma": {
+      "field": 6.468244208622407,
+      "field_expo_share": 0.03822942049608186,
+      "field_death_share": 0.24727722772277227,
+      "us": 5.965316288766671,
+      "us_expo_share": 0.04793792959800042,
+      "us_death_share": 0.28596491228070176
+     }
+    },
+    "maps_ratio_gt1_field": 4,
+    "maps_ratio_gt1_us": 4,
+    "n_maps": 5
+   },
+   {
+    "rule": "bed6 <= 0.357049 & portal_d > 1.5 & region <= 4.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      1.5
+     ],
+     [
+      "bed6",
+      "<=",
+      0.35704900324344635
+     ],
+     [
+      "region",
+      "<=",
+      4.5
+     ]
+    ],
+    "field_rate_per1k": 0.4682828081463392,
+    "us_rate_per1k": 0.18563657201891878,
+    "field_ratio": 0.3331365338813536,
+    "us_ratio": 0.08415221302779412,
+    "us_over_field": 0.39641978904531344,
+    "field_expo_share": 0.051650303521963016,
+    "field_death_share": 0.01720660308922663,
+    "us_expo_share": 0.054604607486872354,
+    "us_death_share": 0.004595098561534363,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.8881480062907317,
+      "field_expo_share": 0.01020628189463092,
+      "field_death_share": 0.009064688916357644,
+      "us": 0.0,
+      "us_expo_share": 0.014433245876628255,
+      "us_death_share": 0.0
+     },
+     "Default": {
+      "field": 0.21833017411809033,
+      "field_expo_share": 0.02073928763005623,
+      "field_death_share": 0.004528012279355334,
+      "us": 0.03796524612420822,
+      "us_expo_share": 0.017443628666662585,
+      "us_death_share": 0.0006622516556291391
+     },
+     "Devil": {
+      "field": 1.7816592757345944,
+      "field_expo_share": 0.03199045231708242,
+      "field_death_share": 0.056996086105675144,
+      "us": 0.0,
+      "us_expo_share": 0.04252354977334348,
+      "us_death_share": 0.0
+     },
+     "Portals": {
+      "field": 0.05812347947718486,
+      "field_expo_share": 0.0030404249193294293,
+      "field_death_share": 0.0001767200754005655,
+      "us": 0.0,
+      "us_expo_share": 0.0012277712768214973,
+      "us_death_share": 0.0
+     },
+     "Prisoners Dilemma": {
+      "field": 1.0054353301560024,
+      "field_expo_share": 0.016835576417139574,
+      "field_death_share": 0.016927083333333332,
+      "us": 0.0,
+      "us_expo_share": 0.028997060435454136,
+      "us_death_share": 0.0
+     },
+     "Queen Of Spades": {
+      "field": 0.1035447340254115,
+      "field_expo_share": 0.023395498022724403,
+      "field_death_share": 0.0024224806201550387,
+      "us": 0.0,
+      "us_expo_share": 0.04116517870745605,
+      "us_death_share": 0.0
+     },
+     "Schooltime": {
+      "field": 0.3366882015651313,
+      "field_expo_share": 0.04206093836920148,
+      "field_death_share": 0.014161421695668272,
+      "us": 0.01486796360677565,
+      "us_expo_share": 0.04294936556044808,
+      "us_death_share": 0.0006385696040868455
+     },
+     "Slithery Fight": {
+      "field": 0.6327143881947316,
+      "field_expo_share": 0.03426172103457445,
+      "field_death_share": 0.021677883862889342,
+      "us": 0.0,
+      "us_expo_share": 0.03359882329696384,
+      "us_death_share": 0.0
+     },
+     "Trauma": {
+      "field": 0.49233625905420475,
+      "field_expo_share": 0.26218698306685106,
+      "field_death_share": 0.1290841584158416,
+      "us": 0.43598619199921307,
+      "us_expo_share": 0.2696045466718243,
+      "us_death_share": 0.11754385964912281
+     },
+     "Trophy": {
+      "field": 0.7962371614706365,
+      "field_expo_share": 0.03648445555587177,
+      "field_death_share": 0.02905027932960894,
+      "us": 0.0,
+      "us_expo_share": 0.04195176522621433,
+      "us_death_share": 0.0
+     }
+    },
+    "maps_ratio_gt1_field": 2,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 10
+   },
+   {
+    "rule": "bed6 > 0.357049 & land <= 7.5 & portal_d > 1.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      1.5
+     ],
+     [
+      "bed6",
+      ">",
+      0.35704900324344635
+     ],
+     [
+      "land",
+      "<=",
+      7.5
+     ]
+    ],
+    "field_rate_per1k": 0.4207938831438174,
+    "us_rate_per1k": 0.051124720829086374,
+    "field_ratio": 0.29935289801456816,
+    "us_ratio": 0.02317570482694177,
+    "us_over_field": 0.12149587452917693,
+    "field_expo_share": 0.30560088415050735,
+    "field_death_share": 0.0914825103062687,
+    "us_expo_share": 0.31895966627334654,
+    "us_death_share": 0.0073921150772509325,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.08376205200129205,
+      "field_expo_share": 0.2607106576352436,
+      "field_death_share": 0.021837659662134322,
+      "us": 0.0,
+      "us_expo_share": 0.2299494908632786,
+      "us_death_share": 0.0
+     },
+     "Portals": {
+      "field": 0.09970705432487838,
+      "field_expo_share": 0.5858743205020951,
+      "field_death_share": 0.0584158027018536,
+      "us": 0.00881800580306626,
+      "us_expo_share": 0.4949752323670824,
+      "us_death_share": 0.004364694471387003
+     },
+     "Prisoners Dilemma": {
+      "field": 0.46968854551360145,
+      "field_expo_share": 0.5655343366092539,
+      "field_death_share": 0.265625,
+      "us": 0.0,
+      "us_expo_share": 0.3838000099646256,
+      "us_death_share": 0.0
+     },
+     "Queen Of Spades": {
+      "field": 0.5444209102831019,
+      "field_expo_share": 0.1606322401211989,
+      "field_death_share": 0.0874515503875969,
+      "us": 0.04586560338289706,
+      "us_expo_share": 0.15426531379180758,
+      "us_death_share": 0.007075471698113208
+     },
+     "Schooltime": {
+      "field": 0.8572216619321112,
+      "field_expo_share": 0.15040885452916591,
+      "field_death_share": 0.12893372824879673,
+      "us": 0.20970083723841734,
+      "us_expo_share": 0.14616699389387672,
+      "us_death_share": 0.03065134099616858
+     },
+     "Slithery Fight": {
+      "field": 0.67308004062332,
+      "field_expo_share": 0.5756563905455137,
+      "field_death_share": 0.3874628267334481,
+      "us": 0.019083458640697208,
+      "us_expo_share": 0.6134798357884569,
+      "us_death_share": 0.011707317073170732
+     },
+     "Trauma": {
+      "field": 0.3002363538357112,
+      "field_expo_share": 0.05317592733420176,
+      "field_death_share": 0.015965346534653466,
+      "us": 0.0,
+      "us_expo_share": 0.03643734936174011,
+      "us_death_share": 0.0
+     },
+     "Trophy": {
+      "field": 0.2526208100364037,
+      "field_expo_share": 0.2454713575473908,
+      "field_death_share": 0.06201117318435754,
+      "us": 0.0,
+      "us_expo_share": 0.22580673136127516,
+      "us_death_share": 0.0
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 8
+   },
+   {
+    "rule": "bed6 <= 0.357049 & portal_d > 1.5 & region > 4.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      1.5
+     ],
+     [
+      "bed6",
+      "<=",
+      0.35704900324344635
+     ],
+     [
+      "region",
+      ">",
+      4.5
+     ]
+    ],
+    "field_rate_per1k": 0.06896569276779686,
+    "us_rate_per1k": 0.002783062160002573,
+    "field_ratio": 0.04906221506686288,
+    "us_ratio": 0.0012616093758414221,
+    "us_over_field": 0.04035429861297801,
+    "field_expo_share": 0.503255140553657,
+    "field_death_share": 0.02469081193934783,
+    "us_expo_share": 0.47507627433374544,
+    "us_death_share": 0.0005993606819392648,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.08536071370334107,
+      "field_expo_share": 0.6275026126836325,
+      "field_death_share": 0.053564070869386075,
+      "us": 0.0,
+      "us_expo_share": 0.5747639246870629,
+      "us_death_share": 0.0
+     },
+     "Default": {
+      "field": 0.027588095860794623,
+      "field_expo_share": 0.7288449503956446,
+      "field_death_share": 0.020107444359171143,
+      "us": 0.00186235434492042,
+      "us_expo_share": 0.7111983360582624,
+      "us_death_share": 0.0013245033112582781
+     },
+     "Devil": {
+      "field": 0.12895574412635621,
+      "field_expo_share": 0.47802318566001323,
+      "field_death_share": 0.06164383561643835,
+      "us": 0.15741378030594413,
+      "us_expo_share": 0.5293903314650692,
+      "us_death_share": 0.08333333333333333
+     },
+     "Portals": {
+      "field": 0.03976218951407442,
+      "field_expo_share": 0.03160480112123945,
+      "field_death_share": 0.0012566760917373547,
+      "us": 0.0,
+      "us_expo_share": 0.018509030939836177,
+      "us_death_share": 0.0
+     },
+     "Prisoners Dilemma": {
+      "field": 0.10894041361490135,
+      "field_expo_share": 0.3466153231265282,
+      "field_death_share": 0.037760416666666664,
+      "us": 0.0,
+      "us_expo_share": 0.32740022918638834,
+      "us_death_share": 0.0
+     },
+     "Queen Of Spades": {
+      "field": 0.018227917090063876,
+      "field_expo_share": 0.7176571675305644,
+      "field_death_share": 0.01308139534883721,
+      "us": 0.0,
+      "us_expo_share": 0.7058766771280863,
+      "us_death_share": 0.0
+     },
+     "Schooltime": {
+      "field": 0.0684891904017618,
+      "field_expo_share": 0.6689575981370693,
+      "field_death_share": 0.045816364309514995,
+      "us": 0.0,
+      "us_expo_share": 0.6660859177929002,
+      "us_death_share": 0.0
+     },
+     "Slithery Fight": {
+      "field": 0.1359332182973279,
+      "field_expo_share": 0.37479389284950043,
+      "field_death_share": 0.05094694005321647,
+      "us": 0.0,
+      "us_expo_share": 0.3265680226559241,
+      "us_death_share": 0.0
+     },
+     "Trauma": {
+      "field": 0.09877381231593223,
+      "field_expo_share": 0.6202289331677657,
+      "field_death_share": 0.06126237623762376,
+      "us": 0.014257509448511372,
+      "us_expo_share": 0.6152497991489868,
+      "us_death_share": 0.008771929824561403
+     },
+     "Trophy": {
+      "field": 0.0950284304319042,
+      "field_expo_share": 0.6731299270776094,
+      "field_death_share": 0.06396648044692738,
+      "us": 0.0,
+      "us_expo_share": 0.6729626835254225,
+      "us_death_share": 0.0
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 10
+   }
+  ],
+  "lomo_top_leaf": {
+   "Autarky": {
+    "rule": "portal_d <= 0.5",
+    "field": 20.787814279987042,
+    "us": 11.896208990191102
+   },
+   "Default": {
+    "rule": "portal_d <= 0.5",
+    "field": 7.793135458119524,
+    "us": 6.9994554781993426
+   },
+   "Devil": {
+    "rule": "portal_d <= 0.5"
+   },
+   "Portals": {
+    "rule": "portal_d <= 0.5",
+    "field": 5.294394605485625,
+    "us": 3.79204633828959
+   },
+   "Prisoners Dilemma": {
+    "rule": "portal_d <= 0.5",
+    "field": 21.662599926419237,
+    "us": 8.403274498137987
+   },
+   "Queen Of Spades": {
+    "rule": "portal_d <= 0.5",
+    "field": 18.598170919005714,
+    "us": 18.984134138991326
+   },
+   "Schooltime": {
+    "rule": "portal_d <= 0.5",
+    "field": 13.834302029840508,
+    "us": 15.38368852569367
+   },
+   "Slithery Fight": {
+    "rule": "portal_d <= 0.5",
+    "field": 79.59326961596518,
+    "us": 74.34449384088173
+   },
+   "Trauma": {
+    "rule": "portal_d <= 0.5",
+    "field": 20.87231761089349,
+    "us": 19.10016676930698
+   },
+   "Trophy": {
+    "rule": "portal_d <= 0.5",
+    "field": 46.419961159882945,
+    "us": 40.76082229923872
+   }
+  }
+ },
+ "trapped": {
+  "base_field_per1k": 18.75984545621361,
+  "base_us_per1k": 22.2450157249705,
+  "leaves": [
+   {
+    "rule": "deg <= 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      "<=",
+      1.5
+     ]
+    ],
+    "field_rate_per1k": 550.5843106270688,
+    "us_rate_per1k": 577.7417199580033,
+    "field_ratio": 29.349085626113457,
+    "us_ratio": 25.971737988455363,
+    "us_over_field": 1.049324706147192,
+    "field_expo_share": 0.009632349916436267,
+    "field_death_share": 0.2827006624781748,
+    "us_expo_share": 0.009234894391192136,
+    "us_death_share": 0.23984625747909816,
+    "per_terrain": {
+     "Autarky": {
+      "field": 45.53668042696251,
+      "field_expo_share": 0.015755151730392828,
+      "field_death_share": 0.7174373094252037,
+      "us": 40.375331661764754,
+      "us_expo_share": 0.01812607635317098,
+      "us_death_share": 0.7318463444857497
+     },
+     "Portals": {
+      "field": 16.87661646070508,
+      "field_expo_share": 0.01933898117867762,
+      "field_death_share": 0.3263765680933364,
+      "us": 15.378863071669644,
+      "us_expo_share": 0.024235598697652988,
+      "us_death_share": 0.3727159538311404
+     },
+     "Prisoners Dilemma": {
+      "field": 18.379618995990644,
+      "field_expo_share": 0.04490989760449146,
+      "field_death_share": 0.825426807119506,
+      "us": 40.39100658370438,
+      "us_expo_share": 0.01722634647003139,
+      "us_death_share": 0.6957894736842105
+     },
+     "Queen Of Spades": {
+      "field": 48.34213305838858,
+      "field_expo_share": 0.00393762617505905,
+      "field_death_share": 0.19035324848889834,
+      "us": 57.13661154478225,
+      "us_expo_share": 0.004062687264491098,
+      "us_death_share": 0.23212818405916189
+     },
+     "Schooltime": {
+      "field": 65.42461620358931,
+      "field_expo_share": 0.0009670045701354928,
+      "field_death_share": 0.06326590286823149,
+      "us": 81.42684996350118,
+      "us_expo_share": 0.0007294307517330334,
+      "us_death_share": 0.05939524838012959
+     },
+     "Slithery Fight": {
+      "field": 20.20188254904709,
+      "field_expo_share": 0.014446229119945647,
+      "field_death_share": 0.29184102395776584,
+      "us": 16.085028262979407,
+      "us_expo_share": 0.014275866611051348,
+      "us_death_share": 0.22962771791728498
+     },
+     "Trauma": {
+      "field": 32.1190435916146,
+      "field_expo_share": 0.009315050024843596,
+      "field_death_share": 0.2991904978060221,
+      "us": 29.196403093040658,
+      "us_expo_share": 0.0070669800934329155,
+      "us_death_share": 0.20633039945836154
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 7,
+    "n_maps": 7
+   },
+   {
+    "rule": "cluster > 6.5 & deg > 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "cluster",
+      ">",
+      6.5
+     ]
+    ],
+    "field_rate_per1k": 114.26557101192871,
+    "us_rate_per1k": 136.76354021068937,
+    "field_ratio": 6.090965476161842,
+    "us_ratio": 6.148053204438485,
+    "us_over_field": 1.1968919334102133,
+    "field_expo_share": 0.03365439259619206,
+    "field_death_share": 0.20498774342460252,
+    "us_expo_share": 0.04855789797808376,
+    "us_death_share": 0.2985365402649549,
+    "per_terrain": {
+     "Autarky": {
+      "field": 2.611036553088035,
+      "field_expo_share": 0.0011721683243450867,
+      "field_death_share": 0.0030605743412369726,
+      "us": 1.8176111343624086,
+      "us_expo_share": 0.0021816017290999666,
+      "us_death_share": 0.003965303593556382
+     },
+     "Default": {
+      "field": 8.464793956061108,
+      "field_expo_share": 0.033283230261194986,
+      "field_death_share": 0.2817356863531535,
+      "us": 8.839998494154942,
+      "us_expo_share": 0.02943331680005552,
+      "us_death_share": 0.2601904761904762
+     },
+     "Devil": {
+      "field": 2.66374435855027,
+      "field_expo_share": 0.037194258202842105,
+      "field_death_share": 0.09907599545828276,
+      "us": 2.1661342442225875,
+      "us_expo_share": 0.031249665105612293,
+      "us_death_share": 0.06769096970575446
+     },
+     "Prisoners Dilemma": {
+      "field": 1.3307939651707124,
+      "field_expo_share": 0.008716200667744136,
+      "field_death_share": 0.011599467247850829,
+      "us": 3.1670216962524655,
+      "us_expo_share": 0.00631508146081411,
+      "us_death_share": 0.02
+     },
+     "Queen Of Spades": {
+      "field": 7.960769236583787,
+      "field_expo_share": 0.058475559283433905,
+      "field_death_share": 0.4655104334355921,
+      "us": 6.337849413936504,
+      "us_expo_share": 0.07882628964928852,
+      "us_death_share": 0.49958915365653245
+     },
+     "Schooltime": {
+      "field": 7.615437802874174,
+      "field_expo_share": 0.035521037766971526,
+      "field_death_share": 0.2705082538079162,
+      "us": 8.544425770316957,
+      "us_expo_share": 0.03481570436451205,
+      "us_death_share": 0.2974802015838733
+     },
+     "Slithery Fight": {
+      "field": 6.412758799783136,
+      "field_expo_share": 0.05692015651904957,
+      "field_death_share": 0.36501523460256846,
+      "us": 5.356353895319585,
+      "us_expo_share": 0.08791332791815767,
+      "us_death_share": 0.47089489644493193
+     },
+     "Trauma": {
+      "field": 2.787654898495744,
+      "field_expo_share": 0.029755295708865183,
+      "field_death_share": 0.08294749583900742,
+      "us": 3.4403953842595025,
+      "us_expo_share": 0.037858184306840834,
+      "us_death_share": 0.13024712254570076
+     },
+     "Trophy": {
+      "field": 9.779441452629667,
+      "field_expo_share": 0.03795012774006266,
+      "field_death_share": 0.37113105235375976,
+      "us": 9.3624599615631,
+      "us_expo_share": 0.043859649122807015,
+      "us_death_share": 0.41063420884048685
+     }
+    },
+    "maps_ratio_gt1_field": 9,
+    "maps_ratio_gt1_us": 9,
+    "n_maps": 9
+   },
+   {
+    "rule": "cluster <= 6.5 & deg > 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "cluster",
+      "<=",
+      6.5
+     ]
+    ],
+    "field_rate_per1k": 47.18590357692461,
+    "us_rate_per1k": 57.27046432839979,
+    "field_ratio": 2.5152607833075593,
+    "us_ratio": 2.5745301795454556,
+    "us_over_field": 1.2137197761834713,
+    "field_expo_share": 0.08494526188733215,
+    "field_death_share": 0.2136594859529968,
+    "us_expo_share": 0.08173855532416004,
+    "us_death_share": 0.2104383775144959,
+    "per_terrain": {
+     "Autarky": {
+      "field": 2.3790098614954593,
+      "field_expo_share": 0.049910104721305415,
+      "field_death_share": 0.11873663132025668,
+      "us": 1.8227706100679657,
+      "us_expo_share": 0.06050405113327709,
+      "us_death_share": 0.11028500619578686
+     },
+     "Devil": {
+      "field": 2.438980085098873,
+      "field_expo_share": 0.2168226810218922,
+      "field_death_share": 0.5288262010101406,
+      "us": 2.930968187932235,
+      "us_expo_share": 0.18753014049489353,
+      "us_death_share": 0.5496448760689955
+     },
+     "Portals": {
+      "field": 2.2939597738742905,
+      "field_expo_share": 0.15060238100411774,
+      "field_death_share": 0.3454758038731357,
+      "us": 2.2374807504868524,
+      "us_expo_share": 0.18570874233779777,
+      "us_death_share": 0.4155197361779453
+     },
+     "Prisoners Dilemma": {
+      "field": 0.5210824959263521,
+      "field_expo_share": 0.07384480398977794,
+      "field_death_share": 0.03847923477418574,
+      "us": 1.565246767139123,
+      "us_expo_share": 0.0759927258233272,
+      "us_death_share": 0.11894736842105263
+     },
+     "Queen Of Spades": {
+      "field": 1.1121398873151418,
+      "field_expo_share": 0.009941285915980253,
+      "field_death_share": 0.011056100598365884,
+      "us": 1.051261089369525,
+      "us_expo_share": 0.008988695572686554,
+      "us_death_share": 0.009449465899753493
+     },
+     "Schooltime": {
+      "field": 4.278954458237508,
+      "field_expo_share": 0.046819286655030996,
+      "field_death_share": 0.20033759536404477,
+      "us": 4.425886930223917,
+      "us_expo_share": 0.0469129448542727,
+      "us_death_share": 0.20763138948884088
+     },
+     "Slithery Fight": {
+      "field": 1.5203124860166837,
+      "field_expo_share": 0.06486385802174964,
+      "field_death_share": 0.0986133332416794,
+      "us": 1.5855185506584537,
+      "us_expo_share": 0.053145704814383875,
+      "us_death_share": 0.08426350087102394
+     },
+     "Trauma": {
+      "field": 1.7745545038891588,
+      "field_expo_share": 0.247970019040113,
+      "field_death_share": 0.440036314117113,
+      "us": 2.0669308998157554,
+      "us_expo_share": 0.23461630017555865,
+      "us_death_share": 0.48493568043331076
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 8,
+    "n_maps": 8
+   },
+   {
+    "rule": "bed3 > 0.278614 & deg <= 3.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed3",
+      ">",
+      0.2786138653755188
+     ],
+     [
+      "deg",
+      "<=",
+      3.5
+     ]
+    ],
+    "field_rate_per1k": 32.71826023006611,
+    "us_rate_per1k": 35.11184425294164,
+    "field_ratio": 1.7440580897338471,
+    "us_ratio": 1.5784140001091502,
+    "us_over_field": 1.0731574358185456,
+    "field_expo_share": 0.042949430946372026,
+    "field_death_share": 0.07490630249148536,
+    "us_expo_share": 0.050852151194768686,
+    "us_death_share": 0.08026574738149014,
+    "per_terrain": {
+     "Devil": {
+      "field": 1.6480235293880428,
+      "field_expo_share": 0.07687296900190009,
+      "field_death_share": 0.126688461689049,
+      "us": 2.256822658830122,
+      "us_expo_share": 0.0755307406256363,
+      "us_death_share": 0.17045948688215684
+     },
+     "Portals": {
+      "field": 0.9106189734347467,
+      "field_expo_share": 0.17821450947584952,
+      "field_death_share": 0.16228551367007504,
+      "us": 0.7556807559372895,
+      "us_expo_share": 0.20773435273717206,
+      "us_death_share": 0.15698085271056972
+     },
+     "Queen Of Spades": {
+      "field": 1.883432792893449,
+      "field_expo_share": 0.09468093774071416,
+      "field_death_share": 0.17832518300276404,
+      "us": 1.4763845031022158,
+      "us_expo_share": 0.09183196725474065,
+      "us_death_share": 0.13557929334428923
+     },
+     "Schooltime": {
+      "field": 3.2664283400570437,
+      "field_expo_share": 0.018935175766401472,
+      "field_death_share": 0.06185039474733512,
+      "us": 3.6712221354703436,
+      "us_expo_share": 0.017237566954499534,
+      "us_death_share": 0.0632829373650108
+     },
+     "Slithery Fight": {
+      "field": 1.1984259086382754,
+      "field_expo_share": 0.04737562457976578,
+      "field_death_share": 0.056776175934311626,
+      "us": 1.067675593362661,
+      "us_expo_share": 0.061675484621632894,
+      "us_death_share": 0.06584940963933157
+     },
+     "Trauma": {
+      "field": 0.11198828300981202,
+      "field_expo_share": 0.004796451032141803,
+      "field_death_share": 0.0005371463156302013,
+      "us": 0.024981943898078247,
+      "us_expo_share": 0.0033876870889993156,
+      "us_death_share": 8.463100880162491e-05
+     }
+    },
+    "maps_ratio_gt1_field": 4,
+    "maps_ratio_gt1_us": 4,
+    "n_maps": 6
+   },
+   {
+    "rule": "bed3 > 0.278614 & deg > 3.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed3",
+      ">",
+      0.2786138653755188
+     ],
+     [
+      "deg",
+      ">",
+      3.5
+     ]
+    ],
+    "field_rate_per1k": 11.41783763523006,
+    "us_rate_per1k": 11.088530671033679,
+    "field_ratio": 0.6086317534907121,
+    "us_ratio": 0.49847259305762454,
+    "us_over_field": 0.9711585525458608,
+    "field_expo_share": 0.08692304550921848,
+    "field_death_share": 0.052904125607028604,
+    "us_expo_share": 0.1191313422872428,
+    "us_death_share": 0.059383709104357356,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.16074634253520417,
+      "field_expo_share": 0.03772565265202282,
+      "field_death_share": 0.006064260683566195,
+      "us": 0.1294619251361904,
+      "us_expo_share": 0.04594366555323108,
+      "us_death_share": 0.005947955390334572
+     },
+     "Devil": {
+      "field": 0.7032739178799261,
+      "field_expo_share": 0.05625665551964429,
+      "field_death_share": 0.039563838534121605,
+      "us": 0.7531817041137097,
+      "us_expo_share": 0.05946652663616002,
+      "us_death_share": 0.04478909986954631
+     },
+     "Portals": {
+      "field": 0.1809542726108712,
+      "field_expo_share": 0.07939000463561528,
+      "field_death_share": 0.014365960541411456,
+      "us": 0.07401843068311474,
+      "us_expo_share": 0.08683374461144829,
+      "us_death_share": 0.006427297506477774
+     },
+     "Prisoners Dilemma": {
+      "field": 0.22472769278167687,
+      "field_expo_share": 0.09439522863037092,
+      "field_death_share": 0.021213221939702143,
+      "us": 0.23945578855595834,
+      "us_expo_share": 0.1142942553933536,
+      "us_death_share": 0.02736842105263158
+     },
+     "Queen Of Spades": {
+      "field": 1.3716134488367617,
+      "field_expo_share": 0.027481513348922723,
+      "field_death_share": 0.037694013303769404,
+      "us": 0.9846011790373361,
+      "us_expo_share": 0.02253267924068375,
+      "us_death_share": 0.02218570254724733
+     },
+     "Schooltime": {
+      "field": 1.5797585331016721,
+      "field_expo_share": 0.04901652601377414,
+      "field_death_share": 0.07743427523325978,
+      "us": 1.816537320965756,
+      "us_expo_share": 0.04997680816860779,
+      "us_death_share": 0.09078473722102232
+     },
+     "Slithery Fight": {
+      "field": 0.4516962685559859,
+      "field_expo_share": 0.20724648820488553,
+      "field_death_share": 0.09361246539347894,
+      "us": 0.3340826180176679,
+      "us_expo_share": 0.26659217141226316,
+      "us_death_share": 0.08906381056842377
+     },
+     "Trophy": {
+      "field": 1.2448386572601107,
+      "field_expo_share": 0.09290243592746729,
+      "field_death_share": 0.11564854359614185,
+      "us": 1.5354741475646823,
+      "us_expo_share": 0.09387222381212547,
+      "us_death_share": 0.1441383728379244
+     }
+    },
+    "maps_ratio_gt1_field": 3,
+    "maps_ratio_gt1_us": 2,
+    "n_maps": 8
+   },
+   {
+    "rule": "bed3 <= 0.278614 & deg <= 3.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed3",
+      "<=",
+      0.2786138653755188
+     ],
+     [
+      "deg",
+      "<=",
+      3.5
+     ]
+    ],
+    "field_rate_per1k": 8.215306719546243,
+    "us_rate_per1k": 6.987114216495208,
+    "field_ratio": 0.4379197439936894,
+    "us_ratio": 0.3140979670628879,
+    "us_over_field": 0.8504994950305553,
+    "field_expo_share": 0.24513647085028678,
+    "field_death_share": 0.10735010055827408,
+    "us_expo_share": 0.22593979616301318,
+    "us_death_share": 0.07096723065340571,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.3684428650432224,
+      "field_expo_share": 0.18664009973872522,
+      "field_death_share": 0.0687662130796887,
+      "us": 0.3932367236711906,
+      "us_expo_share": 0.2136496029773807,
+      "us_death_share": 0.08401486988847584
+     },
+     "Default": {
+      "field": 1.2776062628813114,
+      "field_expo_share": 0.3692442149463736,
+      "field_death_share": 0.4717487215481801,
+      "us": 1.3305828333026566,
+      "us_expo_share": 0.33268629023863033,
+      "us_death_share": 0.44266666666666665
+     },
+     "Devil": {
+      "field": 0.44472767260193036,
+      "field_expo_share": 0.30238697567692613,
+      "field_death_share": 0.13447985591793588,
+      "us": 0.35486980533044815,
+      "us_expo_share": 0.32186297729148133,
+      "us_death_share": 0.11421945209450644
+     },
+     "Portals": {
+      "field": 0.40111970757089876,
+      "field_expo_share": 0.31774460566486673,
+      "field_death_share": 0.12745362330652188,
+      "us": 0.1562384496505043,
+      "us_expo_share": 0.26448770106649366,
+      "us_death_share": 0.041323148366255
+     },
+     "Prisoners Dilemma": {
+      "field": 0.1880077078083525,
+      "field_expo_share": 0.22102640428798853,
+      "field_death_share": 0.041554667635306936,
+      "us": 0.36184117645267483,
+      "us_expo_share": 0.2152732798565094,
+      "us_death_share": 0.07789473684210527
+     },
+     "Queen Of Spades": {
+      "field": 0.31363742897665803,
+      "field_expo_share": 0.2715505721641633,
+      "field_death_share": 0.08516842329070862,
+      "us": 0.2802808230050792,
+      "us_expo_share": 0.25945336542856273,
+      "us_death_share": 0.07271980279375513
+     },
+     "Schooltime": {
+      "field": 0.6737793360294487,
+      "field_expo_share": 0.2657425055233731,
+      "field_death_share": 0.1790518089263404,
+      "us": 0.6208494685387115,
+      "us_expo_share": 0.2590565690068178,
+      "us_death_share": 0.16083513318934486
+     },
+     "Slithery Fight": {
+      "field": 0.31650588970989896,
+      "field_expo_share": 0.15900684539052437,
+      "field_death_share": 0.05032660307029227,
+      "us": 0.28528850230820635,
+      "us_expo_share": 0.12583433953151413,
+      "us_death_share": 0.03589909026388799
+     },
+     "Trauma": {
+      "field": 0.39495759347362147,
+      "field_expo_share": 0.33285768285654127,
+      "field_death_share": 0.13146466939022544,
+      "us": 0.3818219912288537,
+      "us_expo_share": 0.36793971494033983,
+      "us_death_share": 0.14048747461069735
+     },
+     "Trophy": {
+      "field": 1.8966379510568803,
+      "field_expo_share": 0.11534752521415889,
+      "field_death_share": 0.2187724938816642,
+      "us": 1.6857767376279218,
+      "us_expo_share": 0.11476355247981546,
+      "us_death_share": 0.1934657270980141
+     }
+    },
+    "maps_ratio_gt1_field": 2,
+    "maps_ratio_gt1_us": 2,
+    "n_maps": 10
+   },
+   {
+    "rule": "bed3 <= 0.278614 & deg > 3.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed3",
+      "<=",
+      0.2786138653755188
+     ],
+     [
+      "deg",
+      ">",
+      3.5
+     ]
+    ],
+    "field_rate_per1k": 2.3977262679872027,
+    "us_rate_per1k": 1.9423407514600761,
+    "field_ratio": 0.1278116215607219,
+    "us_ratio": 0.08731577336129988,
+    "us_over_field": 0.8100761030952025,
+    "field_expo_share": 0.49675904829416223,
+    "field_death_share": 0.06349157948743783,
+    "us_expo_share": 0.4645453626615394,
+    "us_death_share": 0.04056213760219783,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.12124068334074585,
+      "field_expo_share": 0.7087968228332087,
+      "field_death_share": 0.08593501115004779,
+      "us": 0.09693906143559534,
+      "us_expo_share": 0.6595950022538402,
+      "us_death_share": 0.06394052044609666
+     },
+     "Default": {
+      "field": 0.4125973488176518,
+      "field_expo_share": 0.5974725547924314,
+      "field_death_share": 0.2465155920986664,
+      "us": 0.4658284851230379,
+      "us_expo_share": 0.6378803929613142,
+      "us_death_share": 0.29714285714285715
+     },
+     "Devil": {
+      "field": 0.22986588392796015,
+      "field_expo_share": 0.3104664605767952,
+      "field_death_share": 0.07136564739047023,
+      "us": 0.16400334074617243,
+      "us_expo_share": 0.3243599498462165,
+      "us_death_share": 0.05319611537904044
+     },
+     "Portals": {
+      "field": 0.0943919595170425,
+      "field_expo_share": 0.2547095180408731,
+      "field_death_share": 0.0240425305155195,
+      "us": 0.03044595520916647,
+      "us_expo_share": 0.23099986054943522,
+      "us_death_share": 0.007033011407611805
+     },
+     "Prisoners Dilemma": {
+      "field": 0.11079837406851728,
+      "field_expo_share": 0.557107464819627,
+      "field_death_share": 0.06172660128344836,
+      "us": 0.1050975258541694,
+      "us_expo_share": 0.5708983109959643,
+      "us_death_share": 0.06
+     },
+     "Queen Of Spades": {
+      "field": 0.059731515798420606,
+      "field_expo_share": 0.5339325053717267,
+      "field_death_share": 0.03189259787990159,
+      "us": 0.05305665118572194,
+      "us_expo_share": 0.5343043155895467,
+      "us_death_share": 0.028348397699260477
+     },
+     "Schooltime": {
+      "field": 0.2530911798898117,
+      "field_expo_share": 0.5829984637043133,
+      "field_death_share": 0.1475517690528722,
+      "us": 0.20395107774115345,
+      "us_expo_share": 0.5912709758995571,
+      "us_death_share": 0.12059035277177826
+     },
+     "Slithery Fight": {
+      "field": 0.09733657553060207,
+      "field_expo_share": 0.4501407981640795,
+      "field_death_share": 0.04381516379990342,
+      "us": 0.06247792988390574,
+      "us_expo_share": 0.3905631050909969,
+      "us_death_share": 0.024401574295115813
+     },
+     "Trauma": {
+      "field": 0.12209753485812747,
+      "field_expo_share": 0.37530550133749513,
+      "field_death_share": 0.04582387653200182,
+      "us": 0.10859728141245617,
+      "us_expo_share": 0.3491311333948285,
+      "us_death_share": 0.037914691943127965
+     },
+     "Trophy": {
+      "field": 0.3870014464352684,
+      "field_expo_share": 0.7537766508241259,
+      "field_death_share": 0.291712654158069,
+      "us": 0.3325274976030172,
+      "us_expo_share": 0.7474828940864271,
+      "us_death_share": 0.24855861627162076
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 10
+   }
+  ],
+  "lomo_top_leaf": {
+   "Autarky": {
+    "rule": "bed3 > 0.180909 & cluster <= 3.5 & region <= 0.5",
+    "field": 16.918954648702368,
+    "us": 14.734495483869908
+   },
+   "Default": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   },
+   "Devil": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   },
+   "Portals": {
+    "rule": "bed3 > 1.04545 & region <= 0.5",
+    "field": 3.2193155299271643,
+    "us": 2.762949851665817
+   },
+   "Prisoners Dilemma": {
+    "rule": "bed3 > 1.95455 & region <= 0.5",
+    "field": 8.257063927646268,
+    "us": 17.835920665862186
+   },
+   "Queen Of Spades": {
+    "rule": "bed3 > 0.180909 & cluster <= 3.5 & region <= 0.5"
+   },
+   "Schooltime": {
+    "rule": "bed3 > 0.167209 & cluster <= 3.5 & region <= 0.5"
+   },
+   "Slithery Fight": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 9.950287236279102,
+    "us": 10.171599952027341
+   },
+   "Trauma": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 8.81601245310984,
+    "us": 8.678544427443667
+   },
+   "Trophy": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   }
+  }
+ },
+ "newborn": {
+  "base_field_per1k": 11.1573836948476,
+  "base_us_per1k": 12.713221432970258,
+  "leaves": [
+   {
+    "rule": "deg <= 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      "<=",
+      1.5
+     ]
+    ],
+    "field_rate_per1k": 339.4552975259105,
+    "us_rate_per1k": 340.825936177659,
+    "field_ratio": 30.424273898787632,
+    "us_ratio": 26.80877840244068,
+    "us_over_field": 1.0040377589088703,
+    "field_expo_share": 0.009632349916436267,
+    "field_death_share": 0.29305725214662115,
+    "us_expo_share": 0.009234894391192136,
+    "us_death_share": 0.24757623730341233,
+    "per_terrain": {
+     "Autarky": {
+      "field": 44.30477371567419,
+      "field_expo_share": 0.015755151730392828,
+      "field_death_share": 0.698028432271167,
+      "us": 31.96581691184175,
+      "us_expo_share": 0.01812607635317098,
+      "us_death_share": 0.5794148380355277
+     },
+     "Portals": {
+      "field": 16.063190793068458,
+      "field_expo_share": 0.01933898117867762,
+      "field_death_share": 0.3106457444166585,
+      "us": 12.216195442017248,
+      "us_expo_share": 0.024235598697652988,
+      "us_death_share": 0.29606681034482757
+     },
+     "Prisoners Dilemma": {
+      "field": 17.77512823501566,
+      "field_expo_share": 0.04490989760449146,
+      "field_death_share": 0.7982791889412584,
+      "us": 25.102968478239628,
+      "us_expo_share": 0.01722634647003139,
+      "us_death_share": 0.43243243243243246
+     },
+     "Queen Of Spades": {
+      "field": 49.00862667093548,
+      "field_expo_share": 0.00393762617505905,
+      "field_death_share": 0.19297765118317264,
+      "us": 59.37105527638191,
+      "us_expo_share": 0.004062687264491098,
+      "us_death_share": 0.24120603015075376
+     },
+     "Schooltime": {
+      "field": 36.220285845914496,
+      "field_expo_share": 0.0009670045701354928,
+      "field_death_share": 0.03502518194461322,
+      "us": 66.47088735209324,
+      "us_expo_share": 0.0007294307517330334,
+      "us_death_share": 0.04848590932959916
+     },
+     "Slithery Fight": {
+      "field": 19.89056227141506,
+      "field_expo_share": 0.014446229119945647,
+      "field_death_share": 0.2873436198974085,
+      "us": 18.83694517156899,
+      "us_expo_share": 0.014275866611051348,
+      "us_death_share": 0.2689137166290066
+     },
+     "Trauma": {
+      "field": 47.15561082167161,
+      "field_expo_share": 0.009315050024843596,
+      "field_death_share": 0.43925687375592704,
+      "us": 35.857205660796765,
+      "us_expo_share": 0.0070669800934329155,
+      "us_death_share": 0.25340215861098075
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 7,
+    "n_maps": 7
+   },
+   {
+    "rule": "bed3 > 0.191144 & deg > 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "bed3",
+      ">",
+      0.19114412367343903
+     ]
+    ],
+    "field_rate_per1k": 64.48977466824991,
+    "us_rate_per1k": 79.4229077305663,
+    "field_ratio": 5.780008685910016,
+    "us_ratio": 6.247268495189759,
+    "us_over_field": 1.2315581522673293,
+    "field_expo_share": 0.049681809180813774,
+    "field_death_share": 0.28716128859682755,
+    "us_expo_share": 0.06161488277962946,
+    "us_death_share": 0.3849247160239892,
+    "per_terrain": {
+     "Autarky": {
+      "field": 1.622380701497757,
+      "field_expo_share": 0.0220779934589702,
+      "field_death_share": 0.03581891051562697,
+      "us": 0.09985252769924052,
+      "us_expo_share": 0.026161883516915358,
+      "us_death_share": 0.002612330198537095
+     },
+     "Devil": {
+      "field": 2.2172144042612647,
+      "field_expo_share": 0.138713117843771,
+      "field_death_share": 0.3075567229431993,
+      "us": 2.9125901499853923,
+      "us_expo_share": 0.11758633130789208,
+      "us_death_share": 0.3424807903402854
+     },
+     "Portals": {
+      "field": 2.328442010484195,
+      "field_expo_share": 0.11583277651626268,
+      "field_death_share": 0.2697099030314931,
+      "us": 1.970559019502479,
+      "us_expo_share": 0.1591312836121334,
+      "us_death_share": 0.3135775862068966
+     },
+     "Prisoners Dilemma": {
+      "field": 0.7243285390889335,
+      "field_expo_share": 0.058126844471597994,
+      "field_death_share": 0.04210293233796223,
+      "us": 3.277863004163153,
+      "us_expo_share": 0.02514822380549051,
+      "us_death_share": 0.08243243243243244
+     },
+     "Queen Of Spades": {
+      "field": 8.653295401870153,
+      "field_expo_share": 0.045070547823619224,
+      "field_death_share": 0.39000876424189307,
+      "us": 8.970822344971157,
+      "us_expo_share": 0.046680276669002714,
+      "us_death_share": 0.4187604690117253
+     },
+     "Schooltime": {
+      "field": 10.25144820623804,
+      "field_expo_share": 0.01969357198180104,
+      "field_death_share": 0.20188763316725403,
+      "us": 13.273696099452613,
+      "us_expo_share": 0.01897600121995387,
+      "us_death_share": 0.25188167337650974
+     },
+     "Slithery Fight": {
+      "field": 5.752400067184752,
+      "field_expo_share": 0.07327090657106311,
+      "field_death_share": 0.42148356788207114,
+      "us": 5.169229188642941,
+      "us_expo_share": 0.09663717591271322,
+      "us_death_share": 0.49953971043601975
+     },
+     "Trauma": {
+      "field": 2.4607152605849296,
+      "field_expo_share": 0.0246489792501305,
+      "field_death_share": 0.060654119398637386,
+      "us": 5.058419242271647,
+      "us_expo_share": 0.016791144701996608,
+      "us_death_share": 0.08493664946034725
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 7,
+    "n_maps": 8
+   },
+   {
+    "rule": "bed3 > 0.278614 & deg <= 3.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed3",
+      ">",
+      0.2786138653755188
+     ],
+     [
+      "deg",
+      "<=",
+      3.5
+     ]
+    ],
+    "field_rate_per1k": 22.489497045274902,
+    "us_rate_per1k": 31.113589156177504,
+    "field_ratio": 2.0156604505463402,
+    "us_ratio": 2.4473410866177505,
+    "us_over_field": 1.3834719866585254,
+    "field_expo_share": 0.042949430946372026,
+    "field_death_share": 0.08657146933207314,
+    "us_expo_share": 0.050852151194768686,
+    "us_death_share": 0.12445255896185535,
+    "per_terrain": {
+     "Devil": {
+      "field": 2.3169285632889216,
+      "field_expo_share": 0.07687296900190009,
+      "field_death_share": 0.17810917762532616,
+      "us": 3.1137139355537253,
+      "us_expo_share": 0.0755307406256363,
+      "us_death_share": 0.23518111964873764
+     },
+     "Portals": {
+      "field": 1.1862531097594105,
+      "field_expo_share": 0.17821450947584952,
+      "field_death_share": 0.2114075160699744,
+      "us": 1.586544242859526,
+      "us_expo_share": 0.20773435273717206,
+      "us_death_share": 0.32957974137931034
+     },
+     "Queen Of Spades": {
+      "field": 2.2024938231437723,
+      "field_expo_share": 0.09468093774071416,
+      "field_death_share": 0.208534180543383,
+      "us": 1.4318629035238686,
+      "us_expo_share": 0.09183196725474065,
+      "us_death_share": 0.13149078726968175
+     },
+     "Schooltime": {
+      "field": 3.635305542080612,
+      "field_expo_share": 0.018935175766401472,
+      "field_death_share": 0.06883514940386978,
+      "us": 4.071966369365541,
+      "us_expo_share": 0.017237566954499534,
+      "us_death_share": 0.0701907929284089
+     },
+     "Slithery Fight": {
+      "field": 1.180713659110845,
+      "field_expo_share": 0.04737562457976578,
+      "field_death_share": 0.05593704705023695,
+      "us": 1.0980916174279456,
+      "us_expo_share": 0.061675484621632894,
+      "us_death_share": 0.06772533266382125
+     },
+     "Trauma": {
+      "field": 0.307030907960896,
+      "field_expo_share": 0.004796451032141803,
+      "field_death_share": 0.0014726587153884743,
+      "us": 0.06926012414352244,
+      "us_expo_share": 0.0033876870889993156,
+      "us_death_share": 0.0002346316283435007
+     }
+    },
+    "maps_ratio_gt1_field": 5,
+    "maps_ratio_gt1_us": 5,
+    "n_maps": 6
+   },
+   {
+    "rule": "bed3 <= 0.191144 & deg > 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "bed3",
+      "<=",
+      0.19114412367343903
+     ]
+    ],
+    "field_rate_per1k": 14.623658009396168,
+    "us_rate_per1k": 12.741809905971133,
+    "field_ratio": 1.3106708892828762,
+    "us_ratio": 1.002248719819096,
+    "us_over_field": 0.8713148172491529,
+    "field_expo_share": 0.06891784530271043,
+    "field_death_share": 0.09032861359036316,
+    "us_expo_share": 0.06868157052261434,
+    "us_death_share": 0.06883601613145518,
+    "per_terrain": {
+     "Autarky": {
+      "field": 1.3625994829871086,
+      "field_expo_share": 0.029004279586680302,
+      "field_death_share": 0.039521216369224135,
+      "us": 1.6021401267145483,
+      "us_expo_share": 0.03652376934546169,
+      "us_death_share": 0.05851619644723093
+     },
+     "Default": {
+      "field": 4.285868436066466,
+      "field_expo_share": 0.033283230261194986,
+      "field_death_share": 0.14264754602678784,
+      "us": 3.7813137476006013,
+      "us_expo_share": 0.02943331680005552,
+      "us_death_share": 0.11129660545353366
+     },
+     "Devil": {
+      "field": 1.9258100517544143,
+      "field_expo_share": 0.11530382138096332,
+      "field_death_share": 0.22205325822115468,
+      "us": 1.5566143050314474,
+      "us_expo_share": 0.10119347429261374,
+      "us_death_share": 0.1575192096597146
+     },
+     "Portals": {
+      "field": 1.9445802930107983,
+      "field_expo_share": 0.03476960448785505,
+      "field_death_share": 0.06761228768286273,
+      "us": 1.0237642358885002,
+      "us_expo_share": 0.02657745872566436,
+      "us_death_share": 0.02720905172413793
+     },
+     "Prisoners Dilemma": {
+      "field": 0.44145989022271276,
+      "field_expo_share": 0.02443416018592408,
+      "field_death_share": 0.010786701673362225,
+      "us": 0.18913382766073986,
+      "us_expo_share": 0.05715958347865079,
+      "us_death_share": 0.010810810810810811
+     },
+     "Queen Of Spades": {
+      "field": 0.3636704868978618,
+      "field_expo_share": 0.023346297375794935,
+      "field_death_share": 0.008490359333917617,
+      "us": 0.26468577455177117,
+      "us_expo_share": 0.04113470855297236,
+      "us_death_share": 0.010887772194304857
+     },
+     "Schooltime": {
+      "field": 2.8751975877461744,
+      "field_expo_share": 0.06264675244020149,
+      "field_death_share": 0.18012179149619909,
+      "us": 3.029239035092002,
+      "us_expo_share": 0.06275264799883087,
+      "us_death_share": 0.19009277087344653
+     },
+     "Slithery Fight": {
+      "field": 0.7572616657582317,
+      "field_expo_share": 0.04851310796973609,
+      "field_death_share": 0.036737116952271304,
+      "us": 0.5849696517048097,
+      "us_expo_share": 0.044421856819828326,
+      "us_death_share": 0.025985438111975897
+     },
+     "Trauma": {
+      "field": 1.3260993202662978,
+      "field_expo_share": 0.2530763354988477,
+      "field_death_share": 0.3356043564805075,
+      "us": 1.8821307252393937,
+      "us_expo_share": 0.2556833397804029,
+      "us_death_share": 0.48122946973251995
+     },
+     "Trophy": {
+      "field": 4.343289448827796,
+      "field_expo_share": 0.03795012774006266,
+      "field_death_share": 0.16482838939508118,
+      "us": 4.118389553862894,
+      "us_expo_share": 0.043859649122807015,
+      "us_death_share": 0.18063112078346028
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 7,
+    "n_maps": 10
+   },
+   {
+    "rule": "bed3 > 0.278614 & deg > 3.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed3",
+      ">",
+      0.2786138653755188
+     ],
+     [
+      "deg",
+      ">",
+      3.5
+     ]
+    ],
+    "field_rate_per1k": 9.625404509909957,
+    "us_rate_per1k": 7.386599056882978,
+    "field_ratio": 0.8626936899512473,
+    "us_ratio": 0.5810171006482036,
+    "us_over_field": 0.7674066112523387,
+    "field_expo_share": 0.08692304550921848,
+    "field_death_share": 0.07498796287214787,
+    "us_expo_share": 0.1191313422872428,
+    "us_death_share": 0.06921734709206254,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.9008652616515752,
+      "field_expo_share": 0.03772565265202282,
+      "field_death_share": 0.03398572994734099,
+      "us": 2.34260812418262,
+      "us_expo_share": 0.04594366555323108,
+      "us_death_share": 0.10762800417972831
+     },
+     "Devil": {
+      "field": 1.1952020890056423,
+      "field_expo_share": 0.05625665551964429,
+      "field_death_share": 0.06723807219754964,
+      "us": 1.4121163631702314,
+      "us_expo_share": 0.05946652663616002,
+      "us_death_share": 0.08397365532381998
+     },
+     "Portals": {
+      "field": 0.1737194747076684,
+      "field_expo_share": 0.07939000463561528,
+      "field_death_share": 0.013791589902338449,
+      "us": 0.07445857909629855,
+      "us_expo_share": 0.08683374461144829,
+      "us_death_share": 0.00646551724137931
+     },
+     "Prisoners Dilemma": {
+      "field": 0.528129539351582,
+      "field_expo_share": 0.09439522863037092,
+      "field_death_share": 0.04985290861354506,
+      "us": 1.3715191215627136,
+      "us_expo_share": 0.1142942553933536,
+      "us_death_share": 0.15675675675675677
+     },
+     "Queen Of Spades": {
+      "field": 1.233798895764519,
+      "field_expo_share": 0.027481513348922723,
+      "field_death_share": 0.03390666082383874,
+      "us": 0.780552525983535,
+      "us_expo_share": 0.02253267924068375,
+      "us_death_share": 0.017587939698492462
+     },
+     "Schooltime": {
+      "field": 1.833225797668504,
+      "field_expo_share": 0.04901652601377414,
+      "field_death_share": 0.0898583600005401,
+      "us": 1.9123170744693379,
+      "us_expo_share": 0.04997680816860779,
+      "us_death_share": 0.09557150358830736
+     },
+     "Slithery Fight": {
+      "field": 0.5968409540680081,
+      "field_expo_share": 0.20724648820488553,
+      "field_death_share": 0.12369319174744806,
+      "us": 0.3563793713551439,
+      "us_expo_share": 0.26659217141226316,
+      "us_death_share": 0.09500795045610512
+     },
+     "Trophy": {
+      "field": 1.5706842683388458,
+      "field_expo_share": 0.09290243592746729,
+      "field_death_share": 0.14592039460163048,
+      "us": 1.5532886922630627,
+      "us_expo_share": 0.09387222381212547,
+      "us_death_share": 0.1458106637649619
+     }
+    },
+    "maps_ratio_gt1_field": 4,
+    "maps_ratio_gt1_us": 5,
+    "n_maps": 8
+   },
+   {
+    "rule": "bed3 <= 0.278614 & bed6 > 0.0860739 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed3",
+      "<=",
+      0.2786138653755188
+     ],
+     [
+      "bed6",
+      ">",
+      0.08607392385601997
+     ]
+    ],
+    "field_rate_per1k": 3.539258368845444,
+    "us_rate_per1k": 2.8206760423804833,
+    "field_ratio": 0.31721221261574506,
+    "us_ratio": 0.2218694968267751,
+    "us_over_field": 0.7969681069937338,
+    "field_expo_share": 0.4249985089896113,
+    "field_death_share": 0.1348147173949872,
+    "us_expo_share": 0.38009695302253205,
+    "us_death_share": 0.08433191971249956,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.24815792254234492,
+      "field_expo_share": 0.42975849540171523,
+      "field_death_share": 0.10664797541381356,
+      "us": 0.3596484413673254,
+      "us_expo_share": 0.4401721009258082,
+      "us_death_share": 0.15830721003134796
+     },
+     "Default": {
+      "field": 1.4104428026443079,
+      "field_expo_share": 0.49242907532425384,
+      "field_death_share": 0.6945430451038856,
+      "us": 1.559371000838104,
+      "us_expo_share": 0.482479828380494,
+      "us_death_share": 0.7523650528658876
+     },
+     "Devil": {
+      "field": 0.48334282655747407,
+      "field_expo_share": 0.4507953105579482,
+      "field_death_share": 0.21788867960393302,
+      "us": 0.45415098652163866,
+      "us_expo_share": 0.3704092677333276,
+      "us_death_share": 0.1682217343578485
+     },
+     "Portals": {
+      "field": 0.22339677438091848,
+      "field_expo_share": 0.5641798446706722,
+      "field_death_share": 0.12603595747015575,
+      "us": 0.05500898409015719,
+      "us_expo_share": 0.49071137977239243,
+      "us_death_share": 0.02699353448275862
+     },
+     "Prisoners Dilemma": {
+      "field": 0.2060664730775101,
+      "field_expo_share": 0.4491602061098185,
+      "field_death_share": 0.09255685951981779,
+      "us": 1.1487376788553258,
+      "us_expo_share": 0.26468536694733696,
+      "us_death_share": 0.30405405405405406
+     },
+     "Queen Of Spades": {
+      "field": 0.48377063897746275,
+      "field_expo_share": 0.2392513314679072,
+      "field_death_share": 0.11574276950043821,
+      "us": 0.6179122469613658,
+      "us_expo_share": 0.2127984805549631,
+      "us_death_share": 0.13149078726968175
+     },
+     "Schooltime": {
+      "field": 0.6086103013058103,
+      "field_expo_share": 0.5057428802918197,
+      "field_death_share": 0.3078003267576727,
+      "us": 0.49924277453429117,
+      "us_expo_share": 0.49646340456084836,
+      "us_death_share": 0.24785576754769822
+     },
+     "Slithery Fight": {
+      "field": 0.17869949037331678,
+      "field_expo_share": 0.3421163134134126,
+      "field_death_share": 0.06113601085537475,
+      "us": 0.12997465838054542,
+      "us_expo_share": 0.2767105003183245,
+      "us_death_share": 0.03596535274918403
+     },
+     "Trauma": {
+      "field": 0.5387546011229832,
+      "field_expo_share": 0.12856225945412705,
+      "field_death_share": 0.0692635088116777,
+      "us": 0.6257838067226983,
+      "us_expo_share": 0.15072603921802005,
+      "us_death_share": 0.09432191459408729
+     },
+     "Trophy": {
+      "field": 0.7991987214935972,
+      "field_expo_share": 0.8583989912147237,
+      "field_death_share": 0.6860313763102007,
+      "us": 0.78441610579959,
+      "us_expo_share": 0.8461898691365091,
+      "us_death_share": 0.6637649619151251
+     }
+    },
+    "maps_ratio_gt1_field": 1,
+    "maps_ratio_gt1_us": 2,
+    "n_maps": 10
+   },
+   {
+    "rule": "bed3 <= 0.278614 & bed6 <= 0.0860739 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "bed3",
+      "<=",
+      0.2786138653755188
+     ],
+     [
+      "bed6",
+      "<=",
+      0.08607392385601997
+     ]
+    ],
+    "field_rate_per1k": 1.1646424305619376,
+    "us_rate_per1k": 0.8462643440149753,
+    "field_ratio": 0.10438311188489119,
+    "us_ratio": 0.0665656889936871,
+    "us_over_field": 0.7266301843447815,
+    "field_expo_share": 0.31689701015483773,
+    "field_death_share": 0.033078696066979926,
+    "us_expo_share": 0.31038820580202053,
+    "us_death_share": 0.020661204774725845,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.18467193338847282,
+      "field_expo_share": 0.4656784271702186,
+      "field_death_share": 0.08599773548282741,
+      "us": 0.21594864642266587,
+      "us_expo_share": 0.43307250430541266,
+      "us_death_share": 0.09352142110762801
+     },
+     "Default": {
+      "field": 0.3432714168776703,
+      "field_expo_share": 0.47428769441455115,
+      "field_death_share": 0.16280940886932652,
+      "us": 0.2793321318416002,
+      "us_expo_share": 0.48808685481945047,
+      "us_death_share": 0.13633834168057873
+     },
+     "Devil": {
+      "field": 0.044145206407405706,
+      "field_expo_share": 0.1620581256957731,
+      "field_death_share": 0.007154089408837201,
+      "us": 0.0457681852916739,
+      "us_expo_share": 0.27581365940437025,
+      "us_death_share": 0.012623490669593854
+     },
+     "Portals": {
+      "field": 0.09632276397003627,
+      "field_expo_share": 0.008274279035067705,
+      "field_death_share": 0.0007970014265170461,
+      "us": 0.022561666247168384,
+      "us_expo_share": 0.004776181843536466,
+      "us_death_share": 0.00010775862068965517
+     },
+     "Prisoners Dilemma": {
+      "field": 0.019519522795651105,
+      "field_expo_share": 0.32897366299779707,
+      "field_death_share": 0.006421408914054344,
+      "us": 0.025913462128141947,
+      "us_expo_share": 0.5214862239051368,
+      "us_death_share": 0.013513513513513514
+     },
+     "Queen Of Spades": {
+      "field": 0.08890284715211437,
+      "field_expo_share": 0.5662317460679827,
+      "field_death_share": 0.050339614373356704,
+      "us": 0.08361381378698314,
+      "us_expo_share": 0.5809592004631463,
+      "us_death_share": 0.048576214405360134
+     },
+     "Schooltime": {
+      "field": 0.3395691141930204,
+      "field_expo_share": 0.34299808893586664,
+      "field_death_share": 0.11647155722985107,
+      "us": 0.2710689539278227,
+      "us_expo_share": 0.35386414034552655,
+      "us_death_share": 0.09592158235603011
+     },
+     "Slithery Fight": {
+      "field": 0.051190418772065656,
+      "field_expo_share": 0.2670313301411913,
+      "field_death_share": 0.013669445615189301,
+      "us": 0.028631092001315528,
+      "us_expo_share": 0.23968694430418652,
+      "us_death_share": 0.006862498953887354
+     },
+     "Trauma": {
+      "field": 0.16174660673623095,
+      "field_expo_share": 0.5796009247399093,
+      "field_death_share": 0.0937484828378619,
+      "us": 0.15163055190280383,
+      "us_expo_share": 0.5663448091171482,
+      "us_death_share": 0.08587517597372125
+     },
+     "Trophy": {
+      "field": 0.26827542861585435,
+      "field_expo_share": 0.010725184823561091,
+      "field_death_share": 0.002877303555525108,
+      "us": 0.4066144058121859,
+      "us_expo_share": 0.016056577429733505,
+      "us_death_share": 0.006528835690968444
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 10
+   }
+  ],
+  "lomo_top_leaf": {
+   "Autarky": {
+    "rule": "bed3 > 1.95455 & region <= 0.5",
+    "field": 19.396942525230987,
+    "us": 13.141882578049989
+   },
+   "Default": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   },
+   "Devil": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   },
+   "Portals": {
+    "rule": "bed3 > 1.25541 & reach5 <= 24.5",
+    "field": 5.219906354409019,
+    "us": 2.7488445489305264
+   },
+   "Prisoners Dilemma": {
+    "rule": "bed3 > 1.95455 & region <= 0.5",
+    "field": 8.15614026944509,
+    "us": 12.150326516993184
+   },
+   "Queen Of Spades": {
+    "rule": "bed3 > 1.95455 & region <= 0.5"
+   },
+   "Schooltime": {
+    "rule": "bed3 > 1.95455 & region <= 0.5"
+   },
+   "Slithery Fight": {
+    "rule": "dead > 0.5",
+    "field": 9.81477793215816,
+    "us": 11.910321367708505
+   },
+   "Trauma": {
+    "rule": "bed3 > 1.04545 & region <= 0.5",
+    "field": 14.540502073714661,
+    "us": 13.074014729517147
+   },
+   "Trophy": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   }
+  }
+ },
+ "transit": {
+  "base_field_per1k": 2.795277633098232,
+  "base_us_per1k": 3.743494939333111,
+  "leaves": [
+   {
+    "rule": "portal_d <= 0.5",
+    "conds": [
+     [
+      "portal_d",
+      "<=",
+      0.5
+     ]
+    ],
+    "field_rate_per1k": 66.40834425448264,
+    "us_rate_per1k": 74.44871230530815,
+    "field_ratio": 23.757333965026188,
+    "us_ratio": 19.887488433087317,
+    "us_over_field": 1.1210746652561328,
+    "field_expo_share": 0.040080746855186755,
+    "field_death_share": 0.9522116886063448,
+    "us_expo_share": 0.048725960069387314,
+    "us_death_share": 0.9690369672710148,
+    "per_terrain": {
+     "Autarky": {
+      "field": 29.535526835898626,
+      "field_expo_share": 0.03116822351478048,
+      "field_death_share": 0.9205699020480855,
+      "us": 16.101375057532334,
+      "us_expo_share": 0.05982211999676371,
+      "us_death_share": 0.9632183908045977
+     },
+     "Default": {
+      "field": 9.84686544492131,
+      "field_expo_share": 0.09154602133254117,
+      "field_death_share": 0.9014413540794287,
+      "us": 9.008033277977844,
+      "us_expo_share": 0.10350852484380135,
+      "us_death_share": 0.932408236347359
+     },
+     "Portals": {
+      "field": 7.486119240652632,
+      "field_expo_share": 0.13105595151436136,
+      "field_death_share": 0.981100480233699,
+      "us": 5.1531065991358505,
+      "us_expo_share": 0.1904606719091995,
+      "us_death_share": 0.981464145291144
+     },
+     "Prisoners Dilemma": {
+      "field": 41.56789407891262,
+      "field_expo_share": 0.022480180971848972,
+      "field_death_share": 0.934453781512605,
+      "us": 11.400933822035164,
+      "us_expo_share": 0.08075083453739226,
+      "us_death_share": 0.9206349206349206
+     },
+     "Queen Of Spades": {
+      "field": 26.820696728950328,
+      "field_expo_share": 0.03549413390526789,
+      "field_death_share": 0.9519774011299436,
+      "us": 26.02271512653475,
+      "us_expo_share": 0.037518916887575283,
+      "us_death_share": 0.9763440860215054
+     },
+     "Schooltime": {
+      "field": 20.33892736362046,
+      "field_expo_share": 0.04382942477887387,
+      "field_death_share": 0.8914434869667823,
+      "us": 19.97898529750055,
+      "us_expo_share": 0.047196329972106266,
+      "us_death_share": 0.9429347826086957
+     },
+     "Slithery Fight": {
+      "field": 186.48712328921317,
+      "field_expo_share": 0.005121711696242378,
+      "field_death_share": 0.9551332805489575,
+      "us": 102.7760463297418,
+      "us_expo_share": 0.00948124080700753,
+      "us_death_share": 0.9744444444444444
+     },
+     "Trauma": {
+      "field": 32.63249344152386,
+      "field_expo_share": 0.026178735935099562,
+      "field_death_share": 0.8542774287095215,
+      "us": 29.186506737675113,
+      "us_expo_share": 0.03077037521944833,
+      "us_death_share": 0.8980797636632201
+     },
+     "Trophy": {
+      "field": 67.65592759490075,
+      "field_expo_share": 0.013791986199256983,
+      "field_death_share": 0.9331096196868008,
+      "us": 52.908400061008166,
+      "us_expo_share": 0.018146577516455497,
+      "us_death_share": 0.9601063829787234
+     }
+    },
+    "maps_ratio_gt1_field": 9,
+    "maps_ratio_gt1_us": 9,
+    "n_maps": 9
+   },
+   {
+    "rule": "kelp_d <= 0.5 & 0.5 < portal_d <= 1.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "portal_d",
+      "<=",
+      1.5
+     ],
+     [
+      "kelp_d",
+      "<=",
+      0.5
+     ]
+    ],
+    "field_rate_per1k": 2.5283759659980265,
+    "us_rate_per1k": 2.1495256288060363,
+    "field_ratio": 0.9045169381603155,
+    "us_ratio": 0.5742028942582105,
+    "us_over_field": 0.8501606002086612,
+    "field_expo_share": 0.034384216688800935,
+    "field_death_share": 0.031101106400395047,
+    "us_expo_share": 0.03683747690615319,
+    "us_death_share": 0.02115218585668315,
+    "per_terrain": {
+     "Autarky": {
+      "field": 1.562643948775547,
+      "field_expo_share": 0.03988946846029304,
+      "field_death_share": 0.06233303650934995,
+      "us": 0.3894541861632332,
+      "us_expo_share": 0.0590274968504028,
+      "us_death_share": 0.022988505747126436
+     },
+     "Default": {
+      "field": 0.7047228333441389,
+      "field_expo_share": 0.06110815191398026,
+      "field_death_share": 0.04306430995724424,
+      "us": 0.45078308079743984,
+      "us_expo_share": 0.05858699667905642,
+      "us_death_share": 0.026410026857654433
+     },
+     "Portals": {
+      "field": 0.13010564274141118,
+      "field_expo_share": 0.12728928774495424,
+      "field_death_share": 0.016561054596153705,
+      "us": 0.1071702961675693,
+      "us_expo_share": 0.16305712016394536,
+      "us_death_share": 0.01747487986020096
+     },
+     "Prisoners Dilemma": {
+      "field": 2.6021495683665137,
+      "field_expo_share": 0.0200222312235651,
+      "field_death_share": 0.052100840336134456,
+      "us": 0.9378489890706553,
+      "us_expo_share": 0.08462458273130387,
+      "us_death_share": 0.07936507936507936
+     },
+     "Queen Of Spades": {
+      "field": 1.3596593246659239,
+      "field_expo_share": 0.009104874918179325,
+      "field_death_share": 0.012379528082419409,
+      "us": 0.9342988808426598,
+      "us_expo_share": 0.00920706501315295,
+      "us_death_share": 0.008602150537634409
+     },
+     "Schooltime": {
+      "field": 1.8684363279593454,
+      "field_expo_share": 0.034083150665583664,
+      "field_death_share": 0.06368219687488826,
+      "us": 0.8325584034125184,
+      "us_expo_share": 0.031415082950509265,
+      "us_death_share": 0.026154891304347828
+     },
+     "Slithery Fight": {
+      "field": 17.05180351897137,
+      "field_expo_share": 0.0020740053545209875,
+      "field_death_share": 0.035365531802586433,
+      "us": 5.446078431372548,
+      "us_expo_share": 0.0036723672367236725,
+      "us_death_share": 0.02
+     },
+     "Trauma": {
+      "field": 4.339655611434161,
+      "field_expo_share": 0.032354178719505584,
+      "field_death_share": 0.1404059932334461,
+      "us": 2.3602600683426425,
+      "us_expo_share": 0.04005266759901211,
+      "us_death_share": 0.09453471196454949
+     },
+     "Trophy": {
+      "field": 3.67954424412945,
+      "field_expo_share": 0.0017023798838408273,
+      "field_death_share": 0.006263982102908278,
+      "us": 0.0,
+      "us_expo_share": 0.0030959752321981426,
+      "us_death_share": 0.0
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 2,
+    "n_maps": 9
+   },
+   {
+    "rule": "kelp_d > 0.5 & 0.5 < portal_d <= 1.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "portal_d",
+      "<=",
+      1.5
+     ],
+     [
+      "kelp_d",
+      ">",
+      0.5
+     ]
+    ],
+    "field_rate_per1k": 1.066215957776223,
+    "us_rate_per1k": 0.7377239083515224,
+    "field_ratio": 0.3814347258932021,
+    "us_ratio": 0.19706822643199434,
+    "us_over_field": 0.6919085228194978,
+    "field_expo_share": 0.04285045720422147,
+    "field_death_share": 0.016344652398090603,
+    "us_expo_share": 0.04819092323675835,
+    "us_death_share": 0.009496899772388353,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.5484718603373262,
+      "field_expo_share": 0.030522755811419396,
+      "field_death_share": 0.01674087266251113,
+      "us": 0.2224560569002478,
+      "us_expo_share": 0.062003721725863686,
+      "us_death_share": 0.013793103448275862
+     },
+     "Default": {
+      "field": 0.5599848454477352,
+      "field_expo_share": 0.09776158872777777,
+      "field_death_share": 0.05474500815444969,
+      "us": 0.368712747526843,
+      "us_expo_share": 0.1092625137522172,
+      "us_death_share": 0.04028648164726947
+     },
+     "Portals": {
+      "field": 0.01869560860387301,
+      "field_expo_share": 0.12113521419802045,
+      "field_death_share": 0.002264696552792511,
+      "us": 0.008051707163596091,
+      "us_expo_share": 0.13177017334311508,
+      "us_death_share": 0.0010609748486550585
+     },
+     "Prisoners Dilemma": {
+      "field": 0.41261787263578,
+      "field_expo_share": 0.02851235165166418,
+      "field_death_share": 0.011764705882352941,
+      "us": 0.0,
+      "us_expo_share": 0.09442728314483584,
+      "us_death_share": 0.0
+     },
+     "Queen Of Spades": {
+      "field": 0.6449848586458223,
+      "field_expo_share": 0.05371608550206505,
+      "field_death_share": 0.03464606181455633,
+      "us": 0.22760581672829527,
+      "us_expo_share": 0.051966848471921755,
+      "us_death_share": 0.011827956989247311
+     },
+     "Schooltime": {
+      "field": 0.7291572045331789,
+      "field_expo_share": 0.06066003352010569,
+      "field_death_share": 0.0442307004684092,
+      "us": 0.456755760193387,
+      "us_expo_share": 0.06618630983015955,
+      "us_death_share": 0.030230978260869564
+     },
+     "Slithery Fight": {
+      "field": 1.1414913299022145,
+      "field_expo_share": 0.00809227851964814,
+      "field_death_share": 0.009237265769332278,
+      "us": 0.42088466073098346,
+      "us_expo_share": 0.013199710214923931,
+      "us_death_share": 0.005555555555555556
+     },
+     "Trauma": {
+      "field": 0.699250348918634,
+      "field_expo_share": 0.005875241776576276,
+      "field_death_share": 0.004108264862252296,
+      "us": 0.7492990719322202,
+      "us_expo_share": 0.007885261998988306,
+      "us_death_share": 0.005908419497784343
+     },
+     "Trophy": {
+      "field": 2.022707169222376,
+      "field_expo_share": 0.029419893736030142,
+      "field_death_share": 0.059507829977628636,
+      "us": 1.048831024245423,
+      "us_expo_share": 0.03803626713843432,
+      "us_death_share": 0.0398936170212766
+     }
+    },
+    "maps_ratio_gt1_field": 2,
+    "maps_ratio_gt1_us": 1,
+    "n_maps": 9
+   },
+   {
+    "rule": "1.5 < portal_d <= 2.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "portal_d",
+      ">",
+      1.5
+     ],
+     [
+      "portal_d",
+      "<=",
+      2.5
+     ]
+    ],
+    "field_rate_per1k": 0.012427978604395104,
+    "us_rate_per1k": 0.017383519554286558,
+    "field_ratio": 0.004446062336434242,
+    "us_ratio": 0.004643660492668748,
+    "us_over_field": 1.3987407049557479,
+    "field_expo_share": 0.07404448369182827,
+    "field_death_share": 0.00032920639016295714,
+    "us_expo_share": 0.06760767726437225,
+    "us_death_share": 0.00031394709991366455,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.00532137831566935,
+      "field_expo_share": 0.06693543644596617,
+      "field_death_share": 0.00035618878005342833,
+      "us": 0.0,
+      "us_expo_share": 0.08797200614893838,
+      "us_death_share": 0.0
+     },
+     "Default": {
+      "field": 0.007118398503771947,
+      "field_expo_share": 0.10526634726621045,
+      "field_death_share": 0.0007493278088773306,
+      "us": 0.008823438355724498,
+      "us_expo_share": 0.10146329714382522,
+      "us_death_share": 0.0008952551477170994
+     },
+     "Portals": {
+      "field": 0.0002667517760449001,
+      "field_expo_share": 0.2488896479105326,
+      "field_death_share": 6.639175561932443e-05,
+      "us": 0.0,
+      "us_expo_share": 0.22140353961911807,
+      "us_death_share": 0.0
+     },
+     "Prisoners Dilemma": {
+      "field": 0.035657046504773415,
+      "field_expo_share": 0.04713436567671333,
+      "field_death_share": 0.0016806722689075631,
+      "us": 0.0,
+      "us_expo_share": 0.11698470429973594,
+      "us_death_share": 0.0
+     },
+     "Queen Of Spades": {
+      "field": 0.011270029169999222,
+      "field_expo_share": 0.08846551841540853,
+      "field_death_share": 0.0009970089730807576,
+      "us": 0.04140310595834332,
+      "us_expo_share": 0.07791218501477802,
+      "us_death_share": 0.0032258064516129032
+     },
+     "Schooltime": {
+      "field": 0.007089102919674482,
+      "field_expo_share": 0.09078944080978538,
+      "field_death_share": 0.0006436156899202631,
+      "us": 0.008366417743637689,
+      "us_expo_share": 0.08119936714892968,
+      "us_death_share": 0.0006793478260869565
+     },
+     "Slithery Fight": {
+      "field": 0.010031468203912932,
+      "field_expo_share": 0.013154698482762099,
+      "field_death_share": 0.0001319609395618897,
+      "us": 0.0,
+      "us_expo_share": 0.0167939232947685,
+      "us_death_share": 0.0
+     },
+     "Trauma": {
+      "field": 0.02488202476639763,
+      "field_expo_share": 0.04370552177774084,
+      "field_death_share": 0.0010874818753020784,
+      "us": 0.03024312386713147,
+      "us_expo_share": 0.048841015264677004,
+      "us_death_share": 0.0014771048744460858
+     },
+     "Trophy": {
+      "field": 0.029192825441683466,
+      "field_expo_share": 0.03831654578611038,
+      "field_death_share": 0.0011185682326621924,
+      "us": 0.0,
+      "us_expo_share": 0.045008715560527615,
+      "us_death_share": 0.0
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 9
+   },
+   {
+    "rule": "portal_d > 2.5",
+    "conds": [
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "portal_d",
+      ">",
+      1.5
+     ],
+     [
+      "portal_d",
+      ">",
+      2.5
+     ]
+    ],
+    "field_rate_per1k": 4.6134675421797805e-05,
+    "us_rate_per1k": 0.0,
+    "field_ratio": 1.650450562603437e-05,
+    "us_ratio": 0.0,
+    "us_over_field": 0.0,
+    "field_expo_share": 0.8086400955599625,
+    "field_death_share": 1.3346205006606372e-05,
+    "us_expo_share": 0.7986379625233289,
+    "us_death_share": 0.0,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.0,
+      "field_expo_share": 0.8314841157675409,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.7311746552780314,
+      "us_death_share": 0.0
+     },
+     "Default": {
+      "field": 0.0,
+      "field_expo_share": 0.6443178907594903,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.6271786675810999,
+      "us_death_share": 0.0
+     },
+     "Devil": {
+      "field": NaN,
+      "field_expo_share": 1.0,
+      "field_death_share": 0.0,
+      "us": NaN,
+      "us_expo_share": 1.0,
+      "us_death_share": 0.0
+     },
+     "Portals": {
+      "field": 1.9850022193135467e-05,
+      "field_expo_share": 0.3716298986321313,
+      "field_death_share": 7.3768617354804916e-06,
+      "us": 0.0,
+      "us_expo_share": 0.293308494964622,
+      "us_death_share": 0.0
+     },
+     "Prisoners Dilemma": {
+      "field": 0.0,
+      "field_expo_share": 0.8818508704762085,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.6232125952867321,
+      "us_death_share": 0.0
+     },
+     "Queen Of Spades": {
+      "field": 0.0,
+      "field_expo_share": 0.8132193872590792,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.823394984612572,
+      "us_death_share": 0.0
+     },
+     "Schooltime": {
+      "field": 0.0,
+      "field_expo_share": 0.7706379502256514,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.7740029100982952,
+      "us_death_share": 0.0
+     },
+     "Slithery Fight": {
+      "field": 0.00013582414413865974,
+      "field_expo_share": 0.9715573059468264,
+      "field_death_share": 0.0001319609395618897,
+      "us": 0.0,
+      "us_expo_share": 0.9568527584465764,
+      "us_death_share": 0.0
+     },
+     "Trauma": {
+      "field": 0.00013547838611915964,
+      "field_expo_share": 0.8918863217910777,
+      "field_death_share": 0.0001208313194780087,
+      "us": 0.0,
+      "us_expo_share": 0.8724506799178743,
+      "us_death_share": 0.0
+     },
+     "Trophy": {
+      "field": 0.0,
+      "field_expo_share": 0.9167691943947617,
+      "field_death_share": 0.0,
+      "us": 0.0,
+      "us_expo_share": 0.8957124645523844,
+      "us_death_share": 0.0
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 10
+   }
+  ],
+  "lomo_top_leaf": {
+   "Autarky": {
+    "rule": "portal_d <= 0.5",
+    "field": 29.535526835898626,
+    "us": 16.101375057532334
+   },
+   "Default": {
+    "rule": "portal_d <= 0.5",
+    "field": 9.84686544492131,
+    "us": 9.008033277977844
+   },
+   "Devil": {
+    "rule": "portal_d <= 0.5"
+   },
+   "Portals": {
+    "rule": "portal_d <= 0.5",
+    "field": 7.486119240652632,
+    "us": 5.1531065991358505
+   },
+   "Prisoners Dilemma": {
+    "rule": "portal_d <= 0.5",
+    "field": 41.56789407891262,
+    "us": 11.400933822035164
+   },
+   "Queen Of Spades": {
+    "rule": "portal_d <= 0.5",
+    "field": 26.820696728950328,
+    "us": 26.02271512653475
+   },
+   "Schooltime": {
+    "rule": "portal_d <= 0.5",
+    "field": 20.33892736362046,
+    "us": 19.97898529750055
+   },
+   "Slithery Fight": {
+    "rule": "portal_d <= 0.5",
+    "field": 186.48712328921317,
+    "us": 102.7760463297418
+   },
+   "Trauma": {
+    "rule": "portal_d <= 0.5",
+    "field": 32.63249344152386,
+    "us": 29.186506737675113
+   },
+   "Trophy": {
+    "rule": "portal_d <= 0.5",
+    "field": 67.65592759490075,
+    "us": 52.908400061008166
+   }
+  }
+ },
+ "crowd23": {
+  "base_field_per1k": 8.912610973329095,
+  "base_us_per1k": 10.690453133006454,
+  "leaves": [
+   {
+    "rule": "deg <= 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      "<=",
+      1.5
+     ]
+    ],
+    "field_rate_per1k": 148.9127123064132,
+    "us_rate_per1k": 83.24584009417454,
+    "field_ratio": 16.708090676462053,
+    "us_ratio": 7.7869327949397675,
+    "us_over_field": 0.5590244029863756,
+    "field_expo_share": 0.009632349916436267,
+    "field_death_share": 0.1609381758312288,
+    "us_expo_share": 0.009234894391192136,
+    "us_death_share": 0.07191150199257935,
+    "per_terrain": {
+     "Autarky": {
+      "field": 26.291321494123558,
+      "field_expo_share": 0.015755151730392828,
+      "field_death_share": 0.414223759332455,
+      "us": 0.25335998885753697,
+      "us_expo_share": 0.01812607635317098,
+      "us_death_share": 0.004592422502870264
+     },
+     "Portals": {
+      "field": 6.846211903068684,
+      "field_expo_share": 0.01933898117867762,
+      "field_death_share": 0.13239876313868396,
+      "us": 3.0416990500114713,
+      "us_expo_share": 0.024235598697652988,
+      "us_death_share": 0.07371739753511035
+     },
+     "Prisoners Dilemma": {
+      "field": 15.725440240251851,
+      "field_expo_share": 0.04490989760449146,
+      "field_death_share": 0.7062279109752603,
+      "us": 34.332173190446895,
+      "us_expo_share": 0.01722634647003139,
+      "us_death_share": 0.5914179104477612
+     },
+     "Queen Of Spades": {
+      "field": 35.939982892076856,
+      "field_expo_share": 0.00393762617505905,
+      "field_death_share": 0.14151821736701634,
+      "us": 45.89097457627119,
+      "us_expo_share": 0.004062687264491098,
+      "us_death_share": 0.1864406779661017
+     },
+     "Schooltime": {
+      "field": 35.67109816959013,
+      "field_expo_share": 0.0009670045701354928,
+      "field_death_share": 0.034494114951745466,
+      "us": 18.349718422473508,
+      "us_expo_share": 0.0007294307517330334,
+      "us_death_share": 0.013384848902994342
+     },
+     "Slithery Fight": {
+      "field": 13.961502768111293,
+      "field_expo_share": 0.014446229119945647,
+      "field_death_share": 0.20169106784689111,
+      "us": 6.147974816806308,
+      "us_expo_share": 0.014275866611051348,
+      "us_death_share": 0.08776766841282971
+     },
+     "Trauma": {
+      "field": 15.240342508529169,
+      "field_expo_share": 0.009315050024843596,
+      "field_death_share": 0.14196455286269954,
+      "us": 11.688362059477427,
+      "us_expo_share": 0.0070669800934329155,
+      "us_death_share": 0.08260142199916352
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 6,
+    "n_maps": 7
+   },
+   {
+    "rule": "bed6 > 0.384762 & deg > 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "bed6",
+      ">",
+      0.38476191461086273
+     ]
+    ],
+    "field_rate_per1k": 38.94483218403216,
+    "us_rate_per1k": 56.94741980643001,
+    "field_ratio": 4.3696322324147445,
+    "us_ratio": 5.326941627067852,
+    "us_over_field": 1.462258703217089,
+    "field_expo_share": 0.06403461840107279,
+    "field_death_share": 0.27980773255570596,
+    "us_expo_share": 0.07282759179951015,
+    "us_death_share": 0.3879483303559159,
+    "per_terrain": {
+     "Autarky": {
+      "field": 2.0063365411692735,
+      "field_expo_share": 0.03290245353317977,
+      "field_death_share": 0.06601339481774264,
+      "us": 1.9364047001723093,
+      "us_expo_share": 0.03735306695639108,
+      "us_death_share": 0.07233065442020666
+     },
+     "Devil": {
+      "field": 2.6066540994216902,
+      "field_expo_share": 0.2220264869076519,
+      "field_death_share": 0.5787462522780271,
+      "us": 2.9324178314557816,
+      "us_expo_share": 0.17625625582716234,
+      "us_death_share": 0.5168569874932029
+     },
+     "Portals": {
+      "field": 2.3795621331906274,
+      "field_expo_share": 0.14391367252999568,
+      "field_death_share": 0.3424515256007739,
+      "us": 2.20573454831616,
+      "us_expo_share": 0.18144943704413308,
+      "us_death_share": 0.4002292920607624
+     },
+     "Prisoners Dilemma": {
+      "field": 0.6778631196734255,
+      "field_expo_share": 0.058126844471597994,
+      "field_death_share": 0.03940204413028943,
+      "us": 2.5965455042765373,
+      "us_expo_share": 0.02514822380549051,
+      "us_death_share": 0.06529850746268656
+     },
+     "Queen Of Spades": {
+      "field": 9.889392005103156,
+      "field_expo_share": 0.045070547823619224,
+      "field_death_share": 0.4457203153125194,
+      "us": 9.334444745615201,
+      "us_expo_share": 0.046680276669002714,
+      "us_death_share": 0.4357344632768362
+     },
+     "Schooltime": {
+      "field": 6.462030140698098,
+      "field_expo_share": 0.021420566170595616,
+      "field_death_share": 0.1384203442252069,
+      "us": 7.306772208348162,
+      "us_expo_share": 0.021037850339617366,
+      "us_death_share": 0.1537187801849041
+     },
+     "Slithery Fight": {
+      "field": 4.035543217415935,
+      "field_expo_share": 0.08931954229563498,
+      "field_death_share": 0.36045287309384544,
+      "us": 4.876052852557064,
+      "us_expo_share": 0.1096696011064521,
+      "us_death_share": 0.5347547713139111
+     },
+     "Trauma": {
+      "field": 1.331673160704537,
+      "field_expo_share": 0.041513752407497315,
+      "field_death_share": 0.05528274988119753,
+      "us": 0.46076823367051983,
+      "us_expo_share": 0.028592257565388163,
+      "us_death_share": 0.013174404015056462
+     },
+     "Trophy": {
+      "field": 2.780283745928127,
+      "field_expo_share": 0.001488932478376136,
+      "field_death_share": 0.0041396547684136534
+     }
+    },
+    "maps_ratio_gt1_field": 8,
+    "maps_ratio_gt1_us": 7,
+    "n_maps": 9
+   },
+   {
+    "rule": "portal_d <= 0.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "portal_d",
+      "<=",
+      0.5
+     ]
+    ],
+    "field_rate_per1k": 29.525419706249686,
+    "us_rate_per1k": 48.67073311082979,
+    "field_ratio": 3.312768816523489,
+    "us_ratio": 4.552728729576518,
+    "us_over_field": 1.648434928107985,
+    "field_expo_share": 0.03175258957042834,
+    "field_death_share": 0.10518898857278397,
+    "us_expo_share": 0.03829435781476972,
+    "us_death_share": 0.17434382300398515,
+    "per_terrain": {
+     "Autarky": {
+      "field": 4.750243574877637,
+      "field_expo_share": 0.03116822351478048,
+      "field_death_share": 0.1480566534914361,
+      "us": 7.638412665086282,
+      "us_expo_share": 0.05982211999676371,
+      "us_death_share": 0.4569460390355913
+     },
+     "Default": {
+      "field": 5.77201277612786,
+      "field_expo_share": 0.09154602133254117,
+      "field_death_share": 0.5284048047351012,
+      "us": 6.3173123832673115,
+      "us_expo_share": 0.10350852484380135,
+      "us_death_share": 0.6538956857694784
+     },
+     "Portals": {
+      "field": 2.2260659168021752,
+      "field_expo_share": 0.0789474935083278,
+      "field_death_share": 0.1757423245158495,
+      "us": 3.3064045131286335,
+      "us_expo_share": 0.11279428616468505,
+      "us_death_share": 0.3729435368300373
+     },
+     "Prisoners Dilemma": {
+      "field": 1.3002187470489477,
+      "field_expo_share": 0.022480180971848972,
+      "field_death_share": 0.029229152736651064,
+      "us": 1.3400351320675659,
+      "us_expo_share": 0.08075083453739226,
+      "us_death_share": 0.10820895522388059
+     },
+     "Queen Of Spades": {
+      "field": 4.291524136312506,
+      "field_expo_share": 0.012279300658068492,
+      "field_death_share": 0.05269691515113897,
+      "us": 4.595143699336772,
+      "us_expo_share": 0.014600282356764882,
+      "us_death_share": 0.067090395480226
+     },
+     "Schooltime": {
+      "field": 3.6927000801353613,
+      "field_expo_share": 0.041800640012726833,
+      "field_death_share": 0.15435722672470575,
+      "us": 4.975043022206393,
+      "us_expo_share": 0.04557036020408812,
+      "us_death_share": 0.22671450255278047
+     },
+     "Slithery Fight": {
+      "field": 4.920491298796023,
+      "field_expo_share": 0.00306332894849565,
+      "field_death_share": 0.015073083436422816,
+      "us": 6.666286206342143,
+      "us_expo_share": 0.006139491997980286,
+      "us_death_share": 0.04092761082008394
+     },
+     "Trauma": {
+      "field": 2.693594093617788,
+      "field_expo_share": 0.01723057140755132,
+      "field_death_share": 0.04641216537303976,
+      "us": 2.6496241516098293,
+      "us_expo_share": 0.023203499270985212,
+      "us_death_share": 0.06148055207026349
+     },
+     "Trophy": {
+      "field": 19.99107488448268,
+      "field_expo_share": 0.013791986199256983,
+      "field_death_share": 0.275716628915098,
+      "us": 17.174780183254864,
+      "us_expo_share": 0.018146577516455497,
+      "us_death_share": 0.31166347992351817
+     }
+    },
+    "maps_ratio_gt1_field": 9,
+    "maps_ratio_gt1_us": 9,
+    "n_maps": 9
+   },
+   {
+    "rule": "bed6 <= 0.384762 & deg > 1.5 & region <= 0.5",
+    "conds": [
+     [
+      "region",
+      "<=",
+      0.5
+     ],
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "bed6",
+      "<=",
+      0.38476191461086273
+     ]
+    ],
+    "field_rate_per1k": 12.993799713846972,
+    "us_rate_per1k": 14.067297049267495,
+    "field_ratio": 1.4579116885871937,
+    "us_ratio": 1.3158747224507383,
+    "us_over_field": 1.0826161214626495,
+    "field_expo_share": 0.054565036082451404,
+    "field_death_share": 0.07955100389278788,
+    "us_expo_share": 0.057468861502733656,
+    "us_death_share": 0.07562182217946956,
+    "per_terrain": {
+     "Autarky": {
+      "field": 3.075519241452235,
+      "field_expo_share": 0.018179819512470736,
+      "field_death_share": 0.055912384716732544,
+      "us": 4.622772197745513,
+      "us_expo_share": 0.025332585905985968,
+      "us_death_share": 0.11710677382319173
+     },
+     "Default": {
+      "field": 3.49390715102745,
+      "field_expo_share": 0.033283230261194986,
+      "field_death_share": 0.11628851621888238,
+      "us": 3.281561882375216,
+      "us_expo_share": 0.02943331680005552,
+      "us_death_share": 0.09658725048293625
+     },
+     "Devil": {
+      "field": 1.2906547263378298,
+      "field_expo_share": 0.03199045231708242,
+      "field_death_share": 0.0412886284807274,
+      "us": 1.0933390862626953,
+      "us_expo_share": 0.04252354977334348,
+      "us_death_share": 0.0464926590538336
+     },
+     "Portals": {
+      "field": 1.3158978442331988,
+      "field_expo_share": 0.00668870847412204,
+      "field_death_share": 0.008801657061801521,
+      "us": 1.157413936428572,
+      "us_expo_share": 0.0042593052936647,
+      "us_death_share": 0.004929779306391516
+     },
+     "Prisoners Dilemma": {
+      "field": 0.79553958978057,
+      "field_expo_share": 0.02443416018592408,
+      "field_death_share": 0.019438341770942783,
+      "us": 0.7180733941970253,
+      "us_expo_share": 0.05715958347865079,
+      "us_death_share": 0.041044776119402986
+     },
+     "Queen Of Spades": {
+      "field": 0.7417604826424962,
+      "field_expo_share": 0.023346297375794935,
+      "field_death_share": 0.017317360809384893,
+      "us": 0.8927537141661435,
+      "us_expo_share": 0.04113470855297236,
+      "us_death_share": 0.03672316384180791
+     },
+     "Schooltime": {
+      "field": 2.445402650522856,
+      "field_expo_share": 0.060919758251406914,
+      "field_death_share": 0.1489733382972021,
+      "us": 2.500987779462537,
+      "us_expo_share": 0.06069079887916738,
+      "us_death_share": 0.15178694632261625
+     },
+     "Slithery Fight": {
+      "field": 0.9795200677971938,
+      "field_expo_share": 0.03246447224516422,
+      "field_death_share": 0.031799602054583376,
+      "us": 0.7778302061152614,
+      "us_expo_share": 0.03138943162608944,
+      "us_death_share": 0.02441564807156205
+     },
+     "Trauma": {
+      "field": 1.9176903006216224,
+      "field_expo_share": 0.23621156234148089,
+      "field_death_share": 0.45298062199693756,
+      "us": 2.241381894748846,
+      "us_expo_share": 0.24388222691701134,
+      "us_death_share": 0.5466332078628189
+     },
+     "Trophy": {
+      "field": 5.5911077299528715,
+      "field_expo_share": 0.03646119526168652,
+      "field_death_share": 0.2038584706709365,
+      "us": 5.905305086991167,
+      "us_expo_share": 0.041930084727389405,
+      "us_death_share": 0.24760994263862332
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 7,
+    "n_maps": 10
+   },
+   {
+    "rule": "bed6 > 0.394805 & portal_d > 0.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "bed6",
+      ">",
+      0.3948051929473877
+     ]
+    ],
+    "field_rate_per1k": 7.6707703917086105,
+    "us_rate_per1k": 7.143855625741989,
+    "field_ratio": 0.8606647832675879,
+    "us_ratio": 0.6682462882406311,
+    "us_over_field": 0.9313087553062248,
+    "field_expo_share": 0.28159816615919253,
+    "field_death_share": 0.24236162464595165,
+    "us_expo_share": 0.29005754069923234,
+    "us_death_share": 0.19382987494846776,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.34573738790075753,
+      "field_expo_share": 0.21205305237167102,
+      "field_death_share": 0.07331466842336408,
+      "us": 0.31586496391586544,
+      "us_expo_share": 0.17447034755371651,
+      "us_death_share": 0.05510907003444317
+     },
+     "Devil": {
+      "field": 0.9590281030819905,
+      "field_expo_share": 0.26795987511525243,
+      "field_death_share": 0.2569810507338676,
+      "us": 1.2912556227156335,
+      "us_expo_share": 0.251829862934425,
+      "us_death_share": 0.3251767264817836
+     },
+     "Portals": {
+      "field": 0.4810805044048553,
+      "field_expo_share": 0.6735569383933971,
+      "field_death_share": 0.3240351116676855,
+      "us": 0.2295878214164701,
+      "us_expo_share": 0.6226967920307034,
+      "us_death_share": 0.14296359988535398
+     },
+     "Prisoners Dilemma": {
+      "field": 0.3588476736828243,
+      "field_expo_share": 0.46249759453316447,
+      "field_death_share": 0.1659661858821282,
+      "us": 0.3934339466071198,
+      "us_expo_share": 0.34142543968910366,
+      "us_death_share": 0.13432835820895522
+     },
+     "Queen Of Spades": {
+      "field": 1.2730392346153847,
+      "field_expo_share": 0.19770906043689387,
+      "field_death_share": 0.2516913909751102,
+      "us": 1.0349791289190615,
+      "us_expo_share": 0.18764536802868256,
+      "us_death_share": 0.1942090395480226
+     },
+     "Schooltime": {
+      "field": 2.032796963744397,
+      "field_expo_share": 0.10260873256370681,
+      "field_death_share": 0.20858272000916406,
+      "us": 1.8581986181445014,
+      "us_expo_share": 0.10203198566554202,
+      "us_death_share": 0.18959569477024976
+     },
+     "Slithery Fight": {
+      "field": 0.6459981555153244,
+      "field_expo_share": 0.48344267921865086,
+      "field_death_share": 0.31230307907263505,
+      "us": 0.505198324731094,
+      "us_expo_share": 0.5085139733485544,
+      "us_death_share": 0.2569004074380418
+     },
+     "Trauma": {
+      "field": 0.11008368043166723,
+      "field_expo_share": 0.004796451032141803,
+      "field_death_share": 0.0005280109826284387,
+      "us": 0.0,
+      "us_expo_share": 0.0033876870889993156,
+      "us_death_share": 0.0
+     },
+     "Trophy": {
+      "field": 1.1437346560885093,
+      "field_expo_share": 0.21757487625523494,
+      "field_death_share": 0.2488479262672811,
+      "us": 1.2106861837572653,
+      "us_expo_share": 0.20530998777219867,
+      "us_death_share": 0.248565965583174
+     }
+    },
+    "maps_ratio_gt1_field": 3,
+    "maps_ratio_gt1_us": 4,
+    "n_maps": 9
+   },
+   {
+    "rule": "bed6 <= 0.394805 & portal_d > 0.5 & region > 0.5",
+    "conds": [
+     [
+      "region",
+      ">",
+      0.5
+     ],
+     [
+      "portal_d",
+      ">",
+      0.5
+     ],
+     [
+      "bed6",
+      "<=",
+      0.3948051929473877
+     ]
+    ],
+    "field_rate_per1k": 2.1092178219074147,
+    "us_rate_per1k": 1.9356051685710287,
+    "field_ratio": 0.23665543444218864,
+    "us_ratio": 0.18105922588023005,
+    "us_over_field": 0.917688608766171,
+    "field_expo_share": 0.5584172398704187,
+    "field_death_share": 0.13215247450154177,
+    "us_expo_share": 0.5321167537925621,
+    "us_death_share": 0.09634464751958224,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.35144894131008353,
+      "field_expo_share": 0.6899412993375051,
+      "field_death_share": 0.24247913921826966,
+      "us": 0.4291383284813189,
+      "us_expo_share": 0.6848958032339717,
+      "us_death_share": 0.2939150401836969
+     },
+     "Default": {
+      "field": 0.4059855516115572,
+      "field_expo_share": 0.8751707484062639,
+      "field_death_share": 0.35530667904601637,
+      "us": 0.28777431057294367,
+      "us_expo_share": 0.8670581583561431,
+      "us_death_share": 0.2495170637475853
+     },
+     "Devil": {
+      "field": 0.25727636691423666,
+      "field_expo_share": 0.47802318566001323,
+      "field_death_share": 0.12298406850737786,
+      "us": 0.2105698203113771,
+      "us_expo_share": 0.5293903314650692,
+      "us_death_share": 0.11147362697117999
+     },
+     "Portals": {
+      "field": 0.2136649820548042,
+      "field_expo_share": 0.0775542059154797,
+      "field_death_share": 0.01657061801520556,
+      "us": 0.09560037498341323,
+      "us_expo_share": 0.05456458076916081,
+      "us_death_share": 0.005216394382344511
+     },
+     "Prisoners Dilemma": {
+      "field": 0.10253187700606292,
+      "field_expo_share": 0.387551322232973,
+      "field_death_share": 0.03973636450472825,
+      "us": 0.12482290233770858,
+      "us_expo_share": 0.47828957201933137,
+      "us_death_share": 0.05970149253731343
+     },
+     "Queen Of Spades": {
+      "field": 0.12687924611433948,
+      "field_expo_share": 0.7176571675305644,
+      "field_death_share": 0.09105580038483024,
+      "us": 0.11305411054475875,
+      "us_expo_share": 0.7058766771280863,
+      "us_death_share": 0.07980225988700565
+     },
+     "Schooltime": {
+      "field": 0.4081044565279565,
+      "field_expo_share": 0.7722832984314283,
+      "field_death_share": 0.3151722557919757,
+      "us": 0.34392208967229737,
+      "us_expo_share": 0.769939574159852,
+      "us_death_share": 0.2647992272664551
+     },
+     "Slithery Fight": {
+      "field": 0.2085551417989095,
+      "field_expo_share": 0.37726374817210867,
+      "field_death_share": 0.0786802944956222,
+      "us": 0.16736953499141982,
+      "us_expo_share": 0.33001163530987243,
+      "us_death_share": 0.055233893943571366
+     },
+     "Trauma": {
+      "field": 0.43829440570506056,
+      "field_expo_share": 0.6909326127864851,
+      "field_death_share": 0.3028318989034972,
+      "us": 0.42675363591046744,
+      "us_expo_share": 0.693867349064183,
+      "us_death_share": 0.2961104140526976
+     },
+     "Trophy": {
+      "field": 0.363242323829206,
+      "field_expo_share": 0.7306597495112602,
+      "field_death_share": 0.2654065453409357,
+      "us": 0.25575295327849196,
+      "us_expo_share": 0.7326621050897139,
+      "us_death_share": 0.18738049713193117
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 10
+   }
+  ],
+  "lomo_top_leaf": {
+   "Autarky": {
+    "rule": "bed6 > 0.361818 & region <= 0.5 & spawn_d <= 12.5",
+    "field": 9.869724404824462,
+    "us": 1.386522435897436
+   },
+   "Default": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   },
+   "Devil": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   },
+   "Portals": {
+    "rule": "bed6 > 0.547237 & is_bed > 0.5 & region <= 0.5",
+    "field": 2.5192486529286215,
+    "us": 2.418502993834279
+   },
+   "Prisoners Dilemma": {
+    "rule": "bed6 > 0.361818 & region <= 0.5 & spawn_d <= 12.5",
+    "field": 7.236544363513794,
+    "us": 15.49788974001246
+   },
+   "Queen Of Spades": {
+    "rule": "bed6 > 0.361818 & region <= 0.5 & spawn_d <= 12.5",
+    "field": 16.213289092946845,
+    "us": 16.670371281458085
+   },
+   "Schooltime": {
+    "rule": "bed6 > 0.30611 & is_bed > 0.5 & region <= 0.5",
+    "field": 5.227708057248016,
+    "us": 5.528975051231278
+   },
+   "Slithery Fight": {
+    "rule": "bed6 > 0.361818 & reach5 > 20.5 & region <= 0.5",
+    "field": 4.917408042392089,
+    "us": 6.264283235688525
+   },
+   "Trauma": {
+    "rule": "bed6 > 0.361818 & is_bed > 0.5 & region <= 0.5",
+    "field": 3.837322218380433,
+    "us": 0.6710196655663704
+   },
+   "Trophy": {
+    "rule": "deg <= 1.5 & region <= 0.5"
+   }
+  }
+ },
+ "fight": {
+  "base_field_per1k": 10.298715910515899,
+  "base_us_per1k": 12.210357325861818,
+  "leaves": [
+   {
+    "rule": "deg <= 1.5",
+    "conds": [
+     [
+      "deg",
+      "<=",
+      1.5
+     ]
+    ],
+    "field_rate_per1k": 242.94463637443388,
+    "us_rate_per1k": 246.47640864115044,
+    "field_ratio": 23.589798814274115,
+    "us_ratio": 20.18584731497642,
+    "us_over_field": 1.014537354351274,
+    "field_expo_share": 0.009632349916436267,
+    "field_death_share": 0.2272251966374216,
+    "us_expo_share": 0.009234894391192136,
+    "us_death_share": 0.1864141681505366,
+    "per_terrain": {
+     "Autarky": {
+      "field": 19.989302032106906,
+      "field_expo_share": 0.015755151730392828,
+      "field_death_share": 0.314934486500494,
+      "us": 16.718370004192586,
+      "us_expo_share": 0.01812607635317098,
+      "us_death_share": 0.3030384511965582
+     },
+     "Portals": {
+      "field": 21.211546400460946,
+      "field_expo_share": 0.01933898117867762,
+      "field_death_share": 0.41020969660916123,
+      "us": 16.511597802825236,
+      "us_expo_share": 0.024235598697652988,
+      "us_death_share": 0.4001684582063212
+     },
+     "Prisoners Dilemma": {
+      "field": 15.70285470038942,
+      "field_expo_share": 0.04490989760449146,
+      "field_death_share": 0.7052135966926963,
+      "us": 16.752182593341363,
+      "us_expo_share": 0.01722634647003139,
+      "us_death_share": 0.2885789014821273
+     },
+     "Queen Of Spades": {
+      "field": 22.401507650805655,
+      "field_expo_share": 0.00393762617505905,
+      "field_death_share": 0.08820876288659794,
+      "us": 28.22856109324759,
+      "us_expo_share": 0.004062687264491098,
+      "us_death_share": 0.11468381564844587
+     },
+     "Schooltime": {
+      "field": 20.278724356825723,
+      "field_expo_share": 0.0009670045701354928,
+      "field_death_share": 0.019609619129568406,
+      "us": 29.520746441284683,
+      "us_expo_share": 0.0007294307517330334,
+      "us_death_share": 0.02153334026838656
+     },
+     "Slithery Fight": {
+      "field": 13.546545104320352,
+      "field_expo_share": 0.014446229119945647,
+      "field_death_share": 0.19569649436068984,
+      "us": 7.700249947672315,
+      "us_expo_share": 0.014275866611051348,
+      "us_death_share": 0.1099277411247251
+     },
+     "Trauma": {
+      "field": 16.227486133684565,
+      "field_expo_share": 0.009315050024843596,
+      "field_death_share": 0.15115984511272754,
+      "us": 13.950210313662945,
+      "us_expo_share": 0.0070669800934329155,
+      "us_death_share": 0.09858585858585858
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 7,
+    "n_maps": 7
+   },
+   {
+    "rule": "bed6 > 0.13098 & 1.5 < deg <= 2.5",
+    "conds": [
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "deg",
+      "<=",
+      2.5
+     ],
+     [
+      "bed6",
+      ">",
+      0.13098011910915375
+     ]
+    ],
+    "field_rate_per1k": 36.4351897261621,
+    "us_rate_per1k": 52.20504888926555,
+    "field_ratio": 3.537838119115273,
+    "us_ratio": 4.275472657847126,
+    "us_over_field": 1.4328194605716567,
+    "field_expo_share": 0.07442117832648397,
+    "field_death_share": 0.2632900815529104,
+    "us_expo_share": 0.08320571975234935,
+    "us_death_share": 0.35574377977766014,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.9207270503621588,
+      "field_expo_share": 0.03426654536281166,
+      "field_death_share": 0.03155013523800269,
+      "us": 1.4626681881303403,
+      "us_expo_share": 0.038789167697268805,
+      "us_death_share": 0.05673568163484808
+     },
+     "Default": {
+      "field": 3.1110210642585465,
+      "field_expo_share": 0.015579341297663302,
+      "field_death_share": 0.048467658944303604,
+      "us": 2.75308676410998,
+      "us_expo_share": 0.013434819083076659,
+      "us_death_share": 0.03698722259583053
+     },
+     "Devil": {
+      "field": 1.3578182629446849,
+      "field_expo_share": 0.2220264869076519,
+      "field_death_share": 0.3014716187806587,
+      "us": 1.561366186880228,
+      "us_expo_share": 0.17625625582716234,
+      "us_death_share": 0.2752005580746425
+     },
+     "Portals": {
+      "field": 2.529065671425402,
+      "field_expo_share": 0.14882984666253807,
+      "field_death_share": 0.3764004560777315,
+      "us": 2.3026841794499666,
+      "us_expo_share": 0.1850706044272523,
+      "us_death_share": 0.4261591528958768
+     },
+     "Prisoners Dilemma": {
+      "field": 0.2884414621120862,
+      "field_expo_share": 0.058126844471597994,
+      "field_death_share": 0.016766192007349565,
+      "us": 1.5600617153605698,
+      "us_expo_share": 0.02514822380549051,
+      "us_death_share": 0.03923278116826504
+     },
+     "Queen Of Spades": {
+      "field": 5.401040076197565,
+      "field_expo_share": 0.045070547823619224,
+      "field_death_share": 0.2434278350515464,
+      "us": 4.683980757767833,
+      "us_expo_share": 0.046680276669002714,
+      "us_death_share": 0.21864951768488747
+     },
+     "Schooltime": {
+      "field": 3.79759749587436,
+      "field_expo_share": 0.046012897133454786,
+      "field_death_share": 0.17473846293193243,
+      "us": 4.0471400609020165,
+      "us_expo_share": 0.04510970053944835,
+      "us_death_share": 0.18256527618849475
+     },
+     "Slithery Fight": {
+      "field": 3.834557120183878,
+      "field_expo_share": 0.09764912682144761,
+      "field_death_share": 0.3744411545329205,
+      "us": 4.204223957374806,
+      "us_expo_share": 0.11643213101797985,
+      "us_death_share": 0.48950675463399307
+     },
+     "Trauma": {
+      "field": 0.34433174840611525,
+      "field_expo_share": 0.041513752407497315,
+      "field_death_share": 0.014294502949372128,
+      "us": 0.3108844717336756,
+      "us_expo_share": 0.028592257565388163,
+      "us_death_share": 0.008888888888888889
+     },
+     "Trophy": {
+      "field": 2.698882476662863,
+      "field_expo_share": 0.031016918169737756,
+      "field_death_share": 0.0837110169283912,
+      "us": 2.3815568631127944,
+      "us_expo_share": 0.03613705544137159,
+      "us_death_share": 0.08606245239908607
+     }
+    },
+    "maps_ratio_gt1_field": 7,
+    "maps_ratio_gt1_us": 9,
+    "n_maps": 10
+   },
+   {
+    "rule": "deg > 2.5 & portal_d > 29.5",
+    "conds": [
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "deg",
+      ">",
+      2.5
+     ],
+     [
+      "portal_d",
+      ">",
+      29.5
+     ]
+    ],
+    "field_rate_per1k": 13.325086376872312,
+    "us_rate_per1k": 11.88673005144339,
+    "field_ratio": 1.293859010448693,
+    "us_ratio": 0.9734956753695505,
+    "us_over_field": 0.8920565101982825,
+    "field_expo_share": 0.08168707464856052,
+    "field_death_share": 0.10569155757123504,
+    "us_expo_share": 0.1057184008010568,
+    "us_death_share": 0.1029164059868136,
+    "per_terrain": {
+     "Devil": {
+      "field": 0.9072652189046427,
+      "field_expo_share": 0.7459830607752657,
+      "field_death_share": 0.6768044849334268,
+      "us": 0.902329506892406,
+      "us_expo_share": 0.7812201943994942,
+      "us_death_share": 0.7049180327868853
+     },
+     "Queen Of Spades": {
+      "field": 0.31687526859522136,
+      "field_expo_share": 0.01443704422980717,
+      "field_death_share": 0.004574742268041237,
+      "us": 0.22292544217525345,
+      "us_expo_share": 0.03846349167656947,
+      "us_death_share": 0.00857449088960343
+     },
+     "Slithery Fight": {
+      "field": 1.4941594122079123,
+      "field_expo_share": 0.17694586289266517,
+      "field_death_share": 0.2643853264923265,
+      "us": 0.9463452846921044,
+      "us_expo_share": 0.216617856907642,
+      "us_death_share": 0.20499528746465598
+     }
+    },
+    "maps_ratio_gt1_field": 1,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 3
+   },
+   {
+    "rule": "bed6 <= 0.13098 & 1.5 < deg <= 2.5",
+    "conds": [
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "deg",
+      "<=",
+      2.5
+     ],
+     [
+      "bed6",
+      "<=",
+      0.13098011910915375
+     ]
+    ],
+    "field_rate_per1k": 9.029382225645046,
+    "us_rate_per1k": 9.265411936471095,
+    "field_ratio": 0.8767483542705793,
+    "us_ratio": 0.7588157896777302,
+    "us_over_field": 1.0261401837830813,
+    "field_expo_share": 0.04417847615704023,
+    "field_death_share": 0.03873340626486704,
+    "us_expo_share": 0.04709073354989446,
+    "us_death_share": 0.03573319216516675,
+    "per_terrain": {
+     "Autarky": {
+      "field": 1.9263118780382278,
+      "field_expo_share": 0.016815727682838847,
+      "field_death_share": 0.03239233597330871,
+      "us": 1.1139738322084087,
+      "us_expo_share": 0.02389648516510824,
+      "us_death_share": 0.026620059155687013
+     },
+     "Default": {
+      "field": 1.7736111159740569,
+      "field_expo_share": 0.017703888963531682,
+      "field_death_share": 0.031399814261690216,
+      "us": 1.8495347875858015,
+      "us_expo_share": 0.01599849771697886,
+      "us_death_share": 0.029589778076664425
+     },
+     "Devil": {
+      "field": 0.6790743710214524,
+      "field_expo_share": 0.03199045231708242,
+      "field_death_share": 0.021723896285914507,
+      "us": 0.4675387930791993,
+      "us_expo_share": 0.04252354977334348,
+      "us_death_share": 0.01988140913847227
+     },
+     "Portals": {
+      "field": 0.8483528438724126,
+      "field_expo_share": 0.0017725343415796583,
+      "field_death_share": 0.0015037345495406173
+     },
+     "Prisoners Dilemma": {
+      "field": 0.9478034448962812,
+      "field_expo_share": 0.02443416018592408,
+      "field_death_share": 0.023158781197366408,
+      "us": 0.6253618495234139,
+      "us_expo_share": 0.05715958347865079,
+      "us_death_share": 0.03574542284219703
+     },
+     "Queen Of Spades": {
+      "field": 0.8555629392792995,
+      "field_expo_share": 0.023346297375794935,
+      "field_death_share": 0.01997422680412371,
+      "us": 0.5732348854749711,
+      "us_expo_share": 0.04113470855297236,
+      "us_death_share": 0.023579849946409433
+     },
+     "Schooltime": {
+      "field": 1.8323349402706102,
+      "field_expo_share": 0.03632742728854774,
+      "field_death_share": 0.06656401431094607,
+      "us": 1.8862674278590328,
+      "us_expo_share": 0.0366189486793364,
+      "us_death_share": 0.0690731301362738
+     },
+     "Slithery Fight": {
+      "field": 1.3781609141543998,
+      "field_expo_share": 0.024134887719351596,
+      "field_death_share": 0.03326175892231539,
+      "us": 0.8968274843613266,
+      "us_expo_share": 0.0246269017145617,
+      "us_death_share": 0.022086082312284008
+     },
+     "Trauma": {
+      "field": 1.7313612202482405,
+      "field_expo_share": 0.23621156234148089,
+      "field_death_share": 0.40896753881228964,
+      "us": 2.070878683678596,
+      "us_expo_share": 0.24388222691701134,
+      "us_death_share": 0.5050505050505051
+     },
+     "Trophy": {
+      "field": 2.1554261435534956,
+      "field_expo_share": 0.006933209570324899,
+      "field_death_share": 0.014944021166613588,
+      "us": 1.9231213969235217,
+      "us_expo_share": 0.007722593681435423,
+      "us_death_share": 0.01485148514851485
+     }
+    },
+    "maps_ratio_gt1_field": 6,
+    "maps_ratio_gt1_us": 5,
+    "n_maps": 10
+   },
+   {
+    "rule": "deg > 2.5 & portal_d <= 29.5",
+    "conds": [
+     [
+      "deg",
+      ">",
+      1.5
+     ],
+     [
+      "deg",
+      ">",
+      2.5
+     ],
+     [
+      "portal_d",
+      "<=",
+      29.5
+     ]
+    ],
+    "field_rate_per1k": 4.758559076713025,
+    "us_rate_per1k": 5.1638988000407195,
+    "field_ratio": 0.4620536305748677,
+    "us_ratio": 0.422911358138837,
+    "us_over_field": 1.0851811896822519,
+    "field_expo_share": 0.790080920951479,
+    "field_death_share": 0.36505975797356593,
+    "us_expo_share": 0.7547502515055072,
+    "us_death_share": 0.31919245391982287,
+    "per_terrain": {
+     "Autarky": {
+      "field": 0.6656107507731187,
+      "field_expo_share": 0.9331625752239566,
+      "field_death_share": 0.6211230422881946,
+      "us": 0.6675518253613533,
+      "us_expo_share": 0.919188270784452,
+      "us_death_share": 0.6136058080129067
+     },
+     "Default": {
+      "field": 0.9518119014761838,
+      "field_expo_share": 0.966716769738805,
+      "field_death_share": 0.9201325267940061,
+      "us": 0.9617299001548484,
+      "us_expo_share": 0.9705666831999444,
+      "us_death_share": 0.933422999327505
+     },
+     "Portals": {
+      "field": 0.2552664391527339,
+      "field_expo_share": 0.8300586378172047,
+      "field_death_share": 0.21188611276356667,
+      "us": 0.2194676074440729,
+      "us_expo_share": 0.7900556589645492,
+      "us_death_share": 0.17339162522060003
+     },
+     "Prisoners Dilemma": {
+      "field": 0.29209504962448885,
+      "field_expo_share": 0.8725290977379865,
+      "field_death_share": 0.25486143010258766,
+      "us": 0.7067929307489378,
+      "us_expo_share": 0.9004658462458273,
+      "us_death_share": 0.6364428945074107
+     },
+     "Queen Of Spades": {
+      "field": 0.7050026844808719,
+      "field_expo_share": 0.9132084843957197,
+      "field_death_share": 0.6438144329896908,
+      "us": 0.7296106239408189,
+      "us_expo_share": 0.8696588358369644,
+      "us_death_share": 0.6345123258306538
+     },
+     "Schooltime": {
+      "field": 0.8062548409108142,
+      "field_expo_share": 0.916692671007862,
+      "field_death_share": 0.7390879036275531,
+      "us": 0.7921471897256646,
+      "us_expo_share": 0.9175419200294822,
+      "us_death_share": 0.7268282534068449
+     },
+     "Slithery Fight": {
+      "field": 0.19250242595415676,
+      "field_expo_share": 0.68682389344659,
+      "field_death_share": 0.13221526569174785,
+      "us": 0.2762278414420363,
+      "us_expo_share": 0.6280472437487651,
+      "us_death_share": 0.17348413446434183
+     },
+     "Trauma": {
+      "field": 0.5969175421699728,
+      "field_expo_share": 0.7129596352261782,
+      "field_death_share": 0.42557811312561067,
+      "us": 0.5378168602675003,
+      "us_expo_share": 0.7204585354241676,
+      "us_death_share": 0.38747474747474747
+     },
+     "Trophy": {
+      "field": 0.9365411255450211,
+      "field_expo_share": 0.9620266119657521,
+      "field_death_share": 0.9009774859746686,
+      "us": 0.9395532956948758,
+      "us_expo_share": 0.9561186703783681,
+      "us_death_share": 0.8983244478293984
+     }
+    },
+    "maps_ratio_gt1_field": 0,
+    "maps_ratio_gt1_us": 0,
+    "n_maps": 9
+   }
+  ],
+  "lomo_top_leaf": {
+   "Autarky": {
+    "rule": "bed3 > 0.180909 & bed6 <= 1.39394 & region <= 0.5",
+    "field": 3.015798921484898
+   },
+   "Default": {
+    "rule": "deg <= 1.5"
+   },
+   "Devil": {
+    "rule": "deg <= 1.5"
+   },
+   "Portals": {
+    "rule": "bed6 > 2.32219 & region <= 0.5",
+    "field": 3.621036203426373,
+    "us": 2.5592994695571956
+   },
+   "Prisoners Dilemma": {
+    "rule": "bed3 > 0.180909 & bed6 <= 1.39394 & region <= 0.5"
+   },
+   "Queen Of Spades": {
+    "rule": "bed3 > 0.180909 & portal_d <= 18.5 & region <= 0.5",
+    "field": 6.738231719981746,
+    "us": 6.53073209245355
+   },
+   "Schooltime": {
+    "rule": "bed3 > 0.167209 & portal_d <= 18.5 & region <= 0.5",
+    "field": 4.142058395693424,
+    "us": 4.812943811540211
+   },
+   "Slithery Fight": {
+    "rule": "dead > 0.5",
+    "field": 6.6585506783903545,
+    "us": 4.8707789840807
+   },
+   "Trauma": {
+    "rule": "dead > 0.5 & region <= 0.5",
+    "field": 4.267420269138925,
+    "us": 3.822088169110163
+   },
+   "Trophy": {
+    "rule": "deg <= 1.5"
+   }
+  }
+ }
+}

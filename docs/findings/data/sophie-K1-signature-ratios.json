@@ -1,0 +1,110 @@
+{
+ "H1_dead_end": {
+  "wall": 46.073,
+  "self": 25.395,
+  "ally_body": 1.0,
+  "h2h_ally": 1.0,
+  "trapped": 29.349,
+  "newborn": 30.424,
+  "transit": 37.637,
+  "crowd23": 16.708,
+  "fight": 23.59,
+  "h2h_enemy": 1.0
+ },
+ "H2_bed_corridor": {
+  "wall": 5.061,
+  "self": 4.204,
+  "ally_body": 4.862,
+  "h2h_ally": 4.764,
+  "trapped": 4.801,
+  "newborn": 4.993,
+  "transit": 3.479,
+  "crowd23": 4.27,
+  "fight": 3.69,
+  "h2h_enemy": 0.393
+ },
+ "H3_bare_corridor": {
+  "wall": 2.106,
+  "self": 1.417,
+  "ally_body": 1.515,
+  "h2h_ally": 1.026,
+  "trapped": 1.91,
+  "newborn": 0.876,
+  "transit": 1.146,
+  "crowd23": 1.45,
+  "fight": 1.09,
+  "h2h_enemy": 0.958
+ },
+ "H4_portal_mouth": {
+  "wall": 2.954,
+  "self": 2.325,
+  "ally_body": 6.004,
+  "h2h_ally": 15.306,
+  "trapped": 3.431,
+  "newborn": 2.998,
+  "transit": 23.757,
+  "crowd23": 4.88,
+  "fight": 4.86,
+  "h2h_enemy": 1.581
+ },
+ "H5_portal_approach_beds": {
+  "wall": 0.628,
+  "self": 0.732,
+  "ally_body": 0.667,
+  "h2h_ally": 4.073,
+  "trapped": 0.809,
+  "newborn": 0.61,
+  "transit": 0.661,
+  "crowd23": 1.08,
+  "fight": 1.204,
+  "h2h_enemy": 0.938
+ },
+ "H6_bed_pocket": {
+  "wall": 1.113,
+  "self": 1.674,
+  "ally_body": 2.644,
+  "h2h_ally": 5.01,
+  "trapped": 1.75,
+  "newborn": 2.027,
+  "transit": 2.121,
+  "crowd23": 2.497,
+  "fight": 1.413,
+  "h2h_enemy": 0.775
+ },
+ "H7_dense_open_cluster": {
+  "wall": 0.0,
+  "self": 0.92,
+  "ally_body": 1.709,
+  "h2h_ally": 0.644,
+  "trapped": 0.668,
+  "newborn": 0.994,
+  "transit": 0.038,
+  "crowd23": 1.05,
+  "fight": 0.779,
+  "h2h_enemy": 1.433
+ },
+ "H8_small_room": {
+  "wall": 0.313,
+  "self": 0.463,
+  "ally_body": 0.75,
+  "h2h_ally": 0.333,
+  "trapped": 0.533,
+  "newborn": 0.468,
+  "transit": 0.016,
+  "crowd23": 0.526,
+  "fight": 0.412,
+  "h2h_enemy": 0.445
+ },
+ "_rest": {
+  "wall": 0.076,
+  "self": 0.357,
+  "ally_body": 0.367,
+  "h2h_ally": 0.129,
+  "trapped": 0.209,
+  "newborn": 0.207,
+  "transit": 0.012,
+  "crowd23": 0.318,
+  "fight": 0.456,
+  "h2h_enemy": 1.025
+ }
+}
