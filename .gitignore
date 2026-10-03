@@ -42,3 +42,6 @@ Testing/
 /game_stats/.write.lock
 /.game_stats.parquet*.tmp
 /game_stats/runs/.*.tmp
+
+# Cowork scratch outputs (director handoff sources etc.)
+/Claude outputs/
