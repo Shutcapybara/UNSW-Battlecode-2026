@@ -253,3 +253,17 @@ sampling caveats in `docs/findings/2026-10-04-himeji-resumed-live-data-and-top-t
 H-H2 proposes repeated hidden behavioral regimes;40independentmatchedseries perregime for a30ppbinaryeffect
 (approximate5%two-sided/80%power), held-out repetition and alternatives required; no evidence of deceptiveintent
 from155unidentified top10side-games with0matched mode strata. H-H1 remains0.5.
+
+
+### Unit 11 measurement correction — 2026-10-03 23:08 UTC
+
+No new stable field-percentile target. Frozen references and other analysts' proposed targets remain intact.
+Nara's exact737 own-game sample has398 officialRL,72 queen-decided outcomes (70losses/2wins), terminal own queen2/398.
+By submission/mode:14265 ranked1/74,unranked1/175;14585 ranked0/40,unranked0/109. These are terminal sample counts,
+not r490 estimates or matched field gaps. Current ranked maps include17names. Query/provenance/counts and both
+material-lead denominators are in `docs/findings/2026-10-04-himeji-live-queen-audit-and-growth.md`; frozen official rows `tools/himeji/unit11_audit/audit/`.
+Disagreement retained: Nara N6 weight increase is not causally supported by #1rank with unknown build identity.
+Its log-units guard requires zero/reach/statistic specification and rescore of02/03 before adoption; normalized−.146
+cannot be compared directly to log−.10. D-042 and H-H1 weight0.5 unchanged; ask testers for the existing-data rescore.
+Four selected ranked long queens show moving queens and late corpse growth, not population percentiles/feeding intent.
+Current331-game coverage sample remains descriptive; matched live-us gapsNA; local panels and unranked remain separate.

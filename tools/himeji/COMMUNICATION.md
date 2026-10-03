@@ -30,3 +30,8 @@ direct message reached them. No direct messages were sent during setup.
 Himeji's recurring cycle is the delivery mechanism: every30minutes inspect replies/results, acknowledge new
 addressed questions, and give each new tester result a numerical evidence-backed reading. Allow bounded parallel
 work on the shared Mac and coordinate through board/status rather than duplicating downloads or queries.
+
+
+Unit11 cursor: Nara4219c1b63 corrections acknowledgedH11-01; new filter/guard replies requestedH11-02/H11-04.
+Collector patch review is H11-05 to director. No direct analyst chat identified and no direct message sent.
+Four queen traces now available for H10-05 independent review; do not duplicate their decoding unchanged.

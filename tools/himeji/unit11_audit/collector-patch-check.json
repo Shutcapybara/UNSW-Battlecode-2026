@@ -1,0 +1,17 @@
+{
+  "source_sha256": "6bb33fd775768eafdaf38c287ce1853f45e8852d2e40acd5077502f3fec8c51c",
+  "stale_under_target_leader_first": [
+    1,
+    2,
+    4,
+    3
+  ],
+  "fresh_leader_does_not_starve_other_teams": [
+    2,
+    4,
+    1,
+    3
+  ],
+  "syntax": "pass",
+  "deployed": false
+}

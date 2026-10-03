@@ -59,3 +59,14 @@ Legacy `build/s1/corpus` unchanged. Fresh pinnedFRAME_VERSION7store:
 Metadata113,915;decoded119recent currenttop10/us games,238sides;0errors/238officialwinneragreements.
 Window03:43:50–22:16:32UTC3Oct;17APImaps/18labels. Balancedcoverage sample,31eligiblegames stillqueued inthisfreeze;
 no sharednorm rebuild. Sourcehashes and scope: `tools/himeji/unit10_audit/`; report `docs/findings/2026-10-04-himeji-resumed-live-data-and-top-team-regimes.md`.
+
+
+## Himeji refresh — 2026-10-03 23:08 UTC
+
+Freeze22:52:55Z:114,593games, latest22:51:49Z; ladder224700Z current IDs306/264/91/213/87/842/82/952/566/552.
+Existinghub SQLite read-only connection/cycle healthy;40downloads/pass,0errors inspected. Directchecks264/91 still~32hstale
+because refresh excludes below-target teams; focused patch prepared, NOT deployed. Other8leaders caught up.
+Separate pinnedv7 store now331games/662sides (212new,0errors), all662winnerlabels match official index;
+window2Oct23:13:00Z–3Oct22:50:10Z,365current-top10sides/7own,18decoderlabels. Balancedcoverage sample, notcensus.
+Legacy store/norms unchanged; no running worker. Source/selectedIDs/freshness manifests `tools/himeji/unit11_audit/`;
+finding `docs/findings/2026-10-04-himeji-live-queen-audit-and-growth.md`. Era post123; not new stable reference percentiles.

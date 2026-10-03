@@ -2,6 +2,36 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
 
+## Unit 11 — 2026-10-03 23:08 UTC; complete
+
+- Exact Nara737 official-header audit:398RL not326;72queen outcomes=70losses+2wins; terminal queen2/398.
+  Header submissions14265(501games)/14585(236), modes kept separate;737official/index winners agree.
+  14585ranked9queen losses/40RL; all ranked sample spans17maps. No r490/counterfactual inference.
+- Four selected ranked306/91 traces: queens move487–498rounds; r49035/66/35/121, end37/73/35/123.
+  Allied corpse use observed, invalid donor intent unknown. All4actualr490 reached; decoderterminal499.
+  CurrentSlithery spawnqueen25 survives; no blanket pocket exclusion by name. No causalN6 weight increase.
+- Nara historical corrections accepted, missingfiveIDs closed aswithdrawn. NewH11-02 filter correction pending.
+  Log-units guard disagreementH11-04: requirezero/reach/statistic definition and02/03rescore beforeadoption.
+  Rome resumed/no complete newofficialL10; H10-06 stands. No othernewtesterresults.
+- LiveDB read-onlyhealthy, solehubdaemon40/pass0errors. Sourceconfigunchanged.264/91 directchecks~32hstale,
+  belowtarget excludedfromrefresh; testedpatch preparedH11-05, NOTdeployed. Keeperreview/serviceworkflowpending.
+- Versionedv7store331games/662sides,212new0errors,662officialwinnermatches; allselectedqueuecomplete.
+  Latestdecoded3Oct22:50:10Z, earliest2Oct23:13Z. No queryrunning; lockfilepresenceisnotanactivewriter.
+  Metadatafreeze114593games22:52:55Z/lateststart22:51:49Z; ladder224700Ztop306/264/91/213/87/842/82/952/566/552.
+  IndexSHA8cd12a04ae180bcf6240de03c9200619216f69db87a79e1b54855977df767626;
+  ladderSHAd863ead567e2f3db9c0947b98201ffdcd422288ea2639c3ac580c4ff0a28bbe0.
+  Source/decoderhashes tools/himeji/unit11_audit/; legacyS1/norms untouched. Era≥06:00Z1Octpost123.
+- Sourcecursor main0298966ec/D-042; Antioch2c7113f66; Carthage5b69fa9d0; Kyoto fccea71c0;
+  Nara4219c1b63 unit4NEW; Romead611b51c plusresumedchat. BoardHimejiH11-01..07; Naraunit4read.
+  Branchkeptseparate; do not retry rejectedmainfast-forward. Mainanalysisdependenciesread-only.
+- Finding `docs/findings/2026-10-04-himeji-live-queen-audit-and-growth.md`; compactaudit tools/himeji/unit11_audit/.
+  H-H1 remains0.5; H-H2switchingunresolved, no deceptiveintentclaim. Currenttargetsprovisional/matchedgapsNA.
+- PendingH11-02Nara filter fix;H11-04guard rescore;H11-05collectorpatchreview. H10-05independentanalystread
+  remainsqueued via board; no availabledirectanalystchat, no peerwake. Half-hourautomationACTIVE.
+- Next runnable: refreshcursor/checkcollector264/91 andpeerreplies; rankedQ3 references byactualgeometry/currentcohort
+  withwhole-seriesuncertainty andexplicitr490reach. Continue recentincrementalstoreonlyifnewinput; doNOTrepeat737audit
+  orfourtraces unchanged. Main/source/collector deployment/bots remain untouched.
+
 ## Unit 10 — 2026-10-03 22:38 UTC; resumed and complete
 
 - User resumed operations, assigned live DB/downloading/top-team/spoofing analysis; prior Antioch-only restriction

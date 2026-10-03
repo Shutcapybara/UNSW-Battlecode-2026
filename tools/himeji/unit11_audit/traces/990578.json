@@ -1,0 +1,2027 @@
+{
+  "game": 990578,
+  "map": "Slithery Fight",
+  "map_hash": "c8e8fa61335b",
+  "initial_dragons": 14,
+  "reason": "queen",
+  "winner": "B",
+  "last_round": 499,
+  "final": {
+    "A": {
+      "units": 3,
+      "longest": 37,
+      "total": 48,
+      "queen": 0,
+      "queen_body": 0
+    },
+    "B": {
+      "units": 33,
+      "longest": 73,
+      "total": 312,
+      "queen": 73,
+      "queen_body": 73
+    }
+  },
+  "source_sha256": "fb420db446d3128cca3acecb3448b97af51408bf1c048f18b4a9bc232ffd589f",
+  "ranked": true,
+  "started_at": "2026-10-03T21:11:46.449Z",
+  "sides": [
+    {
+      "team": 135,
+      "side": "A",
+      "original_queen": 0,
+      "final_body_length": 0,
+      "checkpoints": {
+        "0": {
+          "reached": true,
+          "length": 25
+        },
+        "25": {
+          "reached": true,
+          "length": 3
+        },
+        "50": {
+          "reached": true,
+          "length": 3
+        },
+        "100": {
+          "reached": true,
+          "length": 3
+        },
+        "200": {
+          "reached": true,
+          "length": 4
+        },
+        "300": {
+          "reached": true,
+          "length": 4
+        },
+        "400": {
+          "reached": true,
+          "length": 6
+        },
+        "490": {
+          "reached": true,
+          "length": 0
+        }
+      },
+      "move_rounds": 412,
+      "multistep_moves": 0,
+      "sprint_paid": 0,
+      "eats_by_source": {
+        "ally_corpse": 14,
+        "bed": 3
+      },
+      "splits": [
+        {
+          "round": 0,
+          "team": "A",
+          "parent": 0,
+          "child": 14,
+          "before": 25,
+          "parent_len": 23,
+          "child_len": 2
+        },
+        {
+          "round": 1,
+          "team": "A",
+          "parent": 0,
+          "child": 22,
+          "before": 23,
+          "parent_len": 21,
+          "child_len": 2
+        },
+        {
+          "round": 2,
+          "team": "A",
+          "parent": 0,
+          "child": 27,
+          "before": 21,
+          "parent_len": 19,
+          "child_len": 2
+        },
+        {
+          "round": 3,
+          "team": "A",
+          "parent": 0,
+          "child": 34,
+          "before": 19,
+          "parent_len": 17,
+          "child_len": 2
+        },
+        {
+          "round": 4,
+          "team": "A",
+          "parent": 0,
+          "child": 39,
+          "before": 17,
+          "parent_len": 15,
+          "child_len": 2
+        },
+        {
+          "round": 5,
+          "team": "A",
+          "parent": 0,
+          "child": 42,
+          "before": 15,
+          "parent_len": 13,
+          "child_len": 2
+        },
+        {
+          "round": 6,
+          "team": "A",
+          "parent": 0,
+          "child": 46,
+          "before": 13,
+          "parent_len": 11,
+          "child_len": 2
+        },
+        {
+          "round": 7,
+          "team": "A",
+          "parent": 0,
+          "child": 48,
+          "before": 11,
+          "parent_len": 9,
+          "child_len": 2
+        },
+        {
+          "round": 8,
+          "team": "A",
+          "parent": 0,
+          "child": 50,
+          "before": 9,
+          "parent_len": 7,
+          "child_len": 2
+        },
+        {
+          "round": 10,
+          "team": "A",
+          "parent": 0,
+          "child": 54,
+          "before": 7,
+          "parent_len": 4,
+          "child_len": 3
+        },
+        {
+          "round": 11,
+          "team": "A",
+          "parent": 0,
+          "child": 60,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 147,
+          "team": "A",
+          "parent": 0,
+          "child": 414,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        }
+      ],
+      "death": [
+        {
+          "round": 423,
+          "id": 0,
+          "team": "A",
+          "cause": "h2h",
+          "length": 17,
+          "actor": 817,
+          "age": 423,
+          "head": [
+            4,
+            21
+          ],
+          "initial": true,
+          "killer": 817,
+          "killer_team": "B"
+        }
+      ],
+      "ally_donor_deaths": [
+        {
+          "round": 10,
+          "id": 14,
+          "team": "A",
+          "cause": "body",
+          "length": 2,
+          "actor": 14,
+          "age": 10,
+          "head": [
+            1,
+            22
+          ],
+          "initial": false,
+          "killer": 27,
+          "killer_team": "A"
+        },
+        {
+          "round": 378,
+          "id": 563,
+          "team": "A",
+          "cause": "self",
+          "length": 3,
+          "actor": 563,
+          "age": 155,
+          "head": [
+            3,
+            20
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 378,
+          "id": 736,
+          "team": "A",
+          "cause": "self",
+          "length": 2,
+          "actor": 736,
+          "age": 49,
+          "head": [
+            3,
+            21
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 398,
+          "id": 521,
+          "team": "A",
+          "cause": "self",
+          "length": 3,
+          "actor": 521,
+          "age": 197,
+          "head": [
+            0,
+            21
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 402,
+          "id": 768,
+          "team": "A",
+          "cause": "self",
+          "length": 5,
+          "actor": 768,
+          "age": 55,
+          "head": [
+            3,
+            20
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 405,
+          "id": 716,
+          "team": "A",
+          "cause": "self",
+          "length": 2,
+          "actor": 716,
+          "age": 87,
+          "head": [
+            5,
+            19
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 406,
+          "id": 779,
+          "team": "A",
+          "cause": "self",
+          "length": 2,
+          "actor": 779,
+          "age": 52,
+          "head": [
+            4,
+            19
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 407,
+          "id": 397,
+          "team": "A",
+          "cause": "self",
+          "length": 3,
+          "actor": 397,
+          "age": 268,
+          "head": [
+            5,
+            17
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 408,
+          "id": 648,
+          "team": "A",
+          "cause": "self",
+          "length": 3,
+          "actor": 648,
+          "age": 134,
+          "head": [
+            3,
+            18
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 409,
+          "id": 676,
+          "team": "A",
+          "cause": "self",
+          "length": 4,
+          "actor": 676,
+          "age": 114,
+          "head": [
+            2,
+            18
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 411,
+          "id": 724,
+          "team": "A",
+          "cause": "self",
+          "length": 4,
+          "actor": 724,
+          "age": 89,
+          "head": [
+            1,
+            19
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "ally_donor_suicides": [],
+      "queen_corpse_eats": [
+        {
+          "round": 12,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            1,
+            22
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 14
+        },
+        {
+          "round": 380,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            3,
+            21
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 736
+        },
+        {
+          "round": 381,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            3,
+            20
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 563
+        },
+        {
+          "round": 405,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            5,
+            22
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 768
+        },
+        {
+          "round": 407,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            5,
+            20
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 768
+        },
+        {
+          "round": 408,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            5,
+            19
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 716
+        },
+        {
+          "round": 409,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            4,
+            19
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 779
+        },
+        {
+          "round": 410,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            4,
+            18
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 397
+        },
+        {
+          "round": 411,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            3,
+            18
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 648
+        },
+        {
+          "round": 412,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            2,
+            18
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 676
+        },
+        {
+          "round": 414,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            1,
+            19
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 724
+        },
+        {
+          "round": 415,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            0,
+            19
+          ],
+          "origin": "ally_corpse",
+          "age": 17,
+          "donor": 521
+        },
+        {
+          "round": 418,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            1,
+            21
+          ],
+          "origin": "ally_corpse",
+          "age": 7,
+          "donor": 724
+        },
+        {
+          "round": 421,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            3,
+            20
+          ],
+          "origin": "ally_corpse",
+          "age": 19,
+          "donor": 768
+        }
+      ]
+    },
+    {
+      "team": 91,
+      "side": "B",
+      "original_queen": 1,
+      "final_body_length": 73,
+      "checkpoints": {
+        "0": {
+          "reached": true,
+          "length": 25
+        },
+        "25": {
+          "reached": true,
+          "length": 3
+        },
+        "50": {
+          "reached": true,
+          "length": 3
+        },
+        "100": {
+          "reached": true,
+          "length": 3
+        },
+        "200": {
+          "reached": true,
+          "length": 3
+        },
+        "300": {
+          "reached": true,
+          "length": 4
+        },
+        "400": {
+          "reached": true,
+          "length": 21
+        },
+        "490": {
+          "reached": true,
+          "length": 66
+        }
+      },
+      "move_rounds": 487,
+      "multistep_moves": 125,
+      "sprint_paid": 0,
+      "eats_by_source": {
+        "bed": 15,
+        "ally_corpse": 58,
+        "enemy_corpse": 1
+      },
+      "splits": [
+        {
+          "round": 0,
+          "team": "B",
+          "parent": 1,
+          "child": 15,
+          "before": 25,
+          "parent_len": 23,
+          "child_len": 2
+        },
+        {
+          "round": 1,
+          "team": "B",
+          "parent": 1,
+          "child": 23,
+          "before": 23,
+          "parent_len": 21,
+          "child_len": 2
+        },
+        {
+          "round": 2,
+          "team": "B",
+          "parent": 1,
+          "child": 28,
+          "before": 21,
+          "parent_len": 19,
+          "child_len": 2
+        },
+        {
+          "round": 3,
+          "team": "B",
+          "parent": 1,
+          "child": 35,
+          "before": 19,
+          "parent_len": 17,
+          "child_len": 2
+        },
+        {
+          "round": 4,
+          "team": "B",
+          "parent": 1,
+          "child": 40,
+          "before": 17,
+          "parent_len": 15,
+          "child_len": 2
+        },
+        {
+          "round": 5,
+          "team": "B",
+          "parent": 1,
+          "child": 43,
+          "before": 15,
+          "parent_len": 13,
+          "child_len": 2
+        },
+        {
+          "round": 6,
+          "team": "B",
+          "parent": 1,
+          "child": 47,
+          "before": 13,
+          "parent_len": 11,
+          "child_len": 2
+        },
+        {
+          "round": 7,
+          "team": "B",
+          "parent": 1,
+          "child": 49,
+          "before": 11,
+          "parent_len": 9,
+          "child_len": 2
+        },
+        {
+          "round": 8,
+          "team": "B",
+          "parent": 1,
+          "child": 51,
+          "before": 9,
+          "parent_len": 7,
+          "child_len": 2
+        },
+        {
+          "round": 9,
+          "team": "B",
+          "parent": 1,
+          "child": 53,
+          "before": 7,
+          "parent_len": 5,
+          "child_len": 2
+        },
+        {
+          "round": 10,
+          "team": "B",
+          "parent": 1,
+          "child": 55,
+          "before": 5,
+          "parent_len": 3,
+          "child_len": 2
+        },
+        {
+          "round": 178,
+          "team": "B",
+          "parent": 1,
+          "child": 470,
+          "before": 5,
+          "parent_len": 3,
+          "child_len": 2
+        },
+        {
+          "round": 432,
+          "team": "B",
+          "parent": 1,
+          "child": 896,
+          "before": 30,
+          "parent_len": 28,
+          "child_len": 2
+        }
+      ],
+      "death": [],
+      "ally_donor_deaths": [
+        {
+          "round": 304,
+          "id": 627,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 627,
+          "age": 47,
+          "head": [
+            56,
+            24
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 325,
+          "id": 606,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 606,
+          "age": 79,
+          "head": [
+            57,
+            24
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 328,
+          "id": 661,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 661,
+          "age": 46,
+          "head": [
+            59,
+            24
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 331,
+          "id": 235,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 235,
+          "age": 253,
+          "head": [
+            56,
+            23
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 332,
+          "id": 529,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 529,
+          "age": 127,
+          "head": [
+            55,
+            23
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 334,
+          "id": 691,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 691,
+          "age": 31,
+          "head": [
+            55,
+            21
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 341,
+          "id": 470,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 470,
+          "age": 163,
+          "head": [
+            59,
+            23
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 345,
+          "id": 35,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 35,
+          "age": 342,
+          "head": [
+            55,
+            21
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 348,
+          "id": 647,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 647,
+          "age": 74,
+          "head": [
+            54,
+            20
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 360,
+          "id": 781,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 781,
+          "age": 3,
+          "head": [
+            57,
+            20
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 362,
+          "id": 663,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 663,
+          "age": 80,
+          "head": [
+            57,
+            21
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 362,
+          "id": 680,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 680,
+          "age": 64,
+          "head": [
+            58,
+            21
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 391,
+          "id": 733,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 733,
+          "age": 64,
+          "head": [
+            60,
+            14
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 406,
+          "id": 761,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 761,
+          "age": 60,
+          "head": [
+            59,
+            14
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 406,
+          "id": 823,
+          "team": "B",
+          "cause": "invalid",
+          "length": 3,
+          "actor": 823,
+          "age": 22,
+          "head": [
+            59,
+            13
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 410,
+          "id": 803,
+          "team": "B",
+          "cause": "invalid",
+          "length": 3,
+          "actor": 803,
+          "age": 37,
+          "head": [
+            60,
+            11
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 420,
+          "id": 759,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 759,
+          "age": 75,
+          "head": [
+            57,
+            4
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 423,
+          "id": 751,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 751,
+          "age": 85,
+          "head": [
+            56,
+            7
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 423,
+          "id": 775,
+          "team": "B",
+          "cause": "self",
+          "length": 3,
+          "actor": 775,
+          "age": 71,
+          "head": [
+            56,
+            8
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 426,
+          "id": 809,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 809,
+          "age": 49,
+          "head": [
+            57,
+            10
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 432,
+          "id": 840,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 840,
+          "age": 37,
+          "head": [
+            58,
+            8
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 433,
+          "id": 808,
+          "team": "B",
+          "cause": "self",
+          "length": 6,
+          "actor": 808,
+          "age": 58,
+          "head": [
+            58,
+            11
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 433,
+          "id": 834,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 834,
+          "age": 42,
+          "head": [
+            59,
+            11
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 434,
+          "id": 896,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 896,
+          "age": 2,
+          "head": [
+            59,
+            10
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 438,
+          "id": 870,
+          "team": "B",
+          "cause": "h2h",
+          "length": 3,
+          "actor": 870,
+          "age": 24,
+          "head": [
+            31,
+            3
+          ],
+          "initial": false,
+          "killer": 855,
+          "killer_team": "A",
+          "mutual": true
+        },
+        {
+          "round": 441,
+          "id": 867,
+          "team": "B",
+          "cause": "self",
+          "length": 38,
+          "actor": 867,
+          "age": 30,
+          "head": [
+            61,
+            7
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 449,
+          "id": 814,
+          "team": "B",
+          "cause": "self",
+          "length": 3,
+          "actor": 814,
+          "age": 69,
+          "head": [
+            56,
+            1
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 457,
+          "id": 865,
+          "team": "B",
+          "cause": "self",
+          "length": 11,
+          "actor": 865,
+          "age": 47,
+          "head": [
+            49,
+            4
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 459,
+          "id": 879,
+          "team": "B",
+          "cause": "self",
+          "length": 5,
+          "actor": 879,
+          "age": 40,
+          "head": [
+            47,
+            5
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 460,
+          "id": 909,
+          "team": "B",
+          "cause": "invalid",
+          "length": 5,
+          "actor": 909,
+          "age": 13,
+          "head": [
+            46,
+            6
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 469,
+          "id": 907,
+          "team": "B",
+          "cause": "self",
+          "length": 5,
+          "actor": 907,
+          "age": 25,
+          "head": [
+            41,
+            3
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 486,
+          "id": 889,
+          "team": "B",
+          "cause": "invalid",
+          "length": 20,
+          "actor": 889,
+          "age": 57,
+          "head": [
+            29,
+            4
+          ],
+          "initial": false,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "ally_donor_suicides": [
+        {
+          "round": 304,
+          "id": 627,
+          "team": "B",
+          "kind": "suicide",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        },
+        {
+          "round": 328,
+          "id": 661,
+          "team": "B",
+          "kind": "suicide",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        },
+        {
+          "round": 334,
+          "id": 691,
+          "team": "B",
+          "kind": "suicide",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        },
+        {
+          "round": 360,
+          "id": 781,
+          "team": "B",
+          "kind": "suicide",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        },
+        {
+          "round": 406,
+          "id": 823,
+          "team": "B",
+          "kind": "suicide",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        },
+        {
+          "round": 410,
+          "id": 803,
+          "team": "B",
+          "kind": "suicide",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        },
+        {
+          "round": 420,
+          "id": 759,
+          "team": "B",
+          "kind": "suicide",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        },
+        {
+          "round": 426,
+          "id": 809,
+          "team": "B",
+          "kind": "suicide",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        },
+        {
+          "round": 460,
+          "id": 909,
+          "team": "B",
+          "kind": "suicide",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        },
+        {
+          "round": 486,
+          "id": 889,
+          "team": "B",
+          "kind": "suicide",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "queen_corpse_eats": [
+        {
+          "round": 305,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            56,
+            24
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 627
+        },
+        {
+          "round": 326,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            57,
+            24
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 606
+        },
+        {
+          "round": 329,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            59,
+            24
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 661
+        },
+        {
+          "round": 332,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            56,
+            23
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 235
+        },
+        {
+          "round": 333,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            55,
+            23
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 529
+        },
+        {
+          "round": 335,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            55,
+            21
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 691
+        },
+        {
+          "round": 342,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            59,
+            23
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 470
+        },
+        {
+          "round": 346,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            55,
+            21
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 35
+        },
+        {
+          "round": 349,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            54,
+            20
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 647
+        },
+        {
+          "round": 363,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            57,
+            20
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 781
+        },
+        {
+          "round": 363,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            57,
+            21
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 663
+        },
+        {
+          "round": 364,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            58,
+            21
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 680
+        },
+        {
+          "round": 392,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            60,
+            14
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 733
+        },
+        {
+          "round": 407,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            59,
+            14
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 761
+        },
+        {
+          "round": 408,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            59,
+            13
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 823
+        },
+        {
+          "round": 411,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            60,
+            11
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 803
+        },
+        {
+          "round": 412,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            59,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 803
+        },
+        {
+          "round": 422,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            57,
+            4
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 759
+        },
+        {
+          "round": 424,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            56,
+            7
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 751
+        },
+        {
+          "round": 424,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            56,
+            8
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 775
+        },
+        {
+          "round": 425,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            55,
+            9
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 775
+        },
+        {
+          "round": 427,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            57,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 809
+        },
+        {
+          "round": 433,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            58,
+            8
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 840
+        },
+        {
+          "round": 434,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            58,
+            11
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 808
+        },
+        {
+          "round": 435,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            59,
+            11
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 834
+        },
+        {
+          "round": 436,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            59,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 896
+        },
+        {
+          "round": 442,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            61,
+            7
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 867
+        },
+        {
+          "round": 443,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            61,
+            5
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 867
+        },
+        {
+          "round": 444,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            61,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 867
+        },
+        {
+          "round": 445,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            61,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 867
+        },
+        {
+          "round": 446,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            59,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 867
+        },
+        {
+          "round": 450,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            56,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 814
+        },
+        {
+          "round": 450,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            55,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 9,
+          "donor": 867
+        },
+        {
+          "round": 451,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            53,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 10,
+          "donor": 867
+        },
+        {
+          "round": 453,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            52,
+            2
+          ],
+          "origin": "ally_corpse",
+          "age": 12,
+          "donor": 867
+        },
+        {
+          "round": 454,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            52,
+            4
+          ],
+          "origin": "ally_corpse",
+          "age": 13,
+          "donor": 867
+        },
+        {
+          "round": 455,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            50,
+            4
+          ],
+          "origin": "ally_corpse",
+          "age": 14,
+          "donor": 867
+        },
+        {
+          "round": 458,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            49,
+            4
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 865
+        },
+        {
+          "round": 460,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            48,
+            5
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 865
+        },
+        {
+          "round": 460,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            47,
+            5
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 879
+        },
+        {
+          "round": 461,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            47,
+            6
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 865
+        },
+        {
+          "round": 461,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            46,
+            6
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 909
+        },
+        {
+          "round": 462,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            45,
+            7
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 909
+        },
+        {
+          "round": 463,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            44,
+            7
+          ],
+          "origin": "ally_corpse",
+          "age": 6,
+          "donor": 865
+        },
+        {
+          "round": 463,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            44,
+            6
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 909
+        },
+        {
+          "round": 465,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            45,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 6,
+          "donor": 879
+        },
+        {
+          "round": 470,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            41,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 907
+        },
+        {
+          "round": 471,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            40,
+            4
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 907
+        },
+        {
+          "round": 472,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            41,
+            5
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 907
+        },
+        {
+          "round": 487,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            31,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 49,
+          "donor": 870
+        },
+        {
+          "round": 488,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            29,
+            4
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 889
+        },
+        {
+          "round": 489,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            27,
+            4
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 889
+        },
+        {
+          "round": 490,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            26,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 889
+        },
+        {
+          "round": 491,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            25,
+            2
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 889
+        },
+        {
+          "round": 492,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            23,
+            2
+          ],
+          "origin": "ally_corpse",
+          "age": 6,
+          "donor": 889
+        },
+        {
+          "round": 493,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            22,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 7,
+          "donor": 889
+        },
+        {
+          "round": 494,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            21,
+            2
+          ],
+          "origin": "ally_corpse",
+          "age": 8,
+          "donor": 889
+        },
+        {
+          "round": 495,
+          "id": 1,
+          "team": "B",
+          "cell": [
+            20,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 9,
+          "donor": 889
+        }
+      ]
+    }
+  ]
+}
