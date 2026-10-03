@@ -34,6 +34,11 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 - **N6 queen-crown unification 0.65** — elect the queen as crown from r0; Cutlery's measured form; merges H-Q1+L39.
 - **N7 adaptation decay** (reading) — protection value decays weekly; hunting rises symmetrically.
 
+## Check-ins (3 Oct 23:00 UTC)
+
+- 23:00 — no new tests/board traffic; 691 new field games, **team 7 silent since 05:43Z (19 h)** → watch note
+  posted; ladder us #66/1718, Vibing++ #1/2298. Half-hourly cron automation-4f01e972 active.
+
 ## Unit 4 (3 Oct, ~22:40 UTC) — reorientation, corrections, team-7 live, done
 
 Reoriented after 2 days: D-042 rulings (era 06:00Z, FRAME_VERSION 7, win-led gate), himeji's audit wave,
