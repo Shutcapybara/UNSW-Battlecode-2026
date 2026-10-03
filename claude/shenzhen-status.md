@@ -24,6 +24,11 @@ pushes `r/shenzhen`.
 | H-SZ1 | cage: never move into own neck; split or step into tail when no other move | posted 0.9 | live Schooltime queen alive@r10 < 0.95 / 40 games, or other maps change | 40 Schooltime games, both seats, + parity on other maps | any tester, first |
 | H-SZ2 | old-map panels mismeasure queen arms | posted 0.8 | carthage-08 pool alive@490 moves < 5 pp old → live maps | carthage-00/08 pool s1–3 | desktop tester |
 | H-SZ3 | small-runner queen beats fed crown per unit of economy | posted 0.6 | runner RL win LB ≤ crown's, or econ LB < −0.03 | pool + gen s1–3, live maps | Claude tester |
+| H-SZ5 | hunt the enemy queen by id (0/1, visible) — nobody hunts (RR queen÷other 0.21–0.83 for every killer) | posted 0.6 (unit 2) | opp queen alive@end vs a keeper drops < 15 pp, or econ LB < −0.03 | pool+gen s1–3 with carthage-08 as keeper | Claude tester |
+| H-SZ8 | late feed: small queen to r400, then allies die next to it (SSS/𓎼 form; meals = ally corpses) | posted 0.6 | len@490 (alive) < 10 or RL win not up or tier-2 > +10 % | pool s1–3 live maps | any, stacks on alive-queen arm |
+| H-SZ12 | queen dead → switch to elimination play | posted 0.3 | elim win vs top ten unchanged when switch fires | later | tester |
+| H-SZ13 | read opponent queen policy by r100; hunt+outlast vs keepers, longest/total vs non-keepers | posted 0.4 | keeper gap persists after H-SZ5 | corpus first | analyst → tester |
+| closed | H-SZ7 exposure: our queens are not more exposed per round (enemy head ≤3 in 10.9 % vs 9.6–13.6 %) | answered | — | — | — |
 
 ## Log
 
@@ -33,11 +38,17 @@ pushes `r/shenzhen`.
   queen adoption; republished CORPUS.md; TARGETS § Shenzhen; 8 board lines. Finding
   `docs/findings/2026-10-04-shenzhen-live-queen-and-map-swap.md`.
 
+- **Unit 2 (3 Oct 23:42Z – 00:10Z).** Half-hourly loop set (send_later chain). Lean +278 games. New `hazard.py`
+  (833 post-m2 games, every dragon-round). Results: nobody hunts queens; crowns fed on ally corpses (three timings);
+  keepers are the hard matchup; corrected Chongqing H-C1/H-C3 to the map swap (Schooltime old 0/51 vs new 22/22 r0 deaths;
+  Default r5 24 % → 2.3 %). Finding `docs/findings/2026-10-04-shenzhen-unit2-hunting-feeding-matchups.md`.
+
 ## Next unit
 
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
    stop moving.
-3. Queen anatomy per top team on m2 (crown vs runner; when the crown feeds; whether anyone hunts queens — N2).
+3. H-SZ8 mechanism: how allies die next to the crown (cause, length, distance; deliberate cull vs incidental) for SSS/𓎼/Sponge after r150.
+5. Blue-sky: can a sonar/vision read find the enemy queen early (position prior from spawn geometry + ids)? What fraction of top-ten queens are ever within vision of our dragons?
 4. Per-map top-10 − us for the RL maps where we bleed (Trauma, Portals, PD), and transit anatomy (H-S1).
