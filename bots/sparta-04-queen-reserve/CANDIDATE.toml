@@ -1,0 +1,26 @@
+name = "sparta-04-queen-reserve"
+lineage = "sparta"
+author = "Codex"
+language = "c++"
+lineage_parent = "sparta-01-queen-priority"
+hypothesis = "Keeping the original queen's body length out of ordinary splits should improve its chance to survive head-on contact; retain the emergency split if movement has no safe option."
+mechanism = "Sparta 01 behavior. Disable ordinary and opening splits for the original queen while leaving other dragons' production policy and the queen's emergency escape split intact. The original queen keeps more length, improving h2h survivability and preserving round-limit queen score."
+expected_change = "48-game screen: 13-11 vs Sparta 01, 7-17 vs Carthage 05, 3 queen survivors at round 490 among 32 games reaching it, and 13 enemy queen kills. Queen survival improved directionally vs Sparta 03, but the all-splits guard carries a large production cost. Sparta 05 tests a length reserve."
+priority = 50
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-10-02-sparta-queen-priority.md",
+    "docs/findings/2026-10-02-sparta03-queen-intercept.md",
+    "docs/findings/2026-10-02-sparta04-queen-reserve.md",
+    "docs/findings/2026-10-01-kyoto-base-and-queen.md",
+]
+summary = "Experimental Carthage 05 descendant keeping the original queen's length out of ordinary splits. The 48-game screen found 3 queens alive@490 and 13 enemy-queen kills; see the queen-reserve finding."

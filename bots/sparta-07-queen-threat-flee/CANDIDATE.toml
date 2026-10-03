@@ -1,0 +1,28 @@
+name = "sparta-07-queen-threat-flee"
+lineage = "sparta"
+author = "Codex"
+language = "c++"
+lineage_parent = "sparta-05-queen-length-reserve"
+hypothesis = "When visible enemy heads approach our queen, scoring moves by how much they increase her distance from the nearest enemy should reduce head-on deaths without disengaging the rest of the team from the enemy queen hunt."
+mechanism = "Sparta 05 behavior and seven-segment queen split reserve. For the original queen only, when any visible enemy head is within eight cells, each safe move gets a bonus proportional to the change in nearest-enemy distance. All non-queen dragons keep priority enemy-queen pursuit and unconditional trades."
+expected_change = "48-game screen: 9-15 vs Sparta 01, 8-16 vs Carthage 05, no queens alive@490 among 27 reached games, and 10 enemy-queen kills. The retreat bonus reduced h2h deaths to 16 but increased wall deaths to 29. Keep as diagnostic control; pair retreat with an unknown-edge veto in Sparta 08."
+priority = 50
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-10-02-sparta-queen-priority.md",
+    "docs/findings/2026-10-02-sparta04-queen-reserve.md",
+    "docs/findings/2026-10-02-sparta05-queen-length-reserve.md",
+    "docs/findings/2026-10-02-sparta06-queen-reserve-five.md",
+    "docs/findings/2026-10-02-sparta07-queen-threat-flee.md",
+    "docs/findings/2026-10-01-kyoto-base-and-queen.md",
+]
+summary = "Experimental Carthage 05 descendant adding queen-only retreat scoring near visible enemies. The 48-game screen traded fewer h2h deaths for more wall deaths and lower survival; see finding."

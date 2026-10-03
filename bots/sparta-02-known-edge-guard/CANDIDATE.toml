@@ -1,0 +1,24 @@
+name = "sparta-02-known-edge-guard"
+lineage = "sparta"
+author = "Codex"
+language = "c++"
+lineage_parent = "sparta-01-queen-priority"
+hypothesis = "The queen's remaining wall deaths are partly caused by optimistic planning through unobserved edges. Rejecting such moves should improve queen survival without materially reducing team wins or economy."
+mechanism = "Sparta 01 behavior plus an unknown-edge bit on simulated routes. Our original queen rejects a candidate route if any step crosses an unobserved edge, alongside the existing simulated-death, head-on, and visible enemy danger vetoes."
+expected_change = "Fixed-seed paired screen, four maps, both seats, seeds 1–3: 12–12 vs Sparta 01 and 9–15 vs Carthage 05; queen alive@490 0/10 reached games against either opponent. Unknown-edge veto did not improve observed queen survival; retain only as a diagnostic control."
+priority = 50
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-10-02-sparta-queen-priority.md",
+    "docs/findings/2026-10-02-sparta02-known-edge-guard.md",
+]
+summary = "Sparta 01 descendant tests whether a queen-specific veto for simulated paths crossing unobserved edges can reduce wall deaths. The first Sparta 01 screen was small and exploratory."

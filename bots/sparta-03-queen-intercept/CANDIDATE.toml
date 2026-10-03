@@ -1,0 +1,25 @@
+name = "sparta-03-queen-intercept"
+lineage = "sparta"
+author = "Codex"
+language = "c++"
+lineage_parent = "sparta-01-queen-priority"
+hypothesis = "When an enemy head enters three cells of our visible queen, the two nearest non-queen dragons can improve queen survival by targeting and intercepting that attacker, trading themselves if necessary."
+mechanism = "Sparta 01 behavior. A local defender role activates only when an ally queen and a nearby enemy head are both visible; the two nearest non-queens route toward that enemy and accept a head-on trade against it. Other non-queens continue the enemy-queen hunt."
+expected_change = "No measured improvement: 12-12 vs Sparta 01, 9-15 vs Carthage 05, with the queen dying in all 48 games. Keep as a diagnostic variant; next isolate queen splitting as a possible cause of low combat survivability."
+priority = 50
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-10-02-sparta01-focused-screen.md",
+    "docs/findings/2026-10-02-sparta02-known-edge-guard.md",
+    "docs/findings/2026-10-02-sparta03-queen-intercept.md",
+]
+summary = "Experimental Carthage 05 descendant adding two nearest local interceptors when an enemy head threatens a visible queen. Its 48-game screen did not improve the result or queen survival."

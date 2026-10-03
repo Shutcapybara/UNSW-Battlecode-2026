@@ -1,6 +1,6 @@
 # Current bot frontier
 
-**Updated 2026-09-30.** Rows are ordered by displayed ELO. Numbers in the first
+**Updated 2026-10-02.** Rows are ordered by displayed ELO. Numbers in the first
 column are 35-map panel ranks; `Screen` entries have provisional 10-map ratings.
 
 | Rank / status | Bot snapshot | ELO (evidence) | Source fingerprint |
@@ -201,6 +201,34 @@ low-value scouting. Its three-seed, ten-map, both-side screen against V43
 scored 32–28 over 60 games, with no runner errors; this small margin is
 inconclusive. V44 remains experimental. See the [Ares V44 finding](docs/findings/2026-09-30-ares-v44-shared-sector-exploration.md)
 and [source snapshot](bots/ares-v44-shared-sector-exploration/).
+
+## Experimental C++ family: Sparta
+
+Sparta 01 forks Carthage 05 and adds a survival veto for our original queen,
+team-wide pursuit of a sighted enemy queen, and unconditional non-queen
+head-on trades against that target. A large route bonus prioritizes the
+queen's last known position. It preserves Carthage's sprint/search base.
+Sparta 01 scored 17–23 in its first 40-game serial screen, with 16 wall-caused
+queen deaths. Sparta 02 adds a queen-only unknown-edge veto. Its fixed-seed
+paired screen found no improvement: 12–12 against Sparta 01,
+9–15 against Carthage 05, and no queen alive@490 among reached games. Sparta 03
+adds two local interceptors when an enemy head threatens a visible queen. It
+tied Sparta 01 (12–12), lost to Carthage 05 (9–15), and the queen died in all
+48 games. Sparta 04 scored 13–11 against Sparta 01 and 7–17 against Carthage
+05; its queen was alive@490 in 3/32 reached games, compared with Sparta 03's
+0/22. It killed the enemy queen in 13 games, down from Sparta 03's 28. Sparta
+05 allowed splits after retaining length seven. It recorded 27 queen splits
+and 14 enemy-queen kills, but kept the queen alive@490 in the same 3/32 games
+and matched Sparta 04's scores. Sparta 06 scored 13–11 against Sparta 01 and
+6–18 against Carthage 05,
+with 2/32 queens alive@490 and 15 enemy-queen kills. Sparta 07 scored 9–15
+against Sparta 01 and 8–16 against Carthage 05; it reduced head-on deaths but
+raised wall deaths and had no queens alive@490. Sparta 08 added an unknown-edge
+veto but matched Sparta 07's screen and queen-safety totals. None is admitted
+to the all-map frontier. See the
+[Sparta family notes](docs/sparta-family.md), [queen-priority finding](docs/findings/2026-10-02-sparta-queen-priority.md),
+[Sparta 01](bots/sparta-01-queen-priority/), [Sparta 04](bots/sparta-04-queen-reserve/),
+and [Sparta 08](bots/sparta-08-edge-safe-queen-flee/).
 
 ## Defaults and upkeep
 

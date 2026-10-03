@@ -1,0 +1,29 @@
+name = "sparta-08-edge-safe-queen-flee"
+lineage = "sparta"
+author = "Codex"
+language = "c++"
+lineage_parent = "sparta-07-queen-threat-flee"
+hypothesis = "Pairing the queen's retreat bonus with an unknown-edge veto should retain fewer head-on deaths while preventing movement into unexplored edges that caused Sparta 07's wall deaths."
+mechanism = "Sparta 07 behavior. The original queen rejects simulated routes that cross an unknown edge in addition to its death, head-on, and visible-danger vetoes. The distance-based retreat bonus and seven-segment reserve remain. Other dragons retain the queen hunt."
+expected_change = "48-game screen: 9-15 vs Sparta 01, 8-16 vs Carthage 05, 0/27 queens alive@490, 16 h2h deaths, 29 wall deaths, and 10 enemy-queen kills. The unknown-edge veto changed none of these aggregate results from Sparta 07. Keep as a diagnostic variant."
+priority = 50
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-10-02-sparta-queen-priority.md",
+    "docs/findings/2026-10-02-sparta04-queen-reserve.md",
+    "docs/findings/2026-10-02-sparta05-queen-length-reserve.md",
+    "docs/findings/2026-10-02-sparta06-queen-reserve-five.md",
+    "docs/findings/2026-10-02-sparta07-queen-threat-flee.md",
+    "docs/findings/2026-10-02-sparta08-edge-safe-queen-flee.md",
+    "docs/findings/2026-10-01-kyoto-base-and-queen.md",
+]
+summary = "Experimental Carthage 05 descendant pairing queen retreat scoring with an unknown-edge veto. It matched Sparta 07's screen and queen-safety totals; see finding."

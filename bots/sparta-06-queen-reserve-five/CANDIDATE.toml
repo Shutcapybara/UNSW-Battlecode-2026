@@ -1,0 +1,26 @@
+name = "sparta-06-queen-reserve-five"
+lineage = "sparta"
+author = "Codex"
+language = "c++"
+lineage_parent = "sparta-05-queen-length-reserve"
+hypothesis = "Lowering the queen's retained length from seven to five should restore more hunter production without reducing her below the size needed to survive typical head-on contact."
+mechanism = "Sparta 05 behavior, except ordinary and opening splits become legal for the original queen once the remaining parent length is at least five. Emergency escape splits remain unchanged. Other dragons keep Sparta 01's production behavior."
+expected_change = "48-game screen: 13-11 vs Sparta 01, 6-18 vs Carthage 05, 31 queen splits, 15 enemy-queen kills, and 2/32 queen alive@490. This allowed four more splits and one more kill than Sparta 05 but reduced queen survival and lost one more game to Carthage 05."
+priority = 50
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-10-02-sparta-queen-priority.md",
+    "docs/findings/2026-10-02-sparta05-queen-length-reserve.md",
+    "docs/findings/2026-10-02-sparta06-queen-reserve-five.md",
+    "docs/findings/2026-10-01-kyoto-base-and-queen.md",
+]
+summary = "Experimental Carthage 05 descendant allowing original-queen splits only when the parent retains length five. It scored 6-18 vs Carthage 05 and kept 2/32 queens alive@490, worse than Sparta 05's 3/32; see finding."

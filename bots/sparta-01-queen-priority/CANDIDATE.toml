@@ -1,0 +1,27 @@
+name = "sparta-01-queen-priority"
+lineage = "sparta"
+author = "Codex"
+language = "c++"
+lineage_parent = "carthage-05-free-sprint"
+hypothesis = "A hard survival veto for our original queen, paired with team-wide pursuit and unconditional non-queen trades against the enemy's original queen, will improve queen survival and round-limit results without erasing Carthage 05's early economy gains."
+mechanism = "Carthage 05 base. Our queen rejects simulated deaths, enemy-reachable head cells, and head-on trades. After an enemy queen sighting, other dragons override forage/crown targets and add a dominant route-progress bonus toward the last known queen cell for 60 rounds; a non-queen head-on against that queen is accepted at dominant score."
+expected_change = "Focused serial screen: 17–23 over 40 games against Carthage 05 and four frontier controls on Devil, Queen of Spades, Schooltime, and Trauma; 4–4 head-to-head with Carthage 05; zero runner errors. One screen is exploratory and does not support a general ranking. See docs/findings/2026-10-02-sparta02-known-edge-guard.md."
+priority = 50
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/findings/2026-10-02-sparta-queen-priority.md",
+    "docs/findings/2026-10-02-sparta01-focused-screen.md",
+    "docs/findings/2026-10-02-carthage-sprint-rules.md",
+    "docs/findings/2026-10-01-carthage-base-and-queen.md",
+    "docs/findings/2026-10-01-kyoto-base-and-queen.md",
+]
+summary = "Carthage 05 descendant combining a hard queen movement guard with priority enemy-queen pursuit and trade acceptance. A focused 40-game serial screen scored 17–23; see the screen finding."
