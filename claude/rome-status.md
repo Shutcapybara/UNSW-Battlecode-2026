@@ -24,11 +24,20 @@ Bot snapshots live under `bots/rome-<nn>-<slug>/`; tools under `tools/rome/`.
 
 1. Complete: measured both 1.2.3 panels and recorded `rome-01-nodevil` as the post-rule zero.
 2. Complete: queen, sprint-cost, and tiebreak audits cover pool and gen replays.
-3. L10 claimed: `rome-02-far-contact` skips direct head-on paths when the contact cell is >6 Manhattan cells from any currently known bed. Preregistered expectation: reduce enemy head-on losses per 1k dragon-turns; economy neutral-to-positive; D-032 pool/gen guards and per-map deltas decide. CPU probe passed: max 10.82M points, 0 errors on schooltime, portals, trauma, big_empty.
+3. Complete: L10 `rome-02-far-contact` was re-scored from FRAME_VERSION 7 features. Verdict: hold; keep it unstacked. Full finding and corrected results are below.
+
+4. Next: L39/L49 queen-keyed conversion, the director’s top tester item. First isolate a state-triggered consolidation to the queen when the opposing swarm reaches the tested low-unit state; expected RL queen-length/win improvement, with opening economy and elimination win as guards. Parent remains `rome-01-nodevil` because L10 did not accept.
 
 ## Cycle table
 
 | Version / arm | Mechanism | Pool | Gen | CPU | Verdict |
 |---|---|---|---|---|---|
 | rome-01-nodevil | Post-rule base baseline | 480 games; W-L-D 401-78-1; exp-score 83.65%; norm pearls 1.1398 | 1,392 games; W-L-D 1,041-351-0; exp-score 74.78% | 16/18 workers; host denied nice 10 | measured; new zero |
-| rome-02-far-contact | L10: skip head-on paths >6 Manhattan cells from known beds | pool 480/480; W-L-D 405-74-1, econ 1.1398, exp-score 84.48% | gen 1,253/1,392 at user wrap-up; unscored | 10.82M max / 0 errors | incomplete; no D-032 verdict |
+| rome-02-far-contact | L10: skip head-on paths >6 Manhattan cells from known beds | 480; FRAME7 W-L-D 399-80-1, win 83.23%, Δwin +0.63pp; literal econ Δ +0.0004 [cluster -0.0001,+0.0010] | 1,392; FRAME7 W-L-D 1,033-359-0, win 74.21%, Δwin -0.22pp; literal econ Δ +0.0087 [+0.0026,+0.0150] | 10.82M max / 0 errors | hold; economy estimand and units guard unresolved; see 2026-10-04 finding |
+
+
+## Updated L10 re-read (4 Oct)
+
+- Re-extracted candidate and parent with FRAME_VERSION 7 authoritative replay winners. Corrected parent W-L-D: pool 396-83-1, gen 1,036-356-0. Candidate: pool 399-80-1, gen 1,033-359-0. Full per-panel scorecard: `game_stats/runs/rome-02-far-contact-z1+gen-s1-2-3.md`.
+- Cluster 90% literal mean economy Δ: pool +0.0004 [-0.0001,+0.0010], gen +0.0087 [+0.0026,+0.0150]; median-checkpoint form: pool 0.0000 [-0.0017,+0.0005], gen -0.0042 [-0.0124,+0.0079]. Hold pending analyst ruling on estimand and units/length guards; do not stack.
+- Enemy H2H death proxy Δ per 1k dragon-turns: pool -0.029 [-0.066,+0.004]; gen -0.415 [-0.556,-0.269]. It is a per-turn proxy, not per-contact risk. Per-map deltas and clustered intervals are in the `rome-02-far-contact-permap` CSVs. Full result: `docs/findings/2026-10-04-rome-L10-far-contact.md`.

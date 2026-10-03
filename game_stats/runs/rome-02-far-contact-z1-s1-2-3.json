@@ -11,17 +11,17 @@
  "fingerprint": "61fb66914df3d2b1c576928b69d2221c9d142b8821b50c5174d037a00711becd",
  "gate": {
   "verdict": "hold",
-  "why": "economy mean +0.0000, dragons +0.000, length +0.000, win share +0.83pp, tier-2: none up >10%"
+  "why": "economy mean +0.0000, dragons +0.000, length +0.000, win share +0.62pp, tier-2: none up >10%"
  },
  "panel": "z1",
  "candidate_stats": {
   "n": 480,
   "wld": [
-   405,
-   74,
+   399,
+   80,
    1
   ],
-  "exp_share": 0.8447916666666667,
+  "exp_share": 0.8322916666666667,
   "checkpoints": {
    "pearls@50": 1.0910973084886129,
    "pearls@100": 1.135667396061269,
@@ -61,11 +61,11 @@
  "parent_stats": {
   "n": 480,
   "wld": [
-   401,
-   78,
+   396,
+   83,
    1
   ],
-  "exp_share": 0.8364583333333333,
+  "exp_share": 0.8260416666666667,
   "checkpoints": {
    "pearls@50": 1.0910973084886129,
    "pearls@100": 1.135667396061269,
