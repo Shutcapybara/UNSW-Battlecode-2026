@@ -1,0 +1,20 @@
+{
+  "ranked_new_games": 10,
+  "series": 2,
+  "wins": 3,
+  "queen_verdict_losses": 3,
+  "rl": 7,
+  "rl_losses": 6,
+  "end": {
+    "losses_with_lead": 2,
+    "rl_losses": 6,
+    "leads": 2,
+    "losses_given_lead": 2
+  },
+  "r490": {
+    "losses_with_lead": 2,
+    "rl_losses": 6,
+    "leads": 2,
+    "losses_given_lead": 2
+  }
+}

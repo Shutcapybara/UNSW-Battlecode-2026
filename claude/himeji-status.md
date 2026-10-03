@@ -2,6 +2,35 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
 
+## Unit12 — 2026-10-03 23:36 UTC; complete, decode queue checkpointed
+
+- RomeL10 reading/rulingH12-01/02: originalad611b51c lane definesmedian-checkpoint econ~. Independent480/1392
+  pairedread reproduces0/−.00418; neitherpanelpositive under twoclusterings. HOLD/unstacked independentofguard
+  redesign; arithmeticmean diagnostic. Parent/candidate officialWLD reproduce. No botexperiment/re-extraction.
+- Nara7105552fe23:00watch correctedH12-03:10newrankedown14585games at21:56/22:57Z,3–7 across2series.
+  Registry14585=LV-carthage-05-free-sprint-ebeba55f-ai active;14265idle. Corpus747post/208ranked/539unranked.
+  20queenheader/bodychecks and10officialwinnerchecks pass;7actualr490reached,0queenalive.3queenlosses.
+- Schooltime995611 queenID0sideB selfdiesr0 onnorthmove; finaltotal249–6 losesqueen0–3. Autarky992701queenID1sideA
+  diesallyh2h319, losesqueen0–41 despite81–50total. H12-04 asksRomeL39/L49 queenalive-at-trigger/no-trigger counts.
+  RLleadloss2/6losses or2/2leads atboth490/end;2seriesdescriptiveonly, matchedfieldgapsNA.
+- SQLite read-onlyconnection succeededwithanalysisruntime aftersystemPythonopenfailure. games1280rows but0forown
+ 14265/14585; notcorpusmirror. Collectorwatch_list removesownteam; freshgamesviaopponents1097/776. H12-05requests
+  owncoverage review withH11-05patch;264/91checks~32hstale,patchundeployed. Solecollector35400healthy,19–40/pass0errors.
+- Sourcecursor main0298966ec/D-042; Antioch2c7113f66; Carthage5b69fa9d0; Kyoto fccea71c0 unchanged;
+  Rome6f1ec3527 newL10andL39/L49queue; Nara7105552fe new23:00watch. BoardthroughH12-01..07; all5statusesread.
+  No directanalystchatidentified; usebranchboards. No peerrestart ormainmerge. Main dependencies unchanged/pinned.
+- Snapshot23:23:29Z115442games/latest23:22:18Z,indexSHA43d6b876a97b36ed4b2f38f81e7a644915300e38057f73df9104bae90f18bdc7.
+  Ladder231820Z SHAacb0c399837d3243494bf0b4dba7058abffdbe44d2cf8188962a455a07f599a6;
+  top306/91/264/213/842/952/87/82/55/566 (55in,552out). Era≥06:00Z1Octpost123; localpanel1.2.3 separate.
+- Store331→423games/846sides;92new0errorsin171s;846officialwinneragreements. Window2Oct23:13–3Oct23:11:43Z.
+  472currenttop10sides/12own. Twoqueryworkersplusoneownaudit max3, allfinished.110of202newselectedgamesremain;
+  nextresume SAMEimmutable /Users/alik/Documents/Codex/2026-10-01/p2-a-analyst-one-claude-opus/work/himeji-unit12
+  snapshot withresume_store.py --seconds160 --jobs2 (fewerifbusy). No persistentqueryrunning; lockfileonly.
+- Finding `docs/findings/2026-10-04-himeji-live-coverage-and-L10-ruling.md`; compactevidence tools/himeji/unit12_audit/.
+  Nextcheckpeerreplies/collector thenfinish110queue; rankedQ3/mapstructure/fieldreferences deferredforthesepriorityerrors.
+  PendingH11-02Naraqueenfilter/H11-04prospectiveguard/H11-05collectorpatch andH12-05owncoverage. H-H1weight0.5,
+  H-H2unresolved. No newfieldtarget/spoofingverdict. AutomationACTIVEhalf-hourly; commit/pushscopedr/himeji.
+
 ## Unit 11 — 2026-10-03 23:08 UTC; complete
 
 - Exact Nara737 official-header audit:398RL not326;72queen outcomes=70losses+2wins; terminal queen2/398.

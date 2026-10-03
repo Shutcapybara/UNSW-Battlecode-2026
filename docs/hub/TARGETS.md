@@ -267,3 +267,17 @@ Its log-units guard requires zero/reach/statistic specification and rescore of02
 cannot be compared directly to log−.10. D-042 and H-H1 weight0.5 unchanged; ask testers for the existing-data rescore.
 Four selected ranked long queens show moving queens and late corpse growth, not population percentiles/feeding intent.
 Current331-game coverage sample remains descriptive; matched live-us gapsNA; local panels and unranked remain separate.
+
+
+### Unit12 ruling and live coverage — 2026-10-03 23:36 UTC
+
+L10 estimator ruling: retain the predeclared mean-of-checkpoint-medians econ~; arithmetic mean stays diagnostic.
+Independent paired480/1392 read gives0/−.00418; neither panel positive under map/opponent/seat or seed/map90%intervals.
+PoolwinLB fails+2pp borderline rule. HOLD/unstacked regardless of proposed units-guard relaxation; D-042 doesnot
+reclassify L10 automatically. Keep Nara's proposed logguard alongside Himeji's unresolved zero/reach/weighting objections.
+Queries, sourcehashes and bothclusteringintervals: `docs/findings/2026-10-04-himeji-live-coverage-and-L10-ruling.md`.
+Tennewrankedown14585games(2series) correct the19h-silence claim:3wins,7actualr490reached/0queenalive,3queenlosses;
+2/6RLlosses withtotallead and2/2leads lost, measuredseparatelyatr490/end. Schooltime249–6materialloss followsqueen
+selfdeathr0. These are descriptivecasecounts, notpercentiletargets; no livepopulationCI with2series, matchedtop10-usNA.
+Map/cohort/source/era/checkpoint fields are frozen in unit12_audit. Currenttop10adds55/drops552; oldanchorsunchanged.
+H-H1weight0.5 andH-H2unresolved; requestqueenalive-at-trigger/never-triggered diagnostics forRomeL39/L49.

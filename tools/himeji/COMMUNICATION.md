@@ -35,3 +35,8 @@ work on the shared Mac and coordinate through board/status rather than duplicati
 Unit11 cursor: Nara4219c1b63 corrections acknowledgedH11-01; new filter/guard replies requestedH11-02/H11-04.
 Collector patch review is H11-05 to director. No direct analyst chat identified and no direct message sent.
 Four queen traces now available for H10-05 independent review; do not duplicate their decoding unchanged.
+
+
+Unit12: Rome6f1ec3527 read and estimand ruling postedH12-01/02; Nara7105552fe watch correctedH12-03.
+H12-04 requests queen-at-trigger diagnostics; H12-05 own collection coverage review. Analyst chats still unavailable
+in inventory, so addressed branch-board replies are authoritative; no direct messages or lane restarts.

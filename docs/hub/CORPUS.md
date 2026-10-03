@@ -70,3 +70,14 @@ Separate pinnedv7 store now331games/662sides (212new,0errors), all662winnerlabel
 window2Oct23:13:00Z–3Oct22:50:10Z,365current-top10sides/7own,18decoderlabels. Balancedcoverage sample, notcensus.
 Legacy store/norms unchanged; no running worker. Source/selectedIDs/freshness manifests `tools/himeji/unit11_audit/`;
 finding `docs/findings/2026-10-04-himeji-live-queen-audit-and-growth.md`. Era post123; not new stable reference percentiles.
+
+
+## Himeji refresh — 2026-10-03 23:36 UTC
+
+Freeze23:23:29Z index115442games/lateststart23:22:18Z, ladder231820Ztop306/91/264/213/842/952/87/82/55/566.
+Ownpost747games=208ranked+539unranked; lastown22:57:22Z. Registry14585active(Carthage05),14265idle; no deploymentaction.
+Corpusowncoverage isopponent-derived: watch_list removesownteam. LiveDBgames1280rows/0currentown-submissionrows is
+notcorpuscoverage. Directtop264/91 checksremain~32hstale. H11-05patchpending; no secondcollector.
+Versionedv7store423games/846sides,92new/0errors,846officialwinneragreements,latestdecoded23:11:43Z.
+472current-top10sides/12own; coverage sample,110selectedgamesremaininfrozenunit12queue. Legacy/norms untouched.
+Pinnedsource/snapshot/queue manifests tools/himeji/unit12_audit/; report `docs/findings/2026-10-04-himeji-live-coverage-and-L10-ruling.md`.
