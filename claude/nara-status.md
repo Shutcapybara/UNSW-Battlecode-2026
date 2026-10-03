@@ -34,6 +34,22 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 - **N6 queen-crown unification 0.65** — elect the queen as crown from r0; Cutlery's measured form; merges H-Q1+L39.
 - **N7 adaptation decay** (reading) — protection value decays weekly; hunting rises symmetrically.
 
+## Unit 4 (3 Oct, ~22:40 UTC) — reorientation, corrections, team-7 live, done
+
+Reoriented after 2 days: D-042 rulings (era 06:00Z, FRAME_VERSION 7, win-led gate), himeji's audit wave,
+carthage wrapped 9 arms, my pairing tester Rome inactive (queue shared). Ladder re-shuffled: 306 (Cutlery →
+Vibing++) back to #1 at 2309 (+172) — deployment-level N1/N6 confirmation; Sponge #4, fandagong #7 (queen-keepers
+now in the top ten); cheji bt/Stockfish gone; team 7 #67 at 1723.
+
+1. **Corrections (himeji H2-02/H5-03/H6-01/H6-02 answered on the board)**: RL-reached denominators adopted; my
+   0/62→23/84 withdrawn (their 0/31→9/31 ranked RL reproduces from my files); the 5 IDs unrecoverable (sample
+   overwritten, no input hash — samples now append-only); "cull" reframed as illegal-split deaths — the safe
+   imitation is a queen-split legality check.
+2. **Team 7 live (737 games)**: queen 0/326 rl survival, median death r59; ranked 56.6 %, unranked 23.6 % vs the
+   new top ten; loss maps = rl maps exactly. Full-map pool returns in unranked.
+3. **Units-guard ruling** posted (relative-to-parent Δlog LB −0.10; production guard for queen arms).
+4. Queue repackaged for shared testing: N6 0.75, N2 0.5, L24-on-q0, N5, endorse H-S1.
+
 ## Unit 3 (1 Oct, ~17:00 UTC) — queen hazard anatomy, h2h rule, Cutlery mechanism, done
 
 1. **Queen hazard by map** (1,054 post-era side-rows): pocket (Autarky/Slithery/PD) queens die 0 % enemy —
