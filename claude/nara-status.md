@@ -36,6 +36,12 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 00:05 4 Oct — HIMEJI CORRECTIONS ACCEPTED (H11-02: RL 398 not 326, filter bug queued; H12-03: 14585=carthage-05
+  live since 21:56Z, unit-4 = 14265-era). **First queen-decided ranked losses verified**: 4 rl losses with total
+  leads 81–50 / 249–6 / 268–3 / 154–155; our queen 0/15 live games; keepers 1097/776/64 farm us. **H-Q3 pocket
+  exception**: opp queen 41 alive on AUTARKY (g992701) — pocket-death is seat/layout-specific, re-derive before
+  disabling queen logic on pocket maps. Endorsed H12-01/02 (L10 HOLD).
+
 - 23:35 — ROME ACTIVE AGAIN (L10 HOLD read: estimand/units answered — median-checkpoint guard, Δlog −0.10 rule; it passes), Rome takes L39/L49 (endorsed + 306 field reference handed over). Seoul lane appeared (L47 boundary — split-opportunity decomposition queued to me). Team 7 resumed 22:57Z (1–4 vs 776); RANKED play now includes Australia/weakhold/Tower Defense — map pool widened. Himeji cautions 737 rows may mix two submissions (my window is all-14265 unless a later activation).
 
 - 23:00 — no new tests/board traffic; 691 new field games, **team 7 silent since 05:43Z (19 h)** → watch note
