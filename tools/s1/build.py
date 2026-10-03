@@ -67,7 +67,8 @@ def build_games():
     snaps = load_ladders()
     times = [s[0] for s in snaps]
     latest = snaps[-1][1]
-    order = sorted((x for x in latest.values() if not x.get('dev')), key=lambda x: x['rank'])
+    # since the 1 Oct ladder reset, teams that have not played under the new rules carry rank None (elo 1500): unranked
+    order = sorted((x for x in latest.values() if not x.get('dev') and x.get('rank') is not None), key=lambda x: x['rank'])
     crank = {x['id']: k + 1 for k, x in enumerate(order)}
     teams = pd.DataFrame([dict(team=str(i), name=x['name'], ladder_rank=x['rank'], elo_now=x['elo'], dev=bool(x.get('dev')),
                                crank=crank.get(i), cohort='us' if i == US else ('dev' if x.get('dev') else cohort_of(crank.get(i))))
@@ -134,6 +135,40 @@ def bot_name(path):
     return parts[-1] if parts else str(path)
 
 
+Q_ROUNDS = (25, 50, 100, 150, 250, 400, 490)
+
+
+def queen_cols(g, out, t):
+    """per-side queen columns (chongqing, 4 Oct): the queen is the team's lowest-id initial dragon (no succession).
+    q_end is its length in the final snapshot (0 when dead; equals the 1.2.3 header field, kept as q_header)."""
+    rounds = g['rounds']
+    ids = [i for i, (tt, b) in rounds[0].items() if tt == t]
+    if not ids:
+        return {}
+    q = min(ids)
+    lens, death_round, moves, prev_head, maxlen = {}, None, 0, None, 0
+    for r, snap in enumerate(rounds):
+        if q in snap:
+            body = snap[q][1]
+            lens[r] = len(body)
+            maxlen = max(maxlen, len(body))
+            if prev_head is not None and body[0] != prev_head:
+                moves += 1
+            prev_head = body[0]
+        else:
+            death_round = r
+            break
+    last = len(rounds) - 1
+    o = dict(q_id=q, q_alive_end=int(death_round is None), q_death_round=death_round, q_moves=moves, q_maxlen=maxlen,
+             q_end=lens.get(last, 0), q_header=g['final'][t].get('queen'))
+    for k in Q_ROUNDS:
+        o[f'q_len@{k}'] = lens.get(min(k, last), 0)
+    d = next((d for d in out['deaths'] if d['side'] == t and d['id'] == q), None)
+    o['q_death_cls'] = d['cls'] if d else None
+    o['q_death_killer'] = d.get('killer_team') if d else None
+    return o
+
+
 def process(args):
     path, gid, meta = args
     from tools.analysis.features.frame import decode
@@ -158,6 +193,7 @@ def process(args):
         r = dict(row)
         r.update(ctx, team=side_team[t], opp=side_team['B' if t == 'A' else 'A'], R=R, decoded_winner=g['winner'])
         r.update(x['sides'][t])
+        r.update(queen_cols(g, out, t))
         sides.append(r)
     # ---- series: stored rounds, cumulative events, padded to LAST with the terminal state
     ser = {(s['side'], s['round']): s for s in out['series']}
