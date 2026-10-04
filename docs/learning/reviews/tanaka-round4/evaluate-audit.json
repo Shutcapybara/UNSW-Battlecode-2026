@@ -1,0 +1,13 @@
+{
+  "control": {
+    "status": "OK",
+    "valid_draws": 1000,
+    "auc": 0.7793469551282052,
+    "independent_pair_auc": 0.7793469551282052,
+    "error": 0.0
+  },
+  "nan": "NONFINITE_INPUT",
+  "inf": "NONFINITE_INPUT",
+  "oneclass": "UNDEFINED",
+  "one_positive_series_valid_draws": 625
+}

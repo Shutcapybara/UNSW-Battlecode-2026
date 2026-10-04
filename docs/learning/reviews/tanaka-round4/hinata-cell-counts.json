@@ -1,0 +1,157 @@
+{
+ "written": "2026-10-04T14:42:55Z",
+ "spec_sha": "15d79683518cf704a8cb7680ef1fa55acd8bdaef2bc97b694f40db742ea0d07d",
+ "population_sha": "75831df0973d5d33d0c68b81869ee865ee30870d24fbf8bc41a7924b23fed0e4",
+ "scorer_sha": "ea3b5ef748ac9cf498c48b3941dc3c3be1639456f3e3f283ab308e63d787897d",
+ "counts": {
+  "ranked_clean": {
+   "elim/r10": 433,
+   "elim/r25": 433,
+   "elim/r50": 433,
+   "elim/r100": 432,
+   "elim/r150": 420,
+   "elim/r250": 343,
+   "elim/r400": 246,
+   "rl/r10": 886,
+   "rl/r25": 886,
+   "rl/r50": 886,
+   "rl/r100": 886,
+   "rl/r150": 885,
+   "rl/r250": 882,
+   "rl/r400": 873
+  },
+  "ranked": {
+   "elim/r10": 698,
+   "elim/r25": 698,
+   "elim/r50": 698,
+   "elim/r100": 697,
+   "elim/r150": 669,
+   "elim/r250": 539,
+   "elim/r400": 378,
+   "rl/r10": 1441,
+   "rl/r25": 1441,
+   "rl/r50": 1441,
+   "rl/r100": 1441,
+   "rl/r150": 1440,
+   "rl/r250": 1435,
+   "rl/r400": 1419
+  },
+  "unranked_clean": {
+   "elim/r10": 198,
+   "elim/r25": 198,
+   "elim/r50": 198,
+   "elim/r100": 198,
+   "elim/r150": 193,
+   "elim/r250": 168,
+   "elim/r400": 123,
+   "rl/r10": 426,
+   "rl/r25": 426,
+   "rl/r50": 426,
+   "rl/r100": 426,
+   "rl/r150": 426,
+   "rl/r250": 424,
+   "rl/r400": 420
+  },
+  "unranked": {
+   "elim/r10": 370,
+   "elim/r25": 370,
+   "elim/r50": 370,
+   "elim/r100": 370,
+   "elim/r150": 356,
+   "elim/r250": 282,
+   "elim/r400": 199,
+   "rl/r10": 776,
+   "rl/r25": 776,
+   "rl/r50": 776,
+   "rl/r100": 776,
+   "rl/r150": 776,
+   "rl/r250": 774,
+   "rl/r400": 764
+  },
+  "all": {
+   "elim/r10": 1068,
+   "elim/r25": 1068,
+   "elim/r50": 1068,
+   "elim/r100": 1067,
+   "elim/r150": 1025,
+   "elim/r250": 821,
+   "elim/r400": 577,
+   "rl/r10": 2217,
+   "rl/r25": 2217,
+   "rl/r50": 2217,
+   "rl/r100": 2217,
+   "rl/r150": 2216,
+   "rl/r250": 2209,
+   "rl/r400": 2183
+  }
+ },
+ "report_only_cells": [
+  "elim/r10"
+ ],
+ "report_only_by_count": [],
+ "coverage": {
+  "Autarky": {
+   "games": 435,
+   "usable": 433,
+   "coverage": 0.9954022988505747
+  },
+  "Maze": {
+   "games": 446,
+   "usable": 442,
+   "coverage": 0.9910313901345291
+  },
+  "Trauma": {
+   "games": 447,
+   "usable": 444,
+   "coverage": 0.9932885906040269
+  }
+ },
+ "missing": [
+  {
+   "game": "1013831",
+   "map": "Trauma",
+   "reason": "in scope in manifest v2, out of scope in store games.parquet"
+  },
+  {
+   "game": "1013834",
+   "map": "Autarky",
+   "reason": "in scope in manifest v2, out of scope in store games.parquet"
+  },
+  {
+   "game": "1017365",
+   "map": "Maze",
+   "reason": "in scope in manifest v2, out of scope in store games.parquet"
+  },
+  {
+   "game": "1019907",
+   "map": "Maze",
+   "reason": "in scope in manifest v2, out of scope in store games.parquet"
+  },
+  {
+   "game": "1023796",
+   "map": "Maze",
+   "reason": "in scope in manifest v2, out of scope in store games.parquet"
+  },
+  {
+   "game": "1037806",
+   "map": "Maze",
+   "reason": "in scope in manifest v2, out of scope in store games.parquet"
+  },
+  {
+   "game": "1044626",
+   "map": "Autarky",
+   "reason": "not decoded"
+  },
+  {
+   "game": "877998",
+   "map": "Trauma",
+   "reason": "in scope in manifest v2, out of scope in store games.parquet"
+  },
+  {
+   "game": "979590",
+   "map": "Trauma",
+   "reason": "in scope in manifest v2, out of scope in store games.parquet"
+  }
+ ],
+ "note": "outcome-free: no result_a, no y read; ended flag and decode presence only; draws not removed"
+}

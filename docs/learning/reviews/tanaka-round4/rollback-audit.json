@@ -1,0 +1,50 @@
+{
+  "source_sha256": "810b15fe7331ccb92566c41b9f62f30f36b1525173905684bbe9c3c130981462",
+  "frozen_input_sha256": "ed61e7ebfa2b5fc679db70ef5ff84bcd47d6662e370bba3b83971c2f9733cd5d",
+  "frozen_ranked_games": 849,
+  "unique_series": 172,
+  "series_runs": 172,
+  "synthetic_independent_flattened_bootstrap": [
+    {
+      "diff_error": 0.0,
+      "hi_error": 1.3877787807814457e-17,
+      "decision_agrees": true
+    },
+    {
+      "diff_error": 1.3877787807814457e-17,
+      "hi_error": 1.3877787807814457e-17,
+      "decision_agrees": true
+    },
+    {
+      "diff_error": 1.3877787807814457e-17,
+      "hi_error": 6.938893903907228e-18,
+      "decision_agrees": true
+    },
+    {
+      "diff_error": 1.3877787807814457e-17,
+      "hi_error": 3.469446951953614e-18,
+      "decision_agrees": true
+    },
+    {
+      "diff_error": 0.0,
+      "hi_error": 1.3877787807814457e-17,
+      "decision_agrees": true
+    },
+    {
+      "diff_error": 0.0,
+      "hi_error": 0.0,
+      "decision_agrees": true
+    },
+    {
+      "diff_error": 0.0,
+      "hi_error": 1.3877787807814457e-17,
+      "decision_agrees": true
+    },
+    {
+      "diff_error": 1.3877787807814457e-17,
+      "hi_error": 3.0357660829594124e-18,
+      "decision_agrees": true
+    }
+  ],
+  "scope": "No operational rule change or new full simulation. Frozen monitor input differs from simulation corpus snapshot; published operating rates not replicated."
+}

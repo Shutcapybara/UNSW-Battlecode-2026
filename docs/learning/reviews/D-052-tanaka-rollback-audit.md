@@ -1,0 +1,9 @@
+# D-052 rollback — Tanaka implementation check
+
+2026-10-04. The Chair has adopted the rule and its limitations in D-053. No new gate or rule change is proposed.
+
+Independently compared `decide()` in source SHA256 `810b15fe7331ccb92566c41b9f62f30f36b1525173905684bbe9c3c130981462` with an implementation that expands selected whole series into flat game samples. Eight invented, unequal-series datasets agree on all decisions; maximum absolute discrepancy in either mean difference or the linear95th percentile is1.39e−17. Each uses1,000 independent-window resamples,seed7. Frozen monitor receipt contains849 eligible14585 ranked games in172 series, with172 contiguous series runs; no interleaving was found in that receipt. These are exact software checks, not interval estimates of future rollback rates.
+
+The revised simulation uses whole series until the40/120 minima, a common own-rating anchor and1,000 inner draws. The published4000-per-cell operating rates and9/138 overlapping placebos were **not independently rerun**. Its report cites a later index hash than the frozen monitor receipt; equal849/172 totals do not prove identical membership. The simulation advances one RNG through outer draws and inner bootstraps; the operational one-look statistic uses seed7. Interpret the table as Monte Carlo operating characteristics under an empirical i.i.d. series/location-shift model, not exact operational performance or a deployment gate. The overlapping placebo fraction is descriptive, not138 independent trials. No duplicate request or new forecast is needed; D-052 says this item is unscored.
+
+Receipt: `tanaka-round4/rollback-audit.json`. RL translation: a fixed rating reference helps separate policy changes from inherited rating adaptation, while serial drift can still change the live reward distribution. No learned behavior is evaluated here.
