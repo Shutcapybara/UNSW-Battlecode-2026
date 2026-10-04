@@ -16,10 +16,11 @@
 - Runs keyed by bot runtime fingerprint: `build/asahi/runs/<bot>/<fp8>/<panel>/` with `run.json` (runtime, host,
   panel hash, fingerprint). A run refuses to mix runtimes or panel compositions.
 - Cards (`tools/asahi/card.py`): conventions frozen in its header — paired by (seed, map, opp, seat); missing listed,
-  never a loss; cluster bootstrap over map × opp × seat, 1,000 resamples, seed 7, 5th–95th percentile; economy
+  never a loss; cluster bootstrap over map × opponent (D-052 §C, from 17:20Z; seed-1 screens before that used
+  map × opp × seat, now printed as the directional sensitivity), 1,000 resamples, seed 7, linear 5th–95th; economy
   normalised by the parent's per-map medians (field references predate the swap); queen columns reached / conditional /
   joint / queen-decided W-L; tier-2 flag at +10 %; per class (Chongqing C7-03 A–E, gen) and per map; D-042 win-led
-  gate letter, prefixed `screen-` below three seeds.
+  gate letter (econ~ binds), `screen-` unless `--gate` (then any missing fixture is INCOMPLETE).
 
 ## Results so far (seed-1 screens, `unswbc 1.2.3`)
 
@@ -36,23 +37,22 @@
 - Tooling fix: queen survival now read from the engine result block; the features dragons table marks the queen dead
   on 18–24 of 544 pool sides where the engine has it alive (posted to Data/Chongqing).
 
-## Queue (default order; the Chair may reorder)
+## Queue (D-055 order, 4 Oct 17:55Z)
 
-**Carry-overs complete; idle, ready for ladder gates (4 Oct 13:50Z).**
+1. **P-4 / H-KZ26 queen reach veto (D-054 §C)** — built (`asahi-06/07/08`, m = off/0/1, 1c5684e94). m = off golden
+   parity 272/272 (PASS). Labeller frozen (sha256 684754bd…, validated 1,472/1,472 sides vs header, 92/92 strikes with
+   steps = distance, one hand trace). Running: m0 pool → exposure capture → m0 gen → m1 both → labels → card + curve.
+2. **REG-002 k16 gate, seeds 2–3 (D-053 §D)** — parent and k16 seeds 2–3 queued after P-4; Weakhold capture; gate card
+   with `--gate --stratum live/weakhold`; seed-1 card on map × opp clusters reproduces Tanaka's [+0.37, +5.15] /
+   [−1.08, +0.43]. Deploy probe done: zip 3.741 MiB, max 11.01 M, first turn 10.73 M, 0 errors.
+3. **card.py map × opponent clusters (D-052 §C)** — done (17:20Z).
+4. **Learn queue in jobd (D-052 §F)** — done, format `docs/learning/learn-queue.md`; `setup_env` queued; learn jobs run
+   when Asahi's queue is empty.
 
+## Answered (no longer open)
 
-1. P-A01 cage C+D, E = 0 vs carthage-05 — preregistered (`docs/learning/proposals/P-A01-cage-cd-e0.md`).
-2. P-A02 H-KZ12 dial k = 0/4/8/16 — exposure diagnostic on k16 first, golden parity k0, then the curve.
-3. Ladder gates as the Learner hands candidates over (none yet).
-
-## Open issues for the Chair
-
-- **D-045 number collision.** `D-045` in the director log is already "Prospective 1.2.5 learned-arm local gate"
-  (seeds 1–5, `--gate learned125`, pinned to `unswbc 1.2.5`). The Phase 3 prompts expect D-045 to be the Chair's
-  first record (deadline, frozen splits, promotion/rollback). The venv runs `unswbc 1.2.3`; maps are the 1.2.9
-  templates. The Chair needs to say which engine version gates use, and renumber.
-- No frozen held-out fixtures exist yet (D-045 Phase 3 sense). Until they do, Asahi runs only the carry-over screens
-  on seeds 1 (never seeds reserved later as held-out: the Chair should reserve seeds ≥ 6 or a map subset).
+- Engine: any wheel with engine hash 26e68680… (1.2.3/1.2.5/1.2.9), D-046 §2. Gate seeds 1–3, reserve 4–5, training
+  rollouts ≥ 1000 (D-046 §3). Held-out maps (Autarky, Maze, Trauma) concern training data, not panels (D-053 §F).
 
 ## Log
 
@@ -63,3 +63,5 @@
 - 4 Oct 12:25Z: P-A02 exposure + k0 parity posted; dragons-table queen bug found, cards switched to header queen.
 - 4 Oct 13:10Z: P-A01 HOLD posted; k8 done, k4/k8 exposure captures running; curve + k16 card next.
 - 4 Oct 13:50Z: P-A02 curve posted; carry-over queue complete; idle note to the Chair.
+- 4 Oct 17:10–17:55Z: resumed (D-052..D-055); P-4 built + parity; card clusters; learn queue; symlink fix for
+  LS-1 (asahi-02..05 real header, f370d4a9f pushed); labeller frozen; probes.
