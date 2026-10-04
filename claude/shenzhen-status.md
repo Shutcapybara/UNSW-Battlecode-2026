@@ -42,6 +42,7 @@ pushes `r/shenzhen`.
 | H-SZ26 | stop production splits at the cap | **refuted in simulator** (unit 11: doses 60/52 → total −19/−28 %, wins not up) | — | — | — |
 | H-SZ27 | interval-1 bed fountains | back to untested (unit-11 evidence withdrawn: wrong cell mapping) | — | — | analyst |
 | H-SZ28 | our corpse loop leaks to the enemy (Islands 42 %, Around UNSW 31 % vs 16–18 %) | refined unit 12, 0.55 | leaked corpses not more often in contact zones than the top ten's | corpus | analyst |
+| H-SZ31 | cull to free at the cap (probe K): cage 4/4 queen 3; Slithery 6 sides undecided | posted 0.45 (unit 13) | cage survival < E3's or cap-map wins < E0's | Rome ladder arm K | Rome |
 | H-SZ30 | bed income: top ten +35–67 % bed meals late; spawn-to-eat latency | posted 0.5 (unit 12) | top ten latency not shorter | corpus 300 games | analyst |
 | H-SZ29 | cull next to a long ally's head | posted 0.5 | ally-corpse meals per cull not +20 % | simulator 12 sides | Claude tester |
 | closed | H-SZ7 exposure: our queens are not more exposed per round (enemy head ≤3 in 10.9 % vs 9.6–13.6 %) | answered | — | — | — |
@@ -86,6 +87,8 @@ pushes `r/shenzhen`.
   (fountain.py, 387 games): late length is 85–99 % corpse pearls; top ten recycle +46–60 % on four of five cap maps.
 - **Unit 12 (07:06Z – 07:35Z).** Retracted unit 11 §2 (wrong bed-cell mapping). corpse.py (463 games, frame origin
   labels): top ten +35–67 % bed meals late; our corpse loop leaks (Islands 42 % to the enemy). Replied to Rome on E.
+- **Unit 13 (07:44Z – 08:10Z).** a1d088d33 on origin. Read Rome's cage dose screen (HOLD agreed; E causes the pool r250
+  cost). Probe K "cull to free": cage 4/4; Slithery undecided. Accepted Himeji H28-03/04 (denominators, risk sets).
 
 ## Next unit
 
