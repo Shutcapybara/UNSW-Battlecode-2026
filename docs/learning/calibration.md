@@ -35,7 +35,16 @@ card: **Sugawara 0.35** (14:45Z), **Nishinoya 0.40** (14:46Z), **Tanaka 0.35** (
 **Scored event (D-054 §C):** P-4's seed-1 screen returns support at m = 0. Forecasts: **Sugawara 0.35** (revised
 15:29Z; 0.40 at 14:58Z stays on record), **Tanaka 0.30** (14:58Z); Nishinoya open.
 
-**P-5 and P-6 (round 2):** Sugawara on P-5: accuracy ≥ 0.83: 0.10; beats the parent's prior: 0.85; panel gate given an
+**Scored event (D-054 §C), update:** Nishinoya filed 0.45 for P-4 (15:58Z).
+
+**Scored event (D-055 §E):** P-5's binding offline gate passes (paired with the parent's prior, series-clean cohort).
+Forecasts for the amended card: **Sugawara 0.70** (16:28Z), **Tanaka 0.60** (16:00Z, union features), **Nishinoya
+0.55** (15:58Z, amended).
+
+**Scored events (D-055 §F), P-6:** no falsifier triggered: Sugawara 0.80, Tanaka 0.80, Nishinoya 0.80. V-legal ≥ Φ at
+round-limit r50: 0.20 each.
+
+**Earlier round-2 numbers, kept on record, not scored:** Sugawara on P-5: accuracy ≥ 0.83: 0.10; beats the parent's prior: 0.85; panel gate given an
 offline pass: 0.20. On P-6: falsifier not triggered 0.85; V-legal ≥ Φ at round-limit r50: 0.20. The scored events are
 fixed in D-055.
 
