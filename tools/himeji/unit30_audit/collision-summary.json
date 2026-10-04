@@ -1,0 +1,1228 @@
+{
+  "runtime": "1.2.3",
+  "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+  "rows": [
+    {
+      "length": 2,
+      "clear_path_budget": 1,
+      "target_distance": 1,
+      "struck": true,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "h2h",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            16,
+            2
+          ],
+          "initial": true,
+          "killer": 0,
+          "killer_team": "A"
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "h2h",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            15,
+            2
+          ],
+          "initial": true,
+          "killer": 1,
+          "killer_team": "B",
+          "mutual": true
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1
+          ],
+          "paid": 0
+        }
+      ],
+      "map_sha256": "798dc5fef03b8e0d7fb9ba7203ba5ee9abdd74258e2decfd8cc5763520baca1f",
+      "replay_sha256": "c490b2e616c78e2225667e9cf76f65ba87d72fec5858a061be4e64471cb832b9"
+    },
+    {
+      "length": 2,
+      "clear_path_budget": 1,
+      "target_distance": 2,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            16,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            17,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 2,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1
+          ],
+          "paid": 0
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "d284eecbcd2db91c8231966e6ee8c9fd27a29339e8e26bb13f32dd96c634a0a2",
+      "replay_sha256": "12324f22f29756363bbb0bcc75d28357d6bce549a654401e3835bffa115ad802"
+    },
+    {
+      "length": 2,
+      "clear_path_budget": 1,
+      "target_distance": 3,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            16,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            18,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 3,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1
+          ],
+          "paid": 0
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "9389d22a307cb29ddf43bd64df5e0ad061ebe5f22c1397a9cd31d3e8f1194e35",
+      "replay_sha256": "375ad37ba8238d8fad67f3a9b3016424cb1ea2fe4a6fe0effa3f79e6c820432c"
+    },
+    {
+      "length": 3,
+      "clear_path_budget": 2,
+      "target_distance": 2,
+      "struck": true,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "h2h",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            17,
+            2
+          ],
+          "initial": true,
+          "killer": 0,
+          "killer_team": "A"
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "h2h",
+          "length": 3,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            16,
+            2
+          ],
+          "initial": true,
+          "killer": 1,
+          "killer_team": "B",
+          "mutual": true
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 2,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1
+          ],
+          "paid": 0
+        }
+      ],
+      "map_sha256": "3989b9805440ccec0171867f2e9f8c18ce4dee3912a28e660eec586998ebb989",
+      "replay_sha256": "189759c5b87aa9581171a8ec470a716461ba24e786fb2776cc6d9e166a7a7b53"
+    },
+    {
+      "length": 3,
+      "clear_path_budget": 2,
+      "target_distance": 3,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            17,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            18,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 3,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1
+          ],
+          "paid": 1
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "a4be4aa84301ca4a128caa94c36d39d23d82ef2faf70210578a05b486fcfad57",
+      "replay_sha256": "33b4e122c177e92056fd3438d7f185972ea694c872071c428077638a917cda65"
+    },
+    {
+      "length": 3,
+      "clear_path_budget": 2,
+      "target_distance": 4,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            17,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            19,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 4,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 1
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "fdd1213257fd116a0c3cb4dc3588d8d9552678be03a8fbe68f56a482d5f0bef3",
+      "replay_sha256": "7f4b55fc7374c865f0e7b0fe4354504f3c1c284d6976de07d5124237ac7f15d9"
+    },
+    {
+      "length": 4,
+      "clear_path_budget": 3,
+      "target_distance": 3,
+      "struck": true,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "h2h",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            18,
+            2
+          ],
+          "initial": true,
+          "killer": 0,
+          "killer_team": "A"
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "h2h",
+          "length": 3,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            17,
+            2
+          ],
+          "initial": true,
+          "killer": 1,
+          "killer_team": "B",
+          "mutual": true
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 3,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1
+          ],
+          "paid": 1
+        }
+      ],
+      "map_sha256": "833ab05d8b772d245f1aec7c25089f8ba5b0f04c731df60fe7dfb21f95cd93f0",
+      "replay_sha256": "6aa7734b73e2eca2b81ebc5d46eca1c64eedf6ee9b255a61be222d74aff1a792"
+    },
+    {
+      "length": 4,
+      "clear_path_budget": 3,
+      "target_distance": 4,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            18,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            19,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 4,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 2
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "53721fdc3aa56174de6888068ad9115b06e65cdc391466045d8b6898c088987b",
+      "replay_sha256": "64d03e614c0d464bd66d90e25fae3c4e699779687c44010f2ded889ad649b599"
+    },
+    {
+      "length": 4,
+      "clear_path_budget": 3,
+      "target_distance": 5,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            18,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            20,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 5,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 2
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "e91259e9bcfc6e98dfc4a27d5a88ba70cdc3fb0b645a82da20124db6bffc3b75",
+      "replay_sha256": "8b8be85f839a6ec249fa5b1b1699d0a52253f7d711b6ca1e9564c2916ffb33ed"
+    },
+    {
+      "length": 5,
+      "clear_path_budget": 5,
+      "target_distance": 5,
+      "struck": true,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "h2h",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            20,
+            2
+          ],
+          "initial": true,
+          "killer": 0,
+          "killer_team": "A"
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "h2h",
+          "length": 3,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            19,
+            2
+          ],
+          "initial": true,
+          "killer": 1,
+          "killer_team": "B",
+          "mutual": true
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 5,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 2
+        }
+      ],
+      "map_sha256": "e385587cc6efa8369f2dc8270297a8eb2e39c7af904086a7c35dec464095637b",
+      "replay_sha256": "03c384e303438efe59fa0ff12d3681b370b7e0f4352e8863dd203f7b550b0555"
+    },
+    {
+      "length": 5,
+      "clear_path_budget": 5,
+      "target_distance": 6,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            20,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            21,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 6,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 3
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "87c2bf313fb04a8c5b8311a694685f08f83ed12b760a9ce4fc06219732d051ea",
+      "replay_sha256": "0b09b15c3efc49dd4e27bb331666869f3f9fa7efaeceee6d74bba66a718ce925"
+    },
+    {
+      "length": 5,
+      "clear_path_budget": 5,
+      "target_distance": 7,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            20,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            22,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 7,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 3
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "14929d627c2439af7410c5cd16caeba5c60d3a4c1e5b25c0bc488e8b589d4d46",
+      "replay_sha256": "73ff88207580ae88bc0ea2d11c0331d5706cf83f374a55f1a65dccac1ff6c9da"
+    },
+    {
+      "length": 6,
+      "clear_path_budget": 6,
+      "target_distance": 6,
+      "struck": true,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "h2h",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            21,
+            2
+          ],
+          "initial": true,
+          "killer": 0,
+          "killer_team": "A"
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "h2h",
+          "length": 3,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            20,
+            2
+          ],
+          "initial": true,
+          "killer": 1,
+          "killer_team": "B",
+          "mutual": true
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 6,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 3
+        }
+      ],
+      "map_sha256": "dcd41e5713a27d9785ecf76ea0d1d69b3e54566b8431f0eb8fd0a38b0ff3e0c6",
+      "replay_sha256": "d401e9182af3a23fa867f690377829f3ca42e4261aa4bb1e52037926ef94c2f3"
+    },
+    {
+      "length": 6,
+      "clear_path_budget": 6,
+      "target_distance": 7,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            21,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            22,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 7,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 4
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "dd9ec936314dc40bb60430d434f992e39effe3966d9ad2e1fe1c609d40693f7c",
+      "replay_sha256": "975b8dbba9fa2dfe8b0c1dee274a4752feebd31780b9cafa0e4e0639697aef85"
+    },
+    {
+      "length": 6,
+      "clear_path_budget": 6,
+      "target_distance": 8,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            21,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            23,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 8,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 4
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "5a9059b2a03d42c3fb5175e18c52d035931e9577b1b227cdfdaa2ee5c8b82879",
+      "replay_sha256": "838c2c34e25a05590019297353f8aadbfd0188cfc3ba4521e038125ff96e94c1"
+    },
+    {
+      "length": 9,
+      "clear_path_budget": 10,
+      "target_distance": 10,
+      "struck": true,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "h2h",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            25,
+            2
+          ],
+          "initial": true,
+          "killer": 0,
+          "killer_team": "A"
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "h2h",
+          "length": 3,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            24,
+            2
+          ],
+          "initial": true,
+          "killer": 1,
+          "killer_team": "B",
+          "mutual": true
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 10,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 6
+        }
+      ],
+      "map_sha256": "2cce9989ae4d9da9cd6c4f63b102ae4603ed0cf17fc21a6e571f6dbfb3059103",
+      "replay_sha256": "e33eeb002dcf754075a1df9f5a4967169ed43297b16ee15e9dc9be7890579e37"
+    },
+    {
+      "length": 9,
+      "clear_path_budget": 10,
+      "target_distance": 11,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            25,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            26,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 11,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 7
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "d1679381b7184965a0d96f72410104e0e2352bc079c0996ce708b97dd0012c72",
+      "replay_sha256": "e02a632fac8df22194bdd91b48389c8dfbfc8fd2d5692e1a5dfe86e05831c3f3"
+    },
+    {
+      "length": 9,
+      "clear_path_budget": 10,
+      "target_distance": 12,
+      "struck": false,
+      "deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            25,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 1,
+          "age": 0,
+          "head": [
+            27,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 12,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "paid": 7
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "map_sha256": "c9db7ec901d08532601b7b2625589e4956018b194e53a7a85132a335a36a8284",
+      "replay_sha256": "57e3fcec61914fad5220ea4cd673aab2d946fa747a237d11232a82bf42e5155f"
+    }
+  ],
+  "scope": "18 fixed collision fixtures, no food; no bot policy or performance test."
+}

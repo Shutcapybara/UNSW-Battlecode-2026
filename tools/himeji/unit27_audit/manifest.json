@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-04T06:56:13.957360+00:00",
+  "index_games": 120799,
+  "index_sha256": "07daf8f8bc805d7f24d7871bc2777d83daeacda3983a2823ff251ff00e41ef95",
+  "latest_start": "2026-10-04T06:49:12.019Z",
+  "delta": 330,
+  "own_delta": 0,
+  "latest_own": "2026-10-04T03:25:53.416Z",
+  "ladder": "20261004T065337Z.json",
+  "ladder_sha256": "b978314b96e6b64040298f196c2b0603637d13331a58b41545565c2b5835cc9c",
+  "top10": [
+    264,
+    306,
+    112,
+    213,
+    55,
+    91,
+    842,
+    507,
+    952,
+    87
+  ],
+  "own_watched": false,
+  "collector_progress_at": "2026-10-04T06:56:11.727176+00:00",
+  "db_submissions": [
+    [
+      14265,
+      "idle",
+      "2026-10-04T06:53:35.528031+00:00"
+    ],
+    [
+      14585,
+      "active",
+      "2026-10-04T06:53:35.524540+00:00"
+    ]
+  ],
+  "db_series": [
+    1165,
+    "2026-10-04T06:42:47.237152+00:00"
+  ],
+  "source_commits": {
+    "HEAD": "20d19cef2150b2d6dd5e283131f766a3500f9189",
+    "origin/main": "21186bf2490346cb6503834d46b572e962b60f6b",
+    "origin/r/kanazawa": "d0a3a793b71e7bd03562e82cde4714d48cf0bcaa",
+    "origin/r/nara": "a884062ea1ead6976f6054b7992dc13c839114eb",
+    "origin/r/rome": "5704a6602b8a71fed6ec6a9f5e245f2ec024785c",
+    "origin/r/shenzhen": "76e09d6a528d10a512c6b1a42b7eff999a188bd1",
+    "origin/r/chongqing": "b50bbe8861f248eea269513755c872e77b30d684",
+    "origin/r/Seoul": "1edac66c2d7545285b5c56469576961d7f63bf5f",
+    "origin/r/antioch": "2c7113f6657362ce68bc0d667bf932d665c1a31c",
+    "origin/r/carthage": "5b69fa9d07a0fd4684826f752438a2e8e66d9f45",
+    "origin/r/kyoto": "fccea71c060fc7bf0cae41aeef8d063d9894d8c6"
+  },
+  "source_hashes": {
+    "tools/hub/corpus.py": "6bb33fd775768eafdaf38c287ce1853f45e8852d2e40acd5077502f3fec8c51c",
+    "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+    "tools/s1/build.py": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f"
+  }
+}

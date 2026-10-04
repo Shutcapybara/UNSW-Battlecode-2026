@@ -145,8 +145,11 @@ Q_ROUNDS = (25, 50, 100, 150, 250, 400, 490)
 
 def queen_cols(g, out, t):
     """per-side queen columns (chongqing, 4 Oct): the queen is the team's lowest-id initial dragon (no succession).
-    q_end is its length in the final snapshot (0 when dead; equals the 1.2.3 header field, kept as q_header)."""
+    rounds[0] is the initial state and rounds[r + 1] the state after round r (g['last_round'] = R = last round played).
+    q_len@k = the queen's length after round k (0 = dead), NULL when the game ended before round k (no terminal carry;
+    Himeji H19-05 / H23-03). q_death_round uses the deaths table's convention (the round in which it died)."""
     rounds = g['rounds']
+    R = g['last_round']
     ids = [i for i, (tt, b) in rounds[0].items() if tt == t]
     if not ids:
         return {}
@@ -161,16 +164,18 @@ def queen_cols(g, out, t):
                 moves += 1
             prev_head = body[0]
         else:
-            death_round = r
+            death_round = r - 1          # missing from the snapshot after round r-1
             break
-    last = len(rounds) - 1
     o = dict(q_id=q, q_alive_end=int(death_round is None), q_death_round=death_round, q_moves=moves, q_maxlen=maxlen,
-             q_end=lens.get(last, 0), q_header=g['final'][t].get('queen'))
+             q_end=lens.get(len(rounds) - 1, 0), q_header=g['final'][t].get('queen'), q_last_round=R)
     for k in Q_ROUNDS:
-        o[f'q_len@{k}'] = lens.get(min(k, last), 0)
+        o[f'q_len@{k}'] = lens.get(k + 1, 0) if k <= R else None
+    o['q_censored'] = int(death_round is None and R < 490)   # alive at an end before round 490: survival to 490 unobserved
     d = next((d for d in out['deaths'] if d['side'] == t and d['id'] == q), None)
     o['q_death_cls'] = d['cls'] if d else None
     o['q_death_killer'] = d.get('killer_team') if d else None
+    if d is not None and death_round is not None and d['round'] != death_round:
+        o['q_death_round'] = d['round']   # trust the event log if the snapshot walk disagrees
     return o
 
 
@@ -262,8 +267,10 @@ def process(args):
         deaths.append(r)
     transits = [dict(x_, **ctx, team=side_team[x_['side']]) for x_ in x['transits']]
     splits = [dict(x_, **ctx, team=side_team[x_['side']]) for x_ in x['splits']]
+    mover = {(d['round'], d['id']): int(d.get('actor') == d['id']) for d in g['events'].get('deaths', [])}
     for d in deaths:
         d['game'] = gid
+        d['mover'] = mover.get((d['round'], d['id']))   # 1 = died on its own move (the mover in a head-on), 0 = partner (chongqing unit 9)
     return dict(game=gid, sides=sides, series=series, deaths=deaths, transits=transits, splits=splits)
 
 

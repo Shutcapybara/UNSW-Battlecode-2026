@@ -1,0 +1,784 @@
+{
+  "all_sides": {
+    "spawns": 4105,
+    "loose_enemy": 473,
+    "cohort_enemy": 463,
+    "loose_ally": 3511,
+    "cohort_ally": 3447,
+    "carry": 74,
+    "fixed_eligible": 3097,
+    "fixed_enemy": 349,
+    "fixed_ally": 2487,
+    "fixed_not": 261
+  },
+  "own_sides": {
+    "spawns": 2228,
+    "loose_enemy": 202,
+    "cohort_enemy": 198,
+    "loose_ally": 1959,
+    "cohort_ally": 1918,
+    "carry": 45,
+    "fixed_eligible": 1665,
+    "fixed_enemy": 132,
+    "fixed_ally": 1386,
+    "fixed_not": 147
+  },
+  "carry_affected_side_games": 14,
+  "carry_examples": [
+    {
+      "game": 1021319,
+      "map": "Maze",
+      "side": "A",
+      "spawns": 400,
+      "loose_enemy": 26,
+      "cohort_enemy": 26,
+      "loose_ally": 348,
+      "cohort_ally": 341,
+      "carry": 7,
+      "fixed_eligible": 262,
+      "fixed_enemy": 21,
+      "fixed_ally": 200,
+      "fixed_not": 41,
+      "examples": [
+        {
+          "consumer_team": "A",
+          "donor": 34,
+          "born": 77,
+          "eaten": 159,
+          "age": 82,
+          "cell": [
+            36,
+            8
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 34,
+          "born": 77,
+          "eaten": 161,
+          "age": 84,
+          "cell": [
+            35,
+            7
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 82,
+          "born": 133,
+          "eaten": 164,
+          "age": 31,
+          "cell": [
+            23,
+            22
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 82,
+          "born": 133,
+          "eaten": 166,
+          "age": 33,
+          "cell": [
+            25,
+            22
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021319,
+      "map": "Maze",
+      "side": "B",
+      "spawns": 553,
+      "loose_enemy": 16,
+      "cohort_enemy": 16,
+      "loose_ally": 511,
+      "cohort_ally": 509,
+      "carry": 2,
+      "fixed_eligible": 398,
+      "fixed_enemy": 9,
+      "fixed_ally": 353,
+      "fixed_not": 36,
+      "examples": [
+        {
+          "consumer_team": "B",
+          "donor": 102,
+          "born": 145,
+          "eaten": 175,
+          "age": 30,
+          "cell": [
+            11,
+            15
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 102,
+          "born": 145,
+          "eaten": 178,
+          "age": 33,
+          "cell": [
+            12,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021322,
+      "map": "Autarky",
+      "side": "A",
+      "spawns": 190,
+      "loose_enemy": 16,
+      "cohort_enemy": 16,
+      "loose_ally": 172,
+      "cohort_ally": 166,
+      "carry": 6,
+      "fixed_eligible": 169,
+      "fixed_enemy": 14,
+      "fixed_ally": 138,
+      "fixed_not": 17,
+      "examples": [
+        {
+          "consumer_team": "A",
+          "donor": 65,
+          "born": 135,
+          "eaten": 150,
+          "age": 15,
+          "cell": [
+            34,
+            0
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 89,
+          "born": 142,
+          "eaten": 152,
+          "age": 10,
+          "cell": [
+            18,
+            16
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 92,
+          "born": 142,
+          "eaten": 152,
+          "age": 10,
+          "cell": [
+            18,
+            1
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 89,
+          "born": 142,
+          "eaten": 154,
+          "age": 12,
+          "cell": [
+            19,
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021322,
+      "map": "Autarky",
+      "side": "B",
+      "spawns": 24,
+      "loose_enemy": 22,
+      "cohort_enemy": 20,
+      "loose_ally": 3,
+      "cohort_ally": 3,
+      "carry": 2,
+      "fixed_eligible": 23,
+      "fixed_enemy": 20,
+      "fixed_ally": 3,
+      "fixed_not": 0,
+      "examples": [
+        {
+          "consumer_team": "A",
+          "donor": 85,
+          "born": 149,
+          "eaten": 153,
+          "age": 4,
+          "cell": [
+            35,
+            16
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 85,
+          "born": 149,
+          "eaten": 155,
+          "age": 6,
+          "cell": [
+            34,
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021318,
+      "map": "Default",
+      "side": "A",
+      "spawns": 104,
+      "loose_enemy": 7,
+      "cohort_enemy": 6,
+      "loose_ally": 94,
+      "cohort_ally": 93,
+      "carry": 2,
+      "fixed_eligible": 82,
+      "fixed_enemy": 4,
+      "fixed_ally": 75,
+      "fixed_not": 3,
+      "examples": [
+        {
+          "consumer_team": "A",
+          "donor": 92,
+          "born": 148,
+          "eaten": 165,
+          "age": 17,
+          "cell": [
+            8,
+            10
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 33,
+          "born": 147,
+          "eaten": 190,
+          "age": 43,
+          "cell": [
+            12,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021318,
+      "map": "Default",
+      "side": "B",
+      "spawns": 61,
+      "loose_enemy": 30,
+      "cohort_enemy": 28,
+      "loose_ally": 32,
+      "cohort_ally": 29,
+      "carry": 5,
+      "fixed_eligible": 50,
+      "fixed_enemy": 22,
+      "fixed_ally": 24,
+      "fixed_not": 4,
+      "examples": [
+        {
+          "consumer_team": "B",
+          "donor": 56,
+          "born": 147,
+          "eaten": 151,
+          "age": 4,
+          "cell": [
+            11,
+            15
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 61,
+          "born": 148,
+          "eaten": 164,
+          "age": 16,
+          "cell": [
+            8,
+            9
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 61,
+          "born": 148,
+          "eaten": 169,
+          "age": 21,
+          "cell": [
+            8,
+            7
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 83,
+          "born": 147,
+          "eaten": 191,
+          "age": 44,
+          "cell": [
+            12,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021321,
+      "map": "weakhold",
+      "side": "A",
+      "spawns": 150,
+      "loose_enemy": 0,
+      "cohort_enemy": 0,
+      "loose_ally": 142,
+      "cohort_ally": 133,
+      "carry": 9,
+      "fixed_eligible": 86,
+      "fixed_enemy": 0,
+      "fixed_ally": 59,
+      "fixed_not": 27,
+      "examples": [
+        {
+          "consumer_team": "A",
+          "donor": 64,
+          "born": 144,
+          "eaten": 150,
+          "age": 6,
+          "cell": [
+            26,
+            0
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 64,
+          "born": 144,
+          "eaten": 152,
+          "age": 8,
+          "cell": [
+            24,
+            0
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 45,
+          "born": 94,
+          "eaten": 216,
+          "age": 122,
+          "cell": [
+            28,
+            14
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 45,
+          "born": 94,
+          "eaten": 218,
+          "age": 124,
+          "cell": [
+            26,
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021321,
+      "map": "weakhold",
+      "side": "B",
+      "spawns": 243,
+      "loose_enemy": 6,
+      "cohort_enemy": 4,
+      "loose_ally": 242,
+      "cohort_ally": 239,
+      "carry": 5,
+      "fixed_eligible": 168,
+      "fixed_enemy": 1,
+      "fixed_ally": 164,
+      "fixed_not": 3,
+      "examples": [
+        {
+          "consumer_team": "B",
+          "donor": 60,
+          "born": 145,
+          "eaten": 168,
+          "age": 23,
+          "cell": [
+            13,
+            14
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 60,
+          "born": 145,
+          "eaten": 171,
+          "age": 26,
+          "cell": [
+            15,
+            14
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 50,
+          "born": 134,
+          "eaten": 179,
+          "age": 45,
+          "cell": [
+            7,
+            9
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 4,
+          "born": 12,
+          "eaten": 203,
+          "age": 191,
+          "cell": [
+            11,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021810,
+      "map": "Australia",
+      "side": "A",
+      "spawns": 568,
+      "loose_enemy": 181,
+      "cohort_enemy": 181,
+      "loose_ally": 364,
+      "cohort_ally": 357,
+      "carry": 7,
+      "fixed_eligible": 410,
+      "fixed_enemy": 152,
+      "fixed_ally": 219,
+      "fixed_not": 39,
+      "examples": [
+        {
+          "consumer_team": "A",
+          "donor": 145,
+          "born": 144,
+          "eaten": 151,
+          "age": 7,
+          "cell": [
+            48,
+            29
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 181,
+          "born": 144,
+          "eaten": 151,
+          "age": 7,
+          "cell": [
+            55,
+            39
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 145,
+          "born": 144,
+          "eaten": 152,
+          "age": 8,
+          "cell": [
+            48,
+            27
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 117,
+          "born": 147,
+          "eaten": 152,
+          "age": 5,
+          "cell": [
+            51,
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021810,
+      "map": "Australia",
+      "side": "B",
+      "spawns": 415,
+      "loose_enemy": 149,
+      "cohort_enemy": 146,
+      "loose_ally": 257,
+      "cohort_ally": 256,
+      "carry": 4,
+      "fixed_eligible": 255,
+      "fixed_enemy": 89,
+      "fixed_ally": 149,
+      "fixed_not": 17,
+      "examples": [
+        {
+          "consumer_team": "A",
+          "donor": 103,
+          "born": 144,
+          "eaten": 150,
+          "age": 6,
+          "cell": [
+            48,
+            30
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 135,
+          "born": 144,
+          "eaten": 150,
+          "age": 6,
+          "cell": [
+            50,
+            12
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 197,
+          "born": 149,
+          "eaten": 152,
+          "age": 3,
+          "cell": [
+            10,
+            26
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 184,
+          "born": 147,
+          "eaten": 154,
+          "age": 7,
+          "cell": [
+            48,
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021813,
+      "map": "Portals",
+      "side": "A",
+      "spawns": 404,
+      "loose_enemy": 0,
+      "cohort_enemy": 0,
+      "loose_ally": 394,
+      "cohort_ally": 387,
+      "carry": 7,
+      "fixed_eligible": 366,
+      "fixed_enemy": 0,
+      "fixed_ally": 334,
+      "fixed_not": 32,
+      "examples": [
+        {
+          "consumer_team": "A",
+          "donor": 164,
+          "born": 138,
+          "eaten": 151,
+          "age": 13,
+          "cell": [
+            16,
+            9
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 186,
+          "born": 144,
+          "eaten": 153,
+          "age": 9,
+          "cell": [
+            12,
+            15
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 164,
+          "born": 138,
+          "eaten": 154,
+          "age": 16,
+          "cell": [
+            15,
+            8
+          ]
+        },
+        {
+          "consumer_team": "A",
+          "donor": 157,
+          "born": 149,
+          "eaten": 155,
+          "age": 6,
+          "cell": [
+            28,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021813,
+      "map": "Portals",
+      "side": "B",
+      "spawns": 599,
+      "loose_enemy": 0,
+      "cohort_enemy": 0,
+      "loose_ally": 590,
+      "cohort_ally": 578,
+      "carry": 12,
+      "fixed_eligible": 516,
+      "fixed_enemy": 0,
+      "fixed_ally": 475,
+      "fixed_not": 41,
+      "examples": [
+        {
+          "consumer_team": "B",
+          "donor": 138,
+          "born": 130,
+          "eaten": 150,
+          "age": 20,
+          "cell": [
+            26,
+            5
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 171,
+          "born": 144,
+          "eaten": 150,
+          "age": 6,
+          "cell": [
+            18,
+            12
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 182,
+          "born": 149,
+          "eaten": 151,
+          "age": 2,
+          "cell": [
+            8,
+            10
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 192,
+          "born": 147,
+          "eaten": 152,
+          "age": 5,
+          "cell": [
+            12,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021812,
+      "map": "Devil",
+      "side": "A",
+      "spawns": 19,
+      "loose_enemy": 13,
+      "cohort_enemy": 13,
+      "loose_ally": 5,
+      "cohort_ally": 4,
+      "carry": 1,
+      "fixed_eligible": 17,
+      "fixed_enemy": 13,
+      "fixed_ally": 4,
+      "fixed_not": 0,
+      "examples": [
+        {
+          "consumer_team": "A",
+          "donor": 95,
+          "born": 145,
+          "eaten": 151,
+          "age": 6,
+          "cell": [
+            8,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "game": 1021812,
+      "map": "Devil",
+      "side": "B",
+      "spawns": 341,
+      "loose_enemy": 4,
+      "cohort_enemy": 4,
+      "loose_ally": 329,
+      "cohort_ally": 324,
+      "carry": 5,
+      "fixed_eligible": 282,
+      "fixed_enemy": 4,
+      "fixed_ally": 278,
+      "fixed_not": 0,
+      "examples": [
+        {
+          "consumer_team": "B",
+          "donor": 190,
+          "born": 149,
+          "eaten": 150,
+          "age": 1,
+          "cell": [
+            16,
+            2
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 143,
+          "born": 147,
+          "eaten": 150,
+          "age": 3,
+          "cell": [
+            14,
+            0
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 152,
+          "born": 145,
+          "eaten": 150,
+          "age": 5,
+          "cell": [
+            14,
+            7
+          ]
+        },
+        {
+          "consumer_team": "B",
+          "donor": 160,
+          "born": 148,
+          "eaten": 152,
+          "age": 4,
+          "cell": [
+            20,
+            10
+          ]
+        }
+      ]
+    }
+  ]
+}

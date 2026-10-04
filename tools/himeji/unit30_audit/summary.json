@@ -1,0 +1,83 @@
+{
+  "us": {
+    "cases": 20,
+    "games": 20,
+    "series": 12,
+    "commands": {
+      "2": 14,
+      "5": 2,
+      "3": 3,
+      "4": 1
+    },
+    "modes": {
+      "False": 18,
+      "True": 2
+    },
+    "own_submissions": {
+      "14585": 20
+    },
+    "map_counts": {
+      "Australia": 3,
+      "Prisoners Dilemma": 2,
+      "Default": 2,
+      "Queen Of Spades": 2,
+      "Around UNSW": 4,
+      "Trophy": 3,
+      "Autarky": 1,
+      "Islands": 1,
+      "Slithery Fight": 1,
+      "Trauma": 1
+    },
+    "beyond_nofood": 4
+  },
+  "opp": {
+    "cases": 4,
+    "games": 4,
+    "series": 4,
+    "commands": {
+      "2": 4
+    },
+    "modes": {
+      "True": 2,
+      "False": 2
+    },
+    "own_submissions": {
+      "14265": 1,
+      "14585": 3
+    },
+    "map_counts": {
+      "Autarky": 2,
+      "Australia": 1,
+      "Trauma": 1
+    },
+    "beyond_nofood": 0
+  },
+  "unique_games": 23,
+  "food_extended_cases": [
+    {
+      "game": 869494,
+      "length": 3,
+      "steps": 5,
+      "food": 3
+    },
+    {
+      "game": 881387,
+      "length": 3,
+      "steps": 3,
+      "food": 1
+    },
+    {
+      "game": 857671,
+      "length": 3,
+      "steps": 3,
+      "food": 1
+    },
+    {
+      "game": 869498,
+      "length": 4,
+      "steps": 4,
+      "food": 1
+    }
+  ],
+  "scope": "Selected same96-game case audit; no incidence, targeting intent, avoidability or win estimate. Two ranked own cases,18unranked; exact hashes retained."
+}

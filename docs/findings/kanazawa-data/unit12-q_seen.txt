@@ -1,0 +1,25 @@
+{"who": "opp", "gid": 852484, "r": 131, "cheb_seq": [9, 8, 9, 7, 5, 3, 2], "killer_sees_now": 1, "seen_run": 1, "anyE_prev": 1}
+{"who": "opp", "gid": 869495, "r": 142, "cheb_seq": [11, 9, 8, 7, 6, 4, 2], "killer_sees_now": 1, "seen_run": 0, "anyE_prev": 1}
+{"who": "opp", "gid": 866875, "r": 207, "cheb_seq": [9, 9, 8, 7, 6, 4, 2], "killer_sees_now": 1, "seen_run": 0, "anyE_prev": 0}
+{"who": "opp", "gid": 860828, "r": 488, "cheb_seq": [5, 5, 5, 5, 5, 5, 4], "killer_sees_now": 0, "seen_run": null, "anyE_prev": 0}
+{"who": "us", "gid": 869494, "r": 14, "cheb_seq": [8, 6, 5, 4, 5, 5, 4], "killer_sees_now": 0, "seen_run": null, "anyE_prev": 1}
+{"who": "us", "gid": 858820, "r": 15, "cheb_seq": [null, null, null, 3, 2, 2, 2], "killer_sees_now": 1, "seen_run": 3, "anyE_prev": 1}
+{"who": "us", "gid": 881387, "r": 26, "cheb_seq": [7, 7, 6, 5, 5, 5, 4], "killer_sees_now": 0, "seen_run": null, "anyE_prev": 0}
+{"who": "us", "gid": 869502, "r": 28, "cheb_seq": [7, 6, 6, 5, 5, 5, 3], "killer_sees_now": 1, "seen_run": 0, "anyE_prev": 0}
+{"who": "us", "gid": 860202, "r": 38, "cheb_seq": [6, 6, 6, 5, 4, 3, 2], "killer_sees_now": 1, "seen_run": 1, "anyE_prev": 1}
+{"who": "us", "gid": 866888, "r": 50, "cheb_seq": [5, 5, 4, 3, 2, 2, 2], "killer_sees_now": 1, "seen_run": 3, "anyE_prev": 1}
+{"who": "us", "gid": 866446, "r": 55, "cheb_seq": [3, 4, 4, 4, 4, 4, 2], "killer_sees_now": 1, "seen_run": 0, "anyE_prev": 1}
+{"who": "us", "gid": 858822, "r": 58, "cheb_seq": [null, null, null, null, 3, 3, 2], "killer_sees_now": 1, "seen_run": 2, "anyE_prev": 1}
+{"who": "us", "gid": 870342, "r": 74, "cheb_seq": [4, 3, 4, 4, 4, 3, 2], "killer_sees_now": 1, "seen_run": 1, "anyE_prev": 1}
+{"who": "us", "gid": 860203, "r": 78, "cheb_seq": [5, 4, 3, 3, 2, 2, 2], "killer_sees_now": 1, "seen_run": 4, "anyE_prev": 1}
+{"who": "us", "gid": 858817, "r": 79, "cheb_seq": [8, 7, 6, 7, 9, 10, 1], "killer_sees_now": 1, "seen_run": 0, "anyE_prev": 1}
+{"who": "us", "gid": 852909, "r": 84, "cheb_seq": [12, 11, 10, 9, 7, 5, 3], "killer_sees_now": 1, "seen_run": 0, "anyE_prev": 1}
+{"who": "us", "gid": 881972, "r": 84, "cheb_seq": [8, 9, 9, 8, 6, 5, 3], "killer_sees_now": 1, "seen_run": 0, "anyE_prev": 0}
+{"who": "us", "gid": 858816, "r": 89, "cheb_seq": [null, 12, 10, 8, 7, 5, 4], "killer_sees_now": 0, "seen_run": null, "anyE_prev": 0}
+{"who": "us", "gid": 881395, "r": 90, "cheb_seq": [4, 5, 5, 4, 3, 2, 1], "killer_sees_now": 1, "seen_run": 2, "anyE_prev": 1}
+{"who": "us", "gid": 860316, "r": 107, "cheb_seq": [8, 8, 8, 6, 4, 3, 2], "killer_sees_now": 1, "seen_run": 1, "anyE_prev": 1}
+{"who": "us", "gid": 857671, "r": 118, "cheb_seq": [6, 6, 5, 3, 3, 2, 4], "killer_sees_now": 0, "seen_run": null, "anyE_prev": 1}
+{"who": "us", "gid": 880465, "r": 120, "cheb_seq": [5, 5, 5, 5, 5, 4, 3], "killer_sees_now": 1, "seen_run": 0, "anyE_prev": 0}
+{"who": "us", "gid": 869498, "r": 180, "cheb_seq": [8, 8, 8, 7, 5, 4, 4], "killer_sees_now": 0, "seen_run": null, "anyE_prev": 1}
+{"who": "us", "gid": 869495, "r": 210, "cheb_seq": [null, null, null, null, null, null, 1], "killer_sees_now": 1, "seen_run": 0, "anyE_prev": 0}
+{'n': 20, 'sees_now': 15, 'seen<=2rounds': 12, 'anyE_prev': 14}

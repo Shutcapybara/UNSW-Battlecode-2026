@@ -1,0 +1,182 @@
+[
+  {
+    "game": 869494,
+    "killer": 11,
+    "round": 14,
+    "turn_start_length": 3,
+    "commanded_steps": 5,
+    "nofood_movement_budget": 2,
+    "eats": [
+      {
+        "round": 14,
+        "id": 11,
+        "team": "B",
+        "cell": [
+          19,
+          5
+        ],
+        "origin": "ally_corpse",
+        "age": 2,
+        "donor": 5
+      },
+      {
+        "round": 14,
+        "id": 11,
+        "team": "B",
+        "cell": [
+          18,
+          4
+        ],
+        "origin": "ally_corpse",
+        "age": 2,
+        "donor": 5
+      },
+      {
+        "round": 14,
+        "id": 11,
+        "team": "B",
+        "cell": [
+          17,
+          4
+        ],
+        "origin": "enemy_corpse",
+        "age": 2,
+        "donor": 8
+      }
+    ],
+    "killer_death": {
+      "round": 14,
+      "id": 11,
+      "team": "B",
+      "cause": "h2h",
+      "length": 3,
+      "actor": 11,
+      "age": 13,
+      "head": [
+        17,
+        4
+      ],
+      "initial": false,
+      "killer": 0,
+      "killer_team": "A",
+      "mutual": true
+    }
+  },
+  {
+    "game": 881387,
+    "killer": 10,
+    "round": 26,
+    "turn_start_length": 3,
+    "commanded_steps": 3,
+    "nofood_movement_budget": 2,
+    "eats": [
+      {
+        "round": 26,
+        "id": 10,
+        "team": "B",
+        "cell": [
+          2,
+          12
+        ],
+        "origin": "bed",
+        "age": 1,
+        "donor": null
+      }
+    ],
+    "killer_death": {
+      "round": 26,
+      "id": 10,
+      "team": "B",
+      "cause": "h2h",
+      "length": 3,
+      "actor": 10,
+      "age": 26,
+      "head": [
+        2,
+        11
+      ],
+      "initial": false,
+      "killer": 1,
+      "killer_team": "A",
+      "mutual": true
+    }
+  },
+  {
+    "game": 857671,
+    "killer": 104,
+    "round": 118,
+    "turn_start_length": 3,
+    "commanded_steps": 3,
+    "nofood_movement_budget": 2,
+    "eats": [
+      {
+        "round": 118,
+        "id": 104,
+        "team": "B",
+        "cell": [
+          29,
+          32
+        ],
+        "origin": "bed",
+        "age": 0,
+        "donor": null
+      }
+    ],
+    "killer_death": {
+      "round": 118,
+      "id": 104,
+      "team": "B",
+      "cause": "h2h",
+      "length": 3,
+      "actor": 104,
+      "age": 69,
+      "head": [
+        29,
+        33
+      ],
+      "initial": false,
+      "killer": 1,
+      "killer_team": "A",
+      "mutual": true
+    }
+  },
+  {
+    "game": 869498,
+    "killer": 110,
+    "round": 180,
+    "turn_start_length": 4,
+    "commanded_steps": 4,
+    "nofood_movement_budget": 3,
+    "eats": [
+      {
+        "round": 180,
+        "id": 110,
+        "team": "B",
+        "cell": [
+          24,
+          11
+        ],
+        "origin": "enemy_corpse",
+        "age": 4,
+        "donor": 142
+      }
+    ],
+    "killer_death": {
+      "round": 180,
+      "id": 110,
+      "team": "B",
+      "cause": "h2h",
+      "length": 3,
+      "actor": 110,
+      "age": 29,
+      "head": [
+        24,
+        12
+      ],
+      "initial": false,
+      "killer": 0,
+      "killer_team": "A",
+      "mutual": true
+    }
+  }
+]

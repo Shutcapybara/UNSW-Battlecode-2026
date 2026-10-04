@@ -36,6 +36,23 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 10:02 4 Oct — trade-economics read (mover +1.9 units/trade × ~65 trades ≈ 124 units/game; coheres with my
+  h2h-length-not-armor asymometry; RL translation posted). H-SZ33 withdrawal acked (0/370 low-length splits on
+  parent). KZ26/SZ34 complementarity endorsed (queen vs non-queen dragons).
+
+- 09:40 4 Oct — C8-01 read: ~50 % of ranked RL games queen-decided; keeper value sextupled vs my 1 Oct N7
+  estimate; N2 hunting requested a slot (counter-metagame is due). C8-02 read (default/trophy = transit-gap
+  cluster for L41; "their edge < our deficit" → TARGETS note). Zero-exposure-null rule endorsed for all dials.
+
+- 09:02 4 Oct — H-KZ26 read (queens step into VISIBLE killer reach; value-gap framing + RL translation with the
+  era reach formula B=⌈L/4⌉+L−2; death-round-shift column suggested). H-SZ28/SZ32/SZ33 read (corpse cohorts on
+  open maps; die-at-home is the general half). Two stacked firings collapsed; single unit run.
+
+- 07:05 4 Oct — Rome's post-m2 ZERO read (accepted as parent; engine-version 1.2.3-vs-1.2.9 question raised;
+  panel-vs-corpus queen-loss numbers to be read together). Kanazawa pearl-bait read (17/19 baited, 16/19 avoidable
+  — RL translation: trap-pearl value discount; H-KZ18 endorsed). Rome's cage dial endorsed with the per-hash
+  Schooltime note (96% survival = no headroom on the main hash).
+
 - 06:02 4 Oct — C5-03 read (caged-queen cull is enemy-queen-state-conditional — verdict arithmetic + RL
   translation posted); H-SZ26 read (sign open: churn is load-bearing on Slithery; dial {none,65,60,55});
   H-SZ22-revised endorsed (E caged-only). C5-06 graduation supported with cohort-reconciliation caveat.
@@ -103,6 +120,37 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 - 23:00 — no new tests/board traffic; 691 new field games, **team 7 silent since 05:43Z (19 h)** → watch note
   posted; ladder us #66/1718, Vibing++ #1/2298. Half-hourly cron automation-4f01e972 active.
+
+## SESSION WRAP-UP (4 Oct, ~10:05 UTC) — cron cancelled at lead's order
+
+Sixteen check-in cycles + 4 full units over 1–4 Oct. Standing state of the lane:
+
+**Established (mine, corrected where flagged):** era boundary 1 Oct 06:00Z; sprint formula exact; queen rule
+(original lowest-id initial robot, dead→0, no inheritance) verified 2,135 rl games 0 violations; queen anatomy
+(nobody kept queens on 1 Oct; 306/Vibing++ deployed at 13:00Z, retook #1 at 2309 by 3 Oct); era-shift anatomy
+(own-goals +12 %, Schooltime/Trauma mobility-economy surge — unit-1 units bug publicly corrected); Cutlery flip
+mechanism (stop the invalid-command queen cull; state-keyed retention); h2h length is NOT armor (857 vs 496);
+queen hazard map (void post-m2 per D-043); queen-death timing (median r78, half the hazard r50–150, h2h 140/wall
+90); D-043 check-2 queen gap per post-m2 map (top10 41 % pooled: Schooltime 96, Trauma 72, Portals 45, Slithery
+35 — us 0/177); reason='queen' verdict-class filter fix; byte-identity check (weakhold claim withdrawn — my
+alias bug); four queen-decided live losses verified (249–6, 268–3, 81–50); RL translations under D-044.
+
+**Hypotheses on the ledger via board:** N1 queen protection 0.7 · N2 hunting 0.4→0.5 (slot requested — counter-
+metagame due at ~50 % queen-decided rl share) · N3 opening continuity 0.6 · N4 mobility-economy 0.5 (validated by
+carthage-05) · N5 own-goal era tax 0.6 · N6 queen-crown unification 0.65→0.75 · N7 adaptation decay (confirmed by
+C8-01) · units-guard ruling (Δlog −0.10 relative form).
+
+**Corrections received and adopted (himeji ×7, shenzhen ×2, kanazawa ×1):** RL-reached denominators; early-ending
+censoring; two-submission split; 3-of-4 leads; unit-sloppy guard comparison; Autarky open-spawn mislabel;
+vacuous-parity endorsement; weakhold alias. All conceded on the board; samples now append-only.
+
+**Tooling (tools/nara/, run from THIS worktree with NARA_CORPUS pinned):** era_probe, era_queen_probe,
+queen_probe, opening_probe, era_shift_probe, queen_cause_probe (FRAME7 + reason='queen' + map_hash), split_probe
+(slice-2 spec owed: lineage closure, censoring, cluster CIs). Data files in main-checkout build/nara/.
+
+**Handover:** the live bot is carthage-05 (14585) — 0 % queen survival live, ~half of ranked rl games queen-
+decided; top tester items = cage dial (running), KZ26 reach veto, SZ34 mover-not-partner, H-SZ26/SZ28 dials;
+hunting spec requested. Split-opportunity slice-2 is my unfinished queue item.
 
 ## Unit 4 (3 Oct, ~22:40 UTC) — reorientation, corrections, team-7 live, done
 

@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-04T08:24:06.284234+00:00",
+  "index_games": 122497,
+  "index_sha256": "65cc61e20dcc677e59a077cf87d7470db4496285e92f362cf37674e9b4add4c3",
+  "delta": 440,
+  "new_own": [],
+  "latest_own": "2026-10-04T06:35:02.556Z",
+  "own_watched": false,
+  "progress_at": "2026-10-04T08:23:58.123190+00:00",
+  "ladder": "20261004T081820Z.json",
+  "ladder_sha256": "41ec2c79b54be0d73f517a6ea36b05db34a17fddcfc19a9710b4acf0e3480f79",
+  "submissions": [
+    [
+      14265,
+      "idle",
+      "2026-10-04T08:17:57.769383+00:00"
+    ],
+    [
+      14585,
+      "active",
+      "2026-10-04T08:17:57.768906+00:00"
+    ]
+  ],
+  "series": [
+    1169,
+    "2026-10-04T08:17:57.749610+00:00"
+  ],
+  "sources": {
+    "HEAD": "06faf0614b0ba719833df177c7d1706c20033304",
+    "origin/main": "21186bf2490346cb6503834d46b572e962b60f6b",
+    "origin/r/kanazawa": "c7369c1a13a3916eda531e0cc4b4ac215707ed49",
+    "origin/r/shenzhen": "93a34815ae713f829bbf5fcae8607e6cc8ea0cc9",
+    "origin/r/Seoul": "ff8fac943d3791ed64c1b9c6b7a503e18035b639",
+    "origin/r/rome": "b926cdf6422579cbdc02522178c66bc97ee422f4",
+    "origin/r/chongqing": "9f2b15829af0c1a05817b9d59ba095165ec0d145",
+    "origin/r/nara": "a884062ea1ead6976f6054b7992dc13c839114eb",
+    "origin/r/antioch": "2c7113f6657362ce68bc0d667bf932d665c1a31c",
+    "origin/r/carthage": "5b69fa9d07a0fd4684826f752438a2e8e66d9f45",
+    "origin/r/kyoto": "fccea71c060fc7bf0cae41aeef8d063d9894d8c6"
+  },
+  "source_hashes": {
+    "tools/hub/corpus.py": "6bb33fd775768eafdaf38c287ce1853f45e8852d2e40acd5077502f3fec8c51c",
+    "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+    "tools/s1/build.py": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f",
+    "tools/himeji/sprint_budget_check.py": "941251dba010c9a88ed3de73999bb7f8dcf234bf756ebe1beafe2efbe538840f",
+    "tools/himeji/sprint_reference_audit.py": "2ad3c6e570303bbad512b3dd41ca53fe9cac9e6e69fc15cc4e0c8e9a3ee87337",
+    "tools/himeji/sprint_food_extension.py": "e9f380f490ea1c4428a20de349ef4e9bb65d7e98b5bff3be8f0181796866c9b3",
+    "tools/himeji/sprint_strike_audit.py": "37d02924c48e64840fff94f118e8240db70a5df52e6a32bfa5465dc118fec42b",
+    "tools/himeji/summarize_sprint_strikes.py": "c700756749037d777bfdc25fff80158fcde08580719c0f00dc78d5a527d5351b",
+    "tools/himeji/sprint_collision_check.py": "dc1f4ae4ec932fc774f7be436e73d2befe2f41bb7bdab9c23ff3cc3bb04c0669",
+    "tools/himeji/h2h_bar_interval.py": "f9610cec44b278fe12ac3264cca1fd7537298978590735be7349d280866e708d"
+  },
+  "top10": [
+    306,
+    91,
+    264,
+    112,
+    55,
+    952,
+    842,
+    507,
+    566,
+    213
+  ],
+  "team7": {
+    "id": 7,
+    "rank": 73,
+    "elo": 1721
+  },
+  "peer_rows_sha256": "d5d5e6f154b22616fedc079e6474e0cf67b503d16bbf38e82dfab344ccc67276",
+  "db_contract": "mode=ro,immutable=1,query_only;WALexcluded",
+  "rome_cursor": "b99b513f-fdd3-41ba-b646-7855a1a8bbde:23",
+  "board_cursor": "H30-01..07;KZunit11c7369c1a1,CQunit79f2b15829;Romechat22",
+  "all_queries_complete": true,
+  "tester_close_reading": "464failedgenlaunches/no replays excluded;explicit1.2.3 cleanretryinprogress"
+}

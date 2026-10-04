@@ -1,4 +1,5 @@
-"""Shenzhen H-SZ27: pearl 'fountains' — bed cells with spawn interval 1 (a pearl every round they are empty).
+"""WITHDRAWN (unit 12): the bed-cell mapping (i % W, i // W) does not match the replay cells, so "bed" vs "other" here is wrong. Use tools/shenzhen/corpse.py (frame origin labels).
+Shenzhen H-SZ27: pearl 'fountains' — bed cells with spawn interval 1 (a pearl every round they are empty).
 Per side (post-m2 sample): eats on fountain cells, on other beds, corpses; by cohort.  Bed intervals come from
 maps/live/*.map (replays hide them; unit 7 showed the templates match the server).
   python3 build/shenzhen/tree/tools/shenzhen/fountain.py --time 150"""

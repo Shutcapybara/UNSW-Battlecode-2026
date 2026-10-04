@@ -1,0 +1,126 @@
+{
+  "n": 43,
+  "positive": 11,
+  "series": 22,
+  "ci95": [
+    0.08888888888888889,
+    0.45714285714285713
+  ],
+  "replicates": 4000,
+  "seed": 3030,
+  "ranked_cases": 6,
+  "blocks": [
+    {
+      "series": "70552c97-138f-47a3-93f4-77c637e0dbd4",
+      "positive": 2,
+      "n": 2
+    },
+    {
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "positive": 0,
+      "n": 4
+    },
+    {
+      "series": "7821f89b-253b-47a4-a2d1-96b465c525d6",
+      "positive": 0,
+      "n": 4
+    },
+    {
+      "series": "9e703247-42f9-4e3c-9787-e26ee9101c7f",
+      "positive": 0,
+      "n": 4
+    },
+    {
+      "series": "1aba17eb-0524-45bf-afef-d164ed7cd585",
+      "positive": 0,
+      "n": 2
+    },
+    {
+      "series": "1387abce-c8b8-4e91-bf25-4ce9865f7bc9",
+      "positive": 1,
+      "n": 1
+    },
+    {
+      "series": "3f21fb23-f1c6-4d30-84fa-12073a76adf7",
+      "positive": 0,
+      "n": 3
+    },
+    {
+      "series": "b248db9d-f075-4f8c-b846-9de7ac201362",
+      "positive": 2,
+      "n": 2
+    },
+    {
+      "series": "6f5d3a7e-a827-4aa4-a537-df6f86428a97",
+      "positive": 1,
+      "n": 3
+    },
+    {
+      "series": "cb00486f-4e7b-4d53-aad8-730238852231",
+      "positive": 0,
+      "n": 1
+    },
+    {
+      "series": "9fb55567-7111-4a03-bf52-bd8c35f27299",
+      "positive": 0,
+      "n": 3
+    },
+    {
+      "series": "8d590618-1389-4d7d-a337-a01c1bd49b4e",
+      "positive": 0,
+      "n": 1
+    },
+    {
+      "series": "7dee1f3e-8e25-4ea6-8d60-9393d0099d5c",
+      "positive": 0,
+      "n": 2
+    },
+    {
+      "series": "bffe0f1b-7652-4050-aa9f-cae2991f6065",
+      "positive": 0,
+      "n": 1
+    },
+    {
+      "series": "4b7068c8-e7a5-4934-af40-04696008aaa0",
+      "positive": 0,
+      "n": 1
+    },
+    {
+      "series": "b69e0d30-99df-4618-8364-1bf852f69ec9",
+      "positive": 0,
+      "n": 1
+    },
+    {
+      "series": "7cd0e862-2309-4831-83e3-0e29be9a9853",
+      "positive": 1,
+      "n": 1
+    },
+    {
+      "series": "ac08399b-eede-47a1-91a5-edebe0171e04",
+      "positive": 0,
+      "n": 1
+    },
+    {
+      "series": "5ccf0692-658e-4aac-8fb0-a19c3dae7645",
+      "positive": 0,
+      "n": 1
+    },
+    {
+      "series": "04edc90a-dffa-4d4f-b6c2-177a3926ff8a",
+      "positive": 3,
+      "n": 3
+    },
+    {
+      "series": "da6cfc37-e319-40f8-94af-b14f41157e6d",
+      "positive": 1,
+      "n": 1
+    },
+    {
+      "series": "844a4497-2fa4-4200-a521-a29b710d2f71",
+      "positive": 0,
+      "n": 1
+    }
+  ],
+  "source_sha256": "d5d5e6f154b22616fedc079e6474e0cf67b503d16bbf38e82dfab344ccc67276",
+  "scope": "Descriptive interval conditional on selected96 sample and approximate labels; series resampling does not correct selection/measurement bias. Frozen point-threshold decision is distinct from population falsification."
+}

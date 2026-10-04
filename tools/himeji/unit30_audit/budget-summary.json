@@ -1,0 +1,517 @@
+{
+  "runtime": "1.2.3",
+  "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+  "rows": [
+    {
+      "length": 2,
+      "steps": 1,
+      "formula_budget": 1,
+      "reached_round1": {
+        "round": 1,
+        "length": 2
+      },
+      "death": {
+        "round": 1,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 1,
+        "head": [
+          16,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 1,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1
+        ],
+        "paid": 0
+      },
+      "map_sha256": "6eb6fac13054ee61bbc3c69f057cc31e65fff8d57509094bd5f4630c9e31eb35",
+      "replay_sha256": "400abf1b3f4d00924c7842cb97e3e14f87e3eaf78982d7c3d0fe6a7b9b111117"
+    },
+    {
+      "length": 2,
+      "steps": 2,
+      "formula_budget": 1,
+      "reached_round1": null,
+      "death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          16,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1
+        ],
+        "paid": 0
+      },
+      "map_sha256": "6eb6fac13054ee61bbc3c69f057cc31e65fff8d57509094bd5f4630c9e31eb35",
+      "replay_sha256": "117037e5ac50e71411a6159169561ee182c345dfd593bde9a35d12c893d701be"
+    },
+    {
+      "length": 3,
+      "steps": 2,
+      "formula_budget": 2,
+      "reached_round1": {
+        "round": 1,
+        "length": 2
+      },
+      "death": {
+        "round": 1,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 1,
+        "head": [
+          17,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1
+        ],
+        "paid": 1
+      },
+      "map_sha256": "c347a19cf10e7fd41a19459d1ef9ca1e80f86a0fbc0b8afe351a9a2a1ad05ef4",
+      "replay_sha256": "f26deecf0ad18c8d6d06a2182971ac1a00adcc43b917f517d6a36ea99ed9ef61"
+    },
+    {
+      "length": 3,
+      "steps": 3,
+      "formula_budget": 2,
+      "reached_round1": null,
+      "death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          17,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 3,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1,
+          1
+        ],
+        "paid": 1
+      },
+      "map_sha256": "c347a19cf10e7fd41a19459d1ef9ca1e80f86a0fbc0b8afe351a9a2a1ad05ef4",
+      "replay_sha256": "baf11d7e78c6abf553e7c333f8c09173e9ea2be8c26c674b7f595532f2a04475"
+    },
+    {
+      "length": 4,
+      "steps": 3,
+      "formula_budget": 3,
+      "reached_round1": {
+        "round": 1,
+        "length": 2
+      },
+      "death": {
+        "round": 1,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 1,
+        "head": [
+          18,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 3,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1,
+          1
+        ],
+        "paid": 2
+      },
+      "map_sha256": "c12a6cf4acacd00e353ffe8cbe511f95f35984f19b35ec974f39c636bd767990",
+      "replay_sha256": "7d706052c603b727d567c93892259eda81ad153ba5371e601cdb33c5a4f4695c"
+    },
+    {
+      "length": 4,
+      "steps": 4,
+      "formula_budget": 3,
+      "reached_round1": null,
+      "death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          18,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 4,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "paid": 2
+      },
+      "map_sha256": "c12a6cf4acacd00e353ffe8cbe511f95f35984f19b35ec974f39c636bd767990",
+      "replay_sha256": "9cbce349886119780d8bf0070fd96bc13522960d985ce792b952d835022faff9"
+    },
+    {
+      "length": 5,
+      "steps": 5,
+      "formula_budget": 5,
+      "reached_round1": {
+        "round": 1,
+        "length": 2
+      },
+      "death": {
+        "round": 1,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 1,
+        "head": [
+          20,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 5,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "paid": 3
+      },
+      "map_sha256": "0037c8cc92e18fbc5aebe6430206a3bd880b6e6b888de8d6fde493ec3ec2644a",
+      "replay_sha256": "b8a9c2b86d8048cf8b742fba920ff9836695fe7f0910720ace18a75ba4b4aede"
+    },
+    {
+      "length": 5,
+      "steps": 6,
+      "formula_budget": 5,
+      "reached_round1": null,
+      "death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          20,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 6,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "paid": 3
+      },
+      "map_sha256": "0037c8cc92e18fbc5aebe6430206a3bd880b6e6b888de8d6fde493ec3ec2644a",
+      "replay_sha256": "6a0c64f5d45a097d5720ae184378f5c6e534f748111874f0cfa29533212a71da"
+    },
+    {
+      "length": 6,
+      "steps": 6,
+      "formula_budget": 6,
+      "reached_round1": {
+        "round": 1,
+        "length": 2
+      },
+      "death": {
+        "round": 1,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 1,
+        "head": [
+          21,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 6,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "paid": 4
+      },
+      "map_sha256": "dabaa5a9a7cef89bad1b2432273e82880a1562381c973a521dfcce609a90aa90",
+      "replay_sha256": "8e9a4d0025e91fdf0b577a00c8cf85dabb85c1a4e2e4eb3dcc0988231df5729e"
+    },
+    {
+      "length": 6,
+      "steps": 7,
+      "formula_budget": 6,
+      "reached_round1": null,
+      "death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          21,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 7,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "paid": 4
+      },
+      "map_sha256": "dabaa5a9a7cef89bad1b2432273e82880a1562381c973a521dfcce609a90aa90",
+      "replay_sha256": "90dbd9e6de374e64e3bd5ad3bb722fdd6eed102934fcba407943637f397cb6ae"
+    },
+    {
+      "length": 9,
+      "steps": 10,
+      "formula_budget": 10,
+      "reached_round1": {
+        "round": 1,
+        "length": 2
+      },
+      "death": {
+        "round": 1,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 1,
+        "head": [
+          25,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 10,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "paid": 7
+      },
+      "map_sha256": "46ad2108497571bf89b238f9393fd7191c58b9a7a7faf3a7b995ea2674f9332d",
+      "replay_sha256": "e9790477dfc964ab9d9cfa197f352b9e1f7dc4c9223ba0e681c6ce543a50c4ad"
+    },
+    {
+      "length": 9,
+      "steps": 11,
+      "formula_budget": 10,
+      "reached_round1": null,
+      "death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          25,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "first_action": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "kind": "move",
+        "steps": 11,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "paid": 7
+      },
+      "map_sha256": "46ad2108497571bf89b238f9393fd7191c58b9a7a7faf3a7b995ea2674f9332d",
+      "replay_sha256": "bdcb49578b9f7de87ae33dc824897dbd883dd5c22984ed65a7990ca16d61ae63"
+    }
+  ],
+  "scope": "12 deterministic no-food open-path checks. A terminates deliberately at round1 if alive; not game performance or population evidence."
+}

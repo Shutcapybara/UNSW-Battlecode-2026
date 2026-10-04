@@ -1,0 +1,219 @@
+{
+  "post_games": 782,
+  "post_ranked": 243,
+  "new_games": 10,
+  "latest_started_at": "2026-10-04T06:35:02.556Z",
+  "source_prior_sha256": "7c374b014a70222e2a5861e607071c9be9abb231d64e27a14d9b34a7bb24a7d5",
+  "series": [
+    {
+      "series": "1b72e6e0-a60c-4202-8806-f9188542e0de",
+      "opponent": "98",
+      "ranked": true,
+      "submission": "14585",
+      "n": 5,
+      "wins": 5,
+      "first_start": "2026-10-04T06:35:02.453Z",
+      "reached490": 2,
+      "queen_alive490": 0,
+      "round_limit": 2,
+      "queen_alive_end_rl": 0,
+      "games": [
+        {
+          "game": "1021809",
+          "map": "Stripes",
+          "side": "B",
+          "won": 1,
+          "last_round": 90,
+          "reason": "elimination",
+          "queen_length490": null,
+          "queen_length_end": 0,
+          "total_end": 26,
+          "opp_total_end": 0,
+          "q3_r50": {
+            "bed_eats": 7.0,
+            "splits": 3.0,
+            "transits": 6,
+            "territory": 0.6232142857142857
+          }
+        },
+        {
+          "game": "1021810",
+          "map": "Australia",
+          "side": "B",
+          "won": 1,
+          "last_round": 499,
+          "reason": "longest",
+          "queen_length490": 0,
+          "queen_length_end": 0,
+          "total_end": 51,
+          "opp_total_end": 242,
+          "q3_r50": {
+            "bed_eats": 9.0,
+            "splits": 6.0,
+            "transits": 0,
+            "territory": 0.3358154296875
+          }
+        },
+        {
+          "game": "1021811",
+          "map": "Trophy",
+          "side": "B",
+          "won": 1,
+          "last_round": 197,
+          "reason": "elimination",
+          "queen_length490": null,
+          "queen_length_end": 0,
+          "total_end": 185,
+          "opp_total_end": 0,
+          "q3_r50": {
+            "bed_eats": 35.0,
+            "splits": 15.0,
+            "transits": 0,
+            "territory": 0.64
+          }
+        },
+        {
+          "game": "1021812",
+          "map": "Devil",
+          "side": "B",
+          "won": 1,
+          "last_round": 304,
+          "reason": "elimination",
+          "queen_length490": null,
+          "queen_length_end": 0,
+          "total_end": 164,
+          "opp_total_end": 0,
+          "q3_r50": {
+            "bed_eats": 50.0,
+            "splits": 30.0,
+            "transits": 0,
+            "territory": 0.5888671875
+          }
+        },
+        {
+          "game": "1021813",
+          "map": "Portals",
+          "side": "B",
+          "won": 1,
+          "last_round": 499,
+          "reason": "longest",
+          "queen_length490": 0,
+          "queen_length_end": 0,
+          "total_end": 34,
+          "opp_total_end": 56,
+          "q3_r50": {
+            "bed_eats": 14.0,
+            "splits": 6.0,
+            "transits": 5,
+            "territory": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "series": "b9d7c969-8bf0-4e64-8e69-28125e80a0a4",
+      "opponent": "939",
+      "ranked": true,
+      "submission": "14585",
+      "n": 5,
+      "wins": 5,
+      "first_start": "2026-10-04T06:26:20.711Z",
+      "reached490": 2,
+      "queen_alive490": 0,
+      "round_limit": 2,
+      "queen_alive_end_rl": 0,
+      "games": [
+        {
+          "game": "1021318",
+          "map": "Default",
+          "side": "A",
+          "won": 1,
+          "last_round": 347,
+          "reason": "elimination",
+          "queen_length490": null,
+          "queen_length_end": 0,
+          "total_end": 121,
+          "opp_total_end": 0,
+          "q3_r50": {
+            "bed_eats": 14.0,
+            "splits": 10.0,
+            "transits": 16,
+            "territory": 0.66552734375
+          }
+        },
+        {
+          "game": "1021319",
+          "map": "Maze",
+          "side": "A",
+          "won": 1,
+          "last_round": 499,
+          "reason": "longest",
+          "queen_length490": 0,
+          "queen_length_end": 0,
+          "total_end": 102,
+          "opp_total_end": 96,
+          "q3_r50": {
+            "bed_eats": 25.0,
+            "splits": 11.0,
+            "transits": 0,
+            "territory": 0.5520833333333334
+          }
+        },
+        {
+          "game": "1021320",
+          "map": "Devil",
+          "side": "A",
+          "won": 1,
+          "last_round": 128,
+          "reason": "elimination",
+          "queen_length490": null,
+          "queen_length_end": 0,
+          "total_end": 94,
+          "opp_total_end": 0,
+          "q3_r50": {
+            "bed_eats": 32.0,
+            "splits": 20.0,
+            "transits": 0,
+            "territory": 0.6142578125
+          }
+        },
+        {
+          "game": "1021321",
+          "map": "weakhold",
+          "side": "A",
+          "won": 1,
+          "last_round": 499,
+          "reason": "longest",
+          "queen_length490": 0,
+          "queen_length_end": 0,
+          "total_end": 55,
+          "opp_total_end": 7,
+          "q3_r50": {
+            "bed_eats": 17.0,
+            "splits": 12.0,
+            "transits": 0,
+            "territory": 0.475
+          }
+        },
+        {
+          "game": "1021322",
+          "map": "Autarky",
+          "side": "A",
+          "won": 1,
+          "last_round": 394,
+          "reason": "elimination",
+          "queen_length490": null,
+          "queen_length_end": 0,
+          "total_end": 134,
+          "opp_total_end": 0,
+          "q3_r50": {
+            "bed_eats": 25.0,
+            "splits": 28.0,
+            "transits": 0,
+            "territory": 0.7237654320987654
+          }
+        }
+      ]
+    }
+  ]
+}

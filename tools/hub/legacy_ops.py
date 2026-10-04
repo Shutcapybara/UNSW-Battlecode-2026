@@ -6,6 +6,7 @@
   status is stale.
 Everything is logged to `HUB/legacy_ops.jsonl`; auto-clears are capped per rolling hour.
 """
+import calendar
 import json
 import os
 import re
@@ -97,7 +98,7 @@ def recent_auto_clears(root, window=3600):
             e = json.loads(line)
         except ValueError:
             continue
-        if e.get('action') == 'auto_clear' and time.mktime(time.strptime(e['at'], '%Y-%m-%dT%H:%M:%SZ')) - time.timezone >= cutoff:
+        if e.get('action') == 'auto_clear' and calendar.timegm(time.strptime(e['at'], '%Y-%m-%dT%H:%M:%SZ')) >= cutoff:   # UTC stamp (mktime - timezone was off by the DST hour)
             n += 1
     return n
 
