@@ -8,7 +8,7 @@ Only these job kinds exist (anything else is rejected, never executed):
   script   {"script": "tools/asahi/<name>.py", "argv": [str, ...], "heavy": bool, "timeout": seconds}
            runs <venv python> <tree>/<script> argv... with cwd=<tree>; the script must live in tools/asahi/.
   commit   {"paths": [...], "message": str}  git add + commit in <tree>, on branch r/asahi only; paths must be
-           under tools/asahi/, bots/asahi-*, maps/m2tr/, claude/asahi-status.md or docs/learning/.
+           under tools/asahi/, bots/asahi-*, maps/m2tr/, claude/asahi-status.md, docs/learning/ or docs/hub/BOARD.md.
   merge_main {}                              git merge --no-edit main into r/asahi (aborts on conflict).
   reload   {}                                re-exec this daemon from <tree>/tools/asahi/jobd.py.
 
@@ -26,7 +26,7 @@ import argparse, json, os, re, signal, socket, subprocess, sys, time
 from pathlib import Path
 
 KINDS = {'script', 'commit', 'merge_main', 'reload'}
-COMMIT_OK = re.compile(r'^(tools/asahi/|bots/asahi-[A-Za-z0-9._-]+/|maps/m2tr/|claude/asahi-status\.md$|docs/learning/)')
+COMMIT_OK = re.compile(r'^(tools/asahi/|bots/asahi-[A-Za-z0-9._-]+/|maps/m2tr/|claude/asahi-status\.md$|docs/learning/|docs/hub/BOARD\.md$)')
 OWNER = 'asahi'
 
 
@@ -148,7 +148,12 @@ class Daemon:
             big = [l for l in self.git('diff', '--cached', '--numstat').stdout.splitlines()]
             for path in self.git('diff', '--cached', '--name-only').stdout.split():
                 f = self.tree / path
-                if f.is_file() and f.stat().st_size > 4 * 1024 * 1024 or path.endswith(('.replay',)) or path.startswith(('build/', 'hub-state/', 'public_replays/')):
+                big = f.exists() and not f.is_symlink() and f.lstat().st_size > 4 * 1024 * 1024
+                if big:  # allowed only as a blob identical to one already in the repository (common rules)
+                    sha = self.git('hash-object', '--', path).stdout.strip()
+                    big = self.git('cat-file', '-e', sha, check=False).returncode != 0 or \
+                        not self.git('log', '--all', '--find-object=' + sha, '-1', '--format=%h', 'main', check=False).stdout.strip()
+                if big or path.endswith(('.replay',)) or path.startswith(('build/', 'hub-state/', 'public_replays/')):
                     self.git('reset', '-q', '--', path, check=False)
                     logf.write(f'unstaged forbidden file {path}\n')
             r2 = self.git('commit', '-m', msg, check=False)
