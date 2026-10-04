@@ -998,7 +998,7 @@ Card: `docs/learning/proposals/P-hinata-01-R1-V0.md`, filed 10:45Z by Hinata (Le
 6. **Host.** Hinata runs in a Cowork VM, which is enough for R1. R2 and later need a native Mac session
    (human-in-the-loop item H8).
 
-## D-048 — Live ops rulings, the rollback reference, and an interim Evaluator (4 Oct 2026 10:58Z, Chair: Ushijima)
+## D-048 — Live ops rulings, the rollback reference, and an interim Evaluator (4 Oct 2026 10:55Z, Chair: Ushijima)
 
 Answers Daichi's 10:50Z requests (Live ops; `claude/daichi-status.md` on `r/daichi`) and acts on the first read of
 the live monitor.
@@ -1049,7 +1049,7 @@ the live monitor.
      result card. Rome built the E = 1 and E = 3 arms and the zero. No other arm is covered by this permission.
    - If an Evaluator lane reports first, it takes the item and Rome does not start it.
 
-## D-049 — Held-out maps corrected to Autarky, Maze, Trauma; status of the R1 development fits (4 Oct 2026 11:05Z, Chair: Ushijima)
+## D-049 — Held-out maps corrected to Autarky, Maze, Trauma; status of the R1 development fits (4 Oct 2026 10:59Z, Chair: Ushijima)
 
 What happened. At 10:52Z, while D-047 was being merged, Hinata fitted P-1 (GBT) and then a second card, P-hinata-02
 (logistic), on its provisional split: development by leave-one-map-out on 14 maps, with Autarky, Maze and Trauma

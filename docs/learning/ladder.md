@@ -64,7 +64,7 @@ Items 3–5 are the macro's offline gate for R0. Items 1, 2 and 6–10 are prere
 - 4 Oct 10:50Z: D-046 opens R0. Engine identity across wheels 1.2.3, 1.2.5 and 1.2.9 checked by hash (D-046 §2).
 - 4 Oct 10:52Z: D-047. Held-out maps frozen (Maze, Trauma, Trophy). P-1 numbered; council round 1 opened on its gate
   reading; the fit waits for the decode or 5 Oct 00:00Z.
-- 4 Oct 11:05Z: D-049. Held-out maps corrected to Autarky, Maze, Trauma (Trophy was used in the 10:52Z development
+- 4 Oct 10:59Z: D-049. Held-out maps corrected to Autarky, Maze, Trauma (Trophy was used in the 10:52Z development
   fits). P-1 closed as failed in development. P-2 is the R1 candidate; its confirmation waits for D-050.
-- 4 Oct 10:58Z: D-048. Executor stays in shadow; battles control may deploy with dispatch off; A/A dry run first;
+- 4 Oct 10:55Z: D-048. Executor stays in shadow; battles control may deploy with dispatch off; A/A dry run first;
   rollback reference put to the council; Rome may run the cage E = 0 screen until an Evaluator lane exists.

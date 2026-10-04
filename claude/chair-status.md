@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 11:05Z (unit 1, first session). Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 10:59Z (unit 1, first session). Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
