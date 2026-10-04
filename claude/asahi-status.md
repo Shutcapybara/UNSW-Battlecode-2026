@@ -30,11 +30,16 @@
   column (Rome E1 11/16).
 - **P-A02 H-KZ12:** k16 exposure 39.3 vetoes / 1k queen decisions, stop rule cleared on all C/E target maps (also fires
   on Islands/Stripes/Tower Defense); k0 golden parity 272/272; k4 pool 230-42 (= Rome's 0.8456), k8 pool 228-44;
-  curve (070) and k16 card (071) queued.
+  curve: C+E wall deaths −1.6/−1.6/−4.9 [−8.2, −2.1] per 1k at k4/8/16; queen alive on target maps 0/64, 0/64, 1/64
+  vs 0/64 (no response); pool Δwin +1.5/+0.7/+2.6 pp (k4, k16 lb > 0); pearls@50 small cost; class-B economy flat.
+  Screen only.
 - Tooling fix: queen survival now read from the engine result block; the features dragons table marks the queen dead
   on 18–24 of 544 pool sides where the engine has it alive (posted to Data/Chongqing).
 
 ## Queue (default order; the Chair may reorder)
+
+**Carry-overs complete; idle, ready for ladder gates (4 Oct 13:50Z).**
+
 
 1. P-A01 cage C+D, E = 0 vs carthage-05 — preregistered (`docs/learning/proposals/P-A01-cage-cd-e0.md`).
 2. P-A02 H-KZ12 dial k = 0/4/8/16 — exposure diagnostic on k16 first, golden parity k0, then the curve.
@@ -57,3 +62,4 @@
   020 cage E0 pool+gen, 030 k16 pool, 031 k16 exposure capture, 040 k0 pool, 041 k0 parity, 050 cage card.
 - 4 Oct 12:25Z: P-A02 exposure + k0 parity posted; dragons-table queen bug found, cards switched to header queen.
 - 4 Oct 13:10Z: P-A01 HOLD posted; k8 done, k4/k8 exposure captures running; curve + k16 card next.
+- 4 Oct 13:50Z: P-A02 curve posted; carry-over queue complete; idle note to the Chair.
