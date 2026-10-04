@@ -1094,3 +1094,48 @@ freeze and the fit crossed.
 5. **For every lane.** A lane that is blocked on a Chair ruling waits for it. A run labelled advisory still reads
    outcomes, and what has been read limits what can be frozen afterwards.
 
+## D-050 — The lead's answers (seats, deadline, GPU, quota runner) and the state of R0 (4 Oct 2026 11:18Z, Chair: Ushijima)
+
+1. **Seats, as named by the lead.** Data: **Kageyama**. Learner: **Hinata**. Evaluator: **Asahi**. Live ops:
+   **Daichi**. Council: **Tanaka** (GPT, auditor), **Sugawara** (Claude, mechanism), **Nishinoya** (GLM, probe).
+   Rome's interim permission (D-048 §9) has lapsed: Asahi reported at 11:10Z with the cage arm preregistered (its
+   P-A01) before Rome started it.
+2. **Deadline.** The lead handles the final submission and its timing. The assumed date in D-046 §1 and its three
+   freeze times are withdrawn; the Chair imposes no freeze. The 12-hour spacing between promotions and the rollback
+   rule stay. The ladder's order stays; its target dates are dropped.
+3. **GPU work runs on the Mac's shared memory (the lead's instruction).** Training may use Metal (PyTorch MPS) on
+   the Mac. Macro §8's deferral of R7 and R8 "until a GPU returns" no longer holds on hardware grounds. What still
+   holds:
+   - the ladder's own conditions: R6 only by a Chair decision; R7 only if the accuracy-per-KB curve shows the trees
+     saturating; R8 only if R6 plateaus for two iterations;
+   - a GPU job is a heavy job: `build/learn/HEAVY.lock`, one at a time, panels first. It shares memory with the
+     panels and the hub;
+   - it needs a native Mac session. A Cowork VM cannot reach Metal, so the request to start the Learner natively
+     stands;
+   - the bot itself still runs on CPU within 30 M points per turn. Nothing changes at deploy.
+4. **The second quota executor.** The lead does not know of one. It is `tools/hub/quota_runner.py`, a Windows Task
+   Scheduler job ("JKS Automatic Match Runner", `Register-QuotaRunnerTask.ps1`) that requests battles every ten
+   minutes. D-048 §5 is replaced by a check that needs nobody's memory: Daichi compares the server's battle history
+   for our team over the last 48 hours with the hub's ledger. If no requested battle is missing from the ledger, the
+   condition is met. Each job repeats the check before it dispatches a non-live arm, and pauses on any request it
+   cannot explain. If Daichi finds one, it reports the times to the Chair.
+5. **R0 is not passed yet; this is where it stands.**
+   - Kageyama reports, on `r/kageyama` (BOARD 11:20Z): block rebuild identical to the engine's on 401,434 of 401,434
+     blocks; encoder Python = C++ on 40,002 turns in 1,214 processes with 0 mismatches; labels equal to HB-1's on
+     100 % of 75,306 Heartbreaker turns in 12 games; a leakage audit of 9 checks.
+   - Kageyama also re-ran the 1.2.9 engine on 4 post-m2 server replays (Trophy, weakhold, Schooltime, Islands;
+     87,830 turns) and reproduced each game turn for turn. That closes D-046 §2's open item "the server's engine"
+     for those games. The corpus-wide map identity check is still open.
+   - The Chair records the encoder, label and audit gates when three things hold: the branch is on `main`;
+     Nishinoya has re-run the parity, label and audit tests from that branch and reported the same counts; and the
+     split manifest is rebuilt. Kageyama's `kageyama-games-v1.json` used D-046 §3's set (Maze, Trauma, Trophy), which
+     D-049 corrected. Version 2 uses **Autarky, Maze, Trauma**. Version 1 is not recorded.
+   - The post-m2 decode was started natively by the lead (a writer appeared at 11:13Z). It overlaps Asahi's panel,
+     which holds the heavy-job lock with 14 workers since 10:59Z. This is accepted once: the decode runs at nice 15
+     under the panel's nice 10. Asahi lists any run timeout as missing and notes the overlap on its cards.
+   - Asahi regenerated the four stale twins from `maps/live/` (autarky, default, dilemma, trophy; `maps/m2tr/`).
+     Recorded when `r/asahi` is on `main`.
+6. **Answers to Asahi's 11:10Z requests.** The charter is D-046. The engine is one binary across the three wheels
+   (D-046 §2). Gate seeds are 1–3, the reserve is 4–5, and training rollouts use seeds ≥ 1000 (D-046 §3). The gate
+   mode is `phase3` (D-046 §4.1), with the interval convention Asahi already uses.
+
