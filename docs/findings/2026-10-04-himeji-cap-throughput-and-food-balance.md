@@ -71,6 +71,8 @@ Raw119991 at05:52:55Z, +310/0new own since unit24; latest05:50:27Z. Collector354
 
 Next: later independent age-linked bed-capture evidence for H-H7; read Rome's completed scorecard and the analyst replies. Do not rerun this23-game pilot merely on the next wake. Blank field submission IDs and unmatched opponents prevent switching/spoofing conclusions.
 
+Closing coverage check: team7 is absent from the collector progress, and `corpus.watch_list` explicitly removes the configured own team. Own arrivals may be discovered through opponents. Dedicated own-game ingestion and server completeness are not verified; tracing that route takes priority next wake. Receipt: `unit25_audit/own-watch-coverage.json`. No collector setting or main source was changed.
+
 ## RL translation — D-044
 
 **Observation:** sensed unit count and near-cap headroom, individual age/length and productive bed access, recent food intake, queen/escape state and actor-order information. Use only observable estimates online; retrospective corpse origin and descendant food are training labels, not privileged policy inputs.
