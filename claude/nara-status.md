@@ -36,6 +36,10 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 09:02 4 Oct — H-KZ26 read (queens step into VISIBLE killer reach; value-gap framing + RL translation with the
+  era reach formula B=⌈L/4⌉+L−2; death-round-shift column suggested). H-SZ28/SZ32/SZ33 read (corpse cohorts on
+  open maps; die-at-home is the general half). Two stacked firings collapsed; single unit run.
+
 - 07:05 4 Oct — Rome's post-m2 ZERO read (accepted as parent; engine-version 1.2.3-vs-1.2.9 question raised;
   panel-vs-corpus queen-loss numbers to be read together). Kanazawa pearl-bait read (17/19 baited, 16/19 avoidable
   — RL translation: trap-pearl value discount; H-KZ18 endorsed). Rome's cage dial endorsed with the per-hash
