@@ -1223,3 +1223,128 @@ the number. The council decisions (P-2's confirmation gate, the rollback referen
    - Kageyama: in manifest v2, mark the series present in the frozen training rows as consumed by P-2; count, by
      map and by ranked or unranked, the held-out-map post-m2 games whose series has no game in those rows.
 
+## D-052 — Council round 1 decided: P-2's confirmation, the rollback rule, the interval convention; cage screen held; map variants (4 Oct 2026 13:18Z, Chair: Ushijima)
+
+Reviews read: P-2 from Tanaka (amend, hold), Sugawara (amend), Nishinoya (agree with G-amend, addendum 12:50Z);
+D-048 §8 from Tanaka (and follow-up), Sugawara and Daichi; D-046 from Tanaka and Nishinoya. All three seats sat.
+
+### A. P-2 (R1, value model): one confirmation, on these terms
+
+1. **What is confirmed.** The artifact fitted at 10:52Z, unchanged. The source that produced it was edited one
+   minute after the fit and is lost; the archived `tools/hinata/archive/v0_2920bb57.py` reproduces all 14 × 8
+   coefficients and 35,948 of 35,948 out-of-fold predictions with zero difference (Hinata 12:43Z). That exact
+   reproduction is accepted as the provenance. The comparator is Φ fitted on the same frozen rows (`fit-lq-phi`).
+2. **What the development fit used up.** It trained on 4,705 train, 555 validation and 539 test-bucket games in
+   1,777 series (Tanaka; reproduced by Kageyama on all 126,694 rows of manifest v2). Those series are marked
+   `consumed_by: P-2` and are no longer a clean test for any value model. They stay clean for policy models.
+3. **Population.** Binding: post-m2, in scope, decisive, **ranked** games on Autarky, Maze and Trauma whose series has
+   no game in P-2's training rows: 1,328 games (435, 446, 447) in manifest v2. Reported beside it, never binding:
+   all ranked held-out games, unranked clean, unranked, all. Clean series are mostly newer ones, so the clean and
+   consumed tables are read side by side as drift, not as leakage (Sugawara).
+4. **Gate.** Frozen in `docs/learning/proposals/P-2-gate-spec.D-052.json`, sha256
+   `15d79683518cf704a8cb7680ef1fa55acd8bdaef2bc97b694f40db742ea0d07d`. It is Tanaka's corrected G-amend with two
+   Chair choices:
+   - whole-series bootstrap, one draw shared across cells and both models, 1,000 replicates, seed 7, linear
+     percentiles; 5th-percentile ΔAUC > −0.01 in every binding cell; > 0 in round-limit r150, r250 and r400;
+   - calibration: |slope_V − 1| ≤ |slope_Φ − 1| + 0.05 in every binding cell from r25;
+   - round-limit r50: AUC_V ≥ AUC_Φ binds. The absolute 0.66 is reported and does not bind;
+   - elimination r10 is report-only; any cell with fewer than 50 games in the binding population is report-only,
+     fixed from counts before the claim;
+   - INCOMPLETE, not PASS, on a missing or one-class binding cell, a non-finite metric, fewer than 990 valid
+     draws, coverage under 95 % on any held-out map, or a claim or scorer hash that differs from the audited one.
+5. **Release without another Chair record.** Hinata runs the one confirmation when all four hold: Tanaka's two
+   defects in `p2_confirm.py` are fixed (PASS on a non-finite metric; a changed claim accepted) and the code reads
+   this spec; Tanaka posts a pass line that names the scorer's sha256 and this spec's sha256; the 1,328 games are
+   decoded, or the missing ones are listed with reasons and coverage is at least 95 % per map; the per-cell counts
+   are posted. One claim, one score, the receipt kept whatever the outcome.
+6. **Answers to dissent.**
+   - Tanaka wants the 0.66 floor to bind. Not adopted. The macro defines that floor on leave-one-map-out over the
+     round-limit maps, where P-2 measured 0.671 and Tanaka reproduced it. On two fixed maps and ranked games only,
+     the level of AUC is mostly a property of the maps and of how evenly matched ranked opponents are. The paired
+     clause carries the claim there; the absolute value is printed.
+   - Sugawara asks for elimination r10 to be report-only. Adopted, before any held-out label is read: both models
+     sit near chance there (0.54), the card predicts no effect, and Autarky alone carries the cell.
+   - Tanaka: a model that ranks like Φ can still be recalibrated, so the old slope band was not unpassable. Accepted;
+     Hinata withdrew the claim. The Chair's sentence to that effect in D-049 §4 is withdrawn too.
+   - Nishinoya: a later change of model class on rows already read should cost a fresh fold set. Accepted as the
+     rule for the next value card.
+7. **What a pass will mean.** Sugawara's finding is adopted: every input of V0b is replay truth for both teams. It
+   is a **privileged critic**: usable at training time (value targets, advantage weights, shaping, self-play), not
+   as the search leaf. A pass closes R1 as the macro wrote it (diagnostic: the queen terms carry value). **R5 needs
+   a value model on the legal encoder.** Hinata writes that card (V-legal: same logistic, encoder features, same
+   rows and folds) after the decode, and reports ΔAUC(V0b − V-legal) per cell: the value of opponent information.
+8. **Scoring.** The scored event is "the confirmation returns PASS under this spec". Forecasts on file nearest to
+   it: Sugawara 0.55, Nishinoya 0.50, Tanaka 0.20 (for a stricter gate). Each seat may file one number for this
+   exact event before the claim; otherwise those are scored.
+
+### B. Rollback rule (replaces D-046 §8's first clause)
+
+- **Rule.** One look, at the first series boundary at or after 40 ranked games of the promoted submission. Roll back
+  when the mean residual of those games minus the mean residual of the replaced submission's last 120 ranked games
+  (extended to a series boundary) is below −0.08, and the 95th percentile of that difference is below 0. Bootstrap:
+  whole series, the two windows resampled independently, 1,000 replicates, seed 7.
+- **Residual.** Score minus Elo expectation, with our own rating fixed for both windows at its value when the new
+  submission was activated, and each opponent's rating at game time. Tanaka showed that different anchors for the
+  two windows create a spurious difference of 0.12 on identical play. Games before the first rating snapshot carry
+  no expectation and are excluded, not imputed.
+- **Frozen inputs.** The game lists, attribution by replay header, and snapshot ids of both windows are written
+  to `docs/learning/live-inputs/` before the look.
+- **Crash or disqualification:** immediate rollback, unchanged. D-048 §7 (not for 14585) stands.
+- **Known weakness, accepted.** From Daichi's simulation of a close variant: an equal candidate is rolled back in
+  about 8–9 % of cases; a true −0.10 is caught in about 38 %, a true −0.20 in about 77 %. Tanaka notes these rates
+  were not computed for this exact rule. Daichi re-runs the simulation on the rule as written and reports; that
+  report is not a gate. After the look the Chair reads the monitor at 120 games. A sequential series test may
+  replace the single look by a card (Sugawara).
+- No forecast is scored on this item; it is a convention, not an event.
+
+### C. Interval convention for local gates (freezes D-046 §4.3)
+
+- Cluster = **map × opponent**, with both seats and all declared seeds kept together and candidate and parent paired
+  inside the cluster: 136 clusters on the 17-map pool. 1,000 replicates, seed 7, 5th percentile by linear
+  interpolation, on a fixed ordered input manifest. This is Tanaka's amendment; the two seats of one map and
+  opponent are not shown to be independent.
+- Every card also prints the directional key (map × opponent × seat) as a sensitivity, and the per-map table.
+- The 5th percentile is a one-sided 95 % bound. Neither convention is an interval for unseen maps.
+- Correction to D-046 §4.2: three seeds give lower expected precision than five. They do not guarantee a lower
+  bound that is lower on every sample.
+- Asahi changes `tools/asahi/card.py` before the first nominee gate. Screens already printed stay as printed.
+
+### D. Cage C+D with E = 0 (Asahi's P-A01): HOLD, not advanced
+
+- Result, seed 1, complete panels. The harness is deterministic: Asahi's H-KZ12 k = 0 copy reproduced the parent's
+  winner and round count in 272 of 272 pool games, so a difference between arm and parent comes from the arm.
+  - Schooltime: wins 15 of 16 against the parent's 14; queen alive at the round limit **4 of 15** against 0 of 16.
+    The card's bar for support was a rise of at least 6. Rome's package with a reserve kept 11 of 12 (E = 1) and
+    13 of 13 (E = 3). The reserve, not C+D, is what keeps the caged queen.
+  - Pool: 232–40 against 226–46, +2.2 points [−0.4, +5.2]; gen 346–118 against 341–123, +1.1 [−0.7, +2.8]
+    (directional clusters, 5th to 95th percentile). Economy flat.
+  - Off-target, against the prediction of zero firings: invalid deaths 0 → 8.07 per 1,000 dragon-turns on the pool
+    and wall deaths 7.21 → 1.44. Rule C fires wherever a dragon is sealed, on every map.
+  - Portals: 10–6 against 12–4 on the pool map, and 7–9 against 13–3 on its twin. Eight games lost on 32.
+- Verdict by the card's own rule: **hold**. Not advanced to seeds 2–3 (D-046 §4.5): the target was missed and the
+  off-target prediction was wrong.
+- Next, one change per arm:
+  1. Asahi appends a diagnosis to the card from the replays it has: where and when the queen dies in the 11
+     Schooltime games; firings of C per map; what C does on Portals.
+  2. Sugawara writes the card for the next arm from Shenzhen's units 9–13: the reserve applied **only while our
+     queen is caged**, doses 0, 1 and 3, and whether C should be limited to the cage. Asahi builds and screens it.
+
+### E. Two live maps have a second variant (Kageyama, R0 item 9)
+
+- Of 38 map texts in 26,572 post-m2 games, 36 match `maps/live/`. Prisoners Dilemma starts with 10 dragons in 679
+  of 1,376 games. Schooltime has four kelp edges open in 882 of 1,860 games. The cage exists only in the sealed
+  variant, so the cage rule addresses about half of live Schooltime games.
+- Kageyama adds the two variants as `maps/live/schooltime_open4.map` and `maps/live/dilemma_10.map`, built from
+  replay text and template beds, each checked by reproducing one server game turn for turn. Asahi adds them to the
+  pool (19 maps, 152 clusters) and runs the parent on them before the first nominee gate. This corrects the panel
+  to what the server plays; it is made before any gate has run. R0 item 9 is then closed.
+- Daichi splits the Schooltime and Prisoners Dilemma residuals by variant in the monitor.
+
+### F. The native executor is now the critical path
+
+- The decode stopped at its time limit at about 12:03Z with roughly 4,800 post-m2 games queued. P-2's population is
+  58 % decoded. The teacher rows for R2 need the 1.2.9 wheel in a native environment.
+- Asahi puts the executor extension (D-050 §8) ahead of the remaining H-KZ12 runs: the learn queue, and an
+  environment with unswbc 1.2.9, pycapnp, lightgbm, xgboost, torch, scikit-learn, pandas, pyarrow and duckdb.
+- Until it exists, the lead is asked to re-run the decode once.
+

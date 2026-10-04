@@ -1,0 +1,51 @@
+{
+ "record": "D-052",
+ "status": "FROZEN by the Chair, 4 Oct 2026. One confirmation of the P-2 artifact fitted at 10:52Z (fit-lq, training rows sha c958e8c7...), comparator fit-lq-phi (manifest sha d8104492...).",
+ "population_manifest": "docs/learning/splits/kageyama-games-v2.json (sha256 of game,split ba21ac40...)",
+ "binding_population": "ranked_clean",
+ "binding_population_definition": "post-m2, in scope, decisive, ranked games on Autarky, Maze or Trauma in manifest v2 whose series has no game in P-2's training rows (consumed_by does not contain P-2); 1,328 games: Autarky 435, Maze 446, Trauma 447",
+ "reported_populations": [
+  "ranked_clean",
+  "ranked",
+  "unranked_clean",
+  "unranked",
+  "all"
+ ],
+ "min_coverage_per_map": 0.95,
+ "bootstrap": {
+  "unit": "whole series, one draw shared across cells and both models",
+  "replicates": 1000,
+  "seed": 7,
+  "percentile": "linear interpolation, 5th and 95th",
+  "min_valid_draws": 990
+ },
+ "report_only_cells": [
+  "elim/r10"
+ ],
+ "min_cell_games": 50,
+ "min_cell_rule": "a cell with fewer than min_cell_games games in the binding population is report-only; the list is fixed from outcome-free counts before the claim",
+ "min_lb_all": -0.01,
+ "late_rl_rounds": [
+  150,
+  250,
+  400
+ ],
+ "min_lb_late": 0.0,
+ "slope_from_round": 25,
+ "slope_rule": "abs(slope_V - 1) <= abs(slope_Phi - 1) + slope_tol in every binding cell from slope_from_round",
+ "slope_tol": 0.05,
+ "rl50_rule": "binding: AUC_V >= AUC_Phi at round-limit r50 in the binding population; reported, not binding: AUC_V >= rl50_min_auc",
+ "rl50_min_auc": 0.66,
+ "rl50_min_auc_binding": false,
+ "rl50_population": "ranked_clean",
+ "incomplete_if": [
+  "a binding cell is missing",
+  "a binding cell has one outcome class",
+  "any binding metric is not finite",
+  "fewer than min_valid_draws valid bootstrap draws",
+  "coverage below min_coverage_per_map on any held-out map",
+  "claim hash or scorer hash differs from the audited ones"
+ ],
+ "verdict": "PASS only if every binding clause holds; otherwise FAIL; INCOMPLETE as listed. One claim, one score. A failed or incomplete run keeps its receipt and is not repeated.",
+ "estimand": "performance on the three fixed held-out maps, each reported separately; not a claim about unseen maps in general"
+}

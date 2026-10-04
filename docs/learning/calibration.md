@@ -23,8 +23,11 @@ withdrawn is not scored. After 10 scored cards, rotation frequency follows mean 
 | P-2 | confirmation passes under G-amend as written | Tanaka | 0.35 | 4 Oct 12:02Z |
 | P-2 | confirmation passes under Tanaka's corrected G-amend | Tanaka | 0.20 | 4 Oct 12:02Z |
 | P-2 | development fit passes G-amend (author, before the fit) | Hinata | 0.60 | 4 Oct 10:51Z; outcome pass; not a council seat, not scored |
+| P-2 | confirmation passes under G-asis / card G-amend / corrected / corrected with r10 report-only | Sugawara | 0.03 / 0.45 / 0.40 / 0.55 | 4 Oct 12:30Z |
+| P-2 | clean confirmation under G-amend (revision) | Nishinoya | 0.50 | 4 Oct 12:50Z |
 
-Only the event under the gate the Chair freezes in D-052 is scored.
+**Scored event (D-052 §A.8):** the confirmation returns PASS under `P-2-gate-spec.D-052.json`. Forecasts used
+unless a seat files a new number before the claim: Sugawara 0.55, Nishinoya 0.50, Tanaka 0.20.
 
 ## Scores
 
