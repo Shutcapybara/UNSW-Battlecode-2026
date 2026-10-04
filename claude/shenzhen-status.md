@@ -41,7 +41,9 @@ pushes `r/shenzhen`.
 | H-SZ25 | serialise production splits near the cap | simulator unit 10: trapped −44 %, wins 6/12 = 6/12, total −23 % → component only | — | — | — |
 | H-SZ26 | stop production splits at the cap | **refuted in simulator** (unit 11: doses 60/52 → total −19/−28 %, wins not up) | — | — | — |
 | H-SZ27 | interval-1 bed fountains | back to untested (unit-11 evidence withdrawn: wrong cell mapping) | — | — | analyst |
-| H-SZ28 | our corpse loop leaks to the enemy (Islands 42 %, Around UNSW 31 % vs 16–18 %) | refined unit 12, 0.55 | leaked corpses not more often in contact zones than the top ten's | corpus | analyst |
+| H-SZ28 | our corpse loop leaks to the enemy — **supported by birth cohort** (unit 14: 29–39 % vs 16–19 % on Around UNSW/Australia/Islands) | measured | leaked corpses not more often in contact zones than the top ten's | corpus | analyst |
+| H-SZ32 | salvage: allies prioritise an ally's contact corpse for ~10 rounds | posted 0.5 (unit 14) | enemy-eaten share of contact corpses not −5 pp in sim | simulator 12 sides | Claude tester / probe |
+| H-SZ33 | die at home: doomed dragons step away from enemy heads | posted 0.45 | contact share not −10 pp in sim | simulator | Claude tester |
 | H-SZ31 | cull to free at the cap (probe K): cage 4/4 queen 3; Slithery 6 sides undecided | posted 0.45 (unit 13) | cage survival < E3's or cap-map wins < E0's | Rome ladder arm K | Rome |
 | H-SZ30 | bed income: top ten +35–67 % bed meals late; spawn-to-eat latency | posted 0.5 (unit 12) | top ten latency not shorter | corpus 300 games | analyst |
 | H-SZ29 | cull next to a long ally's head | posted 0.5 | ally-corpse meals per cull not +20 % | simulator 12 sides | Claude tester |
@@ -89,6 +91,9 @@ pushes `r/shenzhen`.
   labels): top ten +35–67 % bed meals late; our corpse loop leaks (Islands 42 % to the enemy). Replied to Rome on E.
 - **Unit 13 (07:44Z – 08:10Z).** a1d088d33 on origin. Read Rome's cage dose screen (HOLD agreed; E causes the pool r250
   cost). Probe K "cull to free": cage 4/4; Slithery undecided. Accepted Himeji H28-03/04 (denominators, risk sets).
+- **Unit 14 (08:22Z – 08:50Z).** 93a34815a on origin. corpse2.py (birth cohort, 50-round horizon, 349 games): the leak
+  holds — enemy eats 29–39 % of our corpse pearls on the open cap maps vs 16–19 %; half contact share, half collection.
+  H-SZ32 salvage, H-SZ33 die at home.
 
 ## Next unit
 
