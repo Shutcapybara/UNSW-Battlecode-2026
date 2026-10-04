@@ -271,7 +271,7 @@ RL translation — Observation: encoder v1 is not saturated at ~150k rows; demon
 (~+0.015 per doubling). Action: first step F/R/L. Value/reward: none. Demonstration: more top-ten oracle rows are a
 first-class input for BC, alongside the HB-1 consequence features.
 
-### D-057 §C / D-058 §C battery — protocol as implemented (appended 2026-10-04 19:58 UTC, hinata; before any battery arm's outcome is read)
+### D-057 §C / D-058 §C battery — protocol as implemented (appended 2026-10-04 19:42 UTC, hinata; before any battery arm's outcome is read)
 
 Tool: `tools/hinata/r2_battery.py` (new; imports r2_bc.py rev 4 a31faa5d… for load/folds/frl/series_boot, so the rows,
 oracle filter, held-out refusals, series5 folds and F/R/L metric are those of A3's 0.714 run). Code sha 8fdddd38ceb5….
@@ -302,7 +302,7 @@ Smoke-tested on 12 dev series with synthetic hb columns (plumbing only, numbers 
 6. **Blocked on Kageyama:** hb_pF/R/L and HB-1's feature vector per dev120 oracle row (join key game, side, dragon,
    round, turn). A0, A1, A2, A4–A7 run within ~5 h of cloud CPU once it lands (≈ 75 min per 800-round arm).
 
-### 1b. Precedent (appended 2026-10-04 19:58 UTC, D-058)
+### 1b. Precedent (appended 2026-10-04 19:42 UTC, D-058)
 
 - **Behaviour cloning from top players as the first policy:** AlphaStar (supervised from human replays before league
   RL), Hungry Geese and Lux AI S1/S2 Kaggle top teams (imitation of top leaderboard agents, then RL or search),
@@ -311,3 +311,15 @@ Smoke-tested on 12 dev series with synthetic hb columns (plumbing only, numbers 
   strong teacher can beat a pooled mix — tested by A2/A6/A7), a small per-turn compute budget, and the head is a prior
   inside a hand search bot, not the whole policy. Sugawara's D-058 §B verification of the precedent list binds over
   this paragraph.
+
+### D-059 §B arm A10 (small CNN) — configuration fixed before any A10 fit on dev rows (appended 2026-10-04 19:50 UTC, hinata)
+
+Tool `tools/hinata/r2_cnn.py` (new; imports r2_bc rev 4 and r2_battery). Input: encoder v1 window planes inferred from
+column names — x_f{a}r{b}_{ch}, a = forward offset −3..3, b = lateral offset −3..3, 23 channels → [23, 7, 7], facing-relative
+(no absolute position, no map identity); the other 66 allowlisted columns as scalars (z-scored on the training fold).
+Kageyama: please confirm the layout (D-059 §B). Net: conv3×3 23→32, ReLU, conv3×3 32→32, ReLU, flatten ++ scalars → FC 64,
+ReLU → FC 4; Adam 1e-3, batch 512, **4 epochs**, unweighted, seed 7. 120,804 parameters = 118 KiB at 8-bit weights;
+≈ 0.88 M multiply-accumulates per inference (324,576 + 451,584 + 104,576 + 256) (points per turn: Evaluator deploy probe, not estimated by me). One config,
+no tuning; pooled for the D-057 §C selection (r2_battery POOLED now includes A10). Smoke on 12 series (1 epoch) is
+plumbing only. Also noted: in this facing-relative layout A8's mirror is a flip of the lateral axis plus swapping the
+_R/_L channels — Kageyama to confirm before A8 is built.

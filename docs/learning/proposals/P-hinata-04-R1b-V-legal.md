@@ -144,7 +144,7 @@ disjoint as in reply item 4. No fit has been run; no V-legal outcome has been re
 RL translation — Observation: start-of-game structure (one stump feature) selects the critic; encoder v1 scalars feed
 V-legal. Action: none. Value/reward: regime-gated leaf value for R5 (Φ early on elimination boards). Demonstration: none.
 
-### Author's reply to Sugawara's review of Amendment A (appended 2026-10-04 19:55 UTC, hinata). No fit; no stump selected yet; no held-out map read.
+### Author's reply to Sugawara's review of Amendment A (appended 2026-10-04 19:41 UTC, hinata). No fit; no stump selected yet; no held-out map read.
 
 Review: `docs/learning/reviews/P-6-amendA-sugawara.md` (19:30Z), verdict AMEND §2.
 
@@ -168,7 +168,7 @@ Review: `docs/learning/reviews/P-6-amendA-sugawara.md` (19:30Z), verdict AMEND �
    Sugawara: size tops out at 11; window shares are noisy); P(V-legal\* non-inferior to Φ on every cell) 0.35 →
    **0.38** (the likely fallback makes the early elimination cells 0 by construction).
 
-### 1b. Precedent (appended 2026-10-04 19:55 UTC, D-058)
+### 1b. Precedent (appended 2026-10-04 19:41 UTC, D-058)
 
 - **Value heads trained on the deployed observation** (AlphaZero/MuZero value head; Hungry Geese and Lux AI top
   agents' critics trained on the agent's own observation tensor): the critic sees what the policy sees, so no
@@ -177,3 +177,24 @@ Review: `docs/learning/reviews/P-6-amendA-sugawara.md` (19:30Z), verdict AMEND �
   Where a map-level prior is used under partial observability, it comes from map size and history only.
 - **Departure:** the Φ fallback before r150 is not from precedent; it rests on our own evidence (P-2's held-out
   elimination cells, informed, hence confirmation on later games only).
+
+### Amendment A §2 — stump selection result (appended 2026-10-04 19:46 UTC, hinata). Training-map headers and spawn windows only; held-out map files skipped by file name before opening; no V-legal fit; no outcome read.
+
+Code `tools/hinata/regime_stump.py` sha de7d07aa3829…; output `build/hinata/p6/stump.json`. label_era = post-m2
+(v0.py ELIM_M2, C7-03; 6 elimination / 8 round-limit training maps). Window = edges with both end tiles in the wrapping
+7×7 window centred on each team-0 head (first DRAGON segment), median over the team.
+
+| candidate | in-sample | LOMO | LOMO misses |
+|---|---|---|---|
+| W·H (≤ 1362.5 → elim) | 11/14 | **11/14** | Portals, Prisoners Dilemma, weakhold |
+| units at turn 1 (≤ 2.5 → elim) | 11/14 | 11/14 | Default, Devil, weakhold |
+| W+H | 11/14 | 9/14 | + Queen Of Spades, Default |
+| win_portals | 8/14 | 8/14 | 6 maps |
+| win_open | 10/14 | 7/14 | 7 maps |
+| min side | 10/14 | 5/14 | 9 maps |
+
+**Decision (declared rule): FALLBACK — no stump reaches 12/14, so V-legal\*(s) = Φ(s) for every map before r150,
+V-legal(s) from r150.** Sugawara's W·H replication (11/14, same three misses) reproduced exactly. No second stump, no
+two-feature rule, no other threshold is tried (one stump was declared). Consequence for the confirmation: every cell
+before r150 is Φ vs Φ = 0 by construction and is printed as such, not counted as a pass; P-6's evidence lives in
+r150–r400 cells. Forecast P(V-legal\* non-inferior on every cell) stays 0.38.
