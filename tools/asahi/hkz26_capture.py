@@ -34,14 +34,14 @@ def capture(row: dict, bot: str) -> dict:
     tr = g.get('transcripts') or {}
     queen = min((int(k) for k in tr), default=None)
     # checked, fired (>=1 vetoed legal candidate), fallback, changed, vetoed candidates, sprint-vetoed, heads-visible
-    agg = {'queen': [0, 0, 0, 0, 0, 0, 0], 'other': [0, 0, 0, 0, 0, 0, 0]}
+    agg = {'queen': [0] * 8, 'other': [0] * 8}  # [7] = changed selections with no vetoed candidate (must be 0)
     for k, t in tr.items():
         who = 'queen' if int(k) == queen else 'other'
         for turn in t['turns']:
             for m in LOG_RE.finditer(turn.get('output', '')):
                 _r, _m, heads, _lmax, legal, veto, sveto, fb, ch = map(int, m.groups())
                 a = agg[who]
-                a[0] += 1; a[1] += veto > 0; a[2] += fb; a[3] += ch; a[4] += veto; a[5] += sveto; a[6] += heads > 0
+                a[0] += 1; a[1] += veto > 0; a[2] += fb; a[3] += ch; a[4] += veto; a[5] += sveto; a[6] += heads > 0; a[7] += ch and veto == 0
     return dict(game=row['game'], map=row['map'], side=side, winner=g['winner'], rounds=int(g['rounds']),
                 official_match=(g['winner'] == row.get('winner') and int(g['rounds']) == row.get('rounds')),
                 errors=g.get('errors', []), queen_id=queen, agg=agg)
@@ -70,7 +70,7 @@ def main():
             if i % 25 == 0:
                 print(f'{i}/{len(todo)}', flush=True)
     res = [json.loads(s) for s in open(out)]
-    by = defaultdict(lambda: {'queen': [0] * 7, 'other': [0] * 7, 'games': 0, 'games_fired': 0})
+    by = defaultdict(lambda: {'queen': [0] * 8, 'other': [0] * 8, 'games': 0, 'games_fired': 0})
     for r in res:
         for key in (r['map'], 'ALL'):
             b = by[key]
