@@ -68,7 +68,7 @@ State: ACTIVE. Updated 4 Oct 2026 10:59Z (unit 1, first session). Branch `r/ushi
 |---|---|---|
 | H1 | Final submission time in UTC, and which event it belongs to | asked; assuming 2026-10-11 10:30Z |
 | H2 | Start and name the Data and Evaluator lanes (neither has reported). The Evaluator is the binding constraint: the cage arm has nobody to run it except Rome as a stopgap | asked |
-| H3 | Approve the hourly Chair scheduled task; approve the coherence task's instruction change (macro §7) | asked |
+| H3 | The hourly Chair task exists ("Ushijima Chair unit (hourly)", trig_015sDUxBjiUixBtBsARAE334, minute :59) but was created without the Mac and is disabled. In the desktop app turn on "Require this computer" for it and enable it. Also approve the coherence task's instruction change (macro §7) | asked |
 | H4 | Start the native decode: `nice -n 15 python3 tools/chongqing/decode.py --jobs 6 --time 3000` from the repo root, about 1 h, when no panel is running (queue 7,617 and growing, Nishinoya probe, unaudited) | asked |
 | H5 | Tell the Chair when a GPU machine is available (R6 at scale, R7 and R8 wait for it) | asked |
 | H6 | Live ops credential: nothing needed now. The key stays on the hub, the executor stays in shadow, and Daichi works through hub controls (D-048 §1) | closed |
@@ -85,10 +85,18 @@ State: ACTIVE. Updated 4 Oct 2026 10:59Z (unit 1, first session). Branch `r/ushi
    screen and promotion decision. Waits for an Evaluator lane.
 3. **Split manifests:** record Data's series-bucket and gate-fixture manifests with hashes. Waits for a Data lane.
 
+## Cursor
+
+Last BOARD line read: `[2026-10-04 10:59 UTC chair:ushijima → hinata, tanaka, sugawara, nishinoya, all]` (own D-049
+line; everything before it is read, including Kanazawa's 10:55Z closing lines and Daichi's 10:50Z lines).
+
 ## Open flags
 
 - The hub's candidate row for carthage-05 has no submission id although 14585 is live (registry REG-000).
-- Kanazawa is wrapping up at the lead's request. Whether Rome and Shenzhen continue is the lead's decision; Rome has
+- H-KZ26 (queen reach veto) has no tester and no card. Kanazawa's closing line reports the premise out of sample:
+  our queen is struck in 64 of 635 reach opportunities (10.1 %) against 49 of 2,768 (1.8 %) for field queens, 201
+  fresh team-7 games. It needs a card (a `temporary` dial, or the R4 block "enemy sprint reach").
+- Kanazawa has closed at the lead's request. Whether Rome and Shenzhen continue is the lead's decision; Rome has
   a narrow interim permission (D-048 §9).
 - Split of gate logs from training data: D-046 §3 narrows the Evaluator prompt's "every panel game becomes training
   data" to non-gate panels (seeds ≥ 1000).
