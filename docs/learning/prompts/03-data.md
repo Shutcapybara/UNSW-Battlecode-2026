@@ -16,7 +16,6 @@ Assets you inherit:
 
 1. **Finish the post-m2 decode.**
    - Run natively on the Mac: `nice -n 15 python3 tools/chongqing/decode.py --jobs 6 --time 3000`. Ask the user to start it if your VM cannot.
-   - Or run it on the desktop.
    - Target: every in-scope post-m2 game, plus all of our own games.
 2. **Frozen splits.** Propose them to the Chair; they are recorded in D-045.
    - Held-out maps: at least 3, spanning behavioural classes A–E.

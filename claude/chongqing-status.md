@@ -5,6 +5,8 @@ Worktree `../wt-chongqing` (Mac, via the Cowork VM; `build/` and `public_replays
 hour off, repeat (user's instruction, to conserve credits). No API calls; GPT's analyst pulls replays this wave, so this
 lineage only decodes what the hub collector has already written.
 
+## WRAPPED UP 2026-10-04 10:50 UTC — see `docs/findings/2026-10-04-chongqing-wrapup.md` for the handoff. No scheduled check-ins remain.
+
 ## Top — read this first (2026-10-04 10:35 UTC)
 
 - **Unit 9:** the opening gap holds or widens to r250 on five of eight clusters (weakhold 1.3 attrition; portals: pearls gap
@@ -99,6 +101,7 @@ lineage only decodes what the hub collector has already written.
 - 2026-10-03 23:00 UTC — ladder reset found; `build.py games` patched; decode wrapper; first batches (team 7).
 - 2026-10-03 23:20 UTC — queen columns added to `sides`; `qq.py` connector.
 - 2026-10-04 00:20 UTC — unit 1 published: finding, TARGETS § chongqing, CORPUS.md, board C1-01…07. Sleeping one hour.
+- 2026-10-04 10:50 UTC — wrap-up on the user's instruction: handoff finding written, unit-10 check-in cancelled, all work on main.
 - 2026-10-04 10:35 UTC — unit 9: r50→r250 gap continuation per cluster; mover/partner probe for H-SZ34; deaths.mover column;
   board C9-01…03; TARGETS unit-9 section. Sleeping one hour.
 - 2026-10-04 09:25 UTC — unit 8: merge requested and done; adaptation clock; per-cluster opening rows; H-KZ12 arm reading;
