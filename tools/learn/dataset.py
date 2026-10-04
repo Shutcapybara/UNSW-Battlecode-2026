@@ -35,7 +35,9 @@ def outcome(data):
     return winner, reason
 
 
-def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=None, hb1_exe=None):
+def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=None, hb1_exe=None, hb1_feats=None):
+    """hb1_exe: cpp/hb1_scores -> hb_pF/hb_pR/hb_pL. hb1_feats: cpp/hb1_feats -> the same three plus hb_f_<name>, the
+    270 inputs of carthage-05's direction GBT (float32, NaN = absent); give one or the other."""
     meta = meta or {}
     turns = collections.defaultdict(list)
     m = rebuild.walk(data, lambda i, sp, txt, ctx: turns[i].append((sp, txt, ctx)))
@@ -89,7 +91,15 @@ def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=
                              turn=k, blocks_src=src, outcome=res, end_reason=reason, last_round=last_round,
                              x=x, **y))
         hb_seqs.append((hb_spawn(sp), hb_turns))
-    if hb1_exe and rows:
+    if hb1_feats and rows:
+        import hb1_export
+        names, X = hb1_export.run_exe(hb1_feats, hb_seqs)
+        assert len(X) == len(rows), (len(X), len(rows))
+        for r, v in zip(rows, X):
+            r.update(hb_pF=v[0], hb_pR=v[1], hb_pL=v[2])
+            r['hb_f'] = v[3:]
+        rows[0]['_hb_names'] = names
+    elif hb1_exe and rows:
         import hb1prior
         sc = hb1prior.scores(hb1_exe, hb_seqs)
         assert len(sc) == len(rows), (len(sc), len(rows))
@@ -115,10 +125,14 @@ def _template_beds(m):
 def to_frame(rows):
     import pandas as pd, numpy as np
     names = E.names()
+    hb_names = rows[0].pop('_hb_names', None) if rows else None
     X = np.asarray([r.pop('x') for r in rows], dtype=np.int16)
-    df = pd.DataFrame(rows)
-    xf = pd.DataFrame(X, columns=names)
-    return pd.concat([df.reset_index(drop=True), xf], axis=1)
+    parts = [None, pd.DataFrame(X, columns=names)]
+    if hb_names is not None:
+        F = np.asarray([r.pop('hb_f') for r in rows], dtype=np.float32)
+        parts.append(pd.DataFrame(F, columns=['hb_f_' + n for n in hb_names]))
+    parts[0] = pd.DataFrame(rows).reset_index(drop=True)
+    return pd.concat(parts, axis=1)
 
 
 def main():
