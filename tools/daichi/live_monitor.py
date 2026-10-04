@@ -47,15 +47,17 @@ def load_ladders(dirpath, since):
     return out
 
 
-def rating_at(ladders, keys, when, team):
+def rating_at(ladders, keys, when, team, with_key=False):
+    """Elo of `team` from the last snapshot at or before `when`; None when no such snapshot exists.
+
+    D-051 §4 fix: a game that precedes the earliest snapshot gets no expectation (it used to take snapshot 0,
+    which is later than the game)."""
     i = bisect.bisect_right(keys, when) - 1
-    if i < 0:
-        i = 0
     for j in range(i, -1, -1):
         r = ladders[j][1].get(team)
         if r and r.get('elo') is not None:
-            return r['elo']
-    return None
+            return (r['elo'], keys[j]) if with_key else r['elo']
+    return (None, None) if with_key else None
 
 
 def own_games(index_path, since):
@@ -123,7 +125,8 @@ def main(argv=None):
     keys = [t for t, _ in ladders]
     games = own_games(repo / 'public_replays/corpus/index.jsonl', since)
     for g in games:
-        ru, ro = rating_at(ladders, keys, g['at'], TEAM), rating_at(ladders, keys, g['at'], g['opp'])
+        (ru, ku), (ro, ko) = rating_at(ladders, keys, g['at'], TEAM, True), rating_at(ladders, keys, g['at'], g['opp'], True)
+        g['snap_us'], g['snap_opp'] = ku and ku.strftime('%Y%m%dT%H%M%SZ'), ko and ko.strftime('%Y%m%dT%H%M%SZ')
         g['exp'] = None if ru is None or ro is None else 1 / (1 + 10 ** ((ro - ru) / 400))
         g['resid'] = None if g['exp'] is None else g['score'] - g['exp']
     ranked = [g for g in games if g['ranked'] and g['resid'] is not None]
@@ -167,6 +170,21 @@ def main(argv=None):
                 by_bot={b: boot(v) for b, v in by_bot.items()}, by_map={m: boot(v) for m, v in by_map.items()}, unranked_since=len(unranked_inc),
                 ladder_snapshots=len(ladders), latest_snapshot=str(keys[-1]) if keys else None,
                 missing_expectation=sum(1 for g in games if g['ranked'] and g['resid'] is None))
+    # D-051 §4: freeze the input list (game ids, snapshot ids) behind every published number.
+    import hashlib
+    frozen = dict(at=now.isoformat(), index_sha256=hashlib.sha256((repo / 'public_replays/corpus/index.jsonl').read_bytes()).hexdigest(),
+                  snapshots=[k.strftime('%Y%m%dT%H%M%SZ') for k in keys],
+                  games=[[g['game_id'], g['series'], g['at'].isoformat(), g['bot'], g['opp'], g['map'], g['ranked'], g['score'],
+                          g['snap_us'], g['snap_opp'], None if g['exp'] is None else round(g['exp'], 6)] for g in games],
+                  columns=['game_id', 'series', 'start', 'bot', 'opp', 'map', 'ranked', 'score', 'snap_us', 'snap_opp', 'exp'])
+    fz = json.dumps(frozen, separators=(',', ':'), default=str).encode()
+    fsha = hashlib.sha256(fz).hexdigest()
+    fdir = repo / Path(a.out).parent / 'live-inputs'
+    fdir.mkdir(parents=True, exist_ok=True)
+    fname = f"{now.strftime('%Y%m%dT%H%MZ')}-{fsha[:8]}.json.gz"  # sha256 is of the uncompressed JSON
+    import gzip
+    (fdir / fname).write_bytes(gzip.compress(fz, mtime=0))
+    data['frozen_inputs'] = dict(file='docs/learning/live-inputs/' + fname, sha256=fsha, games=len(games), snapshots=len(keys))
     Path(repo / a.json).parent.mkdir(parents=True, exist_ok=True)
     (repo / a.json).write_text(json.dumps(data, indent=1, default=str))
     L = []
@@ -175,6 +193,9 @@ def main(argv=None):
              f"replay-header attribution) and {len(ladders)} ladder snapshots (latest {data['latest_snapshot']}). Population: **ranked** "
              f"games only unless stated. Statistic: score − Elo expectation per game; interval = whole-series cluster bootstrap, 1,000 "
              f"resamples, seed 7, 5th/95th percentile. Corpus lag: games appear when the collector fetches them (minutes to hours).\n")
+    L.append(f"Frozen inputs (D-051 §4): `docs/learning/live-inputs/{fname}` sha256 `{fsha[:16]}…` "
+             f"({len(games)} games with their snapshot ids, {len(keys)} snapshots, index sha `{frozen['index_sha256'][:12]}`). "
+             f"Expectations use the last snapshot at or before the game; a game before the first snapshot gets none.\n")
     L.append('## Incumbent\n')
     L.append(f"- Live submission **{active}** ({inc.get('name') or 'not a registered candidate'}; fingerprint `{(inc.get('fingerprint') or '?')[:16]}`); first seen in the corpus {first_seen}.")
     L.append(f"- Ranked games since first seen: **{len(inc_ranked)}**, W-L-D {data['wld'][0]}-{data['wld'][1]}-{data['wld'][2]}; score − E {fmt(data['since_activation'])}.")
