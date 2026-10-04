@@ -1,0 +1,1332 @@
+{
+  "daily": [
+    {
+      "cohort": "other",
+      "day": "2026-10-02",
+      "n": 483,
+      "series": 196,
+      "teams": 52,
+      "hashes": 37,
+      "alive": 99,
+      "rate": 0.20496894409937888,
+      "queen_decided": 163,
+      "filled": 35
+    },
+    {
+      "cohort": "other",
+      "day": "2026-10-03",
+      "n": 338,
+      "series": 155,
+      "teams": 48,
+      "hashes": 36,
+      "alive": 111,
+      "rate": 0.32840236686390534,
+      "queen_decided": 165,
+      "filled": 0
+    },
+    {
+      "cohort": "other",
+      "day": "2026-10-04",
+      "n": 456,
+      "series": 150,
+      "teams": 45,
+      "hashes": 36,
+      "alive": 129,
+      "rate": 0.28289473684210525,
+      "queen_decided": 191,
+      "filled": 0
+    },
+    {
+      "cohort": "r11_50",
+      "day": "2026-10-02",
+      "n": 662,
+      "series": 258,
+      "teams": 34,
+      "hashes": 37,
+      "alive": 163,
+      "rate": 0.24622356495468278,
+      "queen_decided": 252,
+      "filled": 4
+    },
+    {
+      "cohort": "r11_50",
+      "day": "2026-10-03",
+      "n": 833,
+      "series": 273,
+      "teams": 39,
+      "hashes": 36,
+      "alive": 279,
+      "rate": 0.3349339735894358,
+      "queen_decided": 385,
+      "filled": 7
+    },
+    {
+      "cohort": "r11_50",
+      "day": "2026-10-04",
+      "n": 999,
+      "series": 291,
+      "teams": 40,
+      "hashes": 35,
+      "alive": 350,
+      "rate": 0.35035035035035034,
+      "queen_decided": 427,
+      "filled": 0
+    },
+    {
+      "cohort": "top10",
+      "day": "2026-10-02",
+      "n": 876,
+      "series": 277,
+      "teams": 10,
+      "hashes": 37,
+      "alive": 322,
+      "rate": 0.3675799086757991,
+      "queen_decided": 368,
+      "filled": 4
+    },
+    {
+      "cohort": "top10",
+      "day": "2026-10-03",
+      "n": 258,
+      "series": 97,
+      "teams": 10,
+      "hashes": 33,
+      "alive": 133,
+      "rate": 0.5155038759689923,
+      "queen_decided": 137,
+      "filled": 0
+    },
+    {
+      "cohort": "top10",
+      "day": "2026-10-04",
+      "n": 284,
+      "series": 100,
+      "teams": 10,
+      "hashes": 31,
+      "alive": 134,
+      "rate": 0.47183098591549294,
+      "queen_decided": 138,
+      "filled": 0
+    },
+    {
+      "cohort": "us",
+      "day": "2026-10-02",
+      "n": 43,
+      "series": 15,
+      "teams": 1,
+      "hashes": 23,
+      "alive": 0,
+      "rate": 0.0,
+      "queen_decided": 11,
+      "filled": 43
+    },
+    {
+      "cohort": "us",
+      "day": "2026-10-03",
+      "n": 9,
+      "series": 3,
+      "teams": 1,
+      "hashes": 8,
+      "alive": 0,
+      "rate": 0.0,
+      "queen_decided": 5,
+      "filled": 7
+    },
+    {
+      "cohort": "us",
+      "day": "2026-10-04",
+      "n": 17,
+      "series": 6,
+      "teams": 1,
+      "hashes": 14,
+      "alive": 0,
+      "rate": 0.0,
+      "queen_decided": 4,
+      "filled": 0
+    }
+  ],
+  "raw_r11_50": {
+    "n": 1661,
+    "series": 549,
+    "teams": 40,
+    "days": {
+      "2026-10-02": {
+        "n": 662,
+        "alive": 163,
+        "rate": 0.24622356495468278,
+        "series": 258
+      },
+      "2026-10-04": {
+        "n": 999,
+        "alive": 350,
+        "rate": 0.35035035035035034,
+        "series": 291
+      }
+    },
+    "delta": 0.10412678539566755,
+    "series_boot95": [
+      0.0508821820799227,
+      0.1527510955366152
+    ]
+  },
+  "sensitivity": [
+    {
+      "keys": [
+        "map_hash"
+      ],
+      "cells": 35,
+      "sides0": 658,
+      "sides1": 999,
+      "overlap_weight": 642.0,
+      "mean0": 0.2394383056551035,
+      "mean1": 0.3648824384739816,
+      "delta": 0.12544413281887812
+    },
+    {
+      "keys": [
+        "team"
+      ],
+      "cells": 34,
+      "sides0": 662,
+      "sides1": 894,
+      "overlap_weight": 464.0,
+      "mean0": 0.2647268288781688,
+      "mean1": 0.37327278065314057,
+      "delta": 0.10854595177497167
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash"
+      ],
+      "cells": 211,
+      "sides0": 380,
+      "sides1": 348,
+      "overlap_weight": 246.0,
+      "mean0": 0.21131436314363145,
+      "mean1": 0.3357046070460705,
+      "delta": 0.12439024390243902
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 167,
+      "sides0": 241,
+      "sides1": 230,
+      "overlap_weight": 174.0,
+      "mean0": 0.20785440613026818,
+      "mean1": 0.37203065134099617,
+      "delta": 0.16417624521072796
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side",
+        "opp"
+      ],
+      "cells": 5,
+      "sides0": 5,
+      "sides1": 5,
+      "overlap_weight": 5.0,
+      "mean0": 0.6,
+      "mean1": 0.4,
+      "delta": -0.2
+    }
+  ],
+  "primary": {
+    "keys": [
+      "team",
+      "map_hash",
+      "side"
+    ],
+    "cells": 167,
+    "sides0": 241,
+    "sides1": 230,
+    "overlap_weight": 174.0,
+    "mean0": 0.20785440613026818,
+    "mean1": 0.37203065134099617,
+    "delta": 0.16417624521072796,
+    "series": 290,
+    "teams": 34,
+    "hashes": 27,
+    "known_bot_fields": 0,
+    "series_boot95": [
+      0.056865855568469376,
+      0.2508155083566674
+    ],
+    "bootstrap_support95": [
+      67.0,
+      97.0
+    ]
+  },
+  "repeated_cell_sensitivity": {
+    "keys": [
+      "team",
+      "map_hash",
+      "side"
+    ],
+    "cells": 7,
+    "sides0": 17,
+    "sides1": 18,
+    "overlap_weight": 14.0,
+    "mean0": 0.4047619047619047,
+    "mean1": 0.38571428571428573,
+    "delta": -0.019047619047619042
+  },
+  "length_endpoints": [
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 167,
+      "sides0": 241,
+      "sides1": 230,
+      "overlap_weight": 174.0,
+      "mean0": 0.13697318007662834,
+      "mean1": 0.09961685823754789,
+      "delta": -0.03735632183908046,
+      "endpoint": "short1to3",
+      "series_boot95": [
+        -0.09394939965694683,
+        0.014025367156208241
+      ]
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 167,
+      "sides0": 241,
+      "sides1": 230,
+      "overlap_weight": 174.0,
+      "mean0": 0.07088122605363983,
+      "mean1": 0.2724137931034483,
+      "delta": 0.20153256704980846,
+      "endpoint": "long_gt3",
+      "series_boot95": [
+        0.10068601491710046,
+        0.2853606822946445
+      ]
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 167,
+      "sides0": 241,
+      "sides1": 230,
+      "overlap_weight": 174.0,
+      "mean0": 0.047892720306513405,
+      "mean1": 0.232183908045977,
+      "delta": 0.18429118773946362,
+      "endpoint": "long_ge10",
+      "series_boot95": [
+        0.09589817156195292,
+        0.26683029129793506
+      ]
+    }
+  ],
+  "top10_control": {
+    "keys": [
+      "team",
+      "map_hash",
+      "side"
+    ],
+    "cells": 157,
+    "sides0": 419,
+    "sides1": 214,
+    "overlap_weight": 198.0,
+    "mean0": 0.42214405964405965,
+    "mean1": 0.46498316498316494,
+    "delta": 0.04283910533910534,
+    "length_endpoints": [
+      {
+        "keys": [
+          "team",
+          "map_hash",
+          "side"
+        ],
+        "cells": 157,
+        "sides0": 419,
+        "sides1": 214,
+        "overlap_weight": 198.0,
+        "mean0": 0.14587542087542088,
+        "mean1": 0.10858585858585859,
+        "delta": -0.03728956228956229,
+        "endpoint": "short1to3"
+      },
+      {
+        "keys": [
+          "team",
+          "map_hash",
+          "side"
+        ],
+        "cells": 157,
+        "sides0": 419,
+        "sides1": 214,
+        "overlap_weight": 198.0,
+        "mean0": 0.2762686387686388,
+        "mean1": 0.3563973063973064,
+        "delta": 0.08012866762866763,
+        "endpoint": "long_gt3"
+      }
+    ]
+  },
+  "team_rows": [
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 5,
+      "sides0": 5,
+      "sides1": 10,
+      "overlap_weight": 5.0,
+      "mean0": 0.2,
+      "mean1": 0.2,
+      "delta": 0.0,
+      "team": "15"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 6,
+      "sides0": 8,
+      "sides1": 8,
+      "overlap_weight": 7.0,
+      "mean0": 0.09523809523809523,
+      "mean1": 0.7142857142857143,
+      "delta": 0.6190476190476192,
+      "team": "19"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 7,
+      "sides0": 12,
+      "sides1": 9,
+      "overlap_weight": 7.0,
+      "mean0": 0.14285714285714285,
+      "mean1": 0.14285714285714285,
+      "delta": 0.0,
+      "team": "20"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 3,
+      "sides0": 4,
+      "sides1": 4,
+      "overlap_weight": 3.0,
+      "mean0": 0.0,
+      "mean1": 0.0,
+      "delta": 0.0,
+      "team": "28"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 4,
+      "sides0": 5,
+      "sides1": 10,
+      "overlap_weight": 5.0,
+      "mean0": 0.2,
+      "mean1": 0.27999999999999997,
+      "delta": 0.08,
+      "team": "40"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 3,
+      "sides0": 5,
+      "sides1": 3,
+      "overlap_weight": 3.0,
+      "mean0": 0.1111111111111111,
+      "mean1": 0.3333333333333333,
+      "delta": 0.22222222222222224,
+      "team": "46"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 5,
+      "sides0": 6,
+      "sides1": 6,
+      "overlap_weight": 6.0,
+      "mean0": 0.3333333333333333,
+      "mean1": 0.16666666666666666,
+      "delta": -0.16666666666666666,
+      "team": "71"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 4,
+      "sides0": 4,
+      "sides1": 4,
+      "overlap_weight": 4.0,
+      "mean0": 0.25,
+      "mean1": 0.75,
+      "delta": 0.5,
+      "team": "82"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 14,
+      "sides0": 18,
+      "sides1": 20,
+      "overlap_weight": 15.0,
+      "mean0": 0.06666666666666667,
+      "mean1": 0.2,
+      "delta": 0.13333333333333333,
+      "team": "87"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 4,
+      "sides0": 4,
+      "sides1": 6,
+      "overlap_weight": 4.0,
+      "mean0": 0.25,
+      "mean1": 0.5,
+      "delta": 0.25,
+      "team": "135"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 1,
+      "sides0": 1,
+      "sides1": 1,
+      "overlap_weight": 1.0,
+      "mean0": 0.0,
+      "mean1": 0.0,
+      "delta": 0.0,
+      "team": "152"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 3,
+      "sides0": 3,
+      "sides1": 3,
+      "overlap_weight": 3.0,
+      "mean0": 0.0,
+      "mean1": 0.3333333333333333,
+      "delta": 0.3333333333333333,
+      "team": "157"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 6,
+      "sides0": 6,
+      "sides1": 15,
+      "overlap_weight": 6.0,
+      "mean0": 0.5,
+      "mean1": 0.16666666666666666,
+      "delta": -0.3333333333333333,
+      "team": "178"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 4,
+      "sides0": 6,
+      "sides1": 4,
+      "overlap_weight": 4.0,
+      "mean0": 0.75,
+      "mean1": 0.75,
+      "delta": 0.0,
+      "team": "193"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 5,
+      "sides0": 5,
+      "sides1": 5,
+      "overlap_weight": 5.0,
+      "mean0": 0.0,
+      "mean1": 0.4,
+      "delta": 0.4,
+      "team": "217"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 12,
+      "sides0": 13,
+      "sides1": 19,
+      "overlap_weight": 13.0,
+      "mean0": 0.5384615384615384,
+      "mean1": 0.38461538461538464,
+      "delta": -0.15384615384615385,
+      "team": "249"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 19,
+      "sides0": 51,
+      "sides1": 21,
+      "overlap_weight": 20.0,
+      "mean0": 0.18333333333333332,
+      "mean1": 0.625,
+      "delta": 0.4416666666666667,
+      "team": "258"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 9,
+      "sides0": 15,
+      "sides1": 10,
+      "overlap_weight": 9.0,
+      "mean0": 0.05555555555555555,
+      "mean1": 0.4444444444444444,
+      "delta": 0.3888888888888889,
+      "team": "280"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 1,
+      "sides0": 1,
+      "sides1": 1,
+      "overlap_weight": 1.0,
+      "mean0": 0.0,
+      "mean1": 0.0,
+      "delta": 0.0,
+      "team": "314"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 5,
+      "sides0": 5,
+      "sides1": 6,
+      "overlap_weight": 5.0,
+      "mean0": 0.2,
+      "mean1": 1.0,
+      "delta": 0.8,
+      "team": "328"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 7,
+      "sides0": 11,
+      "sides1": 7,
+      "overlap_weight": 7.0,
+      "mean0": 0.0,
+      "mean1": 0.14285714285714285,
+      "delta": 0.14285714285714285,
+      "team": "375"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 5,
+      "sides0": 7,
+      "sides1": 5,
+      "overlap_weight": 5.0,
+      "mean0": 0.0,
+      "mean1": 0.0,
+      "delta": 0.0,
+      "team": "454"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 7,
+      "sides0": 10,
+      "sides1": 10,
+      "overlap_weight": 7.0,
+      "mean0": 0.14285714285714285,
+      "mean1": 0.09523809523809523,
+      "delta": -0.04761904761904762,
+      "team": "457"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 1,
+      "sides0": 1,
+      "sides1": 1,
+      "overlap_weight": 1.0,
+      "mean0": 0.0,
+      "mean1": 0.0,
+      "delta": 0.0,
+      "team": "470"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 1,
+      "sides0": 1,
+      "sides1": 2,
+      "overlap_weight": 1.0,
+      "mean0": 1.0,
+      "mean1": 1.0,
+      "delta": 0.0,
+      "team": "499"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 4,
+      "sides0": 5,
+      "sides1": 6,
+      "overlap_weight": 4.0,
+      "mean0": 0.0,
+      "mean1": 0.25,
+      "delta": 0.25,
+      "team": "501"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 2,
+      "sides0": 2,
+      "sides1": 3,
+      "overlap_weight": 2.0,
+      "mean0": 0.5,
+      "mean1": 0.5,
+      "delta": 0.0,
+      "team": "552"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 2,
+      "sides0": 2,
+      "sides1": 2,
+      "overlap_weight": 2.0,
+      "mean0": 1.0,
+      "mean1": 0.5,
+      "delta": -0.5,
+      "team": "776"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 4,
+      "sides0": 4,
+      "sides1": 8,
+      "overlap_weight": 4.0,
+      "mean0": 0.5,
+      "mean1": 0.6666666666666666,
+      "delta": 0.16666666666666666,
+      "team": "801"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 3,
+      "sides0": 4,
+      "sides1": 6,
+      "overlap_weight": 3.0,
+      "mean0": 0.0,
+      "mean1": 0.16666666666666666,
+      "delta": 0.16666666666666666,
+      "team": "948"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 2,
+      "sides0": 3,
+      "sides1": 2,
+      "overlap_weight": 2.0,
+      "mean0": 0.5,
+      "mean1": 0.5,
+      "delta": 0.0,
+      "team": "977"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 2,
+      "sides0": 2,
+      "sides1": 3,
+      "overlap_weight": 2.0,
+      "mean0": 0.0,
+      "mean1": 0.5,
+      "delta": 0.5,
+      "team": "994"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 1,
+      "sides0": 1,
+      "sides1": 1,
+      "overlap_weight": 1.0,
+      "mean0": 0.0,
+      "mean1": 1.0,
+      "delta": 1.0,
+      "team": "1036"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 6,
+      "sides0": 11,
+      "sides1": 9,
+      "overlap_weight": 7.0,
+      "mean0": 0.14285714285714285,
+      "mean1": 0.14285714285714285,
+      "delta": 0.0,
+      "team": "1119"
+    }
+  ],
+  "map_rows": [
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 9,
+      "sides0": 16,
+      "sides1": 13,
+      "overlap_weight": 9.0,
+      "mean0": 0.0,
+      "mean1": 0.1111111111111111,
+      "delta": 0.1111111111111111,
+      "map": "Around UNSW",
+      "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 11,
+      "sides0": 19,
+      "sides1": 17,
+      "overlap_weight": 13.0,
+      "mean0": 0.02564102564102564,
+      "mean1": 0.1846153846153846,
+      "delta": 0.158974358974359,
+      "map": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 13,
+      "sides0": 19,
+      "sides1": 17,
+      "overlap_weight": 14.0,
+      "mean0": 0.07142857142857142,
+      "mean1": 0.35714285714285715,
+      "delta": 0.2857142857142857,
+      "map": "Australia",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 5,
+      "sides0": 6,
+      "sides1": 11,
+      "overlap_weight": 6.0,
+      "mean0": 0.5,
+      "mean1": 0.0,
+      "delta": -0.5,
+      "map": "Australia",
+      "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 2,
+      "sides0": 4,
+      "sides1": 2,
+      "overlap_weight": 2.0,
+      "mean0": 0.0,
+      "mean1": 0.0,
+      "delta": 0.0,
+      "map": "Autarky",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 2,
+      "sides0": 2,
+      "sides1": 2,
+      "overlap_weight": 2.0,
+      "mean0": 0.0,
+      "mean1": 0.5,
+      "delta": 0.5,
+      "map": "Autarky",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 4,
+      "sides0": 4,
+      "sides1": 5,
+      "overlap_weight": 4.0,
+      "mean0": 0.0,
+      "mean1": 0.25,
+      "delta": 0.25,
+      "map": "Default",
+      "map_hash": "2aa3b6c52fa4b6644e6bc5a389528d36995aef59cfa37e5f9b21c2859d0cd9dc"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 5,
+      "sides0": 11,
+      "sides1": 5,
+      "overlap_weight": 5.0,
+      "mean0": 0.0,
+      "mean1": 0.0,
+      "delta": 0.0,
+      "map": "Islands",
+      "map_hash": "8fe66a3fb92831602d438524d0de93f083ed1ad731398515c69e08d2ba67cf00"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 7,
+      "sides0": 11,
+      "sides1": 11,
+      "overlap_weight": 7.0,
+      "mean0": 0.14285714285714285,
+      "mean1": 0.0,
+      "delta": -0.14285714285714285,
+      "map": "Islands",
+      "map_hash": "e3175217d1717035d51164b2be0c9f6b962aeebd700e9f7da02be02cffca3cd5"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 8,
+      "sides0": 12,
+      "sides1": 11,
+      "overlap_weight": 8.0,
+      "mean0": 0.0,
+      "mean1": 0.1875,
+      "delta": 0.1875,
+      "map": "Maze",
+      "map_hash": "502427b4a4b583c47a0a452252b1283836398d12bdb3f448ae6a0a40c3de0859"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 8,
+      "sides0": 12,
+      "sides1": 10,
+      "overlap_weight": 8.0,
+      "mean0": 0.125,
+      "mean1": 0.125,
+      "delta": 0.0,
+      "map": "Maze",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 8,
+      "sides0": 11,
+      "sides1": 9,
+      "overlap_weight": 8.0,
+      "mean0": 0.125,
+      "mean1": 0.5,
+      "delta": 0.375,
+      "map": "Portals",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 17,
+      "sides0": 23,
+      "sides1": 23,
+      "overlap_weight": 18.0,
+      "mean0": 0.2777777777777778,
+      "mean1": 0.5,
+      "delta": 0.2222222222222222,
+      "map": "Portals",
+      "map_hash": "cfc35be3b278d3b9f410b76c4b772dd99bf64b362fdc90a50abc544ca7668700"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 1,
+      "sides0": 1,
+      "sides1": 1,
+      "overlap_weight": 1.0,
+      "mean0": 0.0,
+      "mean1": 1.0,
+      "delta": 1.0,
+      "map": "Prisoners Dilemma",
+      "map_hash": "88eea47e61ffdbf5e54e9d4cb4c935fda03328d1576ebbd2e4167e42a0c28050"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 1,
+      "sides0": 1,
+      "sides1": 1,
+      "overlap_weight": 1.0,
+      "mean0": 0.0,
+      "mean1": 1.0,
+      "delta": 1.0,
+      "map": "Prisoners Dilemma 10",
+      "map_hash": "aebe7fff18a8613b63aa7736c61c3df3a44d2ea92a0b6ad7301a52fc5c154857"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 1,
+      "sides0": 1,
+      "sides1": 1,
+      "overlap_weight": 1.0,
+      "mean0": 0.0,
+      "mean1": 0.0,
+      "delta": 0.0,
+      "map": "Queen Of Spades",
+      "map_hash": "3ffe4ab7cb5e880f7ddb7d5d1dcfd95c5891e460468a24130d1c6dd50e23b141"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 3,
+      "sides0": 3,
+      "sides1": 3,
+      "overlap_weight": 3.0,
+      "mean0": 1.0,
+      "mean1": 1.0,
+      "delta": 0.0,
+      "map": "Schooltime",
+      "map_hash": "65be5fe99a46cf0a26644ecb08d2733e6099acfec06438430a15ff0436f5d3d5"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 4,
+      "sides0": 7,
+      "sides1": 5,
+      "overlap_weight": 4.0,
+      "mean0": 0.75,
+      "mean1": 1.0,
+      "delta": 0.25,
+      "map": "Schooltime",
+      "map_hash": "85635a271dcb6f1c100a8d47b3754c6d9991c5702adb6e35493ad43501c3e662"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 7,
+      "sides0": 8,
+      "sides1": 10,
+      "overlap_weight": 7.0,
+      "mean0": 0.8571428571428571,
+      "mean1": 0.9523809523809524,
+      "delta": 0.09523809523809523,
+      "map": "Schooltime",
+      "map_hash": "e35816d70a75da1dcaae30273e0ed23831aa069c58feddbc9cd722d409e180a6"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 11,
+      "sides0": 14,
+      "sides1": 19,
+      "overlap_weight": 11.0,
+      "mean0": 0.09090909090909091,
+      "mean1": 0.09090909090909091,
+      "delta": 0.0,
+      "map": "Slithery Fight",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 9,
+      "sides0": 15,
+      "sides1": 11,
+      "overlap_weight": 9.0,
+      "mean0": 0.1111111111111111,
+      "mean1": 0.5,
+      "delta": 0.3888888888888889,
+      "map": "Slithery Fight",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 4,
+      "sides0": 5,
+      "sides1": 4,
+      "overlap_weight": 4.0,
+      "mean0": 0.25,
+      "mean1": 0.5,
+      "delta": 0.25,
+      "map": "Tower Defense",
+      "map_hash": "65900cc53db72d804e27601b441d9b679806c60a96342831b908415c92102acd"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 1,
+      "sides0": 1,
+      "sides1": 1,
+      "overlap_weight": 1.0,
+      "mean0": 0.0,
+      "mean1": 0.0,
+      "delta": 0.0,
+      "map": "Tower Defense",
+      "map_hash": "b5f9f10f41855f551ddb6ea779626d48c5d97d4b7cc2ab170e276a9a9b9a6f53"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 8,
+      "sides0": 11,
+      "sides1": 11,
+      "overlap_weight": 9.0,
+      "mean0": 0.5,
+      "mean1": 0.7777777777777778,
+      "delta": 0.2777777777777778,
+      "map": "Trauma",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 6,
+      "sides0": 10,
+      "sides1": 6,
+      "overlap_weight": 6.0,
+      "mean0": 0.2222222222222222,
+      "mean1": 0.6666666666666666,
+      "delta": 0.4444444444444445,
+      "map": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 8,
+      "sides0": 10,
+      "sides1": 14,
+      "overlap_weight": 9.0,
+      "mean0": 0.2222222222222222,
+      "mean1": 0.2222222222222222,
+      "delta": 0.0,
+      "map": "weakhold",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8"
+    },
+    {
+      "keys": [
+        "team",
+        "map_hash",
+        "side"
+      ],
+      "cells": 4,
+      "sides0": 4,
+      "sides1": 7,
+      "overlap_weight": 4.0,
+      "mean0": 0.25,
+      "mean1": 0.6666666666666666,
+      "delta": 0.41666666666666663,
+      "map": "weakhold",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24"
+    }
+  ],
+  "contract": "Rank11\u201350 frozen store ranks, ranked post-m2 RL sides, Oct2 vsOct4. Same team/fullhash/seat cells present both days; min(n0,n1) weights. 2000 whole-series bootstrap seed3232 re-estimates overlap among original shared cells; support changes, interval exploratory not stable target/causal adoption. Opponent/submission/time-of-day not controlled. Terminal survival conditional on reaching RL; early games excluded, not declared dead at490."
+}

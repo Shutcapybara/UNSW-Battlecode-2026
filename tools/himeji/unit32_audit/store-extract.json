@@ -1,0 +1,1086 @@
+{
+  "sql": "WITH canon AS (SELECT game,min(filename) part FROM raw GROUP BY game)\nSELECT s.game,s.side,s.team,s.opp,s.map,s.bot,s.opponent,s.R,s.reason,s.won,\n       s.q_alive_end,s.q_end,s.q_header,g.ranked,g.series_id,g.started_at,g.map_hash,g.map_era,g.era,\n       t.crank,t.cohort,ot.crank AS opp_crank,s.filename\nFROM raw s JOIN canon c ON c.game=s.game AND c.part=s.filename\nJOIN games g ON g.game=s.game LEFT JOIN teams t ON t.team=s.team LEFT JOIN teams ot ON ot.team=s.opp\nWHERE g.map_era='post-m2' AND g.era='post' AND g.ranked\nORDER BY g.started_at,s.game,s.side",
+  "checks": {
+    "rows": 8630,
+    "games": 4315,
+    "missing_index": 0,
+    "winner_mismatch": 0,
+    "queen_header_mismatch": 0,
+    "missing_queen": 150,
+    "hash_mismatch": 0,
+    "resolved_hash_prefix": 8630
+  },
+  "files": [
+    {
+      "name": "part-20261001T223118-1558325.parquet",
+      "size": 566360,
+      "mtime_ns": 1790859678000000000
+    },
+    {
+      "name": "part-20261001T223647-1669084.parquet",
+      "size": 613257,
+      "mtime_ns": 1790860007000000000
+    },
+    {
+      "name": "part-20261001T223838-1669084.parquet",
+      "size": 615349,
+      "mtime_ns": 1790860118000000000
+    },
+    {
+      "name": "part-20261001T224011-1669084.parquet",
+      "size": 623268,
+      "mtime_ns": 1790860211000000000
+    },
+    {
+      "name": "part-20261001T224142-1669084.parquet",
+      "size": 625659,
+      "mtime_ns": 1790860303000000000
+    },
+    {
+      "name": "part-20261001T224251-1669084.parquet",
+      "size": 624510,
+      "mtime_ns": 1790860371000000000
+    },
+    {
+      "name": "part-20261001T224400-1669084.parquet",
+      "size": 511177,
+      "mtime_ns": 1790860440000000000
+    },
+    {
+      "name": "part-20261002T011541-440954.parquet",
+      "size": 629326,
+      "mtime_ns": 1790869541000000000
+    },
+    {
+      "name": "part-20261002T011806-440954.parquet",
+      "size": 633415,
+      "mtime_ns": 1790869687000000000
+    },
+    {
+      "name": "part-20261002T012056-440954.parquet",
+      "size": 631725,
+      "mtime_ns": 1790869856000000000
+    },
+    {
+      "name": "part-20261002T012330-440954.parquet",
+      "size": 626656,
+      "mtime_ns": 1790870011000000000
+    },
+    {
+      "name": "part-20261002T012618-440954.parquet",
+      "size": 628015,
+      "mtime_ns": 1790870178000000000
+    },
+    {
+      "name": "part-20261002T012856-440954.parquet",
+      "size": 631766,
+      "mtime_ns": 1790870337000000000
+    },
+    {
+      "name": "part-20261002T013131-440954.parquet",
+      "size": 633610,
+      "mtime_ns": 1790870491000000000
+    },
+    {
+      "name": "part-20261002T013446-440954.parquet",
+      "size": 640200,
+      "mtime_ns": 1790870687000000000
+    },
+    {
+      "name": "part-20261002T013721-440954.parquet",
+      "size": 468159,
+      "mtime_ns": 1790870841000000000
+    },
+    {
+      "name": "part-20261003T223604-9.parquet",
+      "size": 243633,
+      "mtime_ns": 1791066965210326231
+    },
+    {
+      "name": "part-20261003T224949-6.parquet",
+      "size": 571726,
+      "mtime_ns": 1791067790063750063
+    },
+    {
+      "name": "part-20261003T225429-6.parquet",
+      "size": 440904,
+      "mtime_ns": 1791068069596836990
+    },
+    {
+      "name": "part-20261003T230830-6.parquet",
+      "size": 446379,
+      "mtime_ns": 1791068911103381828
+    },
+    {
+      "name": "part-20261003T231602-6.parquet",
+      "size": 524239,
+      "mtime_ns": 1791069364182293386
+    },
+    {
+      "name": "part-20261003T231950-6.parquet",
+      "size": 341174,
+      "mtime_ns": 1791069591558287166
+    },
+    {
+      "name": "part-20261003T234041-8.parquet",
+      "size": 283864,
+      "mtime_ns": 1791070842326262698
+    },
+    {
+      "name": "part-20261003T234108-8.parquet",
+      "size": 247888,
+      "mtime_ns": 1791070868606190845
+    },
+    {
+      "name": "part-20261003T235745-6.parquet",
+      "size": 230952,
+      "mtime_ns": 1791071866027661588
+    },
+    {
+      "name": "part-20261004T010327-6.parquet",
+      "size": 282768,
+      "mtime_ns": 1791075808995034146
+    },
+    {
+      "name": "part-20261004T010338-6.parquet",
+      "size": 197872,
+      "mtime_ns": 1791075819503511595
+    },
+    {
+      "name": "part-20261004T010537-6.parquet",
+      "size": 283482,
+      "mtime_ns": 1791075937666989149
+    },
+    {
+      "name": "part-20261004T010602-6.parquet",
+      "size": 282679,
+      "mtime_ns": 1791075962771114250
+    },
+    {
+      "name": "part-20261004T010616-6.parquet",
+      "size": 241750,
+      "mtime_ns": 1791075977360387065
+    },
+    {
+      "name": "part-20261004T010710-73.parquet",
+      "size": 283590,
+      "mtime_ns": 1791076030474581977
+    },
+    {
+      "name": "part-20261004T010740-73.parquet",
+      "size": 272346,
+      "mtime_ns": 1791076061473607146
+    },
+    {
+      "name": "part-20261004T010839-6.parquet",
+      "size": 284086,
+      "mtime_ns": 1791076119806812398
+    },
+    {
+      "name": "part-20261004T010859-6.parquet",
+      "size": 281605,
+      "mtime_ns": 1791076139407565288
+    },
+    {
+      "name": "part-20261004T010922-6.parquet",
+      "size": 278590,
+      "mtime_ns": 1791076163311241579
+    },
+    {
+      "name": "part-20261004T011014-77.parquet",
+      "size": 282992,
+      "mtime_ns": 1791076216461297541
+    },
+    {
+      "name": "part-20261004T011043-77.parquet",
+      "size": 272309,
+      "mtime_ns": 1791076245183397752
+    },
+    {
+      "name": "part-20261004T011200-6.parquet",
+      "size": 282396,
+      "mtime_ns": 1791076321791095516
+    },
+    {
+      "name": "part-20261004T011230-6.parquet",
+      "size": 278734,
+      "mtime_ns": 1791076351901378603
+    },
+    {
+      "name": "part-20261004T011234-6.parquet",
+      "size": 179092,
+      "mtime_ns": 1791076355812550358
+    },
+    {
+      "name": "part-20261004T011328-61.parquet",
+      "size": 283140,
+      "mtime_ns": 1791076409341569303
+    },
+    {
+      "name": "part-20261004T011400-61.parquet",
+      "size": 255047,
+      "mtime_ns": 1791076441513748883
+    },
+    {
+      "name": "part-20261004T011459-6.parquet",
+      "size": 282031,
+      "mtime_ns": 1791076500207590492
+    },
+    {
+      "name": "part-20261004T011527-6.parquet",
+      "size": 253545,
+      "mtime_ns": 1791076528677711196
+    },
+    {
+      "name": "part-20261004T011625-61.parquet",
+      "size": 281941,
+      "mtime_ns": 1791076586459966461
+    },
+    {
+      "name": "part-20261004T011647-61.parquet",
+      "size": 255416,
+      "mtime_ns": 1791076608500181085
+    },
+    {
+      "name": "part-20261004T011832-6.parquet",
+      "size": 280380,
+      "mtime_ns": 1791076713901068372
+    },
+    {
+      "name": "part-20261004T011847-6.parquet",
+      "size": 183672,
+      "mtime_ns": 1791076728567251626
+    },
+    {
+      "name": "part-20261004T022856-6.parquet",
+      "size": 281236,
+      "mtime_ns": 1791080940158735516
+    },
+    {
+      "name": "part-20261004T023154-6.parquet",
+      "size": 231686,
+      "mtime_ns": 1791081117572706054
+    },
+    {
+      "name": "part-20261004T023204-6.parquet",
+      "size": 192381,
+      "mtime_ns": 1791081125493910883
+    },
+    {
+      "name": "part-20261004T041017-11.parquet",
+      "size": 225349,
+      "mtime_ns": 1791087019381412119
+    },
+    {
+      "name": "part-20261004T051746-6.parquet",
+      "size": 234983,
+      "mtime_ns": 1791091068251743395
+    },
+    {
+      "name": "part-20261004T051803-6.parquet",
+      "size": 219884,
+      "mtime_ns": 1791091084569111874
+    },
+    {
+      "name": "part-20261004T063759-6.parquet",
+      "size": 232884,
+      "mtime_ns": 1791095880422242302
+    },
+    {
+      "name": "part-20261004T063821-6.parquet",
+      "size": 233808,
+      "mtime_ns": 1791095903194217665
+    },
+    {
+      "name": "part-20261004T063832-6.parquet",
+      "size": 198064,
+      "mtime_ns": 1791095913000019304
+    },
+    {
+      "name": "part-20261004T063910-6.parquet",
+      "size": 234685,
+      "mtime_ns": 1791095950509339330
+    },
+    {
+      "name": "part-20261004T063927-6.parquet",
+      "size": 234497,
+      "mtime_ns": 1791095968078882348
+    },
+    {
+      "name": "part-20261004T063946-6.parquet",
+      "size": 235402,
+      "mtime_ns": 1791095987331811331
+    },
+    {
+      "name": "part-20261004T063955-6.parquet",
+      "size": 215974,
+      "mtime_ns": 1791095996563567548
+    },
+    {
+      "name": "part-20261004T074828-6.parquet",
+      "size": 230306,
+      "mtime_ns": 1791100109824852693
+    },
+    {
+      "name": "part-20261004T074855-6.parquet",
+      "size": 234598,
+      "mtime_ns": 1791100136259816033
+    },
+    {
+      "name": "part-20261004T074900-6.parquet",
+      "size": 187694,
+      "mtime_ns": 1791100141549071256
+    },
+    {
+      "name": "part-20261004T145827-1558.parquet",
+      "size": 280962,
+      "mtime_ns": 1791088107709371120
+    },
+    {
+      "name": "part-20261004T145856-1558.parquet",
+      "size": 281374,
+      "mtime_ns": 1791088136917352061
+    },
+    {
+      "name": "part-20261004T145928-1558.parquet",
+      "size": 280367,
+      "mtime_ns": 1791088168905574150
+    },
+    {
+      "name": "part-20261004T145952-1558.parquet",
+      "size": 281625,
+      "mtime_ns": 1791088193151259342
+    },
+    {
+      "name": "part-20261004T150014-1558.parquet",
+      "size": 281061,
+      "mtime_ns": 1791088215028709201
+    },
+    {
+      "name": "part-20261004T150044-1558.parquet",
+      "size": 282421,
+      "mtime_ns": 1791088245309887492
+    },
+    {
+      "name": "part-20261004T150110-1558.parquet",
+      "size": 281429,
+      "mtime_ns": 1791088270832740996
+    },
+    {
+      "name": "part-20261004T150134-1558.parquet",
+      "size": 281963,
+      "mtime_ns": 1791088294504069640
+    },
+    {
+      "name": "part-20261004T150151-1558.parquet",
+      "size": 279217,
+      "mtime_ns": 1791088312067399839
+    },
+    {
+      "name": "part-20261004T150214-1558.parquet",
+      "size": 280303,
+      "mtime_ns": 1791088334662804406
+    },
+    {
+      "name": "part-20261004T150236-1558.parquet",
+      "size": 281568,
+      "mtime_ns": 1791088356779328922
+    },
+    {
+      "name": "part-20261004T150255-1558.parquet",
+      "size": 283402,
+      "mtime_ns": 1791088375444432340
+    },
+    {
+      "name": "part-20261004T150313-1558.parquet",
+      "size": 280971,
+      "mtime_ns": 1791088394227780691
+    },
+    {
+      "name": "part-20261004T150334-1558.parquet",
+      "size": 280826,
+      "mtime_ns": 1791088414823021620
+    },
+    {
+      "name": "part-20261004T150358-1558.parquet",
+      "size": 279755,
+      "mtime_ns": 1791088438631998813
+    },
+    {
+      "name": "part-20261004T150419-1558.parquet",
+      "size": 283117,
+      "mtime_ns": 1791088460216341712
+    },
+    {
+      "name": "part-20261004T150439-1558.parquet",
+      "size": 282760,
+      "mtime_ns": 1791088479659293986
+    },
+    {
+      "name": "part-20261004T150501-1558.parquet",
+      "size": 281644,
+      "mtime_ns": 1791088501602858409
+    },
+    {
+      "name": "part-20261004T150524-1558.parquet",
+      "size": 282104,
+      "mtime_ns": 1791088525629054471
+    },
+    {
+      "name": "part-20261004T150546-1558.parquet",
+      "size": 280243,
+      "mtime_ns": 1791088547303449559
+    },
+    {
+      "name": "part-20261004T150606-1558.parquet",
+      "size": 281194,
+      "mtime_ns": 1791088566982828923
+    },
+    {
+      "name": "part-20261004T150632-1558.parquet",
+      "size": 281408,
+      "mtime_ns": 1791088592633249023
+    },
+    {
+      "name": "part-20261004T150653-1558.parquet",
+      "size": 279463,
+      "mtime_ns": 1791088613595885356
+    },
+    {
+      "name": "part-20261004T150712-1558.parquet",
+      "size": 280895,
+      "mtime_ns": 1791088632296248150
+    },
+    {
+      "name": "part-20261004T150733-1558.parquet",
+      "size": 282823,
+      "mtime_ns": 1791088653879358479
+    },
+    {
+      "name": "part-20261004T150757-1558.parquet",
+      "size": 283341,
+      "mtime_ns": 1791088677918861567
+    },
+    {
+      "name": "part-20261004T150821-1558.parquet",
+      "size": 281210,
+      "mtime_ns": 1791088701727531763
+    },
+    {
+      "name": "part-20261004T150839-1558.parquet",
+      "size": 279115,
+      "mtime_ns": 1791088719567086507
+    },
+    {
+      "name": "part-20261004T150858-1558.parquet",
+      "size": 281102,
+      "mtime_ns": 1791088738548084806
+    },
+    {
+      "name": "part-20261004T150925-1558.parquet",
+      "size": 280118,
+      "mtime_ns": 1791088765555029801
+    },
+    {
+      "name": "part-20261004T150950-1558.parquet",
+      "size": 281460,
+      "mtime_ns": 1791088790557058280
+    },
+    {
+      "name": "part-20261004T151010-1558.parquet",
+      "size": 279633,
+      "mtime_ns": 1791088810602761809
+    },
+    {
+      "name": "part-20261004T151031-1558.parquet",
+      "size": 282400,
+      "mtime_ns": 1791088831366637701
+    },
+    {
+      "name": "part-20261004T151054-1558.parquet",
+      "size": 283636,
+      "mtime_ns": 1791088854442067289
+    },
+    {
+      "name": "part-20261004T151111-1558.parquet",
+      "size": 279710,
+      "mtime_ns": 1791088871881251444
+    },
+    {
+      "name": "part-20261004T151131-1558.parquet",
+      "size": 281451,
+      "mtime_ns": 1791088891538298584
+    },
+    {
+      "name": "part-20261004T151157-1558.parquet",
+      "size": 281927,
+      "mtime_ns": 1791088917647767077
+    },
+    {
+      "name": "part-20261004T151219-1558.parquet",
+      "size": 280326,
+      "mtime_ns": 1791088940120582299
+    },
+    {
+      "name": "part-20261004T151241-1558.parquet",
+      "size": 280439,
+      "mtime_ns": 1791088962052781796
+    },
+    {
+      "name": "part-20261004T151301-1558.parquet",
+      "size": 281237,
+      "mtime_ns": 1791088981753554909
+    },
+    {
+      "name": "part-20261004T151327-1558.parquet",
+      "size": 281533,
+      "mtime_ns": 1791089007944630748
+    },
+    {
+      "name": "part-20261004T151350-1558.parquet",
+      "size": 282740,
+      "mtime_ns": 1791089031057982501
+    },
+    {
+      "name": "part-20261004T151415-1558.parquet",
+      "size": 280387,
+      "mtime_ns": 1791089056084627634
+    },
+    {
+      "name": "part-20261004T151440-1558.parquet",
+      "size": 283927,
+      "mtime_ns": 1791089081117610989
+    },
+    {
+      "name": "part-20261004T151505-1558.parquet",
+      "size": 283641,
+      "mtime_ns": 1791089106163149122
+    },
+    {
+      "name": "part-20261004T151526-1558.parquet",
+      "size": 280688,
+      "mtime_ns": 1791089127191504299
+    },
+    {
+      "name": "part-20261004T151548-1558.parquet",
+      "size": 281354,
+      "mtime_ns": 1791089148952645681
+    },
+    {
+      "name": "part-20261004T151617-1558.parquet",
+      "size": 285460,
+      "mtime_ns": 1791089177635415956
+    },
+    {
+      "name": "part-20261004T151641-1558.parquet",
+      "size": 283300,
+      "mtime_ns": 1791089201672569399
+    },
+    {
+      "name": "part-20261004T151705-1558.parquet",
+      "size": 281585,
+      "mtime_ns": 1791089225694105287
+    },
+    {
+      "name": "part-20261004T151736-1558.parquet",
+      "size": 282825,
+      "mtime_ns": 1791089256610580937
+    },
+    {
+      "name": "part-20261004T151759-1558.parquet",
+      "size": 281386,
+      "mtime_ns": 1791089280271541174
+    },
+    {
+      "name": "part-20261004T151818-1558.parquet",
+      "size": 277906,
+      "mtime_ns": 1791089298979945194
+    },
+    {
+      "name": "part-20261004T151844-1558.parquet",
+      "size": 283183,
+      "mtime_ns": 1791089324730830028
+    },
+    {
+      "name": "part-20261004T151907-1558.parquet",
+      "size": 283992,
+      "mtime_ns": 1791089348051193404
+    },
+    {
+      "name": "part-20261004T151931-1558.parquet",
+      "size": 282022,
+      "mtime_ns": 1791089372089192052
+    },
+    {
+      "name": "part-20261004T151953-1558.parquet",
+      "size": 283527,
+      "mtime_ns": 1791089393393993709
+    },
+    {
+      "name": "part-20261004T152016-1558.parquet",
+      "size": 283819,
+      "mtime_ns": 1791089416418575898
+    },
+    {
+      "name": "part-20261004T152034-1558.parquet",
+      "size": 281603,
+      "mtime_ns": 1791089434508774287
+    },
+    {
+      "name": "part-20261004T152054-1558.parquet",
+      "size": 284403,
+      "mtime_ns": 1791089454307246383
+    },
+    {
+      "name": "part-20261004T152115-1558.parquet",
+      "size": 284621,
+      "mtime_ns": 1791089476180645600
+    },
+    {
+      "name": "part-20261004T152136-1558.parquet",
+      "size": 286002,
+      "mtime_ns": 1791089496708137210
+    },
+    {
+      "name": "part-20261004T152155-1558.parquet",
+      "size": 283137,
+      "mtime_ns": 1791089516539529992
+    },
+    {
+      "name": "part-20261004T152217-1558.parquet",
+      "size": 284640,
+      "mtime_ns": 1791089537935332872
+    },
+    {
+      "name": "part-20261004T152235-1558.parquet",
+      "size": 280439,
+      "mtime_ns": 1791089556150721580
+    },
+    {
+      "name": "part-20261004T152258-1558.parquet",
+      "size": 281757,
+      "mtime_ns": 1791089578514705743
+    },
+    {
+      "name": "part-20261004T152319-1558.parquet",
+      "size": 285224,
+      "mtime_ns": 1791089599657756912
+    },
+    {
+      "name": "part-20261004T152338-1558.parquet",
+      "size": 283907,
+      "mtime_ns": 1791089618325911984
+    },
+    {
+      "name": "part-20261004T152400-1558.parquet",
+      "size": 282932,
+      "mtime_ns": 1791089640897512310
+    },
+    {
+      "name": "part-20261004T152419-1558.parquet",
+      "size": 284112,
+      "mtime_ns": 1791089659789438847
+    },
+    {
+      "name": "part-20261004T152442-1558.parquet",
+      "size": 285378,
+      "mtime_ns": 1791089683152157035
+    },
+    {
+      "name": "part-20261004T152459-1558.parquet",
+      "size": 281588,
+      "mtime_ns": 1791089700083867270
+    },
+    {
+      "name": "part-20261004T152520-1558.parquet",
+      "size": 284717,
+      "mtime_ns": 1791089720507732332
+    },
+    {
+      "name": "part-20261004T152532-1558.parquet",
+      "size": 280198,
+      "mtime_ns": 1791089733022453924
+    },
+    {
+      "name": "part-20261004T152549-1558.parquet",
+      "size": 286587,
+      "mtime_ns": 1791089750338684268
+    },
+    {
+      "name": "part-20261004T152607-1558.parquet",
+      "size": 284544,
+      "mtime_ns": 1791089767743945780
+    },
+    {
+      "name": "part-20261004T152624-1558.parquet",
+      "size": 285409,
+      "mtime_ns": 1791089784510022021
+    },
+    {
+      "name": "part-20261004T152647-1558.parquet",
+      "size": 288384,
+      "mtime_ns": 1791089808050251669
+    },
+    {
+      "name": "part-20261004T152711-1558.parquet",
+      "size": 285291,
+      "mtime_ns": 1791089832554788551
+    },
+    {
+      "name": "part-20261004T152745-1558.parquet",
+      "size": 286892,
+      "mtime_ns": 1791089865612130655
+    },
+    {
+      "name": "part-20261004T152814-1558.parquet",
+      "size": 285208,
+      "mtime_ns": 1791089895297051873
+    },
+    {
+      "name": "part-20261004T152844-1558.parquet",
+      "size": 289532,
+      "mtime_ns": 1791089924930697863
+    },
+    {
+      "name": "part-20261004T152913-1558.parquet",
+      "size": 287952,
+      "mtime_ns": 1791089954003455690
+    },
+    {
+      "name": "part-20261004T152941-1558.parquet",
+      "size": 285434,
+      "mtime_ns": 1791089982329905121
+    },
+    {
+      "name": "part-20261004T153009-1558.parquet",
+      "size": 288670,
+      "mtime_ns": 1791090010205883953
+    },
+    {
+      "name": "part-20261004T153040-1558.parquet",
+      "size": 287518,
+      "mtime_ns": 1791090040817520297
+    },
+    {
+      "name": "part-20261004T153102-1558.parquet",
+      "size": 290368,
+      "mtime_ns": 1791090062607076087
+    },
+    {
+      "name": "part-20261004T153118-1558.parquet",
+      "size": 280927,
+      "mtime_ns": 1791090078731067292
+    },
+    {
+      "name": "part-20261004T153134-1558.parquet",
+      "size": 281276,
+      "mtime_ns": 1791090094922694572
+    },
+    {
+      "name": "part-20261004T153151-1558.parquet",
+      "size": 280538,
+      "mtime_ns": 1791090111906705224
+    },
+    {
+      "name": "part-20261004T153204-1558.parquet",
+      "size": 278776,
+      "mtime_ns": 1791090124373304199
+    },
+    {
+      "name": "part-20261004T153220-1558.parquet",
+      "size": 281229,
+      "mtime_ns": 1791090140898472044
+    },
+    {
+      "name": "part-20261004T153233-1558.parquet",
+      "size": 280557,
+      "mtime_ns": 1791090153358509969
+    },
+    {
+      "name": "part-20261004T153248-1558.parquet",
+      "size": 281071,
+      "mtime_ns": 1791090168452455961
+    },
+    {
+      "name": "part-20261004T153304-1558.parquet",
+      "size": 280604,
+      "mtime_ns": 1791090184223571574
+    },
+    {
+      "name": "part-20261004T153318-1558.parquet",
+      "size": 281240,
+      "mtime_ns": 1791090198205270145
+    },
+    {
+      "name": "part-20261004T153330-1558.parquet",
+      "size": 278249,
+      "mtime_ns": 1791090210810011130
+    },
+    {
+      "name": "part-20261004T153350-1558.parquet",
+      "size": 278704,
+      "mtime_ns": 1791090230387935843
+    },
+    {
+      "name": "part-20261004T153407-1558.parquet",
+      "size": 279415,
+      "mtime_ns": 1791090247680729476
+    },
+    {
+      "name": "part-20261004T153425-1558.parquet",
+      "size": 280360,
+      "mtime_ns": 1791090265950254925
+    },
+    {
+      "name": "part-20261004T153445-1558.parquet",
+      "size": 278958,
+      "mtime_ns": 1791090285331458633
+    },
+    {
+      "name": "part-20261004T153503-1558.parquet",
+      "size": 281262,
+      "mtime_ns": 1791090303582611883
+    },
+    {
+      "name": "part-20261004T153520-1558.parquet",
+      "size": 280463,
+      "mtime_ns": 1791090321096379941
+    },
+    {
+      "name": "part-20261004T153539-1558.parquet",
+      "size": 281042,
+      "mtime_ns": 1791090339236529294
+    },
+    {
+      "name": "part-20261004T153554-1558.parquet",
+      "size": 281370,
+      "mtime_ns": 1791090354905130633
+    },
+    {
+      "name": "part-20261004T153609-1558.parquet",
+      "size": 281689,
+      "mtime_ns": 1791090369720510116
+    },
+    {
+      "name": "part-20261004T153624-1558.parquet",
+      "size": 281011,
+      "mtime_ns": 1791090384611031136
+    },
+    {
+      "name": "part-20261004T153635-1558.parquet",
+      "size": 277403,
+      "mtime_ns": 1791090395650948194
+    },
+    {
+      "name": "part-20261004T153649-1558.parquet",
+      "size": 280606,
+      "mtime_ns": 1791090409440930399
+    },
+    {
+      "name": "part-20261004T153704-1558.parquet",
+      "size": 283051,
+      "mtime_ns": 1791090424435766892
+    },
+    {
+      "name": "part-20261004T153717-1558.parquet",
+      "size": 281462,
+      "mtime_ns": 1791090437786750315
+    },
+    {
+      "name": "part-20261004T153738-1558.parquet",
+      "size": 281339,
+      "mtime_ns": 1791090458150657224
+    },
+    {
+      "name": "part-20261004T153755-1558.parquet",
+      "size": 279831,
+      "mtime_ns": 1791090475394477980
+    },
+    {
+      "name": "part-20261004T153812-1558.parquet",
+      "size": 280987,
+      "mtime_ns": 1791090492889898965
+    },
+    {
+      "name": "part-20261004T153831-1558.parquet",
+      "size": 280464,
+      "mtime_ns": 1791090511935176745
+    },
+    {
+      "name": "part-20261004T153849-1558.parquet",
+      "size": 279977,
+      "mtime_ns": 1791090529811697721
+    },
+    {
+      "name": "part-20261004T153911-1558.parquet",
+      "size": 283399,
+      "mtime_ns": 1791090551221541137
+    },
+    {
+      "name": "part-20261004T153929-1558.parquet",
+      "size": 283599,
+      "mtime_ns": 1791090569981433859
+    },
+    {
+      "name": "part-20261004T153946-1558.parquet",
+      "size": 281272,
+      "mtime_ns": 1791090586911954989
+    },
+    {
+      "name": "part-20261004T154003-1558.parquet",
+      "size": 280039,
+      "mtime_ns": 1791090603583988592
+    },
+    {
+      "name": "part-20261004T154020-1558.parquet",
+      "size": 280411,
+      "mtime_ns": 1791090620210975839
+    },
+    {
+      "name": "part-20261004T154034-1558.parquet",
+      "size": 282453,
+      "mtime_ns": 1791090634338790671
+    },
+    {
+      "name": "part-20261004T154045-1558.parquet",
+      "size": 283536,
+      "mtime_ns": 1791090645788910406
+    },
+    {
+      "name": "part-20261004T154058-1558.parquet",
+      "size": 278943,
+      "mtime_ns": 1791090659038622674
+    },
+    {
+      "name": "part-20261004T154113-1558.parquet",
+      "size": 280927,
+      "mtime_ns": 1791090673495010263
+    },
+    {
+      "name": "part-20261004T154130-1558.parquet",
+      "size": 283773,
+      "mtime_ns": 1791090690860864152
+    },
+    {
+      "name": "part-20261004T154143-1558.parquet",
+      "size": 279127,
+      "mtime_ns": 1791090703950246647
+    },
+    {
+      "name": "part-20261004T154158-1558.parquet",
+      "size": 282358,
+      "mtime_ns": 1791090718424027564
+    },
+    {
+      "name": "part-20261004T154210-1558.parquet",
+      "size": 278579,
+      "mtime_ns": 1791090730937911092
+    },
+    {
+      "name": "part-20261004T154226-1558.parquet",
+      "size": 283598,
+      "mtime_ns": 1791090746358643100
+    },
+    {
+      "name": "part-20261004T154239-1558.parquet",
+      "size": 280704,
+      "mtime_ns": 1791090759820232548
+    },
+    {
+      "name": "part-20261004T154251-1558.parquet",
+      "size": 274973,
+      "mtime_ns": 1791090771734665937
+    },
+    {
+      "name": "part-20261004T154310-1558.parquet",
+      "size": 280082,
+      "mtime_ns": 1791090791061590085
+    },
+    {
+      "name": "part-20261004T154324-1558.parquet",
+      "size": 278996,
+      "mtime_ns": 1791090805142790277
+    },
+    {
+      "name": "part-20261004T154344-1558.parquet",
+      "size": 280154,
+      "mtime_ns": 1791090825085702939
+    },
+    {
+      "name": "part-20261004T154401-1558.parquet",
+      "size": 279995,
+      "mtime_ns": 1791090841384116387
+    },
+    {
+      "name": "part-20261004T154422-1558.parquet",
+      "size": 281576,
+      "mtime_ns": 1791090862643022108
+    },
+    {
+      "name": "part-20261004T154440-1558.parquet",
+      "size": 279873,
+      "mtime_ns": 1791090880420684875
+    },
+    {
+      "name": "part-20261004T154457-1558.parquet",
+      "size": 282225,
+      "mtime_ns": 1791090897931052493
+    },
+    {
+      "name": "part-20261004T154517-1558.parquet",
+      "size": 281262,
+      "mtime_ns": 1791090917230244031
+    },
+    {
+      "name": "part-20261004T154536-1558.parquet",
+      "size": 279680,
+      "mtime_ns": 1791090936355157034
+    },
+    {
+      "name": "part-20261004T154551-1558.parquet",
+      "size": 281884,
+      "mtime_ns": 1791090952184493061
+    },
+    {
+      "name": "part-20261004T154616-1558.parquet",
+      "size": 280309,
+      "mtime_ns": 1791090976350692885
+    },
+    {
+      "name": "part-20261004T154633-1558.parquet",
+      "size": 280626,
+      "mtime_ns": 1791090993923066898
+    },
+    {
+      "name": "part-20261004T154654-1558.parquet",
+      "size": 278348,
+      "mtime_ns": 1791091015141951487
+    },
+    {
+      "name": "part-20261004T154715-1558.parquet",
+      "size": 279429,
+      "mtime_ns": 1791091035348810065
+    },
+    {
+      "name": "part-20261004T154736-1558.parquet",
+      "size": 281743,
+      "mtime_ns": 1791091056874929353
+    },
+    {
+      "name": "part-20261004T154753-1558.parquet",
+      "size": 282559,
+      "mtime_ns": 1791091073697823181
+    },
+    {
+      "name": "part-20261004T154806-1558.parquet",
+      "size": 259047,
+      "mtime_ns": 1791091086568676085
+    }
+  ],
+  "metadata_sha256": {
+    "games.parquet": "5f7b22a591b588f4acc95b624085298b139e893224c074e629b4ae2b231fffaf",
+    "teams.parquet": "bd6c8275417d5a65a3e2fe685d557b41d653dbfb7545b450dd33c67b646ca517"
+  },
+  "rows_sha256": "fa98d712999b37fa2750639e3bd823fe90016db88f3727fff19b899fa6fa4f78",
+  "contract": "Earliest canonical part per game, as peer qq.py; ranked/post-m2 only. Official index winner comparison and stored header equality, not full raw replay census. No local/unranked rows."
+}
