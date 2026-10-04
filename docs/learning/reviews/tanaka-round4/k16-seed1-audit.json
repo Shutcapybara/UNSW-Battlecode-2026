@@ -1,0 +1,372 @@
+{
+  "pool": {
+    "n": 272,
+    "net": 7.0,
+    "delta": 0.025735294117647058,
+    "clusters": 136,
+    "ci_map_opp": [
+      0.003676470588235294,
+      0.051470588235294115
+    ],
+    "ci_directional": [
+      0.007352941176470588,
+      0.04430147058823513
+    ],
+    "ci_map": [
+      -0.007536764705882343,
+      0.07720588235294118
+    ],
+    "per_map": [
+      {
+        "map": "live+australia",
+        "n": 16,
+        "wins": 14.0,
+        "parent_wins": 14.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+autarky",
+        "n": 16,
+        "wins": 16.0,
+        "parent_wins": 16.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+default",
+        "n": 16,
+        "wins": 13.0,
+        "parent_wins": 13.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+devil",
+        "n": 16,
+        "wins": 15.0,
+        "parent_wins": 15.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+dilemma",
+        "n": 16,
+        "wins": 15.0,
+        "parent_wins": 15.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+islands",
+        "n": 16,
+        "wins": 16.0,
+        "parent_wins": 16.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+maze",
+        "n": 16,
+        "wins": 15.0,
+        "parent_wins": 15.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+portals",
+        "n": 16,
+        "wins": 11.0,
+        "parent_wins": 12.0,
+        "net": -1.0
+      },
+      {
+        "map": "live+queen_of_spades",
+        "n": 16,
+        "wins": 16.0,
+        "parent_wins": 16.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+schooltime",
+        "n": 16,
+        "wins": 14.0,
+        "parent_wins": 14.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+slithery_fight",
+        "n": 16,
+        "wins": 11.0,
+        "parent_wins": 10.0,
+        "net": 1.0
+      },
+      {
+        "map": "live+stripes",
+        "n": 16,
+        "wins": 6.0,
+        "parent_wins": 5.0,
+        "net": 1.0
+      },
+      {
+        "map": "live+tower_defense",
+        "n": 16,
+        "wins": 14.0,
+        "parent_wins": 15.0,
+        "net": -1.0
+      },
+      {
+        "map": "live+trauma",
+        "n": 16,
+        "wins": 13.0,
+        "parent_wins": 13.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+trophy",
+        "n": 16,
+        "wins": 15.0,
+        "parent_wins": 15.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+unsw",
+        "n": 16,
+        "wins": 14.0,
+        "parent_wins": 14.0,
+        "net": 0.0
+      },
+      {
+        "map": "live+weakhold",
+        "n": 16,
+        "wins": 15.0,
+        "parent_wins": 8.0,
+        "net": 7.0
+      }
+    ],
+    "input_hashes": {
+      "asahi-05-kz12-k16": "847970d98944c7a1dd182ade60412318d779176a9297ae961e461d95f41f767e",
+      "carthage-05-free-sprint": "9aefd35db010cd8b72b9726cfda5bba4c4d3e3f25953dd1d9b07e89a83b7432d"
+    }
+  },
+  "gen": {
+    "n": 464,
+    "net": -1.0,
+    "delta": -0.0021551724137931034,
+    "clusters": 232,
+    "ci_map_opp": [
+      -0.010775862068965518,
+      0.004310344827586207
+    ],
+    "ci_directional": [
+      -0.010775862068965518,
+      0.00646551724137931
+    ],
+    "ci_map": [
+      -0.00646551724137931,
+      0.0
+    ],
+    "per_map": [
+      {
+        "map": "m2tr+autarky_tr",
+        "n": 16,
+        "wins": 16.0,
+        "parent_wins": 16.0,
+        "net": 0.0
+      },
+      {
+        "map": "m2tr+default_tr",
+        "n": 16,
+        "wins": 10.0,
+        "parent_wins": 10.0,
+        "net": 0.0
+      },
+      {
+        "map": "m2tr+dilemma_tr",
+        "n": 16,
+        "wins": 16.0,
+        "parent_wins": 16.0,
+        "net": 0.0
+      },
+      {
+        "map": "m2tr+trophy_tr",
+        "n": 16,
+        "wins": 11.0,
+        "parent_wins": 11.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_archipelago",
+        "n": 16,
+        "wins": 12.0,
+        "parent_wins": 12.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_crossroads",
+        "n": 16,
+        "wins": 9.0,
+        "parent_wins": 9.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_delayed_commons",
+        "n": 16,
+        "wins": 10.0,
+        "parent_wins": 10.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_equatorial_belt",
+        "n": 16,
+        "wins": 10.0,
+        "parent_wins": 10.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_far_harbors",
+        "n": 16,
+        "wins": 8.0,
+        "parent_wins": 8.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_nursery_bays",
+        "n": 16,
+        "wins": 15.0,
+        "parent_wins": 15.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_pinwheel",
+        "n": 16,
+        "wins": 12.0,
+        "parent_wins": 12.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_portal_quartet",
+        "n": 16,
+        "wins": 16.0,
+        "parent_wins": 16.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_pulse_farms",
+        "n": 16,
+        "wins": 12.0,
+        "parent_wins": 12.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_relay_depots",
+        "n": 16,
+        "wins": 12.0,
+        "parent_wins": 12.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_scattered_fleets",
+        "n": 16,
+        "wins": 14.0,
+        "parent_wins": 14.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_seam_market",
+        "n": 16,
+        "wins": 1.0,
+        "parent_wins": 1.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+mc26_spring_wells",
+        "n": 16,
+        "wins": 6.0,
+        "parent_wins": 6.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+md26_causeway_detour_s0",
+        "n": 16,
+        "wins": 12.0,
+        "parent_wins": 12.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+md26_causeway_portal_s0",
+        "n": 16,
+        "wins": 14.0,
+        "parent_wins": 14.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+md26_commons_shared_s0",
+        "n": 16,
+        "wins": 15.0,
+        "parent_wins": 15.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+md26_commons_spread_s0",
+        "n": 16,
+        "wins": 12.0,
+        "parent_wins": 12.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+md26_orchard_narrow_s0",
+        "n": 16,
+        "wins": 14.0,
+        "parent_wins": 14.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+md26_orchard_wide_s0",
+        "n": 16,
+        "wins": 13.0,
+        "parent_wins": 13.0,
+        "net": 0.0
+      },
+      {
+        "map": "new+md26_promenade_ring_s0",
+        "n": 16,
+        "wins": 12.0,
+        "parent_wins": 12.0,
+        "net": 0.0
+      },
+      {
+        "map": "var+crossroads_tr",
+        "n": 16,
+        "wins": 8.0,
+        "parent_wins": 8.0,
+        "net": 0.0
+      },
+      {
+        "map": "var+devil_tr",
+        "n": 16,
+        "wins": 16.0,
+        "parent_wins": 16.0,
+        "net": 0.0
+      },
+      {
+        "map": "var+portals_tr",
+        "n": 16,
+        "wins": 13.0,
+        "parent_wins": 13.0,
+        "net": 0.0
+      },
+      {
+        "map": "var+queen_of_spades_tr",
+        "n": 16,
+        "wins": 10.0,
+        "parent_wins": 10.0,
+        "net": 0.0
+      },
+      {
+        "map": "var+trauma_tr",
+        "n": 16,
+        "wins": 11.0,
+        "parent_wins": 12.0,
+        "net": -1.0
+      }
+    ],
+    "input_hashes": {
+      "asahi-05-kz12-k16": "9ce21bc0f2c65ce339d2daca8f544ae4290e9ea197536a7a64aac365d07bbb2d",
+      "carthage-05-free-sprint": "da16042e99aebaefe3072253eed51fb19879d9844d005c8c31c7dfb75e3f96fd"
+    }
+  }
+}

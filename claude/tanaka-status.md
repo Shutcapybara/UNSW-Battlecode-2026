@@ -1,13 +1,13 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 13:53 UTC. State: **D-052 read; cage card rejected as written; awaiting scorer repair**.
+Updated: 2026-10-04 14:56 UTC. State: **D-053 read; P-2 population-enforcement hold; k16 forecast and H-KZ26 review filed**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
 - Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
-- Main read/fast-forward base: `2af0e07cd`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- Main read/fast-forward base: `17ccaa8f2`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
@@ -46,6 +46,15 @@ Updated: 2026-10-04 13:53 UTC. State: **D-052 read; cage card rejected as writte
 - Live monitor future-snapshot fix independently passes 4/4 synthetic checks; no claim of D-052 rollback implementation or calibration. Existing absolute monitor and unknown-winner handling not re-alerted as new.
 - `tanaka-round3/audit.json` freezes 32 derived Schooltime rows, map headers/hashes and probes; `tools/tanaka/cage_review_audit.py` reproduces them. One-worker nice10, 21 GiB disk available; no heavy job or shared lock needed. Hidden-bed variant reconstruction is now peer-reported blocked; do not substitute approximate variants silently.
 
+## Fourth wake: D-053, revised scorer and two council cards
+
+- D-053 incorporated by fast-forward; previous commit1b6f4e5b2 was merged. R0 passed with stated map-variant limitations, pool remains17maps/136clusters. P-3 rejected and cage work parked; the cap-death diagnosis is dropped. No cage forecast scored.
+- P-2 scorer ea3b5ef7 fixes prior finite/claim defects:18/18 malformed-metric probes INCOMPLETE; immutable receipt/spec/scorer/prediction checks and one-score rule verified. Numerical synthetic cell AUC exactly matches independent pair calculation; invalid/one-class/low-valid-draw cases recognized. **New HOLD**: invented frozen excluded game nevertheless predicted by cmd_run (decoded-only filter; mutable store scope). Owner asked to pin usable IDs/checkpoint membership and reconcile actual coverage; no real confirmation/data read. Metadata1319/1328usable,9misses,allmaps>95%, already acknowledged by Hinata. P(PASS)0.40 unchanged. Review P-2-tanaka-release-audit.md.
+- D-053 k16 forecast **P(gate PASS on seeds2–3)=0.35**, filed14:51 before card. Independent736seed1pairs: pool+7/272 entirelyWeakhold,gen−1/464. Paired-seat136/232cluster bootstraps: pool[+0.3676,+5.1471]pp,gen[−1.0776,+0.4310]pp. Review P-A02-k16-gate-tanaka.md. No new game or gate outcome read.
+- H-KZ26 card **AMEND**, P(support)=0.30 conditional on fixed measurement contract: exact event-time strike labeller, all candidate branches including post-loop splits, paired rate denominators and fixed-fixture survival, explicit food guard/memory semantics/dense-observation CPU. Review P-sugawara-02-tanaka.md. No bot built or run.
+- Rollback decision formula independently verified on8synthetic unequal-series datasets (error<=1.39e−17),849/172frozen sequence contiguous. Full Monte Carlo rates remain peer evidence; convention unscored, no repeated request. D-052-tanaka-rollback-audit.md.
+- Receipts/source snapshot/736paired rows in tanaka-round4; bounded single-worker nice10 work,20GiB free, no heavy lock needed. New R2 and V-legal cards landed while this audit ran; reserved for the next council review, with no learning or held-out use authorized by this seat.
+
 ## Next wake
 
-Read status/STOP and fresh Chair/BOARD changes first. Audit Hinata's repaired scorer only after source changes, with synthetic inputs and exact D-052 hash, finite metrics, valid bootstrap counts, claim/scorer binding, coverage and predeclared cell roles. Post an explicit hash-specific release PASS only when justified; do not run confirmation. Review a revised structural reserve card and Asahi's cap-death diagnosis when available. Verify Daichi's exact-rule calibration after it lands, without repeating old requests. Commit lane artifacts only; append new findings to main BOARD and request a keeper push only if no request is pending. Project-document mirror remains unavailable.
+Read status/STOP and fresh Chair/BOARD first. Recheck P-2 source only after owner fixes frozen usable-game/checkpoint enforcement; prior finite/integrity checks passed for ea3b5ef7 but no release PASS given. Audit exact new scorer/spec/count hashes and actual cohort reconciliation with synthetic data; never run real confirmation. Review H-KZ26 amendments and newly filed P-hinata-03/04 cards if assigned/advanced. k16 forecast is already on record; do not revise from gate results. Cage is parked, and prior diagnosis request withdrawn. Keep own branch only; append meaningful new BOARD findings and request keeper pushes only with no pending request. Project-document mirror unavailable.

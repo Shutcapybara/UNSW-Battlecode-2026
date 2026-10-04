@@ -1,0 +1,136 @@
+{
+  "source_sha256": "ea3b5ef748ac9cf498c48b3941dc3c3be1639456f3e3f283ab308e63d787897d",
+  "spec_sha256": "15d79683518cf704a8cb7680ef1fa55acd8bdaef2bc97b694f40db742ea0d07d",
+  "checks": {
+    "valid_control": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "reasons": [],
+      "reported": [
+        "rl/r50 AUC_V 0.7000 vs 0.66: met (report-only)"
+      ],
+      "report_only_cells": [
+        "elim/r10"
+      ]
+    },
+    "auc_v/nan": "INCOMPLETE",
+    "auc_phi/nan": "INCOMPLETE",
+    "d_auc/nan": "INCOMPLETE",
+    "slope_v/nan": "INCOMPLETE",
+    "slope_phi/nan": "INCOMPLETE",
+    "d_auc_ci/nan": "INCOMPLETE",
+    "auc_v/inf": "INCOMPLETE",
+    "auc_phi/inf": "INCOMPLETE",
+    "d_auc/inf": "INCOMPLETE",
+    "slope_v/inf": "INCOMPLETE",
+    "slope_phi/inf": "INCOMPLETE",
+    "d_auc_ci/inf": "INCOMPLETE",
+    "auc_v/None": "INCOMPLETE",
+    "auc_phi/None": "INCOMPLETE",
+    "d_auc/None": "INCOMPLETE",
+    "slope_v/None": "INCOMPLETE",
+    "slope_phi/None": "INCOMPLETE",
+    "d_auc_ci/None": "INCOMPLETE",
+    "valid_draws_989": "INCOMPLETE",
+    "valid_draws_990": "PASS",
+    "absolute_floor_report_only": "PASS",
+    "P-hinata-02-gate-spec.PROPOSED.json": "refused",
+    "P-2-gate-spec.D-052.json": "accepted",
+    "score_valid": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "reasons": [],
+      "reported": [
+        "rl/r50 AUC_V 0.7000 vs 0.66: met (report-only)"
+      ],
+      "report_only_cells": [
+        "elim/r10"
+      ]
+    },
+    "second_score_valid": "refused",
+    "score_claim": {
+      "verdict": "INCOMPLETE",
+      "incomplete": [
+        "claim hash differs from the hash recorded at claim time"
+      ],
+      "reasons": [],
+      "reported": []
+    },
+    "second_score_claim": "refused",
+    "score_scorer": {
+      "verdict": "INCOMPLETE",
+      "incomplete": [
+        "scorer hash ea3b5ef748ac differs from the audited/claimed 000000000000"
+      ],
+      "reasons": [],
+      "reported": []
+    },
+    "second_score_scorer": "refused",
+    "score_spec": {
+      "verdict": "INCOMPLETE",
+      "incomplete": [
+        "claim hash differs from the hash recorded at claim time",
+        "gate spec hash differs from the frozen one"
+      ],
+      "reasons": [],
+      "reported": []
+    },
+    "second_score_spec": "refused",
+    "score_prediction": {
+      "verdict": "INCOMPLETE",
+      "incomplete": [
+        "predictions changed after sealing"
+      ],
+      "reasons": [],
+      "reported": []
+    },
+    "second_score_prediction": "refused",
+    "score_coverage": {
+      "verdict": "INCOMPLETE",
+      "incomplete": [
+        "coverage below min_coverage_per_map"
+      ],
+      "reasons": [],
+      "reported": []
+    },
+    "second_score_coverage": "refused",
+    "frozen_exclusion": {
+      "listed_missing": [
+        {
+          "game": "Autarky0",
+          "map": "Autarky",
+          "reason": "in scope in manifest v2, out of scope in store games.parquet"
+        }
+      ],
+      "predicted_games": [
+        "Autarky0",
+        "Autarky1",
+        "Maze0",
+        "Maze1",
+        "Trauma0",
+        "Trauma1"
+      ],
+      "excluded_game_predicted": true,
+      "preclaim_coverage": {
+        "Autarky": {
+          "games": 100,
+          "usable": 99,
+          "coverage": 0.99
+        },
+        "Maze": {
+          "games": 100,
+          "usable": 100,
+          "coverage": 1.0
+        },
+        "Trauma": {
+          "games": 100,
+          "usable": 100,
+          "coverage": 1.0
+        }
+      }
+    }
+  },
+  "counts_sha256": "372e61ead40549325fb0e3c6d71081c38fdd3db206d6a00d3448c52c42e99a10",
+  "population_sha256": "75831df0973d5d33d0c68b81869ee865ee30870d24fbf8bc41a7924b23fed0e4",
+  "scope": "synthetic only, no real run/claim or held-out labels/states/predictions read"
+}
