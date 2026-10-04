@@ -1927,3 +1927,51 @@ Reading:
 
 launchd no longer has the hub's service loaded. The running hub (pid 79689) is a plain terminal process. The
 redeploy ban of D-057 §A stands until the lead restarts it inside a restart loop.
+
+## D-059 — The nearest precedent is this contest: the top teams use learned policies (4 Oct 2026 19:43Z, Chair: Ushijima)
+
+### A. What the lead reported (19:40Z) and what it corrects
+
+- The team named Stockfish said after the first round that it uses MLPs and may move to CNNs. Heartbreaker (team 62)
+  was a CNN with two LSTM layers, and its authors say the LSTM layers did not help. The lead's reading: the top of
+  the ladder is produced by automated fitting, not by hand-tuned heuristics.
+- Standing of this evidence: the teams' own statements, relayed by the lead. It is about the same game, the same
+  season and the same deploy limits, so under D-058 §A it is the nearest precedent and outranks the other contests
+  in D-058 §B.
+- **D-058 §C.2 is withdrawn.** The hand-rule dials are again temporary (D-044), not a main track. The learned policy
+  is the main line. The Evaluator finishes what is running (the queen reach veto panels, k = 16 on seeds 2–3) and
+  takes no new hand-rule work ahead of learned candidates.
+- What the Chair's own data adds: Heartbreaker stood at rank 40 (Elo 1825) on 28 Sep when we cloned it, and has no
+  ranked rating in today's ladder. The current top ten sit at Elo 2192 to 2333; we are at 1723, rank 82. A
+  one-step clone of a rank-40 network gave our only learned gain (+0.15 win).
+
+### B. Consequences
+
+1. **A network is deployable here.** A CNN with recurrent layers ran inside the same limits (4 MiB, 30 M points).
+   D-058 §C.6 listed "trees against a small CNN" as without precedent; that is corrected. R7's condition ("only
+   if the trees saturate") is dropped for offline work.
+2. **Battery arm A10: a small CNN on the dragon's own window**, with the scalar features beside it and the same
+   forward/right/left head; same rows, folds and metric as the other arms; no recurrence (the Heartbreaker authors
+   found none needed). Report accuracy, exported size in bytes with 8-bit weights, and estimated points per turn.
+   If the teachers are networks over the window, a student of the same class should recover them better than
+   trees over engineered columns. Our earlier result that trees beat an MLP on five Heartbreaker decisions was on
+   flattened features, not on a convolution over the window; it does not settle this.
+   A10 is a pooled arm for the selection rule of D-057 §C, and may also be fitted per teacher (D-058 §C.4).
+3. **Unobserved memory matters less than feared.** If the teacher's recurrent layers did not help, its policy is
+   close to a function of the current view. The ceiling on imitation is then set by features and data, not by
+   hidden state. Messages remain unobserved.
+4. **Self-play is no longer "last, if ever".** If the top teams fit by self-play, cloning them caps us near their
+   level less the imitation error. **Sugawara writes a scoping card (P-7) by 22:00Z**: fine-tuning by self-play
+   from the cloned network on the Mac (precedents: Lux AI Season 1's winner, Hungry Geese's winner); measured
+   engine throughput per core with network inference in the loop; hours to a first league iteration; what it would
+   displace; the falsifier. No training starts on the card alone; the Chair rules on it with the battery table in
+   hand. The clone remains the first deliverable because self-play starts from it.
+5. **Teachers.** The rating filter stands (D-058 §C.3). Where a team is known to field a network, it is preferred
+   as a single teacher.
+
+### C. Not known
+
+- How those teams train (self-play, imitation, evolution of parameters). The statements name architectures only.
+- Which current ladder team is Stockfish: no team carries that name in the 19:31Z ladder snapshot.
+- Whether the current top five are networks. Their styles differ (deliberate culls by invalid command or by
+  suicide, queen keeping), which fits learned policies and also fits hand design.
