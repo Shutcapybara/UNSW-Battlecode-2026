@@ -57,9 +57,11 @@ one switch on a registered parent.
   at least the projected queen length + 1 (H29 contract); k = 0 reproduces the parent on 272 of 272 pool games.
 - screen (seed 1, Asahi P-A02): pool Δwin +2.6 points [+0.7, +4.4]; gen −0.2 [−1.1, +0.7]; wall deaths on classes C
   and E −4.86 per 1,000 [−8.16, −2.08]; pearls@50 −0.75; queen endpoint no response.
-- gate: pending, seeds 2 and 3, map × opponent clusters (Asahi's queue). Deploy probe on the fixed tree (r/asahi
-  f370d4a9f): zip 3.741 MiB; maximum 11.01 M points per turn; first turn 10.73 M; no errors; runtime fingerprint
-  `43bd2d4f` (the hub's archive fingerprint is 0cf975af).
+- gate (seeds 2–3, Asahi 21:25Z): **HOLD**. Pool +1.10 points [−0.37, +2.76] (436–108 against 430–114 of 544); gen
+  +0.22 [0.00, +0.54]. Weakhold (named before the run) +28.1 points [+15.6, +40.6]; pool without Weakhold −0.59
+  [−1.56, +0.39]. Council round on promotion called (D-063 §B). Deploy probe on the fixed tree: zip 3.741 MiB;
+  maximum 11.01 M points per turn; first turn 10.73 M; no errors; runtime fingerprint `43bd2d4f` (hub archive
+  fingerprint 0cf975af).
 - live: uploaded 17:32Z as submission **16979** (`LV-asahi-05-kz12-k16-0cf975af-ai`, fingerprint 0cf975af, zip
   3.74 MiB; CPU maximum 10.6 M points per turn over 106,507 turns, round 0 at most 7.13 M, no faults). It was active
   by a hub defect from about 17:33Z to 17:40Z (D-056 §B). LS-1 dispatched 17:42Z (job 5ed81ad3e1f3): 102 matched

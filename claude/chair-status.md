@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 21:11Z (unit 10c). Next self-wake about 21:30Z. Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 21:34Z (unit 11). Next self-wake about 22:35Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,10 @@ State: ACTIVE. Updated 4 Oct 2026 21:11Z (unit 10c). Next self-wake about 21:30Z
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-063:** the k = 16 local gate is a hold (pool +1.10 points [−0.37, +2.76]) but Weakhold replicates on all three
+  seeds (43 of 48 against 27 of 48). A council round (due 23:30Z) rules on promoting it at LS-1's stop unless LS-1
+  shows harm. Battery: trees 0.7145 against a four-epoch CNN 0.6727; arm A10b (early stopping) added; selector
+  still held. P-7's amendments adopted; a distilled network keeps it alive if trees are selected.
 - **D-062:** two full disks. The Mac's disk (97 %, 31 GB free) caused the 18:47Z stop; the Cowork session disk is
   still full after an app restart and cuts Kageyama off. The Chair committed Kageyama's unit-5 files on its behalf
   (25d78afab) and let Hinata run Kageyama's HB-1 scorer herself, so arms A0, A4, A6, A7 can proceed. First battery
@@ -79,12 +83,12 @@ State: ACTIVE. Updated 4 Oct 2026 21:11Z (unit 10c). Next self-wake about 21:30Z
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-2: failed, closed. P-4: **refuted, closed**. P-5 (R2): battery A0–A10; selector under audit; blocked on Kageyama. P-6: behind the battery. P-7 (self-play scoping): Sugawara, due 22:00Z |
+| Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): battery A0–A10 and A10b; trees 0.7145, CNN 0.6727; selector under audit. P-6: behind the battery. P-7 (self-play): reviewed, amendments adopted, throughput measurement next |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | P-4 screen done (refuted). Running: k = 16 on seeds 2–3, then the Weakhold capture, the gate card and the seed-1 card. No new hand-rule work after that (D-059) |
-| Nominee (full gate) | `asahi-05-kz12-k16` (REG-002), gate on seeds 2–3, not yet run |
+| Evaluator queue (Asahi) | k = 16 gate done (hold; Weakhold +28.1 points). Idle at 21:32Z. Next: in-loop throughput for P-7; learn-queue jobs start within a minute |
+| Nominee (full gate) | `asahi-05-kz12-k16` (REG-002): gate hold; council round on promotion due 23:30Z; decision at LS-1's stop (02:15Z) |
 | Uploaded, inactive | `asahi-05-kz12-k16` = submission 16979. The `submit_check` fix is on main, not deployed; no redeploy until the lead confirms the hub loop (H11) |
-| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 60 of 204 games at 20:26Z, about 20 an hour, stop 02:15Z (near 180 games); first look at 102 pairs or the stop; pairs by same-unit proxy. Queue after it: the first R2 bot. TD-1 after the first look |
+| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 80 of 204 games at 21:32Z, about 20 an hour, stop 02:15Z; pairs by same-unit proxy; serves as the harm check for k = 16 if the council agrees |
 
 ## Facts settled this unit
 
@@ -103,8 +107,8 @@ State: ACTIVE. Updated 4 Oct 2026 21:11Z (unit 10c). Next self-wake about 21:30Z
 | Council, auditor | Tanaka (GPT, Codex, hourly heartbeat), `r/tanaka` | working: 17:55Z P-2 scorer PASS; 17:56Z LS-1 review; 17:59Z R2 support verified |
 | Council, mechanism | Sugawara (Claude), hourly at :25 | working: 17:29Z LS-1 objective amendment (upheld in part, D-056 §C) |
 | Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: 17:52Z replication of the LS-1 amendment |
-| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | **cut off** by the full session disk since 18:56Z; unit-5 files committed by the Chair on its behalf; Hinata runs its HB-1 scorer meanwhile (D-062 §C); full rows at 155 of 1,735 games, stalled |
-| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | P-2 confirmation failed; R2 encoder-only fit 0.714; battery next |
+| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | unit 6 committed: HB-1 feature vectors, native teacher-row builder, layout and mirror mapping; next: scores check, cohort subset counts, full rows on the Mac |
+| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | battery: A3 and A10 fitted; selector fixes under Tanaka's audit; A10b and the HB-1 arms next |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; hourly self-wake | working; daemon restarted 19:16Z |
 | Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | ran 19:50Z: fix and reserve change built and merged, not deployed; LS-1 pace and answers posted |
 
@@ -124,22 +128,22 @@ State: ACTIVE. Updated 4 Oct 2026 21:11Z (unit 10c). Next self-wake about 21:30Z
 | H10 | Wake the Asahi (Evaluator) session | closed: Asahi working since about 17:15Z |
 | H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | asked 19:30Z; the hub process changed at 19:46Z, not confirmed |
 | H12 | The Cowork VM session disk is full; quitting the app did not clear it (21:09Z). Clear it, or start a fresh Data session | open |
-| H13 | Kageyama cut off (same cause as H12) | routed around (D-062 §B–C) |
-| H14 | The Mac's disk is 97 % full (31 GB free): may the Chair delete `build/atlas` (69 GB) and Asahi's `_to_delete` (about 8 GB)? | asked 20:52Z |
+| H13 | Kageyama cut off | closed: fresh session working since 21:16Z |
+| H14 | Mac disk | closed: 74 GB deleted with the lead's approval; 102 GB free |
 
 ## Next three decisions
 
-1. **R2 battery table** and the selected arm; then its refit on the full rows and the one confirmation.
-2. **LS-1 first look** (D-056 §C) and the k = 16 local gate on seeds 2–3; promotion needs promotion-grade live
-   evidence, or a sized re-screen after the gate passes.
-3. **P-4 seed-1 card**: eligibility under D-055 §A and its place in the screen queue.
+1. **k = 16 promotion** at LS-1's stop (02:15Z), on the council round due 23:30Z (D-063 §B).
+2. **R2 battery table** once the selector passes: the selected pooled arm, the teacher-specific arm, then the refit
+   on the full rows and the one confirmation.
+3. **P-7 training**: with the battery table and Asahi's throughput measurement.
 
-Waiting on the lead: the hub under a restart loop or launchd, so that redeploys are safe (H11).
+Waiting on the lead: H11 (is the hub inside the restart loop; redeploys stay off) and H12 (session disk full).
 
 ## Cursor
 
-Last BOARD line read: line 908, `[2026-10-04 20:22 UTC council:tanaka → chair, …] Round9 committed 05dc3ae1d …`
-(main tree). Own D-060 lines follow.
+Last BOARD line read: line 968 (Shenzhen 21:45Z correction; before it Sugawara 21:29Z, P-7 author amendment 1), main
+tree. Own D-063 lines follow.
 
 ## Open flags
 
