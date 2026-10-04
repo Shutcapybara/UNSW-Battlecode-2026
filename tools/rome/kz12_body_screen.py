@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -19,18 +18,34 @@ NAMES = {
     "k16": "rome-15-kz12-cb-k16",
 }
 DOSES = {"k0": 0, "k4": 4, "k8": 8, "k16": 16}
-LOG_RE = re.compile(rb"LOG KZ12 r=(-?\d+) k=(\d+) veto=(\d+) fallback=(\d+) cap=(-?\d+)")
-STALE = {f"var/{m}_tr" for m in ("autarky", "default", "dilemma", "schooltime", "slithery_fight", "trophy")}
-
-
-def log_rows(path: Path):
-    return [tuple(map(int, m.groups())) for m in LOG_RE.finditer(path.read_bytes())]
+def read_log_index(root: Path, dose: int):
+    path = root / "kz12-logs.jsonl"
+    if not dose:
+        return {}
+    if not path.is_file():
+        raise FileNotFoundError(f"missing deterministic KZ12 transcript capture: {path}")
+    out = {}
+    for line in path.read_text().splitlines():
+        if line.strip():
+            row = json.loads(line)
+            if not row.get("official_match") or row.get("errors"):
+                raise ValueError(f"KZ12 transcript rerun does not match official fixture: {row.get('game')}")
+            out[row["game"]] = [
+                (int(d["round"]), int(d["dose"]), int(d["vetoed_directions"]),
+                 int(d["fallback"]), int(d["max_selected_Cb"]))
+                for d in row["decisions"]
+            ]
+    expected = {json.loads(line)["game"] for line in (root / "index.jsonl").read_text().splitlines() if line.strip()}
+    if set(out) != expected:
+        raise ValueError(f"KZ12 transcript fixture mismatch: {len(out)} captures for {len(expected)} panel games")
+    return out
 
 
 def queen_data(root: Path, features: pd.DataFrame, bot_name: str, dose: int):
     from tools.analysis.features.frame import load
 
     index = {json.loads(s)["game"]: json.loads(s) for s in (root / "index.jsonl").read_text().splitlines() if s.strip()}
+    log_index = read_log_index(root, dose)
     totals = Counter()
     by_map = defaultdict(Counter)
     labels = Counter()
@@ -47,7 +62,7 @@ def queen_data(root: Path, features: pd.DataFrame, bot_name: str, dose: int):
         is_alive = bool(is_reached and q in rounds[490])
         deaths = [d for d in g["events"]["deaths"] if d["id"] == q]
         death = deaths[0] if deaths else None
-        log = log_rows(root / "replays" / f"{game}.replay") if dose else []
+        log = log_index.get(game, []) if dose else []
         veto_events = [r for r, k, veto, fallback, cap in log if veto > 0]
         m = str(row.get("map", "unknown"))
         mh = str(g.get("map_hash", "unknown"))
