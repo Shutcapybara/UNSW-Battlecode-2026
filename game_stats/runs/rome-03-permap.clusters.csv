@@ -1,0 +1,17 @@
+arm,panel,dim,cluster,maps,n,d_econ,econ_lo,econ_hi,d_win,win_lo,win_hi
+rome-03-queen-state-convert,pool,size,large,3,144,0.0,0.0,0.0,0.0,-0.014,0.014
+rome-03-queen-state-convert,pool,size,small,7,336,0.0,0.0,0.0,-0.034,-0.061,-0.01
+rome-03-queen-state-convert,pool,portals,portal-dense,1,48,0.0,0.0,0.0,-0.219,-0.344,-0.104
+rome-03-queen-state-convert,pool,portals,portal-sparse,9,432,0.0,0.0,0.0,-0.002,-0.009,0.005
+rome-03-queen-state-convert,pool,beds,bed-poor,2,96,0.0,0.0,0.0,0.0,0.0,0.0
+rome-03-queen-state-convert,pool,beds,bed-rich,8,384,0.0,0.0,0.0,-0.03,-0.052,-0.01
+rome-03-queen-state-convert,pool,regime,elim-regime,6,288,0.0,0.0,0.0,-0.003,-0.01,0.0
+rome-03-queen-state-convert,pool,regime,limit-regime,4,192,0.0,0.0,0.0,-0.055,-0.096,-0.018
+rome-03-queen-state-convert,gen,size,large,4,192,0.0,0.0,0.0,-0.01,-0.026,0.0
+rome-03-queen-state-convert,gen,size,small,25,1200,0.0,0.0,0.0,-0.008,-0.018,0.002
+rome-03-queen-state-convert,gen,portals,portal-dense,1,48,0.0,0.0,0.0,-0.271,-0.417,-0.146
+rome-03-queen-state-convert,gen,portals,portal-sparse,28,1344,0.0,0.0,0.0,0.001,-0.004,0.007
+rome-03-queen-state-convert,gen,beds,bed-poor,22,1056,0.0,0.0,0.0,0.003,-0.003,0.01
+rome-03-queen-state-convert,gen,beds,bed-rich,7,336,0.0,0.0,0.0,-0.042,-0.068,-0.015
+rome-03-queen-state-convert,gen,regime,elim-regime,27,1296,0.0,0.0,0.0,0.003,-0.002,0.009
+rome-03-queen-state-convert,gen,regime,limit-regime,2,96,0.0,0.0,0.0,-0.156,-0.24,-0.083

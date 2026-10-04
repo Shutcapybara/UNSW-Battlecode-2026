@@ -26,7 +26,7 @@ Bot snapshots live under `bots/rome-<nn>-<slug>/`; tools under `tools/rome/`.
 2. Complete: queen, sprint-cost, and tiebreak audits cover pool and gen replays.
 3. Complete: L10 `rome-02-far-contact` was re-scored from FRAME_VERSION 7 features. Verdict: hold; keep it unstacked. Full finding and corrected results are below.
 
-4. Next: L39/L49 queen-keyed conversion, the director’s top tester item. First isolate a state-triggered consolidation to the queen when the opposing swarm reaches the tested low-unit state; expected RL queen-length/win improvement, with opening economy and elimination win as guards. Parent remains `rome-01-nodevil` because L10 did not accept.
+4. Complete: `rome-03-queen-state-convert` tested the preregistered own-unit-count proxy for L39/L49 on clean parent `rome-01-nodevil`. Reject; queen survival/length did not improve, pool win fell significantly, gen RL conversion fell, and gen wall rate rose 15.9%. This does not directly falsify the unobservable opponent-count trigger. Full finding: `docs/findings/2026-10-04-rome-L39-queen-state-convert.md`.
 
 ## Cycle table
 
@@ -34,6 +34,7 @@ Bot snapshots live under `bots/rome-<nn>-<slug>/`; tools under `tools/rome/`.
 |---|---|---|---|---|---|
 | rome-01-nodevil | Post-rule base baseline | 480 games; W-L-D 401-78-1; exp-score 83.65%; norm pearls 1.1398 | 1,392 games; W-L-D 1,041-351-0; exp-score 74.78% | 16/18 workers; host denied nice 10 | measured; new zero |
 | rome-02-far-contact | L10: skip head-on paths >6 Manhattan cells from known beds | 480; FRAME7 W-L-D 399-80-1, win 83.23%, Δwin +0.63pp; literal econ Δ +0.0004 [cluster -0.0001,+0.0010] | 1,392; FRAME7 W-L-D 1,033-359-0, win 74.21%, Δwin -0.22pp; literal econ Δ +0.0087 [+0.0026,+0.0150] | 10.82M max / 0 errors | hold; economy estimand and units guard unresolved; see 2026-10-04 finding |
+| rome-03-queen-state-convert | L39/L49: late own-count<=5 proxy pins crown/feeder to original queen | 480; exp-share 80.21% (−2.40pp), econ Δ 0.000 [0,0]; queen alive among reached RL target maps 2/168 (1.2%, unchanged) | 1,392; exp-share 73.64% (−0.79pp), econ Δ 0.000 [0,0]; queen alive among reached RL maps 5/124 (4.0%, parent 5/119); conversion −8.45pp | 10.83M max / 0 errors | reject; gen wall +15.9%; see 2026-10-04 L39 finding |
 
 
 ## Updated L10 re-read (4 Oct)
