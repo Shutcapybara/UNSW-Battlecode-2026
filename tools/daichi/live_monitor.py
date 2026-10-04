@@ -147,6 +147,17 @@ def main(argv=None):
     # The rollback rule binds a *promoted* candidate after its first 40 ranked games; the rolling window is a drift signal.
     trigger = bool(first40 and first40['n'] >= 40 and first40['mean'] < -0.08 and first40['hi95'] < 0)
     drift_flag = bool(roll and roll['n'] >= 40 and roll['mean'] < -0.08 and roll['hi95'] < 0)
+    # D-065 §B (Sugawara rec 17): the latest 40-game window's percentile among all of this submission's own rolling
+    # 40-game windows (share of windows with mean <= the latest). Monitor only; no gate.
+    if roll and len(inc_ranked) >= 40:
+        rs = [g['resid'] for g in inc_ranked]
+        cs = [0.0]
+        for v in rs:
+            cs.append(cs[-1] + v)
+        wins = [(cs[i + 40] - cs[i]) / 40 for i in range(len(rs) - 39)]
+        last = wins[-1]
+        roll['own_pct'] = round(sum(w <= last + 1e-12 for w in wins) / len(wins), 3)
+        roll['own_windows'] = len(wins)
     latest = ladders[-1][1] if ladders else {}
     top10 = [t for t, r in sorted(latest.items(), key=lambda kv: kv[1].get('rank') or 10**9) if t != TEAM and not r.get('dev')][:10]
     band_cut = now - timedelta(hours=48)
@@ -212,7 +223,8 @@ def main(argv=None):
     L.append(f"- Live submission **{active}** ({inc.get('name') or 'not a registered candidate'}; fingerprint `{(inc.get('fingerprint') or '?')[:16]}`); first seen in the corpus {first_seen}.")
     L.append(f"- Ranked games since first seen: **{len(inc_ranked)}**, W-L-D {data['wld'][0]}-{data['wld'][1]}-{data['wld'][2]}; score − E {fmt(data['since_activation'])}.")
     L.append(f"- First 40 ranked after first sighting: score − E {fmt(first40)}. Old absolute screen (mean < −0.08 and 95th pct < 0): **{'met' if trigger else 'not met'}** — superseded by D-052 §B (difference vs the replaced submission's last 120, our rating fixed at activation); that look is computed by `tools/daichi/rollback_d052.py` → `docs/learning/rollback-d052.md` §3 and binds only a candidate Live ops promoted.")
-    L.append(f"- Rolling last 40 ranked (drift signal, not a rollback trigger): score − E {fmt(roll)}{' — **below −0.08 with 95th pct < 0**' if drift_flag else ''}.")
+    own_txt = ("; percentile among the submission's own %d rolling 40-game windows: %.3f (D-065 §B)" % (roll['own_windows'], roll['own_pct'])) if roll and 'own_pct' in roll else ''
+    L.append(f"- Rolling last 40 ranked (drift signal, not a rollback trigger): score − E {fmt(roll)}{' — **below −0.08 with 95th pct < 0**' if drift_flag else ''}{own_txt}.")
     L.append(f"- Elo now {elo_now} (rank {rank_now}); 24 h ago {data['elo']['h24']}; 7 d ago {data['elo']['d7'] if data['elo']['d7'] is not None else 'n/a (no snapshot)'}.")
     L.append(f"- Unranked games of the incumbent in the window (exposure only, not scored here): {len(unranked_inc)}.\n")
     L.append('## Rosters (ranked, incumbent only)\n')
