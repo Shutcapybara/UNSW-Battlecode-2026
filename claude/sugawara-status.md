@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE. Last completed unit: 4 Oct 2026 16:30Z (unit 6). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE. Last completed unit: 4 Oct 2026 17:30Z (unit 7). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -24,6 +24,20 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 16:30Z (unit 6). Repo copy: `clau
   --break-system-packages` works; stage parquet files (smoke, dev120 ≈ 19 MB) there to read them.
 - **Hard rule I missed once:** `_common.md` l.21, "No map identity in any bot: structure only". Check it before
   proposing any gate that keys on W/H or other map constants (D-033 precedent).
+
+## Unit 7 (17:25–17:30Z)
+
+- BOARD read through line 829 (`[17:12 UTC chair:ushijima → hinata, kageyama, tanaka] R2 … now leads the Learner's
+  order of work`); my line is 830 (17:29Z). D-055 in the decisions file (l.1521); no D-056 yet (Chair: to record
+  the battles.py redeploy and the R2 work order).
+- D-055: live-first. §A eligibility replaces the local-gate prerequisite for upload/live screen; §B LS-1 = 14585 vs
+  asahi-05-kz12-k16, 102 matched pairs, 3 opponents, Daichi's 17:50Z unit is the first that can act; §C promotion
+  rule amended; §D A/A closed; §E P-5 and §F P-6 approved as amended (my 0.70 and 0.80 recorded); §G P-2 rev 3 hold.
+- Nothing assigned to me. Wrote unassigned `reviews/LS-1-sugawara.md`: AMEND the decision rule. Sparse discordance
+  (k16 changed ~4–5 % of local games) makes the 51-cluster bootstrap degenerate: 1/0 is a PASS; null false-pass
+  0.16–0.33; ties → REJECT. Asked for an exact sign test p ≤ 0.15 on non-zero pairs, < 4 non-zero → HOLD, strict
+  reject, and per-pair opponent submission-id pinning. Notified the lead (promotion-relevant stats flaw before gate).
+- Sim script lives in the VM at `$HOME/sg/sim.py` (not in the repo; VM scratch).
 
 ## Unit 6 (16:25–16:30Z)
 
@@ -76,6 +90,8 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 16:30Z (unit 6). Repo copy: `clau
 | P-5 r2 | absolute ≥ 0.83, amended | 0.20 | 16:28Z |
 | P-5 r2 | panel gate at λ = 1 given offline pass, amended | 0.25 | 16:28Z |
 | P-6 r2 | falsifier not triggered | 0.80 | 16:28Z |
+| LS-1 | PASS under D-055 §B rule as written | 0.50 | 17:29Z |
+| LS-1 | PASS under my amended rule (incl. extension) | 0.25 | 17:29Z |
 | P-sugawara-01 | (all four void: card rejected and withdrawn, no outcome) | — | 13:40Z |
 | D-048 §8 | (operating characteristics 0.09 / 0.38, not scored per D-052 §B) | — | 12:30Z |
 
@@ -87,13 +103,16 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 16:30Z (unit 6). Repo copy: `clau
 4. k16 gate readout (Weakhold per seed, pool without Weakhold, vetoes/fallbacks per 1k). **Adopted** D-054 §B.
 5. P-sugawara-02 = P-4. **Approved for seed-1 screen** (D-054 §C); waits on Asahi after k16.
 6. P-5: union features with a hashed allowlist excluding W/H/x/y/xn/yn; bind G-parent on the series-clean cohort;
-   train on blocks_src = oracle; explicit 3/4-class support; flip rate report-only. **Pending D-055.**
-7. P-6: queen-speaker ΔAUC; paired V0b on post-claim rows; diagnostic not price. **Pending D-055.**
+   train on blocks_src = oracle; explicit 3/4-class support; flip rate report-only. **Adopted** D-055 §E (series-clean cohort, oracle filter, allowlist).
+7. P-6: queen-speaker ΔAUC; paired V0b on post-claim rows; diagnostic not price. **Adopted** D-055 §F.
+8. LS-1 decision rule: sign-test floor, < 4 non-zero → HOLD, strict reject, opponent submission-id pinning. **Open** (17:29Z).
 
 ## Next checks
 
-- D-055 (R2 feature set, binding gate, cohort, provenance filter): check whether W/H/x/y are excluded and the oracle
-  filter is blocks_src; check the series-clean cohort's oracle coverage once published.
+- LS-1: did the Chair amend §B before dispatch? Daichi's job note: roster, opponent submission ids, n+/n−/n0,
+  share of cells where arms differ. Score my 0.50 / 0.25.
+- Hinata's encoder-only dev fit (dev120 oracle rows): check F/R/L projection, stated support, majority-class baseline.
+- Kageyama: series-clean cohort frozen with oracle coverage (Tanaka: dev120 has zero held-out-map rows).
 - Asahi: executor, card.py clusters, then the k16 gate card → score my 0.35; then the P-4 build (labeller validation,
   golden parity at m = off, firings per 1k) → score my 0.35.
 - P-2 claim and result → score my 0.50.

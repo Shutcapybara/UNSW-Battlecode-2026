@@ -162,3 +162,27 @@ oracle-timer rows only.
 ## Result card
 
 (Appended by Hinata.)
+
+### Development run pre-registration (appended 2026-10-04 17:37 UTC, hinata — before any fit on teacher rows)
+
+D-055 §E approved the card as amended; the Chair (17:12Z) ordered the encoder-only development fit first, without
+waiting for the HB-1 extractor. This section fixes the projection and the 0.75 stop's support **before fitting**
+(Tanaka 16:57Z).
+
+- **Code:** `tools/hinata/r2_bc.py` rev 3 sha `edc66ef7cb55d718a2e18272854994f8d32f44689a1466759c1ea76ef103b3c6`.
+  One change from rev 2 (b3ce4789, audited): reporting only — F/R/L-conditional accuracy (rows whose teacher first
+  step is F, R or L; argmax over the three probabilities renormalised; reverse rows excluded and counted), the
+  majority class of the same population beside every cell, a `support` command, and a descriptive whole-series
+  bootstrap (1,000 × seed 7, ratio of sums, linear 5th/95th). Training, features, folds and parameters are unchanged.
+- **Rows:** `teachers_dev120.p0/p1.parquet` (sha 1a3c552c…, 30826ce9…), teachers `teachers_dev120.parquet`
+  (0552ab3f…), allowlist enc v1 1,193 columns (b109e5c0…), `blocks_src == oracle`, move turns only.
+- **Support (`build/hinata/r2/dev120-enc-s5/support.json`):** 189,630 move rows (39,011 of 228,641 dropped as non-oracle);
+  **188,250 F/R/L rows** + 1,380 reverse rows; **97 games, 49 series, 10 teacher teams, 14 maps** (no Autarky, Maze or
+  Trauma rows); 5,315 queen F/R/L rows. series5 folds (F/R/L rows / games / series): f0 45,096/24/11, f1 39,308/20/11,
+  f2 35,123/23/8, f3 37,233/17/11, f4 31,490/13/8.
+- **Frozen stop:** pooled out-of-fold series5 F/R/L-conditional accuracy of the encoder-only model **< 0.75 → stop P1
+  on this feature set and file R2b**; ≥ 0.75 → continue to the union model and the G-parent gate. The bootstrap
+  interval, per-map, per-team, queen/non-queen and four-class figures are descriptive and do not bind. The union model
+  (HB-1 columns) gets its own support line before its fit. G-parent (P1 minus HB-1 prior) cannot be computed on these
+  rows until the extractor runs on them; it is not computed here.
+- **Author forecast (unchanged):** series5 ≥ 0.75, 0.80 (stated for the union; for encoder-only, 0.75).

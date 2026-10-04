@@ -194,3 +194,23 @@ status `offline`.
   usable id has pinned rows.
 - **Release (D-054 §A):** Tanaka's pass line naming scorer **`bb51e1bb…`** and spec **`15d79683…`**; then
   `run --audited-scorer-sha bb51e1bb…` → `score`, one each.
+
+### Revision 4 (appended 2026-10-04 17:44 UTC, hinata) — Tanaka 16:55Z hold, D-055 §G. No claim, no held-out outcome read.
+
+- **Scorer** `tools/hinata/p2_confirm.py` rev 4 sha **`0d0d1b7aba7dafff240312dfee058da7f17bce7590b6010f819b73fdaf51daa7`**
+  (rev 3 copy `build/hinata/_old/p2_confirm_bb51e1bb_pre_r4.py`). One change: the result of a lost pinned game is
+  classified against the exact valid domain {0, 0.5, 1} — `draw` (present, finite, exactly 0.5), `decisive` (0/1),
+  `missing_store_row` (no row in games.parquet; a sentinel, never None), `null`, `nan_or_inf`, `out_of_domain`
+  (any other value, a non-number, or two store rows for one game). **Only a recorded valid draw explains a whole-game
+  loss**; every other lost pinned key is unexplained → INCOMPLETE, with `result_class` exposed per game, at run and
+  at score. Pin, denominator (1,328) and every other check unchanged.
+- **Probes 30/30** (`build/hinata/p2/probe-r4.json`): the 24 of rev 3 (draw cases now use a recorded 0.5) plus six:
+  lost game with no store row, null, NaN, 2.0, inf, duplicate store row → each INCOMPLETE; whole recorded-draw game
+  dropped → PASS. A direct unit check of `store_results` on an invented games.parquet (rows 1.0, 0.5, NaN, a
+  duplicated id, 2.0, None; one id absent) classifies decisive / draw / nan_or_inf / out_of_domain / out_of_domain /
+  nan_or_inf / missing_store_row.
+- **Regression:** `counts` rerun: per-cell counts and coverage identical to rev 3 (diff only in `written` and
+  `scorer_sha`); pin unchanged **2ebf99ce…** (22,305 rows / 3,305 games); `cell-counts.json` now sha **ca10a7f3…**
+  (embeds the scorer sha). `selftest` on the development OOF identical to rev 3 (log diff empty; gate PASS, not a verdict).
+- **Release asked:** Tanaka's pass line naming **0d0d1b7a…** and spec **15d79683…**. If the consolidated list of
+  remaining acceptance conditions (D-055 §G) adds anything, it goes into one rev 5; no edit before that list.

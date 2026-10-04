@@ -16,6 +16,12 @@ Revision 3 (4 Oct, ~16:40Z) implements D-054 §A and Tanaka's frozen-cohort defe
       against the pin; `score` re-reconciles independently: any new row, duplicate, partial loss, or lost game not
       explained (only explanation allowed: whole game dropped because result_a is not 0/1, i.e. a draw or no
       decisive result, re-checked at score time) -> INCOMPLETE.
+Revision 4 (4 Oct, ~17:55Z) fixes Tanaka's rev-3 release-audit hole (16:55Z, D-055 §G): absence was accepted as a
+draw exclusion. (6) the stored result of a lost game is classified as: valid draw (a present, finite result_a exactly
+0.5), decisive (0 or 1), missing store row, null/NaN, or out of domain; only a recorded valid draw explains a whole
+game's removal; every other lost pinned key is INCOMPLETE with its reason exposed, at run and at score; the original
+denominator is kept. Probes add: lost game with no store row, null, NaN and result 2.0 (each INCOMPLETE), and a
+recorded 0.5 draw (PASS).
 Also reads every D-052 field: min_cell_games (report-only list fixed from outcome-free counts before the claim),
 rl50_min_auc_binding (false: AUC_V >= AUC_Phi binds, 0.66 printed), reported_populations, min_coverage_per_map.
 
@@ -268,7 +274,21 @@ def cmd_counts(a):
     f = P2 / 'cell-counts.json'; f.write_text(json.dumps(out, indent=1)); print(json.dumps(out, indent=1)); print('sha256', sha(f))
 
 
-PIN_EXPLAINED = 'whole game dropped: result_a not in (0, 1) (draw or no decisive result)'
+PIN_EXPLAINED = 'whole game dropped: recorded valid draw (result_a == 0.5)'
+MISSING = '__missing_store_row__'
+
+
+def result_class(ra):
+    """Exact valid-result domain {0, 0.5, 1}; anything else (absent row, None, NaN, inf, other value, non-number) is invalid."""
+    if isinstance(ra, str) and ra == MISSING:
+        return 'missing_store_row'
+    if ra is None:
+        return 'null'
+    if isinstance(ra, bool) or not isinstance(ra, (int, float, np.integer, np.floating)):
+        return 'out_of_domain'
+    if not math.isfinite(float(ra)):
+        return 'nan_or_inf'
+    return {0.0: 'decisive', 1.0: 'decisive', 0.5: 'draw'}.get(float(ra), 'out_of_domain')
 
 
 def keys(df):
@@ -294,9 +314,8 @@ def membership(pin, got, result_a):
         lg.setdefault(g_, set()).add(r_)
     expl, unex = [], []
     for g_, rs in sorted(lg.items()):
-        whole = rs == per[g_]; ra = result_a.get(g_)
-        decisive = ra is not None and not (isinstance(ra, float) and math.isnan(ra)) and ra in (0, 1)
-        (expl if whole and not decisive else unex).append(dict(game=g_, rows=len(rs), whole_game=whole, decisive_result=bool(decisive)))
+        whole = rs == per[g_]; rc_ = result_class(result_a.get(g_, MISSING))
+        (expl if whole and rc_ == 'draw' else unex).append(dict(game=g_, rows=len(rs), whole_game=whole, result_class=rc_))
     for e in expl:
         e['reason'] = PIN_EXPLAINED
     return dict(pin_rows=len(pk), got_rows=len(gk), duplicates=dup, n_new=len(new), new=[list(k) for k in new[:50]],
@@ -307,8 +326,12 @@ def store_results(games):
     import duckdb
     gl = ','.join("'" + str(g).replace("'", "''") + "'" for g in games) or "''"
     r = duckdb.sql(f"select cast(game as varchar) as game, result_a from read_parquet('{S1}/games.parquet') where cast(game as varchar) in ({gl})").df()
-    out = {str(g): None for g in games}
-    out.update({str(a): (None if pd.isna(b) else float(b)) for a, b in zip(r.game, r.result_a)})
+    out = {str(g): MISSING for g in games}                              # no store row -> MISSING, never a draw
+    for a_, b_ in zip(r.game, r.result_a):
+        if str(a_) in out and out[str(a_)] != MISSING:
+            out[str(a_)] = 'duplicate_store_row'                         # two rows for one game -> out of domain
+        else:
+            out[str(a_)] = None if b_ is None else (b_ if isinstance(b_, str) else float(b_))
     return out
 
 
@@ -430,7 +453,7 @@ def cmd_score(a, spec_path=SPEC_PATH, spec_sha=SPEC_SHA, results=None):
         pr = pd.read_parquet(pf, columns=['game', 'round']); pin = pd.read_parquet(pinf); rec = json.loads(mf.read_text())
         lost_games = sorted(set(pin.game.astype(str)) - set(pr.game.astype(str)))
         res_ = results if results is not None else store_results(lost_games)
-        mem = membership(pin, pr, {g: res_.get(g) for g in lost_games})
+        mem = membership(pin, pr, {g: res_.get(g, MISSING) for g in lost_games})
         if not mem['ok']:
             inc.append(f"membership: {mem['duplicates']} duplicate, {mem['n_new']} new, {mem['n_unexplained']} unexplained lost games "
                        f"{[u['game'] for u in mem['unexplained']][:10]}")
@@ -473,7 +496,7 @@ def cmd_probe(a):
         return pin_sha, (lambda: _seal(pred, membership(pd.read_parquet(P2 / 'membership-pin.parquet'), pred, results)))
 
     def case(name, expect, mutate_pred=None, mutate_claim=None, claim_scorer=None, gate_only=None, draws=(), score_results=None,
-             after_seal=None, no_pin=False):
+             after_seal=None, no_pin=False, bad_results=None):
         global P2
         P2 = Path(tempfile.mkdtemp())
         if gate_only is not None:
@@ -482,7 +505,12 @@ def cmd_probe(a):
             pred = _synth()
             if mutate_pred:
                 pred = mutate_pred(pred)
-            results = {g: (None if g in draws else 1.0) for g in _synth().game.astype(str).unique()}
+            results = {g: (0.5 if g in draws else 1.0) for g in _synth().game.astype(str).unique()}
+            for g_, v_ in (bad_results or {}).items():
+                if v_ == 'DROP':
+                    results.pop(g_, None)
+                else:
+                    results[g_] = v_
             pin_sha, seal = seal_synth(pred, results)
             c = _claim(ssha, claim_scorer or sha(SELF), [], cov, {} if no_pin else dict(pin_sha=pin_sha)); seal()
             if mutate_claim:
@@ -529,6 +557,13 @@ def cmd_probe(a):
     case('whole draw game dropped (explained)', 'PASS', mutate_pred=lambda p: p[p.game != '7'], draws=('7',))
     case('draw claimed at run, decisive at score', 'INCOMPLETE', mutate_pred=lambda p: p[p.game != '8'], draws=('8',),
          score_results={**{str(g): 1.0 for g in range(1500)}})
+    # revision 4: only a recorded valid draw explains a lost game (Tanaka 16:55Z)
+    case('lost game, no store row', 'INCOMPLETE', mutate_pred=lambda p: p[p.game != '9'], bad_results={'9': 'DROP'})
+    case('lost game, null result', 'INCOMPLETE', mutate_pred=lambda p: p[p.game != '10'], bad_results={'10': None})
+    case('lost game, NaN result', 'INCOMPLETE', mutate_pred=lambda p: p[p.game != '11'], bad_results={'11': float('nan')})
+    case('lost game, result 2.0', 'INCOMPLETE', mutate_pred=lambda p: p[p.game != '12'], bad_results={'12': 2.0})
+    case('lost game, result inf', 'INCOMPLETE', mutate_pred=lambda p: p[p.game != '13'], bad_results={'13': float('inf')})
+    case('lost game, duplicate store row', 'INCOMPLETE', mutate_pred=lambda p: p[p.game != '14'], bad_results={'14': 'duplicate_store_row'})
     case('pin changed after the claim', 'INCOMPLETE',
          after_seal=lambda: (os.chmod(P2 / 'membership-pin.parquet', 0o644),
                              pd.read_parquet(P2 / 'membership-pin.parquet').iloc[1:].to_parquet(P2 / 'membership-pin.parquet')))
@@ -552,7 +587,7 @@ def cmd_probe(a):
         got = f'refused: {e}'
     res.append(dict(case='D-052 frozen spec', expect='accepted', got=got, ok=got == 'accepted')); print(res[-1])
     P2 = real; out = dict(scorer_sha=sha(SELF), written=time.strftime('%FT%TZ', time.gmtime()), passed=sum(r['ok'] for r in res), of=len(res), cases=res)
-    (P2 / 'probe-r3.json').write_text(json.dumps(out, indent=1, default=str)); print(f"PROBES {out['passed']}/{out['of']}")
+    (P2 / 'probe-r4.json').write_text(json.dumps(out, indent=1, default=str)); print(f"PROBES {out['passed']}/{out['of']}")
 
 
 if __name__ == '__main__':

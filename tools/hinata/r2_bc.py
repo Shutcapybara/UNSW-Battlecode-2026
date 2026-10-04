@@ -19,6 +19,11 @@ on the list is ignored, any listed column absent refuses, and map-identity names
 map*, abs_*) refuse even if listed; (c) immutable run manifest: data/teacher/code/feature/param hashes and each fold's
 test-row hash are written on first use; a rerun into the same --run with anything different refuses (Tanaka 15:52Z:
 stale fold files were reused and re-registered).
+Revision 3 (4 Oct 17:50Z, D-055 §E / Tanaka 16:57Z): (a) the binding accuracy is F/R/L-conditional — rows whose teacher
+first step is F, R or L, argmax over the three probabilities renormalised (reverse excluded); the four-class figure is
+printed beside it, with the majority class of the same population per map and per teacher team; (b) `support` writes
+support.json (rows, F/R/L rows, games, series, teams, per fold) before any fit, so the 0.75 stop's support is fixed in
+advance; (c) a descriptive whole-series bootstrap (1,000 x seed 7, 5th/95th) of the F/R/L accuracy. Training is unchanged.
 Never reads held-out maps, test or validation buckets; no map identity in features (encoder v1 emits none; asserted).
 Resumable: each fold's model is saved; a rerun skips finished folds. Use --budget <= 150 s on the VM.
 """
@@ -80,9 +85,34 @@ def acc(y, p, m=None):
     return dict(n=int(m.sum()), acc=float((p.argmax(1)[m] == y[m]).mean()) if m.any() else None)
 
 
+FRL = np.array([0, 1, 3])
+
+
+def frl(y, p, m=None):
+    """F/R/L-conditional accuracy: rows labelled F/R/L, argmax over renormalised p[F,R,L]; majority = most common of F/R/L."""
+    m = np.ones(len(y), bool) if m is None else m
+    m = m & np.isin(y, FRL)
+    if not m.any():
+        return dict(n=0, acc=None, majority=None)
+    yy = y[m]; pr = FRL[p[m][:, FRL].argmax(1)]
+    cnt = np.array([(yy == c).sum() for c in FRL])
+    return dict(n=int(m.sum()), acc=round(float((pr == yy).mean()), 4), majority=round(float(cnt.max() / m.sum()), 4),
+                majority_class='FRL'[int(cnt.argmax())])
+
+
+def series_boot(y, p, series, n=1000, seed=7):
+    m = np.isin(y, FRL); hit = (FRL[p[:, FRL].argmax(1)] == y) & m
+    df = pd.DataFrame(dict(s=series, h=hit.astype(float), n=m.astype(float))).groupby('s')[['h', 'n']].sum()
+    rng = np.random.default_rng(seed); H, N = df.h.to_numpy(), df.n.to_numpy(); out = []
+    for _ in range(n):
+        i = rng.integers(0, len(df), len(df)); out.append(H[i].sum() / N[i].sum())
+    return dict(series=int(len(df)), resamples=n, seed=seed, p05=round(float(np.percentile(out, 5)), 4),
+                p95=round(float(np.percentile(out, 95)), 4), convention='whole-series bootstrap, ratio of sums, linear percentiles')
+
+
 def main():
     import lightgbm as lgb
-    ap = argparse.ArgumentParser(); ap.add_argument('cmd', choices=['fit'])
+    ap = argparse.ArgumentParser(); ap.add_argument('cmd', choices=['fit', 'support'])
     ap.add_argument('--rows', required=True); ap.add_argument('--teachers', default='build/learn/kageyama/teachers_v1.parquet')
     ap.add_argument('--run', required=True); ap.add_argument('--cv', default='series5', choices=['series5', 'lomo', 'game'])
     ap.add_argument('--frac', type=float, default=1.0); ap.add_argument('--budget', type=float, default=150); ap.add_argument('--rounds', type=int, default=400)
@@ -95,6 +125,17 @@ def main():
         d = d[keep].reset_index(drop=True)
     y = d.y_first.to_numpy(int); w = np.ones(len(d)) if a.unweighted else d.weight.to_numpy(float)
     F = folds(d, a.cv); P = np.full((len(d), 4), np.nan)
+    if a.cmd == 'support':
+        isf = np.isin(y, FRL)
+        sup = dict(code_sha=sha(__file__), rows_sha=[sha(p) for p in paths], teachers_sha=sha(a.teachers), features_sha=sha(a.features),
+                   blocks=a.blocks, cv=a.cv, rows=int(len(d)), frl_rows=int(isf.sum()), reverse_rows=int((y == 2).sum()),
+                   games=int(d.game.nunique()), series=int(d.series_key.nunique()), teams=int(d.team.nunique()), maps=int(d['map'].nunique()),
+                   queen_frl_rows=int((isf & (d.x_is_queen.to_numpy() == 1)).sum()),
+                   per_fold={k: dict(rows=int(te.sum()), frl_rows=int((te & isf).sum()), games=int(d.game[te].nunique()),
+                                     series=int(d.series_key[te].nunique())) for k, te in F.items()},
+                   per_map_frl_rows={m: int((isf & (d['map'] == m).to_numpy()).sum()) for m in sorted(d['map'].unique())},
+                   dropped_by_blocks=dropped)
+        (run / 'support.json').write_text(json.dumps(sup, indent=1)); print(json.dumps({k: sup[k] for k in list(sup)[6:14]}, indent=1)); return
     rk = (d.game.astype(str) + '/' + d.side.astype(str) + '/' + d.dragon.astype(str) + '/' + d['round'].astype(str) + '/' + d.turn.astype(str)).to_numpy()
     man = dict(rows_sha=[sha(p) for p in paths], teachers_sha=sha(a.teachers), code_sha=sha(__file__), features_sha=sha(a.features),
                params=PARAMS, rounds=a.rounds, cv=a.cv, frac=a.frac, weighted=not a.unweighted, blocks=a.blocks, n_rows=int(len(d)),
@@ -130,6 +171,10 @@ def main():
                logloss=float(-np.mean(np.log(np.clip(pp[np.arange(len(yy)), yy], 1e-9, 1)))) if len(yy) else None,
                per_map={m: acc(yy, pp, (oof['map'] == m).to_numpy()) for m in sorted(oof['map'].unique())},
                per_team={str(t): acc(yy, pp, (oof.team == t).to_numpy()) for t in sorted(oof.team.unique())},
+               frl_all=frl(yy, pp), frl_queen=frl(yy, pp, q), frl_nonqueen=frl(yy, pp, ~q), reverse_rows=int((yy == 2).sum()),
+               frl_boot=series_boot(yy, pp, oof.series_key.to_numpy()) if len(yy) else None,
+               frl_per_map={m: frl(yy, pp, (oof['map'] == m).to_numpy()) for m in sorted(oof['map'].unique())},
+               frl_per_team={str(t): frl(yy, pp, (oof.team == t).to_numpy()) for t in sorted(oof.team.unique())},
                blocks_filter=a.blocks, dropped_by_blocks=dropped,
                interval='none (development; the gate interval is whole-series bootstrap, card §4)')
     (run / 'metrics.json').write_text(json.dumps(met, indent=1))
@@ -139,7 +184,7 @@ def main():
                params=PARAMS, rounds=a.rounds, cv=a.cv, frac=a.frac, weighted=not a.unweighted,
                model_bytes=int(np.mean([m.stat().st_size for m in models])) if models else None, metrics=met)
     (run / 'registry.json').write_text(json.dumps(reg, indent=1, default=str))
-    print(json.dumps({k: met[k] for k in ('rows', 'scored', 'folds_done', 'folds', 'all', 'queen', 'baseline_majority', 'logloss')}, indent=1),
+    print(json.dumps({k: met[k] for k in ('rows', 'scored', 'folds_done', 'folds', 'all', 'queen', 'baseline_majority', 'logloss', 'frl_all', 'frl_queen', 'frl_nonqueen', 'frl_boot')}, indent=1),
           f'{time.time() - t0:.0f}s')
 
 
