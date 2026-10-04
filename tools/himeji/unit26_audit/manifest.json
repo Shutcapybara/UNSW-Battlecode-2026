@@ -1,0 +1,109 @@
+{
+  "at": "2026-10-04T06:22:55.320270+00:00",
+  "index_sha256": "9b72e997e2a1775cb60b0cfa6c3bff737a96ece9babbca5496744b994c3c93ae",
+  "index_games": 120469,
+  "latest_start": "2026-10-04T06:20:07.952Z",
+  "ladder": "20261004T062140Z.json",
+  "ladder_sha256": "942a9d91b1a8470c2b06acfbe6288a025db33e0aff871e9c3362bd503a2f87bb",
+  "top10": [
+    {
+      "dev": false,
+      "elo": 2331,
+      "id": 264,
+      "name": "forgot to mention",
+      "rank": 1,
+      "wins": 16391
+    },
+    {
+      "dev": false,
+      "elo": 2220,
+      "id": 306,
+      "name": "Vibing++",
+      "rank": 2,
+      "wins": 16587
+    },
+    {
+      "dev": false,
+      "elo": 2216,
+      "id": 112,
+      "name": "Computers",
+      "rank": 3,
+      "wins": 4713
+    },
+    {
+      "dev": false,
+      "elo": 2208,
+      "id": 213,
+      "name": "Sponge(Albert and Bob)",
+      "rank": 4,
+      "wins": 19432
+    },
+    {
+      "dev": false,
+      "elo": 2204,
+      "id": 55,
+      "name": "\ud80c\udfbc\ud80c\udced\ud80c\udd71\ud80c\udc8b\ud80c\uddcc \ud80c\udfcf\ud80c\udd71 \ud80c\udc8b\ud80c\udd3f",
+      "rank": 5,
+      "wins": 8172
+    },
+    {
+      "dev": false,
+      "elo": 2197,
+      "id": 91,
+      "name": "SSS",
+      "rank": 6,
+      "wins": 15094
+    },
+    {
+      "dev": false,
+      "elo": 2177,
+      "id": 842,
+      "name": "horse",
+      "rank": 7,
+      "wins": 4512
+    },
+    {
+      "dev": false,
+      "elo": 2174,
+      "id": 952,
+      "name": "Cache me outside",
+      "rank": 8,
+      "wins": 7881
+    },
+    {
+      "dev": false,
+      "elo": 2142,
+      "id": 507,
+      "name": "bread first search",
+      "rank": 9,
+      "wins": 13385
+    },
+    {
+      "dev": false,
+      "elo": 2121,
+      "id": 258,
+      "name": "Settlers of Battlecode",
+      "rank": 10,
+      "wins": 6055
+    }
+  ],
+  "collector_progress_at": "2026-10-04T06:21:41.163658+00:00",
+  "sources": {
+    "HEAD": "b775eebdc914e6e50857bd0c74e2688a4ce058ff",
+    "origin/main": "1edac66c2d7545285b5c56469576961d7f63bf5f",
+    "origin/r/kanazawa": "57bfbb46321e1d8b84b8835673b2bc3eab160b0e",
+    "origin/r/nara": "a884062ea1ead6976f6054b7992dc13c839114eb",
+    "origin/r/rome": "5704a6602b8a71fed6ec6a9f5e245f2ec024785c",
+    "origin/r/shenzhen": "9d8a76207709c18c083d9b2abbb5d0014140e22a",
+    "origin/r/chongqing": "1d9642bab968202020799a5f5ca1fc2046a8c70a",
+    "origin/r/antioch": "2c7113f6657362ce68bc0d667bf932d665c1a31c",
+    "origin/r/carthage": "5b69fa9d07a0fd4684826f752438a2e8e66d9f45",
+    "origin/r/kyoto": "fccea71c060fc7bf0cae41aeef8d063d9894d8c6"
+  },
+  "source_sha256": {
+    "tools/hub/corpus.py": "6bb33fd775768eafdaf38c287ce1853f45e8852d2e40acd5077502f3fec8c51c",
+    "tools/hub/executor.py": "79f11825c74853577593ec2de74c0030cfa7230a43a60d5c48ddccec7352ccaa",
+    "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+    "tools/s1/build.py": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f"
+  }
+}

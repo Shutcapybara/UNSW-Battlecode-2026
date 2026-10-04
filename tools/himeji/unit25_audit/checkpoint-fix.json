@@ -1,0 +1,115 @@
+{
+  "source": "1d9642bab",
+  "sha256": "5c5a4dfcdfeae2b140aa79a2850a0788b942e7f7f13c98f46ec48388ca15b412",
+  "rows": [
+    {
+      "case": "alive_end",
+      "R": 488,
+      "out": {
+        "q_id": 0,
+        "q_alive_end": 1,
+        "q_death_round": null,
+        "q_moves": 0,
+        "q_maxlen": 3,
+        "q_end": 3,
+        "q_header": 3,
+        "q_last_round": 488,
+        "q_len@490": null,
+        "q_censored": 1,
+        "q_death_cls": null,
+        "q_death_killer": null
+      }
+    },
+    {
+      "case": "alive_end",
+      "R": 489,
+      "out": {
+        "q_id": 0,
+        "q_alive_end": 1,
+        "q_death_round": null,
+        "q_moves": 0,
+        "q_maxlen": 3,
+        "q_end": 3,
+        "q_header": 3,
+        "q_last_round": 489,
+        "q_len@490": null,
+        "q_censored": 1,
+        "q_death_cls": null,
+        "q_death_killer": null
+      }
+    },
+    {
+      "case": "alive_end",
+      "R": 490,
+      "out": {
+        "q_id": 0,
+        "q_alive_end": 1,
+        "q_death_round": null,
+        "q_moves": 0,
+        "q_maxlen": 3,
+        "q_end": 3,
+        "q_header": 3,
+        "q_last_round": 490,
+        "q_len@490": 3,
+        "q_censored": 0,
+        "q_death_cls": null,
+        "q_death_killer": null
+      }
+    },
+    {
+      "case": "dies_in_round",
+      "death_round": 0,
+      "out": {
+        "q_id": 0,
+        "q_alive_end": 0,
+        "q_death_round": 0,
+        "q_moves": 0,
+        "q_maxlen": 3,
+        "q_end": 0,
+        "q_header": 0,
+        "q_last_round": 490,
+        "q_len@490": 0,
+        "q_censored": 0,
+        "q_death_cls": "wall",
+        "q_death_killer": null
+      }
+    },
+    {
+      "case": "dies_in_round",
+      "death_round": 489,
+      "out": {
+        "q_id": 0,
+        "q_alive_end": 0,
+        "q_death_round": 489,
+        "q_moves": 0,
+        "q_maxlen": 3,
+        "q_end": 0,
+        "q_header": 0,
+        "q_last_round": 490,
+        "q_len@490": 0,
+        "q_censored": 0,
+        "q_death_cls": "wall",
+        "q_death_killer": null
+      }
+    },
+    {
+      "case": "dies_in_round",
+      "death_round": 490,
+      "out": {
+        "q_id": 0,
+        "q_alive_end": 0,
+        "q_death_round": 490,
+        "q_moves": 0,
+        "q_maxlen": 3,
+        "q_end": 0,
+        "q_header": 0,
+        "q_last_round": 490,
+        "q_len@490": 0,
+        "q_censored": 0,
+        "q_death_cls": "wall",
+        "q_death_killer": null
+      }
+    }
+  ],
+  "contract": "q_len@k AFTER roundk; old Himeji references explicitly START of round retained"
+}

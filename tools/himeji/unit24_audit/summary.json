@@ -1,0 +1,2914 @@
+{
+  "games": 96,
+  "series": 30,
+  "peer_totals": {
+    "us": {
+      "17+_n": 8629,
+      "17+_wall": 108,
+      "0-4_n": 73,
+      "0-4_wall": 60,
+      "9-16_n": 1,
+      "9-16_wall": 0,
+      "5-8_n": 27,
+      "5-8_wall": 4
+    },
+    "opp": {
+      "17+_n": 13998,
+      "17+_wall": 62,
+      "0-4_n": 3045,
+      "0-4_wall": 26,
+      "5-8_n": 5,
+      "5-8_wall": 0
+    }
+  },
+  "by_parent_mode_side": {
+    "us|14585|False": {
+      "games": 71,
+      "series": 19,
+      "wall_deaths": 19,
+      "first_cap4_label": {
+        "unexposed": 54,
+        "alive_six": 3,
+        "wall": 13,
+        "competing_self": 1
+      },
+      "first_cap4_complete_series": 10,
+      "first_cap4_wall_known_fraction": 0.7647058823529411,
+      "first_cap4_series_boot95": [
+        0.5,
+        0.9473684210526315
+      ],
+      "first_cap5_label": {
+        "unexposed": 54,
+        "alive_six": 4,
+        "wall": 12,
+        "competing_self": 1
+      },
+      "first_cap5_complete_series": 10,
+      "first_cap5_wall_known_fraction": 0.7058823529411765,
+      "first_cap5_series_boot95": [
+        0.46153846153846156,
+        0.8947368421052632
+      ]
+    },
+    "opp|14585|False": {
+      "games": 71,
+      "series": 19,
+      "wall_deaths": 10,
+      "first_cap4_label": {
+        "unexposed": 57,
+        "wall": 6,
+        "competing_self": 1,
+        "alive_six": 4,
+        "censored": 1,
+        "competing_invalid": 2
+      },
+      "first_cap4_complete_series": 10,
+      "first_cap4_wall_known_fraction": 0.46153846153846156,
+      "first_cap4_series_boot95": [
+        0.1,
+        0.7857142857142857
+      ],
+      "first_cap5_label": {
+        "unexposed": 57,
+        "wall": 5,
+        "competing_self": 1,
+        "alive_six": 5,
+        "censored": 1,
+        "competing_invalid": 2
+      },
+      "first_cap5_complete_series": 10,
+      "first_cap5_wall_known_fraction": 0.38461538461538464,
+      "first_cap5_series_boot95": [
+        0.09090909090909091,
+        0.6666666666666666
+      ]
+    },
+    "us|14265|False": {
+      "games": 5,
+      "series": 1,
+      "wall_deaths": 3,
+      "first_cap4_label": {
+        "unexposed": 3,
+        "wall": 2
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 3,
+        "wall": 2
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    "opp|14265|False": {
+      "games": 5,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 4,
+        "alive_six": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 4,
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    "us|14265|True": {
+      "games": 3,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1,
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1,
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    "opp|14265|True": {
+      "games": 3,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 3
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 3
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    "us|14585|True": {
+      "games": 17,
+      "series": 9,
+      "wall_deaths": 7,
+      "first_cap4_label": {
+        "unexposed": 11,
+        "wall": 5,
+        "alive_six": 1
+      },
+      "first_cap4_complete_series": 4,
+      "first_cap4_wall_known_fraction": 0.8333333333333334,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 11,
+        "wall": 5,
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 4,
+      "first_cap5_wall_known_fraction": 0.8333333333333334,
+      "first_cap5_series_boot95": null
+    },
+    "opp|14585|True": {
+      "games": 17,
+      "series": 9,
+      "wall_deaths": 5,
+      "first_cap4_label": {
+        "unexposed": 11,
+        "competing_self": 1,
+        "alive_six": 2,
+        "wall": 3
+      },
+      "first_cap4_complete_series": 5,
+      "first_cap4_wall_known_fraction": 0.5,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 11,
+        "competing_self": 1,
+        "alive_six": 2,
+        "wall": 3
+      },
+      "first_cap5_complete_series": 5,
+      "first_cap5_wall_known_fraction": 0.5,
+      "first_cap5_series_boot95": null
+    }
+  },
+  "scope": "First surviving single-step entry per queen, six subsequent rounds. Parent/mode separated. No causal or stable target claim.",
+  "low_move_audit": {
+    "us": {
+      "peer_low_moves": 73,
+      "peer_low_wall": 60,
+      "corrected_low_moves": 71,
+      "corrected_low_wall": 58,
+      "window_only_seventh": 1,
+      "low_censored": 0,
+      "low_competing": 4,
+      "low_non_single": 0,
+      "peer_low_death": 21,
+      "schooltime_moves": 0,
+      "schooltime_exposed_queens": 0
+    },
+    "opp": {
+      "peer_low_moves": 3045,
+      "peer_low_wall": 26,
+      "corrected_low_moves": 3044,
+      "corrected_low_wall": 26,
+      "window_only_seventh": 0,
+      "low_censored": 37,
+      "low_competing": 14,
+      "low_non_single": 0,
+      "peer_low_death": 9,
+      "schooltime_moves": 2988,
+      "schooltime_exposed_queens": 6
+    }
+  },
+  "exact_hash_strata": [
+    {
+      "map_name": "Around UNSW",
+      "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 4,
+      "series": 4,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 4
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 4
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Around UNSW",
+      "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 4,
+      "series": 4,
+      "wall_deaths": 2,
+      "first_cap4_label": {
+        "unexposed": 2,
+        "wall": 2
+      },
+      "first_cap4_complete_series": 2,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2,
+        "wall": 2
+      },
+      "first_cap5_complete_series": 2,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 7,
+      "series": 7,
+      "wall_deaths": 2,
+      "first_cap4_label": {
+        "unexposed": 7
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 7
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 7,
+      "series": 7,
+      "wall_deaths": 3,
+      "first_cap4_label": {
+        "unexposed": 6,
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 6,
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Australia",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Australia",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Australia",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Australia",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Australia",
+      "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Australia",
+      "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Autarky",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Autarky",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Autarky",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+      "ranked": true,
+      "own_submission": "14265",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Autarky",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+      "ranked": true,
+      "own_submission": "14265",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Autarky",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff",
+      "ranked": false,
+      "own_submission": "14265",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Autarky",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff",
+      "ranked": false,
+      "own_submission": "14265",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Autarky",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Autarky",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Default",
+      "map_hash": "08c80bd457d965982693db7d02180cb99e272e721f8aedc8d08ff88f8e787cef",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Default",
+      "map_hash": "08c80bd457d965982693db7d02180cb99e272e721f8aedc8d08ff88f8e787cef",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Default",
+      "map_hash": "08c80bd457d965982693db7d02180cb99e272e721f8aedc8d08ff88f8e787cef",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Default",
+      "map_hash": "08c80bd457d965982693db7d02180cb99e272e721f8aedc8d08ff88f8e787cef",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Default",
+      "map_hash": "2aa3b6c52fa4b6644e6bc5a389528d36995aef59cfa37e5f9b21c2859d0cd9dc",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Default",
+      "map_hash": "2aa3b6c52fa4b6644e6bc5a389528d36995aef59cfa37e5f9b21c2859d0cd9dc",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Devil",
+      "map_hash": "cb4efb7b4ae574b60bfde734b23ad78b39e56333de79ffa31729f9fdcfba3ad8",
+      "ranked": false,
+      "own_submission": "14265",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Devil",
+      "map_hash": "cb4efb7b4ae574b60bfde734b23ad78b39e56333de79ffa31729f9fdcfba3ad8",
+      "ranked": false,
+      "own_submission": "14265",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Devil",
+      "map_hash": "cb4efb7b4ae574b60bfde734b23ad78b39e56333de79ffa31729f9fdcfba3ad8",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Devil",
+      "map_hash": "cb4efb7b4ae574b60bfde734b23ad78b39e56333de79ffa31729f9fdcfba3ad8",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Devil",
+      "map_hash": "da98e11bd49cde586e41b5e4c741502b3bea5c47714c1c6e7cc14d841dee6e4b",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Devil",
+      "map_hash": "da98e11bd49cde586e41b5e4c741502b3bea5c47714c1c6e7cc14d841dee6e4b",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Devil",
+      "map_hash": "da98e11bd49cde586e41b5e4c741502b3bea5c47714c1c6e7cc14d841dee6e4b",
+      "ranked": true,
+      "own_submission": "14265",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Devil",
+      "map_hash": "da98e11bd49cde586e41b5e4c741502b3bea5c47714c1c6e7cc14d841dee6e4b",
+      "ranked": true,
+      "own_submission": "14265",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Islands",
+      "map_hash": "8fe66a3fb92831602d438524d0de93f083ed1ad731398515c69e08d2ba67cf00",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 3,
+      "series": 3,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "censored": 1,
+        "unexposed": 1,
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "censored": 1,
+        "unexposed": 1,
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Islands",
+      "map_hash": "8fe66a3fb92831602d438524d0de93f083ed1ad731398515c69e08d2ba67cf00",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 3,
+      "series": 3,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 3
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 3
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Islands",
+      "map_hash": "8fe66a3fb92831602d438524d0de93f083ed1ad731398515c69e08d2ba67cf00",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Islands",
+      "map_hash": "8fe66a3fb92831602d438524d0de93f083ed1ad731398515c69e08d2ba67cf00",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Islands",
+      "map_hash": "e3175217d1717035d51164b2be0c9f6b962aeebd700e9f7da02be02cffca3cd5",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Islands",
+      "map_hash": "e3175217d1717035d51164b2be0c9f6b962aeebd700e9f7da02be02cffca3cd5",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Maze",
+      "map_hash": "502427b4a4b583c47a0a452252b1283836398d12bdb3f448ae6a0a40c3de0859",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 5,
+      "series": 5,
+      "wall_deaths": 2,
+      "first_cap4_label": {
+        "unexposed": 4,
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 4,
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Maze",
+      "map_hash": "502427b4a4b583c47a0a452252b1283836398d12bdb3f448ae6a0a40c3de0859",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 5,
+      "series": 5,
+      "wall_deaths": 3,
+      "first_cap4_label": {
+        "unexposed": 2,
+        "wall": 3
+      },
+      "first_cap4_complete_series": 3,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2,
+        "wall": 3
+      },
+      "first_cap5_complete_series": 3,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Maze",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Maze",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Maze",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "competing_self": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "competing_self": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Maze",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Portals",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 3,
+      "series": 3,
+      "wall_deaths": 2,
+      "first_cap4_label": {
+        "wall": 2,
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 2,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 2,
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 2,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Portals",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 3,
+      "series": 3,
+      "wall_deaths": 3,
+      "first_cap4_label": {
+        "unexposed": 2,
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2,
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Portals",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Portals",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Portals",
+      "map_hash": "cfc35be3b278d3b9f410b76c4b772dd99bf64b362fdc90a50abc544ca7668700",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Portals",
+      "map_hash": "cfc35be3b278d3b9f410b76c4b772dd99bf64b362fdc90a50abc544ca7668700",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Portals",
+      "map_hash": "cfc35be3b278d3b9f410b76c4b772dd99bf64b362fdc90a50abc544ca7668700",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Portals",
+      "map_hash": "cfc35be3b278d3b9f410b76c4b772dd99bf64b362fdc90a50abc544ca7668700",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Prisoners Dilemma",
+      "map_hash": "88eea47e61ffdbf5e54e9d4cb4c935fda03328d1576ebbd2e4167e42a0c28050",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Prisoners Dilemma",
+      "map_hash": "88eea47e61ffdbf5e54e9d4cb4c935fda03328d1576ebbd2e4167e42a0c28050",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Prisoners Dilemma",
+      "map_hash": "a9a230ecffab497ea0ab65acc3b9f4f327c1736392560d22532404f4a876c9e5",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "competing_invalid": 2
+      },
+      "first_cap4_complete_series": 2,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "competing_invalid": 2
+      },
+      "first_cap5_complete_series": 2,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Prisoners Dilemma",
+      "map_hash": "a9a230ecffab497ea0ab65acc3b9f4f327c1736392560d22532404f4a876c9e5",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Prisoners Dilemma",
+      "map_hash": "aebe7fff18a8613b63aa7736c61c3df3a44d2ea92a0b6ad7301a52fc5c154857",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 3,
+      "series": 3,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1,
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1,
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Prisoners Dilemma",
+      "map_hash": "aebe7fff18a8613b63aa7736c61c3df3a44d2ea92a0b6ad7301a52fc5c154857",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 3,
+      "series": 3,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 3
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 3
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Prisoners Dilemma",
+      "map_hash": "dd78b14952c0de24233c98b99e7e2afb30ae3036cf3dcf5778bf9045ae8ee9e8",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Prisoners Dilemma",
+      "map_hash": "dd78b14952c0de24233c98b99e7e2afb30ae3036cf3dcf5778bf9045ae8ee9e8",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "competing_self": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "competing_self": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Queen Of Spades",
+      "map_hash": "3ffe4ab7cb5e880f7ddb7d5d1dcfd95c5891e460468a24130d1c6dd50e23b141",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Queen Of Spades",
+      "map_hash": "3ffe4ab7cb5e880f7ddb7d5d1dcfd95c5891e460468a24130d1c6dd50e23b141",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Queen Of Spades",
+      "map_hash": "ea5704a61d5bb4b875f660e99c59e35fcdbf8efb8f98c4b47e3dcbae36f4f15e",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Queen Of Spades",
+      "map_hash": "ea5704a61d5bb4b875f660e99c59e35fcdbf8efb8f98c4b47e3dcbae36f4f15e",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "23fa2e8a800ade85c875e11de98ffb587025cf7fbf1d9d31f900b24834118b31",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "alive_six": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "23fa2e8a800ade85c875e11de98ffb587025cf7fbf1d9d31f900b24834118b31",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "65be5fe99a46cf0a26644ecb08d2733e6099acfec06438430a15ff0436f5d3d5",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 3,
+      "series": 3,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1,
+        "alive_six": 2
+      },
+      "first_cap4_complete_series": 2,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1,
+        "alive_six": 2
+      },
+      "first_cap5_complete_series": 2,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "65be5fe99a46cf0a26644ecb08d2733e6099acfec06438430a15ff0436f5d3d5",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 3,
+      "series": 3,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 3
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 3
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "65be5fe99a46cf0a26644ecb08d2733e6099acfec06438430a15ff0436f5d3d5",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "65be5fe99a46cf0a26644ecb08d2733e6099acfec06438430a15ff0436f5d3d5",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "85635a271dcb6f1c100a8d47b3754c6d9991c5702adb6e35493ad43501c3e662",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "alive_six": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "85635a271dcb6f1c100a8d47b3754c6d9991c5702adb6e35493ad43501c3e662",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "85635a271dcb6f1c100a8d47b3754c6d9991c5702adb6e35493ad43501c3e662",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "alive_six": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "85635a271dcb6f1c100a8d47b3754c6d9991c5702adb6e35493ad43501c3e662",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "e35816d70a75da1dcaae30273e0ed23831aa069c58feddbc9cd722d409e180a6",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "alive_six": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Schooltime",
+      "map_hash": "e35816d70a75da1dcaae30273e0ed23831aa069c58feddbc9cd722d409e180a6",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Slithery Fight",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Slithery Fight",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Slithery Fight",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Slithery Fight",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "alive_six": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Slithery Fight",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "ranked": false,
+      "own_submission": "14265",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Slithery Fight",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "ranked": false,
+      "own_submission": "14265",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Slithery Fight",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Slithery Fight",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Slithery Fight",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "ranked": true,
+      "own_submission": "14265",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Slithery Fight",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "ranked": true,
+      "own_submission": "14265",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Stripes",
+      "map_hash": "3d68704c632f99b623041b5e3500cad732cae01fcba0c639f0004166417e125a",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Stripes",
+      "map_hash": "3d68704c632f99b623041b5e3500cad732cae01fcba0c639f0004166417e125a",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "unexposed": 1,
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1,
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Stripes",
+      "map_hash": "3d68704c632f99b623041b5e3500cad732cae01fcba0c639f0004166417e125a",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Stripes",
+      "map_hash": "3d68704c632f99b623041b5e3500cad732cae01fcba0c639f0004166417e125a",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Tower Defense",
+      "map_hash": "65900cc53db72d804e27601b441d9b679806c60a96342831b908415c92102acd",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Tower Defense",
+      "map_hash": "65900cc53db72d804e27601b441d9b679806c60a96342831b908415c92102acd",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Tower Defense",
+      "map_hash": "65900cc53db72d804e27601b441d9b679806c60a96342831b908415c92102acd",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Tower Defense",
+      "map_hash": "65900cc53db72d804e27601b441d9b679806c60a96342831b908415c92102acd",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Tower Defense",
+      "map_hash": "b5f9f10f41855f551ddb6ea779626d48c5d97d4b7cc2ab170e276a9a9b9a6f53",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Tower Defense",
+      "map_hash": "b5f9f10f41855f551ddb6ea779626d48c5d97d4b7cc2ab170e276a9a9b9a6f53",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "alive_six": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Tower Defense",
+      "map_hash": "b5f9f10f41855f551ddb6ea779626d48c5d97d4b7cc2ab170e276a9a9b9a6f53",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Tower Defense",
+      "map_hash": "b5f9f10f41855f551ddb6ea779626d48c5d97d4b7cc2ab170e276a9a9b9a6f53",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trauma",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "ranked": false,
+      "own_submission": "14265",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "alive_six": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trauma",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "ranked": false,
+      "own_submission": "14265",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trauma",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1,
+        "competing_self": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1,
+        "competing_self": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trauma",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "alive_six": 1,
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "alive_six": 1,
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 4,
+      "series": 4,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "unexposed": 3,
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 3,
+        "alive_six": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 4,
+      "series": 4,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "alive_six": 1,
+        "unexposed": 3
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 0.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "alive_six": 1,
+        "unexposed": 3
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 0.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trophy",
+      "map_hash": "3c76d5636a2d6e3d6705ed785cce039c66e4991bdca305b3927d153f58125799",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trophy",
+      "map_hash": "3c76d5636a2d6e3d6705ed785cce039c66e4991bdca305b3927d153f58125799",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trophy",
+      "map_hash": "3c76d5636a2d6e3d6705ed785cce039c66e4991bdca305b3927d153f58125799",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trophy",
+      "map_hash": "3c76d5636a2d6e3d6705ed785cce039c66e4991bdca305b3927d153f58125799",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trophy",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "ranked": false,
+      "own_submission": "14265",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trophy",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "ranked": false,
+      "own_submission": "14265",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trophy",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 3,
+      "series": 3,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "unexposed": 3
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 3
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "Trophy",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 3,
+      "series": 3,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 3
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 3
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "weakhold",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 1
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "weakhold",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 1,
+      "series": 1,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "weakhold",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 0,
+      "first_cap4_label": {
+        "unexposed": 2
+      },
+      "first_cap4_complete_series": 0,
+      "first_cap4_wall_known_fraction": null,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 2
+      },
+      "first_cap5_complete_series": 0,
+      "first_cap5_wall_known_fraction": null,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "weakhold",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "ranked": false,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 2,
+      "first_cap4_label": {
+        "wall": 2
+      },
+      "first_cap4_complete_series": 2,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 2
+      },
+      "first_cap5_complete_series": 2,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "weakhold",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "opp",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 1,
+      "first_cap4_label": {
+        "unexposed": 1,
+        "wall": 1
+      },
+      "first_cap4_complete_series": 1,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "unexposed": 1,
+        "wall": 1
+      },
+      "first_cap5_complete_series": 1,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    },
+    {
+      "map_name": "weakhold",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "ranked": true,
+      "own_submission": "14585",
+      "who": "us",
+      "games": 2,
+      "series": 2,
+      "wall_deaths": 2,
+      "first_cap4_label": {
+        "wall": 2
+      },
+      "first_cap4_complete_series": 2,
+      "first_cap4_wall_known_fraction": 1.0,
+      "first_cap4_series_boot95": null,
+      "first_cap5_label": {
+        "wall": 2
+      },
+      "first_cap5_complete_series": 2,
+      "first_cap5_wall_known_fraction": 1.0,
+      "first_cap5_series_boot95": null
+    }
+  ],
+  "selection_window": [
+    "2026-10-02T04:12:41.121Z",
+    "2026-10-02T13:02:44.729Z"
+  ],
+  "map_hashes": 37
+}

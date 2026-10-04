@@ -1,0 +1,18 @@
+game,map,side,death_round,length,last_split,flood_pre,flood_post,seal_start,sealed_before_split,split_sealed,never_sealed,units_at_split
+852031,Autarky,A,48,2,47,0,0,43,1,0,0,8
+852033,Trauma,A,133,2,132,1,0,128,1,0,0,18
+852605,Portals,A,96,3,93,60,61,95,0,1,0,20
+855924,Maze,A,108,3,30,,,107,0,0,0,7
+855426,Around UNSW,A,31,2,30,60,0,30,0,1,0,16
+857673,weakhold,A,44,3,43,1,0,41,1,0,0,4
+852486,Slithery Fight,A,62,3,10,61,61,60,0,0,0,21
+860828,Trauma,B,141,2,140,1,0,136,1,0,0,25
+863222,Around UNSW,A,119,2,118,1,0,116,1,0,0,50
+866873,Around UNSW,B,120,2,95,61,60,119,0,0,0,63
+868517,Tower Defense,A,59,2,58,1,0,54,1,0,0,4
+870343,Around UNSW,A,58,5,49,60,2,56,0,1,0,40
+879159,Portals,A,121,3,118,61,2,118,0,1,0,27
+853549,Portals,A,78,2,77,60,0,77,0,1,0,14
+880462,Portals,B,34,3,30,4,3,29,1,0,0,6
+881392,weakhold,A,29,3,28,1,0,25,1,0,0,3
+881966,Trauma,A,99,3,98,1,0,93,1,0,0,9
