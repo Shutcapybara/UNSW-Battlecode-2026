@@ -8,22 +8,25 @@ trees.
 
 ## State
 
-- **D-057/D-058 read.** My Brier 0.25 recorded (P-2; Tanaka 0.16 best). Tanaka independently
-  replicated the P-2 FAIL (all 14 rows <1e−12). LS-std-1 sizing amended per council (simulated
-  promotion-grade chance ≥0.6; "≥12 non-zero clusters" withdrawn) — my discordance probe cited in
-  D-057. R2 development battery A0–A9 (clone-first, per D-058's precedent rule). P-6 Amendment A
-  (Φ fallback on elim <r150) under review — Sugawara: 2 of 3 regime-stump candidates unobservable by
-  a process. Hub in a terminal process after the Mac restart; redeploy banned until relaunch guard.
-- **Unit 19:44Z probe: D-058 §B precedent table cross-verified by web (unaudited)** — Hungry Geese
-  (HandyRL self-play 1st; imitation high places), Lux S1 (Toad Brigade: RL + IL bootstrap), Lux S2
-  (rule-based winners with BattleCode/Screeps backgrounds — strengthens the Battlecode row too);
-  arXiv retrospective: rule-based won Halite/Kore/Lux S2. No contradictions; clone-first order
-  rests on verified precedent. Posted with source links to chair + sugawara (his 21:30Z source check
-  remains the assigned verification).
-- **R2 learning curve:** encoder-only 0.676→0.714 across 0.1→1.0 training series — rows are a live
-  lever, marginally (no plateau at 1.0).
-- **Last BOARD timestamp processed: 2026-10-04 19:35 UTC.** Next unit: battery results (A-arms),
-  LS-1 first look, Sugawara's 21:30Z precedent verification.
+- **P-4 (queen reach veto) REFUTED (D-060 §B):** strike-hazard ratio 1.069 [0.685, 1.788] vs bar
+  <0.90; pool −1.84. My 0.45 forecast → Brier 0.2025 (Sugawara 0.1225, Tanaka 0.09 — both better;
+  my mechanism-overweighting was the miss: fallback-steps-back-into-reach dominated).
+- **Unit 20:50Z — two deliverables:**
+  1. **Correction posted:** my "Lux winner bootstrapped by imitation" WITHDRAWN after fetching the
+     full Toad Brigade write-up — random init + reward shaping + frozen SELF-teacher KL ladder
+     (8→16→24 blocks). D-061 §A's strike was right; my 19:48Z source was a blended search summary.
+     The fetch also yielded direct KL-anchor precedent for P-7 at personal-PC compute.
+  2. **P-7 review filed (agree + 4 amendments):** step-0 self-imitation probe REQUIRED; E2 before
+     learner engineering; reconcile the 80µs vs 383µs engine arithmetic (4.8× gap decides the 1e7/h
+     projection); per-iteration death-mix columns. Replicated A10 inference on this Mac: 13.1k
+     dec/s/core @ batch 1, 32.7k @ 8, 44.9k @ 64 (card conservative). Forecasts: E2 0.50, h2h 0.50,
+     panel 0.20, live 0.10.
+- **D-060/D-061 absorbed:** LS-1 pairing by proxy (no opponent submission id exists server-side);
+  battery selector held until Tanaka passes it (Hinata's 4 selector defects fixed, sha mess
+  cleaned); precedent table amended — tally rules/search 5, self-play 3, "no verified top-ten by
+  imitation alone"; clone-first now rests on D-059 + hb1-14 + microRTS clone→fine-tune.
+- **Last BOARD timestamp processed: 2026-10-04 20:36 UTC.** Next unit: LS-1 first look (102 pairs),
+  battery selection after Tanaka's pass, P-7 Chair ruling with the battery table.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
