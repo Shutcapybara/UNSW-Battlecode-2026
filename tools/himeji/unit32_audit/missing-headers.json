@@ -1,0 +1,1055 @@
+{
+  "games": [
+    {
+      "game": "852484",
+      "sha256": "44a9865e2546ba991b313be113b9e8d69a7503ea4328030a9ca2d3605dc774a0",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14265",
+        "B": ""
+      }
+    },
+    {
+      "game": "852485",
+      "sha256": "9fb49aee6c970a46f431e7627c90b7ef2ac634963811299816cdd6058d514fc9",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 5
+      },
+      "bots": {
+        "A": "14265",
+        "B": ""
+      }
+    },
+    {
+      "game": "852486",
+      "sha256": "83a70597408f2b0106c6e51b8b55a79397aac79de9ceff0b8b2251a59bb5f6cf",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14265",
+        "B": ""
+      }
+    },
+    {
+      "game": "852487",
+      "sha256": "4d53c67f6465e31ea08646c184931e5d0230f160ef7480b978c64fdab3946d25",
+      "map_hash": "da98e11bd49cde586e41b5e4c741502b3bea5c47714c1c6e7cc14d841dee6e4b",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14265",
+        "B": ""
+      }
+    },
+    {
+      "game": "852488",
+      "sha256": "28970ee350ab91a22af70686993d9e56b67414313fd022ebce670d42b76ff3c0",
+      "map_hash": "23fa2e8a800ade85c875e11de98ffb587025cf7fbf1d9d31f900b24834118b31",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 3
+      },
+      "bots": {
+        "A": "14265",
+        "B": ""
+      }
+    },
+    {
+      "game": "852614",
+      "sha256": "212ab8cd9464283b737fff8d19bbe30bab84e96481d16f590407c2a3ba489880",
+      "map_hash": "aebe7fff18a8613b63aa7736c61c3df3a44d2ea92a0b6ad7301a52fc5c154857",
+      "official_winner": "a",
+      "queens": {
+        "A": 3,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "852615",
+      "sha256": "a557c6454916fb5d869dc52d08cf7769881c03a70deafc35081893f72f1bc690",
+      "map_hash": "08c80bd457d965982693db7d02180cb99e272e721f8aedc8d08ff88f8e787cef",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "852616",
+      "sha256": "3b0caa2cfec0532125f9e3542c0e75e10d92158be9cd0d9974ec8b42cd2e9b57",
+      "map_hash": "ea5704a61d5bb4b875f660e99c59e35fcdbf8efb8f98c4b47e3dcbae36f4f15e",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "852617",
+      "sha256": "5e061eb868f707137111e50b5fce9d1be3318e15f7b88394a7904afedf316eca",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "852618",
+      "sha256": "eab42b6c0e837468c8d21428bae4cf07dcebe76493f5f9f540c84a53bc6ba894",
+      "map_hash": "3c76d5636a2d6e3d6705ed785cce039c66e4991bdca305b3927d153f58125799",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "855922",
+      "sha256": "5bd63f68a94f47d950718902a00fcf0f8ec33ac57328ba809ec10d38f5d6cf5c",
+      "map_hash": "3d68704c632f99b623041b5e3500cad732cae01fcba0c639f0004166417e125a",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "855923",
+      "sha256": "684bc092678d964eb63223c6fa747318201e8de18ab879d4aee5811331b01cba",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "855924",
+      "sha256": "98570614e067008f17e1d875bd745e2c65be0a9ef95f3dcfb55fc29bf5ba5a45",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "855925",
+      "sha256": "ebe52b788ce06858c65bdc4f244fb30a5b6a3ea05a952f99dd881a0c465d47fb",
+      "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "855926",
+      "sha256": "224288e3d6e0967b90e209fb454bdf75c81d122b8beb159e1c74ac6f584bafa9",
+      "map_hash": "65be5fe99a46cf0a26644ecb08d2733e6099acfec06438430a15ff0436f5d3d5",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "859554",
+      "sha256": "9999e0b4456e19a9b723f2b799671282f7baf189e14cf45c28ee11c582e1e7ef",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "859556",
+      "sha256": "76e09973038a6b0a9a64400c00201c0684be60bf4bacba7ee7bf9c3c3ec059b8",
+      "map_hash": "2aa3b6c52fa4b6644e6bc5a389528d36995aef59cfa37e5f9b21c2859d0cd9dc",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "859557",
+      "sha256": "50cd89c30817a8e86ae2c073826c6db1b2281f742134f7da0cd3be925245beaa",
+      "map_hash": "85635a271dcb6f1c100a8d47b3754c6d9991c5702adb6e35493ad43501c3e662",
+      "official_winner": "a",
+      "queens": {
+        "A": 3,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "860313",
+      "sha256": "11af318096c778707610c94ed26a23d39d4fd9928abe77bd54b61dccdca94ec7",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "860315",
+      "sha256": "2ab695df08db54a4f00ccae56846adc33ee5a27c9c6b0520c5974e1f2233195b",
+      "map_hash": "8fe66a3fb92831602d438524d0de93f083ed1ad731398515c69e08d2ba67cf00",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "860316",
+      "sha256": "49c5ff84de6a3bbc19338e6c34a96281f56cc8735ab1b8888e862b07d4eb84d2",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "860826",
+      "sha256": "1e75aedcf8bfcdbca2024f27e98906a1aa06955aa509faa17234c1f39320c39a",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "860827",
+      "sha256": "5bcd5cf85244bc74af4f89f86c02bfad884489781e18e0311072d6473ff45fbf",
+      "map_hash": "08c80bd457d965982693db7d02180cb99e272e721f8aedc8d08ff88f8e787cef",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "860828",
+      "sha256": "26501837c6ff29a62b9e8289b50a7cc4e04f5390912ca0943120fb41df85862a",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "862360",
+      "sha256": "c6ffbedb6046d3f15d1e6ce36f1ee642e15688b2702c602f209d5e3606a5dd27",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "868517",
+      "sha256": "fb029539661882ff1585bbb829ecd3744f5e56a09b1f8c0b875dacd247b84a8f",
+      "map_hash": "b5f9f10f41855f551ddb6ea779626d48c5d97d4b7cc2ab170e276a9a9b9a6f53",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "868518",
+      "sha256": "fc5646f5b84cce2a398994f86f6d0bad3db53929b56fb349ab29f53784df21a7",
+      "map_hash": "3d68704c632f99b623041b5e3500cad732cae01fcba0c639f0004166417e125a",
+      "official_winner": "a",
+      "queens": {
+        "A": 2,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "868519",
+      "sha256": "b1a3ffea0d0febe4f0d6c41ae42aabf5f940cefe8759697be323a8e38eea8371",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "868520",
+      "sha256": "37155377e352c6dc6d90f961916a9521510e9eadc254d571705ae7ceb20b677a",
+      "map_hash": "88eea47e61ffdbf5e54e9d4cb4c935fda03328d1576ebbd2e4167e42a0c28050",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "868521",
+      "sha256": "301dc19d666315e6560edb72f4790ce40a30ad38cb369221737c4d024af81bbe",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 2
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "871749",
+      "sha256": "673ef30697193b04eaf23704283740ab49fb1ca95ef362f70c37370f165deb8b",
+      "map_hash": "da98e11bd49cde586e41b5e4c741502b3bea5c47714c1c6e7cc14d841dee6e4b",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "871750",
+      "sha256": "6cb8b3f2303c27d9f6ba4644168070b0baa1e1d0437f29359fdb2148bb37f696",
+      "map_hash": "3d68704c632f99b623041b5e3500cad732cae01fcba0c639f0004166417e125a",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 3
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "871751",
+      "sha256": "9038d509efda80c5cf853f6d2ee5aa8465b3dd0e639de1642d0856feb993bbc2",
+      "map_hash": "8fe66a3fb92831602d438524d0de93f083ed1ad731398515c69e08d2ba67cf00",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "871752",
+      "sha256": "9f9c415f42f1b24c7e3555e64d542534de17b98ca91936a47109a1c34326651b",
+      "map_hash": "65900cc53db72d804e27601b441d9b679806c60a96342831b908415c92102acd",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "871753",
+      "sha256": "a0f33ae154a23c87a3c85571183f87fd51f022781195f376ac4ecfe4caf101de",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "879157",
+      "sha256": "5114e1d1211236b28e44a968345774f91a2f94d01cf72872a531336ef9cb8fd9",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "879158",
+      "sha256": "6e6a259553a17a20fa5a2ad3ac9f151b6adf0c646284e5f66f04dd4eb5779276",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "879159",
+      "sha256": "4a407aa98ed421b0bc44de6fe398a9f9b01574db37db45cb4ad2104034daae01",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "879160",
+      "sha256": "007168e25a162b2c48980af1bdff76d03211da04303a7a344842ccb997bc3ce9",
+      "map_hash": "23fa2e8a800ade85c875e11de98ffb587025cf7fbf1d9d31f900b24834118b31",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 3
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "879161",
+      "sha256": "229c25c7917ac1a162f4e9312bd2179139d824f7acb65828a0a5b0f21207b1a7",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "880461",
+      "sha256": "a30729939dc3b3bc3535217023430110c6652c4e103b1027ca2ac54fc0ed0fad",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "880462",
+      "sha256": "56ac3453cbd1b2bf7fab67d92203b2341b8c102a5a4433f78e44d024891e6b2e",
+      "map_hash": "cfc35be3b278d3b9f410b76c4b772dd99bf64b362fdc90a50abc544ca7668700",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "880463",
+      "sha256": "16a7e8d87a12cb6a1531c861276156d29076294eb7f7cffd0b246a6b2d33d58d",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "official_winner": "a",
+      "queens": {
+        "A": 14,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "880464",
+      "sha256": "95997752229e233bf2a769b661229926c0fe9d44289e5e990c1c5644330bbef7",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "880465",
+      "sha256": "048724063a042dabefa3a2f16e30316098a01951cd83d8fbad4a5a27e114c1ae",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "884269",
+      "sha256": "213c73c1d1e7eef7c776302866dc3e0a6ccdebe2128e8b177d71dfd72bef4475",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "884270",
+      "sha256": "47e33a3ce3d54e64faedf3d0917b04b5c52213d51eb5b68f167313e4f38faa7d",
+      "map_hash": "e3175217d1717035d51164b2be0c9f6b962aeebd700e9f7da02be02cffca3cd5",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "884271",
+      "sha256": "bfd6e1aa7a3524108cfc9ee8ad85d16d41991a3d680aa5500233e9c2303f3cc5",
+      "map_hash": "a9a230ecffab497ea0ab65acc3b9f4f327c1736392560d22532404f4a876c9e5",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "884272",
+      "sha256": "a0c333fd53f554ec3e505d1e7ab23ca8b86daede720cd5c3bbd637e037bc3f2f",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "884273",
+      "sha256": "1cc644698cf6c18faa1fa79621770807028ef7cd59b2f9b4061230fbba7da6ae",
+      "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "887281",
+      "sha256": "194adc3f6a134390d69ec3e79738f362ac5cdc3209eacd124dadefe1d702dd1d",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "887282",
+      "sha256": "c25cb726e37771d6d3b73a6da3d9964cfa6468873330ac4cc8d8b2990434af65",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "887283",
+      "sha256": "bf934acf5c3b49f4510de6d4d99dda8099faea50ac12e0c07ba2edae0437fcb7",
+      "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "887284",
+      "sha256": "b6862c11ea0f5614eb2981a99516f45360edd9d44a5fa0130d611f638598f4b0",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "887285",
+      "sha256": "d59c64cf9c5b4eae9ee606e9f412bdd4380ca625cb65489025c5c05acfc1f0c6",
+      "map_hash": "3ffe4ab7cb5e880f7ddb7d5d1dcfd95c5891e460468a24130d1c6dd50e23b141",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "887970",
+      "sha256": "330be124d69ce637813793769fb516de790e37c2cd0352667d4794ef5cbf91d9",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "official_winner": "a",
+      "queens": {
+        "A": 2,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "887971",
+      "sha256": "2857f6bf8a9fdbfa7be6f43665ff6c4e2ca3c73373894224ac446a9b333ee44a",
+      "map_hash": "63cb068bc50488498d5d8592529026bae727d681f3ca3a41995902d0cf5f3c23",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "887972",
+      "sha256": "bca7d46d7f62ab1a751fe58521a7bfed06e7a4f01c1a91ac3fabf479a7e776a2",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "official_winner": "a",
+      "queens": {
+        "A": 15,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "887973",
+      "sha256": "3e9145a9a640c5e5ad7646c6702a30cd5cffe4c0ae02c80ff3d84e33bc5c4a46",
+      "map_hash": "e35816d70a75da1dcaae30273e0ed23831aa069c58feddbc9cd722d409e180a6",
+      "official_winner": "a",
+      "queens": {
+        "A": 3,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "887974",
+      "sha256": "8ac7c6a336bdd969fbe57f54c8e9d26047ee070812d2d8a1cde4751232cec31b",
+      "map_hash": "aebe7fff18a8613b63aa7736c61c3df3a44d2ea92a0b6ad7301a52fc5c154857",
+      "official_winner": "a",
+      "queens": {
+        "A": 23,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "888330",
+      "sha256": "0e6b243cbc838f2c615129e7d5753d9b0f1166bf177cf554104010fb3229908c",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "888331",
+      "sha256": "f01e40bebfecece4c1c47187582919f946c50d7983cef02a9360a93c9350709c",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "official_winner": "a",
+      "queens": {
+        "A": 18,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "888332",
+      "sha256": "114c4449e7ecb8a69058c14334a7d638e2ae56257ea41d6c1fb0812ac0b4ef4e",
+      "map_hash": "2aa3b6c52fa4b6644e6bc5a389528d36995aef59cfa37e5f9b21c2859d0cd9dc",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "888333",
+      "sha256": "2047169c67b69b6e55804994c69092fb8cd78400be6a82cc2f22df1568fa025d",
+      "map_hash": "8fe66a3fb92831602d438524d0de93f083ed1ad731398515c69e08d2ba67cf00",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "888334",
+      "sha256": "4b1bf4bfaba20d769ced24c1650f439afdb02d76ff94bf885c8592ef66dc24fb",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "992698",
+      "sha256": "326ccac4e94a019ebb6fd41115679af5c61553b48d14a7a96d631ea538e026aa",
+      "map_hash": "e3175217d1717035d51164b2be0c9f6b962aeebd700e9f7da02be02cffca3cd5",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "992699",
+      "sha256": "1b61ddf3b1d3d46a951fe6fbafba0c7fc778affc3007765442247b48f019d0cf",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 2
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "992700",
+      "sha256": "26054699a02c369492dad485d29cb6c451211dbb3b4dca33c5716351f7679121",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "992701",
+      "sha256": "125405076a0c412a4c5febe48f5ab4c808d26ded05ce13fa07a617b891c0f19a",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 41
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "992702",
+      "sha256": "464a777b74a0dee09517846877ce0cc059051f53635a33379d65d8b7af67c17e",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "14585",
+        "B": ""
+      }
+    },
+    {
+      "game": "995610",
+      "sha256": "f75312e9be3dedc10bbe749c20072b29f914ee07256bf9da2b35f41b678ec748",
+      "map_hash": "cfc35be3b278d3b9f410b76c4b772dd99bf64b362fdc90a50abc544ca7668700",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "995611",
+      "sha256": "ff0e6c8e95e41479981032ced67e3992145fb9d7dfed2ba534cc0e9fd8d216fc",
+      "map_hash": "85635a271dcb6f1c100a8d47b3754c6d9991c5702adb6e35493ad43501c3e662",
+      "official_winner": "a",
+      "queens": {
+        "A": 3,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "995612",
+      "sha256": "762f0f838268a65ff13f03c062a7a3acfbfb2c92fbbb8c8863fef640a8de5688",
+      "map_hash": "65900cc53db72d804e27601b441d9b679806c60a96342831b908415c92102acd",
+      "official_winner": "b",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "995613",
+      "sha256": "d45d4f0e62962dff669e0be3caa8227050a47c6193137b1cef7e9ef09f76dd68",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "official_winner": "a",
+      "queens": {
+        "A": 0,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    },
+    {
+      "game": "995614",
+      "sha256": "60c0e20792f8266f8e131a33179e50c490a8b7f59681226c299bd0625554f069",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "official_winner": "a",
+      "queens": {
+        "A": 3,
+        "B": 0
+      },
+      "bots": {
+        "A": "",
+        "B": "14585"
+      }
+    }
+  ],
+  "scope": "Only missing canonical terminal columns filled from verified official replay headers; no checkpoint inference or store edits."
+}

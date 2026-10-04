@@ -1,0 +1,251 @@
+{
+  "rows": [
+    {
+      "game": 1025055,
+      "series": "91aa692e-706f-4dd5-9a9b-52712a592142",
+      "ranked": true,
+      "map": "Portals",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "sha256": "c0eb43278d03fd5912bc30fe8cb088a2f9baf501052e7ce83e3f6402f3ac1ada",
+      "own_side": "A",
+      "bots": [
+        "14585",
+        ""
+      ],
+      "R": 499,
+      "winner": "B",
+      "counts": {
+        "A": {
+          "born": 572,
+          "round_only_ally": 556,
+          "event_ally": 555,
+          "round_only_not_by50": 16,
+          "event_not_by50": 17,
+          "mismatches": 1
+        },
+        "B": {
+          "born": 643,
+          "round_only_ally": 627,
+          "event_ally": 627,
+          "round_only_not_by50": 16,
+          "event_not_by50": 16
+        }
+      },
+      "mismatches": [
+        {
+          "birth": {
+            "round": 419,
+            "cell": [
+              12,
+              7
+            ],
+            "origin": "A",
+            "donor": 838
+          },
+          "round_only": "ally",
+          "event_fate": "not_by50",
+          "first_round_match": [
+            419,
+            "A"
+          ],
+          "actual_eat": null
+        }
+      ],
+      "raw_same_round_trace": [
+        {
+          "event": 144613,
+          "round": 419,
+          "actor": 838,
+          "cell": [
+            12,
+            7
+          ],
+          "spawn": false
+        },
+        {
+          "event": 144616,
+          "round": 419,
+          "actor": 838,
+          "cell": [
+            12,
+            7
+          ],
+          "spawn": true
+        }
+      ]
+    },
+    {
+      "game": 1025051,
+      "series": "91aa692e-706f-4dd5-9a9b-52712a592142",
+      "ranked": true,
+      "map": "Queen Of Spades",
+      "map_hash": "3ffe4ab7cb5e880f7ddb7d5d1dcfd95c5891e460468a24130d1c6dd50e23b141",
+      "sha256": "36bff9fd603f579a11f42010932d35490b9f652c3cd0485b96b10f24a97b3d6e",
+      "own_side": "A",
+      "bots": [
+        "14585",
+        ""
+      ],
+      "R": 340,
+      "winner": "A",
+      "counts": {
+        "A": {
+          "born": 68,
+          "round_only_ally": 59,
+          "event_ally": 58,
+          "round_only_enemy": 6,
+          "event_enemy": 7,
+          "mismatches": 1,
+          "round_only_not_by50": 3,
+          "event_not_by50": 3
+        },
+        "B": {
+          "born": 39,
+          "round_only_ally": 16,
+          "event_ally": 16,
+          "round_only_enemy": 23,
+          "event_enemy": 23
+        }
+      },
+      "mismatches": [
+        {
+          "birth": {
+            "round": 158,
+            "cell": [
+              5,
+              4
+            ],
+            "origin": "A",
+            "donor": 38
+          },
+          "round_only": "ally",
+          "event_fate": "enemy",
+          "first_round_match": [
+            158,
+            "A"
+          ],
+          "actual_eat": {
+            "round": 160,
+            "id": 83,
+            "team": "B",
+            "cell": [
+              5,
+              4
+            ],
+            "origin": "enemy_corpse",
+            "age": 2,
+            "donor": 38
+          }
+        }
+      ],
+      "raw_same_round_trace": [
+        {
+          "event": 13997,
+          "round": 158,
+          "actor": 38,
+          "cell": [
+            5,
+            4
+          ],
+          "spawn": false
+        },
+        {
+          "event": 14115,
+          "round": 158,
+          "actor": 80,
+          "cell": [
+            5,
+            4
+          ],
+          "spawn": true
+        }
+      ]
+    },
+    {
+      "game": 1025054,
+      "series": "91aa692e-706f-4dd5-9a9b-52712a592142",
+      "ranked": true,
+      "map": "Prisoners Dilemma",
+      "map_hash": "88eea47e61ffdbf5e54e9d4cb4c935fda03328d1576ebbd2e4167e42a0c28050",
+      "sha256": "14953241688c41ce219454d354ca6ae2ce8d3195b74cd451e22255af5aaa8a13",
+      "own_side": "A",
+      "bots": [
+        "14585",
+        ""
+      ],
+      "R": 499,
+      "winner": "B",
+      "counts": {
+        "A": {
+          "born": 22,
+          "round_only_not_by50": 3,
+          "event_not_by50": 3,
+          "round_only_ally": 19,
+          "event_ally": 19
+        },
+        "B": {
+          "born": 127,
+          "round_only_ally": 127,
+          "event_ally": 127
+        }
+      },
+      "mismatches": [],
+      "raw_same_round_trace": []
+    },
+    {
+      "game": 1025052,
+      "series": "91aa692e-706f-4dd5-9a9b-52712a592142",
+      "ranked": true,
+      "map": "weakhold",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "sha256": "d08892e4ac5e9127c329dab0e57e2849913064a46b832f8eac4a4f1de5af895d",
+      "own_side": "A",
+      "bots": [
+        "14585",
+        ""
+      ],
+      "R": 316,
+      "winner": "B",
+      "counts": {
+        "A": {
+          "born": 15,
+          "round_only_not_by50": 5,
+          "event_not_by50": 5,
+          "round_only_ally": 10,
+          "event_ally": 10
+        },
+        "B": {
+          "born": 184,
+          "round_only_ally": 180,
+          "event_ally": 180,
+          "round_only_not_by50": 4,
+          "event_not_by50": 4
+        }
+      },
+      "mismatches": [],
+      "raw_same_round_trace": []
+    },
+    {
+      "game": 1025053,
+      "series": "91aa692e-706f-4dd5-9a9b-52712a592142",
+      "ranked": true,
+      "map": "Stripes",
+      "map_hash": "63cb068bc50488498d5d8592529026bae727d681f3ca3a41995902d0cf5f3c23",
+      "sha256": "a890332cc8765f178333dc9edb0e8a2ecd0d20663f6cc6a8a8c4c117fa8a0f73",
+      "own_side": "A",
+      "bots": [
+        "14585",
+        ""
+      ],
+      "R": 92,
+      "winner": "B",
+      "counts": {
+        "A": {},
+        "B": {}
+      },
+      "mismatches": [],
+      "raw_same_round_trace": []
+    }
+  ],
+  "contract": "Round-only first eat sorted (round,team) versus donor+birth-round+cell event identity, fully followed50round cohort. Residual not_by50 is not a physical remaining-food claim. Fresh audit population, not peer349 recut."
+}

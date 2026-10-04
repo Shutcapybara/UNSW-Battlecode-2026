@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-04T09:23:04.953204+00:00",
+  "index_games": 123012,
+  "index_sha256": "fb6368440153f206ca6752d29bfeec45a0db7a6f2ccf62fcbb1d02bd6fbd2e2c",
+  "delta": 218,
+  "new_own": [],
+  "latest_own": "2026-10-04T07:27:19.282Z",
+  "own_watched": false,
+  "progress_at": "2026-10-04T09:19:05.217102+00:00",
+  "ladder": "20261004T091155Z.json",
+  "ladder_sha256": "eabbf301aafc2d115cfec9806b92d72dfd2cf646f5b8bee2500c835941ee97a3",
+  "submissions": [
+    [
+      14265,
+      "idle",
+      "2026-10-04T09:22:50.999468+00:00"
+    ],
+    [
+      14585,
+      "active",
+      "2026-10-04T09:22:50.998652+00:00"
+    ]
+  ],
+  "series": [
+    1175,
+    "2026-10-04T09:22:50.984808+00:00"
+  ],
+  "sources": {
+    "HEAD": "17e6a73c7c63602859c84da24a14d84226682c80",
+    "origin/main": "ef273011b67f577f3ed63638e46d361554feb7a8",
+    "origin/r/kanazawa": "81ffde51b2615b5ad85d96a1605f0026ddd3da8e",
+    "origin/r/shenzhen": "d42e90558675f2ca138e65c9f96d06451cb7a5e5",
+    "origin/r/Seoul": "e3838cc84a4dbf642148a9c011dac161798941c1",
+    "origin/r/rome": "1ac66fa62476cae09fd8f9d5463592c561171602",
+    "origin/r/chongqing": "646811d6e4eb93f41864647eae73dab967311060",
+    "origin/r/nara": "f9fff6a72d6c5529b8b88e21b808760de66e55ae",
+    "origin/r/antioch": "2c7113f6657362ce68bc0d667bf932d665c1a31c",
+    "origin/r/carthage": "5b69fa9d07a0fd4684826f752438a2e8e66d9f45",
+    "origin/r/kyoto": "fccea71c060fc7bf0cae41aeef8d063d9894d8c6"
+  },
+  "source_hashes": {
+    "tools/hub/corpus.py": "6bb33fd775768eafdaf38c287ce1853f45e8852d2e40acd5077502f3fec8c51c",
+    "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+    "tools/s1/build.py": "84000d840520e84e090cc2c599e7447017487f5f4e6fb3f0a7fb50310f336db8"
+  },
+  "top10": [
+    91,
+    306,
+    264,
+    213,
+    112,
+    566,
+    507,
+    952,
+    55,
+    842
+  ],
+  "own_ladder": {
+    "dev": false,
+    "elo": 1720,
+    "id": 7,
+    "name": "Just Keep Swimming",
+    "rank": 76,
+    "wins": 5211
+  },
+  "peer_source_receipts": {
+    "tools/kanazawa/q_avoid2.py": "9230e0e54c47e9e04e8876eac536a292557765d4672f0f7d38233fe678cf9d0c",
+    "tools/chongqing/qq.py": "a8f9a5006c79e1055370a8f15d8dea3a177eb5be9b52135fe89177f794c4d4ff",
+    "docs/findings/2026-10-04-chongqing-unit8-cluster-opening-rows-and-adoption.md": "b0282791a1151a784d144d4349f9486f6db64fb4b7941c73d31b81680faca93a"
+  },
+  "board_cursor": "Chongqing C8-01..04; Kanazawa unit13 two lines labelled09:35 available at09:22; Nara09:02; Romecursor26",
+  "store_build_note": "New main builder fixes queen checkpoint boundary/censoring; prior analytical parts preserved and canonical earliest part retained. Only terminal endpoints used;75missing headers filled in Himeji output.",
+  "close_thread_cursor": "b99b513f-fdd3-41ba-b646-7855a1a8bbde:27",
+  "own_board_cursor": "H32-01..07",
+  "all_queries_complete": true
+}

@@ -1,0 +1,230 @@
+[
+  {
+    "map": "Around UNSW",
+    "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595",
+    "cohort": "field",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 4,
+    "series": 4,
+    "counts": {
+      "deaths": 1631,
+      "enemy_h2h": 377,
+      "partner": 212,
+      "mover": 165
+    },
+    "mover_share": 0.4376657824933687,
+    "fully_followed_trades": 350,
+    "equal_length_trades": 89,
+    "equal_capture_advantage": 1.1910112359550562
+  },
+  {
+    "map": "Around UNSW",
+    "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595",
+    "cohort": "us",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 4,
+    "series": 4,
+    "counts": {
+      "deaths": 807,
+      "enemy_h2h": 316,
+      "partner": 107,
+      "mover": 209
+    },
+    "mover_share": 0.6613924050632911,
+    "fully_followed_trades": 299,
+    "equal_length_trades": 78,
+    "equal_capture_advantage": 1.1538461538461537
+  },
+  {
+    "map": "Around UNSW",
+    "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+    "cohort": "field",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 3,
+    "series": 3,
+    "counts": {
+      "deaths": 1429,
+      "enemy_h2h": 350,
+      "mover": 192,
+      "partner": 158
+    },
+    "mover_share": 0.5485714285714286,
+    "fully_followed_trades": 315,
+    "equal_length_trades": 108,
+    "equal_capture_advantage": 0.8703703703703703
+  },
+  {
+    "map": "Around UNSW",
+    "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+    "cohort": "us",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 3,
+    "series": 3,
+    "counts": {
+      "deaths": 653,
+      "enemy_h2h": 282,
+      "partner": 181,
+      "mover": 101
+    },
+    "mover_share": 0.35815602836879434,
+    "fully_followed_trades": 273,
+    "equal_length_trades": 62,
+    "equal_capture_advantage": 0.9354838709677419
+  },
+  {
+    "map": "Australia",
+    "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+    "cohort": "field",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 4,
+    "series": 4,
+    "counts": {
+      "deaths": 1318,
+      "enemy_h2h": 667,
+      "partner": 305,
+      "mover": 362
+    },
+    "mover_share": 0.5427286356821589,
+    "fully_followed_trades": 651,
+    "equal_length_trades": 269,
+    "equal_capture_advantage": 1.0185873605947955
+  },
+  {
+    "map": "Australia",
+    "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+    "cohort": "us",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 4,
+    "series": 4,
+    "counts": {
+      "deaths": 582,
+      "enemy_h2h": 362,
+      "partner": 228,
+      "mover": 134
+    },
+    "mover_share": 0.3701657458563536,
+    "fully_followed_trades": 345,
+    "equal_length_trades": 112,
+    "equal_capture_advantage": 0.8928571428571429
+  },
+  {
+    "map": "Australia",
+    "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+    "cohort": "field",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 3,
+    "series": 3,
+    "counts": {
+      "deaths": 1079,
+      "enemy_h2h": 386,
+      "mover": 260,
+      "partner": 126
+    },
+    "mover_share": 0.6735751295336787,
+    "fully_followed_trades": 376,
+    "equal_length_trades": 115,
+    "equal_capture_advantage": 1.5304347826086957
+  },
+  {
+    "map": "Australia",
+    "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+    "cohort": "us",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 3,
+    "series": 3,
+    "counts": {
+      "deaths": 447,
+      "enemy_h2h": 182,
+      "partner": 92,
+      "mover": 90
+    },
+    "mover_share": 0.4945054945054945,
+    "fully_followed_trades": 174,
+    "equal_length_trades": 58,
+    "equal_capture_advantage": 1.396551724137931
+  },
+  {
+    "map": "Islands",
+    "map_hash": "8fe66a3fb92831602d438524d0de93f083ed1ad731398515c69e08d2ba67cf00",
+    "cohort": "field",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 4,
+    "series": 4,
+    "counts": {
+      "deaths": 1738,
+      "enemy_h2h": 476,
+      "mover": 269,
+      "partner": 207
+    },
+    "mover_share": 0.5651260504201681,
+    "fully_followed_trades": 464,
+    "equal_length_trades": 189,
+    "equal_capture_advantage": 1.5185185185185186
+  },
+  {
+    "map": "Islands",
+    "map_hash": "8fe66a3fb92831602d438524d0de93f083ed1ad731398515c69e08d2ba67cf00",
+    "cohort": "us",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 4,
+    "series": 4,
+    "counts": {
+      "deaths": 1081,
+      "enemy_h2h": 592,
+      "partner": 335,
+      "mover": 257
+    },
+    "mover_share": 0.4341216216216216,
+    "fully_followed_trades": 583,
+    "equal_length_trades": 239,
+    "equal_capture_advantage": 0.702928870292887
+  },
+  {
+    "map": "Islands",
+    "map_hash": "e3175217d1717035d51164b2be0c9f6b962aeebd700e9f7da02be02cffca3cd5",
+    "cohort": "field",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 2,
+    "series": 2,
+    "counts": {
+      "deaths": 782,
+      "enemy_h2h": 260,
+      "mover": 140,
+      "partner": 120
+    },
+    "mover_share": 0.5384615384615384,
+    "fully_followed_trades": 252,
+    "equal_length_trades": 105,
+    "equal_capture_advantage": 1.5047619047619047
+  },
+  {
+    "map": "Islands",
+    "map_hash": "e3175217d1717035d51164b2be0c9f6b962aeebd700e9f7da02be02cffca3cd5",
+    "cohort": "us",
+    "ranked": true,
+    "map_era": "post-m2",
+    "games": 2,
+    "series": 2,
+    "counts": {
+      "deaths": 552,
+      "enemy_h2h": 211,
+      "partner": 112,
+      "mover": 99
+    },
+    "mover_share": 0.46919431279620855,
+    "fully_followed_trades": 208,
+    "equal_length_trades": 99,
+    "equal_capture_advantage": 1.0101010101010102
+  }
+]

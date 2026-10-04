@@ -1,0 +1,114 @@
+{
+  "post_games": 787,
+  "post_ranked": 248,
+  "new_games": 5,
+  "latest_started_at": "2026-10-04T07:27:19.282Z",
+  "source_prior_sha256": "da829e1af38f941da8ebbbaf11031b9cd156c0185e03ee3c25199fecce017ca8",
+  "series": [
+    {
+      "series": "91aa692e-706f-4dd5-9a9b-52712a592142",
+      "opponent": "939",
+      "ranked": true,
+      "submission": "14585",
+      "n": 5,
+      "wins": 1,
+      "first_start": "2026-10-04T07:27:19.114Z",
+      "reached490": 2,
+      "queen_alive490": 0,
+      "round_limit": 2,
+      "queen_alive_end_rl": 0,
+      "games": [
+        {
+          "game": "1025051",
+          "map": "Queen Of Spades",
+          "side": "A",
+          "won": 1,
+          "last_round": 340,
+          "reason": "elimination",
+          "queen_length490": null,
+          "queen_length_end": 0,
+          "total_end": 94,
+          "opp_total_end": 0,
+          "q3_r50": {
+            "bed_eats": 15.0,
+            "splits": 6.0,
+            "transits": 6,
+            "territory": 0.5598845598845599
+          }
+        },
+        {
+          "game": "1025052",
+          "map": "weakhold",
+          "side": "A",
+          "won": 0,
+          "last_round": 316,
+          "reason": "elimination",
+          "queen_length490": null,
+          "queen_length_end": 0,
+          "total_end": 0,
+          "opp_total_end": 75,
+          "q3_r50": {
+            "bed_eats": 21.0,
+            "splits": 16.0,
+            "transits": 0,
+            "territory": 0.43833333333333335
+          }
+        },
+        {
+          "game": "1025053",
+          "map": "Stripes",
+          "side": "A",
+          "won": 0,
+          "last_round": 92,
+          "reason": "elimination",
+          "queen_length490": null,
+          "queen_length_end": 0,
+          "total_end": 0,
+          "opp_total_end": 26,
+          "q3_r50": {
+            "bed_eats": 2.0,
+            "splits": 1.0,
+            "transits": 2,
+            "territory": 0.3375
+          }
+        },
+        {
+          "game": "1025054",
+          "map": "Prisoners Dilemma",
+          "side": "A",
+          "won": 0,
+          "last_round": 499,
+          "reason": "queen",
+          "queen_length490": 0,
+          "queen_length_end": 0,
+          "total_end": 10,
+          "opp_total_end": 27,
+          "q3_r50": {
+            "bed_eats": 5.0,
+            "splits": 8.0,
+            "transits": 3,
+            "territory": 0.71484375
+          }
+        },
+        {
+          "game": "1025055",
+          "map": "Portals",
+          "side": "A",
+          "won": 0,
+          "last_round": 499,
+          "reason": "longest",
+          "queen_length490": 0,
+          "queen_length_end": 0,
+          "total_end": 21,
+          "opp_total_end": 44,
+          "q3_r50": {
+            "bed_eats": 20.0,
+            "splits": 10.0,
+            "transits": 7,
+            "territory": 0.5
+          }
+        }
+      ]
+    }
+  ]
+}

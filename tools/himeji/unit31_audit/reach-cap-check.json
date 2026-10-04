@@ -1,0 +1,37 @@
+{
+  "checks": [
+    {
+      "length": 9,
+      "target_distance": 10,
+      "budget": 10,
+      "peer_distance": 10,
+      "peer_threat": true,
+      "correct_threat": true
+    },
+    {
+      "length": 12,
+      "target_distance": 11,
+      "budget": 13,
+      "peer_distance": 11,
+      "peer_threat": true,
+      "correct_threat": true
+    },
+    {
+      "length": 12,
+      "target_distance": 12,
+      "budget": 13,
+      "peer_distance": 99,
+      "peer_threat": false,
+      "correct_threat": true
+    },
+    {
+      "length": 12,
+      "target_distance": 13,
+      "budget": 13,
+      "peer_distance": 99,
+      "peer_threat": false,
+      "correct_threat": true
+    }
+  ],
+  "scope": "Pure source fixture, not measured incidence in selected replay cases; no simulator/policy run."
+}

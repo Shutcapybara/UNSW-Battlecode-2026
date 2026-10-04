@@ -1,0 +1,270 @@
+{
+  "contract": "All counts r>=150; payoffs require death<=actual last round-50, donor+birth+cell identity and at most50round capture. Death-role fraction conditions on enemy h2h, not contact opportunity/causal initiation rate. Samehash/seat time matching, opponents not matched. 4000 connected-series cluster bootstrap for per-map field-us share; payoff equal-length CI ordinary whole-series bootstrap; seed3434. Small samples, exploratory.",
+  "games": 40,
+  "trades": 4290,
+  "matched_map_differences": [
+    {
+      "map": "Around UNSW",
+      "pairs": 7,
+      "fullhashes": 2,
+      "connected_series_blocks": 7,
+      "field_minus_us_mover_share": -0.02733550164923887,
+      "bootstrap95": [
+        -0.22022653721682844,
+        0.1466169263146001
+      ]
+    },
+    {
+      "map": "Australia",
+      "pairs": 7,
+      "fullhashes": 2,
+      "connected_series_blocks": 7,
+      "field_minus_us_mover_share": 0.17892855147757114,
+      "bootstrap95": [
+        0.019319664299029385,
+        0.32881630514401206
+      ]
+    },
+    {
+      "map": "Islands",
+      "pairs": 6,
+      "fullhashes": 2,
+      "connected_series_blocks": 6,
+      "field_minus_us_mover_share": 0.11236903730575565,
+      "bootstrap95": [
+        -0.04223393353828142,
+        0.23686255463817385
+      ]
+    }
+  ],
+  "cohorts": [
+    {
+      "map": "Around UNSW",
+      "cohort": "us",
+      "games": 7,
+      "series": 7,
+      "counts": {
+        "deaths": 1460,
+        "enemy_h2h": 598,
+        "partner": 288,
+        "mover": 310
+      },
+      "dragon_turns": 130642,
+      "mover_share": 0.5183946488294314,
+      "trade_payoff": {
+        "n": 572,
+        "mover_length": 3.3566433566433567,
+        "partner_length": 5.15034965034965,
+        "length_advantage": 1.7937062937062938,
+        "capture_advantage": 0.8164335664335665,
+        "material_advantage": 2.61013986013986,
+        "mover_net": -0.5909090909090909,
+        "partner_net": -3.2010489510489513
+      },
+      "equal_length_payoff": {
+        "n": 140,
+        "mover_length": 2.6785714285714284,
+        "partner_length": 2.6785714285714284,
+        "length_advantage": 0.0,
+        "capture_advantage": 1.0571428571428572,
+        "material_advantage": 1.0571428571428572,
+        "mover_net": -0.6,
+        "partner_net": -1.6571428571428573
+      },
+      "equal_capture_series95": [
+        0.545414673046252,
+        1.421383647798742
+      ]
+    },
+    {
+      "map": "Around UNSW",
+      "cohort": "field",
+      "games": 7,
+      "series": 7,
+      "counts": {
+        "deaths": 3060,
+        "enemy_h2h": 727,
+        "mover": 357,
+        "partner": 370
+      },
+      "dragon_turns": 131578,
+      "mover_share": 0.49105914718019256,
+      "trade_payoff": {
+        "n": 665,
+        "mover_length": 3.123308270676692,
+        "partner_length": 4.882706766917293,
+        "length_advantage": 1.7593984962406015,
+        "capture_advantage": 1.0601503759398496,
+        "material_advantage": 2.819548872180451,
+        "mover_net": -0.3699248120300752,
+        "partner_net": -3.1894736842105265
+      },
+      "equal_length_payoff": {
+        "n": 197,
+        "mover_length": 2.527918781725888,
+        "partner_length": 2.527918781725888,
+        "length_advantage": 0.0,
+        "capture_advantage": 1.015228426395939,
+        "material_advantage": 1.015228426395939,
+        "mover_net": -0.5736040609137056,
+        "partner_net": -1.5888324873096447
+      },
+      "equal_capture_series95": [
+        0.6576162162162162,
+        1.425
+      ]
+    },
+    {
+      "map": "Australia",
+      "cohort": "us",
+      "games": 7,
+      "series": 7,
+      "counts": {
+        "deaths": 1029,
+        "enemy_h2h": 544,
+        "partner": 320,
+        "mover": 224
+      },
+      "dragon_turns": 113449,
+      "mover_share": 0.4117647058823529,
+      "trade_payoff": {
+        "n": 519,
+        "mover_length": 2.9710982658959537,
+        "partner_length": 4.886319845857418,
+        "length_advantage": 1.9152215799614642,
+        "capture_advantage": 0.8111753371868978,
+        "material_advantage": 2.7263969171483624,
+        "mover_net": -0.348747591522158,
+        "partner_net": -3.0751445086705202
+      },
+      "equal_length_payoff": {
+        "n": 170,
+        "mover_length": 2.6941176470588237,
+        "partner_length": 2.6941176470588237,
+        "length_advantage": 0.0,
+        "capture_advantage": 1.0647058823529412,
+        "material_advantage": 1.0647058823529412,
+        "mover_net": -0.5588235294117647,
+        "partner_net": -1.6235294117647059
+      },
+      "equal_capture_series95": [
+        0.3949227688787185,
+        2.029154711567503
+      ]
+    },
+    {
+      "map": "Australia",
+      "cohort": "field",
+      "games": 7,
+      "series": 7,
+      "counts": {
+        "deaths": 2397,
+        "enemy_h2h": 1053,
+        "mover": 622,
+        "partner": 431
+      },
+      "dragon_turns": 119928,
+      "mover_share": 0.5906932573599241,
+      "trade_payoff": {
+        "n": 1027,
+        "mover_length": 2.9474196689386565,
+        "partner_length": 3.269717624148004,
+        "length_advantage": 0.3222979552093476,
+        "capture_advantage": 1.1655306718597858,
+        "material_advantage": 1.4878286270691334,
+        "mover_net": -0.555014605647517,
+        "partner_net": -2.0428432327166504
+      },
+      "equal_length_payoff": {
+        "n": 384,
+        "mover_length": 2.625,
+        "partner_length": 2.625,
+        "length_advantage": 0.0,
+        "capture_advantage": 1.171875,
+        "material_advantage": 1.171875,
+        "mover_net": -0.4401041666666667,
+        "partner_net": -1.6119791666666667
+      },
+      "equal_capture_series95": [
+        0.9489990432531208,
+        1.4511041009463723
+      ]
+    },
+    {
+      "map": "Islands",
+      "cohort": "us",
+      "games": 6,
+      "series": 6,
+      "counts": {
+        "deaths": 1633,
+        "enemy_h2h": 803,
+        "partner": 447,
+        "mover": 356
+      },
+      "dragon_turns": 94797,
+      "mover_share": 0.44333748443337484,
+      "trade_payoff": {
+        "n": 791,
+        "mover_length": 2.7142857142857144,
+        "partner_length": 3.3666245259165613,
+        "length_advantage": 0.6523388116308471,
+        "capture_advantage": 0.6624525916561315,
+        "material_advantage": 1.3147914032869785,
+        "mover_net": -0.6422250316055625,
+        "partner_net": -1.9570164348925412
+      },
+      "equal_length_payoff": {
+        "n": 338,
+        "mover_length": 2.529585798816568,
+        "partner_length": 2.529585798816568,
+        "length_advantage": 0.0,
+        "capture_advantage": 0.7928994082840237,
+        "material_advantage": 0.7928994082840237,
+        "mover_net": -0.6627218934911243,
+        "partner_net": -1.455621301775148
+      },
+      "equal_capture_series95": [
+        0.48253968253968255,
+        1.0642201834862386
+      ]
+    },
+    {
+      "map": "Islands",
+      "cohort": "field",
+      "games": 6,
+      "series": 6,
+      "counts": {
+        "deaths": 2520,
+        "enemy_h2h": 736,
+        "mover": 409,
+        "partner": 327
+      },
+      "dragon_turns": 110397,
+      "mover_share": 0.5557065217391305,
+      "trade_payoff": {
+        "n": 716,
+        "mover_length": 2.787709497206704,
+        "partner_length": 3.5153631284916202,
+        "length_advantage": 0.7276536312849162,
+        "capture_advantage": 1.3603351955307263,
+        "material_advantage": 2.0879888268156424,
+        "mover_net": -0.308659217877095,
+        "partner_net": -2.3966480446927374
+      },
+      "equal_length_payoff": {
+        "n": 294,
+        "mover_length": 2.568027210884354,
+        "partner_length": 2.568027210884354,
+        "length_advantage": 0.0,
+        "capture_advantage": 1.5136054421768708,
+        "material_advantage": 1.5136054421768708,
+        "mover_net": -0.3197278911564626,
+        "partner_net": -1.8333333333333333
+      },
+      "equal_capture_series95": [
+        1.310850439882698,
+        1.7753623188405796
+      ]
+    }
+  ]
+}
