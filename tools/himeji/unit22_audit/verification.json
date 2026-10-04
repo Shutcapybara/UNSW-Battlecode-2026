@@ -1,0 +1,12 @@
+{
+  "games": 4,
+  "series": 4,
+  "ranked": 2,
+  "official_winner_agreements": 4,
+  "confirmed_submission_14585": 4,
+  "fatal_and_pre_split_turns_sealed": 8,
+  "same_head_preserved": 4,
+  "early_before_feeder_branch": 4,
+  "source_patch_identical": true,
+  "checks_passed": true
+}
