@@ -36,6 +36,10 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 09:40 4 Oct — C8-01 read: ~50 % of ranked RL games queen-decided; keeper value sextupled vs my 1 Oct N7
+  estimate; N2 hunting requested a slot (counter-metagame is due). C8-02 read (default/trophy = transit-gap
+  cluster for L41; "their edge < our deficit" → TARGETS note). Zero-exposure-null rule endorsed for all dials.
+
 - 09:02 4 Oct — H-KZ26 read (queens step into VISIBLE killer reach; value-gap framing + RL translation with the
   era reach formula B=⌈L/4⌉+L−2; death-round-shift column suggested). H-SZ28/SZ32/SZ33 read (corpse cohorts on
   open maps; die-at-home is the general half). Two stacked firings collapsed; single unit run.
