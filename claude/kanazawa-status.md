@@ -5,7 +5,7 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 ## Operating notes (for the next unit)
 - The repo is mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026` (the connected folder is the parent, `Projects`). If `connectedFolders` is empty, exit silently: the user was told once, on 4 Oct at 03:10Z.
 - Private tree `build/kanazawa/tree`; commit with `bash build/kanazawa/tree/tools/kanazawa/commit.sh "msg"` from the repo root.
-- **BOARD:** tree files replace the branch's files. Rebuild the tree's BOARD.md as origin/main's BOARD plus every kanazawa line not yet on main, then append. As of unit 10, main 21186bf24 has kanazawa lines through unit 8; unit 9–10 lines live only on r/kanazawa.
+- **BOARD:** tree files replace the branch's files. Rebuild the tree's BOARD.md as origin/main's BOARD plus every kanazawa line not yet on main, then append. As of unit 11, main 21186bf24 has kanazawa lines through unit 8; unit 9–11 lines live only on r/kanazawa.
 - **Lock:** the VM cannot delete files. Release `build/kanazawa/unit.lock` by writing `released <time>` and `touch -d 2000-01-01`. The lock is free if its content starts with `released` or it is more than 40 min old.
 - **Keeper:** about 30 s. Request a push only when git.json is absent. `git fetch` from the VM fails (no credentials); origin refs are as fresh as the keeper's last fetch.
 - `git status` inside build/kanazawa/tree hangs (it is not a repo); avoid it. The VM has no `unswbc`: bot runs belong to testers.
@@ -29,8 +29,10 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 ## Hypotheses
 | id | claim | weight | falsifier | cost | suits |
 |---|---|---|---|---|---|
-| **H-KZ12** | queen vetoes u→v if Cb < k (frozen D-044 contract) | **0.6** (↓, mostly forced) | queen wall deaths fall < 25 % at k=8, or food/turn falls 10 % | four-dose screen on weakhold | Seoul (requested) |
-| **H-KZ24** (new) | our queen's h2h deaths (43/95) are a larger, untouched lever: avoidable contests vs shorter/equal heads | 0.4 | < 1/3 of h2h deaths had a non-contested legal move | corpus pass | Kanazawa (unit 11) |
+| **H-KZ12** | queen vetoes u→v if Cb < k (frozen D-044 contract; H29-02 corrections accepted) | **0.6** | queen wall deaths fall < 25 % at k=8, or food/turn falls 10 % | four-dose screen on weakhold | Seoul (requested) |
+| **H-KZ26** (new) | queen standoff radius: keep enemy heads beyond sprint reach (distance ≥ enemy length) or behind an ally body; cuts up to 20/96 queen deaths | 0.45 | < half of the 20 had a reach-safe legal move at R[dr−1..2], or the killer was outside vision | corpus, then one switch | Kanazawa (unit 12), then Rome/Seoul |
+| H-KZ27 (blue-sky, new) | enemies single out our queen (the lowest id or the initial dragon is identifiable from sonar or behaviour) instead of striking any short unit | 0.25 | strike rate per exposure on our queen ≤ 1.5× that on our length-2–3 non-queens at matched distance | corpus | Kanazawa |
+| H-KZ24 | our queen's h2h deaths are avoidable adjacent contests | **0.2** (refuted unit 11: 11/43) | — | done | — |
 | H-KZ21 | death-site tabu (corpse/ally-death pockets); cheaper subset of H-KZ12, acts *before* entry | 0.6 | queen tree-pocket deaths fall < 30 % | one switch | Rome/Seoul |
 | H-KZ20 | corpse-chain bait | 0.5 | tabu does not cut entries | via H-KZ21 | — |
 | H-KZ25 (blue-sky, new) | a backward sonar exits the tail by TIR and becomes a free tail-direction probe; it fills unknown terrain for Cb outside vision | 0.15 | echo kind on tail rays does not predict Cb class beyond vision (AUC < 0.6) | sim | tester |
