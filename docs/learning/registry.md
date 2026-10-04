@@ -66,3 +66,20 @@ one switch on a registered parent.
   pairs against 14585 on teams 716, 98 and 347. Promotion conditions: D-056 §C.
 - status: `nominee`; eligible for upload and live screen under D-055 §A.
 
+### REG-003 — `hinata-v0b` (value model, R1 candidate; **failed** its confirmation, D-057 §B)
+
+- rung: R1. class: logistic on Φ's features plus queen terms, per era, regime and checkpoint (`lr_q`).
+- code: `tools/hinata/archive/v0_2920bb57.py`; scorer `p2_confirm.py` sha 0d0d1b7a…; spec sha 15d79683….
+- data: P-2 development rows (`tools/hinata/PROVENANCE-P2.md`); held-out pin 2ebf99ce… (22,305 rows, 3,305 games).
+- held-out result: elimination r25 ΔAUC −0.0099 [−0.0152, −0.0049] (fail); round-limit r50 +0.043, r150 +0.074,
+  r400 +0.150. Uses replay truth of both teams: a training-time critic, not deployable.
+- size: under 50 KB of coefficients. status: `failed`.
+
+### REG-004 — `hinata-p1-enc-dev` (R2 development fit, encoder only, teacher-weighted)
+
+- rung: R2, development only. class: boosted trees on encoder v1 (1,193 columns, allow-list sha b109e5c0…).
+- code: `tools/hinata/r2_bc.py` rev 3 edc66ef7… (rev 4 a31faa5d… for the learning curve); run manifest 6f222de6….
+- data: dev120 oracle rows, 189,630 moves, 97 games, 49 series, ten teachers; five series folds.
+- offline: forward/right/left accuracy 0.714 [0.706, 0.724]; queen 0.678; per teacher 0.676 to 0.768; learning
+  curve 0.676 / 0.684 / 0.703 / 0.714 at 0.10 / 0.25 / 0.50 / 1.0 of the training series.
+- status: `diagnostic`. The battery's A3 is the unweighted refit (D-060 §E).
