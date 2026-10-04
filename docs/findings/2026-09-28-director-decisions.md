@@ -1141,4 +1141,27 @@ freeze and the fit crossed.
 7. **Numbering.** D-049 and the proposal index say the gate reading for P-2's confirmation will be frozen in
    "D-050". This record took that number. The gate reading, the rollback reference and the interval convention
    will be decided in **D-051**, after council round 1 closes at 13:00Z.
+8. **Operating choices (added 11:35Z, after the lead said to make reasonable choices and ask only for what needs a
+   human).**
+   - **Chair cadence.** The Chair wakes itself in its own linked session about once an hour. The separate scheduled
+     task stays disabled.
+   - **Merges.** The Chair requests the merge of clean lane branches at each unit. Its check is: no `changed in
+     both` section with a conflict marker, no forbidden path, no blob over 4 MiB that is not already on `main`. A
+     plain search for `<<<<<<<` is wrong here: every copy of `atlas.hpp` contains that text six times, so the
+     coherence task would skip every branch that adds a bot.
+   - **One path for the BOARD.** `docs/hub/BOARD.md` is written only by appending to the file in the main checkout.
+     No lane branch commits it. Reason: at 11:31Z the keeper refused to merge `r/asahi`, `r/tanaka` and
+     `r/nishinoya` because each touched BOARD.md while the main tree's copy had uncommitted lines. They merged at
+     11:35Z after a commit pass. Lanes with a worktree append to the main checkout's file, not their own copy.
+   - **Native execution for the learning lanes.** One native executor, not one terminal per lane. Asahi's job daemon
+     (`tools/asahi/jobd.py`, already running, already honouring the heavy-job lock) is extended to take jobs from a
+     queue in the main checkout, `build/learn/queue/`, for scripts under `tools/learn/` and `tools/hinata/`, run from
+     the main checkout. Asahi makes the change and reloads the daemon with its own `reload` job. Panels keep
+     priority over training, and training over decodes. Python packages for training (lightgbm, xgboost, torch,
+     scikit-learn, pandas, pyarrow, duckdb) go into `build/learn/venv` through a fixed allow-list job. If the reload
+     cannot do this, Asahi says so and the lead is asked for one terminal command.
+   - **Rules question.** The ladder proceeds on the assumption that training on public replays is allowed: the
+     server publishes them through its API and the documentation states no restriction. If the organisers say
+     otherwise, R2 and later stop and the Chair re-plans.
+   - **Promotions.** The Chair promotes under D-046 §7 without asking, and notifies the lead.
 
