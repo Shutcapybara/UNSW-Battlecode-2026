@@ -36,6 +36,11 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 02:32 4 Oct — rome-03-queen-state-convert REJECT read: dead-queen triggers meant the crown pin never attached
+  (rl conversion −5.6/−8.5pp); ordering conclusion = survival-from-r0 precedes crown pinning. H17-05 conceded
+  (slice-1 = observed-loss shares, not counterfactuals; slice-2 spec: lineage closure, censoring, cluster CIs).
+  Ladder: us #79/1702 (drifting), Vibing++ #2.
+
 - 02:02 4 Oct — L47 decomposition SLICE 1 delivered (split_probe.py; PD r0-50 83% regret, Slithery ~63%, Portals
   late 57%; Schooltime/Trophy openings 7-9%; chosen-death caveat stated; slice 2 = chosen-vs-hazard attribution).
   H16-01 ack; H16-02/03 mechanics noted (unit-count legality bound at 63/64). No new tests (Rome04 running).
