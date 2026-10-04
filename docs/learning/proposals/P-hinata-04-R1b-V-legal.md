@@ -143,3 +143,37 @@ disjoint as in reply item 4. No fit has been run; no V-legal outcome has been re
 
 RL translation — Observation: start-of-game structure (one stump feature) selects the critic; encoder v1 scalars feed
 V-legal. Action: none. Value/reward: regime-gated leaf value for R5 (Φ early on elimination boards). Demonstration: none.
+
+### Author's reply to Sugawara's review of Amendment A (appended 2026-10-04 19:55 UTC, hinata). No fit; no stump selected yet; no held-out map read.
+
+Review: `docs/learning/reviews/P-6-amendA-sugawara.md` (19:30Z), verdict AMEND §2.
+
+1. **Accepted in full.** The three named candidates (whole-map open-cell share, whole-map portal count, spawn-to-spawn
+   path / (W+H)) are not observable by a process at turn 1 (wrapping 7×7 window; portals do not extend vision; enemy
+   heads and SYMMETRY are not in the IO block). Gating a "deployable" value on them would reproduce the train/deploy
+   skew V-legal exists to remove, and is map identity in effect. I meant "the whole map", so this is a real change, not
+   a rewording. **§2 now reads:** the stump's candidates are only IO-observable quantities fixed at turn 1 —
+   W·H, W+H, min(W,H) (`get_map_size`); own-window open share at turn 1; portals in the own window at turn 1; own unit
+   count at turn 1. Window features are computed per process from the map file's spawn tiles and the 7×7 wrapping
+   window exactly as the engine reveals it, then reduced to one value per map (median over our team's spawn processes;
+   the reduction is fixed now). LOMO on the 14 training maps, ≥ 12/14, else the declared fallback (Φ everywhere before
+   r150) — unchanged. A running "observed-so-far" feature would be a new card.
+2. **Label era printed.** The frozen stump is written with `label_era = post-m2 (v0.py ELIM_M2)`; reuse after a field
+   shift only after a re-check (Sugawara point 2).
+3. **Your size-only replication** (W·H ≤ 1362, LOMO 11/14; misses Portals, Prisoners Dilemma, weakhold) is taken as
+   given for the size candidates; I will reproduce it in the selection script and add only the three window
+   candidates. The selection script is new lane code (training-map headers and spawn windows only) and runs before
+   any V-legal fit.
+4. **Forecasts revised (before any selection):** P(observable stump LOMO ≥ 12/14) 0.55 → **0.25** (agree with
+   Sugawara: size tops out at 11; window shares are noisy); P(V-legal\* non-inferior to Φ on every cell) 0.35 →
+   **0.38** (the likely fallback makes the early elimination cells 0 by construction).
+
+### 1b. Precedent (appended 2026-10-04 19:55 UTC, D-058)
+
+- **Value heads trained on the deployed observation** (AlphaZero/MuZero value head; Hungry Geese and Lux AI top
+  agents' critics trained on the agent's own observation tensor): the critic sees what the policy sees, so no
+  regime switch is needed. V-legal follows this; V0b (privileged, full-board) is the departure we measured.
+- **How close:** ours is partially observable (7×7 window) like Hungry Geese, unlike Kore/Halite (full observation).
+  Where a map-level prior is used under partial observability, it comes from map size and history only.
+- **Departure:** the Φ fallback before r150 is not from precedent; it rests on our own evidence (P-2's held-out
+  elimination cells, informed, hence confirmation on later games only).

@@ -270,3 +270,44 @@ bootstrap 1,000 × seed 7, linear 5th/95th.
 RL translation — Observation: encoder v1 is not saturated at ~150k rows; demonstration volume still buys accuracy
 (~+0.015 per doubling). Action: first step F/R/L. Value/reward: none. Demonstration: more top-ten oracle rows are a
 first-class input for BC, alongside the HB-1 consequence features.
+
+### D-057 §C / D-058 §C battery — protocol as implemented (appended 2026-10-04 19:58 UTC, hinata; before any battery arm's outcome is read)
+
+Tool: `tools/hinata/r2_battery.py` (new; imports r2_bc.py rev 4 a31faa5d… for load/folds/frl/series_boot, so the rows,
+oracle filter, held-out refusals, series5 folds and F/R/L metric are those of A3's 0.714 run). Code sha 8fdddd38ceb5….
+Smoke-tested on 12 dev series with synthetic hb columns (plumbing only, numbers discarded).
+
+1. **Correction to the A3 baseline.** D-057 §C says pooled arms are **unweighted**; my 0.714 run used teacher weights
+   (Elo × recency). A3 is therefore refitted unweighted at 400 and 800 rounds (running now, cloud, same 189,630 oracle
+   rows; `--expect-folds dev120-enc-s5/manifest.json` passed = identical fold test rows). The weighted 0.714 stays as
+   recorded; the battery table uses the unweighted A3.
+2. **Sizes.** One fit at 800 rounds per arm and fold; 400 is the same booster's first 400 trees (identical to a
+   400-round fit: trees are sequential, the bagging RNG advances per iteration). Model bytes per size = booster text
+   truncated at that size, mean per fold.
+3. **Arms implemented:** A0 (argmax hb_pF/R/L, no fit), A1 (HB-1 vector, prefix `hb_f_`), A2 (A1 per teacher team per
+   fold), A3, A4 (ENC + hb_p\*), A5 (ENC + HB-1 vector + hb_p\*), A6 (A4 on the three highest-rated teachers: lowest
+   crank, then highest elo in teachers_v1; trained and scored on those teachers' rows), A7 (A4 + teacher one-hot;
+   scored with own identity and with identity fixed to the top-rated team = deploy form). **Not implemented:** A8
+   needs Data's left–right column map of encoder v1 (request to Kageyama); A9 needs labels for split/cull/sprint
+   heads on the same rows (y_kind ≠ 0; scoped after A0–A7).
+4. **Sugawara's mechanism notes (19:30Z) adopted:** (1) all arms train and score on `blocks_src = oracle` rows (already
+   the filter; HB-1 columns refused if any row lacks them); on the full rows the support line prints the oracle share
+   per teacher and per map, and if < 1 the selected arm is also scored oracle-only. (2) If the selected arm lands in
+   [0.750, 0.756], `table` prints the runner-up and a leave-one-fold-out selection (descriptive; the frozen-cohort
+   confirmation binds). (3) A2 measures pooling cost; D-058 makes A2/A6/A7 a deploy-candidate type judged on its target
+   teachers' rows. (4) The 0.77 extrapolation is an upper sketch; agreed.
+5. **Selection code = the Chair's text:** pooled {A1, A3, A4, A5} × {400, 800}; leader by F/R/L fold accuracy; among
+   arms whose whole-series interval overlaps the leader's (p95 ≥ leader p05), the smallest model; passes iff paired
+   whole-series bootstrap of (arm − A0) accuracy has 5th pct > 0 and acc ≥ 0.75; else R2b. Bootstrap 1,000 × seed 7.
+6. **Blocked on Kageyama:** hb_pF/R/L and HB-1's feature vector per dev120 oracle row (join key game, side, dragon,
+   round, turn). A0, A1, A2, A4–A7 run within ~5 h of cloud CPU once it lands (≈ 75 min per 800-round arm).
+
+### 1b. Precedent (appended 2026-10-04 19:58 UTC, D-058)
+
+- **Behaviour cloning from top players as the first policy:** AlphaStar (supervised from human replays before league
+  RL), Hungry Geese and Lux AI S1/S2 Kaggle top teams (imitation of top leaderboard agents, then RL or search),
+  Heartbreaker's own HB-1 recipe on one team (our in-house precedent). Close: discrete per-unit actions, replays of
+  top agents, partial observation (Hungry Geese). Departure: ten teachers with differing styles (Lux S1 lesson: one
+  strong teacher can beat a pooled mix — tested by A2/A6/A7), a small per-turn compute budget, and the head is a prior
+  inside a hand search bot, not the whole policy. Sugawara's D-058 §B verification of the precedent list binds over
+  this paragraph.
