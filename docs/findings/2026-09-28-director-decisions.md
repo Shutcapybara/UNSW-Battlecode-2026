@@ -693,3 +693,20 @@ until it has a post-change roster; gustave-07c's registration to be withdrawn (m
 (8) `.gitattributes` with `merge=union` for BOARD/TARGETS/CORPUS/HYPOTHESES, and the keeper's include list extended
 to it. Outstanding for the director: Mac hub venv → 1.2.3 and the harness repin; collector targets for the five
 teams Antioch named; the gustave-07c withdrawal.
+
+## D-043 — live maps in the repo (4 Oct 2026, director)
+
+The server replaced six ladder maps on 2 Oct 03:49Z (Autarky, Default, Prisoners Dilemma, Schooltime, Slithery Fight,
+Trophy; Shenzhen/Chongqing, map era `post-m2`) and restored seven non-ladder maps at 04:31Z (Australia, Islands, Around
+UNSW, Maze, Stripes, Tower Defense, weakhold). The repo's `maps/*.map` predate both changes. Ruling: (1) the 22 map
+templates of `unswbc==1.2.9` are added unchanged in `maps/live/` (sha256 in `docs/maps-live.md`); `maps/*.map` stays
+as the pre-swap set so that running and completed pairs remain readable; (2) `run_panel.LIVE_MAPS_M2` (17 maps:
+the ten ladder maps + the seven restored) is the pool for every new arm; `LIVE_MAPS` is for finishing or re-reading
+pre-swap pairs only; (3) testers re-measure their base on `LIVE_MAPS_M2` before the next arm; the parent for new
+1.2.3-adaptation arms is `carthage-05-free-sprint` (live since 2 Oct 04:22Z), not hb1-14; (4) gen twins derived from
+the six swapped maps (`var/*_tr`, `pub/*_rec` of autarky/default/dilemma/schooltime/slithery/trophy) model old
+geometry and are flagged, not deleted; regenerate them from `maps/live/` before using them as transfer evidence;
+(5) all post-m2 references are per `map_era` (Chongqing's store column) — no pooling of old- and new-map numbers.
+Not verified: byte identity of `maps/live/` with the server's maps (Shenzhen reproduced the live Schooltime cage on
+the 1.2.9 template; `unsw.map` is assumed to be "Around UNSW").
+

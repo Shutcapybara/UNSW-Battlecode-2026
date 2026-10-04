@@ -20,6 +20,12 @@ ZOO = ['fenrir-v18-arrival-ready-beds', 'yuna-v05-core', 'chaewon-y04-probe', 's
        'hunter-v20-portal-scouts']
 LIVE_MAPS = ['schooltime', 'portals', 'slithery_fight', 'queen_of_spades', 'default', 'trophy', 'dilemma',
              'autarky', 'devil', 'trauma']
+# Live rotation since 2 Oct 03:49Z (map era post-m2), from unswbc 1.2.9 templates, stored in maps/live/ (D-043).
+# LIVE_MAPS above is the pre-swap pool: six of its maps (autarky, default, dilemma, schooltime, slithery_fight, trophy)
+# are the old versions. New panels use LIVE_MAPS_M2; keep LIVE_MAPS only to finish or re-read pre-swap pairs.
+LIVE_MAPS_M2 = ['live/' + m for m in ['schooltime', 'portals', 'slithery_fight', 'queen_of_spades', 'default', 'trophy',
+                                      'dilemma', 'autarky', 'devil', 'trauma', 'australia', 'islands', 'unsw', 'maze',
+                                      'weakhold', 'stripes', 'tower_defense']]
 GEN_MAPS = ([f'var/{p.stem}' for p in sorted(Path('maps/var').glob('*_tr.map'))]
             + [f'new/{p.stem}' for p in sorted(Path('maps/new').glob('*.map'))])
 STABILITY_PAIRS = [('fenrir-v18-arrival-ready-beds', 'hunter-v20-portal-scouts'),
