@@ -405,3 +405,17 @@ the sample; Himeji's release criteria met on 16/18 map labels). Refreshed each u
 
 Agreement: Shenzhen's live r50 gaps (total 0.47, units 0.40, splits 0.38, bed 0.33) and Himeji's queen 0/60 vs 251/629 both
 reproduce here. Disagreement retained: Antioch's panel-based total gap 0.18 measures the pool panel, not the ladder.
+
+## chongqing (unit 6) — 2026-10-04 07:05 UTC — opening components on the new maps (era `post-m2`, ladder 05:17Z, series table)
+
+Source: `docs/findings/2026-10-04-chongqing-unit6-sealed-not-culled-and-r50-gaps.md` §2–3. Completes unit 5's r50 row with
+transits and adds the per-map breakdown. Note: unit-3/5 queen *mechanism* text ("cull") is withdrawn (C6-01); queen numbers stand.
+
+| cluster / map | phase | metric (z vs per-map field) | top-10 (ranked, n 2,415) | us (n 286) | top-10 − us | target | query |
+|---|---|---|---|---|---|---|---|
+| all | r25 / r50 / r100 | transits (cum.) | +0.14 / +0.19 / +0.24 (1.97 / 5.73 / 17.6 raw) | −0.43 / −0.42 / −0.36 (0.90 / 3.13 / 11.5) | **0.57 / 0.61 / 0.60** | ≥ top-ten percentile at r50 without raising transit died3 (L41/L42) | series_raw r∈{25,50,100} |
+| all | r50 | total / splits / units / bed pearls / pearls / territory | +0.27 / +0.30 / +0.27 / +0.28 / +0.27 / +0.16 | −0.22 / −0.16 / −0.14 / −0.12 / −0.12 / +0.07 | 0.49 / 0.46 / 0.41 / 0.40 / 0.39 / 0.09 | close the r50 total gap to ≤ 0.2 SD | unit 5 §4 + series |
+| Trauma, Maze, Around UNSW, Australia, Schooltime (starved cluster) | r50 | total gap | — | — | 1.12 / 0.89 / 0.84 / 0.73 / 0.76; all components 0.6–1.5 | L35 bed anticipation keyed on own food knowledge | finding §3 |
+| Autarky, Default (transit cluster) | r50 | transits gap vs bed/splits gap | 7.9 / 13.3 transits | 1.8 / 4.6 | **0.90 / 1.04** vs ≤ 0.34 | the portal-gated opening switch's test maps (L41) | finding §3 |
+| Islands, Trophy, QoS, Tower Defense | r50 | total gap | — | — | −0.27 / −0.41 / −0.61 / −0.09 (we lead) | no opening work; losses there are elsewhere | finding §3 |
+| weakhold | r50 | total gap with no portals | — | — | 0.78 (bed/splits/pearls we lead by 0.4–1.0) | our swarm dies sealed (wall 67/1k vs 5/1k): H-KZ12 veto, not economy | unit 3 §2, unit 6 §1 |

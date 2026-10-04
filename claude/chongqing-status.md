@@ -5,7 +5,12 @@ Worktree `../wt-chongqing` (Mac, via the Cowork VM; `build/` and `public_replays
 hour off, repeat (user's instruction, to conserve credits). No API calls; GPT's analyst pulls replays this wave, so this
 lineage only decodes what the hub collector has already written.
 
-## Top — read this first (2026-10-04 05:55 UTC)
+## Top — read this first (2026-10-04 07:05 UTC)
+
+- **Unit 6: H-C5/H-C6 withdrawn** — our queen is sealed, not culled (reach5 median 1, 99 % enclosed at death; the north skew is the
+  default-when-trapped action). Kanazawa's H-KZ12 veto + Himeji's H-H3 are the fix; L24 → 0.6 proposed. Transits top-10 − us
+  0.57/0.61/0.60 SD at r25/50/100 (series table, 17 s query); per-map r50 gap: Trauma 1.12 … QoS −0.61; Autarky/Default are pure
+  transit gaps (L41 → 0.6). Rome's D-043 zero reproduces the live queen problem (444/2 alive). Store 51,353.
 
 - **Unit 5:** store 51,233 (a native Mac decode ran ~05:00–05:18Z; post-m2 7,030/13,439; VM batches stopped). Reference-grade
   post-m2 tables: queen alive at RL end monotone in rank (top10 0.413, r11–30 0.348, r31–50 0.283, 51+ 0.254, us 0.000);
@@ -60,14 +65,14 @@ lineage only decodes what the hub collector has already written.
 | H-C2 | the queen tiebreak is our largest loss mechanism on Schooltime/Trauma; a merely surviving queen flips most | posted, 0.7 | queen alive ≥ 0.5 on those maps without ranked win +10 pp | 2 maps, s1–3, both panels (~300 pairs) | Claude tester (carthage-10 built) |
 | H-C3 | Default early queen deaths | **withdrawn unit 2** (old map; new Default 0/17) | — | — | — |
 | H-C4 | queen hunting pays now | **trigger fired unit 2** (top ten 0.444 alive); lane is Shenzhen's H-SZ5/H-SZ14 | — | — | — |
-| H-C5 | exempt the queen (ids 0/1) from the cull — our queen is culled north-into-kelp within 5 rounds of its first split | posted unit 3, 0.85 | alive@RL-end < 0.15 on Trauma/Portals/Maze/weakhold after the exemption, or econ lb < −0.03 | 4 maps × s1–3 both seats, live maps | Claude tester / Carthage lineage |
-| H-C6 | the north-into-kelp cull wastes corpses (recovered 0.68 vs top ten 0.78); cull in place beside an ally | posted unit 3, 0.6 | corpse_recovered_share not ≥ +0.05 | pool + gen s1–3 | any tester |
+| H-C5 | "exempt the queen from the cull" | **withdrawn unit 6** — no cull routine; the queen dies sealed in pearl-baited tree pockets (Kanazawa H-KZ11/12/17, Himeji H-H3 own the fix) | — | — | — |
+| H-C6 | cull channel | **withdrawn unit 6** with H-C5 | — | — | — |
 
 ## Queue (next units, in order)
 
 1. Decode post-m2 (top-ten sides first) every unit; republish CORPUS.md; refresh the post-m2 ranked table.
-2. Transits@50 (series table) to complete the r50 component table; then per-map and per-cluster (Esquie clusters need re-checking
-   on the new maps) opening rows; new-map norms for the series views (q.py machinery is too slow over the mount — lean version in qq).
+2. Esquie clusters re-checked on the new maps; per-cluster opening rows; migration of the 23:16Z–05:20Z q_* parts once the backlog
+   is decoded; the top-10 − us table kept current each unit (series query runs in ~17 s).
 3. Per-map post-m2 queen hazard (death round/cause by map_hash and seat) — the geometry half for the testers.
 4. Queen backfill of old-map games only if someone needs q_len on old maps (deprioritised).
 5. Readings of tester results as they land; answer board questions addressed to me.
@@ -78,6 +83,8 @@ lineage only decodes what the hub collector has already written.
 - 2026-10-03 23:00 UTC — ladder reset found; `build.py games` patched; decode wrapper; first batches (team 7).
 - 2026-10-03 23:20 UTC — queen columns added to `sides`; `qq.py` connector.
 - 2026-10-04 00:20 UTC — unit 1 published: finding, TARGETS § chongqing, CORPUS.md, board C1-01…07. Sleeping one hour.
+- 2026-10-04 07:05 UTC — unit 6: H-C5/H-C6 withdrawn (sealed-not-culled evidence); transits + per-map r50 gap table; readings
+  (Rome zero, cage package, Kanazawa); board C6-01…06; +120 games. Sleeping one hour.
 - 2026-10-04 05:55 UTC — unit 5: H23-03/04 fixes; qprobe.py; post-m2 reference tables on 7,000 games; finding 5; TARGETS unit-5
   section; board C5-01…06. Sleeping one hour.
 - 2026-10-04 04:30 UTC — unit 4: D-043 read; q_len semantics fix; board C4-01…04; decode stalled (VM 3.9 s/game); merge of
