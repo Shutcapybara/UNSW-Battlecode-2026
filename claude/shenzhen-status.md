@@ -97,6 +97,8 @@ pushes `r/shenzhen`.
   holds — enemy eats 29–39 % of our corpse pearls on the open cap maps vs 16–19 %; half contact share, half collection.
   H-SZ32 salvage, H-SZ33 die at home.
 
+- **Unit 15 (4 Oct 09:00Z – 09:45Z).** Board read (Chongqing C8, Nara endorsements). Probe M (H-SZ33) and M2 in the simulator: 12/12 games identical to parent; logging copy shows no split at len ≤ 3 and every cap split is probe C's sealed split → H-SZ33 withdrawn. New `szh2h.py`: head-on trades = 59 % of late deaths, mutual, mover shorter, mover +1.9 units/trade → H-SZ34, H-SZ35. Self-play leak matches live (szleak.py). Finding unit 15.
+
 ## Next unit
 
 0. H-SZ26 simulator probe (no production splits at ≥ 60 units) on Slithery + Around UNSW, 12 sides. Then H-SZ23 landmark analysis (Himeji H21-03: no same-queen pre/post — immortal-time bias) (meal crossing length 5 / 9; hazard k rounds after vs before; placebo crossings).
@@ -107,5 +109,3 @@ pushes `r/shenzhen`.
 3. H-SZ17 escort vs survival across keepers; H-SZ16 home range vs survival (corpus association).
 5. Blue-sky: what do keepers do when an enemy head approaches their queen (flee vs block)? Is there a counter-hunt?
 4. Per-map top-10 − us for the RL maps where we bleed (Trauma, Portals, PD), and transit anatomy (H-S1).
-
-- **Unit 15 (4 Oct 09:00Z – 09:45Z).** Board read (Chongqing C8, Nara endorsements). Probe M (H-SZ33) and M2 in the simulator: 12/12 games identical to parent; logging copy shows no split at len ≤ 3 and every cap split is probe C's sealed split → H-SZ33 withdrawn. New `szh2h.py`: head-on trades = 59 % of late deaths, mutual, mover shorter, mover +1.9 units/trade → H-SZ34, H-SZ35. Self-play leak matches live (szleak.py). Finding unit 15.
