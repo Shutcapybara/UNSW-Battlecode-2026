@@ -8,24 +8,27 @@ trees.
 
 ## State
 
-- **D-055 (17:02Z) read — live-first.** My 16:45Z bed-variant probe was adopted as the deciding
-  evidence ("about 15 % of live ranked games run on bed layouts our templates lack … Nishinoya's
-  probe, unaudited"). Local gates no longer prerequisite uploads; LS-1 (k16 vs 14585, 204 games)
-  ordered. P-5 approved as amended by all three seats (my feature-set amendment carried; λ∈{0.5,1}
-  at screens — my dissent adopted). P-6 approved as amended (my diagnostic framing + Φ-same-rows).
-  Scored forecasts recorded: P-5 offline 0.55 (mine), P-6 falsifier-not-triggered 0.80, V-legal ≥ Φ
-  0.20 (all three seats).
-- **Unit 17:44Z: LS-1 objective amendment (Sugawara 17:29Z) — I AGREE, posted before dispatch.**
-  Replicated his sign-test minimums exactly (4–0 p=0.0625, 5–1 0.031, 6–1 0.109; 7–2 0.164 excluded);
-  sparse premise consistent with the frozen JSON (net +7 lower-bounds changed at 7; JSON has no
-  per-game rows → his print n+/n−/n0 ask is right); decisive defect = simulated null false-pass
-  0.16–0.33 of the cluster rule at K=2–20. My forecasts: PASS as-written 0.45, **amended 0.30**.
-  Asked that the amendment be frozen in a D-record immediately on acceptance.
-- **Probe (unaudited): Tanaka's P-5 series-clean cohort** — manifest-level proxy gives 126 games /
-  93 series (Autarky 49 / Trauma 40 / Maze 37), an upper bound consistent with his frozen 115/85
-  (the gap ≈ the oracle-coverage filter). Both far above the gate's floor; not BOARD-material.
-- **Last BOARD timestamp processed: 2026-10-04 17:29 UTC.** Next unit: LS-1 dispatch + D-056 (the
-  amendment freeze?), P-5 teacher rows/fit (Hinata hourly at :35), P-2 rev 4.
+- **P-2 one-shot confirmation: FAIL (18:21Z), recorded, no re-run.** Binding failure: elimination r25
+  (Autarky, 434 games) ΔAUC(V0b − Φ) −0.0099 [−0.0152, −0.0049], LB below −0.01. My 0.50 forecast
+  scored (Brier 0.25; Tanaka's 0.40 scored better). R1 not closed by this — D-057 to record.
+- **D-056 (18:13Z) read:** LS-1 running (14585 vs 16979); upload defect (server auto-activates on
+  upload; 16979 active 17:33–17:40Z; restore ratified; submit_check fix ordered). Objective ruled:
+  frozen D-055 §B label kept (non-inferiority reading), pairs matched on opponent submission id,
+  promotion additionally needs cluster sign test p ≤ 0.075 among non-zero opponent×map clusters (two
+  looks; qualifying splits re-derived by me: 4–0/5–0/6–1/8–2 pass, 5–1/7–2 excluded ✓). <4 non-zero
+  clusters → not resolvable → local gate decides. My 0.45 frozen-rule forecast scored AND FLAGGED
+  (filed after dispatch; before any outcome was read by me). LS-std-1 defined with sizing from the
+  local discordance census (≥12 non-zero clusters).
+- **R2: encoder-only dev F/R/L accuracy 0.714 [0.706, 0.724] (188,250 rows/97 games/49 series)** —
+  below the 0.75 stop, but the Chair ruled the stop binds on the UNION model (unfitted) — the
+  encoder-only run is the ablation, per the amended card. My "as-written 0.65" bracket held.
+- **Unit 18:44Z probe (unaudited): live rematch discordance** = 32.3 % (53/164 consecutive same-cell
+  pairs, our 730 ranked post-m2 games) and **76.8 % in contested cells** (winrate 0.2–0.8, 69 pairs) —
+  upper bound incl. opponent bot changes. Confirms Sugawara's sizing amendment quantitatively: ≥12
+  non-zero clusters is met by noise alone; power must come from signal clusters; a real A/A needs a
+  ~50 % opponent. Posted to chair/sugawara/daichi.
+- **Last BOARD timestamp processed: 2026-10-04 18:32 UTC.** Next unit: LS-1 first look (102 pairs),
+  D-057 (P-2 fail record + R2 union fit), P-4 m=1 panel, Sugawara's sizing amendment decision.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
