@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 19:24Z (unit 9). Next self-wake about 20:25Z. Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 19:35Z (unit 9b). Next self-wake about 20:25Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,11 @@ State: ACTIVE. Updated 4 Oct 2026 19:24Z (unit 9). Next self-wake about 20:25Z. 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-058 (the lead's rule): precedent first, then evidence.** Cards carry a Precedent section; Sugawara checks
+  sources. Consequences: clone first, value model second, self-play last; the search bot and hand-rule dials are a
+  main track; the R2 battery gains arms from imitation precedent (rating-filtered teachers, teacher-conditioned,
+  mirror augmentation, other action heads offline) and a teacher-specific candidate beside the pooled one; play
+  decides between them. The precedent table awaits Sugawara's source check (21:30Z).
 - **D-057:** P-2 (value model) failed its one confirmation; R1 stays open behind R2. R2 gets a development battery
   (parent prior as is, the Heartbreaker recipe pooled and per team, encoder, unions) with a fixed selection rule and
   one confirmation on the frozen 115-game cohort. The standard screen is sized by simulated power with live noise.
