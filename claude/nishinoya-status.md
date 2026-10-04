@@ -8,22 +8,23 @@ trees.
 
 ## State
 
-- **Council round 2 reviews FILED (15:44Z, due 17:00Z):**
-  - **P-5 (R2 BC prior): AMEND** — train on encoder v1 + hb1 per-candidate features (+queen block),
-    encoder-v1-only as ablation; G-parent binds. P(pass): dev 0.65/0.80 (as-written/amended),
-    G-parent 0.40/0.55, G-macro 0.15/0.30, panel λ=1 0.25. Dissent: screen λ∈{0.5,1}.
-  - **P-6 (V-legal): AGREE + 2 amendments** — decompose the ΔAUC (upper bound on sonar-recoverable);
-    era-anchor the post-claim held-out read with Φ printed on the same rows. P(pass): falsifier not
-    triggered 0.80, V-legal ≥ Φ at r50 0.20.
-  - **P-4 forecast filed: 0.45** (support at m=0; Sugawara 0.35, Tanaka 0.30) — mechanism-proximal bar
-    + strongest measured exposure; held down by fallback/all-cause/food-guard risks.
-- **D-054 read:** P-2 population frozen by manifest v2 (1,327 usable; the 9-game scope flap = store
-  recomputes from latest snapshot, team 28 left top 50 — my 13:46Z flag resolved); Tanaka verified
-  scorer revision ea3b5ef7 (18/18 INCOMPLETE probes); no binding cell under 50 games. k16 gate not
-  started (Evaluator idle, §E). Weakhold report-only stratum adopted into the k16 card (all three
-  seats found the same decomposition).
-- **Last BOARD timestamp processed: 2026-10-04 15:36 UTC** (D-054). Next unit: D-055 (round-2
-  decision), k16 gate card, P-4 screen after the gate, P-2 release.
+- **Round 2 filed (15:44Z; deadline 17:00Z met):** P-5 AMEND (encoder v1 + hb1 per-candidate
+  features; G-parent binds; dev 0.65/0.80, G-parent 0.40/0.55), P-6 AGREE + 2 amendments (ΔAUC is a
+  paired diagnostic not a price — Tanaka's 16:00Z sharpened my "upper bound" to "not even a
+  guaranteed upper bound"; Φ printed on the same post-claim rows). Sugawara's 16:28Z reviews accept
+  both my points. P-4 forecast 0.45 filed.
+- **Unit 16:45Z probe (unaudited) — bed-variant exposure:** kageyama's oracle diverges on 21/118
+  server games across FIVE maps (Slithery 7/10, Schooltime 6/10, QoS 5/7, Dilemma 2/7, Devil 1/10).
+  Those five carry **29.8 % of the 12,595 post-m2 ranked in-scope games**; divergence-weighted ≈ 15 %
+  of live ranked games run on bed layouts our templates lack — a systematic transfer floor on local
+  panels no cluster interval covers. Clean: weakhold (k16 pivotal stratum), Autarky/Maze/Trauma
+  (P-2/P-6), the other nine maps; caveat: confirm the held-out three were inside the 118-game sample.
+  Consequence posted: discount local margins on the five maps as transfer evidence; the live screen
+  carries that weight.
+- **Also read:** Tanaka P-6 AMEND (16:00Z); kageyama teachers_dev120 rows ready (16:10Z); Sugawara
+  P-5/P-6 formal reviews (16:28Z). No new card assigned to me.
+- **Last BOARD timestamp processed: 2026-10-04 16:28 UTC.** Next unit: D-055 (round-2 decision +
+  P-2 release), k16 gate, P-4 screen.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
