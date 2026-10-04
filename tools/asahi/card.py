@@ -5,7 +5,7 @@ Conventions (frozen 4 Oct 2026, before any Asahi run; changing them needs a new 
 - Outcomes: FRAME_VERSION 7 engine verdicts from tools.analysis.features (win 1, draw 0.5, loss 0).
 - Pairing: fixture = (seed, map, opponent, seat). Only fixtures present with rc 0 in BOTH arms are compared;
   every other expected fixture is listed as MISSING and never counted as a loss.
-- Interval: cluster bootstrap over (map, opponent, seat) clusters, seeds kept together; 1,000 resamples, numpy
+- Interval (amended 4 Oct 17:40Z, D-052 §C): cluster bootstrap over (map, opponent) clusters, both seats and seeds together; 1,000 resamples, numpy
   default_rng(7); reported interval = 5th-95th percentile (two-sided 90 %, i.e. one-sided 95 % lower bound).
 - Economy: pearls@50/100/150/250 each divided by the PARENT's per-map median of that checkpoint (floor 1), because
   the field references in docs/analysis/benchmarks predate the 2 Oct swap and do not cover the seven restored maps.
@@ -16,7 +16,7 @@ Conventions (frozen 4 Oct 2026, before any Asahi run; changing them needs a new 
   games; conditional = queen alive at the end among RL games; joint = RL and queen alive, over all games;
   queen-decided W/L = RL games whose engine reason is 'queen'.
 - Tier-2 deaths: mean per-1k rates; flagged when the parent rate > 0.05 and the candidate's is > 1.10x.
-- Gate letter, D-042 win-led rule (Himeji): PASS iff pool win lb > 0, gen win lb > -0.02, econ lb > -0.03 on both
+- Gate letter, D-042 win-led rule (Himeji): PASS iff pool win lb > 0, gen win lb > -0.02, econ~ lb > -0.03 on both
   panels, units@100 and total@100 lb >= -0.02 on both panels, no tier-2 flag, no new invalid deaths. FAIL iff a
   clause is violated with the whole interval on the wrong side (ub below its threshold) or pool win ub < 0 or a
   tier-2 flag. Otherwise HOLD. A seed-1 screen gets the letter with the prefix 'screen-'; only seeds 1-3 (D-042) or
@@ -43,7 +43,8 @@ MAT = ['units@100', 'total@100']
 HYG = ['death_wall_per1k', 'death_self_per1k', 'death_ally_body_per1k', 'death_h2h_ally_per1k', 'death_invalid_per1k']
 SIDE = ['death_h2h_enemy_per1k', 'death_enemy_body_per1k', 'deaths_per1k', 'births@100']
 KEY = ['seed', 'mapkey', 'opp', 'seat']
-CLUSTER = ['mapkey', 'opp', 'seat']
+CLUSTER = ['mapkey', 'opp']                 # D-052 §C: map × opponent, both seats and all seeds together
+DIRECTIONAL = ['mapkey', 'opp', 'seat']     # printed as a sensitivity
 
 
 def load_arm(bot: str, panel: str, seeds: list[int]) -> tuple[pd.DataFrame, dict]:
@@ -106,13 +107,19 @@ def stat(m: pd.DataFrame) -> dict:
     return s
 
 
-def bootstrap(m: pd.DataFrame, nb=1000, seed=7) -> dict:
-    groups = list(m.groupby(CLUSTER).indices.values())
+def bootstrap(m: pd.DataFrame, nb=1000, seed=7, key=None) -> dict:
+    # fixed ordered input: rows sorted by the fixture key, clusters in sorted key order (groupby sorts)
+    m = m.sort_values(KEY).reset_index(drop=True)
+    groups = list(m.groupby(key or CLUSTER, sort=True).indices.values())
     rng = np.random.default_rng(seed)
     pt = stat(m)
     B = pd.DataFrame([stat(m.iloc[np.concatenate([groups[i] for i in rng.integers(0, len(groups), len(groups))])])
                       for _ in range(nb)])
-    return {k: [float(pt[k]), float(B[k].quantile(0.05)), float(B[k].quantile(0.95))] for k in pt}
+    # linear-interpolation percentiles (pandas default), 5th and 95th
+    out = {k: [float(pt[k]), float(B[k].quantile(0.05)), float(B[k].quantile(0.95))] for k in pt}
+    out['_clusters'] = len(groups)
+    out['_valid'] = int(B['win'].notna().sum())
+    return out
 
 
 def side_summary(F: pd.DataFrame) -> dict:
@@ -145,6 +152,16 @@ def compare(cand: str, parent: str, panel: str, seeds: list[int]) -> dict:
     out['summary'] = dict(cand=side_summary(Fc[Fc.set_index(KEY).index.isin(m.set_index(KEY).index)]),
                           parent=side_summary(Fp[Fp.set_index(KEY).index.isin(m.set_index(KEY).index)]))
     out['boot'] = bootstrap(m)
+    out['boot_directional'] = bootstrap(m, key=DIRECTIONAL)
+    if STRATUM:
+        st, rest = m[m.mapkey.isin(STRATUM)], m[~m.mapkey.isin(STRATUM)]
+        out['stratum'] = dict(maps=sorted(STRATUM),
+                              per_seed={int(sd): dict(n=len(g), W=int((g.result_c == 'win').sum()),
+                                                      W_parent=int((g.result_p == 'win').sum()),
+                                                      dwin=float((g.win_c - g.win_p).mean()))
+                                        for sd, g in st.groupby('seed')},
+                              target=bootstrap(st) if len(st) else None,
+                              off_target=bootstrap(rest) if len(rest) else None)
     t2 = {}
     for h in HYG:
         p, c = m[h + '_p'].mean(), m[h + '_c'].mean()
@@ -171,6 +188,9 @@ def gate_letter(pool: dict, gen: dict, seeds: list[int]) -> tuple[str, list[str]
     why, fail = [], False
     if pool.get('status') == 'INCOMPLETE' or gen.get('status') == 'INCOMPLETE':
         return 'INCOMPLETE', ['a panel has no paired games']
+    if GATE and (pool.get('status') != 'COMPLETE' or gen.get('status') != 'COMPLETE'):
+        return 'INCOMPLETE', ['missing fixtures (D-046 §4): ' + str(len(pool['missing']['cand']) + len(pool['missing']['parent'])
+                                                            + len(gen['missing']['cand']) + len(gen['missing']['parent']))]
     def chk(name, b, key, thr, strict):
         nonlocal fail
         pt, lo, hi = b[key]
@@ -186,7 +206,7 @@ def gate_letter(pool: dict, gen: dict, seeds: list[int]) -> tuple[str, list[str]
         fail = True
     ok &= chk('gen', gb, 'win', -0.02, True)
     for nm, b in (('pool', pb), ('gen', gb)):
-        ok &= chk(nm, b, 'econ', -0.03, True)
+        ok &= chk(nm, b, 'econ_med', -0.03, True)   # econ~ (D-042/D-045/D-046 §4)
         ok &= chk(nm, b, 'units@100', -0.02, False)
         ok &= chk(nm, b, 'total@100', -0.02, False)
     for nm, c in (('pool', pool), ('gen', gen)):
@@ -196,7 +216,7 @@ def gate_letter(pool: dict, gen: dict, seeds: list[int]) -> tuple[str, list[str]
     if pool.get('status') != 'COMPLETE' or gen.get('status') != 'COMPLETE':
         why.append('missing fixtures (listed; not counted)')
     letter = 'PASS' if ok else 'FAIL' if fail else 'HOLD'
-    prefix = '' if len(seeds) >= 3 else 'screen-'
+    prefix = '' if GATE else 'screen-'
     return prefix + letter, why
 
 
@@ -210,7 +230,8 @@ def markdown(cards: dict, letter: str, why: list[str]) -> str:
     any_c = next(iter(cards.values()))
     L.append(f"# {any_c['cand']} vs {any_c['parent']} — seeds {','.join(map(str, any_c['seeds']))}\n")
     L.append(f'**Gate letter: {letter}**' + (' — ' + '; '.join(why) if why else '') + '\n')
-    L.append('Intervals: cluster bootstrap (map×opp×seat), 1,000 resamples, seed 7, 5th–95th percentile. '
+    L.append('Intervals: cluster bootstrap over map × opponent (D-052 §C; both seats and all seeds together), 1,000 '
+             'resamples, seed 7, linear 5th–95th percentile; the directional key (map × opp × seat) is printed as a sensitivity. '
              'Win, queen and conversion in percentage points; economy and material as normalised units ×100.\n')
     for panel, c in cards.items():
         L.append(f'## {panel}\n')
@@ -227,6 +248,18 @@ def markdown(cards: dict, letter: str, why: list[str]) -> str:
         for k in ('win', 'econ', 'econ_med', 'units@100', 'total@100', 'q_joint', 'q_cond', 'conv'):
             L.append(f'| {k} | {fmt_iv(b[k])} |')
         L.append(f"| death_wall_per1k | {fmt_iv(b['death_wall_per1k'], False)} |")
+        bd = c['boot_directional']
+        L.append(f"\nClusters: {b['_clusters']} (map × opp), valid draws {b['_valid']}. Directional sensitivity "
+                 f"({bd['_clusters']} clusters): win {fmt_iv(bd['win'])}, econ~ {fmt_iv(bd['econ_med'])}, "
+                 f"units@100 {fmt_iv(bd['units@100'])}, total@100 {fmt_iv(bd['total@100'])}.")
+        if c.get('stratum'):
+            stt = c['stratum']
+            L.append(f"\nReport-only stratum {', '.join(stt['maps'])} (named before the run): " + '; '.join(
+                f"seed {sd}: {v['W']}/{v['n']} vs parent {v['W_parent']}/{v['n']} (Δwin {100 * v['dwin']:+.2f} pp)"
+                for sd, v in sorted(stt['per_seed'].items())) +
+                (f"; stratum Δwin {fmt_iv(stt['target']['win'])}" if stt['target'] else '') +
+                (f"; without the stratum Δwin {fmt_iv(stt['off_target']['win'])}, econ~ {fmt_iv(stt['off_target']['econ_med'])}"
+                 if stt['off_target'] else '') + '.')
         L.append('\nTier-2 deaths per 1k dragon-turns:\n\n| cause | parent | cand | rel | flag |\n|---|---|---|---|---|')
         for h, v in c['tier2'].items():
             rel = '—' if v['rel'] is None else f"{100 * v['rel']:+.1f}%"
@@ -246,7 +279,14 @@ def markdown(cards: dict, letter: str, why: list[str]) -> str:
     return '\n'.join(L) + '\n'
 
 
+STRATUM: set = set()
+GATE = False
+
+
 def cmd_card(a):
+    global STRATUM, GATE
+    STRATUM = set(x for x in (a.stratum or '').split(',') if x)
+    GATE = a.gate
     seeds = [int(s) for s in a.seeds.split(',')]
     cards = {p: compare(a.cand, a.parent, p, seeds) for p in ('pool', 'gen')}
     letter, why = gate_letter(cards['pool'], cards['gen'], seeds)
@@ -304,6 +344,8 @@ def main():
     sub = ap.add_subparsers(dest='cmd', required=True)
     c = sub.add_parser('card'); c.add_argument('cand'); c.add_argument('--parent', required=True)
     c.add_argument('--seeds', default='1'); c.add_argument('--out', required=True)
+    c.add_argument('--stratum', default='', help='comma list of map keys reported as a target stratum (report-only)')
+    c.add_argument('--gate', action='store_true', help='nominee gate (D-046 §4): INCOMPLETE on any missing fixture, no screen- prefix')
     d = sub.add_parser('curve'); d.add_argument('--doses', required=True); d.add_argument('--seeds', default='1')
     d.add_argument('--out', required=True)
     q = sub.add_parser('parity'); q.add_argument('cand'); q.add_argument('--parent', required=True)

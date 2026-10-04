@@ -12,6 +12,14 @@ Only these job kinds exist (anything else is rejected, never executed):
   merge_main {}                              git merge --no-edit main into r/asahi (aborts on conflict).
   reload   {}                                re-exec this daemon from <tree>/tools/asahi/jobd.py.
 
+Learn queue (D-050 §8, D-052 §F): when Asahi's own queue is empty, the daemon also takes jobs from
+<main>/build/learn/queue/*.json (main checkout), lowest name first, results in build/learn/{running,done,logs}/:
+  script     {"script": "tools/learn/<name>.py" | "tools/hinata/<name>.py", "argv": [str, ...], "heavy": bool,
+              "timeout": seconds, "by": "<lane>", "env": "learn" | "main"}   cwd = main checkout;
+              env "learn" (default) = build/learn/venv (unswbc 1.2.9 + the learning stack), "main" = the repo's .venv.
+  setup_env  {"by": "<lane>"}   (re)creates build/learn/venv and installs LEARN_PACKAGES.
+Order of priority is the macro's: Evaluator panels (this daemon's own queue) before learn jobs; one job at a time.
+
 Heavy jobs take build/learn/HEAVY.lock in the MAIN checkout (macro section 8): they wait while another owner holds
 it; a lock whose pid is dead on this host and older than 10 minutes is treated as stale (logged). Everything runs
 at nice 10 (inherited). Results: queue/<id>.json moves to done/<id>.json with rc, times and the log path
@@ -26,6 +34,10 @@ import argparse, json, os, re, signal, socket, subprocess, sys, time
 from pathlib import Path
 
 KINDS = {'script', 'commit', 'merge_main', 'reload'}
+LEARN_KINDS = {'script', 'setup_env'}
+LEARN_SCRIPT = re.compile(r'^tools/(learn|hinata)/[A-Za-z0-9_]+\.py$')
+LEARN_PACKAGES = ['unswbc==1.2.9', 'pycapnp', 'lightgbm', 'xgboost', 'torch', 'scikit-learn', 'pandas', 'pyarrow',
+                  'duckdb', 'numpy']
 COMMIT_OK = re.compile(r'^(tools/asahi/|bots/asahi-[A-Za-z0-9._-]+/|maps/m2tr/|claude/asahi-status\.md$|docs/learning/|docs/hub/BOARD\.md$)')
 OWNER = 'asahi'
 
@@ -113,27 +125,7 @@ class Daemon:
             argv = [str(x) for x in job.get('argv', [])]
             env = dict(os.environ, ASAHI_MAX_WORKERS=str(self.max_workers), ASAHI_MAIN=str(self.main),
                        PYTHONUNBUFFERED='1', UNSWBC=str(Path(self.python).parent / 'unswbc'))
-            heavy = bool(job.get('heavy'))
-            if heavy:
-                self.take_lock(job['id'])
-            try:
-                p = subprocess.Popen([self.python, script, *argv], cwd=self.tree, stdout=logf, stderr=subprocess.STDOUT,
-                                     env=env, start_new_session=True)
-                deadline = time.time() + float(job.get('timeout', 6 * 3600))
-                while p.poll() is None:
-                    self.heartbeat(f'running {job["id"]} pid {p.pid}')
-                    if (self.base / 'queue' / f'cancel-{job["id"]}').exists() or time.time() > deadline:
-                        os.killpg(p.pid, signal.SIGTERM)
-                        time.sleep(10)
-                        if p.poll() is None:
-                            os.killpg(p.pid, signal.SIGKILL)
-                        (self.base / 'queue' / f'cancel-{job["id"]}').unlink(missing_ok=True)
-                        return -15
-                    time.sleep(15)
-                return p.returncode
-            finally:
-                if heavy:
-                    self.drop_lock()
+            return self.run_process(job, [self.python, script, *argv], self.tree, env, logf, self.base / 'queue')
         if kind == 'commit':
             if self.git('rev-parse', '--abbrev-ref', 'HEAD').stdout.strip() != 'r/asahi':
                 raise ValueError('tree is not on r/asahi')
@@ -167,6 +159,72 @@ class Daemon:
             return r.returncode
         return 0  # reload handled by the caller
 
+    def run_process(self, job, cmd, cwd, env, logf, cancel_dir):
+        heavy = bool(job.get('heavy'))
+        if heavy:
+            self.take_lock(job['id'])
+        try:
+            p = subprocess.Popen(cmd, cwd=cwd, stdout=logf, stderr=subprocess.STDOUT, env=env, start_new_session=True)
+            deadline = time.time() + float(job.get('timeout', 6 * 3600))
+            while p.poll() is None:
+                self.heartbeat(f'running {job["id"]} pid {p.pid}')
+                if (cancel_dir / f'cancel-{job["id"]}').exists() or time.time() > deadline:
+                    os.killpg(p.pid, signal.SIGTERM)
+                    time.sleep(10)
+                    if p.poll() is None:
+                        os.killpg(p.pid, signal.SIGKILL)
+                    (cancel_dir / f'cancel-{job["id"]}').unlink(missing_ok=True)
+                    return -15
+                time.sleep(15)
+            return p.returncode
+        finally:
+            if heavy:
+                self.drop_lock()
+
+    def run_learn_job(self, job, logf):
+        kind = job.get('kind')
+        if kind not in LEARN_KINDS:
+            raise ValueError(f'learn kind {kind!r} not allowed')
+        lb = self.main / 'build/learn'
+        venv = lb / 'venv'
+        if kind == 'setup_env':
+            r = subprocess.run([self.python, '-m', 'venv', '--clear', str(venv)], capture_output=True, text=True)
+            logf.write(r.stdout + r.stderr)
+            if r.returncode:
+                return r.returncode
+            pip = [str(venv / 'bin/python'), '-m', 'pip', 'install', '--upgrade']
+            for pkgs in (['pip'], LEARN_PACKAGES):
+                r = subprocess.run(pip + pkgs, stdout=logf, stderr=subprocess.STDOUT)
+                if r.returncode:
+                    return r.returncode
+            r = subprocess.run([str(venv / 'bin/python'), '-m', 'pip', 'freeze'], capture_output=True, text=True)
+            (lb / 'venv.freeze.txt').write_text(r.stdout)
+            logf.write(r.stdout)
+            return 0
+        script = str(job.get('script', ''))
+        if not LEARN_SCRIPT.match(script) or not (self.main / script).is_file():
+            raise ValueError(f'learn script {script!r} not allowed (tools/learn/*.py or tools/hinata/*.py in main)')
+        envname = job.get('env', 'learn')
+        py = str(venv / 'bin/python') if envname == 'learn' else self.python
+        if not Path(py).exists():
+            raise ValueError(f'environment {envname!r} missing ({py}); queue a setup_env job')
+        argv = [str(x) for x in job.get('argv', [])]
+        env = dict(os.environ, ASAHI_MAX_WORKERS=str(self.max_workers), PYTHONUNBUFFERED='1',
+                   UNSWBC=str(Path(py).parent / 'unswbc'), OMP_NUM_THREADS=str(self.max_workers))
+        return self.run_process(job, [py, script, *argv], self.main, env, logf, lb / 'queue')
+
+    def next_job(self):
+        own = sorted((self.base / 'queue').glob('*.json'))
+        if own:
+            return own[0], self.base, 'asahi'
+        lb = self.main / 'build/learn'
+        for d in ('queue', 'running', 'done', 'logs'):
+            (lb / d).mkdir(parents=True, exist_ok=True)
+        learn = sorted((lb / 'queue').glob('*.json'))
+        if learn:
+            return learn[0], lb, 'learn'
+        return None, None, None
+
     def loop(self):
         try:
             os.nice(10)
@@ -175,35 +233,34 @@ class Daemon:
         self.say(f'jobd up: tree={self.tree} main={self.main} python={self.python} workers<={self.max_workers}')
         while True:
             self.heartbeat('idle')
-            jobs = sorted(p for p in (self.base / 'queue').glob('*.json'))
-            if not jobs:
+            path, base, which = self.next_job()
+            if path is None:
                 time.sleep(20)
                 continue
-            path = jobs[0]
             try:
                 job = json.loads(path.read_text())
                 job['id'] = job.get('id') or path.stem
             except Exception as e:
                 self.say(f'bad job file {path.name}: {e}')
-                path.rename(self.base / 'done' / (path.stem + '.bad'))
+                path.rename(base / 'done' / (path.stem + '.bad'))
                 continue
-            run_path = self.base / 'running' / path.name
+            run_path = base / 'running' / path.name
             path.rename(run_path)
-            logp = self.base / 'logs' / f'{job["id"]}.log'
+            logp = base / 'logs' / f'{job["id"]}.log'
             t0 = now()
-            self.say(f'start {job["id"]} {job.get("kind")} {job.get("script", "")}')
+            self.say(f'start [{which}] {job["id"]} {job.get("kind")} {job.get("script", "")} by={job.get("by", "asahi")}')
             rc, err = None, None
             with open(logp, 'a', buffering=1) as logf:
                 try:
-                    rc = self.run_job(job, logf)
+                    rc = self.run_job(job, logf) if which == 'asahi' else self.run_learn_job(job, logf)
                 except Exception as e:
                     err = f'{type(e).__name__}: {e}'
                     logf.write(err + '\n')
-            res = dict(job, started=t0, ended=now(), rc=rc, error=err, log=str(logp.relative_to(self.tree)))
-            (self.base / 'done' / path.name).write_text(json.dumps(res, indent=1))
+            res = dict(job, started=t0, ended=now(), rc=rc, error=err, log=str(logp))
+            (base / 'done' / path.name).write_text(json.dumps(res, indent=1))
             run_path.unlink(missing_ok=True)
             self.say(f'end {job["id"]} rc={rc} err={err}')
-            if job.get('kind') == 'reload' and err is None:
+            if which == 'asahi' and job.get('kind') == 'reload' and err is None:
                 new = self.tree / 'tools/asahi/jobd.py'
                 self.say('reloading from', new)
                 os.execv(self.python, [self.python, str(new), '--main', str(self.main), '--tree', str(self.tree),
