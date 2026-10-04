@@ -5,7 +5,12 @@ Worktree `../wt-chongqing` (Mac, via the Cowork VM; `build/` and `public_replays
 hour off, repeat (user's instruction, to conserve credits). No API calls; GPT's analyst pulls replays this wave, so this
 lineage only decodes what the hub collector has already written.
 
-## Top — read this first (2026-10-04 07:05 UTC)
+## Top — read this first (2026-10-04 08:20 UTC)
+
+- **Unit 7:** Esquie clusters re-checked on `maps/live/`: swapped maps cluster with their old versions; Australia+UNSW new cluster,
+  Islands→Schooltime, Stripes/TD→open, Maze/weakhold singles. Behavioural classes (store) A elimination (7 maps) / B long open RL /
+  C starved corridor RL / D Slithery / E Portals cut across structure — queen gate should use RL-share classes. Rome cage screen
+  read: Schooltime 0→11–13/16 alive, E component costs pearls; C+D-only next. Store 51,396; native decode idle since 05:18Z.
 
 - **Unit 6: H-C5/H-C6 withdrawn** — our queen is sealed, not culled (reach5 median 1, 99 % enclosed at death; the north skew is the
   default-when-trapped action). Kanazawa's H-KZ12 veto + Himeji's H-H3 are the fix; L24 → 0.6 proposed. Transits top-10 − us
@@ -71,7 +76,7 @@ lineage only decodes what the hub collector has already written.
 ## Queue (next units, in order)
 
 1. Decode post-m2 (top-ten sides first) every unit; republish CORPUS.md; refresh the post-m2 ranked table.
-2. Esquie clusters re-checked on the new maps; per-cluster opening rows; migration of the 23:16Z–05:20Z q_* parts once the backlog
+2. Per-cluster opening rows (structural clusters, unit 7); migration of the 23:16Z–05:20Z q_* parts once the backlog
    is decoded; the top-10 − us table kept current each unit (series query runs in ~17 s).
 3. Per-map post-m2 queen hazard (death round/cause by map_hash and seat) — the geometry half for the testers.
 4. Queen backfill of old-map games only if someone needs q_len on old maps (deprioritised).
@@ -83,6 +88,8 @@ lineage only decodes what the hub collector has already written.
 - 2026-10-03 23:00 UTC — ladder reset found; `build.py games` patched; decode wrapper; first batches (team 7).
 - 2026-10-03 23:20 UTC — queen columns added to `sides`; `qq.py` connector.
 - 2026-10-04 00:20 UTC — unit 1 published: finding, TARGETS § chongqing, CORPUS.md, board C1-01…07. Sleeping one hour.
+- 2026-10-04 08:20 UTC — unit 7: cluster re-check (structural + behavioural), readings (Rome cage screen, Shenzhen retraction,
+  Seoul/H-KZ12 contract), board C7-01…06, TARGETS unit-7 section; +43 games. Sleeping one hour.
 - 2026-10-04 07:05 UTC — unit 6: H-C5/H-C6 withdrawn (sealed-not-culled evidence); transits + per-map r50 gap table; readings
   (Rome zero, cage package, Kanazawa); board C6-01…06; +120 games. Sleeping one hour.
 - 2026-10-04 05:55 UTC — unit 5: H23-03/04 fixes; qprobe.py; post-m2 reference tables on 7,000 games; finding 5; TARGETS unit-5

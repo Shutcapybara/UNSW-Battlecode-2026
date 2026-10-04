@@ -419,3 +419,21 @@ transits and adds the per-map breakdown. Note: unit-3/5 queen *mechanism* text (
 | Autarky, Default (transit cluster) | r50 | transits gap vs bed/splits gap | 7.9 / 13.3 transits | 1.8 / 4.6 | **0.90 / 1.04** vs ≤ 0.34 | the portal-gated opening switch's test maps (L41) | finding §3 |
 | Islands, Trophy, QoS, Tower Defense | r50 | total gap | — | — | −0.27 / −0.41 / −0.61 / −0.09 (we lead) | no opening work; losses there are elsewhere | finding §3 |
 | weakhold | r50 | total gap with no portals | — | — | 0.78 (bed/splits/pearls we lead by 0.4–1.0) | our swarm dies sealed (wall 67/1k vs 5/1k): H-KZ12 veto, not economy | unit 3 §2, unit 6 §1 |
+
+## chongqing (unit 7) — 2026-10-04 08:20 UTC — map classes for the live pool (era `post-m2`, ladder 05:17Z)
+
+Source: `docs/findings/2026-10-04-chongqing-unit7-live-map-clusters.md`. Two labels per live map, for two uses:
+
+| map | structural cluster (Esquie signature on `maps/live/`) | behavioural class (store) | RL share | field queen alive (RL) | use the queen column? |
+|---|---|---|---:|---:|---|
+| Devil, Trauma, Autarky, PD, Slithery, Stripes, Tower Defense | open mega-cluster (+ corridor members) | Devil/Stripes/TD/Autarky → A; Trauma/PD → C; Slithery → D | 0.03–0.99 | 0.00–0.64 | Trauma, PD, Slithery yes; Devil, Stripes, TD, Autarky no |
+| Default, Trophy | default/trophy | A | 0.45 / 0.03 | 0.12 / 0.00 | no |
+| Queen Of Spades | QoS | A | 0.25 | 0.15 | no |
+| Portals | portal-heavy | E | 0.99 | 0.25 | yes |
+| Schooltime, Islands | schooltime (+ Islands) | B (Schooltime = cage) | 0.99 / 0.90 | 0.88 / 0.09 | yes |
+| Australia, Around UNSW | large-open-wrap (new) | B | 0.95 / 1.00 | 0.18 / 0.20 | yes |
+| Maze | single | B | 0.96 | 0.26 | yes |
+| weakhold | single | C | 0.70 | 0.28 | yes |
+
+Rule proposed: opening/navigation arms are judged per structural cluster (D-037 unchanged); queen arms per behavioural class,
+RL-share-weighted; class A maps (7 of 17) carry no queen target.
