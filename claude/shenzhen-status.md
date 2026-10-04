@@ -61,8 +61,9 @@ pushes `r/shenzhen`.
 | H-SZ53 | E1 on production splits only (E1p) | **0.5** (unit 27: Schooltime queens 11/12 vs 7/12; open maps wins 6–12, total −4 %) | — | — | Chair trade |
 | H-SZ55 | live screen: Schooltime gain from E1p exceeds the summed class-B loss | posted 0.35 (unit 27) | pooled score − expectation ≤ 0 | D-056 live screen | Daichi / Asahi |
 | H-SZ54 | children born at headroom 1 live shorter | **refuted, reversed** (unit 28: they live longest, eat most) | — | — | — |
-| H-SZ56 | cap binds the open-map economy: cull-to-free (K) raises total ≥ +5 % | posted 0.4 (unit 28; sim running) | total ≤ 0 | 18 sim games | this lane |
-| H-SZ57 | radio slot-claim: freed slot to the best-placed dragon | posted 0.3 (unit 28) | claimed children no better | 18 sim games | tester |
+| H-SZ56 | cull-to-free raises open-map total | **refuted** (unit 29: −15 %, UNSW −31 %) | — | — | — |
+| H-SZ57 | radio slot-claim: freed slot to the best-placed dragon | **0.4** (unit 29) | claimed children no better | 18 sim games | tester |
+| H-SZ58 | R4: allied heads able to split + own food at headroom 0–1 | posted 0.35 (unit 29) | split-label AUC gain < +0.01 | R4 ablation | Learner / Data |
 | H-SZ51 | class-B maps: live win tracks total share more than queen survival | posted 0.4 (unit 23) | queen alive outweighs total share in store logistic | ~2,000 ranked post-m2 | Data / Learner |
 | H-SZ49 | learned queen block: strike slack, static room, unit headroom | posted 0.3 (unit 21) | AUC gain < +0.02 r100–250 | store LOMO | Learner |
 | H-SZ47 | field queens cross fewer narrow gates | posted 0.35 (unit 20) | equal or more crossings | store ~200 games | Data |
@@ -134,10 +135,11 @@ pushes `r/shenzhen`.
 - **Unit 26 (4 Oct 18:18Z – 18:45Z).** Unit 25 pushed (a47dc7d2f). E1p sim (12 games): queen 6/6, Slithery +19 %; recommended C+D+E1p as the screen form. H-SZ54.
 - **Unit 27 (4 Oct 19:00Z – 19:40Z).** Mac bridge briefly offline. E1p on open-4 + three open maps (24 games): Schooltime benefit holds, open maps cost −4 % / wins 6–12. Corrected the size of my 18:45 board line. H-SZ53 → 0.5, H-SZ55.
 - **Unit 28 (4 Oct 19:47Z – 20:15Z).** szheadroom.py over ~32k sim births: cap-born children are the best. H-SZ54 reversed; H-SZ56/57; probe K running on three open maps.
+- **Unit 29 (4 Oct 20:35Z – 21:00Z).** K open-map sim (restart after container reset): −15 %. Read D-060 (P-4 refuted): my unit-17 strike prior pooled mover roles; corrected publicly. Context: D-059 makes the learned policy the main line; sim findings now feed RL features.
 
 ## Next unit
 
-0. Read the probe K (cull to free) result on the three open maps (slk_*, 18 games) for H-SZ56; then H-SZ57 if K helps.
+0. Under D-059, prefer measurements the Learner can use: label/feature checks on sim replays (mover role, headroom regime, slot winners); H-SZ57 only if cheap.
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
