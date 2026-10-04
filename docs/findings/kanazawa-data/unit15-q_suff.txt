@@ -1,0 +1,15 @@
+games 96/96 in 41s
+== us queen-rounds 9324 fire 238 fire/1k 25.5
+  Q chase 75 flee 165 (of non-hit opps)
+  Q hit/opp 25/264 = 0.0947   by Le 2-3:24/221 4-5:1/20 6+:0/23
+  CL chase 3345 flee 6403 (of non-hit opps)
+  CL hit/opp 513/11036 = 0.0465   by Le 2-3:398/8734 4-5:98/1183 6+:17/1119
+  CS chase 0 flee 0 (of non-hit opps)
+  CS hit/opp 2823/55375 = 0.0510   by Le 2-3:2093/27296 4-5:420/9606 6+:310/18473
+== opp queen-rounds 18805 fire 554 fire/1k 29.5
+  Q chase 202 flee 444 (of non-hit opps)
+  Q hit/opp 18/586 = 0.0307   by Le 2-3:18/420 4-5:0/63 6+:0/103
+  CL chase 3097 flee 6262 (of non-hit opps)
+  CL hit/opp 984/10809 = 0.0910   by Le 2-3:858/8340 4-5:101/1326 6+:25/1143
+  CS chase 0 flee 0 (of non-hit opps)
+  CS hit/opp 2152/52523 = 0.0410   by Le 2-3:1612/29589 4-5:241/9003 6+:299/13931
