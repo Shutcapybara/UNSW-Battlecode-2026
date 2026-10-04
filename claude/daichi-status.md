@@ -7,43 +7,41 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 2, 2026-10-04 ~12:00Z)
+## Top — read this first (unit 3, 2026-10-04 ~12:57Z)
 
-- **Last BOARD line read:** line 687 of `docs/hub/BOARD.md` (nishinoya 11:50Z D-050 §5 replication), plus my own
-  unit-2 lines appended after it.
-- **Live:** 14585 = `carthage-05-free-sprint` (unchanged; no human activation). Fingerprint check done: the tree of
-  `bots/carthage-05-free-sprint` has full fingerprint `ebeba55fdd89…`, and the API name of 14585 is
-  `LV-carthage-05-free-sprint-ebeba55f-ai`. They match.
-- **Monitor (12:00Z, ranked, corpus backfilled, so n grew 417 → 611):** since 2 Oct, −0.029 [−0.059, +0.001]
-  (611 games / 125 series). Rolling 40: −0.069 [−0.154, +0.007] (8 series). Elo 1716, rank 83 (24 h ago 1744).
-  Worst maps: Schooltime −0.45, weakhold −0.32, Trauma −0.25. Best: Tower Defense +0.40, QoS +0.29.
-- **Hub redeployed** with battles.json, dispatch off: D-048 §2, `redeploy.done.json` sha 0b5a953a0-20261004T115451Z,
-  tests ok; `hub-state/battles/index.json` shows enabled null, no jobs.
-- **Link 14585 ↔ carthage-05 (D-048 §6):** no hub control could set a candidate's submission id, so I built one.
-  It is a `register.json` link item (`{"name","submission","fingerprint8","decision"}`). It checks the fingerprint
-  prefix, the mirrored API name `LV-<name>-<fp8>-ai`, and that no other candidate holds the id, then sets
-  submission_id and upload_name and leaves status alone. Code: `tools/hub/actuator.py` `link_submission`, tests
-  `tests/test_hub_link.py` (3), hub suites 107/107 OK. On `r/daichi`. **Needs: merge to main (Chair), redeploy (me,
-  under D-048 §2/§6), then write register.json** `{"by":"daichi","decision":"D-048 §6","candidates":[{"name":
-  "carthage-05-free-sprint","submission":14585,"fingerprint8":"ebeba55f"}]}`.
-- **D-050 §4 quota-runner check: condition NOT met.** Over the last 48 h, the server history (corpus, team 7 unranked,
-  requester = seat A, a convention verified on 495/495 of the hub ledger's own games) shows **7 series / 50 games
-  requested by team 7**. The hub ledger has none of them; its last request was 29 Sep. Times: 2 Oct 12:52:40,
-  13:02:44, 13:52:40, 14:12:42, 14:32:40, 14:52:41 and 3 Oct 02:42:42Z, all on a :x2:4x ten-minute grid, which
-  matches `quota_runner.py`. Opponents were 91, 213, 249, 87, 842, 91, 842, all played by 14585, and there were none
-  after 3 Oct 02:42Z. Reported to the Chair. No non-live arm is dispatched until the Chair rules.
-- **A/A dry run (D-048 §3), sized; waits for an enable D-record.** The control rejects duplicate arms, so the nearest
-  equivalent is a one-arm split-half run. Settings: arm 14585, dev 545 and 752, all 17 LIVE_MAPS_M2 maps,
-  `seats: both`, `games_per_pair: 4`. That gives each (opponent, map, parity) cell 2 replicates: 136 games and
-  68 cells. The comparison is replicate 1 vs replicate 2, done offline from the job rows (the job's paired report needs
-  2 arms). The cell bootstrap is cluster = opponent × map × parity, because 2 opponent clusters are too few. Expected:
-  delta 0, 5–95 % width ≤ 0.25 (independent-replicate bound; dev win rates 545 ≈ 0.15, 752 ≈ 0.6). It will be narrower
-  if replicates are correlated, which is itself the noise measurement. Budget is 136 dev games, about 2.5 h. Stop rule:
-  136 games, a 6 h deadline, any runtime fault, or a live-submission change.
-- **D-048 §8 review filed:** `docs/learning/reviews/D-048-daichi.md`. Recommendation: amend, using the difference
-  form with the reference widened to the replaced submission's last 120 games. False rollback of an equal candidate
-  is 0.08–0.09 for the difference forms. The absolute form gives 0.10, 0.18 and 0.33 at incumbent levels 0, −0.029
-  and −0.07. Power at delta −0.10 is 0.30 (ref 40) vs 0.38 (ref 120).
+- **Last BOARD line read:** line 713 of `docs/hub/BOARD.md` (tanaka 12:52Z P-2 repair audit). My 2 unit-3 lines follow
+  it (12:57Z), ending at line 715.
+- **Live:** 14585 = `carthage-05-free-sprint` (unchanged; no human activation). **Linked in the hub** (D-051 §2):
+  register.done.json 12:53:39Z, DB row submission_id 14585, upload_name `LV-carthage-05-free-sprint-ebeba55f-ai`.
+  The mirror `hub-state/candidates.json` (12:52Z) predates the link; the next refresh should show `submission: 14585`.
+- **Hub redeployed** 12:52Z: `redeploy.done.json` sha 8988d9489-20261004T125209Z, tests ok (link item live).
+- **A/A job 952053397eed (D-051 §1) running.** Dispatch enabled 12:53:44Z (battles.done.json). Job accepted 12:54:50Z:
+  arm 14585, opponents 545 + 752, 17 server maps by name, seats both, games_per_pair 4 → 8 units / 136 games,
+  deadline 18:54Z, expect_active 14585. At 12:55Z: open, 0 requested.
+  Analysis when done: delta = replicate 1 − replicate 2 per (opponent, map, parity) cell from the job rows (order of
+  play within a cell decides the replicate), cell bootstrap (cluster = opponent × map × parity), 1,000 × seed 7,
+  5th–95th. Pass = 0 inside and width ≤ 0.25. Report n, delta, interval, missing games (listed, not counted), runtime
+  faults. **Then write `battles.json` {"action":"disable","by":"daichi","decision":"D-051 §1"}** (enable covered one job).
+- **D-051 §4 done** on r/daichi: `rating_at` no longer borrows a later snapshot (game before first snapshot → no
+  expectation; 40 ranked games in the 14-day window are now excluded). Every monitor run writes frozen inputs to
+  `docs/learning/live-inputs/<UTC>-<sha8>.json.gz` (≈60 KB; sha256 of the uncompressed JSON). Commit only the ones
+  behind published numbers (move older unpublished ones to build/daichi/tmp/_old/).
+- **Monitor (12:56Z, ranked, inputs sha 2be3ac55):** since 2 Oct −0.022 [−0.053, +0.007] (690 / 140 series); first 40
+  −0.052 [−0.204, +0.071]; rolling 40 −0.006 [−0.092, +0.065] (8 series); Elo 1720 rank 81 (24 h ago 1738).
+  Worst maps: Schooltime −0.47, weakhold −0.35, Trauma −0.19. Best: Tower Defense +0.41, QoS +0.30. Regression roster
+  +0.108 [+0.066, +0.151] (298 / 60). Style roster still empty (no `docs/learning/top-teams.md`).
+- **Unexplained team-7 requests (D-051 §3):** none since 3 Oct 02:42Z (corpus to 12:42Z). The non-live-arm rule is now:
+  D-046 §4 gate passed + no unexplained request in the previous 24 h + re-check before each unit, pause on a new one.
+  Re-run the check (unranked games with team_a = 7 whose game id is not in the hub `games` table) before any
+  non-live dispatch. D-051 §3 says the lead is told once without a request to act; noted in this unit's run summary.
+
+## Next unit
+
+1. Read BOARD after line 715: D-052 (rollback reference, interval convention, P-2 gate) after 13:00Z.
+2. Follow `hub-state/battles/952053397eed.json` / index.json; on completion (or stop rule) run the split-half
+   analysis, post the result, disable dispatch.
+3. Refresh the monitor; confirm candidates.json mirror shows 14585 linked.
+4. Fill the style roster once Data's `docs/learning/top-teams.md` exists.
 
 ## battles.json — what it does
 
@@ -69,6 +67,7 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Open questions for the Chair
 
+Unit 3: none new (D-051 answered unit 2's three). Awaiting D-052.
 Unit 2 (BOARD 12:0xZ): (a) an enable D-record for the A/A split-half job as sized above; (b) a ruling on the 7
 unexplained team-7 requests (2–3 Oct; is the Windows quota runner disabled?); (c) merge r/daichi (link control).
 
@@ -87,6 +86,8 @@ Unit 1 (asked 10:50Z, answered by D-048 / D-050 §4):
 
 ## Units
 
+- 2026-10-04 ~12:57Z unit 3 — read BOARD 688–713, D-051. Redeployed (8988d9489), linked 14585 (register.json), enabled
+  dispatch and submitted A/A job 952053397eed (136 games). Fixed rating_at + frozen monitor inputs (D-051 §4).
 - 2026-10-04 ~12:00Z unit 2 — read BOARD 651–687, D-048, D-050 §4/§8. Monitor refreshed. Redeployed the hub (D-048 §2).
   Fingerprint-checked 14585 and built the register.json link item. Ran the quota-runner check, which found 7
   unexplained series. Sized the A/A run. Filed the D-048 §8 review (`tools/daichi/rollback_power.py`).
