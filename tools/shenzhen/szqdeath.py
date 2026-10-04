@@ -3,7 +3,7 @@ import sys, glob, collections; sys.path.insert(0, '/home/claude/fr'); import fra
 c = collections.Counter(); per = collections.defaultdict(collections.Counter)
 for pat in sys.argv[1:]:
     for f in sorted(glob.glob(pat)):
-        p = f.split('/')[-1][:-7].split('_'); bots = {'A': p[2], 'B': p[3]}
+        p = f.split('/')[-1][:-7].split('_'); bots = {'A': p[-3], 'B': p[-2]}
         g = frame.decode(f); r0 = g['rounds'][0]
         dead = {d['id']: d for d in g['events']['deaths']}
         for i in (0, 1):

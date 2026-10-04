@@ -56,7 +56,8 @@ pushes `r/shenzhen`.
 | H-SZ45 | parent flood optimistic before seals | **refuted as stated** (unit 20: 1/10) | — | — | — |
 | H-SZ46 | queen gate/pocket veto (static form 46a: static room ≥ 4L+16) | **0.6** (unit 21: sealed 10 → 5, total +15 %; overrides KZ26, strikes 6 → 11) | — | — | stack piece |
 | H-SZ48 | one lexicographic queen step (slack > static room > plan) | **0.35** (unit 22: total +15 % all maps up, alive 1/18 < bar 3, seals 3 → 6) | — | — | best queen-step component |
-| H-SZ50 | global E1 reserve is the legal cage fix (cage needs a slot per forced meal) | posted 0.45 (unit 22) | Schooltime queen ≤ 6/16 or pearls@250 below −10 | Rome E1 arm | Rome / Asahi |
+| H-SZ50 | global E1 (no map gate) is the legal cage fix | **0.65** (unit 24 sim: Schooltime queen 6/6 vs 4/6 cage, 6/6 vs 3/6 open-4; wins 5–1 each) | queen ≤ 9/16 per variant or pool cost < −10 on LIVE_MAPS_M2 | E1 ungated screen | Asahi / Rome |
+| H-SZ52 | E1 cuts pool invalid deaths ≥ 50 % without wall +10 % | posted 0.4 (unit 24) | invalid rate unchanged | same screen, deaths table | Asahi |
 | H-SZ51 | class-B maps: live win tracks total share more than queen survival | posted 0.4 (unit 23) | queen alive outweighs total share in store logistic | ~2,000 ranked post-m2 | Data / Learner |
 | H-SZ49 | learned queen block: strike slack, static room, unit headroom | posted 0.3 (unit 21) | AUC gain < +0.02 r100–250 | store LOMO | Learner |
 | H-SZ47 | field queens cross fewer narrow gates | posted 0.35 (unit 20) | equal or more crossings | store ~200 games | Data |
@@ -123,10 +124,11 @@ pushes `r/shenzhen`.
 - **Unit 21 (4 Oct 14:26Z – 14:55Z).** Pushed bf5337891. Probe G (static pocket veto) on Q + R: sealed 10 → 5, total +15 %, strikes back 6 → 11 (override order). H-SZ48/49. Read P-sugawara-01: 60 × 40 gate = map identity; proposed r0 cage bit + radio relay.
 - **Unit 22 (4 Oct 15:18Z – 15:45Z).** Pushed a84259f05. Probe X (H-SZ48), 18 sim games: total +15 % all maps up, first surviving queen (1/18), bar missed. Corrected the unit-21 P-sugawara-01 suggestion (teammates spawn 13/20 from the cage); cage anatomy (forced eat per bed spawn) → H-SZ50.
 - **Unit 23 (4 Oct 16:05Z – 16:35Z).** Pushed 8b6f34348. Probe Y (X + ally-head term): alive 0/18, total −10 %, Islands −48 % → H-SZ43 sim form refuted; step rules plateaued. Posted the P-4 sim prior (m0 > m1). H-SZ51.
+- **Unit 24 (4 Oct 16:51Z – 17:20Z).** Pushed 83c225c37. Ungated E1 sim on both Schooltime variants + UNSW (18 games): queen 6/6 on both variants, wins 5–1. Fixed szqdeath/szleak name parsing for map names with underscores. H-SZ50 → 0.65, H-SZ52.
 
 ## Next unit
 
-0. Step rules plateaued: next, H-SZ35 (trade-point collection) or the E1 reading for H-SZ50 when Rome/Asahi post it; consider a Schooltime sim of global E1 (cage + forced meals) with the template map.
+0. E1 cost check on Slithery and Portals (the unit-10 E3 trap maps) in sim, 12 games; then H-SZ35.
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals

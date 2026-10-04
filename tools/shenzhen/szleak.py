@@ -4,7 +4,7 @@ import sys, glob, bisect, collections; sys.path.insert(0, '/home/claude/fr')
 import frame
 agg = collections.defaultdict(collections.Counter)
 for f in sorted(glob.glob(sys.argv[1])):
-    parts = f.split('/')[-1][:-7].split('_'); a, b = parts[2], parts[3]
+    parts = f.split('/')[-1][:-7].split('_'); a, b = parts[-3], parts[-2]
     g = frame.decode(f); W, H, R = g['W'], g['H'], g['last_round']
     cd = lambda p, q: max(min(abs(p[0]-q[0]), W-abs(p[0]-q[0])), min(abs(p[1]-q[1]), H-abs(p[1]-q[1])))
     death = {d['id']: d for d in g['events']['deaths']}
