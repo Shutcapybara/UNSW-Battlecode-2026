@@ -24,6 +24,7 @@ from .gitkeeper import sync as git_sync
 from .legacy_ops import watchdog as legacy_watchdog
 from . import executor as hub_executor
 from . import corpus as hub_corpus
+from . import battles as hub_battles
 
 
 from collections import deque
@@ -520,6 +521,42 @@ def submit_check(root, cfg, state, client, log):
     return out
 
 
+
+def battles_check(root, cfg, state, client, log):
+    """Targeted requested battles (`<mirror>/control/battles.json`, Live ops; see tools/hub/battles.py). Requests are
+    answered at once; open jobs are dispatched every `battles.interval_seconds`, only after the Chair has enabled
+    dispatch (a control action), and only through the executor's request path (quota, blackout, restore)."""
+    mirror = cfg['paths']['mirror']
+    req = Path(mirror) / 'control' / 'battles.json'
+    now = time.time()
+    due = now >= state.get('next_battles', 0)
+    if not req.exists() and not due:
+        return None
+    conn = db.connect(root)
+    try:
+        if req.exists():
+            def snap_factory():
+                if client is None:
+                    raise RuntimeError('no API client (executor mode off)')
+                return hub_executor.Snapshot(client, conn, cfg, time.time())
+            hub_battles.handle_request(conn, root, cfg, mirror, snap_factory, log=log)
+        if due:
+            state['next_battles'] = now + int(hub_battles.settings(cfg)['interval_seconds'])
+            summary = None
+            if client is not None:
+                summary = hub_battles.tick(conn, root, cfg, client, notify=lambda kind, text: notify(root, cfg, kind, text))
+                if summary['dispatched'] or summary['attention'] or summary['restored']:
+                    log(f"battles: dispatched {sum(d.get('games', 0) for d in summary['dispatched'])} games, jobs {summary['jobs']}, attention {[a['kind'] for a in summary['attention']]}, restored {len(summary['restored'])}")
+                for a in summary['attention']:
+                    if a.get('kind') in ('restore_uncertain', 'switch_unresolved', 'quota_rejection', 'battles_stop'):
+                        notify(root, cfg, 'battles_' + a['kind'], json.dumps(a, default=str)[:300])
+            hub_battles.status(conn, mirror)
+            return summary
+    finally:
+        conn.close()
+    return None
+
+
 def mode_check(root, cfg, state, log):
     """Director-requested executor mode (`<mirror>/control/mode.json`: {"mode": "off|shadow|auto|live", "by": …, "note": …}).
 
@@ -551,7 +588,7 @@ def mode_check(root, cfg, state, log):
     return out
 
 
-GATE_TESTS = ['tests.test_hub_core', 'tests.test_hub_git', 'tests.test_hub_legacy_ops', 'tests.test_hub_executor', 'tests.test_hub_daemon', 'tests.test_hub_quota_filler', 'tests.test_hub_discord_bot', 'tests.test_hub_api']
+GATE_TESTS = ['tests.test_hub_core', 'tests.test_hub_git', 'tests.test_hub_legacy_ops', 'tests.test_hub_executor', 'tests.test_hub_daemon', 'tests.test_hub_quota_filler', 'tests.test_hub_discord_bot', 'tests.test_hub_api', 'tests.test_hub_battles']
 
 
 def redeploy_check(root, cfg, state, log):
@@ -702,6 +739,10 @@ def serve(root, cfg, log):
             submit_check(root, cfg, state, client, log)
         except Exception:
             log('submit request error\n' + traceback.format_exc())
+        try:
+            battles_check(root, cfg, state, client, log)
+        except Exception:
+            log('battles error\n' + traceback.format_exc())
         try:
             mode_check(root, cfg, state, log)
             if state.get('restart'):
