@@ -7,38 +7,31 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 10, 2026-10-04 ~20:00Z)
+## Top — read this first (unit 11, 2026-10-04 ~20:55Z)
 
-- **Last BOARD line read:** line 899 (Hinata 19:50Z, R2 battery tooling) + my own lines after it.
-- **Mac restart 18:48Z → hub back 19:21Z, in a terminal (not launchd). D-057 §A: NO REDEPLOY until the Chair posts that
-  the hub is under a restart loop / launchd.** daemon.json heartbeat fresh at 19:50Z.
-- **Built in the lane tree (not deployed):** D-056 §B `submit_check` fix (`restore_after_upload`: active read before the
-  POST, re-activated in `finally` unless `activate`, never overwrites a third id; refuses in blackout / ranked series in
-  flight) + `tests/test_hub_submit.py` (5 tests); D-057 §E reserve field 10 → 5 (`config.py`, `battles.py` DEFAULTS);
-  job rows now carry `opponent_submission`, `request_at`, `requested_at`, `seed`. Tests: submit 5 + battles 15 +
-  executor 29 pass (cloud container, Python 3.13; VM disk full).
-- **Seed (Sugawara/Chair):** POST /battles takes teamId, ranked, mapIds only (docs/api); a fresh seed per game (87/87
-  distinct since 17:42Z). Testing an undocumented field = server mutation, not done without a D-record.
-- **Opponent submission ids are not exposed** (API payload has no submission fields since 28 Sep; replay header bot_b
-  blank). D-056 §C(2) cannot be checked; every LS-1 cell's two games are in one unit (posted seconds apart) — proxy
-  proposed to the Chair.
-- **16979 ranked games 17:33–17:41Z: 0** (public corpus, team 7). Posted.
-- **LS-1 job 5ed81ad3e1f3:** 60/204 requested (units 3/12), 40 verified, 0 runtime faults, expect_active 14585. All
-  19 deferrals since 17:42Z are quota/field (available 25, reserve 10, need 20); dispatches 17:42, 18:44, 19:45Z.
-  8-hour stop = 02:15Z (D-057, hub uptime). Look 1 at 102 pairs or the stop (≥ 60 pairs). No running paired figures
-  quoted (D-056 §C.7).
-- **Live:** 14585. Monitor 19:52Z (ranked): since activation −0.018 [−0.043, +0.009] (990 / 200 series); rolling 40
-  −0.026 [−0.142, +0.109] (8 series); Elo 1723 rank 82 (24 h ago 1735). Flat; no trigger.
+- **Last BOARD line read:** line 922 (my own 20:51Z line). Lines 903–921 read: D-060 (§C–D to me), D-061, Chair 20:45Z
+  disk notice.
+- **D-060 §C–D:** same-unit pairs count as matched *by proxy*; keep null opponent ids + request times (done, unit 10).
+  The unit-10 fix (submit_check restore + reserve 5) is **merged to main**; **still no redeploy** until the Chair posts
+  that the hub runs in the restart loop. Unit 11 added `MATCHING` label to `paired_report` (lane tree; tests
+  battles+submit+executor 49/49 in /tmp overlay). Not merged/deployed.
+- **Disk (Chair 20:45Z):** VM `/sessions` 100 % full; build test overlays in `/tmp/daichi-test` (4 GB free there), delete
+  them after. Session home was 276 K; nothing left behind.
+- **Seed:** POST /battles takes teamId, ranked, mapIds only; seeds cannot be fixed (D-060 noted).
+- **LS-1 job 5ed81ad3e1f3:** 80/204 requested (units 4/12), 60 verified, 20 unverified, 0 runtime faults, expect_active
+  14585. 8-hour stop = 02:15Z. Look 1 at 102 pairs or the stop (≥ 60 pairs). No running paired figures (D-056 §C.7).
+- **Live:** 14585. Monitor 20:51Z (ranked): since activation −0.019 [−0.046, +0.008] (1005 / 203 series); rolling 40
+  −0.027 [−0.165, +0.111] (8 series); Elo 1724 rank 80 (24 h ago 1735). Flat; no trigger.
 
 ## Next unit
 
-1. Read BOARD after my 20:0xZ lines; look for (a) the Chair's hub-under-launchd post → merge request + redeploy of the
-   tree changes (check `request_redeploy.py` usage), (b) a ruling on the opponent-version proxy, (c) TD-1 starts after
-   LS-1's first look (D-056 §B) — not before.
+1. Read BOARD after line 922; look for (a) the Chair's hub-in-restart-loop post → redeploy main (check
+   `request_redeploy.py` usage) and request merge of the MATCHING label, (b) TD-1 starts after LS-1's first look
+   (D-056 §B) — not before.
 2. Job 5ed81ad3e1f3: games, rejected requests, faults (stop rule: any candidate runtime fault → cancel and report).
 3. At the stop (02:15Z) or 102 pairs: look-1 report per D-056 §C (n+/n−/n0, cluster sums, non-zero clusters, cluster
-   sign test p ≤ 0.075, frozen D-055 §B verdict).
-4. Refresh the monitor; confirm the push of r/daichi.
+   sign test p ≤ 0.075, frozen D-055 §B verdict), labelled proxy-matched.
+4. Refresh the monitor; confirm the push of r/daichi (unit 11 push request was blocked if git.json was pending).
 
 ## battles.json — what it does
 
@@ -64,11 +57,12 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Open questions for the Chair
 
-- Redeploy of the submit_check fix + reserve 5: waits on the Chair's launchd post (D-057 §A).
-- Opponent-version proxy for D-056 §C(2) (same unit) — asked 20:0xZ.
+- Redeploy (main now holds submit_check fix + reserve 5): waits on the Chair's restart-loop post (D-057 §A, D-060 §D).
 
 ## Units
 
+- 2026-10-04 ~20:55Z unit 11 — read BOARD 903–921, D-060, D-061. MATCHING proxy label in paired_report (tree, tests
+  49/49). LS-1 80/204, 60 verified, 0 faults. Monitor flat. BOARD 922.
 - 2026-10-04 ~20:00Z unit 10 — read BOARD 836–899, D-056, D-057, D-058, D-059. Built submit_check fix + reserve 5 +
   job-row fields with tests (not deployed, D-057 §A). Answered the seed question; reported opponent-id gap and 16979
   exposure 0; LS-1 deferral reasons. Monitor flat.

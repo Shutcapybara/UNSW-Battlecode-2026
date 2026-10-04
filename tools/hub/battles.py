@@ -327,6 +327,11 @@ def job_games(conn, jid):
     return out
 
 
+# D-060 §C: the server exposes no opponent submission id, so a pair counts as matched by proxy (both arms' games
+# posted in the same unit, seconds apart). Every report says so.
+MATCHING = 'proxy: same unit (no opponent submission id on the server; D-060 §C)'
+
+
 def paired_report(games, arms, resamples=1000, seed=7):
     """Candidate − reference, paired by (opponent, map, parity); cluster bootstrap over opponents (series).
     Missing or unverified games drop their cell (counted, never scored as losses). Interval: 5th–95th percentile."""
@@ -345,7 +350,7 @@ def paired_report(games, arms, resamples=1000, seed=7):
             diffs.setdefault(opp, []).append(d)
     n = sum(len(v) for v in diffs.values())
     if not n:
-        return dict(reference=ref, candidate=cand, pairs=0)
+        return dict(reference=ref, candidate=cand, pairs=0, matching=MATCHING)
     point = sum(sum(v) for v in diffs.values()) / n
     rng = random.Random(seed)
     opps = sorted(diffs)
@@ -359,7 +364,7 @@ def paired_report(games, arms, resamples=1000, seed=7):
     return dict(reference=ref, candidate=cand, pairs=n, clusters=len(opps), delta=round(point, 4),
                 lo5=round(boots[int(0.05 * resamples)], 4), hi95=round(boots[int(0.95 * resamples) - 1], 4),
                 per_opponent={o: dict(pairs=len(v), delta=round(sum(v) / len(v), 3)) for o, v in diffs.items()},
-                interval='cluster bootstrap over opponents, 1000 resamples, seed 7, 5th/95th percentile')
+                interval='cluster bootstrap over opponents, 1000 resamples, seed 7, 5th/95th percentile', matching=MATCHING)
 
 
 def request_counts(conn, jid):
