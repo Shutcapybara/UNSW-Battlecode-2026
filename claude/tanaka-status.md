@@ -1,13 +1,13 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 21:25 UTC. State: **P-7 AMEND with four forecasts; R2 published results replicated; teacher-specific selector release still held**.
+Updated: 2026-10-04 22:25 UTC. State: **k16 promotion AMEND delivered; prior selector repairs PASS, A10b eligibility still missing; HB export and CNN curve verified**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
 - Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
-- Main read/fast-forward base: `6bd37420e`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- Main read/fast-forward base: `de8ddecf1`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
@@ -114,6 +114,19 @@ Updated: 2026-10-04 21:25 UTC. State: **P-7 AMEND with four forecasts; R2 publis
 - CopiedHBscoresnotyetpresent ininspectedR2outputinventory; noA0coveragepassasserted orduplicateproductionrequest. Awaitartifacts. KageyamabackperBOARD, do nottriggerfallbackbuild. Project-docmirror remainsunavailable.
 - Frozenround10source/receiptsandreproductionhelperbattery_repair_audit.py; one-worker nice10,101GiBfree; seconds-long synthetic/aggregatechecks. No heavylockneeded, no botgames, fitting, heldoutaction/winnerreads, realtable or completedgatererun. Evaluator ownsP4/k16/P7throughput; no changes to those jobs.
 
+## Eleventh wake: D-063 promotion round and selector revision 6
+
+- Fast-forwarded to de8ddecf1, retaining prior 1246f63e1. D-063 adopted; D-045 conflict remains resolved. No STOP, live outcomes/index, bot experiment or training. Data owns the full teacher build; no fallback job requested.
+- **Assigned k16 promotion review AMEND**, `k16-promotion-tanaka.md`, before 23:30Z. Support a bounded local-evidence exception only with existing completeness/fault guards and >=60 valid matched pairs, plus proposed live paired mean >=−.02 even if upper interval includes zero. Preserve original HOLD/LS1 verdict and late exception separately. No new interim read. D-052 rollout/rollback as frozen; no extra automatic looks.
+- Independent local seed2–3 replication: pool 544pairs/136clusters, +.01102941 [−.00367647,.02757353]; gen 928/232, +.00215517 [0,.00538793]; Weakhold32/8 +.28125 [.15625,.40625]; off-target512/128 −.005859375 [−.015625,.00390625]. Seed1–3 Weakhold43/48 vs27/48. Interval1000 map×opponent draws seed7linear5/95. Frozen2208pairs and source hashes saved. Gate .35 forecast now Brier .1225, HOLD unchanged.
+- New assigned forecast **P(no D052 rollback in first120ranked games | promoted and observed through120)=.85**; no promotion/early censor unscored. Expectedlivegain .005–.01 subjective. Not-rolled-back is not evidence of positive effect; monitor has low power. Local mixture breaks even at2.0408%Weakhold share if conditional effects transfer. Daichi's disclosed summary access retained as protocol disclosure, not used by Tanaka.
+- **Selector3f56b4b2 prior repairs PASS**: twelve malformed cases refuse; fullA7alone blocked by inventory; completeinventory advances. Valid25row A2structural exclusion accepted, one extra missing refuses. No rerun of unchanged CNN resume evidence. This source is currently an uncommitted owner revision in MAIN; pass pinned by hash.
+- **One new final-release blocker:** D063 full-data A10b missing from POOLED/PLANNED. Perfect syntheticA10b ignored versus .80completeoldinventory. Require exact full-data A10b eligibility + required inventory, excluding descriptivef25/f50 curves; prefix-only addition is insufficient. No real batteryselection/confirmation.
+- **HB export verified:** manifest e38d0667,118shardhashes,235798/235798fivepartkeys and allsource/labelmetadata match.189630oraclemoves/188250FRL,270finitefeatures,validpriors,A0acc .69765737 descriptive. Exporter engineparity remainsData's evidence; no oracle rerun or rebuilt-row authorization.
+- **A10b curve replicated:** quarter .64187517,half .65815139,full .67845418 [.66942855,.68746789]. Full-half+.02030279 [.01739914,.02360064]; full−oldA10+.00576892 [.00296744,.00812881]; A3400−A10b+.03601062 [.03263611,.04033248]. Same189630keys/188250FRL/49series,97games10teachers14trainingmaps/postm2.1000whole-seriesdrawsseed7linear5/95. Slope extrapolation not a guarantee; different inner split and earlier tree weighting prevent isolated architecture interpretation. Pooledconfirmationforecast.60 unchanged.
+- P7 D063 amendments acknowledged; tree-distilled admitted network supersedes void-if-trees. Original .55/.40/.20/.10forecasts retained with explicit ancestry expansion and post-entry conditions. No full-loop measurement or training result read. Project document mirror still unavailable.
+- Round11 frozen receipts/sources/helper, bounded one-worker nice10,99GiBfree; seconds-long tests, no heavy lock needed. Ownbranch commits only, MAINBOARD for new result/request, keeper only if absent.
+
 ## Next wake
 
-Readstatus/STOPandnewChairdecisions first. Test onlychangedselector source againstround10teacher-support/inventorycases; acknowledgepooledrepairsalreadyverified. AuditcopiedHBscorekeys/supportoncepresent. WaitforcompletebatteryandfixedA10curve; no actualselectionuntilrelease. P7fourforecastsfiled, entry/scopingamendmentsawaitChair; do nottrainorbenchmark. P4/P2closed; LS1proxyresolvedandcompletedlookonly(nointerimread); P6plainlegalclarityresolved. Keepownbranchcommits, MAINBOARDnewresults/requests only, keeperonlyabsent; mirrorunavailable.
+Read status/STOP and new Chair rulings. Audit changed selector only for exact full-data A10b eligibility/inventory and exclusion of curve diagnostics; prior teacher support repairs already pass. No actual selection until full release and completed inventory. Watch Chair disposition on k16 mean-loss amendment and completed LS1 stop only, never running outcomes. P7 throughput belongs to Asahi; full teacher build belongs to Data. Keep original forecasts and gate letters, no rescue reruns or redraws. Project-document mirror unavailable; no duplicate request.

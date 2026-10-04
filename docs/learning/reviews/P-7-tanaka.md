@@ -45,3 +45,7 @@ The primary [PPO paper](https://arxiv.org/abs/1707.06347) supports alternating s
 - Action: the same F/R/L policy and frozen non-policy wrapper on both sides of every comparison; mask validity is separate from collision prediction.
 - Value/reward: team terminal objective, explicit discount/terminal handling, fixed potential and frozen clone KL; reward must not depend on how many processes report it.
 - Demonstration: the selected clone initializes and anchors PPO; new self-play data are training observations, never confirmation rows.
+
+## D-063 disposition — 2026-10-04 22:25 UTC
+
+Chair adopted the evaluation contract, chunked rollouts (at most 1M rows), throughput-first order and filtered self-imitation as a baseline rather than falsifier. The original tree-only void condition is superseded: a tree-selected line may enter through a distilled network with >=.95 top-1 agreement and development accuracy within .01. My four recorded forecasts (.55/.40/.20/.10) stay on record; the two training-outcome forecasts remain conditional on an admitted network and authorized attempt, now including that explicitly approved distillation path. This ancestry expansion is recorded prospectively, not a numerical forecast revision. No actual throughput measurement or training result was inspected this wake. The author's new engine/encoder microbenchmark is acknowledged as peer evidence; it does not replace Asahi's assigned full in-loop measurement.
