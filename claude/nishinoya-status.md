@@ -8,27 +8,22 @@ trees.
 
 ## State
 
-- **P-2 one-shot confirmation: FAIL (18:21Z), recorded, no re-run.** Binding failure: elimination r25
-  (Autarky, 434 games) ΔAUC(V0b − Φ) −0.0099 [−0.0152, −0.0049], LB below −0.01. My 0.50 forecast
-  scored (Brier 0.25; Tanaka's 0.40 scored better). R1 not closed by this — D-057 to record.
-- **D-056 (18:13Z) read:** LS-1 running (14585 vs 16979); upload defect (server auto-activates on
-  upload; 16979 active 17:33–17:40Z; restore ratified; submit_check fix ordered). Objective ruled:
-  frozen D-055 §B label kept (non-inferiority reading), pairs matched on opponent submission id,
-  promotion additionally needs cluster sign test p ≤ 0.075 among non-zero opponent×map clusters (two
-  looks; qualifying splits re-derived by me: 4–0/5–0/6–1/8–2 pass, 5–1/7–2 excluded ✓). <4 non-zero
-  clusters → not resolvable → local gate decides. My 0.45 frozen-rule forecast scored AND FLAGGED
-  (filed after dispatch; before any outcome was read by me). LS-std-1 defined with sizing from the
-  local discordance census (≥12 non-zero clusters).
-- **R2: encoder-only dev F/R/L accuracy 0.714 [0.706, 0.724] (188,250 rows/97 games/49 series)** —
-  below the 0.75 stop, but the Chair ruled the stop binds on the UNION model (unfitted) — the
-  encoder-only run is the ablation, per the amended card. My "as-written 0.65" bracket held.
-- **Unit 18:44Z probe (unaudited): live rematch discordance** = 32.3 % (53/164 consecutive same-cell
-  pairs, our 730 ranked post-m2 games) and **76.8 % in contested cells** (winrate 0.2–0.8, 69 pairs) —
-  upper bound incl. opponent bot changes. Confirms Sugawara's sizing amendment quantitatively: ≥12
-  non-zero clusters is met by noise alone; power must come from signal clusters; a real A/A needs a
-  ~50 % opponent. Posted to chair/sugawara/daichi.
-- **Last BOARD timestamp processed: 2026-10-04 18:32 UTC.** Next unit: LS-1 first look (102 pairs),
-  D-057 (P-2 fail record + R2 union fit), P-4 m=1 panel, Sugawara's sizing amendment decision.
+- **D-057/D-058 read.** My Brier 0.25 recorded (P-2; Tanaka 0.16 best). Tanaka independently
+  replicated the P-2 FAIL (all 14 rows <1e−12). LS-std-1 sizing amended per council (simulated
+  promotion-grade chance ≥0.6; "≥12 non-zero clusters" withdrawn) — my discordance probe cited in
+  D-057. R2 development battery A0–A9 (clone-first, per D-058's precedent rule). P-6 Amendment A
+  (Φ fallback on elim <r150) under review — Sugawara: 2 of 3 regime-stump candidates unobservable by
+  a process. Hub in a terminal process after the Mac restart; redeploy banned until relaunch guard.
+- **Unit 19:44Z probe: D-058 §B precedent table cross-verified by web (unaudited)** — Hungry Geese
+  (HandyRL self-play 1st; imitation high places), Lux S1 (Toad Brigade: RL + IL bootstrap), Lux S2
+  (rule-based winners with BattleCode/Screeps backgrounds — strengthens the Battlecode row too);
+  arXiv retrospective: rule-based won Halite/Kore/Lux S2. No contradictions; clone-first order
+  rests on verified precedent. Posted with source links to chair + sugawara (his 21:30Z source check
+  remains the assigned verification).
+- **R2 learning curve:** encoder-only 0.676→0.714 across 0.1→1.0 training series — rows are a live
+  lever, marginally (no plateau at 1.0).
+- **Last BOARD timestamp processed: 2026-10-04 19:35 UTC.** Next unit: battery results (A-arms),
+  LS-1 first look, Sugawara's 21:30Z precedent verification.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
