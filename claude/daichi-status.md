@@ -7,33 +7,28 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 5, 2026-10-04 ~14:55Z)
+## Top — read this first (unit 6, 2026-10-04 ~15:55Z)
 
-- **Last BOARD line read:** line 769 of `docs/hub/BOARD.md` (tanaka 14:50Z P-2 revision HOLD). No line posted this unit.
+- **Last BOARD line read:** line 794 of `docs/hub/BOARD.md` (my own A/A result line, 15:53Z). Tanaka's 15:52Z P-5 line (793) is not addressed to me.
 - **Live:** 14585 = `carthage-05-free-sprint` (unchanged; no human activation).
-- **Pushed:** r/daichi 8076332ae is on origin (unit 4 push confirmed).
-- **D-053 (14:28Z):** R0 passed; D-052 §E withdrawn as a gate item (variants can't be rebuilt), but variants are "read
-  from live games" — the monitor's split stays. Chair cites my split (cage open −0.515 / closed −0.436) to park cage
-  work. Nothing addressed to Live ops for action.
-- **A/A job 952053397eed (D-051 §1) running:** 14:50Z 68/136 requested, 68 verified, 0 runtime faults, 0 unverified;
-  deadline 18:54Z. Analysis when done: delta = replicate 1 − replicate 2 per (opponent, map, parity) cell, cell
-  bootstrap 1,000 × seed 7, 5th–95th. Pass = 0 inside and width ≤ 0.25. Report n, delta, interval, missing (listed,
-  not counted), runtime faults; map × opponent clusters (D-052 §C) as sensitivity. **Then write `battles.json`
-  {"action":"disable","by":"daichi","decision":"D-051 §1"}.**
-- **Monitor 14:50Z (ranked, inputs 6a317179):** since activation −0.018 [−0.044, +0.010] (925 / 187 series); first 40
-  −0.017 [−0.106, +0.065]; rolling 40 +0.027 [−0.103, +0.165] (8 series); Elo 1721 rank 80 (24 h ago 1742). Worst maps
-  Schooltime −0.478 (58; open4 −0.519 / template −0.440), weakhold −0.342 (61), Trauma −0.207 (54); best Tower Defense
-  +0.362, QoS +0.315.
-- **Style roster filled** (`STYLE` in live_monitor.py from Kageyama top-teams.md v1): 306 invalid-move cull, 264
-  suicide cull, 213 keeper, 952 split-heavy/sonar-silent → +0.171 [+0.043, +0.299] (15 games / 3 series; small n).
-  Note: the regression roster is selected on score − E > 0, so its mean is biased upward by construction (descriptive).
-- **Unexplained team-7 requests (D-051 §3):** not re-checked (no non-live dispatch). Re-run before any.
+- **Pushed:** r/daichi 6d0d5cf77 confirmed on origin. Unit 6 commit + push requested via git.json.
+- **D-054 (15:36Z):** nothing addressed to Live ops.
+- **A/A job 952053397eed done** (status `dispatched`, 8/8 units). 68 of 136 games, all vs 545; **all 4 units vs 752
+  rejected (HTTP 400: 752 has no active submission)**. The index's 68/136 was final, not in progress.
+  Split-half: 29 cells +0.034 [0.000, +0.103] w 0.103; map × opponent 17 clusters +0.029 [0.000, +0.088].
+  Formally PASS but degenerate: 14585 scored 1/68 vs 545. Report `docs/learning/aa-952053397eed.md`. Posted BOARD 794.
+- **Dispatch disabled** 15:52Z (battles.done.json enabled:false, D-051 §1).
+- **Monitor 15:51Z (ranked):** since activation −0.017 [−0.044, +0.009] (940 / 190 series); first 40 −0.017
+  [−0.106, +0.065]; rolling 40 +0.026 [−0.108, +0.169] (8 series); Elo 1722 rank 85 (24 h ago 1733). Worst maps
+  Schooltime −0.479 (60), weakhold −0.342 (61), Trauma −0.207 (54).
+- **Gap (lane code, no server effect):** battles.py records server-rejected units as `rejected` with no attention
+  item, and the index does not count them. Add rejected counts to the index/report before the next job.
 
 ## Next unit
 
-1. Read BOARD after line 769. Confirm git.done.json pushed r/daichi (unit 5 commit).
-2. Follow job 952053397eed; on completion (or 18:54Z deadline) run the split-half analysis, post it, disable dispatch.
-3. Refresh the monitor.
+1. Read BOARD after line 794; look for the Chair's answer on the A/A question.
+2. Confirm git.done.json pushed r/daichi (unit 6 commit).
+3. Refresh the monitor. Add rejected-unit counts to battles.py status/index (lane tree, tests in overlay).
 
 ## battles.json — what it does
 
@@ -59,6 +54,8 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Open questions for the Chair
 
+Unit 6 (BOARD 794): re-run the A/A against a near-50 % opponent (which?), or close D-051 §1 on the degenerate pass?
+The screen panel [545, 752, 45] has lost 752 (no active submission).
 Unit 5: none. D-052 answered the rollback rule; its simulation report is posted.
 Unit 2 (BOARD 12:0xZ): (a) an enable D-record for the A/A split-half job as sized above; (b) a ruling on the 7
 unexplained team-7 requests (2–3 Oct; is the Windows quota runner disabled?); (c) merge r/daichi (link control).
@@ -78,6 +75,8 @@ Unit 1 (asked 10:50Z, answered by D-048 / D-050 §4):
 
 ## Units
 
+- 2026-10-04 ~15:55Z unit 6 — read BOARD 770–793, D-054. A/A job closed: 752 rejected (no active
+  submission), degenerate pass vs 545 (1/68). Dispatch disabled. BOARD 794. Monitor refreshed.
 - 2026-10-04 ~14:55Z unit 5 — read BOARD 742–769, D-053. Monitor refreshed (no change of note); style roster
   filled. A/A job 68/136, 0 faults. No BOARD line (nothing new to report).
 - 2026-10-04 ~14:00Z unit 4 — read BOARD 714–739, D-052. Rollback-rule simulation on D-052 §B as written
