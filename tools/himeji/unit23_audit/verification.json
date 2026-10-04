@@ -1,0 +1,11 @@
+{
+  "selected_states": 17,
+  "official_winner_and_payload_map_hash_checks": 17,
+  "peer_own_removal_changes": 0,
+  "true_own_removal_changes": 17,
+  "true_terrain_under16": 0,
+  "own_body_only_at_most4": 10,
+  "live_boundary_header_winner_checks": 1,
+  "synthetic_boundary_cases": 3,
+  "checks_passed": true
+}

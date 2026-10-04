@@ -1,0 +1,80 @@
+{
+  "source_commit": "1d9642bab",
+  "source_sha256": "5c5a4dfcdfeae2b140aa79a2850a0788b942e7f7f13c98f46ec48388ca15b412",
+  "function_source": "def queen_cols(g, out, t):\n    \"\"\"per-side queen columns (chongqing, 4 Oct): the queen is the team's lowest-id initial dragon (no succession).\n    rounds[0] is the initial state and rounds[r + 1] the state after round r (g['last_round'] = R = last round played).\n    q_len@k = the queen's length after round k (0 = dead), NULL when the game ended before round k (no terminal carry;\n    Himeji H19-05 / H23-03). q_death_round uses the deaths table's convention (the round in which it died).\"\"\"\n    rounds = g['rounds']\n    R = g['last_round']\n    ids = [i for i, (tt, b) in rounds[0].items() if tt == t]\n    if not ids:\n        return {}\n    q = min(ids)\n    lens, death_round, moves, prev_head, maxlen = {}, None, 0, None, 0\n    for r, snap in enumerate(rounds):\n        if q in snap:\n            body = snap[q][1]\n            lens[r] = len(body)\n            maxlen = max(maxlen, len(body))\n            if prev_head is not None and body[0] != prev_head:\n                moves += 1\n            prev_head = body[0]\n        else:\n            death_round = r - 1          # missing from the snapshot after round r-1\n            break\n    o = dict(q_id=q, q_alive_end=int(death_round is None), q_death_round=death_round, q_moves=moves, q_maxlen=maxlen,\n             q_end=lens.get(len(rounds) - 1, 0), q_header=g['final'][t].get('queen'), q_last_round=R)\n    for k in Q_ROUNDS:\n        o[f'q_len@{k}'] = lens.get(k + 1, 0) if k <= R else None\n    o['q_censored'] = int(death_round is None and R < 490)   # alive at an end before round 490: survival to 490 unobserved\n    d = next((d for d in out['deaths'] if d['side'] == t and d['id'] == q), None)\n    o['q_death_cls'] = d['cls'] if d else None\n    o['q_death_killer'] = d.get('killer_team') if d else None\n    if d is not None and death_round is not None and d['round'] != death_round:\n        o['q_death_round'] = d['round']   # trust the event log if the snapshot walk disagrees\n    return o",
+  "synthetic_rows": [
+    {
+      "actual_last_round": 488,
+      "snapshot_count": 490,
+      "reported_q_len490": null,
+      "reported_q_censored": 1,
+      "expected_reach": false,
+      "expected_q_len490": null
+    },
+    {
+      "actual_last_round": 489,
+      "snapshot_count": 491,
+      "reported_q_len490": null,
+      "reported_q_censored": 1,
+      "expected_reach": false,
+      "expected_q_len490": null
+    },
+    {
+      "actual_last_round": 490,
+      "snapshot_count": 492,
+      "reported_q_len490": 3,
+      "reported_q_censored": 0,
+      "expected_reach": true,
+      "expected_q_len490": 3
+    }
+  ],
+  "live_boundary_game": {
+    "game_id": 867918,
+    "series_id": "e722bfbd-e645-49ab-bc31-7f14a1891881",
+    "team_a": 264,
+    "team_b": 55,
+    "sub_a": null,
+    "sub_b": null,
+    "ranked": true,
+    "requested_at": "2026-10-02T09:13:35.077Z",
+    "started_at": "2026-10-02T09:13:35.331Z",
+    "finished_at": "2026-10-02T09:14:01.603Z",
+    "requested_by": null,
+    "map_id": 4,
+    "map_name": "Default",
+    "winner": "b",
+    "status": "completed",
+    "seed": "647cc292179b607c",
+    "autoscrim_window": false,
+    "bytes": 1090184,
+    "sha256": "2b75a4082d80b98a9b64b0fda60a31efa9de5b35d916b7a6ca90759b4b23694b",
+    "fetched_at": "2026-10-02T09:16:47.788070+00:00",
+    "watch_team": 264,
+    "version": 2,
+    "bot_a": "",
+    "bot_b": "",
+    "map_hash": "2aa3b6c52fa4b6644e6bc5a389528d36995aef59cfa37e5f9b21c2859d0cd9dc",
+    "header_map_name": "Default"
+  },
+  "live_result": [
+    {
+      "side": "A",
+      "actual_last_round": 489,
+      "snapshot_count": 491,
+      "reported_q_len490": null,
+      "reported_q_censored": 0,
+      "header_queen": 0,
+      "actual_reached490": false
+    },
+    {
+      "side": "B",
+      "actual_last_round": 489,
+      "snapshot_count": 491,
+      "reported_q_len490": null,
+      "reported_q_censored": 1,
+      "header_queen": 38,
+      "actual_reached490": false
+    }
+  ],
+  "scope": "Synthetic alive-end boundary plus one existing ranked Default replay. Other stores not rewritten."
+}

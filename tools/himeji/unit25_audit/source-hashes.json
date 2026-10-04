@@ -1,0 +1,8 @@
+{
+  "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+  "tools/s1/build.py": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f",
+  "1d9642bab:tools/s1/build.py": "5c5a4dfcdfeae2b140aa79a2850a0788b942e7f7f13c98f46ec48388ca15b412",
+  "1d9642bab:tools/chongqing/qq.py": "a8f9a5006c79e1055370a8f15d8dea3a177eb5be9b52135fe89177f794c4d4ff",
+  "fcab18e31:tools/kanazawa/q_cycle.py": "aa98730ec666a481a96539e8b048246df313044f6c857db77c58bef0fcec5ff3",
+  "9d8a76207:docs/findings/2026-10-04-shenzhen-unit10-serialised-splits.md": "b3f4314d6541a343378f334346ceedd6ddd0bb26749228e88468102646226399"
+}

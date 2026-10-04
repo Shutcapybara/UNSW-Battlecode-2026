@@ -1,0 +1,18 @@
+{
+  "n": 17,
+  "ranked": 6,
+  "unranked": 11,
+  "series": 16,
+  "submissions": {
+    "14265": 3,
+    "14585": 14
+  },
+  "terrain_range": [
+    239,
+    4095
+  ],
+  "terrain_under16": 0,
+  "own_body_only_under5": 10,
+  "peer_minus_own_changes": 0,
+  "true_minus_own_changes": 17
+}

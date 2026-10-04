@@ -1,0 +1,8 @@
+{
+  "team7_in_progress": false,
+  "progress_at": "2026-10-04T05:49:58.891939+00:00",
+  "source": "tools/hub/corpus.py watch_list",
+  "source_sha256": "6bb33fd775768eafdaf38c287ce1853f45e8852d2e40acd5077502f3fec8c51c",
+  "observed_code": "me = (cfg.get(\"team\") or {}).get(\"id\"); out.pop(me, None)",
+  "interpretation": "The corpus watch list explicitly removes the configured own team. Own arrivals may be obtained through opponent discovery. Dedicated own-game ingestion and server completeness are not yet verified."
+}

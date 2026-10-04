@@ -1,0 +1,659 @@
+{
+  "rows": [
+    {
+      "game": 852031,
+      "series": "8d590618-1389-4d7d-a337-a01c1bd49b4e",
+      "ranked": false,
+      "started_at": "2026-10-02T04:12:41.157Z",
+      "map": "Autarky",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff",
+      "own_side": "A",
+      "submission": "14265",
+      "queen": 1,
+      "seal_round_peer": 43,
+      "death_round_peer": 48,
+      "body_head_first": [
+        [
+          35,
+          2
+        ],
+        [
+          35,
+          3
+        ],
+        [
+          36,
+          3
+        ]
+      ],
+      "counts": {
+        "all_bodies": 3,
+        "peer_minus_own": 3,
+        "true_minus_own": 912,
+        "true_minus_ally": 3,
+        "true_minus_enemy": 3,
+        "own_body_only": 3,
+        "true_terrain_only": 971
+      },
+      "sha256": "a9330d1fe2907d2adeac8322b25f765f95812c7e21f63ca90b81767979d6909f",
+      "official_winner": "B"
+    },
+    {
+      "game": 852033,
+      "series": "8d590618-1389-4d7d-a337-a01c1bd49b4e",
+      "ranked": false,
+      "started_at": "2026-10-02T04:12:41.174Z",
+      "map": "Trauma",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "own_side": "A",
+      "submission": "14265",
+      "queen": 1,
+      "seal_round_peer": 128,
+      "death_round_peer": 133,
+      "body_head_first": [
+        [
+          25,
+          1
+        ],
+        [
+          26,
+          1
+        ],
+        [
+          27,
+          1
+        ],
+        [
+          27,
+          0
+        ]
+      ],
+      "counts": {
+        "all_bodies": 3,
+        "peer_minus_own": 3,
+        "true_minus_own": 32,
+        "true_minus_ally": 3,
+        "true_minus_enemy": 3,
+        "own_body_only": 3,
+        "true_terrain_only": 1143
+      },
+      "sha256": "72cd702117a9c4317d547313ea044a414c5dbc06f2163b38cfb745d06c38c415",
+      "official_winner": "B"
+    },
+    {
+      "game": 852605,
+      "series": "4268a3ef-f92c-4433-884a-c737effb722a",
+      "ranked": false,
+      "started_at": "2026-10-02T04:22:44.165Z",
+      "map": "Portals",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 1,
+      "seal_round_peer": 95,
+      "death_round_peer": 96,
+      "body_head_first": [
+        [
+          4,
+          15
+        ],
+        [
+          5,
+          15
+        ],
+        [
+          5,
+          14
+        ]
+      ],
+      "counts": {
+        "all_bodies": 1,
+        "peer_minus_own": 1,
+        "true_minus_own": 176,
+        "true_minus_ally": 237,
+        "true_minus_enemy": 1,
+        "own_body_only": 237,
+        "true_terrain_only": 239
+      },
+      "sha256": "d0df9e62c283b820042c82a84dfa6c919b556e87efade675cb73c7897fbc65d1",
+      "official_winner": "A"
+    },
+    {
+      "game": 855924,
+      "series": "da6cfc37-e319-40f8-94af-b14f41157e6d",
+      "ranked": true,
+      "started_at": "2026-10-02T05:24:22.114Z",
+      "map": "Maze",
+      "map_hash": "8202a09f96a427c3d83613b986f30e314cc5f77b51c29296ae44e4b9b9dce792",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 0,
+      "seal_round_peer": 107,
+      "death_round_peer": 108,
+      "body_head_first": [
+        [
+          33,
+          6
+        ],
+        [
+          32,
+          6
+        ],
+        [
+          32,
+          5
+        ]
+      ],
+      "counts": {
+        "all_bodies": 1,
+        "peer_minus_own": 1,
+        "true_minus_own": 686,
+        "true_minus_ally": 1080,
+        "true_minus_enemy": 1,
+        "own_body_only": 1149,
+        "true_terrain_only": 1151
+      },
+      "sha256": "98570614e067008f17e1d875bd745e2c65be0a9ef95f3dcfb55fc29bf5ba5a45",
+      "official_winner": "A"
+    },
+    {
+      "game": 855426,
+      "series": "bffe0f1b-7652-4050-aa9f-cae2991f6065",
+      "ranked": false,
+      "started_at": "2026-10-02T05:12:43.563Z",
+      "map": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 0,
+      "seal_round_peer": 30,
+      "death_round_peer": 31,
+      "body_head_first": [
+        [
+          29,
+          32
+        ],
+        [
+          28,
+          32
+        ],
+        [
+          27,
+          32
+        ],
+        [
+          26,
+          32
+        ]
+      ],
+      "counts": {
+        "all_bodies": 0,
+        "peer_minus_own": 0,
+        "true_minus_own": 4007,
+        "true_minus_ally": 4048,
+        "true_minus_enemy": 0,
+        "own_body_only": 4092,
+        "true_terrain_only": 4095
+      },
+      "sha256": "a56ce030162057c69a19555bf7b052dcd54ca71901284409f0153440b89da193",
+      "official_winner": "A"
+    },
+    {
+      "game": 857673,
+      "series": "3f21fb23-f1c6-4d30-84fa-12073a76adf7",
+      "ranked": false,
+      "started_at": "2026-10-02T06:02:41.611Z",
+      "map": "weakhold",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 1,
+      "seal_round_peer": 41,
+      "death_round_peer": 44,
+      "body_head_first": [
+        [
+          28,
+          14
+        ],
+        [
+          29,
+          14
+        ],
+        [
+          29,
+          13
+        ]
+      ],
+      "counts": {
+        "all_bodies": 2,
+        "peer_minus_own": 2,
+        "true_minus_own": 559,
+        "true_minus_ally": 2,
+        "true_minus_enemy": 2,
+        "own_body_only": 2,
+        "true_terrain_only": 599
+      },
+      "sha256": "05459640a5d5a843c29cfd0336bda5dbe89314a8df24331d840bcfac832f9236",
+      "official_winner": "B"
+    },
+    {
+      "game": 852486,
+      "series": "b248db9d-f075-4f8c-b846-9de7ac201362",
+      "ranked": true,
+      "started_at": "2026-10-02T04:19:58.090Z",
+      "map": "Slithery Fight",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "own_side": "A",
+      "submission": "14265",
+      "queen": 0,
+      "seal_round_peer": 60,
+      "death_round_peer": 62,
+      "body_head_first": [
+        [
+          14,
+          6
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          14,
+          4
+        ]
+      ],
+      "counts": {
+        "all_bodies": 3,
+        "peer_minus_own": 3,
+        "true_minus_own": 699,
+        "true_minus_ally": 960,
+        "true_minus_enemy": 3,
+        "own_body_only": 1696,
+        "true_terrain_only": 1698
+      },
+      "sha256": "83a70597408f2b0106c6e51b8b55a79397aac79de9ceff0b8b2251a59bb5f6cf",
+      "official_winner": "B"
+    },
+    {
+      "game": 860828,
+      "series": "c7cc00f4-865e-4585-9f9f-75458005a013",
+      "ranked": true,
+      "started_at": "2026-10-02T07:04:39.777Z",
+      "map": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "own_side": "B",
+      "submission": "14585",
+      "queen": 1,
+      "seal_round_peer": 136,
+      "death_round_peer": 141,
+      "body_head_first": [
+        [
+          33,
+          7
+        ],
+        [
+          32,
+          7
+        ],
+        [
+          32,
+          6
+        ]
+      ],
+      "counts": {
+        "all_bodies": 3,
+        "peer_minus_own": 3,
+        "true_minus_own": 1014,
+        "true_minus_ally": 3,
+        "true_minus_enemy": 3,
+        "own_body_only": 3,
+        "true_terrain_only": 1143
+      },
+      "sha256": "26501837c6ff29a62b9e8289b50a7cc4e04f5390912ca0943120fb41df85862a",
+      "official_winner": "B"
+    },
+    {
+      "game": 863222,
+      "series": "9a799a50-3615-4e19-adf8-2669408a3514",
+      "ranked": false,
+      "started_at": "2026-10-02T07:42:43.157Z",
+      "map": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 0,
+      "seal_round_peer": 116,
+      "death_round_peer": 119,
+      "body_head_first": [
+        [
+          28,
+          31
+        ],
+        [
+          28,
+          30
+        ]
+      ],
+      "counts": {
+        "all_bodies": 3,
+        "peer_minus_own": 3,
+        "true_minus_own": 2997,
+        "true_minus_ally": 3,
+        "true_minus_enemy": 3957,
+        "own_body_only": 4094,
+        "true_terrain_only": 4095
+      },
+      "sha256": "980f8d56e91b4e9420308b9fc27aa1c7c3c37ae846bb8669de3a8f842eb5d820",
+      "official_winner": "B"
+    },
+    {
+      "game": 866873,
+      "series": "9fb55567-7111-4a03-bf52-bd8c35f27299",
+      "ranked": false,
+      "started_at": "2026-10-02T08:47:28.539Z",
+      "map": "Around UNSW",
+      "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595",
+      "own_side": "B",
+      "submission": "14585",
+      "queen": 0,
+      "seal_round_peer": 119,
+      "death_round_peer": 120,
+      "body_head_first": [
+        [
+          25,
+          27
+        ],
+        [
+          25,
+          28
+        ]
+      ],
+      "counts": {
+        "all_bodies": 1,
+        "peer_minus_own": 1,
+        "true_minus_own": 3707,
+        "true_minus_ally": 1,
+        "true_minus_enemy": 1,
+        "own_body_only": 1,
+        "true_terrain_only": 4095
+      },
+      "sha256": "c528d666b7ca7b5a8764d6f7d4605b1fbf888a7df508278b97310364ca6ecf5d",
+      "official_winner": "A"
+    },
+    {
+      "game": 868517,
+      "series": "5d0d1ad7-6fc1-402a-a5ac-b5415b0965e1",
+      "ranked": true,
+      "started_at": "2026-10-02T09:26:16.695Z",
+      "map": "Tower Defense",
+      "map_hash": "b5f9f10f41855f551ddb6ea779626d48c5d97d4b7cc2ab170e276a9a9b9a6f53",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 1,
+      "seal_round_peer": 54,
+      "death_round_peer": 59,
+      "body_head_first": [
+        [
+          17,
+          3
+        ],
+        [
+          17,
+          2
+        ],
+        [
+          18,
+          2
+        ],
+        [
+          18,
+          1
+        ]
+      ],
+      "counts": {
+        "all_bodies": 3,
+        "peer_minus_own": 3,
+        "true_minus_own": 438,
+        "true_minus_ally": 3,
+        "true_minus_enemy": 3,
+        "own_body_only": 3,
+        "true_terrain_only": 511
+      },
+      "sha256": "fb029539661882ff1585bbb829ecd3744f5e56a09b1f8c0b875dacd247b84a8f",
+      "official_winner": "A"
+    },
+    {
+      "game": 870343,
+      "series": "6f5d3a7e-a827-4aa4-a537-df6f86428a97",
+      "ranked": false,
+      "started_at": "2026-10-02T09:52:43.002Z",
+      "map": "Around UNSW",
+      "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 1,
+      "seal_round_peer": 56,
+      "death_round_peer": 58,
+      "body_head_first": [
+        [
+          33,
+          36
+        ],
+        [
+          33,
+          37
+        ],
+        [
+          32,
+          37
+        ]
+      ],
+      "counts": {
+        "all_bodies": 3,
+        "peer_minus_own": 3,
+        "true_minus_own": 3756,
+        "true_minus_ally": 4003,
+        "true_minus_enemy": 3,
+        "own_body_only": 4093,
+        "true_terrain_only": 4095
+      },
+      "sha256": "990473172c6c7a1cf5191d8f1b5b06beb683369687142762f7f38d12700b846d",
+      "official_winner": "B"
+    },
+    {
+      "game": 879159,
+      "series": "c6c1c089-3b15-4689-9f61-c295013568ae",
+      "ranked": true,
+      "started_at": "2026-10-02T12:18:11.093Z",
+      "map": "Portals",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 1,
+      "seal_round_peer": 118,
+      "death_round_peer": 121,
+      "body_head_first": [
+        [
+          5,
+          15
+        ],
+        [
+          5,
+          14
+        ],
+        [
+          4,
+          14
+        ],
+        [
+          28,
+          1
+        ]
+      ],
+      "counts": {
+        "all_bodies": 2,
+        "peer_minus_own": 2,
+        "true_minus_own": 130,
+        "true_minus_ally": 236,
+        "true_minus_enemy": 2,
+        "own_body_only": 236,
+        "true_terrain_only": 239
+      },
+      "sha256": "4a407aa98ed421b0bc44de6fe398a9f9b01574db37db45cb4ad2104034daae01",
+      "official_winner": "B"
+    },
+    {
+      "game": 853549,
+      "series": "70552c97-138f-47a3-93f4-77c637e0dbd4",
+      "ranked": false,
+      "started_at": "2026-10-02T04:42:42.082Z",
+      "map": "Portals",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 1,
+      "seal_round_peer": 77,
+      "death_round_peer": 78,
+      "body_head_first": [
+        [
+          12,
+          3
+        ],
+        [
+          19,
+          6
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          5
+        ]
+      ],
+      "counts": {
+        "all_bodies": 0,
+        "peer_minus_own": 0,
+        "true_minus_own": 202,
+        "true_minus_ally": 0,
+        "true_minus_enemy": 0,
+        "own_body_only": 0,
+        "true_terrain_only": 239
+      },
+      "sha256": "25930df88331a647814dfa4207b4519f39f13c7ae541721ba47f5caecb96159f",
+      "official_winner": "B"
+    },
+    {
+      "game": 880462,
+      "series": "5ccf0692-658e-4aac-8fb0-a19c3dae7645",
+      "ranked": true,
+      "started_at": "2026-10-02T12:35:28.583Z",
+      "map": "Portals",
+      "map_hash": "cfc35be3b278d3b9f410b76c4b772dd99bf64b362fdc90a50abc544ca7668700",
+      "own_side": "B",
+      "submission": "14585",
+      "queen": 1,
+      "seal_round_peer": 29,
+      "death_round_peer": 34,
+      "body_head_first": [
+        [
+          16,
+          11
+        ],
+        [
+          16,
+          12
+        ],
+        [
+          16,
+          13
+        ]
+      ],
+      "counts": {
+        "all_bodies": 4,
+        "peer_minus_own": 4,
+        "true_minus_own": 229,
+        "true_minus_ally": 4,
+        "true_minus_enemy": 4,
+        "own_body_only": 4,
+        "true_terrain_only": 239
+      },
+      "sha256": "56ac3453cbd1b2bf7fab67d92203b2341b8c102a5a4433f78e44d024891e6b2e",
+      "official_winner": "B"
+    },
+    {
+      "game": 881392,
+      "series": "1aba17eb-0524-45bf-afef-d164ed7cd585",
+      "ranked": false,
+      "started_at": "2026-10-02T12:52:40.881Z",
+      "map": "weakhold",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 0,
+      "seal_round_peer": 25,
+      "death_round_peer": 29,
+      "body_head_first": [
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "counts": {
+        "all_bodies": 3,
+        "peer_minus_own": 3,
+        "true_minus_own": 421,
+        "true_minus_ally": 3,
+        "true_minus_enemy": 3,
+        "own_body_only": 3,
+        "true_terrain_only": 599
+      },
+      "sha256": "ab9378346f7e6e9ff43e3ec73430b00a494707839af02d1911faf6b0d093dfc7",
+      "official_winner": "B"
+    },
+    {
+      "game": 881966,
+      "series": "b69e0d30-99df-4618-8364-1bf852f69ec9",
+      "ranked": false,
+      "started_at": "2026-10-02T13:02:44.710Z",
+      "map": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "own_side": "A",
+      "submission": "14585",
+      "queen": 0,
+      "seal_round_peer": 93,
+      "death_round_peer": 99,
+      "body_head_first": [
+        [
+          11,
+          11
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          11,
+          9
+        ]
+      ],
+      "counts": {
+        "all_bodies": 4,
+        "peer_minus_own": 4,
+        "true_minus_own": 1031,
+        "true_minus_ally": 4,
+        "true_minus_enemy": 4,
+        "own_body_only": 4,
+        "true_terrain_only": 1143
+      },
+      "sha256": "8fbe3bc21d86be08d35dba4884ec90b3e7fe93667bc2b934f6fd49946b8de759",
+      "official_winner": "B"
+    }
+  ],
+  "scope": "17 selected wall-death states, not incidence or policy effects. Exact flood on ROUND START states to audit peer feature; not exact TurnStart occupancy. Counts exclude starting head; no cap."
+}

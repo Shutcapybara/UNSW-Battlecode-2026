@@ -1,0 +1,49 @@
+{
+  "peer_commit": "ca9feb38a",
+  "source_sha256": "e4ee77e350b5d263bd32419144e5ff63d92914b4a35b38b758e7384140a26af7",
+  "function": "def E(nbr, u, v, memo):\n    k = (u, v)\n    if k in memo: return memo[k]\n    seen = {u, v}; st = [v]; n = 0\n    while st and n < CAP:\n        c = st.pop()\n        for x in nbr.get(c, ()):\n            if x is None or x in seen: continue\n            seen.add(x); st.append(x); n += 1\n    memo[k] = n; return n",
+  "examples": [
+    {
+      "cells_behind_entry": 1,
+      "peer_E": 0,
+      "expected_defined_E": 1,
+      "peer_le4": true,
+      "defined_le4": true
+    },
+    {
+      "cells_behind_entry": 4,
+      "peer_E": 3,
+      "expected_defined_E": 4,
+      "peer_le4": true,
+      "defined_le4": true
+    },
+    {
+      "cells_behind_entry": 5,
+      "peer_E": 4,
+      "expected_defined_E": 5,
+      "peer_le4": true,
+      "defined_le4": false
+    },
+    {
+      "cells_behind_entry": 8,
+      "peer_E": 7,
+      "expected_defined_E": 8,
+      "peer_le4": false,
+      "defined_le4": false
+    },
+    {
+      "cells_behind_entry": 16,
+      "peer_E": 15,
+      "expected_defined_E": 16,
+      "peer_le4": false,
+      "defined_le4": false
+    },
+    {
+      "cells_behind_entry": 18,
+      "peer_E": 17,
+      "expected_defined_E": 18,
+      "peer_le4": false,
+      "defined_le4": false
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "at": "2026-10-04T05:22:55.446719+00:00",
+  "index_sha256": "c9e5a19b08cc1b5f09013386795d058cd4182638c14f85e2e6ab37ffa8ae0428",
+  "index_games": 119681,
+  "latest_start": "2026-10-04T05:21:59.793Z",
+  "ladder": "20261004T051738Z.json",
+  "ladder_sha256": "ac8e14a6a6dc3bb138d5d8b22cd9a372044edafbe38552c7f4a32a1012ed681b",
+  "top10": [
+    {
+      "dev": false,
+      "elo": 2320,
+      "id": 264,
+      "name": "forgot to mention",
+      "rank": 1,
+      "wins": 16223
+    },
+    {
+      "dev": false,
+      "elo": 2306,
+      "id": 306,
+      "name": "Vibing++",
+      "rank": 2,
+      "wins": 16493
+    },
+    {
+      "dev": false,
+      "elo": 2229,
+      "id": 213,
+      "name": "Sponge(Albert and Bob)",
+      "rank": 3,
+      "wins": 19345
+    },
+    {
+      "dev": false,
+      "elo": 2195,
+      "id": 952,
+      "name": "Cache me outside",
+      "rank": 4,
+      "wins": 7821
+    },
+    {
+      "dev": false,
+      "elo": 2183,
+      "id": 842,
+      "name": "horse",
+      "rank": 5,
+      "wins": 4465
+    },
+    {
+      "dev": false,
+      "elo": 2174,
+      "id": 55,
+      "name": "\ud80c\udfbc\ud80c\udced\ud80c\udd71\ud80c\udc8b\ud80c\uddcc \ud80c\udfcf\ud80c\udd71 \ud80c\udc8b\ud80c\udd3f",
+      "rank": 6,
+      "wins": 8103
+    },
+    {
+      "dev": false,
+      "elo": 2162,
+      "id": 566,
+      "name": "tungtung67",
+      "rank": 7,
+      "wins": 5027
+    },
+    {
+      "dev": false,
+      "elo": 2156,
+      "id": 112,
+      "name": "Computers",
+      "rank": 8,
+      "wins": 4639
+    },
+    {
+      "dev": false,
+      "elo": 2146,
+      "id": 91,
+      "name": "SSS",
+      "rank": 9,
+      "wins": 15064
+    },
+    {
+      "dev": false,
+      "elo": 2132,
+      "id": 507,
+      "name": "bread first search",
+      "rank": 10,
+      "wins": 13368
+    }
+  ],
+  "collector_progress_at": "2026-10-04T05:21:40.697202+00:00"
+}
