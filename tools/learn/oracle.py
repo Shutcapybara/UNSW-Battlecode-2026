@@ -64,6 +64,17 @@ def true_map(server_txt):
     return '\n'.join(out) + ('\n' if server_txt.endswith('\n') else '')
 
 
+_E = None
+
+
+def _engine():
+    global _E                       # one module per process: a fresh EngineModule per game leaks wasm memory
+    if _E is None:
+        from unswbc.engine import EngineModule
+        _E = EngineModule()
+    return _E
+
+
 def run(data, seed, keep=False):
     m, acts = scripted(data)
     ptr = collections.Counter()
@@ -75,8 +86,7 @@ def run(data, seed, keep=False):
         if k >= len(acts[did]):
             return b'MOVE\nENDTURN\n'
         return reply_text(acts[did][k][0])
-    from unswbc.engine import EngineModule
-    E = EngineModule()
+    E = _engine()
     redacted = not any(l.startswith('TILE ') and not l.endswith(' 0 0') for l in m.text.splitlines())
     mtext = true_map(m.text) if redacted else m.text
     res = E.run(mtext.encode(), reply, debug=0, seed=seed)
