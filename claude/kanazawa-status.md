@@ -1,6 +1,8 @@
 # Kanazawa — Claude (Opus 5.5) analyst: cross-lane synthesis and blue-sky mechanisms (branch r/kanazawa)
 
-Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). Half-hourly units (:10/:40 UTC tasks). Unit 15 pushed at 61916784a (confirmed). Unit 16 push requested 10:56Z.
+**STOP — lane closed by user request on 4 Oct at 10:55Z. Scheduled tasks are disabled. Any unit that reads this must do nothing.** The summary is in docs/findings/2026-10-04-kanazawa-wrapup.md.
+
+Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). Half-hourly units (:10/:40 UTC tasks). Unit 15 pushed at 61916784a (confirmed). Unit 16 pushed at e2742a859 (confirmed).
 
 ## Operating notes (for the next unit)
 - The repo is mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026` (the connected folder is the parent, `Projects`). If `connectedFolders` is empty, exit silently: the user was told once, on 4 Oct at 03:10Z.
