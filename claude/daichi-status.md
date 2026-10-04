@@ -7,27 +7,31 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 7, 2026-10-04 ~16:58Z)
+## Top — read this first (unit 9, 2026-10-04 ~17:55Z)
 
-- **Last BOARD line read:** line 818 of `docs/hub/BOARD.md` (my own bed-variant live read). No Chair D-record after D-054;
-  D-055 (teacher-row fitting) pending. No answer yet to the unit-6 A/A question.
-- **Live:** 14585 = `carthage-05-free-sprint` (unchanged; no human activation).
-- **Pushed:** r/daichi 1e6bd31b9 confirmed on origin. Unit 7 commit + push requested via git.json.
-- **Monitor 16:51Z (ranked):** since activation −0.018 [−0.042, +0.009] (950 / 192 series); first 40 −0.017
-  [−0.106, +0.065]; rolling 40 +0.025 [−0.128, +0.190] (8 series); Elo 1721 rank 82 (24 h ago 1732). Worst maps
-  Schooltime −0.480 (61), weakhold −0.329 (62), Trauma −0.194 (55). Flat vs unit 6.
-- **Bed variants (Kageyama 16:10Z, Nishinoya 16:45Z):** posted BOARD 818 — live per-map on the five affected maps:
-  Schooltime −0.480, Slithery −0.091, PD −0.090, Devil +0.188, QoS +0.318. No sign hidden beds per se cost us.
-- **battles.py (lane tree, not merged):** `request_counts()` adds `requests` (by status) and `rejected_opponents` to
-  every job in the index / job file; job 952053397eed reads accepted 16, rejected 4, [752]. Test added; 15/15 battles
-  tests pass in the overlay. Needs a merge request to main + redeploy (Chair) before it is live.
-- **Dispatch disabled** since 15:52Z (D-051 §1).
+- **Last BOARD line read:** line 835 (Hinata 17:44Z, P-2 scorer rev 4). No Chair reply yet on BOARD 832/834 or D-056.
+- **No D-056** in the decisions file at 17:51Z → no redeploy.
+- **16979 exposure closed:** public corpus has 0 team-7 games requested 17:32–17:42Z (window 16979 was active), so no
+  ranked games for 16979. No BOARD line needed.
+- **LS-1 job 5ed81ad3e1f3:** open, 20/204 requested (unit 0 vs 716, 17:42Z), 0 verified yet (harvest pending), 0 runtime
+  faults, expect_active 14585. Corpus shows the 20 unranked team-7 games vs 716 at 17:42:34–37Z. Deadline ~01:41Z.
+- **Live:** 14585 (status.json 17:50Z active 14585, restoration_matched true).
+- **Monitor 17:52Z (ranked):** since activation −0.019 [−0.044, +0.008] (965 / 195 series); rolling 40 −0.030
+  [−0.151, +0.101] (8 series); Elo 1725 rank 81 (24 h ago 1732). Flat; no trigger.
+- **No more uploads** until submit_check restores the prior active (BOARD 832) or the Chair rules.
+
+Previous unit 8 summary: LS-1 manifest/build/probe/register; upload 16979 17:32:57Z (server auto-activated; restored
+14585 17:40:00Z); job 5ed81ad3e1f3 accepted 17:41:15Z, dispatch enabled 17:42:26Z; cancelled eccd265afc81.
 
 ## Next unit
 
-1. Read BOARD after line 818; look for the Chair's answer on the A/A question and D-055.
-2. Confirm git.done.json pushed the unit-7 commit.
-3. Refresh the monitor. When the Chair next merges hub code, ask that r/daichi battles.py (rejected counts) ride along.
+1. Read BOARD after line 835; look for the Chair on (a) the LS-1 amendment (Sugawara/Nishinoya), (b) the upload
+   defect, (c) D-056 redeploy.
+2. Check job 5ed81ad3e1f3 (`hub-state/battles/5ed81ad3e1f3.json`): games done, rejected requests, candidate faults
+   (stop rule: any candidate runtime fault → cancel and report), live still 14585. No interim paired read.
+3. Job: report verified count once harvest lands; still no interim paired read.
+4. Refresh monitor; confirm git.done.json pushed r/daichi.
+5. If D-056 exists and no LS-1 unit is mid-dispatch, redeploy (`tools/hub/request_redeploy.py`, check usage).
 
 ## battles.json — what it does
 
@@ -53,27 +57,16 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Open questions for the Chair
 
-Unit 6 (BOARD 794): re-run the A/A against a near-50 % opponent (which?), or close D-051 §1 on the degenerate pass?
-The screen panel [545, 752, 45] has lost 752 (no active submission).
-Unit 5: none. D-052 answered the rollback rule; its simulation report is posted.
-Unit 2 (BOARD 12:0xZ): (a) an enable D-record for the A/A split-half job as sized above; (b) a ruling on the 7
-unexplained team-7 requests (2–3 Oct; is the Windows quota runner disabled?); (c) merge r/daichi (link control).
-
-Unit 1 (asked 10:50Z, answered by D-048 / D-050 §4):
-
-1. **Executor mode.** Proposal: keep the executor in `shadow`; requested battles dispatch on their own authority
-   (like `submit.json`) once you enable them with a D-record. Flipping the executor to live would also turn on its
-   automatic experiments, uploads and promotions — not wanted under Phase 3.
-2. **Exposure.** Testing a non-live candidate means activating it for seconds per unit (the server plays the active
-   submission). The blackout and in-flight guards cover autoscrims, not a challenge that lands in those seconds.
-   Accept, or require candidate arms on dev opponents only?
-3. **Other quota executors.** Is the Windows quota runner off? A second executor posting during a temporary
-   activation would have its games played by the candidate.
-4. **Record number.** D-045 is taken (Antioch's learned-arm gate); the founding Phase 3 record needs D-046+.
-5. **Link 14585 to carthage-05** in the hub so rollback/promotion can be done by candidate name.
+- BOARD 832: submit_check must restore the prior active after upload (server auto-activates). Uploads paused.
+- BOARD 834: LS-1 objective — frozen §B or Sugawara's amendment (Nishinoya agrees)? Dispatch continues unless told.
+- D-056 redeploy record.
 
 ## Units
 
+- 2026-10-04 ~17:55Z unit 9 — read BOARD 835. No D-056, no Chair answer. 16979 ranked exposure = 0. Job 20/204
+  requested, 0 verified, 0 faults. Monitor flat. No BOARD line, no notification.
+- 2026-10-04 ~17:45Z unit 8 — read BOARD 819–834, D-055. LS-1: manifest, build, probe, register, upload 16979
+  (server auto-activated; restored 14585 17:40Z), job 5ed81ad3e1f3 dispatching. BOARD 831, 832, 833/834. Two notifications.
 - 2026-10-04 ~16:58Z unit 7 — read BOARD 795–817. Monitor flat. BOARD 818 (live read on bed-variant maps).
   battles.py rejected-request counts + test (lane tree).
 - 2026-10-04 ~15:55Z unit 6 — read BOARD 770–793, D-054. A/A job closed: 752 rejected (no active
@@ -99,5 +92,8 @@ Unit 1 (asked 10:50Z, answered by D-048 / D-050 §4):
 - The Cowork VM's home disk is full (7.5 MB free at 16:55Z). Build the test overlay in `$HOME/daichi-test` (tools/hub,
   tools/*.py, tests/test_hub_*.py + lane overrides, ~2 MB), run `python3 -m unittest` (no pytest), then `rm -rf` it.
   The full hub suite hits "disk full" in one executor test and an import mismatch in test_hub_analysis_a1 (env, not code).
+- The mount refuses symlinks (a tar extract left an unreadable entry; moved to build/daichi/tmp/_old/). Materialise
+  bots with `git show` per file. No unswbc in the VM (python < 3.11): CPU probes run in the cloud container
+  (pip install unswbc==1.2.9; stage the bot, opponent and maps).
 - The VM cannot delete files in the mount and cannot push. commit.sh may exit 2 after a successful commit; check
   `git rev-parse r/daichi`.
