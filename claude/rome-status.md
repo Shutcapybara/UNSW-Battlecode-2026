@@ -50,3 +50,16 @@ Bot snapshots live under `bots/rome-<nn>-<slug>/`; tools under `tools/rome/`.
 - Official FRAME7 paired panels, seeds 1–3: pool win Δ −1.35pp [95% cluster −3.125,+0.417], gen 0.00pp [−0.503,+0.503]; literal mean and median-checkpoint economy exactly 0.0000 [0,0] in both panels. D-032 current and proposed gates reject: strict-positive pool economy fails at zero; pool win 90% LB −2.81pp fails the −2pp guard. Tier-2 worst +1.9% pool own-body.
 - All-map economy deltas are zero. Pool Portals win −11.46pp; Slithery −2.08pp. Gen `var+portals_tr` −4.17pp with +2.08pp on commons-spread and trauma. Per-map/cluster CSVs: `game_stats/runs/rome-04-permap.csv`, `.clusters.csv`. Opening metrics/percentiles unchanged.
 - Himeji unit17: role-crown cannot activate before r250; receiver is a new child, original queen stays parent. r150 survival among reached fixtures 95/423 pool and 244/994 gen in both arms. This is pre-treatment parity, not falsification of H-H1. Replay features do not expose actual active-crown equal-split receiver events.
+
+
+## Rome05 preregistration — H-H5, 2026-10-04
+
+- Taking H-H5 (Himeji H15-02; L39/L49, weight 0.5) after Rome04: add a single fresh-queen-evidence condition to Rome03's `queen_conversion` predicate at all three consumers (crown election, split inheritance, feeder reach). Require crown ID 0/1 and existing TTL freshness; otherwise preserve normal crown fallback. This does not prove queen liveness, so report possible stale beacons and actual exposures without replay-omniscience.
+- Expected: on the preselected Rome03-triggered Portals subset, recover some terminal longest/crown consolidation vs Rome03; all-game paired win nonnegative vs Rome03; opening economy/material unchanged; compare the full arm with clean Rome01. Reuse paired 480 pool / 1,392 gen fixtures, seeds 1–3, both seats; per-map deltas and 90% cluster intervals. CPU probe required.
+
+
+## D-043 map-era closeout — 2026-10-04
+
+- Rome01–05 use the repository’s old maps and are **pre-swap historical**. Rome04 is a completed pre-swap arm; do not treat gen twins of Autarky, Default, Prisoners Dilemma, Schooltime, Slithery Fight, or Trophy as current transfer evidence until regenerated.
+- Rome05 H-H5 draft: CPU 10.83M / 0 errors; pre-swap pool simulator 480/480 but not scored against parents; official gen 227/1,392 when D-043 arrived. The incompatible 744-fixture custom gen set was stopped. No score/gate/verdict; no replays committed. Finding `docs/findings/2026-10-04-rome-H-H5-pre-swap-partial.md`.
+- Next unit starts only after merging D-043’s main and re-measuring `carthage-05-free-sprint` on `LIVE_MAPS_M2`, pool and gen, seeds 1–3 and both seats. The resulting baseline becomes Rome’s new zero.
