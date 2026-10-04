@@ -1,5 +1,5 @@
 """Kanazawa unit 14: H-KZ31 (invisibility rule) on the same 20+4 queen sprint-strike cases as q_avoid2 (cap 60).
-FROZEN 09:50Z before running. inv(w): every enemy head at Chebyshev >= 4 (wrap) of w at R[dr] (enemy TurnStart vision
+FROZEN 09:43Z before running. inv(w): every enemy head at Chebyshev >= 4 (wrap) of w at R[dr] (enemy TurnStart vision
 is Cheb <= 3 from its head, H31-01). Primary = invsafe: some cand w with inv(w) and Cb(u->w) >= 4, on OUR 20.
 Expected: <= 6/20 (15/20 killers already within Cheb 3 of the queen; one step can lift Cheb by at most 1).
 Falsifier from unit 13: < 10/20 -> H-KZ31 to 0.1 (a vision-hiding rule cannot replace the reach veto at the last turn).

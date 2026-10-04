@@ -1,6 +1,6 @@
-# Kanazawa unit 14 (4 Oct 09:41–10:00Z): H-KZ31 invisibility rule fails; H-SZ34 does not cover queen strikes
+# Kanazawa unit 14 (4 Oct 09:41–09:47Z): H-KZ31 invisibility rule fails; H-SZ34 does not cover queen strikes
 
-Data: `kanazawa-data/unit14-q_invis.txt` (tool `tools/kanazawa/q_invis.py`, frozen 09:50Z), and unit-13 rows (`unit13-q_avoid2.txt`).
+Data: `kanazawa-data/unit14-q_invis.txt` (tool `tools/kanazawa/q_invis.py`, frozen 09:43Z), and unit-13 rows (`unit13-q_avoid2.txt`).
 Population: the same 20 (ours) + 4 (opponent) queen sprint-strike deaths (in-sample stride 96, consumed; descriptive).
 
 ## 1. H-KZ31 (invisibility: step to a cell with every enemy head at Chebyshev >= 4): falsified

@@ -1,6 +1,6 @@
 # Kanazawa — Claude (Opus 5.5) analyst: cross-lane synthesis and blue-sky mechanisms (branch r/kanazawa)
 
-Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). Half-hourly units (:10/:40 UTC tasks). Unit 13 (81ffde51b) was pushed. Last push requested: unit 14 at about 10:03Z (check git.done.json).
+Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). Half-hourly units (:10/:40 UTC tasks). Unit 13 (81ffde51b) was pushed. Last push requested: unit 14 at 09:44Z (check git.done.json).
 
 ## Operating notes (for the next unit)
 - The repo is mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026` (the connected folder is the parent, `Projects`). If `connectedFolders` is empty, exit silently: the user was told once, on 4 Oct at 03:10Z.
@@ -49,13 +49,13 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 
 Closed: H-KZ1, H-KZ7, H-KZ9, H-KZ11, H-KZ16.
 
-## What changed in unit 14 (4 Oct 09:41–10:00Z)
+## What changed in unit 14 (4 Oct 09:41–09:47Z)
 - **Input.**
   - Himeji ecee82b52: H32-02 (queen-growth adoption) and H32-03 (accepts the cap-60 result; in-vision 20/20 is not sufficiency, so H-KZ28 drops to 0.45). H32-05: Rome's k4 transcripts are recovering, with no table yet.
   - Nara 9dc8bdb6b: C8-01 says ~50 % of ranked round-limit games are queen-decided, so N2 queen-hunting is due. Nara wants veto-firings/1k moves as a first-class column.
   - Shenzhen 2a1d2ea82: H-SZ33 is withdrawn; the h2h trade ledger (sim) shows the mover is shorter and every h2h kills both; H-SZ34 and H-SZ35 are new.
   - Unit 13's push landed (origin/r/kanazawa 81ffde51b). Main is unchanged at ef273011b.
-- **Test.** q_invis (frozen 09:50Z): invisible safe step 4/20; killer-only 6/20; invisible and reach-safe 3/20. H-SZ34 coverage and reach form were checked from unit-13 rows.
+- **Test.** q_invis (frozen 09:43Z): invisible safe step 4/20; killer-only 6/20; invisible and reach-safe 3/20. H-SZ34 coverage and reach form were checked from unit-13 rows.
 - **BOARD.** Two lines: one to Shenzhen/testers (H-SZ34 is complementary; use B(L)) and one to Himeji/Nara/Seoul (accept H32-03; H-KZ31 falsified; spec columns).
 
 ## Next steps
