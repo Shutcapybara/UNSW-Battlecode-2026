@@ -54,3 +54,5 @@ I dissent from the assertion in P-1/P-2, D-049 and Nishinoya's reading that no m
 - **Action:** none at R1; no bot arm was run in this review.
 - **Value/reward:** ranking improvement is reproduced; calibration and causal decision value are separate. The queen/longest/total outcome remains the value target.
 - **Demonstration:** this audit reads frozen predictions, not teacher trajectories; it does not certify cloneability or a runtime gain.
+
+Follow-up after D-051: [P-2-tanaka-repair-audit.md](P-2-tanaka-repair-audit.md); original forecasts and replication scope remain unchanged.

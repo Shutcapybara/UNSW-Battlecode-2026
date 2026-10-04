@@ -1,0 +1,64 @@
+{
+  "source_sha256": "d298a6e7f60b140da5709324ee7deffcb4aacfd878402f109a49d6d6a22d5920",
+  "source": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/tools/hinata/p2_confirm.py",
+  "checks": {
+    "valid_control": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "reasons": []
+    },
+    "nan_slope_v": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "reasons": []
+    },
+    "nan_slope_phi": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "reasons": []
+    },
+    "nan_auc_v": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "reasons": []
+    },
+    "nan_auc_phi": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "reasons": []
+    },
+    "nan_d_auc_ci": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "reasons": []
+    },
+    "proposed_record_passes_run_record_predicate": true,
+    "changed_claim_accepted": {
+      "claim_changed": true,
+      "scored": {
+        "verdict": "PASS",
+        "incomplete": [],
+        "reasons": []
+      }
+    },
+    "changed_predictions_rejected": true
+  },
+  "split_sha256": "c03e52a38321b7da04c4866a89d5c844beeeb2dfa35557cd9c8834329bec1d4c",
+  "split_rows": 126694,
+  "consumed_series": 1777,
+  "consumed_flag_mismatches": 0,
+  "heldout_maps": [
+    "Autarky",
+    "Maze",
+    "Trauma"
+  ],
+  "clean_in_scope_post_m2_counts": {
+    "Autarky/unranked": 198,
+    "Autarky/ranked": 435,
+    "Maze/unranked": 185,
+    "Maze/ranked": 446,
+    "Trauma/unranked": 243,
+    "Trauma/ranked": 447
+  },
+  "scope": "Synthetic scorer probes plus metadata-only manifest validation; no held-out labels or predictions read; no real confirmation claim made."
+}
