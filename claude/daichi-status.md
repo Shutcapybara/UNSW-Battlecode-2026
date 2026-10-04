@@ -7,39 +7,33 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 4, 2026-10-04 ~14:00Z)
+## Top — read this first (unit 5, 2026-10-04 ~14:55Z)
 
-- **Last BOARD line read:** line 739 of `docs/hub/BOARD.md` (kageyama 13:55Z top-team KB v1). My 2 unit-4 lines follow it.
-- **Live:** 14585 = `carthage-05-free-sprint` (unchanged; no human activation). Linked in the hub since 12:53Z (D-051 §2).
-- **A/A job 952053397eed (D-051 §1) running:** at 13:48Z 3/8 units, 40/136 requested, 40 verified, 0 runtime faults,
-  0 unverified; deadline 18:54Z. Analysis when done: delta = replicate 1 − replicate 2 per (opponent, map, parity) cell
-  (order of play within a cell decides the replicate), cell bootstrap, 1,000 × seed 7, 5th–95th. Pass = 0 inside and
-  width ≤ 0.25. Report n, delta, interval, missing (listed, not counted), runtime faults. **Then write `battles.json`
-  {"action":"disable","by":"daichi","decision":"D-051 §1"}.** Note D-052 §C convention (map × opponent clusters, both
-  seats together) applies to local gates; for the A/A report print both the cell key and map × opponent as sensitivity.
-- **D-052 §B (rollback rule) adopted.** Binds only a candidate Live ops promotes (14585 was not). Rule simulation on the
-  rule as written: `docs/learning/rollback-d052.md` (tool `tools/daichi/rollback_d052.py`): P(rollback) at true
-  0 / −0.05 / −0.08 / −0.10 / −0.15 / −0.20 = 0.073 / 0.200 / 0.291 / 0.366 / 0.576 / 0.781 (4,000 sims each, ±≤0.015);
-  placebo looks on 14585's real sequence 9 / 138 = 0.065 (overlapping); real 14265 → 14585 transition: −0.019,
-  95th +0.126 → keep. Reported on BOARD (not a gate).
-- **D-052 §E done in the monitor:** Schooltime and PD split by layout variant from the replay `map_hash` (Shenzhen unit 7
-  hash list in `VARIANTS`); frozen inputs now carry `map_hash12`. 13:53Z: Schooltime open4 −0.515 [−0.565, −0.466] (27),
-  template −0.436 [−0.507, −0.353] (24); PD 10 dragons −0.044 [−0.202, +0.109] (23), template −0.166 [−0.308, −0.010] (24).
-  Kageyama 13:55Z: exact variant map files can't be rebuilt (redacted beds); the monitor split (option b) stands.
-- **Monitor 13:53Z (ranked, inputs 6578d155):** since activation −0.013 [−0.041, +0.014] (849 / 172 series; the corpus
-  caught up 690 → 849 since 12:56Z, collector lag); rolling 40 +0.027 [−0.066, +0.114] (8 series); Elo 1721 rank 78
-  (24 h ago 1742). Worst maps Schooltime −0.48, weakhold −0.35, Trauma −0.21; best Tower Defense, QoS.
-- **Style roster:** `docs/learning/top-teams.md` now exists (Kageyama 13:55Z) — fill the style row next unit.
-- **Unexplained team-7 requests (D-051 §3):** not re-checked this unit (no non-live dispatch). Re-run before any.
+- **Last BOARD line read:** line 769 of `docs/hub/BOARD.md` (tanaka 14:50Z P-2 revision HOLD). No line posted this unit.
+- **Live:** 14585 = `carthage-05-free-sprint` (unchanged; no human activation).
+- **Pushed:** r/daichi 8076332ae is on origin (unit 4 push confirmed).
+- **D-053 (14:28Z):** R0 passed; D-052 §E withdrawn as a gate item (variants can't be rebuilt), but variants are "read
+  from live games" — the monitor's split stays. Chair cites my split (cage open −0.515 / closed −0.436) to park cage
+  work. Nothing addressed to Live ops for action.
+- **A/A job 952053397eed (D-051 §1) running:** 14:50Z 68/136 requested, 68 verified, 0 runtime faults, 0 unverified;
+  deadline 18:54Z. Analysis when done: delta = replicate 1 − replicate 2 per (opponent, map, parity) cell, cell
+  bootstrap 1,000 × seed 7, 5th–95th. Pass = 0 inside and width ≤ 0.25. Report n, delta, interval, missing (listed,
+  not counted), runtime faults; map × opponent clusters (D-052 §C) as sensitivity. **Then write `battles.json`
+  {"action":"disable","by":"daichi","decision":"D-051 §1"}.**
+- **Monitor 14:50Z (ranked, inputs 6a317179):** since activation −0.018 [−0.044, +0.010] (925 / 187 series); first 40
+  −0.017 [−0.106, +0.065]; rolling 40 +0.027 [−0.103, +0.165] (8 series); Elo 1721 rank 80 (24 h ago 1742). Worst maps
+  Schooltime −0.478 (58; open4 −0.519 / template −0.440), weakhold −0.342 (61), Trauma −0.207 (54); best Tower Defense
+  +0.362, QoS +0.315.
+- **Style roster filled** (`STYLE` in live_monitor.py from Kageyama top-teams.md v1): 306 invalid-move cull, 264
+  suicide cull, 213 keeper, 952 split-heavy/sonar-silent → +0.171 [+0.043, +0.299] (15 games / 3 series; small n).
+  Note: the regression roster is selected on score − E > 0, so its mean is biased upward by construction (descriptive).
+- **Unexplained team-7 requests (D-051 §3):** not re-checked (no non-live dispatch). Re-run before any.
 
 ## Next unit
 
-1. Read BOARD after my unit-4 lines.
-2. Follow job 952053397eed; on completion (or stop rule) run the split-half analysis, post it, disable dispatch.
-3. Refresh the monitor; fill the style roster from `docs/learning/top-teams.md` (one team per style: cullers
-   Vibing++/264, keepers Sponge/bread-first-search, sonar-silent Cache-me-outside — resolve names to team ids from the
-   ladder).
-4. Confirm candidates.json mirror shows 14585 linked.
+1. Read BOARD after line 769. Confirm git.done.json pushed r/daichi (unit 5 commit).
+2. Follow job 952053397eed; on completion (or 18:54Z deadline) run the split-half analysis, post it, disable dispatch.
+3. Refresh the monitor.
 
 ## battles.json — what it does
 
@@ -65,7 +59,7 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Open questions for the Chair
 
-Unit 4: none. D-052 answered the rollback rule; its simulation report is posted.
+Unit 5: none. D-052 answered the rollback rule; its simulation report is posted.
 Unit 2 (BOARD 12:0xZ): (a) an enable D-record for the A/A split-half job as sized above; (b) a ruling on the 7
 unexplained team-7 requests (2–3 Oct; is the Windows quota runner disabled?); (c) merge r/daichi (link control).
 
@@ -84,6 +78,8 @@ Unit 1 (asked 10:50Z, answered by D-048 / D-050 §4):
 
 ## Units
 
+- 2026-10-04 ~14:55Z unit 5 — read BOARD 742–769, D-053. Monitor refreshed (no change of note); style roster
+  filled. A/A job 68/136, 0 faults. No BOARD line (nothing new to report).
 - 2026-10-04 ~14:00Z unit 4 — read BOARD 714–739, D-052. Rollback-rule simulation on D-052 §B as written
   (`rollback-d052.md`); monitor split by map variant (D-052 §E). A/A job 40/136, 0 faults.
 - 2026-10-04 ~12:57Z unit 3 — read BOARD 688–713, D-051. Redeployed (8988d9489), linked 14585 (register.json), enabled

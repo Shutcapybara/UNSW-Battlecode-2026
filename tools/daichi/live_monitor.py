@@ -32,6 +32,9 @@ VARIANTS = {
 REPO = Path(__file__).resolve().parents[2]
 
 
+# Style roster (rosters rule §9), from Kageyama's docs/learning/top-teams.md v1 (2026-10-04 13:55Z)
+STYLE = (306, 264, 213, 952)
+
 def ts(s):
     return datetime.fromisoformat(str(s).replace('Z', '+00:00'))
 
@@ -152,7 +155,7 @@ def main(argv=None):
     for g in inc_ranked:
         per_opp.setdefault(g['opp'], []).append(g['resid'])
     regression = sorted(o for o, v in per_opp.items() if len(v) >= 5 and sum(v) / len(v) > 0)
-    rosters = dict(band=band, top=top10, style=[], regression=regression)
+    rosters = dict(band=band, top=top10, style=list(STYLE), regression=regression)
     roster_stats = {k: boot([g for g in inc_ranked if g['opp'] in set(v)]) for k, v in rosters.items()}
 
     def elo_ago(hours):
@@ -215,7 +218,7 @@ def main(argv=None):
     L.append('## Rosters (ranked, incumbent only)\n')
     L.append('| roster | definition | teams | score − E |')
     L.append('|---|---|---|---|')
-    defs = dict(band='teams met in ranked, last 48 h', top='current top ten (non-dev)', style='one per style — awaits Data\'s top-teams pages',
+    defs = dict(band='teams met in ranked, last 48 h', top='current top ten (non-dev)', style='one per style (Data top-teams.md v1, 13:55Z): 306 invalid-move cull, 264 suicide cull + fast portals, 213 queen keeper, 952 split-heavy sonar-silent',
                 regression='opponents with ≥ 5 ranked games and mean score − E > 0')
     for k, v in rosters.items():
         L.append(f"| {k} | {defs[k]} | {len(v)}: {', '.join(map(str, v[:20]))}{' …' if len(v) > 20 else ''} | {fmt(roster_stats[k])} |")
