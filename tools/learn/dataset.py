@@ -35,7 +35,7 @@ def outcome(data):
     return winner, reason
 
 
-def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=None):
+def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=None, hb1_exe=None):
     meta = meta or {}
     turns = collections.defaultdict(list)
     m = rebuild.walk(data, lambda i, sp, txt, ctx: turns[i].append((sp, txt, ctx)))
@@ -59,6 +59,7 @@ def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=
     winner, reason = outcome(data)
     last_round = max((c['round'] for v in turns.values() for _, _, c in v), default=0)
     rows = []
+    hb_seqs = []
     for did, seq in turns.items():
         sp = seq[0][0]
         if sides is not None and sp['team'] not in sides:
@@ -66,6 +67,7 @@ def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=
         if not keep(game, did, pct):
             continue
         enc = E.Encoder(B.Spawn(sp['id'], sp['team'], sp['W'], sp['H'], sp['unit_limit']))
+        hb_turns = []
         for k, (sp_, txt, ctx) in enumerate(seq):
             raw = real[did][k].decode() if real is not None else txt
             b = B.parse_block(raw)
@@ -73,6 +75,7 @@ def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=
                 b.tiles = [(x, y, p, -2 if (c == -1 and (x, y) in _template_beds(m)) else c) for x, y, p, c in b.tiles]
             x = enc.observe(b)
             y = LB.label(ctx, b, did, sp['team'])
+            hb_turns.append((raw, y))
             if y['y_kind'] == 0:
                 enc.act('move', list(y['y_seq']))
             elif y['y_kind'] == 1:
@@ -85,7 +88,18 @@ def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=
             rows.append(dict(meta, game=str(game), map=m.name, side=sp['team'], dragon=did, round=ctx['round'],
                              turn=k, blocks_src=src, outcome=res, end_reason=reason, last_round=last_round,
                              x=x, **y))
+        hb_seqs.append((hb_spawn(sp), hb_turns))
+    if hb1_exe and rows:
+        import hb1prior
+        sc = hb1prior.scores(hb1_exe, hb_seqs)
+        assert len(sc) == len(rows), (len(sc), len(rows))
+        for r, (pf, pr, pl) in zip(rows, sc):
+            r.update(hb_pF=pf, hb_pR=pr, hb_pL=pl)
     return rows, dict(stats, src=src, turns=sum(len(v) for v in turns.values()), rows=len(rows))
+
+
+def hb_spawn(sp):
+    return f"ID {sp['id']}\nTEAM {sp['team']}\nMAP {sp['W']} {sp['H']}\nUNIT_LIMIT {sp['unit_limit']}\n"
 
 
 _TB = {}

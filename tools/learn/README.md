@@ -15,6 +15,9 @@ Replay → legal observation → features + labels + value targets, with a C++ t
 | `splits.py` | D-046 §3 + D-049 split (held out: Autarky, Maze, Trauma) of every known game, consumed series, fixture manifest |
 | `mapcheck.py` | corpus-wide server map vs `maps/live/` check (one replay per map_hash) | |
 | `audit.py` | leakage audit of any dataset file | |
+| `coverage.py` | label-free oracle coverage of a frozen cohort (reproduced flag, turns, teacher processes only) | R2 confirmation cohort: 115 / 115 reproduced |
+| `cpp/hb1_scores.cpp`, `hb1prior.py` | the parent's HB-1 direction prior (p over F/R/L) on teacher rows through carthage-05's own C++ extractor; `dataset.py --hb1` adds `hb_pF/hb_pR/hb_pL` | text path = the bot's helper path on 3,091 / 3,091 turns (`cpp/hb1_helper_check.cpp`); ~3.2 k turns/s |
+| `build_dev.py` | resumable sharded build (one parquet per game), restarts bound the wasm memory growth | |
 | `gen_truth.py`, `drive_native.py` | engine truth runs (random walkers / native bots, one process per dragon) | |
 
 Facts the pipeline depends on (found 4 Oct, kageyama):
