@@ -302,6 +302,7 @@ class CorpusTest(unittest.TestCase):
         (self.root / 'hub.toml').write_text(f'[paths]\nrepo = "{self.repo}"\nlegacy_live = "{self.tmp}/live"\nmirror = "{self.repo}/hub-state"\n[team]\nid = 7\n[corpus]\nenabled = true\nper_team = 3\ntop_n = 2\nband = [50, 51]\n')
         self.cfg = load_config(self.root)
         self.cfg['corpus']['teams'] = [dict(id=306, games=4, why='top')]
+        self.cfg['corpus']['include_own_team'] = False   # the fixtures below describe the field-only watch list
         self.calls = []
         test = self
 
@@ -330,6 +331,20 @@ class CorpusTest(unittest.TestCase):
         self.assertIn(62, w)          # top 2 (306, 62); 545 is dev and skipped
         self.assertIn(999, w); self.assertIn(998, w)   # band 50-51
         self.assertNotIn(7, w); self.assertNotIn(545, w)
+
+    def test_own_team_is_watched_and_refreshed_first_when_opted_in(self):
+        self.cfg['corpus'].update(include_own_team=True, own_team_games=5)
+        w = self.corpus.watch_list(self.cfg, self.ladder)
+        self.assertIn(7, w); self.assertEqual(w[7]['target'], 5); self.assertTrue(w[7].get('own'))
+        order = []
+
+        def discover(tid, n):
+            order.append(tid)
+            return {7: [701, 702], 306: [101]}.get(tid, [])
+        self.corpus.fetch_pass(self.root, self.cfg, self.client, None, discover=discover, ladder=self.ladder)
+        self.assertEqual(order[0], 7)
+        index = (self.repo / 'public_replays/corpus/index.jsonl').read_text()
+        self.assertIn('"game_id": 701', index)
 
     def test_fetch_pass_downloads_new_games_within_caps_and_indexes_them(self):
         discovered = {306: [101, 102, 103, 104, 105, 106], 62: [201, 202, 203], 999: [301], 998: []}
