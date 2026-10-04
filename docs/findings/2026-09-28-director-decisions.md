@@ -710,3 +710,60 @@ geometry and are flagged, not deleted; regenerate them from `maps/live/` before 
 Not verified: byte identity of `maps/live/` with the server's maps (Shenzhen reproduced the live Schooltime cage on
 the 1.2.9 template; `unsw.map` is assumed to be "Around UNSW").
 
+## D-044: hand rules are probes, and learning is where we are going (4 Oct 2026, director, at the lead's instruction)
+
+The programme's goal is discovery with a view to learning the right policy, by imitation, value fitting and RL. We are
+not building a long-term collection of hand-coded rules. A hand rule is worth building for what it teaches us: its dose
+response (does it move the outcome we target, and how much?) and its side effects (what else does it move?).
+
+1. **Every new hand arm is a dial, not a switch.**
+   - Declare at least three doses before the run, with the parent as dose 0. Examples: reserve slots 0/1/3/5, a minimum
+     number of free exits 0/1/2, a premium of 0/x/2x.
+   - Report a response curve for the targeted outcome, plus side effects on: economy, deaths by cause, units, length,
+     and win split by regime (elimination vs round-limit maps) and by map_era.
+   - Screening dose arms may use seed 1 on both panels. The full D-042 gate applies only to the dose proposed for
+     deployment.
+2. **Every finding about an arm or a mechanism ends with an RL translation section with four parts:**
+   - (a) **observation**: the features a policy or value model needs to see this situation;
+   - (b) **action**: the actions it needs (for example, a deliberate invalid command, a choice of split size, a sprint
+     length);
+   - (c) **value/reward**: which terms the outcome depends on;
+   - (d) **demonstration**: whether top-team replays already demonstrate the behaviour (cloneable), or only search and
+     self-play could find it (an exploration problem).
+3. **A hand rule may ship in the short term** when it is a clear live gain (the Schooltime cage fix C+D+E is the
+   current case). It is tagged `temporary` in its CANDIDATE.toml and gets a learned replacement target: the learned
+   prior must reproduce or beat it on held-out states and panels. Once it does, the rule is removed.
+4. **Analysts prioritise what learning needs.** That means features, labels, value targets and facts about our state
+   distribution: unit-cap saturation, id-ordered movement within a round, queen-state observability, and where sonar
+   echoes reach. A one-off rule recommendation comes second.
+5. **The learner lane (Osaka, `docs/briefs/osaka-learner-lane.md`) consumes three things:** the dose tables, the RL
+   translation sections, and the logged search scores. A hypothesis is resolved for learning when its feature or action
+   is in the encoder, and its effect shows up in held-out accuracy of the value model V and the policy prior P.
+
+## D-045 — Prospective 1.2.5 learned-arm local gate (4 Oct 2026)
+
+Adopt the win-led Himeji criteria prospectively for learned-policy and
+learned-search arms evaluated under `unswbc==1.2.5`. This resolves the learned
+track's gate prerequisite without changing D-032, D-042's historical scope,
+or any completed verdict. The complete rule, rationale, and implementation
+are in [`2026-10-04-antioch-learned-arm-gate.md`](2026-10-04-antioch-learned-arm-gate.md).
+
+The nominee is compared to a predeclared parent on complete pool and gen panels,
+seeds 1–5, both seats, with FRAME_VERSION 7 and successful 1.2.5 run records.
+The paired fixture bootstrap uses 1,000 resamples, seed 7; gates use the 5th
+percentile. Require pool expected-score lower bound > 0; gen expected-score
+lower bound > −0.02; normalized `econ~` lower bound > −0.03 on both panels;
+normalized units@100 and total@100 lower bounds ≥ −0.02 on both panels; the
+existing tier-2 ≤10% guard on both panels; and zero new invalid-action deaths.
+Missing fixtures, unsuccessful runs, timeouts, or missing runtime records are
+INCOMPLETE. The separate CPU check must remain within the official points
+budget without errors. The gate applies to one frozen nominee; its five-seed
+panels stay out of training and model selection. A local ACCEPT advances the
+candidate to the experiment stack and does not promote it; fresh live
+confirmation remains required.
+
+`tools/carthage/lane.py score ... --gate learned125 --seeds 1,2,3,4,5` encodes
+this rule as an opt-in mode. The existing default `--gate d032` is unchanged.
+This closes only the evaluation-gate prerequisite. H-S1 and the all-family
+hand-mining stop condition remain open, so training entry is still gated on
+those separate conditions.

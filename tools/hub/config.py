@@ -39,7 +39,7 @@ DEFAULTS = {
     # itself stops the legacy worker, adopts its record and goes live (docs/hub/EXECUTOR_V2.md §Cutover). 'live' needs the
     # legacy worker stopped by hand (cutover_mac.sh). rollback_mac.sh sets 'off'.
     'corpus': {'enabled': True, 'dest': 'public_replays/corpus', 'per_team': 500, 'top_n': 50, 'band': [55, 85],   # S-1 stats assistant (lead, 30 Sep): top 50 collected   # D-028: targets deepened (history back past 28 Sep 14:40) 'per_cycle_seconds': 120, 'per_cycle_downloads': 120,
-               'interval_seconds': 5, 'threaded': True, 'refresh_per_pass': 30,   # D-025: continuous, in its own thread, paced by the shared client (≈ 2 API calls per replay)
+               'interval_seconds': 5, 'threaded': True, 'refresh_per_pass': 30, 'include_own_team': True, 'own_team_games': 4000,   # 4 Oct: collect our own games too (Himeji unit 26)   # D-025: continuous, in its own thread, paced by the shared client (≈ 2 API calls per replay)
                # explicit teams: the current top (306 Cutlery, formerly Vibing++: whole history, decoy timeline), the screen/confirmation and dev opponents, the band teams that played us
                'teams': [{'id': 306, 'games': 3000, 'why': 'rank 1; suspected decoy submissions between autoscrims'}, {'id': 62, 'games': 6000, 'why': 'elimination specialist; HB-1 anatomy target (lead, 29 Sep): whole history'},
                          # D-042 (Antioch's request): five top-ten teams had 0 post-change games; targets set above their pre-change totals so the collector keeps pulling their new games

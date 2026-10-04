@@ -1,9 +1,15 @@
 --- bots/carthage-05-free-sprint/main.cpp
 +++ bots/<new>/main.cpp
-@@ -51,6 +51,26 @@
+@@ -50,7 +50,32 @@
+                 unswbc::end_turn();
                  continue;
              }
++            // SHENZHEN PROBE E (H-SZ22): non-queen dragons treat the unit cap as one lower, so a slot is always
++            // free for the queen's forced split (cage meal at length 3 -> 4 -> split must stay legal).
++            const int sz_real_limit = w.limit;
++            if (ct.get_id() > 1) w.limit = sz_real_limit - 3;   // 3: several dragons can split in one round on a stale unit count
              dec = pol.decide(w);
++            w.limit = sz_real_limit;
 +            // SHENZHEN PROBE C (H-SZ1, analysis copy only). When every direction simulates DEAD (a sealed cage):
 +            // length >= 4 -> split (head keeps 2); shorter -> die by an invalid command instead of moving into an
 +            // ally head (a head-on would take the parent with it).

@@ -50,7 +50,13 @@ def watch_list(cfg, ladder):
             out[t['id']].setdefault('rank', t['rank'])
             out[t['id']]['rating'] = t.get('rating') or t.get('elo')
     me = (cfg.get('team') or {}).get('id')
-    out.pop(me, None)
+    if c.get('include_own_team') and me is not None:
+        # our own games (lead, 4 Oct; Himeji unit 26): the executor's harvest does not reach the corpus, so the
+        # collector watches team 7 itself — refreshed first every pass, backfilled up to own_team_games
+        me = int(me)
+        out[me] = dict(id=me, target=int(c.get('own_team_games', c.get('per_team', 60))), why='own team', own=True)
+    else:
+        out.pop(me, None)
     return out
 
 
@@ -151,6 +157,10 @@ def fetch_pass(root, cfg, client, log, discover=None, budget_seconds=None, max_d
     backfill = sorted((t for t in progress.values() if t['have'] < t['target']), key=lambda t: (t['have'] / max(1, t['target']), t.get('rank', 10**6)))
     refresh = sorted((t for t in progress.values() if t['have'] >= t['target']), key=lambda t: (t.get('checked_at') or '', t.get('rank', 10**6)))
     refresh = refresh[: int(c.get('refresh_teams_per_pass', 6))]
+    own = next((t for t in progress.values() if t.get('own')), None)
+    if own is not None:   # own team: newest page every pass, ahead of everyone; its backfill ahead of other backfill
+        refresh = [own] + [t for t in refresh if t is not own]
+        backfill = ([own] if own in backfill else []) + [t for t in backfill if t is not own]
     reserve = min(int(c.get('refresh_per_pass', 10)), cap) if refresh else 0
     plan = [(t, 'refresh') for t in refresh] + [(t, 'backfill') for t in backfill]
     if not plan:

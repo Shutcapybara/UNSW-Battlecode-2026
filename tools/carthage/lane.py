@@ -7,7 +7,8 @@ An *arm* is a bot directory plus a VERSO_PARAMS string and a head blob (VERSO_PO
     PY=.venv/bin/python
     $PY tools/verso/lane.py arm NAME BOT [--params "lam_dir=1"] [--policy build/carthage/models/x.bin] [--alias BOT2]
     $PY tools/verso/lane.py run   ARM [--panel pool|gen|both|train] [--seeds 1,2,3] [--jobs 12] [--dump] [--extract]
-    $PY tools/verso/lane.py score ARM --parent ARM [--seeds 1,2,3] [--phase all|late] [--json OUT]
+    $PY tools/carthage/lane.py score ARM --parent ARM [--seeds 1,2,3] [--phase all|late]
+        [--gate d032|learned125] [--json OUT]
     $PY tools/verso/lane.py import ARM RUN_DIR      # adopt another lane's finished runs of the same behaviour
     $PY tools/verso/lane.py cpu   BOT
 
@@ -27,6 +28,10 @@ Gate (D-032, accept into the lane's stack), on paired fixtures (seed, map, oppon
   per-checkpoint deltas always reported; --phase late judges econ on p@150/p@250 with p@50/p@100 as guards.
 econ~ = mean over k in 50/100/150/250 of the median side-game pearls@k / field per-map median (BENCHMARKS form,
 as Renoir); gen maps are normalised by renoir-00's frozen per-map medians (tools/ra/gen_reference.json).
+
+For a prospective learned-policy/search arm evaluated under unswbc 1.2.5, use
+`score ... --gate learned125 --seeds 1,2,3,4,5`. This is an opt-in local gate;
+the default D-032 lane gate is unchanged.
 """
 from __future__ import annotations
 
@@ -129,7 +134,15 @@ def fixtures(bot, panel, seeds):
     return out
 
 
-def run_one(fx, root, spec, dump=None):
+def installed_runtime_version():
+    p = subprocess.run([UNSWBC, '--version'], capture_output=True, text=True, cwd=ROOT, check=True)
+    match = re.search(r'unswbc\s+(\d+\.\d+\.\d+)', p.stdout + p.stderr)
+    if not match:
+        raise SystemExit('could not read the installed unswbc version from --version')
+    return match.group(1)
+
+
+def run_one(fx, root, spec, dump=None, runtime_version=None):
     rep = root / 'replays' / (fx['game'] + '.replay')
     if rep.exists():
         return None
@@ -156,6 +169,7 @@ def run_one(fx, root, spec, dump=None):
         out, rc = 'timeout', -9
     m = RESULT.search(out)
     row = dict(fx, seconds=round(time.time() - t, 1), rc=rc, host=os.uname().nodename,
+               runtime_version=runtime_version,
                winner=m.group(1) if m else ('draw' if 'draw' in out.lower() else None),
                rounds=int(m.group(2)) if m else None, reason=m.group(3) if m else out.strip()[-200:])
     if os.path.exists(str(rep) + '.tmp'):
@@ -177,6 +191,7 @@ def cmd_run(a):
     seeds = [int(s) for s in a.seeds.split(',')]
     spec = arm_full(a.bot)
     bot, params = spec['bot'], spec['params']
+    runtime_version = installed_runtime_version()
     prebuild(bot)
     for o in set(ZOO) | set(GEN_OPPS):  # opponents too: concurrent first builds race on .unswbc-build
         prebuild(o)
@@ -212,7 +227,7 @@ def cmd_run(a):
                         continue
                     if a.budget and f['map'] in HEAVY and time.time() - t0 > max(5.0, a.budget - 90):
                         continue
-                    live.add(ex.submit(run_one, f, root, spec, dump))
+                    live.add(ex.submit(run_one, f, root, spec, dump, runtime_version))
             fill()
             while live:
                 fin = next(as_completed(live)); live.discard(fin)
@@ -399,17 +414,99 @@ def gate(sc, sp, boot, gboot):
     return 'REJECT', why
 
 
+def gate_learned125(pool_c, pool_p, pool_b, gen_c, gen_p, gen_b):
+    """D-045 local acceptance gate for learned/search arms evaluated under 1.2.5."""
+    if not pool_b or not gen_b or not pool_c or not pool_p or not gen_c or not gen_p:
+        return 'INCOMPLETE', ['both complete paired panels and declared parent are required']
+    incomplete = []
+    for panel, boot in (('pool', pool_b), ('gen', gen_b)):
+        for metric in ('win', 'econ~', 'units100', 'total100'):
+            values = boot.get(metric)
+            if not isinstance(values, list) or len(values) < 2 or not math.isfinite(values[1]):
+                incomplete.append(f'{panel} {metric} lower bound is missing or non-finite')
+    if incomplete:
+        return 'INCOMPLETE', incomplete
+    reasons = []
+    for panel, boot, win_floor in (('pool', pool_b, 0.0), ('gen', gen_b, -0.02)):
+        if boot['win'][1] <= win_floor:
+            reasons.append(f'{panel} win lower bound {boot["win"][1]:+.3f} <= {win_floor:+.3f}')
+    for panel, boot in (('pool', pool_b), ('gen', gen_b)):
+        if boot['econ~'][1] <= -0.03:
+            reasons.append(f'{panel} econ~ lower bound {boot["econ~"][1]:+.3f} <= -0.030')
+        for metric in ('units100', 'total100'):
+            if boot[metric][1] < -0.02:
+                reasons.append(f'{panel} {metric} lower bound {boot[metric][1]:+.3f} < -0.020')
+        cand, parent = (pool_c, pool_p) if panel == 'pool' else (gen_c, gen_p)
+        for metric in HYG:
+            if metric not in cand or metric not in parent:
+                incomplete.append(f'{panel} missing tier-2 metric {metric}')
+                continue
+            c, p = cand[metric], parent[metric]
+            if p > 0.05 and c > 1.10 * p:
+                reasons.append(f'{panel} {metric} {p:.2f}->{c:.2f}/1k (>10%)')
+            elif metric == 'death_invalid_per1k' and p <= 0.05 and c > 0:
+                reasons.append(f'{panel} new invalid deaths {p:.2f}->{c:.2f}/1k')
+    if incomplete:
+        return 'INCOMPLETE', incomplete
+    return ('REJECT', reasons) if reasons else ('ACCEPT', ['all D-045 local learned-arm checks pass'])
+
+
+def require_full_learned_coverage(arm, panel, seeds, F):
+    """Learned-arm scores are final only on the complete, fixed five-seed panels."""
+    if F is None or not len(F):
+        raise SystemExit(f'--gate learned125: no {panel} features for {arm}')
+    bot = arm_full(arm)['bot']
+    expected = {fx['game'] for fx in fixtures(bot, panel, seeds)}
+    actual = set(F['game'].astype(str))
+    missing = sorted(expected - actual)
+    extra = sorted(actual - expected)
+    if missing or extra:
+        raise SystemExit(f'--gate learned125: incomplete {panel} coverage for {arm}: '
+                         f'{len(missing)} missing, {len(extra)} unexpected; '
+                         f'first missing={missing[:3]}')
+    logged = set()
+    for path in (RUNS / arm / panel).glob('index*.jsonl'):
+        for line in path.read_text().splitlines():
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            reason = str(row.get('reason', '')).lower()
+            if (row.get('game') in expected and row.get('runtime_version') == '1.2.5'
+                    and row.get('rc') == 0 and row.get('winner') in ('A', 'B', 'draw')
+                    and not any(marker in reason for marker in ('timeout', 'timed out', 'tle'))):
+                logged.add(row['game'])
+    unverified = sorted(expected - logged)
+    if unverified:
+        raise SystemExit(f'--gate learned125: {len(unverified)} {panel} fixtures for {arm} lack a '
+                         f'successful unswbc 1.2.5 run record; first={unverified[:3]}')
+
+
 def cmd_score(a):
     seeds = [int(s) for s in a.seeds.split(',')]
-    res = {'bot': a.bot, 'parent': a.parent, 'seeds': seeds}
+    if a.gate == 'learned125':
+        from tools.analysis.features.frame import FRAME_VERSION
+        if FRAME_VERSION != 7:
+            raise SystemExit(f'--gate learned125 requires FRAME_VERSION 7, found {FRAME_VERSION}')
+        if seeds != [1, 2, 3, 4, 5]:
+            raise SystemExit('--gate learned125 requires exactly --seeds 1,2,3,4,5')
+        if a.phase != 'all':
+            raise SystemExit('--gate learned125 scores the full game; omit --phase late')
+        if not a.parent:
+            raise SystemExit('--gate learned125 requires --parent')
+    res = {'bot': a.bot, 'parent': a.parent, 'seeds': seeds, 'gate_method': a.gate}
     for panel in ('pool', 'gen'):
         Fc = load(a.bot, panel, seeds)
+        if a.gate == 'learned125':
+            require_full_learned_coverage(a.bot, panel, seeds, Fc)
         if Fc is None or not len(Fc):
             continue
         Fc = normalise(Fc, panel)
         res[panel] = {'cand': summary(Fc)}
         if a.parent:
             Fp = load(a.parent, panel, seeds)
+            if a.gate == 'learned125':
+                require_full_learned_coverage(a.parent, panel, seeds, Fp)
             if Fp is not None and len(Fp):
                 # compare on the common fixtures only (a partial run is scored against the same games)
                 k = ['seed', 'mapkey', 'opp', 'side']
@@ -425,7 +522,14 @@ def cmd_score(a):
                 # per-map econ delta (diagnostic)
                 mc = Fc.groupby('mapkey')['econ|n'].mean(); mp = Fp.groupby('mapkey')['econ|n'].mean()
                 res[panel]['map_econ_delta'] = {k: round(float(mc[k] - mp[k]), 3) for k in mc.index if k in mp.index}
-    if a.parent and 'pool' in res and 'parent' in res['pool']:
+    if a.gate == 'learned125':
+        if 'pool' not in res or 'gen' not in res or 'parent' not in res['pool'] or 'parent' not in res['gen']:
+            res['verdict'], res['why'] = 'INCOMPLETE', ['both complete paired panels and declared parent are required']
+        else:
+            v, why = gate_learned125(res['pool']['cand'], res['pool']['parent'], res['pool'].get('boot'),
+                                     res['gen']['cand'], res['gen']['parent'], res['gen'].get('boot'))
+            res['verdict'], res['why'] = v, why
+    elif a.parent and 'pool' in res and 'parent' in res['pool']:
         g = res.get('gen', {})
         v, why = gate(res['pool']['cand'], res['pool']['parent'], res['pool'].get('boot'), g.get('boot'))
         res['verdict'], res['why'] = v, why
@@ -499,6 +603,8 @@ def main():
     r.add_argument('--reverse', action='store_true')
     s = sub.add_parser('score'); s.add_argument('bot'); s.add_argument('--parent'); s.add_argument('--seeds', default='1,2,3')
     s.add_argument('--phase', default='all', choices=['all', 'late'])
+    s.add_argument('--gate', default='d032', choices=['d032', 'learned125'],
+                   help='d032 (default) or the prospective unswbc 1.2.5 learned-arm gate')
     s.add_argument('--json')
     c = sub.add_parser('cpu'); c.add_argument('bot'); c.add_argument('--opp', default='ares-v06-expanded-search-support')
     c.add_argument('--extra'); c.add_argument('--wall', type=float, default=30.0)

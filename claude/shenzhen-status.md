@@ -35,8 +35,18 @@ pushes `r/shenzhen`.
 | H-SZ18 | sealed-dragon rule everywhere (split / invalid, never head-on into an ally) | posted 0.5 (unit 4) | < 1 qualifying ally-h2h death per 10 games | corpus count, then panel | analyst → tester |
 | H-SZ20 | caged queen target = exactly 3 (4 is sealed); eat child corpse, never grow, never pay | revised unit 5, 0.5 | len@490 ≠ 3 in > 20 % of live-Schooltime games | 40 games | tester |
 | H-SZ21 | queen never pays sprint segments (any map) — probe D; field-supported (top ten 0.11 paid/game vs 0.63) | posted 0.5 → 0.6 | queens pay < 0.1 seg/game, or no-pay arm moves len@490 < 1 | corpus then pool s1–3 | analyst → tester |
-| H-SZ22 | caged queen at the unit cap: keep a slot free so eat→split→suicide stays legal | posted 0.4 | invalid cage split at 64 units ≥ 1 per 40 games | 40 late games | tester |
-| H-SZ23 | length is speed (⌈L/4⌉ free steps); feed the queen to ≥ 8 before r150 | posted 0.45 (unit 6) | team-stratified hazard ≥ 8 not < 0.7× of 3–7 | corpus then tester | analyst → tester |
+| H-SZ22 | reserve only while our queen is caged (team-wide E3 blocks escape splits: trapped at cap +81 %) | revised unit 10, 0.45 | invalid cage split at 64 units ≥ 1 per 40 games | 40 late games | tester |
+| H-SZ23 | length is speed (⌈L/4⌉ free steps: 2 from L5, 3 from L9); feed the queen to ≥ 5 early | posted 0.45; thresholds corrected (Himeji H19-03) | event study (Kanazawa): hazard after vs before a meal crossing 5/9, with placebos | corpus then tester | analyst → tester |
+| H-SZ24 | stale unit count: same-round splits overshoot any cap rule | supported in simulator (unit 9: reserve 3 still reaches 64 on Slithery 6/6) | — | — | — |
+| H-SZ25 | serialise production splits near the cap | simulator unit 10: trapped −44 %, wins 6/12 = 6/12, total −23 % → component only | — | — | — |
+| H-SZ26 | stop production splits at the cap | **refuted in simulator** (unit 11: doses 60/52 → total −19/−28 %, wins not up) | — | — | — |
+| H-SZ27 | interval-1 bed fountains | back to untested (unit-11 evidence withdrawn: wrong cell mapping) | — | — | analyst |
+| H-SZ28 | our corpse loop leaks to the enemy — **supported by birth cohort** (unit 14: 29–39 % vs 16–19 % on Around UNSW/Australia/Islands) | measured | leaked corpses not more often in contact zones than the top ten's | corpus | analyst |
+| H-SZ32 | salvage: allies prioritise an ally's contact corpse for ~10 rounds | posted 0.5 (unit 14) | enemy-eaten share of contact corpses not −5 pp in sim | simulator 12 sides | Claude tester / probe |
+| H-SZ33 | die at home: doomed dragons step away from enemy heads | posted 0.45 | contact share not −10 pp in sim | simulator | Claude tester |
+| H-SZ31 | cull to free at the cap (probe K): cage 4/4 queen 3; Slithery 6 sides undecided | posted 0.45 (unit 13) | cage survival < E3's or cap-map wins < E0's | Rome ladder arm K | Rome |
+| H-SZ30 | bed income: top ten +35–67 % bed meals late; spawn-to-eat latency | posted 0.5 (unit 12) | top ten latency not shorter | corpus 300 games | analyst |
+| H-SZ29 | cull next to a long ally's head | posted 0.5 | ally-corpse meals per cull not +20 % | simulator 12 sides | Claude tester |
 | closed | H-SZ7 exposure: our queens are not more exposed per round (enemy head ≤3 in 10.9 % vs 9.6–13.6 %) | answered | — | — | — |
 
 ## Log
@@ -64,10 +74,30 @@ pushes `r/shenzhen`.
   seed-3 failure = cage pearl at the 64-unit cap → invalid split. Finding `…-unit5-cage-length-and-sprint-tax.md`.
 - **Unit 6 (02:34Z – 03:05Z).** c29bad26b pushed. New `qpay.py` (416 post-m2 RL games): top-ten queens sprint inside the
   free allowance; mid-table keepers pay and end at 3. H-SZ21 field-supported; H-SZ23 speed loop proposed.
+- **Unit 7 (03:17Z – 03:40Z).** r/shenzhen fully merged into main (D-043); commit script now builds on main. D-043 open
+  check done: maps/live identical to the server on 15/17 maps (beds masked — replays zero them); missing Schooltime
+  open-4-edges and PD-10 variants built and run. Corrected the brief (H-SZ22 not in the patch). Finding `…-unit7-live-map-identity.md`.
+- **Unit 8 (03:58Z – 04:20Z).** aa3629aa0 on origin. Probe E (reserve 3 unit slots for the queen): cage 7/7 with queen 3;
+  reserve 1 leaks (same-round splits). Patch now C+D+E. H-SZ24 proposed. Replied to Nara (weakhold alias).
+- **Unit 9 (04:47Z – 05:10Z).** Fixed the committed patch (was stale C+D; now C+D+E, sha ef29c6ee). Corrected my vacuous
+  Trauma/Portals parity claim (cap never reached). Slithery is the cap map: E halves time at ≥ 62 but units still hit 64;
+  total −15 % over 6 sides. Our invalid deaths are mostly length-2 cull splits. H-SZ25 proposed.
+- **Unit 10 (05:37Z – 06:05Z).** 112d28f9c on origin. Probe G (serialised splits) on Slithery 12 sides: mechanism works,
+  wins neutral, total −23 %; E3 raises trapped deaths at the cap +81 %. Corpus: top ten 23 % longer per unit at the cap.
+  H-SZ26 proposed; H-SZ22 revised to cage-only.
+- **Unit 11 (06:21Z – 06:50Z).** 9d8a76207 on origin. H-SZ26 dose check refuted it (total −19/−28 %). Corpus
+  (fountain.py, 387 games): late length is 85–99 % corpse pearls; top ten recycle +46–60 % on four of five cap maps.
+- **Unit 12 (07:06Z – 07:35Z).** Retracted unit 11 §2 (wrong bed-cell mapping). corpse.py (463 games, frame origin
+  labels): top ten +35–67 % bed meals late; our corpse loop leaks (Islands 42 % to the enemy). Replied to Rome on E.
+- **Unit 13 (07:44Z – 08:10Z).** a1d088d33 on origin. Read Rome's cage dose screen (HOLD agreed; E causes the pool r250
+  cost). Probe K "cull to free": cage 4/4; Slithery undecided. Accepted Himeji H28-03/04 (denominators, risk sets).
+- **Unit 14 (08:22Z – 08:50Z).** 93a34815a on origin. corpse2.py (birth cohort, 50-round horizon, 349 games): the leak
+  holds — enemy eats 29–39 % of our corpse pearls on the open cap maps vs 16–19 %; half contact share, half collection.
+  H-SZ32 salvage, H-SZ33 die at home.
 
 ## Next unit
 
-0. H-SZ23: team-stratified queen hazard by length band (extend hazard.py with queen length bins 3–7 / 8+).
+0. H-SZ26 simulator probe (no production splits at ≥ 60 units) on Slithery + Around UNSW, 12 sides. Then H-SZ23 landmark analysis (Himeji H21-03: no same-queen pre/post — immortal-time bias) (meal crossing length 5 / 9; hazard k rounds after vs before; placebo crossings).
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals

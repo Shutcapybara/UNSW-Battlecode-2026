@@ -103,3 +103,39 @@ Priority-ordered, with the era evidence attached:
    symmetry. The top ten now contains two queen-keepers; hunting flips their verdicts back.
 5. **H-S1 portal memory (antioch's, endorsed)** — 57 % vs 19 % death-on-next-transit persistence is the
    strongest untested corpus fact in the portal lane.
+
+# Addendum (4 Oct, D-044): RL translations + a state-distribution fact
+
+## State-distribution fact: when our queen dies (post-m2, 286 team-7 side-games, 280 deaths)
+
+Death-round percentiles: p10 **16**, p25 44, **median 78**, p75 137, p90 205. Causes: h2h 140, wall 90, self 41,
+body 9. By phase: r0–10: 23, r10–50: 62, **r50–150: 140 (half the hazard mass)**, r150+: 55. Implication for arms
+and encoders: interventions keyed only to the opening (r0 split legality, cage rescue) address under a third of
+the hazard; the median death is mid-game contact/corridor, so pocket/pocket-size features and queen-path safety
+must be live all game (kanazawa's H-KZ12 per-cell pocket feature matches this distribution).
+
+## RL translation — queen keeping (check-2 gap table, keeper anatomy, N6)
+
+- (a) **Observation**: own-queen id/alive/length (self-known), enemy-queen alive + length + last-known-position
+  age (partial observability — the enemy queen's identity is inferable from spawn mirror + sighting order), own
+  unit count (global), per-cell static pocket size (precomputable), round.
+- (b) **Action**: queen move/split/hold; **ally-cull-adjacent-to-queen** (deliberate invalid command as a feeding
+  action — the keepers' mechanism); split-size choice; sprint length (free under ⌈L/4⌉).
+- (c) **Value/reward**: terminal terms now three-tiered — queen-length margin, then longest, then total; any
+  shaped reward must parse the engine's `reason='queen'` verdict class (our FRAME7 decoders do).
+- (d) **Demonstration**: cloneable — Vibing++ (306), Sponge (213), fandagong (552) replays demonstrate feeding +
+  patrol + selective cull directly; no exploration needed for the keeper policy itself.
+
+## RL translation — h2h length is not armor
+
+- (a) Observation: contact geometry (heads' relative positions, speeds), not length-difference as a survival term.
+- (b) Action: approach/avoid/yield choices for every dragon, not just the queen.
+- (c) Value: no length-based collision-survival bonus is justified in the value model (857 victims were longer);
+  length's value is tiebreak + eating capacity only.
+- (d) Demonstration: universal behaviour; nothing to clone — it is a negative constraint on value features.
+
+## RL translation — verdict-class measurement (reason='queen')
+
+- Reward engineering fact: post-1.2.3 games end in four classes (elimination / **queen** / longest / total);
+  every value-model label and win-column must use the engine verdict, and every "round-limit" denominator
+  includes the queen class. My probe fix (2026-10-04) implements this; clone the filter, not the old one.
