@@ -1,0 +1,895 @@
+{
+  "summary": {
+    "us": {
+      "n": 20,
+      "series": 12,
+      "ranked": 2,
+      "round_start_visible": 15,
+      "attacker_turn_visible": 20,
+      "changed": [
+        869494,
+        881387,
+        858816,
+        857671,
+        869498
+      ]
+    },
+    "opp": {
+      "n": 4,
+      "series": 4,
+      "ranked": 2,
+      "round_start_visible": 3,
+      "attacker_turn_visible": 4,
+      "changed": [
+        860828
+      ]
+    }
+  },
+  "rows": [
+    {
+      "game": 852484,
+      "series": "b248db9d-f075-4f8c-b846-9de7ac201362",
+      "ranked": true,
+      "map": "Autarky",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+      "who": "opp",
+      "round": 131,
+      "queen": 1,
+      "killer": 18,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          51,
+          11
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          51,
+          13
+        ],
+        "queen_length": 4,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 131,
+        "head": [
+          52,
+          13
+        ],
+        "length": 4
+      }
+    },
+    {
+      "game": 869495,
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "ranked": false,
+      "map": "Australia",
+      "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+      "who": "opp",
+      "round": 142,
+      "queen": 0,
+      "killer": 47,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          49,
+          23
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          47,
+          23
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 142,
+        "head": [
+          47,
+          22
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 869495,
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "ranked": false,
+      "map": "Australia",
+      "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+      "who": "us",
+      "round": 210,
+      "queen": 1,
+      "killer": 252,
+      "round_start_cheb": 1,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 1,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          35,
+          24
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          36,
+          23
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 210,
+        "head": [
+          36,
+          24
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 866875,
+      "series": "9fb55567-7111-4a03-bf52-bd8c35f27299",
+      "ranked": false,
+      "map": "Autarky",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff",
+      "who": "opp",
+      "round": 207,
+      "queen": 1,
+      "killer": 83,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          51,
+          10
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          51,
+          12
+        ],
+        "queen_length": 4,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 207,
+        "head": [
+          52,
+          12
+        ],
+        "length": 4
+      }
+    },
+    {
+      "game": 860828,
+      "series": "c7cc00f4-865e-4585-9f9f-75458005a013",
+      "ranked": true,
+      "map": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "who": "opp",
+      "round": 488,
+      "queen": 0,
+      "killer": 191,
+      "round_start_cheb": 4,
+      "round_start_visible": 0,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          2,
+          4
+        ],
+        "killer_length": 4,
+        "queen_head": [
+          2,
+          2
+        ],
+        "queen_length": 24,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 488,
+        "head": [
+          2,
+          0
+        ],
+        "length": 24
+      }
+    },
+    {
+      "game": 869494,
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "ranked": false,
+      "map": "Prisoners Dilemma",
+      "map_hash": "88eea47e61ffdbf5e54e9d4cb4c935fda03328d1576ebbd2e4167e42a0c28050",
+      "who": "us",
+      "round": 14,
+      "queen": 0,
+      "killer": 11,
+      "round_start_cheb": 4,
+      "round_start_visible": 0,
+      "attacker_turn_cheb": 3,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          19,
+          6
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          16,
+          4
+        ],
+        "queen_length": 3,
+        "distance": 5
+      },
+      "queen_last_turn_start": {
+        "round": 14,
+        "head": [
+          15,
+          4
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 858820,
+      "series": "7821f89b-253b-47a4-a2d1-96b465c525d6",
+      "ranked": false,
+      "map": "Prisoners Dilemma",
+      "map_hash": "aebe7fff18a8613b63aa7736c61c3df3a44d2ea92a0b6ad7301a52fc5c154857",
+      "who": "us",
+      "round": 15,
+      "queen": 0,
+      "killer": 23,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          16,
+          7
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          16,
+          9
+        ],
+        "queen_length": 4,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 15,
+        "head": [
+          15,
+          9
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 881387,
+      "series": "1aba17eb-0524-45bf-afef-d164ed7cd585",
+      "ranked": false,
+      "map": "Default",
+      "map_hash": "08c80bd457d965982693db7d02180cb99e272e721f8aedc8d08ff88f8e787cef",
+      "who": "us",
+      "round": 26,
+      "queen": 1,
+      "killer": 10,
+      "round_start_cheb": 4,
+      "round_start_visible": 0,
+      "attacker_turn_cheb": 3,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          2,
+          13
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          2,
+          10
+        ],
+        "queen_length": 2,
+        "distance": 3
+      },
+      "queen_last_turn_start": {
+        "round": 26,
+        "head": [
+          2,
+          9
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 869502,
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "ranked": false,
+      "map": "Queen Of Spades",
+      "map_hash": "ea5704a61d5bb4b875f660e99c59e35fcdbf8efb8f98c4b47e3dcbae36f4f15e",
+      "who": "us",
+      "round": 28,
+      "queen": 0,
+      "killer": 3,
+      "round_start_cheb": 3,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          10,
+          3
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          8,
+          3
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 28,
+        "head": [
+          7,
+          3
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 860202,
+      "series": "9e703247-42f9-4e3c-9787-e26ee9101c7f",
+      "ranked": false,
+      "map": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "who": "us",
+      "round": 38,
+      "queen": 0,
+      "killer": 33,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          8,
+          30
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          10,
+          30
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 38,
+        "head": [
+          10,
+          31
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 866888,
+      "series": "9fb55567-7111-4a03-bf52-bd8c35f27299",
+      "ranked": false,
+      "map": "Trophy",
+      "map_hash": "3c76d5636a2d6e3d6705ed785cce039c66e4991bdca305b3927d153f58125799",
+      "who": "us",
+      "round": 50,
+      "queen": 1,
+      "killer": 8,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          7,
+          17
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          7,
+          19
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 50,
+        "head": [
+          6,
+          19
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 866446,
+      "series": "7dee1f3e-8e25-4ea6-8d60-9393d0099d5c",
+      "ranked": false,
+      "map": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "who": "us",
+      "round": 55,
+      "queen": 0,
+      "killer": 41,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 1,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          3,
+          34
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          4,
+          33
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 55,
+        "head": [
+          4,
+          32
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 858822,
+      "series": "7821f89b-253b-47a4-a2d1-96b465c525d6",
+      "ranked": false,
+      "map": "Autarky",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+      "who": "us",
+      "round": 58,
+      "queen": 0,
+      "killer": 62,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          36,
+          14
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          34,
+          14
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 58,
+        "head": [
+          34,
+          16
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 870342,
+      "series": "6f5d3a7e-a827-4aa4-a537-df6f86428a97",
+      "ranked": false,
+      "map": "Islands",
+      "map_hash": "e3175217d1717035d51164b2be0c9f6b962aeebd700e9f7da02be02cffca3cd5",
+      "who": "us",
+      "round": 74,
+      "queen": 0,
+      "killer": 42,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          53,
+          33
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          53,
+          35
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 74,
+        "head": [
+          54,
+          35
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 860203,
+      "series": "9e703247-42f9-4e3c-9787-e26ee9101c7f",
+      "ranked": false,
+      "map": "Trophy",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "who": "us",
+      "round": 78,
+      "queen": 1,
+      "killer": 2,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 1,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          14,
+          18
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          13,
+          19
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 78,
+        "head": [
+          12,
+          19
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 858817,
+      "series": "7821f89b-253b-47a4-a2d1-96b465c525d6",
+      "ranked": false,
+      "map": "Trophy",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "who": "us",
+      "round": 79,
+      "queen": 1,
+      "killer": 30,
+      "round_start_cheb": 1,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 1,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          12,
+          6
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          13,
+          5
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 79,
+        "head": [
+          12,
+          5
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 852909,
+      "series": "4b7068c8-e7a5-4934-af40-04696008aaa0",
+      "ranked": false,
+      "map": "Queen Of Spades",
+      "map_hash": "3ffe4ab7cb5e880f7ddb7d5d1dcfd95c5891e460468a24130d1c6dd50e23b141",
+      "who": "us",
+      "round": 84,
+      "queen": 1,
+      "killer": 4,
+      "round_start_cheb": 3,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          20,
+          31
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          20,
+          29
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 84,
+        "head": [
+          20,
+          28
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 881972,
+      "series": "b69e0d30-99df-4618-8364-1bf852f69ec9",
+      "ranked": false,
+      "map": "Default",
+      "map_hash": "2aa3b6c52fa4b6644e6bc5a389528d36995aef59cfa37e5f9b21c2859d0cd9dc",
+      "who": "us",
+      "round": 84,
+      "queen": 0,
+      "killer": 34,
+      "round_start_cheb": 3,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          7,
+          9
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          7,
+          11
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 84,
+        "head": [
+          7,
+          12
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 858816,
+      "series": "7821f89b-253b-47a4-a2d1-96b465c525d6",
+      "ranked": false,
+      "map": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "who": "us",
+      "round": 89,
+      "queen": 0,
+      "killer": 188,
+      "round_start_cheb": 4,
+      "round_start_visible": 0,
+      "attacker_turn_cheb": 3,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          26,
+          34
+        ],
+        "killer_length": 5,
+        "queen_head": [
+          23,
+          32
+        ],
+        "queen_length": 3,
+        "distance": 5
+      },
+      "queen_last_turn_start": {
+        "round": 89,
+        "head": [
+          22,
+          32
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 881395,
+      "series": "1aba17eb-0524-45bf-afef-d164ed7cd585",
+      "ranked": false,
+      "map": "Australia",
+      "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+      "who": "us",
+      "round": 90,
+      "queen": 1,
+      "killer": 16,
+      "round_start_cheb": 1,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 1,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          58,
+          31
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          59,
+          30
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 90,
+        "head": [
+          58,
+          30
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 860316,
+      "series": "ac08399b-eede-47a1-91a5-edebe0171e04",
+      "ranked": true,
+      "map": "Australia",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "who": "us",
+      "round": 107,
+      "queen": 1,
+      "killer": 45,
+      "round_start_cheb": 2,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 1,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          21,
+          55
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          22,
+          56
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "queen_last_turn_start": {
+        "round": 107,
+        "head": [
+          22,
+          57
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 857671,
+      "series": "3f21fb23-f1c6-4d30-84fa-12073a76adf7",
+      "ranked": false,
+      "map": "Around UNSW",
+      "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595",
+      "who": "us",
+      "round": 118,
+      "queen": 1,
+      "killer": 104,
+      "round_start_cheb": 4,
+      "round_start_visible": 0,
+      "attacker_turn_cheb": 2,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          28,
+          32
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          29,
+          34
+        ],
+        "queen_length": 6,
+        "distance": 3
+      },
+      "queen_last_turn_start": {
+        "round": 118,
+        "head": [
+          29,
+          36
+        ],
+        "length": 6
+      }
+    },
+    {
+      "game": 880465,
+      "series": "5ccf0692-658e-4aac-8fb0-a19c3dae7645",
+      "ranked": true,
+      "map": "Slithery Fight",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "who": "us",
+      "round": 120,
+      "queen": 0,
+      "killer": 452,
+      "round_start_cheb": 3,
+      "round_start_visible": 1,
+      "attacker_turn_cheb": 3,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          22,
+          19
+        ],
+        "killer_length": 4,
+        "queen_head": [
+          19,
+          19
+        ],
+        "queen_length": 3,
+        "distance": 3
+      },
+      "queen_last_turn_start": {
+        "round": 120,
+        "head": [
+          19,
+          20
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 869498,
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "ranked": false,
+      "map": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "who": "us",
+      "round": 180,
+      "queen": 0,
+      "killer": 110,
+      "round_start_cheb": 4,
+      "round_start_visible": 0,
+      "attacker_turn_cheb": 3,
+      "attacker_turn_visible": true,
+      "attacker_turn_state": {
+        "killer_head": [
+          26,
+          11
+        ],
+        "killer_length": 4,
+        "queen_head": [
+          23,
+          12
+        ],
+        "queen_length": 3,
+        "distance": 4
+      },
+      "queen_last_turn_start": {
+        "round": 180,
+        "head": [
+          22,
+          12
+        ],
+        "length": 3
+      }
+    }
+  ],
+  "contract": "Geometric Chebyshev<=3 visibility at attacker TurnStart, not proof of information use, targeting, or absence of shared tracking. Same selected24 cases; no population inference."
+}

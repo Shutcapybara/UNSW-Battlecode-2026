@@ -1,0 +1,33 @@
+{
+  "same_opponent": 939,
+  "old_series_games": [
+    1021319,
+    1021322,
+    1021318,
+    1021321,
+    1021320
+  ],
+  "new_series_games": [
+    1025055,
+    1025051,
+    1025054,
+    1025052,
+    1025053
+  ],
+  "full_hash_seat_matches": [],
+  "old_hashes": {
+    "Maze": "502427b4a4b583c47a0a452252b1283836398d12bdb3f448ae6a0a40c3de0859",
+    "Autarky": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+    "Default": "2aa3b6c52fa4b6644e6bc5a389528d36995aef59cfa37e5f9b21c2859d0cd9dc",
+    "weakhold": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+    "Devil": "cb4efb7b4ae574b60bfde734b23ad78b39e56333de79ffa31729f9fdcfba3ad8"
+  },
+  "new_hashes": {
+    "Portals": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+    "Queen Of Spades": "3ffe4ab7cb5e880f7ddb7d5d1dcfd95c5891e460468a24130d1c6dd50e23b141",
+    "Prisoners Dilemma": "88eea47e61ffdbf5e54e9d4cb4c935fda03328d1576ebbd2e4167e42a0c28050",
+    "weakhold": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+    "Stripes": "63cb068bc50488498d5d8592529026bae727d681f3ca3a41995902d0cf5f3c23"
+  },
+  "interpretation": "Same ranked mode, own14585 and seatA; no exact map-hash matched game. Opponent IDs blank. Win swing is not switching evidence."
+}

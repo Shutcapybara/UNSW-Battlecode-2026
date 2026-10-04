@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-04T08:56:45.341743+00:00",
+  "index_games": 122794,
+  "index_sha256": "515ac199a6bd79a4ed6b9997ce6de84288374fd41b33ce046f712cf63724934f",
+  "delta": 297,
+  "new_own": [
+    1025055,
+    1025051,
+    1025054,
+    1025052,
+    1025053
+  ],
+  "latest_own": "2026-10-04T07:27:19.282Z",
+  "own_watched": false,
+  "progress_at": "2026-10-04T08:54:13.889493+00:00",
+  "ladder": "20261004T084952Z.json",
+  "ladder_sha256": "ff5c7c770968072cd9f20d0b3e7c7f110dba1dc06a6b9929db7fe123c4b4ca90",
+  "submissions": [
+    [
+      14265,
+      "idle",
+      "2026-10-04T08:49:52.403016+00:00"
+    ],
+    [
+      14585,
+      "active",
+      "2026-10-04T08:49:52.402554+00:00"
+    ]
+  ],
+  "series": [
+    1173,
+    "2026-10-04T08:49:52.388949+00:00"
+  ],
+  "sources": {
+    "HEAD": "9f39befadec2d5a23b77b8b7ce440603affca7f2",
+    "origin/main": "e70867963b97e0d4fa7d27ce8188ce0a33767d55",
+    "origin/r/kanazawa": "54d23e7dd1256cf285074bd422bbc27c1c620ea8",
+    "origin/r/shenzhen": "d42e90558675f2ca138e65c9f96d06451cb7a5e5",
+    "origin/r/Seoul": "905c8a1ca4f3bb3e0675a9141ff52b2be48d9bdc",
+    "origin/r/rome": "1ac66fa62476cae09fd8f9d5463592c561171602",
+    "origin/r/chongqing": "9f2b15829af0c1a05817b9d59ba095165ec0d145",
+    "origin/r/nara": "88bea787ec7c92401c70aef87b78067f13e6b98b",
+    "origin/r/antioch": "2c7113f6657362ce68bc0d667bf932d665c1a31c",
+    "origin/r/carthage": "5b69fa9d07a0fd4684826f752438a2e8e66d9f45",
+    "origin/r/kyoto": "fccea71c060fc7bf0cae41aeef8d063d9894d8c6"
+  },
+  "source_hashes": {
+    "tools/hub/corpus.py": "6bb33fd775768eafdaf38c287ce1853f45e8852d2e40acd5077502f3fec8c51c",
+    "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+    "tools/s1/build.py": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f"
+  },
+  "top10": [
+    306,
+    264,
+    213,
+    91,
+    112,
+    566,
+    55,
+    842,
+    952,
+    507
+  ],
+  "own_ladder": {
+    "dev": false,
+    "elo": 1720,
+    "id": 7,
+    "name": "Just Keep Swimming",
+    "rank": 76,
+    "wins": 5207
+  },
+  "peer_receipts": {
+    "tools/kanazawa/q_avoid.py": "8b7681f6690529f9f6d46ca50e1fc853bc0858d13ae901f8afe38f964449ec36",
+    "tools/kanazawa/q_seen.py": "a6e1eb9d83354b0ca2795fc7905c4a29ef36c2c29e160db74d19232b0a7d19e1",
+    "tools/shenzhen/corpse2.py": "5768ce75074952520d76796b46c8b164e8c24eb4684758345b458081c409d284",
+    "tools/shenzhen/q_corpse2.py": "32445d0bc55e8d747b28afd64c9575aeec001d904fb67525cfa8bcae6432d3a9"
+  }
+}

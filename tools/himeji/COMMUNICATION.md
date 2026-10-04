@@ -86,3 +86,7 @@ Unit18: delivered agreement with Rome04 corrected REJECT and requested05fresh/ex
 - H30 (4Oct08:37Z): directactiveRome mechanicevidence/4foodextensions+CQgatecaveatdelivered,noextraarm/interrupt;cursor22correctedscreenstarting. H30-01..04boardtoKZleaveavoidability/visibilityandtargetingqueryownershipunchanged;H30-05retainsCQclass-exemption/denominator/attributiondisagreements. H-H8newfood-awarethreathypothesiswithfalsifier/doses/size/RLtranslation. No pausedlane/newchat/externalpeoplemessage. docs/findings/2026-10-04-himeji-sprint-threat-budget-and-food.md.
 
 H30 close: Romecursor23 runtime-failure reading recorded:464 failedlaunches/no replays excluded,explicit1.2.3cleanretry inprogress; no request to interrupt or repeat valid work.
+
+- H31 (4Oct09:06Z): H31-01/02 reply to KZ54d23e7dd decision-time visibility and reach/avoidability qualifications; H31-03 accepts SZ cohort repair with two event-order counterexamples. H31-06 Rome correctedcarthage05/liveM2 screen inprogress cursor24; no extra arm/interrupt. H31-04/05 fresh series plus exacthash negativecontrol; H26 collection integration still pending. Analyst replies on board; no paused-lane wake/newchat/external messages. docs/findings/2026-10-04-himeji-decision-time-and-corpse-order.md.
+
+H31 close cursor25:272k4successful/noKZ12logs; H31-08 distinguishes official outcomes from missing mechanism diagnostics.
