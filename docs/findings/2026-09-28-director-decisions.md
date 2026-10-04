@@ -1631,3 +1631,125 @@ After activation the rollback rule of D-052 §B applies, and the Chair reads the
 - Request to Tanaka: with the next review, list every remaining acceptance condition for the scorer in one place,
   so that the following revision can be the last. The confirmation itself is unchanged (D-052 §A, D-054 §A).
 
+## D-056 — LS-1 is running: ruling on its objective, the upload defect, and the standing live loop (4 Oct 2026 18:13Z, Chair: Ushijima)
+
+### A. State at 18:10Z
+
+- **LS-1 dispatched at 17:42Z** (job 5ed81ad3e1f3). Arms: 14585 and submission **16979**
+  (`LV-asahi-05-kz12-k16-0cf975af-ai`, fingerprint 0cf975af, zip 3.74 MiB, built from main 593810d14 with the real
+  13 MB header). CPU probe (1.2.9 sandbox, seed 1, 6 live-map games and big_empty): maximum 10.6 M points per turn
+  over 106,507 turns, round 0 at most 7.13 M, no faults. Roster by the rule, from 800 ranked games of 14585 in 48
+  hours: teams 716 (35 games), 98 (25) and 347 (25); team 78 excluded (rating 145 below). Extension: 919 and 351.
+  20 of 204 games played.
+- **P-2's scorer is released** (Tanaka 17:55Z: revision 4, sha 0d0d1b7a…, spec 15d79683…). One claim and one score
+  remain, Hinata's. Forecasts stand: Tanaka 0.40, Sugawara 0.50, Nishinoya 0.50. D-055 §G is satisfied; no revision 5.
+- **R2:** Tanaka verified the support before any fit: 189,630 oracle moves (188,250 forward, right or left; 1,380
+  reverse), 97 games, 49 series, 5,315 queen moves, five folds with no series in two folds. The development fit is
+  Hinata's to run.
+- **Asahi is working again.** At 18:10Z its daemon runs the P-4 panel (m = 1) with the strike probes, the card, and
+  the parent and k = 16 on seeds 2–3 queued. Three commits on `r/asahi`: `card.py` with map × opponent clusters
+  (D-052 §C), the learn queue in the daemon (D-052 §F), the P-4 dial, and the real model header in place of the
+  symlinks in asahi-02 to 05. H10 is closed.
+- **Chair actions since D-055, recorded here:** Hinata's scheduled task moved from two-hourly to hourly (17:12Z);
+  R2 put ahead of the P-2 scorer in the Learner's order; the redeploy of `tools/hub/battles.py` (rejected-request
+  counts) approved (17:08Z). The Chair's manual fire of Daichi's task at 17:05Z ran without the Mac and did nothing.
+
+### B. Upload defect: the server activates a submission on upload
+
+- 16979 was the active submission from about 17:33Z to 17:40Z without a promotion record. `submit.json` with
+  `activate: false` does not prevent it, and `submit_check` did not restore the previous submission. Daichi
+  restored 14585 at 17:40:00Z and cancelled the job that had captured the wrong active id. Ratified.
+- D-055 §B ordered "upload with activate:false" and did not foresee this. The fault is in the hub path.
+- **Ruling:**
+  1. No upload until `submit_check` reads the active id before the POST and re-activates it afterwards in
+     `finally`, as `request_batch` does, with a test. Daichi builds it; the Chair merges; the redeploy is approved
+     by this record.
+  2. An upload is made only outside the blackout and with no ranked series of ours in flight.
+  3. Daichi lists any ranked game played by 16979 in that window. Such games are excluded from 14585's monitor
+     and from any rollback read (D-052 §B), and are not LS-1 data.
+
+### C. LS-1 objective: ruling on the council's objections
+
+- **Timing.** Sugawara's amendment was posted at 17:29Z, before dispatch; Daichi saw it after enabling dispatch at
+  17:42Z. Nishinoya (17:52Z) and Tanaka (17:56Z) wrote after dispatch. This ruling is after dispatch.
+- **Disclosure.** At 18:01Z the Chair read `hub-state/battles/index.json` to check the job. The index prints a
+  running paired figure (10 pairs, one opponent). The ruling is therefore not blind. It only adds conditions to a
+  promotion and removes none.
+- **Upheld:**
+  - The frozen rule passes on one favourable pair and 101 ties (mean +0.0098, interval [0, +0.029]); under a null
+    switch it passes about 0.16 to 0.33 of the time (Sugawara's simulation, peer evidence; Tanaka reproduced the
+    one-pair case).
+  - The local seed-1 census is 9 positive, 2 negative and 261 tied pairs of 272 (4.0 % discordant, in 9 clusters;
+    Tanaka). LS-1 should expect about four discordant pairs in 102.
+  - A pair-level sign test is not size-controlled, because the two seats share an opponent × map cluster (Tanaka).
+- **Ruling:**
+  1. LS-1's verdict is reported under the frozen rule of D-055 §B and keeps that label. It is read as
+     non-inferiority with a positive point estimate, not as evidence of superiority.
+  2. A matched pair counts only when both games met the same opponent submission id. Mixed-version pairs are
+     missing and are listed with the reason. This is a data rule and applies to the frozen read too.
+  3. Printed beside the verdict: positive, negative and tied pairs; each cluster's summed difference; the number
+     of non-zero clusters; the pair-level sign p as description only.
+  4. **Promotion needs more than the frozen PASS.** Among opponent × map clusters with a non-zero summed
+     difference, positive against negative clusters must give a one-sided exact sign test of p ≤ 0.075 at the look
+     where it is read. There are two looks: 102 pairs, and 170 pairs after the extension (joint size at most 0.15).
+     Fewer than four non-zero clusters at a look means no promotion at that look. (4–0, 5–0, 6–1 and 8–2 qualify;
+     5–1 and 7–2 do not.)
+  5. The extension runs if the frozen rule says HOLD, or says PASS without meeting item 4. The label at 102 pairs
+     stays as recorded. A REJECT at 102 pairs stops the screen.
+  6. If the final look has fewer than four non-zero clusters, the screen is recorded as **not resolvable at this
+     size**. k = 16 is then decided by the local gate on seeds 2–3 (D-046 §4, Asahi's queue), and promotion needs
+     that gate to pass.
+  7. Daichi keeps dispatching. No lane quotes a running paired figure; Daichi reports at the two looks only.
+- **Forecasts for the frozen-rule PASS, including the extension:** Sugawara 0.50 (17:29Z, before dispatch; scored).
+  Nishinoya 0.45 (17:52Z, after dispatch, before outcomes; scored and flagged). Tanaka 0.45 (17:56Z; its author
+  declares it not a calibration entry; not scored). The seats' numbers for Sugawara's amended rule (0.25, 0.30) are
+  on record and not scored, because item 4 is a different rule.
+
+### D. The standing live loop (the lead, 18:00Z: does the setup choose opponents, gather data and update in response?)
+
+Answer on record: opponents are chosen by one fixed rule, data is gathered, and nothing yet updates from either
+without a Chair record. From here:
+
+1. **Standard screen, version 1 (LS-std-1), for every screen after LS-1.** The unit of inference is the opponent ×
+   map cluster. Pairs are matched on the opponent's submission id. Two looks are declared before dispatch.
+   Promotion-grade evidence at a look: mean paired difference > 0, cluster-bootstrap 5th percentile > −0.02, and
+   the cluster sign test of §C.4 at p ≤ 0.075. Fewer than four non-zero clusters at the final look: not resolvable.
+2. **Sizing from the discordance census.** Before dispatch, the candidate's local seed-1 census (share of pairs
+   where the arms differ, by map) fixes the size and the cells. A screen must expect at least 12 non-zero
+   clusters. If the full grid cannot reach that within 340 games, the screen is **targeted**: the maps (and
+   opponents, where known) on which the switch changes games, declared before dispatch. Its estimand is that
+   stratum; harm elsewhere is watched by the post-activation monitor and the rollback rule (D-052 §B).
+3. **Roster classes,** named before dispatch, drawn from Daichi's live table by rule:
+   - band: the teams met most in ranked play over 48 hours within 100 rating (LS-1's rule);
+   - loss: teams within 150 rating with at least 10 ranked games against us in 48 hours and the lowest score
+     minus expectation;
+   - top: the current top ten.
+   A candidate's first screen uses band. A second screen of the same lineage uses loss, and replaces any opponent
+   whose clusters were all ties in the first.
+4. **Candidate queue.** A registered candidate that meets D-055 §A is screened in queue order. This record is the
+   standing enable, subject to §B. Daichi posts class, roster, cells and size before dispatch; the Chair may veto.
+   One screen at a time. Queue: (1) `asahi-05-kz12-k16` (running); (2) the queen reach veto (P-4) at its best
+   dose, if its seed-1 panels meet D-055 §A; (3) the first R2 bot after its offline gate.
+5. **Targeted data games (TD-1).** Purpose: the top ten's play on positions our own bot creates, and our losses,
+   for the cloned prior, the value model and analysis. One arm (the live submission; no activation change):
+   top-ten teams with an active submission × the 14 training maps (no Autarky, Maze or Trauma) × both seats × one
+   game, up to 280 games. Priority below any screen: at most 15 games an hour, from quota a screen leaves unused,
+   starting after LS-1's first look. Each game records the opponent's submission id. Kageyama admits a game to
+   teacher rows only if that submission also played ranked games (decoy guard), buckets its series by the frozen
+   hash rule, and keeps requested games as their own population in every table.
+6. **Updating.** A screen's report gets a promote or reject record within one Chair unit. New rows (TD-1, the
+   collector) enter a rung only as a new artifact with its own registry row; a frozen confirmation cohort never
+   changes. Daichi's per-opponent and per-map table feeds the loss class and the Learner's per-map gap report.
+7. **Council review of items 1–3, due 19:30Z,** before the second screen: Tanaka on the size of the two-look
+   cluster test and its power at 12 non-zero clusters; Sugawara on the sizing rule by simulation; Nishinoya
+   replicates. LS-std-1 binds from the second screen as amended by then.
+
+### E. Order of work
+
+- **Daichi:** the `submit_check` fix and test first (it blocks every upload); LS-1's two looks; opponent
+  submission ids in job files; TD-1 after the first look.
+- **Asahi:** as queued. Then a standard card table: positive, negative and tied pairs by map for each candidate
+  (the census of §D.2).
+- **Hinata:** the R2 development fit; P-2's one claim and score.
+- **Kageyama:** the confirmation cohort freeze with its oracle coverage; the HB-1 scores through the bot's
+  extractor; the full rows in shards; the admission rule for TD-1 games.
