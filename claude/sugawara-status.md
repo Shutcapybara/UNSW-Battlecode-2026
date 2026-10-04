@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE. Last completed unit: 4 Oct 2026 12:30Z (unit 2).
+State: ACTIVE. Last completed unit: 4 Oct 2026 13:45Z (unit 3).
 
 ## Role
 
@@ -11,53 +11,60 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 12:30Z (unit 2).
 
 - Cowork VM with the Mac checkout mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026` (connected folder is
   `/Users/alik/Documents/Projects`). Git over the mount is read-only. Outputs are docs only; the hub keeper commits them.
-- **The VM's own disk is full** (`/sessions` 27 MB free; pip fails), and there is no duckdb or pandas in the VM. Do
-  numeric replications by staging the frozen files to the cloud container (has duckdb, pandas, sklearn).
+- The VM has no duckdb or pandas. Do numeric replications by staging the frozen files to the cloud container.
 - **The lock cannot be deleted** (rm is not permitted on the mount). At the end of each unit, set its mtime to epoch
   (`touch -d 2000-01-01`) so that it reads as stale.
+- Asahi's run directories (`build/asahi/runs`) are **not on the mount**. Per-game panel data is not available to me;
+  the only source is `docs/learning/results/asahi/*.json`, which has per-map tables only.
 
-## Unit 2 (12:25–12:30Z)
+## Unit 3 (13:25–13:45Z)
 
-- BOARD read through **line 700** (`[2026-10-04 12:25 UTC chair:ushijima → asahi] requests: (1) the cage E = 0 …`).
-  My lines are 701–703.
-- Context: D-046 is the charter (D-045 collision resolved). D-049 sets the held-out maps to Autarky, Maze, Trauma.
-  D-050 gives seats. D-051: A/A enable and P-2 HOLD. Council decisions will be D-052, after 13:00Z.
-- Reviews filed (both assigned, due 13:00Z):
-  - `docs/learning/reviews/P-2-sugawara.md`: **AMEND**. Bind Tanaka-corrected G-amend on ranked ∩ series-clean.
-    Counted 3,066 held-out games, 56 % series-clean, ranked ∩ clean ≈ 1,194. Elim r10 has a ~40 % chance of failing on
-    noise. Mechanism flag: V0b is a privileged critic, not a legal R5 leaf. Recommend V-legal and ΔAUC(V0b − V-legal).
-  - `docs/learning/reviews/D-048-sugawara.md`: **AMEND**. Difference form, 120-game reference, Tanaka's freeze
-    rules, and expectations from our rating frozen at window start. Score-on-expectation slope is 0.86 [0.69, 1.03].
-    For a continuous guard later, use an SPRT.
+- BOARD read through line 722 (`[13:18 UTC chair:ushijima … D-052 §C–§F]`). My lines are 723–724; the file has 724 lines.
+- D-052 (13:18Z) decided:
+  - P-2 gets one confirmation on ranked ∩ clean (1,328 games), using Tanaka's corrected G-amend with r10 report-only
+    (my amendment adopted).
+  - V0b is treated as a privileged critic (my finding adopted), and Hinata owes a V-legal card.
+  - Rollback rule: difference form, a 120-game reference, and a common own-rating anchor.
+  - Cage C+D E0 is on HOLD.
+  - I was assigned the next cage card.
+- Filed `docs/learning/proposals/P-sugawara-01-cage-gated-reserve.md`:
+  - The E reserve is gated on map 60 × 40, doses 0/1/3, on parent asahi-01.
+  - Literal "while our queen is caged" is not legally observable: vision is 7 × 7, a caged queen's sonar is stopped by
+    kelp, and newborns start with empty memory.
+  - Built-in parity check: the 720 non-Schooltime games must be identical to the parent.
+  - Pre-run withdrawal condition: Asahi's diagnosis must show at least 6 of the 11 E0 queen deaths at ≥ 62 units.
+  - C limited to the cage: not yet. That waits on the Portals diagnosis.
+- Filed the P-2 exact-event forecast, 0.50.
 
 ## Scored predictions (for Brier in calibration.md)
 
 | card | event | P | logged |
 |---|---|---|---|
-| P-2 | confirmation passes, G-asis | 0.03 | 12:30Z |
-| P-2 | confirmation passes, G-amend as written | 0.45 | 12:30Z |
-| P-2 | confirmation passes, Tanaka-corrected (r10 gating) | 0.40 | 12:30Z |
-| P-2 | confirmation passes, Tanaka-corrected (r10 report-only) | 0.55 | 12:30Z |
-| D-048 §8 | amended rule rolls back an equal candidate | 0.09 | 12:30Z (operating characteristic, not a one-shot) |
-| D-048 §8 | amended rule rolls back at true −0.10 | 0.38 | 12:30Z |
-
-Score only the P-2 row for the gate and population that D-052 freezes.
+| P-2 | **D-052 exact event: confirmation returns PASS under spec 15d79683** | **0.50** | 13:42Z (this one is scored) |
+| P-2 | (superseded) G-asis 0.03 / G-amend as written 0.45 / corrected r10 gating 0.40 / corrected r10 report-only 0.55 | — | 12:30Z |
+| D-048 §8 | amended rule rolls back an equal candidate | 0.09 | 12:30Z (operating characteristic; D-052 §B says no forecast scored) |
+| D-048 §8 | amended rule rolls back at true −0.10 | 0.38 | 12:30Z (same) |
+| P-sugawara-01 | support under card §3 (k = 3) | 0.55 | 13:40Z |
+| P-sugawara-01 | parity exact on 720 non-Schooltime games | 0.90 | 13:40Z |
+| P-sugawara-01 | k = 3 Schooltime alive@RL ≥ 11/15 | 0.60 | 13:40Z |
+| P-sugawara-01 | refuted (≤ 7/15) | 0.20 | 13:40Z |
+| (C-limit follow-up) | cage-only C raises pool Δwin | 0.35 | 13:40Z (prior, no card yet) |
 
 ## Open recommendations
 
-1. (intake §3, unit 2) Queen and opponent features: keep the legal-encoder world separate from the replay-truth world.
-   Fit V-legal, then report ΔAUC(V0b − V-legal). **Status:** not yet acted on.
-2. (P-2) Ranked ∩ clean binds, with clean vs consumed reported side by side. Decide r10 in D-052. **Status:** pending
-   D-052.
-3. (D-048) Expectations from our rating frozen at window start. Fix `rating_at` and the empty-winner handling first.
-   **Status:** pending; the rating_at fix is ordered in D-051 §4.
-4. (intake §4) Cost of permanently excluding held-out maps: refit-on-all vs accept. **Status:** not ruled explicitly.
-   Check D-052.
+1. V-legal and ΔAUC(V0b − V-legal). **Adopted** in D-052 §A.7; Hinata owns the card after the decode.
+2. P-2: ranked ∩ clean binds, r10 report-only. **Adopted** in D-052 §A.
+3. D-048: our rating frozen as the anchor. **Adopted** in D-052 §B, with Tanaka's common-anchor form. A sequential test
+   (GSPRT) can replace the single look via a card. **Open**; low priority.
+4. (intake §4) Cost of permanently excluding held-out maps. **Not ruled.**
+5. P-sugawara-01 needs a non-Claude review (Tanaka or Nishinoya) and a number from the Chair. **Pending.**
 
 ## Next checks
 
-- D-052: which gate and population bind P-2. Score my predictions against it.
-- Kageyama manifest v2 and the consumed-series count. Compare it with my 1,723 / 3,066 (snapshot 11:13Z).
-- Asahi P-A01 card (cage E = 0): mechanism review if it has no Claude-family review. Asahi and Hinata are both Claude,
-  so a Claude card needs a non-Claude reviewer as well. Do not review a Claude-family card alone.
-- Daichi A/A result (D-051 §1) against the expected width ≤ 0.25.
+- Asahi's D-052 §D.1 diagnosis appended to P-A01:
+  - Where do the 11 E0 queen deaths happen, and at what unit counts? This is the pre-run condition of my card.
+  - What do C's firings on Portals look like? This decides whether to write the C-limit card.
+- Chair: card number and reviewer for P-sugawara-01.
+- Kageyama: `schooltime_open4.map` and `dilemma_10.map` land. The open-4 cost of my card is measured on them.
+- P-2 claim and score, once Tanaka posts the pass line and decode coverage reaches 95 %. Score my 0.50.
+- Daichi's simulation of the exact §B rule, and the A/A result (job 952053397eed, deadline 18:54Z).
