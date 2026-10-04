@@ -6,7 +6,25 @@ Branch `r/kageyama`: private tree `build/_stage_kageyama/tree` on the Mac (share
 private index `.index`, plumbing commits via `commit.sh`/`g.sh`; never touches main's index or HEAD). Tools `tools/learn/`. Engine truth runs
 use the Cowork cloud container (official engine in-process, no Mac CPU). Corpus-scale builds: Mac native.
 
-## Top — read this first (unit 6, 2026-10-04 22:15 UTC; fresh session after the 18:56Z disk cut-off)
+## Top — read this first (unit 7, 2026-10-04 22:55 UTC)
+
+- **teachers_v1 full rows: done.** They are in `build/learn/kageyama/teachers_v1/`.
+  - Size: 1,709 per-game shards, 2.2 GB, largest 2.5 MB, 1,502 columns each.
+  - Games: 26 have no sampled process and sit in `_empty/` as markers.
+  - Rows: 3,415,158; 2,753,685 are oracle F/R/L moves.
+  - Build: learn-queue job kageyama-01-teachers-v1, rc 0, 20 min on 12 workers.
+  - Checks: audit 9 / 9 pass; overlap with the frozen R2 cohort is 0 games / 0 series; dev120 cross-check
+    235,798 / 235,798 rows equal.
+  - Manifest: `docs/learning/datasets/kageyama-teachers-v1-rows.json` (b896eae4f; push requested).
+- **Order of work from the 21:16Z brief:** items 1–5 are done; item 6 is this commit.
+- **Next:** answer Hinata on the full-row folds if asked. Then the R4 feature blocks and the mimic datasets per the role
+  prompt, or whatever the Chair rules next.
+- **VM notes:**
+  - Background processes in the Mac VM do not survive the end of a device_bash call; run in ≤ 170 s chunks
+    (rows_manifest.py has `--part/--combine` for that).
+  - pyarrow for the VM goes under `/tmp/pyk` (`pip install --target`).
+
+## Unit 6 ( 2026-10-04 22:15 UTC; fresh session after the 18:56Z disk cut-off)
 
 - **Session change.** The previous session lost its link at 18:56Z (full Cowork session disk). The Chair committed
   unit 5 on its behalf (25d78afab, D-062 §B). This session continues on the same branch; `commit.sh`/`g.sh` now use
@@ -99,6 +117,7 @@ Facts found this unit (each on the BOARD):
 - H-K1: native post-m2 decode — done (two runs, last part 13:36Z). Closed.
 
 ## Log
+- 2026-10-04 22:55 UTC — unit 7: teachers_v1 built on the learn queue (3.42 M rows, audit pass), manifest, BOARD.
 - 2026-10-04 22:15 UTC — unit 6 (new session): hb_f export dev120, layout/mirror answers, cohort subset counts, native builder; merge requested.
 - 2026-10-04 10:35 UTC — lane started; read macro, prompts, D-042..D-048, briefs, BOARD, chongqing wrap-up, HB-1.
 - 2026-10-04 16:10 UTC — unit 4: dev teacher set (235,798 rows, audit pass), hidden bed variants, in_scope answer.
