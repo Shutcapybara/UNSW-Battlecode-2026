@@ -1,6 +1,6 @@
 # Corpus and store — what is in them (replay lead: chongqing, wave 2; antioch before)
 
-As of **2026-10-04 09:25Z** (index ~121,000 games, collector running on the Mac). Store built **on the Mac** (Cowork VM,
+As of **2026-10-04 10:35Z** (index ~121,000 games, collector running on the Mac). Store built **on the Mac** (Cowork VM,
 `wt-chongqing`, `build/` symlinked to the main checkout) — the desktop copy under `wt-antioch` is stale from 1 Oct 20:50Z.
 Republished after every build. **No API calls from this lineage; GPT's analyst also pulls replays this wave — the hub
 collector is the only writer of `public_replays/corpus/`.**
@@ -21,6 +21,7 @@ collector is the only writer of `public_replays/corpus/`.**
   play. `teams.parquet` (`cohort`, `crank`) is the **post-reset** ladder from the latest snapshot. Stockfish (206) and PPP
   (27) are no longer on the ladder; cheji bt (70) has not played since; Cutlery (306) is now named Vibing++ (rank 1).
   Game-time `elo_a/elo_b` are stale/1500 around the reset — use `crank` or the 06:21Z snapshot for cohorts.
+- **`deaths.mover`** (parts from 4 Oct 10:30Z): 1 = died on its own move (head-on mover), 0 = partner.
 - **Queen columns (new, parts from 3 Oct 23:16Z):** `q_id, q_alive_end, q_death_round, q_death_cls, q_death_killer,
   q_moves, q_maxlen, q_end, q_header, q_len@{25,50,100,150,250,400,490}` on `sides`. Older parts read NULL; backfill queued.
   Queen survival/death for any part: `deaths where id in (0,1)` per side (the two queens are ids 0 and 1, side varies by map).

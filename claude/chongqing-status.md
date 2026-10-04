@@ -5,7 +5,11 @@ Worktree `../wt-chongqing` (Mac, via the Cowork VM; `build/` and `public_replays
 hour off, repeat (user's instruction, to conserve credits). No API calls; GPT's analyst pulls replays this wave, so this
 lineage only decodes what the hub collector has already written.
 
-## Top — read this first (2026-10-04 09:25 UTC)
+## Top — read this first (2026-10-04 10:35 UTC)
+
+- **Unit 9:** the opening gap holds or widens to r250 on five of eight clusters (weakhold 1.3 attrition; portals: pearls gap
+  closes, deaths remain; maze: body gap narrows while pearls gap widens). Shenzhen's store ask answered: we are the head-on
+  *partner* 9–13 pp more often than the top ten on Australia/Around UNSW; `deaths.mover` column added to the store.
 
 - **Unit 8:** r/chongqing units 3–7 merged to main (e3838cc84) on request — the coherence task skips branches with any
   'changed in both' file (tools/s1/build.py), so request merges explicitly. Adaptation clock: ranked RL queen alive top10
@@ -95,6 +99,8 @@ lineage only decodes what the hub collector has already written.
 - 2026-10-03 23:00 UTC — ladder reset found; `build.py games` patched; decode wrapper; first batches (team 7).
 - 2026-10-03 23:20 UTC — queen columns added to `sides`; `qq.py` connector.
 - 2026-10-04 00:20 UTC — unit 1 published: finding, TARGETS § chongqing, CORPUS.md, board C1-01…07. Sleeping one hour.
+- 2026-10-04 10:35 UTC — unit 9: r50→r250 gap continuation per cluster; mover/partner probe for H-SZ34; deaths.mover column;
+  board C9-01…03; TARGETS unit-9 section. Sleeping one hour.
 - 2026-10-04 09:25 UTC — unit 8: merge requested and done; adaptation clock; per-cluster opening rows; H-KZ12 arm reading;
   board C8-01…04; TARGETS unit-8 section. Sleeping one hour.
 - 2026-10-04 08:20 UTC — unit 7: cluster re-check (structural + behavioural), readings (Rome cage screen, Shenzhen retraction,

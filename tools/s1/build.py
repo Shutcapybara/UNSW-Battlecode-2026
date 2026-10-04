@@ -267,8 +267,10 @@ def process(args):
         deaths.append(r)
     transits = [dict(x_, **ctx, team=side_team[x_['side']]) for x_ in x['transits']]
     splits = [dict(x_, **ctx, team=side_team[x_['side']]) for x_ in x['splits']]
+    mover = {(d['round'], d['id']): int(d.get('actor') == d['id']) for d in g['events'].get('deaths', [])}
     for d in deaths:
         d['game'] = gid
+        d['mover'] = mover.get((d['round'], d['id']))   # 1 = died on its own move (the mover in a head-on), 0 = partner (chongqing unit 9)
     return dict(game=gid, sides=sides, series=series, deaths=deaths, transits=transits, splits=splits)
 
 
