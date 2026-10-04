@@ -416,3 +416,59 @@ in1.2.3fixture.4selectedlivefailures/3games(2ranked1unranked),2enginecases estab
 >=60independenteligiblepairs+negativecontrols/winguards. Exactquery/counts/era/falsifier/tester `docs/findings/2026-10-04-himeji-rome04-timing-and-pocket-precursors.md`.
 NaraL47disagreement:parent+immediatechild excludesdescendants,truncated10rhorizon/mixedmodes preventcausalregret
 reading. Retainpeerproposal;requestcorrecteddenominators beforetest. No newstablepercentiles/matchedlive-us gaps.
+## chongqing (Claude analyst, replay lead, wave 2) — unit 1, 2026-10-04 00:20 UTC
+
+Source: `docs/findings/2026-10-04-chongqing-era-ladder-queen.md`. Queries: `tools/chongqing/qq.py` + the `qd/qs` queen views
+(finding §A). **Cohort note:** the ladder was reset to 1500 on 1 Oct (06:21Z–17:09Z); `cohort`/`crank` in the store are
+the **post-reset** ranks (top ten today: Vibing++ 306, forgot to mention 264, SSS 91, Sponge 213, WeHaveQuizzes 87, horse
+842, free trip to sydney pls 82, Cache me outside 952, tungtung67 566, fandagong 552). Antioch's and Himeji's sections use
+the 06:21Z cohort; five teams overlap. Both labellings stay; say which one a number uses.
+**Provisional:** 3,535 of 23,035 in-scope post-change games decoded; the 2–3 Oct ranked bulk is in the queue.
+
+**Endgame / queen (post, ranked, round-limit games, by post-reset cohort; pocket = Slithery, Autarky, PD, PD10).**
+
+| cluster / map | phase | metric | top-10 | field r11–50 | us (live hb1-14) | target | era | query |
+|---|---|---|---|---|---|---|---|---|
+| non-pocket | end | queen alive at end of RL games | 0.065 (n 231) | 0.040–0.084 | 0.011 (n 89) | ≥ 0.5 excl. pocket (L49 falsifier, unchanged); interim: ≥ top-four keepers' 0.23–0.53 | post | qs §5 |
+| non-pocket | end | RL games decided by the queen | 0.013 | 0.000–0.018 | **0.191** | **0** losses on the queen; the ranked field is still ~1 %, our live number is 19 % | post | qs §5 |
+| Schooltime, Trauma | all | share of our games decided by the queen | — | — | **0.377 / 0.404** (lost 0.361 / 0.386) | ≤ field 0.05 after H-C1 (Schooltime) and a surviving queen (both) | post | qs §4 |
+| Schooltime | r0 | queen dead at round 0 (`self`) | 0.003 (field 2/676) | 0.003 | **0.314** (22/70) | **0** — H-C1 bug | post | qs §4 |
+| Default | r0–5 | queen dead by r5 | 0.36 | 0.22–0.24 | 0.25 (13/51, side A) | ≤ 0.05 (H-C3) | post | qs §4 |
+| non-pocket | end | longest at end, median | 33 | 26–29 | 27 | ≥ 33 (post-reset top ten; Antioch's 42.5 was the pre-reset converters) | post | qs §5 |
+| non-pocket | end | total at end, median | 70 | 60–67 | 69 | ≥ 70 | post | qs §5 |
+| non-pocket | end | RL losses with a total lead ÷ RL games | 0.082 | 0.145–0.161 | 0.180 | ≤ 0.08 | post | qs §5 |
+| pocket | end | longest / total at end, median | 55 / 138 | 44.5 / 100–124 | 39 / 99 | ≥ 55 / 138 — the pocket maps are pure longest races; the queen is irrelevant there | post | qs §5 |
+| all | end | queen death cause, us | — | — | h2h-enemy 0.52, wall 0.27, own 0.14 | wall → ≤ 0.16 (top ten) is the geometry half; h2h-enemy needs distance (H-Q5) | post | qs §4 |
+
+**Opening (S-1 Q3 components):** carried from Antioch's section unchanged (field medians at r25/r50 did not move; transits
+the largest top-10 − us component at 0.56 SD). Re-derivation on the post-reset top ten waits for the bulk decode; the
+`series` views for post parts bind in `qq.py` (`series` view) when needed.
+
+**Adaptation clock (watch column, H-C4 / H-Q4):** RL non-pocket queen survival by team and day — Vibing++ 0.229 (1 Oct,
+ranked, n 48); vs us on 2 Oct: SSS 0.533 (n 30), Sponge 0.700 (10), Vibing++ 4/4, WeHaveQuizzes 0.133, horse 0.125,
+forgot to mention 0/16. Trigger for H-Q4 (hunt the enemy queen): ranked top-ten RL survival > 0.10 for a week.
+
+**Disagreement slots:** (1) with Antioch's endgame "top-10" columns — cohort, not field move (above). (2) Himeji's release
+criteria are adopted for the per-map columns; none is met yet for the queen columns.
+
+## chongqing (unit 2) — 2026-10-04 02:00 UTC — era `post-m2` (new maps, ≥ 2 Oct 03:49Z), ranked, cohorts = ladder 00:53Z
+
+Source: `docs/findings/2026-10-04-chongqing-unit2-map-era-and-field-queens.md`. **Supersedes unit 1's § 5 table** (which was
+`post` = old maps; keep it only for old-map comparisons). Store `games.map_era` ∈ {pre, post, post-m2}; every per-map row
+below is a new-map row. n is ranked side-games in the store (post-m2 decode ≈ 1,250 games so far; provisional).
+
+| cluster / map | phase | metric | top-10 (n 489) | r11–50 (n 303) | us carthage-05 (n 85) | target | query |
+|---|---|---|---|---|---|---|---|
+| all | end | queen alive at end of RL games | **0.444** | 0.274–0.287 | **0.000** | ≥ 0.44 (top-ten median); the L49 "≥ 0.5" is now 1 team-SD above the top ten, not a leap | `qs`: avg(q_alive) where rl |
+| all | end | RL games decided by the queen | 0.491 | 0.47–0.53 | 0.357 (all lost) | queen-decided *losses* 0; the share itself will stay ~0.5 while everyone keeps queens | `qs`: reason='queen' |
+| Schooltime (new) | r0 | queen dead at round 0 | ~0 | ~0 | **1.00** (23/23) | 0 — Himeji H-H3 (legal r0 split → child sacrifice → freed-cell patrol) | `qs`: qdr = 0 |
+| Schooltime, Trauma, Slithery (new) | all | our games lost on the queen | — | — | 0.87 / 0.40 / 0.33 | ≤ 0.05 | `qs` § 4 |
+| Trophy (new) | end | RL share | 0.00 | — | 0.00 | Trophy is pure elimination now; queen logic is irrelevant there | `qs`: avg(rl) |
+| all | end | RL losses with a total lead ÷ RL losses | pending n | pending n | Schooltime 0.52, Trauma 0.35 | ≤ 0.10 | `qs` |
+| all | end | top-ten per-team queen alive (RL, n ≥ 25) | Vibing++ 0.56, Sponge 0.52, 𓎼 0.54, SSS 0.46, ftm 0.37, WHQ 0.21, CMO 0.23 | — | — | adaptation clock; H-Q4 trigger fired (> 0.10) | `qs` by name |
+
+**Opening (S-1 Q3 components), post-m2:** not yet re-derived here — the `post` norms are old-map norms; new per-(map,
+map_era) norms need ≥ ~300 field games per new map (decode in progress). Until then use Shenzhen's live top-10 − us at r50
+(transits 0.65, total 0.47, units 0.40, splits 0.38, bed 0.33) and Antioch's old-map table, both labelled.
+
+**Disagreement slot:** none new. Agreement with Shenzhen/Himeji/Nara on the map swap, the cage, and the live build.
