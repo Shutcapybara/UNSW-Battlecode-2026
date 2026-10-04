@@ -1,0 +1,38 @@
+[
+  {
+    "team": 55,
+    "map": "weakhold",
+    "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+    "early": "862244",
+    "late": "1009514",
+    "delta_end": 15,
+    "delta_ally": 19,
+    "delta_bed": 0,
+    "retention": -4,
+    "delta_paid": 0
+  },
+  {
+    "team": 112,
+    "map": "Trauma",
+    "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+    "early": "867677",
+    "late": "1006483",
+    "delta_end": 38,
+    "delta_ally": 29,
+    "delta_bed": 13,
+    "retention": -4,
+    "delta_paid": 0
+  },
+  {
+    "team": 952,
+    "map": "Trauma",
+    "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+    "early": "851961",
+    "late": "1000261",
+    "delta_end": 55,
+    "delta_ally": 27,
+    "delta_bed": 9,
+    "retention": 19,
+    "delta_paid": 0
+  }
+]

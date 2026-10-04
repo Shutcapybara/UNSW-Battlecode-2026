@@ -1,0 +1,5664 @@
+{
+  "selection": "Three independent teams from unit32 outcome-selected discovery pairs; same fullhash/team/seat, different opponent/time; not held-out or causal.",
+  "source_pairs_sha256": "29c6ed1bdd312c165e325a7611bf394aa87e4264246e7ce93caa1bcf0ba1b5bc",
+  "games": [
+    {
+      "game": "862244",
+      "team": 55,
+      "period": "early",
+      "side": "A",
+      "map": "weakhold",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "started_at": "2026-10-02T07:26:47.018Z",
+      "series_id": "4f3583d7-e76a-4275-aa74-0c8aceebd50b",
+      "opponent": 998,
+      "ranked": true,
+      "map_era": "post-m2",
+      "replay_sha256": "5dd9625cc7f21f23b66d9ee6d264acd409d2049f11888378034ad18aed3a1290",
+      "submission": "",
+      "official_winner": "B",
+      "reason": "queen",
+      "queen_id": 0,
+      "start_length": 4,
+      "end_length": 3,
+      "reached490": true,
+      "length490": 2,
+      "food": {
+        "ally_corpse": 1
+      },
+      "paid": 0,
+      "split_loss": 2,
+      "max_terrain_steps_from_spawn": 19,
+      "fraction_round_start_heads_within3": 0.02594810379241517,
+      "unique_round_start_heads": 78,
+      "round_start_head_changes": 499,
+      "commanded_steps": 499,
+      "commands": {
+        "split": 1,
+        "move": 499
+      },
+      "windows": [
+        {
+          "lo": 0,
+          "hi": 149,
+          "food": {},
+          "commands": {
+            "split": 1,
+            "move": 149
+          },
+          "commanded_steps": 149,
+          "paid": 0
+        },
+        {
+          "lo": 150,
+          "hi": 299,
+          "food": {},
+          "commands": {
+            "move": 150
+          },
+          "commanded_steps": 150,
+          "paid": 0
+        },
+        {
+          "lo": 300,
+          "hi": 499,
+          "food": {
+            "ally_corpse": 1
+          },
+          "commands": {
+            "move": 200
+          },
+          "commanded_steps": 200,
+          "paid": 0
+        }
+      ],
+      "queen_eats": [
+        {
+          "round": 499,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            8,
+            0
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 29
+        }
+      ],
+      "queen_splits": [
+        {
+          "round": 0,
+          "team": "A",
+          "parent": 0,
+          "child": 4,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        }
+      ],
+      "donors": [
+        {
+          "donor": 29,
+          "death": {
+            "round": 497,
+            "id": 29,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 29,
+            "age": 410,
+            "head": [
+              8,
+              0
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 497,
+            "id": 29,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              1,
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 499,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                8,
+                0
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 29
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        }
+      ]
+    },
+    {
+      "game": "1009514",
+      "team": 55,
+      "period": "late",
+      "side": "A",
+      "map": "weakhold",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "started_at": "2026-10-04T03:11:28.660Z",
+      "series_id": "d527ca35-b499-4467-a9ab-9552d4360751",
+      "opponent": 801,
+      "ranked": true,
+      "map_era": "post-m2",
+      "replay_sha256": "a00c60c3cc41c04258383223ea5d5dde055d2e36b8d2f1b289b05a75a2af85b2",
+      "submission": "",
+      "official_winner": "A",
+      "reason": "queen",
+      "queen_id": 0,
+      "start_length": 4,
+      "end_length": 18,
+      "reached490": true,
+      "length490": 18,
+      "food": {
+        "ally_corpse": 20
+      },
+      "paid": 0,
+      "split_loss": 6,
+      "max_terrain_steps_from_spawn": 20,
+      "fraction_round_start_heads_within3": 0.24151696606786427,
+      "unique_round_start_heads": 106,
+      "round_start_head_changes": 497,
+      "commanded_steps": 533,
+      "commands": {
+        "split": 3,
+        "move": 497
+      },
+      "windows": [
+        {
+          "lo": 0,
+          "hi": 149,
+          "food": {},
+          "commands": {
+            "split": 1,
+            "move": 149
+          },
+          "commanded_steps": 149,
+          "paid": 0
+        },
+        {
+          "lo": 150,
+          "hi": 299,
+          "food": {
+            "ally_corpse": 3
+          },
+          "commands": {
+            "move": 150
+          },
+          "commanded_steps": 152,
+          "paid": 0
+        },
+        {
+          "lo": 300,
+          "hi": 499,
+          "food": {
+            "ally_corpse": 17
+          },
+          "commands": {
+            "move": 198,
+            "split": 2
+          },
+          "commanded_steps": 232,
+          "paid": 0
+        }
+      ],
+      "queen_eats": [
+        {
+          "round": 233,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            3,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 57
+        },
+        {
+          "round": 261,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            0,
+            0
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 101
+        },
+        {
+          "round": 263,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            1,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 7,
+          "donor": 101
+        },
+        {
+          "round": 402,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            5,
+            0
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 375
+        },
+        {
+          "round": 402,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            5,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 373
+        },
+        {
+          "round": 403,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            6,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 378
+        },
+        {
+          "round": 406,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            8,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 378
+        },
+        {
+          "round": 414,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            7,
+            0
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 121
+        },
+        {
+          "round": 415,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            6,
+            0
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 386
+        },
+        {
+          "round": 416,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            6,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 173
+        },
+        {
+          "round": 417,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            7,
+            2
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 121
+        },
+        {
+          "round": 417,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            6,
+            2
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 276
+        },
+        {
+          "round": 418,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            6,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 173
+        },
+        {
+          "round": 419,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            5,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 385
+        },
+        {
+          "round": 419,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            4,
+            0
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 205
+        },
+        {
+          "round": 421,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            4,
+            2
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 371
+        },
+        {
+          "round": 421,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            3,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 275
+        },
+        {
+          "round": 422,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            2,
+            2
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 346
+        },
+        {
+          "round": 423,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            3,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 6,
+          "donor": 371
+        },
+        {
+          "round": 481,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            1,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 387
+        }
+      ],
+      "queen_splits": [
+        {
+          "round": 0,
+          "team": "A",
+          "parent": 0,
+          "child": 4,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 410,
+          "team": "A",
+          "parent": 0,
+          "child": 385,
+          "before": 9,
+          "parent_len": 7,
+          "child_len": 2
+        },
+        {
+          "round": 411,
+          "team": "A",
+          "parent": 0,
+          "child": 386,
+          "before": 7,
+          "parent_len": 5,
+          "child_len": 2
+        }
+      ],
+      "donors": [
+        {
+          "donor": 57,
+          "death": {
+            "round": 231,
+            "id": 57,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 57,
+            "age": 126,
+            "head": [
+              3,
+              1
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 231,
+            "id": 57,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 233,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                3,
+                1
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 57
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        },
+        {
+          "donor": 101,
+          "death": {
+            "round": 256,
+            "id": 101,
+            "team": "A",
+            "cause": "h2h",
+            "length": 3,
+            "actor": 101,
+            "age": 99,
+            "head": [
+              1,
+              1
+            ],
+            "initial": false,
+            "killer": 93,
+            "killer_team": "B",
+            "mutual": true
+          },
+          "action_on_death_round": {
+            "round": 256,
+            "id": 101,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 261,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                0,
+                0
+              ],
+              "origin": "ally_corpse",
+              "age": 5,
+              "donor": 101
+            },
+            {
+              "round": 263,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                1,
+                1
+              ],
+              "origin": "ally_corpse",
+              "age": 7,
+              "donor": 101
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 121,
+          "death": {
+            "round": 413,
+            "id": 121,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 121,
+            "age": 232,
+            "head": [
+              7,
+              0
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 413,
+            "id": 121,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0,
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 414,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                7,
+                0
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 121
+            },
+            {
+              "round": 417,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                7,
+                2
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 121
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        },
+        {
+          "donor": 173,
+          "death": {
+            "round": 415,
+            "id": 173,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 173,
+            "age": 188,
+            "head": [
+              6,
+              1
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 415,
+            "id": 173,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0,
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 416,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                6,
+                1
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 173
+            },
+            {
+              "round": 418,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                6,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 173
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        },
+        {
+          "donor": 205,
+          "death": {
+            "round": 415,
+            "id": 205,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 205,
+            "age": 161,
+            "head": [
+              4,
+              0
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 415,
+            "id": 205,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0,
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 419,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                4,
+                0
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 205
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 275,
+          "death": {
+            "round": 420,
+            "id": 275,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 275,
+            "age": 117,
+            "head": [
+              3,
+              1
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 420,
+            "id": 275,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 421,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                3,
+                1
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 275
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        },
+        {
+          "donor": 276,
+          "death": {
+            "round": 416,
+            "id": 276,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 276,
+            "age": 112,
+            "head": [
+              6,
+              2
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 416,
+            "id": 276,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              1,
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 417,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                6,
+                2
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 276
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 346,
+          "death": {
+            "round": 417,
+            "id": 346,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 346,
+            "age": 57,
+            "head": [
+              4,
+              2
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 417,
+            "id": 346,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              1,
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 422,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                2,
+                2
+              ],
+              "origin": "ally_corpse",
+              "age": 5,
+              "donor": 346
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        },
+        {
+          "donor": 371,
+          "death": {
+            "round": 417,
+            "id": 371,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 371,
+            "age": 27,
+            "head": [
+              4,
+              2
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 417,
+            "id": 371,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0,
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 421,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                4,
+                2
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 371
+            },
+            {
+              "round": 423,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                3,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 6,
+              "donor": 371
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        },
+        {
+          "donor": 373,
+          "death": {
+            "round": 401,
+            "id": 373,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 373,
+            "age": 9,
+            "head": [
+              5,
+              1
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 401,
+            "id": 373,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0,
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 402,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                5,
+                1
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 373
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        },
+        {
+          "donor": 375,
+          "death": {
+            "round": 401,
+            "id": 375,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 375,
+            "age": 8,
+            "head": [
+              5,
+              0
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 401,
+            "id": 375,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3,
+              1
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 402,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                5,
+                0
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 375
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        },
+        {
+          "donor": 378,
+          "death": {
+            "round": 402,
+            "id": 378,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 378,
+            "age": 3,
+            "head": [
+              6,
+              1
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 402,
+            "id": 378,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3,
+              1
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 403,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                6,
+                1
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 378
+            },
+            {
+              "round": 406,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                8,
+                1
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 378
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 385,
+          "death": {
+            "round": 417,
+            "id": 385,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 385,
+            "age": 7,
+            "head": [
+              5,
+              1
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 417,
+            "id": 385,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              1,
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 419,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                5,
+                1
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 385
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        },
+        {
+          "donor": 386,
+          "death": {
+            "round": 414,
+            "id": 386,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 386,
+            "age": 3,
+            "head": [
+              6,
+              0
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 414,
+            "id": 386,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0,
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 415,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                6,
+                0
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 386
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        },
+        {
+          "donor": 387,
+          "death": {
+            "round": 480,
+            "id": 387,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 387,
+            "age": 68,
+            "head": [
+              1,
+              3
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 480,
+            "id": 387,
+            "team": "A",
+            "kind": "move",
+            "steps": 2,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3,
+              1
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 481,
+              "id": 0,
+              "team": "A",
+              "cell": [
+                1,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 387
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": true
+        }
+      ]
+    },
+    {
+      "game": "867677",
+      "team": 112,
+      "period": "early",
+      "side": "A",
+      "map": "Trauma",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "started_at": "2026-10-02T09:07:46.673Z",
+      "series_id": "5d1e05ae-cfd2-4e47-8298-c19846f897d0",
+      "opponent": 264,
+      "ranked": true,
+      "map_era": "post-m2",
+      "replay_sha256": "aea909458ca2b39dcc386369cc4fc0edcddc85a070fc20489376467d07a64e30",
+      "submission": "",
+      "official_winner": "A",
+      "reason": "queen",
+      "queen_id": 1,
+      "start_length": 4,
+      "end_length": 2,
+      "reached490": true,
+      "length490": 2,
+      "food": {
+        "bed": 6
+      },
+      "paid": 0,
+      "split_loss": 8,
+      "max_terrain_steps_from_spawn": 19,
+      "fraction_round_start_heads_within3": 0.21157684630738524,
+      "unique_round_start_heads": 162,
+      "round_start_head_changes": 496,
+      "commanded_steps": 496,
+      "commands": {
+        "split": 4,
+        "move": 496
+      },
+      "windows": [
+        {
+          "lo": 0,
+          "hi": 149,
+          "food": {
+            "bed": 3
+          },
+          "commands": {
+            "split": 2,
+            "move": 148
+          },
+          "commanded_steps": 148,
+          "paid": 0
+        },
+        {
+          "lo": 150,
+          "hi": 299,
+          "food": {
+            "bed": 3
+          },
+          "commands": {
+            "move": 148,
+            "split": 2
+          },
+          "commanded_steps": 148,
+          "paid": 0
+        },
+        {
+          "lo": 300,
+          "hi": 499,
+          "food": {},
+          "commands": {
+            "move": 200
+          },
+          "commanded_steps": 200,
+          "paid": 0
+        }
+      ],
+      "queen_eats": [
+        {
+          "round": 40,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 9,
+          "donor": null
+        },
+        {
+          "round": 74,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 11,
+          "donor": null
+        },
+        {
+          "round": 148,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            23
+          ],
+          "origin": "bed",
+          "age": 0,
+          "donor": null
+        },
+        {
+          "round": 156,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            23
+          ],
+          "origin": "bed",
+          "age": 2,
+          "donor": null
+        },
+        {
+          "round": 159,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            47,
+            23
+          ],
+          "origin": "bed",
+          "age": 4,
+          "donor": null
+        },
+        {
+          "round": 163,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            23
+          ],
+          "origin": "bed",
+          "age": 1,
+          "donor": null
+        }
+      ],
+      "queen_splits": [
+        {
+          "round": 0,
+          "team": "A",
+          "parent": 1,
+          "child": 5,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 75,
+          "team": "A",
+          "parent": 1,
+          "child": 35,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 157,
+          "team": "A",
+          "parent": 1,
+          "child": 123,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 164,
+          "team": "A",
+          "parent": 1,
+          "child": 131,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        }
+      ],
+      "donors": []
+    },
+    {
+      "game": "1006483",
+      "team": 112,
+      "period": "late",
+      "side": "A",
+      "map": "Trauma",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "started_at": "2026-10-04T02:20:56.437Z",
+      "series_id": "dbccb597-b551-46bf-b196-646a874e54ed",
+      "opponent": 457,
+      "ranked": true,
+      "map_era": "post-m2",
+      "replay_sha256": "f16d03c6568946449071980efaedc16e3e9e5fa7c46135988b02a895eba30e48",
+      "submission": "",
+      "official_winner": "A",
+      "reason": "queen",
+      "queen_id": 1,
+      "start_length": 4,
+      "end_length": 40,
+      "reached490": true,
+      "length490": 39,
+      "food": {
+        "bed": 19,
+        "ally_corpse": 29
+      },
+      "paid": 0,
+      "split_loss": 12,
+      "max_terrain_steps_from_spawn": 19,
+      "fraction_round_start_heads_within3": 0.20359281437125748,
+      "unique_round_start_heads": 123,
+      "round_start_head_changes": 494,
+      "commanded_steps": 604,
+      "commands": {
+        "split": 6,
+        "move": 494
+      },
+      "windows": [
+        {
+          "lo": 0,
+          "hi": 149,
+          "food": {
+            "bed": 4
+          },
+          "commands": {
+            "split": 3,
+            "move": 147
+          },
+          "commanded_steps": 147,
+          "paid": 0
+        },
+        {
+          "lo": 150,
+          "hi": 299,
+          "food": {
+            "bed": 7
+          },
+          "commands": {
+            "move": 147,
+            "split": 3
+          },
+          "commanded_steps": 147,
+          "paid": 0
+        },
+        {
+          "lo": 300,
+          "hi": 499,
+          "food": {
+            "ally_corpse": 29,
+            "bed": 8
+          },
+          "commands": {
+            "move": 200
+          },
+          "commanded_steps": 310,
+          "paid": 0
+        }
+      ],
+      "queen_eats": [
+        {
+          "round": 46,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "bed",
+          "age": 4,
+          "donor": null
+        },
+        {
+          "round": 74,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            23
+          ],
+          "origin": "bed",
+          "age": 47,
+          "donor": null
+        },
+        {
+          "round": 76,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            47,
+            23
+          ],
+          "origin": "bed",
+          "age": 34,
+          "donor": null
+        },
+        {
+          "round": 123,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            23
+          ],
+          "origin": "bed",
+          "age": 1,
+          "donor": null
+        },
+        {
+          "round": 170,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 0,
+          "donor": null
+        },
+        {
+          "round": 171,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            0
+          ],
+          "origin": "bed",
+          "age": 66,
+          "donor": null
+        },
+        {
+          "round": 173,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "bed",
+          "age": 16,
+          "donor": null
+        },
+        {
+          "round": 227,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 3,
+          "donor": null
+        },
+        {
+          "round": 230,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "bed",
+          "age": 18,
+          "donor": null
+        },
+        {
+          "round": 248,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 0,
+          "donor": null
+        },
+        {
+          "round": 251,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "bed",
+          "age": 5,
+          "donor": null
+        },
+        {
+          "round": 366,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            8
+          ],
+          "origin": "ally_corpse",
+          "age": 6,
+          "donor": 93
+        },
+        {
+          "round": 368,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            42,
+            8
+          ],
+          "origin": "ally_corpse",
+          "age": 6,
+          "donor": 266
+        },
+        {
+          "round": 370,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 139
+        },
+        {
+          "round": 371,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            11
+          ],
+          "origin": "ally_corpse",
+          "age": 6,
+          "donor": 139
+        },
+        {
+          "round": 371,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            11
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 352
+        },
+        {
+          "round": 374,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            47,
+            8
+          ],
+          "origin": "ally_corpse",
+          "age": 10,
+          "donor": 159
+        },
+        {
+          "round": 378,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            6
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 247
+        },
+        {
+          "round": 379,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 400
+        },
+        {
+          "round": 380,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 201
+        },
+        {
+          "round": 381,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            47,
+            2
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 201
+        },
+        {
+          "round": 382,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            0
+          ],
+          "origin": "bed",
+          "age": 10,
+          "donor": null
+        },
+        {
+          "round": 407,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 145
+        },
+        {
+          "round": 417,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "bed",
+          "age": 6,
+          "donor": null
+        },
+        {
+          "round": 418,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            0
+          ],
+          "origin": "bed",
+          "age": 2,
+          "donor": null
+        },
+        {
+          "round": 418,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            47,
+            0
+          ],
+          "origin": "bed",
+          "age": 8,
+          "donor": null
+        },
+        {
+          "round": 425,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            41,
+            6
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 72
+        },
+        {
+          "round": 427,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            8
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 420
+        },
+        {
+          "round": 428,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 420
+        },
+        {
+          "round": 429,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            42,
+            11
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 105
+        },
+        {
+          "round": 430,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            39,
+            9
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 405
+        },
+        {
+          "round": 440,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            8
+          ],
+          "origin": "ally_corpse",
+          "age": 17,
+          "donor": 299
+        },
+        {
+          "round": 441,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 14,
+          "donor": 174
+        },
+        {
+          "round": 441,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            47,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 440
+        },
+        {
+          "round": 442,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            11
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 411
+        },
+        {
+          "round": 453,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 9,
+          "donor": null
+        },
+        {
+          "round": 454,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            0
+          ],
+          "origin": "bed",
+          "age": 35,
+          "donor": null
+        },
+        {
+          "round": 454,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "bed",
+          "age": 15,
+          "donor": null
+        },
+        {
+          "round": 468,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 431
+        },
+        {
+          "round": 469,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            41,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 431
+        },
+        {
+          "round": 470,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            9
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 431
+        },
+        {
+          "round": 470,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            7
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 431
+        },
+        {
+          "round": 471,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            5
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 431
+        },
+        {
+          "round": 472,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            41,
+            4
+          ],
+          "origin": "ally_corpse",
+          "age": 6,
+          "donor": 431
+        },
+        {
+          "round": 472,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            42,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 6,
+          "donor": 431
+        },
+        {
+          "round": 473,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 7,
+          "donor": 431
+        },
+        {
+          "round": 474,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            38,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 8,
+          "donor": 431
+        },
+        {
+          "round": 499,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 19,
+          "donor": null
+        }
+      ],
+      "queen_splits": [
+        {
+          "round": 0,
+          "team": "A",
+          "parent": 1,
+          "child": 5,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 75,
+          "team": "A",
+          "parent": 1,
+          "child": 13,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 124,
+          "team": "A",
+          "parent": 1,
+          "child": 46,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 172,
+          "team": "A",
+          "parent": 1,
+          "child": 89,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 228,
+          "team": "A",
+          "parent": 1,
+          "child": 159,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 249,
+          "team": "A",
+          "parent": 1,
+          "child": 201,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        }
+      ],
+      "donors": [
+        {
+          "donor": 72,
+          "death": {
+            "round": 424,
+            "id": 72,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 72,
+            "age": 269,
+            "head": [
+              41,
+              6
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 424,
+            "id": 72,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 425,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                41,
+                6
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 72
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": false
+        },
+        {
+          "donor": 93,
+          "death": {
+            "round": 360,
+            "id": 93,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 93,
+            "age": 186,
+            "head": [
+              44,
+              8
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 360,
+            "id": 93,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 366,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                44,
+                8
+              ],
+              "origin": "ally_corpse",
+              "age": 6,
+              "donor": 93
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 105,
+          "death": {
+            "round": 427,
+            "id": 105,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 105,
+            "age": 238,
+            "head": [
+              42,
+              11
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 427,
+            "id": 105,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 429,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                42,
+                11
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 105
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 139,
+          "death": {
+            "round": 365,
+            "id": 139,
+            "team": "A",
+            "cause": "invalid",
+            "length": 3,
+            "actor": 139,
+            "age": 149,
+            "head": [
+              43,
+              10
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 365,
+            "id": 139,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 370,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                10
+              ],
+              "origin": "ally_corpse",
+              "age": 5,
+              "donor": 139
+            },
+            {
+              "round": 371,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                44,
+                11
+              ],
+              "origin": "ally_corpse",
+              "age": 6,
+              "donor": 139
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 145,
+          "death": {
+            "round": 404,
+            "id": 145,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 145,
+            "age": 184,
+            "head": [
+              44,
+              10
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 404,
+            "id": 145,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 407,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                44,
+                10
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 145
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": false
+        },
+        {
+          "donor": 159,
+          "death": {
+            "round": 364,
+            "id": 159,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 159,
+            "age": 136,
+            "head": [
+              47,
+              8
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 364,
+            "id": 159,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 374,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                47,
+                8
+              ],
+              "origin": "ally_corpse",
+              "age": 10,
+              "donor": 159
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 174,
+          "death": {
+            "round": 427,
+            "id": 174,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 174,
+            "age": 193,
+            "head": [
+              46,
+              10
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 427,
+            "id": 174,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 441,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                46,
+                10
+              ],
+              "origin": "ally_corpse",
+              "age": 14,
+              "donor": 174
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": false
+        },
+        {
+          "donor": 201,
+          "death": {
+            "round": 378,
+            "id": 201,
+            "team": "A",
+            "cause": "invalid",
+            "length": 3,
+            "actor": 201,
+            "age": 129,
+            "head": [
+              46,
+              3
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 378,
+            "id": 201,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 380,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                46,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 201
+            },
+            {
+              "round": 381,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                47,
+                2
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 201
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 247,
+          "death": {
+            "round": 377,
+            "id": 247,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 247,
+            "age": 100,
+            "head": [
+              43,
+              6
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 377,
+            "id": 247,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 378,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                6
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 247
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 266,
+          "death": {
+            "round": 362,
+            "id": 266,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 266,
+            "age": 75,
+            "head": [
+              42,
+              8
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 362,
+            "id": 266,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 368,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                42,
+                8
+              ],
+              "origin": "ally_corpse",
+              "age": 6,
+              "donor": 266
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 299,
+          "death": {
+            "round": 423,
+            "id": 299,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 299,
+            "age": 117,
+            "head": [
+              46,
+              8
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 423,
+            "id": 299,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 440,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                46,
+                8
+              ],
+              "origin": "ally_corpse",
+              "age": 17,
+              "donor": 299
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 352,
+          "death": {
+            "round": 368,
+            "id": 352,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 352,
+            "age": 31,
+            "head": [
+              45,
+              11
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 368,
+            "id": 352,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 371,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                45,
+                11
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 352
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 400,
+          "death": {
+            "round": 378,
+            "id": 400,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 400,
+            "age": 6,
+            "head": [
+              43,
+              3
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 378,
+            "id": 400,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 379,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 400
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 405,
+          "death": {
+            "round": 426,
+            "id": 405,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 405,
+            "age": 50,
+            "head": [
+              39,
+              9
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 426,
+            "id": 405,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 430,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                39,
+                9
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 405
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 411,
+          "death": {
+            "round": 440,
+            "id": 411,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 411,
+            "age": 60,
+            "head": [
+              46,
+              11
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 440,
+            "id": 411,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 442,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                46,
+                11
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 411
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 420,
+          "death": {
+            "round": 425,
+            "id": 420,
+            "team": "A",
+            "cause": "invalid",
+            "length": 3,
+            "actor": 420,
+            "age": 36,
+            "head": [
+              43,
+              8
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 425,
+            "id": 420,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 427,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                8
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 420
+            },
+            {
+              "round": 428,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                10
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 420
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": false
+        },
+        {
+          "donor": 431,
+          "death": {
+            "round": 466,
+            "id": 431,
+            "team": "A",
+            "cause": "invalid",
+            "length": 21,
+            "actor": 431,
+            "age": 72,
+            "head": [
+              43,
+              10
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 466,
+            "id": 431,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 468,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                10
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 431
+            },
+            {
+              "round": 469,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                41,
+                10
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 431
+            },
+            {
+              "round": 470,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                9
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 431
+            },
+            {
+              "round": 470,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                7
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 431
+            },
+            {
+              "round": 471,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                5
+              ],
+              "origin": "ally_corpse",
+              "age": 5,
+              "donor": 431
+            },
+            {
+              "round": 472,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                41,
+                4
+              ],
+              "origin": "ally_corpse",
+              "age": 6,
+              "donor": 431
+            },
+            {
+              "round": 472,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                42,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 6,
+              "donor": 431
+            },
+            {
+              "round": 473,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 7,
+              "donor": 431
+            },
+            {
+              "round": 474,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                38,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 8,
+              "donor": 431
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": true
+        },
+        {
+          "donor": 440,
+          "death": {
+            "round": 440,
+            "id": 440,
+            "team": "A",
+            "cause": "invalid",
+            "length": 2,
+            "actor": 440,
+            "age": 38,
+            "head": [
+              47,
+              10
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 440,
+            "id": 440,
+            "team": "A",
+            "kind": "suicide",
+            "steps": 0,
+            "tle": false,
+            "cpu": null
+          },
+          "queen_meals": [
+            {
+              "round": 441,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                47,
+                10
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 440
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": true,
+          "queen_lineage": false
+        }
+      ]
+    },
+    {
+      "game": "851961",
+      "team": 952,
+      "period": "early",
+      "side": "A",
+      "map": "Trauma",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "started_at": "2026-10-02T04:11:00.354Z",
+      "series_id": "2a5416bb-3cbe-40a9-adb5-e277975f43f7",
+      "opponent": 264,
+      "ranked": true,
+      "map_era": "post-m2",
+      "replay_sha256": "fc09a2a0a1df73d2e05ef265d36f590c35497399ff89b545fde4366811da3ee1",
+      "submission": "",
+      "official_winner": "A",
+      "reason": "queen",
+      "queen_id": 1,
+      "start_length": 4,
+      "end_length": 2,
+      "reached490": true,
+      "length490": 2,
+      "food": {
+        "bed": 12,
+        "ally_corpse": 5
+      },
+      "paid": 0,
+      "split_loss": 19,
+      "max_terrain_steps_from_spawn": 19,
+      "fraction_round_start_heads_within3": 0.059880239520958084,
+      "unique_round_start_heads": 168,
+      "round_start_head_changes": 497,
+      "commanded_steps": 497,
+      "commands": {
+        "move": 497,
+        "split": 3
+      },
+      "windows": [
+        {
+          "lo": 0,
+          "hi": 149,
+          "food": {
+            "bed": 10
+          },
+          "commands": {
+            "move": 150
+          },
+          "commanded_steps": 150,
+          "paid": 0
+        },
+        {
+          "lo": 150,
+          "hi": 299,
+          "food": {
+            "ally_corpse": 3
+          },
+          "commands": {
+            "move": 149,
+            "split": 1
+          },
+          "commanded_steps": 149,
+          "paid": 0
+        },
+        {
+          "lo": 300,
+          "hi": 499,
+          "food": {
+            "bed": 2,
+            "ally_corpse": 2
+          },
+          "commands": {
+            "move": 198,
+            "split": 2
+          },
+          "commanded_steps": 198,
+          "paid": 0
+        }
+      ],
+      "queen_eats": [
+        {
+          "round": 39,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            23
+          ],
+          "origin": "bed",
+          "age": 5,
+          "donor": null
+        },
+        {
+          "round": 40,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            23
+          ],
+          "origin": "bed",
+          "age": 5,
+          "donor": null
+        },
+        {
+          "round": 49,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            23
+          ],
+          "origin": "bed",
+          "age": 1,
+          "donor": null
+        },
+        {
+          "round": 76,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            0
+          ],
+          "origin": "bed",
+          "age": 30,
+          "donor": null
+        },
+        {
+          "round": 77,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "bed",
+          "age": 4,
+          "donor": null
+        },
+        {
+          "round": 78,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            0
+          ],
+          "origin": "bed",
+          "age": 72,
+          "donor": null
+        },
+        {
+          "round": 79,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 56,
+          "donor": null
+        },
+        {
+          "round": 107,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            23
+          ],
+          "origin": "bed",
+          "age": 19,
+          "donor": null
+        },
+        {
+          "round": 108,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            23
+          ],
+          "origin": "bed",
+          "age": 34,
+          "donor": null
+        },
+        {
+          "round": 110,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            23
+          ],
+          "origin": "bed",
+          "age": 45,
+          "donor": null
+        },
+        {
+          "round": 157,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            15
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 147
+        },
+        {
+          "round": 205,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            21
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 256
+        },
+        {
+          "round": 222,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            8
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 237
+        },
+        {
+          "round": 353,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            0
+          ],
+          "origin": "bed",
+          "age": 26,
+          "donor": null
+        },
+        {
+          "round": 354,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 6,
+          "donor": null
+        },
+        {
+          "round": 362,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            4
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 315
+        },
+        {
+          "round": 364,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            39,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 315
+        }
+      ],
+      "queen_splits": [
+        {
+          "round": 231,
+          "team": "A",
+          "parent": 1,
+          "child": 367,
+          "before": 17,
+          "parent_len": 2,
+          "child_len": 15
+        },
+        {
+          "round": 355,
+          "team": "A",
+          "parent": 1,
+          "child": 546,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 365,
+          "team": "A",
+          "parent": 1,
+          "child": 555,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        }
+      ],
+      "donors": [
+        {
+          "donor": 147,
+          "death": {
+            "round": 154,
+            "id": 147,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 147,
+            "age": 27,
+            "head": [
+              40,
+              15
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 154,
+            "id": 147,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 157,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                15
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 147
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 237,
+          "death": {
+            "round": 218,
+            "id": 237,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 237,
+            "age": 43,
+            "head": [
+              44,
+              8
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 218,
+            "id": 237,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              1
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 222,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                44,
+                8
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 237
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 256,
+          "death": {
+            "round": 202,
+            "id": 256,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 256,
+            "age": 19,
+            "head": [
+              40,
+              21
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 202,
+            "id": 256,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 205,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                21
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 256
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 315,
+          "death": {
+            "round": 359,
+            "id": 315,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 315,
+            "age": 149,
+            "head": [
+              40,
+              4
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 359,
+            "id": 315,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 362,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                4
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 315
+            },
+            {
+              "round": 364,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                39,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 5,
+              "donor": 315
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        }
+      ]
+    },
+    {
+      "game": "1000261",
+      "team": 952,
+      "period": "late",
+      "side": "A",
+      "map": "Trauma",
+      "map_hash": "21e922b7311fec2444aee868d61b7942d4f7c3f7f464cdb788d53bfbd21fce3c",
+      "started_at": "2026-10-04T00:31:58.021Z",
+      "series_id": "465b953a-952f-4524-8ee0-de0b5c7e20f5",
+      "opponent": 842,
+      "ranked": true,
+      "map_era": "post-m2",
+      "replay_sha256": "80107a906273a90aca3104feb2b724b7f12740e80e284f814f3f9f05b0c88330",
+      "submission": "",
+      "official_winner": "A",
+      "reason": "queen",
+      "queen_id": 1,
+      "start_length": 4,
+      "end_length": 57,
+      "reached490": true,
+      "length490": 57,
+      "food": {
+        "bed": 21,
+        "ally_corpse": 32
+      },
+      "paid": 0,
+      "split_loss": 0,
+      "max_terrain_steps_from_spawn": 20,
+      "fraction_round_start_heads_within3": 0.08782435129740519,
+      "unique_round_start_heads": 216,
+      "round_start_head_changes": 500,
+      "commanded_steps": 605,
+      "commands": {
+        "move": 500
+      },
+      "windows": [
+        {
+          "lo": 0,
+          "hi": 149,
+          "food": {
+            "bed": 5
+          },
+          "commands": {
+            "move": 150
+          },
+          "commanded_steps": 161,
+          "paid": 0
+        },
+        {
+          "lo": 150,
+          "hi": 299,
+          "food": {
+            "bed": 4,
+            "ally_corpse": 10
+          },
+          "commands": {
+            "move": 150
+          },
+          "commanded_steps": 188,
+          "paid": 0
+        },
+        {
+          "lo": 300,
+          "hi": 499,
+          "food": {
+            "ally_corpse": 22,
+            "bed": 12
+          },
+          "commands": {
+            "move": 200
+          },
+          "commanded_steps": 256,
+          "paid": 0
+        }
+      ],
+      "queen_eats": [
+        {
+          "round": 60,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            0
+          ],
+          "origin": "bed",
+          "age": 55,
+          "donor": null
+        },
+        {
+          "round": 91,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            0
+          ],
+          "origin": "bed",
+          "age": 6,
+          "donor": null
+        },
+        {
+          "round": 131,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            0
+          ],
+          "origin": "bed",
+          "age": 7,
+          "donor": null
+        },
+        {
+          "round": 132,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "bed",
+          "age": 9,
+          "donor": null
+        },
+        {
+          "round": 134,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 25,
+          "donor": null
+        },
+        {
+          "round": 155,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            23
+          ],
+          "origin": "bed",
+          "age": 63,
+          "donor": null
+        },
+        {
+          "round": 155,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            23
+          ],
+          "origin": "bed",
+          "age": 2,
+          "donor": null
+        },
+        {
+          "round": 155,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            23
+          ],
+          "origin": "bed",
+          "age": 9,
+          "donor": null
+        },
+        {
+          "round": 166,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            41,
+            20
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 133
+        },
+        {
+          "round": 193,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 69
+        },
+        {
+          "round": 198,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 37
+        },
+        {
+          "round": 198,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 7,
+          "donor": 69
+        },
+        {
+          "round": 205,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            2
+          ],
+          "origin": "ally_corpse",
+          "age": 11,
+          "donor": 51
+        },
+        {
+          "round": 216,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            4
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 156
+        },
+        {
+          "round": 231,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            20
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 169
+        },
+        {
+          "round": 232,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            22
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 169
+        },
+        {
+          "round": 234,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            23
+          ],
+          "origin": "bed",
+          "age": 9,
+          "donor": null
+        },
+        {
+          "round": 252,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            42,
+            22
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 255
+        },
+        {
+          "round": 261,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            41,
+            18
+          ],
+          "origin": "ally_corpse",
+          "age": 10,
+          "donor": 274
+        },
+        {
+          "round": 321,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            23
+          ],
+          "origin": "ally_corpse",
+          "age": 25,
+          "donor": 359
+        },
+        {
+          "round": 321,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            23
+          ],
+          "origin": "bed",
+          "age": 77,
+          "donor": null
+        },
+        {
+          "round": 322,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            23
+          ],
+          "origin": "bed",
+          "age": 30,
+          "donor": null
+        },
+        {
+          "round": 334,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            14
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 401
+        },
+        {
+          "round": 357,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            0
+          ],
+          "origin": "bed",
+          "age": 99,
+          "donor": null
+        },
+        {
+          "round": 358,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "bed",
+          "age": 69,
+          "donor": null
+        },
+        {
+          "round": 360,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 47,
+          "donor": null
+        },
+        {
+          "round": 363,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            0
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 437
+        },
+        {
+          "round": 364,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            38,
+            1
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 460
+        },
+        {
+          "round": 366,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            38,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 460
+        },
+        {
+          "round": 369,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            38,
+            6
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 435
+        },
+        {
+          "round": 374,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            10
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 446
+        },
+        {
+          "round": 376,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            12
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 446
+        },
+        {
+          "round": 377,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            39,
+            13
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 491
+        },
+        {
+          "round": 380,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            38,
+            16
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 504
+        },
+        {
+          "round": 381,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            40,
+            16
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 458
+        },
+        {
+          "round": 384,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            42,
+            14
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 474
+        },
+        {
+          "round": 385,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            15
+          ],
+          "origin": "ally_corpse",
+          "age": 6,
+          "donor": 474
+        },
+        {
+          "round": 396,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            21
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 526
+        },
+        {
+          "round": 397,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            41,
+            21
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 515
+        },
+        {
+          "round": 406,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            41,
+            23
+          ],
+          "origin": "ally_corpse",
+          "age": 9,
+          "donor": 533
+        },
+        {
+          "round": 408,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            23
+          ],
+          "origin": "bed",
+          "age": 15,
+          "donor": null
+        },
+        {
+          "round": 437,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            41,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 4,
+          "donor": 556
+        },
+        {
+          "round": 438,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            39,
+            3
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 556
+        },
+        {
+          "round": 445,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            0
+          ],
+          "origin": "bed",
+          "age": 31,
+          "donor": null
+        },
+        {
+          "round": 446,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            0
+          ],
+          "origin": "bed",
+          "age": 55,
+          "donor": null
+        },
+        {
+          "round": 447,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            0
+          ],
+          "origin": "bed",
+          "age": 46,
+          "donor": null
+        },
+        {
+          "round": 448,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            47,
+            0
+          ],
+          "origin": "bed",
+          "age": 106,
+          "donor": null
+        },
+        {
+          "round": 463,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            45,
+            12
+          ],
+          "origin": "ally_corpse",
+          "age": 1,
+          "donor": 396
+        },
+        {
+          "round": 464,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            44,
+            11
+          ],
+          "origin": "ally_corpse",
+          "age": 2,
+          "donor": 396
+        },
+        {
+          "round": 465,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            12
+          ],
+          "origin": "ally_corpse",
+          "age": 3,
+          "donor": 486
+        },
+        {
+          "round": 467,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            43,
+            14
+          ],
+          "origin": "ally_corpse",
+          "age": 5,
+          "donor": 486
+        },
+        {
+          "round": 489,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            47,
+            23
+          ],
+          "origin": "bed",
+          "age": 292,
+          "donor": null
+        },
+        {
+          "round": 489,
+          "id": 1,
+          "team": "A",
+          "cell": [
+            46,
+            23
+          ],
+          "origin": "bed",
+          "age": 17,
+          "donor": null
+        }
+      ],
+      "queen_splits": [],
+      "donors": [
+        {
+          "donor": 37,
+          "death": {
+            "round": 194,
+            "id": 37,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 37,
+            "age": 123,
+            "head": [
+              45,
+              0
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 194,
+            "id": 37,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 198,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                45,
+                0
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 37
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 51,
+          "death": {
+            "round": 194,
+            "id": 51,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 51,
+            "age": 107,
+            "head": [
+              43,
+              2
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 194,
+            "id": 51,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 205,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                2
+              ],
+              "origin": "ally_corpse",
+              "age": 11,
+              "donor": 51
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 69,
+          "death": {
+            "round": 191,
+            "id": 69,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 69,
+            "age": 88,
+            "head": [
+              46,
+              3
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 191,
+            "id": 69,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 193,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                46,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 69
+            },
+            {
+              "round": 198,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                46,
+                1
+              ],
+              "origin": "ally_corpse",
+              "age": 7,
+              "donor": 69
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 133,
+          "death": {
+            "round": 164,
+            "id": 133,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 133,
+            "age": 21,
+            "head": [
+              41,
+              20
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 164,
+            "id": 133,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 166,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                41,
+                20
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 133
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 156,
+          "death": {
+            "round": 213,
+            "id": 156,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 156,
+            "age": 54,
+            "head": [
+              43,
+              4
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 213,
+            "id": 156,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              1
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 216,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                4
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 156
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 169,
+          "death": {
+            "round": 228,
+            "id": 169,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 169,
+            "age": 61,
+            "head": [
+              43,
+              20
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 228,
+            "id": 169,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 231,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                20
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 169
+            },
+            {
+              "round": 232,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                22
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 169
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 255,
+          "death": {
+            "round": 250,
+            "id": 255,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 255,
+            "age": 35,
+            "head": [
+              42,
+              22
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 250,
+            "id": 255,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 252,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                42,
+                22
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 255
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 274,
+          "death": {
+            "round": 251,
+            "id": 274,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 274,
+            "age": 24,
+            "head": [
+              41,
+              18
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 251,
+            "id": 274,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 261,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                41,
+                18
+              ],
+              "origin": "ally_corpse",
+              "age": 10,
+              "donor": 274
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 359,
+          "death": {
+            "round": 296,
+            "id": 359,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 359,
+            "age": 21,
+            "head": [
+              43,
+              23
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 296,
+            "id": 359,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 321,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                23
+              ],
+              "origin": "ally_corpse",
+              "age": 25,
+              "donor": 359
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 396,
+          "death": {
+            "round": 462,
+            "id": 396,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 396,
+            "age": 166,
+            "head": [
+              45,
+              12
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 462,
+            "id": 396,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 463,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                45,
+                12
+              ],
+              "origin": "ally_corpse",
+              "age": 1,
+              "donor": 396
+            },
+            {
+              "round": 464,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                44,
+                11
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 396
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 401,
+          "death": {
+            "round": 331,
+            "id": 401,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 401,
+            "age": 32,
+            "head": [
+              43,
+              14
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 331,
+            "id": 401,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 334,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                14
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 401
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 435,
+          "death": {
+            "round": 367,
+            "id": 435,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 435,
+            "age": 52,
+            "head": [
+              38,
+              6
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 367,
+            "id": 435,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 369,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                38,
+                6
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 435
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 437,
+          "death": {
+            "round": 360,
+            "id": 437,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 437,
+            "age": 44,
+            "head": [
+              40,
+              0
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 360,
+            "id": 437,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 363,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                0
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 437
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 446,
+          "death": {
+            "round": 371,
+            "id": 446,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 446,
+            "age": 48,
+            "head": [
+              40,
+              10
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 371,
+            "id": 446,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 374,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                10
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 446
+            },
+            {
+              "round": 376,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                12
+              ],
+              "origin": "ally_corpse",
+              "age": 5,
+              "donor": 446
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 458,
+          "death": {
+            "round": 379,
+            "id": 458,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 458,
+            "age": 48,
+            "head": [
+              40,
+              16
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 379,
+            "id": 458,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              1
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 381,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                40,
+                16
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 458
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 460,
+          "death": {
+            "round": 362,
+            "id": 460,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 460,
+            "age": 29,
+            "head": [
+              38,
+              1
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 362,
+            "id": 460,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 364,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                38,
+                1
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 460
+            },
+            {
+              "round": 366,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                38,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 460
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 474,
+          "death": {
+            "round": 379,
+            "id": 474,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 474,
+            "age": 40,
+            "head": [
+              42,
+              14
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 379,
+            "id": 474,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              1
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 384,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                42,
+                14
+              ],
+              "origin": "ally_corpse",
+              "age": 5,
+              "donor": 474
+            },
+            {
+              "round": 385,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                15
+              ],
+              "origin": "ally_corpse",
+              "age": 6,
+              "donor": 474
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 486,
+          "death": {
+            "round": 462,
+            "id": 486,
+            "team": "A",
+            "cause": "self",
+            "length": 4,
+            "actor": 486,
+            "age": 119,
+            "head": [
+              43,
+              14
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 462,
+            "id": 486,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              0
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 465,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                12
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 486
+            },
+            {
+              "round": 467,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                14
+              ],
+              "origin": "ally_corpse",
+              "age": 5,
+              "donor": 486
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 491,
+          "death": {
+            "round": 375,
+            "id": 491,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 491,
+            "age": 28,
+            "head": [
+              39,
+              13
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 375,
+            "id": 491,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 377,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                39,
+                13
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 491
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 504,
+          "death": {
+            "round": 377,
+            "id": 504,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 504,
+            "age": 22,
+            "head": [
+              38,
+              16
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 377,
+            "id": 504,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              2
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 380,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                38,
+                16
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 504
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 515,
+          "death": {
+            "round": 395,
+            "id": 515,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 515,
+            "age": 32,
+            "head": [
+              41,
+              21
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 395,
+            "id": 515,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 397,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                41,
+                21
+              ],
+              "origin": "ally_corpse",
+              "age": 2,
+              "donor": 515
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 526,
+          "death": {
+            "round": 393,
+            "id": 526,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 526,
+            "age": 22,
+            "head": [
+              43,
+              21
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 393,
+            "id": 526,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 396,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                43,
+                21
+              ],
+              "origin": "ally_corpse",
+              "age": 3,
+              "donor": 526
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 533,
+          "death": {
+            "round": 397,
+            "id": 533,
+            "team": "A",
+            "cause": "self",
+            "length": 2,
+            "actor": 533,
+            "age": 18,
+            "head": [
+              41,
+              23
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 397,
+            "id": 533,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 406,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                41,
+                23
+              ],
+              "origin": "ally_corpse",
+              "age": 9,
+              "donor": 533
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        },
+        {
+          "donor": 556,
+          "death": {
+            "round": 433,
+            "id": 556,
+            "team": "A",
+            "cause": "self",
+            "length": 3,
+            "actor": 556,
+            "age": 37,
+            "head": [
+              41,
+              3
+            ],
+            "initial": false,
+            "killer": null,
+            "killer_team": null
+          },
+          "action_on_death_round": {
+            "round": 433,
+            "id": 556,
+            "team": "A",
+            "kind": "move",
+            "steps": 1,
+            "tle": false,
+            "cpu": null,
+            "dirs": [
+              3
+            ],
+            "paid": 0
+          },
+          "queen_meals": [
+            {
+              "round": 437,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                41,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 4,
+              "donor": 556
+            },
+            {
+              "round": 438,
+              "id": 1,
+              "team": "A",
+              "cell": [
+                39,
+                3
+              ],
+              "origin": "ally_corpse",
+              "age": 5,
+              "donor": 556
+            }
+          ],
+          "own_turn_death": true,
+          "explicit_suicide": false,
+          "queen_lineage": false
+        }
+      ]
+    }
+  ]
+}

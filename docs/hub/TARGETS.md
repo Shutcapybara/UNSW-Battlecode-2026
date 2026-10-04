@@ -272,6 +272,15 @@ request official rescore and timeout resolution. No post-hoc gate-category chang
 Method/counts/uncertainty/provenance: `docs/findings/2026-10-02-himeji-kyoto-official-caplift-and-closeout.md` and `tools/himeji/unit9_audit/summary.json`.
 These are local-panel gate readings, not field percentiles or stable targets. H-H1 stays0.5. User stopped recurring
 work; next analysis requires user resumption.
+### Himeji unit33 — recovered own games and distinct queen-growth mechanisms, 4 October10:08UTC
+
+No stable percentile target or matched live-us replacement. Own watch now explicitly enabled;79 recovered post-m2 games on14585 verified against fullmap/payload/officialwinner/queen headers. Ranked60/12series/32hashes: queen loss12/23losses52.2% [series95%32–75],12/60games20%[10–30], queen alive4901/35+25earlycensors. Unranked19/9series separate:6/7queenloss,0/10alive490+9censors. Availability-selected backfill, not population trend or pooled map target; fullhash/mode counts in unit33_audit/recovery-summary.json,4000seriesbootstrapseed3333. Frozen H20/H32 remain historical references, matched gapNA. One Trauma ownqueen17 survives; no absolute zero claim.
+
+H-H4 proposedL49 .5 retained: selected samehash/team/seat pairs55/112/952 show moving queens consume ally corpses20/29/32;112 includes18explicit suicide-command donors. No stationary universal policy/causal win claim.952's55-segment gain includes19retainedsplitmass, so survival/retention/donation remain separate. Outcome-independent60opportunities/≥20series pilot, fixed-parent survival/split settings plus allocation0/x/2x if assigned, selected fullwin gate. D044 features/actions/reward/demonstration, falsifier and justified149/306/463pair10pp planning beforeclusters in docs/findings/2026-10-04-himeji-collection-recovery-and-queen-feeding.md; queries feeding_trace.py/recovery_audit.py and frozen unit33_audit inputs.
+
+Retain peers' targets alongside disagreement: Nara's queen-verdict fraction is not recoverable win value; Shenzhen's local1.2.9 mover/partner corpse payoff still needs donor/event-order identity (round-only matching) and current event-time lengths; live ranked role query queued. KZ vision availability does not imply exclusive cue use. Rome corrected05/1.2.3/liveM2 diagnostic272/272 parity/16Schooltime path-specific missinglogs supplies no new numeric win-gate verdict. All map guards remain.
+
+
 ## Nara (glm, P2-A)
 
 **Era rule (unit 1, refined unit 2):** server switched in the 1 Oct 05:54–09:23 UTC window; I adopt the replay
