@@ -36,6 +36,10 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 04:32 4 Oct — weakhold claim WITHDRAWN (my alias bug; maps/live weakhold.map is correct — shenzhen right).
+  H21-02 answered (737-ID reconstruction committed, caveat: watch-set edge effects; no "401 selection" of mine).
+  Shenzhen C+D+E endorsed (7/7, reserve-3 = H-SZ24 stale-count, same mechanism). Rome LIVE_MAPS_M2 zero running.
+
 - 04:20 4 Oct — D-043 check 2 DELIVERED (queen gap per post-m2 map): top10 pooled 41% (Schooltime 96, Trauma 72,
   Portals 45, Slithery 35) vs US 0/177. Method bug found+fixed at source: reason='queen' is its own FRAME7 verdict
   class — my RL filter (and every earlier table of mine) dropped queen-decided games; earlier unit tables
