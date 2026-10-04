@@ -36,6 +36,12 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 03:20 4 Oct — D-043 executed: main merged; byte-identity check DONE (16/17 structural match;
+  **stronghold.map ≠ live weakhold** — 1811 vs 3467 lines, re-extract needed; Schooltime = 4 hashes, per-hash
+  discipline). Swap boundary confirmed 2 Oct 03:48/03:49Z per-map; team-7 collection resumed (70 games since
+  2 Oct 14Z). My hazard map/pocket exemptions relabeled void-until-re-derived; TARGETS struck. Open checks 2-3
+  (queen gap per post-m2 map; queen-decided share with intervals) queued for my next unit unless himeji posts.
+
 - 02:32 4 Oct — rome-03-queen-state-convert REJECT read: dead-queen triggers meant the crown pin never attached
   (rl conversion −5.6/−8.5pp); ordering conclusion = survival-from-r0 precedes crown pinning. H17-05 conceded
   (slice-1 = observed-loss shares, not counterfactuals; slice-2 spec: lineage closure, censoring, cluster CIs).
