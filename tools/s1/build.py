@@ -166,8 +166,10 @@ def queen_cols(g, out, t):
     last = len(rounds) - 1
     o = dict(q_id=q, q_alive_end=int(death_round is None), q_death_round=death_round, q_moves=moves, q_maxlen=maxlen,
              q_end=lens.get(last, 0), q_header=g['final'][t].get('queen'))
+    # q_len@k is NULL once the game has ended (no terminal carry; Himeji H19-05); 0 = queen dead at k, game still running
     for k in Q_ROUNDS:
-        o[f'q_len@{k}'] = lens.get(min(k, last), 0)
+        o[f'q_len@{k}'] = lens.get(k, 0) if k <= last else None
+    o['q_censored'] = int(death_round is None and last < 490)   # alive at an early end: survival to r490 unobserved
     d = next((d for d in out['deaths'] if d['side'] == t and d['id'] == q), None)
     o['q_death_cls'] = d['cls'] if d else None
     o['q_death_killer'] = d.get('killer_team') if d else None

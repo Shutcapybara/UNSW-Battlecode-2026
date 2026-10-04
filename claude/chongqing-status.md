@@ -5,7 +5,12 @@ Worktree `../wt-chongqing` (Mac, via the Cowork VM; `build/` and `public_replays
 hour off, repeat (user's instruction, to conserve credits). No API calls; GPT's analyst pulls replays this wave, so this
 lineage only decodes what the hub collector has already written.
 
-## Top — read this first (2026-10-04 03:25 UTC)
+## Top — read this first (2026-10-04 04:30 UTC)
+
+- **Unit 4:** D-043 read (`maps/live/`, `LIVE_MAPS_M2`, parent carthage-05; byte identity done by Nara/Shenzhen/Himeji; Nara takes the
+  per-hash queen gap, Himeji the loss-share intervals). `q_len@k` semantics fixed (NULL past game end, `q_censored`; Himeji H19-05).
+  **The VM is saturated (3.9 s/game; shared with the other analyst sessions): the s1 post-m2 decode has stalled at ≈ 1,320 games.**
+  `git merge origin/main` cannot complete in a VM call (273 files); r/chongqing stays on 0298966ec, integrated by the coherence task.
 
 - **Unit 3: our bot culls its own queen.** On the new corridor/portal maps our queen dies by wall (Trauma 0.61, Portals 0.88,
   Maze 0.67, weakhold 1.00 at r29/r44), 74 % within 5 rounds of its own production split; our culls are north-into-kelp walks
@@ -32,8 +37,10 @@ lineage only decodes what the hub collector has already written.
 
 - VM: aarch64 Linux, 4 vCPU, 3.9 GB; python3.10 with `build/s1-pylib` (duckdb 1.5.6, pandas, pyarrow). `tools/s1/q.py`
   takes minutes to bind over the mount (series views + describe); use `tools/chongqing/qq.py` (post parts only, ~6 s).
-- Decode: `nice -n 5 python3 tools/chongqing/decode.py --jobs 4 --time 75` per call (≤ 180 s; flushes every 40 games).
-  Never run a decode and a query in the same call window.
+- Decode: `nice -n 5 python3 tools/chongqing/decode.py --jobs 4 --time 60 --flush 20` per call (≤ 180 s). Never run a decode
+  and a query in the same call window. Throughput 0.6–4 s/game depending on the other sessions sharing the VM; skip when > 3.
+- Git in the VM cannot unlink: every write op leaves `*.lock` / `MERGE_HEAD` behind in `.git/worktrees/wt-chongqing/` — `mv` them
+  into `_stale/` before the next git command. Merges of main do not fit in a call; do not attempt.
 - Git: the VM has no GitHub credentials; the worktree was created by hand (git 2.34 refuses `worktree add` because the
   other worktrees' Mac paths are invalid in the VM); `.git/worktrees/wt-chongqing/gitdir` holds the Mac path, the
   worktree's `.git` file a relative path, so both sides read it. Pushes go through the keeper (`hub-state/control/git.json`
@@ -66,6 +73,8 @@ lineage only decodes what the hub collector has already written.
 - 2026-10-03 23:00 UTC — ladder reset found; `build.py games` patched; decode wrapper; first batches (team 7).
 - 2026-10-03 23:20 UTC — queen columns added to `sides`; `qq.py` connector.
 - 2026-10-04 00:20 UTC — unit 1 published: finding, TARGETS § chongqing, CORPUS.md, board C1-01…07. Sleeping one hour.
+- 2026-10-04 04:30 UTC — unit 4: D-043 read; q_len semantics fix; board C4-01…04; decode stalled (VM 3.9 s/game); merge of
+  origin/main abandoned (mount too slow); no new tester results to read. Sleeping one hour.
 - 2026-10-04 03:25 UTC — unit 3: per-new-map queen hazard table; the cull mechanism (C3-01), H-C5/H-C6; readings Rome 03/04;
   +65 games (VM slow). Sleeping one hour.
 - 2026-10-04 02:00 UTC — unit 2: map swap verified, `map_era` in the store, +837 games (post-m2 first), post-m2 ranked
