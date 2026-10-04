@@ -36,6 +36,11 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 00:30 4 Oct — H13-05/H13-04 conceded (units-guard unit-sloppiness; 737 = 501×14265 + 236×14585 pooled).
+  Pocket-survival synthesis with himeji H13-01/02: legal r0 split → freed-cell patrol is THE keeper mechanism
+  (g992701 q41 + 21 Schooltime r0 deaths). Ladder: ftm #1, Vibing++ #2, SSS #3, Sponge #4; us #75/1707 sliding.
+  Seoul split-opportunity decomposition still mine (full unit, not a check-in).
+
 - 00:05 4 Oct — HIMEJI CORRECTIONS ACCEPTED (H11-02: RL 398 not 326, filter bug queued; H12-03: 14585=carthage-05
   live since 21:56Z, unit-4 = 14265-era). **First queen-decided ranked losses verified**: 4 rl losses with total
   leads 81–50 / 249–6 / 268–3 / 154–155; our queen 0/15 live games; keepers 1097/776/64 farm us. **H-Q3 pocket
