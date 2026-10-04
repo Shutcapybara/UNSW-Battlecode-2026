@@ -49,3 +49,15 @@ one switch on a registered parent.
 - export size: 3.74 MiB. fingerprint: `ed7e4515`. live: submission **14265**, `LV-hb1-14-prior-r540-ed7e4515-ai`,
   active 1 Oct 17:00Z to 2 Oct 04:22Z.
 - status: `uploaded` (rollback target one activation away).
+
+### REG-002 — `asahi-05-kz12-k16` (nominee, D-053 §D)
+
+- rung: outside the ladder (`temporary` hand rule, D-044). parent: REG-000.
+- switch: queen-only veto on a one-step move into a pocket with body-conditioned reach Cb < 16 that has no cycle of
+  at least the projected queen length + 1 (H29 contract); k = 0 reproduces the parent on 272 of 272 pool games.
+- screen (seed 1, Asahi P-A02): pool Δwin +2.6 points [+0.7, +4.4]; gen −0.2 [−1.1, +0.7]; wall deaths on classes C
+  and E −4.86 per 1,000 [−8.16, −2.08]; pearls@50 −0.75; queen endpoint no response.
+- gate: pending, seeds 2 and 3, map × opponent clusters. export size, turn-0 CPU and fingerprint: Asahi fills them in
+  from its run record before the gate card.
+- status: `nominee`.
+

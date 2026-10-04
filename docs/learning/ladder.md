@@ -4,16 +4,16 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 
 ## Current state (4 Oct 2026 10:50Z)
 
-- **Rung: R0, open.**
+- **R0 passed 4 Oct 14:28Z (D-053 §A). Rungs open: R1 (confirmation pending) and R2 (card pending).**
 - Incumbent and parent: `carthage-05-free-sprint` (submission 14585). Fallback: `hb1-14-prior-r540` (14265).
 - Deadline: handled by the lead; the Chair imposes no freeze (D-050 §2).
 - GPU work may run on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3).
 
 | Rung | Adds | Status | Owner | Record |
 |---|---|---|---|---|
-| R0 | infrastructure | **open**; most items reported done on lane branches, none recorded yet | Kageyama, Hinata, Asahi, Daichi | D-046, D-050 |
+| R0 | infrastructure | **passed** 4 Oct 14:28Z | Kageyama, Hinata, Asahi, Daichi | D-046, D-051 §5, D-052, D-053 §A |
 | R1 | V0 value model | P-1 (GBT) failed in development. P-2 (logistic): one confirmation on 1,328 ranked, series-clean held-out games under the D-052 spec; released when the code is fixed and audited and the games are decoded. A pass closes R1; V0b is a privileged critic, not a search leaf | Hinata | D-047, D-049, D-052 §A |
-| R2 | P1 BC direction head | not started; offline work may run in parallel with R1 (D-047 §3) | Hinata | |
+| R2 | P1 BC direction head | open; card requested from Hinata; teacher list v1 exists (1,925 sides, 1,735 games), rows wait for the native environment | Hinata | D-053 §F |
 | R3 | split/size, cull, sprint heads | not started | Learner | |
 | R4 | feature blocks | not started | Data, Learner | |
 | R5 | V in the search | needs a value model on the legal encoder (V-legal card after the decode, D-052 §A.7) | Hinata | |
@@ -25,7 +25,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 
 | # | Item | Gate | Owner | Status |
 |---|---|---|---|---|
-| 1 | Post-m2 decode finished (queue 7,617 at 10:30Z and growing; Nishinoya probe 1, unaudited) | every in-scope post-m2 game and all own games decoded | Kageyama (native Mac job) | stopped at its time limit about 12:03Z; about 4,800 games queued; needs one more native run (the lead, or Asahi's executor) |
+| 1 | Post-m2 decode finished | every in-scope post-m2 game and all own games decoded | Kageyama (native Mac job) | **done**: 19,754 of 19,754 (13:55Z) |
 | 2 | Frozen splits | manifests with hashes in `docs/learning/splits/` | Chair (maps), Kageyama (series, fixtures, row counts) | **done**: `kageyama-games-v2.json` (126,694 games, 28,602 series, sha ba21ac40…, 0 series across buckets, `consumed_by` column) and `kageyama-fixtures-v2.json` (sha a0385e85…); consumption tags re-checked by Tanaka on all rows |
 | 3 | Observation encoder | Python = C++ bit for bit on 1,000 turns | Kageyama | **passed** (D-051 §5): 40,002 turns, 0 mismatches; re-run by Nishinoya on its own fixtures, 1,549 turns, 0 mismatches |
 | 4 | Action labeller | agreement with HB-1 labels on Heartbreaker data > 99 % | Kageyama | **passed** (D-051 §5): 100 % of 75,306 Heartbreaker turns; re-run by Nishinoya, 100 % of 31,061 turns |
@@ -33,7 +33,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 | 6 | Registry in use | every artifact has an entry in `registry.md` | Chair keeps the file; owners add entries | file created |
 | 7 | Gen twins regenerated from `maps/live/` | the swapped maps' twins rebuilt; stale twins excluded until then | Asahi | **done** (D-051 §5): four twins rebuilt in `maps/m2tr/`, on `main` |
 | 8 | `battles.json` control and live monitor | built, tested, redeployed; `docs/learning/live.md` refreshing | Daichi | **done** (D-051 §5): redeployed with dispatch off; A/A job enabled by D-051; monitor hourly |
-| 9 | `maps/live/` equals the server's maps | map text in post-m2 replays matches the templates | Kageyama | checked: 36 of 38 post-m2 map texts match; Schooltime and Prisoners Dilemma each run a second variant. Closed when the two variant files are in `maps/live/` and in the pool (D-052 §E) |
+| 9 | `maps/live/` equals the server's maps | map text in post-m2 replays matches the templates | Kageyama | **closed with a limit** (D-053 §A): 36 of 38 texts match; the Schooltime open-4 and Dilemma 10-dragon variants have redacted bed layouts and cannot be rebuilt exactly; panels cover the template variant only |
 | 10 | Interval convention frozen | Tanaka's audit note on D-046 §3 and §4.3 | Tanaka, then Chair | **done** (D-052 §C): map × opponent clusters, seats and seeds together; directional key as sensitivity |
 
 Items 3–5 are the macro's offline gate for R0. Items 1, 2 and 6–10 are prerequisites the Chair added in D-046.
@@ -59,14 +59,16 @@ blocks live screens.
 
 | Arm | Parent | State | Next | Learned replacement target |
 |---|---|---|---|---|
-| Cage C+D, E = 0 | carthage-05 | **HOLD** (D-052 §D): Schooltime queen alive 4 of 15 (bar ≥ 6 more than the parent's 0 of 16), wins 15 of 16; pool +2.2 points [−0.4, +5.2]; C fires on every map; Portals −8 games of 32. Next: diagnosis, then a card for a reserve only while the queen is caged | Asahi, Sugawara | R3/R4 |
-| H-KZ12 entry-capacity dial, k = 0/4/8/16 | carthage-05 | Asahi's P-A02: at k = 16 the veto fires 39.3 times per 1,000 queen decisions (1,529 of 38,877), also on open maps; k = 0 parity 272 of 272; the outcome curve is running, behind the executor work | Asahi | R4 block "body-conditioned entry capacity" |
+| Cage C+D, E = 0 | carthage-05 | **parked** (D-053 §C): screen HOLD; the gated-reserve card P-3 rejected (map identity); live Schooltime is lost about equally with the cage open (−0.515, 27 games) and closed (−0.436, 24 games) | none | R3/R4 |
+| H-KZ12 entry-capacity dial, k = 0/4/8/16 | carthage-05 | screen done: pool Δwin +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response. **k = 16 nominated for the full gate on seeds 2–3** (D-053 §D) | Asahi | R4 block "body-conditioned entry capacity" |
 
 ## Log
 
 - 4 Oct 10:50Z: D-046 opens R0. Engine identity across wheels 1.2.3, 1.2.5 and 1.2.9 checked by hash (D-046 §2).
 - 4 Oct 10:52Z: D-047. Held-out maps frozen (Maze, Trauma, Trophy). P-1 numbered; council round 1 opened on its gate
   reading; the fit waits for the decode or 5 Oct 00:00Z.
+- 4 Oct 14:28Z: D-053. **R0 passed.** H-KZ12 k = 16 nominated for the first full gate (seeds 2–3). P-3 rejected (map
+  identity); cage work parked. H-KZ26 card requested. D-052 §E withdrawn (variants cannot be rebuilt).
 - 4 Oct 13:18Z: D-052. P-2 confirmation terms frozen (spec sha 15d79683…). Rollback rule replaced by a difference
   form. Interval convention frozen. Cage E = 0 screen held. Two map variants to be added to the pool. R0 items 2, 5
   and 10 recorded; items 1 and 9 open.

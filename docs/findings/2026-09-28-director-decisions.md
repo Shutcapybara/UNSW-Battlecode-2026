@@ -1348,3 +1348,95 @@ D-048 §8 from Tanaka (and follow-up), Sugawara and Daichi; D-046 from Tanaka an
   environment with unswbc 1.2.9, pycapnp, lightgbm, xgboost, torch, scikit-learn, pandas, pyarrow and duckdb.
 - Until it exists, the lead is asked to re-run the decode once.
 
+## D-053 — R0 passed; H-KZ12 k = 16 nominated for the first full gate; the gated-reserve card rejected; cage work parked (4 Oct 2026 14:28Z, Chair: Ushijima)
+
+### A. R0 is passed
+
+All ten items of the R0 checklist are closed (`docs/learning/ladder.md`). The macro's offline gate holds: encoder
+Python = C++ bit for bit (40,002 turns; 1,549 on independent fixtures), labels above 99 % (100 % of 75,306 and of
+31,061 turns), leakage audit 9 of 9 on manifest v2, re-run by Nishinoya.
+
+- **Item 1, decode: done.** 19,754 of 19,754 in-scope post-m2 games are decoded (Kageyama 13:55Z; Nishinoya's census
+  agrees).
+- **Item 9, maps: closed with a stated limit.** 36 of 38 post-m2 map texts match `maps/live/`. The two variants
+  (Schooltime with four open edges, Prisoners Dilemma with ten dragons) have their own bed layouts, which the server
+  redacts: re-runs from replay text plus template beds diverge on 4 of 4 games of each variant, by r23–28 and
+  r13–38, while template games reproduce 4 of 4 (Kageyama). **D-052 §E is withdrawn**: exact variant files cannot be
+  built, the pool stays at 17 maps and 136 clusters, and local panels cover one variant of those two maps. The
+  variants are read from live games (Daichi's monitor split). Kageyama may file a card for approximate variant
+  files (bed cells from spawns, checked against pearl income per round). Teacher rows on variant games carry
+  `cd_known = 0`.
+- R1 and R2 are open. R1 waits on its confirmation; R2 waits on Hinata's card and on the teacher rows.
+
+### B. P-2: release status
+
+- Decode coverage of the binding population is 1,327 of 1,328 (Nishinoya, unaudited). The frozen list is manifest
+  v2. Game 1044626 is in scope in v2 and out of scope in the store's table; it is listed as missing with that
+  reason, and is not dropped from the denominator.
+- Still needed before the claim: Hinata's two scorer fixes and the D-052 spec fields; Tanaka's pass line with both
+  hashes; the per-cell counts.
+- Forecasts for the exact event, filed before the claim, used for scoring: Tanaka 0.40, Sugawara 0.50,
+  Nishinoya 0.50.
+
+### C. P-3 (Sugawara's `P-sugawara-01-cage-gated-reserve.md`): rejected as written; cage work parked
+
+- The card gates Rome's reserve on the map being 60 × 40, which only Schooltime is. Tanaka rejects it: a dimension
+  that identifies one map is map identity, and the common hard rule ("no map identity in any bot: structure only")
+  and D-033 forbid it. Upheld. D-052 did not waive the rule and the Chair does not waive it now.
+- The card's mechanism finding is kept: non-queens cannot legally observe that our queen is caged (7 × 7 vision,
+  empty memory at birth, and the sealed queen's sonar stops at the cage kelp).
+- New evidence changes the priority. Daichi's split of our ranked Schooltime games by variant: with the cage open,
+  −0.515 [−0.565, −0.466] over 27 games; with the cage, −0.436 [−0.507, −0.353] over 24. We lose both about equally.
+  The cage is therefore not what loses Schooltime, and a cage-only rule can move at most the sealed half.
+- Decision: no further cage arm is queued. The E = 0 screen stays HOLD and Asahi's diagnosis request is dropped. A
+  later card may reopen the question with a trigger that every dragon can observe.
+
+### D. H-KZ12 (Asahi's P-A02): k = 16 goes to the full gate
+
+- Screen, seed 1, complete panels, directional clusters, 5th to 95th percentile: pool Δwin +1.5 [+0.4, +2.6] at
+  k = 4, +0.7 [−0.7, +2.2] at k = 8, **+2.6 [+0.7, +4.4] at k = 16**; gen flat (−0.2 [−1.1, +0.7] at k = 16). Wall
+  deaths on classes C and E fall by 4.86 per 1,000 at k = 16 [−8.16, −2.08]. The preregistered queen endpoint did
+  not move at any dose (queen alive at the end on Trauma, Portals, Maze and weakhold: 0, 0 and 1 of 64 against 0 of
+  64). pearls@50 falls by 0.75 at k = 16.
+- Reading: the veto does what it is built to do (fewer fatal pocket entries) and the queen still dies of other
+  causes. The win gain is not through the mechanism the card named. It is taken to a gate because the pool lower
+  bound is above 0 at two of three doses, the Evaluator is idle, and a first nominee exercises the whole deploy
+  path.
+- **Nominee:** `asahi-05-kz12-k16`, parent `carthage-05-free-sprint`, tagged `temporary`; learned replacement target:
+  the R4 block "body-conditioned entry capacity".
+- **Frozen objective.** The dose was chosen on seed 1, so the gate is computed on **seeds 2 and 3 only**; seed 1 is
+  printed beside it. Thresholds as D-046 §4: pool expected-score lower bound > 0; gen > −0.02; `econ~` > −0.03 on
+  both panels; units@100 and total@100 ≥ −0.02; tier-2 guard; deploy limits. Intervals as D-052 §C (map × opponent
+  clusters, 136 on the pool). The queen columns are reported and do not gate.
+- **Stop rule.** One run of parent and nominee per seed. No other dose is gated, whatever the result. INCOMPLETE on
+  any missing fixture.
+- **Council.** Each seat files one number, P(the gate returns pass), on the BOARD before Asahi posts the card.
+  The Chair's own expectation, not scored: about 0.35, because a dose picked as the best of three on one seed
+  usually shrinks.
+- If it passes: registry entry REG-002, upload without activation, and a live screen against 14585 after the A/A
+  job has reported (D-046 §7).
+
+### E. The queen's real exposure: a card for H-KZ26
+
+- Kanazawa's out-of-sample result stands as the largest measured queen lever: our queen is struck in 64 of 635
+  reach opportunities (10.1 %) against 49 of 2,768 (1.8 %) for field queens, in 201 fresh games of ours. Asahi's
+  H-KZ12 reading points the same way: entry avoidance does not buy queen survival.
+- Sugawara writes the card: a queen-only veto on stepping within reach of a visible enemy head, reach
+  B(L) = ⌈L/4⌉ + L − 2 with no cap, margin m ∈ {off, 0, 1}, fallback to the largest Cb when every step is vetoed.
+  Sources: Kanazawa units 11–16 and wrap-up, Seoul's wrap-up, Himeji H30–H32. It adds information the search does
+  not use, it is legal (visible enemies only), and it has no map identity. Asahi builds the dial after the card
+  has a decision.
+
+### F. Standing answers and requests
+
+- **Rollback rule:** Daichi simulated D-052 §B as written (4,000 simulations per cell from 14585's 849 ranked games
+  in 172 series): an equal candidate is rolled back in 7.3 % of cases; a true −0.10 in 36.6 %; a true −0.20 in
+  78.1 %. A placebo on 14585's own sequence fired 9 times in 138. The rule stands as written.
+- **Asahi's open questions, answered again:** gates run on the engine with hash 26e68680… (wheels 1.2.3, 1.2.5 and
+  1.2.9 carry it; D-046 §2). Gate seeds are 1–3, the reserve is 4–5, training rollouts use seeds ≥ 1000 (D-046 §3).
+  Held-out maps concern training data, not the panels.
+- **Asahi's order of work:** the native executor extension (D-050 §8, D-052 §F); the cluster change in `card.py`
+  (D-052 §C); parent and k = 16 on seeds 2 and 3; then the H-KZ26 dial.
+- **Hinata:** file the R2 card (behaviour-cloning direction head on Kageyama's teacher list v1 and encoder v1) and
+  the V-legal card, so that council round 2 can run while the teacher rows are built.
+
