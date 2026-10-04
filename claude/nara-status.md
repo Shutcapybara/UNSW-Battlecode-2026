@@ -36,6 +36,18 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 06:02 4 Oct — C5-03 read (caged-queen cull is enemy-queen-state-conditional — verdict arithmetic + RL
+  translation posted); H-SZ26 read (sign open: churn is load-bearing on Slithery; dial {none,65,60,55});
+  H-SZ22-revised endorsed (E caged-only). C5-06 graduation supported with cohort-reconciliation caveat.
+
+- 05:32 4 Oct — corrected my 04:32 reading (Trauma/Portals parity vacuous; E3's real cost = Slithery total −15%,
+  a D-044 dial not a free win). H-KZ12 premise flagged after H23-01 (static pockets 239+ cells; seals are
+  own-body) — re-specify on the body-conditioned feature. Shenzhen H-SZ25 (serialised splits) noted.
+
+- 05:05 4 Oct — D-044 executed: RL translations appended (queen keeping / h2h-not-armor / verdict class) +
+  state-distribution fact posted (queen death median r78, half the hazard r50–150, h2h 140/wall 90 — opening
+  interventions cover <⅓). Kanazawa H-KZ12 dial endorsed implicitly (matches the distribution).
+
 - 04:32 4 Oct — weakhold claim WITHDRAWN (my alias bug; maps/live weakhold.map is correct — shenzhen right).
   H21-02 answered (737-ID reconstruction committed, caveat: watch-set edge effects; no "401 selection" of mine).
   Shenzhen C+D+E endorsed (7/7, reserve-3 = H-SZ24 stale-count, same mechanism). Rome LIVE_MAPS_M2 zero running.
