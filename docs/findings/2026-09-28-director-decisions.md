@@ -1857,3 +1857,73 @@ without a Chair record. From here:
   re-runs parity, then the panels. Results from the first m = 0 build are void.
 - REG-002's deploy probe on the fixed tree is recorded (zip 3.741 MiB, maximum 11.01 M points per turn, first turn
   10.73 M, no errors).
+
+## D-058 — Precedent first: the lead's rule for strategy, and what it changes (4 Oct 2026 19:35Z, Chair: Ushijima)
+
+### A. The rule (the lead, 19:33Z)
+
+The structure of the strategy rests first on precedent: what has worked on similar problems. Where precedent is not
+relevant or cannot be established, decisions rest on evidence from our own data. The macro's §0 says this in
+principle. From this record it is operative:
+
+- Every proposal card has a **Precedent** section: the precedent it follows, how close that problem is to ours, and
+  where ours departs. A card with no precedent says so and then rests on evidence alone (`TEMPLATE.md` updated).
+- The mechanism seat (Sugawara) checks each cited precedent against its source.
+- Chair rulings on structure name the precedent, or say "no precedent; evidence".
+
+### B. The precedents the Chair relies on
+
+**Limit:** this table is from the Chair's knowledge of the published write-ups. It was not re-checked against the
+sources in this unit (a web search returned links without content). **Sugawara verifies it with sources by 21:30Z;
+corrections amend this section.**
+
+| Problem | Close to ours in | Departs from ours in | What won |
+|---|---|---|---|
+| Kaggle Hungry Geese (2021) | snakes on a torus, simultaneous moves, about a second of CPU per move | fully observed, four single agents, no communication | self-play reinforcement learning with a torus CNN and look-ahead at play time; many high places by imitating the top-rated agents' episodes (filtered by rating), with symmetry augmentation and ensembles |
+| Lux AI Season 1 (2021) | many units on a resource grid | fully observed, central control, large models allowed | first place by self-play reinforcement learning at scale; several of the next places by imitating the winner's replays with per-unit action heads |
+| Lux AI Season 2 (2023) | many units, harder rules, short season | as above | rule-based agents at the top; reinforcement learning entries below them |
+| Halite IV (2020), Kore (2022) | many units, economy and combat | as above | rule-based agents at the top; imitation entries inside the top ten |
+| Battlecode (MIT and others), Battlesnake | decentralised units, narrow communication and a hard compute limit (Battlecode); snakes under a time limit (Battlesnake) | no learned component at deploy | hand-written heuristics with search |
+| Pommerman (2018) | partial observation, teams | small scale | search-based agents in the first competition |
+
+Reading:
+
+1. Under a tight deploy budget and a short season, heuristics with search won most often. Imitating the best agents
+   is the quickest learned route to near the top. Self-play reinforcement learning won only with weeks of training
+   and large compute.
+2. How imitation was done where it worked: teachers filtered by rating (the best agents, not the field's average);
+   one teacher or a teacher-conditioned model; every action type cloned; symmetry augmentation; the ladder as the
+   judge.
+3. The closest precedents on our two hard features (seven-by-seven private views; sonar) are Battlecode and
+   Pommerman, both hand-built. There is no precedent for learned communication at this compute.
+
+### C. What changes
+
+1. **Order.** Clone first, value model second, self-play last. D-057 already put R2 ahead of R1; that now rests on
+   precedent. The ladder's R1-before-R2 order departed from the macro's own §0. R2's deployment does not wait on R1.
+2. **Chassis and hand rules.** The search bot stays the chassis. The hand-rule dials (k = 16, the queen reach veto)
+   are a main track beside the learned one, not a temporary one: most of the closest contests were won by
+   heuristics with search. The Evaluator's queue order stands.
+3. **Battery (D-057 §C), arms added from reading 2:**
+   - A6: the union model trained only on the three teachers with the highest current rating (rating filter).
+   - A7: the union model with the teacher's identity as a training-time input, deployed with the identity of the
+     highest-rated teacher fixed. A teacher's identity is not map identity.
+   - A8: the best arm with left–right mirrored copies of the training rows (labels swapped).
+   - A9, offline and report-only: the split, cull and sprint heads on the same rows and folds. No head deploys
+     before R2 does.
+   - A2 (one model per teacher) becomes a deploy candidate type; the live bot's prior is itself a one-teacher clone.
+4. **Selection, amended.** The pooled selection and its confirmation stay as in D-057 §C and D-055 §E. In addition
+   the best teacher-specific arm (A2, A6 or A7) is carried forward if it beats A0 on its own target teachers'
+   development rows (whole-series 5th percentile above 0). Its confirmation is the same paired gate on the frozen
+   cohort's rows of those teachers; Kageyama states that subset's counts before any label is read. Between the two
+   resulting bots, play decides: seed-1 panels, then a live screen (the precedent's judge is the ladder).
+5. **Evaluation.** Live-first (D-055) matches the precedent and stays.
+6. **No precedent; evidence governs:** boosted trees against a small CNN at our deploy budget (our evidence: trees
+   matched or beat a small network on five Heartbreaker decisions; 4 MiB, 30 M points); anything that uses sonar;
+   the queen tiebreak; the statistics of screens.
+7. R6 to R8 stay last.
+
+### D. Hub
+
+launchd no longer has the hub's service loaded. The running hub (pid 79689) is a plain terminal process. The
+redeploy ban of D-057 §A stands until the lead restarts it inside a restart loop.

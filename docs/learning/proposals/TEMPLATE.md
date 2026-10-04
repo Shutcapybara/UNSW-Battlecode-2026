@@ -9,6 +9,12 @@ One change per card. A card that skips a rung or bundles two changes is returned
 - Parent (registry id) and the one switch.
 - Mechanism: what information or action the change adds that the parent lacks.
 
+## 1b. Precedent (required, D-058)
+
+- The precedent this follows (problem, method, result) and its source.
+- How close that problem is to ours, and where ours departs.
+- If there is no precedent, say so; the card then rests on evidence from our own data.
+
 ## 2. Expected sign and size
 
 - Primary outcome, with the expected sign and size.
