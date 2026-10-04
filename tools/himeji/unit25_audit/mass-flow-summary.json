@@ -1,0 +1,477 @@
+{
+  "window": [
+    250,
+    400
+  ],
+  "blocks": [
+    {
+      "game": 852617,
+      "series": "1387abce-c8b8-4e91-bf25-4ce9865f7bc9",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "side": "A",
+      "own": {
+        "total_start": 178,
+        "total_end": 181,
+        "units_start": 64,
+        "capshare": 0.8866666666666667,
+        "bed": 246,
+        "ally": 277,
+        "enemy": 43,
+        "unknown": 0,
+        "paid": 24,
+        "death_segments": 539,
+        "splits": 140,
+        "split_delta": 0,
+        "delta": 3
+      },
+      "field_mean": {
+        "total_start": 184.66666666666666,
+        "total_end": 172.33333333333334,
+        "units_start": 62.666666666666664,
+        "capshare": 0.13999999999999999,
+        "bed": 341.6666666666667,
+        "ally": 399.6666666666667,
+        "enemy": 32.333333333333336,
+        "unknown": 0,
+        "paid": 3,
+        "death_segments": 783,
+        "splits": 285,
+        "split_delta": 0,
+        "delta": -12.333333333333334
+      },
+      "difference": {
+        "total_start": 6.666666666666657,
+        "total_end": -8.666666666666657,
+        "units_start": -1.3333333333333357,
+        "capshare": -0.7466666666666667,
+        "bed": 95.66666666666669,
+        "ally": 122.66666666666669,
+        "enemy": -10.666666666666664,
+        "unknown": 0,
+        "paid": -21,
+        "death_segments": 244,
+        "splits": 145,
+        "split_delta": 0,
+        "delta": -15.333333333333334
+      }
+    },
+    {
+      "game": 868519,
+      "series": "5d0d1ad7-6fc1-402a-a5ac-b5415b0965e1",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "side": "A",
+      "own": {
+        "total_start": 164,
+        "total_end": 165,
+        "units_start": 64,
+        "capshare": 0.88,
+        "bed": 192,
+        "ally": 193,
+        "enemy": 29,
+        "unknown": 0,
+        "paid": 16,
+        "death_segments": 397,
+        "splits": 91,
+        "split_delta": 0,
+        "delta": 1
+      },
+      "field_mean": {
+        "total_start": 255.33333333333334,
+        "total_end": 213.33333333333334,
+        "units_start": 62.666666666666664,
+        "capshare": 0.22666666666666666,
+        "bed": 272.3333333333333,
+        "ally": 321.3333333333333,
+        "enemy": 20,
+        "unknown": 0,
+        "paid": 11.666666666666666,
+        "death_segments": 644,
+        "splits": 213.66666666666666,
+        "split_delta": 0,
+        "delta": -42
+      },
+      "difference": {
+        "total_start": 91.33333333333334,
+        "total_end": 48.33333333333334,
+        "units_start": -1.3333333333333357,
+        "capshare": -0.6533333333333333,
+        "bed": 80.33333333333331,
+        "ally": 128.33333333333331,
+        "enemy": -9,
+        "unknown": 0,
+        "paid": -4.333333333333334,
+        "death_segments": 247,
+        "splits": 122.66666666666666,
+        "split_delta": 0,
+        "delta": -43
+      }
+    },
+    {
+      "game": 880465,
+      "series": "5ccf0692-658e-4aac-8fb0-a19c3dae7645",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "side": "B",
+      "own": {
+        "total_start": 167,
+        "total_end": 213,
+        "units_start": 64,
+        "capshare": 0.92,
+        "bed": 325,
+        "ally": 313,
+        "enemy": 37,
+        "unknown": 0,
+        "paid": 2,
+        "death_segments": 627,
+        "splits": 129,
+        "split_delta": 0,
+        "delta": 46
+      },
+      "field_mean": {
+        "total_start": 183.66666666666666,
+        "total_end": 201.66666666666666,
+        "units_start": 63,
+        "capshare": 0.37555555555555553,
+        "bed": 442,
+        "ally": 437.3333333333333,
+        "enemy": 33,
+        "unknown": 0,
+        "paid": 25.666666666666668,
+        "death_segments": 868.6666666666666,
+        "splits": 287.3333333333333,
+        "split_delta": 0,
+        "delta": 18
+      },
+      "difference": {
+        "total_start": 16.666666666666657,
+        "total_end": -11.333333333333343,
+        "units_start": -1,
+        "capshare": -0.5444444444444445,
+        "bed": 117,
+        "ally": 124.33333333333331,
+        "enemy": -4,
+        "unknown": 0,
+        "paid": 23.666666666666668,
+        "death_segments": 241.66666666666663,
+        "splits": 158.33333333333331,
+        "split_delta": 0,
+        "delta": -28
+      }
+    },
+    {
+      "game": 887284,
+      "series": "f721b415-b17a-41c8-b523-e8756c44490f",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "side": "A",
+      "own": {
+        "total_start": 156,
+        "total_end": 171,
+        "units_start": 63,
+        "capshare": 0.8733333333333333,
+        "bed": 221,
+        "ally": 191,
+        "enemy": 24,
+        "unknown": 0,
+        "paid": 11,
+        "death_segments": 410,
+        "splits": 106,
+        "split_delta": 0,
+        "delta": 15
+      },
+      "field_mean": {
+        "total_start": 189,
+        "total_end": 199.33333333333334,
+        "units_start": 60.333333333333336,
+        "capshare": 0.2,
+        "bed": 371.6666666666667,
+        "ally": 354,
+        "enemy": 39.333333333333336,
+        "unknown": 0,
+        "paid": 15.666666666666666,
+        "death_segments": 739,
+        "splits": 251,
+        "split_delta": 0,
+        "delta": 10.333333333333334
+      },
+      "difference": {
+        "total_start": 33,
+        "total_end": 28.333333333333343,
+        "units_start": -2.6666666666666643,
+        "capshare": -0.6733333333333333,
+        "bed": 150.66666666666669,
+        "ally": 163,
+        "enemy": 15.333333333333336,
+        "unknown": 0,
+        "paid": 4.666666666666666,
+        "death_segments": 329,
+        "splits": 145,
+        "split_delta": 0,
+        "delta": -4.666666666666666
+      }
+    },
+    {
+      "game": 887972,
+      "series": "c0fc06a8-b4de-4124-854b-fa37b0919989",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "side": "B",
+      "own": {
+        "total_start": 174,
+        "total_end": 164,
+        "units_start": 64,
+        "capshare": 0.86,
+        "bed": 215,
+        "ally": 205,
+        "enemy": 19,
+        "unknown": 0,
+        "paid": 14,
+        "death_segments": 435,
+        "splits": 98,
+        "split_delta": 0,
+        "delta": -10
+      },
+      "field_mean": {
+        "total_start": 226.66666666666666,
+        "total_end": 250,
+        "units_start": 61.666666666666664,
+        "capshare": 0.46222222222222226,
+        "bed": 327,
+        "ally": 298.6666666666667,
+        "enemy": 27.333333333333332,
+        "unknown": 0,
+        "paid": 27.333333333333332,
+        "death_segments": 602.3333333333334,
+        "splits": 208.33333333333334,
+        "split_delta": 0,
+        "delta": 23.333333333333332
+      },
+      "difference": {
+        "total_start": 52.66666666666666,
+        "total_end": 86,
+        "units_start": -2.3333333333333357,
+        "capshare": -0.39777777777777773,
+        "bed": 112,
+        "ally": 93.66666666666669,
+        "enemy": 8.333333333333332,
+        "unknown": 0,
+        "paid": 13.333333333333332,
+        "death_segments": 167.33333333333337,
+        "splits": 110.33333333333334,
+        "split_delta": 0,
+        "delta": 33.33333333333333
+      }
+    },
+    {
+      "game": 999613,
+      "series": "b2748414-0c23-410a-979c-45d3e79a8637",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "side": "A",
+      "own": {
+        "total_start": 155,
+        "total_end": 197,
+        "units_start": 64,
+        "capshare": 0.9933333333333333,
+        "bed": 233,
+        "ally": 249,
+        "enemy": 30,
+        "unknown": 0,
+        "paid": 8,
+        "death_segments": 462,
+        "splits": 110,
+        "split_delta": 0,
+        "delta": 42
+      },
+      "field_mean": {
+        "total_start": 233,
+        "total_end": 256.3333333333333,
+        "units_start": 62,
+        "capshare": 0.3022222222222222,
+        "bed": 421,
+        "ally": 449,
+        "enemy": 31,
+        "unknown": 0,
+        "paid": 7.666666666666667,
+        "death_segments": 870,
+        "splits": 306.6666666666667,
+        "split_delta": 0,
+        "delta": 23.333333333333332
+      },
+      "difference": {
+        "total_start": 78,
+        "total_end": 59.333333333333314,
+        "units_start": -2,
+        "capshare": -0.691111111111111,
+        "bed": 188,
+        "ally": 200,
+        "enemy": 1,
+        "unknown": 0,
+        "paid": -0.33333333333333304,
+        "death_segments": 408,
+        "splits": 196.66666666666669,
+        "split_delta": 0,
+        "delta": -18.666666666666668
+      }
+    }
+  ],
+  "equal_block_means": {
+    "own": {
+      "total_start": 165.66666666666666,
+      "total_end": 181.83333333333334,
+      "units_start": 63.833333333333336,
+      "capshare": 0.9022222222222223,
+      "bed": 238.66666666666666,
+      "ally": 238,
+      "enemy": 30.333333333333332,
+      "unknown": 0,
+      "paid": 12.5,
+      "death_segments": 478.3333333333333,
+      "splits": 112.33333333333333,
+      "split_delta": 0,
+      "delta": 16.166666666666668
+    },
+    "field_mean": {
+      "total_start": 212.05555555555554,
+      "total_end": 215.5,
+      "units_start": 62.05555555555556,
+      "capshare": 0.28444444444444444,
+      "bed": 362.6111111111111,
+      "ally": 376.6666666666667,
+      "enemy": 30.5,
+      "unknown": 0,
+      "paid": 15.166666666666666,
+      "death_segments": 751.1666666666666,
+      "splits": 258.6666666666667,
+      "split_delta": 0,
+      "delta": 3.444444444444444
+    },
+    "difference": {
+      "total_start": 46.388888888888886,
+      "total_end": 33.666666666666664,
+      "units_start": -1.7777777777777786,
+      "capshare": -0.6177777777777778,
+      "bed": 123.94444444444444,
+      "ally": 138.66666666666666,
+      "enemy": 0.16666666666666727,
+      "unknown": 0,
+      "paid": 2.6666666666666665,
+      "death_segments": 272.8333333333333,
+      "splits": 146.33333333333334,
+      "split_delta": 0,
+      "delta": -12.722222222222223
+    }
+  },
+  "difference_ranges": {
+    "total_start": [
+      6.666666666666657,
+      91.33333333333334
+    ],
+    "total_end": [
+      -11.333333333333343,
+      86
+    ],
+    "units_start": [
+      -2.6666666666666643,
+      -1
+    ],
+    "capshare": [
+      -0.7466666666666667,
+      -0.39777777777777773
+    ],
+    "bed": [
+      80.33333333333331,
+      188
+    ],
+    "ally": [
+      93.66666666666669,
+      200
+    ],
+    "enemy": [
+      -10.666666666666664,
+      15.333333333333336
+    ],
+    "unknown": [
+      0,
+      0
+    ],
+    "paid": [
+      -21,
+      23.666666666666668
+    ],
+    "death_segments": [
+      167.33333333333337,
+      408
+    ],
+    "splits": [
+      110.33333333333334,
+      196.66666666666669
+    ],
+    "split_delta": [
+      0,
+      0
+    ],
+    "delta": [
+      -43,
+      33.33333333333333
+    ]
+  },
+  "dependence": {
+    "own_games": 6,
+    "field_match_slots": 18,
+    "field_unique_games": 17,
+    "field_series": 17,
+    "field_slot_teams": {
+      "952": 2,
+      "112": 4,
+      "91": 2,
+      "213": 2,
+      "566": 2,
+      "264": 1,
+      "842": 2,
+      "306": 1,
+      "55": 1,
+      "507": 1
+    },
+    "connected_components": 5,
+    "component_series": [
+      [
+        "0e6631ec-6508-40d4-a042-99980d90868d",
+        "1387abce-c8b8-4e91-bf25-4ce9865f7bc9",
+        "2161eb91-2380-4ffe-b882-9dc11c93b20e",
+        "bd98aea9-e70a-437b-8819-89ce01df3192"
+      ],
+      [
+        "1b5100c1-dfba-426e-ac6c-f020e09a9b71",
+        "5d0d1ad7-6fc1-402a-a5ac-b5415b0965e1",
+        "6c2fda45-15fe-47d9-b7f1-d772df3955b4",
+        "a85f549f-50d4-48df-a88e-c79857ad8bac"
+      ],
+      [
+        "2cd25d90-b9a8-44ef-a7b5-335fb1e9aa5d",
+        "375e75e1-a3a2-45c6-8fd2-5506717a554b",
+        "5ccf0692-658e-4aac-8fb0-a19c3dae7645",
+        "a6217145-77bb-4959-b412-2d6f8adc205b"
+      ],
+      [
+        "15ab94ad-1b72-4641-bb7f-9eb84a8867b0",
+        "555ca738-8e30-4e94-9d68-294ebbfa92d2",
+        "70b6b731-6fe7-4b1b-8425-f19a5459e52d",
+        "7a6b7626-28d4-4d54-b83f-9db0bce2266c",
+        "c0fc06a8-b4de-4124-854b-fa37b0919989",
+        "d70354b4-9f03-4f26-86c6-5e367565144d",
+        "f721b415-b17a-41c8-b523-e8756c44490f"
+      ],
+      [
+        "2c73dca1-b2b1-4307-a6f8-023cb03de360",
+        "653a4022-1816-4c19-86aa-21c6853a91cd",
+        "7e5fb6d4-9333-410d-939d-cfa963c36833",
+        "b2748414-0c23-410a-979c-45d3e79a8637"
+      ]
+    ]
+  },
+  "verification": {
+    "games": 23,
+    "side_windows": 46,
+    "all_mass_residuals_zero": true,
+    "payload_and_winner_checked": true,
+    "map_hash_check": "metadata full hash, decoder12-character prefix checked"
+  },
+  "uncertainty": "Five connected series components: ranges only, no stable CI or causal/full-opponent-matched gap. No early ends in the selected window."
+}

@@ -1,0 +1,165 @@
+{
+  "blocks": [
+    {
+      "own_game": 852617,
+      "side": "A",
+      "series": "1387abce-c8b8-4e91-bf25-4ce9865f7bc9",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "matches": [
+        {
+          "game": 852741,
+          "dt_seconds": 92.31100010871887
+        },
+        {
+          "game": 854233,
+          "dt_seconds": 1883.2969999313354
+        },
+        {
+          "game": 854383,
+          "dt_seconds": 1982.8050000667572
+        }
+      ]
+    },
+    {
+      "own_game": 868519,
+      "side": "A",
+      "series": "5d0d1ad7-6fc1-402a-a5ac-b5415b0965e1",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "matches": [
+        {
+          "game": 868567,
+          "dt_seconds": 122.125
+        },
+        {
+          "game": 867835,
+          "dt_seconds": -881.9479999542236
+        },
+        {
+          "game": 867317,
+          "dt_seconds": -1705.2179999351501
+        }
+      ]
+    },
+    {
+      "own_game": 880465,
+      "side": "B",
+      "series": "5ccf0692-658e-4aac-8fb0-a19c3dae7645",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "matches": [
+        {
+          "game": 881213,
+          "dt_seconds": 763.4210000038147
+        },
+        {
+          "game": 877761,
+          "dt_seconds": -2269.8420000076294
+        },
+        {
+          "game": 877757,
+          "dt_seconds": -2273.053999900818
+        }
+      ]
+    },
+    {
+      "own_game": 887284,
+      "side": "A",
+      "series": "f721b415-b17a-41c8-b523-e8756c44490f",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "matches": [
+        {
+          "game": 886380,
+          "dt_seconds": -776.5420000553131
+        },
+        {
+          "game": 888170,
+          "dt_seconds": 1158.5499999523163
+        },
+        {
+          "game": 884202,
+          "dt_seconds": -2593.076999902725
+        }
+      ]
+    },
+    {
+      "own_game": 887972,
+      "side": "B",
+      "series": "c0fc06a8-b4de-4124-854b-fa37b0919989",
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "matches": [
+        {
+          "game": 888166,
+          "dt_seconds": 305.0510001182556
+        },
+        {
+          "game": 888170,
+          "dt_seconds": 305.0859999656677
+        },
+        {
+          "game": 884696,
+          "dt_seconds": -2990.7969999313354
+        }
+      ]
+    },
+    {
+      "own_game": 999613,
+      "side": "A",
+      "series": "b2748414-0c23-410a-979c-45d3e79a8637",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "matches": [
+        {
+          "game": 999775,
+          "dt_seconds": 153.53399991989136
+        },
+        {
+          "game": 999847,
+          "dt_seconds": 244.9409999847412
+        },
+        {
+          "game": 1001707,
+          "dt_seconds": 2175.351000070572
+        }
+      ]
+    }
+  ],
+  "top10": [
+    55,
+    91,
+    112,
+    213,
+    264,
+    306,
+    507,
+    566,
+    842,
+    952
+  ],
+  "games": [
+    852617,
+    852741,
+    854233,
+    854383,
+    868519,
+    868567,
+    867835,
+    867317,
+    880465,
+    881213,
+    877761,
+    877757,
+    887284,
+    886380,
+    888170,
+    884202,
+    887972,
+    888166,
+    884696,
+    999613,
+    999775,
+    999847,
+    1001707
+  ],
+  "window_start": 0,
+  "window_end_exclusive": 250,
+  "index_sha256": "16370ff5e5f3158b843562c3cabb9ec82a469b1de8831cfe2bcef9e0eb371bb7",
+  "cohort": "ranked post-m2 Slithery; own14585 verified in payload; field currenttop10, same exacthash and seat, within6h, nearest3; opponents unmatched"
+}

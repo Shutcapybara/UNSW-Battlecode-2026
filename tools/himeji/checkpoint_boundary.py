@@ -6,8 +6,9 @@ ap.add_argument('--repo', type=Path, required=True)
 ap.add_argument('--lineage', type=Path, required=True)
 ap.add_argument('--index', type=Path, required=True)
 ap.add_argument('--out', type=Path, required=True)
+ap.add_argument('--ref', default='24ea5e539')
 a = ap.parse_args()
-src = subprocess.check_output(['git', 'show', '24ea5e539:tools/s1/build.py'], cwd=a.lineage, text=True)
+src = subprocess.check_output(['git', 'show', a.ref + ':tools/s1/build.py'], cwd=a.lineage, text=True)
 fn = next((n for n in ast.parse(src).body if isinstance(n, ast.FunctionDef) and n.name == 'queen_cols'))
 ns = {'Q_ROUNDS': [490]}
 exec(compile(ast.Module(body=[fn], type_ignores=[]), 'peer_queen_cols', 'exec'), ns)
@@ -28,6 +29,6 @@ real = []
 for side in ['A', 'B']:
     z = ns['queen_cols'](g, {'deaths': []}, side)
     real.append({'side': side, 'actual_last_round': g['last_round'], 'snapshot_count': len(g['rounds']), 'reported_q_len490': z['q_len@490'], 'reported_q_censored': z['q_censored'], 'header_queen': g['final'][side]['queen'], 'actual_reached490': g['last_round'] >= 490})
-out = {'source_commit': '24ea5e539', 'source_sha256': hashlib.sha256(src.encode()).hexdigest(), 'function_source': ast.get_source_segment(src, fn), 'synthetic_rows': rows, 'live_boundary_game': meta, 'live_result': real, 'scope': 'Synthetic alive-end boundary plus one existing ranked Default replay. Other stores not rewritten.'}
+out = {'source_commit': a.ref, 'source_sha256': hashlib.sha256(src.encode()).hexdigest(), 'function_source': ast.get_source_segment(src, fn), 'synthetic_rows': rows, 'live_boundary_game': meta, 'live_result': real, 'scope': 'Synthetic alive-end boundary plus one existing ranked Default replay. Other stores not rewritten.'}
 a.out.write_text(json.dumps(out, indent=2) + '\n')
 print(real)

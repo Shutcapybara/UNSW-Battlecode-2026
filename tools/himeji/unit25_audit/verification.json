@@ -1,0 +1,12 @@
+{
+  "unique_games": 23,
+  "payload_winner_and_full_map_hash_checks": 23,
+  "side_windows": 92,
+  "all_mass_residuals_zero": true,
+  "six_own_14585_headers": true,
+  "workers": 1,
+  "queries_complete": true,
+  "boundary_cases_passed": 6,
+  "live_boundary_fixed": 867918,
+  "field_submission_ids": "all18 field slots blank; unknown identity"
+}
