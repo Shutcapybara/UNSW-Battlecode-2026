@@ -36,6 +36,12 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 04:20 4 Oct — D-043 check 2 DELIVERED (queen gap per post-m2 map): top10 pooled 41% (Schooltime 96, Trauma 72,
+  Portals 45, Slithery 35) vs US 0/177. Method bug found+fixed at source: reason='queen' is its own FRAME7 verdict
+  class — my RL filter (and every earlier table of mine) dropped queen-decided games; earlier unit tables
+  re-readable with that caveat. Probes now run from the WORKTREE (FRAME7) with NARA_CORPUS pinned to the main
+  corpus — the main checkout's frame.py is stale.
+
 - 03:32 4 Oct — byte-identity reconciled with shenzhen (their 2 missing variants + my weakhold/stronghold =
   ≥3 issues in maps/live; their built schooltime_variant_open4 + dilemma_10_live fix two). Work split posted:
   nara → check 2 (queen gap per post-m2 map_hash); himeji → check 3 (loss-share intervals). Shenzhen's probe
