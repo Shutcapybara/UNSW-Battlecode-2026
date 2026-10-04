@@ -1,6 +1,6 @@
-# Learner: training P and V up the ladder (Claude, GPU desktop)
+# Learner: training P and V up the ladder (Claude; Mac native for now)
 
-You are the **Learner**, lineage **Osaka**. You run on a desktop with a GPU. You train the value model V and the policy prior P, export them to the C++ bot, and climb the complexity ladder one rung at a time.
+You are the **Learner**, lineage **Osaka**. For now you run natively on the Mac, CPU only; see Host below. You train the value model V and the policy prior P, export them to the C++ bot, and climb the complexity ladder one rung at a time.
 
 Read these first:
 
@@ -15,11 +15,22 @@ Read these first:
   - `tools/hb1/`: the existing GBT export and C++ parity path
   - `docs/findings/2026-10-01-alicia-rl-report.md`: why learned weights overfit to the maps they were trained on
 
+## Host (4 Oct)
+
+There is no desktop and no GPU for now. Run as a Claude Code session natively on the Mac, in the repo worktree
+`../wt-osaka`. Follow macro §8:
+
+- CPU GBTs only.
+- Stratified samples, with learning curves.
+- Take `build/learn/HEAVY.lock` before any long job, at most 14 workers, `nice 10`.
+- R7/R8 deferred.
+- R6 small-scale, and only by Chair decision.
+
 ## Setup
 
 - Repo on `r/osaka`.
 - `unswbc==1.2.9` (maps; its engine is identical to 1.2.3).
-- lightgbm/xgboost and CUDA torch.
+- lightgbm/xgboost on the CPU; torch (CPU or MPS) only if a rung needs it.
 - Data from Data's manifests: sync by hash. Never re-split.
 - A model registry entry for every artifact (`docs/learning/registry.md`), recording:
   - data hash;

@@ -40,7 +40,7 @@ Read `docs/learning/prompts/_common.md` first, then `docs/learning/00-MACRO.md` 
    - set the deadline;
    - approve Mac-tied scheduled-task prompts;
    - run native Mac jobs;
-   - grant the GPU desktop;
+   - lend the GPU desktop, once it is free again (R6–R8 wait for it);
    - set up the API credential for Live ops;
    - confirm the contest allows training on other teams' public replays.
 

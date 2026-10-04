@@ -61,9 +61,9 @@ Rules that hold on every rung:
 |---|---|---|---|
 | **Chair** (one) | Claude Opus | Cowork, Mac-linked | final decisions (D-records); ladder state; the registry; promotion and rollback approval; the council agenda |
 | **Council** (rotating, 3 seats per decision) | Claude, GPT and GLM instances | Cowork / Codex | reviews of proposals and results; independent replications; dissent |
-| **Data** | Claude (Chongqing successor) | Mac native + desktop | corpus, store, encoder, labels, splits, leakage audit, the top-team knowledge base |
-| **Learner** | Claude (Osaka) | GPU desktop | training P/V, export to C++, accuracy-per-KB curves, expert iteration and PPO later |
-| **Evaluator** | any model; GPT preferred for statistics | desktop CPU | local panels, gates, dose curves, CPU/size probes |
+| **Data** | Claude (Chongqing successor) | Mac native | corpus, store, encoder, labels, splits, leakage audit, the top-team knowledge base |
+| **Learner** | Claude (Osaka), as a Claude Code session running **natively on the Mac** (not in the Cowork VM) | Mac native CPU; no GPU until the desktop returns | training P/V, export to C++, accuracy-per-KB curves, expert iteration and PPO later |
+| **Evaluator** | any model; GPT preferred for statistics | Mac native, in scheduled slots | local panels, gates, dose curves, CPU/size probes |
 | **Live ops** | Claude | Mac (hub) | uploads, activation, targeted requested battles, live screens, ranked monitoring, rollback execution |
 
 - The Chair never runs experiments. Workers never decide promotion.
@@ -157,7 +157,7 @@ Every non-trivial change goes through the same cycle:
 7. **The human-in-the-loop list.** What only you can do:
    - approve Mac-tied scheduled tasks;
    - run native Mac jobs;
-   - grant the desktop;
+   - lend the GPU desktop, once it is free again;
    - copy the API credential;
    - set the deadline.
 
@@ -178,7 +178,7 @@ Every non-trivial change goes through the same cycle:
 - **One tester** (Rome) becomes the Evaluator.
   - It finishes the cage C+D (E0) arm and the H-KZ12 dial.
   - From then on it runs only ladder gates and requested dose probes.
-- **Osaka** becomes the Learner, on the GPU desktop.
+- **Osaka** becomes the Learner: natively on the Mac for now, and on the GPU desktop once it is free (§8).
 - **The git coherence task stays.** Its prompt needs your approval, so that disjoint hunks are no longer treated as conflicts.
 - **The Chair writes D-045:**
   - deadline;
@@ -186,3 +186,31 @@ Every non-trivial change goes through the same cycle:
   - promotion and rollback thresholds;
   - roster definitions;
   - ladder state R0.
+
+## 8. Compute plan while the desktop is unavailable (4 Oct)
+
+The GPU desktop is not available, and neither is any GPU. Everything runs on the Mac, which has 18 cores and is
+shared with the hub, the collector and the Cowork VMs. The plan bends as follows.
+
+- **Ladder reach.** R0–R5 are CPU-feasible: GBT heads with LightGBM/XGBoost on the CPU, and a value model the same
+  way. R6 (expert iteration) is allowed at small scale only, by Chair decision. R7 (nets) and R8 (PPO) stay deferred
+  until a GPU returns. This is not a loss of method: R2's GBT prior is the same kind of piece that gave hb1-14 its gain.
+- **Sample, don't brute-force.** BC trains on a stratified sample: top-ten sides, decision turns weighted by phase
+  and map, a few million rows. It does not train on every dragon-turn. Report learning curves (accuracy against
+  rows), so we know whether more data would help.
+- **Native, not the VM.** Long jobs (decode, training, panels) run as native Mac processes: a Claude Code or Codex
+  session in a Mac terminal, or a command the user starts. The Cowork VM is saturated (1.2–3.9 s per game decode)
+  and its calls are limited to 3 minutes; it does coordination and light queries only.
+- **One heavy job at a time.** Use a lock file, `build/learn/HEAVY.lock`, naming the job and its owner. The order
+  is: Evaluator panels > Learner training > Data decode. Each takes at most 14 workers (`nice 10`), leaving room for
+  the hub. Data's decode backlog goes first, as a one-off: about 1 h at `--jobs 6`.
+- **Shrink evaluation.**
+  - Seed-1 screens on both panels for every candidate.
+  - Full seeds 1–3 only for a candidate the Chair proposes to promote.
+  - The live screen carries more of the evidence. Server battles cost us no CPU, only quota.
+  - Build `battles.json` (Live ops) early.
+- **Pause what doesn't feed the ladder.**
+  - Kanazawa and Nara pause.
+  - Shenzhen and Chongqing merge into Data at a reduced cadence.
+  - The council runs on cloud sessions, which use no Mac CPU.
+- **When a GPU returns,** the Learner moves R6–R8 there. Nothing else changes.
