@@ -17,3 +17,7 @@ Full evidence boundary and next-test specification: `docs/findings/2026-10-04-se
 | Unit | Work | Status |
 |---|---|---|
 | 1 | L47 evidence boundary and next-test design | Complete; analysis only, no bot/panel run |
+
+## Unit 2 — L39/L49 cross-lane evidence boundary (4 October)
+
+Rome completed `rome-03-queen-state-convert` on pool + gen, seeds 1–3, both seats, and rejected its own-team-count ≤5 proxy pinned to the original queen. Pool win share fell 2.40pp (cluster 90% CI [−4.17,−0.83]); gen fell 0.79pp ([−1.65,+0.07]), RL conversion −8.45pp ([−13.13,−4.00]); queen survival among reached target maps was unchanged/down; gen wall deaths +15.9%. This does not test TT's original opponent-unit-count trigger. Rome marks H-H1 `rome-04-queen-head-tie` in progress, so Seoul did not overlap it. Next information gap: can enemy count be estimated from locally visible enemy bodies plus ally sonar at r250–350 with useful precision/recall and acceptable staleness? Evidence and design: `docs/findings/2026-10-04-seoul-L39-rome-reading.md`.
