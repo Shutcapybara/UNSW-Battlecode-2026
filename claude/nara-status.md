@@ -36,6 +36,10 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 05:32 4 Oct — corrected my 04:32 reading (Trauma/Portals parity vacuous; E3's real cost = Slithery total −15%,
+  a D-044 dial not a free win). H-KZ12 premise flagged after H23-01 (static pockets 239+ cells; seals are
+  own-body) — re-specify on the body-conditioned feature. Shenzhen H-SZ25 (serialised splits) noted.
+
 - 05:05 4 Oct — D-044 executed: RL translations appended (queen keeping / h2h-not-armor / verdict class) +
   state-distribution fact posted (queen death median r78, half the hazard r50–150, h2h 140/wall 90 — opening
   interventions cover <⅓). Kanazawa H-KZ12 dial endorsed implicitly (matches the distribution).
