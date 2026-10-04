@@ -727,3 +727,13 @@ structural cluster (unit 7 clusters), z vs per-map field; the field percentile o
 
 Adaptation clock (ranked RL queen alive, by day): top10 0.37 → 0.52 → 0.47; r11–50 0.25 → 0.34 → 0.35; us 0.00 — the queen
 target rises with the field; re-read it each unit.
+
+## chongqing (unit 9) — 2026-10-04 10:35 UTC — the gap after r50 (era `post-m2`, ladder 05:17Z, series r50/100/150/250)
+
+Source: `docs/findings/2026-10-04-chongqing-unit9-gap-after-r50-and-mover-split.md` §1. Total-gap continuation per structural cluster:
+weakhold 0.72 → 1.28 → 1.31 → 1.06 (attrition); portals 0.81 → 0.61 → 0.80 → 0.82 (pearls gap closes to 0.12 — deaths remain);
+maze 0.82 → 0.83 → 0.72 → 0.43 (pearls gap widens to 1.18); open-wrap 0.73 → 0.55 → 0.51 → 0.55; open 0.54 → 0.57 → 0.52 → 0.63;
+schooltime+islands 0.38 → 0.34 → 0.31 → 0.45; default/trophy 0.03 → 0.12 → 0.33 → 0.17; qos −0.59 → −0.16 → 0.06 → −0.29.
+Target: the r250 total gap ≤ 0.3 SD on every cluster; on portals and weakhold the lever is survival (H-KZ12, L42), on maze and
+open-wrap it is late conversion (pearls → length), on the open cluster both. Head-on mover share (contact maps): top ten 0.52–0.56,
+us 0.43–0.47 → target ≥ 0.52 (H-SZ34).
