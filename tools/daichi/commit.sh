@@ -20,7 +20,7 @@ $G read-tree "$BASE"
 done
 TREE=$($G write-tree)
 if [ "$TREE" = "$($G rev-parse "$BASE^{tree}")" ]; then echo "nothing to commit"; mkdir -p build/daichi/tmp/_old && mv "$GIT_INDEX_FILE" build/daichi/tmp/_old/ 2>/dev/null || true; exit 0; fi
-C=$(printf '%s\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01JYEGmXBmiNbLnWrCNJsZbR\n' "$1" | $G commit-tree "$TREE" -p "$BASE")
+C=$(printf '%s\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_016bFTpC5zvco5T4jPtZ2jFp\n' "$1" | $G commit-tree "$TREE" -p "$BASE")
 $G update-ref refs/heads/r/daichi "$C"
 mkdir -p build/daichi/tmp/_old && mv "$GIT_INDEX_FILE" build/daichi/tmp/_old/ 2>/dev/null || true
 $G log --oneline -1 r/daichi; $G diff --stat "$BASE" r/daichi | tail -3

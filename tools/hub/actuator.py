@@ -269,6 +269,46 @@ def auto_cutover(root, cfg, state, log):
     return 'live'
 
 
+def link_submission(conn, root, item, body):
+    """Link an existing server submission to a registered candidate without any API call (D-048 §6).
+
+    Item: {"name": candidate, "submission": id, "fingerprint8": "abcd1234", "decision": "D-…"}. Applied only when the
+    candidate's full fingerprint starts with fingerprint8, the mirrored API listing names that submission exactly
+    `LV-<name>-<fingerprint8>-ai`, and no other candidate holds the submission. Sets submission_id and upload_name;
+    the candidate's status is left as it is.
+    """
+    name, fp8 = item['name'], str(item.get('fingerprint8') or '')
+    decision = item.get('decision') or body.get('decision')
+    try:
+        sid = int(item['submission'])
+    except (TypeError, ValueError):
+        return dict(name=name, error='submission must be an integer')
+    if not decision:
+        return dict(name=name, error='decision (a Chair D-record) required to link')
+    if len(fp8) < 8:
+        return dict(name=name, error='fingerprint8 (at least 8 hex chars) required')
+    row = conn.execute('SELECT name, fingerprint, status, submission_id FROM candidates WHERE name=?', (name,)).fetchone()
+    if not row:
+        return dict(name=name, error='unknown candidate')
+    if not row['fingerprint'].startswith(fp8):
+        return dict(name=name, error=f"fingerprint {row['fingerprint'][:12]} does not start with {fp8}")
+    sub = conn.execute('SELECT id, name FROM submissions WHERE id=?', (sid,)).fetchone()
+    expect = f'LV-{name}-{fp8[:8]}-ai'
+    if not sub:
+        return dict(name=name, error=f'submission {sid} not in the mirrored API listing')
+    if sub['name'] != expect:
+        return dict(name=name, error=f"submission {sid} is named {sub['name']!r}, expected {expect!r}")
+    other = conn.execute('SELECT name FROM candidates WHERE submission_id=? AND name<>?', (sid, name)).fetchone()
+    if other:
+        return dict(name=name, error=f"submission {sid} already linked to {other['name']}")
+    if row['submission_id'] not in (None, sid):
+        return dict(name=name, error=f"candidate already linked to submission {row['submission_id']}")
+    conn.execute('UPDATE candidates SET submission_id=?, upload_name=?, updated_at=? WHERE name=?', (sid, expect, db.now_iso(), name))
+    db.event(conn, root, item.get('by') or body.get('by') or 'hub/actuator/register', 'candidate_linked',
+             dict(name=name, submission=sid, upload_name=expect, decision=decision, was=row['submission_id']))
+    return dict(name=name, status=row['status'], submission=sid, upload_name=expect, linked=True, was=row['submission_id'])
+
+
 def register_check(root, cfg, state, log):
     """Register candidates on request (`<mirror>/control/register.json`: {"candidates": [{"dir": "bots/x", "priority": 120}, ...]}).
 
@@ -289,6 +329,9 @@ def register_check(root, cfg, state, log):
     results = []
     conn = db.connect(root)
     for item in body.get('candidates') or []:
+        if item.get('name') and item.get('submission') is not None and not item.get('dir'):
+            results.append(link_submission(conn, root, item, body))
+            continue
         if item.get('name') and not item.get('dir'):
             # re-prioritise an existing candidate (the director's queue order; evidence tier, never a local score)
             row = conn.execute('SELECT name, status, priority FROM candidates WHERE name=?', (item['name'],)).fetchone()
