@@ -31,11 +31,9 @@ Read `docs/learning/prompts/_common.md` first, then `docs/learning/00-MACRO.md` 
    - **Rollback rule:** after 40 ranked games, roll back if score minus expectation is < −0.08 with a series-bootstrap upper bound < 0, or on any crash or disqualification.
    - **Rosters:** band, top, style and regression, as defined in macro §4.
    - **Roles and seats:**
-     - Data: the merged Shenzhen/Chongqing successor.
-     - Learner: Osaka.
-     - Evaluator: Rome.
+     - Data, Learner, Evaluator and Live ops: the lane names the lead gives you.
      - Live ops: a new Claude lane.
-     - Council pool: Himeji (GPT, standing auditor seat), the Claude lanes, and the GLM instance.
+     - Council pool: the instances the lead starts. A GPT instance holds the standing auditor seat.
 2. **Make the human-in-the-loop list** in your status file. These are things only the user can do:
    - set the deadline;
    - approve Mac-tied scheduled-task prompts;
