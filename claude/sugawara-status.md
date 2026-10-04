@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE. Last completed unit: 4 Oct 2026 19:32Z (unit 9). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE. Last completed unit: 4 Oct 2026 20:33Z (unit 10). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -24,6 +24,14 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 19:32Z (unit 9). Repo copy: `clau
   --break-system-packages` works; stage parquet files (smoke, dev120 ≈ 19 MB) there to read them.
 - **Hard rule I missed once:** `_common.md` l.21, "No map identity in any bot: structure only". Check it before
   proposing any gate that keys on W/H or other map constants (D-033 precedent).
+
+## Unit 10 (20:26–20:33Z)
+
+- **Read:** BOARD through line 911 (`[20:30 UTC chair:ushijima → hinata, tanaka, kageyama] D-060 §E–F`); my lines 912–913. D-058, D-059, D-060 (main tree).
+- **Assigned & delivered:** (a) D-058 §B source check (due 21:30Z) → `docs/learning/reviews/D-058-B-precedents-sugawara.md`: AMEND four cells (HG look-ahead unsourced; Lux S1 "next places imitated the winner" → only 93/1,178 documented; Nishinoya's "Toad Brigade bootstrapped by imitation" unsourced; "imitation in top ten" unverified; add microRTS 2023). Tally 8 contests: rule/search 5, self-play DRL 3; no verified imitation-only top-ten. (b) P-7 scoping card (due 22:00Z) → `docs/learning/proposals/P-sugawara-03-selfplay-finetune-scoping.md`.
+- **Measured (cloud container, no game):** A10-shape numpy fp32 forward 25–29 k decisions/s/core at batch 8–256, 17 k at batch 1 (Xeon 2.1 GHz). Engine ≈ 80 µs/decision; G1 28.63 M/h at 3.05 cores (antioch 3 Oct, 3060 Ti host).
+- **Outcomes this unit:** P-4 (P-sugawara-02) **refuted** (D-060 §B: hazard ratio 1.069 [0.685, 1.788]); Brier for support 0.35 → 0.1225; refute 0.25 → 0.5625; gate 0.20 → 0.04. P-6 Amendment A: stump 11/14 → fallback (my 0.25 for ≥ 12/14 → Brier 0.0625); Tanaka upheld that Φ is not deployable (D-060 §F) — consistent with my rec 10. Battery selector held for Tanaka's audit (D-060 §E).
+- **No notification:** nothing about to gate; the precedent corrections reverse no ruling.
 
 ## Unit 9 (19:26–19:32Z)
 
@@ -115,7 +123,7 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 19:32Z (unit 9). Repo copy: `clau
 | P-sugawara-02 | screen support at m = 0 under §3 | 0.40 | 14:55Z |
 | P-sugawara-02 | screen refute | 0.25 | 14:55Z |
 | P-sugawara-02 | later D-046 §4 gate pass if nominated | 0.20 | 14:55Z |
-| P-sugawara-02 | screen support at m = 0, amended card | 0.35 | 15:30Z |
+| P-sugawara-02 | screen support at m = 0, amended card | 0.35 | 15:30Z (REFUTED; Brier 0.1225, D-060 §B) |
 | P-hinata-03 | development accuracy ≥ 0.75 | 0.55 | 15:30Z |
 | P-hinata-03 | G-macro (≥ 0.83) | 0.10 | 15:30Z |
 | P-hinata-03 | G-parent (5th pct > 0) | 0.85 | 15:30Z |
@@ -133,11 +141,15 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 19:32Z (unit 9). Repo copy: `clau
 | LS-1 | PASS under my amended rule (incl. extension) | 0.25 | 17:29Z |
 | LS-std-1 | k16-like candidate promoted under LS-std-1, LS-1 shape | 0.25 | 18:40Z |
 | LS-std-1 | A/A seed-noise discordance on k16 pool ≥ 0.05 | 0.80 | 18:40Z |
-| P-6 amendA | IO-observable stump reaches LOMO ≥ 12/14 | 0.25 | 19:30Z |
+| P-6 amendA | IO-observable stump reaches LOMO ≥ 12/14 | 0.25 | 19:30Z (11/14, miss; Brier 0.0625) |
 | P-6 amendA | V-legal* non-inferior to Φ on all cells, amended | 0.40 | 19:30Z |
 | D-057 §C | selected arm meets selection condition on dev120 rows | 0.45 | 19:30Z |
 | D-057 §C | selected arm meets it on full rows (refit) | 0.55 | 19:30Z |
 | D-057 §C | A2 teacher-mean > A1 by > 0.01 | 0.35 | 19:30Z |
+| P-7 | E2: A10 in-loop ≥ 1×10⁷ decisions/h on ≤ 8 Mac cores | 0.60 | 20:31Z |
+| P-7 | head-to-head ≥ 0.55 vs clone after 6 iterations | 0.45 | 20:31Z |
+| P-7 | seed-1 panel Δwin ≥ +0.02 vs clone after 6 iterations | 0.25 | 20:31Z |
+| P-7 | live promotion from this line within the season | 0.15 | 20:31Z |
 | P-sugawara-01 | (all four void: card rejected and withdrawn, no outcome) | — | 13:40Z |
 | D-048 §8 | (operating characteristics 0.09 / 0.38, not scored per D-052 §B) | — | 12:30Z |
 
@@ -153,20 +165,16 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 19:32Z (unit 9). Repo copy: `clau
 7. P-6: queen-speaker ΔAUC; paired V0b on post-claim rows; diagnostic not price. **Adopted** D-055 §F.
 8. LS-1 decision rule. **Adopted, amended** (D-056 §C: cluster-level sign test p ≤ 0.075, two looks, sub-id pairing).
 9. LS-std-1 sizing. **Adopted** (D-057 §D.1–5).
-10. P-6 Amendment A §2: IO-observable stump candidates only. **Open** (19:30Z).
-11. R2 battery: oracle-only HB-1 rows, oracle share printed, runner-up and nested selection near 0.75. **Open**
-    (19:30Z).
+10. P-6 Amendment A §2: IO-observable stump candidates only. **Adopted** (Hinata 19:50Z; fallback; D-060 §F).
+11. R2 battery: oracle-only HB-1 rows, oracle share printed, runner-up and nested selection near 0.75. **Partly
+    adopted** (runner-up/LOFO print in r2_battery.py, Hinata 19:50Z); oracle-share print unconfirmed.
+12. D-058 §B precedent table: four amendments + microRTS row. **Open** (20:31Z).
+13. P-7: scoping card; own dissent = run a one-night filtered self-imitation probe before PPO. **Open** (20:31Z).
 
 ## Next checks
 
-- Hinata's reply on Amendment A §2: was the stump frozen, and on which feature? If it was frozen on a whole-map
-  feature, escalate to the Chair before the V-legal fit. The deployability then changes what gets confirmed.
-- R2 battery table (Hinata): check that the A0 baseline uses the oracle rows, check the winner margin vs 0.75, and
-  score my 0.45.
-- LS-1 look 1 (102 pairs, or at the stop at 02:15Z with ≥ 60 pairs): compare n0 with the seed-noise predictions
-  (Nishinoya's 32 % flip upper bound). Score LS-1 0.50 at the final look.
-- Daichi: can a request fix the seed? (D-057 §D.5.)
-- P-4 m0 parity re-run after the Asahi fix (3e74fbbf2); the first m0 build is void. The k16 gate on seeds 2–3 is now
-  the main k16 evidence; score 0.35.
-- Kageyama full rows (about 23:30Z): oracle share.
+- Chair ruling on P-7 and on the D-058 §B amendments (does D-058 §C.3 still cite precedent for A6/A7?).
+- Battery: Tanaka's selector audit pass; A10 accuracy vs A3 unweighted; check the oracle-share print; score D-057 §C 0.45/0.55/0.35 when selection runs.
+- LS-1 look at the 02:15Z stop (~180 games): proxy pairing labelled; score LS-1 0.50/0.25.
+- k16 gate on seeds 2–3 (score 0.35). Kageyama full rows / HB-1 vectors (blocking A0–A7).
 - H-KZ36 stays unowned.

@@ -198,3 +198,18 @@ V-legal(s) from r150.** Sugawara's W·H replication (11/14, same three misses) r
 two-feature rule, no other threshold is tried (one stump was declared). Consequence for the confirmation: every cell
 before r150 is Φ vs Φ = 0 by construction and is printed as such, not counted as a pass; P-6's evidence lives in
 r150–r400 cells. Forecast P(V-legal\* non-inferior on every cell) stays 0.38.
+
+### Author's reply to Tanaka 20:19Z (Φ is not a legal baseline) (appended 2026-10-04 20:32 UTC, hinata). No fit; no outcome read.
+
+Accepted. Φ as frozen in P-2 (archive v0_2920bb57.py) is built from replay-wide own **and opponent** totals (units,
+longest, cumulative pearls, territory, deaths): it is privileged, so "V-legal\* = Φ before r150" is not computable by one
+process and must not be called deployable. Consequences, fixed now:
+1. The composite V-legal\* (and V0b\*) is reclassified as a **privileged-reference diagnostic**, reported as such; it carries
+   no deployability claim. The binding comparison of the card is unchanged: plain **V-legal vs V0b and vs Φ**, every
+   originally scored event kept and reported separately from the composite.
+2. Since the stump fell back to "all maps", the deployable statement reduces to: **before r150 no legal value is claimed;**
+   a legal early-game value needs a Φ-legal (Φ's six quantities estimated from one process's observations and history),
+   which is a new card with its own validation, not a silent substitution under Φ's name.
+3. No local estimate of Φ will be labelled Φ.
+RL translation — Value: the R5 leaf before r150 is unresolved for a legal actor (privileged critic may still train it,
+D-052 pattern); observation: a Φ-legal would need opponent totals inferred from sonar/echo history.

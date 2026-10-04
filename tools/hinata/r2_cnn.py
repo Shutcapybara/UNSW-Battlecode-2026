@@ -52,11 +52,14 @@ def main():
     fh = {k: hashlib.sha256('\n'.join(sorted(rk[te])).encode()).hexdigest() for k, te in F.items()}
     if a.expect_folds and json.loads(Path(a.expect_folds).read_text())['folds'] != fh:
         raise SystemExit('refused: fold test-row hashes differ from --expect-folds')
-    man = dict(arm='A10', rows_sha=[R.sha(p) for p in paths], code_sha=R.sha(__file__), features_sha=R.sha(a.features),
+    man = dict(arm='A10', rows_sha=[R.sha(p) for p in paths], code_sha=R.sha(__file__), r2_bc_sha=R.sha(R.__file__),
+               r2_battery_sha=R.sha(BAT.__file__), teachers_sha=R.sha(a.teachers), features_sha=R.sha(a.features),
                channels=chans, n_scalars=len(scal), epochs=a.epochs, folds=fh)
     mp = run / 'manifest.json'
     if mp.exists() and json.loads(mp.read_text()) != json.loads(json.dumps(man)):
         raise SystemExit('refused: different manifest; use a new --run')
+    if not mp.exists() and any(run.glob('model_*.pt')):
+        raise SystemExit('refused: model files without a manifest; use a new --run')
     mp.write_text(json.dumps(man, indent=1))
     Xp = d[flat].to_numpy(np.float32).reshape(len(d), C, 7, 7); Xs = d[scal].to_numpy(np.float32); y = d.y_first.to_numpy(np.int64)
     P = np.full((len(d), 4), np.nan); fk = np.empty(len(d), object)

@@ -21,7 +21,7 @@ prefix --hb-prefix, default 'hb_f_'); HBP = hb_pF, hb_pR, hb_pL (Kageyama hb1_sc
   Data's left-right column map of encoder v1, A9 needs labels of other action types; both are flagged, not improvised.
 Sizes: one fit at max(--sizes) rounds; smaller sizes are the same booster's first n trees (identical to an n-round fit:
 boosting is sequential and the bagging RNG advances per iteration). Unweighted by default (D-057 §C); --weighted = teacher weight.
-Selection (D-057 §C, fixed): pooled arms A1/A3/A4/A5 x sizes; highest F/R/L fold accuracy; among arms whose whole-series
+Selection (D-057 §C, fixed; A10 added by D-059 §B): pooled arms A1/A3/A4/A5/A10 x sizes; highest F/R/L fold accuracy; among arms whose whole-series
 interval overlaps the leader's, the smallest model; must beat A0 on the same rows (paired whole-series bootstrap of the
 accuracy difference, 5th pct > 0) and reach 0.75, else R2b. Sugawara 19:30Z: if the selected arm is in [0.750, 0.756], print
 the runner-up and a leave-one-fold-out selection (descriptive). D-058 §C: best teacher-specific arm (A2/A6/A7) goes forward if
@@ -36,7 +36,7 @@ import r2_bc as R  # noqa: E402
 
 KEY = ['game', 'side', 'dragon', 'round', 'turn']
 HBP = ['hb_pF', 'hb_pR', 'hb_pL']
-POOLED = ('A1', 'A3', 'A4', 'A5')
+POOLED = ('A1', 'A3', 'A4', 'A5', 'A10')   # A10 pooled per D-059 §B
 PARAMS = dict(R.PARAMS)
 
 
@@ -155,7 +155,23 @@ def fit(a):
     write(a, run, d, None, fk, arms, info, paths, dropped, X)
 
 
+def check(P, name):
+    ok = np.isfinite(P).all(1) & (np.abs(P.sum(1) - 1) < 1e-3)
+    if not ok.all():
+        raise SystemExit(f'refused: {name} has {int((~ok).sum())} rows with missing or non-normalised predictions')
+
+
 def write(a, run, d, _, fk, arms, info, paths, dropped, X):
+    sup = np.ones(len(d), bool)
+    for P in arms.values():
+        sup &= np.isfinite(P).all(1)
+    if not sup.all():
+        if info['arm'] != 'A2':
+            raise SystemExit(f"refused: {info['arm']} left {int((~sup).sum())} rows unpredicted")
+        info['unsupported_rows'] = int((~sup).sum())   # A2 only: team absent from a fold's train side; declared subset
+        d = d[sup].reset_index(drop=True); fk = fk[sup]; arms = {k: v[sup] for k, v in arms.items()}
+    for n, P in arms.items():
+        check(P, n)
     base = d[['game', 'side', 'dragon', 'round', 'turn', 'map', 'team', 'series_key', 'x_is_queen', 'y_first']].assign(fold=fk)
     base.to_parquet(run / 'rows.parquet'); y = d.y_first.to_numpy(int); q = d.x_is_queen.to_numpy() == 1; out = {}
     for name, P in arms.items():
@@ -183,44 +199,78 @@ def paired(y, P, P0, s, m=None, n=1000, seed=7):
     return dict(diff=round(float(D.sum() / N.sum()), 4), p05=round(float(np.percentile(o, 5)), 4), p95=round(float(np.percentile(o, 95)), 4), series=int(len(g)))
 
 
+PLANNED = [f'{x}-{n}' for x in ('A1', 'A3', 'A4', 'A5') for n in (400, 800)] + ['A10-e4', 'A2-400', 'A2-800', 'A6-400', 'A6-800', 'A7fix-400', 'A7fix-800']
+
+
 def table(a):
-    a0r = Path(a.a0); A0 = pd.read_parquet(a0r / 'rows.parquet'); P0 = np.load(a0r / 'p_A0.npy'); key0 = rowkey(A0)
-    rows = []; best_ts = None
+    """Selection per D-057 §C (pooled) and D-058 §C (teacher-specific). Tanaka 20:19Z defects fixed: finite complete
+    predictions; pooled arms must have exactly A0's row keys, folds and labels (one-to-one); teacher-specific arms are scored
+    on a declared target subset against A0 on the same keys; planned-arm inventory printed; decisions carry run + manifest sha.
+    Teacher-specific targets: A6 -> its three teams (all its rows); A7fix -> the top-rated team's rows; A2 -> per team t,
+    the A2 model of team t on team t's rows. Ranking among teacher-specific candidates (different populations): paired
+    lift over A0 on own target rows; goes forward iff its 5th pct > 0 (hinata operationalisation of 'best', for the Chair)."""
+    a0r = Path(a.a0); A0 = pd.read_parquet(a0r / 'rows.parquet'); P0 = np.load(a0r / 'p_A0.npy'); check(P0, 'A0'); key0 = rowkey(A0)
+    if len(set(key0)) != len(key0):
+        raise SystemExit('A0 row keys not unique')
+    pos0 = pd.Series(np.arange(len(A0)), index=key0); rows = []; ts = []
+    order = json.loads((a0r / 'registry.json').read_text()).get('info', {}).get('teams_by_rating')
     for run in sorted(Path(a.runs).iterdir()):
         if not (run / 'registry.json').exists() or run.resolve() == a0r.resolve():
             continue
-        reg = json.loads((run / 'registry.json').read_text()); B = pd.read_parquet(run / 'rows.parquet')
-        idx = pd.Series(np.arange(len(A0)), index=key0).reindex(rowkey(B)).to_numpy()
+        reg = json.loads((run / 'registry.json').read_text()); B = pd.read_parquet(run / 'rows.parquet'); kb = rowkey(B)
+        if len(set(kb)) != len(kb):
+            raise SystemExit(f'{run}: duplicate row keys')
+        idx = pos0.reindex(kb).to_numpy()
         if np.isnan(idx.astype(float)).any():
             raise SystemExit(f'{run}: rows not in A0 run')
-        y = B.y_first.to_numpy(int); p0 = P0[idx.astype(int)]
+        idx = idx.astype(int)
+        if not ((A0.y_first.to_numpy()[idx] == B.y_first.to_numpy()).all() and (A0.fold.to_numpy()[idx] == B.fold.to_numpy()).all()):
+            raise SystemExit(f'{run}: labels or folds differ from A0 on shared keys')
+        y = B.y_first.to_numpy(int); p0 = P0[idx]; ms = sha(run / 'manifest.json')[:12]; s = B.series_key.to_numpy()
+        top = json.loads((run / 'manifest.json').read_text()).get('teams_top3') or []
         for name, v in reg['arms'].items():
-            P = np.load(run / f'p_{name}.npy'); arm = name.split('-')[0]
-            r = dict(arm=name, pooled=arm in POOLED, acc=v['frl_all']['acc'], n=v['frl_all']['n'], p05=v['frl_boot']['p05'], p95=v['frl_boot']['p95'],
-                     queen=v['frl_queen']['acc'], nonqueen=v['frl_nonqueen']['acc'], bytes=reg['info']['model_bytes'][name] if isinstance(reg['info']['model_bytes'], dict) else 0,
-                     vs_A0=paired(y, P, p0, B.series_key.to_numpy()), per_fold={k: x['acc'] for k, x in v['frl_per_fold'].items()},
+            P = np.load(run / f'p_{name}.npy'); check(P, name); arm = name.split('-')[0]; pooled = arm in POOLED
+            if pooled and len(B) != len(A0):
+                raise SystemExit(f'{run}/{name}: pooled arm covers {len(B)} of {len(A0)} A0 rows; pooled arms need the full support')
+            mb = reg['info']['model_bytes']; r = dict(arm=name, run=run.name, manifest=ms, pooled=pooled, rows=int(len(B)),
+                     acc=v['frl_all']['acc'], n=v['frl_all']['n'], p05=v['frl_boot']['p05'], p95=v['frl_boot']['p95'],
+                     queen=v['frl_queen']['acc'], nonqueen=v['frl_nonqueen']['acc'], bytes=mb.get(name, 0) if isinstance(mb, dict) else 0,
+                     vs_A0=paired(y, P, p0, s), per_fold={k: x['acc'] for k, x in v['frl_per_fold'].items()},
                      per_team={k: x['acc'] for k, x in v['frl_per_team'].items()}, per_map={k: x['acc'] for k, x in v['frl_per_map'].items()})
             if arm == 'A2':
                 r['team_mean'] = round(float(np.mean([x for x in r['per_team'].values() if x is not None])), 4)
+                for t in sorted(B.team.unique()):
+                    m = (B.team == t).to_numpy(); ts.append(dict(cand=f'{name}[team {t}]', target=f'team {t}', run=run.name, manifest=ms, vs_A0=paired(y, P, p0, s, m)))
+            elif arm == 'A6':
+                ts.append(dict(cand=name, target=f'teams {top}', run=run.name, manifest=ms, vs_A0=r['vs_A0']))
+            elif arm == 'A7fix':
+                m = (B.team.astype(str) == str(top[0])).to_numpy() if top else np.zeros(len(B), bool)
+                ts.append(dict(cand=name, target=f'team {top[0] if top else None} (top-rated)', run=run.name, manifest=ms, vs_A0=paired(y, P, p0, s, m)))
             rows.append(r)
+    have = {r['arm'] for r in rows}; missing = [x for x in PLANNED if x not in have]
     pool = [r for r in rows if r['pooled']]; sel = None
     if pool:
         lead = max(pool, key=lambda r: r['acc']); cand = [r for r in pool if r['p95'] >= lead['p05']]
-        sel = min(cand, key=lambda r: (r['bytes'], -r['acc']))
-        sel = dict(selected=sel['arm'], acc=sel['acc'], leader=lead['arm'], overlapping=[r['arm'] for r in cand],
-                   beats_A0=sel['vs_A0']['p05'] > 0, reaches_075=sel['acc'] >= 0.75)
-        sel['passes'] = sel['beats_A0'] and sel['reaches_075']
-        if 0.750 <= sel['acc'] <= 0.756:
+        pick = min(cand, key=lambda r: (r['bytes'], -r['acc']))
+        sel = dict(selected=pick['arm'], run=pick['run'], manifest=pick['manifest'], acc=pick['acc'], leader=lead['arm'],
+                   overlapping=[r['arm'] for r in cand], beats_A0=pick['vs_A0']['p05'] > 0, reaches_075=pick['acc'] >= 0.75,
+                   pooled_missing=[x for x in missing if x.split('-')[0] in POOLED])
+        sel['passes'] = sel['beats_A0'] and sel['reaches_075'] and not sel['pooled_missing']
+        if sel['pooled_missing']:
+            sel['note'] = 'INCOMPLETE: planned pooled arms missing; no selection claim'
+        if 0.750 <= pick['acc'] <= 0.756:
             ranked = sorted(pool, key=lambda r: -r['acc']); sel['runner_up'] = ranked[1]['arm'] if len(ranked) > 1 else None
-            ks = sorted(pool[0]['per_fold']); lofo = {}
-            for k in ks:
-                pick = max(pool, key=lambda r: np.mean([r['per_fold'][j] for j in ks if j != k])); lofo[k] = (pick['arm'], pick['per_fold'][k])
-            sel['leave_one_fold_out'] = lofo
-    out = dict(rows=rows, selection=sel, a0=json.loads((a0r / 'registry.json').read_text())['arms']['A0']['frl_all'])
+            ks = sorted(pool[0]['per_fold']); sel['leave_one_fold_out'] = {
+                k: (lambda q: (q['arm'], q['per_fold'][k]))(max(pool, key=lambda r: np.mean([r['per_fold'][j] for j in ks if j != k]))) for k in ks}
+    tsel = None
+    if ts:
+        b = max(ts, key=lambda c: c['vs_A0']['diff']); tsel = dict(best=b, goes_forward=b['vs_A0']['p05'] > 0, candidates=len(ts))
+    out = dict(rows=rows, selection=sel, teacher_specific=dict(candidates=ts, selection=tsel), missing_planned=missing,
+               a0=json.loads((a0r / 'registry.json').read_text())['arms']['A0']['frl_all'])
     Path(a.out).write_text(json.dumps(out, indent=1, default=str))
     for r in sorted(rows, key=lambda r: -r['acc']):
-        print(f"{r['arm']:10s} acc {r['acc']} [{r['p05']}, {r['p95']}] queen {r['queen']} vsA0 {r['vs_A0']} bytes {r['bytes']}")
-    print('selection', json.dumps(sel))
+        print(f"{r['arm']:10s} rows {r['rows']} acc {r['acc']} [{r['p05']}, {r['p95']}] queen {r['queen']} vsA0 {r['vs_A0']} bytes {r['bytes']}")
+    print('missing planned:', missing); print('selection', json.dumps(sel)); print('teacher-specific', json.dumps(tsel, default=str))
 
 
 def main():
