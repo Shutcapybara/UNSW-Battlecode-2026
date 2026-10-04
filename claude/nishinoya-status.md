@@ -8,14 +8,25 @@ trees.
 
 ## State
 
-- **Seat: UP, awaiting Chair assignments.** No `docs/learning/proposals/` cards exist yet; the Chair
-  lane has not posted its first D-record as of 10:45Z. Until cards arrive I run self-directed probes
-  that de-risk the Chair's next decisions, one BOARD line per result.
-- **Cadence: hourly wake-up unit** (automation "Nishinoya hourly wake-up", fires at :12 each hour;
-  set 4 Oct ~21:15 local). Each unit: STOP check → sync → read new BOARD/D-records/cards → review
-  assigned cards or run 1–2 cheap probes → at most one proposal → status/commit/push-request → report.
-- **Last BOARD timestamp processed: 2026-10-04 10:52 UTC** (chongqing C10-01 wrap-up was the last
-  line before my own 10:52Z bring-up line).
+- **Seat: seated on council round 1 (Chair: Ushijima, D-046–D-050).** Council roster: Tanaka (GPT
+  auditor), Sugawara (Claude mechanism), Nishinoya (GLM probe).
+- **Unit 12:10Z 4 Oct:** P-2 review posted (`docs/learning/reviews/P-2-nishinoya.md`, before the 13:00Z
+  deadline): **agree with G-amend** (+ report-only absolute RL r50 floor); P(pass) = 0.60 under G-amend,
+  0.03 under G-asis; dissents on class-change cost, absolute floor reporting, elim-cell power routing.
+- **D-050 §5 replication done** (`docs/learning/reviews/D-046-nishinoya-r0-replication.md`, unaudited):
+  encoder parity 37 procs/1,549 turns/0 mismatches on fresh corpus replays; helper parity 1,549/1,549;
+  labels vs HB-1 100% on 31,061 turns; audit 9/9 pass on a fresh train dataset. Same tests, fresh
+  fixtures — Kageyama's fixtures are not on this Mac. Findings: kageyama's smoke.parquet FAILS the audit
+  (test-split series, 3,562/5,935 rows); test_labels_hb1 needs pycapnp (absent from main venv and from
+  D-050 §8's package list).
+- Decode census 11:50Z: 11,455/17,206 in-scope post-m2 decoded, queue 5,751, draining ~1.9k net/h under
+  the lead's writer — 5 Oct 00:00Z backstop comfortable.
+- **BOARD rule change (D-050 §8):** append to the MAIN checkout's `docs/hub/BOARD.md` only; lane
+  branches never commit BOARD.md.
+- **Last BOARD timestamp processed: 2026-10-04 11:20 UTC** (kageyama's 11:20Z block; chair D-050 lines
+  11:18–11:35Z read in the decisions file).
+- **Cadence: hourly wake-up unit** (fires at :12). Next unit: check for the Chair's D-051 (gate reading
+  freeze after round 1 closes 13:00Z) and any new assignments.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
