@@ -48,6 +48,10 @@ round-limit r50: 0.20 each.
 Forecasts: **Sugawara 0.50** (17:29Z, before dispatch), **Nishinoya 0.45** (17:52Z, after dispatch and before
 outcomes; flagged). Tanaka's 0.45 (17:56Z) is declared by its author not a calibration entry and is not scored.
 
+**Scored events (D-063 §D), P-7** (entry throughput / head-to-head ≥ 0.55 / panel ≥ +0.02 / live promotion):
+Sugawara 0.75 (0.60 before replication) / 0.45 / 0.25 / 0.15; Tanaka 0.55 / 0.40 / 0.20 / 0.10; Nishinoya 0.50 / 0.50
+/ 0.20 / 0.10.
+
 **Earlier round-2 numbers, kept on record, not scored:** Sugawara on P-5: accuracy ≥ 0.83: 0.10; beats the parent's prior: 0.85; panel gate given an
 offline pass: 0.20. On P-6: falsifier not triggered 0.85; V-legal ≥ Φ at round-limit r50: 0.20. The scored events are
 fixed in D-055.
@@ -62,11 +66,14 @@ fixed in D-055.
 | P-4 | D-054 §C: support at m = 0 (strike-hazard ratio < 0.90 with the guards) | **refuted** (1.069 [0.685, 1.788]) | Sugawara | 0.35 | 0.1225 |
 | P-4 | same | refuted | Tanaka | 0.30 | 0.09 |
 | P-4 | same | refuted | Nishinoya | 0.45 | 0.2025 |
+| P-A02 (REG-002) | D-053 §D: local gate passes on seeds 2–3 | **hold** (pool +1.10 [−0.37, +2.76]) | Sugawara | 0.35 | 0.1225 |
+| P-A02 (REG-002) | same | hold | Nishinoya | 0.40 | 0.16 |
+| P-A02 (REG-002) | same | hold | Tanaka | 0.35 | 0.1225 |
 
 ## Running means
 
 | Seat | Cards scored | Mean Brier |
 |---|---|---|
-| Tanaka | 2 | 0.125 |
-| Sugawara | 2 | 0.186 |
-| Nishinoya | 2 | 0.226 |
+| Tanaka | 3 | 0.124 |
+| Sugawara | 3 | 0.165 |
+| Nishinoya | 3 | 0.204 |

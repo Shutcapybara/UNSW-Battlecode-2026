@@ -2138,3 +2138,72 @@ A3 unweighted: 0.7145 [0.7061, 0.7239] at 400 rounds, 0.7114 at 800. A10 (small 
 [0.6641, 0.6815]. On 188,250 moves the trees lead the network by about four points. Hinata adds A10's learning
 curve (0.25, 0.5, 1.0 of the training series) so that the comparison can be read at the size of the full rows. No
 retuning of A10 beyond its fixed specification.
+
+## D-063 — k = 16 gate: hold, with the target map replicating; council round called; battery and P-7 rulings (4 Oct 2026 21:34Z, Chair: Ushijima)
+
+### A. State at 21:32Z
+
+- Hub, collector and Asahi's daemon are up; the Mac has 102 GB free after the lead approved two deletions
+  (`build/atlas/panel/replays`, 69 GB; Asahi's `_to_delete`, 4.5 GB). The Cowork session disk is still full.
+- **Data is back:** a fresh Kageyama session started at 21:16Z. Unit 6 is committed (d4e512c6b): HB-1 feature-vector
+  export, a native teacher-row builder for the learn queue, the window layout and the mirror mapping (posted
+  21:26Z). D-062 §C's fallback (Hinata running the builder) lapses; Hinata may still run the scorer if hers is
+  already under way.
+- LS-1: 80 of 204 games, no fault. The redeploy ban stands (H11 unanswered).
+- Shenzhen moved 28 of its own lines from its branch to the main BOARD (09:45Z to 21:00Z). They are analysis of
+  hand rules on the simulator; none changes a ruling.
+
+### B. REG-002 (`asahi-05-kz12-k16`): local gate on seeds 2–3
+
+- **Gate letter HOLD** (Asahi, 21:25Z; pool 544 and gen 928 paired fixtures, none missing; map × opponent clusters):
+  pool Δwin +1.10 points [−0.37, +2.76] (436–108 against 430–114); gen +0.22 [0.00, +0.54]; economy flat.
+- **Report-only stratum, named before the run:** Weakhold 14 of 16 against 10 of 16 on seed 2 and 14 of 16 against
+  9 of 16 on seed 3: +28.1 points [+15.6, +40.6]. With seed 1 (15–1 against 8–8) that is 43 of 48 against 27 of
+  48. Pool without Weakhold: −0.59 points [−1.56, +0.39]. The queen veto fires 90 to 98 times per 1,000 queen
+  decisions on Weakhold on all three seeds.
+- **Brier** for P(gate passes): Sugawara 0.35 → 0.1225; Nishinoya 0.40 → 0.16; Tanaka 0.35 → 0.1225.
+- This is the case of D-046 §4.6: pool clause inconclusive, target stratum improving, off-target inside the
+  −2-point margin. The letter is not relabelled. **An immediate council round is called**, due 23:30Z, on this
+  proposed rule for the decision at LS-1's stop (02:15Z):
+  1. Promote k = 16 unless LS-1 shows harm: the 95th percentile of its paired mean below 0 (opponent × map
+     clusters), or any runtime fault or timeout of the candidate.
+  2. The basis is the local stratified readout, three seeds. LS-1 serves as the harm check, because it cannot
+     resolve a one-point effect (D-057 §D).
+  3. This would replace D-057 §D's sentence "a frozen REJECT means no promotion from LS-1" for one case only: a
+     REJECT by mean ≤ 0 whose interval includes 0. The Chair declares that it has seen no LS-1 outcome beyond the
+     10-pair figure disclosed in D-056 §C.
+  4. After activation the rollback rule of D-052 §B applies, with Weakhold printed as its own row.
+- Expected size if promoted: Weakhold is one of 17 live maps; about +1 point of win rate overall. Our live record
+  on Weakhold is −0.329 against expectation (62 games), the second-worst map.
+- No promotion before the round closes and LS-1 stops. Activation uses the submission already uploaded (16979)
+  and needs no redeploy.
+
+### C. Battery
+
+- Tanaka replicated the first two arms on identical rows: A3 (trees, 400 rounds) 0.7145 [0.7061, 0.7239]; A10 (small
+  CNN) 0.6727 [0.6641, 0.6815]; paired difference +0.0418 [+0.0379, +0.0463]; 800 rounds are 0.0031 worse than 400.
+- **Selector: still held** (Tanaka 21:26Z). Pooled arms now refuse malformed inputs; the teacher-specific path
+  still advances arms on wrong or partial row sets. Required before any selection: exact A0 target keys per
+  teacher arm, justified exclusions for A2, the complete fixed teacher inventory.
+- **A10 was stopped at four epochs with its loss still falling** (Sugawara). The Chair's "no retuning" (D-062 §D)
+  would decide trees against an untrained network. Amended: **arm A10b** — the same architecture trained with
+  early stopping on an inner split of the training series (at most 40 epochs, patience 3), declared now, pooled.
+  Nothing else about the network changes.
+- A8's mirror uses Kageyama's mapping, including the scalar and label swaps and the two stated caveats.
+
+### D. P-7 (self-play fine-tuning from the cloned network): reviews in
+
+- Forecasts on the author's four events (entry throughput / head-to-head ≥ 0.55 / panel ≥ +0.02 / live promotion):
+  Sugawara 0.75 (revised from 0.60 after replication; both on record) / 0.45 / 0.25 / 0.15; Tanaka 0.55 / 0.40 /
+  0.20 / 0.10; Nishinoya 0.50 / 0.50 / 0.20 / 0.10.
+- Measured (Sugawara's replication, one cloud core): engine about 73 µs per decision, the deploy encoder 111 to
+  140 µs, A10's forward pass 22 to 40 µs. The entry bar allows 2.9 ms per decision-core at eight cores.
+- **Adopted amendments:** filtered self-imitation is a required first step as a baseline, not as a falsifier; the
+  throughput measurement comes before any learner engineering; the evaluation contract is Tanaka's (paired
+  fixtures, draws and missing counted explicitly, iteration 6 fixed and not the best checkpoint, identical legal
+  actor wrapper, privileged critic for training only); rollouts are consumed in chunks of at most 1 M rows.
+- **If the battery selects trees,** P-7 is not void: its actor is the network distilled from the selected trees,
+  admitted only if top-1 agreement is at least 0.95 and development accuracy is within 0.01 of the trees. The
+  deploy candidate stays the trees.
+- Asahi's throughput measurement (D-061 §C) is the next step; the daemon is idle. The ruling on training waits for
+  the battery table, as before.
