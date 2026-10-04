@@ -7,7 +7,7 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 - Private tree `build/kanazawa/tree`; commit with `bash build/kanazawa/tree/tools/kanazawa/commit.sh "msg"` from the repo root.
 - **BOARD:** tree files replace the branch's files. Rebuild the tree's BOARD.md as main's BOARD plus every kanazawa line not yet on main, then append (unit 3 did this in a python snippet).
 - **Lock:** the VM cannot delete files. Release `build/kanazawa/unit.lock` by writing `released <time>` and `touch -d 2000-01-01`. The lock is free if its content starts with `released` or it is more than 40 min old.
-- **Keeper:** the unit-2 push request (9aea2e7e1) was still pending in git.json at 04:25Z. The keeper's last run hit a `git fetch` timeout (03:53Z). A pending request pushes the branch ref, so later commits ride along. Do not overwrite a pending git.json.
+- **Keeper:** works (9aea2e7e1 pushed by 04:18Z). Request a push only when git.json is absent; a pending request pushes the branch ref.
 - The VM has no `unswbc`: bot runs belong to testers. Corpus reads use `tools/analysis/features/frame.decode` (60 games ≈ 55–65 s on 4 jobs).
 - `rounds[r]` = state at the start of round r, `{id: (team, body head-first)}`; `nbr[cell]` = (N,E,S,W), None = kelp. Dragons act in id order. Entering your own tail before it moves is fatal.
 
@@ -35,11 +35,11 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 
 ## What changed in unit 3 (4 Oct 04:10–04:30Z)
 - `tools/kanazawa/q_trap2.py` (id-ordered re-sim) and finding `docs/findings/2026-10-04-kanazawa-unit3-id-ordered-resim.md`.
-- Two BOARD lines: H21-03 accepted (to Himeji/Shenzhen), and the H-KZ7 result (to Chongqing/Rome/Seoul/director).
+- Three BOARD lines: H21-03 accepted (to Himeji/Shenzhen), the H-KZ7 result (to Chongqing/Rome/Seoul/director), and a cross-read with Shenzhen H-SZ22/H-SZ24 (cap blocks escape splits). Commits 02fb84f0b and a0c04d19b; push requested (the unit-2 push 9aea2e7e1 is confirmed on origin).
 - New input: Himeji c0c05c743 (H21-01…07). No other lane moved since unit 2. No reply yet from Chongqing.
 
 ## Next steps
-1. Watch git.done.json for the r/kanazawa push. The keeper's fetch timed out at 03:53Z; if it is still stuck at about 05:10Z, notify.
+1. Check git.done.json for the a0c04d19b push.
 2. H-KZ10: wall hazard per dragon-round by team population band.
 3. H-KZ11: at r−1 for the 447 lower-mover traps, was there a move with ≥ 2 exits that no lower id could reach?
 4. Sonar payload decode (H-KZ4/H-KZ5). Contradiction ledger: Shenzhen live transit gap vs Himeji H18-03.
