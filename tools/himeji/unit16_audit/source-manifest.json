@@ -1,0 +1,44 @@
+{
+  "main": "0298966ec",
+  "antioch": "2c7113f66",
+  "carthage": "5b69fa9d0",
+  "kyoto": "fccea71c0",
+  "rome": "91544f017",
+  "nara": "5e84e7d89",
+  "prior_himeji": "ccb43b3f1",
+  "board_cursor_before": "H15-07; main D-042; Nara through 01:00 UTC",
+  "runtime": "isolated unswbc 1.2.3",
+  "files": {
+    "tools/himeji/unit16_audit/store-summary.json": "b705ee3d0df2dabc9181212b97698b9606555679a9a8a6880a8207e1b020adb7",
+    "tools/himeji/unit16_audit/last-build.json": "7170e0e38221488b0fa8da41bd4a12c13eb20124d42528bad9aad4375d3beb0d",
+    "tools/himeji/unit16_audit/pearl-mirror-audit.json": "cc765df1105167c62b9ff49c7d4285f44bfc3cdeeb0e32ee6f523f17ed269920",
+    "tools/himeji/unit16_audit/store-coverage.json": "482662f58ca41c60b568d1182311663859d22dd710bd438546545c0ff2268584",
+    "tools/himeji/unit16_audit/manifest.json": "f73e2fc78729ba1d9af62802661cf85105a934e64227dc596fb9c4641a7eae5f",
+    "tools/himeji/unit16_audit/header-fertility.json": "240511d4ceda315d8e1f7fae78c0d532fffff17e16235536ba3dc8a761e9c86e",
+    "tools/himeji/unit16_audit/legality-summary.json": "005572b9f10c0119c27ceb8c57600779556c48293759e5b01ab80b6ba3de0f1b",
+    "tools/himeji/unit16_audit/decoder-source.json": "c82326faa21cfbbc008a1f78440c1845a52d24d2b3670837bd0c704db410b7eb",
+    "tools/himeji/unit16_audit/pocket-turn-counts.json": "f5099a46e2e6003660d79ed01c6721fd5c54ffabef93296dc305edb967bc4d9d",
+    "tools/himeji/pearl_mirror_audit.py": "7ec2e4bac6f7cc278a3489ef16ade1c5e1a70cb16e636d596d7008f7698caedf",
+    "tools/himeji/header_fertility_audit.py": "437e5f93e7f56d19074e441a238ade9b023cc14bf1d092206c7955e3f13bdc87",
+    "tools/himeji/pocket_legality_check.py": "a4189827416f6fdae2982738e6f2b5696a323b2f177b65cade5f9ba716acadb9",
+    "tools/himeji/pocket_turn_counts.py": "f33675f1bf812083a2a67a1eaee5628e0e219a12ad612bf3490dae6ef6fdb2a1"
+  },
+  "resume_passes": [
+    {
+      "new": 39,
+      "errors": 0,
+      "seconds": 167
+    },
+    {
+      "new": 48,
+      "errors": 0,
+      "seconds": 162
+    },
+    {
+      "new": 23,
+      "errors": 0,
+      "seconds": 83
+    }
+  ],
+  "workers": "one store/replay worker; occasional independent cheap query; all complete"
+}

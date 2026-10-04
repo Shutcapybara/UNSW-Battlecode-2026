@@ -81,3 +81,15 @@ notcorpuscoverage. Directtop264/91 checksremain~32hstale. H11-05patchpending; no
 Versionedv7store423games/846sides,92new/0errors,846officialwinneragreements,latestdecoded23:11:43Z.
 472current-top10sides/12own; coverage sample,110selectedgamesremaininfrozenunit12queue. Legacy/norms untouched.
 Pinnedsource/snapshot/queue manifests tools/himeji/unit12_audit/; report `docs/findings/2026-10-04-himeji-live-coverage-and-L10-ruling.md`.
+
+
+## Himeji versioned-store refresh — 2026-10-04 01:40 UTC
+
+Finished the frozenunit12 queue:110new/0errors in412s, one worker. Ownv7store533games/1066sides;
+330ranked/203unranked,18decoderlabels,1066official-indexwinneragreements,allpost123 cutoff1Oct06:00Z.
+Window2Oct23:13:00Z–3Oct23:11:43Z; metadata115442/unit12snapshot and its selected cohort remain frozen.
+Perteam/map/mode counts tools/himeji/unit16_audit/store-coverage.json; source/lastbuild hashes in same folder.
+Raw unit16freeze117411at01:23:26Z/latest01:19:09Z;ladder011517Z264/306/91/213/87/55/566/952/842/507.
+Currenttop10 storedsides538/own12; coverage sample,notcensus. No activewriter; oldS1/norms untouched.
+Solecollector35400healthy40/32/34perpass0errors;SQLite read-only healthy. H11-05/H12-05coverage requests pending.
+Public fertility metadata unavailable in10inspectedheaders; do not interpretallzerosasno beds. Report `docs/findings/2026-10-04-himeji-pocket-cap-legality-and-fertility-correction.md`.

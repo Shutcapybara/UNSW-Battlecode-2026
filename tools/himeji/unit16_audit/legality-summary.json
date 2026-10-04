@@ -1,0 +1,417 @@
+{
+  "runtime": "1.2.3",
+  "engine_wasm_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+  "seed": 116,
+  "cases": [
+    {
+      "case": 0,
+      "units": 63,
+      "queen_length": 4,
+      "first_action": "SPLIT 2",
+      "map_sha256": "f4b4c0d22f76ba29c6884f86e0febd287d8e85a8d978b18b6b608befc8669a70",
+      "replay_sha256": "926579277e24157abfc01701c60937f822a8822ad117796df27c629bf7342c7b",
+      "initial_queen_block": "ID 0\nTEAM A\nMAP 64 8\nUNIT_LIMIT 64\n",
+      "queen_turns": [
+        {
+          "round": 0,
+          "length": 4,
+          "units": 63,
+          "action": "SPLIT 2"
+        },
+        {
+          "round": 1,
+          "length": 2,
+          "units": 1,
+          "action": "MOVE W"
+        },
+        {
+          "round": 2,
+          "length": 3,
+          "units": 1,
+          "action": "MOVE N"
+        },
+        {
+          "round": 3,
+          "length": 3,
+          "units": 1,
+          "action": "MOVE E"
+        },
+        {
+          "round": 4,
+          "length": 3,
+          "units": 1,
+          "action": "MOVE S"
+        }
+      ],
+      "queen_death": null,
+      "queen_splits": [
+        {
+          "round": 0,
+          "team": "A",
+          "parent": 0,
+          "child": 126,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        }
+      ],
+      "result": {
+        "rounds": 4,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 1,
+        "b_dragons": 0,
+        "a_length": 3,
+        "b_length": 0,
+        "events": 788,
+        "a_queen": 3,
+        "b_queen": 0,
+        "a_longest": 3,
+        "b_longest": 0
+      }
+    },
+    {
+      "case": 1,
+      "units": 64,
+      "queen_length": 4,
+      "first_action": "SPLIT 2",
+      "map_sha256": "c9fdfdfaaa77b033e6b727293db26ebd68b6ab80389b5c1922166637f20e2c27",
+      "replay_sha256": "b4d2c4af8c37494dc61ffdcc2f44826187e9d41f2ab90fad802c142e1dc57be0",
+      "initial_queen_block": "ID 0\nTEAM A\nMAP 64 8\nUNIT_LIMIT 64\n",
+      "queen_turns": [
+        {
+          "round": 0,
+          "length": 4,
+          "units": 64,
+          "action": "SPLIT 2"
+        }
+      ],
+      "queen_death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 4,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          3,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "queen_splits": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 768,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      }
+    },
+    {
+      "case": 2,
+      "units": 64,
+      "queen_length": 4,
+      "first_action": "MOVE N",
+      "map_sha256": "c9fdfdfaaa77b033e6b727293db26ebd68b6ab80389b5c1922166637f20e2c27",
+      "replay_sha256": "b46f9669045a4c9bfbd0c58ca54a5cebd25f080f34191e2b6f6cd39e5c879541",
+      "initial_queen_block": "ID 0\nTEAM A\nMAP 64 8\nUNIT_LIMIT 64\n",
+      "queen_turns": [
+        {
+          "round": 0,
+          "length": 4,
+          "units": 64,
+          "action": "MOVE N"
+        }
+      ],
+      "queen_death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "self",
+        "length": 4,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          3,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "queen_splits": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 767,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      }
+    },
+    {
+      "case": 3,
+      "units": 64,
+      "queen_length": 4,
+      "first_action": "MOVE E",
+      "map_sha256": "c9fdfdfaaa77b033e6b727293db26ebd68b6ab80389b5c1922166637f20e2c27",
+      "replay_sha256": "6f58cf38d71dc26f1d6dff16f5c09b1a839bb8d63be2b07c02218c98176fc476",
+      "initial_queen_block": "ID 0\nTEAM A\nMAP 64 8\nUNIT_LIMIT 64\n",
+      "queen_turns": [
+        {
+          "round": 0,
+          "length": 4,
+          "units": 64,
+          "action": "MOVE E"
+        }
+      ],
+      "queen_death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "wall",
+        "length": 4,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          3,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "queen_splits": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 767,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      }
+    },
+    {
+      "case": 4,
+      "units": 64,
+      "queen_length": 4,
+      "first_action": "MOVE S",
+      "map_sha256": "c9fdfdfaaa77b033e6b727293db26ebd68b6ab80389b5c1922166637f20e2c27",
+      "replay_sha256": "2ef38b8f306b77f62490637e9a4a5131b4296b64b8dc3376df5e90f8634c7e79",
+      "initial_queen_block": "ID 0\nTEAM A\nMAP 64 8\nUNIT_LIMIT 64\n",
+      "queen_turns": [
+        {
+          "round": 0,
+          "length": 4,
+          "units": 64,
+          "action": "MOVE S"
+        }
+      ],
+      "queen_death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "wall",
+        "length": 4,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          3,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "queen_splits": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 767,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      }
+    },
+    {
+      "case": 5,
+      "units": 64,
+      "queen_length": 4,
+      "first_action": "MOVE W",
+      "map_sha256": "c9fdfdfaaa77b033e6b727293db26ebd68b6ab80389b5c1922166637f20e2c27",
+      "replay_sha256": "44253bdb745c0590e58d888383383b2cf58271869e8570048fd733cb20595d3e",
+      "initial_queen_block": "ID 0\nTEAM A\nMAP 64 8\nUNIT_LIMIT 64\n",
+      "queen_turns": [
+        {
+          "round": 0,
+          "length": 4,
+          "units": 64,
+          "action": "MOVE W"
+        }
+      ],
+      "queen_death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "self",
+        "length": 4,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          3,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "queen_splits": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 767,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      }
+    },
+    {
+      "case": 6,
+      "units": 64,
+      "queen_length": 4,
+      "first_action": "MOVE WN",
+      "map_sha256": "c9fdfdfaaa77b033e6b727293db26ebd68b6ab80389b5c1922166637f20e2c27",
+      "replay_sha256": "e526a025ed601ead854604b6c9f162ee498e6cde5649dcd9273a012c27b76ca2",
+      "initial_queen_block": "ID 0\nTEAM A\nMAP 64 8\nUNIT_LIMIT 64\n",
+      "queen_turns": [
+        {
+          "round": 0,
+          "length": 4,
+          "units": 64,
+          "action": "MOVE WN"
+        }
+      ],
+      "queen_death": {
+        "round": 0,
+        "id": 0,
+        "team": "A",
+        "cause": "self",
+        "length": 4,
+        "actor": 0,
+        "age": 0,
+        "head": [
+          3,
+          2
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "queen_splits": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 767,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      }
+    },
+    {
+      "case": 7,
+      "units": 64,
+      "queen_length": 3,
+      "first_action": "MOVE WN",
+      "map_sha256": "503663a1d43752560db74078a421a36fa14414a587e401a0662d6678546052ad",
+      "replay_sha256": "d738cc4911eb33de1e6491a368dde4df46634fd502bca80567c4e58db943bb50",
+      "initial_queen_block": "ID 0\nTEAM A\nMAP 64 8\nUNIT_LIMIT 64\n",
+      "queen_turns": [
+        {
+          "round": 0,
+          "length": 3,
+          "units": 64,
+          "action": "MOVE WN"
+        },
+        {
+          "round": 1,
+          "length": 2,
+          "units": 1,
+          "action": "SPLIT 0"
+        }
+      ],
+      "queen_death": {
+        "round": 1,
+        "id": 0,
+        "team": "A",
+        "cause": "invalid",
+        "length": 2,
+        "actor": 0,
+        "age": 1,
+        "head": [
+          2,
+          1
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "queen_splits": [],
+      "result": {
+        "rounds": 1,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 775,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      }
+    }
+  ],
+  "limitation": "Eight deterministic legal-action fixtures, not independent games or a strategy win-rate test. Other units use fixed terminating actions; no population-level survival estimate."
+}

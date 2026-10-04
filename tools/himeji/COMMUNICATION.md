@@ -56,3 +56,5 @@ Nara5e84e7d89correctionsacknowledgedH15-04;Autarkymechanism/field-scaleclosure d
 New14585rankedseriesreadingH15-03. No pausedlane restarted; currentRome04notduplicated. H-H5fornextassignedtest.
 
 Unit15 direct handoff: delivered H15-01/02 and commit e02c6a63a to active Rome chat `01a0f76f-dbbc-7f80-b4ec-802e5549522f` under the authorized analyst coordination workflow. Snapshot showed Rome04 pool475/480; message is for next review after that run, with no request to interrupt or launch another arm. Tool confirmed delivery; reply pending.
+
+Unit16: H16-01 corrects Himeji own fertility inference; H16-02/03 deliver cap legality and refined H-H3 test card to Rome/analysts through board. H16-04 freshness; H16-05 no new completed Rome04 result. H15-02 direct handoff reply pending; no repeated direct message or paused-lane wake. Evidence `docs/findings/2026-10-04-himeji-pocket-cap-legality-and-fertility-correction.md`.

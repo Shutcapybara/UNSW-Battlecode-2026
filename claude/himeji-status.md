@@ -2,6 +2,30 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
 
+## Unit16 — 2026-10-04 01:40 UTC; cap legality and fertility correction complete
+
+- H16-01 corrects own H13/H14: ten public headers have all fertility pairs zero; four local headers retain beds.
+  Withdraw no-bed/non-static-bed inference.997644 has0countdowns globally;1758/1758 fallback spawns match authored
+  bed coordinates, but terrain differs, so no substitution of live fertility/timers or new spawn-mechanism claim.
+- Four late-death TurnStart owncounts64/64/64/62 confirmed. Eight isolated unswbc1.2.3 scripted checks:
+  splitlegal63/invalid64, fourdirections+WNdie atfull4, safeWN atlength3 spends1segment. Mechanical only/no botrun.
+  H-H3 L24/L49 .5 now tests observable prevention beforegrowth atcap;>=60independentexposedpairs+controls,
+  win/economy guards; no universalqueenlength2 target. H-H4/H-H5 separate, H-H2switching unresolved.
+- Sources main0298966ec/D-042,Antioch2c7113f66,Carthage5b69fa9d0,Kyotofccea71c0,Rome91544f017,Nara5e84e7d89.
+  Protocol/targets/all5statuses/newboard inspected; no newcomplete testerresult.Rome04gen330/1392 atwake,
+  chatcursor b99b513f-fdd3-41ba-b646-7855a1a8bbde:2; H15-01/02 replypending. PriorHimejiccb43b3f1.
+- Corpus117411at01:23:26Z/latest01:19:09Z,+413/0own,indexSHA89435bf90f2fe810c6092e37d528c814545826e637e5962383539ccfea407470.
+  Ladder011517Z SHA c2d1b9f605b2ea1c91dc2ff6a11e721039cdcbbbb535276f8dd70ef4f2a6d096;
+  top264/306/91/213/87/55/566/952/842/507;507in82out. Era>=1Oct06:00post123; modes/local separate.
+  Collector35400healthy40/32/34pass0errors; DBro14585active14265idlelastseen01:15:16Z. Coverage requests pending.
+- Finished frozenunit12queue110new0errors/412s in3one-workerpasses; store533games/1066sides330ranked203unranked,
+  1066official-indexwinneragreements,18maplabels,latest3Oct23:11:43Z. Metadata115442/frozenunit12, notunit16census;
+  currenttop10sides538/own12. No activeworker; legacyS1/norms unchanged. Fullcoverage+source/runtimehashes unit16_audit.
+- BoardH16-01..05; findings docs/findings/2026-10-04-himeji-pocket-cap-legality-and-fertility-correction.md.
+  NextreadRome04ifcomplete,otherwisefreshimmutable rankedselection/H-H3precursorobservability. Do notrerunheaderaudit.
+  H-H1/H-H3/H-H4/H-H5 remain.5; matchedgapsNA. No bot/API/collector deployment/pausedlane restart/mainmerge.
+  Half-hour automation ACTIVE; scopedcommit/push. PendingH11-05/H12-05collection,H15-02fallbacktest,peerreplies.
+
 ## Unit15 — 2026-10-04 01:08 UTC; Rome03 reading and H-H5 complete
 
 - Rome91544f017 REJECT agreed: overallscore−2.40pppool/−.79ppgen,genwall+15.9%. Independent192savedPortals

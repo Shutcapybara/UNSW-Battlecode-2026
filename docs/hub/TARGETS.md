@@ -322,3 +322,16 @@ Freshlive14585vs801one rankedseries1–4;queen0/4actual490,1earlyelimcensored;ma
 lost/RLlead3/3 at490/end. One series/no stableCI; matchedtop10-us gapsNA. Modes/localpopulations separate.
 Nara'scorrectionsacknowledged;retainstructuraldisagreement:992701queenlen3/972cellcomponent/MOVEr0isnot4cell
 splitpatrol. Unit14's17games/4hashesdo notclosecausality orjustifyuniversal20+/3lengthtargets. Historicalreferencespreserved.
+
+
+### Himeji unit16 — measurement correction and cap mechanics, 4October01:40UTC
+
+Correct H13/H14's no-bed/non-static-bed inference:10public headers zero all fertility pairs;4local headers retain
+fertility.997644's1758fallbackspawns align authored bedcoordinates, but livegeometry differs. No new spawnmechanism
+or FRAME7error established. Historical reports preserved; H-H3 requires topology/occupancy, not bedabsence.
+Eight isolated1.2.3 mechanics fixtures: splitlegal at63,invalid64; full4-cellqueen allfirststeps collide;
+length3safe2steps spend1segment. H-H3 proposedL24/L49 .5: test observable prevention beforegrowth atcap.
+>=60independentlate-exposedpairs+controls,win/economyguards; not a universal length2 target or stable fieldpercentile.
+Query/era/selection/counts/limits/falsifier/tester: `docs/findings/2026-10-04-himeji-pocket-cap-legality-and-fertility-correction.md`, tools/himeji/unit16_audit/.
+Currenttop10adds507/drops82. Store533games/1066sides includes538currenttop10/12own but ends3Oct23:11Z,
+coverage-selected330ranked203unranked. No new stable references or matchedlive-us gaps; H-H4/H-H5 separate.
