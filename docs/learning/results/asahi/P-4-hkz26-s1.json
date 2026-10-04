@@ -1,0 +1,434 @@
+{
+ "asahi-07-hkz26-m0": {
+  "cards": {
+   "pooled": {
+    "arm": "asahi-07-hkz26-m0",
+    "panel": "pooled",
+    "iv": {
+     "strike_ratio": [
+      1.0694273245733004,
+      0.6852181933241219,
+      1.788066718810718,
+      1000
+     ],
+     "allcause_ratio": [
+      0.7026850473996299,
+      0.661920690507241,
+      0.7457624474948813,
+      1000
+     ],
+     "allcause_diff": [
+      -0.002237254031823922,
+      -0.0026394179757199838,
+      -0.0018458592395821669,
+      1000
+     ],
+     "food_ratio": [
+      0.9971244509247871,
+      0.9894814109386922,
+      1.0047378996891476,
+      1000
+     ]
+    },
+    "counts": {
+     "paired": 736,
+     "clusters": 368,
+     "parent_strikes": 22,
+     "cand_strikes": 30,
+     "parent_alive_rounds": 83058,
+     "cand_alive_rounds": 105908,
+     "parent_deaths": 625,
+     "cand_deaths": 560,
+     "incidence_c": 0.7608695652173914,
+     "incidence_p": 0.8491847826086957,
+     "q_alive_rl_c": 4,
+     "q_alive_rl_p": 3,
+     "categories_c": {
+      "alive": 176,
+      "wall": 155,
+      "adjacent": 143,
+      "self": 89,
+      "body": 66,
+      "queen_initiated": 53,
+      "strike": 30,
+      "ally_h2h": 24
+     },
+     "categories_p": {
+      "queen_initiated": 225,
+      "adjacent": 130,
+      "wall": 124,
+      "alive": 111,
+      "self": 60,
+      "body": 42,
+      "strike": 22,
+      "ally_h2h": 22
+     },
+     "missing_c": [],
+     "missing_p": [],
+     "labeller": [
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050",
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050"
+     ]
+    }
+   },
+   "pool": {
+    "arm": "asahi-07-hkz26-m0",
+    "panel": "pool",
+    "iv": {
+     "strike_ratio": [
+      1.196588251478883,
+      0.30983063646313197,
+      3.6573968810421653,
+      948
+     ],
+     "allcause_ratio": [
+      0.8725122667033521,
+      0.8214875112300385,
+      0.9272114554819986,
+      1000
+     ],
+     "allcause_diff": [
+      -0.0009233993099205355,
+      -0.0013314469712088293,
+      -0.0005146268997570752,
+      1000
+     ],
+     "food_ratio": [
+      1.0005840644998703,
+      0.9925394226968373,
+      1.007926157965381,
+      1000
+     ]
+    },
+    "counts": {
+     "paired": 272,
+     "clusters": 136,
+     "parent_strikes": 3,
+     "cand_strikes": 4,
+     "parent_alive_rounds": 34792,
+     "cand_alive_rounds": 38768,
+     "parent_deaths": 252,
+     "cand_deaths": 245,
+     "incidence_c": 0.9007352941176471,
+     "incidence_p": 0.9264705882352942,
+     "q_alive_rl_c": 0,
+     "q_alive_rl_p": 0,
+     "categories_c": {
+      "wall": 107,
+      "self": 54,
+      "alive": 27,
+      "body": 26,
+      "queen_initiated": 22,
+      "adjacent": 21,
+      "ally_h2h": 11,
+      "strike": 4
+     },
+     "categories_p": {
+      "wall": 89,
+      "queen_initiated": 59,
+      "self": 38,
+      "adjacent": 31,
+      "body": 22,
+      "alive": 20,
+      "ally_h2h": 10,
+      "strike": 3
+     },
+     "missing_c": [],
+     "missing_p": [],
+     "labeller": [
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050",
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050"
+     ]
+    }
+   },
+   "gen": {
+    "arm": "asahi-07-hkz26-m0",
+    "panel": "gen",
+    "iv": {
+     "strike_ratio": [
+      0.9837386137372027,
+      0.6163198848748593,
+      1.7137785767197202,
+      1000
+     ],
+     "allcause_ratio": [
+      0.607102041989808,
+      0.5566764655381988,
+      0.6606114286543197,
+      1000
+     ],
+     "allcause_diff": [
+      -0.003036318284875515,
+      -0.003636586779805996,
+      -0.0024746202755099845,
+      1000
+     ],
+     "food_ratio": [
+      0.9928227120801647,
+      0.9799494885811507,
+      1.006414047910296,
+      1000
+     ]
+    },
+    "counts": {
+     "paired": 464,
+     "clusters": 232,
+     "parent_strikes": 19,
+     "cand_strikes": 26,
+     "parent_alive_rounds": 48266,
+     "cand_alive_rounds": 67140,
+     "parent_deaths": 373,
+     "cand_deaths": 315,
+     "incidence_c": 0.6788793103448276,
+     "incidence_p": 0.8038793103448276,
+     "q_alive_rl_c": 4,
+     "q_alive_rl_p": 3,
+     "categories_c": {
+      "alive": 149,
+      "adjacent": 122,
+      "wall": 48,
+      "body": 40,
+      "self": 35,
+      "queen_initiated": 31,
+      "strike": 26,
+      "ally_h2h": 13
+     },
+     "categories_p": {
+      "queen_initiated": 166,
+      "adjacent": 99,
+      "alive": 91,
+      "wall": 35,
+      "self": 22,
+      "body": 20,
+      "strike": 19,
+      "ally_h2h": 12
+     },
+     "missing_c": [],
+     "missing_p": [],
+     "labeller": [
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050",
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050"
+     ]
+    }
+   }
+  },
+  "firing_per1k": 69.5322376738306,
+  "verdict": "REFUTE"
+ },
+ "asahi-08-hkz26-m1": {
+  "cards": {
+   "pooled": {
+    "arm": "asahi-08-hkz26-m1",
+    "panel": "pooled",
+    "iv": {
+     "strike_ratio": [
+      1.164157766377933,
+      0.7435614785794861,
+      1.9195880883764662,
+      1000
+     ],
+     "allcause_ratio": [
+      0.6640903738368613,
+      0.6182550720255222,
+      0.7046394068671499,
+      1000
+     ],
+     "allcause_diff": [
+      -0.0025276736298967192,
+      -0.0029795063756644286,
+      -0.002154590363655292,
+      1000
+     ],
+     "food_ratio": [
+      0.994196067720851,
+      0.9856687976735258,
+      1.0018950925176386,
+      1000
+     ]
+    },
+    "counts": {
+     "paired": 736,
+     "clusters": 368,
+     "parent_strikes": 22,
+     "cand_strikes": 34,
+     "parent_alive_rounds": 83058,
+     "cand_alive_rounds": 110262,
+     "parent_deaths": 625,
+     "cand_deaths": 551,
+     "incidence_c": 0.748641304347826,
+     "incidence_p": 0.8491847826086957,
+     "q_alive_rl_c": 12,
+     "q_alive_rl_p": 3,
+     "categories_c": {
+      "alive": 185,
+      "wall": 147,
+      "adjacent": 144,
+      "self": 92,
+      "body": 64,
+      "queen_initiated": 38,
+      "strike": 34,
+      "ally_h2h": 32
+     },
+     "categories_p": {
+      "queen_initiated": 225,
+      "adjacent": 130,
+      "wall": 124,
+      "alive": 111,
+      "self": 60,
+      "body": 42,
+      "strike": 22,
+      "ally_h2h": 22
+     },
+     "missing_c": [],
+     "missing_p": [],
+     "labeller": [
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050",
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050"
+     ]
+    }
+   },
+   "pool": {
+    "arm": "asahi-08-hkz26-m1",
+    "panel": "pool",
+    "iv": {
+     "strike_ratio": [
+      2.3243477970404514,
+      0.8751227607824494,
+      7.156869973590231,
+      948
+     ],
+     "allcause_ratio": [
+      0.850877318559451,
+      0.7759592431566684,
+      0.9220210154050592,
+      1000
+     ],
+     "allcause_diff": [
+      -0.0010801021994429278,
+      -0.0016771327015583511,
+      -0.0005553221918736895,
+      1000
+     ],
+     "food_ratio": [
+      0.992722497431314,
+      0.9831708854904521,
+      1.0017224495558783,
+      1000
+     ]
+    },
+    "counts": {
+     "paired": 272,
+     "clusters": 136,
+     "parent_strikes": 3,
+     "cand_strikes": 8,
+     "parent_alive_rounds": 34792,
+     "cand_alive_rounds": 39916,
+     "parent_deaths": 252,
+     "cand_deaths": 246,
+     "incidence_c": 0.9044117647058824,
+     "incidence_p": 0.9264705882352942,
+     "q_alive_rl_c": 3,
+     "q_alive_rl_p": 0,
+     "categories_c": {
+      "wall": 102,
+      "self": 51,
+      "body": 30,
+      "adjacent": 27,
+      "alive": 26,
+      "queen_initiated": 14,
+      "ally_h2h": 14,
+      "strike": 8
+     },
+     "categories_p": {
+      "wall": 89,
+      "queen_initiated": 59,
+      "self": 38,
+      "adjacent": 31,
+      "body": 22,
+      "alive": 20,
+      "ally_h2h": 10,
+      "strike": 3
+     },
+     "missing_c": [],
+     "missing_p": [],
+     "labeller": [
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050",
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050"
+     ]
+    }
+   },
+   "gen": {
+    "arm": "asahi-08-hkz26-m1",
+    "panel": "gen",
+    "iv": {
+     "strike_ratio": [
+      0.9389049914183578,
+      0.5954277210322125,
+      1.6031311376949386,
+      1000
+     ],
+     "allcause_ratio": [
+      0.5610388147318398,
+      0.5116721126641284,
+      0.6136437016279812,
+      1000
+     ],
+     "allcause_diff": [
+      -0.003392295241060451,
+      -0.003976838636722482,
+      -0.002818117008175601,
+      1000
+     ],
+     "food_ratio": [
+      0.9959050337401768,
+      0.9815500137662014,
+      1.0111679484445184,
+      1000
+     ]
+    },
+    "counts": {
+     "paired": 464,
+     "clusters": 232,
+     "parent_strikes": 19,
+     "cand_strikes": 26,
+     "parent_alive_rounds": 48266,
+     "cand_alive_rounds": 70346,
+     "parent_deaths": 373,
+     "cand_deaths": 305,
+     "incidence_c": 0.6573275862068966,
+     "incidence_p": 0.8038793103448276,
+     "q_alive_rl_c": 9,
+     "q_alive_rl_p": 3,
+     "categories_c": {
+      "alive": 159,
+      "adjacent": 117,
+      "wall": 45,
+      "self": 41,
+      "body": 34,
+      "strike": 26,
+      "queen_initiated": 24,
+      "ally_h2h": 18
+     },
+     "categories_p": {
+      "queen_initiated": 166,
+      "adjacent": 99,
+      "alive": 91,
+      "wall": 35,
+      "self": 22,
+      "body": 20,
+      "strike": 19,
+      "ally_h2h": 12
+     },
+     "missing_c": [],
+     "missing_p": [],
+     "labeller": [
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050",
+      "684754bdfd182041b57c9f6ac017718833d4d6e86899b1d2107021d24f112050"
+     ]
+    }
+   }
+  },
+  "firing_per1k": 100.70662523804751,
+  "verdict": "REFUTE"
+ }
+}
