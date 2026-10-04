@@ -277,6 +277,23 @@ def cmd_curve(a):
     print('\n'.join(L))
 
 
+def cmd_parity(a):
+    """Golden parity at panel level: every fixture's winner and round count identical (index rows, rc 0)."""
+    seeds = [int(x) for x in a.seeds.split(',')]
+    def rows(bot):
+        root = P.run_root(bot, a.panel)
+        return {r['game'].replace(bot, '@'): r for r in map(json.loads, open(root / 'index.jsonl')) if r.get('rc') == 0}
+    c, p = rows(a.cand), rows(a.parent)
+    exp = {f['game'].replace('X', '@') for f in P.fixtures('X', a.panel, seeds)}
+    both = sorted(exp & set(c) & set(p))
+    diff = [g for g in both if (c[g]['winner'], c[g]['rounds']) != (p[g]['winner'], p[g]['rounds'])]
+    res = dict(cand=a.cand, parent=a.parent, panel=a.panel, expected=len(exp), compared=len(both), divergent=len(diff),
+               divergent_games=diff[:50], verdict='PARITY' if both and not diff and len(both) == len(exp) else 'NO-PARITY' if diff else 'INCOMPLETE')
+    print(json.dumps(res, indent=1))
+    if a.out:
+        Path(a.out).parent.mkdir(parents=True, exist_ok=True); Path(a.out).write_text(json.dumps(res, indent=1))
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest='cmd', required=True)
@@ -284,8 +301,10 @@ def main():
     c.add_argument('--seeds', default='1'); c.add_argument('--out', required=True)
     d = sub.add_parser('curve'); d.add_argument('--doses', required=True); d.add_argument('--seeds', default='1')
     d.add_argument('--out', required=True)
+    q = sub.add_parser('parity'); q.add_argument('cand'); q.add_argument('--parent', required=True)
+    q.add_argument('--panel', default='pool'); q.add_argument('--seeds', default='1'); q.add_argument('--out')
     a = ap.parse_args()
-    {'card': cmd_card, 'curve': cmd_curve}[a.cmd](a)
+    {'card': cmd_card, 'curve': cmd_curve, 'parity': cmd_parity}[a.cmd](a)
 
 
 if __name__ == '__main__':
