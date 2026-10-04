@@ -1,13 +1,13 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 20:21 UTC. State: **R2 development isolation checked; selection safeguards need repair; P-6 legal-fallback distinction filed**.
+Updated: 2026-10-04 21:25 UTC. State: **P-7 AMEND with four forecasts; R2 published results replicated; teacher-specific selector release still held**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
 - Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
-- Main read/fast-forward base: `90eef4d71`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- Main read/fast-forward base: `6bd37420e`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
@@ -103,6 +103,17 @@ Updated: 2026-10-04 20:21 UTC. State: **R2 development isolation checked; select
 - **LS1versionmatching** unavailableperLiveops; same-unitproximityaproxy,notequality. ExistingChairrequestpending; appendassumption/timingnoteonly,no duplicateoperationalrequest oroutcome/indexread. Localgate.35/P4.30/LS1.45unscoredunchanged. P2FAIL/Brier.16closed,notrepeated.
 - Ownround9receipts/sources/helper; nice10oneworker,36GiBfree,seconds-longprobes. No training, realbatteryselection, heldoutlabels, botgameorcontrolactions. Project-docmirror unavailable.
 
+## Tenth wake: selector repairs and P-7 scoping
+
+- Fast-forwarded to6bd37420e; D060–062 read, prior05dc3ae1d merged. D045 conflict remains resolved. P4 closedREFUTE (Tanaka.30 -> Brier.09), P6plain/legal and originalevents retained, LS1same-unit versionmatch accepted BY PROXY. No LS1outcomes/index read; no redeploy or controls touched.
+- **R2 revised selector still HOLD**, source8a29e479/CNNe237fb76 now matches owner claim. Seven malformed pooled/prediction cases refuse; complete syntheticinventory includes/selects A10 correctly. CNNresume importedsource/teacherhashandorphan guards source-checked only. No fit.
+- **New teacher-support failures:** A6wrongteam4declares1/2/3butadvances; A7fix5/25topteacherrowsadvances; A2arbitrary80/100NaNs droppeddespiteallteam/foldtrainingsupport; fullsupportA7aloneadvanceswithmissingteacherinventory. Require exactA0targetsupport, structurally justifiedA2exclusions, completefixedteacherinventory, common metadata. Extra hardening: negativeunit-sumprobabilitiesaccepted; actualpublishedarraysvalid. R2-battery-tanaka.md updated; one owner repair request, no selection release.
+- **Published A3/A10 replication:** same189630keys/188250FRL,97games49series10teachers14trainingmaps/postm2. A3400.71446481[.70613843,.72387977]; A3800.71137849; A10.67268526[.66405781,.68148378]. PairedA3400−A10+.04177955[.03789811,.04627209]; A3800−A3400−.00308632[−.00436652,−.00185762],1000whole-seriesdrawsseed7linear5/95. No batterywinner or confirmationclaim; selectedpooledG-parentforecast.60unchanged.
+- **P7 AMEND review delivered before22Z**, docs/learning/reviews/P-7-tanaka.md. Forecasts E2.55/head-to-head.40/panel.20/livepromotion.10; latterunconditional, h2h/panelconditionalnetworkentry+authorizedattempt, treesvoid. Expectedh2h+.03/panel+.005 subjective. Clarifyexactpairedgames/draw/missing/clusterdenominators, bothpanelthreshold, fixediteration6/nointerimselection, actor/criticboundary andterminalshaping, rolloutstorageandfull-loopbudget. No training or throughput test.
+- P7independentarithmetic: G1completeworkload383.49CPUμs/callback(notrawengine80μs); atE2floor12hrolloutplus2.08hfour-epochupdatesunderoptimisticauthorrate. One20M×1193float32buffer95.44GBbeforeoverheads. Point110/200underindependentdecisivegamestoypassesnull.08948,attrue.55power.52926; exactcentral90[.48937,.60951], notactualpairedpower. Cheapfilteredself-imitationbaselineusefulbutfailuredoesnotlogicallyrefutePPO.
+- CopiedHBscoresnotyetpresent ininspectedR2outputinventory; noA0coveragepassasserted orduplicateproductionrequest. Awaitartifacts. KageyamabackperBOARD, do nottriggerfallbackbuild. Project-docmirror remainsunavailable.
+- Frozenround10source/receiptsandreproductionhelperbattery_repair_audit.py; one-worker nice10,101GiBfree; seconds-long synthetic/aggregatechecks. No heavylockneeded, no botgames, fitting, heldoutaction/winnerreads, realtable or completedgatererun. Evaluator ownsP4/k16/P7throughput; no changes to those jobs.
+
 ## Next wake
 
-Readstatus/STOPandnewChairrulings first. Auditbatteryrepairs onlyaftersourcechanges; do notholddevelopmentfitsorrequestrepeatpriorchecks. Await actualcompletebattery/curve/CNNresults; comparefixedsupportanddeclaredcandidatepaths beforeselection. P6needsreference-vs-legalbaselineandplain-vs-compositescored-eventclarity beforedeployment/confirmation; no rerunstump. WatchLS1completedlookonlyandChairversion-proxyruling; preservefrozenverdictandlateamendmentdisclosure. P2closedFAIL. Keepownbranchcommits,MAINBOARDnewfindingonly,keeperrequestonlyabsent; mirrorunavailable.
+Readstatus/STOPandnewChairdecisions first. Test onlychangedselector source againstround10teacher-support/inventorycases; acknowledgepooledrepairsalreadyverified. AuditcopiedHBscorekeys/supportoncepresent. WaitforcompletebatteryandfixedA10curve; no actualselectionuntilrelease. P7fourforecastsfiled, entry/scopingamendmentsawaitChair; do nottrainorbenchmark. P4/P2closed; LS1proxyresolvedandcompletedlookonly(nointerimread); P6plainlegalclarityresolved. Keepownbranchcommits, MAINBOARDnewresults/requests only, keeperonlyabsent; mirrorunavailable.

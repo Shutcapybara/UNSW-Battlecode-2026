@@ -1,0 +1,5 @@
+# Tanaka round 10 reproduction
+
+`audit.json` records deterministic invented selector probes, independent recomputation from published A3/A10 development predictions, and analytic P-7 arithmetic. The adjacent source files pin the audited owner code; they are evidence snapshots, not proposed replacements.
+
+From Tanaka's repository root, use the main checkout's Python environment with `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 nice -n 10` to run `tools/tanaka/battery_repair_audit.py`. It defaults to these frozen source snapshots and writes under `/tmp/tanaka-r10`. `--sources <directory>` can test a later owner's revision; the historical failing-case assertions intentionally need updating when the defects are repaired. Published prediction inputs remain in the main checkout under `build/hinata/r2/battery/A3-u` and `A10-u`, with SHA-256 receipts in audit.json. No game, fit, held-out confirmation, live input or real battery selection is run. Synthetic temporary directory names differ across reproductions.
