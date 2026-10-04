@@ -2092,3 +2092,49 @@ target rows, carried forward only if the whole-series 5th percentile of the lift
   Mac (engine plus an untrained A10-shaped network, 8 cores, decisions per hour) and posts it. The entry bar is
   1×10⁷ decisions an hour.
 - The Chair rules on P-7 when the battery table is in.
+
+## D-062 — Two full disks; Kageyama's work published and the battery routed around its link (4 Oct 2026 21:11Z, Chair: Ushijima)
+
+### A. The disks
+
+- **The Mac's disk** is 97 % full: 31 GB free of 927 GB at 21:09Z. It filled at about 18:47Z and that, not sleep,
+  stopped the hub and Asahi's daemon (Asahi, 19:17Z; D-057 §A's "restart" is corrected to this cause). Largest
+  folders: `public_replays` 116 GB (in use, growing), `build/atlas` 69 GB (a panel run of 30 Sep; no Phase 3
+  tool reads it), `wt-asahi/build` 37 GB (of which about 8 GB in `asahi/_to_delete`), `build/s1` 20 GB (in use).
+  The lead is asked whether the Chair may delete `build/atlas` and Asahi's `_to_delete` (about 77 GB).
+- **The Cowork VM's session disk** is still 100 % full after the lead quit and reopened the app (21:09Z: 9.3 GB
+  used, 0 free, 81 session folders). Deleting a scheduled task does not remove its sessions' folders (tested with
+  one closed Kanazawa task). The Chair cannot read or remove other sessions' folders. New sessions still get a
+  working link (Daichi's 20:50Z run posted); Kageyama's existing session does not.
+
+### B. Kageyama's unit 5, committed on its behalf
+
+Kageyama reported through the lead that its link fails and that its unit-5 files are final and uncommitted. The
+Chair committed them unchanged from `build/_stage_kageyama/tree` to `r/kageyama` (25d78afab): `tools/learn`
+(the HB-1 scorer `cpp/hb1_scores.cpp` and `hb1prior.py`, `coverage.py`, the development builder) and
+`docs/learning/splits/kageyama-r2-confirm-v1.json`. The status file is left for Kageyama. This is an exception to
+"never edit another lane's tree": nothing was edited, and the staging tree and its index were not touched.
+
+### C. The battery no longer waits for Kageyama's link
+
+- **Hinata may run Kageyama's scorer herself**, as merged and without edits: `tools/learn/dataset.py --hb1` on
+  dev120's oracle rows, natively through the Mac's learn queue (Asahi's daemon is idle and the learn venv exists) or
+  in her cloud container. Output: `hb_pF`, `hb_pR`, `hb_pL` keyed by game, side, dragon, round and turn, under
+  `build/hinata/r2/`, with the executable's hash and the row count. This unblocks A0, A4, A6 and A7.
+- A1, A2 and A5 need HB-1's feature vector, which the tool does not export yet. They wait for Kageyama, or for a
+  later ruling if Kageyama stays cut off.
+- Kageyama checks Hinata's scores against its own when it is back. Tanaka adds the copied scores to the selector
+  audit (same rows, same keys).
+- **Full teacher rows:** Kageyama's cloud build stops whenever its session idles (155 of 1,735 games). If Kageyama is
+  still cut off at 23:00Z, Hinata queues the full build natively with Kageyama's builder and
+  `docs/learning/datasets/kageyama-teachers-v1.json`, in shards under `build/learn/kageyama/teachers_v1/`, as heavy
+  jobs. It needs disk: about 3 M rows; state the expected size first.
+- If the session disk cannot be cleared, the lead may start a fresh Data session; its state is in the repo and in
+  `claude/kageyama-status.md`.
+
+### D. Battery, first numbers (development; no selection, D-060 §E)
+
+A3 unweighted: 0.7145 [0.7061, 0.7239] at 400 rounds, 0.7114 at 800. A10 (small CNN, four epochs): 0.6727
+[0.6641, 0.6815]. On 188,250 moves the trees lead the network by about four points. Hinata adds A10's learning
+curve (0.25, 0.5, 1.0 of the training series) so that the comparison can be read at the size of the full rows. No
+retuning of A10 beyond its fixed specification.

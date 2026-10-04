@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 20:36Z (unit 10b). Next self-wake about 21:30Z. Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 21:11Z (unit 10c). Next self-wake about 21:30Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,10 @@ State: ACTIVE. Updated 4 Oct 2026 20:36Z (unit 10b). Next self-wake about 21:30Z
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-062:** two full disks. The Mac's disk (97 %, 31 GB free) caused the 18:47Z stop; the Cowork session disk is
+  still full after an app restart and cuts Kageyama off. The Chair committed Kageyama's unit-5 files on its behalf
+  (25d78afab) and let Hinata run Kageyama's HB-1 scorer herself, so arms A0, A4, A6, A7 can proceed. First battery
+  numbers: trees 0.7145, small CNN 0.6727.
 - **D-061:** Sugawara's source check amends the precedent table: rules or search won five of eight comparable
   contests, self-play won three with dedicated compute, and no verified case of imitation alone reached a top ten.
   Clone-first now rests on D-059 and our own Heartbreaker result. P-7 (self-play fine-tuning from the clone) is
@@ -99,7 +103,7 @@ State: ACTIVE. Updated 4 Oct 2026 20:36Z (unit 10b). Next self-wake about 21:30Z
 | Council, auditor | Tanaka (GPT, Codex, hourly heartbeat), `r/tanaka` | working: 17:55Z P-2 scorer PASS; 17:56Z LS-1 review; 17:59Z R2 support verified |
 | Council, mechanism | Sugawara (Claude), hourly at :25 | working: 17:29Z LS-1 objective amendment (upheld in part, D-056 §C) |
 | Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: 17:52Z replication of the LS-1 amendment |
-| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | **silent since 18:50Z**; unit-5 files uncommitted in `build/_stage_kageyama/tree`; owes HB-1 vectors for the battery (critical path) and the full rows (cloud build, about 23:30Z). Lead asked to nudge (H13) |
+| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | **cut off** by the full session disk since 18:56Z; unit-5 files committed by the Chair on its behalf; Hinata runs its HB-1 scorer meanwhile (D-062 §C); full rows at 155 of 1,735 games, stalled |
 | Learner | Hinata (Claude), Cowork VM; hourly task at :35 | P-2 confirmation failed; R2 encoder-only fit 0.714; battery next |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; hourly self-wake | working; daemon restarted 19:16Z |
 | Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | ran 19:50Z: fix and reserve change built and merged, not deployed; LS-1 pace and answers posted |
@@ -119,8 +123,9 @@ State: ACTIVE. Updated 4 Oct 2026 20:36Z (unit 10b). Next self-wake about 21:30Z
 | H9 | Windows quota runner | closed: the lead does not know of one; replaced by Daichi's ledger check (D-050 §4) |
 | H10 | Wake the Asahi (Evaluator) session | closed: Asahi working since about 17:15Z |
 | H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | asked 19:30Z; the hub process changed at 19:46Z, not confirmed |
-| H12 | The Cowork VM session disk is full (9.8 GB, 0 free, about 80 session folders); lanes report failed installs | asked 20:3xZ |
-| H13 | Nudge Kageyama's session: silent since 18:50Z and on the battery's critical path | asked 20:3xZ |
+| H12 | The Cowork VM session disk is full; quitting the app did not clear it (21:09Z). Clear it, or start a fresh Data session | open |
+| H13 | Kageyama cut off (same cause as H12) | routed around (D-062 §B–C) |
+| H14 | The Mac's disk is 97 % full (31 GB free): may the Chair delete `build/atlas` (69 GB) and Asahi's `_to_delete` (about 8 GB)? | asked 20:52Z |
 
 ## Next three decisions
 
