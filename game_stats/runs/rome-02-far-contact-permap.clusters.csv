@@ -1,0 +1,17 @@
+arm,panel,dim,cluster,maps,n,d_econ,econ_lo,econ_hi,d_win,win_lo,win_hi
+rome-02-far-contact,pool,size,large,3,144,-0.0,-0.001,0.001,0.028,0.0,0.062
+rome-02-far-contact,pool,size,small,7,336,0.001,-0.0,0.001,-0.003,-0.009,0.0
+rome-02-far-contact,pool,portals,portal-dense,1,48,0.0,0.0,0.0,0.0,0.0,0.0
+rome-02-far-contact,pool,portals,portal-sparse,9,432,0.0,-0.0,0.001,0.007,-0.005,0.019
+rome-02-far-contact,pool,beds,bed-poor,2,96,0.002,0.0,0.005,0.0,-0.021,0.021
+rome-02-far-contact,pool,beds,bed-rich,8,384,-0.0,-0.0,0.0,0.008,-0.003,0.021
+rome-02-far-contact,pool,regime,elim-regime,6,288,0.001,-0.0,0.002,-0.003,-0.01,0.0
+rome-02-far-contact,pool,regime,limit-regime,4,192,-0.0,-0.001,0.001,0.021,0.0,0.047
+rome-02-far-contact,gen,size,large,4,192,0.003,-0.014,0.02,0.01,-0.01,0.031
+rome-02-far-contact,gen,size,small,25,1200,0.01,0.003,0.016,-0.004,-0.012,0.004
+rome-02-far-contact,gen,portals,portal-dense,1,48,0.0,0.0,0.0,0.0,0.0,0.0
+rome-02-far-contact,gen,portals,portal-sparse,28,1344,0.009,0.003,0.015,-0.002,-0.01,0.005
+rome-02-far-contact,gen,beds,bed-poor,22,1056,0.012,0.004,0.019,-0.004,-0.012,0.006
+rome-02-far-contact,gen,beds,bed-rich,7,336,-0.0,-0.002,0.0,0.003,0.0,0.009
+rome-02-far-contact,gen,regime,elim-regime,27,1296,0.009,0.002,0.016,-0.003,-0.011,0.005
+rome-02-far-contact,gen,regime,limit-regime,2,96,0.0,0.0,0.0,0.01,0.0,0.031

@@ -15,10 +15,10 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from tools.analysis.features.frame import decode
+from tools.analysis.features.frame import load
 
 
-def measure(paths: list[Path], bot_name: str, index_path: Path) -> dict:
+def measure(paths: list[Path], bot_name: str, index_path: Path, cache_dir: Path | None = None) -> dict:
     rows = {r['game']: r for r in (json.loads(s) for s in index_path.read_text().splitlines())}
     n = survived = longest490 = longest490_alive = round_checks = round_longest = 0
     lengths490 = []
@@ -28,7 +28,7 @@ def measure(paths: list[Path], bot_name: str, index_path: Path) -> dict:
     sprint_mismatches = []
     for path in paths:
         row = rows.get(path.stem, {})
-        g = decode(str(path))
+        g = load(path, cache_dir=cache_dir)
         side = 'A' if Path(g['botA']).name == bot_name else 'B' if Path(g['botB']).name == bot_name else None
         if side is None:
             continue
@@ -123,13 +123,14 @@ def main() -> int:
     ap.add_argument('--index', type=Path)
     ap.add_argument('--bot', default='rome-01-nodevil')
     ap.add_argument('--game', help='measure one replay by its run_panel fixture id')
+    ap.add_argument('--cache-dir', type=Path, help='reuse feature extractor frame cache when available')
     args = ap.parse_args()
     paths = sorted(args.replay_root.rglob('*.replay'))
     if args.game:
         paths = [p for p in paths if p.stem == args.game]
     index = args.index or args.replay_root.parent / 'index.jsonl'
     print(f'{len(paths)} replay files discovered under {args.replay_root}')
-    for key, value in measure(paths, args.bot, index).items():
+    for key, value in measure(paths, args.bot, index, args.cache_dir).items():
         print(f'{key}: {value}')
     return 0
 

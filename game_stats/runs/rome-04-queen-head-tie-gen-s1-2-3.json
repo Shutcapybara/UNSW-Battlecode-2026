@@ -1,0 +1,165 @@
+{
+ "candidate": "rome-04-queen-head-tie",
+ "candidate_dir": "bots/rome-04-queen-head-tie",
+ "parent": "rome-01-nodevil",
+ "note": "",
+ "seeds": [
+  1,
+  2,
+  3
+ ],
+ "fingerprint": "8304fb798b2ce49b6233a8082c870a08530b3b2c788d5cec2b5dfa0f0dc89ed8",
+ "gate": {
+  "verdict": "fail",
+  "why": "economy mean +0.0000, dragons +0.000, length +0.000, win share -1.35pp, tier-2: none up >10%"
+ },
+ "panel": "gen",
+ "candidate_stats": {
+  "n": 1392,
+  "wld": [
+   1036,
+   356,
+   0
+  ],
+  "exp_share": 0.7442528735632183,
+  "checkpoints": {
+   "pearls@50": NaN,
+   "pearls@100": NaN,
+   "pearls@150": NaN,
+   "pearls@250": NaN
+  },
+  "checkpoints_raw": {
+   "pearls@50": 35.0,
+   "pearls@100": 114.0,
+   "pearls@150": 176.0,
+   "pearls@250": 235.0
+  },
+  "economy_mean": NaN,
+  "tier1": {
+   "units@100|map": NaN,
+   "total@100|map": NaN,
+   "births@100|map": NaN
+  },
+  "tier1_raw": {
+   "pearls@50": 35.0,
+   "pearls@100": 114.0,
+   "pearls@150": 176.0,
+   "pearls@250": 235.0,
+   "units@100": 27.0,
+   "total@100": 65.0,
+   "births@100": 46.0
+  },
+  "tier2": {
+   "death_wall_per1k": 0.047027165207167446,
+   "death_self_per1k": 0.42266447877977587,
+   "death_ally_body_per1k": 0.45870139457487646,
+   "death_h2h_ally_per1k": 0.0,
+   "death_invalid_per1k": 0.0
+  },
+  "unreferenced_maps": [
+   "Autarky tr",
+   "Default tr",
+   "Devil tr",
+   "Portals tr",
+   "Prisoners Dilemma tr",
+   "Queen Of Spades tr",
+   "Trauma tr",
+   "Trophy tr",
+   "mc26_archipelago",
+   "mc26_crossroads",
+   "mc26_crossroads tr",
+   "mc26_delayed_commons",
+   "mc26_equatorial_belt",
+   "mc26_far_harbors",
+   "mc26_nursery_bays",
+   "mc26_pinwheel",
+   "mc26_portal_quartet",
+   "mc26_pulse_farms",
+   "mc26_relay_depots",
+   "mc26_scattered_fleets",
+   "mc26_seam_market",
+   "mc26_spring_wells",
+   "md26_causeway_detour_s0",
+   "md26_causeway_portal_s0",
+   "md26_commons_shared_s0",
+   "md26_commons_spread_s0",
+   "md26_orchard_narrow_s0",
+   "md26_orchard_wide_s0",
+   "md26_promenade_ring_s0"
+  ]
+ },
+ "parent_stats": {
+  "n": 1392,
+  "wld": [
+   1036,
+   356,
+   0
+  ],
+  "exp_share": 0.7442528735632183,
+  "checkpoints": {
+   "pearls@50": NaN,
+   "pearls@100": NaN,
+   "pearls@150": NaN,
+   "pearls@250": NaN
+  },
+  "checkpoints_raw": {
+   "pearls@50": 35.0,
+   "pearls@100": 114.0,
+   "pearls@150": 176.0,
+   "pearls@250": 235.0
+  },
+  "economy_mean": NaN,
+  "tier1": {
+   "units@100|map": NaN,
+   "total@100|map": NaN,
+   "births@100|map": NaN
+  },
+  "tier1_raw": {
+   "pearls@50": 35.0,
+   "pearls@100": 114.0,
+   "pearls@150": 176.0,
+   "pearls@250": 235.0,
+   "units@100": 27.0,
+   "total@100": 65.0,
+   "births@100": 46.0
+  },
+  "tier2": {
+   "death_wall_per1k": 0.047027165207167446,
+   "death_self_per1k": 0.42266447877977587,
+   "death_ally_body_per1k": 0.45870139457487646,
+   "death_h2h_ally_per1k": 0.0,
+   "death_invalid_per1k": 0.0
+  },
+  "unreferenced_maps": [
+   "Autarky tr",
+   "Default tr",
+   "Devil tr",
+   "Portals tr",
+   "Prisoners Dilemma tr",
+   "Queen Of Spades tr",
+   "Trauma tr",
+   "Trophy tr",
+   "mc26_archipelago",
+   "mc26_crossroads",
+   "mc26_crossroads tr",
+   "mc26_delayed_commons",
+   "mc26_equatorial_belt",
+   "mc26_far_harbors",
+   "mc26_nursery_bays",
+   "mc26_pinwheel",
+   "mc26_portal_quartet",
+   "mc26_pulse_farms",
+   "mc26_relay_depots",
+   "mc26_scattered_fleets",
+   "mc26_seam_market",
+   "mc26_spring_wells",
+   "md26_causeway_detour_s0",
+   "md26_causeway_portal_s0",
+   "md26_commons_shared_s0",
+   "md26_commons_spread_s0",
+   "md26_orchard_narrow_s0",
+   "md26_orchard_wide_s0",
+   "md26_promenade_ring_s0"
+  ]
+ }
+}

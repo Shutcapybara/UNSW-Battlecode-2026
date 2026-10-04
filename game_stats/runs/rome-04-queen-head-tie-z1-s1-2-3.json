@@ -1,6 +1,6 @@
 {
- "candidate": "rome-02-far-contact",
- "candidate_dir": "bots/rome-02-far-contact",
+ "candidate": "rome-04-queen-head-tie",
+ "candidate_dir": "bots/rome-04-queen-head-tie",
  "parent": "rome-01-nodevil",
  "note": "",
  "seeds": [
@@ -8,20 +8,20 @@
   2,
   3
  ],
- "fingerprint": "61fb66914df3d2b1c576928b69d2221c9d142b8821b50c5174d037a00711becd",
+ "fingerprint": "8304fb798b2ce49b6233a8082c870a08530b3b2c788d5cec2b5dfa0f0dc89ed8",
  "gate": {
-  "verdict": "hold",
-  "why": "economy mean +0.0000, dragons +0.000, length +0.000, win share +0.62pp, tier-2: none up >10%"
+  "verdict": "fail",
+  "why": "economy mean +0.0000, dragons +0.000, length +0.000, win share -1.35pp, tier-2: none up >10%"
  },
  "panel": "z1",
  "candidate_stats": {
   "n": 480,
   "wld": [
-   399,
-   80,
-   1
+   390,
+   90,
+   0
   ],
-  "exp_share": 0.8322916666666667,
+  "exp_share": 0.8125,
   "checkpoints": {
    "pearls@50": 1.0910973084886129,
    "pearls@100": 1.135667396061269,
@@ -32,7 +32,7 @@
    "pearls@50": 30.0,
    "pearls@100": 97.0,
    "pearls@150": 164.0,
-   "pearls@250": 267.5
+   "pearls@250": 264.0
   },
   "economy_mean": 1.1397789319590534,
   "tier1": {
@@ -44,16 +44,16 @@
    "pearls@50": 30.0,
    "pearls@100": 97.0,
    "pearls@150": 164.0,
-   "pearls@250": 267.5,
+   "pearls@250": 264.0,
    "units@100": 22.0,
    "total@100": 51.0,
    "births@100": 40.0
   },
   "tier2": {
-   "death_wall_per1k": 5.614633085698074,
-   "death_self_per1k": 3.820146606955009,
-   "death_ally_body_per1k": 1.5469740525734204,
-   "death_h2h_ally_per1k": 0.623863103237402,
+   "death_wall_per1k": 5.6628748074716295,
+   "death_self_per1k": 3.836125616331832,
+   "death_ally_body_per1k": 1.5606788494282247,
+   "death_h2h_ally_per1k": 0.6209558054634359,
    "death_invalid_per1k": 0.0
   },
   "unreferenced_maps": []

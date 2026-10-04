@@ -24,11 +24,29 @@ Bot snapshots live under `bots/rome-<nn>-<slug>/`; tools under `tools/rome/`.
 
 1. Complete: measured both 1.2.3 panels and recorded `rome-01-nodevil` as the post-rule zero.
 2. Complete: queen, sprint-cost, and tiebreak audits cover pool and gen replays.
-3. L10 claimed: `rome-02-far-contact` skips direct head-on paths when the contact cell is >6 Manhattan cells from any currently known bed. Preregistered expectation: reduce enemy head-on losses per 1k dragon-turns; economy neutral-to-positive; D-032 pool/gen guards and per-map deltas decide. CPU probe passed: max 10.82M points, 0 errors on schooltime, portals, trauma, big_empty.
+3. Complete: L10 `rome-02-far-contact` was re-scored from FRAME_VERSION 7 features. Verdict: hold; keep it unstacked. Full finding and corrected results are below.
+
+4. Complete: `rome-03-queen-state-convert` tested the preregistered own-unit-count proxy for L39/L49 on clean parent `rome-01-nodevil`. Reject; queen survival/length did not improve, pool win fell significantly, gen RL conversion fell, and gen wall rate rose 15.9%. This does not directly falsify the unobservable opponent-count trigger. Full finding: `docs/findings/2026-10-04-rome-L39-queen-state-convert.md`.
+5. Complete: Rome04, `rome-04-queen-head-tie`, changes strict-majority crown inheritance to majority-or-tie on length-4 equal splits. D-032 reject; no stack. Himeji source audit shows treatment starts only at r250 and crowns a new child, so preregistered r150 survival is pre-treatment and the arm does not test original-queen head retention. Active-crown exposure could not be measured from saved frames. Finding: `docs/findings/2026-10-04-rome-H-H1-late-crown-tie.md`.
 
 ## Cycle table
 
 | Version / arm | Mechanism | Pool | Gen | CPU | Verdict |
 |---|---|---|---|---|---|
 | rome-01-nodevil | Post-rule base baseline | 480 games; W-L-D 401-78-1; exp-score 83.65%; norm pearls 1.1398 | 1,392 games; W-L-D 1,041-351-0; exp-score 74.78% | 16/18 workers; host denied nice 10 | measured; new zero |
-| rome-02-far-contact | L10: skip head-on paths >6 Manhattan cells from known beds | pool 480/480; W-L-D 405-74-1, econ 1.1398, exp-score 84.48% | gen 1,253/1,392 at user wrap-up; unscored | 10.82M max / 0 errors | incomplete; no D-032 verdict |
+| rome-02-far-contact | L10: skip head-on paths >6 Manhattan cells from known beds | 480; FRAME7 W-L-D 399-80-1, win 83.23%, Δwin +0.63pp; literal econ Δ +0.0004 [cluster -0.0001,+0.0010] | 1,392; FRAME7 W-L-D 1,033-359-0, win 74.21%, Δwin -0.22pp; literal econ Δ +0.0087 [+0.0026,+0.0150] | 10.82M max / 0 errors | hold; economy estimand and units guard unresolved; see 2026-10-04 finding |
+| rome-03-queen-state-convert | L39/L49: late own-count<=5 proxy pins crown/feeder to original queen | 480; exp-share 80.21% (−2.40pp), econ Δ 0.000 [0,0]; queen alive among reached RL target maps 2/168 (1.2%, unchanged) | 1,392; exp-share 73.64% (−0.79pp), econ Δ 0.000 [0,0]; queen alive among reached RL maps 5/124 (4.0%, parent 5/119); conversion −8.45pp | 10.83M max / 0 errors | reject; gen wall +15.9%; see 2026-10-04 L39 finding |
+
+
+## Updated L10 re-read (4 Oct)
+
+- Re-extracted candidate and parent with FRAME_VERSION 7 authoritative replay winners. Corrected parent W-L-D: pool 396-83-1, gen 1,036-356-0. Candidate: pool 399-80-1, gen 1,033-359-0. Full per-panel scorecard: `game_stats/runs/rome-02-far-contact-z1+gen-s1-2-3.md`.
+- Cluster 90% literal mean economy Δ: pool +0.0004 [-0.0001,+0.0010], gen +0.0087 [+0.0026,+0.0150]; median-checkpoint form: pool 0.0000 [-0.0017,+0.0005], gen -0.0042 [-0.0124,+0.0079]. Hold pending analyst ruling on estimand and units/length guards; do not stack.
+- Enemy H2H death proxy Δ per 1k dragon-turns: pool -0.029 [-0.066,+0.004]; gen -0.415 [-0.556,-0.269]. It is a per-turn proxy, not per-contact risk. Per-map deltas and clustered intervals are in the `rome-02-far-contact-permap` CSVs. Full result: `docs/findings/2026-10-04-rome-L10-far-contact.md`.
+
+
+## Rome04 result — 2026-10-04
+
+- Official FRAME7 paired panels, seeds 1–3: pool win Δ −1.35pp [95% cluster −3.125,+0.417], gen 0.00pp [−0.503,+0.503]; literal mean and median-checkpoint economy exactly 0.0000 [0,0] in both panels. D-032 current and proposed gates reject: strict-positive pool economy fails at zero; pool win 90% LB −2.81pp fails the −2pp guard. Tier-2 worst +1.9% pool own-body.
+- All-map economy deltas are zero. Pool Portals win −11.46pp; Slithery −2.08pp. Gen `var+portals_tr` −4.17pp with +2.08pp on commons-spread and trauma. Per-map/cluster CSVs: `game_stats/runs/rome-04-permap.csv`, `.clusters.csv`. Opening metrics/percentiles unchanged.
+- Himeji unit17: role-crown cannot activate before r250; receiver is a new child, original queen stays parent. r150 survival among reached fixtures 95/423 pool and 244/994 gen in both arms. This is pre-treatment parity, not falsification of H-H1. Replay features do not expose actual active-crown equal-split receiver events.
