@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 22:37Z (unit 12). Next self-wake about 23:40Z. Branch `r/ushijima`; private tree
+State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 4 Oct 2026 23:43Z (unit 13). Next self-wake about 00:45Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,11 @@ State: ACTIVE. Updated 4 Oct 2026 22:37Z (unit 12). Next self-wake about 23:40Z.
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-065:** the uploaded k = 16 archive is confirmed to be the gated bot (Tanaka), so four conditions remain for the
+  02:15Z decision. Battery: HB-1's features refitted on ten teams reach 0.7184, the best arm so far, against 0.6977
+  for the live prior. The selector passed. Full rows are built and their refits approved. The deploy slot for the
+  cloned prior is ordered from Kageyama, and an arm must fit 4 MiB to be selectable. The Mac has 271 GB free after
+  the old tournament replays were deleted.
 - **D-064:** the council round on k = 16 closed (all three seats). It is promoted at LS-1's stop (02:15Z) if five
   conditions hold: at least 60 pairs, no fault, the 95th percentile of the paired mean not below 0, the mean at least
   −0.05, and proof that submission 16979 is the gated binary. Daichi activates on that record. Battery: the live
@@ -87,12 +92,12 @@ State: ACTIVE. Updated 4 Oct 2026 22:37Z (unit 12). Next self-wake about 23:40Z.
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): live prior 0.6977, trees 0.7145, CNN 0.6785; HB-1 arms unblocked; selector awaits pass line. P-6: behind the battery. P-7 (self-play): actor = network distilled from the trees unless the full rows change the ranking |
+| Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): live prior 0.6977, HB-1 features on ten teams 0.7184, encoder trees 0.7145, CNN 0.6785; selector passed; full-row refits next. P-6: behind the battery. P-7 (self-play): throughput measured, figures pending |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | daemon running Kageyama's full teacher-row build (learn queue). Owes: the same-binary check for 16979 before 02:15Z (D-064 §B.5); the in-loop throughput for P-7 |
-| Nominee (full gate) | `asahi-05-kz12-k16` (REG-002): gate hold; **promotion rule fixed (D-064 §B)**; decision at LS-1's stop (02:15Z), activation by Daichi if the five conditions hold |
+| Evaluator queue (Asahi) | fresh session since about 23:04Z. Census posted. Throughput jobs 176–178 done, 179 running. Released from the same-binary check (Tanaka did it). Next: learn-queue jobs (full-row refits), then panels for the deploy slot |
+| Nominee (full gate) | `asahi-05-kz12-k16` (REG-002): gate hold; same-binary condition met; conditions 1–4 of D-064 §B read at LS-1's stop (02:15Z); Daichi activates if they hold |
 | Uploaded, inactive | `asahi-05-kz12-k16` = submission 16979. The `submit_check` fix is on main, not deployed; no redeploy until the lead confirms the hub loop (H11) |
-| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 100 of 204 games at 22:36Z, about 20 an hour, stop 02:15Z; harm check for k = 16 |
+| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 120 of 204 games at 23:41Z, about 20 an hour, stop 02:15Z (near 180 games) |
 
 ## Facts settled this unit
 
@@ -111,8 +116,8 @@ State: ACTIVE. Updated 4 Oct 2026 22:37Z (unit 12). Next self-wake about 23:40Z.
 | Council, auditor | Tanaka (GPT, Codex, hourly heartbeat), `r/tanaka` | working: 17:55Z P-2 scorer PASS; 17:56Z LS-1 review; 17:59Z R2 support verified |
 | Council, mechanism | Sugawara (Claude), hourly at :25 | working: 17:29Z LS-1 objective amendment (upheld in part, D-056 §C) |
 | Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: 17:52Z replication of the LS-1 amendment |
-| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | HB-1 vectors for dev120 delivered; cohort counts per teacher posted; full teacher rows building natively (1–2 h) |
-| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | A3 0.7145, A10 0.6727, A10b 0.6785 and the CNN curve posted; selector rev 6 awaiting pass line; HB-1 arms next |
+| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | full rows built (3,415,158 rows; 2,753,685 usable moves; audit pass); now the deploy slot `bots/kageyama-01-p1-slot` and the size report |
+| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | A0 0.6977, A1 0.7184, A3 0.7145, A10b 0.6785; A4/A5 fitting (2–3 h); full-row refit tool ready; placeholder model handed to Kageyama |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; hourly self-wake | working; daemon restarted 19:16Z |
 | Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | ran 19:50Z: fix and reserve change built and merged, not deployed; LS-1 pace and answers posted |
 
@@ -131,23 +136,24 @@ State: ACTIVE. Updated 4 Oct 2026 22:37Z (unit 12). Next self-wake about 23:40Z.
 | H9 | Windows quota runner | closed: the lead does not know of one; replaced by Daichi's ledger check (D-050 §4) |
 | H10 | Wake the Asahi (Evaluator) session | closed: Asahi working since about 17:15Z |
 | H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | asked 19:30Z; the hub process changed at 19:46Z, not confirmed |
-| H12 | The Cowork VM session disk is full; quitting the app did not clear it (21:09Z). Clear it, or start a fresh Data session | open |
+| H12 | The Cowork VM session disk is full; quitting the app did not clear it. It cut off Kageyama and Asahi (both replaced by fresh sessions) and, at 23:42Z, the Chair's shell | open; the Chair works by file copy meanwhile |
 | H13 | Kageyama cut off | closed: fresh session working since 21:16Z |
 | H14 | Mac disk | closed: 74 GB deleted with the lead's approval; 102 GB free |
 
 ## Next three decisions
 
-1. **k = 16 at LS-1's stop (02:15Z):** Daichi's table against D-064 §B; activation if all five conditions hold; then
-   the monitor and the rollback rule.
-2. **R2 battery table** once the selector passes and the HB-1 arms are fitted; the full-row refits when Kageyama's
-   build ends.
-3. **P-7 training:** with the battery table and Asahi's throughput measurement.
+1. **k = 16 at LS-1's stop (02:15Z):** Daichi's table against conditions 1–4 of D-064 §B; activation if they hold;
+   then the monitor and the rollback rule. Push the lead once with the outcome.
+2. **R2 selection:** the complete development table (A2, A4–A8 still to come), the full-row refits, and the size
+   report from the deploy slot; then one confirmation on the frozen cohort.
+3. **P-7 training:** with the battery table and Asahi's throughput figures.
 
-Waiting on the lead: H11 (is the hub inside the restart loop; redeploys stay off) and H12 (session disk full).
+Waiting on the lead: H11 (is the hub inside the restart loop; redeploys stay off, which blocks every new upload)
+and H12 (session disk full; it now blocks the Chair's shell).
 
 ## Cursor
 
-Last BOARD line read: line 1013 (Sugawara 22:30Z, k16 round), main tree. Own D-064 lines follow.
+Last BOARD line read: line 1047 (Hinata 23:31Z, placeholder prior), main tree. Own D-065 lines follow.
 
 ## Open flags
 

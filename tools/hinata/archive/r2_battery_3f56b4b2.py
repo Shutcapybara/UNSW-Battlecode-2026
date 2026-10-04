@@ -23,10 +23,7 @@ Sizes: one fit at max(--sizes) rounds; smaller sizes are the same booster's firs
 boosting is sequential and the bagging RNG advances per iteration). Unweighted by default (D-057 §C); --weighted = teacher weight.
 Rev 6 (4 Oct 21:5xZ, Tanaka 21:25Z blockers 1-4 + nonnegative check): teacher-specific support from A0 (A6 exact top-3
 rows, A7 full support, A2 only training-unsupported cells missing), metadata equal to A0 on keys, fixed TS inventory.
-Rev 7 (4 Oct 22:4xZ, Tanaka 22:25Z): explicit candidate identities (POOLED_NAMES incl. full-data A10b per D-063 §C; A10b-f25/f50
-and A7/A7fix descriptive per D-064 §C; any other arm name refuses); A10b required in the pooled inventory; A2 team candidates
-eligible only with >= 10 frozen-cohort series (--cohort-series from Data); teacher-specific inventory = A2, A6.
-Selection (D-057 §C, fixed; A10 added by D-059 §B, A10b by D-063 §C): pooled arms A1/A3/A4/A5/A10 x sizes; highest F/R/L fold accuracy; among arms whose whole-series
+Selection (D-057 §C, fixed; A10 added by D-059 §B): pooled arms A1/A3/A4/A5/A10 x sizes; highest F/R/L fold accuracy; among arms whose whole-series
 interval overlaps the leader's, the smallest model; must beat A0 on the same rows (paired whole-series bootstrap of the
 accuracy difference, 5th pct > 0) and reach 0.75, else R2b. Sugawara 19:30Z: if the selected arm is in [0.750, 0.756], print
 the runner-up and a leave-one-fold-out selection (descriptive). D-058 §C: best teacher-specific arm (A2/A6/A7) goes forward if
@@ -41,10 +38,7 @@ import r2_bc as R  # noqa: E402
 
 KEY = ['game', 'side', 'dragon', 'round', 'turn']
 HBP = ['hb_pF', 'hb_pR', 'hb_pL']
-# rev 7 (Tanaka 22:25Z): explicit candidate identities, not name prefixes. Pooled deploy candidates = D-057 §C arms x sizes,
-# A10-e4 (D-059 §B) and the full-data early-stopped CNN A10b (D-063 §C). Learning-curve fits are descriptive only.
-POOLED_NAMES = tuple(f'{x}-{n}' for x in ('A1', 'A3', 'A4', 'A5') for n in (400, 800)) + ('A10-e4', 'A10b')
-DESCRIPTIVE = ('A10b-f25', 'A10b-f50', 'A7-400', 'A7-800', 'A7fix-400', 'A7fix-800')   # CNN curve; A7 both forms (D-064 §C)
+POOLED = ('A1', 'A3', 'A4', 'A5', 'A10')   # A10 pooled per D-059 §B
 PARAMS = dict(R.PARAMS)
 
 
@@ -208,8 +202,7 @@ def paired(y, P, P0, s, m=None, n=1000, seed=7):
     return dict(diff=round(float(D.sum() / N.sum()), 4), p05=round(float(np.percentile(o, 5)), 4), p95=round(float(np.percentile(o, 95)), 4), series=int(len(g)))
 
 
-TS_PLANNED = ['A2-400', 'A2-800', 'A6-400', 'A6-800']   # rev 7: D-064 §C — A7fix (6 cohort series) is descriptive, not a TS candidate
-MIN_COHORT_SERIES = 10   # D-064 §C: an A2 team candidate is eligible only with >= 10 series in the frozen cohort (Kageyama's counts)
+TS_PLANNED = ['A2-400', 'A2-800', 'A6-400', 'A6-800', 'A7fix-400', 'A7fix-800']   # rev 6: fixed teacher-specific inventory
 META = ['team', 'series_key', 'map', 'x_is_queen']
 
 
@@ -224,8 +217,7 @@ def a2_allowed(A0):
     return bad, cells
 
 
-PLANNED = list(POOLED_NAMES) + TS_PLANNED   # rev 7: A10b (full data) is a required pooled arm
-KNOWN = set(POOLED_NAMES) | set(DESCRIPTIVE) | set(TS_PLANNED)
+PLANNED = [f'{x}-{n}' for x in ('A1', 'A3', 'A4', 'A5') for n in (400, 800)] + ['A10-e4', 'A2-400', 'A2-800', 'A6-400', 'A6-800', 'A7fix-400', 'A7fix-800']
 
 
 def table(a):
@@ -263,9 +255,7 @@ def table(a):
         top = [str(x) for x in (json.loads((run / 'manifest.json').read_text()).get('teams_top3') or [])]
         inB = np.zeros(len(A0), bool); inB[idx] = True; tB = t0s[idx]
         for name, v in reg['arms'].items():
-            if name not in KNOWN:   # rev 7: unknown identities refuse instead of being classified by prefix
-                raise SystemExit(f'{run}/{name}: not a declared candidate identity {sorted(KNOWN)}')
-            P = np.load(run / f'p_{name}.npy'); check(P, name); arm = name.split('-')[0]; pooled = name in POOLED_NAMES
+            P = np.load(run / f'p_{name}.npy'); check(P, name); arm = name.split('-')[0]; pooled = arm in POOLED
             if pooled and len(B) != len(A0):
                 raise SystemExit(f'{run}/{name}: pooled arm covers {len(B)} of {len(A0)} A0 rows; pooled arms need the full support')
             if arm == 'A6':   # rev 6 (#1): exactly A0's rows of the three top-rated teams, as declared and as A0 ranks them
@@ -279,7 +269,7 @@ def table(a):
                 raise SystemExit(f'{run}/{name}: declared top team {top[:1]} != A0 top-rated {top1_0}')
             if arm == 'A2' and not (inB == ~a2bad).all():   # rev 6 (#3): only the training-unsupported cells may be missing
                 raise SystemExit(f'{run}/{name}: A2 rows != A0 minus the {int(a2bad.sum())} training-unsupported rows {a2cells}')
-            mb = reg['info']['model_bytes']; r = dict(arm=name, run=run.name, manifest=ms, pooled=pooled, role='pooled' if pooled else ('descriptive' if name in DESCRIPTIVE else 'teacher-specific'), rows=int(len(B)),
+            mb = reg['info']['model_bytes']; r = dict(arm=name, run=run.name, manifest=ms, pooled=pooled, rows=int(len(B)),
                      acc=v['frl_all']['acc'], n=v['frl_all']['n'], p05=v['frl_boot']['p05'], p95=v['frl_boot']['p95'],
                      queen=v['frl_queen']['acc'], nonqueen=v['frl_nonqueen']['acc'], bytes=mb.get(name, 0) if isinstance(mb, dict) else 0,
                      vs_A0=paired(y, P, p0, s), per_fold={k: x['acc'] for k, x in v['frl_per_fold'].items()},
@@ -293,7 +283,7 @@ def table(a):
                 ts.append(dict(cand=name, target=f'teams {top3_0}', target_rows=int(len(B)), run=run.name, manifest=ms, vs_A0=r['vs_A0']))
             elif arm == 'A7fix':
                 m = tB == top1_0
-                r['descriptive_vs_A0_top_team'] = dict(cand=name, target=f'team {top1_0} (top-rated)', target_rows=int(m.sum()), vs_A0=paired(y, P, p0, s, m))   # rev 7: descriptive only (D-064 §C)
+                ts.append(dict(cand=name, target=f'team {top1_0} (top-rated)', target_rows=int(m.sum()), run=run.name, manifest=ms, vs_A0=paired(y, P, p0, s, m)))
             rows.append(r)
     have = {r['arm'] for r in rows}; missing = [x for x in PLANNED if x not in have]
     pool = [r for r in rows if r['pooled']]; sel = None
@@ -302,7 +292,7 @@ def table(a):
         pick = min(cand, key=lambda r: (r['bytes'], -r['acc']))
         sel = dict(selected=pick['arm'], run=pick['run'], manifest=pick['manifest'], acc=pick['acc'], leader=lead['arm'],
                    overlapping=[r['arm'] for r in cand], beats_A0=pick['vs_A0']['p05'] > 0, reaches_075=pick['acc'] >= 0.75,
-                   pooled_missing=[x for x in missing if x in POOLED_NAMES])
+                   pooled_missing=[x for x in missing if x.split('-')[0] in POOLED])
         sel['passes'] = sel['beats_A0'] and sel['reaches_075'] and not sel['pooled_missing']
         if sel['pooled_missing']:
             sel['note'] = 'INCOMPLETE: planned pooled arms missing; no selection claim'
@@ -312,20 +302,10 @@ def table(a):
                 k: (lambda q: (q['arm'], q['per_fold'][k]))(max(pool, key=lambda r: np.mean([r['per_fold'][j] for j in ks if j != k]))) for k in ks}
     tsel = None
     ts_missing = [x for x in TS_PLANNED if x not in have and x not in waived]   # rev 6 (#4)
-    if ts:   # rev 7: A2 team candidates need >= MIN_COHORT_SERIES frozen-cohort series (counts from Data, read without labels)
-        cs = json.loads(Path(a.cohort_series).read_text()) if a.cohort_series else None
-        for c in ts:
-            if c['cand'].startswith('A2'):
-                t = c['target'].split(' ', 1)[1]; c['cohort_series'] = None if cs is None else cs.get(t, 0)
-                c['eligible'] = cs is not None and cs.get(t, 0) >= MIN_COHORT_SERIES
-            else:
-                c['eligible'] = True
-        if any(c['cand'].startswith('A2') for c in ts) and cs is None:
-            ts_missing = ts_missing + ['cohort-series counts (--cohort-series, Data)']
-        ts_el = [c for c in ts if c['eligible']] or ts
-        b = max(ts_el, key=lambda c: c['vs_A0']['diff'])
+    if ts:
+        b = max(ts, key=lambda c: c['vs_A0']['diff'])
         tsel = dict(best=b, candidates=len(ts), ts_missing=ts_missing, waived=waived,
-                    goes_forward=bool(b['eligible'] and b['vs_A0']['p05'] > 0 and not ts_missing))
+                    goes_forward=bool(b['vs_A0']['p05'] > 0 and not ts_missing))
         if ts_missing:
             tsel['note'] = 'INCOMPLETE: planned teacher-specific arms missing (Chair waiver needed); no advancement'
     out = dict(rows=rows, selection=sel, teacher_specific=dict(candidates=ts, selection=tsel), missing_planned=missing,
@@ -343,7 +323,6 @@ def main():
     ap.add_argument('--hb-prefix', default='hb_f_'); ap.add_argument('--run'); ap.add_argument('--sizes', default='400,800')
     ap.add_argument('--weighted', action='store_true'); ap.add_argument('--budget', type=float, default=1e9)
     ap.add_argument('--expect-folds'); ap.add_argument('--runs'); ap.add_argument('--a0'); ap.add_argument('--out', default='table.json')
-    ap.add_argument('--cohort-series', help='JSON {team: frozen-cohort series count} from Data (no labels); rev 7, D-064 §C')
     ap.add_argument('--waive-ts', help='comma list of teacher-specific planned arms the Chair has waived (recorded)')
     a = ap.parse_args(); {'fit': fit, 'a0': a0, 'table': table}[a.cmd](a)
 
