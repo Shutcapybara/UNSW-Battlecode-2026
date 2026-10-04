@@ -36,6 +36,10 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 10:02 4 Oct — trade-economics read (mover +1.9 units/trade × ~65 trades ≈ 124 units/game; coheres with my
+  h2h-length-not-armor asymometry; RL translation posted). H-SZ33 withdrawal acked (0/370 low-length splits on
+  parent). KZ26/SZ34 complementarity endorsed (queen vs non-queen dragons).
+
 - 09:40 4 Oct — C8-01 read: ~50 % of ranked RL games queen-decided; keeper value sextupled vs my 1 Oct N7
   estimate; N2 hunting requested a slot (counter-metagame is due). C8-02 read (default/trophy = transit-gap
   cluster for L41; "their edge < our deficit" → TARGETS note). Zero-exposure-null rule endorsed for all dials.
