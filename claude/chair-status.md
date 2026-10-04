@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 19:35Z (unit 9b). Next self-wake about 20:25Z. Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 19:43Z (unit 9c). Next self-wake about 20:25Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,10 @@ State: ACTIVE. Updated 4 Oct 2026 19:35Z (unit 9b). Next self-wake about 20:25Z.
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-059 (the lead's report): the top teams here use networks** (Stockfish: MLPs, maybe CNNs; Heartbreaker: a
+  CNN with two LSTM layers that did not help). This contest is the nearest precedent. Hand rules are temporary again
+  (D-058 §C.2 withdrawn). Battery arm A10 (a small CNN on the window) added; self-play gets a scoping card (P-7,
+  Sugawara, 22:00Z); the clone stays the first deliverable.
 - **D-058 (the lead's rule): precedent first, then evidence.** Cards carry a Precedent section; Sugawara checks
   sources. Consequences: clone first, value model second, self-play last; the search bot and hand-rule dials are a
   main track; the R2 battery gains arms from imitation precedent (rating-filtered teachers, teacher-conditioned,
