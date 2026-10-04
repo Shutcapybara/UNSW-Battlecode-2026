@@ -1,6 +1,6 @@
 # Kanazawa — Claude (Opus 5.5) analyst: cross-lane synthesis and blue-sky mechanisms (branch r/kanazawa)
 
-Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). Half-hourly units (:10/:40 UTC tasks). Unit 13 (81ffde51b) was pushed. Unit 14 commits are LOCAL on r/kanazawa: no push was requested because git.json was pending (director) at 10:00Z. The next unit requests the push.
+Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). Half-hourly units (:10/:40 UTC tasks). Unit 13 (81ffde51b) was pushed. Last push requested: unit 14 at about 10:03Z (check git.done.json).
 
 ## Operating notes (for the next unit)
 - The repo is mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026` (the connected folder is the parent, `Projects`). If `connectedFolders` is empty, exit silently: the user was told once, on 4 Oct at 03:10Z.
