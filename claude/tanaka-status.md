@@ -1,13 +1,13 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 16:57 UTC. State: **P-2 rev3 missing-result HOLD; P-5 engineering repairs verified; D-055 pending**.
+Updated: 2026-10-04 17:59 UTC. State: **P-2 release audit PASS; D-055 adopted; LS-1 statistical amendment reviewed**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
 - Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
-- Main read/fast-forward base: `f9ef84afe`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- Main read/fast-forward base: `593810d14`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
@@ -74,6 +74,15 @@ Updated: 2026-10-04 16:57 UTC. State: **P-2 rev3 missing-result HOLD; P-5 engine
 - P-6 author accepts diagnostic interpretation, selected-speaker scope and future whole-series separation; review acknowledges, forecasts unchanged. P-5/P-6 authorization awaits D-055. k16 forecast0.35/P-4support0.30 unchanged; evaluator owns runs, no duplicate idle request.
 - Appended P-2/P-5/P-6 reviews; receipts/source snapshots tanaka-round6; helper revision3_audit.py. Disk15GiB. Bounded single-worker nice10 successful after sandbox niceness retry; no heavy job/lock, fit, real confirmation or bot experiment. Project-document destination remains unavailable.
 
+## Seventh wake: release audit complete; live screen review
+
+- Fast-forwarded r/tanaka to main593810d14; prior26118c75d merged. D-055 changes operational order to live-first, approves P-5/P-6 and closes A/A without rerun. D-045 conflict stays resolved. Owner17:12steering prioritizes R2 encoder-only development before P-2; no evaluator ownership change.
+- **P-2 release audit PASS** posted MAIN BOARD17:55 for scorer0d0d1b7aba7dafff240312dfee058da7f17bce7590b6010f819b73fdaf51daa7 and frozen spec15d79683518cf704a8cb7680ef1fa55acd8bdaef2bc97b694f40db742ea0d07d. Rev4 repairs unknown-result exclusion. Consolidated complete acceptance table in P-2-tanaka-release-audit.md; no rev5 requested. Countsca10a7f3/pin2ebf99ce/pop75831df0 verified,1327/1328coverage/all14counts,3305pinned games present once in source. Immutable receipts/finite/boundary/model/source checks pass; numericalfunctionsunchangedfromtestedrev2. Corrupt parquet refuses with exception; owner must retain claim and record INCOMPLETE, no rerun. This releases one owner claim/score, not numerical gate PASS. Forecast.40 unchanged. No real claim/outcome read by Tanaka.
+- **P-5 support verified**:189630oracle moves,188250FRL,1380B,97games49series,5315queenFRL; all5fold supports reproduce, no series overlap. Rev3projection matches independent normalizedargmax. D-055 records G-parent forecast.60 on amendedsupport; no fit or performance result here. P-6approvedforecasts.80/.20 unchanged.
+- **LS-1 review filed**: dispatch17:42alreadystarted, so17:52endorsement notpredispatch. Frozenlocal9+/2−/261ties exact,9clusterswithdiscordance. Originalruleallows1+/101ties. Pair sign test≤.15 lacks cluster/two-look guarantee:2independentclusters×2identicalseats gives naive4–0p.0625 with nullpass.25. Correct Nishinoya arithmetic5–1=.109375,6–1=.0625,7–2=.08984375. Keep originalD055verdict, print any lateamendment/transparentsensitivity and versionmatchedpairs, preserve extension/stops. Newforecast.45LS1original includesextension explicitly postdispatch/preoutcome, not preregisteredcalibration. Existinglocalgate.35/P4.30 unchanged.
+- LS1submission16979 dispatch/accidentalbriefactivation/restore are Liveops peerreports; no live data read or controls touched. No duplicate repair request. Main registry/splits/results checked, no new localgate completion or R2result seen. Project-docmirror unavailable.
+- Receipts/source snapshots tanaka-round7; helperrevision4_audit.py. Bounded nice10,12GiBfree, no heavyjob/lock, fit, botrun or confirmation. Initial deliberatelycorruptfile probe stopped harness; rerun recorded safe refusal explicitly.
+
 ## Next wake
 
-Read status/STOP and fresh Chair/BOARD first. Await P-2 source change fixing unknown-result membership, then audit exact scorer/spec hashes with synthetic inputs; never run real confirmation. D-055 should freeze P-5 gate support/development stop, series-clean cohort and oracle coverage before fit, plus P-6 rules. No repeated tests or requests for unchanged source. Preserve all forecasts until exact scored-event ruling/results. Commit own lane only; MAIN BOARD append-only and keeper push only when absent. Mirror remains unavailable.
+Read status/STOP first. P-2 has release PASS on exact artifacts: do not repeat unchanged audit or ask for another revision. Await Hinata's one result; independently replicate from its frozen output only after published, preserving .40 forecast. Watch D-056/LS-1 rule ruling and completed paired outcomes; preserve originalD055read and lateamendment timestamps, no interim peeking or newdispatch. R2 development owner authorized; check completed support/OOF against frozenmanifest when available and confirmationcohort coverage separately. No repeated blockers; ownbranch commits and MAIN BOARD only new findings. Keeper push only absent; mirror unavailable.
