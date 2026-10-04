@@ -80,3 +80,39 @@ outcome screen proceeds (k4, k8, k16 on pool + gen; exposure captured on the poo
 curve: the veto also fires heavily on open class-B Islands (95 / 1k) and class-A Stripes/Tower Defense, where the
 preregistration expects no economy move; an open-map economy change will be read as the veto firing where it should
 not.
+
+### Step 2 — golden parity (4 Oct 12:20Z)
+
+`asahi-02-kz12-k0` vs carthage-05, pool seed 1: 272/272 winners and round counts identical — PARITY.
+
+### Step 3 — outcome curve, seed 1, pool 272 + gen 464 per dose (4 Oct 13:11Z; 13:47Z targets)
+
+All runs complete, 0 missing, `unswbc 1.2.3`. Intervals: cluster bootstrap map×opp×seat, 1,000 × seed 7, 5th–95th.
+Files: `docs/learning/results/asahi/P-A02-kz12-curve-s1.md`, `…-targets-s1.json`, `…-k16-s1.md`.
+
+| dose | queen vetoes / 1k (pool) | wall/1k, classes C+E | queen alive@end, trauma/portals/maze/weakhold | pearls@50 (raw) | class-B econ ×100 | pool Δwin pp | gen Δwin pp |
+|---|---|---|---|---|---|---|---|
+| 4 | 34.2 | −1.64 [−3.85, +0.01] | 0/64 vs 0/64 | −0.09 [−0.14, −0.04] | −0.33 [−0.78, +0.02] | +1.47 [+0.37, +2.57] | +0.22 [0.00, +0.65] |
+| 8 | 39.5 | −1.61 [−3.86, +0.05] | 0/64 vs 0/64 | −0.10 [−0.16, −0.05] | −0.11 [−0.56, +0.32] | +0.74 [−0.74, +2.21] | +0.22 [0.00, +0.65] |
+| 16 | 39.3 | **−4.86 [−8.16, −2.08]** | 1/64 vs 0/64 | −0.75 [−1.14, −0.40] | −0.09 [−0.55, +0.32] | **+2.57 [+0.74, +4.43]** | −0.22 [−1.08, +0.65] |
+
+Pool all-map wall deaths/1k: −0.39, −0.34, −1.08 [−1.89, −0.43]. Pool Δecon: +0.16, +0.36, +0.04 (all intervals span 0).
+Gen queen joint +0.43 pp at k8 and k16 (2 games). Exposure on the target maps (vetoes / 1k queen decisions, k4/k8/k16):
+weakhold 147/151/98, trauma 22/29/31, dilemma 10/39/39, portals 11/11/11.
+
+Reading against the preregistered signs:
+- Wall deaths on C/E: sign **−** as expected; not monotone — k4 ≈ k8, the drop concentrates at k16.
+- Queen alive on the target maps: **no response** (1/64 at k16). The veto fires but does not convert into queen
+  survival; the queen still dies by other causes on these maps.
+- pearls@50 guard: cost is small but significant at every dose and largest at k16 (−0.75 pearls/side-game).
+- Open class-B economy: no move at any dose (intervals span 0) — the Islands firing does not show up as an economy cost.
+- Win: pool + at k4 and k16 (lower bounds > 0), not at k8; gen flat.
+
+Screen status only (seed 1, D-044): no gate verdict. If the Chair wants a dose taken to seeds 1–3, the candidate by
+the frozen endpoints is k16 (largest wall-death response, pool win lb > 0), with the queen endpoint failed at every
+dose — the mechanism (entry avoidance) works, the hypothesised payoff (queen keeping) does not follow on this parent.
+
+RL translation (result): observation — Cb (body-conditioned reach) is informative for wall-death risk (dose response at
+k16) but not sufficient for queen survival; value — queen survival on corridor maps depends on terms beyond entry
+capacity (likely enemy reach, H-KZ26); demonstration — unchanged.
+
