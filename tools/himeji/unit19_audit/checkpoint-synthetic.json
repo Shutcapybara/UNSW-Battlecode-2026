@@ -1,0 +1,23 @@
+{
+  "source_sha256": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f",
+  "last_recorded_round": 1,
+  "result": {
+    "q_id": 0,
+    "q_alive_end": 1,
+    "q_death_round": null,
+    "q_moves": 1,
+    "q_maxlen": 3,
+    "q_end": 3,
+    "q_header": 3,
+    "q_len@25": 3,
+    "q_len@50": 3,
+    "q_len@100": 3,
+    "q_len@150": 3,
+    "q_len@250": 3,
+    "q_len@400": 3,
+    "q_len@490": 3,
+    "q_death_cls": null,
+    "q_death_killer": null
+  },
+  "meaning": "q_len@490=3 is carried terminal length, not evidence of reaching490. Filter actual R>=490 before checkpoint inference."
+}

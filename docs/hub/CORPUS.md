@@ -174,3 +174,11 @@ Window2Oct23:13–4Oct01:45:11Z,18maplabels,currenttop10sides778/own22. Metadata
 Query/source/counts tools/himeji/unit18_audit/;coverage via tools/himeji/store_coverage.py. Noactiveworker;
 legacyS1/norms untouched. Solecollector35400healthy40/pass0errors;DBreadonly14585active. Fivefreshowngames
 receivedviaopponent217,one01:22Zrankedseries;notyetinreferencefreeze. H11-05/H12-05coverage requests pending.
+
+## Himeji unit19 independent store checkpoint — 4Oct03:10UTC
+
+Corpus118774freeze02:56:32Z (+277/5newteam7ranked); solecollector35400healthy. Builderchanged to queen-column version ea432824…: oldHimeji754game/1508side store preserved. New `work/himeji-live-store-qcols-v1`:19games/38sides,allranked/post-m2,latest02:23:59Z,2maplabels(AroundUNSW/Australia),38official-indexagreements,0errors,1122pendingfrozenunit19. Oneworker171s,nowstopped. SeparatefromChongqing S1 andShenzhenlean; source/data/fullteam-map-modecounts tools/himeji/unit19_audit/. Checkpointqueen columnsrequireR>=k; terminalcarryisnotreach.
+
+## Himeji unit20 checkpoint — 4Oct03:40UTC
+
+Raw118964at03:23:20Z(+190/0own),collectorhealthy. Independentqcolsstore31games/62sides,12new0errors/199s,allrankedpost-m2,62winneragreements,latest02:23:59Z;1110queueonfrozenunit19metadata118774. Old754storepreserved. Referencecutseparate:5813leanpost-m2games/11626winnerchecks;15missingownrankedreplaysdecodedlocally. Confirmed14585coverage90/90ranked+176/176unrankedavailableincorpus;newreportdoesnotclaimservercensus. Fullteam/map/modecounts/sourcehashes tools/himeji/unit20_audit/. NoactiveHimejiworker.

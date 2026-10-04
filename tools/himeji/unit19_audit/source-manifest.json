@@ -1,0 +1,17 @@
+{
+  "main": "69f4561d42a1cfaaac7667a877b24c911c80bd42",
+  "himeji_before": "42eb18058a347148a84593f5f07c3ae06bafc163",
+  "rome": "3fff00df00c1216c4b9925e9117c41fb5f3cf169",
+  "merge_authorization": "Director user message D-043 during unit19 explicitly authorizes origin/main merge; fast-forward completed; main source untouched",
+  "board_cursor": "director 2026-10-04 03:10 and Shenzhen unit6 03:05; local appended H19-01..06",
+  "brief_missing": "claude/brief-2026-10-04-live-maps.md absent in merged69f4561d4; D-043 decision and board03:10 read plus full user brief",
+  "hashes": {
+    "tools/s1/build.py": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f",
+    "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+    "tools/shenzhen/qpay.py": "e893d313f1dc3e2d76d3ceb982618d249dc0653fd2d24ea65442140b2d7916c2",
+    "tools/shenzhen/q_qpay.py": "af9cca1aefce505428fbed6905cf8ccf6d7ed1ad61bfd15e899b1f5705fda0f3",
+    "tools/shenzhen/hazard.py": "e56b48324d0b4e95ebe86deee4ac141761a4603f81345819e1b160e8a5bc26a1",
+    "tools/analysis/features/run_panel.py": "aec4390a65f690d48b9af4a2eb9cd6450af3a4ef8de2ccceed5b107bcc555e68",
+    "docs/hub/PHASE2-PROTOCOL.md": "ff96ba9b73e2edc7d8a6973803c1c96e52499399975d9b3b31a4ee1ce9865ecd"
+  }
+}

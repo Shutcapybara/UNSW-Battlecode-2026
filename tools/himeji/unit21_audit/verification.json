@@ -1,0 +1,13 @@
+{
+  "frozen_common_ids": 737,
+  "round_limit": 398,
+  "disagreements": 0,
+  "fresh_games": 5,
+  "fresh_wins": 2,
+  "fresh_queen_losses": 0,
+  "reached490": 2,
+  "weakhold_hashes": 2,
+  "represented_games": 892,
+  "death_event_planning": 247,
+  "all_checks_passed": true
+}

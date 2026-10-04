@@ -1,0 +1,65 @@
+{
+  "rows": [
+    {
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "game": 1011188,
+      "population_games": 453,
+      "ranked_games": 372,
+      "source_sha256": "97767cd670ffdfdf259f9837ee0aee62bd44520bd9bdb6315e787a068e8b89c7",
+      "lines": 1811,
+      "map_header": "MAP 40 15",
+      "templates": [
+        {
+          "name": "weakhold",
+          "sha256": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1",
+          "byte_equal": false,
+          "normalized_equal": true,
+          "normalized_seat_swapped_equal": false,
+          "lines": 1811,
+          "map_header": "MAP 40 15"
+        },
+        {
+          "name": "stronghold",
+          "sha256": "c83cb7579e89fff0064b075f38250fa06487a10b6ddf320f6c57d63a84e9f32c",
+          "byte_equal": false,
+          "normalized_equal": false,
+          "normalized_seat_swapped_equal": false,
+          "lines": 3467,
+          "map_header": "MAP 48 24"
+        }
+      ]
+    },
+    {
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "game": 1011085,
+      "population_games": 439,
+      "ranked_games": 351,
+      "source_sha256": "d9e1c70e44375b6047f6ed71247dca5a7d754b7b52242d00752511dc83d86509",
+      "lines": 1811,
+      "map_header": "MAP 40 15",
+      "templates": [
+        {
+          "name": "weakhold",
+          "sha256": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1",
+          "byte_equal": false,
+          "normalized_equal": false,
+          "normalized_seat_swapped_equal": true,
+          "lines": 1811,
+          "map_header": "MAP 40 15"
+        },
+        {
+          "name": "stronghold",
+          "sha256": "c83cb7579e89fff0064b075f38250fa06487a10b6ddf320f6c57d63a84e9f32c",
+          "byte_equal": false,
+          "normalized_equal": false,
+          "normalized_seat_swapped_equal": false,
+          "lines": 3467,
+          "map_header": "MAP 48 24"
+        }
+      ]
+    }
+  ],
+  "run_panel_sha256": "aec4390a65f690d48b9af4a2eb9cd6450af3a4ef8de2ccceed5b107bcc555e68",
+  "selected_pool_path": "maps/live/weakhold.map",
+  "mask": "TILE final2 fields; optionalEND; compare both team assignments. Fertility values remain unverified."
+}

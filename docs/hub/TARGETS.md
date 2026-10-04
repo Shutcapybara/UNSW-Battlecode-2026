@@ -522,7 +522,7 @@ interval.
 
 ### Himeji unit18 — provisional ranked opening references,4October02:38UTC
 
-Era post123>=1Oct06:00Z,window2Oct23:13–4Oct01:45;708decodedgames frozen,504rankedgames/1008sides,
+Era **post-m2** (D-043; >=2Oct03:49Z) within post123,window2Oct23:13–4Oct01:45;708decodedgames frozen,504rankedgames/1008sides,
 489top10/20own. Cohort021804Z264/306/213/91/952/842/87/55/507/566. References below are top10median
 within-exact-maphash empiricalfieldpercentile [95%whole-seriesbootstrap], **selected sample, provisional**.
 Coarse geometry fromactualheaders:portal-edge>=.025;else degree<=2share>=.25corridor;elseopen;cross4cellqueenspawns.
@@ -552,3 +552,31 @@ beforeconsideringstability. Bed-eatsreferences separately inunit18_audit/ranked-
 are not realizedsafe crossings,fieldtiescanproducep50withoutactivity;4opensidesendedbefore50andarecarried.
 L41.5unchanged;capture-minus-transitcontrast10.0[-1.6,17.5]ppnotcausalproof. Fullfalsifier/sample/tester inreport.
 Rome04gateREJECTisnotH-H1falsification;Rome05H-H5inprogress. Otheranalysts' proposals/references preserved.
+
+
+### Himeji unit19 — D-043 and sprint hypothesis disagreement, 4October03:10UTC
+
+All older-map references/exemptions remain historical. Unit18 hash-specific ranked references are wholly post-m2; unchanged provisional values, missing matched-live-us gaps still NA. No new field percentile target this unit.
+
+Retain Shenzhen's H-SZ21/23 alongside this disagreement: 416 selected post-m2 RL games contain159ranked/257unranked. Current-ladder rankedtop10=104sides/84series; paid0.192 [95%seriesCI0.082,0.333] segments/game,12/104everpay. Survivor-only50/41 paid0.060[0,0.133] is selected on the outcome. These pooled-map diagnostics cannot justify a universalzero-tax policy. H-H3 food-free pre-meal cap escape can require1paidsegment; universalexactly3 also has an exception. Free-stepthresholds are5/9/13,not8. Shenzhen H-SZ23.45 test should use lagged at-risk length/phase/threat and exactgeometry controls,247death-event planning; Rome/free live-map tester can settlezero-tax vs emergency exception with60eligiblepairs+guards afterD-043zero. Full mechanism/falsifier/power/queries: docs/findings/2026-10-04-himeji-sprint-threshold-and-map-era-reading.md, unit19_audit. No other analyst target removed.
+
+New S1 q_len@k carries terminal states: useactualR>=k pluscensoring; syntheticend1 givesq_len490=3. Do notlabelcarried valuesobservedr490. No frozenreferenceoverwrite. Rome05oldmaps/Rome03-hb1parent is incomplete/noverdict; historical04doesnottransfer swappedgeometry.
+
+
+### Himeji unit20 — post-m2 queen-reference precision,4October03:40UTC
+
+Confirmed14585ranked90games/20series:queenloss18/45losses=40.0%[95%series21.4,60.8],not18/90games20.0%[9.8,32.3]or18/18queenverdicts. Unranked176/25:34/137losses24.8%[16.1,34.8];olderwindow,notcomparablemodeeffect. Actual490own0/60ranked,30earlycensored;top10currentcohort251/629=39.9%[35.5,44.3]. Observedunadjusted39.9ppgap;matchedgapNA. Per18map/variantcounts+CIsandhashes in docs/findings/2026-10-04-himeji-post-m2-queen-loss-share.md and tools/himeji/unit20_audit/. No stablefield-percentiletargetreleased; coverage/conditioninglimits,zero-boundaryCIomitted. Cohortmeanisnotteammedian/fieldpercentile;Chongqinghistoric0.444retainedasitscohortestimate.
+
+H-H3/H-H4.5mechanismsstayseparate:6rankedSchooltimequeenlossesalloppq3;9/12elsewhereoppq>3. q3onlytiesq3;survivalalonecannotguaranteewin. Falsifiers/exposures,60pairedpilot,149/306/46310pppairedwinplanningbeforeclusteringinreport. H19zero-taxexceptiondisagreementretained;testerRomeafterliveM2/carthage05zero. Trophyhas1reachedtop10side,so"pureelimination"isnotanexemption. Historicaltargetsunchanged.
+
+### Himeji unit21 — map routing and feeding estimand, 4 October04:06UTC
+
+No new stable percentile target. H20's post-m2 map/hash references and confidence intervals stay frozen; matched live-us gaps remain NA. Nara's weakhold concern compares the wrong path: both observed hashes (892 games/723 ranked, two representatives checked) match selected maps/live/weakhold.map after masking hidden fertility and swapping seats; no byte/fertility claim. Shenzhen's two missing Schooltime/PD variants remain uncovered by the17-template pool.
+
+Retain H-SZ23 .45 (L49/L50) with a new disagreement about the proposed falsifier: selecting a queen that survives to a crossing meal forces pre-meal terminal-death count0. Replace literal within-queen pre/post death hazard with contemporaneous alive landmark groups and future death follow-up. Keep per-hash/team/seat/opponent/phase/threat controls, actual free-step mediator, competing causes and series uncertainty.247-event HR.7 planning is before clustering; hypothetical5%/10% event yield implies4940/2470 eligible games, not measured requirements;50-series pilot estimates yield. Lower95%HR bound>.7 rejects the claimed magnitude; a small imprecise null does not. Shenzhen/Kanazawa can query; Rome/assigned tester can later settle a single switch on carthage05/liveM2 after its zero. No other target removed; H19 universal-never-pay disagreement remains. Full method, cohort, falsifier and reproducible queries: docs/findings/2026-10-04-himeji-map-routing-and-feeding-risk-set.md; tools/himeji/unit21_audit/.
+
+### Himeji unit22 — queen-death attribution and H-H6, 4 October04:35UTC
+
+No new statistical target; prior references/intervals/cohorts stay frozen, matched live-us gaps NA. Retain Chongqing H-C5 alongside disagreement: in4selected14585weakhold cases (2ranked,2unranked,bothpost-m2hashes), queen was already sealed before the final split and atdeath29/44; explicit latefeeder sacrifice cannot activate until427. North-wall deaths alone do not identify a removable cull. C3's nine-map-only queen gate conflicts withD-043/fullpoolwinguard; no map exemptions from low sample RL frequency.
+
+Propose H-H6(L24/L49),weight0.5: avoid an observable terminal corridor before the originalqueen enters it. Earlier alternateemptyfirststeps exist in4traces but are not proven safe/visible or causalwins. Falsifier: qualified intervention fails to reduce sealed-state/queen deaths, or overallwinCIrulesout nonnegativechange; unexposedrunsinconclusive.60independenteligiblepairedmechanismpilot,then149/306/46310ppwinplanning atdiscordance.2/.4/.6 beforeclustering; Rome/assignedtester oncarthage05/liveM2 afterzero. One switch; no blanket split veto or armstarted. H-SZ23H21risk-set correction/emergencytaxdisagreement retained. Queries, source hashes, exact states, reach/uncertainty limits and tester readings: docs/findings/2026-10-04-himeji-queen-wall-death-attribution.md; tools/himeji/unit22_audit/.
