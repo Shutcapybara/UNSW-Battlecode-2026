@@ -335,3 +335,14 @@ length3safe2steps spend1segment. H-H3 proposedL24/L49 .5: test observable preven
 Query/era/selection/counts/limits/falsifier/tester: `docs/findings/2026-10-04-himeji-pocket-cap-legality-and-fertility-correction.md`, tools/himeji/unit16_audit/.
 Currenttop10adds507/drops82. Store533games/1066sides includes538currenttop10/12own but ends3Oct23:11Z,
 coverage-selected330ranked203unranked. No new stable references or matchedlive-us gaps; H-H4/H-H5 separate.
+
+
+### Himeji unit17 — intervention timing and pocket precursor,4October02:08UTC
+
+Rome04 latecrown tie handoff cannotactbefore250; r150queenparity95/423pool244/994gen cannotfalsifyH-H1.
+480/1392localpairs,score−1.354pp[95%−3.125,+.417]/0[−.503,+.503];source/exposuremismatch keepsH-H1.5.
+No fieldtarget. H-H3 .5 refined:food-free2step prevention beforegrowth; mealonfirststep→full4→secondstepselfdeath
+in1.2.3fixture.4selectedlivefailures/3games(2ranked1unranked),2enginecases establishmechanics only;
+>=60independenteligiblepairs+negativecontrols/winguards. Exactquery/counts/era/falsifier/tester `docs/findings/2026-10-04-himeji-rome04-timing-and-pocket-precursors.md`.
+NaraL47disagreement:parent+immediatechild excludesdescendants,truncated10rhorizon/mixedmodes preventcausalregret
+reading. Retainpeerproposal;requestcorrecteddenominators beforetest. No newstablepercentiles/matchedlive-us gaps.

@@ -1,0 +1,336 @@
+{
+  "sources": {
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/z1-rome-01-nodevil-28132ee5/features/features.parquet": "86b237c425c897328c94eac6950c4374c50e110f009b816371b272056f0d4647",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/z1-rome-04-queen-head-tie-8304fb79/features/features.parquet": "a6b489a84799f65eaa2fa4a9eeb1c13d17578851fd630b2056124d538d59b104",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/gen-rome-01-nodevil-28132ee5/features/features.parquet": "0913180fb866bbcc93d87c6653b5c4f840ea8dde18797a0f023e772d871ff231",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/gen-rome-04-queen-head-tie-8304fb79/features/features.parquet": "2eff2605bdeacae17a669d79d2f3f7d7f919d03081b5c9a08ac7303de0a35960",
+    "/Users/alik/Documents/Projects/wt-rome/bots/rome-01-nodevil/policy.hpp": "a53ac813bdb0ff5f4da596d48236778ecad60583e953c863a26799a4c886995c",
+    "/Users/alik/Documents/Projects/wt-rome/bots/rome-04-queen-head-tie/policy.hpp": "f544a20c7c7e7fa7ecedf844ccacacb980b5c38a19ad444078729c4311f83fb3",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/z1-rome-01-nodevil-28132ee5/index.jsonl": "7e2f52b379ab23d6d4c81acd50291c60c843a8929d1b848f2a490278815a0896",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/z1-rome-01-nodevil-28132ee5/features/dragons.parquet": "bc0f1e0d88b294ce08ef24b5b0bad2a711a61f10320d9ff117cad4a31fe24bcb",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/z1-rome-04-queen-head-tie-8304fb79/index.jsonl": "2d34e9ce74da3ce51f10b65b8c28ec8d1120982c96a3a5abbe162bb39b223c13",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/z1-rome-04-queen-head-tie-8304fb79/features/dragons.parquet": "dffc7b5ac5aed2f99cb7466f84557774c551d1217666bf8bae6ed0328695cbff",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/gen-rome-01-nodevil-28132ee5/index.jsonl": "eb26af65ff27e47b9096a8140a697e606b5cbb329a88938702256129e6f8925b",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/gen-rome-01-nodevil-28132ee5/features/dragons.parquet": "8ef4bcd872dbc323a5dec96d6233e5ae3eb085fddf873c60b13121918c4d38de",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/gen-rome-04-queen-head-tie-8304fb79/index.jsonl": "6f2776ffd79668a383149309f137e64dbe2f25d5a91b7b3774369350210c5178",
+    "/Users/alik/Documents/Projects/wt-rome/build/zoo/gen-rome-04-queen-head-tie-8304fb79/features/dragons.parquet": "4614000bb188f922219b310e2e21b8a88059a14a6369e494310a6f271914745e"
+  },
+  "panels": {
+    "pool": {
+      "pairs": 480,
+      "official_headers_verified": 16,
+      "parent_wld": {
+        "win": 396,
+        "loss": 83,
+        "draw": 1
+      },
+      "candidate_wld": {
+        "win": 390,
+        "loss": 90
+      },
+      "score_delta": -0.013541666666666667,
+      "score95_map_opponent_seat": [
+        -0.03125,
+        0.004166666666666667
+      ],
+      "clusters": 160,
+      "changed_scores": 19,
+      "queen_alive150_p": 95,
+      "queen_alive150_c": 95,
+      "queen150_discordant_pairs": 0,
+      "reached150_p": 423,
+      "reached150_c": 423,
+      "early_fixture_metric_mismatches": {
+        "pearls@50": 0,
+        "units@50": 0,
+        "total@50": 0,
+        "births@50": 0,
+        "pearls@100": 0,
+        "units@100": 0,
+        "total@100": 0,
+        "births@100": 0,
+        "pearls@150": 0,
+        "units@150": 0,
+        "total@150": 0,
+        "births@150": 0
+      },
+      "per_map": [
+        {
+          "map": "autarky",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "default",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "devil",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "dilemma",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "portals",
+          "pairs": 48,
+          "score_delta": -0.11458333333333333,
+          "changed_scores": 14
+        },
+        {
+          "map": "queen_of_spades",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "schooltime",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "slithery_fight",
+          "pairs": 48,
+          "score_delta": -0.020833333333333332,
+          "changed_scores": 1
+        },
+        {
+          "map": "trauma",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 4
+        },
+        {
+          "map": "trophy",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        }
+      ]
+    },
+    "gen": {
+      "pairs": 1392,
+      "official_headers_verified": 16,
+      "parent_wld": {
+        "win": 1036,
+        "loss": 356
+      },
+      "candidate_wld": {
+        "win": 1036,
+        "loss": 356
+      },
+      "score_delta": 0.0,
+      "score95_map_opponent_seat": [
+        -0.005028735632183908,
+        0.005028735632183908
+      ],
+      "clusters": 464,
+      "changed_scores": 10,
+      "queen_alive150_p": 244,
+      "queen_alive150_c": 244,
+      "queen150_discordant_pairs": 0,
+      "reached150_p": 994,
+      "reached150_c": 994,
+      "early_fixture_metric_mismatches": {
+        "pearls@50": 0,
+        "units@50": 0,
+        "total@50": 0,
+        "births@50": 0,
+        "pearls@100": 0,
+        "units@100": 0,
+        "total@100": 0,
+        "births@100": 0,
+        "pearls@150": 0,
+        "units@150": 0,
+        "total@150": 0,
+        "births@150": 0
+      },
+      "per_map": [
+        {
+          "map": "new_mc26_archipelago",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_crossroads",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_delayed_commons",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_equatorial_belt",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_far_harbors",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_nursery_bays",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_pinwheel",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_portal_quartet",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_pulse_farms",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_relay_depots",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_scattered_fleets",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_seam_market",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_mc26_spring_wells",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_md26_causeway_detour_s0",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_md26_causeway_portal_s0",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_md26_commons_shared_s0",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_md26_commons_spread_s0",
+          "pairs": 48,
+          "score_delta": 0.020833333333333332,
+          "changed_scores": 1
+        },
+        {
+          "map": "new_md26_orchard_narrow_s0",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_md26_orchard_wide_s0",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "new_md26_promenade_ring_s0",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "var_autarky_tr",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "var_crossroads_tr",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "var_default_tr",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "var_devil_tr",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "var_dilemma_tr",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "var_portals_tr",
+          "pairs": 48,
+          "score_delta": -0.041666666666666664,
+          "changed_scores": 8
+        },
+        {
+          "map": "var_queen_of_spades_tr",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        },
+        {
+          "map": "var_trauma_tr",
+          "pairs": 48,
+          "score_delta": 0.020833333333333332,
+          "changed_scores": 1
+        },
+        {
+          "map": "var_trophy_tr",
+          "pairs": 48,
+          "score_delta": 0.0,
+          "changed_scores": 0
+        }
+      ]
+    }
+  },
+  "limitation": "Local1.2.3 panels only. Official header preflight is first8 cached rows per arm/panel (32 total), not complete census; all outcomes otherwise from FRAME7 features. First-stage survival uses feature reach>=150 and queen death>=150 or none; no future terminal survival imputation. r150 is pre-treatment because role_crown cannot become true before250. Block bootstrap descriptive fixed-panel uncertainty."
+}

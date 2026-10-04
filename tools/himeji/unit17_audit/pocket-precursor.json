@@ -1,0 +1,622 @@
+{
+  "rows": [
+    {
+      "game": 996984,
+      "queen": 0,
+      "team": 280,
+      "side": "A",
+      "ranked": true,
+      "series": "2db63d28-a712-4cbb-8971-bc323e5ee012",
+      "started_at": "2026-10-03T23:25:52.231Z",
+      "round": 322,
+      "fatal_round": 325,
+      "body": [
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "units": 64,
+      "first_unoccupied_steps": [
+        {
+          "direction": "W",
+          "cell": [
+            2,
+            2
+          ],
+          "has_pearl": false,
+          "spawn_round": null
+        }
+      ],
+      "food_free_two_step_routes": [
+        "WN"
+      ],
+      "replay_sha256": "9a7607f44cbe84bb51d48a06ca8cf78d8114c7e9ff521a9cf4c90220eb4bfcde"
+    },
+    {
+      "game": 996984,
+      "queen": 0,
+      "team": 280,
+      "side": "A",
+      "ranked": true,
+      "series": "2db63d28-a712-4cbb-8971-bc323e5ee012",
+      "started_at": "2026-10-03T23:25:52.231Z",
+      "round": 323,
+      "fatal_round": 325,
+      "body": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "units": 63,
+      "first_unoccupied_steps": [
+        {
+          "direction": "N",
+          "cell": [
+            2,
+            1
+          ],
+          "has_pearl": false,
+          "spawn_round": null
+        }
+      ],
+      "food_free_two_step_routes": [
+        "NE"
+      ],
+      "replay_sha256": "9a7607f44cbe84bb51d48a06ca8cf78d8114c7e9ff521a9cf4c90220eb4bfcde"
+    },
+    {
+      "game": 996984,
+      "queen": 0,
+      "team": 280,
+      "side": "A",
+      "ranked": true,
+      "series": "2db63d28-a712-4cbb-8971-bc323e5ee012",
+      "started_at": "2026-10-03T23:25:52.231Z",
+      "round": 324,
+      "fatal_round": 325,
+      "body": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "units": 64,
+      "first_unoccupied_steps": [
+        {
+          "direction": "E",
+          "cell": [
+            3,
+            1
+          ],
+          "has_pearl": true,
+          "spawn_round": 324
+        }
+      ],
+      "food_free_two_step_routes": [],
+      "replay_sha256": "9a7607f44cbe84bb51d48a06ca8cf78d8114c7e9ff521a9cf4c90220eb4bfcde"
+    },
+    {
+      "game": 996984,
+      "queen": 0,
+      "team": 280,
+      "side": "A",
+      "ranked": true,
+      "series": "2db63d28-a712-4cbb-8971-bc323e5ee012",
+      "started_at": "2026-10-03T23:25:52.231Z",
+      "round": 325,
+      "fatal_round": 325,
+      "body": [
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "units": 64,
+      "first_unoccupied_steps": [],
+      "food_free_two_step_routes": [],
+      "replay_sha256": "9a7607f44cbe84bb51d48a06ca8cf78d8114c7e9ff521a9cf4c90220eb4bfcde"
+    },
+    {
+      "game": 997644,
+      "queen": 0,
+      "team": 187,
+      "side": "A",
+      "ranked": false,
+      "series": "ffb6e161-ee9f-4981-ae23-7d547f7863c6",
+      "started_at": "2026-10-03T23:40:17.702Z",
+      "round": 265,
+      "fatal_round": 268,
+      "body": [
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "units": 63,
+      "first_unoccupied_steps": [
+        {
+          "direction": "W",
+          "cell": [
+            2,
+            2
+          ],
+          "has_pearl": false,
+          "spawn_round": null
+        }
+      ],
+      "food_free_two_step_routes": [
+        "WN"
+      ],
+      "replay_sha256": "48ecb0186da884b2d2cb78ad0393e5952656147f3f2652b3f849b0aa0edbce9e"
+    },
+    {
+      "game": 997644,
+      "queen": 1,
+      "team": 280,
+      "side": "B",
+      "ranked": false,
+      "series": "ffb6e161-ee9f-4981-ae23-7d547f7863c6",
+      "started_at": "2026-10-03T23:40:17.702Z",
+      "round": 265,
+      "fatal_round": 268,
+      "body": [
+        [
+          56,
+          2
+        ],
+        [
+          56,
+          1
+        ],
+        [
+          57,
+          1
+        ]
+      ],
+      "units": 64,
+      "first_unoccupied_steps": [
+        {
+          "direction": "E",
+          "cell": [
+            57,
+            2
+          ],
+          "has_pearl": false,
+          "spawn_round": null
+        }
+      ],
+      "food_free_two_step_routes": [
+        "EN"
+      ],
+      "replay_sha256": "48ecb0186da884b2d2cb78ad0393e5952656147f3f2652b3f849b0aa0edbce9e"
+    },
+    {
+      "game": 997644,
+      "queen": 0,
+      "team": 187,
+      "side": "A",
+      "ranked": false,
+      "series": "ffb6e161-ee9f-4981-ae23-7d547f7863c6",
+      "started_at": "2026-10-03T23:40:17.702Z",
+      "round": 266,
+      "fatal_round": 268,
+      "body": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "units": 64,
+      "first_unoccupied_steps": [
+        {
+          "direction": "N",
+          "cell": [
+            2,
+            1
+          ],
+          "has_pearl": false,
+          "spawn_round": null
+        }
+      ],
+      "food_free_two_step_routes": [
+        "NE"
+      ],
+      "replay_sha256": "48ecb0186da884b2d2cb78ad0393e5952656147f3f2652b3f849b0aa0edbce9e"
+    },
+    {
+      "game": 997644,
+      "queen": 1,
+      "team": 280,
+      "side": "B",
+      "ranked": false,
+      "series": "ffb6e161-ee9f-4981-ae23-7d547f7863c6",
+      "started_at": "2026-10-03T23:40:17.702Z",
+      "round": 266,
+      "fatal_round": 268,
+      "body": [
+        [
+          57,
+          2
+        ],
+        [
+          56,
+          2
+        ],
+        [
+          56,
+          1
+        ]
+      ],
+      "units": 64,
+      "first_unoccupied_steps": [
+        {
+          "direction": "N",
+          "cell": [
+            57,
+            1
+          ],
+          "has_pearl": false,
+          "spawn_round": null
+        }
+      ],
+      "food_free_two_step_routes": [
+        "NW"
+      ],
+      "replay_sha256": "48ecb0186da884b2d2cb78ad0393e5952656147f3f2652b3f849b0aa0edbce9e"
+    },
+    {
+      "game": 997644,
+      "queen": 0,
+      "team": 187,
+      "side": "A",
+      "ranked": false,
+      "series": "ffb6e161-ee9f-4981-ae23-7d547f7863c6",
+      "started_at": "2026-10-03T23:40:17.702Z",
+      "round": 267,
+      "fatal_round": 268,
+      "body": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "units": 63,
+      "first_unoccupied_steps": [
+        {
+          "direction": "E",
+          "cell": [
+            3,
+            1
+          ],
+          "has_pearl": true,
+          "spawn_round": 267
+        }
+      ],
+      "food_free_two_step_routes": [],
+      "replay_sha256": "48ecb0186da884b2d2cb78ad0393e5952656147f3f2652b3f849b0aa0edbce9e"
+    },
+    {
+      "game": 997644,
+      "queen": 1,
+      "team": 280,
+      "side": "B",
+      "ranked": false,
+      "series": "ffb6e161-ee9f-4981-ae23-7d547f7863c6",
+      "started_at": "2026-10-03T23:40:17.702Z",
+      "round": 267,
+      "fatal_round": 268,
+      "body": [
+        [
+          57,
+          1
+        ],
+        [
+          57,
+          2
+        ],
+        [
+          56,
+          2
+        ]
+      ],
+      "units": 63,
+      "first_unoccupied_steps": [
+        {
+          "direction": "W",
+          "cell": [
+            56,
+            1
+          ],
+          "has_pearl": true,
+          "spawn_round": 267
+        }
+      ],
+      "food_free_two_step_routes": [],
+      "replay_sha256": "48ecb0186da884b2d2cb78ad0393e5952656147f3f2652b3f849b0aa0edbce9e"
+    },
+    {
+      "game": 997644,
+      "queen": 0,
+      "team": 187,
+      "side": "A",
+      "ranked": false,
+      "series": "ffb6e161-ee9f-4981-ae23-7d547f7863c6",
+      "started_at": "2026-10-03T23:40:17.702Z",
+      "round": 268,
+      "fatal_round": 268,
+      "body": [
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "units": 64,
+      "first_unoccupied_steps": [],
+      "food_free_two_step_routes": [],
+      "replay_sha256": "48ecb0186da884b2d2cb78ad0393e5952656147f3f2652b3f849b0aa0edbce9e"
+    },
+    {
+      "game": 997644,
+      "queen": 1,
+      "team": 280,
+      "side": "B",
+      "ranked": false,
+      "series": "ffb6e161-ee9f-4981-ae23-7d547f7863c6",
+      "started_at": "2026-10-03T23:40:17.702Z",
+      "round": 268,
+      "fatal_round": 268,
+      "body": [
+        [
+          56,
+          1
+        ],
+        [
+          57,
+          1
+        ],
+        [
+          57,
+          2
+        ],
+        [
+          56,
+          2
+        ]
+      ],
+      "units": 64,
+      "first_unoccupied_steps": [],
+      "food_free_two_step_routes": [],
+      "replay_sha256": "48ecb0186da884b2d2cb78ad0393e5952656147f3f2652b3f849b0aa0edbce9e"
+    },
+    {
+      "game": 998186,
+      "queen": 0,
+      "team": 791,
+      "side": "A",
+      "ranked": true,
+      "series": "e3f11311-6693-414a-b0c5-d0e7ac53da35",
+      "started_at": "2026-10-03T23:53:23.441Z",
+      "round": 317,
+      "fatal_round": 320,
+      "body": [
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "units": 60,
+      "first_unoccupied_steps": [
+        {
+          "direction": "W",
+          "cell": [
+            2,
+            2
+          ],
+          "has_pearl": false,
+          "spawn_round": null
+        }
+      ],
+      "food_free_two_step_routes": [
+        "WN"
+      ],
+      "replay_sha256": "1c854ec0b2b7145b4a350553804f32d6ff7653889a95458dc06579aa27268325"
+    },
+    {
+      "game": 998186,
+      "queen": 0,
+      "team": 791,
+      "side": "A",
+      "ranked": true,
+      "series": "e3f11311-6693-414a-b0c5-d0e7ac53da35",
+      "started_at": "2026-10-03T23:53:23.441Z",
+      "round": 318,
+      "fatal_round": 320,
+      "body": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "units": 62,
+      "first_unoccupied_steps": [
+        {
+          "direction": "N",
+          "cell": [
+            2,
+            1
+          ],
+          "has_pearl": false,
+          "spawn_round": null
+        }
+      ],
+      "food_free_two_step_routes": [
+        "NE"
+      ],
+      "replay_sha256": "1c854ec0b2b7145b4a350553804f32d6ff7653889a95458dc06579aa27268325"
+    },
+    {
+      "game": 998186,
+      "queen": 0,
+      "team": 791,
+      "side": "A",
+      "ranked": true,
+      "series": "e3f11311-6693-414a-b0c5-d0e7ac53da35",
+      "started_at": "2026-10-03T23:53:23.441Z",
+      "round": 319,
+      "fatal_round": 320,
+      "body": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "units": 62,
+      "first_unoccupied_steps": [
+        {
+          "direction": "E",
+          "cell": [
+            3,
+            1
+          ],
+          "has_pearl": true,
+          "spawn_round": 319
+        }
+      ],
+      "food_free_two_step_routes": [],
+      "replay_sha256": "1c854ec0b2b7145b4a350553804f32d6ff7653889a95458dc06579aa27268325"
+    },
+    {
+      "game": 998186,
+      "queen": 0,
+      "team": 791,
+      "side": "A",
+      "ranked": true,
+      "series": "e3f11311-6693-414a-b0c5-d0e7ac53da35",
+      "started_at": "2026-10-03T23:53:23.441Z",
+      "round": 320,
+      "fatal_round": 320,
+      "body": [
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "units": 62,
+      "first_unoccupied_steps": [],
+      "food_free_two_step_routes": [],
+      "replay_sha256": "1c854ec0b2b7145b4a350553804f32d6ff7653889a95458dc06579aa27268325"
+    }
+  ],
+  "scope": "Four selected late deaths/three games; exact TurnStart omniscient reconstruction, not proof of bot observation. Food-free routes checked with conservative before-tail collision and one ordinary tail removal per empty step, ignoring beneficial second-step paid shrink. Public countdown metadata unavailable.",
+  "decoder_sha256": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8"
+}

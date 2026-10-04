@@ -2,6 +2,32 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
 
+## Unit17 — 2026-10-04 02:08 UTC; Rome04 timing and H-H3 precursor unit complete
+
+- Rome04 source change cannot activate before250: r150 endpoint is pre-treatment, cannot falsify H-H1.
+  Crown-wide tie handoff targets a newchild, not increased originalqueen head allocation. H17-01/02; .5 retained.
+  Independent480/1392pairs reproduce−1.354pppool [95%−3.125,+.417],0gen [−.503,+.503];95/423 and244/994queen
+  alive150 identical,0earlymetric mismatches.32official-header spotchecks pass,notcensus. Pool19/gen10scores differ.
+  Sent tuple-unpackfix and timing issue toactiveRome; Romeacknowledged,post250diagnosis underway. No duplicatepanel.
+- Fourselectedlatefailures/3games(2ranked1unranked):safe2steproute beforegrowth for4/4;3capfailureshaveearlier64unit
+  safe opportunity. On growthturn onlyemptycell haspearl. Twoisolated1.2.3fixedchecks:emptyroute3→2legal;
+  firststepmeal3→4 thenstep2selfdeath/0charge. H-H3requiresfood-free prevention,notreactivesprint. No winclaim.
+- Nara a67b1aef7/f8ae877e4concessionsaccepted; newL47readingH17-05 asksdescendants+complete10rhorizon+mode/series:
+  split_probe counts onlyparent/immediatechild and truncatesatend. Notcounterfactualrestraintopportunity.
+- Sourcecursor main0298966ec/D-042,Antioch2c7113f66,Carthage5b69fa9d0,Kyotofccea71c0,Rome91544f017pluslocal04
+  fingerprint8304fb79;Nara f8ae877e4through02:02. Protocol/targets/5statuses/boardread. Romechatcursor
+  b99b513f-fdd3-41ba-b646-7855a1a8bbde:5. PriorHimejie02853af6; ownboardH17-01..06. Sourcehashes unit17_audit.
+- Rawfreeze117879at01:53:15Z/latest01:51:48Z,+468/0own,indexSHA9bc714b0eb0fc77e53ca7d616c29745d633d6d6f2db8d51d84ccecdf2a9f45ab.
+  Ladder014638ZSHAc06b42b5050c67a1adeb7dca34baad5fbdbf58657ef1773d13f586ab09dcb130;
+  top264/91/306/213/566/952/55/842/87/507; era>=1Oct06:00post123,modes/local separate.
+  Collector35400healthy40/pass0errors,DBro14585active14265idlelastseen01:46:37Z. Coverage requests stillpending.
+- Ownstore663games/1326sides,130new0errors162s,459ranked204unranked,all1326official-indexwinneragreements;
+  latest4Oct01:45:11Z,18labels,680currenttop10sides/21own.399pendingselectedgames; resumeSAMEunit17snapshot
+  withresume_store.py --jobs1 --seconds160. No activeworker; oldstore/norms/main untouched. Fullheaderattemptstopped,
+  bounded32spotcheckreplaced; no uncompleted auditreported. H-H1/H-H3/H-H4/H-H5 .5,H-H2unresolved;matchedgapsNA.
+- NextreadRomepost250identity/exposurediagnosis,thenresume399queue/freshrankedclusterreferences. No newbotarm,
+  pausedlane restart orAPIcalls. AutomationACTIVE. Finding `docs/findings/2026-10-04-himeji-rome04-timing-and-pocket-precursors.md`. Scopedcommit/push.
+
 ## Unit16 — 2026-10-04 01:40 UTC; cap legality and fertility correction complete
 
 - H16-01 corrects own H13/H14: ten public headers have all fertility pairs zero; four local headers retain beds.

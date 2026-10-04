@@ -1,0 +1,4950 @@
+{
+  "games": 663,
+  "sides": 1326,
+  "metadata_games": 117879,
+  "by_mode_games": {
+    "False": 204,
+    "True": 459
+  },
+  "by_era_games": {
+    "post": 663
+  },
+  "pending_from_last_selection": 399,
+  "team_map_mode": [
+    {
+      "team": "1016",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "1016",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1016",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1016",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1016",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "1016",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1016",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "1016",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1016",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1016",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1016",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "1097",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "1097",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "1097",
+      "map": "Default",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Default",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "1097",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Maze",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "1097",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "1097",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Prisoners Dilemma 10",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Queen Of Spades",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Stripes",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Trauma",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "1097",
+      "map": "weakhold",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1097",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "11",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "11",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "11",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1116",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1116",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1116",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1116",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1116",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1119",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1119",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1119",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1119",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "1119",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "1119",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1119",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1119",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "1119",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1119",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1119",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1119",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "112",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "112",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "112",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "112",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "135",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "135",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "147",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "147",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "147",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "147",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "152",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "152",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "152",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "152",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "157",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "178",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "178",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "178",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "178",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "178",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "178",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "178",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "178",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "178",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "187",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "187",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "19",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "19",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "19",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "19",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "19",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "193",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "193",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "193",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "193",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "193",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "193",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "193",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "193",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "213",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "213",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "213",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "213",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "213",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "213",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "213",
+      "map": "Default",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "213",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "213",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "213",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "213",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "213",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "213",
+      "map": "Maze",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "213",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "213",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "213",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "213",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "213",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "213",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "213",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "213",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "213",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "213",
+      "map": "Stripes",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "213",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "213",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "213",
+      "map": "Trauma",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "213",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "213",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "213",
+      "map": "weakhold",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "217",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "217",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "217",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "217",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "217",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "217",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "217",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "217",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "217",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "217",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "217",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "249",
+      "map": "Default",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "249",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "249",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "249",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "249",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "249",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "249",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "249",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "258",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "258",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "258",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "258",
+      "map": "Default",
+      "ranked": false,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "258",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "258",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "258",
+      "map": "Maze",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "258",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "258",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "258",
+      "map": "Prisoners Dilemma",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "258",
+      "map": "Prisoners Dilemma 10",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "258",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "258",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "258",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 7,
+      "series": 7
+    },
+    {
+      "team": "258",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "258",
+      "map": "Trauma",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "264",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 7,
+      "series": 7
+    },
+    {
+      "team": "264",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "264",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "264",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "264",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "264",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Default",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "264",
+      "map": "Default",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "264",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "264",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "264",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "264",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "264",
+      "map": "Maze",
+      "ranked": false,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "264",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "264",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "264",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Prisoners Dilemma 10",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Queen Of Spades",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "264",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "264",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "264",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Stripes",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "264",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Trauma",
+      "ranked": false,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "264",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "264",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "264",
+      "map": "weakhold",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "264",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "28",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "28",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "28",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "28",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "28",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "28",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "28",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "280",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "280",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "280",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "280",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "280",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "280",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "280",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "280",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "280",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "306",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "306",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "306",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "306",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "306",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "306",
+      "map": "Default",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "306",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "306",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "306",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "306",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "306",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "306",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "306",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "306",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "306",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "306",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "306",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "306",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "306",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "306",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "306",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "314",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "314",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "314",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "314",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "314",
+      "map": "Default",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "314",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "314",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "314",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "314",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "314",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "314",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "314",
+      "map": "weakhold",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "328",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "328",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "328",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "328",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "375",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "375",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "375",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "375",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "375",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "40",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "40",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "40",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "40",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "40",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "40",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "40",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "40",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "40",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "40",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "40",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "45",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "45",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "45",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "45",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "45",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "454",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "454",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "454",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "454",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "454",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "454",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "454",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "454",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "454",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "454",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "454",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "456",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "456",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "456",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "456",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "456",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "456",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "456",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "456",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "456",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "46",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "46",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "46",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "46",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "465",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "465",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "465",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "465",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "465",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "465",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "465",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "465",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "465",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "465",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "465",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Default",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Maze",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Queen Of Spades",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Trauma",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "499",
+      "map": "weakhold",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "507",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "55",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Default",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Default",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "55",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "55",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "55",
+      "map": "Maze",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Prisoners Dilemma",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Prisoners Dilemma 10",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "55",
+      "map": "Queen Of Spades",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "55",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "55",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "55",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "55",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "55",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Trauma",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "55",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "55",
+      "map": "weakhold",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "552",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "552",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "552",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "552",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "552",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "552",
+      "map": "Default",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "552",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "552",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "552",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "552",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "552",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "552",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "552",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "552",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "552",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "552",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "552",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "552",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "566",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "566",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "566",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "566",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "566",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Prisoners Dilemma",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "566",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "566",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "566",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "566",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "566",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "608",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "608",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "608",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "608",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "608",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "608",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "608",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "608",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "63",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "63",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "63",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "63",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "63",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "63",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "63",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "63",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "63",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Default",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "64",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Queen Of Spades",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Stripes",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "64",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "7",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "7",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "7",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "7",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "7",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "71",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "71",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "71",
+      "map": "Default",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "71",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "71",
+      "map": "Maze",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "71",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "71",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "71",
+      "map": "Trauma",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "71",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "71",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "74",
+      "map": "Maze",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "74",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "74",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "776",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "776",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "776",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "776",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "776",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "776",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "776",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "776",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "791",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "791",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "791",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "791",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "791",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "791",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "791",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "791",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "791",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "798",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "798",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "798",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "798",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "798",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "801",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "801",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "801",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "801",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "801",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "801",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "801",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "82",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "82",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "82",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "82",
+      "map": "Default",
+      "ranked": false,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "82",
+      "map": "Default",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "82",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "82",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "82",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "82",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "82",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "82",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "82",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "82",
+      "map": "Queen Of Spades",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "82",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "82",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "82",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "82",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "82",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "82",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "82",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "82",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "82",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "82",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 7,
+      "series": 7
+    },
+    {
+      "team": "835",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "842",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "842",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "842",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "842",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "842",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "842",
+      "map": "Default",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "842",
+      "map": "Default",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "842",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "842",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "842",
+      "map": "Maze",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "842",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "842",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "842",
+      "map": "Prisoners Dilemma 10",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Queen Of Spades",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "842",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "842",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "842",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "842",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "842",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "842",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Trauma",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "842",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "842",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "weakhold",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "842",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "87",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "87",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "87",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "87",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "87",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "87",
+      "map": "Default",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "87",
+      "map": "Default",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "87",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "87",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "87",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "87",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "87",
+      "map": "Maze",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "87",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "87",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "87",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "87",
+      "map": "Queen Of Spades",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "87",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "87",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "87",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "87",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "87",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "87",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "87",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "87",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "87",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "87",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "871",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "871",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "871",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "871",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "871",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "899",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "899",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "899",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "899",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "899",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "91",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Default",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "91",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Islands",
+      "ranked": false,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "91",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "91",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Queen Of Spades",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "91",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Stripes",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "weakhold",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "933",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "933",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "933",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "933",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "933",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "948",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "948",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "948",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "952",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "952",
+      "map": "Australia",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "952",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "952",
+      "map": "Autarky",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "952",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "952",
+      "map": "Default",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "952",
+      "map": "Default",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "952",
+      "map": "Devil",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "952",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "952",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "952",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "952",
+      "map": "Portals",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "952",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "952",
+      "map": "Prisoners Dilemma",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "952",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "952",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "952",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "952",
+      "map": "Schooltime",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "952",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "952",
+      "map": "Slithery Fight",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "952",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "952",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "952",
+      "map": "Tower Defense",
+      "ranked": false,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "952",
+      "map": "Tower Defense",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "952",
+      "map": "Trauma",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "952",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "952",
+      "map": "Trophy",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "952",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "952",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "959",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "959",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 6,
+      "series": 6
+    },
+    {
+      "team": "959",
+      "map": "Autarky",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "959",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "959",
+      "map": "Devil",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "959",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 5,
+      "series": 5
+    },
+    {
+      "team": "959",
+      "map": "Maze",
+      "ranked": true,
+      "sides": 7,
+      "series": 7
+    },
+    {
+      "team": "959",
+      "map": "Portals",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "959",
+      "map": "Prisoners Dilemma",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "959",
+      "map": "Prisoners Dilemma 10",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "959",
+      "map": "Queen Of Spades",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "959",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "959",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "959",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "959",
+      "map": "Trauma",
+      "ranked": true,
+      "sides": 4,
+      "series": 4
+    },
+    {
+      "team": "959",
+      "map": "Trophy",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "959",
+      "map": "weakhold",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "977",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "977",
+      "map": "Default",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "977",
+      "map": "Islands",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "977",
+      "map": "Schooltime",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "977",
+      "map": "Slithery Fight",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "977",
+      "map": "Stripes",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "998",
+      "map": "Around UNSW",
+      "ranked": false,
+      "sides": 1,
+      "series": 1
+    }
+  ]
+}

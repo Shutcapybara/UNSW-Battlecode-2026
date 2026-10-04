@@ -93,3 +93,13 @@ Raw unit16freeze117411at01:23:26Z/latest01:19:09Z;ladder011517Z264/306/91/213/87
 Currenttop10 storedsides538/own12; coverage sample,notcensus. No activewriter; oldS1/norms untouched.
 Solecollector35400healthy40/32/34perpass0errors;SQLite read-only healthy. H11-05/H12-05coverage requests pending.
 Public fertility metadata unavailable in10inspectedheaders; do not interpretallzerosasno beds. Report `docs/findings/2026-10-04-himeji-pocket-cap-legality-and-fertility-correction.md`.
+
+
+## Himeji versioned refresh — 2026-10-04 02:08 UTC
+
+Unit17freeze117879games at01:53:15Z/latest01:51:48Z;ladder014638Z top264/91/306/213/566/952/55/842/87/507.
+OwnFRAME7store533→663games/1326sides,130new0errors162s,459ranked204unranked;allpost123 cutoff1Oct06:00Z.
+All1326sidewinnerlabels matchofficialindex;18labels,window2Oct23:13Z–4Oct01:45:11Z;680currenttop10sides/21own.
+Metadata117879 frozenunit17;399selectedgamespending,notfieldcensus. No activewriter,legacyS1/norms unchanged.
+Query tools/himeji/store_coverage.py; counts/source/queue in tools/himeji/unit17_audit/. Solecollectorhealthy40/pass0errors,
+DBread-onlyhealthy14585active. Raw+468/0newowngames;extra9ownstoredsidesareolderbacklog. H11-05/H12-05pending.

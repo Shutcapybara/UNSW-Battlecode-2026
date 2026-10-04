@@ -23,7 +23,7 @@ def main():
                  'index_sha256': hashlib.sha256(raw).hexdigest(),
                  'previous_index_sha256': hashlib.sha256((a.previous/'index.jsonl').read_bytes()).hexdigest(),
                  'decoder_sha256': hashlib.sha256(Path(F.__file__).read_bytes()).hexdigest(),
-                 'trigger': 'Initial original queen length4 fills a 4-cell no-bed terrain component, all component cells degree2, zero empty adjacent cells.'}
+                 'trigger': 'Initial original queen length4 fills a 4-cell terrain component; fertility unavailable when all header gaps are zero, all component cells degree2, zero empty adjacent cells.'}
     (a.snapshot/'pocket-selection.json').write_text(json.dumps(selection, indent=2)+'\n')
     out = a.snapshot/'pocket-rows.jsonl'
     done = {r['game'] for r in map(json.loads, out.read_text().splitlines())} if out.exists() else set()
@@ -50,7 +50,7 @@ def main():
             occ = {cell for _, b in g['rounds'][0].values() for cell in b}
             empty = [cell for cell in g['nbr'][body[0]] if cell is not None and cell not in occ]
             cycle = len(component)==4 and all(len({n for n in g['nbr'][c] if n is not None})==2 for c in component)
-            trigger = cycle and len(body)==4 and set(body)==component and not empty and not (component & set(g['beds']))
+            trigger = cycle and len(body)==4 and set(body)==component and not empty
             sp = [e for e in g['events']['splits'] if e['parent']==q and e['round']==0]
             children = {e['child'] for e in sp}
             cp = {}
@@ -61,7 +61,7 @@ def main():
             final_body = len(g['rounds'][-1][q][1]) if q in g['rounds'][-1] else 0
             assert final_body == g['final'][side]['queen']
             sides.append({'side':side, 'team':tid, 'submission':header.text(1 if side=='A' else 2), 'queen':q,
-                'spawn_body':body, 'component_size':len(component), 'component_beds':len(component & set(g['beds'])),
+                'spawn_body':body, 'component_size':len(component), 'component_beds':len(component & set(g['beds'])) if g['beds'] else None,
                 'cycle4':cycle, 'empty_steps':len(empty), 'trigger':trigger,
                 'initial_actions':[e for e in g['events']['actions'] if e['id']==q and e['round']==0],
                 'initial_splits':sp, 'early_child_deaths':[e for e in g['events']['deaths'] if e['id'] in children and e['round']<=2],

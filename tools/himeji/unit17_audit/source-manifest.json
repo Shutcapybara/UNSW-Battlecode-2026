@@ -1,0 +1,31 @@
+{
+  "main": "0298966ec",
+  "antioch": "2c7113f66",
+  "carthage": "5b69fa9d0",
+  "kyoto": "fccea71c0",
+  "rome_remote": "91544f017",
+  "rome_candidate_fingerprint": "8304fb798b2ce49b6233a8082c870a08530b3b2c788d5cec2b5dfa0f0dc89ed8",
+  "nara_wake": "a67b1aef7",
+  "nara_final": "f8ae877e4",
+  "prior_himeji": "e02853af6",
+  "board_before": "H16-05;main D-042",
+  "rome_chat_cursor": "b99b513f-fdd3-41ba-b646-7855a1a8bbde:5",
+  "files": {
+    "tools/himeji/unit17_audit/food-step-check.json": "21fb739c3945aca317372043ef06fdbff7a070858273b47a519b332fd612f315",
+    "tools/himeji/unit17_audit/rome04-pairs.json": "4fddfbf86555d204336be995f2e32bef2f31b4498cda3a1b073be69c325e2588",
+    "tools/himeji/unit17_audit/store-summary.json": "469ebb681e0e49828ca8ea0c96918c30cd7c80f7ae746c41b6695a6ad05b9793",
+    "tools/himeji/unit17_audit/last-build.json": "183cc57c2a12492b0f1ed7eb2597abf6cf5d6e7ac659dec70336fb35dd7180ea",
+    "tools/himeji/unit17_audit/pocket-precursor.json": "0259ad8d52ce0ca5030b52f70139d6374f39e7e91ace0162b965b87f620ce3d0",
+    "tools/himeji/unit17_audit/store-coverage.json": "264ae8f130136a70bce88394ca439382189f8fc41d544020ff76a75a045458f1",
+    "tools/himeji/unit17_audit/manifest.json": "62917acac8e57fd187fdac64f0f1a07531473e0976405c5b6485b8591922d355",
+    "tools/himeji/unit17_audit/fresh-delta.json": "774eb6b868186b145aaf2fc811d13a5f093b44c36221cf102cff7ce7d7174cd3",
+    "tools/himeji/unit17_audit/decoder-source.json": "c82326faa21cfbbc008a1f78440c1845a52d24d2b3670837bd0c704db410b7eb",
+    "tools/himeji/unit17_audit/rome04-reading.json": "5af60b857db8ae2b51290242c271dbb342dda808c09d036caf71109b8856eb19",
+    "tools/himeji/unit17_audit/live-db-read.json": "c7c2fdb8dd9a3d7bbf495e1acc92a5832b3aa190a63e67cc628b63005d22b358",
+    "tools/himeji/rome04_reading.py": "e4ad0a2b3c6178ca2593ead4d19a6cddffe4217a3e5c8f622c4236afc79e4300",
+    "tools/himeji/pocket_precursor.py": "21f157d23615aed9d400eb9da0a6f4c0ba2fd345c6f59ba523ac345bca2de732",
+    "tools/himeji/pocket_food_step_check.py": "998c52184ebcbc7b6196e1c44eb17d61fcf4c2752ade3c510ce97be00bcb0eda",
+    "tools/himeji/store_coverage.py": "a507abb75d46b3ced6d6099f514d8016ab048df1bced53df190d9e3dc1450124",
+    "tools/himeji/pocket_holdout.py": "7e90d7b4fb121837f6f64507da919438c6214cb275baddd32aa53d6a69681ebd"
+  }
+}

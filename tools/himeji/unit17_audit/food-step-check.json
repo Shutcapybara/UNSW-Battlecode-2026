@@ -1,0 +1,177 @@
+{
+  "runtime": "1.2.3",
+  "engine_wasm_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+  "rows": [
+    {
+      "food_bed_enabled": false,
+      "map_sha256": "503663a1d43752560db74078a421a36fa14414a587e401a0662d6678546052ad",
+      "replay_sha256": "66a597f7228c4708e40ce1e0dfcacdf24b3af0060eb2992dbd93708838617719",
+      "queen_turns": [
+        {
+          "round": 0,
+          "action": "MOVE WN",
+          "raw_observation": "ROUND 0\nDIR S\nLENGTH 3\nUNIT_COUNT 64\nNUM_MSGS 0\n0 7 0 -1\n1 7 0 -1\n2 7 0 -1\n3 7 0 -1\n4 7 0 -1\n5 7 0 -1\n6 7 0 -1\n0 0 0 -1\n1 0 0 -1\n2 0 0 -1\n3 0 0 -1\n4 0 0 -1\n5 0 0 -1\n6 0 0 -1\n0 1 0 -1\n1 1 0 -1\n2 1 0 -1\n3 1 0 -1\n4 1 0 -1\n5 1 0 -1\n6 1 0 -1\n0 2 0 -1\n1 2 0 -1\n2 2 0 -1\n3 2 0 -1\n4 2 0 -1\n5 2 0 -1\n6 2 0 -1\n0 3 0 -1\n1 3 0 -1\n2 3 0 -1\n3 3 0 -1\n4 3 0 -1\n5 3 0 -1\n6 3 0 -1\n0 4 0 -1\n1 4 0 -1\n2 4 0 -1\n3 4 0 -1\n4 4 0 -1\n5 4 0 -1\n6 4 0 -1\n0 5 0 -1\n1 5 0 -1\n2 5 0 -1\n3 5 0 -1\n4 5 0 -1\n5 5 0 -1\n6 5 0 -1\nDRAGON_BODIES 24\nA 0 3 2 S 1\nA 0 3 1 S 0\nA 0 2 1 E 0\nA 2 0 4 W 1\nA 2 1 4 W 0\nA 4 2 4 W 1\nA 4 3 4 W 0\nA 6 4 4 W 1\nA 6 5 4 W 0\nA 8 6 4 W 1\nA 66 0 5 W 1\nA 66 1 5 W 0\nB 67 0 7 W 1\nB 67 1 7 W 0\nA 68 2 5 W 1\nA 68 3 5 W 0\nB 69 2 7 W 1\nB 69 3 7 W 0\nA 70 4 5 W 1\nA 70 5 5 W 0\nB 71 4 7 W 1\nB 71 5 7 W 0\nA 72 6 5 W 1\nB 73 6 7 W 1\n. . . . . . .\n. . . . . . .\n. . w w . . .\n. . . . . . .\n. . w w . . .\n. . . . . . .\n. . . . . . .\n. . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . w . w . . .\n. . w . w . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n"
+        },
+        {
+          "round": 1,
+          "action": "SPLIT 0",
+          "raw_observation": "ROUND 1\nDIR N\nLENGTH 2\nUNIT_COUNT 1\nNUM_MSGS 0\nECHOES 0 0 0 0 0\n63 6 0 -1\n0 6 1 -1\n1 6 0 -1\n2 6 1 -1\n3 6 0 -1\n4 6 1 -1\n5 6 0 -1\n63 7 0 -1\n0 7 1 -1\n1 7 0 -1\n2 7 1 -1\n3 7 0 -1\n4 7 1 -1\n5 7 0 -1\n63 0 0 -1\n0 0 0 -1\n1 0 0 -1\n2 0 0 -1\n3 0 0 -1\n4 0 0 -1\n5 0 0 -1\n63 1 0 -1\n0 1 0 -1\n1 1 0 -1\n2 1 0 -1\n3 1 0 -1\n4 1 0 -1\n5 1 0 -1\n63 2 0 -1\n0 2 0 -1\n1 2 0 -1\n2 2 0 -1\n3 2 0 -1\n4 2 0 -1\n5 2 0 -1\n63 3 0 -1\n0 3 0 -1\n1 3 0 -1\n2 3 0 -1\n3 3 0 -1\n4 3 0 -1\n5 3 0 -1\n63 4 0 -1\n0 4 1 -1\n1 4 0 -1\n2 4 1 -1\n3 4 0 -1\n4 4 1 -1\n5 4 0 -1\nDRAGON_BODIES 2\nA 0 2 1 N 1\nA 0 2 2 N 0\n. . . . . . .\n. . . . . . .\n. . . . . . .\n. . . w w . .\n. . . . . . .\n. . . w w . .\n. . . . . . .\n. . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . w . w . .\n. . . w . w . .\n. . . . . . . .\n. . . . . . . .\n"
+        }
+      ],
+      "queen_actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 2,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            3,
+            0
+          ],
+          "paid": 1
+        },
+        {
+          "round": 1,
+          "id": 0,
+          "team": "A",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": null
+        }
+      ],
+      "queen_eats": [],
+      "queen_deaths": [
+        {
+          "round": 1,
+          "id": 0,
+          "team": "A",
+          "cause": "invalid",
+          "length": 2,
+          "actor": 0,
+          "age": 1,
+          "head": [
+            2,
+            1
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "spawns_before2": [],
+      "result": {
+        "rounds": 1,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 775,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      }
+    },
+    {
+      "food_bed_enabled": true,
+      "map_sha256": "ecf1f51bbc8f6d60c71de8dfe8370c60f4da000edb7820ee7ef2cb775c7caac9",
+      "replay_sha256": "fc86e95054aeabb01e69b4e969ad9c37c95c88ea8dc7e77c1e6954d11be8d666",
+      "queen_turns": [
+        {
+          "round": 0,
+          "action": "MOVE WN",
+          "raw_observation": "ROUND 0\nDIR S\nLENGTH 3\nUNIT_COUNT 64\nNUM_MSGS 0\n0 7 0 -1\n1 7 0 -1\n2 7 0 -1\n3 7 0 -1\n4 7 0 -1\n5 7 0 -1\n6 7 0 -1\n0 0 0 -1\n1 0 0 -1\n2 0 0 -1\n3 0 0 -1\n4 0 0 -1\n5 0 0 -1\n6 0 0 -1\n0 1 0 -1\n1 1 0 -1\n2 1 0 -1\n3 1 0 -1\n4 1 0 -1\n5 1 0 -1\n6 1 0 -1\n0 2 0 -1\n1 2 0 -1\n2 2 1 1\n3 2 0 -1\n4 2 0 -1\n5 2 0 -1\n6 2 0 -1\n0 3 0 -1\n1 3 0 -1\n2 3 0 -1\n3 3 0 -1\n4 3 0 -1\n5 3 0 -1\n6 3 0 -1\n0 4 0 -1\n1 4 0 -1\n2 4 0 -1\n3 4 0 -1\n4 4 0 -1\n5 4 0 -1\n6 4 0 -1\n0 5 0 -1\n1 5 0 -1\n2 5 0 -1\n3 5 0 -1\n4 5 0 -1\n5 5 0 -1\n6 5 0 -1\nDRAGON_BODIES 24\nA 0 3 2 S 1\nA 0 3 1 S 0\nA 0 2 1 E 0\nA 2 0 4 W 1\nA 2 1 4 W 0\nA 4 2 4 W 1\nA 4 3 4 W 0\nA 6 4 4 W 1\nA 6 5 4 W 0\nA 8 6 4 W 1\nA 66 0 5 W 1\nA 66 1 5 W 0\nB 67 0 7 W 1\nB 67 1 7 W 0\nA 68 2 5 W 1\nA 68 3 5 W 0\nB 69 2 7 W 1\nB 69 3 7 W 0\nA 70 4 5 W 1\nA 70 5 5 W 0\nB 71 4 7 W 1\nB 71 5 7 W 0\nA 72 6 5 W 1\nB 73 6 7 W 1\n. . . . . . .\n. . . . . . .\n. . w w . . .\n. . . . . . .\n. . w w . . .\n. . . . . . .\n. . . . . . .\n. . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . w . w . . .\n. . w . w . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n"
+        }
+      ],
+      "queen_actions": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 2,
+          "tle": false,
+          "cpu": null,
+          "dirs": [
+            3,
+            0
+          ],
+          "paid": 0
+        }
+      ],
+      "queen_eats": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cell": [
+            2,
+            2
+          ],
+          "origin": "bed",
+          "age": 0,
+          "donor": null
+        }
+      ],
+      "queen_deaths": [
+        {
+          "round": 0,
+          "id": 0,
+          "team": "A",
+          "cause": "self",
+          "length": 4,
+          "actor": 0,
+          "age": 0,
+          "head": [
+            2,
+            2
+          ],
+          "initial": true,
+          "killer": null,
+          "killer_team": null
+        }
+      ],
+      "spawns_before2": [
+        {
+          "round": 0,
+          "cell": [
+            2,
+            2
+          ],
+          "origin": "bed",
+          "donor": null
+        },
+        {
+          "round": 0,
+          "cell": [
+            2,
+            2
+          ],
+          "origin": "A",
+          "donor": 0
+        }
+      ],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 775,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      }
+    }
+  ],
+  "limitation": "Two deterministic legality fixtures only. Queen deliberately terminates at round1 if alive. The bed is placed on first W step; inspect actual spawn/eat before claiming food exposure."
+}
