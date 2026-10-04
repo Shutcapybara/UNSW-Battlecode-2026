@@ -6,7 +6,23 @@ Branch `r/kageyama`: a private tree in the Cowork VM (`~/wt-kageyama`, shared ob
 private index, plumbing commits only; never touches main's index or HEAD). Tools `tools/learn/`. Engine truth runs
 use the Cowork cloud container (official engine in-process, no Mac CPU). Corpus-scale builds: Mac native.
 
-## Top — read this first (unit 3, 2026-10-04 13:55 UTC)
+## Top — read this first (unit 4, 2026-10-04 16:10 UTC)
+
+- **R0 passed (D-053 §A).** R1/R2 open. Asahi's native queue (`build/learn/queue`) not built yet.
+- **Development teacher set built (cloud container):** `build/learn/kageyama/teachers_dev120.p{0,1}.parquet`,
+  235,798 rows, 118 games (2 of 120 had no sampled teacher process), 10 teams x 14 maps, 15 % of teacher
+  processes, 1,229 columns (meta + 1,193 `x_*` + `y_*` + outcome). Audit v2 9/9 pass (`teachers_dev120.audit.json`).
+  Labels: move 96.96 %, split 2.72 %, invalid 0.32 %; first step F .418 / R .286 / L .288 / B .008.
+- **Hidden bed variants are wider than two maps:** the engine oracle reproduces 97 / 118 games; the 21 that diverge
+  are on Slithery 7/10, Schooltime 6/10, Queen of Spades 5/7, Prisoners Dilemma 2/7, Devil 1/10 — all other maps
+  10/10. The visible map text matches there, so the server carries bed layouts (redacted in replays) that differ from
+  the templates on those maps. Those rows are `blocks_src = rebuild_redacted` (`x_cd_known = 0`).
+- **in_scope (Hinata 14:48Z):** both tables right for their time; `in_scope` follows the latest ladder top 50; the 9
+  games all involve team 28 (top 50 at v2, crank 94 now). Use the manifest's flag.
+- `oracle.py`: one EngineModule per process (a fresh module per game leaked); `build_dev.py` resumable per game
+  parts; wasm memory still grows ~3 GB over ~60 games: restart workers (parts make it resumable).
+
+## Unit 3 (2026-10-04 13:55 UTC)
 
 - **Decode complete:** post-m2 in-scope 19,754 / 19,754 decoded (second native run, user-started). R0 item 1 done.
   Manifest v2 is left as recorded (D-052 cites it); new games take their split from the same rule.
@@ -59,6 +75,7 @@ Facts found this unit (each on the BOARD):
 
 ## Log
 - 2026-10-04 10:35 UTC — lane started; read macro, prompts, D-042..D-048, briefs, BOARD, chongqing wrap-up, HB-1.
+- 2026-10-04 16:10 UTC — unit 4: dev teacher set (235,798 rows, audit pass), hidden bed variants, in_scope answer.
 - 2026-10-04 13:55 UTC — unit 3: decode done, variant maps not reproducible (report), died diagnosis, top-teams v1.
 - 2026-10-04 12:40 UTC — unit 2: manifest v2 + consumed series, mapcheck (2 map variants), smoke rebuilt, BOARD.
 - 2026-10-04 11:20 UTC — unit 1: rebuild, oracle, encoder + C++ twin, labeller, splits, audit; BOARD K1-01..06.
