@@ -1,0 +1,147 @@
+{
+  "scope": "Invented battery/loader probes; published development learning-curve OOF only. No fit, real battery selection, frozen confirmation action/winner read, or live outcomes.",
+  "hashes": {
+    "r2_bc.py": "a31faa5d8ea31652674b993c77d7549d978437b2226f7e659d7004fa76036427",
+    "r2_battery.py": "8fdddd38ceb5184a56c29145888c99453ca0907c8f9069fa6d37a7b649729dc4",
+    "r2_cnn.py": "5e8d6f46c667d4ddb5e1c09a6564e98bbee0a98d118378c92750b625c613802d"
+  },
+  "battery": {
+    "candidate_inventory": {
+      "pooled_constant": [
+        "A1",
+        "A3",
+        "A4",
+        "A5"
+      ],
+      "selection": {
+        "selected": "A3-400",
+        "acc": 0.8,
+        "leader": "A3-400",
+        "overlapping": [
+          "A3-400"
+        ],
+        "beats_A0": true,
+        "reaches_075": true,
+        "passes": true
+      },
+      "rows": [
+        {
+          "arm": "A10-e4",
+          "pooled": false,
+          "acc": 1.0
+        },
+        {
+          "arm": "A3-400",
+          "pooled": true,
+          "acc": 0.8
+        },
+        {
+          "arm": "A7fix-400",
+          "pooled": false,
+          "acc": 1.0
+        }
+      ],
+      "output_fields": [
+        "rows",
+        "selection",
+        "a0"
+      ]
+    },
+    "nan_predictions": {
+      "selected": "A3-400",
+      "acc": 1.0,
+      "leader": "A3-400",
+      "overlapping": [
+        "A3-400"
+      ],
+      "beats_A0": true,
+      "reaches_075": true,
+      "passes": true
+    },
+    "subset_predictions": {
+      "selection": {
+        "selected": "A3-400",
+        "acc": 1.0,
+        "leader": "A3-400",
+        "overlapping": [
+          "A3-400"
+        ],
+        "beats_A0": true,
+        "reaches_075": true,
+        "passes": true
+      },
+      "selected_rows": 80,
+      "baseline_rows": 100
+    },
+    "load_refusal": {
+      "valid": "accepted",
+      "test": "refused: non-train rows: {'test': 1}",
+      "val": "refused: non-train rows: {'val': 1}",
+      "heldout": "refused: held-out map rows present"
+    },
+    "loader_reads": {
+      "only_invented_paths": true,
+      "paths": [
+        "/var/folders/4p/nl_tnfpn5r925vf3qxgdvl100000gn/T/tanaka-battery-l7w9ygxe/rows.parquet",
+        "/var/folders/4p/nl_tnfpn5r925vf3qxgdvl100000gn/T/tanaka-battery-l7w9ygxe/teachers.parquet"
+      ]
+    }
+  },
+  "curve": [
+    {
+      "fraction": 0.1,
+      "accuracy": 0.6760106241699867,
+      "rows": 189630,
+      "frl_rows": 188250,
+      "same_fold_hashes": true,
+      "oof_sha": "3ee9cb0ac82aac52c5f58877d5f74e7d8b722a93dcb7418486bc44f048c29e39",
+      "manifest_sha": "8d537bcd3a142238cdadcc351bb683b931be7cf9978b2d797a73e95d4530644f",
+      "weighted": true
+    },
+    {
+      "fraction": 0.25,
+      "accuracy": 0.6841752988047809,
+      "rows": 189630,
+      "frl_rows": 188250,
+      "same_fold_hashes": true,
+      "oof_sha": "c7132ed8a2ebc93a0da7c79578649c2ae43556569975eda8a86a89a744f8a8a2",
+      "manifest_sha": "67a4e8f992c3f9d774eb96ff59e421c5d77e539468ae05597bb5643fa28dc572",
+      "weighted": true
+    },
+    {
+      "fraction": 0.5,
+      "accuracy": 0.7028154050464808,
+      "rows": 189630,
+      "frl_rows": 188250,
+      "same_fold_hashes": true,
+      "oof_sha": "59a3df8d5306a88b4091f5946d4e71c39876f450402fa7c0a328ba50d4109a88",
+      "manifest_sha": "aaa2d6076d5e770ffb5c5f6242e597ebbfde8678323dab9b6e042e88907afea0",
+      "weighted": true
+    },
+    {
+      "fraction": 1.0,
+      "accuracy": 0.7141726427622842,
+      "rows": 189630,
+      "frl_rows": 188250,
+      "same_fold_hashes": true,
+      "oof_sha": "8e87e3cd59aa3d4daa87a7423499ca1aa3a299533360cc066e0f1f5bfe512f46",
+      "manifest_sha": "6f222de6350efc69e7bd3b78816710bb7cbd1c0ec55a3aa27bd3487ca71fbe64",
+      "weighted": true
+    }
+  ],
+  "curve_full_minus_half": {
+    "delta": 0.011357237715803452,
+    "ci": [
+      0.00904706392053563,
+      0.014200569282036635
+    ],
+    "series_positive": 43,
+    "series": 49
+  },
+  "cnn_layout": {
+    "channels": 23,
+    "planes": 1127,
+    "scalars": 66,
+    "unique_columns": true
+  }
+}
