@@ -637,3 +637,74 @@ No new stable percentile target; frozen references and matchedlive-us gapNA reta
 NEW H-H8 proposedL24/L49 .4: observablefood-awareenemyreach mayimprovequeenavoidance. RetainH-KZ26withcorrectedreach/foodqualification; distance≥enemyLunsafe.≥60independenteligibleencounterpilot inclnonattacks,heldoutwhole-series/matchedhash-mode-phase-food-order;precision/varianceplanningbeforegate. Falsifierprecisenoaddedthreatprediction ornegativewins/foodwithouttargetedbenefit;wideunexposednullinconclusive. IfassignedafterKZavoidabilityholdclears,Rome/Seoulcarthage05/liveM2 fixedfeaturepenalty0/1/2 then selectedD042gate;prior149/306/46310pppairedplanningbeforeclusters. D044RLtranslationinreport; noarmbuilt. H-H6.5/H-H7.4unchanged.
 
 Retain CQunit7classlabels alongside disagreement: no classA queen exemption underD043/fullmapwinguards; frozenAutarkyhasownqueen-decidedloss,lowRLshareisnotzero. Behaviouraloutcomeclustersmustbefrozenoutofsamplebeforeweights. Schooltimejoint11/16+13/16mustnotcomparewithconditionalfield.86;needmatchedcohorts/denominators. Equaldead-queen enclosuredoesnotidentifyentryrates;retainentry/at-risk/death/winmeasures. Ewhole-packagecostnotisolateduntilC+D/E0. Otheranalysttargets preserved.
+
+## chongqing (unit 3) — 2026-10-04 03:25 UTC — per new map (era `post-m2`), field sides vs carthage-05 live
+
+Source: `docs/findings/2026-10-04-chongqing-unit3-new-map-queen-hazard-and-cull.md` §1. Field = non-team-7 sides in the store
+(100–130 per map; ~60 % are our opponents); top-ten column is ranked top ten (22–35 per map). Provisional until the bulk decode.
+
+| map (new) | RL share | queen alive at RL end: field / top-10 / **us** | field queen death cause | our queen death cause | target for us | query |
+|---|---:|---|---|---|---|---|
+| Schooltime | 1.00 | 0.965 / 1.000 / **0.000** | cage keeps it | own 1.00 at r0 | ≥ 0.95 (H-H3 / H-SZ1 cage rule) | `qs` §1 |
+| Trauma | 0.93 | 0.798 / 0.957 / **0.000** | own 0.42, h2h-e 0.33 | **wall 0.61** (cull) | ≥ 0.8 — H-C5 first | same |
+| Portals | 1.00 | 0.375 / 0.586 / 0.000 | own 0.61, cull 0.19, h2h-e 0 | **wall 0.88** (cull) | ≥ 0.4 (H-C5), then own-traffic (L42) | same |
+| Maze | 0.93 | 0.315 / 0.406 / 0.000 | h2h-e 0.41, own 0.35 | **wall 0.67** (cull) | ≥ 0.3 (H-C5) | same |
+| weakhold | 0.59 | 0.279 / 0.350 / 0.000 | h2h-e 0.41, wall 0.33 | **wall 1.00, r29/r44** (cull after first split) | ≥ 0.3 (H-C5) | same |
+| Slithery Fight | 1.00 | 0.317 / 0.276 / 0.000 | h2h-e 0.59 | own 0.56, h2h-e 0.31 | ≥ 0.3 (no pocket any more) | same |
+| Around UNSW / Australia / Islands | 0.84–1.00 | 0.14–0.19 / 0.24–0.37 / 0.000 | h2h-e 0.68–0.83 | h2h-e 0.67–1.00 | parity with field (0.15–0.2) via distance (H-Q5) | same |
+| Autarky / Default / QoS / PD / Tower Defense | 0.16–0.47 | 0.09–0.50 / 0.07–0.83 / ≤ 0.08 | h2h-e 0.7–0.9 | h2h-e 0.4–0.8 | secondary; RL rare | same |
+| Devil / Trophy / Stripes | ≤ 0.02 | n/a | — | — | none — elimination maps | same |
+
+**Row for the gate's queen column:** judge queen arms on the nine queen maps (Schooltime, Trauma, Portals, Maze, Slithery, weakhold,
+Around UNSW, Australia, Islands), not on the eight others; RL-share-weighted.
+
+## chongqing (unit 5) — 2026-10-04 05:55 UTC — era `post-m2`, ranked, 7,030 new-map games; cohorts = ladder 05:17Z — **reference grade**
+
+Source: `docs/findings/2026-10-04-chongqing-unit5-post-m2-references.md`. Supersedes the unit-3 per-map table (same columns, 6×
+the sample; Himeji's release criteria met on 16/18 map labels). Refreshed each unit as the decode completes.
+
+| cluster / map | phase | metric | top-10 | field r11–50 | us (carthage-05) | target | query |
+|---|---|---|---|---|---|---|---|
+| all | end | queen alive at RL end (ranked) | **0.413** (1,362 RL) | 0.283–0.348 | **0.000** (65) | ≥ 0.41 = top-ten median; ≥ 0.35 clears the second tier | `qs` §1 |
+| all | end | RL games decided by the queen | 0.452 | 0.42–0.44 | 0.308 (all lost) | queen-decided losses → 0 | `qs` |
+| Schooltime | end | queen alive (cage) | 0.884 | 0.86 (field) | 0.000 | ≥ 0.86 (H-H3 / H-SZ1) | `qs` §2 |
+| Trauma | end | queen alive; RL queen-decided | 0.779; 0.84 | 0.62 | 0.000 | ≥ 0.62 — the highest-value queen map | `qs` §2 |
+| Portals / Slithery / Maze / weakhold | end | queen alive | 0.33 / 0.33 / 0.37 / 0.36 | 0.24 / 0.25 / 0.25 / 0.28 | 0 | ≥ field (H-C5 first: our deaths there are 62–100 % wall) | `qs` §2 |
+| Australia / Around UNSW / Islands / Default | end | queen alive (contact maps) | 0.29 / 0.29 / 0.22 / 0.16 | 0.18 / 0.19 / 0.09 / 0.11 | 0 | ≥ field; mechanism is exposure count (die later), not a different death | `qs` §2–3 |
+| Devil / Trophy / Stripes | — | RL share ≤ 0.10 | — | — | — | no queen target (elimination maps) | `qs` |
+| all | r50 | **top-10 − us, z vs per-map field**: total / splits / units / bed pearls / pearls / territory | +0.28 / +0.30 / +0.27 / +0.28 / +0.27 / +0.16 | — | −0.21 / −0.16 / −0.14 / −0.12 / −0.12 / +0.07 | gaps **0.49 / 0.46 / 0.41 / 0.40 / 0.39 / 0.09**; transits pending (series) | finding §4 |
+
+Agreement: Shenzhen's live r50 gaps (total 0.47, units 0.40, splits 0.38, bed 0.33) and Himeji's queen 0/60 vs 251/629 both
+reproduce here. Disagreement retained: Antioch's panel-based total gap 0.18 measures the pool panel, not the ladder.
+
+## chongqing (unit 6) — 2026-10-04 07:05 UTC — opening components on the new maps (era `post-m2`, ladder 05:17Z, series table)
+
+Source: `docs/findings/2026-10-04-chongqing-unit6-sealed-not-culled-and-r50-gaps.md` §2–3. Completes unit 5's r50 row with
+transits and adds the per-map breakdown. Note: unit-3/5 queen *mechanism* text ("cull") is withdrawn (C6-01); queen numbers stand.
+
+| cluster / map | phase | metric (z vs per-map field) | top-10 (ranked, n 2,415) | us (n 286) | top-10 − us | target | query |
+|---|---|---|---|---|---|---|---|
+| all | r25 / r50 / r100 | transits (cum.) | +0.14 / +0.19 / +0.24 (1.97 / 5.73 / 17.6 raw) | −0.43 / −0.42 / −0.36 (0.90 / 3.13 / 11.5) | **0.57 / 0.61 / 0.60** | ≥ top-ten percentile at r50 without raising transit died3 (L41/L42) | series_raw r∈{25,50,100} |
+| all | r50 | total / splits / units / bed pearls / pearls / territory | +0.27 / +0.30 / +0.27 / +0.28 / +0.27 / +0.16 | −0.22 / −0.16 / −0.14 / −0.12 / −0.12 / +0.07 | 0.49 / 0.46 / 0.41 / 0.40 / 0.39 / 0.09 | close the r50 total gap to ≤ 0.2 SD | unit 5 §4 + series |
+| Trauma, Maze, Around UNSW, Australia, Schooltime (starved cluster) | r50 | total gap | — | — | 1.12 / 0.89 / 0.84 / 0.73 / 0.76; all components 0.6–1.5 | L35 bed anticipation keyed on own food knowledge | finding §3 |
+| Autarky, Default (transit cluster) | r50 | transits gap vs bed/splits gap | 7.9 / 13.3 transits | 1.8 / 4.6 | **0.90 / 1.04** vs ≤ 0.34 | the portal-gated opening switch's test maps (L41) | finding §3 |
+| Islands, Trophy, QoS, Tower Defense | r50 | total gap | — | — | −0.27 / −0.41 / −0.61 / −0.09 (we lead) | no opening work; losses there are elsewhere | finding §3 |
+| weakhold | r50 | total gap with no portals | — | — | 0.78 (bed/splits/pearls we lead by 0.4–1.0) | our swarm dies sealed (wall 67/1k vs 5/1k): H-KZ12 veto, not economy | unit 3 §2, unit 6 §1 |
+
+## chongqing (unit 7) — 2026-10-04 08:20 UTC — map classes for the live pool (era `post-m2`, ladder 05:17Z)
+
+Source: `docs/findings/2026-10-04-chongqing-unit7-live-map-clusters.md`. Two labels per live map, for two uses:
+
+| map | structural cluster (Esquie signature on `maps/live/`) | behavioural class (store) | RL share | field queen alive (RL) | use the queen column? |
+|---|---|---|---:|---:|---|
+| Devil, Trauma, Autarky, PD, Slithery, Stripes, Tower Defense | open mega-cluster (+ corridor members) | Devil/Stripes/TD/Autarky → A; Trauma/PD → C; Slithery → D | 0.03–0.99 | 0.00–0.64 | Trauma, PD, Slithery yes; Devil, Stripes, TD, Autarky no |
+| Default, Trophy | default/trophy | A | 0.45 / 0.03 | 0.12 / 0.00 | no |
+| Queen Of Spades | QoS | A | 0.25 | 0.15 | no |
+| Portals | portal-heavy | E | 0.99 | 0.25 | yes |
+| Schooltime, Islands | schooltime (+ Islands) | B (Schooltime = cage) | 0.99 / 0.90 | 0.88 / 0.09 | yes |
+| Australia, Around UNSW | large-open-wrap (new) | B | 0.95 / 1.00 | 0.18 / 0.20 | yes |
+| Maze | single | B | 0.96 | 0.26 | yes |
+| weakhold | single | C | 0.70 | 0.28 | yes |
+
+Rule proposed: opening/navigation arms are judged per structural cluster (D-037 unchanged); queen arms per behavioural class,
+RL-share-weighted; class A maps (7 of 17) carry no queen target.

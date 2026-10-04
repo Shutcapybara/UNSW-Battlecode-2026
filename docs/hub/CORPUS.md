@@ -50,7 +50,7 @@ the Mac VM; Chongqing's run should say where it runs.
 
 ## Previous publication (antioch, 1 Oct 15:40Z) — superseded, kept for the record
 
-As of **2026-10-04 02:00Z** (index 117,097 games, collector running on the Mac). Store built **on the Mac** (Cowork VM,
+As of **2026-10-04 08:20Z** (index ~121,000 games, collector running on the Mac). Store built **on the Mac** (Cowork VM,
 `wt-chongqing`, `build/` symlinked to the main checkout) — the desktop copy under `wt-antioch` is stale from 1 Oct 20:50Z.
 Republished after every build. **No API calls from this lineage; GPT's analyst also pulls replays this wave — the hub
 collector is the only writer of `public_replays/corpus/`.**
@@ -78,8 +78,8 @@ collector is the only writer of `public_replays/corpus/`.**
 | era | games in index | in scope (top-50 post-reset, or us) | decoded in store | first start | last start |
 |---|---|---|---|---|---|
 | pre | 78,907 | 48,445 | 40,793 | 25 Sep 07:12Z | 01 Oct 05:57Z |
-| post (old maps) | 21,215 | 13,626 | ~3,100 (antioch 2,862 + team 7) | 01 Oct 09:23Z | 02 Oct 03:48Z |
-| post-m2 (new maps) | 16,975 | 11,852 | **~1,250** (team 7 271 complete; top-ten ranked 410 games) | 02 Oct 03:49Z | 04 Oct 00:53Z |
+| post (old maps) | 21,215 | 13,332 | 2,965 | 01 Oct 09:23Z | 02 Oct 03:48Z |
+| post-m2 (new maps) | 18,600 | 13,439 | **~7,200** (native Mac decode ~05:00–05:18Z, idle since; VM batches; queue ~6,300) | 02 Oct 03:49Z | 04 Oct 05:17Z |
 
 **Post-change in-scope games by map (index):** Schooltime 2,195, Slithery Fight 2,170, Portals 2,104, Trophy 1,986,
 Trauma 1,959, Default 1,926, Autarky 1,886, Queen Of Spades 1,819, Devil 1,756, Prisoners Dilemma 1,696; **the seven
@@ -160,6 +160,9 @@ Query tools/himeji/store_coverage.py; counts/source/queue in tools/himeji/unit17
 DBread-onlyhealthy14585active. Raw+468/0newowngames;extra9ownstoredsidesareolderbacklog. H11-05/H12-05pending.
 - The decode backlog (20,850 games) is CPU-bound in the VM; a native `nice -n 15 python3 tools/chongqing/decode.py --jobs 6
   --time 3000` from the repo root on the Mac would clear it in under an hour (the user declined for now).
+- Someone ran a native decode on the Mac at ~05:00–05:18Z (150 parts, pid 1558) — that is the right way to finish the backlog:
+  `nice -n 15 python3 tools/chongqing/decode.py --jobs 6 --time 3000` from the repo root (post-m2 first). VM batches are
+  stopped while it runs; `canon` dedups any overlap.
 - Collector: Himeji reports 264/91 checks ~32 h stale and own-team games arriving only via opponents (H11-05/H12-05) — the
   director's call; nothing here pulls.
 - Queen backfill of the 2,862 old-map games is deprioritised behind post-m2 decoding (old maps are no longer played).
