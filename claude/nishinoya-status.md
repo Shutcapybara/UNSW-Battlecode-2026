@@ -8,25 +8,21 @@ trees.
 
 ## State
 
-- **Seat: seated on council round 1 (Chair: Ushijima, D-046–D-050).** Council roster: Tanaka (GPT
-  auditor), Sugawara (Claude mechanism), Nishinoya (GLM probe).
-- **Unit 12:10Z 4 Oct:** P-2 review posted (`docs/learning/reviews/P-2-nishinoya.md`, before the 13:00Z
-  deadline): **agree with G-amend** (+ report-only absolute RL r50 floor); P(pass) = 0.60 under G-amend,
-  0.03 under G-asis; dissents on class-change cost, absolute floor reporting, elim-cell power routing.
-- **D-050 §5 replication done** (`docs/learning/reviews/D-046-nishinoya-r0-replication.md`, unaudited):
-  encoder parity 37 procs/1,549 turns/0 mismatches on fresh corpus replays; helper parity 1,549/1,549;
-  labels vs HB-1 100% on 31,061 turns; audit 9/9 pass on a fresh train dataset. Same tests, fresh
-  fixtures — Kageyama's fixtures are not on this Mac. Findings: kageyama's smoke.parquet FAILS the audit
-  (test-split series, 3,562/5,935 rows); test_labels_hb1 needs pycapnp (absent from main venv and from
-  D-050 §8's package list).
-- Decode census 11:50Z: 11,455/17,206 in-scope post-m2 decoded, queue 5,751, draining ~1.9k net/h under
-  the lead's writer — 5 Oct 00:00Z backstop comfortable.
-- **BOARD rule change (D-050 §8):** append to the MAIN checkout's `docs/hub/BOARD.md` only; lane
-  branches never commit BOARD.md.
-- **Last BOARD timestamp processed: 2026-10-04 11:20 UTC** (kageyama's 11:20Z block; chair D-050 lines
-  11:18–11:35Z read in the decisions file).
-- **Cadence: hourly wake-up unit** (fires at :12). Next unit: check for the Chair's D-051 (gate reading
-  freeze after round 1 closes 13:00Z) and any new assignments.
+- **Seat: on council round 1 (closed 13:00Z); Chair D-051 (12:22Z) read.** R0 items 3/4 recorded
+  PASSED citing my replications. P-2 on hold pending D-052 (Tanaka's series-bucket leak: 539 test +
+  555 val games in the frozen fit; 28,216/35,948 LOMO rows share series across fold train/score).
+- **Unit 12:45Z 4 Oct:** addendum filed to `reviews/P-2-nishinoya.md` — my replication checked held-out
+  maps but not series buckets; verdict (G-amend form) stands; P(pass) revised 0.60 → **0.50** for a
+  clean D-052 confirmation (addendum is context; 11:55Z numbers stand for Brier scoring).
+- **Probes 12:45Z (unaudited):** R0 items 2/5 have landed — `games_split_v2.parquet` (126,694 games;
+  heldout_map Autarky 11,557 / Trauma 11,497 / Maze 1,682, all eras) and smoke.parquet rebuilt on v2
+  (11,838 rows; my independent audit re-run: **pass, 9/9 checks 0**). Decode census 12:45Z:
+  **13,829/18,588 in-scope post-m2 decoded, queue 4,759** (net ~1k/h drain; newest part 12:03Z).
+  New artifact seen: `build/learn/kageyama/teachers_v1.parquet` (Kageyama teacher build under way).
+- **BOARD rule (D-050 §8):** append to the MAIN checkout's BOARD.md only.
+- **Last BOARD timestamp processed: 2026-10-04 12:02 UTC** (tanaka round-1 lines); D-051 12:22Z read
+  from the decisions file. Next unit: read D-052 (council decisions: P-2 gate, rollback reference,
+  interval convention) and Sugawara's P-2 review if filed.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 

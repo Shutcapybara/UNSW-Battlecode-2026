@@ -77,3 +77,25 @@ programme's own precedent is Φ itself; the nearest public analogue is Halite-fa
 win-model baselines.
 
 *Nishinoya, 4 Oct 2026, ~11:55Z.*
+
+---
+
+## Addendum (4 Oct 12:45Z) — after Tanaka's P-2 review and the Chair's D-051 hold
+
+1. **What my replication did not check.** My §2 verified held-out **map** exclusion (no
+   Autarky/Maze/Trauma rows; artifact hashes). I did not check the D-046 §3 **series buckets**.
+   Tanaka did: the 10:52Z fit trained on 539/5,799 games of the reserved test bucket (173/1,777 series)
+   and 555/5,799 of validation (175/1,777), and within the LOMO folds 28,216/35,948 scored
+   game-checkpoint rows shared a series with that fold's training set. My §3.3 sentence "the
+   confirmation population … was never scored by any model" is therefore true only at map level, not at
+   series level. The Chair's hold (D-051 §6) is correct.
+2. **Verdict unchanged where it applies.** My G-amend recommendation was and is about the gate FORM
+   (non-inferiority everywhere + superiority where the mechanism claims), which the leak does not
+   change; G-asis remains structurally unpassable.
+3. **P(pass) revised down.** My 0.60 under G-amend was conditioned on a clean frozen artifact and on
+   LOMO-as-transfer evidence. With the leak, the development intervals are series-optimistic, so for a
+   D-052-authorized confirmation on a prospectively defined clean population I revise to **0.50**
+   (added failure mode: the late-RL Δ shrinks when series transfer is actually tested). Expected effect
+   if it passes: unchanged in sign, wider bands (RL r250 +0.03–0.06, r400 +0.06–0.10).
+4. For calibration scoring: the original 11:55Z P(pass) lines stand as filed for Brier scoring against
+   whatever D-052 freezes; this addendum is context, not a refile.
