@@ -36,6 +36,8 @@ Bot snapshots live under `bots/rome-<nn>-<slug>/`; tools under `tools/rome/`.
 | rome-01-nodevil | Post-rule base baseline | 480 games; W-L-D 401-78-1; exp-score 83.65%; norm pearls 1.1398 | 1,392 games; W-L-D 1,041-351-0; exp-score 74.78% | 16/18 workers; host denied nice 10 | measured; new zero |
 | rome-02-far-contact | L10: skip head-on paths >6 Manhattan cells from known beds | 480; FRAME7 W-L-D 399-80-1, win 83.23%, Δwin +0.63pp; literal econ Δ +0.0004 [cluster -0.0001,+0.0010] | 1,392; FRAME7 W-L-D 1,033-359-0, win 74.21%, Δwin -0.22pp; literal econ Δ +0.0087 [+0.0026,+0.0150] | 10.82M max / 0 errors | hold; economy estimand and units guard unresolved; see 2026-10-04 finding |
 | rome-03-queen-state-convert | L39/L49: late own-count<=5 proxy pins crown/feeder to original queen | 480; exp-share 80.21% (−2.40pp), econ Δ 0.000 [0,0]; queen alive among reached RL target maps 2/168 (1.2%, unchanged) | 1,392; exp-share 73.64% (−0.79pp), econ Δ 0.000 [0,0]; queen alive among reached RL maps 5/124 (4.0%, parent 5/119); conversion −8.45pp | 10.83M max / 0 errors | reject; gen wall +15.9%; see 2026-10-04 L39 finding |
+| rome-06-cage-e1 | H-SZ1 package C+D+E, reserve dose 1 | seed1 M2 229-43-0, score .842 (+1.1pp); r490 queen alive 11/147 reached | seed1 gen current 292-108-0, score .730 (+1.0pp); all-gen 353-111-0 | 10.14M max / 0 errors | hold at D-044 screen; invalid deaths +8.07/1k pool |
+| rome-07-cage-e3 | H-SZ1 package C+D+E, reserve dose 3 | seed1 M2 224-48-0, score .824 (−0.7pp); r490 queen alive 14/150 reached | seed1 gen current 294-106-0, score .735 (+1.5pp); all-gen 355-109-0 | 10.37M max / 0 errors | hold at D-044 screen; invalid deaths +8.11/1k pool |
 
 
 ## Updated L10 re-read (4 Oct)
@@ -66,3 +68,11 @@ Bot snapshots live under `bots/rome-<nn>-<slug>/`; tools under `tools/rome/`.
 - Pool: 656–160–0, expected score 0.804; pearls medians r50/r100/r150/r250 28/92.5/164/286.5, units/total/births@100 23/56/38. Queen reached r490 444/816, reached+alive 2/816, mean r490 length 0.043, longest 0/816. Queen-decided losses 19/160 (11.9%), map-cluster bootstrap 95% CI 3.3–25.5%.
 - Gen all: 1,038–353–1, expected score 0.746; excluding stale twins 861–338–1 / 1,200, expected score 0.718. Queen reached 217/1,392, reached+alive 4/1,392, mean length 0.040, longest 3/1,392. Queen-decided losses 4/353 (1.13%), map-cluster 95% CI 0.0–3.3%.
 - D-044 governs all new hand-rule arms: ≥3 declared doses including zero, response curve and side effects, with RL translation. Kanazawa's H-KZ12 screen is on the board; reconcile it with the director's cage-fix-first arm order before selecting the next mechanism.
+
+## H-SZ1 / D-044 screen — 2026-10-04
+
+- Preregistered dose screen on clean parent `carthage-05-free-sprint`, `unswbc 1.2.3`, seed 1, both seats: dose 0 parent, dose 1 C+D+E1, dose 3 C+D+E3. The response curve estimates package effects vs parent; it does not isolate reserve E from C+D. M2 pool 272 fixtures per dose; gen 464, split into 400 current/unflagged and 64 stale pre-swap twin fixtures. All completed with official outcomes; no rc errors.
+- Pool W-L-D: dose 0 226-46-0; dose 1 229-43-0 (+1.1pp expected score); dose 3 224-48-0 (-0.7pp). Current gen: 288-112-0 (0.720), 292-108-0 (0.730), 294-106-0 (0.735). Stale gen twins stayed 61-3 at every dose.
+- Pool queen alive@490 among reached: 0/149 parent, 11/147 (7.5%) E1, 14/150 (9.3%) E3; Schooltime specifically: parent 0/16, E1 11/12 reached and 16/16 wins, E3 13/13 reached and 15/16 wins. Target-file all-map target ≥0.42 reached: doses remain below; seed-1 screen only.
+- Invalid deaths per 1k dragon-turns rose 0→8.07 / 8.11 in pool and 0→2.44 / 2.44 gen. Wall rate fell, but this is a tier-2 concern and the D-042 gate was not applied to this dose screen. CPU maxima 10.14M E1 Schooltime, 10.28M E3 Schooltime, 10.37M E3 Slithery; below 30M.
+- Finding `docs/findings/2026-10-04-rome-SZ1-cage-dose-screen.md`; paired per-map/hash and regime files under `game_stats/runs/`. HOLD at screen stage; do not stack. Any E-specific follow-up needs C+D/E0 and a cage/cap-conditional reserve before full seeds 1–3.
