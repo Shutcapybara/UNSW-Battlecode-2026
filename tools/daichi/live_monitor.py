@@ -22,6 +22,13 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 TEAM = 7
+# D-052 §E: Schooltime and Prisoners Dilemma are played in two layouts each. Variant by the replay's map_hash
+# (Shenzhen unit 7, docs/findings/2026-10-04-shenzhen-unit7-live-map-identity.md: one replay per hash, embedded map
+# text vs maps/live/). Hashes not listed (pre-04:31Z 2 Oct, or new ones) report as 'other'.
+VARIANTS = {
+    'Schooltime': {'23fa2e8a800a': 'open4', '85635a271dcb': 'open4', '65be5fe99a46': 'template', 'e35816d70a75': 'template'},
+    'Prisoners Dilemma': {'a9a230ecffab': '10 dragons', 'aebe7fff18a8': '10 dragons', '88eea47e61ff': 'template', 'dd78b14952c0': 'template'},
+}
 REPO = Path(__file__).resolve().parents[2]
 
 
@@ -76,7 +83,7 @@ def own_games(index_path, since):
             w = (r.get('winner') or '').lower()
             score = 0.5 if w in ('draw', '') else float(w == side)
             out.append(dict(game_id=r['game_id'], series=r.get('series_id') or str(r['game_id']), at=ts(start), ranked=bool(r.get('ranked')),
-                            bot=str(r.get('bot_' + side) or ''), opp=r['team_b'] if side == 'a' else r['team_a'], map=r.get('map_name'),
+                            bot=str(r.get('bot_' + side) or ''), opp=r['team_b'] if side == 'a' else r['team_a'], map=r.get('map_name'), map_hash=(r.get('map_hash') or '')[:12],
                             score=score, autoscrim=r.get('autoscrim_window'), requested_by=r.get('requested_by')))
     out.sort(key=lambda g: (g['at'], g['game_id']))
     return out
@@ -162,6 +169,8 @@ def main(argv=None):
     by_map = {}
     for g in inc_ranked:
         by_map.setdefault(g['map'], []).append(g)
+        if g['map'] in VARIANTS:
+            by_map.setdefault(f"{g['map']} · {VARIANTS[g['map']].get(g['map_hash'], 'other')}", []).append(g)
     unranked_inc = [g for g in games if not g['ranked'] and g['bot'] == str(active)]
     data = dict(at=now.isoformat(), active=active, incumbent=inc.get('name'), fingerprint=inc.get('fingerprint'), first_seen=str(first_seen),
                 ranked_since=len(inc_ranked), wld=[sum(g['score'] == 1 for g in inc_ranked), sum(g['score'] == 0 for g in inc_ranked), sum(g['score'] == .5 for g in inc_ranked)],
@@ -175,8 +184,8 @@ def main(argv=None):
     frozen = dict(at=now.isoformat(), index_sha256=hashlib.sha256((repo / 'public_replays/corpus/index.jsonl').read_bytes()).hexdigest(),
                   snapshots=[k.strftime('%Y%m%dT%H%M%SZ') for k in keys],
                   games=[[g['game_id'], g['series'], g['at'].isoformat(), g['bot'], g['opp'], g['map'], g['ranked'], g['score'],
-                          g['snap_us'], g['snap_opp'], None if g['exp'] is None else round(g['exp'], 6)] for g in games],
-                  columns=['game_id', 'series', 'start', 'bot', 'opp', 'map', 'ranked', 'score', 'snap_us', 'snap_opp', 'exp'])
+                          g['snap_us'], g['snap_opp'], None if g['exp'] is None else round(g['exp'], 6), g['map_hash']] for g in games],
+                  columns=['game_id', 'series', 'start', 'bot', 'opp', 'map', 'ranked', 'score', 'snap_us', 'snap_opp', 'exp', 'map_hash12'])
     fz = json.dumps(frozen, separators=(',', ':'), default=str).encode()
     fsha = hashlib.sha256(fz).hexdigest()
     fdir = repo / Path(a.out).parent / 'live-inputs'
@@ -199,7 +208,7 @@ def main(argv=None):
     L.append('## Incumbent\n')
     L.append(f"- Live submission **{active}** ({inc.get('name') or 'not a registered candidate'}; fingerprint `{(inc.get('fingerprint') or '?')[:16]}`); first seen in the corpus {first_seen}.")
     L.append(f"- Ranked games since first seen: **{len(inc_ranked)}**, W-L-D {data['wld'][0]}-{data['wld'][1]}-{data['wld'][2]}; score − E {fmt(data['since_activation'])}.")
-    L.append(f"- First 40 ranked after first sighting: score − E {fmt(first40)}. Rollback rule (binds a promoted candidate: mean < −0.08 and 95th pct < 0 over its first 40): **{'met' if trigger else 'not met'}**.")
+    L.append(f"- First 40 ranked after first sighting: score − E {fmt(first40)}. Old absolute screen (mean < −0.08 and 95th pct < 0): **{'met' if trigger else 'not met'}** — superseded by D-052 §B (difference vs the replaced submission's last 120, our rating fixed at activation); that look is computed by `tools/daichi/rollback_d052.py` → `docs/learning/rollback-d052.md` §3 and binds only a candidate Live ops promoted.")
     L.append(f"- Rolling last 40 ranked (drift signal, not a rollback trigger): score − E {fmt(roll)}{' — **below −0.08 with 95th pct < 0**' if drift_flag else ''}.")
     L.append(f"- Elo now {elo_now} (rank {rank_now}); 24 h ago {data['elo']['h24']}; 7 d ago {data['elo']['d7'] if data['elo']['d7'] is not None else 'n/a (no snapshot)'}.")
     L.append(f"- Unranked games of the incumbent in the window (exposure only, not scored here): {len(unranked_inc)}.\n")
@@ -211,10 +220,14 @@ def main(argv=None):
     for k, v in rosters.items():
         L.append(f"| {k} | {defs[k]} | {len(v)}: {', '.join(map(str, v[:20]))}{' …' if len(v) > 20 else ''} | {fmt(roster_stats[k])} |")
     L.append('\n## Per map (ranked, incumbent)\n')
+    L.append('Schooltime and Prisoners Dilemma are also split by layout variant (D-052 §E; variant from the replay map_hash, '
+             'Shenzhen unit 7). Variant rows are subsets of their map row, not extra games.\n')
     L.append('| map | score − E |')
     L.append('|---|---|')
-    for m, b in sorted(data['by_map'].items(), key=lambda kv: kv[1]['mean']):
+    for m, b in sorted(((m, b) for m, b in data['by_map'].items() if ' · ' not in m), key=lambda kv: kv[1]['mean']):
         L.append(f'| {m} | {fmt(b)} |')
+        for v, bv in sorted((k, x) for k, x in data['by_map'].items() if k.startswith(m + ' · ')):
+            L.append(f'| ↳ {v.split(" · ", 1)[1]} | {fmt(bv)} |')
     L.append('\n## Drift (all our ranked games)\n')
     L.append(f"- Last 7 days: {fmt(this_week)}; the 7 days before: {fmt(prev_week)}.")
     for b, v in sorted(data['by_bot'].items(), key=lambda kv: -kv[1]['n']):
