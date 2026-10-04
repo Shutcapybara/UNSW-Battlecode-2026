@@ -14,7 +14,7 @@ def main():
  if sourcefile.exists():assert json.loads(sourcefile.read_text())==source, 'Decoder changed: use a new store version'
  else:sourcefile.write_text(json.dumps(source,indent=2)+'\n')
  rows={str(r['game_id']):r for r in map(json.loads,(a.snapshot/'index.jsonl').read_text().splitlines())};lad=json.loads((a.snapshot/'ladder.json').read_text());tops=sorted([r for r in lad if r.get('rank') and r['rank']<=10 and not r.get('dev')],key=lambda r:r['rank']);ids=[7]+[r['id'] for r in tops]
- d=pd.DataFrame(rows.values());d['game']=d.game_id.astype(str);d['era']=d.started_at.map(lambda s:'post' if s and s>='2026-10-01T06:00' else 'pre');d.to_parquet(a.store/'.games.parquet.tmp',index=False);(a.store/'.games.parquet.tmp').replace(a.store/'games.parquet');pd.DataFrame(lad).to_parquet(a.store/'.teams.parquet.tmp',index=False);(a.store/'.teams.parquet.tmp').replace(a.store/'teams.parquet')
+ d=pd.DataFrame(rows.values());d['game']=d.game_id.astype(str);d['era']=d.started_at.map(lambda s:'post' if s and s>='2026-10-01T06:00' else 'pre');d['map_era']=d.started_at.map(lambda s:'post-m2' if s and s>='2026-10-02T03:49' else 'post' if s and s>='2026-10-01T06:00' else 'pre');d.to_parquet(a.store/'.games.parquet.tmp',index=False);(a.store/'.games.parquet.tmp').replace(a.store/'games.parquet');pd.DataFrame(lad).to_parquet(a.store/'.teams.parquet.tmp',index=False);(a.store/'.teams.parquet.tmp').replace(a.store/'teams.parquet')
  done=B.done_games(a.store,clean=False);groups=collections.defaultdict(list)
  for gid,r in rows.items():
   if gid in done or (r.get('started_at') or '')<a.since or r.get('status')!='completed':continue

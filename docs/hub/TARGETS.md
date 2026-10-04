@@ -522,7 +522,7 @@ interval.
 
 ### Himeji unit18 — provisional ranked opening references,4October02:38UTC
 
-Era post123>=1Oct06:00Z,window2Oct23:13–4Oct01:45;708decodedgames frozen,504rankedgames/1008sides,
+Era **post-m2** (D-043; >=2Oct03:49Z) within post123,window2Oct23:13–4Oct01:45;708decodedgames frozen,504rankedgames/1008sides,
 489top10/20own. Cohort021804Z264/306/213/91/952/842/87/55/507/566. References below are top10median
 within-exact-maphash empiricalfieldpercentile [95%whole-seriesbootstrap], **selected sample, provisional**.
 Coarse geometry fromactualheaders:portal-edge>=.025;else degree<=2share>=.25corridor;elseopen;cross4cellqueenspawns.
@@ -552,3 +552,12 @@ beforeconsideringstability. Bed-eatsreferences separately inunit18_audit/ranked-
 are not realizedsafe crossings,fieldtiescanproducep50withoutactivity;4opensidesendedbefore50andarecarried.
 L41.5unchanged;capture-minus-transitcontrast10.0[-1.6,17.5]ppnotcausalproof. Fullfalsifier/sample/tester inreport.
 Rome04gateREJECTisnotH-H1falsification;Rome05H-H5inprogress. Otheranalysts' proposals/references preserved.
+
+
+### Himeji unit19 — D-043 and sprint hypothesis disagreement, 4October03:10UTC
+
+All older-map references/exemptions remain historical. Unit18 hash-specific ranked references are wholly post-m2; unchanged provisional values, missing matched-live-us gaps still NA. No new field percentile target this unit.
+
+Retain Shenzhen's H-SZ21/23 alongside this disagreement: 416 selected post-m2 RL games contain159ranked/257unranked. Current-ladder rankedtop10=104sides/84series; paid0.192 [95%seriesCI0.082,0.333] segments/game,12/104everpay. Survivor-only50/41 paid0.060[0,0.133] is selected on the outcome. These pooled-map diagnostics cannot justify a universalzero-tax policy. H-H3 food-free pre-meal cap escape can require1paidsegment; universalexactly3 also has an exception. Free-stepthresholds are5/9/13,not8. Shenzhen H-SZ23.45 test should use lagged at-risk length/phase/threat and exactgeometry controls,247death-event planning; Rome/free live-map tester can settlezero-tax vs emergency exception with60eligiblepairs+guards afterD-043zero. Full mechanism/falsifier/power/queries: docs/findings/2026-10-04-himeji-sprint-threshold-and-map-era-reading.md, unit19_audit. No other analyst target removed.
+
+New S1 q_len@k carries terminal states: useactualR>=k pluscensoring; syntheticend1 givesq_len490=3. Do notlabelcarried valuesobservedr490. No frozenreferenceoverwrite. Rome05oldmaps/Rome03-hb1parent is incomplete/noverdict; historical04doesnottransfer swappedgeometry.

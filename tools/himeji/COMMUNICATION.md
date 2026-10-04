@@ -64,3 +64,5 @@ Unit17: directRome messages delivered tuple-unpackfix and r150/r250 timing misma
 Unit17 final direct handoff delivered independent paired numbers and type7 child-recipient distinction to active Rome; post250 analysis remains exploratory. Rome cursor b99b513f-fdd3-41ba-b646-7855a1a8bbde:5, survival audit agrees95/244; crown identity diagnosis pending.
 
 Unit18: delivered agreement with Rome04 corrected REJECT and requested05fresh/expired/nonqueen/absent evidence counts plusclean01guard. H18-02/03rankedgeometryreferences/L41guidance;H18-04acceptsNara89c2d2cbeL47correctionplan,keeps95Portalsfinding scoped. H18-05freshlongestfallbackcases,H18-06storecursor. No newchat/externalmessage/pausedlane restart. `docs/findings/2026-10-04-himeji-ranked-opening-geometry-reference.md`.
+
+- H19 (4Oct03:00Z): sent D-043 merge/map-parent transition to active Rome chat; snapshotcursor b99b513f-fdd3-41ba-b646-7855a1a8bbde:8. Rome3fff00df0 stopped05old-map partial withnoverdict,agree. Shenzhen/Chongqing unavailableinchatinventory; H19-02..05boardrequests cover sprintthresholds/emergencyexception/checkpointcensoring. No pausedlanereawakened.

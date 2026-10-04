@@ -2,6 +2,17 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
 
+## Unit19 — 2026-10-04 03:10 UTC; sprint hypothesis and D-043 measurement audit
+
+- Explicit director authorization superseded old merge restriction: fast-forwarded own branch to main69f4561d4; main source untouched. Read D-043/board03:10/protocol/targets/peer statuses. Named brief file absent; full user brief read. New parent carthage-05/14585, LIVE_MAPS_M2; no old-map exemptions or stale gen transfer. Rome3fff00df0 closes05 partial, no verdict (old maps/Rome03-hb1 parent); reading H19-01, chat cursor...:8.
+- Shenzhen416game sprint sample=159ranked/257unranked; all416 official RL reasons in lean rows. Current-ladder top10 ranked104sides/84series pay0.192segments [95%0.082,0.333],12/104ever pay; surviving50/41 pay0.060[0,0.133]. Pooled-map descriptive only, not stabletargets. 1000series bootstrap1919, frozenrows reproduced. H-SZ23 corrected free-step threshold5,not8; prereg247event hazard plan/controls. H-SZ21 universalzero-tax disputed via H-H3 food-free-cap exception; tests60exposedpairs+winguards. Hypotheses/other targets retained.
+- queen_cols carries terminal states: synthetic endr1 givesq_len490=3. RequireR>=490 +censoring. New38sidebatch has0earlyends; no unsupported allegation about peer aggregate tables. Unit18allpost-m2 relabelled, valuesfrozen.
+- Raw118774at02:56:32Z/+277/5own; indexbc6d80a670b032fe49af135c4244f6e12cc8e244d58e9099ac011f72bbc41640. Ladder025212Z SHA277baa4fa923900812726f3e6ed13ced7b9b0cf25c1334694893353bed0003c4,top264/306/91/213/842/55/87/507/566/82. Rulespost123/map_eram2, ranked/unranked/local separate.
+- Fresh own5ranked14585vs529 series02:14Z2–3,4RL longestqueen0/4 and1earlyelimcensored;5winner/10queenchecks. At490leadloss/RLloss2/3,lost/RLlead2/3;terminal0/3,0/1. Queen-decided0/3losses thisone series only; no stableCI/spoofingclaim. Collector35400healthy0errors; DBimmutable read-onlycheckpoint02:52Z active14585/idle14265 (mode=ro failed, WALexcluded); corroboratedlivearrivals. NoAPIs/settingschanges.
+- Changedbuilderhash→separatestore work/himeji-live-store-qcols-v1:19games/38sides,0errors/171s,allrankedpost-m2,38winneragreements,latest02:23:59Z,2maplabels.1122pendingfrozenunit19. Old754/1508store+308unit17queuepreserved,do notmixschemas. Wrapperaddsmap_era. Noactiveworker. Future resume uses NEWstore/unit19,oneworker/160s. No newdecoder run needed for frozenunit18refs.
+- Sources/queries/hashes tools/himeji/unit19_audit; main69f4561d4; Antioch2c7113f66/Carthage5b69fa9d0/Kyotofccea71c0/Nara89c2d2cbe/Rome3fff00df0, Shenzhen0a3e1014a. BoardH19-01..06; directRomecoordination, othernewanalystchats unavailable→board. Hypotheses H-H1/3/4/5 .5, H-H2unresolved; matchedgapsNA.
+- Next: post-m2 map byte/structural identity, or queen gap/loss-share intervals; resume1122newstorequeue onlyifneeded. No bot/simulator/API/deploymentchange. AutomationACTIVE30min. Finding docs/findings/2026-10-04-himeji-sprint-threshold-and-map-era-reading.md. Scopedcommit/push.
+
 ## Unit18 — 2026-10-04 02:38 UTC; ranked Q3 geometry references complete
 
 - Frozen708game/1416side store yields504rankedgames/1008sides,489top10/20own,38hashes; r25/r50 Q3 bedconversion,

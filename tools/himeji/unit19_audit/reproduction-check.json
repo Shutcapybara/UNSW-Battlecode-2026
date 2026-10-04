@@ -1,0 +1,6 @@
+{
+  "groups": 10,
+  "all_summary_estimates_match": true,
+  "series_bootstrap_seed": 1919,
+  "draws": 1000
+}

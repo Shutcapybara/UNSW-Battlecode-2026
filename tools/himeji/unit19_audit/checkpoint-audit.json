@@ -1,0 +1,26 @@
+{
+  "source_sha256": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f",
+  "synthetic_last_round": 1,
+  "synthetic_output": {
+    "q_id": 0,
+    "q_alive_end": 1,
+    "q_death_round": null,
+    "q_moves": 1,
+    "q_maxlen": 3,
+    "q_end": 3,
+    "q_header": 3,
+    "q_len@25": 3,
+    "q_len@50": 3,
+    "q_len@100": 3,
+    "q_len@150": 3,
+    "q_len@250": 3,
+    "q_len@400": 3,
+    "q_len@490": 3,
+    "q_death_cls": null,
+    "q_death_killer": null
+  },
+  "new_store_sides": 38,
+  "ended_before490": 0,
+  "positive_carried_q490": 0,
+  "early_rows": []
+}
