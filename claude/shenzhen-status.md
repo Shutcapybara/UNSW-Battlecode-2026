@@ -57,9 +57,10 @@ pushes `r/shenzhen`.
 | H-SZ46 | queen gate/pocket veto (static form 46a: static room ≥ 4L+16) | **0.6** (unit 21: sealed 10 → 5, total +15 %; overrides KZ26, strikes 6 → 11) | — | — | stack piece |
 | H-SZ48 | one lexicographic queen step (slack > static room > plan) | **0.35** (unit 22: total +15 % all maps up, alive 1/18 < bar 3, seals 3 → 6) | — | — | best queen-step component |
 | H-SZ50 | global E1 reserve is the legal cage fix (cage needs a slot per forced meal) | posted 0.45 (unit 22) | Schooltime queen ≤ 6/16 or pearls@250 below −10 | Rome E1 arm | Rome / Asahi |
+| H-SZ51 | class-B maps: live win tracks total share more than queen survival | posted 0.4 (unit 23) | queen alive outweighs total share in store logistic | ~2,000 ranked post-m2 | Data / Learner |
 | H-SZ49 | learned queen block: strike slack, static room, unit headroom | posted 0.3 (unit 21) | AUC gain < +0.02 r100–250 | store LOMO | Learner |
 | H-SZ47 | field queens cross fewer narrow gates | posted 0.35 (unit 20) | equal or more crossings | store ~200 games | Data |
-| H-SZ43 (→ 0.45, unit 22) | queen in the crowd: field queens screened by ≥ 2 ally heads within 3 more than ours | posted 0.35 (unit 18) | share equal or lower | store, ~200 games | Data / Himeji |
+| H-SZ43 (→ 0.45 u22, → 0.35 u23: sim form refuted, alive 0/18, Islands −48 %) | queen in the crowd: field queens screened by ≥ 2 ally heads within 3 more than ours | posted 0.35 (unit 18) | share equal or lower | store, ~200 games | Data / Himeji |
 | H-SZ41 | queen hazards substitute: stack KZ26 + KZ12 + H-SZ40 before reading the tiebreak | posted 0.4 (unit 17) | stack queen alive@end ≤ 1/18 | 4 arms × 18 sim games | tester / this lane |
 | H-SZ35 | trade-point collection: ally within 3 of a cross-team head-on collects the partner corpse (the 50/50 pool) | posted 0.4 (unit 15), supersedes H-SZ32 trigger | enemy share of partner corpses not −10 pp in sim | sim 12 sides | Claude tester |
 | H-SZ31 | cull to free at the cap (probe K): cage 4/4 queen 3; Slithery 6 sides undecided | posted 0.45 (unit 13) | cage survival < E3's or cap-map wins < E0's | Rome ladder arm K | Rome |
@@ -121,10 +122,11 @@ pushes `r/shenzhen`.
 - **Unit 20 (4 Oct 13:38Z – 14:05Z).** r/shenzhen pushed (09498b3d9). Logging arm c05rl (outcomes identical to c05r): sealed queens are in a 2–32-cell pocket 2 rounds out in 6/10 cases, on the open board in 4/10; H-SZ45 refuted; H-SZ46/47. Read Asahi P-A01 (E is the cage lever) and Kageyama map variants (ours since unit 7).
 - **Unit 21 (4 Oct 14:26Z – 14:55Z).** Pushed bf5337891. Probe G (static pocket veto) on Q + R: sealed 10 → 5, total +15 %, strikes back 6 → 11 (override order). H-SZ48/49. Read P-sugawara-01: 60 × 40 gate = map identity; proposed r0 cage bit + radio relay.
 - **Unit 22 (4 Oct 15:18Z – 15:45Z).** Pushed a84259f05. Probe X (H-SZ48), 18 sim games: total +15 % all maps up, first surviving queen (1/18), bar missed. Corrected the unit-21 P-sugawara-01 suggestion (teammates spawn 13/20 from the cage); cage anatomy (forced eat per bed spawn) → H-SZ50.
+- **Unit 23 (4 Oct 16:05Z – 16:35Z).** Pushed 8b6f34348. Probe Y (X + ally-head term): alive 0/18, total −10 %, Islands −48 % → H-SZ43 sim form refuted; step rules plateaued. Posted the P-4 sim prior (m0 > m1). H-SZ51.
 
 ## Next unit
 
-0. H-SZ43 positional queen: X + "stay within 3 of ≥ 1 ally head" as tuple term (2) in sim, 18 games; read Rome/Asahi E1 arms for H-SZ50.
+0. Step rules plateaued: next, H-SZ35 (trade-point collection) or the E1 reading for H-SZ50 when Rome/Asahi post it; consider a Schooltime sim of global E1 (cage + forced meals) with the template map.
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
