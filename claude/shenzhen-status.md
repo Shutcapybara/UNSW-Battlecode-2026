@@ -35,10 +35,11 @@ pushes `r/shenzhen`.
 | H-SZ18 | sealed-dragon rule everywhere (split / invalid, never head-on into an ally) | posted 0.5 (unit 4) | < 1 qualifying ally-h2h death per 10 games | corpus count, then panel | analyst → tester |
 | H-SZ20 | caged queen target = exactly 3 (4 is sealed); eat child corpse, never grow, never pay | revised unit 5, 0.5 | len@490 ≠ 3 in > 20 % of live-Schooltime games | 40 games | tester |
 | H-SZ21 | queen never pays sprint segments (any map) — probe D; field-supported (top ten 0.11 paid/game vs 0.63) | posted 0.5 → 0.6 | queens pay < 0.1 seg/game, or no-pay arm moves len@490 < 1 | corpus then pool s1–3 | analyst → tester |
-| H-SZ22 | caged queen at the unit cap: non-queens reserve 3 slots (probe E) — cage 7/7; on Slithery total −15 % (6 sides), run as its own switch | 0.5, in patch | invalid cage split at 64 units ≥ 1 per 40 games | 40 late games | tester |
+| H-SZ22 | reserve only while our queen is caged (team-wide E3 blocks escape splits: trapped at cap +81 %) | revised unit 10, 0.45 | invalid cage split at 64 units ≥ 1 per 40 games | 40 late games | tester |
 | H-SZ23 | length is speed (⌈L/4⌉ free steps: 2 from L5, 3 from L9); feed the queen to ≥ 5 early | posted 0.45; thresholds corrected (Himeji H19-03) | event study (Kanazawa): hazard after vs before a meal crossing 5/9, with placebos | corpus then tester | analyst → tester |
 | H-SZ24 | stale unit count: same-round splits overshoot any cap rule | supported in simulator (unit 9: reserve 3 still reaches 64 on Slithery 6/6) | — | — | — |
-| H-SZ25 | serialise splits within a round (lower ids first) to hold below the cap; trapped dragons keep an escape split | posted 0.45 (unit 9) | trapped deaths at ≥ 62 not −30 % on Slithery, or total −5 % | simulator 6 sides, then panel | probe next unit / Claude tester |
+| H-SZ25 | serialise production splits near the cap | simulator unit 10: trapped −44 %, wins 6/12 = 6/12, total −23 % → component only | — | — | — |
+| H-SZ26 | at the cap, length per unit: stop production splits at ≥ ~60 units on cap maps, grow instead (top ten 194 vs us 158 total at r250 Slithery) | posted 0.5 (unit 10) | total@400 not up on cap maps, or wins down | simulator 12 sides, then panel | Claude tester |
 | closed | H-SZ7 exposure: our queens are not more exposed per round (enemy head ≤3 in 10.9 % vs 9.6–13.6 %) | answered | — | — | — |
 
 ## Log
@@ -74,10 +75,13 @@ pushes `r/shenzhen`.
 - **Unit 9 (04:47Z – 05:10Z).** Fixed the committed patch (was stale C+D; now C+D+E, sha ef29c6ee). Corrected my vacuous
   Trauma/Portals parity claim (cap never reached). Slithery is the cap map: E halves time at ≥ 62 but units still hit 64;
   total −15 % over 6 sides. Our invalid deaths are mostly length-2 cull splits. H-SZ25 proposed.
+- **Unit 10 (05:37Z – 06:05Z).** 112d28f9c on origin. Probe G (serialised splits) on Slithery 12 sides: mechanism works,
+  wins neutral, total −23 %; E3 raises trapped deaths at the cap +81 %. Corpus: top ten 23 % longer per unit at the cap.
+  H-SZ26 proposed; H-SZ22 revised to cage-only.
 
 ## Next unit
 
-0. H-SZ25 simulator probe (serialised splits) on Slithery. Then H-SZ23 landmark analysis (Himeji H21-03: no same-queen pre/post — immortal-time bias) (meal crossing length 5 / 9; hazard k rounds after vs before; placebo crossings).
+0. H-SZ26 simulator probe (no production splits at ≥ 60 units) on Slithery + Around UNSW, 12 sides. Then H-SZ23 landmark analysis (Himeji H21-03: no same-queen pre/post — immortal-time bias) (meal crossing length 5 / 9; hazard k rounds after vs before; placebo crossings).
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
