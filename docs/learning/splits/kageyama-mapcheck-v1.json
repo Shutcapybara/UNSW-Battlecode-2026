@@ -1,0 +1,567 @@
+{
+ "era": "post-m2",
+ "distinct_maps": 38,
+ "games": 26572,
+ "games_on_matching_maps": 25011,
+ "all_match": false,
+ "rows": [
+  {
+   "map": "Around UNSW",
+   "map_hash": "bda3c3f3767e",
+   "games": 785,
+   "example": "853183",
+   "template": "unsw.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 3806,
+    "redacted": 290,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Around UNSW",
+   "map_hash": "ed137eeb1550",
+   "games": 841,
+   "example": "853568",
+   "template": "unsw.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 3806,
+    "redacted": 290,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Australia",
+   "map_hash": "829f6ff47aea",
+   "games": 777,
+   "example": "853018",
+   "template": "australia.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 3758,
+    "redacted": 338,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Australia",
+   "map_hash": "e0221c69b15f",
+   "games": 842,
+   "example": "853649",
+   "template": "australia.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 3758,
+    "redacted": 338,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Autarky",
+   "map_hash": "66c5adbf2432",
+   "games": 812,
+   "example": "850832",
+   "template": "autarky.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 776,
+    "redacted": 196,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Autarky",
+   "map_hash": "b2575c0809ae",
+   "games": 777,
+   "example": "850977",
+   "template": "autarky.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 776,
+    "redacted": 196,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Default",
+   "map_hash": "08c80bd457d9",
+   "games": 789,
+   "example": "851013",
+   "template": "default.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 0,
+    "redacted": 1024,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Default",
+   "map_hash": "2aa3b6c52fa4",
+   "games": 865,
+   "example": "850800",
+   "template": "default.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 0,
+    "redacted": 1024,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Devil",
+   "map_hash": "cb4efb7b4ae5",
+   "games": 747,
+   "example": "850742",
+   "template": "devil.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 338,
+    "redacted": 174,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Devil",
+   "map_hash": "da98e11bd49c",
+   "games": 708,
+   "example": "850845",
+   "template": "devil.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 338,
+    "redacted": 174,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Islands",
+   "map_hash": "8fe66a3fb928",
+   "games": 826,
+   "example": "853487",
+   "template": "islands.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 1910,
+    "redacted": 330,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Islands",
+   "map_hash": "e3175217d171",
+   "games": 775,
+   "example": "853342",
+   "template": "islands.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 1910,
+    "redacted": 330,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Maze",
+   "map_hash": "502427b4a4b5",
+   "games": 757,
+   "example": "853327",
+   "template": "maze.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 802,
+    "redacted": 350,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Maze",
+   "map_hash": "8202a09f96a4",
+   "games": 727,
+   "example": "853730",
+   "template": "maze.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 802,
+    "redacted": 350,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Portals",
+   "map_hash": "172fc73b48c1",
+   "games": 909,
+   "example": "850821",
+   "template": "portals.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 408,
+    "redacted": 104,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Portals",
+   "map_hash": "cfc35be3b278",
+   "games": 867,
+   "example": "850846",
+   "template": "portals.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 408,
+    "redacted": 104,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Prisoners Dilemma",
+   "map_hash": "88eea47e61ff",
+   "games": 341,
+   "example": "850802",
+   "template": "dilemma.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 428,
+    "redacted": 84,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Prisoners Dilemma",
+   "map_hash": "a9a230ecffab",
+   "games": 348,
+   "example": "850831",
+   "template": "dilemma.map",
+   "ok": false,
+   "why": "lines 1553 vs 1549"
+  },
+  {
+   "map": "Prisoners Dilemma",
+   "map_hash": "aebe7fff18a8",
+   "games": 331,
+   "example": "850822",
+   "template": "dilemma.map",
+   "ok": false,
+   "why": "lines 1553 vs 1549"
+  },
+  {
+   "map": "Prisoners Dilemma",
+   "map_hash": "dd78b14952c0",
+   "games": 356,
+   "example": "851009",
+   "template": "dilemma.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 428,
+    "redacted": 84,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Queen Of Spades",
+   "map_hash": "3ffe4ab7cb5e",
+   "games": 739,
+   "example": "850799",
+   "template": "queen_of_spades.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 433,
+    "redacted": 442,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Queen Of Spades",
+   "map_hash": "ea5704a61d5b",
+   "games": 819,
+   "example": "850906",
+   "template": "queen_of_spades.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 433,
+    "redacted": 442,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Schooltime",
+   "map_hash": "23fa2e8a800a",
+   "games": 461,
+   "example": "850740",
+   "template": "schooltime.map",
+   "ok": false,
+   "seat_swap": false,
+   "tiles": {
+    "same": 2074,
+    "redacted": 326,
+    "other": 0
+   },
+   "other_lines": 4
+  },
+  {
+   "map": "Schooltime",
+   "map_hash": "65be5fe99a46",
+   "games": 490,
+   "example": "850954",
+   "template": "schooltime.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 2074,
+    "redacted": 326,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Schooltime",
+   "map_hash": "85635a271dcb",
+   "games": 421,
+   "example": "850829",
+   "template": "schooltime.map",
+   "ok": false,
+   "seat_swap": true,
+   "tiles": {
+    "same": 2074,
+    "redacted": 326,
+    "other": 0
+   },
+   "other_lines": 4
+  },
+  {
+   "map": "Schooltime",
+   "map_hash": "e35816d70a75",
+   "games": 488,
+   "example": "850823",
+   "template": "schooltime.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 2074,
+    "redacted": 326,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Slithery Fight",
+   "map_hash": "2b2eaa9c0cd9",
+   "games": 954,
+   "example": "850833",
+   "template": "slithery_fight.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 1370,
+    "redacted": 331,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Slithery Fight",
+   "map_hash": "c8e8fa61335b",
+   "games": 906,
+   "example": "850904",
+   "template": "slithery_fight.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 1370,
+    "redacted": 331,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Stripes",
+   "map_hash": "3d68704c632f",
+   "games": 627,
+   "example": "853678",
+   "template": "stripes.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 218,
+    "redacted": 70,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Stripes",
+   "map_hash": "63cb068bc504",
+   "games": 629,
+   "example": "853593",
+   "template": "stripes.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 218,
+    "redacted": 70,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Tower Defense",
+   "map_hash": "65900cc53db7",
+   "games": 657,
+   "example": "853594",
+   "template": "tower_defense.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 362,
+    "redacted": 150,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Tower Defense",
+   "map_hash": "b5f9f10f4185",
+   "games": 667,
+   "example": "853839",
+   "template": "tower_defense.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 362,
+    "redacted": 150,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Trauma",
+   "map_hash": "21e922b7311f",
+   "games": 874,
+   "example": "850907",
+   "template": "trauma.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 1010,
+    "redacted": 142,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Trauma",
+   "map_hash": "57dcdc6de913",
+   "games": 797,
+   "example": "850912",
+   "template": "trauma.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 1010,
+    "redacted": 142,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Trophy",
+   "map_hash": "3c76d5636a2d",
+   "games": 808,
+   "example": "850744",
+   "template": "trophy.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 78,
+    "redacted": 547,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "Trophy",
+   "map_hash": "647b52a58e63",
+   "games": 779,
+   "example": "850803",
+   "template": "trophy.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 78,
+    "redacted": 547,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "weakhold",
+   "map_hash": "665aaa6c8538",
+   "games": 642,
+   "example": "853184",
+   "template": "weakhold.map",
+   "ok": true,
+   "seat_swap": false,
+   "tiles": {
+    "same": 524,
+    "redacted": 76,
+    "other": 0
+   },
+   "other_lines": 0
+  },
+  {
+   "map": "weakhold",
+   "map_hash": "9c3aa9986574",
+   "games": 634,
+   "example": "853597",
+   "template": "weakhold.map",
+   "ok": true,
+   "seat_swap": true,
+   "tiles": {
+    "same": 524,
+    "redacted": 76,
+    "other": 0
+   },
+   "other_lines": 0
+  }
+ ]
+}

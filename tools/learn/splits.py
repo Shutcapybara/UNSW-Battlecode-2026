@@ -4,7 +4,7 @@
     python3 tools/learn/splits.py fixtures   # -> docs/learning/splits/kageyama-fixtures-v1.json
 
 Rules (frozen by the Chair, never re-drawn):
-  held-out maps   every game whose map NAME is Maze, Trauma or Trophy, in every map_era -> split 'heldout_map'
+  held-out maps   every game whose map NAME is Autarky, Maze or Trauma (D-049), in every map_era -> split 'heldout_map'
   series buckets  bucket = int(sha256('D-046/' + series_id), 16) mod 10; 0 test, 1 validation, 2-9 train. A game with
                   no series id is its own series ('game:' + game id) — reported separately.
   gate seeds      local games on seeds 1-5 are never training rows (seeds 1-3 gate, 4-5 reserve); training rollouts
@@ -19,11 +19,14 @@ PY = ROOT / 'build' / 's1-pylib'
 if sys.platform.startswith('linux') and PY.exists():
     sys.path.append(str(PY))
 
-HELDOUT_MAPS = ('Maze', 'Trauma', 'Trophy')
-HELDOUT_FILES = ('maze', 'trauma', 'trophy')
+HELDOUT_MAPS = ('Autarky', 'Maze', 'Trauma')      # D-049 (10:59Z) corrected D-046's Trophy to Autarky; frozen
+HELDOUT_FILES = ('autarky', 'maze', 'trauma')
 GATE_SEEDS = (1, 2, 3, 4, 5)
 TRAIN_SEED_MIN = 1000
-SPLIT_VERSION = 1
+SPLIT_VERSION = 2
+CONSUMED = {   # series whose games entered a fit (D-051 §6): never usable as clean evaluation for that card
+    'P-2': 'build/hinata/v0/fit-lq/train_rows.parquet',   # sha256 c958e8c7..., P-2 / P-hinata-02 at 10:52Z
+}
 
 
 def bucket(series_id):
@@ -52,12 +55,40 @@ def games_manifest():
     import pandas as pd
     S1 = ROOT / 'build' / 's1' / 'corpus'
     g = pd.read_parquet(S1 / 'games.parquet', columns=['game', 'game_id', 'team_a', 'team_b', 'map', 'ranked',
-                                                       'started_at', 'series_id', 'seed', 'map_hash', 'map_era', 'in_scope'])
+                                                       'started_at', 'series_id', 'seed', 'map_hash', 'map_era', 'in_scope',
+                                                       'result_a'])
     g['series_key'] = [s if isinstance(s, str) and s else f'game:{gid}' for s, gid in zip(g.series_id, g.game)]
     g['bucket'] = [bucket(s) for s in g.series_key]
     g['split'] = ['heldout_map' if m in HELDOUT_MAPS else ('test' if b == 0 else 'val' if b == 1 else 'train')
                   for m, b in zip(g['map'], g.bucket)]
     # a series never straddles splits (series buckets are per series; held-out maps are per game but a series is one map)
+    # consumed series: any series with a game in a frozen training file (consumed_by = card id)
+    g['consumed_by'] = ''
+    consumed = {}
+    for card, path in CONSUMED.items():
+        p = ROOT / path
+        if not p.exists():
+            consumed[card] = dict(file=path, missing=True)
+            continue
+        rows = pd.read_parquet(p, columns=['game'])
+        games = set(rows.game.astype(str))
+        ser = set(g[g.game.astype(str).isin(games)].series_key)
+        hit = g.series_key.isin(ser)
+        g.loc[hit, 'consumed_by'] = [(c + ',' if c else '') + card for c in g.loc[hit, 'consumed_by']]
+        sp = g[g.game.astype(str).isin(games)]
+        consumed[card] = dict(file=path, sha256=sha(p), games_in_file=len(games), games_matched=int(len(sp)),
+                              series=len(ser), file_games_by_split=sp.split.value_counts().to_dict(),
+                              series_by_split=g[hit].drop_duplicates('series_key').split.value_counts().to_dict())
+    # held-out-map post-m2 games whose series has no game in the consumed rows (D-051 §6 count)
+    hm = g[(g.split == 'heldout_map') & (g.map_era == 'post-m2')].copy()
+    hm['clean'] = hm.consumed_by == ''
+    hm['decisive'] = hm.result_a.isin([0.0, 1.0])
+    clean_counts = []
+    for (mp, rk), x in hm.groupby(['map', 'ranked']):
+        clean_counts.append(dict(map=mp, ranked=bool(rk), games=int(len(x)), clean=int(x.clean.sum()),
+                                 in_scope=int(x.in_scope.fillna(False).sum()),
+                                 in_scope_decisive_clean=int((x.clean & x.in_scope.fillna(False) & x.decisive).sum()),
+                                 series=int(x.series_key.nunique()), clean_series=int(x[x.clean].series_key.nunique())))
     # by construction a series' non-held-out games share one bucket; a series also holds held-out-map games (a series
     # spans maps), which is intended: held-out maps test map transfer, series buckets test opponents/time
     nh = g[g.split != 'heldout_map']
@@ -65,7 +96,7 @@ def games_manifest():
     mixed = int((g.groupby('series_key').split.nunique() > 1).sum())
     out = ROOT / 'build' / 'learn' / 'splits'
     out.mkdir(parents=True, exist_ok=True)
-    g[['game', 'game_id', 'series_key', 'bucket', 'split', 'map', 'map_hash', 'map_era', 'ranked', 'team_a', 'team_b',
+    g[['game', 'game_id', 'series_key', 'bucket', 'split', 'consumed_by', 'map', 'map_hash', 'map_era', 'ranked', 'team_a', 'team_b',
        'started_at', 'in_scope']].to_parquet(out / f'games_split_v{SPLIT_VERSION}.parquet', index=False)
     lines = '\n'.join(f'{a},{b}' for a, b in sorted(zip(g.game.astype(str), g.split))).encode()
     counts = g.groupby(['map_era', 'split']).agg(games=('game', 'size'), series=('series_key', 'nunique'),
@@ -82,13 +113,17 @@ def games_manifest():
         heldout_map_hashes=[dict(map=r.map, map_era=r.map_era, games=int(r.games), map_hash=r.hashes) for r in hmap.itertuples()],
         counts=[dict(map_era=r.map_era, split=r.split, games=int(r.games), series=int(r.series), ranked=int(r.ranked))
                 for r in counts.itertuples()],
-        bucket_share={str(b): round(float((g.bucket == b).mean()), 4) for b in range(10)})
+        bucket_share={str(b): round(float((g.bucket == b).mean()), 4) for b in range(10)},
+        consumed=consumed, heldout_post_m2_clean=clean_counts,
+        snapshot_note='The rule is frozen; this digest covers the store snapshot it was built from. New games get '
+                      'their split from the same rule (splits.split_of); re-running only adds rows.')
     p = DOCS / 'docs' / 'learning' / 'splits' / f'kageyama-games-v{SPLIT_VERSION}.json'
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(man, indent=1, default=str))
-    print(json.dumps({k: man[k] for k in ('n_games', 'n_series', 'games_without_series', 'series_straddling_buckets', 'series_with_heldout_map_games',
+    print(json.dumps({k: man[k] for k in ('n_games', 'n_series', 'games_without_series', 'series_straddling_buckets', 'series_with_heldout_map_games', 'consumed',
                                            'sha256_game_split')}, indent=1))
     print(counts.to_string(index=False))
+    print(pd.DataFrame(clean_counts).to_string(index=False))
     return man
 
 

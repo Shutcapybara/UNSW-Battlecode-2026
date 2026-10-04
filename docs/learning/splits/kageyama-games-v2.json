@@ -1,0 +1,268 @@
+{
+ "split_version": 2,
+ "decision": "D-046 \u00a73",
+ "rules": "(frozen by the Chair, never re-drawn):\n  held-out maps   every game whose map NAME is Autarky, Maze or Trauma (D-049), in every map_era -> split 'heldout_map'\n  series buckets  bucket = int(sha256('D-046/' + series_id), 16) mod 10; 0 test, 1 validation, 2-9 train. A game with\n                  no series id is its own series ('game:' + game id) \u2014 reported separately.\n  gate seeds      local games on seeds 1-5 are never training rows (seeds 1-3 gate, 4-5 reserve); training rollouts\n                  use seeds >= 1000. Server games carry server seeds and are split by series only.",
+ "n_games": 126694,
+ "n_series": 28602,
+ "games_without_series": 0,
+ "series_straddling_buckets": 0,
+ "series_with_heldout_map_games": 16678,
+ "sha256_game_split": "ba21ac4073437f2d9c3e8545930d18ba57e2d4e9a8066a9fbc8c1bcff26e41de",
+ "file": "build/learn/splits/games_split_v2.parquet",
+ "heldout_map_hashes": [
+  {
+   "map": "Autarky",
+   "map_era": "post",
+   "games": 2095,
+   "map_hash": [
+    "3659eb979a05",
+    "e492d8bc4812"
+   ]
+  },
+  {
+   "map": "Autarky",
+   "map_era": "post-m2",
+   "games": 1589,
+   "map_hash": [
+    "66c5adbf2432",
+    "b2575c0809ae"
+   ]
+  },
+  {
+   "map": "Autarky",
+   "map_era": "pre",
+   "games": 7873,
+   "map_hash": [
+    "35737755c5a3",
+    "3659eb979a05",
+    "e492d8bc4812"
+   ]
+  },
+  {
+   "map": "Maze",
+   "map_era": "post-m2",
+   "games": 1484,
+   "map_hash": [
+    "502427b4a4b5",
+    "8202a09f96a4"
+   ]
+  },
+  {
+   "map": "Maze",
+   "map_era": "pre",
+   "games": 198,
+   "map_hash": [
+    "8202a09f96a4"
+   ]
+  },
+  {
+   "map": "Trauma",
+   "map_era": "post",
+   "games": 2118,
+   "map_hash": [
+    "21e922b7311f",
+    "57dcdc6de913"
+   ]
+  },
+  {
+   "map": "Trauma",
+   "map_era": "post-m2",
+   "games": 1671,
+   "map_hash": [
+    "21e922b7311f",
+    "57dcdc6de913"
+   ]
+  },
+  {
+   "map": "Trauma",
+   "map_era": "pre",
+   "games": 7708,
+   "map_hash": [
+    "21e922b7311f",
+    "57dcdc6de913",
+    "dcf39d713c06"
+   ]
+  }
+ ],
+ "counts": [
+  {
+   "map_era": "post",
+   "split": "heldout_map",
+   "games": 4213,
+   "series": 3042,
+   "ranked": 2833
+  },
+  {
+   "map_era": "post",
+   "split": "test",
+   "games": 1517,
+   "series": 379,
+   "ranked": 1001
+  },
+  {
+   "map_era": "post",
+   "split": "train",
+   "games": 13834,
+   "series": 3473,
+   "ranked": 9278
+  },
+  {
+   "map_era": "post",
+   "split": "val",
+   "games": 1651,
+   "series": 437,
+   "ranked": 1104
+  },
+  {
+   "map_era": "post-m2",
+   "split": "heldout_map",
+   "games": 4744,
+   "series": 3436,
+   "ranked": 3246
+  },
+  {
+   "map_era": "post-m2",
+   "split": "test",
+   "games": 2106,
+   "series": 607,
+   "ranked": 1424
+  },
+  {
+   "map_era": "post-m2",
+   "split": "train",
+   "games": 17443,
+   "series": 4852,
+   "ranked": 11865
+  },
+  {
+   "map_era": "post-m2",
+   "split": "val",
+   "games": 2279,
+   "series": 633,
+   "ranked": 1591
+  },
+  {
+   "map_era": "pre",
+   "split": "heldout_map",
+   "games": 15779,
+   "series": 11238,
+   "ranked": 6880
+  },
+  {
+   "map_era": "pre",
+   "split": "test",
+   "games": 6153,
+   "series": 1691,
+   "ranked": 2764
+  },
+  {
+   "map_era": "pre",
+   "split": "train",
+   "games": 50454,
+   "series": 13729,
+   "ranked": 21910
+  },
+  {
+   "map_era": "pre",
+   "split": "val",
+   "games": 6521,
+   "series": 1763,
+   "ranked": 2920
+  }
+ ],
+ "bucket_share": {
+  "0": 0.096,
+  "1": 0.1019,
+  "2": 0.1008,
+  "3": 0.1016,
+  "4": 0.0964,
+  "5": 0.101,
+  "6": 0.0994,
+  "7": 0.101,
+  "8": 0.1014,
+  "9": 0.1007
+ },
+ "consumed": {
+  "P-2": {
+   "file": "build/hinata/v0/fit-lq/train_rows.parquet",
+   "sha256": "c958e8c7f830c4c5d1b5e322adc44f16152d2a4c4c96714d5d1c30eb091cae76",
+   "games_in_file": 5799,
+   "games_matched": 5799,
+   "series": 1777,
+   "file_games_by_split": {
+    "train": 4705,
+    "val": 555,
+    "test": 539
+   },
+   "series_by_split": {
+    "train": 1275,
+    "heldout_map": 198,
+    "test": 155,
+    "val": 149
+   }
+  }
+ },
+ "heldout_post_m2_clean": [
+  {
+   "map": "Autarky",
+   "ranked": false,
+   "games": 509,
+   "clean": 333,
+   "in_scope": 370,
+   "in_scope_decisive_clean": 198,
+   "series": 509,
+   "clean_series": 333
+  },
+  {
+   "map": "Autarky",
+   "ranked": true,
+   "games": 1080,
+   "clean": 795,
+   "in_scope": 704,
+   "in_scope_decisive_clean": 435,
+   "series": 1080,
+   "clean_series": 795
+  },
+  {
+   "map": "Maze",
+   "ranked": false,
+   "games": 412,
+   "clean": 254,
+   "in_scope": 343,
+   "in_scope_decisive_clean": 185,
+   "series": 412,
+   "clean_series": 254
+  },
+  {
+   "map": "Maze",
+   "ranked": true,
+   "games": 1072,
+   "clean": 791,
+   "in_scope": 719,
+   "in_scope_decisive_clean": 446,
+   "series": 1072,
+   "clean_series": 791
+  },
+  {
+   "map": "Trauma",
+   "ranked": false,
+   "games": 577,
+   "clean": 381,
+   "in_scope": 435,
+   "in_scope_decisive_clean": 243,
+   "series": 577,
+   "clean_series": 381
+  },
+  {
+   "map": "Trauma",
+   "ranked": true,
+   "games": 1094,
+   "clean": 795,
+   "in_scope": 737,
+   "in_scope_decisive_clean": 447,
+   "series": 1094,
+   "clean_series": 795
+  }
+ ],
+ "snapshot_note": "The rule is frozen; this digest covers the store snapshot it was built from. New games get their split from the same rule (splits.split_of); re-running only adds rows."
+}

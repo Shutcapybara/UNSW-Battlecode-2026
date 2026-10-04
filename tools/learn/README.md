@@ -12,7 +12,8 @@ Replay → legal observation → features + labels + value targets, with a C++ t
 | `cpp/learn_helper.hpp` | official `helper.hpp` state → `learn::Block` (what a bot calls) | 40,002 / 40,002 identical through the real helper parser (`test_helper_parity.py`) |
 | `labels.py` | LABEL_VERSION 1: kind, first step (F/R/B/L), sprint length, split size, sonar mask (requested), cull, death | vs HB-1 v5 on 12 Heartbreaker games: family, first, nsteps, child, sonar count, sonar mask (HB-1's physical convention) **100 %** of 75,306 turns |
 | `dataset.py` | replay list → parquet rows (meta + x_* int16 + y_* + outcome), held-out maps never written | |
-| `splits.py` | D-046 §3 split of every known game + fixture manifest | |
+| `splits.py` | D-046 §3 + D-049 split (held out: Autarky, Maze, Trauma) of every known game, consumed series, fixture manifest |
+| `mapcheck.py` | corpus-wide server map vs `maps/live/` check (one replay per map_hash) | |
 | `audit.py` | leakage audit of any dataset file | |
 | `gen_truth.py`, `drive_native.py` | engine truth runs (random walkers / native bots, one process per dragon) | |
 

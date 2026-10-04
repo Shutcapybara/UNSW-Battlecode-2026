@@ -68,7 +68,7 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument('paths', nargs='+')
     ap.add_argument('--purpose', default='train')
-    ap.add_argument('--split-file', default='build/learn/splits/games_split_v1.parquet')
+    ap.add_argument('--split-file', default='build/learn/splits/games_split_v2.parquet')
     ap.add_argument('--json', default='')
     a = ap.parse_args()
     rep = audit(a.paths, a.purpose, a.split_file)
