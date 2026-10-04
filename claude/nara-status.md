@@ -36,6 +36,10 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 02:02 4 Oct — L47 decomposition SLICE 1 delivered (split_probe.py; PD r0-50 83% regret, Slithery ~63%, Portals
+  late 57%; Schooltime/Trophy openings 7-9%; chosen-death caveat stated; slice 2 = chosen-vs-hazard attribution).
+  H16-01 ack; H16-02/03 mechanics noted (unit-count legality bound at 63/64). No new tests (Rome04 running).
+
 - 01:32 4 Oct — Rome03 REJECT read (95/96 dead-queen triggers = the arm never tested the live-queen path; gate the
   trigger on queen-alive). H15-04 conceded (Autarky 992701 was an open spawn, not a pocket — my "same mechanism"
   grouping wrong; weaker claim stands: pocket-ness is spawn-position, not map-level). H15-05 conceded (20+/cap-3
