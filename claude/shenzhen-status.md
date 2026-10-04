@@ -34,8 +34,9 @@ pushes `r/shenzhen`.
 | H-SZ17 | escort is not the survival mechanism | posted 0.3 | escort share predicts survival across keepers (ρ ≥ 0.3) | corpus | analyst |
 | H-SZ18 | sealed-dragon rule everywhere (split / invalid, never head-on into an ally) | posted 0.5 (unit 4) | < 1 qualifying ally-h2h death per 10 games | corpus count, then panel | analyst → tester |
 | H-SZ20 | caged queen target = exactly 3 (4 is sealed); eat child corpse, never grow, never pay | revised unit 5, 0.5 | len@490 ≠ 3 in > 20 % of live-Schooltime games | 40 games | tester |
-| H-SZ21 | queen never pays sprint segments (any map) — probe D | posted 0.5 | queens pay < 0.1 seg/game, or no-pay arm moves len@490 < 1 | corpus then pool s1–3 | analyst → tester |
+| H-SZ21 | queen never pays sprint segments (any map) — probe D; field-supported (top ten 0.11 paid/game vs 0.63) | posted 0.5 → 0.6 | queens pay < 0.1 seg/game, or no-pay arm moves len@490 < 1 | corpus then pool s1–3 | analyst → tester |
 | H-SZ22 | caged queen at the unit cap: keep a slot free so eat→split→suicide stays legal | posted 0.4 | invalid cage split at 64 units ≥ 1 per 40 games | 40 late games | tester |
+| H-SZ23 | length is speed (⌈L/4⌉ free steps); feed the queen to ≥ 8 before r150 | posted 0.45 (unit 6) | team-stratified hazard ≥ 8 not < 0.7× of 3–7 | corpus then tester | analyst → tester |
 | closed | H-SZ7 exposure: our queens are not more exposed per round (enemy head ≤3 in 10.9 % vs 9.6–13.6 %) | answered | — | — | — |
 
 ## Log
@@ -61,10 +62,12 @@ pushes `r/shenzhen`.
 - **Unit 5 (01:53Z – 02:20Z).** r/shenzhen at f41bec8b9 on origin. Decoded probe replays in the cloud (frame.py staged):
   caged queen eats child corpse → 3, then pays a sprint segment → 2; probe D (queen never pays) ends at 3, 10/12 wins;
   seed-3 failure = cage pearl at the 64-unit cap → invalid split. Finding `…-unit5-cage-length-and-sprint-tax.md`.
+- **Unit 6 (02:34Z – 03:05Z).** c29bad26b pushed. New `qpay.py` (416 post-m2 RL games): top-ten queens sprint inside the
+  free allowance; mid-table keepers pay and end at 3. H-SZ21 field-supported; H-SZ23 speed loop proposed.
 
 ## Next unit
 
-0. H-SZ21 corpus count: segments paid per game by queens (ours vs top ten), from actions `paid` on the queen id.
+0. H-SZ23: team-stratified queen hazard by length band (extend hazard.py with queen length bins 3–7 / 8+).
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
