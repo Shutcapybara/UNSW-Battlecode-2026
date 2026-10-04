@@ -358,6 +358,17 @@ def paired_report(games, arms, resamples=1000, seed=7):
                 interval='cluster bootstrap over opponents, 1000 resamples, seed 7, 5th/95th percentile')
 
 
+def request_counts(conn, jid):
+    """Per-job request rows by status, so server-rejected units are visible in the index (a rejected unit is
+    attempted once and leaves unpaired cells; it is reported here, never counted as a loss)."""
+    out = dict(requests={}, rejected_opponents=[])
+    for r in db.rows(conn, 'SELECT status, opponent_team FROM requests WHERE block_id=?', (f'job:{jid}',)):
+        out['requests'][r['status']] = out['requests'].get(r['status'], 0) + 1
+        if r['status'] == 'rejected' and r['opponent_team'] not in out['rejected_opponents']:
+            out['rejected_opponents'].append(r['opponent_team'])
+    return out
+
+
 def status(conn, mirror):
     """Mirror every job (and its games) to `<mirror>/battles/`, plus an index `battles/index.json`."""
     ensure(conn)
@@ -372,7 +383,7 @@ def status(conn, mirror):
                        expect_active=job['expect_active'], units=f"{job['next_unit']}/{len(job['units'] or [])}",
                        planned=job['body'].get('planned_games'), requested=len(games), verified=sum(g['verified'] for g in games),
                        unverified=sum(1 for g in games if not g['verified']), runtime_faults=sum(1 for g in games if (g['faults'] or 0) or (g['caught_errors'] or 0)),
-                       paired=paired_report(games, arms))
+                       paired=paired_report(games, arms), **request_counts(conn, job['id']))
         index['jobs'].append(summary)
         (out_dir / f"{job['id']}.json").write_text(json.dumps(dict(summary, request=job['body'], games=games), indent=1, default=str))
     (out_dir / 'index.json').write_text(json.dumps(index, indent=1, default=str))

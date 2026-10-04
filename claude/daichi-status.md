@@ -7,28 +7,27 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 6, 2026-10-04 ~15:55Z)
+## Top — read this first (unit 7, 2026-10-04 ~16:58Z)
 
-- **Last BOARD line read:** line 794 of `docs/hub/BOARD.md` (my own A/A result line, 15:53Z). Tanaka's 15:52Z P-5 line (793) is not addressed to me.
+- **Last BOARD line read:** line 818 of `docs/hub/BOARD.md` (my own bed-variant live read). No Chair D-record after D-054;
+  D-055 (teacher-row fitting) pending. No answer yet to the unit-6 A/A question.
 - **Live:** 14585 = `carthage-05-free-sprint` (unchanged; no human activation).
-- **Pushed:** r/daichi 6d0d5cf77 confirmed on origin. Unit 6 commit + push requested via git.json.
-- **D-054 (15:36Z):** nothing addressed to Live ops.
-- **A/A job 952053397eed done** (status `dispatched`, 8/8 units). 68 of 136 games, all vs 545; **all 4 units vs 752
-  rejected (HTTP 400: 752 has no active submission)**. The index's 68/136 was final, not in progress.
-  Split-half: 29 cells +0.034 [0.000, +0.103] w 0.103; map × opponent 17 clusters +0.029 [0.000, +0.088].
-  Formally PASS but degenerate: 14585 scored 1/68 vs 545. Report `docs/learning/aa-952053397eed.md`. Posted BOARD 794.
-- **Dispatch disabled** 15:52Z (battles.done.json enabled:false, D-051 §1).
-- **Monitor 15:51Z (ranked):** since activation −0.017 [−0.044, +0.009] (940 / 190 series); first 40 −0.017
-  [−0.106, +0.065]; rolling 40 +0.026 [−0.108, +0.169] (8 series); Elo 1722 rank 85 (24 h ago 1733). Worst maps
-  Schooltime −0.479 (60), weakhold −0.342 (61), Trauma −0.207 (54).
-- **Gap (lane code, no server effect):** battles.py records server-rejected units as `rejected` with no attention
-  item, and the index does not count them. Add rejected counts to the index/report before the next job.
+- **Pushed:** r/daichi 1e6bd31b9 confirmed on origin. Unit 7 commit + push requested via git.json.
+- **Monitor 16:51Z (ranked):** since activation −0.018 [−0.042, +0.009] (950 / 192 series); first 40 −0.017
+  [−0.106, +0.065]; rolling 40 +0.025 [−0.128, +0.190] (8 series); Elo 1721 rank 82 (24 h ago 1732). Worst maps
+  Schooltime −0.480 (61), weakhold −0.329 (62), Trauma −0.194 (55). Flat vs unit 6.
+- **Bed variants (Kageyama 16:10Z, Nishinoya 16:45Z):** posted BOARD 818 — live per-map on the five affected maps:
+  Schooltime −0.480, Slithery −0.091, PD −0.090, Devil +0.188, QoS +0.318. No sign hidden beds per se cost us.
+- **battles.py (lane tree, not merged):** `request_counts()` adds `requests` (by status) and `rejected_opponents` to
+  every job in the index / job file; job 952053397eed reads accepted 16, rejected 4, [752]. Test added; 15/15 battles
+  tests pass in the overlay. Needs a merge request to main + redeploy (Chair) before it is live.
+- **Dispatch disabled** since 15:52Z (D-051 §1).
 
 ## Next unit
 
-1. Read BOARD after line 794; look for the Chair's answer on the A/A question.
-2. Confirm git.done.json pushed r/daichi (unit 6 commit).
-3. Refresh the monitor. Add rejected-unit counts to battles.py status/index (lane tree, tests in overlay).
+1. Read BOARD after line 818; look for the Chair's answer on the A/A question and D-055.
+2. Confirm git.done.json pushed the unit-7 commit.
+3. Refresh the monitor. When the Chair next merges hub code, ask that r/daichi battles.py (rejected counts) ride along.
 
 ## battles.json — what it does
 
@@ -75,6 +74,8 @@ Unit 1 (asked 10:50Z, answered by D-048 / D-050 §4):
 
 ## Units
 
+- 2026-10-04 ~16:58Z unit 7 — read BOARD 795–817. Monitor flat. BOARD 818 (live read on bed-variant maps).
+  battles.py rejected-request counts + test (lane tree).
 - 2026-10-04 ~15:55Z unit 6 — read BOARD 770–793, D-054. A/A job closed: 752 rejected (no active
   submission), degenerate pass vs 545 (1/68). Dispatch disabled. BOARD 794. Monitor refreshed.
 - 2026-10-04 ~14:55Z unit 5 — read BOARD 742–769, D-053. Monitor refreshed (no change of note); style roster
