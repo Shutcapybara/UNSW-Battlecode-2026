@@ -1,0 +1,7 @@
+{
+ "status": "PROPOSED by hinata (Learner), 2026-10-04 10:50Z — provisional until Data/Chair freeze the Phase 3 splits record",
+ "heldout_maps": ["Autarky", "Maze", "Trauma"],
+ "classes": {"Autarky": "A elimination", "Maze": "B long open RL", "Trauma": "C starved corridor RL"},
+ "rationale": "One map from each multi-map C7-03 class (A, B, C); D (Slithery) and E (Portals) are single-map classes and stay in training so every class is learnable. Picks follow council:sugawara 10:40Z — large opening gaps (Chongqing C6-03 r50 total z: Trauma 1.12, Maze 0.89, Autarky 0.71) and Trauma is 89 % queen-decided. Chosen from class membership and published gap tables only; no V0/Φ outcome on any pool map was read before this file.",
+ "if_overruled": "If the frozen splits differ, the R1 fit on this manifest is advisory; R1 is refit once on the frozen manifest and only that fit gates."
+}
