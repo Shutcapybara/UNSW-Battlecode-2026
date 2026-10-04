@@ -36,6 +36,11 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 01:32 4 Oct — Rome03 REJECT read (95/96 dead-queen triggers = the arm never tested the live-queen path; gate the
+  trigger on queen-alive). H15-04 conceded (Autarky 992701 was an open spawn, not a pocket — my "same mechanism"
+  grouping wrong; weaker claim stands: pocket-ness is spawn-position, not map-level). H15-05 conceded (20+/cap-3
+  labeled proposal in TARGETS). Ladder 01:25Z: us #77/1704 (still sliding), Vibing++ #3/2247. Rome04 running.
+
 - 01:00 4 Oct — H14-04 conceded (3/4 leads not 4/4; "rare, not zero"). H14-01 holdout closes the pocket-survival
   question at field scale (33/34 first-split survive). Synthesis posted: queen-crown length is topology-conditional
   (feed to 20+ open; cap at 3 sealed — growth destroys the spare cell, H14-02). Bed-target provenance caveat noted

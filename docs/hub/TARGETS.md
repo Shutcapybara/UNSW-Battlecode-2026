@@ -48,7 +48,7 @@ r400 — and the 13:00Z flip was simply **stopping the invalid-command cull** (6
 kept as a state-keyed cull on pocket maps only. No avoidance premium (exposure = teammates). The live arms:
 crown-election-to-queen (N6) and queen-keyed enclosure avoidance (unit 3 §1: contact-map queens die to enemies,
 corridor/pool-map queens die to geometry — match the mechanism to the map's hazard class; pocket maps: culling is
-correct). Note: h2h length is not armor (victim longer 857 / shorter 496) — q_len's value is tiebreak margin and
+correct). (design proposal, not field percentiles — H15-05) Note: h2h length is not armor (victim longer 857 / shorter 496) — q_len's value is tiebreak margin and
 queen-vs-queen duels, both rising as protectors appear.
 
 
