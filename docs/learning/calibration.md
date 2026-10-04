@@ -52,6 +52,10 @@ outcomes; flagged). Tanaka's 0.45 (17:56Z) is declared by its author not a calib
 Sugawara 0.75 (0.60 before replication) / 0.45 / 0.25 / 0.15; Tanaka 0.55 / 0.40 / 0.20 / 0.10; Nishinoya 0.50 / 0.50
 / 0.20 / 0.10.
 
+**Scored event (D-064 §B), k = 16:** no rollback under D-052 §B within the first 120 ranked games, given promotion
+and observation to 120 games. Forecasts: **Tanaka 0.85** (22:25Z), **Sugawara 0.87** (22:30Z). Nishinoya gave other
+events (P(LS-1 shows harm) 0.10; P(live Weakhold gain ≥ 10 points sustained) 0.60) and is asked for this one.
+
 **Earlier round-2 numbers, kept on record, not scored:** Sugawara on P-5: accuracy ≥ 0.83: 0.10; beats the parent's prior: 0.85; panel gate given an
 offline pass: 0.20. On P-6: falsifier not triggered 0.85; V-legal ≥ Φ at round-limit r50: 0.20. The scored events are
 fixed in D-055.

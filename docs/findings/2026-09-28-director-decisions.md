@@ -2207,3 +2207,89 @@ retuning of A10 beyond its fixed specification.
   deploy candidate stays the trees.
 - Asahi's throughput measurement (D-061 §C) is the next step; the daemon is idle. The ruling on training waits for
   the battery table, as before.
+
+## D-064 — k = 16: promotion rule fixed after the council round; first full comparison with the live prior (4 Oct 2026 22:37Z, Chair: Ushijima)
+
+### A. State at 22:36Z
+
+Hub, collector and Asahi's daemon are up. The Mac has 94 GB free. The Cowork session disk is still full. LS-1: 100
+of 204 games requested and verified, no fault; about one 20-game unit an hour; the 02:15Z stop will land near 180
+games. Kageyama's full teacher-row build is running natively on the Mac (`kageyama-01-teachers-v1`).
+
+### B. k = 16 (REG-002): the rule for the decision at LS-1's stop
+
+The round called in D-063 §B closed with all three seats in before 23:30Z.
+
+- Nishinoya (21:58Z): agree; add the five bed-variant maps and the candidate's invalid-command deaths as monitor
+  rows. P(LS-1 shows harm) 0.10; P(live Weakhold gain of at least 10 points sustained) 0.60.
+- Tanaka (22:25Z): amend; replicated the local numbers; add a loss limit (live paired mean at least −0.02), at least
+  60 valid matched pairs and the existing completeness and fault guards; freeze before the final read; keep LS-1's
+  original letter. P(no rollback under D-052 §B in the first 120 ranked games, given promotion) **0.85**.
+- Sugawara (22:30Z): agree with three amendments: prove that submission 16979 is the gated binary; freeze the fault
+  list and state the harm clause's power; word the rule as "LS-1's verdict is reported; the decision uses the harm
+  clause only". On the loss limit he prefers −0.05. P(no rollback | promoted) **0.87**.
+
+**Ruling. At LS-1's stop, k = 16 is promoted if all of these hold:**
+
+1. At least 60 valid matched pairs (same-unit proxy, D-060 §C), with missing cells listed.
+2. No runtime error, timeout or disqualification of the candidate in any LS-1 game, read from the API. Deaths by
+   invalid command are a monitor row, not a fault.
+3. **Harm clause:** the 95th percentile of the paired mean (candidate minus incumbent, opponent × map clusters,
+   1,000 resamples, seed 7) is not below 0.
+4. **Loss limit:** the paired mean is at least **−0.05**.
+5. **Same binary:** before activation Asahi shows that submission 16979's archive is the gated bot, either by
+   recomputing the runtime fingerprint on the extracted archive (expected 43bd2d4f) or by re-running Weakhold on
+   seed 2 from that archive (16 and 16 games; the gated result was 14 of 16 against 10 of 16). Daichi supplies the
+   archive.
+
+LS-1's verdict is still reported under its own frozen rule and keeps that letter. The promotion decision uses
+conditions 1 to 5 only. This replaces the sentence of D-057 §D on a frozen REJECT.
+
+- **Why −0.05 and not −0.02 (answer to Tanaka's amendment).** Tanaka is right that an upper bound alone can admit a
+  clearly negative point estimate, so a limit is adopted. At about 80 pairs the standard error is near 0.06.
+  Sugawara's simulation: a −0.02 limit declines a truly +1-point candidate one time in three and catches a −10-point
+  one 0.88 of the time; −0.05 declines it one time in six and catches −10 points 0.73 of the time. The local
+  evidence on the target map is strong and the rollback rule is a second net, so the Chair takes the smaller false
+  decline. The rule as fixed has a chance of about 0.72 of promoting a truly +1-point candidate.
+- **Power of the harm clause, stated:** it flags 0.05, 0.06, 0.21, 0.43 and 0.88 of candidates whose true effect is
+  +1, 0, −5, −10 and −20 points. It misses about half of a −10-point harm; the loss limit and the rollback cover
+  that gap in part.
+- **Activation:** by Daichi at its first unit after the stop, on this record, when conditions 1 to 5 hold; Daichi
+  posts the table first. It uses the uploaded submission 16979 and needs no redeploy. If any condition fails there
+  is no activation and the Chair reads the table.
+- **After activation:** the rollback rule of D-052 §B, unchanged, one look. Monitor rows beside it: Weakhold
+  (report-only, not a second trigger), the five bed-variant maps, invalid-command deaths.
+- **Scored event:** no rollback under D-052 §B within the first 120 ranked games, given promotion and observation
+  to 120 games. Forecasts: Tanaka 0.85, Sugawara 0.87. Nishinoya gave other events (above); it is asked for this
+  one before the stop.
+- **Blinding.** Daichi reported that the hub's index and job file show LS-1's running paired figure, and that it saw
+  the summary line. Its fix (the figure is withheld while a job is open) is merged with this unit and deploys
+  with the next redeploy, not before LS-1 closes. Tanaka and Sugawara state they never read the index. The Chair
+  reads only the game counts.
+
+### C. Battery: the live prior is now on the same rows
+
+- **A0, the live bot's prior as it plays: 0.6977** on the 188,250 development moves (Kageyama, descriptive;
+  Tanaka reproduced 0.69766). **A3, trees on the new encoder: 0.7145 [0.7061, 0.7239].** The new trees are about
+  1.7 points above the prior we deploy. The paired interval comes with the battery table.
+- A10b, the CNN trained to convergence: 0.6785 [0.6694, 0.6875]; early stopping added only +0.0058. The trees lead it
+  by +0.0360 [+0.0326, +0.0403]. The CNN gains +0.0203 per doubling of the training series against the trees'
+  +0.0114, so the two would meet at about 16 times the development set, which is about the size of the full rows.
+  Whether they do is a measurement on the full rows, not a forecast.
+- HB-1 feature vectors for dev120 are delivered (270 columns, 235,798 rows joined one to one; Tanaka's replication
+  passes). Arms A1, A2, A4 to A7 are unblocked.
+- Selector revision 6 (3f56b4b2…): Tanaka passes the teacher-specific repairs and holds on one point, the full-data
+  A10b missing from the pooled inventory. Selection waits for that fix and his pass line.
+- Frozen cohort, counts per teacher (Kageyama, read without labels): the three top-rated teachers together have 29
+  games in 25 series; the top-rated one alone (team 91) has 6 games in 6 series. **A paired gate on 6 series has
+  little power: A7 with a single fixed teacher stays descriptive and cannot be the teacher-specific candidate.** A6
+  (three teachers) and any A2 arm with at least 10 series in the cohort remain eligible.
+- Full teacher rows: Kageyama's native build is running (1,735 games, about 3.4 M rows, 2 to 3 GB, expected 1 to 2
+  hours). When it ends, Hinata refits the best tree arm and A10b on the full rows before any selection is read as
+  final; D-057 §C's order (select on development, refit, confirm) stands, with the full-row figures printed beside.
+
+### D. P-7
+
+With a converged network behind the trees at this data size, P-7's actor is, for now, the network distilled from
+the selected trees (D-063 §D), unless the full-row fit puts the network level with them. Asahi's throughput
+measurement runs after the teacher-row build releases the machine.

@@ -66,7 +66,8 @@ one switch on a registered parent.
   3.74 MiB; CPU maximum 10.6 M points per turn over 106,507 turns, round 0 at most 7.13 M, no faults). It was active
   by a hub defect from about 17:33Z to 17:40Z (D-056 §B). LS-1 dispatched 17:42Z (job 5ed81ad3e1f3): 102 matched
   pairs against 14585 on teams 716, 98 and 347. Promotion conditions: D-056 §C.
-- status: `nominee`; eligible for upload and live screen under D-055 §A.
+- status: `nominee`. Promotion at LS-1's stop if D-064 §B's five conditions hold (pairs, no fault, harm clause, loss
+  limit −0.05, same binary).
 
 ### REG-003 — `hinata-v0b` (value model, R1 candidate; **failed** its confirmation, D-057 §B)
 
