@@ -1,0 +1,26 @@
+name = "asahi-05-kz12-k16"
+lineage = "asahi"
+author = "claude/asahi (sources rome-15-kz12-cb-k16); manifest by daichi, D-055 §B"
+language = "c++"
+lineage_parent = "carthage-05-free-sprint"
+hypothesis = "Queens of carthage-05 die walking one-step into body-bounded pockets they cannot cycle in (wall deaths on map classes C and E). Vetoing a queen's one-step move into a pocket with body-conditioned reach Cb < 16 and no cycle of length >= projected queen length + 1 removes those deaths without an economy cost."
+mechanism = "One switch on carthage-05-free-sprint (REG-002, H-KZ12 / H29 contract): for original queen ids 0/1, ordinary one-step moves only, project each legal candidate's post-move body and growth, relax one tail, compute inclusive reachable capacity Cb up to 16; veto candidates with Cb < 16 and no qualifying cycle, preserving the parent ranking; if all are vetoed take the highest Cb. k = 0 reproduces the parent on 272 of 272 pool games."
+expected_change = "Seed-1 screen (Asahi P-A02): pool win +2.6 points [+0.7, +4.4], gen -0.2 [-1.1, +0.7]; wall deaths on classes C and E -4.86 per 1,000 [-8.16, -2.08]; gain concentrated on Weakhold. Live screen LS-1 (D-055 §B) is the first evidence on the ladder."
+priority = 560
+supersedes = ""
+
+[activation_contract]
+kind = "trace_marker"
+markers = [
+    ["ACT:split", 0, 380, 5],
+    ["ACT:tsplit", 0, 500, 1],
+]
+
+[local_evidence]
+refs = [
+    "docs/learning/registry.md",
+    "docs/findings/2026-10-04-seoul-hkz12-screen-contract.md",
+    "docs/findings/2026-10-04-kanazawa-unit10-hkz12-contract.md",
+    "docs/findings/2026-09-28-director-decisions.md",
+]
+summary = "Archive built by Live ops from main 593810d14 with the symlinked 13 MB direction header resolved to main's carthage-05 blob (sha256 1c3f8974); uploaded without activation for LS-1 (D-055 §B)."
