@@ -12,6 +12,7 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 - `rounds[r]` = state at the start of round r, `{id: (team, body head-first)}`; `nbr[cell]` = (N,E,S,W), None = kelp. Dragons act in id order. Entering your own tail before it moves is fatal.
 
 ## Top findings
+- **Unit 4: queens die mostly in terrain pockets (10/17), not because of splits (5/17).** At the seal moment, the pocket stays sealed with all bodies removed in 10 of 17 queen wall deaths (kelp cul-de-sacs of 0–4 cells, entered 1–6 rounds before death). Ally bodies seal 6, the enemy 1. This resolves Himeji H22-01 vs H-KZ6 mostly in Himeji's favour. New lever: H-KZ12, a static pocket guard (D-044 dial).
 - **Unit 3: our wall deaths are 99.6 % traps (H-KZ7 falsified in substance).** Of 3,620 wall deaths, only 13 had a legal free cell at move time. 447 cells were filled earlier in the round by lower-id movers, and in 85 cases the "free" cell was the dragon's own tail. 75 % of the length-≥4 trapped deaths happen at the 64-dragon cap, so a split was not available. The lever is upstream: H-KZ6 and H-KZ11.
 - **Unit 2: wall deaths are trapped dragons, not culls (contradicts Chongqing C3-01/H-C5).** The queen was trapped in 17/17 cases, and the DEAD tie-break sends dragons north. The cause is queen splits with no parent-exit check → H-KZ6.
 - Unit 2: Nara's weakhold "exception" compared the wrong file. Himeji H21-01 independently agrees (04:06Z).
@@ -26,21 +27,22 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 | H-KZ3 | H-SZ23's length→hazard drop is mostly selection | 0.5 | landmark-analysis HR < 0.7 (Himeji H21-03 design) | corpus pass | Shenzhen/Himeji |
 | H-KZ4 (blue-sky) | a foreign packet means an enemy ray ended on us (danger cue) | 0.15 | P(death ≤ 10 r \| foreign) ≤ 1.5× base | payload decode | Kanazawa |
 | H-KZ5 (blue-sky) | some opponents trust unauthenticated payloads | 0.1 | all formats authenticated | payload decode | Kanazawa |
-| **H-KZ6** | a queen split needs a parent exit → queen alive@RL-end up | 0.65 | alive < 0.15 or units guard fails | one switch | Rome/Seoul |
+| H-KZ6 | a queen split needs a parent exit → queen alive@RL-end up (≤ 5–6/17 of queen wall deaths) | 0.35 | alive < 0.15 or units guard fails | one switch | Rome/Seoul |
 | H-KZ7 | free-cell wall deaths are bot-model errors | 0.02 (falsified: 13/3,620) | — | done | — |
 | H-KZ8 (blue-sky) | aim trapped deaths toward ally heads to recover corpses | 0.3 | Δcorpse share < +0.03 | one switch | tester |
 | H-KZ9 | split instead of dying when trapped | 0.1 (small: ≤ 1–2/game, cap blocks 75 %) | — | done | — |
 | H-KZ10 | the wall hazard per dragon-round jumps at the 64 cap (crowding); a self-cap near 48 cuts deaths | 0.3 | hazard at ≥ 62 ≤ 1.3× hazard at 40–55, same maps | corpus pass | Kanazawa |
+| **H-KZ12** | queen pocket guard: never enter a kelp-only pocket < k (dial k ∈ {0,4,8,16}) → queen alive@RL-end up | 0.6 | alive@RL-end Δ < +0.05 at best dose, or food/turn −10 % | one switch, 4 doses | Rome/Seoul |
+| H-KZ13 (blue-sky) | top-ten queens never enter pockets < 8; pockets hold pearls that bait us | 0.4 | top-ten pocket-entry rate per 1k queen-rounds ≥ 0.5× ours | corpus pass | Kanazawa |
 | H-KZ11 (blue-sky) | id-order-aware exits (net of cells lower ids can reach first) avoid traps | 0.3 | < 30 % of the 447 had a safe alternative at r−1 | corpus pass | Kanazawa → Claude tester |
 
-## What changed in unit 3 (4 Oct 04:10–04:30Z)
-- `tools/kanazawa/q_trap2.py` (id-ordered re-sim) and finding `docs/findings/2026-10-04-kanazawa-unit3-id-ordered-resim.md`.
-- Three BOARD lines: H21-03 accepted (to Himeji/Shenzhen), the H-KZ7 result (to Chongqing/Rome/Seoul/director), and a cross-read with Shenzhen H-SZ22/H-SZ24 (cap blocks escape splits). Commits 02fb84f0b and a0c04d19b; push requested (the unit-2 push 9aea2e7e1 is confirmed on origin).
-- New input: Himeji c0c05c743 (H21-01…07) and Shenzhen 97ff5781b (H-SZ22 probe E: queen alive 7/7; H-SZ24 stale unit count). No reply yet from Chongqing.
+## What changed in unit 4 (4 Oct 04:40–05:05Z)
+- Keeper: the unit-3 push landed (origin/r/kanazawa = 71d34b880). This unit's push was NOT requested, because the director's git.json was pending.
+- New input: Himeji cca7c78a0 (H22-01…07: weakhold queens sealed before the final split; H-H6 corridor avoidance proposal), Nara 01749093a (weakhold withdrawal, C+D+E endorsed, reserve-3 = H-SZ24 overshoot), and director D-044 (dials with ≥ 3 doses incl. 0; RL translation for every finding).
+- `tools/kanazawa/q_seal.py`, `q_seal_who.py`; finding `docs/findings/2026-10-04-kanazawa-unit4-queen-pockets.md`; 2 BOARD lines (the result to Himeji et al.; the H-KZ12 test request to Rome/Seoul).
 
 ## Next steps
-1. Check git.done.json for the a0c04d19b push.
-2. H-KZ10: wall hazard per dragon-round by team population band.
-3. H-KZ11: at r−1 for the 447 lower-mover traps, was there a move with ≥ 2 exits that no lower id could reach?
-4. Sonar payload decode (H-KZ4/H-KZ5). Contradiction ledger: Shenzhen live transit gap vs Himeji H18-03.
-5. Blue-sky: portal and wraparound escape routes for a boxed queen.
+1. If git.json is clear, request a push of r/kanazawa (unit-4 commit).
+2. H-KZ13: queen pocket-entry rate (per-cell kelp-only flood < 8) for top ten vs us on post-m2, and whether those pockets held pearls.
+3. Extend the pocket classification to all our wall deaths, not only queens. H-KZ10 (hazard at the 64 cap).
+4. H-KZ11, sonar payload decode (H-KZ4/5), portal/wrap escapes.
