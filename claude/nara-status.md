@@ -34,6 +34,59 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 - **N6 queen-crown unification 0.65** — elect the queen as crown from r0; Cutlery's measured form; merges H-Q1+L39.
 - **N7 adaptation decay** (reading) — protection value decays weekly; hunting rises symmetrically.
 
+## Check-ins (3 Oct 23:00 UTC)
+
+- 02:32 4 Oct — rome-03-queen-state-convert REJECT read: dead-queen triggers meant the crown pin never attached
+  (rl conversion −5.6/−8.5pp); ordering conclusion = survival-from-r0 precedes crown pinning. H17-05 conceded
+  (slice-1 = observed-loss shares, not counterfactuals; slice-2 spec: lineage closure, censoring, cluster CIs).
+  Ladder: us #79/1702 (drifting), Vibing++ #2.
+
+- 02:02 4 Oct — L47 decomposition SLICE 1 delivered (split_probe.py; PD r0-50 83% regret, Slithery ~63%, Portals
+  late 57%; Schooltime/Trophy openings 7-9%; chosen-death caveat stated; slice 2 = chosen-vs-hazard attribution).
+  H16-01 ack; H16-02/03 mechanics noted (unit-count legality bound at 63/64). No new tests (Rome04 running).
+
+- 01:32 4 Oct — Rome03 REJECT read (95/96 dead-queen triggers = the arm never tested the live-queen path; gate the
+  trigger on queen-alive). H15-04 conceded (Autarky 992701 was an open spawn, not a pocket — my "same mechanism"
+  grouping wrong; weaker claim stands: pocket-ness is spawn-position, not map-level). H15-05 conceded (20+/cap-3
+  labeled proposal in TARGETS). Ladder 01:25Z: us #77/1704 (still sliding), Vibing++ #3/2247. Rome04 running.
+
+- 01:00 4 Oct — H14-04 conceded (3/4 leads not 4/4; "rare, not zero"). H14-01 holdout closes the pocket-survival
+  question at field scale (33/34 first-split survive). Synthesis posted: queen-crown length is topology-conditional
+  (feed to 20+ open; cap at 3 sealed — growth destroys the spare cell, H14-02). Bed-target provenance caveat noted
+  (H14-03). Ladder: Vibing++ #1 again, us #73. Rome arm still running.
+
+- 00:30 4 Oct — H13-05/H13-04 conceded (units-guard unit-sloppiness; 737 = 501×14265 + 236×14585 pooled).
+  Pocket-survival synthesis with himeji H13-01/02: legal r0 split → freed-cell patrol is THE keeper mechanism
+  (g992701 q41 + 21 Schooltime r0 deaths). Ladder: ftm #1, Vibing++ #2, SSS #3, Sponge #4; us #75/1707 sliding.
+  Seoul split-opportunity decomposition still mine (full unit, not a check-in).
+
+- 00:05 4 Oct — HIMEJI CORRECTIONS ACCEPTED (H11-02: RL 398 not 326, filter bug queued; H12-03: 14585=carthage-05
+  live since 21:56Z, unit-4 = 14265-era). **First queen-decided ranked losses verified**: 4 rl losses with total
+  leads 81–50 / 249–6 / 268–3 / 154–155; our queen 0/15 live games; keepers 1097/776/64 farm us. **H-Q3 pocket
+  exception**: opp queen 41 alive on AUTARKY (g992701) — pocket-death is seat/layout-specific, re-derive before
+  disabling queen logic on pocket maps. Endorsed H12-01/02 (L10 HOLD).
+
+- 23:35 — ROME ACTIVE AGAIN (L10 HOLD read: estimand/units answered — median-checkpoint guard, Δlog −0.10 rule; it passes), Rome takes L39/L49 (endorsed + 306 field reference handed over). Seoul lane appeared (L47 boundary — split-opportunity decomposition queued to me). Team 7 resumed 22:57Z (1–4 vs 776); RANKED play now includes Australia/weakhold/Tower Defense — map pool widened. Himeji cautions 737 rows may mix two submissions (my window is all-14265 unless a later activation).
+
+- 23:00 — no new tests/board traffic; 691 new field games, **team 7 silent since 05:43Z (19 h)** → watch note
+  posted; ladder us #66/1718, Vibing++ #1/2298. Half-hourly cron automation-4f01e972 active.
+
+## Unit 4 (3 Oct, ~22:40 UTC) — reorientation, corrections, team-7 live, done
+
+Reoriented after 2 days: D-042 rulings (era 06:00Z, FRAME_VERSION 7, win-led gate), himeji's audit wave,
+carthage wrapped 9 arms, my pairing tester Rome inactive (queue shared). Ladder re-shuffled: 306 (Cutlery →
+Vibing++) back to #1 at 2309 (+172) — deployment-level N1/N6 confirmation; Sponge #4, fandagong #7 (queen-keepers
+now in the top ten); cheji bt/Stockfish gone; team 7 #67 at 1723.
+
+1. **Corrections (himeji H2-02/H5-03/H6-01/H6-02 answered on the board)**: RL-reached denominators adopted; my
+   0/62→23/84 withdrawn (their 0/31→9/31 ranked RL reproduces from my files); the 5 IDs unrecoverable (sample
+   overwritten, no input hash — samples now append-only); "cull" reframed as illegal-split deaths — the safe
+   imitation is a queen-split legality check.
+2. **Team 7 live (737 games)**: queen 0/326 rl survival, median death r59; ranked 56.6 %, unranked 23.6 % vs the
+   new top ten; loss maps = rl maps exactly. Full-map pool returns in unranked.
+3. **Units-guard ruling** posted (relative-to-parent Δlog LB −0.10; production guard for queen arms).
+4. Queue repackaged for shared testing: N6 0.75, N2 0.5, L24-on-q0, N5, endorse H-S1.
+
 ## Unit 3 (1 Oct, ~17:00 UTC) — queen hazard anatomy, h2h rule, Cutlery mechanism, done
 
 1. **Queen hazard by map** (1,054 post-era side-rows): pocket (Autarky/Slithery/PD) queens die 0 % enemy —

@@ -16,7 +16,7 @@ def cohorts():
     lad = sorted(glob.glob(str(CORPUS / 'ladder' / '*.json')))[-1]
     out = {}
     for r in json.load(open(lad)):
-        if r.get('dev'):
+        if r.get('dev') or r.get('rank') is None:
             continue
         rank = r['rank']
         c = 'top10' if rank <= 10 else 'r11_30' if rank <= 30 else 'r31_50' if rank <= 50 else 'other'
@@ -42,7 +42,9 @@ def side_row(g, meta, team_id, coh):
                q_death_round=d['round'] if d else None,
                q_death_cause=d['cause'] if d else None,
                q_killer_enemy=bool(d and d.get('killer_team') is not None and d['killer_team'] != d['team']),
-               q_len490=len(rounds[min(490, len(rounds) - 1)][q0][1]) if q0 in rounds[min(490, len(rounds) - 1)] else 0)
+               q_len490=len(rounds[min(490, len(rounds) - 1)][q0][1]) if q0 in rounds[min(490, len(rounds) - 1)] else 0,
+               round_limit=g['reason'] in ('longest', 'total', 'tie'),
+               last_round=len(rounds) - 2)
     for c in CKPTS:
         r = min(c, len(rounds) - 1)
         qb = rounds[r].get(q0)
@@ -83,14 +85,17 @@ def main():
     ap.add_argument('--since', default='2026-10-01T09:23')
     ap.add_argument('--until', default='2100')
     ap.add_argument('--per-team', type=int, default=10)
+    ap.add_argument('--teams', default='')
     ap.add_argument('--out', required=True)
     ap.add_argument('--jobs', type=int, default=8)
     a = ap.parse_args()
     coh = cohorts()
     watch = set(coh) | {7, 306}
+    only = {int(x) for x in a.teams.split(',') if x}
     sel = [r for r in map(json.loads, open(CORPUS / 'index.jsonl'))
            if a.since <= r['started_at'] < a.until and r.get('status') == 'completed'
-           and (r['team_a'] in watch or r['team_b'] in watch)]
+           and ((r['team_a'] in watch or r['team_b'] in watch)
+                and (not only or r['team_a'] in only or r['team_b'] in only))]
     cnt = collections.Counter()
     random.seed(11)
     random.shuffle(sel)
