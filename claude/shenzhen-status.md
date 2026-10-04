@@ -28,6 +28,10 @@ pushes `r/shenzhen`.
 | H-SZ8 | late feed: small queen to r400, then allies die next to it (SSS/𓎼 form; meals = ally corpses) | posted 0.6 | len@490 (alive) < 10 or RL win not up or tier-2 > +10 % | pool s1–3 live maps | any, stacks on alive-queen arm |
 | H-SZ12 | queen dead → switch to elimination play | posted 0.3 | elim win vs top ten unchanged when switch fires | later | tester |
 | H-SZ13 | read opponent queen policy by r100; hunt+outlast vs keepers, longest/total vs non-keepers | posted 0.4 | keeper gap persists after H-SZ5 | corpus first | analyst → tester |
+| H-SZ14 | home hunt: hunters to the mirror of our queen spawn from r150; strike id 0/1 | posted 0.55 (unit 3) | hunters see enemy queen by r250 < 50 % vs keeper proxy, or opp queen alive unchanged | 60 RL fixtures vs carthage-08, live maps | Claude tester |
+| H-SZ15 | invalid-command queen feed (Vibing++/Sponge primitive) from r150 or r400 | posted 0.65 | gain per cull < 2, tier-2 > +10 %, or RL win not up | pool s1–3 live maps on an alive-queen parent | any |
+| H-SZ16 | queen home-range leash (~6 cells of spawn) | posted 0.4 | alive@490 not +5 pp at econ LB > −0.03 | pool+gen s1–3 | tester |
+| H-SZ17 | escort is not the survival mechanism | posted 0.3 | escort share predicts survival across keepers (ρ ≥ 0.3) | corpus | analyst |
 | closed | H-SZ7 exposure: our queens are not more exposed per round (enemy head ≤3 in 10.9 % vs 9.6–13.6 %) | answered | — | — | — |
 
 ## Log
@@ -42,6 +46,10 @@ pushes `r/shenzhen`.
   (833 post-m2 games, every dragon-round). Results: nobody hunts queens; crowns fed on ally corpses (three timings);
   keepers are the hard matchup; corrected Chongqing H-C1/H-C3 to the map swap (Schooltime old 0/51 vs new 22/22 r0 deaths;
   Default r5 24 % → 2.3 %). Finding `docs/findings/2026-10-04-shenzhen-unit2-hunting-feeding-matchups.md`.
+- **Unit 3 (00:14Z – 00:35Z).** Lean +371 (6,299 games). New `qsight.py` (469 post-m2 games with a top-ten side or us).
+  Keepers' queens stay within ~6 of spawn and are seen by r40; crown meals are ally culls (invalid / self). Proposed a
+  replay-lead split with Chongqing (it owns S-1 store + CORPUS.md). Requested keeper push of r/shenzhen. Finding
+  `docs/findings/2026-10-04-shenzhen-unit3-queen-home-and-feeding.md`.
 
 ## Next unit
 
@@ -49,6 +57,6 @@ pushes `r/shenzhen`.
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
    stop moving.
-3. H-SZ8 mechanism: how allies die next to the crown (cause, length, distance; deliberate cull vs incidental) for SSS/𓎼/Sponge after r150.
-5. Blue-sky: can a sonar/vision read find the enemy queen early (position prior from spawn geometry + ids)? What fraction of top-ten queens are ever within vision of our dragons?
+3. H-SZ17 escort vs survival across keepers; H-SZ16 home range vs survival (corpus association).
+5. Blue-sky: what do keepers do when an enemy head approaches their queen (flee vs block)? Is there a counter-hunt?
 4. Per-map top-10 − us for the RL maps where we bleed (Trauma, Portals, PD), and transit anatomy (H-S1).
