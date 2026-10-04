@@ -272,6 +272,22 @@ request official rescore and timeout resolution. No post-hoc gate-category chang
 Method/counts/uncertainty/provenance: `docs/findings/2026-10-02-himeji-kyoto-official-caplift-and-closeout.md` and `tools/himeji/unit9_audit/summary.json`.
 These are local-panel gate readings, not field percentiles or stable targets. H-H1 stays0.5. User stopped recurring
 work; next analysis requires user resumption.
+### Himeji unit33 — recovered own games and distinct queen-growth mechanisms, 4 October10:08UTC
+
+No stable percentile target or matched live-us replacement. Own watch now explicitly enabled;79 recovered post-m2 games on14585 verified against fullmap/payload/officialwinner/queen headers. Ranked60/12series/32hashes: queen loss12/23losses52.2% [series95%32–75],12/60games20%[10–30], queen alive4901/35+25earlycensors. Unranked19/9series separate:6/7queenloss,0/10alive490+9censors. Availability-selected backfill, not population trend or pooled map target; fullhash/mode counts in unit33_audit/recovery-summary.json,4000seriesbootstrapseed3333. Frozen H20/H32 remain historical references, matched gapNA. One Trauma ownqueen17 survives; no absolute zero claim.
+
+H-H4 proposedL49 .5 retained: selected samehash/team/seat pairs55/112/952 show moving queens consume ally corpses20/29/32;112 includes18explicit suicide-command donors. No stationary universal policy/causal win claim.952's55-segment gain includes19retainedsplitmass, so survival/retention/donation remain separate. Outcome-independent60opportunities/≥20series pilot, fixed-parent survival/split settings plus allocation0/x/2x if assigned, selected fullwin gate. D044 features/actions/reward/demonstration, falsifier and justified149/306/463pair10pp planning beforeclusters in docs/findings/2026-10-04-himeji-collection-recovery-and-queen-feeding.md; queries feeding_trace.py/recovery_audit.py and frozen unit33_audit inputs.
+
+Retain peers' targets alongside disagreement: Nara's queen-verdict fraction is not recoverable win value; Shenzhen's local1.2.9 mover/partner corpse payoff still needs donor/event-order identity (round-only matching) and current event-time lengths; live ranked role query queued. KZ vision availability does not imply exclusive cue use. Rome corrected05/1.2.3/liveM2 diagnostic272/272 parity/16Schooltime path-specific missinglogs supplies no new numeric win-gate verdict. All map guards remain.
+
+
+### Himeji unit34 / wrap-up — 4October10:31UTC
+
+No stable reference replacement; frozen H20/H32 and matchedlive-usNA preserved.20rankedpost-m2 fullhash/seat/time pairs(40games),2hashes/map: field−own h2h mover shares AroundUNSW−2.7pp[−22.0,14.7],Australia+17.9[1.9,32.9],Islands+11.2[−4.2,23.7];7/7/6connectedseriesblocks,4000bootstrapseed3434. Notuniversal≥.52target; death-role shareconditionsonh2hnotcontactrisk.4290fullyfollowedtrades/1523equallength; mover-sidecaptureadvantage surviveslength-equality descriptively, notcausalactor-swap/newmaterial. Perfullhashrows/query/cohort/count/uncertainty in unit34_audit; exploratoryonly.
+
+Retain CQ/KZ/Nara targets alongside disagreements: C9AroundUNSW.52−.47=5pp, survivor-conditioned/mixedmodez-gapsnotcausaltrajectories; Nara124units/gameisnotidentified. KZ15correctedfleedenominators224/548give73.7/81.0%,7of43hitsqueeninitiated;roundstartrisknotactualvetoexposure/cost,post-survivalmovementnotcause. H-SZ34observablecontact60opportunity/20seriespilot,0/x/2xifassigned/fullwingate; no arm launched. H-H4.5/H-H6.5/H-H7.4/H-H8.4 retained. D044/falsifiers/size and correctedlabels: docs/findings/2026-10-04-himeji-trade-accounting-and-opportunity-audit.md. Userstoppedlane;automationdeleted,summary/mainpublicationrequested.
+
+
 ## Nara (glm, P2-A)
 
 **Era rule (unit 1, refined unit 2):** server switched in the 1 Oct 05:54–09:23 UTC window; I adopt the replay
@@ -638,6 +654,19 @@ NEW H-H8 proposedL24/L49 .4: observablefood-awareenemyreach mayimprovequeenavoid
 
 Retain CQunit7classlabels alongside disagreement: no classA queen exemption underD043/fullmapwinguards; frozenAutarkyhasownqueen-decidedloss,lowRLshareisnotzero. Behaviouraloutcomeclustersmustbefrozenoutofsamplebeforeweights. Schooltimejoint11/16+13/16mustnotcomparewithconditionalfield.86;needmatchedcohorts/denominators. Equaldead-queen enclosuredoesnotidentifyentryrates;retainentry/at-risk/death/winmeasures. Ewhole-packagecostnotisolateduntilC+D/E0. Otheranalysttargets preserved.
 
+
+### Himeji unit31 — decision-time labels, 4 October09:06UTC
+
+No new stable percentile target; frozen historical references remain and matched live-us gaps stay NA. SAME20 own selected strikes (2ranked18unranked,12series) have attacker-TurnStart vision20/20 vs round-start15/20; deterministic label correction, not a field rate. Four peer BFS source fixtures demonstrate cap11 misses L12 threats at12/13; incidence in selected cases unmeasured. Retain H-KZ26 .6 alongside Himeji's approximate-legality/food/observation qualifications; its15/20 alternatives are not demonstrated rescues. H-H8 proposedL24/L49 .4 retained: ≥60 eligible independent encounter pilot including nonattacks, whole-series holdout, matched hash/mode/seat/phase/food/order, fixedfeature doses0/1/2 if assigned, selected full win-led gate. Precise no added prediction/risk benefit or adverse wins/economy falsifies; wide unexposed nulls do not. H-H6 .5/H-H7 .4 unchanged. D044 four-part translation, queries, counts and receipts: docs/findings/2026-10-04-himeji-decision-time-and-corpse-order.md; tools/himeji/unit31_audit/.
+
+Retain Shenzhen's repaired349-game corpse reference with qualifications: freshfive-ranked-game audit changes2/1670fates from round-only matching, not a refutation of reported leakage. Require event identity, map hash/mode/series uncertainty and death-time contact before reference grade. Fresh14585 one-series1–4vs939 has queenloss1/4losses, q4900/2 with3censored; no generalization CI. Previous5–0series haszeroexacthashmatches, enemyIDsblank: no switching inference. Nara's96%topteamSchooltime survival is not a ceiling on improving ourlocal0/16parent. Other analyst targets and historical verdicts preserved.
+
+
+### Himeji unit32 — large-queen temporal reference, 4 October09:38UTC
+
+No stable percentile target or matched live-us gap added; historical references remain frozen. Rankedpost-m2 terminal-RL rank11–50 cohort (hashedstoreteams),2Oct→4Oct:163/662→350/999,+10.4pp95%series[5.1,15.3]. Same team/fullmaphash/seat167cells/241+230sides/290series/34teams/27hashes, fixedmin-countweights174:alive20.8→37.2%,+16.4pp exploratory[5.7,25.1];q>3 7.1→27.2%,+20.2pp[10.1,28.5];q1–3 13.7→10.0%. Bootstrap2000seed3232re-estimatesoverlap67–97cells;opponentmatchonly5pairs/repeatedcellsubset7cells,identityunknown. Notcausaladoption,all-game/r490survivalorfeedingproof. Query/counts/fullhashrows/uncertainty/stability: docs/findings/2026-10-04-himeji-queen-growth-adoption.md; tools/himeji/queen_adoption_compare.py; tools/himeji/unit32_audit/.
+
+H-H4/L49 .5 feeding/growth investigation retained,separateH-H3survival. Fifteenoutcome-selectedtracepairs(10topten)frozen,notheldout; nextorigin/donor/movementthen60independentobservableopportunities/≥20seriesvariancepilot. Ifassigned,fixsurvivalpolicy,donationpremium0/x/2x onexplicitcarthage05/liveM2parent,selectedheldoutfullwingate;precisenopredictedally-intake/growthornegativewin/economywithoutbenefitfalsifies,wide/unexposednullinconclusive. FullD044translationinreport. RetainKZ.6alongsideH31timing/legalityqualification: laterattackervisionisnotearlierqueenvision/exclusivityproof. CQclusterparitynotno-workexemption;openmapbodytrapexposurecanbevalid. Otheranalysttargetsretained; H-H6.5/H-H7.4/H-H8.4/H-H2unresolvedunchanged.
 ## chongqing (unit 3) — 2026-10-04 03:25 UTC — per new map (era `post-m2`), field sides vs carthage-05 live
 
 Source: `docs/findings/2026-10-04-chongqing-unit3-new-map-queen-hazard-and-cull.md` §1. Field = non-team-7 sides in the store
