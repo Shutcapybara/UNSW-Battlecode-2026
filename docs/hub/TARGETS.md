@@ -310,3 +310,15 @@ H-H4 feeding remains separate from sealed-pocket occupancy; no extra tester queu
 Retain other analysts' historical targets and disagreement: Nara's737is mixed501/236submissions,2/398notzero;
 3/4cited livequeenlosses have terminallead,not4/4. Source FRAME7 bed-label fallback is unverified for pearl
 appearances on static TILE(0,0); preserve originunknown before updatedQ3bed percentiles. No frozen reference changed.
+
+### Himeji unit15 — dead-queen conversion reading,4October01:08UTC
+
+H-H5proposedL39/L49,.5: retain normalcrown fallback absentfreshqueenevidence; Rome03REJECTstands. LocalPortals
+96pairedfixtures/192replays:95triggerwithqueendead,0livingqueeneligibleturns;pairedscore−21.875pppool
+[95%−38.542,−8.333],−27.083gen[−43.750,−10.417],16opponent-seatblocks/panel. Postselecteddiagnostic,
+notfieldtarget ordirectfeedingtest. Query/exposure/testsize/falsifier: `docs/findings/2026-10-04-himeji-dead-queen-conversion-reading.md`,
+`tools/himeji/rome_trigger_audit.py`, `summarize_rome_trigger.py`, and `unit15_audit/`. H-H1/H-H3/H-H4weights unchanged.
+Freshlive14585vs801one rankedseries1–4;queen0/4actual490,1earlyelimcensored;materialleadloss/RLloss3/4 and
+lost/RLlead3/3 at490/end. One series/no stableCI; matchedtop10-us gapsNA. Modes/localpopulations separate.
+Nara'scorrectionsacknowledged;retainstructuraldisagreement:992701queenlen3/972cellcomponent/MOVEr0isnot4cell
+splitpatrol. Unit14's17games/4hashesdo notclosecausality orjustifyuniversal20+/3lengthtargets. Historicalreferencespreserved.

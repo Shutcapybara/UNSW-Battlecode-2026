@@ -50,3 +50,7 @@ Unit14: H14-01/02refine H-H3 with fresh17game holdout and late space failures; H
 H14-04 answers Nara53861abb2 materiallead/mixedversion/zero wording; L10HOLD agreed. H14-05/06 freshness and
 H-H4 structural guard. No new completed tester result, no direct message/paused-lane restart. Next Rome result
 gets exposure-aware reading; keep hypothesis progress ahead of routine collection checks.
+
+Unit15: Rome91544f017new03REJECTreadH15-01, independent95dead-queen-triggerpairs motivateH-H5requestH15-02.
+Nara5e84e7d89correctionsacknowledgedH15-04;Autarkymechanism/field-scaleclosure disagreementsH15-04/05.
+New14585rankedseriesreadingH15-03. No pausedlane restarted; currentRome04notduplicated. H-H5fornextassignedtest.

@@ -2,6 +2,34 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
 
+## Unit15 — 2026-10-04 01:08 UTC; Rome03 reading and H-H5 complete
+
+- Rome91544f017 REJECT agreed: overallscore−2.40pppool/−.79ppgen,genwall+15.9%. Independent192savedPortals
+  replay audit:96pairs,95triggered;queen alreadydead at firsttrigger in95/95,0alive at ANY eligible turn.
+  Firsttrigger records identical96/96pairs. Pairedscore−21.875pppool [95%−38.542,−8.333],−27.083gen
+  [−43.750,−10.417],16opponent-seatblocks/panel;postselecteddiagnostic. Longest28.04→21.29/27.92→20.71.
+- H-H5proposedL39/L49 .5: preserve normalcrown fallback absentfreshqueen evidence. Source03suppresses nonqueen
+  crowns evenqueendead. Explanationplausible/notcausalproof;0livingqueen exposureonthisslice cannotfalsifyfeeding.
+  Test inactive-behaviorparity thenone-switchguard vs03+01;existing480/1392panels,actualexposures/clusterCI.
+  TesterRomeaftercurrent04orassignedfree;noarmrunhere. H-H3/H-H4/H-H1remain.5;H-H2unresolved.
+- Newlive14585rankedseriesvs801 at00:18Z:1–4;4queenlosses,0/4aliveactual490;1earlyelimcensored.
+  Threeleadlosses:999614314–114,999613166–125,999610243–3;99961257–63notlead. At490/end,
+  leadloss/RLloss3/4 andlost/RLlead3/3.5officialwinners/10terminalqueenchecks pass;one series/no stableCI.
+- Nara7b8cebb26→5e84e7d89correctionsacceptedH15-04/05: mixed737,unitscale,3/4lead,rare-notzero closed.
+  Autarky992701isNOT4cell rescue:bothqueenlen3,3emptyadjacent,972cellcomponent,MOVEr0. Do notconflatewithSchooltime.
+  H14holdoutnotfield-scaleclosure:33split→33alive25/29alive490;4hashes,latefailures. No universal20+/cap3target.
+- Sourcecursor main0298966ec/D-042,Antioch2c7113f66,Carthage5b69fa9d0,Kyotofccea71c0,Rome91544f017,
+  Nara5e84e7d89through01:00. Protocol/targets/all5statusesread. BoardH15-01..06;priorHimeji8c92efdd2.
+  Sourcehashes/cache/replayhashes+pairedrows tools/himeji/unit15_audit/.No mainmerge/deployment/botchanges.
+- Corpus116998at00:53:37Z/latest00:50:09Z,+855including5own; indexSHA17448ead5a79b58b09d99ee69532a59d9b187c606f6a8248bf96707028641dfd.
+  Ladder004328Z SHA49e68c499db3b14279e98bd166899b5fedbcd4f30de0a13b6a86235556920362;
+  top306/91/264/213/55/87/842/82/952/566. Liveera≥1Oct06:00post123;local1.2.3separate.
+  DBrohealthy14585active00:53:53Z;collector35400healthy40/pass0errors;H11-05/H12-05coveragepending.
+- Store423/846unchanged/latest3Oct23:11:43Z,110unit12queuepending.NoactiveHimejiworkers;1replayworker/301s.
+  Newtesterresultprioritydeferredpearlprovenance/caplegality/broadstorebuild. NextreadRome04whencomplete,
+  assignedH-H5repaircheck, thenpearlorigin+savedstorequeue. AutomationACTIVEhalf-hour. Findings:
+  `docs/findings/2026-10-04-himeji-dead-queen-conversion-reading.md`.
+
 ## Unit14 — 2026-10-04 00:37 UTC; held-out H-H3 refinement complete
 
 - H-H3 fresh-collection holdout:17Schooltime games/17series/34sides (13ranked,4unranked),4map hashes.

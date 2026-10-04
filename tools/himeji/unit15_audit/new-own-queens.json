@@ -1,0 +1,282 @@
+[
+  {
+    "game": 999614,
+    "series": "b2748414-0c23-410a-979c-45d3e79a8637",
+    "ranked": true,
+    "started_at": "2026-10-04T00:18:54.024Z",
+    "map": "Around UNSW",
+    "map_hash": "ed137eeb1550",
+    "side": "A",
+    "opponent": 801,
+    "submission": "14585",
+    "sha256": "33cad15e16681edee28679dc3e7204d0b6832c79fedd2369ab2bd719288b4094",
+    "winner": "B",
+    "won": false,
+    "reason": "queen",
+    "reached490": true,
+    "checkpoint": {
+      "A": {
+        "total490": 299,
+        "queen490": 0,
+        "final": {
+          "units": 22,
+          "longest": 58,
+          "total": 314,
+          "queen": 0,
+          "queen_body": 0
+        }
+      },
+      "B": {
+        "total490": 124,
+        "queen490": 43,
+        "final": {
+          "units": 3,
+          "longest": 44,
+          "total": 114,
+          "queen": 44,
+          "queen_body": 44
+        }
+      }
+    },
+    "queen_death": {
+      "round": 211,
+      "id": 0,
+      "team": "A",
+      "cause": "h2h",
+      "length": 3,
+      "actor": 68,
+      "age": 211,
+      "head": [
+        5,
+        13
+      ],
+      "initial": true,
+      "killer": 68,
+      "killer_team": "B"
+    }
+  },
+  {
+    "game": 999613,
+    "series": "b2748414-0c23-410a-979c-45d3e79a8637",
+    "ranked": true,
+    "started_at": "2026-10-04T00:18:54.089Z",
+    "map": "Slithery Fight",
+    "map_hash": "2b2eaa9c0cd9",
+    "side": "A",
+    "opponent": 801,
+    "submission": "14585",
+    "sha256": "6bb6f6ca0b518bc42a421b6c7ae806c87223c93b9a86f42f3eb7050bc30102d4",
+    "winner": "B",
+    "won": false,
+    "reason": "queen",
+    "reached490": true,
+    "checkpoint": {
+      "A": {
+        "total490": 163,
+        "queen490": 0,
+        "final": {
+          "units": 6,
+          "longest": 73,
+          "total": 166,
+          "queen": 0,
+          "queen_body": 0
+        }
+      },
+      "B": {
+        "total490": 122,
+        "queen490": 49,
+        "final": {
+          "units": 9,
+          "longest": 41,
+          "total": 125,
+          "queen": 41,
+          "queen_body": 41
+        }
+      }
+    },
+    "queen_death": {
+      "round": 159,
+      "id": 1,
+      "team": "A",
+      "cause": "h2h",
+      "length": 2,
+      "actor": 62,
+      "age": 159,
+      "head": [
+        35,
+        11
+      ],
+      "initial": true,
+      "killer": 62,
+      "killer_team": "B"
+    }
+  },
+  {
+    "game": 999610,
+    "series": "b2748414-0c23-410a-979c-45d3e79a8637",
+    "ranked": true,
+    "started_at": "2026-10-04T00:18:54.159Z",
+    "map": "Schooltime",
+    "map_hash": "65be5fe99a46",
+    "side": "A",
+    "opponent": 801,
+    "submission": "14585",
+    "sha256": "595f8e87db33987d9cc84ace3e07917bd9b4a0268be08fefeb661373d7f39121",
+    "winner": "B",
+    "won": false,
+    "reason": "queen",
+    "reached490": true,
+    "checkpoint": {
+      "A": {
+        "total490": 216,
+        "queen490": 0,
+        "final": {
+          "units": 27,
+          "longest": 20,
+          "total": 243,
+          "queen": 0,
+          "queen_body": 0
+        }
+      },
+      "B": {
+        "total490": 3,
+        "queen490": 3,
+        "final": {
+          "units": 1,
+          "longest": 3,
+          "total": 3,
+          "queen": 3,
+          "queen_body": 3
+        }
+      }
+    },
+    "queen_death": {
+      "round": 0,
+      "id": 0,
+      "team": "A",
+      "cause": "self",
+      "length": 4,
+      "actor": 0,
+      "age": 0,
+      "head": [
+        3,
+        2
+      ],
+      "initial": true,
+      "killer": null,
+      "killer_team": null
+    }
+  },
+  {
+    "game": 999612,
+    "series": "b2748414-0c23-410a-979c-45d3e79a8637",
+    "ranked": true,
+    "started_at": "2026-10-04T00:18:54.418Z",
+    "map": "Trauma",
+    "map_hash": "57dcdc6de913",
+    "side": "A",
+    "opponent": 801,
+    "submission": "14585",
+    "sha256": "4c6a542aeca72d81a4982f8935d7998271bee804c3f721ead0a0d791062bb729",
+    "winner": "B",
+    "won": false,
+    "reason": "queen",
+    "reached490": true,
+    "checkpoint": {
+      "A": {
+        "total490": 61,
+        "queen490": 0,
+        "final": {
+          "units": 5,
+          "longest": 20,
+          "total": 57,
+          "queen": 0,
+          "queen_body": 0
+        }
+      },
+      "B": {
+        "total490": 66,
+        "queen490": 33,
+        "final": {
+          "units": 9,
+          "longest": 34,
+          "total": 63,
+          "queen": 34,
+          "queen_body": 34
+        }
+      }
+    },
+    "queen_death": {
+      "round": 89,
+      "id": 0,
+      "team": "A",
+      "cause": "wall",
+      "length": 3,
+      "actor": 0,
+      "age": 89,
+      "head": [
+        13,
+        8
+      ],
+      "initial": true,
+      "killer": null,
+      "killer_team": null
+    }
+  },
+  {
+    "game": 999611,
+    "series": "b2748414-0c23-410a-979c-45d3e79a8637",
+    "ranked": true,
+    "started_at": "2026-10-04T00:18:59.355Z",
+    "map": "Tower Defense",
+    "map_hash": "b5f9f10f4185",
+    "side": "A",
+    "opponent": 801,
+    "submission": "14585",
+    "sha256": "f833e905bb68cc499d5ba352148b1c4167782db8dfa2ddf6c9c43866e14b39af",
+    "winner": "A",
+    "won": true,
+    "reason": "elimination",
+    "reached490": false,
+    "checkpoint": {
+      "A": {
+        "total490": null,
+        "queen490": null,
+        "final": {
+          "units": 30,
+          "longest": 3,
+          "total": 73,
+          "queen": 0,
+          "queen_body": 0
+        }
+      },
+      "B": {
+        "total490": null,
+        "queen490": null,
+        "final": {
+          "units": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0,
+          "queen_body": 0
+        }
+      }
+    },
+    "queen_death": {
+      "round": 63,
+      "id": 1,
+      "team": "A",
+      "cause": "wall",
+      "length": 2,
+      "actor": 1,
+      "age": 63,
+      "head": [
+        15,
+        11
+      ],
+      "initial": true,
+      "killer": null,
+      "killer_team": null
+    }
+  }
+]
