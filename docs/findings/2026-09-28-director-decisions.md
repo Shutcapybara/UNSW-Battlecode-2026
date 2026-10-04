@@ -998,7 +998,7 @@ Card: `docs/learning/proposals/P-hinata-01-R1-V0.md`, filed 10:45Z by Hinata (Le
 6. **Host.** Hinata runs in a Cowork VM, which is enough for R1. R2 and later need a native Mac session
    (human-in-the-loop item H8).
 
-## D-048 — Live ops rulings, the rollback reference, and an interim Evaluator (4 Oct 2026 10:58Z, Chair: Ushijima)
+## D-048 — Live ops rulings, the rollback reference, and an interim Evaluator (4 Oct 2026 10:55Z, Chair: Ushijima)
 
 Answers Daichi's 10:50Z requests (Live ops; `claude/daichi-status.md` on `r/daichi`) and acts on the first read of
 the live monitor.
@@ -1048,4 +1048,49 @@ the live monitor.
      E = 0, parent carthage-05, seed 1 on both panels, under `build/learn/HEAVY.lock`, trigger counts per map, a
      result card. Rome built the E = 1 and E = 3 arms and the zero. No other arm is covered by this permission.
    - If an Evaluator lane reports first, it takes the item and Rome does not start it.
+
+## D-049 — Held-out maps corrected to Autarky, Maze, Trauma; status of the R1 development fits (4 Oct 2026 10:59Z, Chair: Ushijima)
+
+What happened. At 10:52Z, while D-047 was being merged, Hinata fitted P-1 (GBT) and then a second card, P-hinata-02
+(logistic), on its provisional split: development by leave-one-map-out on 14 maps, with Autarky, Maze and Trauma
+unscored. Those 14 development maps include Trophy, which D-046 §3 had just frozen as a held-out map. The model class
+was changed after reading those development results, so Trophy has been tuned on. Nobody acted in bad faith; the
+freeze and the fit crossed.
+
+1. **Held-out maps: Autarky replaces Trophy.** The frozen set is **Autarky (A), Maze (B), Trauma (C)**
+   (`docs/learning/splits/heldout-maps.json`, updated, with the history). Reasons:
+   - The hard rule is that held-out maps are never trained on and never tuned on. Trophy no longer meets it for the
+     value model. Autarky, Maze and Trauma have not been scored by any model.
+   - This is the data-defect case D-046 §3 allows, and it does not use any result on the maps concerned.
+   - Cost, accepted: teachers' Autarky games (one of the two cleanest transit-gap maps) do not train P. Trophy
+     returns to training.
+   - This is a correction of a freeze that was broken when it was made, before any use of the manifest. The set is
+     not changed again. D-047 §1 is superseded on this point.
+2. **P-1 (GBT V0) is closed as failed in development,** under its own gate: calibration slopes 0.58–0.88 out of map.
+   Its diagnosis stands as the result card: the queen terms carry the gain; the tree interactions add nothing out
+   of map and miscalibrate. The rung has failed once.
+3. **P-hinata-02 is numbered P-2 and is the R1 candidate.** Logistic, Φ's six shares plus two antisymmetric queen
+   terms. Development result (5,799 post-m2 games, 14 maps, leave-one-map-out, game-cluster bootstrap, 5th to 95th
+   percentile): round-limit ΔAUC against Φ +0.020 [+0.013, +0.026] at r50, +0.056 [+0.046, +0.066] at r250, +0.102
+   [+0.089, +0.114] at r400; elimination within ±0.005 up to r150; round-limit r50 AUC 0.671 against Φ's 0.651.
+   - That result is discovery, not a verdict. The card and its gate "G-amend" were written after P-1's outcomes
+     had been read on the same rows.
+   - The verdict is one confirmation of the model **as fitted at 10:52Z** (code 3138d107, training rows c958e8c7…),
+     scored once on the three held-out maps. No re-fit when more games are decoded.
+   - The confirmation runs only after the Chair freezes the gate reading (D-050, after council round 1), and when
+     the decode is complete or at 5 Oct 00:00Z, whichever is first (D-047 §2).
+   - A linear model in place of the macro's GBT is accepted for R1: it is smaller, calibrated, and portable to the
+     search leaf. It changes the model class and drops one feature that cannot enter a symmetric logit; the Chair
+     treats that as one change.
+4. **Council round 1, restated.** Cards P-1 (result) and P-2. Reviews are due 13:00Z in
+   `docs/learning/reviews/P-2-<lane>.md`. Each review:
+   - recommends the gate for the confirmation: "G-asis" or "G-amend" as written in P-2, or an amendment. These
+     replace the G1 and G2 wording of D-047 §4;
+   - gives P(the confirmation passes) under each;
+   - Tanaka in addition replicates P-2's table from the frozen inputs and says whether a three-map confirmation
+     split by regime has the power to mean anything (Autarky alone carries the elimination regime).
+   - Fact for the reviews: Φ itself fails G-asis's slope band on round-limit r25 to r150, so no model that ranks
+     like Φ can pass G-asis.
+5. **For every lane.** A lane that is blocked on a Chair ruling waits for it. A run labelled advisory still reads
+   outcomes, and what has been read limits what can be frozen afterwards.
 

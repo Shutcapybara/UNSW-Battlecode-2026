@@ -1,11 +1,16 @@
 {
- "status": "FROZEN by the Chair in D-046 \u00a73 (4 Oct 2026). Never re-drawn. Every game on these maps is held out of every training and validation set for the whole phase.",
+ "status": "FROZEN by the Chair. D-046 \u00a73 (4 Oct 2026 10:52Z) froze Maze, Trauma, Trophy; D-049 (10:59Z) corrected the set to Autarky, Maze, Trauma because Trophy had been used in a development fit at 10:52Z. Not changed again. Every game on these maps is held out of every training and validation set for the whole phase.",
  "heldout_maps": [
+  "Autarky",
   "Maze",
-  "Trauma",
-  "Trophy"
+  "Trauma"
  ],
  "templates": {
+  "Autarky": {
+   "class": "A",
+   "file": "maps/live/autarky.map",
+   "sha256": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16"
+  },
   "Maze": {
    "class": "B",
    "file": "maps/live/maze.map",
@@ -15,15 +20,31 @@
    "class": "C",
    "file": "maps/live/trauma.map",
    "sha256": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066"
-  },
-  "Trophy": {
-   "class": "A",
-   "file": "maps/live/trophy.map",
-   "sha256": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1"
   }
  },
- "rule": "Within each C7-03 class with more than one map, sort the LIVE_MAPS_M2 names ascending and take index int(sha256('D-046/' + class letter), 16) mod n. A: autarky, default, devil, queen_of_spades, stripes, tower_defense, trophy -> index 6. B: australia, islands, maze, schooltime, unsw -> index 2. C: dilemma, trauma, weakhold -> index 1. Classes D (slithery_fight) and E (portals) have one map each and are covered by held-out series.",
- "scope": "Held out by map name in every map_era. The sha256 values are the post-m2 templates from docs/maps-live.md; Data adds the store's map_hash values and per-split row counts in its own manifest.",
+ "history": [
+  {
+   "at": "2026-10-04T10:52Z",
+   "record": "D-046 \u00a73",
+   "set": [
+    "Maze",
+    "Trauma",
+    "Trophy"
+   ],
+   "how": "hash draw: index int(sha256('D-046/' + class letter), 16) mod n over the sorted LIVE_MAPS_M2 names of classes A, B, C"
+  },
+  {
+   "at": "2026-10-04T10:59Z",
+   "record": "D-049",
+   "set": [
+    "Autarky",
+    "Maze",
+    "Trauma"
+   ],
+   "how": "Trophy replaced by Autarky: Trophy was among the 14 development maps of the R1 fits run at 10:52Z; Autarky, Maze and Trauma had not been scored by any model"
+  }
+ ],
+ "scope": "Held out by map name in every map_era. The sha256 values are the post-m2 templates from docs/maps-live.md; Data adds the store's map_hash values and per-split row counts in its own manifest. Classes D (slithery_fight) and E (portals) have one map each and are covered by held-out series.",
  "series_rule": "bucket = int(sha256('D-046/' + series id), 16) mod 10; 0 = test, 1 = validation, 2-9 = train; whole series only.",
  "gate_seeds": "1-3 gate, 4-5 reserve, training rollouts use seeds >= 1000."
 }
