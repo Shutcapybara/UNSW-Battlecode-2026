@@ -1,0 +1,185 @@
+{
+ "split_version": 1,
+ "decision": "D-046 \u00a73",
+ "rules": "(frozen by the Chair, never re-drawn):\n  held-out maps   every game whose map NAME is Maze, Trauma or Trophy, in every map_era -> split 'heldout_map'\n  series buckets  bucket = int(sha256('D-046/' + series_id), 16) mod 10; 0 test, 1 validation, 2-9 train. A game with\n                  no series id is its own series ('game:' + game id) \u2014 reported separately.\n  gate seeds      local games on seeds 1-5 are never training rows (seeds 1-3 gate, 4-5 reserve); training rollouts\n                  use seeds >= 1000. Server games carry server seeds and are split by series only.",
+ "n_games": 125372,
+ "n_series": 28304,
+ "games_without_series": 0,
+ "series_straddling_buckets": 0,
+ "series_with_heldout_map_games": 16340,
+ "sha256_game_split": "ed12ff87f4cea1bf1d4a6cbae47ead6dd24b0080aa485c56e7299e831a1f1603",
+ "file": "build/learn/splits/games_split_v1.parquet",
+ "heldout_map_hashes": [
+  {
+   "map": "Maze",
+   "map_era": "post-m2",
+   "games": 1410,
+   "map_hash": [
+    "502427b4a4b5",
+    "8202a09f96a4"
+   ]
+  },
+  {
+   "map": "Maze",
+   "map_era": "pre",
+   "games": 198,
+   "map_hash": [
+    "8202a09f96a4"
+   ]
+  },
+  {
+   "map": "Trauma",
+   "map_era": "post",
+   "games": 2118,
+   "map_hash": [
+    "21e922b7311f",
+    "57dcdc6de913"
+   ]
+  },
+  {
+   "map": "Trauma",
+   "map_era": "post-m2",
+   "games": 1600,
+   "map_hash": [
+    "21e922b7311f",
+    "57dcdc6de913"
+   ]
+  },
+  {
+   "map": "Trauma",
+   "map_era": "pre",
+   "games": 7708,
+   "map_hash": [
+    "21e922b7311f",
+    "57dcdc6de913",
+    "dcf39d713c06"
+   ]
+  },
+  {
+   "map": "Trophy",
+   "map_era": "post",
+   "games": 2128,
+   "map_hash": [
+    "6576f85c847e",
+    "dff664151117"
+   ]
+  },
+  {
+   "map": "Trophy",
+   "map_era": "post-m2",
+   "games": 1506,
+   "map_hash": [
+    "3c76d5636a2d",
+    "647b52a58e63"
+   ]
+  },
+  {
+   "map": "Trophy",
+   "map_era": "pre",
+   "games": 7128,
+   "map_hash": [
+    "5f1f6b23d6ed",
+    "6576f85c847e",
+    "dff664151117"
+   ]
+  }
+ ],
+ "counts": [
+  {
+   "map_era": "post",
+   "split": "heldout_map",
+   "games": 4246,
+   "series": 3156,
+   "ranked": 2844
+  },
+  {
+   "map_era": "post",
+   "split": "test",
+   "games": 1508,
+   "series": 383,
+   "ranked": 982
+  },
+  {
+   "map_era": "post",
+   "split": "train",
+   "games": 13815,
+   "series": 3466,
+   "ranked": 9298
+  },
+  {
+   "map_era": "post",
+   "split": "val",
+   "games": 1646,
+   "series": 435,
+   "ranked": 1092
+  },
+  {
+   "map_era": "post-m2",
+   "split": "heldout_map",
+   "games": 4516,
+   "series": 3391,
+   "ranked": 3103
+  },
+  {
+   "map_era": "post-m2",
+   "split": "test",
+   "games": 2018,
+   "series": 574,
+   "ranked": 1359
+  },
+  {
+   "map_era": "post-m2",
+   "split": "train",
+   "games": 16551,
+   "series": 4603,
+   "ranked": 11279
+  },
+  {
+   "map_era": "post-m2",
+   "split": "val",
+   "games": 2165,
+   "series": 609,
+   "ranked": 1523
+  },
+  {
+   "map_era": "pre",
+   "split": "heldout_map",
+   "games": 15034,
+   "series": 10730,
+   "ranked": 6815
+  },
+  {
+   "map_era": "pre",
+   "split": "test",
+   "games": 6238,
+   "series": 1696,
+   "ranked": 2797
+  },
+  {
+   "map_era": "pre",
+   "split": "train",
+   "games": 51064,
+   "series": 13826,
+   "ranked": 21946
+  },
+  {
+   "map_era": "pre",
+   "split": "val",
+   "games": 6571,
+   "series": 1775,
+   "ranked": 2916
+  }
+ ],
+ "bucket_share": {
+  "0": 0.096,
+  "1": 0.1021,
+  "2": 0.1008,
+  "3": 0.1013,
+  "4": 0.0961,
+  "5": 0.1008,
+  "6": 0.0994,
+  "7": 0.1015,
+  "8": 0.1011,
+  "9": 0.1008
+ }
+}
