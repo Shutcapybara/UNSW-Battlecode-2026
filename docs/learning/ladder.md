@@ -11,8 +11,8 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 | Rung | Adds | Status | Owner | Record |
 |---|---|---|---|---|
 | R0 | infrastructure | **open** | Data, Learner, Evaluator, Live ops | D-046 |
-| R1 | V0 value model | not started (card may be written during R0) | Learner | |
-| R2 | P1 BC direction head | not started (card may be written during R0) | Learner | |
+| R1 | V0 value model | card P-1 filed; council round 1 open; fit waits for the decode (D-047) | Hinata | D-047 |
+| R2 | P1 BC direction head | not started; offline work may run in parallel with R1 (D-047 §3) | Hinata | |
 | R3 | split/size, cull, sprint heads | not started | Learner | |
 | R4 | feature blocks | not started | Data, Learner | |
 | R5 | V in the search | not started | Learner | |
@@ -25,7 +25,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 | # | Item | Gate | Owner | Status |
 |---|---|---|---|---|
 | 1 | Post-m2 decode finished (queue 7,617 at 10:30Z and growing; Nishinoya probe 1, unaudited) | every in-scope post-m2 game and all own games decoded | Data (native Mac job; the lead starts it if the VM cannot) | open |
-| 2 | Frozen splits | manifests with hashes in `docs/learning/splits/`, approved in D-047 | Data proposes, Chair approves | open; constraints frozen in D-046 §3 |
+| 2 | Frozen splits | manifests with hashes in `docs/learning/splits/` | Chair (maps), Data (series, fixtures, row counts) | held-out maps frozen (`splits/heldout-maps.json`); series and fixture manifests open |
 | 3 | Observation encoder | Python = C++ bit for bit on 1,000 turns | Data (Python), Learner (C++) | open |
 | 4 | Action labeller | agreement with HB-1 labels on Heartbreaker data > 99 % | Data | open |
 | 5 | Leakage audit | no held-out map, series or gate fixture in any training set | Data | open |
@@ -62,3 +62,5 @@ Items 3–5 are the macro's offline gate for R0. Items 1, 2 and 6–10 are prere
 ## Log
 
 - 4 Oct 10:50Z: D-046 opens R0. Engine identity across wheels 1.2.3, 1.2.5 and 1.2.9 checked by hash (D-046 §2).
+- 4 Oct 11:00Z: D-047. Held-out maps frozen (Maze, Trauma, Trophy). P-1 numbered; council round 1 opened on its gate
+  reading; the fit waits for the decode or 5 Oct 00:00Z.

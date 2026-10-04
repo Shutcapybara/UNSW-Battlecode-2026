@@ -807,19 +807,21 @@ implemented (Himeji H27-04). Training entry is therefore open from R0, and the l
 - Not verified: that the server runs this engine, and that `maps/live/` is byte-identical to the server's maps
   (D-043). Data checks the second from map text in post-m2 replays (R0, engineering, no council).
 
-### 3. Frozen splits (constraints frozen now; hashes recorded in D-047 from Data's manifests)
+### 3. Frozen splits (held-out maps frozen now; series and fixture manifests recorded in a later D-record)
 
-Data proposes, the Chair approves, and nothing below is re-drawn afterwards.
+The held-out maps are frozen by this record, by a rule fixed before any proposal was read. For the series buckets
+and gate fixtures the rule is frozen here; Data builds the manifests with hashes and the Chair records them. Nothing
+below is re-drawn afterwards.
 
 - **Held-out maps.** At least three of `LIVE_MAPS_M2`: one from each of the behavioural classes A, B and C
   (Chongqing C7-03: A = devil, trophy, stripes, tower_defense, queen_of_spades, default, autarky; B = australia,
   unsw, islands, maze, schooltime; C = trauma, weakhold, dilemma). Classes D (slithery_fight) and E (portals) have
   one map each and are not held out as maps; they are covered by held-out series.
-  - Default selection: within each class sort the map names ascending and take index
-    `int(sha256("D-046/" + class letter), 16) mod n`. Data may propose a different map only with a written reason
-    that does not use any model's or bot's per-map results (for example too few teacher games on the drawn map, or
-    a mechanic that exists on one map only and must stay learnable).
-  - The default draw gives **trophy (A), maze (B), trauma (C)**. Known cost: Trauma is the map with the largest
+  - Selection rule: within each class sort the map names ascending and take index
+    `int(sha256("D-046/" + class letter), 16) mod n`.
+  - The draw gives **trophy (A), maze (B), trauma (C)**, frozen in `docs/learning/splits/heldout-maps.json` with the
+    template hashes. Data may ask for a replacement only for a defect in the data (for example too few teacher games
+    on a drawn map), never from any model's or bot's results. Known cost: Trauma is the map with the largest
     opening gap (Chongqing C6-03), and 84 % of its round-limit games are queen-decided (C5-02), so teachers' Trauma
     games do not train P or V. That cost is accepted: held-out maps stay out of training for the whole phase. They are the only
     honest transfer test, and the server replaced six maps in one day (D-043). A pre-registered final re-fit on all
@@ -838,7 +840,7 @@ Data proposes, the Chair approves, and nothing below is re-drawn afterwards.
   the Evaluator prompt's "every panel game becomes training data" to non-gate panels.
 - **Already consumed.** The 94-game holdout (index 192–285) used by Kanazawa and Himeji is consumed (H25-04) and is
   descriptive only.
-- Manifests with hashes and row counts go to `docs/learning/splits/`; D-047 records them.
+- Manifests with hashes and row counts go to `docs/learning/splits/`; a later D-record records them.
 
 ### 4. The Phase 3 local gate (reconciles D-042, D-045 and macro §8)
 
@@ -878,7 +880,7 @@ golden parity with the switch off. Amendments for Phase 3:
   score 0.804); gen 1,038–353–1 of 1,392 (0.746), and 861–338–1 of 1,200 (0.718) without the stale twins; queen
   reached r490 and alive in 2 of 816 pool games.
 - **R0 exit checklist** (all must be recorded in `docs/learning/ladder.md`): encoder Python = C++ on 1,000 turns;
-  labels agree with HB-1 above 99 %; leakage audit; split manifests (D-047); post-m2 decode finished; registry in
+  labels agree with HB-1 above 99 %; leakage audit; split manifests; post-m2 decode finished; registry in
   use; gen twins regenerated from `maps/live/`; the `battles.json` control and the live monitor.
 - **Outside the ladder:** the cage rule C+D with E = 0, tagged `temporary`, enters only through §4 and §7. Its
   learned replacement target is R3/R4.
@@ -933,7 +935,8 @@ submission pauses all automation until the Chair resolves it.
 ### 10. Roles and seats
 
 - Chair: Ushijima (Claude; this record).
-- Data, Learner, Evaluator, Live ops: named by the lead when started; recorded in D-047 onward and in
+- Learner: **Hinata** (Claude; a Cowork VM session, so R1 only until a native session exists).
+- Data, Evaluator, Live ops: named by the lead when started; recorded in later D-records and in
   `claude/chair-status.md`. Until a role has a lane, its queue items wait; no other lane takes them.
 - Council pool at 10:55Z: **Tanaka** (GPT, standing auditor, `r/tanaka`), **Sugawara** (Claude, mechanism) and
   **Nishinoya** (GLM, probe, `r/nishinoya`). Other instances join as the lead starts them. A round seats three
@@ -950,13 +953,48 @@ submission pauses all automation until the Chair resolves it.
 - §1 of the intake, and Tanaka's 10:43Z request (number collision, gate and seeds, runtime, training entry):
   resolved by the numbering note, §4, §2 and the training-entry note of this record. The runtime conflict
   disappears because the engine is the same binary in 1.2.3, 1.2.5 and 1.2.9.
-- §4 (held-out maps): option (a) is adopted, as written in §3. The default draw already lands on two large-gap queen
+- §4 (held-out maps): option (a) is adopted, as written in §3. The draw lands on two large-gap queen
   maps (maze, trauma), which gives the held-out test power; trophy covers the elimination class.
 - §2 and §3 (encode from the IO round block; queen-knowledge features from own-view history only, sonar-relayed
   knowledge as a separate R4 block): adopted as R0 design constraints for Data and the Learner, recorded in
   `docs/learning/ladder.md` with the intake's falsifier. They are engineering constraints and need no council round.
 - Nishinoya's 10:52Z probes (unaudited): (1) the decode queue is 7,617 and growing, so R0 item 1 is a re-run of
   the native decode and is on the human-in-the-loop list; (2) every live map has 666–1,050 in-scope post-m2 games,
-  so the §3 default draw is supportable; Tanaka's audit note replicates the counts for trophy, maze and trauma;
+  so the §3 draw is supportable; Tanaka's audit note replicates the counts for trophy, maze and trauma;
   (3) the gate-tooling contradiction is ruled in §4.1.
+
+## D-047 — P-1 (R1, V0) rulings before the fit; council round 1 opened (4 Oct 2026 11:00Z, Chair: Ushijima)
+
+Card: `docs/learning/proposals/P-hinata-01-R1-V0.md`, filed 10:45Z by Hinata (Learner). It is numbered **P-1**
+(`docs/learning/proposals/INDEX.md`); its content stays as filed. No fit has run and no pool-map outcome was read.
+
+1. **Held-out maps.** The fit reads `docs/learning/splits/heldout-maps.json`: Maze, Trauma, Trophy (D-046 §3).
+   Hinata's provisional manifest (Autarky, Maze, Trauma) agrees on classes B and C. Class A stays Trophy for two
+   reasons: the draw rule was fixed before any proposal was read; and Autarky is one of the two cleanest transit-gap
+   maps (Chongqing C6-03), where teachers' demonstrations are most useful to the policy prior, while on Trophy we are
+   at or above the top ten at r50. The advisory fit on the provisional manifest is not run.
+2. **Timing.** The gating fit runs once, on the complete post-m2 decode (ladder R0 item 1), with the data hash
+   recorded. Today 7,057 of about 14,700 in-scope games are decoded and the decode order is not random, so the one
+   confirmation on held-out maps is not spent on half the data. If the decode is not complete by **5 Oct 00:00Z**,
+   the fit runs on the store as it is then.
+3. **Ladder position.** R1 changes no bot and has no parent. Its offline work and R2's may proceed in parallel.
+   R1 must pass before R5. R1 is not recorded as passed until R0 items 1, 2 and 5 are closed.
+4. **Gate reading: council round 1.** The author asks for a ruling before the fit. The two readings:
+   - **G1** (the card as written): point ΔAUC(V0 − Φ) ≥ 0 in each of 14 regime × checkpoint cells; round-limit r50
+     AUC ≥ 0.66; calibration slope in [0.9, 1.1] in each cell from r25; the same on held-out maps, one shot.
+   - **G2** (the author's alternative): game-cluster 5th-percentile lower bound of ΔAUC > −0.01 in every cell, and
+     point ΔAUC > 0 in the round-limit cells from r150; the other clauses as in G1.
+   - Note: the macro's R1 gate names seven checkpoints; the split by regime into 14 cells is the card's.
+   - Seats: Tanaka (auditor), Sugawara, Nishinoya. Reviews in `docs/learning/reviews/P-1-<lane>.md`, due 13:00Z.
+     Each review recommends G1, G2 or an amendment, and gives P(pass) under G1 and under G2. Scoring uses the
+     reading the Chair freezes.
+   - The Chair's reading before the reviews, so that dissent can be aimed at it: G1 joins 14 point comparisons and
+     can fail on noise in cells where the card itself predicts ΔAUC ≈ 0. A non-inferiority margin there, with a
+     superiority clause where the mechanism is claimed, tests the claim more directly. Nothing is decided until the
+     round closes; the Chair freezes the reading in D-048 before the fit.
+5. **Owner, objective, stop rule.** Owner: Hinata. Frozen objective: the card's, under the reading frozen in D-048.
+   Stop rule: the card's (one fit, one confirmation, no hyper-parameter search after any pool-map outcome is read; a
+   failure gives a diagnosis card, not a re-run).
+6. **Host.** Hinata runs in a Cowork VM, which is enough for R1. R2 and later need a native Mac session
+   (human-in-the-loop item H8).
 

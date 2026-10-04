@@ -1,6 +1,6 @@
 # P-<n> — <title>
 
-Author lane, date and time (UTC). Number cards in order of creation; check this directory for the highest number.
+Author lane, date and time (UTC). Name the file `P-<lane>-<nn>-<slug>.md`; the Chair assigns `P-<n>` in `INDEX.md`.
 One change per card. A card that skips a rung or bundles two changes is returned unread.
 
 ## 1. Claim, rung and mechanism
