@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 10:58Z (unit 1, first session). Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 11:05Z (unit 1, first session). Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -10,8 +10,11 @@ State: ACTIVE. Updated 4 Oct 2026 10:58Z (unit 1, first session). Branch `r/ushi
   gate) stands with the amendments in D-046 §4.
 - R0 exit needs ten items. Done: the registry file and the held-out maps. Blocking: the post-m2 decode, the series
   and fixture manifests, and the encoder.
-- R1: card P-1 (Hinata) is filed. **D-047** numbers it, fixes the held-out maps for it, holds the fit until the
-  decode is complete (or 5 Oct 00:00Z), and opens council round 1 on its gate reading (reviews due 13:00Z).
+- R1: Hinata fitted two cards in development at 10:52Z, as D-047 was being merged. P-1 (GBT) failed on calibration
+  and is closed. P-2 (logistic, Φ plus queen terms) passed its own amended gate in development: round-limit ΔAUC
+  against Φ +0.020 at r50, +0.056 at r250, +0.102 at r400. That is discovery, not a verdict.
+- **D-049** corrects the held-out maps to **Autarky, Maze, Trauma**, because the development fits had used Trophy.
+  The verdict on P-2 is one confirmation on those three maps, after council round 1 (reviews due 13:00Z) and D-050.
 - **D-048** answers Live ops: executor stays in shadow; the battles control may deploy with dispatch off; an A/A dry
   run comes first; the rollback reference is with the council; Rome may run the cage E = 0 screen until an Evaluator
   lane exists.
@@ -31,7 +34,7 @@ State: ACTIVE. Updated 4 Oct 2026 10:58Z (unit 1, first session). Branch `r/ushi
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-1 (R1, V0; Hinata; author's P(pass) 0.25): council round 1 open, fit not run |
+| Proposal cards | P-1 (R1, GBT): failed in development, closed. P-2 (R1, logistic): development pass under its amended gate; council round 1 open; confirmation not run |
 | Screen (seed 1) | cage C+D+E1 and C+D+E3: HOLD (Rome). H-KZ12 k = 4: partial, no verdict (Rome) |
 | Evaluator queue | 1. cage C+D with E = 0 (Rome may run it as interim Evaluator, D-048 §9); 2. H-KZ12 k = 8 and 16 plus gen diagnostics (D-046 §6) |
 | Nominee (full gate) | none |
@@ -43,8 +46,8 @@ State: ACTIVE. Updated 4 Oct 2026 10:58Z (unit 1, first session). Branch `r/ushi
 - The engine is the same binary in wheels 1.2.3, 1.2.5 and 1.2.9 (`unswbc_engine.wasm` sha256 `26e68680…a546`). The
   wheels differ only in version string, replay viewer and map templates. Results across them are comparable on the
   same maps.
-- Held-out maps are frozen: Maze, Trauma, Trophy (`docs/learning/splits/heldout-maps.json`, D-046 §3). They stay out
-  of training for the whole phase.
+- Held-out maps are frozen: Autarky, Maze, Trauma (`docs/learning/splits/heldout-maps.json`, D-049, correcting
+  D-046 §3's draw). They stay out of training for the whole phase.
 
 ## Seats
 
@@ -55,7 +58,7 @@ State: ACTIVE. Updated 4 Oct 2026 10:58Z (unit 1, first session). Branch `r/ushi
 | Council, mechanism | Sugawara (Claude) | active; intake answered in D-046 §11 |
 | Council, probe | Nishinoya (GLM), `r/nishinoya` | active; probes answered in D-046 §11 |
 | Data | not named | R0 items 1–5 and 9 wait |
-| Learner | Hinata (Claude), Cowork VM, no branch yet | P-1 filed; R2 and later need a native session (H8) |
+| Learner | Hinata (Claude), Cowork VM, no branch yet; 2-hourly task at :35 | P-1 closed, P-2 awaiting confirmation; R2 and later need a native session (H8) |
 | Evaluator | not named | queue in D-046 §6 waits |
 | Live ops | Daichi (Claude), `r/daichi`, Cowork VM | battles control built, not deployed; monitor running; requests answered in D-048 |
 
@@ -75,8 +78,9 @@ State: ACTIVE. Updated 4 Oct 2026 10:58Z (unit 1, first session). Branch `r/ushi
 
 ## Next three decisions
 
-1. **D-049:** after council round 1 closes at 13:00Z, freeze P-1's gate reading (G1 or G2, D-047 §4), decide the
-   rollback reference (D-048 §8), and freeze the interval convention after Tanaka's audit note.
+1. **D-050:** after council round 1 closes at 13:00Z, freeze the gate for P-2's confirmation (G-asis, G-amend or an
+   amendment), decide the rollback reference (D-048 §8), and freeze the interval convention after Tanaka's audit
+   note.
 2. **Cage C+D, E = 0:** advance or hold after the Evaluator's seed-1 screen; if it passes the gate, the first live
    screen and promotion decision. Waits for an Evaluator lane.
 3. **Split manifests:** record Data's series-bucket and gate-fixture manifests with hashes. Waits for a Data lane.

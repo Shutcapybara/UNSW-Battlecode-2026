@@ -11,7 +11,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 | Rung | Adds | Status | Owner | Record |
 |---|---|---|---|---|
 | R0 | infrastructure | **open** | Data, Learner, Evaluator, Live ops | D-046 |
-| R1 | V0 value model | card P-1 filed; council round 1 open; fit waits for the decode (D-047) | Hinata | D-047 |
+| R1 | V0 value model | P-1 (GBT) failed in development; P-2 (logistic) passed its own gate in development; confirmation on held-out maps waits for D-050 and the decode | Hinata | D-047, D-049 |
 | R2 | P1 BC direction head | not started; offline work may run in parallel with R1 (D-047 §3) | Hinata | |
 | R3 | split/size, cull, sprint heads | not started | Learner | |
 | R4 | feature blocks | not started | Data, Learner | |
@@ -25,7 +25,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 | # | Item | Gate | Owner | Status |
 |---|---|---|---|---|
 | 1 | Post-m2 decode finished (queue 7,617 at 10:30Z and growing; Nishinoya probe 1, unaudited) | every in-scope post-m2 game and all own games decoded | Data (native Mac job; the lead starts it if the VM cannot) | open |
-| 2 | Frozen splits | manifests with hashes in `docs/learning/splits/` | Chair (maps), Data (series, fixtures, row counts) | held-out maps frozen (`splits/heldout-maps.json`); series and fixture manifests open |
+| 2 | Frozen splits | manifests with hashes in `docs/learning/splits/` | Chair (maps), Data (series, fixtures, row counts) | held-out maps frozen: Autarky, Maze, Trauma (`splits/heldout-maps.json`, D-049); series and fixture manifests open |
 | 3 | Observation encoder | Python = C++ bit for bit on 1,000 turns | Data (Python), Learner (C++) | open |
 | 4 | Action labeller | agreement with HB-1 labels on Heartbreaker data > 99 % | Data | open |
 | 5 | Leakage audit | no held-out map, series or gate fixture in any training set | Data | open |
@@ -64,5 +64,7 @@ Items 3–5 are the macro's offline gate for R0. Items 1, 2 and 6–10 are prere
 - 4 Oct 10:50Z: D-046 opens R0. Engine identity across wheels 1.2.3, 1.2.5 and 1.2.9 checked by hash (D-046 §2).
 - 4 Oct 10:52Z: D-047. Held-out maps frozen (Maze, Trauma, Trophy). P-1 numbered; council round 1 opened on its gate
   reading; the fit waits for the decode or 5 Oct 00:00Z.
+- 4 Oct 11:05Z: D-049. Held-out maps corrected to Autarky, Maze, Trauma (Trophy was used in the 10:52Z development
+  fits). P-1 closed as failed in development. P-2 is the R1 candidate; its confirmation waits for D-050.
 - 4 Oct 10:58Z: D-048. Executor stays in shadow; battles control may deploy with dispatch off; A/A dry run first;
   rollback reference put to the council; Rome may run the cage E = 0 screen until an Evaluator lane exists.
