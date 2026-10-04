@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-04T07:54:54.907664+00:00",
+  "index_games": 122057,
+  "index_sha256": "25d6ecd5ffd870cb73fd389040186e296ceb54afafda48887e62c3a5a891025a",
+  "delta": 744,
+  "new_own": [],
+  "latest_own": "2026-10-04T06:35:02.556Z",
+  "own_watched": false,
+  "progress_at": "2026-10-04T07:52:39.877046+00:00",
+  "ladder": "20261004T074654Z.json",
+  "ladder_sha256": "936fc72594c1c10bda58a167d4da00194826437ae8d528c30841cef6db626d5e",
+  "submissions": [
+    [
+      14265,
+      "idle",
+      "2026-10-04T07:46:53.184941+00:00"
+    ],
+    [
+      14585,
+      "active",
+      "2026-10-04T07:46:53.184050+00:00"
+    ]
+  ],
+  "series": [
+    1168,
+    "2026-10-04T07:46:53.157016+00:00"
+  ],
+  "sources": {
+    "HEAD": "f37abdf631e70e467017335161ecd18aedcd5fcf",
+    "origin/main": "21186bf2490346cb6503834d46b572e962b60f6b",
+    "origin/r/kanazawa": "9b0da8f7848458ebcf2b77aeab293355df741b36",
+    "origin/r/shenzhen": "93a34815ae713f829bbf5fcae8607e6cc8ea0cc9",
+    "origin/r/Seoul": "ff8fac943d3791ed64c1b9c6b7a503e18035b639",
+    "origin/r/rome": "b926cdf6422579cbdc02522178c66bc97ee422f4",
+    "origin/r/chongqing": "b50bbe8861f248eea269513755c872e77b30d684",
+    "origin/r/nara": "a884062ea1ead6976f6054b7992dc13c839114eb",
+    "origin/r/antioch": "2c7113f6657362ce68bc0d667bf932d665c1a31c",
+    "origin/r/carthage": "5b69fa9d07a0fd4684826f752438a2e8e66d9f45",
+    "origin/r/kyoto": "fccea71c060fc7bf0cae41aeef8d063d9894d8c6"
+  },
+  "source_hashes": {
+    "tools/hub/corpus.py": "6bb33fd775768eafdaf38c287ce1853f45e8852d2e40acd5077502f3fec8c51c",
+    "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+    "tools/s1/build.py": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f",
+    "tools/himeji/entry_contract_check.py": "173479c8faeeb1d64ade718d1dbda5f75a31c041bcb7c99eae18062732d8e743",
+    "tools/himeji/entry_alternative_audit.py": "577de9482a0cf7b37bf7f05b1aa970b94a13c93b0a16e8999ccedf3c9b8d3f22"
+  },
+  "top10": [
+    264,
+    91,
+    306,
+    112,
+    55,
+    507,
+    952,
+    842,
+    213,
+    566
+  ],
+  "team7": {
+    "id": 7,
+    "rank": 74,
+    "elo": 1721
+  },
+  "rome_cursor": "b99b513f-fdd3-41ba-b646-7855a1a8bbde:21",
+  "read_only_db": "immutable=1,mode=ro,query_only; WAL excluded",
+  "board_cursor": "KZ unit10 07:45, SZ unit13 labelled08:10 but available07:52, Seoul unit3; H29-01..07",
+  "query_workers": 1,
+  "query_complete": true
+}
