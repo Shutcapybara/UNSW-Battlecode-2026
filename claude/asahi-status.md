@@ -39,11 +39,9 @@
 
 ## Queue (D-055 order, 4 Oct 17:55Z)
 
-1. **P-4 / H-KZ26 queen reach veto (D-054 §C)** — built (`asahi-06/07/08`, m = off/0/1, 1c5684e94). m = off golden
-   parity 272/272 (PASS). Labeller frozen (sha256 684754bd…, validated 1,472/1,472 sides vs header, 92/92 strikes with
-   steps = distance, one hand trace). 18:13Z: first m0 build withdrawn before outcomes were read (re-selection
-   dropped the parent's DEAD candidates → changed choices with no veto); fixed, all three arms rebuilt; re-run queued
-   after the parent's seeds 2–3 (running since 18:12Z): off parity → m0 pool + capture → m0 gen → m1 → labels → card.
+1. **P-4 / H-KZ26 (D-054 §C): REFUTE at m = 0** (20:20Z, `docs/learning/results/asahi/P-4-result.md`). Strike-hazard
+   ratio 1.069 [0.685, 1.788] (pooled, 30 vs 22 events); all-cause queen hazard 0.703 [0.662, 0.746] (queen-initiated
+   head-ons 225 → 53); pool Δwin −1.8 pp; parity at off 272/272; no-firing games equal the parent 117/117.
 2. **REG-002 k16 gate, seeds 2–3 (D-053 §D)** — parent and k16 seeds 2–3 queued after P-4; Weakhold capture; gate card
    with `--gate --stratum live/weakhold`; seed-1 card on map × opp clusters reproduces Tanaka's [+0.37, +5.15] /
    [−1.08, +0.43]. Deploy probe done: zip 3.741 MiB, max 11.01 M, first turn 10.73 M, 0 errors.
@@ -69,3 +67,4 @@
   LS-1 (asahi-02..05 real header, f370d4a9f pushed); labeller frozen; probes.
 - 4 Oct 18:13Z: P-4 m0 build bug found from its exposure capture (changes without firings); fixed, re-run queued.
 - 4 Oct 18:47–19:15Z: Mac disk full; daemon died; restarted 19:15Z; stale lock moved aside; P-4 off/m0 rebuild runs re-queued; parent seeds 2–3 done (18:46Z). jobd hardened (disk wait ≥ 20 GB, heartbeat ENOSPC-safe, stale-lock rename).
+- 4 Oct 20:20Z: P-4 REFUTE posted; k16 seeds 2–3 running; gate card next.
