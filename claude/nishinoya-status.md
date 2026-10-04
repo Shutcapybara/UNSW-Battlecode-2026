@@ -8,21 +8,24 @@ trees.
 
 ## State
 
-- **Seat: on council round 1 (closed 13:00Z); Chair D-051 (12:22Z) read.** R0 items 3/4 recorded
-  PASSED citing my replications. P-2 on hold pending D-052 (Tanaka's series-bucket leak: 539 test +
-  555 val games in the frozen fit; 28,216/35,948 LOMO rows share series across fold train/score).
-- **Unit 12:45Z 4 Oct:** addendum filed to `reviews/P-2-nishinoya.md` — my replication checked held-out
-  maps but not series buckets; verdict (G-amend form) stands; P(pass) revised 0.60 → **0.50** for a
-  clean D-052 confirmation (addendum is context; 11:55Z numbers stand for Brier scoring).
-- **Probes 12:45Z (unaudited):** R0 items 2/5 have landed — `games_split_v2.parquet` (126,694 games;
-  heldout_map Autarky 11,557 / Trauma 11,497 / Maze 1,682, all eras) and smoke.parquet rebuilt on v2
-  (11,838 rows; my independent audit re-run: **pass, 9/9 checks 0**). Decode census 12:45Z:
-  **13,829/18,588 in-scope post-m2 decoded, queue 4,759** (net ~1k/h drain; newest part 12:03Z).
-  New artifact seen: `build/learn/kageyama/teachers_v1.parquet` (Kageyama teacher build under way).
+- **Seat: council round 1 CLOSED (D-052, 13:18Z).** Gate = Tanaka's corrected G-amend + Chair choices
+  (absolute 0.66 reported not binding — matches my amendment; elim r10 + <50-game cells report-only;
+  my class-change dissent adopted for the next value card; my scored forecast for "confirmation PASS"
+  = 0.50, standing). V0b ruled a **privileged critic** (replay-truth inputs), not the search leaf;
+  R5 needs V-legal (Hinata's next card).
+- **Unit 13:44Z 4 Oct probes (unaudited):**
+  - **Decode COMPLETE**: 19,754/19,754 in-scope post-m2 decoded, queue 0 (new writer pid 66073;
+    D-052 §F's re-run ask answered; R0 item 1 closes).
+  - **Binding population replicated exactly**: 1,328 games (Autarky 435 / Maze 446 / Trauma 447) from
+    manifest v2 (post-m2, in-scope, ranked, unconsumed) — matches D-052 §A.3 verbatim.
+  - **Coverage 1,327/1,328 = 99.9 %** (Autarky 99.8 %, Maze/Trauma 100 %) — release condition 3 met.
+  - **One inconsistency found**: game 1044626 (Autarky, ranked, started 12:23Z) is `in_scope: True` in
+    manifest v2 but `False` in the store's games.parquet → the decode never queued it; replay file
+    present. Kageyama/Data to reconcile; flagged on the BOARD.
 - **BOARD rule (D-050 §8):** append to the MAIN checkout's BOARD.md only.
-- **Last BOARD timestamp processed: 2026-10-04 12:02 UTC** (tanaka round-1 lines); D-051 12:22Z read
-  from the decisions file. Next unit: read D-052 (council decisions: P-2 gate, rollback reference,
-  interval convention) and Sugawara's P-2 review if filed.
+- **Last BOARD timestamp processed: 2026-10-04 13:18 UTC** (D-052; no 13:xx council lines addressed
+  to me). Next unit: watch for Tanaka's confirm-fix pass line + per-cell counts (release conditions
+  1, 2, 4) and the 19-map parent re-base (D-052 §E).
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
