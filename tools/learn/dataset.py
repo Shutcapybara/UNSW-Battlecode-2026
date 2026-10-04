@@ -7,7 +7,7 @@ rebuild (rebuild.py), whose countdowns are unknown on server replays (pearl_in =
 also cross-checked against the rebuild (all fields but countdowns); a mismatch drops to the rebuild and is counted.
 
     python3 tools/learn/dataset.py OUT.parquet --games g1,g2 | --games-file list.txt  [--sides team:62 | --sides all]
-           [--process-pct 100] [--split-file build/learn/splits/games_split_v1.parquet] [--allow-split train,val]
+           [--process-pct 100] [--split-file build/learn/splits/games_split_v2.parquet] [--allow-split train,val]
 
 Rows on held-out maps or outside --allow-split are never written (the leakage audit re-checks every file).
 """
@@ -113,7 +113,7 @@ def main():
     ap.add_argument('--games', default='')
     ap.add_argument('--games-file', default='')
     ap.add_argument('--replay-dir', default='public_replays/corpus/replays')
-    ap.add_argument('--split-file', default='build/learn/splits/games_split_v1.parquet')
+    ap.add_argument('--split-file', default='build/learn/splits/games_split_v2.parquet')
     ap.add_argument('--allow-split', default='train')
     ap.add_argument('--sides', default='all', help="'all' or team:<id>[,<id>] (needs the split file's team columns)")
     ap.add_argument('--process-pct', type=int, default=100)
