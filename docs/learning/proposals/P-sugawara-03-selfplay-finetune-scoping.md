@@ -116,3 +116,47 @@ our compute with 20–40 decentralised agents under 7×7 partial observation; th
 - Run the filtered self-imitation probe (§ simpler methods, i) first: same wrapper, no critic, one night; if outcome-
   filtered re-cloning moves head-to-head < +0.02, PPO at 2–3 orders less compute than precedent is unlikely to do
   better.
+
+## Author's amendment 1 (4 Oct 2026 21:30Z; after Nishinoya's review and Hinata's 20:54Z A3/A10 arms; before any P-7 outcome)
+
+**(a) Engine arithmetic reconciled (Nishinoya amendment 3).** Both constants are sourced and measure different things:
+80 µs = raw engine with a trivial policy (antioch, 2 Oct, `2026-10-02-antioch-queen-features-and-learned-track.md`
+H-RL1, `engine_bench.py`); 383 µs = all-in per busy core in antioch's 3 Oct batched run (28.63 M/h ÷ 3.05 cores:
+engine + hq8 36-field encoder + IPC + GPU batching). The card's "≈ 80 µs" line wrongly implied the second figure.
+**Replication (cloud container, Xeon 2.1 GHz, 1 core, unswbc 1.2.9, `tools/learn/{encode,block,gen_truth}.py` as on
+the Mac at 21:30Z, gen_truth safe-walker policy, default + autarky × seeds 1–2, 1,262 decisions):** engine ≈ 73 µs
+(122 µs engine + walker − 49 µs walker + parse); **deploy encoder (parse_block + Encoder.observe, 1,193 features)
+111–140 µs/decision**; A10 forward 35–40 µs batched (mine) / 22–31 µs (Nishinoya, Mac). Sum ≈ 230–260 µs/decision-
+core. Caveat: walker games are short (200–430 decisions), so late-game blocks with many visible parts are
+under-sampled; the encoder may cost more there.
+
+**What enters E2:** the bar 1×10⁷/h on 8 cores needs ≤ 2.9 ms per decision-core at perfect scaling, or ≤ 1.1 ms if
+scaling stalls at antioch's 3.05 effective cores. The all-in estimate (383 µs − hq8 encoder + deploy encoder +
+A10 ≈ 0.45–0.55 ms) clears both by ≥ 2×. The E2 risk is therefore scaling and orchestration of the Python wrapper,
+not any per-decision constant. Revised estimate: 2–6×10⁷ decisions/h on 8 Mac cores. **Revised P(E2) 0.60 → 0.75.**
+The original 0.60 stays logged for Brier scoring beside the revision.
+
+**(b) Nishinoya amendments 1, 2 and 4 accepted.** Step 0 = one-night filtered self-imitation probe, required; E2 is
+measured before the PPO learner engineering starts; the death-mix columns (invalid, self, wall, strike by mover)
+are printed every iteration.
+
+**(c) New proposal on the void clause (D-061 §C), for the Chair's ruling with the battery table.** New evidence:
+A3-400 − A10 = +0.0418 [+0.0379, +0.0463] with A10 at a fixed 4 epochs, loss still falling, and A3-800 ≤ A3-400
+(trees have saturated, the network has not). A battery selection on development accuracy will probably pick trees.
+"Void if trees" then ends the outcome-signal line on an untuned network. Replace it with: **if trees are selected,
+P-7's actor is the A10-shape network distilled from the selected tree model** (policy distillation, Rusu et al.
+2016; DAgger-style relabelling on the clone's own rollouts). Entry gate before PPO: top-1 agreement with the tree
+model ≥ 0.95 on dev120 fold-test rows **and** development accuracy within 0.01 of the trees. If the gate fails, the
+card is void as before. This adds no deploy change (the tree model stays the deploy candidate until a P-7 network
+beats it under D-046 §4) and costs roughly one A10 fit plus a rollout relabel.
+P(distillation gate passes | trees selected) = **0.55**.
+
+**(d) Tanaka's 21:25Z contract (`reviews/P-7-tanaka.md`): items 1–5 accepted.** These are: full-loop budget, a frozen
+fixture manifest with draws as half and missing games meaning incomplete, iteration 6 frozen as the final checkpoint,
+an identical actor wrapper, and terminal-potential handling. On storage: PPO is on-policy, so no buffer the size of
+an iteration is kept. Rollouts are consumed in chunks of ≤ 1 M decisions. The 1,193 encoder features are small
+integers, so they are stored as int8 at ≈ 1.2 GB per chunk, against the 95 GB of a dense float32 buffer for a whole
+iteration. **Step 0 (Nishinoya amendment 1) versus Tanaka's dissent:** I side with Tanaka on its logic. Filtered
+self-imitation keeps only the wins, so it can amplify luck, and its failure does not refute PPO. Step 0 is therefore a
+required, separately budgeted baseline, not a falsifier. If it moves head-to-head by less than +0.02, my
+P(head-to-head ≥ 0.55) drops to 0.30 before PPO starts, and that number is recorded.

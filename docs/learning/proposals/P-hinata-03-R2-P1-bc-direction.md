@@ -323,3 +323,24 @@ ReLU → FC 4; Adam 1e-3, batch 512, **4 epochs**, unweighted, seed 7. 120,804 p
 no tuning; pooled for the D-057 §C selection (r2_battery POOLED now includes A10). Smoke on 12 series (1 epoch) is
 plumbing only. Also noted: in this facing-relative layout A8's mirror is a flip of the lateral axis plus swapping the
 _R/_L channels — Kageyama to confirm before A8 is built.
+
+### Battery arms A3 (unweighted) and A10 (CNN) — development results (appended 2026-10-04 20:54 UTC, hinata). Descriptive; no selection (D-060 §E); no tuning.
+
+Same 189,630 dev120 oracle move rows (188,250 F/R/L), 49 series, 10 teachers, 14 training maps, post-m2; fold test-row hashes
+= dev120-enc-s5 manifest (checked by --expect-folds). F/R/L-conditional accuracy; whole-series bootstrap 1,000 × seed 7, linear
+5th/95th; paired = whole-series bootstrap of the accuracy difference on identical rows.
+
+| arm | F/R/L acc [5th, 95th] | queen | non-queen | per teacher (min–max) | model size |
+|---|---|---|---|---|---|
+| A3-400 unweighted | **0.7145** [0.7061, 0.7239] | 0.6847 | 0.7153 | 0.676–0.769 | 11.5 MB LightGBM text / fold |
+| A3-800 unweighted | 0.7114 [0.7034, 0.7200] | 0.6717 | 0.7125 | 0.674–0.765 | 23.0 MB |
+| A10-e4 (CNN) | 0.6727 [0.6641, 0.6815] | 0.6542 | 0.6732 | 0.625–0.713 | 120,804 params (118 KiB int8), 0.88 M MAC |
+| (A3 weighted, REG-004) | 0.7142 [0.7057, 0.7238] | | | | |
+
+- Paired: A3-800 − A3-400 = −0.0031 [−0.0044, −0.0019] (800 rounds overfits slightly); A3-400 − A10 = **+0.0418 [+0.0379, +0.0463]**, 49/49 series bootstrap.
+- Weighting is immaterial for A3 (0.7145 unweighted vs 0.7142 weighted).
+- A10's training loss was still falling at epoch 4 (0.65); the config was fixed before the fit and is not tuned here. The gap
+  is large enough that "a small CNN matches boosted trees on the same encoder columns" is not supported at this row count (both arms see the same 1,193 encoder columns).
+- Code: r2_battery.py fit sha 8fdddd38… (A3-u run), r2_cnn.py 5e8d6f46… (A10-u run); the current tools (8a29e479… /
+  e237fb76…) only add validation and manifest binding, fits unchanged. Registry: build/hinata/r2/battery/{A3-u,A10-u}/registry.json
+  (registry sha 8807488c… / 3e23db4a…); A3 models as split tgz + models.sha256, A10 weights .pt.

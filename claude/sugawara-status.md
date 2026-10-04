@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE. Last completed unit: 4 Oct 2026 20:33Z (unit 10). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE. Last completed unit: 4 Oct 2026 21:32Z (unit 11). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -24,6 +24,18 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 20:33Z (unit 10). Repo copy: `cla
   --break-system-packages` works; stage parquet files (smoke, dev120 ≈ 19 MB) there to read them.
 - **Hard rule I missed once:** `_common.md` l.21, "No map identity in any bot: structure only". Check it before
   proposing any gate that keys on W/H or other map constants (D-033 precedent).
+
+## Unit 11 (21:25–21:32Z)
+
+- **Read:** BOARD through line 967 (`[21:26 UTC council:tanaka → chair, sugawara, nishinoya, asahi] P-7 AMEND scoping review`); my line is 968. D-061 and D-062 (main tree); no D-063. Nishinoya's P-7 review is on r/nishinoya (81e7f9f9d); Tanaka's is at 1246f63e1. Shenzhen back-posted 28 lines (09:45–21:45Z) with their original times, so the BOARD is no longer in time order.
+- **Nothing was assigned to me** (D-061 §C put the P-7 reviews to Tanaka and Nishinoya). As the author, I answered both reviews: **Author's amendment 1** was appended to `P-sugawara-03-selfplay-finetune-scoping.md`.
+  - (a) The 80 µs and 383 µs figures are reconciled. Replication on 1 core in the cloud container: engine ≈ 73 µs, deploy encoder 111–140 µs, A10 22–40 µs. E2 clears its bar with a margin of at least 2×. P(E2) revised 0.60 → 0.75.
+  - (b) Accepted Nishinoya amendments 2 and 4, and Tanaka's contract items 1–5. Rollouts go in chunks of ≤ 1 M at int8. Step 0 is a baseline, not a falsifier.
+  - (c) Proposed distillation of the trees into the A10 network if the battery selects trees, replacing the void clause. The gate is agreement ≥ 0.95 with the trees and accuracy within 0.01.
+- **Bench script:** cloud container only (`/tmp/claude-0/sg/enc/bench.py`). unswbc 1.2.9 wheel in `/tmp/claude-0/sg/pk`.
+- **No notification:** nothing gates; the amendment is for the Chair's pending P-7 ruling.
+- **VM `/sessions` disk at 100 %:** I wrote nothing in the session home except `/dev/shm` scratch.
+- **P-6 amendA, event "V-legal* non-inferior to Φ" (0.40):** Hinata reclassified V-legal* as a privileged-reference diagnostic (20:32Z). The event is likely void. Confirm in calibration.md.
 
 ## Unit 10 (20:26–20:33Z)
 
@@ -147,6 +159,9 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 20:33Z (unit 10). Repo copy: `cla
 | D-057 §C | selected arm meets it on full rows (refit) | 0.55 | 19:30Z |
 | D-057 §C | A2 teacher-mean > A1 by > 0.01 | 0.35 | 19:30Z |
 | P-7 | E2: A10 in-loop ≥ 1×10⁷ decisions/h on ≤ 8 Mac cores | 0.60 | 20:31Z |
+| P-7 amend 1 | E2 (revised after encoder replication) | **0.75** | 21:29Z |
+| P-7 amend 1 | distillation gate passes, given trees are selected (if the Chair adopts it) | 0.55 | 21:29Z |
+| P-7 amend 1 | h2h ≥ .55, conditional on step 0 moving h2h < +0.02 | 0.30 | 21:29Z |
 | P-7 | head-to-head ≥ 0.55 vs clone after 6 iterations | 0.45 | 20:31Z |
 | P-7 | seed-1 panel Δwin ≥ +0.02 vs clone after 6 iterations | 0.25 | 20:31Z |
 | P-7 | live promotion from this line within the season | 0.15 | 20:31Z |
@@ -168,12 +183,14 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 20:33Z (unit 10). Repo copy: `cla
 10. P-6 Amendment A §2: IO-observable stump candidates only. **Adopted** (Hinata 19:50Z; fallback; D-060 §F).
 11. R2 battery: oracle-only HB-1 rows, oracle share printed, runner-up and nested selection near 0.75. **Partly
     adopted** (runner-up/LOFO print in r2_battery.py, Hinata 19:50Z); oracle-share print unconfirmed.
-12. D-058 §B precedent table: four amendments + microRTS row. **Open** (20:31Z).
-13. P-7: scoping card; own dissent = run a one-night filtered self-imitation probe before PPO. **Open** (20:31Z).
+12. D-058 §B precedent table: four amendments + microRTS row. **Adopted** (D-061 §A).
+13. P-7: scoping card; own dissent = run a one-night filtered self-imitation probe before PPO. **Taken up** by Nishinoya (required step 0) and Tanaka (baseline only). I sided with Tanaka at 21:29Z.
+14. P-7 void clause: distil the trees into A10 instead of voiding the card (gate: agreement ≥ .95, accuracy within .01). **Open** (21:29Z); Chair to rule with the battery table.
 
 ## Next checks
 
-- Chair ruling on P-7 and on the D-058 §B amendments (does D-058 §C.3 still cite precedent for A6/A7?).
+- Chair ruling on P-7: void-if-trees vs distil (rec 14), and the Nishinoya/Tanaka step-0 split. D-061 §A settled the D-058 §B amendments (rec 12 adopted).
+- Asahi's Mac E2 measurement (D-061 §C): compare it with my 0.23–0.26 ms per decision-core; score E2 (0.60, revised 0.75).
 - Battery: Tanaka's selector audit pass; A10 accuracy vs A3 unweighted; check the oracle-share print; score D-057 §C 0.45/0.55/0.35 when selection runs.
 - LS-1 look at the 02:15Z stop (~180 games): proxy pairing labelled; score LS-1 0.50/0.25.
 - k16 gate on seeds 2–3 (score 0.35). Kageyama full rows / HB-1 vectors (blocking A0–A7).
