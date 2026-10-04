@@ -1,41 +1,30 @@
-"""WITHDRAWN (unit 12): the bed-cell mapping (i % W, i // W) does not match the replay cells, so "bed" vs "other" here is wrong. Use tools/shenzhen/corpse.py (frame origin labels).
-Shenzhen H-SZ27: pearl 'fountains' — bed cells with spawn interval 1 (a pearl every round they are empty).
-Per side (post-m2 sample): eats on fountain cells, on other beds, corpses; by cohort.  Bed intervals come from
-maps/live/*.map (replays hide them; unit 7 showed the templates match the server).
-  python3 build/shenzhen/tree/tools/shenzhen/fountain.py --time 150"""
+"""Shenzhen H-SZ28 (and the unit-11 check): eats by the frame's own origin label (bed / ally_corpse / enemy_corpse) and
+corpse-pearl flow per side: corpse pearls a side's deaths create (spawns with origin = side), who eats them, and how many
+are left uneaten. Post-m2 games on the cap maps with a top-ten side or us.
+  python3 build/shenzhen/tree/tools/shenzhen/corpse.py --time 150"""
 import argparse, collections, os, sys, time
 from pathlib import Path
 ROOT = Path.cwd(); sys.path[:0] = [str(ROOT)]
 if (ROOT / 'build/s1-pylib').exists(): sys.path.append(str(ROOT / 'build/s1-pylib'))
 import pandas as pd
-OUT = ROOT / 'build/shenzhen/fountain'
-FILES = {'Slithery Fight': 'slithery_fight', 'Around UNSW': 'unsw', 'Islands': 'islands', 'Trauma': 'trauma', 'Portals': 'portals',
-         'Australia': 'australia', 'Schooltime': 'schooltime', 'Maze': 'maze', 'Devil': 'devil', 'Default': 'default',
-         'Queen Of Spades': 'queen_of_spades', 'Trophy': 'trophy', 'Autarky': 'autarky', 'weakhold': 'weakhold',
-         'Stripes': 'stripes', 'Tower Defense': 'tower_defense', 'Prisoners Dilemma': 'dilemma'}
-def beds(mapname):
-    W = None; out = {}
-    for l in open(ROOT / 'maps/live' / f'{FILES[mapname]}.map'):
-        p = l.split()
-        if p and p[0] == 'MAP': W = int(p[1])
-        if p and p[0] == 'TILE' and len(p) == 5 and p[3] == '1':
-            i = int(p[1]); out[(i % W, i // W)] = int(p[4])
-    return out
+OUT = ROOT / 'build/shenzhen/corpse'
 def one(a):
     gid, ta, tb, mp = a
     from tools.analysis.features.frame import decode
     try:
-        g = decode(f'public_replays/corpus/replays/{gid}.replay'); B = beds(mp)
+        g = decode(f'public_replays/corpus/replays/{gid}.replay')
     except Exception:
         return []
     c = {t: collections.Counter() for t in 'AB'}
     for e in g['events']['eats']:
-        t = e['team']; k = c[t]; cell = tuple(e['cell']); iv = B.get(cell)
         ph = 'early' if e['round'] < 150 else 'late'
-        if iv == 1: k['fountain_' + ph] += 1
-        elif iv is not None: k['bed_' + ph] += 1
-        else: k['other_' + ph] += 1
-    return [dict(game=gid, map=mp, side=t, team={'A': ta, 'B': tb}[t], R=g['last_round'], win=g['winner'] == t, nfountain=sum(1 for v in B.values() if v == 1), **c[t]) for t in 'AB']
+        c[e['team']][f"{e.get('origin') or 'unknown'}_{ph}"] += 1
+    made = collections.Counter(s['origin'] for s in g['events']['spawns'] if s['origin'] in ('A', 'B') and s['round'] >= 150)
+    for t in 'AB':
+        o = 'B' if t == 'A' else 'A'
+        c[t]['corpse_made_late'] = made[t]
+        c[t]['corpse_eaten_by_enemy_late'] = c[o]['enemy_corpse_late']
+    return [dict(game=gid, map=mp, side=t, team={'A': ta, 'B': tb}[t], R=g['last_round'], win=g['winner'] == t, **c[t]) for t in 'AB']
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--time', type=float, default=150); a = ap.parse_args(); t0 = time.time()
     import duckdb, multiprocessing as mp
