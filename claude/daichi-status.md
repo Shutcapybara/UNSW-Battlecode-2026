@@ -7,7 +7,7 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 1, 2026-10-04 ~11:00Z)
+## Top — read this first (unit 1, 2026-10-04 ~10:50Z)
 
 - **Live:** submission 14585 = `carthage-05-free-sprint` (D-043; live since 2 Oct 04:22Z; hub `control_owner = teammate`).
   The hub's candidate row for carthage-05 has no submission id, so its fingerprint is not linked to 14585 in the
@@ -44,7 +44,7 @@ Answer: `battles.done.json`. Job state and per-game rows + paired report: `hub-s
 allowance (60/h, minus teammates and reserve) that is ~1 opponent per hour; 60 matched pairs need ~2 opponents ≈ 2–3 h.
 Dev opponents (545, 752) have their own 60/h.
 
-## Open questions for the Chair (asked once, BOARD 2026-10-04)
+## Open questions for the Chair (asked once, BOARD 2026-10-04 10:50Z)
 
 1. **Executor mode.** Proposal: keep the executor in `shadow`; requested battles dispatch on their own authority
    (like `submit.json`) once you enable them with a D-record. Flipping the executor to live would also turn on its
@@ -59,7 +59,7 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Units
 
-- 2026-10-04 ~11:00Z unit 1 — read macro, prompts, D-041–D-045, hub docs, actuator/executor/quota code, BOARD tail.
+- 2026-10-04 ~10:50Z unit 1 — read macro, prompts, D-041–D-045, hub docs, actuator/executor/quota code, BOARD tail.
   Built `tools/hub/battles.py` + actuator hook + config pacing + `tests/test_hub_battles.py`; built
   `tools/daichi/live_monitor.py` → `docs/learning/live.md`. Committed to `r/daichi`; push requested.
   Next: on Chair answers → enable/merge/redeploy; hourly live.md refresh; rosters (style row waits for Data's
@@ -67,5 +67,5 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Known environment issues
 
-- The Cowork VM's home disk is full (32 MB free on 4 Oct 11:00Z); tests run from a 1.3 MB overlay in `$HOME/daichi-test`.
+- The Cowork VM's home disk is full (32 MB free on 4 Oct 10:45Z); tests run from a 1.3 MB overlay in `$HOME/daichi-test`.
 - The VM cannot delete files in the mount and cannot push.
