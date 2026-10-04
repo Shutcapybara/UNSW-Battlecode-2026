@@ -64,10 +64,29 @@ class Daemon:
         self.log = open(self.base / 'jobd.log', 'a', buffering=1)
 
     def say(self, *a):
-        print(now(), *a, file=self.log)
+        try:
+            print(now(), *a, file=self.log)
+        except OSError:
+            pass
         print(now(), *a, flush=True)
 
+    def wait_disk(self, job_id, min_gb=20):
+        import shutil
+        warned = False
+        while shutil.disk_usage(self.tree).free < min_gb * 2 ** 30:
+            if not warned:
+                self.say(f'{job_id}: waiting, less than {min_gb} GB free on the disk')
+                warned = True
+            self.heartbeat(f'waiting disk for {job_id}')
+            time.sleep(60)
+
     def heartbeat(self, state):
+        try:
+            self._heartbeat(state)
+        except OSError as e:  # a full disk must not kill the daemon (4 Oct 18:48Z)
+            print(now(), 'heartbeat failed:', e, flush=True)
+
+    def _heartbeat(self, state):
         (self.base / 'jobd.heartbeat').write_text(json.dumps(dict(at=now(), pid=os.getpid(), host=socket.gethostname(),
                                                                   state=state, python=self.python)))
 
@@ -91,6 +110,10 @@ class Daemon:
                     time.sleep(30)
                     continue
                 self.say(f'{job_id}: stale HEAVY.lock {cur} (pid dead, {age:.0f}s old) taken over')
+                try:  # move the stale lock aside, else the atomic link below fails forever (4 Oct 19:16Z)
+                    self.lock.rename(self.lock.with_name(f'HEAVY.lock.stale-{cur.get("pid")}-{int(time.time())}'))
+                except OSError:
+                    time.sleep(5)
             body = dict(owner=OWNER, job=job_id, pid=os.getpid(), host=socket.gethostname(), started=now(),
                         workers=self.max_workers)
             tmp = self.lock.with_suffix('.tmp-asahi')
@@ -162,6 +185,7 @@ class Daemon:
     def run_process(self, job, cmd, cwd, env, logf, cancel_dir):
         heavy = bool(job.get('heavy'))
         if heavy:
+            self.wait_disk(job['id'])
             self.take_lock(job['id'])
         try:
             p = subprocess.Popen(cmd, cwd=cwd, stdout=logf, stderr=subprocess.STDOUT, env=env, start_new_session=True)
@@ -232,18 +256,26 @@ class Daemon:
             self.say('nice failed:', e)
         self.say(f'jobd up: tree={self.tree} main={self.main} python={self.python} workers<={self.max_workers}')
         while True:
+          try:
+            self.step()
+          except Exception as e:  # keep serving; the failing job is already recorded where possible
+            self.say('loop error:', type(e).__name__, e)
+            time.sleep(60)
+
+    def step(self):
+        if True:
             self.heartbeat('idle')
             path, base, which = self.next_job()
             if path is None:
                 time.sleep(20)
-                continue
+                return
             try:
                 job = json.loads(path.read_text())
                 job['id'] = job.get('id') or path.stem
             except Exception as e:
                 self.say(f'bad job file {path.name}: {e}')
                 path.rename(base / 'done' / (path.stem + '.bad'))
-                continue
+                return
             run_path = base / 'running' / path.name
             path.rename(run_path)
             logp = base / 'logs' / f'{job["id"]}.log'
