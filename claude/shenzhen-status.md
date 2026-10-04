@@ -62,7 +62,8 @@ pushes `r/shenzhen`.
 | H-SZ55 | live screen: Schooltime gain from E1p exceeds the summed class-B loss | posted 0.35 (unit 27) | pooled score − expectation ≤ 0 | D-056 live screen | Daichi / Asahi |
 | H-SZ54 | children born at headroom 1 live shorter | **refuted, reversed** (unit 28: they live longest, eat most) | — | — | — |
 | H-SZ56 | cull-to-free raises open-map total | **refuted** (unit 29: −15 %, UNSW −31 %) | — | — | — |
-| H-SZ57 | radio slot-claim: freed slot to the best-placed dragon | **0.4** (unit 29) | claimed children no better | 18 sim games | tester |
+| H-SZ57 | radio slot-claim | **0.2** (unit 30: slot winners are not better fed; unit-28 effect was a state confound) | — | — | — |
+| H-SZ59 | team unit headroom as a "just lost a fight" feature for V/R2 | posted 0.4 (unit 30) | value AUC gain < +0.005 | R4 ablation | Learner / Data |
 | H-SZ58 | R4: allied heads able to split + own food at headroom 0–1 | posted 0.35 (unit 29) | split-label AUC gain < +0.01 | R4 ablation | Learner / Data |
 | H-SZ51 | class-B maps: live win tracks total share more than queen survival | posted 0.4 (unit 23) | queen alive outweighs total share in store logistic | ~2,000 ranked post-m2 | Data / Learner |
 | H-SZ49 | learned queen block: strike slack, static room, unit headroom | posted 0.3 (unit 21) | AUC gain < +0.02 r100–250 | store LOMO | Learner |
@@ -136,6 +137,7 @@ pushes `r/shenzhen`.
 - **Unit 27 (4 Oct 19:00Z – 19:40Z).** Mac bridge briefly offline. E1p on open-4 + three open maps (24 games): Schooltime benefit holds, open maps cost −4 % / wins 6–12. Corrected the size of my 18:45 board line. H-SZ53 → 0.5, H-SZ55.
 - **Unit 28 (4 Oct 19:47Z – 20:15Z).** szheadroom.py over ~32k sim births: cap-born children are the best. H-SZ54 reversed; H-SZ56/57; probe K running on three open maps.
 - **Unit 29 (4 Oct 20:35Z – 21:00Z).** K open-map sim (restart after container reset): −15 %. Read D-060 (P-4 refuted): my unit-17 strike prior pooled mover roles; corrected publicly. Context: D-059 makes the learned policy the main line; sim findings now feed RL features.
+- **Unit 30 (4 Oct 21:20Z – 21:45Z).** Read the Phase 3 brief: BOARD is appended in the main checkout only; my 28 branch-only lines (09:45–21:00Z) appended there; r/shenzhen no longer touches BOARD.md. szslotwin.py: unit-28/29 mechanism withdrawn (confound). H-SZ59.
 
 ## Next unit
 
