@@ -963,7 +963,7 @@ submission pauses all automation until the Chair resolves it.
   so the §3 draw is supportable; Tanaka's audit note replicates the counts for trophy, maze and trauma;
   (3) the gate-tooling contradiction is ruled in §4.1.
 
-## D-047 — P-1 (R1, V0) rulings before the fit; council round 1 opened (4 Oct 2026 11:00Z, Chair: Ushijima)
+## D-047 — P-1 (R1, V0) rulings before the fit; council round 1 opened (4 Oct 2026 10:52Z, Chair: Ushijima)
 
 Card: `docs/learning/proposals/P-hinata-01-R1-V0.md`, filed 10:45Z by Hinata (Learner). It is numbered **P-1**
 (`docs/learning/proposals/INDEX.md`); its content stays as filed. No fit has run and no pool-map outcome was read.
@@ -991,10 +991,61 @@ Card: `docs/learning/proposals/P-hinata-01-R1-V0.md`, filed 10:45Z by Hinata (Le
    - The Chair's reading before the reviews, so that dissent can be aimed at it: G1 joins 14 point comparisons and
      can fail on noise in cells where the card itself predicts ΔAUC ≈ 0. A non-inferiority margin there, with a
      superiority clause where the mechanism is claimed, tests the claim more directly. Nothing is decided until the
-     round closes; the Chair freezes the reading in D-048 before the fit.
-5. **Owner, objective, stop rule.** Owner: Hinata. Frozen objective: the card's, under the reading frozen in D-048.
+     round closes; the Chair freezes the reading in D-049 before the fit.
+5. **Owner, objective, stop rule.** Owner: Hinata. Frozen objective: the card's, under the reading frozen in D-049.
    Stop rule: the card's (one fit, one confirmation, no hyper-parameter search after any pool-map outcome is read; a
    failure gives a diagnosis card, not a re-run).
 6. **Host.** Hinata runs in a Cowork VM, which is enough for R1. R2 and later need a native Mac session
    (human-in-the-loop item H8).
+
+## D-048 — Live ops rulings, the rollback reference, and an interim Evaluator (4 Oct 2026 10:58Z, Chair: Ushijima)
+
+Answers Daichi's 10:50Z requests (Live ops; `claude/daichi-status.md` on `r/daichi`) and acts on the first read of
+the live monitor.
+
+1. **The executor stays in shadow.** Live mode would re-arm its automatic experiments, uploads and promotions, which
+   D-046 §7 forbids. `battles.json` dispatches on its own authority, and only after an `enable` that names a Chair
+   D-record.
+2. **Deploy the control with dispatch off.** `r/daichi` may be merged to `main` through the keeper once `merge-tree`
+   shows no conflict and the hub gate tests pass, and the hub may then be redeployed. This record is not the enable.
+3. **First job after the deploy: an A/A dry run.** Both arms are submission 14585, on the dev opponents, so nothing is
+   activated. Its purpose is to measure the noise of the paired report and to check that a true difference of zero
+   reads as zero. Daichi sizes it and states the expected interval width before it runs. If the control cannot take
+   two identical arms, Daichi says so and proposes the nearest equivalent.
+4. **Exposure of a temporarily active candidate: accepted, with conditions.**
+   - Only an arm that passed the D-046 §4 local gate (registered, CPU-probed, zero errors) may be activated. An
+     unvetted arm never is.
+   - The guards stay as built: no dispatch in the even-hour blackout, none while one of our ranked series is in
+     flight, restore in `finally`, lost restores repaired first.
+   - Every activation window is logged with start and end times. A ranked game that lands in a window is listed in
+     the job report, attributed by replay header to the submission that played it, and excluded from the incumbent's
+     monitor statistics. A ranked series landing in a window pauses the job.
+   - Reason: on dev opponents only, a live screen says nothing about the named roster that D-046 §7 requires. A
+     gate-passed candidate playing one ranked series is a small, bounded risk.
+5. **Second quota executor.** Whether the Windows quota runner is off is asked of the lead (item H9). Until it is
+   answered, no non-live arm is dispatched. A/A jobs are unaffected.
+6. **Hub link.** Daichi links submission 14585 to `carthage-05-free-sprint` in the hub mirror through the hub's own
+   controls, after checking fingerprint `ebeba55f` against the API listing. No mutating API call is involved. Until
+   then, rollback goes through `restore.json`.
+7. **Rollback rule, scope.** D-046 §8 applies only to a submission promoted under §7, over its ranked games since
+   activation. It does not apply to 14585. The incumbent's negative residual is not a reason to activate hb1-14.
+8. **Rollback rule, reference (to the council, with round 1, reviews due 13:00Z in
+   `docs/learning/reviews/D-048-<lane>.md`).** The monitor shows the incumbent itself below its Elo expectation:
+   −0.037 [−0.079, +0.003] over 417 ranked games in 87 series since 2 Oct, and −0.093 [−0.184, −0.002] over the last
+   40 (series bootstrap, 5th and 95th percentiles). A new submission inherits the old rating. An absolute threshold
+   of −0.08 could therefore roll back a candidate that equals or beats the incumbent.
+   - Proposed amendment: roll back when (the new submission's residual over its first 40 ranked games) minus (the
+     replaced submission's residual over its last 40 ranked games before the switch) is below −0.08, and the
+     series-bootstrap 95th percentile of that difference is below 0. The crash and disqualification clause is
+     unchanged.
+   - Until the Chair decides, §8 stands as written. No promotion can happen before the round closes.
+9. **Priority, and an interim Evaluator.** The largest per-map residuals are Schooltime −0.45 [−0.52, −0.37],
+   weakhold −0.30 and Trauma −0.26 (ranked, 18–31 games per map). Schooltime is the cage rule's map. Repairing it
+   to zero would be worth roughly +0.02 to +0.03 of overall score (the Chair's arithmetic from the map's share of
+   the 417 games, not a measurement). The cage arm (D-046 §6 item 1) is therefore the first candidate for a live
+   screen, and it has no Evaluator.
+   - Until the lead names an Evaluator lane, **Rome** may run D-046 §6 item 1 exactly as specified there: C+D with
+     E = 0, parent carthage-05, seed 1 on both panels, under `build/learn/HEAVY.lock`, trigger counts per map, a
+     result card. Rome built the E = 1 and E = 3 arms and the zero. No other arm is covered by this permission.
+   - If an Evaluator lane reports first, it takes the item and Rome does not start it.
 

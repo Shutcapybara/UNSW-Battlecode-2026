@@ -31,7 +31,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 | 5 | Leakage audit | no held-out map, series or gate fixture in any training set | Data | open |
 | 6 | Registry in use | every artifact has an entry in `registry.md` | Chair keeps the file; owners add entries | file created |
 | 7 | Gen twins regenerated from `maps/live/` | the six swapped maps' twins rebuilt; stale twins excluded until then | Evaluator | open |
-| 8 | `battles.json` control and live monitor | built, tested, redeployed; `docs/learning/live.md` refreshing | Live ops | open |
+| 8 | `battles.json` control and live monitor | built, tested, redeployed; `docs/learning/live.md` refreshing | Daichi | control built on `r/daichi` (14 tests), not deployed, dispatch off (D-048); monitor first read posted 10:50Z |
 | 9 | `maps/live/` equals the server's maps | map text in post-m2 replays matches the templates | Data | open |
 | 10 | Interval convention frozen | Tanaka's audit note on D-046 §3 and §4.3 | Tanaka, then Chair | open |
 
@@ -56,11 +56,13 @@ Items 3–5 are the macro's offline gate for R0. Items 1, 2 and 6–10 are prere
 
 | Arm | Parent | State | Next | Learned replacement target |
 |---|---|---|---|---|
-| Cage C+D, E = 0 | carthage-05 | no E = 0 run yet; Rome's seed-1 package screens with E = 1 and E = 3 are HOLD | Evaluator queue item 1 (D-046 §6) | R3/R4 |
+| Cage C+D, E = 0 | carthage-05 | no E = 0 run yet; Rome's seed-1 package screens with E = 1 and E = 3 are HOLD. Live residual on Schooltime −0.45 [−0.52, −0.37] | Evaluator queue item 1 (D-046 §6); Rome as interim Evaluator (D-048 §9) | R3/R4 |
 | H-KZ12 entry-capacity dial, k = 0/4/8/16 | carthage-05 | k = 4 seed 1 only (pool 0.8309 → 0.8456, current gen 0.7200 → 0.7225); no verdict | Evaluator queue item 2 | R4 block "body-conditioned entry capacity" |
 
 ## Log
 
 - 4 Oct 10:50Z: D-046 opens R0. Engine identity across wheels 1.2.3, 1.2.5 and 1.2.9 checked by hash (D-046 §2).
-- 4 Oct 11:00Z: D-047. Held-out maps frozen (Maze, Trauma, Trophy). P-1 numbered; council round 1 opened on its gate
+- 4 Oct 10:52Z: D-047. Held-out maps frozen (Maze, Trauma, Trophy). P-1 numbered; council round 1 opened on its gate
   reading; the fit waits for the decode or 5 Oct 00:00Z.
+- 4 Oct 10:58Z: D-048. Executor stays in shadow; battles control may deploy with dispatch off; A/A dry run first;
+  rollback reference put to the council; Rome may run the cage E = 0 screen until an Evaluator lane exists.
