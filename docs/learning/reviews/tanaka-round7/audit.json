@@ -1,0 +1,443 @@
+{
+  "scope": "P2 synthetic only and real metadata/file integrity; R2 training-support labels permitted, no training; LS1 arithmetic and already-frozen local seed1 derived outcomes only, no live outcomes.",
+  "hashes": {
+    "p2_confirm.py": "0d0d1b7aba7dafff240312dfee058da7f17bce7590b6010f819b73fdaf51daa7",
+    "r2_bc.py": "edc66ef7cb55d718a2e18272854994f8d32f44689a1466759c1ea76ef103b3c6",
+    "docs/learning/proposals/P-2-gate-spec.D-052.json": "15d79683518cf704a8cb7680ef1fa55acd8bdaef2bc97b694f40db742ea0d07d",
+    "build/hinata/p2/cell-counts.json": "ca10a7f38a12b36e8eac13a427196af0e092520bdedb4f9d06c68d773721c9c9",
+    "build/hinata/p2/population.parquet": "75831df0973d5d33d0c68b81869ee865ee30870d24fbf8bc41a7924b23fed0e4",
+    "build/hinata/p2/membership-pin.parquet": "2ebf99cee4e5d7befbc0279c951c9ddf0f6b810823f9111bbf1df52a00f092f6",
+    "build/hinata/v0/fit-lq-phi/MANIFEST.sha256.json": "d8104492d0c020a4c4574b662c7996b4bd281d45db9a4673e19eea7c1d9cc95a",
+    "build/learn/kageyama/teachers_dev120.p0.parquet": "1a3c552ced718866325581c86c2e7d761d3718b24915b064e8b544acade8c8e6",
+    "build/learn/kageyama/teachers_dev120.p1.parquet": "30826ce9383394225baa27594d83a5a240082c66136f12b864896a38bea1f727",
+    "build/learn/kageyama/teachers_dev120.parquet": "0552ab3f6345b1d3cc133b2887bf95df314b2afabee97bb3c0d446c5825b1045"
+  },
+  "p2": {
+    "valid_gate": "PASS",
+    "nonfinite/auc_v/nan": "INCOMPLETE",
+    "nonfinite/auc_phi/nan": "INCOMPLETE",
+    "nonfinite/d_auc/nan": "INCOMPLETE",
+    "nonfinite/slope_v/nan": "INCOMPLETE",
+    "nonfinite/slope_phi/nan": "INCOMPLETE",
+    "nonfinite/d_auc_ci/nan": "INCOMPLETE",
+    "nonfinite/auc_v/inf": "INCOMPLETE",
+    "nonfinite/auc_phi/inf": "INCOMPLETE",
+    "nonfinite/d_auc/inf": "INCOMPLETE",
+    "nonfinite/slope_v/inf": "INCOMPLETE",
+    "nonfinite/slope_phi/inf": "INCOMPLETE",
+    "nonfinite/d_auc_ci/inf": "INCOMPLETE",
+    "nonfinite/auc_v/None": "INCOMPLETE",
+    "nonfinite/auc_phi/None": "INCOMPLETE",
+    "nonfinite/d_auc/None": "INCOMPLETE",
+    "nonfinite/slope_v/None": "INCOMPLETE",
+    "nonfinite/slope_phi/None": "INCOMPLETE",
+    "nonfinite/d_auc_ci/None": "INCOMPLETE",
+    "draws/989": "INCOMPLETE",
+    "draws/990": "PASS",
+    "membership": {
+      "decisive": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [],
+        "unexplained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "result_class": "decisive"
+          }
+        ],
+        "n_unexplained": 1,
+        "ok": false
+      },
+      "draw": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "result_class": "draw",
+            "reason": "whole game dropped: recorded valid draw (result_a == 0.5)"
+          }
+        ],
+        "unexplained": [],
+        "n_unexplained": 0,
+        "ok": true
+      },
+      "absent": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [],
+        "unexplained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "result_class": "missing_store_row"
+          }
+        ],
+        "n_unexplained": 1,
+        "ok": false
+      },
+      "null": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [],
+        "unexplained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "result_class": "null"
+          }
+        ],
+        "n_unexplained": 1,
+        "ok": false
+      },
+      "nan": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [],
+        "unexplained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "result_class": "nan_or_inf"
+          }
+        ],
+        "n_unexplained": 1,
+        "ok": false
+      },
+      "invalid": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [],
+        "unexplained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "result_class": "out_of_domain"
+          }
+        ],
+        "n_unexplained": 1,
+        "ok": false
+      }
+    },
+    "partial": false,
+    "duplicate": false,
+    "new": false,
+    "view/decisive": {
+      "games": [
+        "keep",
+        "gone"
+      ],
+      "scope_all_true": true
+    },
+    "score/decisive": {
+      "verdict": "INCOMPLETE",
+      "incomplete": [
+        "membership: 0 duplicate, 0 new, 1 unexplained lost games ['gone']"
+      ],
+      "lookup": {
+        "gone": 1.0
+      }
+    },
+    "second/decisive": "refused",
+    "view/draw": {
+      "games": [
+        "keep",
+        "gone"
+      ],
+      "scope_all_true": true
+    },
+    "score/draw": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "lookup": {
+        "gone": 0.5
+      }
+    },
+    "second/draw": "refused",
+    "view/absent": {
+      "games": [
+        "keep"
+      ],
+      "scope_all_true": true
+    },
+    "score/absent": {
+      "verdict": "INCOMPLETE",
+      "incomplete": [
+        "membership: 0 duplicate, 0 new, 1 unexplained lost games ['gone']"
+      ],
+      "lookup": {
+        "gone": "__missing_store_row__"
+      }
+    },
+    "second/absent": "refused",
+    "view/null": {
+      "games": [
+        "keep",
+        "gone"
+      ],
+      "scope_all_true": true
+    },
+    "score/null": {
+      "verdict": "INCOMPLETE",
+      "incomplete": [
+        "membership: 0 duplicate, 0 new, 1 unexplained lost games ['gone']"
+      ],
+      "lookup": {
+        "gone": "nan"
+      }
+    },
+    "second/null": "refused",
+    "view/invalid": {
+      "games": [
+        "keep",
+        "gone"
+      ],
+      "scope_all_true": true
+    },
+    "score/invalid": {
+      "verdict": "INCOMPLETE",
+      "incomplete": [
+        "membership: 0 duplicate, 0 new, 1 unexplained lost games ['gone']"
+      ],
+      "lookup": {
+        "gone": 2.0
+      }
+    },
+    "second/invalid": "refused",
+    "preclaim": {
+      "claim_exists": false,
+      "coverage": [
+        {
+          "Autarky": {
+            "games": 435,
+            "usable": 434,
+            "coverage": 0.9977011494252873
+          },
+          "Maze": {
+            "games": 446,
+            "usable": 446,
+            "coverage": 1.0
+          },
+          "Trauma": {
+            "games": 447,
+            "usable": 447,
+            "coverage": 1.0
+          }
+        },
+        [
+          {
+            "game": "1044626",
+            "map": "Autarky",
+            "reason": "not decoded (series parts hold no rows)"
+          }
+        ]
+      ],
+      "pin_rows": 22305,
+      "pin_games": 3305,
+      "pin_duplicates": 0,
+      "counts_match": true,
+      "pin_hash_matches": true,
+      "counts": {
+        "elim/r10": 434,
+        "elim/r25": 434,
+        "elim/r50": 434,
+        "elim/r100": 433,
+        "elim/r150": 421,
+        "elim/r250": 343,
+        "elim/r400": 246,
+        "rl/r10": 893,
+        "rl/r25": 893,
+        "rl/r50": 893,
+        "rl/r100": 893,
+        "rl/r150": 892,
+        "rl/r250": 889,
+        "rl/r400": 880
+      }
+    },
+    "receipt": {
+      "valid": "PASS",
+      "claim": "INCOMPLETE",
+      "scorer": "INCOMPLETE",
+      "spec": "INCOMPLETE",
+      "prediction": "REFUSED_EXCEPTION",
+      "pin": "INCOMPLETE",
+      "membership": "INCOMPLETE",
+      "coverage": "INCOMPLETE",
+      "missing_model": "INCOMPLETE"
+    },
+    "receipt_exception_prediction": "ArrowInvalid",
+    "gate_boundaries": {
+      "missing": "INCOMPLETE",
+      "one_class": "INCOMPLETE",
+      "all_lb_equal": "FAIL",
+      "late_lb_equal": "FAIL",
+      "slope_equal": "PASS",
+      "slope_over": "FAIL",
+      "rl50_lower": "FAIL",
+      "absolute_floor_report": "PASS"
+    },
+    "source_game_metadata": {
+      "missing": 0,
+      "nonunique": 0
+    },
+    "phi_hashes_match": true,
+    "weights_finite_complete": true,
+    "weight_hashes": {
+      "v0b_post-m2_elim_r10.json": "225f343eff6b21c7780665323db7e506bd26f75a0681a9cb1d0fdf4da8e20ac6",
+      "v0b_post-m2_elim_r100.json": "49befd172edfea5197f763a639567308ba4f77101d85d8e7031563b473c215a7",
+      "v0b_post-m2_elim_r150.json": "34a9efbb577c7097e2dcfbc01b8d7f11db30b8bbe7d25d46f6ec4d1eb9f5ffce",
+      "v0b_post-m2_elim_r25.json": "797b0d8c48588d560c80ff74c3de431e5e2272d8fca55d6d114c4c15bd304084",
+      "v0b_post-m2_elim_r250.json": "511b515635e7440fdd1b3aee50e88b6dafaa168cedc02c47ad64ac6580675985",
+      "v0b_post-m2_elim_r400.json": "7f126446e6e7770955ed94d8ebffe21058611a0da3ba5eefec0e3e9d76b6e2c4",
+      "v0b_post-m2_elim_r50.json": "f0d1837174c2c128623db75869501e8cc08cc7f1bbb209ee390926b7f42a19ad",
+      "v0b_post-m2_rl_r10.json": "799e5f7b6f5ea4b5d56ce47fd46c8e80e01de3e17087ea3234fa9b655958c614",
+      "v0b_post-m2_rl_r100.json": "6f4463a1c72117e804403e2bbf1aa8004cabb24aa15540015c1d318af1a11672",
+      "v0b_post-m2_rl_r150.json": "9780c19f9e254311f6fdfc1e597bd4d124d1084dcaccdd04796716e0332322db",
+      "v0b_post-m2_rl_r25.json": "175a45225ca90de7ff1a98f6c5edeedeb9fb34a2e9e46604891d3c381cf13a43",
+      "v0b_post-m2_rl_r250.json": "2e4114c8adb7c35d651d40cc897c6f688d56f1af38a72590ef104a236e45e82c",
+      "v0b_post-m2_rl_r400.json": "5cc26ceb0bf7676bcc699fadf787ba9a659129b05e7f68327652882fdddba867",
+      "v0b_post-m2_rl_r50.json": "dceb9aa223691a52c361f4f4d1aab3339de4220edd29af74e7afabad06f252db",
+      "phi_post-m2_elim_r10.json": "aefcacaf9de45ab1acbc74ff7509e2d34e793fb44c72ecdbd66bee50d16391e3",
+      "phi_post-m2_elim_r100.json": "6aa50f2981516cb60aa91aef5f92428dec94786970fc15ac512fadbec4b323b1",
+      "phi_post-m2_elim_r150.json": "99e5acd9b525a6b28c096a244111b951b71ca062cb8d7b0caf22ba8956f3b256",
+      "phi_post-m2_elim_r25.json": "50502507828cba4192d26c0eb919f6eb38c3c17f1e49b8df0ca9a2a69f196a5d",
+      "phi_post-m2_elim_r250.json": "5eb7af9d66d44bbe425ad589ece3743abca374751aca933b822db5782253f524",
+      "phi_post-m2_elim_r400.json": "49714e80504b495be1be4b88c13f1b95ba99664f6475e378cceea984a7f4207f",
+      "phi_post-m2_elim_r50.json": "3976b9ca88a98db2fd03b236be5addf14e323a7b0415855c62090a7358b447b6",
+      "phi_post-m2_rl_r10.json": "7385023e1e403936a02641ccbb3b026a58ef40dd7090e1a64d1d4b82fd0c363a",
+      "phi_post-m2_rl_r100.json": "f20695f962673de65ffe21e860def9175a05a6b8f199e42eb1d2c3be63695f47",
+      "phi_post-m2_rl_r150.json": "75061413a4d36f7c00d0aeef4e3f53b7c6eee5e86e3cee6cd94c726a842c57db",
+      "phi_post-m2_rl_r25.json": "34120d86a21583ec5ebe94cf3a3c37c5bcb8b5032cc166e0db21a4c6f584a8cd",
+      "phi_post-m2_rl_r250.json": "24e1b69f205f0518a7874f3d65ec35301c07bceab18cbdd64532c98790ab61f2",
+      "phi_post-m2_rl_r400.json": "3827b838d6674bb25c6af53b10afb92a1920e29cef9e8f368ea799f8dc684eba",
+      "phi_post-m2_rl_r50.json": "bbc6e12097d0de7f906386c27734fb07cab9d47068167349f81dfdd97e7b5df4"
+    },
+    "archive_matches": true,
+    "unchanged_numerics": {
+      "wauc": true,
+      "wslope": true,
+      "evaluate": true,
+      "gate": true
+    }
+  },
+  "r2": {
+    "frl": {
+      "n": 763,
+      "acc": 0.3211,
+      "majority": 0.3499,
+      "majority_class": "L"
+    },
+    "independent_accuracy": 0.3211,
+    "support": {
+      "rows": 189630,
+      "frl_rows": 188250,
+      "reverse_rows": 1380,
+      "games": 97,
+      "series": 49,
+      "teams": 10,
+      "maps": 14,
+      "queen_frl_rows": 5315,
+      "per_fold": {
+        "f0": {
+          "rows": 45484,
+          "frl_rows": 45096,
+          "games": 24,
+          "series": 11
+        },
+        "f1": {
+          "rows": 39690,
+          "frl_rows": 39308,
+          "games": 20,
+          "series": 11
+        },
+        "f2": {
+          "rows": 35271,
+          "frl_rows": 35123,
+          "games": 23,
+          "series": 8
+        },
+        "f3": {
+          "rows": 37489,
+          "frl_rows": 37233,
+          "games": 17,
+          "series": 11
+        },
+        "f4": {
+          "rows": 31696,
+          "frl_rows": 31490,
+          "games": 13,
+          "series": 8
+        }
+      }
+    },
+    "support_matches": true,
+    "series_overlap": false
+  },
+  "ls1": {
+    "sign_probabilities": {
+      "4-0": 0.0625,
+      "5-1": 0.109375,
+      "6-1": 0.0625,
+      "7-2": 0.08984375,
+      "8-2": 0.0546875,
+      "9-3": 0.072998046875,
+      "9-4": 0.1334228515625
+    },
+    "local_pool": {
+      "pairs": 272,
+      "positive": 9,
+      "negative": 2,
+      "zero": 261,
+      "net": 7.0,
+      "nonzero_clusters": 9
+    },
+    "dependent_pair_counterexample": {
+      "clusters": 2,
+      "perfectly_correlated_seats_per_cluster": 2,
+      "naive_p_if_both_positive": 0.0625,
+      "probability_both_positive_under_independent_cluster_signs": 0.25,
+      "cluster_flip_p_both_positive": 0.25
+    },
+    "one_positive_101_ties": {
+      "mean": 0.00980392156862745,
+      "interval": [
+        0.0,
+        0.029411764705882353
+      ],
+      "D055_pass": true
+    },
+    "exact_independent_pair_size": {
+      "2": 0.0,
+      "4": 0.0625,
+      "6": 0.109375,
+      "10": 0.0546875,
+      "20": 0.13158798217773438
+    }
+  }
+}
