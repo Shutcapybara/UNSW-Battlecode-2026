@@ -1,0 +1,11 @@
+{
+  "selection_sha256": "564686529a008db4d9882d197d17f313647e76f85e91d8cbf190a69872da7a34",
+  "decoder_sha256": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+  "template_sha256": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+  "template_beds": 53,
+  "windows": "start-inclusive/end-exclusive; round-start checkpoints",
+  "young": "new child IDs only, age round-birth 0..9; parents do not become young on split",
+  "origin": "FRAME7 event provenance, not meal coordinate; no simulator or policy counterfactual",
+  "cohort": "ranked post-m2 Slithery; own14585 verified in payload; field currenttop10, same exacthash and seat, within6h, nearest3; opponents unmatched",
+  "deaths_censoring": "All games reach399; child capture only within window, no full-lifetime claim"
+}

@@ -1,0 +1,359 @@
+{
+  "rows": [
+    {
+      "game_id": 852617,
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "spawn_previous_event": [
+        {
+          "kind": 0,
+          "template_cell": "bed",
+          "n": 65
+        },
+        {
+          "kind": 0,
+          "template_cell": "other",
+          "n": 81
+        },
+        {
+          "kind": 3,
+          "template_cell": "bed",
+          "n": 45
+        },
+        {
+          "kind": 3,
+          "template_cell": "other",
+          "n": 741
+        },
+        {
+          "kind": 11,
+          "template_cell": "bed",
+          "n": 27
+        },
+        {
+          "kind": 11,
+          "template_cell": "other",
+          "n": 397
+        }
+      ],
+      "examples": [
+        {
+          "round": 252,
+          "cell": [
+            34,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 253,
+          "cell": [
+            42,
+            1
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 254,
+          "cell": [
+            39,
+            4
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 255,
+          "cell": [
+            32,
+            25
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 256,
+          "cell": [
+            22,
+            1
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 259,
+          "cell": [
+            33,
+            1
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 262,
+          "cell": [
+            42,
+            1
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 263,
+          "cell": [
+            42,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        }
+      ]
+    },
+    {
+      "game_id": 887284,
+      "map_hash": "c8e8fa61335b7fca9e180ecd947ef28eb7bb2ce054f323bec875bd72da8cd655",
+      "spawn_previous_event": [
+        {
+          "kind": 0,
+          "template_cell": "bed",
+          "n": 35
+        },
+        {
+          "kind": 0,
+          "template_cell": "other",
+          "n": 107
+        },
+        {
+          "kind": 3,
+          "template_cell": "bed",
+          "n": 40
+        },
+        {
+          "kind": 3,
+          "template_cell": "other",
+          "n": 651
+        },
+        {
+          "kind": 11,
+          "template_cell": "bed",
+          "n": 26
+        },
+        {
+          "kind": 11,
+          "template_cell": "other",
+          "n": 461
+        }
+      ],
+      "examples": [
+        {
+          "round": 251,
+          "cell": [
+            61,
+            1
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 252,
+          "cell": [
+            42,
+            25
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 253,
+          "cell": [
+            41,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 254,
+          "cell": [
+            41,
+            25
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 255,
+          "cell": [
+            42,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 256,
+          "cell": [
+            34,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 258,
+          "cell": [
+            36,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 259,
+          "cell": [
+            32,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        }
+      ]
+    },
+    {
+      "game_id": 999613,
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "spawn_previous_event": [
+        {
+          "kind": 0,
+          "template_cell": "bed",
+          "n": 102
+        },
+        {
+          "kind": 0,
+          "template_cell": "other",
+          "n": 44
+        },
+        {
+          "kind": 3,
+          "template_cell": "bed",
+          "n": 73
+        },
+        {
+          "kind": 3,
+          "template_cell": "other",
+          "n": 616
+        },
+        {
+          "kind": 11,
+          "template_cell": "bed",
+          "n": 54
+        },
+        {
+          "kind": 11,
+          "template_cell": "other",
+          "n": 409
+        }
+      ],
+      "examples": [
+        {
+          "round": 251,
+          "cell": [
+            35,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 254,
+          "cell": [
+            3,
+            1
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 257,
+          "cell": [
+            42,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 259,
+          "cell": [
+            38,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 262,
+          "cell": [
+            17,
+            7
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 270,
+          "cell": [
+            40,
+            4
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 271,
+          "cell": [
+            21,
+            26
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        },
+        {
+          "round": 275,
+          "cell": [
+            35,
+            23
+          ],
+          "preceding_event": "RoundStart",
+          "before_any_turn": true,
+          "template_bed": false
+        }
+      ]
+    }
+  ],
+  "meaning": "Positive pearl spawn directly follows RoundStart before any turn or death in that round; template non-bed location alone cannot classify corpse origin."
+}

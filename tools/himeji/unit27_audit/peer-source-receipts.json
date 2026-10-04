@@ -1,0 +1,12 @@
+[
+  {
+    "ref": "origin/r/shenzhen",
+    "path": "tools/shenzhen/fountain.py",
+    "sha256": "73c9ee46cf9f932b8734d421dbb9082971d93fec772f979e574b9f247724cb09"
+  },
+  {
+    "ref": "origin/r/kanazawa",
+    "path": "tools/kanazawa/q_forced2.py",
+    "sha256": "d9fc9484ad018954e176db2148c28052bc862976515c1a91086cfade2ced61cb"
+  }
+]
