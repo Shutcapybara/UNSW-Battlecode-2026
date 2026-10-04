@@ -1,0 +1,278 @@
+{
+  "parts": [
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T223816-9.parquet",
+      "bytes": 122461,
+      "sha256": "632dfcfe282516a7d5542ebd248708344db41c08ef719212c8dd459dd54aca71"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T223954-8.parquet",
+      "bytes": 170623,
+      "sha256": "8f663986051a714ff72f3e921b7286f03b500604bcf15ceb9acc1c4bb777cc29"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224047-8.parquet",
+      "bytes": 169551,
+      "sha256": "d4b9c06795138b4f45b82c42bcb0fe3d765042e16f22854047a06de4b581a1f4"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224106-8.parquet",
+      "bytes": 131634,
+      "sha256": "51ecf2ddf55c5f9bfea1311dab566518e603d55c4913b7ab2bb6169ad90183ca"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224153-8.parquet",
+      "bytes": 166495,
+      "sha256": "8d31e32ea3192543b187f15d64048a3f0530a3526ccbf4506528daeff2a612b4"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224239-8.parquet",
+      "bytes": 167130,
+      "sha256": "e99e8533a1f7d55c046be527fe752b6b2f0e2bfb2aa30ee048c7d57cf45f0a82"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224326-8.parquet",
+      "bytes": 173810,
+      "sha256": "cdb19e91c75e1741f1b3e1f20fda5bbf69eadbddd7ffe659034a949c5836d1db"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224350-8.parquet",
+      "bytes": 137566,
+      "sha256": "90592db93cbf35cfbc4af8b4d9c0dffbfa516339cfe21b48d3b742403582038f"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224447-8.parquet",
+      "bytes": 172325,
+      "sha256": "a22b6eea2f66ff47928cc991982400bc3a9282b34fbacb4f203e4cdf571a959e"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224537-8.parquet",
+      "bytes": 173447,
+      "sha256": "48187e9c4b959885740c8032bc99c54a882d6ff160505925d98ab1c5ca1a6d7b"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224619-8.parquet",
+      "bytes": 173901,
+      "sha256": "73efa87a5294535b26baee67461a7db43f664fccdedcdaacf2061e14fa251af9"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224632-8.parquet",
+      "bytes": 125554,
+      "sha256": "342bc348b0d60d5b412777cb4bb43ae6ac7c69887d6784e75f2466c6750277ce"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224726-8.parquet",
+      "bytes": 173652,
+      "sha256": "a04ea3d69a54238274e86a76879f2b7299c8f3576992b9717fa6cc12e6ecfb96"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224820-8.parquet",
+      "bytes": 173550,
+      "sha256": "cbf398db37c640daadf0aa9a67675a42b384650fcb613bb78e032ca887fa7db6"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T224927-8.parquet",
+      "bytes": 166740,
+      "sha256": "44b16d7c1e03788f0590f62918aae4bad2f4c034d298b121ff60f4579a7ac0d5"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225019-8.parquet",
+      "bytes": 173921,
+      "sha256": "649382b757b97295fab380eac1349b2071d8364454f650480f0563de0ad235d8"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225057-8.parquet",
+      "bytes": 173362,
+      "sha256": "717a0f1b3b25c4673b3f02ab7aa165fd24c6a150d85e506e31f08039255fb469"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225136-8.parquet",
+      "bytes": 172796,
+      "sha256": "df48a7855322d8820a42b113e0f59c882fc26b5b295c11c4d0d1b80c317c802a"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225211-8.parquet",
+      "bytes": 163034,
+      "sha256": "b34aeb9fdd697aef6e035136d81380b59239ff979456409e37e4026989cd050b"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225338-8.parquet",
+      "bytes": 172042,
+      "sha256": "f9cba827c89b630ff377bdf06c18af151dc3e6b3f236cba9645144e7cbe5d9a9"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225450-8.parquet",
+      "bytes": 173810,
+      "sha256": "03e92afc7a140b9a9889b095550dd96ca06c6f651b7b574dcc0ece96603ee9f0"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225454-8.parquet",
+      "bytes": 101158,
+      "sha256": "2096cdb1845706fa31eec40d8453a4f68a74747dbc343547fbef5a43f6085ef6"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225543-8.parquet",
+      "bytes": 172762,
+      "sha256": "1b07f6ec2d5987caf1a2d81d7a765fb56a1e28e80111a8bc6033921a9466c9a9"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225619-8.parquet",
+      "bytes": 173146,
+      "sha256": "00244bbb5013937a10689a023b3dc3814af19e56c9364693c70ecf24daf26bbc"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225656-8.parquet",
+      "bytes": 172067,
+      "sha256": "e09733eef7b3f593f417d417e15286a11536d48225c0d92c22fa8a930127a90d"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225735-8.parquet",
+      "bytes": 173330,
+      "sha256": "76c12e318b45d5036fb61de35a2c2ddeffe4af2077cdb458acdc5a1aa3f885cd"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225737-8.parquet",
+      "bytes": 96439,
+      "sha256": "182df6989a1dfe350b9e3586a42afb6f3b6ef8951225af2bf84dec83b6985ce3"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225834-8.parquet",
+      "bytes": 173551,
+      "sha256": "cf3cc3c732436796f553e5fd24609438033e0e233a7146f68c59920612e479b5"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225910-8.parquet",
+      "bytes": 172171,
+      "sha256": "e7dd13641e1b076b3923513d386d882c23c016fdba86e8734cc20dbe440eb4f0"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T225946-8.parquet",
+      "bytes": 173169,
+      "sha256": "955f0493c405d8f8b926fd591b0f87bb8619cb338be8336ba61b43ed22520879"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230022-8.parquet",
+      "bytes": 172883,
+      "sha256": "80426dcbff57dc7ef16ce8b7c3e305fede7876574f2061c48926adaa0279445b"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230032-8.parquet",
+      "bytes": 117669,
+      "sha256": "29d2eaf731d1d05f04b1328d125d7409da38c7dfe406947447a918b9bf182fe7"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230113-8.parquet",
+      "bytes": 173081,
+      "sha256": "9dcb6751004c7e25f1063c55ef5e5411ead62623bdb691570a93e7431aad0ff5"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230149-8.parquet",
+      "bytes": 171478,
+      "sha256": "acdfb7a314a5770a579eda566f24f08fdc0404643af70dbaf69f1abeb40ad207"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230226-8.parquet",
+      "bytes": 172773,
+      "sha256": "2b3969d2e2b4e277725a29a4219b338658d844d4bb5b16d11f2d3bd776ede95f"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230301-8.parquet",
+      "bytes": 172142,
+      "sha256": "b5b8ba3d2b58575395df4dda91f73fc5ad0bf966eb9116446afe394b80049aae"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230316-8.parquet",
+      "bytes": 127490,
+      "sha256": "c7f30baa42f20e800f3a5628d7080f4e1374c867e775bb9e6a72269fb64be33a"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230400-8.parquet",
+      "bytes": 173263,
+      "sha256": "f8a22b94d41e89ad77d13e98c5f72df5f0886c95d1925aed1faf4290be59070e"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230437-8.parquet",
+      "bytes": 171974,
+      "sha256": "85e0032012542d335b2ded98372327bdb6af889a2c9e96ada9cf47b9cfa3e64c"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230516-8.parquet",
+      "bytes": 173017,
+      "sha256": "8b3126b4587ecdd5ae7f9b5865083ae0a1d7071b62ecf61ad48706aa277caa62"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230554-8.parquet",
+      "bytes": 171994,
+      "sha256": "783d16f58fb9384410b7a76e4b9c5ee407452dab74d7d5d8a0c235015124d1ae"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230559-8.parquet",
+      "bytes": 102133,
+      "sha256": "dfa67f8ced4a8eedd6cbe05b30ffc184e8aa8872304e5d5dd25f57930aedbfe2"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230720-8.parquet",
+      "bytes": 172587,
+      "sha256": "54b8a7423071701a7d2b9e9a690428422030be3d0524e62e4e743d374edd4309"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230835-8.parquet",
+      "bytes": 172167,
+      "sha256": "d2ee9f34ab589727b077275d3cee8b19ec8b04842dffac5a28cc4c646a2e9051"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T230844-8.parquet",
+      "bytes": 113139,
+      "sha256": "77a1c8e0997d9dc26c602b8ac7b04e2976b541ddf0e2e3a54c8e52dac3203935"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T234448-8.parquet",
+      "bytes": 173016,
+      "sha256": "466db6db38bb116edb43b2554b26494639a0ab11f42c66c8151c80ce1dbd58c5"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261003T234536-8.parquet",
+      "bytes": 162226,
+      "sha256": "0f19d9dad073786ccc13c0c92fe0653a41017847e6bc6c241c3b60229f25c5d7"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261004T002157-8.parquet",
+      "bytes": 173107,
+      "sha256": "4e9b33124d3dd9eafeb78b91b745a3f556934405da3f15d124958c37248e42d4"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261004T002253-8.parquet",
+      "bytes": 173454,
+      "sha256": "f9badf50fd597f0278a9e73a4e82655dda40c95a1c9b30511eeab0505b610d35"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/lean/part-20261004T002323-8.parquet",
+      "bytes": 134432,
+      "sha256": "bc5c914b18f8b37153e1b12cee3cb58f25be38b39dc3659adf7ff0083ea64d9d"
+    }
+  ],
+  "post_m2_lean_games": 5813,
+  "all_side_winner_checks": 11626,
+  "excluded_own_submission_sides": {
+    "14265": 15
+  },
+  "top10": [
+    "213",
+    "264",
+    "306",
+    "507",
+    "55",
+    "566",
+    "842",
+    "87",
+    "91",
+    "952"
+  ],
+  "own14585_index_by_mode": {
+    "False": 176,
+    "True": 90
+  },
+  "rule_era": "post123",
+  "map_era": "post-m2",
+  "cutoff": "2026-10-02T03:49Z"
+}

@@ -2,6 +2,17 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
 
+## Unit20 — 2026-10-04 03:40 UTC; post-m2 queen-loss share complete
+
+- Confirmed14585 corpus coverage90/90ranked games20series +176/176unranked25series.15missingrankedlean rows filledfromexistingreplays:15hash/officialwinner/headerchecks+30terminalqueenchecks; sharedlean untouched. Lean5813post-m2games/11626sidewinnerchecks;15old14265sidesexcluded. Frozenrows76summariesreproduceexactly,2000seriesbootstrap2020.
+- Rankedqueenlosses18/45losses=40.0%[21.4,60.8],18/90games=20.0%[9.8,32.3],18/18queenverdictslost; unranked34/137=24.8%[16.1,34.8]. Distinguishall3denominatorsfromhistoric70/72. Actual490own0/60ranked(30early),0/109unranked(67early); nofalsezero-CI. Top10ranked251/629=39.9%[35.5,44.3],terminal249/623;18map/variantrows+hashcounts. Unmatchedobservedgap39.9pp,matchedNA; allprovisional,notfieldpercentiletargets.
+- All6rankedSchooltimequeenlossesfaceq3;9/12elsewherefaceq>3. H-H3survival/H-H4feedingseparate,.5weightsretained;60exposedpilot+149/306/46310pppairedwinplanning. q3onlytiesqueen3; cannotclaimcausalrecoveredwins. RetainH19zero-taxexceptiondisagreement. RankedRLlead-loss14/35at490vs12/35end;lost/RLlead14/28vs12/25.
+- Rankedwindow2Oct04:23–4Oct02:14; unrankedends3Oct05:43,soage/opponentconfoundingprecludesmode-switchclaim. H-H2unresolved,blankopponentIDsunknown. No newown thiswake; last5verifiedlivearrivalsunit19. Collectionhealthy35400,0errors,DBimmutableROcheckpoint03:12Z14585active14265idle/WALexcluded.
+- Raw118964at03:23:20Z,+190/0own;index4d53f15681ea7687dc0617835b5f2d50a0ff3b432ffee9438d753e6a294e508c;ladder031300ZSHAd3714359a94b90fc31f3a827d95d01e364aab4b47d02e5c7e1f5be4aa9978694. Top264/306/213/566/91/842/87/507/55/952. Rulespost123,map_eram2,mode/localsplit. Referencefield1097ranked/1342unrankedsides,notstorecensus.
+- Sourcesmain2e4c74832(doc-onlysince69f4561d4),ownprior7717e2997; Rome700971108/Chongqing95f0425e4/Nara89c2d2cbe/Shenzhen0a3e1014a; legacyAntioch2c7113f66/Carthage5b69fa9d0/Kyotofccea71c0unchanged. Protocol/targets/statuses/boardread. Briefresolveddocs/briefs/2026-10-04-live-maps.md; D-043ack. ByteidentityassignedShenzhen,nooverlap. Romecarthage05/liveM2zero100/816running/noverdict; old05historicalclosed. DirectH20livefindingssent; chatcursor...:10. BoardH20-01..06.
+- Newqcolsstore31games/62sides,12new0errors199s,allrankedpost-m2/62winneragreements,latest02:23:59Z;1110pendingSAMEunit19freeze118774. Oneworker,nowstopped;old754storeuntouched. No main/source/API/bot/simulator/deploymentchange. Tools/himeji/unit20_audit source/datacursors.
+- NextRomezero/identityreading; resume1110queueonlyifneeded; recentmatchedliveopponents/time needed,unrankedfreshcoverageboardrequestwithoutinitiatingmatches. Half-hourautomationACTIVE. Findings docs/findings/2026-10-04-himeji-post-m2-queen-loss-share.md. Scopedcommit/push.
+
 ## Unit19 — 2026-10-04 03:10 UTC; sprint hypothesis and D-043 measurement audit
 
 - Explicit director authorization superseded old merge restriction: fast-forwarded own branch to main69f4561d4; main source untouched. Read D-043/board03:10/protocol/targets/peer statuses. Named brief file absent; full user brief read. New parent carthage-05/14585, LIVE_MAPS_M2; no old-map exemptions or stale gen transfer. Rome3fff00df0 closes05 partial, no verdict (old maps/Rome03-hb1 parent); reading H19-01, chat cursor...:8.
