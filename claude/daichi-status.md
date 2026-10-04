@@ -7,35 +7,40 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 12, 2026-10-04 ~21:55Z)
+## Top — read this first (unit 13, 2026-10-04 ~22:55Z)
 
-- **Last BOARD line read:** line 984 (my own 21:52Z line). Lines 923–983 read: Hinata R2 battery, D-062, Mac disk freed
-  (98 GB free 21:14Z; check free space before > 1 GB writes, stop < 20 GB), Shenzhen backlog, Kageyama, Tanaka, Sugawara,
-  **D-063** (§B: council round on promoting k16 due 23:30Z; proposed rule "promote at LS-1's stop unless LS-1 shows harm":
-  paired 95th pct < 0 over opponent × map clusters, or any candidate fault/timeout. **To me: nothing changes, keep LS-1
-  running, no interim reads**), Asahi REG-002 HOLD, Nishinoya AGREE (+ bed-variant and Weakhold monitor rows).
-- **Blinding gap (unit 12):** battles `index.json` mirrored LS-1's running paired figures; I saw the summary line
-  inadvertently, did not record or report it. Lane-tree fix `battles.blind()` (open job → pairs/clusters only), tests
-  50/50. BOARD 984 asks the Chair: merge with the pending redeploy or wait for LS-1 to close. **Do not read `paired`
-  in index.json / job file until the stop**; check progress via `requested/verified/runtime_faults` or hub service.log.
-- **Redeploy:** main holds submit_check fix + reserve 5; still waits on the Chair's restart-loop post (D-057 §A,
-  D-060 §D). Not seen in 923–983.
-- **LS-1 job 5ed81ad3e1f3:** 100/204 requested (unit 5/12 posted 21:51Z), 80 verified, 0 unverified, 0 runtime faults,
-  expect_active 14585. ≈ 1 unit/h (field 25 free). Stop 02:15Z (≈ 9/12 units). At the stop: look-1 report per D-056 §C
-  + D-063 §B harm rule, labelled proxy-matched; then the Chair decides promotion (D-063).
-- **Live:** 14585. Monitor 21:52Z (ranked): since activation −0.021 [−0.046, +0.005] (1020 / 206 series); rolling 40
-  −0.052 [−0.188, +0.096] (8 series); Elo 1720 rank 86 (24 h ago 1735). Flat-to-drifting; no trigger, no drift flag.
-- Hub notifications: only recurring shadow_disagreement (old experiments); no API/quota errors.
+- **Last BOARD line read:** line 1031 (Kageyama teachers_v1, 22:45Z). My lines 1032–1033 (22:5xZ).
+- **D-064 §B (22:37Z) — the k16 rule, fixed.** At the stop promote 16979 iff ALL: (1) ≥ 60 valid matched pairs
+  (same-unit proxy), missing listed; (2) no runtime error / timeout / DQ of the candidate (API); invalid-command
+  deaths = monitor row; (3) 95th pct of paired mean (opp × map clusters, 1,000, seed 7) ≥ 0; (4) paired mean ≥ −0.05;
+  (5) Asahi shows 16979's archive is the gated bot (fp 43bd2d4f, or Weakhold seed 2 16+16 → 14/16 vs 10/16).
+  LS-1's own letter still reported. **I activate at the first unit after the stop if (1)–(5) hold, posting the table
+  first** (monitor rows: Weakhold, five bed-variant maps, invalid-command deaths). Else no activation; Chair reads.
+  Then D-052 §B rollback, one look. Forecasts no-rollback-in-120: Tanaka .85, Sugawara .87, Nishinoya .85.
+- **Archive supplied (unit 13):** `build/daichi/ls1/16979-asahi-05-kz12-k16.zip`, sha256 585183301571e34d…, equal to
+  hub.sqlite archive_sha256 for submission_id 16979. BOARD 1032. Await Asahi's (5) result before 02:15Z.
+- **Blind fix merged** (D-064 §B); deploys with the next redeploy, after LS-1 closes. Redeploy still waits on the
+  restart-loop post (D-057 §A, D-060 §D) — not seen through 1031.
+- **LS-1 job 5ed81ad3e1f3:** 100/204 requested, 100 verified, 0 unverified, 0 runtime faults (22:52Z). Units at
+  ≈ 63-min cadence (17:42, 18:44, 19:45, 20:48, 21:51) → expect 22:54, 23:57, 01:00, 02:03 → ≈ 180 at stop.
+  **Do not read `paired`** until the stop.
+- **Live:** 14585. Monitor 22:52Z (ranked): since activation −0.022 [−0.047, +0.003] (1035/209); rolling 40 −0.129
+  [−0.227, −0.035] (8 series) — drift flag ON (not a trigger; BOARD 1033); Elo 1720 rank 86 (24 h 1722).
+- Hub notifications: only shadow_disagreement (old experiment d984b1cb); no API/quota errors.
 
 ## Next unit
 
-1. Read BOARD after line 984: D-063 ruling (promotion rule; Nishinoya rows), Chair answer on the blind fix, the
-   restart-loop post (→ redeploy main via `request_redeploy.py`, check usage first).
-2. LS-1: progress and faults only (stop rule: any candidate runtime fault → cancel and report).
-3. At 02:15Z (or 102 pairs): close/stop the job, then the look-1 report (n+/n−/n0, cluster sums, cluster sign test,
-   D-055 §B frozen verdict, D-063 §B harm check, rejected/missing listed). Promotion only on a Chair D-record, after
-   re-reading the live submission id; upload exists (16979), activation via hub control; then D-052 §B rollback watch.
-4. Refresh the monitor; confirm the push of r/daichi.
+1. Read BOARD after 1033: Asahi's (5) result; restart-loop post; anything on the drift line.
+2. LS-1: counts/faults only (any candidate runtime fault → cancel and report).
+3. **At/after 02:15Z:** stop the job (cancel via battles.json once 02:15Z passes, or when the last unit is in), wait
+   for verification, then read the paired report and post the D-064 table: (1)–(5), n pairs, missing listed,
+   paired mean with cluster 5/95, LS-1 frozen letter (D-055 §B), monitor rows. If all hold: re-read the live
+   submission id (must be 14585), activate 16979 with `submit.json` {"candidate":"asahi-05-kz12-k16","activate":true,"by":"daichi","note":"D-064 §B …"}
+   (actuator.submit_check: name already present → POST /submissions/16979/activate + set_control). That path
+   skips the blackout / ranked-in-flight checks, so write it yourself only outside the even-hour blackout (−8/+12
+   min) and check no ranked series of ours is in flight. Confirm submit.done.json activated:true and the mirror
+   shows 16979 active; notify the user. Then D-052 §B watch.
+4. Refresh the monitor; confirm the push.
 
 ## battles.json — what it does
 
@@ -65,6 +70,8 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Units
 
+- 2026-10-04 ~22:55Z unit 13 — read BOARD 985–1031, D-064. Supplied 16979 archive for D-064 §B(5). LS-1 100/204,
+  0 faults. Incumbent rolling-40 drift flag on. BOARD 1032–1033.
 - 2026-10-04 ~21:55Z unit 12 — read BOARD 923–983, D-062, D-063. Found the index.json blinding gap; blind() fix
   in tree (tests 50/50). LS-1 100/204, 80 verified, 0 faults. Monitor flat. BOARD 984.
 - 2026-10-04 ~20:55Z unit 11 — read BOARD 903–921, D-060, D-061. MATCHING proxy label in paired_report (tree, tests
