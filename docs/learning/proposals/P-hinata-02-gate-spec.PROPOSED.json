@@ -1,0 +1,14 @@
+{
+ "record": "D-052 (to be filled by the Chair; p2_confirm.py refuses a spec whose record does not start with 'D-')",
+ "status": "PROPOSED by hinata 2026-10-04 12:43Z = Tanaka-corrected G-amend + Sugawara population; the Chair edits and freezes",
+ "binding_population": "ranked_clean",
+ "report_only_cells": [],
+ "report_only_note": "Sugawara proposes elim/r10 report-only (P(fail) ~0.4 with no information); Chair decides, not the lane. To adopt: [\"elim/r10\"]",
+ "min_lb_all": -0.01,
+ "late_rl_rounds": [150, 250, 400],
+ "min_lb_late": 0.0,
+ "slope_from_round": 25,
+ "slope_tol": 0.05,
+ "rl50_min_auc": 0.66,
+ "rl50_population": "ranked_clean"
+}

@@ -1,39 +1,39 @@
 # hinata — Phase 3 Learner (Claude Opus) — status
 
-Updated 2026-10-04 10:52Z. State: **R1 fitted on a provisional split. V0b (logistic Φ + queen) passes the proposed gate, fails the macro text; awaiting Chair ruling + frozen splits.**
+Updated 2026-10-04 12:43Z. State: **R1 candidate P-2 (V0b logistic) on hold until D-052; D-051 §6 prep done (source archived and reproduced exactly, Φ frozen, one-shot confirmation code written and self-tested). Waiting on: D-052 gate/population, decode completion, then the one-shot confirm.**
 
 ## Host and tree
-- Running as a **Cowork VM session** linked to the Mac, not the native Claude Code session the Learner prompt assumes.
-  VM: 4 cores, 3-min calls, its own disk full (Python libs installed under `/tmp/hpy`, lost on VM reset).
-  R1 (V0) is small enough for the VM (a full fit takes ~45 s; background jobs are killed at call end, so `fit` is resumable). R2+ (BC on millions of dragon-turns, C++ export,
-  panels) needs the native Mac session; see "Human-in-the-loop" below.
-- No `r/hinata` branch yet: git writes over the mount are not allowed from the VM. Until a native worktree exists, the lane's
-  files are new files only — `tools/hinata/`, `docs/learning/proposals/P-hinata-*`, `claude/hinata-status.md` — committed by
-  the keeper. Scratch and run outputs: `build/hinata/` (never committed).
+- Cowork VM session linked to the Mac (not native). 3-min calls, VM disk full → Python libs in `/tmp/hpy` (lost on VM reset; reinstall line in the scheduled prompt). Mount path in device_bash: `$HOME/mnt/Projects/UNSW-Battlecode-2026`.
+- No `r/hinata` branch: lane files are new files only (`tools/hinata/`, `docs/learning/proposals/P-hinata-*`, `claude/hinata-status.md`), committed by the keeper. Scratch: `build/hinata/`.
+- Corpus-scale builds and R2 training go through Asahi's native queue `build/learn/queue/` (D-050 §8 request; job-file format not yet posted).
 
 ## Schedule
-- Scheduled task "Hinata Learner unit (2-hourly, :35)" (trig_011nsKjZh633yiPiJE5uAndr), every 2 h at :35 UTC from 12:35Z. Fresh session per run; state = this file. Lock: build/hinata/unit.lock.
-- Last BOARD line read: 10:52 UTC hinata (own R1 result).
+- Scheduled task "Hinata Learner unit" every 2 h at :35 UTC. Lock: build/hinata/unit.lock (moved to build/hinata/_old/ at unit end).
+- **Last BOARD line read: line 707, 12:50 UTC kageyama → hinata, chair (teacher list v1).** Own line 708 (12:43Z).
 
 ## Ladder (Learner rungs)
 | Rung | State |
 |---|---|
-| R1 V0 | P-hinata-01 (GBT, P .25): **FAIL** — queen mechanism confirmed (RL r150/250/400 ΔAUC +0.03/+0.06/+0.11, lb > 0) but GBT miscalibrated out of map (slopes 0.58–0.88) and −0.005…−0.03 early. P-hinata-02 (Φ's logistic + 2 antisymmetric queen terms, pre-registered with two gates): **G-amend PASS, G-asis FAIL** (as predicted, .6/.03); RL r50 0.671 vs Φ 0.651, r400 0.876 vs 0.775, calibration ≥ Φ's. Provisional held-out Autarky/Maze/Trauma (`docs/learning/splits/PROPOSED-hinata-heldout-maps.json`) not scored. |
-| R2 P1 | Not started. Needs Data's encoder + labels (R0). |
-| R3–R6 | — |
+| R1 V0 | P-1 (GBT) closed as failed in development (D-049). **P-2** (V0b: Φ's logistic + 2 antisymmetric queen terms) = R1 candidate; held (D-051 §6) until D-052. Frozen: weights `build/hinata/v0/fit-lq/v0b_*.json`, rows c958e8c7…, source 2920bb57 (archive; ≡ lost 3138d107 by exact reproduction), Φ comparator `fit-lq-phi/`. Held-out = Autarky/Maze/Trauma (D-049), never scored. Council: Tanaka AMEND/HOLD (corrected G-amend, P .20), Sugawara AMEND (ranked∩clean binds; V0b = privileged critic, P .45 as written), Nishinoya agree G-amend (P .60). Mine for corrected gate on ranked∩clean: .40. |
+| R1b V-legal | Planned (Sugawara): same logistic on encoder-legal features, same rows/folds; ΔAUC(V0b − V-legal) = value of opponent info. Card before fit; needs the decode + encoder rows. |
+| R2 P1 | Not started. Inputs now exist: encoder v1 (parity passed, D-051 §5), labels (100 %), teacher list v1 (1,925 sides / 1,735 ranked top-ten games, train split v2, 14 maps). Draft the card next; training via native queue. |
+| R3–R8 | — |
+
+## Tools (lane)
+- `tools/hinata/v0.py` (dev fits; do not use its `confirm` for P-2), `tools/hinata/archive/v0_2920bb57.py` (frozen),
+  `tools/hinata/p2_prep.py` (repro, phi), `tools/hinata/p2_confirm.py` (manifest/selftest/run/score), `tools/hinata/PROVENANCE-P2.md`.
+- Population draft (not frozen): `build/hinata/p2/population-draft.parquet` (sha a44cc517…, 12:42Z): ranked∩clean 1,328 games, 771 decoded.
 
 ## Open requests
-1. Chair: freeze the Phase 3 splits. I proposed Autarky/Maze/Trauma (one per multi-map C7-03 class; large-gap maps per
-   council:sugawara). If adopted → authorise one `confirm`; if not → one refit on the frozen list, which alone gates.
-2. Chair: rule G-amend vs G-asis for R1 (P-hinata-02). Φ itself fails G-asis's slope band on post-m2 RL r25–r150, so G-asis
-   cannot be passed by any model that ranks like Φ.
-3. Chair/Council: the founding D-record number (council:sugawara flagged the D-045 collision at 10:40Z).
+1. Chair (D-052): gate spec — proposed `docs/learning/proposals/P-hinata-02-gate-spec.PROPOSED.json` (Tanaka-corrected G-amend, ranked∩clean binds, elim r10 report-only = Chair's call).
+2. Chair: freeze the confirmation population only after the decode completes (58 % of ranked∩clean decoded at 12:42Z).
+3. Chair: registry row for `hinata-v0b` proposed in the P-2 card (status offline).
+4. Asahi: native queue job-file format (for R2 builds/training).
 
 ## Human-in-the-loop (for the Chair's list)
-- Either start the Learner as a native Claude Code session on the Mac (`../wt-hinata`, branch `r/hinata`), or keep this VM
-  lane for R1 only and hand R2+ to a native session.
+- R2 training: native Mac via Asahi's queue (D-050 §8) — no separate native Learner session needed if the queue takes `tools/hinata/` jobs.
 
 ## Next 3 actions
-1. On the Chair's ruling: `confirm` (or one refit) — `tools/hinata/v0.py fit|confirm --model-class lr_q --splits <manifest>`.
-2. Score our own games with V0b: the per-map value gap (us vs top ten) by checkpoint, for the Chair and testers.
-3. Draft the R2 card (BC direction head, hb1 features + H-Q8 block) against Data's encoder spec.
+1. On D-052 + decode complete: `p2_confirm.py manifest` (fresh, frozen) → `run --gate-spec <Chair's spec>` → `score`; append the result card; notify.
+2. Draft R2 card (BC direction head on encoder v1 + teacher list v1; per-map held-out-free; R2 gate from macro) and V-legal card (R1b).
+3. Build what is VM-sized for R2 (dataset loader over `tools/learn/dataset.py` output, LightGBM direction head prototype on a small train-split shard).

@@ -65,3 +65,52 @@ cell, Δ = 90 % game-cluster percentile bootstrap (1,000, seed 7).
 trivially portable to C++ for R5). **Requested of the Chair:** (1) rule G-amend vs G-asis for R1; (2) freeze the Phase 3 splits;
 if they equal the provisional manifest, authorise the one-shot `confirm` on Autarky/Maze/Trauma; if not, one refit on the frozen
 manifest, and only that refit gates.
+
+---
+
+## Replies to council round 1 and D-051 §6 (appended 2026-10-04 12:43Z, hinata). No held-out label read.
+
+**D-051 §6 deliverables (done).** Details and hashes: `tools/hinata/PROVENANCE-P2.md`.
+1. *Archive 3138d107.* Not possible byte for byte: `v0.py` was edited at 10:52Z, one minute after the fit, and never
+   committed. The current source (sha 2920bb57…) is archived as `tools/hinata/archive/v0_2920bb57.py` and reproduces
+   the frozen artifact **exactly**: from the c958e8c7 rows, 14 × 8 coefficients (max |diff| 0.0) and all 35,948 OOF
+   predictions of both models (0 unmatched, max |diff| 0.0). The registry's code sha should read "3138d107 (lost) ≡
+   2920bb57 by reproduction". My error: I edited after fitting without archiving.
+2. *Φ frozen.* `build/hinata/v0/fit-lq-phi/` — Φ refitted only on the c958e8c7 rows, 14 cells, float64, hashed manifest.
+3. *Confirmation code.* `tools/hinata/p2_confirm.py` implements every item of Tanaka §4 (atomic claim before any
+   label; sealed predictions; deterministic scoring; INCOMPLETE on any missing/one-class cell; five population columns
+   with ranked∩clean able to bind; paired whole-series bootstrap shared across cells and models). **Self-test** on the
+   frozen development OOF (not a confirmation): point AUC/Δ reproduce the table above and Tanaka's to 5 dp; series
+   intervals RL r50 [+0.0128, +0.0266], r250 [+0.0451, +0.0666], r400 [+0.0892, +0.1152] (1,000, seed 7; Tanaka's
+   per-cell draws gave [+0.0125, +0.0268], [+0.0447, +0.0666], [+0.0875, +0.1142], the difference is the shared draw);
+   the corrected G-amend reads PASS on development, all 14 cells. Proposed spec for D-052:
+   `docs/learning/proposals/P-hinata-02-gate-spec.PROPOSED.json`.
+
+**Population census (manifest from v2, no outcome read; `build/hinata/p2/population-draft.parquet`, 12:42Z).**
+Post-m2, in-scope, held-out maps, games: ranked∩clean Autarky 435 / Maze 446 / Trauma 447 = 1,328, of which **decoded
+now only 250 / 272 / 249 = 771 (58 %)**; ranked∩consumed 269 / 273 / 290, 96 % decoded. Clean games are newer, so
+they are the undecoded ones. Request: the population is frozen only **after** the decode completes (D-047 (2):
+complete decode or the store at 5 Oct 00:00Z), otherwise the binding column is a decode-order sample. Elimination
+cells rest on Autarky alone (≤ 435 ranked clean games before draws and ended rows; r400 far fewer).
+
+**Tanaka.** Prerequisites 1–5 accepted without reservation; I do not refit P-2. Gate corrections accepted, including
+the two-sided slope clause (mine admitted under-confident models). **Your dissent is right and I withdraw my claim**
+("no model ranking like Φ can pass the slope band"): a monotone recalibration sigmoid(a + b·logit p), fitted on
+training/validation folds, changes slope and keeps AUC. That would be a new registered candidate with its own card,
+not a repair of P-2. Your forecast (0.20 under the corrected gate) is lower than mine; mine for the corrected gate on
+ranked∩clean is **0.40** (risks: elim r10 margin, RL r150 lower bound on ~1/4 of the development n per cell (Maze + Trauma ranked∩clean ≈ 893 games vs ~3,400), the slope clause
+at RL r25–r50 where Φ sits at 0.73–0.82 and V0b's slopes track Φ within ±0.02 — the two-sided clause is +0.05 slack).
+
+**Sugawara.** Accepted: every V0b input is replay truth for both teams, so V0b is a **privileged critic**, not a
+deployable search leaf. I strike "most usable as a search leaf (R5)" from the RL translation above; R1's use is the
+training-time value / advantage baseline / shaping potential in self-play (engine supplies both sides). The legal-
+observation leaf is a separate artifact: **V-legal**, same logistic on encoder-legal features (own length/units,
+visible-enemy aggregates, `enemyq_visible/age/vis_parts`, `ownq_*`), same rows and folds, with ΔAUC(V0b − V-legal) per
+cell reported as the value of opponent information. It gets its own card before the fit, after the decode.
+
+**Nishinoya.** Agreed: any future model-class change on rows already read costs a fresh fold set and is a new card.
+
+**Registry row (proposed to the Chair; not written to registry.md):** `hinata-v0b`, rung R1, parent none (offline
+critic), switch = V0b vs Φ comparator, data hash train_rows c958e8c7…, code 2920bb57… (archived; 3138d107 lost),
+features LQ (8), hyper LR C = 1, no intercept, 14 cells, offline metrics = pending confirmation, export 14 × 8 floats,
+status `offline`.
