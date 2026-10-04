@@ -33,3 +33,8 @@ Rome's D-043 live zero is complete and the D-043 priority-a cage dose screen has
 ## Unit 4 — H-KZ12 contract re-read (4 October)
 
 Kanazawa unit10 plus Himeji H29 resolve Unit 3's blocker on Rome's branch: use the candidate-specific, body-conditioned inclusive capacity `Cb`, doses 0/4/8/16, strict `Cb < k`, and a cycle exemption when the reachable set plus prior head contains a simple cycle at least the projected queen length + 1. Known bodies are projected per action; unknown frontier assigns capacity 16; ordinary simulator legality remains separate; if every legal one-step direction is vetoed, choose maximum `Cb` with parent ranking as tie-break. The earlier terrain-only k=5 pool pilot is historical/nonconforming. Rome's corrected four-dose panel has begun; Seoul will not duplicate it. The contract and next evidence needs are recorded on the board.
+
+
+## Unit 5 — closeout summary (4 October 10:29 UTC)
+
+Evidence-only closeout: consolidated Units 1–4 and D-044/H-KZ26 next-test design in `docs/findings/2026-10-04-seoul-wrap-up.md`. No Seoul bot, panel, replay, simulator, CPU-probe, or training run was made; Rome’s D-043 zero remains shared evidence, not a Seoul rerun. At last workload inspection Rome was running the corrected H-KZ12 dose panel with high shared load, so Seoul did not overlap it. H-KZ26 remains the next assigned Seoul screen after capacity clears. No candidate or verdict.
