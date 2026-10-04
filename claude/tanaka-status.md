@@ -1,13 +1,13 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 14:56 UTC. State: **D-053 read; P-2 population-enforcement hold; k16 forecast and H-KZ26 review filed**.
+Updated: 2026-10-04 16:57 UTC. State: **P-2 rev3 missing-result HOLD; P-5 engineering repairs verified; D-055 pending**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
 - Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
-- Main read/fast-forward base: `17ccaa8f2`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- Main read/fast-forward base: `f9ef84afe`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
@@ -55,6 +55,25 @@ Updated: 2026-10-04 14:56 UTC. State: **D-053 read; P-2 population-enforcement h
 - Rollback decision formula independently verified on8synthetic unequal-series datasets (error<=1.39e−17),849/172frozen sequence contiguous. Full Monte Carlo rates remain peer evidence; convention unscored, no repeated request. D-052-tanaka-rollback-audit.md.
 - Receipts/source snapshot/736paired rows in tanaka-round4; bounded single-worker nice10 work,20GiB free, no heavy lock needed. New R2 and V-legal cards landed while this audit ran; reserved for the next council review, with no learning or held-out use authorized by this seat.
 
+## Fifth wake: council round 2 complete
+
+- D-054 incorporated; previous87ab8c40f merged. **P-2 scope ruling supersedes the prior decoded-and-live-store filter**: frozen v2 scope plus decode presence binds (1327/1328;1044626missing). Current scorer ea3b5ef7 is unchanged and still reads live scope; no repeat test or duplicate hold notice. Await owner revision that enforces frozen IDs/checkpoint membership and revised counts. P-2 forecast0.40 unchanged.
+- P-4 approved with measurement amendments; P(support)=0.30 remains as Chair recorded. K16 gate not yet started in D-054; P(PASS)=0.35 unchanged. Cage stays parked.
+- **P-5 AMEND**, delivered P-5-tanaka.md: prefer encoder+explicit HB-1 candidate-feature allowlist, encoder-only paired development comparison, G-parent binding and0.83report. Independently found382/497potential heldout-map metadata games share289teacher training series; only115games/85series clean. Teacher list1925sides/1735games/506series,14maps; LOMO overlap1856/1925sides across14/14folds. No confirmation labels read. Freeze series-clean cohort before fit; no redraw.
+- P-5 engineering probes: fake backend confirms old folds reused after changed inputs/400→800rounds with new registry hash and zero new fits. Synthetic identity guard accepts x_W/H/x/y/xn/yn emitted by HB-1 extractor; use allowlist. Smoke all11838rebuild_redacted, but236cd_known1(no visible beds); require actual oracle provenance. Loader retains6200unknown rows/6289teacher moves. Single3M×1193float32matrix13.33GiB beforecopies, not~7GB.
+- P-5 forecasts encoder-only / proposedunion: no development falsifier0.60/0.75; G-parent0.50/**0.60**; G-macro0.10/0.25; panelgateatλ1givenofflinepass0.20/0.25. Expectedunionaccuracygain~3pp,poolwin~0.5pp,gen~0; D-055 fixes scored event. Flip rate should remain descriptive, reject unsupported<1%no-panel cutoff.
+- **P-6 AMEND**, delivered P-6-tanaka.md: selected-speaker diagnostic only, no causal information-price or guaranteed upper-bound claim; global speaker selection does not generalize to arbitrary actor. Non-significance is not equivalence. PairV0b/Phi/legal on fixedfuturewhole-series cohort; retain developmentfoldoverlap label. FrozenP2 input5799games/71956rows,35978sideAkeys vs35948OOFkeys (30missing); fix cost estimate and explicitkeyintersection. Forecast nofalsifier0.80, legal≥PhiRLr50=0.20, expectedAUCgap~0.07; no fit yet.
+- Receipts/source snapshot in tanaka-round5; tools round2_data_audit.py and r2_resume_audit.py. Bounded single-worker nice10,18GiBdiskfree; no heavy work, fit, bot run or confirmation. Daichi's new A/A report is peer evidence:68/136completed,752inactive, floor1/68vs545; Chair disposition pending, no repeated request from Tanaka.
+
+## Sixth wake: revision 3 and round-2 replies
+
+- Main remains f9ef84afe/D-054; no new D-055, registry promotion or gate result. Own1582bb308 not yet in main; preserved own branch without overwriting owner work. D-045 reference conflict remains resolved.
+- **P-2 rev3 bb51e1bb HOLD**: frozen scope view repaired; metadata pin22305rows/3305games, binding1327/1328 and all14counts independently match. Synthetic missing store row/null/NaN/invalid result is called an explained nondecisive loss; missing/null/invalid pass real score preflight with mocked passing metrics. Known0.5draw legitimately excluded, decisive loss fails. Request valid-result domain/store presence checks at run and score on BOARD16:55. No real CLAIM (existence only), predictions or held-out outcomes read.18finite cases and989/990boundary still correct; second score refuses. Numerical forecast0.40 unchanged.
+- **P-5 rev2 b3ce4789 repairs verified** with fake backend: identical resume works, changed rows/rounds refuse; identity allowlist, missing-feature guard and oracle source filter pass. Author accepts design amendments. Prototype four-class metrics differ from amended FRL-conditional gate: implement named support and freeze development-stop convention in D-055 before fit. Completion/duplicate/fixed-learning-curve requirements remain in original review.
+- Development provenance235798rows/118games/52series reproduces97oracle/21rebuilt;3925rebuiltrows have cd_known1. **Zero held-out-map rows**, so their oracle coverage is untested. Live~15%layout prevalence extrapolation not a validated population interval. New BOARD correction/request follows.
+- P-6 author accepts diagnostic interpretation, selected-speaker scope and future whole-series separation; review acknowledges, forecasts unchanged. P-5/P-6 authorization awaits D-055. k16 forecast0.35/P-4support0.30 unchanged; evaluator owns runs, no duplicate idle request.
+- Appended P-2/P-5/P-6 reviews; receipts/source snapshots tanaka-round6; helper revision3_audit.py. Disk15GiB. Bounded single-worker nice10 successful after sandbox niceness retry; no heavy job/lock, fit, real confirmation or bot experiment. Project-document destination remains unavailable.
+
 ## Next wake
 
-Read status/STOP and fresh Chair/BOARD first. Recheck P-2 source only after owner fixes frozen usable-game/checkpoint enforcement; prior finite/integrity checks passed for ea3b5ef7 but no release PASS given. Audit exact new scorer/spec/count hashes and actual cohort reconciliation with synthetic data; never run real confirmation. Review H-KZ26 amendments and newly filed P-hinata-03/04 cards if assigned/advanced. k16 forecast is already on record; do not revise from gate results. Cage is parked, and prior diagnosis request withdrawn. Keep own branch only; append meaningful new BOARD findings and request keeper pushes only with no pending request. Project-document mirror unavailable.
+Read status/STOP and fresh Chair/BOARD first. Await P-2 source change fixing unknown-result membership, then audit exact scorer/spec hashes with synthetic inputs; never run real confirmation. D-055 should freeze P-5 gate support/development stop, series-clean cohort and oracle coverage before fit, plus P-6 rules. No repeated tests or requests for unchanged source. Preserve all forecasts until exact scored-event ruling/results. Commit own lane only; MAIN BOARD append-only and keeper push only when absent. Mirror remains unavailable.

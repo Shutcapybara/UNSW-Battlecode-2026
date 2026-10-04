@@ -1,0 +1,210 @@
+{
+  "teacher_file_sha": "d13ef112a0339ba6830ee62238fe234ae07093d89c5bc4cd6e5b2e2c8a708fa8",
+  "split_file_sha": "c03e52a38321b7da04c4866a89d5c844beeeb2dfa35557cd9c8834329bec1d4c",
+  "teacher_sides": 1925,
+  "teacher_games": 1735,
+  "teacher_series": 506,
+  "duplicate_teacher_keys": 0,
+  "teacher_split_counts": {
+    "train": 1925
+  },
+  "maps": 14,
+  "variant_named_sides": 297,
+  "heldout_metadata": {
+    "games": 497,
+    "series": 374,
+    "games_sharing_training_series": 382,
+    "series_sharing_training": 289,
+    "side_count": 544,
+    "by_map": [
+      {
+        "map": "Autarky",
+        "overlap": false,
+        "n": 35
+      },
+      {
+        "map": "Autarky",
+        "overlap": true,
+        "n": 132
+      },
+      {
+        "map": "Maze",
+        "overlap": false,
+        "n": 46
+      },
+      {
+        "map": "Maze",
+        "overlap": true,
+        "n": 112
+      },
+      {
+        "map": "Trauma",
+        "overlap": false,
+        "n": 34
+      },
+      {
+        "map": "Trauma",
+        "overlap": true,
+        "n": 138
+      }
+    ],
+    "scope": "Frozen metadata only; top-ten teacher-team membership, ranked/post-m2/in_scope. No action or winner labels, no decisive-only filter. Not a proposed replacement holdout draw."
+  },
+  "lomo_series_overlap": [
+    {
+      "map": "Around UNSW",
+      "test_sides": 146,
+      "test_series": 126,
+      "overlap_series": 114,
+      "overlap_sides": 133
+    },
+    {
+      "map": "Australia",
+      "test_sides": 140,
+      "test_series": 124,
+      "overlap_series": 105,
+      "overlap_sides": 118
+    },
+    {
+      "map": "Default",
+      "test_sides": 128,
+      "test_series": 119,
+      "overlap_series": 117,
+      "overlap_sides": 126
+    },
+    {
+      "map": "Devil",
+      "test_sides": 132,
+      "test_series": 121,
+      "overlap_series": 121,
+      "overlap_sides": 132
+    },
+    {
+      "map": "Islands",
+      "test_sides": 137,
+      "test_series": 124,
+      "overlap_series": 121,
+      "overlap_sides": 134
+    },
+    {
+      "map": "Portals",
+      "test_sides": 134,
+      "test_series": 124,
+      "overlap_series": 121,
+      "overlap_sides": 131
+    },
+    {
+      "map": "Prisoners Dilemma",
+      "test_sides": 140,
+      "test_series": 122,
+      "overlap_series": 119,
+      "overlap_sides": 137
+    },
+    {
+      "map": "Queen Of Spades",
+      "test_sides": 136,
+      "test_series": 127,
+      "overlap_series": 127,
+      "overlap_sides": 136
+    },
+    {
+      "map": "Schooltime",
+      "test_sides": 157,
+      "test_series": 143,
+      "overlap_series": 139,
+      "overlap_sides": 152
+    },
+    {
+      "map": "Slithery Fight",
+      "test_sides": 171,
+      "test_series": 152,
+      "overlap_series": 138,
+      "overlap_sides": 155
+    },
+    {
+      "map": "Stripes",
+      "test_sides": 114,
+      "test_series": 99,
+      "overlap_series": 99,
+      "overlap_sides": 114
+    },
+    {
+      "map": "Tower Defense",
+      "test_sides": 117,
+      "test_series": 105,
+      "overlap_series": 104,
+      "overlap_sides": 116
+    },
+    {
+      "map": "Trophy",
+      "test_sides": 139,
+      "test_series": 127,
+      "overlap_series": 127,
+      "overlap_sides": 139
+    },
+    {
+      "map": "weakhold",
+      "test_sides": 134,
+      "test_series": 122,
+      "overlap_series": 121,
+      "overlap_sides": 133
+    }
+  ],
+  "smoke": {
+    "sha": "1a2fc4c96c22099d3c9ae090abba3d07b99a513d755e4b06223446dd3e2fd1cf",
+    "rows": 11838,
+    "move_rows": 11594,
+    "class_counts": {
+      "0": 5914,
+      "1": 2558,
+      "2": 50,
+      "3": 3072
+    },
+    "cd_known_counts": {
+      "0": 11602,
+      "1": 236
+    },
+    "blocks_src": {
+      "rebuild_redacted": 11838
+    },
+    "cd_known_true_with_n_beds_zero": 236,
+    "cd_known_true_with_visible_beds": 0
+  },
+  "prototype": {
+    "source_sha": "8af15d019674269a87865945fd7f33dd2795a3c26c3374e45740a1bd9d0c9f32",
+    "loaded_smoke_move_rows": 6289,
+    "retained_cd_unknown": 6200,
+    "n_features": 1193,
+    "synthetic_duplicate_teacher_join_rows": 2,
+    "synthetic_series5_keeps_pair": true,
+    "synthetic_lomo_splits_pair": true,
+    "identity_guard_tests": {
+      "x_W": "accepted",
+      "x_H": "accepted",
+      "x_x": "accepted",
+      "x_y": "accepted",
+      "x_xn": "accepted",
+      "x_yn": "accepted",
+      "x_width": "rejected",
+      "x_facing_abs": "rejected"
+    }
+  },
+  "p6_rows": {
+    "sha": "c958e8c7f830c4c5d1b5e322adc44f16152d2a4c4c96714d5d1c30eb091cae76",
+    "rows": 71956,
+    "games": 5799,
+    "side_a_rows": 35978,
+    "game_side_round_duplicates": 0
+  },
+  "memory_float32_bytes": 14316000000,
+  "scope": "Teacher/split metadata, development smoke and frozen P2 training row IDs only; no new fit, bot run, or confirmation data.",
+  "p6_oof": {
+    "sha": "2b98446581da4d8baa50abb57f9479ec467173dd4eb5a760e081f2ac27d330b2",
+    "rows": 35948,
+    "unique_keys": 35948,
+    "games": 5799,
+    "train_side_a_keys_without_oof": 30,
+    "oof_keys_not_in_train": 0
+  },
+  "hb1_features_source_sha": "d898af2ffcbddfe6b18165a4fa57ee3a2041452f5b27aeb7962c03a7b411e161"
+}

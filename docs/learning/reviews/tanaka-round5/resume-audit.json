@@ -1,0 +1,15 @@
+{
+  "backend": "fake; no model fit or teacher-data read",
+  "first_counts": {
+    "train": 2,
+    "loaded": 2
+  },
+  "after_changed_rows_and_rounds": {
+    "train": 2,
+    "loaded": 4
+  },
+  "additional_train_calls": 0,
+  "registered_rounds": 800,
+  "registered_new_data_hash": true,
+  "cached_files_reused": true
+}
