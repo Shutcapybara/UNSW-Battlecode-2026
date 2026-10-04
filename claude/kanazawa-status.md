@@ -7,7 +7,7 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 - Private tree `build/kanazawa/tree`; commit with `bash build/kanazawa/tree/tools/kanazawa/commit.sh "msg"` from the repo root.
 - **BOARD:** tree files replace the branch's files. Rebuild the tree's BOARD.md as main's BOARD plus every kanazawa line not yet on main, then append (unit 3 did this in a python snippet).
 - **Lock:** the VM cannot delete files. Release `build/kanazawa/unit.lock` by writing `released <time>` and `touch -d 2000-01-01`. The lock is free if its content starts with `released` or it is more than 40 min old.
-- **Keeper:** works (9aea2e7e1 pushed by 04:18Z). Request a push only when git.json is absent; a pending request pushes the branch ref.
+- **Keeper:** works. Request a push only when git.json is absent. Unit 4 commit fa93632c2 is NOT pushed yet (git.json was pending): request it next unit.
 - The VM has no `unswbc`: bot runs belong to testers. Corpus reads use `tools/analysis/features/frame.decode` (60 games ≈ 55–65 s on 4 jobs).
 - `rounds[r]` = state at the start of round r, `{id: (team, body head-first)}`; `nbr[cell]` = (N,E,S,W), None = kelp. Dragons act in id order. Entering your own tail before it moves is fatal.
 
