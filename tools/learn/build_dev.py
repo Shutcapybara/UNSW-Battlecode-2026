@@ -6,11 +6,17 @@ import pandas as pd
 import dataset as DS, audit
 
 sides_f, rdir, games_f, split_f, out, pct, w, nw = sys.argv[1:9]
+hb1_exe = sys.argv[9] if len(sys.argv) > 9 and sys.argv[9] != "-" else None
+cap = int(sys.argv[10]) if len(sys.argv) > 10 else 10 ** 9
 pct, w, nw = int(pct), int(w), int(nw)
 T = pd.read_parquet(sides_f)
 seeds = dict(zip(*pd.read_parquet(games_f, columns=['game', 'seed']).astype(str).values.T))
 S = pd.read_parquet(split_f).set_index('game')
-games = sorted(T.game.unique())[w::nw]
+games = [g for g in sorted(T.game.unique()) if (Path(rdir) / f'{g}.replay').exists()][w::nw]
+n_done = 0
+import os
+if os.environ.get("REV"):
+    games = games[::-1]
 frames, log = [], []
 t0 = time.time()
 Path(out + '.parts').mkdir(parents=True, exist_ok=True)
@@ -18,6 +24,9 @@ for g in games:
     part = Path(out + '.parts') / f'{g}.parquet'
     if part.exists():
         continue
+    if n_done >= cap:
+        break
+    n_done += 1
     r = S.loc[g]
     assert r.split == 'train', (g, r.split)
     sides = set(T[T.game == g].side)
@@ -25,7 +34,7 @@ for g in games:
                 team_a=str(r.team_a), team_b=str(r.team_b), teacher_team=','.join(sorted(T[T.game == g].team)),
                 dataset_version=DS.DATASET_VERSION, enc_version=DS.E.ENC_VERSION, label_version=DS.LB.LABEL_VERSION,
                 source='server')
-    rows, st = DS.game_rows(g, (Path(rdir) / f'{g}.replay').read_bytes(), seeds.get(g), sides, pct, True, meta)
+    rows, st = DS.game_rows(g, (Path(rdir) / f'{g}.replay').read_bytes(), seeds.get(g), sides, pct, True, meta, hb1_exe)
     log.append(dict(game=g, **st))
     if rows:
         DS.to_frame(rows).to_parquet(part, index=False, compression='zstd')
