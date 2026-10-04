@@ -19,12 +19,13 @@ Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned 
   Autarky992701isNOT4cell rescue:bothqueenlen3,3emptyadjacent,972cellcomponent,MOVEr0. Do notconflatewithSchooltime.
   H14holdoutnotfield-scaleclosure:33split→33alive25/29alive490;4hashes,latefailures. No universal20+/cap3target.
 - Sourcecursor main0298966ec/D-042,Antioch2c7113f66,Carthage5b69fa9d0,Kyotofccea71c0,Rome91544f017,
-  Nara5e84e7d89through01:00. Protocol/targets/all5statusesread. BoardH15-01..06;priorHimeji8c92efdd2.
+  Nara5e84e7d89through01:00. Protocol/targets/all5statusesread. BoardH15-01..07;priorHimeji8c92efdd2.
   Sourcehashes/cache/replayhashes+pairedrows tools/himeji/unit15_audit/.No mainmerge/deployment/botchanges.
 - Corpus116998at00:53:37Z/latest00:50:09Z,+855including5own; indexSHA17448ead5a79b58b09d99ee69532a59d9b187c606f6a8248bf96707028641dfd.
   Ladder004328Z SHA49e68c499db3b14279e98bd166899b5fedbcd4f30de0a13b6a86235556920362;
   top306/91/264/213/55/87/842/82/952/566. Liveera≥1Oct06:00post123;local1.2.3separate.
   DBrohealthy14585active00:53:53Z;collector35400healthy40/pass0errors;H11-05/H12-05coveragepending.
+- H15-01/02directhandoff deliveredtoactiveRomechat afterpublish e02c6a63a;04pool475/480snapshot,replypending.
 - Store423/846unchanged/latest3Oct23:11:43Z,110unit12queuepending.NoactiveHimejiworkers;1replayworker/301s.
   Newtesterresultprioritydeferredpearlprovenance/caplegality/broadstorebuild. NextreadRome04whencomplete,
   assignedH-H5repaircheck, thenpearlorigin+savedstorequeue. AutomationACTIVEhalf-hour. Findings:

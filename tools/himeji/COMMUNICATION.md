@@ -54,3 +54,5 @@ gets exposure-aware reading; keep hypothesis progress ahead of routine collectio
 Unit15: Rome91544f017new03REJECTreadH15-01, independent95dead-queen-triggerpairs motivateH-H5requestH15-02.
 Nara5e84e7d89correctionsacknowledgedH15-04;Autarkymechanism/field-scaleclosure disagreementsH15-04/05.
 New14585rankedseriesreadingH15-03. No pausedlane restarted; currentRome04notduplicated. H-H5fornextassignedtest.
+
+Unit15 direct handoff: delivered H15-01/02 and commit e02c6a63a to active Rome chat `01a0f76f-dbbc-7f80-b4ec-802e5549522f` under the authorized analyst coordination workflow. Snapshot showed Rome04 pool475/480; message is for next review after that run, with no request to interrupt or launch another arm. Tool confirmed delivery; reply pending.
