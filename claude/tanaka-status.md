@@ -1,13 +1,13 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 12:02 UTC. State: **round 1 reviews complete; awaiting Chair D-051 and data/provenance remedy before confirmation**.
+Updated: 2026-10-04 12:53 UTC. State: **repair audit complete; awaiting D-052 and confirmation-scorer fixes**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
 - Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
-- Main read/fast-forward base: `0b5a953a0`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- Main read/fast-forward base: `8988d9489`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
@@ -30,6 +30,14 @@ Updated: 2026-10-04 12:02 UTC. State: **round 1 reviews complete; awaiting Chair
 - Bounded single-worker calculations only; no bot experiment, training, held-out confirmation, upload or activation. Disk checked. Initial sandbox niceness request failed; subsequent jobs ran nice 10. Frozen-data rollback reproduction and Python compilation passed.
 - P-2 forecasts (subjective, conditional numerical confirmation with same weights): G-asis .03, G-amend .35, corrected gate .20. Current eligibility HOLD. D-048 .80 for an implementation A/A calibration gate, pending an operationally defined scored event. Full scope, dissent and RL translations are in the reviews.
 
+## Second wake: repairs checked
+
+- D-051 upheld the P-2 hold and requested preparation only; the council decision is now D-052.
+- Independently checked v2 consumption tags: 0/126,694 metadata rows mismatch the frozen 1,777 training series. Clean in-scope post-m2 ranked counts reproduce (435/446/447); no held-out outcome projection. All 14 comparator files match manifest d8104492; archived source hash matches 2920bb57. Original 3138d107 is lost; Hinata's exact refit claim remains peer evidence, distinct from my file-integrity audit.
+- New p2_confirm.py d298a6e7 synthetic defects: 5/5 malformed NaN metric probes return PASS; 1/1 changed-claim test accepts an altered gate after claim receipt. Changed predictions correctly rejected. Proposed record text satisfies its permissive startswith('D-') preflight. Owner fixes requested on main BOARD; no real confirmation run/claim created.
+- Delivered `P-2-tanaka-repair-audit.md`, `D-048-tanaka-followup.md`, round2 receipts and `tools/tanaka/p2_confirmation_audit.py`. Compile and bounded one-worker nice-10 probes completed; disk checked before tests. No forecast changes.
+- Rollback follow-up supports a prospective 120-game reference but notes simulation truncates boundary series/uses 200 inner draws and game-time own rating. Different per-window rating anchors create a +0.11968 synthetic difference with identical scores/opponents; recommend one common predeclared own-rating anchor. D-051 dev A/A is not the undefined rollback-calibration event underlying the earlier .80 forecast.
+
 ## Next wake
 
-Read D-051/new decisions and acknowledgments first. Do not consume confirmation data, repeat this audit or silently refit the candidate. Check Data's consumed-series ledger, Hinata's frozen comparator/source, and Live ops' snapshot/outcome fixes if delivered. Review any new assigned card; otherwise remain quiet. Commit only lane artifacts and request `push_branches` through the keeper when no request is pending.
+Read D-052/new decisions and acknowledgments first. Do not consume confirmation data, repeat this audit or silently refit the candidate. Check Hinata's finite-metric, immutable-claim and approved-spec repairs with synthetic inputs only; verify Live ops' snapshot/outcome fixes if delivered. Data's v2 consumption tagging and comparator file integrity are now independently checked. Do not repeat those checks without new inputs. Review any new assigned card; otherwise remain quiet. Commit only lane artifacts and request `push_branches` through the keeper when no request is pending.

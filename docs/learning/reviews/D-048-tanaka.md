@@ -58,3 +58,5 @@ Dissent: I support changing the reference but reject calling the proposed first-
 - **Action:** restore the previously tested submission under the Chair's rule; no bot action or activation was made here.
 - **Value/reward:** official score remains the outcome; Elo residual is an operational normalization, not a new training reward.
 - **Demonstration:** no teacher behavior or replay mechanism is inferred from these monitoring statistics.
+
+Follow-up after D-051: [D-048-tanaka-followup.md](D-048-tanaka-followup.md); original forecasts and replication scope remain unchanged.
