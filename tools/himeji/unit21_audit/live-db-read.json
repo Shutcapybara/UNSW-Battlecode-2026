@@ -1,0 +1,19 @@
+{
+  "query_only": 1,
+  "immutable_checkpoint_only": true,
+  "wal_not_read": true,
+  "submissions": [
+    [
+      14265,
+      "LV-hb1-14-prior-r540-ed7e4515-ai",
+      "idle",
+      "2026-10-04T03:46:10.721781+00:00"
+    ],
+    [
+      14585,
+      "LV-carthage-05-free-sprint-ebeba55f-ai",
+      "active",
+      "2026-10-04T03:46:10.719793+00:00"
+    ]
+  ]
+}
