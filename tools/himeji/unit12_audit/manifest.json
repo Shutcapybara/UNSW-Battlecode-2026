@@ -1,0 +1,91 @@
+{
+  "at": "2026-10-03T23:23:29.753239+00:00",
+  "index_sha256": "43d6b876a97b36ed4b2f38f81e7a644915300e38057f73df9104bae90f18bdc7",
+  "index_games": 115442,
+  "latest_start": "2026-10-03T23:22:18.547Z",
+  "ladder": "20261003T231820Z.json",
+  "ladder_sha256": "acb0c399837d3243494bf0b4dba7058abffdbe44d2cf8188962a455a07f599a6",
+  "top10": [
+    {
+      "dev": false,
+      "elo": 2291,
+      "id": 306,
+      "name": "Vibing++",
+      "rank": 1,
+      "wins": 15915
+    },
+    {
+      "dev": false,
+      "elo": 2236,
+      "id": 91,
+      "name": "SSS",
+      "rank": 2,
+      "wins": 14673
+    },
+    {
+      "dev": false,
+      "elo": 2203,
+      "id": 264,
+      "name": "forgot to mention",
+      "rank": 3,
+      "wins": 15372
+    },
+    {
+      "dev": false,
+      "elo": 2191,
+      "id": 213,
+      "name": "Sponge(Albert and Bob)",
+      "rank": 4,
+      "wins": 18975
+    },
+    {
+      "dev": false,
+      "elo": 2171,
+      "id": 842,
+      "name": "horse",
+      "rank": 5,
+      "wins": 4217
+    },
+    {
+      "dev": false,
+      "elo": 2168,
+      "id": 952,
+      "name": "Cache me outside",
+      "rank": 6,
+      "wins": 7502
+    },
+    {
+      "dev": false,
+      "elo": 2168,
+      "id": 87,
+      "name": "WeHaveQuizzes",
+      "rank": 7,
+      "wins": 7372
+    },
+    {
+      "dev": false,
+      "elo": 2168,
+      "id": 82,
+      "name": "free trip to sydney pls",
+      "rank": 8,
+      "wins": 7200
+    },
+    {
+      "dev": false,
+      "elo": 2150,
+      "id": 55,
+      "name": "\ud80c\udfbc\ud80c\udced\ud80c\udd71\ud80c\udc8b\ud80c\uddcc \ud80c\udfcf\ud80c\udd71 \ud80c\udc8b\ud80c\udd3f",
+      "rank": 9,
+      "wins": 7748
+    },
+    {
+      "dev": false,
+      "elo": 2117,
+      "id": 566,
+      "name": "tungtung67",
+      "rank": 10,
+      "wins": 4876
+    }
+  ],
+  "collector_progress_at": "2026-10-03T23:21:26.326000+00:00"
+}

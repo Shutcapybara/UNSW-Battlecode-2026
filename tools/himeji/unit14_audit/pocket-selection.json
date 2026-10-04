@@ -1,0 +1,30 @@
+{
+  "cohort": [
+    992412,
+    994512,
+    996984,
+    997146,
+    997262,
+    997585,
+    997620,
+    997644,
+    997660,
+    997668,
+    997797,
+    997816,
+    997974,
+    998186,
+    998463,
+    998536,
+    998968
+  ],
+  "corrections": [
+    996205,
+    995614
+  ],
+  "rule": "Every Schooltime game in snapshot but absent from previous snapshot; outcome independent; both sides.",
+  "index_sha256": "c42aa8f42d9b38189461179989cfbefc32508869bb24d44cc959f3f485a9d717",
+  "previous_index_sha256": "f8bc8a15e7f001c5610f7c36556084375fd1f73d382e77942d3f6369ea2b873f",
+  "decoder_sha256": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+  "trigger": "Initial original queen length4 fills a 4-cell no-bed terrain component, all component cells degree2, zero empty adjacent cells."
+}

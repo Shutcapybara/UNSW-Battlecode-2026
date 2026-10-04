@@ -1,0 +1,24 @@
+--- a/tools/hub/corpus.py
++++ b/tools/hub/corpus.py
+@@ -149,7 +149,20 @@
+     # backfill: the team furthest below its target first; refresh: targets are floors, not caps — teams at target are
+     # re-checked for new games, least recently checked first, with a reserved share of the pass (D-024: continuous corpus)
+     backfill = sorted((t for t in progress.values() if t['have'] < t['target']), key=lambda t: (t['have'] / max(1, t['target']), t.get('rank', 10**6)))
+-    refresh = sorted((t for t in progress.values() if t['have'] >= t['target']), key=lambda t: (t.get('checked_at') or '', t.get('rank', 10**6)))
++    # Refresh is about freshness, not historical depth. Teams below a backfill
++    # target still need their newest page checked (otherwise new low-depth teams
++    # can indefinitely starve a leader just short of its target).
++    refresh_now = datetime.now(timezone.utc)
++    def refresh_key(t):
++        checked = t.get('checked_at')
++        try:
++            age = (refresh_now - datetime.fromisoformat(checked.replace('Z', '+00:00'))).total_seconds()
++        except (TypeError, ValueError, AttributeError):
++            age = float('inf')
++        rank = t.get('rank') or 10**6
++        stale_leader = rank <= int(c.get('refresh_priority_top_n', 10)) and age >= float(c.get('refresh_priority_seconds', 900))
++        return (not stale_leader, checked or '', rank)
++    refresh = sorted(progress.values(), key=refresh_key)
+     refresh = refresh[: int(c.get('refresh_teams_per_pass', 6))]
+     reserve = min(int(c.get('refresh_per_pass', 10)), cap) if refresh else 0
+     plan = [(t, 'refresh') for t in refresh] + [(t, 'backfill') for t in backfill]

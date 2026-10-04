@@ -1,0 +1,61 @@
+{
+  "game": 992701,
+  "sha256": "125405076a0c412a4c5febe48f5ab4c808d26ded05ce13fa07a617b891c0f19a",
+  "sides": [
+    {
+      "side": "A",
+      "queen": 1,
+      "body": [
+        [
+          46,
+          16
+        ],
+        [
+          45,
+          16
+        ],
+        [
+          44,
+          16
+        ]
+      ],
+      "component_size": 972,
+      "component_beds": 0,
+      "empty_adjacent": 3,
+      "initial_actions": [
+        {
+          "round": 0,
+          "kind": 0
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "queen": 0,
+      "body": [
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ]
+      ],
+      "component_size": 972,
+      "component_beds": 0,
+      "empty_adjacent": 3,
+      "initial_actions": [
+        {
+          "round": 0,
+          "kind": 0
+        }
+      ]
+    }
+  ],
+  "limitation": "Initial structural audit only; terminal queen41/winner from unit12 official evidence. No mechanism inferred from map name."
+}

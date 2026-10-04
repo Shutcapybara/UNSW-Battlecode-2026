@@ -1,0 +1,106 @@
+{
+  "game": 997644,
+  "sha256": "48ecb0186da884b2d2cb78ad0393e5952656147f3f2652b3f849b0aa0edbce9e",
+  "static_tiles": {
+    "(3, 1)": [
+      0,
+      0
+    ],
+    "(3, 2)": [
+      0,
+      0
+    ],
+    "(2, 1)": [
+      0,
+      0
+    ],
+    "(2, 2)": [
+      0,
+      0
+    ]
+  },
+  "spawns": [
+    {
+      "round": 0,
+      "cell": [
+        2,
+        2
+      ],
+      "origin": "A",
+      "donor": 6
+    },
+    {
+      "round": 267,
+      "cell": [
+        3,
+        1
+      ],
+      "origin": "bed",
+      "donor": null
+    },
+    {
+      "round": 268,
+      "cell": [
+        3,
+        1
+      ],
+      "origin": "A",
+      "donor": 0
+    },
+    {
+      "round": 268,
+      "cell": [
+        2,
+        2
+      ],
+      "origin": "A",
+      "donor": 0
+    }
+  ],
+  "countdowns": [],
+  "raw_event_context": [
+    [
+      {
+        "round": 266,
+        "kind": 4,
+        "value": 497
+      },
+      {
+        "round": 266,
+        "kind": 9,
+        "value": 497
+      },
+      {
+        "round": 266,
+        "kind": 1,
+        "value": 498
+      },
+      {
+        "round": 266,
+        "kind": 4,
+        "value": 498
+      },
+      {
+        "round": 266,
+        "kind": 9,
+        "value": 498
+      },
+      {
+        "round": 267,
+        "kind": 0,
+        "value": 267
+      },
+      {
+        "round": 267,
+        "kind": 3,
+        "value": 1,
+        "cell": [
+          3,
+          1
+        ],
+        "has_pearl": true
+      }
+    ]
+  ],
+  "limitation": "FRAME_VERSION7 assigns bed to non-adjacent-death pearl appearance by default. A bed label here is not evidence of a static bed or known spawning cause."
+}

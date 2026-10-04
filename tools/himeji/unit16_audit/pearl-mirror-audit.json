@@ -1,0 +1,141 @@
+{
+  "game": 997644,
+  "sha256": "48ecb0186da884b2d2cb78ad0393e5952656147f3f2652b3f849b0aa0edbce9e",
+  "map_metadata": [
+    "MAP 60 40",
+    "SYMMETRY y",
+    "MAP_NAME Schooltime",
+    "TILE_COUNT 2400",
+    "EDGE_COUNT 4800",
+    "DRAGON_COUNT 6",
+    "END"
+  ],
+  "mirror_tiles": {
+    "(3, 1)": [
+      0,
+      0
+    ],
+    "(56, 1)": [
+      0,
+      0
+    ],
+    "(3, 38)": [
+      0,
+      0
+    ],
+    "(56, 38)": [
+      0,
+      0
+    ]
+  },
+  "countdowns_total": 0,
+  "round267_countdowns": [],
+  "round267_spawns": [
+    {
+      "round": 267,
+      "cell": [
+        3,
+        1
+      ],
+      "origin": "bed",
+      "donor": null,
+      "static_tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "round": 267,
+      "cell": [
+        56,
+        1
+      ],
+      "origin": "bed",
+      "donor": null,
+      "static_tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "round": 267,
+      "cell": [
+        26,
+        22
+      ],
+      "origin": "bed",
+      "donor": null,
+      "static_tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "round": 267,
+      "cell": [
+        33,
+        22
+      ],
+      "origin": "bed",
+      "donor": null,
+      "static_tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "round": 267,
+      "cell": [
+        23,
+        38
+      ],
+      "origin": "A",
+      "donor": 424,
+      "static_tile": [
+        0,
+        0
+      ]
+    }
+  ],
+  "noncorpse_spawn_counts": {
+    "header_zero_gap_pair": 1758
+  },
+  "canonical_geometry_matches": false,
+  "canonical_pocket_tiles": {
+    "(2, 1)": [
+      0,
+      0
+    ],
+    "(2, 2)": [
+      0,
+      0
+    ],
+    "(3, 1)": [
+      20,
+      200
+    ],
+    "(3, 2)": [
+      0,
+      0
+    ],
+    "(56, 1)": [
+      20,
+      200
+    ],
+    "(56, 2)": [
+      0,
+      0
+    ],
+    "(57, 1)": [
+      0,
+      0
+    ],
+    "(57, 2)": [
+      0,
+      0
+    ]
+  },
+  "spawns_on_canonical_beds": {
+    "on_bed": 1758
+  }
+}

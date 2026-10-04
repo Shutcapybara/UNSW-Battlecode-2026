@@ -1,0 +1,8 @@
+{
+  "/Users/alik/Documents/Projects/wt-rome/docs/analysis/benchmarks/map_reference_medians.json": "c4eb5ad24c82bdfbe5ea6e4ed560fede82608cdeb025acd4e1acf621261f1cae",
+  "/Users/alik/Documents/Projects/wt-rome/build/zoo/z1-rome-02-far-contact-61fb6691/features/features.parquet": "3cc3519bcf3851be385d20d7f2e5b66415a32fd768bd816cdc0fd3b3d2c5a7f9",
+  "/Users/alik/Documents/Projects/wt-rome/build/zoo/z1-rome-01-nodevil-28132ee5/features/features.parquet": "1dbfc68f22edf09fcb1030e60c58a1c794cd32cefd4a99143b2218677d319dd1",
+  "/Users/alik/Documents/Projects/wt-rome/tools/ra/gen_reference.json": "5005b36ac104c124a91b0c49b8e583e22e18fa4353f93dafc8502b291864a5b1",
+  "/Users/alik/Documents/Projects/wt-rome/build/zoo/gen-rome-02-far-contact-61fb6691/features/features.parquet": "309818c605a1adccffe1ec73da7289e4f9f713a6d983b2fdb6a7b45b84dbbb50",
+  "/Users/alik/Documents/Projects/wt-rome/build/zoo/gen-rome-01-nodevil-28132ee5/features/features.parquet": "33be23e9d4e124d1f6d9e86660a2828c895a4a26b057d8eaa96456c6a04de354"
+}

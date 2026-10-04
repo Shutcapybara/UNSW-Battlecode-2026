@@ -1,0 +1,95 @@
+{
+  "method": "Portals selected after reported loss. Fixed matched fixture expected-score deltas; 5000 opponent-seat block bootstrap draws preserving 3 seeds, central95%, seed115. Descriptive diagnostics only, not heldout confirmation or field targets.",
+  "panels": [
+    {
+      "panel": "z1",
+      "paired_games": 48,
+      "blocks": 16,
+      "arms": [
+        {
+          "bot": "rome-01-nodevil",
+          "games": 48,
+          "triggered": 47,
+          "live_queen_first_trigger": 0,
+          "dead_queen_first_trigger": 47,
+          "never_triggered": 1,
+          "eligible_actions": 5874,
+          "dead_queen_eligible_actions": 5874,
+          "score_points": 30.5,
+          "queen490_alive": 0,
+          "reached490": 48,
+          "final_longest_mean": 28.041666666666668
+        },
+        {
+          "bot": "rome-03-queen-state-convert",
+          "games": 48,
+          "triggered": 47,
+          "live_queen_first_trigger": 0,
+          "dead_queen_first_trigger": 47,
+          "never_triggered": 1,
+          "eligible_actions": 8579,
+          "dead_queen_eligible_actions": 8579,
+          "score_points": 20,
+          "queen490_alive": 0,
+          "reached490": 48,
+          "final_longest_mean": 21.291666666666668
+        }
+      ],
+      "trigger_mismatches": [],
+      "d_score": -0.21875,
+      "d_score_ci95_opponent_seat": [
+        -0.38541666666666663,
+        -0.08333333333333333
+      ],
+      "parent_dead_queen_trigger_pairs": 47,
+      "dead_queen_pairs_d_score": -0.22340425531914893,
+      "queen_alive_at_first_trigger_pairs": 0,
+      "index_winner_disagreements": 0
+    },
+    {
+      "panel": "gen",
+      "paired_games": 48,
+      "blocks": 16,
+      "arms": [
+        {
+          "bot": "rome-01-nodevil",
+          "games": 48,
+          "triggered": 48,
+          "live_queen_first_trigger": 0,
+          "dead_queen_first_trigger": 48,
+          "never_triggered": 0,
+          "eligible_actions": 4962,
+          "dead_queen_eligible_actions": 4962,
+          "score_points": 34,
+          "queen490_alive": 0,
+          "reached490": 48,
+          "final_longest_mean": 27.916666666666668
+        },
+        {
+          "bot": "rome-03-queen-state-convert",
+          "games": 48,
+          "triggered": 48,
+          "live_queen_first_trigger": 0,
+          "dead_queen_first_trigger": 48,
+          "never_triggered": 0,
+          "eligible_actions": 7789,
+          "dead_queen_eligible_actions": 7789,
+          "score_points": 21,
+          "queen490_alive": 0,
+          "reached490": 48,
+          "final_longest_mean": 20.708333333333332
+        }
+      ],
+      "trigger_mismatches": [],
+      "d_score": -0.2708333333333333,
+      "d_score_ci95_opponent_seat": [
+        -0.4375,
+        -0.10416666666666667
+      ],
+      "parent_dead_queen_trigger_pairs": 48,
+      "dead_queen_pairs_d_score": -0.2708333333333333,
+      "queen_alive_at_first_trigger_pairs": 0,
+      "index_winner_disagreements": 0
+    }
+  ]
+}

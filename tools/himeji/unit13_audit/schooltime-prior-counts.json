@@ -1,0 +1,30 @@
+[
+  {
+    "submission": "14265",
+    "ranked": true,
+    "games": 14,
+    "series": 14,
+    "round0self": 1
+  },
+  {
+    "submission": "14265",
+    "ranked": false,
+    "games": 39,
+    "series": 39,
+    "round0self": 1
+  },
+  {
+    "submission": "14585",
+    "ranked": true,
+    "games": 4,
+    "series": 4,
+    "round0self": 4
+  },
+  {
+    "submission": "14585",
+    "ranked": false,
+    "games": 14,
+    "series": 14,
+    "round0self": 14
+  }
+]

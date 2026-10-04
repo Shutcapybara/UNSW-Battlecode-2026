@@ -1,0 +1,23 @@
+{
+  "submissions": [
+    {
+      "id": 14265,
+      "name": "LV-hb1-14-prior-r540-ed7e4515-ai",
+      "status": "idle",
+      "created_at": "2026-10-01T17:09:20.751920+00:00",
+      "last_seen": "2026-10-03T23:18:19.897039+00:00"
+    },
+    {
+      "id": 14585,
+      "name": "LV-carthage-05-free-sprint-ebeba55f-ai",
+      "status": "active",
+      "created_at": "2026-10-02T04:31:39.428410+00:00",
+      "last_seen": "2026-10-03T23:18:19.881652+00:00"
+    }
+  ],
+  "latest_games": [],
+  "counts": [],
+  "games_table_rows": 1280,
+  "series_table_rows": 1131,
+  "ranked_exposure_rows": 20
+}

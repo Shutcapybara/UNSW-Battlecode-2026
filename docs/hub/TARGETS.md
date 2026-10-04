@@ -309,3 +309,109 @@ correct). Note: h2h length is not armor (victim longer 857 / shorter 496) — q_
 queen-vs-queen duels, both rising as protectors appear.
 
 
+
+
+### Unit 10 reorientation — 2026-10-03 22:38 UTC
+
+Old per-map references remain frozen/provisional. Current map pool17API names (18decoderlabels) and currenttop10
+306/91/264/213/952/842/552/87/82/566 require new matched references. The fresh coverage sample is119games,
+123top10sides; terminal rankedRLqueen survival25/53,95%whole-seriesCI[32.3,63.1]%,27series. Unranked9/21,
+5series. These observations are not field-percentile targets or r490 estimates. Solequeenwins19/19ranked.
+Query `tools/himeji/recent_endgames.py` + `summarize_endgames.py`, post123; population/counts/uncertainty and
+sampling caveats in `docs/findings/2026-10-04-himeji-resumed-live-data-and-top-team-regimes.md`. No matched live-us gap inferred; current24hcorpus has0rankedus.
+H-H2 proposes repeated hidden behavioral regimes;40independentmatchedseries perregime for a30ppbinaryeffect
+(approximate5%two-sided/80%power), held-out repetition and alternatives required; no evidence of deceptiveintent
+from155unidentified top10side-games with0matched mode strata. H-H1 remains0.5.
+
+
+### Unit 11 measurement correction — 2026-10-03 23:08 UTC
+
+No new stable field-percentile target. Frozen references and other analysts' proposed targets remain intact.
+Nara's exact737 own-game sample has398 officialRL,72 queen-decided outcomes (70losses/2wins), terminal own queen2/398.
+By submission/mode:14265 ranked1/74,unranked1/175;14585 ranked0/40,unranked0/109. These are terminal sample counts,
+not r490 estimates or matched field gaps. Current ranked maps include17names. Query/provenance/counts and both
+material-lead denominators are in `docs/findings/2026-10-04-himeji-live-queen-audit-and-growth.md`; frozen official rows `tools/himeji/unit11_audit/audit/`.
+Disagreement retained: Nara N6 weight increase is not causally supported by #1rank with unknown build identity.
+Its log-units guard requires zero/reach/statistic specification and rescore of02/03 before adoption; normalized−.146
+cannot be compared directly to log−.10. D-042 and H-H1 weight0.5 unchanged; ask testers for the existing-data rescore.
+Four selected ranked long queens show moving queens and late corpse growth, not population percentiles/feeding intent.
+Current331-game coverage sample remains descriptive; matched live-us gapsNA; local panels and unranked remain separate.
+
+
+### Unit12 ruling and live coverage — 2026-10-03 23:36 UTC
+
+L10 estimator ruling: retain the predeclared mean-of-checkpoint-medians econ~; arithmetic mean stays diagnostic.
+Independent paired480/1392 read gives0/−.00418; neither panel positive under map/opponent/seat or seed/map90%intervals.
+PoolwinLB fails+2pp borderline rule. HOLD/unstacked regardless of proposed units-guard relaxation; D-042 doesnot
+reclassify L10 automatically. Keep Nara's proposed logguard alongside Himeji's unresolved zero/reach/weighting objections.
+Queries, sourcehashes and bothclusteringintervals: `docs/findings/2026-10-04-himeji-live-coverage-and-L10-ruling.md`.
+Tennewrankedown14585games(2series) correct the19h-silence claim:3wins,7actualr490reached/0queenalive,3queenlosses;
+2/6RLlosses withtotallead and2/2leads lost, measuredseparatelyatr490/end. Schooltime249–6materialloss followsqueen
+selfdeathr0. These are descriptivecasecounts, notpercentiletargets; no livepopulationCI with2series, matchedtop10-usNA.
+Map/cohort/source/era/checkpoint fields are frozen in unit12_audit. Currenttop10adds55/drops552; oldanchorsunchanged.
+H-H1weight0.5 andH-H2unresolved; requestqueenalive-at-trigger/never-triggered diagnostics forRomeL39/L49.
+
+
+### Unit13 hypotheses — 2026-10-04 00:08 UTC
+
+User directed hypothesis generation tolead thiscycle; no newstablefieldpercentiletarget.
+H-H3 proposedL24/L49,weight0.5: freeonecellinfullqueen spawncycle via legal2+2split/childremoval, retainoriginalhead
+andlength3patrol.21Schooltime r0selfcases(6ranked/15unranked) all0emptyadjacentsteps;20opponentsfirstsplit,
+18/20aliveactual490. Observationalcasecohort; no causalCI. Fouropencontrolsdifferingeometry preventversioncausality.
+H-H4 refinesH-H1/L39/L49,weight0.5unchanged: earlyproduction thenstate-triggeredqueengrowth; all12collectedranked
+306/91 Maze/Slitheryqueens splitbefore100,7/11reaching490survive,1earlyelimcensored. Do not imposeuniversalqueenlength.
+Fullmechanisms,ledgerlinks,falsifiers,negativecontrols,exposuredefinitions andsamplesizes: `docs/findings/2026-10-04-himeji-pocket-survival-and-phased-growth-hypotheses.md`.
+TesterRome alreadyhasL39/L49queued; H-H3fornextfreeassignedtest. Legalchecks then60independentexposedpairs;
+10pp pairedbinaryplanning149/306/463 atdiscordance.2/.4/.6 beforeclusterinflation. No acceptanceexemption.
+Disagreementpreserved: Nara's logguard cannot be scored fromnormalizedmedianbounds; twoobservedownsubmissions
+invalidateitsall14265windowclaim. CurrentfieldgapsremainNA; historicalreferences/peerproposalsunchanged.
+
+### Himeji unit14 — held-out pocket evidence, 4 October00:37UTC
+
+H-H3(L24/L49,.5) now includes repeated space/legality after food:33/34fresh Schooltime sides firstsplit and
+all33survive25;29survive490. Ranked23/26 [series95%76.9–100],unranked6/8 [25–100];17games/17series,4hashes,
+allreach490,post123. This is a collection-snapshot holdout with repeated geometry, **not a stable percentile target**.
+Only2currenttop10sides/no live-us; matchedgapsNA. Query/selection/counts/uncertainty and≥60eligible-pair testcard:
+`docs/findings/2026-10-04-himeji-pocket-holdout-and-late-food.md`, `tools/himeji/pocket_holdout.py`,
+`pocket_summary.py` and `unit14_audit/`. Fourlate failures/3games:food3→4thenwall;unitlimit legality unresolved.
+H-H4 feeding remains separate from sealed-pocket occupancy; no extra tester queue or weight increase.
+
+Retain other analysts' historical targets and disagreement: Nara's737is mixed501/236submissions,2/398notzero;
+3/4cited livequeenlosses have terminallead,not4/4. Source FRAME7 bed-label fallback is unverified for pearl
+appearances on static TILE(0,0); preserve originunknown before updatedQ3bed percentiles. No frozen reference changed.
+
+### Himeji unit15 — dead-queen conversion reading,4October01:08UTC
+
+H-H5proposedL39/L49,.5: retain normalcrown fallback absentfreshqueenevidence; Rome03REJECTstands. LocalPortals
+96pairedfixtures/192replays:95triggerwithqueendead,0livingqueeneligibleturns;pairedscore−21.875pppool
+[95%−38.542,−8.333],−27.083gen[−43.750,−10.417],16opponent-seatblocks/panel. Postselecteddiagnostic,
+notfieldtarget ordirectfeedingtest. Query/exposure/testsize/falsifier: `docs/findings/2026-10-04-himeji-dead-queen-conversion-reading.md`,
+`tools/himeji/rome_trigger_audit.py`, `summarize_rome_trigger.py`, and `unit15_audit/`. H-H1/H-H3/H-H4weights unchanged.
+Freshlive14585vs801one rankedseries1–4;queen0/4actual490,1earlyelimcensored;materialleadloss/RLloss3/4 and
+lost/RLlead3/3 at490/end. One series/no stableCI; matchedtop10-us gapsNA. Modes/localpopulations separate.
+Nara'scorrectionsacknowledged;retainstructuraldisagreement:992701queenlen3/972cellcomponent/MOVEr0isnot4cell
+splitpatrol. Unit14's17games/4hashesdo notclosecausality orjustifyuniversal20+/3lengthtargets. Historicalreferencespreserved.
+
+
+### Himeji unit16 — measurement correction and cap mechanics, 4October01:40UTC
+
+Correct H13/H14's no-bed/non-static-bed inference:10public headers zero all fertility pairs;4local headers retain
+fertility.997644's1758fallbackspawns align authored bedcoordinates, but livegeometry differs. No new spawnmechanism
+or FRAME7error established. Historical reports preserved; H-H3 requires topology/occupancy, not bedabsence.
+Eight isolated1.2.3 mechanics fixtures: splitlegal at63,invalid64; full4-cellqueen allfirststeps collide;
+length3safe2steps spend1segment. H-H3 proposedL24/L49 .5: test observable prevention beforegrowth atcap.
+>=60independentlate-exposedpairs+controls,win/economyguards; not a universal length2 target or stable fieldpercentile.
+Query/era/selection/counts/limits/falsifier/tester: `docs/findings/2026-10-04-himeji-pocket-cap-legality-and-fertility-correction.md`, tools/himeji/unit16_audit/.
+Currenttop10adds507/drops82. Store533games/1066sides includes538currenttop10/12own but ends3Oct23:11Z,
+coverage-selected330ranked203unranked. No new stable references or matchedlive-us gaps; H-H4/H-H5 separate.
+
+
+### Himeji unit17 — intervention timing and pocket precursor,4October02:08UTC
+
+Rome04 latecrown tie handoff cannotactbefore250; r150queenparity95/423pool244/994gen cannotfalsifyH-H1.
+480/1392localpairs,score−1.354pp[95%−3.125,+.417]/0[−.503,+.503];source/exposuremismatch keepsH-H1.5.
+No fieldtarget. H-H3 .5 refined:food-free2step prevention beforegrowth; mealonfirststep→full4→secondstepselfdeath
+in1.2.3fixture.4selectedlivefailures/3games(2ranked1unranked),2enginecases establishmechanics only;
+>=60independenteligiblepairs+negativecontrols/winguards. Exactquery/counts/era/falsifier/tester `docs/findings/2026-10-04-himeji-rome04-timing-and-pocket-precursors.md`.
+NaraL47disagreement:parent+immediatechild excludesdescendants,truncated10rhorizon/mixedmodes preventcausalregret
+reading. Retainpeerproposal;requestcorrecteddenominators beforetest. No newstablepercentiles/matchedlive-us gaps.

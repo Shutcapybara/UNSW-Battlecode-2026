@@ -1,6 +1,230 @@
 # Himeji — P2-A GPT analyst
 
-Branch `r/himeji`; worktree `../wt-himeji`; Mac. Reads corpus/store; Antioch owns collection and S-1. No bot changes.
+Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
+
+## Unit17 — 2026-10-04 02:08 UTC; Rome04 timing and H-H3 precursor unit complete
+
+- Rome04 source change cannot activate before250: r150 endpoint is pre-treatment, cannot falsify H-H1.
+  Crown-wide tie handoff targets a newchild, not increased originalqueen head allocation. H17-01/02; .5 retained.
+  Independent480/1392pairs reproduce−1.354pppool [95%−3.125,+.417],0gen [−.503,+.503];95/423 and244/994queen
+  alive150 identical,0earlymetric mismatches.32official-header spotchecks pass,notcensus. Pool19/gen10scores differ.
+  Sent tuple-unpackfix and timing issue toactiveRome; Romeacknowledged,post250diagnosis underway. No duplicatepanel.
+- Fourselectedlatefailures/3games(2ranked1unranked):safe2steproute beforegrowth for4/4;3capfailureshaveearlier64unit
+  safe opportunity. On growthturn onlyemptycell haspearl. Twoisolated1.2.3fixedchecks:emptyroute3→2legal;
+  firststepmeal3→4 thenstep2selfdeath/0charge. H-H3requiresfood-free prevention,notreactivesprint. No winclaim.
+- Nara a67b1aef7/f8ae877e4concessionsaccepted; newL47readingH17-05 asksdescendants+complete10rhorizon+mode/series:
+  split_probe counts onlyparent/immediatechild and truncatesatend. Notcounterfactualrestraintopportunity.
+- Sourcecursor main0298966ec/D-042,Antioch2c7113f66,Carthage5b69fa9d0,Kyotofccea71c0,Rome91544f017pluslocal04
+  fingerprint8304fb79;Nara f8ae877e4through02:02. Protocol/targets/5statuses/boardread. Romechatcursor
+  b99b513f-fdd3-41ba-b646-7855a1a8bbde:5. PriorHimejie02853af6; ownboardH17-01..06. Sourcehashes unit17_audit.
+- Rawfreeze117879at01:53:15Z/latest01:51:48Z,+468/0own,indexSHA9bc714b0eb0fc77e53ca7d616c29745d633d6d6f2db8d51d84ccecdf2a9f45ab.
+  Ladder014638ZSHAc06b42b5050c67a1adeb7dca34baad5fbdbf58657ef1773d13f586ab09dcb130;
+  top264/91/306/213/566/952/55/842/87/507; era>=1Oct06:00post123,modes/local separate.
+  Collector35400healthy40/pass0errors,DBro14585active14265idlelastseen01:46:37Z. Coverage requests stillpending.
+- Ownstore663games/1326sides,130new0errors162s,459ranked204unranked,all1326official-indexwinneragreements;
+  latest4Oct01:45:11Z,18labels,680currenttop10sides/21own.399pendingselectedgames; resumeSAMEunit17snapshot
+  withresume_store.py --jobs1 --seconds160. No activeworker; oldstore/norms/main untouched. Fullheaderattemptstopped,
+  bounded32spotcheckreplaced; no uncompleted auditreported. H-H1/H-H3/H-H4/H-H5 .5,H-H2unresolved;matchedgapsNA.
+- NextreadRomepost250identity/exposurediagnosis,thenresume399queue/freshrankedclusterreferences. No newbotarm,
+  pausedlane restart orAPIcalls. AutomationACTIVE. Finding `docs/findings/2026-10-04-himeji-rome04-timing-and-pocket-precursors.md`. Scopedcommit/push.
+
+## Unit16 — 2026-10-04 01:40 UTC; cap legality and fertility correction complete
+
+- H16-01 corrects own H13/H14: ten public headers have all fertility pairs zero; four local headers retain beds.
+  Withdraw no-bed/non-static-bed inference.997644 has0countdowns globally;1758/1758 fallback spawns match authored
+  bed coordinates, but terrain differs, so no substitution of live fertility/timers or new spawn-mechanism claim.
+- Four late-death TurnStart owncounts64/64/64/62 confirmed. Eight isolated unswbc1.2.3 scripted checks:
+  splitlegal63/invalid64, fourdirections+WNdie atfull4, safeWN atlength3 spends1segment. Mechanical only/no botrun.
+  H-H3 L24/L49 .5 now tests observable prevention beforegrowth atcap;>=60independentexposedpairs+controls,
+  win/economy guards; no universalqueenlength2 target. H-H4/H-H5 separate, H-H2switching unresolved.
+- Sources main0298966ec/D-042,Antioch2c7113f66,Carthage5b69fa9d0,Kyotofccea71c0,Rome91544f017,Nara5e84e7d89.
+  Protocol/targets/all5statuses/newboard inspected; no newcomplete testerresult.Rome04gen330/1392 atwake,
+  chatcursor b99b513f-fdd3-41ba-b646-7855a1a8bbde:2; H15-01/02 replypending. PriorHimejiccb43b3f1.
+- Corpus117411at01:23:26Z/latest01:19:09Z,+413/0own,indexSHA89435bf90f2fe810c6092e37d528c814545826e637e5962383539ccfea407470.
+  Ladder011517Z SHA c2d1b9f605b2ea1c91dc2ff6a11e721039cdcbbbb535276f8dd70ef4f2a6d096;
+  top264/306/91/213/87/55/566/952/842/507;507in82out. Era>=1Oct06:00post123; modes/local separate.
+  Collector35400healthy40/32/34pass0errors; DBro14585active14265idlelastseen01:15:16Z. Coverage requests pending.
+- Finished frozenunit12queue110new0errors/412s in3one-workerpasses; store533games/1066sides330ranked203unranked,
+  1066official-indexwinneragreements,18maplabels,latest3Oct23:11:43Z. Metadata115442/frozenunit12, notunit16census;
+  currenttop10sides538/own12. No activeworker; legacyS1/norms unchanged. Fullcoverage+source/runtimehashes unit16_audit.
+- BoardH16-01..05; findings docs/findings/2026-10-04-himeji-pocket-cap-legality-and-fertility-correction.md.
+  NextreadRome04ifcomplete,otherwisefreshimmutable rankedselection/H-H3precursorobservability. Do notrerunheaderaudit.
+  H-H1/H-H3/H-H4/H-H5 remain.5; matchedgapsNA. No bot/API/collector deployment/pausedlane restart/mainmerge.
+  Half-hour automation ACTIVE; scopedcommit/push. PendingH11-05/H12-05collection,H15-02fallbacktest,peerreplies.
+
+## Unit15 — 2026-10-04 01:08 UTC; Rome03 reading and H-H5 complete
+
+- Rome91544f017 REJECT agreed: overallscore−2.40pppool/−.79ppgen,genwall+15.9%. Independent192savedPortals
+  replay audit:96pairs,95triggered;queen alreadydead at firsttrigger in95/95,0alive at ANY eligible turn.
+  Firsttrigger records identical96/96pairs. Pairedscore−21.875pppool [95%−38.542,−8.333],−27.083gen
+  [−43.750,−10.417],16opponent-seatblocks/panel;postselecteddiagnostic. Longest28.04→21.29/27.92→20.71.
+- H-H5proposedL39/L49 .5: preserve normalcrown fallback absentfreshqueen evidence. Source03suppresses nonqueen
+  crowns evenqueendead. Explanationplausible/notcausalproof;0livingqueen exposureonthisslice cannotfalsifyfeeding.
+  Test inactive-behaviorparity thenone-switchguard vs03+01;existing480/1392panels,actualexposures/clusterCI.
+  TesterRomeaftercurrent04orassignedfree;noarmrunhere. H-H3/H-H4/H-H1remain.5;H-H2unresolved.
+- Newlive14585rankedseriesvs801 at00:18Z:1–4;4queenlosses,0/4aliveactual490;1earlyelimcensored.
+  Threeleadlosses:999614314–114,999613166–125,999610243–3;99961257–63notlead. At490/end,
+  leadloss/RLloss3/4 andlost/RLlead3/3.5officialwinners/10terminalqueenchecks pass;one series/no stableCI.
+- Nara7b8cebb26→5e84e7d89correctionsacceptedH15-04/05: mixed737,unitscale,3/4lead,rare-notzero closed.
+  Autarky992701isNOT4cell rescue:bothqueenlen3,3emptyadjacent,972cellcomponent,MOVEr0. Do notconflatewithSchooltime.
+  H14holdoutnotfield-scaleclosure:33split→33alive25/29alive490;4hashes,latefailures. No universal20+/cap3target.
+- Sourcecursor main0298966ec/D-042,Antioch2c7113f66,Carthage5b69fa9d0,Kyotofccea71c0,Rome91544f017,
+  Nara5e84e7d89through01:00. Protocol/targets/all5statusesread. BoardH15-01..07;priorHimeji8c92efdd2.
+  Sourcehashes/cache/replayhashes+pairedrows tools/himeji/unit15_audit/.No mainmerge/deployment/botchanges.
+- Corpus116998at00:53:37Z/latest00:50:09Z,+855including5own; indexSHA17448ead5a79b58b09d99ee69532a59d9b187c606f6a8248bf96707028641dfd.
+  Ladder004328Z SHA49e68c499db3b14279e98bd166899b5fedbcd4f30de0a13b6a86235556920362;
+  top306/91/264/213/55/87/842/82/952/566. Liveera≥1Oct06:00post123;local1.2.3separate.
+  DBrohealthy14585active00:53:53Z;collector35400healthy40/pass0errors;H11-05/H12-05coveragepending.
+- H15-01/02directhandoff deliveredtoactiveRomechat afterpublish e02c6a63a;04pool475/480snapshot,replypending.
+- Store423/846unchanged/latest3Oct23:11:43Z,110unit12queuepending.NoactiveHimejiworkers;1replayworker/301s.
+  Newtesterresultprioritydeferredpearlprovenance/caplegality/broadstorebuild. NextreadRome04whencomplete,
+  assignedH-H5repaircheck, thenpearlorigin+savedstorequeue. AutomationACTIVEhalf-hour. Findings:
+  `docs/findings/2026-10-04-himeji-dead-queen-conversion-reading.md`.
+
+## Unit14 — 2026-10-04 00:37 UTC; held-out H-H3 refinement complete
+
+- H-H3 fresh-collection holdout:17Schooltime games/17series/34sides (13ranked,4unranked),4map hashes.
+  All34structurally eligible;33firstsplit and33alive25,29alive490. Ranked23/26alive490 (series95%76.9–100),
+  unranked6/8 (25–100); all reach490. No live-us /only2currenttop10sides; no field target/gap filled.
+- Four late deaths/3games: new pearl→length4→next-turn wall;3at64own units,1at62 (round-start only).
+  One prior recovery by resplit at61units; another survivor paid1segment sprint and ended2. H-H3weight.5 unchanged,
+  now requires repeated space/legality checks. No blanket repeated-split recommendation at cap; tester legal checks pending.
+- Raw997644 late pearl appears after RoundStart on static TILE(0,0),no countdown. FRAME7defaults non-death spawn
+  to bed: origin unresolved/non-static-bed, not proof of bed income. Next measurement priority: provenance audit
+  before newQ3refs; legacy decoder/norms/store untouched. H-H4feeding mustnot fill sealed queen's last spare cell.
+- Nara53861abb2 repliesH14-04: cited4queenlosses have3terminalleads;154–155notlead (r490146–148).737headersstill
+  501/236mixedversions;852606observes14585on2Oct,notverifiedactivationtimestamp.2/398rare notzero. L10HOLD agreed.
+  Rome6f1ec3527no newcomplete result; ongoing16-worker extraction; no duplicate experiment/direct wake.
+- Sourcesmain0298966ec/D-042,Antioch2c7113f66,Carthage5b69fa9d0,Kyotofccea71c0,Rome6f1ec3527,Nara53861abb2.
+  All5status/protocol/targets/boards read. BoardH14-01..06. PriorHimejib97bbfef1. No main merge/deployment.
+- Corpus116143at00:23:48Z/latest00:20:26Z;338new/0own, indexSHAc42aa8f42d9b38189461179989cfbefc32508869bb24d44cc959f3f485a9d717.
+  Ladder002228Z SHA2c736c7d5f2b409d54c2044407067db9358ff307ab46e3372cc98f932e44cdbb;
+  top264/306/91/213/55/842/87/952/82/566. Era≥1Oct06:00post123; modes separate.
+  DBread-onlygood14585active00:22:27Z; solecollector35400healthy19–30/pass0errors. H11-05/H12-05requests pending.
+- Storeunchanged423/846/latest3Oct23:11:43Z;110unit12queue remains, noactiveHimejiworker. Onequeryworkeronly.
+ 19distinctreplays/19officialwinner/38queenheaderbodymatches; query scripts+audit+finding published.
+  No simulator/bots/APIcalls. NextRomeexposure-aware reading, pearl provenance/caplegality, then heldouttrigger
+  specificity; broaderdecode onlywhenMaccapacitypermits. H-H1/H-H4.5,H-H2unresolved. Half-hourautomationACTIVE.
+  Finding `docs/findings/2026-10-04-himeji-pocket-holdout-and-late-food.md`.
+
+## Unit13 — 2026-10-04 00:08 UTC; hypothesis unit complete
+
+- Usersteering: hypothesisgeneration mustlead, collectioncheckbrief. Published H-H3 andH-H4 testcards withledgerlinks,
+  falsifiers,matchedcontrols,samplejustification,testerassignment. No bots/experiments/simulations orAPIcalls.
+- H-H3 proposedL24/L49 weight.5: full4-cellspawnqueen can2+2split, shedchild, retainlength3 patrol.21Schooltime
+  r0selfdeathcasesall0emptyneighborsteps;20opponentsfirstsplit,18/20surviveactual490.Exacttrace995611queen1,
+  child6selfdies0,queen eats1corpsepearlatr1;4-cellterraincomponent/nobeds. Earlygenericmovevetoidea withdrawnforcases.
+- Prior737Schooltime14265 r0self2/53 vs1458518/18 isgeometry/timeconfounded. Four14265nonfatalcontrols allhave2empty
+  neighbors; no14585nonfatalSchooltimecontrol. Casecounts6ranked/15unranked inclnew995611. No causalversionclaim.
+- H-H4 refinementH-H1/L39/L49 .5: produceearlygrowlater. All12ranked306/91Maze/Slithery gamesin3Octwindow splitqueen
+  before100;11reach490/7alive;1earlyeliminationcensored. Failureskept. Romealreadyqueuedarm; logpre-triggerexposure,
+  don'tduplicateexperiment. Atleast60independenteligiblepairs for~20pp effect; overall10pp149/306/463 atd.2/.4/.6.
+-38distinctreplayeventaudits,allofficialwinnersmatch and76terminalqueenfield/bodycomparisonsmatch. Onequeryworker,
+  allfinished. Evidence tools/himeji/unit13_audit/,report `docs/findings/2026-10-04-himeji-pocket-survival-and-phased-growth-hypotheses.md`.
+- Nara5242954ac new23:35boardread/repliedH13-04/05: observed737headers501of14265+236of14585; cannotcallall14265.
+  Normalizedmedianboundsnotlogbounds;H12L10rulingstands. Rome6f1ec3527unchanged/no newcomplete result.
+  NaraownsSeoulL47opportunityanalysis; do notduplicate. Otherpeerstatusunchangedread, mainprotocol/targetsread.
+- Sourcecursor main0298966ec/D-042; Antioch2c7113f66; Carthage5b69fa9d0; Kyoto fccea71c0; Rome6f1ec3527;
+  Nara5242954ac; boardH13-01..06. Sourcebranchseparate/no rejectedmerge retry. No directanalystchatroute/peerwake.
+- Corpusfreeze23:53:25Z115805/latest23:49:36Z,indexSHAf8bc8a15e7f001c5610f7c36556084375fd1f73d382e77942d3f6369ea2b873f;
+  ladder235044Z SHA0760e383eece7050a1b10649b037f13b56a1d8f8236b85e5df5f5017f22a246b,
+  top306/91/264/213/87/842/952/55/82/566. Era≥1Oct06:00post123; modeskeptseparate.
+  DBread-onlygood14585active23:50Z; solecollector35400healthy32–40/pass0errors. H11-05/H12-05collectionrequestspending.
+- Storeunchanged423games/846sides/latest23:11:43Z,110unit12gamescheckpointed/noactiveworker. Broaderdecode deferred
+  deliberatelyforuserhypothesispriority. Next: H-H3held-outstructuraltriggercases/testerlegalcheck; Romeexposure-aware
+  reading. Resumeunit12queuewhencapacitypermits; do not letmaintenance displacehypothesisoutput. H-H2unresolved.
+  AutomationACTIVEhalf-hourly. Commit/pushscopedr/himeji; priorhypotheses/targets/verdictspreserved.
+
+## Unit12 — 2026-10-03 23:36 UTC; complete, decode queue checkpointed
+
+- RomeL10 reading/rulingH12-01/02: originalad611b51c lane definesmedian-checkpoint econ~. Independent480/1392
+  pairedread reproduces0/−.00418; neitherpanelpositive under twoclusterings. HOLD/unstacked independentofguard
+  redesign; arithmeticmean diagnostic. Parent/candidate officialWLD reproduce. No botexperiment/re-extraction.
+- Nara7105552fe23:00watch correctedH12-03:10newrankedown14585games at21:56/22:57Z,3–7 across2series.
+  Registry14585=LV-carthage-05-free-sprint-ebeba55f-ai active;14265idle. Corpus747post/208ranked/539unranked.
+  20queenheader/bodychecks and10officialwinnerchecks pass;7actualr490reached,0queenalive.3queenlosses.
+- Schooltime995611 queenID0sideB selfdiesr0 onnorthmove; finaltotal249–6 losesqueen0–3. Autarky992701queenID1sideA
+  diesallyh2h319, losesqueen0–41 despite81–50total. H12-04 asksRomeL39/L49 queenalive-at-trigger/no-trigger counts.
+  RLleadloss2/6losses or2/2leads atboth490/end;2seriesdescriptiveonly, matchedfieldgapsNA.
+- SQLite read-onlyconnection succeededwithanalysisruntime aftersystemPythonopenfailure. games1280rows but0forown
+ 14265/14585; notcorpusmirror. Collectorwatch_list removesownteam; freshgamesviaopponents1097/776. H12-05requests
+  owncoverage review withH11-05patch;264/91checks~32hstale,patchundeployed. Solecollector35400healthy,19–40/pass0errors.
+- Sourcecursor main0298966ec/D-042; Antioch2c7113f66; Carthage5b69fa9d0; Kyoto fccea71c0 unchanged;
+  Rome6f1ec3527 newL10andL39/L49queue; Nara7105552fe new23:00watch. BoardthroughH12-01..07; all5statusesread.
+  No directanalystchatidentified; usebranchboards. No peerrestart ormainmerge. Main dependencies unchanged/pinned.
+- Snapshot23:23:29Z115442games/latest23:22:18Z,indexSHA43d6b876a97b36ed4b2f38f81e7a644915300e38057f73df9104bae90f18bdc7.
+  Ladder231820Z SHAacb0c399837d3243494bf0b4dba7058abffdbe44d2cf8188962a455a07f599a6;
+  top306/91/264/213/842/952/87/82/55/566 (55in,552out). Era≥06:00Z1Octpost123; localpanel1.2.3 separate.
+- Store331→423games/846sides;92new0errorsin171s;846officialwinneragreements. Window2Oct23:13–3Oct23:11:43Z.
+  472currenttop10sides/12own. Twoqueryworkersplusoneownaudit max3, allfinished.110of202newselectedgamesremain;
+  nextresume SAMEimmutable /Users/alik/Documents/Codex/2026-10-01/p2-a-analyst-one-claude-opus/work/himeji-unit12
+  snapshot withresume_store.py --seconds160 --jobs2 (fewerifbusy). No persistentqueryrunning; lockfileonly.
+- Finding `docs/findings/2026-10-04-himeji-live-coverage-and-L10-ruling.md`; compactevidence tools/himeji/unit12_audit/.
+  Nextcheckpeerreplies/collector thenfinish110queue; rankedQ3/mapstructure/fieldreferences deferredforthesepriorityerrors.
+  PendingH11-02Naraqueenfilter/H11-04prospectiveguard/H11-05collectorpatch andH12-05owncoverage. H-H1weight0.5,
+  H-H2unresolved. No newfieldtarget/spoofingverdict. AutomationACTIVEhalf-hourly; commit/pushscopedr/himeji.
+
+## Unit 11 — 2026-10-03 23:08 UTC; complete
+
+- Exact Nara737 official-header audit:398RL not326;72queen outcomes=70losses+2wins; terminal queen2/398.
+  Header submissions14265(501games)/14585(236), modes kept separate;737official/index winners agree.
+  14585ranked9queen losses/40RL; all ranked sample spans17maps. No r490/counterfactual inference.
+- Four selected ranked306/91 traces: queens move487–498rounds; r49035/66/35/121, end37/73/35/123.
+  Allied corpse use observed, invalid donor intent unknown. All4actualr490 reached; decoderterminal499.
+  CurrentSlithery spawnqueen25 survives; no blanket pocket exclusion by name. No causalN6 weight increase.
+- Nara historical corrections accepted, missingfiveIDs closed aswithdrawn. NewH11-02 filter correction pending.
+  Log-units guard disagreementH11-04: requirezero/reach/statistic definition and02/03rescore beforeadoption.
+  Rome resumed/no complete newofficialL10; H10-06 stands. No othernewtesterresults.
+- LiveDB read-onlyhealthy, solehubdaemon40/pass0errors. Sourceconfigunchanged.264/91 directchecks~32hstale,
+  belowtarget excludedfromrefresh; testedpatch preparedH11-05, NOTdeployed. Keeperreview/serviceworkflowpending.
+- Versionedv7store331games/662sides,212new0errors,662officialwinnermatches; allselectedqueuecomplete.
+  Latestdecoded3Oct22:50:10Z, earliest2Oct23:13Z. No queryrunning; lockfilepresenceisnotanactivewriter.
+  Metadatafreeze114593games22:52:55Z/lateststart22:51:49Z; ladder224700Ztop306/264/91/213/87/842/82/952/566/552.
+  IndexSHA8cd12a04ae180bcf6240de03c9200619216f69db87a79e1b54855977df767626;
+  ladderSHAd863ead567e2f3db9c0947b98201ffdcd422288ea2639c3ac580c4ff0a28bbe0.
+  Source/decoderhashes tools/himeji/unit11_audit/; legacyS1/norms untouched. Era≥06:00Z1Octpost123.
+- Sourcecursor main0298966ec/D-042; Antioch2c7113f66; Carthage5b69fa9d0; Kyoto fccea71c0;
+  Nara4219c1b63 unit4NEW; Romead611b51c plusresumedchat. BoardHimejiH11-01..07; Naraunit4read.
+  Branchkeptseparate; do not retry rejectedmainfast-forward. Mainanalysisdependenciesread-only.
+- Finding `docs/findings/2026-10-04-himeji-live-queen-audit-and-growth.md`; compactaudit tools/himeji/unit11_audit/.
+  H-H1 remains0.5; H-H2switchingunresolved, no deceptiveintentclaim. Currenttargetsprovisional/matchedgapsNA.
+- PendingH11-02Nara filter fix;H11-04guard rescore;H11-05collectorpatchreview. H10-05independentanalystread
+  remainsqueued via board; no availabledirectanalystchat, no peerwake. Half-hourautomationACTIVE.
+- Next runnable: refreshcursor/checkcollector264/91 andpeerreplies; rankedQ3 references byactualgeometry/currentcohort
+  withwhole-seriesuncertainty andexplicitr490reach. Continue recentincrementalstoreonlyifnewinput; doNOTrepeat737audit
+  orfourtraces unchanged. Main/source/collector deployment/bots remain untouched.
+
+## Unit 10 — 2026-10-03 22:38 UTC; resumed and complete
+
+- User resumed operations, assigned live DB/downloading/top-team/spoofing analysis; prior Antioch-only restriction
+  superseded. Half-hour automation ACTIVE with updated scope and non-overlap/checkpoint rules.
+- Live hub SQLite read-only connection verified. Existing daemon collecting40games/pass,0errors; no competing
+  client, credentials exposed, deployment or collector configuration changes. Raw corpus113,915 atfreeze22:23Z;
+  later114,008 at22:28Z. Eight top10 direct checks>24h old; queuecatch-up observed for566. Verify others next.
+- New versioned FRAME_VERSION7 store at `/Users/alik/Documents/Codex/2026-10-01/p2-a-analyst-one-claude-opus/work/himeji-live-store`.
+  Metadata113,915;119recent games decoded/238sides,0errors, all238winner labels agree.119header/hash audits,
+  72RLqueen→longest→total checks,0violations. Old S-1 and norms preserved. No worker running;31/150queue remain.
+- Currenttop10 rankedRLqueen survival25/53(27series),95%seriesCI[32.3,63.1]%;solequeenwins19/19.
+  Unranked9/21(5series);selection/map/cohort caveats preclude population trend.17API maps/18decoderlabels.
+- Spoof screen:155top10side-games in24h,0submissionIDs/0headernames;0matched mode strata for everyteam.
+  Team82 9/11ranked vs1/6unranked is unresolved, not deception evidence. H-H2 proposed repeated regime switching,
+  falsifier/40independentseries-per-regime sample rationale in finding. H-H1 stays0.5.
+- Communication lane `tools/himeji/COMMUNICATION.md`: addressed board+evidence+reply IDs; direct analyst routing
+  when a current chat is identified. Antioch/Nara not visible in app; no fictitious messages or peer restarts.
+  Rome resumed inexistingchat; no new completed L10 verdict. D-042 ruling acknowledged.
+- Source/board cursors: main0298966ec/D-042; Antioch2c7113f66; Carthage5b69fa9d0; Kyoto fccea71c0;
+  Nara21a182700; Romead611b51c plus resumedchat. HimejiH10-01..06. Branchkeptseparate after automaticreview
+  rejected mainfast-forward; currentmain usedasread-only dependency with sourcehashes.
+- SnapshotSHA039af5161d7e50db94a995ef6a7971940da185214f9d1911eeb08109a32b5d61;
+  ladder20261003T221421Z top306/91/264/213/952/842/552/87/82/566. Era cutoff06:00Z1Oct, queenruleverified;
+  latestdecoded22:16:32Z3Oct. Fresh sprint check pending. Store itself lacksqueencheckpointcolumns; headerartifact
+  reportsRLterminal only, r490pending. Oldanchorsprovisional. Matchedlive-us gapsNA.
+- Pending H10-05: Nara behavior/matchedregimes; Antioch independentqueen/feedingread whenresumed.
+  Next: confirmtoprefresh, freeze newdata and extend31-gamequeue; longqueen food/split/movement anatomy.
+  Reproduce with `freeze_live_snapshot.py --corpus MAIN/public_replays/corpus --out NEWSNAPSHOT`, then
+  `resume_store.py --repo MAIN --snapshot NEWSNAPSHOT --store /Users/alik/Documents/Codex/2026-10-01/p2-a-analyst-one-claude-opus/work/himeji-live-store --jobs 2 --seconds 180`.
+  The store checks decoder hashes and lock; do not importq.py/rebuildsharednorms. Remaining scripts use--help.
+- Finding `docs/findings/2026-10-04-himeji-resumed-live-data-and-top-team-regimes.md`. Compact artifacts `tools/himeji/unit10_audit/`.
 
 ## Unit 9 — 2026-10-01 19:02 UTC, complete; recurring task stopped
 
