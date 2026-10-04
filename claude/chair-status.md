@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 14:28Z (unit 5). Next self-wake about 15:30Z. Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 15:36Z (unit 6). Next self-wake about 17:05Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,9 @@ State: ACTIVE. Updated 4 Oct 2026 14:28Z (unit 5). Next self-wake about 15:30Z. 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-054**: P-2's population is the manifest's (1,327 usable); the queen reach veto (P-4) is approved for a screen;
+  council round 2 is open on the R2 card (P-5) and the V-legal card (P-6), due 17:00Z; Asahi is idle and the lead is
+  asked to wake it.
 - **D-053**: R0 passed; H-KZ12 k = 16 is the first nominee, gated on seeds 2–3; Sugawara's gated-reserve card (P-3)
   rejected for map identity; cage work parked because we lose Schooltime equally with the cage open; a card for
   the queen reach veto (H-KZ26) requested; D-052 §E withdrawn (the two map variants cannot be rebuilt).
@@ -42,12 +45,12 @@ State: ACTIVE. Updated 4 Oct 2026 14:28Z (unit 5). Next self-wake about 15:30Z. 
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-2 (R1): confirmation specified; decode coverage 1,327 of 1,328; waits for Hinata's scorer fixes, Tanaka's pass line and the per-cell counts. P-3 (gated reserve): rejected. Requested: R2 and V-legal cards (Hinata), H-KZ26 card (Sugawara) |
+| Proposal cards | P-2 (R1): scorer revision 2 verified by Tanaka on the earlier defects; one defect left (pin the usable ids); then Tanaka's pass line releases the claim. P-4 (queen reach veto): approved for a screen. P-5 (R2) and P-6 (V-legal): council round 2, due 17:00Z |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | idle since 13:50Z. Order (D-053 §F): native executor extension; cluster change in `card.py`; parent and k = 16 on seeds 2–3; then the H-KZ26 dial |
+| Evaluator queue (Asahi) | **idle since 13:50Z, not acting on BOARD requests.** Waiting: native executor extension; cluster change in `card.py`; parent and k = 16 on seeds 2–3; then the P-4 dial |
 | Nominee (full gate) | `asahi-05-kz12-k16` (REG-002), gate on seeds 2–3, not yet run |
 | Uploaded, inactive | none |
-| Live screen | none. A/A dry run job 952053397eed: 40 of 136 games verified at 13:48Z, 0 runtime faults, deadline 18:54Z |
+| Live screen | none. A/A dry run job 952053397eed: 68 of 136 games verified at 15:28Z, 0 runtime faults, deadline 18:54Z |
 
 ## Facts settled this unit
 
@@ -63,13 +66,13 @@ State: ACTIVE. Updated 4 Oct 2026 14:28Z (unit 5). Next self-wake about 15:30Z. 
 | Role | Lane | State |
 |---|---|---|
 | Chair | Ushijima (Claude) | active |
-| Council, auditor | Tanaka (GPT), `r/tanaka` | rejected P-3; forecast 0.40 on P-2's event; scorer pass line still owed, waiting on Hinata's fixes |
-| Council, mechanism | Sugawara (Claude), hourly at :25 | P-3 rejected; asked to write the H-KZ26 card; forecast 0.50 on P-2's event |
-| Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac | release probes delivered (decode complete, population 1,328, coverage 1,327); forecast 0.50 |
-| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | decode complete; map check done; top-team knowledge base v1 and teacher list v1 delivered; teacher rows wait for the native environment |
-| Learner | Hinata (Claude), Cowork VM; 2-hourly task at :35 | owes: two scorer fixes and per-cell counts for P-2; the R2 card; the V-legal card |
-| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py` | carry-over screens complete; idle; its status still lists questions the Chair answered (it may not be reading the main-tree BOARD) |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; scheduled runs working | A/A job running; rollback rule simulated as written (7.3 % false rollback; 36.6 % caught at −0.10; 78.1 % at −0.20); monitor split by variant |
+| Council, auditor | Tanaka (GPT), `r/tanaka` | k = 16 forecast 0.35; P-4 amend (0.30); P-2 scorer: earlier repairs verified, pinned-ids defect open; P-5 and P-6 reviews due 17:00Z |
+| Council, mechanism | Sugawara (Claude), hourly at :25 | wrote P-4; reviewed P-5 (amend) and P-6 (agree); k = 16 forecast 0.35 |
+| Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac | k = 16 forecast 0.40; P-4 number, P-5 and P-6 reviews due 17:00Z |
+| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | explained the scope flag (it follows the live ladder); building a 120-game development teacher set in the cloud; full teacher rows wait for the native executor |
+| Learner | Hinata (Claude), Cowork VM; 2-hourly task at :35 | scorer revision 2 and per-cell counts delivered; owes the pinned-ids revision; filed P-5 and P-6 |
+| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py` | no commit or job since 13:47Z; status file still lists answered questions |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; scheduled runs working | A/A job half done (68 of 136), no faults |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
 
@@ -84,18 +87,20 @@ State: ACTIVE. Updated 4 Oct 2026 14:28Z (unit 5). Next self-wake about 15:30Z. 
 | H7 | Organisers' rule on training on public replays | proceeding on the assumption that it is allowed (D-050 §8); optional for the lead to confirm |
 | H8 | Native execution for the Learner | replaced: jobs go through Asahi's native job daemon (D-050 §8); the lead is asked only if the daemon reload fails |
 | H9 | Windows quota runner | closed: the lead does not know of one; replaced by Daichi's ledger check (D-050 §4) |
+| H10 | Wake the Asahi (Evaluator) session and point it at D-053 §F and D-054: it has been idle since 13:50Z and holds the gate run and the native executor | asked 15:36Z |
 
 ## Next three decisions
 
-1. **First nominee:** read Asahi's gate card for H-KZ12 k = 16 on seeds 2–3; if it passes, upload and live screen
-   against 14585 once the A/A job has reported.
-2. **R1 result:** read P-2's confirmation when it runs; record R1 pass or fail; score the three forecasts.
-3. **Council round 2:** Hinata's R2 and V-legal cards and Sugawara's H-KZ26 card, when filed.
+1. **D-055 (after 17:00Z):** R2's feature set and offline gate (P-5), and the V-legal design (P-6).
+2. **R1 result:** read P-2's confirmation when Tanaka releases it; record R1 pass or fail; score the forecasts
+   (Tanaka 0.40, Sugawara 0.50, Nishinoya 0.50).
+3. **First nominee:** the k = 16 gate card on seeds 2–3 (forecasts 0.35, 0.40, 0.35), once Asahi runs it; on a pass,
+   upload and live screen after the A/A job.
 
 ## Cursor
 
-Last BOARD line read: `[2026-10-04 13:55 UTC council:tanaka → chair, daichi] Independently verified
-future-snapshot fix …` (main tree), plus Asahi's two 13:50Z lines (merged 14:25Z). Own D-053 lines follow.
+Last BOARD line read: `[2026-10-04 15:29 UTC council:sugawara → tanaka, chair, asahi] P-sugawara-02 (H-KZ26):
+Tanaka's AMEND accepted …` (main tree; also Kageyama's two 15:30Z lines). Own D-054 lines follow.
 
 ## Open flags
 

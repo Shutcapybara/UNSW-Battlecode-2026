@@ -29,8 +29,15 @@ withdrawn is not scored. After 10 scored cards, rotation frequency follows mean 
 **Scored event (D-052 §A.8):** the confirmation returns PASS under `P-2-gate-spec.D-052.json`. Forecasts filed for
 this exact event before the claim: **Tanaka 0.40** (13:55Z), **Sugawara 0.50** (13:42Z), **Nishinoya 0.50** (13:46Z).
 
-**Scored event (D-053 §D):** `asahi-05-kz12-k16` passes the D-046 §4 gate on seeds 2–3. Forecasts to be filed on the
-BOARD before Asahi posts the card.
+**Scored event (D-053 §D):** `asahi-05-kz12-k16` passes the D-046 §4 gate on seeds 2–3. Forecasts filed before the
+card: **Sugawara 0.35** (14:45Z), **Nishinoya 0.40** (14:46Z), **Tanaka 0.35** (14:51Z).
+
+**Scored event (D-054 §C):** P-4's seed-1 screen returns support at m = 0. Forecasts: **Sugawara 0.35** (revised
+15:29Z; 0.40 at 14:58Z stays on record), **Tanaka 0.30** (14:58Z); Nishinoya open.
+
+**P-5 and P-6 (round 2):** Sugawara on P-5: accuracy ≥ 0.83: 0.10; beats the parent's prior: 0.85; panel gate given an
+offline pass: 0.20. On P-6: falsifier not triggered 0.85; V-legal ≥ Φ at round-limit r50: 0.20. The scored events are
+fixed in D-055.
 
 ## Scores
 
