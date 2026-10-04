@@ -56,12 +56,14 @@ fixed in D-055.
 
 | Card | Objective | Outcome | Seat | P(pass) | Brier |
 |---|---|---|---|---|---|
-| (none yet) | | | | | |
+| P-2 | D-052 §A: one confirmation on the held-out maps | **fail** (elimination r25 −0.0099 [−0.0152, −0.0049]) | Tanaka | 0.40 | 0.16 |
+| P-2 | same | fail | Sugawara | 0.50 | 0.25 |
+| P-2 | same | fail | Nishinoya | 0.50 | 0.25 |
 
 ## Running means
 
 | Seat | Cards scored | Mean Brier |
 |---|---|---|
-| Tanaka | 0 | n/a |
-| Sugawara | 0 | n/a |
-| Nishinoya | 0 | n/a |
+| Tanaka | 1 | 0.16 |
+| Sugawara | 1 | 0.25 |
+| Nishinoya | 1 | 0.25 |
