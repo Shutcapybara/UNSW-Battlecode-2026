@@ -24,6 +24,10 @@ first step is F, R or L, argmax over the three probabilities renormalised (rever
 printed beside it, with the majority class of the same population per map and per teacher team; (b) `support` writes
 support.json (rows, F/R/L rows, games, series, teams, per fold) before any fit, so the 0.75 stop's support is fixed in
 advance; (c) a descriptive whole-series bootstrap (1,000 x seed 7, 5th/95th) of the F/R/L accuracy. Training is unchanged.
+Revision 4 (4 Oct 18:37Z, Chair 18:32Z learning curve): --frac < 1 now subsamples TRAINING series inside each fold only
+(nested hash 'frac/<series>' < frac x 1000); every fold's test rows are those of the full run, so the fold hashes equal the
+frac 1.0 manifest and the four points are scored on the same 188,250 F/R/L rows. Rev 3 subsampled test rows too.
+metrics.json gains train_support (rows, series per fold). Training parameters unchanged.
 Never reads held-out maps, test or validation buckets; no map identity in features (encoder v1 emits none; asserted).
 Resumable: each fold's model is saved; a rerun skips finished folds. Use --budget <= 150 s on the VM.
 """
@@ -120,9 +124,8 @@ def main():
     ap.add_argument('--blocks', default='oracle', choices=['oracle', 'any'])
     a = ap.parse_args(); t0 = time.time(); run = Path(a.run); run.mkdir(parents=True, exist_ok=True)
     paths = a.rows.split(','); d, X, dropped = load(paths, a.teachers, a.features, a.blocks)
-    if a.frac < 1:                                     # learning-curve point: subsample training SERIES, not rows
-        keep = d.series_key.map(lambda s: int(hashlib.sha256(f'frac/{s}'.encode()).hexdigest(), 16) % 1000 < a.frac * 1000)
-        d = d[keep].reset_index(drop=True)
+    ktr = d.series_key.map(lambda s: int(hashlib.sha256(f'frac/{s}'.encode()).hexdigest(), 16) % 1000 < a.frac * 1000).to_numpy() \
+        if a.frac < 1 else np.ones(len(d), bool)      # learning-curve point: subsample TRAINING series only; test folds unchanged
     y = d.y_first.to_numpy(int); w = np.ones(len(d)) if a.unweighted else d.weight.to_numpy(float)
     F = folds(d, a.cv); P = np.full((len(d), 4), np.nan)
     if a.cmd == 'support':
@@ -155,7 +158,7 @@ def main():
         if not mf.exists():
             if time.time() - t0 > a.budget:
                 print('budget reached; rerun to resume'); break
-            tr = ~te
+            tr = ~te & ktr
             b = lgb.train(PARAMS, lgb.Dataset(d.loc[tr, X].to_numpy(np.float32), y[tr], weight=w[tr]), num_boost_round=a.rounds)
             b.save_model(str(mf))
         b = lgb.Booster(model_file=str(mf)); P[te] = b.predict(d.loc[te, X].to_numpy(np.float32))
@@ -175,6 +178,7 @@ def main():
                frl_boot=series_boot(yy, pp, oof.series_key.to_numpy()) if len(yy) else None,
                frl_per_map={m: frl(yy, pp, (oof['map'] == m).to_numpy()) for m in sorted(oof['map'].unique())},
                frl_per_team={str(t): frl(yy, pp, (oof.team == t).to_numpy()) for t in sorted(oof.team.unique())},
+               train_support={k: dict(rows=int((~te & ktr).sum()), series=int(d.series_key[~te & ktr].nunique())) for k, te in F.items()},
                blocks_filter=a.blocks, dropped_by_blocks=dropped,
                interval='none (development; the gate interval is whole-series bootstrap, card §4)')
     (run / 'metrics.json').write_text(json.dumps(met, indent=1))

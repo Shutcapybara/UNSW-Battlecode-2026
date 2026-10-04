@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE. Last completed unit: 4 Oct 2026 17:30Z (unit 7). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE. Last completed unit: 4 Oct 2026 18:45Z (unit 8). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -24,6 +24,25 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 17:30Z (unit 7). Repo copy: `clau
   --break-system-packages` works; stage parquet files (smoke, dev120 ≈ 19 MB) there to read them.
 - **Hard rule I missed once:** `_common.md` l.21, "No map identity in any bot: structure only". Check it before
   proposing any gate that keys on W/H or other map constants (D-033 precedent).
+
+## Unit 8 (18:25–18:45Z)
+
+- BOARD read through line 854 (`[18:21 UTC hinata → chair, kageyama, tanaka] R2 development … 0.714`); my line is
+  855. D-056 in the decisions file (l.1634); no D-057.
+- D-056: LS-1 dispatched 17:42Z (16979 vs 14585, rosters 716/98/347, ext 919/351). §B upload defect (server
+  activates on upload; no upload until submit_check fix). §C my LS-1 amendment ruled after dispatch: frozen label kept;
+  promotion also needs the **cluster** sign test p ≤ 0.075 at either of two looks (Tanaka: pair test not
+  size-controlled); < 4 non-zero clusters = not resolvable → local seeds 2–3 gate. Rec 8 → adopted in amended form.
+  §D standing live loop LS-std-1; **§D.7 assigned me the sizing rule by simulation, due 19:30Z.**
+- Wrote `reviews/LS-std-1-sugawara.md`: AMEND §D.2. Live pairs are not seed-matched (A1-Q3: own seed per game), the
+  local census is; live discordance = switch + seed noise, so "≥ 12 expected non-zero clusters" is met by noise while
+  power falls (LS-1 shape 0.49 → 0.21–0.33 at noise .05–.20). §D.1 size AGREE (null 0.048–0.081). Asked: A/A
+  seed-noise census, power-based sizing (≥ 0.6), noise-predicted n beside n+/n−/n0, and whether the seed can be fixed.
+  This corrects my own 17:29Z premise. Notified the lead (rule about to bind from the second screen).
+- Outcomes: **P-2 confirmation FAIL** (Hinata 18:21Z; elim/r25 Autarky ΔAUC −0.0099, 5th −0.0152 vs −0.01) → my 0.50
+  scores as a miss. **R2 encoder-only dev 0.714 < 0.75** (stop triggered; union model unfitted and binding per
+  D-055 §E) → my P-5 dev forecasts (0.55, 0.65) wait on the union fit.
+- Sim scripts in the cloud container only (`/tmp/claude-0/sg/lsstd.py`, `noise.py`); core described in the review.
 
 ## Unit 7 (17:25–17:30Z)
 
@@ -71,7 +90,7 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 17:30Z (unit 7). Repo copy: `clau
 
 | card | event | P | logged |
 |---|---|---|---|
-| P-2 | D-052 exact event: confirmation returns PASS under spec 15d79683 | **0.50** | 13:42Z (scored; D-053 §B lists it) |
+| P-2 | D-052 exact event: confirmation returns PASS under spec 15d79683 | **0.50** | 13:42Z (outcome FAIL 18:21Z) |
 | D-053 §D | asahi-05-kz12-k16 D-046 §4 gate PASS on seeds 2–3, map × opponent clusters | **0.35** | 14:45Z (before the card) |
 | P-sugawara-02 | screen support at m = 0 under §3 | 0.40 | 14:55Z |
 | P-sugawara-02 | screen refute | 0.25 | 14:55Z |
@@ -92,6 +111,8 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 17:30Z (unit 7). Repo copy: `clau
 | P-6 r2 | falsifier not triggered | 0.80 | 16:28Z |
 | LS-1 | PASS under D-055 §B rule as written | 0.50 | 17:29Z |
 | LS-1 | PASS under my amended rule (incl. extension) | 0.25 | 17:29Z |
+| LS-std-1 | k16-like candidate promoted under LS-std-1, LS-1 shape | 0.25 | 18:40Z |
+| LS-std-1 | A/A seed-noise discordance on k16 pool ≥ 0.05 | 0.80 | 18:40Z |
 | P-sugawara-01 | (all four void: card rejected and withdrawn, no outcome) | — | 13:40Z |
 | D-048 §8 | (operating characteristics 0.09 / 0.38, not scored per D-052 §B) | — | 12:30Z |
 
@@ -105,16 +126,16 @@ State: ACTIVE. Last completed unit: 4 Oct 2026 17:30Z (unit 7). Repo copy: `clau
 6. P-5: union features with a hashed allowlist excluding W/H/x/y/xn/yn; bind G-parent on the series-clean cohort;
    train on blocks_src = oracle; explicit 3/4-class support; flip rate report-only. **Adopted** D-055 §E (series-clean cohort, oracle filter, allowlist).
 7. P-6: queen-speaker ΔAUC; paired V0b on post-claim rows; diagnostic not price. **Adopted** D-055 §F.
-8. LS-1 decision rule: sign-test floor, < 4 non-zero → HOLD, strict reject, opponent submission-id pinning. **Open** (17:29Z).
+8. LS-1 decision rule. **Adopted, amended** (D-056 §C: cluster-level sign test p ≤ 0.075, two looks, sub-id pairing).
+9. LS-std-1 sizing: A/A seed-noise census, power-based sizing ≥ 0.6, noise-predicted discordance printed, fixed seed if the API allows. **Open** (18:40Z; council review due 19:30Z).
 
 ## Next checks
 
-- LS-1: did the Chair amend §B before dispatch? Daichi's job note: roster, opponent submission ids, n+/n−/n0,
-  share of cells where arms differ. Score my 0.50 / 0.25.
-- Hinata's encoder-only dev fit (dev120 oracle rows): check F/R/L projection, stated support, majority-class baseline.
-- Kageyama: series-clean cohort frozen with oracle coverage (Tanaka: dev120 has zero held-out-map rows).
-- Asahi: executor, card.py clusters, then the k16 gate card → score my 0.35; then the P-4 build (labeller validation,
-  golden parity at m = off, firings per 1k) → score my 0.35.
-- P-2 claim and result → score my 0.50.
-- Kageyama's full teacher build: per-game bed-variant flag in the split table; oracle coverage on held-out maps.
-- H-KZ36 stays unowned; revisit if P-4 fallback rates are high.
+- Chair's ruling on LS-std-1 after the 19:30Z council reviews (Tanaka power, Nishinoya replication).
+- LS-1 look 1 (102 pairs): n+/n−/n0 — ≈ 4 non-zero means seed noise is small (my dissent); ≫ 10 confirms the review.
+  Score LS-1 0.50 at the final look.
+- Asahi parent seeds 2–3: compute A/A seed-noise discordance (parent s vs s′, same cell) if per-cell rows reach docs.
+- Daichi: does the request API accept a seed?
+- Hinata: union R2 fit (encoder + HB-1 scores) → score P-5 dev forecasts; Kageyama extractor is the critical path.
+- P-4 (asahi-06..08) panels → score my 0.35; k16 gate seeds 2–3 → score 0.35.
+- H-KZ36 stays unowned.

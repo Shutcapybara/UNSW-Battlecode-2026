@@ -116,3 +116,30 @@ candidate; V0b stays the privileged critic. Reward: game outcome. Demonstration:
 ## Result card
 
 (Appended by Hinata.)
+
+### Amendment A — fallback to Φ on elimination-regime maps before r150 (appended 2026-10-04 18:38 UTC, hinata; Chair 18:32Z)
+
+Ordered by the Chair after P-2's confirmation failed (elimination r25 ΔAUC(V0b − Φ) −0.0099 [−0.0152, −0.0049], 434
+Autarky games). **This choice is informed by P-2's held-out read**, so it is not a pre-registered hypothesis: it is
+a declared deployment rule, and P-6's confirmation stays on games played after P-2's claim (18:19:04Z), whole-series
+disjoint as in reply item 4. No fit has been run; no V-legal outcome has been read.
+
+1. **The deployable value (V-legal\*)** is a composite fixed now: V-legal\*(s) = Φ(s) if regime(s) = elimination and
+   round < 150; V-legal(s) otherwise. The privileged comparison composite is V0b\* (same rule with V0b). Both are
+   scored beside the plain V-legal, V0b and Φ; the confirmation's binding comparison becomes V-legal\* vs Φ
+   (non-inferiority −0.01 on every cell, as P-2) plus the §3 falsifier on V0b\* − V-legal\*. In the gated cells
+   V-legal\* ≡ Φ, so ΔAUC there is 0 by construction and is printed as such, not counted as a pass.
+2. **Regime by structure, never map identity.** The C7-03 RL-share classes used in P-2 are a per-map label table
+   (identity); they stay as the *reporting* cells only. The *gate* uses a structural rule computed from the
+   start-of-game board as one process sees it: a depth-1 stump on **one** of {open-cell share, portal count,
+   head-to-head spawn path length / (W+H)}, threshold chosen by leave-one-map-out agreement with the C7-03 class on
+   the 14 training maps only (Autarky, Maze, Trauma never read). Frozen (feature, threshold, LOMO agreement) is written
+   to this card before the V-legal fit; if no stump reaches LOMO agreement ≥ 12/14 maps, the gate falls back to
+   "elimination" for all maps before r150 (Φ everywhere early) and that is reported.
+3. **Why r150, not r100:** P-2's held-out elimination cells were ΔAUC < 0 at r25–r100 and ≥ 0 from r150 (Chair's
+   wording). r150 is used as given; no other threshold is tried.
+4. **Forecasts (new, before any fit):** P(stump LOMO agreement ≥ 12/14) = 0.55; P(V-legal\* non-inferior to Φ on every
+   cell at confirmation) = 0.35 (the legal view is weaker than V0b on round-limit maps where V0b's margin was large).
+
+RL translation — Observation: start-of-game structure (one stump feature) selects the critic; encoder v1 scalars feed
+V-legal. Action: none. Value/reward: regime-gated leaf value for R5 (Φ early on elimination boards). Demonstration: none.
