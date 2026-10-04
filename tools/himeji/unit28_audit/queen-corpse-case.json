@@ -1,0 +1,189 @@
+{
+  "queen_death_proximity": [
+    {
+      "donor": 9,
+      "death_round": 20,
+      "queen_head_at_round_start": [
+        31,
+        14
+      ],
+      "donor_head": [
+        26,
+        14
+      ]
+    }
+  ],
+  "game": 1021321,
+  "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+  "own_submission": "14585",
+  "queen": 1,
+  "entry": {
+    "round": 40,
+    "from_cell": [
+      29,
+      14
+    ],
+    "to_cell": [
+      28,
+      14
+    ],
+    "pocket": [
+      [
+        28,
+        14
+      ],
+      [
+        27,
+        14
+      ],
+      [
+        26,
+        14
+      ]
+    ],
+    "pearls_at_round_start": [
+      [
+        27,
+        14
+      ],
+      [
+        28,
+        14
+      ],
+      [
+        26,
+        14
+      ]
+    ],
+    "pearl_origins": [
+      {
+        "round": 20,
+        "cell": [
+          28,
+          14
+        ],
+        "origin": "A",
+        "donor": 9
+      },
+      {
+        "round": 21,
+        "cell": [
+          27,
+          14
+        ],
+        "origin": "bed",
+        "donor": null
+      },
+      {
+        "round": 20,
+        "cell": [
+          26,
+          14
+        ],
+        "origin": "A",
+        "donor": 9
+      }
+    ]
+  },
+  "exact_turn_start": {
+    "round": 40,
+    "queen_body": [
+      [
+        29,
+        14
+      ],
+      [
+        29,
+        13
+      ]
+    ],
+    "directions": [
+      {
+        "direction": 0,
+        "cell": [
+          29,
+          13
+        ],
+        "occupant": 1,
+        "empty": false
+      },
+      {
+        "direction": 1,
+        "cell": [
+          30,
+          14
+        ],
+        "occupant": null,
+        "empty": true
+      },
+      {
+        "direction": 2,
+        "cell": null,
+        "occupant": null,
+        "empty": false
+      },
+      {
+        "direction": 3,
+        "cell": [
+          28,
+          14
+        ],
+        "occupant": null,
+        "empty": true
+      }
+    ]
+  },
+  "donor_births": {
+    "9": {
+      "round": 11,
+      "parent": 5,
+      "child_body": [
+        [
+          30,
+          14
+        ],
+        [
+          29,
+          14
+        ]
+      ],
+      "head_in_pocket": false,
+      "any_body_in_pocket": false
+    }
+  },
+  "donor_deaths": {
+    "9": {
+      "round": 20,
+      "id": 9,
+      "team": "A",
+      "cause": "wall",
+      "length": 3,
+      "actor": 9,
+      "age": 9,
+      "head": [
+        26,
+        14
+      ],
+      "initial": false,
+      "killer": null,
+      "killer_team": null
+    },
+    "1": {
+      "round": 44,
+      "id": 1,
+      "team": "A",
+      "cause": "wall",
+      "length": 3,
+      "actor": 1,
+      "age": 44,
+      "head": [
+        26,
+        14
+      ],
+      "initial": true,
+      "killer": null,
+      "killer_team": null
+    }
+  },
+  "scope": "One new ranked14585 case; starts from peer narrow-pocket selection; actualTurnStart emptiness only, not survival or observations. Corpse snapshots at round-start are not claimed to include same-round pre-queen changes."
+}

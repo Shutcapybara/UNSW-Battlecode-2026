@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-04T07:23:44.650243+00:00",
+  "index_games": 121313,
+  "index_sha256": "815686da9ad977761522f387549b9525f021939f2046e6fb3e3be989e1c298ec",
+  "latest_start": "2026-10-04T07:22:39.677Z",
+  "delta": 514,
+  "own_delta": 10,
+  "latest_own": "2026-10-04T06:35:02.556Z",
+  "ladder": "20261004T071500Z.json",
+  "ladder_sha256": "9b0da6de32509f731e3cec1a78d926b8c761ca4fe600d97ecbdb1fedcaf0c6f5",
+  "top10": [
+    264,
+    306,
+    112,
+    213,
+    55,
+    91,
+    507,
+    842,
+    952,
+    566
+  ],
+  "own_watched": false,
+  "collector_progress_at": "2026-10-04T07:22:48.051584+00:00",
+  "db_submissions": [
+    [
+      14265,
+      "idle",
+      "2026-10-04T07:15:00.430853+00:00"
+    ],
+    [
+      14585,
+      "active",
+      "2026-10-04T07:15:00.430214+00:00"
+    ]
+  ],
+  "db_series": [
+    1165,
+    "2026-10-04T06:42:47.237152+00:00"
+  ],
+  "sources": {
+    "HEAD": "d30f065ed831d33202d68ad074863fca5d7f4611",
+    "origin/main": "21186bf2490346cb6503834d46b572e962b60f6b",
+    "origin/r/kanazawa": "4aca2103cb6a561030f4b30cbca407411d742f4c",
+    "origin/r/nara": "a884062ea1ead6976f6054b7992dc13c839114eb",
+    "origin/r/rome": "5704a6602b8a71fed6ec6a9f5e245f2ec024785c",
+    "origin/r/shenzhen": "a1d088d330ce93194ae54cb8c576476a7e8110c0",
+    "origin/r/chongqing": "b50bbe8861f248eea269513755c872e77b30d684",
+    "origin/r/Seoul": "21186bf2490346cb6503834d46b572e962b60f6b",
+    "origin/r/antioch": "2c7113f6657362ce68bc0d667bf932d665c1a31c",
+    "origin/r/carthage": "5b69fa9d07a0fd4684826f752438a2e8e66d9f45",
+    "origin/r/kyoto": "fccea71c060fc7bf0cae41aeef8d063d9894d8c6"
+  },
+  "source_hashes": {
+    "tools/hub/corpus.py": "6bb33fd775768eafdaf38c287ce1853f45e8852d2e40acd5077502f3fec8c51c",
+    "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+    "tools/s1/build.py": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f"
+  },
+  "rome_close_commit": "b926cdf6422579cbdc02522178c66bc97ee422f4",
+  "rome_chat_cursor": "b99b513f-fdd3-41ba-b646-7855a1a8bbde:20",
+  "read_only_database_contract": "immutable=1, mode=ro, query_only; WAL excluded",
+  "himeji_source_hashes": {
+    "corpse_cohort_check.py": "a72345bf00bcc55ea6900f4dea199e56274dec7d20f3b98db20daec022f0d117",
+    "queen_corpse_case.py": "078bca6f48728a70a072578f0c60523b29c494aa821f0df1e941615ff275beda",
+    "summarize_corpse_cohort.py": "e49bb96c5a35eaa66075a0bc757d9f178c99e005ed50ed1d9d7bc8264e8417f3",
+    "recent_live_check.py": "c6115c2bf6ad09afb2e685f3d3241d127ae07f946680031879a3596c57d7374e",
+    "post_refs.py": "1c25f98d07203b54308e76777f895cf7ffd3628c051be1ddaf550fc9f87051ef"
+  },
+  "board_cursor": "H28-01..07; KZ unit9 4aca2103c; SZ unit12 a1d088d33; Rome SZ1 b926cdf64",
+  "peer_query_sha256": "110736a107c874e2ea1c6b9b5fc237aa80b517a620b7a0b38ac504d2314f5209"
+}
