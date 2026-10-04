@@ -1,0 +1,180 @@
+{
+  "store_decoded_games": 708,
+  "store_sides": 1416,
+  "store_metadata_sha256": "9a652c59e5eb12a07097904cea31edc3035f08ec8d5880f0c0b8190fafbd080d",
+  "parts": {
+    "work/himeji-live-store/sides/part-20261004T085749-39487.parquet": {
+      "size": 223693,
+      "mtime_ns": 1791066471805714304
+    },
+    "work/himeji-live-store/sides/part-20261004T085821-39487.parquet": {
+      "size": 221826,
+      "mtime_ns": 1791066501414002834
+    },
+    "work/himeji-live-store/sides/part-20261004T085846-39487.parquet": {
+      "size": 217292,
+      "mtime_ns": 1791066526559829319
+    },
+    "work/himeji-live-store/sides/part-20261004T085915-39487.parquet": {
+      "size": 222655,
+      "mtime_ns": 1791066555284460918
+    },
+    "work/himeji-live-store/sides/part-20261004T085942-39487.parquet": {
+      "size": 220154,
+      "mtime_ns": 1791066583132678163
+    },
+    "work/himeji-live-store/sides/part-20261004T090004-39487.parquet": {
+      "size": 217172,
+      "mtime_ns": 1791066604275568187
+    },
+    "work/himeji-live-store/sides/part-20261004T092334-81837.parquet": {
+      "size": 223691,
+      "mtime_ns": 1791068014861448558
+    },
+    "work/himeji-live-store/sides/part-20261004T092349-81837.parquet": {
+      "size": 223786,
+      "mtime_ns": 1791068029677461252
+    },
+    "work/himeji-live-store/sides/part-20261004T092403-81837.parquet": {
+      "size": 221747,
+      "mtime_ns": 1791068044004045950
+    },
+    "work/himeji-live-store/sides/part-20261004T092420-81837.parquet": {
+      "size": 220040,
+      "mtime_ns": 1791068060052911722
+    },
+    "work/himeji-live-store/sides/part-20261004T092433-81837.parquet": {
+      "size": 221624,
+      "mtime_ns": 1791068073786309260
+    },
+    "work/himeji-live-store/sides/part-20261004T092453-81837.parquet": {
+      "size": 221662,
+      "mtime_ns": 1791068093498053699
+    },
+    "work/himeji-live-store/sides/part-20261004T092515-81837.parquet": {
+      "size": 223986,
+      "mtime_ns": 1791068115745256348
+    },
+    "work/himeji-live-store/sides/part-20261004T092532-81837.parquet": {
+      "size": 224146,
+      "mtime_ns": 1791068132186168482
+    },
+    "work/himeji-live-store/sides/part-20261004T092545-81837.parquet": {
+      "size": 221575,
+      "mtime_ns": 1791068145348547032
+    },
+    "work/himeji-live-store/sides/part-20261004T092600-81837.parquet": {
+      "size": 222333,
+      "mtime_ns": 1791068160502745758
+    },
+    "work/himeji-live-store/sides/part-20261004T092605-81837.parquet": {
+      "size": 199243,
+      "mtime_ns": 1791068165685391496
+    },
+    "work/himeji-live-store/sides/part-20261004T095458-57715.parquet": {
+      "size": 222650,
+      "mtime_ns": 1791069898571586359
+    },
+    "work/himeji-live-store/sides/part-20261004T095534-57715.parquet": {
+      "size": 221121,
+      "mtime_ns": 1791069934666737680
+    },
+    "work/himeji-live-store/sides/part-20261004T095608-57715.parquet": {
+      "size": 221522,
+      "mtime_ns": 1791069968245119207
+    },
+    "work/himeji-live-store/sides/part-20261004T095641-57715.parquet": {
+      "size": 222460,
+      "mtime_ns": 1791070001594539969
+    },
+    "work/himeji-live-store/sides/part-20261004T095703-57715.parquet": {
+      "size": 201700,
+      "mtime_ns": 1791070023578653204
+    },
+    "work/himeji-live-store/sides/part-20261004T115540-23100.parquet": {
+      "size": 221971,
+      "mtime_ns": 1791077140713076568
+    },
+    "work/himeji-live-store/sides/part-20261004T115649-23100.parquet": {
+      "size": 218326,
+      "mtime_ns": 1791077209112692210
+    },
+    "work/himeji-live-store/sides/part-20261004T120015-88606.parquet": {
+      "size": 222074,
+      "mtime_ns": 1791077415286878026
+    },
+    "work/himeji-live-store/sides/part-20261004T120105-88606.parquet": {
+      "size": 221355,
+      "mtime_ns": 1791077465331949095
+    },
+    "work/himeji-live-store/sides/part-20261004T120132-88606.parquet": {
+      "size": 191121,
+      "mtime_ns": 1791077492727505882
+    },
+    "work/himeji-live-store/sides/part-20261004T120458-45723.parquet": {
+      "size": 221442,
+      "mtime_ns": 1791077698083842305
+    },
+    "work/himeji-live-store/sides/part-20261004T120509-45723.parquet": {
+      "size": 176753,
+      "mtime_ns": 1791077709697715131
+    },
+    "work/himeji-live-store/sides/part-20261004T122430-74172.parquet": {
+      "size": 220940,
+      "mtime_ns": 1791078870795710355
+    },
+    "work/himeji-live-store/sides/part-20261004T122444-74172.parquet": {
+      "size": 218671,
+      "mtime_ns": 1791078884961181873
+    },
+    "work/himeji-live-store/sides/part-20261004T122510-74172.parquet": {
+      "size": 221513,
+      "mtime_ns": 1791078910487340336
+    },
+    "work/himeji-live-store/sides/part-20261004T122533-74172.parquet": {
+      "size": 219897,
+      "mtime_ns": 1791078933703301458
+    },
+    "work/himeji-live-store/sides/part-20261004T122549-74172.parquet": {
+      "size": 219736,
+      "mtime_ns": 1791078949814099182
+    },
+    "work/himeji-live-store/sides/part-20261004T122616-74172.parquet": {
+      "size": 222600,
+      "mtime_ns": 1791078976874788426
+    },
+    "work/himeji-live-store/sides/part-20261004T122624-74172.parquet": {
+      "size": 192759,
+      "mtime_ns": 1791078984926977535
+    },
+    "work/himeji-live-store/sides/part-20261004T125438-77067.parquet": {
+      "size": 222888,
+      "mtime_ns": 1791080678783740749
+    },
+    "work/himeji-live-store/sides/part-20261004T125526-77067.parquet": {
+      "size": 218951,
+      "mtime_ns": 1791080726851730130
+    },
+    "work/himeji-live-store/sides/part-20261004T125548-77067.parquet": {
+      "size": 183908,
+      "mtime_ns": 1791080748889340221
+    }
+  },
+  "top10": [
+    "264",
+    "306",
+    "213",
+    "91",
+    "952",
+    "842",
+    "87",
+    "55",
+    "507",
+    "566"
+  ],
+  "ladder_sha256": "74d926f42598386978de4ec7289c0429b14189fd72c2c8d3d51f83296336f797",
+  "query": "select game,side,round,ended,c_eats_bed bed_eats,c_eats_bed/nullif(c_bed_spawns,0) bed_capture,c_splits splits,c_transits transits,territory from read_parquet(?) where round in (25,50)",
+  "rows_sha256": "19ea932d223d9ba6ad50fdf6dc0f745b99d47da9e9833044d19cb86057a49ed4",
+  "first_start": "2026-10-02T23:13:00.454Z",
+  "last_start": "2026-10-04T01:45:11.541Z"
+}

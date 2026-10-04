@@ -1,0 +1,90 @@
+[
+  {
+    "cluster": "corridor/other-queen-spawn",
+    "round": 25,
+    "own_sides": 8,
+    "top10_sides": 169,
+    "common_exact_strata": 0,
+    "matched_own_sides": 0,
+    "matched_top10_sides": 0,
+    "gap": null,
+    "reason": "No game-time opponent Elo is available. Exact opponent/hash/seat/6h matching used only as support audit; tiny/missing overlap gives no reliable gap."
+  },
+  {
+    "cluster": "corridor/other-queen-spawn",
+    "round": 50,
+    "own_sides": 8,
+    "top10_sides": 169,
+    "common_exact_strata": 0,
+    "matched_own_sides": 0,
+    "matched_top10_sides": 0,
+    "gap": null,
+    "reason": "No game-time opponent Elo is available. Exact opponent/hash/seat/6h matching used only as support audit; tiny/missing overlap gives no reliable gap."
+  },
+  {
+    "cluster": "open/four-cell-queen",
+    "round": 25,
+    "own_sides": 3,
+    "top10_sides": 23,
+    "common_exact_strata": 0,
+    "matched_own_sides": 0,
+    "matched_top10_sides": 0,
+    "gap": null,
+    "reason": "No game-time opponent Elo is available. Exact opponent/hash/seat/6h matching used only as support audit; tiny/missing overlap gives no reliable gap."
+  },
+  {
+    "cluster": "open/four-cell-queen",
+    "round": 50,
+    "own_sides": 3,
+    "top10_sides": 23,
+    "common_exact_strata": 0,
+    "matched_own_sides": 0,
+    "matched_top10_sides": 0,
+    "gap": null,
+    "reason": "No game-time opponent Elo is available. Exact opponent/hash/seat/6h matching used only as support audit; tiny/missing overlap gives no reliable gap."
+  },
+  {
+    "cluster": "open/other-queen-spawn",
+    "round": 25,
+    "own_sides": 6,
+    "top10_sides": 253,
+    "common_exact_strata": 0,
+    "matched_own_sides": 0,
+    "matched_top10_sides": 0,
+    "gap": null,
+    "reason": "No game-time opponent Elo is available. Exact opponent/hash/seat/6h matching used only as support audit; tiny/missing overlap gives no reliable gap."
+  },
+  {
+    "cluster": "open/other-queen-spawn",
+    "round": 50,
+    "own_sides": 6,
+    "top10_sides": 253,
+    "common_exact_strata": 0,
+    "matched_own_sides": 0,
+    "matched_top10_sides": 0,
+    "gap": null,
+    "reason": "No game-time opponent Elo is available. Exact opponent/hash/seat/6h matching used only as support audit; tiny/missing overlap gives no reliable gap."
+  },
+  {
+    "cluster": "portal-dense/other-queen-spawn",
+    "round": 25,
+    "own_sides": 3,
+    "top10_sides": 44,
+    "common_exact_strata": 0,
+    "matched_own_sides": 0,
+    "matched_top10_sides": 0,
+    "gap": null,
+    "reason": "No game-time opponent Elo is available. Exact opponent/hash/seat/6h matching used only as support audit; tiny/missing overlap gives no reliable gap."
+  },
+  {
+    "cluster": "portal-dense/other-queen-spawn",
+    "round": 50,
+    "own_sides": 3,
+    "top10_sides": 44,
+    "common_exact_strata": 0,
+    "matched_own_sides": 0,
+    "matched_top10_sides": 0,
+    "gap": null,
+    "reason": "No game-time opponent Elo is available. Exact opponent/hash/seat/6h matching used only as support audit; tiny/missing overlap gives no reliable gap."
+  }
+]

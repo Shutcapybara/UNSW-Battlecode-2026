@@ -1,0 +1,32 @@
+{
+  "prior_himeji": "1f17b521d",
+  "main": "0298966ec",
+  "antioch": "2c7113f66",
+  "carthage": "5b69fa9d0",
+  "kyoto": "fccea71c0",
+  "rome": "6857cc261",
+  "nara_wake": "f8ae877e4",
+  "nara_final": "89c2d2cbe",
+  "rome_chat_cursor": "b99b513f-fdd3-41ba-b646-7855a1a8bbde:6",
+  "board_before": "H17-06;D-042",
+  "files": {
+    "tools/himeji/unit18_audit/geometry.json": "d46878da84962a2355f49ff962c275723eaa0f20c6f71dfd290ad1863ec58cd9",
+    "tools/himeji/unit18_audit/component-contrasts.json": "8752f3cc1f145bcab9cfaa925b9ab2822c49eee6bc7fdb478e56b0a6c0281fa7",
+    "tools/himeji/unit18_audit/store-summary.json": "a501aa610480c8f21e9755db0b5b4347be5f6af4ee9a7a35c8331d31cf3b7a14",
+    "tools/himeji/unit18_audit/last-build.json": "da437162cb554083f53a0b1514500476ec666d594ce616a14413968f38e51031",
+    "tools/himeji/unit18_audit/opening-rows.jsonl": "19ea932d223d9ba6ad50fdf6dc0f745b99d47da9e9833044d19cb86057a49ed4",
+    "tools/himeji/unit18_audit/store-coverage.json": "b6761f72027a17addf435623f66f92f10ac745d531f426c5b8e0ff7dc1f65312",
+    "tools/himeji/unit18_audit/raw-map-descriptives.json": "e3ea3c939def1857c9425065c9f223befbcc85ad048fd19df4ac8e7ba2ac2ce2",
+    "tools/himeji/unit18_audit/new-own-rows.json": "9f87abc1d52b26c4126ca149f3d722d70c70c60f1d73ec7735774d80bffb1ec7",
+    "tools/himeji/unit18_audit/manifest.json": "b628b698d857bdbbce55073702204a6953e0a26ec966d1afc7328a6cba343661",
+    "tools/himeji/unit18_audit/new-own-queens.json": "6117f46e299bfb2a9b18838df9ffab164035ead599e59c44c45e09e983e68d4f",
+    "tools/himeji/unit18_audit/fresh-delta.json": "d300706a6fcb03d994adf60d4561ebf2e5cea9b2c20c25f1cc08e8a1f64d596e",
+    "tools/himeji/unit18_audit/reference-manifest.json": "c0ac50a85ba4f75f5b97600ce01bd9d8716eedd211926746484f2d6ca8cf0ade",
+    "tools/himeji/unit18_audit/matching.json": "041bcba1028cf112ccb0481c41b7a5bb93f72526e7d35e77d20195a2fd145596",
+    "tools/himeji/unit18_audit/ranked-references.json": "cc60072f65d517e11f9c3dae3e2508954601c71a9d747f09c894579442cc83d4",
+    "tools/himeji/unit18_audit/decoder-source.json": "c82326faa21cfbbc008a1f78440c1845a52d24d2b3670837bd0c704db410b7eb",
+    "tools/himeji/unit18_audit/method.json": "63416d3e46f2ce684247ce86250ce7200f1da139fb9a52ce6260cc97aac448eb",
+    "tools/himeji/unit18_audit/live-db-read.json": "6754ac310539b4f0827b4ddd4bd0b6dbb093744283e83fc34cbd3eb12b617559",
+    "tools/himeji/opening_geometry_refs.py": "3de41dbd165c28553e5956dc5eb99b45fa51fe130faa2eab5dc375bec3c0746e"
+  }
+}

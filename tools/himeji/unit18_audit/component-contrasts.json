@@ -1,0 +1,90 @@
+[
+  {
+    "cluster": "corridor/other-queen-spawn",
+    "round": 25,
+    "contrast": "bed_capture percentile minus transit percentile",
+    "point": 0.109375,
+    "ci95": [
+      0.0668080357142857,
+      0.15852272727272726
+    ],
+    "interpretation": "paired-component descriptive contrast, not a causal return to increasing either action"
+  },
+  {
+    "cluster": "corridor/other-queen-spawn",
+    "round": 50,
+    "contrast": "bed_capture percentile minus transit percentile",
+    "point": 0.140625,
+    "ci95": [
+      0.078515625,
+      0.1832169117647059
+    ],
+    "interpretation": "paired-component descriptive contrast, not a causal return to increasing either action"
+  },
+  {
+    "cluster": "open/four-cell-queen",
+    "round": 25,
+    "contrast": "bed_capture percentile minus transit percentile",
+    "point": -0.15625,
+    "ci95": [
+      -0.3008110119047619,
+      0.10714285714285715
+    ],
+    "interpretation": "paired-component descriptive contrast, not a causal return to increasing either action"
+  },
+  {
+    "cluster": "open/four-cell-queen",
+    "round": 50,
+    "contrast": "bed_capture percentile minus transit percentile",
+    "point": 0.03888888888888886,
+    "ci95": [
+      -0.1346153846153847,
+      0.25
+    ],
+    "interpretation": "paired-component descriptive contrast, not a causal return to increasing either action"
+  },
+  {
+    "cluster": "open/other-queen-spawn",
+    "round": 25,
+    "contrast": "bed_capture percentile minus transit percentile",
+    "point": 0.08823529411764708,
+    "ci95": [
+      -0.012007270283479985,
+      0.15504706909937885
+    ],
+    "interpretation": "paired-component descriptive contrast, not a causal return to increasing either action"
+  },
+  {
+    "cluster": "open/other-queen-spawn",
+    "round": 50,
+    "contrast": "bed_capture percentile minus transit percentile",
+    "point": 0.02601809954751133,
+    "ci95": [
+      -0.03557291666666671,
+      0.07624154834347527
+    ],
+    "interpretation": "paired-component descriptive contrast, not a causal return to increasing either action"
+  },
+  {
+    "cluster": "portal-dense/other-queen-spawn",
+    "round": 25,
+    "contrast": "bed_capture percentile minus transit percentile",
+    "point": 0.036004273504273376,
+    "ci95": [
+      -0.05604634081196575,
+      0.14643841911764696
+    ],
+    "interpretation": "paired-component descriptive contrast, not a causal return to increasing either action"
+  },
+  {
+    "cluster": "portal-dense/other-queen-spawn",
+    "round": 50,
+    "contrast": "bed_capture percentile minus transit percentile",
+    "point": 0.10019841269841268,
+    "ci95": [
+      -0.016171874999999968,
+      0.1746875
+    ],
+    "interpretation": "paired-component descriptive contrast, not a causal return to increasing either action"
+  }
+]

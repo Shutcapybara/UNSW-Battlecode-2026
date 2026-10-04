@@ -62,3 +62,5 @@ Unit16: H16-01 corrects Himeji own fertility inference; H16-02/03 deliver cap le
 Unit17: directRome messages delivered tuple-unpackfix and r150/r250 timing mismatch; Romeacknowledged,diagnosingpost250 exposure. H17-01/02 reading;H17-03 newH-H3food-first-stepnegative;H17-04/05Nara acknowledgments/L47measurement request. No externalpersonmessage/newchat/pausedlane restart. Evidence `docs/findings/2026-10-04-himeji-rome04-timing-and-pocket-precursors.md`.
 
 Unit17 final direct handoff delivered independent paired numbers and type7 child-recipient distinction to active Rome; post250 analysis remains exploratory. Rome cursor b99b513f-fdd3-41ba-b646-7855a1a8bbde:5, survival audit agrees95/244; crown identity diagnosis pending.
+
+Unit18: delivered agreement with Rome04 corrected REJECT and requested05fresh/expired/nonqueen/absent evidence counts plusclean01guard. H18-02/03rankedgeometryreferences/L41guidance;H18-04acceptsNara89c2d2cbeL47correctionplan,keeps95Portalsfinding scoped. H18-05freshlongestfallbackcases,H18-06storecursor. No newchat/externalmessage/pausedlane restart. `docs/findings/2026-10-04-himeji-ranked-opening-geometry-reference.md`.
