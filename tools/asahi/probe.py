@@ -19,12 +19,18 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('bot'); ap.add_argument('--opp', default='yuna-v05-core')
     ap.add_argument('--maps', default='live/schooltime,live/portals,live/australia,live/trauma,live/unsw')
+    ap.add_argument('--zip-only', action='store_true')
     a = ap.parse_args()
     from arena import run_game
     from unswbc.project import Project
     from unswbc.submit import _zip
     fp = R.runtime_fingerprint(ROOT / 'bots' / a.bot)
-    blob = _zip(Project.from_dir(str(ROOT / 'bots' / a.bot)))
+    proj = Project.from_dir(str(ROOT / 'bots' / a.bot))
+    proj.collect_sources()          # _zip reads project.sources; without this the archive holds only bot.toml
+    blob = _zip(proj)
+    print(f'zip {len(blob)} bytes, {len(proj.sources)} sources', flush=True)
+    if a.zip_only:
+        print(f"ZIP {a.bot} fp {fp[:8]} {len(blob) / 2 ** 20:.3f} MiB"); return
     rows = []
     for m in a.maps.split(','):
         for A, B, seat in ((a.bot, a.opp, 'A'), (a.opp, a.bot, 'B')):

@@ -51,12 +51,17 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('bot'); ap.add_argument('--panel', default='pool')
     ap.add_argument('--jobs', type=int, default=14); ap.add_argument('--limit', type=int, default=0)
+    ap.add_argument('--maps', default='', help='comma list of map keys to capture (default all)')
+    ap.add_argument('--tag', default='', help='suffix for the output files')
     a = ap.parse_args()
     jobs = min(a.jobs, int(os.environ.get('ASAHI_MAX_WORKERS', '14')))
     root = P.run_root(a.bot, a.panel)
     rows = [json.loads(s) for s in open(root / 'index.jsonl') if s.strip()]
     rows = [r for r in rows if r.get('rc') == 0]
-    out = root / 'kz12.jsonl'
+    if a.maps:
+        keep = set(a.maps.split(','))
+        rows = [r for r in rows if r['map'] in keep]
+    out = root / f'kz12{a.tag}.jsonl'
     done = {json.loads(s)['game'] for s in open(out)} if out.exists() else set()
     todo = [r for r in rows if r['game'] not in done][: a.limit or None]
     print(f'{len(rows)} fixtures, {len(todo)} to capture', flush=True)
@@ -82,7 +87,7 @@ def main():
                 engine_errors=sum(bool(r['errors']) for r in res),
                 by_map={k: dict(v, queen_fire_per1k=1000 * v['queen'][1] / max(1, v['queen'][0]),
                                 other_fire_per1k=1000 * v['other'][1] / max(1, v['other'][0])) for k, v in sorted(by.items())})
-    (root / 'kz12_summary.json').write_text(json.dumps(summ, indent=1))
+    (root / f'kz12_summary{a.tag}.json').write_text(json.dumps(summ, indent=1))
     a_ = summ['by_map'].get('ALL', {})
     print(json.dumps(dict(fixtures=summ['fixtures'], mismatches=summ['mismatches'], engine_errors=summ['engine_errors'],
                           ALL=a_), indent=1))
