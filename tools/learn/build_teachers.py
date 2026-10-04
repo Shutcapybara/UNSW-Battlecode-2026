@@ -1,6 +1,7 @@
 """Full teacher rows, native on the Mac through the learn queue (Data lane, kageyama; D-062 §C, teachers_v1).
 
-One zstd parquet shard per game under OUT_DIR (never concatenated): meta + encoder (int16 x_*) + labels (y_*) +
+One zstd parquet shard per game under OUT_DIR (never concatenated; games with no sampled teacher process get a marker
+in OUT_DIR/_empty/ instead; files and folders starting with '_' are ignored by pyarrow datasets): meta + encoder (int16 x_*) + labels (y_*) +
 value targets + blocks_src + hb_pF/hb_pR/hb_pL + hb_f_* (HB-1's 270-feature vector, float32). Resumable: a game whose
 shard exists is skipped; shards are written to .tmp and renamed. Workers are recycled every --per-child games (the
 wasm engine's memory grows ~3 GB over ~60 games). Stops cleanly when free disk falls under --min-free-gb.
@@ -46,7 +47,8 @@ def one(g):
     import dataset as DS
     a, T, S = G['a'], G['T'], G['S']
     part = Path(a.out) / f'{g}.parquet'
-    if part.exists():
+    empty = Path(a.out) / '_empty' / g
+    if part.exists() or empty.exists():
         return dict(game=g, skipped='exists')
     t0 = time.time()
     r = S.loc[g]
@@ -58,7 +60,11 @@ def one(g):
                 source='server')
     rows, st = DS.game_rows(g, (Path(a.replay_dir) / f'{g}.replay').read_bytes(), G['seeds'].get(g), set(TT.side),
                             a.pct, True, meta, hb1_feats=G['exe'])
-    df = DS.to_frame(rows) if rows else pd.DataFrame({'game': pd.Series([], dtype=str)})
+    if not rows:                                 # no sampled teacher process: a marker, not a schema-less shard
+        empty.parent.mkdir(exist_ok=True)
+        empty.write_text(json.dumps(st))
+        return dict(game=g, **st, bytes=0, sec=round(time.time() - t0, 1))
+    df = DS.to_frame(rows)
     tmp = part.with_suffix('.tmp')
     df.to_parquet(tmp, index=False, compression='zstd')
     os.replace(tmp, part)
@@ -84,7 +90,7 @@ def main():
     T = pd.read_parquet(a.sides)
     games = [g for g in sorted(T.game.astype(str).unique()) if (Path(a.replay_dir) / f'{g}.replay').exists()]
     missing = T.game.astype(str).nunique() - len(games)
-    todo = [g for g in games if not (Path(a.out) / f'{g}.parquet').exists()]
+    todo = [g for g in games if not (Path(a.out) / f'{g}.parquet').exists() and not (Path(a.out) / '_empty' / g).exists()]
     if a.limit:
         todo = todo[:a.limit]
     print(f'exe {exe} games {len(games)} (missing replay {missing}) todo {len(todo)} jobs {a.jobs}', flush=True)
