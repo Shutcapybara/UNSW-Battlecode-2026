@@ -44,7 +44,11 @@ pushes `r/shenzhen`.
 | H-SZ28 | our corpse loop leaks to the enemy — **supported by birth cohort** (unit 14: 29–39 % vs 16–19 % on Around UNSW/Australia/Islands) | measured | leaked corpses not more often in contact zones than the top ten's | corpus | analyst |
 | H-SZ32 | salvage: allies prioritise an ally's contact corpse for ~10 rounds | posted 0.5 (unit 14) | enemy-eaten share of contact corpses not −5 pp in sim | simulator 12 sides | Claude tester / probe |
 | H-SZ33 | die at home | **withdrawn** (unit 15: probes M/M2 never fire — no self-cull at len ≤ 3; cap splits are sealed) | — | — | — |
-| H-SZ34 | be the mover, not the partner: h2h = 59 % of late deaths (sim), mover +1.9 units/trade | posted 0.55 (unit 15) | partner deaths/game not −25 % or pool total < −5 % (sim 18 games); store: top-ten partner share not below ours | sim 18 games + store query | Claude tester / Chongqing |
+| H-SZ34 | be the mover, not the partner (yield) | **refuted in sim** (unit 16: partner −10 %, total −18 %, Islands −55 %) | — | — | — |
+| H-SZ36 | strike first: short non-queen moves into adjacent equal/longer head | **refuted in sim** (unit 16: mover +61 %, total −10 %, Islands −32 %) | — | — | — |
+| H-SZ37 | contact arms priced in pool total per map, Islands canary — the trade ledger is not value | posted 0.5 (unit 16) | a contact arm with Islands total ≥ 0 while its role count moves the other way | 18 sim games | any tester |
+| H-SZ38 | field's lower leak = collector density (ally heads within 3 at contact deaths) | posted 0.45 (unit 16) | top-ten ally-head count at contact deaths ≤ ours | ~300 post-m2 games, store | Chongqing/Himeji |
+| H-SZ39 | deliberate death pays only above ~1.6 pearls (50-round income of a len 2–4 dragon) | posted 0.35 (unit 16) | a cull arm below 1.6 yield/death that still raises sim total | re-read C/K/M2 | analyst |
 | H-SZ35 | trade-point collection: ally within 3 of a cross-team head-on collects the partner corpse (the 50/50 pool) | posted 0.4 (unit 15), supersedes H-SZ32 trigger | enemy share of partner corpses not −10 pp in sim | sim 12 sides | Claude tester |
 | H-SZ31 | cull to free at the cap (probe K): cage 4/4 queen 3; Slithery 6 sides undecided | posted 0.45 (unit 13) | cage survival < E3's or cap-map wins < E0's | Rome ladder arm K | Rome |
 | H-SZ30 | bed income: top ten +35–67 % bed meals late; spawn-to-eat latency | posted 0.5 (unit 12) | top ten latency not shorter | corpus 300 games | analyst |
@@ -98,10 +102,11 @@ pushes `r/shenzhen`.
   H-SZ32 salvage, H-SZ33 die at home.
 
 - **Unit 15 (4 Oct 09:00Z – 09:45Z).** Board read (Chongqing C8, Nara endorsements). Probe M (H-SZ33) and M2 in the simulator: 12/12 games identical to parent; logging copy shows no split at len ≤ 3 and every cap split is probe C's sealed split → H-SZ33 withdrawn. New `szh2h.py`: head-on trades = 59 % of late deaths, mutual, mover shorter, mover +1.9 units/trade → H-SZ34, H-SZ35. Self-play leak matches live (szleak.py). Finding unit 15.
+- **Unit 16 (4 Oct 10:07Z – 10:45Z).** Unit-15 push request was overwritten (git.done shows only Kanazawa 09:46) → re-requested. Himeji H33-04 accepted: szh2h v2 (identity matching) — ledger holds. Probes N (H-SZ34 yield) and O (H-SZ36 strike first), 18 sim games each: both move roles, both lose total (−18 %, −10 %; Islands worst). Option value of a small dragon 1.59 pearls/50 rounds. New H-SZ37/38/39. Finding unit 16.
 
 ## Next unit
 
-0. H-SZ34 probe in the simulator (raise the danger weight inside a shorter enemy head's reach when we are longer; 18 games vs C+D, partner deaths/game + pool total); then H-SZ35; H-SZ30 with the full spawn risk set; read Rome's E0 result when it lands.
+0. H-SZ35 trade-point collection probe (18 sim games, Islands canary); H-SZ39 re-read of probes C/K/M2; follow up the H-SZ38 store query with Chongqing/Himeji; H-SZ30 with the full spawn risk set; read Rome's E0 result when it lands.
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
