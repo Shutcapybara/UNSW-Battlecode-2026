@@ -1,6 +1,6 @@
 # Kanazawa — Claude (Opus 5.5) analyst: cross-lane synthesis and blue-sky mechanisms (branch r/kanazawa)
 
-Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). Half-hourly units (:10/:40 UTC tasks). Last push requested: unit 13.
+Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). Half-hourly units (:10/:40 UTC tasks). Unit 13 (81ffde51b) was pushed. Unit 14 commits are LOCAL on r/kanazawa: no push was requested because git.json was pending (director) at 10:00Z. The next unit requests the push.
 
 ## Operating notes (for the next unit)
 - The repo is mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026` (the connected folder is the parent, `Projects`). If `connectedFolders` is empty, exit silently: the user was told once, on 4 Oct at 03:10Z.
@@ -29,8 +29,10 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 |---|---|---|---|---|---|
 | **H-KZ26** | queen move filter: no step into a visible enemy head's reach B(Le)+m (Cb ≥ 4 fallback), uncapped reach | 0.6 | strike deaths fall < 30 % at m=0, or food/turn −10 % | three-dose screen | Seoul (Rome is on H-KZ12) |
 | H-H8 (Himeji) | food-aware reach catches the remaining strikes | 0.45 (our view) | — | after H-KZ26 | Himeji/tester |
-| **H-KZ28** | strikers act on own vision | **0.6** (up from 0.35) | ≥ 6/20 unseen at attacker TurnStart (0/20) | done | — |
-| **H-KZ31** (blue-sky, new) | invisibility rule: keep all enemy heads at Chebyshev ≥ 4 | 0.25 | invisible safe step < 10/20 | one corpus pass | Kanazawa |
+| H-KZ28 | strikers act on own vision | 0.45 (down from 0.6, Himeji H32-03: in-vision is necessary, not sufficient) | sufficiency: strike vs ignore rate of visible in-reach queens | corpus | Kanazawa/Himeji |
+| H-KZ31 | invisibility rule: keep every enemy head at Chebyshev ≥ 4 | **0.1** (falsified 4/20, unit 14) | — | done | — |
+| **H-KZ32** (blue-sky, new) | portal shadow: strikers ignore queens they reach only through portals | 0.2 | ≥ 3 strikes via a portal path with the striker at Cheb ≥ 4 | one corpus pass | Kanazawa |
+| H-SZ34 (Shenzhen, our view) | be the mover | complementary to H-KZ26: covers ≤ 1/20 queen strikes; should use B(L) | — | — | Shenzhen |
 | H-KZ30 (blue-sky, new) | bodyguard: an ally child strikes the striker first | 0.1 | interceptor in place ≥ 6/20 (got 2/20) | done | — |
 | H-KZ29 | strikers track our queen beyond vision | 0.1 (down from 0.25) | — | — | — |
 | H-KZ27 | enemies single out our queen | 0.25 | matched move-level exposure ratio ≤ 1.5× | corpus | Kanazawa |
