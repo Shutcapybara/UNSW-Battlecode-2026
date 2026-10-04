@@ -145,7 +145,7 @@ class Daemon:
             if not msg:
                 raise ValueError('empty message')
             r1 = self.git('add', '--', *paths, check=False)
-            big = [l for l in self.git('diff', '--cached', '--numstat').stdout.splitlines()]
+            numstat = self.git('diff', '--cached', '--numstat').stdout.splitlines()
             for path in self.git('diff', '--cached', '--name-only').stdout.split():
                 f = self.tree / path
                 big = f.exists() and not f.is_symlink() and f.lstat().st_size > 4 * 1024 * 1024
@@ -157,7 +157,7 @@ class Daemon:
                     self.git('reset', '-q', '--', path, check=False)
                     logf.write(f'unstaged forbidden file {path}\n')
             r2 = self.git('commit', '-m', msg, check=False)
-            logf.write(r1.stdout + r1.stderr + r2.stdout + r2.stderr + '\n'.join(big) + '\n')
+            logf.write(r1.stdout + r1.stderr + r2.stdout + r2.stderr + '\n'.join(numstat) + '\n')
             return r2.returncode
         if kind == 'merge_main':
             r = self.git('merge', '--no-edit', 'main', check=False)
