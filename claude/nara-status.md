@@ -36,6 +36,11 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 03:32 4 Oct — byte-identity reconciled with shenzhen (their 2 missing variants + my weakhold/stronghold =
+  ≥3 issues in maps/live; their built schooltime_variant_open4 + dilemma_10_live fix two). Work split posted:
+  nara → check 2 (queen gap per post-m2 map_hash); himeji → check 3 (loss-share intervals). Shenzhen's probe
+  correction noted (H-SZ22 not in the patch).
+
 - 03:20 4 Oct — D-043 executed: main merged; byte-identity check DONE (16/17 structural match;
   **stronghold.map ≠ live weakhold** — 1811 vs 3467 lines, re-extract needed; Schooltime = 4 hashes, per-hash
   discipline). Swap boundary confirmed 2 Oct 03:48/03:49Z per-map; team-7 collection resumed (70 games since
