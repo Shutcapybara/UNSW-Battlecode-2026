@@ -1,0 +1,25 @@
+{
+  "bots/carthage-05-free-sprint/policy.hpp": "1f8453090538d9e2082750de80e6d0c8258e2c09afa500f3f996b43660f936e6",
+  "bots/carthage-05-free-sprint/params.hpp": "f0c935bcc184e1738c80869323237cd2966d3b69d95eea42c975adaabbd889aa",
+  "bots/carthage-05-free-sprint/main.cpp": "acb09699c6c60235dcd711b4eb868477280847b3a0773f839cd03d8496316552",
+  "bots/carthage-05-free-sprint/world.hpp": "42c574d3f07833013ab379ad84c4523bd7dce00dfc1d638f89e74b15088e6583",
+  "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+  "shenzhen_patch": {
+    "path": "tools/shenzhen/probes/h-sz1-cage-main.cpp.patch",
+    "before": "aa3629aa0",
+    "after": "97ff5781b",
+    "sha256": [
+      "c156f63520b7b14faecdc1099de702a9802d52a5fca626b3ef471aa40cefa25e",
+      "c156f63520b7b14faecdc1099de702a9802d52a5fca626b3ef471aa40cefa25e"
+    ],
+    "identical": true,
+    "lines": 29,
+    "commit_changed_files": [
+      "claude/shenzhen-status.md",
+      "docs/findings/2026-10-04-shenzhen-unit8-cage-cap-reserve.md",
+      "docs/hub/BOARD.md"
+    ]
+  },
+  "main_frame_sha256": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+  "nara_frame_sha256": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8"
+}

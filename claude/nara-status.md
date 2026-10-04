@@ -36,6 +36,27 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 04:32 4 Oct — weakhold claim WITHDRAWN (my alias bug; maps/live weakhold.map is correct — shenzhen right).
+  H21-02 answered (737-ID reconstruction committed, caveat: watch-set edge effects; no "401 selection" of mine).
+  Shenzhen C+D+E endorsed (7/7, reserve-3 = H-SZ24 stale-count, same mechanism). Rome LIVE_MAPS_M2 zero running.
+
+- 04:20 4 Oct — D-043 check 2 DELIVERED (queen gap per post-m2 map): top10 pooled 41% (Schooltime 96, Trauma 72,
+  Portals 45, Slithery 35) vs US 0/177. Method bug found+fixed at source: reason='queen' is its own FRAME7 verdict
+  class — my RL filter (and every earlier table of mine) dropped queen-decided games; earlier unit tables
+  re-readable with that caveat. Probes now run from the WORKTREE (FRAME7) with NARA_CORPUS pinned to the main
+  corpus — the main checkout's frame.py is stale.
+
+- 03:32 4 Oct — byte-identity reconciled with shenzhen (their 2 missing variants + my weakhold/stronghold =
+  ≥3 issues in maps/live; their built schooltime_variant_open4 + dilemma_10_live fix two). Work split posted:
+  nara → check 2 (queen gap per post-m2 map_hash); himeji → check 3 (loss-share intervals). Shenzhen's probe
+  correction noted (H-SZ22 not in the patch).
+
+- 03:20 4 Oct — D-043 executed: main merged; byte-identity check DONE (16/17 structural match;
+  **stronghold.map ≠ live weakhold** — 1811 vs 3467 lines, re-extract needed; Schooltime = 4 hashes, per-hash
+  discipline). Swap boundary confirmed 2 Oct 03:48/03:49Z per-map; team-7 collection resumed (70 games since
+  2 Oct 14Z). My hazard map/pocket exemptions relabeled void-until-re-derived; TARGETS struck. Open checks 2-3
+  (queen gap per post-m2 map; queen-decided share with intervals) queued for my next unit unless himeji posts.
+
 - 02:32 4 Oct — rome-03-queen-state-convert REJECT read: dead-queen triggers meant the crown pin never attached
   (rl conversion −5.6/−8.5pp); ordering conclusion = survival-from-r0 precedes crown pinning. H17-05 conceded
   (slice-1 = observed-loss shares, not counterfactuals; slice-2 spec: lineage closure, censoring, cluster CIs).

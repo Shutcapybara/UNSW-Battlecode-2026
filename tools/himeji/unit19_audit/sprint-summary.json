@@ -1,0 +1,244 @@
+{
+  "games": 416,
+  "sides": 832,
+  "reason_counts": {
+    "longest": 486,
+    "queen": 334,
+    "total": 12
+  },
+  "mode_games": {
+    "false": 257,
+    "true": 159
+  },
+  "started_min": "2026-10-02T04:12:41.121Z",
+  "started_max": "2026-10-03T23:46:15.645Z",
+  "results": [
+    {
+      "ranked": false,
+      "cohort": "other",
+      "condition": "all selected sides",
+      "sides": 163,
+      "games": 157,
+      "series": 95,
+      "q_paid_mean": 0.5460122699386503,
+      "q_paid_mean_ci95": [
+        0.30148432790837854,
+        0.8703853046594981
+      ],
+      "ever_pay_share": 0.1901840490797546,
+      "ever_pay_ci95": [
+        0.12901591107236268,
+        0.2715285775986179
+      ],
+      "q_multi_share": 0.045729184947476624
+    },
+    {
+      "ranked": false,
+      "cohort": "other",
+      "condition": "terminal queen alive",
+      "sides": 40,
+      "games": 39,
+      "series": 31,
+      "q_paid_mean": 1.1,
+      "q_paid_mean_ci95": [
+        0.3783783783783784,
+        1.9289682539682536
+      ],
+      "ever_pay_share": 0.275,
+      "ever_pay_ci95": [
+        0.15,
+        0.41025641025641024
+      ],
+      "q_multi_share": 0.05161907639623307
+    },
+    {
+      "ranked": false,
+      "cohort": "top10",
+      "condition": "all selected sides",
+      "sides": 245,
+      "games": 214,
+      "series": 117,
+      "q_paid_mean": 0.22857142857142856,
+      "q_paid_mean_ci95": [
+        0.10038074375423774,
+        0.3910319944357502
+      ],
+      "ever_pay_share": 0.10612244897959183,
+      "ever_pay_ci95": [
+        0.062240202858460124,
+        0.15295622973598888
+      ],
+      "q_multi_share": 0.07081468099520463
+    },
+    {
+      "ranked": false,
+      "cohort": "top10",
+      "condition": "terminal queen alive",
+      "sides": 102,
+      "games": 91,
+      "series": 70,
+      "q_paid_mean": 0.13725490196078433,
+      "q_paid_mean_ci95": [
+        0.051539783240814166,
+        0.23305181295819297
+      ],
+      "ever_pay_share": 0.09803921568627451,
+      "ever_pay_ci95": [
+        0.043478260869565216,
+        0.15386597938144328
+      ],
+      "q_multi_share": 0.0677234000396275
+    },
+    {
+      "ranked": false,
+      "cohort": "us",
+      "condition": "all selected sides",
+      "sides": 106,
+      "games": 106,
+      "series": 25,
+      "q_paid_mean": 0.14150943396226415,
+      "q_paid_mean_ci95": [
+        0.0782608695652174,
+        0.21782178217821782
+      ],
+      "ever_pay_share": 0.11320754716981132,
+      "ever_pay_ci95": [
+        0.06314144736842106,
+        0.1752718930553982
+      ],
+      "q_multi_share": 0.014807758919293383
+    },
+    {
+      "ranked": true,
+      "cohort": "other",
+      "condition": "all selected sides",
+      "sides": 162,
+      "games": 150,
+      "series": 104,
+      "q_paid_mean": 0.24691358024691357,
+      "q_paid_mean_ci95": [
+        0.11232833957553058,
+        0.4390606852497096
+      ],
+      "ever_pay_share": 0.12345679012345678,
+      "ever_pay_ci95": [
+        0.07188375350140055,
+        0.18125
+      ],
+      "q_multi_share": 0.06859737974653446
+    },
+    {
+      "ranked": true,
+      "cohort": "other",
+      "condition": "terminal queen alive",
+      "sides": 44,
+      "games": 43,
+      "series": 36,
+      "q_paid_mean": 0.11363636363636363,
+      "q_paid_mean_ci95": [
+        0.021739130434782608,
+        0.2273200757575757
+      ],
+      "ever_pay_share": 0.09090909090909091,
+      "ever_pay_ci95": [
+        0.021739130434782608,
+        0.175
+      ],
+      "q_multi_share": 0.058465898701773635
+    },
+    {
+      "ranked": true,
+      "cohort": "top10",
+      "condition": "all selected sides",
+      "sides": 104,
+      "games": 99,
+      "series": 84,
+      "q_paid_mean": 0.19230769230769232,
+      "q_paid_mean_ci95": [
+        0.08163265306122448,
+        0.3334183673469387
+      ],
+      "ever_pay_share": 0.11538461538461539,
+      "ever_pay_ci95": [
+        0.05554281345565749,
+        0.18019948519948517
+      ],
+      "q_multi_share": 0.08162612966030279
+    },
+    {
+      "ranked": true,
+      "cohort": "top10",
+      "condition": "terminal queen alive",
+      "sides": 50,
+      "games": 48,
+      "series": 41,
+      "q_paid_mean": 0.06,
+      "q_paid_mean_ci95": [
+        0.0,
+        0.13333333333333333
+      ],
+      "ever_pay_share": 0.06,
+      "ever_pay_ci95": [
+        0.0,
+        0.13333333333333333
+      ],
+      "q_multi_share": 0.08237011801922375
+    },
+    {
+      "ranked": true,
+      "cohort": "us",
+      "condition": "all selected sides",
+      "sides": 52,
+      "games": 52,
+      "series": 18,
+      "q_paid_mean": 0.057692307692307696,
+      "q_paid_mean_ci95": [
+        0.0,
+        0.12962962962962962
+      ],
+      "ever_pay_share": 0.057692307692307696,
+      "ever_pay_ci95": [
+        0.0,
+        0.12962962962962962
+      ],
+      "q_multi_share": 0.0008807468733485996
+    }
+  ],
+  "free_steps": {
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 2,
+    "7": 2,
+    "8": 2,
+    "9": 3,
+    "10": 3,
+    "11": 3,
+    "12": 3,
+    "13": 4,
+    "14": 4,
+    "15": 4,
+    "16": 4,
+    "17": 5,
+    "18": 5,
+    "19": 5,
+    "20": 5,
+    "21": 6
+  },
+  "source_parts": [
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/qpay/part-20261004T023751-9.parquet",
+      "sha256": "6f8509418a39c89238961ac510f3b5d62f1c65bde0e79b2959cda0560d1c6dc9"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/qpay/part-20261004T024050-8.parquet",
+      "sha256": "997623c681cd5692cf899bbd1c87b5b10867e10d25978718d61460d9ebde494f"
+    },
+    {
+      "file": "/Users/alik/Documents/Projects/UNSW-Battlecode-2026/build/shenzhen/qpay/part-20261004T024342-8.parquet",
+      "sha256": "266e1042945a8f0c34c404708b9474be165a9c58377f75d031d3fbafc7db5d25"
+    }
+  ],
+  "method": "Selected qpay sample; frozen current ladder and index; series bootstrap1000 seed1919, descriptive selection-conditional CI; no causal inference. Queen survival condition is post-outcome selection. Modes separated; reasons enumerated, not inferred from R."
+}

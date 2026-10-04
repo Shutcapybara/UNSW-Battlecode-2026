@@ -1,0 +1,343 @@
+{
+  "games": 31,
+  "sides": 62,
+  "metadata_games": 118774,
+  "by_mode_games": {
+    "True": 31
+  },
+  "by_era_games": {
+    "post": 31
+  },
+  "pending_from_last_selection": 1110,
+  "team_map_mode": [
+    {
+      "team": "1016",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "1036",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "147",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "152",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "152",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "178",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "178",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "19",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "213",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 3,
+      "series": 3
+    },
+    {
+      "team": "213",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "264",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "264",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "280",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "306",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "306",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "375",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "454",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "46",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "465",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "501",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "507",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "507",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "510",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "529",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "529",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "55",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "55",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "566",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "566",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "64",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "7",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "7",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "71",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "71",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "776",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "801",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "801",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "82",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "842",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "87",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "87",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "91",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "91",
+      "map": "Australia",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "948",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 2,
+      "series": 2
+    },
+    {
+      "team": "952",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    },
+    {
+      "team": "959",
+      "map": "Around UNSW",
+      "ranked": true,
+      "sides": 1,
+      "series": 1
+    }
+  ]
+}

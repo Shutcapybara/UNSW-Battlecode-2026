@@ -1,0 +1,2458 @@
+{
+  "rows": [
+    {
+      "game": 858818,
+      "series": "7821f89b-253b-47a4-a2d1-96b465c525d6",
+      "ranked": false,
+      "started_at": "2026-10-02T06:22:41.556Z",
+      "map": "weakhold",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "submission": "14585",
+      "own_side": "A",
+      "queen_id": 0,
+      "W": 40,
+      "H": 15,
+      "feed_from_source": 427,
+      "death": {
+        "round": 29,
+        "id": 0,
+        "team": "A",
+        "cause": "wall",
+        "length": 3,
+        "actor": 0,
+        "age": 29,
+        "head": [
+          7,
+          5
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "last_splits": [
+        {
+          "round": 0,
+          "team": "A",
+          "parent": 0,
+          "child": 4,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 28,
+          "team": "A",
+          "parent": 0,
+          "child": 15,
+          "before": 5,
+          "parent_len": 3,
+          "child_len": 2
+        }
+      ],
+      "actions": [
+        {
+          "round": 21,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5871273,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 22,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 6008102,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 23,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5753102,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 24,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5896350,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 25,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5805874,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 26,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5839036,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 27,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5849121,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 28,
+          "id": 0,
+          "team": "A",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": 5824371
+        },
+        {
+          "round": 29,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5740851,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        }
+      ],
+      "turns": [
+        {
+          "round": 21,
+          "queen_body_head_first": [
+            [
+              10,
+              9
+            ],
+            [
+              10,
+              10
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                10,
+                8
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                10,
+                10
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 22,
+          "queen_body_head_first": [
+            [
+              10,
+              8
+            ],
+            [
+              10,
+              9
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                10,
+                7
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                10,
+                9
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                9,
+                8
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 23,
+          "queen_body_head_first": [
+            [
+              9,
+              8
+            ],
+            [
+              10,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                10,
+                8
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                8,
+                8
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 24,
+          "queen_body_head_first": [
+            [
+              8,
+              8
+            ],
+            [
+              9,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                8,
+                7
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                9,
+                8
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                9
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 25,
+          "queen_body_head_first": [
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                8,
+                6
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                8
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 26,
+          "queen_body_head_first": [
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                8,
+                5
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                7
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 27,
+          "queen_body_head_first": [
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                6
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                7,
+                5
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 28,
+          "queen_body_head_first": [
+            [
+              7,
+              5
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                8,
+                5
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 29,
+          "queen_body_head_first": [
+            [
+              7,
+              5
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                8,
+                5
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        }
+      ],
+      "replay_sha256": "fd92edcb556197e8d81e4321661aa64d4c636ec449dd0ebe814b4647a2f08bce",
+      "official_winner": "B"
+    },
+    {
+      "game": 888879,
+      "series": "e8421c47-5382-454b-8e07-34b018f57dc5",
+      "ranked": false,
+      "started_at": "2026-10-02T14:52:41.327Z",
+      "map": "weakhold",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "submission": "14585",
+      "own_side": "A",
+      "queen_id": 1,
+      "W": 40,
+      "H": 15,
+      "feed_from_source": 427,
+      "death": {
+        "round": 44,
+        "id": 1,
+        "team": "A",
+        "cause": "wall",
+        "length": 3,
+        "actor": 1,
+        "age": 44,
+        "head": [
+          26,
+          14
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "last_splits": [
+        {
+          "round": 0,
+          "team": "A",
+          "parent": 1,
+          "child": 5,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 43,
+          "team": "A",
+          "parent": 1,
+          "child": 14,
+          "before": 5,
+          "parent_len": 3,
+          "child_len": 2
+        }
+      ],
+      "actions": [
+        {
+          "round": 36,
+          "id": 1,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 6198574,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 37,
+          "id": 1,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5969108,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 38,
+          "id": 1,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5951135,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 39,
+          "id": 1,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5910202,
+          "dirs": [
+            2
+          ],
+          "paid": 0
+        },
+        {
+          "round": 40,
+          "id": 1,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 6034585,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 41,
+          "id": 1,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5885905,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 42,
+          "id": 1,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5922737,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 43,
+          "id": 1,
+          "team": "A",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": 6003095
+        },
+        {
+          "round": 44,
+          "id": 1,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5829829,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        }
+      ],
+      "turns": [
+        {
+          "round": 36,
+          "queen_body_head_first": [
+            [
+              32,
+              13
+            ],
+            [
+              33,
+              13
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                32,
+                12
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                33,
+                13
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                32,
+                14
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                31,
+                13
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 37,
+          "queen_body_head_first": [
+            [
+              31,
+              13
+            ],
+            [
+              32,
+              13
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                32,
+                13
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                31,
+                14
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                30,
+                13
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 38,
+          "queen_body_head_first": [
+            [
+              30,
+              13
+            ],
+            [
+              31,
+              13
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                31,
+                13
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                30,
+                14
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                29,
+                13
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 39,
+          "queen_body_head_first": [
+            [
+              29,
+              13
+            ],
+            [
+              30,
+              13
+            ]
+          ],
+          "own_units": 5,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                30,
+                13
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                29,
+                14
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 40,
+          "queen_body_head_first": [
+            [
+              29,
+              14
+            ],
+            [
+              29,
+              13
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                29,
+                13
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                30,
+                14
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                28,
+                14
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 41,
+          "queen_body_head_first": [
+            [
+              28,
+              14
+            ],
+            [
+              29,
+              14
+            ],
+            [
+              29,
+              13
+            ]
+          ],
+          "own_units": 5,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                29,
+                14
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                27,
+                14
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 42,
+          "queen_body_head_first": [
+            [
+              27,
+              14
+            ],
+            [
+              28,
+              14
+            ],
+            [
+              29,
+              14
+            ],
+            [
+              29,
+              13
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                28,
+                14
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                26,
+                14
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 43,
+          "queen_body_head_first": [
+            [
+              26,
+              14
+            ],
+            [
+              27,
+              14
+            ],
+            [
+              28,
+              14
+            ],
+            [
+              29,
+              14
+            ],
+            [
+              29,
+              13
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                27,
+                14
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 44,
+          "queen_body_head_first": [
+            [
+              26,
+              14
+            ],
+            [
+              27,
+              14
+            ],
+            [
+              28,
+              14
+            ]
+          ],
+          "own_units": 6,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                27,
+                14
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        }
+      ],
+      "replay_sha256": "a8db2020e0c6db0f31351757c5ddd7723a6b7e8b409219fe6e01441a4649fd37",
+      "official_winner": "B"
+    },
+    {
+      "game": 992702,
+      "series": "2e5aef61-61c6-4867-bd94-41be4b3f6438",
+      "ranked": true,
+      "started_at": "2026-10-03T21:56:08.800Z",
+      "map": "weakhold",
+      "map_hash": "665aaa6c85386601999a827462edff5b253d56acc5337a9c9dcfaa14512873c8",
+      "submission": "14585",
+      "own_side": "A",
+      "queen_id": 0,
+      "W": 40,
+      "H": 15,
+      "feed_from_source": 427,
+      "death": {
+        "round": 29,
+        "id": 0,
+        "team": "A",
+        "cause": "wall",
+        "length": 3,
+        "actor": 0,
+        "age": 29,
+        "head": [
+          7,
+          5
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "last_splits": [
+        {
+          "round": 0,
+          "team": "A",
+          "parent": 0,
+          "child": 4,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 28,
+          "team": "A",
+          "parent": 0,
+          "child": 10,
+          "before": 5,
+          "parent_len": 3,
+          "child_len": 2
+        }
+      ],
+      "actions": [
+        {
+          "round": 21,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5870024,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 22,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 6009100,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 23,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5748699,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 24,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5880773,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 25,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5807897,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 26,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5826735,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 27,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5850660,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 28,
+          "id": 0,
+          "team": "A",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": 5811427
+        },
+        {
+          "round": 29,
+          "id": 0,
+          "team": "A",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5749993,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        }
+      ],
+      "turns": [
+        {
+          "round": 21,
+          "queen_body_head_first": [
+            [
+              10,
+              9
+            ],
+            [
+              10,
+              10
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                10,
+                8
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                10,
+                10
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 22,
+          "queen_body_head_first": [
+            [
+              10,
+              8
+            ],
+            [
+              10,
+              9
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                10,
+                7
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                10,
+                9
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                9,
+                8
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 23,
+          "queen_body_head_first": [
+            [
+              9,
+              8
+            ],
+            [
+              10,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                10,
+                8
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                8,
+                8
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 24,
+          "queen_body_head_first": [
+            [
+              8,
+              8
+            ],
+            [
+              9,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                8,
+                7
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                9,
+                8
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                9
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 25,
+          "queen_body_head_first": [
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                8,
+                6
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                8
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 26,
+          "queen_body_head_first": [
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                8,
+                5
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                7
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 27,
+          "queen_body_head_first": [
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                6
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                7,
+                5
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 28,
+          "queen_body_head_first": [
+            [
+              7,
+              5
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                8,
+                5
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 29,
+          "queen_body_head_first": [
+            [
+              7,
+              5
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                8,
+                5
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        }
+      ],
+      "replay_sha256": "464a777b74a0dee09517846877ce0cc059051f53635a33379d65d8b7af67c17e",
+      "official_winner": "A"
+    },
+    {
+      "game": 995613,
+      "series": "162e41f7-b4f9-4e0c-8186-fdea9279dbc5",
+      "ranked": true,
+      "started_at": "2026-10-03T22:57:19.333Z",
+      "map": "weakhold",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "submission": "14585",
+      "own_side": "B",
+      "queen_id": 0,
+      "W": 40,
+      "H": 15,
+      "feed_from_source": 427,
+      "death": {
+        "round": 29,
+        "id": 0,
+        "team": "B",
+        "cause": "wall",
+        "length": 3,
+        "actor": 0,
+        "age": 29,
+        "head": [
+          7,
+          5
+        ],
+        "initial": true,
+        "killer": null,
+        "killer_team": null
+      },
+      "last_splits": [
+        {
+          "round": 0,
+          "team": "B",
+          "parent": 0,
+          "child": 4,
+          "before": 4,
+          "parent_len": 2,
+          "child_len": 2
+        },
+        {
+          "round": 28,
+          "team": "B",
+          "parent": 0,
+          "child": 11,
+          "before": 5,
+          "parent_len": 3,
+          "child_len": 2
+        }
+      ],
+      "actions": [
+        {
+          "round": 21,
+          "id": 0,
+          "team": "B",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5862665,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 22,
+          "id": 0,
+          "team": "B",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 6005616,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 23,
+          "id": 0,
+          "team": "B",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5751684,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 24,
+          "id": 0,
+          "team": "B",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5876274,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 25,
+          "id": 0,
+          "team": "B",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5799150,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 26,
+          "id": 0,
+          "team": "B",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5825321,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        },
+        {
+          "round": 27,
+          "id": 0,
+          "team": "B",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5867067,
+          "dirs": [
+            3
+          ],
+          "paid": 0
+        },
+        {
+          "round": 28,
+          "id": 0,
+          "team": "B",
+          "kind": "split",
+          "steps": 0,
+          "tle": false,
+          "cpu": 5814633
+        },
+        {
+          "round": 29,
+          "id": 0,
+          "team": "B",
+          "kind": "move",
+          "steps": 1,
+          "tle": false,
+          "cpu": 5747641,
+          "dirs": [
+            0
+          ],
+          "paid": 0
+        }
+      ],
+      "turns": [
+        {
+          "round": 21,
+          "queen_body_head_first": [
+            [
+              10,
+              9
+            ],
+            [
+              10,
+              10
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                10,
+                8
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                10,
+                10
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 22,
+          "queen_body_head_first": [
+            [
+              10,
+              8
+            ],
+            [
+              10,
+              9
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                10,
+                7
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                10,
+                9
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                9,
+                8
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 23,
+          "queen_body_head_first": [
+            [
+              9,
+              8
+            ],
+            [
+              10,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                10,
+                8
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                8,
+                8
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 24,
+          "queen_body_head_first": [
+            [
+              8,
+              8
+            ],
+            [
+              9,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                8,
+                7
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                9,
+                8
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                9
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 25,
+          "queen_body_head_first": [
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                8,
+                6
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                8
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 26,
+          "queen_body_head_first": [
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": [
+                8,
+                5
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                7
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 27,
+          "queen_body_head_first": [
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": [
+                8,
+                6
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": [
+                7,
+                5
+              ],
+              "occupancy": "empty",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 28,
+          "queen_body_head_first": [
+            [
+              7,
+              5
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "own_units": 3,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                8,
+                5
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        },
+        {
+          "round": 29,
+          "queen_body_head_first": [
+            [
+              7,
+              5
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ]
+          ],
+          "own_units": 4,
+          "directions": [
+            {
+              "dir": "N",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "E",
+              "dest": [
+                8,
+                5
+              ],
+              "occupancy": "own_body",
+              "occupant": null
+            },
+            {
+              "dir": "S",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            },
+            {
+              "dir": "W",
+              "dest": null,
+              "occupancy": "wall",
+              "occupant": null
+            }
+          ]
+        }
+      ],
+      "replay_sha256": "d45d4f0e62962dff669e0be3caa8227050a47c6193137b1cef7e9ef09f76dd68",
+      "official_winner": "A"
+    }
+  ],
+  "scope": "Purposive four-case attribution check; not prevalence or causal bot-policy effect. Occupancy is omniscient exact TurnStart, not proof of observed state. Empty first step is not proof of a safe multi-step future."
+}

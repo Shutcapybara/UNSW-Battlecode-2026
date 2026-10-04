@@ -1,0 +1,106 @@
+{
+  "fixed_cohort_games": 737,
+  "old_source_sha256": "323015755d455288fb83954c2f41f142c1a64e5b9901d5d334d80e1ea9a846bc",
+  "fixed_official_RL": 398,
+  "fixed_nara_R499": 398,
+  "lean_overlap": 737,
+  "lean_overlap_R499": 398,
+  "lean_overlap_official_RL": 398,
+  "lean_overlap_disagreements": [],
+  "lean_missing_old_ids": [],
+  "lean_current_own_games": 752,
+  "lean_current_R499": 407,
+  "lean_extra_rows": [
+    {
+      "game": "992699",
+      "R": 196,
+      "reason": "elimination",
+      "started_at": "2026-10-03 21:56:08.831000+00:00"
+    },
+    {
+      "game": "992702",
+      "R": 440,
+      "reason": "elimination",
+      "started_at": "2026-10-03 21:56:08.800000+00:00"
+    },
+    {
+      "game": "992701",
+      "R": 499,
+      "reason": "queen",
+      "started_at": "2026-10-03 21:56:08.768000+00:00"
+    },
+    {
+      "game": "992700",
+      "R": 499,
+      "reason": "longest",
+      "started_at": "2026-10-03 21:56:08.713000+00:00"
+    },
+    {
+      "game": "992698",
+      "R": 499,
+      "reason": "longest",
+      "started_at": "2026-10-03 21:56:08.678000+00:00"
+    },
+    {
+      "game": "996204",
+      "R": 253,
+      "reason": "elimination",
+      "started_at": "2026-10-03 23:09:03.463000+00:00"
+    },
+    {
+      "game": "996203",
+      "R": 109,
+      "reason": "elimination",
+      "started_at": "2026-10-03 23:09:03.375000+00:00"
+    },
+    {
+      "game": "996206",
+      "R": 499,
+      "reason": "queen",
+      "started_at": "2026-10-03 23:09:03.087000+00:00"
+    },
+    {
+      "game": "996205",
+      "R": 499,
+      "reason": "queen",
+      "started_at": "2026-10-03 23:09:02.978000+00:00"
+    },
+    {
+      "game": "996207",
+      "R": 350,
+      "reason": "elimination",
+      "started_at": "2026-10-03 23:09:02.962000+00:00"
+    },
+    {
+      "game": "995612",
+      "R": 236,
+      "reason": "elimination",
+      "started_at": "2026-10-03 22:57:22.092000+00:00"
+    },
+    {
+      "game": "995613",
+      "R": 499,
+      "reason": "longest",
+      "started_at": "2026-10-03 22:57:19.333000+00:00"
+    },
+    {
+      "game": "995614",
+      "R": 499,
+      "reason": "queen",
+      "started_at": "2026-10-03 22:57:18.273000+00:00"
+    },
+    {
+      "game": "995610",
+      "R": 499,
+      "reason": "longest",
+      "started_at": "2026-10-03 22:57:18.525000+00:00"
+    },
+    {
+      "game": "995611",
+      "R": 499,
+      "reason": "queen",
+      "started_at": "2026-10-03 22:57:18.411000+00:00"
+    }
+  ],
+  "limitation": "401 is a peer historical aggregate with no frozen id manifest attached here. Do not attribute a three-game cause unless the identical selection can be recovered."
+}

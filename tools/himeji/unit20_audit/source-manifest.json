@@ -1,0 +1,23 @@
+{
+  "main": "2e4c74832e170935a349364bc003e2bb0f2ee3f8",
+  "himeji_before": "7717e299709546e28f17901c847a4083382cff26",
+  "rome": "700971108",
+  "chongqing": "95f0425e4",
+  "nara": "89c2d2cbe",
+  "shenzhen": "0a3e1014a",
+  "antioch": "2c7113f66",
+  "carthage": "5b69fa9d0",
+  "kyoto": "fccea71c0",
+  "brief_resolved": "docs/briefs/2026-10-04-live-maps.md (not claude/ path)",
+  "board_cursor": "main director03:05 request + Rome D043 closeout; ownH19-01..06; appendH20-01..06",
+  "rome_chat_cursor": "b99b513f-fdd3-41ba-b646-7855a1a8bbde:10",
+  "hashes": {
+    "tools/s1/build.py": "ea43282429cadffdcce4440878eb68569f7f4c1686b6825737a0498f8866fa1f",
+    "tools/s1/extras.py": "f43f59560830a1ac8ea61498e3c8dcb7660f5eae583dfd7eb5fa7d3b7bbeade9",
+    "tools/analysis/features/frame.py": "266297b32934367c5c8611bd1aaadbe9424e88ce00af91fccae62763300ce6b8",
+    "tools/analysis/features/extract.py": "0e6521d850bac06c6d3cc406f532979ceecf88fc056f2d95ea72ff5b12a42591",
+    "tools/shenzhen/lean.py": "ff78df77a5724b54bd7b53c226884f2ffba8a56916e1c952848789d392bf13c6",
+    "docs/hub/PHASE2-PROTOCOL.md": "ff96ba9b73e2edc7d8a6973803c1c96e52499399975d9b3b31a4ee1ce9865ecd",
+    "docs/briefs/2026-10-04-live-maps.md": "c3c23a45826949a7c191e357fc48242b09d2d22bb21125c309c8df38c6fbc69a"
+  }
+}

@@ -710,3 +710,33 @@ geometry and are flagged, not deleted; regenerate them from `maps/live/` before 
 Not verified: byte identity of `maps/live/` with the server's maps (Shenzhen reproduced the live Schooltime cage on
 the 1.2.9 template; `unsw.map` is assumed to be "Around UNSW").
 
+## D-044: hand rules are probes, and learning is where we are going (4 Oct 2026, director, at the lead's instruction)
+
+The programme's goal is discovery with a view to learning the right policy, by imitation, value fitting and RL. We are
+not building a long-term collection of hand-coded rules. A hand rule is worth building for what it teaches us: its dose
+response (does it move the outcome we target, and how much?) and its side effects (what else does it move?).
+
+1. **Every new hand arm is a dial, not a switch.**
+   - Declare at least three doses before the run, with the parent as dose 0. Examples: reserve slots 0/1/3/5, a minimum
+     number of free exits 0/1/2, a premium of 0/x/2x.
+   - Report a response curve for the targeted outcome, plus side effects on: economy, deaths by cause, units, length,
+     and win split by regime (elimination vs round-limit maps) and by map_era.
+   - Screening dose arms may use seed 1 on both panels. The full D-042 gate applies only to the dose proposed for
+     deployment.
+2. **Every finding about an arm or a mechanism ends with an RL translation section with four parts:**
+   - (a) **observation**: the features a policy or value model needs to see this situation;
+   - (b) **action**: the actions it needs (for example, a deliberate invalid command, a choice of split size, a sprint
+     length);
+   - (c) **value/reward**: which terms the outcome depends on;
+   - (d) **demonstration**: whether top-team replays already demonstrate the behaviour (cloneable), or only search and
+     self-play could find it (an exploration problem).
+3. **A hand rule may ship in the short term** when it is a clear live gain (the Schooltime cage fix C+D+E is the
+   current case). It is tagged `temporary` in its CANDIDATE.toml and gets a learned replacement target: the learned
+   prior must reproduce or beat it on held-out states and panels. Once it does, the rule is removed.
+4. **Analysts prioritise what learning needs.** That means features, labels, value targets and facts about our state
+   distribution: unit-cap saturation, id-ordered movement within a round, queen-state observability, and where sonar
+   echoes reach. A one-off rule recommendation comes second.
+5. **The learner lane (Osaka, `docs/briefs/osaka-learner-lane.md`) consumes three things:** the dose tables, the RL
+   translation sections, and the logged search scores. A hypothesis is resolved for learning when its feature or action
+   is in the encoder, and its effect shows up in held-out accuracy of the value model V and the policy prior P.
+

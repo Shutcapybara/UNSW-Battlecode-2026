@@ -1,14 +1,14 @@
 """Nara queen cause+exposure probe: what kills field queens per map, and how exposed
 Cutlery's surviving queen is (min torus-Manhattan distance to enemy heads at checkpoints).
 """
-import json, sys, glob
+import json, sys, glob, os
 from pathlib import Path
 
 ROOT = Path.cwd()
 sys.path.insert(0, str(ROOT / 'tools' / 'leviathan'))
 sys.path.insert(0, str(ROOT / 'tools' / 'analysis' / 'features'))
 
-CORPUS = ROOT / 'public_replays' / 'corpus'
+CORPUS = Path(os.environ.get('NARA_CORPUS', str(ROOT / 'public_replays' / 'corpus')))
 CKPTS = (100, 200, 300)
 
 
@@ -36,14 +36,15 @@ def side_row(g, meta, team_id, coh):
     W, H = g['W'], g['H']
     q0 = min(i for i in rounds[0] if rounds[0][i][0] == t)
     d = next((x for x in ev['deaths'] if x['id'] == q0), None)
-    row = dict(game=g['id'], team=team_id, side=t, map=g['map'], started=meta['started_at'],
+    row = dict(game=g['id'], team=team_id, side=t, map=g['map'], map_hash=meta.get('map_hash', '')[:10],
+               started=meta['started_at'],
                cohort=coh.get(team_id, {}).get('cohort', 'other'),
                name=coh.get(team_id, {}).get('name', str(team_id)),
                q_death_round=d['round'] if d else None,
                q_death_cause=d['cause'] if d else None,
                q_killer_enemy=bool(d and d.get('killer_team') is not None and d['killer_team'] != d['team']),
                q_len490=len(rounds[min(490, len(rounds) - 1)][q0][1]) if q0 in rounds[min(490, len(rounds) - 1)] else 0,
-               round_limit=g['reason'] in ('longest', 'total', 'tie'),
+               round_limit=g['reason'] in ('longest', 'total', 'tie', 'queen'),
                last_round=len(rounds) - 2)
     for c in CKPTS:
         r = min(c, len(rounds) - 1)
