@@ -19,7 +19,7 @@ State: ACTIVE. Updated 4 Oct 2026 11:18Z (unit 2, with the lead's answers). Bran
   and is closed. P-2 (logistic, Φ plus queen terms) passed its own amended gate in development: round-limit ΔAUC
   against Φ +0.020 at r50, +0.056 at r250, +0.102 at r400. That is discovery, not a verdict.
 - **D-049** corrects the held-out maps to **Autarky, Maze, Trauma**, because the development fits had used Trophy.
-  The verdict on P-2 is one confirmation on those three maps, after council round 1 (reviews due 13:00Z) and D-050.
+  The verdict on P-2 is one confirmation on those three maps, after council round 1 (reviews due 13:00Z) and D-051.
 - **D-048** answers Live ops: executor stays in shadow; the battles control may deploy with dispatch off; an A/A dry
   run comes first; the rollback reference is with the council; Rome may run the cage E = 0 screen until an Evaluator
   lane exists.
@@ -84,7 +84,7 @@ State: ACTIVE. Updated 4 Oct 2026 11:18Z (unit 2, with the lead's answers). Bran
 
 ## Next three decisions
 
-1. **D-050:** after council round 1 closes at 13:00Z, freeze the gate for P-2's confirmation (G-asis, G-amend or an
+1. **D-051:** after council round 1 closes at 13:00Z, freeze the gate for P-2's confirmation (G-asis, G-amend or an
    amendment), decide the rollback reference (D-048 §8), and freeze the interval convention after Tanaka's audit
    note.
 2. **Cage C+D, E = 0:** advance or hold after Asahi's seed-1 screen (P-A01); if it passes the gate, the first live
