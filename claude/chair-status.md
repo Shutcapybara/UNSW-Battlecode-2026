@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 15:36Z (unit 6). Next self-wake about 17:05Z. Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 17:02Z (unit 7). Next self-wake about 18:05Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,9 @@ State: ACTIVE. Updated 4 Oct 2026 15:36Z (unit 6). Next self-wake about 17:05Z. 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-055 (live-first, at the lead's instruction):** upload and live screens no longer wait for the full local gate.
+  Live screen LS-1 is ordered: `asahi-05-kz12-k16` against 14585, 102 matched pairs on three band opponents. The R2
+  card (P-5) and the V-legal card (P-6) are approved as amended. The A/A job is closed as uninformative.
 - **D-054**: P-2's population is the manifest's (1,327 usable); the queen reach veto (P-4) is approved for a screen;
   council round 2 is open on the R2 card (P-5) and the V-legal card (P-6), due 17:00Z; Asahi is idle and the lead is
   asked to wake it.
@@ -32,11 +35,10 @@ State: ACTIVE. Updated 4 Oct 2026 15:36Z (unit 6). Next self-wake about 17:05Z. 
 ## Incumbent
 
 - `carthage-05-free-sprint`, submission 14585, live since 2 Oct 04:22Z. Fallback `hb1-14-prior-r540`, 14265.
-- Elo trend and drift (Daichi's monitor, 13:53Z, ranked, post-m2, series bootstrap 5th/95th percentiles, inputs
-  frozen): since activation −0.013 [−0.041, +0.014] (849 games, 172 series); last 40 games +0.027 [−0.066, +0.114];
-  Elo 1721, rank 78 (1742 a day earlier). Schooltime by variant: cage open −0.515 [−0.565, −0.466] (27 games), cage
-  closed −0.436 [−0.507, −0.353] (24). Prisoners Dilemma: ten dragons −0.044 [−0.202, +0.109] (23), template −0.166
-  [−0.308, −0.010] (24).
+- Elo trend and drift (Daichi's monitor, 16:53Z, ranked, post-m2, series bootstrap 5th/95th percentiles, inputs
+  frozen): since activation −0.018 [−0.042, +0.009] (950 games, 192 series); last 40 games +0.026 [−0.108, +0.169];
+  Elo 1722, rank 85. Schooltime −0.480 [−0.517, −0.440] (61 games; cage open −0.519, closed −0.447), weakhold −0.35
+  (49 games, 12:56Z read), Slithery −0.091, Prisoners Dilemma −0.090, Devil +0.188, Queen of Spades +0.318.
 - Reading: over the whole window the incumbent plays about at its rating; it lost about 20 Elo in a day. The losses
   are concentrated on queen maps. It is not a rollback case (D-048 §7).
 - Local zero on the live maps (Rome, seeds 1–3): pool 0.804 (656–160–0 of 816), gen 0.746 (1,038–353–1 of 1,392).
@@ -45,12 +47,12 @@ State: ACTIVE. Updated 4 Oct 2026 15:36Z (unit 6). Next self-wake about 17:05Z. 
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-2 (R1): scorer revision 2 verified by Tanaka on the earlier defects; one defect left (pin the usable ids); then Tanaka's pass line releases the claim. P-4 (queen reach veto): approved for a screen. P-5 (R2) and P-6 (V-legal): council round 2, due 17:00Z |
+| Proposal cards | P-2 (R1): scorer revision 3 held by Tanaka for one more hole; then the pass line releases the claim. P-5 (R2) and P-6 (V-legal): approved as amended, owner Hinata with Kageyama. P-4 (queen reach veto): approved, not built |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
 | Evaluator queue (Asahi) | **idle since 13:50Z, not acting on BOARD requests.** Waiting: native executor extension; cluster change in `card.py`; parent and k = 16 on seeds 2–3; then the P-4 dial |
 | Nominee (full gate) | `asahi-05-kz12-k16` (REG-002), gate on seeds 2–3, not yet run |
-| Uploaded, inactive | none |
-| Live screen | none. A/A dry run job 952053397eed: 68 of 136 games verified at 15:28Z, 0 runtime faults, deadline 18:54Z |
+| Uploaded, inactive | none yet; `asahi-05-kz12-k16` to be uploaded by Daichi for LS-1 |
+| Live screen | **LS-1 ordered 17:02Z** (D-055 §B): k = 16 against 14585, three band opponents, 17 maps, both seats, 102 pairs. A/A job closed: 68 games against dev 545, 1 win, difference +0.034 [0.000, +0.103], uninformative |
 
 ## Facts settled this unit
 
@@ -66,13 +68,13 @@ State: ACTIVE. Updated 4 Oct 2026 15:36Z (unit 6). Next self-wake about 17:05Z. 
 | Role | Lane | State |
 |---|---|---|
 | Chair | Ushijima (Claude) | active |
-| Council, auditor | Tanaka (GPT), `r/tanaka` | k = 16 forecast 0.35; P-4 amend (0.30); P-2 scorer: earlier repairs verified, pinned-ids defect open; P-5 and P-6 reviews due 17:00Z |
-| Council, mechanism | Sugawara (Claude), hourly at :25 | wrote P-4; reviewed P-5 (amend) and P-6 (agree); k = 16 forecast 0.35 |
-| Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac | k = 16 forecast 0.40; P-4 number, P-5 and P-6 reviews due 17:00Z |
-| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | explained the scope flag (it follows the live ladder); building a 120-game development teacher set in the cloud; full teacher rows wait for the native executor |
-| Learner | Hinata (Claude), Cowork VM; 2-hourly task at :35 | scorer revision 2 and per-cell counts delivered; owes the pinned-ids revision; filed P-5 and P-6 |
+| Council, auditor | Tanaka (GPT, Codex, hourly heartbeat), `r/tanaka` | working: last output 16:55Z (P-2 revision 3 hold); P-5 and P-6 reviews delivered 16:00Z |
+| Council, mechanism | Sugawara (Claude), hourly at :25 | working: round-2 reviews 16:28Z |
+| Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: last output 16:45Z (bed-variant exposure probe); P-5, P-6 reviews and P-4 forecast delivered 15:58Z |
+| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | development teacher set ready (235,798 rows, 118 games); found hidden bed variants on five maps; owes the series-clean cohort and the HB-1 extractor's cost |
+| Learner | Hinata (Claude), Cowork VM; 2-hourly task at :35 | P-5 and P-6 approved; owes scorer revision 4 for P-2 |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py` | no commit or job since 13:47Z; status file still lists answered questions |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; scheduled runs working | A/A job half done (68 of 136), no faults |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; scheduled runs working | LS-1 to prepare: manifest, archive from the committed tree, upload inactive, roster, dispatch |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
 
@@ -91,16 +93,15 @@ State: ACTIVE. Updated 4 Oct 2026 15:36Z (unit 6). Next self-wake about 17:05Z. 
 
 ## Next three decisions
 
-1. **D-055 (after 17:00Z):** R2's feature set and offline gate (P-5), and the V-legal design (P-6).
-2. **R1 result:** read P-2's confirmation when Tanaka releases it; record R1 pass or fail; score the forecasts
-   (Tanaka 0.40, Sugawara 0.50, Nishinoya 0.50).
-3. **First nominee:** the k = 16 gate card on seeds 2–3 (forecasts 0.35, 0.40, 0.35), once Asahi runs it; on a pass,
-   upload and live screen after the A/A job.
+1. **LS-1 result:** promote `asahi-05-kz12-k16` or not, on Daichi's paired table (pass: at least 60 pairs, 5th
+   percentile > −0.02, mean > 0).
+2. **R1 result:** P-2's confirmation once Tanaka releases the scorer; score the forecasts (0.40, 0.50, 0.50).
+3. **R2 offline gate:** Hinata's P1 against the parent's prior on the series-clean cohort; then its live screen.
 
 ## Cursor
 
-Last BOARD line read: `[2026-10-04 15:29 UTC council:sugawara → tanaka, chair, asahi] P-sugawara-02 (H-KZ26):
-Tanaka's AMEND accepted …` (main tree; also Kageyama's two 15:30Z lines). Own D-054 lines follow.
+Last BOARD line read: `[2026-10-04 16:55 UTC council:tanaka → hinata, chair, kageyama] P-2 rev3 release HOLD …`
+(main tree). Own D-055 lines follow.
 
 ## Open flags
 
@@ -115,6 +116,9 @@ Tanaka's AMEND accepted …` (main tree; also Kageyama's two 15:30Z lines). Own 
   (D-050 §8).
 - Asahi found that the `dragons` table marks the queen dead on 24 of 544 pool sides where the engine's result block
   has it alive. Queen-survival numbers built from that table undercount; Kageyama is asked to diagnose.
+- Hidden bed variants: Kageyama's oracle reproduced 97 of 118 server games; all 21 failures are on Slithery Fight,
+  Schooltime, Queen of Spades, Prisoners Dilemma and Devil. About 15 % of live ranked games run on bed layouts our
+  templates lack (Nishinoya, unaudited). Local panels on those five maps are discounted as transfer evidence.
 - Tracked 13 MB model headers in the main tree (`bots/rome-08…15`, `bots/asahi-02…05`) show as modified: something
   replaces them with 52-byte symlinks. They are uncommitted and the keeper skips them. Asahi is asked whether its
   tooling does this.

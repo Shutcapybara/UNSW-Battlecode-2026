@@ -1518,3 +1518,116 @@ Python = C++ bit for bit (40,002 turns; 1,549 on independent fixtures), labels a
   D-053 §F and this record.
 - A/A live job: 68 of 136 games verified at 15:28Z, 0 runtime faults.
 
+## D-055 — Live-first: the first live screen is ordered; R2 and V-legal cards approved; A/A closed (4 Oct 2026 17:02Z, Chair: Ushijima)
+
+### A. The live bot is not yet under experiment. That changes now (the lead's instruction, 16:56Z)
+
+- State at 17:00Z: submission 14585 has been live, unchanged, since 2 Oct 04:22Z. No candidate has been uploaded
+  in Phase 3. The only requested battles were the 68 games of the A/A job. Dispatch is disabled. The hub executor is
+  in shadow.
+- Why it stood still: D-046 §7 and D-048 §4 put the full local gate before any upload, and the Evaluator has run
+  nothing since 13:47Z.
+- New evidence against waiting for local gates: about 15 % of live ranked games run on bed layouts our templates
+  lack (Kageyama's oracle reproduced 97 of 118 server games; the 21 failures are on Slithery Fight, Schooltime,
+  Queen of Spades, Prisoners Dilemma and Devil, which carry 29.8 % of the ranked stream; Nishinoya's probe,
+  unaudited). Local panels also play a zoo, not the ladder. Server games cost quota, not Mac CPU (macro §8).
+- **Ruling: live screens are the first evidence for a candidate, and the full local gate is no longer a
+  prerequisite for an upload or a live screen.** A candidate is eligible for upload without activation and for a
+  live screen when all of these hold:
+  1. it is registered (`docs/learning/registry.md`) as one switch on a registered parent;
+  2. the switch at its off value reproduces the parent (golden parity);
+  3. complete seed-1 panels with zero runtime errors, pool point estimate ≥ 0 and gen ≥ −0.02;
+  4. CPU probe including turn 0 under 30 M points, zip at most 4 MiB.
+  This replaces the first condition of D-048 §4 and of D-051 §3. The other guards stay: blackout, no ranked series
+  in flight, restore in `finally`, windows logged, pause on a human activation or an unexplained request.
+
+### B. Live screen LS-1: `asahi-05-kz12-k16` against 14585
+
+- **Arms:** 14585 (live) and `asahi-05-kz12-k16` (REG-002). It meets §A: k = 0 parity on 272 of 272 games; seed-1
+  pool +2.6 points, gen −0.2; maximum 10.4 M points per turn on the lineage's probes, to be re-probed on this
+  build with turn 0.
+- **Before upload (Daichi):** write the candidate manifest for the bot (authorised, as the director did for
+  carthage-05 in D-042); build the archive from the committed tree, not from the main working tree, where the
+  13 MB model header of this bot is currently a 52-byte symlink; check the archive holds the real header and that
+  the sandbox probe passes; upload with `activate: false`; verify the fingerprint in the API listing.
+- **Roster, fixed by rule before dispatch:** the three teams 14585 met most often in ranked games over the last
+  48 hours, among teams with an active submission and a rating within 100 of ours; ties go to the most recent.
+  Daichi names them in the job note. No dev opponents.
+- **Size:** each opponent × the 17 maps × both seats × one game per arm = 34 matched pairs and 68 games per
+  opponent; 102 pairs, 204 games.
+- **Frozen objective:** the mean paired difference in score, candidate minus incumbent, over matched (opponent, map,
+  seat) cells; cluster bootstrap over opponent × map (51 clusters), 1,000 resamples, seed 7, 5th to 95th
+  percentile. Missing cells are listed and not counted.
+  - **Pass** (eligible for promotion): at least 60 matched pairs, 5th percentile > −0.02, mean > 0, and no more
+    runtime faults or timeouts than the incumbent.
+  - **Reject:** mean ≤ 0, or 95th percentile < 0.
+  - **Hold:** anything else. One extension is declared now: two more opponents by the same rule (68 more pairs),
+    then one final read. No other extension.
+- **Printed beside it:** per map; Weakhold as the target stratum (all of the seed-1 gain came from it); the five
+  bed-variant maps flagged.
+- **Stop:** 204 games (340 with the extension), 8 hours, any runtime fault of the candidate, a change of the live
+  submission, or an unexplained request.
+- This record is the enable for LS-1. Daichi reports the paired table; the Chair decides promotion.
+
+### C. Promotion rule, amended (D-046 §7)
+
+A candidate is promoted by a Chair record when: it is eligible under §A; its live screen passed; no error or
+timeout rise; 12 hours since the last promotion. If the full local gate has finished by then and failed, the
+Chair does not promote. If it has not run, it runs afterwards as confirmation and can trigger a rollback record.
+After activation the rollback rule of D-052 §B applies, and the Chair reads the monitor at 120 ranked games.
+
+### D. The A/A job (D-051 §1): closed
+
+- 68 of 136 games ran, all against dev team 545; the 68 against dev team 752 were rejected because 752 has no
+  active submission. The split-half difference is +0.034 [0.000, +0.103] over 29 cells. It passes the frozen
+  objective in form.
+- It says little: 14585 scored 1 of 68 against 545, so the difference was measured at the floor. It is not re-run.
+  LS-1's matched design measures its own noise, and Daichi prints the share of cells where the two arms differ.
+
+### E. P-5 (R2, the cloned direction prior): approved as amended by all three seats
+
+- **Feature set.** Encoder v1 plus the queen block plus HB-1's relative per-candidate scores, the latter computed by
+  the bot's own C++ extractor so that training and play share one implementation. A hashed allow-list is enforced
+  by the loader; W, H, x, y, xn, yn and any other map identity are refused. The encoder-only model is fitted on
+  identical rows as the comparison. If the extractor cannot run on teacher rows, encoder-only binds and the card
+  records it as the weaker variant. This corrects D-053 §F's wording; the macro's R2 row stands.
+- **Rows.** Train only on rows whose blocks come from the engine oracle (`blocks_src = oracle`); the dropped share
+  is printed per map (on the development set: Queen of Spades 72 %, Slithery 68 %, Schooltime 43 %, Prisoners
+  Dilemma 43 %).
+- **Offline gate.** The paired comparison with the parent's prior binds: P1's accuracy minus the HB-1 prior's on the
+  same rows, whole-series bootstrap, 5th percentile > 0, on Tanaka's series-clean cohort (115 ranked post-m2 games
+  of the ten teacher teams on Autarky, Maze and Trauma in 85 series; frozen by Kageyama with its oracle coverage
+  before any label is read). Accuracy ≥ 0.83 is printed and does not bind. Development falsifier: series-held-out
+  accuracy under 0.75. The 497-game read and leave-one-map-out are descriptive.
+  Accuracy here is conditional on a forward, right or left teacher move, with the argmax over the three renormalised
+  probabilities; the four-class figure is printed beside it. The 0.75 stop uses the same projection, and its row and
+  series counts are stated before fitting (Tanaka, 16:57Z).
+- **Slot.** P1's forward, right and left probabilities are renormalised over those three; a reverse first step
+  keeps the parent's value. Flip rate and entropy are printed, with no cut-off (Tanaka; Sugawara withdrew the 1 %
+  stop). The panel and live screens use λ ∈ {0.5, 1}.
+- **Where it runs.** Teacher rows and the fit may be built in the lanes' cloud containers, as Kageyama built the
+  120-game development set. The native executor is not a prerequisite for the first R2 artifact. Every run has an
+  immutable manifest (rows, teachers, code, features, parameters, fold keys).
+- **Scored event:** the binding offline gate passes. Forecasts for the amended card: Sugawara 0.70, Tanaka 0.60,
+  Nishinoya 0.55. (The author's is 0.55.)
+- Owner: Hinata, with Kageyama for rows and the extractor. After the offline gate the bot goes to §A's
+  eligibility checks and to a live screen; the seed-1 panels come from the Evaluator when it runs.
+
+### F. P-6 (V-legal): approved as amended
+
+- Same logistic class on the legal encoder scalars, P-2's rows and folds. ΔAUC(V0b − V-legal) is a paired
+  predictive diagnostic: not a price of information and not a guaranteed bound (Tanaka, Nishinoya). Per cell:
+  speaker strata, the share of non-queen speakers, ΔAUC on queen-speaker rows only, and the pooled view. Claims for
+  R5 are limited to queen-speaker rows. The held-out read is one look at a whole-series-disjoint population of games
+  played after P-2's claim, with frozen V0b, Φ and V-legal on identical rows.
+- Scored events and forecasts: no falsifier triggered: Sugawara 0.80, Tanaka 0.80, Nishinoya 0.80. V-legal at
+  least Φ at round-limit r50: 0.20 from each.
+- Owner: Hinata. It runs after the R2 teacher rows.
+
+### G. P-2: the release audit is in its fourth round
+
+- Revision 3 (sha bb51e1bb…) pins 22,305 rows in 3,305 games and reproduces 1,327 usable of 1,328. Tanaka holds
+  it for one more hole: a pinned game with a missing or invalid result is treated as an explained loss. Upheld.
+- Request to Tanaka: with the next review, list every remaining acceptance condition for the scorer in one place,
+  so that the following revision can be the last. The confirmation itself is unchanged (D-052 §A, D-054 §A).
+

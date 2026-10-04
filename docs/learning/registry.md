@@ -59,5 +59,7 @@ one switch on a registered parent.
   and E −4.86 per 1,000 [−8.16, −2.08]; pearls@50 −0.75; queen endpoint no response.
 - gate: pending, seeds 2 and 3, map × opponent clusters. export size, turn-0 CPU and fingerprint: Asahi fills them in
   from its run record before the gate card.
-- status: `nominee`.
+- live: LS-1 ordered in D-055 §B (upload without activation, 102 matched pairs against 14585 on three band
+  opponents). The candidate manifest and the archive check are Daichi's.
+- status: `nominee`; eligible for upload and live screen under D-055 §A.
 
