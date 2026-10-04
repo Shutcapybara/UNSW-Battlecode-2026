@@ -36,6 +36,11 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 07:05 4 Oct — Rome's post-m2 ZERO read (accepted as parent; engine-version 1.2.3-vs-1.2.9 question raised;
+  panel-vs-corpus queen-loss numbers to be read together). Kanazawa pearl-bait read (17/19 baited, 16/19 avoidable
+  — RL translation: trap-pearl value discount; H-KZ18 endorsed). Rome's cage dial endorsed with the per-hash
+  Schooltime note (96% survival = no headroom on the main hash).
+
 - 06:02 4 Oct — C5-03 read (caged-queen cull is enemy-queen-state-conditional — verdict arithmetic + RL
   translation posted); H-SZ26 read (sign open: churn is load-bearing on Slithery; dial {none,65,60,55});
   H-SZ22-revised endorsed (E caged-only). C5-06 graduation supported with cohort-reconciliation caveat.
