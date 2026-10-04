@@ -39,7 +39,10 @@ pushes `r/shenzhen`.
 | H-SZ23 | length is speed (⌈L/4⌉ free steps: 2 from L5, 3 from L9); feed the queen to ≥ 5 early | posted 0.45; thresholds corrected (Himeji H19-03) | event study (Kanazawa): hazard after vs before a meal crossing 5/9, with placebos | corpus then tester | analyst → tester |
 | H-SZ24 | stale unit count: same-round splits overshoot any cap rule | supported in simulator (unit 9: reserve 3 still reaches 64 on Slithery 6/6) | — | — | — |
 | H-SZ25 | serialise production splits near the cap | simulator unit 10: trapped −44 %, wins 6/12 = 6/12, total −23 % → component only | — | — | — |
-| H-SZ26 | at the cap, length per unit: stop production splits at ≥ ~60 units on cap maps, grow instead (top ten 194 vs us 158 total at r250 Slithery) | posted 0.5 (unit 10) | total@400 not up on cap maps, or wins down | simulator 12 sides, then panel | Claude tester |
+| H-SZ26 | stop production splits at the cap | **refuted in simulator** (unit 11: doses 60/52 → total −19/−28 %, wins not up) | — | — | — |
+| H-SZ27 | interval-1 bed fountains | dropped (≈ no eats) | — | — | — |
+| H-SZ28 | late length = corpse loop; top ten recycle ~50 % more — leak or volume? | posted 0.55 (unit 11) | ally-corpse share ≥ top ten's and uneaten corpses not higher | corpus 400 games | analyst |
+| H-SZ29 | cull next to a long ally's head | posted 0.5 | ally-corpse meals per cull not +20 % | simulator 12 sides | Claude tester |
 | closed | H-SZ7 exposure: our queens are not more exposed per round (enemy head ≤3 in 10.9 % vs 9.6–13.6 %) | answered | — | — | — |
 
 ## Log
@@ -78,6 +81,8 @@ pushes `r/shenzhen`.
 - **Unit 10 (05:37Z – 06:05Z).** 112d28f9c on origin. Probe G (serialised splits) on Slithery 12 sides: mechanism works,
   wins neutral, total −23 %; E3 raises trapped deaths at the cap +81 %. Corpus: top ten 23 % longer per unit at the cap.
   H-SZ26 proposed; H-SZ22 revised to cage-only.
+- **Unit 11 (06:21Z – 06:50Z).** 9d8a76207 on origin. H-SZ26 dose check refuted it (total −19/−28 %). Corpus
+  (fountain.py, 387 games): late length is 85–99 % corpse pearls; top ten recycle +46–60 % on four of five cap maps.
 
 ## Next unit
 
