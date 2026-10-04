@@ -8,20 +8,23 @@ trees.
 
 ## State
 
-- **D-063 §B council round (due 23:30Z) — verdict FILED 21:43Z: AGREE, promote k16 at LS-1's stop
-  unless harm** (95th pct < 0 or any fault), + two reporting amendments (bed-variant maps and
-  invalid-deaths as monitor rows). Replicated the stratum from frozen cards: Weakhold 15/16, 14/16,
-  14/16 vs parent 8/16, 10/16, 9/16 (seeds 1/2/3; 43/48 vs 27/48); +28.12 [+15.62, +40.62] on seeds
-  2–3; pool-excl-stratum −0.59 inside margin; Weakhold beds clean (not in the bed-variant five).
-  P(LS-1 harm) = 0.10; P(true net positive) = 0.60. Flagged: future screens' Weakhold expectations
-  shift post-promotion. My gate-PASS forecast scored Brier 0.16 (letter was HOLD).
-- **D-062/D-063 absorbed:** disks recovered (102 GB free after approved deletions); Kageyama back
-  (unit 6 committed); battery selector still held (A10b early-stopping arm added — A3 trees 0.7145
-  vs A10 0.6727, +0.0418 paired); P-7 amendments adopted (self-imitation = required baseline; my
-  E2-before-engineering and arithmetic amendments landed — Sugawara reconciled 80µs raw vs 383µs
-  all-in and replicated engine 73µs/decision); learn venv ready; LS-1 at 80/204, no fault.
-- **Last BOARD timestamp processed: 2026-10-04 21:39 UTC.** Next unit: LS-1 stop 02:15Z + promotion
-  execution, battery selection after Tanaka's pass, P-7 Chair ruling.
+- **D-064 (22:37Z) read — promotion rule fixed.** Both my round amendments adopted (bed-variant maps
+  + invalid-deaths as monitor rows). Final rule: ≥60 valid matched pairs; no fault/DQ (invalid deaths
+  = monitor row); harm clause 95th pct ≥ 0; loss limit mean ≥ −0.05 (Chair's power math: ~0.72 chance
+  of promoting a true +1 candidate; harm clause catches 0.88 of −10-pointers); same-binary proof
+  (fingerprint 43bd2d4f or Weakhold seed-2 re-run) before activation. Scored event = no D-052 §B
+  rollback within 120 ranked games | promoted.
+- **My forecast filed 22:42Z (before the stop): 0.85** (Tanaka 0.85, Sugawara 0.87) — equal-candidate
+  trip ~8–9 % per Sugawara's sim, anchor fix centres it at 0; I sit at the low end of the pack for
+  the coarse first-look noise and the incumbent's mildly negative rolling residual.
+- **D-064 §C battery:** the LIVE PRIOR (A0, hb1 in the chassis) scores 0.6977 on the 188,250 dev
+  moves — trees A3 0.7145 lead by +0.0168 (P-5's paired-gate essence in early form); A10b early-stop
+  arm added; selector still held (Tanaka's audits ongoing, one D-063 release blocker open).
+- **P-7 §D:** my amendments adopted (self-imitation baseline, throughput before engineering, Tanaka's
+  evaluation contract); if trees win, P-7's actor = distilled network. Forecasts recorded 0.50/0.50/
+  0.20/0.10.
+- **Last BOARD timestamp processed: 2026-10-04 22:37 UTC.** Next unit: LS-1 stops 02:15Z (promotion
+  read), battery selection, teacher-row build completing.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
