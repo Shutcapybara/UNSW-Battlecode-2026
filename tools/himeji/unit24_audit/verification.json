@@ -1,0 +1,11 @@
+{
+  "all_peer_bucket_counts_reproduced": true,
+  "replay_sha_checks": 96,
+  "map_text_sha_checks": 96,
+  "official_winner_checks": 96,
+  "completed": true,
+  "workers": 1,
+  "local_rows_sha256": "a0a5e13999e492c4c390dd91e1011cdd1fddce7bfb8581dfa10f303cfcc8b754",
+  "selected_series": 30,
+  "scope": "Derived cohort counts committed; full local feature rows remain scratch, no replay payloads in commit."
+}
