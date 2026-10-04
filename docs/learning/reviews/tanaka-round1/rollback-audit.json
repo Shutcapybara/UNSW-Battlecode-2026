@@ -1,0 +1,120 @@
+{
+  "cutoff": "2026-10-04T10:45:39.291111+00:00",
+  "scope": "Ranked 14585, post-m2 (after activation 2 Oct 04:22Z), score minus latest pre-start Elo expectation.",
+  "reconstructions": {
+    "public_replays/corpus/index.jsonl": {
+      "n": 596,
+      "unique_games": 596,
+      "all": {
+        "n": 596,
+        "series": 122,
+        "mean": -0.029,
+        "lo5": -0.063,
+        "hi95": 0.003
+      },
+      "first40": {
+        "n": 40,
+        "series": 10,
+        "mean": -0.052,
+        "lo5": -0.204,
+        "hi95": 0.071
+      },
+      "last40": {
+        "n": 40,
+        "series": 8,
+        "mean": -0.093,
+        "lo5": -0.184,
+        "hi95": -0.002
+      },
+      "sha256": "de4ea2aa4b8458bb6c9183f437cf21849f9045f9979bd0e22a1a589afe3be225"
+    }
+  },
+  "power_approximation": {
+    "n_per_window": 40,
+    "series_per_window": 8,
+    "mean_last40": -0.09295594528750463,
+    "cluster_se_single": 0.05817281900853966,
+    "cluster_se_difference": 0.08226878960335218,
+    "absolute_threshold": -0.09568577233618797,
+    "difference_threshold": -0.13532011696398136,
+    "difference_80pct_detectable_degradation": 0.20455927715450517,
+    "scenarios": [
+      {
+        "baseline": 0.0,
+        "true_candidate_minus_incumbent": 0.0,
+        "absolute_trigger_probability": 0.050000000000000155,
+        "difference_trigger_probability": 0.050000000000000155
+      },
+      {
+        "baseline": 0.0,
+        "true_candidate_minus_incumbent": -0.08,
+        "absolute_trigger_probability": 0.39371825882641,
+        "difference_trigger_probability": 0.25065455083844634
+      },
+      {
+        "baseline": 0.0,
+        "true_candidate_minus_incumbent": -0.15,
+        "absolute_trigger_probability": 0.8247629797655927,
+        "difference_trigger_probability": 0.5708105184736605
+      },
+      {
+        "baseline": 0.0,
+        "true_candidate_minus_incumbent": -0.2,
+        "absolute_trigger_probability": 0.963527778230072,
+        "difference_trigger_probability": 0.7841254088699069
+      },
+      {
+        "baseline": -0.09295594528750463,
+        "true_candidate_minus_incumbent": 0.0,
+        "absolute_trigger_probability": 0.48128603894757027,
+        "difference_trigger_probability": 0.050000000000000155
+      },
+      {
+        "baseline": -0.09295594528750463,
+        "true_candidate_minus_incumbent": -0.08,
+        "absolute_trigger_probability": 0.9079582690220425,
+        "difference_trigger_probability": 0.25065455083844634
+      },
+      {
+        "baseline": -0.09295594528750463,
+        "true_candidate_minus_incumbent": -0.15,
+        "absolute_trigger_probability": 0.9943227904592684,
+        "difference_trigger_probability": 0.5708105184736605
+      },
+      {
+        "baseline": -0.09295594528750463,
+        "true_candidate_minus_incumbent": -0.2,
+        "absolute_trigger_probability": 0.9996519436446315,
+        "difference_trigger_probability": 0.7841254088699069
+      }
+    ],
+    "caveat": "Normal plug-in approximation only, not measured future power; independent windows, same variance and stable mix; only 8 observed series. No repeated-look correction."
+  },
+  "independent_bootstrap": {
+    "all": {
+      "mean": -0.02943149581679115,
+      "lo5": -0.06301767071565825,
+      "hi95": 0.0028421150732538384,
+      "n": 596,
+      "series": 122
+    },
+    "first40": {
+      "mean": -0.05206343179656627,
+      "lo5": -0.20425095373282567,
+      "hi95": 0.07079364744572883,
+      "n": 40,
+      "series": 10
+    },
+    "last40": {
+      "mean": -0.09295594528750463,
+      "lo5": -0.18362281690807075,
+      "hi95": -0.00229521488714534,
+      "n": 40,
+      "series": 8
+    }
+  },
+  "future_snapshot_synthetic_probe": {
+    "expected": null,
+    "actual": 1500
+  }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "root": ".venv/lib/python3.13/site-packages",
+    "version": "Version: 1.2.3",
+    "hashes": {
+      "unswbc_engine.wasm": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+      "python-metered.wasm": "48342178e7ca73775b90aacd0899efed906d79bff79b961360aefe76b5f78125"
+    }
+  },
+  {
+    "root": "/Users/alik/.cache/uv/archive-v0/cf10ONpp0CCPEjsCf53HF",
+    "version": "Version: 1.2.2",
+    "hashes": {
+      "unswbc_engine.wasm": "579a6ad16cf2ab979dc7a711cdfa7756d35e7d333d82f0ded09c30b7c5c32db7",
+      "python-metered.wasm": "48342178e7ca73775b90aacd0899efed906d79bff79b961360aefe76b5f78125"
+    }
+  },
+  {
+    "root": "/Users/alik/.cache/uv/archive-v0/unkGKko6sPivaCTAt-h0J",
+    "version": "Version: 1.2.3",
+    "hashes": {
+      "unswbc_engine.wasm": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+      "python-metered.wasm": "48342178e7ca73775b90aacd0899efed906d79bff79b961360aefe76b5f78125"
+    }
+  },
+  {
+    "root": "/Users/alik/.cache/uv/archive-v0/XZcdTKSznzhN_Vu1u_Zy7",
+    "version": "Version: 0.3.13",
+    "hashes": {
+      "unswbc_engine.wasm": "01669281bbb397c85058e5fec065596046fc67470f9109c0d244fb17a2c958a9",
+      "python-metered.wasm": "48342178e7ca73775b90aacd0899efed906d79bff79b961360aefe76b5f78125"
+    }
+  },
+  {
+    "root": "/Users/alik/.cache/uv/archive-v0/_EbNMiwgg-5VDJHep5z8_",
+    "version": "Version: 1.0.0",
+    "hashes": {
+      "unswbc_engine.wasm": "48d249aa9cd98cba947e3cf51d731da5cb8da0a2bcddf89a02ca96880216aedd",
+      "python-metered.wasm": "48342178e7ca73775b90aacd0899efed906d79bff79b961360aefe76b5f78125"
+    }
+  }
+]

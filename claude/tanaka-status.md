@@ -1,61 +1,35 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 10:43 UTC.
+Updated: 2026-10-04 12:02 UTC. State: **round 1 reviews complete; awaiting Chair D-051 and data/provenance remedy before confirmation**.
 
-## State and ownership
+## Ownership and cadence
 
-READY — awaiting the Chair's assigned proposal card. The user assigned the
-Tanaka lineage to a council seat. GPT auditor remit: estimands, denominators,
-censoring, leakage, preregistration, interval conventions, power, and independent
-replication from frozen inputs before agreeing with a statistical claim.
-
-- Branch: `r/tanaka`.
+- GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
-- Read base: `a309389c5` (main at initialization).
-- Read: Phase 3 macro and common/council prompts; D-042 through the existing
-  D-045; live-map brief; BOARD through line 644; FRONTIER and artifact policy.
-- No prior Tanaka status or STOP directive found at this base.
-- No Phase 3 proposal cards, council assignments, split manifests, registry,
-  ladder record, or calibration file found under `docs/learning/` at this base.
-- No bot experiments, training, uploads, activation, or gate verdict performed.
-- Project-document mirror pending: no accessible project-document destination
-  was supplied or exposed by the available tools. This file is the status source.
+- Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
+- Main read/fast-forward base: `0b5a953a0`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
+- Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
-## Request to Chair: resolve the handoff's decision reference
+## This unit's completed work
 
-The existing D-045 is **Prospective 1.2.5 learned-arm local gate**, not the
-Phase 3 charter described by `prompts/01-chair.md` and macro section 7.
-Preserve that historical decision; assign the charter the next unused D-number
-and update its references explicitly.
+1. **P-2: AMEND/HOLD confirmation.** Independently reproduced all 14 cells' AUCs and game-bootstrap endpoints from frozen OOF (difference <3e-16), slope discrepancy <0.00050; whole-series bootstrap still supports late development gains. No held-out outcomes loaded and no model refit.
+2. **New split defect:** frozen 5,799-game post-m2 training artifact includes 539 test-bucket games (173 series) and 555 validation-bucket games (175 series); no held-out-map rows. Development pools 3,427 ranked and 2,372 unranked games. LOMO shares series across fit/scoring in all 96 folds (28,216/35,948 scored game-checkpoint rows). Exact artifact censuses, no statistical interval. Chair/Hinata/Data alerted on main BOARD 11:53Z.
+3. **P-2 implementation/provenance:** confirmation refits baseline from growing store, lacks interval gate evaluation, silently skips missing models, and claims completion only after scoring. Frozen registry source hash differs from current source. Review requests frozen comparator, source archive, population separation and atomic complete-cell confirmation before the one shot.
+4. **D-048: AMEND to incumbent-relative rollback.** First/last 40 residual summaries independently reproduce; last40 = −0.09296 [−0.18362, −0.00230], 40 ranked post-m2 games / 8 series, central 90% whole-series percentile bootstrap (1,000, seed 7). Original 417-game full-history membership is not recoverable from the grown index; now 596 pre-cutoff games. Derived inputs frozen in the review receipts.
+5. **Rollback power:** normal plug-in approximation from eight-series window gives about 25% power for a true −0.08 change under two 40-game windows, versus roughly 48% erroneous rollback for an equally strong candidate under the absolute rule if baseline mean stays −0.09296. These are analytic approximations, not measured future rates. Point threshold limits power at the −0.08 boundary to 50%, even with more data. Synthetic monitor probe finds future-snapshot fallback; unknown winner also maps to draw. Live ops owns fixes.
+6. **D-046:** installed/cached 1.2.3 engine hash independently matches charter; cross-wheel 1.2.5/1.2.9 and server replication remain peer evidence. Recommend whole map×opponent clusters keeping both seats and seeds for the first full gate; preserve declared convention if Chair chooses otherwise, with paired-seat sensitivity.
 
-The charter should identify the actual frozen map/series/fixture manifests and
-hashes, roles, deadline, and prospective gate. In particular, reconcile the
-existing D-045's full seeds 1–5 and successful 1.2.5 runtime requirement with
-macro section 8's full seeds 1–3 and the Learner prompt's 1.2.9 setup. Specify
-which rule applies to each Phase 3 candidate before its data are inspected;
-these are incompatible specifications, not evidence of different engine behavior.
-The existing D-045 also leaves H-S1 and the hand-mining stop condition open;
-state explicitly how the Phase 3 transition treats those prerequisites.
+## Deliverables and verification
 
-This is a documentation/authorization consistency finding, not a re-evaluation
-of any completed gate. No gate numbers have been replicated or endorsed.
-Population, map_era, denominator, and interval: not applicable to this textual
-consistency check.
+- `docs/learning/reviews/P-2-tanaka.md`
+- `docs/learning/reviews/D-048-tanaka.md`
+- `docs/learning/reviews/D-046-tanaka.md`
+- `docs/learning/reviews/tanaka-round1/`: hashes, full tables, frozen derived monitor inputs and reproduction instructions.
+- `tools/tanaka/p2_audit.py`, `tools/tanaka/rollback_audit.py`.
+- Bounded single-worker calculations only; no bot experiment, training, held-out confirmation, upload or activation. Disk checked. Initial sandbox niceness request failed; subsequent jobs ran nice 10. Frozen-data rollback reproduction and Python compilation passed.
+- P-2 forecasts (subjective, conditional numerical confirmation with same weights): G-asis .03, G-amend .35, corrected gate .20. Current eligibility HOLD. D-048 .80 for an implementation A/A calibration gate, pending an operationally defined scored event. Full scope, dissent and RL translations are in the reviews.
 
-## Next assigned card
+## Next wake
 
-Read the Chair's D-record and frozen proposal, identify exact inputs and hashes,
-replicate the key claim, and write `docs/learning/reviews/P-<n>-tanaka.md`.
-Include agree/amend/reject, replication or its specific blocker, P(pass), expected
-effect, dissent, known precedent, and the RL translation. Post one BOARD result
-line. P(pass) remains unset until a concrete pass event and card are assigned.
-
-## RL translation of the initialization finding
-
-- **Observation:** the encoder's legally observable features and training rows
-  must be tied to the approved frozen split; no new feature proposed here.
-- **Action:** no bot action change; maintain one registered switch per artifact.
-- **Value/reward:** the official outcome and gate estimand must be frozen before
-  evaluation; runtime and population conventions cannot be selected afterwards.
-- **Demonstration:** no replay behavior was reviewed in this initialization;
-  teacher data remain subject to the same held-out manifest exclusions.
+Read D-051/new decisions and acknowledgments first. Do not consume confirmation data, repeat this audit or silently refit the candidate. Check Data's consumed-series ledger, Hinata's frozen comparator/source, and Live ops' snapshot/outcome fixes if delivered. Review any new assigned card; otherwise remain quiet. Commit only lane artifacts and request `push_branches` through the keeper when no request is pending.
