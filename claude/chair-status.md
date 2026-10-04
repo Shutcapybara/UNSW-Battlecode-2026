@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 21:34Z (unit 11). Next self-wake about 22:35Z. Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 22:37Z (unit 12). Next self-wake about 23:40Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,10 @@ State: ACTIVE. Updated 4 Oct 2026 21:34Z (unit 11). Next self-wake about 22:35Z.
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-064:** the council round on k = 16 closed (all three seats). It is promoted at LS-1's stop (02:15Z) if five
+  conditions hold: at least 60 pairs, no fault, the 95th percentile of the paired mean not below 0, the mean at least
+  −0.05, and proof that submission 16979 is the gated binary. Daichi activates on that record. Battery: the live
+  prior scores 0.6977 on the development moves, the new trees 0.7145, the converged CNN 0.6785.
 - **D-063:** the k = 16 local gate is a hold (pool +1.10 points [−0.37, +2.76]) but Weakhold replicates on all three
   seeds (43 of 48 against 27 of 48). A council round (due 23:30Z) rules on promoting it at LS-1's stop unless LS-1
   shows harm. Battery: trees 0.7145 against a four-epoch CNN 0.6727; arm A10b (early stopping) added; selector
@@ -83,12 +87,12 @@ State: ACTIVE. Updated 4 Oct 2026 21:34Z (unit 11). Next self-wake about 22:35Z.
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): battery A0–A10 and A10b; trees 0.7145, CNN 0.6727; selector under audit. P-6: behind the battery. P-7 (self-play): reviewed, amendments adopted, throughput measurement next |
+| Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): live prior 0.6977, trees 0.7145, CNN 0.6785; HB-1 arms unblocked; selector awaits pass line. P-6: behind the battery. P-7 (self-play): actor = network distilled from the trees unless the full rows change the ranking |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | k = 16 gate done (hold; Weakhold +28.1 points). Idle at 21:32Z. Next: in-loop throughput for P-7; learn-queue jobs start within a minute |
-| Nominee (full gate) | `asahi-05-kz12-k16` (REG-002): gate hold; council round on promotion due 23:30Z; decision at LS-1's stop (02:15Z) |
+| Evaluator queue (Asahi) | daemon running Kageyama's full teacher-row build (learn queue). Owes: the same-binary check for 16979 before 02:15Z (D-064 §B.5); the in-loop throughput for P-7 |
+| Nominee (full gate) | `asahi-05-kz12-k16` (REG-002): gate hold; **promotion rule fixed (D-064 §B)**; decision at LS-1's stop (02:15Z), activation by Daichi if the five conditions hold |
 | Uploaded, inactive | `asahi-05-kz12-k16` = submission 16979. The `submit_check` fix is on main, not deployed; no redeploy until the lead confirms the hub loop (H11) |
-| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 80 of 204 games at 21:32Z, about 20 an hour, stop 02:15Z; pairs by same-unit proxy; serves as the harm check for k = 16 if the council agrees |
+| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 100 of 204 games at 22:36Z, about 20 an hour, stop 02:15Z; harm check for k = 16 |
 
 ## Facts settled this unit
 
@@ -107,8 +111,8 @@ State: ACTIVE. Updated 4 Oct 2026 21:34Z (unit 11). Next self-wake about 22:35Z.
 | Council, auditor | Tanaka (GPT, Codex, hourly heartbeat), `r/tanaka` | working: 17:55Z P-2 scorer PASS; 17:56Z LS-1 review; 17:59Z R2 support verified |
 | Council, mechanism | Sugawara (Claude), hourly at :25 | working: 17:29Z LS-1 objective amendment (upheld in part, D-056 §C) |
 | Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: 17:52Z replication of the LS-1 amendment |
-| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | unit 6 committed: HB-1 feature vectors, native teacher-row builder, layout and mirror mapping; next: scores check, cohort subset counts, full rows on the Mac |
-| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | battery: A3 and A10 fitted; selector fixes under Tanaka's audit; A10b and the HB-1 arms next |
+| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | HB-1 vectors for dev120 delivered; cohort counts per teacher posted; full teacher rows building natively (1–2 h) |
+| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | A3 0.7145, A10 0.6727, A10b 0.6785 and the CNN curve posted; selector rev 6 awaiting pass line; HB-1 arms next |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; hourly self-wake | working; daemon restarted 19:16Z |
 | Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | ran 19:50Z: fix and reserve change built and merged, not deployed; LS-1 pace and answers posted |
 
@@ -133,17 +137,17 @@ State: ACTIVE. Updated 4 Oct 2026 21:34Z (unit 11). Next self-wake about 22:35Z.
 
 ## Next three decisions
 
-1. **k = 16 promotion** at LS-1's stop (02:15Z), on the council round due 23:30Z (D-063 §B).
-2. **R2 battery table** once the selector passes: the selected pooled arm, the teacher-specific arm, then the refit
-   on the full rows and the one confirmation.
-3. **P-7 training**: with the battery table and Asahi's throughput measurement.
+1. **k = 16 at LS-1's stop (02:15Z):** Daichi's table against D-064 §B; activation if all five conditions hold; then
+   the monitor and the rollback rule.
+2. **R2 battery table** once the selector passes and the HB-1 arms are fitted; the full-row refits when Kageyama's
+   build ends.
+3. **P-7 training:** with the battery table and Asahi's throughput measurement.
 
 Waiting on the lead: H11 (is the hub inside the restart loop; redeploys stay off) and H12 (session disk full).
 
 ## Cursor
 
-Last BOARD line read: line 968 (Shenzhen 21:45Z correction; before it Sugawara 21:29Z, P-7 author amendment 1), main
-tree. Own D-063 lines follow.
+Last BOARD line read: line 1013 (Sugawara 22:30Z, k16 round), main tree. Own D-064 lines follow.
 
 ## Open flags
 

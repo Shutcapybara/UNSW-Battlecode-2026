@@ -13,7 +13,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 |---|---|---|---|---|
 | R0 | infrastructure | **passed** 4 Oct 14:28Z | Kageyama, Hinata, Asahi, Daichi | D-046, D-051 §5, D-052, D-053 §A |
 | R1 | V0 value model | **P-2 failed its one confirmation** (elimination r25 −0.0099 [−0.0152, −0.0049] against −0.01; better than Φ on round-limit maps at every checkpoint). Rung open. Next value artifact: P-6 (V-legal) with a fallback to Φ early on elimination-regime maps | Hinata | D-052 §A, D-057 §B |
-| R2 | P1 BC direction head | **Battery A0–A10 on development rows** (parent prior as is; HB-1 recipe pooled and per team; encoder; unions; rating-filtered and teacher-conditioned; mirror augmentation; a small CNN on the window; other heads offline). Weighted encoder-only 0.714. Selector held for Tanaka's audit; arms that need HB-1 vectors wait on Kageyama. Then one confirmation on the frozen cohort (115 games). Full rows about 23:30Z | Hinata, Kageyama | D-055 §E, D-057 §C, D-058 §C, D-059 §B, D-060 §E |
+| R2 | P1 BC direction head | **Battery on development rows:** the live prior as it plays 0.6977; trees on the new encoder 0.7145 [0.7061, 0.7239]; converged small CNN 0.6785, gaining twice as fast per doubling of data. HB-1 arms unblocked; selector awaits Tanaka's pass line; full rows (about 3.4 M) building natively. Then selection, refit and one confirmation on the frozen cohort (115 games) | Hinata, Kageyama | D-055 §E, D-057 §C, D-058 §C, D-059 §B, D-063 §C, D-064 §C |
 | R3 | split/size, cull, sprint heads | not started | Learner | |
 | R4 | feature blocks | not started | Data, Learner | |
 | R5 | V in the search | needs a value model on the legal encoder (V-legal card after the decode, D-052 §A.7) | Hinata | |
