@@ -58,8 +58,11 @@ Bot snapshots live under `bots/rome-<nn>-<slug>/`; tools under `tools/rome/`.
 - Expected: on the preselected Rome03-triggered Portals subset, recover some terminal longest/crown consolidation vs Rome03; all-game paired win nonnegative vs Rome03; opening economy/material unchanged; compare the full arm with clean Rome01. Reuse paired 480 pool / 1,392 gen fixtures, seeds 1–3, both seats; per-map deltas and 90% cluster intervals. CPU probe required.
 
 
-## D-043 map-era closeout — 2026-10-04
+## D-043/D-044 live-map reset — 2026-10-04
 
 - Rome01–05 use the repository’s old maps and are **pre-swap historical**. Rome04 is a completed pre-swap arm; do not treat gen twins of Autarky, Default, Prisoners Dilemma, Schooltime, Slithery Fight, or Trophy as current transfer evidence until regenerated.
 - Rome05 H-H5 draft: CPU 10.83M / 0 errors; pre-swap pool simulator 480/480 but not scored against parents; official gen 227/1,392 when D-043 arrived. The incompatible 744-fixture custom gen set was stopped. No score/gate/verdict; no replays committed. Finding `docs/findings/2026-10-04-rome-H-H5-pre-swap-partial.md`.
-- Next unit starts only after merging D-043’s main and re-measuring `carthage-05-free-sprint` on `LIVE_MAPS_M2`, pool and gen, seeds 1–3 and both seats. The resulting baseline becomes Rome’s new zero.
+- Required post-M2 zero complete on parent `carthage-05-free-sprint`, `unswbc 1.2.3`: pool `LIVE_MAPS_M2` 816/816, gen 1,392/1,392. All outcomes are official and queen columns are in the finding. Four stale gen twins (192 games) are excluded from transfer evidence; Schooltime open4 and PD 10-dragon are also absent from the 17-template pool. No post-M2 reference values are published, so the zero is absolute only. Finding `docs/findings/2026-10-04-rome-carthage05-post-m2-zero.md`.
+- Pool: 656–160–0, expected score 0.804; pearls medians r50/r100/r150/r250 28/92.5/164/286.5, units/total/births@100 23/56/38. Queen reached r490 444/816, reached+alive 2/816, mean r490 length 0.043, longest 0/816. Queen-decided losses 19/160 (11.9%), map-cluster bootstrap 95% CI 3.3–25.5%.
+- Gen all: 1,038–353–1, expected score 0.746; excluding stale twins 861–338–1 / 1,200, expected score 0.718. Queen reached 217/1,392, reached+alive 4/1,392, mean length 0.040, longest 3/1,392. Queen-decided losses 4/353 (1.13%), map-cluster 95% CI 0.0–3.3%.
+- D-044 governs all new hand-rule arms: ≥3 declared doses including zero, response curve and side effects, with RL translation. Kanazawa's H-KZ12 screen is on the board; reconcile it with the director's cage-fix-first arm order before selecting the next mechanism.

@@ -1,0 +1,89 @@
+{
+  "parent": "carthage-05-free-sprint",
+  "runtime": "unswbc 1.2.3",
+  "map_era": "post-m2",
+  "panels": [
+    {
+      "panel": "pool_m2",
+      "games": 816,
+      "wins": 656,
+      "losses": 160,
+      "draws": 0,
+      "expected_score": 0.803921568627451,
+      "maps": 17,
+      "map_hashes": 17,
+      "raw_medians": {
+        "pearls@50": 28.0,
+        "pearls@100": 92.5,
+        "pearls@150": 164.0,
+        "pearls@250": 286.5,
+        "units@100": 23.0,
+        "total@100": 56.0,
+        "births@100": 38.0
+      },
+      "games_reached490": 444,
+      "queen_joint_reached_alive490": 2,
+      "queen_alive490_reached": 2,
+      "queen_survival_r490_all": 0.0024509803921568627,
+      "queen_survival_reached490": 0.0045045045045045045,
+      "queen_mean_len490_dead0_all": 0.0428921568627451,
+      "queen_longest490_all_games": 0,
+      "queen_longest490_share_all_games": 0.0,
+      "queen_longest490_share_when_alive": 0.0,
+      "queen_decided_games": 21,
+      "queen_decided_wins": 2,
+      "queen_decided_losses": 19,
+      "queen_decided_share_of_losses": 0.11875,
+      "queen_verdict_consistent": 21,
+      "queen_winner_len_median": 3.0,
+      "queen_loser_len_median": 0.0,
+      "queen_decided_share_of_losses_map_cluster_95ci": [
+        0.033174700845749,
+        0.2554785686844846
+      ],
+      "queen_mean_len490_dead0_reached": 0.07882882882882883,
+      "stale_gen_twin_games": 0
+    },
+    {
+      "panel": "gen",
+      "games": 1392,
+      "wins": 1038,
+      "losses": 353,
+      "draws": 1,
+      "expected_score": 0.7460488505747126,
+      "maps": 29,
+      "map_hashes": 29,
+      "raw_medians": {
+        "pearls@50": 35.0,
+        "pearls@100": 114.0,
+        "pearls@150": 177.5,
+        "pearls@250": 236.0,
+        "units@100": 28.0,
+        "total@100": 65.0,
+        "births@100": 47.0
+      },
+      "games_reached490": 217,
+      "queen_joint_reached_alive490": 4,
+      "queen_alive490_reached": 4,
+      "queen_survival_r490_all": 0.0028735632183908046,
+      "queen_survival_reached490": 0.018433179723502304,
+      "queen_mean_len490_dead0_all": 0.039511494252873564,
+      "queen_longest490_all_games": 3,
+      "queen_longest490_share_all_games": 0.0021551724137931034,
+      "queen_longest490_share_when_alive": 0.75,
+      "queen_decided_games": 8,
+      "queen_decided_wins": 4,
+      "queen_decided_losses": 4,
+      "queen_decided_share_of_losses": 0.0113314447592068,
+      "queen_verdict_consistent": 8,
+      "queen_winner_len_median": 3.0,
+      "queen_loser_len_median": 0.0,
+      "queen_decided_share_of_losses_map_cluster_95ci": [
+        0.0,
+        0.03324330563250211
+      ],
+      "queen_mean_len490_dead0_reached": 0.2534562211981567,
+      "stale_gen_twin_games": 192
+    }
+  ]
+}
