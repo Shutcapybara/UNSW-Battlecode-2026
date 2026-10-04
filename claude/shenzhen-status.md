@@ -101,7 +101,7 @@ pushes `r/shenzhen`.
 
 ## Next unit
 
-0. H-SZ26 simulator probe (no production splits at ≥ 60 units) on Slithery + Around UNSW, 12 sides. Then H-SZ23 landmark analysis (Himeji H21-03: no same-queen pre/post — immortal-time bias) (meal crossing length 5 / 9; hazard k rounds after vs before; placebo crossings).
+0. H-SZ34 probe in the simulator (raise the danger weight inside a shorter enemy head's reach when we are longer; 18 games vs C+D, partner deaths/game + pool total); then H-SZ35; H-SZ30 with the full spawn risk set; read Rome's E0 result when it lands.
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
