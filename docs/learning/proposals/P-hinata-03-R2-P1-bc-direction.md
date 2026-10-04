@@ -186,3 +186,87 @@ waiting for the HB-1 extractor. This section fixes the projection and the 0.75 s
   (HB-1 columns) gets its own support line before its fit. G-parent (P1 minus HB-1 prior) cannot be computed on these
   rows until the extractor runs on them; it is not computed here.
 - **Author forecast (unchanged):** series5 ≥ 0.75, 0.80 (stated for the union; for encoder-only, 0.75).
+
+### Development result — encoder-only, series5 (appended 2026-10-04 18:21 UTC, hinata)
+
+**Frozen stop triggered: F/R/L-conditional accuracy 0.7142 < 0.75** (pooled out-of-fold, 188,250 F/R/L rows, 97 games,
+49 series, 10 teachers, 14 training maps; whole-series bootstrap 5th/95th [0.7057, 0.7238], 1,000 × seed 7). Every
+fold is below 0.75: f0 0.719, f1 0.731, f2 0.698, f3 0.711, f4 0.708. Run `build/hinata/r2/dev120-enc-s5` (manifest
+sha `6f222de6…`, code rev 3 `edc66ef7…`, rows/teachers/allowlist as in the pre-registration; fitted in the cloud
+container, 1 core, 2,214 s; 5 models ≈ 11.5 MB each as LightGBM text).
+
+| cut | rows | P1 acc | majority (class) |
+|---|---|---|---|
+| F/R/L, all | 188,250 | **0.714** | 0.425 (F) |
+| F/R/L, queen | 5,315 | 0.678 | 0.392 (F) |
+| F/R/L, non-queen | 182,935 | 0.715 | 0.425 (F) |
+| four-class, all (incl. 1,380 reverse) | 189,630 | 0.712 | 0.421 |
+
+Per teacher (F/R/L rows, acc / majority): 264 28,922 0.696/0.439; 91 27,549 0.676/0.386; 952 21,531 0.724/0.379;
+55 19,625 0.740/0.466; 507 18,881 0.696/0.434; 842 17,893 0.768/0.444; 306 17,329 0.713/0.446; 19 16,573 0.749/0.479;
+213 13,782 0.694/0.385; 566 6,165 0.711/0.345. Per map: range 0.642 (Prisoners Dilemma, 729 rows) to 0.782 (Devil,
+7,211); Around UNSW 0.726 (37,140), Islands 0.695 (34,387), Australia 0.687 (33,438), Portals 0.765 (14,543),
+Schooltime 0.709 (13,492). Log loss (4-class) 0.624. Per-class recall: F 0.83, R 0.63, L 0.63. Flat over the game
+(0.714 / 0.716 / 0.713 / 0.714 for rounds ≤25 / 26–100 / 101–250 / >250).
+
+Descriptive only (post hoc, not a gate): rows where the renormalised max probability ≥ 0.7 are 50.7 % of rows at
+0.869 accuracy; ≥ 0.9, 21.2 % at 0.982 — the model is well ranked by its own confidence.
+
+**Consequence under the frozen rule:** P1 on encoder v1 alone stops; it is recorded as the weaker variant. The union
+model (encoder + HB-1 relative candidate scores from the bot's C++ extractor) was always the binding artifact and is
+not yet fitted; it gets its own support line before its fit, on the same rows and folds, once Kageyama's extractor
+columns exist. If the union also falls under 0.75, R2b is filed. G-parent (P1 − HB-1 prior) is not computable until
+the extractor runs on these rows.
+
+RL translation — Observation: encoder v1 alone recovers top-ten teachers' first step 71 % of the time (vs 42 %
+majority), with confident decisions near-deterministic; the missing ~29 % is mostly R/L choice, which needs the
+per-candidate consequences the HB-1 extractor computes. Action: first step over {F, R, L}. Value/Reward: none.
+Demonstration: top-ten ranked post-m2 teachers, oracle rows.
+
+### Learning curve — pre-registration (appended 2026-10-04 18:37 UTC, hinata; before any fit at frac < 1)
+
+Asked by the Chair (BOARD 18:32Z): does encoder-only P1 gain from more rows or not? Descriptive, no gate, no tuning
+of encoder-only (the 0.75 stop already bound it as the weaker variant).
+
+- **Code:** `r2_bc.py` rev 4 sha `a31faa5d…` — one change from rev 3: `--frac` subsamples *training* series inside each
+  fold (nested hash `frac/<series>` < frac × 1000); test folds are identical to the frac 1.0 run (fold test-row hashes
+  must equal manifest `6f222de6…`; a mismatch voids the curve). Rows, teachers, allowlist, params, 400 rounds unchanged.
+- **Points:** frac 0.10, 0.25, 0.50 (new runs `build/hinata/r2/lc-f10|f25|f50`) plus the existing 1.0 run
+  (0.7142). Each scored pooled out-of-fold on the same 188,250 F/R/L rows; train rows/series per fold printed.
+- **Reading rule (frozen):** slope per doubling of training series s = (acc(1.0) − acc(0.5)).
+  s ≥ 0.010 → rows are a live lever (the 1,925-side teacher rows, ~16× dev120, are worth building for P1 even without
+  new features); s < 0.005 → saturated on encoder v1, features (HB-1 consequences) are the lever; between → mixed.
+  Extrapolation to 0.75 at constant per-doubling slope printed, labelled as extrapolation.
+- **Author forecast:** 0.10 → 0.66, 0.25 → 0.685, 0.50 → 0.70; P(s ≥ 0.010) = 0.40, P(s < 0.005) = 0.30.
+- **Caveat:** at 0.10 each fold trains on ~4 series (~10 games), so that point is noisy; the rule reads only 0.5→1.0.
+
+### Learning curve — result (appended 2026-10-04 19:25 UTC, hinata). Descriptive; no gate; no tuning.
+
+Runs `build/hinata/r2/lc-f10|lc-f25|lc-f50` (code rev 4 `a31faa5d…`; manifests 8d537bcd… / 67a4e8f9… / aaa2d607…), cloud
+container, 533 s / 784 s / 1,233 s. **Fold test-row hashes equal the 1.0 manifest (6f222de6…) — same 188,250 F/R/L
+rows, row-aligned.** Population: dev120 oracle move rows, 14 training maps, post-m2, top-ten teachers; whole-series
+bootstrap 1,000 × seed 7, linear 5th/95th.
+
+| frac | train series / fold (mean) | train rows / fold (mean) | F/R/L acc [5th, 95th] | queen F/R/L | log loss (4-class) |
+|---|---|---|---|---|---|
+| 0.10 | 6.4 | 27,918 | 0.676 [0.667, 0.686] | 0.644 | 0.730 |
+| 0.25 | 12.8 | 43,038 | 0.684 [0.674, 0.695] | 0.643 | 0.691 |
+| 0.50 | 22.4 | 79,784 | 0.703 [0.694, 0.713] | 0.658 | 0.648 |
+| 1.00 | 39.2 | ~151,700 | 0.714 [0.706, 0.724] | 0.678 | 0.624 |
+
+- **Frozen rule: s = acc(1.0) − acc(0.5) = +0.0114, paired whole-series bootstrap [+0.0090, +0.0142]** (43 of 49
+  series gain) → **s ≥ 0.010: rows are a live lever** (point estimate; the 5th percentile, 0.009, sits just under the
+  threshold, so "live but marginal" is the honest reading). 0.25→0.5: +0.0186 [+0.0165, +0.0209].
+- Note the 1.0 − 0.5 step is 1.75× in series (0.81 doublings), so per doubling it is ≈ +0.014.
+- **Extrapolation (labelled as such):** log2-linear fit over the four points, +0.0153 per doubling of training series;
+  0.75 is reached at ≈ 205 training series (≈ 5× dev120's 39). The full teacher rows (~16× dev120) would extrapolate
+  to ≈ 0.77 on encoder v1 alone if the slope holds — it need not (the 0.10→0.25 step was only +0.008, so the curve
+  is not cleanly log-linear, and more series of the same ten teachers are not independent draws).
+- Author forecast scored: 0.10 0.66 (obs 0.676), 0.25 0.685 (0.684), 0.50 0.70 (0.703); P(s ≥ 0.010) = 0.40 → occurred.
+- **Consequence:** both levers are open. The union model (HB-1 `hb_pF/R/L`, Kageyama 18:50Z) stays the binding P1
+  artifact on dev120; the full teacher rows Kageyama is building (D-056 order 3) are now worth fitting for P1 too,
+  as a separate run with its own support line, not as tuning of the stopped encoder-only variant.
+
+RL translation — Observation: encoder v1 is not saturated at ~150k rows; demonstration volume still buys accuracy
+(~+0.015 per doubling). Action: first step F/R/L. Value/reward: none. Demonstration: more top-ten oracle rows are a
+first-class input for BC, alongside the HB-1 consequence features.
