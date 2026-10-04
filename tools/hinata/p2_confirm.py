@@ -7,6 +7,15 @@ Revision 2 (4 Oct, ~15Z) fixes Tanaka's repair-audit defects at d298a6e7 (review
       must equal the audited hash given at claim time, and the gate is re-read from the frozen spec file, whose hash
       must equal D-052's 15d79683…; any mismatch scores INCOMPLETE without evaluating;
   (3) only the exact frozen spec unlocks a claim (sha256 + status FROZEN + record D-052); the PROPOSED spec is refused.
+Revision 3 (4 Oct, ~16:40Z) implements D-054 §A and Tanaka's frozen-cohort defect (P-2 release audit, 87ab8c40f):
+  (4) scope is read from manifest v2 only, never from the live store: usable = decoded (1,327 of 1,328 binding;
+      1044626 missing, not decoded); the frozen loader runs on a read-only view of the store whose games table holds
+      exactly the usable manifest ids (in_scope := manifest v2), so the live ladder cannot move the cohort;
+  (5) `counts` pins the expected membership (game, checkpoint) of side-A, not-ended rows for every usable id
+      (outcome-free) in membership-pin.parquet; the claim records its hash; `run` reconciles the sealed predictions
+      against the pin; `score` re-reconciles independently: any new row, duplicate, partial loss, or lost game not
+      explained (only explanation allowed: whole game dropped because result_a is not 0/1, i.e. a draw or no
+      decisive result, re-checked at score time) -> INCOMPLETE.
 Also reads every D-052 field: min_cell_games (report-only list fixed from outcome-free counts before the claim),
 rl50_min_auc_binding (false: AUC_V >= AUC_Phi binds, 0.66 printed), reported_populations, min_coverage_per_map.
 
@@ -21,7 +30,7 @@ Rows: side A, checkpoint rows of games still running (ended rows dropped), decis
 whole-series percentile bootstrap, B = 1000, seed 7, numpy 'linear'; ONE series draw per replicate shared by every
 cell, both models and every population column. A failed or incomplete run keeps its receipt; the CLAIM blocks a rerun.
 """
-import argparse, hashlib, importlib.util, json, math, os, sys, tempfile, time
+import argparse, hashlib, importlib.util, json, math, os, shutil, sys, tempfile, time
 from pathlib import Path
 import numpy as np, pandas as pd
 
@@ -228,10 +237,9 @@ def cmd_manifest(a):
 
 
 def coverage(pop, spec):
-    b = pop[POPS[spec['binding_population']](pop)]; ok = b.decoded & b.store_in_scope
+    b = pop[POPS[spec['binding_population']](pop)]; ok = b.decoded                       # D-054 §A: manifest scope, never the store
     cov = {m: dict(games=int(len(x)), usable=int(ok[x.index].sum()), coverage=float(ok[x.index].mean())) for m, x in b.groupby('map')}
-    miss = [dict(game=str(r.game), map=r.map, reason='not decoded' if not r.decoded else 'in scope in manifest v2, out of scope in store games.parquet')
-            for r in b[~ok].itertuples()]
+    miss = [dict(game=str(r.game), map=r.map, reason='not decoded (series parts hold no rows)') for r in b[~ok].itertuples()]
     return cov, miss
 
 
@@ -240,7 +248,7 @@ def cmd_counts(a):
     not the winner). Draws are not removed (that needs result_a), so counts are upper bounds on decisive rows."""
     import duckdb
     spec = load_spec(); pop, meta = load_pop(a.population); m = v0mod()
-    g = pop[pop.decoded & pop.store_in_scope][['game', 'map', 'ranked', 'clean']]
+    g = pop[pop.decoded][['game', 'map', 'ranked', 'clean']]
     s = duckdb.sql(f"""select distinct game, round from read_parquet('{S1}/series/part-*.parquet', union_by_name=true)
                        where side = 'A' and round in ({','.join(map(str, CPS))}) and coalesce(ended, 0) = 0
                        and game in (select game from g)""").df()
@@ -251,10 +259,68 @@ def cmd_counts(a):
     small = sorted(k for k, n in bp.items() if n < spec['min_cell_games'])
     ro = sorted(set(spec['report_only_cells']) | set(small), key=lambda k: (k.split('/')[0], int(k.split('/r')[1])))
     cov, miss = coverage(pop, spec)
+    pin_sha = write_pin(s[['game', 'round']])
     out = dict(written=time.strftime('%FT%TZ', time.gmtime()), spec_sha=SPEC_SHA, population_sha=meta['sha256'], scorer_sha=sha(SELF),
                counts=tab, report_only_cells=ro, report_only_by_count=small, coverage=cov, missing=miss,
+               pin_sha=pin_sha, pin_rows=int(len(s)), pin_games=int(s.game.nunique()), usable_games=int(len(g)),
+               usable_without_pinned_rows=sorted(map(str, set(g.game.astype(str)) - set(s.game.astype(str)))),
                note='outcome-free: no result_a, no y read; ended flag and decode presence only; draws not removed')
     f = P2 / 'cell-counts.json'; f.write_text(json.dumps(out, indent=1)); print(json.dumps(out, indent=1)); print('sha256', sha(f))
+
+
+PIN_EXPLAINED = 'whole game dropped: result_a not in (0, 1) (draw or no decisive result)'
+
+
+def keys(df):
+    return list(zip(df.game.astype(str), df['round'].astype(int)))
+
+
+def write_pin(df):
+    df = df.assign(game=df.game.astype(str), round=df['round'].astype(int)).drop_duplicates().sort_values(['game', 'round']).reset_index(drop=True)
+    f = P2 / 'membership-pin.parquet'
+    if f.exists():
+        os.chmod(f, 0o644)
+    df.to_parquet(f); os.chmod(f, 0o444); return sha(f)
+
+
+def membership(pin, got, result_a):
+    """Reconcile (game, checkpoint) keys of the predictions against the pin. result_a: game -> stored result (or None)."""
+    gk = keys(got); pk = set(keys(pin)); dup = len(gk) - len(set(gk)); gs = set(gk)
+    new = sorted(gs - pk); lost = pk - gs; per = {}
+    for g_, r_ in pk:
+        per.setdefault(g_, set()).add(r_)
+    lg = {}
+    for g_, r_ in lost:
+        lg.setdefault(g_, set()).add(r_)
+    expl, unex = [], []
+    for g_, rs in sorted(lg.items()):
+        whole = rs == per[g_]; ra = result_a.get(g_)
+        decisive = ra is not None and not (isinstance(ra, float) and math.isnan(ra)) and ra in (0, 1)
+        (expl if whole and not decisive else unex).append(dict(game=g_, rows=len(rs), whole_game=whole, decisive_result=bool(decisive)))
+    for e in expl:
+        e['reason'] = PIN_EXPLAINED
+    return dict(pin_rows=len(pk), got_rows=len(gk), duplicates=dup, n_new=len(new), new=[list(k) for k in new[:50]],
+                explained=expl, unexplained=unex, n_unexplained=len(unex), ok=dup == 0 and not new and not unex)
+
+
+def store_results(games):
+    import duckdb
+    gl = ','.join("'" + str(g).replace("'", "''") + "'" for g in games) or "''"
+    r = duckdb.sql(f"select cast(game as varchar) as game, result_a from read_parquet('{S1}/games.parquet') where cast(game as varchar) in ({gl})").df()
+    out = {str(g): None for g in games}
+    out.update({str(a): (None if pd.isna(b) else float(b)) for a, b in zip(r.game, r.result_a)})
+    return out
+
+
+def frozen_view(usable):
+    """Read-only store view for the frozen loader: games table = usable manifest ids only, in_scope := True (manifest v2)."""
+    import duckdb
+    d = Path(tempfile.mkdtemp(prefix='p2view-')); gl = ','.join("'" + str(g).replace("'", "''") + "'" for g in usable)
+    duckdb.sql(f"""copy (select * replace (true as in_scope) from read_parquet('{S1}/games.parquet') where cast(game as varchar) in ({gl}))
+                   to '{d}/games.parquet' (format parquet)""")
+    for sub in ('series', 'sides'):
+        os.symlink(S1 / sub, d / sub)
+    return d
 
 
 DEFAULT_SPEC = dict(record='SELFTEST', status='synthetic', binding_population='all', reported_populations=['all'], min_coverage_per_map=0.95,
@@ -273,7 +339,7 @@ def cmd_selftest(a):
     print(pd.DataFrame([{k: r[k] for k in ('regime', 'round', 'n', 'series', 'auc_v', 'auc_phi', 'd_auc', 'd_auc_ci', 'slope_v', 'slope_phi', 'valid_draws')}
                         for r in keep]).round(5).to_string(index=False))
     print('SELFTEST gate (development OOF, NOT a confirmation):', g, f'{time.time() - t0:.0f}s')
-    (P2 / 'selftest-r2.json').write_text(json.dumps(dict(rows=rows, gate=g, scorer_sha=sha(SELF)), indent=1, default=str))
+    (P2 / 'selftest-r3.json').write_text(json.dumps(dict(rows=rows, gate=g, scorer_sha=sha(SELF)), indent=1, default=str))
 
 
 def _claim(spec_sha, scorer_sha, report_only, cov, extra=None):
@@ -286,9 +352,11 @@ def _claim(spec_sha, scorer_sha, report_only, cov, extra=None):
     return claim
 
 
-def _seal(pred):
+def _seal(pred, mem):
     pf = P2 / 'predictions.parquet'; pred.to_parquet(pf); os.chmod(pf, 0o444)
-    receipt(P2 / 'RECEIPT.json', stage='sealed', predictions_sha=sha(pf), rows=len(pred), games=int(pred.game.nunique()))
+    mf = P2 / 'membership.json'; mf.write_text(json.dumps(mem, indent=1, default=str)); os.chmod(mf, 0o444)
+    receipt(P2 / 'RECEIPT.json', stage='sealed', predictions_sha=sha(pf), rows=len(pred), games=int(pred.game.nunique()),
+            membership_sha=sha(mf), membership_ok=mem['ok'], n_unexplained=mem['n_unexplained'], n_new=mem['n_new'])
     return pf
 
 
@@ -302,15 +370,21 @@ def cmd_run(a):
     cov, miss = coverage(pop, spec)
     if any(v['coverage'] < spec['min_coverage_per_map'] for v in cov.values()):
         raise SystemExit(f'refused before claim: coverage {cov}')
+    pinf = P2 / 'membership-pin.parquet'
+    if not pinf.exists() or sha(pinf) != cc.get('pin_sha'):
+        raise SystemExit('refused: membership pin missing or not the one counts wrote; rerun counts')
+    pin = pd.read_parquet(pinf); usable = sorted(pop.game[pop.decoded].astype(str))
     m = v0mod(); w, wh = weights()
     bad = [c for c, (wv, wp) in w.items() if wv is None or wp is None or not fin(*wv.values(), *wp.values())]
     _claim(SPEC_SHA, sha(SELF), cc['report_only_cells'], cov,
            dict(population_sha=meta['sha256'], counts_sha=sha(P2 / 'cell-counts.json'), weight_files=wh,
-                missing_cells=[list(c) for c in bad], missing_games=miss))
+                missing_cells=[list(c) for c in bad], missing_games=miss, pin_sha=sha(pinf), pin_rows=int(len(pin)),
+                usable_games=len(usable), usable_ids_sha=hashlib.sha256('\n'.join(usable).encode()).hexdigest()))
     rc = P2 / 'RECEIPT.json'
     try:
         hm = json.loads(HELDOUT.read_text())['heldout_maps']
-        d = m.load(['post-m2'], maps=hm); d = d[(d.side == 'A') & d.game.isin(pop.game[pop.decoded])]
+        m.S1 = frozen_view(usable)                                       # D-054 §A: never the live in_scope flag
+        d = m.load(['post-m2'], maps=hm); d = d[(d.side == 'A') & d.game.astype(str).isin(usable)]
         d = d.merge(pop[['game', 'series_key', 'ranked', 'clean']].rename(columns={'ranked': 'ranked_m'}), on='game', validate='many_to_one')
         d['ranked'] = d.pop('ranked_m').astype(bool); d['round'] = d['round'].astype(int); parts = []
         for (era, reg, cp), x in d.groupby(['map_era', 'regime', 'round']):
@@ -319,13 +393,15 @@ def cmd_run(a):
                 continue
             pv, pp = predict(m, x, wv, wp)
             parts.append(x[['game', 'series_key', 'map', 'map_era', 'regime', 'round', 'ranked', 'clean', 'y']].assign(p_v=pv, p_phi=pp))
-        pred = pd.concat(parts, ignore_index=True); pf = _seal(pred)
+        pred = pd.concat(parts, ignore_index=True)
+        mem = membership(pin, pred, store_results(sorted(set(pin.game) - set(pred.game.astype(str))))); pf = _seal(pred, mem)
+        print('membership', {k: mem[k] for k in ('pin_rows', 'got_rows', 'duplicates', 'n_new', 'n_unexplained', 'ok')}, len(mem['explained']), 'explained games')
         print('sealed', pf, sha(pf)); print('now: p2_confirm.py score')
     except BaseException as e:
         receipt(rc, stage='error', error=repr(e)); raise
 
 
-def cmd_score(a, spec_path=SPEC_PATH, spec_sha=SPEC_SHA):
+def cmd_score(a, spec_path=SPEC_PATH, spec_sha=SPEC_SHA, results=None):
     cp_, rcp, pf = P2 / 'CLAIM.json', P2 / 'RECEIPT.json', P2 / 'predictions.parquet'
     rc = json.loads(rcp.read_text()); st = rc['stages']
     if any(s['stage'] == 'scored' for s in st):
@@ -345,6 +421,21 @@ def cmd_score(a, spec_path=SPEC_PATH, spec_sha=SPEC_SHA):
         inc.append('predictions changed after sealing')
     if claim.get('missing_cells'):
         inc.append(f'model file missing or non-finite: {claim["missing_cells"]}')
+    pinf, mf = P2 / 'membership-pin.parquet', P2 / 'membership.json'
+    if not claim.get('pin_sha') or not pinf.exists() or sha(pinf) != claim['pin_sha']:
+        inc.append('membership pin missing or changed since the claim')
+    elif sealed and (not mf.exists() or sha(mf) != sealed[0].get('membership_sha')):
+        inc.append('membership record missing or changed after sealing')
+    elif sealed and pf.exists():
+        pr = pd.read_parquet(pf, columns=['game', 'round']); pin = pd.read_parquet(pinf); rec = json.loads(mf.read_text())
+        lost_games = sorted(set(pin.game.astype(str)) - set(pr.game.astype(str)))
+        res_ = results if results is not None else store_results(lost_games)
+        mem = membership(pin, pr, {g: res_.get(g) for g in lost_games})
+        if not mem['ok']:
+            inc.append(f"membership: {mem['duplicates']} duplicate, {mem['n_new']} new, {mem['n_unexplained']} unexplained lost games "
+                       f"{[u['game'] for u in mem['unexplained']][:10]}")
+        if sorted(e['game'] for e in mem['explained']) != sorted(e['game'] for e in rec.get('explained', [])):
+            inc.append('membership: explained games differ from the sealed record')
     rows = []
     if not inc:
         spec = json.loads(Path(spec_path).read_text())
@@ -377,7 +468,12 @@ def cmd_probe(a):
     spec = dict(DEFAULT_SPEC, binding_population='ranked_clean', reported_populations=['ranked_clean', 'all'], rl50_population='ranked_clean')
     sp.write_text(json.dumps(spec)); ssha = sha(sp); cov = {'Autarky': dict(coverage=1.0)}; res = []
 
-    def case(name, expect, mutate_pred=None, mutate_claim=None, claim_scorer=None, gate_only=None):
+    def seal_synth(pred, results):
+        pin_sha = write_pin(_synth()[['game', 'round']])
+        return pin_sha, (lambda: _seal(pred, membership(pd.read_parquet(P2 / 'membership-pin.parquet'), pred, results)))
+
+    def case(name, expect, mutate_pred=None, mutate_claim=None, claim_scorer=None, gate_only=None, draws=(), score_results=None,
+             after_seal=None, no_pin=False):
         global P2
         P2 = Path(tempfile.mkdtemp())
         if gate_only is not None:
@@ -386,11 +482,15 @@ def cmd_probe(a):
             pred = _synth()
             if mutate_pred:
                 pred = mutate_pred(pred)
-            c = _claim(ssha, claim_scorer or sha(SELF), [], cov); _seal(pred)
+            results = {g: (None if g in draws else 1.0) for g in _synth().game.astype(str).unique()}
+            pin_sha, seal = seal_synth(pred, results)
+            c = _claim(ssha, claim_scorer or sha(SELF), [], cov, {} if no_pin else dict(pin_sha=pin_sha)); seal()
             if mutate_claim:
                 j = json.loads(c.read_text()); mutate_claim(j); c.write_text(json.dumps(j))
+            if after_seal:
+                after_seal()
             try:
-                got = cmd_score(a, spec_path=sp, spec_sha=ssha)['verdict']
+                got = cmd_score(a, spec_path=sp, spec_sha=ssha, results=score_results or results)['verdict']
             except SystemExit as e:
                 got = f'refused: {e}'
         res.append(dict(case=name, expect=expect, got=got, ok=got.startswith(expect))); print(res[-1])
@@ -418,9 +518,25 @@ def cmd_probe(a):
     case('valid draws < 990 (positives in one series)', 'INCOMPLETE', mutate_pred=few)
     case('claim report-only list changed after claim', 'INCOMPLETE', mutate_claim=lambda j: j.__setitem__('report_only_cells', ['rl/r50']))
     case('claim scorer hash differs', 'INCOMPLETE', claim_scorer='0' * 64)
-    P2 = Path(tempfile.mkdtemp()); _claim(ssha, sha(SELF), [], cov); _seal(_synth()); cmd_score(a, spec_path=sp, spec_sha=ssha)
+    # revision 3: frozen-cohort membership (D-054 §A; Tanaka 87ab8c40f)
+    case('pinned game lost, decisive result (unexplained)', 'INCOMPLETE', mutate_pred=lambda p: p[p.game != '3'])
+    case('one checkpoint row of a game lost (partial)', 'INCOMPLETE', mutate_pred=lambda p: p[~((p.game == '4') & (p['round'] == 100))])
+    case('new game not in the pin', 'INCOMPLETE',
+         mutate_pred=lambda p: pd.concat([p, p[p.game == '5'].assign(game='999999')], ignore_index=True))
+    case('duplicate row', 'INCOMPLETE', mutate_pred=lambda p: pd.concat([p, p.iloc[:1]], ignore_index=True))
+    case('frozen-missing id appears (not in pin)', 'INCOMPLETE',
+         mutate_pred=lambda p: pd.concat([p, p[p.game == '6'].assign(game='1044626')], ignore_index=True))
+    case('whole draw game dropped (explained)', 'PASS', mutate_pred=lambda p: p[p.game != '7'], draws=('7',))
+    case('draw claimed at run, decisive at score', 'INCOMPLETE', mutate_pred=lambda p: p[p.game != '8'], draws=('8',),
+         score_results={**{str(g): 1.0 for g in range(1500)}})
+    case('pin changed after the claim', 'INCOMPLETE',
+         after_seal=lambda: (os.chmod(P2 / 'membership-pin.parquet', 0o644),
+                             pd.read_parquet(P2 / 'membership-pin.parquet').iloc[1:].to_parquet(P2 / 'membership-pin.parquet')))
+    case('no pin recorded in the claim', 'INCOMPLETE', no_pin=True)
+    P2 = Path(tempfile.mkdtemp()); r0 = {str(g): 1.0 for g in range(1500)}; ps, seal = seal_synth(_synth(), r0)
+    _claim(ssha, sha(SELF), [], cov, dict(pin_sha=ps)); seal(); cmd_score(a, spec_path=sp, spec_sha=ssha, results=r0)
     try:
-        cmd_score(a, spec_path=sp, spec_sha=ssha); got = 'scored twice'
+        cmd_score(a, spec_path=sp, spec_sha=ssha, results=r0); got = 'scored twice'
     except SystemExit as e:
         got = f'refused: {e}'
     res.append(dict(case='second score', expect='refused', got=got, ok=got.startswith('refused'))); print(res[-1])
@@ -436,7 +552,7 @@ def cmd_probe(a):
         got = f'refused: {e}'
     res.append(dict(case='D-052 frozen spec', expect='accepted', got=got, ok=got == 'accepted')); print(res[-1])
     P2 = real; out = dict(scorer_sha=sha(SELF), written=time.strftime('%FT%TZ', time.gmtime()), passed=sum(r['ok'] for r in res), of=len(res), cases=res)
-    (P2 / 'probe-r2.json').write_text(json.dumps(out, indent=1, default=str)); print(f"PROBES {out['passed']}/{out['of']}")
+    (P2 / 'probe-r3.json').write_text(json.dumps(out, indent=1, default=str)); print(f"PROBES {out['passed']}/{out['of']}")
 
 
 if __name__ == '__main__':

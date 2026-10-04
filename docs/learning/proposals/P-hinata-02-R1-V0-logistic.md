@@ -154,3 +154,43 @@ status `offline`.
   is in the file.
 - **Still owed before the claim:** Tanaka's pass line naming scorer sha `ea3b5ef7…` and spec sha `15d79683…`.
   Then: `run --audited-scorer-sha ea3b5ef7…` → `score`, one each.
+
+## D-054 §A: scorer revision 3 (frozen cohort) and the corrected counts (appended 2026-10-04 16:42 UTC, hinata; shas updated 16:45Z after a docstring-only edit — probes 24/24 and selftest re-run on the final sha). No held-out label read; no claim.
+
+- **Scorer revision 3:** `tools/hinata/p2_confirm.py` sha256 **`bb51e1bbf4e2fe888198e7f69a0de792acc604ef06bf11cef6d3b1a39bcd4624`**
+  (revision 2 `ea3b5ef7…` kept at `build/hinata/_old/p2_confirm.ea3b5ef7.py`). Implements D-054 §A and Tanaka's
+  frozen-cohort defect (release audit, r/tanaka 87ab8c40f):
+  1. **Scope from manifest v2 only.** Usable = decoded. The frozen loader (`archive/v0_2920bb57.py`, unchanged) filters
+     on the store's live `in_scope`; revision 2 inherited that, which is the defect Tanaka reproduced. Revision 3 runs the
+     loader on a read-only view (`frozen_view`): a temporary games table holding exactly the usable manifest ids with
+     `in_scope := true`, series/sides symlinked. The live ladder can no longer move the cohort.
+  2. **Pinned membership.** `counts` (outcome-free: ended flag and decode presence only) writes
+     `build/hinata/p2/membership-pin.parquet` (read-only): every (game, checkpoint) side-A not-ended row of every usable id,
+     all five populations. The claim records the pin's sha, its row count, the usable count and the sha of the sorted id
+     list; `run` refuses if the pin is not the one `counts` wrote.
+  3. **Reconciliation, twice.** `run` reconciles the predictions against the pin and seals `membership.json` with the
+     predictions; `score` re-reconciles independently. INCOMPLETE on any duplicate row, any row not in the pin (a new
+     game, a frozen-missing id, a new checkpoint), any partial loss inside a game, or any lost game not explained. The only
+     allowed explanation: the whole game dropped because `result_a` is not 0/1 (draw or no decisive result), re-read at
+     score time; and the explained list must equal the sealed one.
+- **Probes** (`probe`, synthetic only): **24 / 24** as expected — the 15 of revision 2 plus 9 new: pinned decisive game
+  lost → INCOMPLETE; one checkpoint row lost → INCOMPLETE; new game → INCOMPLETE; duplicate row → INCOMPLETE;
+  1044626 appearing → INCOMPLETE; whole draw game dropped → PASS (explained); draw at run but decisive at score →
+  INCOMPLETE; pin edited after the claim → INCOMPLETE; claim without a pin → INCOMPLETE. Receipt `build/hinata/p2/probe-r3.json`.
+- **Regression:** `selftest` on the development OOF reproduces revision 2 exactly (max |diff| 0 over all AUC, slope and
+  ΔAUC interval endpoints; 14 rows; development gate PASS, not a verdict).
+- **Loader plumbing on training maps only** (Weakhold + Devil, 420 ids incl. 20 live-out-of-scope; no held-out map read):
+  pin 1,423 rows = loaded 1,423, 0 new, 0 duplicates, 0 unexplained.
+- **Corrected counts (D-054 §A), binding ranked∩clean, outcome-free** (`cell-counts.json` sha `5119a16e…`; draws not
+  removed, so upper bounds on decisive rows). Usable **1,327 / 1,328**: Autarky 434/435 (99.8 %), Maze 446/446, Trauma
+  447/447. Missing: 1044626 (not decoded). The 1,319 figure of 14:47Z is withdrawn (it came from the live flag).
+
+  | round | 10 | 25 | 50 | 100 | 150 | 250 | 400 |
+  |---|---|---|---|---|---|---|---|
+  | elim (Autarky) | 434 | 434 | 434 | 433 | 421 | 343 | 246 |
+  | rl (Maze + Trauma) | 893 | 893 | 893 | 893 | 892 | 889 | 880 |
+
+  No cell under 50; report-only = elim/r10 (D-052). Pin: 22,305 rows over 3,305 usable games (all populations); every
+  usable id has pinned rows.
+- **Release (D-054 §A):** Tanaka's pass line naming scorer **`bb51e1bb…`** and spec **`15d79683…`**; then
+  `run --audited-scorer-sha bb51e1bb…` → `score`, one each.

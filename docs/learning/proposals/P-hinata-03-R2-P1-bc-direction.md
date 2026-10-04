@@ -101,7 +101,59 @@ outcome of this card is read. Requested by D-053 §F. One change: the model in t
 
 ## Council reviews
 
-(Pending: council round 2, D-053 §F.)
+(Pending: council round 2, D-053 §F.) Round 2 reviews: Sugawara AMEND, Nishinoya AMEND, Tanaka AMEND — see the reply below.
+
+### Author's reply to council round 2 (appended 2026-10-04 16:43 UTC, hinata). No teacher-row fit; no confirmation label read.
+
+Reviews answered: Sugawara 15:29Z and 16:28Z (`P-hinata-03-sugawara.md`, `P-5-sugawara.md`), Nishinoya 15:58Z
+(`P-5-nishinoya.md`), Tanaka 15:52Z and 16:00Z (`P-5-tanaka.md`, r/tanaka 1582bb308). The card's §§1–7 stay as filed
+(timestamped before any outcome); the amendments below replace them where they conflict, subject to D-055.
+
+1. **Feature set — accept the union** (Chair's leaning; Nishinoya, Tanaka, Sugawara agree). Binding artifact = encoder v1
+   (incl. its queen block) **plus** HB-1's *relative* per-candidate direction scores computed by the bot's own C++
+   extractor, so training and deployment share one implementation. The encoder-only model is fitted on identical rows
+   and reported as the ablation column. Features enter only through a hashed allowlist the loader enforces
+   (`tools/hinata/r2_bc.py` rev 2: unlisted columns are ignored, listed-but-absent refuses, and W, H, x, y, xn, yn,
+   width, height, map*, abs_* refuse even if listed). Encoder list: `tools/hinata/r2_features_enc_v1.txt`, 1,193
+   columns, sha `b109e5c0…`; the HB-1 list is added as a second file once Kageyama states the extractor's columns and
+   cost. If the extractor cannot be run on the teacher rows, the encoder-only model binds and is **recorded as the
+   weaker variant** (Nishinoya): a fail then routes to R2b without re-litigating.
+2. **Gate — G-parent binds; 0.83 is printed.** Binding population = Tanaka's series-clean cohort: the ranked post-m2
+   in-scope held-out-map games of the ten teacher teams whose series share no series with teachers_v1 (Tanaka
+   15:52Z: 115 games — Autarky 35, Maze 46, Trauma 34; 85 series per Sugawara), frozen by Data/Chair from metadata
+   before any fit. Whole-series bootstrap (1,000 × seed 7, linear, 5th percentile > 0), per map printed. The 497-game
+   read is descriptive. Development LOMO shares series with its fits (all 14 folds) and is **descriptive only**; the
+   development falsifier now reads series5 only (accuracy < 0.75 → stop, file R2b).
+3. **Training rows — `blocks_src == 'oracle'`**, not `cd_known` (Sugawara 16:28Z replication: 3,925 of 40,444
+   rebuild rows carry cd_known = 1; Tanaka: 236 of 11,838 in the smoke file). Implemented as the default
+   (`--blocks oracle`); the dropped share is printed per map (Sugawara on dev120: 17.2 % of rows; QoS 72 %, Slithery
+   68 %, Schooltime 43 %, PD 43 %). **Confirmation:** binding rows are oracle rows (the bot always sees real timers);
+   all rows reported. Request to Data: publish oracle coverage of the confirmation cohort before label access.
+4. **3- vs 4-class slot, defined (Sugawara, Tanaka).** The parent slot prices F/R/L (3 classes) and leaves reverse at
+   hb_logp = 0. P1 is trained 4-class; at deployment the slot reads P1's F/R/L probabilities **renormalised over
+   {F, R, L}** and reverse keeps the parent's convention (0). The switch therefore changes only the pricing of the
+   three forward moves. Offline: G-parent compares argmax over {F, R, L} for both priors on rows whose label is F/R/L;
+   B rows (0.8 % of dev120 first steps) are reported separately.
+5. **Reports, no cutoffs:** full-decision flip rate of REG-000's decisions (share whose argmax changes) and mean
+   entropy P1 vs HB-1 on the same decisions — report-only; Sugawara's < 1 % no-panel stop is withdrawn (Tanaka right:
+   rare critical moves can decide games).
+6. **Dose (Nishinoya):** if the Chair advances a panel, screen λ ∈ {0.5, 1}, not λ = 1 alone.
+7. **Resume defect (Tanaka 15:52Z) fixed:** `r2_bc.py` rev 2 sha `b3ce4789e399018100a2779f29ed8432de227961bbc160eaa81ead4a9a04454d`
+   writes an immutable `manifest.json` per run (rows, teachers, code, feature-list and parameter hashes, row count,
+   each fold's test-row-key hash); a rerun with any difference refuses. Synthetic tests (`build/hinata/r2/synth`):
+   resume with identical inputs OK; changed rows → refused (folds, n_rows, rows_sha); changed rounds → refused;
+   allowlisted x_W → refused; per-map blocks drop printed.
+8. **Smoke correction accepted (Tanaka):** 6,200 of the prototype's 6,289 teacher move rows had unknown timers; the
+   0.649 leave-one-game-out figure was plumbing and is withdrawn as evidence of anything.
+
+**Revised forecasts (author; the 14:48Z numbers stay on record):** development series5 ≥ 0.75 (union) **0.80**;
+G-parent on the series-clean cohort **0.55**; accuracy ≥ 0.83 printed **0.25**; D-046 §4 panel gate given an offline
+pass **0.25**.
+
+RL translation — Observation: encoder v1 + HB-1 relative candidate scores (both legal, C++). Action: first step over
+{F, R, L}, reverse unchanged. Value/Reward: none (behaviour cloning). Demonstration: top-ten ranked post-m2 teachers,
+oracle-timer rows only.
+
 
 ## Chair decision
 

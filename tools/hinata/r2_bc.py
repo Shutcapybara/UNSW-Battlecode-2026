@@ -12,6 +12,13 @@ What it does (one change: the head; features are encoder v1 exactly as Data writ
          lomo: leave-one-map-out over the training maps; game: leave-one-game-out (plumbing on tiny files only).
   out    oof.parquet, metrics.json (accuracy overall / queen turns / per map / per teacher team, majority-class and
          'forward' baselines, log loss, learning curve when --frac < 1), registry.json (data sha, code sha, params, size).
+Revision 2 (4 Oct 16:40Z, council round 2 on P-5): (a) training filter blocks_src == 'oracle' (Sugawara, Tanaka: cd_known
+alone does not establish provenance), dropped share printed per map; (b) features from a hashed allowlist file
+(--features; default tools/hinata/r2_features_enc_v1.txt = the 1,229-column schema's 1,193 x_* columns) — any column not
+on the list is ignored, any listed column absent refuses, and map-identity names (W, H, x, y, xn, yn, width, height,
+map*, abs_*) refuse even if listed; (c) immutable run manifest: data/teacher/code/feature/param hashes and each fold's
+test-row hash are written on first use; a rerun into the same --run with anything different refuses (Tanaka 15:52Z:
+stale fold files were reused and re-registered).
 Never reads held-out maps, test or validation buckets; no map identity in features (encoder v1 emits none; asserted).
 Resumable: each fold's model is saved; a rerun skips finished folds. Use --budget <= 150 s on the VM.
 """
@@ -22,14 +29,21 @@ import numpy as np, pandas as pd
 ROOT = Path.cwd(); HELDOUT = ROOT / 'docs/learning/splits/heldout-maps.json'
 PARAMS = dict(objective='multiclass', num_class=4, learning_rate=0.08, num_leaves=63, min_data_in_leaf=100,
               feature_fraction=0.5, bagging_fraction=0.8, bagging_freq=1, lambda_l2=1.0, verbose=-1, num_threads=3, seed=7)
-BANNED = ('map', 'width', 'height', 'abs_x', 'abs_y', 'x_x', 'x_y', 'facing_abs')
+BANNED_EXACT = {'W', 'H', 'x', 'y', 'xn', 'yn', 'width', 'height', 'facing_abs'}
+BANNED_PREFIX = ('map', 'abs_')
+FEATS = ROOT / 'tools/hinata/r2_features_enc_v1.txt'
+
+
+def banned(c):
+    b = c[2:] if c.startswith('x_') else c
+    return b in BANNED_EXACT or b.startswith(BANNED_PREFIX)
 
 
 def sha(p):
     return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 
-def load(paths, teachers):
+def load(paths, teachers, feats, blocks='oracle'):
     hm = set(json.loads(HELDOUT.read_text())['heldout_maps'])
     d = pd.concat([pd.read_parquet(p) for p in paths], ignore_index=True)
     assert (d.split == 'train').all(), f'non-train rows: {d.split.value_counts().to_dict()}'
@@ -37,9 +51,19 @@ def load(paths, teachers):
     t = pd.read_parquet(teachers)[['game', 'side', 'team', 'weight']]
     d = d.merge(t, on=['game', 'side'], how='inner')
     d = d[(d.y_kind == 0) & d.y_first.between(0, 3)].reset_index(drop=True)
-    X = [c for c in d.columns if c.startswith('x_')]
-    assert not [c for c in X if any(b == c[2:] or c[2:].startswith(b + '_') for b in BANNED)], 'map-identity column in features'
-    return d, X
+    drop = {}
+    if blocks != 'any':
+        keep = d.blocks_src == blocks
+        drop = {m: dict(rows=int(len(g)), dropped=int((~keep[g.index]).sum()), share=round(float((~keep[g.index]).mean()), 4)) for m, g in d.groupby('map')}
+        d = d[keep].reset_index(drop=True)
+    X = [l.strip() for l in Path(feats).read_text().splitlines() if l.strip()]
+    bad = [c for c in X if banned(c)]
+    if bad:
+        raise SystemExit(f'refused: map-identity columns on the allowlist: {bad}')
+    gone = [c for c in X if c not in d.columns]
+    if gone:
+        raise SystemExit(f'refused: allowlisted columns absent from rows: {gone[:10]}')
+    return d, X, drop
 
 
 def folds(d, cv):
@@ -62,14 +86,29 @@ def main():
     ap.add_argument('--rows', required=True); ap.add_argument('--teachers', default='build/learn/kageyama/teachers_v1.parquet')
     ap.add_argument('--run', required=True); ap.add_argument('--cv', default='series5', choices=['series5', 'lomo', 'game'])
     ap.add_argument('--frac', type=float, default=1.0); ap.add_argument('--budget', type=float, default=150); ap.add_argument('--rounds', type=int, default=400)
-    ap.add_argument('--unweighted', action='store_true')
+    ap.add_argument('--unweighted', action='store_true'); ap.add_argument('--features', default=str(FEATS))
+    ap.add_argument('--blocks', default='oracle', choices=['oracle', 'any'])
     a = ap.parse_args(); t0 = time.time(); run = Path(a.run); run.mkdir(parents=True, exist_ok=True)
-    paths = a.rows.split(','); d, X = load(paths, a.teachers)
+    paths = a.rows.split(','); d, X, dropped = load(paths, a.teachers, a.features, a.blocks)
     if a.frac < 1:                                     # learning-curve point: subsample training SERIES, not rows
         keep = d.series_key.map(lambda s: int(hashlib.sha256(f'frac/{s}'.encode()).hexdigest(), 16) % 1000 < a.frac * 1000)
         d = d[keep].reset_index(drop=True)
     y = d.y_first.to_numpy(int); w = np.ones(len(d)) if a.unweighted else d.weight.to_numpy(float)
     F = folds(d, a.cv); P = np.full((len(d), 4), np.nan)
+    rk = (d.game.astype(str) + '/' + d.side.astype(str) + '/' + d.dragon.astype(str) + '/' + d['round'].astype(str) + '/' + d.turn.astype(str)).to_numpy()
+    man = dict(rows_sha=[sha(p) for p in paths], teachers_sha=sha(a.teachers), code_sha=sha(__file__), features_sha=sha(a.features),
+               params=PARAMS, rounds=a.rounds, cv=a.cv, frac=a.frac, weighted=not a.unweighted, blocks=a.blocks, n_rows=int(len(d)),
+               folds={k: hashlib.sha256('\n'.join(sorted(rk[te])).encode()).hexdigest() for k, te in F.items()})
+    mp = run / 'manifest.json'
+    if mp.exists():
+        old = json.loads(mp.read_text())
+        if old != json.loads(json.dumps(man)):
+            diff = sorted(k for k in man if json.dumps(old.get(k), sort_keys=True) != json.dumps(man[k], sort_keys=True, default=str))
+            raise SystemExit(f'refused: {run} was made with a different manifest ({diff}); use a new --run')
+    else:
+        if any(run.glob('model_*.txt')):
+            raise SystemExit(f'refused: {run} has model files but no manifest; use a new --run')
+        mp.write_text(json.dumps(man, indent=1, default=str))
     for name, te in F.items():
         mf = run / f'model_{name}.txt'
         if not mf.exists():
@@ -90,12 +129,13 @@ def main():
                baseline_majority=float((yy == prior.argmax()).mean()) if len(yy) else None, class_share=prior.round(4).tolist(),
                logloss=float(-np.mean(np.log(np.clip(pp[np.arange(len(yy)), yy], 1e-9, 1)))) if len(yy) else None,
                per_map={m: acc(yy, pp, (oof['map'] == m).to_numpy()) for m in sorted(oof['map'].unique())},
-               per_team={t: acc(yy, pp, (oof.team == t).to_numpy()) for t in sorted(oof.team.unique())},
+               per_team={str(t): acc(yy, pp, (oof.team == t).to_numpy()) for t in sorted(oof.team.unique())},
+               blocks_filter=a.blocks, dropped_by_blocks=dropped,
                interval='none (development; the gate interval is whole-series bootstrap, card §4)')
     (run / 'metrics.json').write_text(json.dumps(met, indent=1))
     models = sorted(run.glob('model_*.txt'))
-    reg = dict(artifact='hinata-p1-dev', status='development', rows_sha=[sha(p) for p in paths], teachers_sha=sha(a.teachers),
-               code_sha=sha(__file__), features=f'encoder v1: {len(X)} x_* columns', label='labels v1 y_first, move turns',
+    reg = dict(artifact='hinata-p1-dev', status='development', manifest_sha=sha(mp), rows_sha=[sha(p) for p in paths], teachers_sha=sha(a.teachers),
+               code_sha=sha(__file__), features=f'allowlist {Path(a.features).name} sha {sha(a.features)[:12]}: {len(X)} columns', label='labels v1 y_first, move turns',
                params=PARAMS, rounds=a.rounds, cv=a.cv, frac=a.frac, weighted=not a.unweighted,
                model_bytes=int(np.mean([m.stat().st_size for m in models])) if models else None, metrics=met)
     (run / 'registry.json').write_text(json.dumps(reg, indent=1, default=str))

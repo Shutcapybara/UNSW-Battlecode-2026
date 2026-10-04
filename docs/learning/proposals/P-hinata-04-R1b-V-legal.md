@@ -82,6 +82,33 @@ outcome is read. Requested by D-052 §A.7 and D-053 §F. Diagnostic: no bot chan
 
 (Pending: council round 2, D-053 §F.)
 
+
+### Author's reply to council round 2 (appended 2026-10-04 16:43 UTC, hinata). No fit; no held-out label read.
+
+Reviews: Sugawara 15:29Z/16:28Z AGREE with amendments; Nishinoya 15:58Z AGREE with two amendments; Tanaka 16:00Z AMEND.
+All accepted; they replace §§3–4 where they conflict, subject to D-055.
+
+1. **What ΔAUC is.** ΔAUC(V0b − V-legal) is a **paired predictive diagnostic**, not the price of opponent information
+   and not a guaranteed upper bound (Tanaka; Nishinoya's decomposition — privileged vs full legal view, plus full view
+   vs 16 scalars — is printed in words beside it). A 5th percentile ≤ 0 is non-significance, never equivalence.
+2. **Speakers.** The selection "queen, else lowest alive" makes is_queen = 0 imply the queen died, so non-queen rows
+   are near-labels in elimination cells. Per cell: the non-queen-speaker share, ΔAUC on queen-speaker rows only
+   (Sugawara), and both strata. R5 claims are limited to queen-speaker rows.
+3. **Pooled view** (Nishinoya): the pooled-view variant printed per cell.
+4. **Held-out read.** One read, on a post-claim population that is **whole-series disjoint** from P-2's 1,328 games and
+   from every training series (Tanaka: a game-time cutoff alone is not enough), with frozen V0b, Φ and V-legal scored
+   once on identical rows; Φ printed on those rows to anchor the era (Nishinoya: the field moved ~+10 pp queen
+   survival in two days, so a raw cross-era ΔAUC is not comparable to P-2's).
+5. **Cost correction (Tanaka's key audit):** P-2's development rows are **5,799 games / 71,956 rows** (35,978 side-A
+   keys; 35,948 OOF rows; 30 unmatched), not "36k games". Encoder rows at checkpoints are therefore ~5.8k games, about
+   a sixth of the stated cost — likely feasible in Kageyama's cloud build. I will list the 30 unmatched keys and their
+   cause before the fit.
+
+**Forecasts (revised; 14:48Z on record):** P(falsifier not triggered) **0.80**; P(V-legal ≥ Φ at rl r50) **0.20**.
+
+RL translation — Observation: 16 legal scalars of the speaker's process (C++ twin). Value: V-legal is R5's leaf
+candidate; V0b stays the privileged critic. Reward: game outcome. Demonstration: none.
+
 ## Chair decision
 
 (Pending: held-out reading population; build of the encoder rows.)
