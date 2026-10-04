@@ -1,0 +1,24 @@
+--- bots/carthage-05-free-sprint/main.cpp
++++ bots/<new>/main.cpp
+@@ -51,6 +51,21 @@
+                 continue;
+             }
+             dec = pol.decide(w);
++            // SHENZHEN PROBE C (H-SZ1, analysis copy only). When every direction simulates DEAD (a sealed cage):
++            // length >= 4 -> split (head keeps 2); shorter -> die by an invalid command instead of moving into an
++            // ally head (a head-on would take the parent with it).
++            bool sz_cage = false, sz_invalid = false;
++            if (dec.act != ares::Act::SPLIT) {
++                bool any = false;
++                for (int d = 0; d < 4; d++) any = any || pol.simulate(w, {d}).status != ares::Policy::SimStatus::DEAD;
++                if (!any) {
++                    sz_cage = true;
++                    if (w.body.size() >= 4) { dec.act = ares::Act::SPLIT; dec.split = static_cast<int>(w.body.size()) - 2; dec.why = 'z'; }
++                    else if (ct.get_id() > 1) sz_invalid = true;   // never the queen (ids 0/1)
++                }
++            }
++            if (sz_invalid) { std::cout << "SPLIT 99\nLOG SZ:cage_invalid\nPROTOCOL " << unswbc::Constants::PROTOCOL_MAJOR << "\n"; pol.send_radio(ct); std::cout << "ENDTURN\n" << std::flush; continue; }
++            (void)sz_cage;
+             pol.prepare_radio_for_decision(w, dec);
+             if (ARES_MEASURE == 3) {
+                 static ares::Grid g;

@@ -21,7 +21,7 @@ pushes `r/shenzhen`.
 
 | id | claim | status | falsifier | size | suits |
 |---|---|---|---|---|---|
-| H-SZ1 | cage: never move into own neck; split or step into tail when no other move | posted 0.9 | live Schooltime queen alive@r10 < 0.95 / 40 games, or other maps change | 40 Schooltime games, both seats, + parity on other maps | any tester, first |
+| H-SZ1 | cage: when every move is fatal, split keeping 2 (len ≥ 4) else invalid-command death (never the queen) — probe 11/12 | posted 0.9, patch ready | live Schooltime queen alive@r10 < 0.95 / 40 games, or other maps change | 40 Schooltime games, both seats, + parity on other maps | any tester, first |
 | H-SZ2 | old-map panels mismeasure queen arms | posted 0.8 | carthage-08 pool alive@490 moves < 5 pp old → live maps | carthage-00/08 pool s1–3 | desktop tester |
 | H-SZ3 | small-runner queen beats fed crown per unit of economy | posted 0.6 | runner RL win LB ≤ crown's, or econ LB < −0.03 | pool + gen s1–3, live maps | Claude tester |
 | H-SZ5 | hunt the enemy queen by id (0/1, visible) — nobody hunts (RR queen÷other 0.21–0.83 for every killer) | posted 0.6 (unit 2) | opp queen alive@end vs a keeper drops < 15 pp, or econ LB < −0.03 | pool+gen s1–3 with carthage-08 as keeper | Claude tester |
@@ -32,6 +32,8 @@ pushes `r/shenzhen`.
 | H-SZ15 | invalid-command queen feed (Vibing++/Sponge primitive) from r150 or r400 | posted 0.65 | gain per cull < 2, tier-2 > +10 %, or RL win not up | pool s1–3 live maps on an alive-queen parent | any |
 | H-SZ16 | queen home-range leash (~6 cells of spawn) | posted 0.4 | alive@490 not +5 pp at econ LB > −0.03 | pool+gen s1–3 | tester |
 | H-SZ17 | escort is not the survival mechanism | posted 0.3 | escort share predicts survival across keepers (ρ ≥ 0.3) | corpus | analyst |
+| H-SZ18 | sealed-dragon rule everywhere (split / invalid, never head-on into an ally) | posted 0.5 (unit 4) | < 1 qualifying ally-h2h death per 10 games | corpus count, then panel | analyst → tester |
+| H-SZ20 | caged queen eats the child corpse → length 4 > top ten's caged 3 | posted 0.5 | caged queen len@490 ≤ 3 or Schooltime queen record vs top ten < .5 | live Schooltime vs keeper | tester |
 | closed | H-SZ7 exposure: our queens are not more exposed per round (enemy head ≤3 in 10.9 % vs 9.6–13.6 %) | answered | — | — | — |
 
 ## Log
@@ -50,6 +52,10 @@ pushes `r/shenzhen`.
   Keepers' queens stay within ~6 of spawn and are seen by r40; crown meals are ally culls (invalid / self). Proposed a
   replay-lead split with Chongqing (it owns S-1 store + CORPUS.md). Requested keeper push of r/shenzhen. Finding
   `docs/findings/2026-10-04-shenzhen-unit3-queen-home-and-feeding.md`.
+- **Unit 4 (00:56Z – 01:25Z).** r/shenzhen pushed by the keeper (00:24Z). Installed unswbc 1.2.9 in the cloud workspace;
+  reproduced the Schooltime cage death 6/6 (old map 0/6); found the engine forbids stepping into the own tail cell; probe
+  C (14 lines) wins 11/12 seat-games by the queen tiebreak. Patch `tools/shenzhen/probes/h-sz1-cage-main.cpp.patch`.
+  Finding `docs/findings/2026-10-04-shenzhen-unit4-cage-reproduced-and-probe.md`.
 
 ## Next unit
 
