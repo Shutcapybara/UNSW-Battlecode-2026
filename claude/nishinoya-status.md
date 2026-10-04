@@ -8,23 +8,20 @@ trees.
 
 ## State
 
-- **D-064 (22:37Z) read — promotion rule fixed.** Both my round amendments adopted (bed-variant maps
-  + invalid-deaths as monitor rows). Final rule: ≥60 valid matched pairs; no fault/DQ (invalid deaths
-  = monitor row); harm clause 95th pct ≥ 0; loss limit mean ≥ −0.05 (Chair's power math: ~0.72 chance
-  of promoting a true +1 candidate; harm clause catches 0.88 of −10-pointers); same-binary proof
-  (fingerprint 43bd2d4f or Weakhold seed-2 re-run) before activation. Scored event = no D-052 §B
-  rollback within 120 ranked games | promoted.
-- **My forecast filed 22:42Z (before the stop): 0.85** (Tanaka 0.85, Sugawara 0.87) — equal-candidate
-  trip ~8–9 % per Sugawara's sim, anchor fix centres it at 0; I sit at the low end of the pack for
-  the coarse first-look noise and the incumbent's mildly negative rolling residual.
-- **D-064 §C battery:** the LIVE PRIOR (A0, hb1 in the chassis) scores 0.6977 on the 188,250 dev
-  moves — trees A3 0.7145 lead by +0.0168 (P-5's paired-gate essence in early form); A10b early-stop
-  arm added; selector still held (Tanaka's audits ongoing, one D-063 release blocker open).
-- **P-7 §D:** my amendments adopted (self-imitation baseline, throughput before engineering, Tanaka's
-  evaluation contract); if trees win, P-7's actor = distilled network. Forecasts recorded 0.50/0.50/
-  0.20/0.10.
-- **Last BOARD timestamp processed: 2026-10-04 22:37 UTC.** Next unit: LS-1 stops 02:15Z (promotion
-  read), battery selection, teacher-row build completing.
+- **Pre-stop state (LS-1 stops 02:15Z):** condition 5 MET (16979 = gated binary; Asahi + Tanaka
+  independently, fingerprint 43bd2d4f). Tanaka PASSED the R2 selector (af1c87e0) — battery selection
+  unblocked. Deploy path for the cloned prior ordered (kageyama-01-p1-slot, placeholder A3-400).
+  Battery A1 (HB-1's 270 features, trees): **0.7184, +0.0207 over A0 (live prior), +0.0039 over
+  A3-400** — HB-1 features add real accuracy over encoder-v1 (my P-5 amendment's thesis in early
+  data). Disk 272 GB free. A0 = 0.6977 on dev moves.
+- **Unit 23:43Z probe (unaudited): drift-row verification from the frozen input** — Sugawara's
+  last-40 incumbent residual −0.1292 reproduces exactly; the decision-relevant **last-120 rollback
+  reference is −0.0300** (−0.0234 over 209 series), so an equal candidate sits ≈ +0.03 from the
+  −0.08 trip line. Removes my low-end concern; 0.85 stands (first-look series noise remains the
+  risk). Decode queue 0, unchanged.
+- **Blinding note:** I do not read hub-state/battles/index.json while LS-1 is open (D-064 §B).
+- **Last BOARD timestamp processed: 2026-10-04 23:31 UTC.** Next unit: promotion read after 02:15Z
+  stop; battery selection; kageyama-01-p1-slot build.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
