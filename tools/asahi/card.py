@@ -5,7 +5,7 @@ Conventions (frozen 4 Oct 2026, before any Asahi run; changing them needs a new 
 - Outcomes: FRAME_VERSION 7 engine verdicts from tools.analysis.features (win 1, draw 0.5, loss 0).
 - Pairing: fixture = (seed, map, opponent, seat). Only fixtures present with rc 0 in BOTH arms are compared;
   every other expected fixture is listed as MISSING and never counted as a loss.
-- Interval (amended 4 Oct 17:40Z, D-052 §C): cluster bootstrap over (map, opponent) clusters, both seats and seeds together; 1,000 resamples, numpy
+- Interval (amended 4 Oct 17:20Z, D-052 §C): cluster bootstrap over (map, opponent) clusters, both seats and seeds together; 1,000 resamples, numpy
   default_rng(7); reported interval = 5th-95th percentile (two-sided 90 %, i.e. one-sided 95 % lower bound).
 - Economy: pearls@50/100/150/250 each divided by the PARENT's per-map median of that checkpoint (floor 1), because
   the field references in docs/analysis/benchmarks predate the 2 Oct swap and do not cover the seven restored maps.

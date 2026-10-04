@@ -11,7 +11,7 @@ Per arm vs parent, pool and gen separately, seed 1, on paired fixtures (seed, ma
 - food per turn = pearls eaten by all own dragons / alive own dragon-turns (features dragons table: eats, turns), ratio;
 - fixed-fixture all-cause queen death incidence per game, P(queen alive at round limit) (header, queen.parquet).
 Binding readout: pool and gen POOLED (clusters panel × map × opponent), each panel printed separately (frozen
-4 Oct 18:00Z, before any parent game was labelled). Verdict on m = 0 (card §3): support iff strike ratio <= 0.70 and all-cause hazard ratio <= 1 and guards hold;
+4 Oct 17:30Z, before any parent game was labelled). Verdict on m = 0 (card §3): support iff strike ratio <= 0.70 and all-cause hazard ratio <= 1 and guards hold;
 refute iff strike ratio >= 0.90, or all-cause diff 5th pct > 0, or food ratio <= 0.90; else hold. Stops: < 10 parent
 strike events on pool + gen -> "no local exposure"; < 5 firings / 1k queen decisions (hkz26_summary.json) -> "no reach".
 
@@ -71,7 +71,7 @@ def paired(arm, panel):
 
 
 def compare(arm, panel):
-    if panel == 'pooled':   # pool + gen together, clusters panel × map × opponent (binding, frozen 4 Oct 18:00Z)
+    if panel == 'pooled':   # pool + gen together, clusters panel × map × opponent (binding, frozen 4 Oct 17:30Z)
         parts = [paired(arm, p) for p in ('pool', 'gen')]
         m = pd.concat([x[0] for x in parts], ignore_index=True)
         mc = parts[0][1] + parts[1][1]; mp = parts[0][2] + parts[1][2]; shac, shap = parts[0][3], parts[0][4]
