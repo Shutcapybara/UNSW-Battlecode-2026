@@ -21,6 +21,19 @@
   joint / queen-decided W-L; tier-2 flag at +10 %; per class (Chongqing C7-03 A–E, gen) and per map; D-042 win-led
   gate letter, prefixed `screen-` below three seeds.
 
+## Results so far (seed-1 screens, `unswbc 1.2.3`)
+
+- Parent `carthage-05-free-sprint` (fp 7df05a3f): pool 226-46 (0.831, = Rome's zero), gen 341-123; queen alive@RL
+  pool 0/146.
+- **P-A01 cage C+D, E = 0: HOLD** — Schooltime queen 4/15 vs 0/16 (+4 < +6); pool Δwin +2.2 pp [−0.4, +5.2], econ flat,
+  wall −80 %, invalid +8.1/1k (designed); Portals −12.5 pp / portals_tr −37.5 pp. E (reserve) appears to carry the cage
+  column (Rome E1 11/16).
+- **P-A02 H-KZ12:** k16 exposure 39.3 vetoes / 1k queen decisions, stop rule cleared on all C/E target maps (also fires
+  on Islands/Stripes/Tower Defense); k0 golden parity 272/272; k4 pool 230-42 (= Rome's 0.8456), k8 pool 228-44;
+  curve (070) and k16 card (071) queued.
+- Tooling fix: queen survival now read from the engine result block; the features dragons table marks the queen dead
+  on 18–24 of 544 pool sides where the engine has it alive (posted to Data/Chongqing).
+
 ## Queue (default order; the Chair may reorder)
 
 1. P-A01 cage C+D, E = 0 vs carthage-05 — preregistered (`docs/learning/proposals/P-A01-cage-cd-e0.md`).
@@ -42,3 +55,5 @@
   daemon started by the user 10:56Z; worktree `../wt-asahi` on `r/asahi`; first commit 922cb2564.
 - 4 Oct 10:59Z: queue — 010 parent carthage-05 pool+gen s1 (running; ~40 s/game/worker on heavy maps, ≈ 40 min/arm),
   020 cage E0 pool+gen, 030 k16 pool, 031 k16 exposure capture, 040 k0 pool, 041 k0 parity, 050 cage card.
+- 4 Oct 12:25Z: P-A02 exposure + k0 parity posted; dragons-table queen bug found, cards switched to header queen.
+- 4 Oct 13:10Z: P-A01 HOLD posted; k8 done, k4/k8 exposure captures running; curve + k16 card next.

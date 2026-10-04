@@ -1,0 +1,948 @@
+{
+ "letter": "screen-PASS",
+ "why": [],
+ "cards": {
+  "pool": {
+   "panel": "pool",
+   "cand": "asahi-05-kz12-k16",
+   "parent": "carthage-05-free-sprint",
+   "seeds": [
+    1
+   ],
+   "meta": {
+    "cand": {
+     "fingerprint": "43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "39961c55d0e6",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 272
+    },
+    "parent": {
+     "fingerprint": "7df05a3f40b011fa52f700c789ddf30414da08ab50d6c36964ef8cc223f9d45f",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "39961c55d0e6",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 272
+    }
+   },
+   "missing": {
+    "cand": [],
+    "parent": []
+   },
+   "paired": 272,
+   "summary": {
+    "cand": {
+     "n": 272,
+     "W": 233,
+     "L": 39,
+     "D": 0,
+     "win": 0.8566176470588235,
+     "reached": 148,
+     "q_cond": 0.0,
+     "q_joint": 0.0,
+     "q_dec_W": 0,
+     "q_dec_L": 5,
+     "conv": 0.831081081081081,
+     "pearls@50": 41.55882352941177,
+     "pearls@100": 125.14338235294117,
+     "pearls@150": 216.5514705882353,
+     "pearls@250": 400.24264705882354,
+     "units@100": 28.75,
+     "total@100": 72.19485294117646,
+     "death_wall_per1k": 6.1294140466585,
+     "death_self_per1k": 3.6195028769234865,
+     "death_ally_body_per1k": 1.5836489726724328,
+     "death_h2h_ally_per1k": 1.2256238344508308,
+     "death_invalid_per1k": 0.0,
+     "death_h2h_enemy_per1k": 3.6845941024459847,
+     "death_enemy_body_per1k": 0.13006512486117955,
+     "deaths_per1k": 16.372848958012415,
+     "births@100": 50.341911764705884
+    },
+    "parent": {
+     "n": 272,
+     "W": 226,
+     "L": 46,
+     "D": 0,
+     "win": 0.8308823529411765,
+     "reached": 146,
+     "q_cond": 0.0,
+     "q_joint": 0.0,
+     "q_dec_W": 0,
+     "q_dec_L": 5,
+     "conv": 0.8082191780821918,
+     "pearls@50": 42.30882352941177,
+     "pearls@100": 126.04411764705883,
+     "pearls@150": 215.81617647058823,
+     "pearls@250": 395.0735294117647,
+     "units@100": 28.481617647058822,
+     "total@100": 71.3529411764706,
+     "death_wall_per1k": 7.21322771905425,
+     "death_self_per1k": 3.5847726058429465,
+     "death_ally_body_per1k": 1.5630230496589232,
+     "death_h2h_ally_per1k": 1.2375113517004284,
+     "death_invalid_per1k": 0.0,
+     "death_h2h_enemy_per1k": 3.740350788987482,
+     "death_enemy_body_per1k": 0.12725722360619188,
+     "deaths_per1k": 17.46614273885022,
+     "births@100": 50.720588235294116
+    }
+   },
+   "boot": {
+    "win": [
+     0.025735294117647058,
+     0.007352941176470588,
+     0.04430147058823513
+    ],
+    "econ": [
+     0.00044221517866119194,
+     -0.004562766801322839,
+     0.005952429426883941
+    ],
+    "econ_med": [
+     0.0016699735449735575,
+     -0.0038955262216157555,
+     0.005410987533851366
+    ],
+    "units@100": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "total@100": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "q_joint": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "q_cond": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "conv": [
+     0.02286190299888924,
+     -0.00672073351472982,
+     0.05379430524124377
+    ],
+    "death_wall_per1k": [
+     -1.08381367239575,
+     -1.8915190700189726,
+     -0.4286052752059566
+    ]
+   },
+   "tier2": {
+    "death_wall_per1k": {
+     "parent": 7.21322771905425,
+     "cand": 6.1294140466585,
+     "rel": -0.15025363327055097,
+     "flag": false
+    },
+    "death_self_per1k": {
+     "parent": 3.5847726058429465,
+     "cand": 3.6195028769234865,
+     "rel": 0.009688277304934712,
+     "flag": false
+    },
+    "death_ally_body_per1k": {
+     "parent": 1.5630230496589232,
+     "cand": 1.5836489726724328,
+     "rel": 0.013196173286126767,
+     "flag": false
+    },
+    "death_h2h_ally_per1k": {
+     "parent": 1.2375113517004284,
+     "cand": 1.2256238344508308,
+     "rel": -0.00960598642853927,
+     "flag": false
+    },
+    "death_invalid_per1k": {
+     "parent": 0.0,
+     "cand": 0.0,
+     "rel": null,
+     "flag": false
+    }
+   },
+   "per_map": [
+    {
+     "map": "live/australia",
+     "cls": "B",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.000360023041474658,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/16 vs 0/16",
+     "dwall": -0.01645324326801928
+    },
+    {
+     "map": "live/autarky",
+     "cls": "A",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": -0.0050188806409827424,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/3",
+     "dwall": -0.1003404319711319
+    },
+    {
+     "map": "live/default",
+     "cls": "A",
+     "n": 16,
+     "W": 13,
+     "L": 3,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/5 vs 0/5",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/devil",
+     "cls": "A",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.01088794742210683,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.05482881247443855
+    },
+    {
+     "map": "live/dilemma",
+     "cls": "C",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.012229434425096733,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/2 vs 0/2",
+     "dwall": 0.005154183947698232
+    },
+    {
+     "map": "live/islands",
+     "cls": "B",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": 0.0006554465493910713,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/13 vs 0/12",
+     "dwall": -0.012049650372095183
+    },
+    {
+     "map": "live/maze",
+     "cls": "B",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": -0.005762523255729769,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/15 vs 0/15",
+     "dwall": 0.265446009124964
+    },
+    {
+     "map": "live/portals",
+     "cls": "E",
+     "n": 16,
+     "W": 11,
+     "L": 5,
+     "dwin": -0.0625,
+     "decon": 0.0006994584837545087,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/14 vs 0/14",
+     "dwall": 0.18887200183375774
+    },
+    {
+     "map": "live/queen_of_spades",
+     "cls": "A",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": 0.019796731896320113,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/3",
+     "dwall": -0.1869047635366715
+    },
+    {
+     "map": "live/schooltime",
+     "cls": "B",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/16 vs 0/16",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/slithery_fight",
+     "cls": "D",
+     "n": 16,
+     "W": 11,
+     "L": 5,
+     "dwin": 0.0625,
+     "decon": -0.00034998831941821656,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/16 vs 0/16",
+     "dwall": 0.06939762889120621
+    },
+    {
+     "map": "live/stripes",
+     "cls": "A",
+     "n": 16,
+     "W": 6,
+     "L": 10,
+     "dwin": 0.0625,
+     "decon": 0.0060041039985326405,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/2",
+     "dwall": 0.12261841098332078
+    },
+    {
+     "map": "live/tower_defense",
+     "cls": "A",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": -0.0625,
+     "decon": -0.008720622417355384,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/3",
+     "dwall": 0.9393339220689363
+    },
+    {
+     "map": "live/trauma",
+     "cls": "C",
+     "n": 16,
+     "W": 13,
+     "L": 3,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/16 vs 0/16",
+     "dwall": -0.03945850712424703
+    },
+    {
+     "map": "live/trophy",
+     "cls": "A",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/unsw",
+     "cls": "B",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/16 vs 0/16",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/weakhold",
+     "cls": "C",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.4375,
+     "decon": -0.023263473145950182,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/7 vs 0/7",
+     "dwall": -19.605619178831034
+    }
+   ],
+   "per_class": [
+    {
+     "cls": "A",
+     "n": 112,
+     "dwin": 0.0,
+     "decon": 0.003278468608374494,
+     "dq_joint": 0.0,
+     "dwall": 0.10283976072428788
+    },
+    {
+     "cls": "B",
+     "n": 80,
+     "dwin": 0.0,
+     "decon": -0.000949410732972808,
+     "dq_joint": 0.0,
+     "dwall": 0.04738862309696991
+    },
+    {
+     "cls": "C",
+     "n": 48,
+     "dwin": 0.14583333333333334,
+     "decon": -0.0036780129069511496,
+     "dq_joint": 0.0,
+     "dwall": -6.546641167335861
+    },
+    {
+     "cls": "D",
+     "n": 16,
+     "dwin": 0.0625,
+     "decon": -0.00034998831941821656,
+     "dq_joint": 0.0,
+     "dwall": 0.06939762889120621
+    },
+    {
+     "cls": "E",
+     "n": 16,
+     "dwin": -0.0625,
+     "decon": 0.0006994584837545087,
+     "dq_joint": 0.0,
+     "dwall": 0.18887200183375774
+    }
+   ],
+   "status": "COMPLETE"
+  },
+  "gen": {
+   "panel": "gen",
+   "cand": "asahi-05-kz12-k16",
+   "parent": "carthage-05-free-sprint",
+   "seeds": [
+    1
+   ],
+   "meta": {
+    "cand": {
+     "fingerprint": "43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "eaf9b0209184",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 464
+    },
+    "parent": {
+     "fingerprint": "7df05a3f40b011fa52f700c789ddf30414da08ab50d6c36964ef8cc223f9d45f",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "eaf9b0209184",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 464
+    }
+   },
+   "missing": {
+    "cand": [],
+    "parent": []
+   },
+   "paired": 464,
+   "summary": {
+    "cand": {
+     "n": 464,
+     "W": 340,
+     "L": 124,
+     "D": 0,
+     "win": 0.7327586206896551,
+     "reached": 73,
+     "q_cond": 0.0684931506849315,
+     "q_joint": 0.010775862068965518,
+     "q_dec_W": 5,
+     "q_dec_L": 4,
+     "conv": 0.6301369863013698,
+     "pearls@50": 43.98706896551724,
+     "pearls@100": 120.84698275862068,
+     "pearls@150": 189.3081896551724,
+     "pearls@250": 280.9590517241379,
+     "units@100": 29.09051724137931,
+     "total@100": 72.81896551724138,
+     "death_wall_per1k": 1.9276058763580397,
+     "death_self_per1k": 1.8060524760887904,
+     "death_ally_body_per1k": 1.0340384077902347,
+     "death_h2h_ally_per1k": 0.7496049631213278,
+     "death_invalid_per1k": 0.0,
+     "death_h2h_enemy_per1k": 9.118834536440815,
+     "death_enemy_body_per1k": 0.10696482408912629,
+     "deaths_per1k": 14.743101083888334,
+     "births@100": 46.83405172413793
+    },
+    "parent": {
+     "n": 464,
+     "W": 341,
+     "L": 123,
+     "D": 0,
+     "win": 0.7349137931034483,
+     "reached": 74,
+     "q_cond": 0.04054054054054054,
+     "q_joint": 0.00646551724137931,
+     "q_dec_W": 3,
+     "q_dec_L": 3,
+     "conv": 0.6486486486486487,
+     "pearls@50": 44.00646551724138,
+     "pearls@100": 121.07112068965517,
+     "pearls@150": 189.76077586206895,
+     "pearls@250": 281.4375,
+     "units@100": 29.14439655172414,
+     "total@100": 72.95905172413794,
+     "death_wall_per1k": 1.941989751888355,
+     "death_self_per1k": 1.8027128127260905,
+     "death_ally_body_per1k": 1.039062816898719,
+     "death_h2h_ally_per1k": 0.7495729044953691,
+     "death_invalid_per1k": 0.0,
+     "death_h2h_enemy_per1k": 9.123951603071312,
+     "death_enemy_body_per1k": 0.10880623430875393,
+     "deaths_per1k": 14.7660961233886,
+     "births@100": 46.918103448275865
+    }
+   },
+   "boot": {
+    "win": [
+     -0.0021551724137931034,
+     -0.010775862068965518,
+     0.00646551724137931
+    ],
+    "econ": [
+     -0.0009122965130884304,
+     -0.001898198205298616,
+     0.0001450614113558663
+    ],
+    "econ_med": [
+     -0.002835614677719922,
+     -0.006608757631187685,
+     -0.0003765060240963902
+    ],
+    "units@100": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "total@100": [
+     0.0,
+     -0.011779621945597007,
+     0.0
+    ],
+    "q_joint": [
+     0.004310344827586207,
+     0.0,
+     0.008620689655172414
+    ],
+    "q_cond": [
+     0.02795261014439096,
+     0.0,
+     0.06052977088664289
+    ],
+    "conv": [
+     -0.018511662347278857,
+     -0.07419122586675231,
+     0.0322401565741649
+    ],
+    "death_wall_per1k": [
+     -0.014383875530315164,
+     -0.047022640728034075,
+     0.017727773674877247
+    ]
+   },
+   "tier2": {
+    "death_wall_per1k": {
+     "parent": 1.941989751888355,
+     "cand": 1.9276058763580397,
+     "rel": -0.007406772109033399,
+     "flag": false
+    },
+    "death_self_per1k": {
+     "parent": 1.8027128127260905,
+     "cand": 1.8060524760887904,
+     "rel": 0.0018525764831336389,
+     "flag": false
+    },
+    "death_ally_body_per1k": {
+     "parent": 1.039062816898719,
+     "cand": 1.0340384077902347,
+     "rel": -0.00483552007325283,
+     "flag": false
+    },
+    "death_h2h_ally_per1k": {
+     "parent": 0.7495729044953691,
+     "cand": 0.7496049631213278,
+     "rel": 4.2769189983360434e-05,
+     "flag": false
+    },
+    "death_invalid_per1k": {
+     "parent": 0.0,
+     "cand": 0.0,
+     "rel": null,
+     "flag": false
+    }
+   },
+   "per_map": [
+    {
+     "map": "m2tr/autarky_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": -0.009671708694753978,
+     "dq_joint": 0.0625,
+     "q_alive_rl": "1/2 vs 0/2",
+     "dwall": -0.25993817345097725
+    },
+    {
+     "map": "m2tr/default_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/6 vs 0/6",
+     "dwall": 0.0
+    },
+    {
+     "map": "m2tr/dilemma_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": 0.0034729606718129497,
+     "dq_joint": 0.0625,
+     "q_alive_rl": "2/3 vs 1/4",
+     "dwall": 0.19583205873707327
+    },
+    {
+     "map": "m2tr/trophy_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 11,
+     "L": 5,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_archipelago",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_crossroads",
+     "cls": "gen",
+     "n": 16,
+     "W": 9,
+     "L": 7,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/3",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_delayed_commons",
+     "cls": "gen",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_equatorial_belt",
+     "cls": "gen",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_far_harbors",
+     "cls": "gen",
+     "n": 16,
+     "W": 8,
+     "L": 8,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_nursery_bays",
+     "cls": "gen",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_pinwheel",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_portal_quartet",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/6 vs 0/6",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_pulse_farms",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_relay_depots",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_scattered_fleets",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_seam_market",
+     "cls": "gen",
+     "n": 16,
+     "W": 1,
+     "L": 15,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_spring_wells",
+     "cls": "gen",
+     "n": 16,
+     "W": 6,
+     "L": 10,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/2 vs 0/2",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/md26_causeway_detour_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.00012703252032519874,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/md26_causeway_portal_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/md26_commons_shared_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/md26_commons_spread_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/md26_orchard_narrow_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0008475685988572484,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/3",
+     "dwall": 0.07151982366641836
+    },
+    {
+     "map": "new/md26_orchard_wide_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 13,
+     "L": 3,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/2 vs 0/2",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/md26_promenade_ring_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "var/crossroads_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 8,
+     "L": 8,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": 0.03137550200803213
+    },
+    {
+     "map": "var/devil_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": -0.01185666973634164,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.008030610594200405
+    },
+    {
+     "map": "var/portals_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 13,
+     "L": 3,
+     "dwin": 0.0,
+     "decon": -0.0171316525365358,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/15 vs 0/15",
+     "dwall": -0.3850293263046709
+    },
+    {
+     "map": "var/queen_of_spades_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/3",
+     "dwall": 0.0
+    },
+    {
+     "map": "var/trauma_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 11,
+     "L": 5,
+     "dwin": -0.0625,
+     "decon": 0.007755870297071539,
+     "dq_joint": 0.0,
+     "q_alive_rl": "2/14 vs 2/14",
+     "dwall": -0.06286166444081492
+    }
+   ],
+   "per_class": [
+    {
+     "cls": "gen",
+     "n": 464,
+     "dwin": -0.0021551724137931034,
+     "decon": -0.0009122965130884304,
+     "dq_joint": 0.004310344827586207,
+     "dwall": -0.014383875530315164
+    }
+   ],
+   "status": "COMPLETE"
+  }
+ }
+}
