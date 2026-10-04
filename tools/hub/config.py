@@ -27,7 +27,7 @@ DEFAULTS = {
                      'field_opponents': [], 'reserve_games': {}, 'include_ladder_devs': True},
     # Targeted requested battles (Live ops, tools/hub/battles.py): dispatch is enabled by a Chair-cited control action,
     # not here; these only pace it. reserve_games leaves room in each rolling hour for teammates and the quota filler.
-    'battles': {'interval_seconds': 300, 'cycle_games': 40, 'chunk_maps': 5, 'reserve_games': {'field': 10, 'dev': 5}, 'max_job_games': 600},
+    'battles': {'interval_seconds': 300, 'cycle_games': 40, 'chunk_maps': 5, 'reserve_games': {'field': 5, 'dev': 5}, 'max_job_games': 600},
     'runtime': {'local_gate': {'max_points': 80_000_000, 'p99_points': 60_000_000}, 'live_gate': {'max_points': 95_000_000},
                 'toolkit_pin': '1.0.0', 'probe_fixtures': [[9, 'A'], [20, 'B'], [21, 'A'], [15, 'B']], 'probe_opponent': 'bots/sinbad-v07-divecap'},   # + Slithery Fight A, Trauma B (A1-Q6: yuna-v02 peaked 97.5 M on never-probed Slithery)
     'ranked_exposure_guard': {'blackout_before_even_utc_hour_minutes': 8, 'blackout_after_even_utc_hour_minutes': 12},
