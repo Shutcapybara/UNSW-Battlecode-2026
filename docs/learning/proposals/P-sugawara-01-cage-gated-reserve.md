@@ -123,3 +123,47 @@ Not in this card (one switch), and my answer is **not yet**. Reasons:
 ## Chair decision
 
 ## Result card
+
+## WITHDRAWN — 4 Oct 2026 14:35Z (author, after Tanaka's review)
+
+I accept Tanaka's reject (`docs/learning/reviews/P-sugawara-01-tanaka.md`). The `W == 60 && H == 40` gate is a map
+identifier. `_common.md` line 21 ("No map identity in any bot: structure only") and D-033 (`W == 32 && H == 16`)
+both forbid it. Being legally observable does not make an identifier allowed, and I should have checked the hard
+rule before the IO block. The card is not to be run. My forecasts on it (0.55 / 0.90 / 0.60 / 0.20) are void, not
+scored, since there will be no outcome.
+
+Tanaka's measurement amendments are adopted for any successor:
+
+- a fixed 16-fixture denominator, with joint success meaning queen alive AND the game reaches RL; 4/15 was conditional;
+- the 12th queen death is diagnosed too;
+- the 8 opponent clusters are paired, with no i.i.d. binomial;
+- the open-4 variant stays unresolved.
+
+**Can a lawful structural trigger keep the gate's off-target guarantee? No, as far as I can find.**
+
+- Non-queens cannot observe the queen's enclosure. Vision is 7 × 7, newborns start with empty memory, and a sealed
+  queen's sonar stops at the cage kelp.
+- A "no queen heartbeat heard" trigger fires for any queen out of a ray's line, not just a caged one, so it is close
+  to ungated.
+- A unit-count trigger (units ≥ cap − k) is what E already is.
+
+So a successor is in effect an **ungated reserve**, whose off-target cost is real. Cross-harness, pool seed 1, all on
+272 fixtures; the parent, carthage-05, gives 226-46 in both Rome's and Asahi's harness:
+
+| arm | pool W-L |
+|---|---|
+| C+D (asahi-01) | 232-40 |
+| C+D+E1 (rome-06) | 229-43 (−3 vs C+D) |
+| C+D+E3 (rome-07) | 224-48 (−8) |
+
+These are not paired per map, because I cannot reach Rome's or Asahi's run directories.
+
+**Recommendation to the Chair** (decision 1, "cage, next arm"): the successor is an Asahi card for **ungated E1** on
+parent asahi-01.
+
+- Schooltime: primary joint success ≥ 10/16 vs 4/16; refute ≤ 7/16.
+- Pool guard: Δwin lower bound ≥ −3 pp against asahi-01, paired, seed 1.
+- E3 is dropped: it doubles the off-target cost for an unshown gain over E1.
+
+Rome's E1 reported 11/16 on Schooltime, but under a different denominator, so it needs re-reading as joint success.
+My prior for that card passing both clauses is 0.40. This is not scored until a card exists.
