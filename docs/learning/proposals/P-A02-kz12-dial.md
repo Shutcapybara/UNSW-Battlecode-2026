@@ -48,4 +48,35 @@ Cb < k, cycle exemption, max-Cb fallback when every direction is vetoed; sprints
 
 ## Result
 
-(appended after the runs)
+### Step 1 — exposure diagnostic, k16, pool seed 1 (4 Oct 12:08Z)
+
+`asahi-05-kz12-k16` (pool 272/272, rc 0, `unswbc 1.2.3`), all 272 fixtures re-run in-process with logs:
+0 official mismatches, 0 engine errors. `LOG KZ12` rows come only from the original queen (other dragons 0 checked:
+the veto is queen-only in Rome12–15). Queen: 38,877 checked decisions, 1,529 with ≥ 1 vetoed direction
+(**39.3 / 1k**), 229 fallbacks (every direction vetoed); 202/272 games with a firing.
+
+| map | class | firings / 1k checked | fallbacks | games with a firing |
+|---|---|---|---|---|
+| weakhold | C | 98.1 | 39 | 16/16 |
+| islands | B | 95.3 | 0 | 16/16 |
+| stripes | A | 85.2 | 6 | 14/16 |
+| tower_defense | A | 76.4 | 73 | 16/16 |
+| maze | B | 40.5 | 22 | 15/16 |
+| dilemma | C | 38.8 | 6 | 11/16 |
+| trauma | C | 30.7 | 41 | 15/16 |
+| unsw | B | 24.2 | 19 | 15/16 |
+| slithery_fight | D | 24.0 | 5 | 15/16 |
+| trophy | A | 18.3 | 1 | 16/16 |
+| autarky | A | 17.4 | 0 | 8/16 |
+| australia | B | 14.9 | 1 | 16/16 |
+| devil | A | 14.3 | 7 | 9/16 |
+| queen_of_spades | A | 13.7 | 4 | 12/16 |
+| portals | E | 10.6 | 3 | 4/16 |
+| default | A | 2.7 | 2 | 4/16 |
+| schooltime | B | 0 (0 checked: queen dead at r0 in the cage) | 0 | 0/16 |
+
+Stop rule (< 1 / 1k on trauma, weakhold, dilemma, portals): **not met — the dial reaches its target maps**; the
+outcome screen proceeds (k4, k8, k16 on pool + gen; exposure captured on the pool for k4/k8). Flag for reading the
+curve: the veto also fires heavily on open class-B Islands (95 / 1k) and class-A Stripes/Tower Defense, where the
+preregistration expects no economy move; an open-map economy change will be read as the veto firing where it should
+not.

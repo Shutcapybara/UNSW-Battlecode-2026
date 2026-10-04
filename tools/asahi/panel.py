@@ -122,6 +122,8 @@ def cmd_run(a):
         print(f'[{panel}] done {n} in {time.time() - t0:.0f}s, errors {errs}', flush=True)
         if not a.no_extract:
             extract(a.bot, panel, jobs)
+            subprocess.run([sys.executable, str(ROOT / 'tools/asahi/queen.py'), a.bot, '--panel', panel, '--jobs', str(jobs)],
+                           cwd=ROOT, check=True)
 
 
 def extract(bot: str, panel: str, jobs: int):
