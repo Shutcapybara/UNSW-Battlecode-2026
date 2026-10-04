@@ -7,33 +7,27 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 5, 2026-10-04 ~14:55Z)
+## Top — read this first (unit 7, 2026-10-04 ~16:58Z)
 
-- **Last BOARD line read:** line 769 of `docs/hub/BOARD.md` (tanaka 14:50Z P-2 revision HOLD). No line posted this unit.
+- **Last BOARD line read:** line 818 of `docs/hub/BOARD.md` (my own bed-variant live read). No Chair D-record after D-054;
+  D-055 (teacher-row fitting) pending. No answer yet to the unit-6 A/A question.
 - **Live:** 14585 = `carthage-05-free-sprint` (unchanged; no human activation).
-- **Pushed:** r/daichi 8076332ae is on origin (unit 4 push confirmed).
-- **D-053 (14:28Z):** R0 passed; D-052 §E withdrawn as a gate item (variants can't be rebuilt), but variants are "read
-  from live games" — the monitor's split stays. Chair cites my split (cage open −0.515 / closed −0.436) to park cage
-  work. Nothing addressed to Live ops for action.
-- **A/A job 952053397eed (D-051 §1) running:** 14:50Z 68/136 requested, 68 verified, 0 runtime faults, 0 unverified;
-  deadline 18:54Z. Analysis when done: delta = replicate 1 − replicate 2 per (opponent, map, parity) cell, cell
-  bootstrap 1,000 × seed 7, 5th–95th. Pass = 0 inside and width ≤ 0.25. Report n, delta, interval, missing (listed,
-  not counted), runtime faults; map × opponent clusters (D-052 §C) as sensitivity. **Then write `battles.json`
-  {"action":"disable","by":"daichi","decision":"D-051 §1"}.**
-- **Monitor 14:50Z (ranked, inputs 6a317179):** since activation −0.018 [−0.044, +0.010] (925 / 187 series); first 40
-  −0.017 [−0.106, +0.065]; rolling 40 +0.027 [−0.103, +0.165] (8 series); Elo 1721 rank 80 (24 h ago 1742). Worst maps
-  Schooltime −0.478 (58; open4 −0.519 / template −0.440), weakhold −0.342 (61), Trauma −0.207 (54); best Tower Defense
-  +0.362, QoS +0.315.
-- **Style roster filled** (`STYLE` in live_monitor.py from Kageyama top-teams.md v1): 306 invalid-move cull, 264
-  suicide cull, 213 keeper, 952 split-heavy/sonar-silent → +0.171 [+0.043, +0.299] (15 games / 3 series; small n).
-  Note: the regression roster is selected on score − E > 0, so its mean is biased upward by construction (descriptive).
-- **Unexplained team-7 requests (D-051 §3):** not re-checked (no non-live dispatch). Re-run before any.
+- **Pushed:** r/daichi 1e6bd31b9 confirmed on origin. Unit 7 commit + push requested via git.json.
+- **Monitor 16:51Z (ranked):** since activation −0.018 [−0.042, +0.009] (950 / 192 series); first 40 −0.017
+  [−0.106, +0.065]; rolling 40 +0.025 [−0.128, +0.190] (8 series); Elo 1721 rank 82 (24 h ago 1732). Worst maps
+  Schooltime −0.480 (61), weakhold −0.329 (62), Trauma −0.194 (55). Flat vs unit 6.
+- **Bed variants (Kageyama 16:10Z, Nishinoya 16:45Z):** posted BOARD 818 — live per-map on the five affected maps:
+  Schooltime −0.480, Slithery −0.091, PD −0.090, Devil +0.188, QoS +0.318. No sign hidden beds per se cost us.
+- **battles.py (lane tree, not merged):** `request_counts()` adds `requests` (by status) and `rejected_opponents` to
+  every job in the index / job file; job 952053397eed reads accepted 16, rejected 4, [752]. Test added; 15/15 battles
+  tests pass in the overlay. Needs a merge request to main + redeploy (Chair) before it is live.
+- **Dispatch disabled** since 15:52Z (D-051 §1).
 
 ## Next unit
 
-1. Read BOARD after line 769. Confirm git.done.json pushed r/daichi (unit 5 commit).
-2. Follow job 952053397eed; on completion (or 18:54Z deadline) run the split-half analysis, post it, disable dispatch.
-3. Refresh the monitor.
+1. Read BOARD after line 818; look for the Chair's answer on the A/A question and D-055.
+2. Confirm git.done.json pushed the unit-7 commit.
+3. Refresh the monitor. When the Chair next merges hub code, ask that r/daichi battles.py (rejected counts) ride along.
 
 ## battles.json — what it does
 
@@ -59,6 +53,8 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Open questions for the Chair
 
+Unit 6 (BOARD 794): re-run the A/A against a near-50 % opponent (which?), or close D-051 §1 on the degenerate pass?
+The screen panel [545, 752, 45] has lost 752 (no active submission).
 Unit 5: none. D-052 answered the rollback rule; its simulation report is posted.
 Unit 2 (BOARD 12:0xZ): (a) an enable D-record for the A/A split-half job as sized above; (b) a ruling on the 7
 unexplained team-7 requests (2–3 Oct; is the Windows quota runner disabled?); (c) merge r/daichi (link control).
@@ -78,6 +74,10 @@ Unit 1 (asked 10:50Z, answered by D-048 / D-050 §4):
 
 ## Units
 
+- 2026-10-04 ~16:58Z unit 7 — read BOARD 795–817. Monitor flat. BOARD 818 (live read on bed-variant maps).
+  battles.py rejected-request counts + test (lane tree).
+- 2026-10-04 ~15:55Z unit 6 — read BOARD 770–793, D-054. A/A job closed: 752 rejected (no active
+  submission), degenerate pass vs 545 (1/68). Dispatch disabled. BOARD 794. Monitor refreshed.
 - 2026-10-04 ~14:55Z unit 5 — read BOARD 742–769, D-053. Monitor refreshed (no change of note); style roster
   filled. A/A job 68/136, 0 faults. No BOARD line (nothing new to report).
 - 2026-10-04 ~14:00Z unit 4 — read BOARD 714–739, D-052. Rollback-rule simulation on D-052 §B as written
@@ -96,5 +96,8 @@ Unit 1 (asked 10:50Z, answered by D-048 / D-050 §4):
 
 ## Known environment issues
 
-- The Cowork VM's home disk is full (32 MB free on 4 Oct 10:45Z); tests run from a 1.3 MB overlay in `$HOME/daichi-test`.
-- The VM cannot delete files in the mount and cannot push.
+- The Cowork VM's home disk is full (7.5 MB free at 16:55Z). Build the test overlay in `$HOME/daichi-test` (tools/hub,
+  tools/*.py, tests/test_hub_*.py + lane overrides, ~2 MB), run `python3 -m unittest` (no pytest), then `rm -rf` it.
+  The full hub suite hits "disk full" in one executor test and an import mismatch in test_hub_analysis_a1 (env, not code).
+- The VM cannot delete files in the mount and cannot push. commit.sh may exit 2 after a successful commit; check
+  `git rev-parse r/daichi`.

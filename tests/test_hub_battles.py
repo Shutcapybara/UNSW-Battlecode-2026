@@ -170,6 +170,16 @@ class BattlesTest(unittest.TestCase):
         self.assertEqual(p['pairs'], 2 * len(MAPS) * 2)
         self.assertEqual(p['delta'], 1.0)
         self.assertTrue((self.mirror / 'battles' / f'{jid}.json').exists())
+        self.assertNotIn('rejected', job['requests'])
+        self.assertEqual(job['rejected_opponents'], [])
+
+    def test_rejected_requests_are_counted_in_the_index(self):
+        jid = self.request(self.base())['job']
+        db.upsert(self.conn, 'requests', dict(id='r-x', at=0, pool='field', opponent_team=752, submission=INC, map_ids='[]', count=5,
+                                              status='rejected', game_ids='[]', block_id=f'job:{jid}', origin='test'), 'id')
+        job = battles.status(self.conn, self.mirror)['jobs'][0]
+        self.assertEqual(job['requests'].get('rejected'), 1)
+        self.assertEqual(job['rejected_opponents'], [752])
 
     def test_paired_report_drops_missing_cells(self):
         games = [dict(verified=True, score=1.0, map_id=1, parity=0, opponent=5, arm=INC),
