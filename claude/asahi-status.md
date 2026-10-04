@@ -42,9 +42,9 @@
 1. **P-4 / H-KZ26 (D-054 §C): REFUTE at m = 0** (20:20Z, `docs/learning/results/asahi/P-4-result.md`). Strike-hazard
    ratio 1.069 [0.685, 1.788] (pooled, 30 vs 22 events); all-cause queen hazard 0.703 [0.662, 0.746] (queen-initiated
    head-ons 225 → 53); pool Δwin −1.8 pp; parity at off 272/272; no-firing games equal the parent 117/117.
-2. **REG-002 k16 gate, seeds 2–3 (D-053 §D)** — parent and k16 seeds 2–3 queued after P-4; Weakhold capture; gate card
-   with `--gate --stratum live/weakhold`; seed-1 card on map × opp clusters reproduces Tanaka's [+0.37, +5.15] /
-   [−1.08, +0.43]. Deploy probe done: zip 3.741 MiB, max 11.01 M, first turn 10.73 M, 0 errors.
+2. **REG-002 k16 gate, seeds 2–3 (D-053 §D): HOLD** (21:25Z). Pool +1.10 pp [−0.37, +2.76]; gen +0.22 [0.00, +0.54];
+   econ/units/total/tier-2 pass. Weakhold replicates (+28 pp [+16, +41]); pool without Weakhold −0.59 [−1.56, +0.39].
+   Chair's call under D-046 §4.6. Deploy probe: zip 3.741 MiB, max 11.01 M, first turn 10.73 M, 0 errors.
 3. **card.py map × opponent clusters (D-052 §C)** — done (17:20Z).
 4. **Learn queue in jobd (D-052 §F)** — done, format `docs/learning/learn-queue.md`; `setup_env` queued; learn jobs run
    when Asahi's queue is empty.
@@ -68,3 +68,4 @@
 - 4 Oct 18:13Z: P-4 m0 build bug found from its exposure capture (changes without firings); fixed, re-run queued.
 - 4 Oct 18:47–19:15Z: Mac disk full; daemon died; restarted 19:15Z; stale lock moved aside; P-4 off/m0 rebuild runs re-queued; parent seeds 2–3 done (18:46Z). jobd hardened (disk wait ≥ 20 GB, heartbeat ENOSPC-safe, stale-lock rename).
 - 4 Oct 20:20Z: P-4 REFUTE posted; k16 seeds 2–3 running; gate card next.
+- 4 Oct 21:25Z: k16 gate HOLD posted; learn env ready; Asahi queue empty except a Weakhold capture.
