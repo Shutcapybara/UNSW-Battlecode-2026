@@ -1,6 +1,6 @@
 --- bots/carthage-05-free-sprint/main.cpp
 +++ bots/<new>/main.cpp
-@@ -51,6 +51,21 @@
+@@ -51,6 +51,26 @@
                  continue;
              }
              dec = pol.decide(w);
@@ -19,6 +19,11 @@
 +            }
 +            if (sz_invalid) { std::cout << "SPLIT 99\nLOG SZ:cage_invalid\nPROTOCOL " << unswbc::Constants::PROTOCOL_MAJOR << "\n"; pol.send_radio(ct); std::cout << "ENDTURN\n" << std::flush; continue; }
 +            (void)sz_cage;
++            // SHENZHEN PROBE D (H-SZ21): the queen (ids 0/1) never pays segments for a sprint (its length is the tiebreak).
++            if (ct.get_id() <= 1 && dec.act != ares::Act::SPLIT) {
++                const int free_steps = (static_cast<int>(w.body.size()) + 3) / 4;
++                if (static_cast<int>(dec.dirs.size()) > free_steps) dec.dirs.resize(free_steps);
++            }
              pol.prepare_radio_for_decision(w, dec);
              if (ARES_MEASURE == 3) {
                  static ares::Grid g;

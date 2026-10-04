@@ -33,7 +33,9 @@ pushes `r/shenzhen`.
 | H-SZ16 | queen home-range leash (~6 cells of spawn) | posted 0.4 | alive@490 not +5 pp at econ LB > −0.03 | pool+gen s1–3 | tester |
 | H-SZ17 | escort is not the survival mechanism | posted 0.3 | escort share predicts survival across keepers (ρ ≥ 0.3) | corpus | analyst |
 | H-SZ18 | sealed-dragon rule everywhere (split / invalid, never head-on into an ally) | posted 0.5 (unit 4) | < 1 qualifying ally-h2h death per 10 games | corpus count, then panel | analyst → tester |
-| H-SZ20 | caged queen eats the child corpse → length 4 > top ten's caged 3 | posted 0.5 | caged queen len@490 ≤ 3 or Schooltime queen record vs top ten < .5 | live Schooltime vs keeper | tester |
+| H-SZ20 | caged queen target = exactly 3 (4 is sealed); eat child corpse, never grow, never pay | revised unit 5, 0.5 | len@490 ≠ 3 in > 20 % of live-Schooltime games | 40 games | tester |
+| H-SZ21 | queen never pays sprint segments (any map) — probe D | posted 0.5 | queens pay < 0.1 seg/game, or no-pay arm moves len@490 < 1 | corpus then pool s1–3 | analyst → tester |
+| H-SZ22 | caged queen at the unit cap: keep a slot free so eat→split→suicide stays legal | posted 0.4 | invalid cage split at 64 units ≥ 1 per 40 games | 40 late games | tester |
 | closed | H-SZ7 exposure: our queens are not more exposed per round (enemy head ≤3 in 10.9 % vs 9.6–13.6 %) | answered | — | — | — |
 
 ## Log
@@ -56,9 +58,13 @@ pushes `r/shenzhen`.
   reproduced the Schooltime cage death 6/6 (old map 0/6); found the engine forbids stepping into the own tail cell; probe
   C (14 lines) wins 11/12 seat-games by the queen tiebreak. Patch `tools/shenzhen/probes/h-sz1-cage-main.cpp.patch`.
   Finding `docs/findings/2026-10-04-shenzhen-unit4-cage-reproduced-and-probe.md`.
+- **Unit 5 (01:53Z – 02:20Z).** r/shenzhen at f41bec8b9 on origin. Decoded probe replays in the cloud (frame.py staged):
+  caged queen eats child corpse → 3, then pays a sprint segment → 2; probe D (queen never pays) ends at 3, 10/12 wins;
+  seed-3 failure = cage pearl at the 64-unit cap → invalid split. Finding `…-unit5-cage-length-and-sprint-tax.md`.
 
 ## Next unit
 
+0. H-SZ21 corpus count: segments paid per game by queens (ours vs top ten), from actions `paid` on the queen id.
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
