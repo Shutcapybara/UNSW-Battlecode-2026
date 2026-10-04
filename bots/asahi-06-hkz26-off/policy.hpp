@@ -1704,17 +1704,24 @@ struct Policy {
             }
             if (split_ok) { ++legal; if (head_danger) ++vetoed; }
             if (opening_ok) { ++legal; if (head_danger) ++vetoed; }
+            // The parent's candidate set minus the vetoed ones. DEAD moves stay in it with their parent score (the
+            // parent may prefer a fatal step to a trapped one); if no LEGAL candidate is left unvetoed, the fallback
+            // below applies instead. With no veto firing, this reproduces the parent's choice exactly.
             double ub = -1e30;
             Decision u;
             bool have = false;
+            bool have_live = false;
+            for (const RvCand& c : rv_moves)
+                if (c.status != static_cast<int>(SimStatus::DEAD) && !c.veto) have_live = true;
+            if ((split_ok || opening_ok) && !head_danger) have_live = true;
             for (const RvCand& c : rv_moves) {
-                if (c.status == static_cast<int>(SimStatus::DEAD) || c.veto) continue;
+                if (c.veto || !have_live) continue;
                 if (c.score > ub) {
                     ub = c.score; have = true;
                     u = Decision(); u.act = Act::MOVE; u.dirs = c.path; u.target = target; u.why = target_why;
                 }
             }
-            if (!head_danger) {
+            if (!head_danger && have_live) {
                 if (split_ok && split_score > ub) {
                     ub = split_score; have = true;
                     u = Decision(); u.act = Act::SPLIT; u.split = Params::split_child; u.target = target; u.why = 's';
