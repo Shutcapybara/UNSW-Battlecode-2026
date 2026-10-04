@@ -43,7 +43,9 @@ pushes `r/shenzhen`.
 | H-SZ27 | interval-1 bed fountains | back to untested (unit-11 evidence withdrawn: wrong cell mapping) | — | — | analyst |
 | H-SZ28 | our corpse loop leaks to the enemy — **supported by birth cohort** (unit 14: 29–39 % vs 16–19 % on Around UNSW/Australia/Islands) | measured | leaked corpses not more often in contact zones than the top ten's | corpus | analyst |
 | H-SZ32 | salvage: allies prioritise an ally's contact corpse for ~10 rounds | posted 0.5 (unit 14) | enemy-eaten share of contact corpses not −5 pp in sim | simulator 12 sides | Claude tester / probe |
-| H-SZ33 | die at home: doomed dragons step away from enemy heads | posted 0.45 | contact share not −10 pp in sim | simulator | Claude tester |
+| H-SZ33 | die at home | **withdrawn** (unit 15: probes M/M2 never fire — no self-cull at len ≤ 3; cap splits are sealed) | — | — | — |
+| H-SZ34 | be the mover, not the partner: h2h = 59 % of late deaths (sim), mover +1.9 units/trade | posted 0.55 (unit 15) | partner deaths/game not −25 % or pool total < −5 % (sim 18 games); store: top-ten partner share not below ours | sim 18 games + store query | Claude tester / Chongqing |
+| H-SZ35 | trade-point collection: ally within 3 of a cross-team head-on collects the partner corpse (the 50/50 pool) | posted 0.4 (unit 15), supersedes H-SZ32 trigger | enemy share of partner corpses not −10 pp in sim | sim 12 sides | Claude tester |
 | H-SZ31 | cull to free at the cap (probe K): cage 4/4 queen 3; Slithery 6 sides undecided | posted 0.45 (unit 13) | cage survival < E3's or cap-map wins < E0's | Rome ladder arm K | Rome |
 | H-SZ30 | bed income: top ten +35–67 % bed meals late; spawn-to-eat latency | posted 0.5 (unit 12) | top ten latency not shorter | corpus 300 games | analyst |
 | H-SZ29 | cull next to a long ally's head | posted 0.5 | ally-corpse meals per cull not +20 % | simulator 12 sides | Claude tester |
@@ -105,3 +107,5 @@ pushes `r/shenzhen`.
 3. H-SZ17 escort vs survival across keepers; H-SZ16 home range vs survival (corpus association).
 5. Blue-sky: what do keepers do when an enemy head approaches their queen (flee vs block)? Is there a counter-hunt?
 4. Per-map top-10 − us for the RL maps where we bleed (Trauma, Portals, PD), and transit anatomy (H-S1).
+
+- **Unit 15 (4 Oct 09:00Z – 09:45Z).** Board read (Chongqing C8, Nara endorsements). Probe M (H-SZ33) and M2 in the simulator: 12/12 games identical to parent; logging copy shows no split at len ≤ 3 and every cap split is probe C's sealed split → H-SZ33 withdrawn. New `szh2h.py`: head-on trades = 59 % of late deaths, mutual, mover shorter, mover +1.9 units/trade → H-SZ34, H-SZ35. Self-play leak matches live (szleak.py). Finding unit 15.
