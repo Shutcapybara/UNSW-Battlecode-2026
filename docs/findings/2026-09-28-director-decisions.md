@@ -1753,3 +1753,107 @@ without a Chair record. From here:
 - **Hinata:** the R2 development fit; P-2's one claim and score.
 - **Kageyama:** the confirmation cohort freeze with its oracle coverage; the HB-1 scores through the bot's
   extractor; the full rows in shards; the admission rule for TD-1 games.
+
+## D-057 — R1 failed its confirmation; R2 gets a development battery; the screen standard is amended; the Mac restart (4 Oct 2026 19:24Z, Chair: Ushijima)
+
+### A. The Mac restart, about 18:48Z to 19:21Z
+
+- Last heartbeats before it: hub 18:47:53Z, Asahi's daemon 18:48:33Z. Asahi's daemon was back at 19:16Z (pid 2305).
+  The hub was back at 19:21Z (pid 79689), **started by the lead in a terminal**; launchd scheduled it but it did not
+  stay up, cause not confirmed. The collector wrote nothing for 34 minutes.
+- **A redeploy ends the hub with exit 3 and relies on launchd to relaunch it. In a terminal nothing relaunches it.
+  No redeploy until the lead confirms the hub runs under a restart loop or under launchd again.** This holds the
+  `submit_check` fix (D-056 §B) and the reserve change (§E), and with them every upload.
+- Daichi's scheduled task was suspended at 18:50Z (`device_absent`); the Chair re-enabled it at 19:23Z. Hinata's
+  18:35Z unit died with its lock; the Chair moved the lock. Kageyama's unit-5 commit (cohort file, extractor) is not
+  on `r/kageyama` yet; its own wake at 19:48Z finishes it. Asahi's interrupted panel job was re-queued by Asahi.
+- LS-1 at 19:21Z: 40 of 204 games requested, 20 verified. **Its 8-hour stop counts hub uptime: the stop moves from
+  01:42Z to 02:15Z** (33 minutes without a hub). No other rule of LS-1 changes.
+
+### B. R1: P-2's one confirmation failed
+
+- Result (Hinata, 18:20Z; scorer 0d0d1b7a…, spec 15d79683…, 1,327 of 1,328 games, 1,000 valid draws in every binding
+  cell): **FAIL**. The only binding reason is the elimination map at round 25 (Autarky, 434 games): ΔAUC(V0b − Φ)
+  −0.0099 [−0.0152, −0.0049] against a floor of −0.01. No re-run and no relabel.
+- Descriptive, kept: on round-limit maps (Maze and Trauma, 893 falling to 880 games) V0b beats Φ at every checkpoint
+  from round 25: +0.043 [+0.028, +0.060] at r50, +0.074 [+0.053, +0.095] at r150, +0.150 [+0.124, +0.175] at r400. On
+  the elimination map it is about equal or slightly worse to r100 and better from r150 (+0.093 at r400).
+- **Brier scores** for P(pass): Tanaka 0.40 → 0.16; Sugawara 0.50 → 0.25; Nishinoya 0.50 → 0.25.
+- R1 stays open. No new variant of P-2 now. Value work continues through P-6 (V-legal), amended: a declared
+  fallback to Φ on elimination-regime maps before round 150 (regime by structure, never by map identity). That
+  choice comes from this held-out read, so P-6's confirmation stays on games played after 18:19Z (D-055 §F). R1
+  ranks below R2 in the Learner's order.
+
+### C. R2: a development battery, then one confirmation (the lead, 19:20Z: why not repeat the Heartbreaker method across the top teams and test what recreates their decisions?)
+
+- **First fit** (Hinata, 18:21Z): the encoder-only model reaches forward/right/left accuracy 0.714 [0.706, 0.724]
+  on series-held-out folds (188,250 moves, 97 games, 49 series, ten teachers, 14 training maps; majority class
+  0.425; per teacher 0.676 to 0.768; queen moves 0.678). It is the weaker variant. The 0.75 stop binds on the
+  selected model below, not on this arm.
+- **Cohort accepted as frozen:** `docs/learning/splits/kageyama-r2-confirm-v1.json` (115 games, 85 series: Autarky
+  35, Maze 46, Trauma 34; game-id sha 0493206d…; oracle coverage 115 of 115, measured without reading labels).
+  Coverage floor 0.95 per map; usable = decoded and oracle-reproduced. Nobody reads its labels before the one
+  confirmation.
+- **The battery.** The Chair approved one model and one comparison in D-055 §E. That was too narrow for
+  development. On development rows only (dev120 oracle moves now, the full rows when built), with the same five
+  series folds, the same metric and no held-out read, Hinata fits these arms; each gets a registry row and no card:
+  - A0: the parent's prior as it plays (argmax of its three scores), no fit. The baseline.
+  - A1: the Heartbreaker recipe on ten teams: HB-1's own feature vector, a boosted-tree model, pooled.
+  - A2: A1 fitted per teacher team (ten fits). It measures what pooling costs; it is not a deploy candidate.
+  - A3: encoder only (done: 0.714).
+  - A4: encoder plus the parent's three scores (the card's union model).
+  - A5: encoder plus HB-1's feature vector plus the three scores.
+  - Each pooled arm at two sizes (400 and 800 rounds), unweighted; a learning curve (0.1, 0.25, 0.5, 1.0 of the
+    training series) on the best arm.
+  - One table: accuracy overall, queen, non-queen, per teacher, per map, with whole-series intervals, model size in
+    bytes, and for A2 the mean over teachers.
+- **Selection, fixed now:** the pooled arm (A1, A3, A4 or A5) with the highest fold accuracy; within overlapping
+  intervals the smaller model. It must beat A0 on the same rows with a whole-series 5th percentile above 0 and
+  reach 0.75; otherwise R2b is filed. The selected arm is refitted on the full rows and takes the one confirmation
+  of D-055 §E unchanged (paired with the parent's prior on the frozen cohort). The council's forecasts for that
+  gate (0.70, 0.60, 0.55) stay as scored and now refer to the selected arm.
+- **Needed from Kageyama:** HB-1's feature vector per row beside the three scores (the tool is
+  `tools/learn/cpp/hb1_scores.cpp`; parity 3,091 of 3,091 turns; about 3.2 k turns per second per core), first on
+  dev120's 189,630 oracle moves. Full rows: about 3 M, in shards, expected about 23:30Z.
+- **Where it runs:** Hinata's cloud container, or the Mac's learn queue as light jobs (§F).
+- Tanaka checks that no arm, fold or selection step reads the frozen cohort.
+
+### D. The standard screen (D-056 §D.1–3), amended after the three reviews
+
+- Sugawara (18:29Z): local pairs share a seed, live pairs do not, so live discordance is the switch plus seed noise.
+  Nishinoya (18:52Z, unaudited): in our 730 ranked games, 53 of 164 consecutive same-cell rematches flip (32.3 %),
+  and 76.8 % in contested cells; an upper bound on seed noise. Tanaka (19:19Z): the two-look cluster sign test at
+  0.075 has size at most 0.15 only for sign-symmetric, independent cluster differences; a mean-zero candidate with
+  skewed sums can pass more often (0.27 in his example). Power at 12 non-zero clusters: 0.23, 0.49, 0.65, 0.79 for
+  positive-share 0.6, 0.7, 0.75, 0.8.
+- **Amendments adopted:**
+  1. Size by simulated chance of a promotion-grade result, at least 0.6 at positive-share min(estimate, 0.75),
+     with live noise in the simulation. "At least 12 non-zero clusters" is withdrawn. If the size is out of reach
+     within 340 games the screen is targeted at the cells where the switch changes games; if that fails too it is
+     not run and the local gate decides.
+  2. The census on every card reports the switch's discordance (seed-matched) and the parent's seed noise (same
+     fixture, seed s against s′).
+  3. The error statement carries its assumptions; no claim of 0.15 for every mean-zero candidate.
+  4. The report prints the noise-predicted number of discordant pairs beside the observed counts.
+  5. Daichi answers whether a request can fix the game seed. If it can, matched seeds become standard.
+- **For LS-1, nothing changes** (D-056 §C stands). Correction: "about four discordant pairs in 102" held for
+  seed-matched pairs only. With live noise the chance that LS-1 reaches promotion grade is about 0.2 to 0.5
+  (Sugawara's simulation), and a HOLD or a REJECT by noise is likely. A frozen REJECT means no promotion from LS-1;
+  k = 16 can re-enter only through a screen sized by item 1 after its local gate passes. The local gate on seeds
+  2–3 is now the main evidence for k = 16.
+
+### E. LS-1 pacing
+
+- 20 games were requested in the first hour and a second unit of 20 at about 18:45Z. The field allowance shows 25
+  available against a 20-game unit and a reserve of 10, so one unit fits an hour. Approved: field reserve for
+  battles jobs 10 → 5. It needs a redeploy and therefore waits on §A.
+- The first look is at 102 pairs or at the stop, whichever comes first, and needs at least 60 pairs.
+
+### F. Evaluator
+
+- Learn-queue jobs declared light (at most 20 minutes and 6 workers) run at the next job boundary ahead of Asahi's
+  own queue. Heavy ones wait behind it.
+- P-4: the first m = 0 build changed choices on turns where no veto fired; Asahi fixed it (r/asahi 3e74fbbf2) and
+  re-runs parity, then the panels. Results from the first m = 0 build are void.
+- REG-002's deploy probe on the fixed tree is recorded (zip 3.741 MiB, maximum 11.01 M points per turn, first turn
+  10.73 M, no errors).

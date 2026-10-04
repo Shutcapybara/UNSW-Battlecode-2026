@@ -4,7 +4,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 
 ## Current state (4 Oct 2026 10:50Z)
 
-- **R0 passed 4 Oct 14:28Z (D-053 §A). Rungs open: R1 (confirmation pending) and R2 (card pending).**
+- **R0 passed 4 Oct 14:28Z (D-053 §A). R1: P-2 failed its confirmation 18:20Z (D-057 §B); rung open, behind R2. R2: development battery running (D-057 §C).**
 - Incumbent and parent: `carthage-05-free-sprint` (submission 14585). Fallback: `hb1-14-prior-r540` (14265).
 - Deadline: handled by the lead; the Chair imposes no freeze (D-050 §2).
 - GPU work may run on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3).
@@ -12,8 +12,8 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 | Rung | Adds | Status | Owner | Record |
 |---|---|---|---|---|
 | R0 | infrastructure | **passed** 4 Oct 14:28Z | Kageyama, Hinata, Asahi, Daichi | D-046, D-051 §5, D-052, D-053 §A |
-| R1 | V0 value model | P-2: scorer revision 4 released by Tanaka (17:55Z); one confirmation on 1,327 usable games is Hinata's to run. P-6 (V-legal) approved (D-055 §F) | Hinata | D-052 §A, D-054 §A, D-055 §F–§G, D-056 §A |
-| R2 | P1 BC direction head | **card P-5 approved as amended** (D-055 §E). Support verified before fitting (Tanaka 17:59Z): 189,630 oracle moves, 97 games, 49 series. Development fit running or next (Hinata); cohort freeze, extractor and full rows owed by Kageyama | Hinata, Kageyama | D-055 §E, D-056 §A |
+| R1 | V0 value model | **P-2 failed its one confirmation** (elimination r25 −0.0099 [−0.0152, −0.0049] against −0.01; better than Φ on round-limit maps at every checkpoint). Rung open. Next value artifact: P-6 (V-legal) with a fallback to Φ early on elimination-regime maps | Hinata | D-052 §A, D-057 §B |
+| R2 | P1 BC direction head | encoder-only 0.714 in development (weaker variant). **Battery A0–A5 on development rows** (parent prior as is; HB-1 recipe pooled and per team; encoder; unions), selection rule fixed, then one confirmation on the frozen cohort (115 games). Full rows about 23:30Z | Hinata, Kageyama | D-055 §E, D-057 §C |
 | R3 | split/size, cull, sprint heads | not started | Learner | |
 | R4 | feature blocks | not started | Data, Learner | |
 | R5 | V in the search | needs a value model on the legal encoder (V-legal card after the decode, D-052 §A.7) | Hinata | |

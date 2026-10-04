@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 18:13Z (unit 8). Next self-wake about 19:10Z. Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 19:24Z (unit 9). Next self-wake about 20:25Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,12 @@ State: ACTIVE. Updated 4 Oct 2026 18:13Z (unit 8). Next self-wake about 19:10Z. 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-057:** P-2 (value model) failed its one confirmation; R1 stays open behind R2. R2 gets a development battery
+  (parent prior as is, the Heartbreaker recipe pooled and per team, encoder, unions) with a fixed selection rule and
+  one confirmation on the frozen 115-game cohort. The standard screen is sized by simulated power with live noise.
+  The Mac restarted at 18:48Z; the hub runs in a terminal since 19:21Z, so **no redeploy** (it would end the hub)
+  until the lead puts it under a restart loop or launchd; that holds the upload fix and all uploads. LS-1's stop
+  moves to 02:15Z.
 - **D-056:** LS-1 is running (dispatched 17:42Z; candidate uploaded as 16979). Promotion needs the frozen PASS and a
   cluster sign test at p ≤ 0.075, two looks (102 and 170 pairs); fewer than four non-zero clusters means the local
   gate decides. The server activates on upload: 16979 was live about 17:33–17:40Z; no upload until the hub restores
@@ -53,12 +59,12 @@ State: ACTIVE. Updated 4 Oct 2026 18:13Z (unit 8). Next self-wake about 19:10Z. 
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-2 (R1): scorer revision 4 released; Hinata runs the one claim. P-5 (R2): development fit next; P-6 (V-legal) after the R2 rows. P-4 (queen reach veto): dial built by Asahi, seed-1 panel running |
+| Proposal cards | P-2 (R1): **failed** its confirmation, closed. P-5 (R2): encoder-only 0.714; battery A0–A5 next. P-6 (V-legal): amended, after R2. P-4 (queen reach veto): rebuilt after a parity fault, seed-1 panels running |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | working since about 17:15Z: P-4 panel (m = 1) running at 18:10Z; queued: strike probes, P-4 card and curve, parent and k = 16 on seeds 2–3. Done: `card.py` clusters, learn queue in the daemon, real headers in asahi-02 to 05 |
+| Evaluator queue (Asahi) | daemon back 19:16Z after the restart; P-4 off-parity re-run, then m = 0 and m = 1 panels, labels, card and curve; then parent and k = 16 on seeds 2–3. Light learn jobs may jump the queue (D-057 §F) |
 | Nominee (full gate) | `asahi-05-kz12-k16` (REG-002), gate on seeds 2–3, not yet run |
-| Uploaded, inactive | `asahi-05-kz12-k16` = submission 16979 (17:32Z). No further upload until the `submit_check` fix (D-056 §B) |
-| Live screen | **LS-1 running** (job 5ed81ad3e1f3, since 17:42Z): 16979 against 14585 on teams 716, 98, 347; 20 of 204 games at 18:10Z; looks at 102 and 170 pairs; no interim reads. Next in queue: P-4, then the first R2 bot. TD-1 (top-ten data games) starts after the first look |
+| Uploaded, inactive | `asahi-05-kz12-k16` = submission 16979. No upload until the `submit_check` fix is deployed, and no redeploy while the hub runs in a terminal (D-057 §A) |
+| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 40 of 204 games requested, 20 verified at 19:21Z; about 20 games an hour until the reserve change is deployed; stop 02:15Z; first look at 102 pairs or the stop (at least 60 pairs). Likely underpowered (D-057 §D): the local gate is the main evidence for k = 16 |
 
 ## Facts settled this unit
 
@@ -77,10 +83,10 @@ State: ACTIVE. Updated 4 Oct 2026 18:13Z (unit 8). Next self-wake about 19:10Z. 
 | Council, auditor | Tanaka (GPT, Codex, hourly heartbeat), `r/tanaka` | working: 17:55Z P-2 scorer PASS; 17:56Z LS-1 review; 17:59Z R2 support verified |
 | Council, mechanism | Sugawara (Claude), hourly at :25 | working: 17:29Z LS-1 objective amendment (upheld in part, D-056 §C) |
 | Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: 17:52Z replication of the LS-1 amendment |
-| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | development teacher set ready (235,798 rows, 118 games); found hidden bed variants on five maps; owes the series-clean cohort and the HB-1 extractor's cost |
-| Learner | Hinata (Claude), Cowork VM; **hourly** task at :35 (changed 17:12Z) | 17:35Z unit: P-2 scorer revision 4 (released); R2 development fit and the P-2 claim next |
-| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py` | working again; three commits since 17:14Z; daemon running the P-4 panel |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; scheduled runs working | LS-1 dispatching; owes the `submit_check` fix, the two looks, and TD-1 |
+| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | cohort frozen (115 games); extractor built; full rows building in the cloud (about 23:30Z); unit-5 commit pending after the restart (wake 19:48Z); owes HB-1 feature vectors for the battery |
+| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | P-2 confirmation failed; R2 encoder-only fit 0.714; battery next |
+| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; hourly self-wake | working; daemon restarted 19:16Z |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM | task was suspended by the restart, re-enabled 19:23Z, next run 19:50Z; owes the `submit_check` fix (no redeploy yet), LS-1 looks, TD-1 |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
 
@@ -96,19 +102,21 @@ State: ACTIVE. Updated 4 Oct 2026 18:13Z (unit 8). Next self-wake about 19:10Z. 
 | H8 | Native execution for the Learner | replaced: jobs go through Asahi's native job daemon (D-050 §8); the lead is asked only if the daemon reload fails |
 | H9 | Windows quota runner | closed: the lead does not know of one; replaced by Daichi's ledger check (D-050 §4) |
 | H10 | Wake the Asahi (Evaluator) session | closed: Asahi working since about 17:15Z |
+| H11 | Run the hub under a restart loop (or repair its launchd agent): a redeploy exits the hub and nothing relaunches it in a plain terminal | asked 19:3xZ |
 
 ## Next three decisions
 
-1. **LS-1, first look (102 pairs):** frozen label, cluster counts, and whether promotion-grade (D-056 §C); else the
-   extension. If not resolvable, the local gate on seeds 2–3 decides k = 16.
-2. **R1 result:** P-2's one confirmation; score the forecasts (0.40, 0.50, 0.50).
-3. **R2:** the development fit (stop below 0.75), then the offline gate against the parent's prior, then its screen.
-   Also due 19:30Z: council review of the standard screen (D-056 §D.7).
+1. **R2 battery table** and the selected arm; then its refit on the full rows and the one confirmation.
+2. **LS-1 first look** (D-056 §C) and the k = 16 local gate on seeds 2–3; promotion needs promotion-grade live
+   evidence, or a sized re-screen after the gate passes.
+3. **P-4 seed-1 card**: eligibility under D-055 §A and its place in the screen queue.
+
+Waiting on the lead: the hub under a restart loop or launchd, so that redeploys are safe (H11).
 
 ## Cursor
 
-Last BOARD line read: line 841, `[2026-10-04 17:59 UTC council:tanaka → chair, …] Round7 committed 8ef39cbc8 …`
-(main tree). Own D-056 lines follow.
+Last BOARD line read: line 880, `[2026-10-04 19:19 UTC council:tanaka → chair, …] Assigned LS-std-1 size/power
+review …` (main tree). Own D-057 lines follow.
 
 ## Open flags
 
