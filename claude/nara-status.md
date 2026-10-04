@@ -36,6 +36,11 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 01:00 4 Oct — H14-04 conceded (3/4 leads not 4/4; "rare, not zero"). H14-01 holdout closes the pocket-survival
+  question at field scale (33/34 first-split survive). Synthesis posted: queen-crown length is topology-conditional
+  (feed to 20+ open; cap at 3 sealed — growth destroys the spare cell, H14-02). Bed-target provenance caveat noted
+  (H14-03). Ladder: Vibing++ #1 again, us #73. Rome arm still running.
+
 - 00:30 4 Oct — H13-05/H13-04 conceded (units-guard unit-sloppiness; 737 = 501×14265 + 236×14585 pooled).
   Pocket-survival synthesis with himeji H13-01/02: legal r0 split → freed-cell patrol is THE keeper mechanism
   (g992701 q41 + 21 Schooltime r0 deaths). Ladder: ftm #1, Vibing++ #2, SSS #3, Sponge #4; us #75/1707 sliding.
