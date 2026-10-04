@@ -1,0 +1,267 @@
+{
+  "game": 995611,
+  "queen": 1,
+  "split": {
+    "round": 0,
+    "team": "A",
+    "parent": 1,
+    "child": 6,
+    "before": 4,
+    "parent_len": 2,
+    "child_len": 2
+  },
+  "replay_sha256": "ff0e6c8e95e41479981032ced67e3992145fb9d7dfed2ba534cc0e9fd8d216fc",
+  "actions": [
+    {
+      "round": 0,
+      "id": 1,
+      "team": "A",
+      "kind": "split",
+      "steps": 0,
+      "tle": false,
+      "cpu": null
+    },
+    {
+      "round": 0,
+      "id": 6,
+      "team": "A",
+      "kind": "move",
+      "steps": 1,
+      "tle": false,
+      "cpu": null,
+      "dirs": [
+        0
+      ],
+      "paid": 0
+    },
+    {
+      "round": 1,
+      "id": 1,
+      "team": "A",
+      "kind": "move",
+      "steps": 1,
+      "tle": false,
+      "cpu": null,
+      "dirs": [
+        1
+      ],
+      "paid": 0
+    },
+    {
+      "round": 2,
+      "id": 1,
+      "team": "A",
+      "kind": "move",
+      "steps": 1,
+      "tle": false,
+      "cpu": null,
+      "dirs": [
+        0
+      ],
+      "paid": 0
+    },
+    {
+      "round": 3,
+      "id": 1,
+      "team": "A",
+      "kind": "move",
+      "steps": 1,
+      "tle": false,
+      "cpu": null,
+      "dirs": [
+        3
+      ],
+      "paid": 0
+    },
+    {
+      "round": 4,
+      "id": 1,
+      "team": "A",
+      "kind": "move",
+      "steps": 1,
+      "tle": false,
+      "cpu": null,
+      "dirs": [
+        2
+      ],
+      "paid": 0
+    }
+  ],
+  "deaths": [
+    {
+      "round": 0,
+      "id": 6,
+      "team": "A",
+      "cause": "self",
+      "length": 2,
+      "actor": 6,
+      "age": 0,
+      "head": [
+        57,
+        2
+      ],
+      "initial": false,
+      "killer": null,
+      "killer_team": null
+    }
+  ],
+  "food": [
+    {
+      "round": 1,
+      "id": 1,
+      "team": "A",
+      "cell": [
+        57,
+        2
+      ],
+      "origin": "ally_corpse",
+      "age": 1,
+      "donor": 6
+    }
+  ],
+  "queen_head_cells": [
+    [
+      56,
+      1
+    ],
+    [
+      56,
+      2
+    ],
+    [
+      57,
+      1
+    ],
+    [
+      57,
+      2
+    ]
+  ],
+  "lengths_seen": [
+    2,
+    3,
+    4
+  ],
+  "states": [
+    {
+      "1": [
+        "A",
+        [
+          [
+            56,
+            2
+          ],
+          [
+            56,
+            1
+          ],
+          [
+            57,
+            1
+          ],
+          [
+            57,
+            2
+          ]
+        ]
+      ],
+      "6": null
+    },
+    {
+      "1": [
+        "A",
+        [
+          [
+            56,
+            2
+          ],
+          [
+            56,
+            1
+          ]
+        ]
+      ],
+      "6": null
+    },
+    {
+      "1": [
+        "A",
+        [
+          [
+            57,
+            2
+          ],
+          [
+            56,
+            2
+          ],
+          [
+            56,
+            1
+          ]
+        ]
+      ],
+      "6": null
+    },
+    {
+      "1": [
+        "A",
+        [
+          [
+            57,
+            1
+          ],
+          [
+            57,
+            2
+          ],
+          [
+            56,
+            2
+          ]
+        ]
+      ],
+      "6": null
+    },
+    {
+      "1": [
+        "A",
+        [
+          [
+            56,
+            1
+          ],
+          [
+            57,
+            1
+          ],
+          [
+            57,
+            2
+          ]
+        ]
+      ],
+      "6": null
+    }
+  ],
+  "terrain_component_size": 4,
+  "terrain_component_cells": [
+    [
+      56,
+      1
+    ],
+    [
+      56,
+      2
+    ],
+    [
+      57,
+      1
+    ],
+    [
+      57,
+      2
+    ]
+  ],
+  "component_beds": []
+}

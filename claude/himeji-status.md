@@ -2,6 +2,34 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
 
+## Unit13 — 2026-10-04 00:08 UTC; hypothesis unit complete
+
+- Usersteering: hypothesisgeneration mustlead, collectioncheckbrief. Published H-H3 andH-H4 testcards withledgerlinks,
+  falsifiers,matchedcontrols,samplejustification,testerassignment. No bots/experiments/simulations orAPIcalls.
+- H-H3 proposedL24/L49 weight.5: full4-cellspawnqueen can2+2split, shedchild, retainlength3 patrol.21Schooltime
+  r0selfdeathcasesall0emptyneighborsteps;20opponentsfirstsplit,18/20surviveactual490.Exacttrace995611queen1,
+  child6selfdies0,queen eats1corpsepearlatr1;4-cellterraincomponent/nobeds. Earlygenericmovevetoidea withdrawnforcases.
+- Prior737Schooltime14265 r0self2/53 vs1458518/18 isgeometry/timeconfounded. Four14265nonfatalcontrols allhave2empty
+  neighbors; no14585nonfatalSchooltimecontrol. Casecounts6ranked/15unranked inclnew995611. No causalversionclaim.
+- H-H4 refinementH-H1/L39/L49 .5: produceearlygrowlater. All12ranked306/91Maze/Slithery gamesin3Octwindow splitqueen
+  before100;11reach490/7alive;1earlyeliminationcensored. Failureskept. Romealreadyqueuedarm; logpre-triggerexposure,
+  don'tduplicateexperiment. Atleast60independenteligiblepairs for~20pp effect; overall10pp149/306/463 atd.2/.4/.6.
+-38distinctreplayeventaudits,allofficialwinnersmatch and76terminalqueenfield/bodycomparisonsmatch. Onequeryworker,
+  allfinished. Evidence tools/himeji/unit13_audit/,report `docs/findings/2026-10-04-himeji-pocket-survival-and-phased-growth-hypotheses.md`.
+- Nara5242954ac new23:35boardread/repliedH13-04/05: observed737headers501of14265+236of14585; cannotcallall14265.
+  Normalizedmedianboundsnotlogbounds;H12L10rulingstands. Rome6f1ec3527unchanged/no newcomplete result.
+  NaraownsSeoulL47opportunityanalysis; do notduplicate. Otherpeerstatusunchangedread, mainprotocol/targetsread.
+- Sourcecursor main0298966ec/D-042; Antioch2c7113f66; Carthage5b69fa9d0; Kyoto fccea71c0; Rome6f1ec3527;
+  Nara5242954ac; boardH13-01..06. Sourcebranchseparate/no rejectedmerge retry. No directanalystchatroute/peerwake.
+- Corpusfreeze23:53:25Z115805/latest23:49:36Z,indexSHAf8bc8a15e7f001c5610f7c36556084375fd1f73d382e77942d3f6369ea2b873f;
+  ladder235044Z SHA0760e383eece7050a1b10649b037f13b56a1d8f8236b85e5df5f5017f22a246b,
+  top306/91/264/213/87/842/952/55/82/566. Era≥1Oct06:00post123; modeskeptseparate.
+  DBread-onlygood14585active23:50Z; solecollector35400healthy32–40/pass0errors. H11-05/H12-05collectionrequestspending.
+- Storeunchanged423games/846sides/latest23:11:43Z,110unit12gamescheckpointed/noactiveworker. Broaderdecode deferred
+  deliberatelyforuserhypothesispriority. Next: H-H3held-outstructuraltriggercases/testerlegalcheck; Romeexposure-aware
+  reading. Resumeunit12queuewhencapacitypermits; do not letmaintenance displacehypothesisoutput. H-H2unresolved.
+  AutomationACTIVEhalf-hourly. Commit/pushscopedr/himeji; priorhypotheses/targets/verdictspreserved.
+
 ## Unit12 — 2026-10-03 23:36 UTC; complete, decode queue checkpointed
 
 - RomeL10 reading/rulingH12-01/02: originalad611b51c lane definesmedian-checkpoint econ~. Independent480/1392

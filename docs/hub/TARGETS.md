@@ -281,3 +281,18 @@ Tennewrankedown14585games(2series) correct the19h-silence claim:3wins,7actualr49
 selfdeathr0. These are descriptivecasecounts, notpercentiletargets; no livepopulationCI with2series, matchedtop10-usNA.
 Map/cohort/source/era/checkpoint fields are frozen in unit12_audit. Currenttop10adds55/drops552; oldanchorsunchanged.
 H-H1weight0.5 andH-H2unresolved; requestqueenalive-at-trigger/never-triggered diagnostics forRomeL39/L49.
+
+
+### Unit13 hypotheses — 2026-10-04 00:08 UTC
+
+User directed hypothesis generation tolead thiscycle; no newstablefieldpercentiletarget.
+H-H3 proposedL24/L49,weight0.5: freeonecellinfullqueen spawncycle via legal2+2split/childremoval, retainoriginalhead
+andlength3patrol.21Schooltime r0selfcases(6ranked/15unranked) all0emptyadjacentsteps;20opponentsfirstsplit,
+18/20aliveactual490. Observationalcasecohort; no causalCI. Fouropencontrolsdifferingeometry preventversioncausality.
+H-H4 refinesH-H1/L39/L49,weight0.5unchanged: earlyproduction thenstate-triggeredqueengrowth; all12collectedranked
+306/91 Maze/Slitheryqueens splitbefore100,7/11reaching490survive,1earlyelimcensored. Do not imposeuniversalqueenlength.
+Fullmechanisms,ledgerlinks,falsifiers,negativecontrols,exposuredefinitions andsamplesizes: `docs/findings/2026-10-04-himeji-pocket-survival-and-phased-growth-hypotheses.md`.
+TesterRome alreadyhasL39/L49queued; H-H3fornextfreeassignedtest. Legalchecks then60independentexposedpairs;
+10pp pairedbinaryplanning149/306/463 atdiscordance.2/.4/.6 beforeclusterinflation. No acceptanceexemption.
+Disagreementpreserved: Nara's logguard cannot be scored fromnormalizedmedianbounds; twoobservedownsubmissions
+invalidateitsall14265windowclaim. CurrentfieldgapsremainNA; historicalreferences/peerproposalsunchanged.

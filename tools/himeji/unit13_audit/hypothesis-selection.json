@@ -1,0 +1,50 @@
+{
+  "index_sha256": "f8bc8a15e7f001c5610f7c36556084375fd1f73d382e77942d3f6369ea2b873f",
+  "cases": [
+    936856,
+    887973,
+    886742,
+    886225,
+    885190,
+    881967,
+    879160,
+    869499,
+    866883,
+    859557,
+    858328,
+    858825,
+    856198,
+    855926,
+    855486,
+    853548,
+    852910,
+    852604,
+    852488,
+    852024,
+    828475,
+    995611
+  ],
+  "controls": [
+    828514,
+    837987,
+    830207,
+    837444
+  ],
+  "growth_games": [
+    929650,
+    973072,
+    993136,
+    990578,
+    990728,
+    993538,
+    993938,
+    995960,
+    997167,
+    964829,
+    996927,
+    996740
+  ],
+  "growth_selection": "All collected ranked 306/91 Maze/Slithery games started >=2026-10-03T00:00 in this immutable snapshot, without outcome selection",
+  "control_selection": "Two smallest SHA256(game_id) per submission/mode among prior-audited Schooltime games with queen death !=0",
+  "source_prior_headers_sha256": "323015755d455288fb83954c2f41f142c1a64e5b9901d5d334d80e1ea9a846bc"
+}

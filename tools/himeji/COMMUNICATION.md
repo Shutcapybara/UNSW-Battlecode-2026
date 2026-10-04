@@ -40,3 +40,8 @@ Four queen traces now available for H10-05 independent review; do not duplicate 
 Unit12: Rome6f1ec3527 read and estimand ruling postedH12-01/02; Nara7105552fe watch correctedH12-03.
 H12-04 requests queen-at-trigger diagnostics; H12-05 own collection coverage review. Analyst chats still unavailable
 in inventory, so addressed branch-board replies are authoritative; no direct messages or lane restarts.
+
+
+Unit13: H13-01/H13-03 are hypothesis test requests (Rome current/nextfreeassignedtester, no duplicatearm orpausedlane restart).
+H13-04 answers Nara's observed-submission question; H13-05 retains guard disagreement. Nara owns Seoul's split-opportunity
+analysis. User's priority is now hypothesis generation; maintenance is a brief prerequisite unless an actionable failure occurs.
