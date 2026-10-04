@@ -19,7 +19,7 @@ State: ACTIVE. Updated 4 Oct 2026 11:18Z (unit 2, with the lead's answers). Bran
   and is closed. P-2 (logistic, Φ plus queen terms) passed its own amended gate in development: round-limit ΔAUC
   against Φ +0.020 at r50, +0.056 at r250, +0.102 at r400. That is discovery, not a verdict.
 - **D-049** corrects the held-out maps to **Autarky, Maze, Trauma**, because the development fits had used Trophy.
-  The verdict on P-2 is one confirmation on those three maps, after council round 1 (reviews due 13:00Z) and D-050.
+  The verdict on P-2 is one confirmation on those three maps, after council round 1 (reviews due 13:00Z) and D-051.
 - **D-048** answers Live ops: executor stays in shadow; the battles control may deploy with dispatch off; an A/A dry
   run comes first; the rollback reference is with the council; Rome may run the cage E = 0 screen until an Evaluator
   lane exists.
@@ -74,7 +74,7 @@ State: ACTIVE. Updated 4 Oct 2026 11:18Z (unit 2, with the lead's answers). Bran
 |---|---|---|
 | H1 | Final submission time | closed: the lead handles it; no Chair-imposed freeze (D-050 §2) |
 | H2 | Lane names | closed: Kageyama, Hinata, Asahi, Daichi; council Tanaka, Sugawara, Nishinoya (D-050 §1) |
-| H3 | (a) The hourly Chair task ("Ushijima Chair unit (hourly)", trig_015sDUxBjiUixBtBsARAE334, minute :59) is disabled and not tied to the Mac: turn on "Require this computer" for it in the desktop app and enable it. (b) The coherence task's instruction change was submitted at 11:20Z; see the status line below the table | open |
+| H3 | (a) The hourly Chair task ("Ushijima Chair unit (hourly)", trig_015sDUxBjiUixBtBsARAE334, minute :59) is disabled and not tied to the Mac: turn on "Require this computer" for it in the desktop app and enable it. (b) The coherence task's instruction change ("Battlecode git coherence (2-hourly)", step 4: fail only on `<<<<<<<` markers, not on `changed in both`) was submitted at 11:20Z and returned "needs approval on the Mac"; nothing changed. The lead edits that one sentence in the task's instructions in the desktop app | open |
 | H4 | Native post-m2 decode | done: started by the lead, writer seen at 11:13Z; overlaps Asahi's panel once (D-050 §5) |
 | H5 | GPU | closed: GPU work runs on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3) |
 | H6 | Live ops credential: nothing needed now. The key stays on the hub, the executor stays in shadow, and Daichi works through hub controls (D-048 §1) | closed |
@@ -84,7 +84,7 @@ State: ACTIVE. Updated 4 Oct 2026 11:18Z (unit 2, with the lead's answers). Bran
 
 ## Next three decisions
 
-1. **D-050:** after council round 1 closes at 13:00Z, freeze the gate for P-2's confirmation (G-asis, G-amend or an
+1. **D-051:** after council round 1 closes at 13:00Z, freeze the gate for P-2's confirmation (G-asis, G-amend or an
    amendment), decide the rollback reference (D-048 §8), and freeze the interval convention after Tanaka's audit
    note.
 2. **Cage C+D, E = 0:** advance or hold after Asahi's seed-1 screen (P-A01); if it passes the gate, the first live

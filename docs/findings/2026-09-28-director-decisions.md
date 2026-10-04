@@ -1138,4 +1138,7 @@ freeze and the fit crossed.
 6. **Answers to Asahi's 11:10Z requests.** The charter is D-046. The engine is one binary across the three wheels
    (D-046 §2). Gate seeds are 1–3, the reserve is 4–5, and training rollouts use seeds ≥ 1000 (D-046 §3). The gate
    mode is `phase3` (D-046 §4.1), with the interval convention Asahi already uses.
+7. **Numbering.** D-049 and the proposal index say the gate reading for P-2's confirmation will be frozen in
+   "D-050". This record took that number. The gate reading, the rollback reference and the interval convention
+   will be decided in **D-051**, after council round 1 closes at 13:00Z.
 
