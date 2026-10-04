@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS battle_jobs(id TEXT PRIMARY KEY, created_at TEXT, upd
   decision TEXT, body TEXT, status TEXT, expect_active INTEGER, units TEXT, next_unit INTEGER DEFAULT 0,
   games_requested INTEGER DEFAULT 0, deadline REAL, note TEXT);
 """
-DEFAULTS = dict(interval_seconds=300, cycle_games=40, chunk_maps=5, reserve_games={'field': 10, 'dev': 5},
+DEFAULTS = dict(interval_seconds=300, cycle_games=40, chunk_maps=5, reserve_games={'field': 5, 'dev': 5},
                 max_job_games=600)
 ACTOR = 'hub/battles'
 
@@ -314,12 +314,16 @@ def job_games(conn, jid):
     out = []
     for r in db.rows(conn, "SELECT * FROM requests WHERE block_id=? ORDER BY at", (f'job:{jid}',)):
         for gid in json.loads(r['game_ids'] or '[]'):
-            g = conn.execute('SELECT verified, error, score, map_id, map_name, faults, caught_errors, cpu_max, reason, rounds, api_side FROM games WHERE game_id=?', (gid,)).fetchone()
+            g = conn.execute('SELECT verified, error, score, map_id, map_name, faults, caught_errors, cpu_max, reason, rounds, api_side, requested_at, seed, opponent_submission FROM games WHERE game_id=?', (gid,)).fetchone()
             g = dict(g) if g else {}
             out.append(dict(game_id=gid, arm=r['submission'], opponent=r['opponent_team'], pool=r['pool'], parity=gid % 2,
                             map_id=g.get('map_id'), map_name=g.get('map_name'), verified=bool(g.get('verified')), error=g.get('error'),
                             score=g.get('score'), faults=g.get('faults'), caught_errors=g.get('caught_errors'), cpu_max=g.get('cpu_max'),
-                            reason=g.get('reason'), rounds=g.get('rounds'), side=g.get('api_side')))
+                            reason=g.get('reason'), rounds=g.get('rounds'), side=g.get('api_side'),
+                            # D-056 §B: opponent submission id per game. The API has carried no submission ids since 28 Sep
+                            # (D-023), so this is null unless the server restores them; request_at (one unit's arms are
+                            # posted seconds apart) is the recorded proxy for "same opponent version".
+                            opponent_submission=g.get('opponent_submission'), request_at=r['at'], requested_at=g.get('requested_at'), seed=g.get('seed')))
     return out
 
 

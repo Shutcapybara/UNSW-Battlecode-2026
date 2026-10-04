@@ -492,13 +492,37 @@ def git_check(root, cfg, state, log):
     return out
 
 
+def restore_after_upload(conn, root, client, previous, uploaded, actor):
+    """Re-activate `previous` when the upload (or, with its id unknown, anything other than `previous`) is active after
+    an upload without activation. Returns what happened; never raises (the caller is inside `finally`)."""
+    try:
+        active = [x['id'] for x in client.get('/api/v1/submissions') if x.get('status') == 'active']
+        active = active[0] if len(active) == 1 else None
+        if active == previous:
+            return dict(action='none', active=active)
+        if uploaded is not None and active != uploaded:
+            db.event(conn, root, actor, 'restore_skipped', dict(previous=previous, candidate=uploaded, active=active, reason='after upload'))
+            return dict(action='skipped', active=active, reason='active is neither the prior nor the upload')
+        client.post(f'/api/v1/submissions/{previous}/activate', {})
+        after = [x['id'] for x in client.get('/api/v1/submissions') if x.get('status') == 'active']
+        db.event(conn, root, actor, 'restored', dict(previous=previous, candidate=active, reason='undo upload auto-activation (submit control)'))
+        return dict(action='restored', auto_activated=active, active=after[0] if len(after) == 1 else after)
+    except Exception as exc:   # surfaced in submit.done.json and a notification
+        return dict(action='error', error=f'{type(exc).__name__}: {str(exc)[:200]}')
+
+
 def submit_check(root, cfg, state, client, log):
     """Director-requested manual upload (+ optional activation) of a registered candidate
     (`<mirror>/control/submit.json`: {"candidate": name, "activate": true, "by": …, "note": …}).
 
     Bypasses the executor's probe/screen path (D-041: a new server round left nothing live). The upload carries the
     programme's `LV-<name>-<fp8>-ai` naming; activation sets the hub's control record so the executor's
-    stale-control rules see the change as ours."""
+    stale-control rules see the change as ours.
+
+    D-056 §B: the server auto-activates an upload (4 Oct 17:32Z). So the active submission is read before the POST and,
+    unless activation was requested, re-activated in `finally` when the upload (or an unknown id) took its place; a
+    teammate's different choice is never overwritten (recorded as restore_skipped). Uploads are refused inside the
+    even-hour blackout and while a ranked series of ours is in flight (the upload could be live for it)."""
     ctl = Path(cfg['paths']['mirror']) / 'control'
     req = ctl / 'submit.json'
     if not req.exists():
@@ -528,6 +552,16 @@ def submit_check(root, cfg, state, client, log):
         if prior:
             sid = prior[0]['id']; out['upload'] = 'already present'
         else:
+            active_before = [x['id'] for x in subs if x.get('status') == 'active']
+            if len(active_before) != 1:
+                raise RuntimeError(f'expected exactly one active submission before the upload, saw {active_before}')
+            active_before = active_before[0]
+            out['active_before'] = active_before
+            if hub_executor.in_blackout(cfg, time.time()):
+                raise RuntimeError('deferred: inside the even-hour ranked-exposure blackout; resubmit later')
+            snap = hub_executor.Snapshot(client, conn, cfg, time.time())
+            if hub_executor.ranked_in_flight(snap):
+                raise RuntimeError(f'deferred: ranked series {hub_executor.ranked_in_flight(snap)} of ours in flight; resubmit later')
             boundary = 'hub' + uuid.uuid4().hex
             lang = {'python': 'python', 'py': 'python', 'cpp': 'cpp', 'c++': 'cpp', 'cxx': 'cpp', 'c': 'c'}.get(str(cand['language']).lower(), 'cpp')   # the CLI normalises bot.toml's spelling to python|cpp|c before POSTing (unswbc submit.py); the server rejects 'c++' (1 Oct)
             src = Path(cand['source_ref'][4:]) if str(cand.get('source_ref', '')).startswith('dir:') else None
@@ -540,14 +574,19 @@ def submit_check(root, cfg, state, client, log):
                 parts.append(f'--{boundary}\r\nContent-Disposition: form-data; name="{key}"\r\n\r\n{value}\r\n'.encode())
             parts.append(f'--{boundary}\r\nContent-Disposition: form-data; name="zip"; filename="bot.zip"\r\nContent-Type: application/zip\r\n\r\n'.encode() + archive.read_bytes() + b'\r\n')
             parts.append(f'--{boundary}--\r\n'.encode())
-            res = client.post('/api/v1/submissions', b''.join(parts), 'multipart/form-data; boundary=' + boundary)
-            sid = (res or {}).get('id') if isinstance(res, dict) else None
-            if sid is None:
-                subs = client.get('/api/v1/submissions')
-                prior = [x for x in subs if x.get('name') == name]
-                sid = prior[0]['id'] if prior else None
-            out['upload'] = 'uploaded'
-            db.event(conn, root, body.get('by') or 'director', 'uploaded', dict(candidate=cand['name'], name=name, submission=sid, manual=True))
+            sid = None
+            try:
+                res = client.post('/api/v1/submissions', b''.join(parts), 'multipart/form-data; boundary=' + boundary)
+                sid = (res or {}).get('id') if isinstance(res, dict) else None
+                if sid is None:
+                    subs = client.get('/api/v1/submissions')
+                    prior = [x for x in subs if x.get('name') == name]
+                    sid = prior[0]['id'] if prior else None
+                out['upload'] = 'uploaded'
+                db.event(conn, root, body.get('by') or 'director', 'uploaded', dict(candidate=cand['name'], name=name, submission=sid, manual=True))
+            finally:
+                if not body.get('activate'):
+                    out['restore'] = restore_after_upload(conn, root, client, active_before, sid, body.get('by') or 'director')
         out['submission'] = sid; out['name'] = name
         conn.execute("UPDATE candidates SET submission_id=?, upload_name=?, status='uploaded', updated_at=? WHERE name=?", (sid, name, db.now_iso(), cand['name']))
         if body.get('activate') and sid is not None:
@@ -559,7 +598,7 @@ def submit_check(root, cfg, state, client, log):
         out['error'] = f'{type(exc).__name__}: {str(exc)[:300]}'
     (ctl / 'submit.done.json').write_text(json.dumps(out, indent=1, default=str))
     req.unlink(missing_ok=True)
-    notify(root, cfg, 'submit', f"{out.get('candidate')}: {out.get('upload')} {out.get('submission')} {'activated' if out.get('activated') else ''} {out.get('error') or ''}")
+    notify(root, cfg, 'submit', f"{out.get('candidate')}: {out.get('upload')} {out.get('submission')} {'activated' if out.get('activated') else ''} restore {(out.get('restore') or {}).get('action')} {out.get('error') or ''}")
     log(f"submit request: {out}")
     return out
 
