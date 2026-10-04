@@ -1,0 +1,827 @@
+{
+  "scope": "Synthetic selector probes; published A3/A10 development predictions; analytic P7 arithmetic only. No real selection, fitting, bot runs, or confirmation/LS1 outcome reads.",
+  "source_sha": {
+    "r2_bc.py": "a31faa5d8ea31652674b993c77d7549d978437b2226f7e659d7004fa76036427",
+    "r2_battery.py": "8a29e479aa9167cfb7dd18077a20e9ba1d56d6e8ce9e60dca0419314b6e1c5fd",
+    "r2_cnn.py": "e237fb767a074a545130b92f1919f664891eff614602d00c2cc10d18c6ea840a"
+  },
+  "checks": {
+    "nan": {
+      "accepted": false,
+      "reason": "refused: A3 left 1 rows unpredicted"
+    },
+    "inf": {
+      "accepted": false,
+      "reason": "refused: A3 left 1 rows unpredicted"
+    },
+    "bad_sum": {
+      "accepted": false,
+      "reason": "refused: A3-400 has 1 rows with missing or non-normalised predictions"
+    },
+    "negative_sum_one": {
+      "accepted": true,
+      "result": {
+        "pooled": {
+          "selected": "A3-400",
+          "run": "A3-400",
+          "manifest": "98dd0d0c0200",
+          "acc": 1.0,
+          "leader": "A3-400",
+          "overlapping": [
+            "A3-400"
+          ],
+          "beats_A0": true,
+          "reaches_075": true,
+          "pooled_missing": [
+            "A1-400",
+            "A1-800",
+            "A3-800",
+            "A4-400",
+            "A4-800",
+            "A5-400",
+            "A5-800",
+            "A10-e4"
+          ],
+          "passes": false,
+          "note": "INCOMPLETE: planned pooled arms missing; no selection claim"
+        },
+        "teacher": null,
+        "missing": [
+          "A1-400",
+          "A1-800",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800",
+          "A10-e4",
+          "A2-400",
+          "A2-800",
+          "A6-400",
+          "A6-800",
+          "A7fix-400",
+          "A7fix-800"
+        ],
+        "rows": [
+          {
+            "arm": "A3-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          }
+        ]
+      }
+    },
+    "pooled_subset": {
+      "accepted": false,
+      "reason": "/var/folders/4p/nl_tnfpn5r925vf3qxgdvl100000gn/T/tanaka-selector-1vv51z1c/pooled_subset/A3-400/A3-400: pooled arm covers 80 of 100 A0 rows; pooled arms need the full support"
+    },
+    "duplicate": {
+      "accepted": false,
+      "reason": "/var/folders/4p/nl_tnfpn5r925vf3qxgdvl100000gn/T/tanaka-selector-1vv51z1c/duplicate/A3-400: duplicate row keys"
+    },
+    "labels": {
+      "accepted": false,
+      "reason": "/var/folders/4p/nl_tnfpn5r925vf3qxgdvl100000gn/T/tanaka-selector-1vv51z1c/labels/A3-400: labels or folds differ from A0 on shared keys"
+    },
+    "folds": {
+      "accepted": false,
+      "reason": "/var/folders/4p/nl_tnfpn5r925vf3qxgdvl100000gn/T/tanaka-selector-1vv51z1c/folds/A3-400: labels or folds differ from A0 on shared keys"
+    },
+    "series": {
+      "accepted": true,
+      "result": {
+        "pooled": {
+          "selected": "A3-400",
+          "run": "A3-400",
+          "manifest": "98dd0d0c0200",
+          "acc": 1.0,
+          "leader": "A3-400",
+          "overlapping": [
+            "A3-400"
+          ],
+          "beats_A0": true,
+          "reaches_075": true,
+          "pooled_missing": [
+            "A1-400",
+            "A1-800",
+            "A3-800",
+            "A4-400",
+            "A4-800",
+            "A5-400",
+            "A5-800",
+            "A10-e4"
+          ],
+          "passes": false,
+          "note": "INCOMPLETE: planned pooled arms missing; no selection claim"
+        },
+        "teacher": null,
+        "missing": [
+          "A1-400",
+          "A1-800",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800",
+          "A10-e4",
+          "A2-400",
+          "A2-800",
+          "A6-400",
+          "A6-800",
+          "A7fix-400",
+          "A7fix-800"
+        ],
+        "rows": [
+          {
+            "arm": "A3-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 1
+            }
+          }
+        ]
+      }
+    },
+    "A6_wrong_team": {
+      "accepted": true,
+      "result": {
+        "pooled": null,
+        "teacher": {
+          "best": {
+            "cand": "A6-400",
+            "target": "teams ['1', '2', '3']",
+            "run": "A6-400",
+            "manifest": "98dd0d0c0200",
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          "goes_forward": true,
+          "candidates": 1
+        },
+        "missing": [
+          "A1-400",
+          "A1-800",
+          "A3-400",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800",
+          "A10-e4",
+          "A2-400",
+          "A2-800",
+          "A6-800",
+          "A7fix-400",
+          "A7fix-800"
+        ],
+        "rows": [
+          {
+            "arm": "A6-400",
+            "rows": 25,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          }
+        ]
+      }
+    },
+    "A7_partial": {
+      "accepted": true,
+      "result": {
+        "pooled": null,
+        "teacher": {
+          "best": {
+            "cand": "A7fix-400",
+            "target": "team 1 (top-rated)",
+            "run": "A7fix-400",
+            "manifest": "98dd0d0c0200",
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 2
+            }
+          },
+          "goes_forward": true,
+          "candidates": 1
+        },
+        "missing": [
+          "A1-400",
+          "A1-800",
+          "A3-400",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800",
+          "A10-e4",
+          "A2-400",
+          "A2-800",
+          "A6-400",
+          "A6-800",
+          "A7fix-800"
+        ],
+        "rows": [
+          {
+            "arm": "A7fix-400",
+            "rows": 20,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 2
+            }
+          }
+        ]
+      }
+    },
+    "A7_full_only": {
+      "accepted": true,
+      "result": {
+        "pooled": null,
+        "teacher": {
+          "best": {
+            "cand": "A7fix-400",
+            "target": "team 1 (top-rated)",
+            "run": "A7fix-400",
+            "manifest": "98dd0d0c0200",
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          "goes_forward": true,
+          "candidates": 1
+        },
+        "missing": [
+          "A1-400",
+          "A1-800",
+          "A3-400",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800",
+          "A10-e4",
+          "A2-400",
+          "A2-800",
+          "A6-400",
+          "A6-800",
+          "A7fix-800"
+        ],
+        "rows": [
+          {
+            "arm": "A7fix-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          }
+        ]
+      }
+    },
+    "A2_nan": {
+      "accepted": true,
+      "result": {
+        "pooled": null,
+        "teacher": {
+          "best": {
+            "cand": "A2-400[team 1]",
+            "target": "team 1",
+            "run": "A2-400",
+            "manifest": "98dd0d0c0200",
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 2
+            }
+          },
+          "goes_forward": true,
+          "candidates": 4
+        },
+        "missing": [
+          "A1-400",
+          "A1-800",
+          "A3-400",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800",
+          "A10-e4",
+          "A2-800",
+          "A6-400",
+          "A6-800",
+          "A7fix-400",
+          "A7fix-800"
+        ],
+        "rows": [
+          {
+            "arm": "A2-400",
+            "rows": 20,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 2
+            }
+          }
+        ]
+      }
+    },
+    "missing_teacher_inventory": {
+      "accepted": true,
+      "result": {
+        "pooled": {
+          "selected": "A10-e4",
+          "run": "A10-e4",
+          "manifest": "98dd0d0c0200",
+          "acc": 1.0,
+          "leader": "A1-400",
+          "overlapping": [
+            "A1-400",
+            "A1-800",
+            "A10-e4",
+            "A3-400",
+            "A3-800",
+            "A4-400",
+            "A4-800",
+            "A5-400",
+            "A5-800"
+          ],
+          "beats_A0": true,
+          "reaches_075": true,
+          "pooled_missing": [],
+          "passes": true
+        },
+        "teacher": null,
+        "missing": [
+          "A2-400",
+          "A2-800",
+          "A6-400",
+          "A6-800",
+          "A7fix-400",
+          "A7fix-800"
+        ],
+        "rows": [
+          {
+            "arm": "A1-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A1-800",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A10-e4",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A3-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A3-800",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A4-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A4-800",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A5-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A5-800",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          }
+        ]
+      }
+    },
+    "complete": {
+      "accepted": true,
+      "result": {
+        "pooled": {
+          "selected": "A10-e4",
+          "run": "A10-e4",
+          "manifest": "98dd0d0c0200",
+          "acc": 1.0,
+          "leader": "A1-400",
+          "overlapping": [
+            "A1-400",
+            "A1-800",
+            "A10-e4",
+            "A3-400",
+            "A3-800",
+            "A4-400",
+            "A4-800",
+            "A5-400",
+            "A5-800"
+          ],
+          "beats_A0": true,
+          "reaches_075": true,
+          "pooled_missing": [],
+          "passes": true
+        },
+        "teacher": {
+          "best": {
+            "cand": "A2-400[team 1]",
+            "target": "team 1",
+            "run": "A2-400",
+            "manifest": "98dd0d0c0200",
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          "goes_forward": true,
+          "candidates": 12
+        },
+        "missing": [],
+        "rows": [
+          {
+            "arm": "A1-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A1-800",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A10-e4",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A2-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A2-800",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A3-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A3-800",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A4-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A4-800",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A5-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A5-800",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A6-400",
+            "rows": 75,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A6-800",
+            "rows": 75,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A7fix-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          {
+            "arm": "A7fix-800",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          }
+        ]
+      }
+    },
+    "missing_teacher_inventory_with_A7": {
+      "accepted": true,
+      "result": {
+        "pooled": null,
+        "teacher": {
+          "best": {
+            "cand": "A7fix-400",
+            "target": "team 1 (top-rated)",
+            "run": "A7fix-400",
+            "manifest": "98dd0d0c0200",
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          },
+          "goes_forward": true,
+          "candidates": 1
+        },
+        "missing": [
+          "A1-400",
+          "A1-800",
+          "A3-400",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800",
+          "A10-e4",
+          "A2-400",
+          "A2-800",
+          "A6-400",
+          "A6-800",
+          "A7fix-800"
+        ],
+        "rows": [
+          {
+            "arm": "A7fix-400",
+            "rows": 100,
+            "vs_A0": {
+              "diff": 1.0,
+              "p05": 1.0,
+              "p95": 1.0,
+              "series": 10
+            }
+          }
+        ]
+      }
+    }
+  },
+  "development": {
+    "A3-u": {
+      "rows": 189630,
+      "frl": 188250,
+      "games": 97,
+      "series": 49,
+      "teachers": 10,
+      "maps": 14,
+      "registry_sha": "8807488ce4a3d735a3b61dcae023435ca08a6baa4d2bbca81da0c4c2a09a52bc",
+      "rows_sha": "a0b1ea2e2b5aceef9881742bae5f60e3b5c2fcf680db858634d8019fb217fc16",
+      "metrics": {
+        "A3-400": {
+          "accuracy": 0.714464807436919,
+          "ci90": [
+            0.7061384290635248,
+            0.7238797651776142
+          ],
+          "published": {
+            "n": 188250,
+            "acc": 0.7145,
+            "majority": 0.4245,
+            "majority_class": "F"
+          },
+          "pred_sha": "523bf94a4e2cce23ca43672dfdc4f1a2ed5d9eeec8653f83d9fb526c31ba116f"
+        },
+        "A3-800": {
+          "accuracy": 0.7113784860557769,
+          "ci90": [
+            0.7034062916485538,
+            0.7199820919188712
+          ],
+          "published": {
+            "n": 188250,
+            "acc": 0.7114,
+            "majority": 0.4245,
+            "majority_class": "F"
+          },
+          "pred_sha": "5e92c86df1fa0663ba4c9f68154659cc986f232052c8cc74d0e5f1675542b089"
+        }
+      }
+    },
+    "A10-u": {
+      "rows": 189630,
+      "frl": 188250,
+      "games": 97,
+      "series": 49,
+      "teachers": 10,
+      "maps": 14,
+      "registry_sha": "3e23db4a829473e022faa3843871e55967ee7a4cb728be80824a379462a3c5fb",
+      "rows_sha": "a0b1ea2e2b5aceef9881742bae5f60e3b5c2fcf680db858634d8019fb217fc16",
+      "metrics": {
+        "A10-e4": {
+          "accuracy": 0.6726852589641434,
+          "ci90": [
+            0.6640578127964558,
+            0.6814837789183761
+          ],
+          "published": {
+            "n": 188250,
+            "acc": 0.6727,
+            "majority": 0.4245,
+            "majority_class": "F"
+          },
+          "pred_sha": "4b57692875200127a6709f7b5080167a548a470b1450cd57b1909ae6fd430fa5"
+        }
+      }
+    }
+  },
+  "paired": {
+    "A3-400 minus A10-e4": {
+      "delta": 0.04177954847277556,
+      "ci90": [
+        0.037898106512389916,
+        0.04627208502223478
+      ]
+    },
+    "A3-800 minus A3-400": {
+      "delta": -0.0030863213811420983,
+      "ci90": [
+        -0.004366519768251928,
+        -0.0018576201714806295
+      ]
+    }
+  },
+  "p7": {
+    "source_G1_cpu_us_per_decision": 383.48551770148015,
+    "decisions_per_game_G1": 712.9541547277937,
+    "rollout_hours_at_E2": 12.0,
+    "four_epoch_update_hours_at_8000_samples_s_core_8cores": 2.0833333333333335,
+    "h2h_200_independent_decisive_games_P_atleast_110": {
+      "0.5": 0.08948201976662579,
+      "0.55": 0.5292557523222285,
+      "0.6": 0.9345098682915695
+    },
+    "exact_central90_at_110_of_200": [
+      0.4893697937073178,
+      0.6095104496731304
+    ]
+  }
+}
