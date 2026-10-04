@@ -11,6 +11,10 @@ Updated 2026-10-04 10:52Z. State: **R1 fitted on a provisional split. V0b (logis
   files are new files only — `tools/hinata/`, `docs/learning/proposals/P-hinata-*`, `claude/hinata-status.md` — committed by
   the keeper. Scratch and run outputs: `build/hinata/` (never committed).
 
+## Schedule
+- Scheduled task "Hinata Learner unit (2-hourly, :35)" (trig_011nsKjZh633yiPiJE5uAndr), every 2 h at :35 UTC from 12:35Z. Fresh session per run; state = this file. Lock: build/hinata/unit.lock.
+- Last BOARD line read: 10:52 UTC hinata (own R1 result).
+
 ## Ladder (Learner rungs)
 | Rung | State |
 |---|---|
