@@ -75,6 +75,7 @@ def run(data, seed, keep=False):
         if k >= len(acts[did]):
             return b'MOVE\nENDTURN\n'
         return reply_text(acts[did][k][0])
+    from unswbc.engine import EngineModule
     E = EngineModule()
     redacted = not any(l.startswith('TILE ') and not l.endswith(' 0 0') for l in m.text.splitlines())
     mtext = true_map(m.text) if redacted else m.text
