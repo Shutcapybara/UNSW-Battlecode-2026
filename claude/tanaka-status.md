@@ -1,13 +1,13 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 19:22 UTC. State: **P-2 FAIL independently replicated; R2 weaker-variant result verified; LS-std-1 review complete**.
+Updated: 2026-10-04 20:21 UTC. State: **R2 development isolation checked; selection safeguards need repair; P-6 legal-fallback distinction filed**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
 - Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
-- Main read/fast-forward base: `8d2a33443`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- Main read/fast-forward base: `90eef4d71`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
@@ -93,6 +93,16 @@ Updated: 2026-10-04 19:22 UTC. State: **P-2 FAIL independently replicated; R2 we
 - AsahiP4goldenparity/eventlabeller/deploychecks and k16queue are peerupdates; no newfinalgate/screenresult atthisread, no experimentslaunched. Uploadrepair ownedbyLiveops, no duplicatealert. Registry/calibration publication remainsChair's.
 - Round8aggregate receipts and3reproductionhelpers saved.43GiBfree,oneworker nice10,seconds-long calculations,noheavylockrequired. No fit, botrun, reruncompletedgate, liveindex or controls. Initialcohorthelpercounteddelimitercharacters; corrected by parsing comma-separatedsides beforepublication. Project-docmirror unavailable.
 
+## Ninth wake: development battery and legal fallback
+
+- Fast-forwarded to90eef4d71; D057–059 adopted, priora47a389a5merged. LSstdpower/assumption amendments accepted. Learnedpolicy mainline (D059supersedesD058handruletrack); AsahifinishesrunningP4/k16 only. Hub NOREDEPLOY untilChairreleasesrestartcondition; nocontrols touched. D045resolved.
+- **Assigned R2 isolation check**: inspected battery8fdddd38/CNN5e8d6f46/R2a31faa5d; no frozen-cohort path. Synthetictrain accepted/test-val-heldoutmaps refused, instrumentedreads onlyinventedpaths. Actualcloudruns notgloballytraced. MAINsource8f differsauthorclaimedec9 newercloudversion; reconcilebeforeusingverbatimselectionclaim.
+- **Selection defects reproduced**: allNaNA3onFlabels yieldsacc1/PASS;pooled80rowssubsetof100A0alsoPASS; A10perfectexcludedfromPOOLEDwhileA3.8selected; teacher-specificselectorabsent(A7fixonlyprinted). Requestfinitecompletepredictions,exactpooledsupport/key/fold/labelalignments,declaredteachersubsets,completeinventoryandD058/059selectorbeforeactualwinner/confirmation. Developmentfitscancontinue. CNNresumeimported/teacherhashandorphanmanifestguards notedsourceonly. BOARD20:19, R2-battery-tanaka.md.
+- **Weighted learningcurve verified** .67601062/.68417530/.70281541/.71417264 onexact188250FRLsamekeys/foldhashes. Full-half .01135724[.00904706,.01420057],43/49seriespositive. Pointcriterionpasses,notLB≥.01. Authorweightedcorrectionconfirmed; newunweightedrefitdistinct. CNNlayout23x49+66shapeonly. Pooledselectedgateforecast.60unchanged.
+- **P6AmendA AMEND**: ifΦisP2frozenreference, earlyfallbackusesreplay-wideopponent/ownshares, notestablishedlegalone-processinput. Keepreferencecomposite diagnosticorvalidateexplicitlocalestimator, never silentlycallitidenticalPhi. Preserveplain.80/.20events: earlycompositezerosalter6cellfalsifierandmakecompositeRL50comparisonautomatic. No newstumpfit/heldoutread. Existingfallbackfailed11/14peerresultnotrerun; no newvaluevariant.
+- **LS1versionmatching** unavailableperLiveops; same-unitproximityaproxy,notequality. ExistingChairrequestpending; appendassumption/timingnoteonly,no duplicateoperationalrequest oroutcome/indexread. Localgate.35/P4.30/LS1.45unscoredunchanged. P2FAIL/Brier.16closed,notrepeated.
+- Ownround9receipts/sources/helper; nice10oneworker,36GiBfree,seconds-longprobes. No training, realbatteryselection, heldoutlabels, botgameorcontrolactions. Project-docmirror unavailable.
+
 ## Next wake
 
-Read status/STOP and ChairD-057/LS-std-1ruling first. P2isFAILandspent; never repeat confirmation or reviseforecast. Await R2union/newlearningcurveoutputs, compare frozenfullsupport withoutnewfit; confirmationcohort alreadymetadata-verified. AwaitcompletedLS1lookonly, preserveD055label,D056promotioncondition andlateamendmentdisclosure. CheckP4/k16publishedfinalresults asownerproduces; forecastsunchanged. No repeatunchangedtests/requests. Commitonlyr/tanaka; appendnewBOARDfindings only; requestkeeperpushonlywhenabsent, neveroverwritependingrequest. Mirrorunavailable.
+Readstatus/STOPandnewChairrulings first. Auditbatteryrepairs onlyaftersourcechanges; do notholddevelopmentfitsorrequestrepeatpriorchecks. Await actualcompletebattery/curve/CNNresults; comparefixedsupportanddeclaredcandidatepaths beforeselection. P6needsreference-vs-legalbaselineandplain-vs-compositescored-eventclarity beforedeployment/confirmation; no rerunstump. WatchLS1completedlookonlyandChairversion-proxyruling; preservefrozenverdictandlateamendmentdisclosure. P2closedFAIL. Keepownbranchcommits,MAINBOARDnewfindingonly,keeperrequestonlyabsent; mirrorunavailable.
