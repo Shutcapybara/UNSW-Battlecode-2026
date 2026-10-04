@@ -58,7 +58,8 @@ pushes `r/shenzhen`.
 | H-SZ48 | one lexicographic queen step (slack > static room > plan) | **0.35** (unit 22: total +15 % all maps up, alive 1/18 < bar 3, seals 3 → 6) | — | — | best queen-step component |
 | H-SZ50 | global E1 (no map gate) is the legal cage fix | **0.65** (unit 24 sim: Schooltime queen 6/6 vs 4/6 cage, 6/6 vs 3/6 open-4; wins 5–1 each) | queen ≤ 9/16 per variant or pool cost < −10 on LIVE_MAPS_M2 | E1 ungated screen | Asahi / Rome |
 | H-SZ52 | E1 cuts pool invalid deaths ≥ 50 % | **0.15** (unit 25: Slithery −9 %) | — | — | — |
-| H-SZ53 | E1 on production splits only (escape/sealed splits keep the real limit) | posted 0.45 (unit 25) | Slithery cost not ≤ −3 % or Schooltime queen < 5/6 | 12 sim games | this lane next |
+| H-SZ53 | E1 on production splits only (E1p) | **0.6** (unit 26: Schooltime queen 6/6, Slithery +19 %, n = 6 each) | queen < 12/16 per variant or pool < −3 on LIVE_MAPS_M2 | E1p screen | Asahi |
+| H-SZ54 | children born at headroom 1 live shorter / eat less | posted 0.35 (unit 26) | same median life and meals | log pass over sim replays | this lane |
 | H-SZ51 | class-B maps: live win tracks total share more than queen survival | posted 0.4 (unit 23) | queen alive outweighs total share in store logistic | ~2,000 ranked post-m2 | Data / Learner |
 | H-SZ49 | learned queen block: strike slack, static room, unit headroom | posted 0.3 (unit 21) | AUC gain < +0.02 r100–250 | store LOMO | Learner |
 | H-SZ47 | field queens cross fewer narrow gates | posted 0.35 (unit 20) | equal or more crossings | store ~200 games | Data |
@@ -127,10 +128,11 @@ pushes `r/shenzhen`.
 - **Unit 23 (4 Oct 16:05Z – 16:35Z).** Pushed 8b6f34348. Probe Y (X + ally-head term): alive 0/18, total −10 %, Islands −48 % → H-SZ43 sim form refuted; step rules plateaued. Posted the P-4 sim prior (m0 > m1). H-SZ51.
 - **Unit 24 (4 Oct 16:51Z – 17:20Z).** Pushed 83c225c37. Ungated E1 sim on both Schooltime variants + UNSW (18 games): queen 6/6 on both variants, wins 5–1. Fixed szqdeath/szleak name parsing for map names with underscores. H-SZ50 → 0.65, H-SZ52.
 - **Unit 25 (4 Oct 17:37Z – 18:05Z).** Push of unit 24 requested. E1 cost check: Portals/Trauma identical (cap never binds), Slithery −7 % total. H-SZ52 → 0.15; H-SZ53.
+- **Unit 26 (4 Oct 18:18Z – 18:45Z).** Unit 25 pushed (a47dc7d2f). E1p sim (12 games): queen 6/6, Slithery +19 %; recommended C+D+E1p as the screen form. H-SZ54.
 
 ## Next unit
 
-0. H-SZ53 probe (E1 on production splits only) on Schooltime cage + Slithery, 12 sim games; read P-4 m0 when Asahi posts it.
+0. E1p on the three open maps + Schooltime open-4 (18 games) to firm up size; H-SZ54 log pass; read P-4 m0 when posted.
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
