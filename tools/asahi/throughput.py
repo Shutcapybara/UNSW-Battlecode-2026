@@ -13,7 +13,7 @@ Reports decisions per second per worker, total decisions per hour, and games per
 """
 from __future__ import annotations
 
-import argparse, json, os, random, sys, time
+import argparse, json, os, random, sys, time, traceback
 from multiprocessing import Pool
 from pathlib import Path
 
@@ -61,6 +61,16 @@ class Net:
 
 
 def worker(args):
+    """Returns plain numbers only. Any exception (including one the engine re-raises from a callback as a wasmtime
+    trap, which holds ctypes pointers and cannot cross processes: job 172) comes back as a traceback string."""
+    try:
+        return _worker(args)
+    except BaseException:
+        mode, seconds, wid = args
+        return dict(mode=mode, worker=wid, decisions=0, games=0, seconds=0.0, error=traceback.format_exc()[-4000:])
+
+
+def _worker(args):
     mode, seconds, wid = args
     import numpy as np
     import block as B
@@ -71,17 +81,31 @@ def worker(args):
     rng = random.Random(1000 + wid)
     t_end = time.time() + seconds
     decisions = games = 0
+    cb_err = []
     t0 = time.time()
-    while time.time() < t_end:
+    while games == 0 or time.time() < t_end:      # at least one game (the in-process smoke uses seconds = 0)
         m = rng.choice(MAPS)
         mb = (ROOT / 'maps/live' / f'{m}.map').read_bytes()
         enc = {}
 
         def spawn(d, s):
+            try:
+                _spawn(d, s)
+            except Exception:
+                cb_err.append(traceback.format_exc()[-4000:])
+
+        def reply(d, raw):
+            try:
+                return _reply(d, raw)
+            except Exception:
+                cb_err.append(traceback.format_exc()[-4000:])
+                return b'ENDTURN\n'
+
+        def _spawn(d, s):
             if mode != 'engine':
                 enc[d] = E.Encoder(B.parse_spawn(s.decode() if isinstance(s, bytes) else s))
 
-        def reply(d, raw):
+        def _reply(d, raw):
             nonlocal decisions
             if mode == 'engine':
                 # facing is on the second line of the block: "DIR x"
@@ -109,8 +133,10 @@ def worker(args):
 
         eng.run(mb, reply, bot_spawn=spawn, debug=0, seed=rng.randrange(1, 2 ** 31))
         games += 1
+        if cb_err:
+            raise RuntimeError(f'callback failed on {m}:\n' + cb_err[0])
     dt = time.time() - t0
-    return dict(mode=mode, worker=wid, decisions=decisions, games=games, seconds=dt)
+    return dict(mode=mode, worker=wid, decisions=int(decisions), games=int(games), seconds=float(dt))
 
 
 def main():
@@ -120,12 +146,24 @@ def main():
     a = ap.parse_args()
     out = {}
     for mode in a.modes.split(','):
+        smoke = worker((mode, 0, -1))      # one game in-process first: a failure prints its full traceback here
+        print('smoke', mode, json.dumps(smoke), flush=True)
+        if smoke.get('error'):
+            out[mode] = dict(error=smoke['error'])
+            continue
         with Pool(a.workers) as p:
             rows = p.map(worker, [(mode, a.seconds, i) for i in range(a.workers)])
+        errs = [r['error'] for r in rows if r.get('error')]
+        if errs:
+            print(mode, 'worker errors', len(errs), errs[0], flush=True)
+        rows = [r for r in rows if not r.get('error')]
+        if not rows:
+            out[mode] = dict(error=errs[0])
+            continue
         dec = sum(r['decisions'] for r in rows); sec = max(r['seconds'] for r in rows)
         g = sum(r['games'] for r in rows)
         out[mode] = dict(workers=a.workers, seconds=round(sec, 1), decisions=dec, games=g,
-                         per_worker_per_s=round(dec / sec / a.workers, 1), per_hour=round(dec / sec * 3600),
+                         per_worker_per_s=round(dec / sec / len(rows), 1), workers_ok=len(rows), smoke=smoke, per_hour=round(dec / sec * 3600),
                          games_per_hour=round(g / sec * 3600, 1), rows=rows)
         print(mode, json.dumps({k: v for k, v in out[mode].items() if k != 'rows'}), flush=True)
     import platform
