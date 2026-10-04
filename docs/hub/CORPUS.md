@@ -50,7 +50,7 @@ the Mac VM; Chongqing's run should say where it runs.
 
 ## Previous publication (antioch, 1 Oct 15:40Z) — superseded, kept for the record
 
-As of **2026-10-04 08:20Z** (index ~121,000 games, collector running on the Mac). Store built **on the Mac** (Cowork VM,
+As of **2026-10-04 09:25Z** (index ~121,000 games, collector running on the Mac). Store built **on the Mac** (Cowork VM,
 `wt-chongqing`, `build/` symlinked to the main checkout) — the desktop copy under `wt-antioch` is stale from 1 Oct 20:50Z.
 Republished after every build. **No API calls from this lineage; GPT's analyst also pulls replays this wave — the hub
 collector is the only writer of `public_replays/corpus/`.**

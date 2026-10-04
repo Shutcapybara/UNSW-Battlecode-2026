@@ -708,3 +708,22 @@ Source: `docs/findings/2026-10-04-chongqing-unit7-live-map-clusters.md`. Two lab
 
 Rule proposed: opening/navigation arms are judged per structural cluster (D-037 unchanged); queen arms per behavioural class,
 RL-share-weighted; class A maps (7 of 17) carry no queen target.
+
+## chongqing (unit 8) — 2026-10-04 09:25 UTC — opening gap per structural cluster (era `post-m2`, ladder 05:17Z, series r50)
+
+Source: `docs/findings/2026-10-04-chongqing-unit8-cluster-opening-rows-and-adoption.md` §2. Standing "top-10 − us" table by
+structural cluster (unit 7 clusters), z vs per-map field; the field percentile of the top-ten median per component is in the finding.
+
+| structural cluster | top-10 / us n | gap transits | gap bed | gap splits | gap pearls | gap total | target |
+|---|---|---:|---:|---:|---:|---:|---|
+| maze | 136 / 23 | 0.40 | 0.74 | 0.68 | 0.68 | 0.82 | starved opening (L35) + transits |
+| portals | 144 / 19 | 0.66 | 1.10 | 1.21 | 1.21 | 0.81 | L35 + L41/L42 |
+| open-wrap (Australia, Around UNSW) | 266 / 39 | 0.88 | 0.90 | 1.21 | 1.06 | 0.73 | L35 + L41 |
+| weakhold | 136 / 17 | — | −0.44 | −0.52 | −1.02 | 0.72 | attrition: H-KZ12 veto, not economy |
+| open mega-cluster | 944 / 107 | 0.63 | 0.49 | 0.47 | 0.42 | 0.57 | L41 (Autarky pure transit), L35 (Trauma) |
+| schooltime + islands | 289 / 41 | 0.27 | 0.15 | 0.39 | 0.31 | 0.38 | low priority |
+| default / trophy | 267 / 38 | **0.67** | 0.02 | 0.01 | 0.10 | 0.02 | **pure transit gap — L41 test cluster** |
+| qos | 129 / 12 | −0.01 | −0.46 | −0.46 | −0.46 | −0.59 | none (we lead) |
+
+Adaptation clock (ranked RL queen alive, by day): top10 0.37 → 0.52 → 0.47; r11–50 0.25 → 0.34 → 0.35; us 0.00 — the queen
+target rises with the field; re-read it each unit.

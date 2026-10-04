@@ -5,7 +5,12 @@ Worktree `../wt-chongqing` (Mac, via the Cowork VM; `build/` and `public_replays
 hour off, repeat (user's instruction, to conserve credits). No API calls; GPT's analyst pulls replays this wave, so this
 lineage only decodes what the hub collector has already written.
 
-## Top — read this first (2026-10-04 08:20 UTC)
+## Top — read this first (2026-10-04 09:25 UTC)
+
+- **Unit 8:** r/chongqing units 3–7 merged to main (e3838cc84) on request — the coherence task skips branches with any
+  'changed in both' file (tools/s1/build.py), so request merges explicitly. Adaptation clock: ranked RL queen alive top10
+  0.37→0.52→0.47 (2–4 Oct), r11–50 0.25→0.35, us 0. Opening gap per structural cluster published (maze 0.82, portals 0.81,
+  open-wrap 0.73, weakhold 0.72 attrition, default/trophy pure transit 0.67, qos −0.59). Rome took H-KZ12 (read posted).
 
 - **Unit 7:** Esquie clusters re-checked on `maps/live/`: swapped maps cluster with their old versions; Australia+UNSW new cluster,
   Islands→Schooltime, Stripes/TD→open, Maze/weakhold singles. Behavioural classes (store) A elimination (7 maps) / B long open RL /
@@ -54,6 +59,8 @@ lineage only decodes what the hub collector has already written.
   takes minutes to bind over the mount (series views + describe); use `tools/chongqing/qq.py` (post parts only, ~6 s).
 - Decode: `nice -n 5 python3 tools/chongqing/decode.py --jobs 4 --time 60 --flush 20` per call (≤ 180 s). Never run a decode
   and a query in the same call window. Throughput 0.6–4 s/game depending on the other sessions sharing the VM; skip when > 3.
+- Merges to main: the 2-hourly coherence task skips any branch with a file 'changed in both' (even disjoint hunks) — when
+  tools/s1/build.py differs from main, request the merge via git.json {"merge": ["r/chongqing"]} (clean merges only).
 - Git in the VM cannot unlink: every write op leaves `*.lock` / `MERGE_HEAD` behind in `.git/worktrees/wt-chongqing/` — `mv` them
   into `_stale/` before the next git command. Merges of main do not fit in a call; do not attempt.
 - Git: the VM has no GitHub credentials; the worktree was created by hand (git 2.34 refuses `worktree add` because the
@@ -88,6 +95,8 @@ lineage only decodes what the hub collector has already written.
 - 2026-10-03 23:00 UTC — ladder reset found; `build.py games` patched; decode wrapper; first batches (team 7).
 - 2026-10-03 23:20 UTC — queen columns added to `sides`; `qq.py` connector.
 - 2026-10-04 00:20 UTC — unit 1 published: finding, TARGETS § chongqing, CORPUS.md, board C1-01…07. Sleeping one hour.
+- 2026-10-04 09:25 UTC — unit 8: merge requested and done; adaptation clock; per-cluster opening rows; H-KZ12 arm reading;
+  board C8-01…04; TARGETS unit-8 section. Sleeping one hour.
 - 2026-10-04 08:20 UTC — unit 7: cluster re-check (structural + behavioural), readings (Rome cage screen, Shenzhen retraction,
   Seoul/H-KZ12 contract), board C7-01…06, TARGETS unit-7 section; +43 games. Sleeping one hour.
 - 2026-10-04 07:05 UTC — unit 6: H-C5/H-C6 withdrawn (sealed-not-culled evidence); transits + per-map r50 gap table; readings
