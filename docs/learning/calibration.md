@@ -59,11 +59,14 @@ fixed in D-055.
 | P-2 | D-052 §A: one confirmation on the held-out maps | **fail** (elimination r25 −0.0099 [−0.0152, −0.0049]) | Tanaka | 0.40 | 0.16 |
 | P-2 | same | fail | Sugawara | 0.50 | 0.25 |
 | P-2 | same | fail | Nishinoya | 0.50 | 0.25 |
+| P-4 | D-054 §C: support at m = 0 (strike-hazard ratio < 0.90 with the guards) | **refuted** (1.069 [0.685, 1.788]) | Sugawara | 0.35 | 0.1225 |
+| P-4 | same | refuted | Tanaka | 0.30 | 0.09 |
+| P-4 | same | refuted | Nishinoya | 0.45 | 0.2025 |
 
 ## Running means
 
 | Seat | Cards scored | Mean Brier |
 |---|---|---|
-| Tanaka | 1 | 0.16 |
-| Sugawara | 1 | 0.25 |
-| Nishinoya | 1 | 0.25 |
+| Tanaka | 2 | 0.125 |
+| Sugawara | 2 | 0.186 |
+| Nishinoya | 2 | 0.226 |

@@ -1975,3 +1975,76 @@ redeploy ban of D-057 §A stands until the lead restarts it inside a restart loo
 - Which current ladder team is Stockfish: no team carries that name in the 19:31Z ladder snapshot.
 - Whether the current top five are networks. Their styles differ (deliberate culls by invalid command or by
   suicide, queen keeping), which fits learned policies and also fits hand design.
+
+## D-060 — P-4 refuted; LS-1 pairing proxy; battery selector held for audit; three items for the lead (4 Oct 2026 20:30Z, Chair: Ushijima)
+
+### A. State at 20:26Z
+
+Hub heartbeat fresh (pid 94451 since about 19:46Z), collector writing, Asahi's daemon running the k = 16 panels on
+seeds 2–3. LS-1: 60 of 204 games requested and verified, no runtime fault.
+
+### B. P-4 (queen reach veto): refuted, closed
+
+- Asahi's screen (seed 1, pool 272 and gen 464 per arm, none missing; labeller and readout frozen before the parent
+  was labelled): **strike-hazard ratio at m = 0 is 1.069 [0.685, 1.788]**, against a frozen bar of below 0.90.
+  Pool Δwin −1.84 points [−4.41, +0.74] at m = 0 and −3.31 [−6.99, +0.37] at m = 1; gen economy −2.00 [−3.82, −0.16].
+- It does not meet D-055 §A (pool point estimate below 0). It leaves the screen queue. No further dose.
+- **Brier** for P(support at m = 0): Sugawara 0.35 → 0.1225; Tanaka 0.30 → 0.09; Nishinoya 0.45 → 0.2025.
+- Kept as an observation for the learned track, not as a hand rule (D-059): masking the queen's own head-on moves
+  cut her all-cause hazard to 0.703 [0.662, 0.746] of the parent's (queen-initiated head-on deaths 225 → 53) with no
+  win gain. The queen still reaches the round limit alive in 4 of 736 fixtures.
+
+### C. LS-1
+
+- **Pairing (D-056 §C.2), amended:** the server exposes no opponent submission id (Daichi 19:56Z), so the rule
+  cannot be checked. Each cell's two games are requested seconds apart in one unit. They count as a matched pair
+  **by that proxy**, labelled as a proxy in the report; job rows keep the null ids and the request times. Tanaka's
+  note stands: this is version stability assumed, not observed.
+- A request cannot fix the game seed (Daichi: the API takes team, ranked flag and maps only; 87 of 87 seeds
+  distinct). Live seed noise stays in every screen (D-057 §D).
+- Submission 16979 played no ranked game while it was active (17:33–17:41Z). Nothing to exclude.
+- Pace: 19 of 19 deferrals were the field allowance (25 available, reserve 10, unit 20). About 20 games an hour;
+  the 02:15Z stop will land near 180 games.
+
+### D. Hub changes: built, merged, not deployed
+
+Daichi's `submit_check` fix (reads the active id before the POST, refuses in the blackout or with a ranked series in
+flight, restores in `finally`; 5 tests) and the reserve change (10 → 5) are on `r/daichi` c49377be3 and merged
+to main by this unit. **No redeploy** until the lead confirms that the hub runs inside the restart loop (H11).
+
+### E. R2 battery
+
+- Correction (Hinata): the 0.714 of D-057 §C came from a teacher-weighted fit. The battery's A3 is the unweighted
+  refit; 0.714 stays on record as the weighted figure (Tanaka reproduced the weighted curve to eight digits).
+- A10 was fixed before any fit: two 3×3 convolutions of 32 channels on the facing-relative 7×7×23 window, 66
+  scalars beside it, one hidden layer of 64, four outputs; 120,804 parameters, 118 KiB at 8 bits, about 0.88 M
+  multiply-adds per decision.
+- **Selector held for audit.** Tanaka found that `r2_battery.py` (main, sha 8fdddd38…) passes an arm whose
+  predictions are all NaN, accepts a pooled arm scored on a subset of A0's rows, leaves A10 out of the pooled set,
+  and prints no teacher-specific selection. Fitting continues. **No selection and no confirmation until Tanaka
+  passes the selector** on: finite and complete predictions; identical rows, folds and labels across pooled arms;
+  declared row subsets for teacher arms; the full arm inventory; D-058 §C.4 and D-059 §B.2 implemented.
+- **Blocked on Data:** arms A0, A1, A2 and A4 to A7 need HB-1's three scores and feature vector per dev120 row.
+  Kageyama has posted nothing since 18:50Z and `r/kageyama` has not moved since 16:08Z; its unit-5 files sit
+  uncommitted in its staging tree (H13).
+
+### F. P-6 (V-legal)
+
+- Hinata's regime stump reached 11 of 14 maps, below its own bar of 12; by its declared rule the composite falls
+  back to Φ on every map before round 150. Recorded; not re-run.
+- Tanaka is upheld: Φ is computed from replay-wide totals, so "Φ before r150" is not deployable from one dragon's
+  view. The composite is a privileged-reference diagnostic. Plain V-legal against V0b and Φ, and the original
+  scored events (D-055 §F), stay as they were. P-6's fits wait behind the battery.
+
+### G. Precedent table (D-058 §B)
+
+Nishinoya's cross-check (unaudited) finds the Hungry Geese, Lux Season 1 and Lux Season 2 rows consistent with
+their sources. Sugawara's source check stays due 21:30Z. D-059 already replaced the conclusion drawn from the table
+about hand rules.
+
+### H. For the lead
+
+- H11 (asked 19:30Z): confirm the hub runs in the restart loop.
+- H12: the Cowork VM's session disk is full (9.8 GB, 0 free, about 80 session folders). Lanes report failed
+  installs; fresh scheduled runs may fail to start.
+- H13: Kageyama's session needs a nudge; it is the battery's critical path.

@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 19:43Z (unit 9c). Next self-wake about 20:25Z. Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 20:30Z (unit 10). Next self-wake about 21:30Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,9 @@ State: ACTIVE. Updated 4 Oct 2026 19:43Z (unit 9c). Next self-wake about 20:25Z.
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-060:** the queen reach veto (P-4) is refuted and closed; LS-1 pairs count by a same-unit proxy (the server
+  gives no opponent submission id; seeds cannot be fixed); the hub fixes are merged but not deployed; the battery's
+  selector is held for Tanaka's audit and its HB-1 arms wait on Kageyama, who has been silent since 18:50Z.
 - **D-059 (the lead's report): the top teams here use networks** (Stockfish: MLPs, maybe CNNs; Heartbreaker: a
   CNN with two LSTM layers that did not help). This contest is the nearest precedent. Hand rules are temporary again
   (D-058 §C.2 withdrawn). Battery arm A10 (a small CNN on the window) added; self-play gets a scoping card (P-7,
@@ -68,12 +71,12 @@ State: ACTIVE. Updated 4 Oct 2026 19:43Z (unit 9c). Next self-wake about 20:25Z.
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-2 (R1): **failed** its confirmation, closed. P-5 (R2): encoder-only 0.714; battery A0–A5 next. P-6 (V-legal): amended, after R2. P-4 (queen reach veto): rebuilt after a parity fault, seed-1 panels running |
+| Proposal cards | P-2: failed, closed. P-4: **refuted, closed**. P-5 (R2): battery A0–A10; selector under audit; blocked on Kageyama. P-6: behind the battery. P-7 (self-play scoping): Sugawara, due 22:00Z |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | daemon back 19:16Z after the restart; P-4 off-parity re-run, then m = 0 and m = 1 panels, labels, card and curve; then parent and k = 16 on seeds 2–3. Light learn jobs may jump the queue (D-057 §F) |
+| Evaluator queue (Asahi) | P-4 screen done (refuted). Running: k = 16 on seeds 2–3, then the Weakhold capture, the gate card and the seed-1 card. No new hand-rule work after that (D-059) |
 | Nominee (full gate) | `asahi-05-kz12-k16` (REG-002), gate on seeds 2–3, not yet run |
-| Uploaded, inactive | `asahi-05-kz12-k16` = submission 16979. No upload until the `submit_check` fix is deployed, and no redeploy while the hub runs in a terminal (D-057 §A) |
-| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 40 of 204 games requested, 20 verified at 19:21Z; about 20 games an hour until the reserve change is deployed; stop 02:15Z; first look at 102 pairs or the stop (at least 60 pairs). Likely underpowered (D-057 §D): the local gate is the main evidence for k = 16 |
+| Uploaded, inactive | `asahi-05-kz12-k16` = submission 16979. The `submit_check` fix is on main, not deployed; no redeploy until the lead confirms the hub loop (H11) |
+| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 60 of 204 games at 20:26Z, about 20 an hour, stop 02:15Z (near 180 games); first look at 102 pairs or the stop; pairs by same-unit proxy. Queue after it: the first R2 bot. TD-1 after the first look |
 
 ## Facts settled this unit
 
@@ -92,10 +95,10 @@ State: ACTIVE. Updated 4 Oct 2026 19:43Z (unit 9c). Next self-wake about 20:25Z.
 | Council, auditor | Tanaka (GPT, Codex, hourly heartbeat), `r/tanaka` | working: 17:55Z P-2 scorer PASS; 17:56Z LS-1 review; 17:59Z R2 support verified |
 | Council, mechanism | Sugawara (Claude), hourly at :25 | working: 17:29Z LS-1 objective amendment (upheld in part, D-056 §C) |
 | Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: 17:52Z replication of the LS-1 amendment |
-| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | cohort frozen (115 games); extractor built; full rows building in the cloud (about 23:30Z); unit-5 commit pending after the restart (wake 19:48Z); owes HB-1 feature vectors for the battery |
+| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | **silent since 18:50Z**; unit-5 files uncommitted in `build/_stage_kageyama/tree`; owes HB-1 vectors for the battery (critical path) and the full rows (cloud build, about 23:30Z). Lead asked to nudge (H13) |
 | Learner | Hinata (Claude), Cowork VM; hourly task at :35 | P-2 confirmation failed; R2 encoder-only fit 0.714; battery next |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; hourly self-wake | working; daemon restarted 19:16Z |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM | task was suspended by the restart, re-enabled 19:23Z, next run 19:50Z; owes the `submit_check` fix (no redeploy yet), LS-1 looks, TD-1 |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | ran 19:50Z: fix and reserve change built and merged, not deployed; LS-1 pace and answers posted |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
 
@@ -111,7 +114,9 @@ State: ACTIVE. Updated 4 Oct 2026 19:43Z (unit 9c). Next self-wake about 20:25Z.
 | H8 | Native execution for the Learner | replaced: jobs go through Asahi's native job daemon (D-050 §8); the lead is asked only if the daemon reload fails |
 | H9 | Windows quota runner | closed: the lead does not know of one; replaced by Daichi's ledger check (D-050 §4) |
 | H10 | Wake the Asahi (Evaluator) session | closed: Asahi working since about 17:15Z |
-| H11 | Run the hub under a restart loop (or repair its launchd agent): a redeploy exits the hub and nothing relaunches it in a plain terminal | asked 19:3xZ |
+| H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | asked 19:30Z; the hub process changed at 19:46Z, not confirmed |
+| H12 | The Cowork VM session disk is full (9.8 GB, 0 free, about 80 session folders); lanes report failed installs | asked 20:3xZ |
+| H13 | Nudge Kageyama's session: silent since 18:50Z and on the battery's critical path | asked 20:3xZ |
 
 ## Next three decisions
 
@@ -124,8 +129,8 @@ Waiting on the lead: the hub under a restart loop or launchd, so that redeploys 
 
 ## Cursor
 
-Last BOARD line read: line 880, `[2026-10-04 19:19 UTC council:tanaka → chair, …] Assigned LS-std-1 size/power
-review …` (main tree). Own D-057 lines follow.
+Last BOARD line read: line 908, `[2026-10-04 20:22 UTC council:tanaka → chair, …] Round9 committed 05dc3ae1d …`
+(main tree). Own D-060 lines follow.
 
 ## Open flags
 
