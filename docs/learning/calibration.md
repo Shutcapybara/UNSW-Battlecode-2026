@@ -13,6 +13,19 @@ withdrawn is not scored. After 10 scored cards, rotation frequency follows mean 
 | Sugawara | Claude | mechanism | 4 Oct 10:40Z |
 | Nishinoya | GLM | probe (results are `unaudited` until an auditor replicates them) | 4 Oct 10:52Z |
 
+## Predictions on file (scored when the result card lands)
+
+| Card | Event | Seat | P(pass) | Filed |
+|---|---|---|---|---|
+| P-2 | confirmation passes under G-asis | Nishinoya | 0.03 | 4 Oct 11:50Z |
+| P-2 | confirmation passes under G-amend as written | Nishinoya | 0.60 | 4 Oct 11:50Z |
+| P-2 | confirmation passes under G-asis | Tanaka | 0.03 | 4 Oct 12:02Z |
+| P-2 | confirmation passes under G-amend as written | Tanaka | 0.35 | 4 Oct 12:02Z |
+| P-2 | confirmation passes under Tanaka's corrected G-amend | Tanaka | 0.20 | 4 Oct 12:02Z |
+| P-2 | development fit passes G-amend (author, before the fit) | Hinata | 0.60 | 4 Oct 10:51Z; outcome pass; not a council seat, not scored |
+
+Only the event under the gate the Chair freezes in D-052 is scored.
+
 ## Scores
 
 | Card | Objective | Outcome | Seat | P(pass) | Brier |

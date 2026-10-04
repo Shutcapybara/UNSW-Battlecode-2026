@@ -1165,3 +1165,61 @@ freeze and the fit crossed.
      otherwise, R2 and later stop and the Chair re-plans.
    - **Promotions.** The Chair promotes under D-046 §7 without asking, and notifies the lead.
 
+## D-051 — Live ops: A/A job enabled, hub link, the unexplained requests; R0 items recorded (4 Oct 2026 12:22Z, Chair: Ushijima)
+
+Numbering: D-050 §7 said D-051 would freeze the P-2 gate. Live ops was ready an hour earlier, so this record takes
+the number. The council decisions (P-2's confirmation gate, the rollback reference, the interval convention) are
+**D-052**, after the reviews close at 13:00Z.
+
+1. **Enable requested battles for one job (answers Daichi 12:00Z).** Daichi may write the `enable` citing D-051 and
+   submit the A/A job as sized: one arm (14585), dev opponents 545 and 752, the 17 `LIVE_MAPS_M2` maps, both seats,
+   4 games per pair, 136 games, two replicates per (opponent, map, parity) cell.
+   - Frozen objective: the difference between replicate 1 and replicate 2, cell bootstrap (cluster = opponent × map ×
+     parity), 1,000 resamples, seed 7, 5th to 95th percentile. Expected: 0 inside the interval, width ≤ 0.25.
+   - Stop rule: 136 games, or 6 hours, or any runtime fault, or a change of the live submission.
+   - Reading: an interval that excludes 0, or a width above 0.25, means the paired report is not yet fit for a live
+     screen; Daichi then diagnoses before any candidate job.
+   - Every later job needs its own Chair record. No non-live arm is covered by this one.
+2. **Hub link.** `r/daichi` (the `register.json` link item, 107 of 107 hub tests) is on `main` since 12:18Z. Daichi
+   redeploys and links submission 14585 to `carthage-05-free-sprint`; the fingerprint `ebeba55f` matched the API
+   name (Daichi 12:00Z).
+3. **The unexplained requests.** Daichi found 7 unranked series (50 games) requested by our team between 2 Oct
+   12:52Z and 3 Oct 02:42Z that are not in the hub's ledger, on a ten-minute grid that matches `quota_runner.py`,
+   all played by 14585, none since. Something outside the hub was posting until 3 Oct 02:42Z. The likeliest source
+   is the quota runner on the desktop that is no longer available; that is an inference, not a finding.
+   - These are unranked requests. If the runner resumed during a candidate's seconds of activation, the candidate
+     would play a few unranked games: no rating effect, and the replay header says which submission played.
+   - Ruling, replacing D-050 §4's condition: a non-live arm may be dispatched when it passed the D-046 §4 gate, no
+     unexplained request was seen in the previous 24 hours, and the job re-checks before each unit and pauses on a
+     new one. The lead is told once, without a request to act.
+4. **Monitor.** Daichi fixes the defect Tanaka found: `rating_at` takes a later snapshot when a game precedes the
+   earliest one. Tanaka could not rebuild the 417-game census after the corpus backfill; the monitor freezes its
+   input list (game ids and snapshot ids) with every published number.
+   - 12:00Z read (ranked, post-m2, series bootstrap): since 2 Oct −0.029 [−0.059, +0.001] over 611 games in 125
+     series; last 40: −0.069 [−0.154, +0.007]; Elo 1716, rank 83; Schooltime −0.45 [−0.51, −0.40] (35 games).
+5. **R0 items recorded** (`docs/learning/ladder.md`):
+   - **Item 3, encoder parity: passed.** Kageyama: Python = C++ on 40,002 turns in 1,214 processes, 0 mismatches,
+     and 40,002 of 40,002 through the official helper. Nishinoya, on fixtures of its own: 1,549 turns in 37
+     processes, 0 mismatches, helper 1,549 of 1,549. Gate: 1,000 turns bit for bit.
+   - **Item 4, action labels: passed.** Kageyama: 100 % of 75,306 Heartbreaker turns in 12 games. Nishinoya: 100 %
+     of 31,061 turns in 2 corpus replays, both sides. Gate: above 99 %. One convention differs from HB-1 by design:
+     the sonar mask is the requested direction.
+   - **Item 7, twins: done.** Asahi regenerated the four stale twins in `maps/m2tr/`; on `main`.
+   - **Item 8, battles control and monitor: done.** Redeployed with dispatch off (Daichi 12:00Z); the monitor
+     refreshes hourly.
+   - **Item 10, audit note: delivered** (Tanaka, `docs/learning/reviews/D-046-tanaka.md`). The convention itself is
+     frozen in D-052.
+   - **Not yet:** item 1 (decode: 11,455 of 17,206 in-scope post-m2 games at 11:50Z, Nishinoya's census); item 2
+     (manifest v2 on Autarky, Maze, Trauma); item 5 (the audit passes 9 of 9 on a fresh training set, but must run
+     on v2, and `build/learn/kageyama/smoke.parquet` fails it and must be rebuilt or removed); item 9 (corpus-wide
+     map check).
+6. **P-2: Tanaka's hold is upheld until D-052.** No confirmation and no re-fit. Two reviews are in (Tanaka: amend
+   and hold; Nishinoya: agree with G-amend). The decisive finding is Tanaka's: the 10:52Z fit trained on 539 games
+   of the reserved test bucket and 555 of the validation bucket, and the confirmation code would re-fit Φ on a
+   larger store while V0b stays frozen. Preparations that read no held-out label may start now:
+   - Hinata: archive the source at 3138d107; export Φ's coefficients fitted on the same frozen rows (c958e8c7…);
+     complete the confirmation code as Tanaka's review §4 lists (every cell, intervals, verdict, INCOMPLETE on a
+     missing cell, one atomic claim, receipts kept).
+   - Kageyama: in manifest v2, mark the series present in the frozen training rows as consumed by P-2; count, by
+     map and by ranked or unranked, the held-out-map post-m2 games whose series has no game in those rows.
+
