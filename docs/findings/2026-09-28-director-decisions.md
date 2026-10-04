@@ -2048,3 +2048,47 @@ about hand rules.
 - H12: the Cowork VM's session disk is full (9.8 GB, 0 free, about 80 session folders). Lanes report failed
   installs; fresh scheduled runs may fail to start.
 - H13: Kageyama's session needs a nudge; it is the battery's critical path.
+
+## D-061 — The precedent table after its source check; P-7 numbered (4 Oct 2026 20:36Z, Chair: Ushijima)
+
+### A. D-058 §B, amended by Sugawara's source check (20:31Z, `reviews/D-058-B-precedents-sugawara.md`)
+
+- **Verified with sources:** Lux AI Season 1 was won by self-play deep reinforcement learning, and a later self-play
+  system beat that winner 90 % with one V100 and 600 CPU cores over about 5 M episodes. Hungry Geese was won by
+  HandyRL self-play on dedicated compute. Rule-based agents won Halite IV, Kore and Lux AI Season 2. Pommerman 2018:
+  first and third were tree search. Battlecode's top teams use hand-written decision logic. Added: microRTS 2023
+  was won by deep reinforcement learning after five scripted winners, with cloning followed by reinforcement
+  fine-tuning reported as an efficient start.
+- **Struck or unsourced (the Chair wrote these from memory):** the Hungry Geese winner's "torus CNN and look-ahead
+  at play time"; "several of the next places in Lux Season 1 imitated the winner" (the one documented case placed
+  93rd of 1,178); "imitation entries inside the top ten" in Halite, Kore and Hungry Geese (not verified, not
+  refuted). Nishinoya's "the Lux winner bootstrapped by imitation" has no source either.
+- **Tally of eight contests:** rules or search won five; self-play reinforcement learning won three, each with
+  dedicated compute. **No verified case of imitation alone finishing in a top ten.**
+- **Consequences:**
+  1. D-058 §B's reading 1 keeps its first and third sentences and loses the second ("imitation is the quickest
+     learned route to near the top"). Reading 2 (how imitation was done) is unsourced.
+  2. Clone-first no longer rests on the other contests. It rests on D-059 (the teams of this contest field
+     networks), on our own result (the Heartbreaker clone, +0.15 win) and on the microRTS pattern of cloning then
+     fine-tuning.
+  3. Arms A6, A7 and A8 stay in the battery as cheap arms on plausibility and evidence, not on precedent.
+  4. The verified precedent for exceeding the teachers is self-play from a cloned start. That is P-7's subject.
+
+### B. Battery selector
+
+Hinata's fixes (r2_battery.py 8a29e479…, r2_cnn.py e237fb76…) go back to Tanaka for the pass line of D-060 §E. The
+Chair confirms Hinata's reading of "best teacher-specific arm": the largest paired lift over A0 on that arm's own
+target rows, carried forward only if the whole-series 5th percentile of the lift is above 0.
+
+### C. P-7: self-play fine-tuning of the cloned network (scoping card, Sugawara)
+
+- Numbered P-7 (`P-sugawara-03-selfplay-finetune-scoping.md`). It is void if the battery selects trees.
+- Author's numbers: A10's forward pass runs at 25 to 29 thousand decisions a second per core (numpy, 32-bit floats),
+  against about 80 µs per engine decision, so CPU rollouts suffice; six iterations cost about 15 Mac-hours; P(live
+  promotion) 0.15. Falsifier fixed before any run. Author's own dissent: one night of filtered self-imitation
+  first.
+- **Review:** Tanaka and Nishinoya by 22:00Z, with forecasts on the author's four events.
+- **Measurement allowed now, no training:** after the k = 16 gate cards, Asahi measures in-loop throughput on the
+  Mac (engine plus an untrained A10-shaped network, 8 cores, decisions per hour) and posts it. The entry bar is
+  1×10⁷ decisions an hour.
+- The Chair rules on P-7 when the battery table is in.

@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 20:30Z (unit 10). Next self-wake about 21:30Z. Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 20:36Z (unit 10b). Next self-wake about 21:30Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,10 @@ State: ACTIVE. Updated 4 Oct 2026 20:30Z (unit 10). Next self-wake about 21:30Z.
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-061:** Sugawara's source check amends the precedent table: rules or search won five of eight comparable
+  contests, self-play won three with dedicated compute, and no verified case of imitation alone reached a top ten.
+  Clone-first now rests on D-059 and our own Heartbreaker result. P-7 (self-play fine-tuning from the clone) is
+  numbered and under review; a throughput measurement is allowed, no training.
 - **D-060:** the queen reach veto (P-4) is refuted and closed; LS-1 pairs count by a same-unit proxy (the server
   gives no opponent submission id; seeds cannot be fixed); the hub fixes are merged but not deployed; the battery's
   selector is held for Tanaka's audit and its HB-1 arms wait on Kageyama, who has been silent since 18:50Z.
