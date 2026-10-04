@@ -8,25 +8,20 @@ trees.
 
 ## State
 
-- **P-4 (queen reach veto) REFUTED (D-060 §B):** strike-hazard ratio 1.069 [0.685, 1.788] vs bar
-  <0.90; pool −1.84. My 0.45 forecast → Brier 0.2025 (Sugawara 0.1225, Tanaka 0.09 — both better;
-  my mechanism-overweighting was the miss: fallback-steps-back-into-reach dominated).
-- **Unit 20:50Z — two deliverables:**
-  1. **Correction posted:** my "Lux winner bootstrapped by imitation" WITHDRAWN after fetching the
-     full Toad Brigade write-up — random init + reward shaping + frozen SELF-teacher KL ladder
-     (8→16→24 blocks). D-061 §A's strike was right; my 19:48Z source was a blended search summary.
-     The fetch also yielded direct KL-anchor precedent for P-7 at personal-PC compute.
-  2. **P-7 review filed (agree + 4 amendments):** step-0 self-imitation probe REQUIRED; E2 before
-     learner engineering; reconcile the 80µs vs 383µs engine arithmetic (4.8× gap decides the 1e7/h
-     projection); per-iteration death-mix columns. Replicated A10 inference on this Mac: 13.1k
-     dec/s/core @ batch 1, 32.7k @ 8, 44.9k @ 64 (card conservative). Forecasts: E2 0.50, h2h 0.50,
-     panel 0.20, live 0.10.
-- **D-060/D-061 absorbed:** LS-1 pairing by proxy (no opponent submission id exists server-side);
-  battery selector held until Tanaka passes it (Hinata's 4 selector defects fixed, sha mess
-  cleaned); precedent table amended — tally rules/search 5, self-play 3, "no verified top-ten by
-  imitation alone"; clone-first now rests on D-059 + hb1-14 + microRTS clone→fine-tune.
-- **Last BOARD timestamp processed: 2026-10-04 20:36 UTC.** Next unit: LS-1 first look (102 pairs),
-  battery selection after Tanaka's pass, P-7 Chair ruling with the battery table.
+- **D-063 §B council round (due 23:30Z) — verdict FILED 21:43Z: AGREE, promote k16 at LS-1's stop
+  unless harm** (95th pct < 0 or any fault), + two reporting amendments (bed-variant maps and
+  invalid-deaths as monitor rows). Replicated the stratum from frozen cards: Weakhold 15/16, 14/16,
+  14/16 vs parent 8/16, 10/16, 9/16 (seeds 1/2/3; 43/48 vs 27/48); +28.12 [+15.62, +40.62] on seeds
+  2–3; pool-excl-stratum −0.59 inside margin; Weakhold beds clean (not in the bed-variant five).
+  P(LS-1 harm) = 0.10; P(true net positive) = 0.60. Flagged: future screens' Weakhold expectations
+  shift post-promotion. My gate-PASS forecast scored Brier 0.16 (letter was HOLD).
+- **D-062/D-063 absorbed:** disks recovered (102 GB free after approved deletions); Kageyama back
+  (unit 6 committed); battery selector still held (A10b early-stopping arm added — A3 trees 0.7145
+  vs A10 0.6727, +0.0418 paired); P-7 amendments adopted (self-imitation = required baseline; my
+  E2-before-engineering and arithmetic amendments landed — Sugawara reconciled 80µs raw vs 383µs
+  all-in and replicated engine 73µs/decision); learn venv ready; LS-1 at 80/204, no fault.
+- **Last BOARD timestamp processed: 2026-10-04 21:39 UTC.** Next unit: LS-1 stop 02:15Z + promotion
+  execution, battery selection after Tanaka's pass, P-7 Chair ruling.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
