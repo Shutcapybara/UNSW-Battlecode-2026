@@ -1,0 +1,27 @@
+{"who": "opp", "gid": 852484, "r": 131, "ncand": 3, "cu": 2, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 0}
+{"who": "opp", "gid": 869495, "r": 142, "ncand": 3, "cu": 2, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 0}
+{"who": "opp", "gid": 866875, "r": 207, "ncand": 3, "cu": 2, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 1}
+{"who": "opp", "gid": 860828, "r": 488, "ncand": 2, "cu": 4, "ck": 4, "invsafe": 1, "invK": 1, "inv_safe1": 1, "safe1": 1}
+{"who": "us", "gid": 869494, "r": 14, "ncand": 3, "cu": 3, "ck": 4, "invsafe": 1, "invK": 2, "inv_safe1": 1, "safe1": 3}
+{"who": "us", "gid": 858820, "r": 15, "ncand": 3, "cu": 2, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 2}
+{"who": "us", "gid": 881387, "r": 26, "ncand": 3, "cu": 2, "ck": 4, "invsafe": 0, "invK": 2, "inv_safe1": 0, "safe1": 3}
+{"who": "us", "gid": 869502, "r": 28, "ncand": 3, "cu": 3, "ck": 3, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 2}
+{"who": "us", "gid": 860202, "r": 38, "ncand": 3, "cu": 2, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 1}
+{"who": "us", "gid": 866888, "r": 50, "ncand": 3, "cu": 2, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 2}
+{"who": "us", "gid": 866446, "r": 55, "ncand": 2, "cu": 2, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 1}
+{"who": "us", "gid": 858822, "r": 58, "ncand": 1, "cu": 1, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 0}
+{"who": "us", "gid": 870342, "r": 74, "ncand": 3, "cu": 2, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 1}
+{"who": "us", "gid": 860203, "r": 78, "ncand": 3, "cu": 1, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 0}
+{"who": "us", "gid": 858817, "r": 79, "ncand": 3, "cu": 1, "ck": 1, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 1}
+{"who": "us", "gid": 852909, "r": 84, "ncand": 3, "cu": 3, "ck": 3, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 2}
+{"who": "us", "gid": 881972, "r": 84, "ncand": 3, "cu": 3, "ck": 3, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 2}
+{"who": "us", "gid": 858816, "r": 89, "ncand": 3, "cu": 4, "ck": 4, "invsafe": 2, "invK": 2, "inv_safe1": 0, "safe1": 0}
+{"who": "us", "gid": 881395, "r": 90, "ncand": 1, "cu": 1, "ck": 1, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 0}
+{"who": "us", "gid": 860316, "r": 107, "ncand": 3, "cu": 2, "ck": 2, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 1}
+{"who": "us", "gid": 857671, "r": 118, "ncand": 3, "cu": 4, "ck": 4, "invsafe": 0, "invK": 2, "inv_safe1": 0, "safe1": 3}
+{"who": "us", "gid": 880465, "r": 120, "ncand": 3, "cu": 3, "ck": 3, "invsafe": 1, "invK": 1, "inv_safe1": 1, "safe1": 1}
+{"who": "us", "gid": 869498, "r": 180, "ncand": 2, "cu": 3, "ck": 4, "invsafe": 1, "invK": 1, "inv_safe1": 1, "safe1": 2}
+{"who": "us", "gid": 869495, "r": 210, "ncand": 2, "cu": 1, "ck": 1, "invsafe": 0, "invK": 0, "inv_safe1": 0, "safe1": 0}
+us {'n': 20, 'invsafe': 4, 'invK': 6, 'inv_safe1': 3, 'safe1': 15, 'cu>=4': 2, 'ck==3': 4}
+opp {'n': 4, 'invsafe': 1, 'invK': 1, 'inv_safe1': 1, 'safe1': 2, 'cu>=4': 1, 'ck==3': 0}
+13s

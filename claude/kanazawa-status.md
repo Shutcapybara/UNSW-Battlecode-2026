@@ -6,7 +6,7 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 - The repo is mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026` (the connected folder is the parent, `Projects`). If `connectedFolders` is empty, exit silently: the user was told once, on 4 Oct at 03:10Z.
 - Use `python3` in the VM: `.venv/bin/python` is a Mac symlink. Run `python3 build/kanazawa/tree/tools/kanazawa/q_X.py` from the repo root (it picks up build/s1-pylib).
 - Private tree `build/kanazawa/tree`; commit with `bash build/kanazawa/tree/tools/kanazawa/commit.sh "msg"` from the repo root.
-- **BOARD:** tree files replace the branch's files. Rebuild the tree's BOARD.md as origin/main's BOARD plus every kanazawa line not yet on main, then append. As of unit 13, main ef273011b (585 lines) has all kanazawa lines through unit 12; the unit-13 lines (2) live only on r/kanazawa.
+- **BOARD:** tree files replace the branch's files. Rebuild the tree's BOARD.md as origin/main's BOARD plus every kanazawa line not yet on main, then append. As of unit 13, main ef273011b (585 lines) has all kanazawa lines through unit 12; the unit-13 and unit-14 lines (2 + 2) live only on r/kanazawa.
 - **Lock:** the VM cannot delete files. Release `build/kanazawa/unit.lock` by writing `released <time>` and `touch -d 2000-01-01`. The lock is free if its content starts with `released` or it is more than 40 min old.
 - **Keeper:** about 30–60 s. Request a push only when git.json is absent. `git fetch` from the VM fails; origin refs are as fresh as the keeper's last fetch.
 - `git status` inside build/kanazawa/tree hangs; avoid it. The VM has no `unswbc`: bot runs belong to testers. Never truncate a tree file with a stray python `open(p,'w')` (unit 13 nearly lost this file that way).
@@ -18,10 +18,11 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
   - In h2h analysis, pre-move state = R[dr]; attacker decision state is its own TurnStart (H31-01). The death event's 'mutual' flag is one-sided; use 'killer also died'. Use uncapped BFS for reach (q_avoid2 cap 60).
 
 ## Top findings
-- **Unit 13: H-KZ26 is robust to the reach cap — 15/20 at cap 60 (0/20 cases affected; all killers L 3–5); m=1 dose 14/20.** Strikes are vision-triggered (H31-01, 20/20) → H-KZ28 0.6, H-KZ29 0.1; a queen-local filter needs no sonar. Bodyguard (H-KZ30) 2/20 → 0.1.
-- Unit 12: queen sprint strikes avoidable at the last turn 15/20 (11/20 excluding food-extended); 0/20 queens began the previous round inside the killer's reach. Tester spec in the unit-12 finding (m ∈ off/0/1).
-- Unit 11: 20/43 of our queen h2h deaths are enemy sprint strikes (Himeji H30-02 verified; 4 food-extended). H-KZ24 0.2.
-- Unit 10: H-KZ12 contract frozen. Unit 9: corpse-chain bait; units 6–8 tree pockets take 20 % of our queens; units 1–5 wall deaths are traps.
+- **Unit 14: H-KZ31 (invisibility rule) is falsified.** Only 4/20 cases have an invisible Cb ≥ 4 step, against 15/20 reach-safe ones; the queen is at Cheb 1–3 from the striker in 18/20. At the last turn only the reach veto works.
+- Unit 14, cross-lane: in queen strikes the striker is longer than our queen (12/20) or equal (7/20), so Shenzhen's H-SZ34 ("when longer") covers ≤ 1/20 and is complementary to H-KZ26. Its reach min(L−1,3) misses 5/20 vs B(L) 4/20. All 20 strikes were trades.
+- Unit 13: H-KZ26 holds at cap 60 (15/20; 14/20 at m=1). Himeji H32-03: in-vision 20/20 is necessary, not sufficient, so H-KZ28 is back to 0.45.
+- Unit 12: 15/20 last-turn queen sprint strikes were avoidable; 0/20 queens began the previous round inside the killer's reach. Unit 11: 20/43 of our queen h2h deaths are enemy sprint strikes.
+- Earlier: H-KZ12 contract frozen (unit 10); corpse-chain bait (9); tree pockets take 20 % of our queens (6–8); wall deaths are traps (1–5).
 
 ## Hypotheses
 | id | claim | weight | falsifier | cost | suits |
@@ -46,13 +47,17 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 
 Closed: H-KZ1, H-KZ7, H-KZ9, H-KZ11, H-KZ16.
 
-## What changed in unit 13 (4 Oct 09:10–09:35Z)
-- **Input.** Himeji 17e6a73c7 H31-01 (vision 20/20 at attacker TurnStart), H31-02 (15/20 = approximate alternatives; cap-11 fixture defect), H31-08 (Rome H-KZ12 k4 272/272 games, KZ12 logs absent). Nara f9fff6a72 (H-KZ26 = value/feature gap; death-round-shift column). Chongqing 646811d6e C8-01..04 (adaptation clock: second tier queen-alive +10 pp in two days; us 0.000; H-KZ12 setup correct). All unit 9–12 kanazawa lines are now on main.
-- **Test.** q_avoid2 (cap 60, frozen 09:20Z): safe1 15/20 unchanged; m=1 14/20; bodyguard 2/20.
-- **BOARD.** Two lines: H31-02 answer + H-KZ28/29 moves (himeji, rome, seoul); H-KZ12 k4 needs logs before reading (rome, nara).
+## What changed in unit 14 (4 Oct 09:41–10:00Z)
+- **Input.**
+  - Himeji ecee82b52: H32-02 (queen-growth adoption) and H32-03 (accepts the cap-60 result; in-vision 20/20 is not sufficiency, so H-KZ28 drops to 0.45). H32-05: Rome's k4 transcripts are recovering, with no table yet.
+  - Nara 9dc8bdb6b: C8-01 says ~50 % of ranked round-limit games are queen-decided, so N2 queen-hunting is due. Nara wants veto-firings/1k moves as a first-class column.
+  - Shenzhen 2a1d2ea82: H-SZ33 is withdrawn; the h2h trade ledger (sim) shows the mover is shorter and every h2h kills both; H-SZ34 and H-SZ35 are new.
+  - Unit 13's push landed (origin/r/kanazawa 81ffde51b). Main is unchanged at ef273011b.
+- **Test.** q_invis (frozen 09:50Z): invisible safe step 4/20; killer-only 6/20; invisible and reach-safe 3/20. H-SZ34 coverage and reach form were checked from unit-13 rows.
+- **BOARD.** Two lines: one to Shenzhen/testers (H-SZ34 is complementary; use B(L)) and one to Himeji/Nara/Seoul (accept H32-03; H-KZ31 falsified; spec columns).
 
 ## Next steps
-1. H-KZ31 invisibility test (count Cheb ≥ 4 safe steps in the 20 cases; compare with safe1).
-2. H-KZ27 with move-level exposure: candidate steps into reach for queen vs matched L2–3 non-queens.
-3. Out-of-sample replication of H-KZ26 (games after 286, `--new`), once enough fresh queen strikes exist.
-4. Read Rome's H-KZ12 k4 outcome once logs exist; H-KZ21 tabu spec; H-KZ23 child census; H-KZ25 TIR sim spec.
+1. H-KZ28 sufficiency: per enemy L3–5 head with our queen in its vision and in reach, strike rate vs ignore rate. Compare with matched non-queen children, which also covers H-KZ27.
+2. H-KZ32 portal shadow corpus pass (portal maps).
+3. Replicate H-KZ26 out of sample (`--new`) once fresh queen strikes accumulate.
+4. Read Rome's H-KZ12 k4 table when it is published (Himeji H32-05 says transcripts are recovering). Then the H-KZ21 tabu spec, the H-KZ23 child census and the H-KZ25 TIR sim spec.
