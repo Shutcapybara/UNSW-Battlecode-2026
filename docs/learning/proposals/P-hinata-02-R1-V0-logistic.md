@@ -114,3 +114,43 @@ cell reported as the value of opponent information. It gets its own card before 
 critic), switch = V0b vs Φ comparator, data hash train_rows c958e8c7…, code 2920bb57… (archived; 3138d107 lost),
 features LQ (8), hyper LR C = 1, no intercept, 14 cells, offline metrics = pending confirmation, export 14 × 8 floats,
 status `offline`.
+
+## D-052 §A.5 release item 1 and the per-cell counts (appended 2026-10-04 14:47 UTC, hinata). No held-out label read; no claim.
+
+- **Scorer revision 2:** `tools/hinata/p2_confirm.py` sha256 `ea3b5ef748ac9cf498c48b3941dc3c3be1639456f3e3f283ab308e63d787897d`
+  (revision 1 `d298a6e7…` kept at `build/hinata/_old/p2_confirm.d298a6e7.py`). Fixes Tanaka's repair-audit defects:
+  (1) fail closed on non-finite labels, predictions, coefficients, point metrics and interval endpoints, and on
+  fewer than 990 valid bootstrap draws (counted per cell as the minimum over ΔAUC, slope_V and slope_Φ draws);
+  (2) `score` checks CLAIM.json against the hash recorded at claim time, the scorer against the audited hash given to
+  `run --audited-scorer-sha`, and re-reads the gate from the spec file, which must hash to D-052's
+  `15d79683…`; a mismatch scores INCOMPLETE without evaluating; a second `score` is refused;
+  (3) only the exact frozen spec unlocks `run` (sha256 + status FROZEN + record D-052); the PROPOSED spec is refused.
+  Reads every D-052 field: `rl50_min_auc_binding = false` (AUC_V ≥ AUC_Φ binds at rl/r50; 0.66 printed),
+  `min_cell_games`, `reported_populations` (now ranked_clean, ranked, unranked_clean, unranked, all),
+  `min_coverage_per_map` (checked before the claim and again at score).
+- **Probes** (`p2_confirm.py probe`, synthetic data only, scratch claim dirs): **15 / 15 as expected** —
+  valid control PASS; NaN slope_V, slope_Φ, AUC_V, AUC_Φ, ΔAUC interval at rl/r50 → INCOMPLETE (5/5); NaN prediction
+  in a binding cell, one-class binding cell, positives in one series (valid draws < 990) → INCOMPLETE; claim edited
+  after claiming, claim scorer hash differing → INCOMPLETE; second score refused; PROPOSED and synthetic specs refused
+  as frozen; D-052 spec accepted. Receipt `build/hinata/p2/probe-r2.json`.
+- **Regression:** `selftest` on the frozen development OOF reproduces revision 1's table exactly (max |diff| 0 over
+  every AUC, slope and interval endpoint; valid draws 1,000 in every cell; gate PASS on development, not a verdict).
+- **Population** (`p2_confirm.py manifest`, outcome-free): `build/hinata/p2/population.parquet` sha `75831df0…`.
+  Binding ranked∩clean = **1,328** (Autarky 435, Maze 446, Trauma 447) — matches D-052 §A.3. Usable (decoded and in
+  scope in the store's `games.parquet`, which the frozen loader requires): **1,319** — Autarky 433 (99.5 %), Maze 442
+  (99.1 %), Trauma 444 (99.3 %); all ≥ 95 %. **Missing 9, not 1:** 1044626 (Autarky; no series rows in the store),
+  and 8 decoded games that are in scope in manifest v2 but out of scope in the store's table — 1013834 (Autarky);
+  1017365, 1019907, 1023796, 1037806 (Maze); 877998, 979590, 1013831 (Trauma). They stay in the denominator.
+- **Per-cell counts, binding population, outcome-free** (`p2_confirm.py counts` → `build/hinata/p2/cell-counts.json`
+  sha `372e61ea…`; side-A rows of games still running; no winner column read, so draws are not yet removed and the
+  counts are upper bounds on decisive rows):
+
+  | round | 10 | 25 | 50 | 100 | 150 | 250 | 400 |
+  |---|---|---|---|---|---|---|---|
+  | elim (Autarky) | 433 | 433 | 433 | 432 | 420 | 343 | 246 |
+  | rl (Maze + Trauma) | 886 | 886 | 886 | 886 | 885 | 882 | 873 |
+
+  No binding cell is under 50 games, so the report-only list is D-052's alone: **elim/r10**. Every population column
+  is in the file.
+- **Still owed before the claim:** Tanaka's pass line naming scorer sha `ea3b5ef7…` and spec sha `15d79683…`.
+  Then: `run --audited-scorer-sha ea3b5ef7…` → `score`, one each.
