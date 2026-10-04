@@ -1,0 +1,86 @@
+{
+  "peer_commit": "9b0da8f7848458ebcf2b77aeab293355df741b36",
+  "source_sha256": {
+    "q_dose.py": "ee79939fb4109428e9728a1ed2bcdd0a4f6a2984879433a891e87dc266702425",
+    "q_cycle.py": "aa98730ec666a481a96539e8b048246df313044f6c857db77c58bef0fcec5ff3"
+  },
+  "scope": "Four synthetic graph/state checks; no simulator, corpus re-count, bot or actual death prevention claim.",
+  "cases": [
+    {
+      "name": "alternative_orbit_omitted",
+      "dose": 8,
+      "queen_length": 2,
+      "chosen_capacity": 1,
+      "alternative_capacity": 4,
+      "alternative_cycle": 4,
+      "peer_alt_count": false,
+      "same_predicate_accepts_alternative": true
+    },
+    {
+      "name": "candidate_growth_changes_occupancy",
+      "dose": 4,
+      "actual_body": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "alternative_body": [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          -1
+        ]
+      ],
+      "capacity_using_actual_body": 8,
+      "capacity_using_candidate_body": 2,
+      "peer_alt_accepted": true,
+      "candidate_specific_alt_accepted": false
+    },
+    {
+      "name": "tail_removal_is_optimistic_assumption",
+      "body": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "tail_present_in_snapshot": true,
+      "tail_present_in_peer_occupancy": false,
+      "interpretation": "Tail-vacancy timing/growth/action remains unknown; do not use relaxed feature as immediate-legality proof."
+    },
+    {
+      "name": "strict_thresholds",
+      "capacity": 4,
+      "veto_by_dose": {
+        "0": false,
+        "4": false,
+        "8": true,
+        "16": true
+      }
+    }
+  ]
+}

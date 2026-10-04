@@ -1,0 +1,1166 @@
+{
+  "rows": [
+    {
+      "game": 1021319,
+      "series": "b9d7c969-8bf0-4e64-8e69-28125e80a0a4",
+      "ranked": true,
+      "map": "Maze",
+      "map_hash": "502427b4a4b583c47a0a452252b1283836398d12bdb3f448ae6a0a40c3de0859",
+      "own_side": "A",
+      "submission": "14585",
+      "opponent_submission": "",
+      "last_round": 499,
+      "winner": "A",
+      "sides": [
+        {
+          "side": "A",
+          "late_corpse_spawns": 400,
+          "late_meals_by_eater": {
+            "ally": 348,
+            "enemy": 26
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 341,
+            "enemy": 26
+          },
+          "pre150_carry_in_meals": {
+            "ally": 7
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "A",
+              "donor": 34,
+              "born": 77,
+              "eaten": 159,
+              "age": 82,
+              "cell": [
+                36,
+                8
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 34,
+              "born": 77,
+              "eaten": 161,
+              "age": 84,
+              "cell": [
+                35,
+                7
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 82,
+              "born": 133,
+              "eaten": 164,
+              "age": 31,
+              "cell": [
+                23,
+                22
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 82,
+              "born": 133,
+              "eaten": 166,
+              "age": 33,
+              "cell": [
+                25,
+                22
+              ]
+            }
+          ],
+          "unconsumed_by_end": 33,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 399,
+            "eligible": 262,
+            "ally": 200,
+            "enemy": 21,
+            "not_eaten_by20": 41
+          },
+          "reached150": true
+        },
+        {
+          "side": "B",
+          "late_corpse_spawns": 553,
+          "late_meals_by_eater": {
+            "ally": 511,
+            "enemy": 16
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 509,
+            "enemy": 16
+          },
+          "pre150_carry_in_meals": {
+            "ally": 2
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "B",
+              "donor": 102,
+              "born": 145,
+              "eaten": 175,
+              "age": 30,
+              "cell": [
+                11,
+                15
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 102,
+              "born": 145,
+              "eaten": 178,
+              "age": 33,
+              "cell": [
+                12,
+                16
+              ]
+            }
+          ],
+          "unconsumed_by_end": 28,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 399,
+            "eligible": 398,
+            "ally": 353,
+            "enemy": 9,
+            "not_eaten_by20": 36
+          },
+          "reached150": true
+        }
+      ],
+      "duplicate_spawn_keys": 0
+    },
+    {
+      "game": 1021322,
+      "series": "b9d7c969-8bf0-4e64-8e69-28125e80a0a4",
+      "ranked": true,
+      "map": "Autarky",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+      "own_side": "A",
+      "submission": "14585",
+      "opponent_submission": "",
+      "last_round": 394,
+      "winner": "A",
+      "sides": [
+        {
+          "side": "A",
+          "late_corpse_spawns": 190,
+          "late_meals_by_eater": {
+            "ally": 172,
+            "enemy": 16
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 166,
+            "enemy": 16
+          },
+          "pre150_carry_in_meals": {
+            "ally": 6
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "A",
+              "donor": 65,
+              "born": 135,
+              "eaten": 150,
+              "age": 15,
+              "cell": [
+                34,
+                0
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 89,
+              "born": 142,
+              "eaten": 152,
+              "age": 10,
+              "cell": [
+                18,
+                16
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 92,
+              "born": 142,
+              "eaten": 152,
+              "age": 10,
+              "cell": [
+                18,
+                1
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 89,
+              "born": 142,
+              "eaten": 154,
+              "age": 12,
+              "cell": [
+                19,
+                17
+              ]
+            }
+          ],
+          "unconsumed_by_end": 8,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 374,
+            "eligible": 169,
+            "ally": 138,
+            "enemy": 14,
+            "not_eaten_by20": 17
+          },
+          "reached150": true
+        },
+        {
+          "side": "B",
+          "late_corpse_spawns": 24,
+          "late_meals_by_eater": {
+            "enemy": 22,
+            "ally": 3
+          },
+          "same_spawn_cohort_meals": {
+            "enemy": 20,
+            "ally": 3
+          },
+          "pre150_carry_in_meals": {
+            "enemy": 2
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "A",
+              "donor": 85,
+              "born": 149,
+              "eaten": 153,
+              "age": 4,
+              "cell": [
+                35,
+                16
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 85,
+              "born": 149,
+              "eaten": 155,
+              "age": 6,
+              "cell": [
+                34,
+                17
+              ]
+            }
+          ],
+          "unconsumed_by_end": 1,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 374,
+            "eligible": 23,
+            "ally": 3,
+            "enemy": 20,
+            "not_eaten_by20": 0
+          },
+          "reached150": true
+        }
+      ],
+      "duplicate_spawn_keys": 0
+    },
+    {
+      "game": 1021318,
+      "series": "b9d7c969-8bf0-4e64-8e69-28125e80a0a4",
+      "ranked": true,
+      "map": "Default",
+      "map_hash": "2aa3b6c52fa4b6644e6bc5a389528d36995aef59cfa37e5f9b21c2859d0cd9dc",
+      "own_side": "A",
+      "submission": "14585",
+      "opponent_submission": "",
+      "last_round": 347,
+      "winner": "A",
+      "sides": [
+        {
+          "side": "A",
+          "late_corpse_spawns": 104,
+          "late_meals_by_eater": {
+            "ally": 94,
+            "enemy": 7
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 93,
+            "enemy": 6
+          },
+          "pre150_carry_in_meals": {
+            "ally": 1,
+            "enemy": 1
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "A",
+              "donor": 92,
+              "born": 148,
+              "eaten": 165,
+              "age": 17,
+              "cell": [
+                8,
+                10
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 33,
+              "born": 147,
+              "eaten": 190,
+              "age": 43,
+              "cell": [
+                12,
+                0
+              ]
+            }
+          ],
+          "unconsumed_by_end": 5,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 327,
+            "eligible": 82,
+            "ally": 75,
+            "enemy": 4,
+            "not_eaten_by20": 3
+          },
+          "reached150": true
+        },
+        {
+          "side": "B",
+          "late_corpse_spawns": 61,
+          "late_meals_by_eater": {
+            "ally": 32,
+            "enemy": 30
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 29,
+            "enemy": 28
+          },
+          "pre150_carry_in_meals": {
+            "ally": 3,
+            "enemy": 2
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "B",
+              "donor": 56,
+              "born": 147,
+              "eaten": 151,
+              "age": 4,
+              "cell": [
+                11,
+                15
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 61,
+              "born": 148,
+              "eaten": 164,
+              "age": 16,
+              "cell": [
+                8,
+                9
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 61,
+              "born": 148,
+              "eaten": 169,
+              "age": 21,
+              "cell": [
+                8,
+                7
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 83,
+              "born": 147,
+              "eaten": 191,
+              "age": 44,
+              "cell": [
+                12,
+                1
+              ]
+            }
+          ],
+          "unconsumed_by_end": 4,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 327,
+            "eligible": 50,
+            "ally": 24,
+            "enemy": 22,
+            "not_eaten_by20": 4
+          },
+          "reached150": true
+        }
+      ],
+      "duplicate_spawn_keys": 0
+    },
+    {
+      "game": 1021321,
+      "series": "b9d7c969-8bf0-4e64-8e69-28125e80a0a4",
+      "ranked": true,
+      "map": "weakhold",
+      "map_hash": "9c3aa9986574cab5df8c60b5a6bd2ac5514ff8e5cb72a76d5725cca212aaee24",
+      "own_side": "A",
+      "submission": "14585",
+      "opponent_submission": "",
+      "last_round": 499,
+      "winner": "A",
+      "sides": [
+        {
+          "side": "A",
+          "late_corpse_spawns": 150,
+          "late_meals_by_eater": {
+            "ally": 142
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 133
+          },
+          "pre150_carry_in_meals": {
+            "ally": 9
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "A",
+              "donor": 64,
+              "born": 144,
+              "eaten": 150,
+              "age": 6,
+              "cell": [
+                26,
+                0
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 64,
+              "born": 144,
+              "eaten": 152,
+              "age": 8,
+              "cell": [
+                24,
+                0
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 45,
+              "born": 94,
+              "eaten": 216,
+              "age": 122,
+              "cell": [
+                28,
+                14
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 45,
+              "born": 94,
+              "eaten": 218,
+              "age": 124,
+              "cell": [
+                26,
+                14
+              ]
+            }
+          ],
+          "unconsumed_by_end": 17,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 399,
+            "eligible": 86,
+            "ally": 59,
+            "enemy": 0,
+            "not_eaten_by20": 27
+          },
+          "reached150": true
+        },
+        {
+          "side": "B",
+          "late_corpse_spawns": 243,
+          "late_meals_by_eater": {
+            "ally": 242,
+            "enemy": 6
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 239,
+            "enemy": 4
+          },
+          "pre150_carry_in_meals": {
+            "ally": 3,
+            "enemy": 2
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "B",
+              "donor": 60,
+              "born": 145,
+              "eaten": 168,
+              "age": 23,
+              "cell": [
+                13,
+                14
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 60,
+              "born": 145,
+              "eaten": 171,
+              "age": 26,
+              "cell": [
+                15,
+                14
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 50,
+              "born": 134,
+              "eaten": 179,
+              "age": 45,
+              "cell": [
+                7,
+                9
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 4,
+              "born": 12,
+              "eaten": 203,
+              "age": 191,
+              "cell": [
+                11,
+                0
+              ]
+            }
+          ],
+          "unconsumed_by_end": 0,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 399,
+            "eligible": 168,
+            "ally": 164,
+            "enemy": 1,
+            "not_eaten_by20": 3
+          },
+          "reached150": true
+        }
+      ],
+      "duplicate_spawn_keys": 0
+    },
+    {
+      "game": 1021320,
+      "series": "b9d7c969-8bf0-4e64-8e69-28125e80a0a4",
+      "ranked": true,
+      "map": "Devil",
+      "map_hash": "cb4efb7b4ae574b60bfde734b23ad78b39e56333de79ffa31729f9fdcfba3ad8",
+      "own_side": "A",
+      "submission": "14585",
+      "opponent_submission": "",
+      "last_round": 128,
+      "winner": "A",
+      "sides": [
+        {
+          "side": "A",
+          "late_corpse_spawns": 0,
+          "late_meals_by_eater": {},
+          "same_spawn_cohort_meals": {},
+          "pre150_carry_in_meals": {},
+          "carry_examples": [],
+          "unconsumed_by_end": 0,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 108,
+            "eligible": 0,
+            "ally": 0,
+            "enemy": 0,
+            "not_eaten_by20": 0
+          },
+          "reached150": false
+        },
+        {
+          "side": "B",
+          "late_corpse_spawns": 0,
+          "late_meals_by_eater": {},
+          "same_spawn_cohort_meals": {},
+          "pre150_carry_in_meals": {},
+          "carry_examples": [],
+          "unconsumed_by_end": 0,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 108,
+            "eligible": 0,
+            "ally": 0,
+            "enemy": 0,
+            "not_eaten_by20": 0
+          },
+          "reached150": false
+        }
+      ],
+      "duplicate_spawn_keys": 0
+    },
+    {
+      "game": 1021810,
+      "series": "1b72e6e0-a60c-4202-8806-f9188542e0de",
+      "ranked": true,
+      "map": "Australia",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "own_side": "B",
+      "submission": "14585",
+      "opponent_submission": "",
+      "last_round": 499,
+      "winner": "B",
+      "sides": [
+        {
+          "side": "A",
+          "late_corpse_spawns": 568,
+          "late_meals_by_eater": {
+            "ally": 364,
+            "enemy": 181
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 357,
+            "enemy": 181
+          },
+          "pre150_carry_in_meals": {
+            "ally": 7
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "A",
+              "donor": 145,
+              "born": 144,
+              "eaten": 151,
+              "age": 7,
+              "cell": [
+                48,
+                29
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 181,
+              "born": 144,
+              "eaten": 151,
+              "age": 7,
+              "cell": [
+                55,
+                39
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 145,
+              "born": 144,
+              "eaten": 152,
+              "age": 8,
+              "cell": [
+                48,
+                27
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 117,
+              "born": 147,
+              "eaten": 152,
+              "age": 5,
+              "cell": [
+                51,
+                14
+              ]
+            }
+          ],
+          "unconsumed_by_end": 30,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 399,
+            "eligible": 410,
+            "ally": 219,
+            "enemy": 152,
+            "not_eaten_by20": 39
+          },
+          "reached150": true
+        },
+        {
+          "side": "B",
+          "late_corpse_spawns": 415,
+          "late_meals_by_eater": {
+            "enemy": 149,
+            "ally": 257
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 256,
+            "enemy": 146
+          },
+          "pre150_carry_in_meals": {
+            "enemy": 3,
+            "ally": 1
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "A",
+              "donor": 103,
+              "born": 144,
+              "eaten": 150,
+              "age": 6,
+              "cell": [
+                48,
+                30
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 135,
+              "born": 144,
+              "eaten": 150,
+              "age": 6,
+              "cell": [
+                50,
+                12
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 197,
+              "born": 149,
+              "eaten": 152,
+              "age": 3,
+              "cell": [
+                10,
+                26
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 184,
+              "born": 147,
+              "eaten": 154,
+              "age": 7,
+              "cell": [
+                48,
+                14
+              ]
+            }
+          ],
+          "unconsumed_by_end": 13,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 399,
+            "eligible": 255,
+            "ally": 149,
+            "enemy": 89,
+            "not_eaten_by20": 17
+          },
+          "reached150": true
+        }
+      ],
+      "duplicate_spawn_keys": 0
+    },
+    {
+      "game": 1021813,
+      "series": "1b72e6e0-a60c-4202-8806-f9188542e0de",
+      "ranked": true,
+      "map": "Portals",
+      "map_hash": "172fc73b48c127b263f3f176c8467d80d63107d8597e0a43957834a5e8b41a58",
+      "own_side": "B",
+      "submission": "14585",
+      "opponent_submission": "",
+      "last_round": 499,
+      "winner": "B",
+      "sides": [
+        {
+          "side": "A",
+          "late_corpse_spawns": 404,
+          "late_meals_by_eater": {
+            "ally": 394
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 387
+          },
+          "pre150_carry_in_meals": {
+            "ally": 7
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "A",
+              "donor": 164,
+              "born": 138,
+              "eaten": 151,
+              "age": 13,
+              "cell": [
+                16,
+                9
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 186,
+              "born": 144,
+              "eaten": 153,
+              "age": 9,
+              "cell": [
+                12,
+                15
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 164,
+              "born": 138,
+              "eaten": 154,
+              "age": 16,
+              "cell": [
+                15,
+                8
+              ]
+            },
+            {
+              "consumer_team": "A",
+              "donor": 157,
+              "born": 149,
+              "eaten": 155,
+              "age": 6,
+              "cell": [
+                28,
+                0
+              ]
+            }
+          ],
+          "unconsumed_by_end": 17,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 399,
+            "eligible": 366,
+            "ally": 334,
+            "enemy": 0,
+            "not_eaten_by20": 32
+          },
+          "reached150": true
+        },
+        {
+          "side": "B",
+          "late_corpse_spawns": 599,
+          "late_meals_by_eater": {
+            "ally": 590
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 578
+          },
+          "pre150_carry_in_meals": {
+            "ally": 12
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "B",
+              "donor": 138,
+              "born": 130,
+              "eaten": 150,
+              "age": 20,
+              "cell": [
+                26,
+                5
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 171,
+              "born": 144,
+              "eaten": 150,
+              "age": 6,
+              "cell": [
+                18,
+                12
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 182,
+              "born": 149,
+              "eaten": 151,
+              "age": 2,
+              "cell": [
+                8,
+                10
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 192,
+              "born": 147,
+              "eaten": 152,
+              "age": 5,
+              "cell": [
+                12,
+                13
+              ]
+            }
+          ],
+          "unconsumed_by_end": 21,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 399,
+            "eligible": 516,
+            "ally": 475,
+            "enemy": 0,
+            "not_eaten_by20": 41
+          },
+          "reached150": true
+        }
+      ],
+      "duplicate_spawn_keys": 0
+    },
+    {
+      "game": 1021812,
+      "series": "1b72e6e0-a60c-4202-8806-f9188542e0de",
+      "ranked": true,
+      "map": "Devil",
+      "map_hash": "cb4efb7b4ae574b60bfde734b23ad78b39e56333de79ffa31729f9fdcfba3ad8",
+      "own_side": "B",
+      "submission": "14585",
+      "opponent_submission": "",
+      "last_round": 304,
+      "winner": "B",
+      "sides": [
+        {
+          "side": "A",
+          "late_corpse_spawns": 19,
+          "late_meals_by_eater": {
+            "ally": 5,
+            "enemy": 13
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 4,
+            "enemy": 13
+          },
+          "pre150_carry_in_meals": {
+            "ally": 1
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "A",
+              "donor": 95,
+              "born": 145,
+              "eaten": 151,
+              "age": 6,
+              "cell": [
+                8,
+                12
+              ]
+            }
+          ],
+          "unconsumed_by_end": 2,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 284,
+            "eligible": 17,
+            "ally": 4,
+            "enemy": 13,
+            "not_eaten_by20": 0
+          },
+          "reached150": true
+        },
+        {
+          "side": "B",
+          "late_corpse_spawns": 341,
+          "late_meals_by_eater": {
+            "ally": 329,
+            "enemy": 4
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 324,
+            "enemy": 4
+          },
+          "pre150_carry_in_meals": {
+            "ally": 5
+          },
+          "carry_examples": [
+            {
+              "consumer_team": "B",
+              "donor": 190,
+              "born": 149,
+              "eaten": 150,
+              "age": 1,
+              "cell": [
+                16,
+                2
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 143,
+              "born": 147,
+              "eaten": 150,
+              "age": 3,
+              "cell": [
+                14,
+                0
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 152,
+              "born": 145,
+              "eaten": 150,
+              "age": 5,
+              "cell": [
+                14,
+                7
+              ]
+            },
+            {
+              "consumer_team": "B",
+              "donor": 160,
+              "born": 148,
+              "eaten": 152,
+              "age": 4,
+              "cell": [
+                20,
+                10
+              ]
+            }
+          ],
+          "unconsumed_by_end": 13,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 284,
+            "eligible": 282,
+            "ally": 278,
+            "enemy": 4,
+            "not_eaten_by20": 0
+          },
+          "reached150": true
+        }
+      ],
+      "duplicate_spawn_keys": 0
+    },
+    {
+      "game": 1021811,
+      "series": "1b72e6e0-a60c-4202-8806-f9188542e0de",
+      "ranked": true,
+      "map": "Trophy",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "own_side": "B",
+      "submission": "14585",
+      "opponent_submission": "",
+      "last_round": 197,
+      "winner": "B",
+      "sides": [
+        {
+          "side": "A",
+          "late_corpse_spawns": 5,
+          "late_meals_by_eater": {
+            "ally": 1,
+            "enemy": 3
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 1,
+            "enemy": 3
+          },
+          "pre150_carry_in_meals": {},
+          "carry_examples": [],
+          "unconsumed_by_end": 1,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 177,
+            "eligible": 0,
+            "ally": 0,
+            "enemy": 0,
+            "not_eaten_by20": 0
+          },
+          "reached150": true
+        },
+        {
+          "side": "B",
+          "late_corpse_spawns": 29,
+          "late_meals_by_eater": {
+            "ally": 27
+          },
+          "same_spawn_cohort_meals": {
+            "ally": 27
+          },
+          "pre150_carry_in_meals": {},
+          "carry_examples": [],
+          "unconsumed_by_end": 2,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 177,
+            "eligible": 13,
+            "ally": 12,
+            "enemy": 0,
+            "not_eaten_by20": 1
+          },
+          "reached150": true
+        }
+      ],
+      "duplicate_spawn_keys": 0
+    },
+    {
+      "game": 1021809,
+      "series": "1b72e6e0-a60c-4202-8806-f9188542e0de",
+      "ranked": true,
+      "map": "Stripes",
+      "map_hash": "63cb068bc50488498d5d8592529026bae727d681f3ca3a41995902d0cf5f3c23",
+      "own_side": "B",
+      "submission": "14585",
+      "opponent_submission": "",
+      "last_round": 90,
+      "winner": "B",
+      "sides": [
+        {
+          "side": "A",
+          "late_corpse_spawns": 0,
+          "late_meals_by_eater": {},
+          "same_spawn_cohort_meals": {},
+          "pre150_carry_in_meals": {},
+          "carry_examples": [],
+          "unconsumed_by_end": 0,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 70,
+            "eligible": 0,
+            "ally": 0,
+            "enemy": 0,
+            "not_eaten_by20": 0
+          },
+          "reached150": false
+        },
+        {
+          "side": "B",
+          "late_corpse_spawns": 0,
+          "late_meals_by_eater": {},
+          "same_spawn_cohort_meals": {},
+          "pre150_carry_in_meals": {},
+          "carry_examples": [],
+          "unconsumed_by_end": 0,
+          "fixed20": {
+            "born_from": 150,
+            "born_through": 70,
+            "eligible": 0,
+            "ally": 0,
+            "enemy": 0,
+            "not_eaten_by20": 0
+          },
+          "reached150": false
+        }
+      ],
+      "duplicate_spawn_keys": 0
+    }
+  ],
+  "contract": "Donor cohort born>=150; consumer born=meal round-age. Fixed20 includes births150..min399,R-20, event age<=20. No terminal carry; early endings have no eligible late pearls. Current10game/2series audit, not the peer463-game population. Unconsumed is an accounting residual, not a claim of physically remaining pearls."
+}
