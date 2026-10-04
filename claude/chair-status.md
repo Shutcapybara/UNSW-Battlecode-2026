@@ -74,7 +74,7 @@ State: ACTIVE. Updated 4 Oct 2026 11:18Z (unit 2, with the lead's answers). Bran
 |---|---|---|
 | H1 | Final submission time | closed: the lead handles it; no Chair-imposed freeze (D-050 §2) |
 | H2 | Lane names | closed: Kageyama, Hinata, Asahi, Daichi; council Tanaka, Sugawara, Nishinoya (D-050 §1) |
-| H3 | (a) The hourly Chair task ("Ushijima Chair unit (hourly)", trig_015sDUxBjiUixBtBsARAE334, minute :59) is disabled and not tied to the Mac: turn on "Require this computer" for it in the desktop app and enable it. (b) The coherence task's instruction change was submitted at 11:20Z; see the status line below the table | open |
+| H3 | (a) The hourly Chair task ("Ushijima Chair unit (hourly)", trig_015sDUxBjiUixBtBsARAE334, minute :59) is disabled and not tied to the Mac: turn on "Require this computer" for it in the desktop app and enable it. (b) The coherence task's instruction change ("Battlecode git coherence (2-hourly)", step 4: fail only on `<<<<<<<` markers, not on `changed in both`) was submitted at 11:20Z and returned "needs approval on the Mac"; nothing changed. The lead edits that one sentence in the task's instructions in the desktop app | open |
 | H4 | Native post-m2 decode | done: started by the lead, writer seen at 11:13Z; overlaps Asahi's panel once (D-050 §5) |
 | H5 | GPU | closed: GPU work runs on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3) |
 | H6 | Live ops credential: nothing needed now. The key stays on the hub, the executor stays in shadow, and Daichi works through hub controls (D-048 §1) | closed |
