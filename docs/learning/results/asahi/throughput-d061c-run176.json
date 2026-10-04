@@ -1,0 +1,90 @@
+{
+ "engine": {
+  "error": "Traceback (most recent call last):\n  File \"/Users/alik/Documents/Projects/wt-asahi/tools/asahi/throughput.py\", line 67, in worker\n    return _worker(args)\n  File \"/Users/alik/Documents/Projects/wt-asahi/tools/asahi/throughput.py\", line 134, in _worker\n    eng.run(mb, reply, bot_spawn=spawn, debug=0, seed=rng.randrange(1, 2 ** 31))\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alik/Documents/Projects/UNSW-Battlecode-2026/.venv/lib/python3.13/site-packages/unswbc/engine.py\", line 117, in run\n    instance = linker.instantiate(store, self._module)\n  File \"/Users/alik/Documents/Projects/UNSW-Battlecode-2026/.venv/lib/python3.13/site-packages/wasmtime/_linker.py\", line 169, in instantiate\n    raise WasmtimeError._from_ptr(error)\nwasmtime._error.WasmtimeError: mmap failed to reserve 0x104000000 bytes\n\nCaused by:\n    Cannot allocate memory (os error 12)\n\n"
+ },
+ "encode": {
+  "error": "Traceback (most recent call last):\n  File \"/Users/alik/Documents/Projects/wt-asahi/tools/asahi/throughput.py\", line 67, in worker\n    return _worker(args)\n  File \"/Users/alik/Documents/Projects/wt-asahi/tools/asahi/throughput.py\", line 134, in _worker\n    eng.run(mb, reply, bot_spawn=spawn, debug=0, seed=rng.randrange(1, 2 ** 31))\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alik/Documents/Projects/UNSW-Battlecode-2026/.venv/lib/python3.13/site-packages/unswbc/engine.py\", line 117, in run\n    instance = linker.instantiate(store, self._module)\n  File \"/Users/alik/Documents/Projects/UNSW-Battlecode-2026/.venv/lib/python3.13/site-packages/wasmtime/_linker.py\", line 169, in instantiate\n    raise WasmtimeError._from_ptr(error)\nwasmtime._error.WasmtimeError: mmap failed to reserve 0x104000000 bytes\n\nCaused by:\n    Cannot allocate memory (os error 12)\n\n"
+ },
+ "net": {
+  "workers": 8,
+  "seconds": 300.3,
+  "decisions": 15380236,
+  "games": 17728,
+  "per_worker_per_s": 6401.7,
+  "workers_ok": 8,
+  "smoke": {
+   "mode": "net",
+   "worker": -1,
+   "decisions": 2012,
+   "games": 1,
+   "seconds": 0.2637338638305664
+  },
+  "per_hour": 184368075,
+  "games_per_hour": 212511.5,
+  "rows": [
+   {
+    "mode": "net",
+    "worker": 0,
+    "decisions": 1928597,
+    "games": 2086,
+    "seconds": 300.18460392951965
+   },
+   {
+    "mode": "net",
+    "worker": 1,
+    "decisions": 1920919,
+    "games": 2221,
+    "seconds": 300.2223539352417
+   },
+   {
+    "mode": "net",
+    "worker": 2,
+    "decisions": 1918653,
+    "games": 2351,
+    "seconds": 300.0646901130676
+   },
+   {
+    "mode": "net",
+    "worker": 3,
+    "decisions": 1922105,
+    "games": 2165,
+    "seconds": 300.0730257034302
+   },
+   {
+    "mode": "net",
+    "worker": 4,
+    "decisions": 1933134,
+    "games": 2296,
+    "seconds": 300.31690406799316
+   },
+   {
+    "mode": "net",
+    "worker": 5,
+    "decisions": 1920860,
+    "games": 2173,
+    "seconds": 300.0107169151306
+   },
+   {
+    "mode": "net",
+    "worker": 6,
+    "decisions": 1922923,
+    "games": 2187,
+    "seconds": 300.07118010520935
+   },
+   {
+    "mode": "net",
+    "worker": 7,
+    "decisions": 1913045,
+    "games": 2249,
+    "seconds": 300.13684701919556
+   }
+  ]
+ },
+ "host": {
+  "node": "Als-MacBook-Pro.local",
+  "cpu": "arm",
+  "python": "3.13.12",
+  "cpus": 18,
+  "bar_per_hour": 10000000.0
+ }
+}

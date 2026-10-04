@@ -9,11 +9,14 @@ Three modes, each on W worker processes for S seconds, games on the 17 live maps
   net     - + the network forward and an action from its argmax (relative F/R/B/L -> absolute)
 Reports decisions per second per worker, total decisions per hour, and games per hour. Entry bar (D-061 §C): 1e7/h.
 
-    python tools/asahi/throughput.py [--workers 8] [--seconds 300] [--modes engine,encode,net]
+    python tools/asahi/throughput.py [--workers 8] [--seconds 300] [--chunk 30] [--max-games 500] [--modes engine,encode,net]
+
+Each task runs in a fresh process (maxtasksperchild=1): per-game wasmtime stores leak address space (jobs 176-178).
+Wall-clock rates include process start-up; per-decision times split engine+glue / encoder / network.
 """
 from __future__ import annotations
 
-import argparse, json, os, random, sys, time, traceback
+import argparse, gc, json, os, random, sys, time, traceback
 from multiprocessing import Pool
 from pathlib import Path
 
@@ -62,16 +65,18 @@ class Net:
 
 def worker(args):
     """Returns plain numbers only. Any exception (including one the engine re-raises from a callback as a wasmtime
-    trap, which holds ctypes pointers and cannot cross processes: job 172) comes back as a traceback string."""
+    trap, which holds ctypes pointers and cannot cross processes: job 172) comes back as a traceback string, with the
+    progress made before it."""
+    prog = {}
     try:
-        return _worker(args)
+        return _worker(args, prog)
     except BaseException:
-        mode, seconds, wid = args
-        return dict(mode=mode, worker=wid, decisions=0, games=0, seconds=0.0, error=traceback.format_exc()[-4000:])
+        mode, seconds, wid, max_games = args
+        return dict(mode=mode, worker=wid, **prog, error=traceback.format_exc()[-4000:])
 
 
-def _worker(args):
-    mode, seconds, wid = args
+def _worker(args, prog):
+    mode, seconds, wid, max_games = args
     import numpy as np
     import block as B
     import encode as E
@@ -79,47 +84,54 @@ def _worker(args):
     eng = EngineModule()
     net = Net(E.N_CH, E.N_SC) if mode == 'net' else None
     rng = random.Random(1000 + wid)
+    pc = time.perf_counter
     t_end = time.time() + seconds
-    decisions = games = 0
+    st = dict(decisions=0, games=0, rounds=0, t_cb=0.0, t_enc=0.0, t_net=0.0, seconds=0.0)
+    prog.update(st)
     cb_err = []
     t0 = time.time()
-    while games == 0 or time.time() < t_end:      # at least one game (the in-process smoke uses seconds = 0)
+    # at least one game (the in-process smoke uses seconds = 0); at most max_games per process: wasmtime stores leak
+    # address space per game (jobs 176-178: instantiate fails with ENOMEM after many short games even with
+    # gc.collect every 4 games), so rollout processes must be recycled (Pool maxtasksperchild=1 in main)
+    while st['games'] == 0 or (time.time() < t_end and st['games'] < max_games):
         m = rng.choice(MAPS)
         mb = (ROOT / 'maps/live' / f'{m}.map').read_bytes()
         enc = {}
 
         def spawn(d, s):
             try:
-                _spawn(d, s)
+                if mode != 'engine':
+                    enc[d] = E.Encoder(B.parse_spawn(s.decode() if isinstance(s, bytes) else s))
             except Exception:
                 cb_err.append(traceback.format_exc()[-4000:])
 
         def reply(d, raw):
+            c0 = pc()
             try:
                 return _reply(d, raw)
             except Exception:
                 cb_err.append(traceback.format_exc()[-4000:])
                 return b'ENDTURN\n'
-
-        def _spawn(d, s):
-            if mode != 'engine':
-                enc[d] = E.Encoder(B.parse_spawn(s.decode() if isinstance(s, bytes) else s))
+            finally:
+                st['t_cb'] += pc() - c0
 
         def _reply(d, raw):
-            nonlocal decisions
             if mode == 'engine':
                 # facing is on the second line of the block: "DIR x"
                 txt = raw.decode() if isinstance(raw, bytes) else raw
                 if txt.startswith('ENDGAME'):
                     return b'ENDTURN\n'
                 fac = txt.split('\n', 2)[1].split()[1]
-                decisions += 1
+                st['decisions'] += 1
                 return f'MOVE {fac}\nPROTOCOL 3\nENDTURN\n'.encode()
+            c0 = pc()
             b = B.parse_block(raw)
             if b.ended:
                 return b'ENDTURN\n'
             x = enc[d].observe(b)
-            decisions += 1
+            c1 = pc()
+            st['t_enc'] += c1 - c0
+            st['decisions'] += 1
             if mode == 'encode':
                 rel = 'F'
             else:
@@ -127,44 +139,61 @@ def _worker(args):
                 planes = v[:49 * E.N_CH].reshape(49, E.N_CH).T.reshape(E.N_CH, 7, 7)
                 scal = v[49 * E.N_CH:] * 0.01
                 rel = 'FRBL'[int(np.argmax(net(planes, scal)))]
+                st['t_net'] += pc() - c1
             enc[d].act('move', rel)
             absd = DIRS[(DIRS.index(b.dir) + 'FRBL'.index(rel)) % 4]
             return f'MOVE {absd}\nPROTOCOL 3\nENDTURN\n'.encode()
 
-        eng.run(mb, reply, bot_spawn=spawn, debug=0, seed=rng.randrange(1, 2 ** 31))
-        games += 1
+        res = eng.run(mb, reply, bot_spawn=spawn, debug=0, seed=rng.randrange(1, 2 ** 31))
+        st['games'] += 1
+        st['rounds'] += int(res.rounds)
+        eng._live = None
+        if st['games'] % 4 == 0:
+            gc.collect()
+        st['seconds'] = time.time() - t0
+        prog.update(st)
         if cb_err:
             raise RuntimeError(f'callback failed on {m}:\n' + cb_err[0])
-    dt = time.time() - t0
-    return dict(mode=mode, worker=wid, decisions=int(decisions), games=int(games), seconds=float(dt))
+    st['seconds'] = time.time() - t0
+    return dict(mode=mode, worker=wid, **st)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--workers', type=int, default=8); ap.add_argument('--seconds', type=int, default=300)
+    ap.add_argument('--chunk', type=int, default=30, help='seconds per task; each task runs in a fresh process')
+    ap.add_argument('--max-games', type=int, default=500, help='games per task at most (address-space leak)')
     ap.add_argument('--modes', default='engine,encode,net')
     a = ap.parse_args()
     out = {}
     for mode in a.modes.split(','):
-        smoke = worker((mode, 0, -1))      # one game in-process first: a failure prints its full traceback here
+        smoke = worker((mode, 0, -1, 1))      # one game in-process first: a failure prints its full traceback here
         print('smoke', mode, json.dumps(smoke), flush=True)
         if smoke.get('error'):
             out[mode] = dict(error=smoke['error'])
             continue
-        with Pool(a.workers) as p:
-            rows = p.map(worker, [(mode, a.seconds, i) for i in range(a.workers)])
-        errs = [r['error'] for r in rows if r.get('error')]
+        n = a.workers * max(1, -(-a.seconds // a.chunk))
+        w0 = time.time()
+        with Pool(a.workers, maxtasksperchild=1) as p:
+            rows = list(p.imap_unordered(worker, [(mode, a.chunk, i, a.max_games) for i in range(n)]))
+        wall = time.time() - w0
+        errs = [r for r in rows if r.get('error')]
         if errs:
-            print(mode, 'worker errors', len(errs), errs[0], flush=True)
-        rows = [r for r in rows if not r.get('error')]
-        if not rows:
-            out[mode] = dict(error=errs[0])
-            continue
-        dec = sum(r['decisions'] for r in rows); sec = max(r['seconds'] for r in rows)
-        g = sum(r['games'] for r in rows)
-        out[mode] = dict(workers=a.workers, seconds=round(sec, 1), decisions=dec, games=g,
-                         per_worker_per_s=round(dec / sec / len(rows), 1), workers_ok=len(rows), smoke=smoke, per_hour=round(dec / sec * 3600),
-                         games_per_hour=round(g / sec * 3600, 1), rows=rows)
+            print(mode, 'task errors', len(errs), 'of', n, 'games before error', [r.get('games') for r in errs][:8],
+                  errs[0]['error'], flush=True)
+        dec = sum(r.get('decisions', 0) for r in rows); g = sum(r.get('games', 0) for r in rows)
+        busy = sum(r.get('seconds', 0.0) for r in rows)
+        t_cb = sum(r.get('t_cb', 0.0) for r in rows); t_enc = sum(r.get('t_enc', 0.0) for r in rows)
+        t_net = sum(r.get('t_net', 0.0) for r in rows)
+        us = lambda t: round(1e6 * t / max(dec, 1), 1)
+        out[mode] = dict(workers=a.workers, tasks=n, task_errors=len(errs), wall_seconds=round(wall, 1), decisions=dec,
+                         games=g, per_hour=round(dec / wall * 3600), games_per_hour=round(g / wall * 3600, 1),
+                         mean_rounds=round(sum(r.get('rounds', 0) for r in rows) / max(g, 1), 1),
+                         decisions_per_game=round(dec / max(g, 1), 1),
+                         us_per_decision_core_wall=round(1e6 * wall * a.workers / max(dec, 1), 1),
+                         us_per_decision_core_busy=us(busy), us_engine_and_glue=us(busy - t_cb + (t_cb - t_enc - t_net)),
+                         us_encoder=us(t_enc), us_net=us(t_net), process_overhead_share=round(1 - busy / (wall * a.workers), 3),
+                         smoke=smoke, rows=rows)
         print(mode, json.dumps({k: v for k, v in out[mode].items() if k != 'rows'}), flush=True)
     import platform
     out['host'] = dict(node=platform.node(), cpu=platform.processor(), python=sys.version.split()[0],
