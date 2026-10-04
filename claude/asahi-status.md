@@ -70,3 +70,20 @@
 - 4 Oct 20:20Z: P-4 REFUTE posted; k16 seeds 2–3 running; gate card next.
 - 4 Oct 21:25Z: k16 gate HOLD posted; learn env ready; Asahi queue empty except a Weakhold capture.
 - 4 Oct 22:45Z: queued census (D-056 §E) and throughput (D-061 §C); VM shell down (VM disk full), working by stage/commit.
+
+## Handoff (4 Oct ~23:05Z — this Asahi session is being restarted in a new instance)
+
+- **Daemon:** `tools/asahi/jobd.py` runs natively on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
+  `build/asahi/queue/` first and the main checkout's `build/learn/queue/` when idle. If it is down, the user restarts it:
+  `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
+- **Queued, not yet read** (they run after Kageyama's `teachers_v1` learn job): `170`/`171` discordance census
+  (D-056 §E; out `docs/learning/results/asahi/census-{pool,gen}.md`), `172` in-loop throughput (D-061 §C; out
+  `docs/learning/results/asahi/throughput-d061c.json`, bar 1×10⁷ decisions/h), `173` commit. Each needs one BOARD line;
+  then request a push of `r/asahi` via `hub-state/control/git.json` (only if none is pending).
+- **Open with the Chair:** REG-002 k16 promotion (council round D-063 §B; LS-1 stop 02:15Z). P-4 refuted (D-060).
+- **Known nits:** the BOARD line about the queued census/throughput says 22:45 UTC; it was posted at 22:33.
+  `hkz26_capture`'s "changed without veto" count is inflated by split re-selections (unused `dirs` field);
+  behavioural parity was verified on no-firing games instead.
+- **Session limits seen:** the Cowork VM's own disk filled (device shell unusable after ~22:30Z); files were moved with
+  stage/commit. The Mac disk filled once (18:47Z); jobd now waits for ≥ 20 GB free.
+- The hourly self-wake of this session was cancelled at handoff; the new instance should schedule its own.
