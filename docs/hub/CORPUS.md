@@ -1,6 +1,6 @@
 # Corpus and store — what is in them (replay lead: chongqing, wave 2; antioch before)
 
-As of **2026-10-04 02:00Z** (index 117,097 games, collector running on the Mac). Store built **on the Mac** (Cowork VM,
+As of **2026-10-04 03:25Z** (index 117,879 games, collector running on the Mac). Store built **on the Mac** (Cowork VM,
 `wt-chongqing`, `build/` symlinked to the main checkout) — the desktop copy under `wt-antioch` is stale from 1 Oct 20:50Z.
 Republished after every build. **No API calls from this lineage; GPT's analyst also pulls replays this wave — the hub
 collector is the only writer of `public_replays/corpus/`.**

@@ -366,3 +366,23 @@ map_era) norms need ≥ ~300 field games per new map (decode in progress). Until
 (transits 0.65, total 0.47, units 0.40, splits 0.38, bed 0.33) and Antioch's old-map table, both labelled.
 
 **Disagreement slot:** none new. Agreement with Shenzhen/Himeji/Nara on the map swap, the cage, and the live build.
+
+## chongqing (unit 3) — 2026-10-04 03:25 UTC — per new map (era `post-m2`), field sides vs carthage-05 live
+
+Source: `docs/findings/2026-10-04-chongqing-unit3-new-map-queen-hazard-and-cull.md` §1. Field = non-team-7 sides in the store
+(100–130 per map; ~60 % are our opponents); top-ten column is ranked top ten (22–35 per map). Provisional until the bulk decode.
+
+| map (new) | RL share | queen alive at RL end: field / top-10 / **us** | field queen death cause | our queen death cause | target for us | query |
+|---|---:|---|---|---|---|---|
+| Schooltime | 1.00 | 0.965 / 1.000 / **0.000** | cage keeps it | own 1.00 at r0 | ≥ 0.95 (H-H3 / H-SZ1 cage rule) | `qs` §1 |
+| Trauma | 0.93 | 0.798 / 0.957 / **0.000** | own 0.42, h2h-e 0.33 | **wall 0.61** (cull) | ≥ 0.8 — H-C5 first | same |
+| Portals | 1.00 | 0.375 / 0.586 / 0.000 | own 0.61, cull 0.19, h2h-e 0 | **wall 0.88** (cull) | ≥ 0.4 (H-C5), then own-traffic (L42) | same |
+| Maze | 0.93 | 0.315 / 0.406 / 0.000 | h2h-e 0.41, own 0.35 | **wall 0.67** (cull) | ≥ 0.3 (H-C5) | same |
+| weakhold | 0.59 | 0.279 / 0.350 / 0.000 | h2h-e 0.41, wall 0.33 | **wall 1.00, r29/r44** (cull after first split) | ≥ 0.3 (H-C5) | same |
+| Slithery Fight | 1.00 | 0.317 / 0.276 / 0.000 | h2h-e 0.59 | own 0.56, h2h-e 0.31 | ≥ 0.3 (no pocket any more) | same |
+| Around UNSW / Australia / Islands | 0.84–1.00 | 0.14–0.19 / 0.24–0.37 / 0.000 | h2h-e 0.68–0.83 | h2h-e 0.67–1.00 | parity with field (0.15–0.2) via distance (H-Q5) | same |
+| Autarky / Default / QoS / PD / Tower Defense | 0.16–0.47 | 0.09–0.50 / 0.07–0.83 / ≤ 0.08 | h2h-e 0.7–0.9 | h2h-e 0.4–0.8 | secondary; RL rare | same |
+| Devil / Trophy / Stripes | ≤ 0.02 | n/a | — | — | none — elimination maps | same |
+
+**Row for the gate's queen column:** judge queen arms on the nine queen maps (Schooltime, Trauma, Portals, Maze, Slithery, weakhold,
+Around UNSW, Australia, Islands), not on the eight others; RL-share-weighted.

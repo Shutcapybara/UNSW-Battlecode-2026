@@ -5,7 +5,12 @@ Worktree `../wt-chongqing` (Mac, via the Cowork VM; `build/` and `public_replays
 hour off, repeat (user's instruction, to conserve credits). No API calls; GPT's analyst pulls replays this wave, so this
 lineage only decodes what the hub collector has already written.
 
-## Top — read this first (2026-10-04 02:00 UTC)
+## Top — read this first (2026-10-04 03:25 UTC)
+
+- **Unit 3: our bot culls its own queen.** On the new corridor/portal maps our queen dies by wall (Trauma 0.61, Portals 0.88,
+  Maze 0.67, weakhold 1.00 at r29/r44), 74 % within 5 rounds of its own production split; our culls are north-into-kelp walks
+  (≥ 90 % of our wall deaths; chronic since 13010). H-C5: exempt ids 0/1 from the cull — prerequisite for every L39/L49 arm.
+  Per-new-map queen table in TARGETS § chongqing (unit 3): nine of 17 maps are queen maps; Devil/Trophy/Stripes are not.
 
 - **Map swap 2 Oct 03:49Z** (six maps new, seven back at 04:31Z): store `games.map_era` ∈ {pre, post, post-m2}; per-map
   references must state it. Live is carthage-05 (14585) since 2 Oct 04:22Z. H-C1 = the new Schooltime cage (0/51 old map,
@@ -43,6 +48,8 @@ lineage only decodes what the hub collector has already written.
 | H-C2 | the queen tiebreak is our largest loss mechanism on Schooltime/Trauma; a merely surviving queen flips most | posted, 0.7 | queen alive ≥ 0.5 on those maps without ranked win +10 pp | 2 maps, s1–3, both panels (~300 pairs) | Claude tester (carthage-10 built) |
 | H-C3 | Default early queen deaths | **withdrawn unit 2** (old map; new Default 0/17) | — | — | — |
 | H-C4 | queen hunting pays now | **trigger fired unit 2** (top ten 0.444 alive); lane is Shenzhen's H-SZ5/H-SZ14 | — | — | — |
+| H-C5 | exempt the queen (ids 0/1) from the cull — our queen is culled north-into-kelp within 5 rounds of its first split | posted unit 3, 0.85 | alive@RL-end < 0.15 on Trauma/Portals/Maze/weakhold after the exemption, or econ lb < −0.03 | 4 maps × s1–3 both seats, live maps | Claude tester / Carthage lineage |
+| H-C6 | the north-into-kelp cull wastes corpses (recovered 0.68 vs top ten 0.78); cull in place beside an ally | posted unit 3, 0.6 | corpse_recovered_share not ≥ +0.05 | pool + gen s1–3 | any tester |
 
 ## Queue (next units, in order)
 
@@ -59,5 +66,7 @@ lineage only decodes what the hub collector has already written.
 - 2026-10-03 23:00 UTC — ladder reset found; `build.py games` patched; decode wrapper; first batches (team 7).
 - 2026-10-03 23:20 UTC — queen columns added to `sides`; `qq.py` connector.
 - 2026-10-04 00:20 UTC — unit 1 published: finding, TARGETS § chongqing, CORPUS.md, board C1-01…07. Sleeping one hour.
+- 2026-10-04 03:25 UTC — unit 3: per-new-map queen hazard table; the cull mechanism (C3-01), H-C5/H-C6; readings Rome 03/04;
+  +65 games (VM slow). Sleeping one hour.
 - 2026-10-04 02:00 UTC — unit 2: map swap verified, `map_era` in the store, +837 games (post-m2 first), post-m2 ranked
   queen table, H-C1/H-C3 corrected on the board (C2-01…07), finding 2, TARGETS unit-2 section. Sleeping one hour.
