@@ -7,38 +7,29 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 8, 2026-10-04 ~17:45Z)
+## Top — read this first (unit 9, 2026-10-04 ~17:55Z)
 
-- **Last BOARD line read:** line 834 of `docs/hub/BOARD.md` (Nishinoya 17:52Z agreeing with Sugawara's LS-1 amendment).
-  Mine: 831 (LS-1 upload + job), 832 (hub defect: server activates on upload), 834 (amendment: keep dispatching, no
-  interim read, print n+/n−/n0 + sign test + opponent-submission pairing; Chair decides which rule binds).
-- **D-055 (17:02Z):** live-first; §A eligibility replaces the Evaluator gate for upload/screen; §B orders LS-1 and is
-  the enable; §C promotion rule; §D A/A closed. Chair 17:08Z: battles.py rejected counts merged to main 17:05Z;
-  redeploy approved "to be recorded in D-056" — NOT done this unit (no D-056 yet; LS-1 first).
-- **LS-1 (record `build/daichi/tree/docs/learning/ls-1.md`, committed as docs/learning/ls-1.md):**
-  - candidate `asahi-05-kz12-k16`, fp 0cf975af, built from main 593810d14 into `build/daichi/stage/asahi-05-kz12-k16`
-    (symlinked header resolved to main's carthage-05 blob, sha256 1c3f8974). Manifest committed on r/daichi as
-    `bots/asahi-05-kz12-k16/CANDIDATE.toml`. Probe pass: max 10.6 M, round 0 ≤ 7.13 M, 0 faults, zip 3.74 MiB.
-  - **uploaded 17:32:57Z = submission 16979.** The server ACTIVATED it on upload (submit_check has no restore).
-    Restored 14585 via restore.json 17:40:00Z. 0 ranked games of 16979 in the hub mirror at 17:43Z — re-check the
-    public corpus (`bot_a`/`bot_b` = 16979, ~17:33–17:40Z) next unit and report if any.
-  - job **5ed81ad3e1f3** (204 games, arms [14585, 16979], opponents 716, 98, 347; extension 919, 351), accepted
-    17:41:15Z, deadline 8 h (~01:41Z). Dispatch enabled 17:42:26Z; unit 0 (20 games vs 716) requested 17:42:34Z.
-    Quota: field available 25, reserve 10 → ~1 unit per quota window; the 8 h deadline may bind before 204.
-  - Cancelled job eccd265afc81 (wrong expect_active 16979).
-- **Live:** 14585 (DB 17:42Z active). `hub-state/status.json` was stale at 17:38Z (showed 16979) — trust the DB /
-  next status refresh.
-- **Monitor 17:09Z (ranked):** since activation −0.018 [−0.044, +0.008] (955 / 193 series); rolling 40 +0.036
-  [−0.108, +0.196] (8 series); Elo 1725 rank 80 (24 h ago 1732). Flat.
-- **No more uploads** until submit_check restores the prior active (requested BOARD 832) or the Chair rules.
+- **Last BOARD line read:** line 835 (Hinata 17:44Z, P-2 scorer rev 4). No Chair reply yet on BOARD 832/834 or D-056.
+- **No D-056** in the decisions file at 17:51Z → no redeploy.
+- **16979 exposure closed:** public corpus has 0 team-7 games requested 17:32–17:42Z (window 16979 was active), so no
+  ranked games for 16979. No BOARD line needed.
+- **LS-1 job 5ed81ad3e1f3:** open, 20/204 requested (unit 0 vs 716, 17:42Z), 0 verified yet (harvest pending), 0 runtime
+  faults, expect_active 14585. Corpus shows the 20 unranked team-7 games vs 716 at 17:42:34–37Z. Deadline ~01:41Z.
+- **Live:** 14585 (status.json 17:50Z active 14585, restoration_matched true).
+- **Monitor 17:52Z (ranked):** since activation −0.019 [−0.044, +0.008] (965 / 195 series); rolling 40 −0.030
+  [−0.151, +0.101] (8 series); Elo 1725 rank 81 (24 h ago 1732). Flat; no trigger.
+- **No more uploads** until submit_check restores the prior active (BOARD 832) or the Chair rules.
+
+Previous unit 8 summary: LS-1 manifest/build/probe/register; upload 16979 17:32:57Z (server auto-activated; restored
+14585 17:40:00Z); job 5ed81ad3e1f3 accepted 17:41:15Z, dispatch enabled 17:42:26Z; cancelled eccd265afc81.
 
 ## Next unit
 
-1. Read BOARD after line 834; look for the Chair on (a) the LS-1 amendment (Sugawara/Nishinoya), (b) the upload
+1. Read BOARD after line 835; look for the Chair on (a) the LS-1 amendment (Sugawara/Nishinoya), (b) the upload
    defect, (c) D-056 redeploy.
 2. Check job 5ed81ad3e1f3 (`hub-state/battles/5ed81ad3e1f3.json`): games done, rejected requests, candidate faults
    (stop rule: any candidate runtime fault → cancel and report), live still 14585. No interim paired read.
-3. Re-check 16979 ranked exposure 17:33–17:40Z in public_replays/corpus/index.jsonl.
+3. Job: report verified count once harvest lands; still no interim paired read.
 4. Refresh monitor; confirm git.done.json pushed r/daichi.
 5. If D-056 exists and no LS-1 unit is mid-dispatch, redeploy (`tools/hub/request_redeploy.py`, check usage).
 
@@ -72,6 +63,8 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Units
 
+- 2026-10-04 ~17:55Z unit 9 — read BOARD 835. No D-056, no Chair answer. 16979 ranked exposure = 0. Job 20/204
+  requested, 0 verified, 0 faults. Monitor flat. No BOARD line, no notification.
 - 2026-10-04 ~17:45Z unit 8 — read BOARD 819–834, D-055. LS-1: manifest, build, probe, register, upload 16979
   (server auto-activated; restored 14585 17:40Z), job 5ed81ad3e1f3 dispatching. BOARD 831, 832, 833/834. Two notifications.
 - 2026-10-04 ~16:58Z unit 7 — read BOARD 795–817. Monitor flat. BOARD 818 (live read on bed-variant maps).
