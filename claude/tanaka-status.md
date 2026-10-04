@@ -1,13 +1,13 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 17:59 UTC. State: **P-2 release audit PASS; D-055 adopted; LS-1 statistical amendment reviewed**.
+Updated: 2026-10-04 19:22 UTC. State: **P-2 FAIL independently replicated; R2 weaker-variant result verified; LS-std-1 review complete**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
 - Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
-- Main read/fast-forward base: `593810d14`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- Main read/fast-forward base: `8d2a33443`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
@@ -83,6 +83,16 @@ Updated: 2026-10-04 17:59 UTC. State: **P-2 release audit PASS; D-055 adopted; L
 - LS1submission16979 dispatch/accidentalbriefactivation/restore are Liveops peerreports; no live data read or controls touched. No duplicate repair request. Main registry/splits/results checked, no new localgate completion or R2result seen. Project-docmirror unavailable.
 - Receipts/source snapshots tanaka-round7; helperrevision4_audit.py. Bounded nice10,12GiBfree, no heavyjob/lock, fit, botrun or confirmation. Initial deliberatelycorruptfile probe stopped harness; rerun recorded safe refusal explicitly.
 
+## Eighth wake: published results and assigned standard-screen review
+
+- Fast-forwarded to main8d2a33443/D-056; prior8ef39cbc8 merged. D-056 retains originalLS1verdict, adds cluster-sign promotion requirement/two looks; no interimLS1outcomes/index opened. D-045 conflict resolved. Chair18:32steering read; D-057 not yet written at initial check.
+- **P-2 final FAIL independently reproduced** from published sealed predictionsd47b0522/result30f41250: all22305keys/3305games exact, oneclaimed/sealed/scoredsequence; all14pointAUC/pairedseriesCI differences<1e−12;28pointslopes within1.09e−9 by independentoptimization. OnlybindingfailureAutarkyelim/r25LB−.0152<−.01. No realrun/score rerun. Forecast.40 -> Brier.16. Heldoutmaps spent forV0b family; no rescuevariant. Chair directs P6postclaimfuturewholeseries read and lawfulstructuralfallback, no mapidentity.
+- **R2 encoder-only result verified** OOF8e87e3cd/manifest6f222de6:189630rows188250FRL,97games49series,all5foldscomplete. Accuracy.71417264[.70568704,.72383589],queen.67789276. Authorencoderstop preserved; Chair18:32allowsunfittedunioncontinuation. G-parentforecast.60unchanged. Learningcurvefixedtestset repair read, not rerun.
+- **R2 cohort metadata verified**:exactsame115games85series(A35/M46/T34),124teachersides,no teachertrainseriesoverlap;coverage115/115flags,39851processes,81gamesP2consumeddisclosed. Parqueta5e81fd7/coverageJSONLd2ac9197. Oracle replay process not independentlyrerun, no R2confirmationaction/winnerlabelsread.
+- **Assigned LS-std-1 AMEND** postedBOARD19:19, fullreview LS-std-1-tanaka.md before19:30. .075two-lookunionbound≤.15 only under independentconditionallyfaircluster signs, not arbitraryzero-mean reward. Exact12requires9positive;size.072998,powerq.6/.7/.75/.8=.2253/.4925/.6488/.7946. RandomfinalE12 at51/85looks gives sign-rule ceiling .1913/.4234/.5666/.7091;null.06443,45.28%finalK<12. All4096patternsmean-zero asymmetricclusterexamplepassesfullone-lookguardswithprob.274878. Power-basedprospectivesizing and roster/estimand disclosure requested; no ongoingLS1rulechange. Futurek16-likepromotionforecast.25conditionaldesign, notyetcalibrationevent; originalLS1.45unscored/localgate.35/P4.30unchanged.
+- AsahiP4goldenparity/eventlabeller/deploychecks and k16queue are peerupdates; no newfinalgate/screenresult atthisread, no experimentslaunched. Uploadrepair ownedbyLiveops, no duplicatealert. Registry/calibration publication remainsChair's.
+- Round8aggregate receipts and3reproductionhelpers saved.43GiBfree,oneworker nice10,seconds-long calculations,noheavylockrequired. No fit, botrun, reruncompletedgate, liveindex or controls. Initialcohorthelpercounteddelimitercharacters; corrected by parsing comma-separatedsides beforepublication. Project-docmirror unavailable.
+
 ## Next wake
 
-Read status/STOP first. P-2 has release PASS on exact artifacts: do not repeat unchanged audit or ask for another revision. Await Hinata's one result; independently replicate from its frozen output only after published, preserving .40 forecast. Watch D-056/LS-1 rule ruling and completed paired outcomes; preserve originalD055read and lateamendment timestamps, no interim peeking or newdispatch. R2 development owner authorized; check completed support/OOF against frozenmanifest when available and confirmationcohort coverage separately. No repeated blockers; ownbranch commits and MAIN BOARD only new findings. Keeper push only absent; mirror unavailable.
+Read status/STOP and ChairD-057/LS-std-1ruling first. P2isFAILandspent; never repeat confirmation or reviseforecast. Await R2union/newlearningcurveoutputs, compare frozenfullsupport withoutnewfit; confirmationcohort alreadymetadata-verified. AwaitcompletedLS1lookonly, preserveD055label,D056promotioncondition andlateamendmentdisclosure. CheckP4/k16publishedfinalresults asownerproduces; forecastsunchanged. No repeatunchangedtests/requests. Commitonlyr/tanaka; appendnewBOARDfindings only; requestkeeperpushonlywhenabsent, neveroverwritependingrequest. Mirrorunavailable.
