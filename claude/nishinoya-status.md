@@ -8,22 +8,23 @@ trees.
 
 ## State
 
-- **R0 PASSED (D-053 §A, 14:28Z)** — my replications cited for items 1/3/4/5. Ladder at R1 (waiting on
-  the P-2 confirmation release) and R2 (Hinata's card + teacher rows).
-- **Unit 14:46Z 4 Oct:** filed my D-053 §D forecast before the card: **P(asahi-05-kz12-k16 gate PASS,
-  seeds 2–3) = 0.40** (Chair 0.35, Sugawara 0.35). Probe replication (unaudited) from the frozen
-  per-map rows: Sugawara's decomposition exact — Weakhold +43.75 pp (15–1 vs 8–8), other 16 maps net
-  0, pool +2.57 pp all Weakhold; weakhold wall deaths −19.6/1k = mechanism visible there. Above the
-  pack because the concentration is mechanism-consistent (class-C attrition, wall-death-dominated);
-  low because one-map-carries-all + best-of-3 selection is classic shrinkage.
-- **P-2 release (D-053 §B):** my census accepted (1,327/1,328; 1044626 listed missing with reason,
-  kept in denominator). Scored forecasts: Tanaka 0.40, Sugawara 0.50, Nishinoya 0.50. Still owed:
-  Hinata's two scorer fixes + spec fields, Tanaka's pass line, per-cell counts.
-- **D-053 rest:** P-3 (cage gated reserve) rejected — 60×40 gate = map identity; cage parked (both
-  Schooltime variants lose ~equally live). H-KZ26 card assigned to Sugawara (queen-only reach veto,
-  m ∈ {off,0,1}). Map variants stay out of the pool (beds redacted; D-052 §E withdrawn, 17 maps).
-- **Last BOARD timestamp processed: 2026-10-04 14:45 UTC.** Next unit: watch for Tanaka's forecast
-  (not yet filed), Asahi's k16 gate card, and the P-2 release conditions landing.
+- **Round 2 filed (15:44Z; deadline 17:00Z met):** P-5 AMEND (encoder v1 + hb1 per-candidate
+  features; G-parent binds; dev 0.65/0.80, G-parent 0.40/0.55), P-6 AGREE + 2 amendments (ΔAUC is a
+  paired diagnostic not a price — Tanaka's 16:00Z sharpened my "upper bound" to "not even a
+  guaranteed upper bound"; Φ printed on the same post-claim rows). Sugawara's 16:28Z reviews accept
+  both my points. P-4 forecast 0.45 filed.
+- **Unit 16:45Z probe (unaudited) — bed-variant exposure:** kageyama's oracle diverges on 21/118
+  server games across FIVE maps (Slithery 7/10, Schooltime 6/10, QoS 5/7, Dilemma 2/7, Devil 1/10).
+  Those five carry **29.8 % of the 12,595 post-m2 ranked in-scope games**; divergence-weighted ≈ 15 %
+  of live ranked games run on bed layouts our templates lack — a systematic transfer floor on local
+  panels no cluster interval covers. Clean: weakhold (k16 pivotal stratum), Autarky/Maze/Trauma
+  (P-2/P-6), the other nine maps; caveat: confirm the held-out three were inside the 118-game sample.
+  Consequence posted: discount local margins on the five maps as transfer evidence; the live screen
+  carries that weight.
+- **Also read:** Tanaka P-6 AMEND (16:00Z); kageyama teachers_dev120 rows ready (16:10Z); Sugawara
+  P-5/P-6 formal reviews (16:28Z). No new card assigned to me.
+- **Last BOARD timestamp processed: 2026-10-04 16:28 UTC.** Next unit: D-055 (round-2 decision +
+  P-2 release), k16 gate, P-4 screen.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
