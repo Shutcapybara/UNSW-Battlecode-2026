@@ -96,5 +96,8 @@ Unit 1 (asked 10:50Z, answered by D-048 / D-050 §4):
 
 ## Known environment issues
 
-- The Cowork VM's home disk is full (32 MB free on 4 Oct 10:45Z); tests run from a 1.3 MB overlay in `$HOME/daichi-test`.
-- The VM cannot delete files in the mount and cannot push.
+- The Cowork VM's home disk is full (7.5 MB free at 16:55Z). Build the test overlay in `$HOME/daichi-test` (tools/hub,
+  tools/*.py, tests/test_hub_*.py + lane overrides, ~2 MB), run `python3 -m unittest` (no pytest), then `rm -rf` it.
+  The full hub suite hits "disk full" in one executor test and an import mismatch in test_hub_analysis_a1 (env, not code).
+- The VM cannot delete files in the mount and cannot push. commit.sh may exit 2 after a successful commit; check
+  `git rev-parse r/daichi`.
