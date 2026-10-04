@@ -12,7 +12,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 | Rung | Adds | Status | Owner | Record |
 |---|---|---|---|---|
 | R0 | infrastructure | **open**; most items reported done on lane branches, none recorded yet | Kageyama, Hinata, Asahi, Daichi | D-046, D-050 |
-| R1 | V0 value model | P-1 (GBT) failed in development; P-2 (logistic) passed its own gate in development; confirmation on held-out maps waits for D-050 and the decode | Hinata | D-047, D-049 |
+| R1 | V0 value model | P-1 (GBT) failed in development; P-2 (logistic) passed its own gate in development; confirmation held until D-052 | Hinata | D-047, D-049, D-051 §6 |
 | R2 | P1 BC direction head | not started; offline work may run in parallel with R1 (D-047 §3) | Hinata | |
 | R3 | split/size, cull, sprint heads | not started | Learner | |
 | R4 | feature blocks | not started | Data, Learner | |
@@ -25,16 +25,16 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 
 | # | Item | Gate | Owner | Status |
 |---|---|---|---|---|
-| 1 | Post-m2 decode finished (queue 7,617 at 10:30Z and growing; Nishinoya probe 1, unaudited) | every in-scope post-m2 game and all own games decoded | Kageyama (native Mac job) | running since about 11:13Z, started by the lead |
+| 1 | Post-m2 decode finished (queue 7,617 at 10:30Z and growing; Nishinoya probe 1, unaudited) | every in-scope post-m2 game and all own games decoded | Kageyama (native Mac job) | running since about 11:13Z; 11,455 of 17,206 at 11:50Z (Nishinoya) |
 | 2 | Frozen splits | manifests with hashes in `docs/learning/splits/` | Chair (maps), Kageyama (series, fixtures, row counts) | held-out maps frozen: Autarky, Maze, Trauma (D-049). Kageyama's v1 manifests used the earlier set; v2 requested (D-050 §5) |
-| 3 | Observation encoder | Python = C++ bit for bit on 1,000 turns | Kageyama | reported: 40,002 turns, 0 mismatches (`r/kageyama`); recorded after merge and Nishinoya's re-run |
-| 4 | Action labeller | agreement with HB-1 labels on Heartbreaker data > 99 % | Kageyama | reported: 100 % of 75,306 turns; recorded after merge and Nishinoya's re-run |
-| 5 | Leakage audit | no held-out map, series or gate fixture in any training set | Kageyama | reported: 9 checks; re-run on the v2 manifest |
+| 3 | Observation encoder | Python = C++ bit for bit on 1,000 turns | Kageyama | **passed** (D-051 §5): 40,002 turns, 0 mismatches; re-run by Nishinoya on its own fixtures, 1,549 turns, 0 mismatches |
+| 4 | Action labeller | agreement with HB-1 labels on Heartbreaker data > 99 % | Kageyama | **passed** (D-051 §5): 100 % of 75,306 Heartbreaker turns; re-run by Nishinoya, 100 % of 31,061 turns |
+| 5 | Leakage audit | no held-out map, series or gate fixture in any training set | Kageyama | 9 of 9 on a fresh training set (Nishinoya); must run on manifest v2; `smoke.parquet` fails it and must go |
 | 6 | Registry in use | every artifact has an entry in `registry.md` | Chair keeps the file; owners add entries | file created |
-| 7 | Gen twins regenerated from `maps/live/` | the swapped maps' twins rebuilt; stale twins excluded until then | Asahi | reported: four twins rebuilt in `maps/m2tr/` (`r/asahi`); recorded after merge |
-| 8 | `battles.json` control and live monitor | built, tested, redeployed; `docs/learning/live.md` refreshing | Daichi | control built on `r/daichi` (14 tests), not deployed, dispatch off (D-048); monitor first read posted 10:50Z |
+| 7 | Gen twins regenerated from `maps/live/` | the swapped maps' twins rebuilt; stale twins excluded until then | Asahi | **done** (D-051 §5): four twins rebuilt in `maps/m2tr/`, on `main` |
+| 8 | `battles.json` control and live monitor | built, tested, redeployed; `docs/learning/live.md` refreshing | Daichi | **done** (D-051 §5): redeployed with dispatch off; A/A job enabled by D-051; monitor hourly |
 | 9 | `maps/live/` equals the server's maps | map text in post-m2 replays matches the templates | Kageyama | 4 server games reproduced turn for turn (engine and map agree, up to a spawn-seat swap); corpus-wide check open |
-| 10 | Interval convention frozen | Tanaka's audit note on D-046 §3 and §4.3 | Tanaka, then Chair | open |
+| 10 | Interval convention frozen | Tanaka's audit note on D-046 §3 and §4.3 | Tanaka, then Chair | note delivered 12:02Z; the Chair freezes the convention in D-052 |
 
 Items 3–5 are the macro's offline gate for R0. Items 1, 2 and 6–10 are prerequisites the Chair added in D-046.
 What each blocks: items 1–5 and 9 block the offline gates of R1 and R2; items 7 and 10 block panel gates; item 8
@@ -67,6 +67,8 @@ blocks live screens.
 - 4 Oct 10:50Z: D-046 opens R0. Engine identity across wheels 1.2.3, 1.2.5 and 1.2.9 checked by hash (D-046 §2).
 - 4 Oct 10:52Z: D-047. Held-out maps frozen (Maze, Trauma, Trophy). P-1 numbered; council round 1 opened on its gate
   reading; the fit waits for the decode or 5 Oct 00:00Z.
+- 4 Oct 12:22Z: D-051. A/A live job enabled. R0 items 3, 4, 7 and 8 recorded; items 1, 2, 5, 9 and 10 open.
+  P-2 confirmation held until D-052 (Tanaka: reserved series in the training rows; Φ not frozen).
 - 4 Oct 11:18Z: D-050. Seats named by the lead. No Chair-imposed freeze. GPU work allowed on the Mac. Quota-runner
   condition replaced by a ledger check. R0 items reported by Kageyama and Asahi; none recorded until merged and
   re-run; split manifest v2 requested on Autarky, Maze, Trauma.
