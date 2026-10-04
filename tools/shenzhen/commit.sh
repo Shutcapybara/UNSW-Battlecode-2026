@@ -10,6 +10,8 @@ G="git --no-optional-locks -c core.createObject=rename"
 T=build/shenzhen/tree
 export GIT_INDEX_FILE="$PWD/build/shenzhen/tmp/idx.$$"
 BASE=$($G rev-parse -q --verify refs/heads/r/shenzhen || $G rev-parse refs/heads/main)
+# once main contains the lane (the coherence task merged it), build on main so shared files are current
+if $G merge-base --is-ancestor "$BASE" refs/heads/main; then BASE=$($G rev-parse refs/heads/main); fi
 $G read-tree "$BASE"
 ( cd "$T" && find . -type f ! -name '*.pyc' ! -path '*/__pycache__/*' | sed 's|^\./||' ) | while read -r f; do
   sz=$(stat -c %s "$T/$f"); [ "$sz" -gt 4000000 ] && { echo "skip >4MB $f"; continue; }
