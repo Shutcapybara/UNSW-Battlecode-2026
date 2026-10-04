@@ -12,8 +12,8 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 | Rung | Adds | Status | Owner | Record |
 |---|---|---|---|---|
 | R0 | infrastructure | **passed** 4 Oct 14:28Z | Kageyama, Hinata, Asahi, Daichi | D-046, D-051 §5, D-052, D-053 §A |
-| R1 | V0 value model | P-1 (GBT) failed in development. P-2 (logistic): one confirmation on 1,328 ranked, series-clean held-out games under the D-052 spec; released when the code is fixed and audited and the games are decoded. A pass closes R1; V0b is a privileged critic, not a search leaf | Hinata | D-047, D-049, D-052 §A |
-| R2 | P1 BC direction head | open; card requested from Hinata; teacher list v1 exists (1,925 sides, 1,735 games), rows wait for the native environment | Hinata | D-053 §F |
+| R1 | V0 value model | P-2: one confirmation on the manifest-v2 population (1,327 usable of 1,328); waits for the scorer revision with pinned ids and Tanaka's pass line. V0b is a privileged critic. P-6 (V-legal) in council round 2 | Hinata | D-052 §A, D-054 §A |
+| R2 | P1 BC direction head | card P-5 in council round 2 (due 17:00Z); feature set under review (encoder v1 plus hb1's per-candidate features is the Chair's leaning); full teacher rows wait for the native executor | Hinata | D-054 §D |
 | R3 | split/size, cull, sprint heads | not started | Learner | |
 | R4 | feature blocks | not started | Data, Learner | |
 | R5 | V in the search | needs a value model on the legal encoder (V-legal card after the decode, D-052 §A.7) | Hinata | |
@@ -60,13 +60,18 @@ blocks live screens.
 | Arm | Parent | State | Next | Learned replacement target |
 |---|---|---|---|---|
 | Cage C+D, E = 0 | carthage-05 | **parked** (D-053 §C): screen HOLD; the gated-reserve card P-3 rejected (map identity); live Schooltime is lost about equally with the cage open (−0.515, 27 games) and closed (−0.436, 24 games) | none | R3/R4 |
-| H-KZ12 entry-capacity dial, k = 0/4/8/16 | carthage-05 | screen done: pool Δwin +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response. **k = 16 nominated for the full gate on seeds 2–3** (D-053 §D) | Asahi | R4 block "body-conditioned entry capacity" |
+| H-KZ12 entry-capacity dial, k = 0/4/8/16 | carthage-05 | k = 16 nominated for the full gate on seeds 2–3 (D-053 §D); not started, Asahi idle since 13:50Z. Seed-1 gain is all Weakhold (15–1 against 8–8) | Asahi | R4 block "body-conditioned entry capacity" |
+
+| Queen reach veto (H-KZ26), m ∈ {off, 0, 1} | carthage-05 | card P-4 approved for a seed-1 screen (D-054 §C), after the k = 16 gate | Asahi | R4 block "enemy sprint reach" |
 
 ## Log
 
 - 4 Oct 10:50Z: D-046 opens R0. Engine identity across wheels 1.2.3, 1.2.5 and 1.2.9 checked by hash (D-046 §2).
 - 4 Oct 10:52Z: D-047. Held-out maps frozen (Maze, Trauma, Trophy). P-1 numbered; council round 1 opened on its gate
   reading; the fit waits for the decode or 5 Oct 00:00Z.
+- 4 Oct 15:36Z: D-054. P-2's population fixed at 1,327 usable games (scope from manifest v2). P-4 (queen reach veto)
+  approved for a screen. Council round 2 on P-5 (R2) and P-6 (V-legal), due 17:00Z. Asahi idle; the lead asked to
+  wake it.
 - 4 Oct 14:28Z: D-053. **R0 passed.** H-KZ12 k = 16 nominated for the first full gate (seeds 2–3). P-3 rejected (map
   identity); cage work parked. H-KZ26 card requested. D-052 §E withdrawn (variants cannot be rebuilt).
 - 4 Oct 13:18Z: D-052. P-2 confirmation terms frozen (spec sha 15d79683…). Rollback rule replaced by a difference

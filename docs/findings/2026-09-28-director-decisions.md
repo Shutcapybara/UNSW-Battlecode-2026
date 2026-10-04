@@ -1440,3 +1440,81 @@ Python = C++ bit for bit (40,002 turns; 1,549 on independent fixtures), labels a
 - **Hinata:** file the R2 card (behaviour-cloning direction head on Kageyama's teacher list v1 and encoder v1) and
   the V-legal card, so that council round 2 can run while the teacher rows are built.
 
+## D-054 — P-2's frozen population; the queen reach veto approved for a screen; council round 2 opened; the Evaluator is idle (4 Oct 2026 15:36Z, Chair: Ushijima)
+
+### A. P-2: what "usable" means, and the release
+
+- Nine of the 1,328 binding games are flagged out of scope in the live store. Kageyama found the cause: the store
+  recomputes `in_scope` from the latest ladder snapshot, and team 28 has since left the top 50. Neither table is
+  wrong for its own time.
+- **Ruling.** The population is frozen by manifest v2. Scope is read from the manifest and never from the live
+  store. A binding game is usable if it is decoded. That gives 1,327 usable games; game 1044626 was never decoded
+  and is listed as missing. D-053 §B stands; the figure 1,319 came from a filter on the live flag and is not used.
+  If any of the eight decoded games cannot be loaded, Hinata lists it as missing with the technical reason; coverage
+  stays above 95 % on every map either way.
+- Tanaka's new defect is upheld: the scorer must pin the usable game ids and the expected membership per checkpoint
+  before the claim, exclude the frozen missing ids, and return INCOMPLETE on any unexplained loss or new row.
+- **Release, unchanged in form:** Hinata's revision with the pinned list; Tanaka's pass line naming the scorer's
+  sha256 and the spec's (15d79683…); then one claim and one score. Tanaka verified the earlier repairs on revision
+  ea3b5ef7 (18 of 18 probes return INCOMPLETE; changed claim, scorer, spec and predictions rejected).
+- Per-cell counts (Hinata, outcome-free): no binding cell is under 50 games; elimination r10 stays report-only.
+
+### B. The k = 16 gate (D-053 §D): forecasts and what the card must print
+
+- Forecasts filed before the card: Sugawara 0.35, Nishinoya 0.40, Tanaka 0.35.
+- All three found the same thing in the seed-1 rows: the pool gain of +7 games in 272 is entirely Weakhold (15–1
+  against 8–8); the other 16 maps net 0. Tanaka's bootstrap of seed 1 on the D-052 clusters gives +2.6 points
+  [+0.4, +5.1] on the pool and −0.2 [−1.1, +0.4] on gen.
+- Added to the card, report-only, named before the run (D-046 §4.6): Weakhold as the target stratum, per seed; the
+  pool without Weakhold; vetoes and fallbacks per 1,000 queen decisions on Weakhold. The gate letter is the pooled
+  one of D-053 §D.
+- The gate has not started. See §E.
+
+### C. P-4 (`P-sugawara-02-hkz26-queen-reach-veto.md`): approved for a screen
+
+- One switch on REG-000: the original queen drops every candidate action whose final head cell is within reach
+  B(L̂) + m of an enemy head visible at its own turn start; B(L) = ⌈L/4⌉ + L − 2; m ∈ {off, 0, 1}; largest-Cb
+  fallback. It covers sprints and splits. L̂ = visible length + 2 for each cut end; no new memory.
+- Tanaka's amendments are part of the card, accepted by the author: the event-time labeller is frozen and
+  validated before the parent's games are labelled; the predicate covers every selection path; the ratio is
+  strike deaths over alive queen-rounds with a paired bootstrap, INCOMPLETE under 900 valid draws; the food guard is
+  pearls per alive own dragon-turn.
+- **Frozen objective (the card's):** at m = 0, support if the strike hazard is at most 0.70 of the parent's with the
+  all-cause queen hazard not up and food per turn above 0.90 of the parent's; refute at 0.90 or more, or all-cause
+  hazard up, or food down by 10 % or more. Stops: golden parity at m = off; fewer than 5 firings per 1,000 means
+  the dial did not reach; fewer than 10 parent strike events on the panels means no local exposure, and the card
+  goes to a read of live games with no panel extension. Seed 1, both panels.
+- Owner: Asahi builds and screens it after the k = 16 gate. The labeller is Asahi's, on Kageyama's exact blocks.
+- Scored event: the screen returns support at m = 0. Forecasts: Sugawara 0.35 (revised from 0.40), Tanaka 0.30.
+  Nishinoya may file a number before the run.
+- The simpler alternative named in the card (correct the parent's soft reach to B(L) without a mask) is not
+  queued; it becomes the next dose if the mask shows support.
+
+### D. Council round 2: P-5 and P-6, reviews due 17:00Z
+
+- **P-5** = `P-hinata-03-R2-P1-bc-direction.md` (R2, the cloned direction prior). **P-6** =
+  `P-hinata-04-R1b-V-legal.md` (the value model on legal features; R5's prerequisite). Sugawara has reviewed both
+  (amend; agree with two amendments). Both are Claude cards, so each needs Tanaka's and Nishinoya's review.
+- **A correction by the Chair, for the reviews to address.** The macro defines R2 on "hb1's features plus the queen
+  block". D-053 §F wrote "encoder v1", and Hinata followed that. Hinata's card notes the cost: HB-1's strongest
+  features were scores per candidate direction, which encoder v1 does not compute, and HB-1 found strength steep in
+  accuracy (0.73 → 7.5 % wins, 0.854 → 55 %). The Chair's leaning, open to the reviews: the R2 artifact is trained
+  on encoder v1 **plus** hb1's per-candidate features, computed for the teacher rows by the bot's own C++
+  extractor so that training and deployment share one implementation; the encoder-only model is fitted on the same
+  rows as a comparison. Kageyama says what that costs.
+- Other points for the reviews: which offline gate binds (the macro's accuracy ≥ 0.83, or the paired comparison with
+  the parent's prior, which Sugawara expects to pass almost surely); Sugawara's amendments (train only on rows with
+  known bed timers; the three-class against four-class slot; the flip rate of the parent's decisions as a
+  report, with under 1 % meaning no panel).
+- Until the Chair decides (D-055), nothing is fitted on the teacher rows. Kageyama's 120-game development set and
+  plumbing runs may continue.
+
+### E. The Evaluator has not acted since 13:50Z
+
+- Asahi's status still lists questions answered in D-046, D-050 and D-053. No job has run since 13:47Z; the
+  heavy-job lock is free. Three requests are waiting: the native executor extension, the cluster change in the
+  card code, and the k = 16 gate. The R2 data (1,925 teacher sides) also waits on the executor.
+- The Chair cannot reach Asahi's worktree or queue. The lead is asked once to wake that session and point it at
+  D-053 §F and this record.
+- A/A live job: 68 of 136 games verified at 15:28Z, 0 runtime faults.
+
