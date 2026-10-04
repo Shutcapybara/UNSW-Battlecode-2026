@@ -6,7 +6,22 @@ Branch `r/kageyama`: a private tree in the Cowork VM (`~/wt-kageyama`, shared ob
 private index, plumbing commits only; never touches main's index or HEAD). Tools `tools/learn/`. Engine truth runs
 use the Cowork cloud container (official engine in-process, no Mac CPU). Corpus-scale builds: Mac native.
 
-## Top — read this first (unit 2, 2026-10-04 12:40 UTC)
+## Top — read this first (unit 3, 2026-10-04 13:55 UTC)
+
+- **Decode complete:** post-m2 in-scope 19,754 / 19,754 decoded (second native run, user-started). R0 item 1 done.
+  Manifest v2 is left as recorded (D-052 cites it); new games take their split from the same rule.
+- **Map variants (D-052 §E): not added.** Template beds + replay text do NOT reproduce variant games (Schooltime
+  open4: 4 games, divergence by r23–28; Dilemma 10: 4 games, r13–38) while template-variant games reproduce exactly
+  (4 / 4, 2 Oct and 4 Oct). The variants have their own, redacted bed layouts: Schooltime-open4 bed spawns hit 175–178
+  cells, only 60 of them template beds; Dilemma-10 spawns stay on template bed cells but the gaps differ. Neither the
+  1.2.3–1.2.8 wheels nor any repo map (incl. `maps/dilemma_10.map`, 28 Sep) carries them. Options to the Chair.
+- **`dragons.died` (Asahi 12:25Z):** frame deaths for ids 0/1 agree with the engine's queen header on 166 / 166 sides
+  of my engine-truth games; the contradiction is downstream (extract.py's table or the side→queen mapping); need
+  the replay path to finish.
+- **Top-team KB v1:** `docs/learning/top-teams.md` (post-m2 ranked, held-out maps excluded).
+- `oracle.py` fix: EngineModule import (a NameError would have crashed the dataset oracle path).
+
+## Unit 2 (2026-10-04 12:40 UTC)
 
 - **Manifest v2** (D-049 held-out maps Autarky, Maze, Trauma): `docs/learning/splits/kageyama-games-v2.json`, 126,694
   games / 28,602 series, sha256(game,split) ba21ac40…; series consumed by P-2 marked (`consumed_by`), P-2's frozen rows
@@ -31,7 +46,7 @@ R0 Data deliverables — state:
 | action labeller (R0 gate: > 99 % vs HB-1) | **pass** | 100 % on 75,306 Heartbreaker turns (family, first, nsteps, child, sonar count, sonar mask in HB-1's convention) |
 | frozen splits manifest | **v2 done** | v1 superseded by D-049; v2 as above |
 | leakage audit | **done** | `tools/learn/audit.py` (9 checks); smoke test catches a planted test-series game |
-| post-m2 decode | waiting | asked the user once (11:05Z) to run `build/_stage_kageyama/run_decode.sh`; a native decode writer appeared 11:13Z |
+| post-m2 decode | **done 13:36Z** (19,754 / 19,754) — was waiting | asked the user once (11:05Z) to run `build/_stage_kageyama/run_decode.sh`; a native decode writer appeared 11:13Z |
 | datasets (teachers, mimics, our own, values) | next | `tools/learn/dataset.py` works (oracle or rebuild); teacher list next |
 
 Facts found this unit (each on the BOARD):
@@ -40,9 +55,10 @@ Facts found this unit (each on the BOARD):
 - The sonar mask label uses the requested direction; HB-1's used the physical one (loses the neck bit when refracted).
 
 ## Human-in-the-loop (asked once each)
-- H-K1 (11:05Z): run the native post-m2 decode. Ran 11:13–12:03Z (time limit); a second run is needed for the last ~4.8k (asked 12:40Z as the same item).
+- H-K1: native post-m2 decode — done (two runs, last part 13:36Z). Closed.
 
 ## Log
 - 2026-10-04 10:35 UTC — lane started; read macro, prompts, D-042..D-048, briefs, BOARD, chongqing wrap-up, HB-1.
+- 2026-10-04 13:55 UTC — unit 3: decode done, variant maps not reproducible (report), died diagnosis, top-teams v1.
 - 2026-10-04 12:40 UTC — unit 2: manifest v2 + consumed series, mapcheck (2 map variants), smoke rebuilt, BOARD.
 - 2026-10-04 11:20 UTC — unit 1: rebuild, oracle, encoder + C++ twin, labeller, splits, audit; BOARD K1-01..06.
