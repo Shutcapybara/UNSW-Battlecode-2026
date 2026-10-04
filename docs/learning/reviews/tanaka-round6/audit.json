@@ -1,0 +1,358 @@
+{
+  "scope": "Synthetic probes only, mocked numerical score and fake learning backend; real reads limited to frozen membership and development provenance metadata. No real claim, score, heldout outcomes or actions.",
+  "hashes": {
+    "p2_confirm.py": "bb51e1bbf4e2fe888198e7f69a0de792acc604ef06bf11cef6d3b1a39bcd4624",
+    "r2_bc.py": "b3ce4789e399018100a2779f29ed8432de227961bbc160eaa81ead4a9a04454d",
+    "docs/learning/proposals/P-2-gate-spec.D-052.json": "15d79683518cf704a8cb7680ef1fa55acd8bdaef2bc97b694f40db742ea0d07d",
+    "build/hinata/p2/cell-counts.json": "5119a16ea96338b4ee873c7288a622bddbd0ba3954bd2a751f6eed280846d474",
+    "build/hinata/p2/membership-pin.parquet": "2ebf99cee4e5d7befbc0279c951c9ddf0f6b810823f9111bbf1df52a00f092f6",
+    "build/learn/kageyama/teachers_dev120.p0.parquet": "1a3c552ced718866325581c86c2e7d761d3718b24915b064e8b544acade8c8e6",
+    "build/learn/kageyama/teachers_dev120.p1.parquet": "30826ce9383394225baa27594d83a5a240082c66136f12b864896a38bea1f727"
+  },
+  "p2": {
+    "valid_gate": "PASS",
+    "nonfinite/auc_v/nan": "INCOMPLETE",
+    "nonfinite/auc_phi/nan": "INCOMPLETE",
+    "nonfinite/d_auc/nan": "INCOMPLETE",
+    "nonfinite/slope_v/nan": "INCOMPLETE",
+    "nonfinite/slope_phi/nan": "INCOMPLETE",
+    "nonfinite/d_auc_ci/nan": "INCOMPLETE",
+    "nonfinite/auc_v/inf": "INCOMPLETE",
+    "nonfinite/auc_phi/inf": "INCOMPLETE",
+    "nonfinite/d_auc/inf": "INCOMPLETE",
+    "nonfinite/slope_v/inf": "INCOMPLETE",
+    "nonfinite/slope_phi/inf": "INCOMPLETE",
+    "nonfinite/d_auc_ci/inf": "INCOMPLETE",
+    "nonfinite/auc_v/None": "INCOMPLETE",
+    "nonfinite/auc_phi/None": "INCOMPLETE",
+    "nonfinite/d_auc/None": "INCOMPLETE",
+    "nonfinite/slope_v/None": "INCOMPLETE",
+    "nonfinite/slope_phi/None": "INCOMPLETE",
+    "nonfinite/d_auc_ci/None": "INCOMPLETE",
+    "draws/989": "INCOMPLETE",
+    "draws/990": "PASS",
+    "membership": {
+      "decisive": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [],
+        "unexplained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "decisive_result": true
+          }
+        ],
+        "n_unexplained": 1,
+        "ok": false
+      },
+      "draw": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "decisive_result": false,
+            "reason": "whole game dropped: result_a not in (0, 1) (draw or no decisive result)"
+          }
+        ],
+        "unexplained": [],
+        "n_unexplained": 0,
+        "ok": true
+      },
+      "absent": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "decisive_result": false,
+            "reason": "whole game dropped: result_a not in (0, 1) (draw or no decisive result)"
+          }
+        ],
+        "unexplained": [],
+        "n_unexplained": 0,
+        "ok": true
+      },
+      "null": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "decisive_result": false,
+            "reason": "whole game dropped: result_a not in (0, 1) (draw or no decisive result)"
+          }
+        ],
+        "unexplained": [],
+        "n_unexplained": 0,
+        "ok": true
+      },
+      "nan": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "decisive_result": false,
+            "reason": "whole game dropped: result_a not in (0, 1) (draw or no decisive result)"
+          }
+        ],
+        "unexplained": [],
+        "n_unexplained": 0,
+        "ok": true
+      },
+      "invalid": {
+        "pin_rows": 3,
+        "got_rows": 1,
+        "duplicates": 0,
+        "n_new": 0,
+        "new": [],
+        "explained": [
+          {
+            "game": "gone",
+            "rows": 2,
+            "whole_game": true,
+            "decisive_result": false,
+            "reason": "whole game dropped: result_a not in (0, 1) (draw or no decisive result)"
+          }
+        ],
+        "unexplained": [],
+        "n_unexplained": 0,
+        "ok": true
+      }
+    },
+    "partial": false,
+    "duplicate": false,
+    "new": false,
+    "view/decisive": {
+      "games": [
+        "keep",
+        "gone"
+      ],
+      "scope_all_true": true
+    },
+    "score/decisive": {
+      "verdict": "INCOMPLETE",
+      "incomplete": [
+        "membership: 0 duplicate, 0 new, 1 unexplained lost games ['gone']"
+      ],
+      "lookup": {
+        "gone": 1.0
+      }
+    },
+    "second/decisive": "refused",
+    "view/draw": {
+      "games": [
+        "keep",
+        "gone"
+      ],
+      "scope_all_true": true
+    },
+    "score/draw": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "lookup": {
+        "gone": 0.5
+      }
+    },
+    "second/draw": "refused",
+    "view/absent": {
+      "games": [
+        "keep"
+      ],
+      "scope_all_true": true
+    },
+    "score/absent": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "lookup": {
+        "gone": null
+      }
+    },
+    "second/absent": "refused",
+    "view/null": {
+      "games": [
+        "keep",
+        "gone"
+      ],
+      "scope_all_true": true
+    },
+    "score/null": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "lookup": {
+        "gone": null
+      }
+    },
+    "second/null": "refused",
+    "view/invalid": {
+      "games": [
+        "keep",
+        "gone"
+      ],
+      "scope_all_true": true
+    },
+    "score/invalid": {
+      "verdict": "PASS",
+      "incomplete": [],
+      "lookup": {
+        "gone": 2.0
+      }
+    },
+    "second/invalid": "refused",
+    "preclaim": {
+      "claim_exists": false,
+      "coverage": [
+        {
+          "Autarky": {
+            "games": 435,
+            "usable": 434,
+            "coverage": 0.9977011494252873
+          },
+          "Maze": {
+            "games": 446,
+            "usable": 446,
+            "coverage": 1.0
+          },
+          "Trauma": {
+            "games": 447,
+            "usable": 447,
+            "coverage": 1.0
+          }
+        },
+        [
+          {
+            "game": "1044626",
+            "map": "Autarky",
+            "reason": "not decoded (series parts hold no rows)"
+          }
+        ]
+      ],
+      "pin_rows": 22305,
+      "pin_games": 3305,
+      "pin_duplicates": 0,
+      "counts_match": true,
+      "pin_hash_matches": true,
+      "counts": {
+        "elim/r10": 434,
+        "elim/r25": 434,
+        "elim/r50": 434,
+        "elim/r100": 433,
+        "elim/r150": 421,
+        "elim/r250": 343,
+        "elim/r400": 246,
+        "rl/r10": 893,
+        "rl/r25": 893,
+        "rl/r50": 893,
+        "rl/r100": 893,
+        "rl/r150": 892,
+        "rl/r250": 889,
+        "rl/r400": 880
+      }
+    }
+  },
+  "r2": {
+    "oracle_filter": {
+      "games": [
+        "0",
+        "1"
+      ],
+      "features": [
+        "x_is_queen",
+        "x_length"
+      ],
+      "drops": {
+        "Dev": {
+          "rows": 3,
+          "dropped": 1,
+          "share": 0.3333
+        }
+      },
+      "unlisted_identity_ignored": true
+    },
+    "x_W": "refused: map-identity columns on the allowlist: ['x_W']",
+    "x_H": "refused: map-identity columns on the allowlist: ['x_H']",
+    "x_x": "refused: map-identity columns on the allowlist: ['x_x']",
+    "x_y": "refused: map-identity columns on the allowlist: ['x_y']",
+    "x_xn": "refused: map-identity columns on the allowlist: ['x_xn']",
+    "x_yn": "refused: map-identity columns on the allowlist: ['x_yn']",
+    "x_width": "refused: map-identity columns on the allowlist: ['x_width']",
+    "x_facing_abs": "refused: map-identity columns on the allowlist: ['x_facing_abs']",
+    "x_map_id": "refused: map-identity columns on the allowlist: ['x_map_id']",
+    "x_abs_pos": "refused: map-identity columns on the allowlist: ['x_abs_pos']",
+    "x_missing": "refused: allowlisted columns absent from rows: ['x_missing']",
+    "first": "accepted",
+    "identical_resume": "accepted",
+    "identical_extra_fake_train_calls": 0,
+    "changed_rows": "refused: /var/folders/4p/nl_tnfpn5r925vf3qxgdvl100000gn/T/tanaka-r6-r2-tdx9giwf/run was made with a different manifest (['rows_sha']); use a new --run",
+    "changed_rounds": "refused: /var/folders/4p/nl_tnfpn5r925vf3qxgdvl100000gn/T/tanaka-r6-r2-tdx9giwf/run was made with a different manifest (['rounds']); use a new --run",
+    "calls": {
+      "train": 2,
+      "loaded": 4
+    },
+    "support_example": {
+      "label": "F",
+      "raw_four_class_accuracy": 0.0,
+      "deployed_frl_accuracy": 1.0
+    }
+  },
+  "dev": {
+    "rows": 235798,
+    "games": 118,
+    "series": 52,
+    "maps": [
+      "Around UNSW",
+      "Australia",
+      "Default",
+      "Devil",
+      "Islands",
+      "Portals",
+      "Prisoners Dilemma",
+      "Queen Of Spades",
+      "Schooltime",
+      "Slithery Fight",
+      "Stripes",
+      "Tower Defense",
+      "Trophy",
+      "weakhold"
+    ],
+    "heldout_rows": 0,
+    "by_source": {
+      "oracle": {
+        "rows": 195354,
+        "games": 97,
+        "cd_known_1": 195354
+      },
+      "rebuild_redacted": {
+        "rows": 40444,
+        "games": 21,
+        "cd_known_1": 3925
+      }
+    }
+  }
+}

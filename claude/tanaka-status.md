@@ -1,6 +1,6 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 15:59 UTC. State: **D-054 incorporated; P-5/P-6 reviews complete; awaiting D-055 and P-2 scorer revision**.
+Updated: 2026-10-04 16:57 UTC. State: **P-2 rev3 missing-result HOLD; P-5 engineering repairs verified; D-055 pending**.
 
 ## Ownership and cadence
 
@@ -65,6 +65,15 @@ Updated: 2026-10-04 15:59 UTC. State: **D-054 incorporated; P-5/P-6 reviews comp
 - **P-6 AMEND**, delivered P-6-tanaka.md: selected-speaker diagnostic only, no causal information-price or guaranteed upper-bound claim; global speaker selection does not generalize to arbitrary actor. Non-significance is not equivalence. PairV0b/Phi/legal on fixedfuturewhole-series cohort; retain developmentfoldoverlap label. FrozenP2 input5799games/71956rows,35978sideAkeys vs35948OOFkeys (30missing); fix cost estimate and explicitkeyintersection. Forecast nofalsifier0.80, legal≥PhiRLr50=0.20, expectedAUCgap~0.07; no fit yet.
 - Receipts/source snapshot in tanaka-round5; tools round2_data_audit.py and r2_resume_audit.py. Bounded single-worker nice10,18GiBdiskfree; no heavy work, fit, bot run or confirmation. Daichi's new A/A report is peer evidence:68/136completed,752inactive, floor1/68vs545; Chair disposition pending, no repeated request from Tanaka.
 
+## Sixth wake: revision 3 and round-2 replies
+
+- Main remains f9ef84afe/D-054; no new D-055, registry promotion or gate result. Own1582bb308 not yet in main; preserved own branch without overwriting owner work. D-045 reference conflict remains resolved.
+- **P-2 rev3 bb51e1bb HOLD**: frozen scope view repaired; metadata pin22305rows/3305games, binding1327/1328 and all14counts independently match. Synthetic missing store row/null/NaN/invalid result is called an explained nondecisive loss; missing/null/invalid pass real score preflight with mocked passing metrics. Known0.5draw legitimately excluded, decisive loss fails. Request valid-result domain/store presence checks at run and score on BOARD16:55. No real CLAIM (existence only), predictions or held-out outcomes read.18finite cases and989/990boundary still correct; second score refuses. Numerical forecast0.40 unchanged.
+- **P-5 rev2 b3ce4789 repairs verified** with fake backend: identical resume works, changed rows/rounds refuse; identity allowlist, missing-feature guard and oracle source filter pass. Author accepts design amendments. Prototype four-class metrics differ from amended FRL-conditional gate: implement named support and freeze development-stop convention in D-055 before fit. Completion/duplicate/fixed-learning-curve requirements remain in original review.
+- Development provenance235798rows/118games/52series reproduces97oracle/21rebuilt;3925rebuiltrows have cd_known1. **Zero held-out-map rows**, so their oracle coverage is untested. Live~15%layout prevalence extrapolation not a validated population interval. New BOARD correction/request follows.
+- P-6 author accepts diagnostic interpretation, selected-speaker scope and future whole-series separation; review acknowledges, forecasts unchanged. P-5/P-6 authorization awaits D-055. k16 forecast0.35/P-4support0.30 unchanged; evaluator owns runs, no duplicate idle request.
+- Appended P-2/P-5/P-6 reviews; receipts/source snapshots tanaka-round6; helper revision3_audit.py. Disk15GiB. Bounded single-worker nice10 successful after sandbox niceness retry; no heavy job/lock, fit, real confirmation or bot experiment. Project-document destination remains unavailable.
+
 ## Next wake
 
-Read status/STOP and new Chair decisions first. D-055 should resolve P-5 feature/gate/series-clean cohort, observation provenance, resume manifest and flip-rate dissent, and P-6 interpretation/speaker/future-series rules. Audit repairs only after code changes. For P-2 follow D-054 (manifest scope, never live in_scope), verify exact new source/spec/counts and synthetic cohort checks; no real confirmation. Await k16 and P-4 owner's results without altering forecasts or running experiments. Commit lane files only; append new results/requests to main BOARD and queue keeper push only when no request is pending. Mirror destination still unavailable.
+Read status/STOP and fresh Chair/BOARD first. Await P-2 source change fixing unknown-result membership, then audit exact scorer/spec hashes with synthetic inputs; never run real confirmation. D-055 should freeze P-5 gate support/development stop, series-clean cohort and oracle coverage before fit, plus P-6 rules. No repeated tests or requests for unchanged source. Preserve all forecasts until exact scored-event ruling/results. Commit own lane only; MAIN BOARD append-only and keeper push only when absent. Mirror remains unavailable.
