@@ -7,7 +7,6 @@ import sys, json, collections, gzip, pickle
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import rebuild, block as B
-from unswbc.engine import EngineModule
 
 OPP = {'N': 'S', 'S': 'N', 'E': 'W', 'W': 'E'}
 
@@ -41,7 +40,31 @@ def reply_text(ctx):
     return ('\n'.join(out) + '\n').encode()
 
 
-def run(data, seed):
+TEMPLATES = None
+
+
+def templates():
+    global TEMPLATES
+    if TEMPLATES is None:
+        import pathlib
+        try:
+            T = pathlib.Path(__import__('unswbc').__file__).with_name('templates') / 'maps'
+        except ImportError:                      # no wheel here: the repo's copy of the 1.2.9 templates (D-043)
+            T = pathlib.Path.cwd() / 'maps' / 'live'
+        TEMPLATES = {rebuild.Map(f.read_text()).name: f.read_text() for f in T.glob('*.map')}
+    return TEMPLATES
+
+
+def true_map(server_txt):
+    """Server replays redact bed timings (every TILE line '0 0', no PearlCountdown events) and may swap the teams'
+    spawn seats. The engine's map = the template's TILE lines + the replay's own other lines (DRAGON seats)."""
+    t = templates()[rebuild.Map(server_txt).name]
+    tl = iter([l for l in t.splitlines() if l.startswith('TILE ')])
+    out = [next(tl) if l.startswith('TILE ') else l for l in server_txt.splitlines()]
+    return '\n'.join(out) + ('\n' if server_txt.endswith('\n') else '')
+
+
+def run(data, seed, keep=False):
     m, acts = scripted(data)
     ptr = collections.Counter()
     real = collections.defaultdict(list)
@@ -53,20 +76,38 @@ def run(data, seed):
             return b'MOVE\nENDTURN\n'
         return reply_text(acts[did][k][0])
     E = EngineModule()
-    res = E.run(m.text.encode(), reply, debug=0, seed=seed)
+    redacted = not any(l.startswith('TILE ') and not l.endswith(' 0 0') for l in m.text.splitlines())
+    mtext = true_map(m.text) if redacted else m.text
+    res = E.run(mtext.encode(), reply, debug=0, seed=seed)
     n = bad = 0
     first_bad = None
     for did, seq in acts.items():
         for k, (ctx, txt) in enumerate(seq):
             n += 1
             have = B.canon(real[did][k]) if k < len(real[did]) else ''
-            if have != B.canon(txt):
+            want = B.canon(txt)
+            if redacted:      # the rebuild cannot know countdowns: compare everything but the pearlIn field
+                have, want = _nocd(have), _nocd(want)
+            if have != want:
                 bad += 1
                 if first_bad is None:
                     w, h = B.canon(txt).splitlines(), have.splitlines()
                     first_bad = (did, k, ctx['round'], [(j, a, b) for j, (a, b) in enumerate(zip(w, h)) if a != b][:4])
-    return dict(map=m.name, turns=n, mismatched=bad, first=first_bad, rounds=res.rounds, winner=res.winner,
+    out = dict(map=m.name, redacted=redacted, turns=n, mismatched=bad, first=first_bad, rounds=res.rounds, winner=res.winner,
                 extra_engine_turns=sum(len(v) for v in real.values()) - n)
+    if keep:
+        out['blocks'] = real
+    return out
+
+
+def _nocd(text):
+    o = []
+    for ln in text.splitlines():
+        p = ln.split()
+        if len(p) == 4 and p[0].lstrip('-').isdigit():
+            p[3] = 'x'
+        o.append(' '.join(p))
+    return '\n'.join(o)
 
 
 if __name__ == '__main__':

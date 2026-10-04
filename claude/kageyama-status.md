@@ -1,13 +1,35 @@
 # kageyama — Phase 3 Data lane (Claude Opus 5.5)
 
-Branch `r/kageyama` (private tree in the Cowork VM: shared object store of the main checkout, private index, plumbing
-commits only — never touches main's index or HEAD). Tools `tools/learn/`. Heavy compute: the Cowork cloud container
-(official engine 1.2.9 in-process, no Mac CPU) for engine truth runs; Mac-native only for corpus-scale builds.
+STATUS: RUNNING
 
-## State (2026-10-04 11:30 UTC)
+Branch `r/kageyama`: a private tree in the Cowork VM (`~/wt-kageyama`, shared object store of the main checkout,
+private index, plumbing commits only; never touches main's index or HEAD). Tools `tools/learn/`. Engine truth runs
+use the Cowork cloud container (official engine in-process, no Mac CPU). Corpus-scale builds: Mac native.
 
-- Lane started. Read: macro, prompts, D-042..D-045, live-maps brief, BOARD tail, chongqing wrap-up, HB-1 finding.
-- **Block rebuild (replay -> exact protocol block per dragon-turn): 401,434 / 401,434 identical** to the blocks the
-  engine really sent (22 maps random walkers x3 seeds + carthage-05 self-play on 17 LIVE_MAPS_M2 maps).
-- Encoder v1 (`tools/learn/encode.py`): blocks only -> int32 vector (49 cells x 23 channels, egocentric rotated, + 66
-  scalars incl. queen block). Invariant tests pass. C++ twin not yet written.
+## Top — read this first (unit 1, 2026-10-04 11:20 UTC)
+
+R0 Data deliverables — state:
+
+| item | state | evidence |
+|---|---|---|
+| block rebuild (replay -> the exact protocol block each dragon got) | **done** | 401,434 / 401,434 blocks identical to the engine's own (22 maps random walkers x3 seeds; carthage-05 self-play, 17 live maps, full 500-round games) |
+| server-engine identity (D-046 §2 open check) | **done** | index `seed` (hex) + template beds re-run reproduces 4 / 4 post-m2 server games turn for turn (87,830 turns) |
+| encoder v1, Python | **done** | `tools/learn/encode.py`, 1,193 int32 columns: 49 cells x 23 rotated channels + 66 scalars incl. queen block |
+| encoder C++ twin (R0 gate: >= 1,000 turns bit for bit) | **pass** | 40,002 turns / 1,214 processes, 0 mismatches; also 40,002 / 40,002 through the official `helper.hpp` (`learn_helper.hpp`) |
+| action labeller (R0 gate: > 99 % vs HB-1) | **pass** | 100 % on 75,306 Heartbreaker turns (family, first, nsteps, child, sonar count, sonar mask in HB-1's convention) |
+| frozen splits manifest | **done (snapshot)** | `docs/learning/splits/kageyama-games-v1.json` (125,372 games, 28,304 series, 0 series across buckets), `kageyama-fixtures-v1.json` |
+| leakage audit | **done** | `tools/learn/audit.py` (9 checks); smoke test catches a planted test-series game |
+| post-m2 decode | waiting | asked the user once (11:05Z) to run `build/_stage_kageyama/run_decode.sh`; a native decode writer appeared 11:13Z |
+| datasets (teachers, mimics, our own, values) | next | `tools/learn/dataset.py` works (oracle or rebuild); teacher list next |
+
+Facts found this unit (each on the BOARD):
+- Server replays **redact bed timers** (TILE lines `0 0`, no PearlCountdown events) and can **swap spawn seats**
+  relative to the template (team A's queen is id 1 in such games). The oracle restores exact blocks.
+- The sonar mask label uses the requested direction; HB-1's used the physical one (loses the neck bit when refracted).
+
+## Human-in-the-loop (asked once each)
+- H-K1 (11:05Z): run the native post-m2 decode (`bash build/_stage_kageyama/run_decode.sh`). Open.
+
+## Log
+- 2026-10-04 10:35 UTC — lane started; read macro, prompts, D-042..D-048, briefs, BOARD, chongqing wrap-up, HB-1.
+- 2026-10-04 11:20 UTC — unit 1: rebuild, oracle, encoder + C++ twin, labeller, splits, audit; BOARD K1-01..06.

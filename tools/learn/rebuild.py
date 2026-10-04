@@ -12,7 +12,7 @@ import collections, gzip, struct, sys
 from pathlib import Path
 
 _HERE = Path(__file__).resolve()
-for p in (_HERE.parents[1] / 'hub' / 'vendor' / 'leviathan', _HERE.parents[1] / 'hub' / 'vendor' / 'ouroboros'):
+for p in (_HERE.parents[1] / 'hub' / 'vendor' / 'leviathan', Path.cwd() / 'tools' / 'hub' / 'vendor' / 'leviathan'):
     if p.exists() and str(p) not in sys.path:
         sys.path.insert(0, str(p))
 from replay import Reader, unpack  # noqa: E402

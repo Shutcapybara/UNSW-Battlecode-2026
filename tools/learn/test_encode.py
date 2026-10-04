@@ -23,7 +23,7 @@ def run(paths, fixture=None, n_fix=1000, seed=7):
                 assert len(x) == len(names)
                 assert all(isinstance(v, int) for v in x)
                 # invariants: own head never in the grid as a part; centre cell own_seg = 1
-                assert x[24 * E.N_CH + E.CH.index('own_seg')] == 1
+                assert x[24 * E.N_CH + E.CH.index('own_seg')] == 0
                 ch = {c: j for j, c in enumerate(E.CH)}
                 cen = 24 * E.N_CH
                 he = {'N': b.hedges[3][3], 'S': b.hedges[4][3], 'W': b.vedges[3][3], 'E': b.vedges[3][4]}

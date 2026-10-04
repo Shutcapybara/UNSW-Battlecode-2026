@@ -42,18 +42,25 @@ SC = ['round', 'rounds_left', 'phase', 'length', 'unit_count', 'unit_limit', 'he
       'is_queen', 'ownq_visible', 'ownq_age', 'ownq_f', 'ownq_r', 'ownq_d',
       'enemyq_visible', 'enemyq_age', 'enemyq_f', 'enemyq_r', 'enemyq_d', 'enemyq_vis_parts',
       'home_known', 'home_f', 'home_r', 'home_d', 'mirror_xy_f', 'mirror_xy_r', 'mirror_xy_d',
-      'mirror_y_f', 'mirror_y_r', 'mirror_y_d', 'len_delta', 'units_delta']
+      'mirror_y_f', 'mirror_y_r', 'mirror_y_d', 'len_delta', 'units_delta', 'cd_known']
 N_SC = len(SC)
 
 SPEC = {
-    'pearl_in': 'bed countdown clipped to [0,255]; 0 off-bed (see bed); -1 never emitted',
-    'own_seg': 'own body: segment index from the head +1 (head = 1), 0 elsewhere',
+    'pearl_in': 'bed countdown clipped to [0,255]; 0 off-bed (see bed). A real block always has it; a rows built by '
+                'the replay rebuild of a server replay cannot (the server redacts bed timers): pearl_in 0, cd_known 0',
+    'cd_known': '1 in every real block; 0 only in rebuilt server rows without the engine oracle. Train P/V on rows '
+                'with cd_known = 1 or drop pearl_in, else the model sees a distribution the bot never sees',
+    'own_seg': 'own non-head body part (the head is always the centre cell)',
+    'echo_present': 'the ECHOES line exists for a protocol-3 process from its second turn (children: from birth); '
+                    'computed, since the helper cannot tell an absent line from five zeros',
     'seg_toward_me': 'for any visible non-head part: 1 if its facing points at a cell adjacent to my head (a body the '
                      'next step of which comes my way), else 0',
     'phase': 'round bucket: 0 <25, 1 <100, 2 <250, 3 <400, 4 >=400',
     'last_kind': 'own previous action: 0 none/unknown, 1 move, 2 split, 3 invalid/suicide',
     'last_first_rel': '0..3 = F,R,B,L of the previous move relative to the facing then; -1 otherwise',
-    'ownq_*/enemyq_*': 'queen = id 0 (team A) / 1 (team B). age = rounds since its head (or any part) was last seen '
+    'is_queen': 'own id is 0 or 1 (a queen is the lowest-id initial dragon of its team; ids 0 and 1 are the two queens)',
+    'ownq_*/enemyq_*': 'which of ids 0/1 is ours: id parity for a round-0 process, else the team letter when first seen '
+                       '(the server can swap seats, so never assume A = 0); all unknown (-1/999) before that. age = rounds since its head (or any part) was last seen '
                        'by this process, -1 never; f/r = last-seen head offset in the current rotated frame (torus-'
                        'minimal), d = |f|+|r|; 999 when unknown',
     'home_*': 'own spawn cell (only for a process present at round 0; children 0/999)',
@@ -71,8 +78,12 @@ def _tor(d, n):
 class Encoder:
     def __init__(self, spawn):
         self.id, self.team, self.W, self.H, self.limit = spawn.id, spawn.team, spawn.W, spawn.H, spawn.unit_limit
-        self.my_queen = 0 if self.team == 'A' else 1
-        self.their_queen = 1 - self.my_queen
+        # Queens are ids 0 and 1 (the first two DRAGON lines; teams alternate line by line). Which one is ours is NOT
+        # fixed by the team letter: the server may swap spawn seats, so team A's queen can be id 1. A round-0 process
+        # knows it from id parity (initial ids alternate teams); any process learns it when it sees id 0 or 1 (parts
+        # carry the team letter). Until then the queen features are unknown.
+        self.my_queen = None
+        self.q_team = {}
         self.turn = 0
         self.first_round = None
         self.home = None
@@ -106,6 +117,12 @@ class Encoder:
             self.first_round = b.round
             if b.round == 0:
                 self.home = (hx, hy)
+                self.my_queen = self.id % 2
+        for t, i, x, y, f, h in b.parts:
+            if i in (0, 1) and i not in self.q_team:
+                self.q_team[i] = t
+                if self.my_queen is None:
+                    self.my_queen = i if t == self.team else 1 - i
         grid = [[0] * N_CH for _ in range(49)]
 
         def idx(dx, dy):                                 # absolute offset -> rotated cell index
@@ -114,6 +131,7 @@ class Encoder:
 
         # tiles
         n_pearls = n_beds = 0
+        cd_known = 1
         pearl_min = BIG
         for k, (x, y, hp, pin) in enumerate(b.tiles):
             dx, dy = k % 7 - 3, k // 7 - 3
@@ -121,9 +139,11 @@ class Encoder:
             if hp:
                 g[8] = 1; n_pearls += 1
                 pearl_min = min(pearl_min, abs(dx) + abs(dy))
-            if pin >= 0:
+            if pin >= 0 or pin == -2:              # -2: a bed whose countdown a server replay redacted
                 g[9] = 1; n_beds += 1
-                g[10] = min(pin, 255)
+                g[10] = min(pin, 255) if pin >= 0 else 0
+                if pin == -2:
+                    cd_known = 0
         # edges: hedges[r][c] is the north edge of window cell (c, r); vedges[r][c] the west edge of (c, r)
         def put_edge(c, r, absd, tok):
             if not (0 <= c < 7 and 0 <= r < 7) or tok == '.':
@@ -149,20 +169,19 @@ class Encoder:
         q_parts = {0: 0, 1: 0}
         q_pos = {}
         adj_me = {((hx + ex) % self.W, (hy + ey) % self.H) for ex, ey in DXY.values()}
-        for t, i, x, y, f, h in b.parts:
-            k = pos[(x, y)]
+        # order-independent: the in-bot twin sees parts per tile (window order), not in block order
+        for k, (t, i, x, y, f, h) in sorted((pos[(p[2], p[3])], p) for p in b.parts):
             dx, dy = k % 7 - 3, k // 7 - 3
             g = grid[idx(dx, dy)]
             d = abs(dx) + abs(dy)
             if i == self.id:
-                own_k += 1
-                g[11] = own_k
+                g[11] = 0 if h else 1
                 continue
             ally = t == self.team
             vis_len[i] = vis_len.get(i, 0) + 1
             enemy_of[i] = not ally
             if i in (0, 1):
-                g[16 if (i == self.my_queen) else 17] = 1
+                g[16 if ally else 17] = 1
                 q_parts[i] += 1
                 if h:
                     q_pos[i] = (x, y)
@@ -210,7 +229,7 @@ class Encoder:
             ex_rel[rd] = ok
 
         def qfeat(qid):
-            s = self.q_seen[qid]
+            s = self.q_seen[qid] if qid is not None else None
             if s is None:
                 return [UNSEEN, BIG, BIG, BIG]
             f, r = self._rot(_tor(s[1] - hx, self.W), _tor(s[2] - hy, self.H), fac)
@@ -222,6 +241,8 @@ class Encoder:
             f, r = self._rot(_tor(c[0] - hx, self.W), _tor(c[1] - hy, self.H), fac)
             return [f, r, abs(f) + abs(r)]
 
+        mq = self.my_queen
+        eq = (1 - mq) if mq is not None else None
         home = self.home
         mxy = (self.W - 1 - home[0], self.H - 1 - home[1]) if home else None
         my_ = (home[0], self.H - 1 - home[1]) if home else None
@@ -234,15 +255,15 @@ class Encoder:
               (rnd - self.last_split_round) if self.last_split_round is not None else UNSEEN,
               self.last['kind'], self.last['first'], self.last['nsteps'],
               len(b.msgs), sum(1 for v in b.msgs if v), sum(1 for v in b.msgs if v > 0xFFFFFFFF),
-              int(e is not None)] + (list(e) if e else [0] * 5) + [sum(e) if e else 0,
+              int(self.turn > 0 or self.first_round > 0)] + (list(e) if e else [0] * 5) + [sum(e) if e else 0,
               ex_ord, ex_por, ex_rel[0], ex_rel[1], ex_rel[3],
               n_eh, n_ah, n_ep, n_ap, n_pearls, n_beds,
               eh_d1, eh_min, ah_min, pearl_min, max([v for i, v in vis_len.items() if enemy_of[i]] or [0]),
-              int(self.id == self.my_queen), int(q_vis[self.my_queen])] + qfeat(self.my_queen) + \
-             [int(q_vis[self.their_queen])] + qfeat(self.their_queen) + [q_parts[self.their_queen]] + \
+              int(self.id in (0, 1)), int(mq is not None and q_vis[mq])] + qfeat(mq) + \
+             [int(eq is not None and q_vis[eq])] + qfeat(eq) + [q_parts[eq] if eq is not None else 0] + \
              [int(home is not None)] + cell_feat(home) + cell_feat(mxy) + cell_feat(my_) + \
              [b.length - self.prev_len if self.prev_len is not None else 0,
-              b.unit_count - self.prev_units if self.prev_units is not None else 0]
+              b.unit_count - self.prev_units if self.prev_units is not None else 0, cd_known]
         assert len(sc) == N_SC, (len(sc), N_SC)
         self.prev_len, self.prev_units = b.length, b.unit_count
         self.turn += 1
@@ -253,4 +274,4 @@ class Encoder:
 
 def names():
     # cell k of the rotated window: forward = 3 - k // 7 (ahead > 0), right = k % 7 - 3
-    return [f'f{3 - k // 7}r{k % 7 - 3}_{c}'.replace('-', 'm') for k in range(49) for c in CH] + SC
+    return [f'x_f{3 - k // 7}r{k % 7 - 3}_{c}'.replace('-', 'm') for k in range(49) for c in CH] + ['x_' + s for s in SC]
