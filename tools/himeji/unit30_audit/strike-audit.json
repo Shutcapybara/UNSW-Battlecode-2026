@@ -1,0 +1,2100 @@
+{
+  "rows": [
+    {
+      "game": 852484,
+      "series": "b248db9d-f075-4f8c-b846-9de7ac201362",
+      "ranked": true,
+      "map": "Autarky",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+      "replay_sha256": "44a9865e2546ba991b313be113b9e8d69a7503ea4328030a9ca2d3605dc774a0",
+      "own_submission": "14265",
+      "opponent_submission": "",
+      "peer": {
+        "who": "opp",
+        "gid": 852484,
+        "map": "Autarky",
+        "r": 131,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 4,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 1,
+      "killer": 18,
+      "death": {
+        "round": 131,
+        "id": 1,
+        "team": "B",
+        "cause": "h2h",
+        "length": 4,
+        "actor": 18,
+        "age": 131,
+        "head": [
+          51,
+          13
+        ],
+        "initial": true,
+        "killer": 18,
+        "killer_team": "A"
+      },
+      "killer_action": {
+        "round": 131,
+        "id": 18,
+        "team": "A",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": 6618196,
+        "dirs": [
+          2,
+          2
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          51,
+          11
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          51,
+          13
+        ],
+        "queen_length": 4,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          51,
+          12
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 131,
+        "head": [
+          52,
+          13
+        ],
+        "length": 4
+      }
+    },
+    {
+      "game": 869495,
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "ranked": false,
+      "map": "Australia",
+      "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+      "replay_sha256": "136b2de26ffae1b4cb33d3152f3a9f6b728de2a08344aa554033a3f2a9311ab9",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "opp",
+        "gid": 869495,
+        "map": "Australia",
+        "r": 142,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 0,
+      "killer": 47,
+      "death": {
+        "round": 142,
+        "id": 0,
+        "team": "B",
+        "cause": "h2h",
+        "length": 3,
+        "actor": 47,
+        "age": 142,
+        "head": [
+          47,
+          23
+        ],
+        "initial": true,
+        "killer": 47,
+        "killer_team": "A"
+      },
+      "killer_action": {
+        "round": 142,
+        "id": 47,
+        "team": "A",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": 7513755,
+        "dirs": [
+          3,
+          3
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          49,
+          23
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          47,
+          23
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          48,
+          23
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 142,
+        "head": [
+          47,
+          22
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 869495,
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "ranked": false,
+      "map": "Australia",
+      "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+      "replay_sha256": "136b2de26ffae1b4cb33d3152f3a9f6b728de2a08344aa554033a3f2a9311ab9",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 869495,
+        "map": "Australia",
+        "r": 210,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 2,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 2
+      },
+      "queen": 1,
+      "killer": 252,
+      "death": {
+        "round": 210,
+        "id": 1,
+        "team": "A",
+        "cause": "h2h",
+        "length": 2,
+        "actor": 252,
+        "age": 210,
+        "head": [
+          36,
+          23
+        ],
+        "initial": true,
+        "killer": 252,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 210,
+        "id": 252,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          0,
+          1
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          35,
+          24
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          36,
+          23
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          35,
+          23
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 210,
+        "head": [
+          36,
+          24
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 866875,
+      "series": "9fb55567-7111-4a03-bf52-bd8c35f27299",
+      "ranked": false,
+      "map": "Autarky",
+      "map_hash": "b2575c0809ae2e4f5940440a7f1bccbed39b58fc575e5dd2079eb68ce2b5beff",
+      "replay_sha256": "2ac2edc2e8b502589ecd0643e60ce9f5d9a7b5356c50b7db4dacb8d36738377a",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "opp",
+        "gid": 866875,
+        "map": "Autarky",
+        "r": 207,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 4,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 1,
+      "killer": 83,
+      "death": {
+        "round": 207,
+        "id": 1,
+        "team": "A",
+        "cause": "h2h",
+        "length": 4,
+        "actor": 83,
+        "age": 207,
+        "head": [
+          51,
+          12
+        ],
+        "initial": true,
+        "killer": 83,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 207,
+        "id": 83,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": 6858516,
+        "dirs": [
+          2,
+          2
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          51,
+          10
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          51,
+          12
+        ],
+        "queen_length": 4,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          51,
+          11
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 207,
+        "head": [
+          52,
+          12
+        ],
+        "length": 4
+      }
+    },
+    {
+      "game": 860828,
+      "series": "c7cc00f4-865e-4585-9f9f-75458005a013",
+      "ranked": true,
+      "map": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "replay_sha256": "26501837c6ff29a62b9e8289b50a7cc4e04f5390912ca0943120fb41df85862a",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "opp",
+        "gid": 860828,
+        "map": "Trauma",
+        "r": 488,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 24,
+        "kl": 4,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 2
+      },
+      "queen": 0,
+      "killer": 191,
+      "death": {
+        "round": 488,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 24,
+        "actor": 191,
+        "age": 488,
+        "head": [
+          2,
+          2
+        ],
+        "initial": true,
+        "killer": 191,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 488,
+        "id": 191,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": 6712898,
+        "dirs": [
+          0,
+          0
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          2,
+          4
+        ],
+        "killer_length": 4,
+        "queen_head": [
+          2,
+          2
+        ],
+        "queen_length": 24,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          2,
+          3
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 488,
+        "head": [
+          2,
+          0
+        ],
+        "length": 24
+      }
+    },
+    {
+      "game": 869494,
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "ranked": false,
+      "map": "Prisoners Dilemma",
+      "map_hash": "88eea47e61ffdbf5e54e9d4cb4c935fda03328d1576ebbd2e4167e42a0c28050",
+      "replay_sha256": "30bd2bc861898a0fc81baf6ae4934e05b4921245969a197986d8699ca8ed8675",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 869494,
+        "map": "Prisoners Dilemma",
+        "r": 14,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 5,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 0,
+      "killer": 11,
+      "death": {
+        "round": 14,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 3,
+        "actor": 11,
+        "age": 14,
+        "head": [
+          16,
+          4
+        ],
+        "initial": true,
+        "killer": 11,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 14,
+        "id": 11,
+        "team": "B",
+        "kind": "move",
+        "steps": 5,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          0,
+          0,
+          3,
+          3,
+          3
+        ],
+        "paid": 3
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          19,
+          6
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          16,
+          4
+        ],
+        "queen_length": 3,
+        "distance": 5
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          19,
+          5
+        ],
+        [
+          19,
+          4
+        ],
+        [
+          18,
+          4
+        ],
+        [
+          17,
+          4
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 14,
+        "head": [
+          15,
+          4
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 858820,
+      "series": "7821f89b-253b-47a4-a2d1-96b465c525d6",
+      "ranked": false,
+      "map": "Prisoners Dilemma",
+      "map_hash": "aebe7fff18a8613b63aa7736c61c3df3a44d2ea92a0b6ad7301a52fc5c154857",
+      "replay_sha256": "108ff337f4358e6a2399b3b8184580c1322d596b6a3d7efc8be51b8febf21933",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 858820,
+        "map": "Prisoners Dilemma",
+        "r": 15,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 0,
+      "killer": 23,
+      "death": {
+        "round": 15,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 4,
+        "actor": 23,
+        "age": 15,
+        "head": [
+          16,
+          9
+        ],
+        "initial": true,
+        "killer": 23,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 15,
+        "id": 23,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          2,
+          2
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          16,
+          7
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          16,
+          9
+        ],
+        "queen_length": 4,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          16,
+          8
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 15,
+        "head": [
+          15,
+          9
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 881387,
+      "series": "1aba17eb-0524-45bf-afef-d164ed7cd585",
+      "ranked": false,
+      "map": "Default",
+      "map_hash": "08c80bd457d965982693db7d02180cb99e272e721f8aedc8d08ff88f8e787cef",
+      "replay_sha256": "0aca2f10e7327cd276bd26481798445a2404cc0432933251177c82ca3ec69b96",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 881387,
+        "map": "Default",
+        "r": 26,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 2,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 3,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 1,
+      "killer": 10,
+      "death": {
+        "round": 26,
+        "id": 1,
+        "team": "A",
+        "cause": "h2h",
+        "length": 2,
+        "actor": 10,
+        "age": 26,
+        "head": [
+          2,
+          10
+        ],
+        "initial": true,
+        "killer": 10,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 26,
+        "id": 10,
+        "team": "B",
+        "kind": "move",
+        "steps": 3,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          0,
+          0,
+          0
+        ],
+        "paid": 1
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          2,
+          13
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          2,
+          10
+        ],
+        "queen_length": 2,
+        "distance": 3
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          2,
+          12
+        ],
+        [
+          2,
+          11
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 26,
+        "head": [
+          2,
+          9
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 869502,
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "ranked": false,
+      "map": "Queen Of Spades",
+      "map_hash": "ea5704a61d5bb4b875f660e99c59e35fcdbf8efb8f98c4b47e3dcbae36f4f15e",
+      "replay_sha256": "42081632e674949adbda4028f7d988a804fa89fd3762941d2f5c0a972a46923b",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 869502,
+        "map": "Queen Of Spades",
+        "r": 28,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 2,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 0,
+      "killer": 3,
+      "death": {
+        "round": 28,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 2,
+        "actor": 3,
+        "age": 28,
+        "head": [
+          8,
+          3
+        ],
+        "initial": true,
+        "killer": 3,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 28,
+        "id": 3,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          3,
+          3
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          10,
+          3
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          8,
+          3
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          9,
+          3
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 28,
+        "head": [
+          7,
+          3
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 860202,
+      "series": "9e703247-42f9-4e3c-9787-e26ee9101c7f",
+      "ranked": false,
+      "map": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "replay_sha256": "7dbacb41f4d31893409309e6273592f210ce32c004231573fd9e3c73a26ce7e6",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 860202,
+        "map": "Around UNSW",
+        "r": 38,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 2,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 0,
+      "killer": 33,
+      "death": {
+        "round": 38,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 2,
+        "actor": 33,
+        "age": 38,
+        "head": [
+          10,
+          30
+        ],
+        "initial": true,
+        "killer": 33,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 38,
+        "id": 33,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          1
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          8,
+          30
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          10,
+          30
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          9,
+          30
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 38,
+        "head": [
+          10,
+          31
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 866888,
+      "series": "9fb55567-7111-4a03-bf52-bd8c35f27299",
+      "ranked": false,
+      "map": "Trophy",
+      "map_hash": "3c76d5636a2d6e3d6705ed785cce039c66e4991bdca305b3927d153f58125799",
+      "replay_sha256": "6d13f2eaa6ed46ec33bbad690c1ee8c7547f19f43f8ba016a51a0475a9076408",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 866888,
+        "map": "Trophy",
+        "r": 50,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 1,
+      "killer": 8,
+      "death": {
+        "round": 50,
+        "id": 1,
+        "team": "B",
+        "cause": "h2h",
+        "length": 3,
+        "actor": 8,
+        "age": 50,
+        "head": [
+          7,
+          19
+        ],
+        "initial": true,
+        "killer": 8,
+        "killer_team": "A"
+      },
+      "killer_action": {
+        "round": 50,
+        "id": 8,
+        "team": "A",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          2,
+          2
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          7,
+          17
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          7,
+          19
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          7,
+          18
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 50,
+        "head": [
+          6,
+          19
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 866446,
+      "series": "7dee1f3e-8e25-4ea6-8d60-9393d0099d5c",
+      "ranked": false,
+      "map": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "replay_sha256": "3518cf13ba0b03a64b18cfadb48420ef85cf306c0a5cf6d36a060ed2bc199864",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 866446,
+        "map": "Around UNSW",
+        "r": 55,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 2,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 2
+      },
+      "queen": 0,
+      "killer": 41,
+      "death": {
+        "round": 55,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 2,
+        "actor": 41,
+        "age": 55,
+        "head": [
+          4,
+          33
+        ],
+        "initial": true,
+        "killer": 41,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 55,
+        "id": 41,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          0
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          3,
+          34
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          4,
+          33
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          4,
+          34
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 55,
+        "head": [
+          4,
+          32
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 858822,
+      "series": "7821f89b-253b-47a4-a2d1-96b465c525d6",
+      "ranked": false,
+      "map": "Autarky",
+      "map_hash": "66c5adbf24329dade34cb6b8f06eeac2c8cd47108a110470d8a343aaa1f59309",
+      "replay_sha256": "5fbbd50d7da3734b292782a84a54895b8ea9a7014d2c9bf9320f6066117bc4a7",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 858822,
+        "map": "Autarky",
+        "r": 58,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 0,
+        "nalt": 0
+      },
+      "queen": 0,
+      "killer": 62,
+      "death": {
+        "round": 58,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 2,
+        "actor": 62,
+        "age": 58,
+        "head": [
+          34,
+          14
+        ],
+        "initial": true,
+        "killer": 62,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 58,
+        "id": 62,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          3,
+          3
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          36,
+          14
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          34,
+          14
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          35,
+          14
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 58,
+        "head": [
+          34,
+          16
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 870342,
+      "series": "6f5d3a7e-a827-4aa4-a537-df6f86428a97",
+      "ranked": false,
+      "map": "Islands",
+      "map_hash": "e3175217d1717035d51164b2be0c9f6b962aeebd700e9f7da02be02cffca3cd5",
+      "replay_sha256": "268d078d61428c1a66a6e75397bda26fbc2a23f758d68212d796b4e7a5d58eb5",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 870342,
+        "map": "Islands",
+        "r": 74,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 2,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 0,
+      "killer": 42,
+      "death": {
+        "round": 74,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 3,
+        "actor": 42,
+        "age": 74,
+        "head": [
+          53,
+          35
+        ],
+        "initial": true,
+        "killer": 42,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 74,
+        "id": 42,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          2,
+          2
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          53,
+          33
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          53,
+          35
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          53,
+          34
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 74,
+        "head": [
+          54,
+          35
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 860203,
+      "series": "9e703247-42f9-4e3c-9787-e26ee9101c7f",
+      "ranked": false,
+      "map": "Trophy",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "replay_sha256": "ff76b91ac816d5189ac23c770ae5cebf0da12463d3c4f36c0bcd7490366aaa53",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 860203,
+        "map": "Trophy",
+        "r": 78,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 2,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 2
+      },
+      "queen": 1,
+      "killer": 2,
+      "death": {
+        "round": 78,
+        "id": 1,
+        "team": "A",
+        "cause": "h2h",
+        "length": 2,
+        "actor": 2,
+        "age": 78,
+        "head": [
+          13,
+          19
+        ],
+        "initial": true,
+        "killer": 2,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 78,
+        "id": 2,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          3,
+          2
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          14,
+          18
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          13,
+          19
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          13,
+          18
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 78,
+        "head": [
+          12,
+          19
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 858817,
+      "series": "7821f89b-253b-47a4-a2d1-96b465c525d6",
+      "ranked": false,
+      "map": "Trophy",
+      "map_hash": "647b52a58e63784de69f75ff1876e9ce41166c29deeb808405631000e59fcfe9",
+      "replay_sha256": "ecebb27267c94c7aa045ba459a628b40ab081049f51c5ba4c2b8d8846fe0bc06",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 858817,
+        "map": "Trophy",
+        "r": 79,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 2,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 1,
+      "killer": 30,
+      "death": {
+        "round": 79,
+        "id": 1,
+        "team": "A",
+        "cause": "h2h",
+        "length": 2,
+        "actor": 30,
+        "age": 79,
+        "head": [
+          13,
+          5
+        ],
+        "initial": true,
+        "killer": 30,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 79,
+        "id": 30,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          0
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          12,
+          6
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          13,
+          5
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          13,
+          6
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 79,
+        "head": [
+          12,
+          5
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 852909,
+      "series": "4b7068c8-e7a5-4934-af40-04696008aaa0",
+      "ranked": false,
+      "map": "Queen Of Spades",
+      "map_hash": "3ffe4ab7cb5e880f7ddb7d5d1dcfd95c5891e460468a24130d1c6dd50e23b141",
+      "replay_sha256": "2712ed2976e2d58c1ad28c44049c94d6412e24dca5672f4de8c4a1e7b7faa7b6",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 852909,
+        "map": "Queen Of Spades",
+        "r": 84,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 1,
+      "killer": 4,
+      "death": {
+        "round": 84,
+        "id": 1,
+        "team": "A",
+        "cause": "h2h",
+        "length": 3,
+        "actor": 4,
+        "age": 84,
+        "head": [
+          20,
+          29
+        ],
+        "initial": true,
+        "killer": 4,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 84,
+        "id": 4,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          0,
+          0
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          20,
+          31
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          20,
+          29
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          20,
+          30
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 84,
+        "head": [
+          20,
+          28
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 881972,
+      "series": "b69e0d30-99df-4618-8364-1bf852f69ec9",
+      "ranked": false,
+      "map": "Default",
+      "map_hash": "2aa3b6c52fa4b6644e6bc5a389528d36995aef59cfa37e5f9b21c2859d0cd9dc",
+      "replay_sha256": "ebbb1ba1e6cd45ab9cc05b7fc896e686a123f58af5d3b5a75fae7785396d43bb",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 881972,
+        "map": "Default",
+        "r": 84,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 2,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 0,
+      "killer": 34,
+      "death": {
+        "round": 84,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 2,
+        "actor": 34,
+        "age": 84,
+        "head": [
+          7,
+          11
+        ],
+        "initial": true,
+        "killer": 34,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 84,
+        "id": 34,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          2,
+          2
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          7,
+          9
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          7,
+          11
+        ],
+        "queen_length": 2,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          7,
+          10
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 84,
+        "head": [
+          7,
+          12
+        ],
+        "length": 2
+      }
+    },
+    {
+      "game": 858816,
+      "series": "7821f89b-253b-47a4-a2d1-96b465c525d6",
+      "ranked": false,
+      "map": "Around UNSW",
+      "map_hash": "ed137eeb155008b0ba74bf04332b5d782cd8b975ebeaf77c9130ded2e0e94f14",
+      "replay_sha256": "67f8a13b8986a3b8b2b929abe91e77aa68bf516950fc519fa818c6a30568bd06",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 858816,
+        "map": "Around UNSW",
+        "r": 89,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 5,
+        "fore": 0,
+        "kdist": 5,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 0,
+      "killer": 188,
+      "death": {
+        "round": 89,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 3,
+        "actor": 188,
+        "age": 89,
+        "head": [
+          23,
+          32
+        ],
+        "initial": true,
+        "killer": 188,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 89,
+        "id": 188,
+        "team": "B",
+        "kind": "move",
+        "steps": 5,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          3,
+          0,
+          0,
+          3,
+          3
+        ],
+        "paid": 2
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          26,
+          34
+        ],
+        "killer_length": 5,
+        "queen_head": [
+          23,
+          32
+        ],
+        "queen_length": 3,
+        "distance": 5
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          25,
+          34
+        ],
+        [
+          25,
+          33
+        ],
+        [
+          25,
+          32
+        ],
+        [
+          24,
+          32
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 89,
+        "head": [
+          22,
+          32
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 881395,
+      "series": "1aba17eb-0524-45bf-afef-d164ed7cd585",
+      "ranked": false,
+      "map": "Australia",
+      "map_hash": "e0221c69b15fa644cfab6ac6e4675554a0777f5a9c22cc2e77995ad7d49058e3",
+      "replay_sha256": "55327f007dcbc298c6d1e3c53332299fe5dc9d9e3b1a76f8f6b4bb359205fc78",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 881395,
+        "map": "Australia",
+        "r": 90,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 1
+      },
+      "queen": 1,
+      "killer": 16,
+      "death": {
+        "round": 90,
+        "id": 1,
+        "team": "A",
+        "cause": "h2h",
+        "length": 3,
+        "actor": 16,
+        "age": 90,
+        "head": [
+          59,
+          30
+        ],
+        "initial": true,
+        "killer": 16,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 90,
+        "id": 16,
+        "team": "B",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          0
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          58,
+          31
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          59,
+          30
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          59,
+          31
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 90,
+        "head": [
+          58,
+          30
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 860316,
+      "series": "ac08399b-eede-47a1-91a5-edebe0171e04",
+      "ranked": true,
+      "map": "Australia",
+      "map_hash": "829f6ff47aeabb8cd7784e74840a5165f346bd8fec416056daae183d8b68ab79",
+      "replay_sha256": "49c5ff84de6a3bbc19338e6c34a96281f56cc8735ab1b8888e862b07d4eb84d2",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 860316,
+        "map": "Australia",
+        "r": 107,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 2,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 1,
+      "killer": 45,
+      "death": {
+        "round": 107,
+        "id": 1,
+        "team": "B",
+        "cause": "h2h",
+        "length": 3,
+        "actor": 45,
+        "age": 107,
+        "head": [
+          22,
+          56
+        ],
+        "initial": true,
+        "killer": 45,
+        "killer_team": "A"
+      },
+      "killer_action": {
+        "round": 107,
+        "id": 45,
+        "team": "A",
+        "kind": "move",
+        "steps": 2,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          2
+        ],
+        "paid": 0
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          21,
+          55
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          22,
+          56
+        ],
+        "queen_length": 3,
+        "distance": 2
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          22,
+          55
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 107,
+        "head": [
+          22,
+          57
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 857671,
+      "series": "3f21fb23-f1c6-4d30-84fa-12073a76adf7",
+      "ranked": false,
+      "map": "Around UNSW",
+      "map_hash": "bda3c3f3767e8c8416e236495fb238bd5c71505389f8c6e5ce26ff25ecc6d595",
+      "replay_sha256": "6344112d49cfbe429962173fcbf22a6fa244d8357e5ef5e91e418b46833566b6",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 857671,
+        "map": "Around UNSW",
+        "r": 118,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 6,
+        "kl": 3,
+        "fore": 0,
+        "kdist": 3,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 1,
+      "killer": 104,
+      "death": {
+        "round": 118,
+        "id": 1,
+        "team": "A",
+        "cause": "h2h",
+        "length": 6,
+        "actor": 104,
+        "age": 118,
+        "head": [
+          29,
+          34
+        ],
+        "initial": true,
+        "killer": 104,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 118,
+        "id": 104,
+        "team": "B",
+        "kind": "move",
+        "steps": 3,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          1,
+          2,
+          2
+        ],
+        "paid": 1
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          28,
+          32
+        ],
+        "killer_length": 3,
+        "queen_head": [
+          29,
+          34
+        ],
+        "queen_length": 6,
+        "distance": 3
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          29,
+          32
+        ],
+        [
+          29,
+          33
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 118,
+        "head": [
+          29,
+          36
+        ],
+        "length": 6
+      }
+    },
+    {
+      "game": 880465,
+      "series": "5ccf0692-658e-4aac-8fb0-a19c3dae7645",
+      "ranked": true,
+      "map": "Slithery Fight",
+      "map_hash": "2b2eaa9c0cd978c17348887b5270b24ba8dc868219d327dec776d7e403b81129",
+      "replay_sha256": "048724063a042dabefa3a2f16e30316098a01951cd83d8fbad4a5a27e114c1ae",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 880465,
+        "map": "Slithery Fight",
+        "r": 120,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 4,
+        "fore": 0,
+        "kdist": 3,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 3
+      },
+      "queen": 0,
+      "killer": 452,
+      "death": {
+        "round": 120,
+        "id": 0,
+        "team": "B",
+        "cause": "h2h",
+        "length": 3,
+        "actor": 452,
+        "age": 120,
+        "head": [
+          19,
+          19
+        ],
+        "initial": true,
+        "killer": 452,
+        "killer_team": "A"
+      },
+      "killer_action": {
+        "round": 120,
+        "id": 452,
+        "team": "A",
+        "kind": "move",
+        "steps": 3,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          3,
+          3,
+          3
+        ],
+        "paid": 1
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          22,
+          19
+        ],
+        "killer_length": 4,
+        "queen_head": [
+          19,
+          19
+        ],
+        "queen_length": 3,
+        "distance": 3
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          21,
+          19
+        ],
+        [
+          20,
+          19
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 120,
+        "head": [
+          19,
+          20
+        ],
+        "length": 3
+      }
+    },
+    {
+      "game": 869498,
+      "series": "24e563d5-f18c-409b-ba85-5987ce401bbf",
+      "ranked": false,
+      "map": "Trauma",
+      "map_hash": "57dcdc6de91376572b0a1f18b1cf45d3d11329e54a8837c40d38e611a5f63d91",
+      "replay_sha256": "23b2a1323785d493d1f32b4af549cc67903bab951b2aba061251162fff2a56d1",
+      "own_submission": "14585",
+      "opponent_submission": "",
+      "peer": {
+        "who": "us",
+        "gid": 869498,
+        "map": "Trauma",
+        "r": 180,
+        "rel": "enemy",
+        "mover": 0,
+        "mutual": 0,
+        "ql": 3,
+        "kl": 4,
+        "fore": 0,
+        "kdist": 4,
+        "kdied": 1,
+        "alt4": 1,
+        "nalt": 2
+      },
+      "queen": 0,
+      "killer": 110,
+      "death": {
+        "round": 180,
+        "id": 0,
+        "team": "A",
+        "cause": "h2h",
+        "length": 3,
+        "actor": 110,
+        "age": 180,
+        "head": [
+          23,
+          12
+        ],
+        "initial": true,
+        "killer": 110,
+        "killer_team": "B"
+      },
+      "killer_action": {
+        "round": 180,
+        "id": 110,
+        "team": "B",
+        "kind": "move",
+        "steps": 4,
+        "tle": false,
+        "cpu": null,
+        "dirs": [
+          3,
+          3,
+          2,
+          3
+        ],
+        "paid": 2
+      },
+      "killer_turn_start": {
+        "killer_head": [
+          26,
+          11
+        ],
+        "killer_length": 4,
+        "queen_head": [
+          23,
+          12
+        ],
+        "queen_length": 3,
+        "distance": 4
+      },
+      "killer_head_updates_before_queen_death": [
+        [
+          25,
+          11
+        ],
+        [
+          24,
+          11
+        ],
+        [
+          24,
+          12
+        ]
+      ],
+      "queen_last_turn_start": {
+        "round": 180,
+        "head": [
+          22,
+          12
+        ],
+        "length": 3
+      }
+    }
+  ],
+  "scope": "24 selected collision cases from the same consumed96 sample; command length and event states only. No causal avoidance, policy-visibility or enemy-intent claim."
+}
