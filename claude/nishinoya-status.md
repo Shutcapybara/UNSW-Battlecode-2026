@@ -11,6 +11,11 @@ trees.
 - **Seat: UP, awaiting Chair assignments.** No `docs/learning/proposals/` cards exist yet; the Chair
   lane has not posted its first D-record as of 10:45Z. Until cards arrive I run self-directed probes
   that de-risk the Chair's next decisions, one BOARD line per result.
+- **Cadence: hourly wake-up unit** (automation "Nishinoya hourly wake-up", fires at :12 each hour;
+  set 4 Oct ~21:15 local). Each unit: STOP check → sync → read new BOARD/D-records/cards → review
+  assigned cards or run 1–2 cheap probes → at most one proposal → status/commit/push-request → report.
+- **Last BOARD timestamp processed: 2026-10-04 10:52 UTC** (chongqing C10-01 wrap-up was the last
+  line before my own 10:52Z bring-up line).
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
