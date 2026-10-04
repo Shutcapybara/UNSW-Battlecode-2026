@@ -1,6 +1,6 @@
-# Kanazawa unit 15 — strike sufficiency, veto precision, and who dodges (4 Oct 10:20–10:35Z)
+# Kanazawa unit 15 — strike sufficiency, veto precision, and who dodges (4 Oct 10:11–10:17Z)
 
-Tool: `tools/kanazawa/q_suff.py` (frozen 10:20Z; the exploratory chase/flee follow-up was added 10:24Z after the primary). Data: `docs/findings/kanazawa-data/unit15-q_suff.txt`. Set: in-sample stride-96 (first 286 eligible post-m2 team-7 games). It is consumed, so the results are descriptive.
+Tool: `tools/kanazawa/q_suff.py` (frozen 10:13Z; the exploratory chase/flee follow-up was added 10:15Z after the primary). Data: `docs/findings/kanazawa-data/unit15-q_suff.txt`. Set: in-sample stride-96 (first 286 eligible post-m2 team-7 games). It is consumed, so the results are descriptive.
 
 ## Definition
 An opportunity at state R[r] is an enemy head e and a target head t (other team) with Cheb(e,t) ≤ 3 (wrap), so t is in e's TurnStart vision, and 2 ≤ BFS(e→t) ≤ B(Le)+1, where B(L) = ceil(L/4)+L−2 (Himeji H30-01). The +1 is there because the queen moves first. The target is struck if it dies by h2h in round r and the killer is e. Target classes: Q is a queen (id ≤ 1); CL is a child longer than the striker; CS is any other child.

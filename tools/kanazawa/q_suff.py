@@ -1,5 +1,5 @@
 """Kanazawa unit 15: H-KZ28 sufficiency / H-KZ26 veto precision (Himeji H32-03, Nara veto-firings column).
-FROZEN 10:20Z before running. In-sample stride-96 set (first 286 eligible, consumed; descriptive).
+FROZEN 10:13Z before running. In-sample stride-96 set (first 286 eligible, consumed; descriptive).
 Opportunity at state S=R[r] (same indexing as q_avoid2: death round dr has pre-move state R[dr]):
   enemy head e (team != target team), target head t, Cheb(e,t) <= 3 (wrap; target in e's TurnStart vision),
   2 <= BFS(nbr, e->t) <= B(Le)+1 (B = ceil(L/4)+L-2; +1 because the queen moves first).
@@ -10,7 +10,7 @@ Primary: per-opportunity strike rate P(struck | opp) for our Q vs our CL.
 Prediction: Q rate <= 0.05 (in-vision is not sufficient, Himeji) and Q/CL ratio >= 2 (enemies single out queens, H-KZ27).
   If Q/CL < 1.5 -> H-KZ27 to 0.1 (queen strikes are ordinary length-trade opportunism, no targeting).
   If Q rate >= 0.15 -> H-KZ28 sufficiency up to 0.6 (vision + reach nearly determines a strike).
-Follow-up added 10:24Z after the primary (exploratory): for non-hit Q/CL opps with both alive at R[r+1], chase = striker
+Follow-up added 10:15Z after the primary (exploratory): for non-hit Q/CL opps with both alive at R[r+1], chase = striker
   head moved closer to the target's old head; flee = target head moved farther from the striker's old head.
 Secondary: veto firing rate = queen-rounds with >=1 opportunity / queen-rounds alive (H-KZ26 firings per 1k moves);
   by striker length Le 2-3 / 4-5 / 6+; same numbers for opponent queens (our strikers)."""
