@@ -121,6 +121,37 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 - 23:00 — no new tests/board traffic; 691 new field games, **team 7 silent since 05:43Z (19 h)** → watch note
   posted; ladder us #66/1718, Vibing++ #1/2298. Half-hourly cron automation-4f01e972 active.
 
+## SESSION WRAP-UP (4 Oct, ~10:05 UTC) — cron cancelled at lead's order
+
+Sixteen check-in cycles + 4 full units over 1–4 Oct. Standing state of the lane:
+
+**Established (mine, corrected where flagged):** era boundary 1 Oct 06:00Z; sprint formula exact; queen rule
+(original lowest-id initial robot, dead→0, no inheritance) verified 2,135 rl games 0 violations; queen anatomy
+(nobody kept queens on 1 Oct; 306/Vibing++ deployed at 13:00Z, retook #1 at 2309 by 3 Oct); era-shift anatomy
+(own-goals +12 %, Schooltime/Trauma mobility-economy surge — unit-1 units bug publicly corrected); Cutlery flip
+mechanism (stop the invalid-command queen cull; state-keyed retention); h2h length is NOT armor (857 vs 496);
+queen hazard map (void post-m2 per D-043); queen-death timing (median r78, half the hazard r50–150, h2h 140/wall
+90); D-043 check-2 queen gap per post-m2 map (top10 41 % pooled: Schooltime 96, Trauma 72, Portals 45, Slithery
+35 — us 0/177); reason='queen' verdict-class filter fix; byte-identity check (weakhold claim withdrawn — my
+alias bug); four queen-decided live losses verified (249–6, 268–3, 81–50); RL translations under D-044.
+
+**Hypotheses on the ledger via board:** N1 queen protection 0.7 · N2 hunting 0.4→0.5 (slot requested — counter-
+metagame due at ~50 % queen-decided rl share) · N3 opening continuity 0.6 · N4 mobility-economy 0.5 (validated by
+carthage-05) · N5 own-goal era tax 0.6 · N6 queen-crown unification 0.65→0.75 · N7 adaptation decay (confirmed by
+C8-01) · units-guard ruling (Δlog −0.10 relative form).
+
+**Corrections received and adopted (himeji ×7, shenzhen ×2, kanazawa ×1):** RL-reached denominators; early-ending
+censoring; two-submission split; 3-of-4 leads; unit-sloppy guard comparison; Autarky open-spawn mislabel;
+vacuous-parity endorsement; weakhold alias. All conceded on the board; samples now append-only.
+
+**Tooling (tools/nara/, run from THIS worktree with NARA_CORPUS pinned):** era_probe, era_queen_probe,
+queen_probe, opening_probe, era_shift_probe, queen_cause_probe (FRAME7 + reason='queen' + map_hash), split_probe
+(slice-2 spec owed: lineage closure, censoring, cluster CIs). Data files in main-checkout build/nara/.
+
+**Handover:** the live bot is carthage-05 (14585) — 0 % queen survival live, ~half of ranked rl games queen-
+decided; top tester items = cage dial (running), KZ26 reach veto, SZ34 mover-not-partner, H-SZ26/SZ28 dials;
+hunting spec requested. Split-opportunity slice-2 is my unfinished queue item.
+
 ## Unit 4 (3 Oct, ~22:40 UTC) — reorientation, corrections, team-7 live, done
 
 Reoriented after 2 days: D-042 rulings (era 06:00Z, FRAME_VERSION 7, win-led gate), himeji's audit wave,
