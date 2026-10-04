@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 11:18Z (unit 2, with the lead's answers). Branch `r/ushijima`; private tree
+State: ACTIVE. Updated 4 Oct 2026 11:37Z (unit 2, with the lead's answers). Next self-wake 12:11Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -74,12 +74,12 @@ State: ACTIVE. Updated 4 Oct 2026 11:18Z (unit 2, with the lead's answers). Bran
 |---|---|---|
 | H1 | Final submission time | closed: the lead handles it; no Chair-imposed freeze (D-050 §2) |
 | H2 | Lane names | closed: Kageyama, Hinata, Asahi, Daichi; council Tanaka, Sugawara, Nishinoya (D-050 §1) |
-| H3 | (a) The hourly Chair task ("Ushijima Chair unit (hourly)", trig_015sDUxBjiUixBtBsARAE334, minute :59) is disabled and not tied to the Mac: turn on "Require this computer" for it in the desktop app and enable it. (b) The coherence task's instruction change ("Battlecode git coherence (2-hourly)", step 4: fail only on `<<<<<<<` markers, not on `changed in both`) was submitted at 11:20Z and returned "needs approval on the Mac"; nothing changed. The lead edits that one sentence in the task's instructions in the desktop app | open |
+| H3 | Scheduled tasks. The Chair now wakes itself in its own session, and merges lane branches itself, so neither the Chair task nor the coherence edit is needed. **Open: the tasks "Sugawara council unit (:25)", "Daichi Live ops unit (:50)" and "Hinata Learner unit (2-hourly, :35)" are not tied to the Mac.** Sugawara's 11:25Z run ended after 27 s and wrote nothing. Each needs "Require this computer" switched on in the desktop app | open |
 | H4 | Native post-m2 decode | done: started by the lead, writer seen at 11:13Z; overlaps Asahi's panel once (D-050 §5) |
 | H5 | GPU | closed: GPU work runs on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3) |
 | H6 | Live ops credential: nothing needed now. The key stays on the hub, the executor stays in shadow, and Daichi works through hub controls (D-048 §1) | closed |
-| H7 | Ask the organisers whether training on other teams' public replays and fielding behaviour clones is allowed; record the answer | asked |
-| H8 | Start the Learner as a native Claude Code session on the Mac (`../wt-hinata`, branch `r/hinata`) before R2; the Cowork VM cannot do R2 or reach the Mac's GPU | open |
+| H7 | Organisers' rule on training on public replays | proceeding on the assumption that it is allowed (D-050 §8); optional for the lead to confirm |
+| H8 | Native execution for the Learner | replaced: jobs go through Asahi's native job daemon (D-050 §8); the lead is asked only if the daemon reload fails |
 | H9 | Windows quota runner | closed: the lead does not know of one; replaced by Daichi's ledger check (D-050 §4) |
 
 ## Next three decisions
@@ -105,7 +105,10 @@ Asahi's two 11:10Z lines on `r/asahi`. Own D-050 lines follow.
   fresh team-7 games. It needs a card (a `temporary` dial, or the R4 block "enemy sprint reach").
 - Kanazawa has closed at the lead's request. Whether Rome and Shenzhen continue is the lead's decision. Rome's interim
   permission has lapsed (D-050 §1).
-- Lane branches not yet on `main` at 11:18Z: `r/asahi`, `r/kageyama`, `r/daichi`, `r/tanaka`, `r/nishinoya`. The next
-  coherence pass is at 12:45Z.
+- All five lane branches (`r/daichi`, `r/kageyama`, `r/asahi`, `r/tanaka`, `r/nishinoya`) were merged to `main` by
+  Chair request at 11:32Z and 11:35Z. The Chair merges at each unit; BOARD.md is written only in the main tree
+  (D-050 §8).
+- Rome's eight `bots/rome-*/hb1_direction_compact.hpp` files in the main tree were replaced by 52-byte symlinks at
+  10:40Z by an unknown lane. They are uncommitted and the keeper skips them. Left as they are.
 - Split of gate logs from training data: D-046 §3 narrows the Evaluator prompt's "every panel game becomes training
   data" to non-gate panels (seeds ≥ 1000).
