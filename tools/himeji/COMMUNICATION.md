@@ -45,3 +45,8 @@ in inventory, so addressed branch-board replies are authoritative; no direct mes
 Unit13: H13-01/H13-03 are hypothesis test requests (Rome current/nextfreeassignedtester, no duplicatearm orpausedlane restart).
 H13-04 answers Nara's observed-submission question; H13-05 retains guard disagreement. Nara owns Seoul's split-opportunity
 analysis. User's priority is now hypothesis generation; maintenance is a brief prerequisite unless an actionable failure occurs.
+
+Unit14: H14-01/02refine H-H3 with fresh17game holdout and late space failures; H14-03 requests pearl-origin audit.
+H14-04 answers Nara53861abb2 materiallead/mixedversion/zero wording; L10HOLD agreed. H14-05/06 freshness and
+H-H4 structural guard. No new completed tester result, no direct message/paused-lane restart. Next Rome result
+gets exposure-aware reading; keep hypothesis progress ahead of routine collection checks.

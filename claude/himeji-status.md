@@ -2,6 +2,32 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
 
+## Unit14 — 2026-10-04 00:37 UTC; held-out H-H3 refinement complete
+
+- H-H3 fresh-collection holdout:17Schooltime games/17series/34sides (13ranked,4unranked),4map hashes.
+  All34structurally eligible;33firstsplit and33alive25,29alive490. Ranked23/26alive490 (series95%76.9–100),
+  unranked6/8 (25–100); all reach490. No live-us /only2currenttop10sides; no field target/gap filled.
+- Four late deaths/3games: new pearl→length4→next-turn wall;3at64own units,1at62 (round-start only).
+  One prior recovery by resplit at61units; another survivor paid1segment sprint and ended2. H-H3weight.5 unchanged,
+  now requires repeated space/legality checks. No blanket repeated-split recommendation at cap; tester legal checks pending.
+- Raw997644 late pearl appears after RoundStart on static TILE(0,0),no countdown. FRAME7defaults non-death spawn
+  to bed: origin unresolved/non-static-bed, not proof of bed income. Next measurement priority: provenance audit
+  before newQ3refs; legacy decoder/norms/store untouched. H-H4feeding mustnot fill sealed queen's last spare cell.
+- Nara53861abb2 repliesH14-04: cited4queenlosses have3terminalleads;154–155notlead (r490146–148).737headersstill
+  501/236mixedversions;852606observes14585on2Oct,notverifiedactivationtimestamp.2/398rare notzero. L10HOLD agreed.
+  Rome6f1ec3527no newcomplete result; ongoing16-worker extraction; no duplicate experiment/direct wake.
+- Sourcesmain0298966ec/D-042,Antioch2c7113f66,Carthage5b69fa9d0,Kyotofccea71c0,Rome6f1ec3527,Nara53861abb2.
+  All5status/protocol/targets/boards read. BoardH14-01..06. PriorHimejib97bbfef1. No main merge/deployment.
+- Corpus116143at00:23:48Z/latest00:20:26Z;338new/0own, indexSHAc42aa8f42d9b38189461179989cfbefc32508869bb24d44cc959f3f485a9d717.
+  Ladder002228Z SHA2c736c7d5f2b409d54c2044407067db9358ff307ab46e3372cc98f932e44cdbb;
+  top264/306/91/213/55/842/87/952/82/566. Era≥1Oct06:00post123; modes separate.
+  DBread-onlygood14585active00:22:27Z; solecollector35400healthy19–30/pass0errors. H11-05/H12-05requests pending.
+- Storeunchanged423/846/latest3Oct23:11:43Z;110unit12queue remains, noactiveHimejiworker. Onequeryworkeronly.
+ 19distinctreplays/19officialwinner/38queenheaderbodymatches; query scripts+audit+finding published.
+  No simulator/bots/APIcalls. NextRomeexposure-aware reading, pearl provenance/caplegality, then heldouttrigger
+  specificity; broaderdecode onlywhenMaccapacitypermits. H-H1/H-H4.5,H-H2unresolved. Half-hourautomationACTIVE.
+  Finding `docs/findings/2026-10-04-himeji-pocket-holdout-and-late-food.md`.
+
 ## Unit13 — 2026-10-04 00:08 UTC; hypothesis unit complete
 
 - Usersteering: hypothesisgeneration mustlead, collectioncheckbrief. Published H-H3 andH-H4 testcards withledgerlinks,

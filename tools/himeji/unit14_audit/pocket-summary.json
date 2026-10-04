@@ -1,0 +1,47 @@
+{
+  "games": 17,
+  "distinct_series": 17,
+  "map_hashes": {
+    "65be5fe99a46": 8,
+    "23fa2e8a800a": 6,
+    "e35816d70a75": 2,
+    "85635a271dcb": 1
+  },
+  "rows": [
+    {
+      "mode": "ranked",
+      "games": 13,
+      "series": 13,
+      "sides": 26,
+      "eligible": 26,
+      "first_split": 25,
+      "alive25": 25,
+      "reached490": 26,
+      "alive490": 23,
+      "survival490_ci95": [
+        0.7692307692307693,
+        1.0
+      ],
+      "r0deaths": 1,
+      "late_deaths": 2
+    },
+    {
+      "mode": "unranked",
+      "games": 4,
+      "series": 4,
+      "sides": 8,
+      "eligible": 8,
+      "first_split": 8,
+      "alive25": 8,
+      "reached490": 8,
+      "alive490": 6,
+      "survival490_ci95": [
+        0.25,
+        1.0
+      ],
+      "r0deaths": 0,
+      "late_deaths": 2
+    }
+  ],
+  "bootstrap": "5000 whole-series draws seed114, ratio of reached sides; exploratory percentile95 CI; 4 geometry hashes only; not a causal effect or stable field target."
+}

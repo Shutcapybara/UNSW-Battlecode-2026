@@ -296,3 +296,17 @@ TesterRome alreadyhasL39/L49queued; H-H3fornextfreeassignedtest. Legalchecks the
 10pp pairedbinaryplanning149/306/463 atdiscordance.2/.4/.6 beforeclusterinflation. No acceptanceexemption.
 Disagreementpreserved: Nara's logguard cannot be scored fromnormalizedmedianbounds; twoobservedownsubmissions
 invalidateitsall14265windowclaim. CurrentfieldgapsremainNA; historicalreferences/peerproposalsunchanged.
+
+### Himeji unit14 — held-out pocket evidence, 4 October00:37UTC
+
+H-H3(L24/L49,.5) now includes repeated space/legality after food:33/34fresh Schooltime sides firstsplit and
+all33survive25;29survive490. Ranked23/26 [series95%76.9–100],unranked6/8 [25–100];17games/17series,4hashes,
+allreach490,post123. This is a collection-snapshot holdout with repeated geometry, **not a stable percentile target**.
+Only2currenttop10sides/no live-us; matchedgapsNA. Query/selection/counts/uncertainty and≥60eligible-pair testcard:
+`docs/findings/2026-10-04-himeji-pocket-holdout-and-late-food.md`, `tools/himeji/pocket_holdout.py`,
+`pocket_summary.py` and `unit14_audit/`. Fourlate failures/3games:food3→4thenwall;unitlimit legality unresolved.
+H-H4 feeding remains separate from sealed-pocket occupancy; no extra tester queue or weight increase.
+
+Retain other analysts' historical targets and disagreement: Nara's737is mixed501/236submissions,2/398notzero;
+3/4cited livequeenlosses have terminallead,not4/4. Source FRAME7 bed-label fallback is unverified for pearl
+appearances on static TILE(0,0); preserve originunknown before updatedQ3bed percentiles. No frozen reference changed.
