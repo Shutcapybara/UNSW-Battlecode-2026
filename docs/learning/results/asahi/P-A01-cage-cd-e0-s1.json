@@ -1,0 +1,952 @@
+{
+ "letter": "screen-FAIL",
+ "why": [
+  "pool win +0.0221 [-0.0037, +0.0515] vs +0.00",
+  "pool tier-2 up: ['death_invalid_per1k']",
+  "gen tier-2 up: ['death_invalid_per1k']"
+ ],
+ "cards": {
+  "pool": {
+   "panel": "pool",
+   "cand": "asahi-01-cage-cd-e0",
+   "parent": "carthage-05-free-sprint",
+   "seeds": [
+    1
+   ],
+   "meta": {
+    "cand": {
+     "fingerprint": "c0579163db45b0d5f73ac331fd0d8ac0c7a375cb4d774e6bc84bce465d3fda30",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "39961c55d0e6",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 272
+    },
+    "parent": {
+     "fingerprint": "7df05a3f40b011fa52f700c789ddf30414da08ab50d6c36964ef8cc223f9d45f",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "39961c55d0e6",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 272
+    }
+   },
+   "missing": {
+    "cand": [],
+    "parent": []
+   },
+   "paired": 272,
+   "summary": {
+    "cand": {
+     "n": 272,
+     "W": 232,
+     "L": 40,
+     "D": 0,
+     "win": 0.8529411764705882,
+     "reached": 149,
+     "q_cond": 0.040268456375838924,
+     "q_joint": 0.022058823529411766,
+     "q_dec_W": 5,
+     "q_dec_L": 4,
+     "conv": 0.8523489932885906,
+     "pearls@50": 43.87132352941177,
+     "pearls@100": 127.33088235294117,
+     "pearls@150": 213.81617647058823,
+     "pearls@250": 395.29411764705884,
+     "units@100": 28.761029411764707,
+     "total@100": 72.02573529411765,
+     "death_wall_per1k": 1.441210977838667,
+     "death_self_per1k": 2.238375280615904,
+     "death_ally_body_per1k": 0.7641306342687597,
+     "death_h2h_ally_per1k": 1.262264568216022,
+     "death_invalid_per1k": 8.069414616278905,
+     "death_h2h_enemy_per1k": 3.7380163164081033,
+     "death_enemy_body_per1k": 0.07505507513179657,
+     "deaths_per1k": 17.58846746875816,
+     "births@100": 51.529411764705884
+    },
+    "parent": {
+     "n": 272,
+     "W": 226,
+     "L": 46,
+     "D": 0,
+     "win": 0.8308823529411765,
+     "reached": 146,
+     "q_cond": 0.0,
+     "q_joint": 0.0,
+     "q_dec_W": 0,
+     "q_dec_L": 5,
+     "conv": 0.8082191780821918,
+     "pearls@50": 42.30882352941177,
+     "pearls@100": 126.04411764705883,
+     "pearls@150": 215.81617647058823,
+     "pearls@250": 395.0735294117647,
+     "units@100": 28.481617647058822,
+     "total@100": 71.3529411764706,
+     "death_wall_per1k": 7.21322771905425,
+     "death_self_per1k": 3.5847726058429465,
+     "death_ally_body_per1k": 1.5630230496589232,
+     "death_h2h_ally_per1k": 1.2375113517004284,
+     "death_invalid_per1k": 0.0,
+     "death_h2h_enemy_per1k": 3.740350788987482,
+     "death_enemy_body_per1k": 0.12725722360619188,
+     "deaths_per1k": 17.46614273885022,
+     "births@100": 50.720588235294116
+    }
+   },
+   "boot": {
+    "win": [
+     0.022058823529411766,
+     -0.003676470588235294,
+     0.051470588235294115
+    ],
+    "econ": [
+     0.006481997403811536,
+     -0.00012552635911572754,
+     0.013677413847971765
+    ],
+    "econ_med": [
+     -0.001005450457978646,
+     -0.005250103583796177,
+     0.004016796534186531
+    ],
+    "units@100": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "total@100": [
+     0.0,
+     0.0,
+     0.006451612903225712
+    ],
+    "q_joint": [
+     0.022058823529411766,
+     0.007352941176470588,
+     0.03676470588235294
+    ],
+    "q_cond": [
+     0.040268456375838924,
+     0.013513513513513514,
+     0.06711659821696885
+    ],
+    "conv": [
+     0.044129815206398804,
+     -0.0008736061321754914,
+     0.09872536738989086
+    ],
+    "death_wall_per1k": [
+     -5.772016741215583,
+     -6.8800237459592966,
+     -4.7560346485062075
+    ]
+   },
+   "tier2": {
+    "death_wall_per1k": {
+     "parent": 7.21322771905425,
+     "cand": 1.441210977838667,
+     "rel": -0.8001988798951118,
+     "flag": false
+    },
+    "death_self_per1k": {
+     "parent": 3.5847726058429465,
+     "cand": 2.238375280615904,
+     "rel": -0.3755879307469887,
+     "flag": false
+    },
+    "death_ally_body_per1k": {
+     "parent": 1.5630230496589232,
+     "cand": 0.7641306342687597,
+     "rel": -0.5111200475031348,
+     "flag": false
+    },
+    "death_h2h_ally_per1k": {
+     "parent": 1.2375113517004284,
+     "cand": 1.262264568216022,
+     "rel": 0.020002415720535405,
+     "flag": false
+    },
+    "death_invalid_per1k": {
+     "parent": 0.0,
+     "cand": 8.069414616278905,
+     "rel": null,
+     "flag": true
+    }
+   },
+   "per_map": [
+    {
+     "map": "live/australia",
+     "cls": "B",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.125,
+     "decon": 0.02198987341524701,
+     "dq_joint": 0.0625,
+     "q_alive_rl": "1/16 vs 0/16",
+     "dwall": -0.7000596764314215
+    },
+    {
+     "map": "live/autarky",
+     "cls": "A",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": -0.002629507804621581,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/3",
+     "dwall": -8.968778596010868
+    },
+    {
+     "map": "live/default",
+     "cls": "A",
+     "n": 16,
+     "W": 13,
+     "L": 3,
+     "dwin": 0.0,
+     "decon": -0.0012144246519246518,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/5 vs 0/5",
+     "dwall": -0.2532661966380034
+    },
+    {
+     "map": "live/devil",
+     "cls": "A",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": -0.036012850364533985,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -1.2576516332814418
+    },
+    {
+     "map": "live/dilemma",
+     "cls": "C",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": -0.033846824903261456,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/2",
+     "dwall": -3.838966441353094
+    },
+    {
+     "map": "live/islands",
+     "cls": "B",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": 4.2663987728640274e-05,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/13 vs 0/12",
+     "dwall": -2.961579914880546
+    },
+    {
+     "map": "live/maze",
+     "cls": "B",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0625,
+     "decon": 0.0037842026632787518,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/16 vs 0/15",
+     "dwall": -4.736219762016369
+    },
+    {
+     "map": "live/portals",
+     "cls": "E",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": -0.125,
+     "decon": 0.001240974729241881,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/13 vs 0/14",
+     "dwall": -17.83264190507441
+    },
+    {
+     "map": "live/queen_of_spades",
+     "cls": "A",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": -0.02255270624119058,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/3",
+     "dwall": -2.314077217774912
+    },
+    {
+     "map": "live/schooltime",
+     "cls": "B",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0625,
+     "decon": 0.04928719896989947,
+     "dq_joint": 0.25,
+     "q_alive_rl": "4/15 vs 0/16",
+     "dwall": -2.099226945751119
+    },
+    {
+     "map": "live/slithery_fight",
+     "cls": "D",
+     "n": 16,
+     "W": 13,
+     "L": 3,
+     "dwin": 0.1875,
+     "decon": -0.02135086743282006,
+     "dq_joint": 0.0625,
+     "q_alive_rl": "1/16 vs 0/16",
+     "dwall": -5.474127037033049
+    },
+    {
+     "map": "live/stripes",
+     "cls": "A",
+     "n": 16,
+     "W": 5,
+     "L": 11,
+     "dwin": 0.0,
+     "decon": 0.01981712559611152,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/2",
+     "dwall": -2.1698892834462695
+    },
+    {
+     "map": "live/tower_defense",
+     "cls": "A",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.030491509555785168,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/3",
+     "dwall": -2.5001952374701397
+    },
+    {
+     "map": "live/trauma",
+     "cls": "C",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": -0.0625,
+     "decon": 0.0050435126582278125,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/16 vs 0/16",
+     "dwall": -4.751185428181719
+    },
+    {
+     "map": "live/trophy",
+     "cls": "A",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": -0.006123911525755532,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.2200785113419264
+    },
+    {
+     "map": "live/unsw",
+     "cls": "B",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0625,
+     "decon": 0.10245334779030679,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/16 vs 0/16",
+     "dwall": -2.142981026497387
+    },
+    {
+     "map": "live/weakhold",
+     "cls": "C",
+     "n": 16,
+     "W": 9,
+     "L": 7,
+     "dwin": 0.0625,
+     "decon": -0.00022536057692308653,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/7 vs 0/7",
+     "dwall": -35.90335978748222
+    }
+   ],
+   "per_class": [
+    {
+     "cls": "A",
+     "n": 112,
+     "dwin": 0.0,
+     "decon": -0.002603537919447092,
+     "dq_joint": 0.0,
+     "dwall": -2.5262766679947943
+    },
+    {
+     "cls": "B",
+     "n": 80,
+     "dwin": 0.0625,
+     "decon": 0.03551145736529213,
+     "dq_joint": 0.0625,
+     "dwall": -2.5280134651153685
+    },
+    {
+     "cls": "C",
+     "n": 48,
+     "dwin": 0.0,
+     "decon": -0.009676224273985576,
+     "dq_joint": 0.0,
+     "dwall": -14.831170552339012
+    },
+    {
+     "cls": "D",
+     "n": 16,
+     "dwin": 0.1875,
+     "decon": -0.02135086743282006,
+     "dq_joint": 0.0625,
+     "dwall": -5.474127037033049
+    },
+    {
+     "cls": "E",
+     "n": 16,
+     "dwin": -0.125,
+     "decon": 0.001240974729241881,
+     "dq_joint": 0.0,
+     "dwall": -17.83264190507441
+    }
+   ],
+   "status": "COMPLETE"
+  },
+  "gen": {
+   "panel": "gen",
+   "cand": "asahi-01-cage-cd-e0",
+   "parent": "carthage-05-free-sprint",
+   "seeds": [
+    1
+   ],
+   "meta": {
+    "cand": {
+     "fingerprint": "c0579163db45b0d5f73ac331fd0d8ac0c7a375cb4d774e6bc84bce465d3fda30",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "eaf9b0209184",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 464
+    },
+    "parent": {
+     "fingerprint": "7df05a3f40b011fa52f700c789ddf30414da08ab50d6c36964ef8cc223f9d45f",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "eaf9b0209184",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 464
+    }
+   },
+   "missing": {
+    "cand": [],
+    "parent": []
+   },
+   "paired": 464,
+   "summary": {
+    "cand": {
+     "n": 464,
+     "W": 346,
+     "L": 118,
+     "D": 0,
+     "win": 0.7456896551724138,
+     "reached": 67,
+     "q_cond": 0.0,
+     "q_joint": 0.0,
+     "q_dec_W": 0,
+     "q_dec_L": 4,
+     "conv": 0.6567164179104478,
+     "pearls@50": 44.48706896551724,
+     "pearls@100": 121.94827586206897,
+     "pearls@150": 190.2780172413793,
+     "pearls@250": 282.5625,
+     "units@100": 29.642241379310345,
+     "total@100": 74.63577586206897,
+     "death_wall_per1k": 0.7380047842417896,
+     "death_self_per1k": 1.0395363014261934,
+     "death_ally_body_per1k": 0.7272122492503154,
+     "death_h2h_ally_per1k": 0.7520237956173816,
+     "death_invalid_per1k": 2.35715457420461,
+     "death_h2h_enemy_per1k": 8.855770287737382,
+     "death_enemy_body_per1k": 0.08380023631404497,
+     "deaths_per1k": 14.553502228791714,
+     "births@100": 47.269396551724135
+    },
+    "parent": {
+     "n": 464,
+     "W": 341,
+     "L": 123,
+     "D": 0,
+     "win": 0.7349137931034483,
+     "reached": 74,
+     "q_cond": 0.04054054054054054,
+     "q_joint": 0.00646551724137931,
+     "q_dec_W": 3,
+     "q_dec_L": 3,
+     "conv": 0.6486486486486487,
+     "pearls@50": 44.00646551724138,
+     "pearls@100": 121.07112068965517,
+     "pearls@150": 189.76077586206895,
+     "pearls@250": 281.4375,
+     "units@100": 29.14439655172414,
+     "total@100": 72.95905172413794,
+     "death_wall_per1k": 1.941989751888355,
+     "death_self_per1k": 1.8027128127260905,
+     "death_ally_body_per1k": 1.039062816898719,
+     "death_h2h_ally_per1k": 0.7495729044953691,
+     "death_invalid_per1k": 0.0,
+     "death_h2h_enemy_per1k": 9.123951603071312,
+     "death_enemy_body_per1k": 0.10880623430875393,
+     "deaths_per1k": 14.7660961233886,
+     "births@100": 46.918103448275865
+    }
+   },
+   "boot": {
+    "win": [
+     0.010775862068965518,
+     -0.00646551724137931,
+     0.028124999999999904
+    ],
+    "econ": [
+     0.006169862317457735,
+     -0.005655988573586281,
+     0.018624337922668432
+    ],
+    "econ_med": [
+     0.0025320496634514966,
+     -0.0010154020483929185,
+     0.012717793361089684
+    ],
+    "units@100": [
+     0.0,
+     0.0,
+     0.014353313705684689
+    ],
+    "total@100": [
+     0.006802721088435382,
+     0.0,
+     0.0317540322580645
+    ],
+    "q_joint": [
+     -0.00646551724137931,
+     -0.01293103448275862,
+     0.0
+    ],
+    "q_cond": [
+     -0.04054054054054054,
+     -0.08,
+     0.0
+    ],
+    "conv": [
+     0.008067769261799085,
+     -0.08387617129705738,
+     0.10071795235729661
+    ],
+    "death_wall_per1k": [
+     -1.2039849676465653,
+     -1.3987372477616582,
+     -0.9982813924633082
+    ]
+   },
+   "tier2": {
+    "death_wall_per1k": {
+     "parent": 1.941989751888355,
+     "cand": 0.7380047842417896,
+     "rel": -0.6199749336863558,
+     "flag": false
+    },
+    "death_self_per1k": {
+     "parent": 1.8027128127260905,
+     "cand": 1.0395363014261934,
+     "rel": -0.42334891387708595,
+     "flag": false
+    },
+    "death_ally_body_per1k": {
+     "parent": 1.039062816898719,
+     "cand": 0.7272122492503154,
+     "rel": -0.3001267705634787,
+     "flag": false
+    },
+    "death_h2h_ally_per1k": {
+     "parent": 0.7495729044953691,
+     "cand": 0.7520237956173816,
+     "rel": 0.003269716804481515,
+     "flag": false
+    },
+    "death_invalid_per1k": {
+     "parent": 0.0,
+     "cand": 2.35715457420461,
+     "rel": null,
+     "flag": true
+    }
+   },
+   "per_map": [
+    {
+     "map": "m2tr/autarky_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": 0.00032549837964515604,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/2 vs 0/2",
+     "dwall": -4.800593802306723
+    },
+    {
+     "map": "m2tr/default_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": 0.0,
+     "decon": 0.004793740696737547,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/5 vs 0/6",
+     "dwall": -0.2651205545203601
+    },
+    {
+     "map": "m2tr/dilemma_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": -0.010664031156200765,
+     "dq_joint": -0.0625,
+     "q_alive_rl": "0/3 vs 1/4",
+     "dwall": -7.59180681097464
+    },
+    {
+     "map": "m2tr/trophy_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 11,
+     "L": 5,
+     "dwin": 0.0,
+     "decon": 0.0012496002407961296,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.21136160597460024
+    },
+    {
+     "map": "new/mc26_archipelago",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.125,
+     "decon": 0.04686674173236763,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.0381866323517623
+    },
+    {
+     "map": "new/mc26_crossroads",
+     "cls": "gen",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": 0.0625,
+     "decon": 0.07237983830480249,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/3",
+     "dwall": -0.13011122717075396
+    },
+    {
+     "map": "new/mc26_delayed_commons",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.125,
+     "decon": 0.009341781177080614,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_equatorial_belt",
+     "cls": "gen",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": 0.0,
+     "decon": -0.03481298579403101,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": -0.037096814746529705
+    },
+    {
+     "map": "new/mc26_far_harbors",
+     "cls": "gen",
+     "n": 16,
+     "W": 9,
+     "L": 7,
+     "dwin": 0.0625,
+     "decon": 0.03173490761929397,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/2 vs 0/4",
+     "dwall": -0.02352671494177374
+    },
+    {
+     "map": "new/mc26_nursery_bays",
+     "cls": "gen",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.006984219126246999,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": -0.04880987154748978
+    },
+    {
+     "map": "new/mc26_pinwheel",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.004639294402853645,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": 0.0015161136642076458
+    },
+    {
+     "map": "new/mc26_portal_quartet",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": -0.0017309158513226092,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/6 vs 0/6",
+     "dwall": -0.05080066846223784
+    },
+    {
+     "map": "new/mc26_pulse_farms",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0334208262631976,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.030646737699416296
+    },
+    {
+     "map": "new/mc26_relay_depots",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": -0.005677478943338171,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": -0.020367574370088137
+    },
+    {
+     "map": "new/mc26_scattered_fleets",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.018790859945243446,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/0",
+     "dwall": -0.03965842626022342
+    },
+    {
+     "map": "new/mc26_seam_market",
+     "cls": "gen",
+     "n": 16,
+     "W": 0,
+     "L": 16,
+     "dwin": -0.0625,
+     "decon": -0.07277404496281273,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/1",
+     "dwall": -0.005481975265327603
+    },
+    {
+     "map": "new/mc26_spring_wells",
+     "cls": "gen",
+     "n": 16,
+     "W": 7,
+     "L": 9,
+     "dwin": 0.0625,
+     "decon": 0.12388695206677659,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/2",
+     "dwall": -0.04952456418383518
+    },
+    {
+     "map": "new/md26_causeway_detour_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.0003083543329447454
+    },
+    {
+     "map": "new/md26_causeway_portal_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.016414945488362524,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.014995201535508637
+    },
+    {
+     "map": "new/md26_commons_shared_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": -0.09719955443869237,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.04041094139488716
+    },
+    {
+     "map": "new/md26_commons_spread_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.125,
+     "decon": 0.014511734058230974,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/1",
+     "dwall": -0.11706007863112881
+    },
+    {
+     "map": "new/md26_orchard_narrow_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.006783219991982899,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/2 vs 0/3",
+     "dwall": -0.8411815802778144
+    },
+    {
+     "map": "new/md26_orchard_wide_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0625,
+     "decon": 0.017269663283683824,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/2",
+     "dwall": -0.46975725541909696
+    },
+    {
+     "map": "new/md26_promenade_ring_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": -0.005191522252615545,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.07085975964886354
+    },
+    {
+     "map": "var/crossroads_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 8,
+     "L": 8,
+     "dwin": 0.0,
+     "decon": -0.0046881566045664375,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": -0.09753462146861809
+    },
+    {
+     "map": "var/devil_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": 0.0007566807804834305,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -3.726092821260159
+    },
+    {
+     "map": "var/portals_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 7,
+     "L": 9,
+     "dwin": -0.375,
+     "decon": -0.001483727509759114,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/16 vs 0/15",
+     "dwall": -9.851877545415334
+    },
+    {
+     "map": "var/queen_of_spades_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": 0.0,
+     "decon": 0.0021120943901740998,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/2 vs 0/3",
+     "dwall": -2.5185435488187795
+    },
+    {
+     "map": "var/trauma_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.125,
+     "decon": 0.000885826771653539,
+     "dq_joint": -0.125,
+     "q_alive_rl": "0/15 vs 2/14",
+     "dwall": -3.855354889506722
+    }
+   ],
+   "per_class": [
+    {
+     "cls": "gen",
+     "n": 464,
+     "dwin": 0.010775862068965518,
+     "decon": 0.006169862317457735,
+     "dq_joint": -0.00646551724137931,
+     "dwall": -1.2039849676465653
+    }
+   ],
+   "status": "COMPLETE"
+  }
+ }
+}

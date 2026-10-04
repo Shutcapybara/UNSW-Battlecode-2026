@@ -11,7 +11,8 @@ Conventions (frozen 4 Oct 2026, before any Asahi run; changing them needs a new 
   the field references in docs/analysis/benchmarks predate the 2 Oct swap and do not cover the seven restored maps.
   econ = per-game mean of the four normalised checkpoints (paired mean difference); econ~ = mean over checkpoints
   of the difference of medians. units@100, total@100: same normalisation, difference of medians.
-- Queen columns (queen = the side's lowest-id initial dragon, dead = 0, no succession): reached = round-limit (RL)
+- Queen columns (queen = the side's original lowest-id dragon; alive = the engine result block's queen length > 0,
+  read by tools/asahi/queen.py; amended 4 Oct 12:25Z after the dragons-table version disagreed with the header): reached = round-limit (RL)
   games; conditional = queen alive at the end among RL games; joint = RL and queen alive, over all games;
   queen-decided W/L = RL games whose engine reason is 'queen'.
 - Tier-2 deaths: mean per-1k rates; flagged when the parent rate > 0.05 and the candidate's is > 1.10x.
@@ -53,7 +54,6 @@ def load_arm(bot: str, panel: str, seeds: list[int]) -> tuple[pd.DataFrame, dict
     if not fpath.exists():
         return pd.DataFrame(), dict(meta, expected=len(fx), missing=[f['game'] for f in fx])
     F = pd.read_parquet(fpath)
-    D = pd.read_parquet(root / 'features' / 'dragons.parquet', columns=['game', 'id', 'side', 'died', 'initial'])
     idx = {}
     for line in open(root / 'index.jsonl'):
         r = json.loads(line)
@@ -69,8 +69,13 @@ def load_arm(bot: str, panel: str, seeds: list[int]) -> tuple[pd.DataFrame, dict
     F['opp'] = F['game'].map(lambda g: want[g]['opp'])
     F['win'] = F['result'].map({'win': 1.0, 'draw': 0.5, 'loss': 0.0})
     F['rl'] = (F['reason'] != 'elimination').astype(float)
-    q = D[D['initial'].astype(bool)].sort_values('id').groupby(['game', 'side']).first().reset_index()
-    q['q_alive'] = q['died'].isna().astype(float)
+    # queen alive at the end from the engine's result block (tools/asahi/queen.py); the dragons table's death
+    # attribution for the queen disagrees with the header on some sides (4 Oct check), so it is not used.
+    qp = root / 'queen.parquet'
+    if not qp.exists():
+        raise SystemExit(f'{qp} missing: run tools/asahi/queen.py {bot} --panel {panel}')
+    q = pd.read_parquet(qp, columns=['game', 'side', 'queen_end'])
+    q['q_alive'] = (q['queen_end'] > 0).astype(float)
     F = F.merge(q[['game', 'side', 'q_alive']], on=['game', 'side'], how='left')
     F['q_joint'] = F['rl'] * F['q_alive']
     F['q_dec'] = ((F['rl'] == 1) & (F['reason'] == 'queen')).astype(float)
