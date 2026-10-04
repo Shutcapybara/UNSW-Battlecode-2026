@@ -1,0 +1,999 @@
+{
+  "scope": "Frozen development predictions only; held-out maps not loaded; no fitting or confirmation run.",
+  "hashes": {
+    "train_rows.parquet": "c958e8c7f830c4c5d1b5e322adc44f16152d2a4c4c96714d5d1c30eb091cae76",
+    "oof.parquet": "2b98446581da4d8baa50abb57f9479ec467173dd4eb5a760e081f2ac27d330b2",
+    "lomo.csv": "90d20cbe11f94401a901eabb048b6c3d6a22814082de52137e31a9155d012d30",
+    "registry.json": "16483988886e2e25f5cc67c58d1b2d3d978be02435c006b0f19d9b127e6a2f7f",
+    "v0.py": "2920bb5746c41cacacab2d11c84fe99d3f69ad784e3fa3743f8795ccc1fdfa3f"
+  },
+  "games": 5799,
+  "rows": 71956,
+  "game_modes": {
+    "False": 2372,
+    "True": 3427
+  },
+  "bucket_games": {
+    "0": 539,
+    "1": 555,
+    "2": 623,
+    "3": 548,
+    "4": 616,
+    "5": 562,
+    "6": 528,
+    "7": 591,
+    "8": 550,
+    "9": 687
+  },
+  "bucket_series": {
+    "0": 173,
+    "1": 175,
+    "2": 186,
+    "3": 166,
+    "4": 185,
+    "5": 174,
+    "6": 156,
+    "7": 182,
+    "8": 165,
+    "9": 215
+  },
+  "heldout_overlap": [],
+  "rows_duplicate_keys": 0,
+  "table": [
+    {
+      "map_era": "post-m2",
+      "regime": "elim",
+      "round": 10,
+      "n": 2274,
+      "series": 1233,
+      "maps": 6,
+      "auc_v0": 0.5415708674042007,
+      "auc_phi": 0.5441418149751484,
+      "d_auc": -0.002570947570947668,
+      "d_lo": -0.005171046258706918,
+      "d_hi": -0.0002807858537263233,
+      "series_lo": -0.005213519666162142,
+      "series_hi": -8.525896922657068e-05,
+      "slope_v0": 0.36550645118006597,
+      "slope_phi": 0.3998337451570957,
+      "ranked": 1441,
+      "max_auc_interval_difference": 1.682681771697503e-16,
+      "max_slope_difference": 6.0882160984987443e-05
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "elim",
+      "round": 25,
+      "n": 2274,
+      "series": 1233,
+      "maps": 6,
+      "auc_v0": 0.7597522847522847,
+      "auc_phi": 0.7587265512265512,
+      "d_auc": 0.001025733525733541,
+      "d_lo": -0.00131525260245407,
+      "d_hi": 0.003153192861493437,
+      "series_lo": -0.001265244455751574,
+      "series_hi": 0.0031746030824458425,
+      "slope_v0": 0.9010555442496206,
+      "slope_phi": 0.9047798116883659,
+      "ranked": 1441,
+      "max_auc_interval_difference": 7.003946034256359e-17,
+      "max_slope_difference": 1.0464732314363623e-05
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "elim",
+      "round": 50,
+      "n": 2254,
+      "series": 1228,
+      "maps": 6,
+      "auc_v0": 0.8770463312902658,
+      "auc_phi": 0.8774930483482484,
+      "d_auc": -0.0004467170579826041,
+      "d_lo": -0.0012587670715389298,
+      "d_hi": 0.00035553254710105064,
+      "series_lo": -0.0012173412129140525,
+      "series_hi": 0.0003684167234543955,
+      "slope_v0": 0.9721089852798415,
+      "slope_phi": 0.9767703454339061,
+      "ranked": 1426,
+      "max_auc_interval_difference": 2.041010589703962e-16,
+      "max_slope_difference": 0.00025899637278281595
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "elim",
+      "round": 100,
+      "n": 2057,
+      "series": 1182,
+      "maps": 6,
+      "auc_v0": 0.9487289387827795,
+      "auc_phi": 0.9489951091200526,
+      "d_auc": -0.00026617033727305284,
+      "d_lo": -0.00048098246943622527,
+      "d_hi": -4.605089260823483e-05,
+      "series_lo": -0.00046859113889420324,
+      "series_hi": -4.089700710670498e-05,
+      "slope_v0": 1.0198195380851132,
+      "slope_phi": 1.0231188536590883,
+      "ranked": 1296,
+      "max_auc_interval_difference": 2.5283594662361963e-16,
+      "max_slope_difference": 0.0001991971722929975
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "elim",
+      "round": 150,
+      "n": 1666,
+      "series": 1071,
+      "maps": 6,
+      "auc_v0": 0.958876009377442,
+      "auc_phi": 0.9594931800421511,
+      "d_auc": -0.0006171706647091213,
+      "d_lo": -0.0010549067110889377,
+      "d_hi": -0.0002354921684424472,
+      "series_lo": -0.0010143125296159295,
+      "series_hi": -0.0001901718245634011,
+      "slope_v0": 1.026680610841227,
+      "slope_phi": 1.0365373372394084,
+      "ranked": 1042,
+      "max_auc_interval_difference": 1.1102230246251565e-16,
+      "max_slope_difference": 0.0004000303013376172
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "elim",
+      "round": 250,
+      "n": 1062,
+      "series": 788,
+      "maps": 6,
+      "auc_v0": 0.9554465304053442,
+      "auc_phi": 0.9501348733638684,
+      "d_auc": 0.005311657041475848,
+      "d_lo": 0.0019162948990363194,
+      "d_hi": 0.00898805216336672,
+      "series_lo": 0.001418845798362578,
+      "series_hi": 0.009167246793534272,
+      "slope_v0": 1.0353971143581344,
+      "slope_phi": 1.0434562827329685,
+      "ranked": 654,
+      "max_auc_interval_difference": 4.7704895589362195e-17,
+      "max_slope_difference": 0.0001288901727345415
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "elim",
+      "round": 400,
+      "n": 575,
+      "series": 505,
+      "maps": 4,
+      "auc_v0": 0.9394985961686585,
+      "auc_phi": 0.9024026635525629,
+      "d_auc": 0.03709593261609556,
+      "d_lo": 0.022186907371759407,
+      "d_hi": 0.053805080992804726,
+      "series_lo": 0.021873160599671333,
+      "series_hi": 0.05439240072997745,
+      "slope_v0": 1.0610450848667763,
+      "slope_phi": 1.0796278827554548,
+      "ranked": 348,
+      "max_auc_interval_difference": 1.1102230246251565e-16,
+      "max_slope_difference": 0.0001219429569916386
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "rl",
+      "round": 10,
+      "n": 3525,
+      "series": 1548,
+      "maps": 8,
+      "auc_v0": 0.5608326671995737,
+      "auc_phi": 0.5512959632294164,
+      "d_auc": 0.009536703970157268,
+      "d_lo": 0.0019407929885384978,
+      "d_hi": 0.016776663327475044,
+      "series_lo": 0.0016845569512186022,
+      "series_hi": 0.017539518473341984,
+      "slope_v0": 0.5317364653240566,
+      "slope_phi": 0.40923954593053363,
+      "ranked": 1986,
+      "max_auc_interval_difference": 1.457167719820518e-16,
+      "max_slope_difference": 0.00025852020223149363
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "rl",
+      "round": 25,
+      "n": 3521,
+      "series": 1547,
+      "maps": 8,
+      "auc_v0": 0.6240731479484561,
+      "auc_phi": 0.615254323862889,
+      "d_auc": 0.008818824085567112,
+      "d_lo": 0.00251000772535801,
+      "d_hi": 0.014947583053302798,
+      "series_lo": 0.002145287925503436,
+      "series_hi": 0.015184348324741534,
+      "slope_v0": 0.7404830426139878,
+      "slope_phi": 0.7324736814340671,
+      "ranked": 1982,
+      "max_auc_interval_difference": 1.1102230246251565e-16,
+      "max_slope_difference": 0.00013701063743298825
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "rl",
+      "round": 50,
+      "n": 3503,
+      "series": 1545,
+      "maps": 8,
+      "auc_v0": 0.6710992818083991,
+      "auc_phi": 0.6514099022058502,
+      "d_auc": 0.019689379602548907,
+      "d_lo": 0.012789915335595908,
+      "d_hi": 0.026303573915455673,
+      "series_lo": 0.012533214110170398,
+      "series_hi": 0.02677922035209726,
+      "slope_v0": 0.8356218924525151,
+      "slope_phi": 0.8150671212775524,
+      "ranked": 1972,
+      "max_auc_interval_difference": 1.9255430583342559e-16,
+      "max_slope_difference": 0.0001835589688723438
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "rl",
+      "round": 100,
+      "n": 3436,
+      "series": 1539,
+      "maps": 8,
+      "auc_v0": 0.7223931119725827,
+      "auc_phi": 0.7023056070565762,
+      "d_auc": 0.020087504916006527,
+      "d_lo": 0.013446571460758044,
+      "d_hi": 0.0263772090350018,
+      "series_lo": 0.013475676074473208,
+      "series_hi": 0.02698612843574479,
+      "slope_v0": 0.9068966915016227,
+      "slope_phi": 0.8820250686248158,
+      "ranked": 1924,
+      "max_auc_interval_difference": 1.97758476261356e-16,
+      "max_slope_difference": 0.0001269126024642242
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "rl",
+      "round": 150,
+      "n": 3387,
+      "series": 1528,
+      "maps": 8,
+      "auc_v0": 0.7462734894519916,
+      "auc_phi": 0.7150842909360261,
+      "d_auc": 0.031189198515965466,
+      "d_lo": 0.022999531151586667,
+      "d_hi": 0.039542783394134334,
+      "series_lo": 0.022231953086276936,
+      "series_hi": 0.039087155790924186,
+      "slope_v0": 0.9171307763979593,
+      "slope_phi": 0.8928705841692487,
+      "ranked": 1890,
+      "max_auc_interval_difference": 6.591949208711867e-17,
+      "max_slope_difference": 0.00024824150448765625
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "rl",
+      "round": 250,
+      "n": 3273,
+      "series": 1503,
+      "maps": 8,
+      "auc_v0": 0.7953637674269393,
+      "auc_phi": 0.7396250043482798,
+      "d_auc": 0.05573876307865944,
+      "d_lo": 0.04625442848451225,
+      "d_hi": 0.06605814100759774,
+      "series_lo": 0.04469752853455652,
+      "series_hi": 0.06655644774984798,
+      "slope_v0": 0.9332116852468882,
+      "slope_phi": 0.9055275721430216,
+      "ranked": 1820,
+      "max_auc_interval_difference": 1.5265566588595902e-16,
+      "max_slope_difference": 0.000494093809971563
+    },
+    {
+      "map_era": "post-m2",
+      "regime": "rl",
+      "round": 400,
+      "n": 3141,
+      "series": 1482,
+      "maps": 8,
+      "auc_v0": 0.8763198326305123,
+      "auc_phi": 0.774600205020917,
+      "d_auc": 0.1017196276095953,
+      "d_lo": 0.08906188181002804,
+      "d_hi": 0.11390420511690483,
+      "series_lo": 0.08747601309175404,
+      "series_hi": 0.11415241574045518,
+      "slope_v0": 0.9620222347932281,
+      "slope_phi": 0.9257002919455751,
+      "ranked": 1736,
+      "max_auc_interval_difference": 2.914335439641036e-16,
+      "max_slope_difference": 1.4260039861713203e-05
+    }
+  ],
+  "baseline_export_files": [],
+  "lomo_series_overlap": [
+    {
+      "regime": "elim",
+      "round": 10,
+      "map": "Default",
+      "test_games": 419,
+      "test_games_with_series_in_training": 294
+    },
+    {
+      "regime": "elim",
+      "round": 10,
+      "map": "Devil",
+      "test_games": 373,
+      "test_games_with_series_in_training": 281
+    },
+    {
+      "regime": "elim",
+      "round": 10,
+      "map": "Queen Of Spades",
+      "test_games": 389,
+      "test_games_with_series_in_training": 308
+    },
+    {
+      "regime": "elim",
+      "round": 10,
+      "map": "Stripes",
+      "test_games": 323,
+      "test_games_with_series_in_training": 240
+    },
+    {
+      "regime": "elim",
+      "round": 10,
+      "map": "Tower Defense",
+      "test_games": 368,
+      "test_games_with_series_in_training": 243
+    },
+    {
+      "regime": "elim",
+      "round": 10,
+      "map": "Trophy",
+      "test_games": 402,
+      "test_games_with_series_in_training": 323
+    },
+    {
+      "regime": "elim",
+      "round": 25,
+      "map": "Default",
+      "test_games": 419,
+      "test_games_with_series_in_training": 294
+    },
+    {
+      "regime": "elim",
+      "round": 25,
+      "map": "Devil",
+      "test_games": 373,
+      "test_games_with_series_in_training": 281
+    },
+    {
+      "regime": "elim",
+      "round": 25,
+      "map": "Queen Of Spades",
+      "test_games": 389,
+      "test_games_with_series_in_training": 308
+    },
+    {
+      "regime": "elim",
+      "round": 25,
+      "map": "Stripes",
+      "test_games": 323,
+      "test_games_with_series_in_training": 240
+    },
+    {
+      "regime": "elim",
+      "round": 25,
+      "map": "Tower Defense",
+      "test_games": 368,
+      "test_games_with_series_in_training": 243
+    },
+    {
+      "regime": "elim",
+      "round": 25,
+      "map": "Trophy",
+      "test_games": 402,
+      "test_games_with_series_in_training": 323
+    },
+    {
+      "regime": "elim",
+      "round": 50,
+      "map": "Default",
+      "test_games": 419,
+      "test_games_with_series_in_training": 293
+    },
+    {
+      "regime": "elim",
+      "round": 50,
+      "map": "Devil",
+      "test_games": 371,
+      "test_games_with_series_in_training": 279
+    },
+    {
+      "regime": "elim",
+      "round": 50,
+      "map": "Queen Of Spades",
+      "test_games": 388,
+      "test_games_with_series_in_training": 305
+    },
+    {
+      "regime": "elim",
+      "round": 50,
+      "map": "Stripes",
+      "test_games": 314,
+      "test_games_with_series_in_training": 234
+    },
+    {
+      "regime": "elim",
+      "round": 50,
+      "map": "Tower Defense",
+      "test_games": 368,
+      "test_games_with_series_in_training": 242
+    },
+    {
+      "regime": "elim",
+      "round": 50,
+      "map": "Trophy",
+      "test_games": 394,
+      "test_games_with_series_in_training": 316
+    },
+    {
+      "regime": "elim",
+      "round": 100,
+      "map": "Default",
+      "test_games": 418,
+      "test_games_with_series_in_training": 277
+    },
+    {
+      "regime": "elim",
+      "round": 100,
+      "map": "Devil",
+      "test_games": 335,
+      "test_games_with_series_in_training": 238
+    },
+    {
+      "regime": "elim",
+      "round": 100,
+      "map": "Queen Of Spades",
+      "test_games": 382,
+      "test_games_with_series_in_training": 281
+    },
+    {
+      "regime": "elim",
+      "round": 100,
+      "map": "Stripes",
+      "test_games": 239,
+      "test_games_with_series_in_training": 167
+    },
+    {
+      "regime": "elim",
+      "round": 100,
+      "map": "Tower Defense",
+      "test_games": 359,
+      "test_games_with_series_in_training": 229
+    },
+    {
+      "regime": "elim",
+      "round": 100,
+      "map": "Trophy",
+      "test_games": 324,
+      "test_games_with_series_in_training": 250
+    },
+    {
+      "regime": "elim",
+      "round": 150,
+      "map": "Default",
+      "test_games": 409,
+      "test_games_with_series_in_training": 233
+    },
+    {
+      "regime": "elim",
+      "round": 150,
+      "map": "Devil",
+      "test_games": 249,
+      "test_games_with_series_in_training": 156
+    },
+    {
+      "regime": "elim",
+      "round": 150,
+      "map": "Queen Of Spades",
+      "test_games": 352,
+      "test_games_with_series_in_training": 228
+    },
+    {
+      "regime": "elim",
+      "round": 150,
+      "map": "Stripes",
+      "test_games": 152,
+      "test_games_with_series_in_training": 95
+    },
+    {
+      "regime": "elim",
+      "round": 150,
+      "map": "Tower Defense",
+      "test_games": 323,
+      "test_games_with_series_in_training": 177
+    },
+    {
+      "regime": "elim",
+      "round": 150,
+      "map": "Trophy",
+      "test_games": 181,
+      "test_games_with_series_in_training": 130
+    },
+    {
+      "regime": "elim",
+      "round": 250,
+      "map": "Default",
+      "test_games": 360,
+      "test_games_with_series_in_training": 145
+    },
+    {
+      "regime": "elim",
+      "round": 250,
+      "map": "Devil",
+      "test_games": 105,
+      "test_games_with_series_in_training": 56
+    },
+    {
+      "regime": "elim",
+      "round": 250,
+      "map": "Queen Of Spades",
+      "test_games": 247,
+      "test_games_with_series_in_training": 131
+    },
+    {
+      "regime": "elim",
+      "round": 250,
+      "map": "Stripes",
+      "test_games": 50,
+      "test_games_with_series_in_training": 25
+    },
+    {
+      "regime": "elim",
+      "round": 250,
+      "map": "Tower Defense",
+      "test_games": 234,
+      "test_games_with_series_in_training": 96
+    },
+    {
+      "regime": "elim",
+      "round": 250,
+      "map": "Trophy",
+      "test_games": 66,
+      "test_games_with_series_in_training": 38
+    },
+    {
+      "regime": "elim",
+      "round": 400,
+      "map": "Default",
+      "test_games": 237,
+      "test_games_with_series_in_training": 55
+    },
+    {
+      "regime": "elim",
+      "round": 400,
+      "map": "Devil",
+      "test_games": 50,
+      "test_games_with_series_in_training": 17
+    },
+    {
+      "regime": "elim",
+      "round": 400,
+      "map": "Queen Of Spades",
+      "test_games": 127,
+      "test_games_with_series_in_training": 38
+    },
+    {
+      "regime": "elim",
+      "round": 400,
+      "map": "Tower Defense",
+      "test_games": 161,
+      "test_games_with_series_in_training": 35
+    },
+    {
+      "regime": "rl",
+      "round": 10,
+      "map": "Around UNSW",
+      "test_games": 431,
+      "test_games_with_series_in_training": 365
+    },
+    {
+      "regime": "rl",
+      "round": 10,
+      "map": "Australia",
+      "test_games": 456,
+      "test_games_with_series_in_training": 376
+    },
+    {
+      "regime": "rl",
+      "round": 10,
+      "map": "Islands",
+      "test_games": 425,
+      "test_games_with_series_in_training": 367
+    },
+    {
+      "regime": "rl",
+      "round": 10,
+      "map": "Portals",
+      "test_games": 485,
+      "test_games_with_series_in_training": 419
+    },
+    {
+      "regime": "rl",
+      "round": 10,
+      "map": "Prisoners Dilemma",
+      "test_games": 369,
+      "test_games_with_series_in_training": 304
+    },
+    {
+      "regime": "rl",
+      "round": 10,
+      "map": "Schooltime",
+      "test_games": 514,
+      "test_games_with_series_in_training": 436
+    },
+    {
+      "regime": "rl",
+      "round": 10,
+      "map": "Slithery Fight",
+      "test_games": 484,
+      "test_games_with_series_in_training": 426
+    },
+    {
+      "regime": "rl",
+      "round": 10,
+      "map": "weakhold",
+      "test_games": 361,
+      "test_games_with_series_in_training": 317
+    },
+    {
+      "regime": "rl",
+      "round": 25,
+      "map": "Around UNSW",
+      "test_games": 431,
+      "test_games_with_series_in_training": 365
+    },
+    {
+      "regime": "rl",
+      "round": 25,
+      "map": "Australia",
+      "test_games": 456,
+      "test_games_with_series_in_training": 376
+    },
+    {
+      "regime": "rl",
+      "round": 25,
+      "map": "Islands",
+      "test_games": 425,
+      "test_games_with_series_in_training": 367
+    },
+    {
+      "regime": "rl",
+      "round": 25,
+      "map": "Portals",
+      "test_games": 485,
+      "test_games_with_series_in_training": 419
+    },
+    {
+      "regime": "rl",
+      "round": 25,
+      "map": "Prisoners Dilemma",
+      "test_games": 365,
+      "test_games_with_series_in_training": 301
+    },
+    {
+      "regime": "rl",
+      "round": 25,
+      "map": "Schooltime",
+      "test_games": 514,
+      "test_games_with_series_in_training": 436
+    },
+    {
+      "regime": "rl",
+      "round": 25,
+      "map": "Slithery Fight",
+      "test_games": 484,
+      "test_games_with_series_in_training": 426
+    },
+    {
+      "regime": "rl",
+      "round": 25,
+      "map": "weakhold",
+      "test_games": 361,
+      "test_games_with_series_in_training": 316
+    },
+    {
+      "regime": "rl",
+      "round": 50,
+      "map": "Around UNSW",
+      "test_games": 431,
+      "test_games_with_series_in_training": 365
+    },
+    {
+      "regime": "rl",
+      "round": 50,
+      "map": "Australia",
+      "test_games": 456,
+      "test_games_with_series_in_training": 376
+    },
+    {
+      "regime": "rl",
+      "round": 50,
+      "map": "Islands",
+      "test_games": 425,
+      "test_games_with_series_in_training": 367
+    },
+    {
+      "regime": "rl",
+      "round": 50,
+      "map": "Portals",
+      "test_games": 485,
+      "test_games_with_series_in_training": 418
+    },
+    {
+      "regime": "rl",
+      "round": 50,
+      "map": "Prisoners Dilemma",
+      "test_games": 347,
+      "test_games_with_series_in_training": 285
+    },
+    {
+      "regime": "rl",
+      "round": 50,
+      "map": "Schooltime",
+      "test_games": 514,
+      "test_games_with_series_in_training": 433
+    },
+    {
+      "regime": "rl",
+      "round": 50,
+      "map": "Slithery Fight",
+      "test_games": 484,
+      "test_games_with_series_in_training": 425
+    },
+    {
+      "regime": "rl",
+      "round": 50,
+      "map": "weakhold",
+      "test_games": 361,
+      "test_games_with_series_in_training": 315
+    },
+    {
+      "regime": "rl",
+      "round": 100,
+      "map": "Around UNSW",
+      "test_games": 431,
+      "test_games_with_series_in_training": 364
+    },
+    {
+      "regime": "rl",
+      "round": 100,
+      "map": "Australia",
+      "test_games": 456,
+      "test_games_with_series_in_training": 375
+    },
+    {
+      "regime": "rl",
+      "round": 100,
+      "map": "Islands",
+      "test_games": 425,
+      "test_games_with_series_in_training": 365
+    },
+    {
+      "regime": "rl",
+      "round": 100,
+      "map": "Portals",
+      "test_games": 485,
+      "test_games_with_series_in_training": 415
+    },
+    {
+      "regime": "rl",
+      "round": 100,
+      "map": "Prisoners Dilemma",
+      "test_games": 283,
+      "test_games_with_series_in_training": 226
+    },
+    {
+      "regime": "rl",
+      "round": 100,
+      "map": "Schooltime",
+      "test_games": 514,
+      "test_games_with_series_in_training": 431
+    },
+    {
+      "regime": "rl",
+      "round": 100,
+      "map": "Slithery Fight",
+      "test_games": 484,
+      "test_games_with_series_in_training": 420
+    },
+    {
+      "regime": "rl",
+      "round": 100,
+      "map": "weakhold",
+      "test_games": 358,
+      "test_games_with_series_in_training": 310
+    },
+    {
+      "regime": "rl",
+      "round": 150,
+      "map": "Around UNSW",
+      "test_games": 430,
+      "test_games_with_series_in_training": 362
+    },
+    {
+      "regime": "rl",
+      "round": 150,
+      "map": "Australia",
+      "test_games": 455,
+      "test_games_with_series_in_training": 372
+    },
+    {
+      "regime": "rl",
+      "round": 150,
+      "map": "Islands",
+      "test_games": 424,
+      "test_games_with_series_in_training": 364
+    },
+    {
+      "regime": "rl",
+      "round": 150,
+      "map": "Portals",
+      "test_games": 485,
+      "test_games_with_series_in_training": 414
+    },
+    {
+      "regime": "rl",
+      "round": 150,
+      "map": "Prisoners Dilemma",
+      "test_games": 245,
+      "test_games_with_series_in_training": 198
+    },
+    {
+      "regime": "rl",
+      "round": 150,
+      "map": "Schooltime",
+      "test_games": 514,
+      "test_games_with_series_in_training": 426
+    },
+    {
+      "regime": "rl",
+      "round": 150,
+      "map": "Slithery Fight",
+      "test_games": 484,
+      "test_games_with_series_in_training": 419
+    },
+    {
+      "regime": "rl",
+      "round": 150,
+      "map": "weakhold",
+      "test_games": 350,
+      "test_games_with_series_in_training": 302
+    },
+    {
+      "regime": "rl",
+      "round": 250,
+      "map": "Around UNSW",
+      "test_games": 430,
+      "test_games_with_series_in_training": 357
+    },
+    {
+      "regime": "rl",
+      "round": 250,
+      "map": "Australia",
+      "test_games": 453,
+      "test_games_with_series_in_training": 365
+    },
+    {
+      "regime": "rl",
+      "round": 250,
+      "map": "Islands",
+      "test_games": 420,
+      "test_games_with_series_in_training": 359
+    },
+    {
+      "regime": "rl",
+      "round": 250,
+      "map": "Portals",
+      "test_games": 485,
+      "test_games_with_series_in_training": 404
+    },
+    {
+      "regime": "rl",
+      "round": 250,
+      "map": "Prisoners Dilemma",
+      "test_games": 159,
+      "test_games_with_series_in_training": 132
+    },
+    {
+      "regime": "rl",
+      "round": 250,
+      "map": "Schooltime",
+      "test_games": 514,
+      "test_games_with_series_in_training": 420
+    },
+    {
+      "regime": "rl",
+      "round": 250,
+      "map": "Slithery Fight",
+      "test_games": 484,
+      "test_games_with_series_in_training": 414
+    },
+    {
+      "regime": "rl",
+      "round": 250,
+      "map": "weakhold",
+      "test_games": 328,
+      "test_games_with_series_in_training": 281
+    },
+    {
+      "regime": "rl",
+      "round": 400,
+      "map": "Around UNSW",
+      "test_games": 430,
+      "test_games_with_series_in_training": 353
+    },
+    {
+      "regime": "rl",
+      "round": 400,
+      "map": "Australia",
+      "test_games": 445,
+      "test_games_with_series_in_training": 352
+    },
+    {
+      "regime": "rl",
+      "round": 400,
+      "map": "Islands",
+      "test_games": 403,
+      "test_games_with_series_in_training": 337
+    },
+    {
+      "regime": "rl",
+      "round": 400,
+      "map": "Portals",
+      "test_games": 485,
+      "test_games_with_series_in_training": 393
+    },
+    {
+      "regime": "rl",
+      "round": 400,
+      "map": "Prisoners Dilemma",
+      "test_games": 113,
+      "test_games_with_series_in_training": 92
+    },
+    {
+      "regime": "rl",
+      "round": 400,
+      "map": "Schooltime",
+      "test_games": 512,
+      "test_games_with_series_in_training": 417
+    },
+    {
+      "regime": "rl",
+      "round": 400,
+      "map": "Slithery Fight",
+      "test_games": 484,
+      "test_games_with_series_in_training": 409
+    },
+    {
+      "regime": "rl",
+      "round": 400,
+      "map": "weakhold",
+      "test_games": 269,
+      "test_games_with_series_in_training": 224
+    }
+  ]
+}
