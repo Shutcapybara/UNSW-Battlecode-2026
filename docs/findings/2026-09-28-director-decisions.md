@@ -740,3 +740,30 @@ response (does it move the outcome we target, and how much?) and its side effect
    translation sections, and the logged search scores. A hypothesis is resolved for learning when its feature or action
    is in the encoder, and its effect shows up in held-out accuracy of the value model V and the policy prior P.
 
+## D-045 — Prospective 1.2.5 learned-arm local gate (4 Oct 2026)
+
+Adopt the win-led Himeji criteria prospectively for learned-policy and
+learned-search arms evaluated under `unswbc==1.2.5`. This resolves the learned
+track's gate prerequisite without changing D-032, D-042's historical scope,
+or any completed verdict. The complete rule, rationale, and implementation
+are in [`2026-10-04-antioch-learned-arm-gate.md`](2026-10-04-antioch-learned-arm-gate.md).
+
+The nominee is compared to a predeclared parent on complete pool and gen panels,
+seeds 1–5, both seats, with FRAME_VERSION 7 and successful 1.2.5 run records.
+The paired fixture bootstrap uses 1,000 resamples, seed 7; gates use the 5th
+percentile. Require pool expected-score lower bound > 0; gen expected-score
+lower bound > −0.02; normalized `econ~` lower bound > −0.03 on both panels;
+normalized units@100 and total@100 lower bounds ≥ −0.02 on both panels; the
+existing tier-2 ≤10% guard on both panels; and zero new invalid-action deaths.
+Missing fixtures, unsuccessful runs, timeouts, or missing runtime records are
+INCOMPLETE. The separate CPU check must remain within the official points
+budget without errors. The gate applies to one frozen nominee; its five-seed
+panels stay out of training and model selection. A local ACCEPT advances the
+candidate to the experiment stack and does not promote it; fresh live
+confirmation remains required.
+
+`tools/carthage/lane.py score ... --gate learned125 --seeds 1,2,3,4,5` encodes
+this rule as an opt-in mode. The existing default `--gate d032` is unchanged.
+This closes only the evaluation-gate prerequisite. H-S1 and the all-family
+hand-mining stop condition remain open, so training entry is still gated on
+those separate conditions.
