@@ -767,3 +767,196 @@ this rule as an opt-in mode. The existing default `--gate d032` is unchanged.
 This closes only the evaluation-gate prerequisite. H-S1 and the all-family
 hand-mining stop condition remain open, so training entry is still gated on
 those separate conditions.
+
+## D-046 — Phase 3 charter: deadline, engine, splits, gate, ladder, promotion, rollback, rosters, seats (4 Oct 2026 10:50Z, Chair: Ushijima)
+
+**Numbering.** The Phase 3 macro and prompts (`docs/learning/`) call the Chair's first record "D-045". That number
+was already taken by the learned-arm local gate above. Wherever `docs/learning/` says "D-045", read **D-046** for the
+charter (deadline, splits, engine, promotion, rollback, rosters, seats) and D-045 for the gate thresholds as amended
+in §4 here. No earlier record is rewritten. Later Chair records continue from D-047.
+
+**Training entry.** D-045's last paragraph kept training gated on H-S1 and on a hand-mining stop condition. D-044 and
+the Phase 3 macro, both at the lead's instruction, make the learned policy the main line; H-S1 was since rejected as
+implemented (Himeji H27-04). Training entry is therefore open from R0, and the ladder's own gates govern it.
+
+### 1. Deadline and freeze schedule (provisional)
+
+- No final submission time is recorded in the repo, and the contest pages (docs, game-format, tournaments) show no
+  date in fetched text. The lead is asked once, in the Chair's first session (human-in-the-loop item H1,
+  `claude/chair-status.md`).
+- Until answered, the deadline is **assumed to be 2026-10-11 10:30Z** (7 days). All times below move with it.
+  - T−72 h = **8 Oct 10:30Z**: no new mechanism types. A new head, feature block, search change or hand rule may not
+    start its gate after this time. Re-fits and predeclared doses of mechanisms that already passed may.
+  - T−24 h = **10 Oct 10:30Z**: freeze. No promotion.
+  - T−6 h = **11 Oct 04:30Z**: rollback only.
+- Ladder aim under this horizon (targets, not gates): R0 passed by 5 Oct 12Z; R1 and R2 offline by 6 Oct 12Z; R2
+  deploy gate and live screen by 7 Oct 12Z; R3 heads up to T−72 h; R4/R5 only if R2 is live by 7 Oct. R6 only at
+  small scale and by a later D-record; R7/R8 deferred (no GPU, macro §8).
+
+### 2. Engine and maps (checked by the Chair, 4 Oct)
+
+- The PyPI wheels `unswbc` 1.2.3, 1.2.5 and 1.2.9 carry a **byte-identical engine**: `unswbc_engine.wasm` sha256
+  `26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546` and `python-metered.wasm` sha256
+  `48342178e7ca…f78125` in all three. A recursive diff of 1.2.3 against 1.2.9 shows only the version string, the
+  replay-viewer extension and map templates; 1.2.3 against 1.2.5 shows only the first two.
+- Consequences: (a) results recorded under 1.2.3 (Rome's D-043 zero and dose screens), 1.2.5 (Carthage) and 1.2.9
+  (Shenzhen's fixtures) are comparable when the maps are the same; (b) Nara's 07:05Z question (verdict classes and
+  sprint pricing differing between 1.2.3 and 1.2.9) is answered: they do not differ; (c) the Phase 3 runtime is
+  **any wheel carrying that engine hash**, with maps from `maps/live/`. Every result card records the wheel version
+  and the engine hash.
+- Not verified: that the server runs this engine, and that `maps/live/` is byte-identical to the server's maps
+  (D-043). Data checks the second from map text in post-m2 replays (R0, engineering, no council).
+
+### 3. Frozen splits (constraints frozen now; hashes recorded in D-047 from Data's manifests)
+
+Data proposes, the Chair approves, and nothing below is re-drawn afterwards.
+
+- **Held-out maps.** At least three of `LIVE_MAPS_M2`: one from each of the behavioural classes A, B and C
+  (Chongqing C7-03: A = devil, trophy, stripes, tower_defense, queen_of_spades, default, autarky; B = australia,
+  unsw, islands, maze, schooltime; C = trauma, weakhold, dilemma). Classes D (slithery_fight) and E (portals) have
+  one map each and are not held out as maps; they are covered by held-out series.
+  - Default selection: within each class sort the map names ascending and take index
+    `int(sha256("D-046/" + class letter), 16) mod n`. Data may propose a different map only with a written reason
+    that does not use any model's or bot's per-map results (for example too few teacher games on the drawn map, or
+    a mechanic that exists on one map only and must stay learnable).
+  - The default draw gives **trophy (A), maze (B), trauma (C)**. Known cost: Trauma is the map with the largest
+    opening gap (Chongqing C6-03), and 84 % of its round-limit games are queen-decided (C5-02), so teachers' Trauma
+    games do not train P or V. That cost is accepted: held-out maps stay out of training for the whole phase. They are the only
+    honest transfer test, and the server replaced six maps in one day (D-043). A pre-registered final re-fit on all
+    maps, judged live only, is not allowed unless a later D-record allows it; it may be proposed by card once the
+    deadline is known.
+  - Every game on a held-out map is held out, in every dataset, for the whole phase.
+- **Held-out series.** Whole series only, never single games: `bucket = int(sha256("D-046/" + series id), 16) mod 10`;
+  bucket 0 is held out (test), bucket 1 is validation (early stopping and model selection), buckets 2–9 train. The
+  same rule applies to our own games.
+- **Gating fixtures and seeds.** Pool = ZOO × the 17 `LIVE_MAPS_M2` maps × both seats; gen = `maps/new` plus twins
+  regenerated from `maps/live/` (the stale twins of the six swapped maps are excluded until regenerated). Seeds 1–3
+  are the gate seeds; seeds 4–5 are a reserve that is touched only when a card declares five seeds before its run.
+  Games on gate seeds are never training rows, never used for model selection, and never used to tune a dial. Training
+  rollouts, self-play and search-target logging for training use **seeds ≥ 1000**. Search-target logs written during
+  gate runs are kept for diagnosis, tagged `gate`, and excluded from training by Data's leakage audit. This narrows
+  the Evaluator prompt's "every panel game becomes training data" to non-gate panels.
+- **Already consumed.** The 94-game holdout (index 192–285) used by Kanazawa and Himeji is consumed (H25-04) and is
+  descriptive only.
+- Manifests with hashes and row counts go to `docs/learning/splits/`; D-047 records them.
+
+### 4. The Phase 3 local gate (reconciles D-042, D-045 and macro §8)
+
+Thresholds are D-045's, unchanged: candidate minus declared parent, pool expected-score lower bound > 0, gen > −0.02;
+`econ~` lower bound > −0.03 on both panels; units@100 and total@100 lower bounds ≥ −0.02 on both panels; tier-2
+death-rate guard ≤ 10 %; missing fixtures, failed runs and timeouts make the result INCOMPLETE, never a loss. Deploy
+limits are part of the gate: zip ≤ 4 MiB, ≤ 30 M points per turn including turn-0 model load, zero runtime errors,
+golden parity with the switch off. Amendments for Phase 3:
+
+1. **Runtime.** D-045's "1.2.5 run record" becomes "a run record carrying the §2 engine hash", which today means
+   wheel 1.2.3, 1.2.5 or 1.2.9. `lane.py --gate learned125` hard-codes `runtime_version == '1.2.5'` (Nishinoya's
+   probe 3) and is left untouched; the Evaluator implements this section as a separate opt-in mode `phase3` in its
+   own copy of the scorer.
+2. **Seeds.** Seed 1 on both panels is a screen for every candidate. The full gate is seeds 1–3 for a nominee the
+   Chair names (macro §8). Five seeds only if the card says so before the run. No extension after results are seen.
+   Three seeds instead of D-045's five lower the gate's power; they cannot make a lower-bound clause easier to pass.
+3. **Interval convention (provisional until the auditor's first review, frozen before the first nominee's gate).**
+   Paired fixture-cluster bootstrap, cluster = map × opponent × seat with seeds kept together, 1,000 resamples,
+   seed 7, gate on the 5th percentile. Every card states the convention it used.
+4. **Designed invalid commands.** D-045's "zero new invalid-action deaths" applies to unintended ones. A mechanism
+   whose action is a deliberate invalid command (the cage child cull, the R3 cull head) declares it in its card;
+   those deaths are reported separately per map and must occur only in the declared trigger states.
+5. **Screens are not verdicts.** After a seed-1 screen the Chair decides whether the candidate becomes a nominee.
+   Default: advance if the pool point estimate is ≥ 0, gen ≥ −0.02 and nothing breaks.
+6. **Map-local mechanisms.** A mechanism that fires on one map class cannot easily clear a pooled lower bound. The
+   Evaluator therefore also reports a stratified readout: target stratum (maps where the trigger fires in the
+   parent's games, named before the run) and off-target stratum, with trigger counts per map. The pooled gate letter
+   is never relabelled. If the pool clause is inconclusive (point estimate > 0, lower bound ≤ 0) while the
+   target stratum improves and the off-target stratum is non-inferior, the Chair calls an immediate council round.
+
+### 5. Ladder state: R0 open
+
+- **Incumbent and parent:** `carthage-05-free-sprint`, submission 14585, hub name
+  `LV-carthage-05-free-sprint-ebeba55f-ai`, live since 2 Oct 04:22Z. **Fallback:** `hb1-14-prior-r540`, submission
+  14265.
+- **Zero** (Rome, D-043, wheel 1.2.3, seeds 1–3, both seats, official outcomes): pool 656–160–0 of 816 (expected
+  score 0.804); gen 1,038–353–1 of 1,392 (0.746), and 861–338–1 of 1,200 (0.718) without the stale twins; queen
+  reached r490 and alive in 2 of 816 pool games.
+- **R0 exit checklist** (all must be recorded in `docs/learning/ladder.md`): encoder Python = C++ on 1,000 turns;
+  labels agree with HB-1 above 99 %; leakage audit; split manifests (D-047); post-m2 decode finished; registry in
+  use; gen twins regenerated from `maps/live/`; the `battles.json` control and the live monitor.
+- **Outside the ladder:** the cage rule C+D with E = 0, tagged `temporary`, enters only through §4 and §7. Its
+  learned replacement target is R3/R4.
+- Each ladder candidate is built on the incumbent at hand-over. If the incumbent changes while its gate runs, the
+  gate finishes against the declared parent; before promotion the switch is re-applied on the new incumbent and
+  must pass golden parity and a seed-1 screen.
+
+### 6. Evaluator queue (initial order)
+
+1. **Cage C+D, E = 0, against carthage-05.** Frozen objective: target stratum = live Schooltime; expected sign +
+   on queen alive at r490 among reached and on wins (Rome's seed-1 package screen with E = 1: 11/12 alive, wins
+   16/16 against the parent's 0/16 and 14/16). Off-target: the other 16 pool maps and gen, expected zero trigger
+   firings and no change. Stop rule: seed 1 first; continue to seeds 2–3 only if the Chair advances it under
+   §4.5; HOLD and a diagnosis card otherwise. Expected side effect to check: invalid deaths confined to Schooltime.
+2. **H-KZ12 entry-capacity dial, H29 contract, doses k = 0/4/8/16.** Rome has k = 4 on seed 1 (pool 0.8309 → 0.8456,
+   current gen 0.7200 → 0.7225, no verdict). Remaining: k = 8 and 16, and the gen diagnostics, with veto firings
+   per 1,000 queen moves per map as a first-class column. A dose with no firings is "did not reach", not a null.
+3. Ladder candidates from the Learner pre-empt items 1–2 at a fixture boundary.
+
+Not queued as hand arms: H-KZ26 (standoff radius against enemy sprint reach), H-SZ31/32/34/35, H-H7, H-H8, the E
+reserve dial, queen hunting. Their findings feed R3–R4 as features and labels (D-044 §4–5). Any of them can be
+proposed as a `temporary` dial with a card (macro §3); H-KZ26 has the strongest case by evidence (20 of 43 queen
+head-on deaths are enemy sprint strikes, 15 of 20 approximately avoidable, Kanazawa units 11–12 with Himeji's H31-02
+qualification).
+
+### 7. Promotion rule
+
+A candidate is promoted only by a Chair D-record, and only when all of these hold:
+- it is registered (`docs/learning/registry.md`) and passed the §4 gate against its declared parent;
+- a live screen against the incumbent on a roster named before the screen: same opponents, maps and seats, same
+  window, unranked, at least 60 matched games; paired difference in score minus Elo expectation with a whole-series
+  bootstrap; **lower bound (5th percentile) > −0.02 and point estimate > 0**;
+- no rise in errors or timeouts;
+- at least 12 h since the last promotion, and not inside the freeze (§1).
+
+### 8. Rollback rule
+
+Live ops rolls back automatically, and the Chair reviews afterwards, when either holds:
+- after 40 ranked games on the new submission, score minus Elo expectation is below −0.08 and the series-bootstrap
+  upper bound (95th percentile) is below 0;
+- any crash or disqualification.
+Rollback activates the previous submission through `submit.json`. A human activation that changes the live
+submission pauses all automation until the Chair resolves it.
+
+### 9. Rosters (Live ops maintains them; a test names its roster before it runs)
+
+- **band:** the teams we actually met in ranked over the last 48 h;
+- **top:** the current top ten of the ladder;
+- **style:** one team each for keeper, cull-feeder, hunter and elimination specialist, from Data's top-team pages;
+- **regression:** opponents the incumbent beats (score ≥ 0.7 over at least 10 games).
+
+### 10. Roles and seats
+
+- Chair: Ushijima (Claude; this record).
+- Data, Learner, Evaluator, Live ops: named by the lead when started; recorded in D-047 onward and in
+  `claude/chair-status.md`. Until a role has a lane, its queue items wait; no other lane takes them.
+- Council pool at 10:55Z: **Tanaka** (GPT, standing auditor, `r/tanaka`), **Sugawara** (Claude, mechanism) and
+  **Nishinoya** (GLM, probe, `r/nishinoya`). Other instances join as the lead starts them. A round seats three
+  reviewers from at least two model families; if fewer than three seats are available, it runs with those seats and
+  the D-record states the vacancy. Promotion and rollback rounds are immediate.
+- First audit request, not a card: Tanaka reviews §3 (split hash rules) and §4.3 (interval convention) and
+  replicates §2 (engine hash) in `docs/learning/reviews/D-046-tanaka.md`. §4.3 is frozen after that review and
+  before the first nominee's gate.
+- Phase 2 lanes are inputs, not roles (macro §7). Himeji, Nara, Chongqing and Seoul have wrapped up. Whether Rome,
+  Shenzhen and Kanazawa continue is the lead's decision.
+
+### 11. Answers to the council intake (Sugawara, 10:40Z, `docs/learning/reviews/intake-sugawara.md`)
+
+- §1 of the intake, and Tanaka's 10:43Z request (number collision, gate and seeds, runtime, training entry):
+  resolved by the numbering note, §4, §2 and the training-entry note of this record. The runtime conflict
+  disappears because the engine is the same binary in 1.2.3, 1.2.5 and 1.2.9.
+- §4 (held-out maps): option (a) is adopted, as written in §3. The default draw already lands on two large-gap queen
+  maps (maze, trauma), which gives the held-out test power; trophy covers the elimination class.
+- §2 and §3 (encode from the IO round block; queen-knowledge features from own-view history only, sonar-relayed
+  knowledge as a separate R4 block): adopted as R0 design constraints for Data and the Learner, recorded in
+  `docs/learning/ladder.md` with the intake's falsifier. They are engineering constraints and need no council round.
+- Nishinoya's 10:52Z probes (unaudited): (1) the decode queue is 7,617 and growing, so R0 item 1 is a re-run of
+  the native decode and is on the human-in-the-loop list; (2) every live map has 666–1,050 in-scope post-m2 games,
+  so the §3 default draw is supportable; Tanaka's audit note replicates the counts for trophy, maze and trauma;
+  (3) the gate-tooling contradiction is ruled in §4.1.
+
