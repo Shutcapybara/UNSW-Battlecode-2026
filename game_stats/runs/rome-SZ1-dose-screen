@@ -1,0 +1,199 @@
+{
+  "map_era": "pool post-m2; gen split by geometry era",
+  "seed": 1,
+  "note": "screening package effects; E dose is not isolated from C+D vs parent",
+  "panels": [
+    {
+      "panel": "pool_m2",
+      "dose": 0,
+      "absolute": {
+        "games": 272,
+        "wins": 226,
+        "losses": 46,
+        "draws": 0,
+        "expected_score": 0.8308823529411765,
+        "won": 0.8308823529411765,
+        "pearls@50": 42.30882352941177,
+        "pearls@100": 126.04411764705883,
+        "pearls@150": 215.81617647058823,
+        "pearls@250": 395.0735294117647,
+        "units@100": 28.481617647058822,
+        "total@100": 71.3529411764706,
+        "births@100": 50.720588235294116,
+        "death_wall_per1k": 7.21322771905425,
+        "death_self_per1k": 3.5847726058429465,
+        "death_ally_body_per1k": 1.5630230496589232,
+        "death_h2h_ally_per1k": 1.2375113517004284,
+        "death_invalid_per1k": 0.0
+      },
+      "queen": {
+        "queen_reached490": 149,
+        "queen_alive490_joint": 0,
+        "queen_survival_reached490": 0.0,
+        "queen_decided_games": 5,
+        "queen_decided_wins": 0,
+        "queen_decided_losses": 5
+      }
+    },
+    {
+      "panel": "pool_m2",
+      "dose": 1,
+      "absolute": {
+        "games": 272,
+        "wins": 229,
+        "losses": 43,
+        "draws": 0,
+        "expected_score": 0.8419117647058824,
+        "won": 0.8419117647058824,
+        "pearls@50": 43.87132352941177,
+        "pearls@100": 125.9779411764706,
+        "pearls@150": 211.03308823529412,
+        "pearls@250": 388.1360294117647,
+        "units@100": 28.702205882352942,
+        "total@100": 73.50367647058823,
+        "births@100": 51.095588235294116,
+        "death_wall_per1k": 1.4627028373754583,
+        "death_self_per1k": 2.2815628225960007,
+        "death_ally_body_per1k": 0.777300838822251,
+        "death_h2h_ally_per1k": 1.2781461082386443,
+        "death_invalid_per1k": 8.06909264777962
+      },
+      "queen": {
+        "queen_reached490": 147,
+        "queen_alive490_joint": 11,
+        "queen_survival_reached490": 0.07482993197278912,
+        "queen_decided_games": 13,
+        "queen_decided_wins": 9,
+        "queen_decided_losses": 4
+      }
+    },
+    {
+      "panel": "pool_m2",
+      "dose": 3,
+      "absolute": {
+        "games": 272,
+        "wins": 224,
+        "losses": 48,
+        "draws": 0,
+        "expected_score": 0.8235294117647058,
+        "won": 0.8235294117647058,
+        "pearls@50": 43.838235294117645,
+        "pearls@100": 125.05514705882354,
+        "pearls@150": 208.8014705882353,
+        "pearls@250": 383.99264705882354,
+        "units@100": 28.4375,
+        "total@100": 73.86397058823529,
+        "births@100": 50.62132352941177,
+        "death_wall_per1k": 1.4775775165458809,
+        "death_self_per1k": 2.3379248319392687,
+        "death_ally_body_per1k": 0.8091605316768252,
+        "death_h2h_ally_per1k": 1.2721810393665622,
+        "death_invalid_per1k": 8.112251854288917
+      },
+      "queen": {
+        "queen_reached490": 150,
+        "queen_alive490_joint": 14,
+        "queen_survival_reached490": 0.09333333333333334,
+        "queen_decided_games": 14,
+        "queen_decided_wins": 11,
+        "queen_decided_losses": 3
+      }
+    },
+    {
+      "panel": "gen",
+      "dose": 0,
+      "absolute": {
+        "games": 464,
+        "wins": 349,
+        "losses": 115,
+        "draws": 0,
+        "expected_score": 0.7521551724137931,
+        "won": 0.7521551724137931,
+        "pearls@50": 44.64870689655172,
+        "pearls@100": 123.33836206896552,
+        "pearls@150": 193.50646551724137,
+        "pearls@250": 286.5689655172414,
+        "units@100": 29.564655172413794,
+        "total@100": 73.96336206896552,
+        "births@100": 47.872844827586206,
+        "death_wall_per1k": 2.1262022609263944,
+        "death_self_per1k": 1.7388358619334705,
+        "death_ally_body_per1k": 1.057919806190444,
+        "death_h2h_ally_per1k": 0.7639556924297866,
+        "death_invalid_per1k": 0.0
+      },
+      "queen": {
+        "queen_reached490": 71,
+        "queen_alive490_joint": 2,
+        "queen_survival_reached490": 0.028169014084507043,
+        "queen_decided_games": 4,
+        "queen_decided_wins": 2,
+        "queen_decided_losses": 2
+      }
+    },
+    {
+      "panel": "gen",
+      "dose": 1,
+      "absolute": {
+        "games": 464,
+        "wins": 353,
+        "losses": 111,
+        "draws": 0,
+        "expected_score": 0.7607758620689655,
+        "won": 0.7607758620689655,
+        "pearls@50": 45.13146551724138,
+        "pearls@100": 124.82112068965517,
+        "pearls@150": 197.37284482758622,
+        "pearls@250": 294.8125,
+        "units@100": 29.969827586206897,
+        "total@100": 75.95905172413794,
+        "births@100": 48.12931034482759,
+        "death_wall_per1k": 0.7860188195455176,
+        "death_self_per1k": 1.0695840037310547,
+        "death_ally_body_per1k": 0.7591594734014764,
+        "death_h2h_ally_per1k": 0.748218489621005,
+        "death_invalid_per1k": 2.4374913613669777
+      },
+      "queen": {
+        "queen_reached490": 72,
+        "queen_alive490_joint": 0,
+        "queen_survival_reached490": 0.0,
+        "queen_decided_games": 3,
+        "queen_decided_wins": 0,
+        "queen_decided_losses": 3
+      }
+    },
+    {
+      "panel": "gen",
+      "dose": 3,
+      "absolute": {
+        "games": 464,
+        "wins": 355,
+        "losses": 109,
+        "draws": 0,
+        "expected_score": 0.7650862068965517,
+        "won": 0.7650862068965517,
+        "pearls@50": 45.178879310344826,
+        "pearls@100": 123.73491379310344,
+        "pearls@150": 194.83189655172413,
+        "pearls@250": 291.9741379310345,
+        "units@100": 29.77801724137931,
+        "total@100": 75.73491379310344,
+        "births@100": 47.713362068965516,
+        "death_wall_per1k": 0.7921909407477246,
+        "death_self_per1k": 1.0841202357306476,
+        "death_ally_body_per1k": 0.7461820773589887,
+        "death_h2h_ally_per1k": 0.7566626720489588,
+        "death_invalid_per1k": 2.439806585553534
+      },
+      "queen": {
+        "queen_reached490": 71,
+        "queen_alive490_joint": 0,
+        "queen_survival_reached490": 0.0,
+        "queen_decided_games": 2,
+        "queen_decided_wins": 0,
+        "queen_decided_losses": 2
+      }
+    }
+  ]
+}
