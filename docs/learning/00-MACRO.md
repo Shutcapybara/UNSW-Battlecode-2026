@@ -1,7 +1,7 @@
 # Phase 3: the learned policy (macro structure)
 
 Director, 4 Oct 2026. This document supersedes the hand-rule loop as the programme's main line (D-044 sets the
-principle; this sets the machine). Handoff prompts are in `docs/learning/prompts/`. The decision log continues in
+principle; this sets the machine). Handoff prompts are in `docs/learning/prompts/`. Lane names are assigned by the lead when each role is started (`<lane>` below). Earlier Phase 2 lineages are sources to read, not roles to inherit. The decision log continues in
 `docs/findings/2026-09-28-director-decisions.md`, with entries D-045 and later.
 
 ## 0. The problem class, and the known solution we are copying
@@ -61,8 +61,8 @@ Rules that hold on every rung:
 |---|---|---|---|
 | **Chair** (one) | Claude Opus | Cowork, Mac-linked | final decisions (D-records); ladder state; the registry; promotion and rollback approval; the council agenda |
 | **Council** (rotating, 3 seats per decision) | Claude, GPT and GLM instances | Cowork / Codex | reviews of proposals and results; independent replications; dissent |
-| **Data** | Claude (Chongqing successor) | Mac native | corpus, store, encoder, labels, splits, leakage audit, the top-team knowledge base |
-| **Learner** | Claude (Osaka), as a Claude Code session running **natively on the Mac** (not in the Cowork VM) | Mac native CPU; no GPU until the desktop returns | training P/V, export to C++, accuracy-per-KB curves, expert iteration and PPO later |
+| **Data** | Claude | Mac native | corpus, store, encoder, labels, splits, leakage audit, the top-team knowledge base |
+| **Learner** | Claude, as a Claude Code session running **natively on the Mac** (not in the Cowork VM) | Mac native CPU; no GPU until the desktop returns | training P/V, export to C++, accuracy-per-KB curves, expert iteration and PPO later |
 | **Evaluator** | any model; GPT preferred for statistics | Mac native, in scheduled slots | local panels, gates, dose curves, CPU/size probes |
 | **Live ops** | Claude | Mac (hub) | uploads, activation, targeted requested battles, live screens, ranked monitoring, rollback execution |
 
@@ -134,7 +134,7 @@ Every non-trivial change goes through the same cycle:
 
 ## 6. What else is needed (beyond the five ingredients)
 
-1. **The deadline and a freeze schedule.** No deadline is recorded anywhere in the programme. The ladder's speed, the final freeze (−72 h / −24 h / −6 h rules from the Osaka prompt) and how far up the ladder we aim all depend on it. The Chair must write it down first.
+1. **The deadline and a freeze schedule.** No deadline is recorded anywhere in the programme. The ladder's speed, the final freeze (−72 h / −24 h / −6 h) and how far up the ladder we aim all depend on it. The Chair must write it down first.
 2. **Evaluation integrity.**
    - Frozen held-out maps, series and fixtures for the whole phase.
    - Train and evaluation data never overlap.
@@ -172,20 +172,14 @@ Every non-trivial change goes through the same cycle:
 
 ## 7. Transition from Phase 2
 
-- **Pause:** Nara and Kanazawa.
-- **Merge into one Data lane:** Shenzhen and Chongqing.
-- **Himeji** becomes the standing council auditor.
-- **One tester** (Rome) becomes the Evaluator.
-  - It finishes the cage C+D (E0) arm and the H-KZ12 dial.
-  - From then on it runs only ladder gates and requested dose probes.
-- **Osaka** becomes the Learner: natively on the Mac for now, and on the GPU desktop once it is free (§8).
-- **The git coherence task stays.** Its prompt needs your approval, so that disjoint hunks are no longer treated as conflicts.
-- **The Chair writes D-045:**
-  - deadline;
-  - frozen splits;
-  - promotion and rollback thresholds;
-  - roster definitions;
-  - ladder state R0.
+- **Lanes.** The lead names a new lane for each role (macro §2) when it starts it.
+- **Phase 2 lanes** stop when the lead stops them. Their findings, tools and status files remain inputs:
+  - the S-1 store and decoders, for Data;
+  - the gate tooling, for the Evaluator;
+  - the audit conventions, for the council.
+- **Carry-over work** goes to the new Evaluator. These are the Phase 2 arms that are still open: the cage rule C+D (E = 0) and the H-KZ12 entry-capacity dial.
+- **The git coherence task stays.** The update to its instructions, which stops it treating separate edits to the same file as a conflict, needs the lead's approval.
+- **The Chair's first record is D-045:** the deadline, frozen splits, promotion and rollback thresholds, roster definitions, roles to lane names, and the ladder at R0.
 
 ## 8. Compute plan while the desktop is unavailable (4 Oct)
 
@@ -210,7 +204,6 @@ shared with the hub, the collector and the Cowork VMs. The plan bends as follows
   - The live screen carries more of the evidence. Server battles cost us no CPU, only quota.
   - Build `battles.json` (Live ops) early.
 - **Pause what doesn't feed the ladder.**
-  - Kanazawa and Nara pause.
-  - Shenzhen and Chongqing merge into Data at a reduced cadence.
+  - Phase 2 analyst lanes stop, or run at a low cadence, as the lead decides.
   - The council runs on cloud sessions, which use no Mac CPU.
 - **When a GPU returns,** the Learner moves R6–R8 there. Nothing else changes.
