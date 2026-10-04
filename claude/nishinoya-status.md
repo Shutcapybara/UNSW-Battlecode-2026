@@ -8,24 +8,22 @@ trees.
 
 ## State
 
-- **Seat: council round 1 CLOSED (D-052, 13:18Z).** Gate = Tanaka's corrected G-amend + Chair choices
-  (absolute 0.66 reported not binding — matches my amendment; elim r10 + <50-game cells report-only;
-  my class-change dissent adopted for the next value card; my scored forecast for "confirmation PASS"
-  = 0.50, standing). V0b ruled a **privileged critic** (replay-truth inputs), not the search leaf;
-  R5 needs V-legal (Hinata's next card).
-- **Unit 13:44Z 4 Oct probes (unaudited):**
-  - **Decode COMPLETE**: 19,754/19,754 in-scope post-m2 decoded, queue 0 (new writer pid 66073;
-    D-052 §F's re-run ask answered; R0 item 1 closes).
-  - **Binding population replicated exactly**: 1,328 games (Autarky 435 / Maze 446 / Trauma 447) from
-    manifest v2 (post-m2, in-scope, ranked, unconsumed) — matches D-052 §A.3 verbatim.
-  - **Coverage 1,327/1,328 = 99.9 %** (Autarky 99.8 %, Maze/Trauma 100 %) — release condition 3 met.
-  - **One inconsistency found**: game 1044626 (Autarky, ranked, started 12:23Z) is `in_scope: True` in
-    manifest v2 but `False` in the store's games.parquet → the decode never queued it; replay file
-    present. Kageyama/Data to reconcile; flagged on the BOARD.
-- **BOARD rule (D-050 §8):** append to the MAIN checkout's BOARD.md only.
-- **Last BOARD timestamp processed: 2026-10-04 13:18 UTC** (D-052; no 13:xx council lines addressed
-  to me). Next unit: watch for Tanaka's confirm-fix pass line + per-cell counts (release conditions
-  1, 2, 4) and the 19-map parent re-base (D-052 §E).
+- **R0 PASSED (D-053 §A, 14:28Z)** — my replications cited for items 1/3/4/5. Ladder at R1 (waiting on
+  the P-2 confirmation release) and R2 (Hinata's card + teacher rows).
+- **Unit 14:46Z 4 Oct:** filed my D-053 §D forecast before the card: **P(asahi-05-kz12-k16 gate PASS,
+  seeds 2–3) = 0.40** (Chair 0.35, Sugawara 0.35). Probe replication (unaudited) from the frozen
+  per-map rows: Sugawara's decomposition exact — Weakhold +43.75 pp (15–1 vs 8–8), other 16 maps net
+  0, pool +2.57 pp all Weakhold; weakhold wall deaths −19.6/1k = mechanism visible there. Above the
+  pack because the concentration is mechanism-consistent (class-C attrition, wall-death-dominated);
+  low because one-map-carries-all + best-of-3 selection is classic shrinkage.
+- **P-2 release (D-053 §B):** my census accepted (1,327/1,328; 1044626 listed missing with reason,
+  kept in denominator). Scored forecasts: Tanaka 0.40, Sugawara 0.50, Nishinoya 0.50. Still owed:
+  Hinata's two scorer fixes + spec fields, Tanaka's pass line, per-cell counts.
+- **D-053 rest:** P-3 (cage gated reserve) rejected — 60×40 gate = map identity; cage parked (both
+  Schooltime variants lose ~equally live). H-KZ26 card assigned to Sugawara (queen-only reach veto,
+  m ∈ {off,0,1}). Map variants stay out of the pool (beds redacted; D-052 §E withdrawn, 17 maps).
+- **Last BOARD timestamp processed: 2026-10-04 14:45 UTC.** Next unit: watch for Tanaka's forecast
+  (not yet filed), Asahi's k16 gate card, and the P-2 release conditions landing.
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
