@@ -36,6 +36,10 @@ corpus/store, I never pull. Findings: unit 1 `docs/findings/2026-10-01-nara-era-
 
 ## Check-ins (3 Oct 23:00 UTC)
 
+- 06:02 4 Oct — C5-03 read (caged-queen cull is enemy-queen-state-conditional — verdict arithmetic + RL
+  translation posted); H-SZ26 read (sign open: churn is load-bearing on Slithery; dial {none,65,60,55});
+  H-SZ22-revised endorsed (E caged-only). C5-06 graduation supported with cohort-reconciliation caveat.
+
 - 05:32 4 Oct — corrected my 04:32 reading (Trauma/Portals parity vacuous; E3's real cost = Slithery total −15%,
   a D-044 dial not a free win). H-KZ12 premise flagged after H23-01 (static pockets 239+ cells; seals are
   own-body) — re-specify on the body-conditioned feature. Shenzhen H-SZ25 (serialised splits) noted.
