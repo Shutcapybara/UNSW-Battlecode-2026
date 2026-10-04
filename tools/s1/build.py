@@ -29,6 +29,10 @@ US = 7
 # unswbc 1.2.3 rules on the live server (sprint ceil(L/4) free steps; tiebreak queen -> longest -> total). Last old-rule
 # game finished 2026-10-01 05:57:53Z, first new-rule game 09:26:58Z, none in between (tools/antioch/era.py, sprint pricing)
 ERA_SWITCH = '2026-10-01T06:00:00+00:00'
+# the live server replaced six maps (Autarky, Default, PD, Schooltime, Slithery, Trophy; new map_hash, queens no longer in
+# spawn pockets, Schooltime queen caged) at 2026-10-02 03:49Z and restored the seven non-ladder maps at 04:31Z (Shenzhen,
+# chongqing unit 2). games.map_era: pre | post (new rules, old maps) | post-m2 (new rules, new maps)
+MAP_SWITCH = '2026-10-02T03:49:00+00:00'
 TABLES = ('sides', 'series', 'deaths', 'transits', 'splits')
 # event columns always present in series (cumulated as c_<name>), so every part has the same schema
 XEV = ('idle', 'turnaround', 'steps', 'transits', 'transit_blind', 'transit_double', 'transit_contested', 'transit_died3',
@@ -67,7 +71,8 @@ def build_games():
     snaps = load_ladders()
     times = [s[0] for s in snaps]
     latest = snaps[-1][1]
-    order = sorted((x for x in latest.values() if not x.get('dev') and x.get('rank') is not None), key=lambda x: x['rank'])  # unranked teams carry rank None (ladder of 3 Oct)
+    # since the 1 Oct ladder reset, teams that have not played under the new rules carry rank None (elo 1500): unranked
+    order = sorted((x for x in latest.values() if not x.get('dev') and x.get('rank') is not None), key=lambda x: x['rank'])
     crank = {x['id']: k + 1 for k, x in enumerate(order)}
     teams = pd.DataFrame([dict(team=str(i), name=x['name'], ladder_rank=x['rank'], elo_now=x['elo'], dev=bool(x.get('dev')),
                                crank=crank.get(i), cohort='us' if i == US else ('dev' if x.get('dev') else cohort_of(crank.get(i))))
@@ -89,6 +94,7 @@ def build_games():
                          elo_a=ra.get('elo'), elo_b=rb.get('elo'), rank_a=ra.get('rank'), rank_b=rb.get('rank'),
                          snap_lag_min=(t - snap_t) / 60, snap_before=t >= snap_t,
                          result_a=1.0 if w == 'a' else 0.0 if w == 'b' else 0.5, era='post' if t >= ts(ERA_SWITCH) else 'pre',
+                         map_era='post-m2' if t >= ts(MAP_SWITCH) else 'post' if t >= ts(ERA_SWITCH) else 'pre',
                          in_scope=(g['team_a'] in crank and crank[g['team_a']] <= 50) or (g['team_b'] in crank and crank[g['team_b']] <= 50)
                          or US in (g['team_a'], g['team_b'])))
     games = pd.DataFrame(rows).drop_duplicates('game')
@@ -134,6 +140,40 @@ def bot_name(path):
     return parts[-1] if parts else str(path)
 
 
+Q_ROUNDS = (25, 50, 100, 150, 250, 400, 490)
+
+
+def queen_cols(g, out, t):
+    """per-side queen columns (chongqing, 4 Oct): the queen is the team's lowest-id initial dragon (no succession).
+    q_end is its length in the final snapshot (0 when dead; equals the 1.2.3 header field, kept as q_header)."""
+    rounds = g['rounds']
+    ids = [i for i, (tt, b) in rounds[0].items() if tt == t]
+    if not ids:
+        return {}
+    q = min(ids)
+    lens, death_round, moves, prev_head, maxlen = {}, None, 0, None, 0
+    for r, snap in enumerate(rounds):
+        if q in snap:
+            body = snap[q][1]
+            lens[r] = len(body)
+            maxlen = max(maxlen, len(body))
+            if prev_head is not None and body[0] != prev_head:
+                moves += 1
+            prev_head = body[0]
+        else:
+            death_round = r
+            break
+    last = len(rounds) - 1
+    o = dict(q_id=q, q_alive_end=int(death_round is None), q_death_round=death_round, q_moves=moves, q_maxlen=maxlen,
+             q_end=lens.get(last, 0), q_header=g['final'][t].get('queen'))
+    for k in Q_ROUNDS:
+        o[f'q_len@{k}'] = lens.get(min(k, last), 0)
+    d = next((d for d in out['deaths'] if d['side'] == t and d['id'] == q), None)
+    o['q_death_cls'] = d['cls'] if d else None
+    o['q_death_killer'] = d.get('killer_team') if d else None
+    return o
+
+
 def process(args):
     path, gid, meta = args
     from tools.analysis.features.frame import decode
@@ -158,6 +198,7 @@ def process(args):
         r = dict(row)
         r.update(ctx, team=side_team[t], opp=side_team['B' if t == 'A' else 'A'], R=R, decoded_winner=g['winner'])
         r.update(x['sides'][t])
+        r.update(queen_cols(g, out, t))
         sides.append(r)
     # ---- series: stored rounds, cumulative events, padded to LAST with the terminal state
     ser = {(s['side'], s['round']): s for s in out['series']}
