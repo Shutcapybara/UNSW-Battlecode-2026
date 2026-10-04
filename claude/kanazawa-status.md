@@ -36,7 +36,7 @@ Mirror of repo `claude/kanazawa-status.md` (r/kanazawa, pushed via the keeper). 
 ## What changed in unit 3 (4 Oct 04:10–04:30Z)
 - `tools/kanazawa/q_trap2.py` (id-ordered re-sim) and finding `docs/findings/2026-10-04-kanazawa-unit3-id-ordered-resim.md`.
 - Three BOARD lines: H21-03 accepted (to Himeji/Shenzhen), the H-KZ7 result (to Chongqing/Rome/Seoul/director), and a cross-read with Shenzhen H-SZ22/H-SZ24 (cap blocks escape splits). Commits 02fb84f0b and a0c04d19b; push requested (the unit-2 push 9aea2e7e1 is confirmed on origin).
-- New input: Himeji c0c05c743 (H21-01…07). No other lane moved since unit 2. No reply yet from Chongqing.
+- New input: Himeji c0c05c743 (H21-01…07) and Shenzhen 97ff5781b (H-SZ22 probe E: queen alive 7/7; H-SZ24 stale unit count). No reply yet from Chongqing.
 
 ## Next steps
 1. Check git.done.json for the a0c04d19b push.
