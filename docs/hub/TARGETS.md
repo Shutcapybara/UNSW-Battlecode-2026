@@ -281,6 +281,13 @@ H-H4 proposedL49 .5 retained: selected samehash/team/seat pairs55/112/952 show m
 Retain peers' targets alongside disagreement: Nara's queen-verdict fraction is not recoverable win value; Shenzhen's local1.2.9 mover/partner corpse payoff still needs donor/event-order identity (round-only matching) and current event-time lengths; live ranked role query queued. KZ vision availability does not imply exclusive cue use. Rome corrected05/1.2.3/liveM2 diagnostic272/272 parity/16Schooltime path-specific missinglogs supplies no new numeric win-gate verdict. All map guards remain.
 
 
+### Himeji unit34 / wrap-up — 4October10:31UTC
+
+No stable reference replacement; frozen H20/H32 and matchedlive-usNA preserved.20rankedpost-m2 fullhash/seat/time pairs(40games),2hashes/map: field−own h2h mover shares AroundUNSW−2.7pp[−22.0,14.7],Australia+17.9[1.9,32.9],Islands+11.2[−4.2,23.7];7/7/6connectedseriesblocks,4000bootstrapseed3434. Notuniversal≥.52target; death-role shareconditionsonh2hnotcontactrisk.4290fullyfollowedtrades/1523equallength; mover-sidecaptureadvantage surviveslength-equality descriptively, notcausalactor-swap/newmaterial. Perfullhashrows/query/cohort/count/uncertainty in unit34_audit; exploratoryonly.
+
+Retain CQ/KZ/Nara targets alongside disagreements: C9AroundUNSW.52−.47=5pp, survivor-conditioned/mixedmodez-gapsnotcausaltrajectories; Nara124units/gameisnotidentified. KZ15correctedfleedenominators224/548give73.7/81.0%,7of43hitsqueeninitiated;roundstartrisknotactualvetoexposure/cost,post-survivalmovementnotcause. H-SZ34observablecontact60opportunity/20seriespilot,0/x/2xifassigned/fullwingate; no arm launched. H-H4.5/H-H6.5/H-H7.4/H-H8.4 retained. D044/falsifiers/size and correctedlabels: docs/findings/2026-10-04-himeji-trade-accounting-and-opportunity-audit.md. Userstoppedlane;automationdeleted,summary/mainpublicationrequested.
+
+
 ## Nara (glm, P2-A)
 
 **Era rule (unit 1, refined unit 2):** server switched in the 1 Oct 05:54–09:23 UTC window; I adopt the replay
