@@ -1,0 +1,46 @@
+"""Freeze ranked S1 Q3 rows; empirical geometry strata and whole-series sample-percentile references.
+No q.py imports, shared norms, API calls, or writes to the source store.
+"""
+import argparse,collections,hashlib,json,sys
+from pathlib import Path
+import duckdb,numpy as np,pandas as pd
+ap=argparse.ArgumentParser();ap.add_argument('--repo',type=Path,required=True);ap.add_argument('--store',type=Path,required=True);ap.add_argument('--snapshot',type=Path,required=True);ap.add_argument('--out',type=Path,required=True);ap.add_argument('--boot',type=int,default=500);a=ap.parse_args();a.out.mkdir(exist_ok=True);sys.path.insert(0,str(a.repo));from tools.analysis.features import frame as F
+metrics=['bed_eats','bed_capture','splits','transits','territory'];curve=a.out/'opening-rows.jsonl'
+if not curve.exists():
+ files=sorted((a.store/'sides').glob('part-*.parquet'));sides=pd.concat([pd.read_parquet(p,columns=['game','side','map','map_hash','team']) for p in files]);sides.game=sides.game.astype(str);assert not sides.duplicated(['game','side']).any();games=pd.read_parquet(a.store/'games.parquet');games.game=games.game.astype(str)
+ con=duckdb.connect();con.execute('set threads=1');con.execute("set memory_limit='600MB'");sf=[str(p).replace('/sides/','/series/') for p in files];q="select game,side,round,ended,c_eats_bed bed_eats,c_eats_bed/nullif(c_bed_spawns,0) bed_capture,c_splits splits,c_transits transits,territory from read_parquet(?) where round in (25,50)";d=con.execute(q,[sf]).df();d.game=d.game.astype(str);d=d.merge(sides,on=['game','side'],validate='many_to_one').merge(games[['game','ranked','era','started_at','series_id','team_a','team_b']],on='game',validate='many_to_one');assert not d.duplicated(['game','side','round']).any();d['opponent_id']=np.where(d.side=='A',d.team_b,d.team_a).astype(str);d.team=d.team.astype(str);d['time_bin']=pd.to_datetime(d.started_at).dt.floor('6h').astype(str)
+ lad=json.loads((a.snapshot/'ladder.json').read_text());top=[str(r['id']) for r in lad if not r.get('dev') and r.get('rank') and r['rank']<=10];d['top10']=d.team.isin(top);structures=[]
+ for mh,z in d.groupby('map_hash'):
+  gid=z.iloc[0].game;p=a.repo/'public_replays/corpus/replays'/f'{gid}.replay';root=F._reader(p).object(0,0);txt=root.text(0);assert hashlib.sha256(txt.encode()).hexdigest()[:12]==mh;m,W,H,nbr,*_=F.terrain(txt);deg=np.array([len({x for x in ns if x is not None}) for ns in nbr.values()]);edge=[ln.split() for ln in txt.splitlines() if ln.startswith('EDGE ')];portal=sum(int(e[2])==2 for e in edge)/len(edge);qs=[]
+  for tm in ['A','B']:
+   i=next(i for i,(t,b) in enumerate(m['dragons']) if t==tm);body=m['dragons'][i][1];seen={body[0]};stack=list(seen)
+   while stack:
+    for c in nbr[stack.pop()]:
+     if c is not None and c not in seen:seen.add(c);stack.append(c)
+   qs.append(len(seen)==4 and len(body)==4 and set(body)==seen)
+  low=float((deg<=2).mean());base='portal-dense' if portal>=.025 else 'corridor' if low>=.25 else 'open';cluster=base+('/four-cell-queen' if all(qs) else '/other-queen-spawn');structures.append({'map_hash':mh,'map':z.iloc[0]['map'],'representative_game':gid,'replay_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'cells':W*H,'degree_le2_share':low,'portal_edge_share':portal,'both_queens_fill_four_cells':all(qs),'cluster':cluster})
+ d=d.merge(pd.DataFrame(structures)[['map_hash','cluster']],on='map_hash',validate='many_to_one');d.to_json(curve,orient='records',lines=True);(a.out/'geometry.json').write_text(json.dumps(structures,indent=2)+'\n');manifest={'store_decoded_games':int(sides.game.nunique()),'store_sides':len(sides),'store_metadata_sha256':hashlib.sha256((a.store/'games.parquet').read_bytes()).hexdigest(),'parts':{str(p):{'size':p.stat().st_size,'mtime_ns':p.stat().st_mtime_ns} for p in files},'top10':top,'ladder_sha256':hashlib.sha256((a.snapshot/'ladder.json').read_bytes()).hexdigest(),'query':q,'rows_sha256':hashlib.sha256(curve.read_bytes()).hexdigest(),'first_start':d.started_at.min(),'last_start':d.started_at.max()};(a.out/'reference-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+d=pd.read_json(curve,lines=True,dtype={'game':str,'team':str,'opponent_id':str});d=d[(d.era=='post')&d.ranked].copy();rng=np.random.default_rng(1818);rows=[];matching=[];raw=[];contrasts=[]
+def midpct(values):
+ out=np.full(len(values),np.nan);ok=np.isfinite(values);v=values[ok];sv=np.sort(v);out[ok]=(np.searchsorted(sv,v,'left')+np.searchsorted(sv,v,'right'))/(2*len(v)) if len(v) else [];return out
+for (cl,cp),x in d.groupby(['cluster','round']):
+ x=x.reset_index(drop=True);values=x[metrics].to_numpy(float);hashes=x.map_hash.to_numpy();top=x.top10.to_numpy(bool);groups=list(x.groupby('series_id').indices.values());own=x.team=='7';
+ def stat(ix):
+  z=values[ix];hh=hashes[ix];tt=top[ix];pct=np.full(z.shape,np.nan)
+  for h in set(hh):
+   mask=hh==h
+   for j in range(len(metrics)):pct[mask,j]=midpct(z[mask,j])
+  return np.nanmedian(pct[tt],axis=0) if tt.any() else np.full(len(metrics),np.nan)
+ point=stat(np.arange(len(x)));boots=[]
+ for _ in range(a.boot):boots.append(stat(np.concatenate([groups[j] for j in rng.integers(0,len(groups),len(groups))])))
+ boots=np.array(boots)
+ diff=boots[:,1]-boots[:,3];contrasts.append({'cluster':cl,'round':int(cp),'contrast':'bed_capture percentile minus transit percentile','point':float(point[1]-point[3]),'ci95':np.nanquantile(diff,[.025,.975]).tolist(),'interpretation':'paired-component descriptive contrast, not a causal return to increasing either action'})
+ for j,metric in enumerate(metrics):
+  valid=np.isfinite(boots[:,j]);ci=np.quantile(boots[valid,j],[.025,.975]).tolist() if valid.any() else [None,None];rows.append({'era':'post123','population':'ranked decoded coverage sample','cluster':cl,'round':int(cp),'metric':metric,'field_sides':len(x),'field_games':int(x.game.nunique()),'field_series':len(groups),'field_finite':int(np.isfinite(values[:,j]).sum()),'top10_sides':int(top.sum()),'top10_finite':int((top&np.isfinite(values[:,j])).sum()),'top10_series':int(x.loc[top,'series_id'].nunique()),'top10_teams':int(x.loc[top,'team'].nunique()),'own_sides':int(own.sum()),'ended_sides':int(x.ended.sum()),'maps':sorted(x['map'].unique()),'map_hashes':int(x.map_hash.nunique()),'top10_median_map_conditioned_field_percentile':float(point[j]) if np.isfinite(point[j]) else None,'ci95':ci,'bootstrap_valid':int(valid.sum()),'stability':'provisional selected-sample reference; no independent later-window replication','matched_top10_minus_us':None})
+ # Show whether sufficient exact-opponent/hash/seat/time strata exist; never replace unknown opponent strength with ladder today.
+ keys=['map_hash','side','opponent_id','time_bin'];tt=x[x.top10];uu=x[own];common=uu[keys].drop_duplicates().merge(tt[keys].drop_duplicates(),on=keys);matching.append({'cluster':cl,'round':int(cp),'own_sides':len(uu),'top10_sides':len(tt),'common_exact_strata':len(common),'matched_own_sides':len(uu.merge(common,on=keys)),'matched_top10_sides':len(tt.merge(common,on=keys)),'gap':None,'reason':'No game-time opponent Elo is available. Exact opponent/hash/seat/6h matching used only as support audit; tiny/missing overlap gives no reliable gap.'})
+ for (mp,mh),z in x.groupby(['map','map_hash']):
+  for metric in metrics:
+   v=z[metric].to_numpy(float);tv=z.loc[z.top10,metric].to_numpy(float);tv=tv[np.isfinite(tv)];fv=v[np.isfinite(v)];med=float(np.median(tv)) if len(tv) else None;raw.append({'map':mp,'map_hash':mh,'cluster':cl,'round':int(cp),'metric':metric,'field_sides':len(z),'top10_sides':int(z.top10.sum()),'own_sides':int((z.team=='7').sum()),'top10_median':med,'field_mid_percentile_at_top10_median':float((np.mean(fv<med)+.5*np.mean(fv==med))) if med is not None and len(fv) else None})
+ print(cl,int(cp),'field',len(x),'top',int(top.sum()),'own',int(own.sum()),'matched',len(common),flush=True)
+(a.out/'component-contrasts.json').write_text(json.dumps(contrasts,indent=2)+'\n');(a.out/'ranked-references.json').write_text(json.dumps(rows,indent=2)+'\n');(a.out/'matching.json').write_text(json.dumps(matching,indent=2)+'\n');(a.out/'raw-map-descriptives.json').write_text(json.dumps(raw,indent=2)+'\n');(a.out/'method.json').write_text(json.dumps({'bootstrap':'whole series within geometry stratum/checkpoint; recompute empirical midrank within exact map hash each draw;500 draws seed1818','statistic':'median current-top10 side map-conditioned field percentile','metrics':metrics,'terminal':'ended rows carried from S1 and counted; not survival analysis','strata':'portal-edge fraction>=.025 first; else degree<=2 share>=.25 corridor; else open; crossed with both original queens filling4cellcomponents. Esquie-inspired descriptors, not original21feature/k8 model. No fertility feature.','stability':'all provisional: coverage-selected reference sample, current-cohort retrospective selection, no independent temporal replication; uncertainty does not correct selection bias. Require later-window replication and>=20 independent series/top cohort per stratum plus percentile halfwidth<=.10 before even considering stability.','matching':'same opponent ID, map hash, seat and UTC6h bin; no matched gap reported for unsupported/small cohorts. Ranked/unranked never pooled.'},indent=2)+'\n')

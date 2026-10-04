@@ -2,6 +2,35 @@
 
 Branch `r/himeji`; worktree `../wt-himeji`; Mac. Resumed4October: user assigned Himeji live-data connectivity, collection oversight and analysis. Existing hub remains sole downloader; versioned store maintained by Himeji. No bot changes.
 
+## Unit18 — 2026-10-04 02:38 UTC; ranked Q3 geometry references complete
+
+- Frozen708game/1416side store yields504rankedgames/1008sides,489top10/20own,38hashes; r25/r50 Q3 bedconversion,
+  production/transits/territory references by4actualgeometrystrata. Exact-hashmidrank then top10median,500seriesboot.
+  Portal-dense@50capturep65.7[54.5,72.8],transitp55.7[45.7,68.0],contrast10.0[-1.6,17.5]pp; no causalbottleneckclaim.
+  Allreferencesprovisional/coverage-selected/no laterwindow; noBENCHMARK replacement. Zeroexactopp/hash/seat/6h
+  matchedownstrata; alltop10-minus-usNA. CoarseEsquie-inspiredgeometry,notk8reproduction; nofertilityfeature.
+- L41.5guidance/falsifier/sampleplan retained: increasedentries musttranslatecapture/production/wins withouttraffic
+  loss;attemptedvsrealizedcrossingsseparate. No newarm. H-H1/H-H3/H-H4/H-H5 .5,H-H2unresolved.
+- Rome6857cc26104REJECTagreed/H-H1notfalsified; directhandoffrequested05evidenceexposures+clean01guard.
+  Rome05fallback-guardinprogress,nonewcomplete05result. Nara89c2d2cbeL47correctionplanaccepted;95deadqueen
+  triggerfindingisPortals-subset,notall03triggers. KeepH-H3/H-H5separate. BoardH18-01..06.
+- Five newlydownloadedranked14585vs217games(one01:22Zseries):2–3;3RLlongest outcomes withbothqueensdead,
+  ownalive4900/3,2earlyelimcensored. RLleadloss/loss0/1,lost/RLlead0/2 both490/end.5winner/10queenchecks pass.
+  Notinreferencefreeze;one-seriesdescriptiveonly. Demonstrateslongestfallbackstillmatters,notqueenunimportance.
+- Sourcesmain0298966ec/D-042,Antioch2c7113f66,Carthage5b69fa9d0,Kyotofccea71c0,Rome6857cc261,
+  Nara89c2d2cbe through02:32;protocol/targets/5statuses/boardsread. Romecursorb99b513f-fdd3-41ba-b646-7855a1a8bbde:6.
+  PriorHimeji1f17b521d. Source/query/reference hashes tools/himeji/unit18_audit/.
+- Raw118497at02:23:03Z/latest02:19:17Z,+618/5own,indexSHAae389c653305ff7e33247a6af3aae88d33ada5dbb57e76ff2d269675797d0c1f.
+  Ladder021804ZSHA74d926f42598386978de4ec7289c0429b14189fd72c2c8d3d51f83296336f797;
+  top264/306/213/91/952/842/87/55/507/566. Era>=1Oct06:00post123;populationsseparate.
+  Collector35400healthy40/pass0errors,DBro14585active14265idlelastseen02:18:03Z;coverage requests pending.
+- Ownstore754games/1508sides,91new0errors332s;549ranked205unranked/all1508winneragreements;latest01:45:11Z.
+  Metadata117879unit17,top10sides778/own22.308pendinginSAMEunit17queue;resume--jobs1--seconds160.
+  Referencesfreeze708,not754. No activeworker;oldS1/norms/main untouched. No bot/simulator/API/deploymentchange.
+- NextRome05reading whencomplete,thenresume308queue; laterindependentwindowvalidateopeningreferences/endgame
+  geometry andmatchedowncoverage. Avoidrepeating38headeraudit orRome04 unchanged. AutomationACTIVE,scopedcommit/push.
+  Finding `docs/findings/2026-10-04-himeji-ranked-opening-geometry-reference.md`.
+
 ## Unit17 — 2026-10-04 02:08 UTC; Rome04 timing and H-H3 precursor unit complete
 
 - Rome04 source change cannot activate before250: r150 endpoint is pre-treatment, cannot falsify H-H1.

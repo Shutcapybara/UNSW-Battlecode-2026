@@ -1,0 +1,15 @@
+{
+  "bootstrap": "whole series within geometry stratum/checkpoint; recompute empirical midrank within exact map hash each draw;500 draws seed1818",
+  "statistic": "median current-top10 side map-conditioned field percentile",
+  "metrics": [
+    "bed_eats",
+    "bed_capture",
+    "splits",
+    "transits",
+    "territory"
+  ],
+  "terminal": "ended rows carried from S1 and counted; not survival analysis",
+  "strata": "portal-edge fraction>=.025 first; else degree<=2 share>=.25 corridor; else open; crossed with both original queens filling4cellcomponents. Esquie-inspired descriptors, not original21feature/k8 model. No fertility feature.",
+  "stability": "all provisional: coverage-selected reference sample, current-cohort retrospective selection, no independent temporal replication; uncertainty does not correct selection bias. Require later-window replication and>=20 independent series/top cohort per stratum plus percentile halfwidth<=.10 before even considering stability.",
+  "matching": "same opponent ID, map hash, seat and UTC6h bin; no matched gap reported for unsupported/small cohorts. Ranked/unranked never pooled."
+}

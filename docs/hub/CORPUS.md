@@ -103,3 +103,14 @@ All1326sidewinnerlabels matchofficialindex;18labels,window2Oct23:13Z–4Oct01:45
 Metadata117879 frozenunit17;399selectedgamespending,notfieldcensus. No activewriter,legacyS1/norms unchanged.
 Query tools/himeji/store_coverage.py; counts/source/queue in tools/himeji/unit17_audit/. Solecollectorhealthy40/pass0errors,
 DBread-onlyhealthy14585active. Raw+468/0newowngames;extra9ownstoredsidesareolderbacklog. H11-05/H12-05pending.
+
+
+## Himeji refresh — 2026-10-04 02:38 UTC
+
+Rawfreeze118497at02:23:03Z/latest02:19:17Z,ladder021804Z top264/306/213/91/952/842/87/55/507/566.
+Versionedv7store663→754games/1508sides,91new0errors332s;549ranked205unranked,allpost123,all1508winnerlabelsagree.
+Window2Oct23:13–4Oct01:45:11Z,18maplabels,currenttop10sides778/own22. Metadata still117879/frozenunit17;
+308selectedgamespending;resumeexistingqueue. Openingreferencefreeze708games preservedseparately(504rankedgames).
+Query/source/counts tools/himeji/unit18_audit/;coverage via tools/himeji/store_coverage.py. Noactiveworker;
+legacyS1/norms untouched. Solecollector35400healthy40/pass0errors;DBreadonly14585active. Fivefreshowngames
+receivedviaopponent217,one01:22Zrankedseries;notyetinreferencefreeze. H11-05/H12-05coverage requests pending.

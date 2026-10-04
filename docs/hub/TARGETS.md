@@ -346,3 +346,37 @@ in1.2.3fixture.4selectedlivefailures/3games(2ranked1unranked),2enginecases estab
 >=60independenteligiblepairs+negativecontrols/winguards. Exactquery/counts/era/falsifier/tester `docs/findings/2026-10-04-himeji-rome04-timing-and-pocket-precursors.md`.
 NaraL47disagreement:parent+immediatechild excludesdescendants,truncated10rhorizon/mixedmodes preventcausalregret
 reading. Retainpeerproposal;requestcorrecteddenominators beforetest. No newstablepercentiles/matchedlive-us gaps.
+
+
+### Himeji unit18 — provisional ranked opening references,4October02:38UTC
+
+Era post123>=1Oct06:00Z,window2Oct23:13–4Oct01:45;708decodedgames frozen,504rankedgames/1008sides,
+489top10/20own. Cohort021804Z264/306/213/91/952/842/87/55/507/566. References below are top10median
+within-exact-maphash empiricalfieldpercentile [95%whole-seriesbootstrap], **selected sample, provisional**.
+Coarse geometry fromactualheaders:portal-edge>=.025;else degree<=2share>=.25corridor;elseopen;cross4cellqueenspawns.
+This is not Esquie's21featurek8 cluster fit. Maps/query/method/finitecounts in `docs/findings/2026-10-04-himeji-ranked-opening-geometry-reference.md` andunit18_audit.
+
+| Geometry stratum | Ranked field sides / games / series | Top10 sides / series | Own sides | Exact matching strata |
+|---|---:|---:|---:|---:|
+|Corridor|358 / 179 / 108|169 / 92|8|0|
+|Open / four-cell queen|52 / 26 / 26|23 / 21|3|0|
+|Open / other queen spawn|498 / 249 / 134|253 / 118|6|0|
+|Portal-dense|100 / 50 / 48|44 / 37|3|0|
+
+| Geometry | Round | Bed capture | Splits | Transit attempts | Territory |
+|---|---:|---:|---:|---:|---:|
+|Corridor|25|60.9 [56.7,65.9]|48.3 [44.3,58.0]|50.0 [50.0,50.0]|60.9 [55.6,67.1]|
+|Corridor|50|64.1 [57.9,68.3]|60.9 [56.2,67.3]|50.0 [50.0,50.0]|64.5 [58.8,70.0]|
+|Open / four-cell queen|25|50.0 [34.7,62.1]|52.8 [50.0,58.3]|65.6 [39.3,75.0]|65.6 [45.0,75.0]|
+|Open / four-cell queen|50|63.9 [50.0,82.1]|75.0 [46.0,83.9]|60.0 [50.0,71.9]|68.8 [44.1,77.6]|
+|Open / other queen spawn|25|58.8 [54.6,63.7]|55.8 [52.1,63.5]|50.0 [44.3,59.1]|58.3 [54.1,61.7]|
+|Open / other queen spawn|50|60.3 [56.2,64.5]|58.8 [52.8,64.2]|57.7 [52.5,63.9]|58.0 [54.2,62.0]|
+|Portal-dense|25|64.4 [54.5,71.1]|56.9 [50.0,72.5]|60.8 [48.5,68.8]|50.0 [50.0,50.0]|
+|Portal-dense|50|65.7 [54.5,72.8]|59.6 [48.5,69.5]|55.7 [45.7,68.0]|50.0 [50.0,50.0]|
+
+No exactopponent/hash/seat/UTC6h overlap: matchedtop10-minus-us=NA for every component/phase. No stabletarget
+or frozenBENCHMARK revision. Laterindependentwindow,>=20top-series/stratum andpercentilehalfwidth<=10pp required
+beforeconsideringstability. Bed-eatsreferences separately inunit18_audit/ranked-references.json;attemptedtransits
+are not realizedsafe crossings,fieldtiescanproducep50withoutactivity;4opensidesendedbefore50andarecarried.
+L41.5unchanged;capture-minus-transitcontrast10.0[-1.6,17.5]ppnotcausalproof. Fullfalsifier/sample/tester inreport.
+Rome04gateREJECTisnotH-H1falsification;Rome05H-H5inprogress. Otheranalysts' proposals/references preserved.
