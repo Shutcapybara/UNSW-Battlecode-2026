@@ -54,7 +54,9 @@ pushes `r/shenzhen`.
 | H-SZ42 | queen room veto (parent flood) | **void** (unit 19: 0–1 fires/game) | — | — | — |
 | H-SZ44 | growth-aware flood (tail frozen per meal) | posted 0.25 (unit 19: 4/30 sealed queen deaths) | sealed queen deaths not −10 % in stack | 18 sim | component |
 | H-SZ45 | parent flood optimistic before seals | **refuted as stated** (unit 20: 1/10) | — | — | — |
-| H-SZ46 | two-gate rule: queen avoids regions behind a gate ≤ 2 unless ≥ 4L cells | posted 0.5 (unit 20) | sealed queen deaths not halved in stack, or total < −5 % | 18 sim games | this lane / tester |
+| H-SZ46 | queen gate/pocket veto (static form 46a: static room ≥ 4L+16) | **0.6** (unit 21: sealed 10 → 5, total +15 %; overrides KZ26, strikes 6 → 11) | — | — | stack piece |
+| H-SZ48 | queen step = one lexicographic choice (strike slack > static room > parent) | posted 0.5 (unit 21) | alive ≤ 1/18 or strikes and seals not both below parent | 18 sim games | this lane next |
+| H-SZ49 | learned queen block: strike slack, static room, unit headroom | posted 0.3 (unit 21) | AUC gain < +0.02 r100–250 | store LOMO | Learner |
 | H-SZ47 | field queens cross fewer narrow gates | posted 0.35 (unit 20) | equal or more crossings | store ~200 games | Data |
 | H-SZ43 | queen in the crowd: field queens screened by ≥ 2 ally heads within 3 more than ours | posted 0.35 (unit 18) | share equal or lower | store, ~200 games | Data / Himeji |
 | H-SZ41 | queen hazards substitute: stack KZ26 + KZ12 + H-SZ40 before reading the tiebreak | posted 0.4 (unit 17) | stack queen alive@end ≤ 1/18 | 4 arms × 18 sim games | tester / this lane |
@@ -116,10 +118,11 @@ pushes `r/shenzhen`.
 - **Unit 18 (4 Oct 12:11Z – 12:35Z).** r/shenzhen finally pushed (12:12Z, a3d4b39bc). Stack Q + R (KZ26 m0 + H-SZ40), 18 sim games: invalid 4 → 0, strikes 6, walls/self 10, queen alive 0/18 — hazard substitution. H-SZ42, H-SZ43.
 - **Unit 19 (4 Oct 12:56Z – 13:25Z).** Probe S (H-SZ42) exposure 0–1/game → void; the 18-game run was stopped. Growth-trap anatomy + szgrowtrap.py (4/30 sealed queen deaths). H-SZ44, H-SZ45.
 - **Unit 20 (4 Oct 13:38Z – 14:05Z).** r/shenzhen pushed (09498b3d9). Logging arm c05rl (outcomes identical to c05r): sealed queens are in a 2–32-cell pocket 2 rounds out in 6/10 cases, on the open board in 4/10; H-SZ45 refuted; H-SZ46/47. Read Asahi P-A01 (E is the cage lever) and Kageyama map variants (ours since unit 7).
+- **Unit 21 (4 Oct 14:26Z – 14:55Z).** Pushed bf5337891. Probe G (static pocket veto) on Q + R: sealed 10 → 5, total +15 %, strikes back 6 → 11 (override order). H-SZ48/49. Read P-sugawara-01: 60 × 40 gate = map identity; proposed r0 cage bit + radio relay.
 
 ## Next unit
 
-0. H-SZ46 two-gate probe (articulation test on static occupancy around the queen's candidate cells) stacked on Q + R, 18 sim games; then H-SZ35.
+0. H-SZ48: one lexicographic queen step (strike slack, static room, parent score) replacing Q/G overrides, 18 sim games; check whether a starting dragon sees the live Schooltime cage at r0 (one replay).
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
