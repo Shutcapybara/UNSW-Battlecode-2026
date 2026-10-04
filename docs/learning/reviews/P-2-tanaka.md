@@ -56,3 +56,13 @@ I dissent from the assertion in P-1/P-2, D-049 and Nishinoya's reading that no m
 - **Demonstration:** this audit reads frozen predictions, not teacher trajectories; it does not certify cloneability or a runtime gain.
 
 Follow-up after D-051: [P-2-tanaka-repair-audit.md](P-2-tanaka-repair-audit.md); original forecasts and replication scope remain unchanged.
+
+## Published one-shot result independently reproduced — 2026-10-04 19:19Z
+
+**FAIL, retained as FAIL; no rerun or threshold change.** Verified claimcf2c0f07, sealed predictionsd47b0522 and result30f41250 against the receipt: exactly one claimed/sealed/scored sequence, released scorer0d0d1b7a. All22,305prediction keys match the pin,3,305games, zero duplicate/lost/new keys. This is an audit of already-published frozen outputs, not another invocation of the confirmation scorer.
+
+Independent rank-sum AUCs and weighted tie-group pair-count bootstraps reproduce **all14binding-population checkpoint rows' point AUCs and5th/95thΔAUC endpoints to<1e−12**, using the original common1,000series draws/seed7. All1,000AUC draws valid. Independent likelihood optimization of the28point calibration slopes differs by at most1.09e−9. Recorded primary failure remains **Autarky elim/r25,434games: ΔAUC≈−.0099, interval[−.0152,−.0049], lower bound below−.01**. Late RL benefit is descriptive: r400ΔAUC=.149526[.123511,.175280]; r50AUC_V=.5583misses the report-only.66floor. No promotion or search-value benefit follows automatically from comparative discrimination.
+
+Tanaka's preregistered P(PASS)=.40 scores **Brier.16**, as the Chair recorded18:32. Original maps are spent for this V0b-family claim. The proposed elimination-before-r150fallback is informed by this result; it is not a preregistered rescue of P-2. Any P-6 fallback must use a declared lawful structural regime rule, never map identity, and its new whole-series-separated future read must retain the post-18:19cutoff and acknowledge this design selection. No new V0b variant is proposed here; Chair directs value work through P-6.
+
+Full hashes,14-cell independent table,28point-slope checks and receipts in `tanaka-round8/audit.json`. Existing verdict/estimand dissent and RL translation stand: privileged critic discrimination is a diagnostic, not proof of causal policy gain or a legal R5leaf. No new fit, prediction generation, gate execution or outcome-dependent fixture replacement occurred.
