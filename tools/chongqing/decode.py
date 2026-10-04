@@ -48,6 +48,7 @@ def main():
     ap.add_argument('--jobs', type=int, default=3)
     ap.add_argument('--time', type=float, default=110)
     ap.add_argument('--era', default='post')
+    ap.add_argument('--map-era', default='post-m2', help="games.map_era to decode first ('' = no filter)")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--flush", type=int, default=40)
     a = ap.parse_args()
@@ -56,6 +57,8 @@ def main():
     done = B.done_games(store)
     if a.era:
         games = games[games.era == a.era]
+    if a.map_era:
+        games = games[games.map_era == a.map_era]
     q = priority_queue(games, teams, done)
     if a.limit:
         q = q[:a.limit]

@@ -29,6 +29,10 @@ US = 7
 # unswbc 1.2.3 rules on the live server (sprint ceil(L/4) free steps; tiebreak queen -> longest -> total). Last old-rule
 # game finished 2026-10-01 05:57:53Z, first new-rule game 09:26:58Z, none in between (tools/antioch/era.py, sprint pricing)
 ERA_SWITCH = '2026-10-01T06:00:00+00:00'
+# the live server replaced six maps (Autarky, Default, PD, Schooltime, Slithery, Trophy; new map_hash, queens no longer in
+# spawn pockets, Schooltime queen caged) at 2026-10-02 03:49Z and restored the seven non-ladder maps at 04:31Z (Shenzhen,
+# chongqing unit 2). games.map_era: pre | post (new rules, old maps) | post-m2 (new rules, new maps)
+MAP_SWITCH = '2026-10-02T03:49:00+00:00'
 TABLES = ('sides', 'series', 'deaths', 'transits', 'splits')
 # event columns always present in series (cumulated as c_<name>), so every part has the same schema
 XEV = ('idle', 'turnaround', 'steps', 'transits', 'transit_blind', 'transit_double', 'transit_contested', 'transit_died3',
@@ -90,6 +94,7 @@ def build_games():
                          elo_a=ra.get('elo'), elo_b=rb.get('elo'), rank_a=ra.get('rank'), rank_b=rb.get('rank'),
                          snap_lag_min=(t - snap_t) / 60, snap_before=t >= snap_t,
                          result_a=1.0 if w == 'a' else 0.0 if w == 'b' else 0.5, era='post' if t >= ts(ERA_SWITCH) else 'pre',
+                         map_era='post-m2' if t >= ts(MAP_SWITCH) else 'post' if t >= ts(ERA_SWITCH) else 'pre',
                          in_scope=(g['team_a'] in crank and crank[g['team_a']] <= 50) or (g['team_b'] in crank and crank[g['team_b']] <= 50)
                          or US in (g['team_a'], g['team_b'])))
     games = pd.DataFrame(rows).drop_duplicates('game')

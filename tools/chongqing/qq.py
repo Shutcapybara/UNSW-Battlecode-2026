@@ -42,11 +42,11 @@ def connect(era='post', threads=3, mem='1200MB'):
         pf = f"replace(filename, '/{t}/', '/sides/')"
         con.execute(f"create view {t}_raw as select * exclude (filename) from {t}_all x "
                     f"where exists (select 1 from canon c where c.game = x.game and c.part = {pf})")
-    con.execute(f"""create view sides as select s.*, g.ranked, g.autoscrim, g.started_at, g.series_id, g.era,
+    con.execute(f"""create view sides as select s.*, g.ranked, g.autoscrim, g.started_at, g.series_id, g.era, g.map_era, g.map_hash,
         case when s.side = 'A' then g.elo_a else g.elo_b end as elo, case when s.side = 'A' then g.elo_b else g.elo_a end as opp_elo,
         coalesce(t.cohort, 'other') as cohort, t.crank, t.name, coalesce(o.cohort, 'other') as opp_cohort, o.crank as opp_crank, o.name as opp_name
         from sides_raw s left join games g on g.game = s.game left join teams t on t.team = s.team left join teams o on o.team = s.opp {ew}""")
-    con.execute("create view key as select game, side, cohort, crank, name, won, result, reason, ranked, started_at, era, opp_cohort, opp_name from sides")
+    con.execute("create view key as select game, side, cohort, crank, name, won, result, reason, ranked, started_at, era, map_era, opp_cohort, opp_name from sides")
     for t in TABLES[1:]:
         if con.execute(f"select count(*) from information_schema.tables where table_name = '{t}_raw'").fetchone()[0]:
             con.execute(f"create view {t} as select x.*, k.* exclude (game, side) from {t}_raw x join key k using (game, side)")

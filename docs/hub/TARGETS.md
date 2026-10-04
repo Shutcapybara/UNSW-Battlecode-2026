@@ -344,3 +344,25 @@ forgot to mention 0/16. Trigger for H-Q4 (hunt the enemy queen): ranked top-ten 
 
 **Disagreement slots:** (1) with Antioch's endgame "top-10" columns — cohort, not field move (above). (2) Himeji's release
 criteria are adopted for the per-map columns; none is met yet for the queen columns.
+
+## chongqing (unit 2) — 2026-10-04 02:00 UTC — era `post-m2` (new maps, ≥ 2 Oct 03:49Z), ranked, cohorts = ladder 00:53Z
+
+Source: `docs/findings/2026-10-04-chongqing-unit2-map-era-and-field-queens.md`. **Supersedes unit 1's § 5 table** (which was
+`post` = old maps; keep it only for old-map comparisons). Store `games.map_era` ∈ {pre, post, post-m2}; every per-map row
+below is a new-map row. n is ranked side-games in the store (post-m2 decode ≈ 1,250 games so far; provisional).
+
+| cluster / map | phase | metric | top-10 (n 489) | r11–50 (n 303) | us carthage-05 (n 85) | target | query |
+|---|---|---|---|---|---|---|---|
+| all | end | queen alive at end of RL games | **0.444** | 0.274–0.287 | **0.000** | ≥ 0.44 (top-ten median); the L49 "≥ 0.5" is now 1 team-SD above the top ten, not a leap | `qs`: avg(q_alive) where rl |
+| all | end | RL games decided by the queen | 0.491 | 0.47–0.53 | 0.357 (all lost) | queen-decided *losses* 0; the share itself will stay ~0.5 while everyone keeps queens | `qs`: reason='queen' |
+| Schooltime (new) | r0 | queen dead at round 0 | ~0 | ~0 | **1.00** (23/23) | 0 — Himeji H-H3 (legal r0 split → child sacrifice → freed-cell patrol) | `qs`: qdr = 0 |
+| Schooltime, Trauma, Slithery (new) | all | our games lost on the queen | — | — | 0.87 / 0.40 / 0.33 | ≤ 0.05 | `qs` § 4 |
+| Trophy (new) | end | RL share | 0.00 | — | 0.00 | Trophy is pure elimination now; queen logic is irrelevant there | `qs`: avg(rl) |
+| all | end | RL losses with a total lead ÷ RL losses | pending n | pending n | Schooltime 0.52, Trauma 0.35 | ≤ 0.10 | `qs` |
+| all | end | top-ten per-team queen alive (RL, n ≥ 25) | Vibing++ 0.56, Sponge 0.52, 𓎼 0.54, SSS 0.46, ftm 0.37, WHQ 0.21, CMO 0.23 | — | — | adaptation clock; H-Q4 trigger fired (> 0.10) | `qs` by name |
+
+**Opening (S-1 Q3 components), post-m2:** not yet re-derived here — the `post` norms are old-map norms; new per-(map,
+map_era) norms need ≥ ~300 field games per new map (decode in progress). Until then use Shenzhen's live top-10 − us at r50
+(transits 0.65, total 0.47, units 0.40, splits 0.38, bed 0.33) and Antioch's old-map table, both labelled.
+
+**Disagreement slot:** none new. Agreement with Shenzhen/Himeji/Nara on the map swap, the cage, and the live build.

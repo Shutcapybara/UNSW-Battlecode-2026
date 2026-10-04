@@ -5,15 +5,23 @@ Worktree `../wt-chongqing` (Mac, via the Cowork VM; `build/` and `public_replays
 hour off, repeat (user's instruction, to conserve credits). No API calls; GPT's analyst pulls replays this wave, so this
 lineage only decodes what the hub collector has already written.
 
-## Top — read this first (2026-10-04 00:20 UTC)
+## Top — read this first (2026-10-04 02:00 UTC)
 
+- **Map swap 2 Oct 03:49Z** (six maps new, seven back at 04:31Z): store `games.map_era` ∈ {pre, post, post-m2}; per-map
+  references must state it. Live is carthage-05 (14585) since 2 Oct 04:22Z. H-C1 = the new Schooltime cage (0/51 old map,
+  22/22 new), still our bug (we neck-step where keepers split-and-patrol); local fixtures run old maps. H-C3 withdrawn.
+- **Post-m2 ranked field keeps queens: top ten 0.444 alive at RL end, r11–50 0.27–0.29, us 0.000; half of RL games
+  queen-decided.** H-Q4 trigger fired. carthage-05 live: win 0.313, 20 % of games lost on the queen, Schooltime 0.87.
+- Division with Shenzhen (other Claude analyst): chongqing owns `build/s1/`, CORPUS.md, field references/TARGETS table;
+  Shenzhen works hypotheses from `build/shenzhen/`.
 - **Ladder reset 1 Oct 06:21Z–17:09Z**: everyone to 1500; ranks are post-rules-only; store cohorts are post-reset (top
   ten: 306 Vibing++ (ex-Cutlery), 264, 91, 213, 87, 842, 82, 952, 566, 552). Stockfish/PPP gone, cheji bt idle.
 - **hb1-14 live kills its queen at r0 on Schooltime in 31 % of games** (edge 2×2 spawn's r0 split; replays 996205,
   887973). 10.8 % of our live games are queen-decided and we lost 71/73. Schooltime 38 % / Trauma 40 % queen-decided.
 - **Top four keep queens against us** (SSS 0.53, Sponge 0.70, Vibing++ 4/4 on 2 Oct unranked; Vibing++ 0.23 ranked 1 Oct).
-- Store: 3,535 / 23,035 post-change in-scope games; VM decode ~65 games per call; queen columns added to `sides`.
-- Finding: `docs/findings/2026-10-04-chongqing-era-ladder-queen.md`. Targets: `docs/hub/TARGETS.md` § chongqing.
+- Store: 45,165 games; post-m2 ≈ 1,250 of 11,852 in scope; VM decode 50–120 games per call (two 60 s batches per call).
+- Findings: `docs/findings/2026-10-04-chongqing-era-ladder-queen.md` (unit 1), `…-chongqing-unit2-map-era-and-field-queens.md`.
+  Targets: `docs/hub/TARGETS.md` § chongqing (unit 2 supersedes unit 1 § 5).
 
 ## Environment
 
@@ -31,17 +39,18 @@ lineage only decodes what the hub collector has already written.
 
 | id | claim | status | falsifier | size | suits |
 |---|---|---|---|---|---|
-| H-C1 | hb1-14's r0 split of the edge 2×2 queen on Schooltime kills it (31 %) — bug | posted unit 1, 0.9 | child's Schooltime `q_death_round=0` rate not < 2 %, or queen-decided Schooltime losses not down from 36 % | Schooltime, 2 × 48 games | any tester, now |
+| H-C1 | r0 queen death on Schooltime | **corrected unit 2**: the new map's cage; folded into Himeji's H-H3 (legal r0 split → child sacrifice → patrol) | — | needs live maps (unswbc ≥ 1.2.6) | Rome/any tester |
 | H-C2 | the queen tiebreak is our largest loss mechanism on Schooltime/Trauma; a merely surviving queen flips most | posted, 0.7 | queen alive ≥ 0.5 on those maps without ranked win +10 pp | 2 maps, s1–3, both panels (~300 pairs) | Claude tester (carthage-10 built) |
-| H-C3 | Default's spawn is half a pocket: 22–36 % of queens die by r5; a reach-keyed first-five-moves rule fixes it | posted, 0.5 | no structural feature separates dead/alive r5 queens | engine probe + 100 Default games | me (probe), any tester |
-| H-C4 | queen hunting pays now vs the top four | watch, 0.4 | ranked top-ten RL queen survival stays < 0.10 | corpus watch (2–3 Oct bulk) | — |
+| H-C3 | Default early queen deaths | **withdrawn unit 2** (old map; new Default 0/17) | — | — | — |
+| H-C4 | queen hunting pays now | **trigger fired unit 2** (top ten 0.444 alive); lane is Shenzhen's H-SZ5/H-SZ14 | — | — | — |
 
 ## Queue (next units, in order)
 
-1. Decode batches every unit (top-ten sides first); republish CORPUS.md; re-run §3/§5 on the ranked 2–3 Oct bulk.
-2. Queen backfill (decode-only) for Antioch's 2,862 games → `q_len` trajectories; who feeds the queen (q_len@400, q_moves).
-3. Opening components on the post-reset top ten at r25/r50 (series view), per Esquie cluster, incl. the seven returned maps.
-4. H-C3 engine probe on Default's spawn; Default/Trophy queen hazard by position.
+1. Decode post-m2 (top-ten sides first) every unit; republish CORPUS.md; refresh the post-m2 ranked table.
+2. New-map norms: per (map, map_era) field medians/SDs for the series/sides views once ≥ 300 games per new map; then the
+   opening components (S-1 Q3) top-10 − us on post-m2, per map and Esquie cluster (clusters need re-checking on the new maps).
+3. Per-map post-m2 queen hazard (death round/cause by map_hash and seat) — the geometry half for the testers.
+4. Queen backfill of old-map games only if someone needs q_len on old maps (deprioritised).
 5. Readings of tester results as they land; answer board questions addressed to me.
 
 ## Log
@@ -50,3 +59,5 @@ lineage only decodes what the hub collector has already written.
 - 2026-10-03 23:00 UTC — ladder reset found; `build.py games` patched; decode wrapper; first batches (team 7).
 - 2026-10-03 23:20 UTC — queen columns added to `sides`; `qq.py` connector.
 - 2026-10-04 00:20 UTC — unit 1 published: finding, TARGETS § chongqing, CORPUS.md, board C1-01…07. Sleeping one hour.
+- 2026-10-04 02:00 UTC — unit 2: map swap verified, `map_era` in the store, +837 games (post-m2 first), post-m2 ranked
+  queen table, H-C1/H-C3 corrected on the board (C2-01…07), finding 2, TARGETS unit-2 section. Sleeping one hour.
