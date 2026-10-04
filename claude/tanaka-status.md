@@ -1,13 +1,13 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 12:53 UTC. State: **repair audit complete; awaiting D-052 and confirmation-scorer fixes**.
+Updated: 2026-10-04 13:53 UTC. State: **D-052 read; cage card rejected as written; awaiting scorer repair**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
 - Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
-- Main read/fast-forward base: `8988d9489`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- Main read/fast-forward base: `2af0e07cd`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
@@ -38,6 +38,14 @@ Updated: 2026-10-04 12:53 UTC. State: **repair audit complete; awaiting D-052 an
 - Delivered `P-2-tanaka-repair-audit.md`, `D-048-tanaka-followup.md`, round2 receipts and `tools/tanaka/p2_confirmation_audit.py`. Compile and bounded one-worker nice-10 probes completed; disk checked before tests. No forecast changes.
 - Rollback follow-up supports a prospective 120-game reference but notes simulation truncates boundary series/uses 200 inner draws and game-time own rating. Different per-window rating anchors create a +0.11968 synthetic difference with identical scores/opponents; recommend one common predeclared own-rating anchor. D-051 dev A/A is not the undefined rollback-calibration event underlying the earlier .80 forecast.
 
+## Third wake: D-052 and cage review
+
+- D-052 decisions incorporated by fast-forward, with prior lane work retained. Chair adopted common rollback anchor and local map×opponent clusters; P-2 r10 and absolute r50 floor report-only. Exact-spec P(PASS) forecast now **0.40**, filed before CLAIM (existence checked only), in `D-052-tanaka.md`.
+- No P-2 release: scorer remains d298a6e7 with known defects. Did not repeat unchanged tests or read held-out outcomes. Data reports decode complete and a one-game scope discrepancy; owner reconciliation remains necessary.
+- **P-sugawara-01: reject dimension identity gate; amend denominator.** `P-sugawara-01-tanaka.md` cites user hard rule and D-033; 55 map headers independently checked. Read frozen Schooltime seed-1 queen tables: Asahi01 has 4 joint survivors /16 fixtures (15 reach RL), 15 wins; carthage05 0/16,14 wins. Twelve total queen deaths in Asahi01, eleven among RL games. Recommend fixed 16 denominator, paired opponent clustering, diagnosis before any revised card and a lawful structural trigger. No bot built or run. Conditional numerical-support forecast .45 applies only to the original intervention if authorized and cap-death prerequisite holds, not to a replacement.
+- Live monitor future-snapshot fix independently passes 4/4 synthetic checks; no claim of D-052 rollback implementation or calibration. Existing absolute monitor and unknown-winner handling not re-alerted as new.
+- `tanaka-round3/audit.json` freezes 32 derived Schooltime rows, map headers/hashes and probes; `tools/tanaka/cage_review_audit.py` reproduces them. One-worker nice10, 21 GiB disk available; no heavy job or shared lock needed. Hidden-bed variant reconstruction is now peer-reported blocked; do not substitute approximate variants silently.
+
 ## Next wake
 
-Read D-052/new decisions and acknowledgments first. Do not consume confirmation data, repeat this audit or silently refit the candidate. Check Hinata's finite-metric, immutable-claim and approved-spec repairs with synthetic inputs only; verify Live ops' snapshot/outcome fixes if delivered. Data's v2 consumption tagging and comparator file integrity are now independently checked. Do not repeat those checks without new inputs. Review any new assigned card; otherwise remain quiet. Commit only lane artifacts and request `push_branches` through the keeper when no request is pending.
+Read status/STOP and fresh Chair/BOARD changes first. Audit Hinata's repaired scorer only after source changes, with synthetic inputs and exact D-052 hash, finite metrics, valid bootstrap counts, claim/scorer binding, coverage and predeclared cell roles. Post an explicit hash-specific release PASS only when justified; do not run confirmation. Review a revised structural reserve card and Asahi's cap-death diagnosis when available. Verify Daichi's exact-rule calibration after it lands, without repeating old requests. Commit lane artifacts only; append new findings to main BOARD and request a keeper push only if no request is pending. Project-document mirror remains unavailable.

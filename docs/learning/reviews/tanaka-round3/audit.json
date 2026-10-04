@@ -1,0 +1,599 @@
+{
+  "scope": "Read-only Schooltime development outputs, map headers, synthetic rating lookup. No held-out confirmation data.",
+  "map_headers": [
+    {
+      "path": "maps/live/Colosseum.map",
+      "header": "MAP 16 16",
+      "sha256": "cf79223957ea28c3a88eac4826b3ccb6c213d19703de9f58c18bcdde3bc6b9b2"
+    },
+    {
+      "path": "maps/live/arena.map",
+      "header": "MAP 11 11",
+      "sha256": "b4bab09603289c2d186ca94d6cf5362e5cc8f24637736c497d9651c0dd921937"
+    },
+    {
+      "path": "maps/live/australia.map",
+      "header": "MAP 64 64",
+      "sha256": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539"
+    },
+    {
+      "path": "maps/live/autarky.map",
+      "header": "MAP 54 18",
+      "sha256": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16"
+    },
+    {
+      "path": "maps/live/big_empty.map",
+      "header": "MAP 64 64",
+      "sha256": "6cb3b7be72a4e27ed19363e9009d46742851709f701e61d73b56437314fdd827"
+    },
+    {
+      "path": "maps/live/default.map",
+      "header": "MAP 32 32",
+      "sha256": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8"
+    },
+    {
+      "path": "maps/live/default_small.map",
+      "header": "MAP 16 16",
+      "sha256": "1b9d21bdec23388e8c72f3e7095cd70696b8dd816584627f44c05dd9e2d118b6"
+    },
+    {
+      "path": "maps/live/devil.map",
+      "header": "MAP 32 16",
+      "sha256": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa"
+    },
+    {
+      "path": "maps/live/dilemma.map",
+      "header": "MAP 32 16",
+      "sha256": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d"
+    },
+    {
+      "path": "maps/live/islands.map",
+      "header": "MAP 56 40",
+      "sha256": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6"
+    },
+    {
+      "path": "maps/live/maze.map",
+      "header": "MAP 48 24",
+      "sha256": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf"
+    },
+    {
+      "path": "maps/live/portals.map",
+      "header": "MAP 32 16",
+      "sha256": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423"
+    },
+    {
+      "path": "maps/live/queen_of_spades.map",
+      "header": "MAP 25 35",
+      "sha256": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938"
+    },
+    {
+      "path": "maps/live/schooltime.map",
+      "header": "MAP 60 40",
+      "sha256": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724"
+    },
+    {
+      "path": "maps/live/slithery_fight.map",
+      "header": "MAP 63 27",
+      "sha256": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7"
+    },
+    {
+      "path": "maps/live/stripes.map",
+      "header": "MAP 24 12",
+      "sha256": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715"
+    },
+    {
+      "path": "maps/live/stronghold.map",
+      "header": "MAP 48 24",
+      "sha256": "c83cb7579e89fff0064b075f38250fa06487a10b6ddf320f6c57d63a84e9f32c"
+    },
+    {
+      "path": "maps/live/tower_defense.map",
+      "header": "MAP 32 16",
+      "sha256": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725"
+    },
+    {
+      "path": "maps/live/trauma.map",
+      "header": "MAP 48 24",
+      "sha256": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066"
+    },
+    {
+      "path": "maps/live/trophy.map",
+      "header": "MAP 25 25",
+      "sha256": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1"
+    },
+    {
+      "path": "maps/live/unsw.map",
+      "header": "MAP 64 64",
+      "sha256": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a"
+    },
+    {
+      "path": "maps/live/weakhold.map",
+      "header": "MAP 40 15",
+      "sha256": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1"
+    },
+    {
+      "path": "maps/new/mc26_archipelago.map",
+      "header": "MAP 36 28",
+      "sha256": "b73c5a110ff7a69acd8c96e68107ba187280bdd2431fbc09d0a86fd4e4efe2a3"
+    },
+    {
+      "path": "maps/new/mc26_crossroads.map",
+      "header": "MAP 32 32",
+      "sha256": "b394dc8a52bf51c8430ebb4062630532bbe7899f6747806c0f9241664e7d0c1f"
+    },
+    {
+      "path": "maps/new/mc26_delayed_commons.map",
+      "header": "MAP 24 22",
+      "sha256": "176b9b5a606397f24f93eaf0dcbf517abc9e1b411ef2b61e067462080dc821d4"
+    },
+    {
+      "path": "maps/new/mc26_equatorial_belt.map",
+      "header": "MAP 40 20",
+      "sha256": "76e7c9ffd6502bd2b3f38091d303f656d2ba06fb774d15c3c6ea1d1f4865f3f9"
+    },
+    {
+      "path": "maps/new/mc26_far_harbors.map",
+      "header": "MAP 48 36",
+      "sha256": "27b079a28af75391bf41c61cf38412f253c8d5ad2d1c216efcfa6bb328b56aff"
+    },
+    {
+      "path": "maps/new/mc26_nursery_bays.map",
+      "header": "MAP 32 24",
+      "sha256": "df21e490f0ae8e7eeda160f23ce8a11fc176d795c642b948ff3a5992ac49ec30"
+    },
+    {
+      "path": "maps/new/mc26_pinwheel.map",
+      "header": "MAP 34 30",
+      "sha256": "0853b27480020bbeafb4b7104fbd02e8646ad44cf947fad39fbefcfa41bf7551"
+    },
+    {
+      "path": "maps/new/mc26_portal_quartet.map",
+      "header": "MAP 32 28",
+      "sha256": "07b5250b909049739643f34977e6e09e408c03f5b6a67a13f6347e215bb160df"
+    },
+    {
+      "path": "maps/new/mc26_pulse_farms.map",
+      "header": "MAP 22 18",
+      "sha256": "6d50d460f95527c2625e2df811daeef77593b0aa08913ea69da0a58f1b8eec21"
+    },
+    {
+      "path": "maps/new/mc26_relay_depots.map",
+      "header": "MAP 48 32",
+      "sha256": "7b836c08dad32761befa7bb2533402c4833a2fd54e72a47ff75bccc77ecdeb01"
+    },
+    {
+      "path": "maps/new/mc26_scattered_fleets.map",
+      "header": "MAP 42 30",
+      "sha256": "175cbcfbefb936e89be4109d54bb95e8b818569fc756155a438325e62135b172"
+    },
+    {
+      "path": "maps/new/mc26_seam_market.map",
+      "header": "MAP 44 24",
+      "sha256": "7a194752b2615b1ae5e1dc5f085b32573e0c4e0aa8e1b0c5fbe51b0f909f9b7a"
+    },
+    {
+      "path": "maps/new/mc26_spring_wells.map",
+      "header": "MAP 26 22",
+      "sha256": "b111c668c781cbb3c63c89b49fbc6489b1120a059410960cc425ab8a26ddf6d4"
+    },
+    {
+      "path": "maps/new/md26_causeway_detour_s0.map",
+      "header": "MAP 32 24",
+      "sha256": "b456bc59c49b6da25e4d63f5ccd18f114c7b0213941125dc7e19a284cbf7e397"
+    },
+    {
+      "path": "maps/new/md26_causeway_portal_s0.map",
+      "header": "MAP 32 24",
+      "sha256": "00e7e652f5602503e3cbbdcdcbb94e76a4ef091e48b6fc125c673ea82ac8c4b2"
+    },
+    {
+      "path": "maps/new/md26_commons_shared_s0.map",
+      "header": "MAP 24 20",
+      "sha256": "ab0b7775eda3bf0ea5d3fbf836e68045826874b46e6082362010b7a8d1c8c6c4"
+    },
+    {
+      "path": "maps/new/md26_commons_spread_s0.map",
+      "header": "MAP 24 20",
+      "sha256": "728b948e68bb569ecb26dd667b1da981b7b5be42a01ef1e70900a04437f45aa4"
+    },
+    {
+      "path": "maps/new/md26_orchard_narrow_s0.map",
+      "header": "MAP 30 24",
+      "sha256": "3284b8537f1ccea05b7d6bf1e7033ae1bb7a358856ae017a8be4909495f6f6d1"
+    },
+    {
+      "path": "maps/new/md26_orchard_wide_s0.map",
+      "header": "MAP 30 24",
+      "sha256": "0d3570a2c9dc2b70c0cd282bb4ae1f669fa9c9fb7d535687ce72285d62ed693b"
+    },
+    {
+      "path": "maps/new/md26_promenade_ring_s0.map",
+      "header": "MAP 34 28",
+      "sha256": "847a085fc3c58c7b13f5f5c6426071ccbedfd55ec331e6c62f8dae3946da33ff"
+    },
+    {
+      "path": "maps/m2tr/autarky_tr.map",
+      "header": "MAP 18 54",
+      "sha256": "d06bcd8da474b0148329cb23be69d4e6fa4a5b2109c9a7174eec18bfee76473e"
+    },
+    {
+      "path": "maps/m2tr/default_tr.map",
+      "header": "MAP 32 32",
+      "sha256": "f9b46832be9c6fe6dc943399a469218ca3c122a48a834afb070d9a0ef3221b64"
+    },
+    {
+      "path": "maps/m2tr/dilemma_tr.map",
+      "header": "MAP 16 32",
+      "sha256": "c5d3ececf8a60d4efd3840a939617987661a6b7a5dd7b6af7c4aa007eac00629"
+    },
+    {
+      "path": "maps/m2tr/trophy_tr.map",
+      "header": "MAP 25 25",
+      "sha256": "4d682dfb51fa24edf886012d7e22a9d6517fe249c6b2c11ab47d4341a7c1c0c4"
+    },
+    {
+      "path": "maps/var/autarky_tr.map",
+      "header": "MAP 18 54",
+      "sha256": "0f66a6bf3549de5265196ed8561c1a1b6f82e06a8d67f06369991fba560db38a"
+    },
+    {
+      "path": "maps/var/crossroads_tr.map",
+      "header": "MAP 32 32",
+      "sha256": "e25fdacaef8d827dd5d4a7b1c0e77a3cc639b178b88cde455f3accb2fb00ff5a"
+    },
+    {
+      "path": "maps/var/default_tr.map",
+      "header": "MAP 32 32",
+      "sha256": "ebab05c831ca7f3b3c8c1988f3f02a4f8efef4c99b57bb3129f672c4a548a1ec"
+    },
+    {
+      "path": "maps/var/devil_tr.map",
+      "header": "MAP 16 32",
+      "sha256": "f110f3d64012e417fec41ebf909c28156bd9a298ce572e031e60d7e895cb0c47"
+    },
+    {
+      "path": "maps/var/dilemma_tr.map",
+      "header": "MAP 16 32",
+      "sha256": "bbcc4d3f555650a80bb8e41de2d749a34bce2cec90aea2dc65c3937ff3fbbfbf"
+    },
+    {
+      "path": "maps/var/portals_tr.map",
+      "header": "MAP 16 32",
+      "sha256": "ed6b66148da934dc51b1343e814ac42757d22e14b0411cff284181ebb405b5c5"
+    },
+    {
+      "path": "maps/var/queen_of_spades_tr.map",
+      "header": "MAP 35 25",
+      "sha256": "dcec1bd8ccdfb41ce3c5436a045ac5906ed69c6133e6edd63532f301b4d9c37d"
+    },
+    {
+      "path": "maps/var/trauma_tr.map",
+      "header": "MAP 24 48",
+      "sha256": "d3881b9d2187110d063687f7bc95d379185eda7322a3fcdc73de00048dc2b34b"
+    },
+    {
+      "path": "maps/var/trophy_tr.map",
+      "header": "MAP 25 25",
+      "sha256": "f22c5e33b208f3932e53f59861f08be926b3abab3e0be271ef30268a0f384a2c"
+    }
+  ],
+  "map_60x40": [
+    "maps/live/schooltime.map"
+  ],
+  "map_40x60": [],
+  "schooltime": {
+    "asahi-01-cage-cd-e0": {
+      "source": "/Users/alik/Documents/Projects/wt-asahi/build/asahi/runs/asahi-01-cage-cd-e0/c0579163/pool/queen.parquet",
+      "sha256": "e8d9695796ba239eae4ff58e18d7026c54b9a4bcadfad6c028a65c0d3c245f40",
+      "n": 16,
+      "reached_rl": 15,
+      "alive_at_rl": 4,
+      "alive_at_end": 4,
+      "win": 15,
+      "rows": [
+        {
+          "game": "s1__live+schooltime__asahi-01-cage-cd-e0__chaewon-y04-probe",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__asahi-01-cage-cd-e0__fenrir-v18-arrival-ready-beds",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__asahi-01-cage-cd-e0__gavroche-v32-supported-divecap",
+          "side": "A",
+          "queen_end": 3,
+          "reason": "queen",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__asahi-01-cage-cd-e0__hunter-v20-portal-scouts",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__asahi-01-cage-cd-e0__kazuha-s01-swarm-dissolve",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__asahi-01-cage-cd-e0__ouroboros-m01-vibing-mimic",
+          "side": "A",
+          "queen_end": 3,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__asahi-01-cage-cd-e0__sinbad-v07-divecap",
+          "side": "A",
+          "queen_end": 3,
+          "reason": "queen",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__asahi-01-cage-cd-e0__yuna-v05-core",
+          "side": "A",
+          "queen_end": 3,
+          "reason": "queen",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__chaewon-y04-probe__asahi-01-cage-cd-e0",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__fenrir-v18-arrival-ready-beds__asahi-01-cage-cd-e0",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__gavroche-v32-supported-divecap__asahi-01-cage-cd-e0",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__hunter-v20-portal-scouts__asahi-01-cage-cd-e0",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "elimination",
+          "winner": "B",
+          "last_round": 316
+        },
+        {
+          "game": "s1__live+schooltime__kazuha-s01-swarm-dissolve__asahi-01-cage-cd-e0",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__ouroboros-m01-vibing-mimic__asahi-01-cage-cd-e0",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "queen",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__sinbad-v07-divecap__asahi-01-cage-cd-e0",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__yuna-v05-core__asahi-01-cage-cd-e0",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        }
+      ]
+    },
+    "carthage-05-free-sprint": {
+      "source": "/Users/alik/Documents/Projects/wt-asahi/build/asahi/runs/carthage-05-free-sprint/7df05a3f/pool/queen.parquet",
+      "sha256": "9aefd35db010cd8b72b9726cfda5bba4c4d3e3f25953dd1d9b07e89a83b7432d",
+      "n": 16,
+      "reached_rl": 16,
+      "alive_at_rl": 0,
+      "alive_at_end": 0,
+      "win": 14,
+      "rows": [
+        {
+          "game": "s1__live+schooltime__carthage-05-free-sprint__chaewon-y04-probe",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__carthage-05-free-sprint__fenrir-v18-arrival-ready-beds",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__carthage-05-free-sprint__gavroche-v32-supported-divecap",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__carthage-05-free-sprint__hunter-v20-portal-scouts",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__carthage-05-free-sprint__kazuha-s01-swarm-dissolve",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__carthage-05-free-sprint__ouroboros-m01-vibing-mimic",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "queen",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__carthage-05-free-sprint__sinbad-v07-divecap",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__carthage-05-free-sprint__yuna-v05-core",
+          "side": "A",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__chaewon-y04-probe__carthage-05-free-sprint",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__fenrir-v18-arrival-ready-beds__carthage-05-free-sprint",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__gavroche-v32-supported-divecap__carthage-05-free-sprint",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__hunter-v20-portal-scouts__carthage-05-free-sprint",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__kazuha-s01-swarm-dissolve__carthage-05-free-sprint",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__ouroboros-m01-vibing-mimic__carthage-05-free-sprint",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "queen",
+          "winner": "A",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__sinbad-v07-divecap__carthage-05-free-sprint",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        },
+        {
+          "game": "s1__live+schooltime__yuna-v05-core__carthage-05-free-sprint",
+          "side": "B",
+          "queen_end": 0,
+          "reason": "longest",
+          "winner": "B",
+          "last_round": 499
+        }
+      ]
+    }
+  },
+  "rating_lookup": {
+    "source_sha256": "39197f404e8d0ea28cd6b793be286930c7c3597b98e225147266700a71cccf10",
+    "checks": [
+      {
+        "name": "before",
+        "expected": null,
+        "actual": null,
+        "pass": true
+      },
+      {
+        "name": "exact",
+        "expected": 1700,
+        "actual": 1700,
+        "pass": true
+      },
+      {
+        "name": "between",
+        "expected": 1700,
+        "actual": 1700,
+        "pass": true
+      },
+      {
+        "name": "later",
+        "expected": 1710,
+        "actual": 1710,
+        "pass": true
+      }
+    ]
+  },
+  "p2": {
+    "scorer_sha256": "d298a6e7f60b140da5709324ee7deffcb4aacfd878402f109a49d6d6a22d5920",
+    "spec_sha256": "15d79683518cf704a8cb7680ef1fa55acd8bdaef2bc97b694f40db742ea0d07d",
+    "claim_exists": false
+  },
+  "proposal_sha256": "46da2e257af22607dfa2c0b0e77afe1c7499391f44f63ba8ca260045abeb53af"
+}
