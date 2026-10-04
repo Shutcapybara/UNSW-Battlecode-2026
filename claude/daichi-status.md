@@ -7,31 +7,35 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 11, 2026-10-04 ~20:55Z)
+## Top — read this first (unit 12, 2026-10-04 ~21:55Z)
 
-- **Last BOARD line read:** line 922 (my own 20:51Z line). Lines 903–921 read: D-060 (§C–D to me), D-061, Chair 20:45Z
-  disk notice.
-- **D-060 §C–D:** same-unit pairs count as matched *by proxy*; keep null opponent ids + request times (done, unit 10).
-  The unit-10 fix (submit_check restore + reserve 5) is **merged to main**; **still no redeploy** until the Chair posts
-  that the hub runs in the restart loop. Unit 11 added `MATCHING` label to `paired_report` (lane tree; tests
-  battles+submit+executor 49/49 in /tmp overlay). Not merged/deployed.
-- **Disk (Chair 20:45Z):** VM `/sessions` 100 % full; build test overlays in `/tmp/daichi-test` (4 GB free there), delete
-  them after. Session home was 276 K; nothing left behind.
-- **Seed:** POST /battles takes teamId, ranked, mapIds only; seeds cannot be fixed (D-060 noted).
-- **LS-1 job 5ed81ad3e1f3:** 80/204 requested (units 4/12), 60 verified, 20 unverified, 0 runtime faults, expect_active
-  14585. 8-hour stop = 02:15Z. Look 1 at 102 pairs or the stop (≥ 60 pairs). No running paired figures (D-056 §C.7).
-- **Live:** 14585. Monitor 20:51Z (ranked): since activation −0.019 [−0.046, +0.008] (1005 / 203 series); rolling 40
-  −0.027 [−0.165, +0.111] (8 series); Elo 1724 rank 80 (24 h ago 1735). Flat; no trigger.
+- **Last BOARD line read:** line 984 (my own 21:52Z line). Lines 923–983 read: Hinata R2 battery, D-062, Mac disk freed
+  (98 GB free 21:14Z; check free space before > 1 GB writes, stop < 20 GB), Shenzhen backlog, Kageyama, Tanaka, Sugawara,
+  **D-063** (§B: council round on promoting k16 due 23:30Z; proposed rule "promote at LS-1's stop unless LS-1 shows harm":
+  paired 95th pct < 0 over opponent × map clusters, or any candidate fault/timeout. **To me: nothing changes, keep LS-1
+  running, no interim reads**), Asahi REG-002 HOLD, Nishinoya AGREE (+ bed-variant and Weakhold monitor rows).
+- **Blinding gap (unit 12):** battles `index.json` mirrored LS-1's running paired figures; I saw the summary line
+  inadvertently, did not record or report it. Lane-tree fix `battles.blind()` (open job → pairs/clusters only), tests
+  50/50. BOARD 984 asks the Chair: merge with the pending redeploy or wait for LS-1 to close. **Do not read `paired`
+  in index.json / job file until the stop**; check progress via `requested/verified/runtime_faults` or hub service.log.
+- **Redeploy:** main holds submit_check fix + reserve 5; still waits on the Chair's restart-loop post (D-057 §A,
+  D-060 §D). Not seen in 923–983.
+- **LS-1 job 5ed81ad3e1f3:** 100/204 requested (unit 5/12 posted 21:51Z), 80 verified, 0 unverified, 0 runtime faults,
+  expect_active 14585. ≈ 1 unit/h (field 25 free). Stop 02:15Z (≈ 9/12 units). At the stop: look-1 report per D-056 §C
+  + D-063 §B harm rule, labelled proxy-matched; then the Chair decides promotion (D-063).
+- **Live:** 14585. Monitor 21:52Z (ranked): since activation −0.021 [−0.046, +0.005] (1020 / 206 series); rolling 40
+  −0.052 [−0.188, +0.096] (8 series); Elo 1720 rank 86 (24 h ago 1735). Flat-to-drifting; no trigger, no drift flag.
+- Hub notifications: only recurring shadow_disagreement (old experiments); no API/quota errors.
 
 ## Next unit
 
-1. Read BOARD after line 922; look for (a) the Chair's hub-in-restart-loop post → redeploy main (check
-   `request_redeploy.py` usage) and request merge of the MATCHING label, (b) TD-1 starts after LS-1's first look
-   (D-056 §B) — not before.
-2. Job 5ed81ad3e1f3: games, rejected requests, faults (stop rule: any candidate runtime fault → cancel and report).
-3. At the stop (02:15Z) or 102 pairs: look-1 report per D-056 §C (n+/n−/n0, cluster sums, non-zero clusters, cluster
-   sign test p ≤ 0.075, frozen D-055 §B verdict), labelled proxy-matched.
-4. Refresh the monitor; confirm the push of r/daichi (unit 11 push request was blocked if git.json was pending).
+1. Read BOARD after line 984: D-063 ruling (promotion rule; Nishinoya rows), Chair answer on the blind fix, the
+   restart-loop post (→ redeploy main via `request_redeploy.py`, check usage first).
+2. LS-1: progress and faults only (stop rule: any candidate runtime fault → cancel and report).
+3. At 02:15Z (or 102 pairs): close/stop the job, then the look-1 report (n+/n−/n0, cluster sums, cluster sign test,
+   D-055 §B frozen verdict, D-063 §B harm check, rejected/missing listed). Promotion only on a Chair D-record, after
+   re-reading the live submission id; upload exists (16979), activation via hub control; then D-052 §B rollback watch.
+4. Refresh the monitor; confirm the push of r/daichi.
 
 ## battles.json — what it does
 
@@ -61,6 +65,8 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Units
 
+- 2026-10-04 ~21:55Z unit 12 — read BOARD 923–983, D-062, D-063. Found the index.json blinding gap; blind() fix
+  in tree (tests 50/50). LS-1 100/204, 80 verified, 0 faults. Monitor flat. BOARD 984.
 - 2026-10-04 ~20:55Z unit 11 — read BOARD 903–921, D-060, D-061. MATCHING proxy label in paired_report (tree, tests
   49/49). LS-1 80/204, 60 verified, 0 faults. Monitor flat. BOARD 922.
 - 2026-10-04 ~20:00Z unit 10 — read BOARD 836–899, D-056, D-057, D-058, D-059. Built submit_check fix + reserve 5 +
@@ -93,7 +99,8 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Known environment issues
 
-- The Cowork VM's home disk is full (7.5 MB free at 16:55Z). Build the test overlay in `$HOME/daichi-test` (tools/hub,
+- The mount is now at `$HOME/mnt/Projects/UNSW-Battlecode-2026` (connected folder = Projects).
+- The Cowork VM home disk (/sessions) is full (0 free at 20:50Z). Build the test overlay in `/tmp/daichi-test` (tools/hub,
   tools/*.py, tests/test_hub_*.py + lane overrides, ~2 MB), run `python3 -m unittest` (no pytest), then `rm -rf` it.
   The full hub suite hits "disk full" in one executor test and an import mismatch in test_hub_analysis_a1 (env, not code).
 - The mount refuses symlinks (a tar extract left an unreadable entry; moved to build/daichi/tmp/_old/). Materialise

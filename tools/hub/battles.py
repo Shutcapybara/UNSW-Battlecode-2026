@@ -367,6 +367,17 @@ def paired_report(games, arms, resamples=1000, seed=7):
                 interval='cluster bootstrap over opponents, 1000 resamples, seed 7, 5th/95th percentile', matching=MATCHING)
 
 
+def blind(report, job_status):
+    """D-056 §C.7 / D-063 §B: no interim reads. While a job is open the mirrored summary carries only the pair and
+    cluster counts (for the look schedule); delta, interval and per-opponent figures appear once the job is closed.
+    Per-game rows still carry scores, so the job file is not a blind store; it just stops showing a running figure."""
+    if report is None or job_status != 'open':
+        return report
+    return dict(reference=report['reference'], candidate=report['candidate'], pairs=report['pairs'],
+                clusters=report.get('clusters', 0), withheld='open job: no interim paired figures (D-056 §C.7, D-063 §B)',
+                matching=report.get('matching'))
+
+
 def request_counts(conn, jid):
     """Per-job request rows by status, so server-rejected units are visible in the index (a rejected unit is
     attempted once and leaves unpaired cells; it is reported here, never counted as a loss)."""
@@ -392,7 +403,7 @@ def status(conn, mirror):
                        expect_active=job['expect_active'], units=f"{job['next_unit']}/{len(job['units'] or [])}",
                        planned=job['body'].get('planned_games'), requested=len(games), verified=sum(g['verified'] for g in games),
                        unverified=sum(1 for g in games if not g['verified']), runtime_faults=sum(1 for g in games if (g['faults'] or 0) or (g['caught_errors'] or 0)),
-                       paired=paired_report(games, arms), **request_counts(conn, job['id']))
+                       paired=blind(paired_report(games, arms), job['status']), **request_counts(conn, job['id']))
         index['jobs'].append(summary)
         (out_dir / f"{job['id']}.json").write_text(json.dumps(dict(summary, request=job['body'], games=games), indent=1, default=str))
     (out_dir / 'index.json').write_text(json.dumps(index, indent=1, default=str))
