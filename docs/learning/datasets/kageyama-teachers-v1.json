@@ -1,0 +1,169 @@
+{
+ "version": 1,
+ "rule": "Teacher side list for BC (macro \u00a75): post-m2 RANKED games of the current top ten, train split only (D-046/D-049\nvia splits v2), one row per teacher side, with Elo x recency weights. Unranked games are excluded outright (decoys\nlive there, and ranked/unranked are separate populations).",
+ "args": {
+  "top": 10,
+  "half_life_days": 2.0,
+  "split_file": "build/learn/splits/games_split_v2.parquet"
+ },
+ "sides": 1925,
+ "games": 1735,
+ "on_disk": 1925,
+ "sha256_game_side": "547791b78133bc5a0706456a94f02e7b700639732ed3da89c32834fbd26e96a4",
+ "file": "build/learn/kageyama/teachers_v1.parquet",
+ "teams": [
+  {
+   "crank": 1,
+   "team": "91",
+   "sides": 139,
+   "on_disk": 139,
+   "win": 0.727,
+   "weight": 99.2
+  },
+  {
+   "crank": 2,
+   "team": "306",
+   "sides": 210,
+   "on_disk": 210,
+   "win": 0.657,
+   "weight": 140.4
+  },
+  {
+   "crank": 3,
+   "team": "264",
+   "sides": 199,
+   "on_disk": 199,
+   "win": 0.693,
+   "weight": 126.8
+  },
+  {
+   "crank": 4,
+   "team": "213",
+   "sides": 185,
+   "on_disk": 185,
+   "win": 0.73,
+   "weight": 123.4
+  },
+  {
+   "crank": 5,
+   "team": "507",
+   "sides": 119,
+   "on_disk": 119,
+   "win": 0.731,
+   "weight": 79.8
+  },
+  {
+   "crank": 6,
+   "team": "952",
+   "sides": 265,
+   "on_disk": 265,
+   "win": 0.589,
+   "weight": 173.5
+  },
+  {
+   "crank": 7,
+   "team": "566",
+   "sides": 138,
+   "on_disk": 138,
+   "win": 0.659,
+   "weight": 90.1
+  },
+  {
+   "crank": 8,
+   "team": "842",
+   "sides": 219,
+   "on_disk": 219,
+   "win": 0.653,
+   "weight": 152.4
+  },
+  {
+   "crank": 9,
+   "team": "19",
+   "sides": 240,
+   "on_disk": 240,
+   "win": 0.575,
+   "weight": 124.4
+  },
+  {
+   "crank": 10,
+   "team": "55",
+   "sides": 211,
+   "on_disk": 211,
+   "win": 0.602,
+   "weight": 118.6
+  }
+ ],
+ "maps": [
+  {
+   "map": "Around UNSW",
+   "sides": 146,
+   "weight": 93.9
+  },
+  {
+   "map": "Australia",
+   "sides": 140,
+   "weight": 96.9
+  },
+  {
+   "map": "Default",
+   "sides": 128,
+   "weight": 79.9
+  },
+  {
+   "map": "Devil",
+   "sides": 132,
+   "weight": 80.8
+  },
+  {
+   "map": "Islands",
+   "sides": 137,
+   "weight": 90.8
+  },
+  {
+   "map": "Portals",
+   "sides": 134,
+   "weight": 83.6
+  },
+  {
+   "map": "Prisoners Dilemma",
+   "sides": 140,
+   "weight": 86.2
+  },
+  {
+   "map": "Queen Of Spades",
+   "sides": 136,
+   "weight": 85.1
+  },
+  {
+   "map": "Schooltime",
+   "sides": 157,
+   "weight": 95.1
+  },
+  {
+   "map": "Slithery Fight",
+   "sides": 171,
+   "weight": 109.1
+  },
+  {
+   "map": "Stripes",
+   "sides": 114,
+   "weight": 71.4
+  },
+  {
+   "map": "Tower Defense",
+   "sides": 117,
+   "weight": 79.5
+  },
+  {
+   "map": "Trophy",
+   "sides": 139,
+   "weight": 86.2
+  },
+  {
+   "map": "weakhold",
+   "sides": 134,
+   "weight": 90.3
+  }
+ ],
+ "note": "Team names are data. Ladder snapshot = teams.parquet at build time (cranks move; rebuild weekly)."
+}
