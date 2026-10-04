@@ -1,0 +1,82 @@
+games 96/96 in 28s
+{"who": "opp", "gid": 855485, "map": "Portals", "r": 20, "rel": "ally", "mover": 1, "mutual": 1, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "opp", "gid": 852026, "map": "Slithery Fight", "r": 34, "rel": "ally", "mover": 0, "mutual": 0, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "opp", "gid": 852912, "map": "Trauma", "r": 45, "rel": "ally", "mover": 0, "mutual": 0, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "opp", "gid": 879159, "map": "Portals", "r": 64, "rel": "ally", "mover": 0, "mutual": 0, "ql": 18, "kl": 18, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 1}
+{"who": "opp", "gid": 869498, "map": "Trauma", "r": 69, "rel": "ally", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "opp", "gid": 856196, "map": "Devil", "r": 17, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "opp", "gid": 860206, "map": "Prisoners Dilemma", "r": 22, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "opp", "gid": 856190, "map": "Trophy", "r": 26, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "opp", "gid": 852029, "map": "Trophy", "r": 30, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "opp", "gid": 855922, "map": "Stripes", "r": 34, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "opp", "gid": 869502, "map": "Queen Of Spades", "r": 39, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": null, "fore": 0, "kdist": null, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "opp", "gid": 857671, "map": "Around UNSW", "r": 46, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "opp", "gid": 860198, "map": "Stripes", "r": 53, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "opp", "gid": 852486, "map": "Slithery Fight", "r": 54, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "opp", "gid": 866445, "map": "Islands", "r": 56, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "opp", "gid": 852909, "map": "Queen Of Spades", "r": 64, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "opp", "gid": 860316, "map": "Australia", "r": 65, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "opp", "gid": 857669, "map": "Tower Defense", "r": 77, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "opp", "gid": 870343, "map": "Around UNSW", "r": 79, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "opp", "gid": 870342, "map": "Islands", "r": 104, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "opp", "gid": 852618, "map": "Trophy", "r": 105, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "opp", "gid": 870340, "map": "Default", "r": 109, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "opp", "gid": 858822, "map": "Autarky", "r": 115, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "opp", "gid": 857673, "map": "weakhold", "r": 129, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "opp", "gid": 852484, "map": "Autarky", "r": 131, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 4, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "opp", "gid": 869495, "map": "Australia", "r": 142, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "opp", "gid": 881972, "map": "Default", "r": 150, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "opp", "gid": 852487, "map": "Devil", "r": 176, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 6, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "opp", "gid": 866877, "map": "Devil", "r": 177, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "opp", "gid": 852615, "map": "Default", "r": 189, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "opp", "gid": 871630, "map": "Around UNSW", "r": 194, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 1}
+{"who": "opp", "gid": 866875, "map": "Autarky", "r": 207, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 4, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "opp", "gid": 857674, "map": "Maze", "r": 211, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "opp", "gid": 881386, "map": "Stripes", "r": 214, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "opp", "gid": 866888, "map": "Trophy", "r": 262, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "opp", "gid": 860828, "map": "Trauma", "r": 488, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 24, "kl": 4, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "us", "gid": 853550, "map": "Slithery Fight", "r": 315, "rel": "ally", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "us", "gid": 869494, "map": "Prisoners Dilemma", "r": 14, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 0, "kdist": 5, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 858820, "map": "Prisoners Dilemma", "r": 15, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 860206, "map": "Prisoners Dilemma", "r": 16, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": null, "fore": 0, "kdist": null, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 881387, "map": "Default", "r": 26, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 3, "fore": 0, "kdist": 3, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 869502, "map": "Queen Of Spades", "r": 28, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 852615, "map": "Default", "r": 29, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "us", "gid": 857675, "map": "Prisoners Dilemma", "r": 33, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "us", "gid": 852487, "map": "Devil", "r": 36, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "us", "gid": 870347, "map": "Prisoners Dilemma", "r": 37, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 4, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "us", "gid": 860202, "map": "Around UNSW", "r": 38, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 856196, "map": "Devil", "r": 41, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 4, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "us", "gid": 866888, "map": "Trophy", "r": 50, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 852029, "map": "Trophy", "r": 55, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "us", "gid": 866446, "map": "Around UNSW", "r": 55, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "us", "gid": 858822, "map": "Autarky", "r": 58, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "us", "gid": 866874, "map": "Australia", "r": 62, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": null, "fore": 0, "kdist": null, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 870342, "map": "Islands", "r": 74, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 860203, "map": "Trophy", "r": 78, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "us", "gid": 858817, "map": "Trophy", "r": 79, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 855430, "map": "Prisoners Dilemma", "r": 81, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "us", "gid": 852909, "map": "Queen Of Spades", "r": 84, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 881972, "map": "Default", "r": 84, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 858816, "map": "Around UNSW", "r": 89, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 5, "fore": 0, "kdist": 5, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 881395, "map": "Australia", "r": 90, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "us", "gid": 858335, "map": "Islands", "r": 105, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "us", "gid": 860198, "map": "Stripes", "r": 105, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "us", "gid": 860316, "map": "Australia", "r": 107, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 853541, "map": "Around UNSW", "r": 109, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "us", "gid": 852484, "map": "Autarky", "r": 117, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "us", "gid": 857671, "map": "Around UNSW", "r": 118, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 6, "kl": 3, "fore": 0, "kdist": 3, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 880465, "map": "Slithery Fight", "r": 120, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 4, "fore": 0, "kdist": 3, "kdied": 1, "alt4": 1, "nalt": 3}
+{"who": "us", "gid": 871630, "map": "Around UNSW", "r": 131, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "us", "gid": 855922, "map": "Stripes", "r": 139, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "us", "gid": 871638, "map": "Trauma", "r": 139, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "us", "gid": 857669, "map": "Tower Defense", "r": 152, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 2, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "us", "gid": 866445, "map": "Islands", "r": 173, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 1}
+{"who": "us", "gid": 871629, "map": "Islands", "r": 178, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 1}
+{"who": "us", "gid": 869498, "map": "Trauma", "r": 180, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 4, "fore": 0, "kdist": 4, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "us", "gid": 869495, "map": "Australia", "r": 210, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 2, "kl": 3, "fore": 0, "kdist": 2, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "us", "gid": 855487, "map": "Trauma", "r": 224, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+{"who": "us", "gid": 870340, "map": "Default", "r": 281, "rel": "enemy", "mover": 1, "mutual": 1, "ql": 3, "kl": 2, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 1, "nalt": 2}
+{"who": "us", "gid": 866886, "map": "Tower Defense", "r": 441, "rel": "enemy", "mover": 0, "mutual": 0, "ql": 7, "kl": 3, "fore": 1, "kdist": 1, "kdied": 1, "alt4": 0, "nalt": 0}
+us {'n': 43, 'enemy': 42, 'mover': 9, 'mutual': 9, 'fore': 21, 'fore&alt4': 11, 'alt4': 32, 'q_shorter': 16, 'q_equal': 20, 'q_longer': 5, 'enemy_fore&alt4': 10, 'kdist2': 14, 'kdied': 43, 'range2+&kdied': 20, 'kdist1': 21, 'kdist3': 3, 'kdist5': 2, 'kdistNone': 2, 'kdist4': 1, 'ally': 1, 'ally_fore&alt4': 1}
+opp {'n': 36, 'enemy': 31, 'mover': 16, 'mutual': 16, 'fore': 31, 'fore&alt4': 19, 'alt4': 24, 'q_shorter': 0, 'q_equal': 18, 'q_longer': 17, 'enemy_fore&alt4': 17, 'kdist1': 31, 'kdied': 36, 'range2+&kdied': 4, 'ally': 5, 'ally_fore&alt4': 2, 'kdist2': 4, 'kdistNone': 1}
