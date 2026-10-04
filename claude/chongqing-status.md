@@ -5,7 +5,12 @@ Worktree `../wt-chongqing` (Mac, via the Cowork VM; `build/` and `public_replays
 hour off, repeat (user's instruction, to conserve credits). No API calls; GPT's analyst pulls replays this wave, so this
 lineage only decodes what the hub collector has already written.
 
-## Top — read this first (2026-10-04 04:30 UTC)
+## Top — read this first (2026-10-04 05:55 UTC)
+
+- **Unit 5:** store 51,233 (a native Mac decode ran ~05:00–05:18Z; post-m2 7,030/13,439; VM batches stopped). Reference-grade
+  post-m2 tables: queen alive at RL end monotone in rank (top10 0.413, r11–30 0.348, r31–50 0.283, 51+ 0.254, us 0.000);
+  per-map table (Trauma 84 % queen-decided, field 0.62); opening r50 top-10 − us total 0.49 / splits 0.46 / units 0.41 /
+  bed 0.40 (agrees with Shenzhen). q_len/q_death_round indexing fixed (Himeji H23-03). L49 → 0.8 proposed.
 
 - **Unit 4:** D-043 read (`maps/live/`, `LIVE_MAPS_M2`, parent carthage-05; byte identity done by Nara/Shenzhen/Himeji; Nara takes the
   per-hash queen gap, Himeji the loss-share intervals). `q_len@k` semantics fixed (NULL past game end, `q_censored`; Himeji H19-05).
@@ -61,8 +66,8 @@ lineage only decodes what the hub collector has already written.
 ## Queue (next units, in order)
 
 1. Decode post-m2 (top-ten sides first) every unit; republish CORPUS.md; refresh the post-m2 ranked table.
-2. New-map norms: per (map, map_era) field medians/SDs for the series/sides views once ≥ 300 games per new map; then the
-   opening components (S-1 Q3) top-10 − us on post-m2, per map and Esquie cluster (clusters need re-checking on the new maps).
+2. Transits@50 (series table) to complete the r50 component table; then per-map and per-cluster (Esquie clusters need re-checking
+   on the new maps) opening rows; new-map norms for the series views (q.py machinery is too slow over the mount — lean version in qq).
 3. Per-map post-m2 queen hazard (death round/cause by map_hash and seat) — the geometry half for the testers.
 4. Queen backfill of old-map games only if someone needs q_len on old maps (deprioritised).
 5. Readings of tester results as they land; answer board questions addressed to me.
@@ -73,6 +78,8 @@ lineage only decodes what the hub collector has already written.
 - 2026-10-03 23:00 UTC — ladder reset found; `build.py games` patched; decode wrapper; first batches (team 7).
 - 2026-10-03 23:20 UTC — queen columns added to `sides`; `qq.py` connector.
 - 2026-10-04 00:20 UTC — unit 1 published: finding, TARGETS § chongqing, CORPUS.md, board C1-01…07. Sleeping one hour.
+- 2026-10-04 05:55 UTC — unit 5: H23-03/04 fixes; qprobe.py; post-m2 reference tables on 7,000 games; finding 5; TARGETS unit-5
+  section; board C5-01…06. Sleeping one hour.
 - 2026-10-04 04:30 UTC — unit 4: D-043 read; q_len semantics fix; board C4-01…04; decode stalled (VM 3.9 s/game); merge of
   origin/main abandoned (mount too slow); no new tester results to read. Sleeping one hour.
 - 2026-10-04 03:25 UTC — unit 3: per-new-map queen hazard table; the cull mechanism (C3-01), H-C5/H-C6; readings Rome 03/04;

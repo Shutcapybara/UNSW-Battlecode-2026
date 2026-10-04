@@ -386,3 +386,22 @@ Source: `docs/findings/2026-10-04-chongqing-unit3-new-map-queen-hazard-and-cull.
 
 **Row for the gate's queen column:** judge queen arms on the nine queen maps (Schooltime, Trauma, Portals, Maze, Slithery, weakhold,
 Around UNSW, Australia, Islands), not on the eight others; RL-share-weighted.
+
+## chongqing (unit 5) — 2026-10-04 05:55 UTC — era `post-m2`, ranked, 7,030 new-map games; cohorts = ladder 05:17Z — **reference grade**
+
+Source: `docs/findings/2026-10-04-chongqing-unit5-post-m2-references.md`. Supersedes the unit-3 per-map table (same columns, 6×
+the sample; Himeji's release criteria met on 16/18 map labels). Refreshed each unit as the decode completes.
+
+| cluster / map | phase | metric | top-10 | field r11–50 | us (carthage-05) | target | query |
+|---|---|---|---|---|---|---|---|
+| all | end | queen alive at RL end (ranked) | **0.413** (1,362 RL) | 0.283–0.348 | **0.000** (65) | ≥ 0.41 = top-ten median; ≥ 0.35 clears the second tier | `qs` §1 |
+| all | end | RL games decided by the queen | 0.452 | 0.42–0.44 | 0.308 (all lost) | queen-decided losses → 0 | `qs` |
+| Schooltime | end | queen alive (cage) | 0.884 | 0.86 (field) | 0.000 | ≥ 0.86 (H-H3 / H-SZ1) | `qs` §2 |
+| Trauma | end | queen alive; RL queen-decided | 0.779; 0.84 | 0.62 | 0.000 | ≥ 0.62 — the highest-value queen map | `qs` §2 |
+| Portals / Slithery / Maze / weakhold | end | queen alive | 0.33 / 0.33 / 0.37 / 0.36 | 0.24 / 0.25 / 0.25 / 0.28 | 0 | ≥ field (H-C5 first: our deaths there are 62–100 % wall) | `qs` §2 |
+| Australia / Around UNSW / Islands / Default | end | queen alive (contact maps) | 0.29 / 0.29 / 0.22 / 0.16 | 0.18 / 0.19 / 0.09 / 0.11 | 0 | ≥ field; mechanism is exposure count (die later), not a different death | `qs` §2–3 |
+| Devil / Trophy / Stripes | — | RL share ≤ 0.10 | — | — | — | no queen target (elimination maps) | `qs` |
+| all | r50 | **top-10 − us, z vs per-map field**: total / splits / units / bed pearls / pearls / territory | +0.28 / +0.30 / +0.27 / +0.28 / +0.27 / +0.16 | — | −0.21 / −0.16 / −0.14 / −0.12 / −0.12 / +0.07 | gaps **0.49 / 0.46 / 0.41 / 0.40 / 0.39 / 0.09**; transits pending (series) | finding §4 |
+
+Agreement: Shenzhen's live r50 gaps (total 0.47, units 0.40, splits 0.38, bed 0.33) and Himeji's queen 0/60 vs 251/629 both
+reproduce here. Disagreement retained: Antioch's panel-based total gap 0.18 measures the pool panel, not the ladder.
