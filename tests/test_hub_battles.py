@@ -168,6 +168,11 @@ class BattlesTest(unittest.TestCase):
         p = job['paired']
         self.assertEqual((p['reference'], p['candidate']), (INC, CAND))
         self.assertEqual(p['pairs'], 2 * len(MAPS) * 2)
+        if job['status'] == 'open':   # D-063 §B: no interim figures while the job runs
+            self.assertNotIn('delta', p)
+            self.assertIn('withheld', p)
+            self.request(dict(action='cancel', job=jid, by='chair'))
+            p = battles.status(self.conn, self.mirror)['jobs'][0]['paired']
         self.assertEqual(p['delta'], 1.0)
         self.assertTrue((self.mirror / 'battles' / f'{jid}.json').exists())
         self.assertNotIn('rejected', job['requests'])
@@ -189,6 +194,15 @@ class BattlesTest(unittest.TestCase):
         p = battles.paired_report(games, [INC, CAND])
         self.assertEqual(p['pairs'], 1)
         self.assertEqual(p['delta'], -1.0)
+
+    def test_open_job_report_is_blind(self):
+        r = dict(reference=INC, candidate=CAND, pairs=4, clusters=2, delta=0.5, lo5=0.1, hi95=0.9, per_opponent={}, matching='m')
+        b = battles.blind(r, 'open')
+        self.assertEqual((b['pairs'], b['clusters']), (4, 2))
+        for k in ('delta', 'lo5', 'hi95', 'per_opponent'):
+            self.assertNotIn(k, b)
+        self.assertEqual(battles.blind(r, 'closed'), r)
+        self.assertIsNone(battles.blind(None, 'open'))
 
     def test_actuator_round_trip(self):
         from tools.hub import actuator
