@@ -1,0 +1,17 @@
+{
+  "source_sha256": "6bb33fd775768eafdaf38c287ce1853f45e8852d2e40acd5077502f3fec8c51c",
+  "patch_sha256": "6fd3442be7f7efef0620fddf8866bbe6ab62cdb76b634e93dd8f2d04ff2d7ca9",
+  "checks": [
+    "default excludes own",
+    "opt-in includes own preserving explicit target",
+    "empty ladder own enabled",
+    "missing own ID safe",
+    "stale under-target own then leader",
+    "fresh own yields priority"
+  ],
+  "deployed": false,
+  "activation": {
+    "corpus.include_own_team": true
+  },
+  "limits": "Existing reserve/cap/budget/should_yield unchanged. Finite cadence priority; public discovery may lag and must be verified. Known historical missing IDs need separate bounded backfill through sole collector."
+}

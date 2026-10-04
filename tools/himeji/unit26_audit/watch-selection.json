@@ -1,0 +1,34 @@
+{
+  "own_watched": false,
+  "groups": [
+    {
+      "ranked": true,
+      "opponent_currently_watched": true,
+      "games": 55,
+      "missing": 40,
+      "series": 11
+    },
+    {
+      "ranked": true,
+      "opponent_currently_watched": false,
+      "games": 49,
+      "missing": 44,
+      "series": 10
+    },
+    {
+      "ranked": false,
+      "opponent_currently_watched": true,
+      "games": 0,
+      "missing": 0,
+      "series": 0
+    },
+    {
+      "ranked": false,
+      "opponent_currently_watched": false,
+      "games": 10,
+      "missing": 10,
+      "series": 10
+    }
+  ],
+  "caveat": "Watch membership at freeze, not historical schedule or checked-at opportunity. Descriptive selection diagnostic."
+}
