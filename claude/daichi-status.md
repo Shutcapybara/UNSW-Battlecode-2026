@@ -9,7 +9,9 @@ STATUS: RUNNING
 
 ## Top — read this first (unit 22, 2026-10-05 ~08:15Z)
 
-- **Last BOARD line read:** 1317 (Asahi 07:41Z var block). My line 1318 (trial-1 look). Next unit reads from 1320.
+- **Last BOARD line read:** 1325 (Chair D-078, 08:19Z). My lines 1318 (trial-1 look), 1326 (trial 2 live), 1327 (D-078 A/B answers). Next unit reads from 1328.
+- **BOARD was overwritten 08:17Z by a stale bridge write (old Bokuto session); Chair restored it.** Append with >> only.
+- **D-078 §C tie rule:** between the two trial bots the windows decide only if they differ by > 0.10; else the pool decides → bokuto-13-cull. Vs 14585 reference: lead > 0.03 as before.
 - **D-077 (07:25Z):** trial 2 = `bokuto-13-cull`; 14585 control window dropped (reference = 14585's last 120 ranked before
   02:13Z, −0.043 @1725). **At trial 2's look: the highest primary statistic among 17388's 60-game window (+0.074),
   trial 2's 60-game window and the reference (−0.043) becomes incumbent at once and stays live; a lead under 0.03 keeps
@@ -18,12 +20,12 @@ STATUS: RUNNING
 - **Trial 1 closed (60 games / 12 series, 05:02–07:13Z):** 17388 +0.074 [−0.048, +0.197] @1725, perf 1781, W–L 31–29,
   vs ref +0.117 [−0.018, +0.269]; queen-rule losses 7/60, 0 faults; 0 Schooltime games. Posted BOARD 1318.
 - **Trial 2:** `bokuto-13-cull` byte copy in build/daichi/stage/bokuto-13-cull (+ CANDIDATE.toml), runtime d192d721c406…
-  = Asahi probe; registered 08:01Z (hub fp 877fa2c915a6). **Live = 17530** (LV-bokuto-13-cull-877fa2c9-ai), uploaded 08:14:33Z, activated 08:20:43Z; BOARD 1319.
+  = Asahi probe; registered 08:01Z (hub fp 877fa2c915a6). **Live = 17530** (LV-bokuto-13-cull-877fa2c9-ai), uploaded 08:14:33Z, first ranked series 08:15:41Z (server auto-activated; explicit activation 08:20:43Z true); BOARD 1326.
 - No API/quota errors in *.done.json.
 
 ## Next unit
 
-1. Read BOARD from 1320. Confirm active = 17530 (status.json was stale at 08:13Z when activation returned true) (409 while compiling is
+1. Read BOARD from 1328. Active = 17530 confirmed (first ranked series 08:15:41Z = trial-2 window start) (409 while compiling is
    normal; server auto-activates). If the upload was deferred (blackout / series in flight), resubmit submit.json.
 2. live_monitor. Trial-2 interim (`trial_d075.py --ref 14585:2026-10-05T02:13:00Z:120 --sub <id> --maxgames 60`).
    sidescan2 must run in chunks of ≤ 30 ids (170 s limit; background jobs die with the shell).
@@ -38,7 +40,7 @@ STATUS: RUNNING
 
 ## Units
 
-- 2026-10-05 ~08:15Z unit 22 — read BOARD 1263–1317 (D-077). Trial-1 look posted (1318). bokuto-13-cull copied, fingerprint-checked, registered; uploaded as 17530 (08:14Z) and activated 08:20Z; BOARD 1318, 1319.
+- 2026-10-05 ~08:15Z unit 22 — read BOARD 1263–1325 (D-077, D-078). Trial-1 look posted (1318). bokuto-13-cull copied, fingerprint-checked, registered; uploaded as 17530 (08:14Z) and activated (first series 08:15:41Z); BOARD 1318, 1326, 1327 (Schooltime in draw: 145/2,249 ranked since 05Z). User notified. Push requested after the Chair merge git.json cleared.
 - 2026-10-05 ~06:55Z unit 21 — read BOARD 1226–1262 (D-076). Trial 1 at 55 games +0.079 @1725, vs ref +0.121; 0 faults.
   Waiting for the 60-game boundary and Asahi's 13-cull pool (D-076 §B). No BOARD line (no result yet).
 - 2026-10-05 ~05:57Z unit 20 — read BOARD 1213–1224, D-075. trial_d075.py written; 17388 interim 25 games +0.075 @1725; anchor correction; bokuto-04 staged + fingerprint verified; BOARD 1225.
