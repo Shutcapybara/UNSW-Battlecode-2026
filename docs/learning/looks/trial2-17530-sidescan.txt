@@ -1,0 +1,62 @@
+1124276 10-05T08:15 opp1101 Around UNSW longest 499 lost usQ0 L36 themQ0 L50 tle0 exc0
+1124275 10-05T08:15 opp1101 Portals longest 499 lost usQ0 L20 themQ0 L25 tle0 exc0
+1124279 10-05T08:15 opp1101 weakhold elimination 270 lost usQ0 L0 themQ2 L5 tle0 exc0
+1124277 10-05T08:15 opp1101 Queen Of Spade longest 499 lost usQ0 L10 themQ0 L19 tle0 exc0
+1124278 10-05T08:15 opp1101 Tower Defense elimination 369 lost usQ0 L0 themQ23 L23 tle0 exc0
+1124658 10-05T08:22 opp351 Australia queen 499 lost usQ0 L29 themQ17 L27 tle0 exc0
+1124654 10-05T08:22 opp351 Trauma queen 499 WON usQ8 L17 themQ0 L19 tle0 exc0
+1124657 10-05T08:22 opp351 Portals queen 499 lost usQ0 L44 themQ3 L3 tle0 exc0
+1124656 10-05T08:22 opp351 Autarky longest 499 WON usQ0 L44 themQ0 L32 tle0 exc0
+1124655 10-05T08:22 opp351 Queen Of Spade longest 499 WON usQ0 L42 themQ0 L3 tle0 exc0
+1124694 10-05T08:22 opp351 Slithery Fight queen 499 lost usQ0 L26 themQ13 L23 tle0 exc0
+1124695 10-05T08:22 opp351 Portals queen 499 lost usQ0 L51 themQ3 L3 tle0 exc0
+1124697 10-05T08:22 opp351 Default elimination 227 WON usQ3 L4 themQ0 L0 tle0 exc0
+1124698 10-05T08:22 opp351 Autarky queen 499 WON usQ35 L46 themQ0 L3 tle0 exc0
+1124696 10-05T08:22 opp351 Trophy elimination 144 lost usQ0 L0 themQ4 L4 tle0 exc0
+1124725 10-05T08:22 opp1035 Around UNSW longest 499 lost usQ0 L26 themQ0 L28 tle0 exc0
+1124727 10-05T08:22 opp1035 Schooltime longest 499 WON usQ3 L57 themQ3 L21 tle0 exc0
+1124726 10-05T08:22 opp1035 weakhold elimination 400 lost usQ0 L0 themQ0 L11 tle0 exc0
+1124724 10-05T08:22 opp1035 Devil elimination 99 WON usQ3 L5 themQ0 L0 tle0 exc0
+1124728 10-05T08:22 opp1035 Stripes elimination 84 WON usQ3 L3 themQ0 L0 tle0 exc0
+1126193 10-05T08:41 opp1030 Australia queen 499 lost usQ11 L36 themQ38 L38 tle0 exc0
+1126192 10-05T08:41 opp1030 Trauma queen 499 lost usQ14 L14 themQ15 L15 tle0 exc0
+1126189 10-05T08:41 opp1030 Default queen 499 lost usQ0 L25 themQ3 L9 tle0 exc0
+1126191 10-05T08:41 opp1030 weakhold elimination 395 WON usQ0 L6 themQ0 L0 tle0 exc0
+1126190 10-05T08:41 opp1030 Stripes elimination 145 WON usQ0 L4 themQ0 L0 tle0 exc0
+1128804 10-05T09:17 opp351 Australia longest 499 WON usQ0 L38 themQ0 L37 tle0 exc0
+1128801 10-05T09:17 opp351 Islands longest 499 WON usQ0 L51 themQ0 L24 tle0 exc0
+1128803 10-05T09:17 opp351 Schooltime longest 499 WON usQ3 L30 themQ3 L3 tle0 exc0
+1128805 10-05T09:17 opp351 Queen Of Spade elimination 251 WON usQ0 L3 themQ0 L0 tle0 exc0
+1128802 10-05T09:17 opp351 Prisoners Dile elimination 191 WON usQ0 L3 themQ0 L0 tle0 exc0
+TOTAL {"n": 30, "w": 15, "qloss": 7, "faults": 0}
+1129277 10-05T09:23 opp351 Islands longest 499 WON usQ0 L30 themQ0 L24 tle0 exc0
+1129278 10-05T09:23 opp351 Maze longest 499 WON usQ0 L73 themQ0 L67 tle0 exc0
+1129276 10-05T09:23 opp351 Portals queen 499 lost usQ0 L32 themQ8 L19 tle0 exc0
+1129279 10-05T09:23 opp351 Devil elimination 243 WON usQ2 L4 themQ0 L0 tle0 exc0
+1129280 10-05T09:23 opp351 Prisoners Dile queen 499 lost usQ0 L32 themQ3 L10 tle0 exc0
+1129409 10-05T09:25 opp470 Around UNSW queen 499 lost usQ0 L58 themQ5 L54 tle0 exc0
+1129411 10-05T09:25 opp470 Slithery Fight longest 499 lost usQ0 L32 themQ0 L41 tle0 exc0
+1129410 10-05T09:25 opp470 Autarky queen 499 lost usQ0 L33 themQ3 L8 tle0 exc0
+1129412 10-05T09:25 opp470 Default longest 499 WON usQ0 L13 themQ0 L8 tle0 exc0
+1129413 10-05T09:25 opp470 Prisoners Dile longest 499 lost usQ0 L15 themQ0 L24 tle0 exc0
+1130689 10-05T09:43 opp899 Trauma queen 499 lost usQ23 L23 themQ49 L49 tle0 exc0
+1130690 10-05T09:43 opp899 weakhold queen 499 lost usQ0 L4 themQ11 L21 tle0 exc0
+1130691 10-05T09:43 opp899 Queen Of Spade elimination 160 lost usQ0 L0 themQ3 L4 tle0 exc0
+1130688 10-05T09:43 opp899 Tower Defense elimination 204 WON usQ0 L3 themQ0 L0 tle0 exc0
+1130692 10-05T09:43 opp899 Stripes elimination 353 WON usQ2 L4 themQ0 L0 tle0 exc0
+1133045 10-05T10:19 opp351 Trauma elimination 458 WON usQ0 L18 themQ0 L0 tle0 exc0
+1133044 10-05T10:19 opp351 Portals longest 499 WON usQ0 L23 themQ0 L15 tle0 exc0
+1133043 10-05T10:19 opp351 Autarky queen 499 WON usQ28 L46 themQ0 L2 tle0 exc0
+1133042 10-05T10:19 opp351 weakhold queen 499 WON usQ6 L27 themQ3 L3 tle0 exc0
+1133046 10-05T10:19 opp351 Devil elimination 134 WON usQ0 L4 themQ0 L0 tle0 exc0
+1133278 10-05T10:22 opp989 Islands queen 499 WON usQ27 L44 themQ0 L9 tle0 exc0
+1133279 10-05T10:22 opp989 Portals longest 499 WON usQ0 L44 themQ0 L21 tle0 exc0
+1133277 10-05T10:22 opp989 weakhold elimination 382 lost usQ0 L0 themQ5 L31 tle0 exc0
+1133280 10-05T10:22 opp989 Devil elimination 248 lost usQ0 L0 themQ3 L12 tle0 exc0
+1133276 10-05T10:22 opp989 Trophy elimination 161 lost usQ0 L0 themQ5 L5 tle0 exc0
+1133872 10-05T10:30 opp1132 Australia longest 499 lost usQ0 L9 themQ0 L22 tle0 exc0
+1133873 10-05T10:30 opp1132 Autarky queen 499 lost usQ0 L38 themQ2 L2 tle0 exc0
+1133874 10-05T10:30 opp1132 Default elimination 382 WON usQ2 L15 themQ0 L0 tle0 exc0
+1133871 10-05T10:30 opp1132 Trophy elimination 75 WON usQ3 L4 themQ0 L0 tle0 exc0
+1133875 10-05T10:30 opp1132 Stripes elimination 315 lost usQ0 L0 themQ2 L3 tle0 exc0
+TOTAL {"n": 30, "w": 15, "qloss": 7, "faults": 0}
