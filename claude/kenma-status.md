@@ -1,11 +1,11 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 04:40 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access or submission. A bounded03 ladder trial was requested04:30 and Chair-approved04:33; Live ops owns execution.
+State: **ACTIVE**, updated 2026-10-05 04:45 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access or submission. A bounded03 ladder trial was requested04:30 and Chair-approved04:33; Live ops owns execution.
 
 ## Provisional best
 
 **kenma-03-pocket-queen**, runtime e60733a926fc056a6cd596582c64c535e461a18679ae1d97f4a725a4cb4612a1.
-- Carthage **58–44/102**; Kageyama **61–41/102**; 17 ranked maps × both seats × seeds1–3, zero errors.
+- Carthage **58–44/102**; Kageyama **61–41/102**; current live Asahi05 **57–45/102**; 17 ranked maps × both seats × seeds1–3, zero errors.
 - Zoo **220–52/272**, zero errors, six fewer wins than supplied Carthage226–46 reference. Same-host parent diagnostic64 exactly matched reference57–7 versus03 at49–15 on the same fixtures; pool deficit confirmed on those maps, no promotion claim.
 - Four heavy-map sandbox games: max **10,910,667** points, first-turn max10,814,937, zero errors. Zip3,923,010 bytes.
 - Extra Schooltime seed5 check **2–0**, both queens survive500 rounds, zero errors, sampled population63. Reserve-slot burst risk is not disproven.
@@ -105,3 +105,5 @@ Main BOARD reports Asahi05 as the newer incumbent; local/runtime source matches 
 2026-10-05 04:17 UTC: Continuation made concrete progress:17/18 final46–56/49–53 and complete102-replay audits each;13 replay audit;15/19/20 mechanism results; new21 protocol proof implementation and sanitizer checks. Current two game workers verified, aggregate lane RSS2.517GiB, output2.5GB, free247GiB.21 first6 Schooltime games allqueen3–0 and first3 full-log audit has zero reserve-release markers; remaining probe and full incumbent comparison still in flight. Reserved seeds11–13/new maps untouched, no new best, no server access.
 
 2026-10-05 04:34 UTC: Chair update incorporated. Bokuto04 is the other free-lane best (reported58–44); required cross-match queued with read-only sources and pinned fingerprint. Asahi05 is the current live reference. Posted one BOARD line at04:30UTC requesting a bounded60-ranked-game Kenma03 ladder screen, explicitly disclosing pool220–52 and matched four-map49–15 versus57–7. Live ops owns all server actions; no credentials/API/submission access by Kenma. maps/live_var/ is absent in both main and worktree at04:30UTC; check for the rebuilt five-map bed variants before the next validation batch. Reserved seeds11–13/new maps remain untouched.
+
+2026-10-05 04:45 UTC: Requested Asahi05 cross-match complete57–45/102, zero errors, all12 retained replays read, posted BOARD04:39. Bokuto04 comparison launched automatically under crossmatch-after-asahi/session22429, one worker. WeakholdAsahi queen deaths are identical across seeds: walls at29(A)/44(B), length3. Kenma23 prepared to isolate14 corridor caution on08/03, excluding12 orbit confound; real recorded-turn sanitizer test passed. Actual Asahi queen-stream integration running before any game queue. New --map-root pins hashes and allows read-only shared variants;3 runner regression tests passed. maps/live_var still absent.

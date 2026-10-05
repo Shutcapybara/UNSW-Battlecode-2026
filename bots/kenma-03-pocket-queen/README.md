@@ -98,3 +98,29 @@ Eight canonical opponents × 17 live ranked maps × both seats, seed 1: **220–
 | hunter-v20-portal-scouts | 31 | 3 |
 
 Output main build/kenma/k03-zoo-s1/score.json. Two resource-interrupted attempts are retained separately; both fixtures were retried successfully. No other free-lane best found in the main BOARD at completion. Reserved-seed confirmation remains outstanding.
+
+## Asahi05 live-reference cross-match (2026-10-05)
+
+57–45/102, zero errors;17 ranked maps, both seats, seeds1–3. Opponent runtime43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad. All12 retained Schooltime/Weakhold replays read: every Schooltime queen survives to499 at length3; Weakhold queens die at walls at round29 (A) or44 (B) in every seed. This does not repair the pool deficit. Posted main BOARD04:39UTC.
+
+| Map | W | L |
+|---|---:|---:|
+| schooltime | 6 | 0 |
+| portals | 4 | 2 |
+| slithery_fight | 4 | 2 |
+| queen_of_spades | 3 | 3 |
+| default | 3 | 3 |
+| trophy | 3 | 3 |
+| dilemma | 3 | 3 |
+| autarky | 3 | 3 |
+| devil | 3 | 3 |
+| trauma | 3 | 3 |
+| australia | 4 | 2 |
+| islands | 2 | 4 |
+| unsw | 4 | 2 |
+| maze | 4 | 2 |
+| weakhold | 1 | 5 |
+| stripes | 3 | 3 |
+| tower_defense | 4 | 2 |
+
+Output: main build/kenma/k03-v-asahi05-s123/{score,manifest}.json; k03-asahi05-diagnostics.json. Requested Bokuto04 cross-match is running.
