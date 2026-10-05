@@ -115,7 +115,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
   [−0.048, +0.197]; performance rating 1781 [1686, 1876]; against 14585's reference +0.117 [−0.018, +0.269];
   queen-rule losses 7; no fault; no Schooltime game in the window. Variant block 69 of 80 (carthage-05: 63).
 - **end rule (D-081 §A):** +0.117 over the reference against a bar of 0.03; `bokuto-13-cull` at +0.001; the windows differ by 0.115. By opponent rating: at or above 1725 +0.162 [0.000, +0.324] (35 games), below −0.048; queen-rule losses 7 of 29. Caveats: the interval includes zero; no Schooltime game in the window; nobody maintains the bot.
-- status: **`incumbent`** (submission 17388; activation by Daichi under D-081; rollback target 14585; D-052 §B applies).
+- status: **`incumbent`** (submission 17388; **active since 5 Oct 12:34:13Z**, first ranked series 12:36Z; rollback target 14585; D-052 §B applies). Since reactivation 20 games, 10–10. On the corrected curve table its queen is alive at round 300 in 12 % of games (opponents 47 %): our worst queen.
 
 ### REG-006 — `bokuto-04-queen` (free lane Bokuto; **second ladder trial approved**, D-075 §C)
 
@@ -147,6 +147,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
   runtime d192d721…); byte copy committed on `r/asahi` (17d7574d5). Trial 2: its first 60 ranked games. End rule:
   D-075 §C as amended by D-077 §B and D-078 §C.
 - **trial result (Daichi, 10:56Z; D-081):** 60 games, 12 series, 30–30; −0.041 [−0.132, +0.062] at rating 1725; +0.001 [−0.110, +0.126] over the reference; at or above 1725 −0.073 [−0.148, −0.003] (25 games), below −0.019; queen-rule losses 14 of 30; queen alive at the end 17 of 60; no fault. Not chosen.
+- second window (to 12:23Z): 60 more games, 30–30; **all 120: −0.054 [−0.128, +0.023]**. Corrected curve table: queen alive at round 300 in 50 % (opponents 57 %), total length 55 and 103 at rounds 100 and 300: our best queen, our smallest economy.
 - status: `uploaded` (trial ended; plays at 14585's level on the ladder).
 
 ### REG-008 — `kenma-28-harvest-reserve` (Kenma's last bot; the lane is retired, D-079 §A)
@@ -170,10 +171,24 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - same-host (Asahi, 10:40Z and 11:18Z): pool 228–44; against `bokuto-13-cull` −4.78 points [−8.46, −1.08]; variants 75 of 80; `gen` (29 unknown maps) −1.19 [−3.88, +1.51]; probe passed. Twin with the atlas off (`asahi-26-b17-atlas0`): pool 240–32; atlas on minus off −4.41 [−8.46, −0.35], exactly 0 on `gen`. `qk2` 28–40.
 - status: `measured`; not a trial candidate (the atlas costs 4.4 points where it is exact; D-081 §C).
 
-### REG-010 — `asahi-27-b13-reserve` (measurement only, D-082 §B)
+### REG-010 — `asahi-27-b13-reserve` (qualified; fallback for trial 3, D-083 §D)
 
-- `bokuto-13-cull` plus Kenma's two global reserve lines (non-queens decide with one unit slot fewer). Built to test
-  the Chair's reserve hypothesis of D-081 §B, which Sugawara's replay check refuted (`bokuto-13-cull` already keeps a
-  slot for the queen). Pool, `qk2`, head-to-head and probe running (Asahi, expected 12:40Z).
-- status: `diagnostic`; not a trial candidate.
+- `bokuto-13-cull` plus Kenma's two global reserve lines (non-queens decide with one unit slot fewer). Fingerprint
+  16ceecff. Built for the Chair's reserve hypothesis of D-081 §B; Sugawara's replay check refuted the mechanism
+  (survival), and Asahi's economy columns show another: on the pool total length at round 300 is 138.5 against the
+  parent's 127.5.
+- same-host (Asahi, 12:39Z): pool 237–35; against `bokuto-13-cull` −1.47 points [−2.94, 0.00]; against carthage-05
+  +4.04 [+0.37, +8.09]; head to head against the incumbent 69–33 (parent 64–38; paired +4.90 [+0.98, +9.80]); `qk2`
+  33–35; queen alive at the end 96 of 162 on the pool; probe passed (3.75 MiB, 12.37 M points).
+- status: `candidate` (qualified under D-076 §A; trial 3 only if `bokuto-18-queenfeed` fails its conditions).
+
+### REG-011 — `bokuto-18-queenfeed` (free lane Bokuto; **trial 3 on condition**, D-083 §D)
+
+- Tree `../wt-bokuto/bots/bokuto-18-queenfeed` (`r/bokuto`). The atlas-off twin of `bokuto-17-atlas` plus: the queen
+  fed from round 290; queen terrain safety from round 0 (no blind portal dive, no single-exit cell, no escape
+  split); the dodge from round 0; Kenma's reserve lines.
+- local (Bokuto's harness): at parity with `bokuto-13-cull` on 34 games; queen 20–52 long at the limit where she lives.
+- condition for trial 3: Asahi's deploy probe passes and the same-host pool is not below carthage-05 (paired 5th
+  percentile above −5 points). Then Daichi runs the trial without a further record.
+- status: `candidate` (Asahi's job running since 13:00Z).
 

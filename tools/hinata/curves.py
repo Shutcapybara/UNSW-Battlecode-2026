@@ -38,6 +38,11 @@ done = set()
 for q in OUT.glob('g_s*.jsonl'):
     done |= {json.loads(l)['gid'] for l in open(q)}
 fh = open(OUT / f'g_s{sh}.jsonl', 'a'); n = 0
+def queen_ids(maptext):
+    """Each team's queen = its lowest initial dragon id (ids follow the map's DRAGON lines; frame.decode builds teams the same way)."""
+    q = {}
+    for i, (t, b) in enumerate(frame.terrain(maptext)[0]['dragons']): q.setdefault(t, i)
+    return q
 def side(R, t, q):
     bodies = [b for (tt, b) in R.values() if tt == t]
     return [len(bodies), sum(map(len, bodies)), max(map(len, bodies), default=0), int(q in R), len(R[q][1]) if q in R else 0]
@@ -50,9 +55,11 @@ for s in sel:
         tf.write(gzip.decompress(p.read_bytes())); tn = tf.name
     try: fr = frame.decode(tn)
     except Exception: fh.write(json.dumps(dict(s, err='DECODE')) + '\n'); os.unlink(tn); continue
-    os.unlink(tn)
+    try: QID = queen_ids(frame._reader(tn).object(0, 0).text(0))
+    finally: os.unlink(tn)
     R = fr['rounds']; out = dict(s, winner=fr['winner'], reason=fr['reason'], last_round=fr['last_round'], final=fr['final'], map=fr['map'])
-    for t, q in (('A', 0), ('B', 1)):
+    for t in 'AB':
+        q = QID.get(t, -1)  # fix 2026-10-05 (Sugawara review): ids follow the map's DRAGON lines, not the seat
         out['c' + t] = {str(r): side(R[r], t, q) for r in GRID if r < len(R) - 1}
         out['c' + t]['end'] = side(R[-1], t, q)
     fh.write(json.dumps(out) + '\n'); fh.flush(); n += 1

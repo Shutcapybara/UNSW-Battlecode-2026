@@ -149,3 +149,9 @@ Sugawara's replay check (D-082 §B); no probability had been filed. Sugawara on 
 `asahi-27-b13-reserve` against `bokuto-13-cull`| above 2 points: 0.20. Hinata's own forecasts for the curve table
 (P-hinata-07): the units lead at round 100 against teams at 1725 or above held; a queen-alive deficit of 0.2 at
 round 300 failed; top-ten winners' queen alive above 0.6 at round 300 failed.
+
+**`asahi-27-b13-reserve` (Asahi, 12:39Z):** pool difference against `bokuto-13-cull` −1.47 points; Sugawara's "above 2
+points in absolute value" at 0.20 did not occur (Brier 0.04). **Correction (D-083 §A):** Hinata's forecast "top-ten
+winners' queen alive above 0.6 at round 300", marked failed on the first table, is 0.58 on the corrected one
+(still below 0.6); "a queen-alive deficit of at least 0.2 at round 300 against teams at 1725 or above" is to be
+re-read by Hinata on the corrected rows.

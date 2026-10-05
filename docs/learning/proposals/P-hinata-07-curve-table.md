@@ -87,3 +87,58 @@ conditioned on the game still being on; bands > 1900 have 5–10 games; 17388 an
 a lead without a queen is worth ≈ a coin flip for 14585. Action: economy growth r100–r300 (top-ten winners +75, ours
 +48 to +65) and queen protection when leading. Demonstration: top-ten winner games are the demonstration set for
 mid-game growth.
+
+## Correction procedure (filed 2026-10-05 12:37 UTC, before any corrected number is read) — reply to Sugawara's review P-hinata-07-sugawara.md
+
+**Accepted as a bug in my code:** `side(R, t, q)` used id 0 as team A's queen and id 1 as team B's; ids follow the map's
+`DRAGON` lines. My queen columns (alive, queen length) and readings (1) and (3) are withdrawn as of now.
+
+**Fix at source:** `curves.py` now takes each team's queen as the lowest id among the map's initial dragons of that team
+(`frame.terrain(maptext)[0]['dragons']`, the same table `frame.decode` builds `teams` from). Existing rows are not
+re-decoded: `tools/hinata/curves_owner.py` reads only the map text of each replay (my own read, not Sugawara's own.py
+output) and `tools/hinata/curves_fix.py` writes corrected rows to build/hinata/curves2/ (swap the two queen fields of cA/cB
+where team A's queen is not id 0; units/total/longest untouched). `curves_table.py` is unchanged except a directory
+argument; same populations, rounds, views, bootstrap (1,000 × seed 7, linear 5–95 %).
+
+**Guard (pass/fail before any table is used):** end-state queen alive in corrected rows must equal the engine's own
+TeamStanding queen field (`final[t]['queen'] > 0`) in every team-game whose replay carries it; any disagreement → stop,
+no table. Also counted: agreement of the *uncorrected* rows (expected ≈ 1,894 / 2,342 per Sugawara).
+
+**Forecasts (mine, now):** top-ten winner − loser queen alive at r300 ≥ +0.15: P 0.85. 17388 us − opp at r300 ≤ −0.25: P 0.8.
+Economy and lead-conversion cells identical to the first run (they are not queen-indexed): P 0.99.
+
+## Corrected result (2026-10-05 12:41 UTC)
+
+**Guard passed:** corrected end queen alive = engine TeamStanding queen in **2,342 / 2,342** team-games (uncorrected 1,894 /
+2,342). Owners from my own map-text read agree with Sugawara's own.py in 1,171 / 1,171 games; team A's queen is id 1 in
+**593** / 1,171 (14585 150, 17388 41, 17530 44, top ten 358 — the review's per-population counts; its total "585" is a sum
+slip). Economy cells (units, total): 0 of all cells changed. Rows build/hinata/curves2/ (sha 8e7ecc6d6735), registry.json there.
+
+**Queen alive, running view, X vs Y, diff [5–95 %] (series bootstrap 1,000 × seed 7):**
+
+| group | n r300 | r100 | r200 | r300 | end | queen len end |
+|---|---|---|---|---|---|---|
+| top ten winner / loser | 507 | 0.75 / 0.70, +0.05 [+0.01, +0.09] | +0.12 [+0.07, +0.17] | **0.58 / 0.37, +0.21 [+0.17, +0.25]** | 0.48 / 0.13 | 8.8 / 1.7 |
+| 14585 us / opp | 209 | 0.44 / 0.72 | 0.17 / 0.54 | **0.06 / 0.45, −0.39 [−0.46, −0.33]** | 0.07 / 0.29 | 0.2 / 2.9 |
+| 17388 us / opp | 57 | 0.51 / 0.81 | 0.17 / 0.62 | **0.12 / 0.47, −0.35 [−0.47, −0.25]** | 0.06 / 0.28 | 0.2 / 3.6 |
+| 17530 us / opp | 68 | 0.74 / 0.89 | 0.62 / 0.69 | 0.50 / 0.57, −0.07 [−0.19, +0.06] | 0.33 / 0.39 | 3.2 / 3.6 |
+
+Carried view at r300 (all games, last state carried): top ten 0.55 / 0.27 (n 701); 14585 0.10 / 0.36 (300); 17388 0.13 /
+0.45 (80); 17530 0.47 / 0.51 (90) — same sign and size as running. The **end** column is partly definitional (games decided
+by the queen rule end with the loser's queen dead); read r200–r300, not end.
+
+**Forecasts re-scored:** top-ten r300 diff ≥ +0.15 (P 0.85) — held (+0.21). 17388 us − opp ≤ −0.25 at r300 (P 0.8) — held
+(−0.35). Economy unchanged (P 0.99) — held. Original card forecasts: top ten winner > 0.6 / loser < 0.4 at r300 — still
+fails narrowly (0.58 / 0.37); 17530 deficit ≥ 0.2 vs ≥ 1725 — still fails (1725–1900 0.00, n 29).
+
+**Corrected reading (replaces readings (1) and (3); (2) and lead conversion stand).** (1) Top-ten winners differ from losers
+on **both** economy (+17 total at r100, +43 at r300) and queen survival (+0.12 at r200, +0.21 at r300; queen length at r300
+4.3 vs 2.4). (3) Our queens die far more than our opponents' for 14585 and the incumbent 17388 (alive at r300 6 % and 12 %
+vs 45–47 %; deficit present already at r100, −0.28 / −0.30); bokuto-13-cull (17530) is near parity (−0.07 [−0.19, +0.06]).
+So 17388 is our best converter of the few length leads it holds (20/27) but our worst queen; 17530 the best queen but the
+smallest economy. No current bot has both, and the top-ten winner has both.
+
+**RL translation.** Observation: queen alive and queen length by round are first-class state, not a tiebreak detail; any
+label/V-target from these rows must use curves2 (or curves.py ≥ 368313e94f33). Value/reward: V carries total-length lead
+and queen length jointly (top-ten winner end queen 8.8). Action: queen safety from r100 (the deficit starts there) plus
+r100→r300 growth. Demonstration: top-ten winner games carry both behaviours; 17530's queen handling is our own nearest example.

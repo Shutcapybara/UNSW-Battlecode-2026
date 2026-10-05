@@ -2,7 +2,8 @@
 at r100/200/300/400/end, series bootstrap 1000 x seed 7, linear 5-95 %, running-games view)."""
 import json, csv, random, collections
 from pathlib import Path
-D = Path('build/hinata/curves'); G = [json.loads(l) for q in sorted(D.glob('g_s*.jsonl')) for l in open(q)]
+import sys
+D = Path(sys.argv[1] if len(sys.argv) > 1 else 'build/hinata/curves'); G = [json.loads(l) for q in sorted(D.glob('g_s*.jsonl')) for l in open(q)]
 G = [g for g in G if 'err' not in g]
 RND = [str(r) for r in range(0, 500, 25)] + ['end']; M = ['units', 'total', 'longest', 'q_alive', 'q_len']
 def band(e): return 'na' if e is None else '<1725' if e < 1725 else '1725-1900' if e <= 1900 else '>1900'

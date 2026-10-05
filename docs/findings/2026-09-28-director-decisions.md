@@ -3655,3 +3655,79 @@ themselves.
   Chair withdraws its earlier doubt about the lane's use.
 - Kageyama: still silent; the recommendation to stand the lane down is unchanged.
 - No trial candidate is ready. `bokuto-18` is not posted yet.
+
+## D-083 — Correction of D-082: the queen does separate winners from losers; the incumbent is active; trial 3 is ordered (5 Oct 2026 13:23Z, Chair: Ushijima)
+
+### A. Correction of D-082 §A (Sugawara's review, 12:35Z; Hinata's fix, 12:41Z)
+
+- The curve table read the queen as dragon 0 for one side and dragon 1 for the other. Which side owns which
+  follows the map, and the reading was swapped in 593 of 1,171 games. Hinata fixed it at the source; the corrected
+  end state agrees with the engine's own queen field in 2,342 of 2,342 team-games (before: 1,894).
+- **Two statements of D-082 §A are withdrawn:** that queen survival does not separate the top ten's winners from
+  their losers, and that our queens are alive about as often as our opponents'. Corrected:
+
+| Queen alive at round 300 | Side | Opponent |
+|---|---|---|
+| Top ten, winner against loser | 0.58 | 0.37 |
+| 14585 (old incumbent) | 0.06 | 0.45 |
+| 17388 `kenma-03-pocket-queen` (incumbent) | 0.12 | 0.47 |
+| 17530 `bokuto-13-cull` | 0.50 | 0.57 |
+
+- Top ten at the end: winner's queen alive 0.48 against 0.13, length 8.8 against 1.7.
+- **Unchanged:** the total-length curves, the economy gap (winners 78 and 154 at rounds 100 and 300; ours 55–63
+  and 103–128), and the conversion of round-300 leads (50, 74 and 65 %).
+- **The picture now:** the top ten's winners have both the economy and the queen. The incumbent has the economy of
+  the old bot and our worst queen; `bokuto-13-cull` has our best queen and our smallest economy. No bot of ours has
+  both. D-080 §A's queen diagnosis stands beside D-082's economy diagnosis.
+- **Three targets for a candidate:** total length near 78 and 154 at rounds 100 and 300; queen alive at round 300
+  near 0.58; at least 70 % of round-300 leads converted.
+- **The Chair's error of process.** D-082 recorded a one-hour-old result from one lane as a correction and
+  reported it to the lead. From now on a description that changes the diagnosis is checked by a second lane
+  before the Chair records it: Sugawara reviews Hinata's, and the reverse. Sugawara's review came within the hour
+  unasked, and Hinata's fix and guard within six minutes of it.
+
+### B. The incumbent is active
+
+- Daichi activated 17388 at 12:34:13Z; its first ranked series started 12:36Z. The delay was the blackout around
+  11:52Z. The restore control takes the submission to activate as `previous` and the active one as `candidate`;
+  the Chair's wording in D-081 and D-082 had the two reversed and Daichi corrected it.
+- 17388 since reactivation: 20 games, 10–10 (too few to read). With its trial window: 80 games.
+- **17530 (`bokuto-13-cull`), all 120 ranked games: −0.054 [−0.128, +0.023]** at rating 1725; the second 60 went
+  30–30 like the first. It is at the old incumbent's level (−0.043), firmly.
+
+### C. Local results (Asahi, 12:39Z and 12:42Z)
+
+- **`asahi-27-b13-reserve`** (`bokuto-13-cull` plus Kenma's reserve lines): pool 237–35, −1.47 points against its
+  parent; head to head against the incumbent 69–33 (its parent 64–38; paired +4.90 [+0.98, +9.80]); `qk2` 33–35
+  (carthage-05 21–47, the incumbent 25–43); probe passed. **On the pool the reserve restores the economy the parent
+  gave up:** total length at round 300 138.5 against 127.5 (carthage-05 136.4), with the parent's queen survival
+  kept. The Chair's hypothesis had the wrong mechanism (survival); the lines are worth having for another reason.
+- **A fourth disagreement between local and ladder:** locally `bokuto-13-cull` beats the incumbent 64–38, with 33
+  wins and no loss by the queen rule; the ladder preferred the incumbent. The incumbent never keeps its queen, so
+  a head-to-head against it rewards queen keeping more than the ladder's field does.
+- **The pool cannot see the economy race:** its opponents hold 41 and 81 cells at rounds 100 and 300 (the top
+  ten's losers: 61 and 111), so every bot leads at round 300 and converts about 90 %. On `qk2` and the head-to-head
+  the opponents are at our level and conversion separates the bots (41 % carthage-05, 54 % the incumbent, 61 %
+  `asahi-27-b13-reserve`).
+
+### D. Trial 3, ordered now with its condition
+
+- **`bokuto-18-queenfeed`** (Bokuto, 13:00Z): the atlas-off twin of 17, the queen fed from round 290, queen terrain
+  safety from round 0, and the reserve lines. It is the first candidate built on today's diagnosis and addresses
+  all three targets.
+- **Order.** As soon as Asahi posts a passing deploy probe and a pool not below carthage-05 (paired 5th percentile
+  above −5 points) for `bokuto-18-queenfeed`, Daichi registers it from a byte copy and runs trial 3 without a
+  further record. If it fails either condition, trial 3 is `asahi-27-b13-reserve`, which has passed both.
+- **Look:** the first series boundary at or after 60 ranked games; the table of D-081 (statistic at rating 1725,
+  opponent bands, Schooltime apart, end reason by band, queen columns, faults); Hinata's matched column and curve
+  block with the corrected code (total length at rounds 100 and 300, queen alive at round 300, leads converted),
+  reviewed by Sugawara before the Chair reads it.
+- **End rule:** the trial bot becomes the incumbent if its statistic exceeds the incumbent's by more than 0.03,
+  the incumbent's being taken over all its ranked games since 05:02Z; otherwise Daichi restores 17388. A fault
+  ends the trial at once.
+
+### E. Where we stand, for the lead
+
+- On the ladder nothing we have is separable from the old incumbent: 14585 −0.043, `bokuto-13-cull` −0.054 over
+  120 games, the incumbent about +0.04 over 80. The top ten are more than 400 rating points above. Today's work moved
+  the understanding (three measured targets and panels that show them), not yet the rating.

@@ -2,10 +2,10 @@
 
 Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes only when this file records it.
 
-## Current state (5 Oct 2026 12:28Z)
+## Current state (5 Oct 2026 13:24Z)
 
 - **R0 passed 4 Oct 14:28Z (D-053 §A). R1: P-2 failed its confirmation 18:20Z (D-057 §B); rung open, behind R2. R2: development battery running (D-057 §C).**
-- **Incumbent: `kenma-03-pocket-queen` (submission 17388) since D-081** (trial window +0.074 [−0.048, +0.197] at rating 1725; +0.117 over the reference). **Not yet activated at 12:25Z: 17530 is still live; Daichi is asked again (D-082 §D).** Rollback target: `carthage-05-free-sprint` (14585). `bokuto-13-cull` (17530) ended its trial at −0.041, level with 14585. Local reference for cards: `bokuto-13-cull`. Trial queue: `bokuto-18` when posted. Targets for candidates (D-082 §C): total length near 78 at round 100 and 154 at round 300; at least 70 % of round-300 leads converted.
+- **Incumbent: `kenma-03-pocket-queen` (submission 17388), active since 5 Oct 12:34:13Z** (D-081; trial window +0.074 [−0.048, +0.197]; since reactivation 10–10 in 20). Rollback target: `carthage-05-free-sprint` (14585). `bokuto-13-cull` (17530): −0.054 [−0.128, +0.023] over 120 games, level with 14585. **Trial 3 ordered on condition (D-083 §D): `bokuto-18-queenfeed` when its probe passes and its pool is not below carthage-05; otherwise `asahi-27-b13-reserve`.** Three targets for candidates: total length near 78 and 154 at rounds 100 and 300; queen alive at round 300 near 0.58; at least 70 % of round-300 leads converted.
 - Deadline: handled by the lead; the Chair imposes no freeze (D-050 §2).
 - GPU work may run on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3).
 
@@ -67,6 +67,12 @@ blocks live screens.
 
 ## Log
 
+- 5 Oct 13:24Z: D-083. **Correction of D-082:** the curve table's queen columns were side-swapped in half the games
+  (found by Sugawara, fixed by Hinata). The top ten's winners keep their queen (alive at round 300: 0.58 against
+  0.37); ours: 14585 0.06, the incumbent 0.12, `bokuto-13-cull` 0.50. Economy and lead-conversion figures stand.
+  Three targets. 17388 active since 12:34Z. `bokuto-13-cull` −0.054 over 120 games. Trial 3 ordered on condition
+  for `bokuto-18-queenfeed`. Descriptions that change the diagnosis get a second-lane check before the Chair
+  records them.
 - 5 Oct 12:28Z: D-082. The curve table (Hinata): among the top ten the winner has the bigger economy (+43 cells at
   round 300) and queen survival does not separate winners from losers; our totals are at the top ten's losers'
   level and `bokuto-13-cull` has the smallest; we lose round-300 leads through the queen rule (converted: 14585

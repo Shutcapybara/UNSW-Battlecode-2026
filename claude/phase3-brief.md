@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 12:28Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 13:24Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-082. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-083. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -18,12 +18,16 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
   search bot whose move prior is a model cloned from one other team (Heartbreaker).
 - **`bokuto-13-cull`, the best bot locally (+5.5 points on the pool), scored +0.001 on the ladder**: level with the
   old incumbent. The local pool and the head-to-heads ranked it above Kenma's bot; the ladder did not.
-- **Where and when we fall behind (D-082, from 1,171 ladder games).** Among the top ten the winner is the side
-  with the bigger economy: total length 78 against 61 at round 100 and 154 against 111 at round 300; queen survival
-  does not separate their winners from their losers. Our bots sit at 55–63 and 103–128, the level of their losers,
-  and `bokuto-13-cull` is the smallest. Separately, we lose leads through the queen rule: of games led at round
-  300 the old incumbent won 50 %, `bokuto-13-cull` 65 %, `kenma-03-pocket-queen` 74 % (the top ten's rate).
-  **Two targets for every candidate: growth between rounds 100 and 300, and conversion of leads.**
+- **Where and when we fall behind (D-082 as corrected by D-083, from 1,171 ladder games).** The top ten's winners
+  have both the economy and the queen: total length 78 against 61 at round 100 and 154 against 111 at round 300,
+  and the queen alive at round 300 in 58 % of games against 37 % for their losers. Ours: total length 55–63 and
+  103–128; queen alive at round 300 in 6 % (old incumbent), 12 % (the incumbent) and 50 % (`bokuto-13-cull`, which
+  has the smallest economy). No bot of ours has both. We also lose leads through the queen rule: of games led at
+  round 300 we won 50 %, 74 % and 65 %. **Three targets for every candidate: total length near 78 and 154; queen
+  alive at round 300 near 0.58; at least 70 % of round-300 leads converted.**
+- **On the ladder nothing we have is separable from the old incumbent yet:** 14585 −0.043 a game against
+  expectation, `bokuto-13-cull` −0.054 over 120 games, the incumbent about +0.04 over 80. The top ten are more than
+  400 rating points above.
 - **Where we lose: the queen.** A round-limit game goes to the side whose original dragon (the queen) is alive and
   longer. Ours is alive in about 1 % of round-limit games; the top ten keep theirs in 24–56 %. About half of our
   losses are decided this way.
@@ -47,12 +51,12 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials | Daichi (Live ops) | Two trials done (see "Where we stand"). The incumbent holds the live slot between trials. Next: `bokuto-18` when it has a pool and a probe; `asahi-27-b13-reserve` (Bokuto's bot plus Kenma's free unit slot) if the replays support that hypothesis. A trial is 60 ranked games, about three hours, and costs nothing in rating |
+| Ladder trials | Daichi (Live ops) | The incumbent `kenma-03-pocket-queen` (17388) is live since 12:34Z. **Trial 3: `bokuto-18-queenfeed`** as soon as its probe passes and its pool is not below carthage-05 (otherwise `asahi-27-b13-reserve`). A trial is 60 ranked games, about three hours, and costs nothing in rating; the trial bot must beat the incumbent's statistic by more than 0.03 |
 | The queen and the economy | Sugawara (analysis); Bokuto builds; panels by Asahi | Bokuto is building `bokuto-18`: no wall deaths of the queen, feeding from round 280–300. Sugawara reads which of `bokuto-13-cull`'s layers cost mid-game growth. Cards carry queen columns, total length at rounds 100 and 300, the keeper panel `qk2` and a head-to-head against the incumbent |
 | Analysis of the trials | Hinata | the cloned-prior line is paused (D-080). Hinata now supplies, for every ladder trial, the opponent-matched comparison and the curve block (total length by round against the top ten's curves; leads converted) |
 | Data | Hinata (Kageyama silent) | hidden bed layouts done (828 of 828 live games reproduced; 14.5 % of ranked games). The curve table by round from the ranked corpus has moved to Hinata; Kageyama has not posted since about 07:00Z |
 | Local panels, the Mac's job runner | Asahi (Evaluator) | one Mac, one job at a time; queen and clone jobs alternate; no job over about 45 minutes |
-| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | `bokuto-13-cull`: best locally, level with the old incumbent on the ladder. `bokuto-17-atlas`: 4.8 points below it locally; its 17-map atlas is the cause. Building `bokuto-18`: the queen never dies at walls, and is fed from round 280–300. Mac jobs by one BOARD line to Asahi (`JOB <bot folder> : pool \| probe \| gen \| h2h vs <bot>`) |
+| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | `bokuto-18-queenfeed`: the queen fed from round 290, queen safety from round 0, the reserve lines, no atlas; being measured, then trial 3. Mac jobs by one BOARD line to Asahi (`JOB <bot folder> : pool \| probe \| gen \| h2h vs <bot>`) |
 | Decisions, merges, this brief | Ushijima (Chair) | hourly; the council is dissolved (D-072) |
 
 ## Results so far
@@ -91,8 +95,12 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Risks open now
 
-- **No local measure has yet predicted a ladder result** (three of three missed: the hand rule, `bokuto-13-cull`,
-  `kenma-03-pocket-queen`). The keeper panel `qk2` (against the two local bots whose queens survive) is the first
+- **Check before you rely:** on 5 Oct a one-hour-old table with side-swapped queen columns was recorded as a
+  finding and reversed within the hour. A description that changes the diagnosis is reviewed by a second lane
+  before the Chair records it. In replays the queen is the team's lowest initial dragon id from the map, not id 0
+  or 1 by side.
+- **No local measure has yet predicted a ladder result** (four of four missed: the hand rule, `bokuto-13-cull`,
+  `kenma-03-pocket-queen`, and the head-to-head of the last two). The keeper panel `qk2` (against the two local bots whose queens survive) is the first
   that shows the queen race; whether it orders candidates as the ladder does is still to be seen.
 - **Local gains have not carried to the ladder so far.** The hand rule gained 2.6 points locally and lost live;
   `bokuto-13-cull` gained 5.5 locally and started 10–15. If the 60-game look confirms it, the weak local opponent

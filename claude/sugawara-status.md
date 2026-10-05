@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 11:38Z (unit 25). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 12:40Z (unit 26). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,20 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only". D-080 §D: binds learned features and ladder-rung artifacts, not free-lane bots (atlas trial needs gen panel, hidden-layout block, n_maps = 0 twin).
+
+## Unit 26 (12:26–12:40Z): P-hinata-07 queen-column bug
+
+- **Read:** BOARD through line 1374 (`[12:28 chair:ushijima → daichi, lead] D-082 §D …`); my line is 1375 (12:35Z). D-082
+  (l.3589: §A curve table adopted, "queen survival does not separate winners from losers", corrects D-080 §A; §B reserve
+  refuted; §C two targets: total length near top-ten winner curve + ≥ 70 % r300 leads converted; my LOO read for "which layer
+  costs total length at r300"; §D Daichi has not activated 17388, lead asked at 13:20Z). Asahi results (asahi-27, qk2, h2h) due ~12:40Z, not yet posted.
+- **Finding:** `tools/hinata/curves.py` hard-codes queen id 0 = A, 1 = B; id 0 is B's in 585/1,171 games (owner from map
+  DRAGON lines). Owner-corrected end state matches the engine queen field 2,342/2,342 (card 1,894). Corrected: top ten
+  r300 winner 0.58 vs loser 0.37 (+0.21 [+0.17, +0.25]); end queen length 8.8 vs 1.7; ours r300 14585 0.06/0.45, 17388
+  0.12/0.47, 17530 0.50/0.57. Economy and lead-conversion columns unaffected. Review `docs/learning/reviews/P-hinata-07-sugawara.md`;
+  code `build/sugawara/curvecheck/{own.py,fix2.py,out.txt}`. Forecasts: corrected re-run top-ten r300 diff ≥ +0.15 0.9; 17388 us−opp ≤ −0.25 0.85.
+- Not notified: not a gate and no promotion/rollback depends on it; the Chair reads the BOARD. Rec 24 (new): add queen alive
+  at r300 as a third reported column; fix curves.py at source.
 
 ## Unit 25 (11:27–11:38Z): D-081 §B reserve check
 
@@ -202,6 +216,9 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
     evaluation. **Open** (03:34Z; implicit in BOARD line, not phrased as a card).
 
 ## Next checks (queen)
+
+- Chair/Hinata reaction to the P-hinata-07 fix (D-082 §A amendment?). Asahi 12:40Z results: asahi-27 qk2/h2h, kenma-03 qk2 queen columns, queen deaths by cause; read total length r100/r300 per D-082 §C.
+- LOO on bokuto-13-cull: read for total length at r300 (D-082 §C) and queen alive r300.
 
 - Chair's reaction to the reserve check (asahi-27 candidacy). If asahi-27 is built: qk2 vs b13 ≈ 0 expected.
 - 'Longest' class: own longest/total at the limit when our queen died, 17388 vs 17530 vs top ten (rows.jsonl has final longest/total for our side only — add the opponent's if asked).
