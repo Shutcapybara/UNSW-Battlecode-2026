@@ -78,14 +78,14 @@
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct 13:26Z)
+## Now (5 Oct 14:18Z, queue idle)
 
-0. Incumbent kenma-03 (17388). D-083: three targets per candidate (total length ≈ 78 / 154 at r100 / r300; queen alive
-   at r300 ≈ 0.58; ≥ 70 % of r300 leads converted). Trial 3 = bokuto-18-queenfeed if Asahi posts a passing probe and a
-   pool with paired 5th pct > −5 vs carthage-05; else asahi-27-b13-reserve (qualified).
-1. Running: bokuto-18 pool → card vs c05 → probe (gate post ~13:50Z) → h2h vs kenma-03, qk2, variants, cards vs b13/k03,
-   queen/economy columns on pool/qk2/h2h.
-2. Read candidates on qk2 and h2h (the pool's opponents are far below the ladder's).
+0. Incumbent kenma-03 (17388). **Trial 3 = bokuto-18-queenfeed** (gate posted 13:48Z: pool +4.04 [−0.74, +8.82] vs c05,
+   probe OK, fp fa931064; Daichi registered 13:53Z, upload after 14:12Z).
+1. bokuto-18 read (14:17Z): h2h vs kenma-03 61–41 (asahi-27 69–33; b13 64–38); qk2 30–38; queen alive r300 h2h 0.70,
+   qk2 0.47; r300 leads converted h2h 77 %, qk2 56 %; queen wall deaths down (qk2 9 vs a27 19), head-on deaths up.
+2. Card format: pool + variants + two totals + queen/economy columns + qk2 + 102-game h2h vs the incumbent.
+3. Waiting: Bokuto JOB lines, Sugawara layer removal, Chair orders.
 
 ## Operating notes
 
