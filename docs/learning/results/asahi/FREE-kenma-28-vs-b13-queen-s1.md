@@ -5,10 +5,10 @@ Alive at r100/200/300: death round from the death events, among sides whose game
 
 | column | cand | parent |
 |---|---|---|
-| alive@r100 | 159/268 | 156/268 |
-| alive@r200 | 77/229 | 74/231 |
-| alive@r300 | 34/192 | 35/192 |
+| alive@r100 | 240/268 | 240/268 |
+| alive@r200 | 182/229 | 185/231 |
+| alive@r300 | 134/192 | 140/192 |
 | alive@end | 95/166 | 94/163 |
 | our len@end med/mean | 3.0 / 8.4 | 3 / 8.2 |
 | opp len@end med/mean | 0.0 / 0.1 | 0 / 0.1 |
-| both alive@end W-L | 2/0 | 2/0 |
+| both alive@end W-L | 2–0 | 2–0 |
