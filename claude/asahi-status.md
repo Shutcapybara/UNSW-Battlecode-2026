@@ -56,6 +56,7 @@
 
 ## Log
 
+- 5 Oct 23:1xZ: D-091 §C frozen-row test posted (0/10 portal; dead-end walks).
 - 5 Oct 21:1xZ: bokuto-61-mouth card posted (all D-089 conditions met).
 - 5 Oct 20:3xZ: 46 probe/gen + b25 probe + 47 complete posted (late vs Chair 19:25Z ask); b61 queued.
 - 5 Oct 19:20Z: 46/47 qk2/h2h trial-5 reading posted.
@@ -86,15 +87,14 @@
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct 21:20Z)
+## Now (5 Oct 23:20Z)
 
-0. Incumbent of record 17791 bokuto-18-queenfeed. Trial 4 = 17940 asahi-27-b13-reserve, look ≈ 22:15Z.
-   Trial 5 (D-089): bokuto-61-mouth if the Chair names it (≈ 21:50Z), else bokuto-46-regions (waiver), else b25.
-1. Posted 21:1xZ: 61 meets all four D-089 conditions (probe 14.32 M; pool vs c05 +0.74 [−4.04, +6.25];
-   qk2 vs 46 +4.41; h2h vs 46 +7.84, 63–39 vs kenma-03). Full card committed (2080h).
-2. Rule (D-089 §D): a condition within half a point of its threshold goes to the Chair as waiver/refusal, never
-   relabelled. Bokuto holds JOB replacements until 61 is carded (done).
-3. Queue empty. Next: trial-4 look; any new JOB. Card format as before (h2hpd.py, q5sens.py for sensitivity only).
+0. Incumbent of record 17791 bokuto-18-queenfeed. Trial 4 17940 asahi-27 NOT kept (+0.093, D-091 §A).
+   Trial 5 = 18078 bokuto-61-mouth (fp 028c97bf), active 22:55Z, look ≈ 02:30–03:00Z.
+1. Posted 23:1xZ (D-091 §C): 61's 10 qk2 queen wall deaths — 0 with a portal edge beside the head (41: 6/22);
+   they are 6 distinct dead-end corridor walks (tools/asahi/qwallportal.py).
+2. Next: Bokuto's fixed copy of 61 (no_dive relaxed in the fallback) → qk2 + h2h vs 61 first, then the rest.
+3. Card format as before (h2hpd.py; q5sens.py sensitivity only; probe gate 60 M).
 
 ## Operating notes
 
