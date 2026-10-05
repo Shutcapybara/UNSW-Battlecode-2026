@@ -31,9 +31,9 @@ def table(bot, pnl):
             continue
         g = pickle.load(gzip.open(max(hits, key=lambda h: Path(h).stat().st_mtime)))
         me, op = r['seat'], ('B' if r['seat'] == 'A' else 'A')
-        qd = [d['round'] for d in g['events']['deaths'] if d['id'] in (0, 1) and d['team'] == me]
+        qd = [d for d in g['events']['deaths'] if d['id'] in (0, 1) and d['team'] == me]
         rows.append(dict(game=r['game'], win=r['winner'] == me, last=int(g['last_round']), limit=int(g['last_round']) >= 499,
-                         died=qd[0] if qd else None, q_me=int(g['final'][me]['queen']), q_op=int(g['final'][op]['queen'])))
+                         died=qd[0]['round'] if qd else None, cause=qd[0]['cause'] if qd else None, q_me=int(g['final'][me]['queen']), q_op=int(g['final'][op]['queen'])))
     return rows
 
 
@@ -49,6 +49,10 @@ def summary(rows):
                                    round(sum(x['q_me'] for x in lim) / len(lim), 1) if lim else 0)
     out['opp len@end med/mean'] = (statistics.median([x['q_op'] for x in lim]) if lim else 0,
                                    round(sum(x['q_op'] for x in lim) / len(lim), 1) if lim else 0)
+    import collections
+    cz = collections.Counter(x['cause'] for x in rows if x['cause'])
+    out['queen deaths: wall / other'] = (cz.get('wall', 0), sum(cz.values()) - cz.get('wall', 0))
+    out['queen deaths by cause'] = (', '.join(f'{k} {v}' for k, v in cz.most_common()), len(rows))
     both = [x for x in lim if x['q_me'] > 0 and x['q_op'] > 0]
     out['both alive@end W-L'] = (sum(x['win'] for x in both), len(both) - sum(x['win'] for x in both))
     return out
