@@ -1,0 +1,13 @@
+{
+ "cand": "asahi-21-q1cage-c05",
+ "parent": "carthage-05-free-sprint",
+ "panel": "pool",
+ "expected": 272,
+ "compared": 272,
+ "divergent": 2,
+ "divergent_games": [
+  "s1__live+schooltime__@__kazuha-s01-swarm-dissolve",
+  "s1__live+schooltime__hunter-v20-portal-scouts__@"
+ ],
+ "verdict": "NO-PARITY"
+}
