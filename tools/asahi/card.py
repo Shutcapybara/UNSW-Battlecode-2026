@@ -288,8 +288,12 @@ def cmd_card(a):
     STRATUM = set(x for x in (a.stratum or '').split(',') if x)
     GATE = a.gate
     seeds = [int(s) for s in a.seeds.split(',')]
-    cards = {p: compare(a.cand, a.parent, p, seeds) for p in ('pool', 'gen')}
-    letter, why = gate_letter(cards['pool'], cards['gen'], seeds)
+    panels = [x for x in a.panels.split(',') if x]
+    cards = {p: compare(a.cand, a.parent, p, seeds) for p in panels}
+    if 'pool' in cards and 'gen' in cards:
+        letter, why = gate_letter(cards['pool'], cards['gen'], seeds)
+    else:   # single-panel diagnostic (D-068 §C): no D-042 letter can be formed; the card says so
+        letter, why = 'NO LETTER (' + '+'.join(panels) + ' only, diagnostic)', []
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.with_suffix('.json').write_text(json.dumps(dict(letter=letter, why=why, cards=cards), indent=1, default=float))
@@ -345,6 +349,7 @@ def main():
     c = sub.add_parser('card'); c.add_argument('cand'); c.add_argument('--parent', required=True)
     c.add_argument('--seeds', default='1'); c.add_argument('--out', required=True)
     c.add_argument('--stratum', default='', help='comma list of map keys reported as a target stratum (report-only)')
+    c.add_argument('--panels', default='pool,gen', help='pool,gen (default) or one panel for a diagnostic card without a letter')
     c.add_argument('--gate', action='store_true', help='nominee gate (D-046 §4): INCOMPLETE on any missing fixture, no screen- prefix')
     d = sub.add_parser('curve'); d.add_argument('--doses', required=True); d.add_argument('--seeds', default='1')
     d.add_argument('--out', required=True)

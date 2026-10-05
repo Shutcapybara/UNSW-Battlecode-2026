@@ -72,24 +72,32 @@
 - 4 Oct 22:45Z: queued census (D-056 §E) and throughput (D-061 §C); VM shell down (VM disk full), working by stage/commit.
 - 4 Oct 23:05Z: new Asahi session (previous lost its VM shell to a full session disk); hourly self-wake scheduled.
 - 4 Oct 23:05Z: D-064 §B.5 same-binary MET (fingerprint 43bd2d4f on the 16979 archive); census posted.
+- 5 Oct 04:35Z: D-068 §C.1/.3/.4 + k02 parity posted; arm 2 re-queued; Bokuto/Kenma pool queued; device shell down.
+- 5 Oct 02:20Z: D-068 §C diagnostics built and queued (prereg D068-prereg.md).
+- 5 Oct 01:15Z: p1-slot λ1 / λ0.5 screens posted (both screen-FAIL).
+- 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct ~00:00Z)
+## Now (5 Oct 04:53Z; device shell works)
 
-1. **Done:** D-064 §B.5 same-binary (`docs/learning/results/asahi/REG-002-16979-same-binary.md`); census
-   (`census-{pool,gen}.md`): k16 pool 23/10/783 of 816, Weakhold 16/0/32, gen 4/3/1,385; throughput
-   (`throughput-d061c.md`).
-2. **Next:** `bots/kageyama-01-p1-slot` (Chair 23:07Z, D-065 to come): golden parity with the switch off, then seed-1
-   pool + gen panels with the census table. Hinata's cloned-prior bot likewise when it arrives.
-3. Learn-queue jobs (main checkout `build/learn/queue/`) have the machine whenever Asahi's queue is empty.
-4. No hand-rule work (D-059).
+1. **D-068 §C items 1–4 complete** (`docs/learning/results/asahi/D068-summary.md`): A1 λ1 −13.60 [−19.49, −8.09];
+   no prior −13.05; A1 λ1.41 −5.88; paired λ1.41 − λ1 +7.72 [+2.94, +12.52] (H-SZ74 holds); A1 λ1 − no prior −0.55;
+   A3 λ1 − A1 λ1 +6.62. Arms order by sharpness, not accuracy. Item 5 waits for Hinata 015/016 + export.
+2. **kenma-03-pocket-queen pool:** 220–52; vs c05 −2.21 [−4.41, −0.37]; vs k16 −4.78 [−7.72, −1.84] (D-070 §D not
+   met); queen-decided 13–4 vs 0–5; queen alive@RL 15/147 (Schooltime 14/14); costs Australia −18.75, UNSW −31.25.
+3. **Learn env fixed:** every learn job failed at `import lightgbm` (no libomp on the Mac). jobd now sets
+   DYLD_LIBRARY_PATH to torch's lib for learn jobs (reloaded 04:41Z, `lgbcheck.py` passes); Hinata's ten jobs re-queued.
+4. **bokuto-04-queen pool:** 226–46; vs c05 +0.00 [−5.15, +4.78]; vs k16 −2.57 [−7.35, +2.21] (D-070 §D not met);
+   queen-decided 42–4; queen alive@RL 44/189 on 11 maps; econ~ −6.29. hinata-015 running (04:51Z); push requested 04:53Z.
+5. Watch for: single-team prior exports; accepted `maps/live_var/` variants; Sugawara's queen switches on k16.
+6. No hand-rule work (D-059).
 
 ## Operating notes
 
 - **Daemon:** `tools/asahi/jobd.py`, native on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
   `build/asahi/queue/` first, then the main checkout's `build/learn/queue/`. Restart if down:
   `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
-  Last job id used: 180.
+  Last job id used: 20096 (2007a reload, 2007b lgbcheck). Held jobs live in build/asahi/hold/.
 - BOARD lines go to the MAIN checkout's `docs/hub/BOARD.md` with `>>` only; never commit BOARD.md on r/asahi.
-- The Cowork VM's `/sessions` disk is full: keep nothing in the session home; write only into the mounted trees.
+- Session disk was reset ~04:00Z (D-073); still keep little in the session home.
 - `throughput.py` must recycle processes (wasmtime stores leak address space per game).

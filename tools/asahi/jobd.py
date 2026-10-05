@@ -42,6 +42,14 @@ COMMIT_OK = re.compile(r'^(tools/asahi/|bots/asahi-[A-Za-z0-9._-]+/|maps/m2tr/|c
 OWNER = 'asahi'
 
 
+def learn_dyld_env(venv):
+    """LightGBM's macOS wheel links @rpath/libomp.dylib and looks only in Homebrew/MacPorts paths (no libomp on this Mac:
+    every learn job failed at import, 5 Oct 04:37Z). torch's wheel ships an LLVM libomp; put its directory on
+    DYLD_LIBRARY_PATH for learn jobs so lightgbm and torch share that one copy. venv python is uv's (not SIP-protected)."""
+    libs = sorted(Path(venv).glob('lib/python3*/site-packages/torch/lib/libomp.dylib'))
+    return {'DYLD_LIBRARY_PATH': str(libs[0].parent)} if libs else {}
+
+
 def now():
     return time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
 
@@ -236,6 +244,7 @@ class Daemon:
         env = dict(os.environ, ASAHI_MAX_WORKERS=str(self.max_workers), PYTHONUNBUFFERED='1',
                    UNSWBC=str(Path(py).parent / 'unswbc'), OMP_NUM_THREADS=str(self.max_workers),
                    PYTHONDONTWRITEBYTECODE='1')    # no __pycache__ in the main checkout (keeper blocker, 4 Oct 23:48Z)
+        env.update(learn_dyld_env(venv) if envname == 'learn' else {})
         return self.run_process(job, [py, script, *argv], self.main, env, logf, lb / 'queue')
 
     def next_job(self):

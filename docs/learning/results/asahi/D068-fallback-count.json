@@ -1,0 +1,908 @@
+{
+ "summary": {
+  "kageyama-01b-p1-slot-fb": {
+   "live/devil": {
+    "games": 2,
+    "turns": 1178,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "ALL": {
+    "games": 34,
+    "turns": 358677,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/dilemma": {
+    "games": 2,
+    "turns": 5970,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/queen_of_spades": {
+    "games": 2,
+    "turns": 5453,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/trophy": {
+    "games": 2,
+    "turns": 5257,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/default": {
+    "games": 2,
+    "turns": 15448,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/portals": {
+    "games": 2,
+    "turns": 20514,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/autarky": {
+    "games": 2,
+    "turns": 16162,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/trauma": {
+    "games": 2,
+    "turns": 17187,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/maze": {
+    "games": 2,
+    "turns": 29620,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/schooltime": {
+    "games": 2,
+    "turns": 35963,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/weakhold": {
+    "games": 2,
+    "turns": 8171,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/stripes": {
+    "games": 2,
+    "turns": 4528,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/tower_defense": {
+    "games": 2,
+    "turns": 11158,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/slithery_fight": {
+    "games": 2,
+    "turns": 50119,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/islands": {
+    "games": 2,
+    "turns": 39015,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/australia": {
+    "games": 2,
+    "turns": 44054,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/unsw": {
+    "games": 2,
+    "turns": 48880,
+    "fallback": 0,
+    "per_1k": 0.0
+   }
+  },
+  "kageyama-02b-p1-hb1-fb": {
+   "live/devil": {
+    "games": 2,
+    "turns": 1572,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "ALL": {
+    "games": 34,
+    "turns": 369369,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/dilemma": {
+    "games": 2,
+    "turns": 2771,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/portals": {
+    "games": 2,
+    "turns": 20013,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/queen_of_spades": {
+    "games": 2,
+    "turns": 4315,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/trophy": {
+    "games": 2,
+    "turns": 6521,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/default": {
+    "games": 2,
+    "turns": 20792,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/autarky": {
+    "games": 2,
+    "turns": 9900,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/trauma": {
+    "games": 2,
+    "turns": 18764,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/schooltime": {
+    "games": 2,
+    "turns": 40809,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/weakhold": {
+    "games": 2,
+    "turns": 7835,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/stripes": {
+    "games": 2,
+    "turns": 2796,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/tower_defense": {
+    "games": 2,
+    "turns": 16501,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/slithery_fight": {
+    "games": 2,
+    "turns": 50060,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/maze": {
+    "games": 2,
+    "turns": 28164,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/australia": {
+    "games": 2,
+    "turns": 45973,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/islands": {
+    "games": 2,
+    "turns": 41996,
+    "fallback": 0,
+    "per_1k": 0.0
+   },
+   "live/unsw": {
+    "games": 2,
+    "turns": 50587,
+    "fallback": 0,
+    "per_1k": 0.0
+   }
+  },
+  "_errors": [],
+  "_games": 68
+ },
+ "rows": [
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/devil",
+   "seat": "A",
+   "turns": 533,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 131,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/devil",
+   "seat": "A",
+   "turns": 856,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 177,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/dilemma",
+   "seat": "A",
+   "turns": 1257,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 285,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/dilemma",
+   "seat": "B",
+   "turns": 4713,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 469,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/devil",
+   "seat": "B",
+   "turns": 645,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 139,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/queen_of_spades",
+   "seat": "A",
+   "turns": 1308,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 319,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/trophy",
+   "seat": "A",
+   "turns": 632,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 142,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/trophy",
+   "seat": "B",
+   "turns": 4625,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 174,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/queen_of_spades",
+   "seat": "B",
+   "turns": 4145,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/default",
+   "seat": "B",
+   "turns": 11052,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/default",
+   "seat": "A",
+   "turns": 4396,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/portals",
+   "seat": "B",
+   "turns": 10007,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/portals",
+   "seat": "A",
+   "turns": 10507,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/autarky",
+   "seat": "A",
+   "turns": 6796,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/autarky",
+   "seat": "B",
+   "turns": 9366,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/trauma",
+   "seat": "A",
+   "turns": 9758,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/trauma",
+   "seat": "B",
+   "turns": 7429,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/maze",
+   "seat": "A",
+   "turns": 15530,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 487,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/schooltime",
+   "seat": "B",
+   "turns": 16605,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/weakhold",
+   "seat": "A",
+   "turns": 3339,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 283,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/maze",
+   "seat": "B",
+   "turns": 14090,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/stripes",
+   "seat": "A",
+   "turns": 2112,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 215,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/weakhold",
+   "seat": "B",
+   "turns": 4832,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 350,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/stripes",
+   "seat": "B",
+   "turns": 2416,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 257,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/schooltime",
+   "seat": "A",
+   "turns": 19358,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/devil",
+   "seat": "B",
+   "turns": 716,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 127,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/dilemma",
+   "seat": "B",
+   "turns": 991,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 197,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/tower_defense",
+   "seat": "A",
+   "turns": 9706,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 436,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/dilemma",
+   "seat": "A",
+   "turns": 1780,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 428,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/tower_defense",
+   "seat": "B",
+   "turns": 1452,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 420,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/slithery_fight",
+   "seat": "A",
+   "turns": 25167,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/slithery_fight",
+   "seat": "B",
+   "turns": 24952,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/portals",
+   "seat": "A",
+   "turns": 9515,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/islands",
+   "seat": "B",
+   "turns": 22903,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/islands",
+   "seat": "A",
+   "turns": 16112,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/australia",
+   "seat": "A",
+   "turns": 19984,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/queen_of_spades",
+   "seat": "B",
+   "turns": 3542,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 199,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/australia",
+   "seat": "B",
+   "turns": 24070,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/portals",
+   "seat": "B",
+   "turns": 10498,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/queen_of_spades",
+   "seat": "A",
+   "turns": 773,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 221,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/trophy",
+   "seat": "A",
+   "turns": 548,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 126,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/trophy",
+   "seat": "B",
+   "turns": 5973,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 189,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/unsw",
+   "seat": "B",
+   "turns": 24547,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-01b-p1-slot-fb",
+   "map": "live/unsw",
+   "seat": "A",
+   "turns": 24333,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/default",
+   "seat": "A",
+   "turns": 10601,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/default",
+   "seat": "B",
+   "turns": 10191,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/autarky",
+   "seat": "B",
+   "turns": 6097,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/trauma",
+   "seat": "A",
+   "turns": 5696,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/trauma",
+   "seat": "B",
+   "turns": 13068,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 430,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/autarky",
+   "seat": "A",
+   "turns": 3803,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/schooltime",
+   "seat": "B",
+   "turns": 21103,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/schooltime",
+   "seat": "A",
+   "turns": 19706,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/weakhold",
+   "seat": "A",
+   "turns": 6927,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 378,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/stripes",
+   "seat": "A",
+   "turns": 1814,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 161,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/stripes",
+   "seat": "B",
+   "turns": 982,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 116,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/weakhold",
+   "seat": "B",
+   "turns": 908,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/tower_defense",
+   "seat": "A",
+   "turns": 9791,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/tower_defense",
+   "seat": "B",
+   "turns": 6710,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 413,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/slithery_fight",
+   "seat": "A",
+   "turns": 24933,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/slithery_fight",
+   "seat": "B",
+   "turns": 25127,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/maze",
+   "seat": "B",
+   "turns": 13154,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/maze",
+   "seat": "A",
+   "turns": 15010,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/australia",
+   "seat": "A",
+   "turns": 23380,
+   "fallback": 0,
+   "winner": "B",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/australia",
+   "seat": "B",
+   "turns": 22593,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/islands",
+   "seat": "A",
+   "turns": 22470,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/islands",
+   "seat": "B",
+   "turns": 19526,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/unsw",
+   "seat": "A",
+   "turns": 24217,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  },
+  {
+   "bot": "kageyama-02b-p1-hb1-fb",
+   "map": "live/unsw",
+   "seat": "B",
+   "turns": 26370,
+   "fallback": 0,
+   "winner": "A",
+   "rounds": 500,
+   "errors": []
+  }
+ ]
+}

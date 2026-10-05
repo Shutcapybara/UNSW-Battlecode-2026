@@ -1,0 +1,462 @@
+{
+ "panel": "pool",
+ "parent": "carthage-05-free-sprint",
+ "cands": {
+  "kageyama-02-p1-hb1": {
+   "seeds": [
+    1
+   ],
+   "pairs": 272,
+   "by_map": {
+    "live/australia": [
+     2,
+     1,
+     13,
+     3,
+     3
+    ],
+    "live/autarky": [
+     0,
+     3,
+     13,
+     3,
+     15
+    ],
+    "live/default": [
+     1,
+     3,
+     12,
+     4,
+     13
+    ],
+    "live/devil": [
+     0,
+     10,
+     6,
+     10,
+     16
+    ],
+    "live/dilemma": [
+     0,
+     3,
+     13,
+     3,
+     16
+    ],
+    "live/islands": [
+     0,
+     1,
+     15,
+     1,
+     7
+    ],
+    "live/maze": [
+     1,
+     5,
+     10,
+     6,
+     6
+    ],
+    "live/portals": [
+     2,
+     6,
+     8,
+     8,
+     9
+    ],
+    "live/queen_of_spades": [
+     0,
+     4,
+     12,
+     4,
+     16
+    ],
+    "live/schooltime": [
+     0,
+     1,
+     15,
+     1,
+     3
+    ],
+    "live/slithery_fight": [
+     3,
+     4,
+     9,
+     7,
+     7
+    ],
+    "live/stripes": [
+     3,
+     0,
+     13,
+     3,
+     15
+    ],
+    "live/tower_defense": [
+     0,
+     3,
+     13,
+     3,
+     14
+    ],
+    "live/trauma": [
+     3,
+     4,
+     9,
+     7,
+     7
+    ],
+    "live/trophy": [
+     1,
+     6,
+     9,
+     7,
+     16
+    ],
+    "live/unsw": [
+     2,
+     3,
+     11,
+     5,
+     5
+    ],
+    "live/weakhold": [
+     6,
+     4,
+     6,
+     10,
+     15
+    ]
+   }
+  },
+  "asahi-12-c05-lambda0": {
+   "seeds": [
+    1
+   ],
+   "pairs": 272,
+   "by_map": {
+    "live/australia": [
+     2,
+     2,
+     12,
+     4,
+     4
+    ],
+    "live/autarky": [
+     0,
+     3,
+     13,
+     3,
+     14
+    ],
+    "live/default": [
+     1,
+     2,
+     13,
+     3,
+     14
+    ],
+    "live/devil": [
+     0,
+     10,
+     6,
+     10,
+     16
+    ],
+    "live/dilemma": [
+     0,
+     5,
+     11,
+     5,
+     16
+    ],
+    "live/islands": [
+     0,
+     4,
+     12,
+     4,
+     8
+    ],
+    "live/maze": [
+     0,
+     2,
+     14,
+     2,
+     4
+    ],
+    "live/portals": [
+     2,
+     5,
+     9,
+     7,
+     7
+    ],
+    "live/queen_of_spades": [
+     0,
+     7,
+     9,
+     7,
+     15
+    ],
+    "live/schooltime": [
+     0,
+     1,
+     15,
+     1,
+     3
+    ],
+    "live/slithery_fight": [
+     3,
+     3,
+     10,
+     6,
+     6
+    ],
+    "live/stripes": [
+     5,
+     0,
+     11,
+     5,
+     15
+    ],
+    "live/tower_defense": [
+     0,
+     1,
+     15,
+     1,
+     13
+    ],
+    "live/trauma": [
+     1,
+     5,
+     10,
+     6,
+     7
+    ],
+    "live/trophy": [
+     0,
+     6,
+     10,
+     6,
+     16
+    ],
+    "live/unsw": [
+     2,
+     1,
+     13,
+     3,
+     3
+    ],
+    "live/weakhold": [
+     5,
+     0,
+     11,
+     5,
+     13
+    ]
+   }
+  },
+  "asahi-13-p1hb1-l141": {
+   "seeds": [
+    1
+   ],
+   "pairs": 272,
+   "by_map": {
+    "live/australia": [
+     2,
+     1,
+     13,
+     3,
+     3
+    ],
+    "live/autarky": [
+     0,
+     1,
+     15,
+     1,
+     15
+    ],
+    "live/default": [
+     3,
+     5,
+     8,
+     8,
+     16
+    ],
+    "live/devil": [
+     0,
+     8,
+     8,
+     8,
+     14
+    ],
+    "live/dilemma": [
+     1,
+     2,
+     13,
+     3,
+     16
+    ],
+    "live/islands": [
+     0,
+     1,
+     15,
+     1,
+     5
+    ],
+    "live/maze": [
+     1,
+     4,
+     11,
+     5,
+     6
+    ],
+    "live/portals": [
+     2,
+     4,
+     10,
+     6,
+     7
+    ],
+    "live/queen_of_spades": [
+     0,
+     2,
+     14,
+     2,
+     16
+    ],
+    "live/schooltime": [
+     0,
+     3,
+     13,
+     3,
+     6
+    ],
+    "live/slithery_fight": [
+     6,
+     1,
+     9,
+     7,
+     7
+    ],
+    "live/stripes": [
+     5,
+     1,
+     10,
+     6,
+     15
+    ],
+    "live/tower_defense": [
+     1,
+     0,
+     15,
+     1,
+     13
+    ],
+    "live/trauma": [
+     2,
+     3,
+     11,
+     5,
+     5
+    ],
+    "live/trophy": [
+     0,
+     5,
+     11,
+     5,
+     16
+    ],
+    "live/unsw": [
+     2,
+     6,
+     8,
+     8,
+     8
+    ],
+    "live/weakhold": [
+     6,
+     0,
+     10,
+     6,
+     15
+    ]
+   }
+  }
+ },
+ "parent_seed_noise": {
+  "live/schooltime": [
+   48,
+   10
+  ],
+  "live/portals": [
+   48,
+   14
+  ],
+  "live/slithery_fight": [
+   48,
+   16
+  ],
+  "live/australia": [
+   48,
+   12
+  ],
+  "live/islands": [
+   48,
+   10
+  ],
+  "live/unsw": [
+   48,
+   10
+  ],
+  "live/queen_of_spades": [
+   48,
+   0
+  ],
+  "live/default": [
+   48,
+   12
+  ],
+  "live/trophy": [
+   48,
+   12
+  ],
+  "live/dilemma": [
+   48,
+   6
+  ],
+  "live/autarky": [
+   48,
+   8
+  ],
+  "live/devil": [
+   48,
+   2
+  ],
+  "live/trauma": [
+   48,
+   14
+  ],
+  "live/maze": [
+   48,
+   6
+  ],
+  "live/weakhold": [
+   48,
+   4
+  ],
+  "live/stripes": [
+   48,
+   4
+  ],
+  "live/tower_defense": [
+   48,
+   18
+  ]
+ },
+ "parent_seeds": [
+  1,
+  2,
+  3
+ ]
+}
