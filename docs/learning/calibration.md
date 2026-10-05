@@ -118,3 +118,10 @@ carthage-05 on the queen-keeper panel 0.40.
 **Outcome of the owner's two q2b forecasts (Asahi, 06:19Z):** pool −2.39 points [−5.89, +0.92] (5th percentile below
 −5: event failed, Brier 0.3025); keeper panel against `bokuto-04-queen` 12 of 34 against 16 of 34 (event failed,
 Brier 0.16).
+
+**Outcome of the Chair's λ 1.72 forecast (Asahi, 07:21Z):** A1-400 at λ 1.72 −7.35 points [−12.15, −2.21] (forecast −2;
+event "5th percentile above −5" at 0.35 did not occur; Brier 0.1225).
+
+**Chair's forecasts on file (D-077), not council-scored.** Trial 2 (`bokuto-13-cull`, primary statistic at rating
+1725): point +0.10; exceeds 14585's reference (−0.043) by more than 0.03: 0.75; highest of the three windows: 0.60.
+A1 on the full rows at λ 1.76 on the seed-1 pool: −6 points; 5th percentile above −5: 0.15.

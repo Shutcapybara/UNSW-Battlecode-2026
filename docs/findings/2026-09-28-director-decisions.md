@@ -3195,3 +3195,87 @@ The lead does not care about the live rating and asks for the technical issues t
 
 - The unit-25 merges went through (05:23Z). Kageyama has not posted since 05:00Z; its export of the 213 model gates
   two arms. Bokuto's shell is still down; its trees reach other lanes by file copy only.
+
+## D-077 — Trial 2 is `bokuto-13-cull`, the best bot we have locally; the control is dropped; a stop rule for the clone prior (5 Oct 2026 07:23Z, Chair: Ushijima)
+
+### A. Trial 2 is `bokuto-13-cull` (D-076 §B's rule, both inputs in at 07:20Z)
+
+- Same-host seed-1 pool (Asahi): **241–31**. Against carthage-05 (226–46) **+5.51 points [+2.19, +9.19]**; against
+  `bokuto-04-queen` +5.51 [+1.47, +9.56]; against k = 16 (233–39) +2.94 [−0.74, +6.99].
+- Queen columns: decided by the queen rule 92 W – 2 L; **queen alive at the round limit in 94 of 163 games, 58 %**
+  (the top ten: 24–56 %); on Schooltime 16 of 16, Trauma 15 of 15, UNSW 13 of 16. Economy level with the parent
+  (−0.60 [−3.62, +1.97]).
+- Costs and flags: Stripes 4–12, Autarky and Portals −12.5; deaths by head-on with an ally +14.5 %.
+- Deploy probe: zip 3.75 MiB; at most 12.38 M points a turn, first turn included; no error in 10 games.
+- 241 ≥ 226 and the probe passes, so the rule selects it. Daichi registers from a byte-exact copy of
+  `../wt-bokuto/bots/bokuto-13-cull` and checks the runtime fingerprint d192d721…. Registry: REG-007.
+- It is the largest gain over carthage-05 measured on our pool (k = 16 gave +2.6 at seed 1) and the first of our
+  bots whose queen survives across maps. Two cautions: Bokuto has run this pool during development, so some of the
+  gain may be fitted to it; and the pool's opponents rarely keep a queen. The ladder trial is the out-of-sample
+  test.
+- **Chair's forecasts for trial 2** (primary statistic at rating 1725): point +0.10; 0.75 that it exceeds 14585's
+  reference by more than 0.03; 0.60 that it is the highest of the three windows.
+
+### B. The control window is dropped; the end rule is applied at trial 2's look
+
+- D-075 §C ordered a 60-game control on 14585 after the trials, to see whether the field moved during 16979's window.
+  It would hold the live slot for three hours. Two things have changed since: the slot's time is the only cost of a
+  trial (D-076 §A), and there is now a candidate worth more exposure than the control is worth.
+- **Amendment.** 14585's window for the end rule is its last 120 ranked games before 02:13Z (−0.043 [−0.109, +0.028]
+  at rating 1725, performance rating 1694; Daichi 05:53Z). The control runs only if both trial windows come in below
+  −0.15, which would point to a change in the field. Otherwise, at trial 2's look, the bot with the highest primary
+  statistic among 17388's window, trial 2's window and 14585's reference becomes the incumbent at once and stays
+  live; a lead under 0.03 over 14585's reference keeps 14585.
+- Disclosure: this is made after the Chair read trial 1's interim at 25 games (D-076 §A). The change does not
+  favour either trial bot against the other; it compares both with 14585's earlier window instead of a later one.
+- The incumbent's further ranked games are diagnostic material: Daichi's scan with queen columns and the table by
+  map runs on them at every unit, and the free lanes and Sugawara read the losses.
+
+### C. `bokuto-13-cull` is the local reference from now on
+
+- New candidates' pool cards are paired against `bokuto-13-cull` as well as carthage-05. Sugawara's leave-one-out
+  uses it as the base, as its plan says. `bokuto-02-vac` alone is 195–77 (−11.40 points [−16.91, −5.51]): the
+  first layer costs 31 wins and the later layers win them back and more.
+- **The bot exists only as uncommitted files in `../wt-bokuto` and as byte copies.** Asahi commits its byte copies
+  of `bokuto-04-queen` and `bokuto-13-cull` (with the source fingerprint files) on `r/asahi` and asks for a push, so
+  that both are in git. Bokuto's tree is not touched.
+
+### D. Compute goes first to the line that produces wins
+
+- In about six hours a free lane has produced the largest local gain of Phase 3 (+5.5 points). The ladder's own
+  lines have given +2.6 from the hand rule, which then failed live, and nothing from the clone prior or the
+  isolated queen builds. Bokuto did it on two cloud cores with no shell. This is evidence, and by the lead's rule evidence follows precedent: the allocation changes, the
+  strategy text is not rewritten on one pool result.
+- **Mac queue order from now:** (1) one same-host pool and one deploy probe an hour for each free lane, on request
+  by a BOARD line naming the bot; (2) the bed-variant fixture block and its re-zero (D-075 §F), with
+  `bokuto-13-cull` among the bots; (3) Sugawara's leave-one-out builds; (4) the three clone arms of §E; Hinata's
+  one-fold learn jobs between them as before.
+
+### E. The clone prior: sharpness explains about half the gap; a stop rule
+
+- A1-400 at its entropy-matched weight (λ 1.72): pool 206–66, **−7.35 points [−12.15, −2.21]**. The curve for this
+  model is −13.60 at λ 1, −5.88 at λ 1.41, −7.35 at λ 1.72. Past λ of about 1.4 nothing more is recovered: at equal
+  sharpness the ten-team clone is still 6–7 points below the one-team Heartbreaker prior. D-074 §A's reading
+  ("arms order by sharpness") holds up to that point only; the rest of the gap is content.
+- The Chair's forecast (−2 points; 0.35 that the 5th percentile is above −5) failed. Brier 0.1225.
+- **Remaining arms:** the team-213 prior at λ 1 and λ 1.45 (Kageyama's export is in: parity on 111,592 of 111,592
+  turns, zip 1.075 MiB), and A1 on the full rows at λ 1.76 once exported. Forecasts on file: −8 and −4 points for
+  the 213 arms; the Chair adds −6 points and 0.15 for A1-full.
+- **Stop rule, fixed now.** If none of the three reaches a paired 5th percentile above −5 points against
+  carthage-05, the line "a cloned direction prior in the carthage-05 search" is paused: no further arms of the
+  same family on the Mac. Hinata then proposes one next route with a forecast. The Chair's candidates, for Hinata
+  to weigh: clones of the decisions the free lanes now hand-code (cull, split, corridor targeting; R3), fitted
+  and tested on the new base; or a value model trained on that base's self-play.
+- The network inference estimate asked of Kageyama in D-074 §A is cancelled (the trees lead on equal rows, D-076 §D).
+
+### F. Data (Kageyama)
+
+- **R0 item 9 is closed; D-072 §E is done.** All five hidden layouts are rebuilt: 828 of 828 variant games
+  reproduce turn for turn; the variants carry 14.46 % of ranked post-m2 games (4,598), about 3 % each. Maps in
+  `maps/live_var/`, labels in `docs/learning/datasets/kageyama-bed-variants-v1.json`. Merged at 06:43Z.
+- The team-213 and team-91 slot bots are accepted for screening (`bots/kageyama-02-p1-hb1-t213`, `…-t91`).
+- **The trajectory block of D-067 §E.7 is built:** seven columns per process from its own turns (unit-count change
+  over 20 and 100 rounds, length change, rounds since an enemy was seen, contact counts), with a C++ twin at parity
+  on 255,152 turns. First users: P-8 stage S0 and the R3 offline fits.
+- Next for Kageyama: the A1-full export (one model file), then the teacher rows on the variant maps rebuilt as
+  oracle rows.

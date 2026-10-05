@@ -125,9 +125,17 @@ at first. A trial therefore costs the incumbent's rating nothing.
   31 losses against carthage-05; three stacked layers, so nothing is attributable to the queen block alone.
 - status: `candidate`; trial 2 unless `bokuto-13-cull` qualifies (D-076 §B).
 
-### REG-007 — `bokuto-13-cull` (free lane Bokuto; candidate for trial 2, D-076 §B)
+### REG-007 — `bokuto-13-cull` (free lane Bokuto; **trial 2**, D-077 §A; the local reference)
 
-- rung: outside the ladder (free lane). Tree `../wt-bokuto/bots/bokuto-13-cull` (uncommitted). Zip 3.58 MiB (Bokuto).
-- local: 70–31–1 against carthage-05 by Bokuto's own run (102 games; the scorecard it iterates on).
-- gate for the trial: same-host seed-1 pool wins at least 226 and a passing deploy probe, posted by 07:45Z.
-- status: `candidate`.
+- rung: outside the ladder (free lane). Tree `../wt-bokuto/bots/bokuto-13-cull` (uncommitted); byte copy in
+  `wt-asahi/bots/bokuto-13-cull`, to be committed on `r/asahi` (D-077 §C). Runtime fingerprint d192d721….
+- change on the carthage-05 chassis (Bokuto's layers 02 to 13): a survival guard and cage split; a dead-end branch
+  model; queen caution, hiding and feeding; allies yield to the queen; the queen fights while the team is small;
+  corridors worth at least 3 pearls are explicit targets; a spare length-2 dragon culls itself at the unit cap.
+- local: 70–31–1 against carthage-05 by Bokuto's own run (102 games). **Same-host seed-1 pool (Asahi, 07:20Z):
+  241–31; against carthage-05 +5.51 points [+2.19, +9.19]; against `bokuto-04-queen` +5.51 [+1.47, +9.56]; against
+  k = 16 +2.94 [−0.74, +6.99]. Queen-decided 92–2; queen alive at the round limit 94 of 163 (58 %).** Economy
+  −0.60 [−3.62, +1.97]. Costs: Stripes 4–12, Autarky and Portals −12.5; ally head-on deaths +14.5 %.
+- deploy: probe passed: zip 3.75 MiB; at most 12.38 M points a turn, first turn included; no error in 10 games.
+- live: trial 2, after trial 1's look (about 08:00Z). End rule: D-075 §C as amended by D-077 §B.
+- status: `candidate` (trial 2).
