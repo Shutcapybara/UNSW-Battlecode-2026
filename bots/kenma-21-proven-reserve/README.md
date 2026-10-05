@@ -11,3 +11,29 @@ Status: ASan/UBSan passes closed/unknown/portal/open terrain, queen-only proof s
 Validation command: compile tools/kenma/test_conditional_reserve.cpp with clang++ -O1 -g -std=c++20 -fsanitize=address,undefined and this bot as include directory, then execute the resulting binary. Probe runner tools/kenma/panel.py uses Schooltime seeds1/2/3/5 both seats againstCarthage, and UNSW seed1 both seats againstFenrir/Yuna/Chaewon/Gavroche. All fixture/source manifests and outputs are main build/kenma/k21-schooltime-s1235/ and k21-unsw-pool-s1/. Full102 k21-v-carthage-s123 is queued only after the survival and release-marker checks pass. Exact-source sandbox deployment remains outstanding.
 
 Completed probes: Schooltime **8–0**, all8 original queens survive at length3 and zero release markers; UNSW **6–2**, release markers in every replay (2362 total), zero faults. All16 replays read. UNSW wins differ from the reserve-free control: loses FenrirA/GavrocheA, gains YunaA/ChaewonA. Trace against19 shows first action divergence in FenrirA at index5463/round88: uncertified dragon66 holds its reserve and declines a split at population63. There are571 high-population turns with no outgoing proof flag in that replay; propagation is incomplete, not immediate global consensus. Full102 native Carthage screen now running. Evidence reserve-first-audit.json, k21-probe-diagnostics.json and per-run replay-log-audit.json.
+
+## Full Carthage comparison
+
+60–42/102, zero draws/errors; all17 ranked maps,both seats,seeds1–3. Two additional wins versus03, on Australia andIslands; every other map total unchanged. All102 replays read;17,598 reserve-release markers audited. All6 Schooltime queens survive at length3. No best/promotion claim: matched four-map64 zoo diagnostic running, exact deployment queued after it, broader scorecard outstanding.
+
+| Map | W | L |
+|---|---:|---:|
+| schooltime | 6 | 0 |
+| portals | 3 | 3 |
+| slithery_fight | 4 | 2 |
+| queen_of_spades | 3 | 3 |
+| default | 3 | 3 |
+| trophy | 3 | 3 |
+| dilemma | 3 | 3 |
+| autarky | 3 | 3 |
+| devil | 3 | 3 |
+| trauma | 3 | 3 |
+| australia | 5 | 1 |
+| islands | 3 | 3 |
+| unsw | 5 | 1 |
+| maze | 4 | 2 |
+| weakhold | 3 | 3 |
+| stripes | 3 | 3 |
+| tower_defense | 3 | 3 |
+
+Output main build/kenma/k21-v-carthage-s123/{score,manifest,replay-log-audit}.json and k21-final-diagnostics.json.
