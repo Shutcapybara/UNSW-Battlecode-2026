@@ -3831,3 +3831,102 @@ themselves.
   result against `bokuto-18-queenfeed` on `qk2` and the head-to-head.
 - Sugawara reads the change of any trial candidate before its upload when the timing allows; this does not hold
   a trial up.
+
+## D-086 — The exit-split finding as checked; trial 4 is `asahi-27-b13-reserve`; the points limit is to be measured (5 Oct 2026 16:24Z, Chair: Ushijima)
+
+### A. Recorded after a second lane's check (D-083 §A): the exit-split finding, amended
+
+- Sugawara checked Bokuto's finding of D-085 §B (15:37Z; `docs/learning/reviews/D-085-exitsplit-sugawara.md`, code
+  `build/sugawara/exitsplit/`); Bokuto accepts the amendment (15:48Z).
+  - **The gap replicates.** Over 17530's 120 ranked games we lose 132.1 cells a game at walls between rounds 100
+    and 300 against 51.3 for our opponents.
+  - **The cause given in D-085 §B covers about a quarter of it.** Of our 2,482 wall deaths at length 3 to 5: 46 %
+    are a dragon of length 3 that cannot split at all; 27 % are the head part left behind after a production
+    split; 20 % die whole while the team is at the unit cap (63 units or more); 7 % die whole below the cap.
+  - `bokuto-27-exitsplit` reaches only the 27 % class. Upper bound of its effect: 7.3 cells a game [5.5, 9.1],
+    about 9 % of the 81-cell excess.
+  - The largest single block is on Portals: 73 deaths a game of length-3 dragons dying whole (219 cells a game).
+    Our corridor walkers die at length 3 where opponents' die at length 2 (1,860 against 612).
+  - Caveat (Sugawara): these are gross lengths. A corpse becomes pearls, so the classes should be ranked on net loss.
+- This replaces the two sentences of D-085 §B that give "41 %" and the single cause. The code path Bokuto found
+  is real; it is one of four classes. The larger ones are the entry rule (length-3 dragons walking into
+  corridors) and the unit cap.
+
+### B. `bokuto-27-exitsplit` measured (Asahi, 15:39Z; seed 1, same host)
+
+- It qualifies: probe passed (3.76 MiB, 12.81 M points at most a turn); pool 242–30, +5.88 points [+1.47, +9.93]
+  against carthage-05.
+- It does what it says: queen wall deaths 29 against the parent's 41 on the pool; total length at round 300
+  137.1 against 130.3 on the pool and 104.4 against 94.5 on `qk2`.
+- No panel shows more wins than its parent `bokuto-18-queenfeed`: pool +1.84 [−0.74, +4.41]; head to head against
+  the incumbent 58–44 (parent 61–41; paired −2.9 [−12.7, +6.9]); `qk2` 26–42 (parent 30–38; paired −5.88
+  [−14.71, +1.47]). Queen alive at round 300 on the pool: 133 of 190 against 159 of 200; Bokuto reads this as the
+  new rule applying to the queen and has removed that in its later bots.
+- On the head-to-head it is below `asahi-27-b13-reserve` (69–33): −10.8 points [−20.6, −1.0].
+
+### C. The trial queue, amended (replaces the choice in D-085 §C)
+
+- **Trial 4 is `asahi-27-b13-reserve`**, started by Daichi at trial 3's look. `bokuto-27-exitsplit` is not
+  trialled on its own.
+- Reasons. (1) 27 differs from the bot now on trial by one change whose effect is bounded at 7.3 cells a game.
+  A 60-game trial has an interval about ±0.10 to ±0.12 a game wide; it cannot see that. (2) On the two local
+  panels that play at our level, `asahi-27-b13-reserve` is the best of the three (head to head 69–33, `qk2`
+  33–35), and on the head-to-head its interval against 27 excludes zero. (3) It is the trial-3 bot without the queen changes, so
+  trials 3 and 4 together separate the reserve from the queen changes on the ladder.
+- Caveat: the head-to-head ranked `bokuto-13-cull` above the incumbent and the ladder did not. No local panel is
+  validated against the ladder yet; reason (1) is the one the choice rests on.
+- D-085 §C made qualification the only condition and left out the comparison; that was the Chair's drafting
+  error. **From now on:** the ladder trial goes to the qualified candidate that differs most from the bots
+  already trialled, then by `qk2` and the head-to-head. Single changes are judged locally on their mechanism
+  columns (wall deaths, total length, queen alive); bundles aimed at measured loss classes go to the ladder.
+- **Trial 5 is Bokuto's latest bundle with a complete card** (pool, `qk2`, head to head, probe) when trial 4
+  starts: at present `bokuto-35-knownbeds`, else 34, else 33. The Chair names it at the next unit from the
+  cards then in. These bots switch the 17-map atlas on again, so D-080 §D applies before a trial: Asahi's `gen`
+  panel and hidden-layout block not below `bokuto-13-cull`'s, and a twin with the atlas off on the card.
+- `bokuto-25-reserve4` and `bokuto-26-hunt` stay on Asahi's queue as component readings, not trial candidates.
+
+### D. The look
+
+- Hinata (15:38Z): the ladder gives about 16.5 ranked games an hour, not the 25 assumed in D-084. Trial 3's look
+  falls at the first series boundary at or after 60 games, about 17:50Z to 18:10Z. A trial takes about 3.6 hours;
+  about six fit in a day.
+- Hinata's curve block for the look was frozen before any outcome was read (`tools/hinata/look.py` 6a691c0f).
+- Bokuto reports that 17530 played 100 of its 120 ranked games in seat B (48–52) and 20 in seat A (12–8).
+  **Asked of Hinata:** seat by result for each of our trialled submissions, as a column beside the look and not
+  part of the end rule, and whether the seat draw is skewed for us or for everyone. Server replays can swap
+  seats; use the oracle rows. If the seat matters and the draw is skewed, the trial statistic needs a seat term;
+  that is decided when the column exists.
+
+### E. The compute limit: our documents say 30 M points a turn; the contest's page says 100 M
+
+- The contest's timeouts page, read by the Chair today: "Points per dragon per turn | 100 million"; 48 MB of
+  memory per dragon; a turn that exhausts its points delivers no reply and the dragon dies; the first turn is not
+  exempt; a write to stdout or stderr costs 2,500,000 points plus 4,000 a byte. A competitor's public write-up
+  gives the same limit. Our brief, the free-lane prompt and the probes assume 30 M. Our bots peak at 12.4 M to
+  12.8 M.
+- If 100 M holds, our search bots use about an eighth of the budget, and deeper search is a lever nobody here
+  has been able to try.
+- **Ordered, no upload involved:**
+  1. Hinata or Sugawara, whoever is free first: from the corpus (the decoder's per-side CPU points), the highest
+     points a turn that top-ten dragons used and survived in ranked games. Any surviving turn above 30 M settles
+     it for the server.
+  2. Asahi, after its current jobs: a local burn test on unswbc 1.2.3. A copy of a current bot spends about 50 M
+     points in one turn of one dragon; does the dragon die? Also how much of the 12.8 M peak is output writes.
+- **Until one of these is in, the limit stays 30 M for every bot.** If confirmed, the brief and the prompts
+  change and Bokuto is told at once; the working ceiling is then set with a margin, by a later record.
+
+### F. For the record: the lead's question on reinforcement learning
+
+- The lead asked the Chair whether RL on one RTX 4090 with a simulator rewritten in JAX is feasible. Nothing is
+  ordered. Facts gathered that bear on the programme:
+  - A competitor's public write-up (over|yonder, dated 2 Oct) describes a GPU port of the engine checked in
+    lockstep on 100,000 games (about 761,000 dragon-turns a second per card), PPO with a league and ladder
+    demonstrations, a 44 M-weight teacher distilled to an integer student of about 1 MB, on four rented H100s.
+    It reports no results. It is data, not precedent of success.
+  - Our corpus holds 159,515 server replays (hub, 16:20Z).
+  - The project record of 28 Sep has Qualifiers on 10 Oct and the Grand Final on 17 Oct; not rechecked. The
+    deadline remains the lead's (D-050 §2).
+- The Chair's reading given to the lead: from-scratch self-play does not fit those dates; the form that does is a
+  per-team clone fine-tuned against clone opponents on the existing engine (card P-7, entry throughput passed, no
+  training approved). A JAX port is about one day of the lead's design time plus parity testing by a lane. The
+  estimates are the Chair's and unscored.

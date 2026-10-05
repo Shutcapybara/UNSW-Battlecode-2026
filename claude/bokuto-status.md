@@ -50,7 +50,29 @@ length r300 on the pool 130 (b13 127.5, asahi-27 138.5).
 | **25-reserve4** | 18 + reserve 4 only | — | **JOB posted 15:0xZ** |
 | **26-hunt** | 18 + enemy-queen hunt only | — | **JOB posted** |
 
-**Next.** (a) Read the Mac cards for 25/26 paired against 18; (b) the trial-3 look (~17:30Z): if 18 fails, the next
+**Later in session 2 (15:00–16:00Z).** The economy leak has a mechanism: `decide()` preferred the production split (child
+2, score 8) to the escape split (−500) at a dead end, so a corridor walker of length L kept L − 2 at the head and died
+whole (27 fixes it; Sugawara's count: that class is 27 % of our L3–5 wall deaths, 46 % are 3-longs that cannot split
+(entered at 2, found 1 pearl), 20 % whole at the unit cap). Weakhold's six ladder eliminations are this cycle from r12
+(our visits: enter at 2–3, eat 2–3, die with 3; 1101's: enter at 3–4, exit the child, 2-head suicides; 38 visits vs 15
+by r150). Asahi's card for 27: pool 242–30 (+5.9 vs c05, +1.8 vs 18), total r300 137 vs 130, queen wall deaths 29 vs
+41, Weakhold Δecon +70; h2h vs kenma-03 58–44, qk2 26–42 — no win gain over 18 on any panel. Trial 4 = 27 (D-085).
+Also found: carthage's 10-map atlas no longer matches live Schooltime, Default, Trophy (edges changed); the 17-map atlas
+costs where it makes 400-round-old pearl memories reachable by whole-map routes (my reading); Portals: 73 L3 wall
+deaths a game are newborns queuing through one portal to one bed; the parked-queen idea (team 507 circles a 2×2 from
+the opening, alive 19/25) is implemented in 31 but locally worse — she grows on block pearls and leaves when enemies
+come. 17791's six mid-game queen deaths on the ladder are 2–3-long hunters walking her down over 3–6 rounds and
+portal exits onto her → 33's flee term.
+
+| 27-exitsplit | escape split before production split at dead ends | 23–11 | **trial 4 candidate; card above** |
+| 28-pocketnet | profit = pearls − 1; corridors of depth ≥ 2 are targets | 20–14 | eats +11 vs 27 |
+| 29 | 28 + reserve 4 | 21–13 | total r300 97 |
+| 30-atlasbeds | 29 + atlas on, long routes only for corridors/queen | 21–13 | |
+| 31-parkqueen | 30 + queen parks in a 2×2 (team 507) | 18–16 | queen 21 %: worse; kept as material |
+| 32-strictentry | 30 + 2-longs enter on pearls in sight only; escape split at the cap; newborn atlas | — | |
+| **33-flee** | 32 + queen flee term, portal mouths; queen excluded from escape-split-first | 19–15 | **JOB posted 15:5xZ** |
+
+**Next.** (a) Read the Mac cards for 25/26/33 paired against 18 and 27; (b) the trial-3 look (~17:30Z): if 18 fails, the next
 candidate is whichever of 25/26 carries on qk2/h2h; (c) the wall-death leak is the largest measured economy term — the
 corridor cycle needs a free slot at the exit (reserve) and walkers should not enter with length 2 when a 3-long cannot
 split (`profit` already requires len + p ≥ 4; the pearls are often gone by the end); (d) the queen's late feed must be

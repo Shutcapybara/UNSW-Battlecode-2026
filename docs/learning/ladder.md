@@ -2,10 +2,10 @@
 
 Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes only when this file records it.
 
-## Current state (5 Oct 2026 15:22Z)
+## Current state (5 Oct 2026 16:24Z)
 
 - **R0 passed 4 Oct 14:28Z (D-053 §A). R1: P-2 failed its confirmation 18:20Z (D-057 §B); rung open, behind R2. R2: development battery running (D-057 §C).**
-- **Incumbent of record: `kenma-03-pocket-queen` (17388)**: +0.005 [−0.072, +0.081] over its 129 ranked games; level with 14585 (−0.043) and `bokuto-13-cull` (−0.054 over 120). **Live now: trial 3, `bokuto-18-queenfeed` = submission 17791, since 14:19Z**; look at 60 ranked games (about 17:20Z). **Trials run back to back (D-084 §C):** Daichi applies the end rule at the look (more than 0.03 over the incumbent's statistic) and starts the next trial at once; **trial 4 is `bokuto-27-exitsplit` if it has qualified by trial 3's look, otherwise `asahi-27-b13-reserve`** (D-085 §C). Three targets for candidates: total length near 78 and 154 at rounds 100 and 300; queen alive at round 300 near 0.58; at least 70 % of round-300 leads converted.
+- **Incumbent of record: `kenma-03-pocket-queen` (17388)**: +0.005 [−0.072, +0.081] over its 129 ranked games; level with 14585 (−0.043) and `bokuto-13-cull` (−0.054 over 120). **Live now: trial 3, `bokuto-18-queenfeed` = submission 17791, since 14:19Z**; look at 60 ranked games (about 17:50Z to 18:10Z; the ladder gives about 16.5 ranked games an hour). **Trials run back to back (D-084 §C):** Daichi applies the end rule at the look (more than 0.03 over the incumbent's statistic) and starts the next trial at once; **trial 4 is `asahi-27-b13-reserve`; trial 5 is Bokuto's latest bundle with a complete card** (D-086 §C; `bokuto-27-exitsplit` qualified but shows no gain over its parent and is not trialled alone). Three targets for candidates: total length near 78 and 154 at rounds 100 and 300; queen alive at round 300 near 0.58; at least 70 % of round-300 leads converted.
 - Deadline: handled by the lead; the Chair imposes no freeze (D-050 §2).
 - GPU work may run on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3).
 
@@ -67,6 +67,12 @@ blocks live screens.
 
 ## Log
 
+- 5 Oct 16:24Z: D-086. Sugawara's check amends the exit-split finding: the wall-loss gap replicates (132.1 against
+  51.3 cells a game) but `bokuto-27-exitsplit` reaches 27 % of the length-3-to-5 wall deaths (at most 7.3 cells a
+  game). Its card: qualified, no gain over its parent, below `asahi-27-b13-reserve` head to head. **Trial 4 is
+  `asahi-27-b13-reserve`; trial 5 is Bokuto's latest bundle with a complete card.** Trial 3's look is about
+  17:50Z to 18:10Z. Seat column asked of Hinata. The contest's page gives 100 M points a turn against our 30 M:
+  two checks ordered, limit unchanged until one is in.
 - 5 Oct 15:22Z: D-085. Checked reading: against teams at 1725 or above the `bokuto-13-cull` lineage builds no lead
   and loses early fights (carried length lead +0.8 against +41.5 below 1725; conversion equal in both bands).
   Bokuto's finding: walkers die whole at corridor ends (131 cells a game at walls against 51); fix in

@@ -171,7 +171,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - same-host (Asahi, 10:40Z and 11:18Z): pool 228–44; against `bokuto-13-cull` −4.78 points [−8.46, −1.08]; variants 75 of 80; `gen` (29 unknown maps) −1.19 [−3.88, +1.51]; probe passed. Twin with the atlas off (`asahi-26-b17-atlas0`): pool 240–32; atlas on minus off −4.41 [−8.46, −0.35], exactly 0 on `gen`. `qk2` 28–40.
 - status: `measured`; not a trial candidate (the atlas costs 4.4 points where it is exact; D-081 §C).
 
-### REG-010 — `asahi-27-b13-reserve` (qualified; fallback for trial 3, D-083 §D)
+### REG-010 — `asahi-27-b13-reserve` (qualified; **trial 4**, D-086 §C)
 
 - `bokuto-13-cull` plus Kenma's two global reserve lines (non-queens decide with one unit slot fewer). Fingerprint
   16ceecff. Built for the Chair's reserve hypothesis of D-081 §B; Sugawara's replay check refuted the mechanism
@@ -180,7 +180,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - same-host (Asahi, 12:39Z): pool 237–35; against `bokuto-13-cull` −1.47 points [−2.94, 0.00]; against carthage-05
   +4.04 [+0.37, +8.09]; head to head against the incumbent 69–33 (parent 64–38; paired +4.90 [+0.98, +9.80]); `qk2`
   33–35; queen alive at the end 96 of 162 on the pool; probe passed (3.75 MiB, 12.37 M points).
-- status: `candidate`; trial 4 or 5 (D-085 §C: trial 4 if `bokuto-27-exitsplit` has not qualified by trial 3's look).
+- status: `candidate`; **trial 4, started by Daichi at trial 3's look** (D-086 §C).
 
 ### REG-011 — `bokuto-18-queenfeed` (free lane Bokuto; **trial 3 running as submission 17791**, D-084 §A)
 
@@ -196,19 +196,37 @@ at first. A trial therefore costs the incumbent's rating nothing.
   14:19:00Z. Trial 3: its first 60 ranked games; end rule applied by Daichi at the look (D-084 §C).
 - status: `uploaded` (trial 3).
 
-### REG-012 — `bokuto-27-exitsplit` (free lane Bokuto; **trial 4 if qualified by trial 3's look**, D-085)
+### REG-012 — `bokuto-27-exitsplit` (free lane Bokuto; qualified; not trialled on its own, D-086)
 
 - `bokuto-18-queenfeed` plus one change in `policy.hpp decide()`: when no move survives, the escape split (all but
   two segments turn and walk out) is taken before the production split. Bokuto's finding from 17530's 120 ladder
   games: 131 cells a game lost at walls between rounds 100 and 300 against 51 for opponents, 41 % of it walkers
   of length 3–5 dying whole at corridor ends; Weakhold 0 of 6.
-- measurement: Asahi's job running (pool, `qk2`, head-to-head against the incumbent, probe; paired against
-  `bokuto-18-queenfeed`); expected about 15:40Z.
-- status: `candidate`.
+- Sugawara's check (D-086 §A): the wall-loss gap replicates (132.1 against 51.3 cells a game), but this change
+  reaches only 27 % of the length-3-to-5 wall deaths; upper bound 7.3 cells a game [5.5, 9.1].
+- same-host (Asahi, 15:39Z; fingerprint 568c1a86): pool 242–30, +5.88 points [+1.47, +9.93] against carthage-05,
+  +1.84 [−0.74, +4.41] against its parent; head to head against the incumbent 58–44 (parent 61–41; paired −2.9
+  [−12.7, +6.9]; against `asahi-27-b13-reserve` −10.8 [−20.6, −1.0]); `qk2` 26–42 (parent 30–38); queen wall
+  deaths 29 against 41 and total length at round 300 137.1 against 130.3 on the pool; queen alive at round 300
+  133 of 190 against 159 of 200; probe passed (3.76 MiB, 12.81 M points).
+- status: `candidate` (component). Its change is carried by `bokuto-33` and later (REG-014).
 
 ### REG-013 — `bokuto-25-reserve4` and `bokuto-26-hunt` (free lane Bokuto; one-change twins of REG-011)
 
 - 25: four unit slots kept free for non-queens instead of one. 26: the enemy queen as prey from round 40.
-- measurement: on Asahi's queue after REG-012; read paired against `bokuto-18-queenfeed`.
-- status: `candidate`.
+- measurement: on Asahi's queue; read paired against `bokuto-18-queenfeed`.
+- status: `candidate` (component readings, not trial candidates; D-086 §C).
 
+### REG-014 — `bokuto-33-flee`, `bokuto-34-portalqueue`, `bokuto-35-knownbeds` (free lane Bokuto; bundles on REG-012)
+
+- 33: `bokuto-27-exitsplit` plus corridor economics (a visit pays at pearls − 1; corridors of depth 2 or more are
+  targets), the four-slot reserve of 25, an entry rule (a 2-long enters a corridor only on pearls in sight), the
+  17-map atlas on again for corridor targets, the queen and feeders only, and a queen dodge scored by distance to
+  enemy heads; the escape-split-first rule no longer applies to the queen. 34: 33 plus a portal-landing risk term
+  and a guard against queuing through one portal. 35: 34 plus a value for fast beds the atlas knows and nobody has
+  seen, so the openers go to the known bed clusters (`r/bokuto` 5273710a9).
+- local (Bokuto's harness, small sets): 33 at 19–15 on 34 games; 34 on Portals wall deaths 50 → 31; 35 as seat B
+  on Trophy 158 pearls by round 100 against 29 (before: 34 against 168).
+- measurement: Asahi's queue (pool, `qk2`, head to head, probe), 35 in place of 34 if 34 has not started. Atlas
+  bots: D-080 §D applies before a trial (`gen` panel, hidden-layout block, atlas-off twin).
+- status: `candidate`; **the latest with a complete card is trial 5** (D-086 §C).

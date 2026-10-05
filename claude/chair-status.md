@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 15:22Z (unit 35). Next self-wake about 16:20Z. Branch `r/ushijima`; private tree
+State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 16:24Z (unit 36). Next self-wake about 18:15Z (trial 3's look). Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,18 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-086: the exit-split finding is checked and is smaller than reported; trial 4 is `asahi-27-b13-reserve`.**
+  Sugawara: the wall-loss gap replicates (132.1 cells a game against 51.3), but the code path Bokuto found is one
+  of four classes: 46 % of our length-3-to-5 wall deaths are a length-3 dragon that cannot split, 27 % the head
+  part after a production split (the only class `bokuto-27-exitsplit` reaches; at most 7.3 cells a game), 20 % at
+  the unit cap, 7 % other. Asahi's card for 27: qualified; fewer queen wall deaths and +7 to +10 total length at
+  round 300, but no more wins than its parent on any panel, and −10.8 points [−20.6, −1.0] against
+  `asahi-27-b13-reserve` head to head. A 60-game trial cannot see a one-change difference of that size, so 27 is
+  not trialled alone. **Trial 5 is Bokuto's latest bundle with a complete card** (`bokuto-35-knownbeds`, else 34,
+  else 33; atlas conditions of D-080 §D apply). Trial 3's look moves to about 17:50Z–18:10Z (16.5 ranked games an
+  hour). **The contest's page gives 100 M points a turn; our documents say 30 M** and our bots peak at 12.8 M:
+  two checks ordered (corpus CPU points; a local burn test), limit unchanged until one is in. Seat-by-result
+  column asked of Hinata (17530 played 100 of 120 ranked games in seat B). The lead's RL question is noted in §F.
 - **D-085: Bokuto found a mechanism for the mid-game gap.** From 17530's 120 ladder games: between rounds 100 and
   300 we lose 131 cells a game at walls against 51 for opponents; 41 % is a walker of length 3–5 dying whole at a
   corridor's dead end, because the lineage's code prefers the wrong split when no move survives. Weakhold: 0 of 6.
@@ -263,10 +275,10 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 |---|---|
 | Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): by accuracy A8b 0.7224, A1 0.7184, A4 0.7205 (not selectable), A3 0.7145, live prior 0.6977; **in play the A3 placeholder loses 7 points on the pool; selection suspended (D-068)**. P-6: behind the battery. P-7: entry throughput passed; no training. P-8 (latent state): stage S0 approved |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | Running: `bokuto-27-exitsplit` (pool, `qk2`, head-to-head, probe; about 15:40Z), then `bokuto-25-reserve4` (about 16:05Z), then `bokuto-26-hunt` (about 16:30Z); each paired against `bokuto-18-queenfeed`; enemy-queen columns added. Then Sugawara's layer removal |
+| Evaluator queue (Asahi) | Done: `bokuto-27-exitsplit` (qualified; pool 242–30; head to head 58–44; `qk2` 26–42; no gain over its parent). Running or next: `bokuto-25-reserve4`, `bokuto-26-hunt`, then `bokuto-35-knownbeds` (in place of 34 if 34 has not started); each paired against `bokuto-18-queenfeed` and 27. Then the local burn test of the points limit (D-086 §E) and Sugawara's layer removal |
 | Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) and rolled back at 04:53Z (D-075 §A) |
 | Uploaded, inactive | 14585 (carthage-05, incumbent, waiting behind the trials), 16979 (k = 16, rolled back), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
-| Live screen | **Trial 3 live: `bokuto-18-queenfeed` = 17791 since 14:19:00Z**, no fault; look at the first series boundary at or after 60 ranked games (about 17:20Z), with the reached and carried views side by side. Daichi applies the end rule (more than 0.03 over the incumbent's statistic, +0.005 at 129 games) and starts trial 4 at once: **`bokuto-27-exitsplit` if qualified by then, otherwise `asahi-27-b13-reserve`** (D-085 §C) |
+| Live screen | **Trial 3 live: `bokuto-18-queenfeed` = 17791 since 14:19:00Z**, no fault; look at the first series boundary at or after 60 ranked games (about 17:50Z to 18:10Z), with the reached and carried views side by side. Daichi applies the end rule (more than 0.03 over the incumbent's statistic, +0.005 at 129 games) and starts trial 4 at once: **`asahi-27-b13-reserve`** (D-086 §C). Trial 5: Bokuto's latest bundle with a complete card |
 
 ## Facts settled this unit
 
@@ -286,13 +298,13 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 |---|---|---|
 | Chair | Ushijima (Claude) | active |
 | Council, auditor | Tanaka (GPT) | deactivated by the lead; council dissolved (D-072 §B) |
-| Queen owner (was council, mechanism) | Sugawara (Claude), hourly at :25; shell works | amended Hinata's strong-opponent reading (survivorship) before the Chair recorded it; asked to check Bokuto's exit-split finding (code path and counts); reads trial candidates' changes before upload |
+| Queen owner (was council, mechanism) | Sugawara (Claude), hourly at :25; shell works | amended Hinata's strong-opponent reading and Bokuto's exit-split finding (four classes; 27 reaches one) before the Chair recorded them; reads trial candidates' changes before upload; points-limit check from the corpus if free before Hinata |
 | Council, probe | Nishinoya (GLM) | deactivated by the lead |
 | Data | Kageyama (Claude), `r/kageyama`; **silent since about 07:00Z** | bed layouts, slot bots and trajectory block done; the export is cancelled and the curve table has moved to Hinata. **Stand-down recommended to the lead (D-081 §D)** |
 | Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | analysis service of the trials (matched column, curve block). The curve table's queen columns were side-swapped; fixed at source within six minutes of Sugawara's review, with a guard against the engine's queen field. Its descriptions are reviewed by Sugawara before the Chair records them |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session after the reset | working: both free-lane pools posted with queen columns; learn-runner library fix; queue as in the table above |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | trial 3 started 14:19Z (17791); at the look: the table, the end rule (mechanical, D-084 §C), then trial 4 = `asahi-27-b13-reserve` |
-| Free lanes (outside the ladder) | Bokuto (Kenma retired, D-079) | **Bokuto: found the exit-split fault in the carthage lineage; three one-change twins of the trial-3 bot submitted** (`bokuto-27-exitsplit`, `bokuto-25-reserve4`, `bokuto-26-hunt`). It has stopped reading 34-game sets (noise). One builder lane only; a second is recommended to the lead |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | trial 3 started 14:19Z (17791); at the look (about 17:50Z–18:10Z): the table, the end rule (mechanical, D-084 §C), then trial 4 = `asahi-27-b13-reserve` (D-086 §C) |
+| Free lanes (outside the ladder) | Bokuto (Kenma retired, D-079) | **Bokuto: accepted Sugawara's class count and built bundles aimed at each class** (`bokuto-33-flee`, `bokuto-34-portalqueue`, `bokuto-35-knownbeds`: corridor economics, entry rule, four-slot reserve, limited atlas, queen dodge, portal queue, openers to known beds). From 17791's elimination losses it reads that stronger teams eat three times what we eat by round 100. One builder lane only; a second is recommended to the lead |
 | Analyst | Shenzhen | stopped by the lead (D-074 §C); units 36–39 uncommitted unless Kageyama ran its commit command (not reported) |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
@@ -317,17 +329,18 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 
 ## Next three decisions
 
-1. **Trial 3's outcome** (look about 17:20Z; Daichi applies the rule; the Chair records it and may reverse it).
-2. **Trial 4:** `bokuto-27-exitsplit` if qualified by then, otherwise `asahi-27-b13-reserve`.
-3. **Whether the exit-split finding holds** (Sugawara's check; Asahi's cards on `qk2` and the head-to-head).
+1. **Trial 3's outcome** (look about 17:50Z–18:10Z; Daichi applies the rule; the Chair records it and may reverse it).
+2. **Trial 5:** which of Bokuto's bundles, from the cards in at the next unit (D-086 §C).
+3. **The points limit** (30 M or 100 M), when either check of D-086 §E is in.
 
 Waiting on the lead: nothing blocking. For the lead: a second builder lane (recommended; the free-lane prompt plus
-the addendum of 5 Oct); stand down Kageyama's lane (silent since about 07:00Z). Optional: a fresh Chair session,
+the addendum of 5 Oct); stand down Kageyama's lane (silent since about 07:00Z); the RL question (D-086 §F: the
+Chair's reading is given, nothing is ordered; a port lane or a P-7 training run needs the lead's word). Optional: a fresh Chair session,
 deleting `~/Desktop/sessiondata.img.bak`.
 
 ## Cursor
 
-Last BOARD line read: line 1421 (Asahi 15:06Z), main tree. Own D-085 line follows.
+Last BOARD line read: line 1433 (Bokuto 16:20Z), main tree. Own D-086 line follows.
 
 ## Open flags
 

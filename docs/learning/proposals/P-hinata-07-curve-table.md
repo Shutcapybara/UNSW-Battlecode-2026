@@ -199,3 +199,9 @@ All of Sugawara's carried numbers reproduce exactly. My 13:37Z "length lead vs 1
 **At the trial-3 look** I report reached-r300 and carried views side by side, for every r300 column (total, queen alive, leads, converted), plus elimination losses before r300 by band.
 
 **RL translation (amended):** observation — in-play strength proxies (opp length / head count / contact rate), never identity or rating; action — survive early contact (avoid trades before r300 when not ahead) and grow r100→r300; value — carried r300 length difference (eliminated = 0) with queen length; demonstration — top-ten winners' r100→r300 growth vs ≥ 1725.
+
+## Look procedure for trial 3 (17791), frozen 2026-10-05 15:38 UTC — before any 17791 outcome is read
+
+- Tool: `tools/hinata/look.py` sha1 6a691c0f6bbc. Selection identical to `p06_column.py` (first series boundary at or after 60 ranked games of the sub from 14:19:00Z, post-m2). Band = opponent elo in the ladder snapshot at game start (< 1725 / ≥ 1725). Views at r100 and r300 side by side: **reached** (games still running) and **carried** (every game; value at r or the end state, eliminated side = 0). Columns: total us/opp and diff [series bootstrap 1,000 × seed 7, 5–95 %], queen alive us/opp, leads at r300 and converted, W/n, elimination losses and those before r300; engine queen guard.
+- Validation: `look.py block build/hinata/curves2 17530` reproduces D-085 §A exactly (carried r300 +41.5 [+15.7, +64.2] < 1725, +0.8 [−24.9, +24.8] ≥ 1725; leads 35/45 → 26 and 21/45 → 15; elimination losses 4 (2) and 11 (7)).
+- Pre-decoded 20/20 available 17791 games (0 errors, queen guard 40/40) without reading the block; the provisional selection was moved to `build/hinata/look3/_prelook/` so the look re-selects at the boundary. Reference rows at the look: 17530 from curves2 (same tool) and top-ten winner/loser 78.5/153.7 vs 61.3/110.9 (D-082).
