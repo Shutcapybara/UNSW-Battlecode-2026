@@ -37,3 +37,5 @@ Completed probes: Schooltime **8–0**, all8 original queens survive at length3 
 | tower_defense | 3 | 3 |
 
 Output main build/kenma/k21-v-carthage-s123/{score,manifest,replay-log-audit}.json and k21-final-diagnostics.json.
+
+Matched four-map pool64 complete57–7, zero errors (Schooltime15–1,UNSW13–3,Australia14–2,Maze15–1), versus03 at49–15 and parent57–7 on identical fixtures. Gains over03: UNSW+4,Australia+3,Maze+1; Schooltime unchanged. Full replay review is still running. Exact deployment is queued after review and safe worker capacity; full272 pool (reuse64 successful fixtures) and Kageyama102 are queued only after deploymentPASS. No full-pool or promotion claim.
