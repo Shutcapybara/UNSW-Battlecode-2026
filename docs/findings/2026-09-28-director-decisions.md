@@ -3731,3 +3731,62 @@ themselves.
 - On the ladder nothing we have is separable from the old incumbent: 14585 −0.043, `bokuto-13-cull` −0.054 over
   120 games, the incumbent about +0.04 over 80. The top ten are more than 400 rating points above. Today's work moved
   the understanding (three measured targets and panels that show them), not yet the rating.
+
+## D-084 — Trial 3 is live; the incumbent has come back to level; trials run back to back from here (5 Oct 2026 14:22Z, Chair: Ushijima)
+
+### A. Trial 3: `bokuto-18-queenfeed` is submission 17791
+
+- Both conditions of D-083 §D held (Asahi, 13:48Z): pool 237–35, +4.04 points [−0.74, +8.82] against carthage-05;
+  probe passed (3.76 MiB, 12.42 M points a turn, no error). Sugawara read the change before the upload and found
+  no blocking flaw. Daichi registered it from a byte copy (runtime fa931064…, equal to the probe's), uploaded
+  14:15:46Z, activated 14:19:00Z. Look: the first series boundary at or after 60 ranked games, about 17:20Z.
+- **Its local profile against the three targets** (Asahi, 14:17Z):
+
+| Panel | Result | Total length r100 / r300 | Queen alive r300 | r300 leads converted |
+|---|---|---|---|---|
+| Target (top ten's winners) | | 78 / 154 | 0.58 | 70 % or more |
+| Head to head against the incumbent (102) | 61–41 | 64.0 / 106.1 | 0.70 | 77 % |
+| `qk2` (68) | 30–38 | 59.2 / 94.5 | 0.47 | 56 % |
+| `asahi-27-b13-reserve`, head to head | 69–33 | 63.1 / 102.1 | 0.64 | 80 % |
+| `asahi-27-b13-reserve`, `qk2` | 33–35 | 61.5 / 98.2 | 0.50 | 61 % |
+
+- Locally it is not ahead of `asahi-27-b13-reserve`: fewer wall deaths of the queen (9 against 19 on `qk2`: the
+  terrain change works) and more head-on deaths (32 against 20). The economy target is not approached by any bot
+  on any panel. Local numbers have not predicted the ladder four times; the trial is the test.
+- Forecasts on file: Sugawara, exceeds the incumbent by more than 0.03: 0.40; queen alive at round 300 at least
+  0.40: 0.55. The Chair, whose forecasts have run high all day: 0.25 and 0.50; point estimate 0.00.
+
+### B. The incumbent has come back to level
+
+- 17388 over all 129 ranked games since 05:02Z: **+0.005 [−0.072, +0.081]** (Daichi, 13:53Z). Its first 60 were at
+  +0.074. The three bots we have had live today are now indistinguishable on the ladder: 14585 −0.043,
+  `bokuto-13-cull` −0.054 over 120, the incumbent +0.005 over 129. D-081's choice was within the rule and, as that
+  record said, not an established gain.
+- The end rule of D-083 §D uses the incumbent's statistic as recomputed at the look.
+
+### C. Trials back to back; the end rule is applied by Daichi
+
+- With every bot at the same level the live slot is worth more to candidates than to any incumbent. **From trial
+  3 on, the end rule is mechanical and Daichi applies it at the look without waiting for the Chair:** if the trial
+  bot's statistic exceeds the incumbent's by more than 0.03 it stays live as the incumbent; otherwise 17388 remains
+  the incumbent of record. In both cases Daichi posts the full table and then starts the next trial in the queue
+  at once. The Chair records the outcome at its next unit and may reverse it by a record.
+- **Trial 4: `asahi-27-b13-reserve`** (qualified, D-083 §C). It is one change from `bokuto-13-cull`, which has 120
+  ladder games: the cleanest test we have of whether a local economy gain (round 300: +11.5 cells [+8.4, +15.0])
+  moves the ladder.
+- After that the queue is whatever has a passing probe and a pool not below carthage-05, in the order posted.
+  If the queue is empty the incumbent of record holds the slot.
+
+### D. Pending a second lane's check (not recorded as a finding)
+
+- Hinata, 13:37Z: for `bokuto-13-cull` the deficit against teams at 1725 or above looks like conversion and combat
+  and not the queen (queen parity and a length lead at round 300 there, yet 17 wins in 45; losses by elimination
+  11, longest dragon 10, queen 7). Nine series. Under D-083 §A this waits for Sugawara's review.
+
+### E. Builders
+
+- One lane builds candidates (Bokuto). The analysis now runs ahead of the building: three measured targets and
+  panels that show them, and one builder. The Chair recommends to the lead a second free lane, started with the
+  free-lane prompt and the addendum `docs/learning/prompts/07-free-lane-addendum-2026-10-05.md` (the day's
+  findings, the three targets, the job route, the pitfalls). Kageyama's lane, silent since about 07:00Z, could be
+  the one replaced.

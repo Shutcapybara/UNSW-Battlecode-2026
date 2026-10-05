@@ -142,3 +142,43 @@ smallest economy. No current bot has both, and the top-ten winner has both.
 label/V-target from these rows must use curves2 (or curves.py ≥ 368313e94f33). Value/reward: V carries total-length lead
 and queen length jointly (top-ten winner end queen 8.8). Action: queen safety from r100 (the deficit starts there) plus
 r100→r300 growth. Demonstration: top-ten winner games carry both behaviours; 17530's queen handling is our own nearest example.
+
+## Re-read of the ≥ 1725 queen forecast on corrected rows (D-083 §A ask; 2026-10-05 13:37 UTC)
+
+Rows build/hinata/curves2/ (sha 8e7ecc6d6735, unchanged). Script build/hinata/qband/qband.py (d7b802d93152; output
+qband.csv there). Band = opponent elo in the last ladder snapshot before the game (D-080 §B). Queen alive us − opp, running
+view (games still on at the round), series bootstrap 1,000 × seed 7, 5–95 %; carried view (last state carried) beside it per
+Sugawara's dissent. Population: our ranked post-m2 games in the P-07 cut (same 1,171-game selection).
+
+| bot | band | n games / series r300 | r100 diff | r300 us / opp, diff [5–95 %] | carried r300 diff (n) | win rate |
+|---|---|---|---|---|---|---|
+| 14585 | < 1725 | 134 / 39 | −0.19 | 0.07 / 0.39, −0.32 [−0.40, −0.25] | −0.17 (195) | 0.44 |
+| 14585 | ≥ 1725 | 75 / 21 | −0.45 | 0.05 / 0.57, **−0.52 [−0.61, −0.44]** | −0.43 (105) | 0.36 |
+| 17388 | < 1725 | 33 / 9 | −0.22 | 0.12 / 0.45, −0.33 [−0.47, −0.22] | −0.27 (45) | 0.58 |
+| 17388 | ≥ 1725 | 24 / 7 | −0.41 | 0.12 / 0.50, −0.38 [−0.57, −0.17] | −0.40 (35) | 0.54 |
+| 17530 | < 1725 | 35 / 9 | −0.21 | 0.54 / 0.66, −0.11 [−0.31, +0.09] | −0.02 (45) | 0.60 |
+| 17530 | ≥ 1725 | 33 / 9 | −0.09 | 0.45 / 0.48, **−0.03 [−0.18, +0.12]** | −0.07 (45) | 0.36 |
+
+(> 1900 alone: n ≤ 6 games / ≤ 2 series per bot — not read.)
+
+**Forecast verdict (unchanged, not relabelled):** "17530 queen-alive deficit ≥ 0.2 vs ≥ 1725 at r300" (P 0.6) — **FAILED** on
+corrected rows: −0.03 [−0.18, +0.12], both views. The 12:41Z note quoted only 1725–1900 (0.00, n 29); the pooled ≥ 1725 cell is
+the forecast's population and agrees.
+
+**What the corrected rows add.** (1) For 14585 the queen deficit **grows with opponent strength** (−0.32 → −0.52; intervals
+disjoint); for 17388 it is large in both bands (−0.33 / −0.38). (2) **17530 has queen parity in both bands, yet wins 0.36 vs
+≥ 1725** — so its loss to strong opponents is not the queen: end reason of its 28 losses vs ≥ 1725 = elimination 11, longest
+10, queen 7 (vs < 1725: queen 11 of 16). Its total length vs ≥ 1725 at r300 is 94.4 / 76.6 (1725–1900, +17.8 [+0.1, +39.4],
+n 29) — it leads on length and on queen and still loses 59 % there, so for 17530 the ≥ 1725 gap is **conversion / combat
+(elimination + longest-at-limit)**, the third D-083 target, not the first two. Small n (9 series): a reading, not a claim.
+(3) Consequence for trial 3 (bokuto-18 = b13 lineage + reserve): read r300 leads converted **and** losses by elimination
+vs ≥ 1725 at the look; a queen-alive gain alone will not show up in the statistic at 1725.
+
+**RL translation.** Observation: opponent strength changes which failure dominates (queen death for 14585/17388, combat
+conversion for 17530) — a V must be conditioned on opponent-strength proxies visible in play (opponent length, head count),
+never on map or opponent identity. Action: for the b13 lineage, the mid-game action to improve vs strong opponents is
+engagement/defence of the lead (avoid elimination, keep longest at the limit), not more queen hiding. Value/reward: total-length
+lead × queen length stays; add "longest at r500" for games that reach the limit. Demonstration: top-ten winner games vs
+≥ 1725 opponents with a length lead at r300 (72.6 % converted) are the demonstrations for conversion.
+
+**For review (D-083 §A rule):** Sugawara, please check reading (2) before the Chair records it.

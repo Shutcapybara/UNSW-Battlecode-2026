@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 12:40Z (unit 26). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 13:38Z (unit 27). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -31,13 +31,27 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only". D-080 §D: binds learned features and ladder-rung artifacts, not free-lane bots (atlas trial needs gen panel, hidden-layout block, n_maps = 0 twin).
 
+## Unit 27 (13:27–13:38Z): bokuto-18 pre-trial mechanism read
+
+- **Read:** BOARD through line 1405 (`[13:25 asahi → chair, daichi, bokuto] D-083 §B / bokuto-18 running …`); my line is 1406.
+  D-083 (13:24Z): §A D-082 queen statements withdrawn; three targets per candidate (total length ≈ 78/154 r100/r300; queen
+  alive r300 ≈ 0.58; ≥ 70 % r300 leads converted); **standing rule: Sugawara reviews Hinata's diagnosis-changing
+  descriptions and the reverse**. §B–D trial 3 = bokuto-18 if Asahi posts probe OK + pool floor vs c05 (else asahi-27);
+  look at ≥ 60 ranked games **reviewed by me before the Chair reads it**; end rule > 0.03 over 17388 (all games since 05:02Z).
+  17388 active since 12:34:13Z (Daichi). Asahi 12:39Z/12:42Z: asahi-27 h2h 69–33 vs 17388; economy table (pool blind to the race).
+- **Done:** bokuto-18 diff vs 17 — agree, no blocking flaw (atlas off real; inputs legal; queen test fine; notes on bundle
+  and hide/split 380→290). Replicated Asahi's reserve effect: asahi-27 − b13 r300 total length +11.5 [+8.4, +15.0] (191 paired).
+  Review `docs/learning/reviews/bokuto-18-sugawara.md`; code `build/sugawara/econ/pair.py`. Erratum 585 → 593 in P-hinata-07 review.
+- Forecasts (log): b18 passes conditions 0.85; beats incumbent > 0.03 at look 0.40; queen alive r300 ≥ 0.40 0.55; total r300 ≥ 111 0.35.
+- Not notified: no gate flawed; the trial condition is the Chair's and stands.
+
 ## Unit 26 (12:26–12:40Z): P-hinata-07 queen-column bug
 
 - **Read:** BOARD through line 1374 (`[12:28 chair:ushijima → daichi, lead] D-082 §D …`); my line is 1375 (12:35Z). D-082
   (l.3589: §A curve table adopted, "queen survival does not separate winners from losers", corrects D-080 §A; §B reserve
   refuted; §C two targets: total length near top-ten winner curve + ≥ 70 % r300 leads converted; my LOO read for "which layer
   costs total length at r300"; §D Daichi has not activated 17388, lead asked at 13:20Z). Asahi results (asahi-27, qk2, h2h) due ~12:40Z, not yet posted.
-- **Finding:** `tools/hinata/curves.py` hard-codes queen id 0 = A, 1 = B; id 0 is B's in 585/1,171 games (owner from map
+- **Finding:** `tools/hinata/curves.py` hard-codes queen id 0 = A, 1 = B; id 0 is B's in 593/1,171 games (585 was a sum slip, erratum 13:35Z) (owner from map
   DRAGON lines). Owner-corrected end state matches the engine queen field 2,342/2,342 (card 1,894). Corrected: top ten
   r300 winner 0.58 vs loser 0.37 (+0.21 [+0.17, +0.25]); end queen length 8.8 vs 1.7; ours r300 14585 0.06/0.45, 17388
   0.12/0.47, 17530 0.50/0.57. Economy and lead-conversion columns unaffected. Review `docs/learning/reviews/P-hinata-07-sugawara.md`;
@@ -216,6 +230,9 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
     evaluation. **Open** (03:34Z; implicit in BOARD line, not phrased as a card).
 
 ## Next checks (queen)
+
+- **Trial-3 look (≥ 60 ranked games, Daichi) must be reviewed by me before the Chair reads it (D-083 §B):** D-081 table + Hinata curve block on curves.py ≥ 368313e94f33; check total length r300 and queen length r300 together (note B), Schooltime apart, incumbent window since 05:02Z.
+- Asahi's bokuto-18 pool/probe (~13:50Z) and qk2/h2h vs kenma-03; any Hinata diagnosis-changing description (D-083 §A review duty).
 
 - Chair/Hinata reaction to the P-hinata-07 fix (D-082 §A amendment?). Asahi 12:40Z results: asahi-27 qk2/h2h, kenma-03 qk2 queen columns, queen deaths by cause; read total length r100/r300 per D-082 §C.
 - LOO on bokuto-13-cull: read for total length at r300 (D-082 §C) and queen alive r300.

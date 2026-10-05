@@ -7,7 +7,7 @@ non-Claude reader should check the fix too.
 ## Verdict: amend — the queen columns are wrong; economy and lead-conversion columns stand
 
 **Bug.** `tools/hinata/curves.py` (4b0d1f0e1ad8) `side(R, t, q)` is called with `q = 0` for team A and `q = 1` for
-team B. Dragon ids follow the map's `DRAGON` lines, whose first field is the team; in **exactly half the games (585 of
+team B. Dragon ids follow the map's `DRAGON` lines, whose first field is the team; in **about half the games (593 of
 1,171: 14585 150/300, 17388 41/80, 17530 44/90, top ten 358/701) id 0 belongs to team B**. In those games every queen
 column (alive, queen length) reports the *other* team's queen. A 50/50 mix of own and opponent queen forces
 "winner ≈ loser" and "us ≈ them" by construction.
@@ -69,3 +69,6 @@ re-run) 0.85.
 
 The running view conditions on the game still being on; for queen alive that biases toward survivors of the queen rule
 (games end early when a queen dies only in some cases). The carried view should be shown beside it. Bands > 1900 stay thin.
+
+
+**Erratum (13:35Z, unit 27):** the total was a sum slip — 150 + 41 + 44 + 358 = **593**, not 585 (Hinata, 12:41Z). Per-population counts and all corrected rates unchanged.

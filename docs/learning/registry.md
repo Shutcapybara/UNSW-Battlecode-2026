@@ -115,7 +115,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
   [−0.048, +0.197]; performance rating 1781 [1686, 1876]; against 14585's reference +0.117 [−0.018, +0.269];
   queen-rule losses 7; no fault; no Schooltime game in the window. Variant block 69 of 80 (carthage-05: 63).
 - **end rule (D-081 §A):** +0.117 over the reference against a bar of 0.03; `bokuto-13-cull` at +0.001; the windows differ by 0.115. By opponent rating: at or above 1725 +0.162 [0.000, +0.324] (35 games), below −0.048; queen-rule losses 7 of 29. Caveats: the interval includes zero; no Schooltime game in the window; nobody maintains the bot.
-- status: **`incumbent`** (submission 17388; **active since 5 Oct 12:34:13Z**, first ranked series 12:36Z; rollback target 14585; D-052 §B applies). Since reactivation 20 games, 10–10. On the corrected curve table its queen is alive at round 300 in 12 % of games (opponents 47 %): our worst queen.
+- status: **`incumbent`** (submission 17388; **active since 5 Oct 12:34:13Z**, first ranked series 12:36Z; rollback target 14585; D-052 §B applies). Since reactivation 20 games, 10–10. On the corrected curve table its queen is alive at round 300 in 12 % of games (opponents 47 %): our worst queen. **All 129 ranked games since 05:02Z: +0.005 [−0.072, +0.081] (Daichi, 13:53Z): level with 14585.**
 
 ### REG-006 — `bokuto-04-queen` (free lane Bokuto; **second ladder trial approved**, D-075 §C)
 
@@ -180,15 +180,19 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - same-host (Asahi, 12:39Z): pool 237–35; against `bokuto-13-cull` −1.47 points [−2.94, 0.00]; against carthage-05
   +4.04 [+0.37, +8.09]; head to head against the incumbent 69–33 (parent 64–38; paired +4.90 [+0.98, +9.80]); `qk2`
   33–35; queen alive at the end 96 of 162 on the pool; probe passed (3.75 MiB, 12.37 M points).
-- status: `candidate` (qualified under D-076 §A; trial 3 only if `bokuto-18-queenfeed` fails its conditions).
+- status: `candidate`; **trial 4**, started by Daichi directly after trial 3's look (D-084 §C).
 
-### REG-011 — `bokuto-18-queenfeed` (free lane Bokuto; **trial 3 on condition**, D-083 §D)
+### REG-011 — `bokuto-18-queenfeed` (free lane Bokuto; **trial 3 running as submission 17791**, D-084 §A)
 
 - Tree `../wt-bokuto/bots/bokuto-18-queenfeed` (`r/bokuto`). The atlas-off twin of `bokuto-17-atlas` plus: the queen
   fed from round 290; queen terrain safety from round 0 (no blind portal dive, no single-exit cell, no escape
   split); the dodge from round 0; Kenma's reserve lines.
 - local (Bokuto's harness): at parity with `bokuto-13-cull` on 34 games; queen 20–52 long at the limit where she lives.
-- condition for trial 3: Asahi's deploy probe passes and the same-host pool is not below carthage-05 (paired 5th
-  percentile above −5 points). Then Daichi runs the trial without a further record.
-- status: `candidate` (Asahi's job running since 13:00Z).
+- same-host (Asahi, 13:48Z and 14:17Z): pool 237–35, +4.04 points [−0.74, +8.82] against carthage-05; probe passed
+  (3.76 MiB, 12.42 M points); head to head against the incumbent 61–41 (`asahi-27-b13-reserve` 69–33); `qk2` 30–38;
+  on the head-to-head total length 64.0 and 106.1 at rounds 100 and 300, queen alive at round 300 0.70, leads
+  converted 77 %; on `qk2` 59.2 and 94.5, 0.47, 56 %; queen wall deaths 9 against 19, head-on 32 against 20.
+- live: submission **17791**, `LV-bokuto-18-queenfeed-ba537e4e-ai` (runtime fa931064…), uploaded 14:15:46Z, activated
+  14:19:00Z. Trial 3: its first 60 ranked games; end rule applied by Daichi at the look (D-084 §C).
+- status: `uploaded` (trial 3).
 

@@ -155,3 +155,7 @@ points in absolute value" at 0.20 did not occur (Brier 0.04). **Correction (D-08
 winners' queen alive above 0.6 at round 300", marked failed on the first table, is 0.58 on the corrected one
 (still below 0.6); "a queen-alive deficit of at least 0.2 at round 300 against teams at 1725 or above" is to be
 re-read by Hinata on the corrected rows.
+
+**Trial 3 forecasts on file (D-084 §A), `bokuto-18-queenfeed`:** exceeds the incumbent's statistic by more than 0.03:
+Sugawara 0.40, the Chair 0.25; queen alive at round 300 at least 0.40: Sugawara 0.55, the Chair 0.50; the Chair's
+point estimate for its statistic 0.00. Sugawara's "passes probe and pool floor" at 0.85 occurred (Brier 0.0225).

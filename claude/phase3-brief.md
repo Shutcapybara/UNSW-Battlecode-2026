@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 13:24Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 14:23Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-083. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-084. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -11,13 +11,13 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 - **Each submission has its own rating** (D-076): the team shows the active submission's rating, and restoring an
   older submission brings its rating back. So a ladder trial costs the incumbent nothing, and the live slot is used
   to learn (the lead does not weigh the live rating either, D-071).
-- **Incumbent since 5 Oct (D-081): `kenma-03-pocket-queen` (submission 17388)**, the retired free lane's bot. It is
-  `carthage-05-free-sprint` plus a sealed-pocket rule for the queen and one unit slot kept free all game. Over 60
-  ladder games it scored +0.117 a game over the previous incumbent's window [−0.022, +0.260]; the interval
-  includes zero and no Schooltime game was drawn. `carthage-05-free-sprint` (14585) is the rollback target: a C++
-  search bot whose move prior is a model cloned from one other team (Heartbreaker).
-- **`bokuto-13-cull`, the best bot locally (+5.5 points on the pool), scored +0.001 on the ladder**: level with the
-  old incumbent. The local pool and the head-to-heads ranked it above Kenma's bot; the ladder did not.
+- **Incumbent of record (D-081): `kenma-03-pocket-queen` (submission 17388)**, the retired free lane's bot:
+  `carthage-05-free-sprint` plus a sealed-pocket rule for the queen and one unit slot kept free. Over its 129
+  ladder games it scores +0.005 a game against expectation [−0.072, +0.081]. `carthage-05-free-sprint` (14585) is
+  the rollback target.
+- **Every bot that has held the live slot is at the same level on the ladder:** 14585 −0.043, `bokuto-13-cull`
+  −0.054 over 120 games (it is +5.5 points on the local pool), the incumbent +0.005. So the slot is used for
+  trials back to back (D-084).
 - **Where and when we fall behind (D-082 as corrected by D-083, from 1,171 ladder games).** The top ten's winners
   have both the economy and the queen: total length 78 against 61 at round 100 and 154 against 111 at round 300,
   and the queen alive at round 300 in 58 % of games against 37 % for their losers. Ours: total length 55–63 and
@@ -25,9 +25,7 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
   has the smallest economy). No bot of ours has both. We also lose leads through the queen rule: of games led at
   round 300 we won 50 %, 74 % and 65 %. **Three targets for every candidate: total length near 78 and 154; queen
   alive at round 300 near 0.58; at least 70 % of round-300 leads converted.**
-- **On the ladder nothing we have is separable from the old incumbent yet:** 14585 −0.043 a game against
-  expectation, `bokuto-13-cull` −0.054 over 120 games, the incumbent about +0.04 over 80. The top ten are more than
-  400 rating points above.
+- The top ten are more than 400 rating points above us.
 - **Where we lose: the queen.** A round-limit game goes to the side whose original dragon (the queen) is alive and
   longer. Ours is alive in about 1 % of round-limit games; the top ten keep theirs in 24–56 %. About half of our
   losses are decided this way.
@@ -51,12 +49,12 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials | Daichi (Live ops) | The incumbent `kenma-03-pocket-queen` (17388) is live since 12:34Z. **Trial 3: `bokuto-18-queenfeed`** as soon as its probe passes and its pool is not below carthage-05 (otherwise `asahi-27-b13-reserve`). A trial is 60 ranked games, about three hours, and costs nothing in rating; the trial bot must beat the incumbent's statistic by more than 0.03 |
+| Ladder trials | Daichi (Live ops) | **Trial 3 is live: `bokuto-18-queenfeed` = submission 17791 since 14:19Z**; look at 60 ranked games, about 17:20Z. Daichi applies the end rule (more than 0.03 over the incumbent's statistic) and starts trial 4, `asahi-27-b13-reserve`, at once. A trial costs nothing in rating |
 | The queen and the economy | Sugawara (analysis); Bokuto builds; panels by Asahi | Bokuto is building `bokuto-18`: no wall deaths of the queen, feeding from round 280–300. Sugawara reads which of `bokuto-13-cull`'s layers cost mid-game growth. Cards carry queen columns, total length at rounds 100 and 300, the keeper panel `qk2` and a head-to-head against the incumbent |
 | Analysis of the trials | Hinata | the cloned-prior line is paused (D-080). Hinata now supplies, for every ladder trial, the opponent-matched comparison and the curve block (total length by round against the top ten's curves; leads converted) |
 | Data | Hinata (Kageyama silent) | hidden bed layouts done (828 of 828 live games reproduced; 14.5 % of ranked games). The curve table by round from the ranked corpus has moved to Hinata; Kageyama has not posted since about 07:00Z |
 | Local panels, the Mac's job runner | Asahi (Evaluator) | one Mac, one job at a time; queen and clone jobs alternate; no job over about 45 minutes |
-| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | `bokuto-18-queenfeed`: the queen fed from round 290, queen safety from round 0, the reserve lines, no atlas; being measured, then trial 3. Mac jobs by one BOARD line to Asahi (`JOB <bot folder> : pool \| probe \| gen \| h2h vs <bot>`) |
+| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | `bokuto-18-queenfeed` is on trial 3. A new builder reads `docs/learning/prompts/07-free-lane.md` and its addendum of 5 Oct. Mac jobs by one BOARD line to Asahi (`JOB <bot folder> : pool \| probe \| gen \| h2h vs <bot>`) |
 | Decisions, merges, this brief | Ushijima (Chair) | hourly; the council is dissolved (D-072) |
 
 ## Results so far
