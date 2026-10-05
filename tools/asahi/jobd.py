@@ -234,7 +234,8 @@ class Daemon:
             raise ValueError(f'environment {envname!r} missing ({py}); queue a setup_env job')
         argv = [str(x) for x in job.get('argv', [])]
         env = dict(os.environ, ASAHI_MAX_WORKERS=str(self.max_workers), PYTHONUNBUFFERED='1',
-                   UNSWBC=str(Path(py).parent / 'unswbc'), OMP_NUM_THREADS=str(self.max_workers))
+                   UNSWBC=str(Path(py).parent / 'unswbc'), OMP_NUM_THREADS=str(self.max_workers),
+                   PYTHONDONTWRITEBYTECODE='1')    # no __pycache__ in the main checkout (keeper blocker, 4 Oct 23:48Z)
         return self.run_process(job, [py, script, *argv], self.main, env, logf, lb / 'queue')
 
     def next_job(self):
