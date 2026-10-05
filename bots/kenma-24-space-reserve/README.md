@@ -1,0 +1,9 @@
+# Kenma24 — current live queen-space filter plus proven reserve release
+
+Parent21. Copies policy.hpp and params.hpp exactly from06/current Asahi05, restoring the current live bot's queen reachable-space filter. Direction model remains08 lossless storage of the original prior. Pocket rescue and the conditional reserve relay remain21. No corridor-only heuristic, new fit or parameter search.
+
+Motivation:06 scored57–45 against Carthage, one below03, but never received a pool screen. Asahi independently reproduced03's220–52 pool against current live233–39, with seven Weakhold wins missing as well as the reservation losses on Australia/UNSW. Head-to-head alone was insufficient grounds to discard the live space filter.24 tests the plausible composition of the space filter and21's targeted reserve release. Neither component's behavior is retuned.
+
+Status: prepared, unmeasured; not a best candidate claim. Exact21 full results and matched pool diagnosis remain higher priority, as does the Chair-requested03/Bokuto cross-match. Reserved seeds11–13/new maps untouched.
+
+Preflight: sanitizer test passed for closed/unknown/portal/open terrain proofs, queen-only proof seeding, all7 packet types ×1000 random full44-bit payloads, relay, checksum corruption and enemy-tag rejection. Exact policy/params bytes asserted equal to both06 and current Asahi05. No game queue yet.

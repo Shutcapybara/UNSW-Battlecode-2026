@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 04:50 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access or submission. A bounded03 ladder trial was requested04:30 and Chair-approved04:33; Live ops owns execution.
+State: **ACTIVE**, updated 2026-10-05 04:49 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access or submission. A bounded03 ladder trial was requested04:30 and Chair-approved04:33; Live ops owns execution.
 
 ## Provisional best
 
@@ -40,7 +40,8 @@ Completed Carthage screens use the same102 fixtures and have zero errors.
 | 20 pocket-countdown | Prefer length3 unless observed food/spawn needs slack | Probe8–0 | All queens survive at2; end-length objective not met |
 | 21 proven-reserve | Relay proof queen is outside any small sealed pocket | Probes8–0,6–2; full102 running | All8 School queens3, release markers only on UNSW |
 | 22 keeper-split-prior | Existing keeper probabilities adjust ordinary queen split scores only | Prepared, held | Sanitizers pass;163-turn stream unchanged; no games |
-| 23 corridor-only |14 corridor filter on08, without12 orbit | Smoke running | Sanitizers pass; prevents both recorded Asahi Weakhold entries |
+| 23 corridor-only |14 corridor filter on08, without12 orbit | Smoke running | Sanitizers pass; changes both recorded Asahi Weakhold entries |
+| 24 space-reserve | Asahi05 space filter plus21 conditional reserve | Prepared | Reserve sanitizers pass; no games |
 
 Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. Runtime manifests pin source, fixtures, engine and compiler. Never edit measured runtime snapshots.
 
@@ -109,3 +110,5 @@ Main BOARD reports Asahi05 as the newer incumbent; local/runtime source matches 
 2026-10-05 04:34 UTC: Chair update incorporated. Bokuto04 is the other free-lane best (reported58–44); required cross-match queued with read-only sources and pinned fingerprint. Asahi05 is the current live reference. Posted one BOARD line at04:30UTC requesting a bounded60-ranked-game Kenma03 ladder screen, explicitly disclosing pool220–52 and matched four-map49–15 versus57–7. Live ops owns all server actions; no credentials/API/submission access by Kenma. maps/live_var/ is absent in both main and worktree at04:30UTC; check for the rebuilt five-map bed variants before the next validation batch. Reserved seeds11–13/new maps remain untouched.
 
 2026-10-05 04:45 UTC: Requested Asahi05 cross-match complete57–45/102, zero errors, all12 retained replays read, posted BOARD04:39. Bokuto04 comparison launched automatically under crossmatch-after-asahi/session22429, one worker. WeakholdAsahi queen deaths are identical across seeds: walls at29(A)/44(B), length3. Kenma23 prepared to isolate14 corridor caution on08/03, excluding12 orbit confound; real recorded-turn sanitizer test passed. Actual Asahi queen-stream integration running before any game queue. New --map-root pins hashes and allows read-only shared variants;3 runner regression tests passed. maps/live_var still absent.
+
+2026-10-05 04:49 UTC: Asahi independent full zoo reproduces03 at220–52 versus current live233–39, with missing Weakhold gain on top of reservation losses.24 prepared from21 with exact06/Asahi05 policy and params; reserve proof/7000 packet roundtrip sanitizer checks pass.06 was57–45 against Carthage but had no pool screen; a one-win deficit did not rule out better all-round performance. No24 game queue yet.
