@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 03:06 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
+State: **ACTIVE**, updated 2026-10-05 03:08 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
 
 ## Provisional best
 
@@ -32,6 +32,7 @@ Completed Carthage screens use the same102 fixtures and have zero errors.
 | 12 observed-empty-orbit | Require observed no-bed=-1 | Running102 | Smoke3–1 with activation in all four games |
 | 13 keeper-search-prior | Existing keeper model inside parent movement search | Prepared | Conditional next screen; integration tests pass |
 | 14 queen-corridor-caution | Prefer visible turning room for short original queens | Queued smoke | Recorded avoidable entry redirects; no real games yet |
+| 15 pocket-without-reserve | Remove only08 global one-slot reserve | Prepared | Eight Schooltime and eight UNSW probe fixtures previewed |
 
 Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. Runtime manifests pin source, fixtures, engine and compiler. Never edit measured runtime snapshots.
 
@@ -66,3 +67,5 @@ panel.py uses engine1.2.3, clang++-O2-std=c++20, current Python opponents via to
 2026-10-05 03:06 UTC: Previous turn made concrete progress (12 integration tests and real activation,09 result,13 prepared); current12, parent64 and waiting sequences revalidated through live session handles. Kenma14 prepared from12: short original queens prefer a legal route with visible turning room (branch, loop or portal traced through at most8 observed corridor cells) when available, retaining parent choices otherwise. This is a heuristic, not a proof about unseen endpoints. The initial immediate-degree test was insufficient because a safe narrow loop also has only one onward edge; corrected before measurement. Recorded-observation test now redirects round157 south and preserves fallback at158 under sanitizers. Log kenma_corridor_filter. Runtime c356ab501d912e7dd09fdc18a4c5e41951a4831e5726c1de2ec3de76d69083ed. Queued main build/kenma/after-parent-diagnostic.py (session33367) waits exact20374 and clean64 completion, then runs four Weakhold/Australia games (both seats,seed1,logs/replays). It stops for activation audit before any full14 screen. No extra concurrent game workers.
 
 Pool mechanism evidence from completed same-host UNSW fixtures: parent wins four games lost by03 (Fenrir B,Yuna B,Chaewon B,Gavroche A). Death-event prefixes match until rounds68–77; sampled populations then diverge around the cap (parent64 versus03 at63). This supports investigating the global one-slot reserve as a cause, but full64 and a controlled reserve ablation are still required. No random APIs found in those four opponent source trees. A premature partial-log claim that Schooltime differed from the supplied reference was corrected: actual completed parent Schooltime14–2 matches reference;03 is15–1.
+
+2026-10-05 03:08 UTC: Kenma15 prepared from08 with only the three reserve-limit lines removed from main.cpp; all other runtime files identical. Runtime5b7ecd83917e9178938d1a811f025b1b0916a0fa783f749505ac61578886b659. Dry-run previews: Schooltime seeds1/2/3/5 both seats8 games with replays, then UNSW seed1 both seats against Fenrir/Yuna/Chaewon/Gavroche8 games. Not launched or queued: both workers still occupied. The check must establish whether pocket survival remains reliable without a global slot and whether the pool regressions recover. Main build/kenma/parent-pool-partial-comparison.json records completed paired fixtures, explicitly incomplete. Avoid conclusions before full results.
