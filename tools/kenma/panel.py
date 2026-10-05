@@ -30,6 +30,14 @@ ACTIVE = set()
 LOCK = threading.Lock()
 _QUOTA_CHECKED = 0.0
 
+def source_paths(bot, opponents, opponent_root=None):
+    if opponent_root is not None and bot in opponents:
+        raise ValueError('External opponent name must differ from the candidate')
+    other = Path(opponent_root).resolve() if opponent_root is not None else ROOT/'bots'
+    sources = {name: other/name for name in opponents}
+    sources[bot] = ROOT/'bots'/bot
+    return sources
+
 def fingerprint(src):
     h = hashlib.sha256()
     for p in sorted(src.rglob('*')):
@@ -133,6 +141,7 @@ def run(fx, args, bins, out):
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('bot'); ap.add_argument('--opp', default='carthage-05-free-sprint')
+    ap.add_argument('--opp-root', type=Path, help='Read opponent sources from another bot directory; build outputs stay in Kenma')
     ap.add_argument('--maps', default=','.join('live/'+m for m in MAPS))
     ap.add_argument('--seeds', default='1,2,3'); ap.add_argument('--jobs', type=int, default=3)
     ap.add_argument('--name', required=True); ap.add_argument('--dry-run', action='store_true')
@@ -145,9 +154,11 @@ def main():
     opponents=ZOO if args.opp=='zoo' else args.opp.split(',')
     fixtures=[dict(map=m, seed=int(s), opp=o, seat=t) for s in args.seeds.split(',') for m in args.maps.split(',') for o in opponents for t in 'AB']
     out=MAIN/'build/kenma'/args.name
-    sources={b:ROOT/'bots'/b for b in [args.bot]+opponents}
+    sources=source_paths(args.bot, opponents, args.opp_root)
+    assert all(p.is_dir() for p in sources.values()), 'Bot source directory missing'
     manifest=dict(bot=args.bot, fingerprints={b:fingerprint(p) for b,p in sources.items()}, fixtures=fixtures,
                   engine=subprocess.check_output([str(MAIN/'.venv/bin/unswbc'),'--version'],text=True).strip(), compiler='clang++ -O2 -std=c++20', sandbox=False)
+    if args.opp_root is not None: manifest['opponent_root']=str(args.opp_root.resolve())
     if args.logs: manifest['logs']=True
     print(json.dumps(dict(fixtures=len(fixtures), workers=args.jobs, output=str(out), fingerprints=manifest['fingerprints'])), flush=True)
     if args.dry_run:

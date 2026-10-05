@@ -8,6 +8,16 @@ from unittest.mock import patch
 import panel
 
 class RecoveryTest(unittest.TestCase):
+    def test_external_opponent_never_relocates_candidate(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            paths=panel.source_paths('kenma-test',['bokuto-test'],root)
+            self.assertEqual(paths['kenma-test'],panel.ROOT/'bots/kenma-test')
+            self.assertEqual(paths['bokuto-test'],root.resolve()/'bokuto-test')
+            self.assertEqual(panel.source_paths('kenma-test',['control'])['control'],panel.ROOT/'bots/control')
+            with self.assertRaises(ValueError):
+                panel.source_paths('same',['same'],root)
+
     def test_failed_attempt_preserved_then_replaced(self):
         with tempfile.TemporaryDirectory() as t:
             out=Path(t)
