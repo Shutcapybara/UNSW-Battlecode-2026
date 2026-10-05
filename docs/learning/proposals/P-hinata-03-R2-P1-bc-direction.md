@@ -641,3 +641,18 @@ All 188,250 rows (secondary): team-213 λ_match 1.44 (in-sample on 213's 13,782 
 - **Use:** the pooled prior candidate for the slot (for Kageyama's export) after the team-213 arms read; its λ_match computed by the definition above (dev120 rows, in-sample for this model on all of them, so reported as in-sample). No pool arm is requested by this card; any arm gets its own declared λ.
 - **Expectation:** CV metrics unchanged to 4 decimals (P 0.95); λ_match(in-sample) in [1.6, 2.1] (P 0.6).
 - Stop rule: one refit, no tuning.
+
+### Result: A1-full deploy refit and its λ_match (appended 2026-10-05 06:40 UTC, hinata). Descriptive; no pool game read.
+- **Job hinata-05-a1-full-final rc 0** (Mac, 06:26–06:31Z; load 42 s, refit 257 s, peak 8.38 GiB). CV metrics unchanged (fold models reloaded): A1-400 0.7379 [0.7352, 0.7409], n 2,753,685, queen 0.7334 — expectation "unchanged to 4 decimals" (P 0.95): **yes**. Artifact: `build/learn/hinata/r2full/A1-full/model_all_400.txt` (11.4 MB text, sha256 60c57a64c41eba85…, 270 features, 400 rounds, rows_sha 6f531e91…, code b5346f3c…/r2_full rev 4).
+- **λ_match (definition above), dev120 oracle F/R/L rows not played by 213 (174,468 rows, 46 series, post-m2; live H 0.4228):**
+
+| A1-full prior on these rows | acc | H at λ 1 | **λ_match** | H at λ 1.72 | log-loss λ 1 / λ_match |
+|---|---|---|---|---|---|
+| deploy model, in-sample (trained on these rows) | 0.7491 | 0.5844 | **1.76** | 0.4295 | 0.548 / 0.575 |
+| series5 out-of-fold | 0.7404 | 0.5864 | 1.77 | 0.4315 | 0.563 / 0.600 |
+| live prior | 0.6990 | 0.4228 | 1 | — | 0.745 (from lam.json) |
+
+  All 188,250 rows: 1.765 in-sample / 1.777 OOF. Expectation λ_match(in-sample) in [1.6, 2.1] (P 0.6): **yes**.
+- **Reading:** A1-full's λ_match (1.76) is within 0.04 of A1-400's (1.72), and A1-full at λ 1.72 has H 0.430 vs live 0.423. So the Chair-ordered arm **A1-400 @ λ 1.72** (D-076 §D) is, in sharpness, also the A1-full arm; a later A1-full arm at **λ 1.76** isolates the content/data step (+0.02 accuracy off-line) at fixed entropy. No arm requested by this note beyond D-076's queue.
+- Hand-off (Kageyama): A1-full export = same input path and feature order as A1-400; declared λ for any A1-full arm **1.76**.
+- RL translation: the full-data demonstration prior is softer than the live hand prior at λ 1 by 0.16 nats; matching entropy needs inverse temperature ≈ 1.76 — the actor's temperature must be set per prior, not inherited.

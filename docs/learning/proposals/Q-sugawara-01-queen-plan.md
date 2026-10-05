@@ -110,3 +110,11 @@ cannot act off-pocket by construction. Why not (d): it is the measured cost and 
 Order now: q1 cage (on **carthage-05**) → **q2b-crown = bokuto-04's policy.hpp queen block only** (no guard, no branch)
 → panels. q2a parked (subsumed by "no queen split after r60"). Parent switched from k16 to carthage-05 (incumbent;
 bokuto's own base). Reasons and the paired pool table: `docs/learning/reviews/D-075-queen-order-sugawara.md`.
+
+## §8 (06:40Z, after D-076 §C): direction reversed, leave-one-out on the free-lane base
+
+Q1 = parent on the pool, and Q2b came in at −7 pool / −7.35 qk, so moving layers onto c05 is closed. The
+lineage on the pool: bokuto-02-vac 195, bokuto-04 226, c05 226. The layers interact strongly. New order: leave-one-out on
+the trial-2 base (bokuto-13-cull if it qualifies under D-076 §B, else bokuto-04-queen). The order is −04+05, −06,
+−12+09, −02, each paired against the base on pool + qk. In parallel, Q1r = Q1 + Kenma's reserve only while rnd < 60.
+Details and the carry rule: `docs/learning/reviews/D-076-loo-sugawara.md`.

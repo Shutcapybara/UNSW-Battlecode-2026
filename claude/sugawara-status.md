@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 05:32Z (unit 19). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 06:42Z (unit 20). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,17 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only".
+
+## Unit 20 (06:27–06:42Z): queen log #3
+
+- **Read:** D-076 (l.3104); BOARD through line 1231 (`[06:21 chair:ushijima … D-076 …]`); my line is 1232 (06:40Z).
+- **D-076 §C decided:** leave-one-out on the trial-2 base (bokuto-13-cull if its pool is ≥ 226 by 07:45Z, else bokuto-04).
+  Order: −04+05, −06, −12+09, −02. Each paired against the base on pool + qk. Q1r in parallel: Q1 + reserve only while rnd < 60.
+  Q2b-k16 and q2a are off. Plan §8. Review `docs/learning/reviews/D-076-loo-sugawara.md`.
+- **Replication (seed-1 pool, paired vs c05 226):** Q1 226, kenma-03 220 (losses UNSW 5 / Australia 4 = reserve),
+  Q2b 219, **bokuto-02-vac 195 (−31)**, bokuto-04 226. Layers interact. Gotcha: the c05 index 7df05a3f holds seeds 1–3, so filter seed==1.
+- bokuto-13 layer map (tags 02, 03, 04, 05, 06, 08, 09, 11, 12, 13; six of them about the queen). Beacon is legal (sonar/sight/self).
+- Owner events from unit 19 both failed (D-076 §C: Brier 0.3025 / 0.16, not scored). Not notified (nothing gating is flawed).
 
 ## Unit 19 (05:26–05:32Z) — queen log #2
 
@@ -61,8 +72,11 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 |---|---|---|---|---|---|---|
 | 16979 (ref) | — | — | parent 0–5 / 272 | 4/47 ladder | — | q_dec 0–19 / 47 |
 | kenma-03 (D-074 §B trial) | — | 220–52 vs 226–46 | ? | ? | — | trial 60 games (Daichi) |
-| sugawara-q1-cage | queued | | | | | |
-| sugawara-q2b-crown (c05 + bokuto-04 block) | queued 05:30Z | | | | | |
+| sugawara-q1-cage (asahi-21) | 270/272 (2 Schooltime) | 0.00 (226) | 3–5 | Schooltime 3/14 | qk 34–34 (+2.94) | — |
+| sugawara-q2b-crown (asahi-25) | 134 disc | −2.39 [−5.89,+0.92] (219) | 16–5 | 17/149 | qk 27–41 (−7.35); vs b04 12/34 | closed |
+| bokuto-02-vac (guard only) | 169 disc | 195 (−31) | ? | ? | — | — |
+| sugawara-q1r (Q1 + reserve rnd<60) | spec 06:40Z | | | target ≥10/14 | | |
+| LOO on trial-2 base (−04+05, −06, −12+09, −02) | spec 06:40Z | | | | | |
 | sugawara-q2a-grow | parked (§7) | | | | | |
 | bokuto-04-queen (D-075 §C trial 2) | — | 226–46 = c05; 38/42 q-wins on c05 wins | 42–4 | 44/189 | — | after 17388 |
 
@@ -128,6 +142,8 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
     evaluation. **Open** (03:34Z; implicit in BOARD line, not phrased as a card).
 
 ## Next checks (queen)
+
+- 07:45Z: bokuto-13-cull pool/probe → which base. Asahi's ack of the LOO + Q1r order; first LOO pool (−04+05). Trial 1 look ~08:00Z (Daichi).
 
 - Asahi's ack of the amended order; c05/k16 keeper panels (D-075 §D); q1/q2b parity + pool. Trial 17388 (Daichi, ~08:00Z, anchor 1725).
 - If Bokuto pools bokuto-07, re-run the paired table on it (does the churn shrink?).
