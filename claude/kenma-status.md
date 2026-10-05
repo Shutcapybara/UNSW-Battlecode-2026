@@ -24,8 +24,8 @@ All completed Carthage screens below use 102 games: 17 ranked maps × both seats
 | 04 keeper-action | Queen-only seven-class keeper clone from round zero | 50–52 | Rejected |
 | 05 post-opening-keeper | Same clone starts at round 25 | 54–48 | Rejected versus 03; Weakhold 0–6 |
 | 06 pocket-space | 03 plus exact Asahi K16 space-filter sources | 57–45 | Not selected; Weakhold +2 wins offset by three losses elsewhere |
-| 07 keeper-moves-parent-splits | 04 with learned movement but all parent SPLIT decisions preserved | Unmeasured | Prepared; test next |
-| 08 lossless-direction | 03 with reversible 32-bit model node storage | Equivalent control | Exact native prediction parity passed; deployment queued after 06 |
+| 07 keeper-moves-parent-splits | 04 with learned movement but all parent SPLIT decisions preserved | Running | Full Carthage102, one worker |
+| 08 lossless-direction | 03 with reversible 32-bit model node storage | Equivalent control | Native parity and four sandbox games passed |
 | 09 learned-donors | 08 plus teacher-306 nonqueen cull classifier | Unmeasured | Export parity passed; 102-game screen queued after zoo |
 
 Outputs for completed screens: main build/kenma/kNN-v-carthage-s123/. Kageyama output k03-v-kageyama-s123/. Current sequence after-k05 verified the complete Kenma 05 result, finished the seed-5 probe, then launched Kenma 06; main build/kenma/after-k05.progress.log. No additional games should start until the current two-worker resource allocation has room.
@@ -36,13 +36,13 @@ The retained Weakhold seed-1 replays show 03 queens dying to walls immediately a
 
 Queen clone training: 26,820 oracle queen turns from keeper teams; action accuracy 81.75% on 17 held-out development series, versus 32.71% majority. Export parity all 19,627 move-row argmax, max error 5.49e-8. Model evidence is not play strength. Output main build/kenma/queen-action-v1/. Model tools use installed torch/lib/libomp.dylib and OMP/BLAS threads 1.
 
-08 model storage: all 824,580 original nodes reconstruct exactly; 21,024 native probability vectors are bit-identical, including 1,024 synthetic NaN cases. Model arrays 6,596,640 → 3,300,848 bytes; initial archive 3,591,664 bytes. Evidence main build/kenma/lossless-direction/report.json. Sandbox first-turn metering required before adopting it in a stronger candidate; this is not a new strength claim.
+08 model storage: all 824,580 original nodes reconstruct exactly; 21,024 native probability vectors are bit-identical, including 1,024 synthetic NaN cases. Model arrays 6,596,640 → 3,300,848 bytes; initial archive 3,591,664 bytes. Evidence main build/kenma/lossless-direction/report.json. Sandbox first-turn metering passed; this is not a new strength claim.
 
 ## Remaining work and bounds
 
 Finish 03's pool; 06 completed 57–45 with zero errors. Test 07; meter 08. Any stronger candidate gets direct comparison against 03, full Kageyama/other posted free-lane/pool scorecards and exact-source deployment checks. Preserve seeds **11–13 and new maps** for independent confirmation before a ladder request; none used yet.
 
-Nice 15; currently **two** games total (zoo 1, Kenma 06 1), maximum four. Guard at 5 GiB aggregate lane RSS to stay below 6 GiB. Initial 05 two-worker start and later overlapping Ouroboros zoo games hit 5.03/5.06 GiB guards; those interrupted attempts were archived and retried, not counted as bot losses. Two-game concurrency since then. Fresh engine each game; source/fixture manifests pinned; actual engine version logged (unswbc 1.2.3), clang++ -O2 -std=c++20 required by current helper. Resume with --retry-errors only after verifying the previous process terminal. Retry regression passed.
+Nice 15; currently **two** games total (zoo 1, Kenma 07 1), maximum four. Guard at 5 GiB aggregate lane RSS to stay below 6 GiB. Initial 05 two-worker start and later overlapping Ouroboros zoo games hit 5.03/5.06 GiB guards; those interrupted attempts were archived and retried, not counted as bot losses. Two-game concurrency since then. Fresh engine each game; source/fixture manifests pinned; actual engine version logged (unswbc 1.2.3), clang++ -O2 -std=c++20 required by current helper. Resume with --retry-errors only after verifying the previous process terminal. Retry regression passed.
 
 All generated outputs stay in main build/kenma (currently about 0.53 GB); 30 GB ceiling, 40 GB disk floor (about 256 GiB free). Never change measured runtime snapshots. Baseline small reference panel versus Hunter V20 was 6–2, both losses Weakhold, zero errors.
 
@@ -53,3 +53,5 @@ New donor experiment: 208,158 eligible teacher-306 oracle training rows (4,311 c
 Kenma 06 early replay evidence: both Weakhold seed-1 games won; queen survives A, dies at round 285 in B, which still wins on longest dragon. Four completed diagnostic replays audited in main build/kenma/k06-early-diagnostics.json. Full score pending.
 
 2026-10-05 02:21 UTC: Kenma 06 finished 57–45/102, zero errors; 03 retained. after-k06 verified completion and started 08 sandbox metering; 07 follows. Donor mechanism audit: all 299 high-confidence predictions in the 20,000-row export sample have no nominal exit, so high offline precision may mostly reflect terminal traps. Full 09 screen remains queued to establish whether it changes actual play; no strength claim.
+
+2026-10-05 02:24 UTC: 08 exact-source deploy PASS: zip 3,591,843 bytes; max 10,968,532 points including first turns, boot max 10,850,012; four heavy-map games, zero errors. All four outcomes, round counts, death records and non-compute stats match 03. Evidence main build/kenma/deploy/kenma-08-lossless-direction/{summary,parent-game-parity}.json. after-k06 started Kenma 07 Carthage102; zoo remains live and after-zoo will start 09 only on clean full completion.
