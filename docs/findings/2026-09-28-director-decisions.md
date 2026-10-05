@@ -2924,3 +2924,179 @@ The lead does not care about the live rating and asks for the technical issues t
   the reset). The Chair keeps working by file copy; a fresh Chair session would have a shell.
 - Every lane reports in its next line whether its shell works. The backup image is deleted once they do.
 - The disk will fill again: each scheduled run leaves a session folder behind. Expect one to three days.
+
+## D-074 — The clone's play tests are in; a ladder trial for the free lane's queen bot; after the disk reset (5 Oct 2026 04:33Z, Chair: Ushijima)
+
+### A. D-068 §C, items 1 to 4: results (Asahi, seed-1 pool, 272 paired fixtures against carthage-05)
+
+| Arm | Pool difference |
+|---|---|
+| carthage-05 with no direction prior (λ 0) | −13.05 points [−18.38, −7.35] |
+| A1-400 (HB-1 features, ten teams) at λ 1 | −13.60 [−19.49, −8.09] |
+| A1-400 at λ 1.41 | −5.88 [−11.03, −0.74] |
+| A3-400 (encoder trees) at λ 1, from D-068 §B | −6.99 [−12.87, −1.47] |
+
+- Between arms, paired: A1 at λ 1 against no prior −0.55 [−5.88, +4.60]; A1 at λ 1.41 against A1 at λ 1 +7.72
+  [+2.94, +12.52]; A3 at λ 1 against A1 at λ 1 +6.62 [+1.47, +12.13].
+- Fallback count: 0 in 728,046 dragon-turns on the server-like build (no positive control was run).
+- **Reading.** The live prior is worth about 13 points. At its weight the more accurate clone (A1) is worth nothing;
+  sharpened it recovers a little over half. The arms order by the sharpness of the prior, not by accuracy on the
+  teachers' moves. D-068's leading hypothesis holds. No arm reaches the incumbent.
+- The route from here is Hinata's (D-072 §D); its 04:29Z plan (single-team priors next, a blend with the parent's
+  prior otherwise, the full-row models when scored) stands without a card.
+- **The network on the full rows:** 0.7280 [0.7254, 0.7312] on 2,753,685 moves; on the development games' rows 0.7284,
+  +0.0100 [+0.0065, +0.0138] over A1 trained on those games alone (not like for like: 14.6 times the data). Its
+  floor share is 26.2 %, far nearer the live prior's 39.0 % than the trees' 1.8 %. A network of 0.5 MB is therefore
+  a candidate prior in play and the starting point P-7 needs. Kageyama gives a cost estimate for a network
+  inference path in the slot; no build yet. No training by self-play is approved by this record.
+
+### B. A ladder trial for `kenma-03-pocket-queen` (Kenma's request, 04:30Z)
+
+- Its local record: 58–44 against carthage-05, 61–41 against the slot bot, pool 220–52 against 226–46, deploy checks
+  pass. The pool is below the incumbent's; Asahi's same-host pool run with queen columns is in progress.
+- **Approved as a trial, not a promotion.** The lead does not weigh the rating, and the queen is where we lose.
+- **Design, fixed now:** Daichi registers and uploads the bot from Kenma's deploy folder and makes it the active
+  submission until the first series boundary at or after **60 ranked games**. Statistic: score minus Elo expectation
+  with our rating fixed at activation, series bootstrap, 5th and 95th percentiles, against two references: 14585's
+  last 120 ranked games and 16979's window. Also reported: our queen alive at the last round, wins and losses
+  decided by the queen rule, and the table by map. Any crash, timeout or disqualification ends the trial at once.
+  At the end Daichi restores the incumbent and the Chair rules on the table.
+- **Order of events:** Daichi first reads D-052 §B on 16979 (39 games at 04:27Z); the incumbent to restore after the
+  trial is whichever that reading leaves (14585 on a rollback). The 12-hour rule of D-069 does not apply to a trial.
+- Bokuto's best (`bokuto-07-dodge`, 60–42 against carthage-05 by its own run) gets the same trial after Kenma's,
+  once it posts points per turn and its pool panel.
+
+### C. After the disk reset
+
+- Fresh sessions work: Kageyama (pushed 04:27Z) and Asahi. Sessions that were open at the reset lost their shells
+  (permission error): the Chair, Hinata's running unit and Bokuto. Hinata's next scheduled run starts fresh. Bokuto's
+  tree in `../wt-bokuto` is uncommitted until it has a shell.
+- Shenzhen is stopped at the lead's request. Its analyst role under D-072 §C lapses; its findings stand as material
+  for Sugawara. Kageyama is asked to run Shenzhen's commit command for its units 36 to 39.
+- **The keeper is blocked again** (04:31Z) on a tracked cache file, `tools/learn/__pycache__/rebuild.cpython-310.pyc`.
+  The lead is asked to untrack the folder; lanes with a shell move modified cache files aside meanwhile; every
+  lane runs main-checkout code with `PYTHONDONTWRITEBYTECODE=1`.
+
+## D-075 — k = 16 is rolled back; the Kenma trial is running; Bokuto's queen bot is next; the bed schedule is solved (5 Oct 2026 05:18Z, Chair: Ushijima)
+
+### A. Submission 16979 (`asahi-05-kz12-k16`) is rolled back (Daichi, 04:53:55Z, under D-052 §B)
+
+- The look: 45 ranked games, 9 complete series since 02:13Z (44 with an expectation). Mean of score minus Elo
+  expectation against 14585's last 120 ranked games: difference **−0.263, series-bootstrap 95th percentile −0.126**
+  (both conditions of the rule hold: below 0 and below −0.08). Our rating fixed at 1725.
+- 16979 alone: 16–28, −0.211 [−0.327, −0.082]; Elo 1725 → 1605, rank 120. No timeout, no caught error.
+- Queen column (44 decoded): decided by the queen rule 1 W – 14 L; our queen alive at the end in 4 of 44.
+- **The live incumbent is 14585 again** (`carthage-05-free-sprint`). REG-002 is `uploaded`, not live.
+- **The cause is not established.** The bot differs from its parent on 33 of 816 local fixtures and scored
+  +0.080 [−0.029, +0.187] over 75 live pairs, so a true effect of −0.26 (about 180 Elo) from the switch alone is
+  unlikely. Three explanations stay open: noise over nine series; a change in the field during the window; and the
+  switch itself exposing the queen (queen-rule losses 14 of 28 by Daichi's scan and 19 of 29 by Sugawara's wider
+  count, against 29 of 64 for 14585; outside Schooltime 7 of 22 games against 16 of 105 at 25 games, Sugawara
+  03:34Z). §C adds the control that separates the second from the others.
+- The rule is not changed and the rollback is not reversed. k = 16 remains a local parent (pool 233–39 against
+  226–46) until §D's panel says otherwise.
+- **Calibration, D-064 §B's event** (no rollback within the first 120 ranked games): outcome 0. Brier: Tanaka
+  0.7225 (0.85), Sugawara 0.7569 (0.87), Nishinoya 0.7225 (0.85). All three seats were confident and wrong, and
+  the Chair promoted on the same expectation. Sugawara's later numbers are on record and not scored: 0.08 that the rule fires within 40 games (02:28Z),
+  revised to 0.75 at 29 games (03:34Z). The council is dissolved; the calibration file is closed with this entry.
+
+### B. The trial of `kenma-03-pocket-queen` is running (D-074 §B)
+
+- Submission **17388** (`LV-kenma-03-pocket-queen-c5d2ff46-ai`), registered from Kenma's deploy zip, code byte-equal to
+  Kenma's tree, runtime e60733a9…. The server activated it when it finished compiling: first ranked series 05:02Z.
+  No ranked game of 14585 fell between the restore and the trial. End: the first series boundary at or after 60
+  ranked games, about 08:00Z.
+- **Amendment to the statistic (made at 05:18Z; the Chair had seen one trial series, 2 wins and 2 losses of 5, in
+  the hub's state file, and nothing else).** Daichi anchored the trial at our rating at activation, about 1605.
+  That rating is the product of 16979's 45 games. If the trial bot is nearer 1725 in strength, an anchor of 1605
+  credits it about +0.16 a game for nothing, and the comparison with 14585's window (anchor 1725) is biased
+  upward. **Primary statistic for every window in §B and §C: mean of score minus expectation with our rating fixed
+  at 1725, series bootstrap, 5th and 95th percentiles.** Also reported for each window: the performance rating
+  (the rating at which the window's score equals its expectation) with the same bootstrap, and the figure at the
+  activation anchor.
+- Unchanged: queen alive at the last round, queen-rule wins and losses, the table by map; a crash, timeout or
+  disqualification ends the trial at once.
+
+### C. Second trial, the control, and the rule at the end
+
+- **`bokuto-04-queen` gets the same trial directly after Kenma's**, without a return to 14585 in between. It is
+  chosen over `bokuto-07-dodge` because it has the same-host pool with queen columns (§D); if Bokuto posts a
+  same-host pool for a later version before the first trial ends, the Chair may swap it.
+- Conditions before the upload: Asahi runs the deploy probe on the tree it used for the pool (runtime ff68a709…): zip
+  at most 4 MiB, at most 30 M points a turn with the first turn included, four heavy-map games, no error. Daichi
+  registers from a byte-exact copy of `../wt-bokuto/bots/bokuto-04-queen` and checks the runtime fingerprint.
+  Bokuto's tree is not edited. If the probe is not in when the first trial ends, the control below runs first.
+- **Control:** after the trials Daichi restores 14585. Its next 60 ranked games are read with the same statistic
+  against its own last 120 games before 02:13Z. A difference near zero says the field did not move and 16979's
+  window was the bot or noise; a difference near 16979's says the field moved.
+- **Rule at the end, fixed now.** The lead does not weigh the rating, so a switch costs nothing and no significance
+  test is needed. Of the three windows (17388, Bokuto's, 14585's control) the bot with the highest primary
+  statistic becomes the incumbent, provided it had no fault; a lead under 0.03 over 14585's control keeps 14585.
+  The windows are about 60 games each and three hours apart, so the choice is noisy; it is the best available
+  estimate and can be revised by a later window. D-052 §B then applies to the chosen bot as to any incumbent.
+
+### D. The free lanes' bots, measured on our harness (Asahi, seed-1 pool, 272 paired fixtures)
+
+| Bot | Pool | Against carthage-05 | Against k = 16 | Queen-decided W–L | Queen alive at the round limit |
+|---|---|---|---|---|---|
+| `carthage-05-free-sprint` | 226–46 | | | 0–5 | 0 of 146 |
+| `asahi-05-kz12-k16` | 233–39 | +2.6 points | | 0–5 | 0 of 146 |
+| `kenma-03-pocket-queen` | 220–52 | −2.21 [−4.41, −0.37] | −4.78 [−7.72, −1.84] | 13–4 | 15 of 147 (14 on Schooltime) |
+| `bokuto-04-queen` | 226–46 | 0.00 [−5.15, +4.78] | −2.57 [−7.35, +2.21] | 42–4 | 44 of 189, on 11 of 17 maps |
+
+- Head to head, 102 games each, the lanes' own runs: kenma-03 against carthage-05 58–44, against k = 16 57–45,
+  against bokuto-04 54–48; bokuto-04 against carthage-05 58–44; `kenma-21` 60–42 and `bokuto-07-dodge` 60–42 against
+  carthage-05 (no same-host pool yet).
+- Costs: Kenma loses on Australia and UNSW (every non-queen plans with one unit slot reserved, all game); Bokuto
+  loses economy (−6.3 [−9.5, −2.7]) and Queen of Spades, UNSW, Autarky, Default, Dilemma.
+- **Reading.** Bokuto keeps its queen at the top ten's rate (23 % of round-limit games; theirs 24–56 %) across
+  maps and holds the pool level. Kenma's logic acts on Schooltime. The pool's opponents rarely keep a queen, so a
+  queen kept there wins by default; the ladder trials measure the same thing against teams that do keep theirs.
+- **For the queen owner (Sugawara decides; D-072 §C).** The build order of 04:38Z (Kenma's pocket first, then the
+  grow rule, Bokuto's block last) was written before Bokuto's pool result. The broad mechanism is now the one
+  with evidence at pool parity. The Chair asks Sugawara to move Bokuto's caution and crown block beside or ahead of
+  the grow rule, or to say why not. Ordered in any case: the 68-game queen-keeper panel (against `bokuto-04-queen`
+  and `kenma-03-pocket-queen`) is run for **both parents**, carthage-05 and k = 16, before the builds are read. It
+  shows whether the k = 16 veto costs the queen against opponents that keep theirs (§A's third explanation).
+
+### E. The clone in play (Hinata's route, D-072 §D)
+
+- All ten of Hinata's learn jobs failed at 04:37–04:39Z on a missing library (`libomp` for LightGBM on the Mac).
+  Asahi fixed the runner and re-queued them unchanged; the first two have finished.
+- **Single-team priors (D-068 §C.5), fitted on the full rows:** team 213 **0.7541** [0.7476, 0.7603] on its own
+  268,722 moves (63 series), team 91 0.7133 [0.7092, 0.7175] on 222,647 (40 series). The pooled network scores 0.6962
+  and 0.6841 on the same rows: a pooled clone gives up 3 to 6 points on any one teacher. Shape of the 213 model:
+  entropy 0.561, floor share 2.4 % (the pooled A1 on 213's development rows 0.635; the live prior 0.43 and 39.0 %).
+- Hinata's first route candidate is the 213 prior at λ 1. Kageyama exports it first (same path as
+  `kageyama-02-p1-hb1`), ahead of the remaining bed variants: it is short and it unblocks a Mac job.
+- **The Chair's forecast for the 213 prior at λ 1 on the seed-1 pool:** about −8 points; 0.12 that it is not below
+  the incumbent (paired 5th percentile above −5). It is sharper than the ten-team clone and still softer than the
+  live prior, and §A of D-074 says the arms order by sharpness. The Chair asks Hinata to queue beside it one arm at
+  the weight λ at which the tempered prior's mean entropy on the development rows equals the live prior's (one
+  value, computed before the run),
+  so that team style and sharpness are separated in one pass. Both runs report the queen columns: 213 keeps its
+  queen, and a prior cloned from it may carry some of that.
+
+### F. The hidden bed layouts (Kageyama, D-072 §E)
+
+- **The schedule is solved exactly.** The engine draws every bed countdown from `mt19937_64(seed)`: countdown =
+  lo + (u mod (hi − lo + 1)); the symmetric pairs draw in row-major order of the first cell at round −1 and again at
+  each expiry. A Python emulator matches the engine on 11 maps × 2 seeds, every pair, 500 rounds. A candidate bed
+  list is checked against a server game in milliseconds.
+- **Devil, second layout:** 380 of 777 post-m2 Devil games (49 %) are on it; a list of 38 pairs fitted on 150 games
+  explains every pearl appearance in all 380; the oracle reproduces 20 of 20 Devil games that failed before, turn
+  for turn. This meets D-072 §E's acceptance (at least 95 %).
+- Queen of Spades, Slithery Fight, Schooltime (open-4) and Prisoners Dilemma (10 dragons) follow by the same method.
+- The withdrawal in D-053 ("cannot be rebuilt") was wrong, and the lead's objection to it was right.
+- **Ordered for when `maps/live_var/` is merged:** Asahi adds each variant as pool fixtures (same opponents, seats
+  and seed), re-zeros carthage-05, k = 16, `kenma-03-pocket-queen` and `bokuto-04-queen` on them, and from then on
+  every pool card shows two totals: templates only (comparable with the past) and weighted by each layout's share
+  of live games. R0 item 9 is reopened until then.
+
+### G. Housekeeping
+
+- The keeper's passes at 04:54Z and 05:12Z show no error; the cache-file block of 04:31Z is gone.
+- Shells after the reset: Sugawara, Daichi, Kageyama and Asahi work in fresh sessions. The Chair's device shell
+  still fails; it works by file copy. Bokuto's shell is down; its tree in `../wt-bokuto` is uncommitted.
+- Daichi's remaining hub items: the seat field in job rows, the end reason `queen`, the frozen pairing rule.
+- Not yet reported: whether Shenzhen's units 36–39 were committed on its behalf.

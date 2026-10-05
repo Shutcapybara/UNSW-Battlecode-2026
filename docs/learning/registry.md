@@ -26,7 +26,7 @@ one switch on a registered parent.
 
 ## Entries
 
-### REG-000 — `carthage-05-free-sprint` (incumbent until 5 Oct 02:13Z; now the rollback target)
+### REG-000 — `carthage-05-free-sprint` (incumbent again since 5 Oct 04:53:55Z, D-075 §A)
 
 - rung: pre-ladder parent (hand search with the hb1-14 GBT direction prior). parent: `carthage-04-sprint123`.
 - switch: free on-route 2- and 3-step sprints on top of correct 1.2.3 sprint pricing.
@@ -34,7 +34,8 @@ one switch on a registered parent.
   [+0.003, +0.031], seeds 1–3, both seats, old map pool (pre-swap).
 - zero on the live maps (Rome, D-043, wheel 1.2.3): pool 656–160–0 of 816 (0.804); gen 1,038–353–1 of 1,392 (0.746).
 - fingerprint: `ebeba55f` (from the upload name). live: submission **14585**,
-  `LV-carthage-05-free-sprint-ebeba55f-ai`, active since 2 Oct 04:22Z.
+  `LV-carthage-05-free-sprint-ebeba55f-ai`, active 2 Oct 04:22Z to 5 Oct 02:13Z and restored 5 Oct 04:53:55Z
+  (D-075 §A). Not serving ranked games during the ladder trials of D-074 §B and D-075 §C (17388 since 05:02Z).
 - status: `incumbent`.
 - Open items for Live ops and the Evaluator:
   - the hub's candidate row for this bot shows `submission: null` and status `runtime_ok` although 14585 is live;
@@ -50,7 +51,7 @@ one switch on a registered parent.
   active 1 Oct 17:00Z to 2 Oct 04:22Z.
 - status: `uploaded` (rollback target one activation away).
 
-### REG-002 — `asahi-05-kz12-k16` (**live** since 5 Oct 02:13Z, D-069)
+### REG-002 — `asahi-05-kz12-k16` (live 5 Oct 02:13Z to 04:53Z; **rolled back**, D-075 §A)
 
 - rung: outside the ladder (`temporary` hand rule, D-044). parent: REG-000.
 - switch: queen-only veto on a one-step move into a pocket with body-conditioned reach Cb < 16 that has no cycle of
@@ -68,8 +69,11 @@ one switch on a registered parent.
   pairs against 14585 on teams 716, 98 and 347. Promotion conditions: D-056 §C.
 - LS-1 final (job expired at its deadline, 160 of 204 games): 75 pairs, paired mean +0.080 [−0.029, +0.187], no fault;
   by opponent 716 +0.233, 98 0.000, 347 −0.050. Its own frozen letter: HOLD.
-- status: **`live`**. Activated 5 Oct 02:13:22Z by Daichi under D-064 §B (all five conditions hold; D-069). Rollback
-  target: REG-000 (14585). Watch: D-052 §B over its first 40 ranked games.
+- status: **`uploaded`, rolled back.** Activated 5 Oct 02:13:22Z by Daichi under D-064 §B (D-069). **Rolled back
+  to REG-000 (14585) at 04:53:55Z under D-052 §B (D-075 §A):** 45 ranked games, 9 series; score minus expectation
+  against 14585's last 120 games −0.263, 95th percentile −0.126; alone 16–28, −0.211 [−0.327, −0.082]; queen-rule
+  W–L 1–14; no fault. Cause not established (noise, field change, or the veto exposing the queen). Still a local
+  parent (pool 233–39 against 226–46) pending the queen-keeper panel of D-075 §D.
 
 ### REG-003 — `hinata-v0b` (value model, R1 candidate; **failed** its confirmation, D-057 §B)
 
@@ -88,3 +92,26 @@ one switch on a registered parent.
 - offline: forward/right/left accuracy 0.714 [0.706, 0.724]; queen 0.678; per teacher 0.676 to 0.768; learning
   curve 0.676 / 0.684 / 0.703 / 0.714 at 0.10 / 0.25 / 0.50 / 1.0 of the training series.
 - status: `diagnostic`. The battery's A3 is the unweighted refit (D-060 §E).
+
+### REG-005 — `kenma-03-pocket-queen` (free lane Kenma; **ladder trial running**, D-074 §B)
+
+- rung: outside the ladder (free lane, D-067 §F). parent: `carthage-05-free-sprint` lineage, Kenma's tree
+  `../wt-kenma/bots/kenma-03-pocket-queen`.
+- change: a proven sealed pocket of at most 8 cells makes the queen split to 2 or take the least-eating step inside
+  it; trapped donors split 1; every non-queen plans with one unit slot reserved (Sugawara's read, 04:38Z).
+- local: 58–44 against carthage-05, 57–45 against k = 16, 54–48 against `bokuto-04-queen` (Kenma, 102 games each).
+  Same-host seed-1 pool (Asahi): 220–52; against carthage-05 −2.21 points [−4.41, −0.37]; against k = 16 −4.78
+  [−7.72, −1.84]; queen-decided 13–4; queen alive at the round limit 15 of 147.
+- deploy: zip 3,923,010 B; maximum 10,910,667 points a turn with the first turn; no fault (Kenma).
+- live: submission **17388**, `LV-kenma-03-pocket-queen-c5d2ff46-ai`, runtime e60733a9…; first ranked series 5 Oct
+  05:02Z; trial to the first series boundary at or after 60 ranked games. Statistic and end rule: D-075 §B–C.
+- status: `uploaded` (trial; not a promotion).
+
+### REG-006 — `bokuto-04-queen` (free lane Bokuto; **second ladder trial approved**, D-075 §C)
+
+- rung: outside the ladder (free lane). Tree `../wt-bokuto/bots/bokuto-04-queen` (uncommitted), runtime ff68a709….
+- local: 58–44 against carthage-05 (Bokuto, 102 games). Same-host seed-1 pool (Asahi): 226–46; against carthage-05
+  0.00 points [−5.15, +4.78]; against k = 16 −2.57 [−7.35, +2.21]; queen-decided **42–4**; queen alive at the round
+  limit 44 of 189, on 11 of 17 maps; economy −6.3 [−9.5, −2.7].
+- deploy: probe by Asahi required before upload (D-075 §C). live: none yet.
+- status: `candidate`.
