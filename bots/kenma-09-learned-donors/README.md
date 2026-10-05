@@ -9,3 +9,5 @@ Model SHA-256: 484c315dc5030ae74b7ea99ed9b77c20fb19cdbd0a475daeeff15d28d6ff0b60.
 Export verification: 20000 native rows, all threshold decisions equal, maximum probability error 3.2361124890911697e-08. Status: unmeasured, not best. Full native comparison and exact-source sandbox checks required. Seeds 11–13/new maps remain reserved.
 
 Mechanism caveat: all 299 high-confidence donor predictions in the 20,000-row export sample have n_exit_any = 0 (295 also have free_dirs = 0; 3 are split-eligible). Nominal exit features do not fully model tail movement, so this is not proof of identical actions, but high imitation accuracy may largely reflect terminal traps. The full screen must establish useful changes in play; do not promote from classifier accuracy. Evidence main build/kenma/feeder-v1/activation-census.json.
+
+Full Carthage screen completed **57–45/102**, zero errors; rejected versus 03 (58–44). Only three outcome/round/reason summaries changed versus 03, all Slithery Fight; one win became a loss. Output main build/kenma/k09-v-carthage-s123/{score,parent-deltas}.json. High offline cull precision did not improve playing strength.
