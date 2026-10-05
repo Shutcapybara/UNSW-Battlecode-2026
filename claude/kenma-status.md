@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 04:12 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
+State: **ACTIVE**, updated 2026-10-05 04:17 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
 
 ## Provisional best
 
@@ -50,9 +50,9 @@ Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. 
 
 Exactly **two game workers**, nice15:
 1. Kenma03 versusAsahi05,102 games, under after-k18.py / session64496; log k03-v-asahi05-s123.progress.log. It started after18 finished49–53 and all102 replay/fallback audits passed. SourceAsahi05 matches main fingerprint43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad. Sequence reads retained Schooltime/Weakhold replays after games.
-2. Kenma21 Schooltime8 then UNSW8 under run-k21-probes.py; logs k21-schooltime-s1235.progress.log and k21-unsw-pool-s1.progress.log. One worker, all16 replays retained; sequence reads all and ends for mechanism/result review. Full10221 not yet started.
+2. Kenma21 Schooltime8 then UNSW8 under run-k21-probes.py / parent65354 / session12546; logs k21-schooltime-s1235.progress.log and k21-unsw-pool-s1.progress.log. One worker, all16 replays retained; sequence reads all and ends for mechanism/result review. Full10221 conditionally queued under after-k21-probes.py / session23148: wait exact65354, require clean8+8, Schooltime8 wins with queen3 in every verdict and zero release markers, UNSW>=6 wins with release markers in each replay, and all16 replay diagnostics. Then run full102 with logs and audit/read all102. No promotion occurs automatically.
 
-17 and18 rejected46–56/49–53; every one of their102 replays read, zero inference fallback markers.13 all12 retained replays read.19 probes8–0/6–2, all16 replays read.20 Schooltime8–0, all8 read, allqueens alive but all final length2;19/20 full screens held. All prior sequences except64496 are terminal; source snapshots remain frozen.
+17 and18 rejected46–56/49–53; every one of their102 replays read, zero inference fallback markers.13 all12 retained replays read.19 probes8–0/6–2, all16 replays read.20 Schooltime8–0, all8 read, allqueens alive but all final length2;19/20 full screens held. Active sequence handles are64496,12546 and queued23148; older run handles63263/31527/76001 are confirmed terminal; source snapshots remain frozen.
 
 
 Parent64 completed57–7, exactly supplied map totals;03 same fixtures49–15. Outputs parent-pool-diagnostic-s1/score.json and parent-pool-comparison.json. after-parent-diagnostic/session33367 completed14 smoke3–1; after-k14-smoke/session23315 completed16 deployment. Sessions15167(12),69469(parent64),33367(14 queue),23315(16 queue) are terminal. Kenma14 full screen is held; no strength claim.
@@ -102,3 +102,5 @@ New19 local-pocket mechanism: three15 queen deaths share length3→4 food growth
 Main BOARD reports Asahi05 as the newer incumbent; local/runtime source matches main fingerprint43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad. A full03 versusAsahi05 comparison is dry-run-previewed and queued under after-k18.py after exact18 parent37871 clean102 completion plus full102 fallback/replay audits.17 all102 replays read, zero fallback, only8 originalqueens survive. No new best or reserved validation yet.
 
 2026-10-05 04:12 UTC:21 replaces indiscriminate reserve with a permanent legal terrain proof: originalqueen has9 known open-connected cells or an incident portal, so cannot enter any closed<=8-cell portal-free pocket. Only queen/self or observed alliedoriginalqueen may seed it. Existing sonar type highbit carries it without extra rays; checksums recomputed and all44 payload bits restored before parent decode (density uses all44).7000 packet roundtrip/relay checks and terrain guards pass ASan/UBSan. HB features use message counts, not payloads, so envelope leaves features intact. Schooltime21 should retain03 behavior; UNSW tests whether proof propagates before population pressure. Runtime62671c2e5c55a03947b28f5aeb09b98453f47716a77845d1e370ec5bd1a368da. No map identity or hidden future state.
+
+2026-10-05 04:17 UTC: Continuation made concrete progress:17/18 final46–56/49–53 and complete102-replay audits each;13 replay audit;15/19/20 mechanism results; new21 protocol proof implementation and sanitizer checks. Current two game workers verified, aggregate lane RSS2.517GiB, output2.5GB, free247GiB.21 first6 Schooltime games allqueen3–0 and first3 full-log audit has zero reserve-release markers; remaining probe and full incumbent comparison still in flight. Reserved seeds11–13/new maps untouched, no new best, no server access.
