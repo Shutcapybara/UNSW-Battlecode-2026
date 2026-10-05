@@ -1,0 +1,9 @@
+# Kenma23 — isolate short-queen corridor caution
+
+Parent08 (strategy-equivalent to03). Copies only14's observed-terrain corridor filter into the original search; no orbit policy. An original queen of length2/3 prefers an immediately legal route with visible turning room when available. Unknown corridor endpoints are treated cautiously; uncertain first steps, portals, loops and branches retain parent eligibility. When no broad route exists, preserve parent options. Split evaluation, reserve, sealed-pocket rescue, nonqueen policy and direction prior remain unchanged.
+
+The prior14 smoke was confounded by12's orbit policy: it preserved one Weakhold queen but lost another and did not change aggregate winners. This snapshot isolates the corridor filter on the stronger control. It is a heuristic about unknown endpoints, not a proof of future survival. No new model fitting, map identity or reserved data used.
+
+Status: prepared, unmeasured. Reuse the actual Weakhold recorded-observation sanitizer test, then a bounded logged smoke on Weakhold, Trauma, Australia and Schooltime before any full comparison. No strength claim. All measured ancestors remain frozen.
+
+Preflight passed: actual recorded-turn sanitizer test (redirect avoidable round157, preserve committed round158 fallback). Against both Asahi05 Weakhold seed1 queen traces,08 reproduces all75 recorded actions exactly.23 changes only round24(A) and40(B), before the wall deaths29/44, and logs6/1 filter applications. These are fixed observations, not predicted game outcomes. Eight-game four-map smoke is running with all replays retained for reading. Runtime9e021c69d368751fc131ea99d270bdf1dade95d4773d4a7217c2173bbd503468. Outputs main build/kenma/orbit-audit/k23-asahi-counterfactual.json and k23-corridor-smoke/.
