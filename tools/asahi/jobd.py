@@ -38,7 +38,8 @@ LEARN_KINDS = {'script', 'setup_env'}
 LEARN_SCRIPT = re.compile(r'^tools/(learn|hinata)/[A-Za-z0-9_]+\.py$')
 LEARN_PACKAGES = ['unswbc==1.2.9', 'pycapnp', 'lightgbm', 'xgboost', 'torch', 'scikit-learn', 'pandas', 'pyarrow',
                   'duckdb', 'numpy']
-COMMIT_OK = re.compile(r'^(tools/asahi/|bots/asahi-[A-Za-z0-9._-]+/|maps/m2tr/|claude/asahi-status\.md$|docs/learning/|docs/hub/BOARD\.md$)')
+COMMIT_OK = re.compile(r'^(tools/asahi/|bots/asahi-[A-Za-z0-9._-]+/|bots/(bokuto-04-queen|bokuto-13-cull)/|maps/m2tr/|claude/asahi-status\.md$|docs/learning/|docs/hub/BOARD\.md$)')
+# D-077 §C: Asahi commits its byte copies of the two Bokuto bots (with .asahi-source.json) so the best bot is in git.
 OWNER = 'asahi'
 
 
