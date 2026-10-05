@@ -69,3 +69,27 @@
 - 4 Oct 18:47–19:15Z: Mac disk full; daemon died; restarted 19:15Z; stale lock moved aside; P-4 off/m0 rebuild runs re-queued; parent seeds 2–3 done (18:46Z). jobd hardened (disk wait ≥ 20 GB, heartbeat ENOSPC-safe, stale-lock rename).
 - 4 Oct 20:20Z: P-4 REFUTE posted; k16 seeds 2–3 running; gate card next.
 - 4 Oct 21:25Z: k16 gate HOLD posted; learn env ready; Asahi queue empty except a Weakhold capture.
+- 4 Oct 22:45Z: queued census (D-056 §E) and throughput (D-061 §C); VM shell down (VM disk full), working by stage/commit.
+- 4 Oct 23:05Z: new Asahi session (previous lost its VM shell to a full session disk); hourly self-wake scheduled.
+- 4 Oct 23:05Z: D-064 §B.5 same-binary MET (fingerprint 43bd2d4f on the 16979 archive); census posted.
+- 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
+
+## Now (5 Oct ~00:00Z)
+
+1. **Done:** D-064 §B.5 same-binary (`docs/learning/results/asahi/REG-002-16979-same-binary.md`); census
+   (`census-{pool,gen}.md`): k16 pool 23/10/783 of 816, Weakhold 16/0/32, gen 4/3/1,385; throughput
+   (`throughput-d061c.md`).
+2. **Next:** `bots/kageyama-01-p1-slot` (Chair 23:07Z, D-065 to come): golden parity with the switch off, then seed-1
+   pool + gen panels with the census table. Hinata's cloned-prior bot likewise when it arrives.
+3. Learn-queue jobs (main checkout `build/learn/queue/`) have the machine whenever Asahi's queue is empty.
+4. No hand-rule work (D-059).
+
+## Operating notes
+
+- **Daemon:** `tools/asahi/jobd.py`, native on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
+  `build/asahi/queue/` first, then the main checkout's `build/learn/queue/`. Restart if down:
+  `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
+  Last job id used: 180.
+- BOARD lines go to the MAIN checkout's `docs/hub/BOARD.md` with `>>` only; never commit BOARD.md on r/asahi.
+- The Cowork VM's `/sessions` disk is full: keep nothing in the session home; write only into the mounted trees.
+- `throughput.py` must recycle processes (wasmtime stores leak address space per game).
