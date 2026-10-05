@@ -7,45 +7,39 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 20, 2026-10-05 ~05:57Z)
+## Top — read this first (unit 21, 2026-10-05 ~06:55Z)
 
-- **Last BOARD line read:** 1225 (my own D-075 §B(1) line, 05:5xZ; 1224 = Asahi's bokuto-04 probe OK). Next unit reads from 1226.
+- **Last BOARD line read:** 1262 (Asahi 06:47Z: bokuto-13-cull pool + probe running, expected ~07:15Z). Next unit reads from 1263.
 - **LIVE = 17388 (`kenma-03-pocket-queen`), D-074 §B / D-075 §B TRIAL 1, not a promotion.** First ranked series 05:02Z.
-  Interim at 25 games / 5 series: score − E @1725 +0.075 [−0.061, +0.219], perf 1782 [1679, 1884]; vs 14585's last 120
-  before 02:13Z +0.118 [−0.047, +0.315]. Queen alive at the end 0/25, queen-rule 0–2, 0 faults. Elo 1767, rank 78 (05:50Z).
-- **Anchor correction (posted):** ladder rating went 1605 (04:47Z) → 1721 (04:58Z, after restore to 14585) → 1702 → 1778 → 1767;
-  the server rating follows the active submission, so the activation anchor is 1721 ≈ the fixed 1725.
-- **D-075 orders:** primary statistic = mean(score − E) with our rating fixed at 1725, series bootstrap 5/95, plus perf rating
-  and the activation-anchor figure for every window: `python3 build/daichi/tree/tools/daichi/trial_d075.py --ref
-  14585:2026-10-05T02:13:00Z:120 --sub 17388 [--sub <bokuto id>] [--maxgames 60]` (PYTHONDONTWRITEBYTECODE=1).
-  Trial 2 = `bokuto-04-queen` directly after trial 1 (no return to 14585). Then control: restore 14585, read its next 60
-  with the same statistic vs its own last 120 before 02:13Z. End rule: highest primary statistic without fault becomes the
-  incumbent; a lead < 0.03 over the control keeps 14585. Registry REG-005 (kenma-03), REG-006 (bokuto-04).
-- **Trial 2 ready:** Asahi's deploy probe OK (BOARD 1224: zip 3,928,551 B, max 12.86 M pts/turn, first turn 12.47 M, 0 errors,
-  runtime ff68a709). Byte copy in build/daichi/stage/bokuto-04-queen (tree sha256 3e31f947… = source; fingerprint recomputed
-  ff68a7093aa3e5f6… = source). The copy includes `.unswbc-build/` and `.gitignore`: exclude build output from the
-  registration (as for kenma-03, use the zip `unswbc submit` builds, or register the source files only).
-- D-073 owed code items unchanged (seat field, end reason `queen`, frozen pairing rule, then redeploy).
-- No API/quota errors in *.done.json.
-
+  At 55 games / 11 series (to 06:36Z): score − E @1725 +0.079 [−0.050, +0.216], perf 1783 [1687, 1886], W–L 30–25;
+  vs 14585's last 120 before 02:13Z (−0.043 [−0.109, +0.028], perf 1694) +0.121 [−0.026, +0.279]. Queen-rule losses 5 of 55,
+  0 faults (sidescan2). Elo 1774, rank 77 (06:50Z). live_monitor rolling 40 (own-rating E) −0.009 [−0.147, +0.147], no trigger.
+- **D-076 (06:21Z):** (A) ratings belong to submissions — a trial costs the incumbent nothing; anchor stays 1725.
+  (B) **Trial 2 rule:** if Asahi posts by 07:45Z a same-host seed-1 pool for `bokuto-13-cull` with wins ≥ 226 AND probe OK →
+  trial 2 = bokuto-13-cull (byte copy from `../wt-bokuto/bots/bokuto-13-cull`, fingerprint check against Asahi's
+  .asahi-source.json / probe runtime); otherwise or late → `bokuto-04-queen` (staged, build/daichi/stage/bokuto-04-queen,
+  fingerprint ff68a7093aa3e5f6…). Future queue: any candidate with probe OK + pool 5th pct vs carthage-05 > −5 may be
+  queued by the Chair for a 60-game trial (D-075 §C end rule).
+- D-073 owed code items unchanged. No API/quota errors in *.done.json; no control file pending. r/daichi c85cfc40b before this unit.
 ## Next unit
 
-1. Read BOARD from 1226. Run live_monitor (active must be 17388 until I switch) and `sidescan2.py --sub 17388`
-   (any TLE, caught error or DQ ends the trial at once).
-2. **Trial-1 look** at the first series boundary at or after 60 ranked games of 17388 (~08:00Z): trial_d075.py with
-   `--maxgames 60`; queen column + map table from sidescan2. Post it. Then directly register (REG-006) and upload+activate
-   bokuto-04-queen from the stage copy (submit.json; expect a 409 while compiling, the server auto-activates when ready);
-   re-read status.json active; BOARD; PushNotification (upload/activation).
-3. Trial 2 look at its 60-game boundary (~11:00Z), then restore 14585 (restore.json candidate = Bokuto's submission id),
-   control 60 games (~14:00Z), apply the end rule, post, notify.
-4. D-073 code items; tests in $HOME/daichi-test; redeploy.
+1. Read BOARD from 1263. live_monitor (active must be 17388) and `sidescan2.py --sub 17388`.
+2. **Trial-1 look** (≥ 60 ranked games should be in by ~07:10Z): `trial_d075.py --ref 14585:2026-10-05T02:13:00Z:120
+   --sub 17388 --maxgames 60`; queen column + map table. Post on BOARD.
+3. **Trial-2 pick per D-076 §B** from Asahi's 13-cull post (deadline 07:45Z): wins ≥ 226 + probe OK → byte-copy
+   bokuto-13-cull, verify fingerprint, register (REG-00x) — else bokuto-04-queen (REG-006). Exclude `.unswbc-build/`.
+   Upload+activate via submit.json (409 while compiling is normal), re-read active, BOARD, PushNotification.
+4. Trial 2 look at its 60-game boundary, then restore 14585 (candidate = trial-2 submission id), control 60 games, end rule.
+5. D-073 code items; tests in $HOME/daichi-test; redeploy.
 
 ## Open questions for the Chair
 
-- None open (redeploy done by the Chair 04:06Z, D-073).
+- None open.
 
 ## Units
 
+- 2026-10-05 ~06:55Z unit 21 — read BOARD 1226–1262 (D-076). Trial 1 at 55 games +0.079 @1725, vs ref +0.121; 0 faults.
+  Waiting for the 60-game boundary and Asahi's 13-cull pool (D-076 §B). No BOARD line (no result yet).
 - 2026-10-05 ~05:57Z unit 20 — read BOARD 1213–1224, D-075. trial_d075.py written; 17388 interim 25 games +0.075 @1725; anchor correction; bokuto-04 staged + fingerprint verified; BOARD 1225.
 - 2026-10-05 ~05:12Z unit 19 — read BOARD 1180–1212, D-073, D-074. D-052 §B fired on 16979 (−0.263, 95th −0.126)
   → restored 14585 04:53Z; registered + uploaded kenma-03 (17388), live 05:02Z as the D-074 trial; BOARD 1213–1214; user notified.
