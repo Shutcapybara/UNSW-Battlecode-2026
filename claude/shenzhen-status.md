@@ -72,6 +72,9 @@ pushes `r/shenzhen`.
 | H-SZ65 | 4-ray echo adds ≥ +0.005 AUC to 7×7 view for 10-round death | **refuted 0.15** (unit 34: +0.003 any / +0.001 contact; blind rows: enemy-head echo → contact death 1.66×, 6 % of blind rows) | — | — | — |
 | H-SZ66 | echo_enemy_head importance concentrated on blind rows (> own length there) | posted 0.3 (unit 34) | below length, or not higher than on all rows | permutation importance on dev120 | Learner |
 | H-SZ67 | per-map kelp-echo share ↔ our gap to top-10 (ρ ≥ 0.4) — radio reach caps coordination | posted 0.25 (unit 34) | abs ρ < 0.2 over ~17 maps | store pass + TARGETS | Data |
+| H-SZ68 | local-view ceiling for cloning ≈ 0.80 on recurring 7×7 states | measurement 0.6 (unit 35: held-out lookup 0.802 on 22 % covered; 5×5 0.733; backoff 0.655–0.666 all rows; always-F 0.58) | replicate on live teachers | — | Learner |
+| H-SZ69 | clone residual concentrated on empty-view rows; time/memory gain share ≥ 2× there | posted 0.4 (unit 35) | ratio < 1.2 or no accuracy gap | extra split of D-067 (1) | Learner |
+| H-SZ70 | self-disagreement partly arbitrary (id parity / round parity / seat predict minority action) | posted 0.3 (unit 35) | none moves minority rate ≥ 3 pp | sim log pass | Shenzhen |
 | H-SZ58 | R4: allied heads able to split + own food at headroom 0–1 | posted 0.35 (unit 29) | split-label AUC gain < +0.01 | R4 ablation | Learner / Data |
 | H-SZ51 | class-B maps: live win tracks total share more than queen survival | posted 0.4 (unit 23) | queen alive outweighs total share in store logistic | ~2,000 ranked post-m2 | Data / Learner |
 | H-SZ49 | learned queen block: strike slack, static room, unit headroom | posted 0.3 (unit 21) | AUC gain < +0.02 r100–250 | store LOMO | Learner |
@@ -151,6 +154,7 @@ pushes `r/shenzhen`.
 
 - **Unit 33 (4 Oct 23:27Z – 5 Oct 00:25Z).** No new board items for shenzhen. szheadboot.py / szdelta.py over 276 sim games: headroom holds at r300, not r100 (unit-31 r100 withdrawn); H-SZ62 refuted; H-SZ63, H-SZ64.
 - **Unit 34 (5 Oct 00:24Z – 00:50Z).** Push of 23bbb6ab9 confirmed; nothing addressed to shenzhen. szsonarthreat.py over 72 sim games / 638,791 rows: echo nearly redundant with the view (H-SZ65 refuted); 67 % of rays end in kelp; H-SZ66, H-SZ67. Corrected unit-33 timestamp (ended ~23:54Z, not 00:25Z).
+- **Unit 35 (5 Oct 01:04Z – 01:20Z).** Push of 9c48d4077 confirmed. D-067 (time and game state): Kageyama (7) trajectory block matches H-SZ59/H-SZ64. szbayes2.py over 36 sim games / 1.47 M moves: view-only ceiling ≈ 0.80 on recurring states (H-SZ68); H-SZ69, H-SZ70. Unit-34 BOARD line stamped 00:50Z was written ~00:33Z (stamps now from `date -u`).
 
 ## Next unit
 
