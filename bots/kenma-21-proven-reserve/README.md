@@ -1,0 +1,9 @@
+# Kenma21 — release only a proven unnecessary reserve
+
+Parent:08 (strategy equivalent to03). Preserve the original queen keeper and donor behavior. A process releases its one-slot population reserve only after proving that its original queen belongs to an open-connected component of at least9 cells, or one containing a portal. Static terrain means such a queen can never enter a distinct closed <=8-cell, portal-free component where this keeper requires a reserve. Unknown edges are ignored, not treated as open. A nonqueen can seed the proof only from an observed allied original queen, never from its own large component.
+
+Share the permanent fact using the unused high type bit of existing policy sonar packets. Recompute the checksum; receivers remove the envelope flag before parent decoding. All44 payload bits (including the high density id bit), packet order, ray count, split handoff and HB message-count features are preserved. No new rays, map identity or full-map inference. As with parent radio, team tag/checksum is not cryptographic authentication.
+
+Motivation:15 removed four UNSW pool losses caused by the global reserve, but killed3/8 Schooltime queens;19/20 survived all8 but ended at length2.21 keeps03's length3 pocket keeper while removing reserve cost only where the terrain proof makes that reserve unnecessary.
+
+Status: ASan/UBSan passes closed/unknown/portal/open terrain, queen-only proof seeding,7000 complete44-bit payload roundtrips, relay and corrupted/opposing-tag guards. Eight Schooltime and eight UNSW games are running; retain and read all16 replays and audit release markers. Runtime62671c2e5c55a03947b28f5aeb09b98453f47716a77845d1e370ec5bd1a368da. No reserved seeds11–13/new maps used. Source and results remain in the Kenma lane.
