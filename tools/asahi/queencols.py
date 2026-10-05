@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT / 'tools/asahi'))
 import panel as P  # noqa: E402
 
 
-def table(bot, pnl):
+def table(bot, pnl, seeds=(1,)):
     """Per game, our side: queen (team's starting dragon, id 0 or 1) death round from the replay's death events (frame
     cache), lengths at the end from the engine result block. (The features dragons table is not used: its lowest-id
     initial dragon does not always match the engine's queen.)"""
@@ -24,7 +24,7 @@ def table(bot, pnl):
     rows = []
     for l in open(root / 'index.jsonl'):
         r = json.loads(l)
-        if r.get('rc') != 0 or r['seed'] != 1:
+        if r.get('rc') != 0 or r['seed'] not in seeds:
             continue
         hits = glob.glob(str(root / 'frames' / (r['game'] + '.*.pkl.gz')))
         if not hits:
@@ -32,8 +32,13 @@ def table(bot, pnl):
         g = pickle.load(gzip.open(max(hits, key=lambda h: Path(h).stat().st_mtime)))
         me, op = r['seat'], ('B' if r['seat'] == 'A' else 'A')
         qd = [d for d in g['events']['deaths'] if d['id'] in (0, 1) and d['team'] == me]
+        tot = {}
+        for R in (100, 300):
+            snap = g['rounds'][R] if R < len(g['rounds']) else None
+            tot[R] = None if snap is None else (sum(len(b) for t, b in snap.values() if t == me),
+                                                sum(len(b) for t, b in snap.values() if t == op))
         rows.append(dict(game=r['game'], win=r['winner'] == me, last=int(g['last_round']), limit=int(g['last_round']) >= 499,
-                         died=qd[0]['round'] if qd else None, cause=qd[0]['cause'] if qd else None, q_me=int(g['final'][me]['queen']), q_op=int(g['final'][op]['queen'])))
+                         died=qd[0]['round'] if qd else None, tot=tot, cause=qd[0]['cause'] if qd else None, q_me=int(g['final'][me]['queen']), q_op=int(g['final'][op]['queen'])))
     return rows
 
 
@@ -50,6 +55,12 @@ def summary(rows):
     out['opp len@end med/mean'] = (statistics.median([x['q_op'] for x in lim]) if lim else 0,
                                    round(sum(x['q_op'] for x in lim) / len(lim), 1) if lim else 0)
     import collections
+    for R in (100, 300):
+        t = [x['tot'][R] for x in rows if x['tot'].get(R)]
+        out[f'total length r{R}: ours / opp (mean)'] = (round(sum(a for a, _ in t) / len(t), 1) if t else 0,
+                                                       round(sum(b for _, b in t) / len(t), 1) if t else 0)
+    lead = [x for x in rows if x['tot'].get(300) and x['tot'][300][0] > x['tot'][300][1]]
+    out['r300 leads converted (W-L)'] = (sum(x['win'] for x in lead), len(lead) - sum(x['win'] for x in lead))
     cz = collections.Counter(x['cause'] for x in rows if x['cause'])
     out['queen deaths: wall / other'] = (cz.get('wall', 0), sum(cz.values()) - cz.get('wall', 0))
     out['queen deaths by cause'] = (', '.join(f'{k} {v}' for k, v in cz.most_common()), len(rows))
@@ -61,9 +72,11 @@ def summary(rows):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('cand'); ap.add_argument('--parent', required=True)
     ap.add_argument('--panel', default='pool'); ap.add_argument('--out', required=True)
+    ap.add_argument('--seeds', default='1')
     a = ap.parse_args()
-    c, p = summary(table(a.cand, a.panel)), summary(table(a.parent, a.panel))
-    L = ['', f'## Queen by round ({a.panel}, seed 1; D-080 §B) — {a.cand} vs {a.parent}', '',
+    sd = tuple(int(x) for x in a.seeds.split(','))
+    c, p = summary(table(a.cand, a.panel, sd)), summary(table(a.parent, a.panel, sd))
+    L = ['', f'## Queen by round and economy ({a.panel}, seeds {a.seeds}; D-080 §B, D-082 §C) — {a.cand} vs {a.parent}', '',
          'Alive at r100/200/300: death round from the death events, among sides whose game reached the round. End: engine '
          'result block, round-limit games. Lengths: engine queen length at the end, 0 = dead.', '',
          '| column | cand | parent |', '|---|---|---|']
