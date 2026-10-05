@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 03:58Z (unit 20). Next self-wake 04:40Z. Branch `r/ushijima`; private tree
+State: ACTIVE (the Chair's own shell still fails after the disk reset, with a permission error; files move by copy and the keeper commits them). Updated 5 Oct 2026 04:08Z (unit 21). Next self-wake 04:40Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,9 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-073: the hub restarts by itself and is redeployed** (snapshot 67384f265, back at 04:06:45Z): the upload fix, the
+  field reserve of 5 and the blinding are live; the redeploy ban is lifted. The lead reset the Cowork session disk at
+  about 04:00Z; lanes report whether their shells work; the Chair's own shell still fails (permission error).
 - **D-072 (the lead's rulings):** the council is dissolved (GLM and GPT seats deactivated). **Sugawara owns the queen
   problem** (goal in play: more queen-decided wins than losses and a pool not below the parent; it chooses mechanisms
   and queues screens without cards). **Hinata owns the clone in play** (a learned prior not below the incumbent on the
@@ -136,7 +139,7 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
 | Evaluator queue (Asahi) | Done: slot parity at off 272/272; placeholder screens FAIL at λ 1 and 0.5. Ordered (D-068 §C, seed-1 pool): fallback count; `kageyama-02-p1-hb1` (A1) at λ 1; carthage-05 with no prior; A1 at λ 1.41; single-team priors (213, 91). Learn queue behind these |
 | Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) |
-| Uploaded, inactive | 14585 (carthage-05, rollback target), 14265. The `submit_check` fix is on main, not deployed; no redeploy until the lead confirms the hub loop (H11) |
+| Uploaded, inactive | 14585 (carthage-05, rollback target), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
 | Live screen | none running. LS-1 ended at 160 games (75 pairs, +0.080 [−0.029, +0.187]) |
 
 ## Facts settled this unit
@@ -175,8 +178,8 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 | H8 | Native execution for the Learner | replaced: jobs go through Asahi's native job daemon (D-050 §8); the lead is asked only if the daemon reload fails |
 | H9 | Windows quota runner | closed: the lead does not know of one; replaced by Daichi's ledger check (D-050 §4) |
 | H10 | Wake the Asahi (Evaluator) session | closed: Asahi working since about 17:15Z |
-| H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | open; since D-071 it blocks only hub code changes (upload fix, blinding, seat field, end-reason label), not uploads |
-| H12 | The Cowork VM session disk is full (9.8 GB, 0 free at 03:46Z). It cut off Kageyama and Asahi (replaced by fresh sessions), the Chair's shell since 23:42Z (works one call in several) and Shenzhen's since about 02:15Z | **open; the most urgent item for the lead** |
+| H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | **closed 04:07Z**: loop started by the lead, redeploy tested (D-073 §A) |
+| H12 | The Cowork VM session disk was full | **reset by the lead about 04:00Z**; lanes to confirm their shells; the Chair's own shell still fails (permission error on its old session folder); the backup image can be deleted once lanes confirm; expect a refill in one to three days |
 | H13 | Kageyama cut off | closed: fresh session working since 21:16Z |
 | H15 | Free lanes | Kenma running since before 01:28Z (started by the lead); a second lane not seen yet |
 | H14 | Mac disk | closed: 74 GB deleted with the lead's approval; 102 GB free |
@@ -188,8 +191,8 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 2. **The clone in play:** Asahi's three runs of D-068 §C, then Hinata's choice of route (D-072 §D).
 3. **The queen:** Sugawara's first candidate and its screen (D-072 §C).
 
-Waiting on the lead: **H12** (reset the Cowork session disk; steps given in unit 20) and **H11** (restart the hub
-inside the loop; steps given in unit 20; then Daichi redeploys the hub fixes).
+Waiting on the lead: nothing blocking. Optional: a fresh Chair session (the present one has no shell), and deleting
+`~/Desktop/sessiondata.img.bak` once the lanes confirm their shells.
 
 ## Cursor
 

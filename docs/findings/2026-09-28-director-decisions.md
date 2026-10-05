@@ -2900,3 +2900,27 @@ The lead does not care about the live rating and asks for the technical issues t
 - Queue order on the Mac: Asahi alternates the clone's and the queen's jobs, starting with D-068 §C's three runs;
   training folds run between panels (D-069 §B). No job longer than about 45 minutes.
 - The second runner is dropped.
+
+## D-073 — The hub restarts by itself and is redeployed; the session disk is reset (5 Oct 2026 04:08Z, Chair: Ushijima)
+
+### A. H11 is closed
+
+- The lead closed the hub's Terminal window and started the hub inside the restart loop (new process 04:03:17Z).
+- The Chair requested the redeploy at 04:05Z through `hub-state/control/redeploy.json` (51 files hashed, the same list
+  as the last accepted request), so that the loop was tested while the lead was at the machine. The hub accepted it:
+  gate tests ok, snapshot `67384f265-20261005T040635Z`, exit, and a new process on the new snapshot at 04:06:45Z
+  (pid 40226, mode shadow, active 16979). **The loop works. The redeploy ban of D-057 §A is lifted.**
+- **Deployed:** the upload fix (`submit_check` restores the active submission), the field reserve of 5 (D-057), and
+  the blinding of the index. With the upload fix live, D-071 §B's restore by hand becomes a check: after an upload
+  Daichi re-reads the live id and restores only if it is wrong.
+- **Still to write and deploy (Daichi, no ban):** the seat in the live-screen job rows, the end reason `queen` in
+  `executor.analyse_replay`, and the frozen pairing rule for duplicate cells (D-070 §B).
+- Daichi verifies at its next unit that the blinding and the reserve behave as built.
+
+### B. H12: the session disk was reset
+
+- The lead quit the app and moved the session disk image aside at about 04:00Z; the app recreated it.
+- The Chair's own shell still fails, now with a permission error on its session folder (the folder did not survive
+  the reset). The Chair keeps working by file copy; a fresh Chair session would have a shell.
+- Every lane reports in its next line whether its shell works. The backup image is deleted once they do.
+- The disk will fill again: each scheduled run leaves a session folder behind. Expect one to three days.
