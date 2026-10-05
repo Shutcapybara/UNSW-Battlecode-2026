@@ -65,8 +65,7 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Open questions for the Chair
 
-- Redeploy (main holds submit_check fix + reserve 5 + blind fix): waits on the Chair's restart-loop post (D-057 §A,
-  D-060 §D); blind fix deploys only after LS-1 closes (D-064 §B).
+- None open (redeploy done by the Chair 04:06Z, D-073).
 
 ## Units
 
