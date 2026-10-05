@@ -56,6 +56,9 @@
 
 ## Log
 
+- 5 Oct 17:13Z / 17:5xZ: bokuto-35 card (no qualification) + atlas twin; b41 queued; burn rerun.
+- 5 Oct 16:27Z: b25/b26 component readings posted; b35 card + atlas twin + burn test queued.
+
 - 4 Oct ~11:30Z: lane opened; tooling written (jobd, panel, card, twins, kz12_capture); P-A01/P-A02 preregistered;
   daemon started by the user 10:56Z; worktree `../wt-asahi` on `r/asahi`; first commit 922cb2564.
 - 4 Oct 10:59Z: queue — 010 parent carthage-05 pool+gen s1 (running; ~40 s/game/worker on heavy maps, ≈ 40 min/arm),
@@ -78,20 +81,26 @@
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct 15:06Z)
+## Now (5 Oct 17:55Z)
 
-0. Trial 3 bokuto-18-queenfeed = 17791 live since 14:19Z (look ~17:20Z; Daichi applies the end rule, D-084). Trial 4 =
-   asahi-27-b13-reserve (byte copy from wt-asahi, fp 16ceecff). Trials run back to back.
-1. Running (Bokuto's JOBs): bokuto-27-exitsplit (+probe), bokuto-25-reserve4, bokuto-26-hunt — each pool (vs c05, vs
-   parent b18), h2h vs kenma-03, qk2, variants, queen/economy + enemy-queen columns.
-2. Card format: pool + variants + two totals + queen/economy/enemy-queen columns + qk2 + 102-game h2h vs the incumbent.
+0. Trial 3 bokuto-18-queenfeed = 17791 live since 14:19Z; look ≈ 18:00–18:10Z (Hinata). Trial 4 = asahi-27-b13-reserve
+   (D-086 §B; Hinata pre-registered forecast 17:36Z). Trial 5 = Bokuto's latest bundle with a complete card.
+1. bokuto-35-knownbeds: does NOT qualify (pool vs c05 −0.37 [−5.15, +4.78]; vs b18 −4.41). Atlas-off twin asahi-28 = b18
+   on pool (237–35); 35 vs twin −4.41; ally-body/ally head-on flags are the atlas. Posted 17:13Z + 17:5xZ.
+2. Running 2077b: D-086 §D burn rerun (0/50/90/95/105 M, per-turn capture fixed: TurnBot name is `_name`). First run
+   (2077a, rc 1 in the summary step): 50 M turn survived (max 57.4 M metered, game identical to control);
+   95 M and 105 M produced no error and no >100 M turn but a different game (r398 loss) — consistent with
+   TurnBot.ask retrying a worker that exits with no output on a fresh process (memory lost, static counter reset).
+3. Queued 2078a–n: bokuto-41-atlas0 (Bokuto JOB 17:33Z) full card vs c05/b18/b27 + probe.
+4. Card format: pool + variants + two totals + queen/economy/enemy-queen columns + qk2 + 102-game h2h vs the incumbent
+   (h2h paired vs parent with map × seed clusters, tools/asahi/h2hpd.py).
 
 ## Operating notes
 
 - **Daemon:** `tools/asahi/jobd.py`, native on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
   `build/asahi/queue/` first, then the main checkout's `build/learn/queue/`. Restart if down:
   `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
-  Last job id used: 2075. Held jobs live in build/asahi/hold/.
+  Last job id used: 2078n. Held jobs live in build/asahi/hold/.
 - BOARD lines go to the MAIN checkout's `docs/hub/BOARD.md` with `>>` only; never commit BOARD.md on r/asahi.
 - Session disk was reset ~04:00Z (D-073); still keep little in the session home.
 - `throughput.py` must recycle processes (wasmtime stores leak address space per game).
