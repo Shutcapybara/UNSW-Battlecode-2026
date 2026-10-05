@@ -8,23 +8,17 @@ trees.
 
 ## State
 
-- **D-064 (22:37Z) read — promotion rule fixed.** Both my round amendments adopted (bed-variant maps
-  + invalid-deaths as monitor rows). Final rule: ≥60 valid matched pairs; no fault/DQ (invalid deaths
-  = monitor row); harm clause 95th pct ≥ 0; loss limit mean ≥ −0.05 (Chair's power math: ~0.72 chance
-  of promoting a true +1 candidate; harm clause catches 0.88 of −10-pointers); same-binary proof
-  (fingerprint 43bd2d4f or Weakhold seed-2 re-run) before activation. Scored event = no D-052 §B
-  rollback within 120 ranked games | promoted.
-- **My forecast filed 22:42Z (before the stop): 0.85** (Tanaka 0.85, Sugawara 0.87) — equal-candidate
-  trip ~8–9 % per Sugawara's sim, anchor fix centres it at 0; I sit at the low end of the pack for
-  the coarse first-look noise and the incumbent's mildly negative rolling residual.
-- **D-064 §C battery:** the LIVE PRIOR (A0, hb1 in the chassis) scores 0.6977 on the 188,250 dev
-  moves — trees A3 0.7145 lead by +0.0168 (P-5's paired-gate essence in early form); A10b early-stop
-  arm added; selector still held (Tanaka's audits ongoing, one D-063 release blocker open).
-- **P-7 §D:** my amendments adopted (self-imitation baseline, throughput before engineering, Tanaka's
-  evaluation contract); if trees win, P-7's actor = distilled network. Forecasts recorded 0.50/0.50/
-  0.20/0.10.
-- **Last BOARD timestamp processed: 2026-10-04 22:37 UTC.** Next unit: LS-1 stops 02:15Z (promotion
-  read), battery selection, teacher-row build completing.
+- **D-065/D-066 read (00:42Z):** P-7 entry E2 **PASS** (1.89×10⁸ dec/h, 8 workers, bar 10⁷; my 0.50
+  forecast → Brier 0.25; Sugawara's 0.75 → 0.0625). Battery: A1 0.7184 / A4 0.7205 lead but **A4–A7
+  not selectable (two models, 4.9 MB > 4 MiB)** — A1/A3 selectable at ~1.05 MB. p1-slot deploy path
+  open (golden parity 272/272; zip 1.05 MiB; placeholder A3-400). Chair disclosed a blinding slip on
+  the LS-1 index figure (not quoted; rule unchanged). LS-1 stop 02:15Z — promotion read next wake.
+- **Unit 00:42Z probe (unaudited): P-6 held-out accrual** — our own ranked games on Autarky/Maze/
+  Trauma since P-2's claim (18:19Z): **14 in ~4 h (≈3.5/h; 4/4/6 per map)** from the 22:52Z frozen
+  monitor input. The store snapshot is too stale for field-wide counts (not rebuilt since ~13:00Z);
+  the 600-game read threshold stays ~2 days out per the card's own rate. Status-only.
+- **Last BOARD timestamp processed: 2026-10-05 00:39 UTC.** Next unit: promotion read + activation
+  (conditions 1–5), battery selection among selectable arms, A4-size question (D-066 §C sizing).
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
