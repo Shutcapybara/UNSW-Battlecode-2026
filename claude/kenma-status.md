@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 03:53 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
+State: **ACTIVE**, updated 2026-10-05 04:04 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
 
 ## Provisional best
 
@@ -38,7 +38,9 @@ Completed Carthage screens use the same102 fixtures and have zero errors.
 
 | 18 entropy-matched-prior | Renormalize17 prior with exponent1.61 | Running102 | Matched parent entropy from development predictions |
 
-| 19 pocket-sprint | Local two-step length control, no global reserve | Probes running | Sanitizers and three real failure streams pass |
+| 19 pocket-sprint | Local two-step length control, no global reserve | Probes8–0,6–2 | All Schooltime queen verdicts2–0;20 aims to retain length3 |
+
+| 20 pocket-countdown | Prefer length3 unless observed food/spawn needs slack | Queued8 | Countdown/survival sanitizer tests pass |
 
 Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. Runtime manifests pin source, fixtures, engine and compiler. Never edit measured runtime snapshots.
 
@@ -91,3 +93,7 @@ New packaging avenue: current08 hexadecimal model header compresses to3,539,354 
 2026-10-05 03:43 UTC: Previous turn and current continuation made concrete progress; active17/18 runners revalidated, no blocker.13 finished54–48,15 Schooltime8–0 and UNSW6–2. Schooltime win totals hide3/8 queen deaths without reserve; local pocket sprint shedding is the next mechanism probe.18 changes only17 prior normalization:189,630 aligned out-of-fold rows show parent F/R/L entropy0.422933 versus A5 at0.562078; exponent1.610885 matches, rounded1.61. All normalization/facing/tiny-mass sanitizer tests pass.17 early26 replay audit found zero fallback markers; full audit still required.13 retained-replay diagnostic running. No reserved validation exposure.
 
 New19 local-pocket mechanism: three15 queen deaths share length3→4 food growth then cap64 blocks splitting. Recorded prior turns allow safe two-step length3→2 sprint. New19 compares legal one/two-step paths at length2/3, prefers final length2 and never invents future food. Full parent simulation checks collision before sprint tax.80 synthetic intermittent-food transitions at cap64 and all3 actual failure streams passed sanitizers.15 UNSW all8 winner/reason/round/fault summaries exactly match parent;03 loses four of those parent wins. Evidence pocket-audit/, k15-unsw-parent-comparison.json. Output1.9GB, free251GiB before19 probes.
+
+2026-10-05 04:04 UTC:19 probes complete8–0 Schooltime and6–2 UNSW, zero errors;16 replays being reconstructed.20 queued under after-k19-probes.py / session76001, waiting exact parent81055 and clean16 diagnostics incl allSchool queens alive, then Schooltime8 and all8 replay diagnostics. Actual protocol confirms countdown1 precedes allthree15 fatal meals;20 uses current World::spawn_at and fresh-view guards to retain queen3 between growth events, while19 ends at2.19 full102 held pending20 refinement. Both measured sources preserved.
+
+Main BOARD reports Asahi05 as the newer incumbent; local/runtime source matches main fingerprint43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad. A full03 versusAsahi05 comparison is dry-run-previewed and queued under after-k18.py after exact18 parent37871 clean102 completion plus full102 fallback/replay audits.17 all102 replays read, zero fallback, only8 originalqueens survive. No new best or reserved validation yet.

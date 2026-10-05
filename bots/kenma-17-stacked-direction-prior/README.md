@@ -6,13 +6,13 @@ The combined prior requires the original HB model as an input. Kenma16's lossles
 
 Model provenance: existing A5-u model_f0.txt reconstructed from verified archive parts; SHA6695befe886641235869dfea42d51f42816dec17eb621b037963f230d23b899b. This is a development-fold model, not a full-data fit. Pooled five-fold A5-400 offline accuracy72.67% is a source result, not a playing-strength claim for this snapshot.
 
-Status: full runtime feature/prediction parity passed; exact-source sandbox passed; full native Carthage102 now running. Fallback audit and strength comparison remain required. Reserved seeds11–13/new maps untouched. Generator tools/kenma/prepare_stacked.py; evidence main build/kenma/stacked-prior/.
+Status: rejected at46–56/102. Full runtime feature/prediction parity and exact-source sandbox passed. Full102 replay fallback audit passed. Reserved seeds11–13/new maps untouched. Generator tools/kenma/prepare_stacked.py; evidence main build/kenma/stacked-prior/.
 
 Actual initial archive4,083,138 bytes (cap4,194,304). Runtime1f11fcbb25ebd6a0f75d9dd47804e033800826dd6a83939e94f60d7cadff6961. End-to-end check covers2,759 turns from40 processes across four retained replays: all4,044,694 feature values agree between the live helper path and Python encoder/canonical parent HB exporter; all2,759 argmax decisions agree with LightGBM, max probability error2.61e-8. Includes newborn histories and recorded split/move actions. tools/kenma/verify_stacked.py; output stacked-prior/runtime-parity.json. This is integration evidence, not playing strength. Full102-game comparison will retain logs/replays for fallback auditing.
 
 Deployment PASS: four Schooltime/UNSW games, both seats,seed1; max13,525,820 points including first turns (first-turn max13,151,074), zero errors; archived source4,083,138 bytes. Output main build/kenma/deploy/kenma-17-stacked-direction-prior/summary.json. Full native run k17-v-carthage-s123 retains all replays; use tools/kenma/audit_replay_logs.py with marker kenma_stacked_fallback and --require-complete --fail-if-present after completion. No playing-strength claim before the full score.
 
-Full Carthage screen completed **46–56/102**, zero errors; rejected against03 at58–44. Full102-replay fallback audit found zero kenma_stacked_fallback markers, so this regression is not explained by fallback inference. Output k17-v-carthage-s123/score.json and replay-log-audit.json. Full queen diagnostics are being read.
+Full Carthage screen completed **46–56/102**, zero errors; rejected against03 at58–44. Full102-replay fallback audit found zero kenma_stacked_fallback markers, so this regression is not explained by fallback inference. Output k17-v-carthage-s123/score.json and replay-log-audit.json. All102 retained replays read and reconstructed;8 queens survive (6 Schooltime,1 Default,1 Stripes). Evidence k17-final-diagnostics.json.
 
 | Map | Wins | Losses |
 |---|---:|---:|

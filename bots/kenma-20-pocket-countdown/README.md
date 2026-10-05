@@ -1,0 +1,7 @@
+# Kenma20 — countdown-aware pocket length
+
+Parent:19. Keep its local sprint option and full population cap. Prefer viable queen length3 after a candidate action when all pocket cells are freshly observed, all visible pearls have been consumed by that action, and no visible bed is due next round. Otherwise prefer length2. This uses World::spawn_at from the official observation countdown, never authored fertility or future random values. At the actual final round (MAX_ROUNDS−1), prefer maximum safe final length because no further exit is required. Existing exact movement simulation, sealed-component proof and split/donor rules remain unchanged.
+
+Motivation:19 survives all8 Schooltime probes but ends at length2, which loses against a surviving length3 queen. All three15 failure streams explicitly show countdown1 on the turn with a safe preventive sprint. This refinement aims to preserve length3 between growth events. It is not assumed to solve all future uncertainty or guarantee survival.
+
+Status: ASan/UBSan passed normal length3, next-round spawn pressure, safe regrowth, remaining food, stale view and final-turn growth checks. All three recorded15 failure streams activate preventive sprints at the actual countdown1 turns130/371/290. Eight Schooltime games queued after clean19 probe/replay completion. Runtimec4caaf9de16c9ddf8166e90a595fe589d6f6aac0751356c3911c10d685aa5d20. No reserved seeds11–13/new maps used. Outputs belong under main build/kenma/.
