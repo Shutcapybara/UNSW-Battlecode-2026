@@ -8,6 +8,12 @@ from unittest.mock import patch
 import panel
 
 class RecoveryTest(unittest.TestCase):
+    def test_external_maps_and_path_escape(self):
+        with tempfile.TemporaryDirectory() as t:
+            self.assertEqual(panel.map_path('live_var/hidden',t),Path(t).resolve()/'live_var/hidden.map')
+            self.assertEqual(panel.map_path('live/default'),(panel.ROOT/'maps/live/default.map').resolve())
+            with self.assertRaises(ValueError):panel.map_path('../escape',t)
+
     def test_external_opponent_never_relocates_candidate(self):
         with tempfile.TemporaryDirectory() as t:
             root=Path(t)

@@ -38,6 +38,13 @@ def source_paths(bot, opponents, opponent_root=None):
     sources[bot] = ROOT/'bots'/bot
     return sources
 
+def map_path(name, root=None):
+    base=Path(root).resolve() if root is not None else ROOT/'maps'
+    path=(base/f'{name}.map').resolve()
+    if not path.is_relative_to(base.resolve()):
+        raise ValueError('Map name escapes its selected root')
+    return path
+
 def fingerprint(src):
     h = hashlib.sha256()
     for p in sorted(src.rglob('*')):
@@ -115,7 +122,7 @@ def run(fx, args, bins, out):
     cmd = [str(MAIN/'.venv/bin/unswbc'), 'run', '--seed', str(fx['seed']), '--no-indicator', '--no-draw']
     if not getattr(args, 'logs', False): cmd += ['--no-logs']
     cmd += ['-o', str(out/f'{key}.replay')] if replay else ['--no-replay']
-    cmd += [str(ROOT/'maps'/f"{fx['map']}.map"), bins[a], bins[b]]
+    cmd += [str(map_path(fx['map'], getattr(args, 'map_root', None))), bins[a], bins[b]]
     start = time.time()
     with (out/f'{key}.log').open('w') as log:
         p = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
@@ -142,6 +149,7 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('bot'); ap.add_argument('--opp', default='carthage-05-free-sprint')
     ap.add_argument('--opp-root', type=Path, help='Read opponent sources from another bot directory; build outputs stay in Kenma')
+    ap.add_argument('--map-root', type=Path, help='Read maps from an explicit directory; pin exact map bytes in the manifest')
     ap.add_argument('--maps', default=','.join('live/'+m for m in MAPS))
     ap.add_argument('--seeds', default='1,2,3'); ap.add_argument('--jobs', type=int, default=3)
     ap.add_argument('--name', required=True); ap.add_argument('--dry-run', action='store_true')
@@ -159,6 +167,9 @@ def main():
     manifest=dict(bot=args.bot, fingerprints={b:fingerprint(p) for b,p in sources.items()}, fixtures=fixtures,
                   engine=subprocess.check_output([str(MAIN/'.venv/bin/unswbc'),'--version'],text=True).strip(), compiler='clang++ -O2 -std=c++20', sandbox=False)
     if args.opp_root is not None: manifest['opponent_root']=str(args.opp_root.resolve())
+    if args.map_root is not None:
+        manifest['map_root']=str(args.map_root.resolve())
+        manifest['map_sha256']={m:hashlib.sha256(map_path(m,args.map_root).read_bytes()).hexdigest() for m in sorted({f['map'] for f in fixtures})}
     if args.logs: manifest['logs']=True
     print(json.dumps(dict(fixtures=len(fixtures), workers=args.jobs, output=str(out), fingerprints=manifest['fingerprints'])), flush=True)
     if args.dry_run:
