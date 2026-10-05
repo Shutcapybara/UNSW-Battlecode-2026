@@ -23,8 +23,23 @@ use the Cowork cloud container (official engine in-process, no Mac CPU). Corpus-
 - **Mac VM engine:** the aarch64 wasmtime wheel and the unswbc engine files are unpacked into `~/pyk` (from
   `build/_stage_kageyama/{wasmtime-49.0.0-…aarch64.whl,unswbc_engine_pkg.tgz}`), so oracle runs work on the VM with
   `PYTHONPATH=$HOME/pyk`. Keep at most about 20 games per process (memory) and at most 3 processes.
-- **Next:** export Hinata's team-213 and team-91 priors (D-068 §5; models since 05:03Z) into the kageyama-02 slot;
-  then D-067 §E.7.
+- **Team-213 and team-91 slot exports: done** (83ee5a073). They are `bots/kageyama-02-p1-hb1-t213` and `-t91`, each
+  with one file changed (`p1_model.hpp`).
+  - Python against C++: 7,125 rows, ≤ 3.2e-8.
+  - In-bot parity on 4 maps × both seats (self-play): 111,592 and 114,741 turns, ≤ 5.7e-8.
+  - Sandbox max 11.0 M and 10.9 M points; zip 1.075 and 1.040 MiB.
+  - Results are in `build/learn/kageyama/export/t213_t91/`.
+- **D-067 §E.7 trajectory block: built.** It is a separate column group (TRAJ_VERSION 1, 7 int32 columns,
+  `x_traj_*`).
+  - Columns: units Δ20 and Δ100, own length Δ20, rounds since an enemy was seen, contacts and close contacts in the
+    last 20 rounds, and own turns in the last 20 rounds. The unit-count level is v1's `x_unit_count`.
+  - Code: Python `tools/learn/traj.py`; C++ twin `tools/learn/cpp/learn_traj.hpp`.
+  - Parity (`test_traj_parity.py`): 89,845 turns in the cloud and 165,307 turns natively on the Mac VM, 0 mismatches.
+    The in-bot input is the same `learn::Block` as encoder v1, whose helper parity is 40,002 / 40,002.
+  - `traj_rows.py` writes the columns for the teachers_v1 rows, keyed by game, dragon, round and turn.
+- **Queue once traj_rows.py is on main** (a learn job, about 10 min with 8 workers):
+  `{"kind":"script","script":"tools/learn/traj_rows.py","argv":["--jobs","8"],"heavy":true,"timeout":2700,"by":"kageyama","env":"learn","id":"kageyama-02-traj-v1"}`.
+  Then post the manifest; first users are P-8 S0 (Sugawara) and R3 offline (Hinata).
 - **Delete when deletion is allowed:** the cache symlink `build/_stage_kageyama/tree/maps/live` and
   `build/_stage_kageyama/ev_snap.jsonl.gz`.
 
@@ -217,6 +232,7 @@ Facts found this unit (each on the BOARD):
 - H-K1: native post-m2 decode — done (two runs, last part 13:36Z). Closed.
 
 ## Log
+- 2026-10-05 07:20 UTC — unit 11b: t213/t91 slot exports; trajectory block (traj.py + C++ twin, parity 0 / 255k), traj_rows.py.
 - 2026-10-05 06:45 UTC — unit 11: D-072 §E hidden beds done (5 variants, mt19937_64 mechanism, maps/live_var, labels, oracle 828/828); BOARD.
 - 2026-10-05 ~04:20Z — unit 10b (file copy, shell down): D-072 §E bed facts + Devil variant fit in progress; handoff for restart.
 - 2026-10-05 03:15 UTC — unit 10: D-068 §C.1 fallback-logging builds and a 76-game local count (0); BOARD.
