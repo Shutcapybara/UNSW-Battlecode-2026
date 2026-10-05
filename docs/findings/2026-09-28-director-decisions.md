@@ -4025,3 +4025,120 @@ Trial 3 (17791) is still running: 50 ranked games at 17:36Z; Hinata puts the 60-
 - Hinata pre-registered a forecast for trial 4 before it is live (P-hinata-07, "Forecast for trial 4").
 - Forecasts for trial 3 stand as filed in D-084.
 - The corpus holds 162,165 replays (hub, 18:15Z). The hub shows 17791 active, no fault.
+
+## D-088 — Trial 3: `bokuto-18-queenfeed` (17791) is the incumbent of record; trial 4 is live as 17940; trial 5 is `bokuto-46-regions` on two conditions (5 Oct 2026 19:23Z, Chair: Ushijima)
+
+### A. Trial 3's outcome (Daichi 18:25Z; replicated by Sugawara 18:27Z to the third decimal)
+
+Ranked games only, after the map change, score minus Elo expectation with our rating fixed at 1725, whole-series
+bootstrap (1,000 draws, seed 7), 5th and 95th percentiles.
+
+| Submission | Games / series | W–L | Statistic at 1725 | Performance rating |
+|---|---|---|---|---|
+| 17791 `bokuto-18-queenfeed` (14:30Z–17:48Z) | 60 / 12 | 32–28 | **+0.174 [+0.079, +0.282]** | 1859 [1789, 1938] |
+| 17388 `kenma-03-pocket-queen` (all since 05:02Z) | 130 / 26 | 75–55 | +0.060 [−0.010, +0.132] | 1772 [1718, 1831] |
+
+- **Difference +0.114 [−0.004, +0.250]** (Sugawara, independent series bootstrap: +0.115 [−0.013, +0.247];
+  probability that it is at most 0.03: 0.13). The end rule of D-083 and D-084 is a point rule and it fires.
+  **`bokuto-18-queenfeed`, submission 17791, is the incumbent of record.** Daichi applied the rule; the Chair
+  confirms it.
+- This is the first ladder interval of the phase that excludes zero.
+- **By opponent rating.** 17791 drew a strong field: 11 of 12 series against teams at 1725 or above. Against
+  that band: 17791 +0.165 [+0.062, +0.282] over 55 games; 17388 +0.106 [−0.026, +0.248] over 55. Below 1725,
+  17791 has one series only.
+- **Schooltime apart:** 17791 won 4 of 4 there; without it +0.144 [+0.046, +0.252] over 56 games; 17388 without
+  it +0.049 [−0.025, +0.122]. The difference without Schooltime is about +0.095.
+- **By map:** 0 wins in 11 games on Queen of Spades (0 of 4), Trophy (0 of 3), Default (0 of 2) and Stripes
+  (0 of 2); also 0 of 1 on Trauma and on Prisoners Dilemma; Devil 4 of 4, Schooltime 4 of 4, Slithery Fight 5 of 7.
+- **Faults:** none in 89 games scanned. Highest server turn 12.62 M points over 748,548 dragon-turns, no cut turn
+  (Hinata).
+- The team's rating stood at 1838, rank 59, at 17:51Z; it was 1725 a day earlier.
+- **Caveats.** One window of 60 games. The interval of the difference touches zero. The window was chosen as the
+  winner, so 17791's own figure is probably somewhat high.
+
+### B. Correction to D-084 §B and D-085: the anchor of the old incumbent's statistic
+
+- D-084 §B gave 17388 "+0.005 [−0.072, +0.081] over 129 games" as a statistic at rating 1725. Sugawara finds that
+  the same 129 games give +0.064 at 1725 and +0.005 only at an anchor near 1765 to 1770, which was 17388's rating
+  at its activation. The figure was computed at the wrong anchor and the Chair recorded it without the anchor.
+- So the sentences of D-084 and D-085 that "the incumbent is back to level" and that the three bots that held the
+  slot were indistinguishable rested on a wrong number for one of them. At 1725, 17388 stood about +0.06.
+- **Ordered of Daichi:** one table of every trialled submission (14585, 16979, 17388, 17530, 17791, and 17940 at
+  its look) at the same anchor, 1725, with the same snapshot rule, games, series and interval. Every statistic in
+  a record states its anchor from now on.
+
+### C. Hinata's curve block for trial 3 (18:38Z; frozen procedure; not yet checked by a second lane)
+
+- Against teams at 1725 or above (55 games, 11 series), carried view: total length at round 300 97.5 against the
+  opponents' 90.9, difference +6.6 [−14.2, +29.3] (17530: +0.8 [−24.9, +24.8]); at round 100 65.1 against 57.3.
+  Queen alive at rounds 100 and 300: 0.93 and 0.62 (17530: 0.73 and 0.42). Leads at round 300 converted: 20 of 26
+  (17530: 15 of 21). Elimination losses 14 of 55, nine of them before round 300.
+- Against the three targets of D-083: queen alive at round 300 0.62 (target 0.58); leads converted 77 % (target
+  70 %); total length 65.1 and 115.7 at rounds 100 and 300 in the reached view (target 78 and 154; the top ten's
+  losers: 61 and 111). **On these 55 games the queen and the conversion are at target and the economy is not.**
+- Every difference has an interval that includes zero and the fields differ. Sugawara is asked to check the
+  block before it is used as a diagnosis (D-083 §A).
+
+### D. Trial 4 is live
+
+- `asahi-27-b13-reserve` is submission **17940**, uploaded 18:20:51Z, activated 18:25:06Z, no fault at 19:20Z.
+  Its look is the first series boundary at or after 60 ranked games, about 22:15Z.
+- **End rule, unchanged:** 17940 becomes the incumbent of record if its statistic at 1725 exceeds 17791's
+  (+0.174) by more than 0.03, that is above +0.204.
+- **Reading rule added (Sugawara's note).** Daichi also reports 17940 against the pooled line of 17388 and 17791
+  (+0.096 over 190 games). A result at or below +0.126 counts against the bot. A result between +0.126 and
+  +0.204 is unresolved: the bot is not the incumbent but stays a candidate for a confirmation run.
+- **Confirmation runs.** Before the final activation for the Qualifiers, the two best submissions by statistic
+  each get a second 60-game window, and the choice uses all games of each. This removes the selection effect
+  named in §A. When they run depends on the seeding cutoff, which the Chair has asked of the lead.
+
+### E. Trial 5
+
+- `bokuto-41-atlas0` (Asahi 18:47Z) qualifies: pool 238–34, +4.41 points [−0.37, +9.19] against carthage-05, probe
+  passed (12.74 M). It is level with the incumbent on the pool (+0.37 [−2.57, +3.68]) and behind it on `qk2`
+  (24–44; −8.82 [−19.12, 0.00]) and head to head (59–43; −1.96 [−12.75, +8.82]). Its economy is larger (total
+  length at round 300 on `qk2` 120.4 against 94.5) but its queen dies at walls more often (22 against 9). **It is
+  not trial 5** (D-087 §D's test).
+- `bokuto-46-regions` and `bokuto-47-precious` answer a loss class measured on the ladder: 17791's 0 of 11 on
+  four maps where the stronger side out-eats us in the opening (Bokuto's local count on those maps: 1–7 with 41,
+  7–1 with 46). Asahi's first readings (19:20Z, paired against `bokuto-18-queenfeed`):
+
+  | | `qk2` | head to head against kenma-03 | pool | against its atlas-off twin 41 |
+  |---|---|---|---|---|
+  | 46 | 38–30, +11.76 [−2.94, +27.94] | 55–47, −5.88 [−17.65, +5.88] | 235–35–2, −0.37 [−4.23, +3.49] | −0.74 [−4.96, +3.32] |
+  | 47 | 36–32, +8.82 [−7.35, +25.00] | 58–44, −2.94 [−14.71, +7.84] | 225–46–1, −4.23 [−8.27, −0.18] | −4.60 [−9.19, −0.18] |
+
+  On `qk2` 46 has the best result of the lineage: queen wall deaths 3 against 9, leads converted 29–11 against
+  14–11, total length at round 300 111.3 against the opponents' 95.2. Its hidden-layout block is 76–4 against
+  `bokuto-13-cull`'s 72–8. Against carthage-05 its self-deaths are up 65 % and ally-body deaths 41 %. 47 does not
+  qualify (pool against carthage-05 −0.18 [−5.15, +4.78]).
+- **46 misses two conditions as the Chair wrote them today, by one to two games in 272:** the twin condition of
+  D-087 §C (paired mean at or above zero; it is −0.74) and a pool mean against 18 that is not negative (−0.37).
+  Both were written as point conditions without a tolerance, and that was too brittle. The twin condition exists
+  to stop bots that lose about four points to their own atlas (`bokuto-17-atlas` and 35: −4.41 [−8.46, −0.37]);
+  46 does not.
+- **Both conditions are restated with the tolerance the pool qualification already uses: the paired 5th
+  percentile above −5 points.** This applies to every later candidate. The two atlas bots that the rule was
+  written for still fail it (5th percentile −8.46); 46 passes against its twin (−4.96, narrowly) and against 18
+  (−4.23). The Chair changed a threshold after seeing the number it decides; that is recorded here so that it
+  can be judged.
+- **Trial 5 is `bokuto-46-regions`, provided its probe passes and its `gen` panel is not below
+  `bokuto-13-cull`'s (5th percentile above −5).** Grounds, in order: it answers a loss class measured on the
+  ladder; it differs most from the bots already trialled; best `qk2` and hidden-layout results. Against it: every
+  descendant of 18 carded today, 46 included, is below 18 head to head against kenma-03 (−2 to −7 points, all
+  intervals include zero), and its self-death flags are high.
+- Fallback if the probe or `gen` fails: `bokuto-25-reserve4`, if its probe passes. Daichi starts trial 5 at
+  trial 4's look.
+
+### F. Other
+
+- **Compute (Bokuto 18:32Z).** The lineage's search knobs do not spend the budget: twins with the target search
+  raised from 48 to 400 cells and more candidates cost 7.4 M to 7.8 M a turn at the median. A bot that uses 25 M
+  to 50 M needs a new search. Bokuto is building an enemy-response lookahead (`bokuto-52`) on 46. No order.
+- **Forecasts scored (D-084 §A).** "Exceeds the incumbent by more than 0.03": occurred; Sugawara 0.40 (Brier
+  0.36), the Chair 0.25 (0.5625). "Queen alive at round 300 at least 0.40": occurred (0.62 on 55 of the 60
+  games); Sugawara 0.55 (0.2025), the Chair 0.50 (0.25). The Chair's point estimate for the statistic was 0.00
+  against +0.174. After five forecasts that were too optimistic, this one was too pessimistic.
+- On file for trial 4: Sugawara 0.25 that 17940 exceeds +0.204 at its look; Hinata's pre-registered items
+  (P-hinata-07); the Chair 0.20 that it exceeds +0.204 and 0.45 that it exceeds +0.126, filed before any game of
+  17940 was read.

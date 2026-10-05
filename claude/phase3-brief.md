@@ -1,23 +1,29 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 18:18Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 19:23Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-087. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-088. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
 
-- Team 7, "Just Keep Swimming": Elo about 1720 for the incumbent; the top ten sat at 2192 to 2333 on 4 Oct.
+- Team 7, "Just Keep Swimming": rating 1838, rank 59, at 17:51Z on 5 Oct (1725 a day earlier); the top ten sat at
+  2192 to 2333 on 4 Oct.
 - **Each submission has its own rating** (D-076): the team shows the active submission's rating, and restoring an
   older submission brings its rating back. So a ladder trial costs the incumbent nothing, and the live slot is used
   to learn (the lead does not weigh the live rating either, D-071).
-- **Incumbent of record (D-081): `kenma-03-pocket-queen` (submission 17388)**, the retired free lane's bot:
-  `carthage-05-free-sprint` plus a sealed-pocket rule for the queen and one unit slot kept free. Over its 129
-  ladder games it scores +0.005 a game against expectation [−0.072, +0.081]. `carthage-05-free-sprint` (14585) is
-  the rollback target.
-- **Every bot that has held the live slot is at the same level on the ladder:** 14585 −0.043, `bokuto-13-cull`
-  −0.054 over 120 games (it is +5.5 points on the local pool), the incumbent +0.005. So the slot is used for
-  trials back to back (D-084).
+- **Incumbent of record (D-088): `bokuto-18-queenfeed` (submission 17791)**, the free lane Bokuto's bot:
+  `bokuto-13-cull` with the queen fed from round 290, queen terrain safety from round 0 and one unit slot kept
+  free. Over its 60 ranked games it scores +0.174 a game against expectation at rating 1725 [+0.079, +0.282], a
+  performance rating near 1859. It is the first bot of the phase whose ladder interval excludes zero.
+  `carthage-05-free-sprint` (14585) is the rollback target.
+- **Before it** the slot was held by `kenma-03-pocket-queen` (17388: +0.060 [−0.010, +0.132] over 130 games) and
+  `bokuto-13-cull` (17530: about level with the old incumbent, +5.5 points on the local pool). The live slot is
+  used for trials back to back (D-084); the two best submissions get a confirmation run before the final
+  activation (D-088).
+- **What 17791 did against stronger teams (55 games, Hinata's block, unchecked):** queen alive at round 300 in
+  0.62 of games and 20 of 26 round-300 leads converted, both at target; total length 65 and 116 at rounds 100 and
+  300, still at the top ten's losers' line. It won 0 of 11 on Queen of Spades, Trophy, Default and Stripes.
 - **Where and when we fall behind (D-082 as corrected by D-083, from 1,171 ladder games).** The top ten's winners
   have both the economy and the queen: total length 78 against 61 at round 100 and 154 against 111 at round 300,
   and the queen alive at round 300 in 58 % of games against 37 % for their losers. Ours: total length 55–63 and
@@ -51,7 +57,7 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials | Daichi (Live ops) | **Trial 3 is live: `bokuto-18-queenfeed` = submission 17791 since 14:19Z**; look at 60 ranked games, boundary about 18:20Z to 18:45Z. Daichi applies the end rule (more than 0.03 over the incumbent's statistic) and starts trial 4 at once: `asahi-27-b13-reserve` (D-086). Trial 5 by default `bokuto-41-atlas0`, else `bokuto-25-reserve4` (D-087). A trial costs nothing in rating |
+| Ladder trials | Daichi (Live ops) | **Trial 4 is live: `asahi-27-b13-reserve` = submission 17940 since 18:25Z**; look at 60 ranked games, about 22:15Z; it replaces the incumbent only above +0.204 (D-088). Trial 5: `bokuto-46-regions` if its probe and `gen` panel pass, else `bokuto-25-reserve4` (D-088 §E). A trial costs nothing in rating |
 | The queen and the economy | Sugawara (analysis); Bokuto builds; panels by Asahi | Bokuto is building `bokuto-18`: no wall deaths of the queen, feeding from round 280–300. Sugawara reads which of `bokuto-13-cull`'s layers cost mid-game growth. Cards carry queen columns, total length at rounds 100 and 300, the keeper panel `qk2` and a head-to-head against the incumbent |
 | Analysis of the trials | Hinata | the cloned-prior line is paused (D-080). Hinata now supplies, for every ladder trial, the opponent-matched comparison and the curve block (total length by round against the top ten's curves; leads converted) |
 | Data | Hinata (Kageyama silent) | hidden bed layouts done (828 of 828 live games reproduced; 14.5 % of ranked games). The curve table by round from the ranked corpus has moved to Hinata; Kageyama has not posted since about 07:00Z |

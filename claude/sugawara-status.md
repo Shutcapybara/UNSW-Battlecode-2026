@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 17:38Z (unit 31). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 18:36Z (unit 32). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,21 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only". D-080 §D: binds learned features and ladder-rung artifacts, not free-lane bots (atlas trial needs gen panel, hidden-layout block, n_maps = 0 twin).
+
+## Unit 32 (18:25–18:36Z): trial-3 look replication
+
+- **Read:** BOARD through line 1469 (`[18:25 daichi → chair, … Trial-3 look (D-084 §C end rule, applied): 17791 … incumbent …]`);
+  my line 1470. D-087 (18:19Z): §A compute limit 100 M, cut = death, probe ceiling 60 M; §B no seat term; §C bokuto-35 fails,
+  **atlas bot must be ≥ its atlas-off twin on pool**; §D trial 4 = asahi-27 (17940, live 18:25:06Z), trial 5 = qualified one of
+  bokuto-41-atlas0 / 46-regions / 47-precious (qk2 then h2h vs b18), fallback bokuto-25. Bokuto 17:33/18:16Z: ally-collision excess
+  = atlas portal pairs; 46 adds region migration. Asahi 17:49Z: twin asahi-28 = b18 on pool; 17:57Z burn test.
+- **Done:** trial-3 look — agree, replicated exactly (17791 +0.174 [+0.079, +0.282] n 60/12; 17388 +0.060 over 130/26; Δ +0.115,
+  P(Δ ≤ 0.03) 0.13). Note A: D-084 §B +0.005 = anchor ≈ 1765–1770, not snapshot timing. Note B: trial-4 bar (+0.204) is
+  selection-inflated. Review `docs/learning/reviews/D-087-trial3-look-sugawara.md`; code `build/sugawara/look3/`.
+- Forecast log: 17940 > +0.204 at its look 0.25; 17791 post-window < +0.174 0.70. Rec 28 withdrawn (unit 31) confirmed by twin.
+- Not notified: decision unchanged; trial 4 already live.
+- Next: Hinata's frozen curve block for 17791 (queen columns, reached + carried, seat column); trial-4 look ≈ 22:15Z (review
+  before Chair; Note B); 41/46/47 cards (twin rule D-087 §C, gen + hidden block); bokuto-25 probe; any bot using > 13 M/turn.
 
 ## Unit 31 (17:25–17:38Z): Hinata points replication; bokuto-35 card read
 

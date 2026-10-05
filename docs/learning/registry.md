@@ -99,7 +99,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
   curve 0.676 / 0.684 / 0.703 / 0.714 at 0.10 / 0.25 / 0.50 / 1.0 of the training series.
 - status: `diagnostic`. The battery's A3 is the unweighted refit (D-060 §E).
 
-### REG-005 — `kenma-03-pocket-queen` (free lane Kenma, retired; **the incumbent since D-081**)
+### REG-005 — `kenma-03-pocket-queen` (free lane Kenma, retired; incumbent from D-081 to D-088)
 
 - rung: outside the ladder (free lane, D-067 §F). parent: `carthage-05-free-sprint` lineage, Kenma's tree
   `../wt-kenma/bots/kenma-03-pocket-queen`.
@@ -115,7 +115,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
   [−0.048, +0.197]; performance rating 1781 [1686, 1876]; against 14585's reference +0.117 [−0.018, +0.269];
   queen-rule losses 7; no fault; no Schooltime game in the window. Variant block 69 of 80 (carthage-05: 63).
 - **end rule (D-081 §A):** +0.117 over the reference against a bar of 0.03; `bokuto-13-cull` at +0.001; the windows differ by 0.115. By opponent rating: at or above 1725 +0.162 [0.000, +0.324] (35 games), below −0.048; queen-rule losses 7 of 29. Caveats: the interval includes zero; no Schooltime game in the window; nobody maintains the bot.
-- status: **`incumbent`** (submission 17388; **active since 5 Oct 12:34:13Z**, first ranked series 12:36Z; rollback target 14585; D-052 §B applies). Since reactivation 20 games, 10–10. On the corrected curve table its queen is alive at round 300 in 12 % of games (opponents 47 %): our worst queen. **All 129 ranked games since 05:02Z: +0.005 [−0.072, +0.081] (Daichi, 13:53Z): level with 14585.**
+- status: `uploaded` (submission 17388; incumbent of record from D-081 until D-088; **+0.060 [−0.010, +0.132] at anchor 1725 over 130 ranked games**; the "+0.005 over 129" of D-084 was at an anchor near 1765–1770, D-088 §B).
 
 ### REG-006 — `bokuto-04-queen` (free lane Bokuto; **second ladder trial approved**, D-075 §C)
 
@@ -171,7 +171,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - same-host (Asahi, 10:40Z and 11:18Z): pool 228–44; against `bokuto-13-cull` −4.78 points [−8.46, −1.08]; variants 75 of 80; `gen` (29 unknown maps) −1.19 [−3.88, +1.51]; probe passed. Twin with the atlas off (`asahi-26-b17-atlas0`): pool 240–32; atlas on minus off −4.41 [−8.46, −0.35], exactly 0 on `gen`. `qk2` 28–40.
 - status: `measured`; not a trial candidate (the atlas costs 4.4 points where it is exact; D-081 §C).
 
-### REG-010 — `asahi-27-b13-reserve` (qualified; **trial 4**, D-086 §C)
+### REG-010 — `asahi-27-b13-reserve` (**trial 4 running as submission 17940**, D-088 §D)
 
 - `bokuto-13-cull` plus Kenma's two global reserve lines (non-queens decide with one unit slot fewer). Fingerprint
   16ceecff. Built for the Chair's reserve hypothesis of D-081 §B; Sugawara's replay check refuted the mechanism
@@ -180,9 +180,11 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - same-host (Asahi, 12:39Z): pool 237–35; against `bokuto-13-cull` −1.47 points [−2.94, 0.00]; against carthage-05
   +4.04 [+0.37, +8.09]; head to head against the incumbent 69–33 (parent 64–38; paired +4.90 [+0.98, +9.80]); `qk2`
   33–35; queen alive at the end 96 of 162 on the pool; probe passed (3.75 MiB, 12.37 M points).
-- status: `candidate`; **trial 4, started by Daichi at trial 3's look** (D-086 §C).
+- live: submission **17940**, `LV-asahi-27-b13-reserve-16e1d338-ai`, uploaded 18:20:51Z, activated 18:25:06Z; look at the
+  first series boundary at or after 60 ranked games, about 22:15Z; bar +0.204 at anchor 1725, pooled line +0.096.
+- status: `uploaded` (trial 4).
 
-### REG-011 — `bokuto-18-queenfeed` (free lane Bokuto; **trial 3 running as submission 17791**, D-084 §A)
+### REG-011 — `bokuto-18-queenfeed` (free lane Bokuto; submission 17791; **the incumbent of record since D-088**)
 
 - Tree `../wt-bokuto/bots/bokuto-18-queenfeed` (`r/bokuto`). The atlas-off twin of `bokuto-17-atlas` plus: the queen
   fed from round 290; queen terrain safety from round 0 (no blind portal dive, no single-exit cell, no escape
@@ -194,7 +196,12 @@ at first. A trial therefore costs the incumbent's rating nothing.
   converted 77 %; on `qk2` 59.2 and 94.5, 0.47, 56 %; queen wall deaths 9 against 19, head-on 32 against 20.
 - live: submission **17791**, `LV-bokuto-18-queenfeed-ba537e4e-ai` (runtime fa931064…), uploaded 14:15:46Z, activated
   14:19:00Z. Trial 3: its first 60 ranked games; end rule applied by Daichi at the look (D-084 §C).
-- status: `uploaded` (trial 3).
+- **trial result (Daichi 18:25Z, replicated by Sugawara; D-088 §A):** 60 ranked games, 12 series, 32–28; +0.174
+  [+0.079, +0.282] at anchor 1725, performance rating 1859; +0.114 [−0.004, +0.250] over 17388. Against teams at
+  1725 or above (55 games): +0.165 [+0.062, +0.282]; queen alive at round 300 0.62; leads converted 20 of 26; total
+  length 65.1 and 115.7 at rounds 100 and 300 (Hinata's block, not yet checked). 0 of 11 on Queen of Spades,
+  Trophy, Default and Stripes. Highest server turn 12.62 M points, no fault.
+- status: **`incumbent`** of record (D-088); not active during trials. Rollback target 14585.
 
 ### REG-012 — `bokuto-27-exitsplit` (free lane Bokuto; qualified; not trialled on its own, D-086)
 
@@ -218,7 +225,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
   [−0.37, +3.68]; `qk2` 33–35, +4.41 [−2.94, +10.37]; head to head against the incumbent 57–45, −3.92
   [−8.82, +0.98]; total length at round 300 on the pool 139.4 against 130.3. 26: pool 237–35, 0.00; `qk2` 27–41;
   head to head 54–48, −6.86 [−14.71, +0.98]; enemy queens killed on the pool 142 against 109, no more wins.
-- status: 25 `candidate`, **fallback for trial 5** (D-087 §D; needs a probe). 26 `candidate` (component only).
+- status: 25 `candidate`, **fallback for trial 5** (D-088 §E; probe on Asahi's queue). 26 `candidate` (component only).
 
 ### REG-014 — `bokuto-33-flee`, `bokuto-34-portalqueue`, `bokuto-35-knownbeds` (free lane Bokuto; bundles on REG-012)
 
@@ -239,14 +246,16 @@ at first. A trial therefore costs the incumbent's rating nothing.
   twin −4.41 [−8.46, −0.37]; ally-body deaths +30 %, ally head-on +86 % with the atlas on.
 - status: 35 `rejected` as a trial candidate (D-087 §C). 33 and 34 were never run.
 
-### REG-015 — `bokuto-41-atlas0` (free lane Bokuto; Bokuto's latest bundle with `n_maps = 0`)
+### REG-015 — `bokuto-41-atlas0` (free lane Bokuto; the bundle with `n_maps = 0`; qualified, not trial 5)
 
 - The bundle of REG-014 with the atlas off, plus a split-exit rule (38: no production split whose head part has
   no way out). Bokuto's ally-collision ledger: 11.5 ally-caused deaths a game against 29.8 to 37.7 for the
   atlas-on versions and 14.5 for `bokuto-18-queenfeed`.
-- measurement: Asahi's job (pool, `qk2`, head to head, variants, queen columns, probe), card about 19:15Z.
-- status: `candidate`; **trial 5 by default** if it qualifies and is not below `bokuto-18-queenfeed` on `qk2` and
-  the head-to-head (D-087 §D).
+- same-host (Asahi, 18:47Z; fingerprint 2fdf07f2): pool 238–34, +4.41 points [−0.37, +9.19] against carthage-05,
+  +0.37 [−2.57, +3.68] against `bokuto-18-queenfeed`; `qk2` 24–44, −8.82 [−19.12, 0.00]; head to head against
+  kenma-03 59–43, −1.96 [−12.75, +8.82]; total length at round 300 on `qk2` 120.4 against the parent's 94.5; queen
+  wall deaths 22 against 9; ally head-on deaths −13 % against carthage-05; probe passed (12.74 M).
+- status: `measured`; not trial 5 (both order tests negative, D-088 §E). The atlas-off twin for REG-016.
 
 ### REG-016 — `bokuto-46-regions` and `bokuto-47-precious` (free lane Bokuto; atlas without portal pairs)
 
@@ -258,4 +267,10 @@ at first. A trial therefore costs the incumbent's rating nothing.
   47 22–12.
 - measurement: Asahi's queue after REG-015 (pool, `qk2`, head to head, probe, `gen`, hidden layouts); twin for the
   atlas condition is `bokuto-41-atlas0`.
-- status: `candidate`; trial 5 if qualified, in before trial 4's look and not below the twin (D-087 §D).
+- same-host (Asahi, 19:20Z; paired against `bokuto-18-queenfeed`). 46: `qk2` 38–30, +11.76 points [−2.94, +27.94]
+  (queen wall deaths 3 against 9; leads converted 29–11); head to head against kenma-03 55–47, −5.88
+  [−17.65, +5.88]; pool 235–35–2, −0.37 [−4.23, +3.49]; against its twin 41 −0.74 [−4.96, +3.32]; hidden layouts
+  76–4 against `bokuto-13-cull`'s 72–8; self-deaths +65 % against carthage-05. 47: `qk2` 36–32; head to head 58–44;
+  pool 225–46–1, −0.18 [−5.15, +4.78] against carthage-05 (does not qualify); −4.60 against the twin.
+- status: 46 `candidate`, **trial 5 provided its probe passes and `gen` is not below `bokuto-13-cull`'s**
+  (D-088 §E). 47 `rejected` as a trial candidate (pool floor).

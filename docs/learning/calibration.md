@@ -159,3 +159,13 @@ re-read by Hinata on the corrected rows.
 **Trial 3 forecasts on file (D-084 §A), `bokuto-18-queenfeed`:** exceeds the incumbent's statistic by more than 0.03:
 Sugawara 0.40, the Chair 0.25; queen alive at round 300 at least 0.40: Sugawara 0.55, the Chair 0.50; the Chair's
 point estimate for its statistic 0.00. Sugawara's "passes probe and pool floor" at 0.85 occurred (Brier 0.0225).
+
+**Trial 3 outcome (Daichi 18:25Z, replicated by Sugawara; D-088):** `bokuto-18-queenfeed` +0.174 [+0.079, +0.282] at
+anchor 1725; +0.114 over the incumbent. "Exceeds the incumbent by more than 0.03" occurred: Sugawara 0.40 (Brier
+0.36), the Chair 0.25 (0.5625). "Queen alive at round 300 at least 0.40" occurred (0.62 on the 55 games against
+teams at 1725 or above): Sugawara 0.55 (0.2025), the Chair 0.50 (0.25). The Chair's point estimate 0.00 against
++0.174. The Chair's error has now gone both ways: five scored events too optimistic, then this one too
+pessimistic; its probabilities for trial outcomes carry little information so far. **On file for trial 4
+(`asahi-27-b13-reserve`, 17940):** Sugawara 0.25 that it exceeds +0.204 at its look; Hinata's items in
+P-hinata-07; the Chair 0.20 that it exceeds +0.204 and 0.45 that it exceeds +0.126 (filed at 19:23Z, before any
+game of 17940 was read).

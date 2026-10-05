@@ -2,10 +2,10 @@
 
 Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes only when this file records it.
 
-## Current state (5 Oct 2026 18:18Z)
+## Current state (5 Oct 2026 19:23Z)
 
 - **R0 passed 4 Oct 14:28Z (D-053 §A). R1: P-2 failed its confirmation 18:20Z (D-057 §B); rung open, behind R2. R2: development battery running (D-057 §C).**
-- **Incumbent of record: `kenma-03-pocket-queen` (17388)**: +0.005 [−0.072, +0.081] over its 129 ranked games; level with 14585 (−0.043) and `bokuto-13-cull` (−0.054 over 120). **Live now: trial 3, `bokuto-18-queenfeed` = submission 17791, since 14:19Z**; look at 60 ranked games (boundary about 18:20Z to 18:45Z; the ladder gives about 15 ranked games an hour). **Trials run back to back (D-084 §C):** Daichi applies the end rule at the look (more than 0.03 over the incumbent's statistic) and starts the next trial at once; **trial 4 is `asahi-27-b13-reserve`; trial 5 by default `bokuto-41-atlas0`, else `bokuto-25-reserve4`** (D-087 §D; `bokuto-35-knownbeds` does not qualify: its atlas costs 4.4 points). **The compute limit is 100 M points a turn, working ceiling 60 M at the probe (D-087 §A).** Three targets for candidates: total length near 78 and 154 at rounds 100 and 300; queen alive at round 300 near 0.58; at least 70 % of round-300 leads converted.
+- **Incumbent of record: `bokuto-18-queenfeed` (17791)** (D-088): +0.174 [+0.079, +0.282] at anchor 1725 over 60 ranked games (32–28, 11 of 12 series against teams at 1725 or above), +0.114 [−0.004, +0.250] over `kenma-03-pocket-queen` (17388: +0.060 [−0.010, +0.132] over 130). **Live now: trial 4, `asahi-27-b13-reserve` = submission 17940, since 18:25Z**; look about 22:15Z; it needs more than +0.204; between +0.126 and +0.204 is unresolved. **Trials run back to back (D-084 §C).** **Trial 5: `bokuto-46-regions`, provided its probe and `gen` panel pass; else `bokuto-25-reserve4`** (D-088 §E). The compute limit is 100 M points a turn, working ceiling 60 M at the probe (D-087 §A). Three targets: total length near 78 and 154 at rounds 100 and 300; queen alive at round 300 near 0.58; at least 70 % of round-300 leads converted; on its 55 games against stronger teams 17791 meets the second and third and not the first.
 - Deadline: handled by the lead; the Chair imposes no freeze (D-050 §2).
 - GPU work may run on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3).
 
@@ -67,6 +67,13 @@ blocks live screens.
 
 ## Log
 
+- 5 Oct 19:23Z: D-088. **Trial 3: `bokuto-18-queenfeed` (17791) +0.174 [+0.079, +0.282] over 60 ranked games; it is
+  the incumbent of record** (+0.114 over 17388, whose figure at anchor 1725 is +0.060, not +0.005). Queen alive at
+  round 300 0.62 and 20 of 26 leads converted against stronger teams; the economy is still at the top ten's
+  losers' line. Trial 4 live: `asahi-27-b13-reserve` = 17940 since 18:25Z, look about 22:15Z, bar +0.204.
+  `bokuto-41-atlas0` qualifies but is not trial 5. **Trial 5 is `bokuto-46-regions`** (best `qk2` of the lineage,
+  38–30; aimed at the four maps where 17791 won 0 of 11) if its probe and `gen` pass; twin and pool conditions
+  restated with a tolerance (5th percentile above −5). Confirmation runs before the final activation.
 - 5 Oct 18:18Z: D-087. **The compute limit is 100 M points a turn** (our own server rows: turns up to 99.5 M
   survived, cuts at exactly 100,000,000; local sandbox the same); the 30 M of the macro and D-046 is replaced by
   a working ceiling of 60 M at the probe. No seat term (higher-rated side wins 61.7 % as A, 60.8 % as B).

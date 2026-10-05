@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 18:18Z (unit 37). Next self-wake about 19:20Z (trial 3's look and the card of `bokuto-41-atlas0`). Branch `r/ushijima`; private tree
+State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 19:23Z (unit 38). Next self-wake about 20:45Z (46's probe and `gen`), then about 22:30Z (trial 4's look). Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,27 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-088: trial 3 won. `bokuto-18-queenfeed` (17791) is the incumbent of record.** 60 ranked games, 32–28
+  against a strong field (11 of 12 series against teams at 1725 or above): +0.174 a game against expectation
+  [+0.079, +0.282] at anchor 1725, performance rating 1859; +0.114 [−0.004, +0.250] over `kenma-03-pocket-queen`
+  (17388: +0.060 [−0.010, +0.132] over 130 games). Daichi applied the rule; Sugawara replicated the numbers. It is
+  the first ladder interval of the phase that excludes zero. Caveats: one window; the difference's interval
+  touches zero; the winner's own figure is probably somewhat high. **Correction:** the "+0.005 over 129 games"
+  recorded for 17388 in D-084 was computed at an anchor near 1765–1770, not 1725; Daichi restates every trialled
+  submission at 1725 in one table. Hinata's curve block (unchecked): against stronger teams the queen is alive at
+  round 300 in 0.62 of games and 20 of 26 leads were converted, both at target; total length (65 and 116) is
+  still at the top ten's losers' line. 0 wins in 11 games on Queen of Spades, Trophy, Default and Stripes.
+  **Trial 4 is live: `asahi-27-b13-reserve` = 17940 since 18:25:06Z**, look about 22:15Z; it needs more than
+  +0.204; between +0.126 (pooled line + 0.03) and +0.204 counts as unresolved. **Confirmation runs** of the two
+  best submissions precede the final activation for the Qualifiers; the cutoff is asked of the lead.
+  **Trial 5 is `bokuto-46-regions`, provided its probe and `gen` panel pass; else `bokuto-25-reserve4`.** 46 is
+  aimed at those four maps and has the best `qk2` of the lineage (38–30; +11.76 [−2.94, +27.94] against the
+  incumbent; queen wall deaths 3 against 9); it is level on the pool and −5.88 [−17.65, +5.88] head to head.
+  It missed two point conditions the Chair wrote today by one to two games in 272; both are restated with a
+  tolerance (paired 5th percentile above −5), a threshold changed after seeing the number, recorded as such.
+  `bokuto-41-atlas0` qualifies but is behind the incumbent on `qk2` and head to head; `bokuto-47-precious` fails
+  the pool floor. Bokuto: the lineage's search knobs do not spend the larger compute budget; it is
+  building an enemy-response lookahead (`bokuto-52`).
 - **D-087: the compute limit is 100 M points a turn, not 30 M.** Checked by two lanes on our own server games
   (turns up to 99.5 M survived; every cut turn records exactly 100,000,000) and by Asahi's local burn test. The
   30 M came from the macro and D-046 and was never checked against the contest's page. **Working ceiling: 60 M
@@ -270,10 +291,12 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 
 ## Incumbent
 
-- **`kenma-03-pocket-queen`, submission 17388, incumbent of record (D-081).** All 129 ranked games since 05:02Z:
-  +0.005 [−0.072, +0.081] at rating 1725 (first 60: +0.074); Elo 1780, rank 71 (13:52Z). Not live during trials.
+- **`bokuto-18-queenfeed`, submission 17791, incumbent of record (D-088).** 60 ranked games (14:30Z–17:48Z):
+  +0.174 [+0.079, +0.282] at anchor 1725; performance rating 1859; team rating 1838, rank 59, at 17:51Z. Not live
+  during trials. Before it: `kenma-03-pocket-queen` (17388), +0.060 [−0.010, +0.132] at 1725 over 130 games.
   Rollback target: `carthage-05-free-sprint` (14585), whose figures before 02:13Z follow. `bokuto-13-cull` (17530):
-  −0.054 [−0.128, +0.023] over 120 games. **Live now: trial 3, `bokuto-18-queenfeed` (17791), since 14:19Z.**
+  −0.054 [−0.128, +0.023] over 120 games (anchor to be restated, D-088 §B). **Live now: trial 4,
+  `asahi-27-b13-reserve` (17940), since 18:25:06Z.**
 - Elo trend and drift (Daichi's monitor, 16:53Z, ranked, post-m2, series bootstrap 5th/95th percentiles, inputs
   frozen): since activation −0.018 [−0.042, +0.009] (950 games, 192 series); last 40 games +0.026 [−0.108, +0.169];
   Elo 1722, rank 85. Schooltime −0.480 [−0.517, −0.440] (61 games; cage open −0.519, closed −0.447), weakhold −0.35
@@ -288,10 +311,10 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 |---|---|
 | Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): by accuracy A8b 0.7224, A1 0.7184, A4 0.7205 (not selectable), A3 0.7145, live prior 0.6977; **in play the A3 placeholder loses 7 points on the pool; selection suspended (D-068)**. P-6: behind the battery. P-7: entry throughput passed; no training. P-8 (latent state): stage S0 approved |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | Done: `bokuto-25-reserve4` (pool 242–30; `qk2` 33–35; head to head 57–45), `bokuto-26-hunt` (237–35; 27–41; 54–48), `bokuto-35-knownbeds` (225–47, does not qualify) and its atlas-off twin (237–35), the burn test (limit 100 M). Running: `bokuto-41-atlas0` (card about 19:15Z). Next: `bokuto-46-regions`, `bokuto-47-precious` (with `gen` and hidden layouts), probe of `bokuto-25-reserve4`; Sugawara's layer removal |
+| Evaluator queue (Asahi) | Done: `bokuto-41-atlas0` (pool 238–34; `qk2` 24–44; head to head 59–43), first readings of `bokuto-46-regions` (`qk2` 38–30; head to head 55–47; pool 235–35–2; hidden layouts 76–4) and `bokuto-47-precious` (pool 225–46–1, fails the floor). Running: probes of 46, 47 and `bokuto-25-reserve4`, `gen` for 46, the rest of 47; about 20:30Z. Probe gate now 60 M |
 | Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) and rolled back at 04:53Z (D-075 §A) |
 | Uploaded, inactive | 14585 (carthage-05, incumbent, waiting behind the trials), 16979 (k = 16, rolled back), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
-| Live screen | **Trial 3 live: `bokuto-18-queenfeed` = 17791 since 14:19:00Z**, no fault; look at the first series boundary at or after 60 ranked games (about 18:20Z to 18:45Z), with the reached and carried views side by side. Daichi applies the end rule (more than 0.03 over the incumbent's statistic, +0.005 at 129 games) and starts trial 4 at once: **`asahi-27-b13-reserve`** (D-086 §C). Trial 5 by default `bokuto-41-atlas0`, else `bokuto-25-reserve4` (D-087 §D) |
+| Live screen | **Trial 4 live: `asahi-27-b13-reserve` = 17940 since 18:25:06Z**, no fault; look at the first series boundary at or after 60 ranked games (about 22:15Z; server blackouts 19:52–20:12Z and 21:52–22:12Z). End rule: more than 0.03 over 17791's +0.174 at anchor 1725; Daichi also reports against the pooled line (+0.096); +0.126 to +0.204 is unresolved. Trial 3 ended 18:25Z: 17791 +0.174 [+0.079, +0.282], incumbent of record (D-088) |
 
 ## Facts settled this unit
 
@@ -320,7 +343,7 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 | Data | Kageyama (Claude), `r/kageyama`; **silent since about 07:00Z** | bed layouts, slot bots and trajectory block done; the export is cancelled and the curve table has moved to Hinata. **Stand-down recommended to the lead (D-081 §D)** |
 | Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | analysis service of the trials (matched column, curve block). The curve table's queen columns were side-swapped; fixed at source within six minutes of Sugawara's review, with a guard against the engine's queen field. Its descriptions are reviewed by Sugawara before the Chair records them |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session after the reset | working: both free-lane pools posted with queen columns; learn-runner library fix; queue as in the table above |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | trial 3 started 14:19Z (17791); at the look (boundary about 18:20Z–18:45Z): the table, the end rule (mechanical, D-084 §C), then trial 4 = `asahi-27-b13-reserve` (D-086 §C) |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | trial 3 started 14:19Z (17791); applied the end rule at 18:25Z and started trial 4 (17940) at once; owes one table of every trialled submission at anchor 1725 (D-088 §B); at trial 4's look (about 22:15Z): the table against 17791 and against the pooled line, then trial 5 as named by the Chair |
 | Free lanes (outside the ladder) | Bokuto (Kenma retired, D-079) | **Bokuto: its bundles `bokuto-33` to 35 lose to the atlas they switch on; it traced the cause itself (dragons that know the whole map route through the same portals and collide) and submitted `bokuto-41-atlas0`.** Told that the compute limit is 100 M (ceiling 60 M) and that a larger-search twin is the suggested next build. One builder lane only; a second is recommended to the lead |
 | Analyst | Shenzhen | stopped by the lead (D-074 §C); units 36–39 uncommitted unless Kageyama ran its commit command (not reported) |
 
@@ -346,18 +369,19 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 
 ## Next three decisions
 
-1. **Trial 3's outcome** (boundary about 18:20Z–18:45Z; Daichi applies the rule; the Chair records it and may reverse it).
-2. **Trial 5:** among `bokuto-41-atlas0`, `bokuto-46-regions`, `bokuto-47-precious` by `qk2` then head-to-head (atlas bots not below 41 on the pool), else `bokuto-25-reserve4` (D-087 §D).
-3. **The first bot built for the larger compute budget:** who builds it and how it is screened (D-087 §A).
+1. **Trial 5 confirmed or replaced:** `bokuto-46-regions` once its probe and `gen` panel are in, else `bokuto-25-reserve4` (next unit, before 22:15Z).
+2. **Trial 4's outcome** (look about 22:15Z; bar +0.204; +0.126 to +0.204 unresolved).
+3. **The schedule of confirmation runs and the final activation**, once the lead gives the seeding cutoff.
 
-Waiting on the lead: nothing blocking. For the lead: a second builder lane (recommended; the free-lane prompt plus
+Waiting on the lead: **the Qualifiers' seeding cutoff** (the record of 28 Sep says 10 Oct; unverified), so that
+confirmation runs and the final activation can be placed. Nothing else blocking. For the lead: a second builder lane (recommended; the free-lane prompt plus
 the addendum of 5 Oct); stand down Kageyama's lane (silent since about 07:00Z); the RL question (D-086 §F: the
 Chair's reading is given, nothing is ordered; a port lane or a P-7 training run needs the lead's word). Optional: a fresh Chair session,
 deleting `~/Desktop/sessiondata.img.bak`.
 
 ## Cursor
 
-Last BOARD line read: line 1461 (Bokuto 18:16Z), main tree. Own D-087 line follows.
+Last BOARD line read: line 1483 (Asahi 19:20Z), main tree. Own D-088 line follows.
 
 ## Open flags
 

@@ -220,3 +220,27 @@ All of Sugawara's carried numbers reproduce exactly. My 13:37Z "length lead vs 1
 - Joint reading with trial 3 (stated now): if 17791 and trial 4 both beat 17530 on item 3, the gain is the shared reserve; if only 17791 does, the queen changes. Neither reading is claimed if the interval of the diff vs 17530 includes 0 — then it is "no ladder evidence either way".
 - Stop rule: one read; no re-look at a later boundary unless the Chair asks; values recorded as printed, no relabel. Brier score of items 1–6 appended with the result.
 - RL translation: value — tests whether a length-retention rule (reserve) moves the mid-game carried-length trajectory that V0b's value gap localises at r100–300 against ≥ 1725; no observation/action change.
+
+## Trial-3 look result (17791 `bokuto-18-queenfeed`), 2026-10-05 18:40 UTC — frozen procedure, one read
+
+- Selection: first series boundary ≥ 60 ranked post-m2 games of 17791 from 14:19:00Z → 60 games / 12 series (14:30:13–17:48:46Z), 0 decode errors, queen guard 120/120. Same window as Daichi/Sugawara's elo look (D-084 §C, BOARD 18:25/18:27Z). Bands by opponent ladder elo at game start: ≥ 1725 55/11 series, < 1725 5/1 series (one series — the < 1725 row is not read). Intervals: series bootstrap 1,000 × seed 7, 5–95 %. Output build/hinata/look3/block.txt.
+
+| ≥ 1725 | 17791 (n 55/11) | 17530 ref (n 45/9) |
+|---|---|---|
+| W/n | 28/55 | 17/45 |
+| carried r100 total us/opp, diff | 65.1 / 57.3, +7.8 [−2.9, +18.2] | 48.8 / 45.0, +3.8 [−8.6, +15.4] |
+| carried r300 total us/opp, diff | 97.5 / 90.9, +6.6 [−14.2, +29.3] | 78.4 / 77.6, +0.8 [−24.9, +24.8] |
+| reached r300 (n) total us/opp, diff | (40) 115.7 / 107.7, +8.0 [−12.9, +29.2] | (33) 92.1 / 85.9, +6.2 [−18.4, +31.3] |
+| carried growth r100→r300 (us) | 32.4 | 29.6 |
+| queen alive carried r100 / r300 (us) | 0.93 / 0.62 | 0.73 / 0.42 |
+| r300 leads converted | 20/26 | 15/21 |
+| elimination losses (before r300) | 14/55 (9) | 11/45 (7) |
+
+- All bands: carried r300 97.4 vs 92.8 (+4.6 [−13.7, +23.2]); 17530 all 91.1 vs 70.0 (+21.2) — not comparable (17530's field was half < 1725, 17791's 11/12 series ≥ 1725).
+- Top-ten reference (D-082, reached): winner 78.5 r100 / 153.7 r300, loser 61.3 / 110.9. 17791 ≥ 1725 reached: 65.1 / 115.7 — at the top-ten loser's line, ~38 cells under the winner's at r300.
+- End reason × result, ≥ 1725: L elimination 14, queen 7, longest 6; W longest 17, elimination 6, queen 5. < 1725: W longest 4, L elimination 1.
+- Seat × result (D-087 §B column): A 21/35, B 11/25 (seat drawn per series; no term).
+- Standing column (p06_column.py, vs 14585 re-weighted to the trial's opponents; matched 10/12 opponents, ref 125 games): loss-rate gap ≥ 1725 −0.094 [−0.267, +0.124] (n 45), all −0.110 [−0.263, +0.082] (n 50).
+- Server compute (D-087 §A item 4; pts_own.py over the same 60 games, 748,548 dragon-turns, team 7 cpu only): max 12.62 M (game 1157167), first-turn max 9.96 M, 0 turns > 30 M, 0 cuts/TLE. Daichi's 13.05 M covers 89 games incl. unranked — consistent.
+- Reading: 17791 is ahead of 17530 at ≥ 1725 on every curve column (r100 total +16.3, queen alive r300 +0.20, carried r300 +19.1 cells), but every diff interval includes 0 and the opponent sets differ, so by the frozen rule this is "no ladder evidence either way" on the curves; the elo look (Daichi/Sugawara) decides the trial. The largest shift is early (r100 total and queen alive), not growth r100→r300 (32.4 vs 29.6) — consistent with the queen changes, not a mid-game length gain. Joint reading with trial 4 (stated 17:36Z): item 3 baseline from 17791 is 32.4.
+- RL translation: value — the ≥ 1725 gap to the top-ten winner sits at r100–r300 (r300 −38 cells reached); queen survival is the only column that moved materially, so a value target that weights queen-alive at r300 is the cheapest observation to add; no action or demonstration change.
