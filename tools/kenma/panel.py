@@ -103,7 +103,7 @@ def run(fx, args, bins, out):
         if old_log.exists():
             old_log.rename(attempts/f'{key}.{stamp}.log')
     a, b = (args.bot, fx['opp']) if fx['seat'] == 'A' else (fx['opp'], args.bot)
-    replay = args.keep_replays and fx['seed'] == 1 and fx['map'] in ('live/schooltime', 'live/weakhold')
+    replay = args.keep_replays and fx['map'] in ('live/schooltime', 'live/weakhold')
     cmd = [str(MAIN/'.venv/bin/unswbc'), 'run', '--seed', str(fx['seed']), '--no-logs', '--no-indicator', '--no-draw']
     cmd += ['-o', str(out/f'{key}.replay')] if replay else ['--no-replay']
     cmd += [str(ROOT/'maps'/f"{fx['map']}.map"), bins[a], bins[b]]
