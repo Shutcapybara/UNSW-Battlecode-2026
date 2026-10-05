@@ -1,15 +1,50 @@
 {
  "what": "R2 battery candidate inventory read by r2_battery.py rev 8 (D-066 §C: the selector reads selectable arms only; change this file, not the code)",
- "rulings": ["D-057 §C", "D-059 §B", "D-063 §C", "D-064 §C", "D-066 §C"],
- "pooled": ["A1-400", "A1-800", "A3-400", "A3-800", "A10-e4", "A10b", "A8b-A1-400", "A8b-A3-400"],
- "descriptive": ["A4-400", "A4-800", "A5-400", "A5-800", "A10b-f25", "A10b-f50", "A7-400", "A7-800", "A7fix-400", "A7fix-800"],
- "ts_planned": ["A2-400", "A2-800", "A6-400", "A6-800"],
+ "rulings": [
+  "D-057 §C",
+  "D-059 §B",
+  "D-063 §C",
+  "D-064 §C",
+  "D-066 §C",
+  "D-069 §C"
+ ],
+ "pooled": [
+  "A1-400",
+  "A1-800",
+  "A3-400",
+  "A3-800",
+  "A10-e4",
+  "A10b",
+  "A8b-A1-400",
+  "A8b-A3-400"
+ ],
+ "descriptive": [
+  "A4-400",
+  "A4-800",
+  "A5-400",
+  "A5-800",
+  "A10b-f25",
+  "A10b-f50",
+  "A7-400",
+  "A7-800",
+  "A7fix-400",
+  "A7fix-800",
+  "A11-400",
+  "A11-800"
+ ],
+ "ts_planned": [
+  "A2-400",
+  "A2-800",
+  "A6-400",
+  "A6-800"
+ ],
  "ts_base": "A1",
  "min_cohort_series": 10,
  "notes": {
   "A4/A5": "not selectable as fitted (two models > 4 MiB, D-066 §C 1); diagnostics only",
   "A8b": "mirror-averaged prediction of a selectable tree arm, no refit (D-066 §C 4); one entry per base",
   "A8": "added after selection names its base (P-hinata-03 §Arm A8)",
-  "ts_base": "A6/A7 re-based on A1's inputs (HB-1 vector), stated before fitting (D-066 §C 3)"
+  "ts_base": "A6/A7 re-based on A1's inputs (HB-1 vector), stated before fitting (D-066 §C 3)",
+  "A11": "encoder + HB-1 vector without hb_p, one model (D-069 §C): measurement arm, descriptive while selection by accuracy is suspended (D-068); declared before its fit"
  }
 }

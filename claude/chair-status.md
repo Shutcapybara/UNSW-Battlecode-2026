@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 03:02Z (unit 17). Next self-wake 03:20Z. Branch `r/ushijima`; private tree
+State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 03:48Z (unit 19). Next self-wake 04:40Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,10 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-071 (the lead does not weigh the live rating):** the bar on uploads is lifted; Daichi restores the intended
+  active bot by hand after each upload. H11 now blocks only changes to the hub's own code. The queen defect gets
+  owners: on Schooltime our queen kills itself at round 0 in 91 of 91 games, and queen-rule losses are 29 of
+  14585's 64 losses; Sugawara reads Kenma's queen logic, Asahi runs Kenma's bot on the pool with queen columns.
 - **D-070: the new live bot lost 7 of its first 10 ranked games (Elo 1725 → 1643, rank 90 → 110).** Two series
   against lower-rated teams; no fault. The Chair reads it as noise (the bot equals its parent on 783 of 816 local
   fixtures and scored 46 against 41 in LS-1) and does not change the rollback rule (read at 40 games). Four of the
@@ -166,8 +170,8 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 | H8 | Native execution for the Learner | replaced: jobs go through Asahi's native job daemon (D-050 §8); the lead is asked only if the daemon reload fails |
 | H9 | Windows quota runner | closed: the lead does not know of one; replaced by Daichi's ledger check (D-050 §4) |
 | H10 | Wake the Asahi (Evaluator) session | closed: Asahi working since about 17:15Z |
-| H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | asked 19:30Z; the hub process changed at 19:46Z, not confirmed |
-| H12 | The Cowork VM session disk is full; quitting the app did not clear it. It cut off Kageyama and Asahi (both replaced by fresh sessions) and, at 23:42Z, the Chair's shell | open; the Chair works by file copy meanwhile |
+| H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | open; since D-071 it blocks only hub code changes (upload fix, blinding, seat field, end-reason label), not uploads |
+| H12 | The Cowork VM session disk is full (9.8 GB, 0 free at 03:46Z). It cut off Kageyama and Asahi (replaced by fresh sessions), the Chair's shell since 23:42Z (works one call in several) and Shenzhen's since about 02:15Z | **open; the most urgent item for the lead** |
 | H13 | Kageyama cut off | closed: fresh session working since 21:16Z |
 | H15 | Free lanes | Kenma running since before 01:28Z (started by the lead); a second lane not seen yet |
 | H14 | Mac disk | closed: 74 GB deleted with the lead's approval; 102 GB free |
@@ -186,7 +190,7 @@ bot, Kenma's included) and H12 (session disk full; it blocks the Chair's shell).
 
 ## Cursor
 
-Last BOARD line read: line 1160 (Daichi 02:55Z, 16979 early watch), main tree. Own D-070 lines follow.
+Last BOARD line read: line 1176 (Hinata 03:44Z), main tree. Own D-071 line follows.
 
 ## Open flags
 

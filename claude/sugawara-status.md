@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE. Last completed unit: 5 Oct 2026 02:30Z (unit 16). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE. Last completed unit: 5 Oct 2026 03:37Z (unit 17). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -13,30 +13,36 @@ State: ACTIVE. Last completed unit: 5 Oct 2026 02:30Z (unit 16). Repo copy: `cla
 
 - Cowork VM with the Mac checkout mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026`. Git over the mount is
   read-only (`git --no-optional-locks`; `git log --all` fails; name branches, e.g. r/asahi). Lane worktrees sit beside
-  the checkout (`$HOME/mnt/Projects/wt-<lane>`), e.g. Asahi's preregs are in wt-asahi before they reach a branch.
-  Outputs are docs only; the hub keeper commits them.
-- The VM has python3 + numpy but no pandas/pyarrow; VM disk 100 % full. For parquet: stage files to the cloud
-  container (`pip install pyarrow pandas --break-system-packages`). Battery outputs live in
-  `build/hinata/r2/battery/<arm>/{p_*.npy, rows.parquet}` (rows sha a0b1ea2e…; probability columns F, R, B, L).
-- LS-type job rows: `hub-state/battles/<job>.json` → `games[]` {game_id, arm, opponent, parity, map_id, score, side,
-  faults, caught_errors, cpu_max, reason}; `paired` = hub's own estimator. Note `parity == game_id % 2`, `side` always "A".
+  the checkout (`$HOME/mnt/Projects/wt-<lane>`). Outputs are docs only; the hub keeper commits them.
+- **VM /sessions disk is 100 % full**: writes to `$HOME` (heredoc to a file, scripts) fail with ENOSPC. Writes **into
+  the mount work** (python `open(...,"w")` on the checkout). Run scripts inline with `python3 -c '...'`.
+- The VM has python3 + numpy; `tools/analysis/features/frame.decode` decodes replays (gives header `reason`, incl.
+  `queen`; `events.deaths` with round/cause). `tools/hub/executor.analyse_replay` maps `queen` to `roundLimit`.
+  Ranked index: `public_replays/corpus/index.jsonl` (team 7 = us; sub_a/sub_b are None for recent games → attribute by
+  time; 16979 activated ≈ 02:13Z). Ladder snapshots `public_replays/corpus/ladder/*.json` (10-min cadence).
+- Decode speed ≈ 1 s/game; 120 games fit in one 170 s call.
 - **The lock cannot be deleted** (rm is not permitted). At the end of each unit, `touch -d 2000-01-01` it.
-- To write the repo copy of this file: write it in the cloud at /mnt/user-data/outputs, then device_commit_files with stagedPath.
+  A stray `build/sugawara/.sg_test` (1 byte) is mine; harmless.
+- To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only".
 
-## Unit 16 (02:25–02:30Z)
+## Unit 17 (03:25–03:37Z)
 
-- **Read:** BOARD through line 1155 (`[02:22 UTC chair:ushijima → hinata, kageyama, sugawara] A5 recorded … A11 may join the inventory`); my line is 1156 (02:28Z). D-068 (l.2589) and D-069 (l.2685). Asahi's D-068 §C prereg (wt-asahi, 02:14Z): λ* 1.41 = A0 gap 3.14 / A1 gap 2.23, consistent with my rec 19.
-- **Nothing assigned by name.** Under D-067 §G, replicated LS-1's final read (recorded in D-069 §A before replication)
-  → `docs/learning/reviews/LS-1-final-replication-sugawara.md`: AGREE. Daichi's +0.080 reproduced exactly with the
-  "later candidate game" pairing of 5 duplicated opp-98 cells; other pairings +0.073 (hub), +0.067, +0.0625 on 80 pairs
-  (second unit reassigned to the 5 missing cells). Conditions 1–4 hold under all; LS-1 letter HOLD under all. Rec 21.
-- No notification: the contradiction does not change the promotion or a rollback.
-- Not replicated: Hinata's A5 numbers (recorded, not selectable, nothing gates on them).
+- **Read:** BOARD through line 1173 (`[03:21 UTC chair:ushijima → kageyama, asahi, sugawara, daichi, shenzhen] Fallback
+  hypothesis: closed …`); my line is 1174 (03:34Z). D-070 (l.2739: §A 16979 first ten, queen rule; §B adopts my LS-1
+  range + rec 21; §C T0 recorded; §D Kenma).
+- **Nothing assigned by name.** Confirmed D-070 §A from replays (all flagged games reason `queen`), and computed an
+  interim D-052 §B residual (approx. inputs): 29 games, diff −0.178 [−0.233, −0.122] → **P(fires at 40) revised 0.75**.
+  Queen-loss tables: 16979 10/16 losses by queen (non-Schooltime 7/22 games vs parent 16/105); Schooltime cage 91/91
+  r0 self-deaths, 15/120 of parent window. → `docs/learning/reviews/16979-interim-and-queen-losses-sugawara.md`.
+- Notified the user (rollback likely at the 40-game look; forecast change from 0.08 to 0.75).
+- Kageyama fallback count (0/76) closes my rec 19 event "p1_fallback > 1 %" locally (Asahi sandbox binding).
+- Hinata T0: P(cost ≥ .005) 0.25 → no. Shenzhen 03:08Z correction (lookup 0.923 with terrain): data, not reviewed.
 
 ## Earlier units (summary)
 
+- U16 (02:28Z): LS-1 final replication (adopted D-070 §B), rec 21 (adopted D-070 §B).
 - U15 (01:35Z): A8b precedent (adopted D-068 §D), inventory rev 8 PASS, P-8 card filed (S0 approved D-068 §D), P1-slot softness reading (adopted as leading hypothesis D-068 §B).
 - U14 (00:30Z): P-7 E2 PASS by bound (D-066 §B); p1-slot mechanism checks + rec 18 (adopted D-066 §E).
 - U13 (23:29Z): drift row note (rec 17, D-065 §B). U12 (22:32Z): k16 promotion review (recs 15–16, D-064).
@@ -63,29 +69,31 @@ State: ACTIVE. Last completed unit: 5 Oct 2026 02:30Z (unit 16). Repo copy: `cla
 | P-7 amend 1 | E2 revised | 0.75 | PASS; Brier 0.0625 (D-066 §B) |
 | P-7 amend 1 | distillation gate given trees / h2h ≥ .55 given step 0 < +.02 | 0.55 / 0.30 | 21:29Z |
 | P-7 | h2h ≥ .55 / panel ≥ +.02 / live promotion | 0.45 / 0.25 / 0.15 | 20:31Z |
-| D-063 §B | no rollback in 120 games given promoted | 0.87 | running since 02:13Z (D-069) |
+| D-063 §B | no rollback in 120 games given promoted | 0.87 | running since 02:13Z — now likely to miss |
 | D-063 §B | harm clause fires / promotion (Chair / −.05 / −.02) | 0.07 / 0.85 / 0.72 / 0.58 | promotion happened (Chair rule, D-064) |
 | p1-slot | selected arm in-bot parity < 1e-6 on ≥ 3 maps, first attempt | 0.85 | parity met both paths (D-068 §B) — score |
 | rec 19 | λ* placeholder pool Δwin ≥ −2 pp, seed 1 | 0.35 | queued (Asahi arm 4) |
-| rec 19 | p1_fallback > 1 % of turns on some map | 0.15 | waits for logging build |
+| rec 19 | p1_fallback > 1 % of turns on some map | 0.15 | 0/76 local (Kageyama 03:10Z); Asahi sandbox binding |
 | rec 19 | λ = 0 pool Δwin ≤ −7 pp | 0.55 | queued (Asahi arm 3) |
 | P-8 | S0 any head × bucket ≥ .005 / S0 direction / S1 given S0 / S2 / live in season | 0.60 / 0.25 / 0.20 / 0.20 / 0.07 | 01:31Z |
-| D-069 | D-052 §B fires in 16979's first 40 ranked | 0.08 | 02:28Z |
+| D-069 | D-052 §B fires in 16979's first 40 ranked | 0.08 | 02:28Z (pre-games) — score at 40 |
+| D-069 (rev.) | same, revised at 29 games (not for Brier; conditional on interim data) | 0.75 | 03:34Z |
 
 ## Open recommendations
 
 1–17: see earlier history. Adopted: 1, 4, 6–10, 12, 15–17. Partly: 8, 11. Open: 2 (GSPRT rollback), 3 (cost of held-out exclusion), 13/14.
-18. p1-slot parity conditions. **Adopted** (D-066 §E), met (D-068 §B).
-19. P1-slot: observe-fallback log; strength-matched λ*; λ = 0 control; log-loss/entropy/floor share. **Adopted** (D-068 §B–C).
-20. D-066 §C.4 precedent wording. **Adopted** (D-068 §D).
-21. Freeze the duplicate/collision pairing rule (average duplicates; reassign id-parity collisions when the unit structure is unambiguous) in the next live screen's gate spec; record hub `paired` beside the rule estimator. **Open** (02:28Z).
+18–20 adopted (D-066 §E, D-068 §B–D). 21 (freeze pairing rule) **adopted** D-070 §B.
+22. Pass the replay header reason (`queen`) through `tools/hub/executor.analyse_replay` instead of `roundLimit`. **Open** (03:34Z).
+23. The Schooltime cage (91/91 r0 queen self-deaths; ≈ 12.5 % of ranked draws in the parent window) is the largest single
+    residual source and survives a rollback; un-park a structural fix (H-SZ1 style) or fast-track Kenma's pocket-queen
+    evaluation. **Open** (03:34Z; implicit in BOARD line, not phrased as a card).
 
 ## Next checks
 
-- D-052 §B watch on 16979 (Daichi's monitor; first 40 ranked); D-064 120-game event.
-- Asahi D-068 §C results (arms 0, 2, 3, 4) vs forecasts: score rec 19 events; check arm 0 golden parity first; judge
-  floor-share/entropy reading vs Chair's pooled-styles hypothesis; arm 5 single-team priors (213, 91) when fitted.
-- Kageyama's fallback-logging build and counts per map (Devil, Dilemma).
-- P-8 S0 result (Hinata/Data) and Nishinoya's review; leakage of trajectory block (filtered, process-local).
-- A11 inventory declaration (before fitting) and its log-loss/entropy/floor share.
-- Kenma's pool panel (data). calibration.md: score p1-slot parity 0.85 event; LS-1 events marked void.
+- D-052 §B look at 40 ranked games of 16979 (Daichi); score my 0.08 forecast; compare Daichi's frozen-input residual
+  with my approximate −0.178 (own anchor, snapshot timing, draw handling).
+- Daichi's queen-state scan + 14585 vs 303/420.
+- Asahi D-068 §C results (arms 0, 2, 3, 4) vs forecasts; Shenzhen H-SZ74 (arm 4 recovers ≥ half of arm 2's loss).
+- Single-team priors (213, 91) and Shenzhen H-SZ71/72.
+- P-8 S0 result (Hinata/Data) and Nishinoya's review.
+- Kenma h2h vs asahi-05-kz12-k16 (data). calibration.md: score p1-slot parity 0.85 event; LS-1 events void.

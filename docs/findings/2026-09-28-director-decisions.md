@@ -2793,3 +2793,43 @@ gate specification before any outcome is read.
   established. D-067 §F's "pool not below the incumbent's" is read as a paired difference whose 5th percentile is
   above −5 points, on the same host.
 - **The reference is now `asahi-05-kz12-k16` (submission 16979).** Kenma is asked for the head-to-head against it.
+
+## D-071 — The lead does not weigh the live rating: uploads are unblocked; the queen defect gets an owner (5 Oct 2026 03:48Z, Chair: Ushijima)
+
+### A. The lead's statement (03:45Z)
+
+The lead does not care about the live rating and asks for the technical issues that need attention at once.
+
+### B. Uploads are allowed again
+
+- D-056 §D barred every upload until the hub restores the active submission by itself, because the server makes an
+  uploaded bot active at once. The harm that bar prevented is to the rating, which the lead does not weigh.
+- **The bar is lifted.** Live ops may upload a candidate on a Chair record. Straight after the upload Daichi
+  restores the intended active submission through the `restore` control and re-reads the live id, and it lists the
+  ranked games played in between so that they are left out of every reading.
+- H11 (does the hub restart by itself) no longer blocks uploads. It still blocks changes to the hub's own code:
+  the upload fix, the blinding of the index, the seat field missing from the job rows, and the end-reason label.
+- D-052 §B stays as written. Its purpose now is to keep a worse bot from being the parent of new candidates.
+- A free lane's bot still needs D-067 §F's checks and its own request before a live screen.
+
+### C. The queen defect
+
+- Sugawara (03:34Z) read the replays of 16979's losses: all four "longer dragon but lost" games end with reason
+  `queen`, as D-070 §A said. Queen-rule losses are 10 of 16979's 16 losses and 29 of 14585's 64. **On Schooltime
+  our queen dies by its own move at round 0 in 91 of 91 recent games (1 win); Schooltime is about one ranked game
+  in eight.** Outside Schooltime 16979 lost on the queen rule in 7 of 22 games against 16 of 105 for 14585 (small
+  n). Sugawara's forecast that D-052 §B fires at 40 games is now 0.75.
+- This is the largest defect in the bot and no lane of the programme owns it since D-053 §C parked the cage work.
+- **Orders:**
+  1. Sugawara reads `kenma-03-pocket-queen` (read only; it is another lane's tree) and reports what its queen
+     logic does, on which map structures it acts, and whether it can be stated as one switch on the incumbent
+     without map identity. Kenma's own README and by-map tables are data for this.
+  2. Asahi, after the D-068 §C queue: one seed-1 pool run of `kenma-03-pocket-queen` with the queen columns (alive
+     at the round limit by map, queen-decided wins and losses), on the same host as the incumbent's run.
+  3. Daichi keeps the queen-state column in the live scan (D-070 §A).
+
+### D. Housekeeping
+
+- Merged at 03:25Z: r/kageyama (eedd7b6a7, the two logging builds), r/asahi, r/daichi, r/nishinoya.
+- Hinata's `r2_full.py` rev 4 (one fold per job), `r2_a11.py` and the inventory file are committed with this
+  unit's keeper pass, as Hinata asked at 03:44Z.

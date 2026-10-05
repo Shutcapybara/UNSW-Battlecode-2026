@@ -569,3 +569,15 @@ Reading: the clones' accuracy gain over the live prior is present in every phase
 - **Cost < 0.005, so T1 (phase models) is not triggered (D-067 §E.3).** My forecast P(cost ≥ 0.005) = 0.25 → outcome no; Brier 0.0625.
 - Registry: T0-u registry.json 55a941c4f048678b… (r2_t0.py ec2ca5d8…, r2_battery 224c667a… fit path).
 - RL translation: the clone uses time and memory a little (≈ 0.003 of accuracy, 7 % of gain); the missing time structure the lead points at (D-067) is not recoverable from these per-turn inputs — it needs trajectory features (encoder v2) or a latent (P-8).
+
+### Arm A11 (encoder + HB-1 vector, no hb_p) — configuration fixed before any A11 fit (appended 2026-10-05 03:38 UTC, hinata). D-069 §C.
+
+- **Claim.** The encoder and the HB-1 vector are complementary without the parent's prior: a single model on both (1,463 columns = A5's 1,466 minus hb_pF/hb_pR/hb_pL) is about as accurate as A5 and has a sharper-than-A5 but non-degenerate prior shape. Rung R2 (P1, measurement arm). Mechanism: A5 − A1 +0.0083 and A5 − A4 +0.0062 say each encoding adds information the other lacks; hb_p is a deterministic function of the HB-1 view, so the trees should recover most of it from the HB-1 vector.
+- **Recipe** (`tools/hinata/r2_a11.py` a758e1f5…): r2_battery.fit for arm A5 exactly (r2_bc.PARAMS, dev120 oracle F/R/L rows, series5 folds = A5-u's fold hashes via --expect-folds, 400 and 800 rounds from one fit, unweighted) with the three hb_p columns removed; outputs renamed A5-* → A11-*. Cloud core only (D-069 §C); fold models copied back to the Mac as they finish (resumable across units).
+- **Inventory:** `A11-400`, `A11-800` added to `descriptive` in `tools/hinata/r2_inventory.json` (49923dda…) before the fit; no selection, no slot work.
+- **Report:** F/R/L accuracy [series 5/95], paired against A5-400, A8b-A1-400, A1-400 and A3-400 on identical rows; **log-loss, entropy, floor share (min option ≤ 1e-4), mean top-two log gap**; model bytes at 400 rounds. Population: 188,250 F/R/L rows, 49 series, post-m2; paired series bootstrap 1,000 × seed 7, linear 5/95.
+- **Expected:** A11-400 ≈ 0.723–0.727; A5-400 − A11-400 in [0, +0.003]. **P(A11-400 − A1-400 ≥ +0.005, 5th pct > 0) = 0.55. P(A11-400 − A8b-A1-400 ≥ +0.005, 5th pct > 0) = 0.15. P(A11-400 floor share < A5-400's 11.2 %) = 0.6.** Model bytes at 400 rounds < 4 MiB: 0.9.
+- **Falsifier:** A11-400 below A1-400 (5th pct of A11 − A1 < 0) refutes complementarity without hb_p.
+- **Stop rule:** one fit, no tuning, no further variants on this card; held-out maps never read.
+- **Cost:** ≈ 2.5 h on one cloud core (A5's per-fold time), across two units.
+- **RL translation:** observation = union of the window encoder and the HB-1 hand-built vector; the parent's prior is not needed as an input if the union carries it, which keeps the actor a single network/model over raw-ish features.

@@ -6,6 +6,7 @@ fixed in P-hinata-03 §"Full-row refit (D-064 §C)" before any full-row fit. TRA
   trees --arm A1|A3|A4|A5 --dir <shard dir> --run <run dir> [--sizes 400,800] [--budget s] [--threads N]
   cnn   --dir <shard dir> --run <run dir> [--max-epochs 40] [--patience 3] [--threads N] [--budget s]
   trees ... --team <id>   rev 3 (D-068 §5): one teacher team's rows only (single-team prior), series5 folds over its series
+  trees ... --fold f0..f4 rev 4 (D-069 §B): fit one fold model only (one learn job ≈ one fold); rerun without --fold to score
   rows  --dir <shard dir> --out <json>        support + oracle share per teacher and per map (no fit)
 
 Loading: per shard, columns projected to keys + metadata + the arm's features; refusals as r2_bc.load (split must be 'train',
@@ -165,6 +166,8 @@ def trees(a):
         if not te.any() or te.all():   # rev 3: a one-team run can leave a fold without test (or training) series
             continue
         fk[te] = k; mf = run / f'model_{k}.txt'
+        if a.fold is not None and k != a.fold:   # rev 4 (D-069 §B): one fold per learn job; scoring needs a run without --fold
+            continue
         if not mf.exists():
             if time.time() - t0 > a.budget:
                 print('budget reached; rerun to resume'); return
@@ -173,10 +176,14 @@ def trees(a):
             # feature_fraction's draws: parity check 22:58Z). Peak = int16 store + this float32 training copy.
             b = lgb.train(P_, lgb.Dataset(rowsx(tr), y[tr], weight=np.ones(len(tr))), num_boost_round=rounds)
             b.save_model(str(mf)); print(f'{mf.name} {time.time() - t0:.0f}s peak {peak_gib()} GiB', flush=True)
+        if a.fold is not None:
+            continue
         b = lgb.Booster(model_file=str(mf)); ti = np.flatnonzero(te)
         for s in sizes:
             Ps[s][ti] = np.concatenate([b.predict(rowsx(ti[i:i + 100000]), num_iteration=s) for i in range(0, len(ti), 100000)])
             nbytes[s] += len(b.model_to_string(num_iteration=s).encode())
+    if a.fold is not None:
+        print(f'rev 4: fold {a.fold} only ({"fitted" if (run / f"model_{a.fold}.txt").exists() else "absent"}); no scoring', flush=True); return
     if getattr(a, 'final', False):   # rev 3 (D-068 §5): deploy model = refit on every row of the run at max(sizes), after the CV
         mfa = run / f'model_all_{rounds}.txt'
         if not mfa.exists():
@@ -285,7 +292,12 @@ def main():
     ap.add_argument('--threads', type=int, default=int(os.environ.get('ASAHI_MAX_WORKERS', '1'))); ap.add_argument('--budget', type=float, default=1e9)
     ap.add_argument('--final', action='store_true', help='rev 3: after the CV, refit on all rows (deploy model model_all_<rounds>.txt)')
     ap.add_argument('--team', help='rev 3 (D-068 §5): fit and score one teacher team only (series5 folds over its series)')
-    a = ap.parse_args(); {'trees': trees, 'cnn': cnn, 'rows': rows}[a.cmd](a)
+    ap.add_argument('--fold', choices=[f'f{i}' for i in range(5)], help='rev 4 (D-069 §B): trees only; fit this one fold model and exit '
+                    '(no scoring, no --final); a later run without --fold loads the five models and scores; the manifest is unchanged')
+    a = ap.parse_args()
+    if a.fold is not None and (a.cmd != 'trees' or a.final):
+        raise SystemExit('refused: --fold is for trees without --final')
+    {'trees': trees, 'cnn': cnn, 'rows': rows}[a.cmd](a)
 
 
 if __name__ == '__main__':
