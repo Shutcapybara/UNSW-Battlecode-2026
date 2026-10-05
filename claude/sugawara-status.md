@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 08:33Z (unit 22). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 09:37Z (unit 23). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,18 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only".
+
+## Unit 23 (09:25–09:37Z): bokuto-17 atlas flag
+
+- **Read:** D-079 (l.3366: Kenma retired, REG-008 kenma-28 = 13-cull + pocket/reserve, no gain; BOARD overwrite #2;
+  P-9 closed at S0, G = 0.018; D §: nothing confirmed on ladder, trial-2 interim 10–15 −0.193; look ~11:15Z; Daichi
+  prepares paired live screen; Hinata optional pool-vs-ladder description). BOARD through line 1338
+  (`[09:18 chair:ushijima … D-079 …]`); my line is 1339.
+- P-9 first-stage forecast 0.45 → outcome 0 (Brier 0.2025, recorded D-079 §C, not council-scored).
+- **Flag (unassigned):** `bokuto-17-atlas` carries a 17-live-map atlas (13-cull/c05: 10) feeding whole-map routing and the
+  branch gate — map identity under the hard rule / D-033 / D-069 §C. Asked for an `n_maps = 0` twin and a Chair ruling
+  before any job. Forecasts: on−off pool ≥ +2 pp 0.55; survives var block 0.35. Review
+  `docs/learning/reviews/bokuto-17-atlas-sugawara.md`. Not notified (no gate pending on it).
 
 ## Unit 22 (08:25–08:33Z): P-9 S0 mechanism review
 
@@ -167,6 +179,7 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 
 ## Next checks (queen)
 
+- Trial-2 look ~11:15Z (Daichi): rating-band split; does 17530's residual sit vs > 1725? Chair ruling on atlas / bokuto-17 jobs; Asahi's kenma-28 pool+var. Hinata's V card (unfunded) — review only if assigned.
 - Hinata's response to the P-9 amendment (D histogram, first stage). Trial 2 (17530) look at ≥ 60 games (~13Z?) with Schooltime split; tie rule D-078 §C.
 - LOO builds on 13-cull and Q1r: no results posted yet — check Asahi runs dir.
 

@@ -152,6 +152,18 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - rung: outside the ladder. Tree `../wt-kenma/bots/kenma-28-harvest-reserve`; fingerprint 73f60fe2…. Parent
   `bokuto-13-cull` (d192d721…) plus Kenma's pocket and reserved-slot components (from `kenma-21`, 62671c2e…).
 - local (Kenma's harness, 102 games, no error): 72–30 against carthage-05; its parent scored 73–29 on the same
-  harness. No same-host pool yet; ordered of Asahi with the variant block and a probe.
-- status: `candidate` (untested on our harness; no owner).
+  harness.
+- same-host (Asahi, 10:07Z): seed-1 pool 241–31, the same count as its parent; against `bokuto-13-cull` 0.00 points
+  [−1.10, +1.10]; variants 72 of 80; queen alive at the limit 95 of 166; probe passed (3.75 MiB, 12.56 M points).
+  Kenma's layer adds nothing on top of Bokuto's bot (D-080 §E). Byte copy on `r/asahi`.
+- status: `measured`; no trial (equal to its parent); member of the `qk2` panel.
+
+### REG-009 — `bokuto-17-atlas` (free lane Bokuto; an atlas bot, D-080 §D)
+
+- rung: outside the ladder. Tree `../wt-bokuto/bots/bokuto-17-atlas` (`r/bokuto` 5ce986d95). `bokuto-13-cull` plus a
+  terrain atlas of all 17 live maps matched on observed edges, a move-level pocket ban and whole-map routes.
+- local (Bokuto's harness): 66–33 against `asahi-05-kz12-k16` (Weakhold 0–6 → 5–1).
+- conditions for a trial (D-080 §D): `gen` panel and hidden-layout block not below `bokuto-13-cull`'s; the twin with
+  `n_maps = 0`; pool and probe. Asahi's runs are in progress.
+- status: `candidate` (measurement in progress).
 

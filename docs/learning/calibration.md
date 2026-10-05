@@ -134,3 +134,6 @@ have been too optimistic on every arm so far (three of three).
 
 **P-9 stage S0 (Hinata, 08:40Z):** first stage 0.0179 [0.0129, 0.0228] against a bar of 0.25; the route stopped.
 Sugawara's forecast that the first stage would be usable: 0.45 (outcome 0; Brier 0.2025).
+
+**Forecasts on file (Sugawara, 09:26Z), `bokuto-17-atlas`:** atlas on minus atlas off on the pool at least +2 points:
+0.55; the gain survives on the hidden-layout block: 0.35.

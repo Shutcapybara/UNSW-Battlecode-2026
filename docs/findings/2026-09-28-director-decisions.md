@@ -3432,3 +3432,80 @@ The lead does not care about the live rating and asks for the technical issues t
   `bokuto-13-cull` and `kenma-03-pocket-queen` against 14585 on six opponents, two near our rating, two near 1900
   and two of the top ten, sized from the field quota. At the look Daichi also splits both trial windows by
   opponent rating (above and below 1725).
+
+## D-080 — Why the local gain is not carrying: the queen race after round 100; the clone-prior line is paused; a ruling on map atlases (5 Oct 2026 10:18Z, Chair: Ushijima)
+
+### A. Two independent reads of submission 17530's ladder games agree
+
+- **Bokuto (fresh session, 30 ranked games, 09:32Z).** On the ladder the queen is alive at round 100 in 67 % of
+  games, at round 200 in 50 %, at the end in 17 % (the pool: 58 %). When both queens live we lose the length race
+  (Australia 11 against 38). Census of 6,479 ranked games between sides rated at least 1650: at the round limit,
+  with the enemy queen alive, a queen 1–3 long wins 45 % and a queen 26 or longer wins 75 %. The top teams hide
+  the queen at length 2–3 until round 250–300 and then feed her to 30–60 and more. `bokuto-13-cull` starts feeding
+  at round 400–430 and ends with a queen of 3–13.
+- **Hinata (P-hinata-06, card frozen before reading; 40 games).** In its losses 17530 is ahead at round 100 (27.8
+  units against 21.0); the losses end late (mean round 460); 52 % of them are by the queen rule, against 34 % for
+  14585; 9 of its 12 losses to teams below 1725 are by the queen rule. Against teams at 1725 or above it lost 9 of
+  10 (two teams); below 1725 it loses no more often than 14585.
+- **Reading.** The local pool rewards the economy at round 100, which this bot has, and has no opponent that keeps
+  and feeds a queen. The ladder is decided between round 100 and the end by the queen's survival and her length.
+  This is the lead's point of D-067 in concrete form: behaviour has to change with the phase of the game, and the
+  phase that matters is the last 200 rounds.
+- The matched comparison of P-hinata-06 (the reference re-weighted to the trial bot's opponents, series bootstrap)
+  becomes a standing column of every trial look; Hinata computes it with the method as frozen.
+
+### B. Consequences for building and measuring
+
+- **Target for the next candidates:** the queen alive and long at the round limit: hidden early, fed from about
+  round 250–300. Bokuto is building `bokuto-18` on this (no blind dives, no single-exit cells, no reliance on a
+  rescue split, feeding from about round 280).
+- **Asahi adds to every card:** our queen alive at rounds 100, 200, 300 and at the end; both queens' length at
+  the end; results of games in which both queens are alive at the limit. And a second keeper panel, `qk2`: the 17
+  maps × both seats against `bokuto-13-cull` and `kenma-28-harvest-reserve`, the two local bots whose queens survive.
+- **Kageyama builds the curve table** from the ranked corpus: by round (every 25 rounds) units, total length,
+  queen alive and queen length, for our submissions 14585, 17388 and 17530 and for their opponents, split by
+  opponent rating (below 1725, 1725–1900, above 1900) and for the top ten among themselves. It is the lead's
+  earlier proposal (summary curves, find where and when we fall behind), which the Chair had left open; it is
+  ordered now as a data product because today's clearest diagnosis came from exactly this kind of reading. The
+  cards' format is otherwise unchanged. The lead may strike this.
+- **Sugawara:** the layer removal on `bokuto-13-cull` is read on the keeper panels, not the pool, for the reason in
+  §A. The Chair asks the queen owner to support Bokuto's build with the feeding analysis (when the top teams
+  start, how many feeders, where the queen sits), not to build a competing bot. Sugawara decides.
+
+### C. The clone-prior line is paused now
+
+- Five arms are in, all 6 to 14 points below the live prior. The sixth (A1 on the full rows at λ 1.76) is
+  cancelled: its export has not arrived, and both forecasts put it below the bar (0.12 and 0.15). D-077 §E's
+  pause takes effect with this record. Hinata is not filing the self-play value card.
+- Kept for a later restart: the encoder with its C++ twin, the teacher rows, the slot bots, the trajectory block.
+  Hinata's own lesson is recorded: to learn a decision from logs, randomise at the last gate before the action
+  or log that gate's inputs.
+
+### D. Ruling: map atlases in free-lane bots
+
+- Sugawara flags that `bokuto-17-atlas` carries the terrain and bed classes of all 17 live maps and selects one by
+  matching observed edges: map identity. carthage-05 and `bokuto-13-cull` already carry such an atlas for 10 maps.
+- **Ruling.** The rule against map identity binds learned features and artifacts on the ladder of rungs. It does
+  not bind free-lane bots: their prompt allows map-specific work at their own risk, and the measure is the contest
+  ladder, which plays these maps. An atlas bot may be measured and may be put on trial.
+- **Conditions for a trial of any atlas bot:** Asahi's `gen` panel (29 maps the atlas does not know) not below
+  `bokuto-13-cull`'s on the same panel (paired 5th percentile above −5 points); the hidden-layout block not below
+  `bokuto-13-cull`'s; and Sugawara's twin with the atlas switched off (`n_maps = 0`), so that the card shows how much
+  of any gain is the atlas. Asahi builds the twin as a copy. Cards of atlas bots say that they are.
+- Suggested to Bokuto, not ordered: carry Kageyama's hidden bed lists in the atlas and drop a layout at the
+  first pearl that contradicts it; four of the five hidden layouts share their template's terrain.
+
+### E. Other results and housekeeping
+
+- `kenma-28-harvest-reserve` on our harness: 241–31, the same count as its parent; against `bokuto-13-cull` 0.00
+  points [−1.10, +1.10]; probe passed. Kenma's layer adds nothing on top of Bokuto's bot. No trial.
+- Kenma's tree has no uncommitted work; its branch `r/kenma` was local only and is pushed with this unit. Byte
+  copies of `kenma-03`, `kenma-21` and `kenma-28` are on `r/asahi`.
+- **Bokuto's fresh session works** (started by the lead; shell, commit 5ce986d95 on `r/bokuto`). The job route is
+  one BOARD line to Asahi: `JOB <bot folder> : <pool | probe | gen | h2h vs <bot>>`, up to two an hour.
+- **The paired live screen is not dispatched.** Daichi's draft: 360 games for a half-width of about 0.09, 720 for
+  power 0.8 at a difference of 0.10, at about 20 games an hour, with a temporary activation for every game of an
+  inactive arm. A ladder trial gives the same game rate without the switching, and the matched comparison of §A
+  recovers most of the pairing. The draft is kept.
+- Trial 2 at 45 ranked games (Daichi, 09:55Z; not the look): 21–24, −0.087 [−0.178, +0.020]. The end rule is
+  applied at the look.
