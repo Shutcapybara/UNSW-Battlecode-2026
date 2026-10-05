@@ -103,8 +103,9 @@ def run(fx, args, bins, out):
         if old_log.exists():
             old_log.rename(attempts/f'{key}.{stamp}.log')
     a, b = (args.bot, fx['opp']) if fx['seat'] == 'A' else (fx['opp'], args.bot)
-    replay = args.keep_replays and fx['map'] in ('live/schooltime', 'live/weakhold')
-    cmd = [str(MAIN/'.venv/bin/unswbc'), 'run', '--seed', str(fx['seed']), '--no-logs', '--no-indicator', '--no-draw']
+    replay = args.keep_replays and (getattr(args, 'logs', False) or fx['map'] in ('live/schooltime', 'live/weakhold'))
+    cmd = [str(MAIN/'.venv/bin/unswbc'), 'run', '--seed', str(fx['seed']), '--no-indicator', '--no-draw']
+    if not getattr(args, 'logs', False): cmd += ['--no-logs']
     cmd += ['-o', str(out/f'{key}.replay')] if replay else ['--no-replay']
     cmd += [str(ROOT/'maps'/f"{fx['map']}.map"), bins[a], bins[b]]
     start = time.time()
@@ -136,6 +137,7 @@ def main():
     ap.add_argument('--seeds', default='1,2,3'); ap.add_argument('--jobs', type=int, default=3)
     ap.add_argument('--name', required=True); ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--keep-replays', action='store_true')
+    ap.add_argument('--logs', action='store_true', help='retain activation logs in diagnostic replays')
     ap.add_argument('--retry-errors', action='store_true', help='rerun failed fixtures, preserving previous attempt records')
     args=ap.parse_args()
     assert 1 <= args.jobs <= 4
@@ -146,6 +148,7 @@ def main():
     sources={b:ROOT/'bots'/b for b in [args.bot]+opponents}
     manifest=dict(bot=args.bot, fingerprints={b:fingerprint(p) for b,p in sources.items()}, fixtures=fixtures,
                   engine=subprocess.check_output([str(MAIN/'.venv/bin/unswbc'),'--version'],text=True).strip(), compiler='clang++ -O2 -std=c++20', sandbox=False)
+    if args.logs: manifest['logs']=True
     print(json.dumps(dict(fixtures=len(fixtures), workers=args.jobs, output=str(out), fingerprints=manifest['fingerprints'])), flush=True)
     if args.dry_run:
         return

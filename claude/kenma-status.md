@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: ACTIVE. Updated 2026-10-05 02:02 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. No server access, submission or ladder request.
+State: ACTIVE. Updated 2026-10-05 02:54 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. No server access, submission or ladder request.
 
 ## Provisional best
 
@@ -24,10 +24,13 @@ All completed Carthage screens below use 102 games: 17 ranked maps × both seats
 | 04 keeper-action | Queen-only seven-class keeper clone from round zero | 50–52 | Rejected |
 | 05 post-opening-keeper | Same clone starts at round 25 | 54–48 | Rejected versus 03; Weakhold 0–6 |
 | 06 pocket-space | 03 plus exact Asahi K16 space-filter sources | 57–45 | Not selected; Weakhold +2 wins offset by three losses elsewhere |
-| 07 keeper-moves-parent-splits | 04 with learned movement but all parent SPLIT decisions preserved | Running | Full Carthage102, one worker |
+| 07 keeper-moves-parent-splits | 04 with learned movement but all parent SPLIT decisions preserved | 51–51 | Rejected versus 03 |
 | 08 lossless-direction | 03 with reversible 32-bit model node storage | Equivalent control | Native parity and four sandbox games passed |
 | 09 learned-donors | 08 plus teacher-306 nonqueen cull classifier | Running | Full Carthage102 after clean zoo completion |
-| 10 short-queen-orbit | 08 plus observed empty four-cell cycles for length-2/3 queens | Unmeasured | Sanitized multi-turn checks passed; full screen queued after 07 |
+| 10 short-queen-orbit | 08 plus observed empty four-cell cycles for length-2/3 queens | Cancelled | Freshness test repeated a memory convention error; attempts retained |
+
+| 11 current-view-orbit | Fix freshness to round+1; activation logs | Smoke 2–2 | Zero activations: no-bed encoding still wrong; frozen |
+| 12 observed-empty-orbit | Require observed no-bed value -1 | Running smoke | Real protocol parser/sense test activates; sanitizer checks passed |
 
 Outputs for completed screens: main build/kenma/kNN-v-carthage-s123/. Kageyama output k03-v-kageyama-s123/. Current sequence after-k05 verified the complete Kenma 05 result, finished the seed-5 probe, then launched Kenma 06; main build/kenma/after-k05.progress.log. No additional games should start until the current two-worker resource allocation has room.
 
@@ -41,9 +44,9 @@ Queen clone training: 26,820 oracle queen turns from keeper teams; action accura
 
 ## Remaining work and bounds
 
-03 pool completed 220–52; investigate the six-win deficit to the supplied reference before any promotion. 06 completed 57–45 with zero errors. Test 07; meter 08. Any stronger candidate gets direct comparison against 03, full Kageyama/other posted free-lane/pool scorecards and exact-source deployment checks. Preserve seeds **11–13 and new maps** for independent confirmation before a ladder request; none used yet.
+03 pool completed 220–52; investigate the six-win deficit to the supplied reference before any promotion. 06 completed 57–45 with zero errors. 07 finished 51–51; 08 metering passed. Test orbit activation before a full 12 screen. Any stronger candidate gets direct comparison against 03, full Kageyama/other posted free-lane/pool scorecards and exact-source deployment checks. Preserve seeds **11–13 and new maps** for independent confirmation before a ladder request; none used yet.
 
-Nice 15; currently **two** games total (Kenma 09 1, Kenma 07 1), maximum four. Guard at 5 GiB aggregate lane RSS to stay below 6 GiB. Initial 05 two-worker start and later overlapping Ouroboros zoo games hit 5.03/5.06 GiB guards; those interrupted attempts were archived and retried, not counted as bot losses. Two-game concurrency since then. Fresh engine each game; source/fixture manifests pinned; actual engine version logged (unswbc 1.2.3), clang++ -O2 -std=c++20 required by current helper. Resume with --retry-errors only after verifying the previous process terminal. Retry regression passed.
+Nice 15; currently **two** games total (Kenma 09 1, Kenma 12 smoke 1), maximum four. Guard at 5 GiB aggregate lane RSS to stay below 6 GiB. Initial 05 two-worker start and later overlapping Ouroboros zoo games hit 5.03/5.06 GiB guards; those interrupted attempts were archived and retried, not counted as bot losses. Two-game concurrency since then. Fresh engine each game; source/fixture manifests pinned; actual engine version logged (unswbc 1.2.3), clang++ -O2 -std=c++20 required by current helper. Resume with --retry-errors only after verifying the previous process terminal. Retry regression passed.
 
 All generated outputs stay in main build/kenma (currently about 0.53 GB); 30 GB ceiling, 40 GB disk floor (about 256 GiB free). Never change measured runtime snapshots. Baseline small reference panel versus Hunter V20 was 6–2, both losses Weakhold, zero errors.
 
@@ -62,3 +65,5 @@ Kenma 06 early replay evidence: both Weakhold seed-1 games won; queen survives A
 2026-10-05 02:36 UTC: 03 zoo final 220–52, zero errors; full required local scorecard complete (Carthage 58–44, Kageyama 61–41, pool 220–52, deployment pass). No independent reserved-seed validation yet, and no ladder request given the pool deficit. after-zoo verified 272 clean fixtures and started 09. Reference audit confirms the same 8-bot roster, 17-map list and parent runtime fingerprint; compiler flags both C++20/O2. Current host Python bot interpreter is /usr/bin/python3 via toolkit selection, so cross-host runtime differences remain possible but unproven. Need same-host parent diagnostic on Schooltime/UNSW/Australia/Maze to distinguish this from the reserve behavior.
 
 Baseline audit: both worktree and main map/roster hashes are 39961c55d0e6, matching the supplied Asahi reference. Current Python bot interpreter is /usr/bin/python3 3.9.6. The reference's parent map totals on the four diagnostic maps are Schooltime 14/16, UNSW 14/16, Australia 14/16, Maze 15/16 (57/64); Kenma 03 totals 15+9+11+14 = 49/64. A 64-game same-host Carthage diagnostic is dry-run-previewed and queued after exact after-zoo PID 36086 / clean Kenma 09 completion. This is a post-result mechanism/portability check, not a new independent strength test. Main build/kenma/after-k09.progress.log and parent-pool-diagnostic-s1/.
+
+2026-10-05 02:54 UTC: Kenma 07 finished 51–51, zero errors; rejected. Kenma 10 trial was cancelled after freshness mismatch was found; source, fixture attempts and cancellation audit retained. Kenma 11 fixes freshness but its four-game real activation smoke (Weakhold/Australia, both seats, seed 1) finished 2–2 with zero activations: World encodes observed no-bed as -1, not 0. Both drafts are frozen. Kenma 12 corrects bed==-1 and explicitly rejects unknown bed=0. Test now constructs a protocol block and calls the actual helper parser and World::sense before requiring activation, then covers 80 persistent simulated turns and hazard guards under ASan/UBSan. Test fixtures v10/v11 retained for audit. Real smoke running; do not start a full screen without activation evidence. Panel --logs enables diagnostic logs and retains every selected map replay when --keep-replays is set; default manifest/output behavior preserved, retry regression passes. Kenma 09 approaching completion; after-k09 still queues the same-host parent64 diagnostic on clean completion.

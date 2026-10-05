@@ -5,3 +5,5 @@ Parent: kenma-04-keeper-action. The only runtime change is in kenma_action.hpp: 
 Hypothesis: Kenma 04 scored 50–52 versus Carthage despite improved queen survival in retained Weakhold replays. The learned controller's rare split actions may suppress opening expansion. This variant separates movement imitation from split control without adding a time cutoff.
 
 Status: prepared, unmeasured. Full 102-game Carthage screen required before calling an improvement. Exact-source deploy checks and Kageyama/pool checks required if this becomes best. Reserved seeds 11–13/new maps untouched.
+
+Completed Carthage screen: **51–51/102**, all 17 ranked maps, both seats, seeds 1–3; zero errors. Rejected versus Kenma 03 (58–44). Exact fixture results and map breakdown: main build/kenma/k07-v-carthage-s123/score.json. No reserved validation used.
