@@ -78,7 +78,7 @@
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct 04:43Z; device shell works)
+## Now (5 Oct 04:53Z; device shell works)
 
 1. **D-068 §C items 1–4 complete** (`docs/learning/results/asahi/D068-summary.md`): A1 λ1 −13.60 [−19.49, −8.09];
    no prior −13.05; A1 λ1.41 −5.88; paired λ1.41 − λ1 +7.72 [+2.94, +12.52] (H-SZ74 holds); A1 λ1 − no prior −0.55;
@@ -87,8 +87,8 @@
    met); queen-decided 13–4 vs 0–5; queen alive@RL 15/147 (Schooltime 14/14); costs Australia −18.75, UNSW −31.25.
 3. **Learn env fixed:** every learn job failed at `import lightgbm` (no libomp on the Mac). jobd now sets
    DYLD_LIBRARY_PATH to torch's lib for learn jobs (reloaded 04:41Z, `lgbcheck.py` passes); Hinata's ten jobs re-queued.
-4. Running: bokuto-04 pool (2008) → cards 20093/20094 → commit 20095 → learn queue (015 team 213 first). Then request
-   push of r/asahi.
+4. **bokuto-04-queen pool:** 226–46; vs c05 +0.00 [−5.15, +4.78]; vs k16 −2.57 [−7.35, +2.21] (D-070 §D not met);
+   queen-decided 42–4; queen alive@RL 44/189 on 11 maps; econ~ −6.29. hinata-015 running (04:51Z); push requested 04:53Z.
 5. Watch for: single-team prior exports; accepted `maps/live_var/` variants; Sugawara's queen switches on k16.
 6. No hand-rule work (D-059).
 
@@ -97,7 +97,7 @@
 - **Daemon:** `tools/asahi/jobd.py`, native on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
   `build/asahi/queue/` first, then the main checkout's `build/learn/queue/`. Restart if down:
   `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
-  Last job id used: 20095 (2007a reload, 2007b lgbcheck). Held jobs live in build/asahi/hold/.
+  Last job id used: 20096 (2007a reload, 2007b lgbcheck). Held jobs live in build/asahi/hold/.
 - BOARD lines go to the MAIN checkout's `docs/hub/BOARD.md` with `>>` only; never commit BOARD.md on r/asahi.
 - Session disk was reset ~04:00Z (D-073); still keep little in the session home.
 - `throughput.py` must recycle processes (wasmtime stores leak address space per game).
