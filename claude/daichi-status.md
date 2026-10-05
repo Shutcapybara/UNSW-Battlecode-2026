@@ -7,61 +7,38 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 19, 2026-10-05 ~05:12Z)
+## Top — read this first (unit 20, 2026-10-05 ~05:57Z)
 
-- **Last BOARD line read:** 1212 (kenma 05:08Z). Posted 1213 (D-052 §B rollback) and 1214 (Kenma trial start + D-073
-  checks), 05:11Z. Next unit reads from 1215.
-- **LIVE = 17388 (`kenma-03-pocket-queen`, LV-kenma-03-pocket-queen-c5d2ff46-ai) — D-074 §B TRIAL, not a promotion.**
-  Uploaded 05:00:14Z (activate → 409 "only a ready version" while compiling); the server auto-activated it on ready,
-  first ranked series 05:02Z; my second activate confirmed 05:04:23Z. Trial window = 17388 ranked games from 05:02Z;
-  anchor = our rating at ~05:00Z (≈1605, rank 120 at 04:47Z snapshot). Restore target after the trial: **14585**.
-- **16979 rolled back (D-052 §B fired):** 45 ranked / 9 series (44 with E); diff vs 14585 last 120 = −0.263, 95th
-  −0.126; restore.done 04:53:55Z, active 14585 re-read 04:58:10Z. Queen column 16979: queen W–L 1–14, queen alive at
-  end 4/44, 0 faults. User notified (rollback, and the trial upload/activation).
-- Registration: build/daichi/stage/kenma-03-pocket-queen (extracted from build/kenma/deploy zip sha e98718a5; runtime
-  fp e60733a926fc recomputed equal; manifest legacy_none contract; hub fp c5d2ff46ce14).
-- **D-073:** hub redeployed 04:06Z; redeploy ban lifted. Verified: index blinding (opponent bot_a/bot_b = ""; ours kept,
-  so attribution of our own sub still works). Not yet exercised: upload-fix restore path, reserve 5. **Owed (Daichi, no
-  ban):** seat field in live-screen job rows, end reason `queen` in executor.analyse_replay, frozen pairing rule for
-  duplicate cells (D-070 §B), then redeploy via request_redeploy.py.
-- Keeper: blocked since 04:31Z on tracked tools/learn/__pycache__ (git add of ignored path). Unit 18 push confirmed
-  (r/daichi 236d2d224 = origin). Run main-checkout code with PYTHONDONTWRITEBYTECODE=1.
-- No API/quota errors in *.done.json. status.json refreshes only every ~10 min (stale reads possible).
+- **Last BOARD line read:** 1225 (my own D-075 §B(1) line, 05:5xZ; 1224 = Asahi's bokuto-04 probe OK). Next unit reads from 1226.
+- **LIVE = 17388 (`kenma-03-pocket-queen`), D-074 §B / D-075 §B TRIAL 1, not a promotion.** First ranked series 05:02Z.
+  Interim at 25 games / 5 series: score − E @1725 +0.075 [−0.061, +0.219], perf 1782 [1679, 1884]; vs 14585's last 120
+  before 02:13Z +0.118 [−0.047, +0.315]. Queen alive at the end 0/25, queen-rule 0–2, 0 faults. Elo 1767, rank 78 (05:50Z).
+- **Anchor correction (posted):** ladder rating went 1605 (04:47Z) → 1721 (04:58Z, after restore to 14585) → 1702 → 1778 → 1767;
+  the server rating follows the active submission, so the activation anchor is 1721 ≈ the fixed 1725.
+- **D-075 orders:** primary statistic = mean(score − E) with our rating fixed at 1725, series bootstrap 5/95, plus perf rating
+  and the activation-anchor figure for every window: `python3 build/daichi/tree/tools/daichi/trial_d075.py --ref
+  14585:2026-10-05T02:13:00Z:120 --sub 17388 [--sub <bokuto id>] [--maxgames 60]` (PYTHONDONTWRITEBYTECODE=1).
+  Trial 2 = `bokuto-04-queen` directly after trial 1 (no return to 14585). Then control: restore 14585, read its next 60
+  with the same statistic vs its own last 120 before 02:13Z. End rule: highest primary statistic without fault becomes the
+  incumbent; a lead < 0.03 over the control keeps 14585. Registry REG-005 (kenma-03), REG-006 (bokuto-04).
+- **Trial 2 ready:** Asahi's deploy probe OK (BOARD 1224: zip 3,928,551 B, max 12.86 M pts/turn, first turn 12.47 M, 0 errors,
+  runtime ff68a709). Byte copy in build/daichi/stage/bokuto-04-queen (tree sha256 3e31f947… = source; fingerprint recomputed
+  ff68a7093aa3e5f6… = source). The copy includes `.unswbc-build/` and `.gitignore`: exclude build output from the
+  registration (as for kenma-03, use the zip `unswbc submit` builds, or register the source files only).
+- D-073 owed code items unchanged (seat field, end reason `queen`, frozen pairing rule, then redeploy).
+- No API/quota errors in *.done.json.
 
 ## Next unit
 
-1. Read BOARD from 1215.
-2. Run live_monitor (active should be 17388; anything else = human activation → pause, tell Chair + user) and
-   `sidescan2.py --sub 17388` (any TLE / caught error / DQ → end trial at once: restore.json
-   {"previous":14585,"candidate":17388,...}, BOARD, PushNotification).
-3. **Trial look at the first series boundary at or after 60 ranked games of 17388** (~08:00Z at 5 games / ~17 min):
-   score − E with rating fixed at activation, series bootstrap 5/95, vs 14585 last 120 and vs 16979's 45-game window;
-   queen alive at end, queen-rule W–L, table by map. Then restore 14585 (restore.json), confirm, BOARD, notify user.
-   rollback_d052.py is written for previous→live; add a `--ref`/`--new` option or a small trial script.
-4. D-073 code items (seat field, end reason queen, frozen pairing rule) in the tree; tests in $HOME/daichi-test; redeploy.
-5. Bokuto-07 trial follows Kenma's once the Chair confirms Bokuto's points-per-turn + pool panel.
-
-## battles.json — what it does
-
-Request: `{label, by, decision, note, arms:[{submission}|{candidate}], opponents:[ids], maps:[names]|omit, seats:"both",
-games_per_pair:2, max_games, deadline_hours}`; actions `enable` / `disable` (need `decision`) and `cancel`.
-Answer: `battles.done.json`. Job state and per-game rows + paired report: `hub-state/battles/<job>.json`, index
-`hub-state/battles/index.json` (refreshed every 5 min).
-- Units = one opponent × a chunk of ≤ 5 maps × every arm, back to back (arm order shuffled per unit); `seats: both`
-  posts the chunk twice in the D-022 rotation, so each map is played at both id parities (layout = f(map, parity)).
-- Every POST goes through `executor.request_batch`: reserve → temporary activation of a non-live arm → POST →
-  restore. A non-live arm is never dispatched in the even-hour blackout (−8/+12 min) or while one of our ranked series
-  is in flight. A whole unit must fit the pool's rolling-hour allowance minus a reserve (field 10, dev 5) and ≤ 40
-  games per 5-minute pass. A lost restore is repaired before any dispatch.
-- A job pauses when the live submission differs from the one it was accepted under (human activation), and expires
-  at its deadline. Games are harvested by the executor's own harvest (runs in shadow mode too), `block_id = job:<id>`;
-  the collector watches team 7, so replays also land in `public_replays/corpus`.
-- Paired report: candidate − reference by (opponent, map, parity); missing/unverified cells dropped and counted;
-  cluster bootstrap over opponents, 1,000 resamples, seed 7, 5th/95th percentile.
-
-**Budget arithmetic:** a full LIVE_MAPS_M2 screen, 2 arms × 17 maps × 2 seats = 68 games per opponent. At the field
-allowance (60/h, minus teammates and reserve) that is ~1 opponent per hour; 60 matched pairs need ~2 opponents ≈ 2–3 h.
-Dev opponents (545, 752) have their own 60/h.
+1. Read BOARD from 1226. Run live_monitor (active must be 17388 until I switch) and `sidescan2.py --sub 17388`
+   (any TLE, caught error or DQ ends the trial at once).
+2. **Trial-1 look** at the first series boundary at or after 60 ranked games of 17388 (~08:00Z): trial_d075.py with
+   `--maxgames 60`; queen column + map table from sidescan2. Post it. Then directly register (REG-006) and upload+activate
+   bokuto-04-queen from the stage copy (submit.json; expect a 409 while compiling, the server auto-activates when ready);
+   re-read status.json active; BOARD; PushNotification (upload/activation).
+3. Trial 2 look at its 60-game boundary (~11:00Z), then restore 14585 (restore.json candidate = Bokuto's submission id),
+   control 60 games (~14:00Z), apply the end rule, post, notify.
+4. D-073 code items; tests in $HOME/daichi-test; redeploy.
 
 ## Open questions for the Chair
 
@@ -69,6 +46,7 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Units
 
+- 2026-10-05 ~05:57Z unit 20 — read BOARD 1213–1224, D-075. trial_d075.py written; 17388 interim 25 games +0.075 @1725; anchor correction; bokuto-04 staged + fingerprint verified; BOARD 1225.
 - 2026-10-05 ~05:12Z unit 19 — read BOARD 1180–1212, D-073, D-074. D-052 §B fired on 16979 (−0.263, 95th −0.126)
   → restored 14585 04:53Z; registered + uploaded kenma-03 (17388), live 05:02Z as the D-074 trial; BOARD 1213–1214; user notified.
 - 2026-10-05 ~03:55Z unit 18 — read BOARD 1160–1178, D-070, D-071. 16979 29/40 ranked, interim diff −0.263
