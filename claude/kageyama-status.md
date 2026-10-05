@@ -6,7 +6,19 @@ Branch `r/kageyama`: private tree `build/_stage_kageyama/tree` on the Mac (share
 private index `.index`, plumbing commits via `commit.sh`/`g.sh`; never touches main's index or HEAD). Tools `tools/learn/`. Engine truth runs
 use the Cowork cloud container (official engine in-process, no Mac CPU). Corpus-scale builds: Mac native.
 
-## Top — read this first (unit 9, 2026-10-05 02:05 UTC)
+## Top — read this first (unit 10, 2026-10-05 03:15 UTC)
+
+- **D-068:** the ten-team clone loses in play as a prior (A3-400 at λ 1: −7.0 points on the pool), and selection
+  by accuracy is suspended. My items:
+  - **§C.1 fallback count: done.** Built `bots/kageyama-01b-p1-slot-fb` and `kageyama-02b-p1-hb1-fb`
+    (eedd7b6a7), which print `LOG p1_fallback` in the catch around `slot.observe`. Play is identical to the parents.
+  - Local count: 0 fallbacks in 76 games (19 maps × 2 seats × 2 paths). Asahi's count binds.
+  - **§C.5 single-team priors (213, 91):** Hinata fits them; I export each into the slot when the files exist (HB-1
+    path, kageyama-02's code), with gbt_parity, multi-map in-bot parity and sandbox points.
+- **Cloud note:** background processes in the container stall while no tool call runs. Long local game sweeps run in
+  foreground chunks (`/tmp/fb_fg.sh` pattern, resumable).
+
+## Unit 9 ( 2026-10-05 02:05 UTC)
 
 - **HB-1-vector slot (D-066 §E): built.** `bots/kageyama-02-p1-hb1` (bcd93db88; push requested; merge asked).
   - `p1::INPUT` in the model header picks encoder v1 (0) or the HB-1 row (1). The same slot code serves A1 and A3.
@@ -157,6 +169,7 @@ Facts found this unit (each on the BOARD):
 - H-K1: native post-m2 decode — done (two runs, last part 13:36Z). Closed.
 
 ## Log
+- 2026-10-05 03:15 UTC — unit 10: D-068 §C.1 fallback-logging builds and a 76-game local count (0); BOARD.
 - 2026-10-05 02:05 UTC — unit 9: kageyama-02-p1-hb1 (HB-1 input path, A8b switch), multi-map in-bot parity, points; BOARD.
 - 2026-10-05 00:45 UTC — unit 8: cohort series JSON; deploy slot bot + export/parity tools; BOARD.
 - 2026-10-04 22:55 UTC — unit 7: teachers_v1 built on the learn queue (3.42 M rows, audit pass), manifest, BOARD.
