@@ -59,6 +59,9 @@ Nishinoya also gave P(LS-1 shows harm) 0.10 and P(live Weakhold gain ≥ 10 poin
 **Author's forecasts, full-row refit (D-065 §C), not council-scored:** Hinata: best tree ≥ 0.75 on the full rows 0.40;
 A10b on the full rows beats the trees (paired 5th percentile > 0) 0.15.
 
+**Single-seat forecast (D-066 §E), recorded:** Sugawara: the selected arm's in-bot parity stays under 1e-6 on at least
+three maps at the first attempt: 0.85 (00:29Z).
+
 **Earlier round-2 numbers, kept on record, not scored:** Sugawara on P-5: accuracy ≥ 0.83: 0.10; beats the parent's prior: 0.85; panel gate given an
 offline pass: 0.20. On P-6: falsifier not triggered 0.85; V-legal ≥ Φ at round-limit r50: 0.20. The scored events are
 fixed in D-055.
@@ -76,11 +79,14 @@ fixed in D-055.
 | P-A02 (REG-002) | D-053 §D: local gate passes on seeds 2–3 | **hold** (pool +1.10 [−0.37, +2.76]) | Sugawara | 0.35 | 0.1225 |
 | P-A02 (REG-002) | same | hold | Nishinoya | 0.40 | 0.16 |
 | P-A02 (REG-002) | same | hold | Tanaka | 0.35 | 0.1225 |
+| P-7 | D-063 §D, entry throughput ≥ 1×10⁷ decisions an hour on ≤ 8 cores | **pass** (1.89×10⁸; at least 8.4×10⁷ under the worst core accounting; D-066 §B) | Sugawara | 0.75 | 0.0625 |
+| P-7 | same | pass | Tanaka | 0.55 | 0.2025 |
+| P-7 | same | pass | Nishinoya | 0.50 | 0.25 |
 
 ## Running means
 
 | Seat | Cards scored | Mean Brier |
 |---|---|---|
-| Tanaka | 3 | 0.124 |
-| Sugawara | 3 | 0.165 |
-| Nishinoya | 3 | 0.204 |
+| Tanaka | 4 | 0.144 |
+| Sugawara | 4 | 0.139 |
+| Nishinoya | 4 | 0.216 |

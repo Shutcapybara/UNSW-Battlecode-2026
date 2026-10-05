@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 4 Oct 2026 23:43Z (unit 13). Next self-wake about 00:45Z. Branch `r/ushijima`; private tree
+State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 00:36Z (unit 14). Next self-wakes 00:45Z (merges) and 01:45Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,11 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-066:** P-7's entry throughput passes (1.89×10⁸ decisions an hour; no training approved). Size decides part of
+  the selection: A1 and A3 need one model (about 1.05 MB) and are selectable; A4–A7 need two (about 4.9 MB) and are
+  not. Arm A8b (mirror-averaged prediction) added. Full-row jobs: the network first, A1 second, 14.4 GiB a job on the
+  24 GiB Mac. The deploy slot is built and at parity; Kageyama adds the HB-1 input path. The clone's live screen
+  does not wait for the frozen-cohort confirmation, but every upload waits for H11. The keeper commits again.
 - **D-065:** the uploaded k = 16 archive is confirmed to be the gated bot (Tanaka), so four conditions remain for the
   02:15Z decision. Battery: HB-1's features refitted on ten teams reach 0.7184, the best arm so far, against 0.6977
   for the live prior. The selector passed. Full rows are built and their refits approved. The deploy slot for the
@@ -92,12 +97,12 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): live prior 0.6977, HB-1 features on ten teams 0.7184, encoder trees 0.7145, CNN 0.6785; selector passed; full-row refits next. P-6: behind the battery. P-7 (self-play): throughput measured, figures pending |
+| Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): live prior 0.6977, HB-1 features on ten teams (A1) 0.7184 (replicated), encoder trees (A3) 0.7145, CNN 0.6785; A1 and A3 selectable, A4–A7 not; A2, A6, A7, A8, A8b to come; full-row refits: network, then A1. P-6: behind the battery. P-7 (self-play): entry throughput passed; training ruling after the network arm on the full rows |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | fresh session since about 23:04Z. Census posted. Throughput jobs 176–178 done, 179 running. Released from the same-binary check (Tanaka did it). Next: learn-queue jobs (full-row refits), then panels for the deploy slot |
+| Evaluator queue (Asahi) | Slot at parity with the switch off (272 of 272). Running: seed-1 pool and gen panels of `kageyama-01-p1-slot` (λ 1 and 0.5, placeholder model), then points and zip. Then learn-queue jobs (network on the full rows, A1 on the full rows) |
 | Nominee (full gate) | `asahi-05-kz12-k16` (REG-002): gate hold; same-binary condition met; conditions 1–4 of D-064 §B read at LS-1's stop (02:15Z); Daichi activates if they hold |
 | Uploaded, inactive | `asahi-05-kz12-k16` = submission 16979. The `submit_check` fix is on main, not deployed; no redeploy until the lead confirms the hub loop (H11) |
-| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 120 of 204 games at 23:41Z, about 20 an hour, stop 02:15Z (near 180 games) |
+| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 140 of 204 games at 00:29Z, no fault, stop 02:15Z |
 
 ## Facts settled this unit
 
@@ -116,10 +121,10 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 | Council, auditor | Tanaka (GPT, Codex, hourly heartbeat), `r/tanaka` | working: 17:55Z P-2 scorer PASS; 17:56Z LS-1 review; 17:59Z R2 support verified |
 | Council, mechanism | Sugawara (Claude), hourly at :25 | working: 17:29Z LS-1 objective amendment (upheld in part, D-056 §C) |
 | Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: 17:52Z replication of the LS-1 amendment |
-| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | full rows built (3,415,158 rows; 2,753,685 usable moves; audit pass); now the deploy slot `bots/kageyama-01-p1-slot` and the size report |
-| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | A0 0.6977, A1 0.7184, A3 0.7145, A10b 0.6785; A4/A5 fitting (2–3 h); full-row refit tool ready; placeholder model handed to Kageyama |
-| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; hourly self-wake | working; daemon restarted 19:16Z |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | ran 19:50Z: fix and reserve change built and merged, not deployed; LS-1 pace and answers posted |
+| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | deploy slot `bots/kageyama-01-p1-slot` built (r/kageyama f536785f7): zip 1.05 MiB, at most 10.1 M points, parity 2.9e-8; next the HB-1-vector input path (D-066 §E) |
+| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | A1 0.7184 leads; mirror map verified, 11 % of A1's decisions change under reflection; A4/A5 fitting as diagnostics; to queue: network on the full rows, then A1 on the full rows; re-base A6/A7; A8, A8b |
+| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session since 23:05Z | working: Mac memory read, slot parity, placeholder panels running |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | cleared the keeper blocker 23:52Z; reads D-064 §B conditions 1–4 at the first unit after 02:15Z |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
 
@@ -144,16 +149,17 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 
 1. **k = 16 at LS-1's stop (02:15Z):** Daichi's table against conditions 1–4 of D-064 §B; activation if they hold;
    then the monitor and the rollback rule. Push the lead once with the outcome.
-2. **R2 selection:** the complete development table (A2, A4–A8 still to come), the full-row refits, and the size
-   report from the deploy slot; then one confirmation on the frozen cohort.
-3. **P-7 training:** with the battery table and Asahi's throughput figures.
+2. **R2 selection:** the development table of the selectable arms (A2, A6, A7, A8, A8b to come), A1 and the network
+   on the full rows, then one confirmation on the frozen cohort. Beside it: Asahi's placeholder panels (first play
+   evidence of a ten-team clone in the prior slot) and the slot's HB-1 input path.
+3. **P-7 training:** after the network arm on the full rows.
 
-Waiting on the lead: H11 (is the hub inside the restart loop; redeploys stay off, which blocks every new upload)
-and H12 (session disk full; it now blocks the Chair's shell).
+Waiting on the lead: **H11** (does the hub restart by itself; until known, no redeploy, and so no upload of any new
+bot, the clone included) and H12 (session disk full; it blocks the Chair's shell).
 
 ## Cursor
 
-Last BOARD line read: line 1047 (Hinata 23:31Z, placeholder prior), main tree. Own D-065 lines follow.
+Last BOARD line read: line 1092 (Sugawara 00:29Z, slot review), main tree. Own D-066 lines follow.
 
 ## Open flags
 
@@ -174,7 +180,8 @@ Last BOARD line read: line 1047 (Hinata 23:31Z, placeholder prior), main tree. O
 - The 13 MB model headers that showed as 52-byte symlinks in the main tree: Asahi replaced the links in asahi-02 to
   05 by the identical real header (r/asahi f370d4a9f). `bots/rome-08…15` not yet checked.
 - The hub index (`hub-state/battles/index.json`) prints a running paired figure for open jobs. Lanes do not quote it
-  (D-056 §C.7); the Chair saw the 10-pair figure at 18:01Z and disclosed it.
+  (D-056 §C.7); the Chair saw the 10-pair figure at 18:01Z and the 65-pair figure at 00:31Z (a failed filter) and
+  disclosed both (D-066 §A). The promotion rule was fixed before the second sighting and is unchanged.
 - Unexplained unranked requests (7 series, 50 games, 2 Oct 12:52Z to 3 Oct 02:42Z) match the quota runner's grid;
   none since. Ruled in D-051 §3; the lead is told once.
 - Split of gate logs from training data: D-046 §3 narrows the Evaluator prompt's "every panel game becomes training
