@@ -47,6 +47,8 @@ round-limit r50: 0.20 each.
 **Scored event (D-056 §C), LS-1:** the frozen rule of D-055 §B says PASS, including the declared extension.
 Forecasts: **Sugawara 0.50** (17:29Z, before dispatch), **Nishinoya 0.45** (17:52Z, after dispatch and before
 outcomes; flagged). Tanaka's 0.45 (17:56Z) is declared by its author not a calibration entry and is not scored.
+**Outcome (D-069 §A): not scored.** The screen expired at 75 of its 102 planned pairs with the letter HOLD and the
+extension was not run, so the event ended incomplete.
 
 **Scored events (D-063 §D), P-7** (entry throughput / head-to-head ≥ 0.55 / panel ≥ +0.02 / live promotion):
 Sugawara 0.75 (0.60 before replication) / 0.45 / 0.25 / 0.15; Tanaka 0.55 / 0.40 / 0.20 / 0.10; Nishinoya 0.50 / 0.50
@@ -54,7 +56,7 @@ Sugawara 0.75 (0.60 before replication) / 0.45 / 0.25 / 0.15; Tanaka 0.55 / 0.40
 
 **Scored event (D-064 §B), k = 16:** no rollback under D-052 §B within the first 120 ranked games, given promotion
 and observation to 120 games. Forecasts: **Tanaka 0.85** (22:25Z), **Sugawara 0.87** (22:30Z), **Nishinoya 0.85** (22:52Z).
-Nishinoya also gave P(LS-1 shows harm) 0.10 and P(live Weakhold gain ≥ 10 points sustained) 0.60 (not scored).
+**Running since the promotion at 5 Oct 02:13Z (D-069).** Nishinoya also gave P(LS-1 shows harm) 0.10 and P(live Weakhold gain ≥ 10 points sustained) 0.60 (not scored).
 
 **Author's forecasts, full-row refit (D-065 §C), not council-scored:** Hinata: best tree ≥ 0.75 on the full rows 0.40;
 A10b on the full rows beats the trees (paired 5th percentile > 0) 0.15.
@@ -65,6 +67,7 @@ three maps at the first attempt: 0.85 (00:29Z).
 **Forecasts on file (D-068 §C), Sugawara 01:31Z:** the A1 placeholder at λ = 1.41 within −2 points on the pool 0.35;
 slot fallback on more than 1 % of turns on some map 0.15; carthage-05 with no prior at or below −7 points 0.55.
 Nishinoya asked. Asahi's own forecast for the placeholder screen was +1 point (outcome −7.0; not a council seat).
+Asahi's forecasts for the D-068 queue (02:15Z, not a council seat): A1 at λ 1 −4 points; no prior −8; λ 1.41 −3.
 
 **P-8 (D-068 §D), author's forecasts, not council-scored:** S0 0.60; S0 on direction 0.25; S1 given S0 0.20; S2 0.20;
 live within the season 0.07.

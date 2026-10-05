@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 01:49Z (unit 15). Next self-wake 03:00Z. Branch `r/ushijima`; private tree
+State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 02:22Z (unit 16). Next self-wake 03:20Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,10 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-069: k = 16 is live.** Daichi activated submission 16979 (`asahi-05-kz12-k16`) at 02:13:22Z on LS-1's final
+  data: 75 pairs, paired mean +0.080 [−0.029, +0.187], no fault; all conditions of D-064 §B hold. LS-1's own frozen
+  letter is HOLD; the gain to expect is small and on Weakhold. Rollback watch over the first 40 ranked games, target
+  14585; no second promotion before 14:13Z. Learn jobs are now at most one fold so that panels can run between them.
 - **D-068: the ten-team clone loses in play as a prior.** Asahi's seed-1 screens of the slot bot with the encoder
   trees: pool −7.0 points [−12.9, −1.5] at λ 1 and −11.8 at λ 0.5; gen −5.6. The free lane's own test of the A1 prior
   lost 42–60. The slot itself is at parity on four maps, so the model is the cause. Leading hypothesis: the clones
@@ -99,7 +103,7 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 
 ## Incumbent
 
-- `carthage-05-free-sprint`, submission 14585, live since 2 Oct 04:22Z. Fallback `hb1-14-prior-r540`, 14265.
+- **`asahi-05-kz12-k16`, submission 16979, live since 5 Oct 02:13Z (D-069).** Fallback and rollback target: `carthage-05-free-sprint`, 14585 (live 2 Oct 04:22Z to 5 Oct 02:13Z). The figures below are 14585's.
 - Elo trend and drift (Daichi's monitor, 16:53Z, ranked, post-m2, series bootstrap 5th/95th percentiles, inputs
   frozen): since activation −0.018 [−0.042, +0.009] (950 games, 192 series); last 40 games +0.026 [−0.108, +0.169];
   Elo 1722, rank 85. Schooltime −0.480 [−0.517, −0.440] (61 games; cage open −0.519, closed −0.447), weakhold −0.35
@@ -115,9 +119,9 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 | Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): by accuracy A8b 0.7224, A1 0.7184, A4 0.7205 (not selectable), A3 0.7145, live prior 0.6977; **in play the A3 placeholder loses 7 points on the pool; selection suspended (D-068)**. P-6: behind the battery. P-7: entry throughput passed; no training. P-8 (latent state): stage S0 approved |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
 | Evaluator queue (Asahi) | Done: slot parity at off 272/272; placeholder screens FAIL at λ 1 and 0.5. Ordered (D-068 §C, seed-1 pool): fallback count; `kageyama-02-p1-hb1` (A1) at λ 1; carthage-05 with no prior; A1 at λ 1.41; single-team priors (213, 91). Learn queue behind these |
-| Nominee (full gate) | `asahi-05-kz12-k16` (REG-002): gate hold; same-binary condition met; conditions 1–4 of D-064 §B read at LS-1's stop (02:15Z); Daichi activates if they hold |
-| Uploaded, inactive | `asahi-05-kz12-k16` = submission 16979. The `submit_check` fix is on main, not deployed; no redeploy until the lead confirms the hub loop (H11) |
-| Live screen | **LS-1 ended** (job expired): 160 of 204 games, no fault. Daichi reads D-064 §B at its next unit |
+| Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) |
+| Uploaded, inactive | 14585 (carthage-05, rollback target), 14265. The `submit_check` fix is on main, not deployed; no redeploy until the lead confirms the hub loop (H11) |
+| Live screen | none running. LS-1 ended at 160 games (75 pairs, +0.080 [−0.029, +0.187]) |
 
 ## Facts settled this unit
 
@@ -139,7 +143,7 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 | Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | `bots/kageyama-02-p1-hb1` built (A1 path, mirror averaging as a switch, 1.098 MiB, at most 11.8 M points); in-bot parity on 4 maps × both seats for both paths; next: fallback log line, export of single-team models, then the trajectory block |
 | Learner | Hinata (Claude), Cowork VM; hourly task at :35 | A8b 0.7224 (best by accuracy); selector rev 8 with the inventory as a file; network on the full rows running, A1 next; to add: log-loss, entropy and floor share in the table; single-team fits for 213 and 91; time diagnostic and T0 (D-067) |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session since 23:05Z | working: placeholder screens posted 01:10Z (FAIL); diagnostics queue of D-068 §C |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | cleared the keeper blocker 23:52Z; reads D-064 §B conditions 1–4 at the first unit after 02:15Z |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | activated 16979 at 02:13Z; watching its first 40 ranked games under D-052 §B |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
 
@@ -163,8 +167,7 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 
 ## Next three decisions
 
-1. **k = 16:** Daichi's table against conditions 1–4 of D-064 §B on LS-1's final 160 games; activation if they
-   hold; then the monitor and the rollback rule. Push the lead once with the outcome.
+1. **k = 16 after promotion:** the rollback watch over 16979's first 40 ranked games (D-052 §B); review at 120.
 2. **Why the clone loses in play (D-068 §C):** the five diagnostics decide whether the route is a stronger λ, a
    single-team model, or neither. Until then no selection and no read of the frozen cohort.
 3. **Kenma's bot:** its pool panel and deploy checks; a live screen needs H11.
@@ -176,7 +179,7 @@ bot, Kenma's included) and H12 (session disk full; it blocks the Chair's shell).
 
 ## Cursor
 
-Last BOARD line read: line 1113 (Kageyama 01:33Z, HB-1 slot), main tree. Own D-068 lines follow.
+Last BOARD line read: line 1151 (Daichi 02:18Z, 16979 live), main tree. Own D-069 lines follow.
 
 ## Open flags
 

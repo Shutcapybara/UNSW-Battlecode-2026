@@ -511,3 +511,14 @@ Same population and conventions as §"A0 and A1" (188,250 F/R/L rows, 49 series,
 - **r2_full.py rev 2 704805c7…** (D-066 §D ceiling 14.4 GiB): two-pass loader into preallocated int16/float32 matrices; peak RSS recorded. Parity on dev120 re-run: trees (A3, 10 rounds) max |Δp| 0.0 vs r2_battery; CNN max |Δp| 0.0 vs A10b-u. Dev-scale peak 2.0 GiB (dominated by the two 117k-row dev shards). **Full-row peak estimates:** A10b-full ≈ 9–10 GiB (int16 matrix 6.2 GiB + scalars 0.7 + standardised scalars 0.7 + metadata ≈ 1 + runtime); A1-full ≈ 7–8 GiB (float32 2.8 GiB + one float32 training copy 2.2 GiB + binned set + metadata). Both under 14.4 GiB; measured peaks are printed per fold and recorded in each registry.
 - **Queued (main ea8ada4e2):** `hinata-01-a10b-full` (running since ≈ 01:06Z; 8 torch threads) then `hinata-02-a1-full` (A1, **400 rounds only** per D-066 §C 6; num_threads = ASAHI_MAX_WORKERS). Outputs `build/learn/hinata/r2full/`. A3-full (chunked route) is third only if A3 stays within 0.005 of A1 (now 0.0039) — tool not yet built.
 - RL translation: averaging a policy over a game symmetry is free strength at inference (+0.004 here); for P-7 the same symmetry belongs in the network or the data, not only at test time.
+
+### Battery arm A5 — development result (appended 2026-10-05 02:21 UTC, hinata). Descriptive (not selectable, D-066 §C 1).
+
+| Arm | Inputs | F/R/L acc [5th, 95th] | queen | vs A8b-A1-400 (best selectable) | vs A1-400 | vs A4-400 | vs A0 |
+|---|---|---|---|---|---|---|---|
+| A5-400 | encoder + HB-1 vector + hb_p | **0.7267 [0.7179, 0.7361]** | 0.6674 | +0.0043 [+0.0017, +0.0067] | +0.0083 [+0.0063, +0.0103] | +0.0062 [+0.0049, +0.0073] | +0.0290 [+0.0249, +0.0330] |
+| A5-800 | same, 800 rounds | 0.7259 [0.7175, 0.7350] | 0.6647 | | | | |
+
+- Same population/conventions (188,250 F/R/L rows, 49 series, post-m2; paired series bootstrap 1,000 × seed 7, linear 5/95; keys equal A0's). Registry A5-u registry.json d82bc6f68432bac6… (code 224c667a…, fit path = rev 7/8). Container restart mid-unit; folds resumed from saved models.
+- **D-066 §C 1 test:** a size-matched variant of a non-selectable arm may be filed only if it beats the best selectable arm by ≥ 0.005 with 5th pct > 0. A5-400 − A8b-A1-400 = +0.0043 < 0.005 → **no size-matched A5 is filed.** Note for the Chair (no action taken): the encoder and the HB-1 vector are complementary (A5 − A1 +0.0083, A5 − A4 +0.0062); an arm on encoder + HB-1 vector *without* hb_p would be a single model (≈ 1 MB) and so selectable, but it is a new arm and needs a ruling before any fit.
+- RL translation: the two observation encodings carry partly different information; the learned policy's observation should be their union, not either alone.

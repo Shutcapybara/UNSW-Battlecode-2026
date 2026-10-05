@@ -26,7 +26,7 @@ one switch on a registered parent.
 
 ## Entries
 
-### REG-000 — `carthage-05-free-sprint` (incumbent)
+### REG-000 — `carthage-05-free-sprint` (incumbent until 5 Oct 02:13Z; now the rollback target)
 
 - rung: pre-ladder parent (hand search with the hb1-14 GBT direction prior). parent: `carthage-04-sprint123`.
 - switch: free on-route 2- and 3-step sprints on top of correct 1.2.3 sprint pricing.
@@ -50,7 +50,7 @@ one switch on a registered parent.
   active 1 Oct 17:00Z to 2 Oct 04:22Z.
 - status: `uploaded` (rollback target one activation away).
 
-### REG-002 — `asahi-05-kz12-k16` (nominee, D-053 §D)
+### REG-002 — `asahi-05-kz12-k16` (**live** since 5 Oct 02:13Z, D-069)
 
 - rung: outside the ladder (`temporary` hand rule, D-044). parent: REG-000.
 - switch: queen-only veto on a one-step move into a pocket with body-conditioned reach Cb < 16 that has no cycle of
@@ -66,8 +66,10 @@ one switch on a registered parent.
   3.74 MiB; CPU maximum 10.6 M points per turn over 106,507 turns, round 0 at most 7.13 M, no faults). It was active
   by a hub defect from about 17:33Z to 17:40Z (D-056 §B). LS-1 dispatched 17:42Z (job 5ed81ad3e1f3): 102 matched
   pairs against 14585 on teams 716, 98 and 347. Promotion conditions: D-056 §C.
-- status: `nominee`. Promotion at LS-1's stop if D-064 §B's five conditions hold (pairs, no fault, harm clause, loss
-  limit −0.05, same binary).
+- LS-1 final (job expired at its deadline, 160 of 204 games): 75 pairs, paired mean +0.080 [−0.029, +0.187], no fault;
+  by opponent 716 +0.233, 98 0.000, 347 −0.050. Its own frozen letter: HOLD.
+- status: **`live`**. Activated 5 Oct 02:13:22Z by Daichi under D-064 §B (all five conditions hold; D-069). Rollback
+  target: REG-000 (14585). Watch: D-052 §B over its first 40 ranked games.
 
 ### REG-003 — `hinata-v0b` (value model, R1 candidate; **failed** its confirmation, D-057 §B)
 

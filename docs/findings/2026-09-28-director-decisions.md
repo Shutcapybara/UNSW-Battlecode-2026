@@ -2681,3 +2681,57 @@ Asahi, seed 1, against carthage-05, paired fixtures, map × opponent clusters (0
 ### F. Merges
 
 r/kageyama (bcd93db88, `bots/kageyama-02-p1-hb1`) and the lanes' other branches are requested with this unit.
+
+## D-069 — k = 16 is live (submission 16979); the evaluator's queue and the learn jobs (5 Oct 2026 02:22Z, Chair: Ushijima)
+
+### A. Promotion record
+
+- **`asahi-05-kz12-k16` (REG-002, submission 16979) is the live bot since 02:13:22Z**, activated by Daichi under
+  D-064 §B on LS-1's final data (Daichi 01:52Z and 02:18Z; `submit.done.json`: upload already present, activated).
+  The live submission was re-read as 14585 at 02:12:34Z before the switch.
+- LS-1, final: the job expired at its own deadline (accepted 17:41Z plus 8 hours), 160 of 204 games verified, no
+  fault; opponents 716, 98, 347; 15 of 17 maps reached. By D-064's definition:
+
+  | # | Condition | Value | Holds |
+  |---|---|---|---|
+  | 1 | at least 60 valid matched pairs | 75 of 80 cells (5 missing, listed) | yes |
+  | 2 | no runtime error, timeout or disqualification of the candidate | 0 in 80 games; at most 11.10 M points | yes |
+  | 3 | 95th percentile of the paired mean not below 0 | +0.187 | yes |
+  | 4 | paired mean at least −0.05 | **+0.080** [−0.029, +0.187] | yes |
+  | 5 | same binary | met (D-065 §B) | yes |
+
+  By opponent: 716 +0.233 (30 pairs), 98 0.000 (25), 347 −0.050 (20). Weakhold +0.50 on 4 pairs.
+- **What this promotion is and is not.** It rests on the local Weakhold result (+28 points, three seeds) and on
+  the absence of harm live. LS-1's own frozen letter is HOLD (the 5th percentile, −0.029, is not above −0.02), and
+  the local gate was a hold. The expected gain is small and concentrated on one map.
+- **Watch:** D-052 §B over 16979's first 40 ranked games, as a difference against 14585's last 120, plus any crash
+  or disqualification; rollback target 14585. No second promotion before 14:13Z (12-hour rule).
+- **Scoring.** D-064's event (no rollback within the first 120 ranked games; Tanaka 0.85, Sugawara 0.87, Nishinoya
+  0.85) is now running. D-056 §C's event (LS-1's frozen rule says PASS, including the declared extension;
+  Sugawara 0.50, Nishinoya 0.45) is **not scored**: the screen expired at 75 of its 102 planned pairs and the
+  extension was not run, so it ended incomplete.
+- **Incumbent and parent.** The incumbent is 16979 (`asahi-05-kz12-k16`); the fallback is 14585 (carthage-05).
+  New candidate bots are built on `asahi-05-kz12-k16`. The diagnostics of D-068 §C stay on carthage-05, so that
+  they compare with the placeholder screens already run.
+
+### B. The evaluator's queue and long learn jobs
+
+- Asahi queued D-068 §C's items 2 to 4 with a pre-registration (02:15Z; its forecasts: A1 at λ 1 −4 points, no
+  prior −8, λ 1.41 −3). The daemon runs one job at a time and Hinata's network job on the full rows has held it
+  since 01:03Z (about 33 minutes a fold, five folds, peak 7.38 GiB). The daemon cannot pre-empt it.
+- **Ruling.** The play diagnostics come first. Hinata: if `r2_full.py` keeps finished folds and can resume, cancel
+  `hinata-01-a10b-full` now (`build/learn/queue/cancel-hinata-01-a10b-full`) and re-queue it behind Asahi's
+  panels; if a cancel loses the finished folds, let it finish.
+- **From now on a learn job is at most one fold, or about 45 minutes,** so that panels can run between jobs.
+  `hinata-02-a1-full` is re-queued as five fold jobs.
+- Kageyama's `bots/kageyama-02-p1-hb1` is on main (merged 01:52Z with r/asahi, r/daichi and r/nishinoya).
+
+### C. Battery
+
+- A5 (encoder, HB-1 vector and the live prior's scores): 0.7267 [0.7179, 0.7361], the highest arm; not selectable
+  (two models). It is +0.0043 [+0.0017, +0.0067] over A8b-A1, below the 0.005 bar of D-066 §C.2, so no size-matched
+  variant is filed.
+- **A11 (encoder plus HB-1 vector, without the live prior's scores, one model) may join the inventory as a
+  measurement arm** (Hinata's question, 02:21Z): declared in the inventory file before fitting, fitted in the cloud,
+  reported with log-loss, entropy and floor share. No slot work for it until the play diagnostics of D-068 §C are
+  in: selection by accuracy is suspended and the slot would need both input paths at once.

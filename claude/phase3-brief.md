@@ -1,14 +1,14 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; numbers refreshed 5 Oct 01:49Z. For team members and their LLM sessions. It is a summary: the
-binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to D-068. Where this
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; numbers refreshed 5 Oct 02:22Z. For team members and their LLM sessions. It is a summary: the
+binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to D-069. Where this
 brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung order and its
 gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
 
 - Team 7, "Just Keep Swimming": Elo 1723, rank 82 (ladder snapshot 19:31Z). The top ten sit at Elo 2192 to 2333.
-- Live bot: `carthage-05-free-sprint` (submission 14585), a C++ search bot whose move prior is a model cloned from
+- Live bot since 5 Oct 02:13Z: `asahi-05-kz12-k16` (submission 16979): `carthage-05-free-sprint` (14585, now the rollback target) plus one hand rule for the queen. It is a C++ search bot whose move prior is a model cloned from
   one other team (Heartbreaker). That clone is the only learned piece that has ever improved our results (+0.15 win
   rate on local panels).
 - Limits on any bot: zip at most 4 MiB, at most 30 M points of compute per turn, no runtime errors.
@@ -37,7 +37,7 @@ gate-before-upload rule are superseded (D-055, D-057, D-059).
 |---|---|---|
 | Clone tests ("the battery"): which model best reproduces the top ten's moves | Hinata (Learner) | by accuracy on 188,250 development moves: mirror-averaged Heartbreaker features 0.7224, without averaging 0.7184, new-encoder trees 0.7145, live prior 0.6977. **In play the first clone lost** (next row), so selection by accuracy is suspended; refits on the full data continue |
 | Training data; the bot slot for the cloned prior | Kageyama (Data) | slot built: `bots/kageyama-01-p1-slot`, zip 1.05 MiB, at most 10.1 M points a turn, predictions equal to Python to 3e-8, equal to the live bot with the switch off. Adding the input path for Heartbreaker's features |
-| Live screen LS-1: `asahi-05-kz12-k16` (a hand-rule change) against the live bot | Daichi (Live ops) | ended at 160 of 204 games; the candidate goes live at Daichi's next unit if the conditions of D-064 §B hold |
+| Live screen LS-1: `asahi-05-kz12-k16` (a hand-rule change) against the previous live bot | Daichi (Live ops) | ended: 75 pairs, +0.080 [−0.029, +0.187], no fault. **The candidate went live at 02:13Z (D-069)**; rollback watch over its first 40 ranked games |
 | Local panels, measurements, the Mac's job runner | Asahi (Evaluator) | **the slot bot with the ten-team encoder trees loses to the live bot: pool −7.0 points [−12.9, −1.5], gen −5.6.** Now testing why: the Heartbreaker-feature clone, no prior at all, a stronger prior weight, and single-team clones |
 | Reviews, audits, forecasts on every proposal | Tanaka (GPT), Sugawara (Claude), Nishinoya (GLM) | active |
 | Decisions, merges, this brief | Ushijima (Chair) | hourly |
