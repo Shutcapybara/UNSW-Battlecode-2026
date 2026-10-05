@@ -225,7 +225,8 @@ at first. A trial therefore costs the incumbent's rating nothing.
   [−0.37, +3.68]; `qk2` 33–35, +4.41 [−2.94, +10.37]; head to head against the incumbent 57–45, −3.92
   [−8.82, +0.98]; total length at round 300 on the pool 139.4 against 130.3. 26: pool 237–35, 0.00; `qk2` 27–41;
   head to head 54–48, −6.86 [−14.71, +0.98]; enemy queens killed on the pool 142 against 109, no more wins.
-- status: 25 `candidate`, **fallback for trial 5** (D-088 §E; probe on Asahi's queue). 26 `candidate` (component only).
+- status: 25 `candidate`, fallback for trial 5 only if both 61 and 46 fail at upload (probe passed: 12.48 M, no
+  error; D-089 §D). 26 `candidate` (component only).
 
 ### REG-014 — `bokuto-33-flee`, `bokuto-34-portalqueue`, `bokuto-35-knownbeds` (free lane Bokuto; bundles on REG-012)
 
@@ -272,5 +273,22 @@ at first. A trial therefore costs the incumbent's rating nothing.
   [−17.65, +5.88]; pool 235–35–2, −0.37 [−4.23, +3.49]; against its twin 41 −0.74 [−4.96, +3.32]; hidden layouts
   76–4 against `bokuto-13-cull`'s 72–8; self-deaths +65 % against carthage-05. 47: `qk2` 36–32; head to head 58–44;
   pool 225–46–1, −0.18 [−5.15, +4.78] against carthage-05 (does not qualify); −4.60 against the twin.
-- status: 46 `candidate`, **trial 5 provided its probe passes and `gen` is not below `bokuto-13-cull`'s**
-  (D-088 §E). 47 `rejected` as a trial candidate (pool floor).
+- 46 (Asahi 20:31Z): probe passed (12.97 M, no error, 3.76 MiB); `gen` 345–119 against `bokuto-13-cull`'s 354–110,
+  −1.94 [−5.17, +1.08], on the line (at or below −5 in 27 of 40 bootstrap seeds); against its twin on `gen` +0.22.
+  Sugawara: the pool-twin 5th percentile is at or below −5 in 88 % of seeds; `qk2` against the twin +20.59
+  [+5.88, +36.76]. 47: `gen` −2.37; hidden layouts 72–8; probe passed.
+- status: 46 `candidate`, **trial 5 by waiver of the pool-twin and `gen` conditions unless `bokuto-61-mouth`
+  (REG-017) replaces it** (D-089 §D). 47 `rejected` as a trial candidate (pool floor).
+
+### REG-017 — `bokuto-57-queenblind46`, `bokuto-58-reachable`, `bokuto-61-mouth` (free lane Bokuto; fixes on REG-016's 46)
+
+- 57: 46 plus one rule, the queen never steps through a portal whose landing she cannot see. 58: 57 plus a
+  migration target must have a known route (on Schooltime 46's openers walked 80 rounds toward a sector reached
+  only through portals). 61: 58 plus a migration into a dead-end corridor stops at the corridor's junction (the
+  source of 46's self-deaths). `r/bokuto` fecd1af7a.
+- local (Bokuto's harness, 34 games): 61 28–6 against carthage-05 (46: 24–10), 23–11 against kenma-03 (46: 21–13),
+  20–14 against `bokuto-13-cull` with the queen alive at round 300 in 21 of 34 (41: 11–23, 13 of 34).
+- measurement: Asahi's queue, 61 only (`qk2` and head to head first, then pool, `gen`, probe; paired against 46, 18
+  and 41), about 21:40Z. On `gen` it should equal 46 and 41.
+- status: 61 `candidate`; **trial 5 if its probe passes, its pool qualifies and it is not clearly worse than 46 on
+  `qk2` and head to head, confirmed by the Chair on the board** (D-089 §D). 57 and 58 are contained in it.

@@ -4142,3 +4142,87 @@ bootstrap (1,000 draws, seed 7), 5th and 95th percentiles.
 - On file for trial 4: Sugawara 0.25 that 17940 exceeds +0.204 at its look; Hinata's pre-registered items
   (P-hinata-07); the Chair 0.20 that it exceeds +0.204 and 0.45 that it exceeds +0.126, filed before any game of
   17940 was read.
+
+## D-089 — Trial 3's curve block as checked; every submission at one anchor; the rollback rule does not bind trial bots; trial 5 by waiver (5 Oct 2026 20:47Z, Chair: Ushijima)
+
+Trial 4 (17940) is running: 20 ranked games at 19:52Z, no fault, highest turn 12.91 M points. Its interim
+figures are on the board; the Chair does not read them before the look (about 22:15Z).
+
+### A. Recorded after a second lane's check (D-083 §A): where 17791 stands against the three targets
+
+- Sugawara replicated every number of Hinata's block (19:29Z) and amended three labels; Hinata accepted them and
+  ran the per-game check she had named as a caveat (20:37Z, pre-registered). Against teams at 1725 or above, in
+  games that reached round 300:
+  - **Queen alive at round 300: 0.72** (40 games; target 0.58; `bokuto-13-cull`: 0.45). The 0.62 of D-088 §C is
+    the carried view, for the like-for-like comparison with 17530 only.
+  - **Leads alive at round 300 converted: 14 of 20, 70 %** (target 70 %; Wilson 90 % interval about 49 to 81 %;
+    `bokuto-13-cull`: 10 of 16). The "20 of 26" of D-088 §C counted six elimination wins before round 300 as
+    converted leads; it is replaced.
+  - **Economy: total length at round 100 65.1 against the top ten's winners' 78.5. Growth between rounds 100 and
+    300, per game: 38.2 [26.2, 48.7] against 68.2 [63.8, 72.0] for the top ten's winners**, a gap of −29.9
+    [−41.5, −18.6]. Winners alone overstate it: the top ten's losers grow 34.9, all top-ten sides about 51.6, so
+    the gap to the top ten as a whole is about −13 (exploratory). In our own games: 50.8 in wins, 22.9 in losses.
+- **Reading.** 17791 is at target on the queen and on conversion, with wide intervals. What remains is the
+  economy, and most of it is growth between rounds 100 and 300. On growth 17791 equals `bokuto-13-cull` (38.2
+  against 37.2); its gain over that bot is before round 100 and in the queen.
+- Hinata's sentence "the shift is early, not growth" holds against 17530 only and her carried growth figure is
+  withdrawn.
+
+### B. Every trialled submission at anchor 1725 (Daichi 19:52Z; D-088 §B)
+
+Ranked games after the map change, the opponent's ladder rating at game time, series bootstrap (1,000 draws,
+seed 7), 5th and 95th percentiles.
+
+| Submission | First 60 at a series boundary | All ranked games |
+|---|---|---|
+| 14585 `carthage-05-free-sprint` | −0.048 [−0.141, +0.039] (60 / 14) | −0.022 [−0.046, +0.003] (1,095 / 221) |
+| 16979 `asahi-05-kz12-k16` | −0.305 [−0.418, −0.191] (44 / 9, all it played) | |
+| 17388 `kenma-03-pocket-queen` | +0.074 [−0.048, +0.197] (60 / 12) | +0.060 [−0.010, +0.132] (130 / 26) |
+| 17530 `bokuto-13-cull` | −0.041 [−0.132, +0.062] (60 / 12) | −0.002 (120 / 24) |
+| 17791 `bokuto-18-queenfeed` | +0.174 [+0.079, +0.282] (60 / 12) | +0.170 (65 / 13) |
+
+- **Corrections.** `bokuto-13-cull` over its 120 games is −0.002 at 1725; the −0.054 of D-083 and later records
+  was at another anchor. 14585 is −0.022 over all its games after the map change; the −0.043 used as its
+  reference since D-075 came from a different selection of games, which the Chair has not traced.
+- Table and code: `docs/learning/trials-1725.md` (`r/daichi`). Every statistic in a record is at anchor 1725
+  unless it says otherwise.
+
+### C. Ruling on Daichi's question: the rollback rule of D-052 §B does not bind a trial bot
+
+- Daichi's monitor shows 17940 at −0.136 over its first 20 games on a rolling anchor (our own rating at game
+  time), which would trip D-052 §B at 40 games; at anchor 1725 the same games are level. Sugawara: the monitor's
+  number is a level on a rolling anchor, not the statistic of D-052 §B, which is a difference against the
+  replaced submission; and that rule was written for an incumbent.
+- **Ruling.** D-052 §B applies to the submission left active as incumbent, not to a trial bot. A trial ends at
+  its look or on a fault. There is no harm stop before the look: each submission carries its own rating (D-076),
+  so a trial costs the incumbent nothing. The monitor's rolling figure is not a decision statistic.
+
+### D. Trial 5: Sugawara's objection accepted; the trial is granted by waiver, not by a pass
+
+- D-088 §E said `bokuto-46-regions` passes the restated twin condition "narrowly" at −4.96. Sugawara re-ran the
+  bootstrap over 40 seeds: the 5th percentile has a median of −5.15 and is at or below −5 in 88 % of seeds. The
+  −4.96 was one draw. **That sentence is withdrawn.** The same holds for its `gen` panel against
+  `bokuto-13-cull`: −1.94 [−5.17, +1.08] on the card, at or below −5 in 27 of 40 seeds (Asahi 20:31Z).
+- Neither number is a pass or a fail in any useful sense; a threshold cannot settle a difference of two to nine
+  games. **Rule from now:** a condition that lands within half a point of its threshold is "on the line"; it goes
+  to the Chair for a call on the merits, recorded as a waiver or a refusal, never relabelled as a pass.
+- **The call.** The 46 line is granted a ladder trial by waiver of the pool-twin condition (D-087 §C) and of the
+  `gen` condition (D-080 §D). Grounds:
+  - on `qk2` 46 beats its own twin 41 by 20.59 points [+5.88, +36.76], so the atlas is not costing it there;
+  - on unknown maps these bots equal their twin (+0.22; without an atlas match none of the rules fire), so the
+    `gen` gap is the 18-to-41 line, about nine games in 464, with an interval that includes zero;
+  - a ladder trial does not play unknown maps and costs nothing in rating. `gen` returns as a consideration at
+    the final activation, where a change of the map set would matter;
+  - the grounds of D-088 §E: the loss class on four maps (Bokuto corrects its local count there to 6–2), the
+    best `qk2` of the lineage, hidden layouts 76–4.
+- **Which bot of the line.** Bokuto has since fixed two faults in 46's own rule: migration toward a sector with
+  no known route (on Schooltime the openers walked 80 rounds for nothing) and migration into dead-end corridors
+  (the source of 46's self-deaths, +65 %). `bokuto-61-mouth` contains both and the queen's blind-portal rule;
+  locally it is 28–6 against carthage-05 (46: 24–10). Asahi's card for 61 is due about 21:40Z.
+  - **Trial 5 is `bokuto-61-mouth` if, before Daichi uploads, Asahi has posted for it a passing probe and a pool
+    that qualifies (5th percentile against carthage-05 above −5), and it is not clearly worse than 46 on `qk2`
+    and head to head (paired interval not wholly below zero). The Chair confirms this on the board at about
+    21:50Z.**
+  - **Without a Chair line naming 61, Daichi uploads `bokuto-46-regions`** (probe passed: 12.97 M, no error).
+  - `bokuto-25-reserve4` (probe passed) is the fallback only if both fail at upload.
+- On file (Sugawara): trial 5 exceeds +0.204: 0.20; exceeds +0.126: 0.40.

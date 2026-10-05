@@ -1,6 +1,6 @@
 # hinata — Phase 3 Learner (Claude Opus) — status
 
-Updated 2026-10-05 18:42Z (unit 18:35Z → 18:42Z). **This unit: trial-3 (17791) curve block read with the frozen procedure (60/12, same window as Daichi 18:25Z) → P-hinata-07 § "Trial-3 look result", BOARD line 1472. ≥ 1725 carried r300 +6.6 [−14.2, +29.3] (17530 +0.8); queen alive r300 0.62 (0.42); all diff intervals include 0 → no curve evidence either way. D-087 §A server compute for 17791: max 12.62 M, 0 cuts. D-087 recorded: limit 100 M, working ceiling probe ≤ 60 M; Hinata reports trial bot's server max turn + cuts at each look (a cut ends the trial); no seat term. Trial 4 = 17940 (asahi-27-b13-reserve), activated 18:25:06Z, look ≈ 22:15Z.** No user notification (no gate of mine, no contradiction).
+Updated 2026-10-05 20:45Z (unit 20:36Z → 20:45Z). **This unit: pre-registered and ran the per-game growth check (P-hinata-07, my 19:36Z caveat). Reached r300, opp ≥ 1725: 17791 per-game growth 38.2 [26.2, 48.7] (40/11), 17530 37.2, top-ten winners 68.2 (507/192); gap −29.9 [−41.5, −18.6] → PASS, label stands. Exploratory: top-ten losers 34.9, so outcome-unconditioned gap ≈ −13; our wins 50.8 vs losses 22.9. BOARD line 1499.** Read BOARD 1488–1498 (bokuto 57/58/61 JOBs, Daichi D-088 §B table: 17940 at 35/7 games; Sugawara D-052 §B review; Asahi trial-5 conditions: 46 gen 5th pct −5.17, 61 queued). Nothing addressed to hinata. No user notification (no gate, no contradiction).
 
 ## Host and tree
 - Device shell works. Mount: `$HOME/mnt/Projects/UNSW-Battlecode-2026` (connected folder is Projects). VM: 4 cores / 3 GB RAM; no pyarrow/lightgbm on the VM; stdlib python works. VM disk 8.2 G free. Use `date -u`.
@@ -9,11 +9,11 @@ Updated 2026-10-05 18:42Z (unit 18:35Z → 18:42Z). **This unit: trial-3 (17791)
 - Ranked corpus: `public_replays/corpus/index.jsonl` (team 7 = us; bot_a/bot_b = submission id), replays `corpus/replays/<gid>.replay` (gzip), ladder snapshots `corpus/ladder/<ts>.json`. Decode ≈ 1.6 s/game; 4 shards ≈ 300 games / 145 s.
 - `tail -1`/`tail -2` fail on the VM ("option used in invalid context") — use `tail -n 2`, `tail -c` or python.
 - Heredoc gotcha: escape backticks in unquoted heredocs.
-- Keeper: uncommitted lane files: P-hinata-03 appends; P-hinata-05; tools/hinata/p05_s0.py; P-hinata-06 + appends, p06_gap.py, p06_analyse.py, p06_column.py, p06_column_q.py; P-hinata-07 (card + all appends incl. 17:36Z trial-4 forecast and **18:40Z trial-3 look result**), tools/hinata/look.py, curves.py, curves_table.py, curves_owner.py, curves_qid.py, curves_fix.py, qband.py, pts_own.py, pts.py (superseded).
+- Keeper: uncommitted lane files: P-hinata-03 appends; P-hinata-05; tools/hinata/p05_s0.py; P-hinata-06 + appends, p06_gap.py, p06_analyse.py, p06_column.py, p06_column_q.py; P-hinata-07 (card + all appends incl. 17:36Z trial-4 forecast and **18:40Z trial-3 look result**, **19:40Z reply to Sugawara's check**, **20:40Z growth pre-registration + result**), tools/hinata/look.py, growth_pg.py (new 20:40Z), curves.py, curves_table.py, curves_owner.py, curves_qid.py, curves_fix.py, qband.py, pts_own.py, pts.py (superseded).
 
 ## Schedule
 - Scheduled task "Hinata Learner unit" (every 2 h). Lock build/hinata/unit.lock (moved to _old at end).
-- **Last BOARD line read: line 1471 (bokuto 18:32Z budget twins); own line 1472.**
+- **Last BOARD line read: line 1498 (asahi 20:31Z trial-5 conditions); own line 1499.**
 
 ## Ladder (Learner rungs)
 | Rung | State |
@@ -26,7 +26,7 @@ Updated 2026-10-05 18:42Z (unit 18:35Z → 18:42Z). **This unit: trial-3 (17791)
 | R3 cull head (P-hinata-05) | CLOSED at S0 (D-079 §C). |
 | Self-play V | Not filed. |
 | R0 diagnostic P-06 | Done; standing column tools/hinata/p06_column.py. |
-| R0 curve table P-07 | Trial-3 look done (18:40Z). Trial-4 forecast filed 17:36Z (score at its look, Brier). |
+| R0 curve table P-07 | Trial-3 look done (18:40Z), checked by Sugawara (amend labels, accepted 19:40Z). Trial-4 forecast filed 17:36Z (score at its look, Brier). Quote conversion/queen in the reached view from now on. Per-game growth check PASS (20:40Z): gap to top-ten winners −29.9; outcome-unconditioned ≈ −13. |
 | R4–R8 | P-7 throughput PASS; no training approved. D-087 §E: 100 M budget fits an ~8 M MAC student. |
 
 ## Tools (lane)
@@ -43,6 +43,6 @@ Updated 2026-10-05 18:42Z (unit 18:35Z → 18:42Z). **This unit: trial-3 (17791)
 - None blocking.
 
 ## Next 3 actions
-1. Trial-4 look (17940, start 2026-10-05T18:25:06Z; boundary ≈ 22:15Z; blackouts 19:52–20:12, 21:52–22:12Z): check `select('17940','2026-10-05T18:25:06Z',60)` complete=True; then `look.py decode 17940 2026-10-05T18:25:06Z 60 140 0 4 build/hinata/look4` (+ shards 1–3), `block`; p06_column; pts_own scan + server max/cuts (a cut ends the trial, D-087 §A); seat/end-reason columns. Score the 17:36Z forecast items 1–6 (Brier) vs 17530 rows; item 3 also vs 17791's 32.4 (joint reading). Append to P-hinata-07, BOARD line, notify user (trial look + forecast score).
-2. Answer any review on the P-hinata-07 trial-3 result.
-3. If funded, card first: value feature queen-alive r300 (RL translation of the trial-3 reading) — VM-sized, training maps only.
+1. Trial-4 look (17940, start 2026-10-05T18:25:06Z; boundary ≈ 22:15Z; blackouts 19:52–20:12, 21:52–22:12Z): check `select('17940','2026-10-05T18:25:06Z',60)` complete=True; then `look.py decode 17940 2026-10-05T18:25:06Z 60 140 0 4 build/hinata/look4` (+ shards 1–3), `block`; p06_column; pts_own scan + server max/cuts (a cut ends the trial, D-087 §A); seat/end-reason columns. Score the 17:36Z forecast items 1–6 (Brier) vs 17530 rows; item 3 also vs 17791's 32.4 (joint reading; note 32.4 is the withdrawn carried growth, so report it next to the reached value and the per-game growth 38.2 from growth_pg.py — add a 17940 row to that script's run, same filter). Quote conversion and queen in both views, reached first. Report vs 17791 (incumbent, D-088) and vs the end rule > +0.204 at 1725. Append to P-hinata-07, BOARD line, notify user (trial look + forecast score).
+2. Answer any review on P-hinata-07 (trial-3 result, growth check).
+3. If funded, card first: value features queen-alive r300 + per-game growth r100→300 fitted on all outcomes (RL translation of the trial-3 reading) — VM-sized, training maps only.

@@ -169,3 +169,8 @@ pessimistic; its probabilities for trial outcomes carry little information so fa
 (`asahi-27-b13-reserve`, 17940):** Sugawara 0.25 that it exceeds +0.204 at its look; Hinata's items in
 P-hinata-07; the Chair 0.20 that it exceeds +0.204 and 0.45 that it exceeds +0.126 (filed at 19:23Z, before any
 game of 17940 was read).
+
+**On file for trial 5 (Sugawara, 19:29Z; the 46 line):** exceeds +0.204: 0.20; exceeds +0.126: 0.40; 46's `gen`
+5th percentile above −5: 0.70 (outcome: −5.17 on the card, on the line; not scored as occurred). Hinata's
+per-game growth check (pre-registered, 20:37Z): the gap to the top ten's winners passed its frozen rule (−29.9
+[−41.5, −18.6]).

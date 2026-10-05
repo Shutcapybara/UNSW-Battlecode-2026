@@ -3,7 +3,7 @@
 ## Session 2 (5 Oct 2026, 09:00Z–) — what changed, what was learned
 
 **State.** Shell works again (Cowork VM, engine in `/tmp/bokuto/venv313`, 4 workers, 180 s slices via `tools/bokuto/arena.py
---budget 160`). Everything is committed on `r/bokuto` (`../wt-bokuto`, last commit c04409ee8); the Mac runner (Asahi) takes
+--budget 160`). Everything is committed on `r/bokuto` (`../wt-bokuto`, last commit 355b2aabd); the Mac runner (Asahi) takes
 jobs by a BOARD line `JOB <bot> : pool, qk2, h2h vs kenma-03, probe`. Delete permission was granted for the session; replays
 are kept only while read (`build/bokuto/replays/`), results in `build/bokuto/results/`.
 
@@ -81,6 +81,20 @@ portal exits onto her → 33's flee term.
 | **41-atlas0** | **38 with `n_maps = 0`** | **21–13** | **ally losses 79 vs carthage 78 (37: 171 vs 85); total r300 93.9 vs 102.8; JOB posted 17:4xZ** |
 | 42-nohtarget | 38 without corridor targets | 6–6 (6 maps) | ledger unchanged → not the corridor targets |
 | 43-density | 38 with radio ally-density weight 1.0 | 5–7 (6 maps) | ledger unchanged → the radio density does not reach |
+| 44-noportalatlas | 38 with atlas edges + beds but no portal pairs | 19–15 | ally ledger 86 vs carthage 88: **the atlas traffic is its portal pairs** |
+| 45-oneway | 38 + one-way portal convention | 3–9 (6 maps) | head-ons gone, dragons stranded; material |
+| **46-regions** | 44 + region migration (sector income from atlas bed classes; whole-map BFS; kept 80 rounds) | **24–10**, total r300 99.9 vs 84.0 | **TRIAL 5 (D-088 §E)**; QoS/TD/Default/Dilemma 2–0; Mac qk2 38–30 (+11.8 vs 18), h2h −5.9, pool vs twin 41 −0.74 |
+| 47-precious | 46 + ≥ 10-longs dodge like the queen from r250 | 22–12 | Mac: fails the pool floor (−5.15) |
+| 48/49-handover | 47 + crown handover on the crown's escape split, no feeder on birth turns, feeder length cap | 23–11 (49) | a 48-long child fed itself to its 2-long parent on its first turn (UNSW) |
+| 50/51-budget | 46 with search knobs ×2.5 / ×5 | — | sandbox points 7.4 → 7.5 / 7.8 M: **the knobs do not spend the budget** |
+| 52-trap | 49 + two-turn nest lookahead vs chasing enemies | 21–13 | strikes on ≥ 8-longs 2.8 → 2.3 a game; no win gain |
+| 53-room / 54-coil | long-dragon room caps 96; tail held for pearls in the room | 23–11 / 22–12 | ≥ 15-long escape splits after r300 unchanged (48/34 games) |
+| 55-deadroom | 53 + zero-room move scored as death | 20–14 | worse (66 escape splits); not understood |
+| 56-queenblind | 49 + the queen never lands beyond her sight | 23–11; **vs bokuto-13 22–12** | 41 vs 13: 11–23 with 12 queen wall deaths; 56: 2 |
+| **57-queenblind46** | **46 + the queen-blind rule only** | **vs bokuto-13 20–14**, queen wall deaths 2, alive 16/34 | **JOB posted 20:0xZ**, paired vs 46 |
+| **58-reachable** | 57 + a migration target must have a known route (BFS check of the best three sectors; routeless sectors marked per dragon) | vs kenma-03 22–12, r100 62 vs 58 (46: 21–13, 59 vs 62) | **JOB posted 20:03Z**; the candidate if 46 fails probe/gen or for the confirmation window |
+| 59-openportals | 58 + atlas portal pairs routed only before r80 | vs kenma-03 20–14 | material |
+| 60-homebias | 58 + migration discounts distance from the birth cell and enemies nearer | vs kenma-03 22–12 | Schooltime unchanged (30 vs 152 at r100); material |
 
 **The atlas doubles ally collisions (found 17:00–17:40Z; tools/bokuto/allyledger.py, collide.py).** Ally-caused deaths /
 length a game vs carthage-05 on six maps: 18 14.5 / 38, 24 17.9 / 45, 28 16.5 / 40, **30 (atlas on) 29.8 / 77**, 34 34.9 /
@@ -92,11 +106,11 @@ neighbour at the round start 8.5, blind portal landings onto an ally body 7.9 (t
 (17.5 a game r100–300, carthage 10.3) are pairs 7–10 cells apart the round before: blind portal exits onto an ally head.
 Enemy head-on trades are even in count (39 a game, carthage initiates 23 of them) and cost us ~16 length more.
 
-**Next.** (a) Asahi's card for 41 paired against 18/27 (and the asahi-28-b35-atlas0 twin, which should show the same);
-if 41 qualifies it is the trial-5 candidate; (b) the trial-3 look (17:50–18:10Z); (c) if the atlas is to come back, it
-needs a traffic model: blind portal landings are the class to attack (a sonar probe through the portal the turn before
-is the only information source; echoes are aggregate counts, so the probe must be the only sonar that turn), or a
-one-way-portal convention; (d) the wall-death leak and the late feed remain as before.
+**Later findings (18:00–20:00Z).** (1) 41's card: level with 18 on the pool, qk2 −8.8 (queen wall deaths 22 vs 9): not trial 5. (2) **The atlas traffic is its portal pairs** (44); region migration (46) fixes the opener dither on Tower Defense / Queen of Spades / Stripes (our openers sat 100 rounds in the start box among slow beds while carthage ate 70) — 17791's 0/12 on those maps on the ladder is the same thing. **Trial 5 = 46** (D-088 §E, pending probe + gen). (3) Trial 3 (18 = 17791) passed: +0.174 at anchor 1725, Δ +0.114 over 17388 → incumbent of record. (4) D-087: the compute limit is 100 M points a turn (working ceiling 60 M); our turns cost ~7.5 M and the search knobs add < 1 M, so spending it needs a new search. (5) The 'longest dragon' losses with a total lead: our 15–50-longs escape-split in open areas in the last 50 rounds — the policy's own scores show every open move near an enemy at −110 (precious ×3 threat) and a sprint into a one-cell hole of its own coil at −69; fixing the score (55) made things worse, so the trap/threat scales need a rethink, not a patch. (6) **The queen's wall deaths vs hunters are paired-portal steps into unseen pockets** (57 rule; vs bokuto-13 locally 11–23 → 20–14).
+
+**Open problem (20:00–20:40Z): Schooltime vs kenma-03 (0–2, 30–95 total at r100 vs 90–150).** Kenma's openers reach the fast-bed cluster on their side by r30 and then split on every eat (17 splits and 45 eats in r50–60; 25 units at r60 vs our 6). Ours: 46's migration first sent openers toward a sector reachable only through portals (fixed in 58), then across the map into kenma's cluster (home bias in 60 did not fix the r100 total); three of five openers still head east. Not resolved; one map, one opponent — left here.
+
+**Next.** (a) 57/58 cards paired vs 46: if the queen column improves without a pool loss, propose 58 for the confirmation window; (b) the endgame: one crown, robust election, corpses eaten (carthage's late escape splits of long dragons are as frequent as ours — not the differentiator; its crown eats more corpses); (c) the growth gap r100→r300 vs top-ten winners; (d) a real lookahead to spend the 100 M budget (52 is the sketch; the knobs cost nothing).
 
 ---
 

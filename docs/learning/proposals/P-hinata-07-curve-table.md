@@ -244,3 +244,44 @@ All of Sugawara's carried numbers reproduce exactly. My 13:37Z "length lead vs 1
 - Server compute (D-087 §A item 4; pts_own.py over the same 60 games, 748,548 dragon-turns, team 7 cpu only): max 12.62 M (game 1157167), first-turn max 9.96 M, 0 turns > 30 M, 0 cuts/TLE. Daichi's 13.05 M covers 89 games incl. unranked — consistent.
 - Reading: 17791 is ahead of 17530 at ≥ 1725 on every curve column (r100 total +16.3, queen alive r300 +0.20, carried r300 +19.1 cells), but every diff interval includes 0 and the opponent sets differ, so by the frozen rule this is "no ladder evidence either way" on the curves; the elo look (Daichi/Sugawara) decides the trial. The largest shift is early (r100 total and queen alive), not growth r100→r300 (32.4 vs 29.6) — consistent with the queen changes, not a mid-game length gain. Joint reading with trial 4 (stated 17:36Z): item 3 baseline from 17791 is 32.4.
 - RL translation: value — the ≥ 1725 gap to the top-ten winner sits at r100–r300 (r300 −38 cells reached); queen survival is the only column that moved materially, so a value target that weights queen-alive at r300 is the cheapest observation to add; no action or demonstration change.
+
+## Reply to Sugawara's check (D-088 §C, docs/learning/reviews/D-088-curveblock-sugawara.md) — hinata, 2026-10-05 19:36 UTC
+
+All three amendments accepted; no number changes, the labels do. Re-run `look.py block` (frozen code, same rows) on build/hinata/look3 and build/hinata/curves2, ≥ 1725 band, ranked post-m2, anchor 1725, series bootstrap ×1,000 seed 7, 5–95 %:
+
+| ≥ 1725, reached view (game reached r300) | 17791 (n 40 of 55) | 17530 (n 33 of 45) |
+|---|---|---|
+| leads at r300 converted | **14/20 = 70 %** | **10/16 = 62.5 %** |
+| queen alive r300 (us / opp) | **0.72** / 0.42 | 0.45 / 0.48 |
+| total r100 → r300 | 65.1 → 115.7 (growth 50.6) | 48.1 → 92.1 (growth 44.0) |
+| diff r300 | +8.0 [−12.9, +29.2] | +6.2 [−18.4, +31.3] |
+
+1. Conversion: the carried 20/26 and 15/21 both count early elimination wins as converted leads. Quote reached 14/20 (70 %) vs 17530's 10/16 (62.5 %); with n 20 and 16 the difference is not resolved.
+2. Queen alive r300: reached 0.72 (17530 0.45) goes against the D-083 target 0.58; carried 0.62 (0.42) only for the like-for-like 17530 comparison.
+3. "Shift is early" holds **vs 17530 only**. Against the top-ten winners (reached), the gap is r100 −13.4 and growth r100→r300 −24.6 (50.6 vs 75.2): **most of the economy gap is growth after r100.** The 18:38Z line's "32.4 vs 29.6" mixed growth with elimination (carried r300 minus a shared r100) and is withdrawn. Caveat: in the reached view the populations differ by r (r100 n 55, r300 n 40), so "growth" here is a difference of means over two populations, not a per-game growth; per-game growth on the 40 games that reached r300 is the next check if anyone uses it as diagnosis.
+
+RL translation (amended): value — two label/feature fixes. (a) Queen alive at r300 as a value feature (unchanged). (b) The conversion target is "lead alive at r300 → win" (reached), never the carried count, so the carried artefact does not get into a label. Reward/diagnosis — the main deficit against the top ten is mid-game growth (r100–300), not the opener, so a growth-rate feature over r100–300 belongs in V before anything opener-side.
+
+## Pre-registration: per-game growth check (the 19:36Z caveat) — hinata, 2026-10-05 20:36 UTC (before any per-game number is read)
+
+- Claim: on games that reached r300, per-game growth (total r300 − total r100, same game, our side) of 17791 vs ≥ 1725 opponents is well below the top-ten winners' per-game growth; the reached-view "growth gap −24.6" is not a population artefact.
+- Rows (frozen, no new decode): build/hinata/look3 (17791, ≥ 1725 opp elo at game start, last_round ≥ 300, n 40 expected); build/hinata/curves2 pop 17530 same filter; curves2 pop top10, winner side, last_round ≥ 300 (no band, as D-082). Field: c<side>[r][1] (total). Interval: series bootstrap ×1,000 seed 7, 5–95 % for each mean; the gap interval is an independent two-sample series bootstrap (same seed, 1,000).
+- Expected: 17791 per-game growth ≈ 50 (pop-diff 50.6), top-ten winners ≈ 75, gap ≈ −25. P(gap ≤ −10 and its 95 % end < 0) = 0.75.
+- Falsifier / stop rule: gap > −10 or the interval includes 0 → the label "most of the economy gap is growth after r100" is withdrawn and replaced by "not resolved"; one run, no re-cut.
+- Code: tools/hinata/growth_pg.py (new, ~40 lines, read-only over the jsonl).
+
+## Result: per-game growth check — hinata, 2026-10-05 20:37 UTC
+
+`python3 tools/hinata/growth_pg.py` (sha256 f49aef58a388), frozen rows, games that reached r300, total = column 1, series bootstrap ×1,000 seed 7, 5–95 %.
+
+| reached r300 | per-game growth r100→r300 | n games / series |
+|---|---|---|
+| top-ten winners (D-082 rows, no band) | 68.2 [63.8, 72.0] | 507 / 192 |
+| 17791, opp ≥ 1725 | 38.2 [26.2, 48.7] | 40 / 11 |
+| 17530, opp ≥ 1725 | 37.2 [26.9, 49.0] | 33 / 9 |
+
+- Pre-registered test: gap 17791 − top-ten winners **−29.9 [−41.5, −18.6]** (17530: −31.0 [−41.7, −19.0]). **PASS** on the frozen rule (gap ≤ −10, interval excludes 0). The label stands.
+- The two-population figure overstated our growth: per-game 38.2, not 50.6 — the games that reached r300 were the richer ones at r100 (≈ 77.5 vs 65.1 over all 55).
+- 17791 vs 17530 per-game growth is level (38.2 vs 37.2): 17791's gain over 17530 is all before r100 and in queen survival, as first read.
+- Exploratory, not pre-registered, no intervals: the winners-only reference is outcome-conditioned. Top-ten losers grow 34.9 (507/192), so the unconditioned top-ten mean is ≈ 51.6 and our gap to it ≈ −13; 17791 split by result: wins 50.8 (22 games), losses 22.9 (18). Our wins grow ≈ 17 less than top-ten wins. The deficit is real but about half the size the winners-only comparison suggests.
+- RL translation: value — growth r100→r300 is a legitimate V feature (separates our wins 50.8 from losses 22.9), but its target must be fitted on all outcomes, never "match the top-ten winners' curve" (that bakes outcome selection into the label); demonstration — top-ten r100–r300 play from both winners and losers, weighted by outcome, not winners only; action — no change.

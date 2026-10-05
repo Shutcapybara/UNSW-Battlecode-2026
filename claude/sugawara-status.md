@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 18:36Z (unit 32). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 20:37Z (unit 34). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,38 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only". D-080 §D: binds learned features and ladder-rung artifacts, not free-lane bots (atlas trial needs gen panel, hidden-layout block, n_maps = 0 twin).
+
+## Unit 34 (20:25–20:37Z): D-052 §B anchor question (Daichi 19:52Z)
+
+- **Read:** BOARD through line 1491 (`[20:03 bokuto → asahi, chair, sugawara] JOB bokuto-58-reachable …`); my line 1492. No new D-record
+  after D-088. Hinata 19:36Z accepted my three D-088 §C amendments (reached-view growth caveat). Bokuto JOBs 57 (queen blind-portal rule,
+  e92220b72) and 58 (= 57 + reachable migration target, 7d999134f; his trial-5 fallback if 46 fails). Daichi 19:52Z: all-trials table at
+  1725 (matches mine); question: D-052 §B on a trial bot, which anchor (−0.136 rolling at 20 games). Chair has not answered rec 29.
+- **Done:** the −0.136 is a level on a rolling own anchor, not D-052 §B (a difference vs the replaced submission, own rating fixed at
+  activation = 1829). As written: 17940 35/7 diff −0.052 [−0.191, +0.089] vs 17791's 65/13 → does not fire; at 1725 −0.062. Level moves
+  ~0.12 with anchor, difference does not. Reading: D-052 §B binds the end-rule incumbent, not a trial bot pre-look. 17940 at 1725 now
+  +0.108 (35/7). Review `docs/learning/reviews/D-052B-anchor-17940-sugawara.md`; code `build/sugawara/d052/`.
+- Not notified: no rollback changes (neither form fires at 35 games); Chair decides applicability.
+- Next: trial-4 look ≈ 22:15Z (review before Chair; pooled-line reading, anchor 1725, bar +0.204/+0.126); Chair on rec 29 and on the
+  D-052 §B question; 46 probe + gen; 57/58 cards (queen wall deaths on qk2; 58 Schooltime routing); per-game growth check on the 40 (Hinata caveat).
+
+## Unit 33 (19:26–19:31Z): D-088 §C curve-block check; §E trial-5 condition
+
+- **Read:** BOARD through line 1484 (`[19:25 chair:ushijima … D-088 …]`); my lines 1485–1486. D-088: §A 17791 incumbent of record;
+  §B note A accepted (anchor 1725 everywhere; Daichi table of all trialled subs); §C Hinata block recorded unchecked → me;
+  §D trial 4 = 17940, look ≈ 22:15Z, > +0.204 pass, ≤ +0.126 against, between = unresolved (note B adopted); §E trial 5 =
+  bokuto-46-regions if probe + gen (5th > −5 vs b13), fallback bokuto-25; §C restated as paired 5th pct > −5 (post hoc, Chair
+  asked me to object if I read it differently). Bokuto 18:32Z: knobs do not spend budget; bokuto-52 lookahead. Asahi 18:47Z/19:20Z:
+  41 qualifies, fails order test; 46 qk2 +11.76, h2h −5.88; 47 fails pool floor.
+- **Done §C:** replicated exactly; amend labels — live-lead conversion 14/20 = 70 % (carried 20/26 includes 6 early elimination
+  wins); queen alive r300 reached 0.72 vs target; vs top ten most of the economy gap is growth r100→r300 (−24.6), not r100 (−13.4).
+  Review `docs/learning/reviews/D-088-curveblock-sugawara.md`.
+- **Done §E:** 41 is a valid twin (all 46 changes atlas-gated). Pool 46−41 −0.74; 5th pct across 40 bootstrap seeds −5.88…−4.78,
+  median −5.15, ≤ −5 in 88 % → restated rule undecidable. **Rec 29 (open):** record 46 as a waiver on qk2 twin +20.6 [+5.9, +36.8].
+  Review `docs/learning/reviews/D-088-trial5-46-sugawara.md`; code `build/sugawara/t5/p5seeds.py`.
+- Forecast log: 46 gen 5th pct > −5 0.70; trial-5 > +0.204 0.20, > +0.126 0.40. Notified the user (gate-condition statistics).
+- Next: trial-4 look ≈ 22:15Z (review before Chair; pooled-line reading, anchor 1725); Daichi's all-trials table at 1725;
+  46 probe + gen; Chair's response to rec 29; bokuto-52 points (budget use); 17530 15/21 split into live/early.
 
 ## Unit 32 (18:25–18:36Z): trial-3 look replication
 

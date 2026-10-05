@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 19:23Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 20:47Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-088. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-089. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -17,13 +17,14 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
   free. Over its 60 ranked games it scores +0.174 a game against expectation at rating 1725 [+0.079, +0.282], a
   performance rating near 1859. It is the first bot of the phase whose ladder interval excludes zero.
   `carthage-05-free-sprint` (14585) is the rollback target.
-- **Before it** the slot was held by `kenma-03-pocket-queen` (17388: +0.060 [−0.010, +0.132] over 130 games) and
-  `bokuto-13-cull` (17530: about level with the old incumbent, +5.5 points on the local pool). The live slot is
-  used for trials back to back (D-084); the two best submissions get a confirmation run before the final
-  activation (D-088).
-- **What 17791 did against stronger teams (55 games, Hinata's block, unchecked):** queen alive at round 300 in
-  0.62 of games and 20 of 26 round-300 leads converted, both at target; total length 65 and 116 at rounds 100 and
-  300, still at the top ten's losers' line. It won 0 of 11 on Queen of Spades, Trophy, Default and Stripes.
+- **Every submission at the same anchor (rating 1725; D-089):** `carthage-05-free-sprint` (14585) −0.022 over
+  1,095 games; `bokuto-13-cull` (17530) −0.002 over 120; `kenma-03-pocket-queen` (17388) +0.060 [−0.010, +0.132]
+  over 130; the incumbent (17791) +0.170 over 65. The live slot is used for trials back to back (D-084); the two
+  best submissions get a confirmation run before the final activation (D-088).
+- **What the incumbent does against stronger teams (checked by two lanes, D-089):** in games that reach round 300
+  its queen is alive in 0.72 of them (target 0.58) and it converts 14 of 20 leads (target 70 %). **What remains is
+  mid-game growth:** between rounds 100 and 300 it gains 38 cells a game; the top ten's winners gain 68 and all
+  top-ten sides about 52. It won 0 of 11 on Queen of Spades, Trophy, Default and Stripes.
 - **Where and when we fall behind (D-082 as corrected by D-083, from 1,171 ladder games).** The top ten's winners
   have both the economy and the queen: total length 78 against 61 at round 100 and 154 against 111 at round 300,
   and the queen alive at round 300 in 58 % of games against 37 % for their losers. Ours: total length 55–63 and
@@ -57,7 +58,7 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials | Daichi (Live ops) | **Trial 4 is live: `asahi-27-b13-reserve` = submission 17940 since 18:25Z**; look at 60 ranked games, about 22:15Z; it replaces the incumbent only above +0.204 (D-088). Trial 5: `bokuto-46-regions` if its probe and `gen` panel pass, else `bokuto-25-reserve4` (D-088 §E). A trial costs nothing in rating |
+| Ladder trials | Daichi (Live ops) | **Trial 4 is live: `asahi-27-b13-reserve` = submission 17940 since 18:25Z**; look at 60 ranked games, about 22:15Z; it replaces the incumbent only above +0.204 (D-088). Trial 5: `bokuto-61-mouth` if its card qualifies it, otherwise `bokuto-46-regions` (D-089). A trial ends at its look or on a fault and costs nothing in rating |
 | The queen and the economy | Sugawara (analysis); Bokuto builds; panels by Asahi | Bokuto is building `bokuto-18`: no wall deaths of the queen, feeding from round 280–300. Sugawara reads which of `bokuto-13-cull`'s layers cost mid-game growth. Cards carry queen columns, total length at rounds 100 and 300, the keeper panel `qk2` and a head-to-head against the incumbent |
 | Analysis of the trials | Hinata | the cloned-prior line is paused (D-080). Hinata now supplies, for every ladder trial, the opponent-matched comparison and the curve block (total length by round against the top ten's curves; leads converted) |
 | Data | Hinata (Kageyama silent) | hidden bed layouts done (828 of 828 live games reproduced; 14.5 % of ranked games). The curve table by round from the ranked corpus has moved to Hinata; Kageyama has not posted since about 07:00Z |
