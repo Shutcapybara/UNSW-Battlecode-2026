@@ -56,6 +56,8 @@
 
 ## Log
 
+- 5 Oct 20:3xZ: 46 probe/gen + b25 probe + 47 complete posted (late vs Chair 19:25Z ask); b61 queued.
+- 5 Oct 19:20Z: 46/47 qk2/h2h trial-5 reading posted.
 - 5 Oct 18:52Z: bokuto-41 card; D-087 queue 46/47 + b25 probe; probe gate 60 M.
 - 5 Oct 18:05Z: burn test posted (BURN-b18-D086.md).
 - 5 Oct 17:13Z / 17:5xZ: bokuto-35 card (no qualification) + atlas twin; b41 queued; burn rerun.
@@ -83,26 +85,25 @@
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct 18:55Z)
+## Now (5 Oct 20:40Z)
 
-0. Trial 3 look (Daichi 18:25Z): 17791 bokuto-18-queenfeed is the incumbent of record (+0.114). Trial 4 = asahi-27-b13-reserve
-   = 17940, live 18:25Z (look ≈ 22:00Z). Trial 5 (D-087 §D) = qualified one of b41/b46/b47 with cards before trial 4's
-   look, ordered by qk2 then h2h paired vs b18 (mean not negative); fallback bokuto-25-reserve4 (probe queued).
-1. D-087 §A: limit is 100 M a dragon-turn; a cut turn counts as death; probe gate now 60 M (probe.py). Large-budget bots:
-   screen on qk2 + h2h first, pool only if they pass. D-087 §C: an atlas bot needs paired mean ≥ 0 vs its atlas-off twin
-   on the pool (twin of 46/47 = bokuto-41-atlas0), plus gen and hidden-layout vs bokuto-13-cull.
-2. Posted ~18:52Z: bokuto-41-atlas0 qualifies but qk2 −8.82 / h2h −1.96 vs b18 (negative means).
-3. Running 2079a–h: bokuto-46-regions / bokuto-47-precious (Bokuto 18:16Z) — qk2+h2h first, then pool/var/QC, 47 vs 46,
-   gen (b41, 46, 47), probes 46/47/25. Next read ≈ 19:15Z (qk2/h2h), full cards ≈ 20:30Z.
-4. Card format: pool + variants + two totals + queen/economy/enemy-queen columns + qk2 + 102-game h2h vs the incumbent
-   (h2h paired with tools/asahi/h2hpd.py, map × seed clusters).
+0. Incumbent of record 17791 bokuto-18-queenfeed (D-088 §A). Trial 4 = 17940 asahi-27-b13-reserve, look ≈ 22:15Z
+   (end rule > +0.204 at anchor 1725). Trial 5 (D-088 §E) = bokuto-46-regions if probe passes and gen vs 13-cull
+   5th pct > −5; else fallback bokuto-25-reserve4 if its probe passes.
+1. Posted 20:3xZ: 46 probe OK (12.97 M); 46 gen vs 13-cull −1.94 [−5.17, +1.08] (card, seed 7) — 0.17 below −5;
+   sensitivity seeds 1–40 median −5.17, ≤ −5 in 27/40 (tools/asahi/q5sens.py). b25 probe OK (12.48 M). 47 complete.
+   Chair decides trial 5.
+2. Running 2080a–h: bokuto-61-mouth (Bokuto 20:27Z, replaces 57/58): qk2 + h2h, pool, gen, probe, var, QC vs 46;
+   commit at the end (2080h). Card ≈ 21:40Z.
+3. Card format: pool + variants + two totals + queen/economy/enemy-queen columns + qk2 + 102-game h2h vs the incumbent
+   (h2h paired with tools/asahi/h2hpd.py, map × seed clusters). Probe gate 60 M (D-087 §A).
 
 ## Operating notes
 
 - **Daemon:** `tools/asahi/jobd.py`, native on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
   `build/asahi/queue/` first, then the main checkout's `build/learn/queue/`. Restart if down:
   `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
-  Last job id used: 2079h3. Held jobs live in build/asahi/hold/.
+  Last job id used: 2080h. Held jobs live in build/asahi/hold/.
 - BOARD lines go to the MAIN checkout's `docs/hub/BOARD.md` with `>>` only; never commit BOARD.md on r/asahi.
 - Session disk was reset ~04:00Z (D-073); still keep little in the session home.
 - `throughput.py` must recycle processes (wasmtime stores leak address space per game).
