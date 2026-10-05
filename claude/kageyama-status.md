@@ -6,7 +6,29 @@ Branch `r/kageyama`: private tree `build/_stage_kageyama/tree` on the Mac (share
 private index `.index`, plumbing commits via `commit.sh`/`g.sh`; never touches main's index or HEAD). Tools `tools/learn/`. Engine truth runs
 use the Cowork cloud container (official engine in-process, no Mac CPU). Corpus-scale builds: Mac native.
 
-## Top — read this first (unit 7, 2026-10-04 22:55 UTC)
+## Top — read this first (unit 8, 2026-10-05 00:45 UTC)
+
+- **Deploy slot (D-065 §D): built.** `bots/kageyama-01-p1-slot` (λ 1) and `-l05` (λ 0.5); r/kageyama f536785f7,
+  push requested, merge to main asked on the BOARD.
+  - One switch `KAGEYAMA_P1_SLOT` (`p1_switch.hpp`). Encoder v1 → `p1_model.hpp` (export_gbt.py) →
+    gbt_compact.hpp; slot rule D-055 §E.
+  - Model is a PLACEHOLDER: Hinata's A3-400 fold f0. Swap `p1_model.hpp` for the selected arm
+    (`python tools/learn/export_gbt.py lgb MODEL.txt bots/<bot>/p1_model.hpp --ns p1`), then rerun
+    `gbt_parity.py` and `slot_e2e_parity.py`.
+  - Parity: 40,000 rows with max |Δp| 2.9e-8; in-bot end-to-end 11,187 / 11,187 turns; golden parity off
+    44,613 / 44,613 turns.
+  - Zip 1.053 MiB; points max 10.1 M (UNSW), no errors.
+  - Compact sizes: A3-400 1.05 MB zipped; the present HB-1 prior in the same format 4.34 MB (its own format 3.87 MB).
+    So A4–A7 (both models) do not fit 4 MiB as they stand.
+- **Cohort series per team** for r2_battery `--cohort-series`:
+  `docs/learning/splits/kageyama-r2-confirm-v1-series-by-team.json` (795e2e335); it agrees with Tanaka's
+  replication.
+- **Cloud build environment** (lost if the container is reclaimed): unswbc 1.2.9 + lightgbm 4.7.0 in a /tmp venv;
+  `unswbc run --sandbox` gives CPU points.
+- **Next:** export the selected arm when Hinata names it; A1 needs an HB-1-vector slot variant (hb1::Proc row → 270
+  features), which is not built yet; teacher-specific arms the same way.
+
+## Unit 7 ( 2026-10-04 22:55 UTC)
 
 - **teachers_v1 full rows: done.** They are in `build/learn/kageyama/teachers_v1/`.
   - Size: 1,709 per-game shards, 2.2 GB, largest 2.5 MB, 1,502 columns each.
@@ -117,6 +139,7 @@ Facts found this unit (each on the BOARD):
 - H-K1: native post-m2 decode — done (two runs, last part 13:36Z). Closed.
 
 ## Log
+- 2026-10-05 00:45 UTC — unit 8: cohort series JSON; deploy slot bot + export/parity tools; BOARD.
 - 2026-10-04 22:55 UTC — unit 7: teachers_v1 built on the learn queue (3.42 M rows, audit pass), manifest, BOARD.
 - 2026-10-04 22:15 UTC — unit 6 (new session): hb_f export dev120, layout/mirror answers, cohort subset counts, native builder; merge requested.
 - 2026-10-04 10:35 UTC — lane started; read macro, prompts, D-042..D-048, briefs, BOARD, chongqing wrap-up, HB-1.
