@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 05:34 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access or submission. Live ops reports03 trial submission17388 active, ranked window starts05:02UTC; Kenma never touched the server.
+State: **ACTIVE**, updated 2026-10-05 05:58 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access or submission. Live ops reports03 trial submission17388 active, ranked window starts05:02UTC; Kenma never touched the server.
 
 ## Provisional best
 
@@ -38,27 +38,31 @@ Completed Carthage screens use the same102 fixtures and have zero errors.
 | 18 entropy-matched-prior | Renormalize17 prior with exponent1.61 | 49–53 | Rejected;102 replays read, zero fallback |
 | 19 pocket-sprint | Local two-step length control, no global reserve | Probes8–0,6–2 | All Schooltime queen verdicts2–0;20 aims to retain length3 |
 | 20 pocket-countdown | Prefer length3 unless observed food/spawn needs slack | Probe8–0 | All queens survive at2; end-length objective not met |
-| 21 proven-reserve | Relay proof queen is outside any small sealed pocket | **60–42/102** | First Carthage gain over03; full scorecard outstanding |
+| 21 proven-reserve | Relay proof queen is outside any small sealed pocket | **60–42/102** | Carthage gain;Kage55–47 below03at61;full pool pending |
 | 22 keeper-split-prior | Existing keeper probabilities adjust ordinary queen split scores only | Prepared, held | Sanitizers pass;163-turn stream unchanged; no games |
 | 23 corridor-only |14 corridor filter on08, without12 orbit | Smoke5–3, held | Same8 winners as03; both Weakhold queens still die |
-| 24 space-reserve | Asahi05 space filter plus21 conditional reserve | **Asahi05 58–44/102** | Zero errors;all102 replay review running |
+| 24 space-reserve | Asahi05 space filter plus21 conditional reserve | **Asahi05 58–44/102** | Zero errors;all102 read,17,753 proof markers |
 | 25 occupied-bed |20 pressure check respects projected bed occupancy | Smoke8–0 | All queens alive;four3/four2;full held |
-| 26 space-noreserve |25 pocket control plus exact Asahi05 space filter | Direct03 full102 running | Source parity and sanitizers pass |
-| 27 queen213-blend |21 plus queen-only50/50 geometric direction blend | Prepared | Export2832-row parity,runtime997-turn checks;no games |
+| 26 space-noreserve |25 pocket control plus exact Asahi05 space filter | Direct03 **48–54/102** | All102 read;held below03 |
+| 27 queen213-blend |21 plus queen-only50/50 geometric direction blend | Smoke **4–4/8** | Versus21 at6–2;all8 read,831 activations,zero fallback;held |
+
+| 28 harvest-reserve |Bokuto13 harvesting +21 pocket rescue/conditional guard reserve | Prepared | Combined preflight passed;8-game smoke running |
 
 Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. Runtime manifests pin source, fixtures, engine and compiler. Never edit measured runtime snapshots.
 
 ## Active workers and next steps
 
 Current bounded work, nice15, max4 heavy workers /6GiB; game guard5GiB:
-1. Kenma26 versus03 direct102 under run-k26-best.py / parent30438 / session22224, log k26-v-k03-s123.progress.log; all102 replays read on completion. Runtime0dd6bb5a97fb1f448ee19fa085c1b82bc70cb46b97939da203b63517a9c71438.
-2. Kenma24 Asahi05 full102 complete58–44,zero errors; parent75540 / k24-after-crossmatch.py / session1052 reconstructs and audits all102. Runtime716eee526ab7456e29bafe590ec9a63d0ad405913110abef45e771108ba102c3. Smoke9–3,all12read,474 proof markers andzero onSchooltime.
-3. Kenma21 matched four-map64 pool complete57–7,zero errors,vs03 at49 andparent57:School15,UNSW13,Australia14,Maze15 wins. pool-after-k21.py / parent76289 / session90020 reconstructsall64 then writespairedreport. Exact deployment waiter replaced while idle:no game interrupted;old68440/session3126 exit143. Sole current waiter deploy21-after-pool.py / parent29325 / session60858 waits full64 replay review and at most1 other game worker, then four heavy sandbox games with explicitPASS required. scorecard21-after-deploy.py / session17585 waits exact29325 andPASS, then runs full pool272 (hard-link/reuse64 successful fixtures and their read diagnostics;only208new games) andKageyama102,one worker each. Reads all new pool replays and12 retainedKage replays;stops for review. No other21 panels queued.
-4. Kenma27 prepared, no games/queue. Existing213 model source SHAaa2fc510ac06766a25b6070a98789b8984dc3b30d26873365068a8e03b6d1bee. Lane-local exporter corrects478 missing_type=None NaN routes;2832 real/missing input vectors matchLightGBM,maxerror2.84e-8,allargmaxequal. Measured ancestors/sharedtools unchanged. Exact270feature binding;classF/R/B/L,FRL normalized. Runtime997turns:922control actions unchanged,75queen activations,no fallback,oneBround40change. Blend mathsanitizerspass;zip~4.02MB,exactmetadata teacher213/package.json. Deploy pointsoutstanding.
+1. Kenma21 full zoo272 under scorecard21-after-deploy.py / session17585,one game worker. Kageyama102 complete55–47,zeroerrors,all12 retainedreplaysread;below03at61–41. Zoo reuses64 successful exact-source fixtures and their read diagnostics;only208 new games. All272 zoo and12 retainedKage replays will be read.
+2. Kenma21 versus latest posted Bokuto13 (reported70–31–1Carthage),102 fixtures under run-k21-bokuto13.py / session2264,one worker;reads12 retained replays. Opponent runtime d192d721c4069fda8e42d3366b3a5161564f5548cfd06a67caf825941789d46b.
+3. Kenma28 eight-game smoke under run-k28-smoke.py,one worker,all8 replays to be read. Runtime73f60fe2664c96e7537ac035da46a3cca58d9d13ba83986c27e12881f77df5da. No further28 run queued.
+4. Replay-reader verification completed: all102 full summaries and204 queen histories equal the saved full-reconstruction reference;255seconds. The lane reader now avoids rebuilding unused observations. Worker released;28combined sanitizer and163-turn fixed-observation parity passed.
+
+Completed:21 four-map pool57–7(all64read) matchesparent57vs03at49; deploymentPASS zip3,594,331,max10,971,663points(firstturnincluded),fourheavygameszeroerrors.24 Asahi58–44 all102read/17,753proofmarkers;26 direct03 48–54 all102read,held;27 smoke4–4vs21at6–2,all8read/831teacheractivations/zero fallback,held. No additional27 games. Body-segment proof probe gains only2turns in1of2452processes;held without bot.
 
 Both Chair-requested03 cross-matches complete and posted:Asahi57–45,Bokuto04 54–48,zeroerrors,12retainedreplaysread each. Kenma03 trialreportedlive byDaichi05:11:submission17388,first rankedseries05:02;trialresultsawaitLiveops. Candidate21 remains promising60–42Carthage and57–7four-map pool;03remainsprovisionalbest until broader scorecards complete. No new ladder request.
 
-Third-worker experiments23/25areterminal anddocumented inREADMEs. Body-segment proof diagnostic examined2452processes fromeight21UNSWreplays:only1process releases2turnsearlier,soheldwithoutanewbot. Outputs reserve-body-seed-probe.json;toolprobe_reserve_seeds.cpp. No newmodeltraining. Reservedseeds11–13/newmapsuntouched. maps/live_var stillabsent05:32; --map-root supportsread-only variants withpinnedhashes whenavailable.
+Third-worker experiments23/25areterminal anddocumented inREADMEs. Body-segment proof diagnostic examined2452processes fromeight21UNSWreplays:only1process releases2turnsearlier,soheldwithoutanewbot. Outputs reserve-body-seed-probe.json;toolprobe_reserve_seeds.cpp. No newmodeltraining. Reservedseeds11–13/newmapsuntouched. maps/live_var stillabsent05:50; --map-root supportsread-only variants withpinnedhashes whenavailable.
 
 ## Evidence and diagnostics
 

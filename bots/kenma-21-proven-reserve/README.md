@@ -38,4 +38,28 @@ Completed probes: Schooltime **8–0**, all8 original queens survive at length3 
 
 Output main build/kenma/k21-v-carthage-s123/{score,manifest,replay-log-audit}.json and k21-final-diagnostics.json.
 
-Matched four-map pool64 complete57–7, zero errors (Schooltime15–1,UNSW13–3,Australia14–2,Maze15–1), versus03 at49–15 and parent57–7 on identical fixtures. Gains over03: UNSW+4,Australia+3,Maze+1; Schooltime unchanged. Full replay review is still running. Exact deployment is queued after review and safe worker capacity; full272 pool (reuse64 successful fixtures) and Kageyama102 are queued only after deploymentPASS. No full-pool or promotion claim.
+Matched four-map pool64 complete57–7, zero errors (Schooltime15–1,UNSW13–3,Australia14–2,Maze15–1), versus03 at49–15 and parent57–7 on identical fixtures. Gains over03: UNSW+4,Australia+3,Maze+1; Schooltime unchanged. All64 replays read; paired comparison saved in k21-pool-comparison.json. Exact deployment PASS: zip3,594,331 bytes, four heavy games, max10,971,663 points including first turn, zero errors. Full272 pool (reuse64 successful fixtures), Kageyama102 and latest peer Bokuto13 cross-match102 are running, one low-priority worker each. No full-pool or promotion claim.
+
+## Kageyama comparison
+
+55–47/102, zero errors, versus03 at61–41. All12 retained Schooltime/Weakhold replays read. Broad strength has not improved consistently;no promotion.
+
+| Map | W | L |
+|---|---:|---:|
+| schooltime | 6 | 0 |
+| portals | 3 | 3 |
+| slithery_fight | 2 | 4 |
+| queen_of_spades | 5 | 1 |
+| default | 4 | 2 |
+| trophy | 3 | 3 |
+| dilemma | 3 | 3 |
+| autarky | 2 | 4 |
+| devil | 6 | 0 |
+| trauma | 4 | 2 |
+| australia | 2 | 4 |
+| islands | 6 | 0 |
+| unsw | 3 | 3 |
+| maze | 2 | 4 |
+| weakhold | 0 | 6 |
+| stripes | 1 | 5 |
+| tower_defense | 3 | 3 |

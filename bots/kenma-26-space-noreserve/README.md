@@ -7,3 +7,27 @@ Parent25 with exact Asahi05 policy.hpp and params.hpp (the same space-filter sou
 Status: prepared, unmeasured. Validate the combined source, then prioritize a direct comparison against03 and full pool evidence.21 pool/deploy and requested03/Bokuto cross-match retain priority. Reserved seeds11–13/new maps untouched.
 
 Preflight passed: combined source ASan/UBSan pocket checks; exact Asahi05 outside-pocket action parity on75 recorded Weakhold queen observations across both seats (zero changed actions). This is fixed-observation integration evidence, not game strength. Output main build/kenma/orbit-audit/k26-asahi-parity.json. No game measurements or queue.
+
+## Completed direct comparison
+
+48–54/102 against Kenma03, zero errors, all17 ranked maps × both seats × seeds1–3. All102 replays read. Weakhold5–1 is offset by losses on Portals,Slithery,Australia,UNSW,Maze andTower. Hold; no promotion or deployment run. Output main build/kenma/k26-v-k03-s123/ and k26-final-diagnostics.json.
+
+| Map | W | L |
+|---|---:|---:|
+| schooltime | 3 | 3 |
+| portals | 2 | 4 |
+| slithery_fight | 2 | 4 |
+| queen_of_spades | 3 | 3 |
+| default | 3 | 3 |
+| trophy | 3 | 3 |
+| dilemma | 3 | 3 |
+| autarky | 3 | 3 |
+| devil | 3 | 3 |
+| trauma | 3 | 3 |
+| australia | 2 | 4 |
+| islands | 4 | 2 |
+| unsw | 2 | 4 |
+| maze | 2 | 4 |
+| weakhold | 5 | 1 |
+| stripes | 3 | 3 |
+| tower_defense | 2 | 4 |

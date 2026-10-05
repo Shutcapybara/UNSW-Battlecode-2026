@@ -14,7 +14,7 @@ Smoke complete9–3/12, zero errors: Schooltime6–0,Weakhold3–3;03 was7–5 o
 
 ## Full Asahi05 comparison
 
-58–44/102, zero errors, versus03 at57–45. All17 ranked maps,both seats,seeds1–3;full102 replay/marker review still running. No best or deployment claim.
+58–44/102, zero errors, versus03 at57–45. All17 ranked maps,both seats,seeds1–3;all102 replays read and17,753 proof-release markers audited. No best or deployment claim.
 
 | Map | W | L |
 |---|---:|---:|

@@ -7,19 +7,12 @@ import sys
 ROOT=Path(__file__).resolve().parents[2]
 MAIN=ROOT.parent/'UNSW-Battlecode-2026'
 sys.path.insert(0,str(ROOT))
-from tools.learn.rebuild import walk
+from queen_replay import recent_queens
 from replay import analyse
 
 def summarize(path):
     metrics=analyse(path)
-    recent={0:[],1:[]}
-    def emit(ident,spawn,block,ctx):
-        if ident not in recent:
-            return
-        count=int(next(x for x in block.splitlines() if x.startswith('UNIT_COUNT ')).split()[1])
-        recent[ident].append(dict(round=ctx['round'],head=ctx['head'],length=ctx['length'],units=count,action=ctx['action']))
-        recent[ident]=recent[ident][-5:]
-    walk(path.read_bytes(),emit)
+    recent=recent_queens(path.read_bytes())
     queens={}
     for ident in (0,1):
         deaths=[e for e in metrics['death_events'] if e['id']==ident]
