@@ -581,3 +581,78 @@ Reading: the clones' accuracy gain over the live prior is present in every phase
 - **Stop rule:** one fit, no tuning, no further variants on this card; held-out maps never read.
 - **Cost:** ≈ 2.5 h on one cloud core (A5's per-fold time), across two units.
 - **RL translation:** observation = union of the window encoder and the HB-1 hand-built vector; the parent's prior is not needed as an input if the union carries it, which keeps the actor a single network/model over raw-ish features.
+
+### Arm A11 — result; A10b-full and single-team priors — results (appended 2026-10-05 05:23 UTC, hinata). Descriptive (selection by accuracy suspended, D-068).
+
+Population for A11: dev120 oracle F/R/L rows, 188,250 rows, 49 series, post-m2, keys equal A0's; paired series bootstrap 1,000 × seed 7, linear 5/95.
+
+| Arm | F/R/L acc [5th, 95th] | log-loss | entropy | floor share | top-two log gap | model text bytes (400) |
+|---|---|---|---|---|---|---|
+| **A11-400** (encoder + HB-1 vector, no hb_p) | **0.7264 [0.7179, 0.7356]** | 0.5865 | 0.5712 | 6.4 % | 2.31 | 11,452,609 |
+| A11-800 | 0.7238 | | | | | |
+| A5-400 | 0.7267 | 0.5864 | 0.5604 | 11.2 % | 2.45 | |
+| A8b-A1-400 | 0.7224 | 0.5948 | 0.5925 | 1.0 % | 2.20 | |
+| A1-400 | 0.7184 | 0.6017 | 0.5850 | 1.8 % | 2.23 | 11,229,460 |
+| A0 | 0.6977 | 0.7480 | 0.4254 | 39.0 % | 3.37 | |
+
+- Paired: A11-400 − A5-400 −0.0003 [−0.0016, +0.0008]; − A8b-A1-400 +0.0039 [+0.0017, +0.0060]; − A1-400 +0.0080 [+0.0063, +0.0097]; − A3-400 +0.0119 [+0.0099, +0.0138]; − A0 +0.0287 [+0.0247, +0.0330]. Queen rows 0.6627 (n 5,315).
+- Against the pre-registration (03:38Z): A11 ≈ A5 (yes; Δ inside [−0.003, 0]); A11 − A1 ≥ +0.005 with 5th pct > 0: **yes**; A11 − A8b-A1 ≥ +0.005: no (+0.0039); floor share below A5's: yes (6.4 % vs 11.2 %); model under 4 MiB in export: not measured (text 11.45 MB, the same class as A1-400). Falsifier not triggered. **hb_p adds nothing once the encoder and the HB-1 vector are both inputs.**
+- Registry build/hinata/r2/battery/A11-u/registry.json (sha e2e50514…; fit code r2_battery rev 8 b5346f3c…, wrapper r2_a11.py a758e1f5…, features 1,463, r2_bc.PARAMS, folds = A5-u's). Cloud core, 5 folds × ≈ 19 min. Fold models as gz on the Mac (models.sha256 = uncompressed).
+- RL translation: observation = encoder window ∪ HB-1 vector; no need to feed the parent's prior.
+
+**A10b-full** (D-064 §C; Mac job hinata-01, rc 0, 2 h 51 min, peak 7.38 GiB): 0.7280 [0.7254, 0.7312] on 2,753,685 full-row F/R/L rows, 496 series (series5 out-of-fold; early stop at epoch 5–7). On the dev120 games' rows (188,250, labels agree 100 %): 0.7284 [0.7196, 0.7383]; vs A8b-A1-400 +0.0060 [+0.0025, +0.0093], vs A1-400 +0.0100 [+0.0065, +0.0138], vs A5-400 +0.0017 [−0.0017, +0.0055], vs A0 +0.0307. Not like for like (≈ 14.6× training rows, different folds); A1-full (five one-fold jobs) is the fair comparison. Prior shape on those rows: 0.584 / 0.575 / floor 26.2 % / 2.27.
+
+**Single-team priors** (D-068 §5; Mac jobs 015/016 rc 0; deploy files model_all_400.txt): team 213 0.7541 [0.7476, 0.7603] (268,722 rows, 63 series), team 91 0.7133 [0.7092, 0.7175] (222,647 rows, 40 series), out-of-fold on the team's rows; vs A10b-full on the same rows +0.0579 [+0.0557, +0.0602] and +0.0292 [+0.0266, +0.0315]. Shape: 213 0.539 / 0.561 / 2.4 % / 2.19; 91 0.603 / 0.612 / 7.3 % / 2.15. A0 on the same rows: next unit.
+
+### Clone in play — entropy-matched λ for the team-213 prior: definition fixed before computing (appended 2026-10-05 05:37 UTC, hinata). D-075 §E.
+
+- **Ask (Chair 05:19Z):** beside the team-213 arm at λ 1, one arm at the λ where the tempered prior's mean entropy on the development rows equals the live prior's. λ is computed off-line, once, before any pool game of either arm; it is not tuned on any pool result.
+- **Tempered prior exactly as the slot plays it** (kageyama-02 policy.hpp, D-055 §E): q_i ∝ max(p_i / (p_F + p_R + p_L), 1e-4)^λ over i ∈ {F, R, L}; entropy H(q) in nats over these three.
+- **Model:** `build/learn/hinata/r2full/A1-team213/model_all_400.txt` (the deploy refit Kageyama exports), features by the model's own feature names.
+- **Rows (primary):** dev120 oracle F/R/L rows **not played by team 213** (the deploy model trained on 213's rows, so its entropy there is in-sample and too low). **Target:** mean H of the live prior (hb_pF/R/L, renormalised, same floor) on the same rows. **Secondary (reported, not used):** all 188,250 dev120 rows.
+- **Solve:** bisection on λ ∈ [0.5, 6] to |ΔH| < 0.001, rounded to 2 decimals. Also reported: λ = 1 entropy of the 213 model, and the same computation for A1-400 (dev OOF) so the λ 1.41 arm (−5.88 pp) can be placed on the same scale.
+- **Expectation:** λ ≈ 1.4–1.9 (213's in-sample 0.561 → 0.43). P(λ_match in [1.3, 2.0]) = 0.7.
+- **Queen columns** for both arms are the pool harness's (Asahi); no extra metric of mine.
+- RL translation: λ is the actor's inverse temperature on the demonstration prior; matching the live prior's entropy isolates content from sharpness.
+
+### Results: entropy-matched λ, and A1-full vs A10b-full (appended 2026-10-05 05:45 UTC, hinata). Descriptive.
+
+**λ_match (definition fixed above).** Rows: dev120 oracle F/R/L rows not played by team 213, 174,468 rows, 46 series, post-m2. Live prior (hb_pF/R/L, renormalised, floor 1e-4) mean entropy **0.4228** nats.
+
+| Prior on these rows | acc (F/R/L argmax) | H at λ 1 | H at λ 1.41 | **λ_match** | log-loss at λ 1 / λ_match |
+|---|---|---|---|---|---|
+| team-213 deploy model (model_all_400) | 0.6954 | 0.5304 | 0.4303 | **1.45** | 0.681 / 0.772 |
+| A1-400 (dev OOF, pooled) | 0.7197 | 0.5810 | 0.4829 | 1.72 | 0.599 / 0.663 |
+| live prior (A0) | 0.6977 | 0.4228 | — | 1 | 0.745 |
+
+All 188,250 rows (secondary): team-213 λ_match 1.44 (in-sample on 213's 13,782 rows), A1-400 1.73, live 0.4257. Queen rows (not 213, 4,810): live 0.371 vs team-213 at λ 1 0.483. Expectation λ in [1.3, 2.0] (P 0.7): yes.
+- **Arm requested: team-213 prior at λ 1.45** (beside λ 1). Read-across: the A1-400 arm at λ 1.41 (−5.88 pp) was still softer than the live prior (0.483 vs 0.423); A1-400 needs λ 1.72 to match.
+- **Note for the route:** on other teams' rows the team-213 model predicts no better than the live prior (0.6954 vs 0.6977) and worse than pooled A1-400 (0.7197): it is a 213 imitator, not a better general predictor. Its in-play value is untested; the pool is the test.
+
+**A1-full vs A10b-full** (Mac jobs hinata-02a…02f rc 0, r2_full rev 4 908647…; full teacher rows, 2,753,685 F/R/L rows, 496 series, series5 out-of-fold, identical rows/folds/labels; paired whole-series bootstrap 1,000 × seed 7, linear 5/95):
+- **A1-full 0.7379 [0.7352, 0.7409]; A1-full − A10b-full +0.0099 [+0.0089, +0.0107]**; positive on all 14 maps (+0.004 Around UNSW … +0.032 Trophy); queen rows (52,783, 184 series) **+0.0421 [+0.0342, +0.0506]** (0.7334 vs 0.6913); team 213 rows +0.0211, team 91 +0.0116.
+- On the dev120 games' rows: A1-full 0.7392 (out-of-fold; folds differ from the development table's) vs A1-400 dev 0.7184 and A10b-full 0.7284 — the data size step (≈ 15×) is worth ≈ +0.02 for trees.
+- Shape (F/R/L): A1-full log-loss 0.5647, entropy 0.5856, floor share 9.6 %; A10b-full 0.5819 / 0.5694 / 26.5 %.
+- Registry: build/learn/hinata/r2full/A1-full/registry.json (code r2_battery fit path b5346f…, r2_full rev 4; rows_sha 6f531e91…; 270 features; r2_bc.PARAMS; 400 rounds; fold models 11.4 MB text each).
+- RL translation: with the full demonstration set the hand-built vector + trees beat the small CNN on the raw window by ≈ 1 pt overall and 4 pts on queen decisions; the actor's observation should keep the HB-1 vector.
+
+### A1-full deploy refit — pre-registration (appended 2026-10-05 05:45 UTC, hinata)
+- **What:** `r2_full.py trees --arm A1 --final --sizes 400 --run build/learn/hinata/r2full/A1-full` — reloads the five fold models (no refit, same scores), then one refit on all 2.75 M rows → `model_all_400.txt`. One job, ≈ 5–10 min, peak ≈ 5 GiB.
+- **Use:** the pooled prior candidate for the slot (for Kageyama's export) after the team-213 arms read; its λ_match computed by the definition above (dev120 rows, in-sample for this model on all of them, so reported as in-sample). No pool arm is requested by this card; any arm gets its own declared λ.
+- **Expectation:** CV metrics unchanged to 4 decimals (P 0.95); λ_match(in-sample) in [1.6, 2.1] (P 0.6).
+- Stop rule: one refit, no tuning.
+
+### Result: A1-full deploy refit and its λ_match (appended 2026-10-05 06:40 UTC, hinata). Descriptive; no pool game read.
+- **Job hinata-05-a1-full-final rc 0** (Mac, 06:26–06:31Z; load 42 s, refit 257 s, peak 8.38 GiB). CV metrics unchanged (fold models reloaded): A1-400 0.7379 [0.7352, 0.7409], n 2,753,685, queen 0.7334 — expectation "unchanged to 4 decimals" (P 0.95): **yes**. Artifact: `build/learn/hinata/r2full/A1-full/model_all_400.txt` (11.4 MB text, sha256 60c57a64c41eba85…, 270 features, 400 rounds, rows_sha 6f531e91…, code b5346f3c…/r2_full rev 4).
+- **λ_match (definition above), dev120 oracle F/R/L rows not played by 213 (174,468 rows, 46 series, post-m2; live H 0.4228):**
+
+| A1-full prior on these rows | acc | H at λ 1 | **λ_match** | H at λ 1.72 | log-loss λ 1 / λ_match |
+|---|---|---|---|---|---|
+| deploy model, in-sample (trained on these rows) | 0.7491 | 0.5844 | **1.76** | 0.4295 | 0.548 / 0.575 |
+| series5 out-of-fold | 0.7404 | 0.5864 | 1.77 | 0.4315 | 0.563 / 0.600 |
+| live prior | 0.6990 | 0.4228 | 1 | — | 0.745 (from lam.json) |
+
+  All 188,250 rows: 1.765 in-sample / 1.777 OOF. Expectation λ_match(in-sample) in [1.6, 2.1] (P 0.6): **yes**.
+- **Reading:** A1-full's λ_match (1.76) is within 0.04 of A1-400's (1.72), and A1-full at λ 1.72 has H 0.430 vs live 0.423. So the Chair-ordered arm **A1-400 @ λ 1.72** (D-076 §D) is, in sharpness, also the A1-full arm; a later A1-full arm at **λ 1.76** isolates the content/data step (+0.02 accuracy off-line) at fixed entropy. No arm requested by this note beyond D-076's queue.
+- Hand-off (Kageyama): A1-full export = same input path and feature order as A1-400; declared λ for any A1-full arm **1.76**.
+- RL translation: the full-data demonstration prior is softer than the live hand prior at λ 1 by 0.16 nats; matching entropy needs inverse temperature ≈ 1.76 — the actor's temperature must be set per prior, not inherited.

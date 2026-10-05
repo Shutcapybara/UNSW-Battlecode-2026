@@ -7,61 +7,50 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 17, 2026-10-05 ~03:00Z)
+## Top — read this first (unit 20, 2026-10-05 ~05:57Z)
 
-- **Last BOARD line read:** 1159 (kenma 02:39Z). Posted 1160 (16979 early watch, ~03:00Z). Next unit reads from 1161.
-- **LIVE = 16979 (`asahi-05-kz12-k16`, k = 16) since 02:13:22Z; D-069 (Chair 02:22Z) records the promotion;** rollback
-  target 14585. No second promotion before 14:13Z. New candidates are built on asahi-05-kz12-k16 (D-069).
-- **Early watch (02:51Z monitor, ranked, post-m2):** 10/40 ranked games, 2 series (opp 303 1-4, opp 420 2-3, both
-  lower-rated), W-L 3-7, score − E −0.439 [−0.522, −0.357] (2 series, not informative); Elo 1725 → 1643, rank 90 → 110.
-  Replay-side fault scan of all 10 games: 0 TLE, 0 MC_ERROR, cpu max 10.81 M → no crash/DQ, no rollback.
-- **Open contradiction (posted 1160):** 4/7 losses end at round 500 with 16979 holding the longer decoded longest
-  dragon (1098984, 1098987, 1099081, 1099082); 14585's last 25 ranked: 2 such (1092918, 1094553). Analysts asked.
-  Tool: `build/daichi/tmp/sidescan.py <game ids>` (decodes corpus replays into build/daichi/tmp/rep/; side from header).
-- **Rollback watch D-052 §B (adopted):** after 16979's first 40 ranked games, roll back to 14585 when mean score −
-  expectation < −0.08 with series-bootstrap 95th pct < 0 (difference vs 14585's last-120 reference per D-052 §B), or
-  on any crash/DQ: restore.json {"previous":14585,"candidate":"asahi-05-kz12-k16","reason":…}; then BOARD + notify.
-  Sugawara forecast P(fires in first 40) 0.08. Sugawara 02:28Z: my LS-1 +0.080 used the later of duplicated opp-98
-  games; admissible range +0.0625…+0.080; conditions hold under all; Rec 21 (freeze pairing rule) is for the next screen.
-- Hub: no API/quota errors. r/daichi 2f1410d5e pushed (origin matches). Unit 17 commit + push requested ~03:00Z.
+- **Last BOARD line read:** 1225 (my own D-075 §B(1) line, 05:5xZ; 1224 = Asahi's bokuto-04 probe OK). Next unit reads from 1226.
+- **LIVE = 17388 (`kenma-03-pocket-queen`), D-074 §B / D-075 §B TRIAL 1, not a promotion.** First ranked series 05:02Z.
+  Interim at 25 games / 5 series: score − E @1725 +0.075 [−0.061, +0.219], perf 1782 [1679, 1884]; vs 14585's last 120
+  before 02:13Z +0.118 [−0.047, +0.315]. Queen alive at the end 0/25, queen-rule 0–2, 0 faults. Elo 1767, rank 78 (05:50Z).
+- **Anchor correction (posted):** ladder rating went 1605 (04:47Z) → 1721 (04:58Z, after restore to 14585) → 1702 → 1778 → 1767;
+  the server rating follows the active submission, so the activation anchor is 1721 ≈ the fixed 1725.
+- **D-075 orders:** primary statistic = mean(score − E) with our rating fixed at 1725, series bootstrap 5/95, plus perf rating
+  and the activation-anchor figure for every window: `python3 build/daichi/tree/tools/daichi/trial_d075.py --ref
+  14585:2026-10-05T02:13:00Z:120 --sub 17388 [--sub <bokuto id>] [--maxgames 60]` (PYTHONDONTWRITEBYTECODE=1).
+  Trial 2 = `bokuto-04-queen` directly after trial 1 (no return to 14585). Then control: restore 14585, read its next 60
+  with the same statistic vs its own last 120 before 02:13Z. End rule: highest primary statistic without fault becomes the
+  incumbent; a lead < 0.03 over the control keeps 14585. Registry REG-005 (kenma-03), REG-006 (bokuto-04).
+- **Trial 2 ready:** Asahi's deploy probe OK (BOARD 1224: zip 3,928,551 B, max 12.86 M pts/turn, first turn 12.47 M, 0 errors,
+  runtime ff68a709). Byte copy in build/daichi/stage/bokuto-04-queen (tree sha256 3e31f947… = source; fingerprint recomputed
+  ff68a7093aa3e5f6… = source). The copy includes `.unswbc-build/` and `.gitignore`: exclude build output from the
+  registration (as for kenma-03, use the zip `unswbc submit` builds, or register the source files only).
+- D-073 owed code items unchanged (seat field, end reason `queen`, frozen pairing rule, then redeploy).
+- No API/quota errors in *.done.json.
 
 ## Next unit
 
-1. Read BOARD from 1161 (look for answers to 1160).
-2. Monitor: 16979 ranked n/40, mean − E with interval, Elo/rank; run sidescan on new 16979 ranked games for faults
-   (any TLE/MC_ERROR on our side → rollback at once).
-3. At n ≥ 40 ranked: apply D-052 §B exactly (candidate window vs 14585 last-120 reference); post either way.
-4. Redeploy question: blind fix may deploy (LS-1 closed) — still waits on the Chair (H11/restart).
-
-## battles.json — what it does
-
-Request: `{label, by, decision, note, arms:[{submission}|{candidate}], opponents:[ids], maps:[names]|omit, seats:"both",
-games_per_pair:2, max_games, deadline_hours}`; actions `enable` / `disable` (need `decision`) and `cancel`.
-Answer: `battles.done.json`. Job state and per-game rows + paired report: `hub-state/battles/<job>.json`, index
-`hub-state/battles/index.json` (refreshed every 5 min).
-- Units = one opponent × a chunk of ≤ 5 maps × every arm, back to back (arm order shuffled per unit); `seats: both`
-  posts the chunk twice in the D-022 rotation, so each map is played at both id parities (layout = f(map, parity)).
-- Every POST goes through `executor.request_batch`: reserve → temporary activation of a non-live arm → POST →
-  restore. A non-live arm is never dispatched in the even-hour blackout (−8/+12 min) or while one of our ranked series
-  is in flight. A whole unit must fit the pool's rolling-hour allowance minus a reserve (field 10, dev 5) and ≤ 40
-  games per 5-minute pass. A lost restore is repaired before any dispatch.
-- A job pauses when the live submission differs from the one it was accepted under (human activation), and expires
-  at its deadline. Games are harvested by the executor's own harvest (runs in shadow mode too), `block_id = job:<id>`;
-  the collector watches team 7, so replays also land in `public_replays/corpus`.
-- Paired report: candidate − reference by (opponent, map, parity); missing/unverified cells dropped and counted;
-  cluster bootstrap over opponents, 1,000 resamples, seed 7, 5th/95th percentile.
-
-**Budget arithmetic:** a full LIVE_MAPS_M2 screen, 2 arms × 17 maps × 2 seats = 68 games per opponent. At the field
-allowance (60/h, minus teammates and reserve) that is ~1 opponent per hour; 60 matched pairs need ~2 opponents ≈ 2–3 h.
-Dev opponents (545, 752) have their own 60/h.
+1. Read BOARD from 1226. Run live_monitor (active must be 17388 until I switch) and `sidescan2.py --sub 17388`
+   (any TLE, caught error or DQ ends the trial at once).
+2. **Trial-1 look** at the first series boundary at or after 60 ranked games of 17388 (~08:00Z): trial_d075.py with
+   `--maxgames 60`; queen column + map table from sidescan2. Post it. Then directly register (REG-006) and upload+activate
+   bokuto-04-queen from the stage copy (submit.json; expect a 409 while compiling, the server auto-activates when ready);
+   re-read status.json active; BOARD; PushNotification (upload/activation).
+3. Trial 2 look at its 60-game boundary (~11:00Z), then restore 14585 (restore.json candidate = Bokuto's submission id),
+   control 60 games (~14:00Z), apply the end rule, post, notify.
+4. D-073 code items; tests in $HOME/daichi-test; redeploy.
 
 ## Open questions for the Chair
 
-- Redeploy (main holds submit_check fix + reserve 5 + blind fix): waits on the Chair's restart-loop post (D-057 §A,
-  D-060 §D); blind fix deploys only after LS-1 closes (D-064 §B).
+- None open (redeploy done by the Chair 04:06Z, D-073).
 
 ## Units
 
+- 2026-10-05 ~05:57Z unit 20 — read BOARD 1213–1224, D-075. trial_d075.py written; 17388 interim 25 games +0.075 @1725; anchor correction; bokuto-04 staged + fingerprint verified; BOARD 1225.
+- 2026-10-05 ~05:12Z unit 19 — read BOARD 1180–1212, D-073, D-074. D-052 §B fired on 16979 (−0.263, 95th −0.126)
+  → restored 14585 04:53Z; registered + uploaded kenma-03 (17388), live 05:02Z as the D-074 trial; BOARD 1213–1214; user notified.
+- 2026-10-05 ~03:55Z unit 18 — read BOARD 1160–1178, D-070, D-071. 16979 29/40 ranked, interim diff −0.263
+  (95th −0.085); queen column added (sidescan2.py); posted BOARD 1179. No action.
 - 2026-10-05 ~03:00Z unit 17 — read BOARD 1150–1159, D-069. 16979 10/40 ranked, −0.439 (2 series), Elo 1643;
   0 faults by replay scan; posted early watch + round-500 contradiction (BOARD 1160). No action.
 - 2026-10-05 ~02:20Z unit 16 — read BOARD 1100–1140, D-068. LS-1 expired at deadline; D-064 table posted (BOARD

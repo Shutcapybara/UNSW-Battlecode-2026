@@ -56,7 +56,7 @@ Sugawara 0.75 (0.60 before replication) / 0.45 / 0.25 / 0.15; Tanaka 0.55 / 0.40
 
 **Scored event (D-064 §B), k = 16:** no rollback under D-052 §B within the first 120 ranked games, given promotion
 and observation to 120 games. Forecasts: **Tanaka 0.85** (22:25Z), **Sugawara 0.87** (22:30Z), **Nishinoya 0.85** (22:52Z).
-**Running since the promotion at 5 Oct 02:13Z (D-069).** Sugawara, 02:28Z: P(D-052 §B fires within 16979's first 40 ranked games) 0.08. Nishinoya also gave P(LS-1 shows harm) 0.10 and P(live Weakhold gain ≥ 10 points sustained) 0.60 (not scored).
+**Outcome (D-075 §A): 0.** D-052 §B fired at 45 ranked games and 16979 was rolled back at 5 Oct 04:53:55Z. Sugawara, 02:28Z: P(D-052 §B fires within 16979's first 40 ranked games) 0.08, revised to 0.75 at 29 games (03:34Z); neither is council-scored. Nishinoya also gave P(LS-1 shows harm) 0.10 and P(live Weakhold gain ≥ 10 points sustained) 0.60 (not scored).
 
 **Author's forecasts, full-row refit (D-065 §C), not council-scored:** Hinata: best tree ≥ 0.75 on the full rows 0.40;
 A10b on the full rows beats the trees (paired 5th percentile > 0) 0.15.
@@ -92,11 +92,29 @@ fixed in D-055.
 | P-7 | D-063 §D, entry throughput ≥ 1×10⁷ decisions an hour on ≤ 8 cores | **pass** (1.89×10⁸; at least 8.4×10⁷ under the worst core accounting; D-066 §B) | Sugawara | 0.75 | 0.0625 |
 | P-7 | same | pass | Tanaka | 0.55 | 0.2025 |
 | P-7 | same | pass | Nishinoya | 0.50 | 0.25 |
+| P-A02 (REG-002) | D-064 §B: no rollback under D-052 §B within the first 120 ranked games | **rolled back** at 45 games (−0.263 against 14585's last 120; 95th percentile −0.126; D-075 §A) | Tanaka | 0.85 | 0.7225 |
+| P-A02 (REG-002) | same | rolled back | Sugawara | 0.87 | 0.7569 |
+| P-A02 (REG-002) | same | rolled back | Nishinoya | 0.85 | 0.7225 |
 
 ## Running means
 
 | Seat | Cards scored | Mean Brier |
 |---|---|---|
-| Tanaka | 4 | 0.144 |
-| Sugawara | 4 | 0.139 |
-| Nishinoya | 4 | 0.216 |
+| Tanaka | 5 | 0.260 |
+| Sugawara | 5 | 0.263 |
+| Nishinoya | 5 | 0.317 |
+
+**Closed (D-075 §A).** The council was dissolved by D-072 §B; no further events are scored. Ten scored cards were
+never reached, so rotation by score did not come into use. The largest single error of every seat is the last
+entry: all three put at least 0.85 on the k = 16 promotion surviving its rollback rule.
+
+**Chair's forecast on file (D-075 §E), not council-scored:** the team-213 prior at λ 1 is not below the incumbent on
+the seed-1 pool (paired 5th percentile above −5 points): 0.12; point forecast −8 points.
+
+**Chair's forecasts on file (D-076 §D), not council-scored** (pool difference against carthage-05; P that the paired
+5th percentile is above −5 points): A1-400 at λ 1.72: −2 points, 0.35. The team-213 prior at λ 1.45: −4 points,
+0.25. Sugawara (owner, 05:30Z): q2b's pool 5th percentile above −5 points 0.55; q2b at least +5 points over
+carthage-05 on the queen-keeper panel 0.40.
+**Outcome of the owner's two q2b forecasts (Asahi, 06:19Z):** pool −2.39 points [−5.89, +0.92] (5th percentile below
+−5: event failed, Brier 0.3025); keeper panel against `bokuto-04-queen` 12 of 34 against 16 of 34 (event failed,
+Brier 0.16).

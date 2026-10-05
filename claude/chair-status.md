@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (the Chair's own shell still fails after the disk reset, with a permission error; files move by copy and the keeper commits them). Updated 5 Oct 2026 04:08Z (unit 21). Next self-wake 04:40Z. Branch `r/ushijima`; private tree
+State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 06:20Z (unit 26). Next self-wake about 07:15Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,36 @@ State: ACTIVE (the Chair's own shell still fails after the disk reset, with a pe
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-076: ratings belong to submissions, so trials are free.** The organisers' rating page and Daichi's snapshots
+  agree: 14585 came back at 1721 when restored; 17388 runs on its own rating (1767, rank 78, at 05:50Z). A trial
+  costs only time on the live slot. Any candidate with a passing probe and a pool not below carthage-05 may be
+  queued. **Trial 2 is `bokuto-13-cull`** (70–31–1 against carthage-05 by Bokuto's run) **if Asahi's same-host pool
+  reaches 226 wins and its probe passes by 07:45Z; otherwise `bokuto-04-queen`** (probe passed). **Queen:** Sugawara
+  showed that 38 of Bokuto's 42 queen-decided pool wins are games carthage-05 also won, so the pool does not show
+  that queen keeping wins; builds move to carthage-05 (q1-cage, then q2b-crown = Bokuto's queen lines alone). The
+  keeper panel: carthage-05 32–36, k = 16 35–33, our queen alive 0 of 95; no sign that k = 16 costs the queen.
+  **Clone:** A1 on the full rows 0.7379 beats the network (+0.0099); entropy-matched weights 1.45 (213) and 1.72
+  (A1-400); the λ 1.72 arm runs now, the 213 arms wait for Kageyama's export. Chair's forecasts: −2 and −4 points.
+  **First isolating builds (06:19Z):** q1-cage equals carthage-05 on the pool and saves the Schooltime queen in 3 of
+  14 games; q2b-crown (Bokuto's queen lines alone) is −2.4 points on the pool and −7.4 on the keeper panel. Neither
+  mechanism transfers as one switch; the Chair suggests leave-one-out from the free-lane bot instead.
+- **D-075: k = 16 is rolled back.** Daichi restored 14585 at 04:53:55Z under D-052 §B: 45 ranked games, score minus
+  expectation −0.263 against 14585's last 120 (95th percentile −0.126); alone 16–28; queen-rule 1–14; no fault. The
+  cause is not established (noise, a change in the field, or the veto exposing the queen). **The Kenma trial runs
+  as submission 17388 since 05:02Z** (60 ranked games, about 08:00Z). Its statistic is re-anchored at rating 1725
+  for every window (an anchor of 1605 would credit the trial bot about +0.16 a game). **`bokuto-04-queen` is the
+  second trial** (pool 226–46 = carthage-05; queen-decided 42–4; queen alive in 23 % of round-limit games), then a
+  60-game control on 14585; the best of the three windows becomes the incumbent. Kenma's pool is 220–52 (queen logic
+  acts on Schooltime only). Single-team priors are fitted: team 213 0.7541 on its own rows; the 213 prior at λ 1
+  and at an entropy-matched weight go to play (Chair's forecast: −8 points). **Kageyama solved the bed schedule
+  exactly** and rebuilt Devil's second layout (49 % of live Devil games); four maps follow; the pool will be re-zeroed
+  on the variants. The keeper is unblocked.
+- **D-074:** the clone's play tests are in: no prior −13.1 points, A1 at λ 1 −13.6, A1 at λ 1.41 −5.9, A3 −7.0; the
+  arms order by sharpness, not accuracy; no arm reaches the incumbent; the route is Hinata's. The network on the full
+  rows reaches 0.7280 with a much sharper prior than the trees. **A ladder trial of `kenma-03-pocket-queen` is
+  approved:** active for 60 ranked games after Daichi's reading on 16979, then the incumbent is restored and the
+  Chair rules. Bokuto's `bokuto-07-dodge` (60–42 against carthage-05) is next once its checks are posted. The keeper
+  is blocked again on a tracked cache file; the lead is asked to untrack the folder.
 - **D-073: the hub restarts by itself and is redeployed** (snapshot 67384f265, back at 04:06:45Z): the upload fix, the
   field reserve of 5 and the blinding are live; the redeploy ban is lifted. The lead reset the Cowork session disk at
   about 04:00Z; lanes report whether their shells work; the Chair's own shell still fails (permission error).
@@ -122,7 +152,10 @@ State: ACTIVE (the Chair's own shell still fails after the disk reset, with a pe
 
 ## Incumbent
 
-- **`asahi-05-kz12-k16`, submission 16979, live since 5 Oct 02:13Z (D-069).** Fallback and rollback target: `carthage-05-free-sprint`, 14585 (live 2 Oct 04:22Z to 5 Oct 02:13Z). The figures below are 14585's.
+- **`carthage-05-free-sprint`, submission 14585, incumbent again since 5 Oct 04:53:55Z (D-075 §A).** `asahi-05-kz12-k16`
+  (16979) was live 02:13Z to 04:53Z and is rolled back. The live slot is held by ladder trials: `kenma-03-pocket-queen`
+  (17388) since 05:02Z. Our Elo is about 1605 (rank 120) after 16979's window. The figures below are 14585's, before
+  02:13Z.
 - Elo trend and drift (Daichi's monitor, 16:53Z, ranked, post-m2, series bootstrap 5th/95th percentiles, inputs
   frozen): since activation −0.018 [−0.042, +0.009] (950 games, 192 series); last 40 games +0.026 [−0.108, +0.169];
   Elo 1722, rank 85. Schooltime −0.480 [−0.517, −0.440] (61 games; cage open −0.519, closed −0.447), weakhold −0.35
@@ -137,13 +170,16 @@ State: ACTIVE (the Chair's own shell still fails after the disk reset, with a pe
 |---|---|
 | Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): by accuracy A8b 0.7224, A1 0.7184, A4 0.7205 (not selectable), A3 0.7145, live prior 0.6977; **in play the A3 placeholder loses 7 points on the pool; selection suspended (D-068)**. P-6: behind the battery. P-7: entry throughput passed; no training. P-8 (latent state): stage S0 approved |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | Done: slot parity at off 272/272; placeholder screens FAIL at λ 1 and 0.5. Ordered (D-068 §C, seed-1 pool): fallback count; `kageyama-02-p1-hb1` (A1) at λ 1; carthage-05 with no prior; A1 at λ 1.41; single-team priors (213, 91). Learn queue behind these |
-| Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) |
-| Uploaded, inactive | 14585 (carthage-05, rollback target), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
-| Live screen | none running. LS-1 ended at 160 games (75 pairs, +0.080 [−0.029, +0.187]) |
+| Evaluator queue (Asahi) | Done since 05:18Z: probe of `bokuto-04-queen` (pass); queen-keeper panel for both parents; `asahi-21-q1cage-c05` and `asahi-25-q2bcrown-c05` pools and keeper panels. Order now (D-076): pool and probe of `bokuto-13-cull` (by 07:45Z); A1-400 at λ 1.72; the 213 prior at λ 1 and λ 1.45 when the export lands; `bokuto-02-vac` pool (running); Hinata's one-fold learn jobs between them; variant-map re-zero when `maps/live_var/` lands |
+| Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) and rolled back at 04:53Z (D-075 §A) |
+| Uploaded, inactive | 14585 (carthage-05, incumbent, waiting behind the trials), 16979 (k = 16, rolled back), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
+| Live screen | **trial 1: `kenma-03-pocket-queen` = 17388, live since 05:02Z** (25 games at 05:34Z, no fault); look at the first series boundary at or after 60 ranked games (about 08:00Z). **Trial 2: `bokuto-13-cull` if its same-host pool reaches 226 wins and its probe passes by 07:45Z, else `bokuto-04-queen`** (D-076 §B). Then a 60-game control on 14585. Statistic: score minus expectation at rating 1725, series bootstrap; best window becomes the incumbent (lead under 0.03 keeps 14585). Further candidates may queue (D-076 §A) |
 
 ## Facts settled this unit
 
+- **Each submission has its own ladder rating** (organisers' rating page; Daichi's snapshots). The team's rating is
+  the active submission's; re-activation brings a submission's rating back; a new one starts from the rating of the
+  submission it replaces and moves fast at first (D-076 §A).
 - The engine is the same binary in wheels 1.2.3, 1.2.5 and 1.2.9 (`unswbc_engine.wasm` sha256 `26e68680…a546`). The
   wheels differ only in version string, replay viewer and map templates. Results across them are comparable on the
   same maps.
@@ -157,12 +193,14 @@ State: ACTIVE (the Chair's own shell still fails after the disk reset, with a pe
 |---|---|---|
 | Chair | Ushijima (Claude) | active |
 | Council, auditor | Tanaka (GPT) | deactivated by the lead; council dissolved (D-072 §B) |
-| Queen owner (was council, mechanism) | Sugawara (Claude), hourly at :25 | owns the queen problem since D-072 §C; analyst Shenzhen; builds and screens by Asahi |
+| Queen owner (was council, mechanism) | Sugawara (Claude), hourly at :25; shell works | owns the queen problem (D-072 §C); q1-cage: no gain; q2b-crown: a loss on the pool and the keeper panel; both forecasts failed; next step is its choice (Chair's suggestion: leave-one-out from the free-lane bot) |
 | Council, probe | Nishinoya (GLM) | deactivated by the lead |
-| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | both slot bots and logging builds on main; **next: rebuild the hidden bed layouts (D-072 §E)**, then single-team exports, then the trajectory block |
-| Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | owns "a learned prior that wins in play" (D-072 §D); A11 fitting; single-team fits and one-fold full-row jobs queued |
-| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session since 23:05Z | working: placeholder screens posted 01:10Z (FAIL); diagnostics queue of D-068 §C |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | activated 16979 at 02:13Z; watching its first 40 ranked games under D-052 §B |
+| Data | Kageyama (Claude), `r/kageyama`, fresh session since 05:00Z | **bed schedule solved; Devil's second layout rebuilt (D-075 §F)**. Next: export the team-213 prior, then the four remaining bed variants into `maps/live_var/`, then the network inference estimate and the trajectory block |
+| Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | A1-full 0.7379 (beats the network); A11 = A5; λ_match 1.45 (213) and 1.72 (A1-400); arms queued with Asahi; A1-full deploy refit queued |
+| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session after the reset | working: both free-lane pools posted with queen columns; learn-runner library fix; queue as in the table above |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50; shell works | trial 1 running (17388); statistic script `tools/daichi/trial_d075.py`; holds a byte copy of `bokuto-04-queen` for trial 2; hub items: seat field, end reason `queen`, frozen pairing rule |
+| Free lanes (outside the ladder) | Kenma; Bokuto | Kenma: `kenma-03-pocket-queen` on trial; `kenma-21` 60–42 against carthage-05. Bokuto: `bokuto-13-cull` 70–31–1 against carthage-05 by its own run; shell down, trees uncommitted in `../wt-bokuto` |
+| Analyst | Shenzhen | stopped by the lead (D-074 §C); units 36–39 uncommitted unless Kageyama ran its commit command (not reported) |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
 
@@ -179,24 +217,26 @@ State: ACTIVE (the Chair's own shell still fails after the disk reset, with a pe
 | H9 | Windows quota runner | closed: the lead does not know of one; replaced by Daichi's ledger check (D-050 §4) |
 | H10 | Wake the Asahi (Evaluator) session | closed: Asahi working since about 17:15Z |
 | H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | **closed 04:07Z**: loop started by the lead, redeploy tested (D-073 §A) |
-| H12 | The Cowork VM session disk was full | **reset by the lead about 04:00Z**; lanes to confirm their shells; the Chair's own shell still fails (permission error on its old session folder); the backup image can be deleted once lanes confirm; expect a refill in one to three days |
+| H12 | The Cowork VM session disk was full | **reset by the lead about 04:00Z**; fresh sessions work (Sugawara, Daichi, Kageyama, Asahi); the Chair's device shell and Bokuto's still fail; the backup image `~/Desktop/sessiondata.img.bak` can be deleted; expect a refill in one to three days |
 | H13 | Kageyama cut off | closed: fresh session working since 21:16Z |
-| H15 | Free lanes | Kenma running since before 01:28Z (started by the lead); a second lane not seen yet |
+| H15 | Free lanes | Kenma and Bokuto both running; Bokuto needs a fresh session to commit its tree |
 | H14 | Mac disk | closed: 74 GB deleted with the lead's approval; 102 GB free |
 
 ## Next three decisions
 
-1. **16979 at 40 ranked games:** Daichi's D-052 §B reading (interim at 29 games: both conditions hold); on a
-   rollback, the record.
-2. **The clone in play:** Asahi's three runs of D-068 §C, then Hinata's choice of route (D-072 §D).
-3. **The queen:** Sugawara's first candidate and its screen (D-072 §C).
+1. **Trial 2's bot** at 07:45Z: `bokuto-13-cull` or `bokuto-04-queen` (D-076 §B); then Daichi's table for 17388 at 60
+   ranked games (about 08:00Z).
+2. **The queen:** Sugawara's next step after q1-cage (no gain) and q2b-crown (a loss): leave-one-out from the
+   free-lane bot, or another route of its choosing.
+3. **The clone in play:** A1-400 at λ 1.72, then the 213 prior at λ 1 and λ 1.45.
 
-Waiting on the lead: nothing blocking. Optional: a fresh Chair session (the present one has no shell), and deleting
-`~/Desktop/sessiondata.img.bak` once the lanes confirm their shells.
+Waiting on the lead: nothing blocking. Optional: a fresh session for Bokuto (its trees are uncommitted) and for the
+Chair (no device shell), and deleting `~/Desktop/sessiondata.img.bak`. Unanswered, not acted on: whether Asahi's
+cards should carry a curve block (the summary-statistics curve by round).
 
 ## Cursor
 
-Last BOARD line read: line 1179 (Daichi 03:54Z), main tree. Own D-072 lines follow.
+Last BOARD line read: line 1230 (Asahi 06:19Z, with its sub-lines), main tree. Own D-076 line follows.
 
 ## Open flags
 
@@ -211,6 +251,7 @@ Last BOARD line read: line 1179 (Daichi 03:54Z), main tree. Own D-072 lines foll
   (D-050 §8).
 - Asahi found that the `dragons` table marks the queen dead on 24 of 544 pool sides where the engine's result block
   has it alive. Queen-survival numbers built from that table undercount; Kageyama is asked to diagnose.
+- **Bed variants, update (D-075 §F):** the schedule is solved and Devil's second layout rebuilt; the discount on the five maps below stands until the pool is re-zeroed on `maps/live_var/`.
 - Hidden bed variants: Kageyama's oracle reproduced 97 of 118 server games; all 21 failures are on Slithery Fight,
   Schooltime, Queen of Spades, Prisoners Dilemma and Devil. About 15 % of live ranked games run on bed layouts our
   templates lack (Nishinoya, unaudited). Local panels on those five maps are discounted as transfer evidence.
