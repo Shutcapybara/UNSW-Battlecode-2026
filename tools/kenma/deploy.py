@@ -14,11 +14,30 @@ MAIN=ROOT.parent/'UNSW-Battlecode-2026'
 OUT=MAIN/'build/kenma'
 sys.path.insert(0,str(ROOT))
 sys.path.insert(0,str(Path(__file__).parent))
-from panel import check_space, monitor, STOP, fingerprint
+from panel import check_space, monitor, STOP, fingerprint, ACTIVE, LOCK
+
+def run_child(argv):
+    """Keep each helper in a process group the aggregate resource guard can stop."""
+    if STOP.is_set():
+        raise RuntimeError('Deployment resource guard stopped the run')
+    env=dict(os.environ, KENMA_DEPLOY_CHILD='1')
+    p=subprocess.Popen(argv, start_new_session=True, env=env)
+    with LOCK:
+        ACTIVE.add(p.pid)
+    try:
+        rc=p.wait()
+    finally:
+        with LOCK:
+            ACTIVE.discard(p.pid)
+    if STOP.is_set():
+        raise RuntimeError('Deployment resource guard stopped the run')
+    if rc:
+        raise subprocess.CalledProcessError(rc, argv)
 
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('bot'); ap.add_argument('--one', nargs=2, metavar=('MAP','SEAT'))
+    ap.add_argument('--build', action='store_true', help=argparse.SUPPRESS)
     a=ap.parse_args()
     assert os.getpriority(os.PRIO_PROCESS,0)>=15
     check_space()
@@ -29,7 +48,14 @@ def main():
     os.environ['UNSWBC_WARM']='1'
     os.environ['OMP_NUM_THREADS']='1'
     os.environ['PYTHONDONTWRITEBYTECODE']='1'
-    threading.Thread(target=monitor,daemon=True).start()
+    if a.one or a.build:
+        assert os.environ.get('KENMA_DEPLOY_CHILD')=='1', 'Internal helpers must run under the parent resource guard'
+    else:
+        threading.Thread(target=monitor,daemon=True).start()
+    if a.build:
+        from unswbc import clangtool
+        clangtool.build(src)
+        return
     if a.one:
         from tools.cx.arena import run_game
         m,seat=a.one
@@ -62,11 +88,11 @@ def main():
     print('zip',size,flush=True)
     # Build serially so games never race on the source-only toolkit wasm cache key.
     for b in (src,ROOT/'bots/carthage-05-free-sprint'):
-        clangtool.build(b)
+        run_child([sys.executable,'-B',str(Path(__file__).resolve()),b.name,'--build'])
     for m,seat in [('schooltime','A'),('schooltime','B'),('unsw','A'),('unsw','B')]:
         check_space()
         if not (out/f'{m}-{seat}.json').exists():
-            subprocess.run([sys.executable,'-B',str(Path(__file__).resolve()),a.bot,'--one',m,seat],check=True)
+            run_child([sys.executable,'-B',str(Path(__file__).resolve()),a.bot,'--one',m,seat])
     results=[json.loads((out/f'{m}-{seat}.json').read_text()) for m,seat in [('schooltime','A'),('schooltime','B'),('unsw','A'),('unsw','B')]]
     assert all(r['candidate_fingerprint']==fingerprint(src) for r in results), 'Refusing stale deployment results'
     peak=max(r['stats'][r['candidate_seat']]['points']['max'] for r in results)
