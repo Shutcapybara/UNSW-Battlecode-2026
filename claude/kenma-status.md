@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 04:49 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access or submission. A bounded03 ladder trial was requested04:30 and Chair-approved04:33; Live ops owns execution.
+State: **ACTIVE**, updated 2026-10-05 04:51 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access or submission. A bounded03 ladder trial was requested04:30 and Chair-approved04:33; Live ops owns execution.
 
 ## Provisional best
 
@@ -40,8 +40,8 @@ Completed Carthage screens use the same102 fixtures and have zero errors.
 | 20 pocket-countdown | Prefer length3 unless observed food/spawn needs slack | Probe8–0 | All queens survive at2; end-length objective not met |
 | 21 proven-reserve | Relay proof queen is outside any small sealed pocket | Probes8–0,6–2; full102 running | All8 School queens3, release markers only on UNSW |
 | 22 keeper-split-prior | Existing keeper probabilities adjust ordinary queen split scores only | Prepared, held | Sanitizers pass;163-turn stream unchanged; no games |
-| 23 corridor-only |14 corridor filter on08, without12 orbit | Smoke running | Sanitizers pass; changes both recorded Asahi Weakhold entries |
-| 24 space-reserve | Asahi05 space filter plus21 conditional reserve | Prepared | Reserve sanitizers pass; no games |
+| 23 corridor-only |14 corridor filter on08, without12 orbit | Smoke5–3, held | Same8 winners as03; both Weakhold queens still die |
+| 24 space-reserve | Asahi05 space filter plus21 conditional reserve | Smoke12 running | Reserve sanitizers pass; Asahi05 Schooltime/Weakhold seeds1–3 |
 
 Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. Runtime manifests pin source, fixtures, engine and compiler. Never edit measured runtime snapshots.
 
@@ -50,7 +50,7 @@ Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. 
 Temporarily **three game workers**, all nice15, max5GiB lane guard (latest1.282GiB before smoke):
 1. Kenma03 versusBokuto04,102 games, under crossmatch-after-asahi.py / session22429; log k03-v-bokuto04-s123.progress.log. Reads12 retained replays and posts BOARD on clean completion. Requested Asahi05 is complete57–45/102, zero errors, all12 retained replays read, posted04:39. External Bokuto source root is read-only; fingerprintff68a7093aa3e5f6b2fee742c4b39f2e2cb7c59ae91ab8cb8c819dbe4e6bc74f pinned.
 2. Kenma21 full Carthage102 under after-k21-probes.py / parent34859 / session23148, then all102 replays reconstructed/audited. pool-after-k21.py / session90020 waits exact34859 and clean complete evidence, then runs the matched64-game four-map zoo diagnostic, readsall64 and writes paired totals versus parent57 and03 at49. Log k21-pool-diagnostic-s1.progress.log. The broader272/Kageyama102/03 head-to-head102 have dry-run previews only.
-3. Kenma23 isolated corridor-only smoke8, under run-k23-smoke.py / session52837, Weakhold/Trauma/Australia/Schooltime, both seats seed1, all logs/replays read on completion; no full run queued. Actual Asahi queen streams match08 exactly75/75;23 changesround24(A)/40(B), before both wall deaths. Recorded-turn sanitizers passed. Initial stream harness omitted ENDGAME and aborted08; fixed terminator, clean rerun passed. No bot defect inferred from the harness failure.
+3. Kenma24 Asahi05 smoke12, under run-k24-smoke.py / session51977, Schooltime/Weakhold both seats seeds1–3, all logs/replays read on completion. Runtime716eee526ab7456e29bafe590ec9a63d0ad405913110abef45e771108ba102c3; no full run queued. Kenma23 smoke/session52837 is terminal5–3, zero errors, all8 replays read,44 filter markers. Every winner matches03; both Weakhold queens still die.23 full screen held.
 
 21 deployment waiter90662/session46396 was cancelled while idle to prioritize Chair cross-match, exit143, no game interrupted. Exact21 deployment remains outstanding. Kenma22 source committedaa0cd7c9b; native stream163/163 actions unchanged08, held. Kenma03 ladder trial Chair-approved04:33; no actual activation claimed here. No new best yet.
 

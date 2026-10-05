@@ -7,3 +7,5 @@ Motivation:06 scored57–45 against Carthage, one below03, but never received a 
 Status: prepared, unmeasured; not a best candidate claim. Exact21 full results and matched pool diagnosis remain higher priority, as does the Chair-requested03/Bokuto cross-match. Reserved seeds11–13/new maps untouched.
 
 Preflight: sanitizer test passed for closed/unknown/portal/open terrain proofs, queen-only proof seeding, all7 packet types ×1000 random full44-bit payloads, relay, checksum corruption and enemy-tag rejection. Exact policy/params bytes asserted equal to both06 and current Asahi05. No game queue yet.
+
+Twelve-game Schooltime/Weakhold smoke now running against Asahi05, both seats seeds1–3, one nice15 worker; all replays/logs retained for reading. Runtime716eee526ab7456e29bafe590ec9a63d0ad405913110abef45e771108ba102c3. Output k24-asahi-smoke-s123/. No full run queued.
