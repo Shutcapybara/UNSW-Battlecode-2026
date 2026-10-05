@@ -20,7 +20,7 @@ STATUS: RUNNING
 - **Trial 1 closed (60 games / 12 series, 05:02–07:13Z):** 17388 +0.074 [−0.048, +0.197] @1725, perf 1781, W–L 31–29,
   vs ref +0.117 [−0.018, +0.269]; queen-rule losses 7/60, 0 faults; 0 Schooltime games. Posted BOARD 1318.
 - **Trial 2:** `bokuto-13-cull` byte copy in build/daichi/stage/bokuto-13-cull (+ CANDIDATE.toml), runtime d192d721c406…
-  = Asahi probe; registered 08:01Z (hub fp 877fa2c915a6). **Live = 17530** (LV-bokuto-13-cull-877fa2c9-ai), uploaded 08:14:33Z, activated 08:20:43Z; BOARD 1319.
+  = Asahi probe; registered 08:01Z (hub fp 877fa2c915a6). **Live = 17530** (LV-bokuto-13-cull-877fa2c9-ai), uploaded 08:14:33Z, first ranked series 08:15:41Z (server auto-activated; explicit activation 08:20:43Z true); BOARD 1326.
 - No API/quota errors in *.done.json.
 
 ## Next unit
@@ -40,7 +40,7 @@ STATUS: RUNNING
 
 ## Units
 
-- 2026-10-05 ~08:15Z unit 22 — read BOARD 1263–1325 (D-077, D-078). Trial-1 look posted (1318). bokuto-13-cull copied, fingerprint-checked, registered; uploaded as 17530 (08:14Z) and activated (first series 08:15:41Z); BOARD 1318, 1326, 1327 (Schooltime in draw: 145/2,249 ranked since 05Z). User notified. git.json was pending (Chair merge incl. r/daichi) — no push request written.
+- 2026-10-05 ~08:15Z unit 22 — read BOARD 1263–1325 (D-077, D-078). Trial-1 look posted (1318). bokuto-13-cull copied, fingerprint-checked, registered; uploaded as 17530 (08:14Z) and activated (first series 08:15:41Z); BOARD 1318, 1326, 1327 (Schooltime in draw: 145/2,249 ranked since 05Z). User notified. Push requested after the Chair merge git.json cleared.
 - 2026-10-05 ~06:55Z unit 21 — read BOARD 1226–1262 (D-076). Trial 1 at 55 games +0.079 @1725, vs ref +0.121; 0 faults.
   Waiting for the 60-game boundary and Asahi's 13-cull pool (D-076 §B). No BOARD line (no result yet).
 - 2026-10-05 ~05:57Z unit 20 — read BOARD 1213–1224, D-075. trial_d075.py written; 17388 interim 25 games +0.075 @1725; anchor correction; bokuto-04 staged + fingerprint verified; BOARD 1225.
