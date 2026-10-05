@@ -46,6 +46,8 @@ CLASS = {**{m: 'A' for m in ['devil', 'trophy', 'stripes', 'tower_defense', 'que
 # Queen-keeper panel (D-075 §E, Q-sugawara-01 §4.2): the pool's 17 maps against the two free-lane queen keepers only,
 # 68 fixtures per seed. Opponents are untracked copies made by tools/asahi/copybot.py (fingerprints in .asahi-source.json).
 QK_OPPS = ['bokuto-04-queen', 'kenma-03-pocket-queen']
+# Second keeper panel (D-080 §B): the two local bots whose queens survive (68 fixtures per seed).
+QK2_OPPS = ['bokuto-13-cull', 'kenma-28-harvest-reserve']
 # Hidden bed layouts (D-072 §E, D-075 §F): Kageyama's five accepted variants, a separate block of 5 x ZOO x both seats =
 # 80 fixtures per seed, so the 272-fixture pool (hash 39961c55d0e6) and every result on it stay comparable.
 # Live shares of all ranked post-m2 games (Kageyama 2026-10-05 finding, 31,793 games): used for the weighted total.
@@ -61,11 +63,11 @@ VAR_SHARE = {'live_var/devil_b': 0.0284, 'live_var/queen_of_spades_b': 0.0293, '
 def panel_maps(panel: str) -> list[str]:
     if panel == 'var':
         return list(VAR_MAPS)
-    return POOL_MAPS if panel in ('pool', 'qk') else GEN_MAPS
+    return POOL_MAPS if panel in ('pool', 'qk', 'qk2') else GEN_MAPS
 
 
 def panel_opps(panel: str) -> list[str]:
-    return QK_OPPS if panel == 'qk' else list(R.ZOO)
+    return QK_OPPS if panel == 'qk' else QK2_OPPS if panel == 'qk2' else list(R.ZOO)
 
 
 def map_class(mapkey: str) -> str:
