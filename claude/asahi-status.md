@@ -78,21 +78,21 @@
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct 11:56Z)
+## Now (5 Oct 13:26Z)
 
-0. **Incumbent is kenma-03-pocket-queen (17388), D-081 §A** (14585 the rollback target). The local measures ranked the
-   two trial bots in the wrong order (third miss in a row).
-1. Running (D-081 §C–D): `asahi-27-b13-reserve` (bokuto-13 + Kenma's reserve lines) — pool, variants, cards vs
-   c05/b13/k03, two totals, queen columns, qk2, probe, h2h (102 vs kenma-03); bokuto-13 h2h; kenma-03 on qk2.
-2. Card format: pool + variants + two totals + queen by round and cause + qk2 + 102-game h2h vs the incumbent.
-3. Waiting: Bokuto's bokuto-18 (no atlas); Sugawara's analyses.
+0. Incumbent kenma-03 (17388). D-083: three targets per candidate (total length ≈ 78 / 154 at r100 / r300; queen alive
+   at r300 ≈ 0.58; ≥ 70 % of r300 leads converted). Trial 3 = bokuto-18-queenfeed if Asahi posts a passing probe and a
+   pool with paired 5th pct > −5 vs carthage-05; else asahi-27-b13-reserve (qualified).
+1. Running: bokuto-18 pool → card vs c05 → probe (gate post ~13:50Z) → h2h vs kenma-03, qk2, variants, cards vs b13/k03,
+   queen/economy columns on pool/qk2/h2h.
+2. Read candidates on qk2 and h2h (the pool's opponents are far below the ladder's).
 
 ## Operating notes
 
 - **Daemon:** `tools/asahi/jobd.py`, native on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
   `build/asahi/queue/` first, then the main checkout's `build/learn/queue/`. Restart if down:
   `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
-  Last job id used: 2065. Held jobs live in build/asahi/hold/.
+  Last job id used: 2069. Held jobs live in build/asahi/hold/.
 - BOARD lines go to the MAIN checkout's `docs/hub/BOARD.md` with `>>` only; never commit BOARD.md on r/asahi.
 - Session disk was reset ~04:00Z (D-073); still keep little in the session home.
 - `throughput.py` must recycle processes (wasmtime stores leak address space per game).
