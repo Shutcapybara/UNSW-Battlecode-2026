@@ -46,9 +46,21 @@ CLASS = {**{m: 'A' for m in ['devil', 'trophy', 'stripes', 'tower_defense', 'que
 # Queen-keeper panel (D-075 §E, Q-sugawara-01 §4.2): the pool's 17 maps against the two free-lane queen keepers only,
 # 68 fixtures per seed. Opponents are untracked copies made by tools/asahi/copybot.py (fingerprints in .asahi-source.json).
 QK_OPPS = ['bokuto-04-queen', 'kenma-03-pocket-queen']
+# Hidden bed layouts (D-072 §E, D-075 §F): Kageyama's five accepted variants, a separate block of 5 x ZOO x both seats =
+# 80 fixtures per seed, so the 272-fixture pool (hash 39961c55d0e6) and every result on it stay comparable.
+# Live shares of all ranked post-m2 games (Kageyama 2026-10-05 finding, 31,793 games): used for the weighted total.
+VAR_MAPS = ['live_var/devil_b', 'live_var/queen_of_spades_b', 'live_var/slithery_fight_b', 'live_var/schooltime_open4',
+            'live_var/dilemma_10']
+VAR_BASE = {'live_var/devil_b': 'live/devil', 'live_var/queen_of_spades_b': 'live/queen_of_spades',
+            'live_var/slithery_fight_b': 'live/slithery_fight', 'live_var/schooltime_open4': 'live/schooltime',
+            'live_var/dilemma_10': 'live/dilemma'}
+VAR_SHARE = {'live_var/devil_b': 0.0284, 'live_var/queen_of_spades_b': 0.0293, 'live_var/slithery_fight_b': 0.0293,
+             'live_var/schooltime_open4': 0.0303, 'live_var/dilemma_10': 0.0273}
 
 
 def panel_maps(panel: str) -> list[str]:
+    if panel == 'var':
+        return list(VAR_MAPS)
     return POOL_MAPS if panel in ('pool', 'qk') else GEN_MAPS
 
 
@@ -57,6 +69,7 @@ def panel_opps(panel: str) -> list[str]:
 
 
 def map_class(mapkey: str) -> str:
+    mapkey = VAR_BASE.get(mapkey, mapkey)
     return CLASS.get(mapkey.split('/', 1)[1], '?') if mapkey.startswith('live/') else 'gen'
 
 
