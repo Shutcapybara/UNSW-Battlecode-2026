@@ -1,4 +1,4 @@
-"""Bounded Kenma lane games. Native binaries are built under --out-root/bin.
+"""Bounded Kenma lane games. Native binaries are built under the main checkout build/kenma/bin.
 Dry-run first; fingerprints and exact fixtures are saved before launch.
 Fresh engine per game; max four workers; stop under 40 GB disk or above 5 GiB RSS.
 """
@@ -28,6 +28,7 @@ RESULT = re.compile(r'(?:team ([AB]) wins|draw) after (\d+) rounds \(([^)]*)\)')
 STOP = threading.Event()
 ACTIVE = set()
 LOCK = threading.Lock()
+_QUOTA_CHECKED = 0.0
 
 def fingerprint(src):
     h = hashlib.sha256()
@@ -37,6 +38,18 @@ def fingerprint(src):
     return h.hexdigest()
 
 def check_space():
+    global _QUOTA_CHECKED
+    now = time.monotonic()
+    if now - _QUOTA_CHECKED >= 60:
+        total = 0
+        for p in (MAIN/'build/kenma').rglob('*'):
+            try:
+                if p.is_file(): total += p.stat().st_size
+            except FileNotFoundError:
+                pass  # A concurrent atomic result/cache write may rename a temporary file.
+        if total > 30 * 10**9:
+            raise RuntimeError('STOP: Kenma output exceeds 30 GB')
+        _QUOTA_CHECKED = now
     if shutil.disk_usage(MAIN).free < 40 * 10**9:
         raise RuntimeError('STOP: less than 40 GB disk free')
     for p in (ROOT/'claude/kenma-status.md', MAIN/'claude/kenma-status.md'):
@@ -76,7 +89,19 @@ def run(fx, args, bins, out):
     key = f"{fx['map'].replace('/', '+')}__s{fx['seed']}__{fx['seat']}__{fx['opp']}"
     dest = out / f'{key}.json'
     if dest.exists():
-        return json.loads(dest.read_text())
+        previous = json.loads(dest.read_text())
+        assert previous['bot'] == args.bot and all(previous[k] == v for k, v in fx.items()), 'Mismatched cached fixture'
+        if previous['rc'] == 0 and previous['winner'] and not previous['faults']:
+            return previous
+        if not args.retry_errors:
+            return previous
+        stamp = str(time.time_ns())
+        attempts = out/'attempts'
+        attempts.mkdir(exist_ok=True)
+        dest.rename(attempts/f'{key}.{stamp}.json')
+        old_log = out/f'{key}.log'
+        if old_log.exists():
+            old_log.rename(attempts/f'{key}.{stamp}.log')
     a, b = (args.bot, fx['opp']) if fx['seat'] == 'A' else (fx['opp'], args.bot)
     replay = args.keep_replays and fx['seed'] == 1 and fx['map'] in ('live/schooltime', 'live/weakhold')
     cmd = [str(MAIN/'.venv/bin/unswbc'), 'run', '--seed', str(fx['seed']), '--no-logs', '--no-indicator', '--no-draw']
@@ -111,6 +136,7 @@ def main():
     ap.add_argument('--seeds', default='1,2,3'); ap.add_argument('--jobs', type=int, default=3)
     ap.add_argument('--name', required=True); ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--keep-replays', action='store_true')
+    ap.add_argument('--retry-errors', action='store_true', help='rerun failed fixtures, preserving previous attempt records')
     args=ap.parse_args()
     assert 1 <= args.jobs <= 4
     check_space()
@@ -119,7 +145,7 @@ def main():
     out=MAIN/'build/kenma'/args.name
     sources={b:ROOT/'bots'/b for b in [args.bot]+opponents}
     manifest=dict(bot=args.bot, fingerprints={b:fingerprint(p) for b,p in sources.items()}, fixtures=fixtures,
-                  engine='unswbc 1.2.3', compiler='clang++ -O2 -std=c++20', sandbox=False)
+                  engine=subprocess.check_output([str(MAIN/'.venv/bin/unswbc'),'--version'],text=True).strip(), compiler='clang++ -O2 -std=c++20', sandbox=False)
     print(json.dumps(dict(fixtures=len(fixtures), workers=args.jobs, output=str(out), fingerprints=manifest['fingerprints'])), flush=True)
     if args.dry_run:
         return
@@ -159,6 +185,8 @@ def main():
                by_opponent={o:tally([r for r in rows if r['opp']==o]) for o in opponents}, completed=len(rows), expected=len(fixtures))
     (out/'score.json').write_text(json.dumps(score,indent=2)+'\n')
     print(json.dumps(score),flush=True)
+    if score['total']['errors'] or score['completed'] != score['expected']:
+        raise SystemExit(1)
 
 if __name__=='__main__':
     main()

@@ -1,24 +1,28 @@
 # Kenma free lane
 
 State: ACTIVE. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma.
-Updated 2026-10-05 01:28 UTC.
+Updated 2026-10-05 01:42 UTC.
 
-Provisional best: **kenma-03-pocket-queen**, 58–44 vs carthage-05 over all 102 required fixtures, zero errors. Full by-map table in its README and main build/kenma/k03-v-carthage-s123/score.json. Posted to main BOARD. Kageyama H2H now running; pool still pending. No ladder request yet.
+Provisional best: **kenma-03-pocket-queen**, runtime e60733a926fc. Carthage **58–44**, Kageyama **61–41**, each 17 ranked maps × both seats × seeds 1–3, zero draws or runtime errors. Full by-map tables in its README. Posted provisional best to main BOARD. Required 272-game zoo panel running with two workers; no other posted free-lane best found. No ladder request or server access.
 
-- Kenma 01 free combat sprint: **48–54**, 0 errors, 17 ranked maps x both seats x seeds 1–3. Rejected as an improvement; Australia 0–6. Output: main build/kenma/k01-v-carthage-s123/.
-- Baseline smoke: Carthage self-play completed Schooltime; small reference panel vs Hunter V20 scored **6–2**, with both losses on Weakhold, 0 errors. Output: main build/kenma/baseline-eight/.
-- Kenma 02 top-team prior: A1-400 development fold-f0 model replaces HB-1 direction prior only. 20,000 prediction parity rows: all argmax equal, max probability error 4.66e-8. Zip 1,142,429 bytes. Full Carthage screen finished **42–60**, zero errors; rejected as an improvement. Output: main build/kenma/k02-v-carthage-s123/; export/parity build/kenma/a1/.
+Deployment complete for Kenma 03: four sandbox games on Schooltime/UNSW, both seats, seed 1; max 10,910,667 points, max first-turn 10,814,937; zero errors; zip 3,923,010 bytes at packaging. Outputs main build/kenma/deploy/kenma-03-pocket-queen/. Zip contains the earlier README, same runtime fingerprint.
 
-Kenma 03 pocket queen: in the Schooltime seed-1 native smoke, the queen survived all 500 rounds (parent queen died at round 0), with zero runtime errors. The 12-game Schooltime/Weakhold screen finished **9–3**: Schooltime **6–0**, all on queen length 3–0, Weakhold **3–3**; zero errors. The full Carthage panel finished 58–44. Four heavy-map sandbox checks passed: maximum 10.91 M points, first-turn maximum 10.81 M, zero errors. Zip 3,923,010 bytes. Source frozen at e60733a926fc. Output: main build/kenma/k03-pocket-screen/.
+Completed Carthage screens, all 102 games and zero runtime errors:
+- Kenma 01 free combat sprint: **48–54**, rejected. Australia 0–6. Output main build/kenma/k01-v-carthage-s123/.
+- Kenma 02 A1-400 direction prior: **42–60**, rejected. Export parity 20,000 rows, all argmax equal, max error 4.66e-8. Output main build/kenma/k02-v-carthage-s123/ and a1/.
+- Kenma 03 pocket queen: **58–44**, provisional best. Schooltime 6–0, all on queen length 3–0. Output main build/kenma/k03-v-carthage-s123/; Kageyama 61–41 in k03-v-kageyama-s123/.
+- Kenma 04 keeper action: **50–52**, rejected. Offline imitation: 26,820 oracle queen turns, 81.75% action accuracy on 17 held-out development series, export parity all 19,627 argmax. Output main build/kenma/k04-v-carthage-s123/ and queen-action-v1/.
 
-Next: finish Kenma 03 versus Kageyama (102 games) and Kenma 04 versus Carthage (102 games), both running with two workers apiece. Then run the provisional best on the required 272-game zoo panel; compare any stronger Kenma 04 directly against Kenma 03 and meter that exact source. Finally use reserved seeds 11–13/new maps for independent validation before requesting a ladder slot. No server access or ladder request yet.
+Running: **kenma-05-post-opening-keeper** vs Carthage, 102 games. Same as Kenma 04 except learned queen actions start at round 25, preserving opening expansion. Initial two-worker batch was terminated by the aggregate 5 GiB memory guard at 5.03 GiB (two interrupted games, no bot fault evidence). Resumed with one worker and --retry-errors; original attempts retained. Both interrupted games now completed cleanly. Full outcome pending.
 
-Resource controls: nice 15, at most four game workers, <6 GiB aggregate RSS (observed 4.42 GiB with two native games plus one metered game), disk floor 40 GB, output ceiling 30 GB. Actual outputs <0.5 GB. Each game has a new engine process. No server access.
+Prepared next: **kenma-06-pocket-space**, Kenma 03 plus the existing Asahi K16 queen space filter; source files copied exactly, no map conditions added. Unmeasured. Test when worker/memory headroom is available.
 
-Reserve: new maps and seeds 11–13 excluded from tuning. Required final scorecard still outstanding: Kageyama H2H, pool, sandbox points and any posted free-lane best.
+Resource controls: nice 15; currently three game workers total (zoo 2, Kenma 05 1), hard ceiling four; guard at 5 GiB aggregate lane RSS to stay below 6 GiB. Disk floor 40 GB, output ceiling 30 GB, outputs currently <0.5 GB. Fresh engine per game. All generated output in main build/kenma. Runtime snapshots frozen once measured. Runner now returns failure on incomplete/error panels and explicitly preserves failed attempts before retries; retry regression test passed.
 
-Kenma 04 keeper action: independent new candidate on Kenma 03; original queen outside sealed pockets uses a small seven-class keeper action clone. 26,820 oracle queen turns, 17 held-out development series: action accuracy 81.75% (majority 32.71%). Export parity on 19,627 move rows: 100% argmax, max error 5.49e-8; zip 4,030,139 bytes. H2H vs Carthage, 102 games, running. Training/export: main build/kenma/queen-action-v1/.
+Remaining for best: finish 272-game pool; compare any later posted free-lane best; use reserved seeds 11–13/new maps for independent validation before requesting a ladder slot. No server access or account credentials used.
 
-Resource/reproduction notes: the model tools use the installed torch/lib/libomp.dylib via DYLD_LIBRARY_PATH, with OMP/BLAS threads set to 1. The panel runner compiles C++20 under main build/kenma/bin (the current official helper requires C++20), pins runtime source fingerprints, starts a fresh engine for every game, and enforces 5 GiB aggregate lane-process RSS to leave headroom below the 6 GiB limit. All generated artifacts are in main build/kenma; sources only in this worktree.
+Known robustness follow-up: Shenzhen's prior cage study found a one-slot reserve failure on Schooltime seed 5. Kenma 03 passed six s1–3 games but needs a separate development seed-5 check; a reserve-3 change would be a new numbered snapshot. Reserved seeds 11–13 remain untouched.
 
-Known robustness follow-up: Shenzhen’s prior cage study reported one-slot reserve failure on Schooltime seed 5; Kenma 03 checks split legality and succeeded on all six s1–3 games, but reserved-seed confirmation and possibly a separately numbered reserve-3 variant are still needed. Do not edit measured bot source in place.
+Reproduction: tools/kenma/panel.py pins runtime source fingerprints and exact fixture manifests, compiles C++20 with clang++ -O2 (required by current helper), uses unswbc 1.2.3, and logs engine version. Model tools use installed torch/lib/libomp.dylib with OMP/BLAS threads 1. Baseline eight-game reference vs Hunter V20: 6–2, both losses Weakhold, zero errors.
+
+Replay finding: both seed-1 Weakhold games show Kenma 03/parent queens trapped immediately after splitting: queen 0 dies to a wall at round 29 (split at 28), queen 1 at round 44 (split at 43). Kenma 04 queen 1 survives to round 499 in the B-seat replay; queen 0's last recorded turn is 271 (no own-turn death event). This supports testing movement-space avoidance and phase-dependent learned control; it does not establish a whole-panel gain. Read replays retained in main build/kenma/k03-v-carthage-s123/ and k04-v-carthage-s123/.

@@ -6,11 +6,11 @@ Proves a connected component of at most eight cells from known nonportal terrain
 
 Precedent: Rome 06 cage E1; this variant confines donor culling and queen movement to observed sealed pockets and selects the complete single-step action instead of truncating a scored sprint.
 
-Status: promising screen, not yet a validated best. Schooltime 6–0, all six on surviving queen length 3 versus 0; Weakhold 3–3. Both seats, seeds 1–3, zero runtime errors. Main build/kenma/k03-pocket-screen/score.json. The full 102-game Carthage panel and four heavy-map sandbox games are running. First metered Schooltime game: max 10,466,385 points, first-turn max 10,125,556; archive 3,923,010 bytes including README at packaging time. No upload requested.
+Status: provisional lane best. Native Carthage and Kageyama scorecards and four sandbox checks complete; 272-game zoo panel running. No upload requested.
 
 ## Carthage scorecard
 
-17 current ranked maps, both seats, seeds 1–3: **58 wins, 44 losses, no draws or runtime errors**. Provisional lane best; Kageyama and zoo scorecards pending. No ladder recommendation yet.
+17 current ranked maps, both seats, seeds 1–3: **58 wins, 44 losses, no draws or runtime errors**. Provisional lane best; Zoo scorecard pending. No ladder recommendation yet.
 
 | Map | W | L |
 |---|---:|---:|
@@ -33,3 +33,27 @@ Status: promising screen, not yet a validated best. Schooltime 6–0, all six on
 | tower_defense | 3 | 3 |
 
 Deployment: four sandbox games (Schooltime and UNSW, both seats, seed 1), zero runtime errors; max 10,910,667 points, max first-turn 10,814,937; zip 3,923,010 bytes. Results main build/kenma/deploy/kenma-03-pocket-queen/summary.json.
+
+## Kageyama scorecard
+
+17 current ranked maps, both seats, seeds 1–3: **61 wins, 41 losses, no draws or runtime errors**. Opponent kageyama-01-p1-slot. Output main build/kenma/k03-v-kageyama-s123/score.json.
+
+| Map | W | L |
+|---|---:|---:|
+| schooltime | 6 | 0 |
+| portals | 3 | 3 |
+| slithery_fight | 5 | 1 |
+| queen_of_spades | 5 | 1 |
+| default | 4 | 2 |
+| trophy | 3 | 3 |
+| dilemma | 3 | 3 |
+| autarky | 2 | 4 |
+| devil | 6 | 0 |
+| trauma | 4 | 2 |
+| australia | 5 | 1 |
+| islands | 5 | 1 |
+| unsw | 4 | 2 |
+| maze | 2 | 4 |
+| weakhold | 0 | 6 |
+| stripes | 1 | 5 |
+| tower_defense | 3 | 3 |
