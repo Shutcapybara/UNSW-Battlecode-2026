@@ -38,7 +38,7 @@ LEARN_KINDS = {'script', 'setup_env'}
 LEARN_SCRIPT = re.compile(r'^tools/(learn|hinata)/[A-Za-z0-9_]+\.py$')
 LEARN_PACKAGES = ['unswbc==1.2.9', 'pycapnp', 'lightgbm', 'xgboost', 'torch', 'scikit-learn', 'pandas', 'pyarrow',
                   'duckdb', 'numpy']
-COMMIT_OK = re.compile(r'^(tools/asahi/|bots/asahi-[A-Za-z0-9._-]+/|bots/(bokuto-04-queen|bokuto-13-cull|bokuto-17-atlas|kenma-03-pocket-queen|kenma-21-proven-reserve|kenma-28-harvest-reserve)/|maps/m2tr/|claude/asahi-status\.md$|docs/learning/|docs/hub/BOARD\.md$)')
+COMMIT_OK = re.compile(r'^(tools/asahi/|bots/asahi-[A-Za-z0-9._-]+/|bots/(bokuto-04-queen|bokuto-13-cull|bokuto-17-atlas|bokuto-18-queenfeed|kenma-03-pocket-queen|kenma-21-proven-reserve|kenma-28-harvest-reserve)/|maps/m2tr/|claude/asahi-status\.md$|docs/learning/|docs/hub/BOARD\.md$)')
 # D-077 §C / D-079: Asahi commits its byte copies of free-lane bots (with .asahi-source.json) so they are in git.
 OWNER = 'asahi'
 

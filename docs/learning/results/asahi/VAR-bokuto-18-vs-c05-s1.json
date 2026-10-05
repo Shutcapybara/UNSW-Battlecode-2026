@@ -1,0 +1,46 @@
+{
+ "rows": {
+  "templates only": {
+   "delta": 4.044117647058823,
+   "lo": 0.0,
+   "hi": 8.088235294117647,
+   "cand": 0.8713235294117647,
+   "parent": 0.8308823529411765
+  },
+  "live-share weighted": {
+   "delta": 5.180992647058824,
+   "lo": 1.710625000000001,
+   "hi": 8.682652573529412,
+   "cand": 0.8698672794117647,
+   "parent": 0.8180573529411764
+  }
+ },
+ "variants": {
+  "live_var/devil_b": {
+   "n": 16,
+   "cand": 1.0,
+   "parent": 0.875
+  },
+  "live_var/queen_of_spades_b": {
+   "n": 16,
+   "cand": 1.0,
+   "parent": 1.0
+  },
+  "live_var/slithery_fight_b": {
+   "n": 16,
+   "cand": 1.0,
+   "parent": 0.875
+  },
+  "live_var/schooltime_open4": {
+   "n": 16,
+   "cand": 1.0,
+   "parent": 0.4375
+  },
+  "live_var/dilemma_10": {
+   "n": 16,
+   "cand": 0.75,
+   "parent": 0.75
+  }
+ },
+ "missing": 0
+}
