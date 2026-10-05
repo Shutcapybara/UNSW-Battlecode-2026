@@ -56,6 +56,7 @@
 
 ## Log
 
+- 5 Oct 21:1xZ: bokuto-61-mouth card posted (all D-089 conditions met).
 - 5 Oct 20:3xZ: 46 probe/gen + b25 probe + 47 complete posted (late vs Chair 19:25Z ask); b61 queued.
 - 5 Oct 19:20Z: 46/47 qk2/h2h trial-5 reading posted.
 - 5 Oct 18:52Z: bokuto-41 card; D-087 queue 46/47 + b25 probe; probe gate 60 M.
@@ -85,18 +86,15 @@
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct 20:40Z)
+## Now (5 Oct 21:20Z)
 
-0. Incumbent of record 17791 bokuto-18-queenfeed (D-088 §A). Trial 4 = 17940 asahi-27-b13-reserve, look ≈ 22:15Z
-   (end rule > +0.204 at anchor 1725). Trial 5 (D-088 §E) = bokuto-46-regions if probe passes and gen vs 13-cull
-   5th pct > −5; else fallback bokuto-25-reserve4 if its probe passes.
-1. Posted 20:3xZ: 46 probe OK (12.97 M); 46 gen vs 13-cull −1.94 [−5.17, +1.08] (card, seed 7) — 0.17 below −5;
-   sensitivity seeds 1–40 median −5.17, ≤ −5 in 27/40 (tools/asahi/q5sens.py). b25 probe OK (12.48 M). 47 complete.
-   Chair decides trial 5.
-2. Running 2080a–h: bokuto-61-mouth (Bokuto 20:27Z, replaces 57/58): qk2 + h2h, pool, gen, probe, var, QC vs 46;
-   commit at the end (2080h). Card ≈ 21:40Z.
-3. Card format: pool + variants + two totals + queen/economy/enemy-queen columns + qk2 + 102-game h2h vs the incumbent
-   (h2h paired with tools/asahi/h2hpd.py, map × seed clusters). Probe gate 60 M (D-087 §A).
+0. Incumbent of record 17791 bokuto-18-queenfeed. Trial 4 = 17940 asahi-27-b13-reserve, look ≈ 22:15Z.
+   Trial 5 (D-089): bokuto-61-mouth if the Chair names it (≈ 21:50Z), else bokuto-46-regions (waiver), else b25.
+1. Posted 21:1xZ: 61 meets all four D-089 conditions (probe 14.32 M; pool vs c05 +0.74 [−4.04, +6.25];
+   qk2 vs 46 +4.41; h2h vs 46 +7.84, 63–39 vs kenma-03). Full card committed (2080h).
+2. Rule (D-089 §D): a condition within half a point of its threshold goes to the Chair as waiver/refusal, never
+   relabelled. Bokuto holds JOB replacements until 61 is carded (done).
+3. Queue empty. Next: trial-4 look; any new JOB. Card format as before (h2hpd.py, q5sens.py for sensitivity only).
 
 ## Operating notes
 
