@@ -1,0 +1,199 @@
+{
+  "scope": "Published A1/A0/A3 development outputs; full-fold source metadata; completed throughput row summaries. No fit, bot execution, real selection or live/confirmation outcome read.",
+  "support": {
+    "moves": 189630,
+    "FRL": 188250,
+    "games": 97,
+    "series": 49,
+    "teams": 10,
+    "maps": 14
+  },
+  "metrics": {
+    "A0": {
+      "accuracy": 0.6976573705179283,
+      "ci90": [
+        0.6890639963600491,
+        0.7069391281130342
+      ],
+      "sha": "0f576b0a728b63bd9a35725bcc2c7fd934f78ced024e3af681a8451a4c6313a3"
+    },
+    "A1-400": {
+      "accuracy": 0.7184063745019921,
+      "ci90": [
+        0.7100634684909789,
+        0.7277804450924075
+      ],
+      "sha": "cb4d85d5b4f6e091a366f6ceb91a6ce36ca536854ec91822e8839437b066425a"
+    },
+    "A1-800": {
+      "accuracy": 0.7157503320053121,
+      "ci90": [
+        0.7074872342937777,
+        0.7251078301925057
+      ],
+      "sha": "d1815de06b029863df544bbf8baa65355bd1a83943d2e58124ab8716a3245e58"
+    },
+    "A3-400": {
+      "accuracy": 0.714464807436919,
+      "ci90": [
+        0.7061384290635248,
+        0.7238797651776142
+      ],
+      "sha": "523bf94a4e2cce23ca43672dfdc4f1a2ed5d9eeec8653f83d9fb526c31ba116f"
+    },
+    "A3-800": {
+      "accuracy": 0.7113784860557769,
+      "ci90": [
+        0.7034062916485538,
+        0.7199820919188712
+      ],
+      "sha": "5e92c86df1fa0663ba4c9f68154659cc986f232052c8cc74d0e5f1675542b089"
+    }
+  },
+  "paired": {
+    "A1-400 minus A0": {
+      "delta": 0.020749003984063746,
+      "ci90": [
+        0.0170150140420213,
+        0.024443232101370838
+      ]
+    },
+    "A1-400 minus A3-400": {
+      "delta": 0.0039415670650730416,
+      "ci90": [
+        0.0017648429995159789,
+        0.0060375418425356675
+      ]
+    },
+    "A1-800 minus A1-400": {
+      "delta": -0.0026560424966799467,
+      "ci90": [
+        -0.0036256583334304832,
+        -0.0018122850444169452
+      ]
+    }
+  },
+  "files": {
+    "A0-u": {
+      "rows": "a0b1ea2e2b5aceef9881742bae5f60e3b5c2fcf680db858634d8019fb217fc16",
+      "registry": "d6abd0d5d1056f74670e5979c25567f83e52347357fa604008f4e53964801904"
+    },
+    "A1-u": {
+      "rows": "a0b1ea2e2b5aceef9881742bae5f60e3b5c2fcf680db858634d8019fb217fc16",
+      "registry": "66444789f9a8ecf32963d628e7be7641c9f6acb6f2544ef3b0d75a851d50bfda"
+    },
+    "A3-u": {
+      "rows": "a0b1ea2e2b5aceef9881742bae5f60e3b5c2fcf680db858634d8019fb217fc16",
+      "registry": "8807488ce4a3d735a3b61dcae023435ca08a6baa4d2bbca81da0c4c2a09a52bc"
+    }
+  },
+  "folds": {
+    "sha": "118c78d7965b1480841e335ad3b629aae35ffd5aa23ff3a1917bab1957775c08",
+    "source_manifest_sha": "6f531e9101122434f79f59854ba0a3c4cf5dfdd0ddbe3a61bef83bd7b58584c2",
+    "per_fold": {
+      "f0": {
+        "series": 113,
+        "games": 386,
+        "rows_all": 809142
+      },
+      "f1": {
+        "series": 93,
+        "games": 315,
+        "rows_all": 669718
+      },
+      "f2": {
+        "series": 97,
+        "games": 330,
+        "rows_all": 619097
+      },
+      "f3": {
+        "series": 92,
+        "games": 305,
+        "rows_all": 594900
+      },
+      "f4": {
+        "series": 111,
+        "games": 373,
+        "rows_all": 722301
+      }
+    },
+    "series": 506,
+    "dev_series_keep_fold": true,
+    "cohort_series_overlap": 0
+  },
+  "throughput": {
+    "source_sha": "896440ffb2625f5cde6f551e88bbe5b10624248a3cb1726e931b350f741a75d0",
+    "result_sha": "8abe94ace1aacfe37c3df5616fe93f081e95daad22ae3e04d14e0afa4458a172",
+    "modes": {
+      "engine": {
+        "tasks": 80,
+        "sum": {
+          "decisions": 2024648,
+          "games": 40000,
+          "rounds": 415064,
+          "seconds": 149.34828877449036,
+          "t_enc": 0.0,
+          "t_net": 0.0
+        },
+        "rounded_wall_seconds": 20.7,
+        "per_hour_from_rounded_wall": 352112695.6521739,
+        "reported_per_hour": 352859498,
+        "implied_unrounded_wall": 20.656189903665283,
+        "mean_rounds": 10.3766,
+        "decisions_per_round": 4.877917622342578,
+        "time_us": {
+          "busy": 73.76506374169256,
+          "encoder": 0.0,
+          "net": 0.0
+        }
+      },
+      "encode": {
+        "tasks": 80,
+        "sum": {
+          "decisions": 2024648,
+          "games": 40000,
+          "rounds": 415064,
+          "seconds": 281.4036247730255,
+          "t_enc": 122.62655425221965,
+          "t_net": 0.0
+        },
+        "rounded_wall_seconds": 37.1,
+        "per_hour_from_rounded_wall": 196461800.53908357,
+        "reported_per_hour": 196576213,
+        "implied_unrounded_wall": 37.07840683653825,
+        "mean_rounds": 10.3766,
+        "decisions_per_round": 4.877917622342578,
+        "time_us": {
+          "busy": 138.98891302242438,
+          "encoder": 60.56685125128894,
+          "net": 0.0
+        }
+      },
+      "net": {
+        "tasks": 80,
+        "sum": {
+          "decisions": 16002916,
+          "games": 18371,
+          "rounds": 3466414,
+          "seconds": 2415.432825565338,
+          "t_enc": 943.2546000480907,
+          "t_net": 1069.4702473221078
+        },
+        "rounded_wall_seconds": 304.1,
+        "per_hour_from_rounded_wall": 189445898.05984873,
+        "reported_per_hour": 189472546,
+        "implied_unrounded_wall": 304.05723053935213,
+        "mean_rounds": 188.68945620815416,
+        "decisions_per_round": 4.616562245594438,
+        "time_us": {
+          "busy": 150.93704332168824,
+          "encoder": 58.942670201361466,
+          "net": 66.82971074284885
+        }
+      }
+    },
+    "recorded_worker_processes": 8,
+    "recorded_host_logical_cpus": 18,
+    "historical_blas_thread_limit_or_process_cpu_time_in_receipt": false
+  }
+}
