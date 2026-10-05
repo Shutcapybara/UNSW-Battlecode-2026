@@ -8,8 +8,11 @@ import numpy as np, pandas as pd, lightgbm as lgb
 model, header, ns, feats, rows = sys.argv[1:6]
 n = int(sys.argv[6]) if len(sys.argv) > 6 else 20000
 cols = [l.strip() for l in open(feats) if l.strip()]
-D = pd.read_parquet(rows, columns=['blocks_src', 'y_kind', 'split'] + cols)
-assert (D.split == 'train').all()
+import pyarrow.parquet as pq
+have = set(pq.read_schema(rows).names) if Path(rows).is_file() else set(pd.read_parquet(rows).columns)
+D = pd.read_parquet(rows, columns=['blocks_src', 'y_kind'] + (['split'] if 'split' in have else []) + cols)
+if 'split' in D:
+    assert (D.split == 'train').all()
 D = D[(D.blocks_src == 'oracle') & (D.y_kind == 0)]
 D = D.sample(min(n, len(D)), random_state=7)
 X = D[cols].to_numpy(np.float32)
