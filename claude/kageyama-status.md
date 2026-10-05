@@ -6,7 +6,33 @@ Branch `r/kageyama`: private tree `build/_stage_kageyama/tree` on the Mac (share
 private index `.index`, plumbing commits via `commit.sh`/`g.sh`; never touches main's index or HEAD). Tools `tools/learn/`. Engine truth runs
 use the Cowork cloud container (official engine in-process, no Mac CPU). Corpus-scale builds: Mac native.
 
-## Top — read this first (unit 10, 2026-10-05 03:15 UTC)
+## HANDOFF — read this first (2026-10-05 ~05Z; the lead is restarting the lane in a new session)
+
+- **No scheduled wake is pending for Kageyama** (the hourly self-wake was not renewed). Nothing runs on its own.
+- **Shell:** this session's device shell failed from 04:11Z (EACCES on its old session folder, after the D-073 disk
+  reset). File copy (stage/commit) still worked. A fresh session should have a shell.
+- **Git:** r/kageyama = e96491cde (unit 10 status), pushed up to eedd7b6a7 (both fallback builds, merged to main
+  03:25Z). This status file (handoff) was written by file copy into the private tree and is NOT committed: commit it
+  with `build/_stage_kageyama/tree/commit.sh` (paths use `$HOME/mnt/Projects/UNSW-Battlecode-2026`; scripts may lose
+  +x after sed, `chmod u+x` them).
+- **Open order: D-072 §E, rebuild the hidden bed layouts.** Work in progress, with notes and tools, is in
+  `build/learn/kageyama/beds/` (README there). The key findings are on the BOARD at 04:18Z:
+  - the bed schedule is play-independent;
+  - symmetric pairs share draws in row-major pair order;
+  - a draw is lo + (u mod span), with u_k read from the engine by a probe map.
+  - Devil's variant list is fitted, but the full oracle does not yet reproduce: the ranges must be resolved per pair.
+  - Then do Queen of Spades, Slithery Fight, Schooltime open-4 and Dilemma 10-dragon. Write the maps under
+    `maps/live_var/`; accept a map at ≥ 95 % of its variant's games reproduced.
+- **Other open items:**
+  - export Hinata's single-team priors (213, 91) into the HB-1 slot (`kageyama-02-p1-hb1`) when they exist, with
+    gbt_parity, multi-map slot_e2e_parity and sandbox points;
+  - R4 feature blocks;
+  - P-8 S0 legality question (which half of a split keeps the process).
+- **Cloud-only state is lost with the container:** the /tmp venv (unswbc 1.2.9, lightgbm 4.7.0), the bot build
+  copies, and the e2e/fallback scripts. All results are on the Mac under `build/learn/kageyama/export/`, and the
+  tools are in the repo.
+
+## Unit 10 ( 2026-10-05 03:15 UTC)
 
 - **D-068:** the ten-team clone loses in play as a prior (A3-400 at λ 1: −7.0 points on the pool), and selection
   by accuracy is suspended. My items:
@@ -169,6 +195,7 @@ Facts found this unit (each on the BOARD):
 - H-K1: native post-m2 decode — done (two runs, last part 13:36Z). Closed.
 
 ## Log
+- 2026-10-05 ~05Z — unit 11 (file copy, shell down): D-072 §E bed facts + Devil variant fit in progress; handoff for restart.
 - 2026-10-05 03:15 UTC — unit 10: D-068 §C.1 fallback-logging builds and a 76-game local count (0); BOARD.
 - 2026-10-05 02:05 UTC — unit 9: kageyama-02-p1-hb1 (HB-1 input path, A8b switch), multi-map in-bot parity, points; BOARD.
 - 2026-10-05 00:45 UTC — unit 8: cohort series JSON; deploy slot bot + export/parity tools; BOARD.
