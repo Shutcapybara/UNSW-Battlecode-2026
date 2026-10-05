@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 06:20Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 07:24Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-076. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-077. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -36,16 +36,20 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials of the free lanes' bots | Daichi (Live ops) | `kenma-03-pocket-queen` is live as submission 17388 since 05:02Z for 60 ranked games (about 08:00Z). Trial 2 is `bokuto-13-cull` (70–31–1 against carthage-05 by Bokuto's run) if it reaches 226 pool wins on our harness, else `bokuto-04-queen`. Then a 60-game control on 14585. The best window becomes the incumbent (D-075 §C, D-076) |
+| Ladder trials of the free lanes' bots | Daichi (Live ops) | `kenma-03-pocket-queen` is live as submission 17388 since 05:02Z for 60 ranked games (about 08:00Z). **Trial 2 is `bokuto-13-cull`.** At its look (about 11:00Z) the best of the two windows and 14585's last 120 games becomes the incumbent and stays live (D-077) |
 | The queen | Sugawara (owner); builds and panels by Asahi | two isolating builds on carthage-05 are in: Kenma's pocket alone changes nothing off Schooltime and saves that queen in 3 of 14 games; Bokuto's queen lines alone lose 2.4 points on the pool and more against queen keepers. Neither mechanism transfers as one switch. Against queen-keeping opponents carthage-05 keeps its queen in 0 of 47 round-limit games |
-| The clone in play | Hinata (owner), Kageyama (export), Asahi (panels) | trees on the full data reach 0.7379 and beat the network. Next in play: the ten-team clone at the weight that matches the live prior's sharpness (λ 1.72), then the team-213 clone at λ 1 and 1.45 |
-| The hidden bed layouts on five maps | Kageyama (Data) | the pearl-bed schedule is solved exactly; Devil's second layout (49 % of live Devil games) is rebuilt and verified; Queen of Spades, Slithery Fight, Schooltime and Prisoners Dilemma follow in `maps/live_var/` |
+| The clone in play | Hinata (owner), Kageyama (export), Asahi (panels) | the ten-team clone at the weight that matches the live prior's sharpness still loses 7.4 points: sharpness explains about half the gap, content the rest. Three arms remain (the team-213 clone at two weights, the full-data clone); if none comes within 5 points the line is paused (D-077) |
+| The hidden bed layouts on five maps | Kageyama (Data) | **done**: all five rebuilt in `maps/live_var/`, 828 of 828 live games reproduced turn for turn; they carry 14.5 % of ranked games. Asahi adds them to the pool as a separate fixture block |
 | Local panels, the Mac's job runner | Asahi (Evaluator) | one Mac, one job at a time; queen and clone jobs alternate; no job over about 45 minutes |
-| Free lanes | Kenma, Bokuto | Kenma: `kenma-21` 60–42 against carthage-05. Bokuto: `bokuto-07-dodge` 60–42 by its own run; its shell is down and its tree uncommitted |
+| Free lanes | Kenma, Bokuto | **Bokuto's `bokuto-13-cull` is the best bot we have locally: pool 241–31 on our harness, +5.5 points over carthage-05, queen alive in 58 % of round-limit games.** It is the local reference. Kenma: `kenma-21` 60–42 against carthage-05. Mac time goes first to these lanes' candidates (D-077) |
 | Decisions, merges, this brief | Ushijima (Chair) | hourly; the council is dissolved (D-072) |
 
 ## Results so far
 
+- **`bokuto-13-cull` (free lane), 07:20Z:** pool 241–31 against carthage-05's 226–46 (+5.51 points [+2.19, +9.19]);
+  92 wins and 2 losses decided by the queen rule; queen alive in 94 of 163 round-limit games. Not yet tested on
+  the ladder. Its layers do not work one at a time: the first alone loses 31 pool wins, and Bokuto's queen lines
+  alone on carthage-05 lose 2.4 points.
 - **The k = 16 hand rule was promoted and rolled back** (D-069, D-075): live 02:13Z to 04:53Z, 16–28 in 45 ranked
   games, −0.263 a game against the previous bot's last 120. Locally it is +2.6 points on the pool and wins Weakhold.
   The cause of the live result is not established; a control window on 14585 will show whether the field moved.
