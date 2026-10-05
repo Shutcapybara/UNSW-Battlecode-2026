@@ -32,13 +32,16 @@ def table(bot, pnl, seeds=(1,)):
         g = pickle.load(gzip.open(max(hits, key=lambda h: Path(h).stat().st_mtime)))
         me, op = r['seat'], ('B' if r['seat'] == 'A' else 'A')
         qd = [d for d in g['events']['deaths'] if d['id'] in (0, 1) and d['team'] == me]
+        qo = [d for d in g['events']['deaths'] if d['id'] in (0, 1) and d['team'] == op]
         tot = {}
         for R in (100, 300):
             snap = g['rounds'][R] if R < len(g['rounds']) else None
             tot[R] = None if snap is None else (sum(len(b) for t, b in snap.values() if t == me),
                                                 sum(len(b) for t, b in snap.values() if t == op))
         rows.append(dict(game=r['game'], win=r['winner'] == me, last=int(g['last_round']), limit=int(g['last_round']) >= 499,
-                         died=qd[0]['round'] if qd else None, tot=tot, cause=qd[0]['cause'] if qd else None, q_me=int(g['final'][me]['queen']), q_op=int(g['final'][op]['queen'])))
+                         died=qd[0]['round'] if qd else None, tot=tot,
+                         odied=qo[0]['round'] if qo else None, ocause=qo[0]['cause'] if qo else None,
+                         oby_us=bool(qo and qo[0].get('killer_team') == me), cause=qd[0]['cause'] if qd else None, q_me=int(g['final'][me]['queen']), q_op=int(g['final'][op]['queen'])))
     return rows
 
 
@@ -64,6 +67,9 @@ def summary(rows):
     cz = collections.Counter(x['cause'] for x in rows if x['cause'])
     out['queen deaths: wall / other'] = (cz.get('wall', 0), sum(cz.values()) - cz.get('wall', 0))
     out['queen deaths by cause'] = (', '.join(f'{k} {v}' for k, v in cz.most_common()), len(rows))
+    od = [x for x in rows if x.get('odied') is not None]
+    out['enemy queen deaths: by us / other'] = (sum(x['oby_us'] for x in od), len(od) - sum(x['oby_us'] for x in od))
+    out['enemy queen death round med / n'] = (statistics.median([x['odied'] for x in od]) if od else 0, len(od))
     both = [x for x in lim if x['q_me'] > 0 and x['q_op'] > 0]
     out['both alive@end W-L'] = (sum(x['win'] for x in both), len(both) - sum(x['win'] for x in both))
     return out
