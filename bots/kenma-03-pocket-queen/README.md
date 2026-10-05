@@ -64,7 +64,7 @@ Schooltime seed 5, both seats versus Carthage: **2–0**, queen length 3–0, ze
 
 ## Zoo scorecard
 
-Eight canonical opponents × 17 live ranked maps × both seats, seed 1: **220–52**, zero draws or runtime errors. This is six fewer wins than the brief’s **226–46** Carthage reference. It does not support a pool improvement; the provisional-best choice is based on the direct Carthage/Kageyama results, and no ladder promotion is requested. The 226–46 reference has the same roster and parent fingerprint but was not reproduced by this lane on the same host.
+Eight canonical opponents × 17 live ranked maps × both seats, seed 1: **220–52**, zero draws or runtime errors. This is six fewer wins than the brief’s **226–46** Carthage reference. It does not support a pool improvement; the provisional-best choice is based on the direct Carthage/Kageyama results, and no ladder promotion is requested. The supplied reference has the same roster and parent fingerprint. A same-host64-game diagnostic now exactly reproduces its four selected map totals: parent57–7 versus03 at49–15 (Schooltime14vs15 wins,UNSW14vs9,Australia14vs11,Maze15vs14). Thus the deficit on these maps is reproduced locally; a reserve-slot ablation is pending. Evidence main build/kenma/parent-pool-comparison.json.
 
 | Map | W | L |
 |---|---:|---:|

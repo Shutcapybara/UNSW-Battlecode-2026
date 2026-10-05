@@ -7,3 +7,5 @@ Motivation: a retained12 Weakhold queen enters a food-filled corridor and dies a
 Status: prepared, unmeasured. Must demonstrate activation and zero errors in real play before its full102-game screen. Reserved seeds11–13 and new maps untouched. Diagnostic log: kenma_corridor_filter. Source parent remains frozen.
 
 Preflight: sanitizer-backed protocol replay test redirects the avoidable round157 entry south and preserves fallback at committed round158. Initial source archive3,594,215 bytes. Four-game activation smoke is dry-run-previewed and queued behind the exact same-host parent diagnostic process. Runtime c356ab501d912e7dd09fdc18a4c5e41951a4831e5726c1de2ec3de76d69083ed.
+
+Real smoke complete3–1/4, zero errors, same winners as12. Filter activates5/9 times in Weakhold A/B and0/0 in Australia; Australia outcomes and queen deaths match12. Weakhold B queen now survives, while A queen dies at221 instead of surviving. All four replays analyzed: k14-smoke-diagnostics.json and k14-corridor-smoke/activations.json. Full screen held while testing the combined prior and reserve ablation; this is not an improvement claim.
