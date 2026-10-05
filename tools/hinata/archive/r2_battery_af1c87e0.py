@@ -15,16 +15,14 @@ Arms (D-057 §C, D-058 §C). Columns: ENC = allowlist r2_features_enc_v1.txt; HB
 prefix --hb-prefix, default 'hb_f_'); HBP = hb_pF, hb_pR, hb_pL (Kageyama hb1_scores, parent prior exactly as it plays).
   A1 HBF pooled | A2 HBF per teacher team (one fit per team per fold; pooling cost, D-058: deploy-candidate type)
   A3 ENC | A4 ENC+HBP (the card's union) | A5 ENC+HBF+HBP
-  A6 (ts_base inputs; rev 7: ENC+HBP) trained and scored on the three highest-rated teachers (lowest crank, then highest elo; teachers_v1)
-  A7 (ts_base inputs; rev 7: ENC+HBP) + teacher-team one-hot as input; scored twice: own identity (dev) and identity fixed to the top-rated team
+  A6 ENC+HBP trained and scored on the three highest-rated teachers (lowest crank, then highest elo; teachers_v1)
+  A7 ENC+HBP + teacher-team one-hot as input; scored twice: own identity (dev) and identity fixed to the top-rated team
   (the deploy form; never map identity). A8 (mirror augmentation) and A9 (split/cull/sprint heads) are NOT here: A8 needs
   Data's left-right column map of encoder v1, A9 needs labels of other action types; both are flagged, not improvised.
 Sizes: one fit at max(--sizes) rounds; smaller sizes are the same booster's first n trees (identical to an n-round fit:
 boosting is sequential and the bagging RNG advances per iteration). Unweighted by default (D-057 §C); --weighted = teacher weight.
 Rev 6 (4 Oct 21:5xZ, Tanaka 21:25Z blockers 1-4 + nonnegative check): teacher-specific support from A0 (A6 exact top-3
 rows, A7 full support, A2 only training-unsupported cells missing), metadata equal to A0 on keys, fixed TS inventory.
-Rev 8 (5 Oct 00:5xZ, D-066 §C): candidate identities, teacher-specific inventory, cohort minimum and the A6/A7 input base
-(ts_base) are read from r2_inventory.json; code otherwise rev 7. A6 = ts_base inputs on the top-3 teachers; A7 = ts_base + teacher id.
 Rev 7 (4 Oct 22:4xZ, Tanaka 22:25Z): explicit candidate identities (POOLED_NAMES incl. full-data A10b per D-063 §C; A10b-f25/f50
 and A7/A7fix descriptive per D-064 §C; any other arm name refuses); A10b required in the pooled inventory; A2 team candidates
 eligible only with >= 10 frozen-cohort series (--cohort-series from Data); teacher-specific inventory = A2, A6.
@@ -45,11 +43,8 @@ KEY = ['game', 'side', 'dragon', 'round', 'turn']
 HBP = ['hb_pF', 'hb_pR', 'hb_pL']
 # rev 7 (Tanaka 22:25Z): explicit candidate identities, not name prefixes. Pooled deploy candidates = D-057 §C arms x sizes,
 # A10-e4 (D-059 §B) and the full-data early-stopped CNN A10b (D-063 §C). Learning-curve fits are descriptive only.
-# rev 8 (D-066 §C): the inventory is configuration, read from r2_inventory.json (override with env R2_INVENTORY)
-import os as _os  # noqa: E402
-INV_PATH = Path(_os.environ.get('R2_INVENTORY', str(Path(__file__).resolve().parent / 'r2_inventory.json')))
-INV = json.loads(INV_PATH.read_text())
-POOLED_NAMES = tuple(INV['pooled']); DESCRIPTIVE = tuple(INV['descriptive']); TS_BASE = INV.get('ts_base')
+POOLED_NAMES = tuple(f'{x}-{n}' for x in ('A1', 'A3', 'A4', 'A5') for n in (400, 800)) + ('A10-e4', 'A10b')
+DESCRIPTIVE = ('A10b-f25', 'A10b-f50', 'A7-400', 'A7-800', 'A7fix-400', 'A7fix-800')   # CNN curve; A7 both forms (D-064 §C)
 PARAMS = dict(R.PARAMS)
 
 
@@ -79,10 +74,7 @@ def get(a):
 
 
 def cols(arm, enc, hbf):
-    base = {'A1': hbf, 'A3': enc}
-    if TS_BASE not in base:
-        raise SystemExit(f'refused: inventory ts_base {TS_BASE} must be A1 or A3 (D-066 §C 3)')
-    c = {'A1': hbf, 'A2': hbf, 'A3': enc, 'A4': enc + HBP, 'A5': enc + hbf + HBP, 'A6': base[TS_BASE], 'A7': base[TS_BASE]}[arm]
+    c = {'A1': hbf, 'A2': hbf, 'A3': enc, 'A4': enc + HBP, 'A5': enc + hbf + HBP, 'A6': enc + HBP, 'A7': enc + HBP}[arm]
     if arm in ('A1', 'A2', 'A5') and not hbf:
         raise SystemExit(f'{arm} needs HB-1 feature columns (prefix hb_f_); none present')
     return c
@@ -216,8 +208,8 @@ def paired(y, P, P0, s, m=None, n=1000, seed=7):
     return dict(diff=round(float(D.sum() / N.sum()), 4), p05=round(float(np.percentile(o, 5)), 4), p95=round(float(np.percentile(o, 95)), 4), series=int(len(g)))
 
 
-TS_PLANNED = list(INV['ts_planned'])   # rev 8: from the inventory file (rev 7: A2, A6; D-064 §C A7fix descriptive)
-MIN_COHORT_SERIES = int(INV.get('min_cohort_series', 10))   # D-064 §C
+TS_PLANNED = ['A2-400', 'A2-800', 'A6-400', 'A6-800']   # rev 7: D-064 §C — A7fix (6 cohort series) is descriptive, not a TS candidate
+MIN_COHORT_SERIES = 10   # D-064 §C: an A2 team candidate is eligible only with >= 10 series in the frozen cohort (Kageyama's counts)
 META = ['team', 'series_key', 'map', 'x_is_queen']
 
 
@@ -336,12 +328,12 @@ def table(a):
                     goes_forward=bool(b['eligible'] and b['vs_A0']['p05'] > 0 and not ts_missing))
         if ts_missing:
             tsel['note'] = 'INCOMPLETE: planned teacher-specific arms missing (Chair waiver needed); no advancement'
-    out = dict(inventory=dict(path=str(INV_PATH), sha=sha(INV_PATH)), rows=rows, selection=sel, teacher_specific=dict(candidates=ts, selection=tsel), missing_planned=missing,
+    out = dict(rows=rows, selection=sel, teacher_specific=dict(candidates=ts, selection=tsel), missing_planned=missing,
                a0=json.loads((a0r / 'registry.json').read_text())['arms']['A0']['frl_all'])
     Path(a.out).write_text(json.dumps(out, indent=1, default=str))
     for r in sorted(rows, key=lambda r: -r['acc']):
         print(f"{r['arm']:10s} rows {r['rows']} acc {r['acc']} [{r['p05']}, {r['p95']}] queen {r['queen']} vsA0 {r['vs_A0']} bytes {r['bytes']}")
-    print('inventory', INV_PATH, sha(INV_PATH)[:12]); print('missing planned:', missing); print('selection', json.dumps(sel)); print('teacher-specific', json.dumps(tsel, default=str))
+    print('missing planned:', missing); print('selection', json.dumps(sel)); print('teacher-specific', json.dumps(tsel, default=str))
 
 
 def main():

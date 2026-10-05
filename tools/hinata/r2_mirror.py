@@ -3,6 +3,7 @@
   check  --rows <parquet,...> [--side <hb shard,...>] --out <json>      involution + coverage on every row/column (no model)
   diag   --run <battery run dir> --rows ... [--side ...] --out <json>  existing fold models scored on mirrored test rows
                                                                         (labels swapped) vs unmirrored; descriptive
+  tta    --run <base run> --size 400 --rows ... [--side ...] --out-run <dir>   A8b (D-066 §C 4): mirror-averaged prediction
   fit    --arm A1|A3|A4|A5 --rows ... [--side ...] --run <dir> [--sizes 400,800] [--budget s]
          A8 = base arm trained on training rows + their mirror images (test rows never mirrored); same params/folds.
 
@@ -99,6 +100,24 @@ def diag(a):
     Path(a.out).write_text(json.dumps(out, indent=1, default=str)); print(json.dumps(out, default=str))
 
 
+def tta(a):
+    """A8b (D-066 §C 4): mean of the base arm's probabilities on a row and on its mirror image mapped back (R<->L); no refit."""
+    import lightgbm as lgb
+    t0 = time.time(); d, enc, hbf, dropped, paths, order = get(a); man = json.loads((Path(a.run) / 'manifest.json').read_text()); arm = man['arm']
+    X = BAT.cols(arm, enc, hbf); m = mirror(d, X); F = R.folds(d, 'series5'); s = a.size
+    P = np.full((len(d), 4), np.nan); Pm = P.copy(); fk = np.empty(len(d), object); nb = 0
+    for k, te in F.items():
+        fk[te] = k; b = lgb.Booster(model_file=str(Path(a.run) / f'model_{k}.txt'))
+        P[te] = b.predict(d.loc[te, X].to_numpy(np.float32), num_iteration=s); Pm[te] = b.predict(m.loc[te, X].to_numpy(np.float32), num_iteration=s)
+        nb += len(b.model_to_string(num_iteration=s).encode())
+    name = f'A8b-{arm}-{s}'; out = Path(a.out_run); out.mkdir(parents=True, exist_ok=True)
+    (out / 'manifest.json').write_text(json.dumps(dict(arm='A8b', base=f'{arm}-{s}', base_run=a.run, base_manifest_sha=R.sha(Path(a.run) / 'manifest.json'),
+                                                     code_sha=R.sha(__file__), rule='(P(row) + P(mirror(row))[F,L,B,R]) / 2, no refit'), indent=1))
+    BAT.write(a, out, d, None, fk, {name: (P + Pm[:, [0, 3, 2, 1]]) / 2},
+              dict(arm='A8b', base=f'{arm}-{s}', model_bytes={name: int(nb / len(F))}, bytes_note='same model as the base; inference twice',
+                   seconds=round(time.time() - t0)), paths, dropped, X)
+
+
 def fit(a):
     import lightgbm as lgb
     t0 = time.time(); d, enc, hbf, dropped, paths, order = get(a); X = BAT.cols(a.arm, enc, hbf); BAT.need(d, X)
@@ -134,12 +153,12 @@ def fit(a):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('cmd', choices=['check', 'diag', 'fit'])
-    ap.add_argument('--rows', required=True); ap.add_argument('--side'); ap.add_argument('--run'); ap.add_argument('--out')
+    ap = argparse.ArgumentParser(); ap.add_argument('cmd', choices=['check', 'diag', 'tta', 'fit'])
+    ap.add_argument('--rows', required=True); ap.add_argument('--side'); ap.add_argument('--run'); ap.add_argument('--out'); ap.add_argument('--out-run')
     ap.add_argument('--arm', choices=['A1', 'A3', 'A4', 'A5']); ap.add_argument('--size', type=int)
     ap.add_argument('--teachers', default='build/learn/kageyama/teachers_v1.parquet'); ap.add_argument('--features', default=str(R.FEATS))
     ap.add_argument('--sizes', default='400,800'); ap.add_argument('--budget', type=float, default=1e9); ap.add_argument('--expect-folds')
-    a = ap.parse_args(); a.weighted = False; {'check': check, 'diag': diag, 'fit': fit}[a.cmd](a)
+    a = ap.parse_args(); a.weighted = False; {'check': check, 'diag': diag, 'tta': tta, 'fit': fit}[a.cmd](a)
 
 
 if __name__ == '__main__':

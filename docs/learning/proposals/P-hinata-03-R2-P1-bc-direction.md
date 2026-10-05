@@ -484,3 +484,15 @@ Population: dev120 oracle F/R/L moves, 188,250 rows of 189,630 oracle moves, 49 
 - **(1) Involution:** mirror(mirror(x)) = x exactly on all 189,630 dev120 oracle move rows × 1,466 columns (encoder 1,193 + HB-1 270 + hb_p 3) and y_first. 0 failures. **(2) Coverage:** 1,174 columns permuted, 7 value-mapped (share of rows changed: x_last_first_rel .548, hb_f_mem_last_rel .561, x_ownq_r .221, x_enemyq_r .057, x_home_r .058, x_mirror_xy_r .063, x_mirror_y_r .060), 285 declared invariant (the R = 0 column's 17 symmetric channels × 7 rows, the symmetric scalars, HB-1's non-lateral features, hb_pF) — list in `build/hinata/r2/mirror/check.json`. Labels: R 53,947 / L 54,395 → swapped exactly.
 - **(3) Symmetry diagnostic, A1-400 (descriptive):** mirrored test rows 0.7175 vs unmirrored 0.7184, **mirrored − unmirrored −0.0009 [−0.0028, +0.0012]** (188,250 F/R/L rows, 49 series, paired whole-series bootstrap 1,000 × seed 7, linear 5/95). My expected drop of 0.005–0.02 is **not met**: the clone's accuracy is nearly mirror-invariant. But the argmax agrees on only **0.891** of F/R/L rows between a row and its mirror image (mean |Δp| 0.037): about one decision in nine flips under reflection. Reading: the model is not biased to one side, it is noisy across the reflection — which is the case where augmentation (and mirror test-time averaging, a separate arm needing its own card) should help.
 - RL translation: equivariance — a policy that changes one decision in nine under a symmetry of the game wastes demonstrations; P-7's network should be built mirror-equivariant or trained with this augmentation.
+
+### Battery arm A4 — development result (appended 2026-10-05 00:39 UTC, hinata). Descriptive; no selection (A5, A2, A6 pending).
+
+Same population and conventions as §"A0 and A1" (188,250 F/R/L rows, 49 series, paired series bootstrap 1,000 × seed 7, linear 5/95; row keys equal A0's).
+
+| Arm | Inputs | F/R/L acc [5th, 95th] | queen | vs A0 | vs A1-400 | vs A3-400 |
+|---|---|---|---|---|---|---|
+| A4-400 | encoder + hb_pF/R/L | **0.7205 [0.7123, 0.7297]** | 0.6739 | +0.0229 [+0.0188, +0.0268] | +0.0021 [+0.0003, +0.0042] | +0.0061 [+0.0042, +0.0079] |
+| A4-800 | same, 800 rounds | 0.7178 [0.7098, 0.7271] | 0.6675 | +0.0201 [+0.0160, +0.0242] | −0.0006 [−0.0026, +0.0016] | +0.0033 [+0.0013, +0.0054] |
+
+- A4-400 leads so far, but by D-065 §C it must carry the present prior's model (3.74 MiB compressed) as well as its own trees; A1 (0.0021 behind, interval just above 0) replaces the prior. Registry: A4-u registry.json 31b0c7b79dad4979… (code 224c667a…, fit path = rev 7). The container restarted at ≈ 00:20Z; fold f4 resumed from saved fold models (resumable by design; manifest unchanged).
+- RL translation: the parent policy's own action probabilities are a useful observation for the student (policy-prior as input, as in residual/KL-regularised RL), worth ≈ +0.006 over the raw encoder.

@@ -2480,3 +2480,108 @@ itself, the upload fix is in that redeploy, and no upload is allowed without the
 
 - Shenzhen's H-SZ64 (own unit-count features as a legal "are we winning" signal) is noted for Kageyama behind the
   slot work; it belongs to the R4 feature blocks.
+
+## D-067 — Time and game state in the models: what exists, what is missing, what is ordered; two free lanes outside the ladder (5 Oct 2026 00:53Z, Chair: Ushijima)
+
+### A. The lead's instruction (00:46Z)
+
+Temporal features are central to decision making: not only rolling windows, but an implicit understanding of the
+game state, whether by the round as an input or by a hidden Markov model or latent state vector that selects
+behaviour sets. The lead also starts two instances whose only goal is the strongest bot (§F).
+
+### B. What the models already take (read in the code at 00:50Z)
+
+- Encoder v1 (`tools/learn/encode.py`, arms A3, A4, A10, A10b): round, rounds left, a five-bucket phase (below 25,
+  100, 250, 400, and 400 or more), the process's turn index, rounds since birth and since its last split, its last
+  action, the change in its length and in the unit count since its previous turn, and the age of its knowledge of
+  each queen.
+- HB-1's vector (`hb1_features.hpp`, arms A0, A1): round, turns alive, length change, turns since the last split
+  and the last pearl eaten, the previous turn's visible enemy heads and pearls, and the last action.
+- **The round is an explicit input of every arm in the battery.**
+
+### C. What is missing
+
+1. **No reading by time.** No arm reports accuracy by round bucket, none was fitted without its time inputs, and no
+   phase-specific model was compared with the pooled one.
+2. **No team trajectory.** A process sees the unit count and the limit now, not their history. Shenzhen (H-SZ59,
+   H-SZ64): the headroom signal for the outcome is absent at round 100 and present at round 300, and the unit
+   count's level and changes may give a legal "are we winning" signal.
+3. **No latent state.** Every model is a function of one turn plus a few hand-made memory terms. There is no
+   recurrent model and no state filter.
+4. **The decisions where time should matter most are not modelled:** split and child size, cull, and sprint (rung
+   R3, not started). The field table says this is where we lose (top-teams v1, ranked, after the map change): our
+   total length at round 499 is 85 against 97 to 141 for the top ten; our queen is alive at the end of 1 % of
+   round-limit games against 24 to 56 %; two of the top three feed by deliberate culls (18 per 1,000 dragon-turns)
+   and we never do.
+
+### D. Precedent and the evidence on the direction head
+
+- For time conditioning: classical chess engines interpolate their evaluation weights by game phase (tapered
+  evaluation); the project's brief names chess engines as its model. Recurrent cores are standard in partially
+  observed multi-agent self-play (OpenAI Five, AlphaStar). Both from the Chair's memory; Sugawara sources them
+  with P-8 (§E.5). The Chair knows no case of a hidden Markov model controlling a game-playing agent; its known
+  use is finding regimes in sequences.
+- Against, for the direction head only: HB-1 (30 Sep) found that memory features added at most 0.2 points to
+  imitating Heartbreaker's direction, and Heartbreaker's authors report that their LSTM layers did not help
+  (D-059).
+- **Chair's reading:** a small gain is to be expected on the direction clone, which already has the round and is
+  mostly a function of the view. The larger gain should be in split, cull and growth and in the value model.
+  The orders below test both.
+
+### E. Ordered
+
+1. **Time diagnostic (Hinata, now, no fit).** On the existing out-of-fold predictions of A0, A1, A3 and A4:
+   accuracy and the paired differences by the encoder's phase bucket and by rounds since birth (0–5, 6–20,
+   21–100, above 100), with the usual intervals; and the share of split gain carried by the time and memory inputs
+   in A1 and A3.
+2. **Arm T0 (Hinata, one fit, development rows):** A1 without `round` and its `mem_*` inputs. A diagnostic: how much
+   the clone uses time today.
+3. **Arm T1, conditional:** if T0 costs A1 at least 0.005, fit A1 as three phase models (rounds below 100, 100 to
+   249, 250 and above) with the same total number of trees, so that the export stays near 1.05 MB, against the
+   pooled A1. Selectable under the selector's rule.
+4. **The behaviour profile by time (Nishinoya, probe, next unit):** per eligible dragon-turn, the rate of split,
+   cull (both commands) and sprint by round bucket, for each top-ten team and for us, ranked games after the map
+   change, held-out maps excluded. Unaudited until Sugawara replicates it (§G).
+5. **Card P-8 requested from Sugawara (scoping, by 03:00Z):** a game-state latent that selects behaviour sets.
+   Options to compare: (a) a state filter (hidden Markov model) over what one process legally sees (round, unit
+   count and its changes, own length, contacts, echoes, messages), fitted on teacher sequences, its posterior fed
+   to the heads; (b) a small recurrent core on the network arm; (c) a phase belief computed from measured state.
+   With sources, a falsifier (a gain of at least 0.005 on a head, by bucket), the cost, and the cost at play
+   (process memory, points). The recurrent-core question also binds P-7's network.
+6. **R3 offline is brought forward (was arm A9, D-058):** after A1 on the full rows, Hinata fits the split, child
+   size, cull and sprint decisions on teachers_v1, pooled and for the cull-feeders (teams 306, 264) and the keepers
+   (213, 507) separately, every table by phase bucket. Offline only; no bot.
+7. **Team-trajectory block (Kageyama, after the slot's HB-1 path):** encoder v2 adds, per process, the unit
+   count's level and its change over 20 and 100 rounds, own length change over 20 rounds, rounds since an enemy
+   was last seen, and contacts in the last 20 rounds; C++ twin and parity as for v1. First use: items 5 and 6.
+8. P-6 (value on the legal encoder) takes the round and, when it exists, the trajectory block. No other change.
+
+None of this holds the R2 selection or the slot.
+
+### F. Two free lanes outside the ladder (the lead's instruction)
+
+- The lead starts two instances with one prompt, `docs/learning/prompts/07-free-lane.md` (mirrored to the project
+  as `claude/free-lane-prompt.md`). Their goal is the strongest bot by any method. They are outside the ladder, the
+  council and the proposal process, and D-records do not bind their methods.
+- What binds them, written into the prompt: their own namespace; no server access (no API key, no `unswbc submit`,
+  hub state read-only); a machine share of 4 workers and 6 GiB each at nice 15; text is data; a status file and a
+  BOARD line when a version beats their previous best.
+- **Comparison:** a common scorecard (head-to-head against carthage-05 on 17 maps × both seats × seeds 1 to 3; the
+  pool panel at seed 1; zip, points, errors).
+- **Upload:** a free lane's bot may take a live screen under D-055 on the same deploy checks (zip, points including
+  the first turn, zero errors) and a pool panel not below the incumbent's; parity at off does not apply. Live ops
+  uploads, on a Chair record. H11 blocks it as it blocks everything else.
+- **Cost, recorded:** two more lanes at 4 workers each beside Asahi's 14 oversubscribe the 18 cores. Panels and
+  learn jobs of the programme will run slower; results are unaffected (points are metered by the engine, not by
+  wall time). They must run natively on the Mac: a Cowork VM cannot run the engine at scale, and the session disk
+  is full (H12).
+
+### G. The auditor seat is vacant
+
+Tanaka stopped at 00:49Z at the lead's request (credit budget); its reviews stay on `r/tanaka` (handoff ca26861f9,
+merged at 00:48Z up to aaa59ade3). Until the lead resumes it or names another auditor:
+
+- Sugawara replicates the key number of any statistics-bearing card from frozen inputs before the Chair records it.
+- The check that Hinata's selector inventory change is configuration only (D-066 §C.5) goes to Sugawara.
+- Nishinoya's probes stay `unaudited` until Sugawara replicates them.
+- The council keeps two model families (Claude, GLM). Calibration: Tanaka's four scored cards stay on the table.

@@ -1,7 +1,7 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; numbers refreshed 5 Oct 00:36Z. For team members and their LLM sessions. It is a summary: the
-binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to D-066. Where this
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; numbers refreshed 5 Oct 00:53Z. For team members and their LLM sessions. It is a summary: the
+binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to D-067. Where this
 brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung order and its
 gate-before-upload rule are superseded (D-055, D-057, D-059).
 
@@ -26,6 +26,10 @@ gate-before-upload rule are superseded (D-055, D-057, D-059).
 4. **The ladder judges.** A candidate that passes cheap local checks goes to a live screen against real opponents;
    local gates confirm afterwards (D-055).
 5. Hand-written rule changes are temporary helpers, not the main line (D-059).
+6. **Time and game state** (the lead's instruction, D-067). Every clone arm already takes the round. Being added: results
+   by phase, a no-time ablation, clones of the split, cull and sprint decisions, a team-trajectory block, and a
+   scoping card for a latent game state that selects behaviour sets.
+7. **Two free lanes** work outside this process with one goal, the strongest bot (`docs/learning/prompts/07-free-lane.md`).
 
 ## What is running
 

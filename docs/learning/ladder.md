@@ -14,7 +14,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 | R0 | infrastructure | **passed** 4 Oct 14:28Z | Kageyama, Hinata, Asahi, Daichi | D-046, D-051 §5, D-052, D-053 §A |
 | R1 | V0 value model | **P-2 failed its one confirmation** (elimination r25 −0.0099 [−0.0152, −0.0049] against −0.01; better than Φ on round-limit maps at every checkpoint). Rung open. Next value artifact: P-6 (V-legal) with a fallback to Φ early on elimination-regime maps | Hinata | D-052 §A, D-057 §B |
 | R2 | P1 BC direction head | **Battery on development rows:** live prior 0.6977; HB-1's features refitted on ten teams (A1) 0.7184 [0.7101, 0.7278], replicated by Tanaka; encoder trees (A3) 0.7145; converged CNN 0.6785. **Selectable: A1, A3 and arms on their inputs (one model, about 1.05 MB); A4–A7 as fitted are not (two models, about 4.9 MB).** Arm A8b (mirror-averaged prediction) added. Full rows (2,753,685 moves): network refit queued, A1 second, ceiling 14.4 GiB a job. Deploy slot `bots/kageyama-01-p1-slot` built and at parity; HB-1 input path ordered. Then selection, one confirmation on the frozen cohort (115 games); panels and the live screen do not wait for the confirmation | Hinata, Kageyama | D-055 §E, D-057 §C, D-058 §C, D-059 §B, D-063 §C, D-064 §C, D-065 §C–D, D-066 §C–F |
-| R3 | split/size, cull, sprint heads | not started | Learner | |
+| R3 | split/size, cull, sprint heads | **offline fits brought forward** (D-067 §E.6): after A1 on the full rows, pooled and by style, every table by phase bucket; no bot yet | Hinata | D-058 §C (arm A9), D-067 |
 | R4 | feature blocks | not started | Data, Learner | |
 | R5 | V in the search | needs a value model on the legal encoder (V-legal card after the decode, D-052 §A.7) | Hinata | |
 | R6 | expert iteration | small scale only, by a later D-record | Learner | |
@@ -66,6 +66,9 @@ blocks live screens.
 
 ## Log
 
+- 5 Oct 00:53Z: D-067. Time and game state: by-phase diagnostic, no-time ablation (T0), conditional phase models
+  (T1), behaviour profile by round, card P-8 (latent state) requested, R3 offline brought forward, trajectory
+  block for encoder v2. Two free lanes opened outside the ladder.
 - 5 Oct 00:36Z: D-066. P-7's entry throughput passes (no training approved). A1 and A3 are selectable; A4–A7 as
   fitted are not (size). Arm A8b added. Full-row jobs: network first, A1 second, 14.4 GiB ceiling. Deploy slot
   accepted; HB-1 input path ordered. The live screen of the clone does not wait for the cohort confirmation.

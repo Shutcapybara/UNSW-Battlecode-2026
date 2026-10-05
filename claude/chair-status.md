@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 00:36Z (unit 14). Next self-wakes 00:45Z (merges) and 01:45Z. Branch `r/ushijima`; private tree
+State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 00:53Z (unit 14b). Next self-wake 01:45Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,13 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-067 (the lead's instruction on time and game state):** the round is already an input of every clone arm; what
+  is missing is any reading by time, a team trajectory, a latent state, and models of the split, cull and sprint
+  decisions, where the field table says we lose (total length at round 499: 85 against 97 to 141; queen alive 1 %
+  against 24 to 56 %). Ordered: a by-phase diagnostic and a no-time ablation (Hinata), the top teams' behaviour
+  profile by round (Nishinoya), a scoping card for a game-state latent (P-8, Sugawara, by 03:00Z), the split, cull
+  and sprint clones offline (after A1 on the full rows), and a trajectory block in encoder v2 (Kageyama). Two free
+  lanes outside the ladder are opened with `docs/learning/prompts/07-free-lane.md`.
 - **D-066:** P-7's entry throughput passes (1.89×10⁸ decisions an hour; no training approved). Size decides part of
   the selection: A1 and A3 need one model (about 1.05 MB) and are selectable; A4–A7 need two (about 4.9 MB) and are
   not. Arm A8b (mirror-averaged prediction) added. Full-row jobs: the network first, A1 second, 14.4 GiB a job on the
@@ -118,7 +125,7 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 | Role | Lane | State |
 |---|---|---|
 | Chair | Ushijima (Claude) | active |
-| Council, auditor | Tanaka (GPT, Codex, hourly heartbeat), `r/tanaka` | working: 17:55Z P-2 scorer PASS; 17:56Z LS-1 review; 17:59Z R2 support verified |
+| Council, auditor | Tanaka (GPT, Codex), `r/tanaka` | **stopped 00:49Z at the lead's request (credit budget)**; seat vacant; Sugawara covers replication (D-067 §G) |
 | Council, mechanism | Sugawara (Claude), hourly at :25 | working: 17:29Z LS-1 objective amendment (upheld in part, D-056 §C) |
 | Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: 17:52Z replication of the LS-1 amendment |
 | Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | deploy slot `bots/kageyama-01-p1-slot` built (r/kageyama f536785f7): zip 1.05 MiB, at most 10.1 M points, parity 2.9e-8; next the HB-1-vector input path (D-066 §E) |
@@ -153,13 +160,15 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
    on the full rows, then one confirmation on the frozen cohort. Beside it: Asahi's placeholder panels (first play
    evidence of a ten-team clone in the prior slot) and the slot's HB-1 input path.
 3. **P-7 training:** after the network arm on the full rows.
+4. **Time and game state (D-067):** the by-phase diagnostic and the no-time ablation decide whether phase models
+   are fitted; P-8 (latent state) is read when filed.
 
 Waiting on the lead: **H11** (does the hub restart by itself; until known, no redeploy, and so no upload of any new
 bot, the clone included) and H12 (session disk full; it blocks the Chair's shell).
 
 ## Cursor
 
-Last BOARD line read: line 1092 (Sugawara 00:29Z, slot review), main tree. Own D-066 lines follow.
+Last BOARD line read: line 1097 (Hinata 00:39Z, A4 0.7205: +0.0021 over A1, below the 0.005 bar of D-066 §C.2), main tree. Own D-067 lines follow. Merged at 00:48Z: r/kageyama (slot on main), r/tanaka, r/daichi, r/nishinoya; r/asahi waits for a BOARD commit.
 
 ## Open flags
 
