@@ -344,3 +344,143 @@ Same 189,630 dev120 oracle move rows (188,250 F/R/L), 49 series, 10 teachers, 14
 - Code: r2_battery.py fit sha 8fdddd38… (A3-u run), r2_cnn.py 5e8d6f46… (A10-u run); the current tools (8a29e479… /
   e237fb76…) only add validation and manifest binding, fits unchanged. Registry: build/hinata/r2/battery/{A3-u,A10-u}/registry.json
   (registry sha 8807488c… / 3e23db4a…); A3 models as split tgz + models.sha256, A10 weights .pt.
+
+### D-063 §C arm A10b (early-stopped CNN) and its learning curve — configuration fixed before any A10b fit (appended 2026-10-04 21:37 UTC, hinata)
+
+Declared by the Chair (D-063 §C); this section only fixes the implementation details the ruling leaves open. Tool
+`tools/hinata/r2_cnn_b.py` (new file; r2_cnn.py e237fb76… untouched). Same rows (teachers_dev120.p0/p1, sha 1a3c552c… /
+30826ce9…), same allowlist b109e5c0…, same series5 folds (test-row hashes must equal the A10-u manifest), same net, optimiser,
+batch, seed and scoring as A10.
+
+- **Inner split:** inside each fold, training series with sha256('inner/<series>') mod 1000 < 200 form the inner validation set
+  (≈ 20 % of training series, whole series; at least one series is forced if the hash picks none). The net trains on the rest.
+- **Stopping:** after each epoch, 4-class cross-entropy on the inner validation rows; keep the weights of the best epoch; stop
+  after 3 epochs without improvement or at 40 epochs. Test rows are predicted with the best-epoch weights. **No refit** on the
+  inner validation series (so A10b trains on ≈ 80 % of the series A10 saw — stated, not corrected).
+- **Learning curve (D-062 §C "A10's learning curve 0.25 / 0.5 / 1.0"):** run with the A10b protocol, not 4 fixed epochs,
+  because A10 at 4 epochs had not converged and a curve of an unconverged net reads training length, not data. Training
+  series subsampled by sha256('frac/<series>') < frac × 1000, exactly as r2_bc rev 4 (same series as lc-f25/lc-f50); test folds
+  unchanged. Points 0.25, 0.50; 1.0 = A10b itself. Same reading rule as the tree curve: s = acc(1.0) − acc(0.5).
+- **Report:** accuracy, bootstrap, queen/non-queen, per teacher, best epoch per fold, epochs run, paired A10b − A10 and
+  A3-400 − A10b on identical rows. Pooled; the selector stays held (D-063 §C) — no selection claim from this run.
+- **Author forecast (before the fit):** A10b = 0.695 (80 % interval 0.680–0.712); P(A10b − A10 ≥ +0.010) = 0.65;
+  P(A10b ≥ A3-400) = 0.10; mean best epoch 8–15. Curve: 0.25 → 0.665, 0.50 → 0.682; P(s_CNN > s_trees = 0.0114) = 0.55
+  (networks usually gain more from rows than trees in this range).
+- **Bearing:** if A3-400 − A10b stays ≥ +0.02 with its 5th percentile > 0, trees win at dev120 scale for a converged net too,
+  and P-7 runs as distil-from-trees (D-063 §D). If A10b closes to within 0.01, the network is a live P-7 actor without distillation.
+
+### Arm A10b and its learning curve — development results (appended 2026-10-04 21:55 UTC, hinata). Descriptive; no selection (D-063 §C); no tuning.
+
+Runs `build/hinata/r2/battery/A10b-u | A10b-f50 | A10b-f25` (tool r2_cnn_b.py ba151375…, imports r2_bc a31faa5d… and
+r2_battery 8a29e479…; manifests 56ee8b12… / 7e1479ca… / 26391dba…; registries 6164e241… / cbc32215… / 1a72cd12…; all 45 files
+sha-verified on the Mac, `A10b.sha256`). Cloud container, 1 core: 482 s / 242 s / 129 s. Fold test-row hashes equal the
+A10-u manifest (--expect-folds), and row keys equal A10-u's in order. Population: dev120 oracle move rows, 188,250 F/R/L of
+189,630, 49 series, 10 teachers, 14 training maps, post-m2. F/R/L-conditional accuracy; whole-series bootstrap 1,000 × seed 7,
+linear 5th/95th; paired = whole-series bootstrap of the difference on identical rows.
+
+| run | fit series / fold (mean) | fit rows / fold | best epoch (0-based) per fold | F/R/L acc [5th, 95th] | queen |
+|---|---|---|---|---|---|
+| A10b-f25 | 9.6 | 35,803 | 7, 6, 6, 6, 9 | 0.6419 [0.6300, 0.6528] | 0.633 |
+| A10b-f50 | 17.6 | 64,557 | 5, 10, 8, 8, 5 | 0.6582 [0.6475, 0.6682] | 0.613 |
+| **A10b** | 32.0 (+ 7.2 inner) | 124,972 | 7, 7, 10, 6, 6 | **0.6785 [0.6694, 0.6875]** | 0.652 |
+| (A10-e4, 4 fixed epochs) | 39.2 | ~151,700 | — | 0.6727 [0.6641, 0.6815] | 0.654 |
+| (A3-400 trees) | 39.2 | ~151,700 | — | 0.7145 [0.7061, 0.7239] | 0.685 |
+
+- **Paired:** A10b − A10 = **+0.0058 [+0.0030, +0.0081]**; A3-400 − A10b = **+0.0360 [+0.0326, +0.0403]** (49 series).
+  Early stopping chose 7–11 epochs; inner loss bottoms at ≈ 0.652–0.656 and then rises, so A10 at 4 epochs was close to
+  converged in accuracy terms (its still-falling loss was training loss). A10b per teacher 0.639–0.716; per fold 0.662–0.689.
+- **CNN curve: s_CNN = acc(1.0) − acc(0.5) = +0.0203 [+0.0174, +0.0236]**; 0.25 → 0.5 +0.0163 [+0.0129, +0.0196]. Trees'
+  s = +0.0114 [+0.0090, +0.0142] (lc-f50 → 1.0). The intervals do not overlap: the network gains about twice as much per
+  step of rows. Per doubling of fit series: CNN ≈ +0.024 (0.5 → 1.0 is 1.82×), trees ≈ +0.014–0.015.
+- **Extrapolation (labelled as such; two log-linear lines, not a model):** the gap (+0.036) closes by ≈ 0.009 per doubling,
+  so parity would need ≈ 4 doublings of series, ≈ 16× dev120 — about the size of the full teacher rows Kageyama is building.
+  Part of the gap is A10b's 20 % inner hold-out (32 vs 39 series ≈ −0.007 at the CNN slope).
+- **Forecasts scored:** A10b 0.695 (80 % 0.680–0.712) → 0.6785, below the interval; P(A10b − A10 ≥ +0.010) = 0.65 → did not
+  occur; P(A10b ≥ A3-400) = 0.10 → did not occur; best epoch 8–15 (1-based) → 7–11, mostly inside; curve 0.665 / 0.682 →
+  0.642 / 0.658 (too high by ≈ 0.024 at both); P(s_CNN > s_trees) = 0.55 → occurred.
+- **Bearing (pre-registered rule):** A3-400 − A10b ≥ +0.02 with 5th percentile > 0 → **trees win at dev120 scale for a
+  converged small CNN too**; if trees are selected, P-7 runs as distil-from-trees (D-063 §D). Beside it, the steeper CNN curve
+  means the full teacher rows are the test that could reverse this; a CNN refit there is a new card, not tuning of A10b.
+- Registry rows proposed: hinata-r2-bat-A10b (6164e241…), hinata-r2-lc-A10b-f50 (cbc32215…), hinata-r2-lc-A10b-f25 (1a72cd12…).
+
+RL translation — Observation: same 1,193 encoder columns; the window CNN extracts less of the teachers' direction choice than
+trees at 125–150k rows, but its error falls faster with rows. Action: first step F/R/L. Value/reward: none. Demonstration:
+demonstration volume matters more for a network actor than for trees, so P-7's network actor needs either the full teacher rows
+or distillation from trees (which can also label unlimited self-generated states, DAgger-style).
+
+### Author's reply to Tanaka's repair audit (21:25Z) — r2_battery.py rev 6 (appended 2026-10-04 21:55 UTC, hinata)
+
+All four blockers and the hardening note are implemented in `tools/hinata/r2_battery.py` rev 6 (sha 3f56b4b2…; 8a29e479… kept
+as `tools/hinata/archive/r2_battery_8a29e479.py`). Fit paths are unchanged; only `a0` (records teams_by_rating) and `table`
+change. (1) A6 must be exactly A0's rows of A0's top three teams, and its declared teams must equal them. (2) A7/A7fix need the
+full A0 support and the declared top team must equal A0's; team, series_key, map and x_is_queen must equal A0's on every key,
+and bootstrap clusters and targets are taken from A0. (3) A2's allowed exclusions are derived from A0 alone (cells team × fold
+with no A0 row of that team outside the fold); any other missing row refuses; the excluded cells and counts are printed.
+(4) Fixed teacher-specific inventory (A2/A6/A7fix × 400/800): missing arms print INCOMPLETE and block goes_forward unless the
+Chair waives them (--waive-ts, recorded). Probabilities must be nonnegative. Synthetic check `tools/hinata/r2_battery_rev6_synth.py`
+(invented data, 100 rows, 4 teams, 10 series; no real output read): your cases 1, 2 (partial and altered series_key), 3 and the
+[2, −1, 0, 0] vector refuse; a structurally unsupported A2 cell passes and one extra missing row refuses; A7fix alone and other
+partial inventories give goes_forward = false; the complete inventory gives true. Requesting a pass line on 3f56b4b2….
+Note: A0 must be (re)run with rev 6 so its registry carries teams_by_rating; the table refuses otherwise.
+
+### Author's reply to Tanaka's round-11 audit (22:25Z) and D-064 §C — r2_battery.py rev 7 (appended 2026-10-04 22:44 UTC, hinata). No battery table read on real rows.
+
+- **rev 7 `af1c87e0d4de7dc2b1cc16783b037edbad184420ea4211b88d7ffec267428207`** (rev 6 3f56b4b2… archived as `tools/hinata/archive/r2_battery_3f56b4b2.py`). The fit and a0 paths are unchanged; only identities and the selector change.
+  1. **Explicit candidate identities** (Tanaka): `POOLED_NAMES` = A1/A3/A4/A5 × {400, 800}, `A10-e4`, `A10b` (full data, D-063 §C). `DESCRIPTIVE` = `A10b-f25`, `A10b-f50`, `A7-*`, `A7fix-*`. Any arm name outside the declared sets refuses (no prefix classification). `A10b` is in PLANNED, so a missing full-data A10b makes the pooled selection INCOMPLETE. Each table row carries `role`.
+  2. **D-064 §C:** A7fix is descriptive (printed as `descriptive_vs_A0_top_team`), never a teacher-specific candidate; the teacher-specific inventory is A2 and A6. An A2 team candidate is eligible only with ≥ 10 frozen-cohort series, from a Data-supplied `--cohort-series {team: series}` file (counts only, no labels; Hinata does not open the cohort). Without the file and with A2 present, the teacher-specific path is INCOMPLETE.
+- **Synthetic check** `tools/hinata/r2_battery_rev7_synth.py` c877f6fc… (invented data; reuses only the rev 6 synth's helpers): (a) complete old inventory at .80 + A10b at 1.00 → selects A10b, inventory complete; (b) A10b absent → pooled_missing [A10b], no claim; (c) A10b-f25 at 1.00 without A10b → role descriptive, not selected, INCOMPLETE; (d) `A10b-f75` and (e) `A3-200` → refused; (f) A2 best team with 6 cohort series → an eligible team is chosen instead; (g) the same team with 12 → chosen; (h) no counts → goes_forward false, counts listed missing; (i) A7/A7fix only → no teacher-specific candidate. The rev 6 probe cases 1–3, 5, 6, 6b were re-run in this unit on the intermediate draft 224c667a… (identity sets only, before the D-064 §C edits) with outcomes identical to rev 6; case 4b's expectation changes by D-064 §C (A7fix no longer counts).
+- **A0 run (rev 6/7 a0 path, records teams_by_rating):** `build/hinata/r2/battery/A0-u`, 0.6977 [0.6891, 0.7069] on 188,250 F/R/L oracle moves (dev120, 49 series, 10 teachers, 14 training maps, post-m2; whole-series bootstrap 1,000 × seed 7, linear 5th/95th), queen turns 0.6754. Equals Kageyama's and Tanaka's .69766. HB-1 export manifest e38d0667…, 118/118 shard hashes re-verified after transfer.
+- **Requests:** Tanaka — pass line on rev 7 af1c87e0…. Kageyama — `--cohort-series` JSON: frozen-cohort series count per teacher team (all ten), no labels.
+
+### Full-row refit (D-064 §C) — configuration fixed before any full-row fit (appended 2026-10-04 22:50 UTC, hinata). No full-row outcome read.
+
+- **Claim / rung.** R2 P1: the development table's ordering (trees > CNN by +0.036 at dev120 scale) is measured again on the full teacher rows before the selection is read as final (D-064 §C; D-057 §C order select → refit → confirm unchanged). Descriptive beside the development table; it does not re-run the selection.
+- **Rows.** `build/learn/kageyama/teachers_v1/` (Kageyama's native build, `_manifest.json` read only for totals): 1,709 games, 506 series, 10 teachers, 14 training maps, 0 frozen-cohort games or series; oracle F/R/L moves 2,753,685 (14.6 × dev120's 188,250). Train split only; held-out maps refused; oracle rows only (Sugawara point 1); support.json prints the oracle share per map (Schooltime .65, Devil .63, Queen of Spades .48, Slithery Fight .54, Prisoners Dilemma .39, the other nine 1.0 — from Data's manifest) and the F/R/L rows per teacher.
+- **Arms.** (i) **the best development tree arm**: among A1/A3/A4/A5 × {400, 800}, the one rev 7's pooled rule ranks first among tree arms once A1, A4 and A5 are complete (highest dev F/R/L accuracy; among tree arms whose interval overlaps it, the smallest); (ii) **A10b** (`A10b-full`), r2_cnn_b's network, inner split (20 % of training series), patience 3, ≤ 40 epochs, seed 7, unchanged.
+- **Tool.** `tools/hinata/r2_full.py` (new). Same r2_bc.PARAMS except `num_threads` (= ASAHI_MAX_WORKERS on the Mac queue; thread count can change the last digits of a LightGBM fit — declared, not a parameter change). Loading per shard with column projection; encoder kept int16; LightGBM Dataset from a `lightgbm.Sequence` (bins from LightGBM's default 200,000-row sample, as for the numpy path); CNN windows cast to float32 per mini-batch. Folds: series5 (`sha256('hinata-r2/<series>') % 5`) over the full-row series. Metric: F/R/L accuracy, whole-series bootstrap 1,000 × seed 7, linear 5th/95th; paired trees − A10b-full on identical rows; per map, per teacher, queen turns. **Bridge line** (descriptive): out-of-fold accuracy on the dev120 games vs the rest.
+- **Parity check before the Mac run:** on the dev120 rows, r2_full `trees --arm A3 --sizes 10` must reproduce r2_battery `fit --arm A3 --sizes 10` (same fold hashes; predictions equal to 1e-6 at num_threads 3). Result appended below before any full-row fit.
+- **Expected sign / size (log-linear extrapolation of the dev curves, labelled as such; Sugawara: curves usually bend):** trees 0.7145 + 0.0114 × log2(14.6) ≈ 0.759; A10b 0.6785 + 0.0203 × 3.87 ≈ 0.757. **P(best tree arm ≥ 0.75 on full rows) = 0.40; P(A10b-full − trees > 0, paired 5th pct > 0) = 0.15; P(A10b-full − trees within ±0.01) = 0.30.**
+- **Falsifier of the dev ordering:** A10b-full ≥ trees with the paired 5th percentile > 0. If so, the Chair decides whether the pooled selection is re-read on full rows; Hinata does not reselect.
+- **Cost.** Mac learn queue, heavy, one job per arm. Memory: trees A3/A4 ≈ 6.6 GB int16 + binned dataset ≈ 3 GB; A5 adds ≈ 3 GB float32; CNN ≈ 6.6 GB + float32 scalars. Time (from 1-core dev costs × 14.6 rows ÷ threads): trees ≈ 1–2 h at 800 rounds, CNN ≈ 1–2 h. **Needs:** tools/hinata/r2_full.py, r2_battery.py rev 7 and r2_cnn.py committed on main (queue rule).
+- **Stop rule.** One fit per arm; no retuning; no re-run of a completed fold; results appended as one section with registry rows.
+- **RL translation.** Demonstration volume: whether a network actor (needed for P-7 self-play) can match trees once fed the full demonstrations decides between distil-from-trees and direct network BC as P-7's starting actor.
+
+#### Full-row refit — tool amendment and parity result (appended 2026-10-04 23:11 UTC, hinata). Still no full-row fit.
+
+- **Amendment (before any full-row fit):** the `lightgbm.Sequence` loader named above is dropped. On dev120 fold f0 it pre-filters 45 of 1,193 rare encoder features differently from the numpy path (e.g. `x_f1r0_enemy_queen`: 0 bins vs 2), which changes feature_fraction's column draws and so the model (10-round test: 0.666 vs 0.6638). r2_full.py now materialises each training fold as float32 and hands it to LightGBM exactly as r2_battery.fit does. Memory, revised: A3/A4 ≈ 6.6 GB int16 store + ≈ 10.5 GB float32 training copy (≈ 18 GB peak); A5 ≈ 23 GB peak. **Asahi: please confirm the Mac's RAM before these jobs are queued.**
+- **Parity (dev120, A3, --sizes 10, num_threads 3), r2_full.py 6be9dd8d9306a0af7920212516612bdc46970dc4079783fa31d74470f43c823e vs r2_battery fit:** identical fold hashes, identical row order, max |Δp| = 0.0 on 189,630 rows; F/R/L accuracy 0.6638 both (188,250 rows). Bridge line works (all rows are dev120 games here). **CNN path parity** (`cnn`, threads 1, dev120) vs A10b-u (6164e241…, r2_cnn_b ba151375…): identical fold hashes and row order, best epochs 7/7/10/6/6 as before, max |Δp| = 0.0 on 189,630 rows, 0.6785 [0.6694, 0.6875] — the full-row CNN is A10b with only the loader changed.
+
+### Battery arms A0 and A1 — development results (appended 2026-10-04 23:31 UTC, hinata). Descriptive; no selection (inventory incomplete: A4, A5, A2, A6 pending); no tuning.
+
+Population: dev120 oracle F/R/L moves, 188,250 rows of 189,630 oracle moves, 49 series, 10 teachers, 14 training maps, post-m2; series5 folds (fold hashes equal dev120-enc-s5, checked by --expect-folds); whole-series bootstrap 1,000 × seed 7, linear 5th/95th; paired differences on identical rows (row keys equal A0's).
+
+| Arm | Inputs | F/R/L acc [5th, 95th] | queen turns | vs A0 (paired) | bytes/fold |
+|---|---|---|---|---|---|
+| A0 | parent prior hb_pF/R/L argmax | 0.6977 [0.6891, 0.7069] | 0.6754 | — | 0 |
+| A1-400 | HB-1's 270 features, trees | **0.7184 [0.7101, 0.7278]** | 0.6850 | +0.0207 [+0.0170, +0.0244] | 11.2 MB |
+| A1-800 | same, 800 rounds | 0.7158 [0.7075, 0.7251] | 0.6741 | +0.0181 [+0.0142, +0.0219] | 22.5 MB |
+| A3-400 (earlier) | encoder v1, trees | 0.7145 [0.7061, 0.7239] | 0.6717 | — | 11.5 MB |
+
+- **A1-400 − A3-400 = +0.0039 [+0.0018, +0.0060]** (paired, 49 series): the parent's hand-built 270-feature vector, refitted on teacher moves, is slightly better than the 1,193-column encoder. 800 rounds are again worse than 400 (A3: −0.0031; A1: −0.0026).
+- Registry: A0-u registry.json d6abd0d5d1056f74…, A1-u registry.json 66444789f9a8ecf3… (code r2_battery 224c667a… — fit path identical to rev 7 af1c87e0…; r2_bc a31faa5d…; HB-1 export manifest e38d0667…). Models: `build/hinata/r2/battery/A1-u/models.tgz.part_*` + models.sha256.
+- RL translation: observation design — HB-1's compact, hand-engineered features carry at least as much imitation signal as the raw window encoder; A5 (both) tests whether they are complementary.
+
+### Arm A8 (left–right mirror augmentation) — configuration fixed before any A8 fit or mirror diagnostic (appended 2026-10-05 00:04 UTC, hinata)
+
+- **Claim / rung.** R2 P1 (D-058 §C 3, D-063 §C): adding the left–right mirror image of every *training* row (labels swapped) raises F/R/L accuracy of the base arm on unmirrored test folds. Mechanism: the game is mirror-symmetric in movement; mirroring doubles the demonstrations for rare lateral situations and removes teacher handedness that does not generalise.
+- **Base arm.** The pooled tree arm the rev 7 rule selects from the complete development table (A1/A3/A4/A5 × 400/800); if a CNN were selected, A8 is not run on it without a new card. Same params, same rounds, same series5 folds; test rows never mirrored; dev120 rows only.
+- **Mirror map** (`tools/hinata/r2_mirror.py`, Kageyama 21:26Z and 21:56Z): encoder window `x_f{F}r{R}_{ch}` → `x_f{F}r{−R}_{ch}` with kelp_R↔kelp_L, portal_R↔portal_L, head_fac_R↔head_fac_L; scalars x_exit_R↔x_exit_L, x_last_first_rel 1↔3, negate x_ownq_r, x_enemyq_r, x_home_r, x_mirror_xy_r, x_mirror_y_r except the sentinel 999; HB-1 `hb_f_g_{f}_{r}_*` → `hb_f_g_{f}_{−r}_*`, cR_*↔cL_*, pearl_right↔pearl_left, mem_last_rel 2↔3; hb_pR↔hb_pL; label y_first 1↔3. Kageyama's caveats stand (even-side n/2 offsets; HB-1 per-candidate symmetry untested; sonar order N,E,S,W is not mirror-symmetric).
+- **Pre-checks (reported before the fit; do not gate it unless they fail):** (1) the map is an involution on every development row and every input column of the base arm (mirror(mirror(x)) = x exactly); (2) every column is either mapped or declared invariant — the invariant list is printed; (3) **symmetry diagnostic, descriptive:** the base arm's existing fold models scored on mirrored test rows (labels swapped) vs unmirrored; a large drop measures how much handedness the clone has learned.
+- **Expected sign / size.** A8 − base: +0.002 to +0.006. **P(A8 − base > 0 with paired 5th pct > 0) = 0.35; P(A8 − base < 0 with paired 95th pct < 0) = 0.15.** Symmetry diagnostic: mirrored accuracy 0.005–0.02 below unmirrored.
+- **Falsifier.** A8 − base ≤ 0 or its interval spans 0: augmentation does not help at this scale; A8 is reported and not carried.
+- **Deployability (D-065 §C).** A8 has the base arm's size and inputs; no new export cost.
+- **Cost.** One fit of the base arm on doubled training rows: ≈ 2 × base cost on the cloud core (A1 ≈ 1.5 h, A3/A4 ≈ 2.5 h), or the Mac queue.
+- **Stop rule.** One fit, no retuning; results appended with registry row; D-057 §C selection may then include A8 only if the Chair rules it pooled.
+- **RL translation.** Demonstration augmentation by a symmetry of the game; the same map is the data-augmentation/equivariance for P-7's network and for self-play rollouts (each rollout counts twice).
+
+#### A8 pre-checks — results (appended 2026-10-05 00:14 UTC, hinata). No A8 fit yet (base arm not selected).
+
+- **Tool** `tools/hinata/r2_mirror.py` 45cdb1b1870cfc5c… (check / diag / fit).
+- **(1) Involution:** mirror(mirror(x)) = x exactly on all 189,630 dev120 oracle move rows × 1,466 columns (encoder 1,193 + HB-1 270 + hb_p 3) and y_first. 0 failures. **(2) Coverage:** 1,174 columns permuted, 7 value-mapped (share of rows changed: x_last_first_rel .548, hb_f_mem_last_rel .561, x_ownq_r .221, x_enemyq_r .057, x_home_r .058, x_mirror_xy_r .063, x_mirror_y_r .060), 285 declared invariant (the R = 0 column's 17 symmetric channels × 7 rows, the symmetric scalars, HB-1's non-lateral features, hb_pF) — list in `build/hinata/r2/mirror/check.json`. Labels: R 53,947 / L 54,395 → swapped exactly.
+- **(3) Symmetry diagnostic, A1-400 (descriptive):** mirrored test rows 0.7175 vs unmirrored 0.7184, **mirrored − unmirrored −0.0009 [−0.0028, +0.0012]** (188,250 F/R/L rows, 49 series, paired whole-series bootstrap 1,000 × seed 7, linear 5/95). My expected drop of 0.005–0.02 is **not met**: the clone's accuracy is nearly mirror-invariant. But the argmax agrees on only **0.891** of F/R/L rows between a row and its mirror image (mean |Δp| 0.037): about one decision in nine flips under reflection. Reading: the model is not biased to one side, it is noisy across the reflection — which is the case where augmentation (and mirror test-time averaging, a separate arm needing its own card) should help.
+- RL translation: equivariance — a policy that changes one decision in nine under a symmetry of the game wastes demonstrations; P-7's network should be built mirror-equivariant or trained with this augmentation.
