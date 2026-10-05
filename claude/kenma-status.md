@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 04:17 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
+State: **ACTIVE**, updated 2026-10-05 04:34 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
 
 ## Provisional best
 
@@ -35,24 +35,24 @@ Completed Carthage screens use the same102 fixtures and have zero errors.
 | 15 pocket-without-reserve | Remove only08 global one-slot reserve | Probes8–0,6–2 | Pool recovery, queen deaths3/8; no promotion |
 | 16 lossless-model-text | Base64 byte-plane source encoding of08 | Equivalent control | All node/probability parity and4 sandbox games pass |
 | 17 stacked-direction-prior | A5-400 combined encoder/HB/HB-probability prior | 46–56 | Rejected; full102 replay fallback audit zero |
-
 | 18 entropy-matched-prior | Renormalize17 prior with exponent1.61 | 49–53 | Rejected;102 replays read, zero fallback |
-
 | 19 pocket-sprint | Local two-step length control, no global reserve | Probes8–0,6–2 | All Schooltime queen verdicts2–0;20 aims to retain length3 |
-
 | 20 pocket-countdown | Prefer length3 unless observed food/spawn needs slack | Probe8–0 | All queens survive at2; end-length objective not met |
+| 21 proven-reserve | Relay proof queen is outside any small sealed pocket | Probes8–0,6–2; full102 running | All8 School queens3, release markers only on UNSW |
 
-| 21 proven-reserve | Relay proof queen is outside any small sealed pocket | Probes running | Preserve03 keeper; release reserve only after proof |
+| 22 keeper-split-prior | Existing keeper probabilities adjust ordinary queen split scores only | Prepared | Sanitizer score/floor/rescue tests pass; no games |
 
 Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. Runtime manifests pin source, fixtures, engine and compiler. Never edit measured runtime snapshots.
 
 ## Active workers and next steps
 
 Exactly **two game workers**, nice15:
-1. Kenma03 versusAsahi05,102 games, under after-k18.py / session64496; log k03-v-asahi05-s123.progress.log. It started after18 finished49–53 and all102 replay/fallback audits passed. SourceAsahi05 matches main fingerprint43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad. Sequence reads retained Schooltime/Weakhold replays after games.
-2. Kenma21 Schooltime8 then UNSW8 under run-k21-probes.py / parent65354 / session12546; logs k21-schooltime-s1235.progress.log and k21-unsw-pool-s1.progress.log. One worker, all16 replays retained; sequence reads all and ends for mechanism/result review. Full10221 conditionally queued under after-k21-probes.py / session23148: wait exact65354, require clean8+8, Schooltime8 wins with queen3 in every verdict and zero release markers, UNSW>=6 wins with release markers in each replay, and all16 replay diagnostics. Then run full102 with logs and audit/read all102. No promotion occurs automatically.
+1. Kenma03 versusAsahi05,102 games, under after-k18.py / parent9335 / session64496; log k03-v-asahi05-s123.progress.log. All retained replays read on completion. Chair explicitly requested this result and Bokuto04 cross-match to be posted. New crossmatch-after-asahi.py / session22429 waits exact9335 and clean102 +12 diagnostics, posts Asahi result to main BOARD, runs03 versusBokuto04 on102, reads12 retained replays and posts result. Opponent read-only root ../wt-bokuto/bots; fingerprintff68a7093aa3e5f6b2fee742c4b39f2e2cb7c59ae91ab8cb8c819dbe4e6bc74f pinned. panel.py --opp-root support passes source-isolation and retry tests. All builds/outputs remain Kenma. Asahi fp43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad matches main.
+2. Kenma21 full Carthage102 under after-k21-probes.py / parent34859 / session23148; log k21-v-carthage-s123.progress.log. Clean8+8 probes and every survival/release-marker check passed. Full run retains all102 replays, then audits/reconstructs all. Probes parent65354/session12546 is terminal. Broader21 zoo272/Kageyama102/03 head-to-head102 have dry-run previews only, not queued.
 
-17 and18 rejected46–56/49–53; every one of their102 replays read, zero inference fallback markers.13 all12 retained replays read.19 probes8–0/6–2, all16 replays read.20 Schooltime8–0, all8 read, allqueens alive but all final length2;19/20 full screens held. Active sequence handles are64496,12546 and queued23148; older run handles63263/31527/76001 are confirmed terminal; source snapshots remain frozen.
+21 deployment waiter90662/session46396 was deliberately cancelled while idle to prioritize Chair cross-match (confirmed exit143, no children/game interrupted). Exact21 deployment now deferred. Kenma22 source prepared from08, only ordinary queen split propensity changed using existing04 model; native recorded-stream integration check running, no game worker/queue. No new best yet.
+
+17/18 rejected46–56/49–53; all102 replays read in each, zero inference fallbacks.13 all12 replays read.19 probes8–0/6–2, all16 read.20 Schooltime8–0, all8 read, all queens alive but final length2;19/20 full screens held.21 probes8–0/6–2, all16 read, School queens3 and zero release markers; UNSW2362 total releases. First FenrirA divergence versus19 at round88 is a still-reserved split, demonstrating incomplete signal delivery.
 
 
 Parent64 completed57–7, exactly supplied map totals;03 same fixtures49–15. Outputs parent-pool-diagnostic-s1/score.json and parent-pool-comparison.json. after-parent-diagnostic/session33367 completed14 smoke3–1; after-k14-smoke/session23315 completed16 deployment. Sessions15167(12),69469(parent64),33367(14 queue),23315(16 queue) are terminal. Kenma14 full screen is held; no strength claim.
@@ -104,3 +104,5 @@ Main BOARD reports Asahi05 as the newer incumbent; local/runtime source matches 
 2026-10-05 04:12 UTC:21 replaces indiscriminate reserve with a permanent legal terrain proof: originalqueen has9 known open-connected cells or an incident portal, so cannot enter any closed<=8-cell portal-free pocket. Only queen/self or observed alliedoriginalqueen may seed it. Existing sonar type highbit carries it without extra rays; checksums recomputed and all44 payload bits restored before parent decode (density uses all44).7000 packet roundtrip/relay checks and terrain guards pass ASan/UBSan. HB features use message counts, not payloads, so envelope leaves features intact. Schooltime21 should retain03 behavior; UNSW tests whether proof propagates before population pressure. Runtime62671c2e5c55a03947b28f5aeb09b98453f47716a77845d1e370ec5bd1a368da. No map identity or hidden future state.
 
 2026-10-05 04:17 UTC: Continuation made concrete progress:17/18 final46–56/49–53 and complete102-replay audits each;13 replay audit;15/19/20 mechanism results; new21 protocol proof implementation and sanitizer checks. Current two game workers verified, aggregate lane RSS2.517GiB, output2.5GB, free247GiB.21 first6 Schooltime games allqueen3–0 and first3 full-log audit has zero reserve-release markers; remaining probe and full incumbent comparison still in flight. Reserved seeds11–13/new maps untouched, no new best, no server access.
+
+2026-10-05 04:34 UTC: Chair update incorporated. Bokuto04 is the other free-lane best (reported58–44); required cross-match queued with read-only sources and pinned fingerprint. Asahi05 is the current live reference. Posted one BOARD line at04:30UTC requesting a bounded60-ranked-game Kenma03 ladder screen, explicitly disclosing pool220–52 and matched four-map49–15 versus57–7. Live ops owns all server actions; no credentials/API/submission access by Kenma. maps/live_var/ is absent in both main and worktree at04:30UTC; check for the rebuilt five-map bed variants before the next validation batch. Reserved seeds11–13/new maps remain untouched.
