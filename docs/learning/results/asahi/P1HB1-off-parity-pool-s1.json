@@ -1,0 +1,10 @@
+{
+ "cand": "asahi-11-p1hb1-off",
+ "parent": "carthage-05-free-sprint",
+ "panel": "pool",
+ "expected": 272,
+ "compared": 272,
+ "divergent": 0,
+ "divergent_games": [],
+ "verdict": "PARITY"
+}

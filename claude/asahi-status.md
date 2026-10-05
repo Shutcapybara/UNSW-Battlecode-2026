@@ -72,31 +72,51 @@
 - 4 Oct 22:45Z: queued census (D-056 §E) and throughput (D-061 §C); VM shell down (VM disk full), working by stage/commit.
 - 4 Oct 23:05Z: new Asahi session (previous lost its VM shell to a full session disk); hourly self-wake scheduled.
 - 4 Oct 23:05Z: D-064 §B.5 same-binary MET (fingerprint 43bd2d4f on the 16979 archive); census posted.
+- 5 Oct 04:35Z: D-068 §C.1/.3/.4 + k02 parity posted; arm 2 re-queued; Bokuto/Kenma pool queued; device shell down.
 - 5 Oct 02:20Z: D-068 §C diagnostics built and queued (prereg D068-prereg.md).
 - 5 Oct 01:15Z: p1-slot λ1 / λ0.5 screens posted (both screen-FAIL).
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct ~03:25Z)
+## Now (5 Oct ~04:35Z)
 
-1. **D-068 §C (Chair 01:48Z), seed-1 pool only, queued 192–1993** behind `hinata-01-a10b-full` (running since 01:03Z;
-   the daemon cannot pre-empt): commits, merge_main, golden parity `asahi-11-p1hb1-off`, then `kageyama-02-p1-hb1`
-   λ 1, `asahi-12-c05-lambda0`, `asahi-13-p1hb1-l141` (λ 1.41), census + pool-only cards (`card.py --panels pool`).
-   Prereg `docs/learning/results/asahi/D068-prereg.md`.
-2. Item 1 queued as `1935-fbcount` (tools/asahi/fbcount.py: sandbox wasm builds of `kageyama-01b-p1-slot-fb` and
-   `kageyama-02b-p1-hb1-fb`, untracked copies of r/kageyama eedd7b6a7, vs carthage-05, s1, both seats, 17 live maps,
-   Devil and Dilemma first). Item 5: Hinata's single-team fits are in the learn queue (hinata-015/016).
-   16979 (k16) is live since 02:13Z (D-069).
-3. Done earlier: p1-slot screens both screen-FAIL (λ 1 pool −6.99 pp, λ 0.5 −11.76); recorded in D-068 §B.
-4. The kageyama-01 copies were moved to `build/asahi/_old/` (main has identical files since the 00:58Z merge).
+1. **D-068 §C results posted (04:3xZ):** fallback count 0 in 358,677 + 369,369 sandbox dragon-turns (no positive
+   control); kageyama-02 golden parity 272/272; **carthage-05 λ 0: pool −13.05 pp [−18.38, −7.35]**; **A1-400 λ 1.41:
+   pool −5.88 [−11.03, −0.74]**. Arm 2 (kageyama-02 λ 1) failed to run (merge_main 193 blocked by untracked fb copies);
+   re-queued 2001 tidy → 2002 merge_main → 2003 run → 2004 census → 2005 card.
+2. **Then (Chair 04:18Z, request 3):** seed-1 pool with queen columns for `kenma-03-pocket-queen` and `bokuto-04-queen`
+   (copied by tools/asahi/copybot.py into bots/, untracked, with .asahi-source.json), cards vs carthage-05 and vs
+   asahi-05-kz12-k16 (jobs 2006–20094).
+3. D-072: council dissolved; Hinata owns the clone in play; Asahi alternates clone and queen jobs, ≤ ~45 min each;
+   accepted `maps/live_var/` variants (Kageyama) join the pool when they come.
+4. **The coordinator's device shell is down since ~04:18Z** (EACCES on the session folder, as Kageyama's): work is by
+   stage / commit; BOARD appends by stage + mtime-guarded commit.
 5. No hand-rule work (D-059).
+
+## Handoff (5 Oct ~04:27Z — this session is being restarted in a new instance)
+
+- **Hourly self-wake deleted** (trig_019A15A6xF5EhnvwveDg5MM5); the new instance schedules its own. Other lanes'
+  scheduled tasks (Chair, Hinata, Daichi, Sugawara) were left alone.
+- **Queue at handoff (daemon pid 2305 alive, heartbeat 04:26Z):** 2003 kageyama-02 λ1 pool run is in progress
+  (2001 tidy and 2002 merge_main ran before it); still queued: 2004 census (k02, c05-λ0, k02-λ1.41), 2005 k02 card,
+  20055 commit (status, fbcount/tidy/copybot, D-068 cards), 2006 copybots (kenma-03-pocket-queen, bokuto-04-queen
+  into bots/, untracked), 2007/2008 their pool runs, 20091–20094 cards vs carthage-05 and vs asahi-05-kz12-k16.
+- **To do next:** check 2001/2002 rc (if 2002 failed, see logs/2002-*.log); post arm 2 (kageyama-02 λ 1) with
+  census, and H-SZ74 (does λ 1.41's −5.88 recover ≥ half of arm 2's loss?); post Kenma/Bokuto pool + queen columns
+  (Chair 04:18Z request 3); queue a commit for the new cards; request the push of r/asahi (none requested since
+  23:45Z; commits 192, 1925, 20055 are local); mirror status.
+- **Posted this session:** same-binary MET; census; P-7 throughput; Mac memory; p1-slot parity + screens (both
+  screen-FAIL); D-068 §C.1 fallback 0, k02 parity 272/272, c05 λ0 −13.05, A1 λ1.41 −5.88.
+- **Device shell down since ~04:18Z** (EACCES on the session socket path); stage/commit still work. The untracked
+  kenma/bokuto copies must be moved with tools/asahi/tidy.py (extend its name check) before a merge_main if main
+  ever gains those names. jobd.log carries ~152k old stale-lock lines from 4 Oct (35 MB); harmless, worth trimming.
 
 ## Operating notes
 
 - **Daemon:** `tools/asahi/jobd.py`, native on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
   `build/asahi/queue/` first, then the main checkout's `build/learn/queue/`. Restart if down:
   `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
-  Last job id used: 1993.
+  Last job id used: 20094.
 - BOARD lines go to the MAIN checkout's `docs/hub/BOARD.md` with `>>` only; never commit BOARD.md on r/asahi.
 - The Cowork VM's `/sessions` disk is full: keep nothing in the session home; write only into the mounted trees.
 - `throughput.py` must recycle processes (wasmtime stores leak address space per game).
