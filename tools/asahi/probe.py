@@ -46,7 +46,7 @@ def main():
     p = ROOT / 'build/asahi/probes' / f'{a.bot}-{fp[:8]}.json'
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(out, indent=1, default=str))
-    ok = out['max_points'] <= 30e6 and out['max_boot'] <= 30e6 and out['zip_bytes'] <= 4 * 2 ** 20 and not out['errors']
+    ok = out['max_points'] <= 60e6 and out['max_boot'] <= 60e6 and out['zip_bytes'] <= 4 * 2 ** 20 and not out['errors']  # D-087 §A: ceiling 60 M (was 30 M)
     print(f"PROBE {a.bot} fp {fp[:8]} zip {out['zip_mib']:.2f} MiB max {out['max_points'] / 1e6:.2f}M boot {out['max_boot'] / 1e6:.2f}M "
           f"errors {out['errors']} -> {'OK' if ok else 'OVER/ERROR'}")
 
