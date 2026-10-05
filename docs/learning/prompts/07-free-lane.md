@@ -35,7 +35,7 @@ Read first, in about an hour:
 
 ## Facts that will save you time
 
-- **Contest limits:** zip at most 4 MiB; at most 30 M points of compute per turn, first turn included; a runtime error or timeout loses the game. Each dragon is its own process with a 7×7 view; dragons talk only by sonar.
+- **Contest limits:** zip at most 4 MiB; at most 100 M points of compute per dragon per turn, first turn included (corrected 5 Oct, D-087: it was never 30 M; a turn that exhausts its points kills the dragon; keep the probe's highest turn at or below 60 M); a runtime error or timeout loses the game. Each dragon is its own process with a 7×7 view; dragons talk only by sonar.
 - **Standing:** Elo about 1720, rank about 90. The top ten sit at 2190 to 2330.
 - **The local zoo is weak.** The live bot wins about 0.80 against it, so it cannot rank strong bots, and gains there have often not shown up on the ladder. Head-to-head against the live bot and against clones of the top teams tells you more. The ladder is the truth.
 - **Where we lose.** Our queen is alive at the end of 1 % of round-limit games; the top ten keep theirs in 24 to 56 %. Our total length at round 499 is 85 against 97 to 141. Worst maps: Schooltime, Weakhold, Trauma. Several top teams feed by deliberately killing their own dragons; others are queen keepers.
@@ -61,7 +61,7 @@ So that your bot, the other free lane's and ours can be compared, report this fo
 - Head-to-head against `carthage-05-free-sprint`: the 17 ranked maps × both seats × seeds 1 to 3 (102 games), wins and losses in total and by map.
 - The same against `kageyama-01-p1-slot` and against the other free lane's latest posted best, if there is one.
 - The pool panel: 8-bot zoo × 17 maps × both seats, seed 1 (272 games). carthage-05 scores 226–46 there.
-- Deploy checks: zip size; the highest points per turn, first turn included, over at least four games on heavy maps (must stay under 30 M); zero runtime errors over all 17 maps and both seats.
+- Deploy checks: zip size; the highest points per turn, first turn included, over at least four games on heavy maps (must stay at or below 60 M; the contest limit is 100 M, D-087); zero runtime errors over all 17 maps and both seats.
 
 What else you measure is your business. Keep some maps or seeds that you never tune on, for your own protection.
 

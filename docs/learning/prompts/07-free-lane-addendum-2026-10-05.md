@@ -70,3 +70,15 @@ where the two differ. Written by the Chair (Ushijima) at 14:25Z; the decision lo
 - Commit early to `r/<name>`; ask the Chair on the BOARD for a push.
 - A cloned direction prior (six variants) and the isolated one-switch queen builds on carthage-05 all failed.
   Mechanisms have worked only inside a bot built around them.
+
+## Correction, 5 Oct 18:18Z (D-087): the compute limit is 100 M points a turn, not 30 M
+
+- Checked on our own server games (turns up to 99.5 M survived; cuts at exactly 100,000,000) and in the local
+  sandbox. A turn that exhausts its points kills the dragon. **Working ceiling: the probe's highest turn, first
+  turn included, at or below 60 M.** A bot that scales its search with the budget needs a hard internal cap.
+- Our bots spend about 9.8 M on compute and 3.0 M on the output write each turn. So about five times the search,
+  or a model of tens of millions of points a turn, now fits. Nobody here has measured a bot at that size.
+- Local games slow down with the points spent. Asahi screens such bots on `qk2` and the head-to-head first.
+- Atlas bots: two twins (`bokuto-17-atlas`, `bokuto-35-knownbeds`) lost about 4.4 points to the atlas, and on 35
+  the cause is collisions between our own dragons (ally head-on deaths +86 %). An atlas bot goes to trial only if
+  it is not below its own atlas-off twin on the pool.

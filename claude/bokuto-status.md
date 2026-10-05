@@ -71,12 +71,32 @@ portal exits onto her → 33's flee term.
 | 31-parkqueen | 30 + queen parks in a 2×2 (team 507) | 18–16 | queen 21 %: worse; kept as material |
 | 32-strictentry | 30 + 2-longs enter on pearls in sight only; escape split at the cap; newborn atlas | — | |
 | **33-flee** | 32 + queen flee term, portal mouths; queen excluded from escape-split-first | 19–15 | **JOB posted 15:5xZ** |
+| 34-portalqueue | 33 + a blind portal landing whose passage has ≤ 1 exit carries the full body risk; guard 'J' | 17–17 | Portals L3 wall deaths 50 → 31 locally |
+| 35-knownbeds | 34 + unseen atlas beds of class ≤ 5 worth 0.7 × bed_value (Trophy opener) | 22–12 | **Mac: does not qualify** — pool vs b18 −4.41, atlas block −5.4 vs 13-cull; ally flags +41 %/+62 % |
+| 36-contest | 35 + enemy-head contest discount 0.3 on visible pearls | 19–15 | ledger unchanged |
+| 37-allysafe | 35 + guard 'A' (no landing next to a lower-id ally head), blind risk 0.5, portal-mouth penalty | 20–14 | ally collisions unchanged (58 deaths / 171 length a game) |
+| 38-splitexit | 35 + production split refused when the head part has no way out; child cells held in the parent's room | — | correct but ~0.3 deaths a game: the post-split deaths are the escape split by design |
+| 39-headblock | 38 + `head_block = 1` | 17–17 | body losses −9, eats −17 r100–300: no |
+| 40-longroute | 38 with 30's long-route restriction undone | 6–6 (6 maps) | ally ledger unchanged → not the routes |
+| **41-atlas0** | **38 with `n_maps = 0`** | **21–13** | **ally losses 79 vs carthage 78 (37: 171 vs 85); total r300 93.9 vs 102.8; JOB posted 17:4xZ** |
+| 42-nohtarget | 38 without corridor targets | 6–6 (6 maps) | ledger unchanged → not the corridor targets |
+| 43-density | 38 with radio ally-density weight 1.0 | 5–7 (6 maps) | ledger unchanged → the radio density does not reach |
 
-**Next.** (a) Read the Mac cards for 25/26/33 paired against 18 and 27; (b) the trial-3 look (~17:30Z): if 18 fails, the next
-candidate is whichever of 25/26 carries on qk2/h2h; (c) the wall-death leak is the largest measured economy term — the
-corridor cycle needs a free slot at the exit (reserve) and walkers should not enter with length 2 when a 3-long cannot
-split (`profit` already requires len + p ≥ 4; the pearls are often gone by the end); (d) the queen's late feed must be
-fast: feeders in a chain next to her path rather than scattered within 4 cells.
+**The atlas doubles ally collisions (found 17:00–17:40Z; tools/bokuto/allyledger.py, collide.py).** Ally-caused deaths /
+length a game vs carthage-05 on six maps: 18 14.5 / 38, 24 17.9 / 45, 28 16.5 / 40, **30 (atlas on) 29.8 / 77**, 34 34.9 /
+102, 37 31.4 / 82, **41 (38, atlas off) 11.5 / 29**; carthage's own side 16–21 / 40–60. One-change twins 40/42/43/39 do not
+move it, so it is the map knowledge itself: with edges, beds and portal pairs known from the first view every dragon
+routes through the same portals and regions. Anatomy of 37's ally-body deaths (25.5 a game): boxed walks with no free
+neighbour at the round start 8.5, blind portal landings onto an ally body 7.9 (the killer was in our vision in the previous
+6 rounds only 26 % of the time), the head part after an escape split 5.8 (harvest cost by design). Ally head-on deaths
+(17.5 a game r100–300, carthage 10.3) are pairs 7–10 cells apart the round before: blind portal exits onto an ally head.
+Enemy head-on trades are even in count (39 a game, carthage initiates 23 of them) and cost us ~16 length more.
+
+**Next.** (a) Asahi's card for 41 paired against 18/27 (and the asahi-28-b35-atlas0 twin, which should show the same);
+if 41 qualifies it is the trial-5 candidate; (b) the trial-3 look (17:50–18:10Z); (c) if the atlas is to come back, it
+needs a traffic model: blind portal landings are the class to attack (a sonar probe through the portal the turn before
+is the only information source; echoes are aggregate counts, so the probe must be the only sonar that turn), or a
+one-way-portal convention; (d) the wall-death leak and the late feed remain as before.
 
 ---
 

@@ -214,8 +214,11 @@ at first. A trial therefore costs the incumbent's rating nothing.
 ### REG-013 — `bokuto-25-reserve4` and `bokuto-26-hunt` (free lane Bokuto; one-change twins of REG-011)
 
 - 25: four unit slots kept free for non-queens instead of one. 26: the enemy queen as prey from round 40.
-- measurement: on Asahi's queue; read paired against `bokuto-18-queenfeed`.
-- status: `candidate` (component readings, not trial candidates; D-086 §C).
+- same-host (Asahi, 16:27Z; paired against `bokuto-18-queenfeed`; no probe yet). 25: pool 242–30, +1.84 points
+  [−0.37, +3.68]; `qk2` 33–35, +4.41 [−2.94, +10.37]; head to head against the incumbent 57–45, −3.92
+  [−8.82, +0.98]; total length at round 300 on the pool 139.4 against 130.3. 26: pool 237–35, 0.00; `qk2` 27–41;
+  head to head 54–48, −6.86 [−14.71, +0.98]; enemy queens killed on the pool 142 against 109, no more wins.
+- status: 25 `candidate`, **fallback for trial 5** (D-087 §D; needs a probe). 26 `candidate` (component only).
 
 ### REG-014 — `bokuto-33-flee`, `bokuto-34-portalqueue`, `bokuto-35-knownbeds` (free lane Bokuto; bundles on REG-012)
 
@@ -229,4 +232,30 @@ at first. A trial therefore costs the incumbent's rating nothing.
   on Trophy 158 pearls by round 100 against 29 (before: 34 against 168).
 - measurement: Asahi's queue (pool, `qk2`, head to head, probe), 35 in place of 34 if 34 has not started. Atlas
   bots: D-080 §D applies before a trial (`gen` panel, hidden-layout block, atlas-off twin).
-- status: `candidate`; **the latest with a complete card is trial 5** (D-086 §C).
+- same-host (Asahi, 17:13Z and 17:49Z), 35 (fingerprint 71021e11): pool 225–47, −0.37 points [−5.15, +4.78]
+  against carthage-05 (**does not qualify**); −4.41 [−8.09, −0.37] against `bokuto-18-queenfeed`; head to head
+  59–43; `qk2` 32–36; `gen` 343–121 against `bokuto-13-cull`'s 354–110; hidden layouts 70–10 against 72–8; probe
+  passed (12.82 M). Its atlas-off twin `asahi-28-b35-atlas0` scores 237–35, the parent's score; 35 against the
+  twin −4.41 [−8.46, −0.37]; ally-body deaths +30 %, ally head-on +86 % with the atlas on.
+- status: 35 `rejected` as a trial candidate (D-087 §C). 33 and 34 were never run.
+
+### REG-015 — `bokuto-41-atlas0` (free lane Bokuto; Bokuto's latest bundle with `n_maps = 0`)
+
+- The bundle of REG-014 with the atlas off, plus a split-exit rule (38: no production split whose head part has
+  no way out). Bokuto's ally-collision ledger: 11.5 ally-caused deaths a game against 29.8 to 37.7 for the
+  atlas-on versions and 14.5 for `bokuto-18-queenfeed`.
+- measurement: Asahi's job (pool, `qk2`, head to head, variants, queen columns, probe), card about 19:15Z.
+- status: `candidate`; **trial 5 by default** if it qualifies and is not below `bokuto-18-queenfeed` on `qk2` and
+  the head-to-head (D-087 §D).
+
+### REG-016 — `bokuto-46-regions` and `bokuto-47-precious` (free lane Bokuto; atlas without portal pairs)
+
+- 46: the bundle with the atlas's edges and beds loaded but portal pairs learned by sight (Bokuto: the collision
+  excess is the known portal pairs), plus region migration: a dragon with no local target worth 4 walks to the
+  8×8 sector with the best expected pearl income. 47: 46 plus long dragons (10 or more, from round 250) dodging
+  like the queen. `r/bokuto` 1c4f0e6b4.
+- local (Bokuto's harness, 34 games against carthage-05): 46 24–10, total length at round 300 99.9 against 84.0;
+  47 22–12.
+- measurement: Asahi's queue after REG-015 (pool, `qk2`, head to head, probe, `gen`, hidden layouts); twin for the
+  atlas condition is `bokuto-41-atlas0`.
+- status: `candidate`; trial 5 if qualified, in before trial 4's look and not below the twin (D-087 §D).

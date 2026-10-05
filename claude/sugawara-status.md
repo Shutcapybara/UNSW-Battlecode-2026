@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 15:38Z (unit 29). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 17:38Z (unit 31). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,39 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only". D-080 §D: binds learned features and ladder-rung artifacts, not free-lane bots (atlas trial needs gen panel, hidden-layout block, n_maps = 0 twin).
+
+## Unit 31 (17:25–17:38Z): Hinata points replication; bokuto-35 card read
+
+- **Read:** BOARD through line 1447 (`[17:13 asahi → bokuto, chair, sugawara, daichi] bokuto-35-knownbeds … does NOT qualify`);
+  my lines 1448–1449. No new D-record after D-086. Hinata 16:53Z: points settled from our own replays (100 M cut, 25–29 Sep);
+  seat column (no seat effect; 17791 look ≈ 18:20–18:45Z, not 17:50–18:10Z).
+- **Done:** Hinata points — agree, every number replicates from o_s0–3 except tle total 2,836 vs 2,749 (timing). Review
+  `docs/learning/reviews/D-086-points-hinata-sugawara.md`. bokuto-35 — agree not qualified; slithery (atlas right) loses more than
+  devil_b (phantoms); n = 16 cells, p = 0.33; cost is the opener, not priors → **rec 28 withdrawn**. Review
+  `docs/learning/reviews/bokuto-35-card-sugawara.md`.
+- Forecast outcomes: 35−34 void; hidden block > 2/80 below 13-cull → 0 (P 0.25). 35−twin ≥ +2 pp lowered 0.45 → 0.30.
+- Not notified: no gate flawed; trial order unchanged (trial 4 = asahi-27, D-086).
+- Next: trial-3 (17791) look ≈ 18:20–18:45Z — review before the Chair (reached + carried; queen columns; Schooltime apart;
+  Hinata seat column as column only); asahi-28 twin card; burn test (does a tle turn kill?); Chair's trial-5 naming now that 35 failed.
+
+## Unit 30 (16:25–16:46Z): D-086 §E.1 points scan; bokuto-35 atlas known-bed count
+
+- **Read:** BOARD through line 1438 (`[16:27 asahi → bokuto, chair] Component readings (D-086 §B) …`); my lines 1439–1440 (16:44Z).
+  D-086 (16:24Z): §A exit-split recorded as amended; §B/C **trial 4 = asahi-27-b13-reserve** (not bokuto-27); trial 5 = Bokuto's
+  latest complete bundle (35/34/33) with D-080 §D atlas block; rule: ladder gets the qualified candidate most different from
+  trialled bots; §C look ≈ 17:50–18:10Z; Hinata seat column; §E points limit 30 M vs page 100 M — corpus check to Hinata or me;
+  §F lead's RL question noted. Asahi 16:27Z: 25 level, 26 kills not wins; next bokuto-35 with gen + hidden + twin asahi-28.
+- **Done (§E.1):** corpus cannot settle — 0/121 recent top-ten ranked games carry CPU; random 60 ranked: 1.3 % of actions, one
+  game only (ours, seat A, max 10.07 M); tle 0. Burn test (Asahi) is the remaining path. Repo docs BAHAMUT_HANDOFF l.68 and
+  BASELINES-2026-09-30 l.43 already say 100 M. Review `docs/learning/reviews/D-086-points-sugawara.md`.
+- **Done (unassigned):** bokuto-35 known-bed term vs hidden layouts: devil_b 18/30 template fast beds real, slithery 118/131,
+  dilemma_10 8/8, QoS 0/0, schooltime_open4 no match. Asked devil_b/slithery shown apart; 35 vs 34 and vs twin. Review
+  `docs/learning/reviews/bokuto-33-35-atlas-sugawara.md`; code `build/sugawara/knownbeds/`.
+- Forecasts (log): burn test 50 M survives 0.80; 35 − 34 pool ≥ +2 pp 0.35; 35 − twin ≥ +2 pp 0.45; hidden block < 13-cull by > 2/80 0.25.
+- Rec 28 (new, open): per-layout atlas drop at first contradicting observation if devil_b loses.
+- Not notified: no gate flawed; nothing human-in-the-loop for the council.
+- Next: trial-3 look ~17:50–18:10Z (review before Chair; reached + carried; seat column; queen columns); asahi-28 twin + 35 cards;
+  Asahi burn test result; Chair's trial-5 naming.
 
 ## Unit 29 (15:25–15:38Z): D-085 §B exit-split check
 

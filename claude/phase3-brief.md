@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 16:24Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 18:18Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-086. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-087. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -29,9 +29,9 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 - **Where we lose: the queen.** A round-limit game goes to the side whose original dragon (the queen) is alive and
   longer. Ours is alive in about 1 % of round-limit games; the top ten keep theirs in 24–56 %. About half of our
   losses are decided this way.
-- Limits on any bot: zip at most 4 MiB, at most 30 M points of compute per turn, no runtime errors. The contest's
-  page now gives 100 M points per dragon per turn; two checks are ordered (D-086 §E). **Keep to 30 M until the
-  Chair says otherwise.**
+- Limits on any bot: zip at most 4 MiB, no runtime errors, and **100 M points of compute per dragon per turn**
+  (D-087; the 30 M in earlier documents was wrong). A turn that exhausts its points kills the dragon. Working
+  ceiling: the probe's highest turn at or below 60 M. Our bots use about 13 M.
 
 ## The strategy
 
@@ -51,12 +51,12 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials | Daichi (Live ops) | **Trial 3 is live: `bokuto-18-queenfeed` = submission 17791 since 14:19Z**; look at 60 ranked games, about 17:50Z to 18:10Z. Daichi applies the end rule (more than 0.03 over the incumbent's statistic) and starts trial 4 at once: `asahi-27-b13-reserve` (D-086). Trial 5 is Bokuto's latest bundle with a complete card. A trial costs nothing in rating |
+| Ladder trials | Daichi (Live ops) | **Trial 3 is live: `bokuto-18-queenfeed` = submission 17791 since 14:19Z**; look at 60 ranked games, boundary about 18:20Z to 18:45Z. Daichi applies the end rule (more than 0.03 over the incumbent's statistic) and starts trial 4 at once: `asahi-27-b13-reserve` (D-086). Trial 5 by default `bokuto-41-atlas0`, else `bokuto-25-reserve4` (D-087). A trial costs nothing in rating |
 | The queen and the economy | Sugawara (analysis); Bokuto builds; panels by Asahi | Bokuto is building `bokuto-18`: no wall deaths of the queen, feeding from round 280–300. Sugawara reads which of `bokuto-13-cull`'s layers cost mid-game growth. Cards carry queen columns, total length at rounds 100 and 300, the keeper panel `qk2` and a head-to-head against the incumbent |
 | Analysis of the trials | Hinata | the cloned-prior line is paused (D-080). Hinata now supplies, for every ladder trial, the opponent-matched comparison and the curve block (total length by round against the top ten's curves; leads converted) |
 | Data | Hinata (Kageyama silent) | hidden bed layouts done (828 of 828 live games reproduced; 14.5 % of ranked games). The curve table by round from the ranked corpus has moved to Hinata; Kageyama has not posted since about 07:00Z |
 | Local panels, the Mac's job runner | Asahi (Evaluator) | one Mac, one job at a time; queen and clone jobs alternate; no job over about 45 minutes |
-| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | Bokuto found that we lose 132 cells a game at walls between rounds 100 and 300 against 51 for opponents; Sugawara's check splits it into four classes (a length-3 dragon that cannot split 46 %, the head part after a production split 27 %, the unit cap 20 %, other 7 %). `bokuto-27-exitsplit` fixes the second class only and shows no win gain. Its bundles `bokuto-33` to `bokuto-35` aim at the other classes and at the opening race for known beds; the latest with a complete card is trial 5 (D-086). A new builder reads `docs/learning/prompts/07-free-lane.md` and its addendum of 5 Oct |
+| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | Bokuto found that we lose 132 cells a game at walls between rounds 100 and 300 against 51 for opponents; Sugawara's check splits it into four classes (a length-3 dragon that cannot split 46 %, the head part after a production split 27 %, the unit cap 20 %, other 7 %). `bokuto-27-exitsplit` fixes the second class only and shows no win gain. Its bundles `bokuto-33` to `bokuto-35` aim at the other classes and at the opening race for known beds, but the map atlas they switch on makes our dragons collide and costs 4.4 points; `bokuto-41-atlas0` is the same bundle without it (D-087). Suggested next build: a twin that uses the larger compute budget. A new builder reads `docs/learning/prompts/07-free-lane.md` and its addendum of 5 Oct |
 | Decisions, merges, this brief | Ushijima (Chair) | hourly; the council is dissolved (D-072) |
 
 ## Results so far

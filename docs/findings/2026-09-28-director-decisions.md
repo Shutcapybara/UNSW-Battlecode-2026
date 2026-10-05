@@ -3930,3 +3930,98 @@ themselves.
   per-team clone fine-tuned against clone opponents on the existing engine (card P-7, entry throughput passed, no
   training approved). A JAX port is about one day of the lead's design time plus parity testing by a lane. The
   estimates are the Chair's and unscored.
+
+## D-087 — The compute limit is 100 M points a turn; no seat term; `bokuto-35-knownbeds` does not qualify and the atlas is the cause (5 Oct 2026 18:18Z, Chair: Ushijima)
+
+Trial 3 (17791) is still running: 50 ranked games at 17:36Z; Hinata puts the 60-game series boundary at about
+18:20Z to 18:45Z. Its outcome is the next record.
+
+### A. Recorded after two lanes' checks (D-083 §A): the limit is 100 M points per dragon per turn
+
+- **Server (Hinata 16:53Z, replicated by Sugawara 17:26Z from her frozen rows).** Server replays carry CPU points
+  only for the fetching team's side, so the check ran on our own 4,876 games (1,831 ranked, 25 Sep to 5 Oct). 856
+  games hold dragon-turns above 30 M (1,029,320 such turns, all by our submissions of 25–29 Sep). 3,413 of the
+  kept turns above 30 M were not cut and the same dragon acted again later; the largest is 99,547,479. Every
+  listed cut turn records exactly 100,000,000 (720 of 720). Caveat: since 29 Sep our bots peak at 13.05 M, so
+  these rows cannot show a change of the limit after that date; the contest's page says 100 M today.
+- **Local (Asahi 17:57Z, unswbc 1.2.3).** The sandbox constant is `MAX_TURN_POINTS = 100_000_000`. A turn metered
+  at 57.45 M or 97.45 M acts normally and the game is move for move the control. Above 100 M the local runner
+  restarts the dragon's worker and asks the turn again, so the dragon lives but loses its memory. What the server
+  does with a cut turn is not settled by a local test; the contest's page says the dragon dies.
+- **Output writes cost 3.03 M of every turn** of `bokuto-18-queenfeed` (one buffered write of about 132 bytes at
+  2.5 M plus 4,000 a byte; about 110 of the bytes are the four sonar lines). The compute share of the 12.8 M
+  peak is about 9.8 M.
+- **Where 30 M came from.** The Phase-3 macro (§1 item 4) and D-046 give it as a deploy gate, and the brief, the
+  free-lane prompt and the probes copied it. Two older documents of ours (`docs/BAHAMUT_HANDOFF.md`,
+  `docs/BASELINES-2026-09-30.md`) already say 100 M. Nobody recorded 30 M as a chosen margin. The Chair carried
+  it from D-046 on without checking the contest's page.
+- **Ruling.**
+  1. The contest limit is 100 M. A cut turn is treated as the dragon's death.
+  2. **Working ceiling: the probe's highest turn, first turn included, at most 60 M.** This replaces "under 30 M"
+     in D-046's gate, the macro's item, the brief and the free-lane prompt. Server peaks have run about 5 %
+     above probe peaks (17791: 13.05 M against 12.42 M).
+  3. A bot that scales its search with the budget needs a hard internal cap, so that its worst turn is bounded.
+  4. At each look Hinata reports the trial bot's highest points a turn on the server and any cut turn. A cut
+     turn in a trial is a fault and ends the trial.
+- **What it opens.** Our bots use about a tenth of the compute now allowed. A wider or deeper search, a rollout
+  of candidate moves, or a model of 60 M points a turn all fit. Nobody here has measured any of them at this
+  size. Earlier evidence is thin and small: search width k = 4, 8, 16 gave +1.5, +0.7, +2.6 points on the pool
+  and nothing on the ladder. **Suggested to Bokuto, not ordered:** a twin of its best bot with the lineage's
+  search knobs raised in two steps (about 25 M and about 50 M a turn), read paired against the parent.
+- **Cost.** Local games slow down with the points spent: a card that takes 25 minutes at 12 M takes about two
+  hours at 60 M. Asahi screens such bots on `qk2` and the head-to-head first and runs the pool only for a bot
+  that passes there.
+
+### B. Seat (Hinata 16:53Z): no seat term
+
+- The seat is drawn once per series (30,722 of 30,722 consecutive pairs keep it). The higher-rated side sits B in
+  56.2 % of ranked games for everyone. It wins 61.7 % as A and 60.8 % as B, a difference of one point with a
+  binomial interval of ±1.0.
+- 17530's draw was skewed (seat B in 75 of the 95 games where we were the higher-rated side), 17791's is not.
+  Bokuto's 12–8 against 48–52 is about one standard error.
+- **Ruling:** the trial statistic gets no seat term. Seat by result stays as a column beside the look.
+
+### C. `bokuto-35-knownbeds` does not qualify; the atlas costs wins again
+
+- Asahi (17:13Z, 17:49Z): pool 225–47, −0.37 points [−5.15, +4.78] against carthage-05 (the 5th percentile is
+  below −5); −4.41 [−8.09, −0.37] against its parent `bokuto-18-queenfeed`. The twin with the atlas off
+  (`asahi-28-b35-atlas0`) scores 237–35, the parent's own score; 35 against its twin is −4.41 [−8.46, −0.37].
+  On the 29 maps the atlas does not know, 35 and its twin are identical.
+- With the atlas on, deaths against an ally's body rise 30 % and ally head-on deaths 86 %. Bokuto's ledger
+  agrees: every atlas-on version since `bokuto-30` has the excess and `bokuto-41-atlas0` removes it. Its reading:
+  with the map and its portal pairs known from the first view, every dragon routes through the same portals and
+  bed regions. Sugawara withdrew his reading that wrong bed priors on hidden layouts were the cost.
+- With the atlas on, the economy rises (total length at round 300: 139.1 against 130.3 on the pool) but 35 loses
+  15 more of the games it led at round 300 (149–23 against 133–8).
+- **Without the atlas, everything `bokuto-33` to 35 add over `bokuto-18-queenfeed` nets no wins on the pool.**
+- This is the second atlas bot to lose to its own twin (`bokuto-17-atlas`: −4.4). **D-080 §D is tightened:** an
+  atlas bot is a trial candidate only if it is not below its atlas-off twin on the pool (paired mean at or above
+  zero), in addition to the earlier conditions.
+- Component readings against `bokuto-18-queenfeed` (Asahi 16:27Z): `bokuto-25-reserve4` buys economy (total
+  length at round 300 139.4 against 130.3 on the pool; `qk2` 33–35, +4.41 [−2.94, +10.37], the only bot of the
+  set that leads at round 300 there) and is −3.92 [−8.82, +0.98] head to head. `bokuto-26-hunt` kills more enemy
+  queens on every panel (pool 142 against 109) and wins no more games; head to head −6.86 [−14.71, +0.98]. None
+  of 25, 26, 27 beats its parent head to head.
+
+### D. Trial 5
+
+- Trial 4 stays `asahi-27-b13-reserve`, started by Daichi at trial 3's look.
+- **Trial 5 by default: `bokuto-41-atlas0`** (Bokuto's latest bundle with the atlas off; Asahi's card about
+  19:15Z) if it qualifies and its paired means against `bokuto-18-queenfeed` on `qk2` and the head-to-head are
+  not negative. **Otherwise `bokuto-25-reserve4`**; Asahi runs its probe so that the fallback exists. The Chair
+  confirms at the next unit.
+- `bokuto-46-regions` and `bokuto-47-precious` (submitted 18:16Z; atlas edges and beds without the portal pairs,
+  a migration rule toward bed-rich sectors, and in 47 a dodge for long dragons) are candidates for trial 5 as
+  well if their cards are in before trial 4's look. They carry an atlas, so §C applies: not below
+  `bokuto-41-atlas0`, their atlas-off twin, on the pool. Among qualified candidates the order is `qk2`, then the
+  head-to-head.
+- A plain statement of where this stands: the local candidates sit within a few points of one another, three
+  bots have held the slot at the same ladder level, and a 60-game trial sees only large differences. So after
+  trial 5 the queue prefers the first qualified bot that uses the larger compute budget (§A), which is the one
+  axis on which a candidate can differ a lot from everything already tried.
+
+### E. Noted
+
+- Hinata pre-registered a forecast for trial 4 before it is live (P-hinata-07, "Forecast for trial 4").
+- Forecasts for trial 3 stand as filed in D-084.
+- The corpus holds 162,165 replays (hub, 18:15Z). The hub shows 17791 active, no fault.

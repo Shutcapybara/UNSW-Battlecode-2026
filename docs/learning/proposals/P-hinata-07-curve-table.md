@@ -205,3 +205,18 @@ All of Sugawara's carried numbers reproduce exactly. My 13:37Z "length lead vs 1
 - Tool: `tools/hinata/look.py` sha1 6a691c0f6bbc. Selection identical to `p06_column.py` (first series boundary at or after 60 ranked games of the sub from 14:19:00Z, post-m2). Band = opponent elo in the ladder snapshot at game start (< 1725 / ≥ 1725). Views at r100 and r300 side by side: **reached** (games still running) and **carried** (every game; value at r or the end state, eliminated side = 0). Columns: total us/opp and diff [series bootstrap 1,000 × seed 7, 5–95 %], queen alive us/opp, leads at r300 and converted, W/n, elimination losses and those before r300; engine queen guard.
 - Validation: `look.py block build/hinata/curves2 17530` reproduces D-085 §A exactly (carried r300 +41.5 [+15.7, +64.2] < 1725, +0.8 [−24.9, +24.8] ≥ 1725; leads 35/45 → 26 and 21/45 → 15; elimination losses 4 (2) and 11 (7)).
 - Pre-decoded 20/20 available 17791 games (0 errors, queen guard 40/40) without reading the block; the provisional selection was moved to `build/hinata/look3/_prelook/` so the look re-selects at the boundary. Reference rows at the look: 17530 from curves2 (same tool) and top-ten winner/loser 78.5/153.7 vs 61.3/110.9 (D-082).
+
+## Forecast for trial 4 (`asahi-27-b13-reserve`, D-086 §C), filed 2026-10-05 17:36 UTC — before trial 4 is live and before the trial-3 (17791) look is read
+
+- Procedure: identical to the trial-3 look procedure above (look.py 6a691c0f6bbc; first series boundary ≥ 60 ranked games from its activation time, post-m2; band by opponent ladder elo at game start; carried and reached views at r100/r300; series bootstrap 1,000 × seed 7, 5–95 %). Reference row = 17530 (`bokuto-13-cull`, its lineage parent without the reserve) from build/hinata/curves2 (90 games, 18 series), printed by `look.py block build/hinata/curves2 17530` at filing: carried r300 all 91.1 vs 70.0 (+21.2 [+0.6, +39.4]); ≥ 1725 78.4 vs 77.6 (+0.8 [−24.9, +24.8]); ≥ 1725 carried growth r100→r300 us 29.6 (48.8 → 78.4); queen alive carried r300 all 0.47; elimination losses ≥ 1725 11/45.
+- Basis: local panels only (Asahi 14:0x–15:39Z): h2h vs kenma-03 69–33, qk2 33–35, qk2 total r300 98.2 (b18 94.5), qk2 queen alive r300 0.50, r300 leads converted 61 %. Local-to-ladder transfer has been weak for every trial so far (D-078, D-085 §A), so all probabilities are near 0.5.
+- Forecasts (P that the stated side holds at the look; each scored once, as read):
+  1. Carried r300 total (us), all bands ≥ 91.1 (17530): **P 0.60**.
+  2. ≥ 1725 carried r300 diff > +0.8: **P 0.55**; ≥ +15: **P 0.20**.
+  3. ≥ 1725 carried growth r100→r300 (us) ≥ 29.6 cells: **P 0.60** (the reserve's mechanism is length kept through mid-game).
+  4. Queen alive carried r300, all bands ≥ 0.47: **P 0.55**.
+  5. ≥ 1725 elimination losses ≤ 11 per 45 games (rate ≤ 0.244): **P 0.50**.
+  6. Weakhold (map with the most trial games, any band): win rate ≥ 17530's on the same rows: **P 0.50** (no local basis; recorded for the column only).
+- Joint reading with trial 3 (stated now): if 17791 and trial 4 both beat 17530 on item 3, the gain is the shared reserve; if only 17791 does, the queen changes. Neither reading is claimed if the interval of the diff vs 17530 includes 0 — then it is "no ladder evidence either way".
+- Stop rule: one read; no re-look at a later boundary unless the Chair asks; values recorded as printed, no relabel. Brier score of items 1–6 appended with the result.
+- RL translation: value — tests whether a length-retention rule (reserve) moves the mid-game carried-length trajectory that V0b's value gap localises at r100–300 against ≥ 1725; no observation/action change.
