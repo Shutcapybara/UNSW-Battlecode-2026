@@ -110,3 +110,11 @@ entry: all three put at least 0.85 on the k = 16 promotion surviving its rollbac
 
 **Chair's forecast on file (D-075 §E), not council-scored:** the team-213 prior at λ 1 is not below the incumbent on
 the seed-1 pool (paired 5th percentile above −5 points): 0.12; point forecast −8 points.
+
+**Chair's forecasts on file (D-076 §D), not council-scored** (pool difference against carthage-05; P that the paired
+5th percentile is above −5 points): A1-400 at λ 1.72: −2 points, 0.35. The team-213 prior at λ 1.45: −4 points,
+0.25. Sugawara (owner, 05:30Z): q2b's pool 5th percentile above −5 points 0.55; q2b at least +5 points over
+carthage-05 on the queen-keeper panel 0.40.
+**Outcome of the owner's two q2b forecasts (Asahi, 06:19Z):** pool −2.39 points [−5.89, +0.92] (5th percentile below
+−5: event failed, Brier 0.3025); keeper panel against `bokuto-04-queen` 12 of 34 against 16 of 34 (event failed,
+Brier 0.16).

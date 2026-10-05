@@ -24,6 +24,12 @@ one switch on a registered parent.
 | live | submission id, upload name, live-screen card, promotion or rollback D-record |
 | status | `offline`, `candidate`, `nominee`, `uploaded`, `incumbent`, `retired`, `rejected` |
 
+## Ratings on the ladder (D-076 §A)
+
+Each submission has its own rating; the team's rating is the active submission's. Re-activating an older
+submission brings its rating back; a new one starts from the rating of the submission it replaces and moves fast
+at first. A trial therefore costs the incumbent's rating nothing.
+
 ## Entries
 
 ### REG-000 — `carthage-05-free-sprint` (incumbent again since 5 Oct 04:53:55Z, D-075 §A)
@@ -113,5 +119,15 @@ one switch on a registered parent.
 - local: 58–44 against carthage-05 (Bokuto, 102 games). Same-host seed-1 pool (Asahi): 226–46; against carthage-05
   0.00 points [−5.15, +4.78]; against k = 16 −2.57 [−7.35, +2.21]; queen-decided **42–4**; queen alive at the round
   limit 44 of 189, on 11 of 17 maps; economy −6.3 [−9.5, −2.7].
-- deploy: probe by Asahi required before upload (D-075 §C). live: none yet.
+- deploy: probe **passed** (Asahi, 5 Oct 05:53Z): zip 3,928,551 B; maximum 12.86 M points a turn, first turn 12.47 M;
+  no error in 10 games. Daichi holds a byte-exact copy (tree sha256 3e31f947…). live: none yet.
+- paired read (Sugawara, D-076 §C): 38 of its 42 queen-decided wins are fixtures carthage-05 also won; 31 gains and
+  31 losses against carthage-05; three stacked layers, so nothing is attributable to the queen block alone.
+- status: `candidate`; trial 2 unless `bokuto-13-cull` qualifies (D-076 §B).
+
+### REG-007 — `bokuto-13-cull` (free lane Bokuto; candidate for trial 2, D-076 §B)
+
+- rung: outside the ladder (free lane). Tree `../wt-bokuto/bots/bokuto-13-cull` (uncommitted). Zip 3.58 MiB (Bokuto).
+- local: 70–31–1 against carthage-05 by Bokuto's own run (102 games; the scorecard it iterates on).
+- gate for the trial: same-host seed-1 pool wins at least 226 and a passing deploy probe, posted by 07:45Z.
 - status: `candidate`.

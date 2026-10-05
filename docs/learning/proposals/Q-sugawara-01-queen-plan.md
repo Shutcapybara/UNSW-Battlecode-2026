@@ -103,3 +103,10 @@ cannot act off-pocket by construction. Why not (d): it is the measured cost and 
   `w.limit = w.units` (every generator checks `units >= limit`; Kenma's reserve uses the same lever), call `pol.decide(w)`
   again, restore `w.limit`. Log `LOG q2a` when it fires. Cost: one extra decide on the queen's split turns only.
   Parity check: identical to the parent on every turn where the queen did not choose such a split.
+
+
+## 7. Amendment 1 (05:30Z, after Bokuto's pool and D-075 §D)
+
+Order now: q1 cage (on **carthage-05**) → **q2b-crown = bokuto-04's policy.hpp queen block only** (no guard, no branch)
+→ panels. q2a parked (subsumed by "no queen split after r60"). Parent switched from k16 to carthage-05 (incumbent;
+bokuto's own base). Reasons and the paired pool table: `docs/learning/reviews/D-075-queen-order-sugawara.md`.

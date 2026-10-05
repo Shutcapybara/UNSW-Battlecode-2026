@@ -1,15 +1,16 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 06:20Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-075. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-076. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
 
-- Team 7, "Just Keep Swimming": Elo about 1605, rank 120 (5 Oct 04:47Z), down from 1725 after a failed promotion
-  (below). The top ten sat at Elo 2192 to 2333 on 4 Oct. The lead does not weigh the live rating (D-071): the live
-  slot is used to learn.
+- Team 7, "Just Keep Swimming": Elo about 1720 for the incumbent; the top ten sat at 2192 to 2333 on 4 Oct.
+- **Each submission has its own rating** (D-076): the team shows the active submission's rating, and restoring an
+  older submission brings its rating back. So a ladder trial costs the incumbent nothing, and the live slot is used
+  to learn (the lead does not weigh the live rating either, D-071).
 - Incumbent: `carthage-05-free-sprint` (submission 14585), a C++ search bot whose move prior is a model cloned from
   one other team (Heartbreaker). That clone is the only learned piece that has ever improved our results.
 - **Where we lose: the queen.** A round-limit game goes to the side whose original dragon (the queen) is alive and
@@ -35,9 +36,9 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials of the free lanes' queen bots | Daichi (Live ops) | `kenma-03-pocket-queen` is live as submission 17388 since 05:02Z for 60 ranked games (about 08:00Z). `bokuto-04-queen` follows, then a 60-game control on 14585. The best of the three windows becomes the incumbent (D-075 §C) |
-| The queen | Sugawara (owner); builds and panels by Asahi | plan `docs/learning/proposals/Q-sugawara-01-queen-plan.md`; builds `sugawara-q1-cage` and `sugawara-q2a-grow` queued; a panel against queen-keeping opponents for both parents |
-| The clone in play | Hinata (owner), Kageyama (export), Asahi (panels) | single-team clones fitted: team 213 0.7541 on its own moves, team 91 0.7133. The 213 prior goes into the slot bot next, at λ 1 and at a weight that matches the live prior's sharpness |
+| Ladder trials of the free lanes' bots | Daichi (Live ops) | `kenma-03-pocket-queen` is live as submission 17388 since 05:02Z for 60 ranked games (about 08:00Z). Trial 2 is `bokuto-13-cull` (70–31–1 against carthage-05 by Bokuto's run) if it reaches 226 pool wins on our harness, else `bokuto-04-queen`. Then a 60-game control on 14585. The best window becomes the incumbent (D-075 §C, D-076) |
+| The queen | Sugawara (owner); builds and panels by Asahi | two isolating builds on carthage-05 are in: Kenma's pocket alone changes nothing off Schooltime and saves that queen in 3 of 14 games; Bokuto's queen lines alone lose 2.4 points on the pool and more against queen keepers. Neither mechanism transfers as one switch. Against queen-keeping opponents carthage-05 keeps its queen in 0 of 47 round-limit games |
+| The clone in play | Hinata (owner), Kageyama (export), Asahi (panels) | trees on the full data reach 0.7379 and beat the network. Next in play: the ten-team clone at the weight that matches the live prior's sharpness (λ 1.72), then the team-213 clone at λ 1 and 1.45 |
 | The hidden bed layouts on five maps | Kageyama (Data) | the pearl-bed schedule is solved exactly; Devil's second layout (49 % of live Devil games) is rebuilt and verified; Queen of Spades, Slithery Fight, Schooltime and Prisoners Dilemma follow in `maps/live_var/` |
 | Local panels, the Mac's job runner | Asahi (Evaluator) | one Mac, one job at a time; queen and clone jobs alternate; no job over about 45 minutes |
 | Free lanes | Kenma, Bokuto | Kenma: `kenma-21` 60–42 against carthage-05. Bokuto: `bokuto-07-dodge` 60–42 by its own run; its shell is down and its tree uncommitted |
@@ -51,7 +52,8 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 - **The free lanes' queen bots, on our harness** (272 pool games): `bokuto-04-queen` 226–46, level with carthage-05,
   with 42 wins and 4 losses decided by the queen rule and its queen alive in 23 % of round-limit games;
   `kenma-03-pocket-queen` 220–52, queen-decided 13–4, acting on Schooltime only. Each beats carthage-05 58–44 head
-  to head.
+  to head. Caution (Sugawara): 38 of Bokuto's 42 queen-decided wins are games carthage-05 also won, so the pool
+  does not show that queen keeping is what wins.
 - **More accurate is not stronger** (D-068, D-074): with no prior at all the bot loses 13 points on the pool; the
   ten-team clone at the same weight is no better than no prior; sharpened, it recovers about half. A network on
   the full data reaches 0.7280 accuracy with a much sharper output than the trees.

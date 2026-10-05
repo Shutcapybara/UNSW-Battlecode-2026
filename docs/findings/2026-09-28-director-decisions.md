@@ -3100,3 +3100,98 @@ The lead does not care about the live rating and asks for the technical issues t
   still fails; it works by file copy. Bokuto's shell is down; its tree in `../wt-bokuto` is uncommitted.
 - Daichi's remaining hub items: the seat field in job rows, the end reason `queen`, the frozen pairing rule.
 - Not yet reported: whether Shenzhen's units 36–39 were committed on its behalf.
+
+## D-076 — Ratings belong to submissions, so trials are free; trial 2 may be Bokuto's newer bot; the queen order is amended (5 Oct 2026 06:19Z, Chair: Ushijima)
+
+### A. A fact about the ladder: each submission has its own rating
+
+- Source: the organisers' rating page (`game.battlecode.au/docs/elo`, read 06:18Z): "Each submission (bot) has its
+  own rating". The team's rating is the active submission's, averaged over the ranked maps, with an offset per map.
+  Re-activating an older submission brings back its rating. A new submission starts from the rating of the one it
+  replaces, with more uncertainty, so it moves fast at first.
+- Daichi's snapshots agree: 1605 at 04:47Z (16979), **1721 at 04:58Z** (14585 restored), then 17388's own path
+  (1702, 1778, 1767 at 05:50Z, rank 78).
+- **Consequences.**
+  1. A trial costs the incumbent nothing: 14585 keeps its rating while another submission plays. The only cost is
+     time on the live slot, about 20 ranked games an hour.
+  2. 16979's fall of 120 points in 45 games is partly the speed of a new submission's rating. The rollback rested
+     on score minus expectation, which does not depend on that; D-075 §A stands.
+  3. Daichi's correction (05:53Z): the rating at the trial's start was 1721, not 1605. The bias D-075 §B guarded
+     against did not occur. The statistic stays anchored at 1725 for every window.
+  4. For the lead: the rating shown at any moment, the deadline included, is that of whichever submission is
+     active then.
+- **Trials from now on.** A candidate may be queued for a 60-game ladder trial when it has a passing deploy probe
+  and a same-host seed-1 pool whose paired 5th percentile against carthage-05 is above −5 points. The Chair orders
+  the queue. The end rule of D-075 §C applies to every window: highest primary statistic, lead under 0.03 keeps the
+  incumbent.
+- Disclosure: Daichi's 05:53Z line carries an interim reading of trial 1 at 25 games, and the Chair has read it.
+  The end rule was fixed at 05:18Z and is unchanged; the look is at the first series boundary at or after 60 games.
+
+### B. Trial 2: `bokuto-13-cull` if it holds on our harness, otherwise `bokuto-04-queen`
+
+- `bokuto-04-queen` passed its deploy probe (Asahi, 05:53Z): zip 3.75 MiB, at most 12.86 M points a turn, first turn
+  at most 12.47 M, no error in 10 games. Daichi holds a byte-exact copy.
+- Bokuto reports `bokuto-13-cull` at **70–31–1** against carthage-05 (102 games; `bokuto-08-yield` 65–37,
+  `bokuto-04-queen` 58–44). The figure comes from the scorecard Bokuto iterates on, the same fixtures against the
+  same opponent, so it overstates; the pool is the check.
+- **Rule, fixed now.** Asahi runs the same-host seed-1 pool with queen columns and the deploy probe on
+  `bokuto-13-cull`, ahead of the other jobs, and posts both by 07:45Z. If its pool wins are at least 226 (bokuto-04's
+  count) and the probe passes, trial 2 is `bokuto-13-cull`. Otherwise, or if the results are late, trial 2 is
+  `bokuto-04-queen` as ordered. The trial is run for the outcome, not to isolate a mechanism; Sugawara's builds do
+  the isolating.
+
+### C. The queen (Sugawara's answer to D-075 §D, accepted)
+
+- **Correction to D-075 §D's reading.** Sugawara's paired read of the pool: of `bokuto-04-queen`'s 42 queen-decided
+  wins, 38 are fixtures carthage-05 also won; 4 are rescues. Its pool parity is 31 gains against 31 losses (62 of
+  272 fixtures differ; k = 16 differed from its parent on 4 %). The bot stacks three layers (a guard and cage
+  split, a branch gate, the queen block). So the pool shows how Bokuto wins, not that queen keeping wins; neither
+  its economy cost nor its gains can be put on the queen block. Asahi's "pays for itself" and the Chair's
+  repetition of it are withdrawn.
+- **Amended build order (Sugawara's, on carthage-05, not k = 16):** `sugawara-q1-cage` (Kenma's pocket without the
+  reserved slot; Asahi's `asahi-21-q1cage-c05`); then `sugawara-q2b-crown` (carthage-05 plus only Bokuto's queen
+  lines: no queen split after round 60, more caution, a crown rule; `asahi-25-q2bcrown-c05`, 32 changed lines); the
+  grow rule q2a is parked. Optional: the pool of `bokuto-02-vac` to separate Bokuto's layers.
+- **Queen-keeper panel (68 fixtures against `bokuto-04-queen` and `kenma-03-pocket-queen`, seed 1):** carthage-05
+  32–36, k = 16 35–33; queen-decided 0–6 and 0–7; our queen alive at the round limit 0 of 47 and 0 of 48. k = 16
+  minus carthage-05 +4.41 points [−1.47, +10.29]. **D-075 §A's third explanation (the veto exposing the queen) gets
+  no support locally.** Neither parent ever keeps a queen against opponents that do; both lose Schooltime 0–4.
+- Owner's forecasts on file: q2b's pool 5th percentile above −5 points 0.55; q2b at least +5 points over carthage-05
+  on the keeper panel 0.40.
+- **First results of the isolating builds (Asahi, 06:19Z, arrived while this record was written; seed 1).**
+  - q1-cage on carthage-05: 270 of 272 pool fixtures identical to the parent, both differences on Schooltime; pool
+    226–46, equal to the parent; queen-decided 3–5 (parent 0–5); Schooltime queen alive 3 of 14 (Kenma's bot with
+    its reserved slot: 14 of 14). Keeper panel 34–34 against 32–36, +2.94 points [0.00, +5.88].
+  - q2b-crown on carthage-05: pool 219–52–1, **−2.39 points [−5.89, +0.92]**; queen-decided 16–5; queen alive 17 of
+    149 (15 on Trauma); Maze −37.5. Keeper panel 27–41 against 32–36, **−7.35 [−16.18, +2.94]**; against
+    `bokuto-04-queen` itself 12 of 34 (carthage-05: 16 of 34).
+  - Both of the owner's forecast events failed (0.55 and 0.40; Brier 0.3025 and 0.16, not council-scored).
+- **Chair's reading.** Neither queen mechanism transfers as one switch onto carthage-05. The cage needs the
+  reserved slot to hold the Schooltime queen; Bokuto's queen lines alone cost wins and lose to their source. Queen
+  keeping in the free lanes' bots depends on the rest of each bot. Adding layers to carthage-05 one at a time has
+  now failed twice at the first step. The Chair suggests the opposite direction to the owner: take the stronger
+  free-lane bot as the base and remove one layer at a time (leave-one-out), so that each layer is measured in
+  the context where it works. The ladder trials say whether such a base is worth adopting. Sugawara decides.
+
+### D. The clone (Hinata)
+
+- **On equal rows the trees beat the network.** A1 on the full rows: 0.7379 [0.7352, 0.7409]; against the network
+  +0.0099 [+0.0089, +0.0107], positive on all 14 maps, +0.042 on queen rows. The network is the sharper of the two
+  (floor share 26.5 % against 9.6 %). D-074 §A's sentence that a small network is the candidate prior is amended:
+  the pooled slot candidate is A1 on the full rows (refit queued); the network stays P-7's route only by
+  distillation (D-063 §D). Kageyama's estimate for a network inference path moves behind the bed layouts.
+- A11 (encoder and HB-1 vector in one model) 0.7264, equal to A5: the parent's prior adds nothing as an input.
+- **Entropy-matched weights, computed before any game:** 1.45 for the team-213 model, 1.72 for A1-400. So the
+  λ 1.41 arm of D-074 was still softer than the live prior (0.483 against 0.423 nats).
+- Arms, in Hinata's order: the 213 prior at λ 1 and λ 1.45 once Kageyama's export lands; A1-400 at λ 1.72 (no
+  export needed). The Chair asks Asahi to run the λ 1.72 arm as the next clone job now, since nothing blocks it and
+  it tests sharpness with content fixed.
+- **Chair's forecasts (pool difference against carthage-05; P that the paired 5th percentile is above −5):**
+  A1-400 at λ 1.72: −2 points, 0.35. The 213 prior at λ 1.45: −4 points, 0.25. (At λ 1: −8, 0.12, D-075 §E.)
+- Hinata's caution is recorded: on other teams' moves the 213 model predicts no better than the live prior
+  (0.6954 against 0.6977).
+
+### E. Housekeeping
+
+- The unit-25 merges went through (05:23Z). Kageyama has not posted since 05:00Z; its export of the 213 model gates
+  two arms. Bokuto's shell is still down; its trees reach other lanes by file copy only.

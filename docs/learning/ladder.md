@@ -2,7 +2,7 @@
 
 Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes only when this file records it.
 
-## Current state (5 Oct 2026 05:18Z)
+## Current state (5 Oct 2026 06:20Z)
 
 - **R0 passed 4 Oct 14:28Z (D-053 §A). R1: P-2 failed its confirmation 18:20Z (D-057 §B); rung open, behind R2. R2: development battery running (D-057 §C).**
 - Incumbent: `carthage-05-free-sprint` (submission 14585), restored 5 Oct 04:53:55Z after the rollback of `asahi-05-kz12-k16` (16979) under D-052 §B (D-075 §A). Ladder trials hold the live slot: `kenma-03-pocket-queen` (17388) since 05:02Z, then `bokuto-04-queen`, then a 60-game control on 14585; the best of the three windows becomes the incumbent (D-075 §C). Local parent for the queen builds: k = 16, pending the queen-keeper panel (D-075 §D).
@@ -13,7 +13,7 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 |---|---|---|---|---|
 | R0 | infrastructure | **passed** 4 Oct 14:28Z | Kageyama, Hinata, Asahi, Daichi | D-046, D-051 §5, D-052, D-053 §A |
 | R1 | V0 value model | **P-2 failed its one confirmation** (elimination r25 −0.0099 [−0.0152, −0.0049] against −0.01; better than Φ on round-limit maps at every checkpoint). Rung open. Next value artifact: P-6 (V-legal) with a fallback to Φ early on elimination-regime maps | Hinata | D-052 §A, D-057 §B |
-| R2 | P1 BC direction head | **By accuracy:** mirror-averaged A1 (A8b) 0.7224; A1 0.7184; A3 0.7145; live prior 0.6977. **In play (seed 1, slot bot, A3 placeholder): pool −6.99 points [−12.87, −1.47], gen −5.60; λ 0.5 worse.** Slot at parity on four maps, both paths. **Selection by accuracy suspended; frozen cohort not read (D-068).** Diagnostics: fallback count, A1 at λ 1, no prior, A1 at λ 1.41, single-team priors (213, 91). **Play diagnostics (D-074 §A): no prior −13.1 points, A1 at λ 1 −13.6, A1 at λ 1.41 −5.9; arms order by sharpness.** Full rows: network 0.7280. **Single-team priors fitted (D-075 §E): team 213 0.7541 on its own rows, team 91 0.7133; the 213 prior at λ 1 and at the entropy-matched weight are next in play** | Hinata (owner of the clone in play, D-072 §D), Kageyama, Asahi | D-055 §E, D-057 §C, D-058 §C, D-059 §B, D-063 §C, D-064 §C, D-065 §C–D, D-066 §C–F, D-068, D-074 §A, D-075 §E |
+| R2 | P1 BC direction head | **By accuracy:** mirror-averaged A1 (A8b) 0.7224; A1 0.7184; A3 0.7145; live prior 0.6977. **In play (seed 1, slot bot, A3 placeholder): pool −6.99 points [−12.87, −1.47], gen −5.60; λ 0.5 worse.** Slot at parity on four maps, both paths. **Selection by accuracy suspended; frozen cohort not read (D-068).** Diagnostics: fallback count, A1 at λ 1, no prior, A1 at λ 1.41, single-team priors (213, 91). **Play diagnostics (D-074 §A): no prior −13.1 points, A1 at λ 1 −13.6, A1 at λ 1.41 −5.9; arms order by sharpness.** Full rows: network 0.7280. **Single-team priors fitted (D-075 §E): team 213 0.7541 on its own rows, team 91 0.7133. A1 on the full rows 0.7379, above the network by +0.0099 (D-076 §D). Next in play: A1-400 at λ 1.72 (entropy-matched), the 213 prior at λ 1 and λ 1.45, then A1-full** | Hinata (owner of the clone in play, D-072 §D), Kageyama, Asahi | D-055 §E, D-057 §C, D-058 §C, D-059 §B, D-063 §C, D-064 §C, D-065 §C–D, D-066 §C–F, D-068, D-074 §A, D-075 §E, D-076 §D |
 | R3 | split/size, cull, sprint heads | **offline fits brought forward** (D-067 §E.6): after A1 on the full rows, pooled and by style, every table by phase bucket; no bot yet | Hinata | D-058 §C (arm A9), D-067 |
 | R4 | feature blocks | not started | Data, Learner | |
 | R5 | V in the search | needs a value model on the legal encoder (V-legal card after the decode, D-052 §A.7) | Hinata | |
@@ -60,13 +60,19 @@ blocks live screens.
 | Arm | Parent | State | Next | Learned replacement target |
 |---|---|---|---|---|
 | Cage C+D, E = 0 | carthage-05 | **parked** (D-053 §C): screen HOLD; the gated-reserve card P-3 rejected (map identity); live Schooltime is lost about equally with the cage open (−0.515, 27 games) and closed (−0.436, 24 games) | none | R3/R4 |
-| H-KZ12 entry-capacity dial, k = 0/4/8/16 | carthage-05 | k = 16: live 5 Oct 02:13Z to 04:53Z as 16979, **rolled back under D-052 §B (D-075 §A)**: 45 games, −0.263 against 14585's last 120, 95th percentile −0.126; cause not established; local gate hold (Weakhold +28 points), LS-1 75 pairs +0.080 [−0.029, +0.187] | Sugawara (queen-keeper panel for both parents) | R4 block "body-conditioned entry capacity" |
-| Queen keeping (free lanes) | carthage-05 lineage | `kenma-03-pocket-queen`: pool 220–52, queen-decided 13–4, **ladder trial running as 17388**. `bokuto-04-queen`: pool 226–46, queen-decided 42–4, queen alive 23 % of round-limit games, **second trial approved** (D-075 §C–D) | Daichi (trials), Sugawara (queen owner) | R3/R4 |
+| H-KZ12 entry-capacity dial, k = 0/4/8/16 | carthage-05 | k = 16: live 5 Oct 02:13Z to 04:53Z as 16979, **rolled back under D-052 §B (D-075 §A)**: 45 games, −0.263 against 14585's last 120, 95th percentile −0.126; cause not established; local gate hold (Weakhold +28 points), LS-1 75 pairs +0.080 [−0.029, +0.187] | closed for now: the keeper panel shows no queen cost (k = 16 35–33 against carthage-05 32–36; D-076 §C); queen builds use carthage-05 | R4 block "body-conditioned entry capacity" |
+| Queen keeping (free lanes) | carthage-05 lineage | `kenma-03-pocket-queen`: pool 220–52, queen-decided 13–4, **ladder trial running as 17388**. `bokuto-04-queen`: pool 226–46, queen-decided 42–4, queen alive 23 % of round-limit games, **second trial approved** (D-075 §C–D), replaced by `bokuto-13-cull` (70–31–1 by its own run) if that reaches 226 pool wins on our harness (D-076 §B). Sugawara's isolating builds on carthage-05 (06:19Z): `asahi-21-q1cage-c05` pool 226–46 = parent, Schooltime queen alive 3 of 14; `asahi-25-q2bcrown-c05` pool −2.39 points [−5.89, +0.92], keeper panel −7.35 [−16.18, +2.94]. Neither transfers as one switch | Daichi (trials), Sugawara (queen owner) | R3/R4 |
 
 | Queen reach veto (H-KZ26), m ∈ {off, 0, 1} | carthage-05 | card P-4 approved for a seed-1 screen (D-054 §C), after the k = 16 gate | Asahi | R4 block "enemy sprint reach" |
 
 ## Log
 
+- 5 Oct 06:20Z: D-076. Ratings belong to submissions, so ladder trials cost the incumbent nothing; any candidate
+  with a passing probe and a pool not below carthage-05 (paired 5th percentile above −5) may be queued for a
+  60-game trial. Trial 2 is `bokuto-13-cull` if its same-host pool reaches 226 wins, else `bokuto-04-queen`. Queen
+  builds move to carthage-05: q1-cage, then q2b-crown (Bokuto's queen lines alone); the keeper panel gives no sign
+  that k = 16 costs the queen. A1 on the full rows (0.7379) beats the network; entropy-matched weights 1.45 (213)
+  and 1.72 (A1-400).
 - 5 Oct 05:18Z: D-075. **k = 16 rolled back at 04:53:55Z** (45 ranked games, −0.263 against 14585's last 120; cause
   not established). Kenma's queen bot on trial as 17388 since 05:02Z; `bokuto-04-queen` next; then a control window
   on 14585; best of three becomes the incumbent. Statistic anchored at 1725 for every window. Single-team priors

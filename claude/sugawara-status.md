@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 04:40Z (unit 18). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 05:32Z (unit 19). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -31,6 +31,17 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only".
 
+## Unit 19 (05:26–05:32Z) — queen log #2
+
+- **Read:** D-075 (l.2980); BOARD through line 1217 (`[05:23 hinata → … Arm A11 …]`); my lines 1218–1219 (05:30Z).
+- **D-075 §D answered:** Bokuto's queen block ahead of q2a, isolated (policy.hpp `// bokuto-04` lines only), on
+  **carthage-05** (k16 rolled back 04:53Z; incumbent 14585). q2a parked. Q-plan §7 appended.
+- **Paired re-read of Asahi's pool index files** (`wt-asahi/build/asahi/runs/<bot>/<fp>/pool/index.jsonl`): bokuto-04's
+  42 queen wins = 38 on c05 wins + 4 rescues; 62/272 discordant (23 %); kenma-03 13/13 on c05 wins, 6 %. Pool queen
+  columns ≠ prize. Review `docs/learning/reviews/D-075-queen-order-sugawara.md`.
+- Owner forecasts: q2b pool 5th pct > −5 pp 0.55; q2b queen wins ≥ 25 0.60; q2b ≥ +5 pp vs c05 on bokuto-04 keeper panel 0.40.
+- Not notified: the contradiction does not change the D-075 §C end rule (ladder windows decide).
+
 ## Unit 18 (04:25–04:40Z) — queen log #1
 
 - **Read:** D-071–D-074; BOARD through 1202 (`[04:33 chair:ushijima … D-074 §B kenma-03 ladder trial]`); my lines 1203–1204.
@@ -51,7 +62,9 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 | 16979 (ref) | — | — | parent 0–5 / 272 | 4/47 ladder | — | q_dec 0–19 / 47 |
 | kenma-03 (D-074 §B trial) | — | 220–52 vs 226–46 | ? | ? | — | trial 60 games (Daichi) |
 | sugawara-q1-cage | queued | | | | | |
-| sugawara-q2a-grow | queued | | | | | |
+| sugawara-q2b-crown (c05 + bokuto-04 block) | queued 05:30Z | | | | | |
+| sugawara-q2a-grow | parked (§7) | | | | | |
+| bokuto-04-queen (D-075 §C trial 2) | — | 226–46 = c05; 38/42 q-wins on c05 wins | 42–4 | 44/189 | — | after 17388 |
 
 ## Unit 17 (03:25–03:37Z)
 
@@ -115,6 +128,9 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
     evaluation. **Open** (03:34Z; implicit in BOARD line, not phrased as a card).
 
 ## Next checks (queen)
+
+- Asahi's ack of the amended order; c05/k16 keeper panels (D-075 §D); q1/q2b parity + pool. Trial 17388 (Daichi, ~08:00Z, anchor 1725).
+- If Bokuto pools bokuto-07, re-run the paired table on it (does the churn shrink?).
 
 - Asahi: q1 parity + pool; q2a pool + keeper panels. Kenma trial table (Daichi): Schooltime vs rest, queen alive.
 - D-052 §B look on 16979 (Daichi) — my 0.08 forecast is still scored (D-072 §B keeps D-064 running event only; check).
