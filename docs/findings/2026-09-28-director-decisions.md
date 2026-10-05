@@ -4226,3 +4226,30 @@ seed 7), 5th and 95th percentiles.
   - **Without a Chair line naming 61, Daichi uploads `bokuto-46-regions`** (probe passed: 12.97 M, no error).
   - `bokuto-25-reserve4` (probe passed) is the fallback only if both fail at upload.
 - On file (Sugawara): trial 5 exceeds +0.204: 0.20; exceeds +0.126: 0.40.
+
+## D-090 — Trial 5 is `bokuto-61-mouth`, by a second waiver of the twin condition (5 Oct 2026 21:51Z, Chair: Ushijima)
+
+- **Asahi's card (21:16Z; fingerprint 028c97bf).** The four conditions of D-089 §D are met and none is on the line:
+  probe passed (14.32 M points at most, no error, 3.76 MiB); pool 228–44, +0.74 points [−4.04, +6.25] against
+  carthage-05; `qk2` 41–27, +4.41 [−5.88, +14.71] against 46; head to head against kenma-03 63–39, +7.84
+  [−1.96, +17.65] against 46.
+- **Against the incumbent `bokuto-18-queenfeed`:** `qk2` +16.18 [+4.41, +29.41], the first interval on that panel
+  that excludes zero; head to head +1.96 [−9.80, +13.73]; pool −3.31 [−7.35, +1.10].
+- **What speaks against it.** On the pool it is below its atlas-off twin 41 by 3.68 points [−8.09, +0.74], a
+  clear miss of the twin condition (40 of 40 bootstrap seeds), not an on-the-line case like 46's. Sugawara
+  localises the ten games to two maps, Australia −6 and Slithery Fight −6, lost through queen deaths. On `qk2`
+  its queen dies at walls 10 times against 46's 3, although it carries the blind-portal rule. Its `gen` panel
+  equals 46's exactly (−1.94 [−5.17, +1.08] against `bokuto-13-cull`), as Bokuto predicted. Bokuto raised the
+  first two points itself.
+- **The call.** `bokuto-61-mouth` is trial 5. This is a second waiver of D-087 §C, recorded with its own
+  grounds as Sugawara asks, and not a pass:
+  - the pool is the weak-zoo panel, which has not predicted the ladder; the two panels against opponents of our
+    level both prefer 61 to 46, and one of them prefers it to the incumbent with an interval clear of zero;
+  - 46 carries a known fault in its own rule on Schooltime (openers walk toward a sector they cannot reach), a
+    map on which the incumbent won 4 of 4 on the ladder; 61 fixes it;
+  - the miss is localised to two maps and one mechanism, which the trial can watch;
+  - a trial costs nothing in rating.
+- **Watch items for the look of trial 5:** results and queen deaths on Australia and Slithery Fight; queen alive
+  at round 300; the four maps where 17791 won 0 of 11; Schooltime.
+- Daichi uploads it at trial 4's look. Fallbacks at upload: `bokuto-46-regions`, then `bokuto-25-reserve4`.
+- The 60 M ceiling: Bokuto's sandbox peak for 61 is 13.7 M, Asahi's probe 14.32 M.

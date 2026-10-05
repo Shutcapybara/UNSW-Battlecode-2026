@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 20:47Z (unit 39). Next self-wake about 21:50Z (confirm trial 5), then about 22:45Z (trial 4's look). Branch `r/ushijima`; private tree
+State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 21:51Z (unit 40). Next self-wake about 22:50Z (trial 4's look). Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,14 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-090: trial 5 is `bokuto-61-mouth`.** Asahi's card meets the four conditions of D-089 with none on the line:
+  probe 14.32 M; pool +0.74 [−4.04, +6.25] against carthage-05; `qk2` 41–27 and head to head 63–39, both above 46.
+  **Against the incumbent on `qk2`: +16.18 [+4.41, +29.41], the first interval there that excludes zero.** It is
+  named by a second waiver of the twin condition, not a pass: on the pool it is 3.68 points below its atlas-off
+  twin (a clear miss), which Sugawara localises to Australia and Slithery Fight through queen deaths; its queen
+  dies at walls 10 times on `qk2` against 46's 3. Grounds: the pool has not predicted the ladder and the two
+  strong-opponent panels prefer 61; 46 has a known fault on Schooltime that 61 fixes; the miss is localised and
+  can be watched. Daichi uploads it at trial 4's look (about 22:15Z or after).
 - **D-089: where the incumbent stands, on checked numbers.** Against teams at 1725 or above, in games that
   reached round 300: queen alive at round 300 0.72 (target 0.58); live leads converted 14 of 20 (target 70 %);
   growth between rounds 100 and 300 38.2 a game against 68.2 for the top ten's winners and about 51.6 for all
@@ -324,7 +332,7 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 |---|---|
 | Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): by accuracy A8b 0.7224, A1 0.7184, A4 0.7205 (not selectable), A3 0.7145, live prior 0.6977; **in play the A3 placeholder loses 7 points on the pool; selection suspended (D-068)**. P-6: behind the battery. P-7: entry throughput passed; no training. P-8 (latent state): stage S0 approved |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | Done: `bokuto-46-regions` complete (probe 12.97 M; `gen` −1.94 [−5.17, +1.08] against `bokuto-13-cull`), `bokuto-47-precious` complete (not a candidate), probe of `bokuto-25-reserve4` (passed). Running: `bokuto-61-mouth` (`qk2` and head to head first, then pool, `gen`, probe; paired against 46, 18 and 41), about 21:40Z |
+| Evaluator queue (Asahi) | Done: `bokuto-61-mouth` complete (probe 14.32 M; pool 228–44; `qk2` 41–27; head to head 63–39; `gen` equal to 46). Queue open: Sugawara's layer removal; Bokuto's next JOB |
 | Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) and rolled back at 04:53Z (D-075 §A) |
 | Uploaded, inactive | 14585 (carthage-05, incumbent, waiting behind the trials), 16979 (k = 16, rolled back), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
 | Live screen | **Trial 4 live: `asahi-27-b13-reserve` = 17940 since 18:25:06Z**, no fault; look at the first series boundary at or after 60 ranked games (about 22:15Z; server blackouts 19:52–20:12Z and 21:52–22:12Z). End rule: more than 0.03 over 17791's +0.174 at anchor 1725; Daichi also reports against the pooled line (+0.096); +0.126 to +0.204 is unresolved. Trial 3 ended 18:25Z: 17791 +0.174 [+0.079, +0.282], incumbent of record (D-088) |
@@ -356,7 +364,7 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 | Data | Kageyama (Claude), `r/kageyama`; **silent since about 07:00Z** | bed layouts, slot bots and trajectory block done; the export is cancelled and the curve table has moved to Hinata. **Stand-down recommended to the lead (D-081 §D)** |
 | Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | analysis service of the trials (matched column, curve block). The curve table's queen columns were side-swapped; fixed at source within six minutes of Sugawara's review, with a guard against the engine's queen field. Its descriptions are reviewed by Sugawara before the Chair records them |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session after the reset | working: both free-lane pools posted with queen columns; learn-runner library fix; queue as in the table above |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | trial 3 started 14:19Z (17791); applied the end rule at 18:25Z and started trial 4 (17940) at once; posted every trialled submission at anchor 1725 (`docs/learning/trials-1725.md`); at trial 4's look (about 22:15Z): the table against 17791 and against the pooled line, then trial 5 = `bokuto-61-mouth` if the Chair has named it on the board, otherwise `bokuto-46-regions` (D-089 §D). D-052 §B does not bind trial bots (D-089 §C) |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | trial 3 started 14:19Z (17791); applied the end rule at 18:25Z and started trial 4 (17940) at once; posted every trialled submission at anchor 1725 (`docs/learning/trials-1725.md`); at trial 4's look (about 22:15Z): the table against 17791 and against the pooled line, then trial 5 = `bokuto-61-mouth` (D-090; fingerprint 028c97bf), fallbacks `bokuto-46-regions`, `bokuto-25-reserve4`. D-052 §B does not bind trial bots (D-089 §C) |
 | Free lanes (outside the ladder) | Bokuto (Kenma retired, D-079) | **Bokuto: its `bokuto-18-queenfeed` is the incumbent of record. It keeps fixing the 46 line from its own local losses (57 the queen's blind portals, 58 unreachable migration targets, 61 migration into dead-end corridors; 61 is 28–6 locally against carthage-05) and measured that the old search knobs do not spend the larger compute budget.** One builder lane only; a second is recommended to the lead |
 | Analyst | Shenzhen | stopped by the lead (D-074 §C); units 36–39 uncommitted unless Kageyama ran its commit command (not reported) |
 
@@ -382,8 +390,8 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 
 ## Next three decisions
 
-1. **Trial 5:** `bokuto-61-mouth` if its card qualifies it (Chair's line about 21:50Z), otherwise `bokuto-46-regions` by waiver (D-089 §D).
-2. **Trial 4's outcome** (look about 22:15Z; bar +0.204; +0.126 to +0.204 unresolved).
+1. **Trial 4's outcome** (look about 22:15Z or after; bar +0.204; +0.126 to +0.204 unresolved), then trial 5 = `bokuto-61-mouth` starts (D-090).
+2. **Trial 6:** not named. Candidates: a confirmation window for 17791; whatever Bokuto builds next on the larger compute budget or against the fed queen's deaths.
 3. **The schedule of confirmation runs and the final activation**, once the lead gives the seeding cutoff.
 
 Waiting on the lead: **the Qualifiers' seeding cutoff** (the record of 28 Sep says 10 Oct; unverified), so that
@@ -394,7 +402,7 @@ deleting `~/Desktop/sessiondata.img.bak`.
 
 ## Cursor
 
-Last BOARD line read: line 1500 (Bokuto 20:39Z), main tree. Own D-089 line follows.
+Last BOARD line read: line 1507 (Sugawara 21:33Z), main tree. Own D-090 line follows (21:50Z).
 
 ## Open flags
 

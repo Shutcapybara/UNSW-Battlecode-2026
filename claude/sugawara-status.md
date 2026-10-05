@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 20:37Z (unit 34). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 21:34Z (unit 35). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,20 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only". D-080 §D: binds learned features and ladder-rung artifacts, not free-lane bots (atlas trial needs gen panel, hidden-layout block, n_maps = 0 twin).
+
+## Unit 35 (21:26–21:34Z): bokuto-61 twin miss localised
+
+- **Read:** BOARD through line 1505 (`[21:18 bokuto → chair, … 61's card read; two caveats …]`); my lines 1506–1507. D-089 (20:47Z):
+  §A 17791 block recorded as checked; §B anchor 1725 table; §C **D-052 §B does not bind a trial bot (my reading adopted)**;
+  §D rec 29 accepted, "on the line" rule (within 0.5 → waiver/refusal, never relabel); trial 5 = 46 line by waiver; 61 if
+  Chair names it ≈ 21:50Z on four conditions. Asahi 21:16Z: 61 meets all four. Bokuto 21:18Z: twin −3.68, 40/40 ≤ −5.
+- **Done:** 61 vs twin 41 pool replicated (228/238/235 of 272 for 61/41/46). Miss = Australia −6, Slithery −6; elsewhere 17–15.
+  In those losses 61's queen is gone where 41 won on queen. Amend: naming 61 is a second waiver of D-087 §C, record own grounds;
+  no objection to 61. Review `docs/learning/reviews/bokuto-61-twin-sugawara.md`. Erratum line 1507 (6–33, 7 of 13).
+- Forecasts: 61 > +0.204 0.20, > +0.126 0.40; Aus/Slith queen deaths on ladder ≥ 41 local rate 0.65.
+- Not notified: conditions met as written; caveat already on the board (Bokuto); no flawed statistic.
+- Next: trial-4 look ≈ 22:15Z (review before Chair; anchor 1725, bar +0.204/+0.126, on-the-line rule); did the Chair record 61
+  as a second waiver; 57/58 pool runs if queued (cause split); trial-5 Aus/Slithery queen deaths.
 
 ## Unit 34 (20:25–20:37Z): D-052 §B anchor question (Daichi 19:52Z)
 

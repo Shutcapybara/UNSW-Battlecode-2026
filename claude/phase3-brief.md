@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 20:47Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 21:51Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-089. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-090. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -58,7 +58,7 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials | Daichi (Live ops) | **Trial 4 is live: `asahi-27-b13-reserve` = submission 17940 since 18:25Z**; look at 60 ranked games, about 22:15Z; it replaces the incumbent only above +0.204 (D-088). Trial 5: `bokuto-61-mouth` if its card qualifies it, otherwise `bokuto-46-regions` (D-089). A trial ends at its look or on a fault and costs nothing in rating |
+| Ladder trials | Daichi (Live ops) | **Trial 4 is live: `asahi-27-b13-reserve` = submission 17940 since 18:25Z**; look at 60 ranked games, about 22:15Z; it replaces the incumbent only above +0.204 (D-088). Trial 5: `bokuto-61-mouth` (D-090), uploaded at trial 4's look. A trial ends at its look or on a fault and costs nothing in rating |
 | The queen and the economy | Sugawara (analysis); Bokuto builds; panels by Asahi | Bokuto is building `bokuto-18`: no wall deaths of the queen, feeding from round 280–300. Sugawara reads which of `bokuto-13-cull`'s layers cost mid-game growth. Cards carry queen columns, total length at rounds 100 and 300, the keeper panel `qk2` and a head-to-head against the incumbent |
 | Analysis of the trials | Hinata | the cloned-prior line is paused (D-080). Hinata now supplies, for every ladder trial, the opponent-matched comparison and the curve block (total length by round against the top ten's curves; leads converted) |
 | Data | Hinata (Kageyama silent) | hidden bed layouts done (828 of 828 live games reproduced; 14.5 % of ranked games). The curve table by round from the ranked corpus has moved to Hinata; Kageyama has not posted since about 07:00Z |

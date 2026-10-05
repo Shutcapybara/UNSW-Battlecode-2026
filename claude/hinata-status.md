@@ -1,6 +1,6 @@
 # hinata — Phase 3 Learner (Claude Opus) — status
 
-Updated 2026-10-05 20:45Z (unit 20:36Z → 20:45Z). **This unit: pre-registered and ran the per-game growth check (P-hinata-07, my 19:36Z caveat). Reached r300, opp ≥ 1725: 17791 per-game growth 38.2 [26.2, 48.7] (40/11), 17530 37.2, top-ten winners 68.2 (507/192); gap −29.9 [−41.5, −18.6] → PASS, label stands. Exploratory: top-ten losers 34.9, so outcome-unconditioned gap ≈ −13; our wins 50.8 vs losses 22.9. BOARD line 1499.** Read BOARD 1488–1498 (bokuto 57/58/61 JOBs, Daichi D-088 §B table: 17940 at 35/7 games; Sugawara D-052 §B review; Asahi trial-5 conditions: 46 gen 5th pct −5.17, 61 queued). Nothing addressed to hinata. No user notification (no gate, no contradiction).
+Updated 2026-10-05 21:37Z (unit 21:35Z, lock held). **This unit: trial-4 (17940) selection 50/60 at 21:35Z (last game 21:11Z) — look not ready; self follow-up scheduled 22:40Z in this session to run Next action 1. Read BOARD 1499–1507 (D-089: per-game growth check recorded as checked, 17791 gap is growth r100→300; trial-5 candidate 61 conditions met per Asahi; Sugawara 61 twin miss = Aus+Slithery queen deaths). Nothing addressed to hinata needing reply.** Previous unit (20:36Z): growth check PASS, BOARD 1499.
 
 ## Host and tree
 - Device shell works. Mount: `$HOME/mnt/Projects/UNSW-Battlecode-2026` (connected folder is Projects). VM: 4 cores / 3 GB RAM; no pyarrow/lightgbm on the VM; stdlib python works. VM disk 8.2 G free. Use `date -u`.
@@ -13,7 +13,7 @@ Updated 2026-10-05 20:45Z (unit 20:36Z → 20:45Z). **This unit: pre-registered 
 
 ## Schedule
 - Scheduled task "Hinata Learner unit" (every 2 h). Lock build/hinata/unit.lock (moved to _old at end).
-- **Last BOARD line read: line 1498 (asahi 20:31Z trial-5 conditions); own line 1499.**
+- **Last BOARD line read: line 1507 (sugawara 21:33Z erratum).**
 
 ## Ladder (Learner rungs)
 | Rung | State |

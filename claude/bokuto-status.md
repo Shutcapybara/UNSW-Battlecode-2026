@@ -3,7 +3,7 @@
 ## Session 2 (5 Oct 2026, 09:00Z–) — what changed, what was learned
 
 **State.** Shell works again (Cowork VM, engine in `/tmp/bokuto/venv313`, 4 workers, 180 s slices via `tools/bokuto/arena.py
---budget 160`). Everything is committed on `r/bokuto` (`../wt-bokuto`, last commit 355b2aabd); the Mac runner (Asahi) takes
+--budget 160`). Everything is committed on `r/bokuto` (`../wt-bokuto`, last commit fecd1af7a+); the Mac runner (Asahi) takes
 jobs by a BOARD line `JOB <bot> : pool, qk2, h2h vs kenma-03, probe`. Delete permission was granted for the session; replays
 are kept only while read (`build/bokuto/replays/`), results in `build/bokuto/results/`.
 
@@ -95,6 +95,8 @@ portal exits onto her → 33's flee term.
 | **58-reachable** | 57 + a migration target must have a known route (BFS check of the best three sectors; routeless sectors marked per dragon) | vs kenma-03 22–12, r100 62 vs 58 (46: 21–13, 59 vs 62) | **JOB posted 20:03Z**; the candidate if 46 fails probe/gen or for the confirmation window |
 | 59-openportals | 58 + atlas portal pairs routed only before r80 | vs kenma-03 20–14 | material |
 | 60-homebias | 58 + migration discounts distance from the birth cell and enemies nearer | vs kenma-03 22–12 | Schooltime unchanged (30 vs 152 at r100); material |
+| **61-mouth** | **58 + a migration into a dead-end corridor ends at the corridor's junction** | **28–6 vs c05** (total r300 107 vs 85, end longest 28.4 vs 24.2); vs kenma-03 23–11; vs bokuto-13 20–14 | **TRIAL 5 (D-090, activated at trial 4's look ≈ 22:15Z).** Mac: probe 14.32 M; pool +0.74 vs c05, −3.68 vs twin 41 (Australia −6, Slithery −6: queen deaths), −2.94 vs 46; qk2 41–27 (+16.2 vs 18, +4.4 vs 46), queen wall deaths 10 vs 3; h2h 63–39 (+7.8 vs 46); gen = 46 |
+| 62-handover | 61 + 48/49's crown handover, no newborn feeders, feeder cap | 25–9 | within noise of 61; material |
 
 **The atlas doubles ally collisions (found 17:00–17:40Z; tools/bokuto/allyledger.py, collide.py).** Ally-caused deaths /
 length a game vs carthage-05 on six maps: 18 14.5 / 38, 24 17.9 / 45, 28 16.5 / 40, **30 (atlas on) 29.8 / 77**, 34 34.9 /
@@ -110,7 +112,7 @@ Enemy head-on trades are even in count (39 a game, carthage initiates 23 of them
 
 **Open problem (20:00–20:40Z): Schooltime vs kenma-03 (0–2, 30–95 total at r100 vs 90–150).** Kenma's openers reach the fast-bed cluster on their side by r30 and then split on every eat (17 splits and 45 eats in r50–60; 25 units at r60 vs our 6). Ours: 46's migration first sent openers toward a sector reachable only through portals (fixed in 58), then across the map into kenma's cluster (home bias in 60 did not fix the r100 total); three of five openers still head east. Not resolved; one map, one opponent — left here.
 
-**Next.** (a) 57/58 cards paired vs 46: if the queen column improves without a pool loss, propose 58 for the confirmation window; (b) the endgame: one crown, robust election, corpses eaten (carthage's late escape splits of long dragons are as frequent as ours — not the differentiator; its crown eats more corpses); (c) the growth gap r100→r300 vs top-ten winners; (d) a real lookahead to spend the 100 M budget (52 is the sketch; the knobs cost nothing).
+**Next.** (a) Trial 5's look (≈ 60 ranked games after activation, ~02:00Z): watch the four-map eliminations (Stripes/QoS/Trophy/Default/Dilemma), queen deaths on Australia/Slithery (61's pool miss vs 41 is those two maps: the fed queen dies where 41 won by the queen rule), and the highest server turn; (a2) the queen-wall class on qk2 (10 vs 3) needs reading from Asahi's QC2 rows — the fed queen cornered by hunters flees into dead-end corridors (UNSW r354); (b) the endgame: one crown, robust election, corpses eaten (carthage's late escape splits of long dragons are as frequent as ours — not the differentiator; its crown eats more corpses); (c) the growth gap r100→r300 vs top-ten winners; (d) a real lookahead to spend the 100 M budget (52 is the sketch; the knobs cost nothing).
 
 ---
 

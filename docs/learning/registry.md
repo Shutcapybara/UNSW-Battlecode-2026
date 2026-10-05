@@ -277,8 +277,8 @@ at first. A trial therefore costs the incumbent's rating nothing.
   −1.94 [−5.17, +1.08], on the line (at or below −5 in 27 of 40 bootstrap seeds); against its twin on `gen` +0.22.
   Sugawara: the pool-twin 5th percentile is at or below −5 in 88 % of seeds; `qk2` against the twin +20.59
   [+5.88, +36.76]. 47: `gen` −2.37; hidden layouts 72–8; probe passed.
-- status: 46 `candidate`, **trial 5 by waiver of the pool-twin and `gen` conditions unless `bokuto-61-mouth`
-  (REG-017) replaces it** (D-089 §D). 47 `rejected` as a trial candidate (pool floor).
+- status: 46 `candidate`; replaced as trial 5 by `bokuto-61-mouth` (D-090); first fallback at upload. 47 `rejected` as
+  a trial candidate (pool floor).
 
 ### REG-017 — `bokuto-57-queenblind46`, `bokuto-58-reachable`, `bokuto-61-mouth` (free lane Bokuto; fixes on REG-016's 46)
 
@@ -288,7 +288,11 @@ at first. A trial therefore costs the incumbent's rating nothing.
   source of 46's self-deaths). `r/bokuto` fecd1af7a.
 - local (Bokuto's harness, 34 games): 61 28–6 against carthage-05 (46: 24–10), 23–11 against kenma-03 (46: 21–13),
   20–14 against `bokuto-13-cull` with the queen alive at round 300 in 21 of 34 (41: 11–23, 13 of 34).
-- measurement: Asahi's queue, 61 only (`qk2` and head to head first, then pool, `gen`, probe; paired against 46, 18
-  and 41), about 21:40Z. On `gen` it should equal 46 and 41.
-- status: 61 `candidate`; **trial 5 if its probe passes, its pool qualifies and it is not clearly worse than 46 on
-  `qk2` and head to head, confirmed by the Chair on the board** (D-089 §D). 57 and 58 are contained in it.
+- same-host (Asahi, 21:16Z; 61, fingerprint 028c97bf): probe passed (14.32 M, no error, 3.76 MiB); pool 228–44,
+  +0.74 points [−4.04, +6.25] against carthage-05, −3.31 [−7.35, +1.10] against `bokuto-18-queenfeed`, −2.94 against
+  46, **−3.68 [−8.09, +0.74] against its twin 41** (Australia −6, Slithery Fight −6, queen deaths; Sugawara);
+  `qk2` 41–27, +16.18 [+4.41, +29.41] against 18, +4.41 against 46; head to head against kenma-03 63–39, +1.96
+  against 18, +7.84 [−1.96, +17.65] against 46; `gen` 345–119 (equal to 46); hidden layouts 76–4; queen wall
+  deaths on `qk2` 10 against 46's 3; self-deaths +55.7 % against carthage-05.
+- status: 61 `candidate`, **trial 5 (D-090), by a second waiver of the twin condition; uploaded by Daichi at trial
+  4's look.** 57 and 58 are contained in it.
