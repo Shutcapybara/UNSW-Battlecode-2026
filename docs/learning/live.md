@@ -1,24 +1,24 @@
 # Live monitor (Live ops, lane Daichi)
 
-Generated 2026-10-05 18:50 UTC by `tools/daichi/live_monitor.py` from the corpus index (team 7 games, replay-header attribution) and 760 ladder snapshots (latest 2026-10-05 18:50:42+00:00). Population: **ranked** games only unless stated. Statistic: score − Elo expectation per game; interval = whole-series cluster bootstrap, 1,000 resamples, seed 7, 5th/95th percentile. Corpus lag: games appear when the collector fetches them (minutes to hours).
+Generated 2026-10-05 19:50 UTC by `tools/daichi/live_monitor.py` from the corpus index (team 7 games, replay-header attribution) and 765 ladder snapshots (latest 2026-10-05 19:41:53+00:00). Population: **ranked** games only unless stated. Statistic: score − Elo expectation per game; interval = whole-series cluster bootstrap, 1,000 resamples, seed 7, 5th/95th percentile. Corpus lag: games appear when the collector fetches them (minutes to hours).
 
-Frozen inputs (D-051 §4): `docs/learning/live-inputs/20261005T1850Z-7d81d35d.json.gz` sha256 `7d81d35d367481a3…` (4990 games with their snapshot ids, 760 snapshots, index sha `3a26bf69f63f`). Expectations use the last snapshot at or before the game; a game before the first snapshot gets none.
+Frozen inputs (D-051 §4): `docs/learning/live-inputs/20261005T1950Z-5e5f8481.json.gz` sha256 `5e5f8481053d8c21…` (5005 games with their snapshot ids, 765 snapshots, index sha `8347058123df`). Expectations use the last snapshot at or before the game; a game before the first snapshot gets none.
 
 ## Incumbent
 
 - Live submission **17940** (asahi-27-b13-reserve; fingerprint `?`); first seen in the corpus 2026-10-05 18:37:04.646000+00:00.
-- Ranked games since first seen: **5**, W-L-D 3-2-0; score − E +0.003 [+0.003, +0.003] (n 5 games / 1 series).
-- First 40 ranked after first sighting: score − E +0.003 [+0.003, +0.003] (n 5 games / 1 series). Old absolute screen (mean < −0.08 and 95th pct < 0): **not met** — superseded by D-052 §B (difference vs the replaced submission's last 120, our rating fixed at activation); that look is computed by `tools/daichi/rollback_d052.py` → `docs/learning/rollback-d052.md` §3 and binds only a candidate Live ops promoted.
-- Rolling last 40 ranked (drift signal, not a rollback trigger): score − E +0.003 [+0.003, +0.003] (n 5 games / 1 series).
-- Elo now 1851 (rank 55); 24 h ago 1722; 7 d ago 1778.
+- Ranked games since first seen: **20**, W-L-D 7-13-0; score − E -0.136 [-0.209, -0.063] (n 20 games / 4 series).
+- First 40 ranked after first sighting: score − E -0.136 [-0.209, -0.063] (n 20 games / 4 series). Old absolute screen (mean < −0.08 and 95th pct < 0): **not met** — superseded by D-052 §B (difference vs the replaced submission's last 120, our rating fixed at activation); that look is computed by `tools/daichi/rollback_d052.py` → `docs/learning/rollback-d052.md` §3 and binds only a candidate Live ops promoted.
+- Rolling last 40 ranked (drift signal, not a rollback trigger): score − E -0.136 [-0.209, -0.063] (n 20 games / 4 series).
+- Elo now 1787 (rank 72); 24 h ago 1723; 7 d ago 1778.
 - Unranked games of the incumbent in the window (exposure only, not scored here): 0.
 
 ## Rosters (ranked, incumbent only)
 
 | roster | definition | teams | score − E |
 |---|---|---|---|
-| band | teams met in ranked, last 48 h | 84: 11, 22, 28, 30, 40, 52, 63, 64, 71, 78, 98, 104, 127, 133, 134, 135, 141, 147, 153, 174 … | +0.003 [+0.003, +0.003] (n 5 games / 1 series) |
-| top | current top ten (non-dev) | 10: 264, 306, 91, 55, 157, 213, 454, 507, 842, 19 | n 0 |
+| band | teams met in ranked, last 48 h | 83: 11, 22, 28, 30, 40, 52, 63, 64, 71, 78, 98, 104, 127, 133, 134, 135, 141, 147, 153, 174 … | -0.136 [-0.209, -0.063] (n 20 games / 4 series) |
+| top | current top ten (non-dev) | 10: 264, 306, 91, 157, 55, 454, 213, 19, 87, 842 | n 0 |
 | style | one per style (Data top-teams.md v1, 13:55Z): 306 invalid-move cull, 264 suicide cull + fast portals, 213 queen keeper, 952 split-heavy sonar-silent | 4: 306, 264, 213, 952 | n 0 |
 | regression | opponents with ≥ 5 ranked games and mean score − E > 0 | 1: 844 | +0.003 [+0.003, +0.003] (n 5 games / 1 series) |
 
@@ -28,16 +28,24 @@ Schooltime and Prisoners Dilemma are also split by layout variant (D-052 §E; va
 
 | map | score − E |
 |---|---|
-| Portals | -0.597 [-0.597, -0.597] (n 1 games / 1 series) |
+| Autarky | -0.686 [-0.686, -0.686] (n 1 games / 1 series) |
+| Default | -0.686 [-0.686, -0.686] (n 1 games / 1 series) |
 | weakhold | -0.597 [-0.597, -0.597] (n 1 games / 1 series) |
-| Islands | +0.403 [+0.403, +0.403] (n 1 games / 1 series) |
+| Trophy | -0.532 [-0.532, -0.532] (n 1 games / 1 series) |
+| Slithery Fight | -0.408 [-0.686, -0.129] (n 2 games / 2 series) |
+| Australia | -0.330 [-0.532, -0.129] (n 2 games / 2 series) |
+| Trauma | -0.330 [-0.532, -0.129] (n 2 games / 2 series) |
+| Portals | -0.141 [-0.597, +0.314] (n 2 games / 2 series) |
+| Maze | -0.129 [-0.129, -0.129] (n 1 games / 1 series) |
+| Stripes | +0.248 [+0.049, +0.447] (n 3 games / 3 series) |
+| Islands | +0.359 [+0.314, +0.403] (n 2 games / 2 series) |
 | Prisoners Dilemma | +0.403 [+0.403, +0.403] (n 1 games / 1 series) |
 | ↳ 10 dragons | +0.403 [+0.403, +0.403] (n 1 games / 1 series) |
-| Stripes | +0.403 [+0.403, +0.403] (n 1 games / 1 series) |
+| Devil | +0.468 [+0.468, +0.468] (n 1 games / 1 series) |
 
 ## Drift (all our ranked games)
 
-- Last 7 days: -0.027 [-0.047, -0.005] (n 1797 games / 367 series); the 7 days before: +0.089 [-0.148, +0.352] (n 19 games / 4 series).
+- Last 7 days: -0.029 [-0.050, -0.008] (n 1812 games / 370 series); the 7 days before: +0.089 [-0.148, +0.352] (n 19 games / 4 series).
 - submission 14585: -0.022 [-0.048, +0.002] (n 1095 games / 221 series)
 - submission 14265: -0.034 [-0.111, +0.045] (n 138 games / 29 series)
 - submission 17388: +0.008 [-0.066, +0.084] (n 130 games / 26 series)
@@ -49,11 +57,11 @@ Schooltime and Prisoners Dilemma are also split by layout variant (D-052 §E; va
 - submission 11398: -0.031 [-0.131, +0.082] (n 32 games / 7 series)
 - submission 11969: -0.046 [-0.150, +0.088] (n 31 games / 7 series)
 - submission 11244: +0.025 [-0.130, +0.180] (n 20 games / 4 series)
+- submission 17940: -0.136 [-0.209, -0.063] (n 20 games / 4 series)
 - submission 12851: +0.002 [-0.183, +0.251] (n 14 games / 4 series)
 - submission 12440: -0.204 [-0.310, -0.099] (n 10 games / 2 series)
 - submission 13086: -0.240 [-0.487, -0.092] (n 8 games / 2 series)
 - submission 12728: -0.052 [-0.052, -0.052] (n 5 games / 1 series)
-- submission 17940: +0.003 [+0.003, +0.003] (n 5 games / 1 series)
 
 ## Errors and timeouts
 
