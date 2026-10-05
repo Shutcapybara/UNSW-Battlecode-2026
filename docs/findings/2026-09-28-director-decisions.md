@@ -4253,3 +4253,80 @@ seed 7), 5th and 95th percentiles.
   at round 300; the four maps where 17791 won 0 of 11; Schooltime.
 - Daichi uploads it at trial 4's look. Fallbacks at upload: `bokuto-46-regions`, then `bokuto-25-reserve4`.
 - The 60 M ceiling: Bokuto's sandbox peak for 61 is 13.7 M, Asahi's probe 14.32 M.
+
+## D-091 — Trial 4: `asahi-27-b13-reserve` (17940) is not kept; what trials 3 and 4 say together; trial 5 is live as 18078; a queen fault in 61 (5 Oct 2026 23:01Z, Chair: Ushijima)
+
+### A. Trial 4's outcome (Daichi 22:56Z)
+
+Ranked games after the map change, score minus Elo expectation at anchor 1725, whole-series bootstrap (1,000
+draws, seed 7), 5th and 95th percentiles; first series boundary at or after 60 ranked games.
+
+| Submission | Games / series | W–L | Statistic at 1725 |
+|---|---|---|---|
+| 17940 `asahi-27-b13-reserve` (18:37Z–21:58Z) | 60 / 12 | 25–35 | **+0.093 [+0.004, +0.185]** |
+| 17791 `bokuto-18-queenfeed` (incumbent) | 60 / 12 | 32–28 | +0.174 [+0.079, +0.282] |
+
+- The bar was more than +0.204. Against the pooled line of 17388 and 17791 (+0.096) the result is below +0.126,
+  so under D-088 §D it counts against the bot and it is not a candidate for a confirmation run. **17791 stays
+  the incumbent of record.** Daichi applied the rule; the Chair confirms it. Over all 80 games 17940 stands at
+  +0.107 [+0.026, +0.192].
+- Faults: none (25 further ranked games scanned; highest server turn 12.94 M points over 725,814 dragon-turns).
+- 17940's interval also excludes zero; it is the second bot of the phase above its expectation.
+
+### B. Hinata's curve block for trial 4 (22:43Z; frozen procedure; not yet checked by a second lane)
+
+Against teams at 1725 or above, games that reached round 300:
+
+| | 17940 (reserve, no queen changes) | 17791 (reserve and queen changes) | 17530 (neither) |
+|---|---|---|---|
+| Growth, rounds 100 to 300, per game | **46.4 [34.0, 59.2]** | 38.2 | 37.2 |
+| Queen alive at round 300 | **0.33** (opponents 0.74) | 0.72 | 0.45 |
+| Losses on the queen rule | 14 of 50 | 7 of 55 | |
+| Live leads at round 300 converted | 10 of 18 | 14 of 20 | 10 of 16 |
+
+- Growth differences have intervals that include zero (+8.2 [−9.3, +24.8] against 17791). The queen difference
+  is large.
+
+### C. What trials 3 and 4 say together
+
+- 17940 is `bokuto-13-cull` plus Kenma's reserve lines; 17791 is the same plus the queen changes (fed from round
+  290, terrain safety from round 0, dodge). So, on the ladder, with different fields and one 60-game window each:
+  - **the reserve lines:** 17530 −0.041 to 17940 +0.093, about +0.13;
+  - **the queen changes on top:** 17940 +0.093 to 17791 +0.174, about +0.08, and they carry the queen-alive
+    difference (0.33 to 0.72) and halve the queen-rule losses.
+- Both steps go the way the mechanism columns say. Neither difference has a resolved interval on its own. The
+  two steps together are the first ladder evidence of the phase that the queen work pays.
+- Growth may be lower with the queen changes (46.4 against 38.2, interval includes zero). If it holds, the queen
+  rules cost mid-game economy, and the next gain is a bot that keeps 17791's queen and 17940's growth. The Chair
+  asks Sugawara to check Hinata's block before it is used this way (D-083 §A).
+
+### D. Trial 5 is live
+
+- `bokuto-61-mouth` is submission **18078**, staged from `r/bokuto` fecd1af7a (runtime fingerprint 028c97bf, equal
+  to Asahi's probe copy), uploaded 22:53:13Z, **activated 22:55:18Z**. Its look: first series boundary at or after
+  60 ranked games, about 02:30Z to 03:00Z. End rule unchanged: more than 0.03 above 17791's +0.174.
+- Watch items (D-090): Australia and Slithery Fight, with queen deaths there; queen alive at round 300; the four
+  maps where 17791 won 0 of 11; Schooltime; the highest server turn.
+
+### E. A queen fault in 61 found by code reading (Sugawara 22:27Z; not replicated)
+
+- The queen rule added in `bokuto-57` (no step through a portal whose landing she cannot see) is never relaxed.
+  The fallback when nothing survives relaxes only the queen mode. So a queen in a dead-end corridor whose only
+  way out is such a portal stays and dies at the wall. The field's own comment says "unless nothing else
+  survives"; that clause is not implemented.
+- This fits 61's queen wall deaths on `qk2` (10 against 46's 3) and its pool miss against its twin on Australia
+  and Slithery Fight. Sugawara's probability that at least 5 of the 10 have a portal next to the queen's head in
+  the previous one to three turns: 0.55.
+- **Trial 5 runs on.** It is the bot as carded; a fault in a candidate's rule is not a fault on the server.
+- **Asked of Bokuto:** the one-line fix (the rule relaxed in that fallback) in a new numbered copy of 61, and a
+  time limit on 58's permanent unreachable mark if it agrees with Sugawara's minor note. **Asked of Asahi:** the
+  test from frozen rows (share of 61's `qk2` queen wall deaths with a portal beside the head and the landing
+  out of sight), then the fixed copy's card against 61 on `qk2` and head to head.
+- Trial 6 is not named. If 61 becomes the incumbent, the fixed copy is the natural next trial; if not, the
+  choice is between the fixed copy and a confirmation window for 17791. Decided at trial 5's look.
+
+### F. Forecasts scored
+
+- "17940 exceeds +0.204": did not occur. Sugawara 0.25 (Brier 0.0625); the Chair 0.20 (0.04).
+- "17940 exceeds +0.126": did not occur. The Chair 0.45 (0.2025).
+- Hinata's seven pre-registered items: Brier 0.209 (a coin scores 0.25); she missed the queen item.

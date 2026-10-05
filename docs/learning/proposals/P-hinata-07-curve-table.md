@@ -285,3 +285,31 @@ RL translation (amended): value — two label/feature fixes. (a) Queen alive at 
 - 17791 vs 17530 per-game growth is level (38.2 vs 37.2): 17791's gain over 17530 is all before r100 and in queen survival, as first read.
 - Exploratory, not pre-registered, no intervals: the winners-only reference is outcome-conditioned. Top-ten losers grow 34.9 (507/192), so the unconditioned top-ten mean is ≈ 51.6 and our gap to it ≈ −13; 17791 split by result: wins 50.8 (22 games), losses 22.9 (18). Our wins grow ≈ 17 less than top-ten wins. The deficit is real but about half the size the winners-only comparison suggests.
 - RL translation: value — growth r100→r300 is a legitimate V feature (separates our wins 50.8 from losses 22.9), but its target must be fitted on all outcomes, never "match the top-ten winners' curve" (that bakes outcome selection into the label); demonstration — top-ten r100–r300 play from both winners and losers, weighted by outcome, not winners only; action — no change.
+
+## Trial-4 look result (17940 `asahi-27-b13-reserve`), 2026-10-05 22:45 UTC — frozen procedure, one read; forecast of 17:36Z scored
+
+- Selection: first series boundary ≥ 60 ranked post-m2 games of 17940 from 18:25:06Z → 60 games / 12 series (18:37:04–21:58:53Z), 0 decode errors, queen guard 120/120. look.py sha1 6a691c0f6bbc. Bands by opponent ladder elo at game start: ≥ 1725 50/10 series, < 1725 10/2 series (two series — not read). Intervals: series bootstrap 1,000 × seed 7, 5–95 %. Output build/hinata/look4/block.txt.
+
+| ≥ 1725 | 17940 (n 50/10) | 17791 (n 55/11) | 17530 ref (n 45/9) |
+|---|---|---|---|
+| W/n | 19/50 | 28/55 | 17/45 |
+| reached r300 (n): queen alive us/opp | (39) **0.33 / 0.74** | (40) 0.72 | — |
+| reached r300 leads converted | 10/18 | 14/20 | — |
+| reached r300 total us/opp, diff | 110.6 / 107.4, +3.2 [−30.0, +29.5] | 115.7 / 107.7, +8.0 [−12.9, +29.2] | 92.1 / 85.9, +6.2 [−18.4, +31.3] |
+| per-game growth r100→r300, reached r300 (growth_pg filter) | **46.4 [34.0, 59.2] (39/10)** | 38.2 [26.2, 48.7] (40/11) | 37.2 [26.9, 49.0] (33/9) |
+| carried r100 total us/opp, diff | 57.1 / 59.9, −2.8 [−16.6, +9.1] | 65.1 / 57.3, +7.8 | 48.8 / 45.0, +3.8 |
+| carried r300 total us/opp, diff | 95.7 / 98.0, −2.3 [−39.7, +30.8] | 97.5 / 90.9, +6.6 | 78.4 / 77.6, +0.8 |
+| carried growth r100→r300 (us) | 38.6 | 32.4 (withdrawn as a growth measure) | 29.6 |
+| queen alive carried r100 / r300 (us) | 0.74 / 0.36 | 0.93 / 0.62 | 0.73 / 0.42 |
+| elimination losses (before r300) | 11/50 (6) | 14/55 (9) | 11/45 (7) |
+
+- Per-game growth diffs (exploratory, same bootstrap): 17940 − 17530 +9.3 [−8.9, +27.0]; 17940 − 17791 +8.2 [−9.3, +24.8]; 17940 − top-ten winners −21.8 [−35.6, −9.2] (17791: −29.9).
+- End reason × result, ≥ 1725: **L queen 14**, elimination 11, longest 6; W elimination 9, longest 8, queen 2. (17791: L elimination 14, queen 7, longest 6.) < 1725: W longest 5, queen 1; L elimination 2, longest 2.
+- Seat × result: A 12/25, B 13/35.
+- Watch maps (W/n; 17791 / 17530 on their own looks): Australia 1/7 (1/2, 2/6), weakhold 1/5 (4/7, 2/9), Slithery Fight 1/3 (5/7, 1/3), Schooltime 3/3 (4/4, 4/4), QoS 1/2 (0/4), Trophy 1/3 (0/3), Default 1/4 (0/2), Stripes 2/4 (0/2), Maze 0/3, Trauma 0/3. Cells are 2–7 games; none is read alone.
+- Standing column (p06_column.py, vs 14585 re-weighted to the trial's opponents; matched 8/12 opponents, ref 111 games): loss-rate gap ≥ 1725 −0.024 [−0.207, +0.133] (n 30), all −0.024 [−0.183, +0.100] (n 40). Output build/hinata/col/col-17940-look4.txt.
+- Server compute (pts_own.py, same 60 games, 725,814 dragon-turns, team 7 only): max 12.94 M (game 1173074), first-turn max 9.90 M, 0 turns > 30 M, 0 TLE.
+- **Forecast score (items as filed 17:36Z, outcome as read):** (1) carried r300 all 96.8 ≥ 91.1 — held, P 0.60, Brier 0.160; (2a) ≥ 1725 carried diff −2.3 > +0.8 — failed, P 0.55, 0.303; (2b) ≥ +15 — failed, P 0.20, 0.040; (3) ≥ 1725 carried growth 38.6 ≥ 29.6 — held, P 0.60, 0.160; (4) queen alive carried r300 all 0.35 ≥ 0.47 — failed, P 0.55, 0.303; (5) ≥ 1725 elimination losses 11/50 = 0.22 ≤ 0.244 — held, P 0.50, 0.250; (6) weakhold 1/5 vs 17530 2/9 — failed (also failed on the map with most trial games, Australia 1/7 vs 2/6), P 0.50, 0.250. **Mean Brier 0.209 over 7 (coin 0.250).** Item 4 was the costly miss: I forecast the reserve to leave the queen alone.
+- Joint reading (stated 17:36Z): both 17791 and 17940 beat 17530 on item 3, but every diff interval vs 17530 includes 0 → by the stated rule, "no ladder evidence either way" on whether the reserve carries a growth gain.
+- Reading: 17940 is the first trial whose per-game growth point estimate moves toward the top-ten line (46.4 vs 38.2/37.2; gap −21.8 vs −29.9), but its queen falls (reached r300 0.33 vs 17791's 0.72; queen losses 14/50 vs 7/55) and its r100 lead is gone (carried r100 −2.8 vs 17791 +7.8). 17940 lacks 17791's queen-feed, so this is the trial-3 decomposition again from the other side: growth and queen survival are separate levers, and each trial has moved one. The elo look (Daichi, end rule > +0.204 at 1725) decides the trial; this block is not a decision statistic.
+- RL translation: value — queen alive at r300 and per-game growth r100→r300 enter V as two separate features (fitted on all outcomes, training maps only); the 17940 vs 17791 contrast is a natural paired demonstration set for the queen term (same lineage, queen feed on/off). Action — none. Observation — none new.

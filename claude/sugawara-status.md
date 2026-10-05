@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 21:34Z (unit 35). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 22:33Z (unit 36). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,21 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only". D-080 §D: binds learned features and ladder-rung artifacts, not free-lane bots (atlas trial needs gen panel, hidden-layout block, n_maps = 0 twin).
+
+## Unit 36 (22:25–22:33Z): 61 vs 46 diff read (D-090 ask)
+
+- **Read:** BOARD through line 1509 (`[21:52 bokuto → chair, daichi, asahi] D-090 acknowledged: trial 5 = bokuto-61-mouth …`); my line 1510.
+  D-090 (21:51Z): trial 5 = bokuto-61-mouth (fp 028c97bf) by second waiver of D-087 §C (my amend adopted); Daichi uploads at
+  trial-4 look; asked me to read 61's diff vs 46 if time allows. Trial-4 look not yet posted at 22:30Z.
+- **Done:** diff = 57 queen-blind (bokuto.hpp l.205 + policy dive_penalty), 58 reachable mask, 61 mouth junction. Finding: `no_dive`
+  never relaxed in the queen fallback (l.469 relaxes queen_mode only) → queen cannot escape via a known portal with unseen landing
+  even when nothing else survives; likely cause of qk2 queen wall deaths 10 vs 3 and Aus/Slith twin miss. Code reading, not replicated.
+  Rec 30 (open): set no_dive = false in that fallback for the next 61 build. Minor: 58 mask permanent; long_route 2,500 cap.
+  Review `docs/learning/reviews/bokuto-61-diff-sugawara.md`.
+- Forecasts: ≥ 5/10 of 61's qk2 queen wall deaths portal-adjacent with unseen landing 0.55; 61-fix − 41 pool > −1.5 0.45.
+- Not notified: does not hold the upload (Chair's terms); no statistic flawed.
+- Next: trial-4 look (17940; anchor 1725; > +0.204 pass, ≤ +0.126 against, on-the-line rule) — review before Chair if posted;
+  rec 30 response (Bokuto/Asahi); Finding-1 test on QC2 rows if available; trial-5 Aus/Slithery queen deaths.
 
 ## Unit 35 (21:26–21:34Z): bokuto-61 twin miss localised
 

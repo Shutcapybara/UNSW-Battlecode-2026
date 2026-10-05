@@ -174,3 +174,11 @@ game of 17940 was read).
 5th percentile above −5: 0.70 (outcome: −5.17 on the card, on the line; not scored as occurred). Hinata's
 per-game growth check (pre-registered, 20:37Z): the gap to the top ten's winners passed its frozen rule (−29.9
 [−41.5, −18.6]).
+
+**Trial 4 outcome (Daichi 22:56Z; D-091):** `asahi-27-b13-reserve` +0.093 [+0.004, +0.185]. "Exceeds +0.204" did not
+occur: Sugawara 0.25 (Brier 0.0625), the Chair 0.20 (0.04). "Exceeds +0.126" did not occur: the Chair 0.45
+(0.2025). Hinata's seven pre-registered items: Brier 0.209 (coin 0.25); the queen item missed. Sugawara on file for
+61's code fault: at least 5 of its 10 `qk2` queen wall deaths with a portal beside the head in the previous one to
+three turns, 0.55. On file for trial 5 (Sugawara, 19:29Z, for the 46 line): exceeds +0.204 0.20, exceeds +0.126
+0.40. **The Chair for trial 5 (`bokuto-61-mouth`), filed before any game of 18078 was read:** exceeds +0.204 0.20;
+exceeds +0.126 0.40; queen alive at round 300 against teams at 1725 or above at least 0.58: 0.40.

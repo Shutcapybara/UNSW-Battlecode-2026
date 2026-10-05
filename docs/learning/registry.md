@@ -171,7 +171,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - same-host (Asahi, 10:40Z and 11:18Z): pool 228–44; against `bokuto-13-cull` −4.78 points [−8.46, −1.08]; variants 75 of 80; `gen` (29 unknown maps) −1.19 [−3.88, +1.51]; probe passed. Twin with the atlas off (`asahi-26-b17-atlas0`): pool 240–32; atlas on minus off −4.41 [−8.46, −0.35], exactly 0 on `gen`. `qk2` 28–40.
 - status: `measured`; not a trial candidate (the atlas costs 4.4 points where it is exact; D-081 §C).
 
-### REG-010 — `asahi-27-b13-reserve` (**trial 4 running as submission 17940**, D-088 §D)
+### REG-010 — `asahi-27-b13-reserve` (submission 17940; trial 4, not kept, D-091)
 
 - `bokuto-13-cull` plus Kenma's two global reserve lines (non-queens decide with one unit slot fewer). Fingerprint
   16ceecff. Built for the Chair's reserve hypothesis of D-081 §B; Sugawara's replay check refuted the mechanism
@@ -182,7 +182,11 @@ at first. A trial therefore costs the incumbent's rating nothing.
   33–35; queen alive at the end 96 of 162 on the pool; probe passed (3.75 MiB, 12.37 M points).
 - live: submission **17940**, `LV-asahi-27-b13-reserve-16e1d338-ai`, uploaded 18:20:51Z, activated 18:25:06Z; look at the
   first series boundary at or after 60 ranked games, about 22:15Z; bar +0.204 at anchor 1725, pooled line +0.096.
-- status: `uploaded` (trial 4).
+- **trial result (Daichi 22:56Z; D-091 §A):** 60 ranked games, 12 series, 25–35; +0.093 [+0.004, +0.185] at anchor
+  1725 (all 80: +0.107); below the pooled line + 0.03, so not a confirmation candidate. Against teams at 1725 or
+  above (Hinata, unchecked): growth between rounds 100 and 300 46.4 a game (17791 38.2); queen alive at round 300
+  0.33 (17791 0.72); queen-rule losses 14 of 50. No fault; highest server turn 12.94 M.
+- status: `uploaded` (trial ended; not kept).
 
 ### REG-011 — `bokuto-18-queenfeed` (free lane Bokuto; submission 17791; **the incumbent of record since D-088**)
 
@@ -294,5 +298,9 @@ at first. A trial therefore costs the incumbent's rating nothing.
   `qk2` 41–27, +16.18 [+4.41, +29.41] against 18, +4.41 against 46; head to head against kenma-03 63–39, +1.96
   against 18, +7.84 [−1.96, +17.65] against 46; `gen` 345–119 (equal to 46); hidden layouts 76–4; queen wall
   deaths on `qk2` 10 against 46's 3; self-deaths +55.7 % against carthage-05.
-- status: 61 `candidate`, **trial 5 (D-090), by a second waiver of the twin condition; uploaded by Daichi at trial
-  4's look.** 57 and 58 are contained in it.
+- live: submission **18078**, `LV-bokuto-61-mouth-ef70ddd4-ai`, staged from `r/bokuto` fecd1af7a (runtime fingerprint
+  028c97bf), activated 22:55:18Z; look at the first series boundary at or after 60 ranked games, about 02:30Z to
+  03:00Z; bar more than +0.204 at anchor 1725.
+- Sugawara's code read (22:27Z; D-091 §E): 57's queen rule is never relaxed when nothing else survives, so a queen
+  whose only exit is a portal to an unseen landing dies at the wall. A one-line fix is asked of Bokuto.
+- status: 61 `uploaded` (**trial 5, live**). 57 and 58 are contained in it.

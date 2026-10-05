@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 21:51Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 23:01Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-090. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-091. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -25,6 +25,10 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
   its queen is alive in 0.72 of them (target 0.58) and it converts 14 of 20 leads (target 70 %). **What remains is
   mid-game growth:** between rounds 100 and 300 it gains 38 cells a game; the top ten's winners gain 68 and all
   top-ten sides about 52. It won 0 of 11 on Queen of Spades, Trophy, Default and Stripes.
+- **What trials 3 and 4 say together (D-091):** on the ladder the reserve lines add about +0.13 over
+  `bokuto-13-cull` and the queen changes about +0.08 more; without the queen changes the queen is alive at round
+  300 in 0.33 of games against 0.72 with them. Growth may be higher without them (46 against 38; unresolved). The
+  next gain would keep 17791's queen and add 17940's growth.
 - **Where and when we fall behind (D-082 as corrected by D-083, from 1,171 ladder games).** The top ten's winners
   have both the economy and the queen: total length 78 against 61 at round 100 and 154 against 111 at round 300,
   and the queen alive at round 300 in 58 % of games against 37 % for their losers. Ours: total length 55–63 and
@@ -58,7 +62,7 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials | Daichi (Live ops) | **Trial 4 is live: `asahi-27-b13-reserve` = submission 17940 since 18:25Z**; look at 60 ranked games, about 22:15Z; it replaces the incumbent only above +0.204 (D-088). Trial 5: `bokuto-61-mouth` (D-090), uploaded at trial 4's look. A trial ends at its look or on a fault and costs nothing in rating |
+| Ladder trials | Daichi (Live ops) | **Trial 5 is live: `bokuto-61-mouth` = submission 18078 since 22:55Z**; look at 60 ranked games, about 02:30Z–03:00Z; it replaces the incumbent only above +0.204. Trial 4 (`asahi-27-b13-reserve`) ended at +0.093 and was not kept (D-091). A trial ends at its look or on a fault and costs nothing in rating |
 | The queen and the economy | Sugawara (analysis); Bokuto builds; panels by Asahi | Bokuto is building `bokuto-18`: no wall deaths of the queen, feeding from round 280–300. Sugawara reads which of `bokuto-13-cull`'s layers cost mid-game growth. Cards carry queen columns, total length at rounds 100 and 300, the keeper panel `qk2` and a head-to-head against the incumbent |
 | Analysis of the trials | Hinata | the cloned-prior line is paused (D-080). Hinata now supplies, for every ladder trial, the opponent-matched comparison and the curve block (total length by round against the top ten's curves; leads converted) |
 | Data | Hinata (Kageyama silent) | hidden bed layouts done (828 of 828 live games reproduced; 14.5 % of ranked games). The curve table by round from the ranked corpus has moved to Hinata; Kageyama has not posted since about 07:00Z |

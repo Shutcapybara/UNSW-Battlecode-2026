@@ -2,10 +2,10 @@
 
 Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes only when this file records it.
 
-## Current state (5 Oct 2026 21:51Z)
+## Current state (5 Oct 2026 23:01Z)
 
 - **R0 passed 4 Oct 14:28Z (D-053 §A). R1: P-2 failed its confirmation 18:20Z (D-057 §B); rung open, behind R2. R2: development battery running (D-057 §C).**
-- **Incumbent of record: `bokuto-18-queenfeed` (17791)** (D-088): +0.174 [+0.079, +0.282] at anchor 1725 over 60 ranked games (32–28, 11 of 12 series against teams at 1725 or above), +0.114 [−0.004, +0.250] over `kenma-03-pocket-queen` (17388: +0.060 [−0.010, +0.132] over 130). **Live now: trial 4, `asahi-27-b13-reserve` = submission 17940, since 18:25Z**; look about 22:15Z; it needs more than +0.204; between +0.126 and +0.204 is unresolved. **Trials run back to back (D-084 §C).** **Trial 5: `bokuto-61-mouth`** (D-090; first bot whose `qk2` interval against the incumbent excludes zero, +16.18 [+4.41, +29.41]; named by a second waiver of the twin condition, which it misses on the pool by 3.68 points on two maps). The compute limit is 100 M points a turn, working ceiling 60 M at the probe (D-087 §A). Three targets: total length near 78 and 154 at rounds 100 and 300; queen alive at round 300 near 0.58; at least 70 % of round-300 leads converted; against stronger teams 17791 meets the second (0.72) and third (14 of 20) and not the first: its growth between rounds 100 and 300 is 38.2 a game against 68.2 for the top ten's winners and about 51.6 for all top-ten sides (D-089 §A). At anchor 1725: 14585 −0.022, 17530 −0.002, 17388 +0.060, 17791 +0.170 (D-089 §B).
+- **Incumbent of record: `bokuto-18-queenfeed` (17791)** (D-088): +0.174 [+0.079, +0.282] at anchor 1725 over 60 ranked games (32–28, 11 of 12 series against teams at 1725 or above), +0.114 [−0.004, +0.250] over `kenma-03-pocket-queen` (17388: +0.060 [−0.010, +0.132] over 130). **Live now: trial 5, `bokuto-61-mouth` = submission 18078, since 22:55Z**; look about 02:30Z to 03:00Z; it needs more than +0.204. Trial 4 (`asahi-27-b13-reserve`, 17940) ended at +0.093 [+0.004, +0.185] and was not kept (D-091). **Trials run back to back (D-084 §C).** Trial 6 is decided at trial 5's look: the queen-fixed copy of 61, or a confirmation window for 17791. The compute limit is 100 M points a turn, working ceiling 60 M at the probe (D-087 §A). Three targets: total length near 78 and 154 at rounds 100 and 300; queen alive at round 300 near 0.58; at least 70 % of round-300 leads converted; against stronger teams 17791 meets the second (0.72) and third (14 of 20) and not the first: its growth between rounds 100 and 300 is 38.2 a game against 68.2 for the top ten's winners and about 51.6 for all top-ten sides (D-089 §A). At anchor 1725: 14585 −0.022, 17530 −0.002, 17388 +0.060, 17791 +0.170 (D-089 §B).
 - Deadline: handled by the lead; the Chair imposes no freeze (D-050 §2).
 - GPU work may run on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3).
 
@@ -67,6 +67,11 @@ blocks live screens.
 
 ## Log
 
+- 5 Oct 23:01Z: D-091. **Trial 4: `asahi-27-b13-reserve` (17940) +0.093 [+0.004, +0.185] over 60 ranked games; not kept;
+  17791 stays the incumbent.** Trials 3 and 4 together: the reserve lines about +0.13 over `bokuto-13-cull`, the
+  queen changes about +0.08 more, with queen alive at round 300 0.33 against 0.72; growth may be higher without
+  the queen changes (46.4 against 38.2, unresolved). Trial 5 live: `bokuto-61-mouth` = 18078 since 22:55Z. A queen
+  fault in 61 found by code reading; a fixed copy is asked for.
 - 5 Oct 21:51Z: D-090. **Trial 5 is `bokuto-61-mouth`**: the four conditions of D-089 met (probe 14.32 M; pool +0.74
   against carthage-05; `qk2` 41–27 and head to head 63–39, both above 46), `qk2` +16.18 [+4.41, +29.41] against the
   incumbent. Named by a second waiver of the twin condition (pool −3.68 against 41: Australia and Slithery Fight,
