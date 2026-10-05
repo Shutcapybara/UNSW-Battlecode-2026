@@ -78,26 +78,25 @@
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct 04:53Z; device shell works)
+## Now (5 Oct 06:20Z)
 
-1. **D-068 §C items 1–4 complete** (`docs/learning/results/asahi/D068-summary.md`): A1 λ1 −13.60 [−19.49, −8.09];
-   no prior −13.05; A1 λ1.41 −5.88; paired λ1.41 − λ1 +7.72 [+2.94, +12.52] (H-SZ74 holds); A1 λ1 − no prior −0.55;
-   A3 λ1 − A1 λ1 +6.62. Arms order by sharpness, not accuracy. Item 5 waits for Hinata 015/016 + export.
-2. **kenma-03-pocket-queen pool:** 220–52; vs c05 −2.21 [−4.41, −0.37]; vs k16 −4.78 [−7.72, −1.84] (D-070 §D not
-   met); queen-decided 13–4 vs 0–5; queen alive@RL 15/147 (Schooltime 14/14); costs Australia −18.75, UNSW −31.25.
-3. **Learn env fixed:** every learn job failed at `import lightgbm` (no libomp on the Mac). jobd now sets
-   DYLD_LIBRARY_PATH to torch's lib for learn jobs (reloaded 04:41Z, `lgbcheck.py` passes); Hinata's ten jobs re-queued.
-4. **bokuto-04-queen pool:** 226–46; vs c05 +0.00 [−5.15, +4.78]; vs k16 −2.57 [−7.35, +2.21] (D-070 §D not met);
-   queen-decided 42–4; queen alive@RL 44/189 on 11 maps; econ~ −6.29. hinata-015 running (04:51Z); push requested 04:53Z.
-5. Watch for: single-team prior exports; accepted `maps/live_var/` variants; Sugawara's queen switches on k16.
-6. No hand-rule work (D-059).
+0. Incumbent carthage-05 (14585); Kenma trial live (17388); Bokuto-04 trial next (probe OK 05:53Z).
+1. **Queen results (posted 06:19Z):** Q1 cage w/o reserve: parity 270/272 (both divergences Schooltime), pool 226–46
+   = parent, queen-decided 3–5, Schooltime queen alive 3/14 (Kenma with reserve 14/14). Q2b crown: pool 219–52–1,
+   −2.39 [−5.89, +0.92], queen-decided 16–5, queen alive 17/149; qk 27–41 (−7.35), vs bokuto-04 12/34 vs 16/34.
+   qk parents: c05 32–36, k16 35–33, queen-decided 0–6 / 0–7.
+2. Running: bokuto-02-vac pool + card; commit 2030. Q2a parked; k16 twins built, not queued.
+3. **Clone (Hinata 05:46Z):** after Kageyama's team-213 export, kageyama-02 with the 213 model at λ 1 and λ 1.45;
+   optional A1-400 at λ 1.72.
+4. live_var: when merged, add variants to the pool, re-zero c05, k16, kenma-03, bokuto-04; two totals per card.
+5. No hand-rule work (D-059).
 
 ## Operating notes
 
 - **Daemon:** `tools/asahi/jobd.py`, native on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
   `build/asahi/queue/` first, then the main checkout's `build/learn/queue/`. Restart if down:
   `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
-  Last job id used: 20096 (2007a reload, 2007b lgbcheck). Held jobs live in build/asahi/hold/.
+  Last job id used: 2030. Held jobs live in build/asahi/hold/.
 - BOARD lines go to the MAIN checkout's `docs/hub/BOARD.md` with `>>` only; never commit BOARD.md on r/asahi.
 - Session disk was reset ~04:00Z (D-073); still keep little in the session home.
 - `throughput.py` must recycle processes (wasmtime stores leak address space per game).

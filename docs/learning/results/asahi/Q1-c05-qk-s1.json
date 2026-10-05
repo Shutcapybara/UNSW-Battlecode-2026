@@ -1,0 +1,472 @@
+{
+ "letter": "NO LETTER (qk only, diagnostic)",
+ "why": [],
+ "cards": {
+  "qk": {
+   "panel": "qk",
+   "cand": "asahi-21-q1cage-c05",
+   "parent": "carthage-05-free-sprint",
+   "seeds": [
+    1
+   ],
+   "meta": {
+    "cand": {
+     "fingerprint": "79054ef83f858e78b01b8607fd1966774551a7060105b113afe35dc31190437c",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "e116a1dcc99b",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 68
+    },
+    "parent": {
+     "fingerprint": "7df05a3f40b011fa52f700c789ddf30414da08ab50d6c36964ef8cc223f9d45f",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "e116a1dcc99b",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 68
+    }
+   },
+   "missing": {
+    "cand": [],
+    "parent": []
+   },
+   "paired": 68,
+   "summary": {
+    "cand": {
+     "n": 68,
+     "W": 34,
+     "L": 34,
+     "D": 0,
+     "win": 0.5,
+     "reached": 47,
+     "q_cond": 0.06382978723404255,
+     "q_joint": 0.04411764705882353,
+     "q_dec_W": 0,
+     "q_dec_L": 3,
+     "conv": 0.5106382978723404,
+     "pearls@50": 38.01470588235294,
+     "pearls@100": 109.77941176470588,
+     "pearls@150": 191.05882352941177,
+     "pearls@250": 370.3382352941176,
+     "units@100": 24.36764705882353,
+     "total@100": 59.64705882352941,
+     "death_wall_per1k": 8.79772312528977,
+     "death_self_per1k": 3.4352181561880557,
+     "death_ally_body_per1k": 1.3284450961949483,
+     "death_h2h_ally_per1k": 1.261526622415346,
+     "death_invalid_per1k": 0.005138229670874604,
+     "death_h2h_enemy_per1k": 6.104775117752891,
+     "death_enemy_body_per1k": 0.2554338132366601,
+     "deaths_per1k": 21.18826016074855,
+     "births@100": 44.55882352941177
+    },
+    "parent": {
+     "n": 68,
+     "W": 32,
+     "L": 36,
+     "D": 0,
+     "win": 0.47058823529411764,
+     "reached": 47,
+     "q_cond": 0.0,
+     "q_joint": 0.0,
+     "q_dec_W": 0,
+     "q_dec_L": 6,
+     "conv": 0.46808510638297873,
+     "pearls@50": 37.86764705882353,
+     "pearls@100": 108.66176470588235,
+     "pearls@150": 187.73529411764707,
+     "pearls@250": 362.88235294117646,
+     "units@100": 24.029411764705884,
+     "total@100": 58.69117647058823,
+     "death_wall_per1k": 8.790530342476288,
+     "death_self_per1k": 3.3990996805353553,
+     "death_ally_body_per1k": 1.284738502578439,
+     "death_h2h_ally_per1k": 1.2442988689623444,
+     "death_invalid_per1k": 0.0,
+     "death_h2h_enemy_per1k": 6.084516758766067,
+     "death_enemy_body_per1k": 0.2515936041390105,
+     "deaths_per1k": 21.05477775745751,
+     "births@100": 43.98529411764706
+    }
+   },
+   "boot": {
+    "win": [
+     0.029411764705882353,
+     0.0,
+     0.058823529411764705
+    ],
+    "econ": [
+     0.009122166018335473,
+     0.0,
+     0.019118059986667713
+    ],
+    "econ_med": [
+     0.0,
+     0.0,
+     0.0019230769230769162
+    ],
+    "units@100": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "total@100": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "q_joint": [
+     0.04411764705882353,
+     0.0,
+     0.10294117647058823
+    ],
+    "q_cond": [
+     0.06382978723404255,
+     0.0,
+     0.14634146341463414
+    ],
+    "conv": [
+     0.04255319148936165,
+     0.0,
+     0.09528388278388279
+    ],
+    "death_wall_per1k": [
+     0.007192782813479446,
+     -0.004220854758708135,
+     0.025799203199146473
+    ],
+    "_clusters": 34,
+    "_valid": 1000
+   },
+   "boot_directional": {
+    "win": [
+     0.029411764705882353,
+     0.0,
+     0.07352941176470588
+    ],
+    "econ": [
+     0.009122166018335473,
+     -0.004995739371669213,
+     0.025234424670326605
+    ],
+    "econ_med": [
+     0.0,
+     -0.002415150782215131,
+     0.005218355422555424
+    ],
+    "units@100": [
+     0.0,
+     -0.008000000000000007,
+     0.0040000000000000036
+    ],
+    "total@100": [
+     0.0,
+     -0.013157894736842257,
+     0.013605442176870763
+    ],
+    "q_joint": [
+     0.04411764705882353,
+     0.01397058823529416,
+     0.08823529411764706
+    ],
+    "q_cond": [
+     0.06382978723404255,
+     0.017592592592592646,
+     0.12768685215493722
+    ],
+    "conv": [
+     0.04255319148936165,
+     0.0,
+     0.09813725490196079
+    ],
+    "death_wall_per1k": [
+     0.007192782813479446,
+     -0.07232780184874056,
+     0.09844847327987094
+    ],
+    "_clusters": 68,
+    "_valid": 1000
+   },
+   "tier2": {
+    "death_wall_per1k": {
+     "parent": 8.790530342476288,
+     "cand": 8.79772312528977,
+     "rel": 0.0008182421916826943,
+     "flag": false
+    },
+    "death_self_per1k": {
+     "parent": 3.3990996805353553,
+     "cand": 3.4352181561880557,
+     "rel": 0.010625894809596081,
+     "flag": false
+    },
+    "death_ally_body_per1k": {
+     "parent": 1.284738502578439,
+     "cand": 1.3284450961949483,
+     "rel": 0.034019836354862276,
+     "flag": false
+    },
+    "death_h2h_ally_per1k": {
+     "parent": 1.2442988689623444,
+     "cand": 1.261526622415346,
+     "rel": 0.013845350086485464,
+     "flag": false
+    },
+    "death_invalid_per1k": {
+     "parent": 0.0,
+     "cand": 0.005138229670874604,
+     "rel": null,
+     "flag": true
+    }
+   },
+   "per_map": [
+    {
+     "map": "live/australia",
+     "cls": "B",
+     "n": 4,
+     "W": 2,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/autarky",
+     "cls": "A",
+     "n": 4,
+     "W": 3,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/default",
+     "cls": "A",
+     "n": 4,
+     "W": 2,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/devil",
+     "cls": "A",
+     "n": 4,
+     "W": 2,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/dilemma",
+     "cls": "C",
+     "n": 4,
+     "W": 1,
+     "L": 3,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/islands",
+     "cls": "B",
+     "n": 4,
+     "W": 3,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/maze",
+     "cls": "B",
+     "n": 4,
+     "W": 3,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/portals",
+     "cls": "E",
+     "n": 4,
+     "W": 3,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/queen_of_spades",
+     "cls": "A",
+     "n": 4,
+     "W": 1,
+     "L": 3,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/3",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/schooltime",
+     "cls": "B",
+     "n": 4,
+     "W": 2,
+     "L": 2,
+     "dwin": 0.5,
+     "decon": 0.15507682231170303,
+     "dq_joint": 0.75,
+     "q_alive_rl": "3/4 vs 0/4",
+     "dwall": 0.12227730782915058
+    },
+    {
+     "map": "live/slithery_fight",
+     "cls": "D",
+     "n": 4,
+     "W": 2,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/stripes",
+     "cls": "A",
+     "n": 4,
+     "W": 3,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/tower_defense",
+     "cls": "A",
+     "n": 4,
+     "W": 2,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/1 vs 0/1",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/trauma",
+     "cls": "C",
+     "n": 4,
+     "W": 2,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/trophy",
+     "cls": "A",
+     "n": 4,
+     "W": 2,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/unsw",
+     "cls": "B",
+     "n": 4,
+     "W": 0,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/4",
+     "dwall": 0.0
+    },
+    {
+     "map": "live/weakhold",
+     "cls": "C",
+     "n": 4,
+     "W": 1,
+     "L": 3,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/2 vs 0/2",
+     "dwall": 0.0
+    }
+   ],
+   "per_class": [
+    {
+     "cls": "A",
+     "n": 28,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "dwall": 0.0
+    },
+    {
+     "cls": "B",
+     "n": 20,
+     "dwin": 0.1,
+     "decon": 0.031015364462340607,
+     "dq_joint": 0.15,
+     "dwall": 0.024455461565830117
+    },
+    {
+     "cls": "C",
+     "n": 12,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "dwall": 0.0
+    },
+    {
+     "cls": "D",
+     "n": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "dwall": 0.0
+    },
+    {
+     "cls": "E",
+     "n": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "dwall": 0.0
+    }
+   ],
+   "status": "COMPLETE"
+  }
+ }
+}
