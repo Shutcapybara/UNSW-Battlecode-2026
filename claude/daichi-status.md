@@ -7,33 +7,31 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 16, 2026-10-05 ~02:20Z)
+## Top — read this first (unit 17, 2026-10-05 ~03:00Z)
 
-- **Last BOARD line read:** line 1149 before my posts (Chair 01:48Z D-068 §E, Kenma). Posted 1141–1149 (LS-1 table,
-  ~01:52Z) and line 1151 (activation, 02:18Z).
-- **LIVE = 16979 (`asahi-05-kz12-k16`, k = 16) since 02:13:22Z.** Activated by Daichi under D-064 §B / D-065 §B on
-  Chair order D-068 (LS-1 ended early: expired at its 8 h deadline, 160/204 verified, 0 faults). submit.done.json
-  activated:true; control_set 14585 → 16979 02:13:23Z; status.json active 16979 at 02:17:37Z. User notified.
-- **LS-1 final (D-064 estimator, recomputed from job rows):** 75 pairs of 80 cells (5 missing, opp 98, candidate games
-  on the wrong id parity: Default p0, Tower Defense p1, Islands p0, Around UNSW p1, Trophy p0); paired mean +0.080,
-  opp × map clusters (40) 1,000 × seed 7 5/95 [−0.029, +0.187]; 0 candidate errors/faults; cpu max 11.10 M.
-  LS-1 frozen letter HOLD. Per opp: 716 +0.233 (30), 98 0.000 (25), 347 −0.050 (20). Weakhold +0.50 (4); bed maps
-  pooled −0.045 (22). Hub's own paired block clusters on 3 opponents only (+0.073 [−0.039, +0.163]); not the rule's.
-- **Rollback watch D-052 §B (adopted, Chair 01:46Z "unchanged"):** after 16979's first 40 ranked games, roll back to
-  14585 when mean score − expectation < −0.08 with series-bootstrap 95th pct < 0, or on any crash/DQ:
-  restore.json {"previous":14585,"candidate":"asahi-05-kz12-k16","reason":…}; then BOARD + notify user.
-  D-052 §B reference = 14585's last-120 ranked window. No promotion before 14:13Z (12 h rule).
-- **Pre-switch monitor (01:52Z, ranked, post-m2):** 14585 since activation −0.023 [−0.048, +0.002] (1,085 / 219
-  series); rolling 40 −0.044 [−0.191, +0.102] (8 series), own pct 0.435; Elo 1720 rank 90 (24 h 1704).
-- Hub: no API/quota errors. Keeper merged r/daichi 377f35639 at 01:51Z.
+- **Last BOARD line read:** 1159 (kenma 02:39Z). Posted 1160 (16979 early watch, ~03:00Z). Next unit reads from 1161.
+- **LIVE = 16979 (`asahi-05-kz12-k16`, k = 16) since 02:13:22Z; D-069 (Chair 02:22Z) records the promotion;** rollback
+  target 14585. No second promotion before 14:13Z. New candidates are built on asahi-05-kz12-k16 (D-069).
+- **Early watch (02:51Z monitor, ranked, post-m2):** 10/40 ranked games, 2 series (opp 303 1-4, opp 420 2-3, both
+  lower-rated), W-L 3-7, score − E −0.439 [−0.522, −0.357] (2 series, not informative); Elo 1725 → 1643, rank 90 → 110.
+  Replay-side fault scan of all 10 games: 0 TLE, 0 MC_ERROR, cpu max 10.81 M → no crash/DQ, no rollback.
+- **Open contradiction (posted 1160):** 4/7 losses end at round 500 with 16979 holding the longer decoded longest
+  dragon (1098984, 1098987, 1099081, 1099082); 14585's last 25 ranked: 2 such (1092918, 1094553). Analysts asked.
+  Tool: `build/daichi/tmp/sidescan.py <game ids>` (decodes corpus replays into build/daichi/tmp/rep/; side from header).
+- **Rollback watch D-052 §B (adopted):** after 16979's first 40 ranked games, roll back to 14585 when mean score −
+  expectation < −0.08 with series-bootstrap 95th pct < 0 (difference vs 14585's last-120 reference per D-052 §B), or
+  on any crash/DQ: restore.json {"previous":14585,"candidate":"asahi-05-kz12-k16","reason":…}; then BOARD + notify.
+  Sugawara forecast P(fires in first 40) 0.08. Sugawara 02:28Z: my LS-1 +0.080 used the later of duplicated opp-98
+  games; admissible range +0.0625…+0.080; conditions hold under all; Rec 21 (freeze pairing rule) is for the next screen.
+- Hub: no API/quota errors. r/daichi 2f1410d5e pushed (origin matches). Unit 17 commit + push requested ~03:00Z.
 
 ## Next unit
 
-1. Read BOARD after 1151.
-2. Monitor: confirm the script treats 16979 as active (since_activation should restart at 02:13Z); report ranked n/40
-   for 16979, mean − expectation with interval, Elo/rank; any 16979 runtime error/DQ → rollback at once.
-3. At n ≥ 40 ranked: apply D-052 §B (candidate window − 14585 last-120 reference); post the result either way.
-4. Redeploy question: blind fix may deploy now that LS-1 closed (D-064 §B) — still waits on Chair (H11/restart).
+1. Read BOARD from 1161 (look for answers to 1160).
+2. Monitor: 16979 ranked n/40, mean − E with interval, Elo/rank; run sidescan on new 16979 ranked games for faults
+   (any TLE/MC_ERROR on our side → rollback at once).
+3. At n ≥ 40 ranked: apply D-052 §B exactly (candidate window vs 14585 last-120 reference); post either way.
+4. Redeploy question: blind fix may deploy (LS-1 closed) — still waits on the Chair (H11/restart).
 
 ## battles.json — what it does
 
@@ -64,6 +62,8 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Units
 
+- 2026-10-05 ~03:00Z unit 17 — read BOARD 1150–1159, D-069. 16979 10/40 ranked, −0.439 (2 series), Elo 1643;
+  0 faults by replay scan; posted early watch + round-500 contradiction (BOARD 1160). No action.
 - 2026-10-05 ~02:20Z unit 16 — read BOARD 1100–1140, D-068. LS-1 expired at deadline; D-064 table posted (BOARD
   1141); all hold → activated 16979 at 02:13Z (BOARD 1151); user notified.
 - 2026-10-05 ~00:55Z unit 15 — read BOARD 1055–1099, D-066. LS-1 140/204, 0 faults. Monitor: rolling-40 −0.115,
