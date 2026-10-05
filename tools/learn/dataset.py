@@ -35,7 +35,9 @@ def outcome(data):
     return winner, reason
 
 
-def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=None):
+def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=None, hb1_exe=None, hb1_feats=None):
+    """hb1_exe: cpp/hb1_scores -> hb_pF/hb_pR/hb_pL. hb1_feats: cpp/hb1_feats -> the same three plus hb_f_<name>, the
+    270 inputs of carthage-05's direction GBT (float32, NaN = absent); give one or the other."""
     meta = meta or {}
     turns = collections.defaultdict(list)
     m = rebuild.walk(data, lambda i, sp, txt, ctx: turns[i].append((sp, txt, ctx)))
@@ -59,6 +61,7 @@ def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=
     winner, reason = outcome(data)
     last_round = max((c['round'] for v in turns.values() for _, _, c in v), default=0)
     rows = []
+    hb_seqs = []
     for did, seq in turns.items():
         sp = seq[0][0]
         if sides is not None and sp['team'] not in sides:
@@ -66,6 +69,7 @@ def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=
         if not keep(game, did, pct):
             continue
         enc = E.Encoder(B.Spawn(sp['id'], sp['team'], sp['W'], sp['H'], sp['unit_limit']))
+        hb_turns = []
         for k, (sp_, txt, ctx) in enumerate(seq):
             raw = real[did][k].decode() if real is not None else txt
             b = B.parse_block(raw)
@@ -73,6 +77,7 @@ def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=
                 b.tiles = [(x, y, p, -2 if (c == -1 and (x, y) in _template_beds(m)) else c) for x, y, p, c in b.tiles]
             x = enc.observe(b)
             y = LB.label(ctx, b, did, sp['team'])
+            hb_turns.append((raw, y))
             if y['y_kind'] == 0:
                 enc.act('move', list(y['y_seq']))
             elif y['y_kind'] == 1:
@@ -85,7 +90,26 @@ def game_rows(game, data, seed=None, sides=None, pct=100, use_oracle=True, meta=
             rows.append(dict(meta, game=str(game), map=m.name, side=sp['team'], dragon=did, round=ctx['round'],
                              turn=k, blocks_src=src, outcome=res, end_reason=reason, last_round=last_round,
                              x=x, **y))
+        hb_seqs.append((hb_spawn(sp), hb_turns))
+    if hb1_feats and rows:
+        import hb1_export
+        names, X = hb1_export.run_exe(hb1_feats, hb_seqs)
+        assert len(X) == len(rows), (len(X), len(rows))
+        for r, v in zip(rows, X):
+            r.update(hb_pF=v[0], hb_pR=v[1], hb_pL=v[2])
+            r['hb_f'] = v[3:]
+        rows[0]['_hb_names'] = names
+    elif hb1_exe and rows:
+        import hb1prior
+        sc = hb1prior.scores(hb1_exe, hb_seqs)
+        assert len(sc) == len(rows), (len(sc), len(rows))
+        for r, (pf, pr, pl) in zip(rows, sc):
+            r.update(hb_pF=pf, hb_pR=pr, hb_pL=pl)
     return rows, dict(stats, src=src, turns=sum(len(v) for v in turns.values()), rows=len(rows))
+
+
+def hb_spawn(sp):
+    return f"ID {sp['id']}\nTEAM {sp['team']}\nMAP {sp['W']} {sp['H']}\nUNIT_LIMIT {sp['unit_limit']}\n"
 
 
 _TB = {}
@@ -101,10 +125,14 @@ def _template_beds(m):
 def to_frame(rows):
     import pandas as pd, numpy as np
     names = E.names()
+    hb_names = rows[0].pop('_hb_names', None) if rows else None
     X = np.asarray([r.pop('x') for r in rows], dtype=np.int16)
-    df = pd.DataFrame(rows)
-    xf = pd.DataFrame(X, columns=names)
-    return pd.concat([df.reset_index(drop=True), xf], axis=1)
+    parts = [None, pd.DataFrame(X, columns=names)]
+    if hb_names is not None:
+        F = np.asarray([r.pop('hb_f') for r in rows], dtype=np.float32)
+        parts.append(pd.DataFrame(F, columns=['hb_f_' + n for n in hb_names]))
+    parts[0] = pd.DataFrame(rows).reset_index(drop=True)
+    return pd.concat(parts, axis=1)
 
 
 def main():

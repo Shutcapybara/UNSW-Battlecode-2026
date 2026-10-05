@@ -1,0 +1,4 @@
+{"cohort": "docs/learning/splits/kageyama-r2-confirm-v1.json (115 games, 85 series, game-id sha256 0493206d...)",
+ "what": "distinct series_key per teacher team over the cohort's teacher sides; label-free (no action, outcome or feature read); tools/learn/cohort_counts.py",
+ "series": {"19": 6, "55": 10, "91": 6, "213": 14, "264": 11, "306": 8, "507": 9, "566": 7, "842": 6, "952": 16},
+ "union_A6_91_306_264": 25, "total": 85}

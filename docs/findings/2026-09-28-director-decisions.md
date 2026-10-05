@@ -1631,3 +1631,1296 @@ After activation the rollback rule of D-052 §B applies, and the Chair reads the
 - Request to Tanaka: with the next review, list every remaining acceptance condition for the scorer in one place,
   so that the following revision can be the last. The confirmation itself is unchanged (D-052 §A, D-054 §A).
 
+## D-056 — LS-1 is running: ruling on its objective, the upload defect, and the standing live loop (4 Oct 2026 18:13Z, Chair: Ushijima)
+
+### A. State at 18:10Z
+
+- **LS-1 dispatched at 17:42Z** (job 5ed81ad3e1f3). Arms: 14585 and submission **16979**
+  (`LV-asahi-05-kz12-k16-0cf975af-ai`, fingerprint 0cf975af, zip 3.74 MiB, built from main 593810d14 with the real
+  13 MB header). CPU probe (1.2.9 sandbox, seed 1, 6 live-map games and big_empty): maximum 10.6 M points per turn
+  over 106,507 turns, round 0 at most 7.13 M, no faults. Roster by the rule, from 800 ranked games of 14585 in 48
+  hours: teams 716 (35 games), 98 (25) and 347 (25); team 78 excluded (rating 145 below). Extension: 919 and 351.
+  20 of 204 games played.
+- **P-2's scorer is released** (Tanaka 17:55Z: revision 4, sha 0d0d1b7a…, spec 15d79683…). One claim and one score
+  remain, Hinata's. Forecasts stand: Tanaka 0.40, Sugawara 0.50, Nishinoya 0.50. D-055 §G is satisfied; no revision 5.
+- **R2:** Tanaka verified the support before any fit: 189,630 oracle moves (188,250 forward, right or left; 1,380
+  reverse), 97 games, 49 series, 5,315 queen moves, five folds with no series in two folds. The development fit is
+  Hinata's to run.
+- **Asahi is working again.** At 18:10Z its daemon runs the P-4 panel (m = 1) with the strike probes, the card, and
+  the parent and k = 16 on seeds 2–3 queued. Three commits on `r/asahi`: `card.py` with map × opponent clusters
+  (D-052 §C), the learn queue in the daemon (D-052 §F), the P-4 dial, and the real model header in place of the
+  symlinks in asahi-02 to 05. H10 is closed.
+- **Chair actions since D-055, recorded here:** Hinata's scheduled task moved from two-hourly to hourly (17:12Z);
+  R2 put ahead of the P-2 scorer in the Learner's order; the redeploy of `tools/hub/battles.py` (rejected-request
+  counts) approved (17:08Z). The Chair's manual fire of Daichi's task at 17:05Z ran without the Mac and did nothing.
+
+### B. Upload defect: the server activates a submission on upload
+
+- 16979 was the active submission from about 17:33Z to 17:40Z without a promotion record. `submit.json` with
+  `activate: false` does not prevent it, and `submit_check` did not restore the previous submission. Daichi
+  restored 14585 at 17:40:00Z and cancelled the job that had captured the wrong active id. Ratified.
+- D-055 §B ordered "upload with activate:false" and did not foresee this. The fault is in the hub path.
+- **Ruling:**
+  1. No upload until `submit_check` reads the active id before the POST and re-activates it afterwards in
+     `finally`, as `request_batch` does, with a test. Daichi builds it; the Chair merges; the redeploy is approved
+     by this record.
+  2. An upload is made only outside the blackout and with no ranked series of ours in flight.
+  3. Daichi lists any ranked game played by 16979 in that window. Such games are excluded from 14585's monitor
+     and from any rollback read (D-052 §B), and are not LS-1 data.
+
+### C. LS-1 objective: ruling on the council's objections
+
+- **Timing.** Sugawara's amendment was posted at 17:29Z, before dispatch; Daichi saw it after enabling dispatch at
+  17:42Z. Nishinoya (17:52Z) and Tanaka (17:56Z) wrote after dispatch. This ruling is after dispatch.
+- **Disclosure.** At 18:01Z the Chair read `hub-state/battles/index.json` to check the job. The index prints a
+  running paired figure (10 pairs, one opponent). The ruling is therefore not blind. It only adds conditions to a
+  promotion and removes none.
+- **Upheld:**
+  - The frozen rule passes on one favourable pair and 101 ties (mean +0.0098, interval [0, +0.029]); under a null
+    switch it passes about 0.16 to 0.33 of the time (Sugawara's simulation, peer evidence; Tanaka reproduced the
+    one-pair case).
+  - The local seed-1 census is 9 positive, 2 negative and 261 tied pairs of 272 (4.0 % discordant, in 9 clusters;
+    Tanaka). LS-1 should expect about four discordant pairs in 102.
+  - A pair-level sign test is not size-controlled, because the two seats share an opponent × map cluster (Tanaka).
+- **Ruling:**
+  1. LS-1's verdict is reported under the frozen rule of D-055 §B and keeps that label. It is read as
+     non-inferiority with a positive point estimate, not as evidence of superiority.
+  2. A matched pair counts only when both games met the same opponent submission id. Mixed-version pairs are
+     missing and are listed with the reason. This is a data rule and applies to the frozen read too.
+  3. Printed beside the verdict: positive, negative and tied pairs; each cluster's summed difference; the number
+     of non-zero clusters; the pair-level sign p as description only.
+  4. **Promotion needs more than the frozen PASS.** Among opponent × map clusters with a non-zero summed
+     difference, positive against negative clusters must give a one-sided exact sign test of p ≤ 0.075 at the look
+     where it is read. There are two looks: 102 pairs, and 170 pairs after the extension (joint size at most 0.15).
+     Fewer than four non-zero clusters at a look means no promotion at that look. (4–0, 5–0, 6–1 and 8–2 qualify;
+     5–1 and 7–2 do not.)
+  5. The extension runs if the frozen rule says HOLD, or says PASS without meeting item 4. The label at 102 pairs
+     stays as recorded. A REJECT at 102 pairs stops the screen.
+  6. If the final look has fewer than four non-zero clusters, the screen is recorded as **not resolvable at this
+     size**. k = 16 is then decided by the local gate on seeds 2–3 (D-046 §4, Asahi's queue), and promotion needs
+     that gate to pass.
+  7. Daichi keeps dispatching. No lane quotes a running paired figure; Daichi reports at the two looks only.
+- **Forecasts for the frozen-rule PASS, including the extension:** Sugawara 0.50 (17:29Z, before dispatch; scored).
+  Nishinoya 0.45 (17:52Z, after dispatch, before outcomes; scored and flagged). Tanaka 0.45 (17:56Z; its author
+  declares it not a calibration entry; not scored). The seats' numbers for Sugawara's amended rule (0.25, 0.30) are
+  on record and not scored, because item 4 is a different rule.
+
+### D. The standing live loop (the lead, 18:00Z: does the setup choose opponents, gather data and update in response?)
+
+Answer on record: opponents are chosen by one fixed rule, data is gathered, and nothing yet updates from either
+without a Chair record. From here:
+
+1. **Standard screen, version 1 (LS-std-1), for every screen after LS-1.** The unit of inference is the opponent ×
+   map cluster. Pairs are matched on the opponent's submission id. Two looks are declared before dispatch.
+   Promotion-grade evidence at a look: mean paired difference > 0, cluster-bootstrap 5th percentile > −0.02, and
+   the cluster sign test of §C.4 at p ≤ 0.075. Fewer than four non-zero clusters at the final look: not resolvable.
+2. **Sizing from the discordance census.** Before dispatch, the candidate's local seed-1 census (share of pairs
+   where the arms differ, by map) fixes the size and the cells. A screen must expect at least 12 non-zero
+   clusters. If the full grid cannot reach that within 340 games, the screen is **targeted**: the maps (and
+   opponents, where known) on which the switch changes games, declared before dispatch. Its estimand is that
+   stratum; harm elsewhere is watched by the post-activation monitor and the rollback rule (D-052 §B).
+3. **Roster classes,** named before dispatch, drawn from Daichi's live table by rule:
+   - band: the teams met most in ranked play over 48 hours within 100 rating (LS-1's rule);
+   - loss: teams within 150 rating with at least 10 ranked games against us in 48 hours and the lowest score
+     minus expectation;
+   - top: the current top ten.
+   A candidate's first screen uses band. A second screen of the same lineage uses loss, and replaces any opponent
+   whose clusters were all ties in the first.
+4. **Candidate queue.** A registered candidate that meets D-055 §A is screened in queue order. This record is the
+   standing enable, subject to §B. Daichi posts class, roster, cells and size before dispatch; the Chair may veto.
+   One screen at a time. Queue: (1) `asahi-05-kz12-k16` (running); (2) the queen reach veto (P-4) at its best
+   dose, if its seed-1 panels meet D-055 §A; (3) the first R2 bot after its offline gate.
+5. **Targeted data games (TD-1).** Purpose: the top ten's play on positions our own bot creates, and our losses,
+   for the cloned prior, the value model and analysis. One arm (the live submission; no activation change):
+   top-ten teams with an active submission × the 14 training maps (no Autarky, Maze or Trauma) × both seats × one
+   game, up to 280 games. Priority below any screen: at most 15 games an hour, from quota a screen leaves unused,
+   starting after LS-1's first look. Each game records the opponent's submission id. Kageyama admits a game to
+   teacher rows only if that submission also played ranked games (decoy guard), buckets its series by the frozen
+   hash rule, and keeps requested games as their own population in every table.
+6. **Updating.** A screen's report gets a promote or reject record within one Chair unit. New rows (TD-1, the
+   collector) enter a rung only as a new artifact with its own registry row; a frozen confirmation cohort never
+   changes. Daichi's per-opponent and per-map table feeds the loss class and the Learner's per-map gap report.
+7. **Council review of items 1–3, due 19:30Z,** before the second screen: Tanaka on the size of the two-look
+   cluster test and its power at 12 non-zero clusters; Sugawara on the sizing rule by simulation; Nishinoya
+   replicates. LS-std-1 binds from the second screen as amended by then.
+
+### E. Order of work
+
+- **Daichi:** the `submit_check` fix and test first (it blocks every upload); LS-1's two looks; opponent
+  submission ids in job files; TD-1 after the first look.
+- **Asahi:** as queued. Then a standard card table: positive, negative and tied pairs by map for each candidate
+  (the census of §D.2).
+- **Hinata:** the R2 development fit; P-2's one claim and score.
+- **Kageyama:** the confirmation cohort freeze with its oracle coverage; the HB-1 scores through the bot's
+  extractor; the full rows in shards; the admission rule for TD-1 games.
+
+## D-057 — R1 failed its confirmation; R2 gets a development battery; the screen standard is amended; the Mac restart (4 Oct 2026 19:24Z, Chair: Ushijima)
+
+### A. The Mac restart, about 18:48Z to 19:21Z
+
+- Last heartbeats before it: hub 18:47:53Z, Asahi's daemon 18:48:33Z. Asahi's daemon was back at 19:16Z (pid 2305).
+  The hub was back at 19:21Z (pid 79689), **started by the lead in a terminal**; launchd scheduled it but it did not
+  stay up, cause not confirmed. The collector wrote nothing for 34 minutes.
+- **A redeploy ends the hub with exit 3 and relies on launchd to relaunch it. In a terminal nothing relaunches it.
+  No redeploy until the lead confirms the hub runs under a restart loop or under launchd again.** This holds the
+  `submit_check` fix (D-056 §B) and the reserve change (§E), and with them every upload.
+- Daichi's scheduled task was suspended at 18:50Z (`device_absent`); the Chair re-enabled it at 19:23Z. Hinata's
+  18:35Z unit died with its lock; the Chair moved the lock. Kageyama's unit-5 commit (cohort file, extractor) is not
+  on `r/kageyama` yet; its own wake at 19:48Z finishes it. Asahi's interrupted panel job was re-queued by Asahi.
+- LS-1 at 19:21Z: 40 of 204 games requested, 20 verified. **Its 8-hour stop counts hub uptime: the stop moves from
+  01:42Z to 02:15Z** (33 minutes without a hub). No other rule of LS-1 changes.
+
+### B. R1: P-2's one confirmation failed
+
+- Result (Hinata, 18:20Z; scorer 0d0d1b7a…, spec 15d79683…, 1,327 of 1,328 games, 1,000 valid draws in every binding
+  cell): **FAIL**. The only binding reason is the elimination map at round 25 (Autarky, 434 games): ΔAUC(V0b − Φ)
+  −0.0099 [−0.0152, −0.0049] against a floor of −0.01. No re-run and no relabel.
+- Descriptive, kept: on round-limit maps (Maze and Trauma, 893 falling to 880 games) V0b beats Φ at every checkpoint
+  from round 25: +0.043 [+0.028, +0.060] at r50, +0.074 [+0.053, +0.095] at r150, +0.150 [+0.124, +0.175] at r400. On
+  the elimination map it is about equal or slightly worse to r100 and better from r150 (+0.093 at r400).
+- **Brier scores** for P(pass): Tanaka 0.40 → 0.16; Sugawara 0.50 → 0.25; Nishinoya 0.50 → 0.25.
+- R1 stays open. No new variant of P-2 now. Value work continues through P-6 (V-legal), amended: a declared
+  fallback to Φ on elimination-regime maps before round 150 (regime by structure, never by map identity). That
+  choice comes from this held-out read, so P-6's confirmation stays on games played after 18:19Z (D-055 §F). R1
+  ranks below R2 in the Learner's order.
+
+### C. R2: a development battery, then one confirmation (the lead, 19:20Z: why not repeat the Heartbreaker method across the top teams and test what recreates their decisions?)
+
+- **First fit** (Hinata, 18:21Z): the encoder-only model reaches forward/right/left accuracy 0.714 [0.706, 0.724]
+  on series-held-out folds (188,250 moves, 97 games, 49 series, ten teachers, 14 training maps; majority class
+  0.425; per teacher 0.676 to 0.768; queen moves 0.678). It is the weaker variant. The 0.75 stop binds on the
+  selected model below, not on this arm.
+- **Cohort accepted as frozen:** `docs/learning/splits/kageyama-r2-confirm-v1.json` (115 games, 85 series: Autarky
+  35, Maze 46, Trauma 34; game-id sha 0493206d…; oracle coverage 115 of 115, measured without reading labels).
+  Coverage floor 0.95 per map; usable = decoded and oracle-reproduced. Nobody reads its labels before the one
+  confirmation.
+- **The battery.** The Chair approved one model and one comparison in D-055 §E. That was too narrow for
+  development. On development rows only (dev120 oracle moves now, the full rows when built), with the same five
+  series folds, the same metric and no held-out read, Hinata fits these arms; each gets a registry row and no card:
+  - A0: the parent's prior as it plays (argmax of its three scores), no fit. The baseline.
+  - A1: the Heartbreaker recipe on ten teams: HB-1's own feature vector, a boosted-tree model, pooled.
+  - A2: A1 fitted per teacher team (ten fits). It measures what pooling costs; it is not a deploy candidate.
+  - A3: encoder only (done: 0.714).
+  - A4: encoder plus the parent's three scores (the card's union model).
+  - A5: encoder plus HB-1's feature vector plus the three scores.
+  - Each pooled arm at two sizes (400 and 800 rounds), unweighted; a learning curve (0.1, 0.25, 0.5, 1.0 of the
+    training series) on the best arm.
+  - One table: accuracy overall, queen, non-queen, per teacher, per map, with whole-series intervals, model size in
+    bytes, and for A2 the mean over teachers.
+- **Selection, fixed now:** the pooled arm (A1, A3, A4 or A5) with the highest fold accuracy; within overlapping
+  intervals the smaller model. It must beat A0 on the same rows with a whole-series 5th percentile above 0 and
+  reach 0.75; otherwise R2b is filed. The selected arm is refitted on the full rows and takes the one confirmation
+  of D-055 §E unchanged (paired with the parent's prior on the frozen cohort). The council's forecasts for that
+  gate (0.70, 0.60, 0.55) stay as scored and now refer to the selected arm.
+- **Needed from Kageyama:** HB-1's feature vector per row beside the three scores (the tool is
+  `tools/learn/cpp/hb1_scores.cpp`; parity 3,091 of 3,091 turns; about 3.2 k turns per second per core), first on
+  dev120's 189,630 oracle moves. Full rows: about 3 M, in shards, expected about 23:30Z.
+- **Where it runs:** Hinata's cloud container, or the Mac's learn queue as light jobs (§F).
+- Tanaka checks that no arm, fold or selection step reads the frozen cohort.
+
+### D. The standard screen (D-056 §D.1–3), amended after the three reviews
+
+- Sugawara (18:29Z): local pairs share a seed, live pairs do not, so live discordance is the switch plus seed noise.
+  Nishinoya (18:52Z, unaudited): in our 730 ranked games, 53 of 164 consecutive same-cell rematches flip (32.3 %),
+  and 76.8 % in contested cells; an upper bound on seed noise. Tanaka (19:19Z): the two-look cluster sign test at
+  0.075 has size at most 0.15 only for sign-symmetric, independent cluster differences; a mean-zero candidate with
+  skewed sums can pass more often (0.27 in his example). Power at 12 non-zero clusters: 0.23, 0.49, 0.65, 0.79 for
+  positive-share 0.6, 0.7, 0.75, 0.8.
+- **Amendments adopted:**
+  1. Size by simulated chance of a promotion-grade result, at least 0.6 at positive-share min(estimate, 0.75),
+     with live noise in the simulation. "At least 12 non-zero clusters" is withdrawn. If the size is out of reach
+     within 340 games the screen is targeted at the cells where the switch changes games; if that fails too it is
+     not run and the local gate decides.
+  2. The census on every card reports the switch's discordance (seed-matched) and the parent's seed noise (same
+     fixture, seed s against s′).
+  3. The error statement carries its assumptions; no claim of 0.15 for every mean-zero candidate.
+  4. The report prints the noise-predicted number of discordant pairs beside the observed counts.
+  5. Daichi answers whether a request can fix the game seed. If it can, matched seeds become standard.
+- **For LS-1, nothing changes** (D-056 §C stands). Correction: "about four discordant pairs in 102" held for
+  seed-matched pairs only. With live noise the chance that LS-1 reaches promotion grade is about 0.2 to 0.5
+  (Sugawara's simulation), and a HOLD or a REJECT by noise is likely. A frozen REJECT means no promotion from LS-1;
+  k = 16 can re-enter only through a screen sized by item 1 after its local gate passes. The local gate on seeds
+  2–3 is now the main evidence for k = 16.
+
+### E. LS-1 pacing
+
+- 20 games were requested in the first hour and a second unit of 20 at about 18:45Z. The field allowance shows 25
+  available against a 20-game unit and a reserve of 10, so one unit fits an hour. Approved: field reserve for
+  battles jobs 10 → 5. It needs a redeploy and therefore waits on §A.
+- The first look is at 102 pairs or at the stop, whichever comes first, and needs at least 60 pairs.
+
+### F. Evaluator
+
+- Learn-queue jobs declared light (at most 20 minutes and 6 workers) run at the next job boundary ahead of Asahi's
+  own queue. Heavy ones wait behind it.
+- P-4: the first m = 0 build changed choices on turns where no veto fired; Asahi fixed it (r/asahi 3e74fbbf2) and
+  re-runs parity, then the panels. Results from the first m = 0 build are void.
+- REG-002's deploy probe on the fixed tree is recorded (zip 3.741 MiB, maximum 11.01 M points per turn, first turn
+  10.73 M, no errors).
+
+## D-058 — Precedent first: the lead's rule for strategy, and what it changes (4 Oct 2026 19:35Z, Chair: Ushijima)
+
+### A. The rule (the lead, 19:33Z)
+
+The structure of the strategy rests first on precedent: what has worked on similar problems. Where precedent is not
+relevant or cannot be established, decisions rest on evidence from our own data. The macro's §0 says this in
+principle. From this record it is operative:
+
+- Every proposal card has a **Precedent** section: the precedent it follows, how close that problem is to ours, and
+  where ours departs. A card with no precedent says so and then rests on evidence alone (`TEMPLATE.md` updated).
+- The mechanism seat (Sugawara) checks each cited precedent against its source.
+- Chair rulings on structure name the precedent, or say "no precedent; evidence".
+
+### B. The precedents the Chair relies on
+
+**Limit:** this table is from the Chair's knowledge of the published write-ups. It was not re-checked against the
+sources in this unit (a web search returned links without content). **Sugawara verifies it with sources by 21:30Z;
+corrections amend this section.**
+
+| Problem | Close to ours in | Departs from ours in | What won |
+|---|---|---|---|
+| Kaggle Hungry Geese (2021) | snakes on a torus, simultaneous moves, about a second of CPU per move | fully observed, four single agents, no communication | self-play reinforcement learning with a torus CNN and look-ahead at play time; many high places by imitating the top-rated agents' episodes (filtered by rating), with symmetry augmentation and ensembles |
+| Lux AI Season 1 (2021) | many units on a resource grid | fully observed, central control, large models allowed | first place by self-play reinforcement learning at scale; several of the next places by imitating the winner's replays with per-unit action heads |
+| Lux AI Season 2 (2023) | many units, harder rules, short season | as above | rule-based agents at the top; reinforcement learning entries below them |
+| Halite IV (2020), Kore (2022) | many units, economy and combat | as above | rule-based agents at the top; imitation entries inside the top ten |
+| Battlecode (MIT and others), Battlesnake | decentralised units, narrow communication and a hard compute limit (Battlecode); snakes under a time limit (Battlesnake) | no learned component at deploy | hand-written heuristics with search |
+| Pommerman (2018) | partial observation, teams | small scale | search-based agents in the first competition |
+
+Reading:
+
+1. Under a tight deploy budget and a short season, heuristics with search won most often. Imitating the best agents
+   is the quickest learned route to near the top. Self-play reinforcement learning won only with weeks of training
+   and large compute.
+2. How imitation was done where it worked: teachers filtered by rating (the best agents, not the field's average);
+   one teacher or a teacher-conditioned model; every action type cloned; symmetry augmentation; the ladder as the
+   judge.
+3. The closest precedents on our two hard features (seven-by-seven private views; sonar) are Battlecode and
+   Pommerman, both hand-built. There is no precedent for learned communication at this compute.
+
+### C. What changes
+
+1. **Order.** Clone first, value model second, self-play last. D-057 already put R2 ahead of R1; that now rests on
+   precedent. The ladder's R1-before-R2 order departed from the macro's own §0. R2's deployment does not wait on R1.
+2. **Chassis and hand rules.** The search bot stays the chassis. The hand-rule dials (k = 16, the queen reach veto)
+   are a main track beside the learned one, not a temporary one: most of the closest contests were won by
+   heuristics with search. The Evaluator's queue order stands.
+3. **Battery (D-057 §C), arms added from reading 2:**
+   - A6: the union model trained only on the three teachers with the highest current rating (rating filter).
+   - A7: the union model with the teacher's identity as a training-time input, deployed with the identity of the
+     highest-rated teacher fixed. A teacher's identity is not map identity.
+   - A8: the best arm with left–right mirrored copies of the training rows (labels swapped).
+   - A9, offline and report-only: the split, cull and sprint heads on the same rows and folds. No head deploys
+     before R2 does.
+   - A2 (one model per teacher) becomes a deploy candidate type; the live bot's prior is itself a one-teacher clone.
+4. **Selection, amended.** The pooled selection and its confirmation stay as in D-057 §C and D-055 §E. In addition
+   the best teacher-specific arm (A2, A6 or A7) is carried forward if it beats A0 on its own target teachers'
+   development rows (whole-series 5th percentile above 0). Its confirmation is the same paired gate on the frozen
+   cohort's rows of those teachers; Kageyama states that subset's counts before any label is read. Between the two
+   resulting bots, play decides: seed-1 panels, then a live screen (the precedent's judge is the ladder).
+5. **Evaluation.** Live-first (D-055) matches the precedent and stays.
+6. **No precedent; evidence governs:** boosted trees against a small CNN at our deploy budget (our evidence: trees
+   matched or beat a small network on five Heartbreaker decisions; 4 MiB, 30 M points); anything that uses sonar;
+   the queen tiebreak; the statistics of screens.
+7. R6 to R8 stay last.
+
+### D. Hub
+
+launchd no longer has the hub's service loaded. The running hub (pid 79689) is a plain terminal process. The
+redeploy ban of D-057 §A stands until the lead restarts it inside a restart loop.
+
+## D-059 — The nearest precedent is this contest: the top teams use learned policies (4 Oct 2026 19:43Z, Chair: Ushijima)
+
+### A. What the lead reported (19:40Z) and what it corrects
+
+- The team named Stockfish said after the first round that it uses MLPs and may move to CNNs. Heartbreaker (team 62)
+  was a CNN with two LSTM layers, and its authors say the LSTM layers did not help. The lead's reading: the top of
+  the ladder is produced by automated fitting, not by hand-tuned heuristics.
+- Standing of this evidence: the teams' own statements, relayed by the lead. It is about the same game, the same
+  season and the same deploy limits, so under D-058 §A it is the nearest precedent and outranks the other contests
+  in D-058 §B.
+- **D-058 §C.2 is withdrawn.** The hand-rule dials are again temporary (D-044), not a main track. The learned policy
+  is the main line. The Evaluator finishes what is running (the queen reach veto panels, k = 16 on seeds 2–3) and
+  takes no new hand-rule work ahead of learned candidates.
+- What the Chair's own data adds: Heartbreaker stood at rank 40 (Elo 1825) on 28 Sep when we cloned it, and has no
+  ranked rating in today's ladder. The current top ten sit at Elo 2192 to 2333; we are at 1723, rank 82. A
+  one-step clone of a rank-40 network gave our only learned gain (+0.15 win).
+
+### B. Consequences
+
+1. **A network is deployable here.** A CNN with recurrent layers ran inside the same limits (4 MiB, 30 M points).
+   D-058 §C.6 listed "trees against a small CNN" as without precedent; that is corrected. R7's condition ("only
+   if the trees saturate") is dropped for offline work.
+2. **Battery arm A10: a small CNN on the dragon's own window**, with the scalar features beside it and the same
+   forward/right/left head; same rows, folds and metric as the other arms; no recurrence (the Heartbreaker authors
+   found none needed). Report accuracy, exported size in bytes with 8-bit weights, and estimated points per turn.
+   If the teachers are networks over the window, a student of the same class should recover them better than
+   trees over engineered columns. Our earlier result that trees beat an MLP on five Heartbreaker decisions was on
+   flattened features, not on a convolution over the window; it does not settle this.
+   A10 is a pooled arm for the selection rule of D-057 §C, and may also be fitted per teacher (D-058 §C.4).
+3. **Unobserved memory matters less than feared.** If the teacher's recurrent layers did not help, its policy is
+   close to a function of the current view. The ceiling on imitation is then set by features and data, not by
+   hidden state. Messages remain unobserved.
+4. **Self-play is no longer "last, if ever".** If the top teams fit by self-play, cloning them caps us near their
+   level less the imitation error. **Sugawara writes a scoping card (P-7) by 22:00Z**: fine-tuning by self-play
+   from the cloned network on the Mac (precedents: Lux AI Season 1's winner, Hungry Geese's winner); measured
+   engine throughput per core with network inference in the loop; hours to a first league iteration; what it would
+   displace; the falsifier. No training starts on the card alone; the Chair rules on it with the battery table in
+   hand. The clone remains the first deliverable because self-play starts from it.
+5. **Teachers.** The rating filter stands (D-058 §C.3). Where a team is known to field a network, it is preferred
+   as a single teacher.
+
+### C. Not known
+
+- How those teams train (self-play, imitation, evolution of parameters). The statements name architectures only.
+- Which current ladder team is Stockfish: no team carries that name in the 19:31Z ladder snapshot.
+- Whether the current top five are networks. Their styles differ (deliberate culls by invalid command or by
+  suicide, queen keeping), which fits learned policies and also fits hand design.
+
+## D-060 — P-4 refuted; LS-1 pairing proxy; battery selector held for audit; three items for the lead (4 Oct 2026 20:30Z, Chair: Ushijima)
+
+### A. State at 20:26Z
+
+Hub heartbeat fresh (pid 94451 since about 19:46Z), collector writing, Asahi's daemon running the k = 16 panels on
+seeds 2–3. LS-1: 60 of 204 games requested and verified, no runtime fault.
+
+### B. P-4 (queen reach veto): refuted, closed
+
+- Asahi's screen (seed 1, pool 272 and gen 464 per arm, none missing; labeller and readout frozen before the parent
+  was labelled): **strike-hazard ratio at m = 0 is 1.069 [0.685, 1.788]**, against a frozen bar of below 0.90.
+  Pool Δwin −1.84 points [−4.41, +0.74] at m = 0 and −3.31 [−6.99, +0.37] at m = 1; gen economy −2.00 [−3.82, −0.16].
+- It does not meet D-055 §A (pool point estimate below 0). It leaves the screen queue. No further dose.
+- **Brier** for P(support at m = 0): Sugawara 0.35 → 0.1225; Tanaka 0.30 → 0.09; Nishinoya 0.45 → 0.2025.
+- Kept as an observation for the learned track, not as a hand rule (D-059): masking the queen's own head-on moves
+  cut her all-cause hazard to 0.703 [0.662, 0.746] of the parent's (queen-initiated head-on deaths 225 → 53) with no
+  win gain. The queen still reaches the round limit alive in 4 of 736 fixtures.
+
+### C. LS-1
+
+- **Pairing (D-056 §C.2), amended:** the server exposes no opponent submission id (Daichi 19:56Z), so the rule
+  cannot be checked. Each cell's two games are requested seconds apart in one unit. They count as a matched pair
+  **by that proxy**, labelled as a proxy in the report; job rows keep the null ids and the request times. Tanaka's
+  note stands: this is version stability assumed, not observed.
+- A request cannot fix the game seed (Daichi: the API takes team, ranked flag and maps only; 87 of 87 seeds
+  distinct). Live seed noise stays in every screen (D-057 §D).
+- Submission 16979 played no ranked game while it was active (17:33–17:41Z). Nothing to exclude.
+- Pace: 19 of 19 deferrals were the field allowance (25 available, reserve 10, unit 20). About 20 games an hour;
+  the 02:15Z stop will land near 180 games.
+
+### D. Hub changes: built, merged, not deployed
+
+Daichi's `submit_check` fix (reads the active id before the POST, refuses in the blackout or with a ranked series in
+flight, restores in `finally`; 5 tests) and the reserve change (10 → 5) are on `r/daichi` c49377be3 and merged
+to main by this unit. **No redeploy** until the lead confirms that the hub runs inside the restart loop (H11).
+
+### E. R2 battery
+
+- Correction (Hinata): the 0.714 of D-057 §C came from a teacher-weighted fit. The battery's A3 is the unweighted
+  refit; 0.714 stays on record as the weighted figure (Tanaka reproduced the weighted curve to eight digits).
+- A10 was fixed before any fit: two 3×3 convolutions of 32 channels on the facing-relative 7×7×23 window, 66
+  scalars beside it, one hidden layer of 64, four outputs; 120,804 parameters, 118 KiB at 8 bits, about 0.88 M
+  multiply-adds per decision.
+- **Selector held for audit.** Tanaka found that `r2_battery.py` (main, sha 8fdddd38…) passes an arm whose
+  predictions are all NaN, accepts a pooled arm scored on a subset of A0's rows, leaves A10 out of the pooled set,
+  and prints no teacher-specific selection. Fitting continues. **No selection and no confirmation until Tanaka
+  passes the selector** on: finite and complete predictions; identical rows, folds and labels across pooled arms;
+  declared row subsets for teacher arms; the full arm inventory; D-058 §C.4 and D-059 §B.2 implemented.
+- **Blocked on Data:** arms A0, A1, A2 and A4 to A7 need HB-1's three scores and feature vector per dev120 row.
+  Kageyama has posted nothing since 18:50Z and `r/kageyama` has not moved since 16:08Z; its unit-5 files sit
+  uncommitted in its staging tree (H13).
+
+### F. P-6 (V-legal)
+
+- Hinata's regime stump reached 11 of 14 maps, below its own bar of 12; by its declared rule the composite falls
+  back to Φ on every map before round 150. Recorded; not re-run.
+- Tanaka is upheld: Φ is computed from replay-wide totals, so "Φ before r150" is not deployable from one dragon's
+  view. The composite is a privileged-reference diagnostic. Plain V-legal against V0b and Φ, and the original
+  scored events (D-055 §F), stay as they were. P-6's fits wait behind the battery.
+
+### G. Precedent table (D-058 §B)
+
+Nishinoya's cross-check (unaudited) finds the Hungry Geese, Lux Season 1 and Lux Season 2 rows consistent with
+their sources. Sugawara's source check stays due 21:30Z. D-059 already replaced the conclusion drawn from the table
+about hand rules.
+
+### H. For the lead
+
+- H11 (asked 19:30Z): confirm the hub runs in the restart loop.
+- H12: the Cowork VM's session disk is full (9.8 GB, 0 free, about 80 session folders). Lanes report failed
+  installs; fresh scheduled runs may fail to start.
+- H13: Kageyama's session needs a nudge; it is the battery's critical path.
+
+## D-061 — The precedent table after its source check; P-7 numbered (4 Oct 2026 20:36Z, Chair: Ushijima)
+
+### A. D-058 §B, amended by Sugawara's source check (20:31Z, `reviews/D-058-B-precedents-sugawara.md`)
+
+- **Verified with sources:** Lux AI Season 1 was won by self-play deep reinforcement learning, and a later self-play
+  system beat that winner 90 % with one V100 and 600 CPU cores over about 5 M episodes. Hungry Geese was won by
+  HandyRL self-play on dedicated compute. Rule-based agents won Halite IV, Kore and Lux AI Season 2. Pommerman 2018:
+  first and third were tree search. Battlecode's top teams use hand-written decision logic. Added: microRTS 2023
+  was won by deep reinforcement learning after five scripted winners, with cloning followed by reinforcement
+  fine-tuning reported as an efficient start.
+- **Struck or unsourced (the Chair wrote these from memory):** the Hungry Geese winner's "torus CNN and look-ahead
+  at play time"; "several of the next places in Lux Season 1 imitated the winner" (the one documented case placed
+  93rd of 1,178); "imitation entries inside the top ten" in Halite, Kore and Hungry Geese (not verified, not
+  refuted). Nishinoya's "the Lux winner bootstrapped by imitation" has no source either.
+- **Tally of eight contests:** rules or search won five; self-play reinforcement learning won three, each with
+  dedicated compute. **No verified case of imitation alone finishing in a top ten.**
+- **Consequences:**
+  1. D-058 §B's reading 1 keeps its first and third sentences and loses the second ("imitation is the quickest
+     learned route to near the top"). Reading 2 (how imitation was done) is unsourced.
+  2. Clone-first no longer rests on the other contests. It rests on D-059 (the teams of this contest field
+     networks), on our own result (the Heartbreaker clone, +0.15 win) and on the microRTS pattern of cloning then
+     fine-tuning.
+  3. Arms A6, A7 and A8 stay in the battery as cheap arms on plausibility and evidence, not on precedent.
+  4. The verified precedent for exceeding the teachers is self-play from a cloned start. That is P-7's subject.
+
+### B. Battery selector
+
+Hinata's fixes (r2_battery.py 8a29e479…, r2_cnn.py e237fb76…) go back to Tanaka for the pass line of D-060 §E. The
+Chair confirms Hinata's reading of "best teacher-specific arm": the largest paired lift over A0 on that arm's own
+target rows, carried forward only if the whole-series 5th percentile of the lift is above 0.
+
+### C. P-7: self-play fine-tuning of the cloned network (scoping card, Sugawara)
+
+- Numbered P-7 (`P-sugawara-03-selfplay-finetune-scoping.md`). It is void if the battery selects trees.
+- Author's numbers: A10's forward pass runs at 25 to 29 thousand decisions a second per core (numpy, 32-bit floats),
+  against about 80 µs per engine decision, so CPU rollouts suffice; six iterations cost about 15 Mac-hours; P(live
+  promotion) 0.15. Falsifier fixed before any run. Author's own dissent: one night of filtered self-imitation
+  first.
+- **Review:** Tanaka and Nishinoya by 22:00Z, with forecasts on the author's four events.
+- **Measurement allowed now, no training:** after the k = 16 gate cards, Asahi measures in-loop throughput on the
+  Mac (engine plus an untrained A10-shaped network, 8 cores, decisions per hour) and posts it. The entry bar is
+  1×10⁷ decisions an hour.
+- The Chair rules on P-7 when the battery table is in.
+
+## D-062 — Two full disks; Kageyama's work published and the battery routed around its link (4 Oct 2026 21:11Z, Chair: Ushijima)
+
+### A. The disks
+
+- **The Mac's disk** is 97 % full: 31 GB free of 927 GB at 21:09Z. It filled at about 18:47Z and that, not sleep,
+  stopped the hub and Asahi's daemon (Asahi, 19:17Z; D-057 §A's "restart" is corrected to this cause). Largest
+  folders: `public_replays` 116 GB (in use, growing), `build/atlas` 69 GB (a panel run of 30 Sep; no Phase 3
+  tool reads it), `wt-asahi/build` 37 GB (of which about 8 GB in `asahi/_to_delete`), `build/s1` 20 GB (in use).
+  The lead is asked whether the Chair may delete `build/atlas` and Asahi's `_to_delete` (about 77 GB).
+- **The Cowork VM's session disk** is still 100 % full after the lead quit and reopened the app (21:09Z: 9.3 GB
+  used, 0 free, 81 session folders). Deleting a scheduled task does not remove its sessions' folders (tested with
+  one closed Kanazawa task). The Chair cannot read or remove other sessions' folders. New sessions still get a
+  working link (Daichi's 20:50Z run posted); Kageyama's existing session does not.
+
+### B. Kageyama's unit 5, committed on its behalf
+
+Kageyama reported through the lead that its link fails and that its unit-5 files are final and uncommitted. The
+Chair committed them unchanged from `build/_stage_kageyama/tree` to `r/kageyama` (25d78afab): `tools/learn`
+(the HB-1 scorer `cpp/hb1_scores.cpp` and `hb1prior.py`, `coverage.py`, the development builder) and
+`docs/learning/splits/kageyama-r2-confirm-v1.json`. The status file is left for Kageyama. This is an exception to
+"never edit another lane's tree": nothing was edited, and the staging tree and its index were not touched.
+
+### C. The battery no longer waits for Kageyama's link
+
+- **Hinata may run Kageyama's scorer herself**, as merged and without edits: `tools/learn/dataset.py --hb1` on
+  dev120's oracle rows, natively through the Mac's learn queue (Asahi's daemon is idle and the learn venv exists) or
+  in her cloud container. Output: `hb_pF`, `hb_pR`, `hb_pL` keyed by game, side, dragon, round and turn, under
+  `build/hinata/r2/`, with the executable's hash and the row count. This unblocks A0, A4, A6 and A7.
+- A1, A2 and A5 need HB-1's feature vector, which the tool does not export yet. They wait for Kageyama, or for a
+  later ruling if Kageyama stays cut off.
+- Kageyama checks Hinata's scores against its own when it is back. Tanaka adds the copied scores to the selector
+  audit (same rows, same keys).
+- **Full teacher rows:** Kageyama's cloud build stops whenever its session idles (155 of 1,735 games). If Kageyama is
+  still cut off at 23:00Z, Hinata queues the full build natively with Kageyama's builder and
+  `docs/learning/datasets/kageyama-teachers-v1.json`, in shards under `build/learn/kageyama/teachers_v1/`, as heavy
+  jobs. It needs disk: about 3 M rows; state the expected size first.
+- If the session disk cannot be cleared, the lead may start a fresh Data session; its state is in the repo and in
+  `claude/kageyama-status.md`.
+
+### D. Battery, first numbers (development; no selection, D-060 §E)
+
+A3 unweighted: 0.7145 [0.7061, 0.7239] at 400 rounds, 0.7114 at 800. A10 (small CNN, four epochs): 0.6727
+[0.6641, 0.6815]. On 188,250 moves the trees lead the network by about four points. Hinata adds A10's learning
+curve (0.25, 0.5, 1.0 of the training series) so that the comparison can be read at the size of the full rows. No
+retuning of A10 beyond its fixed specification.
+
+## D-063 — k = 16 gate: hold, with the target map replicating; council round called; battery and P-7 rulings (4 Oct 2026 21:34Z, Chair: Ushijima)
+
+### A. State at 21:32Z
+
+- Hub, collector and Asahi's daemon are up; the Mac has 102 GB free after the lead approved two deletions
+  (`build/atlas/panel/replays`, 69 GB; Asahi's `_to_delete`, 4.5 GB). The Cowork session disk is still full.
+- **Data is back:** a fresh Kageyama session started at 21:16Z. Unit 6 is committed (d4e512c6b): HB-1 feature-vector
+  export, a native teacher-row builder for the learn queue, the window layout and the mirror mapping (posted
+  21:26Z). D-062 §C's fallback (Hinata running the builder) lapses; Hinata may still run the scorer if hers is
+  already under way.
+- LS-1: 80 of 204 games, no fault. The redeploy ban stands (H11 unanswered).
+- Shenzhen moved 28 of its own lines from its branch to the main BOARD (09:45Z to 21:00Z). They are analysis of
+  hand rules on the simulator; none changes a ruling.
+
+### B. REG-002 (`asahi-05-kz12-k16`): local gate on seeds 2–3
+
+- **Gate letter HOLD** (Asahi, 21:25Z; pool 544 and gen 928 paired fixtures, none missing; map × opponent clusters):
+  pool Δwin +1.10 points [−0.37, +2.76] (436–108 against 430–114); gen +0.22 [0.00, +0.54]; economy flat.
+- **Report-only stratum, named before the run:** Weakhold 14 of 16 against 10 of 16 on seed 2 and 14 of 16 against
+  9 of 16 on seed 3: +28.1 points [+15.6, +40.6]. With seed 1 (15–1 against 8–8) that is 43 of 48 against 27 of
+  48. Pool without Weakhold: −0.59 points [−1.56, +0.39]. The queen veto fires 90 to 98 times per 1,000 queen
+  decisions on Weakhold on all three seeds.
+- **Brier** for P(gate passes): Sugawara 0.35 → 0.1225; Nishinoya 0.40 → 0.16; Tanaka 0.35 → 0.1225.
+- This is the case of D-046 §4.6: pool clause inconclusive, target stratum improving, off-target inside the
+  −2-point margin. The letter is not relabelled. **An immediate council round is called**, due 23:30Z, on this
+  proposed rule for the decision at LS-1's stop (02:15Z):
+  1. Promote k = 16 unless LS-1 shows harm: the 95th percentile of its paired mean below 0 (opponent × map
+     clusters), or any runtime fault or timeout of the candidate.
+  2. The basis is the local stratified readout, three seeds. LS-1 serves as the harm check, because it cannot
+     resolve a one-point effect (D-057 §D).
+  3. This would replace D-057 §D's sentence "a frozen REJECT means no promotion from LS-1" for one case only: a
+     REJECT by mean ≤ 0 whose interval includes 0. The Chair declares that it has seen no LS-1 outcome beyond the
+     10-pair figure disclosed in D-056 §C.
+  4. After activation the rollback rule of D-052 §B applies, with Weakhold printed as its own row.
+- Expected size if promoted: Weakhold is one of 17 live maps; about +1 point of win rate overall. Our live record
+  on Weakhold is −0.329 against expectation (62 games), the second-worst map.
+- No promotion before the round closes and LS-1 stops. Activation uses the submission already uploaded (16979)
+  and needs no redeploy.
+
+### C. Battery
+
+- Tanaka replicated the first two arms on identical rows: A3 (trees, 400 rounds) 0.7145 [0.7061, 0.7239]; A10 (small
+  CNN) 0.6727 [0.6641, 0.6815]; paired difference +0.0418 [+0.0379, +0.0463]; 800 rounds are 0.0031 worse than 400.
+- **Selector: still held** (Tanaka 21:26Z). Pooled arms now refuse malformed inputs; the teacher-specific path
+  still advances arms on wrong or partial row sets. Required before any selection: exact A0 target keys per
+  teacher arm, justified exclusions for A2, the complete fixed teacher inventory.
+- **A10 was stopped at four epochs with its loss still falling** (Sugawara). The Chair's "no retuning" (D-062 §D)
+  would decide trees against an untrained network. Amended: **arm A10b** — the same architecture trained with
+  early stopping on an inner split of the training series (at most 40 epochs, patience 3), declared now, pooled.
+  Nothing else about the network changes.
+- A8's mirror uses Kageyama's mapping, including the scalar and label swaps and the two stated caveats.
+
+### D. P-7 (self-play fine-tuning from the cloned network): reviews in
+
+- Forecasts on the author's four events (entry throughput / head-to-head ≥ 0.55 / panel ≥ +0.02 / live promotion):
+  Sugawara 0.75 (revised from 0.60 after replication; both on record) / 0.45 / 0.25 / 0.15; Tanaka 0.55 / 0.40 /
+  0.20 / 0.10; Nishinoya 0.50 / 0.50 / 0.20 / 0.10.
+- Measured (Sugawara's replication, one cloud core): engine about 73 µs per decision, the deploy encoder 111 to
+  140 µs, A10's forward pass 22 to 40 µs. The entry bar allows 2.9 ms per decision-core at eight cores.
+- **Adopted amendments:** filtered self-imitation is a required first step as a baseline, not as a falsifier; the
+  throughput measurement comes before any learner engineering; the evaluation contract is Tanaka's (paired
+  fixtures, draws and missing counted explicitly, iteration 6 fixed and not the best checkpoint, identical legal
+  actor wrapper, privileged critic for training only); rollouts are consumed in chunks of at most 1 M rows.
+- **If the battery selects trees,** P-7 is not void: its actor is the network distilled from the selected trees,
+  admitted only if top-1 agreement is at least 0.95 and development accuracy is within 0.01 of the trees. The
+  deploy candidate stays the trees.
+- Asahi's throughput measurement (D-061 §C) is the next step; the daemon is idle. The ruling on training waits for
+  the battery table, as before.
+
+## D-064 — k = 16: promotion rule fixed after the council round; first full comparison with the live prior (4 Oct 2026 22:37Z, Chair: Ushijima)
+
+### A. State at 22:36Z
+
+Hub, collector and Asahi's daemon are up. The Mac has 94 GB free. The Cowork session disk is still full. LS-1: 100
+of 204 games requested and verified, no fault; about one 20-game unit an hour; the 02:15Z stop will land near 180
+games. Kageyama's full teacher-row build is running natively on the Mac (`kageyama-01-teachers-v1`).
+
+### B. k = 16 (REG-002): the rule for the decision at LS-1's stop
+
+The round called in D-063 §B closed with all three seats in before 23:30Z.
+
+- Nishinoya (21:58Z): agree; add the five bed-variant maps and the candidate's invalid-command deaths as monitor
+  rows. P(LS-1 shows harm) 0.10; P(live Weakhold gain of at least 10 points sustained) 0.60.
+- Tanaka (22:25Z): amend; replicated the local numbers; add a loss limit (live paired mean at least −0.02), at least
+  60 valid matched pairs and the existing completeness and fault guards; freeze before the final read; keep LS-1's
+  original letter. P(no rollback under D-052 §B in the first 120 ranked games, given promotion) **0.85**.
+- Sugawara (22:30Z): agree with three amendments: prove that submission 16979 is the gated binary; freeze the fault
+  list and state the harm clause's power; word the rule as "LS-1's verdict is reported; the decision uses the harm
+  clause only". On the loss limit he prefers −0.05. P(no rollback | promoted) **0.87**.
+
+**Ruling. At LS-1's stop, k = 16 is promoted if all of these hold:**
+
+1. At least 60 valid matched pairs (same-unit proxy, D-060 §C), with missing cells listed.
+2. No runtime error, timeout or disqualification of the candidate in any LS-1 game, read from the API. Deaths by
+   invalid command are a monitor row, not a fault.
+3. **Harm clause:** the 95th percentile of the paired mean (candidate minus incumbent, opponent × map clusters,
+   1,000 resamples, seed 7) is not below 0.
+4. **Loss limit:** the paired mean is at least **−0.05**.
+5. **Same binary:** before activation Asahi shows that submission 16979's archive is the gated bot, either by
+   recomputing the runtime fingerprint on the extracted archive (expected 43bd2d4f) or by re-running Weakhold on
+   seed 2 from that archive (16 and 16 games; the gated result was 14 of 16 against 10 of 16). Daichi supplies the
+   archive.
+
+LS-1's verdict is still reported under its own frozen rule and keeps that letter. The promotion decision uses
+conditions 1 to 5 only. This replaces the sentence of D-057 §D on a frozen REJECT.
+
+- **Why −0.05 and not −0.02 (answer to Tanaka's amendment).** Tanaka is right that an upper bound alone can admit a
+  clearly negative point estimate, so a limit is adopted. At about 80 pairs the standard error is near 0.06.
+  Sugawara's simulation: a −0.02 limit declines a truly +1-point candidate one time in three and catches a −10-point
+  one 0.88 of the time; −0.05 declines it one time in six and catches −10 points 0.73 of the time. The local
+  evidence on the target map is strong and the rollback rule is a second net, so the Chair takes the smaller false
+  decline. The rule as fixed has a chance of about 0.72 of promoting a truly +1-point candidate.
+- **Power of the harm clause, stated:** it flags 0.05, 0.06, 0.21, 0.43 and 0.88 of candidates whose true effect is
+  +1, 0, −5, −10 and −20 points. It misses about half of a −10-point harm; the loss limit and the rollback cover
+  that gap in part.
+- **Activation:** by Daichi at its first unit after the stop, on this record, when conditions 1 to 5 hold; Daichi
+  posts the table first. It uses the uploaded submission 16979 and needs no redeploy. If any condition fails there
+  is no activation and the Chair reads the table.
+- **After activation:** the rollback rule of D-052 §B, unchanged, one look. Monitor rows beside it: Weakhold
+  (report-only, not a second trigger), the five bed-variant maps, invalid-command deaths.
+- **Scored event:** no rollback under D-052 §B within the first 120 ranked games, given promotion and observation
+  to 120 games. Forecasts: Tanaka 0.85, Sugawara 0.87. Nishinoya gave other events (above); it is asked for this
+  one before the stop.
+- **Blinding.** Daichi reported that the hub's index and job file show LS-1's running paired figure, and that it saw
+  the summary line. Its fix (the figure is withheld while a job is open) is merged with this unit and deploys
+  with the next redeploy, not before LS-1 closes. Tanaka and Sugawara state they never read the index. The Chair
+  reads only the game counts.
+
+### C. Battery: the live prior is now on the same rows
+
+- **A0, the live bot's prior as it plays: 0.6977** on the 188,250 development moves (Kageyama, descriptive;
+  Tanaka reproduced 0.69766). **A3, trees on the new encoder: 0.7145 [0.7061, 0.7239].** The new trees are about
+  1.7 points above the prior we deploy. The paired interval comes with the battery table.
+- A10b, the CNN trained to convergence: 0.6785 [0.6694, 0.6875]; early stopping added only +0.0058. The trees lead it
+  by +0.0360 [+0.0326, +0.0403]. The CNN gains +0.0203 per doubling of the training series against the trees'
+  +0.0114, so the two would meet at about 16 times the development set, which is about the size of the full rows.
+  Whether they do is a measurement on the full rows, not a forecast.
+- HB-1 feature vectors for dev120 are delivered (270 columns, 235,798 rows joined one to one; Tanaka's replication
+  passes). Arms A1, A2, A4 to A7 are unblocked.
+- Selector revision 6 (3f56b4b2…): Tanaka passes the teacher-specific repairs and holds on one point, the full-data
+  A10b missing from the pooled inventory. Selection waits for that fix and his pass line.
+- Frozen cohort, counts per teacher (Kageyama, read without labels): the three top-rated teachers together have 29
+  games in 25 series; the top-rated one alone (team 91) has 6 games in 6 series. **A paired gate on 6 series has
+  little power: A7 with a single fixed teacher stays descriptive and cannot be the teacher-specific candidate.** A6
+  (three teachers) and any A2 arm with at least 10 series in the cohort remain eligible.
+- Full teacher rows: Kageyama's native build is running (1,735 games, about 3.4 M rows, 2 to 3 GB, expected 1 to 2
+  hours). When it ends, Hinata refits the best tree arm and A10b on the full rows before any selection is read as
+  final; D-057 §C's order (select on development, refit, confirm) stands, with the full-row figures printed beside.
+
+### D. P-7
+
+With a converged network behind the trees at this data size, P-7's actor is, for now, the network distilled from
+the selected trees (D-063 §D), unless the full-row fit puts the network level with them. Asahi's throughput
+measurement runs after the teacher-row build releases the machine.
+
+## D-065 — k = 16: the binary is confirmed; battery: the Heartbreaker features lead; the deploy path opens (4 Oct 2026 23:43Z, Chair: Ushijima)
+
+### A. State at 23:41Z
+
+- Hub, collector and Asahi's daemon are up. LS-1: 120 of 204 games requested and verified, no fault.
+- **Disk:** 271 GB free on the Mac. With the lead's approval the Chair deleted the replay and game-log files of the
+  old local tournaments in `experiment_data/benchmark_*/games` (62,915 replays and 62,997 logs from 25 to 28 Sep;
+  result databases and tables kept), about 190 GB. Sizes found on the way: `experiment_data` 259 GB before the
+  deletion; `public_replays/corpus` 119 GB (140,653 gzipped server replays, about 19 GB more a day); `build` about
+  71 GB; `wt-asahi/build` 37 GB. A raw replay is about 3.3 MB, 1 MB gzipped, 0.55 MB with xz. Compressing in place
+  is not ordered: the row builder reads gzip only, and the panel tool and the collector treat a missing replay file
+  as work to redo.
+- Asahi works again from a fresh session (BOARD lines in the main checkout since 23:05Z).
+- **The Cowork session disk is full and at 23:42Z it took the Chair's shell as well** (no socket can be created in
+  the session's folder). This record and its files were written through file copies into the main checkout and
+  committed by the keeper, not through `r/ushijima`. The private tree `build/ushijima/tree` holds the same files.
+
+### B. k = 16: condition 5 of D-064 §B is met
+
+- Tanaka (23:23Z) read the supplied archive of submission 16979 (sha256 58518330…, 3,924,654 bytes): its 13 runtime
+  source members match the registered bot byte for byte, and the runtime fingerprint recomputes to 43bd2d4f…, the
+  fingerprint of both gated runs. Daichi's record ties the archive to the server (the hub uploads that file as it
+  is; the stored archive hash is equal).
+- **The same-binary condition is satisfied by Tanaka's replication.** Asahi is released from the Weakhold re-run.
+  Conditions 1 to 4 are read at the stop (02:15Z) by Daichi.
+- Nishinoya's forecast for "no rollback in the first 120 ranked games" is **0.85** (22:52Z, before the stop). The
+  scored set is Tanaka 0.85, Sugawara 0.87, Nishinoya 0.85.
+- Incumbent drift (Daichi 22:52Z: last 40 ranked games −0.129 [−0.227, −0.035]): Sugawara shows it is inside the
+  incumbent's own noise (26 % of its 996 rolling 40-game windows are below −0.08; series-shuffle probability of a
+  final window this low 0.07). Adopted for the monitor only: the drift row prints the latest window's percentile
+  against the submission's own history. The rollback rule of D-052 §B is unchanged.
+- Asahi's census (23:05Z, seed-matched pairs, seeds 1 to 3): pool 23 better, 10 worse, 783 tied of 816; Weakhold
+  16, 0 and 32 of 48; all other maps 7 better and 10 worse of 768. The parent's own seed noise on the same fixtures
+  is 0.194. k = 16 changes outcomes almost only on Weakhold.
+
+### C. Battery
+
+- **Selector:** Tanaka passes revision 7 (af1c87e0…). The software hold of D-060 §E is closed. Selection still needs
+  the complete inventory and the full-row comparisons.
+- **Arms so far** (188,250 development moves, same folds, whole-series intervals):
+
+  | Arm | Accuracy | Against the live prior (A0) |
+  |---|---|---|
+  | A0, the live prior as it plays | 0.6977 [0.6891, 0.7069] | |
+  | A1, HB-1's 270 features, trees refitted on ten teams | **0.7184 [0.7101, 0.7278]** | +0.0207 [+0.0170, +0.0244] |
+  | A3, encoder v1, trees | 0.7145 [0.7061, 0.7239] | about +0.017 |
+  | A10b, small CNN to convergence | 0.6785 [0.6694, 0.6875] | below |
+
+  A1 is +0.0039 [+0.0018, +0.0060] above A3. In both tree arms 800 rounds are worse than 400. The Heartbreaker
+  recipe refitted on ten teams is, so far, the best arm: the lead's suggestion of 19:20Z.
+- **Folds for the full rows:** `docs/learning/splits/PROPOSED-hinata-full-rows-folds.json` (sha 118c78d7…; the
+  development rule over 506 series and 1,709 games; dev120 series keep their fold) is accepted as the development
+  folds of teachers_v1. It is not a held-out split and does not touch the frozen cohort.
+- **Full-row refits approved** (`tools/hinata/r2_full.py` 6be9dd8d…, exact parity with the development tools on
+  dev120): A10b first, then the best tree arm once the development table names it. Heavy jobs, one at a time.
+  Hinata states the Mac's memory and each job's peak before queuing (trees about 18 GB, A5 about 23 GB, the network
+  about 8 GB); a job that would exceed 60 % of memory is split. Author's forecasts, recorded: best tree at least
+  0.75 on the full rows 0.40; the network beating the trees there 0.15.
+- **Deployability enters the selection.** A bot may be at most 4 MiB zipped, and the present prior alone takes
+  3.74 MiB. An arm that needs the present prior's three scores as inputs (A4, A5, A6, A7) must carry that model as
+  well as its own. **An arm is selectable only with a stated export that fits 4 MiB in total.** Kageyama reports,
+  with the deploy slot (§D), the compact size of a 400-round tree model and of the present prior re-exported the
+  same way; until then A1 and A3 are the arms known to need one model only.
+
+### D. The deploy path (ordered on the BOARD at 23:07Z, recorded here)
+
+- Kageyama builds `bots/kageyama-01-p1-slot`: carthage-05 with one switch that takes the direction prior from a
+  tree model on encoder v1 or on HB-1's feature vector in place of the present prior; off reproduces carthage-05
+  (golden parity). Placeholder: Hinata's A3-400 fold model (11.5 MB as text). Deliverables: the export tool to a
+  compact header; Python-against-C++ prediction parity on at least 10,000 development rows; zip size; points per
+  turn including turn 0. Slot as D-055 §E: forward, right and left renormalised, reverse keeps the parent's value,
+  λ of 0.5 and 1.
+- Then Asahi: parity, seed-1 panels, census table. Upload waits for the redeploy ban (H11).
+- This runs beside the battery so that the selected model has a bot to go into.
+
+### E. P-7
+
+Asahi's corrected throughput jobs ran (176 to 178, return code 0; 179 running). The figures are Asahi's to post.
+
+## D-066 — P-7's entry measure passes; which arms can be selected; full-row jobs sized to the Mac (5 Oct 2026 00:36Z, Chair: Ushijima)
+
+### A. State at 00:31Z
+
+- LS-1: 140 of 204 games requested and verified, no fault, 7 of 12 units. Stop and decision at 02:15Z (D-064 §B).
+- **The keeper commits again.** Daichi moved `tools/learn/__pycache__/splits.cpython-310.pyc` out at 23:52Z. The file
+  is tracked (commit 865fa477c tracked six cache files), so the keeper now lists it as a deletion and skips it. The
+  lasting fix is `git rm -r --cached tools/learn/__pycache__` by whoever holds a writable git on the Mac; it is not
+  urgent. D-065's files are absent from the pending list of the 00:24Z pass; the Chair reads that as committed and
+  cannot run git to check.
+- Mac (Asahi, 00:09Z, native read): Apple M5 Pro, 24.0 GiB of memory, 18 cores (6 performance, 12 efficiency), swap
+  4.5 of 6.0 GiB in use, 272.6 GB free.
+- The Chair's shell is still down (H12). This record went in by file copy.
+- **Disclosure.** At 00:31Z the Chair read the hub index for LS-1's game count with a filter meant to hide the
+  running paired figure. The filter failed and the figure (65 pairs) was shown to the Chair. It is not quoted to
+  lanes (D-056 §C.7). The rule of D-064 §B was fixed at 22:37Z, before this, and the Chair does not change it.
+
+### B. P-7: the entry measure passes
+
+- Event (D-063 §D): rollout throughput of the encoder plus network at or above 1×10⁷ decisions an hour on at most
+  eight cores. Asahi's job 179: 16,002,916 decisions in 304.06 s with 8 worker processes on the 18-core Mac, 1.89×10⁸
+  an hour. Tanaka re-summed the receipts and asked for proof that no more than eight cores were busy. Sugawara's
+  bound settles it: if all 18 cores were busy for the whole run, eight cores give at least 8/18 of the rate,
+  8.4×10⁷ an hour, 8.4 times the bar. **PASS.** No re-run. Asahi attaches the thread-limit evidence if it has it.
+- Brier: Sugawara 0.75 → 0.0625; Tanaka 0.55 → 0.2025; Nishinoya 0.50 → 0.25.
+- Carried into any rollout loop as requirements: workers are recycled after at most 500 games (the engine leaks
+  address space); the network is mirror-equivariant or trained with the mirror map (Hinata 00:14Z: 11 % of the best
+  clone's decisions change under the map's reflection).
+- **No training is approved by this record.** The untested parts stand (update step, critic, storage, legal mask,
+  dense games). The training ruling is read after the network arm on the full rows (§D): that arm says whether a
+  network closes the gap to the trees with 14.5 times the data, which decides between fine-tuning a network clone
+  and distilling the trees first (D-063 §D).
+
+### C. Which arms can be selected
+
+Kageyama's size report (00:06Z, zipped model header alone): a 400-round, 63-leaf tree model on encoder v1 is
+1.05 MB; the present prior re-exported the same way is 4.34 MB, and 3.87 MB in its own format.
+
+1. **A1 and A3 are selectable.** Each replaces the present prior and needs one model: about 1.05 MB, with 2.9 MiB to
+   spare. A1 also needs the HB-1 feature extractor, which carthage-05 already contains.
+2. **A4 to A7 as fitted are not selectable in this round.** They take the present prior's three scores as inputs, so
+   the bot would carry both models: about 4.9 MB, above 4 MiB. The development fits of A4 and A5 that are running
+   finish and are reported as diagnostics of what those scores add. If such an arm beats the best selectable arm by
+   at least 0.005 with a paired 5th percentile above 0, its author may file a size-matched variant (the present
+   prior cut down, or its scores replaced by a smaller model) as a new arm on development rows.
+3. **A6 (top-rated teachers only) and A7 (teacher-conditioned) are re-based on the selectable inputs.** Hinata states
+   the base (A1's or A3's inputs) before fitting. A2 (one model per teacher) is selectable as a single teacher's
+   model only.
+4. **New arm A8b, mirror-averaged prediction, no refit:** the mean of the model's probabilities on a row and on its
+   mirror image mapped back, on the base arm's test rows. Declared before any number for it exists. Precedent, from
+   memory and unsourced until Sugawara checks it: AlphaGo Zero evaluated each position under a random board
+   symmetry, and averaging predictions over input symmetries is standard test-time augmentation in vision. Cost at
+   play: two model evaluations per candidate; Kageyama states the points. A8 (mirror augmentation in training)
+   stays as declared.
+5. **The selector reads selectable arms only.** Hinata changes the inventory file, not the selector's code; Tanaka
+   confirms that the change is configuration only. The rule of D-057 §C is otherwise unchanged.
+6. In both tree arms 400 rounds beat 800 (Tanaka: A1 −0.0027 [−0.0036, −0.0018] at 800). The round count is chosen
+   on development rows inside the arm, as declared.
+
+### D. Full-row jobs on a 24 GiB Mac
+
+- The memory rule of D-065 §C gives a ceiling of **14.4 GiB** a job.
+- **The network on the full rows (A10b-full, about 8 GB) is approved to queue now.** One heavy job at a time, and
+  not beside a panel: Asahi's runner already orders them so.
+- **Trees.** The class estimate of 18 GB does not hold for A1: its matrix is 2,753,685 rows × 270 columns, 2.97 GB
+  as 32-bit floats. Hinata states A1's own peak and queues **A1-full second** if it is under the ceiling. A3 has
+  1,193 columns (13.1 GB as 32-bit floats) and needs the chunked route: build the binned LightGBM dataset shard by
+  shard (one byte a value, about 3.3 GB), save it, and free the raw matrix before training. This is the library's
+  documented path for data larger than memory. A3-full runs third, only if A3 is still within 0.005 of A1 on the
+  development table.
+- No full-row job for an arm that §C.2 makes non-selectable.
+- Each job posts its measured peak memory with its result.
+
+### E. Deploy slot
+
+- `bots/kageyama-01-p1-slot` is accepted as the deploy path for an encoder-v1 tree model. Measured by Kageyama and
+  Asahi: Python against C++ on 40,000 rows, largest probability difference 2.9e-8 and the same best move on all;
+  11,187 of 11,187 turns equal in one in-bot game; switch off equal to carthage-05 on 272 of 272 seed-1 fixtures;
+  zip 1.05 MiB; at most 10.1 M points a turn against 10.7 M for carthage-05.
+- **Kageyama builds the HB-1-vector input path now** (A1 leads and needs it), without waiting for the selection:
+  the same switch, the model fed from carthage-05's own 270-feature row. Deliverables as for the first slot.
+- Sugawara's two conditions are adopted for the *selected* model before it is uploaded: in-bot parity on at least
+  three maps of different symmetry type and both seats, with a count of non-zero turns for each column; and its own
+  in-bot parity for the HB-1 path. Sugawara's forecast that the selected arm's in-bot parity stays under 1e-6 on
+  the first attempt: 0.85 (recorded, one seat).
+- Asahi's seed-1 panels of the placeholder (A3-400, one fold model, λ 1 and 0.5) test the path, not a selection.
+  They are also the first play evidence of a ten-team clone in the prior slot, and are reported with the census
+  table.
+
+### F. From here to a clone on the ladder
+
+1. Development table of the selectable arms: A2, A6, A7 re-based, A8, A8b to come; A1-full and A10b-full beside it.
+2. Selection by the selector; one confirmation on the frozen cohort (115 games), read once.
+3. The selected model in the slot; conditions of §E; Asahi: parity at off, seed-1 panels, points, zip (D-055 §A).
+4. Upload and a live screen (LS-std-1).
+
+**The live screen does not wait for step 2's confirmation.** Under D-055 the ladder judges play; the frozen cohort
+confirms the offline claim and stays read-once. When the screen slot is free and uploads are possible, the candidate
+is the slot with the best selectable model that has passed step 3 on that exact model.
+
+**Step 4 is blocked by H11 whatever the model:** the hub cannot be redeployed until it is known to restart by
+itself, the upload fix is in that redeploy, and no upload is allowed without the fix (D-056 §D).
+
+### G. Other
+
+- Shenzhen's H-SZ64 (own unit-count features as a legal "are we winning" signal) is noted for Kageyama behind the
+  slot work; it belongs to the R4 feature blocks.
+
+## D-067 — Time and game state in the models: what exists, what is missing, what is ordered; two free lanes outside the ladder (5 Oct 2026 00:53Z, Chair: Ushijima)
+
+### A. The lead's instruction (00:46Z)
+
+Temporal features are central to decision making: not only rolling windows, but an implicit understanding of the
+game state, whether by the round as an input or by a hidden Markov model or latent state vector that selects
+behaviour sets. The lead also starts two instances whose only goal is the strongest bot (§F).
+
+### B. What the models already take (read in the code at 00:50Z)
+
+- Encoder v1 (`tools/learn/encode.py`, arms A3, A4, A10, A10b): round, rounds left, a five-bucket phase (below 25,
+  100, 250, 400, and 400 or more), the process's turn index, rounds since birth and since its last split, its last
+  action, the change in its length and in the unit count since its previous turn, and the age of its knowledge of
+  each queen.
+- HB-1's vector (`hb1_features.hpp`, arms A0, A1): round, turns alive, length change, turns since the last split
+  and the last pearl eaten, the previous turn's visible enemy heads and pearls, and the last action.
+- **The round is an explicit input of every arm in the battery.**
+
+### C. What is missing
+
+1. **No reading by time.** No arm reports accuracy by round bucket, none was fitted without its time inputs, and no
+   phase-specific model was compared with the pooled one.
+2. **No team trajectory.** A process sees the unit count and the limit now, not their history. Shenzhen (H-SZ59,
+   H-SZ64): the headroom signal for the outcome is absent at round 100 and present at round 300, and the unit
+   count's level and changes may give a legal "are we winning" signal.
+3. **No latent state.** Every model is a function of one turn plus a few hand-made memory terms. There is no
+   recurrent model and no state filter.
+4. **The decisions where time should matter most are not modelled:** split and child size, cull, and sprint (rung
+   R3, not started). The field table says this is where we lose (top-teams v1, ranked, after the map change): our
+   total length at round 499 is 85 against 97 to 141 for the top ten; our queen is alive at the end of 1 % of
+   round-limit games against 24 to 56 %; two of the top three feed by deliberate culls (18 per 1,000 dragon-turns)
+   and we never do.
+
+### D. Precedent and the evidence on the direction head
+
+- For time conditioning: classical chess engines interpolate their evaluation weights by game phase (tapered
+  evaluation); the project's brief names chess engines as its model. Recurrent cores are standard in partially
+  observed multi-agent self-play (OpenAI Five, AlphaStar). Both from the Chair's memory; Sugawara sources them
+  with P-8 (§E.5). The Chair knows no case of a hidden Markov model controlling a game-playing agent; its known
+  use is finding regimes in sequences.
+- Against, for the direction head only: HB-1 (30 Sep) found that memory features added at most 0.2 points to
+  imitating Heartbreaker's direction, and Heartbreaker's authors report that their LSTM layers did not help
+  (D-059).
+- **Chair's reading:** a small gain is to be expected on the direction clone, which already has the round and is
+  mostly a function of the view. The larger gain should be in split, cull and growth and in the value model.
+  The orders below test both.
+
+### E. Ordered
+
+1. **Time diagnostic (Hinata, now, no fit).** On the existing out-of-fold predictions of A0, A1, A3 and A4:
+   accuracy and the paired differences by the encoder's phase bucket and by rounds since birth (0–5, 6–20,
+   21–100, above 100), with the usual intervals; and the share of split gain carried by the time and memory inputs
+   in A1 and A3.
+2. **Arm T0 (Hinata, one fit, development rows):** A1 without `round` and its `mem_*` inputs. A diagnostic: how much
+   the clone uses time today.
+3. **Arm T1, conditional:** if T0 costs A1 at least 0.005, fit A1 as three phase models (rounds below 100, 100 to
+   249, 250 and above) with the same total number of trees, so that the export stays near 1.05 MB, against the
+   pooled A1. Selectable under the selector's rule.
+4. **The behaviour profile by time (Nishinoya, probe, next unit):** per eligible dragon-turn, the rate of split,
+   cull (both commands) and sprint by round bucket, for each top-ten team and for us, ranked games after the map
+   change, held-out maps excluded. Unaudited until Sugawara replicates it (§G).
+5. **Card P-8 requested from Sugawara (scoping, by 03:00Z):** a game-state latent that selects behaviour sets.
+   Options to compare: (a) a state filter (hidden Markov model) over what one process legally sees (round, unit
+   count and its changes, own length, contacts, echoes, messages), fitted on teacher sequences, its posterior fed
+   to the heads; (b) a small recurrent core on the network arm; (c) a phase belief computed from measured state.
+   With sources, a falsifier (a gain of at least 0.005 on a head, by bucket), the cost, and the cost at play
+   (process memory, points). The recurrent-core question also binds P-7's network.
+6. **R3 offline is brought forward (was arm A9, D-058):** after A1 on the full rows, Hinata fits the split, child
+   size, cull and sprint decisions on teachers_v1, pooled and for the cull-feeders (teams 306, 264) and the keepers
+   (213, 507) separately, every table by phase bucket. Offline only; no bot.
+7. **Team-trajectory block (Kageyama, after the slot's HB-1 path):** encoder v2 adds, per process, the unit
+   count's level and its change over 20 and 100 rounds, own length change over 20 rounds, rounds since an enemy
+   was last seen, and contacts in the last 20 rounds; C++ twin and parity as for v1. First use: items 5 and 6.
+8. P-6 (value on the legal encoder) takes the round and, when it exists, the trajectory block. No other change.
+
+None of this holds the R2 selection or the slot.
+
+### F. Two free lanes outside the ladder (the lead's instruction)
+
+- The lead starts two instances with one prompt, `docs/learning/prompts/07-free-lane.md` (mirrored to the project
+  as `claude/free-lane-prompt.md`). Their goal is the strongest bot by any method. They are outside the ladder, the
+  council and the proposal process, and D-records do not bind their methods.
+- What binds them, written into the prompt: their own namespace; no server access (no API key, no `unswbc submit`,
+  hub state read-only); a machine share of 4 workers and 6 GiB each at nice 15; text is data; a status file and a
+  BOARD line when a version beats their previous best.
+- **Comparison:** a common scorecard (head-to-head against carthage-05 on 17 maps × both seats × seeds 1 to 3; the
+  pool panel at seed 1; zip, points, errors).
+- **Upload:** a free lane's bot may take a live screen under D-055 on the same deploy checks (zip, points including
+  the first turn, zero errors) and a pool panel not below the incumbent's; parity at off does not apply. Live ops
+  uploads, on a Chair record. H11 blocks it as it blocks everything else.
+- **Cost, recorded:** two more lanes at 4 workers each beside Asahi's 14 oversubscribe the 18 cores. Panels and
+  learn jobs of the programme will run slower; results are unaffected (points are metered by the engine, not by
+  wall time). They must run natively on the Mac: a Cowork VM cannot run the engine at scale, and the session disk
+  is full (H12).
+
+### G. The auditor seat is vacant
+
+Tanaka stopped at 00:49Z at the lead's request (credit budget); its reviews stay on `r/tanaka` (handoff ca26861f9,
+merged at 00:48Z up to aaa59ade3). Until the lead resumes it or names another auditor:
+
+- Sugawara replicates the key number of any statistics-bearing card from frozen inputs before the Chair records it.
+- The check that Hinata's selector inventory change is configuration only (D-066 §C.5) goes to Sugawara.
+- Nishinoya's probes stay `unaudited` until Sugawara replicates them.
+- The council keeps two model families (Claude, GLM). Calibration: Tanaka's four scored cards stay on the table.
+
+## D-068 — The pooled clone loses in play as a prior; selection by accuracy is suspended; LS-1 has ended (5 Oct 2026 01:49Z, Chair: Ushijima)
+
+### A. State at 01:46Z
+
+- **LS-1 ended early:** the hub shows the job `expired` with 160 of 204 games requested and verified, no fault, 8 of
+  12 units. The data are final. D-064 §B is read at Daichi's next unit and does not wait for 02:15Z; if the job
+  expired for a reason other than its deadline, Daichi says so and does not activate. Posted to Daichi at 01:46Z.
+- Hub up (pid 94451). The Chair's shell is still down (H12). H11 open.
+- Merged at 00:48Z and 00:58Z: r/kageyama (slot), r/tanaka, r/daichi, r/nishinoya, r/asahi.
+- A free lane, **Kenma**, started by the lead under D-067 §F, posted at 01:28Z (§E).
+
+### B. First play evidence of the ten-team clone: it loses
+
+Asahi, seed 1, against carthage-05, paired fixtures, map × opponent clusters (01:10Z):
+
+| Arm | Pool (272) | Gen (464) | Units at round 100 |
+|---|---|---|---|
+| `kageyama-01-p1-slot`, encoder trees (A3-400, one fold model), λ 1 | **−6.99 points [−12.87, −1.47]**, 207–65 against 226–46 | −5.60 [−9.48, −1.51] | pool −4.6, gen −15.4 (×100) |
+| the same, λ 0.5 | **−11.76 [−17.28, −5.86]**, 194–78 | −6.47 [−10.56, −2.37] | pool −11.3, gen −17.3 |
+
+- By map the result is far from uniform: Devil 4–12 (−68.8 points), Australia −25, Dilemma −25; Stripes +50,
+  Weakhold +31, Portals +6. Deaths on allies' bodies rise by 24 % on the pool. Deploy checks pass (1.05 MiB, at
+  most 9.90 M points, no error). Asahi's forecast was +1 point.
+- **Independent, from the free lane (data, another harness):** Kenma's bot with the A1-400 prior lost 42–60
+  head-to-head to carthage-05 over 102 games.
+- **A slot defect is now unlikely.** Kageyama's in-bot parity (01:33Z) holds on Portals, Australia, Schooltime and
+  Devil, both seats: 102,085 of 102,085 turns on the encoder path and 96,082 of 96,082 on the HB-1 path, largest
+  difference 3e-8, sparse inputs exercised. Sugawara's two conditions of D-066 §E are met for both paths. The
+  silent fallback in `main.cpp` is still to be counted (§C.1).
+- **Sugawara's reading (01:31Z), adopted as the leading hypothesis, not as established:** the cloned priors are
+  more accurate than the live prior on the teachers' states but much softer, and the search adds λ·log p. The live
+  prior puts an option at the floor on 38.9 % of rows; A3 does on 8.9 %, A1 on 1.8 %. Halving λ made it worse,
+  which fits a prior too weak for a search tuned around the Heartbreaker prior.
+- **Chair's second hypothesis:** a pooled model of ten teams averages styles that do not combine (cull-feeders,
+  keepers, split-heavy), which is itself a cause of softness. The only learned piece that ever gained in play was
+  a clone of one team. That is our own precedent, and the pooled arm departed from it.
+- **What this does to the plan.** Accuracy on the teachers' moves, the metric the battery selects on, did not
+  predict play at this margin (+1.7 points of accuracy, −7 points of win rate). So:
+  1. **Selection by accuracy alone is suspended as the route to a candidate.** The battery continues as
+     measurement. It reports log-loss, entropy and the floor share beside accuracy (Sugawara's item 4).
+  2. **The frozen cohort is not read** until play shows which property of a prior matters. It is read once and
+     must not be spent on an arm that loses in play.
+  3. D-066 §F stands in its order (panels before the live screen); its step 2 (selection, then confirmation) waits.
+
+### C. Play diagnostics ordered (Asahi, seed-1 pool only, in this order, ahead of the learn queue)
+
+1. **Fallback count:** Kageyama adds a log line in the catch around `slot.observe`; Asahi counts it per map on
+   Devil and Dilemma first. Engineering, no card.
+2. **`kageyama-02-p1-hb1`, A1-400 placeholder, λ 1.** The cleanest comparison with the live bot: same features,
+   same search, ten teams in place of one.
+3. **λ = 0 on carthage-05:** no prior at all. It prices the prior and places the clones between "no prior" and
+   the live one.
+4. **A1-400 at one strength-matched λ\* = 1.41** (Sugawara's value: the gap between the best and second option
+   matched to the live prior's). One value, declared here; no sweep.
+5. **Single-team priors (arm A2, brought forward):** Hinata fits A1's recipe on one team's rows for team 213
+   (the keeper with the highest win rate in the top ten) and team 91 (rank 1), on the full rows of each, and reports
+   accuracy, log-loss, entropy and floor share on that team's held-out series. Kageyama exports them; Asahi screens
+   each at λ 1. Precedent: HB-1.
+- Forecasts on file (Sugawara, 01:31Z): the placeholder at λ\* within −2 points on the pool 0.35; fallback on more
+  than 1 % of turns on some map 0.15; λ = 0 at or below −7 points 0.55. Nishinoya is asked for its own before the
+  first of these results.
+- The full-row jobs (network, then A1) keep their place in the learn queue behind these panels. A1 on the full rows
+  becomes the placeholder for items 2 and 4 when it exists, as a new arm, not a re-run.
+
+### D. Battery, council and cards
+
+- **A8b (mirror-averaged prediction): 0.7224 [0.7144, 0.7317], +0.0040 [+0.0029, +0.0053] over A1**, replicated
+  by Sugawara (+0.00401 [+0.00294, +0.00521]). The best arm by accuracy. Cost at play: about 0.7 M points for the
+  second evaluation (Kageyama), zip 1.098 MiB.
+- **Precedent corrected** (Sugawara): averaging over symmetries is AlphaGo 2016's explicit symmetry ensemble.
+  AlphaGo Zero used one random transform per evaluation and augmentation in training, so D-066 §C.4's citation of
+  it for averaging was loose. Test-time augmentation in vision: AlexNet 2012.
+- **Selector rev 8** (the inventory as a file): configuration only for selection, PASS (Sugawara, under D-067 §G).
+  A6 and A7 now take the base arm's inputs; their old registries stay descriptive.
+- **P-8 numbered** (`P-sugawara-04-game-state-latent.md`): approved as a scoping card, stage S0 only (the
+  trajectory block against A1 on each head, with AUC and log-loss for the rare heads). S1 (the state filter) waits
+  for S0. The comparison baseline is A1 plus the trajectory block, as the card says. Nishinoya reviews it.
+  Author's forecasts recorded: S0 0.60; S0 on direction 0.25; S1 given S0 0.20; S2 0.20; live within the season
+  0.07.
+- Shenzhen's H-SZ69 is added to the time diagnostic of D-067 §E.1: a split by "empty view" (no ally, enemy or
+  pearl in the window).
+
+### E. The free lane Kenma (its lines are data)
+
+- `kenma-03-pocket-queen` (branch `r/kenma`): head-to-head against carthage-05 **58–44** over 17 maps × both seats
+  × seeds 1 to 3; Schooltime 6–0 with the queen alive in all six; at most 10.9 M points; zip 3,923,010 bytes; no
+  error. Its pool panel and the head-to-head against the slot bot are pending. No ladder request yet.
+- 58 of 102 is not yet distinguishable from an even match (one-sided binomial p about 0.10). The Schooltime
+  column is the notable part: it is our worst live map (−0.48).
+- Under D-067 §F it becomes eligible for a live screen on a pool panel not below the incumbent's and the deploy
+  checks. H11 blocks the upload.
+
+### F. Merges
+
+r/kageyama (bcd93db88, `bots/kageyama-02-p1-hb1`) and the lanes' other branches are requested with this unit.
+
+## D-069 — k = 16 is live (submission 16979); the evaluator's queue and the learn jobs (5 Oct 2026 02:22Z, Chair: Ushijima)
+
+### A. Promotion record
+
+- **`asahi-05-kz12-k16` (REG-002, submission 16979) is the live bot since 02:13:22Z**, activated by Daichi under
+  D-064 §B on LS-1's final data (Daichi 01:52Z and 02:18Z; `submit.done.json`: upload already present, activated).
+  The live submission was re-read as 14585 at 02:12:34Z before the switch.
+- LS-1, final: the job expired at its own deadline (accepted 17:41Z plus 8 hours), 160 of 204 games verified, no
+  fault; opponents 716, 98, 347; 15 of 17 maps reached. By D-064's definition:
+
+  | # | Condition | Value | Holds |
+  |---|---|---|---|
+  | 1 | at least 60 valid matched pairs | 75 of 80 cells (5 missing, listed) | yes |
+  | 2 | no runtime error, timeout or disqualification of the candidate | 0 in 80 games; at most 11.10 M points | yes |
+  | 3 | 95th percentile of the paired mean not below 0 | +0.187 | yes |
+  | 4 | paired mean at least −0.05 | **+0.080** [−0.029, +0.187] | yes |
+  | 5 | same binary | met (D-065 §B) | yes |
+
+  By opponent: 716 +0.233 (30 pairs), 98 0.000 (25), 347 −0.050 (20). Weakhold +0.50 on 4 pairs.
+- **What this promotion is and is not.** It rests on the local Weakhold result (+28 points, three seeds) and on
+  the absence of harm live. LS-1's own frozen letter is HOLD (the 5th percentile, −0.029, is not above −0.02), and
+  the local gate was a hold. The expected gain is small and concentrated on one map.
+- **Watch:** D-052 §B over 16979's first 40 ranked games, as a difference against 14585's last 120, plus any crash
+  or disqualification; rollback target 14585. No second promotion before 14:13Z (12-hour rule).
+- **Scoring.** D-064's event (no rollback within the first 120 ranked games; Tanaka 0.85, Sugawara 0.87, Nishinoya
+  0.85) is now running. D-056 §C's event (LS-1's frozen rule says PASS, including the declared extension;
+  Sugawara 0.50, Nishinoya 0.45) is **not scored**: the screen expired at 75 of its 102 planned pairs and the
+  extension was not run, so it ended incomplete.
+- **Incumbent and parent.** The incumbent is 16979 (`asahi-05-kz12-k16`); the fallback is 14585 (carthage-05).
+  New candidate bots are built on `asahi-05-kz12-k16`. The diagnostics of D-068 §C stay on carthage-05, so that
+  they compare with the placeholder screens already run.
+
+### B. The evaluator's queue and long learn jobs
+
+- Asahi queued D-068 §C's items 2 to 4 with a pre-registration (02:15Z; its forecasts: A1 at λ 1 −4 points, no
+  prior −8, λ 1.41 −3). The daemon runs one job at a time and Hinata's network job on the full rows has held it
+  since 01:03Z (about 33 minutes a fold, five folds, peak 7.38 GiB). The daemon cannot pre-empt it.
+- **Ruling.** The play diagnostics come first. Hinata: if `r2_full.py` keeps finished folds and can resume, cancel
+  `hinata-01-a10b-full` now (`build/learn/queue/cancel-hinata-01-a10b-full`) and re-queue it behind Asahi's
+  panels; if a cancel loses the finished folds, let it finish.
+- **From now on a learn job is at most one fold, or about 45 minutes,** so that panels can run between jobs.
+  `hinata-02-a1-full` is re-queued as five fold jobs.
+- Kageyama's `bots/kageyama-02-p1-hb1` is on main (merged 01:52Z with r/asahi, r/daichi and r/nishinoya).
+
+### C. Battery
+
+- A5 (encoder, HB-1 vector and the live prior's scores): 0.7267 [0.7179, 0.7361], the highest arm; not selectable
+  (two models). It is +0.0043 [+0.0017, +0.0067] over A8b-A1, below the 0.005 bar of D-066 §C.2, so no size-matched
+  variant is filed.
+- **A11 (encoder plus HB-1 vector, without the live prior's scores, one model) may join the inventory as a
+  measurement arm** (Hinata's question, 02:21Z): declared in the inventory file before fitting, fitted in the cloud,
+  reported with log-loss, entropy and floor share. No slot work for it until the play diagnostics of D-068 §C are
+  in: selection by accuracy is suspended and the slot would need both input paths at once.
+
+## D-070 — 16979's first ranked games; LS-1's pairing range; the time diagnostic; Kenma's scorecard (5 Oct 2026 03:02Z, Chair: Ushijima)
+
+### A. 16979 live: a bad first ten games, no rollback yet
+
+- Daichi (02:55Z): 10 of 40 ranked games, 2 series, 3 wins and 7 losses against teams 303 (Elo 1559, 1–4) and 420
+  (Elo 1533, 2–3); score minus expectation −0.439; **Elo 1725 → 1643, rank 90 → 110**. No timeout, no error, at
+  most 10.81 M points in all 10 games.
+- **Chair's reading: this is two series, and it is not evidence against k = 16.**
+  1. In the local census the two bots give the same result on 783 of 816 seed-matched fixtures; they differ
+     almost only on Weakhold. A bot that close to its parent is very unlikely to lose 0.4 a game by its own
+     change. The local panels do not cover the server's hidden bed layouts, so this is not proof.
+  2. In LS-1 the same binary scored 46 wins in 80 games against the parent's 41, same opponents and hours.
+  3. The parent's own recent ranked series include 1–4, 1–4 and 2–3 results.
+- **Daichi's "contradiction" is the queen rule, not a decoder question.** Since the rules change of 1 Oct (D-040)
+  the round-limit order is the longer queen first, then the longest dragon, then total length. A side with the
+  longer longest dragon loses at round 500 whenever its queen is dead and the opponent's is alive. Our queen is
+  alive at the end of about 1 % of round-limit games. Four of the seven losses are of this kind. It is the
+  programme's largest known weakness and no rung of the ladder addresses it at present (cage parked, reach veto
+  refuted); the free lane's bot does (§D).
+- **Orders to Daichi:** add each side's queen state at the last round (from the replay header) to the scan, and
+  14585's ranked record against teams 303 and 420 since the map change. **The rollback rule of D-052 §B is not
+  changed:** it is read at 40 ranked games, and at once on any crash or disqualification. Sugawara's forecast that
+  it fires within the first 40: 0.08 (02:28Z, before these games were posted).
+- The lead may order an immediate rollback at any time; 14585 is one activation away.
+
+### B. LS-1: the pairing range (amends D-069 §A)
+
+Sugawara replicated LS-1 from the job rows. Five cells of opponent 98 hold two candidate games each; the paired mean
+is +0.080 with the later game (Daichi's figure), +0.073 with the average, +0.067 with the earlier, and +0.0625 on 80
+pairs if the second unit is moved to the five cells it was meant for. Conditions 1 to 4 of D-064 §B hold under
+every pairing and LS-1's own letter is HOLD under every pairing. D-069's record stands with the range
+**+0.0625 to +0.080**. Adopted for the next screen: the rule for duplicate and colliding cells is frozen in the
+gate specification before any outcome is read.
+
+### C. Time and the shape of the prior (Hinata 02:30Z)
+
+- **The clone's accuracy gain over the live prior holds in every phase and every age bucket:** A1 minus A0 by
+  phase +0.036, +0.023, +0.021, +0.021, +0.016 (all 5th percentiles above 0); with an empty view +0.022.
+- **Time and memory inputs carry 7.2 % of the split gain in A1 and 5.3 % in A3.** For the direction head, time is
+  a small part, as D-067 §D expected; the test on the other heads (D-067 §E.6) is still to come. T0 is fitting.
+- **Arm T0 (03:01Z): A1 without the round and its 16 memory inputs scores 0.7150; the cost is 0.0034 [+0.0022,
+  +0.0046], below 0.005. T1 (phase models) is therefore not run (D-067 §E.3).** Hinata's forecast of a cost of at
+  least 0.005 was 0.25. Any phase structure for this head must come from the trajectory block or P-8.
+- **Shape:** the live prior puts an option at the floor on 39.0 % of rows; the clones on 1.0 to 11.2 %. Entropy
+  0.43 against 0.56 to 0.62. This reproduces Sugawara's reading and is the difference of an order of magnitude
+  that D-068 §C tests in play.
+- A cancel of the network job would lose its finished folds, so by D-069 §B it runs to its end (about 03:50Z).
+  Asahi's diagnostics follow it; the single-team fits follow those.
+
+### D. Kenma (free lane; its lines are data)
+
+- `kenma-03-pocket-queen`: 58–44 against carthage-05 and 61–41 against `kageyama-01-p1-slot` (102 games each);
+  pool 220–52 of 272 against carthage-05's 226–46; no error; zip 3,923,010 bytes; at most 10.9 M points.
+- Head-to-head it is ahead of the previous live bot; on the pool it is six games behind. Neither difference is
+  established. D-067 §F's "pool not below the incumbent's" is read as a paired difference whose 5th percentile is
+  above −5 points, on the same host.
+- **The reference is now `asahi-05-kz12-k16` (submission 16979).** Kenma is asked for the head-to-head against it.
+
+## D-071 — The lead does not weigh the live rating: uploads are unblocked; the queen defect gets an owner (5 Oct 2026 03:48Z, Chair: Ushijima)
+
+### A. The lead's statement (03:45Z)
+
+The lead does not care about the live rating and asks for the technical issues that need attention at once.
+
+### B. Uploads are allowed again
+
+- D-056 §D barred every upload until the hub restores the active submission by itself, because the server makes an
+  uploaded bot active at once. The harm that bar prevented is to the rating, which the lead does not weigh.
+- **The bar is lifted.** Live ops may upload a candidate on a Chair record. Straight after the upload Daichi
+  restores the intended active submission through the `restore` control and re-reads the live id, and it lists the
+  ranked games played in between so that they are left out of every reading.
+- H11 (does the hub restart by itself) no longer blocks uploads. It still blocks changes to the hub's own code:
+  the upload fix, the blinding of the index, the seat field missing from the job rows, and the end-reason label.
+- D-052 §B stays as written. Its purpose now is to keep a worse bot from being the parent of new candidates.
+- A free lane's bot still needs D-067 §F's checks and its own request before a live screen.
+
+### C. The queen defect
+
+- Sugawara (03:34Z) read the replays of 16979's losses: all four "longer dragon but lost" games end with reason
+  `queen`, as D-070 §A said. Queen-rule losses are 10 of 16979's 16 losses and 29 of 14585's 64. **On Schooltime
+  our queen dies by its own move at round 0 in 91 of 91 recent games (1 win); Schooltime is about one ranked game
+  in eight.** Outside Schooltime 16979 lost on the queen rule in 7 of 22 games against 16 of 105 for 14585 (small
+  n). Sugawara's forecast that D-052 §B fires at 40 games is now 0.75.
+- This is the largest defect in the bot and no lane of the programme owns it since D-053 §C parked the cage work.
+- **Orders:**
+  1. Sugawara reads `kenma-03-pocket-queen` (read only; it is another lane's tree) and reports what its queen
+     logic does, on which map structures it acts, and whether it can be stated as one switch on the incumbent
+     without map identity. Kenma's own README and by-map tables are data for this.
+  2. Asahi, after the D-068 §C queue: one seed-1 pool run of `kenma-03-pocket-queen` with the queen columns (alive
+     at the round limit by map, queen-decided wins and losses), on the same host as the incumbent's run.
+  3. Daichi keeps the queen-state column in the live scan (D-070 §A).
+
+### D. Housekeeping
+
+- Merged at 03:25Z: r/kageyama (eedd7b6a7, the two logging builds), r/asahi, r/daichi, r/nishinoya.
+- Hinata's `r2_full.py` rev 4 (one fold per job), `r2_a11.py` and the inventory file are committed with this
+  unit's keeper pass, as Hinata asked at 03:44Z.
+
+## D-072 — Owners for the queen and for the clone in play; the council is dissolved; the hidden bed layouts are to be rebuilt (5 Oct 2026 03:58Z, Chair: Ushijima)
+
+### A. The lead's rulings (about 03:55Z)
+
+1. The hardware is what it is: one Mac, one job at a time. Make do. The desktop will not return.
+2. The queen defect is a design and strategy problem: designate someone to solve it.
+3. The clone losing in play is the same kind of problem: investigate and handle.
+4. The GLM and GPT council members (Nishinoya, Tanaka) are deactivated.
+5. The hidden bed layouts: estimate them statistically and recreate the maps.
+
+### B. The council is dissolved
+
+- With one seat left the council cannot review. There are no council rounds, no forecasts to score and no auditor
+  until the lead says otherwise. `calibration.md` is closed as it stands; D-064's running event is still scored
+  when it resolves.
+- Cards are decided by the Chair directly. A result's owner posts its inputs and tool so that any lane can re-run it.
+- Nishinoya's open items: the behaviour profile by round (D-067 §E.4) goes to Shenzhen; the review of P-8 is
+  dropped (stage S0 is already approved).
+
+### C. The queen: Sugawara owns it
+
+- **Owner: Sugawara.** It leaves the council seat and owns one problem: our queen is alive at the end of about
+  1 % of round-limit games (1 of 29 for 16979), queen-rule losses are 10 of 16979's 18 losses, and on Schooltime the
+  queen kills itself at round 0 on every side.
+- **Goal, in play:** on the pool, more queen-decided wins than losses against the parent and a pool win rate not
+  below the parent's; then the same on the ladder. The top ten keep the queen in 24 to 56 % of round-limit games;
+  that is the reference.
+- **Authority:** Sugawara chooses the mechanisms and their order, writes the changes as switches on the incumbent
+  (`asahi-05-kz12-k16`, or carthage-05 if 16979 is rolled back), and queues builds and seed-1 screens with Asahi.
+  No card or review is needed for a screen. A candidate that passes D-055 §A's checks goes to a live screen on a
+  one-line request to the Chair. Map identity stays excluded.
+- **Material in hand:** Shenzhen's result of 03:50Z (C+D gets the Schooltime queen past round 0 on 6 of 6 and wins
+  5 of 6; C+D with the reserve wins 6 of 6 but costs on open maps); `asahi-01-cage-cd-e0` (C+D, screened on
+  carthage-05: pool +2.2 points [−0.4, +5.2], Portals −12.5); the free lane's `kenma-03-pocket-queen` (6–0 on
+  Schooltime; D-071 §C); Daichi's queen column in the live scan; the top-team table (keepers: teams 213 and 507).
+  D-053 §C's parking of the cage work is lifted.
+- **Support:** Shenzhen is Sugawara's analyst (replay and simulator evidence); Asahi builds and screens.
+- Sugawara reports each result in one BOARD line and keeps `claude/sugawara-status.md` as the queen log.
+
+### D. The clone in play: Hinata owns it
+
+- **Owner: Hinata.** The goal changes from accuracy on the teachers' moves to play: a learned prior in the slot
+  that is not below the incumbent on the seed-1 pool, then above it.
+- **Authority:** after D-068 §C's five tests Hinata chooses the route without a card: temperature or calibration
+  of the prior, the weight λ, single-team models, mirror averaging, more data. One declared value per test, no
+  sweeps on the panel. Kageyama exports; Asahi screens.
+- The battery stays as measurement. The frozen cohort stays unread until a prior wins in play.
+
+### E. The hidden bed layouts: Kageyama rebuilds them (withdraws the limit in D-053 §A item 9)
+
+- The Chair accepted too early that these layouts cannot be rebuilt. The replays show where and when every pearl
+  appears; a bed is two integers (first countdown, period); and the oracle is an exact test: a rebuilt map is
+  right when the engine re-run reproduces the server's games turn for turn.
+- **Order to Kageyama, ahead of the trajectory block:** for each map and variant on which the oracle fails
+  (Schooltime open-4, Prisoners Dilemma with 10 dragons, and the timer variants of Slithery Fight, Queen of Spades
+  and Devil), estimate each bed's cells and timers from the pearl appearances across that variant's games (an
+  older tool, `tools/infer_beds.py`, did this from countdown events the server no longer writes), write the map
+  under `maps/live_var/`, and accept it when the oracle reproduces at least 95 % of that variant's games.
+- **Uses:** Asahi adds the accepted variants to the pool, so the panels cover the roughly 15 % of ranked games they
+  miss today; the 548,724 teacher rows without timers can be rebuilt as oracle rows.
+
+### F. One machine
+
+- Queue order on the Mac: Asahi alternates the clone's and the queen's jobs, starting with D-068 §C's three runs;
+  training folds run between panels (D-069 §B). No job longer than about 45 minutes.
+- The second runner is dropped.
+
+## D-073 — The hub restarts by itself and is redeployed; the session disk is reset (5 Oct 2026 04:08Z, Chair: Ushijima)
+
+### A. H11 is closed
+
+- The lead closed the hub's Terminal window and started the hub inside the restart loop (new process 04:03:17Z).
+- The Chair requested the redeploy at 04:05Z through `hub-state/control/redeploy.json` (51 files hashed, the same list
+  as the last accepted request), so that the loop was tested while the lead was at the machine. The hub accepted it:
+  gate tests ok, snapshot `67384f265-20261005T040635Z`, exit, and a new process on the new snapshot at 04:06:45Z
+  (pid 40226, mode shadow, active 16979). **The loop works. The redeploy ban of D-057 §A is lifted.**
+- **Deployed:** the upload fix (`submit_check` restores the active submission), the field reserve of 5 (D-057), and
+  the blinding of the index. With the upload fix live, D-071 §B's restore by hand becomes a check: after an upload
+  Daichi re-reads the live id and restores only if it is wrong.
+- **Still to write and deploy (Daichi, no ban):** the seat in the live-screen job rows, the end reason `queen` in
+  `executor.analyse_replay`, and the frozen pairing rule for duplicate cells (D-070 §B).
+- Daichi verifies at its next unit that the blinding and the reserve behave as built.
+
+### B. H12: the session disk was reset
+
+- The lead quit the app and moved the session disk image aside at about 04:00Z; the app recreated it.
+- The Chair's own shell still fails, now with a permission error on its session folder (the folder did not survive
+  the reset). The Chair keeps working by file copy; a fresh Chair session would have a shell.
+- Every lane reports in its next line whether its shell works. The backup image is deleted once they do.
+- The disk will fill again: each scheduled run leaves a session folder behind. Expect one to three days.

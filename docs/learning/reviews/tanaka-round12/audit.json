@@ -1,0 +1,461 @@
+{
+  "source_sha": {
+    "r2_bc.py": "a31faa5d8ea31652674b993c77d7549d978437b2226f7e659d7004fa76036427",
+    "r2_battery.py": "af1c87e0d4de7dc2b1cc16783b037edbad184420ea4211b88d7ffec267428207"
+  },
+  "checks": {
+    "complete": {
+      "accepted": true,
+      "pooled": {
+        "selected": "A10b",
+        "run": "A10b",
+        "manifest": "98dd0d0c0200",
+        "acc": 1.0,
+        "leader": "A10b",
+        "overlapping": [
+          "A1-400",
+          "A1-800",
+          "A10-e4",
+          "A10b",
+          "A3-400",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800"
+        ],
+        "beats_A0": true,
+        "reaches_075": true,
+        "pooled_missing": [],
+        "passes": true
+      },
+      "ts": null,
+      "roles": {
+        "A1-400": "pooled",
+        "A1-800": "pooled",
+        "A10-e4": "pooled",
+        "A10b": "pooled",
+        "A3-400": "pooled",
+        "A3-800": "pooled",
+        "A4-400": "pooled",
+        "A4-800": "pooled",
+        "A5-400": "pooled",
+        "A5-800": "pooled"
+      }
+    },
+    "missing_A10b": {
+      "accepted": true,
+      "pooled": {
+        "selected": "A10-e4",
+        "run": "A10-e4",
+        "manifest": "98dd0d0c0200",
+        "acc": 0.8,
+        "leader": "A1-400",
+        "overlapping": [
+          "A1-400",
+          "A1-800",
+          "A10-e4",
+          "A3-400",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800"
+        ],
+        "beats_A0": true,
+        "reaches_075": true,
+        "pooled_missing": [
+          "A10b"
+        ],
+        "passes": false,
+        "note": "INCOMPLETE: planned pooled arms missing; no selection claim"
+      },
+      "ts": null,
+      "roles": {
+        "A1-400": "pooled",
+        "A1-800": "pooled",
+        "A10-e4": "pooled",
+        "A3-400": "pooled",
+        "A3-800": "pooled",
+        "A4-400": "pooled",
+        "A4-800": "pooled",
+        "A5-400": "pooled",
+        "A5-800": "pooled"
+      }
+    },
+    "curve25": {
+      "accepted": true,
+      "pooled": {
+        "selected": "A10-e4",
+        "run": "A10-e4",
+        "manifest": "98dd0d0c0200",
+        "acc": 0.8,
+        "leader": "A1-400",
+        "overlapping": [
+          "A1-400",
+          "A1-800",
+          "A10-e4",
+          "A3-400",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800"
+        ],
+        "beats_A0": true,
+        "reaches_075": true,
+        "pooled_missing": [
+          "A10b"
+        ],
+        "passes": false,
+        "note": "INCOMPLETE: planned pooled arms missing; no selection claim"
+      },
+      "ts": null,
+      "roles": {
+        "A1-400": "pooled",
+        "A1-800": "pooled",
+        "A10-e4": "pooled",
+        "A10b-f25": "descriptive",
+        "A3-400": "pooled",
+        "A3-800": "pooled",
+        "A4-400": "pooled",
+        "A4-800": "pooled",
+        "A5-400": "pooled",
+        "A5-800": "pooled"
+      }
+    },
+    "curve50": {
+      "accepted": true,
+      "pooled": {
+        "selected": "A10-e4",
+        "run": "A10-e4",
+        "manifest": "98dd0d0c0200",
+        "acc": 0.8,
+        "leader": "A1-400",
+        "overlapping": [
+          "A1-400",
+          "A1-800",
+          "A10-e4",
+          "A3-400",
+          "A3-800",
+          "A4-400",
+          "A4-800",
+          "A5-400",
+          "A5-800"
+        ],
+        "beats_A0": true,
+        "reaches_075": true,
+        "pooled_missing": [
+          "A10b"
+        ],
+        "passes": false,
+        "note": "INCOMPLETE: planned pooled arms missing; no selection claim"
+      },
+      "ts": null,
+      "roles": {
+        "A1-400": "pooled",
+        "A1-800": "pooled",
+        "A10-e4": "pooled",
+        "A10b-f50": "descriptive",
+        "A3-400": "pooled",
+        "A3-800": "pooled",
+        "A4-400": "pooled",
+        "A4-800": "pooled",
+        "A5-400": "pooled",
+        "A5-800": "pooled"
+      }
+    },
+    "unknown75": {
+      "accepted": false,
+      "reason": "/var/folders/4p/nl_tnfpn5r925vf3qxgdvl100000gn/T/tanaka-r12-9z_30llt/unknown75/A10b-f75/A10b-f75: not a declared candidate identity ['A1-400', 'A1-800', 'A10-e4', 'A10b', 'A10b-f25', 'A10b-f50', 'A2-400', 'A2-800', 'A3-400', 'A3-800', 'A4-400', 'A4-800', 'A5-400', 'A5-800', 'A6-400', 'A6-800', 'A7-400', 'A7-800', 'A7fix-400', 'A7fix-800']"
+    },
+    "unknownsize": {
+      "accepted": false,
+      "reason": "/var/folders/4p/nl_tnfpn5r925vf3qxgdvl100000gn/T/tanaka-r12-9z_30llt/unknownsize/A3-200/A3-200: not a declared candidate identity ['A1-400', 'A1-800', 'A10-e4', 'A10b', 'A10b-f25', 'A10b-f50', 'A2-400', 'A2-800', 'A3-400', 'A3-800', 'A4-400', 'A4-800', 'A5-400', 'A5-800', 'A6-400', 'A6-800', 'A7-400', 'A7-800', 'A7fix-400', 'A7fix-800']"
+    },
+    "A7only": {
+      "accepted": true,
+      "pooled": null,
+      "ts": null,
+      "roles": {
+        "A7fix-400": "descriptive"
+      }
+    },
+    "A2six": {
+      "accepted": true,
+      "pooled": null,
+      "ts": {
+        "best": {
+          "cand": "A2-400[team 1]",
+          "target": "team 1",
+          "target_rows": 25,
+          "run": "A2-400",
+          "manifest": "98dd0d0c0200",
+          "vs_A0": {
+            "diff": 0.8,
+            "p05": 0.5652,
+            "p95": 1.0,
+            "series": 10
+          },
+          "cohort_series": 12,
+          "eligible": true
+        },
+        "candidates": 10,
+        "ts_missing": [],
+        "waived": [],
+        "goes_forward": true
+      },
+      "roles": {
+        "A2-400": "teacher-specific",
+        "A2-800": "teacher-specific",
+        "A6-400": "teacher-specific",
+        "A6-800": "teacher-specific"
+      }
+    },
+    "A2ten": {
+      "accepted": true,
+      "pooled": null,
+      "ts": {
+        "best": {
+          "cand": "A2-400[team 4]",
+          "target": "team 4",
+          "target_rows": 25,
+          "run": "A2-400",
+          "manifest": "98dd0d0c0200",
+          "vs_A0": {
+            "diff": 1.0,
+            "p05": 1.0,
+            "p95": 1.0,
+            "series": 10
+          },
+          "cohort_series": 10,
+          "eligible": true
+        },
+        "candidates": 10,
+        "ts_missing": [],
+        "waived": [],
+        "goes_forward": true
+      },
+      "roles": {
+        "A2-400": "teacher-specific",
+        "A2-800": "teacher-specific",
+        "A6-400": "teacher-specific",
+        "A6-800": "teacher-specific"
+      }
+    },
+    "A2twelve": {
+      "accepted": true,
+      "pooled": null,
+      "ts": {
+        "best": {
+          "cand": "A2-400[team 4]",
+          "target": "team 4",
+          "target_rows": 25,
+          "run": "A2-400",
+          "manifest": "98dd0d0c0200",
+          "vs_A0": {
+            "diff": 1.0,
+            "p05": 1.0,
+            "p95": 1.0,
+            "series": 10
+          },
+          "cohort_series": 12,
+          "eligible": true
+        },
+        "candidates": 10,
+        "ts_missing": [],
+        "waived": [],
+        "goes_forward": true
+      },
+      "roles": {
+        "A2-400": "teacher-specific",
+        "A2-800": "teacher-specific",
+        "A6-400": "teacher-specific",
+        "A6-800": "teacher-specific"
+      }
+    },
+    "counts_missing": {
+      "accepted": true,
+      "pooled": null,
+      "ts": {
+        "best": {
+          "cand": "A6-400",
+          "target": "teams ['1', '2', '3']",
+          "target_rows": 75,
+          "run": "A6-400",
+          "manifest": "98dd0d0c0200",
+          "vs_A0": {
+            "diff": 0.8,
+            "p05": 0.5889,
+            "p95": 1.0,
+            "series": 10
+          },
+          "eligible": true
+        },
+        "candidates": 10,
+        "ts_missing": [
+          "cohort-series counts (--cohort-series, Data)"
+        ],
+        "waived": [],
+        "goes_forward": false,
+        "note": "INCOMPLETE: planned teacher-specific arms missing (Chair waiver needed); no advancement"
+      },
+      "roles": {
+        "A2-400": "teacher-specific",
+        "A2-800": "teacher-specific",
+        "A6-400": "teacher-specific",
+        "A6-800": "teacher-specific"
+      }
+    }
+  },
+  "cohort_metadata": {
+    "sha": "a5e81fd728e2d9f177c9eb2a18e7e3717c91e33a0ba1dbee2eb4548359a4aa2b",
+    "columns": [
+      "game",
+      "series_key",
+      "teacher_sides",
+      "team_a",
+      "team_b"
+    ],
+    "counts": {
+      "19": 6,
+      "213": 14,
+      "264": 11,
+      "306": 8,
+      "507": 9,
+      "55": 10,
+      "566": 7,
+      "842": 6,
+      "91": 6,
+      "952": 16
+    },
+    "A2_eligible_teams": [
+      "213",
+      "264",
+      "55",
+      "952"
+    ],
+    "A6_games": 29,
+    "A6_series": 25
+  },
+  "archive": {
+    "sha256": "585183301571e34d104e2deefa49374d2f5704a403ee23d999370760c7c773a3",
+    "bytes": 3924654,
+    "runtime_fingerprint": "43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad",
+    "members": {
+      "atlas.hpp": "531095324709836596c7311f798101f2235311ea91ba009cf0f6cbe624f2a571",
+      "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+      "hb1_compact.hpp": "a7e9d9b938c5d43bd9de8dee82b591aefe27d9918d8a5afe70f34dd276b2c23d",
+      "hb1_direction_compact.hpp": "1c3f8974dd7a8da10c5a3ae8c11f6db1a8d7ea1e496fe14d6816e98eca394f1a",
+      "hb1_features.hpp": "d898af2ffcbddfe6b18165a4fa57ee3a2041452f5b27aeb7962c03a7b411e161",
+      "hb1_gbt.hpp": "be2f89025d518e5fa19d74d856af76dd3ab701eb8b25b40a4e9c4323500684c1",
+      "hb1_models.hpp": "d87dca547aea24544e7f7c34553d3a629b98c9c0c5c75773cea07a474b0cde1e",
+      "helper.hpp": "0dab379079dd0f6d514b872408449acbd2433a8b428f81eb73e873eb060d4182",
+      "main.cpp": "2eadbea5e8eba0a18bf157d570cac73ab186a23403355d794aa80e3f935eb412",
+      "nav.hpp": "f42faaf95ccb24899e5061d839b71824d62da9bb4328b45e2f36de3c873d0f4d",
+      "params.hpp": "112d0f365d7ca61814b62cc8a92816a806279d2346ecf9785b2e5362fae3d043",
+      "policy.hpp": "7ae27804c9c4be958fffcca019c51079974c1a6ae342b8457bb885b268eff486",
+      "world.hpp": "42c574d3f07833013ab379ad84c4523bd7dce00dfc1d638f89e74b15088e6583"
+    },
+    "gate_run_metadata": {
+      "pool": {
+        "bot": "asahi-05-kz12-k16",
+        "fingerprint": "43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad",
+        "panel": "pool",
+        "panel_hash": "39961c55d0e6",
+        "runtime": "unswbc 1.2.3",
+        "host": "Als-MacBook-Pro.local",
+        "maps": [
+          "live/schooltime",
+          "live/portals",
+          "live/slithery_fight",
+          "live/queen_of_spades",
+          "live/default",
+          "live/trophy",
+          "live/dilemma",
+          "live/autarky",
+          "live/devil",
+          "live/trauma",
+          "live/australia",
+          "live/islands",
+          "live/unsw",
+          "live/maze",
+          "live/weakhold",
+          "live/stripes",
+          "live/tower_defense"
+        ],
+        "zoo": [
+          "fenrir-v18-arrival-ready-beds",
+          "yuna-v05-core",
+          "chaewon-y04-probe",
+          "sinbad-v07-divecap",
+          "gavroche-v32-supported-divecap",
+          "ouroboros-m01-vibing-mimic",
+          "kazuha-s01-swarm-dissolve",
+          "hunter-v20-portal-scouts"
+        ],
+        "logs": false,
+        "seeds": [
+          1,
+          2,
+          3
+        ]
+      },
+      "gen": {
+        "bot": "asahi-05-kz12-k16",
+        "fingerprint": "43bd2d4fc7a8baac6d8f14d22a6a0a8eb9c33cc2ca85ee12cce5b770a3eff1ad",
+        "panel": "gen",
+        "panel_hash": "eaf9b0209184",
+        "runtime": "unswbc 1.2.3",
+        "host": "Als-MacBook-Pro.local",
+        "maps": [
+          "m2tr/autarky_tr",
+          "m2tr/default_tr",
+          "m2tr/dilemma_tr",
+          "m2tr/trophy_tr",
+          "new/mc26_archipelago",
+          "new/mc26_crossroads",
+          "new/mc26_delayed_commons",
+          "new/mc26_equatorial_belt",
+          "new/mc26_far_harbors",
+          "new/mc26_nursery_bays",
+          "new/mc26_pinwheel",
+          "new/mc26_portal_quartet",
+          "new/mc26_pulse_farms",
+          "new/mc26_relay_depots",
+          "new/mc26_scattered_fleets",
+          "new/mc26_seam_market",
+          "new/mc26_spring_wells",
+          "new/md26_causeway_detour_s0",
+          "new/md26_causeway_portal_s0",
+          "new/md26_commons_shared_s0",
+          "new/md26_commons_spread_s0",
+          "new/md26_orchard_narrow_s0",
+          "new/md26_orchard_wide_s0",
+          "new/md26_promenade_ring_s0",
+          "var/crossroads_tr",
+          "var/devil_tr",
+          "var/portals_tr",
+          "var/queen_of_spades_tr",
+          "var/trauma_tr"
+        ],
+        "zoo": [
+          "fenrir-v18-arrival-ready-beds",
+          "yuna-v05-core",
+          "chaewon-y04-probe",
+          "sinbad-v07-divecap",
+          "gavroche-v32-supported-divecap",
+          "ouroboros-m01-vibing-mimic",
+          "kazuha-s01-swarm-dissolve",
+          "hunter-v20-portal-scouts"
+        ],
+        "logs": false,
+        "seeds": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  }
+}

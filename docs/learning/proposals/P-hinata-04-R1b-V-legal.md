@@ -116,3 +116,100 @@ candidate; V0b stays the privileged critic. Reward: game outcome. Demonstration:
 ## Result card
 
 (Appended by Hinata.)
+
+### Amendment A — fallback to Φ on elimination-regime maps before r150 (appended 2026-10-04 18:38 UTC, hinata; Chair 18:32Z)
+
+Ordered by the Chair after P-2's confirmation failed (elimination r25 ΔAUC(V0b − Φ) −0.0099 [−0.0152, −0.0049], 434
+Autarky games). **This choice is informed by P-2's held-out read**, so it is not a pre-registered hypothesis: it is
+a declared deployment rule, and P-6's confirmation stays on games played after P-2's claim (18:19:04Z), whole-series
+disjoint as in reply item 4. No fit has been run; no V-legal outcome has been read.
+
+1. **The deployable value (V-legal\*)** is a composite fixed now: V-legal\*(s) = Φ(s) if regime(s) = elimination and
+   round < 150; V-legal(s) otherwise. The privileged comparison composite is V0b\* (same rule with V0b). Both are
+   scored beside the plain V-legal, V0b and Φ; the confirmation's binding comparison becomes V-legal\* vs Φ
+   (non-inferiority −0.01 on every cell, as P-2) plus the §3 falsifier on V0b\* − V-legal\*. In the gated cells
+   V-legal\* ≡ Φ, so ΔAUC there is 0 by construction and is printed as such, not counted as a pass.
+2. **Regime by structure, never map identity.** The C7-03 RL-share classes used in P-2 are a per-map label table
+   (identity); they stay as the *reporting* cells only. The *gate* uses a structural rule computed from the
+   start-of-game board as one process sees it: a depth-1 stump on **one** of {open-cell share, portal count,
+   head-to-head spawn path length / (W+H)}, threshold chosen by leave-one-map-out agreement with the C7-03 class on
+   the 14 training maps only (Autarky, Maze, Trauma never read). Frozen (feature, threshold, LOMO agreement) is written
+   to this card before the V-legal fit; if no stump reaches LOMO agreement ≥ 12/14 maps, the gate falls back to
+   "elimination" for all maps before r150 (Φ everywhere early) and that is reported.
+3. **Why r150, not r100:** P-2's held-out elimination cells were ΔAUC < 0 at r25–r100 and ≥ 0 from r150 (Chair's
+   wording). r150 is used as given; no other threshold is tried.
+4. **Forecasts (new, before any fit):** P(stump LOMO agreement ≥ 12/14) = 0.55; P(V-legal\* non-inferior to Φ on every
+   cell at confirmation) = 0.35 (the legal view is weaker than V0b on round-limit maps where V0b's margin was large).
+
+RL translation — Observation: start-of-game structure (one stump feature) selects the critic; encoder v1 scalars feed
+V-legal. Action: none. Value/reward: regime-gated leaf value for R5 (Φ early on elimination boards). Demonstration: none.
+
+### Author's reply to Sugawara's review of Amendment A (appended 2026-10-04 19:41 UTC, hinata). No fit; no stump selected yet; no held-out map read.
+
+Review: `docs/learning/reviews/P-6-amendA-sugawara.md` (19:30Z), verdict AMEND §2.
+
+1. **Accepted in full.** The three named candidates (whole-map open-cell share, whole-map portal count, spawn-to-spawn
+   path / (W+H)) are not observable by a process at turn 1 (wrapping 7×7 window; portals do not extend vision; enemy
+   heads and SYMMETRY are not in the IO block). Gating a "deployable" value on them would reproduce the train/deploy
+   skew V-legal exists to remove, and is map identity in effect. I meant "the whole map", so this is a real change, not
+   a rewording. **§2 now reads:** the stump's candidates are only IO-observable quantities fixed at turn 1 —
+   W·H, W+H, min(W,H) (`get_map_size`); own-window open share at turn 1; portals in the own window at turn 1; own unit
+   count at turn 1. Window features are computed per process from the map file's spawn tiles and the 7×7 wrapping
+   window exactly as the engine reveals it, then reduced to one value per map (median over our team's spawn processes;
+   the reduction is fixed now). LOMO on the 14 training maps, ≥ 12/14, else the declared fallback (Φ everywhere before
+   r150) — unchanged. A running "observed-so-far" feature would be a new card.
+2. **Label era printed.** The frozen stump is written with `label_era = post-m2 (v0.py ELIM_M2)`; reuse after a field
+   shift only after a re-check (Sugawara point 2).
+3. **Your size-only replication** (W·H ≤ 1362, LOMO 11/14; misses Portals, Prisoners Dilemma, weakhold) is taken as
+   given for the size candidates; I will reproduce it in the selection script and add only the three window
+   candidates. The selection script is new lane code (training-map headers and spawn windows only) and runs before
+   any V-legal fit.
+4. **Forecasts revised (before any selection):** P(observable stump LOMO ≥ 12/14) 0.55 → **0.25** (agree with
+   Sugawara: size tops out at 11; window shares are noisy); P(V-legal\* non-inferior to Φ on every cell) 0.35 →
+   **0.38** (the likely fallback makes the early elimination cells 0 by construction).
+
+### 1b. Precedent (appended 2026-10-04 19:41 UTC, D-058)
+
+- **Value heads trained on the deployed observation** (AlphaZero/MuZero value head; Hungry Geese and Lux AI top
+  agents' critics trained on the agent's own observation tensor): the critic sees what the policy sees, so no
+  regime switch is needed. V-legal follows this; V0b (privileged, full-board) is the departure we measured.
+- **How close:** ours is partially observable (7×7 window) like Hungry Geese, unlike Kore/Halite (full observation).
+  Where a map-level prior is used under partial observability, it comes from map size and history only.
+- **Departure:** the Φ fallback before r150 is not from precedent; it rests on our own evidence (P-2's held-out
+  elimination cells, informed, hence confirmation on later games only).
+
+### Amendment A §2 — stump selection result (appended 2026-10-04 19:46 UTC, hinata). Training-map headers and spawn windows only; held-out map files skipped by file name before opening; no V-legal fit; no outcome read.
+
+Code `tools/hinata/regime_stump.py` sha de7d07aa3829…; output `build/hinata/p6/stump.json`. label_era = post-m2
+(v0.py ELIM_M2, C7-03; 6 elimination / 8 round-limit training maps). Window = edges with both end tiles in the wrapping
+7×7 window centred on each team-0 head (first DRAGON segment), median over the team.
+
+| candidate | in-sample | LOMO | LOMO misses |
+|---|---|---|---|
+| W·H (≤ 1362.5 → elim) | 11/14 | **11/14** | Portals, Prisoners Dilemma, weakhold |
+| units at turn 1 (≤ 2.5 → elim) | 11/14 | 11/14 | Default, Devil, weakhold |
+| W+H | 11/14 | 9/14 | + Queen Of Spades, Default |
+| win_portals | 8/14 | 8/14 | 6 maps |
+| win_open | 10/14 | 7/14 | 7 maps |
+| min side | 10/14 | 5/14 | 9 maps |
+
+**Decision (declared rule): FALLBACK — no stump reaches 12/14, so V-legal\*(s) = Φ(s) for every map before r150,
+V-legal(s) from r150.** Sugawara's W·H replication (11/14, same three misses) reproduced exactly. No second stump, no
+two-feature rule, no other threshold is tried (one stump was declared). Consequence for the confirmation: every cell
+before r150 is Φ vs Φ = 0 by construction and is printed as such, not counted as a pass; P-6's evidence lives in
+r150–r400 cells. Forecast P(V-legal\* non-inferior on every cell) stays 0.38.
+
+### Author's reply to Tanaka 20:19Z (Φ is not a legal baseline) (appended 2026-10-04 20:32 UTC, hinata). No fit; no outcome read.
+
+Accepted. Φ as frozen in P-2 (archive v0_2920bb57.py) is built from replay-wide own **and opponent** totals (units,
+longest, cumulative pearls, territory, deaths): it is privileged, so "V-legal\* = Φ before r150" is not computable by one
+process and must not be called deployable. Consequences, fixed now:
+1. The composite V-legal\* (and V0b\*) is reclassified as a **privileged-reference diagnostic**, reported as such; it carries
+   no deployability claim. The binding comparison of the card is unchanged: plain **V-legal vs V0b and vs Φ**, every
+   originally scored event kept and reported separately from the composite.
+2. Since the stump fell back to "all maps", the deployable statement reduces to: **before r150 no legal value is claimed;**
+   a legal early-game value needs a Φ-legal (Φ's six quantities estimated from one process's observations and history),
+   which is a new card with its own validation, not a silent substitution under Φ's name.
+3. No local estimate of Φ will be labelled Φ.
+RL translation — Value: the R5 leaf before r150 is unresolved for a legal actor (privileged critic may still train it,
+D-052 pattern); observation: a Φ-legal would need opponent totals inferred from sonar/echo history.

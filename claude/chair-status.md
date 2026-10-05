@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE. Updated 4 Oct 2026 17:02Z (unit 7). Next self-wake about 18:05Z. Branch `r/ushijima`; private tree
+State: ACTIVE (the Chair's own shell still fails after the disk reset, with a permission error; files move by copy and the keeper commits them). Updated 5 Oct 2026 04:08Z (unit 21). Next self-wake 04:40Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,94 @@ State: ACTIVE. Updated 4 Oct 2026 17:02Z (unit 7). Next self-wake about 18:05Z. 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-073: the hub restarts by itself and is redeployed** (snapshot 67384f265, back at 04:06:45Z): the upload fix, the
+  field reserve of 5 and the blinding are live; the redeploy ban is lifted. The lead reset the Cowork session disk at
+  about 04:00Z; lanes report whether their shells work; the Chair's own shell still fails (permission error).
+- **D-072 (the lead's rulings):** the council is dissolved (GLM and GPT seats deactivated). **Sugawara owns the queen
+  problem** (goal in play: more queen-decided wins than losses and a pool not below the parent; it chooses mechanisms
+  and queues screens without cards). **Hinata owns the clone in play** (a learned prior not below the incumbent on the
+  pool). **Kageyama rebuilds the hidden bed layouts** from pearl appearances, verified by the oracle. One Mac, one
+  job at a time: Asahi alternates clone and queen jobs; no job over about 45 minutes.
+- **D-071 (the lead does not weigh the live rating):** the bar on uploads is lifted; Daichi restores the intended
+  active bot by hand after each upload. H11 now blocks only changes to the hub's own code. The queen defect gets
+  owners: on Schooltime our queen kills itself at round 0 in 91 of 91 games, and queen-rule losses are 29 of
+  14585's 64 losses; Sugawara reads Kenma's queen logic, Asahi runs Kenma's bot on the pool with queen columns.
+- **D-070: the new live bot lost 7 of its first 10 ranked games (Elo 1725 → 1643, rank 90 → 110).** Two series
+  against lower-rated teams; no fault. The Chair reads it as noise (the bot equals its parent on 783 of 816 local
+  fixtures and scored 46 against 41 in LS-1) and does not change the rollback rule (read at 40 games). Four of the
+  seven losses are round-limit games lost on the queen rule with the longer longest dragon: the known weakness,
+  which no ladder rung addresses now. LS-1's paired mean is +0.0625 to +0.080 depending on the pairing. The time
+  diagnostic: the clone's gain is uniform across phases and time inputs carry 5–7 % of it. Kenma: 58–44 against
+  carthage-05, pool 220–52 against 226–46.
+- **D-069: k = 16 is live.** Daichi activated submission 16979 (`asahi-05-kz12-k16`) at 02:13:22Z on LS-1's final
+  data: 75 pairs, paired mean +0.080 [−0.029, +0.187], no fault; all conditions of D-064 §B hold. LS-1's own frozen
+  letter is HOLD; the gain to expect is small and on Weakhold. Rollback watch over the first 40 ranked games, target
+  14585; no second promotion before 14:13Z. Learn jobs are now at most one fold so that panels can run between them.
+- **D-068: the ten-team clone loses in play as a prior.** Asahi's seed-1 screens of the slot bot with the encoder
+  trees: pool −7.0 points [−12.9, −1.5] at λ 1 and −11.8 at λ 0.5; gen −5.6. The free lane's own test of the A1 prior
+  lost 42–60. The slot itself is at parity on four maps, so the model is the cause. Leading hypothesis: the clones
+  are more accurate but much softer than the Heartbreaker prior, and a pooled ten-team model averages styles.
+  **Selection by accuracy is suspended and the frozen cohort is not read.** Ordered: fallback count, A1 at λ 1, no
+  prior at all, A1 at λ 1.41, and single-team priors (teams 213 and 91). LS-1 ended at 160 games; Daichi reads the
+  promotion conditions at its next unit. P-8 (latent state) approved for its first stage. Free lane Kenma:
+  58–44 against the live bot, Schooltime 6–0.
+- **D-067 (the lead's instruction on time and game state):** the round is already an input of every clone arm; what
+  is missing is any reading by time, a team trajectory, a latent state, and models of the split, cull and sprint
+  decisions, where the field table says we lose (total length at round 499: 85 against 97 to 141; queen alive 1 %
+  against 24 to 56 %). Ordered: a by-phase diagnostic and a no-time ablation (Hinata), the top teams' behaviour
+  profile by round (Nishinoya), a scoping card for a game-state latent (P-8, Sugawara, by 03:00Z), the split, cull
+  and sprint clones offline (after A1 on the full rows), and a trajectory block in encoder v2 (Kageyama). Two free
+  lanes outside the ladder are opened with `docs/learning/prompts/07-free-lane.md`.
+- **D-066:** P-7's entry throughput passes (1.89×10⁸ decisions an hour; no training approved). Size decides part of
+  the selection: A1 and A3 need one model (about 1.05 MB) and are selectable; A4–A7 need two (about 4.9 MB) and are
+  not. Arm A8b (mirror-averaged prediction) added. Full-row jobs: the network first, A1 second, 14.4 GiB a job on the
+  24 GiB Mac. The deploy slot is built and at parity; Kageyama adds the HB-1 input path. The clone's live screen
+  does not wait for the frozen-cohort confirmation, but every upload waits for H11. The keeper commits again.
+- **D-065:** the uploaded k = 16 archive is confirmed to be the gated bot (Tanaka), so four conditions remain for the
+  02:15Z decision. Battery: HB-1's features refitted on ten teams reach 0.7184, the best arm so far, against 0.6977
+  for the live prior. The selector passed. Full rows are built and their refits approved. The deploy slot for the
+  cloned prior is ordered from Kageyama, and an arm must fit 4 MiB to be selectable. The Mac has 271 GB free after
+  the old tournament replays were deleted.
+- **D-064:** the council round on k = 16 closed (all three seats). It is promoted at LS-1's stop (02:15Z) if five
+  conditions hold: at least 60 pairs, no fault, the 95th percentile of the paired mean not below 0, the mean at least
+  −0.05, and proof that submission 16979 is the gated binary. Daichi activates on that record. Battery: the live
+  prior scores 0.6977 on the development moves, the new trees 0.7145, the converged CNN 0.6785.
+- **D-063:** the k = 16 local gate is a hold (pool +1.10 points [−0.37, +2.76]) but Weakhold replicates on all three
+  seeds (43 of 48 against 27 of 48). A council round (due 23:30Z) rules on promoting it at LS-1's stop unless LS-1
+  shows harm. Battery: trees 0.7145 against a four-epoch CNN 0.6727; arm A10b (early stopping) added; selector
+  still held. P-7's amendments adopted; a distilled network keeps it alive if trees are selected.
+- **D-062:** two full disks. The Mac's disk (97 %, 31 GB free) caused the 18:47Z stop; the Cowork session disk is
+  still full after an app restart and cuts Kageyama off. The Chair committed Kageyama's unit-5 files on its behalf
+  (25d78afab) and let Hinata run Kageyama's HB-1 scorer herself, so arms A0, A4, A6, A7 can proceed. First battery
+  numbers: trees 0.7145, small CNN 0.6727.
+- **D-061:** Sugawara's source check amends the precedent table: rules or search won five of eight comparable
+  contests, self-play won three with dedicated compute, and no verified case of imitation alone reached a top ten.
+  Clone-first now rests on D-059 and our own Heartbreaker result. P-7 (self-play fine-tuning from the clone) is
+  numbered and under review; a throughput measurement is allowed, no training.
+- **D-060:** the queen reach veto (P-4) is refuted and closed; LS-1 pairs count by a same-unit proxy (the server
+  gives no opponent submission id; seeds cannot be fixed); the hub fixes are merged but not deployed; the battery's
+  selector is held for Tanaka's audit and its HB-1 arms wait on Kageyama, who has been silent since 18:50Z.
+- **D-059 (the lead's report): the top teams here use networks** (Stockfish: MLPs, maybe CNNs; Heartbreaker: a
+  CNN with two LSTM layers that did not help). This contest is the nearest precedent. Hand rules are temporary again
+  (D-058 §C.2 withdrawn). Battery arm A10 (a small CNN on the window) added; self-play gets a scoping card (P-7,
+  Sugawara, 22:00Z); the clone stays the first deliverable.
+- **D-058 (the lead's rule): precedent first, then evidence.** Cards carry a Precedent section; Sugawara checks
+  sources. Consequences: clone first, value model second, self-play last; the search bot and hand-rule dials are a
+  main track; the R2 battery gains arms from imitation precedent (rating-filtered teachers, teacher-conditioned,
+  mirror augmentation, other action heads offline) and a teacher-specific candidate beside the pooled one; play
+  decides between them. The precedent table awaits Sugawara's source check (21:30Z).
+- **D-057:** P-2 (value model) failed its one confirmation; R1 stays open behind R2. R2 gets a development battery
+  (parent prior as is, the Heartbreaker recipe pooled and per team, encoder, unions) with a fixed selection rule and
+  one confirmation on the frozen 115-game cohort. The standard screen is sized by simulated power with live noise.
+  The Mac restarted at 18:48Z; the hub runs in a terminal since 19:21Z, so **no redeploy** (it would end the hub)
+  until the lead puts it under a restart loop or launchd; that holds the upload fix and all uploads. LS-1's stop
+  moves to 02:15Z.
+- **D-056:** LS-1 is running (dispatched 17:42Z; candidate uploaded as 16979). Promotion needs the frozen PASS and a
+  cluster sign test at p ≤ 0.075, two looks (102 and 170 pairs); fewer than four non-zero clusters means the local
+  gate decides. The server activates on upload: 16979 was live about 17:33–17:40Z; no upload until the hub restores
+  the active submission itself. Standing live loop adopted: standard screen (LS-std-1), sizing from the local
+  discordance census, roster classes (band, loss, top), a candidate queue, and targeted data games against the top
+  ten (TD-1). P-2's scorer is released. Asahi is working again.
 - **D-055 (live-first, at the lead's instruction):** upload and live screens no longer wait for the full local gate.
   Live screen LS-1 is ordered: `asahi-05-kz12-k16` against 14585, 102 matched pairs on three band opponents. The R2
   card (P-5) and the V-legal card (P-6) are approved as amended. The A/A job is closed as uninformative.
@@ -34,7 +122,7 @@ State: ACTIVE. Updated 4 Oct 2026 17:02Z (unit 7). Next self-wake about 18:05Z. 
 
 ## Incumbent
 
-- `carthage-05-free-sprint`, submission 14585, live since 2 Oct 04:22Z. Fallback `hb1-14-prior-r540`, 14265.
+- **`asahi-05-kz12-k16`, submission 16979, live since 5 Oct 02:13Z (D-069).** Fallback and rollback target: `carthage-05-free-sprint`, 14585 (live 2 Oct 04:22Z to 5 Oct 02:13Z). The figures below are 14585's.
 - Elo trend and drift (Daichi's monitor, 16:53Z, ranked, post-m2, series bootstrap 5th/95th percentiles, inputs
   frozen): since activation −0.018 [−0.042, +0.009] (950 games, 192 series); last 40 games +0.026 [−0.108, +0.169];
   Elo 1722, rank 85. Schooltime −0.480 [−0.517, −0.440] (61 games; cage open −0.519, closed −0.447), weakhold −0.35
@@ -47,12 +135,12 @@ State: ACTIVE. Updated 4 Oct 2026 17:02Z (unit 7). Next self-wake about 18:05Z. 
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-2 (R1): scorer revision 3 held by Tanaka for one more hole; then the pass line releases the claim. P-5 (R2) and P-6 (V-legal): approved as amended, owner Hinata with Kageyama. P-4 (queen reach veto): approved, not built |
+| Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): by accuracy A8b 0.7224, A1 0.7184, A4 0.7205 (not selectable), A3 0.7145, live prior 0.6977; **in play the A3 placeholder loses 7 points on the pool; selection suspended (D-068)**. P-6: behind the battery. P-7: entry throughput passed; no training. P-8 (latent state): stage S0 approved |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | **idle since 13:50Z, not acting on BOARD requests.** Waiting: native executor extension; cluster change in `card.py`; parent and k = 16 on seeds 2–3; then the P-4 dial |
-| Nominee (full gate) | `asahi-05-kz12-k16` (REG-002), gate on seeds 2–3, not yet run |
-| Uploaded, inactive | none yet; `asahi-05-kz12-k16` to be uploaded by Daichi for LS-1 |
-| Live screen | **LS-1 ordered 17:02Z** (D-055 §B): k = 16 against 14585, three band opponents, 17 maps, both seats, 102 pairs. A/A job closed: 68 games against dev 545, 1 win, difference +0.034 [0.000, +0.103], uninformative |
+| Evaluator queue (Asahi) | Done: slot parity at off 272/272; placeholder screens FAIL at λ 1 and 0.5. Ordered (D-068 §C, seed-1 pool): fallback count; `kageyama-02-p1-hb1` (A1) at λ 1; carthage-05 with no prior; A1 at λ 1.41; single-team priors (213, 91). Learn queue behind these |
+| Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) |
+| Uploaded, inactive | 14585 (carthage-05, rollback target), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
+| Live screen | none running. LS-1 ended at 160 games (75 pairs, +0.080 [−0.029, +0.187]) |
 
 ## Facts settled this unit
 
@@ -68,13 +156,13 @@ State: ACTIVE. Updated 4 Oct 2026 17:02Z (unit 7). Next self-wake about 18:05Z. 
 | Role | Lane | State |
 |---|---|---|
 | Chair | Ushijima (Claude) | active |
-| Council, auditor | Tanaka (GPT, Codex, hourly heartbeat), `r/tanaka` | working: last output 16:55Z (P-2 revision 3 hold); P-5 and P-6 reviews delivered 16:00Z |
-| Council, mechanism | Sugawara (Claude), hourly at :25 | working: round-2 reviews 16:28Z |
-| Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: last output 16:45Z (bed-variant exposure probe); P-5, P-6 reviews and P-4 forecast delivered 15:58Z |
-| Data | Kageyama (Claude), `r/kageyama`, Cowork VM plus cloud container | development teacher set ready (235,798 rows, 118 games); found hidden bed variants on five maps; owes the series-clean cohort and the HB-1 extractor's cost |
-| Learner | Hinata (Claude), Cowork VM; 2-hourly task at :35 | P-5 and P-6 approved; owes scorer revision 4 for P-2 |
-| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py` | no commit or job since 13:47Z; status file still lists answered questions |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; scheduled runs working | LS-1 to prepare: manifest, archive from the committed tree, upload inactive, roster, dispatch |
+| Council, auditor | Tanaka (GPT) | deactivated by the lead; council dissolved (D-072 §B) |
+| Queen owner (was council, mechanism) | Sugawara (Claude), hourly at :25 | owns the queen problem since D-072 §C; analyst Shenzhen; builds and screens by Asahi |
+| Council, probe | Nishinoya (GLM) | deactivated by the lead |
+| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | both slot bots and logging builds on main; **next: rebuild the hidden bed layouts (D-072 §E)**, then single-team exports, then the trajectory block |
+| Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | owns "a learned prior that wins in play" (D-072 §D); A11 fitting; single-team fits and one-fold full-row jobs queued |
+| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session since 23:05Z | working: placeholder screens posted 01:10Z (FAIL); diagnostics queue of D-068 §C |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | activated 16979 at 02:13Z; watching its first 40 ranked games under D-052 §B |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
 
@@ -89,19 +177,26 @@ State: ACTIVE. Updated 4 Oct 2026 17:02Z (unit 7). Next self-wake about 18:05Z. 
 | H7 | Organisers' rule on training on public replays | proceeding on the assumption that it is allowed (D-050 §8); optional for the lead to confirm |
 | H8 | Native execution for the Learner | replaced: jobs go through Asahi's native job daemon (D-050 §8); the lead is asked only if the daemon reload fails |
 | H9 | Windows quota runner | closed: the lead does not know of one; replaced by Daichi's ledger check (D-050 §4) |
-| H10 | Wake the Asahi (Evaluator) session and point it at D-053 §F and D-054: it has been idle since 13:50Z and holds the gate run and the native executor | asked 15:36Z |
+| H10 | Wake the Asahi (Evaluator) session | closed: Asahi working since about 17:15Z |
+| H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | **closed 04:07Z**: loop started by the lead, redeploy tested (D-073 §A) |
+| H12 | The Cowork VM session disk was full | **reset by the lead about 04:00Z**; lanes to confirm their shells; the Chair's own shell still fails (permission error on its old session folder); the backup image can be deleted once lanes confirm; expect a refill in one to three days |
+| H13 | Kageyama cut off | closed: fresh session working since 21:16Z |
+| H15 | Free lanes | Kenma running since before 01:28Z (started by the lead); a second lane not seen yet |
+| H14 | Mac disk | closed: 74 GB deleted with the lead's approval; 102 GB free |
 
 ## Next three decisions
 
-1. **LS-1 result:** promote `asahi-05-kz12-k16` or not, on Daichi's paired table (pass: at least 60 pairs, 5th
-   percentile > −0.02, mean > 0).
-2. **R1 result:** P-2's confirmation once Tanaka releases the scorer; score the forecasts (0.40, 0.50, 0.50).
-3. **R2 offline gate:** Hinata's P1 against the parent's prior on the series-clean cohort; then its live screen.
+1. **16979 at 40 ranked games:** Daichi's D-052 §B reading (interim at 29 games: both conditions hold); on a
+   rollback, the record.
+2. **The clone in play:** Asahi's three runs of D-068 §C, then Hinata's choice of route (D-072 §D).
+3. **The queen:** Sugawara's first candidate and its screen (D-072 §C).
+
+Waiting on the lead: nothing blocking. Optional: a fresh Chair session (the present one has no shell), and deleting
+`~/Desktop/sessiondata.img.bak` once the lanes confirm their shells.
 
 ## Cursor
 
-Last BOARD line read: `[2026-10-04 16:55 UTC council:tanaka → hinata, chair, kageyama] P-2 rev3 release HOLD …`
-(main tree). Own D-055 lines follow.
+Last BOARD line read: line 1179 (Daichi 03:54Z), main tree. Own D-072 lines follow.
 
 ## Open flags
 
@@ -119,9 +214,11 @@ Last BOARD line read: `[2026-10-04 16:55 UTC council:tanaka → hinata, chair, k
 - Hidden bed variants: Kageyama's oracle reproduced 97 of 118 server games; all 21 failures are on Slithery Fight,
   Schooltime, Queen of Spades, Prisoners Dilemma and Devil. About 15 % of live ranked games run on bed layouts our
   templates lack (Nishinoya, unaudited). Local panels on those five maps are discounted as transfer evidence.
-- Tracked 13 MB model headers in the main tree (`bots/rome-08…15`, `bots/asahi-02…05`) show as modified: something
-  replaces them with 52-byte symlinks. They are uncommitted and the keeper skips them. Asahi is asked whether its
-  tooling does this.
+- The 13 MB model headers that showed as 52-byte symlinks in the main tree: Asahi replaced the links in asahi-02 to
+  05 by the identical real header (r/asahi f370d4a9f). `bots/rome-08…15` not yet checked.
+- The hub index (`hub-state/battles/index.json`) prints a running paired figure for open jobs. Lanes do not quote it
+  (D-056 §C.7); the Chair saw the 10-pair figure at 18:01Z and the 65-pair figure at 00:31Z (a failed filter) and
+  disclosed both (D-066 §A). The promotion rule was fixed before the second sighting and is unchanged.
 - Unexplained unranked requests (7 series, 50 games, 2 Oct 12:52Z to 3 Oct 02:42Z) match the quota runner's grid;
   none since. Ruled in D-051 §3; the lead is told once.
 - Split of gate logs from training data: D-046 §3 narrows the Evaluator prompt's "every panel game becomes training

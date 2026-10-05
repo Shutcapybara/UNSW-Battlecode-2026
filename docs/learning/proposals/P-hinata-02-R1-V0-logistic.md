@@ -194,3 +194,65 @@ status `offline`.
   usable id has pinned rows.
 - **Release (D-054 §A):** Tanaka's pass line naming scorer **`bb51e1bb…`** and spec **`15d79683…`**; then
   `run --audited-scorer-sha bb51e1bb…` → `score`, one each.
+
+### Revision 4 (appended 2026-10-04 17:44 UTC, hinata) — Tanaka 16:55Z hold, D-055 §G. No claim, no held-out outcome read.
+
+- **Scorer** `tools/hinata/p2_confirm.py` rev 4 sha **`0d0d1b7aba7dafff240312dfee058da7f17bce7590b6010f819b73fdaf51daa7`**
+  (rev 3 copy `build/hinata/_old/p2_confirm_bb51e1bb_pre_r4.py`). One change: the result of a lost pinned game is
+  classified against the exact valid domain {0, 0.5, 1} — `draw` (present, finite, exactly 0.5), `decisive` (0/1),
+  `missing_store_row` (no row in games.parquet; a sentinel, never None), `null`, `nan_or_inf`, `out_of_domain`
+  (any other value, a non-number, or two store rows for one game). **Only a recorded valid draw explains a whole-game
+  loss**; every other lost pinned key is unexplained → INCOMPLETE, with `result_class` exposed per game, at run and
+  at score. Pin, denominator (1,328) and every other check unchanged.
+- **Probes 30/30** (`build/hinata/p2/probe-r4.json`): the 24 of rev 3 (draw cases now use a recorded 0.5) plus six:
+  lost game with no store row, null, NaN, 2.0, inf, duplicate store row → each INCOMPLETE; whole recorded-draw game
+  dropped → PASS. A direct unit check of `store_results` on an invented games.parquet (rows 1.0, 0.5, NaN, a
+  duplicated id, 2.0, None; one id absent) classifies decisive / draw / nan_or_inf / out_of_domain / out_of_domain /
+  nan_or_inf / missing_store_row.
+- **Regression:** `counts` rerun: per-cell counts and coverage identical to rev 3 (diff only in `written` and
+  `scorer_sha`); pin unchanged **2ebf99ce…** (22,305 rows / 3,305 games); `cell-counts.json` now sha **ca10a7f3…**
+  (embeds the scorer sha). `selftest` on the development OOF identical to rev 3 (log diff empty; gate PASS, not a verdict).
+- **Release asked:** Tanaka's pass line naming **0d0d1b7a…** and spec **15d79683…**. If the consolidated list of
+  remaining acceptance conditions (D-055 §G) adds anything, it goes into one rev 5; no edit before that list.
+
+## Result card — one-shot confirmation (appended 2026-10-04 18:21 UTC, hinata)
+
+**Verdict: FAIL** (scorer `0d0d1b7a…` released by Tanaka 17:55Z; spec `15d79683…`; D-052 §A / D-054 §A / D-055 §G).
+One claim, one score: `run` 18:19:04–18:19:41Z, `score` 18:19:46–18:20:42Z. CLAIM sha `cf2c0f07…`, predictions sha
+`d47b0522…`, result `build/hinata/p2/result.json` sha `30f41250…`, RECEIPT stage `scored` FAIL. Membership: pin
+22,305 rows = got 22,305; 0 duplicates, 0 new, 0 unexplained, 0 explained (no lost games). Coverage 1,327/1,328
+(Autarky 434/435, Maze 446/446, Trauma 447/447). Every binding cell had 1,000 valid draws. No re-run, no relabel.
+
+- **Binding reason (the only one):** elim/r25 (Autarky, ranked ∩ clean, 434 games / 434 series): ΔAUC(V0b − Φ)
+  = −0.0099, paired whole-series bootstrap 5th/95th **[−0.0152, −0.0049]**; the non-inferiority floor is −0.01.
+- **Report-only:** elim/r10 (−0.0005 [−0.0010, 0.0000]); rl/r50 AUC_V 0.558 vs the 0.66 printed line (not met).
+
+ΔAUC(V0b − Φ), binding population ranked ∩ clean, post-m2 held-out maps, 5th/95th whole-series bootstrap (B = 1,000,
+seed 7, linear):
+
+| round | 10 | 25 | 50 | 100 | 150 | 250 | 400 |
+|---|---|---|---|---|---|---|---|
+| elim (Autarky; n 434→246) | −0.0005 [−0.001, 0.000] | **−0.0099 [−0.0152, −0.0049]** | −0.0038 [−0.0073, −0.0003] | −0.0007 [−0.0016, +0.0003] | +0.0014 [+0.0001, +0.0027] | +0.0152 [+0.0058, +0.0239] | +0.0932 [+0.0594, +0.1258] |
+| rl (Maze+Trauma; n 893→880, 770→758 series) | +0.0015 [−0.0006, +0.0037] | +0.0120 [+0.0011, +0.0232] | **+0.0434 [+0.0276, +0.0597]** | +0.0455 [+0.0286, +0.0609] | +0.0741 [+0.0530, +0.0946] | +0.1026 [+0.0784, +0.1280] | +0.1495 [+0.1235, +0.1753] |
+
+AUC_V / AUC_Φ: elim r25 0.714/0.724, r400 0.896/0.803; rl r50 0.558/0.515, r400 0.857/0.707. The 'all' population
+(3,305 games) shows the same shape (elim r25 −0.0035 [−0.0067, −0.0004]; rl r50 +0.0358 [+0.0259, +0.0449]).
+
+**Reading (descriptive; the verdict is FAIL):** on round-limit maps V0b beats Φ from r25 on, by +0.04 at r50 and
++0.15 at r400 — the development forecast (+0.02 at r50, +0.05–0.10 late) is met or exceeded on held-out maps. On the
+elimination map V0b is marginally *worse* than Φ in the opening (r25–r50, ≈ −0.004 to −0.010) and better only from
+r150. The early-elim deficit is what the non-inferiority clause exists to catch; the extra features add noise there
+relative to the length/score baseline. Forecasts for PASS were Tanaka 0.40, Sugawara 0.50, Nishinoya 0.50, author 0.55.
+
+**Consequence (per card and D-052):** V0b is not certified as R1's value model on the frozen gate. No change to any
+bot. Next rung proposals must be new cards (e.g. a regime-gated V that falls back to Φ before r100 on elimination
+maps) with their own held-out population — these maps are now spent for V0b-family claims.
+
+RL translation — Observation: legal encoder scalars + privileged features used by V0b. Action: none. Value/Reward:
+a learned critic is materially better than the length/score baseline on round-limit maps after r25, not better in the
+first 50 rounds of elimination maps — a critic used for search or shaping should defer to Φ there. Demonstration: none.
+
+### Registry row proposed (to the Chair)
+| id | status | data | code | features | params | offline | size |
+|---|---|---|---|---|---|---|---|
+| hinata-v0b | R1 confirm FAIL (elim/r25 NI) | P-2 dev rows (see PROVENANCE-P2.md); held-out pin 2ebf99ce… | v0_2920bb57 + p2_confirm 0d0d1b7a | lr_q (V0b) per (era, regime, checkpoint) | as frozen | held-out ΔAUC table above | < 50 KB coeffs |

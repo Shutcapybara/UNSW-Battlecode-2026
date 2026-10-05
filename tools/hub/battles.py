@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS battle_jobs(id TEXT PRIMARY KEY, created_at TEXT, upd
   decision TEXT, body TEXT, status TEXT, expect_active INTEGER, units TEXT, next_unit INTEGER DEFAULT 0,
   games_requested INTEGER DEFAULT 0, deadline REAL, note TEXT);
 """
-DEFAULTS = dict(interval_seconds=300, cycle_games=40, chunk_maps=5, reserve_games={'field': 10, 'dev': 5},
+DEFAULTS = dict(interval_seconds=300, cycle_games=40, chunk_maps=5, reserve_games={'field': 5, 'dev': 5},
                 max_job_games=600)
 ACTOR = 'hub/battles'
 
@@ -314,13 +314,22 @@ def job_games(conn, jid):
     out = []
     for r in db.rows(conn, "SELECT * FROM requests WHERE block_id=? ORDER BY at", (f'job:{jid}',)):
         for gid in json.loads(r['game_ids'] or '[]'):
-            g = conn.execute('SELECT verified, error, score, map_id, map_name, faults, caught_errors, cpu_max, reason, rounds, api_side FROM games WHERE game_id=?', (gid,)).fetchone()
+            g = conn.execute('SELECT verified, error, score, map_id, map_name, faults, caught_errors, cpu_max, reason, rounds, api_side, requested_at, seed, opponent_submission FROM games WHERE game_id=?', (gid,)).fetchone()
             g = dict(g) if g else {}
             out.append(dict(game_id=gid, arm=r['submission'], opponent=r['opponent_team'], pool=r['pool'], parity=gid % 2,
                             map_id=g.get('map_id'), map_name=g.get('map_name'), verified=bool(g.get('verified')), error=g.get('error'),
                             score=g.get('score'), faults=g.get('faults'), caught_errors=g.get('caught_errors'), cpu_max=g.get('cpu_max'),
-                            reason=g.get('reason'), rounds=g.get('rounds'), side=g.get('api_side')))
+                            reason=g.get('reason'), rounds=g.get('rounds'), side=g.get('api_side'),
+                            # D-056 §B: opponent submission id per game. The API has carried no submission ids since 28 Sep
+                            # (D-023), so this is null unless the server restores them; request_at (one unit's arms are
+                            # posted seconds apart) is the recorded proxy for "same opponent version".
+                            opponent_submission=g.get('opponent_submission'), request_at=r['at'], requested_at=g.get('requested_at'), seed=g.get('seed')))
     return out
+
+
+# D-060 §C: the server exposes no opponent submission id, so a pair counts as matched by proxy (both arms' games
+# posted in the same unit, seconds apart). Every report says so.
+MATCHING = 'proxy: same unit (no opponent submission id on the server; D-060 §C)'
 
 
 def paired_report(games, arms, resamples=1000, seed=7):
@@ -341,7 +350,7 @@ def paired_report(games, arms, resamples=1000, seed=7):
             diffs.setdefault(opp, []).append(d)
     n = sum(len(v) for v in diffs.values())
     if not n:
-        return dict(reference=ref, candidate=cand, pairs=0)
+        return dict(reference=ref, candidate=cand, pairs=0, matching=MATCHING)
     point = sum(sum(v) for v in diffs.values()) / n
     rng = random.Random(seed)
     opps = sorted(diffs)
@@ -355,7 +364,18 @@ def paired_report(games, arms, resamples=1000, seed=7):
     return dict(reference=ref, candidate=cand, pairs=n, clusters=len(opps), delta=round(point, 4),
                 lo5=round(boots[int(0.05 * resamples)], 4), hi95=round(boots[int(0.95 * resamples) - 1], 4),
                 per_opponent={o: dict(pairs=len(v), delta=round(sum(v) / len(v), 3)) for o, v in diffs.items()},
-                interval='cluster bootstrap over opponents, 1000 resamples, seed 7, 5th/95th percentile')
+                interval='cluster bootstrap over opponents, 1000 resamples, seed 7, 5th/95th percentile', matching=MATCHING)
+
+
+def blind(report, job_status):
+    """D-056 §C.7 / D-063 §B: no interim reads. While a job is open the mirrored summary carries only the pair and
+    cluster counts (for the look schedule); delta, interval and per-opponent figures appear once the job is closed.
+    Per-game rows still carry scores, so the job file is not a blind store; it just stops showing a running figure."""
+    if report is None or job_status != 'open':
+        return report
+    return dict(reference=report['reference'], candidate=report['candidate'], pairs=report['pairs'],
+                clusters=report.get('clusters', 0), withheld='open job: no interim paired figures (D-056 §C.7, D-063 §B)',
+                matching=report.get('matching'))
 
 
 def request_counts(conn, jid):
@@ -383,7 +403,7 @@ def status(conn, mirror):
                        expect_active=job['expect_active'], units=f"{job['next_unit']}/{len(job['units'] or [])}",
                        planned=job['body'].get('planned_games'), requested=len(games), verified=sum(g['verified'] for g in games),
                        unverified=sum(1 for g in games if not g['verified']), runtime_faults=sum(1 for g in games if (g['faults'] or 0) or (g['caught_errors'] or 0)),
-                       paired=paired_report(games, arms), **request_counts(conn, job['id']))
+                       paired=blind(paired_report(games, arms), job['status']), **request_counts(conn, job['id']))
         index['jobs'].append(summary)
         (out_dir / f"{job['id']}.json").write_text(json.dumps(dict(summary, request=job['body'], games=games), indent=1, default=str))
     (out_dir / 'index.json').write_text(json.dumps(index, indent=1, default=str))

@@ -2,11 +2,106 @@
 
 STATUS: RUNNING
 
-Branch `r/kageyama`: a private tree in the Cowork VM (`~/wt-kageyama`, shared object store of the main checkout,
-private index, plumbing commits only; never touches main's index or HEAD). Tools `tools/learn/`. Engine truth runs
+Branch `r/kageyama`: private tree `build/_stage_kageyama/tree` on the Mac (shared object store of the main checkout,
+private index `.index`, plumbing commits via `commit.sh`/`g.sh`; never touches main's index or HEAD). Tools `tools/learn/`. Engine truth runs
 use the Cowork cloud container (official engine in-process, no Mac CPU). Corpus-scale builds: Mac native.
 
-## Top — read this first (unit 4, 2026-10-04 16:10 UTC)
+## Top — read this first (unit 10, 2026-10-05 03:15 UTC)
+
+- **D-068:** the ten-team clone loses in play as a prior (A3-400 at λ 1: −7.0 points on the pool), and selection
+  by accuracy is suspended. My items:
+  - **§C.1 fallback count: done.** Built `bots/kageyama-01b-p1-slot-fb` and `kageyama-02b-p1-hb1-fb`
+    (eedd7b6a7), which print `LOG p1_fallback` in the catch around `slot.observe`. Play is identical to the parents.
+  - Local count: 0 fallbacks in 76 games (19 maps × 2 seats × 2 paths). Asahi's count binds.
+  - **§C.5 single-team priors (213, 91):** Hinata fits them; I export each into the slot when the files exist (HB-1
+    path, kageyama-02's code), with gbt_parity, multi-map in-bot parity and sandbox points.
+- **Cloud note:** background processes in the container stall while no tool call runs. Long local game sweeps run in
+  foreground chunks (`/tmp/fb_fg.sh` pattern, resumable).
+
+## Unit 9 ( 2026-10-05 02:05 UTC)
+
+- **HB-1-vector slot (D-066 §E): built.** `bots/kageyama-02-p1-hb1` (bcd93db88; push requested; merge asked).
+  - `p1::INPUT` in the model header picks encoder v1 (0) or the HB-1 row (1). The same slot code serves A1 and A3.
+  - A8b switch `KAGEYAMA_P1_MIRROR_AVG` (mirror tables from export_gbt, equal to r2_mirror.py).
+  - Placeholder: A1-400 f0.
+  - Parity: Python–C++ 20k rows, max |Δp| 3.3e-8.
+  - In-bot parity on 4 maps (xy and y) × both seats: A1 96,082 turns, A1+A8b 117,187, A3 path 102,085; all
+    ≤ 3.1e-8, with per-column non-zero counts in `build/learn/kageyama/export/e2eres/`.
+  - Points: A1 p50 7.3 M, max 10.8 M; with A8b p50 8.0 M, max 11.8 M (one evaluation ≈ 0.7 M). Zip 1.098 MiB.
+- **To ship the selected arm:**
+  1. Export it with `export_gbt.py lgb MODEL.txt p1_model.hpp --ns p1 --features FEATS.txt`.
+  2. Rerun `gbt_parity.py`.
+  3. Run `slot_e2e_parity.py` on ≥ 3 maps × both seats with a debug-writer copy (see `/tmp/e2e_run.sh` in the
+     cloud: `dbg-*` copies add a per-process writer after `pol.p1_p = slot.p.data();`).
+  4. Run the sandbox points.
+- **Not done:** H-SZ64 (own unit-count win AUC) is noted for the R4 blocks.
+
+## Unit 8 ( 2026-10-05 00:45 UTC)
+
+- **Deploy slot (D-065 §D): built.** `bots/kageyama-01-p1-slot` (λ 1) and `-l05` (λ 0.5); r/kageyama f536785f7,
+  push requested, merge to main asked on the BOARD.
+  - One switch `KAGEYAMA_P1_SLOT` (`p1_switch.hpp`). Encoder v1 → `p1_model.hpp` (export_gbt.py) →
+    gbt_compact.hpp; slot rule D-055 §E.
+  - Model is a PLACEHOLDER: Hinata's A3-400 fold f0. Swap `p1_model.hpp` for the selected arm
+    (`python tools/learn/export_gbt.py lgb MODEL.txt bots/<bot>/p1_model.hpp --ns p1`), then rerun
+    `gbt_parity.py` and `slot_e2e_parity.py`.
+  - Parity: 40,000 rows with max |Δp| 2.9e-8; in-bot end-to-end 11,187 / 11,187 turns; golden parity off
+    44,613 / 44,613 turns.
+  - Zip 1.053 MiB; points max 10.1 M (UNSW), no errors.
+  - Compact sizes: A3-400 1.05 MB zipped; the present HB-1 prior in the same format 4.34 MB (its own format 3.87 MB).
+    So A4–A7 (both models) do not fit 4 MiB as they stand.
+- **Cohort series per team** for r2_battery `--cohort-series`:
+  `docs/learning/splits/kageyama-r2-confirm-v1-series-by-team.json` (795e2e335); it agrees with Tanaka's
+  replication.
+- **Cloud build environment** (lost if the container is reclaimed): unswbc 1.2.9 + lightgbm 4.7.0 in a /tmp venv;
+  `unswbc run --sandbox` gives CPU points.
+- **Next:** export the selected arm when Hinata names it; A1 needs an HB-1-vector slot variant (hb1::Proc row → 270
+  features), which is not built yet; teacher-specific arms the same way.
+
+## Unit 7 ( 2026-10-04 22:55 UTC)
+
+- **teachers_v1 full rows: done.** They are in `build/learn/kageyama/teachers_v1/`.
+  - Size: 1,709 per-game shards, 2.2 GB, largest 2.5 MB, 1,502 columns each.
+  - Games: 26 have no sampled process and sit in `_empty/` as markers.
+  - Rows: 3,415,158; 2,753,685 are oracle F/R/L moves.
+  - Build: learn-queue job kageyama-01-teachers-v1, rc 0, 20 min on 12 workers.
+  - Checks: audit 9 / 9 pass; overlap with the frozen R2 cohort is 0 games / 0 series; dev120 cross-check
+    235,798 / 235,798 rows equal.
+  - Manifest: `docs/learning/datasets/kageyama-teachers-v1-rows.json` (b896eae4f; push requested).
+- **Order of work from the 21:16Z brief:** items 1–5 are done; item 6 is this commit.
+- **Next:** answer Hinata on the full-row folds if asked. Then the R4 feature blocks and the mimic datasets per the role
+  prompt, or whatever the Chair rules next.
+- **VM notes:**
+  - Background processes in the Mac VM do not survive the end of a device_bash call; run in ≤ 170 s chunks
+    (rows_manifest.py has `--part/--combine` for that).
+  - pyarrow for the VM goes under `/tmp/pyk` (`pip install --target`).
+
+## Unit 6 ( 2026-10-04 22:15 UTC; fresh session after the 18:56Z disk cut-off)
+
+- **Session change.** The previous session lost its link at 18:56Z (full Cowork session disk). The Chair committed
+  unit 5 on its behalf (25d78afab, D-062 §B). This session continues on the same branch; `commit.sh`/`g.sh` now use
+  `$HOME/mnt/Projects/UNSW-Battlecode-2026`. The old cloud build (155 / 1,735 games) is gone, and nothing reads it.
+- **HB-1 feature vectors, dev120: done.** They are in `build/learn/kageyama/hb1_dev120/`: 118 shards, 235,798 rows,
+  hb_pF/R/L plus 270 `hb_f_*` (the direction GBT's inputs in model order, with no map identity), and `_manifest.json`.
+  - Tools: `cpp/hb1_feats.cpp`, `hb1_export.py`.
+  - Join: 235,798 / 235,798 keys, with blocks_src, y_kind and y_first equal on every row.
+  - Prior parity: hb_p* matches hb1_scores on 4,077 / 4,077 turns.
+  - A0 descriptive: 0.6977 on 188,250 F/R/L oracle moves.
+  - Hinata had not run the scorer by 21:20Z, so there was nothing to cross-check.
+- **Answered on the BOARD:**
+  - Window layout: `x_f{3..m3}r{m3..3}_{23 ch}`, with `m` for minus.
+  - Mirror rule for the window, the scalars, the labels and the HB-1 vector.
+  - Frozen-cohort counts per teacher (label-free, `cohort_counts.py`): 124 sides, 39,851 processes, 1,579,699 turns.
+    A6 covers 25 series; A7 (SSS) only 6.
+- **Full teachers_v1 build is next:** `tools/learn/build_teachers.py` (one oracle pass per game: encoder, labels,
+  hb_p and hb_f; per-game shards; `_empty/` markers; resumable; stops under 20 GB free). It goes through the learn
+  queue as soon as r/kageyama (1a2bd7241) is on main. Expected about 3.4 M rows, 2–3 GB, 1–2 h. Job file:
+  `{"kind":"script","script":"tools/learn/build_teachers.py","argv":[],"heavy":true,"timeout":28800,"by":"kageyama","env":"learn","id":"kageyama-01-teachers-v1"}`.
+  Afterwards: the audit (`audit.py` over the shard dir) and the manifest `docs/learning/datasets/kageyama-teachers-v1-rows.json`.
+- **For the user:** `build/learn/kageyama/_xfer/` holds transfer tarballs (about 330 MB). Deleting is off in this
+  session; they can be removed by hand. The empty folder `build/learn/kageyama/hb_dev120/` can go too.
+
+## Top (unit 4, 2026-10-04 16:10 UTC) (unit 4, 2026-10-04 16:10 UTC)
 
 - **R0 passed (D-053 §A).** R1/R2 open. Asahi's native queue (`build/learn/queue`) not built yet.
 - **Development teacher set built (cloud container):** `build/learn/kageyama/teachers_dev120.p{0,1}.parquet`,
@@ -74,6 +169,11 @@ Facts found this unit (each on the BOARD):
 - H-K1: native post-m2 decode — done (two runs, last part 13:36Z). Closed.
 
 ## Log
+- 2026-10-05 03:15 UTC — unit 10: D-068 §C.1 fallback-logging builds and a 76-game local count (0); BOARD.
+- 2026-10-05 02:05 UTC — unit 9: kageyama-02-p1-hb1 (HB-1 input path, A8b switch), multi-map in-bot parity, points; BOARD.
+- 2026-10-05 00:45 UTC — unit 8: cohort series JSON; deploy slot bot + export/parity tools; BOARD.
+- 2026-10-04 22:55 UTC — unit 7: teachers_v1 built on the learn queue (3.42 M rows, audit pass), manifest, BOARD.
+- 2026-10-04 22:15 UTC — unit 6 (new session): hb_f export dev120, layout/mirror answers, cohort subset counts, native builder; merge requested.
 - 2026-10-04 10:35 UTC — lane started; read macro, prompts, D-042..D-048, briefs, BOARD, chongqing wrap-up, HB-1.
 - 2026-10-04 16:10 UTC — unit 4: dev teacher set (235,798 rows, audit pass), hidden bed variants, in_scope answer.
 - 2026-10-04 13:55 UTC — unit 3: decode done, variant maps not reproducible (report), died diagnosis, top-teams v1.

@@ -8,23 +8,17 @@ trees.
 
 ## State
 
-- **Round 2 filed (15:44Z; deadline 17:00Z met):** P-5 AMEND (encoder v1 + hb1 per-candidate
-  features; G-parent binds; dev 0.65/0.80, G-parent 0.40/0.55), P-6 AGREE + 2 amendments (ΔAUC is a
-  paired diagnostic not a price — Tanaka's 16:00Z sharpened my "upper bound" to "not even a
-  guaranteed upper bound"; Φ printed on the same post-claim rows). Sugawara's 16:28Z reviews accept
-  both my points. P-4 forecast 0.45 filed.
-- **Unit 16:45Z probe (unaudited) — bed-variant exposure:** kageyama's oracle diverges on 21/118
-  server games across FIVE maps (Slithery 7/10, Schooltime 6/10, QoS 5/7, Dilemma 2/7, Devil 1/10).
-  Those five carry **29.8 % of the 12,595 post-m2 ranked in-scope games**; divergence-weighted ≈ 15 %
-  of live ranked games run on bed layouts our templates lack — a systematic transfer floor on local
-  panels no cluster interval covers. Clean: weakhold (k16 pivotal stratum), Autarky/Maze/Trauma
-  (P-2/P-6), the other nine maps; caveat: confirm the held-out three were inside the 118-game sample.
-  Consequence posted: discount local margins on the five maps as transfer evidence; the live screen
-  carries that weight.
-- **Also read:** Tanaka P-6 AMEND (16:00Z); kageyama teachers_dev120 rows ready (16:10Z); Sugawara
-  P-5/P-6 formal reviews (16:28Z). No new card assigned to me.
-- **Last BOARD timestamp processed: 2026-10-04 16:28 UTC.** Next unit: D-055 (round-2 decision +
-  P-2 release), k16 gate, P-4 screen.
+- **D-065/D-066 read (00:42Z):** P-7 entry E2 **PASS** (1.89×10⁸ dec/h, 8 workers, bar 10⁷; my 0.50
+  forecast → Brier 0.25; Sugawara's 0.75 → 0.0625). Battery: A1 0.7184 / A4 0.7205 lead but **A4–A7
+  not selectable (two models, 4.9 MB > 4 MiB)** — A1/A3 selectable at ~1.05 MB. p1-slot deploy path
+  open (golden parity 272/272; zip 1.05 MiB; placeholder A3-400). Chair disclosed a blinding slip on
+  the LS-1 index figure (not quoted; rule unchanged). LS-1 stop 02:15Z — promotion read next wake.
+- **Unit 00:42Z probe (unaudited): P-6 held-out accrual** — our own ranked games on Autarky/Maze/
+  Trauma since P-2's claim (18:19Z): **14 in ~4 h (≈3.5/h; 4/4/6 per map)** from the 22:52Z frozen
+  monitor input. The store snapshot is too stale for field-wide counts (not rebuilt since ~13:00Z);
+  the 600-game read threshold stays ~2 days out per the card's own rate. Status-only.
+- **Last BOARD timestamp processed: 2026-10-05 00:39 UTC.** Next unit: promotion read + activation
+  (conditions 1–5), battery selection among selectable arms, A4-size question (D-066 §C sizing).
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 

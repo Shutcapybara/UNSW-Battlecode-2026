@@ -4,22 +4,22 @@ Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes 
 
 ## Current state (4 Oct 2026 10:50Z)
 
-- **R0 passed 4 Oct 14:28Z (D-053 §A). Rungs open: R1 (confirmation pending) and R2 (card pending).**
-- Incumbent and parent: `carthage-05-free-sprint` (submission 14585). Fallback: `hb1-14-prior-r540` (14265).
+- **R0 passed 4 Oct 14:28Z (D-053 §A). R1: P-2 failed its confirmation 18:20Z (D-057 §B); rung open, behind R2. R2: development battery running (D-057 §C).**
+- Incumbent and parent: `asahi-05-kz12-k16` (submission 16979, live since 5 Oct 02:13Z, D-069). Fallback and rollback target: `carthage-05-free-sprint` (14585).
 - Deadline: handled by the lead; the Chair imposes no freeze (D-050 §2).
 - GPU work may run on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3).
 
 | Rung | Adds | Status | Owner | Record |
 |---|---|---|---|---|
 | R0 | infrastructure | **passed** 4 Oct 14:28Z | Kageyama, Hinata, Asahi, Daichi | D-046, D-051 §5, D-052, D-053 §A |
-| R1 | V0 value model | P-2: one confirmation on 1,327 usable games; scorer revision 3 held by Tanaka for one more missing-result hole (fourth audit round). P-6 (V-legal) approved (D-055 §F) | Hinata | D-052 §A, D-054 §A, D-055 §F–§G |
-| R2 | P1 BC direction head | **card P-5 approved as amended** (D-055 §E): encoder v1 + queen block + HB-1 per-candidate scores from the bot's extractor; gate = paired with the parent's prior on the series-clean cohort (115 games); rows and fit may run in cloud containers | Hinata, Kageyama | D-055 §E |
-| R3 | split/size, cull, sprint heads | not started | Learner | |
+| R1 | V0 value model | **P-2 failed its one confirmation** (elimination r25 −0.0099 [−0.0152, −0.0049] against −0.01; better than Φ on round-limit maps at every checkpoint). Rung open. Next value artifact: P-6 (V-legal) with a fallback to Φ early on elimination-regime maps | Hinata | D-052 §A, D-057 §B |
+| R2 | P1 BC direction head | **By accuracy:** mirror-averaged A1 (A8b) 0.7224; A1 0.7184; A3 0.7145; live prior 0.6977. **In play (seed 1, slot bot, A3 placeholder): pool −6.99 points [−12.87, −1.47], gen −5.60; λ 0.5 worse.** Slot at parity on four maps, both paths. **Selection by accuracy suspended; frozen cohort not read (D-068).** Diagnostics: fallback count, A1 at λ 1, no prior, A1 at λ 1.41, single-team priors (213, 91). Full rows: network running, A1 next | Hinata, Kageyama, Asahi | D-055 §E, D-057 §C, D-058 §C, D-059 §B, D-063 §C, D-064 §C, D-065 §C–D, D-066 §C–F, D-068 |
+| R3 | split/size, cull, sprint heads | **offline fits brought forward** (D-067 §E.6): after A1 on the full rows, pooled and by style, every table by phase bucket; no bot yet | Hinata | D-058 §C (arm A9), D-067 |
 | R4 | feature blocks | not started | Data, Learner | |
 | R5 | V in the search | needs a value model on the legal encoder (V-legal card after the decode, D-052 §A.7) | Hinata | |
 | R6 | expert iteration | small scale only, by a later D-record | Learner | |
 | R7 | CNN/GRU | allowed on the Mac's GPU (D-050 §3); only if the accuracy-per-KB curve shows the trees saturating | Hinata | |
-| R8 | PPO league | allowed on the Mac's GPU (D-050 §3); only if R6 plateaus for two iterations | Hinata | |
+| R8 | PPO league | allowed on the Mac's GPU (D-050 §3); only if R6 plateaus for two iterations. Scoping card P-7: entry throughput **passed** (D-066 §B); no training approved | Hinata | D-063 §D, D-066 §B |
 
 ## R0 exit checklist
 
@@ -60,12 +60,23 @@ blocks live screens.
 | Arm | Parent | State | Next | Learned replacement target |
 |---|---|---|---|---|
 | Cage C+D, E = 0 | carthage-05 | **parked** (D-053 §C): screen HOLD; the gated-reserve card P-3 rejected (map identity); live Schooltime is lost about equally with the cage open (−0.515, 27 games) and closed (−0.436, 24 games) | none | R3/R4 |
-| H-KZ12 entry-capacity dial, k = 0/4/8/16 | carthage-05 | k = 16: **live screen LS-1 ordered** (D-055 §B), 102 matched pairs against 14585; the local gate on seeds 2–3 waits for Asahi | Daichi (live), Asahi (local) | R4 block "body-conditioned entry capacity" |
+| H-KZ12 entry-capacity dial, k = 0/4/8/16 | carthage-05 | k = 16: **live as submission 16979 since 5 Oct 02:13Z (D-069)**; local gate hold (Weakhold +28 points), LS-1 75 pairs +0.080 [−0.029, +0.187] | Daichi (rollback watch) | R4 block "body-conditioned entry capacity" |
 
 | Queen reach veto (H-KZ26), m ∈ {off, 0, 1} | carthage-05 | card P-4 approved for a seed-1 screen (D-054 §C), after the k = 16 gate | Asahi | R4 block "enemy sprint reach" |
 
 ## Log
 
+- 5 Oct 02:22Z: D-069. **k = 16 promoted:** submission 16979 live since 02:13:22Z (LS-1: 75 pairs, +0.080
+  [−0.029, +0.187], no fault). Rollback watch on its first 40 ranked games. Learn jobs limited to one fold.
+- 5 Oct 01:49Z: D-068. The ten-team clone loses in play as a prior (pool −7.0 points at λ 1). Selection by accuracy
+  suspended; the frozen cohort is not read; five play diagnostics ordered. LS-1 ended at 160 games. P-8 stage S0
+  approved.
+- 5 Oct 00:53Z: D-067. Time and game state: by-phase diagnostic, no-time ablation (T0), conditional phase models
+  (T1), behaviour profile by round, card P-8 (latent state) requested, R3 offline brought forward, trajectory
+  block for encoder v2. Two free lanes opened outside the ladder.
+- 5 Oct 00:36Z: D-066. P-7's entry throughput passes (no training approved). A1 and A3 are selectable; A4–A7 as
+  fitted are not (size). Arm A8b added. Full-row jobs: network first, A1 second, 14.4 GiB ceiling. Deploy slot
+  accepted; HB-1 input path ordered. The live screen of the clone does not wait for the cohort confirmation.
 - 4 Oct 10:50Z: D-046 opens R0. Engine identity across wheels 1.2.3, 1.2.5 and 1.2.9 checked by hash (D-046 §2).
 - 4 Oct 10:52Z: D-047. Held-out maps frozen (Maze, Trauma, Trophy). P-1 numbered; council round 1 opened on its gate
   reading; the fit waits for the decode or 5 Oct 00:00Z.
