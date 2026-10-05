@@ -9,7 +9,10 @@ Format (read by cpp/gbt_compact.hpp, one generic evaluator):
   CMP: 0 = LightGBM (x <= t goes left), 1 = XGBoost (x < t goes left); NaN takes the default side
 No information is lost for LightGBM models with missing_type None or NaN (checked; Zero is refused).
 
-    python export_gbt.py lgb MODEL.txt OUT.hpp --ns NAME [--features FEATS.txt] [--leaf f32|f64]
+    python export_gbt.py lgb MODEL.txt OUT.hpp --ns NAME [--features FEATS.txt --input enc|hb1] [--leaf f32|f64]
+With --features (the model's columns in order: encoder v1 names x_*, or HB-1 names hb_f_*), the header also carries
+INPUT (0 encoder v1, 1 HB-1 vector), FEAT_NAMES (HB-1 row names, prefix stripped; for INPUT 1) and the left-right
+mirror tables MIRROR_SRC / MIRROR_NEG / MIRROR_CODE_* (the map of tools/hinata/r2_mirror.py, D-066 §C.4 A8b).
     python export_gbt.py hb1 bots/carthage-05-free-sprint/hb1_direction_compact.hpp OUT.hpp --ns NAME   (re-export)
 Also writes OUT.hpp.json (sizes, counts, sha256 of the source model).
 """
@@ -74,7 +77,45 @@ def from_hb1(path):
     return dict(K=K, trees=trees, base=base, cmp=1, n_feat=n_feat, kind='hb1-xgboost-compact')
 
 
-def emit(m, out, ns, leaf='f32', feats=None):
+import re as _re
+_WIN = _re.compile(r'^x_f(m?\d)r(m?\d)_(.+)$'); _HBG = _re.compile(r'^hb_f_g_(-?\d+)_(-?\d+)_(.+)$')
+_SWAP = {'kelp_R': 'kelp_L', 'portal_R': 'portal_L', 'head_fac_R': 'head_fac_L'}
+_SWAP.update({v: k for k, v in list(_SWAP.items())})
+MIRROR_NEG = ['x_ownq_r', 'x_enemyq_r', 'x_home_r', 'x_mirror_xy_r', 'x_mirror_y_r']
+MIRROR_CODE = {'x_last_first_rel': {1: 3, 3: 1}, 'hb_f_mem_last_rel': {2: 3, 3: 2}}
+
+
+def _negs(v):
+    return v[1:] if v.startswith('m') else ('0' if v == '0' else 'm' + v)
+
+
+def partner(c):
+    """Same map as tools/hinata/r2_mirror.py partner() (Kageyama's 21:26Z/21:56Z mapping)."""
+    m = _WIN.match(c)
+    if m:
+        f, r, ch = m.groups()
+        return f'x_f{f}r{_negs(r)}_{_SWAP.get(ch, ch)}'
+    m = _HBG.match(c)
+    if m:
+        f, r, ch = m.groups()
+        return f'hb_f_g_{f}_{-int(r)}_{ch}'
+    for a, b in (('x_exit_R', 'x_exit_L'), ('hb_f_pearl_right', 'hb_f_pearl_left')):
+        if c in (a, b):
+            return b if c == a else a
+    if c.startswith(('hb_f_cR_', 'hb_f_cL_')):
+        return ('hb_f_cL_' if c.startswith('hb_f_cR_') else 'hb_f_cR_') + c[8:]
+    return c
+
+
+def mirror_tables(cols):
+    ix = {c: i for i, c in enumerate(cols)}
+    src = [ix[partner(c)] for c in cols]
+    neg = [ix[c] for c in MIRROR_NEG if c in ix]
+    code = [(ix[c], a, b) for c, mp in MIRROR_CODE.items() if c in ix for a, b in mp.items()]
+    return src, neg, code
+
+
+def emit(m, out, ns, leaf='f32', feats=None, inp=None):
     thr = sorted({n[2] for t in m['trees'] for n in t if n[0] == 'N'})
     ti = {v: i for i, v in enumerate(thr)}
     F, T, R, LEAF, NS, LS = [], [], [], [], [], []
@@ -106,7 +147,22 @@ def emit(m, out, ns, leaf='f32', feats=None):
          arr('TREE_NODE', 'std::uint32_t', NS, str), arr('TREE_LEAF', 'std::uint32_t', LS, str),
          arr('THR', 'double', thr, repr),
          arr('F', 'std::uint16_t', F, str), arr('T', 'std::uint16_t', T, str), arr('R', 'std::uint16_t', R, str),
-         arr('LEAF', lt, LEAF, lf32 if leaf == 'f32' else lf), '}\n']
+         arr('LEAF', lt, LEAF, lf32 if leaf == 'f32' else lf)]
+    if feats is not None:
+        assert len(feats) == m['n_feat'], (len(feats), m['n_feat'])
+        src, neg, code = mirror_tables(feats)
+        h += [f'inline constexpr int INPUT = {1 if inp == "hb1" else 0};\n',
+              'inline constexpr char const* FEAT_NAMES[] = {\n' + ',\n'.join(
+                  ', '.join('"' + (c[5:] if c.startswith('hb_f_') else c) + '"' for c in feats[i:i + 8])
+                  for i in range(0, len(feats), 8)) + '};\n',
+              arr('MIRROR_SRC', 'std::uint16_t', src, str),
+              f'inline constexpr int N_MIRROR_NEG = {len(neg)};\n',
+              arr('MIRROR_NEG', 'std::uint16_t', neg or [0], str),
+              f'inline constexpr int N_MIRROR_CODE = {len(code)};\n',
+              arr('MIRROR_CODE_IDX', 'std::uint16_t', [c[0] for c in code] or [0], str),
+              arr('MIRROR_CODE_FROM', 'int', [c[1] for c in code] or [0], str),
+              arr('MIRROR_CODE_TO', 'int', [c[2] for c in code] or [0], str)]
+    h.append('}\n')
     Path(out).write_text(''.join(h))
     info = dict(kind=m['kind'], K=m['K'], trees=len(m['trees']), nodes=len(F), leaves=len(LEAF), thresholds=len(thr),
                 n_feat=m['n_feat'], cmp=m['cmp'], leaf=leaf, header_bytes=Path(out).stat().st_size)
@@ -122,9 +178,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('kind', choices=['lgb', 'hb1']); ap.add_argument('model'); ap.add_argument('out')
     ap.add_argument('--ns', required=True); ap.add_argument('--leaf', default='f32', choices=['f32', 'f64'])
+    ap.add_argument('--features'); ap.add_argument('--input', choices=['enc', 'hb1'])
     a = ap.parse_args()
     m = from_lgb(a.model) if a.kind == 'lgb' else from_hb1(a.model)
-    info = emit(m, a.out, a.ns, a.leaf)
+    feats = [l.strip() for l in open(a.features) if l.strip()] if a.features else None
+    if feats is not None and a.input is None:
+        a.input = 'hb1' if feats[0].startswith('hb_f_') else 'enc'
+    info = emit(m, a.out, a.ns, a.leaf, feats, a.input)
+    info['input'] = a.input
     info['source'] = a.model
     info['source_sha256'] = hashlib.sha256(Path(a.model).read_bytes()).hexdigest()
     Path(a.out + '.json').write_text(json.dumps(info, indent=1))

@@ -6,7 +6,25 @@ Branch `r/kageyama`: private tree `build/_stage_kageyama/tree` on the Mac (share
 private index `.index`, plumbing commits via `commit.sh`/`g.sh`; never touches main's index or HEAD). Tools `tools/learn/`. Engine truth runs
 use the Cowork cloud container (official engine in-process, no Mac CPU). Corpus-scale builds: Mac native.
 
-## Top — read this first (unit 8, 2026-10-05 00:45 UTC)
+## Top — read this first (unit 9, 2026-10-05 02:05 UTC)
+
+- **HB-1-vector slot (D-066 §E): built.** `bots/kageyama-02-p1-hb1` (bcd93db88; push requested; merge asked).
+  - `p1::INPUT` in the model header picks encoder v1 (0) or the HB-1 row (1). The same slot code serves A1 and A3.
+  - A8b switch `KAGEYAMA_P1_MIRROR_AVG` (mirror tables from export_gbt, equal to r2_mirror.py).
+  - Placeholder: A1-400 f0.
+  - Parity: Python–C++ 20k rows, max |Δp| 3.3e-8.
+  - In-bot parity on 4 maps (xy and y) × both seats: A1 96,082 turns, A1+A8b 117,187, A3 path 102,085; all
+    ≤ 3.1e-8, with per-column non-zero counts in `build/learn/kageyama/export/e2eres/`.
+  - Points: A1 p50 7.3 M, max 10.8 M; with A8b p50 8.0 M, max 11.8 M (one evaluation ≈ 0.7 M). Zip 1.098 MiB.
+- **To ship the selected arm:**
+  1. Export it with `export_gbt.py lgb MODEL.txt p1_model.hpp --ns p1 --features FEATS.txt`.
+  2. Rerun `gbt_parity.py`.
+  3. Run `slot_e2e_parity.py` on ≥ 3 maps × both seats with a debug-writer copy (see `/tmp/e2e_run.sh` in the
+     cloud: `dbg-*` copies add a per-process writer after `pol.p1_p = slot.p.data();`).
+  4. Run the sandbox points.
+- **Not done:** H-SZ64 (own unit-count win AUC) is noted for the R4 blocks.
+
+## Unit 8 ( 2026-10-05 00:45 UTC)
 
 - **Deploy slot (D-065 §D): built.** `bots/kageyama-01-p1-slot` (λ 1) and `-l05` (λ 0.5); r/kageyama f536785f7,
   push requested, merge to main asked on the BOARD.
@@ -139,6 +157,7 @@ Facts found this unit (each on the BOARD):
 - H-K1: native post-m2 decode — done (two runs, last part 13:36Z). Closed.
 
 ## Log
+- 2026-10-05 02:05 UTC — unit 9: kageyama-02-p1-hb1 (HB-1 input path, A8b switch), multi-map in-bot parity, points; BOARD.
 - 2026-10-05 00:45 UTC — unit 8: cohort series JSON; deploy slot bot + export/parity tools; BOARD.
 - 2026-10-04 22:55 UTC — unit 7: teachers_v1 built on the learn queue (3.42 M rows, audit pass), manifest, BOARD.
 - 2026-10-04 22:15 UTC — unit 6 (new session): hb_f export dev120, layout/mirror answers, cohort subset counts, native builder; merge requested.
