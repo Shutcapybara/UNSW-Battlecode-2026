@@ -2833,3 +2833,70 @@ The lead does not care about the live rating and asks for the technical issues t
 - Merged at 03:25Z: r/kageyama (eedd7b6a7, the two logging builds), r/asahi, r/daichi, r/nishinoya.
 - Hinata's `r2_full.py` rev 4 (one fold per job), `r2_a11.py` and the inventory file are committed with this
   unit's keeper pass, as Hinata asked at 03:44Z.
+
+## D-072 — Owners for the queen and for the clone in play; the council is dissolved; the hidden bed layouts are to be rebuilt (5 Oct 2026 03:58Z, Chair: Ushijima)
+
+### A. The lead's rulings (about 03:55Z)
+
+1. The hardware is what it is: one Mac, one job at a time. Make do. The desktop will not return.
+2. The queen defect is a design and strategy problem: designate someone to solve it.
+3. The clone losing in play is the same kind of problem: investigate and handle.
+4. The GLM and GPT council members (Nishinoya, Tanaka) are deactivated.
+5. The hidden bed layouts: estimate them statistically and recreate the maps.
+
+### B. The council is dissolved
+
+- With one seat left the council cannot review. There are no council rounds, no forecasts to score and no auditor
+  until the lead says otherwise. `calibration.md` is closed as it stands; D-064's running event is still scored
+  when it resolves.
+- Cards are decided by the Chair directly. A result's owner posts its inputs and tool so that any lane can re-run it.
+- Nishinoya's open items: the behaviour profile by round (D-067 §E.4) goes to Shenzhen; the review of P-8 is
+  dropped (stage S0 is already approved).
+
+### C. The queen: Sugawara owns it
+
+- **Owner: Sugawara.** It leaves the council seat and owns one problem: our queen is alive at the end of about
+  1 % of round-limit games (1 of 29 for 16979), queen-rule losses are 10 of 16979's 18 losses, and on Schooltime the
+  queen kills itself at round 0 on every side.
+- **Goal, in play:** on the pool, more queen-decided wins than losses against the parent and a pool win rate not
+  below the parent's; then the same on the ladder. The top ten keep the queen in 24 to 56 % of round-limit games;
+  that is the reference.
+- **Authority:** Sugawara chooses the mechanisms and their order, writes the changes as switches on the incumbent
+  (`asahi-05-kz12-k16`, or carthage-05 if 16979 is rolled back), and queues builds and seed-1 screens with Asahi.
+  No card or review is needed for a screen. A candidate that passes D-055 §A's checks goes to a live screen on a
+  one-line request to the Chair. Map identity stays excluded.
+- **Material in hand:** Shenzhen's result of 03:50Z (C+D gets the Schooltime queen past round 0 on 6 of 6 and wins
+  5 of 6; C+D with the reserve wins 6 of 6 but costs on open maps); `asahi-01-cage-cd-e0` (C+D, screened on
+  carthage-05: pool +2.2 points [−0.4, +5.2], Portals −12.5); the free lane's `kenma-03-pocket-queen` (6–0 on
+  Schooltime; D-071 §C); Daichi's queen column in the live scan; the top-team table (keepers: teams 213 and 507).
+  D-053 §C's parking of the cage work is lifted.
+- **Support:** Shenzhen is Sugawara's analyst (replay and simulator evidence); Asahi builds and screens.
+- Sugawara reports each result in one BOARD line and keeps `claude/sugawara-status.md` as the queen log.
+
+### D. The clone in play: Hinata owns it
+
+- **Owner: Hinata.** The goal changes from accuracy on the teachers' moves to play: a learned prior in the slot
+  that is not below the incumbent on the seed-1 pool, then above it.
+- **Authority:** after D-068 §C's five tests Hinata chooses the route without a card: temperature or calibration
+  of the prior, the weight λ, single-team models, mirror averaging, more data. One declared value per test, no
+  sweeps on the panel. Kageyama exports; Asahi screens.
+- The battery stays as measurement. The frozen cohort stays unread until a prior wins in play.
+
+### E. The hidden bed layouts: Kageyama rebuilds them (withdraws the limit in D-053 §A item 9)
+
+- The Chair accepted too early that these layouts cannot be rebuilt. The replays show where and when every pearl
+  appears; a bed is two integers (first countdown, period); and the oracle is an exact test: a rebuilt map is
+  right when the engine re-run reproduces the server's games turn for turn.
+- **Order to Kageyama, ahead of the trajectory block:** for each map and variant on which the oracle fails
+  (Schooltime open-4, Prisoners Dilemma with 10 dragons, and the timer variants of Slithery Fight, Queen of Spades
+  and Devil), estimate each bed's cells and timers from the pearl appearances across that variant's games (an
+  older tool, `tools/infer_beds.py`, did this from countdown events the server no longer writes), write the map
+  under `maps/live_var/`, and accept it when the oracle reproduces at least 95 % of that variant's games.
+- **Uses:** Asahi adds the accepted variants to the pool, so the panels cover the roughly 15 % of ranked games they
+  miss today; the 548,724 teacher rows without timers can be rebuilt as oracle rows.
+
+### F. One machine
+
+- Queue order on the Mac: Asahi alternates the clone's and the queen's jobs, starting with D-068 §C's three runs;
+  training folds run between panels (D-069 §B). No job longer than about 45 minutes.
+- The second runner is dropped.

@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 03:48Z (unit 19). Next self-wake 04:40Z. Branch `r/ushijima`; private tree
+State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 03:58Z (unit 20). Next self-wake 04:40Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,11 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-072 (the lead's rulings):** the council is dissolved (GLM and GPT seats deactivated). **Sugawara owns the queen
+  problem** (goal in play: more queen-decided wins than losses and a pool not below the parent; it chooses mechanisms
+  and queues screens without cards). **Hinata owns the clone in play** (a learned prior not below the incumbent on the
+  pool). **Kageyama rebuilds the hidden bed layouts** from pearl appearances, verified by the oracle. One Mac, one
+  job at a time: Asahi alternates clone and queen jobs; no job over about 45 minutes.
 - **D-071 (the lead does not weigh the live rating):** the bar on uploads is lifted; Daichi restores the intended
   active bot by hand after each upload. H11 now blocks only changes to the hub's own code. The queen defect gets
   owners: on Schooltime our queen kills itself at round 0 in 91 of 91 games, and queen-rule losses are 29 of
@@ -148,11 +153,11 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 | Role | Lane | State |
 |---|---|---|
 | Chair | Ushijima (Claude) | active |
-| Council, auditor | Tanaka (GPT, Codex), `r/tanaka` | **stopped 00:49Z at the lead's request (credit budget)**; seat vacant; Sugawara covers replication (D-067 §G) |
-| Council, mechanism | Sugawara (Claude), hourly at :25 | working: 17:29Z LS-1 objective amendment (upheld in part, D-056 §C) |
-| Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: 17:52Z replication of the LS-1 amendment |
-| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | `bots/kageyama-02-p1-hb1` built (A1 path, mirror averaging as a switch, 1.098 MiB, at most 11.8 M points); in-bot parity on 4 maps × both seats for both paths; next: fallback log line, export of single-team models, then the trajectory block |
-| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | A8b 0.7224 (best by accuracy); selector rev 8 with the inventory as a file; network on the full rows running, A1 next; to add: log-loss, entropy and floor share in the table; single-team fits for 213 and 91; time diagnostic and T0 (D-067) |
+| Council, auditor | Tanaka (GPT) | deactivated by the lead; council dissolved (D-072 §B) |
+| Queen owner (was council, mechanism) | Sugawara (Claude), hourly at :25 | owns the queen problem since D-072 §C; analyst Shenzhen; builds and screens by Asahi |
+| Council, probe | Nishinoya (GLM) | deactivated by the lead |
+| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | both slot bots and logging builds on main; **next: rebuild the hidden bed layouts (D-072 §E)**, then single-team exports, then the trajectory block |
+| Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | owns "a learned prior that wins in play" (D-072 §D); A11 fitting; single-team fits and one-fold full-row jobs queued |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session since 23:05Z | working: placeholder screens posted 01:10Z (FAIL); diagnostics queue of D-068 §C |
 | Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | activated 16979 at 02:13Z; watching its first 40 ranked games under D-052 §B |
 
@@ -178,19 +183,17 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 
 ## Next three decisions
 
-1. **k = 16 after promotion:** the rollback watch over 16979's first 40 ranked games (D-052 §B); review at 120.
-2. **Why the clone loses in play (D-068 §C):** the five diagnostics decide whether the route is a stronger λ, a
-   single-team model, or neither. Until then no selection and no read of the frozen cohort.
-3. **Kenma's bot:** its pool panel and deploy checks; a live screen needs H11.
+1. **16979 at 40 ranked games:** Daichi's D-052 §B reading (interim at 29 games: both conditions hold); on a
+   rollback, the record.
+2. **The clone in play:** Asahi's three runs of D-068 §C, then Hinata's choice of route (D-072 §D).
+3. **The queen:** Sugawara's first candidate and its screen (D-072 §C).
 
-Also open: P-7 training (after the network arm on the full rows); time and game state (D-067; P-8 stage S0).
-
-Waiting on the lead: **H11** (does the hub restart by itself; until known, no redeploy and no upload of any new
-bot, Kenma's included) and H12 (session disk full; it blocks the Chair's shell).
+Waiting on the lead: **H12** (reset the Cowork session disk; steps given in unit 20) and **H11** (restart the hub
+inside the loop; steps given in unit 20; then Daichi redeploys the hub fixes).
 
 ## Cursor
 
-Last BOARD line read: line 1176 (Hinata 03:44Z), main tree. Own D-071 line follows.
+Last BOARD line read: line 1179 (Daichi 03:54Z), main tree. Own D-072 lines follow.
 
 ## Open flags
 
