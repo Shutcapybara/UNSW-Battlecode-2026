@@ -7,36 +7,27 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 14, 2026-10-04 ~23:55Z)
+## Top — read this first (unit 15, 2026-10-05 ~00:55Z)
 
-- **Last BOARD line read:** line 1053 (Chair 23:48Z, keeper blocker). My line 1054 (23:52Z).
-- **D-065 §B (23:44Z): condition 5 is MET** (Tanaka's independent replication + Asahi: fingerprint 43bd2d4f on the
-  16979 archive). **At the stop, conditions (1)–(4) only; activate 16979 if they hold, table first.** Forecasts
-  no-rollback-in-120: Tanaka .85, Sugawara .87, Nishinoya .85. Drift row: Sugawara's reading adopted — print the last
-  window's percentile against the submission's own history (done in live_monitor this unit); rollback rule unchanged.
-  Nishinoya: the D-052 §B baseline is last-120 (−0.030), so the last-40 dip does not degrade it.
+- **Last BOARD line read:** line 1099 (Tanaka STOP 00:49Z, user request, credit budget — Tanaka lane only). No line
+  posted this unit (no result).
+- **D-066 (00:36Z):** P-7 throughput PASS, no training approved; A1/A3 selectable; clone live screen does not wait on
+  frozen cohort; every upload waits for H11. Chair 00:36Z reaffirms: Daichi applies the D-064 §B rule at the first
+  unit after 02:15Z. (Chair also saw the running paired figure through a failed filter; not quoted.)
 - **D-064 §B rule (unchanged):** promote 16979 iff (1) ≥ 60 valid matched pairs, missing listed; (2) no candidate
   runtime error/timeout/DQ; (3) 95th pct of paired mean (opp × map clusters, 1,000, seed 7) ≥ 0; (4) paired mean ≥ −0.05.
-  Monitor rows: Weakhold, five bed-variant maps, invalid-command deaths. LS-1 letter (D-055 §B) reported.
-- **Blinding slip (own):** index.json still carries LS-1's interim `paired` block (the blind() fix is not deployed), and
-  this unit's index dump printed it. Not posted, not acted on; the D-064 rule is fixed in advance, so no decision
-  depends on it. Next units: read index.json counts with a field filter only.
-- **Keeper blocker (Chair 23:48Z):** moved the tracked `tools/learn/__pycache__/splits.cpython-310.pyc` to
-  `build/daichi/_old/tools-learn-pycache-20261004T2355Z/`; status now `MD` → keeper skips it as a deletion. Lasting fix
-  (`git rm -r --cached tools/learn/__pycache__`) is for the lead/keeper. BOARD 1054.
-- **LS-1 job 5ed81ad3e1f3:** 6/12 units, 120/204 requested, 120 verified, 0 unverified, 0 runtime faults (23:47Z).
-  At ~63 min/unit expect ≈ 180 at 02:15Z.
-- **Live:** 14585 (no human activation). Monitor 23:5xZ (ranked, post-m2): since activation −0.022 [−0.047, +0.003]
-  (1,055 / 213 series); rolling 40 −0.083 [−0.178, −0.004] (8 series), own-history percentile 0.263 of 1,016 windows
-  — drift flag nominally on, within own noise; Elo 1719 rank 91 (24 h 1714).
-- Hub notifications: shadow_disagreement only (old experiments d984b1cb, 8d5645fc); no API/quota errors.
-- Chair's shell is down since 23:42Z (works by file copy). VM home disk is full again: heredocs/`cat >` to `$HOME`
-  fail silently-ish ("write error"); write scratch under build/daichi/tmp/ on the mount, or via the cloud container.
+  (5) met per D-065 §B. Monitor rows: Weakhold, five bed-variant maps, invalid-command deaths.
+- **LS-1 job 5ed81ad3e1f3:** 140/204 requested, 140 verified, 0 unverified, 0 runtime faults (00:51Z, filtered read).
+  Unit 7 deferred on field quota (need 20, avail 25, reserve 10) — internal budget, not an API error.
+- **Live:** 14585 (status.json 00:44Z, restoration_matched; no human activation). Monitor 00:51Z (ranked, post-m2):
+  since activation −0.024 [−0.049, +0.002] (1,070 / 216 series); rolling 40 −0.115 [−0.246, +0.004] (8 series),
+  own-history pct 0.149 of 1,031 windows, drift flag off (hi95 > 0); Elo 1716 rank 88 (24 h 1707).
+- Hub: no API/quota errors; keeper clean (errors []). git.json not pending at 00:51Z.
 - Archive for D-064 §B(5): `build/daichi/ls1/16979-asahi-05-kz12-k16.zip`, sha256 585183301571e34d….
 
 ## Next unit
 
-1. Read BOARD after 1054 (did the keeper pass succeed? anything on LS-1 / k16).
+1. Read BOARD after 1099 (did the keeper pass succeed? anything on LS-1 / k16).
 2. LS-1: counts/faults only, via a filtered read (`jobs[].{requested,verified,unverified,runtime_faults}`).
 3. **At/after 02:15Z:** cancel LS-1 via battles.json, wait for verification, read the paired report and post the D-064
    table ((1)–(4); (5) met per D-065 §B): n pairs, missing listed, paired mean with cluster 5/95, LS-1 frozen letter,
@@ -77,6 +68,8 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Units
 
+- 2026-10-05 ~00:55Z unit 15 — read BOARD 1055–1099, D-066. LS-1 140/204, 0 faults. Monitor: rolling-40 −0.115,
+  own pct 0.149, Elo 1716 r88. No BOARD line, no action (D-064 stop not before 02:15Z).
 - 2026-10-04 ~23:55Z unit 14 — read BOARD 1034–1053, D-065. Cleared the keeper's .pyc blocker (BOARD 1054). Drift
   row now prints own-history percentile (D-065 §B). LS-1 120/204, 0 faults. Interim paired seen in index dump (not used).
 - 2026-10-04 ~22:55Z unit 13 — read BOARD 985–1031, D-064. Supplied 16979 archive for D-064 §B(5). LS-1 100/204,
