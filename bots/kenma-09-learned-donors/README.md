@@ -7,3 +7,5 @@ Training: 208,158 eligible oracle turns, 4,311 culls, original train split only,
 Model SHA-256: 484c315dc5030ae74b7ea99ed9b77c20fb19cdbd0a475daeeff15d28d6ff0b60. Uses only the same 270 legal HB-1 inputs; no map identity. Reproduce with tools/kenma/feeder_train.py and prepare_feeder.py, output main build/kenma/feeder-v1/. Binary inference applies sigmoid to the raw margin, not the generic multiclass softmax.
 
 Export verification: 20000 native rows, all threshold decisions equal, maximum probability error 3.2361124890911697e-08. Status: unmeasured, not best. Full native comparison and exact-source sandbox checks required. Seeds 11–13/new maps remain reserved.
+
+Mechanism caveat: all 299 high-confidence donor predictions in the 20,000-row export sample have n_exit_any = 0 (295 also have free_dirs = 0; 3 are split-eligible). Nominal exit features do not fully model tail movement, so this is not proof of identical actions, but high imitation accuracy may largely reflect terminal traps. The full screen must establish useful changes in play; do not promote from classifier accuracy. Evidence main build/kenma/feeder-v1/activation-census.json.

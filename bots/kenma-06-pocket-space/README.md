@@ -6,4 +6,26 @@ Retains the sealed-pocket rescue, donor culling and one-slot reserve. Adds Asahi
 
 Motivation: Kenma 03 lost all six Weakhold games to Kageyama; Asahi's documented seed 2–3 pool improvement replicated on Weakhold. This is a composition hypothesis, not evidence that the combination improves play.
 
-Status: prepared, unmeasured. Required next: full 102-game Carthage comparison and exact-source sandbox checks if promising. Reserved seeds 11–13 and new maps untouched.
+Status: not selected over Kenma 03. Full Carthage comparison finished **57–45**, zero draws or runtime errors, 17 ranked maps × both seats × seeds 1–3. Weakhold improved from 3–3 to 5–1, offset by one fewer win each on Portals, Slithery Fight and Tower Defense. Kenma 03 remains best at 58–44. No deployment checks spent on this weaker common-opponent result. Reserved seeds 11–13 and new maps untouched.
+
+| Map | W | L |
+|---|---:|---:|
+| schooltime | 6 | 0 |
+| portals | 2 | 4 |
+| slithery_fight | 3 | 3 |
+| queen_of_spades | 3 | 3 |
+| default | 3 | 3 |
+| trophy | 3 | 3 |
+| dilemma | 3 | 3 |
+| autarky | 3 | 3 |
+| devil | 3 | 3 |
+| trauma | 3 | 3 |
+| australia | 4 | 2 |
+| islands | 2 | 4 |
+| unsw | 5 | 1 |
+| maze | 4 | 2 |
+| weakhold | 5 | 1 |
+| stripes | 3 | 3 |
+| tower_defense | 2 | 4 |
+
+Output: main build/kenma/k06-v-carthage-s123/score.json.
