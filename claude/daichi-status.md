@@ -7,39 +7,45 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 13, 2026-10-04 ~22:55Z)
+## Top — read this first (unit 14, 2026-10-04 ~23:55Z)
 
-- **Last BOARD line read:** line 1031 (Kageyama teachers_v1, 22:45Z). My lines 1032–1033 (22:5xZ).
-- **D-064 §B (22:37Z) — the k16 rule, fixed.** At the stop promote 16979 iff ALL: (1) ≥ 60 valid matched pairs
-  (same-unit proxy), missing listed; (2) no runtime error / timeout / DQ of the candidate (API); invalid-command
-  deaths = monitor row; (3) 95th pct of paired mean (opp × map clusters, 1,000, seed 7) ≥ 0; (4) paired mean ≥ −0.05;
-  (5) Asahi shows 16979's archive is the gated bot (fp 43bd2d4f, or Weakhold seed 2 16+16 → 14/16 vs 10/16).
-  LS-1's own letter still reported. **I activate at the first unit after the stop if (1)–(5) hold, posting the table
-  first** (monitor rows: Weakhold, five bed-variant maps, invalid-command deaths). Else no activation; Chair reads.
-  Then D-052 §B rollback, one look. Forecasts no-rollback-in-120: Tanaka .85, Sugawara .87, Nishinoya .85.
-- **Archive supplied (unit 13):** `build/daichi/ls1/16979-asahi-05-kz12-k16.zip`, sha256 585183301571e34d…, equal to
-  hub.sqlite archive_sha256 for submission_id 16979. BOARD 1032. Await Asahi's (5) result before 02:15Z.
-- **Blind fix merged** (D-064 §B); deploys with the next redeploy, after LS-1 closes. Redeploy still waits on the
-  restart-loop post (D-057 §A, D-060 §D) — not seen through 1031.
-- **LS-1 job 5ed81ad3e1f3:** 100/204 requested, 100 verified, 0 unverified, 0 runtime faults (22:52Z). Units at
-  ≈ 63-min cadence (17:42, 18:44, 19:45, 20:48, 21:51) → expect 22:54, 23:57, 01:00, 02:03 → ≈ 180 at stop.
-  **Do not read `paired`** until the stop.
-- **Live:** 14585. Monitor 22:52Z (ranked): since activation −0.022 [−0.047, +0.003] (1035/209); rolling 40 −0.129
-  [−0.227, −0.035] (8 series) — drift flag ON (not a trigger; BOARD 1033); Elo 1720 rank 86 (24 h 1722).
-- Hub notifications: only shadow_disagreement (old experiment d984b1cb); no API/quota errors.
+- **Last BOARD line read:** line 1053 (Chair 23:48Z, keeper blocker). My line 1054 (23:52Z).
+- **D-065 §B (23:44Z): condition 5 is MET** (Tanaka's independent replication + Asahi: fingerprint 43bd2d4f on the
+  16979 archive). **At the stop, conditions (1)–(4) only; activate 16979 if they hold, table first.** Forecasts
+  no-rollback-in-120: Tanaka .85, Sugawara .87, Nishinoya .85. Drift row: Sugawara's reading adopted — print the last
+  window's percentile against the submission's own history (done in live_monitor this unit); rollback rule unchanged.
+  Nishinoya: the D-052 §B baseline is last-120 (−0.030), so the last-40 dip does not degrade it.
+- **D-064 §B rule (unchanged):** promote 16979 iff (1) ≥ 60 valid matched pairs, missing listed; (2) no candidate
+  runtime error/timeout/DQ; (3) 95th pct of paired mean (opp × map clusters, 1,000, seed 7) ≥ 0; (4) paired mean ≥ −0.05.
+  Monitor rows: Weakhold, five bed-variant maps, invalid-command deaths. LS-1 letter (D-055 §B) reported.
+- **Blinding slip (own):** index.json still carries LS-1's interim `paired` block (the blind() fix is not deployed), and
+  this unit's index dump printed it. Not posted, not acted on; the D-064 rule is fixed in advance, so no decision
+  depends on it. Next units: read index.json counts with a field filter only.
+- **Keeper blocker (Chair 23:48Z):** moved the tracked `tools/learn/__pycache__/splits.cpython-310.pyc` to
+  `build/daichi/_old/tools-learn-pycache-20261004T2355Z/`; status now `MD` → keeper skips it as a deletion. Lasting fix
+  (`git rm -r --cached tools/learn/__pycache__`) is for the lead/keeper. BOARD 1054.
+- **LS-1 job 5ed81ad3e1f3:** 6/12 units, 120/204 requested, 120 verified, 0 unverified, 0 runtime faults (23:47Z).
+  At ~63 min/unit expect ≈ 180 at 02:15Z.
+- **Live:** 14585 (no human activation). Monitor 23:5xZ (ranked, post-m2): since activation −0.022 [−0.047, +0.003]
+  (1,055 / 213 series); rolling 40 −0.083 [−0.178, −0.004] (8 series), own-history percentile 0.263 of 1,016 windows
+  — drift flag nominally on, within own noise; Elo 1719 rank 91 (24 h 1714).
+- Hub notifications: shadow_disagreement only (old experiments d984b1cb, 8d5645fc); no API/quota errors.
+- Chair's shell is down since 23:42Z (works by file copy). VM home disk is full again: heredocs/`cat >` to `$HOME`
+  fail silently-ish ("write error"); write scratch under build/daichi/tmp/ on the mount, or via the cloud container.
+- Archive for D-064 §B(5): `build/daichi/ls1/16979-asahi-05-kz12-k16.zip`, sha256 585183301571e34d….
 
 ## Next unit
 
-1. Read BOARD after 1033: Asahi's (5) result; restart-loop post; anything on the drift line.
-2. LS-1: counts/faults only (any candidate runtime fault → cancel and report).
-3. **At/after 02:15Z:** stop the job (cancel via battles.json once 02:15Z passes, or when the last unit is in), wait
-   for verification, then read the paired report and post the D-064 table: (1)–(5), n pairs, missing listed,
-   paired mean with cluster 5/95, LS-1 frozen letter (D-055 §B), monitor rows. If all hold: re-read the live
-   submission id (must be 14585), activate 16979 with `submit.json` {"candidate":"asahi-05-kz12-k16","activate":true,"by":"daichi","note":"D-064 §B …"}
-   (actuator.submit_check: name already present → POST /submissions/16979/activate + set_control). That path
-   skips the blackout / ranked-in-flight checks, so write it yourself only outside the even-hour blackout (−8/+12
-   min) and check no ranked series of ours is in flight. Confirm submit.done.json activated:true and the mirror
-   shows 16979 active; notify the user. Then D-052 §B watch.
+1. Read BOARD after 1054 (did the keeper pass succeed? anything on LS-1 / k16).
+2. LS-1: counts/faults only, via a filtered read (`jobs[].{requested,verified,unverified,runtime_faults}`).
+3. **At/after 02:15Z:** cancel LS-1 via battles.json, wait for verification, read the paired report and post the D-064
+   table ((1)–(4); (5) met per D-065 §B): n pairs, missing listed, paired mean with cluster 5/95, LS-1 frozen letter,
+   monitor rows. If all hold: re-read the live submission id (must be 14585), check no ranked series of ours is in
+   flight and that we are outside the even-hour blackout (−8/+12 min), then write submit.json
+   {"candidate":"asahi-05-kz12-k16","activate":true,"by":"daichi","note":"D-064 §B / D-065 §B …"} (actuator.submit_check:
+   name present → POST /submissions/16979/activate + set_control; skips blackout/in-flight checks, so check them first);
+   confirm submit.done.json activated:true and the mirror shows 16979; notify the user. Then D-052 §B watch
+   (difference = candidate window − last-120 reference).
 4. Refresh the monitor; confirm the push.
 
 ## battles.json — what it does
@@ -66,10 +72,13 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Open questions for the Chair
 
-- Redeploy (main now holds submit_check fix + reserve 5): waits on the Chair's restart-loop post (D-057 §A, D-060 §D).
+- Redeploy (main holds submit_check fix + reserve 5 + blind fix): waits on the Chair's restart-loop post (D-057 §A,
+  D-060 §D); blind fix deploys only after LS-1 closes (D-064 §B).
 
 ## Units
 
+- 2026-10-04 ~23:55Z unit 14 — read BOARD 1034–1053, D-065. Cleared the keeper's .pyc blocker (BOARD 1054). Drift
+  row now prints own-history percentile (D-065 §B). LS-1 120/204, 0 faults. Interim paired seen in index dump (not used).
 - 2026-10-04 ~22:55Z unit 13 — read BOARD 985–1031, D-064. Supplied 16979 archive for D-064 §B(5). LS-1 100/204,
   0 faults. Incumbent rolling-40 drift flag on. BOARD 1032–1033.
 - 2026-10-04 ~21:55Z unit 12 — read BOARD 923–983, D-062, D-063. Found the index.json blinding gap; blind() fix
