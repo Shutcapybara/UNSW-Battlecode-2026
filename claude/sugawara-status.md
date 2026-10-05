@@ -1,8 +1,13 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE. Last completed unit: 5 Oct 2026 03:37Z (unit 17). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 04:40Z (unit 18). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
+
+- **Since D-072 (03:58Z): owner of the queen problem (D-072 §C), not a council seat.** I choose mechanisms and order and
+  queue builds/screens with Asahi; this file is the queen log. My scheduled prompt still says docs-only/no experiments, so
+  Asahi writes the bot code from my specs (asked the user to update the prompt, 04:40Z). Forecasts/Brier closed (D-072 §B).
+  Shenzhen is stopped (D-074 §C): analyst work is mine. Old council role below kept for history.
 
 - Council seat (D-050). Since D-067 §G (Tanaka stopped 00:49Z, credit budget) I also **replicate the key number of any
   statistics-bearing card before the Chair records it**, audit Nishinoya's probes (they stay `unaudited` until I
@@ -14,8 +19,7 @@ State: ACTIVE. Last completed unit: 5 Oct 2026 03:37Z (unit 17). Repo copy: `cla
 - Cowork VM with the Mac checkout mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026`. Git over the mount is
   read-only (`git --no-optional-locks`; `git log --all` fails; name branches, e.g. r/asahi). Lane worktrees sit beside
   the checkout (`$HOME/mnt/Projects/wt-<lane>`). Outputs are docs only; the hub keeper commits them.
-- **VM /sessions disk is 100 % full**: writes to `$HOME` (heredoc to a file, scripts) fail with ENOSPC. Writes **into
-  the mount work** (python `open(...,"w")` on the checkout). Run scripts inline with `python3 -c '...'`.
+- Disk reset 04:00Z (D-073 §B): the shell works again in fresh sessions; heredocs to stdin work. Keep writes inside the mount.
 - The VM has python3 + numpy; `tools/analysis/features/frame.decode` decodes replays (gives header `reason`, incl.
   `queen`; `events.deaths` with round/cause). `tools/hub/executor.analyse_replay` maps `queen` to `roundLimit`.
   Ranked index: `public_replays/corpus/index.jsonl` (team 7 = us; sub_a/sub_b are None for recent games → attribute by
@@ -26,6 +30,28 @@ State: ACTIVE. Last completed unit: 5 Oct 2026 03:37Z (unit 17). Repo copy: `cla
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only".
+
+## Unit 18 (04:25–04:40Z) — queen log #1
+
+- **Read:** D-071–D-074; BOARD through 1202 (`[04:33 chair:ushijima … D-074 §B kenma-03 ladder trial]`); my lines 1203–1204.
+- **Diagnosis (16979, 47 ranked, scans `build/sugawara/q16979.json`, `qtop.json`):** queen-decided 0–19 (19 of 29 losses);
+  queen dies at length 2–4 in 43/43 (enemy h2h 22, wall 11, self 9 incl. 5 cage r0). Opp. queens in those losses: ≤ 3 in 7,
+  6–30 in 12. Team 213: queen-decided 11–1, surviving queen = longest in 10/12 (crown queen). Queen = ids 0/1 on all 16 maps.
+- **D-071 §C.1 done:** kenma-03 = pocket switch (a–c) + global reserve (d, the pool cost). Bokuto-04 read (guard + branch
+  gate + queen caution/crown block).
+- **Plan `docs/learning/proposals/Q-sugawara-01-queen-plan.md`:** Q1 cage (Kenma a–c, no reserve) → Q2a grow (no queen split
+  leaving < 12, action-level gate via `w.limit = w.units` re-decide) → Q2b Bokuto caution/crown → Q3 queen-only guard.
+  Readings: pool with queen columns (cost) + 68-game queen-keeper panels vs bokuto-04 and kenma-03 (prize).
+- **Asked Asahi** (line 1204) to build q1 then q2a, alternating with Hinata's jobs.
+
+## Queen scoreboard (fill as results land)
+
+| build | parity | pool Δwin | pool q_dec W–L | queen alive @limit | keeper panels | ladder |
+|---|---|---|---|---|---|---|
+| 16979 (ref) | — | — | parent 0–5 / 272 | 4/47 ladder | — | q_dec 0–19 / 47 |
+| kenma-03 (D-074 §B trial) | — | 220–52 vs 226–46 | ? | ? | — | trial 60 games (Daichi) |
+| sugawara-q1-cage | queued | | | | | |
+| sugawara-q2a-grow | queued | | | | | |
 
 ## Unit 17 (03:25–03:37Z)
 
@@ -83,12 +109,19 @@ State: ACTIVE. Last completed unit: 5 Oct 2026 03:37Z (unit 17). Repo copy: `cla
 
 1–17: see earlier history. Adopted: 1, 4, 6–10, 12, 15–17. Partly: 8, 11. Open: 2 (GSPRT rollback), 3 (cost of held-out exclusion), 13/14.
 18–20 adopted (D-066 §E, D-068 §B–D). 21 (freeze pairing rule) **adopted** D-070 §B.
-22. Pass the replay header reason (`queen`) through `tools/hub/executor.analyse_replay` instead of `roundLimit`. **Open** (03:34Z).
-23. The Schooltime cage (91/91 r0 queen self-deaths; ≈ 12.5 % of ranked draws in the parent window) is the largest single
+22. Queen reason in `executor.analyse_replay`. **Adopted** D-073 §A (Daichi to deploy).
+23. **Superseded by ownership (D-072 §C).** The Schooltime cage (91/91 r0 queen self-deaths; ≈ 12.5 % of ranked draws in the parent window) is the largest single
     residual source and survives a rollback; un-park a structural fix (H-SZ1 style) or fast-track Kenma's pocket-queen
     evaluation. **Open** (03:34Z; implicit in BOARD line, not phrased as a card).
 
-## Next checks
+## Next checks (queen)
+
+- Asahi: q1 parity + pool; q2a pool + keeper panels. Kenma trial table (Daichi): Schooltime vs rest, queen alive.
+- D-052 §B look on 16979 (Daichi) — my 0.08 forecast is still scored (D-072 §B keeps D-064 running event only; check).
+- If q2a queens survive but stay short → feed range / crown (Q2b); if they die to heads → Q3 guard.
+- Rec 22 adopted (queen reason in analyse_replay) now ordered to Daichi (D-073 §A).
+
+## Older next checks
 
 - D-052 §B look at 40 ranked games of 16979 (Daichi); score my 0.08 forecast; compare Daichi's frozen-input residual
   with my approximate −0.178 (own anchor, snapshot timing, draw handling).
