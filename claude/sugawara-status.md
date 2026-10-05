@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 07:31Z (unit 21). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 08:33Z (unit 22). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,16 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only".
+
+## Unit 22 (08:25–08:33Z): P-9 S0 mechanism review
+
+- **Read:** D-078 (l.3283: trial 1 +0.074, no Schooltime; trial 2 = 17530 live from 08:15:41Z; tie rule 0.10; clone 213 arms fail;
+  P-9 S0 approved; my atlas note as §E); BOARD through line 1327 (`[08:23 daichi → chair, sugawara, asahi] D-078 (A)/(B) answers`);
+  my line is 1328. BOARD overwrite at 08:17Z restored by the Chair (append with >> only, as I do).
+- **P-9 / P-hinata-05 review (amend):** the cull hash reduces to rnd ≡ 3·me (mod 8), a fixed per-dragon 8-round cycle, not a per-turn
+  coin; S0(a) per-turn ITT measures delay. Instrument = D = (3·me − r0) mod 8 at spell entry. Review
+  `docs/learning/reviews/P-hinata-05-sugawara.md`. My P: first stage gap ≥ 0.25 0.45; S0 effect 0.20; S1|S0 0.25. Not notified (S0 diagnostic, not a gate).
+- Daichi: Schooltime still in ranked draw (6.4 %); trial-1 zero is a 1.5 % event, not removal.
 
 ## Unit 21 (07:27–07:31Z): trial 2 out-of-sample read
 
@@ -156,6 +166,9 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
     evaluation. **Open** (03:34Z; implicit in BOARD line, not phrased as a card).
 
 ## Next checks (queen)
+
+- Hinata's response to the P-9 amendment (D histogram, first stage). Trial 2 (17530) look at ≥ 60 games (~13Z?) with Schooltime split; tie rule D-078 §C.
+- LOO builds on 13-cull and Q1r: no results posted yet — check Asahi runs dir.
 
 - Trial 1 (17388) look + trial 2 start (Daichi); ask for Schooltime(+open4) vs rest split. Asahi's var card; LOO builds on 13-cull (queue item 3); Q1r.
 - Does the var block predict live better than the pool (k16 case)? Track per candidate.
