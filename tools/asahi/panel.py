@@ -43,16 +43,29 @@ CLASS = {**{m: 'A' for m in ['devil', 'trophy', 'stripes', 'tower_defense', 'que
          **{m: 'C' for m in ['trauma', 'weakhold', 'dilemma']}, 'slithery_fight': 'D', 'portals': 'E'}
 
 
+# Queen-keeper panel (D-075 §E, Q-sugawara-01 §4.2): the pool's 17 maps against the two free-lane queen keepers only,
+# 68 fixtures per seed. Opponents are untracked copies made by tools/asahi/copybot.py (fingerprints in .asahi-source.json).
+QK_OPPS = ['bokuto-04-queen', 'kenma-03-pocket-queen']
+
+
+def panel_maps(panel: str) -> list[str]:
+    return POOL_MAPS if panel in ('pool', 'qk') else GEN_MAPS
+
+
+def panel_opps(panel: str) -> list[str]:
+    return QK_OPPS if panel == 'qk' else list(R.ZOO)
+
+
 def map_class(mapkey: str) -> str:
     return CLASS.get(mapkey.split('/', 1)[1], '?') if mapkey.startswith('live/') else 'gen'
 
 
 def fixtures(bot: str, panel: str, seeds: list[int]) -> list[dict]:
-    maps = POOL_MAPS if panel == 'pool' else GEN_MAPS
+    maps = panel_maps(panel)
     out = []
     for seed in seeds:
         for m in maps:
-            for opp in R.ZOO:
+            for opp in panel_opps(panel):
                 for a, b, seat in ((bot, opp, 'A'), (opp, bot, 'B')):
                     out.append(dict(panel=panel, map=m, seed=seed, botA=a, botB=b, opp=opp, seat=seat,
                                     game=f"s{seed}__{m.replace('/', '+')}__{a}__{b}"))
@@ -69,11 +82,11 @@ def runtime_version(exe: str) -> str:
 
 
 def panel_hash(panel: str) -> str:
-    maps = POOL_MAPS if panel == 'pool' else GEN_MAPS
+    maps = panel_maps(panel)
     h = hashlib.sha256()
     for m in maps:
         h.update(m.encode() + b'\0' + (ROOT / 'maps' / f'{m}.map').read_bytes() + b'\0')
-    for z in R.ZOO:
+    for z in panel_opps(panel):
         h.update(z.encode() + b'\0')
     return h.hexdigest()[:12]
 
@@ -83,15 +96,15 @@ def cmd_run(a):
     exe = os.environ.get('UNSWBC', str(Path(sys.executable).parent / 'unswbc'))
     jobs = min(a.jobs, int(os.environ.get('ASAHI_MAX_WORKERS', '14')))
     version = runtime_version(exe)
-    R.prebuild([a.bot] + list(R.ZOO))
     panels = ['pool', 'gen'] if a.panel == 'both' else [a.panel]
+    R.prebuild([a.bot] + sorted({o for p in panels for o in panel_opps(p)}))
     for panel in panels:
         root = run_root(a.bot, panel)
         (root / 'replays').mkdir(parents=True, exist_ok=True)
         fx = fixtures(a.bot, panel, seeds)
         meta = dict(bot=a.bot, fingerprint=R.runtime_fingerprint(ROOT / 'bots' / a.bot), panel=panel,
                     panel_hash=panel_hash(panel), runtime=version, host=os.uname().nodename,
-                    maps=POOL_MAPS if panel == 'pool' else GEN_MAPS, zoo=list(R.ZOO), logs=bool(a.logs))
+                    maps=panel_maps(panel), zoo=panel_opps(panel), logs=bool(a.logs))
         rj = root / 'run.json'
         old = json.loads(rj.read_text()) if rj.exists() else {}
         if old and (old.get('panel_hash') != meta['panel_hash'] or old.get('runtime') != version):
@@ -155,7 +168,7 @@ def cmd_fixtures(a):
     seeds = [int(s) for s in a.seeds.split(',')]
     for panel in (['pool', 'gen'] if a.panel == 'both' else [a.panel]):
         fx = fixtures('X', panel, seeds)
-        maps = POOL_MAPS if panel == 'pool' else GEN_MAPS
+        maps = panel_maps(panel)
         print(panel, len(fx), 'fixtures', len(maps), 'maps', panel_hash(panel), maps)
 
 
