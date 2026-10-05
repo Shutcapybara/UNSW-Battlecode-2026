@@ -7,24 +7,22 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 26, 2026-10-05 11:51–12:40Z)
+## Top — read this first (unit 27, 2026-10-05 12:51–13:00Z)
 
-- **Last BOARD line read:** 1375 (Sugawara 12:35Z: P-hinata-07 queen columns side-swapped). My line 1376 (17388 activated). Next unit reads from 1377.
-- **LIVE = 17388 (`kenma-03-pocket-queen`) from 12:34:13Z** (restore.done: 'restored 17388 … control set'; D-081 §A, D-082 §D).
-  status.json still said 17530 at as_of 12:31Z (lag) — **confirm active = 17388 and the time of its first ranked series**, report to the Chair.
-- **restore.json field order (actuator.restore_check): `previous` = the id to ACTIVATE, `candidate` = the id active NOW** (must end -ai or force).
-  Chair records (and my old doc) said it inverted; I used the code's order and said so on BOARD.
+- **Last BOARD line read:** 1400 (Asahi 12:42Z D-082 §C economy table). My line 1401 (17388 confirmed; windows). Next unit reads from 1402.
+- **LIVE = 17388 (`kenma-03-pocket-queen`)**, confirmed status.json active 17388 (as_of 12:41Z); restored 12:34:13Z; first ranked series after reactivation 12:36Z.
+- **restore.json field order (actuator.restore_check): `previous` = the id to ACTIVATE, `candidate` = the id active NOW.**
 - D-052 §B watch on 17388: rollback target 14585; trial window (60 g, 05:02–07:13Z) counts as its first 60. Roll back on mean diff < −0.08 with bootstrap 95th pct < 0, or crash/DQ.
-- 17530 second window (games after its 60-game trial, to 12:34Z): report separately, not merged. At 11:51Z monitor: 100 since activation −0.052 [−0.145, +0.036]; Elo 1797 rank 67.
-- D-082 §A–C (economy diagnosis, Hinata curve table) — no Live ops action. asahi-27 queued on the Mac (Asahi 11:56Z). Battles dispatch enabled (D-055), no jobs.
-- No API/quota errors in *.done.json.
+- Numbers at 12:51Z (ranked, post-m2, series bootstrap 1000×seed 7): 17388 since 12:34Z −0.056 [−0.262, +0.136] (20/4); 17388 07:14–12:34Z −0.078 [−0.276, +0.121] (20/4); all 17388 100 g −0.007 [−0.106, +0.083]. 17530 second window (games 61–120) −0.045 [−0.166, +0.065] (60/12). Elo 1769 rank 76.
+- Ad-hoc window script: build/daichi/tmp/win27.py (imports live_monitor).
+- No new D-records after D-082. Asahi-27-b13-reserve h2h vs kenma-03 0.676 [0.608, 0.745] (102 g, local) — no upload without a Chair D-record.
+- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json.
 
 ## Next unit
 
-1. Read BOARD from 1377. live_monitor: active 17388? first ranked series time; 17530 second-window numbers (n, mean, interval) → one BOARD line.
-2. D-052 §B watch on 17388 (combine trial 60 + new games per the Chair).
-3. Trial candidates: asahi-27-b13-reserve / bokuto-18 — act only on a Chair D-record (upload activate:false, outside blackout).
-4. If a unit lands in a blackout, schedule a send_later continuation for blackout end + 2 min rather than waiting.
+1. Read BOARD from 1402. live_monitor; 17388 games since 12:34Z (win27.py) and D-052 §B look once n ≥ 40 new.
+2. Trial candidates: asahi-27-b13-reserve / bokuto-18 — act only on a Chair D-record (upload activate:false, outside blackout).
+3. If a unit lands in a blackout, schedule a send_later continuation for blackout end + 2 min.
 
 ## Open questions for the Chair
 
@@ -32,6 +30,7 @@ STATUS: RUNNING
 
 ## Units
 
+- 2026-10-05 12:51Z unit 27 — read BOARD 1377–1400; 17388 confirmed active; windows posted (BOARD 1401). No actions.
 - 2026-10-05 11:51–12:40Z unit 26 — read BOARD 1359–1374 (D-081 end rule → 17388; D-082). Unit hit the 11:52–12:12Z blackout; continuation at 12:33Z wrote restore.json (previous 17388, candidate 17530); restored 12:34:13Z. BOARD + user notified.
 - 2026-10-05 ~10:55Z unit 25 — read BOARD 1348–1357 (D-080: screen not dispatched; Chair applies end rule). Trial-2 look table posted (1358): 17530 −0.041 vs 17388 +0.074.
 - 2026-10-05 ~10:00Z unit 24 — read BOARD 1335–1346 (Kenma retired; 2nd BOARD overwrite, my 1334 survived; D-079). Trial-2 at 45 −0.087; D-079 screen drafted and sized; BOARD 1347.
