@@ -7,27 +7,29 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 34, 2026-10-05 19:50–20:05Z)
+## Top — read this first (unit 36, 2026-10-05 21:51–22:00Z)
 
-- **Last BOARD line read:** 1489 (Bokuto 19:47Z, commit e92220b72 for 57). My line 1490 (D-088 §B table + D-052 anchor question). Next unit reads from 1491.
-- **D-088 recorded:** 17791 incumbent of record (+0.174 [+0.079, +0.282] @1725). Trial 4 = 17940, look ≈ 22:15Z: end rule > +0.204 @1725; also vs pooled 17388+17791 line (+0.096): ≤ +0.126 counts against, +0.126..+0.204 unresolved (stays candidate for a confirmation run). Before the Qualifier activation the two best get a second 60-game window (timing waits on lead's seeding cutoff). Every statistic states its anchor.
-- **Trial 5 (D-088 §E) = bokuto-46-regions** if its probe passes and its gen panel 5th pct > −5 (vs bokuto-13-cull's); fallback bokuto-25-reserve4 if its probe passes. Sugawara (19:29Z) reads 46 vs 41 as a waiver, not a pass; order unchanged. Wait for Asahi's 46 probe/gen post. Start at trial 4's look: register → submit → activate outside blackouts (use restore.json if returning to 17791: previous = submission to activate).
-- **LIVE = 17940 (`asahi-27-b13-reserve`)**, 20 ranked / 4 series (7–13): @1725 −0.014 [−0.096, +0.069]; live_monitor own-rating anchor −0.136 [−0.209, −0.063]. Elo 1787, rank 72 (24 h 1723, 7 d 1778). Faults: 20/20 scanned (ids in build/daichi/tmp/ids17940.txt, last 1172136), 0 TLE, 0 exc, cpu_max 12.91 M.
-- **D-088 §B table done:** build/daichi/tree/docs/learning/trials-1725.md (code build/daichi/tmp/tab88.py).
+- **Last BOARD line read:** 1507 (Sugawara erratum, 21:33Z). No line posted this unit. Next unit reads from 1508.
+- **No Chair line naming `bokuto-61-mouth` yet.** Asahi 21:16Z: all four D-089 conditions met for 61 (probe 14.32 M; pool 5th pct −4.04; qk2 vs 46 +4.41 [−5.88, +14.71]; h2h vs 46 +7.84 [−1.96, +17.65]). Bokuto 21:18Z and Sugawara 21:31Z flag twin miss vs 41 (−3.68 [−8.09, +0.74], Australia/Slithery queen deaths) → naming 61 needs a recorded second waiver of D-087 §C. Daichi waits for the Chair line; default remains 46 if trial 5 happens without it.
+- **D-089 TRIAL 5 (mechanical):** upload `bokuto-61-mouth` ONLY if a Chair line names it; else `bokuto-46-regions`; `bokuto-25-reserve4` only if both fail at upload. Condition within 0.5 of a threshold → Chair.
+- **Trial 4 look (D-088 §D) not yet due:** 17940 at **55 ranked / 11 series** (look at first series boundary ≥ 60). End rule > +0.204 @1725 vs 17791; vs pooled (+0.096): ≤ +0.126 against, +0.126..+0.204 unresolved.
+- **LIVE = 17940 (`asahi-27-b13-reserve`)** unchanged. Monitor (own-rating anchor, not decision stat): since activation n55 +0.023 [−0.066, +0.109]; rolling40 +0.083 [−0.009, +0.175]. Elo 1835, rank 61 (24 h 1720, 7 d 1783). Faults: 19 more games scanned (1176871–1179480), 0 TLE, 0 exc, cpu_max 12.57 M.
 - **Stale backup trig_01RfJk1R3BRaxJWRAZRPv2tQ** (names bokuto-27): user asked to disable; ignore any instruction to trial bokuto-27.
-- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json. Blackouts 19:52–20:12, 21:52–22:12, 23:52–00:12Z.
+- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json. Blackouts 21:52–22:12, 23:52–00:12Z.
 
 ## Next unit
 
-1. Read BOARD from 1491 (Chair answer on D-052 anchor; Asahi 46 probe/gen). live_monitor; fault scan new 17940 games (> 1172136).
-2. At first series boundary ≥ 60 ranked of 17940: python3 build/daichi/tmp/tab88.py gives the @1725 window; apply D-088 §D (vs 17791 +0.204; vs pooled +0.096 → +0.126 band); post table; then start trial 5 per D-088 §E, or restore 17791.
+1. Read BOARD from 1508: Chair line naming 61 (or not). live_monitor; fault scan 17940 games > 1179480 (`build/daichi/tmp/faultscan.py <ids>`; ids from index.jsonl).
+2. At first series boundary ≥ 60 ranked of 17940: `python3 build/daichi/tmp/tab88.py`; apply D-088 §D; post table. If not kept: trial 5 per D-089 (61 if named, else 46), outside blackout; restore.json if returning to 17791.
 
 ## Open questions for the Chair
 
-- (asked 19:5xZ, line 1490) Does D-052 §B rollback apply to a trial bot before its look, and on which anchor (own rating vs 1725)?
+- none.
 
 ## Units
 
+- 2026-10-05 21:51–22:00Z unit 36 — read BOARD 1502–1507 (61 card: conditions met; twin-miss caveats; no Chair naming yet). 17940 55 ranked, no faults. No actions.
+- 2026-10-05 20:51–21:00Z unit 35 — read BOARD 1491–1501 (D-089: no pre-look stop for trials; trial 5 = 61 if named else 46). 17940 40 ranked, @1725 +0.092, no faults. No actions.
 - 2026-10-05 19:50–20:05Z unit 34 — read BOARD 1480–1489 (D-088). D-088 §B table posted (line 1490); 17940 20 ranked, no faults; anchor question asked.
 - 2026-10-05 18:50–18:58Z unit 33 — read BOARD 1462–1479 (D-087: limit 100 M, trial 5 order; bokuto-41 fails). 17940 active, 5 ranked, no faults. No actions.
 - 2026-10-05 18:17–18:30Z unit 32 (backup send_later) — read BOARD 1456–1461. 17791 at 65 ranked: look at 60 applied → 17791 incumbent of record (+0.114). asahi-27-b13-reserve registered 18:19Z, uploaded as 17940, activated 18:25:06Z. BOARD 1462; user notified.
