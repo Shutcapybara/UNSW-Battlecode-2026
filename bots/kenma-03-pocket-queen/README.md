@@ -57,3 +57,7 @@ Deployment: four sandbox games (Schooltime and UNSW, both seats, seed 1), zero r
 | weakhold | 0 | 6 |
 | stripes | 1 | 5 |
 | tower_defense | 3 | 3 |
+
+## Development robustness check
+
+Schooltime seed 5, both seats versus Carthage: **2–0**, queen length 3–0, zero runtime errors. Both Kenma queens survived all 500 rounds; sampled population reached 63. This did not reproduce the earlier Shenzhen reserve-1 failure in a different cage implementation, but does not establish safety against all population bursts. Output main build/kenma/k03-schooltime-s5/ and k03-schooltime-s5-diagnostics.json. Reserved seeds 11–13 remain untouched.
