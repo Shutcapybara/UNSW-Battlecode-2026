@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 05:58 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access or submission. Live ops reports03 trial submission17388 active, ranked window starts05:02UTC; Kenma never touched the server.
+State: **ACTIVE**, updated 2026-10-05 06:04 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access or submission. Live ops reports03 trial submission17388 active, ranked window starts05:02UTC; Kenma never touched the server.
 
 ## Provisional best
 
@@ -46,7 +46,7 @@ Completed Carthage screens use the same102 fixtures and have zero errors.
 | 26 space-noreserve |25 pocket control plus exact Asahi05 space filter | Direct03 **48–54/102** | All102 read;held below03 |
 | 27 queen213-blend |21 plus queen-only50/50 geometric direction blend | Smoke **4–4/8** | Versus21 at6–2;all8 read,831 activations,zero fallback;held |
 
-| 28 harvest-reserve |Bokuto13 harvesting +21 pocket rescue/conditional guard reserve | Prepared | Combined preflight passed;8-game smoke running |
+| 28 harvest-reserve |Bokuto13 harvesting +21 pocket rescue/conditional guard reserve | Smoke **7–1/8** | All8read;7queens survive;fullCarthage102 running |
 
 Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. Runtime manifests pin source, fixtures, engine and compiler. Never edit measured runtime snapshots.
 
@@ -55,14 +55,16 @@ Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. 
 Current bounded work, nice15, max4 heavy workers /6GiB; game guard5GiB:
 1. Kenma21 full zoo272 under scorecard21-after-deploy.py / session17585,one game worker. Kageyama102 complete55–47,zeroerrors,all12 retainedreplaysread;below03at61–41. Zoo reuses64 successful exact-source fixtures and their read diagnostics;only208 new games. All272 zoo and12 retainedKage replays will be read.
 2. Kenma21 versus latest posted Bokuto13 (reported70–31–1Carthage),102 fixtures under run-k21-bokuto13.py / session2264,one worker;reads12 retained replays. Opponent runtime d192d721c4069fda8e42d3366b3a5161564f5548cfd06a67caf825941789d46b.
-3. Kenma28 eight-game smoke under run-k28-smoke.py,one worker,all8 replays to be read. Runtime73f60fe2664c96e7537ac035da46a3cca58d9d13ba83986c27e12881f77df5da. No further28 run queued.
-4. Replay-reader verification completed: all102 full summaries and204 queen histories equal the saved full-reconstruction reference;255seconds. The lane reader now avoids rebuilding unused observations. Worker released;28combined sanitizer and163-turn fixed-observation parity passed.
+3. Kenma28 fullCarthage102 under run-k28-full.py / session83709,one worker,all102replays to be read;reuse8successfulfixtures andread diagnostics. Smoke7–1,zeroerrors,all8read,7queenssurvive,Schoolbothlength3;1,119release/1,000keeper/4donormarkers,zero fallback. Oldsmoke83316terminal0. Runtime73f60fe2664c96e7537ac035da46a3cca58d9d13ba83986c27e12881f77df5da. No other28 run queued.
+4. Same-host Carthage-v-Bokuto13 control102 under run-bokuto13-control.py / session22808,one worker. Scores are from Carthage perspective;invert to quote Bokuto. Peer posted70–31–1 on engine1.2.9;this checks our1.2.3 host. Reads12 retainedreplays.
+
+Replay-reader verification completed: all102 full summaries and204 queen histories equal the saved full-reconstruction reference;255seconds. The lane reader now avoids rebuilding unused observations. Worker released;28combined sanitizer and163-turn fixed-observation parity passed.
 
 Completed:21 four-map pool57–7(all64read) matchesparent57vs03at49; deploymentPASS zip3,594,331,max10,971,663points(firstturnincluded),fourheavygameszeroerrors.24 Asahi58–44 all102read/17,753proofmarkers;26 direct03 48–54 all102read,held;27 smoke4–4vs21at6–2,all8read/831teacheractivations/zero fallback,held. No additional27 games. Body-segment proof probe gains only2turns in1of2452processes;held without bot.
 
 Both Chair-requested03 cross-matches complete and posted:Asahi57–45,Bokuto04 54–48,zeroerrors,12retainedreplaysread each. Kenma03 trialreportedlive byDaichi05:11:submission17388,first rankedseries05:02;trialresultsawaitLiveops. Candidate21 remains promising60–42Carthage and57–7four-map pool;03remainsprovisionalbest until broader scorecards complete. No new ladder request.
 
-Third-worker experiments23/25areterminal anddocumented inREADMEs. Body-segment proof diagnostic examined2452processes fromeight21UNSWreplays:only1process releases2turnsearlier,soheldwithoutanewbot. Outputs reserve-body-seed-probe.json;toolprobe_reserve_seeds.cpp. No newmodeltraining. Reservedseeds11–13/newmapsuntouched. maps/live_var stillabsent05:50; --map-root supportsread-only variants withpinnedhashes whenavailable.
+Third-worker experiments23/25areterminal anddocumented inREADMEs. Body-segment proof diagnostic examined2452processes fromeight21UNSWreplays:only1process releases2turnsearlier,soheldwithoutanewbot. Outputs reserve-body-seed-probe.json;toolprobe_reserve_seeds.cpp. No newmodeltraining. Reservedseeds11–13/newmapsuntouched. maps/live_var stillabsent06:01; --map-root supportsread-only variants withpinnedhashes whenavailable.
 
 ## Evidence and diagnostics
 
@@ -78,7 +80,7 @@ Queen model:26,820 oracle keeper rows;81.75% held-out action accuracy on17 devel
 
 ## Limits and runner
 
-At most4 heavy workers and6GiB aggregate RSS; normally use2 game workers with guard5GiB after earlier overlapping Ouroboros runs hit the guard. Fresh engine each game. Interrupted attempts were archived and retried, never counted as bot losses. Latest output3.77GB, cap30GB; free disk240.5GiB, floor40GiB. All outputs main build/kenma/. Do not touch other lanes, HEAVY.lock or queue.
+At most4 heavy workers and6GiB aggregate RSS; normally use2 game workers with guard5GiB after earlier overlapping Ouroboros runs hit the guard. Fresh engine each game. Interrupted attempts were archived and retried, never counted as bot losses. Latest output6.31GB, cap30GB; free disk233.05GiB, floor40GiB. All outputs main build/kenma/. Do not touch other lanes, HEAVY.lock or queue.
 
 panel.py uses engine1.2.3, clang++-O2-std=c++20, current Python opponents via toolkit /usr/bin/python3 3.9.6. Map/roster hash39961c55d0e6 and parent runtime match supplied reference. Resume --retry-errors only after confirming old process terminal; retry regression passed. --logs enables activation logs and retains all selected replays with --keep-replays; ordinary runs retain Schooltime/Weakhold only. Read retained replays. deploy.py registers compiler/game helpers as killable process groups and propagates guard termination; verified with mocks and actual08 deployment.
 

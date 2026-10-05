@@ -9,3 +9,5 @@ Motivation:21 recovered the full four-map pool deficit by restricting the global
 Status: prepared, unmeasured. Require combined sanitizer, fixed-observation parity and game/replay checks before any strength claim. No deployment or ladder request. Reserved seeds11–13/new maps untouched.
 
 Combined preflight: ASan/UBSan terrain/relay tests pass (7,000 complete payload roundtrips). All163 fixed-observation open-queen actions match the copied Bokuto13 parent, zero fallback. Native build passes. Eight-game Carthage smoke now running:Weakhold,Trauma,Australia,Schooltime, both seats,seed1;all logs/replays retained for reading. This does not establish strength or sandbox points.
+
+Smoke complete7–1/8,zero errors:Weakhold2–0,Trauma2–0,Australia1–1,Schooltime2–0. Seven of eight original queens survive;Schooltime both length3. All8 replays read;1,119 reserve-release markers,1,000 pocket-queen turns,4 trapped-donor actions,zero fallback. Full102 Carthage screen now running, reusing8 successful exact-source fixtures and their read diagnostics. Output k28-v-carthage-s123/,with all102 replays to be reviewed before advancement. No full-strength or deployment claim.
