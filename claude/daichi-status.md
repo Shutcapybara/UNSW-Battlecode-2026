@@ -7,22 +7,20 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 28, 2026-10-05 13:50–14:22Z)
+## Top — read this first (unit 29, 2026-10-05 14:51–15:00Z)
 
-- **Last BOARD line read:** 1414 (Asahi 14:17Z bokuto-18 panels: h2h vs kenma-03 61–41, qk2 30–38). My lines 1409 (registration) and 1415 (trial 3 live). Next unit reads from 1416.
-- **LIVE = 17791 (`bokuto-18-queenfeed`, LV-bokuto-18-queenfeed-ba537e4e-ai) — D-083 §D trial 3.** Uploaded 14:15:46Z (409 while compiling), activated 14:19:00Z (submit.done). Replaced 17388. status.json still showed 17388 at 14:13Z (lags) — confirm next unit.
-- Stage: build/daichi/stage/bokuto-18-queenfeed (16 files cmp-equal to ../wt-bokuto/bots/bokuto-18-queenfeed + CANDIDATE.toml); runtime fp (tools/analysis/features/run_panel.runtime_fingerprint) fa93106401b1… = Asahi probe; hub fp ba537e4eaf5a; hub preflight passed (2 g, max 10.98 M).
-- **D-083 §D:** look at the first series boundary at or after 60 ranked games of 17791: D-081 table (statistic at rating 1725, opponent bands, Schooltime apart, end reason by band, queen columns, faults) + Hinata's matched column/curve block reviewed by Sugawara. **End rule:** 17791 becomes incumbent if its statistic exceeds 17388's (all ranked since 05:02Z) by > 0.03; otherwise restore 17388 (restore.json previous=17388, candidate=17791), outside the blackout. **A fault ends the trial at once** (restore 17388).
-- **restore.json field order: `previous` = id to ACTIVATE, `candidate` = id active NOW.**
-- 17388 at 13:52Z: Elo 1780 rank 71; 129 ranked since 05:02Z (26 series, post-m2) score − expectation +0.005 [−0.072, +0.081]; this is NOT yet the D-081 statistic at 1725 — recompute at the look (trial_d075.py / look2.py).
-- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json (the 409 is the normal compile wait).
+- **Last BOARD line read:** 1420 (Bokuto 14:46Z JOB bokuto-27-exitsplit). Next unit reads from 1421.
+- **LIVE = 17791 (`bokuto-18-queenfeed`) — trial 3, confirmed active in status.json 14:44Z.** First ranked series 14:30:13Z; at 14:51Z 10 ranked / 2 series: +0.054 [−0.076, +0.183] (monitor; not the D-081 statistic). Elo 1806 rank 67. 44 games scanned (10 ranked + 34 unranked): 0 TLE, 0 exceptions on our side, cpu_max 13.05 M.
+- **D-084 (Chair 14:24Z): apply the end rule at the look myself, then start trial 4 at once.** Look = first series boundary ≥ 60 ranked games of 17791 (~16:50–17:20Z at 12 min/series). Statistic at 1725 for 17791 vs 17388 on all its ranked games since 05:02Z; trial bot is incumbent of record if it exceeds by > 0.03, else 17388 stays incumbent. Post the full table (statistic at 1725, bands, Schooltime apart, end reason × result by band, queen columns, faults; **reached-r300 and carried views side by side** per Sugawara 14:40Z / Hinata 14:36Z; enemy-queen death round/cause if cheap per Bokuto 14:36Z).
+- **Trial 4 = `asahi-27-b13-reserve`** — staged at build/daichi/stage/asahi-27-b13-reserve (16 files cmp-equal to ../wt-asahi/bots + CANDIDATE.toml); runtime fp 16ceecff52c5… = Asahi probe. **NOT yet registered** (actuator says registration auto-queues preflight/upload; not risked mid-trial). At the look: register.json {"candidates":[{"dir":"build/daichi/stage/asahi-27-b13-reserve","priority":100}]}, then submit.json {"candidate":"asahi-27-b13-reserve","activate":true} outside the blackout (409 while compiling → resubmit ~3 min). Trial 4 replaces 17791 directly (no restore to 17388 needed in between); record which is incumbent of record.
+- **restore.json field order: `previous` = id to ACTIVATE, `candidate` = id active NOW.** A fault ends a trial at once (restore 17388).
+- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json.
+- Backup send_later set for ~17:22Z in case hourly units miss the look.
 
 ## Next unit
 
-1. Read BOARD from 1416. Confirm status.json active = 17791; record first ranked series time of 17791. live_monitor.
-2. Every unit: fault scan on 17791 games (faultscan.py); any crash/DQ → restore 17388 at once, BOARD + notify.
-3. At 60 ranked games (series boundary): build the D-081 table vs 17388 since 05:02Z; apply the end rule; BOARD + notify.
-4. If a unit lands in a blackout, schedule a send_later continuation for blackout end + 2 min.
+1. Read BOARD from 1421. live_monitor; fault scan 17791 (ids from index.jsonl where bot_a/bot_b == "17791"; our side B so far).
+2. If ≥ 60 ranked at a series boundary and outside the blackout (even-hour −8/+12 min): build table (trial_d075.py / look2.py), apply end rule, register + upload + activate trial 4, BOARD + notify user.
 
 ## Open questions for the Chair
 
@@ -30,6 +28,7 @@ STATUS: RUNNING
 
 ## Units
 
+- 2026-10-05 14:51–15:00Z unit 29 — read BOARD 1416–1420 (D-084: back-to-back trials, trial 4 asahi-27). 17791 active, 10 ranked, no faults. Trial 4 staged and fp-checked. No server actions.
 - 2026-10-05 13:50–14:22Z unit 28 — read BOARD 1402–1414 (D-083). bokuto-18-queenfeed copied, fp-checked, registered 13:53Z; blackout wait; uploaded as 17791, activated 14:19Z. BOARD 1409, 1415; user notified.
 - 2026-10-05 12:51Z unit 27 — read BOARD 1377–1400; 17388 confirmed active; windows posted (BOARD 1401). No actions.
 - 2026-10-05 11:51–12:40Z unit 26 — read BOARD 1359–1374 (D-081 end rule → 17388; D-082). Unit hit the 11:52–12:12Z blackout; continuation at 12:33Z wrote restore.json (previous 17388, candidate 17530); restored 12:34:13Z. BOARD + user notified.
