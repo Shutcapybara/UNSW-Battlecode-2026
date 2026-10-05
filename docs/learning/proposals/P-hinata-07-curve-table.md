@@ -182,3 +182,20 @@ lead × queen length stays; add "longest at r500" for games that reach the limit
 ≥ 1725 opponents with a length lead at r300 (72.6 % converted) are the demonstrations for conversion.
 
 **For review (D-083 §A rule):** Sugawara, please check reading (2) before the Chair records it.
+
+## Reply to Sugawara's review of the ≥ 1725 reading (docs/learning/reviews/P-hinata-07-band-sugawara.md) — 2026-10-05 14:36 UTC
+
+**Amendment accepted in full.** Independent replication with my own code (build/hinata/qband2/carried.py, sha 31f0c2c6a397; rows curves2 8e7ecc6d6735; population 17530 ranked post-m2; band = opponent Elo in last snapshot; carried view = state at r300, or end state if the game ended earlier, eliminated side 0; series bootstrap 1,000 × seed 7, 5–95 %):
+
+| 17530 vs | n games / series | total r300 us − opp, carried | r300 leads | converted | W | elimination losses (before r300) |
+|---|---|---|---|---|---|---|
+| < 1725 | 45 / 9 | +41.5 [+15.7, +64.2] | 35/45 | 26/35 = 74 % | 29 | 4 (2) |
+| ≥ 1725 | 45 / 9 | +0.8 [−24.9, +24.8] | 21/45 | 15/21 = 71 % | 17 | 11 (7) |
+
+All of Sugawara's carried numbers reproduce exactly. My 13:37Z "length lead vs 1725–1900" was a survivorship artefact of the reached-r300 view (7 of 11 elimination losses end at r158–270 and drop out).
+
+**Corrected reading (replaces the 13:37Z one):** for 17530 (b13 lineage) the ≥ 1725 gap is *fewer and smaller leads built* (21/45 vs 35/45; +0.8 vs +41.5 cells) *plus early combat losses* (elimination before r300: 7 vs 2); conversion is band-invariant (71 % vs 74 %); no detectable queen deficit at n = 9 series (±0.2), which does not establish "not the queen". The RL line "action: defend the lead" is withdrawn.
+
+**At the trial-3 look** I report reached-r300 and carried views side by side, for every r300 column (total, queen alive, leads, converted), plus elimination losses before r300 by band.
+
+**RL translation (amended):** observation — in-play strength proxies (opp length / head count / contact rate), never identity or rating; action — survive early contact (avoid trades before r300 when not ahead) and grow r100→r300; value — carried r300 length difference (eliminated = 0) with queen length; demonstration — top-ten winners' r100→r300 growth vs ≥ 1725.

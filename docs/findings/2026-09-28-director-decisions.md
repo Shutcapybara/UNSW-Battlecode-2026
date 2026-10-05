@@ -3790,3 +3790,44 @@ themselves.
   free-lane prompt and the addendum `docs/learning/prompts/07-free-lane-addendum-2026-10-05.md` (the day's
   findings, the three targets, the job route, the pitfalls). Kageyama's lane, silent since about 07:00Z, could be
   the one replaced.
+
+## D-085 — A checked reading of the strong-opponent gap; Bokuto's exit-split finding; the trial queue (5 Oct 2026 15:22Z, Chair: Ushijima)
+
+### A. Recorded after a second lane's check (D-083 §A): the gap against teams at 1725 or above
+
+- Hinata's 13:37Z reading was amended by Sugawara (14:40Z) and re-derived independently by Hinata; both now agree.
+  For `bokuto-13-cull` (17530; 45 games in each band, 9 series):
+  - Seven of its 11 elimination losses against the stronger band end before round 300. With every game carried
+    to round 300 (an eliminated side counts 0), its length lead is +0.8 [−24.9, +24.8] against teams at 1725 or
+    above and +41.5 [+15.7, +64.2] below. The lead reported at 13:37Z was survivorship.
+  - Leads at round 300 are converted at the same rate in both bands: 71 % and 74 %.
+  - No queen deficit is detectable at this size; one is not ruled out.
+- **Reading:** against stronger teams this lineage builds no lead and loses early fights. It is not a failure to
+  hold leads. From now on the looks report the reached-round-300 view and the carried view side by side.
+
+### B. Bokuto's finding: walkers die whole at corridor ends (not yet checked by a second lane)
+
+- From 17530's 120 ranked games: between rounds 100 and 300 we lose 131 cells a game at walls against 51 for our
+  opponents; 41 % of that is a dragon of length 3–5 dying whole at the dead end of a corridor. Cause, in the
+  carthage lineage's `decide()`: when no move survives, the production split (the tail's two segments) outscores
+  the escape split (all but two segments turn and walk out), so the larger part stays and dies. On Weakhold this
+  runs from round 12 and 17530 lost 6 of 6 there by elimination.
+- If it holds, this is a mechanism for the largest gap of D-082 (growth between rounds 100 and 300) and for the
+  early losses of §A. It is recorded as Bokuto's finding; Sugawara is asked to check the code path and the
+  counts, and Asahi's cards will show the local effect. Local runs against carthage-05 understate it, because
+  carthage-05 has the same fault.
+- Three one-change twins of the trial-3 bot are on Asahi's queue: `bokuto-27-exitsplit` (the fix),
+  `bokuto-25-reserve4` (four unit slots kept free instead of one), `bokuto-26-hunt` (the enemy queen as prey).
+  Each is read paired against its parent `bokuto-18-queenfeed`.
+
+### C. The trial queue
+
+- Trial 3 (`bokuto-18-queenfeed`, 17791) runs to its look at about 17:20Z. The hub shows it active with no fault.
+- **Trial 4 is `bokuto-27-exitsplit` if Asahi has posted a passing probe and a pool not below carthage-05 for it
+  by the time of trial 3's look; otherwise `asahi-27-b13-reserve` as ordered in D-084.** The fix is one change on
+  a parent that will just have finished 60 ladder games, and it attacks the largest measured gap. The other of
+  the two follows as trial 5.
+- `bokuto-25-reserve4` and `bokuto-26-hunt` enter the queue when they qualify, in the order of their paired
+  result against `bokuto-18-queenfeed` on `qk2` and the head-to-head.
+- Sugawara reads the change of any trial candidate before its upload when the timing allows; this does not hold
+  a trial up.

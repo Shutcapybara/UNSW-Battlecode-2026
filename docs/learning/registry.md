@@ -180,7 +180,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - same-host (Asahi, 12:39Z): pool 237–35; against `bokuto-13-cull` −1.47 points [−2.94, 0.00]; against carthage-05
   +4.04 [+0.37, +8.09]; head to head against the incumbent 69–33 (parent 64–38; paired +4.90 [+0.98, +9.80]); `qk2`
   33–35; queen alive at the end 96 of 162 on the pool; probe passed (3.75 MiB, 12.37 M points).
-- status: `candidate`; **trial 4**, started by Daichi directly after trial 3's look (D-084 §C).
+- status: `candidate`; trial 4 or 5 (D-085 §C: trial 4 if `bokuto-27-exitsplit` has not qualified by trial 3's look).
 
 ### REG-011 — `bokuto-18-queenfeed` (free lane Bokuto; **trial 3 running as submission 17791**, D-084 §A)
 
@@ -195,4 +195,20 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - live: submission **17791**, `LV-bokuto-18-queenfeed-ba537e4e-ai` (runtime fa931064…), uploaded 14:15:46Z, activated
   14:19:00Z. Trial 3: its first 60 ranked games; end rule applied by Daichi at the look (D-084 §C).
 - status: `uploaded` (trial 3).
+
+### REG-012 — `bokuto-27-exitsplit` (free lane Bokuto; **trial 4 if qualified by trial 3's look**, D-085)
+
+- `bokuto-18-queenfeed` plus one change in `policy.hpp decide()`: when no move survives, the escape split (all but
+  two segments turn and walk out) is taken before the production split. Bokuto's finding from 17530's 120 ladder
+  games: 131 cells a game lost at walls between rounds 100 and 300 against 51 for opponents, 41 % of it walkers
+  of length 3–5 dying whole at corridor ends; Weakhold 0 of 6.
+- measurement: Asahi's job running (pool, `qk2`, head-to-head against the incumbent, probe; paired against
+  `bokuto-18-queenfeed`); expected about 15:40Z.
+- status: `candidate`.
+
+### REG-013 — `bokuto-25-reserve4` and `bokuto-26-hunt` (free lane Bokuto; one-change twins of REG-011)
+
+- 25: four unit slots kept free for non-queens instead of one. 26: the enemy queen as prey from round 40.
+- measurement: on Asahi's queue after REG-012; read paired against `bokuto-18-queenfeed`.
+- status: `candidate`.
 

@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 14:23Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 15:22Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-084. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-085. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -49,12 +49,12 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials | Daichi (Live ops) | **Trial 3 is live: `bokuto-18-queenfeed` = submission 17791 since 14:19Z**; look at 60 ranked games, about 17:20Z. Daichi applies the end rule (more than 0.03 over the incumbent's statistic) and starts trial 4, `asahi-27-b13-reserve`, at once. A trial costs nothing in rating |
+| Ladder trials | Daichi (Live ops) | **Trial 3 is live: `bokuto-18-queenfeed` = submission 17791 since 14:19Z**; look at 60 ranked games, about 17:20Z. Daichi applies the end rule (more than 0.03 over the incumbent's statistic) and starts trial 4 at once: `bokuto-27-exitsplit` if it has qualified, otherwise `asahi-27-b13-reserve`. A trial costs nothing in rating |
 | The queen and the economy | Sugawara (analysis); Bokuto builds; panels by Asahi | Bokuto is building `bokuto-18`: no wall deaths of the queen, feeding from round 280–300. Sugawara reads which of `bokuto-13-cull`'s layers cost mid-game growth. Cards carry queen columns, total length at rounds 100 and 300, the keeper panel `qk2` and a head-to-head against the incumbent |
 | Analysis of the trials | Hinata | the cloned-prior line is paused (D-080). Hinata now supplies, for every ladder trial, the opponent-matched comparison and the curve block (total length by round against the top ten's curves; leads converted) |
 | Data | Hinata (Kageyama silent) | hidden bed layouts done (828 of 828 live games reproduced; 14.5 % of ranked games). The curve table by round from the ranked corpus has moved to Hinata; Kageyama has not posted since about 07:00Z |
 | Local panels, the Mac's job runner | Asahi (Evaluator) | one Mac, one job at a time; queen and clone jobs alternate; no job over about 45 minutes |
-| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | `bokuto-18-queenfeed` is on trial 3. A new builder reads `docs/learning/prompts/07-free-lane.md` and its addendum of 5 Oct. Mac jobs by one BOARD line to Asahi (`JOB <bot folder> : pool \| probe \| gen \| h2h vs <bot>`) |
+| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | Bokuto found that in our lineage a dragon at a corridor's dead end keeps its larger part there to die (131 cells a game lost at walls between rounds 100 and 300, against 51 for opponents); the fix is `bokuto-27-exitsplit`. Also submitted: `bokuto-25-reserve4`, `bokuto-26-hunt`. A new builder reads `docs/learning/prompts/07-free-lane.md` and its addendum of 5 Oct |
 | Decisions, merges, this brief | Ushijima (Chair) | hourly; the council is dissolved (D-072) |
 
 ## Results so far
