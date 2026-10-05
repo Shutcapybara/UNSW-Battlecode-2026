@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 02:59 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
+State: **ACTIVE**, updated 2026-10-05 03:06 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
 
 ## Provisional best
 
@@ -31,6 +31,7 @@ Completed Carthage screens use the same102 fixtures and have zero errors.
 | 11 current-view-orbit | Fix freshness, add activation logs | Smoke2–2 | Zero activations; wrong no-bed convention; frozen |
 | 12 observed-empty-orbit | Require observed no-bed=-1 | Running102 | Smoke3–1 with activation in all four games |
 | 13 keeper-search-prior | Existing keeper model inside parent movement search | Prepared | Conditional next screen; integration tests pass |
+| 14 queen-corridor-caution | Prefer visible turning room for short original queens | Queued smoke | Recorded avoidable entry redirects; no real games yet |
 
 Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. Runtime manifests pin source, fixtures, engine and compiler. Never edit measured runtime snapshots.
 
@@ -61,3 +62,7 @@ Queen model:26,820 oracle keeper rows;81.75% held-out action accuracy on17 devel
 At most4 heavy workers and6GiB aggregate RSS; intentionally use2 game workers with guard5GiB after earlier overlapping Ouroboros runs hit the guard. Fresh engine each game. Interrupted attempts were archived and retried, never counted as bot losses. Output about0.9GB, cap30GB; free disk253GiB, floor40GiB. All outputs main build/kenma/. Do not touch other lanes, HEAVY.lock or queue.
 
 panel.py uses engine1.2.3, clang++-O2-std=c++20, current Python opponents via toolkit /usr/bin/python3 3.9.6. Map/roster hash39961c55d0e6 and parent runtime match supplied reference. Resume --retry-errors only after confirming old process terminal; retry regression passed. --logs enables activation logs and retains all selected replays with --keep-replays; ordinary runs retain Schooltime/Weakhold only. Read retained replays. deploy.py registers compiler/game helpers as killable process groups and propagates guard termination; verified with mocks and actual08 deployment.
+
+2026-10-05 03:06 UTC: Previous turn made concrete progress (12 integration tests and real activation,09 result,13 prepared); current12, parent64 and waiting sequences revalidated through live session handles. Kenma14 prepared from12: short original queens prefer a legal route with visible turning room (branch, loop or portal traced through at most8 observed corridor cells) when available, retaining parent choices otherwise. This is a heuristic, not a proof about unseen endpoints. The initial immediate-degree test was insufficient because a safe narrow loop also has only one onward edge; corrected before measurement. Recorded-observation test now redirects round157 south and preserves fallback at158 under sanitizers. Log kenma_corridor_filter. Runtime c356ab501d912e7dd09fdc18a4c5e41951a4831e5726c1de2ec3de76d69083ed. Queued main build/kenma/after-parent-diagnostic.py (session33367) waits exact20374 and clean64 completion, then runs four Weakhold/Australia games (both seats,seed1,logs/replays). It stops for activation audit before any full14 screen. No extra concurrent game workers.
+
+Pool mechanism evidence from completed same-host UNSW fixtures: parent wins four games lost by03 (Fenrir B,Yuna B,Chaewon B,Gavroche A). Death-event prefixes match until rounds68–77; sampled populations then diverge around the cap (parent64 versus03 at63). This supports investigating the global one-slot reserve as a cause, but full64 and a controlled reserve ablation are still required. No random APIs found in those four opponent source trees. A premature partial-log claim that Schooltime differed from the supplied reference was corrected: actual completed parent Schooltime14–2 matches reference;03 is15–1.
