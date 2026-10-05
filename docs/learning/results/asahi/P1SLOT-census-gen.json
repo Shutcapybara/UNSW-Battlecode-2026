@@ -1,0 +1,551 @@
+{
+ "panel": "gen",
+ "parent": "carthage-05-free-sprint",
+ "cands": {
+  "kageyama-01-p1-slot": {
+   "seeds": [
+    1
+   ],
+   "pairs": 464,
+   "by_map": {
+    "m2tr/autarky_tr": [
+     0,
+     2,
+     14,
+     2,
+     16
+    ],
+    "m2tr/default_tr": [
+     5,
+     2,
+     9,
+     7,
+     15
+    ],
+    "m2tr/dilemma_tr": [
+     0,
+     6,
+     10,
+     6,
+     15
+    ],
+    "m2tr/trophy_tr": [
+     1,
+     5,
+     10,
+     6,
+     16
+    ],
+    "new/mc26_archipelago": [
+     2,
+     2,
+     12,
+     4,
+     16
+    ],
+    "new/mc26_crossroads": [
+     1,
+     5,
+     10,
+     6,
+     16
+    ],
+    "new/mc26_delayed_commons": [
+     5,
+     1,
+     10,
+     6,
+     16
+    ],
+    "new/mc26_equatorial_belt": [
+     3,
+     4,
+     9,
+     7,
+     16
+    ],
+    "new/mc26_far_harbors": [
+     5,
+     3,
+     8,
+     8,
+     15
+    ],
+    "new/mc26_nursery_bays": [
+     0,
+     7,
+     9,
+     7,
+     16
+    ],
+    "new/mc26_pinwheel": [
+     0,
+     2,
+     14,
+     2,
+     16
+    ],
+    "new/mc26_portal_quartet": [
+     0,
+     2,
+     14,
+     2,
+     12
+    ],
+    "new/mc26_pulse_farms": [
+     3,
+     3,
+     10,
+     6,
+     16
+    ],
+    "new/mc26_relay_depots": [
+     0,
+     3,
+     13,
+     3,
+     15
+    ],
+    "new/mc26_scattered_fleets": [
+     0,
+     3,
+     13,
+     3,
+     16
+    ],
+    "new/mc26_seam_market": [
+     2,
+     0,
+     14,
+     2,
+     16
+    ],
+    "new/mc26_spring_wells": [
+     4,
+     2,
+     10,
+     6,
+     15
+    ],
+    "new/md26_causeway_detour_s0": [
+     2,
+     3,
+     11,
+     5,
+     16
+    ],
+    "new/md26_causeway_portal_s0": [
+     0,
+     4,
+     12,
+     4,
+     16
+    ],
+    "new/md26_commons_shared_s0": [
+     0,
+     2,
+     14,
+     2,
+     16
+    ],
+    "new/md26_commons_spread_s0": [
+     0,
+     0,
+     16,
+     0,
+     16
+    ],
+    "new/md26_orchard_narrow_s0": [
+     0,
+     1,
+     15,
+     1,
+     13
+    ],
+    "new/md26_orchard_wide_s0": [
+     1,
+     0,
+     15,
+     1,
+     15
+    ],
+    "new/md26_promenade_ring_s0": [
+     4,
+     1,
+     11,
+     5,
+     16
+    ],
+    "var/crossroads_tr": [
+     6,
+     0,
+     10,
+     6,
+     16
+    ],
+    "var/devil_tr": [
+     0,
+     7,
+     9,
+     7,
+     16
+    ],
+    "var/portals_tr": [
+     2,
+     4,
+     10,
+     6,
+     7
+    ],
+    "var/queen_of_spades_tr": [
+     4,
+     0,
+     12,
+     4,
+     15
+    ],
+    "var/trauma_tr": [
+     2,
+     4,
+     10,
+     6,
+     9
+    ]
+   }
+  },
+  "kageyama-01-p1-slot-l05": {
+   "seeds": [
+    1
+   ],
+   "pairs": 464,
+   "by_map": {
+    "m2tr/autarky_tr": [
+     0,
+     2,
+     14,
+     2,
+     16
+    ],
+    "m2tr/default_tr": [
+     5,
+     1,
+     10,
+     6,
+     16
+    ],
+    "m2tr/dilemma_tr": [
+     0,
+     9,
+     7,
+     9,
+     15
+    ],
+    "m2tr/trophy_tr": [
+     1,
+     3,
+     12,
+     4,
+     16
+    ],
+    "new/mc26_archipelago": [
+     0,
+     2,
+     14,
+     2,
+     16
+    ],
+    "new/mc26_crossroads": [
+     5,
+     1,
+     10,
+     6,
+     16
+    ],
+    "new/mc26_delayed_commons": [
+     5,
+     1,
+     10,
+     6,
+     16
+    ],
+    "new/mc26_equatorial_belt": [
+     5,
+     3,
+     8,
+     8,
+     16
+    ],
+    "new/mc26_far_harbors": [
+     1,
+     2,
+     13,
+     3,
+     14
+    ],
+    "new/mc26_nursery_bays": [
+     1,
+     2,
+     13,
+     3,
+     16
+    ],
+    "new/mc26_pinwheel": [
+     1,
+     2,
+     13,
+     3,
+     16
+    ],
+    "new/mc26_portal_quartet": [
+     0,
+     3,
+     13,
+     3,
+     14
+    ],
+    "new/mc26_pulse_farms": [
+     1,
+     0,
+     15,
+     1,
+     16
+    ],
+    "new/mc26_relay_depots": [
+     0,
+     4,
+     12,
+     4,
+     15
+    ],
+    "new/mc26_scattered_fleets": [
+     1,
+     1,
+     14,
+     2,
+     16
+    ],
+    "new/mc26_seam_market": [
+     6,
+     0,
+     10,
+     6,
+     16
+    ],
+    "new/mc26_spring_wells": [
+     6,
+     1,
+     9,
+     7,
+     16
+    ],
+    "new/md26_causeway_detour_s0": [
+     2,
+     4,
+     10,
+     6,
+     16
+    ],
+    "new/md26_causeway_portal_s0": [
+     0,
+     5,
+     11,
+     5,
+     16
+    ],
+    "new/md26_commons_shared_s0": [
+     0,
+     10,
+     6,
+     10,
+     16
+    ],
+    "new/md26_commons_spread_s0": [
+     0,
+     0,
+     16,
+     0,
+     16
+    ],
+    "new/md26_orchard_narrow_s0": [
+     0,
+     1,
+     15,
+     1,
+     14
+    ],
+    "new/md26_orchard_wide_s0": [
+     1,
+     2,
+     13,
+     3,
+     16
+    ],
+    "new/md26_promenade_ring_s0": [
+     4,
+     2,
+     10,
+     6,
+     16
+    ],
+    "var/crossroads_tr": [
+     3,
+     1,
+     12,
+     4,
+     16
+    ],
+    "var/devil_tr": [
+     0,
+     8,
+     8,
+     8,
+     16
+    ],
+    "var/portals_tr": [
+     2,
+     4,
+     10,
+     6,
+     7
+    ],
+    "var/queen_of_spades_tr": [
+     1,
+     0,
+     15,
+     1,
+     15
+    ],
+    "var/trauma_tr": [
+     0,
+     7,
+     9,
+     7,
+     7
+    ]
+   }
+  }
+ },
+ "parent_seed_noise": {
+  "m2tr/autarky_tr": [
+   48,
+   12
+  ],
+  "m2tr/default_tr": [
+   48,
+   16
+  ],
+  "m2tr/dilemma_tr": [
+   48,
+   4
+  ],
+  "m2tr/trophy_tr": [
+   48,
+   4
+  ],
+  "new/mc26_archipelago": [
+   48,
+   12
+  ],
+  "new/mc26_crossroads": [
+   48,
+   18
+  ],
+  "new/mc26_delayed_commons": [
+   48,
+   14
+  ],
+  "new/mc26_equatorial_belt": [
+   48,
+   2
+  ],
+  "new/mc26_far_harbors": [
+   48,
+   12
+  ],
+  "new/mc26_nursery_bays": [
+   48,
+   14
+  ],
+  "new/mc26_pinwheel": [
+   48,
+   4
+  ],
+  "new/mc26_portal_quartet": [
+   48,
+   12
+  ],
+  "new/mc26_pulse_farms": [
+   48,
+   0
+  ],
+  "new/mc26_relay_depots": [
+   48,
+   0
+  ],
+  "new/mc26_scattered_fleets": [
+   48,
+   2
+  ],
+  "new/mc26_seam_market": [
+   48,
+   4
+  ],
+  "new/mc26_spring_wells": [
+   48,
+   12
+  ],
+  "new/md26_causeway_detour_s0": [
+   48,
+   20
+  ],
+  "new/md26_causeway_portal_s0": [
+   48,
+   10
+  ],
+  "new/md26_commons_shared_s0": [
+   48,
+   2
+  ],
+  "new/md26_commons_spread_s0": [
+   48,
+   0
+  ],
+  "new/md26_orchard_narrow_s0": [
+   48,
+   10
+  ],
+  "new/md26_orchard_wide_s0": [
+   48,
+   2
+  ],
+  "new/md26_promenade_ring_s0": [
+   48,
+   10
+  ],
+  "var/crossroads_tr": [
+   48,
+   18
+  ],
+  "var/devil_tr": [
+   48,
+   6
+  ],
+  "var/portals_tr": [
+   48,
+   17
+  ],
+  "var/queen_of_spades_tr": [
+   48,
+   20
+  ],
+  "var/trauma_tr": [
+   48,
+   12
+  ]
+ },
+ "parent_seeds": [
+  1,
+  2,
+  3
+ ]
+}
