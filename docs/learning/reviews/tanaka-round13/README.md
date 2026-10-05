@@ -1,0 +1,3 @@
+# Round 13 audit
+
+Use the main checkout's `.venv/bin/python` to run `tools/tanaka/round13_audit.py` with `PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1` and `nice -n 10`. Output goes to `/tmp/tanaka-r13`. It reads published A1/A0/A3 predictions, metadata for the accepted full development folds and the adjacent frozen completed-throughput receipt. It never runs the benchmark, fits, performs real selection or reads live/confirmation outcomes. Input hashes and aggregates are in audit.json. Full-build feature/shard contents are not rescanned; the fold census uses the pinned source manifest.

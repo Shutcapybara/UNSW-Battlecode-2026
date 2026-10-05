@@ -1,13 +1,13 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-04 23:22 UTC. State: **Selector revision7 implementation PASS; D064 cohort eligibility and supplied k16 archive identity independently verified**.
+Updated: 2026-10-05 00:23 UTC. State: **A1 gain and full-fold census verified; completed P7 throughput arithmetic verified, exact core-limit evidence requested**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
 - Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
-- Main read/fast-forward base: `aec8a9848`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
+- Main read/merge base: `e20eeab36`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
 
@@ -137,6 +137,16 @@ Updated: 2026-10-04 23:22 UTC. State: **Selector revision7 implementation PASS; 
 - Fullteacherbuildmanifest acknowledged asDataevidence (3,415,158rows/2,753,685oracleFRL); no repeatedfullscanthiswake. Newdeployslot assignedDatawithA3400placeholder, not an actualselection. Pooledconfirmationforecast.60 and P7.55/.40/.20/.10 unchanged.
 - Frozenround12sources/receipts/helper and reviewaddenda; bounded one-worker nice10,270GiBfree, ~2secondtests. No heavyjob/lockneeded, no new heldoutuse. Projectdocumentmirror stillunavailable; no duplicate request.
 
+## Thirteenth wake: A1, full development folds and throughput
+
+- Merged e20eeab36 into r/tanaka (branches had diverged by one commit), preserving8416058d7. D065 adopted; D045resolved. NoSTOP, LS1interim/live-input read, botrun or fit. Mainkeeper cache issue already handled byDaichi; no duplicatecleanup. AllPython work now sets PYTHONDONTWRITEBYTECODE=1.
+- **A1 results independently reproduced:** A1400 .71840637 [.71006347,.72778045]; A1800 .71575033 [.70748723,.72510783]; A1400−A0+.02074900 [.01701501,.02444323]; A1400−A3400+.00394157 [.00176484,.00603754]; A1800−400−.00265604 [−.00362566,−.00181229]. Same189630keys/188250FRL,97games49series10teachers14trainingmaps/postm2.1000whole-seriesdrawsseed7linear5/95. No winner/confirmation; forecast.60unchanged.
+- **Full-fold census verified** manifest118c78d7 pins shardmanifest6f531e91.506series/1709games/3415158allrows match perfold113/93/97/92/111series and publishedcounts. Hashrule matchesall506;49devseriesretainfold; metadata-only no training/cohort series overlap. Fullfeaturepayloads notrescanned. D065 export<=4MiB total is an additional external selection condition; existingselector softwarepass stands.
+- **P7throughput arithmetic verified** saved job179 receipt8abe94ac/source896440ff:80uniqueerror-free networktasks sum16002916callbacks/18371games/3466414rounds;304.1srounded yields189.446M/h vsreported189.473M/h (unrounded304.05723s); mean188.689rounds and4.6166callbacks/round. Encoder58.943us/network66.830us; workerelapsed150.937us perdecision is not CPUtime.
+- **Core-limit receipt gap:**8workerprocesses verified,18hostCPUs; no retained BLAS/Accelerate limit or processCPU accounting in source/job/result. Daemoninheritsenvironment, so a historicallimitmayexist. AskedAsahi forretained evidence only, no rerun. Label8workers; ChairsettlesexactE2. Forecast.55unchanged/unscoredbyTanaka; ifacceptedPASSBrier.2025. Rateisnotdisputed, noholdonbattery/deploy. E1/E3, legalmask,trainednormalization,critic/update/storage anddensegames unmeasured; .40/.20/.10unchanged.
+- D065 acceptsarchiveidentity and releasesWeakholdrerun; LS1stop02:15Z untouched, nooutcomeread. Driftmonitorchange andplaceholderdeployparity are owner/Chair evidence, not rerun. Memory24GiB/14.4GiB60%cap providedbyAsahi; Hinataownsjobsize/splits. No duplicate sizing request.
+- Round13sources/receipt/helper andreviewaddenda; one-workernice10,<1secondarithmetic,270GiBfree. Noheavylockneeded. No accessible projectdocument mirror. Keeperpush onlyabsent, MAINBOARDnewresult/request only.
+
 ## Next wake
 
-Readstatus/STOP andnewChairdecisions. Selector software release complete foraf1c87e0; do not repeat passingtests absentchanges. Await completebattery/full-rowcomparison and Data's frozen countinput; audit genuinelynew results/selection receipts without running gate. Watch completedLS1stop/table only, preserve D064conditions andoriginalletter; no interimread. P7throughput and deployslot ownedbyEvaluator/Data; no duplicatejob. Keepforecasts, ownbranchcommits, MAINBOARDnewmaterialonly, keeperrequestonlyabsent; mirrorunavailable.
+Readstatus/STOP andnewDrecords. Await Asahi's existing-run core-limit evidence/ChairE2 disposition; do not rerun benchmark or repeatedlyrequest. Audit new battery/full-row outputs or actualfinalselection only whenready; unchangedselectorpasses stand, totalexportlimit nowbinds externally. Keep LS1outcomesunread untilcompletedstop; archiveidentityalreadyclosed. No duplicatecleanup/job/mirrorrequests. Forecasts and gateletters remainasrecorded.

@@ -118,3 +118,24 @@ Top-three union (91,306,264) = **29 games / 25 distinct series**, not the sum of
 The completed full-teacher build and manifest are acknowledged as Data's evidence (3,415,158 rows, 2,753,685 oracle F/R/L moves); this wake did not independently rescan that 2.2GB build or fit it. Source identity and eligibility checks do not establish the power of a ten-series gate. Original pooled confirmation forecast **.60** stays unchanged. RL translation: candidate identity and demonstration support now match the approved experiment; confirmation continues to judge whether the selected policy generalizes.
 
 Receipts and pinned sources: `tanaka-round12/`; helper `tools/tanaka/round12_audit.py`. Single-worker nice10, about two seconds, disk270GiB free. No bot run, training, live input or held-out label read.
+
+## A1 and full-row folds — 2026-10-05 00:23 UTC
+
+**Published A1 result independently reproduced**, without a fit or actual selection. Same189,630move keys, labels, series and folds as A0/A3; 188,250F/R/L rows,97games,49series,10teachers,14trainingmaps,post-m2. Central90% whole-series bootstrap,1,000draws,seed7,linear5th/95th:
+
+| Quantity | Point | Interval |
+|---|---:|---:|
+| A0 accuracy | .69765737 | [.68906400,.70693913] |
+| A1-400 accuracy | .71840637 | [.71006347,.72778045] |
+| A1-800 accuracy | .71575033 | [.70748723,.72510783] |
+| A1-400 minus A0 | +.02074900 | [.01701501,.02444323] |
+| A1-400 minus A3-400 | +.00394157 | [.00176484,.00603754] |
+| A1-800 minus A1-400 | −.00265604 | [−.00362566,−.00181229] |
+
+A1 registry SHA `66444789f9a8ecf32963d628e7be7641c9f6acb6f2544ef3b0d75a851d50bfda`; A0/A1/A3 rows hash `a0b1ea2e…`. This supports the HB-feature refit's development advantage. It does not establish a deployable winner or live gain; accuracy is still below .75 and the inventory is unfinished. Keep the selected pooled confirmation forecast .60.
+
+**Full-row fold census independently reproduced** against teacher-side metadata and the pinned shard manifest's row counts, not a new scan of the feature payloads. Fold manifest SHA `118c78d7965b1480841e335ad3b629aae35ffd5aa23ff3a1917bab1957775c08`; referenced shard manifest SHA `6f531e9101122434f79f59854ba0a3c4cf5dfdd0ddbe3a61bef83bd7b58584c2` matches. All506series follow sha256(hinata-r2/series)%5. Per-fold series/games/allrows reproduce: f0 113/386/809142; f1 93/315/669718; f2 97/330/619097; f3 92/305/594900; f4 111/373/722301. Total1,709games/3,415,158rows. All49dev120series retain their fold. Teacher-training series have zero overlap with the frozen cohort's series, checked by metadata-only projection. These are development folds accepted by D-065, not a new held-out draw.
+
+**D-065 disposition:** software release for selector af1c87e0 remains valid; unchanged tests were not repeated. Actual selection additionally needs the new total-export-size condition (<=4MiB zipped, including the incumbent model where HB scores are inputs), the completed inventory and the approved full-row comparisons. The selector's development ranking is not proof that these external deploy checks pass. Kageyama's placeholder export/parity and Asahi's switch-off parity are acknowledged as owner evidence; the placeholder is not a selected model. No upload or behavior change by Tanaka.
+
+RL translation: the HB feature representation adds demonstrable imitation information relative to the raw encoder at this sample size; the modest accuracy gain must survive the fixed confirmation and the actual deployment budget. Receipts in `tanaka-round13/`; reproduction helper `round13_audit.py`.
