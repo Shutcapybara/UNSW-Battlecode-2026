@@ -7,31 +7,39 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 18, 2026-10-05 ~03:55Z)
+## Top — read this first (unit 19, 2026-10-05 ~05:12Z)
 
-- **Last BOARD line read:** 1178 (shenzhen 03:50Z). Posted 1179 (queen column + 14585 v 303/420, 03:54Z). Next unit
-  reads from 1180.
-- **LIVE = 16979 (`asahi-05-kz12-k16`)** since 02:13:22Z (D-069); rollback target 14585. Monitor 03:51Z: no human
-  activation. No second promotion before 14:13Z.
-- **Watch (ranked post-m2, 29 decoded / 30 in index, 6 series):** W-L 11-18; monitor score − E −0.228 [−0.389, −0.045];
-  Elo 1636, rank 109 (h24 1694). Interim rule-as-written (rollback_d052.py, 29 games): diff vs 14585 last-120 −0.263,
-  95th pct −0.085 → would fire. **NOT the look** (needs ≥ 40 ranked at a series boundary). Sugawara P(fires) 0.75.
-- **Queen column (D-070 §A, D-071 §C.3):** `tools/daichi/sidescan2.py --sub 16979` (or game ids) prints reason, last
-  round, each side's queen length. 16979: our queen alive at end 1/29; 10/18 losses by reason `queen`; 0 faults.
-- 14585 v 303/420 post-m2 ranked: 303 none; 420 one series 3-2 (posted 1179).
-- **D-071:** uploads unblocked on a Chair record; after any upload restore the intended active via restore.json,
-  re-read live id, list ranked games played in between (exclude from readings). H11 now blocks only hub code changes.
-- Hub: no API/quota errors. r/daichi 53144de80 = origin (unit 17 push confirmed).
+- **Last BOARD line read:** 1212 (kenma 05:08Z). Posted 1213 (D-052 §B rollback) and 1214 (Kenma trial start + D-073
+  checks), 05:11Z. Next unit reads from 1215.
+- **LIVE = 17388 (`kenma-03-pocket-queen`, LV-kenma-03-pocket-queen-c5d2ff46-ai) — D-074 §B TRIAL, not a promotion.**
+  Uploaded 05:00:14Z (activate → 409 "only a ready version" while compiling); the server auto-activated it on ready,
+  first ranked series 05:02Z; my second activate confirmed 05:04:23Z. Trial window = 17388 ranked games from 05:02Z;
+  anchor = our rating at ~05:00Z (≈1605, rank 120 at 04:47Z snapshot). Restore target after the trial: **14585**.
+- **16979 rolled back (D-052 §B fired):** 45 ranked / 9 series (44 with E); diff vs 14585 last 120 = −0.263, 95th
+  −0.126; restore.done 04:53:55Z, active 14585 re-read 04:58:10Z. Queen column 16979: queen W–L 1–14, queen alive at
+  end 4/44, 0 faults. User notified (rollback, and the trial upload/activation).
+- Registration: build/daichi/stage/kenma-03-pocket-queen (extracted from build/kenma/deploy zip sha e98718a5; runtime
+  fp e60733a926fc recomputed equal; manifest legacy_none contract; hub fp c5d2ff46ce14).
+- **D-073:** hub redeployed 04:06Z; redeploy ban lifted. Verified: index blinding (opponent bot_a/bot_b = ""; ours kept,
+  so attribution of our own sub still works). Not yet exercised: upload-fix restore path, reserve 5. **Owed (Daichi, no
+  ban):** seat field in live-screen job rows, end reason `queen` in executor.analyse_replay, frozen pairing rule for
+  duplicate cells (D-070 §B), then redeploy via request_redeploy.py.
+- Keeper: blocked since 04:31Z on tracked tools/learn/__pycache__ (git add of ignored path). Unit 18 push confirmed
+  (r/daichi 236d2d224 = origin). Run main-checkout code with PYTHONDONTWRITEBYTECODE=1.
+- No API/quota errors in *.done.json. status.json refreshes only every ~10 min (stale reads possible).
 
 ## Next unit
 
-1. Read BOARD from 1180.
-2. Run live_monitor + `sidescan2.py --sub 16979` (faults → rollback at once; keep queen column).
-3. **If ≥ 40 ranked at a series boundary: run `python3 build/daichi/tree/tools/daichi/rollback_d052.py` (Part 3 is the
-   look; afterwards `git show r/daichi:docs/learning/rollback-d052.md` restores the full-sims report if run with few
-   sims). If it fires: restore.json {"previous":14585,"candidate":"asahi-05-kz12-k16","reason":"D-052 §B: …"},
-   confirm restore.done.json + live id, BOARD, PushNotification. Post either way.**
-4. Redeploy still waits on the Chair (now only H11 for hub code).
+1. Read BOARD from 1215.
+2. Run live_monitor (active should be 17388; anything else = human activation → pause, tell Chair + user) and
+   `sidescan2.py --sub 17388` (any TLE / caught error / DQ → end trial at once: restore.json
+   {"previous":14585,"candidate":17388,...}, BOARD, PushNotification).
+3. **Trial look at the first series boundary at or after 60 ranked games of 17388** (~08:00Z at 5 games / ~17 min):
+   score − E with rating fixed at activation, series bootstrap 5/95, vs 14585 last 120 and vs 16979's 45-game window;
+   queen alive at end, queen-rule W–L, table by map. Then restore 14585 (restore.json), confirm, BOARD, notify user.
+   rollback_d052.py is written for previous→live; add a `--ref`/`--new` option or a small trial script.
+4. D-073 code items (seat field, end reason queen, frozen pairing rule) in the tree; tests in $HOME/daichi-test; redeploy.
+5. Bokuto-07 trial follows Kenma's once the Chair confirms Bokuto's points-per-turn + pool panel.
 
 ## battles.json — what it does
 
@@ -62,6 +70,8 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Units
 
+- 2026-10-05 ~05:12Z unit 19 — read BOARD 1180–1212, D-073, D-074. D-052 §B fired on 16979 (−0.263, 95th −0.126)
+  → restored 14585 04:53Z; registered + uploaded kenma-03 (17388), live 05:02Z as the D-074 trial; BOARD 1213–1214; user notified.
 - 2026-10-05 ~03:55Z unit 18 — read BOARD 1160–1178, D-070, D-071. 16979 29/40 ranked, interim diff −0.263
   (95th −0.085); queen column added (sidescan2.py); posted BOARD 1179. No action.
 - 2026-10-05 ~03:00Z unit 17 — read BOARD 1150–1159, D-069. 16979 10/40 ranked, −0.439 (2 series), Elo 1643;
