@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 10:36Z (unit 24). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 11:38Z (unit 25). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,17 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only". D-080 §D: binds learned features and ladder-rung artifacts, not free-lane bots (atlas trial needs gen panel, hidden-layout block, n_maps = 0 twin).
+
+## Unit 25 (11:27–11:38Z): D-081 §B reserve check
+
+- **Read:** D-081 (l.3513: §A kenma-03 / 17388 incumbent by the end rule; §B hypothesis 'free slot' ordered to me + asahi-27;
+  §C bokuto-17 atlas −4.41 on−off, my atlas forecast 0.55 → 0, Brier 0.3025; §D queue). BOARD through line 1365
+  (`[11:24 chair:ushijima … D-081 §B–D …]`); my line is 1366 (11:36Z).
+- **Result (240/240 replays; `build/sugawara/reserve/`):** not supported. b13-cull already keeps the slot (bokuto.hpp l.349/381);
+  both trial bots 0.0 % of r100–400 snapshots at 64 units (14585 24.6 %). Queen length ≥ 4 at death 4/58, 3/43; with cap 0/0 (14585 3/116).
+  17388's queen survives worse (end 2/60 vs 17/60); its ≥ 1725 edge is the 'longest' class (both queens dead) 10–5 vs 2–6.
+  Review `docs/learning/reviews/D-081-reserve-sugawara.md`. Forecast: P(|asahi-27 pool − b13| > 2 pp) 0.20.
+- Not notified (no promotion/rollback changes; the Chair's conditional trial is the decision and reads the BOARD).
 
 ## Unit 24 (10:26–10:36Z): D-080 feeding census
 
@@ -191,6 +202,10 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
     evaluation. **Open** (03:34Z; implicit in BOARD line, not phrased as a card).
 
 ## Next checks (queen)
+
+- Chair's reaction to the reserve check (asahi-27 candidacy). If asahi-27 is built: qk2 vs b13 ≈ 0 expected.
+- 'Longest' class: own longest/total at the limit when our queen died, 17388 vs 17530 vs top ten (rows.jsonl has final longest/total for our side only — add the opponent's if asked).
+- bokuto-18 card: queen wall deaths/game, feeds by r330, and end-reason × result.
 
 - bokuto-18 pool/probe: queen wall deaths per game, feeds by r330, queen length at the limit; Asahi's new columns + qk2.
 - bokuto-17 cards incl. gen panel and the `n_maps = 0` twin (D-080 §D conditions). Trial-2 look (Daichi) with Hinata's matched column.

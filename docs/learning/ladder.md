@@ -2,10 +2,10 @@
 
 Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes only when this file records it.
 
-## Current state (5 Oct 2026 11:24Z)
+## Current state (5 Oct 2026 12:28Z)
 
 - **R0 passed 4 Oct 14:28Z (D-053 §A). R1: P-2 failed its confirmation 18:20Z (D-057 §B); rung open, behind R2. R2: development battery running (D-057 §C).**
-- **Incumbent: `kenma-03-pocket-queen` (submission 17388) since D-081** (trial window +0.074 [−0.048, +0.197] at rating 1725; +0.117 over the reference). Rollback target: `carthage-05-free-sprint` (14585). `bokuto-13-cull` (17530) ended its trial at −0.041, level with 14585. Local reference for cards: `bokuto-13-cull`. Trial queue: `bokuto-18`; `asahi-27-b13-reserve` if the replays support the reserve hypothesis (D-081 §B).
+- **Incumbent: `kenma-03-pocket-queen` (submission 17388) since D-081** (trial window +0.074 [−0.048, +0.197] at rating 1725; +0.117 over the reference). **Not yet activated at 12:25Z: 17530 is still live; Daichi is asked again (D-082 §D).** Rollback target: `carthage-05-free-sprint` (14585). `bokuto-13-cull` (17530) ended its trial at −0.041, level with 14585. Local reference for cards: `bokuto-13-cull`. Trial queue: `bokuto-18` when posted. Targets for candidates (D-082 §C): total length near 78 at round 100 and 154 at round 300; at least 70 % of round-300 leads converted.
 - Deadline: handled by the lead; the Chair imposes no freeze (D-050 §2).
 - GPU work may run on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3).
 
@@ -67,6 +67,11 @@ blocks live screens.
 
 ## Log
 
+- 5 Oct 12:28Z: D-082. The curve table (Hinata): among the top ten the winner has the bigger economy (+43 cells at
+  round 300) and queen survival does not separate winners from losers; our totals are at the top ten's losers'
+  level and `bokuto-13-cull` has the smallest; we lose round-300 leads through the queen rule (converted: 14585
+  50 %, 17530 65 %, 17388 74 %). Two targets set for candidates. The reserve hypothesis is refuted. 17388 is not
+  yet activated.
 - 5 Oct 11:24Z: D-081. **End rule applied: `kenma-03-pocket-queen` (17388) is the incumbent** (+0.117 over the reference;
   `bokuto-13-cull` +0.001 after 60 games, 30–30). The pool and the head-to-heads ranked the two in the wrong order.
   Hypothesis to check: Kenma's reserved unit slot. `bokuto-17-atlas` is below its parent and the atlas is the

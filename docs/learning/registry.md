@@ -170,3 +170,10 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - same-host (Asahi, 10:40Z and 11:18Z): pool 228–44; against `bokuto-13-cull` −4.78 points [−8.46, −1.08]; variants 75 of 80; `gen` (29 unknown maps) −1.19 [−3.88, +1.51]; probe passed. Twin with the atlas off (`asahi-26-b17-atlas0`): pool 240–32; atlas on minus off −4.41 [−8.46, −0.35], exactly 0 on `gen`. `qk2` 28–40.
 - status: `measured`; not a trial candidate (the atlas costs 4.4 points where it is exact; D-081 §C).
 
+### REG-010 — `asahi-27-b13-reserve` (measurement only, D-082 §B)
+
+- `bokuto-13-cull` plus Kenma's two global reserve lines (non-queens decide with one unit slot fewer). Built to test
+  the Chair's reserve hypothesis of D-081 §B, which Sugawara's replay check refuted (`bokuto-13-cull` already keeps a
+  slot for the queen). Pool, `qk2`, head-to-head and probe running (Asahi, expected 12:40Z).
+- status: `diagnostic`; not a trial candidate.
+

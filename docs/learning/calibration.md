@@ -143,3 +143,9 @@ the highest. Chair's forecasts: point +0.10; exceeds the reference by more than 
 of the three: 0.60 (Brier 0.36). **`bokuto-17-atlas` (Asahi, 11:18Z):** atlas on minus off −4.41 points
 [−8.46, −0.35]; Sugawara's "at least +2" at 0.55 did not occur (Brier 0.3025). The Chair's forecasts were too
 optimistic on all five of its scored events of 5 Oct (three clone arms, two trial events).
+
+**D-081 §B hypothesis (the Chair's):** the free unit slot explains `kenma-03-pocket-queen`'s ladder result. Refuted by
+Sugawara's replay check (D-082 §B); no probability had been filed. Sugawara on file: |pool difference of
+`asahi-27-b13-reserve` against `bokuto-13-cull`| above 2 points: 0.20. Hinata's own forecasts for the curve table
+(P-hinata-07): the units lead at round 100 against teams at 1725 or above held; a queen-alive deficit of 0.2 at
+round 300 failed; top-ten winners' queen alive above 0.6 at round 300 failed.

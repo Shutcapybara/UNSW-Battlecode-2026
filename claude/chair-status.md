@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 11:24Z (unit 31). Next self-wake about 12:20Z. Branch `r/ushijima`; private tree
+State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 12:28Z (unit 32). Next self-wake about 13:20Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,16 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-082: the curve table changes the diagnosis.** Among the top ten the winner is the side with the bigger
+  economy (total length +17 at round 100, +43 at round 300; the round-300 leader wins 73 %), and queen survival
+  does not separate winners from losers. Our totals (55–63 at round 100, 103–128 at round 300) are at the level of
+  the top ten's losers (61 and 111; winners 78 and 154), and `bokuto-13-cull` has the smallest. We also lose leads
+  through the queen rule: round-300 leads converted 50 % (14585), 65 % (17530), 74 % (17388). **Two targets for
+  candidates:** growth between rounds 100 and 300, and conversion of leads; a candidate that buys one with the
+  other has not gained. This corrects D-080 §A. The lead's curve proposal produced it; it is now a block of every
+  trial look. **The reserve hypothesis of D-081 is refuted** (Sugawara): `bokuto-13-cull` already keeps the slot;
+  Kenma's bot wins the games decided by the longest dragon. **17388 is not yet activated**: Daichi has been silent
+  since 10:56Z and 17530 is still live.
 - **D-081: the end rule is applied; `kenma-03-pocket-queen` (17388) is the incumbent.** Trial 2: `bokuto-13-cull`
   30–30 over 60 games, −0.041 [−0.132, +0.062] at rating 1725, +0.001 over the reference: it plays at the old
   incumbent's level. Kenma's bot: +0.117 over the reference [−0.022, +0.260]. Caveats: the interval includes zero,
@@ -224,10 +234,10 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 |---|---|
 | Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): by accuracy A8b 0.7224, A1 0.7184, A4 0.7205 (not selectable), A3 0.7145, live prior 0.6977; **in play the A3 placeholder loses 7 points on the pool; selection suspended (D-068)**. P-6: behind the battery. P-7: entry throughput passed; no training. P-8 (latent state): stage S0 approved |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | Done since 10:20Z: `bokuto-17-atlas` (pool, variants, `gen`, probe), its twin with the atlas off, `qk2`, queen-by-round columns. Queue (D-081): `asahi-27-b13-reserve` (`bokuto-13-cull` plus Kenma's global reserve lines; pool, `qk2`, probe); queen deaths by cause on the cards (Sugawara's request); `kenma-03-pocket-queen` on `qk2` and with the queen columns; Bokuto's jobs (`bokuto-18`); Sugawara's layer removal on the keeper panels |
+| Evaluator queue (Asahi) | Running (expected 12:40Z): `asahi-27-b13-reserve` (measurement only) on pool, variants, `qk2`, the 102-game head-to-head against `kenma-03-pocket-queen`, probe; `bokuto-13-cull` on the same head-to-head; `kenma-03-pocket-queen` on `qk2`; queen deaths by cause. Add (D-082 §C): total length at rounds 100 and 300, ours and the opponent's, on every card. Then Bokuto's jobs and Sugawara's layer removal, read for the economy cost of each layer |
 | Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) and rolled back at 04:53Z (D-075 §A) |
 | Uploaded, inactive | 14585 (carthage-05, incumbent, waiting behind the trials), 16979 (k = 16, rolled back), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
-| Live screen | **Incumbent live: `kenma-03-pocket-queen` (17388)** after trial 1 (+0.074 [−0.048, +0.197]) and trial 2 (`bokuto-13-cull`, −0.041 [−0.132, +0.062], not chosen). Trial queue: `bokuto-18` when posted with a pool and a probe; `asahi-27-b13-reserve` if the replays support the reserve hypothesis. Every look: score minus expectation at 1725, opponent bands, Schooltime apart, queen columns, Hinata's matched column |
+| Live screen | **Incumbent by D-081: `kenma-03-pocket-queen` (17388), not yet activated at 12:25Z; 17530 (`bokuto-13-cull`) is still live** (Daichi silent since 10:56Z). Trial queue: `bokuto-18` when posted with a pool and a probe. Every look: score minus expectation at 1725, opponent bands, Schooltime apart, queen columns, end reason by band, Hinata's matched column and curve block (total length at rounds 100 and 300 against the top ten's curves; round-300 leads converted) |
 
 ## Facts settled this unit
 
@@ -247,12 +257,12 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 |---|---|---|
 | Chair | Ushijima (Claude) | active |
 | Council, auditor | Tanaka (GPT) | deactivated by the lead; council dissolved (D-072 §B) |
-| Queen owner (was council, mechanism) | Sugawara (Claude), hourly at :25; shell works | feeding census of the top ten delivered (wall deaths are our gap; feeding from about round 300); next: the reserve hypothesis in the replays of 17388, 17530 and 14585 (D-081 §B) |
+| Queen owner (was council, mechanism) | Sugawara (Claude), hourly at :25; shell works | refuted the Chair's reserve hypothesis from 240 replays (D-082 §B); feeding census delivered; next: layer removal on `bokuto-13-cull` read for which layer costs total length at round 300 |
 | Council, probe | Nishinoya (GLM) | deactivated by the lead |
 | Data | Kageyama (Claude), `r/kageyama`; **silent since about 07:00Z** | bed layouts, slot bots and trajectory block done; the export is cancelled and the curve table has moved to Hinata. **Stand-down recommended to the lead (D-081 §D)** |
-| Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | clone-prior line paused. Service role: the matched column at every look (delivered for trial 2) and the curve table by round (D-081 §D) |
+| Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | **analysis service of the trials:** P-hinata-06 (matched column) and P-hinata-07 (curve table) delivered, each with its method fixed before reading; both are now blocks of every trial look. The lane continues |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session after the reset | working: both free-lane pools posted with queen columns; learn-runner library fix; queue as in the table above |
-| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50; shell works | trial-2 table posted 10:56Z; **next: activate 17388 as incumbent (D-081)**, monitor it under D-052 §B; then trial 3 when a candidate qualifies |
+| Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | **silent since 10:56Z; did not act on D-081 at 11:50Z.** Pending: activate 17388 (restore control, previous 17530). If nothing by 13:20Z the lead is asked to check its scheduled task |
 | Free lanes (outside the ladder) | Bokuto (Kenma retired, D-079) | Bokuto: `bokuto-13-cull` ended its trial level with 14585; `bokuto-17-atlas` is below it (the atlas costs 4.4 points); building `bokuto-18` (no wall deaths of the queen, feeding from round 280–300). Kenma: retired; its `kenma-03-pocket-queen` is the incumbent |
 | Analyst | Shenzhen | stopped by the lead (D-074 §C); units 36–39 uncommitted unless Kageyama ran its commit command (not reported) |
 
@@ -278,20 +288,17 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 
 ## Next three decisions
 
-1. **Trial 3:** `bokuto-18` when it has a probe and a pool; or `asahi-27-b13-reserve` if the replays support the
-   reserve hypothesis.
-2. **Whether the reserve explains Kenma's ladder result** (Sugawara's replay check): if so it is the cheapest queen
-   mechanism we have and goes into every candidate.
-3. **A local measure that predicts the ladder:** `qk2` is the first panel that shows the queen race; whether it
-   orders candidates as the ladder does is read at the next two trials.
+1. **Daichi's activation of 17388**, or the lead's check of Daichi's scheduled task if it stays silent.
+2. **Trial 3:** `bokuto-18` when it has a probe and a pool, read against both targets of D-082 §C.
+3. **Which of `bokuto-13-cull`'s layers cost the mid-game economy** (Sugawara's layer removal).
 
-Waiting on the lead: nothing blocking. For the lead to decide: stand down Kageyama's lane (silent since about
-07:00Z; recommended); Hinata continues as a service unless the lead says otherwise; may strike the curve table.
-Optional: a fresh Chair session, deleting `~/Desktop/sessiondata.img.bak`.
+Waiting on the lead: nothing blocking yet. For the lead: stand down Kageyama's lane (silent since about 07:00Z;
+recommended); look at Daichi's scheduled task if it is still silent at 13:20Z. Optional: a fresh Chair session,
+deleting `~/Desktop/sessiondata.img.bak`.
 
 ## Cursor
 
-Last BOARD line read: line 1363 (Asahi 11:18Z, with sub-lines), main tree. Own D-081 lines follow.
+Last BOARD line read: line 1372 (Asahi 11:56Z), main tree. Own D-082 lines follow.
 
 ## Open flags
 

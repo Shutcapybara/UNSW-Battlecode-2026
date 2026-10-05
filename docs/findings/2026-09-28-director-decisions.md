@@ -3585,3 +3585,73 @@ The lead does not care about the live rating and asks for the technical issues t
   already supply the queen part. **Kageyama has not posted since about 07:00Z**; its remaining jobs are cancelled
   or reassigned, and the Chair recommends to the lead that the lane be stood down.
 - Hinata's lane continues as a service: the matched column at every look, and the curve table.
+
+## D-082 — The curve table: the top teams win on mid-game growth; the reserve hypothesis is refuted; the incumbent is not yet activated (5 Oct 2026 12:27Z, Chair: Ushijima)
+
+### A. The curve table (Hinata, P-hinata-07, card filed before computing)
+
+1,171 ranked games decoded: 14585's last 300, 17388's 80, 17530's 90, and 701 games of the top ten among
+themselves.
+
+| Total length (cells) | Round 100 | Round 300 | Growth 100→300 |
+|---|---|---|---|
+| Top ten, winner | 78.5 | 153.7 | +75 |
+| Top ten, loser | 61.3 | 110.9 | +50 |
+| 14585 (old incumbent) | 62.7 | 128.1 | +65 |
+| 17388 `kenma-03-pocket-queen` | 59.9 | 115.8 | +56 |
+| 17530 `bokuto-13-cull` | 55.1 | 103.2 | +48 |
+
+- **Among the top ten the winner is the side with the bigger economy.** The difference in total length is +17.3
+  [14.4, 19.8] at round 100 and +42.8 [36.1, 50.0] at round 300; the side ahead at round 300 wins 73 % of games.
+- **Queen survival does not separate winners from losers there:** alive at round 300 in 46 % and 47 %; at the end
+  28 % and 32 %.
+- **Our economy is at the level of the top ten's losers**, and `bokuto-13-cull` has the smallest of our three.
+- **We lose leads through the queen rule.** Of the games it led on total length at round 300, 14585 won 50 %
+  (48 of its 66 lost leads by the queen rule); 17530 won 65 % (11 of 15 lost leads by the queen rule); 17388 won 74 %,
+  the top ten's rate. Against our own opponents our queens are alive about as often as theirs.
+- **This corrects D-080 §A.** That record said the ladder is decided by the queen's survival and length. The curve
+  table says there are two separate deficits: (1) growth between rounds 100 and 300, where the top teams add 75
+  cells and we add 48 to 65; (2) the conversion of a lead, which the queen rule takes from us. `bokuto-13-cull`
+  improved the second and paid in the first. Caveats: the curves are conditioned on games still running; few
+  games against teams above 1900; opponent sets differ.
+- This is the reading the lead proposed (curves by round: where and when do we fall behind). It took one unit
+  and changed the diagnosis. **It becomes a block of every trial look:** total length at rounds 100 and 300
+  against the top ten's winner and loser curves, and the share of round-300 leads converted. Hinata computes it.
+
+### B. The reserve hypothesis is refuted (Sugawara, 240 replays)
+
+- `bokuto-13-cull` already keeps one unit slot for the queen; both trial bots are at the unit cap in 0.0 % of
+  snapshots between rounds 100 and 400 (14585: 24.6 %). The queen is too short to split when she dies (length 4 or
+  more at death in 4 of 58 and 3 of 43 cases).
+- `kenma-03-pocket-queen`'s queen survives worse than `bokuto-13-cull`'s (alive at the end 2 of 60 against 17 of 60).
+  Its advantage against teams at 1725 or above is in games where both queens are dead and the longest dragon
+  decides: 10–5, against 2–6 for `bokuto-13-cull` and 12–4 for 14585. That is the economy of §A again.
+- The Chair's hypothesis of D-081 §B was wrong. `asahi-27-b13-reserve` is a measurement only and not a trial
+  candidate.
+
+### C. Targets for builders, and for the cards
+
+- **Two targets, both measured in the look:** total length near the top ten's winner curve (about 78 at round 100
+  and 154 at round 300), and at least 70 % of round-300 leads converted. A candidate that gains one by giving up
+  the other has not gained.
+- For Bokuto (`bokuto-18` and after): keep the queen changes that convert leads (no wall deaths, feeding from
+  round 280–300), and recover the growth between rounds 100 and 300 that `bokuto-13-cull` gave up; the layers that
+  cost economy are the ones to find. Sugawara's layer removal on `bokuto-13-cull` is now read for this: which layer
+  costs total length at round 300.
+- Asahi adds total length at rounds 100 and 300 (ours and the opponent's) to every card, on the pool, `qk2` and the
+  head-to-head against the incumbent.
+
+### D. The incumbent is not yet active
+
+- At 12:25Z the hub still shows 17530 active. Daichi has not posted since 10:56Z; its 11:50Z unit did not act on
+  D-081. The Chair does not touch the server controls. Daichi is asked again; if nothing is posted by 13:20Z the
+  lead is asked to look at Daichi's scheduled task.
+- Nothing is lost meanwhile: 17530 keeps its own rating and its window grows.
+
+### E. Lanes
+
+- Hinata delivered two descriptions today (P-hinata-06, P-hinata-07) that changed the diagnosis, each within one
+  unit and with its method fixed before reading. The lane continues as the analysis service of the trials. The
+  Chair withdraws its earlier doubt about the lane's use.
+- Kageyama: still silent; the recommendation to stand the lane down is unchanged.
+- No trial candidate is ready. `bokuto-18` is not posted yet.
