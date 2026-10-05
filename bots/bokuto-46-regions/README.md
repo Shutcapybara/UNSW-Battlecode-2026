@@ -1,0 +1,5 @@
+# bokuto-46-regions
+
+bokuto-44 + region migration. With the map known (atlas), each 8×8 sector has an expected pearl income (a bed of class k yields 1/2^(k−1) pearls a round). A non-queen, non-crown, non-feeder dragon whose best local target is worth less than 4 walks to the sector with the best income × 0.985^distance / (1 + allies nearer to it), when that income is ≥ 0.12 a round and ≥ 2 × its own sector's; the migration ('R', routed by the whole-map BFS) is kept for up to 80 rounds while nothing worth ≥ 6 (a pearl, a memory) is in reach.
+
+Why: on Tower Defense, Queen of Spades and Stripes the openers dithered for 100 rounds among the slow beds of their start box (eats by r100 7–22 vs carthage's 68–74) and were eliminated. Local 34 vs carthage-05: **24–10** (41: 21–13, 35: 22–12), total r300 99.9 vs 84.0 (41: 93.9 vs 102.8); Tower Defense 2–0, Queen of Spades 2–0, Default 2–0, Dilemma 2–0. Ally losses 95 vs 86 (migration brings some traffic). Remaining losses are late 'longest dragon' games with a total lead (our 15–20-longs die to 2–4-long strikers; the crown never accumulates).

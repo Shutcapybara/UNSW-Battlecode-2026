@@ -1,0 +1,584 @@
+{
+ "letter": "NO LETTER (gen only, diagnostic)",
+ "why": [],
+ "cards": {
+  "gen": {
+   "panel": "gen",
+   "cand": "bokuto-47-precious",
+   "parent": "bokuto-41-atlas0",
+   "seeds": [
+    1
+   ],
+   "meta": {
+    "cand": {
+     "fingerprint": "7322520f4e613a14fbd0ceb5447402528794609e556a3c490d201d103647418f",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "eaf9b0209184",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 464
+    },
+    "parent": {
+     "fingerprint": "2fdf07f2dbc48f6410a255d32e12d7c3f41daaf1fb9601c7a375042a3e4f80eb",
+     "runtime": "unswbc 1.2.3",
+     "panel_hash": "eaf9b0209184",
+     "host": "Als-MacBook-Pro.local",
+     "expected": 464
+    }
+   },
+   "missing": {
+    "cand": [],
+    "parent": []
+   },
+   "paired": 464,
+   "summary": {
+    "cand": {
+     "n": 464,
+     "W": 343,
+     "L": 121,
+     "D": 0,
+     "win": 0.7392241379310345,
+     "reached": 138,
+     "q_cond": 0.5434782608695652,
+     "q_joint": 0.16163793103448276,
+     "q_dec_W": 74,
+     "q_dec_L": 1,
+     "conv": 0.8115942028985508,
+     "pearls@50": 42.0926724137931,
+     "pearls@100": 113.375,
+     "pearls@150": 180.74784482758622,
+     "pearls@250": 284.0301724137931,
+     "units@100": 27.879310344827587,
+     "total@100": 71.24568965517241,
+     "death_wall_per1k": 1.8370022694771435,
+     "death_self_per1k": 2.44480723082113,
+     "death_ally_body_per1k": 1.0567839437115862,
+     "death_h2h_ally_per1k": 0.6033755520440774,
+     "death_invalid_per1k": 0.0,
+     "death_h2h_enemy_per1k": 8.826060408203587,
+     "death_enemy_body_per1k": 0.11136661667598038,
+     "deaths_per1k": 14.879396020933504,
+     "births@100": 44.13577586206897
+    },
+    "parent": {
+     "n": 464,
+     "W": 344,
+     "L": 120,
+     "D": 0,
+     "win": 0.7413793103448276,
+     "reached": 133,
+     "q_cond": 0.5338345864661654,
+     "q_joint": 0.15301724137931033,
+     "q_dec_W": 70,
+     "q_dec_L": 2,
+     "conv": 0.8045112781954887,
+     "pearls@50": 42.06896551724138,
+     "pearls@100": 113.22413793103448,
+     "pearls@150": 180.31034482758622,
+     "pearls@250": 283.3814655172414,
+     "units@100": 27.82112068965517,
+     "total@100": 71.12931034482759,
+     "death_wall_per1k": 1.8315228537187322,
+     "death_self_per1k": 2.3345999313660117,
+     "death_ally_body_per1k": 1.0389251346494226,
+     "death_h2h_ally_per1k": 0.6384500096893175,
+     "death_invalid_per1k": 0.0,
+     "death_h2h_enemy_per1k": 8.87555977870266,
+     "death_enemy_body_per1k": 0.11350288637555135,
+     "deaths_per1k": 14.832560594501697,
+     "births@100": 44.07327586206897
+    }
+   },
+   "boot": {
+    "win": [
+     -0.0021551724137931034,
+     -0.017241379310344827,
+     0.010775862068965518
+    ],
+    "econ": [
+     0.0019844554015563455,
+     -0.0005324332164593209,
+     0.004846455039732809
+    ],
+    "econ_med": [
+     0.0005668934240362633,
+     -0.0010110843940153366,
+     0.002802722108739816
+    ],
+    "units@100": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "total@100": [
+     0.0,
+     -0.0024875621890547706,
+     0.0029319027590441553
+    ],
+    "q_joint": [
+     0.008620689655172414,
+     -0.010775862068965518,
+     0.028017241379310345
+    ],
+    "q_cond": [
+     0.009643674403399749,
+     -0.053972894347932,
+     0.06776158355272176
+    ],
+    "conv": [
+     0.0070829247030620435,
+     -0.043419245556360384,
+     0.0499264154833246
+    ],
+    "death_wall_per1k": [
+     0.0054794157584111495,
+     -0.012778432361767195,
+     0.02301278055068339
+    ],
+    "_clusters": 232,
+    "_valid": 1000
+   },
+   "boot_directional": {
+    "win": [
+     -0.0021551724137931034,
+     -0.01939655172413793,
+     0.01293103448275862
+    ],
+    "econ": [
+     0.0019844554015563455,
+     -0.000206812270562429,
+     0.0044464673315659856
+    ],
+    "econ_med": [
+     0.0005668934240362633,
+     -0.0012834212355676458,
+     0.002900823823684178
+    ],
+    "units@100": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "total@100": [
+     0.0,
+     -0.003104087720712695,
+     0.0021448335781840467
+    ],
+    "q_joint": [
+     0.008620689655172414,
+     -0.010775862068965518,
+     0.03017241379310345
+    ],
+    "q_cond": [
+     0.009643674403399749,
+     -0.05186965849678977,
+     0.07830808080808078
+    ],
+    "conv": [
+     0.0070829247030620435,
+     -0.04981012812075462,
+     0.06206973010168964
+    ],
+    "death_wall_per1k": [
+     0.0054794157584111495,
+     -0.011219104743866058,
+     0.022247018876366886
+    ],
+    "_clusters": 464,
+    "_valid": 1000
+   },
+   "tier2": {
+    "death_wall_per1k": {
+     "parent": 1.8315228537187322,
+     "cand": 1.8370022694771435,
+     "rel": 0.002991726664663741,
+     "flag": false
+    },
+    "death_self_per1k": {
+     "parent": 2.3345999313660117,
+     "cand": 2.44480723082113,
+     "rel": 0.047206075000025605,
+     "flag": false
+    },
+    "death_ally_body_per1k": {
+     "parent": 1.0389251346494226,
+     "cand": 1.0567839437115862,
+     "rel": 0.017189697762187706,
+     "flag": false
+    },
+    "death_h2h_ally_per1k": {
+     "parent": 0.6384500096893175,
+     "cand": 0.6033755520440774,
+     "rel": -0.05493688951826947,
+     "flag": false
+    },
+    "death_invalid_per1k": {
+     "parent": 0.0,
+     "cand": 0.0,
+     "rel": null,
+     "flag": false
+    }
+   },
+   "per_map": [
+    {
+     "map": "m2tr/autarky_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0625,
+     "q_alive_rl": "5/5 vs 4/4",
+     "dwall": 0.014803707250461026
+    },
+    {
+     "map": "m2tr/default_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": -0.0625,
+     "q_alive_rl": "6/13 vs 7/12",
+     "dwall": 0.03144703256489368
+    },
+    {
+     "map": "m2tr/dilemma_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": -0.0625,
+     "q_alive_rl": "6/7 vs 7/8",
+     "dwall": 0.02165254353523144
+    },
+    {
+     "map": "m2tr/trophy_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.057717252003991096,
+     "dq_joint": 0.0,
+     "q_alive_rl": "1/1 vs 1/1",
+     "dwall": -0.17865488066921045
+    },
+    {
+     "map": "new/mc26_archipelago",
+     "cls": "gen",
+     "n": 16,
+     "W": 15,
+     "L": 1,
+     "dwin": 0.0,
+     "decon": -4.734848484848342e-05,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.00013330761479880306
+    },
+    {
+     "map": "new/mc26_crossroads",
+     "cls": "gen",
+     "n": 16,
+     "W": 11,
+     "L": 5,
+     "dwin": 0.0,
+     "decon": -6.663113006397103e-05,
+     "dq_joint": 0.25,
+     "q_alive_rl": "6/6 vs 2/3",
+     "dwall": -0.032567822522252335
+    },
+    {
+     "map": "new/mc26_delayed_commons",
+     "cls": "gen",
+     "n": 16,
+     "W": 9,
+     "L": 7,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "2/2 vs 2/2",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_equatorial_belt",
+     "cls": "gen",
+     "n": 16,
+     "W": 9,
+     "L": 7,
+     "dwin": 0.0,
+     "decon": -5.406574394462016e-05,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.004119654379476232
+    },
+    {
+     "map": "new/mc26_far_harbors",
+     "cls": "gen",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": -0.0625,
+     "q_alive_rl": "3/12 vs 4/11",
+     "dwall": 0.003398753903597003
+    },
+    {
+     "map": "new/mc26_nursery_bays",
+     "cls": "gen",
+     "n": 16,
+     "W": 13,
+     "L": 3,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "1/1 vs 1/1",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_pinwheel",
+     "cls": "gen",
+     "n": 16,
+     "W": 11,
+     "L": 5,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "1/2 vs 1/1",
+     "dwall": -0.0024026722193465425
+    },
+    {
+     "map": "new/mc26_portal_quartet",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": -0.0625,
+     "decon": 0.0,
+     "dq_joint": 0.125,
+     "q_alive_rl": "2/9 vs 0/7",
+     "dwall": 0.011128202749404134
+    },
+    {
+     "map": "new/mc26_pulse_farms",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.013467473405772628
+    },
+    {
+     "map": "new/mc26_relay_depots",
+     "cls": "gen",
+     "n": 16,
+     "W": 13,
+     "L": 3,
+     "dwin": -0.0625,
+     "decon": 0.0,
+     "dq_joint": 0.0625,
+     "q_alive_rl": "4/6 vs 3/5",
+     "dwall": -0.010427278506648532
+    },
+    {
+     "map": "new/mc26_scattered_fleets",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/3 vs 0/2",
+     "dwall": 0.0002557658046399205
+    },
+    {
+     "map": "new/mc26_seam_market",
+     "cls": "gen",
+     "n": 16,
+     "W": 3,
+     "L": 13,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "3/5 vs 3/5",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/mc26_spring_wells",
+     "cls": "gen",
+     "n": 16,
+     "W": 9,
+     "L": 7,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "3/3 vs 3/3",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/md26_causeway_detour_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 11,
+     "L": 5,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "2/4 vs 2/5",
+     "dwall": 0.0013416789439479639
+    },
+    {
+     "map": "new/md26_causeway_portal_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 14,
+     "L": 2,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.008786933037997316
+    },
+    {
+     "map": "new/md26_commons_shared_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 10,
+     "L": 6,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": 0.0
+    },
+    {
+     "map": "new/md26_commons_spread_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.125,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/4 vs 0/3",
+     "dwall": 0.016594928325991642
+    },
+    {
+     "map": "new/md26_orchard_narrow_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 9,
+     "L": 7,
+     "dwin": -0.1875,
+     "decon": 0.0,
+     "dq_joint": -0.125,
+     "q_alive_rl": "2/10 vs 4/13",
+     "dwall": 0.04149167263039999
+    },
+    {
+     "map": "new/md26_orchard_wide_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 13,
+     "L": 3,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": -0.0625,
+     "q_alive_rl": "0/1 vs 1/3",
+     "dwall": -0.07913161765368146
+    },
+    {
+     "map": "new/md26_promenade_ring_s0",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "2/2 vs 2/2",
+     "dwall": 0.0
+    },
+    {
+     "map": "var/crossroads_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 9,
+     "L": 7,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0625,
+     "q_alive_rl": "3/5 vs 2/4",
+     "dwall": 0.03704886244977011
+    },
+    {
+     "map": "var/devil_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "0/0 vs 0/0",
+     "dwall": -0.013096719679630331
+    },
+    {
+     "map": "var/portals_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 13,
+     "L": 3,
+     "dwin": 0.125,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "2/15 vs 2/16",
+     "dwall": 0.2650492731355417
+    },
+    {
+     "map": "var/queen_of_spades_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 12,
+     "L": 4,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0625,
+     "q_alive_rl": "6/7 vs 5/7",
+     "dwall": -0.006011086983121125
+    },
+    {
+     "map": "var/trauma_tr",
+     "cls": "gen",
+     "n": 16,
+     "W": 16,
+     "L": 0,
+     "dwin": 0.0,
+     "decon": 0.0,
+     "dq_joint": 0.0,
+     "q_alive_rl": "15/15 vs 15/15",
+     "dwall": 0.02804921157188517
+    }
+   ],
+   "per_class": [
+    {
+     "cls": "gen",
+     "n": 464,
+     "dwin": -0.0021551724137931034,
+     "decon": 0.0019844554015563455,
+     "dq_joint": 0.008620689655172414,
+     "dwall": 0.005479415758411151
+    }
+   ],
+   "status": "COMPLETE"
+  }
+ }
+}
