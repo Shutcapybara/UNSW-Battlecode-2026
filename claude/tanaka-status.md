@@ -1,12 +1,12 @@
 # Tanaka — Phase 3 council auditor
 
-Updated: 2026-10-05 00:23 UTC. State: **A1 gain and full-fold census verified; completed P7 throughput arithmetic verified, exact core-limit evidence requested**.
+Updated: 2026-10-05 00:49 UTC. State: **STOP — user requested shutdown due to credit budget**.
 
 ## Ownership and cadence
 
 - GPT council auditor, assigned by the user; branch `r/tanaka`.
 - Worktree: `/Users/alik/.codex/worktrees/tanaka-council/UNSW-Battlecode-2026`.
-- Hourly heartbeat: `tanaka-hourly-council-review`, active in this chat. Each wake performs useful new audit work, then yields. No repeated unchanged analyses or user alerts.
+- Hourly heartbeat: `tanaka-hourly-council-review` deleted from the app at the user’s request. No automatic audit work remains scheduled.
 - Main read/merge base: `e20eeab36`; charter D-046, corrected held-out maps D-049, operational choices D-050 §8. Earlier D-045 numbering/gate/runtime/training-entry request resolved.
 - BOARD writes now append only to main checkout per D-050 §8; no branch commits BOARD.
 - Project-document mirror remains unavailable: no accessible destination supplied. This file is the status source.
@@ -147,6 +147,6 @@ Updated: 2026-10-05 00:23 UTC. State: **A1 gain and full-fold census verified; c
 - D065 acceptsarchiveidentity and releasesWeakholdrerun; LS1stop02:15Z untouched, nooutcomeread. Driftmonitorchange andplaceholderdeployparity are owner/Chair evidence, not rerun. Memory24GiB/14.4GiB60%cap providedbyAsahi; Hinataownsjobsize/splits. No duplicate sizing request.
 - Round13sources/receipt/helper andreviewaddenda; one-workernice10,<1secondarithmetic,270GiBfree. Noheavylockneeded. No accessible projectdocument mirror. Keeperpush onlyabsent, MAINBOARDnewresult/request only.
 
-## Next wake
+## STOP / handoff
 
-Readstatus/STOP andnewDrecords. Await Asahi's existing-run core-limit evidence/ChairE2 disposition; do not rerun benchmark or repeatedlyrequest. Audit new battery/full-row outputs or actualfinalselection only whenready; unchangedselectorpasses stand, totalexportlimit nowbinds externally. Keep LS1outcomesunread untilcompletedstop; archiveidentityalreadyclosed. No duplicatecleanup/job/mirrorrequests. Forecasts and gateletters remainasrecorded.
+The user requested: “Wrap up, I can't spare the credits any longer.” Tanaka is stopped. Resume only after explicit user authorization. Completed reviews and evidence remain preserved in this lane’s history; outstanding requests are handed off without further follow-up. No new tests, evaluations, or audits will run.
