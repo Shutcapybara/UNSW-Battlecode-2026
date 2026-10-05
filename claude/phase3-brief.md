@@ -1,7 +1,7 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; numbers refreshed 5 Oct 00:53Z. For team members and their LLM sessions. It is a summary: the
-binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to D-067. Where this
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; numbers refreshed 5 Oct 01:49Z. For team members and their LLM sessions. It is a summary: the
+binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to D-068. Where this
 brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung order and its
 gate-before-upload rule are superseded (D-055, D-057, D-059).
 
@@ -33,12 +33,12 @@ gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## What is running
 
-| Work | Owner | State at 00:36Z, 5 Oct |
+| Work | Owner | State at 01:49Z, 5 Oct |
 |---|---|---|
-| Clone tests ("the battery"): which model best reproduces the top ten's moves | Hinata (Learner) | on 188,250 development moves: the live prior 0.6977; Heartbreaker's features refitted on ten teams 0.7184 (best, replicated); new-encoder trees 0.7145; small CNN 0.6785. Only arms that fit the 4 MiB limit with one model can be selected. Refits on the full data (2.75 M moves) queue next: the network, then the best trees |
+| Clone tests ("the battery"): which model best reproduces the top ten's moves | Hinata (Learner) | by accuracy on 188,250 development moves: mirror-averaged Heartbreaker features 0.7224, without averaging 0.7184, new-encoder trees 0.7145, live prior 0.6977. **In play the first clone lost** (next row), so selection by accuracy is suspended; refits on the full data continue |
 | Training data; the bot slot for the cloned prior | Kageyama (Data) | slot built: `bots/kageyama-01-p1-slot`, zip 1.05 MiB, at most 10.1 M points a turn, predictions equal to Python to 3e-8, equal to the live bot with the switch off. Adding the input path for Heartbreaker's features |
-| Live screen LS-1: `asahi-05-kz12-k16` (a hand-rule change) against the live bot | Daichi (Live ops) | 140 of 204 games; stops 02:15Z on 5 Oct; the candidate goes live then if the conditions of D-064 §B hold |
-| Local panels, measurements, the Mac's job runner | Asahi (Evaluator) | first panels of the clone slot running (placeholder model); self-play throughput measured: 1.89×10⁸ decisions an hour, entry bar passed |
+| Live screen LS-1: `asahi-05-kz12-k16` (a hand-rule change) against the live bot | Daichi (Live ops) | ended at 160 of 204 games; the candidate goes live at Daichi's next unit if the conditions of D-064 §B hold |
+| Local panels, measurements, the Mac's job runner | Asahi (Evaluator) | **the slot bot with the ten-team encoder trees loses to the live bot: pool −7.0 points [−12.9, −1.5], gen −5.6.** Now testing why: the Heartbreaker-feature clone, no prior at all, a stronger prior weight, and single-team clones |
 | Reviews, audits, forecasts on every proposal | Tanaka (GPT), Sugawara (Claude), Nishinoya (GLM) | active |
 | Decisions, merges, this brief | Ushijima (Chair) | hourly |
 
@@ -51,6 +51,9 @@ gate-before-upload rule are superseded (D-055, D-057, D-059).
 - The k = 16 hand rule is a real fix for one map (Weakhold: 43 of 48 wins against 27 of 48 locally) and neutral
   elsewhere.
 - Self-play is feasible on the Mac by throughput (D-066); no training is approved yet.
+- **More accurate is not yet stronger** (D-068): the ten-team clone predicts the teachers better than the live prior and
+  plays worse inside our search. Leading explanations: its probabilities are much softer, and it averages ten styles.
+- The free lane Kenma has a bot at 58–44 head-to-head against the live bot (102 games), 6–0 on Schooltime.
 - A candidate was briefly live by accident (17:33–17:40Z): the server activates on upload. The fix is written and
   merged but not deployed.
 

@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 00:53Z (unit 14b). Next self-wake 01:45Z. Branch `r/ushijima`; private tree
+State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 01:49Z (unit 15). Next self-wake 03:00Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,14 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-068: the ten-team clone loses in play as a prior.** Asahi's seed-1 screens of the slot bot with the encoder
+  trees: pool −7.0 points [−12.9, −1.5] at λ 1 and −11.8 at λ 0.5; gen −5.6. The free lane's own test of the A1 prior
+  lost 42–60. The slot itself is at parity on four maps, so the model is the cause. Leading hypothesis: the clones
+  are more accurate but much softer than the Heartbreaker prior, and a pooled ten-team model averages styles.
+  **Selection by accuracy is suspended and the frozen cohort is not read.** Ordered: fallback count, A1 at λ 1, no
+  prior at all, A1 at λ 1.41, and single-team priors (teams 213 and 91). LS-1 ended at 160 games; Daichi reads the
+  promotion conditions at its next unit. P-8 (latent state) approved for its first stage. Free lane Kenma:
+  58–44 against the live bot, Schooltime 6–0.
 - **D-067 (the lead's instruction on time and game state):** the round is already an input of every clone arm; what
   is missing is any reading by time, a team trajectory, a latent state, and models of the split, cull and sprint
   decisions, where the field table says we lose (total length at round 499: 85 against 97 to 141; queen alive 1 %
@@ -104,12 +112,12 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 
 | Stage | Candidates |
 |---|---|
-| Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): live prior 0.6977, HB-1 features on ten teams (A1) 0.7184 (replicated), encoder trees (A3) 0.7145, CNN 0.6785; A1 and A3 selectable, A4–A7 not; A2, A6, A7, A8, A8b to come; full-row refits: network, then A1. P-6: behind the battery. P-7 (self-play): entry throughput passed; training ruling after the network arm on the full rows |
+| Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): by accuracy A8b 0.7224, A1 0.7184, A4 0.7205 (not selectable), A3 0.7145, live prior 0.6977; **in play the A3 placeholder loses 7 points on the pool; selection suspended (D-068)**. P-6: behind the battery. P-7: entry throughput passed; no training. P-8 (latent state): stage S0 approved |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | Slot at parity with the switch off (272 of 272). Running: seed-1 pool and gen panels of `kageyama-01-p1-slot` (λ 1 and 0.5, placeholder model), then points and zip. Then learn-queue jobs (network on the full rows, A1 on the full rows) |
+| Evaluator queue (Asahi) | Done: slot parity at off 272/272; placeholder screens FAIL at λ 1 and 0.5. Ordered (D-068 §C, seed-1 pool): fallback count; `kageyama-02-p1-hb1` (A1) at λ 1; carthage-05 with no prior; A1 at λ 1.41; single-team priors (213, 91). Learn queue behind these |
 | Nominee (full gate) | `asahi-05-kz12-k16` (REG-002): gate hold; same-binary condition met; conditions 1–4 of D-064 §B read at LS-1's stop (02:15Z); Daichi activates if they hold |
 | Uploaded, inactive | `asahi-05-kz12-k16` = submission 16979. The `submit_check` fix is on main, not deployed; no redeploy until the lead confirms the hub loop (H11) |
-| Live screen | **LS-1 running** (job 5ed81ad3e1f3): 140 of 204 games at 00:29Z, no fault, stop 02:15Z |
+| Live screen | **LS-1 ended** (job expired): 160 of 204 games, no fault. Daichi reads D-064 §B at its next unit |
 
 ## Facts settled this unit
 
@@ -128,9 +136,9 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 | Council, auditor | Tanaka (GPT, Codex), `r/tanaka` | **stopped 00:49Z at the lead's request (credit budget)**; seat vacant; Sugawara covers replication (D-067 §G) |
 | Council, mechanism | Sugawara (Claude), hourly at :25 | working: 17:29Z LS-1 objective amendment (upheld in part, D-056 §C) |
 | Council, probe | Nishinoya (GLM), `r/nishinoya`, native Mac, hourly | working: 17:52Z replication of the LS-1 amendment |
-| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | deploy slot `bots/kageyama-01-p1-slot` built (r/kageyama f536785f7): zip 1.05 MiB, at most 10.1 M points, parity 2.9e-8; next the HB-1-vector input path (D-066 §E) |
-| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | A1 0.7184 leads; mirror map verified, 11 % of A1's decisions change under reflection; A4/A5 fitting as diagnostics; to queue: network on the full rows, then A1 on the full rows; re-base A6/A7; A8, A8b |
-| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session since 23:05Z | working: Mac memory read, slot parity, placeholder panels running |
+| Data | Kageyama (Claude), `r/kageyama`, fresh session since 21:16Z | `bots/kageyama-02-p1-hb1` built (A1 path, mirror averaging as a switch, 1.098 MiB, at most 11.8 M points); in-bot parity on 4 maps × both seats for both paths; next: fallback log line, export of single-team models, then the trajectory block |
+| Learner | Hinata (Claude), Cowork VM; hourly task at :35 | A8b 0.7224 (best by accuracy); selector rev 8 with the inventory as a file; network on the full rows running, A1 next; to add: log-loss, entropy and floor share in the table; single-team fits for 213 and 91; time diagnostic and T0 (D-067) |
+| Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session since 23:05Z | working: placeholder screens posted 01:10Z (FAIL); diagnostics queue of D-068 §C |
 | Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50 | cleared the keeper blocker 23:52Z; reads D-064 §B conditions 1–4 at the first unit after 02:15Z |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
@@ -150,25 +158,25 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 | H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | asked 19:30Z; the hub process changed at 19:46Z, not confirmed |
 | H12 | The Cowork VM session disk is full; quitting the app did not clear it. It cut off Kageyama and Asahi (both replaced by fresh sessions) and, at 23:42Z, the Chair's shell | open; the Chair works by file copy meanwhile |
 | H13 | Kageyama cut off | closed: fresh session working since 21:16Z |
+| H15 | Free lanes | Kenma running since before 01:28Z (started by the lead); a second lane not seen yet |
 | H14 | Mac disk | closed: 74 GB deleted with the lead's approval; 102 GB free |
 
 ## Next three decisions
 
-1. **k = 16 at LS-1's stop (02:15Z):** Daichi's table against conditions 1–4 of D-064 §B; activation if they hold;
-   then the monitor and the rollback rule. Push the lead once with the outcome.
-2. **R2 selection:** the development table of the selectable arms (A2, A6, A7, A8, A8b to come), A1 and the network
-   on the full rows, then one confirmation on the frozen cohort. Beside it: Asahi's placeholder panels (first play
-   evidence of a ten-team clone in the prior slot) and the slot's HB-1 input path.
-3. **P-7 training:** after the network arm on the full rows.
-4. **Time and game state (D-067):** the by-phase diagnostic and the no-time ablation decide whether phase models
-   are fitted; P-8 (latent state) is read when filed.
+1. **k = 16:** Daichi's table against conditions 1–4 of D-064 §B on LS-1's final 160 games; activation if they
+   hold; then the monitor and the rollback rule. Push the lead once with the outcome.
+2. **Why the clone loses in play (D-068 §C):** the five diagnostics decide whether the route is a stronger λ, a
+   single-team model, or neither. Until then no selection and no read of the frozen cohort.
+3. **Kenma's bot:** its pool panel and deploy checks; a live screen needs H11.
 
-Waiting on the lead: **H11** (does the hub restart by itself; until known, no redeploy, and so no upload of any new
-bot, the clone included) and H12 (session disk full; it blocks the Chair's shell).
+Also open: P-7 training (after the network arm on the full rows); time and game state (D-067; P-8 stage S0).
+
+Waiting on the lead: **H11** (does the hub restart by itself; until known, no redeploy and no upload of any new
+bot, Kenma's included) and H12 (session disk full; it blocks the Chair's shell).
 
 ## Cursor
 
-Last BOARD line read: line 1097 (Hinata 00:39Z, A4 0.7205: +0.0021 over A1, below the 0.005 bar of D-066 §C.2), main tree. Own D-067 lines follow. Merged at 00:48Z: r/kageyama (slot on main), r/tanaka, r/daichi, r/nishinoya; r/asahi waits for a BOARD commit.
+Last BOARD line read: line 1113 (Kageyama 01:33Z, HB-1 slot), main tree. Own D-068 lines follow.
 
 ## Open flags
 

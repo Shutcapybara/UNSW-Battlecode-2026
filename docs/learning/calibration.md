@@ -62,6 +62,13 @@ A10b on the full rows beats the trees (paired 5th percentile > 0) 0.15.
 **Single-seat forecast (D-066 §E), recorded:** Sugawara: the selected arm's in-bot parity stays under 1e-6 on at least
 three maps at the first attempt: 0.85 (00:29Z).
 
+**Forecasts on file (D-068 §C), Sugawara 01:31Z:** the A1 placeholder at λ = 1.41 within −2 points on the pool 0.35;
+slot fallback on more than 1 % of turns on some map 0.15; carthage-05 with no prior at or below −7 points 0.55.
+Nishinoya asked. Asahi's own forecast for the placeholder screen was +1 point (outcome −7.0; not a council seat).
+
+**P-8 (D-068 §D), author's forecasts, not council-scored:** S0 0.60; S0 on direction 0.25; S1 given S0 0.20; S2 0.20;
+live within the season 0.07.
+
 **Earlier round-2 numbers, kept on record, not scored:** Sugawara on P-5: accuracy ≥ 0.83: 0.10; beats the parent's prior: 0.85; panel gate given an
 offline pass: 0.20. On P-6: falsifier not triggered 0.85; V-legal ≥ Φ at round-limit r50: 0.20. The scored events are
 fixed in D-055.

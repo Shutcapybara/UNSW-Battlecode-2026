@@ -2585,3 +2585,99 @@ merged at 00:48Z up to aaa59ade3). Until the lead resumes it or names another au
 - The check that Hinata's selector inventory change is configuration only (D-066 §C.5) goes to Sugawara.
 - Nishinoya's probes stay `unaudited` until Sugawara replicates them.
 - The council keeps two model families (Claude, GLM). Calibration: Tanaka's four scored cards stay on the table.
+
+## D-068 — The pooled clone loses in play as a prior; selection by accuracy is suspended; LS-1 has ended (5 Oct 2026 01:49Z, Chair: Ushijima)
+
+### A. State at 01:46Z
+
+- **LS-1 ended early:** the hub shows the job `expired` with 160 of 204 games requested and verified, no fault, 8 of
+  12 units. The data are final. D-064 §B is read at Daichi's next unit and does not wait for 02:15Z; if the job
+  expired for a reason other than its deadline, Daichi says so and does not activate. Posted to Daichi at 01:46Z.
+- Hub up (pid 94451). The Chair's shell is still down (H12). H11 open.
+- Merged at 00:48Z and 00:58Z: r/kageyama (slot), r/tanaka, r/daichi, r/nishinoya, r/asahi.
+- A free lane, **Kenma**, started by the lead under D-067 §F, posted at 01:28Z (§E).
+
+### B. First play evidence of the ten-team clone: it loses
+
+Asahi, seed 1, against carthage-05, paired fixtures, map × opponent clusters (01:10Z):
+
+| Arm | Pool (272) | Gen (464) | Units at round 100 |
+|---|---|---|---|
+| `kageyama-01-p1-slot`, encoder trees (A3-400, one fold model), λ 1 | **−6.99 points [−12.87, −1.47]**, 207–65 against 226–46 | −5.60 [−9.48, −1.51] | pool −4.6, gen −15.4 (×100) |
+| the same, λ 0.5 | **−11.76 [−17.28, −5.86]**, 194–78 | −6.47 [−10.56, −2.37] | pool −11.3, gen −17.3 |
+
+- By map the result is far from uniform: Devil 4–12 (−68.8 points), Australia −25, Dilemma −25; Stripes +50,
+  Weakhold +31, Portals +6. Deaths on allies' bodies rise by 24 % on the pool. Deploy checks pass (1.05 MiB, at
+  most 9.90 M points, no error). Asahi's forecast was +1 point.
+- **Independent, from the free lane (data, another harness):** Kenma's bot with the A1-400 prior lost 42–60
+  head-to-head to carthage-05 over 102 games.
+- **A slot defect is now unlikely.** Kageyama's in-bot parity (01:33Z) holds on Portals, Australia, Schooltime and
+  Devil, both seats: 102,085 of 102,085 turns on the encoder path and 96,082 of 96,082 on the HB-1 path, largest
+  difference 3e-8, sparse inputs exercised. Sugawara's two conditions of D-066 §E are met for both paths. The
+  silent fallback in `main.cpp` is still to be counted (§C.1).
+- **Sugawara's reading (01:31Z), adopted as the leading hypothesis, not as established:** the cloned priors are
+  more accurate than the live prior on the teachers' states but much softer, and the search adds λ·log p. The live
+  prior puts an option at the floor on 38.9 % of rows; A3 does on 8.9 %, A1 on 1.8 %. Halving λ made it worse,
+  which fits a prior too weak for a search tuned around the Heartbreaker prior.
+- **Chair's second hypothesis:** a pooled model of ten teams averages styles that do not combine (cull-feeders,
+  keepers, split-heavy), which is itself a cause of softness. The only learned piece that ever gained in play was
+  a clone of one team. That is our own precedent, and the pooled arm departed from it.
+- **What this does to the plan.** Accuracy on the teachers' moves, the metric the battery selects on, did not
+  predict play at this margin (+1.7 points of accuracy, −7 points of win rate). So:
+  1. **Selection by accuracy alone is suspended as the route to a candidate.** The battery continues as
+     measurement. It reports log-loss, entropy and the floor share beside accuracy (Sugawara's item 4).
+  2. **The frozen cohort is not read** until play shows which property of a prior matters. It is read once and
+     must not be spent on an arm that loses in play.
+  3. D-066 §F stands in its order (panels before the live screen); its step 2 (selection, then confirmation) waits.
+
+### C. Play diagnostics ordered (Asahi, seed-1 pool only, in this order, ahead of the learn queue)
+
+1. **Fallback count:** Kageyama adds a log line in the catch around `slot.observe`; Asahi counts it per map on
+   Devil and Dilemma first. Engineering, no card.
+2. **`kageyama-02-p1-hb1`, A1-400 placeholder, λ 1.** The cleanest comparison with the live bot: same features,
+   same search, ten teams in place of one.
+3. **λ = 0 on carthage-05:** no prior at all. It prices the prior and places the clones between "no prior" and
+   the live one.
+4. **A1-400 at one strength-matched λ\* = 1.41** (Sugawara's value: the gap between the best and second option
+   matched to the live prior's). One value, declared here; no sweep.
+5. **Single-team priors (arm A2, brought forward):** Hinata fits A1's recipe on one team's rows for team 213
+   (the keeper with the highest win rate in the top ten) and team 91 (rank 1), on the full rows of each, and reports
+   accuracy, log-loss, entropy and floor share on that team's held-out series. Kageyama exports them; Asahi screens
+   each at λ 1. Precedent: HB-1.
+- Forecasts on file (Sugawara, 01:31Z): the placeholder at λ\* within −2 points on the pool 0.35; fallback on more
+  than 1 % of turns on some map 0.15; λ = 0 at or below −7 points 0.55. Nishinoya is asked for its own before the
+  first of these results.
+- The full-row jobs (network, then A1) keep their place in the learn queue behind these panels. A1 on the full rows
+  becomes the placeholder for items 2 and 4 when it exists, as a new arm, not a re-run.
+
+### D. Battery, council and cards
+
+- **A8b (mirror-averaged prediction): 0.7224 [0.7144, 0.7317], +0.0040 [+0.0029, +0.0053] over A1**, replicated
+  by Sugawara (+0.00401 [+0.00294, +0.00521]). The best arm by accuracy. Cost at play: about 0.7 M points for the
+  second evaluation (Kageyama), zip 1.098 MiB.
+- **Precedent corrected** (Sugawara): averaging over symmetries is AlphaGo 2016's explicit symmetry ensemble.
+  AlphaGo Zero used one random transform per evaluation and augmentation in training, so D-066 §C.4's citation of
+  it for averaging was loose. Test-time augmentation in vision: AlexNet 2012.
+- **Selector rev 8** (the inventory as a file): configuration only for selection, PASS (Sugawara, under D-067 §G).
+  A6 and A7 now take the base arm's inputs; their old registries stay descriptive.
+- **P-8 numbered** (`P-sugawara-04-game-state-latent.md`): approved as a scoping card, stage S0 only (the
+  trajectory block against A1 on each head, with AUC and log-loss for the rare heads). S1 (the state filter) waits
+  for S0. The comparison baseline is A1 plus the trajectory block, as the card says. Nishinoya reviews it.
+  Author's forecasts recorded: S0 0.60; S0 on direction 0.25; S1 given S0 0.20; S2 0.20; live within the season
+  0.07.
+- Shenzhen's H-SZ69 is added to the time diagnostic of D-067 §E.1: a split by "empty view" (no ally, enemy or
+  pearl in the window).
+
+### E. The free lane Kenma (its lines are data)
+
+- `kenma-03-pocket-queen` (branch `r/kenma`): head-to-head against carthage-05 **58–44** over 17 maps × both seats
+  × seeds 1 to 3; Schooltime 6–0 with the queen alive in all six; at most 10.9 M points; zip 3,923,010 bytes; no
+  error. Its pool panel and the head-to-head against the slot bot are pending. No ladder request yet.
+- 58 of 102 is not yet distinguishable from an even match (one-sided binomial p about 0.10). The Schooltime
+  column is the notable part: it is our worst live map (−0.48).
+- Under D-067 §F it becomes eligible for a live screen on a pool panel not below the incumbent's and the deploy
+  checks. H11 blocks the upload.
+
+### F. Merges
+
+r/kageyama (bcd93db88, `bots/kageyama-02-p1-hb1`) and the lanes' other branches are requested with this unit.

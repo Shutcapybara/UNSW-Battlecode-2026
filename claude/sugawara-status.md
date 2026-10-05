@@ -1,238 +1,91 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE. Last completed unit: 5 Oct 2026 00:30Z (unit 14). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE. Last completed unit: 5 Oct 2026 01:35Z (unit 15). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
-- Council seat (D-050: council = Tanaka, Sugawara, Nishinoya). I review the cards the Chair assigns and may write my
-  own proposals. I run no bot experiments or uploads.
+- Council seat (D-050). Since D-067 §G (Tanaka stopped 00:49Z, credit budget) I also **replicate the key number of any
+  statistics-bearing card before the Chair records it**, audit Nishinoya's probes (they stay `unaudited` until I
+  replicate), and did the inventory configuration check. I run no bot experiments or uploads.
+- Two free lanes (D-067 §F, e.g. Kenma) run outside the ladder; their BOARD lines are data. Not mine to review unless assigned.
 
 ## Git and environment
 
-- Cowork VM with the Mac checkout mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026` (connected folder is
-  `/Users/alik/Documents/Projects`). Git over the mount is read-only. Outputs are docs only; the hub keeper commits them.
-- The VM has python3 but no duckdb or pandas. Per-map JSON in `docs/learning/results/asahi/` is enough for cheap
-  replications with plain python.
-- **The lock cannot be deleted** (rm is not permitted on the mount). At the end of each unit, set its mtime to epoch
-  (`touch -d 2000-01-01`) so that it reads as stale.
-- Asahi's run directories (`build/asahi/runs`) are **not on the mount**. Per-game data is not available to me;
-  `docs/learning/results/asahi/*.json` has per-map rows.
-- **BOARD style:** one physical line per entry. My 14:58Z entry wrapped onto indented lines; don't repeat that.
-- **Order:** read the new BOARD tail **immediately before** posting. At 14:35Z I posted a recommendation that a 14:28Z
-  Chair line had already overtaken, and had to correct it at 14:45Z.
-- The VM disk is full (19 MB free): no pip there. In the cloud container `pip install pyarrow pandas
-  --break-system-packages` works; stage parquet files (smoke, dev120 ≈ 19 MB) there to read them.
-- **Hard rule I missed once:** `_common.md` l.21, "No map identity in any bot: structure only". Check it before
-  proposing any gate that keys on W/H or other map constants (D-033 precedent).
+- Cowork VM with the Mac checkout mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026`. Git over the mount is
+  read-only (`git --no-optional-locks`; `git log --all` fails; name branches, e.g. r/asahi; r/hinata does not exist).
+  Outputs are docs only; the hub keeper commits them.
+- The VM has python3 + numpy 2.2.6 but no pandas/pyarrow; VM disk 100 % full. For parquet: stage files to the cloud
+  container (`pip install pyarrow pandas --break-system-packages`). Battery outputs live in
+  `build/hinata/r2/battery/<arm>/{p_*.npy, rows.parquet}`. All arms share rows.parquet sha a0b1ea2e…. Probability
+  columns: F, R, B(reverse), L; y_first ∈ {0,1,3} for F/R/L rows. The column `map` must be read as `r["map"]`.
+  Replication script (cloud, not kept): `/tmp/claude-0/sg_rep.py`.
+- **The lock cannot be deleted** (rm is not permitted). At the end of each unit, `touch -d 2000-01-01` it.
+- To write the repo copy of this file: write it in the cloud at /mnt/user-data/outputs, then device_commit_files with stagedPath.
+- **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
+- **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only".
+- Blinding: never read `hub-state/battles/index.json` or the LS-1 job file until LS-1 closes.
 
-## Unit 14 (00:26–00:30Z)
+## Unit 15 (01:25–01:35Z)
 
-- **Read:** BOARD through line 1090 (`[00:24 UTC council:tanaka → asahi, chair, sugawara, nishinoya] P7 job179 rate arithmetic replicated; exact <=8-core receipt requested`); my lines are 1091–1092. D-065 (l.2297, main tree; §B condition 5 met, my drift reading adopted for the monitor = rec 17 adopted; §C deployability binds selection: ≤ 4 MiB total; §D deploy slot). No D-066.
-- Chair's shell down since 23:42Z (Cowork disk full); Chair rewrites BOARD under an mtime guard and once dropped two lines — always verify my appended lines survive next unit. Keeper blocker (__pycache__ .pyc) cleared by Daichi 23:52Z.
-- **Nothing assigned.** Wrote `docs/learning/reviews/P-7-E2-and-p1slot-sugawara.md`:
-  - P-7 E2: PASS under any accounting (worst case 18 cores busy → 8.4×10⁷/h, 8.4× bar). Brier mine 0.0625 (pending Chair record).
-  - p1-slot (Kageyama 00:06Z, Asahi 00:18Z golden 272/272): mechanism checks pass for the placeholder. Amendments (rec 18): multi-map in-bot parity with per-column non-zero counts; HB-1-vector path + its own parity if A1 selected. map-identity check done (encoder v1 and HB-1 path have no W/H/x/y; banned() refuses).
-- Battery state: A1 0.7184 leads (A3 0.7145, A0 0.6977, A10b 0.6785); A4–A7 need ~4.9 MB (over 4 MiB) unless the prior is cut. Mac 24 GiB RAM → tree full-row fits (~18 GB) must be split (60 % = 14.4 GiB).
-- No notification: nothing about to gate is flawed.
+- **Read:** BOARD through line 1109 (`[01:28 UTC kenma → chair, lead] Provisional Kenma best: kenma-03-pocket-queen … 58–44`); my lines are 1110–1112 (01:31Z). D-066 (l.2376) and D-067 (l.2484). My 00:29Z lines survived (1091–1092).
+- **Assigned and delivered:**
+  - D-066 §C.4 A8b precedent → `docs/learning/reviews/D-066-A8b-inventory-p1screen-sugawara.md` §1: AGREE. The precedent is AlphaGo 2016's *explicit symmetry ensemble*; AGZ is the implicit form (correction); AlexNet TTA. Replicated A8b-A1 − A1 +0.00401 [+0.00294, +0.00521].
+  - D-067 §G inventory check (§2): PASS, configuration only for selection. Note: cols() feeds A6/A7 the ts_base inputs, so the rev-7-equivalent file does not reproduce rev 7's A6/A7 inputs.
+  - D-067 §E.5 **P-8 card** → `docs/learning/proposals/P-sugawara-04-game-state-latent.md` (due 03:00Z, filed 01:31Z). Every test is against A1 + v2 trajectory block. S0 → S1 (HMM, filtered only) → S2 (GRU). Rare heads scored by AUC/log-loss.
+- **Unassigned (§3): P1-slot screen FAILs (Asahi 01:10Z).** The cloned priors are softer than the HB-1 prior: floor share 38.9 % (A0) vs 8.9 % (A3); best − 2nd gap 3.14 vs 2.15. λ 0.5 losing more than λ 1 fits "prior too weak for a search tuned to HB-1". Silent catch around slot.observe (main.cpp l.44) means no prior on a throw. Rec 19.
+- No notification: nothing about to gate is flawed. The P1-slot route is guarded by seed-1 panels before any upload, and H11 blocks uploads.
 
-## Unit 13 (23:25–23:29Z)
+## Earlier units (summary)
 
-- **Read:** BOARD through line 1042 (`[23:23 UTC council:tanaka → chair, asahi, daichi, sugawara] D064 archive identity independently replicated PASS`); my line is 1043. D-064 (l.2211) is in the main tree; no D-065 yet (Chair 23:07Z: deploy path for the cloned prior, `bots/kageyama-01-p1-slot`, to be recorded there).
-- **D-064 §B adopted my amendments:** loss limit −0.05 (rec 16), same-binary condition 5 (rec 15), LS-1 verdict reported but not deciding, harm-clause power printed. Condition 5 MET (Asahi 23:05Z: fp 43bd2d4f recomputed on the 16979 archive), replicated by Tanaka 23:23Z.
-- **Nothing assigned.** Unassigned note `docs/learning/reviews/drift-row-14585-sugawara.md`: Daichi's 22:52Z drift crossing (last-40 −0.129) is a ~7th-percentile excursion under a series-shuffle null (0.071); 26 % of 14585's rolling 40-game windows are below −0.08. Last-120 baseline −0.030 ≈ its mean, so no bias to the D-052 §B look; 0.87 kept. Rec 17.
-- **Asahi discordance census (23:05Z):** k16 vs parent seed-matched 23/10/783 (disc 0.040), parent seed noise 0.194; Weakhold 16/0/32. This likely resolves my LS-std-1 event "A/A seed-noise discordance on the k16 pool ≥ 0.05" (P 0.80) as YES (Brier 0.04), if the Chair accepts a local s vs s' census as that event. Check calibration.md.
-- **No notification:** nothing about to gate is flawed; condition 5 is met.
-
-## Unit 12 (22:25–22:32Z)
-
-- **Read:** BOARD through line 1012, Tanaka's `[22:25 UTC council:tanaka → hinata, chair, kageyama] Selector3f56b4b2: PASS …`. My line is 1013. D-063 is in the main tree at l.2142; there is no D-064. The BOARD is still out of time order: Shenzhen's 22:25Z line appears before some 21:xx lines.
-- **Assigned:** D-063 §B council round on the k16 promotion rule, due 23:30Z. Delivered `docs/learning/reviews/k16-promotion-sugawara.md`: **AGREE with 3 amendments.**
-  - (1) **Precondition:** prove that 16979 (fp 0cf975af, CPU probe on 1.2.9) is the gated binary (fp 43bd2d4f on 1.2.3). Either recompute the fingerprint, or re-run the Weakhold s2 fixtures from the zip on the live engine.
-  - (2) Freeze the fault list, and print the power of the harm clause. Simulation at 80 pairs: P(flag) 0.05 at +1 pt, 0.43 at −10 pts.
-  - (3) Simplify the carve-out; Weakhold is report-only in the rollback.
-  - The addendum answers Tanaka's mean ≥ −0.02 limit: it declines a +1-point candidate 0.33 of the time. I prefer −0.05 (0.17 false decline, 0.73 detection at −10 points).
-- **Replication** from the frozen card: pool +6 net games = Weakhold +9, autarky +1, maze −2, slithery −2. Off-target sign test p ≈ 0.38. Tanaka and Nishinoya replicated the same figures independently.
-- **Simulations** ran in the VM as inline python with no files kept (/dev/shm does not persist between device_bash calls). The model: 3 opponents × 17 maps, per-cell win probability Beta(1.2, 1.2), random pair placement, opponent × map bootstrap.
-- **Blinding:** I declared that I have never read `hub-state/battles/index.json` or the LS-1 job file. Keep it that way until LS-1 closes.
-- **Notified** the lead about the deploy-identity precondition and the loss-limit trade-off before the 02:15Z decision.
-
-## Unit 11 (21:25–21:32Z)
-
-- **Read:** BOARD through line 967 (`[21:26 UTC council:tanaka → chair, sugawara, nishinoya, asahi] P-7 AMEND scoping review`); my line is 968. D-061 and D-062 (main tree); no D-063. Nishinoya's P-7 review is on r/nishinoya (81e7f9f9d); Tanaka's is at 1246f63e1. Shenzhen back-posted 28 lines (09:45–21:45Z) with their original times, so the BOARD is no longer in time order.
-- **Nothing was assigned to me** (D-061 §C put the P-7 reviews to Tanaka and Nishinoya). As the author, I answered both reviews: **Author's amendment 1** was appended to `P-sugawara-03-selfplay-finetune-scoping.md`.
-  - (a) The 80 µs and 383 µs figures are reconciled. Replication on 1 core in the cloud container: engine ≈ 73 µs, deploy encoder 111–140 µs, A10 22–40 µs. E2 clears its bar with a margin of at least 2×. P(E2) revised 0.60 → 0.75.
-  - (b) Accepted Nishinoya amendments 2 and 4, and Tanaka's contract items 1–5. Rollouts go in chunks of ≤ 1 M at int8. Step 0 is a baseline, not a falsifier.
-  - (c) Proposed distillation of the trees into the A10 network if the battery selects trees, replacing the void clause. The gate is agreement ≥ 0.95 with the trees and accuracy within 0.01.
-- **Bench script:** cloud container only (`/tmp/claude-0/sg/enc/bench.py`). unswbc 1.2.9 wheel in `/tmp/claude-0/sg/pk`.
-- **No notification:** nothing gates; the amendment is for the Chair's pending P-7 ruling.
-- **VM `/sessions` disk at 100 %:** I wrote nothing in the session home except `/dev/shm` scratch.
-- **P-6 amendA, event "V-legal* non-inferior to Φ" (0.40):** Hinata reclassified V-legal* as a privileged-reference diagnostic (20:32Z). The event is likely void. Confirm in calibration.md.
-
-## Unit 10 (20:26–20:33Z)
-
-- **Read:** BOARD through line 911 (`[20:30 UTC chair:ushijima → hinata, tanaka, kageyama] D-060 §E–F`); my lines 912–913. D-058, D-059, D-060 (main tree).
-- **Assigned & delivered:** (a) D-058 §B source check (due 21:30Z) → `docs/learning/reviews/D-058-B-precedents-sugawara.md`: AMEND four cells (HG look-ahead unsourced; Lux S1 "next places imitated the winner" → only 93/1,178 documented; Nishinoya's "Toad Brigade bootstrapped by imitation" unsourced; "imitation in top ten" unverified; add microRTS 2023). Tally 8 contests: rule/search 5, self-play DRL 3; no verified imitation-only top-ten. (b) P-7 scoping card (due 22:00Z) → `docs/learning/proposals/P-sugawara-03-selfplay-finetune-scoping.md`.
-- **Measured (cloud container, no game):** A10-shape numpy fp32 forward 25–29 k decisions/s/core at batch 8–256, 17 k at batch 1 (Xeon 2.1 GHz). Engine ≈ 80 µs/decision; G1 28.63 M/h at 3.05 cores (antioch 3 Oct, 3060 Ti host).
-- **Outcomes this unit:** P-4 (P-sugawara-02) **refuted** (D-060 §B: hazard ratio 1.069 [0.685, 1.788]); Brier for support 0.35 → 0.1225; refute 0.25 → 0.5625; gate 0.20 → 0.04. P-6 Amendment A: stump 11/14 → fallback (my 0.25 for ≥ 12/14 → Brier 0.0625); Tanaka upheld that Φ is not deployable (D-060 §F) — consistent with my rec 10. Battery selector held for Tanaka's audit (D-060 §E).
-- **No notification:** nothing about to gate; the precedent corrections reverse no ruling.
-
-## Unit 9 (19:26–19:32Z)
-
-- BOARD read through line 890 (`[19:25 UTC hinata → chair] 18:35Z unit did not die …`); my lines are 891–892.
-  D-057 is on r/ushijima (9c62e7c8b) and not yet in the main tree. Read it with `git show r/ushijima:…`.
-  - **Git note:** `git log --all` fails over the mount ("Invalid path /Users", from the worktree entries). Name
-    branches explicitly instead (e.g. `r/ushijima`).
-- D-057:
-  - §A: Mac restart 18:48–19:21Z. No redeploy, because the hub runs in a terminal. The LS-1 stop is now 02:15Z.
-  - §B: P-2 FAIL recorded; my Brier is 0.25.
-  - §C: R2 development battery A0–A5, with a fixed selection rule.
-  - §D: **my rec 9 was adopted**: power-based sizing ≥ 0.6, the seed-noise census, the noise-predicted count, and the
-    question of whether a request can fix the seed. Tanaka's mean-zero skew counterexample (0.27) was also adopted as
-    an assumptions statement.
-- Wrote `reviews/P-6-amendA-sugawara.md`: AMEND §2. The whole-map stump features cannot be observed by a process
-  (7×7 vision). I restricted the candidates to IO-observable ones (get_map_size, the own window, the unit count).
-  - Replication: W·H stump LOMO 11/14 on the training maps, so the likely outcome is the Φ fallback before r150.
-- Wrote `reviews/R2-battery-sugawara.md`: oracle-only rows for HB-1 features; winner's curse in selection over 8
-  configurations; the 0.77 extrapolation is optimistic.
-- No notification: neither card is about to gate. The stump freeze precedes the V-legal fit.
-
-## Unit 8 (18:25–18:45Z)
-
-- BOARD read through line 854 (`[18:21 UTC hinata → chair, kageyama, tanaka] R2 development … 0.714`); my line is
-  855. D-056 in the decisions file (l.1634); no D-057.
-- D-056: LS-1 dispatched 17:42Z (16979 vs 14585, rosters 716/98/347, ext 919/351). §B upload defect (server
-  activates on upload; no upload until submit_check fix). §C my LS-1 amendment ruled after dispatch: frozen label kept;
-  promotion also needs the **cluster** sign test p ≤ 0.075 at either of two looks (Tanaka: pair test not
-  size-controlled); < 4 non-zero clusters = not resolvable → local seeds 2–3 gate. Rec 8 → adopted in amended form.
-  §D standing live loop LS-std-1; **§D.7 assigned me the sizing rule by simulation, due 19:30Z.**
-- Wrote `reviews/LS-std-1-sugawara.md`: AMEND §D.2. Live pairs are not seed-matched (A1-Q3: own seed per game), the
-  local census is; live discordance = switch + seed noise, so "≥ 12 expected non-zero clusters" is met by noise while
-  power falls (LS-1 shape 0.49 → 0.21–0.33 at noise .05–.20). §D.1 size AGREE (null 0.048–0.081). Asked: A/A
-  seed-noise census, power-based sizing (≥ 0.6), noise-predicted n beside n+/n−/n0, and whether the seed can be fixed.
-  This corrects my own 17:29Z premise. Notified the lead (rule about to bind from the second screen).
-- Outcomes: **P-2 confirmation FAIL** (Hinata 18:21Z; elim/r25 Autarky ΔAUC −0.0099, 5th −0.0152 vs −0.01) → my 0.50
-  scores as a miss. **R2 encoder-only dev 0.714 < 0.75** (stop triggered; union model unfitted and binding per
-  D-055 §E) → my P-5 dev forecasts (0.55, 0.65) wait on the union fit.
-- Sim scripts in the cloud container only (`/tmp/claude-0/sg/lsstd.py`, `noise.py`); core described in the review.
-
-## Unit 7 (17:25–17:30Z)
-
-- BOARD read through line 829 (`[17:12 UTC chair:ushijima → hinata, kageyama, tanaka] R2 … now leads the Learner's
-  order of work`); my line is 830 (17:29Z). D-055 in the decisions file (l.1521); no D-056 yet (Chair: to record
-  the battles.py redeploy and the R2 work order).
-- D-055: live-first. §A eligibility replaces the local-gate prerequisite for upload/live screen; §B LS-1 = 14585 vs
-  asahi-05-kz12-k16, 102 matched pairs, 3 opponents, Daichi's 17:50Z unit is the first that can act; §C promotion
-  rule amended; §D A/A closed; §E P-5 and §F P-6 approved as amended (my 0.70 and 0.80 recorded); §G P-2 rev 3 hold.
-- Nothing assigned to me. Wrote unassigned `reviews/LS-1-sugawara.md`: AMEND the decision rule. Sparse discordance
-  (k16 changed ~4–5 % of local games) makes the 51-cluster bootstrap degenerate: 1/0 is a PASS; null false-pass
-  0.16–0.33; ties → REJECT. Asked for an exact sign test p ≤ 0.15 on non-zero pairs, < 4 non-zero → HOLD, strict
-  reject, and per-pair opponent submission-id pinning. Notified the lead (promotion-relevant stats flaw before gate).
-- Sim script lives in the VM at `$HOME/sg/sim.py` (not in the repo; VM scratch).
-
-## Unit 6 (16:25–16:30Z)
-
-- BOARD read through line 810 (`[16:10 UTC kageyama → chair, asahi, daichi, all] Hidden bed variants…`, a multi-line
-  entry ending l.810); my three lines are 811–813 (16:28Z). D-054 is in the decisions file (l.1443). No D-055 yet.
-- D-054: §A P-2 population frozen by manifest v2 (1,327 usable). §B k16 gate forecasts recorded; my Weakhold
-  report-only items adopted. **§C P-4 = my P-sugawara-02, approved for a seed-1 screen** (Asahi builds it after k16;
-  Nishinoya filed 0.45). §D council round 2 on P-5 (= P-hinata-03) and P-6 (= P-hinata-04), due 17:00Z. §E Asahi idle.
-- Wrote `reviews/P-5-sugawara.md` and `reviews/P-6-sugawara.md` (round-2 addenda). Conceded to Tanaka: cd_known is
-  not provenance, and my flip-rate < 1 % stop is withdrawn. Withdrew "G-parent near-certain" after Tanaka's 15:52Z
-  series-overlap finding (382 of 497 held-out-map games share training series; the clean cohort is 115 games on 3 maps).
-- Replication on Kageyama's dev120 (staged parquet): rebuild_redacted is 40,444 rows / 21 games, with cd_known = 1 on
-  3,925 (9.7 %) → the filter must be blocks_src = oracle (drops 17.2 %; QoS 72 %, Slithery 68 %, Schooltime and PD 43 %).
-- Daichi's A/A (15:53Z) is degenerate (14585 1/68 vs 545; 752 has no active submission). The question is the Chair's.
-
-## Unit 5 (15:26–15:31Z)
-
-- BOARD read through line 781 (`[15:30 UTC kageyama → hinata, chair] R2 data`, timestamped ahead of the VM clock);
-  my three lines are 782–784. D-053 is now in the decisions file (l.1351). No D-054 yet.
-- Tanaka AMENDed P-sugawara-02 (87ab8c40f on r/tanaka). Accepted in full and appended to the card; remembered-max
-  dropped; revised P(support) 0.35.
-- Reviewed Hinata's round-2 cards (Claude-family; need a non-Claude review too):
-  - P-hinata-03 R2 BC prior: AMEND. cd_known = 0 rows in training contradict encode.py l.51; the parent slot gives the
-    reverse step log p = 0 (largest), so P1's 4 classes reprice it; G-parent near-certain → add flip rate and entropy.
-    Replication on the smoke parquet: F .510 R .221 B .0043 L .265 (11,594 move rows).
-  - P-hinata-04 V-legal: AGREE + pair V0b on the post-claim population + queen-speaker-only ΔAUC.
-- Kageyama answered Hinata's in_scope contradiction: scope moves with the live ladder (team 28 fell out); the manifest
-  v2 flag is the frozen one. Resolved; nothing for me.
+- U14 (00:30Z): P-7 E2 PASS by bound (D-066 §B adopted it); p1-slot mechanism checks + rec 18 (adopted D-066 §E).
+- U13 (23:29Z): drift row note (rec 17, adopted D-065 §B).
+- U12 (22:32Z): k16 promotion review (recs 15–16, adopted D-064).
+- U11 (21:32Z): P-7 author amendment 1 (encoder/engine µs; distillation clause).
+- U10 (20:33Z): D-058 §B precedents (adopted D-061 §A); P-7 scoping card.
+- U9 (19:32Z): P-6 amendA (IO-observable stump only; adopted); R2 battery review.
+- U8 (18:45Z): LS-std-1 sizing (adopted D-057 §D). U7: LS-1 rule (adopted D-056 §C). U6/U5: P-5/P-6 round 2, P-sugawara-02 amendments.
 
 ## Scored predictions (for Brier in calibration.md)
 
 | card | event | P | logged |
 |---|---|---|---|
-| P-2 | D-052 exact event: confirmation returns PASS under spec 15d79683 | **0.50** | 13:42Z (FAIL; Brier 0.25, D-057 §B) |
-| D-053 §D | asahi-05-kz12-k16 D-046 §4 gate PASS on seeds 2–3, map × opponent clusters | **0.35** | 14:45Z (before the card) |
-| P-sugawara-02 | screen support at m = 0 under §3 | 0.40 | 14:55Z |
-| P-sugawara-02 | screen refute | 0.25 | 14:55Z |
-| P-sugawara-02 | later D-046 §4 gate pass if nominated | 0.20 | 14:55Z |
-| P-sugawara-02 | screen support at m = 0, amended card | 0.35 | 15:30Z (REFUTED; Brier 0.1225, D-060 §B) |
-| P-hinata-03 | development accuracy ≥ 0.75 | 0.55 | 15:30Z |
-| P-hinata-03 | G-macro (≥ 0.83) | 0.10 | 15:30Z |
-| P-hinata-03 | G-parent (5th pct > 0) | 0.85 | 15:30Z |
-| P-hinata-03 | D-046 §4 panel gate at λ = 1, given offline pass | 0.20 | 15:30Z |
-| P-hinata-03 | flip rate < 1 % | 0.15 | 15:30Z |
-| P-hinata-04 | falsifier not triggered (ΔAUC > 0 on ≥ 3/6 rl cells) | 0.85 | 15:30Z |
-| P-hinata-04 | V-legal AUC ≥ Φ at rl r50 | 0.20 | 15:30Z |
-| P-5 (P-hinata-03) r2 | dev ≥ 0.75, amended card | 0.65 | 16:28Z |
-| P-5 r2 | G-parent PASS on series-clean cohort, amended card | 0.70 | 16:28Z |
-| P-5 r2 | G-parent PASS, card as written | 0.60 | 16:28Z |
-| P-5 r2 | absolute ≥ 0.83, amended | 0.20 | 16:28Z |
-| P-5 r2 | panel gate at λ = 1 given offline pass, amended | 0.25 | 16:28Z |
+| P-2 | confirmation PASS under spec 15d79683 | 0.50 | FAIL; Brier 0.25 (D-057 §B) |
+| D-053 §D | k16 D-046 §4 gate PASS seeds 2–3 | 0.35 | 14:45Z |
+| P-sugawara-02 | support / refute / later gate (orig.) | 0.40 / 0.25 / 0.20 | 14:55Z |
+| P-sugawara-02 | support, amended | 0.35 | REFUTED; Brier 0.1225 (D-060 §B) |
+| P-hinata-03 | dev ≥ 0.75 / G-macro / G-parent / panel gate / flip < 1 % | 0.55 / 0.10 / 0.85 / 0.20 / 0.15 | 15:30Z |
+| P-hinata-04 | falsifier not triggered / V-legal AUC ≥ Φ | 0.85 / 0.20 | 15:30Z |
+| P-5 r2 | dev ≥ .75 / G-parent clean / G-parent as written / ≥ .83 / panel gate | 0.65 / 0.70 / 0.60 / 0.20 / 0.25 | 16:28Z |
 | P-6 r2 | falsifier not triggered | 0.80 | 16:28Z |
-| LS-1 | PASS under D-055 §B rule as written | 0.50 | 17:29Z |
-| LS-1 | PASS under my amended rule (incl. extension) | 0.25 | 17:29Z |
-| LS-std-1 | k16-like candidate promoted under LS-std-1, LS-1 shape | 0.25 | 18:40Z |
-| LS-std-1 | A/A seed-noise discordance on k16 pool ≥ 0.05 | 0.80 | 18:40Z |
-| P-6 amendA | IO-observable stump reaches LOMO ≥ 12/14 | 0.25 | 19:30Z (11/14, miss; Brier 0.0625) |
-| P-6 amendA | V-legal* non-inferior to Φ on all cells, amended | 0.40 | 19:30Z |
-| D-057 §C | selected arm meets selection condition on dev120 rows | 0.45 | 19:30Z |
-| D-057 §C | selected arm meets it on full rows (refit) | 0.55 | 19:30Z |
-| D-057 §C | A2 teacher-mean > A1 by > 0.01 | 0.35 | 19:30Z |
-| P-7 | E2: A10 in-loop ≥ 1×10⁷ decisions/h on ≤ 8 Mac cores | 0.60 | 20:31Z |
-| P-7 amend 1 | E2 (revised after encoder replication) | **0.75** | 21:29Z (PASS by bound, 00:29Z; Brier 0.0625 pending Chair) |
-| P-7 amend 1 | distillation gate passes, given trees are selected (if the Chair adopts it) | 0.55 | 21:29Z |
-| P-7 amend 1 | h2h ≥ .55, conditional on step 0 moving h2h < +0.02 | 0.30 | 21:29Z |
-| P-7 | head-to-head ≥ 0.55 vs clone after 6 iterations | 0.45 | 20:31Z |
-| P-7 | seed-1 panel Δwin ≥ +0.02 vs clone after 6 iterations | 0.25 | 20:31Z |
-| P-7 | live promotion from this line within the season | 0.15 | 20:31Z |
-| D-063 §B | P(no D-052 §B rollback within first 120 ranked games \| promoted) | **0.87** | 22:30Z |
-| D-063 §B | harm clause fires at stop \| Chair rule adopted | 0.07 | 22:30Z |
-| D-063 §B | promotion at ~02:15Z \| Chair rule / −0.05 limit / −0.02 limit | 0.85 / 0.72 / 0.58 | 22:30Z |
-| p1-slot | selected arm in-bot parity max |Δp| < 1e-6 on ≥ 3 maps, first attempt | 0.85 | 00:29Z |
-| P-sugawara-01 | (all four void: card rejected and withdrawn, no outcome) | — | 13:40Z |
-| D-048 §8 | (operating characteristics 0.09 / 0.38, not scored per D-052 §B) | — | 12:30Z |
+| LS-1 | PASS rule as written / my amended rule | 0.50 / 0.25 | 17:29Z |
+| LS-std-1 | k16-like promoted / A/A noise ≥ 0.05 | 0.25 / 0.80 | 18:40Z (A/A likely YES, Brier 0.04, check calibration.md) |
+| P-6 amendA | stump LOMO ≥ 12/14 | 0.25 | miss; Brier 0.0625 |
+| P-6 amendA | V-legal* non-inferior | 0.40 | likely void |
+| D-057 §C | sel. arm meets condition dev120 / full / A2 > A1 by .01 | 0.45 / 0.55 / 0.35 | 19:30Z |
+| P-7 | E2 (orig.) | 0.60 | 20:31Z |
+| P-7 amend 1 | E2 revised | 0.75 | PASS; Brier 0.0625 (D-066 §B) |
+| P-7 amend 1 | distillation gate given trees / h2h ≥ .55 given step 0 < +.02 | 0.55 / 0.30 | 21:29Z |
+| P-7 | h2h ≥ .55 / panel ≥ +.02 / live promotion | 0.45 / 0.25 / 0.15 | 20:31Z |
+| D-063 §B | no rollback in 120 games given promoted | 0.87 | 22:30Z |
+| D-063 §B | harm clause fires / promotion (Chair / −.05 / −.02) | 0.07 / 0.85 / 0.72 / 0.58 | 22:30Z |
+| p1-slot | selected arm in-bot parity < 1e-6 on ≥ 3 maps, first attempt | 0.85 | 00:29Z (recorded D-066 §E) |
+| rec 19 | λ* placeholder pool Δwin ≥ −2 pp, seed 1 | 0.35 | 01:31Z |
+| rec 19 | p1_fallback > 1 % of turns on some map | 0.15 | 01:31Z |
+| rec 19 | λ = 0 pool Δwin ≤ −7 pp | 0.55 | 01:31Z |
+| P-8 | S0 any head × bucket ≥ .005 / S0 direction / S1 given S0 / S2 / live in season | 0.60 / 0.25 / 0.20 / 0.20 / 0.07 | 01:31Z |
 
 ## Open recommendations
 
-1. V-legal and ΔAUC(V0b − V-legal). **Adopted** (D-052 §A.7); card is P-6.
-2. A sequential (GSPRT) rollback card. **Open**; low priority.
-3. (intake §4) Cost of permanently excluding held-out maps. **Not ruled.**
-4. k16 gate readout (Weakhold per seed, pool without Weakhold, vetoes/fallbacks per 1k). **Adopted** D-054 §B.
-5. P-sugawara-02 = P-4. **Approved for seed-1 screen** (D-054 §C); waits on Asahi after k16.
-6. P-5: union features with a hashed allowlist excluding W/H/x/y/xn/yn; bind G-parent on the series-clean cohort;
-   train on blocks_src = oracle; explicit 3/4-class support; flip rate report-only. **Adopted** D-055 §E (series-clean cohort, oracle filter, allowlist).
-7. P-6: queen-speaker ΔAUC; paired V0b on post-claim rows; diagnostic not price. **Adopted** D-055 §F.
-8. LS-1 decision rule. **Adopted, amended** (D-056 §C: cluster-level sign test p ≤ 0.075, two looks, sub-id pairing).
-9. LS-std-1 sizing. **Adopted** (D-057 §D.1–5).
-10. P-6 Amendment A §2: IO-observable stump candidates only. **Adopted** (Hinata 19:50Z; fallback; D-060 §F).
-11. R2 battery: oracle-only HB-1 rows, oracle share printed, runner-up and nested selection near 0.75. **Partly
-    adopted** (runner-up/LOFO print in r2_battery.py, Hinata 19:50Z); oracle-share print unconfirmed.
-12. D-058 §B precedent table: four amendments + microRTS row. **Adopted** (D-061 §A).
-13. P-7: scoping card; own dissent = run a one-night filtered self-imitation probe before PPO. **Taken up** by Nishinoya (required step 0) and Tanaka (baseline only). I sided with Tanaka at 21:29Z.
-14. P-7 void clause: distil the trees into A10 instead of voiding the card (gate: agreement ≥ .95, accuracy within .01). **Open** (21:29Z); Chair to rule with the battery table.
-
-15. D-063 §B: 16979 artifact identity check before activation. **Adopted** (D-064 §B.5); MET (Asahi 23:05Z, Tanaka replication 23:23Z).
-16. D-063 §B: fault list frozen; harm clause power printed; carve-out simplified; Weakhold report-only; loss limit −0.05 rather than −0.02. **Adopted** (D-064 §B; Tanaka accepts −0.05 as binding).
-17. Drift row: print the latest 40-game window as a series-shuffle percentile of the submission's own history, or use 120 games (−0.08 on 40 games false-alarms ~26 %). **Adopted** (D-065 §B, monitor only).
-
-18. p1-slot: in-bot parity on ≥ 3 maps (symmetry types, both seats) with per-column non-zero counts before the selected model ships; HB-1-vector path + parity if A1 selected. **Open** (00:29Z).
+1–17: see earlier status history. Adopted: 1, 4, 6–10, 12, 15–17. Partly adopted: 8, 11. Still open: 2 (GSPRT rollback, low priority), 3 (cost of held-out exclusion), 13/14 (P-7 step 0 and distillation clause; D-063 §D took distillation).
+18. p1-slot: ≥ 3-map in-bot parity, both seats, per-column non-zero counts; HB-1 path own parity. **Adopted** (D-066 §E).
+19. P1-slot: LOG on the observe fallback; strength-matched λ*; λ = 0 control; log-loss, entropy and floor share in the battery table. **Open** (01:31Z).
+20. D-066 §C.4 wording: cite AlphaGo 2016's explicit ensemble for averaging; AGZ is the implicit form. **Open.**
 
 ## Next checks
 
-- 02:15Z LS-1 stop: Daichi's conditions 1–4 table; score D-063 §B promotion forecasts (Chair rule 0.85); LS-1 0.50/0.25. Then the D-052 §B look at 40 games and the 120-game no-rollback event (0.87).
-- Verify my 00:29Z BOARD lines survived the Chair's rewrites.
-- Battery selection: A2, A4, A5, A6 inventory; deployability filter (≤ 4 MiB total); full-row refits (A10b first, trees split for 24 GiB RAM); score D-057 §C 0.45/0.55/0.35 and Hinata's full-row forecasts at selection.
-- p1-slot seed-1 screens (Asahi, placeholder — deploy-path only, not selection); rec 18 at selection.
-- calibration.md: LS-std-1 A/A ≥ 0.05 event (likely YES), P-6 amendA V-legal* (likely void), P-7 E2 (PASS).
-- H-KZ36 stays unowned.
+- 02:15Z LS-1 stop: Daichi's conditions table; score D-063 §B promotion forecasts and LS-1 0.50/0.25; the 120-game no-rollback event (0.87).
+- Chair's response to rec 19; any λ*/λ 0/fallback-count runs; Kageyama's A8b points and the HB-1 path parity.
+- P-8: council reviews (Nishinoya, GLM) and the Chair's ruling; Data's answer on which split half keeps the process.
+- Replication duty (D-067 §G): Nishinoya's split/cull/sprint-by-round probe (D-067 §E.4) when posted; Hinata's time diagnostic (§E.1) and T0.
+- A1-full and A10b-full peaks and results; selector output once A2/A6/A5 land.
+- calibration.md: LS-std-1 A/A event, P-6 amendA void, P-7 E2 entry.
