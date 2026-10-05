@@ -7,29 +7,30 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 27, 2026-10-05 12:51–13:00Z)
+## Top — read this first (unit 28, 2026-10-05 13:50–14:22Z)
 
-- **Last BOARD line read:** 1400 (Asahi 12:42Z D-082 §C economy table). My line 1401 (17388 confirmed; windows). Next unit reads from 1402.
-- **LIVE = 17388 (`kenma-03-pocket-queen`)**, confirmed status.json active 17388 (as_of 12:41Z); restored 12:34:13Z; first ranked series after reactivation 12:36Z.
-- **restore.json field order (actuator.restore_check): `previous` = the id to ACTIVATE, `candidate` = the id active NOW.**
-- D-052 §B watch on 17388: rollback target 14585; trial window (60 g, 05:02–07:13Z) counts as its first 60. Roll back on mean diff < −0.08 with bootstrap 95th pct < 0, or crash/DQ.
-- Numbers at 12:51Z (ranked, post-m2, series bootstrap 1000×seed 7): 17388 since 12:34Z −0.056 [−0.262, +0.136] (20/4); 17388 07:14–12:34Z −0.078 [−0.276, +0.121] (20/4); all 17388 100 g −0.007 [−0.106, +0.083]. 17530 second window (games 61–120) −0.045 [−0.166, +0.065] (60/12). Elo 1769 rank 76.
-- Ad-hoc window script: build/daichi/tmp/win27.py (imports live_monitor).
-- No new D-records after D-082. Asahi-27-b13-reserve h2h vs kenma-03 0.676 [0.608, 0.745] (102 g, local) — no upload without a Chair D-record.
-- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json.
+- **Last BOARD line read:** 1414 (Asahi 14:17Z bokuto-18 panels: h2h vs kenma-03 61–41, qk2 30–38). My lines 1409 (registration) and 1415 (trial 3 live). Next unit reads from 1416.
+- **LIVE = 17791 (`bokuto-18-queenfeed`, LV-bokuto-18-queenfeed-ba537e4e-ai) — D-083 §D trial 3.** Uploaded 14:15:46Z (409 while compiling), activated 14:19:00Z (submit.done). Replaced 17388. status.json still showed 17388 at 14:13Z (lags) — confirm next unit.
+- Stage: build/daichi/stage/bokuto-18-queenfeed (16 files cmp-equal to ../wt-bokuto/bots/bokuto-18-queenfeed + CANDIDATE.toml); runtime fp (tools/analysis/features/run_panel.runtime_fingerprint) fa93106401b1… = Asahi probe; hub fp ba537e4eaf5a; hub preflight passed (2 g, max 10.98 M).
+- **D-083 §D:** look at the first series boundary at or after 60 ranked games of 17791: D-081 table (statistic at rating 1725, opponent bands, Schooltime apart, end reason by band, queen columns, faults) + Hinata's matched column/curve block reviewed by Sugawara. **End rule:** 17791 becomes incumbent if its statistic exceeds 17388's (all ranked since 05:02Z) by > 0.03; otherwise restore 17388 (restore.json previous=17388, candidate=17791), outside the blackout. **A fault ends the trial at once** (restore 17388).
+- **restore.json field order: `previous` = id to ACTIVATE, `candidate` = id active NOW.**
+- 17388 at 13:52Z: Elo 1780 rank 71; 129 ranked since 05:02Z (26 series, post-m2) score − expectation +0.005 [−0.072, +0.081]; this is NOT yet the D-081 statistic at 1725 — recompute at the look (trial_d075.py / look2.py).
+- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json (the 409 is the normal compile wait).
 
 ## Next unit
 
-1. Read BOARD from 1402. live_monitor; 17388 games since 12:34Z (win27.py) and D-052 §B look once n ≥ 40 new.
-2. Trial candidates: asahi-27-b13-reserve / bokuto-18 — act only on a Chair D-record (upload activate:false, outside blackout).
-3. If a unit lands in a blackout, schedule a send_later continuation for blackout end + 2 min.
+1. Read BOARD from 1416. Confirm status.json active = 17791; record first ranked series time of 17791. live_monitor.
+2. Every unit: fault scan on 17791 games (faultscan.py); any crash/DQ → restore 17388 at once, BOARD + notify.
+3. At 60 ranked games (series boundary): build the D-081 table vs 17388 since 05:02Z; apply the end rule; BOARD + notify.
+4. If a unit lands in a blackout, schedule a send_later continuation for blackout end + 2 min.
 
 ## Open questions for the Chair
 
-- None open (end rule applied).
+- None open.
 
 ## Units
 
+- 2026-10-05 13:50–14:22Z unit 28 — read BOARD 1402–1414 (D-083). bokuto-18-queenfeed copied, fp-checked, registered 13:53Z; blackout wait; uploaded as 17791, activated 14:19Z. BOARD 1409, 1415; user notified.
 - 2026-10-05 12:51Z unit 27 — read BOARD 1377–1400; 17388 confirmed active; windows posted (BOARD 1401). No actions.
 - 2026-10-05 11:51–12:40Z unit 26 — read BOARD 1359–1374 (D-081 end rule → 17388; D-082). Unit hit the 11:52–12:12Z blackout; continuation at 12:33Z wrote restore.json (previous 17388, candidate 17530); restored 12:34:13Z. BOARD + user notified.
 - 2026-10-05 ~10:55Z unit 25 — read BOARD 1348–1357 (D-080: screen not dispatched; Chair applies end rule). Trial-2 look table posted (1358): 17530 −0.041 vs 17388 +0.074.
