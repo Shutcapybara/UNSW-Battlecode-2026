@@ -9,7 +9,7 @@ STATUS: RUNNING
 
 ## Top — read this first (unit 26, 2026-10-05 11:51–12:40Z)
 
-- **Last BOARD line read:** 1375 (Chair D-082 §D 12:28Z). My line 1376 (17388 activated). Next unit reads from 1377.
+- **Last BOARD line read:** 1375 (Sugawara 12:35Z: P-hinata-07 queen columns side-swapped). My line 1376 (17388 activated). Next unit reads from 1377.
 - **LIVE = 17388 (`kenma-03-pocket-queen`) from 12:34:13Z** (restore.done: 'restored 17388 … control set'; D-081 §A, D-082 §D).
   status.json still said 17530 at as_of 12:31Z (lag) — **confirm active = 17388 and the time of its first ranked series**, report to the Chair.
 - **restore.json field order (actuator.restore_check): `previous` = the id to ACTIVATE, `candidate` = the id active NOW** (must end -ai or force).
