@@ -69,6 +69,9 @@ pushes `r/shenzhen`.
 | H-SZ62 | headroom = 20-round unit loss only | **refuted 0.1** (unit 33: both add R² at r300, 0.301 / 0.296 / both 0.313) | — | — | — |
 | H-SZ63 | headroom value gain is late-game (R4 AUC < +0.003 at r100–150, ≥ +0.01 at r250–350) | posted 0.45 (unit 33) | early gain ≥ late gain | R4 ablation split by round | Learner |
 | H-SZ64 | own-team unit-count history (level, Δ20, Δ100) predicts win at r300, AUC ≥ 0.62 → radio-free "are we winning" role trigger | posted 0.3 (unit 33) | AUC < 0.56 | ~2,000 ranked class-B games | Data → Learner |
+| H-SZ65 | 4-ray echo adds ≥ +0.005 AUC to 7×7 view for 10-round death | **refuted 0.15** (unit 34: +0.003 any / +0.001 contact; blind rows: enemy-head echo → contact death 1.66×, 6 % of blind rows) | — | — | — |
+| H-SZ66 | echo_enemy_head importance concentrated on blind rows (> own length there) | posted 0.3 (unit 34) | below length, or not higher than on all rows | permutation importance on dev120 | Learner |
+| H-SZ67 | per-map kelp-echo share ↔ our gap to top-10 (ρ ≥ 0.4) — radio reach caps coordination | posted 0.25 (unit 34) | abs ρ < 0.2 over ~17 maps | store pass + TARGETS | Data |
 | H-SZ58 | R4: allied heads able to split + own food at headroom 0–1 | posted 0.35 (unit 29) | split-label AUC gain < +0.01 | R4 ablation | Learner / Data |
 | H-SZ51 | class-B maps: live win tracks total share more than queen survival | posted 0.4 (unit 23) | queen alive outweighs total share in store logistic | ~2,000 ranked post-m2 | Data / Learner |
 | H-SZ49 | learned queen block: strike slack, static room, unit headroom | posted 0.3 (unit 21) | AUC gain < +0.02 r100–250 | store LOMO | Learner |
@@ -147,6 +150,7 @@ pushes `r/shenzhen`.
 - **Unit 32 (4 Oct 22:50Z – 23:15Z).** szoppcount.py: H-SZ60 weak per dragon, confounded pooled; H-SZ61. No new board items for shenzhen.
 
 - **Unit 33 (4 Oct 23:27Z – 5 Oct 00:25Z).** No new board items for shenzhen. szheadboot.py / szdelta.py over 276 sim games: headroom holds at r300, not r100 (unit-31 r100 withdrawn); H-SZ62 refuted; H-SZ63, H-SZ64.
+- **Unit 34 (5 Oct 00:24Z – 00:50Z).** Push of 23bbb6ab9 confirmed; nothing addressed to shenzhen. szsonarthreat.py over 72 sim games / 638,791 rows: echo nearly redundant with the view (H-SZ65 refuted); 67 % of rays end in kelp; H-SZ66, H-SZ67. Corrected unit-33 timestamp (ended ~23:54Z, not 00:25Z).
 
 ## Next unit
 
