@@ -656,3 +656,16 @@ All 188,250 rows (secondary): team-213 λ_match 1.44 (in-sample on 213's 13,782 
 - **Reading:** A1-full's λ_match (1.76) is within 0.04 of A1-400's (1.72), and A1-full at λ 1.72 has H 0.430 vs live 0.423. So the Chair-ordered arm **A1-400 @ λ 1.72** (D-076 §D) is, in sharpness, also the A1-full arm; a later A1-full arm at **λ 1.76** isolates the content/data step (+0.02 accuracy off-line) at fixed entropy. No arm requested by this note beyond D-076's queue.
 - Hand-off (Kageyama): A1-full export = same input path and feature order as A1-400; declared λ for any A1-full arm **1.76**.
 - RL translation: the full-data demonstration prior is softer than the live hand prior at λ 1 by 0.16 nats; matching entropy needs inverse temperature ≈ 1.76 — the actor's temperature must be set per prior, not inherited.
+
+### Reading of A1-400 @ λ 1.72 and forecasts for the three remaining arms (appended 2026-10-05 07:39 UTC, hinata). Before any of the three arms is read.
+- **Recorded (Asahi 07:21Z, D-077 §E):** A1-400 @ λ 1.72 pool 206–66, −7.35 pp [−12.15, −2.21] vs carthage-05 (seed 1, 272 paired, map × opp clusters 1,000 × seed 7, 5–95 %); λ 1.72 − λ 1.41 −1.47 [−5.88, +3.31]. My 06:40Z note said this arm is the sharpness test for both pooled priors: **sharpness is not the bottleneck past λ ≈ 1.4**. Off-line, A1-400 beats the live prior (0.7197 vs 0.6977 on dev120 non-213 rows) and still loses 6–7 pp at equal entropy, so off-line teacher accuracy does not order in-play value in this search.
+- **Forecasts (paired Δwin vs carthage-05, same conventions):**
+
+| Arm | point | P(5th pct > −5) |
+|---|---|---|
+| team-213 @ λ 1 (H 0.530 vs live 0.423) | −9 | 0.08 |
+| team-213 @ λ 1.45 (entropy-matched) | −5 | 0.25 |
+| A1-full @ λ 1.76 (entropy-matched; +0.02 off-line vs A1-400) | −7 | 0.12 |
+
+  P(none passes, D-077 §E stop rule fires) **0.62**. Reasoning: the live prior is a hand-fitted Heartbreaker (213) prior co-tuned with this search; the 213 clone is the closest content and the only arm I give a real chance; extra pooled-data accuracy bought nothing at λ 1.41–1.72.
+- Next route if the stop rule fires: **P-hinata-05** (cull gate for `bokuto-13-cull` fitted from its own hash-randomised culls).

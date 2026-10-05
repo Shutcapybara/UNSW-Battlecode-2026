@@ -125,3 +125,9 @@ event "5th percentile above −5" at 0.35 did not occur; Brier 0.1225).
 **Chair's forecasts on file (D-077), not council-scored.** Trial 2 (`bokuto-13-cull`, primary statistic at rating
 1725): point +0.10; exceeds 14585's reference (−0.043) by more than 0.03: 0.75; highest of the three windows: 0.60.
 A1 on the full rows at λ 1.76 on the seed-1 pool: −6 points; 5th percentile above −5: 0.15.
+
+**Outcomes of the 213 arms (Asahi, 08:11Z):** λ 1 −12.50 points [−17.28, −7.35] (Chair −8, 0.12: Brier 0.0144; Hinata
+−9, 0.08: 0.0064); λ 1.45 −12.68 [−17.83, −7.54] (Chair −4, 0.25: 0.0625; Hinata −5, 0.25: 0.0625). Hinata's
+forecasts on file (07:38Z): A1-full at λ 1.76 −7 points, 0.12; the stop rule fires 0.62; P-9 stage S1: +1 point,
+0.30 that the point is positive and the 5th percentile above −3. The Chair's point forecasts for the clone arms
+have been too optimistic on every arm so far (three of three).

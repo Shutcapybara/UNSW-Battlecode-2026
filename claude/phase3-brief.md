@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 07:24Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 08:18Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-077. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-078. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -36,9 +36,9 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials of the free lanes' bots | Daichi (Live ops) | `kenma-03-pocket-queen` is live as submission 17388 since 05:02Z for 60 ranked games (about 08:00Z). **Trial 2 is `bokuto-13-cull`.** At its look (about 11:00Z) the best of the two windows and 14585's last 120 games becomes the incumbent and stays live (D-077) |
+| Ladder trials of the free lanes' bots | Daichi (Live ops) | Trial 1 ended: `kenma-03-pocket-queen`, 60 ranked games, 31–29, +0.074 a game against expectation [−0.048, +0.197], no Schooltime game drawn. **Trial 2: `bokuto-13-cull`, submission 17530, uploaded 08:14Z**; look at 60 games (about 11:15Z). Then the incumbent is chosen: over 14585's earlier window by more than 0.03; between the two trial bots the live windows decide only beyond 0.10, otherwise the local pool (D-078) |
 | The queen | Sugawara (owner); builds and panels by Asahi | two isolating builds on carthage-05 are in: Kenma's pocket alone changes nothing off Schooltime and saves that queen in 3 of 14 games; Bokuto's queen lines alone lose 2.4 points on the pool and more against queen keepers. Neither mechanism transfers as one switch. Against queen-keeping opponents carthage-05 keeps its queen in 0 of 47 round-limit games |
-| The clone in play | Hinata (owner), Kageyama (export), Asahi (panels) | the ten-team clone at the weight that matches the live prior's sharpness still loses 7.4 points: sharpness explains about half the gap, content the rest. Three arms remain (the team-213 clone at two weights, the full-data clone); if none comes within 5 points the line is paused (D-077) |
+| The clone in play | Hinata (owner), Kageyama (export), Asahi (panels) | five clone priors tested in the search, all 6 to 13 points below the live prior: sharper weights recover half at most, and a single-team clone is no better than the ten-team one. One arm is left, then the line is paused. Next route: a learned cull decision for `bokuto-13-cull`, fitted from that bot's own randomised culls (diagnostic stage approved) |
 | The hidden bed layouts on five maps | Kageyama (Data) | **done**: all five rebuilt in `maps/live_var/`, 828 of 828 live games reproduced turn for turn; they carry 14.5 % of ranked games. Asahi adds them to the pool as a separate fixture block |
 | Local panels, the Mac's job runner | Asahi (Evaluator) | one Mac, one job at a time; queen and clone jobs alternate; no job over about 45 minutes |
 | Free lanes | Kenma, Bokuto | **Bokuto's `bokuto-13-cull` is the best bot we have locally: pool 241–31 on our harness, +5.5 points over carthage-05, queen alive in 58 % of round-limit games.** It is the local reference. Kenma: `kenma-21` 60–42 against carthage-05. Mac time goes first to these lanes' candidates (D-077) |
@@ -50,6 +50,9 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
   92 wins and 2 losses decided by the queen rule; queen alive in 94 of 163 round-limit games. Not yet tested on
   the ladder. Its layers do not work one at a time: the first alone loses 31 pool wins, and Bokuto's queen lines
   alone on carthage-05 lose 2.4 points.
+- **On maps Bokuto never saw** (the five rebuilt hidden layouts, 80 fixtures): `bokuto-13-cull` 72 against
+  carthage-05's 63; almost all of the difference is the hidden Schooltime layout. Weighted by each layout's share
+  of live games its gain is +5.75 points [+2.97, +8.62].
 - **The k = 16 hand rule was promoted and rolled back** (D-069, D-075): live 02:13Z to 04:53Z, 16–28 in 45 ranked
   games, −0.263 a game against the previous bot's last 120. Locally it is +2.6 points on the pool and wins Weakhold.
   The cause of the live result is not established; a control window on 14585 will show whether the field moved.

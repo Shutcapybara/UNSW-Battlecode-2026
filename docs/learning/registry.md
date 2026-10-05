@@ -111,7 +111,10 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - deploy: zip 3,923,010 B; maximum 10,910,667 points a turn with the first turn; no fault (Kenma).
 - live: submission **17388**, `LV-kenma-03-pocket-queen-c5d2ff46-ai`, runtime e60733a9…; first ranked series 5 Oct
   05:02Z; trial to the first series boundary at or after 60 ranked games. Statistic and end rule: D-075 §B–C.
-- status: `uploaded` (trial; not a promotion).
+- **trial result (Daichi, 08:03Z; D-078 §A):** 60 games, 12 series, 31–29; score minus expectation at 1725 +0.074
+  [−0.048, +0.197]; performance rating 1781 [1686, 1876]; against 14585's reference +0.117 [−0.018, +0.269];
+  queen-rule losses 7; no fault; no Schooltime game in the window. Variant block 69 of 80 (carthage-05: 63).
+- status: `uploaded` (trial ended; the end rule is applied at trial 2's look).
 
 ### REG-006 — `bokuto-04-queen` (free lane Bokuto; **second ladder trial approved**, D-075 §C)
 
@@ -137,5 +140,9 @@ at first. A trial therefore costs the incumbent's rating nothing.
   k = 16 +2.94 [−0.74, +6.99]. Queen-decided 92–2; queen alive at the round limit 94 of 163 (58 %).** Economy
   −0.60 [−3.62, +1.97]. Costs: Stripes 4–12, Autarky and Portals −12.5; ally head-on deaths +14.5 %.
 - deploy: probe passed: zip 3.75 MiB; at most 12.38 M points a turn, first turn included; no error in 10 games.
-- live: trial 2, after trial 1's look (about 08:00Z). End rule: D-075 §C as amended by D-077 §B.
-- status: `candidate` (trial 2).
+- variant block (80 fixtures Bokuto never saw): 72 of 80 against carthage-05's 63 (`schooltime_open4` 15 against 7;
+  the other four layouts 57 of 64 against 56); weighted by live share +5.75 points [+2.97, +8.62].
+- live: submission **17530**, `LV-bokuto-13-cull-877fa2c9-ai`, uploaded 5 Oct 08:14:33Z (hub fingerprint 877fa2c9;
+  runtime d192d721…); byte copy committed on `r/asahi` (17d7574d5). Trial 2: its first 60 ranked games. End rule:
+  D-075 §C as amended by D-077 §B and D-078 §C.
+- status: `uploaded` (trial 2).

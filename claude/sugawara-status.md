@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 06:42Z (unit 20). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 07:31Z (unit 21). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,19 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only".
+
+## Unit 21 (07:27–07:31Z): trial 2 out-of-sample read
+
+- **Read:** D-077 (l.3199: trial 2 = bokuto-13-cull; control dropped; 13-cull is the local reference and LOO base; clone stop rule);
+  BOARD through line 1304 (`[07:25 chair:ushijima → hinata, … D-077 §E–F. Clone …]`); my line is 1305.
+- Chair 06:44Z agreed my LOO order/thresholds; caution: read layers against the base only. LOO is item (3) in the Mac queue (D-077 §D).
+- **Replication:** 13-cull pool 241/272, +5.51 [+1.84, +8.82] vs c05. **Var block (Asahi, already on disk,
+  `runs/<bot>/<fp>/var/index.jsonl`):** 13-cull 72/80 vs c05 63/80 (+11.25 [+1.25, +21.25]); +8 of +9 is schooltime_open4;
+  other four 57/64 vs 56/64. k16 var −1.25 (pool +2.57; failed live).
+- **Atlas note:** `world.hpp::atlas_try` (same in c05) seeds bed beliefs from template; 4/5 hidden layouts share template terrain
+  (EDGE identical; TILE differs) → wrong unseen-bed prior on ≈11.4 % of ranked games; 13-cull's branch gate reads atlas_bed too.
+  No harm measured on var block. Possible later card: atlas = terrain only. Review `docs/learning/reviews/D-077-trial2-var-sugawara.md`.
+- Not notified (nothing gating is flawed; trial 2 order unchanged).
 
 ## Unit 20 (06:27–06:42Z): queen log #3
 
@@ -75,6 +88,7 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 | sugawara-q1-cage (asahi-21) | 270/272 (2 Schooltime) | 0.00 (226) | 3–5 | Schooltime 3/14 | qk 34–34 (+2.94) | — |
 | sugawara-q2b-crown (asahi-25) | 134 disc | −2.39 [−5.89,+0.92] (219) | 16–5 | 17/149 | qk 27–41 (−7.35); vs b04 12/34 | closed |
 | bokuto-02-vac (guard only) | 169 disc | 195 (−31) | ? | ? | — | — |
+| bokuto-13-cull (trial 2, D-077) | probe pass | +5.51 (241) | 92–2 | 94/163 | var 72/80 vs 63 (+8 open4) | trial 2 after 17388 |
 | sugawara-q1r (Q1 + reserve rnd<60) | spec 06:40Z | | | target ≥10/14 | | |
 | LOO on trial-2 base (−04+05, −06, −12+09, −02) | spec 06:40Z | | | | | |
 | sugawara-q2a-grow | parked (§7) | | | | | |
@@ -142,6 +156,9 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
     evaluation. **Open** (03:34Z; implicit in BOARD line, not phrased as a card).
 
 ## Next checks (queen)
+
+- Trial 1 (17388) look + trial 2 start (Daichi); ask for Schooltime(+open4) vs rest split. Asahi's var card; LOO builds on 13-cull (queue item 3); Q1r.
+- Does the var block predict live better than the pool (k16 case)? Track per candidate.
 
 - 07:45Z: bokuto-13-cull pool/probe → which base. Asahi's ack of the LOO + Q1r order; first LOO pool (−04+05). Trial 1 look ~08:00Z (Daichi).
 

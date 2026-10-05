@@ -3279,3 +3279,86 @@ The lead does not care about the live rating and asks for the technical issues t
   on 255,152 turns. First users: P-8 stage S0 and the R3 offline fits.
 - Next for Kageyama: the A1-full export (one model file), then the teacher rows on the variant maps rebuilt as
   oracle rows.
+
+## D-078 — Trial 1's table; trial 2 is uploaded; the single-team clone fails; a tie rule between the trial bots (5 Oct 2026 08:17Z, Chair: Ushijima)
+
+### A. Trial 1: `kenma-03-pocket-queen` (submission 17388), Daichi's look at 60 ranked games
+
+- Window 05:02–07:13Z, 60 games, 12 series, 31–29. **Score minus expectation at rating 1725: +0.074
+  [−0.048, +0.197]**; performance rating 1781 [1686, 1876]. Against 14585's reference (−0.043 [−0.109, +0.028]):
+  +0.117 [−0.018, +0.269]. No fault. Lost by the queen rule: 7 of 60.
+- By map: Trophy 1 of 6, Prisoners Dilemma 0 of 2, UNSW 0 of 2, Weakhold 0 of 1; Portals 5 of 8, Islands 4 of 6,
+  Stripes 3 of 4, Maze 3 of 4. **No Schooltime game fell in the window**, and Schooltime is where this bot's change
+  acts. The window therefore measures a carthage-05 with one unit slot reserved, not the pocket logic.
+- **Reading.** The bot played at about the incumbent's level or a little above; the interval includes zero and
+  the mechanism was not exercised. Nothing is concluded yet; the end rule is applied at trial 2's look.
+- **Check ordered (Daichi):** no Schooltime in 12 series is a 1.5 % event if each series draws five different maps
+  of 17 (0.4 % for the 16 series to 07:52Z). Count ranked Schooltime games of all teams in the corpus since 05:00Z
+  and say whether the map is still in the ranked draw. If it is not, the weights of every local total change.
+
+### B. Trial 2: `bokuto-13-cull` is uploaded as submission 17530
+
+- Registered 08:01Z from a byte copy (16 files equal; runtime d192d721…, the fingerprint of Asahi's probe); uploaded
+  08:14:33Z as `LV-bokuto-13-cull-877fa2c9-ai`. The activation call returned 409 while the server compiled, as for
+  17388; the server activates on ready. Window: its first 60 ranked games; look at the first series boundary at or
+  after 60.
+- Sugawara's request is adopted: the look also reports Schooltime (both layouts) apart from the rest.
+- **Out of sample, locally (Asahi's variant block, 80 fixtures Bokuto never saw):** `bokuto-13-cull` 72 of 80 against
+  carthage-05's 63. Eight of the nine come from `schooltime_open4` (15 against 7); the other four layouts are 57 of
+  64 against 56. Weighted by each layout's share of live games: **+5.75 points [+2.97, +8.62]** (k = 16 +2.21;
+  `kenma-03-pocket-queen` −1.61). So the Schooltime-family gain transfers to unseen layouts; the rest of the pool
+  gain is unconfirmed out of sample at this size (Sugawara's read).
+
+### C. A tie rule between the two trial bots, fixed before any game of trial 2
+
+- D-075 §C takes the highest window with no test. Between two 60-game windows the standard error of the difference
+  is about 0.10. As written, the rule would crown `kenma-03-pocket-queen` on a difference that is noise, against a
+  local pool that puts `bokuto-13-cull` 21 wins ahead of it (241 against 220 of 272).
+- **Amendment.** Between the two trial bots the live windows decide only if they differ by more than 0.10; within
+  0.10 the same-host pool decides, which means `bokuto-13-cull`. The comparison with 14585's reference is unchanged
+  (a lead under 0.03 keeps 14585). The control still runs only if both windows are below −0.15.
+- Disclosure: made after trial 1's table and before trial 2's first game. It favours the bot the local evidence
+  favours; the Chair judges that correct and says so here, not afterwards.
+
+### D. The clone prior: five arms in, one to come
+
+| Arm (seed-1 pool against carthage-05) | Difference | Chair's forecast |
+|---|---|---|
+| Team-213 prior at λ 1 | −12.50 points [−17.28, −7.35] | −8; 0.12 above the bar |
+| Team-213 prior at λ 1.45 | −12.68 [−17.83, −7.54] | −4; 0.25 |
+| Ten-team A1-400 at λ 1.72 (D-077) | −7.35 [−12.15, −2.21] | −2; 0.35 |
+
+- Sharpening the single-team model buys nothing (λ 1.45 minus λ 1: −0.18 [−5.51, +4.42]); at matched sharpness it
+  is worse than the ten-team clone (−6.80 [−12.32, −1.83]). Neither of D-068's two hypotheses, softness and style
+  mixing, rescues a cloned direction prior in this search. The 213 model's accuracy on its own team's moves
+  (0.754) did not carry into play, as with the pooled arms.
+- All three of the Chair's forecasts were too optimistic (Brier 0.0144, 0.0625, 0.1225). Hinata's were closer.
+- One arm remains under D-077 §E: A1 on the full rows at λ 1.76, after Kageyama's export. It runs at the back of
+  the queue. If it fails the bar the line is paused without a further record.
+- **P-9 (`P-hinata-05`): a learned cull gate for `bokuto-13-cull`, fitted from the bot's own randomisation.** The
+  bot culls on a state-independent 1-in-8 draw, so every pool game already holds bandit data with known propensity.
+  **Stage S0 is approved to start now**: a diagnostic on existing replays, no Mac time, no bot change, held-out
+  maps excluded. Stage S1 (one gate export, one seed-2 pool paired against the base) needs the Chair. Author's
+  forecast for S1: +1 point; 0.30 that the point is positive and the 5th percentile above −3. The base bot's hash
+  gate stays unchanged in every copy used for pools, as Hinata asks.
+
+### E. A lead for whoever builds on `bokuto-13-cull` (Sugawara's note)
+
+- The inherited map atlas seeds pearl-bed beliefs from the template when the terrain matches. Four of the five
+  hidden layouts share their template's terrain, so on about 11 % of ranked games the bot believes the wrong beds
+  until it sees them, and Bokuto's branch gate reads those beliefs. Kageyama's bed lists make a fix possible: hold
+  both layouts as hypotheses and drop one at the first pearl that contradicts it. No harm is measured locally; this
+  is offered to the free lanes and the queen owner, not ordered.
+
+### F. Housekeeping
+
+- The unit-27 commit and merges went through. Asahi committed the byte copies of `bokuto-04-queen` and
+  `bokuto-13-cull` on `r/asahi` (17d7574d5), so the trial-2 bot is in git.
+- Bokuto has not posted since 05:50Z; no sign of a fresh session.
+- **The BOARD was overwritten at 08:17:14Z with its 05:50Z state** (100 lines gone). The Chair restored it at
+  08:19Z byte for byte, from its 07:25Z copy and the 19 later lines held in its session log (1,323 lines, the size
+  it had at 08:16Z). The cause is a stale file sent through the file bridge, almost certainly by the old Bokuto
+  session, which has no shell: the state written back is the one right after its own last write. Rules posted:
+  stage immediately before appending, a new output directory for every write, the modification-time guard always,
+  never force; the old Bokuto session does not write to the BOARD again. A line appended between 08:16Z and
+  08:17Z, if any, is lost.
