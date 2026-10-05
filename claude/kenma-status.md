@@ -27,6 +27,7 @@ All completed Carthage screens below use 102 games: 17 ranked maps × both seats
 | 07 keeper-moves-parent-splits | 04 with learned movement but all parent SPLIT decisions preserved | Running | Full Carthage102, one worker |
 | 08 lossless-direction | 03 with reversible 32-bit model node storage | Equivalent control | Native parity and four sandbox games passed |
 | 09 learned-donors | 08 plus teacher-306 nonqueen cull classifier | Unmeasured | Export parity passed; 102-game screen queued after zoo |
+| 10 short-queen-orbit | 08 plus observed empty four-cell cycles for length-2/3 queens | Unmeasured | Sanitized multi-turn checks passed; full screen queued after 07 |
 
 Outputs for completed screens: main build/kenma/kNN-v-carthage-s123/. Kageyama output k03-v-kageyama-s123/. Current sequence after-k05 verified the complete Kenma 05 result, finished the seed-5 probe, then launched Kenma 06; main build/kenma/after-k05.progress.log. No additional games should start until the current two-worker resource allocation has room.
 
@@ -55,3 +56,5 @@ Kenma 06 early replay evidence: both Weakhold seed-1 games won; queen survives A
 2026-10-05 02:21 UTC: Kenma 06 finished 57–45/102, zero errors; 03 retained. after-k06 verified completion and started 08 sandbox metering; 07 follows. Donor mechanism audit: all 299 high-confidence predictions in the 20,000-row export sample have no nominal exit, so high offline precision may mostly reflect terminal traps. Full 09 screen remains queued to establish whether it changes actual play; no strength claim.
 
 2026-10-05 02:24 UTC: 08 exact-source deploy PASS: zip 3,591,843 bytes; max 10,968,532 points including first turns, boot max 10,850,012; four heavy-map games, zero errors. All four outcomes, round counts, death records and non-compute stats match 03. Evidence main build/kenma/deploy/kenma-08-lossless-direction/{summary,parent-game-parity}.json. after-k06 started Kenma 07 Carthage102; zoo remains live and after-zoo will start 09 only on clean full completion.
+
+2026-10-05 02:33 UTC: Kenma 10 prepared and queued behind exact after-k06 PID 94829 / Kenma 07 clean 102-game completion. Runtime 1cde55daabeb13f031a5cb5ed451370ad32b1d2d983a86e3462ba8641797386f. General local short-queen cycle, at least three team units, parent SPLIT and pocket rescue priority. Eight projected single-step turns prove entry/cycle, and fresh terrain/food/body/threat checks repeat every turn. ASan/UBSan behavior checks passed for 80 simulated turns and hazard/population guards. Main build/kenma/after-k07.progress.log tracks the wait and eventual 102-game screen; no strength claim before results.
