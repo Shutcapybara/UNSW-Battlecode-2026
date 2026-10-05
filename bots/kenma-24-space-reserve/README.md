@@ -9,3 +9,5 @@ Status: prepared, unmeasured; not a best candidate claim. Exact21 full results a
 Preflight: sanitizer test passed for closed/unknown/portal/open terrain proofs, queen-only proof seeding, all7 packet types ×1000 random full44-bit payloads, relay, checksum corruption and enemy-tag rejection. Exact policy/params bytes asserted equal to both06 and current Asahi05. No game queue yet.
 
 Twelve-game Schooltime/Weakhold smoke now running against Asahi05, both seats seeds1–3, one nice15 worker; all replays/logs retained for reading. Runtime716eee526ab7456e29bafe590ec9a63d0ad405913110abef45e771108ba102c3. Output k24-asahi-smoke-s123/. No full run queued.
+
+Smoke complete9–3/12, zero errors: Schooltime6–0,Weakhold3–3;03 was7–5 on these fixtures. All12 replays read,474 proof markers, none onSchooltime; everySchooltimequeen ends3. Full102 Asahi05 run queued after03/Bokuto04 completes and posts, with all102 logs/replays to be audited. Outputs k24-smoke-diagnostics.json and k24-asahi-smoke-s123/replay-log-audit.json.
