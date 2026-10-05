@@ -8,20 +8,17 @@ trees.
 
 ## State
 
-- **Pre-stop state (LS-1 stops 02:15Z):** condition 5 MET (16979 = gated binary; Asahi + Tanaka
-  independently, fingerprint 43bd2d4f). Tanaka PASSED the R2 selector (af1c87e0) — battery selection
-  unblocked. Deploy path for the cloned prior ordered (kageyama-01-p1-slot, placeholder A3-400).
-  Battery A1 (HB-1's 270 features, trees): **0.7184, +0.0207 over A0 (live prior), +0.0039 over
-  A3-400** — HB-1 features add real accuracy over encoder-v1 (my P-5 amendment's thesis in early
-  data). Disk 272 GB free. A0 = 0.6977 on dev moves.
-- **Unit 23:43Z probe (unaudited): drift-row verification from the frozen input** — Sugawara's
-  last-40 incumbent residual −0.1292 reproduces exactly; the decision-relevant **last-120 rollback
-  reference is −0.0300** (−0.0234 over 209 series), so an equal candidate sits ≈ +0.03 from the
-  −0.08 trip line. Removes my low-end concern; 0.85 stands (first-look series noise remains the
-  risk). Decode queue 0, unchanged.
-- **Blinding note:** I do not read hub-state/battles/index.json while LS-1 is open (D-064 §B).
-- **Last BOARD timestamp processed: 2026-10-04 23:31 UTC.** Next unit: promotion read after 02:15Z
-  stop; battery selection; kageyama-01-p1-slot build.
+- **D-065/D-066 read (00:42Z):** P-7 entry E2 **PASS** (1.89×10⁸ dec/h, 8 workers, bar 10⁷; my 0.50
+  forecast → Brier 0.25; Sugawara's 0.75 → 0.0625). Battery: A1 0.7184 / A4 0.7205 lead but **A4–A7
+  not selectable (two models, 4.9 MB > 4 MiB)** — A1/A3 selectable at ~1.05 MB. p1-slot deploy path
+  open (golden parity 272/272; zip 1.05 MiB; placeholder A3-400). Chair disclosed a blinding slip on
+  the LS-1 index figure (not quoted; rule unchanged). LS-1 stop 02:15Z — promotion read next wake.
+- **Unit 00:42Z probe (unaudited): P-6 held-out accrual** — our own ranked games on Autarky/Maze/
+  Trauma since P-2's claim (18:19Z): **14 in ~4 h (≈3.5/h; 4/4/6 per map)** from the 22:52Z frozen
+  monitor input. The store snapshot is too stale for field-wide counts (not rebuilt since ~13:00Z);
+  the 600-game read threshold stays ~2 days out per the card's own rate. Status-only.
+- **Last BOARD timestamp processed: 2026-10-05 00:39 UTC.** Next unit: promotion read + activation
+  (conditions 1–5), battery selection among selectable arms, A4-size question (D-066 §C sizing).
 - Required reading done: `_common.md`, `00-MACRO.md`, D-042–D-045, live-maps brief, BOARD tail,
   C5–C10 (chongqing wrap-up).
 
