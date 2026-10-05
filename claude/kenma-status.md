@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 03:43 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
+State: **ACTIVE**, updated 2026-10-05 03:53 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
 
 ## Provisional best
 
@@ -34,9 +34,11 @@ Completed Carthage screens use the same102 fixtures and have zero errors.
 | 14 queen-corridor-caution | Prefer visible turning room for short original queens | Smoke3–1 | Activated, same winners as12; full screen held |
 | 15 pocket-without-reserve | Remove only08 global one-slot reserve | Probes8–0,6–2 | Pool recovery, queen deaths3/8; no promotion |
 | 16 lossless-model-text | Base64 byte-plane source encoding of08 | Equivalent control | All node/probability parity and4 sandbox games pass |
-| 17 stacked-direction-prior | A5-400 combined encoder/HB/HB-probability prior | Running102 | DeploymentPASS,13.53M points; full feature/prediction parity pass |
+| 17 stacked-direction-prior | A5-400 combined encoder/HB/HB-probability prior | 46–56 | Rejected; full102 replay fallback audit zero |
 
 | 18 entropy-matched-prior | Renormalize17 prior with exponent1.61 | Running102 | Matched parent entropy from development predictions |
+
+| 19 pocket-sprint | Local two-step length control, no global reserve | Probes running | Sanitizers and three real failure streams pass |
 
 Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. Runtime manifests pin source, fixtures, engine and compiler. Never edit measured runtime snapshots.
 
@@ -44,7 +46,9 @@ Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. 
 
 Exactly **two game workers**, nice15:
 1. Kenma18 Carthage102 under after-k15.py / session31527; log k18-v-carthage-s123.progress.log. Both15 probes completed cleanly;13 finished54–48. Full18 run retains logs/all replays and needs complete fallback audit. Exact18 deployment pending.
-2. Kenma17 Carthage102 now running under after-k17-deploy.py / session63263, log k17-v-carthage-s123.progress.log. Exact-source deployment80091 / session33020 finished PASS:4 games, max13,525,820 points, firstturn13,151,074, zero errors, zip4,083,138. Full native run retains logs/all replays; audit every replay for kenma_stacked_fallback using tools/kenma/audit_replay_logs.py --require-complete --fail-if-present, then inspect losses. No extra concurrent games.
+2. Kenma19 Schooltime8 then UNSW8 under run-k19-probes.py / session98529. One worker, logs/all16 replays retained; sequence reads every replay and stops for outcome review. Runtime210dc9573988e844a49ed0bba07fd29d104b82db3a4af87fcc3c40a8a5a9403c. Full Carthage screen not yet started.
+
+Kenma17 finished46–56, zero errors. Full102 replay audit zero inference fallbacks; full queen/death replay reconstruction running in session8693.13 all12 retained replays read.
 
 Parent64 completed57–7, exactly supplied map totals;03 same fixtures49–15. Outputs parent-pool-diagnostic-s1/score.json and parent-pool-comparison.json. after-parent-diagnostic/session33367 completed14 smoke3–1; after-k14-smoke/session23315 completed16 deployment. Sessions15167(12),69469(parent64),33367(14 queue),23315(16 queue) are terminal. Kenma14 full screen is held; no strength claim.
 
@@ -85,3 +89,5 @@ New packaging avenue: current08 hexadecimal model header compresses to3,539,354 
 2026-10-05 03:27 UTC:17 deployment complete and full102 native comparison started automatically after exact-source PASS and parity checks. Best remains03 pending full results. New reusable replay-log audit refuses incomplete full audits and reports any requested fallback markers; full17 audit still pending.
 
 2026-10-05 03:43 UTC: Previous turn and current continuation made concrete progress; active17/18 runners revalidated, no blocker.13 finished54–48,15 Schooltime8–0 and UNSW6–2. Schooltime win totals hide3/8 queen deaths without reserve; local pocket sprint shedding is the next mechanism probe.18 changes only17 prior normalization:189,630 aligned out-of-fold rows show parent F/R/L entropy0.422933 versus A5 at0.562078; exponent1.610885 matches, rounded1.61. All normalization/facing/tiny-mass sanitizer tests pass.17 early26 replay audit found zero fallback markers; full audit still required.13 retained-replay diagnostic running. No reserved validation exposure.
+
+New19 local-pocket mechanism: three15 queen deaths share length3→4 food growth then cap64 blocks splitting. Recorded prior turns allow safe two-step length3→2 sprint. New19 compares legal one/two-step paths at length2/3, prefers final length2 and never invents future food. Full parent simulation checks collision before sprint tax.80 synthetic intermittent-food transitions at cap64 and all3 actual failure streams passed sanitizers.15 UNSW all8 winner/reason/round/fault summaries exactly match parent;03 loses four of those parent wins. Evidence pocket-audit/, k15-unsw-parent-comparison.json. Output1.9GB, free251GiB before19 probes.

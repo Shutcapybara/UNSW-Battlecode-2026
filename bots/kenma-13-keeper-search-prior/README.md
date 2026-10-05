@@ -27,3 +27,5 @@ Full-executable observation-stream check: all163 recorded queen turns parse and 
 | live/weakhold | 6 | 0 |
 | live/stripes | 5 | 1 |
 | live/tower_defense | 1 | 5 |
+
+All12 retained Schooltime/Weakhold replays read; main build/kenma/k13-final-diagnostics.json.
