@@ -1,6 +1,6 @@
 # Kenma free lane
 
-State: **ACTIVE**, updated 2026-10-05 03:08 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
+State: **ACTIVE**, updated 2026-10-05 03:14 UTC. Branch r/kenma; worktree /Users/alik/Documents/Projects/wt-kenma. Keep iterating until told to stop. No contest API, key access, submission or ladder request.
 
 ## Provisional best
 
@@ -29,8 +29,8 @@ Completed Carthage screens use the same102 fixtures and have zero errors.
 | 09 learned-donors | Teacher306 nonqueen cull classifier | 57–45 | Rejected; three changed summaries, one win lost |
 | 10 short-queen-orbit | Local four-cell keeper loop | Cancelled | Wrong freshness convention; source/attempts retained |
 | 11 current-view-orbit | Fix freshness, add activation logs | Smoke2–2 | Zero activations; wrong no-bed convention; frozen |
-| 12 observed-empty-orbit | Require observed no-bed=-1 | Running102 | Smoke3–1 with activation in all four games |
-| 13 keeper-search-prior | Existing keeper model inside parent movement search | Prepared | Conditional next screen; integration tests pass |
+| 12 observed-empty-orbit | Require observed no-bed=-1 | 54–48 | Rejected; Weakhold/Trauma6–0 offset by losses elsewhere |
+| 13 keeper-search-prior | Existing keeper model inside parent movement search | Running102 | Started on clean12 completion; original prior experiment |
 | 14 queen-corridor-caution | Prefer visible turning room for short original queens | Queued smoke | Recorded avoidable entry redirects; no real games yet |
 | 15 pocket-without-reserve | Remove only08 global one-slot reserve | Prepared | Eight Schooltime and eight UNSW probe fixtures previewed |
 
@@ -39,12 +39,12 @@ Outputs: main build/kenma/kNN-v-carthage-s123/score.json for completed screens. 
 ## Active workers and next steps
 
 Exactly **two game workers**, nice15:
-1. Kenma12 Carthage102, process66712, unified session15167. Log main build/kenma/k12-v-carthage-s123.progress.log. First34 complete19–15 (03 scored18–16 on those fixtures); no conclusion from partial results.
-2. Same-host Carthage pool diagnostic64, parent process20374 / session69469, panel64885. Schooltime/UNSW/Australia/Maze × eight opponents × both seats × seed1. Log parent-pool-diagnostic-s1.progress.log. Schooltime complete14–2, matching supplied reference; remaining maps running. Reference totals57/64; 03 totals49/64. This is post-result mechanism/portability evidence, not independent strength validation.
+1. Kenma13 Carthage102, process38553, sequence91562 / unified session38679. Log main build/kenma/k13-v-carthage-s123.progress.log. Kenma12 process66712 / session15167 finished cleanly54–48.
+2. Same-host Carthage pool diagnostic64, parent process20374 / session69469, panel64885. Schooltime/UNSW/Australia/Maze × eight opponents × both seats × seed1. Log parent-pool-diagnostic-s1.progress.log. Schooltime14–2 and UNSW14–2 both complete, matching supplied reference; Australia/Maze running. Reference totals57/64; 03 totals49/64. This is post-result mechanism/portability evidence, not independent strength validation.
 
-Queued sequence main build/kenma/after-k12.py (session38679) waits for exact66712 and clean102 completion. If12 wins>58, run12 versus03 on102 fixtures; otherwise screen13 versusCarthage102. Both choices were dry-run-previewed. No additional games while both current workers are occupied. Any best candidate still needs Kageyama/other posted free-lane/pool scorecards, exact-source deploy, and independent reserved validation before a ladder request.
+Sequence main build/kenma/after-k12.py selected13 after12 finished54–48; no12-versus03 validation needed. Kenma14 four-game smoke remains queued behind exact parent20374, via after-parent-diagnostic.py process9553 / session33367. That sequence stops after smoke for activation audit. Kenma15 probe is prepared but not queued. Do not launch additional games while both current workers are occupied. Any new best still needs Kageyama/other posted free-lane/pool scorecards, exact-source deployment and independent reserved validation before a ladder request.
 
-12 runtime ab99829d2d7b5073fdac35682d1fba07d5ba6dea4e52b55db3f2bfcd2a7add68. 13 runtime0446146e81c6f8328ef85eb5c3210dbd07d5617e7e0a06e1a595fa0100197c67; initial archive3,698,474 bytes. No13 games yet.
+12 runtime ab99829d2d7b5073fdac35682d1fba07d5ba6dea4e52b55db3f2bfcd2a7add68. 13 runtime0446146e81c6f8328ef85eb5c3210dbd07d5617e7e0a06e1a595fa0100197c67; initial archive3,698,474 bytes. 13 full screen now running.
 
 ## Evidence and diagnostics
 
@@ -69,3 +69,7 @@ panel.py uses engine1.2.3, clang++-O2-std=c++20, current Python opponents via to
 Pool mechanism evidence from completed same-host UNSW fixtures: parent wins four games lost by03 (Fenrir B,Yuna B,Chaewon B,Gavroche A). Death-event prefixes match until rounds68–77; sampled populations then diverge around the cap (parent64 versus03 at63). This supports investigating the global one-slot reserve as a cause, but full64 and a controlled reserve ablation are still required. No random APIs found in those four opponent source trees. A premature partial-log claim that Schooltime differed from the supplied reference was corrected: actual completed parent Schooltime14–2 matches reference;03 is15–1.
 
 2026-10-05 03:08 UTC: Kenma15 prepared from08 with only the three reserve-limit lines removed from main.cpp; all other runtime files identical. Runtime5b7ecd83917e9178938d1a811f025b1b0916a0fa783f749505ac61578886b659. Dry-run previews: Schooltime seeds1/2/3/5 both seats8 games with replays, then UNSW seed1 both seats against Fenrir/Yuna/Chaewon/Gavroche8 games. Not launched or queued: both workers still occupied. The check must establish whether pocket survival remains reliable without a global slot and whether the pool regressions recover. Main build/kenma/parent-pool-partial-comparison.json records completed paired fixtures, explicitly incomplete. Avoid conclusions before full results.
+
+2026-10-05 03:14 UTC: 12 final54–48/102, zero errors, rejected; full map table in README. All12 retained replays read and analyzed. 13 started automatically on exact clean12 completion. Complete native executable check on the recorded163-turn queen stream:13 changes87 actions;14 changes only round157 (to south), logging5 filter applications. Counterfactual replay choices do not predict game outcomes. Both exact native binaries cached under main build/kenma/bin/.
+
+New packaging avenue: current08 hexadecimal model header compresses to3,539,354 bytes. Lossless byte-plane-separated base64 would compress node data to2,829,065 bytes (all824,580 original32-bit nodes), saving roughly0.7MB before framing. This may enable the stronger combined A5 prior that was previously too large. Copied only existing development fold0 from main build/hinata/r2/battery/A5-u/ (read-only); source SHA6695befe886641235869dfea42d51f42816dec17eb621b037963f230d23b899b, stored in main build/kenma/stacked-prior/. Explicitly truncated to400 rounds and exported: **4 classes**,1600 trees,200,000 nodes,100,800 leaves,1466 features,1,124,584-byte zipped header. Estimated combined package4,013,531 bytes vs4,194,304 cap. **No new bot yet:** actual text framing/archive, exact node and probability parity, feature binding (encoder+HB features+HB probabilities,4-class direction mapping), and sandbox first-turn cost must all be verified. Output model-text-storage/feasibility.json and stacked-prior/{source,export-feasibility}.json. Full800-round source was not accidentally adopted. Next investigate a standalone lossless storage control before the combined learned candidate. At03:14 UTC output1.0GB,free disk252GiB.
