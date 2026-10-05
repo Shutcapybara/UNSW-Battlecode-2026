@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 02:22Z (unit 16). Next self-wake 03:20Z. Branch `r/ushijima`; private tree
+State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, session disk full; files move by copy and the keeper commits them). Updated 5 Oct 2026 03:02Z (unit 17). Next self-wake 03:20Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,13 @@ State: ACTIVE (degraded: the Chair's shell on the Mac is down since 23:42Z, sess
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-070: the new live bot lost 7 of its first 10 ranked games (Elo 1725 → 1643, rank 90 → 110).** Two series
+  against lower-rated teams; no fault. The Chair reads it as noise (the bot equals its parent on 783 of 816 local
+  fixtures and scored 46 against 41 in LS-1) and does not change the rollback rule (read at 40 games). Four of the
+  seven losses are round-limit games lost on the queen rule with the longer longest dragon: the known weakness,
+  which no ladder rung addresses now. LS-1's paired mean is +0.0625 to +0.080 depending on the pairing. The time
+  diagnostic: the clone's gain is uniform across phases and time inputs carry 5–7 % of it. Kenma: 58–44 against
+  carthage-05, pool 220–52 against 226–46.
 - **D-069: k = 16 is live.** Daichi activated submission 16979 (`asahi-05-kz12-k16`) at 02:13:22Z on LS-1's final
   data: 75 pairs, paired mean +0.080 [−0.029, +0.187], no fault; all conditions of D-064 §B hold. LS-1's own frozen
   letter is HOLD; the gain to expect is small and on Weakhold. Rollback watch over the first 40 ranked games, target
@@ -179,7 +186,7 @@ bot, Kenma's included) and H12 (session disk full; it blocks the Chair's shell).
 
 ## Cursor
 
-Last BOARD line read: line 1151 (Daichi 02:18Z, 16979 live), main tree. Own D-069 lines follow.
+Last BOARD line read: line 1160 (Daichi 02:55Z, 16979 early watch), main tree. Own D-070 lines follow.
 
 ## Open flags
 

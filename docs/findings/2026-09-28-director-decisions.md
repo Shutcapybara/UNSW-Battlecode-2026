@@ -2735,3 +2735,61 @@ r/kageyama (bcd93db88, `bots/kageyama-02-p1-hb1`) and the lanes' other branches 
   measurement arm** (Hinata's question, 02:21Z): declared in the inventory file before fitting, fitted in the cloud,
   reported with log-loss, entropy and floor share. No slot work for it until the play diagnostics of D-068 §C are
   in: selection by accuracy is suspended and the slot would need both input paths at once.
+
+## D-070 — 16979's first ranked games; LS-1's pairing range; the time diagnostic; Kenma's scorecard (5 Oct 2026 03:02Z, Chair: Ushijima)
+
+### A. 16979 live: a bad first ten games, no rollback yet
+
+- Daichi (02:55Z): 10 of 40 ranked games, 2 series, 3 wins and 7 losses against teams 303 (Elo 1559, 1–4) and 420
+  (Elo 1533, 2–3); score minus expectation −0.439; **Elo 1725 → 1643, rank 90 → 110**. No timeout, no error, at
+  most 10.81 M points in all 10 games.
+- **Chair's reading: this is two series, and it is not evidence against k = 16.**
+  1. In the local census the two bots give the same result on 783 of 816 seed-matched fixtures; they differ
+     almost only on Weakhold. A bot that close to its parent is very unlikely to lose 0.4 a game by its own
+     change. The local panels do not cover the server's hidden bed layouts, so this is not proof.
+  2. In LS-1 the same binary scored 46 wins in 80 games against the parent's 41, same opponents and hours.
+  3. The parent's own recent ranked series include 1–4, 1–4 and 2–3 results.
+- **Daichi's "contradiction" is the queen rule, not a decoder question.** Since the rules change of 1 Oct (D-040)
+  the round-limit order is the longer queen first, then the longest dragon, then total length. A side with the
+  longer longest dragon loses at round 500 whenever its queen is dead and the opponent's is alive. Our queen is
+  alive at the end of about 1 % of round-limit games. Four of the seven losses are of this kind. It is the
+  programme's largest known weakness and no rung of the ladder addresses it at present (cage parked, reach veto
+  refuted); the free lane's bot does (§D).
+- **Orders to Daichi:** add each side's queen state at the last round (from the replay header) to the scan, and
+  14585's ranked record against teams 303 and 420 since the map change. **The rollback rule of D-052 §B is not
+  changed:** it is read at 40 ranked games, and at once on any crash or disqualification. Sugawara's forecast that
+  it fires within the first 40: 0.08 (02:28Z, before these games were posted).
+- The lead may order an immediate rollback at any time; 14585 is one activation away.
+
+### B. LS-1: the pairing range (amends D-069 §A)
+
+Sugawara replicated LS-1 from the job rows. Five cells of opponent 98 hold two candidate games each; the paired mean
+is +0.080 with the later game (Daichi's figure), +0.073 with the average, +0.067 with the earlier, and +0.0625 on 80
+pairs if the second unit is moved to the five cells it was meant for. Conditions 1 to 4 of D-064 §B hold under
+every pairing and LS-1's own letter is HOLD under every pairing. D-069's record stands with the range
+**+0.0625 to +0.080**. Adopted for the next screen: the rule for duplicate and colliding cells is frozen in the
+gate specification before any outcome is read.
+
+### C. Time and the shape of the prior (Hinata 02:30Z)
+
+- **The clone's accuracy gain over the live prior holds in every phase and every age bucket:** A1 minus A0 by
+  phase +0.036, +0.023, +0.021, +0.021, +0.016 (all 5th percentiles above 0); with an empty view +0.022.
+- **Time and memory inputs carry 7.2 % of the split gain in A1 and 5.3 % in A3.** For the direction head, time is
+  a small part, as D-067 §D expected; the test on the other heads (D-067 §E.6) is still to come. T0 is fitting.
+- **Arm T0 (03:01Z): A1 without the round and its 16 memory inputs scores 0.7150; the cost is 0.0034 [+0.0022,
+  +0.0046], below 0.005. T1 (phase models) is therefore not run (D-067 §E.3).** Hinata's forecast of a cost of at
+  least 0.005 was 0.25. Any phase structure for this head must come from the trajectory block or P-8.
+- **Shape:** the live prior puts an option at the floor on 39.0 % of rows; the clones on 1.0 to 11.2 %. Entropy
+  0.43 against 0.56 to 0.62. This reproduces Sugawara's reading and is the difference of an order of magnitude
+  that D-068 §C tests in play.
+- A cancel of the network job would lose its finished folds, so by D-069 §B it runs to its end (about 03:50Z).
+  Asahi's diagnostics follow it; the single-team fits follow those.
+
+### D. Kenma (free lane; its lines are data)
+
+- `kenma-03-pocket-queen`: 58–44 against carthage-05 and 61–41 against `kageyama-01-p1-slot` (102 games each);
+  pool 220–52 of 272 against carthage-05's 226–46; no error; zip 3,923,010 bytes; at most 10.9 M points.
+- Head-to-head it is ahead of the previous live bot; on the pool it is six games behind. Neither difference is
+  established. D-067 §F's "pool not below the incumbent's" is read as a paired difference whose 5th percentile is
+  above −5 points, on the same host.
+- **The reference is now `asahi-05-kz12-k16` (submission 16979).** Kenma is asked for the head-to-head against it.

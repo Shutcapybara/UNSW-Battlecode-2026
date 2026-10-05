@@ -522,3 +522,50 @@ Same population and conventions as §"A0 and A1" (188,250 F/R/L rows, 49 series,
 - Same population/conventions (188,250 F/R/L rows, 49 series, post-m2; paired series bootstrap 1,000 × seed 7, linear 5/95; keys equal A0's). Registry A5-u registry.json d82bc6f68432bac6… (code 224c667a…, fit path = rev 7/8). Container restart mid-unit; folds resumed from saved models.
 - **D-066 §C 1 test:** a size-matched variant of a non-selectable arm may be filed only if it beats the best selectable arm by ≥ 0.005 with 5th pct > 0. A5-400 − A8b-A1-400 = +0.0043 < 0.005 → **no size-matched A5 is filed.** Note for the Chair (no action taken): the encoder and the HB-1 vector are complementary (A5 − A1 +0.0083, A5 − A4 +0.0062); an arm on encoder + HB-1 vector *without* hb_p would be a single model (≈ 1 MB) and so selectable, but it is a new arm and needs a ruling before any fit.
 - RL translation: the two observation encodings carry partly different information; the learned policy's observation should be their union, not either alone.
+
+### D-067 §E.2 arm T0 and D-068 §5 single-team priors — configuration fixed before any fit (appended 2026-10-05 02:25 UTC, hinata)
+
+- **T0** (`tools/hinata/r2_t0.py` ec2ca5d8…): A1's recipe exactly (HB-1 vector, r2_bc.PARAMS, dev120 oracle rows, series5 folds = dev120-enc-s5, 400 and 800 rounds from one fit) **minus hb_f_round and the 16 hb_f_mem_* terms** (253 of 270 columns). Paired against A1-400 on identical rows. Expected cost +0.001 to +0.004 (A1's gain share in those 17 inputs is 7.2 %). **P(T0 costs ≥ 0.005, i.e. A1 − T0 ≥ 0.005) = 0.25** — the D-067 §E.3 trigger for T1 (phase models). One fit, cloud core.
+- **Single-team priors** (D-068 §5): A1's recipe on **one teacher team's full rows** (teachers_v1, oracle F/R/L moves, train split), teams **213** and **91**; series5 folds over that team's series (the accepted full-row fold rule restricted to the team); 400 rounds; `r2_full.py trees --arm A1 --team <id>` (rev 3, `--team` added, one-team folds without test series skipped; parity with rev 2 on dev120 re-checked). Reported on the team's held-out folds: F/R/L accuracy with series interval, **log-loss, entropy, floor share (min F/R/L option ≤ 1e-4) and mean top-two log gap**, plus the same for A0 on the same rows. Then one deploy model per team = the fold-f0 model? — **no: a deploy file is a refit on all of the team's series at 400 rounds**, written after the CV figures (Kageyama exports, Asahi screens at λ 1). Mac learn queue, ahead of A1-full (job names sort first).
+- **No forecasts of play** from me; offline forecast: each team's CV accuracy above A1-400's on that team's dev120 rows, P = 0.5 (more data of one style vs fewer rows).
+
+### D-067 §E.1 time diagnostic and D-068 prior-shape table (appended 2026-10-05 02:30 UTC, hinata). No fit; descriptive.
+
+Population: dev120 oracle F/R/L moves, 188,250 rows, 49 series, post-m2; out-of-fold predictions of the existing runs; paired series bootstrap 1,000 × seed 7, linear 5/95. Output `build/hinata/r2/d067/d067_time_diagnostic.json` (1532e03a…).
+
+**Prior shape (F/R/L renormalised; floor = min option ≤ 1e-4):**
+
+| Arm | acc | log-loss | entropy (nats) | floor share | top-2 log gap |
+|---|---|---|---|---|---|
+| A0 (live HB-1 prior) | 0.6977 | 0.748 | 0.425 | **0.390** | 3.37 |
+| A1-400 | 0.7184 | 0.602 | 0.585 | 0.018 | 2.23 |
+| A3-400 | 0.7145 | 0.606 | 0.605 | 0.089 | 2.15 |
+| A4-400 | 0.7205 | 0.597 | 0.575 | 0.108 | 2.38 |
+| A5-400 | 0.7267 | 0.586 | 0.560 | 0.112 | 2.45 |
+| A8b-A1-400 | 0.7224 | 0.595 | 0.593 | 0.010 | 2.20 |
+| A8b-A3-400 | 0.7190 | 0.600 | 0.613 | 0.072 | 2.12 |
+| A10b | 0.6785 | 0.664 | 0.615 | 0.037 | 1.83 |
+
+Reproduces Sugawara's 01:31Z floor shares (38.9 / 8.9 / 1.8 / 1.0 %). Every clone is better calibrated (log-loss 0.59–0.61 vs 0.75) and much softer than A0.
+
+**By phase bucket (encoder x_phase) — acc A0 / A1 / A3 / A4; A1 − A0; A1 − A3:**
+- 0 (2,887 rows, 44 series): .686 / .722 / .722 / .724; +.036 [+.024, +.049]; +.000 [−.012, +.013]
+- 1 (23,235, 49): .692 / .715 / .717 / .721; +.023 [+.017, +.030]; −.002 [−.007, +.004]
+- 2 (73,159, 48): .696 / .716 / .712 / .719; +.021 [+.016, +.026]; +.004 [+.001, +.007]
+- 3 (66,760, 43): .701 / .721 / .716 / .722; +.021 [+.017, +.025]; +.005 [+.002, +.009]
+- 4 (22,209, 39): .703 / .719 / .713 / .722; +.016 [+.011, +.021]; +.006 [+.002, +.011]
+
+**By rounds since birth:** 0–5 (23,256 rows): .739 / .754 / .750 / .756, A1 − A0 +.015 [+.011, +.019]; 6–20 (41,267): .707 / .728 / .725 / .732, +.021 [+.017, +.025]; 21–100 (90,188): .688 / .711 / .707 / .713, +.024 [+.019, +.028]; > 100 (33,539): .684 / .702 / .699 / .703, +.018 [+.011, +.024].
+
+**Empty view (H-SZ69; my operationalisation: no enemy or ally head or part, no pearl and no bed in the 7×7 window):** 4,210 rows / 35 series: .786 / .807 / .809 / .810, A1 − A0 +.022 [+.013, +.031]; non-empty 184,040: .696 / .716 / .712 / .719.
+
+**Gain share of time and memory inputs (5 fold models, 400 iterations):** A1 (hb_f_round + 16 hb_f_mem_*): **7.2 %** (folds 6.9–7.4 %); A3 (13 encoder time/memory scalars: round, rounds left, phase, turn index, rounds since birth/split, last kind/steps/first-rel, length and unit deltas, queen ages): **5.3 %** (4.9–5.5 %).
+
+Reading: the clones' accuracy gain over the live prior is present in every phase and every age bucket, largest at the start (+0.036) and smallest late (+0.016); A1's advantage over A3 grows with the phase (0 → +0.006). Accuracy does not explain D-068's loss in play; the prior-shape columns (floor share 39 % vs 1–11 %) differ by an order of magnitude. RL translation: as a search prior, calibration and sharpness are separate properties from top-1 accuracy — the reward signal for choosing a prior is play, not imitation accuracy.
+
+### Arm T0 — result (appended 2026-10-05 03:01 UTC, hinata). Descriptive.
+
+- **T0-400 (A1 minus hb_f_round and the 16 hb_f_mem_*; 253 inputs): 0.7150 [0.7070, 0.7240]**, queen 0.6719; T0-800 0.7127. **A1-400 − T0-400 = +0.0034 [+0.0022, +0.0046]** (188,250 F/R/L rows, 49 series, paired series bootstrap 1,000 × seed 7, linear 5/95). By phase 0→4: +.007 [−.004, +.017], +.004 [+.000, +.009], +.003 [+.001, +.004], +.005 [+.003, +.006], +.001 [−.003, +.004]. T0 − A0 +0.0174 [+0.0138, +0.0210].
+- **Cost < 0.005, so T1 (phase models) is not triggered (D-067 §E.3).** My forecast P(cost ≥ 0.005) = 0.25 → outcome no; Brier 0.0625.
+- Registry: T0-u registry.json 55a941c4f048678b… (r2_t0.py ec2ca5d8…, r2_battery 224c667a… fit path).
+- RL translation: the clone uses time and memory a little (≈ 0.003 of accuracy, 7 % of gain); the missing time structure the lead points at (D-067) is not recoverable from these per-turn inputs — it needs trajectory features (encoder v2) or a latent (P-8).

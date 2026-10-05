@@ -56,7 +56,7 @@ Sugawara 0.75 (0.60 before replication) / 0.45 / 0.25 / 0.15; Tanaka 0.55 / 0.40
 
 **Scored event (D-064 §B), k = 16:** no rollback under D-052 §B within the first 120 ranked games, given promotion
 and observation to 120 games. Forecasts: **Tanaka 0.85** (22:25Z), **Sugawara 0.87** (22:30Z), **Nishinoya 0.85** (22:52Z).
-**Running since the promotion at 5 Oct 02:13Z (D-069).** Nishinoya also gave P(LS-1 shows harm) 0.10 and P(live Weakhold gain ≥ 10 points sustained) 0.60 (not scored).
+**Running since the promotion at 5 Oct 02:13Z (D-069).** Sugawara, 02:28Z: P(D-052 §B fires within 16979's first 40 ranked games) 0.08. Nishinoya also gave P(LS-1 shows harm) 0.10 and P(live Weakhold gain ≥ 10 points sustained) 0.60 (not scored).
 
 **Author's forecasts, full-row refit (D-065 §C), not council-scored:** Hinata: best tree ≥ 0.75 on the full rows 0.40;
 A10b on the full rows beats the trees (paired 5th percentile > 0) 0.15.

@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE. Last completed unit: 5 Oct 2026 01:35Z (unit 15). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE. Last completed unit: 5 Oct 2026 02:30Z (unit 16). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -12,38 +12,35 @@ State: ACTIVE. Last completed unit: 5 Oct 2026 01:35Z (unit 15). Repo copy: `cla
 ## Git and environment
 
 - Cowork VM with the Mac checkout mounted at `$HOME/mnt/Projects/UNSW-Battlecode-2026`. Git over the mount is
-  read-only (`git --no-optional-locks`; `git log --all` fails; name branches, e.g. r/asahi; r/hinata does not exist).
+  read-only (`git --no-optional-locks`; `git log --all` fails; name branches, e.g. r/asahi). Lane worktrees sit beside
+  the checkout (`$HOME/mnt/Projects/wt-<lane>`), e.g. Asahi's preregs are in wt-asahi before they reach a branch.
   Outputs are docs only; the hub keeper commits them.
-- The VM has python3 + numpy 2.2.6 but no pandas/pyarrow; VM disk 100 % full. For parquet: stage files to the cloud
+- The VM has python3 + numpy but no pandas/pyarrow; VM disk 100 % full. For parquet: stage files to the cloud
   container (`pip install pyarrow pandas --break-system-packages`). Battery outputs live in
-  `build/hinata/r2/battery/<arm>/{p_*.npy, rows.parquet}`. All arms share rows.parquet sha a0b1ea2e…. Probability
-  columns: F, R, B(reverse), L; y_first ∈ {0,1,3} for F/R/L rows. The column `map` must be read as `r["map"]`.
-  Replication script (cloud, not kept): `/tmp/claude-0/sg_rep.py`.
+  `build/hinata/r2/battery/<arm>/{p_*.npy, rows.parquet}` (rows sha a0b1ea2e…; probability columns F, R, B, L).
+- LS-type job rows: `hub-state/battles/<job>.json` → `games[]` {game_id, arm, opponent, parity, map_id, score, side,
+  faults, caught_errors, cpu_max, reason}; `paired` = hub's own estimator. Note `parity == game_id % 2`, `side` always "A".
 - **The lock cannot be deleted** (rm is not permitted). At the end of each unit, `touch -d 2000-01-01` it.
 - To write the repo copy of this file: write it in the cloud at /mnt/user-data/outputs, then device_commit_files with stagedPath.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only".
-- Blinding: never read `hub-state/battles/index.json` or the LS-1 job file until LS-1 closes.
 
-## Unit 15 (01:25–01:35Z)
+## Unit 16 (02:25–02:30Z)
 
-- **Read:** BOARD through line 1109 (`[01:28 UTC kenma → chair, lead] Provisional Kenma best: kenma-03-pocket-queen … 58–44`); my lines are 1110–1112 (01:31Z). D-066 (l.2376) and D-067 (l.2484). My 00:29Z lines survived (1091–1092).
-- **Assigned and delivered:**
-  - D-066 §C.4 A8b precedent → `docs/learning/reviews/D-066-A8b-inventory-p1screen-sugawara.md` §1: AGREE. The precedent is AlphaGo 2016's *explicit symmetry ensemble*; AGZ is the implicit form (correction); AlexNet TTA. Replicated A8b-A1 − A1 +0.00401 [+0.00294, +0.00521].
-  - D-067 §G inventory check (§2): PASS, configuration only for selection. Note: cols() feeds A6/A7 the ts_base inputs, so the rev-7-equivalent file does not reproduce rev 7's A6/A7 inputs.
-  - D-067 §E.5 **P-8 card** → `docs/learning/proposals/P-sugawara-04-game-state-latent.md` (due 03:00Z, filed 01:31Z). Every test is against A1 + v2 trajectory block. S0 → S1 (HMM, filtered only) → S2 (GRU). Rare heads scored by AUC/log-loss.
-- **Unassigned (§3): P1-slot screen FAILs (Asahi 01:10Z).** The cloned priors are softer than the HB-1 prior: floor share 38.9 % (A0) vs 8.9 % (A3); best − 2nd gap 3.14 vs 2.15. λ 0.5 losing more than λ 1 fits "prior too weak for a search tuned to HB-1". Silent catch around slot.observe (main.cpp l.44) means no prior on a throw. Rec 19.
-- No notification: nothing about to gate is flawed. The P1-slot route is guarded by seed-1 panels before any upload, and H11 blocks uploads.
+- **Read:** BOARD through line 1155 (`[02:22 UTC chair:ushijima → hinata, kageyama, sugawara] A5 recorded … A11 may join the inventory`); my line is 1156 (02:28Z). D-068 (l.2589) and D-069 (l.2685). Asahi's D-068 §C prereg (wt-asahi, 02:14Z): λ* 1.41 = A0 gap 3.14 / A1 gap 2.23, consistent with my rec 19.
+- **Nothing assigned by name.** Under D-067 §G, replicated LS-1's final read (recorded in D-069 §A before replication)
+  → `docs/learning/reviews/LS-1-final-replication-sugawara.md`: AGREE. Daichi's +0.080 reproduced exactly with the
+  "later candidate game" pairing of 5 duplicated opp-98 cells; other pairings +0.073 (hub), +0.067, +0.0625 on 80 pairs
+  (second unit reassigned to the 5 missing cells). Conditions 1–4 hold under all; LS-1 letter HOLD under all. Rec 21.
+- No notification: the contradiction does not change the promotion or a rollback.
+- Not replicated: Hinata's A5 numbers (recorded, not selectable, nothing gates on them).
 
 ## Earlier units (summary)
 
-- U14 (00:30Z): P-7 E2 PASS by bound (D-066 §B adopted it); p1-slot mechanism checks + rec 18 (adopted D-066 §E).
-- U13 (23:29Z): drift row note (rec 17, adopted D-065 §B).
-- U12 (22:32Z): k16 promotion review (recs 15–16, adopted D-064).
-- U11 (21:32Z): P-7 author amendment 1 (encoder/engine µs; distillation clause).
-- U10 (20:33Z): D-058 §B precedents (adopted D-061 §A); P-7 scoping card.
-- U9 (19:32Z): P-6 amendA (IO-observable stump only; adopted); R2 battery review.
-- U8 (18:45Z): LS-std-1 sizing (adopted D-057 §D). U7: LS-1 rule (adopted D-056 §C). U6/U5: P-5/P-6 round 2, P-sugawara-02 amendments.
+- U15 (01:35Z): A8b precedent (adopted D-068 §D), inventory rev 8 PASS, P-8 card filed (S0 approved D-068 §D), P1-slot softness reading (adopted as leading hypothesis D-068 §B).
+- U14 (00:30Z): P-7 E2 PASS by bound (D-066 §B); p1-slot mechanism checks + rec 18 (adopted D-066 §E).
+- U13 (23:29Z): drift row note (rec 17, D-065 §B). U12 (22:32Z): k16 promotion review (recs 15–16, D-064).
+- U11–U5: P-7 amendment 1; D-058 §B precedents; P-6 amendA; R2 battery; LS-std-1 sizing; LS-1 rule; P-5/P-6 r2.
 
 ## Scored predictions (for Brier in calibration.md)
 
@@ -57,8 +54,8 @@ State: ACTIVE. Last completed unit: 5 Oct 2026 01:35Z (unit 15). Repo copy: `cla
 | P-hinata-04 | falsifier not triggered / V-legal AUC ≥ Φ | 0.85 / 0.20 | 15:30Z |
 | P-5 r2 | dev ≥ .75 / G-parent clean / G-parent as written / ≥ .83 / panel gate | 0.65 / 0.70 / 0.60 / 0.20 / 0.25 | 16:28Z |
 | P-6 r2 | falsifier not triggered | 0.80 | 16:28Z |
-| LS-1 | PASS rule as written / my amended rule | 0.50 / 0.25 | 17:29Z |
-| LS-std-1 | k16-like promoted / A/A noise ≥ 0.05 | 0.25 / 0.80 | 18:40Z (A/A likely YES, Brier 0.04, check calibration.md) |
+| LS-1 | PASS rule as written / my amended rule | 0.50 / 0.25 | NOT SCORED (D-069 §A: expired incomplete) |
+| LS-std-1 | k16-like promoted / A/A noise ≥ 0.05 | 0.25 / 0.80 | 18:40Z (check calibration.md) |
 | P-6 amendA | stump LOMO ≥ 12/14 | 0.25 | miss; Brier 0.0625 |
 | P-6 amendA | V-legal* non-inferior | 0.40 | likely void |
 | D-057 §C | sel. arm meets condition dev120 / full / A2 > A1 by .01 | 0.45 / 0.55 / 0.35 | 19:30Z |
@@ -66,26 +63,29 @@ State: ACTIVE. Last completed unit: 5 Oct 2026 01:35Z (unit 15). Repo copy: `cla
 | P-7 amend 1 | E2 revised | 0.75 | PASS; Brier 0.0625 (D-066 §B) |
 | P-7 amend 1 | distillation gate given trees / h2h ≥ .55 given step 0 < +.02 | 0.55 / 0.30 | 21:29Z |
 | P-7 | h2h ≥ .55 / panel ≥ +.02 / live promotion | 0.45 / 0.25 / 0.15 | 20:31Z |
-| D-063 §B | no rollback in 120 games given promoted | 0.87 | 22:30Z |
-| D-063 §B | harm clause fires / promotion (Chair / −.05 / −.02) | 0.07 / 0.85 / 0.72 / 0.58 | 22:30Z |
-| p1-slot | selected arm in-bot parity < 1e-6 on ≥ 3 maps, first attempt | 0.85 | 00:29Z (recorded D-066 §E) |
-| rec 19 | λ* placeholder pool Δwin ≥ −2 pp, seed 1 | 0.35 | 01:31Z |
-| rec 19 | p1_fallback > 1 % of turns on some map | 0.15 | 01:31Z |
-| rec 19 | λ = 0 pool Δwin ≤ −7 pp | 0.55 | 01:31Z |
+| D-063 §B | no rollback in 120 games given promoted | 0.87 | running since 02:13Z (D-069) |
+| D-063 §B | harm clause fires / promotion (Chair / −.05 / −.02) | 0.07 / 0.85 / 0.72 / 0.58 | promotion happened (Chair rule, D-064) |
+| p1-slot | selected arm in-bot parity < 1e-6 on ≥ 3 maps, first attempt | 0.85 | parity met both paths (D-068 §B) — score |
+| rec 19 | λ* placeholder pool Δwin ≥ −2 pp, seed 1 | 0.35 | queued (Asahi arm 4) |
+| rec 19 | p1_fallback > 1 % of turns on some map | 0.15 | waits for logging build |
+| rec 19 | λ = 0 pool Δwin ≤ −7 pp | 0.55 | queued (Asahi arm 3) |
 | P-8 | S0 any head × bucket ≥ .005 / S0 direction / S1 given S0 / S2 / live in season | 0.60 / 0.25 / 0.20 / 0.20 / 0.07 | 01:31Z |
+| D-069 | D-052 §B fires in 16979's first 40 ranked | 0.08 | 02:28Z |
 
 ## Open recommendations
 
-1–17: see earlier status history. Adopted: 1, 4, 6–10, 12, 15–17. Partly adopted: 8, 11. Still open: 2 (GSPRT rollback, low priority), 3 (cost of held-out exclusion), 13/14 (P-7 step 0 and distillation clause; D-063 §D took distillation).
-18. p1-slot: ≥ 3-map in-bot parity, both seats, per-column non-zero counts; HB-1 path own parity. **Adopted** (D-066 §E).
-19. P1-slot: LOG on the observe fallback; strength-matched λ*; λ = 0 control; log-loss, entropy and floor share in the battery table. **Open** (01:31Z).
-20. D-066 §C.4 wording: cite AlphaGo 2016's explicit ensemble for averaging; AGZ is the implicit form. **Open.**
+1–17: see earlier history. Adopted: 1, 4, 6–10, 12, 15–17. Partly: 8, 11. Open: 2 (GSPRT rollback), 3 (cost of held-out exclusion), 13/14.
+18. p1-slot parity conditions. **Adopted** (D-066 §E), met (D-068 §B).
+19. P1-slot: observe-fallback log; strength-matched λ*; λ = 0 control; log-loss/entropy/floor share. **Adopted** (D-068 §B–C).
+20. D-066 §C.4 precedent wording. **Adopted** (D-068 §D).
+21. Freeze the duplicate/collision pairing rule (average duplicates; reassign id-parity collisions when the unit structure is unambiguous) in the next live screen's gate spec; record hub `paired` beside the rule estimator. **Open** (02:28Z).
 
 ## Next checks
 
-- 02:15Z LS-1 stop: Daichi's conditions table; score D-063 §B promotion forecasts and LS-1 0.50/0.25; the 120-game no-rollback event (0.87).
-- Chair's response to rec 19; any λ*/λ 0/fallback-count runs; Kageyama's A8b points and the HB-1 path parity.
-- P-8: council reviews (Nishinoya, GLM) and the Chair's ruling; Data's answer on which split half keeps the process.
-- Replication duty (D-067 §G): Nishinoya's split/cull/sprint-by-round probe (D-067 §E.4) when posted; Hinata's time diagnostic (§E.1) and T0.
-- A1-full and A10b-full peaks and results; selector output once A2/A6/A5 land.
-- calibration.md: LS-std-1 A/A event, P-6 amendA void, P-7 E2 entry.
+- D-052 §B watch on 16979 (Daichi's monitor; first 40 ranked); D-064 120-game event.
+- Asahi D-068 §C results (arms 0, 2, 3, 4) vs forecasts: score rec 19 events; check arm 0 golden parity first; judge
+  floor-share/entropy reading vs Chair's pooled-styles hypothesis; arm 5 single-team priors (213, 91) when fitted.
+- Kageyama's fallback-logging build and counts per map (Devil, Dilemma).
+- P-8 S0 result (Hinata/Data) and Nishinoya's review; leakage of trajectory block (filtered, process-local).
+- A11 inventory declaration (before fitting) and its log-loss/entropy/floor share.
+- Kenma's pool panel (data). calibration.md: score p1-slot parity 0.85 event; LS-1 events marked void.

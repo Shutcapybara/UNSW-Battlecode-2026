@@ -5,6 +5,7 @@ fixed in P-hinata-03 §"Full-row refit (D-064 §C)" before any full-row fit. TRA
 
   trees --arm A1|A3|A4|A5 --dir <shard dir> --run <run dir> [--sizes 400,800] [--budget s] [--threads N]
   cnn   --dir <shard dir> --run <run dir> [--max-epochs 40] [--patience 3] [--threads N] [--budget s]
+  trees ... --team <id>   rev 3 (D-068 §5): one teacher team's rows only (single-team prior), series5 folds over its series
   rows  --dir <shard dir> --out <json>        support + oracle share per teacher and per map (no fit)
 
 Loading: per shard, columns projected to keys + metadata + the arm's features; refusals as r2_bc.load (split must be 'train',
@@ -39,7 +40,7 @@ def peak_gib():
     return round(r / 2 ** 30 if sys.platform == 'darwin' else r / 2 ** 20, 2)   # bytes on macOS, KiB on Linux
 
 
-def load(dirp, teachers, X):
+def load(dirp, teachers, X, team=None):
     """rev 2 (D-066 §C memory ceiling): two passes. Pass 1 reads metadata only and fixes the kept rows; pass 2 fills
     preallocated matrices (int16 columns -> Mi, all others -> Mf float32) shard by shard. Peak = the matrices + one shard.
     Row order and values are identical to rev 1 (shard order, filter, teacher join that preserves order)."""
@@ -64,6 +65,13 @@ def load(dirp, teachers, X):
     n0 = len(d); d = d.merge(t, on=['game', 'side'], how='left')
     if len(d) != n0 or d.team.isna().any():
         raise SystemExit(f'refused: rows without a unique teacher entry')
+    if team is not None:   # rev 3 (D-068 §5): one teacher team's rows only; per-shard keep masks narrowed in shard order
+        tm = (d.team.astype(str) == str(team)).to_numpy(); o = 0
+        for i, k in enumerate(keeps):
+            n = int(k.sum()); kk = k.copy(); kk[np.flatnonzero(k)] = tm[o:o + n]; keeps[i] = kk; o += n
+        d = d[tm].reset_index(drop=True)
+        if not len(d):
+            raise SystemExit(f'refused: no rows for team {team}')
     N = len(d); Mi = np.empty((N, len(I)), np.int16); Mf = np.empty((N, len(Fl)), np.float32); r0 = 0
     ci = [X[j] for j in I]; cf = [X[j] for j in Fl]
     for p, k in zip(sh_, keeps):
@@ -95,6 +103,15 @@ def support(d, oracle_share):
                 frl_by_team={str(k): int(v) for k, v in d[np.isin(d.y_first, R.FRL)].groupby('team').size().items()})
 
 
+def props(y, P):
+    """rev 3 (D-068): prior-shape metrics on F/R/L rows, F/R/L renormalised: log-loss, entropy (nats), floor share
+    (min option <= 1e-4), mean best-minus-second log gap."""
+    m = np.isin(y, R.FRL); q = P[m][:, R.FRL]; q = q / q.sum(1, keepdims=True); yi = np.searchsorted(R.FRL, y[m])
+    lq = np.log(np.clip(q, 1e-12, 1)); srt = np.sort(lq, 1)
+    return dict(logloss=round(float(-lq[np.arange(len(yi)), yi].mean()), 4), entropy=round(float(-(q * lq).sum(1).mean()), 4),
+                floor_share=round(float((q.min(1) <= 1e-4).mean()), 4), top_gap_log=round(float((srt[:, -1] - srt[:, -2]).mean()), 3))
+
+
 def bridge(d, P):
     g = set(pd.concat([pd.read_parquet(p, columns=['game']) for p in DEV120]).game.astype(str))
     m = d.game.astype(str).isin(g).to_numpy(); y = d.y_first.to_numpy(int)
@@ -112,7 +129,7 @@ def manifest(run, man):
 
 def common(a, X):
     t0 = time.time(); run = Path(a.run); run.mkdir(parents=True, exist_ok=True)
-    d, Mi, Mf, I, Fl, osh = load(a.dir, a.teachers, X); F = R.folds(d, 'series5'); rk = BAT.rowkey(d)
+    d, Mi, Mf, I, Fl, osh = load(a.dir, a.teachers, X, getattr(a, 'team', None)); F = R.folds(d, 'series5'); rk = BAT.rowkey(d)
     fh = {k: hashlib.sha256('\n'.join(sorted(rk[te])).encode()).hexdigest() for k, te in F.items()}
     sup = support(d, osh); (run / 'support.json').write_text(json.dumps(sup, indent=1))
     print(f'loaded {len(d)} rows in {time.time() - t0:.0f}s, peak {peak_gib()} GiB', flush=True)
@@ -135,7 +152,7 @@ def trees(a):
     X = arm_cols(a.arm, enc, hb_cols(a.dir) if a.arm in ('A1', 'A5') else [])
     t0, run, d, F, fh, sup, Mi, Mf, I, Fl = common(a, X)
     sizes = sorted(int(s) for s in a.sizes.split(',')); rounds = max(sizes); P_ = dict(R.PARAMS, num_threads=a.threads)
-    manifest(run, dict(arm=a.arm, mode='full-rows trees', dir=a.dir, shards_manifest_sha=shard_shas(a.dir), teachers_sha=R.sha(a.teachers),
+    manifest(run, dict(arm=a.arm, team=a.team, mode='full-rows trees', dir=a.dir, shards_manifest_sha=shard_shas(a.dir), teachers_sha=R.sha(a.teachers),
                        code_sha=R.sha(__file__), r2_bc_sha=R.sha(R.__file__), r2_battery_sha=R.sha(BAT.__file__), features_sha=R.sha(a.features),
                        n_features=len(X), params=P_, rounds=rounds, sizes=sizes, weighted=False, n_rows=int(len(d)), folds=fh))
     y = d.y_first.to_numpy(int)
@@ -145,6 +162,8 @@ def trees(a):
 
     Ps = {s: np.full((len(d), 4), np.nan) for s in sizes}; nbytes = {s: 0 for s in sizes}; fk = np.empty(len(d), object)
     for k, te in F.items():
+        if not te.any() or te.all():   # rev 3: a one-team run can leave a fold without test (or training) series
+            continue
         fk[te] = k; mf = run / f'model_{k}.txt'
         if not mf.exists():
             if time.time() - t0 > a.budget:
@@ -158,9 +177,15 @@ def trees(a):
         for s in sizes:
             Ps[s][ti] = np.concatenate([b.predict(rowsx(ti[i:i + 100000]), num_iteration=s) for i in range(0, len(ti), 100000)])
             nbytes[s] += len(b.model_to_string(num_iteration=s).encode())
+    if getattr(a, 'final', False):   # rev 3 (D-068 §5): deploy model = refit on every row of the run at max(sizes), after the CV
+        mfa = run / f'model_all_{rounds}.txt'
+        if not mfa.exists():
+            ia = np.arange(len(d)); b = lgb.train(P_, lgb.Dataset(rowsx(ia), y, weight=np.ones(len(ia))), num_boost_round=rounds)
+            b.save_model(str(mfa)); print(f'{mfa.name} {time.time() - t0:.0f}s peak {peak_gib()} GiB', flush=True)
     arms = {f'{a.arm}-{s}': Ps[s] for s in sizes}
     info = dict(arm=a.arm, mode='full-rows', model_bytes={n: int(nbytes[int(n.split('-')[1])] / len(F)) for n in arms},
-                support=sup, bridge={n: bridge(d, P) for n, P in arms.items()}, seconds=round(time.time() - t0), peak_gib=peak_gib())
+                support=sup, bridge={n: bridge(d, P) for n, P in arms.items()}, prior_shape={n: props(y, P) for n, P in arms.items()},
+                team=getattr(a, 'team', None), seconds=round(time.time() - t0), peak_gib=peak_gib())
     a.weighted = False; BAT.write(a, run, d, None, fk, arms, info, man_paths(a.dir), {}, X)
 
 
@@ -242,7 +267,7 @@ def cnn(a):
     a.weighted = False
     BAT.write(a, run, d, None, fk, {'A10b-full': P},
               dict(arm='A10b-full', mode='full-rows', model_bytes={'A10b-full': int(nparam)}, params=int(nparam), support=sup,
-                   bridge={'A10b-full': bridge(d, P)}, peak_gib=peak_gib(), folds={k: {kk: v for kk, v in L.items() if kk != 'history'} for k, L in logs.items()},
+                   bridge={'A10b-full': bridge(d, P)}, prior_shape={'A10b-full': props(y, P)}, peak_gib=peak_gib(), folds={k: {kk: v for kk, v in L.items() if kk != 'history'} for k, L in logs.items()},
                    seconds=round(time.time() - t0)), man_paths(a.dir), {}, enc)
 
 
@@ -258,6 +283,8 @@ def main():
     ap.add_argument('--features', default=str(R.FEATS)); ap.add_argument('--sizes', default='400,800')
     ap.add_argument('--max-epochs', type=int, default=40); ap.add_argument('--patience', type=int, default=3)
     ap.add_argument('--threads', type=int, default=int(os.environ.get('ASAHI_MAX_WORKERS', '1'))); ap.add_argument('--budget', type=float, default=1e9)
+    ap.add_argument('--final', action='store_true', help='rev 3: after the CV, refit on all rows (deploy model model_all_<rounds>.txt)')
+    ap.add_argument('--team', help='rev 3 (D-068 §5): fit and score one teacher team only (series5 folds over its series)')
     a = ap.parse_args(); {'trees': trees, 'cnn': cnn, 'rows': rows}[a.cmd](a)
 
 
