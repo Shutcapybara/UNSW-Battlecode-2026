@@ -7,37 +7,31 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 15, 2026-10-05 ~00:55Z)
+## Top — read this first (unit 17, 2026-10-05 ~03:00Z)
 
-- **Last BOARD line read:** line 1099 (Tanaka STOP 00:49Z, user request, credit budget — Tanaka lane only). No line
-  posted this unit (no result).
-- **D-066 (00:36Z):** P-7 throughput PASS, no training approved; A1/A3 selectable; clone live screen does not wait on
-  frozen cohort; every upload waits for H11. Chair 00:36Z reaffirms: Daichi applies the D-064 §B rule at the first
-  unit after 02:15Z. (Chair also saw the running paired figure through a failed filter; not quoted.)
-- **D-064 §B rule (unchanged):** promote 16979 iff (1) ≥ 60 valid matched pairs, missing listed; (2) no candidate
-  runtime error/timeout/DQ; (3) 95th pct of paired mean (opp × map clusters, 1,000, seed 7) ≥ 0; (4) paired mean ≥ −0.05.
-  (5) met per D-065 §B. Monitor rows: Weakhold, five bed-variant maps, invalid-command deaths.
-- **LS-1 job 5ed81ad3e1f3:** 140/204 requested, 140 verified, 0 unverified, 0 runtime faults (00:51Z, filtered read).
-  Unit 7 deferred on field quota (need 20, avail 25, reserve 10) — internal budget, not an API error.
-- **Live:** 14585 (status.json 00:44Z, restoration_matched; no human activation). Monitor 00:51Z (ranked, post-m2):
-  since activation −0.024 [−0.049, +0.002] (1,070 / 216 series); rolling 40 −0.115 [−0.246, +0.004] (8 series),
-  own-history pct 0.149 of 1,031 windows, drift flag off (hi95 > 0); Elo 1716 rank 88 (24 h 1707).
-- Hub: no API/quota errors; keeper clean (errors []). git.json not pending at 00:51Z.
-- Archive for D-064 §B(5): `build/daichi/ls1/16979-asahi-05-kz12-k16.zip`, sha256 585183301571e34d….
+- **Last BOARD line read:** 1159 (kenma 02:39Z). Posted 1160 (16979 early watch, ~03:00Z). Next unit reads from 1161.
+- **LIVE = 16979 (`asahi-05-kz12-k16`, k = 16) since 02:13:22Z; D-069 (Chair 02:22Z) records the promotion;** rollback
+  target 14585. No second promotion before 14:13Z. New candidates are built on asahi-05-kz12-k16 (D-069).
+- **Early watch (02:51Z monitor, ranked, post-m2):** 10/40 ranked games, 2 series (opp 303 1-4, opp 420 2-3, both
+  lower-rated), W-L 3-7, score − E −0.439 [−0.522, −0.357] (2 series, not informative); Elo 1725 → 1643, rank 90 → 110.
+  Replay-side fault scan of all 10 games: 0 TLE, 0 MC_ERROR, cpu max 10.81 M → no crash/DQ, no rollback.
+- **Open contradiction (posted 1160):** 4/7 losses end at round 500 with 16979 holding the longer decoded longest
+  dragon (1098984, 1098987, 1099081, 1099082); 14585's last 25 ranked: 2 such (1092918, 1094553). Analysts asked.
+  Tool: `build/daichi/tmp/sidescan.py <game ids>` (decodes corpus replays into build/daichi/tmp/rep/; side from header).
+- **Rollback watch D-052 §B (adopted):** after 16979's first 40 ranked games, roll back to 14585 when mean score −
+  expectation < −0.08 with series-bootstrap 95th pct < 0 (difference vs 14585's last-120 reference per D-052 §B), or
+  on any crash/DQ: restore.json {"previous":14585,"candidate":"asahi-05-kz12-k16","reason":…}; then BOARD + notify.
+  Sugawara forecast P(fires in first 40) 0.08. Sugawara 02:28Z: my LS-1 +0.080 used the later of duplicated opp-98
+  games; admissible range +0.0625…+0.080; conditions hold under all; Rec 21 (freeze pairing rule) is for the next screen.
+- Hub: no API/quota errors. r/daichi 2f1410d5e pushed (origin matches). Unit 17 commit + push requested ~03:00Z.
 
 ## Next unit
 
-1. Read BOARD after 1099 (did the keeper pass succeed? anything on LS-1 / k16).
-2. LS-1: counts/faults only, via a filtered read (`jobs[].{requested,verified,unverified,runtime_faults}`).
-3. **At/after 02:15Z:** cancel LS-1 via battles.json, wait for verification, read the paired report and post the D-064
-   table ((1)–(4); (5) met per D-065 §B): n pairs, missing listed, paired mean with cluster 5/95, LS-1 frozen letter,
-   monitor rows. If all hold: re-read the live submission id (must be 14585), check no ranked series of ours is in
-   flight and that we are outside the even-hour blackout (−8/+12 min), then write submit.json
-   {"candidate":"asahi-05-kz12-k16","activate":true,"by":"daichi","note":"D-064 §B / D-065 §B …"} (actuator.submit_check:
-   name present → POST /submissions/16979/activate + set_control; skips blackout/in-flight checks, so check them first);
-   confirm submit.done.json activated:true and the mirror shows 16979; notify the user. Then D-052 §B watch
-   (difference = candidate window − last-120 reference).
-4. Refresh the monitor; confirm the push.
+1. Read BOARD from 1161 (look for answers to 1160).
+2. Monitor: 16979 ranked n/40, mean − E with interval, Elo/rank; run sidescan on new 16979 ranked games for faults
+   (any TLE/MC_ERROR on our side → rollback at once).
+3. At n ≥ 40 ranked: apply D-052 §B exactly (candidate window vs 14585 last-120 reference); post either way.
+4. Redeploy question: blind fix may deploy (LS-1 closed) — still waits on the Chair (H11/restart).
 
 ## battles.json — what it does
 
@@ -68,6 +62,10 @@ Dev opponents (545, 752) have their own 60/h.
 
 ## Units
 
+- 2026-10-05 ~03:00Z unit 17 — read BOARD 1150–1159, D-069. 16979 10/40 ranked, −0.439 (2 series), Elo 1643;
+  0 faults by replay scan; posted early watch + round-500 contradiction (BOARD 1160). No action.
+- 2026-10-05 ~02:20Z unit 16 — read BOARD 1100–1140, D-068. LS-1 expired at deadline; D-064 table posted (BOARD
+  1141); all hold → activated 16979 at 02:13Z (BOARD 1151); user notified.
 - 2026-10-05 ~00:55Z unit 15 — read BOARD 1055–1099, D-066. LS-1 140/204, 0 faults. Monitor: rolling-40 −0.115,
   own pct 0.149, Elo 1716 r88. No BOARD line, no action (D-064 stop not before 02:15Z).
 - 2026-10-04 ~23:55Z unit 14 — read BOARD 1034–1053, D-065. Cleared the keeper's .pyc blocker (BOARD 1054). Drift
