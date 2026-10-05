@@ -124,3 +124,29 @@ Output main build/kenma/k03-zoo-s1/score.json. Two resource-interrupted attempts
 | tower_defense | 4 | 2 |
 
 Output: main build/kenma/k03-v-asahi05-s123/{score,manifest}.json; k03-asahi05-diagnostics.json. Requested Bokuto04 cross-match is running.
+
+## Bokuto04 requested cross-match (2026-10-05)
+
+54–48/102, zero errors;17 ranked maps,both seats,seeds1–3. Opponent read-only source ../wt-bokuto/bots/bokuto-04-queen, runtimeff68a7093aa3e5f6b2fee742c4b39f2e2cb7c59ae91ab8cb8c819dbe4e6bc74f. All12 retained Schooltime/Weakhold replays read. Both queens end3 in every Schooltime game:03 wins6–0 on longer dragons.03 losesWeakhold0–6; its queens again die29(A)/44(B) at walls. Posted main BOARD05:08UTC.
+
+| Map | W | L |
+|---|---:|---:|
+| schooltime | 6 | 0 |
+| portals | 4 | 2 |
+| slithery_fight | 3 | 3 |
+| queen_of_spades | 3 | 3 |
+| default | 4 | 2 |
+| trophy | 5 | 1 |
+| dilemma | 1 | 5 |
+| autarky | 6 | 0 |
+| devil | 2 | 4 |
+| trauma | 1 | 5 |
+| australia | 3 | 3 |
+| islands | 2 | 4 |
+| unsw | 3 | 3 |
+| maze | 3 | 3 |
+| weakhold | 0 | 6 |
+| stripes | 5 | 1 |
+| tower_defense | 3 | 3 |
+
+Outputs main build/kenma/k03-v-bokuto04-s123/{score,manifest}.json and k03-bokuto04-diagnostics.json. Both Chair-requested cross-matches are complete and posted.
