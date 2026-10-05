@@ -7,22 +7,22 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 30, 2026-10-05 16:51–16:56Z)
+## Top — read this first (unit 31, 2026-10-05 17:51–17:58Z)
 
-- **Last BOARD line read:** 1440 (Sugawara 16:44Z bokuto-35 known-bed term). Next unit reads from 1441.
-- **LIVE = 17791 (`bokuto-18-queenfeed`) — trial 3.** At 16:51Z: 40 ranked / 8 series since activation, monitor mean +0.058 [−0.029, +0.145] (not the D-084 statistic). Elo 1836 rank 63 (24 h ago 1721). Fault scan: 55 games of 17791 since 14:4xZ, 0 TLE, 0 exceptions either side, cpu_max 13.05 M.
-- **Look timing (Hinata 15:38Z, D-086 §C): ≈ 17:50–18:10Z** (16.5 ranked games/h). **The 18:00 blackout runs 17:52–18:12Z** — the table and end rule may be done inside it, but register/submit/activate wait until ≥ 18:12Z.
-- **D-086 §B (Chair 16:25Z): trial 4 = `asahi-27-b13-reserve`** (replaces D-085 §C; bokuto-27 not trialled). Staged at build/daichi/stage/asahi-27-b13-reserve (fp 16ceecff52c5… = Asahi probe), NOT yet registered. At the look: register.json {"candidates":[{"dir":"build/daichi/stage/asahi-27-b13-reserve","priority":100}]}, then submit.json {"candidate":"asahi-27-b13-reserve","activate":true} (409 while compiling → resubmit ~3 min). Trial 4 replaces 17791 directly. Trial 5 = Bokuto's latest complete bundle (35/34/33), Chair names it.
-- **D-084 end rule:** statistic at 1725 for 17791 vs 17388 on all ranked games since 05:02Z; 17791 becomes incumbent of record if it exceeds by > 0.03, else 17388 stays. Table: statistic at 1725, bands, Schooltime apart, end reason × result by band, queen columns, faults, reached-r300 and carried views side by side; Hinata posts the curve block (tools/hinata/look.py) and seat × result (D-086 §C) within a unit after the look.
-- **D-086 §D:** points limit stays 30 M for all bots until the Chair posts otherwise (contest page says 100 M; no action for Live ops).
+- **Last BOARD line read:** 1455 (Asahi 17:49Z bokuto-35 atlas-off twin). Next unit reads from 1456.
+- **LIVE = 17791 (`bokuto-18-queenfeed`) — trial 3.** At 17:51Z: 59 ranked / 12 series since activation, monitor mean +0.035 [−0.072, +0.154]; rolling 40 −0.011 [−0.149, +0.138] (monitor statistic, not D-084's). Elo 1838 rank 59 (24 h ago 1725, 7 d 1767). Fault scan: 24 more games since 16:4xZ, 0 TLE, 0 exceptions either side, cpu_max 12.58 M (cumulative 79 games, 0 faults).
+- **Look:** 60-game series boundary not yet reached at 17:51Z (59). Hinata (17:36Z) puts it ≈ 18:20–18:45Z and reads the curve block next unit with the frozen procedure. 18:00 blackout 17:52–18:12Z: register/submit/activate only ≥ 18:12Z.
+- **D-086 §B: trial 4 = `asahi-27-b13-reserve`** (Hinata pre-registered trial-4 forecast 17:36Z, P-hinata-07). Staged at build/daichi/stage/asahi-27-b13-reserve (fp 16ceecff52c5… = Asahi probe), NOT yet registered. At the look: register.json {"candidates":[{"dir":"build/daichi/stage/asahi-27-b13-reserve","priority":100}]}, then submit.json {"candidate":"asahi-27-b13-reserve","activate":true} (409 while compiling → resubmit ~3 min). Trial 5: bokuto-35 does NOT qualify (Asahi 17:13Z, Sugawara 17:26Z); Bokuto now testing bokuto-41-atlas0 (card ≈ 19:15Z). Chair names trial 5.
+- **D-084 end rule:** statistic at 1725 for 17791 vs 17388 on all ranked games since 05:02Z; 17791 becomes incumbent of record if it exceeds by > 0.03, else 17388 stays. Table: statistic at 1725, bands, Schooltime apart, end reason × result by band, queen columns, faults, reached-r300 and carried views; Hinata posts the curve block and seat × result.
+- **D-086 §D points:** Hinata/Sugawara: server cut at 100 M on 25–29 Sep; our current bots peak ~13 M. Limit stays 30 M until the Chair posts otherwise; Asahi burn test ≈ 18:15Z. No Live ops action.
 - restore.json field order: `previous` = id to ACTIVATE, `candidate` = id active NOW. A fault ends a trial at once (restore 17388).
-- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json (git.done 16:28Z errors []).
-- Backup send_later at 18:16Z (trig_01UCULKias2ATFbANx6hz14j) in case the hourly unit misses the look/upload window. The earlier 17:22Z backup will find < 60 ranked and should do nothing.
+- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json; git.done 16:55Z pushed r/daichi.
+- Backup send_later at 18:16Z (trig_01UCULKias2ATFbANx6hz14j) covers the look/upload window before the 18:51Z hourly unit.
 
 ## Next unit
 
-1. Read BOARD from 1441. live_monitor; fault scan 17791 (ids from index.jsonl, bot_a/bot_b == "17791"; script build/daichi/tmp/faultscan.py).
-2. If ≥ 60 ranked at a series boundary: build table (trial_d075.py / look2.py), apply D-084 end rule, post BOARD; after 18:12Z register + upload + activate trial 4, BOARD + notify user.
+1. Read BOARD from 1456. live_monitor; fault scan 17791 (`python3 build/daichi/tmp/faultscan.py <ids>`; ids from index.jsonl where bot_a/bot_b == "17791", started_at ≥ 17:4xZ).
+2. If ≥ 60 ranked at a series boundary: build table (trial_d075.py / look2.py), apply D-084 end rule, post BOARD; after 18:12Z (and outside 19:52–20:12Z) register + upload + activate trial 4, BOARD + notify user.
 
 ## Open questions for the Chair
 
@@ -30,6 +30,7 @@ STATUS: RUNNING
 
 ## Units
 
+- 2026-10-05 17:51–17:58Z unit 31 — read BOARD 1441–1455 (D-086 §D points settled at 100 M historic; bokuto-35 fails; trial-4 forecast filed). 17791: 59 ranked, +0.035, no faults; look not reached. No server actions, no BOARD line.
 - 2026-10-05 16:51–16:56Z unit 30 — read BOARD 1421–1440 (D-085, D-086: trial 4 = asahi-27-b13-reserve; look ≈ 17:50–18:10Z). 17791: 40 ranked, +0.058, no faults. No server actions, no BOARD line.
 - 2026-10-05 14:51–15:00Z unit 29 — read BOARD 1416–1420 (D-084: back-to-back trials, trial 4 asahi-27). 17791 active, 10 ranked, no faults. Trial 4 staged and fp-checked. No server actions.
 - 2026-10-05 13:50–14:22Z unit 28 — read BOARD 1402–1414 (D-083). bokuto-18-queenfeed copied, fp-checked, registered 13:53Z; blackout wait; uploaded as 17791, activated 14:19Z. BOARD 1409, 1415; user notified.
