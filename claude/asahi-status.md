@@ -78,25 +78,26 @@
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct 04:30Z, fresh session; device shell works)
+## Now (5 Oct 04:43Z; device shell works)
 
-1. **D-068 §C items 1–4 complete** (summary `docs/learning/results/asahi/D068-summary.md`): fallback 0; parity
-   272/272; A1 λ 1 −13.60 [−19.49, −8.09]; no prior −13.05; A1 λ 1.41 −5.88; paired: A1 λ1 − no prior −0.55
-   [−5.88, +4.60], λ1.41 − λ1 +7.72 [+2.94, +12.52] (H-SZ74 holds), A3 λ1 − A1 λ1 +6.62 [+1.47, +12.13].
-   Arms order by sharpness, not accuracy. Item 5 (single-team priors) waits for Hinata 015/016 + Kageyama export.
-2. **Queen (Sugawara's material, Chair 04:18Z request 3):** kenma-03 pool running (2007), cards 20091/20092 after;
-   bokuto-04 pool + cards parked in `build/asahi/hold/` and released once hinata-015 starts (D-072 §F alternation).
-3. 20065 commit (D068 card/census/summary, pairdiff.py) queued; then request push of r/asahi.
-4. Watch for: Kageyama's single-team prior exports; accepted `maps/live_var/` variants (add to pool); Sugawara's
-   queen switches on asahi-05-kz12-k16 (build + seed-1 screen on request, no card needed).
-5. No hand-rule work (D-059).
+1. **D-068 §C items 1–4 complete** (`docs/learning/results/asahi/D068-summary.md`): A1 λ1 −13.60 [−19.49, −8.09];
+   no prior −13.05; A1 λ1.41 −5.88; paired λ1.41 − λ1 +7.72 [+2.94, +12.52] (H-SZ74 holds); A1 λ1 − no prior −0.55;
+   A3 λ1 − A1 λ1 +6.62. Arms order by sharpness, not accuracy. Item 5 waits for Hinata 015/016 + export.
+2. **kenma-03-pocket-queen pool:** 220–52; vs c05 −2.21 [−4.41, −0.37]; vs k16 −4.78 [−7.72, −1.84] (D-070 §D not
+   met); queen-decided 13–4 vs 0–5; queen alive@RL 15/147 (Schooltime 14/14); costs Australia −18.75, UNSW −31.25.
+3. **Learn env fixed:** every learn job failed at `import lightgbm` (no libomp on the Mac). jobd now sets
+   DYLD_LIBRARY_PATH to torch's lib for learn jobs (reloaded 04:41Z, `lgbcheck.py` passes); Hinata's ten jobs re-queued.
+4. Running: bokuto-04 pool (2008) → cards 20093/20094 → commit 20095 → learn queue (015 team 213 first). Then request
+   push of r/asahi.
+5. Watch for: single-team prior exports; accepted `maps/live_var/` variants; Sugawara's queen switches on k16.
+6. No hand-rule work (D-059).
 
 ## Operating notes
 
 - **Daemon:** `tools/asahi/jobd.py`, native on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
   `build/asahi/queue/` first, then the main checkout's `build/learn/queue/`. Restart if down:
   `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
-  Last job id used: 20094 (20065 = commit). Held jobs live in build/asahi/hold/.
+  Last job id used: 20095 (2007a reload, 2007b lgbcheck). Held jobs live in build/asahi/hold/.
 - BOARD lines go to the MAIN checkout's `docs/hub/BOARD.md` with `>>` only; never commit BOARD.md on r/asahi.
 - Session disk was reset ~04:00Z (D-073); still keep little in the session home.
 - `throughput.py` must recycle processes (wasmtime stores leak address space per game).
