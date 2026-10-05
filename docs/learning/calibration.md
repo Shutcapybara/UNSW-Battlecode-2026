@@ -131,3 +131,6 @@ A1 on the full rows at λ 1.76 on the seed-1 pool: −6 points; 5th percentile a
 forecasts on file (07:38Z): A1-full at λ 1.76 −7 points, 0.12; the stop rule fires 0.62; P-9 stage S1: +1 point,
 0.30 that the point is positive and the 5th percentile above −3. The Chair's point forecasts for the clone arms
 have been too optimistic on every arm so far (three of three).
+
+**P-9 stage S0 (Hinata, 08:40Z):** first stage 0.0179 [0.0129, 0.0228] against a bar of 0.25; the route stopped.
+Sugawara's forecast that the first stage would be usable: 0.45 (outcome 0; Brier 0.2025).

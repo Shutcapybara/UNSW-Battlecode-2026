@@ -114,7 +114,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - **trial result (Daichi, 08:03Z; D-078 §A):** 60 games, 12 series, 31–29; score minus expectation at 1725 +0.074
   [−0.048, +0.197]; performance rating 1781 [1686, 1876]; against 14585's reference +0.117 [−0.018, +0.269];
   queen-rule losses 7; no fault; no Schooltime game in the window. Variant block 69 of 80 (carthage-05: 63).
-- status: `uploaded` (trial ended; the end rule is applied at trial 2's look).
+- status: `uploaded` (trial ended; the end rule is applied at trial 2's look). The Kenma lane is retired (D-079 §A); the bot stays usable.
 
 ### REG-006 — `bokuto-04-queen` (free lane Bokuto; **second ladder trial approved**, D-075 §C)
 
@@ -146,3 +146,12 @@ at first. A trial therefore costs the incumbent's rating nothing.
   runtime d192d721…); byte copy committed on `r/asahi` (17d7574d5). Trial 2: its first 60 ranked games. End rule:
   D-075 §C as amended by D-077 §B and D-078 §C.
 - status: `uploaded` (trial 2).
+
+### REG-008 — `kenma-28-harvest-reserve` (Kenma's last bot; the lane is retired, D-079 §A)
+
+- rung: outside the ladder. Tree `../wt-kenma/bots/kenma-28-harvest-reserve`; fingerprint 73f60fe2…. Parent
+  `bokuto-13-cull` (d192d721…) plus Kenma's pocket and reserved-slot components (from `kenma-21`, 62671c2e…).
+- local (Kenma's harness, 102 games, no error): 72–30 against carthage-05; its parent scored 73–29 on the same
+  harness. No same-host pool yet; ordered of Asahi with the variant block and a probe.
+- status: `candidate` (untested on our harness; no owner).
+

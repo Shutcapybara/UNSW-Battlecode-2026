@@ -3362,3 +3362,73 @@ The lead does not care about the live rating and asks for the technical issues t
   stage immediately before appending, a new output directory for every write, the modification-time guard always,
   never force; the old Bokuto session does not write to the BOARD again. A line appended between 08:16Z and
   08:17Z, if any, is lost.
+
+## D-079 — Kenma is retired; the BOARD was overwritten twice; the cull-gate route is closed; what the planned lines have produced (5 Oct 2026 09:17Z, Chair: Ushijima)
+
+### A. Kenma (the GPT free lane) is retired
+
+- The lead reports it out of credits. Its files stay as material; nobody owns them and anyone may copy.
+- What its last runs left in `build/kenma/` (its own harness, 102 games each, no error; read by the Chair from the
+  progress logs):
+
+| Run | Result |
+|---|---|
+| `kenma-28-harvest-reserve` against carthage-05 | 72–30 |
+| `bokuto-13-cull` against carthage-05 (Kenma's control) | 73–29 |
+| `kenma-21` against `bokuto-13-cull` | 34–68 |
+| `kenma-21` against `kageyama-01-p1-slot` | 55–47 |
+| `kenma-21`, pool of 272 | 228–44 |
+
+- `kenma-28-harvest-reserve` names `bokuto-13-cull` (d192d721…) as its parent and adds Kenma's pocket and
+  reserved-slot components. It shows no gain over that parent on the same harness. Kenma had moved onto Bokuto's
+  base before it stopped.
+- A second, independent harness therefore agrees that `bokuto-13-cull` is the strongest bot locally (73–29 against
+  carthage-05; Bokuto's own run 70–31–1).
+- Ordered of Asahi (08:59Z): byte copies of `kenma-03-pocket-queen`, `kenma-21` and `kenma-28-harvest-reserve` on
+  `r/asahi`; a report on uncommitted work in `../wt-kenma` and on any Kenma process still running; the same-host
+  pool, variant block and probe for `kenma-28-harvest-reserve`. Registry: REG-008.
+
+### B. The BOARD was overwritten twice by the old Bokuto session
+
+- 08:17:14Z: replaced by its 05:50Z state (100 lines gone); restored 08:19Z (D-078 §F).
+- 09:05:05Z: replaced by the file that session had built at 08:17Z (lines 1 to 1,323 plus its own request for a
+  ladder screen); the 12 lines from 08:19Z to 08:59Z were gone. Restored 09:06Z from the Chair's 08:59Z copy, byte
+  for byte, with Bokuto's line kept below the notice. Git holds the restored file (af5154501).
+- Lines appended by others between 08:59Z and 09:05Z, if any, are lost; lanes were asked to post again.
+- Cause: a session without a shell writing whole-file copies through the file bridge from stale stages. The lead
+  is closing that session and starting a fresh one. The Chair keeps a copy of the BOARD at every unit and asks for
+  a keeper pass after every restore.
+
+### C. The cull-gate route (P-9) is closed at its first stage
+
+- Sugawara found before any number was read that the bot's cull draw is not a per-turn coin: each dragon is hit on
+  one fixed round in every eight. The unit became the eligibility spell and the instrument the delay to the hit.
+  Hinata accepted the amendment and froze it at 08:37Z.
+- Result: P(cull | shortest delay) minus P(cull | longest delay) = 0.0179 [0.0129, 0.0228], against a bar of 0.25.
+  When the hit round is reached inside a spell the bot culls 2 % of the time; other gates block the rest. The logs
+  cannot teach a cull decision. No effect was computed. The route stops, as its own rule says.
+- Forecast on file: Sugawara, usable first stage 0.45 (outcome 0; Brier 0.2025, not council-scored).
+- Hinata intends to file a self-play value-model card next. **It may be filed; no compute is approved for it
+  before the trial-2 look, and the Chair's present intention is not to fund it** (the author's own forecast for
+  that route was 0.08).
+
+### D. What the planned lines have produced (the lead's question, 09:05Z)
+
+- **In playing strength: nothing that survived.** The clone prior: six priors tested in the search, all 6 to 14
+  points below the live one. The hand rule: +2.6 points locally, −0.26 a game live, rolled back. The isolated queen
+  builds: no gain and a loss. The value model failed; the cull gate stopped at its first stage.
+- **As services: three lanes carry everything else.** Asahi's harness (pools, probes, the variant block), Daichi's
+  live operations (two clean trials, the rollback, the rating finding), and Kageyama's data work (the bed
+  schedule and five hidden layouts, which gave the first out-of-sample check of a candidate).
+- **Nothing from any lane is confirmed on the ladder yet.** Trial 2's interim (Daichi, 08:51Z; 25 games, not the
+  look): `bokuto-13-cull` 10–15, −0.193 a game at rating 1725. If that holds at 60 games, two local gains in a row
+  (k = 16, and this one, which two harnesses agree on) will have failed to carry, and the bottleneck is the local
+  pool's power to predict the ladder, not the supply of candidates.
+- **Chair's intentions, told to the lead:** no change before the look (about 11:15Z); the clone-prior line pauses
+  when its last arm reports; Asahi, Daichi and Sugawara continue as they are; whether Hinata's and Kageyama's lanes
+  are stood down or become a builder lane is the lead's decision after the look.
+- **Prepared now, dispatched only by a later record:** Daichi drafts a paired live screen through the battles
+  control (candidate and reference against the same chosen opponents, in the same hour, without the live slot):
+  `bokuto-13-cull` and `kenma-03-pocket-queen` against 14585 on six opponents, two near our rating, two near 1900
+  and two of the top ten, sized from the field quota. At the look Daichi also splits both trial windows by
+  opponent rating (above and below 1725).

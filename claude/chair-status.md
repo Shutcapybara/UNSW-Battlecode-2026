@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 08:18Z (unit 28). Next self-wake about 09:15Z. Branch `r/ushijima`; private tree
+State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 09:18Z (unit 29). Next self-wake about 10:15Z. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,15 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-079: Kenma is retired; nothing from any lane is confirmed on the ladder yet.** Kenma's last bot,
+  `kenma-28-harvest-reserve`, is `bokuto-13-cull` plus Kenma's pocket and reserve: 72–30 against carthage-05 where
+  its parent scored 73–29 on the same harness, so a second harness agrees that Bokuto's bot is the strongest
+  locally. **Trial 2's interim (25 games, not the look): `bokuto-13-cull` 10–15, −0.193 a game.** If it holds at 60
+  games, two local gains in a row failed to carry and the bottleneck is the local pool, not the candidates. The
+  BOARD was overwritten a second time by the old Bokuto session (09:05Z) and restored (09:06Z). The cull-gate
+  route (P-9) closed at its first stage. To the lead's question: the planned lines have produced no playing
+  strength; Asahi, Daichi and Kageyama carry the services. Intentions: no change before the look; the clone-prior
+  line pauses at its last arm; no compute for a self-play value model; Daichi drafts a paired live screen.
 - **D-078: trial 1's table is in; trial 2 is uploaded.** `kenma-03-pocket-queen` (17388): 60 ranked games, 31–29,
   +0.074 [−0.048, +0.197] at rating 1725, performance 1781; +0.117 [−0.018, +0.269] over 14585's reference; no
   fault; **no Schooltime game in the window**, so its mechanism was not exercised (Daichi checks whether Schooltime
@@ -194,7 +203,7 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 | Evaluator queue (Asahi) | Done since 07:25Z: the variant block (80 fixtures) and re-zero; the 213 prior at λ 1 and λ 1.45 (both −12.5); byte copies of the Bokuto bots committed. Queue: one pool and probe an hour per free lane on request; Sugawara's leave-one-out builds on `bokuto-13-cull` and Q1r; A1-full at λ 1.76 after its export (last); Kageyama's trajectory-rows job and Hinata's one-fold learn jobs between them |
 | Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) and rolled back at 04:53Z (D-075 §A) |
 | Uploaded, inactive | 14585 (carthage-05, incumbent, waiting behind the trials), 16979 (k = 16, rolled back), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
-| Live screen | Trial 1 ended: `kenma-03-pocket-queen` (17388) +0.074 [−0.048, +0.197], 60 games. **Trial 2: `bokuto-13-cull` = submission 17530, uploaded 08:14Z**; look at the first series boundary at or after 60 ranked games (about 11:15Z), with Schooltime reported apart. End rule: over 14585's reference (−0.043) by more than 0.03; between the trial bots live decides only beyond 0.10, else the pool (D-078 §C); the winner stays live |
+| Live screen | Trial 1 ended: `kenma-03-pocket-queen` (17388) +0.074 [−0.048, +0.197], 60 games. **Trial 2: `bokuto-13-cull` = submission 17530, live since 08:15:41Z**; interim at 25 games 10–15, −0.193 (not the look); look at the first series boundary at or after 60 ranked games (about 11:15Z), Schooltime apart and split by opponent rating. End rule: over 14585's reference (−0.043) by more than 0.03; between the trial bots live decides only beyond 0.10, else the pool (D-078 §C); the winner stays live. A paired live screen through the battles control is being drafted (D-079 §D) |
 
 ## Facts settled this unit
 
@@ -217,10 +226,10 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 | Queen owner (was council, mechanism) | Sugawara (Claude), hourly at :25; shell works | owns the queen problem (D-072 §C); q1-cage: no gain; q2b-crown: a loss on the pool and the keeper panel; both forecasts failed; next step is its choice (Chair's suggestion: leave-one-out from the free-lane bot) |
 | Council, probe | Nishinoya (GLM) | deactivated by the lead |
 | Data | Kageyama (Claude), `r/kageyama`; shell works | all five bed layouts done (828 of 828); 213 and 91 slot bots exported; trajectory block built with a C++ twin. Next: A1-full export, then teacher rows on the variant maps as oracle rows. Stamps its BOARD lines ahead of the clock (told) |
-| Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | five clone arms in, all below the bar; one left (A1-full at λ 1.76). **Next route P-9: a learned cull gate for `bokuto-13-cull` from its own randomised culls; stage S0 approved (D-078 §D)** |
+| Learner; owner of the clone in play | Hinata (Claude), Cowork VM; hourly task at :35 | five clone arms in, all below the bar; one left (A1-full at λ 1.76). P-9 (cull gate) closed at its first stage. A self-play value-model card may be filed; no compute before the look, and the Chair does not intend to fund it |
 | Evaluator | Asahi, `r/asahi`, native executor `tools/asahi/jobd.py`; fresh session after the reset | working: both free-lane pools posted with queen columns; learn-runner library fix; queue as in the table above |
 | Live ops | Daichi (Claude), `r/daichi`, Cowork VM; hourly at :50; shell works | trial 1 read at 60 games; `bokuto-13-cull` uploaded as 17530 at 08:14Z; next: trial 2's look (Schooltime apart), the Schooltime-in-the-draw check; hub items: seat field, end reason `queen`, frozen pairing rule |
-| Free lanes (outside the ladder) | Kenma; Bokuto | Kenma: `kenma-03-pocket-queen` on trial; `kenma-21` 60–42 against carthage-05. **Bokuto: `bokuto-13-cull`, pool 241–31 on our harness, trial 2.** Bokuto's shell is down since 04:10Z: two cloud cores, about 150 games an hour, nothing committed; a fresh session would restore its shell |
+| Free lanes (outside the ladder) | Bokuto (Kenma retired, D-079) | **Bokuto: `bokuto-13-cull` on trial 2; version 17 (terrain atlas, pocket ban, whole-map routes) in progress.** The old session has no shell and overwrote the BOARD twice; the lead is closing it and starting a fresh one (inception block given 08:5xZ). Kenma: out of credits; its bots stay in `../wt-kenma` and `build/kenma/` |
 | Analyst | Shenzhen | stopped by the lead (D-074 §C); units 36–39 uncommitted unless Kageyama ran its commit command (not reported) |
 
 ## Human-in-the-loop items (each asked once, in unit 1)
@@ -240,26 +249,29 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 | H11 | Confirm the hub runs inside the restart loop (a redeploy exits it) | **closed 04:07Z**: loop started by the lead, redeploy tested (D-073 §A) |
 | H12 | The Cowork VM session disk was full | **reset by the lead about 04:00Z**; fresh sessions work (Sugawara, Daichi, Kageyama, Asahi); the Chair's device shell and Bokuto's still fail; the backup image `~/Desktop/sessiondata.img.bak` can be deleted; expect a refill in one to three days |
 | H13 | Kageyama cut off | closed: fresh session working since 21:16Z |
-| H15 | Free lanes | Kenma and Bokuto both running. **Asked of the lead (unit 27): a fresh session for Bokuto**, the lane with the best bot and the least compute |
+| H15 | Free lanes | Kenma retired by the lead (credits). **Bokuto: the lead closes the old session and starts a fresh one when home**; inception block and setup notes given |
 | H14 | Mac disk | closed: 74 GB deleted with the lead's approval; 102 GB free |
 
 ## Next three decisions
 
-1. **The end rule at trial 2's look** (about 11:15Z): `bokuto-13-cull`, `kenma-03-pocket-queen` or 14585 as incumbent
-   (D-075 §C, D-077 §B, D-078 §C).
-2. **Whether Schooltime is still in the ranked draw** (Daichi's count); if not, every local total is re-weighted.
-3. **The queen and the base:** Sugawara's leave-one-out on `bokuto-13-cull`; the last clone arm and the pause.
+1. **The end rule at trial 2's look** (about 11:15Z). On the interim it would pick `kenma-03-pocket-queen`, a bot
+   whose window never drew the map its change acts on; the rule is applied as written and the weakness stated.
+2. **After the look: where effort goes.** If local gains do not carry, measurement against real opponents (the
+   paired live screen) comes before more building; the lead decides on Hinata's and Kageyama's lanes.
+3. **`kenma-28-harvest-reserve` on our harness** (pool, variants, probe) and Sugawara's layer removal on
+   `bokuto-13-cull`.
 
-Waiting on the lead: **a fresh session for Bokuto** (prompt given in unit 27's report; no sign of one yet).
-Optional: a fresh Chair session (no device shell), and deleting `~/Desktop/sessiondata.img.bak`. Unanswered, not
-acted on: whether Asahi's cards should carry a curve block (the summary-statistics curve by round).
+Waiting on the lead (when home): **close the old Bokuto session and start a fresh one**; connect both folders;
+optionally commit `../wt-bokuto` natively. Optional: a fresh Chair session, deleting `~/Desktop/sessiondata.img.bak`.
+For the lead to decide after the look: Hinata's and Kageyama's lanes. Unanswered: the curve block on Asahi's cards.
 
 ## Cursor
 
-Last BOARD line read: line 1323 (Asahi 08:11Z, with sub-lines), main tree. Own lines 1324 (restore notice) and 1325 (D-078) follow.
+Last BOARD line read: line 1337 (Bokuto's 08:17Z request, re-attached at the second restore), main tree. Own D-079 line follows.
 
 ## Open flags
 
+- **BOARD overwritten a second time at 09:05:05Z** (the old Bokuto session's 08:17Z file); restored 09:06Z; git af5154501 (D-079 §B).
 - **BOARD overwritten at 08:17:14Z with its 05:50Z state; restored by the Chair at 08:19Z** (D-078 §F). Likely cause:
   the old Bokuto session sending a stale file through the file bridge. The Chair keeps a full copy of the BOARD in
   its work folder at every unit; git holds each keeper pass.

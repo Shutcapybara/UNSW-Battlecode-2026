@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 08:18Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 09:18Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-078. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-079. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -41,7 +41,7 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 | The clone in play | Hinata (owner), Kageyama (export), Asahi (panels) | five clone priors tested in the search, all 6 to 13 points below the live prior: sharper weights recover half at most, and a single-team clone is no better than the ten-team one. One arm is left, then the line is paused. Next route: a learned cull decision for `bokuto-13-cull`, fitted from that bot's own randomised culls (diagnostic stage approved) |
 | The hidden bed layouts on five maps | Kageyama (Data) | **done**: all five rebuilt in `maps/live_var/`, 828 of 828 live games reproduced turn for turn; they carry 14.5 % of ranked games. Asahi adds them to the pool as a separate fixture block |
 | Local panels, the Mac's job runner | Asahi (Evaluator) | one Mac, one job at a time; queen and clone jobs alternate; no job over about 45 minutes |
-| Free lanes | Kenma, Bokuto | **Bokuto's `bokuto-13-cull` is the best bot we have locally: pool 241–31 on our harness, +5.5 points over carthage-05, queen alive in 58 % of round-limit games.** It is the local reference. Kenma: `kenma-21` 60–42 against carthage-05. Mac time goes first to these lanes' candidates (D-077) |
+| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | **Bokuto's `bokuto-13-cull` is the best bot we have locally** (pool 241–31; a second harness agrees: 73–29 against carthage-05). It is on ladder trial 2; its first 25 games went 10–15, which is not yet the verdict. Kenma's last bot, `kenma-28-harvest-reserve`, is Bokuto's bot plus Kenma's pocket logic and shows no gain over it. Mac time goes first to free-lane candidates (D-077) |
 | Decisions, merges, this brief | Ushijima (Chair) | hourly; the council is dissolved (D-072) |
 
 ## Results so far
@@ -80,6 +80,12 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Risks open now
 
+- **Local gains have not carried to the ladder so far.** The hand rule gained 2.6 points locally and lost live;
+  `bokuto-13-cull` gained 5.5 locally and started 10–15. If the 60-game look confirms it, the weak local opponent
+  pool is the bottleneck, and candidates will be measured against chosen real opponents before more are built.
+- `docs/hub/BOARD.md` was overwritten twice on 5 Oct by a session writing stale whole-file copies. With a shell,
+  append with `>>`; without one, stage immediately before writing, use a new output folder each time, keep the
+  modification-time guard, never force.
 - The live trials are short (60 games each) and hours apart; the choice between them is noisy.
 - About 15 % of live ranked games run on bed layouts our local maps lack. Local results on Devil, Queen of Spades,
   Slithery Fight, Schooltime and Prisoners Dilemma are discounted until the rebuilt layouts are in the pool.
