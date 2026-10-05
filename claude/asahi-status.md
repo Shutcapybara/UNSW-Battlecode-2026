@@ -78,24 +78,22 @@
 - 5 Oct 00:09–00:20Z: sysinfo posted; jobd reloaded (learn env PYTHONDONTWRITEBYTECODE=1); p1-slot parity 272/272; screens queued.
 - 4 Oct 23:45Z: P-7 throughput posted: 1.89×10⁸ decisions/h (19× bar); wasmtime address-space leak → recycle workers.
 
-## Now (5 Oct 07:22Z)
+## Now (5 Oct 08:12Z, queue idle)
 
-0. Incumbent carthage-05 (14585); Kenma trial live (17388). **bokuto-13-cull meets D-076 §B (posted 07:20Z): pool 241–31,
-   +5.51 [+2.19, +9.19] vs c05, +2.94 [−0.74, +6.99] vs k16; queen-decided 92–2; queen alive at limit 94/163; probe OK
-   (3.75 MiB, max 12.38 M, 0 errors), fp d192d721.**
-1. λ 1.72 arm: −7.35 [−12.15, −2.21]; λ curve 1 / 1.41 / 1.72 = −13.60 / −5.88 / −7.35 (posted 07:21Z).
-2. Running: merge_main done (maps/live_var); panel `var` for c05, k16, kenma-03, bokuto-13; vartotal two-total cards;
-   commit 2042; then request push.
-3. Clone: team-213 prior λ 1 / λ 1.45 when Kageyama exports.
-4. Queen: Sugawara on leave-one-out (D-076 §C); builds on his order.
-5. Never run repo python in the VM without PYTHONDONTWRITEBYTECODE=1 (a VM-made .pyc blocked merge_main at 07:11Z).
+0. Trial 1 (kenma-03, 17388) look: +0.074 vs E @1725, +0.117 [−0.018, +0.269] vs 14585's reference (Daichi 08:03Z).
+   Trial 2 = bokuto-13-cull. bokuto-13-cull is the local reference (cards paired vs c05 and vs bokuto-13).
+1. **Clone, team-213 prior (posted 08:11Z):** λ 1 −12.50 [−17.28, −7.35]; λ 1.45 −12.68 [−17.83, −7.54]; both fail
+   the stop-rule bar. Last arm: A1-full at λ 1.76 when Kageyama exports; if it fails too the clone-prior line pauses.
+2. D-077 §C done: bokuto-04-queen and bokuto-13-cull byte copies committed (17d7574d5); push requested 08:11Z.
+3. Waiting for: free-lane pool/probe requests; Sugawara's leave-one-out builds on bokuto-13; A1-full export.
+4. No hand-rule work (D-059).
 
 ## Operating notes
 
 - **Daemon:** `tools/asahi/jobd.py`, native on the Mac in `../wt-asahi` (pid 2305 since 19:15Z), serving
   `build/asahi/queue/` first, then the main checkout's `build/learn/queue/`. Restart if down:
   `cd ~/Documents/Projects/wt-asahi && caffeinate -is ../UNSW-Battlecode-2026/.venv/bin/python tools/asahi/jobd.py --main ../UNSW-Battlecode-2026`.
-  Last job id used: 2042. Held jobs live in build/asahi/hold/.
+  Last job id used: 2047e. Held jobs live in build/asahi/hold/.
 - BOARD lines go to the MAIN checkout's `docs/hub/BOARD.md` with `>>` only; never commit BOARD.md on r/asahi.
 - Session disk was reset ~04:00Z (D-073); still keep little in the session home.
 - `throughput.py` must recycle processes (wasmtime stores leak address space per game).
