@@ -32,7 +32,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
 
 ## Entries
 
-### REG-000 — `carthage-05-free-sprint` (incumbent again since 5 Oct 04:53:55Z, D-075 §A)
+### REG-000 — `carthage-05-free-sprint` (incumbent until 5 Oct 11:2xZ; the rollback target, D-081)
 
 - rung: pre-ladder parent (hand search with the hb1-14 GBT direction prior). parent: `carthage-04-sprint123`.
 - switch: free on-route 2- and 3-step sprints on top of correct 1.2.3 sprint pricing.
@@ -42,7 +42,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - fingerprint: `ebeba55f` (from the upload name). live: submission **14585**,
   `LV-carthage-05-free-sprint-ebeba55f-ai`, active 2 Oct 04:22Z to 5 Oct 02:13Z and restored 5 Oct 04:53:55Z
   (D-075 §A). Not serving ranked games during the ladder trials of D-074 §B and D-075 §C (17388 since 05:02Z).
-- status: `incumbent`.
+- status: `uploaded` (rollback target; replaced as incumbent by REG-005 under D-081 §A).
 - Open items for Live ops and the Evaluator:
   - the hub's candidate row for this bot shows `submission: null` and status `runtime_ok` although 14585 is live;
     reconcile it before any rollback depends on that row;
@@ -99,7 +99,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
   curve 0.676 / 0.684 / 0.703 / 0.714 at 0.10 / 0.25 / 0.50 / 1.0 of the training series.
 - status: `diagnostic`. The battery's A3 is the unweighted refit (D-060 §E).
 
-### REG-005 — `kenma-03-pocket-queen` (free lane Kenma; **ladder trial running**, D-074 §B)
+### REG-005 — `kenma-03-pocket-queen` (free lane Kenma, retired; **the incumbent since D-081**)
 
 - rung: outside the ladder (free lane, D-067 §F). parent: `carthage-05-free-sprint` lineage, Kenma's tree
   `../wt-kenma/bots/kenma-03-pocket-queen`.
@@ -114,7 +114,8 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - **trial result (Daichi, 08:03Z; D-078 §A):** 60 games, 12 series, 31–29; score minus expectation at 1725 +0.074
   [−0.048, +0.197]; performance rating 1781 [1686, 1876]; against 14585's reference +0.117 [−0.018, +0.269];
   queen-rule losses 7; no fault; no Schooltime game in the window. Variant block 69 of 80 (carthage-05: 63).
-- status: `uploaded` (trial ended; the end rule is applied at trial 2's look). The Kenma lane is retired (D-079 §A); the bot stays usable.
+- **end rule (D-081 §A):** +0.117 over the reference against a bar of 0.03; `bokuto-13-cull` at +0.001; the windows differ by 0.115. By opponent rating: at or above 1725 +0.162 [0.000, +0.324] (35 games), below −0.048; queen-rule losses 7 of 29. Caveats: the interval includes zero; no Schooltime game in the window; nobody maintains the bot.
+- status: **`incumbent`** (submission 17388; activation by Daichi under D-081; rollback target 14585; D-052 §B applies).
 
 ### REG-006 — `bokuto-04-queen` (free lane Bokuto; **second ladder trial approved**, D-075 §C)
 
@@ -128,7 +129,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
   31 losses against carthage-05; three stacked layers, so nothing is attributable to the queen block alone.
 - status: `candidate`; trial 2 unless `bokuto-13-cull` qualifies (D-076 §B).
 
-### REG-007 — `bokuto-13-cull` (free lane Bokuto; **trial 2**, D-077 §A; the local reference)
+### REG-007 — `bokuto-13-cull` (free lane Bokuto; trial 2 ended; the local reference)
 
 - rung: outside the ladder (free lane). Tree `../wt-bokuto/bots/bokuto-13-cull` (uncommitted); byte copy in
   `wt-asahi/bots/bokuto-13-cull`, to be committed on `r/asahi` (D-077 §C). Runtime fingerprint d192d721….
@@ -145,7 +146,8 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - live: submission **17530**, `LV-bokuto-13-cull-877fa2c9-ai`, uploaded 5 Oct 08:14:33Z (hub fingerprint 877fa2c9;
   runtime d192d721…); byte copy committed on `r/asahi` (17d7574d5). Trial 2: its first 60 ranked games. End rule:
   D-075 §C as amended by D-077 §B and D-078 §C.
-- status: `uploaded` (trial 2).
+- **trial result (Daichi, 10:56Z; D-081):** 60 games, 12 series, 30–30; −0.041 [−0.132, +0.062] at rating 1725; +0.001 [−0.110, +0.126] over the reference; at or above 1725 −0.073 [−0.148, −0.003] (25 games), below −0.019; queen-rule losses 14 of 30; queen alive at the end 17 of 60; no fault. Not chosen.
+- status: `uploaded` (trial ended; plays at 14585's level on the ladder).
 
 ### REG-008 — `kenma-28-harvest-reserve` (Kenma's last bot; the lane is retired, D-079 §A)
 
@@ -165,5 +167,6 @@ at first. A trial therefore costs the incumbent's rating nothing.
 - local (Bokuto's harness): 66–33 against `asahi-05-kz12-k16` (Weakhold 0–6 → 5–1).
 - conditions for a trial (D-080 §D): `gen` panel and hidden-layout block not below `bokuto-13-cull`'s; the twin with
   `n_maps = 0`; pool and probe. Asahi's runs are in progress.
-- status: `candidate` (measurement in progress).
+- same-host (Asahi, 10:40Z and 11:18Z): pool 228–44; against `bokuto-13-cull` −4.78 points [−8.46, −1.08]; variants 75 of 80; `gen` (29 unknown maps) −1.19 [−3.88, +1.51]; probe passed. Twin with the atlas off (`asahi-26-b17-atlas0`): pool 240–32; atlas on minus off −4.41 [−8.46, −0.35], exactly 0 on `gen`. `qk2` 28–40.
+- status: `measured`; not a trial candidate (the atlas costs 4.4 points where it is exact; D-081 §C).
 

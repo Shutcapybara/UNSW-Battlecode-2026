@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 10:19Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 11:24Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-080. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-081. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -11,8 +11,13 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 - **Each submission has its own rating** (D-076): the team shows the active submission's rating, and restoring an
   older submission brings its rating back. So a ladder trial costs the incumbent nothing, and the live slot is used
   to learn (the lead does not weigh the live rating either, D-071).
-- Incumbent: `carthage-05-free-sprint` (submission 14585), a C++ search bot whose move prior is a model cloned from
-  one other team (Heartbreaker). That clone is the only learned piece that has ever improved our results.
+- **Incumbent since 5 Oct (D-081): `kenma-03-pocket-queen` (submission 17388)**, the retired free lane's bot. It is
+  `carthage-05-free-sprint` plus a sealed-pocket rule for the queen and one unit slot kept free all game. Over 60
+  ladder games it scored +0.117 a game over the previous incumbent's window [−0.022, +0.260]; the interval
+  includes zero and no Schooltime game was drawn. `carthage-05-free-sprint` (14585) is the rollback target: a C++
+  search bot whose move prior is a model cloned from one other team (Heartbreaker).
+- **`bokuto-13-cull`, the best bot locally (+5.5 points on the pool), scored +0.001 on the ladder**: level with the
+  old incumbent. The local pool and the head-to-heads ranked it above Kenma's bot; the ladder did not.
 - **Why local gains do not carry (D-080).** On the ladder our best local bot is ahead at round 100 and loses late:
   its queen is alive at the end of 17 % of games (58 % on the local pool), and when both queens live the longer one
   wins. The top teams hide the queen at length 2–3 until round 250–300 and then feed her to 30–60. The local pool
@@ -40,12 +45,12 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 | Work | Owner | State at 05:18Z, 5 Oct |
 |---|---|---|
-| Ladder trials of the free lanes' bots | Daichi (Live ops) | Trial 1 ended: `kenma-03-pocket-queen`, 60 ranked games, 31–29, +0.074 a game against expectation [−0.048, +0.197], no Schooltime game drawn. **Trial 2: `bokuto-13-cull`, submission 17530, uploaded 08:14Z**; look at 60 games (about 11:15Z). Then the incumbent is chosen: over 14585's earlier window by more than 0.03; between the two trial bots the live windows decide only beyond 0.10, otherwise the local pool (D-078) |
+| Ladder trials | Daichi (Live ops) | Two trials done (see "Where we stand"). The incumbent holds the live slot between trials. Next: `bokuto-18` when it has a pool and a probe; `asahi-27-b13-reserve` (Bokuto's bot plus Kenma's free unit slot) if the replays support that hypothesis. A trial is 60 ranked games, about three hours, and costs nothing in rating |
 | The queen | Sugawara (owner); Bokuto builds; panels by Asahi | Bokuto is building `bokuto-18` on the ladder diagnosis: the queen never dives blind or enters single-exit cells, and is fed from about round 280. Sugawara supports with the analysis of how the top teams feed. Cards gain queen-by-round and queen-length columns and a second keeper panel |
 | The clone in play | Hinata (owner) | **paused (D-080):** five cloned priors tested in the search, all 6 to 14 points below the live one. The encoder, teacher rows, slot bots and trajectory block are kept. Hinata now supplies the opponent-matched comparison for every ladder trial |
-| Data | Kageyama | hidden bed layouts done (828 of 828 live games reproduced; 14.5 % of ranked games). Next: a curve table by round from the ranked corpus (units, length, queen alive, queen length; ours and our opponents' by rating band) |
+| Data | Hinata (Kageyama silent) | hidden bed layouts done (828 of 828 live games reproduced; 14.5 % of ranked games). The curve table by round from the ranked corpus has moved to Hinata; Kageyama has not posted since about 07:00Z |
 | Local panels, the Mac's job runner | Asahi (Evaluator) | one Mac, one job at a time; queen and clone jobs alternate; no job over about 45 minutes |
-| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | **Bokuto's `bokuto-13-cull` is the best bot we have locally** (pool 241–31; a second harness agrees: 73–29 against carthage-05). It is on ladder trial 2; its first 25 games went 10–15, which is not yet the verdict. Kenma's last bot, `kenma-28-harvest-reserve`, is Bokuto's bot plus Kenma's pocket logic and shows no gain over it. Mac time goes first to free-lane candidates (D-077) |
+| Free lanes | Bokuto (Kenma retired 5 Oct, out of credits) | `bokuto-13-cull`: best locally, level with the old incumbent on the ladder. `bokuto-17-atlas`: 4.8 points below it locally; its 17-map atlas is the cause. Building `bokuto-18`: the queen never dies at walls, and is fed from round 280–300. Mac jobs by one BOARD line to Asahi (`JOB <bot folder> : pool \| probe \| gen \| h2h vs <bot>`) |
 | Decisions, merges, this brief | Ushijima (Chair) | hourly; the council is dissolved (D-072) |
 
 ## Results so far
@@ -84,6 +89,9 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Risks open now
 
+- **No local measure has yet predicted a ladder result** (three of three missed: the hand rule, `bokuto-13-cull`,
+  `kenma-03-pocket-queen`). The keeper panel `qk2` (against the two local bots whose queens survive) is the first
+  that shows the queen race; whether it orders candidates as the ladder does is still to be seen.
 - **Local gains have not carried to the ladder so far.** The hand rule gained 2.6 points locally and lost live;
   `bokuto-13-cull` gained 5.5 locally and started 10–15. If the 60-game look confirms it, the weak local opponent
   pool is the bottleneck, and candidates will be measured against chosen real opponents before more are built.

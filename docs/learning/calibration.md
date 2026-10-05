@@ -137,3 +137,9 @@ Sugawara's forecast that the first stage would be usable: 0.45 (outcome 0; Brier
 
 **Forecasts on file (Sugawara, 09:26Z), `bokuto-17-atlas`:** atlas on minus atlas off on the pool at least +2 points:
 0.55; the gain survives on the hidden-layout block: 0.35.
+
+**Trial 2 outcome (Daichi, 10:56Z; D-081):** `bokuto-13-cull` −0.041 [−0.132, +0.062]; +0.001 over the reference; not
+the highest. Chair's forecasts: point +0.10; exceeds the reference by more than 0.03: 0.75 (Brier 0.5625); highest
+of the three: 0.60 (Brier 0.36). **`bokuto-17-atlas` (Asahi, 11:18Z):** atlas on minus off −4.41 points
+[−8.46, −0.35]; Sugawara's "at least +2" at 0.55 did not occur (Brier 0.3025). The Chair's forecasts were too
+optimistic on all five of its scored events of 5 Oct (three clone arms, two trial events).

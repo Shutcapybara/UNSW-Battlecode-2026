@@ -2,10 +2,10 @@
 
 Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes only when this file records it.
 
-## Current state (5 Oct 2026 10:19Z)
+## Current state (5 Oct 2026 11:24Z)
 
 - **R0 passed 4 Oct 14:28Z (D-053 §A). R1: P-2 failed its confirmation 18:20Z (D-057 §B); rung open, behind R2. R2: development battery running (D-057 §C).**
-- Incumbent: `carthage-05-free-sprint` (submission 14585). Trial 1 (`kenma-03-pocket-queen`, 17388) ended at 60 games: +0.074 [−0.048, +0.197] at rating 1725 (D-078 §A). **Trial 2: `bokuto-13-cull`, submission 17530, uploaded 08:14Z.** At its look the end rule is applied: against 14585's reference (−0.043) a lead over 0.03 is needed; between the two trial bots the live windows decide only beyond 0.10, otherwise the pool (D-078 §C). **Local reference: `bokuto-13-cull`.**
+- **Incumbent: `kenma-03-pocket-queen` (submission 17388) since D-081** (trial window +0.074 [−0.048, +0.197] at rating 1725; +0.117 over the reference). Rollback target: `carthage-05-free-sprint` (14585). `bokuto-13-cull` (17530) ended its trial at −0.041, level with 14585. Local reference for cards: `bokuto-13-cull`. Trial queue: `bokuto-18`; `asahi-27-b13-reserve` if the replays support the reserve hypothesis (D-081 §B).
 - Deadline: handled by the lead; the Chair imposes no freeze (D-050 §2).
 - GPU work may run on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3).
 
@@ -67,6 +67,11 @@ blocks live screens.
 
 ## Log
 
+- 5 Oct 11:24Z: D-081. **End rule applied: `kenma-03-pocket-queen` (17388) is the incumbent** (+0.117 over the reference;
+  `bokuto-13-cull` +0.001 after 60 games, 30–30). The pool and the head-to-heads ranked the two in the wrong order.
+  Hypothesis to check: Kenma's reserved unit slot. `bokuto-17-atlas` is below its parent and the atlas is the
+  cause (−4.4 points). `qk2` tests the queen race; the pool cannot. The curve table moves to Hinata; Kageyama is
+  silent.
 - 5 Oct 10:19Z: D-080. Why the local gain does not carry: on the ladder `bokuto-13-cull` is ahead at round 100 and
   loses late by the queen rule (queen alive at the end 17 % against 58 % on the pool; the top teams hide the queen
   and feed her from round 250–300). Cards gain queen-by-round columns and a `qk2` panel; Kageyama builds the curve

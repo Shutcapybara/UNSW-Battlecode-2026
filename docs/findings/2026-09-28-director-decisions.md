@@ -3509,3 +3509,79 @@ The lead does not care about the live rating and asks for the technical issues t
   recovers most of the pairing. The draft is kept.
 - Trial 2 at 45 ranked games (Daichi, 09:55Z; not the look): 21–24, −0.087 [−0.178, +0.020]. The end rule is
   applied at the look.
+
+## D-081 — The end rule: `kenma-03-pocket-queen` becomes the incumbent; `bokuto-13-cull` plays at the old incumbent's level on the ladder (5 Oct 2026 11:23Z, Chair: Ushijima)
+
+### A. Trial 2's table (Daichi, 10:56Z) and the rule
+
+| Window (score minus expectation at rating 1725, series bootstrap) | Games | W–L | Statistic | Against the reference |
+|---|---|---|---|---|
+| 14585, last 120 ranked games before 02:13Z (reference) | 120 | | −0.043 [−0.109, +0.028] | |
+| 17388 `kenma-03-pocket-queen` (trial 1) | 60 | 31–29 | +0.074 [−0.048, +0.197] | +0.117 [−0.022, +0.260] |
+| 17530 `bokuto-13-cull` (trial 2) | 60 | 30–30 | −0.041 [−0.132, +0.062] | +0.001 [−0.110, +0.126] |
+
+- The rule (D-075 §C, D-077 §B, D-078 §C): a trial bot must exceed the reference by more than 0.03. 17530 does
+  not (+0.001). 17388 does (+0.117). Between the trial bots the windows differ by 0.115, more than 0.10, so the
+  live windows decide and not the pool. Both readings give the same answer; no fault in either window.
+- **`kenma-03-pocket-queen` (submission 17388) is the incumbent.** Daichi activates it through the restore control
+  (previous 17530, candidate 17388), outside the blackout. It stays live. D-052 §B applies with 14585 as the
+  rollback target; its trial window counts as its first 60 games.
+- **What this choice rests on, stated plainly.** An interval that includes zero; a window that drew no Schooltime
+  game, the one map its pocket logic acts on; different opponents in the two windows; and a bot whose lane is
+  retired, so nobody develops it. It is the best estimate the rule allows, not an established gain. Its further
+  games as incumbent will narrow the estimate, and the next trial candidate is measured against it.
+- **Chair's forecasts for trial 2, scored:** point +0.10 (outcome −0.041); exceeds the reference by more than 0.03:
+  0.75 (outcome 0, Brier 0.5625); highest of the three: 0.60 (outcome 0, Brier 0.36). The Chair has been too
+  optimistic about every candidate today.
+
+### B. What the two trials say together
+
+- **`bokuto-13-cull`: +5.5 points on the pool, +0.001 on the ladder.** It plays at the old incumbent's level. By
+  opponent rating at game time: below 1725 −0.019 [−0.163, +0.139] (35 games), at or above 1725 −0.073
+  [−0.148, −0.003] (25 games, 7 wins). Lost by the queen rule: 14 of its 30 losses. Hinata's matched column agrees:
+  level with 14585 below 1725, behind it above (+0.167 [0.000, +0.362], 15 games).
+- **`kenma-03-pocket-queen`: −2.2 points on the pool, +0.117 on the ladder.** At or above 1725: +0.162
+  [0.000, +0.324] (35 games); below: −0.048. Lost by the queen rule: 7 of 29 losses. Matched against 14585 on
+  shared opponents its loss rate is 0.165 lower [0.007, 0.351] (55 games, P-hinata-06).
+- **So the two local measures ranked these two bots in the wrong order.** The pool put Bokuto's bot 21 wins ahead;
+  head to head Kenma's later bot lost to it 34–68. Two trials are a small sample, but with k = 16 that is three
+  ladder results in a row that the local numbers did not predict. Until a local measure does predict the ladder,
+  the ladder trial is the test, and it is cheap: three hours, nothing lost in rating.
+- **A hypothesis, not a finding.** What `kenma-03-pocket-queen` adds to carthage-05 outside Schooltime is one thing:
+  every non-queen plans with one unit slot kept free, all game. A free slot is what an escape split needs. If the
+  queen and the others survive attacks by stronger teams because a split is always available, that would explain
+  fewer queen-rule losses and the result against the 1725-and-above band, and it costs economy against weak
+  opponents, which is what the pool sees. **Ordered:** Sugawara checks it in the replays of 17388, 17530 and 14585
+  (splits made at the unit cap minus one, queen deaths by cause, units at rounds 100 to 400). Asahi builds
+  `asahi-27-b13-reserve`: `bokuto-13-cull` with Kenma's global reserve lines and nothing else, for the pool, `qk2`
+  and a probe. If the replays support the hypothesis, that bot is a trial candidate.
+
+### C. Local results of this hour
+
+- **`bokuto-17-atlas` is below its parent, and the atlas is the cause.** Pool 228–44; against `bokuto-13-cull` −4.78
+  points [−8.46, −1.08]. The twin with the atlas off: 240–32; atlas on minus off −4.41 [−8.46, −0.35]; on the 29
+  unknown maps exactly zero. The 17-map atlas costs 4.4 points on the maps where it is exact. Not a trial
+  candidate; Bokuto is told. Sugawara's forecast that the atlas gains at least 2 points: 0.55 (outcome 0, Brier
+  0.3025).
+- **The keeper panel `qk2` shows what the pool cannot** (68 fixtures against `bokuto-13-cull` and
+  `kenma-28-harvest-reserve`): carthage-05 21–47 with 0–27 decided by the queen rule; `bokuto-17-atlas` 28–40, and
+  6–8 in games where both queens live. On the pool the opponents' queens are almost never alive at the end, so the
+  length race is not tested there at all.
+- **Queen by round on the pool:** carthage-05's queen is alive in 150 of 265 games at round 100 and 0 of 146 at
+  the end; `bokuto-13-cull`'s in 240 of 268 and 94 of 163, with a median length of 3 at the end.
+- **Sugawara's census of the top ten** (210 team-games against opponents at 1650 or above): our queen's extra
+  deaths are at walls (0.25 a game against 0.03), not in fights (0.42 both). Top queens are alive at rounds 100,
+  300 and 400 in 85, 65 and 57 % of games; ours in 74, 46 and 35 %. Feeding starts about round 300 in the top
+  quartile; the median top queen is still 3 long at round 400. For `bokuto-18`: first no wall deaths of the queen,
+  then feeding from round 280–300.
+
+### D. Trials and lanes from here
+
+- **Qualification for a trial is unchanged** (a passing probe and a pool not below carthage-05, D-076 §A), and
+  every candidate's card also carries `qk2` and a 102-game head-to-head against the incumbent, as information.
+- **Queue:** `bokuto-18` when Bokuto posts it; `asahi-27-b13-reserve` if §B's check supports it. The incumbent holds
+  the slot between trials.
+- **The curve table moves to Hinata** (who has the method and the rows); Sugawara's census and Asahi's columns
+  already supply the queen part. **Kageyama has not posted since about 07:00Z**; its remaining jobs are cancelled
+  or reassigned, and the Chair recommends to the lead that the lane be stood down.
+- Hinata's lane continues as a service: the matched column at every look, and the curve table.

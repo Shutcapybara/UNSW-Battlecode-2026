@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 09:37Z (unit 23). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 10:36Z (unit 24). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -29,7 +29,20 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
   A stray `build/sugawara/.sg_test` (1 byte) is mine; harmless.
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
-- **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only".
+- **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only". D-080 §D: binds learned features and ladder-rung artifacts, not free-lane bots (atlas trial needs gen panel, hidden-layout block, n_maps = 0 twin).
+
+## Unit 24 (10:26–10:36Z): D-080 feeding census
+
+- **Read:** D-080 (l.3436: §A queen race after r100; §B Sugawara reads LOO on qk/qk2, supports bokuto-18 with feeding analysis;
+  §C clone-prior paused; §D atlas admissible in free-lane bots with gen panel + hidden-layout block + my `n_maps = 0` twin;
+  §E kenma-28 = parent). BOARD through line 1350 (`[10:19 chair:ushijima … D-080 §C–E …]`); my line is 1351 (10:34Z).
+- **Feeding census** (`build/sugawara/feed/{feed.py,summ.py,rows.jsonl}`; TOP 10 vs ≥1650, 210 team-games; 17530 window 55):
+  queen h2h deaths 0.42/g both; **wall 0.25/g us vs 0.03 top** — the survival gap is walls. Top median queen stays 3 to r400;
+  upper quartile grows from r300–350; 10th feed median r329; suicide used by 4/10 top teams, 24 % of corpse eats near a suicide;
+  17530 0 suicides. Escort 2 within 5 tiles both. Review `docs/learning/reviews/D-080-queen-feeding-sugawara.md`.
+- Recommendation to Bokuto: (1) no queen wall deaths, (2) feed from r280–300. Asked Asahi for a queen-death-by-cause column.
+- LOO on 13-cull: no build yet. Forecast (unscored): wall fix lifts queen alive r300 46 % → ≥ 58 %: 0.6.
+- Not notified (no gate flawed; atlas ruling made).
 
 ## Unit 23 (09:25–09:37Z): bokuto-17 atlas flag
 
@@ -178,6 +191,11 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
     evaluation. **Open** (03:34Z; implicit in BOARD line, not phrased as a card).
 
 ## Next checks (queen)
+
+- bokuto-18 pool/probe: queen wall deaths per game, feeds by r330, queen length at the limit; Asahi's new columns + qk2.
+- bokuto-17 cards incl. gen panel and the `n_maps = 0` twin (D-080 §D conditions). Trial-2 look (Daichi) with Hinata's matched column.
+- Kageyama curve table (D-080 §B): check its queen columns against rows.jsonl (r300 alive 46 % for 17530).
+- LOO on 13-cull: read on qk/qk2 vs base only, when built.
 
 - Trial-2 look ~11:15Z (Daichi): rating-band split; does 17530's residual sit vs > 1725? Chair ruling on atlas / bokuto-17 jobs; Asahi's kenma-28 pool+var. Hinata's V card (unfunded) — review only if assigned.
 - Hinata's response to the P-9 amendment (D histogram, first stage). Trial 2 (17530) look at ≥ 60 games (~13Z?) with Schooltime split; tie rule D-078 §C.

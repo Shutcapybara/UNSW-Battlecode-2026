@@ -47,3 +47,25 @@ Forecasts scored: (a) 17530 excess larger ≥ 1725 than < 1725 — yes (+0.20, n
 Caveats: opponents are teams, not fixed bots (their submissions change over 3 days); 17530 n = 40 games / 8 series / 5 teams — any band statement about it is about two opponents; ratings are snapshot elo, not rating at the series.
 
 RL translation. Observation: opponent strength band and r100 state (units, length) are both needed — a value function trained on the local pool learns "ahead at r100 ⇒ win", which 17530's ladder losses contradict. Action: queen survival between r100 and r400 is the action class the pool under-tests. Value/reward: weight local evaluation towards strong opponents (a ≥ 1725 proxy in the pool) or score queen-alive-at-r300 as an auxiliary target. Demonstration: top-ten games where the queen hides at 2–3 then feeds (Bokuto's 09:32Z census) are the demonstrations the pool lacks.
+
+## Standing column (D-080 §A) — procedure frozen 2026-10-05 10:37Z, before computing any trial-2 number
+- **What.** The P-06 primary number, method unchanged, as a column of every trial look: trial sub's loss rate minus 14585's loss rate re-weighted to the trial's per-opponent game counts, only opponents both played; bands by the opponent's median snapshot elo over the trial's games (≥ 1725 hi / < 1725 lo); loss = not won and not tie; series-cluster bootstrap 1,000 × seed 7 (trial and reference resampled independently), linear 5–95 %.
+- **Trial window.** The look's window as Daichi defines it: ranked, completed, team 7, bot id = trial sub, started ≥ the trial start (trial 2: 17530 from 08:15:41Z), in start order, cut at the first series boundary at or after 60 games (whole series only). **Reference:** all ranked, completed post-m2 (≥ 2026-10-02T03:49Z) games of 14585 (unchanged from P-06; 14585 is inactive, the set is closed).
+- **Source.** Index winner field only (no decode needed for the gap). Parity check first: the index-only code must reproduce P-06's 09:46Z result for 17530 on its 40 games exactly; if not, report the mismatch and use the decoded rows. Secondary (decode of the window games only): share of losses ending `queen`, our queen alive at the end.
+- **Disclosure.** Before freezing this I had seen only one aggregate of the current window: 17530 ranked games since 08:15Z in the 10:35Z index = 65, winner a/b 34/31 (not by seat, not a W–L). No gap, band or opponent figure seen.
+- **Stop rule.** One pass per look; posted as a column, no verdict — the Chair applies the end rule. Code tools/hinata/p06_column.py.
+
+### Standing column — trial 2 (17530), computed 2026-10-05 10:38Z, one pass as frozen above
+Index 10:35Z. Window: 17530 ranked from 08:15:41Z, cut at the first series boundary ≥ 60 → **60 games / 12 series** (08:15:41Z–10:30:04Z; complete), W–L 30–30; opponents 8 teams (hi band 25 games: 18 lost; lo 35: 12 lost). Reference 14585 has games against only **4 of the 8** (351, 470, 899, 989; 40 games), so the matched number covers **40 of the 60** trial games. Bootstrap 1,000 × seed 7, series clusters, linear 5–95 %; + = trial loses more.
+
+| band | matched gap | 90 % | trial games in gap | opponents |
+|---|---|---|---|---|
+| all | **−0.044** | [−0.267, +0.148] | 40 | 4 |
+| ≥ 1725 | +0.167 | [0.000, +0.362] | 15 | 3 (470, 899, 989) |
+| < 1725 | −0.170 | [−0.400, +0.093] | 25 | 1 (351: 7/25 vs ref 9/20) |
+
+Unmatched (no 14585 games): 1101 @1976 5/5 lost, 1132 @1764 3/5, 1030 @1601 3/5, 1035 @1543 2/5. Secondary (60 decoded, 0 errors): losses end queen 14/30 (47 %; 14585 in P-06 34 %), elimination 9, longest 7; mean last round of losses 431; our queen alive at the end 17/60 (wins 14/30, losses 3/30).
+
+Parity of the index-only code against P-06 (17530, 40 games): point estimates identical in all three bands; 90 % interval for 'all' [−0.300, +0.148] vs P-06's [−0.307, +0.160] — the reference is now restricted to the trial's opponents before resampling (P-06 resampled 14585 series of all three trial subs' opponents), which changes the draws, not the estimand.
+
+Reading (description, no verdict): on the opponents both played, 17530 is level with carthage-05 overall; worse against the three ≥ 1725 teams (interval touches 0), better against the one < 1725 team. The low band is one opponent, so the 'all' number is mostly 351. Column code tools/hinata/p06_column.py a1c07ad65a42, secondary p06_column_q.py 39318b45788f; output build/hinata/col/col-17530-2026-10-05T0815.json (05335ce30715) + .q*.jsonl.
