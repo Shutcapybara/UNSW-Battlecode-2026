@@ -43,7 +43,45 @@ pushes `r/shenzhen`.
 | H-SZ27 | interval-1 bed fountains | back to untested (unit-11 evidence withdrawn: wrong cell mapping) | — | — | analyst |
 | H-SZ28 | our corpse loop leaks to the enemy — **supported by birth cohort** (unit 14: 29–39 % vs 16–19 % on Around UNSW/Australia/Islands) | measured | leaked corpses not more often in contact zones than the top ten's | corpus | analyst |
 | H-SZ32 | salvage: allies prioritise an ally's contact corpse for ~10 rounds | posted 0.5 (unit 14) | enemy-eaten share of contact corpses not −5 pp in sim | simulator 12 sides | Claude tester / probe |
-| H-SZ33 | die at home: doomed dragons step away from enemy heads | posted 0.45 | contact share not −10 pp in sim | simulator | Claude tester |
+| H-SZ33 | die at home | **withdrawn** (unit 15: probes M/M2 never fire — no self-cull at len ≤ 3; cap splits are sealed) | — | — | — |
+| H-SZ34 | be the mover, not the partner (yield) | **refuted in sim** (unit 16: partner −10 %, total −18 %, Islands −55 %) | — | — | — |
+| H-SZ36 | strike first: short non-queen moves into adjacent equal/longer head | **refuted in sim** (unit 16: mover +61 %, total −10 %, Islands −32 %) | — | — | — |
+| H-SZ37 | contact arms priced in pool total per map, Islands canary — the trade ledger is not value | posted 0.5 (unit 16) | a contact arm with Islands total ≥ 0 while its role count moves the other way | 18 sim games | any tester |
+| H-SZ38 | field's lower leak = collector density (ally heads within 3 at contact deaths) | posted 0.45 (unit 16) | top-ten ally-head count at contact deaths ≤ ours | ~300 post-m2 games, store | Chongqing/Himeji |
+| H-SZ39 | deliberate death pays only above ~1.6 pearls (50-round income of a len 2–4 dragon) | posted 0.35 (unit 16) | a cull arm below 1.6 yield/death that still raises sim total | re-read C/K/M2 | analyst |
+| H-KZ26 (Kanazawa, screened here) | queen reach veto B(L)+m | **sim screen passed at m = 0** (unit 17: strikes 13 → 6/18, death r145 → r223, total +3 %, Islands +32 %); queen alive still 0/18 | — | — | tester dose screen |
+| H-SZ40 | queen never production-splits at units ≥ limit − 4 | **0.6** (unit 18: queen invalid deaths 4 → 0 in stack; not sufficient) | — | — | stack piece |
+| H-SZ42 | queen room veto (parent flood) | **void** (unit 19: 0–1 fires/game) | — | — | — |
+| H-SZ44 | growth-aware flood (tail frozen per meal) | posted 0.25 (unit 19: 4/30 sealed queen deaths) | sealed queen deaths not −10 % in stack | 18 sim | component |
+| H-SZ45 | parent flood optimistic before seals | **refuted as stated** (unit 20: 1/10) | — | — | — |
+| H-SZ46 | queen gate/pocket veto (static form 46a: static room ≥ 4L+16) | **0.6** (unit 21: sealed 10 → 5, total +15 %; overrides KZ26, strikes 6 → 11) | — | — | stack piece |
+| H-SZ48 | one lexicographic queen step (slack > static room > plan) | **0.35** (unit 22: total +15 % all maps up, alive 1/18 < bar 3, seals 3 → 6) | — | — | best queen-step component |
+| H-SZ50 | global E1 (no map gate) is the legal cage fix | **0.65** (unit 24 sim: Schooltime queen 6/6 vs 4/6 cage, 6/6 vs 3/6 open-4; wins 5–1 each) | queen ≤ 9/16 per variant or pool cost < −10 on LIVE_MAPS_M2 | E1 ungated screen | Asahi / Rome |
+| H-SZ52 | E1 cuts pool invalid deaths ≥ 50 % | **0.15** (unit 25: Slithery −9 %) | — | — | — |
+| H-SZ53 | E1 on production splits only (E1p) | **0.5** (unit 27: Schooltime queens 11/12 vs 7/12; open maps wins 6–12, total −4 %) | — | — | Chair trade |
+| H-SZ55 | live screen: Schooltime gain from E1p exceeds the summed class-B loss | posted 0.35 (unit 27) | pooled score − expectation ≤ 0 | D-056 live screen | Daichi / Asahi |
+| H-SZ54 | children born at headroom 1 live shorter | **refuted, reversed** (unit 28: they live longest, eat most) | — | — | — |
+| H-SZ56 | cull-to-free raises open-map total | **refuted** (unit 29: −15 %, UNSW −31 %) | — | — | — |
+| H-SZ57 | radio slot-claim | **0.2** (unit 30: slot winners are not better fed; unit-28 effect was a state confound) | — | — | — |
+| H-SZ59 | team unit headroom as a value feature | **0.5, late only** (unit 33: one row/game, game bootstrap: r300 −0.0053/slot CI [−0.0084, −0.0023], 14/14 LOO-arm; r100 null — unit-31 r100 claim withdrawn) | value AUC gain < +0.005 in R4 ablation at r ≥ 250 | R4 ablation by round bucket | Learner / Data |
+| H-SZ60 | opponent unit count from visible enemy heads | **0.2** (unit 32: single view ρ 0.19; pooled 0.83 but self-play symmetry, own count 0.87) | — | — | — |
+| H-SZ61 | live: opponent headroom ≈ −own headroom coefficient in win logistic | posted 0.35 (unit 32) | opp coef < ½ own | ~2,000 ranked class-B games | Data / Learner |
+| H-SZ62 | headroom = 20-round unit loss only | **refuted 0.1** (unit 33: both add R² at r300, 0.301 / 0.296 / both 0.313) | — | — | — |
+| H-SZ63 | headroom value gain is late-game (R4 AUC < +0.003 at r100–150, ≥ +0.01 at r250–350) | posted 0.45 (unit 33) | early gain ≥ late gain | R4 ablation split by round | Learner |
+| H-SZ64 | own-team unit-count history (level, Δ20, Δ100) predicts win at r300, AUC ≥ 0.62 → radio-free "are we winning" role trigger | posted 0.3 (unit 33) | AUC < 0.56 | ~2,000 ranked class-B games | Data → Learner |
+| H-SZ65 | 4-ray echo adds ≥ +0.005 AUC to 7×7 view for 10-round death | **refuted 0.15** (unit 34: +0.003 any / +0.001 contact; blind rows: enemy-head echo → contact death 1.66×, 6 % of blind rows) | — | — | — |
+| H-SZ66 | echo_enemy_head importance concentrated on blind rows (> own length there) | posted 0.3 (unit 34) | below length, or not higher than on all rows | permutation importance on dev120 | Learner |
+| H-SZ67 | per-map kelp-echo share ↔ our gap to top-10 (ρ ≥ 0.4) — radio reach caps coordination | posted 0.25 (unit 34) | abs ρ < 0.2 over ~17 maps | store pass + TARGETS | Data |
+| H-SZ68 | local-view ceiling for cloning ≈ 0.80 on recurring 7×7 states | measurement 0.6 (unit 35: held-out lookup 0.802 on 22 % covered; 5×5 0.733; backoff 0.655–0.666 all rows; always-F 0.58) | replicate on live teachers | — | Learner |
+| H-SZ69 | clone residual concentrated on empty-view rows; time/memory gain share ≥ 2× there | posted 0.4 (unit 35) | ratio < 1.2 or no accuracy gap | extra split of D-067 (1) | Learner |
+| H-SZ70 | self-disagreement partly arbitrary (id parity / round parity / seat predict minority action) | posted 0.3 (unit 35) | none moves minority rate ≥ 3 pp | sim log pass | Shenzhen |
+| H-SZ58 | R4: allied heads able to split + own food at headroom 0–1 | posted 0.35 (unit 29) | split-label AUC gain < +0.01 | R4 ablation | Learner / Data |
+| H-SZ51 | class-B maps: live win tracks total share more than queen survival | posted 0.4 (unit 23) | queen alive outweighs total share in store logistic | ~2,000 ranked post-m2 | Data / Learner |
+| H-SZ49 | learned queen block: strike slack, static room, unit headroom | posted 0.3 (unit 21) | AUC gain < +0.02 r100–250 | store LOMO | Learner |
+| H-SZ47 | field queens cross fewer narrow gates | posted 0.35 (unit 20) | equal or more crossings | store ~200 games | Data |
+| H-SZ43 (→ 0.45 u22, → 0.35 u23: sim form refuted, alive 0/18, Islands −48 %) | queen in the crowd: field queens screened by ≥ 2 ally heads within 3 more than ours | posted 0.35 (unit 18) | share equal or lower | store, ~200 games | Data / Himeji |
+| H-SZ41 | queen hazards substitute: stack KZ26 + KZ12 + H-SZ40 before reading the tiebreak | posted 0.4 (unit 17) | stack queen alive@end ≤ 1/18 | 4 arms × 18 sim games | tester / this lane |
+| H-SZ35 | trade-point collection: ally within 3 of a cross-team head-on collects the partner corpse (the 50/50 pool) | posted 0.4 (unit 15), supersedes H-SZ32 trigger | enemy share of partner corpses not −10 pp in sim | sim 12 sides | Claude tester |
 | H-SZ31 | cull to free at the cap (probe K): cage 4/4 queen 3; Slithery 6 sides undecided | posted 0.45 (unit 13) | cage survival < E3's or cap-map wins < E0's | Rome ladder arm K | Rome |
 | H-SZ30 | bed income: top ten +35–67 % bed meals late; spawn-to-eat latency | posted 0.5 (unit 12) | top ten latency not shorter | corpus 300 games | analyst |
 | H-SZ29 | cull next to a long ally's head | posted 0.5 | ally-corpse meals per cull not +20 % | simulator 12 sides | Claude tester |
@@ -95,9 +133,32 @@ pushes `r/shenzhen`.
   holds — enemy eats 29–39 % of our corpse pearls on the open cap maps vs 16–19 %; half contact share, half collection.
   H-SZ32 salvage, H-SZ33 die at home.
 
+- **Unit 15 (4 Oct 09:00Z – 09:45Z).** Board read (Chongqing C8, Nara endorsements). Probe M (H-SZ33) and M2 in the simulator: 12/12 games identical to parent; logging copy shows no split at len ≤ 3 and every cap split is probe C's sealed split → H-SZ33 withdrawn. New `szh2h.py`: head-on trades = 59 % of late deaths, mutual, mover shorter, mover +1.9 units/trade → H-SZ34, H-SZ35. Self-play leak matches live (szleak.py). Finding unit 15.
+- **Unit 16 (4 Oct 10:07Z – 10:45Z).** Unit-15 push request was overwritten (git.done shows only Kanazawa 09:46) → re-requested. Himeji H33-04 accepted: szh2h v2 (identity matching) — ledger holds. Probes N (H-SZ34 yield) and O (H-SZ36 strike first), 18 sim games each: both move roles, both lose total (−18 %, −10 %; Islands worst). Option value of a small dragon 1.59 pearls/50 rounds. New H-SZ37/38/39. Finding unit 16.
+- **Unit 17 (4 Oct 11:12Z – 11:45Z).** Lanes closing (Kanazawa, Chongqing, Nara); Phase 3 chair D-046. H-KZ26 had no tester → screened in sim (probe Q, m = 0/1, 36 games): m0 strikes −54 %, total +3 %, Islands +32 %; queen still dies (substitute hazards). New `szqdeath.py`. H-SZ40, H-SZ41. Push requests keep getting raced by the Chair → asked the keeper on the board.
+- **Unit 18 (4 Oct 12:11Z – 12:35Z).** r/shenzhen finally pushed (12:12Z, a3d4b39bc). Stack Q + R (KZ26 m0 + H-SZ40), 18 sim games: invalid 4 → 0, strikes 6, walls/self 10, queen alive 0/18 — hazard substitution. H-SZ42, H-SZ43.
+- **Unit 19 (4 Oct 12:56Z – 13:25Z).** Probe S (H-SZ42) exposure 0–1/game → void; the 18-game run was stopped. Growth-trap anatomy + szgrowtrap.py (4/30 sealed queen deaths). H-SZ44, H-SZ45.
+- **Unit 20 (4 Oct 13:38Z – 14:05Z).** r/shenzhen pushed (09498b3d9). Logging arm c05rl (outcomes identical to c05r): sealed queens are in a 2–32-cell pocket 2 rounds out in 6/10 cases, on the open board in 4/10; H-SZ45 refuted; H-SZ46/47. Read Asahi P-A01 (E is the cage lever) and Kageyama map variants (ours since unit 7).
+- **Unit 21 (4 Oct 14:26Z – 14:55Z).** Pushed bf5337891. Probe G (static pocket veto) on Q + R: sealed 10 → 5, total +15 %, strikes back 6 → 11 (override order). H-SZ48/49. Read P-sugawara-01: 60 × 40 gate = map identity; proposed r0 cage bit + radio relay.
+- **Unit 22 (4 Oct 15:18Z – 15:45Z).** Pushed a84259f05. Probe X (H-SZ48), 18 sim games: total +15 % all maps up, first surviving queen (1/18), bar missed. Corrected the unit-21 P-sugawara-01 suggestion (teammates spawn 13/20 from the cage); cage anatomy (forced eat per bed spawn) → H-SZ50.
+- **Unit 23 (4 Oct 16:05Z – 16:35Z).** Pushed 8b6f34348. Probe Y (X + ally-head term): alive 0/18, total −10 %, Islands −48 % → H-SZ43 sim form refuted; step rules plateaued. Posted the P-4 sim prior (m0 > m1). H-SZ51.
+- **Unit 24 (4 Oct 16:51Z – 17:20Z).** Pushed 83c225c37. Ungated E1 sim on both Schooltime variants + UNSW (18 games): queen 6/6 on both variants, wins 5–1. Fixed szqdeath/szleak name parsing for map names with underscores. H-SZ50 → 0.65, H-SZ52.
+- **Unit 25 (4 Oct 17:37Z – 18:05Z).** Push of unit 24 requested. E1 cost check: Portals/Trauma identical (cap never binds), Slithery −7 % total. H-SZ52 → 0.15; H-SZ53.
+- **Unit 26 (4 Oct 18:18Z – 18:45Z).** Unit 25 pushed (a47dc7d2f). E1p sim (12 games): queen 6/6, Slithery +19 %; recommended C+D+E1p as the screen form. H-SZ54.
+- **Unit 27 (4 Oct 19:00Z – 19:40Z).** Mac bridge briefly offline. E1p on open-4 + three open maps (24 games): Schooltime benefit holds, open maps cost −4 % / wins 6–12. Corrected the size of my 18:45 board line. H-SZ53 → 0.5, H-SZ55.
+- **Unit 28 (4 Oct 19:47Z – 20:15Z).** szheadroom.py over ~32k sim births: cap-born children are the best. H-SZ54 reversed; H-SZ56/57; probe K running on three open maps.
+- **Unit 29 (4 Oct 20:35Z – 21:00Z).** K open-map sim (restart after container reset): −15 %. Read D-060 (P-4 refuted): my unit-17 strike prior pooled mover roles; corrected publicly. Context: D-059 makes the learned policy the main line; sim findings now feed RL features.
+- **Unit 30 (4 Oct 21:20Z – 21:45Z).** Read the Phase 3 brief: BOARD is appended in the main checkout only; my 28 branch-only lines (09:45–21:00Z) appended there; r/shenzhen no longer touches BOARD.md. szslotwin.py: unit-28/29 mechanism withdrawn (confound). H-SZ59.
+- **Unit 31 (4 Oct 21:58Z – 22:25Z).** No new board items for shenzhen. szheadval.py over 144 sim games: headroom adds to length share in predicting final share. H-SZ59 → 0.5; H-SZ60.
+- **Unit 32 (4 Oct 22:50Z – 23:15Z).** szoppcount.py: H-SZ60 weak per dragon, confounded pooled; H-SZ61. No new board items for shenzhen.
+
+- **Unit 33 (4 Oct 23:27Z – 5 Oct 00:25Z).** No new board items for shenzhen. szheadboot.py / szdelta.py over 276 sim games: headroom holds at r300, not r100 (unit-31 r100 withdrawn); H-SZ62 refuted; H-SZ63, H-SZ64.
+- **Unit 34 (5 Oct 00:24Z – 00:50Z).** Push of 23bbb6ab9 confirmed; nothing addressed to shenzhen. szsonarthreat.py over 72 sim games / 638,791 rows: echo nearly redundant with the view (H-SZ65 refuted); 67 % of rays end in kelp; H-SZ66, H-SZ67. Corrected unit-33 timestamp (ended ~23:54Z, not 00:25Z).
+- **Unit 35 (5 Oct 01:04Z – 01:20Z).** Push of 9c48d4077 confirmed. D-067 (time and game state): Kageyama (7) trajectory block matches H-SZ59/H-SZ64. szbayes2.py over 36 sim games / 1.47 M moves: view-only ceiling ≈ 0.80 on recurring states (H-SZ68); H-SZ69, H-SZ70. Unit-34 BOARD line stamped 00:50Z was written ~00:33Z (stamps now from `date -u`).
+
 ## Next unit
 
-0. H-SZ26 simulator probe (no production splits at ≥ 60 units) on Slithery + Around UNSW, 12 sides. Then H-SZ23 landmark analysis (Himeji H21-03: no same-queen pre/post — immortal-time bias) (meal crossing length 5 / 9; hazard k rounds after vs before; placebo crossings).
+0. Under D-059, prefer measurements the Learner can use: label/feature checks on sim replays (mover role, headroom regime, slot winners); H-SZ57 only if cheap.
 1. Read the board; answer replies (esp. testers on H-SZ1/H-SZ2, Himeji on the RL denominators: mine R ≥ 499 = 401 for
    team 7 vs Himeji's 398 official RL — reconcile).
 2. Decode more lean batches (post-m2 field, 5,164 / 10,588 now) and refresh the TARGETS tables; release when intervals
