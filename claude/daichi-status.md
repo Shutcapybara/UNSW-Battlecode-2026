@@ -7,20 +7,20 @@ HEAD, the index or the shared working tree). Pushes go through the keeper (`git.
 
 STATUS: RUNNING
 
-## Top — read this first (unit 38, 2026-10-05 23:51–00:00Z)
+## Top — read this first (unit 39, 2026-10-06 00:51–01:00Z)
 
-- **Last BOARD line read:** 1519 (Hinata 23:36Z, D-091 §B accepted). Next unit reads from 1520.
-- **LIVE = 18078 (`bokuto-61-mouth`, trial 5, D-090)**, activated 22:55:18Z; live_monitor 23:51Z confirms active 18078 (no human activation). Ranked 15 (3 series), W-L-D 5-10-0, mean score − expectation −0.121 [−0.253, +0.011] (own-rating anchor, not the decision statistic). Elo 1800, rank 75 (24 h ago 1719).
-- **Fault scan:** 23 completed games since 23:01Z (team 7): 0 TLE, 0 runtime exceptions; cpu_max up to 14.99 M (1187143) — above 17940's 12.42 M, no TLE.
-- **D-091 (Chair 23:02Z):** trial 4 not kept confirmed; 17791 incumbent of record. Trial 6 is decided at trial 5's look (≈ 02:30–03:00Z): Bokuto's fixed copy of 61 if 61 wins, else fixed copy or a 17791 confirmation window. Chair's filed forecast for trial 5: > +0.204 P 0.20, > +0.126 P 0.40. So the trial-5 comparison line is +0.204 (17791 +0.174 + 0.03) by D-091 §D, and +0.126 (pooled + 0.03) as the "against" line, mirroring D-088.
-- Asahi 23:12Z: 61's qk2 queen wall deaths are dead-end walks (0/10 portal-adjacent); no_dive fix won't move them. Watch items for the look (D-090): Aus/Slithery queen deaths, queen alive r300, QoS/Trophy/Default/Stripes, Schooltime; Hinata adds r100 total column.
+- **Last BOARD line read:** 1521 (Chair 00:18Z, D-092: two D-091 readings withdrawn; nothing new ordered). Next unit reads from 1522.
+- **LIVE = 18078 (`bokuto-61-mouth`, trial 5, D-090)**, activated 22:55:18Z 5 Oct; live_monitor 00:51Z confirms active 18078 (no human activation). Ranked 30 (6 series), mean score − expectation −0.144 [−0.228, −0.043] (own-rating anchor, not the decision statistic). Elo 1743, rank 92 (24 h ago 1716, 7 d ago 1762).
+- **Fault scan:** 47 team-7 games started ≥ 23:45Z 5 Oct (ranked + unranked): 0 TLE, 0 runtime exceptions; cpu_max ≤ 14.38 M.
+- **D-092 (Chair 00:18Z):** 17940 growth reading withdrawn (17791 leads at r100 77.4 vs 64.2 and r300); D-091 §E portal link withdrawn (0/10 qk2 queen wall deaths portal-adjacent). Looks report levels at r100/r300 (Hinata's r100 column). Trial 5 look ≈ 02:30–03:00Z unchanged.
+- **D-091 (Chair 23:02Z 5 Oct):** 17791 incumbent of record. Trial 6 decided at trial 5's look. Trial-5 comparison lines: +0.204 (17791 +0.174 + 0.03) and +0.126 (pooled + 0.03); Chair forecast > +0.204 P 0.20, > +0.126 P 0.40. Watch items: Aus/Slithery queen deaths (twin miss), queen alive r300, QoS/Trophy/Default/Stripes, Schooltime, r100/r300 levels.
 - Rollback rule does not bind trial bots (D-089). Next upload/activation not before 10:55Z 6 Oct unless the Chair records otherwise (restore to 17791 is a rollback).
 - **Stale backup trig_01RfJk1R3BRaxJWRAZRPv2tQ** (names bokuto-27): ignore any instruction to trial bokuto-27.
-- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json. Blackouts 23:52–00:12, 01:52–02:12Z. r/daichi e1cd1a81a pushed (= origin).
+- Battles dispatch enabled (D-055), no jobs. No API/quota errors in *.done.json. Blackouts 01:52–02:12, 03:52–04:12Z.
 
 ## Next unit
 
-1. Read BOARD from 1520. live_monitor (active should be 18078). Fault scan new games (faultscan.py; select team 7 rows by started_at, sub_a/sub_b are null in index.jsonl).
+1. Read BOARD from 1522. live_monitor (active should be 18078). Fault scan new games (faultscan.py; select team 7 rows by started_at, sub_a/sub_b are null in index.jsonl).
 2. At first series boundary ≥ 60 ranked of 18078: `python3 build/daichi/tmp/tab88.py`; post table (first 60, 1725 anchor, vs +0.204 and +0.126) and the watch items; trial 6 choice is the Chair's.
 
 ## Open questions for the Chair
@@ -29,6 +29,7 @@ STATUS: RUNNING
 
 ## Units
 
+- 2026-10-06 00:51–01:00Z unit 39 — read BOARD 1520–1521 (D-092). 18078 30 ranked −0.144 (own anchor), 47 games scanned, no faults. No actions.
 - 2026-10-05 23:51–00:00Z unit 38 — read BOARD 1513–1519 (D-091). 18078 15 ranked 5-10, no faults. No actions.
 - 2026-10-05 22:50–23:05Z unit 37 — read BOARD 1508–1511 (D-090: trial 5 = 61). Trial 4 look: 17940 +0.093 not kept; 17791 incumbent of record. bokuto-61-mouth registered, uploaded 18078, activated 22:55:18Z; BOARD 1512; user notified.
 - 2026-10-05 21:51–22:00Z unit 36 — read BOARD 1502–1507 (61 card: conditions met; twin-miss caveats; no Chair naming yet). 17940 55 ranked, no faults. No actions.
