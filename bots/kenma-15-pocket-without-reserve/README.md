@@ -1,0 +1,7 @@
+# Kenma 15 — sealed-pocket rescue without global reserve
+
+Parent: kenma-08-lossless-direction, strategy equivalent to03. Remove only the temporary one-slot population-limit reduction for nonqueen decisions. Keep the exact sealed-pocket proof, original queen split/movement override, trapped donor culling, model and all parent policy unchanged. No orbit, corridor filter or new training.
+
+Motivation: same-host UNSW pool fixtures show four parent wins lost by03. Death-event prefixes agree until rounds68–77, then populations approach64 in the parent and63 in03. The global reserve is the main candidate explanation outside the rescued pocket. This ablation tests whether its pool cost is avoidable and whether the pocket queen still survives population pressure without it. This is not presumed safe: Schooltime seeds1–3/5 both seats must be checked, followed by eight UNSW games against Fenrir/Yuna/Chaewon/Gavroche. No reserved seeds11–13 or new maps.
+
+Status: bounded probes complete, zero errors. Schooltime8–0 but original queen dies in3/8 (seed3A round132, seed3B round373, seed5A round292), whereas03 survives all8. UNSW6–2, recovering the same-host parent result on those eight fixtures. Removing the reserve has a real benefit outside the pocket and a real survival cost inside it. Not promoted; investigate local length control before a full screen. All8 Schooltime replays read. Outputs main build/kenma/k15-schooltime-s1235/, k15-unsw-pool-s1/, k15-schooltime-diagnostics.json.

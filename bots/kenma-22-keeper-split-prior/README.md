@@ -1,0 +1,7 @@
+# Kenma22 — keeper split propensity inside search
+
+Parent:08 (strategy equivalent to03), without21's reserve relay. Use the existing04 seven-class keeper model only for original queens of length>=4 outside proven sealed pockets. Sum four movement classes and three split classes; add log(P(split))−log(P(move)) at weight1 to ordinary split and opening-production split scores, with the existing1e-4 probability floor. Movement direction/path scores, split allocations, opening rescue, terminal escape and pocket rescue remain parent behavior. Nonqueens receive zero adjustment.
+
+Motivation:04/05 hard action clones changed both movement and splitting;07/13 isolated movement advice and regressed. This tests the complementary split-timing information while preserving the stronger parent movement search. This model has only472 teacher split rows among26,820 queen turns; the prior is an unproven hypothesis, not a strong offline validation claim. No refit, game-result tuning or new data exposure.
+
+Status: native build and sanitizer checks passed for probability aggregation, scale invariance, floors, production-score adjustment and the rescue exemption. A fixed 163-turn Weakhold queen observation stream produced identical actions to08 (two splits each); this establishes no behavioral improvement. Output: build/kenma/orbit-audit/k22-counterfactual.json. No game measurements or deployment checks yet. Reserved seeds11–13/new maps untouched. Model bytes copied exactly from04; original model provenance remains in04 README.

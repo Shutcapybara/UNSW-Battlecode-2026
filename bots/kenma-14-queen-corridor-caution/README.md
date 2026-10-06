@@ -1,0 +1,11 @@
+# Kenma 14 — short-queen corridor caution
+
+Parent: kenma-12-observed-empty-orbit. Adds a general topology precaution to parent search for original queens of length2/3 once at least three team units exist. Trace up to eight freshly observed nonbacktracking terrain steps after each possible first move. A visible branch, closed loop or portal counts as turning room; a single-file route ending outside current vision or at a dead end does not. If an immediately legal move has turning room, skip otherwise legal candidate paths entering a route without it. Uncertain/portal first steps are not vetoed by ordinary geometry. If no legal route with turning room exists, preserve all parent choices. This catches safe narrow loops as well as open junctions. Split evaluation, orbit and sealed-pocket priorities remain unchanged. Nonqueen decisions are unchanged.
+
+Motivation: a retained12 Weakhold queen enters a food-filled corridor and dies at its endpoint. All163 recorded queen decisions reproduce exactly. A proof-based lookahead cannot reject the last avoidable entry because the endpoint is outside vision; this is instead an explicit caution heuristic, not a safety proof. It may reject useful corridors or reduce growth. No map identity, dimensions, coordinate gates or new training are used in runtime behavior.
+
+Status: prepared, unmeasured. Must demonstrate activation and zero errors in real play before its full102-game screen. Reserved seeds11–13 and new maps untouched. Diagnostic log: kenma_corridor_filter. Source parent remains frozen.
+
+Preflight: sanitizer-backed protocol replay test redirects the avoidable round157 entry south and preserves fallback at committed round158. Initial source archive3,594,215 bytes. Four-game activation smoke is dry-run-previewed and queued behind the exact same-host parent diagnostic process. Runtime c356ab501d912e7dd09fdc18a4c5e41951a4831e5726c1de2ec3de76d69083ed.
+
+Real smoke complete3–1/4, zero errors, same winners as12. Filter activates5/9 times in Weakhold A/B and0/0 in Australia; Australia outcomes and queen deaths match12. Weakhold B queen now survives, while A queen dies at221 instead of surviving. All four replays analyzed: k14-smoke-diagnostics.json and k14-corridor-smoke/activations.json. Full screen held while testing the combined prior and reserve ablation; this is not an improvement claim.
