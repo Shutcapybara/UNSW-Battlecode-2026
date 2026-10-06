@@ -2,10 +2,11 @@
 
 Kept by the Chair (Ushijima). Rules: `00-MACRO.md` §1 and D-046. A rung passes only when this file records it.
 
-## Current state (6 Oct 2026 00:17Z)
+## Current state (6 Oct 2026 00:55Z)
 
 - **R0 passed 4 Oct 14:28Z (D-053 §A). R1: P-2 failed its confirmation 18:20Z (D-057 §B); rung open, behind R2. R2: development battery running (D-057 §C).**
 - **Incumbent of record: `bokuto-18-queenfeed` (17791)** (D-088): +0.174 [+0.079, +0.282] at anchor 1725 over 60 ranked games (32–28, 11 of 12 series against teams at 1725 or above), +0.114 [−0.004, +0.250] over `kenma-03-pocket-queen` (17388: +0.060 [−0.010, +0.132] over 130). **Live now: trial 5, `bokuto-61-mouth` = submission 18078, since 22:55Z**; look about 02:30Z to 03:00Z; it needs more than +0.204. Trial 4 (`asahi-27-b13-reserve`, 17940) ended at +0.093 [+0.004, +0.185] and was not kept (D-091). **Trials run back to back (D-084 §C).** Trial 6 is decided at trial 5's look: the queen-fixed copy of 61, or a confirmation window for 17791. The compute limit is 100 M points a turn, working ceiling 60 M at the probe (D-087 §A). Three targets: total length near 78 and 154 at rounds 100 and 300; queen alive at round 300 near 0.58; at least 70 % of round-300 leads converted; against stronger teams 17791 meets the second (0.72) and third (14 of 20) and not the first: its growth between rounds 100 and 300 is 38.2 a game against 68.2 for the top ten's winners and about 51.6 for all top-ten sides (D-089 §A). At anchor 1725: 14585 −0.022, 17530 −0.002, 17388 +0.060, 17791 +0.170 (D-089 §B).
+- **The Qualifiers and the Grand Final use new maps (the lead, D-093).** The tournament submission carries no stored maps (`n_maps = 0`); final candidates are judged on unknown maps (`gen`, `gen-h2h` against 17791). The ladder still sets the seed. 17791 is the only trialled bot without stored maps.
 - Deadline: handled by the lead; the Chair imposes no freeze (D-050 §2).
 - GPU work may run on the Mac's shared memory, natively, under the heavy-job lock (D-050 §3).
 
@@ -67,6 +68,9 @@ blocks live screens.
 
 ## Log
 
+- 6 Oct 00:55Z: D-093. **The Qualifiers and the Grand Final use new maps.** Stored maps count for seeding only; the
+  tournament submission carries none; final selection on unknown maps (new panel `gen-h2h`). 17791 is the only
+  trialled bot without stored maps. Trial 5 runs on as seeding information; trial 6 is an atlas-free bot.
 - 6 Oct 00:17Z: D-092. Withdrawn after the checks: 17940's higher growth is a lower start catching up plus the map
   mix (17791 leads 77.4 against 64.2 at round 100; growth gap −0.4 over shared maps), so there is no growth to
   keep; and 61's `qk2` queen wall deaths are dead-end walks, not the portal fault (0 of 10), costing at most one

@@ -82,3 +82,13 @@ where the two differ. Written by the Chair (Ushijima) at 14:25Z; the decision lo
 - Atlas bots: two twins (`bokuto-17-atlas`, `bokuto-35-knownbeds`) lost about 4.4 points to the atlas, and on 35
   the cause is collisions between our own dragons (ally head-on deaths +86 %). An atlas bot goes to trial only if
   it is not below its own atlas-off twin on the pool.
+
+## Correction, 6 Oct 00:55Z (D-093): the Qualifiers and the Grand Final use new maps
+
+- Stored map copies (an atlas) and rules tuned on the 17 ladder maps help only on the ladder. **The tournament
+  submission carries no stored maps (`n_maps = 0`).** Map-specific work no longer pays.
+- Measure on maps nobody tuned on: `gen` (29 maps), `maps/new/`, the transposed twins. Final candidates are read on
+  `gen-h2h`, against `bokuto-18-queenfeed` (the incumbent, which has no stored maps) on the 29 `gen` maps, both
+  seats, seeds 1 to 3.
+- A search that works on any map, using the larger compute budget (100 M points a turn, ceiling 60 M), is the
+  preferred direction.

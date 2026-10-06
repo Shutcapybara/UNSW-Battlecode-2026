@@ -1,11 +1,16 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 6 Oct 00:17Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 6 Oct 00:55Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-092. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-093. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
+
+- **The Qualifiers and the Grand Final are played on new maps (D-093).** Stored map copies and rules tuned on the
+  17 ladder maps help only on the ladder, which still sets the seed. **The tournament submission carries no stored
+  maps**, and final candidates are judged on maps nobody tuned on (`gen`, and `gen-h2h` against the incumbent).
+  The incumbent `bokuto-18-queenfeed` stores none.
 
 - Team 7, "Just Keep Swimming": rating 1838, rank 59, at 17:51Z on 5 Oct (1725 a day earlier); the top ten sat at
   2192 to 2333 on 4 Oct.

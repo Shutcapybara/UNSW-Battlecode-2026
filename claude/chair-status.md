@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 6 Oct 2026 00:17Z (unit 42). Next self-wake about 03:00Z (trial 5's look). Branch `r/ushijima`; private tree
+State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 6 Oct 2026 00:55Z (unit 42b, on the lead's word). Next self-wake about 03:00Z (trial 5's look). Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,15 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-093: the Qualifiers and the Grand Final use new maps (the lead).** Bokuto's 61 (trial 5) stores all 17
+  ladder maps and uses them for routing, bed targets and migration; the carthage lineage (14585, 17388, 17530,
+  17940) stores 10; **the incumbent 17791 stores none**, so its +0.174 is the only trial result free of stored
+  maps. Rules: the tournament submission carries no stored maps; final candidates are judged on unknown maps
+  (new panel `gen-h2h`: candidate against 17791 on the 29 `gen` maps, 174 games); trial 5 runs on as seeding
+  information; trial 6 is an atlas-free bot (the best `gen-h2h` card, else a confirmation window for 17791).
+  Bokuto's map-specific work stops; the larger compute budget is the preferred direction. **Asked of the lead:
+  which submission plays the Qualifiers (the one active at the seeding cutoff, or one chosen separately) and when
+  the cutoff is.**
 - **D-092: two readings of D-091 withdrawn after the checks.** (1) 17940's higher growth between rounds 100 and
   300 is a lower start catching up plus the map mix: 17791 leads at round 100 (77.4 against 64.2) and still at
   300; over shared maps the growth gap is −0.4. There is no growth to keep, and no sign the queen rules cost
@@ -347,7 +356,7 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 |---|---|
 | Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): by accuracy A8b 0.7224, A1 0.7184, A4 0.7205 (not selectable), A3 0.7145, live prior 0.6977; **in play the A3 placeholder loses 7 points on the pool; selection suspended (D-068)**. P-6: behind the battery. P-7: entry throughput passed; no training. P-8 (latent state): stage S0 approved |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | Done: the frozen-row test of 61's queen wall deaths (0 of 10 portal-adjacent; D-092 §B). Waiting on Bokuto's queen-fixed copy of 61 (`qk2` and head to head against 61 first). Sugawara's layer removal |
+| Evaluator queue (Asahi) | **New (D-093): `gen-h2h`** (candidate against `bokuto-18-queenfeed` on the 29 `gen` maps, both seats, seeds 1–3). In order: 18 on `gen` against `bokuto-13-cull`; 61 with `n_maps = 0` (Asahi's twin) on `gen-h2h`; 41 on `gen-h2h`. Then Bokuto's queen-fixed copy, atlas-free |
 | Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) and rolled back at 04:53Z (D-075 §A) |
 | Uploaded, inactive | 14585 (carthage-05, incumbent, waiting behind the trials), 16979 (k = 16, rolled back), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
 | Live screen | **Trial 5 live: `bokuto-61-mouth` = 18078 since 22:55:18Z**; look at the first series boundary at or after 60 ranked games (about 02:30Z–03:00Z). End rule: more than 0.03 over 17791's +0.174 at anchor 1725; Daichi also reports against the pooled line; watch items of D-090. Trial 4 ended 22:56Z: 17940 +0.093 [+0.004, +0.185], not kept (D-091) |
@@ -409,15 +418,13 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 2. **Trial 6:** the queen-fixed copy of 61, or a confirmation window for 17791, decided at that look.
 3. **The schedule of confirmation runs and the final activation**, once the lead gives the seeding cutoff.
 
-Waiting on the lead: **the Qualifiers' seeding cutoff** (the record of 28 Sep says 10 Oct; unverified), so that
-confirmation runs and the final activation can be placed. Nothing else blocking. For the lead: a second builder lane (recommended; the free-lane prompt plus
-the addendum of 5 Oct); stand down Kageyama's lane (silent since about 07:00Z); the RL question (D-086 §F: the
-Chair's reading is given, nothing is ordered; a port lane or a P-7 training run needs the lead's word). Optional: a fresh Chair session,
-deleting `~/Desktop/sessiondata.img.bak`.
+Waiting on the lead: **which submission plays the Qualifiers (the one active at the seeding cutoff, or one chosen
+separately), and when the cutoff is.** The tournament maps are new (D-093). Open: RL go/no-go, a second builder
+lane, standing down Kageyama's lane.
 
 ## Cursor
 
-Last BOARD line read: line 1520 (Asahi 00:16Z), main tree. Own D-092 line follows.
+Last BOARD line read: line 1521 (own D-092), main tree. Own D-093 line follows.
 
 ## Open flags
 

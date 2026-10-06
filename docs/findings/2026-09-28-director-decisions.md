@@ -4368,3 +4368,57 @@ Trial 5 (18078, `bokuto-61-mouth`) is running since 22:55:18Z with no fault. Its
 - Hinata's forecasts for trial 5 were filed before any game of 18078 was read (P-hinata-07): queen alive at round
   300, reached view, at least 0.58: 0.40; total at round 100 at least 65.1: 0.45; at round 300 at least 115.7: 0.40;
   Australia and Slithery Fight at least 6 wins of 9: 0.30; the four maps' win share at least 0.30: 0.50.
+
+## D-093 — The Qualifiers and the Grand Final use new maps: stored maps count for seeding only, and the tournament bot carries none (6 Oct 2026 00:55Z, Chair: Ushijima)
+
+### A. The fact, and what our bots carry
+
+- **The lead (6 Oct, about 00:50Z): the Qualifiers and the Grand Final are played on new maps.** They are not in
+  `maps/live/` and no bot of ours has seen them.
+- Stored map copies ("atlas") in the bots that have held the slot, read from Daichi's staged copies (D-080 §D
+  allowed them in free-lane bots):
+
+  | Submission | Bot | Stored maps active |
+  |---|---|---|
+  | 14585, 17388, 17530, 17940 | carthage-05 lineage | 10 of the 17 ladder maps (terrain, portal ids, bed classes) |
+  | **17791 (incumbent)** | `bokuto-18-queenfeed` | **none** (`n_maps = 0`) |
+  | 18078 (trial 5) | `bokuto-61-mouth` | all 17 (terrain, bed classes; portal pairs off); drives targets and region migration |
+
+- A stored map loads only when every visible edge agrees with it, so on an unknown map the bot plays as its
+  atlas-off twin. One case is worse than nothing: a new map that reuses a ladder map's terrain with different
+  beds would load the stored beds and send openers to phantom beds (as on the hidden layout `devil_b`, D-087).
+
+### B. What this changes
+
+1. **The ladder now measures two different things.** Its rating sets our seed (the record of 28 Sep: seed = rating
+   rank after the last autoscrims; unverified), and there stored maps help. As evidence of tournament strength,
+   only play without stored maps counts. **17791's +0.174 is the only trial result of the phase free of stored
+   maps.** The other trial results include the 10-map atlas on the maps it covers.
+2. **Local panels.** The pool, `qk2` and the head-to-head run on the 17 ladder maps, and our rules were tuned on
+   them; they overstate any bot that uses stored maps or map-shaped rules. The panel that predicts the tournament
+   is the one on maps nobody tuned on: `gen` (29 maps), `maps/new/` and the transposed twins.
+3. **Rule: the submission active for the Qualifiers and the Grand Final carries no stored maps** (`n_maps = 0`).
+   Its gain must come from rules that work on any map.
+4. **Final selection is judged on unknown maps.** New panel, ordered of Asahi: **`gen-h2h`**, each final
+   candidate against `bokuto-18-queenfeed` on the 29 `gen` maps, both seats, seeds 1 to 3 (174 games), paired,
+   with queen columns and totals at rounds 100 and 300. First runs, in order:
+   - `bokuto-18-queenfeed` on `gen` against `bokuto-13-cull` (for comparison with 41's −2.16 and 61's −1.94);
+   - `bokuto-61-mouth` with `n_maps = 0` (Asahi builds the twin as a copy; migration and stored beds then never
+     fire) on `gen-h2h`;
+   - `bokuto-41-atlas0` on `gen-h2h`.
+5. **Trial 5 runs on.** It costs the incumbent nothing, and its rating is seeding information. Its look is
+   recorded as a result with stored maps; it cannot by itself make 61 the tournament bot.
+6. **Trial 6** is an atlas-free bot: the best of the `gen-h2h` cards if one beats 17791 there, else a
+   confirmation window for 17791 itself. Named at trial 5's look.
+7. **Bokuto:** map-specific work stops paying. Next builds have `n_maps = 0` and are measured on `gen` first;
+   keep `maps/new/` and the transposed twins as held-out. The larger compute budget (a search that works on any
+   map, D-087 §A) is now the preferred direction.
+8. **Seeding against tournament.** If 61 or a later atlas bot rates higher on the ladder, it may be worth keeping
+   it active until the seeding cutoff and switching to the atlas-free bot for the tournament. Whether that is
+   possible depends on which submission plays the Qualifiers; the Chair has asked the lead.
+
+### C. Corrections
+
+- D-080 §D ("the measure is the contest ladder, which plays these maps") rested on the ladder being the test.
+  For the tournament it is not; the ruling stands for ladder trials only.
+- The Chair should have asked which maps the tournament uses before ruling on atlases on 5 Oct.
