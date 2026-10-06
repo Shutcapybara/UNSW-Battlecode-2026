@@ -4330,3 +4330,41 @@ Against teams at 1725 or above, games that reached round 300:
 - "17940 exceeds +0.204": did not occur. Sugawara 0.25 (Brier 0.0625); the Chair 0.20 (0.04).
 - "17940 exceeds +0.126": did not occur. The Chair 0.45 (0.2025).
 - Hinata's seven pre-registered items: Brier 0.209 (a coin scores 0.25); she missed the queen item.
+
+## D-092 — Two readings of D-091 withdrawn after the checks (6 Oct 2026 00:17Z, Chair: Ushijima)
+
+Trial 5 (18078, `bokuto-61-mouth`) is running since 22:55:18Z with no fault. Its interim figures are not read.
+
+### A. The growth reading of D-091 §B–C is withdrawn (Sugawara 23:41Z; Hinata accepts, 23:36Z)
+
+- Hinata's numbers replicate exactly, but 17940's higher growth between rounds 100 and 300 (46.4 against 38.2) is
+  a lower start catching up, plus the map mix:
+  - at round 100, 17791 leads 77.4 against 64.2 in the games that reached round 300 (−13.2 [−24.9, −1.9]); at
+    round 300 it still leads, 115.7 against 110.6;
+  - over all games that reached round 100 the difference is −6.8 [−17.1, +3.4] (Hinata's new column);
+  - weighted over the 11 maps both windows played, the growth gap is −0.4;
+  - opponents grew alike in both windows (41.4 against 42.5), so the field did not inflate it.
+- **So there is no growth for 17940 to contribute.** D-091's sentence that the next gain "keeps 17791's queen and
+  17940's growth" is withdrawn, and with it the suggestion that the queen rules cost economy; within 17940, games
+  where the queen lives show more growth, not less (confounded by game state).
+- What stands from trials 3 and 4: the queen changes carry queen survival (alive at round 300 0.72 against 0.33)
+  and 17791 leads at round 100. Every curve block from trial 5 on reports totals at rounds 100 and 300 by level,
+  not growth alone (Hinata: the round-100 total joins every block).
+
+### B. 61's queen wall deaths are not the portal fault (Asahi 23:12Z, 00:16Z; Sugawara accepts)
+
+- From the frozen `qk2` frames: 0 of 61's 10 queen wall deaths had a portal beside the queen's head in the three
+  rounds before (the same method finds 6 of 22 for `bokuto-41`). They are dead-end walks: one free neighbour
+  for two or three rounds, no enemy head within three cells in 8 of 10. The 10 deaths are 6 distinct events, and
+  **61 won 5 of those 6 games**; the deaths cost at most one game, which 46 lost as well.
+- D-091 §E's link between the portal fault and 61's `qk2` queen deaths is withdrawn. The fault is real in the
+  code and matters for `bokuto-41`'s class; the one-line fix stays asked of Bokuto, without an expected effect on
+  61's queen. The pool-twin miss on Australia and Slithery Fight remains unexplained and stays a watch item at
+  trial 5's look.
+
+### C. Scored
+
+- Sugawara: at least 5 of the 10 deaths portal-adjacent, 0.55; outcome 0 of 10 (Brier 0.3025).
+- Hinata's forecasts for trial 5 were filed before any game of 18078 was read (P-hinata-07): queen alive at round
+  300, reached view, at least 0.58: 0.40; total at round 100 at least 65.1: 0.45; at round 300 at least 115.7: 0.40;
+  Australia and Slithery Fight at least 6 wins of 9: 0.30; the four maps' win share at least 0.30: 0.50.

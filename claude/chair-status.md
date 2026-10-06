@@ -1,6 +1,6 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 5 Oct 2026 23:01Z (unit 41). Next self-wake about 00:15Z (quiet check), then about 03:00Z (trial 5's look). Branch `r/ushijima`; private tree
+State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 6 Oct 2026 00:17Z (unit 42). Next self-wake about 03:00Z (trial 5's look). Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
@@ -8,6 +8,12 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
   gate) stands with the amendments in D-046 §4.
+- **D-092: two readings of D-091 withdrawn after the checks.** (1) 17940's higher growth between rounds 100 and
+  300 is a lower start catching up plus the map mix: 17791 leads at round 100 (77.4 against 64.2) and still at
+  300; over shared maps the growth gap is −0.4. There is no growth to keep, and no sign the queen rules cost
+  economy. What stands: the queen changes carry queen survival (0.72 against 0.33). (2) 61's queen wall deaths on
+  `qk2` are dead-end walks, not the portal fault (0 of 10 portal-adjacent), and 61 won 5 of those 6 games. The
+  portal fix stays asked, without an expected effect on 61. Trial 5 (18078) runs without fault.
 - **D-091: trial 4 not kept; trial 5 live.** `asahi-27-b13-reserve` (17940): 25–35, +0.093 [+0.004, +0.185] over 60
   ranked games, below the bar of +0.204 and below the pooled line + 0.03; **17791 stays the incumbent.** Read with
   trial 3: the reserve lines add about +0.13 on the ladder over `bokuto-13-cull`, the queen changes about +0.08
@@ -341,7 +347,7 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 |---|---|
 | Proposal cards | P-2: failed. P-4: refuted. P-5 (R2): by accuracy A8b 0.7224, A1 0.7184, A4 0.7205 (not selectable), A3 0.7145, live prior 0.6977; **in play the A3 placeholder loses 7 points on the pool; selection suspended (D-068)**. P-6: behind the battery. P-7: entry throughput passed; no training. P-8 (latent state): stage S0 approved |
 | Screen (seed 1) | cage C+D with E = 0: HOLD, parked. H-KZ12 curve: pool +1.5 / +0.7 / +2.6 points at k = 4 / 8 / 16, gen flat, no queen response |
-| Evaluator queue (Asahi) | Asked (D-091 §E): from frozen rows, the share of 61's `qk2` queen wall deaths with a portal beside the head and the landing out of sight; then the card of Bokuto's queen-fixed copy of 61 against 61 on `qk2` and head to head. Sugawara's layer removal |
+| Evaluator queue (Asahi) | Done: the frozen-row test of 61's queen wall deaths (0 of 10 portal-adjacent; D-092 §B). Waiting on Bokuto's queen-fixed copy of 61 (`qk2` and head to head against 61 first). Sugawara's layer removal |
 | Nominee (full gate) | none. `asahi-05-kz12-k16` (REG-002) was promoted at 02:13Z (D-069) and rolled back at 04:53Z (D-075 §A) |
 | Uploaded, inactive | 14585 (carthage-05, incumbent, waiting behind the trials), 16979 (k = 16, rolled back), 14265. The upload fix is deployed (D-073); uploads are open (D-071) |
 | Live screen | **Trial 5 live: `bokuto-61-mouth` = 18078 since 22:55:18Z**; look at the first series boundary at or after 60 ranked games (about 02:30Z–03:00Z). End rule: more than 0.03 over 17791's +0.174 at anchor 1725; Daichi also reports against the pooled line; watch items of D-090. Trial 4 ended 22:56Z: 17940 +0.093 [+0.004, +0.185], not kept (D-091) |
@@ -411,7 +417,7 @@ deleting `~/Desktop/sessiondata.img.bak`.
 
 ## Cursor
 
-Last BOARD line read: line 1512 (Daichi 22:56Z), main tree. Own D-091 line follows.
+Last BOARD line read: line 1520 (Asahi 00:16Z), main tree. Own D-092 line follows.
 
 ## Open flags
 

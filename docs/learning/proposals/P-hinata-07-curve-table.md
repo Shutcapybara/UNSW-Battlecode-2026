@@ -313,3 +313,27 @@ RL translation (amended): value — two label/feature fixes. (a) Queen alive at 
 - Joint reading (stated 17:36Z): both 17791 and 17940 beat 17530 on item 3, but every diff interval vs 17530 includes 0 → by the stated rule, "no ladder evidence either way" on whether the reserve carries a growth gain.
 - Reading: 17940 is the first trial whose per-game growth point estimate moves toward the top-ten line (46.4 vs 38.2/37.2; gap −21.8 vs −29.9), but its queen falls (reached r300 0.33 vs 17791's 0.72; queen losses 14/50 vs 7/55) and its r100 lead is gone (carried r100 −2.8 vs 17791 +7.8). 17940 lacks 17791's queen-feed, so this is the trial-3 decomposition again from the other side: growth and queen survival are separate levers, and each trial has moved one. The elo look (Daichi, end rule > +0.204 at 1725) decides the trial; this block is not a decision statistic.
 - RL translation: value — queen alive at r300 and per-game growth r100→r300 enter V as two separate features (fitted on all outcomes, training maps only); the 17940 vs 17791 contrast is a natural paired demonstration set for the queen term (same lineage, queen feed on/off). Action — none. Observation — none new.
+
+## Reply to Sugawara's D-091 §B check (docs/learning/reviews/D-091B-growth-sugawara.md) — hinata, 2026-10-05 23:36 UTC
+
+- **Accepted (amend).** The +8.2 per-game growth of 17940 over 17791 is level-vs-slope plus map mix, not a growth lever. I withdraw the 22:45Z reading "growth and queen survival are separate levers, and each trial has moved one" as far as it claims 17940 moved growth; what stands is the queen contrast (reached r300 0.33 vs 0.72) and 17791's r100 lead.
+- Replicated the asked column with a new single-purpose tool, `tools/hinata/r100col.py` (sha1 cccfdb37f98b; ≥ 1725, all games reaching r100, series bootstrap 1,000 × seed 7, 5–95 %): 17940 58.3 [52.7, 63.6] (49/10) vs 17791 65.1 (55/11), **diff −6.8 [−17.1, +3.4]** — equal to Sugawara's figure. It is added to every block from trial 5 on; the per-game growth row stays but is quoted with the r100 and r300 levels beside it.
+- RL translation: value — compare trajectories by level at the target horizon (r100, r300), not by slope; per-game growth is not a V feature on its own (drop the 22:45Z "separate growth feature" item; keep queen-alive r300 and r100/r300 levels).
+
+## Trial-5 look procedure and forecast (18078 `bokuto-61-mouth`, D-090/D-091), filed 2026-10-05 23:36 UTC — before any 18078 game is read
+
+- Procedure: as trial 4 (look.py 6a691c0f6bbc; first series boundary ≥ 60 ranked post-m2 games from activation 22:55:18Z; band by opponent ladder elo at game start; reached/carried at r100/r300; series bootstrap 1,000 × seed 7, 5–95 %), plus r100col.py, growth_pg row, p06_column, pts_own, seat × result, end reason × result, watch maps. Reference row 17791 (incumbent of record, build/hinata/look3).
+- Sugawara's 22:27Z portal-adjacency test is not built: Asahi ran it on frozen qk2 frames (23:12Z, 0 of 10) and the mechanism is refuted (Sugawara 23:42Z). At the look I print, for losses with end reason queen, map and round only (my rows carry no death cause).
+- Basis: 61 = 46's generation + mouth rule, carries the fed queen; local qk2 41–27 (+16.2 vs 18), queen wall deaths 10 vs 46's 3 (dead-end walks, Asahi 23:12Z); pool misses vs 41 on Australia/Slithery are queen deaths. Local-to-ladder transfer has been weak, so probabilities stay near 0.5.
+- Forecasts (≥ 1725 unless stated; P the stated side holds; each scored once, as read):
+  1. Queen alive, reached r300 (us) ≥ 0.58: **P 0.40**; ≥ 0.72 (17791): **P 0.20**.
+  2. Losses with end reason queen ≤ 0.127 of games (17791 7/55): **P 0.40**.
+  3. r100 total (r100col, games reaching r100) ≥ 65.1 (17791): **P 0.45**.
+  4. Reached r300 total (us) ≥ 115.7 (17791): **P 0.40**.
+  5. Per-game growth r100→r300 (reached) ≥ 38.2 (17791): **P 0.55**.
+  6. Australia + Slithery Fight, any band, W rate ≥ 17791's 6/9: **P 0.30** (watch item, cells small).
+  7. QoS + Trophy + Default + Stripes, any band, W rate ≥ 0.30 (17791 0/11): **P 0.50**.
+  8. Schooltime, any band: no loss (if ≥ 1 game): **P 0.65**.
+  9. Server max per turn < 30 M and 0 TLE: **P 0.95** (probe 14.32 M).
+- Stop rule: one read at the boundary; no re-look unless the Chair asks; values as printed; Brier over items 1–9 (10 scored outcomes) appended with the result. Not a decision statistic — Daichi's end rule decides.
+- RL translation: value — tests whether a feeding-queen bot keeps the queen-alive-r300 level of 17791 when a terrain rule (mouth) changes where migrations stop; the dead-end-walk class is a candidate observation feature (free neighbours of the queen's head over the last 3 rounds) for V and for a queen-move prior.

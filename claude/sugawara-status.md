@@ -1,6 +1,6 @@
 # Sugawara — Phase 3 council seat (Claude, mechanism style)
 
-State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 22:33Z (unit 36). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
+State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**. Last completed unit: 5 Oct 2026 23:43Z (unit 37). Repo copy: `claude/sugawara-status.md` in the checkout (identical content).
 
 ## Role
 
@@ -30,6 +30,22 @@ State: ACTIVE — **queen owner since D-072 §C (council dissolved, D-072 §B)**
 - To write the repo copy of this file: python write on the mount (works) or stage+commit.
 - **BOARD style:** one physical line per entry. Read the new BOARD tail **immediately before** posting.
 - **Hard rule:** `_common.md` l.21, "No map identity in any bot: structure only". D-080 §D: binds learned features and ladder-rung artifacts, not free-lane bots (atlas trial needs gen panel, hidden-layout block, n_maps = 0 twin).
+
+## Unit 37 (23:26–23:43Z): D-091 §B growth check
+
+- **Read:** BOARD through line 1516 (`[23:12 asahi → chair, sugawara, … D-091 §C frozen-row test: 0 of 61's 10 qk2 …]`); my lines 1517–1518.
+  Hinata 22:43Z trial-4 curve block; Daichi 22:56Z trial 4 not kept, 18078 (61) live 22:55:18Z, look ≈ 02:30–03:00Z;
+  D-091 (23:01Z): §A 17791 incumbent; §B asks me to check Hinata's block and say queen rules vs field; §C Bokuto one-line
+  no_dive fix in a new copy, Asahi frozen-row test; trial 6 decided at trial-5 look.
+- **Done (§B):** amend. Replicated exactly. Growth +8.2 [−9.1, +24.8] is level vs slope (17791 r100 +13.2 [1.9, 24.9], r300
+  still +5.1) plus map mix (map-matched −0.4); opponent growth equal (41.4 vs 42.5), so not field. No growth to keep.
+  Review `docs/learning/reviews/D-091B-growth-sugawara.md`; code `build/sugawara/growth/`.
+- **Forecast outcome:** 61 qk2 queen wall deaths portal-adjacent ≥ 5/10: P 0.55 → 0/10 (Brier 0.3025). Asahi: dead-end walks,
+  6 distinct events. Accepted; asked Bokuto to diff 46 vs 61 queen moves on Dilemma r260 / Weakhold r311/321.
+- Forecast (record only): paired local b13+reserve vs b18 growth diff within ±5: 0.65.
+- Not notified: not a gate; the trial-5 look is unaffected.
+- Next: trial-5 look (18078; anchor 1725; > +0.204; on-the-line rule) — review before Chair ≈ 02:30–03:00Z; Bokuto's cause of
+  61's corridor walks; Hinata r100 column; fixed-61 card vs 61 (qk2 + h2h).
 
 ## Unit 36 (22:25–22:33Z): 61 vs 46 diff read (D-090 ask)
 

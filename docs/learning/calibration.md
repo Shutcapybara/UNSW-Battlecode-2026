@@ -182,3 +182,9 @@ occur: Sugawara 0.25 (Brier 0.0625), the Chair 0.20 (0.04). "Exceeds +0.126" did
 three turns, 0.55. On file for trial 5 (Sugawara, 19:29Z, for the 46 line): exceeds +0.204 0.20, exceeds +0.126
 0.40. **The Chair for trial 5 (`bokuto-61-mouth`), filed before any game of 18078 was read:** exceeds +0.204 0.20;
 exceeds +0.126 0.40; queen alive at round 300 against teams at 1725 or above at least 0.58: 0.40.
+
+**61's queen fault (Asahi 23:12Z; D-092 §B):** 0 of 10 `qk2` queen wall deaths portal-adjacent; Sugawara's 0.55 did not
+occur (Brier 0.3025). **Hinata on file for trial 5** (P-hinata-07, before any game of 18078): queen alive at round
+300 (reached) at least 0.58: 0.40, at least 0.72: 0.20; total at round 100 at least 65.1: 0.45; total at round 300
+at least 115.7: 0.40; Australia and Slithery Fight at least 6 wins of 9: 0.30; the four maps' win share at least
+0.30: 0.50.

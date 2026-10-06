@@ -1,6 +1,6 @@
 # hinata — Phase 3 Learner (Claude Opus) — status
 
-Updated 2026-10-05 22:47Z (unit 21:35Z + self follow-up 22:41Z). **This unit: trial-4 look (17940) done, frozen procedure, one read: ≥ 1725 reached r300 per-game growth 46.4 [34.0, 59.2] (39/10) vs 17791 38.2 — diffs include 0; queen alive r300 0.33 (17791 0.72), queen losses 14/50; W 19/50; server max 12.94 M; forecast Brier 0.209/7 (coin 0.25), missed item 4 (queen). Appended to P-hinata-07; BOARD line 1511; user notified.** Read BOARD 1499–1510 (D-089, D-090: trial 5 = bokuto-61-mouth; Chair asks Hinata+Daichi to watch at trial 5's look: Australia + Slithery results and queen deaths, queen alive r300, QoS/Trophy/Default/Stripes, Schooltime; Sugawara 22:27Z: test at the look the share of 61's queen wall deaths with a paired-portal edge next to the head in the prior 1–3 turns and landing out of sight, his P(≥ 5 of 10 qk2) 0.55).
+Updated 2026-10-05 23:40Z (unit 23:35Z). **This unit: accepted Sugawara's D-091 §B check (17940's growth = level-vs-slope + map mix; withdrew "17940 moved growth"); new tools/hinata/r100col.py replicates his r100 column (−6.8 [−17.1, +3.4]); filed trial-5 (18078 bokuto-61-mouth, active 22:55:18Z) look procedure + 9-item forecast in P-hinata-07 before any 18078 game read; portal-adjacency scan dropped (Asahi 23:12Z 0/10 refutes). BOARD line 1519.** Read BOARD 1511–1518 (Daichi 22:56Z trial 4 not kept, 18078 live; D-091; Asahi 23:12Z; Sugawara 23:41Z/23:42Z). Look boundary ≈ 02:30–03:00Z.
 
 ## Host and tree
 - Device shell works. Mount: `$HOME/mnt/Projects/UNSW-Battlecode-2026` (connected folder is Projects). VM: 4 cores / 3 GB RAM; no pyarrow/lightgbm on the VM; stdlib python works. VM disk 8.2 G free. Use `date -u`.
@@ -9,11 +9,11 @@ Updated 2026-10-05 22:47Z (unit 21:35Z + self follow-up 22:41Z). **This unit: tr
 - Ranked corpus: `public_replays/corpus/index.jsonl` (team 7 = us; bot_a/bot_b = submission id), replays `corpus/replays/<gid>.replay` (gzip), ladder snapshots `corpus/ladder/<ts>.json`. Decode ≈ 1.6 s/game; 4 shards ≈ 300 games / 145 s.
 - `tail -1`/`tail -2` fail on the VM ("option used in invalid context") — use `tail -n 2`, `tail -c` or python.
 - Heredoc gotcha: escape backticks in unquoted heredocs.
-- Keeper: uncommitted lane files: P-hinata-03 appends; P-hinata-05; tools/hinata/p05_s0.py; P-hinata-06 + appends, p06_gap.py, p06_analyse.py, p06_column.py, p06_column_q.py; P-hinata-07 (card + all appends incl. 17:36Z trial-4 forecast and **18:40Z trial-3 look result**, **19:40Z reply to Sugawara's check**, **20:40Z growth pre-registration + result**), tools/hinata/look.py, growth_pg.py (new 20:40Z), **P-hinata-07 22:45Z trial-4 look append**, curves.py, curves_table.py, curves_owner.py, curves_qid.py, curves_fix.py, qband.py, pts_own.py, pts.py (superseded).
+- Keeper: uncommitted lane files: P-hinata-03 appends; P-hinata-05; tools/hinata/p05_s0.py; P-hinata-06 + appends, p06_gap.py, p06_analyse.py, p06_column.py, p06_column_q.py; P-hinata-07 (card + all appends incl. 17:36Z trial-4 forecast and **18:40Z trial-3 look result**, **19:40Z reply to Sugawara's check**, **20:40Z growth pre-registration + result**), tools/hinata/look.py, growth_pg.py (new 20:40Z), **P-hinata-07 22:45Z trial-4 look append**, **P-hinata-07 23:36Z reply to D-091B + trial-5 look/forecast**, **tools/hinata/r100col.py (new)**, curves.py, curves_table.py, curves_owner.py, curves_qid.py, curves_fix.py, qband.py, pts_own.py, pts.py (superseded).
 
 ## Schedule
 - Scheduled task "Hinata Learner unit" (every 2 h). Lock build/hinata/unit.lock (moved to _old at end).
-- **Last BOARD line read: line 1510 (sugawara 22:27Z 61 diff read); own line 1511.**
+- **Last BOARD line read: line 1518 (sugawara 23:42Z); own line 1519.**
 
 ## Ladder (Learner rungs)
 | Rung | State |
@@ -26,7 +26,7 @@ Updated 2026-10-05 22:47Z (unit 21:35Z + self follow-up 22:41Z). **This unit: tr
 | R3 cull head (P-hinata-05) | CLOSED at S0 (D-079 §C). |
 | Self-play V | Not filed. |
 | R0 diagnostic P-06 | Done; standing column tools/hinata/p06_column.py. |
-| R0 curve table P-07 | Trial-3 look done (18:40Z), checked by Sugawara (amend labels, accepted 19:40Z). Trial-4 look done 22:45Z (Brier 0.209/7). Quote conversion/queen in the reached view from now on. Per-game growth check PASS (20:40Z): gap to top-ten winners −29.9; outcome-unconditioned ≈ −13. |
+| R0 curve table P-07 | Trial-3 look done (18:40Z), checked by Sugawara (amend labels, accepted 19:40Z). Trial-4 look done 22:45Z (Brier 0.209/7). Quote conversion/queen in the reached view. Per-game growth no longer read alone (D-091B: level at r100/r300 beside it; r100col.py). Trial-5 forecast filed 23:36Z. |
 | R4–R8 | P-7 throughput PASS; no training approved. D-087 §E: 100 M budget fits an ~8 M MAC student. |
 
 ## Tools (lane)
@@ -43,6 +43,6 @@ Updated 2026-10-05 22:47Z (unit 21:35Z + self follow-up 22:41Z). **This unit: tr
 - None blocking.
 
 ## Next 3 actions
-1. Trial-5 look (bokuto-61-mouth; sub id and activation time from Daichi's BOARD line after the trial-4 end-rule table): file a frozen look card + forecast (items incl. queen alive r300, Australia/Slithery queen deaths, the four maps, Schooltime) BEFORE the 61 window is read; then same procedure as look4 (decode → block, p06_column, pts_own, seat/end reason, growth_pg row, watch-map W/n). Add Sugawara's test (22:27Z): queen deaths (end reason queen, our queen) with a paired portal adjacent to her head in the prior 1–3 turns — needs a portal-adjacency scan in tools/hinata (new script, pre-register the rule first).
-2. Answer any review on P-hinata-07 (trial-4 result).
-3. If funded, card first: V features queen-alive r300 + per-game growth r100→300 fitted on all outcomes, training maps only; 17940 vs 17791 as the paired queen-term set.
+1. Trial-5 look (18078, boundary ≥ 60 ranked from 22:55:18Z, ≈ 02:30–03:00Z): `look.py decode 18078 2026-10-05T22:55:18Z 60 140 0 4 build/hinata/look5` (shard 0 alone first, then 1–3) → `look.py block build/hinata/look5`; `r100col.py build/hinata/look5 18078 build/hinata/look3 17791`; growth_pg row; p06_column; pts_own; seat/end reason; queen-loss map+round list; watch maps. Score the 23:36Z forecast (10 outcomes). Do not decode before the boundary is complete.
+2. Answer any review on P-hinata-07.
+3. If funded, card first: V features queen-alive r300 + r100/r300 levels (not slope), plus queen-head free-neighbour count over the last 3 rounds; training maps only; 17940 vs 17791 as the paired queen-term set.

@@ -1,8 +1,8 @@
 # Phase 3 brief — what we are doing now
 
-Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 23:01Z. For team members and their LLM sessions. It
+Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 6 Oct 00:17Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-091. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-092. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
@@ -27,8 +27,8 @@ order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
   top-ten sides about 52. It won 0 of 11 on Queen of Spades, Trophy, Default and Stripes.
 - **What trials 3 and 4 say together (D-091):** on the ladder the reserve lines add about +0.13 over
   `bokuto-13-cull` and the queen changes about +0.08 more; without the queen changes the queen is alive at round
-  300 in 0.33 of games against 0.72 with them. Growth may be higher without them (46 against 38; unresolved). The
-  next gain would keep 17791's queen and add 17940's growth.
+  300 in 0.33 of games against 0.72 with them, and 17791 leads at round 100. The apparent higher growth of 17940
+  was a lower start catching up plus the map mix (D-092); there is no growth to borrow from it.
 - **Where and when we fall behind (D-082 as corrected by D-083, from 1,171 ladder games).** The top ten's winners
   have both the economy and the queen: total length 78 against 61 at round 100 and 154 against 111 at round 300,
   and the queen alive at round 300 in 58 % of games against 37 % for their losers. Ours: total length 55–63 and

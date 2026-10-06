@@ -302,5 +302,7 @@ at first. A trial therefore costs the incumbent's rating nothing.
   028c97bf), activated 22:55:18Z; look at the first series boundary at or after 60 ranked games, about 02:30Z to
   03:00Z; bar more than +0.204 at anchor 1725.
 - Sugawara's code read (22:27Z; D-091 §E): 57's queen rule is never relaxed when nothing else survives, so a queen
-  whose only exit is a portal to an unseen landing dies at the wall. A one-line fix is asked of Bokuto.
+  whose only exit is a portal to an unseen landing dies at the wall. A one-line fix is asked of Bokuto. It does
+  not explain 61's `qk2` queen wall deaths (0 of 10 portal-adjacent; dead-end walks; 61 won 5 of those 6 games;
+  D-092 §B).
 - status: 61 `uploaded` (**trial 5, live**). 57 and 58 are contained in it.
