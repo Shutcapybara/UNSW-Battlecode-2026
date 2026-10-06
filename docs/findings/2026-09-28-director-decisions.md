@@ -4422,3 +4422,22 @@ Trial 5 (18078, `bokuto-61-mouth`) is running since 22:55:18Z with no fault. Its
 - D-080 §D ("the measure is the contest ladder, which plays these maps") rested on the ladder being the test.
   For the tournament it is not; the ruling stands for ladder trials only.
 - The Chair should have asked which maps the tournament uses before ruling on atlases on 5 Oct.
+
+## D-094 — The lead stops all Phase 3 efforts (6 Oct 2026 01:00Z, Chair: Ushijima)
+
+- **The lead (6 Oct, about 00:57Z): cease efforts, stop all scheduled tasks, write a summary, push everything
+  relevant to main.** Every lane stops: no new jobs, builds, cards, uploads or activations. Work in flight may be
+  committed; nothing new is started.
+- **Scheduled tasks disabled** (kept, not deleted): Chair unit 43, Asahi's 01:15 check, Hinata (hourly), Daichi
+  (hourly), Sugawara (hourly). The hub daemon was stopped by hand at 01:00:15Z; its last keeper pass (00:58:09Z,
+  721836cc8) pushed main up to D-093.
+- **State at the stop.** Incumbent of record: `bokuto-18-queenfeed` (17791), +0.174 [+0.079, +0.282] over 60 ranked
+  games, no stored maps. Active on the server: `bokuto-61-mouth` (18078), trial 5, which stores the 17 ladder
+  maps; its look will not be read. Because the Qualifiers and the Grand Final use new maps (D-093), **the Chair
+  recommends 17791 as the final active submission.** The activation is the lead's, by hub control or on the website.
+- **Summary:** `docs/findings/2026-10-06-phase3-summary.md` (and the project doc `claude/phase3-summary.md`).
+- **Merge to main:** the keeper is asked to fetch, merge every Phase 3 lane branch present in this repository
+  (`r/kageyama`, `r/asahi`, `r/daichi`, `r/bokuto`, `r/kenma`, `r/tanaka`, `r/nishinoya`, `r/shenzhen`, `r/ushijima`)
+  and push. A branch that conflicts is left unmerged and reported. The request is pending in
+  `hub-state/control/git.json` because the hub was stopped before it ran. Bokuto's latest commits exist only in its
+  own clone `../wt-bokuto` and cannot be merged from here.

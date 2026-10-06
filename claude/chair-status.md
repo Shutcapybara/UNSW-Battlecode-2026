@@ -1,9 +1,14 @@
 # Chair status — Ushijima (Phase 3)
 
-State: ACTIVE (the Chair's device shell still fails after the disk reset; files move by copy and the keeper commits them). Updated 6 Oct 2026 00:55Z (unit 42b, on the lead's word). Next self-wake about 03:00Z (trial 5's look). Branch `r/ushijima`; private tree
+**STATE: STOP** (the lead stopped all efforts, 6 Oct about 00:57Z; D-094). Do nothing. Updated 6 Oct 2026 01:00Z (final unit); no further self-wakes. Summary: `docs/findings/2026-10-06-phase3-summary.md`. Branch `r/ushijima`; private tree
 `build/ushijima/tree`, committed with `tools/ushijima/commit.sh`; pushes and merges through the keeper.
 
 ## Ladder
+
+- **D-094: Phase 3 stopped by the lead.** Scheduled tasks disabled. Incumbent of record `bokuto-18-queenfeed`
+  (17791, +0.174 [+0.079, +0.282], no stored maps); active at the stop `bokuto-61-mouth` (18078, trial 5, unread).
+  **Recommended final activation: 17791** (the tournament uses new maps, D-093). Summary in
+  `docs/findings/2026-10-06-phase3-summary.md`.
 
 - **R0 passed at 14:28Z (D-053 §A). R1 and R2 are open** (`docs/learning/ladder.md`). Charter: **D-046** in
   `docs/findings/2026-09-28-director-decisions.md`. The prompts' "D-045" means D-046; the existing D-045 (learned-arm
@@ -418,9 +423,8 @@ State: ACTIVE (the Chair's device shell still fails after the disk reset; files 
 2. **Trial 6:** the queen-fixed copy of 61, or a confirmation window for 17791, decided at that look.
 3. **The schedule of confirmation runs and the final activation**, once the lead gives the seeding cutoff.
 
-Waiting on the lead: **which submission plays the Qualifiers (the one active at the seeding cutoff, or one chosen
-separately), and when the cutoff is.** The tournament maps are new (D-093). Open: RL go/no-go, a second builder
-lane, standing down Kageyama's lane.
+Waiting on the lead: the final activation (17791 recommended; restore.json previous = 17791, candidate = 18078,
+or the website); pushing `r/bokuto` from `../wt-bokuto` if Bokuto's latest material is wanted on main.
 
 ## Cursor
 

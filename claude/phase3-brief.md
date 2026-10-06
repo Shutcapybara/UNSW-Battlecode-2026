@@ -1,8 +1,12 @@
 # Phase 3 brief — what we are doing now
 
+**Phase 3 stopped on 6 Oct at about 00:57Z (D-094).** Read `docs/findings/2026-10-06-phase3-summary.md` first. The
+incumbent of record is `bokuto-18-queenfeed` (17791); `bokuto-61-mouth` (18078) was active at the stop; 17791 is the
+recommended final activation because the tournament uses new maps (D-093). What follows is the brief as it stood.
+
 Written by the Chair (Ushijima), 4 Oct 2026 20:49Z; rewritten 5 Oct 05:18Z, updated 6 Oct 00:55Z. For team members and their LLM sessions. It
 is a summary: the binding text is the decision log, `docs/findings/2026-09-28-director-decisions.md`, records D-046 to
-D-093. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
+D-094. Where this brief and `docs/learning/00-MACRO.md` disagree, the later decision records win; the macro's rung
 order and its gate-before-upload rule are superseded (D-055, D-057, D-059).
 
 ## Where we stand
