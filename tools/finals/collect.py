@@ -193,7 +193,14 @@ def replay_potentials(replay, seat, terminal_round, expected_winner):
     return potentials_from_frame(frame, seat, terminal_round)
 
 
-def episode(bridge, opponent, board, seed, seat='A', action_actor=None, sonar_actor=None, gamma=0.997):
+def episode(bridge, opponent, board, seed, seat='A', action_actor=None, sonar_actor=None,
+            gamma=0.997, capture=True):
+    """Run one official episode.
+
+    ``capture=False`` keeps the replay-backed reward validation and summary but skips
+    materializing the training tensors. Evaluation never consumes those tensors, so
+    this avoids a substantial allocation/copy path without changing the game.
+    """
     engine = EngineModule()
     processes, readers, teams = {}, {}, {}
     rows, faults = [], []
@@ -338,34 +345,40 @@ def episode(bridge, opponent, board, seed, seat='A', action_actor=None, sonar_ac
                               potentials=potentials, alpha=SHAPING_ALPHA)
     terminal_returns, _ = credit(decision_rounds, result.rounds, reward, gamma)
     shaping_returns = returns - terminal_returns
-    action_features = np.zeros((len(rows), 12, 32), dtype=np.float32)
-    action_mask = np.zeros((len(rows), 12), dtype=bool)
-    sonar_features = np.zeros((len(rows), 4, 5, 32), dtype=np.float32)
-    sonar_mask = np.zeros((len(rows), 4, 5), dtype=bool)
-    actual_dirs = np.full((len(rows), 4), -1, dtype=np.int8)
-    for i, row in enumerate(rows):
-        dirs = row['actual']['dirs']
-        if len(dirs) > 4:
+    for row in rows:
+        if len(row['actual']['dirs']) > 4:
             raise ValueError('Actual command exceeds recorded path bound')
-        actual_dirs[i, :len(dirs)] = dirs
-        action_features[i, :len(row['features'])] = row['features']
-        action_mask[i, :len(row['features'])] = True
-        for ray, feats in enumerate(row['rays']):
-            sonar_features[i, ray, :len(feats)] = feats
-            sonar_mask[i, ray, :len(feats)] = True
-    arrays = dict(x=np.asarray([r['x'] for r in rows]), action_features=action_features,
-                  chosen_action_features=np.asarray([r['chosen_action_features'] for r in rows], dtype=np.float32),
-                  action_mask=action_mask, action=np.asarray([r['action'] for r in rows]),
-                  action_logp=np.asarray([r['action_logp'] for r in rows], dtype=np.float32),
-                  sonar_features=sonar_features, sonar_mask=sonar_mask,
-                  sonar=np.asarray([r['sends'] for r in rows]),
-                  sonar_logp=np.asarray([r['sonar_logp'] for r in rows], dtype=np.float32),
-                  actual_act=np.asarray([r['actual']['act'] for r in rows], dtype=np.int8),
-                  actual_split=np.asarray([r['actual']['split'] for r in rows], dtype=np.int16),
-                  actual_dirs=actual_dirs,
-                  actor_valid=np.asarray([not r['override'] for r in rows]), returns=returns,
-                  terminal_returns=terminal_returns, shaping_returns=shaping_returns, weight=weights,
-                  round=np.asarray([r['round'] for r in rows]), dragon=np.asarray([r['id'] for r in rows]))
+    # Keep summary diagnostics available for evaluation rollouts, which use
+    # capture=False and therefore do not materialize the training mask below.
+    action_menu_counts = Counter(len(row['features']) for row in rows)
+    arrays = None
+    if capture:
+        action_features = np.zeros((len(rows), 12, 32), dtype=np.float32)
+        action_mask = np.zeros((len(rows), 12), dtype=bool)
+        sonar_features = np.zeros((len(rows), 4, 5, 32), dtype=np.float32)
+        sonar_mask = np.zeros((len(rows), 4, 5), dtype=bool)
+        actual_dirs = np.full((len(rows), 4), -1, dtype=np.int8)
+        for i, row in enumerate(rows):
+            dirs = row['actual']['dirs']
+            actual_dirs[i, :len(dirs)] = dirs
+            action_features[i, :len(row['features'])] = row['features']
+            action_mask[i, :len(row['features'])] = True
+            for ray, feats in enumerate(row['rays']):
+                sonar_features[i, ray, :len(feats)] = feats
+                sonar_mask[i, ray, :len(feats)] = True
+        arrays = dict(x=np.asarray([r['x'] for r in rows]), action_features=action_features,
+                      chosen_action_features=np.asarray([r['chosen_action_features'] for r in rows], dtype=np.float32),
+                      action_mask=action_mask, action=np.asarray([r['action'] for r in rows]),
+                      action_logp=np.asarray([r['action_logp'] for r in rows], dtype=np.float32),
+                      sonar_features=sonar_features, sonar_mask=sonar_mask,
+                      sonar=np.asarray([r['sends'] for r in rows]),
+                      sonar_logp=np.asarray([r['sonar_logp'] for r in rows], dtype=np.float32),
+                      actual_act=np.asarray([r['actual']['act'] for r in rows], dtype=np.int8),
+                      actual_split=np.asarray([r['actual']['split'] for r in rows], dtype=np.int16),
+                      actual_dirs=actual_dirs,
+                      actor_valid=np.asarray([not r['override'] for r in rows]), returns=returns,
+                      terminal_returns=terminal_returns, shaping_returns=shaping_returns, weight=weights,
+                      round=np.asarray([r['round'] for r in rows]), dragon=np.asarray([r['id'] for r in rows]))
     n_team_rounds = len(set(decision_rounds.tolist()))
     mean_by_team_round = lambda values: float(np.sum(weights * values) / max(n_team_rounds, 1))
     summary = dict(map=str(board), map_sha256=hashlib.sha256(board.read_bytes()).hexdigest(), seed=seed, seat=seat,
@@ -381,7 +394,7 @@ def episode(bridge, opponent, board, seed, seat='A', action_actor=None, sonar_ac
                    action_behavior='baseline' if action_actor is None else getattr(action_actor, '__name__', 'actor'),
                    sonar_behavior='baseline' if sonar_actor is None else getattr(sonar_actor, '__name__', 'actor'),
                    decisions=len(rows), overrides=sum(r['override'] for r in rows), faults=faults,
-                   action_menu_counts=dict(Counter(int(n) for n in action_mask.sum(axis=1))),
+                   action_menu_counts=dict(action_menu_counts),
                    timing=dict(timing), elapsed_seconds=time.monotonic() - started)
     summary['team_reward_timeline'] = [0] * (result.rounds + 1)
     summary['team_reward_timeline'][-1] = reward

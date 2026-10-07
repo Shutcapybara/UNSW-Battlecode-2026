@@ -513,3 +513,24 @@ action-menu coverage. None prevents initial local inspection and bounded baselin
   five updates in the documented continuous command. Unit coverage checks unbounded update index
   generation; no continuous training was started. The current checkout lacks the ignored compiled
   bridge/opponent and warm-start outputs, so rebuild/collect before launch. No submission changed.
+
+- **Rollout throughput optimization (7 Oct, proposed/unmeasured):** Added isolated process workers
+  to `tools/finals/train_spatial.py`. Training rollouts and fixed-panel evaluation now preserve
+  input order while allowing independent official-engine episodes to overlap; each worker owns its
+  engine, native bot children, RNG, and read-only policy snapshot. Evaluation skips unused training
+  tensor materialization, and sonar inference batches the four packet rays per decision. The
+  requested `--threads` budget is divided across workers; `--workers 4` therefore uses two workers
+  for the two-game training update and four for eight-game evaluation. Existing measured timing
+  (update-001: 136.16 s collection, 16.64 s PPO) motivates the change, but no post-change game or
+  speed result has been measured. Targeted credit/shaping/spatial tests (14), Python compilation,
+  and `git diff --check` pass. Use a fresh output directory because the worker count is pinned in
+  the run manifest; do not treat projected speedup as a measured result.
+
+- **Capture-free rollout regression fix (7 Oct):** The new isolated evaluation workers call
+  `collect.episode(..., capture=False)`, but the summary still read the training-only
+  `action_mask`, causing `UnboundLocalError` after an otherwise complete game.
+  `action_menu_counts` now derives directly from each recorded candidate menu and is available in
+  both capture modes. Python compilation, 14 targeted credit/shaping/spatial tests, and a real
+  500-round capture-free maze smoke (seed61611, 20,081 decisions, zero faults; arrays correctly
+  omitted) passed. Existing failed runs should be restarted in a fresh output directory because
+  the run manifest pins the collector source hash.

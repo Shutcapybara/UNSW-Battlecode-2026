@@ -110,6 +110,7 @@ panel after each update:
     tools/ouroboros/holdout/trauma_FY.map tools/ouroboros/holdout/trophy_TFX.map \
     tools/ouroboros/holdout/Colosseum_FY.map \
   --updates 4 --games-per-update 2 --eval-games 8 --epochs 3 \
+  --threads 8 --workers 4 \
   --output build/finals/spatial-joint-shaped-pilot
 ```
 
@@ -117,6 +118,12 @@ For continuous training, use the same inputs and output path, replace `--updates
 `--until-stopped --eval-every 5`, and press Ctrl+C when you want to stop. Completed updates are
 checkpointed; restart the same command with `--resume` to continue. The monitor is still the same
 fixed panel, so use it as a plateau signal rather than independent confirmation.
+
+`--workers` runs independent official-engine episodes in isolated processes and preserves fixture
+order when collecting results. Training uses at most `games-per-update` workers; with two games,
+the setting above uses two concurrent training games and four concurrent evaluation games. Each
+worker receives a read-only policy snapshot and divides the requested PyTorch thread budget across
+workers. The default is one worker for backwards-compatible serial runs.
 
 The console prints each game's terminal reward and, after each update, PPO losses, active action
 and sonar decisions, per-head baseline-choice rates, training reward/score, cumulative training

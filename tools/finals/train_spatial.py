@@ -7,9 +7,11 @@ from __future__ import annotations
 import argparse
 from collections import Counter, defaultdict
 import csv
+from concurrent.futures import ProcessPoolExecutor
 import hashlib
 from itertools import count
 import json
+import multiprocessing as mp
 from pathlib import Path
 import shutil
 import time
@@ -30,6 +32,104 @@ PPO_CLIP = 0.2
 ENTROPY_COEF = 0.01
 VALUE_COEF = 0.5
 GRAD_NORM = 0.5
+
+
+# Rollout workers are deliberately process-isolated.  Each worker owns its
+# EngineModule, native bot children, RNG, and read-only policy snapshot.  This
+# avoids sharing wasm/engine state or a mutable torch module across games while
+# allowing independent episodes to overlap.
+_WORKER_POLICY = None
+
+
+def _actor_kwargs(actor, actor_kind: str | None, *, greedy: bool) -> dict:
+    if actor is None or actor_kind is None:
+        return {}
+    action_view = actor.action_view
+    sonar_view = actor.sonar_view
+    action_callback = action_view.greedy if greedy else action_view.sample
+    sonar_callback = sonar_view.greedy if greedy else sonar_view.sample
+    if actor_kind == 'joint':
+        return {'action_actor': action_callback, 'sonar_actor': sonar_callback}
+    if actor_kind == 'action':
+        return {'action_actor': action_callback}
+    if actor_kind == 'sonar':
+        return {'sonar_actor': sonar_callback}
+    raise ValueError(f'unknown actor kind: {actor_kind}')
+
+
+def _write_episode_artifacts(output: Path, arrays: dict, summary: dict, replay: bytes) -> None:
+    """Write one completed rollout so worker failure cannot look complete."""
+    output.mkdir(parents=True, exist_ok=True)
+    npz_tmp = output / 'episode.npz.tmp'
+    with npz_tmp.open('wb') as stream:
+        np.savez_compressed(stream, **arrays)
+    npz_tmp.replace(output / 'episode.npz')
+    replay_tmp = output / 'game.replay.tmp'
+    replay_tmp.write_bytes(replay)
+    replay_tmp.replace(output / 'game.replay')
+    atomic_json(output / 'summary.json', summary)
+
+
+def _init_rollout_worker(actor_state, worker_threads: int) -> None:
+    global _WORKER_POLICY
+    torch.set_num_threads(worker_threads)
+    if actor_state is None:
+        _WORKER_POLICY = None
+        return
+    policy = SpatialPolicy()
+    policy.load_state_dict(actor_state)
+    policy.eval()
+    _WORKER_POLICY = policy
+
+
+def _run_rollout_task(spec: dict) -> dict:
+    actor = _WORKER_POLICY
+    arrays, summary, replay = episode(
+        Path(spec['bridge']), Path(spec['opponent']), Path(spec['board']),
+        spec['seed'], spec['seat'], gamma=GAMMA, capture=spec['capture'],
+        **_actor_kwargs(actor, spec['actor_kind'], greedy=spec['greedy']))
+    if spec['output'] is not None:
+        if arrays is None:
+            raise RuntimeError('training rollout did not capture arrays')
+        _write_episode_artifacts(Path(spec['output']), arrays, summary, replay)
+    return summary
+
+
+def _run_rollout_local(spec: dict, actor) -> dict:
+    arrays, summary, replay = episode(
+        Path(spec['bridge']), Path(spec['opponent']), Path(spec['board']),
+        spec['seed'], spec['seat'], gamma=GAMMA, capture=spec['capture'],
+        **_actor_kwargs(actor, spec['actor_kind'], greedy=spec['greedy']))
+    if spec['output'] is not None:
+        if arrays is None:
+            raise RuntimeError('training rollout did not capture arrays')
+        _write_episode_artifacts(Path(spec['output']), arrays, summary, replay)
+    return summary
+
+
+def _snapshot_policy(actor) -> dict:
+    return {name: tensor.detach().cpu().clone() for name, tensor in actor.state_dict().items()}
+
+
+def run_rollouts(specs: list[dict], actor=None, *, workers: int, threads: int) -> list[dict]:
+    """Run independent episodes, returning summaries in input order."""
+    if not specs:
+        return []
+    if workers <= 1:
+        return [_run_rollout_local(spec, actor) for spec in specs]
+
+    max_workers = min(workers, len(specs))
+    worker_threads = max(1, threads // max_workers)
+    actor_state = None if actor is None else _snapshot_policy(actor)
+    context = mp.get_context('spawn')
+    with ProcessPoolExecutor(
+        max_workers=max_workers,
+        mp_context=context,
+        initializer=_init_rollout_worker,
+        initargs=(actor_state, worker_threads),
+    ) as pool:
+        futures = [pool.submit(_run_rollout_task, spec) for spec in specs]
+        return [future.result() for future in futures]
 
 
 def update_sequence(start: int, target: int, until_stopped: bool):
@@ -331,26 +431,17 @@ def result_score(summary: dict) -> float:
 
 
 def eval_actor(actor, actor_kind: str, fixture: dict, bridge: Path, *, greedy: bool):
-    action_view = actor.action_view
-    sonar_view = actor.sonar_view
-    action_callback = action_view.greedy if greedy else action_view.sample
-    sonar_callback = sonar_view.greedy if greedy else sonar_view.sample
-    if actor_kind == 'joint':
-        kw = {'action_actor': action_callback, 'sonar_actor': sonar_callback}
-    elif actor_kind == 'action':
-        kw = {'action_actor': action_callback}
-    else:
-        kw = {'sonar_actor': sonar_callback}
     arrays, summary, replay = episode(
         bridge.resolve(), Path(fixture['opponent']), Path(fixture['map']), fixture['seed'],
-        fixture['seat'], gamma=GAMMA, **kw)
+        fixture['seat'], gamma=GAMMA, capture=False,
+        **_actor_kwargs(actor, actor_kind, greedy=greedy))
     return summary
 
 
 def eval_baseline(fixture: dict, bridge: Path) -> dict:
     arrays, summary, replay = episode(
         bridge.resolve(), Path(fixture['opponent']), Path(fixture['map']), fixture['seed'],
-        fixture['seat'], gamma=GAMMA)
+        fixture['seat'], gamma=GAMMA, capture=False)
     return summary
 
 
@@ -382,14 +473,26 @@ def plateau_status(history: list[dict]) -> dict:
     return {'monitor_trend': trend, 'slope_per_update': slope}
 
 
+def _rollout_spec(bridge: Path, fixture: dict, *, actor_kind: str | None,
+                  greedy: bool, capture: bool, output: Path | None = None) -> dict:
+    return {
+        'bridge': str(bridge.resolve()), 'opponent': str(Path(fixture['opponent']).resolve()),
+        'board': str(Path(fixture['map']).resolve()), 'seed': int(fixture['seed']),
+        'seat': fixture['seat'], 'actor_kind': actor_kind, 'greedy': greedy,
+        'capture': capture, 'output': None if output is None else str(output),
+    }
+
+
 def evaluate(actor, actor_kind: str, fixtures: list[dict], references: list[dict], bridge: Path,
-             output: Path, update: int) -> dict:
+             output: Path, update: int, *, workers: int, threads: int) -> dict:
     actor.eval()
     games = []
     eval_dir = output / f'update-{update:03d}' / 'eval'
     eval_dir.mkdir(parents=True, exist_ok=True)
-    for fixture, baseline in zip(fixtures, references):
-        candidate = eval_actor(actor, actor_kind, fixture, bridge, greedy=True)
+    specs = [_rollout_spec(bridge, fixture, actor_kind=actor_kind, greedy=True, capture=False)
+             for fixture in fixtures]
+    candidates = run_rollouts(specs, actor, workers=workers, threads=threads)
+    for fixture, baseline, candidate in zip(fixtures, references, candidates):
         row = {'fixture': fixture, 'candidate': candidate,
                'candidate_score': result_score(candidate), 'baseline_score': result_score(baseline)}
         games.append(row)
@@ -428,7 +531,7 @@ def build_manifest(args, source_files: list[Path]) -> dict:
         'games_per_update': args.games_per_update, 'ppo_epochs': args.epochs,
         'batch_size': args.batch_size, 'eval_games': args.eval_games,
         'eval_every': args.eval_every, 'warmstart_epochs': args.warmstart_epochs,
-        'threads': args.threads,
+        'threads': args.threads, 'workers': args.workers,
         'gamma': GAMMA, 'learning_rate': LEARNING_RATE, 'clip': PPO_CLIP,
         'reward_shaping': SHAPING_NAME, 'shaping_alpha': SHAPING_ALPHA,
         'entropy_coef': ENTROPY_COEF, 'value_coef': VALUE_COEF, 'grad_norm': GRAD_NORM,
@@ -524,6 +627,8 @@ def main():
     ap.add_argument('--seed', type=int, default=61600)
     ap.add_argument('--monitor-seed', type=int, default=926100)
     ap.add_argument('--threads', type=int, default=1)
+    ap.add_argument('--workers', type=int, default=1,
+                    help='isolated concurrent game workers; training uses at most games/update')
     ap.add_argument('--output', type=Path, required=True)
     ap.add_argument('--resume', action='store_true')
     args = ap.parse_args()
@@ -531,7 +636,7 @@ def main():
     if not (bounded_updates_ok and 1 <= args.games_per_update <= 16 and
             1 <= args.epochs <= 10 and 1 <= args.warmstart_epochs <= 50 and
             1 <= args.eval_games <= 64 and 1 <= args.eval_every <= 100 and
-            1 <= args.threads <= 32):
+            1 <= args.threads <= 32 and 1 <= args.workers <= 16):
         ap.error('run limits: updates 1..1000 unless --until-stopped; games/update<=16, '
                  'epochs<=10, eval games<=64')
     args.output = args.output.resolve()
@@ -618,14 +723,27 @@ def main():
     reference_dir = args.output / 'reference'
     reference_dir.mkdir(exist_ok=True)
     references = []
+    missing_references = []
+    missing_reference_specs = []
+    missing_reference_slots = []
     for fixture in fixtures:
         path = reference_dir / f"game-{fixture['index']:03d}.json"
         if path.exists():
             references.append(json.loads(path.read_text()))
         else:
-            summary = eval_baseline(fixture, args.bridge)
+            missing_reference_slots.append(len(references))
+            references.append(None)
+            missing_references.append(path)
+            missing_reference_specs.append(
+                _rollout_spec(args.bridge, fixture, actor_kind=None, greedy=True, capture=False))
+    if missing_reference_specs:
+        new_references = run_rollouts(
+            missing_reference_specs, workers=args.workers, threads=args.threads)
+        for slot, path, fixture, summary in zip(
+                missing_reference_slots, missing_references, [fixtures[i] for i in missing_reference_slots],
+                new_references):
             atomic_json(path, summary)
-            references.append(summary)
+            references[slot] = summary
             print(json.dumps({'kind': 'reference_game', 'fixture': fixture['index'],
                               'score': result_score(summary), 'map': Path(fixture['map']).name,
                               'opponent': Path(fixture['opponent']).name}), flush=True)
@@ -644,6 +762,8 @@ def main():
         actor.eval()
         collection_started = time.monotonic()
         training_summaries = []
+        game_records = []
+        pending_specs = []
         for game in range(args.games_per_update):
             fixture_ix = update * args.games_per_update + game
             board = args.maps[(fixture_ix // 2) % len(args.maps)]
@@ -655,24 +775,28 @@ def main():
             if (path / 'summary.json').exists() and (path / 'episode.npz').exists():
                 arrays = dict(np.load(path / 'episode.npz'))
                 summary = json.loads((path / 'summary.json').read_text())
+                game_records.append((path, arrays, summary))
             else:
-                action_callback = actor.action_view.sample
-                sonar_callback = actor.sonar_view.sample
-                if args.actor == 'joint':
-                    kwargs = {'action_actor': action_callback, 'sonar_actor': sonar_callback}
-                elif args.actor == 'action':
-                    kwargs = {'action_actor': action_callback}
-                else:
-                    kwargs = {'sonar_actor': sonar_callback}
-                arrays, summary, replay = episode(args.bridge, opponent, board, seed, seat,
-                                                   gamma=GAMMA, **kwargs)
-                np.savez_compressed(path / 'episode.npz', **arrays)
-                (path / 'game.replay').write_bytes(replay)
-                atomic_json(path / 'summary.json', summary)
+                game_records.append((path, None, None))
+                pending_specs.append(_rollout_spec(
+                    args.bridge,
+                    {'opponent': opponent, 'map': board, 'seed': seed, 'seat': seat},
+                    actor_kind=args.actor, greedy=False, capture=True, output=path))
+        if pending_specs:
+            new_summaries = run_rollouts(
+                pending_specs, actor, workers=args.workers, threads=args.threads)
+            pending_index = 0
+            for index, (path, arrays, summary) in enumerate(game_records):
+                if summary is None:
+                    summary = new_summaries[pending_index]
+                    arrays = dict(np.load(path / 'episode.npz'))
+                    game_records[index] = (path, arrays, summary)
+                    pending_index += 1
+        for game, (path, arrays, summary) in enumerate(game_records):
             episodes.append((arrays, summary))
             training_summaries.append(summary)
             print(json.dumps({'kind': 'train_game', 'update': update + 1, 'game': game + 1,
-                              'seat': seat, 'reward': summary['terminal_reward'],
+                              'seat': summary['seat'], 'reward': summary['terminal_reward'],
                               'rounds': summary['terminal_round'] + 1, 'decisions': summary['decisions'],
                               'faults': len(summary['faults']),
                               'elapsed_seconds': round(summary['elapsed_seconds'], 2)}), flush=True)
@@ -723,7 +847,8 @@ def main():
         torch.save(state, block / 'checkpoint.pt')
         if ((update + 1) % args.eval_every == 0 or
                 (not args.until_stopped and update + 1 == args.updates)):
-            eval_report = evaluate(actor, args.actor, fixtures, references, args.bridge, args.output, update + 1)
+            eval_report = evaluate(actor, args.actor, fixtures, references, args.bridge, args.output, update + 1,
+                                   workers=args.workers, threads=args.threads)
             report['eval'] = eval_report
             monitor_history = history + [report]
             report.update(plateau_status(monitor_history))

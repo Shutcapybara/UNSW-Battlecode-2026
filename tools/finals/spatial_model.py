@@ -135,7 +135,9 @@ class PolicyView:
                            torch.as_tensor(action_context, dtype=torch.float32).unsqueeze(0))[0]
 
     def _choose(self, x, features, rng=None, action_context=None):
-        with torch.no_grad():
+        if len(features) == 1:
+            return 0, 0.0
+        with torch.inference_mode():
             logits = self._scores(x, features, action_context)
             probabilities = torch.softmax(logits, dim=-1).cpu().numpy().astype(np.float64)
         if rng is None:
@@ -158,19 +160,25 @@ class PolicyView:
         return self._choose(x, features, None, action_context)
 
     def _rays(self, x, rays, action_context=None, rng=None):
-        with torch.no_grad():
+        active_rays = [ray for ray in rays if len(ray) > 1]
+        if not active_rays:
+            return [(0, 0.0)] * len(rays)
+        with torch.inference_mode():
             xt = torch.as_tensor(x).unsqueeze(0)
             context = self.policy.encode(xt)
             action_ctx = None if action_context is None else torch.as_tensor(
                 action_context, dtype=torch.float32).unsqueeze(0)
+            lengths = [len(ray) for ray in active_rays]
+            features = torch.as_tensor(np.concatenate(active_rays), dtype=torch.float32).unsqueeze(0)
+            logits = self.policy.sonar_head(context, features, action_ctx)[0]
+            scored = iter(logits.split(lengths))
             choices = []
             for ray in rays:
                 if len(ray) == 1:
                     choices.append((0, 0.0))
                     continue
-                features = torch.as_tensor(ray, dtype=torch.float32).unsqueeze(0)
-                logits = self.policy.sonar_head(context, features, action_ctx)[0]
-                probabilities = torch.softmax(logits, dim=-1).cpu().numpy().astype(np.float64)
+                ray_logits = next(scored)
+                probabilities = torch.softmax(ray_logits, dim=-1).cpu().numpy().astype(np.float64)
                 if rng is None:
                     choices.append((int(probabilities.argmax()), 0.0))
                 else:
