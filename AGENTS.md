@@ -1,5 +1,13 @@
 # Repository Guidelines
 
+## Active Finals Sprint
+
+For current solo sprint work, read [`FINALS_WORKING_MEMORY.md`](FINALS_WORKING_MEMORY.md)
+first. It records the current objective, deadline, active bot, next step, and pointers to detailed
+campaign documents. Keep its compact task board current; append detailed protocols and results to
+[`docs/finals-campaign/EXPERIMENT_LOG.md`](docs/finals-campaign/EXPERIMENT_LOG.md). Distinguish
+proposed steps from measured results.
+
 ## Project Structure
 
 `bots/` contains standalone bot snapshots; many are frozen experiment controls. `tools/` holds tournament, benchmarking, and analysis utilities. `tests/` contains Python behavior and tooling tests. `maps/` stores shared maps, while `configs/` stores comparison and validation rosters. `docs/` records workflows, experiment results, and artifact rules. Use `FRONTIER.md` as the canonical active-candidate registry.

@@ -19,6 +19,34 @@ Replay → legal observation → features + labels + value targets, with a C++ t
 | `cpp/hb1_scores.cpp`, `hb1prior.py` | the parent's HB-1 direction prior (p over F/R/L) on teacher rows through carthage-05's own C++ extractor; `dataset.py --hb1` adds `hb_pF/hb_pR/hb_pL` | text path = the bot's helper path on 3,091 / 3,091 turns (`cpp/hb1_helper_check.cpp`); ~3.2 k turns/s |
 | `build_dev.py` | resumable sharded build (one parquet per game), restarts bound the wasm memory growth | |
 | `gen_truth.py`, `drive_native.py` | engine truth runs (random walkers / native bots, one process per dragon) | |
+| `ppo.py` | experimental on-policy PPO self-play loop on encoder v1; terminal match outcome, frozen-policy KL anchor, mirror augmentation | one-game engine smoke completed locally; not a selected candidate |
+
+## PPO prototype
+
+`ppo.py` is the first runnable PPO implementation for the P-7 line. It feeds the same `block.py` / `encode.py` v1
+observations, samples only F/R/L, collects one side against a frozen copy of the policy, assigns the terminal match
+result to that side's decisions, and updates a shared actor/value model with clipped PPO and a KL anchor to the
+initial model. Rollout chunks are capped at 1,000,000 decisions (default 100,000); reflected observations and R/L
+actions are augmented during each update.
+
+Run one short integration smoke on a training map:
+
+```sh
+.venv/bin/python tools/learn/ppo.py --maps maps/live/default.map \
+  --out build/learn/ppo/smoke --games-per-update 1 --epochs 1 --seed 41
+```
+
+For a warm start, `--init` accepts this trainer's checkpoint or an A10 state dict. A raw A10 state dict also needs
+`--init-stats` pointing to JSON with `scalar_mean`, `scalar_std`, and optionally the exact encoder-v1 `scalar_names`;
+the existing supervised A10 fold files do not include those normalization values. With no `--init`, the script uses
+a random actor for plumbing smokes only. Checkpoints and update logs go under `build/` by default. When
+`--updates` is greater than one, each update runs in a fresh process to respect the engine's 500-game worker
+recycling limit; an update that crosses the KL stop rule ends the sequence.
+
+This is not yet a P-7 training run or deployable bot. The current wrapper emits direct one-step moves and does not
+preserve the chassis bot's split/search behaviour; it uses terminal outcome without the proposed frozen potential
+shaping; no selected A10 checkpoint with normalization is present in this checkout. D-066 also records that rollout
+training was not approved there. Do not interpret smoke match outcomes as a strength result or promote its checkpoint.
 
 Facts the pipeline depends on (found 4 Oct, kageyama):
 - **Server replays redact bed timers** (every `TILE` line `0 0`, no `PearlCountdown` events) and may **swap spawn seats**

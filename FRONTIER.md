@@ -1,5 +1,41 @@
 # Current bot frontier
 
+## Finals status — 6 October 2026
+
+Retained atlas-free qualifier fallback: **`bokuto-18-queenfeed`, submission 17791**.
+After the independent confirmation gate failed for candidate 63, fallback **17791** was activated
+on 6 October at 21:22 Adelaide and immediately verified as the sole active submission. No candidate
+is promoted by this decision.
+The initial four-fresh-map development baseline for 18 against Kenma 03 scored
+5W–3L, both seats, seed 61006, with zero runner errors. This small screen does
+not establish improvement over the fallback. Provenance and next tasks are in
+[the finals working memory](FINALS_WORKING_MEMORY.md); artifacts are under
+`build/finals/20261006-baseline/`.
+
+Current finals experiments (all atlas-disabled, no promotion): `bokuto-62-escape-priority`
+screened 4–4 versus 18 and 4–4 versus Kenma. `bokuto-63-resource-crowding` had an initial
+four-map 5–3 screen, then scored 86–88 in its independent 174-game confirmation against 18;
+the direct advantage was +0.0057 with a 90% map-cluster interval [−0.0517, +0.0632], so it
+failed the frozen promotion gate despite zero replay faults. Keep 18 as the supported fallback.
+`bokuto-64-option-chassis`
+passed 26,159 complete baseline-reply parity checks; `bokuto-65-policy-collector`
+collects lawful action/sonar candidate data. These are integration artifacts, not
+new strength rankings or active submissions.
+
+The common-seed four-arm development screen tied action-only, sonar-only, and combined
+u10 policies with 18 at 4–4 and with Kenma at 4–4; matched keeper deltas were zero.
+Optional-packet suppression led that four-map screen but lost 83–91 to 18 on a separate
+29-map, 174-game confirmation (direct advantage −0.023; 90% map-cluster interval
+[−0.086, +0.040]; zero faults). No learned or suppression artifact is supported for
+promotion. A fresh server check before fallback activation showed 18078 active and 17791 idle;
+the subsequent guarded activation and readback confirmed 17791 as sole active. See the
+[working memory](FINALS_WORKING_MEMORY.md) for hashes, replay diagnostics, and the sonar resource check.
+
+## Historical panel — 2 October 2026
+
+The rankings and upload discussion below are historical evidence; they do not
+describe current Queen-rule standings or the current active server submission.
+
 **Updated 2026-10-02.** Rows are ordered by displayed ELO. Numbers in the first
 column are 35-map panel ranks; `Screen` entries have provisional 10-map ratings.
 

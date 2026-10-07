@@ -1,9 +1,15 @@
 import argparse
 import json
 from pathlib import Path
+import sys
 
 
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == 'ppo':
+        from . import ppo as ppo_module
+        sys.argv = [sys.argv[0], *sys.argv[2:]]
+        ppo_module.main()
+        return
     parser = argparse.ArgumentParser(description='Retained-growth RL campaign for the first 100 rounds')
     sub = parser.add_subparsers(dest='command', required=True)
     worker = sub.add_parser('run')
