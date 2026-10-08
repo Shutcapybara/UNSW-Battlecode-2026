@@ -1,0 +1,5 @@
+# Akaashi 07 — hotspot capacity
+
+Experimental fork of immutable Akaashi 06, atlas disabled. From round 50 until queen feeding, ordinary resource targets with at least four visible allied heads within five toroidal cells reserve two nearest collectors plus one per visible enemy. Stable ID tie breaks; surplus dragons discount those targets to 3%, including remembered-pearl fallback. Ordinary production is suppressed when five nearby allies exceed the same enemy-adjusted capacity. Queen/crown/feeding roles, opening rescue and escape splits retain their behavior.
+
+Trigger: Team A, Trophy match 1416376, leads 85–20 segments / 32–8 units at r100 and loses at r309. Existing radio density returns 1 for currently visible target cells. Local reservations use observations only, no map IDs or replay coordinates. Reservations are per resource, not a globally coordinated garrison; limited vision and terrain can alter which units agree. Attacks retain inherited targeting. No deployment or strength promotion.

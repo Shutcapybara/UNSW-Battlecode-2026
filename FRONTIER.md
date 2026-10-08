@@ -1,6 +1,122 @@
 # Current bot frontier
 
-## Finals status — 6 October 2026
+## Kuroo soft reserve — 8 October 2026
+
+New family `kuroo-01-soft-reserve` (Akaashi02) and
+`kuroo-02-escort-soft-reserve` (Akaashi12) gradually discourage routine
+splitting near capacity and penalize loss of free sprint steps. Terminal
+escapes may use the last reserved slot. Exact replay diagnosis and focused
+regressions pass; native two-map screen4–4 (3–1 vs02,1–3 vs12), zero runner
+errors. Expanded128-game parent panel:32–32 vs02 and34–30 vs12, with no decisive strength gain. Replay/F1 audits pass; death rates are higher against both parents. Kuroo02 was user-requested and submitted as **20472 (v111)**;
+server compilation succeeded. After an initial restoration of 20432, the user
+requested Kuroo02 remain active for live retesting. It is now verified sole
+active; the14-game retest against team193 finished2–12 (Australia/Maze wins),
+zero own replay runtime faults. Local `kuroo-03-queen-retention` addresses
+1431111 queen obstruction through late crown feeding, fresh body-adjacency
+sacrifice and bounded sprint escape checks. Final native screen2–2 vs02;
+regressions pass. Expanded22-map/88-game screen finished31–57 vs02, zero
+replay faults; queen end-game survival15/88 vs24/88.03 is rejected for
+strength; no upload/promotion.02 remains active. See
+[Kuroo notes](docs/kuroo-family.md).
+
+## Isolated Kuroo04/05 — 8 October
+
+Both fork02.04 adds visible local obstruction feeding;05 adds late bounded
+free queen escape search without paid sprints.22-map development panels,
+seed81034/both seats:04 **22–22**, no observable gameplay difference;05
+**21–23**, two free escape overrides, stronger queen length on Stronghold
+but an extra Islands loss.88 replay audits zero faults.05 Slithery sandbox
+pair1–1, zero faults, candidate peak11.1M points. No strength gain, upload,
+combination or promotion. Targeted queen distress radio remains proposed for
+1431111's out-of-view donor. [Kuroo notes](docs/kuroo-family.md).
+
+## Active Kuroo07 targeted distress — 8 October
+
+Fresh06 adds queen-selected, expiring donor requests;07 fixes diagonal
+visible-queen rejection.07 final development panel22–22 vs02 on22 maps,
+seed81036/both seats, zero replay faults. One same-round Stronghold feed:
+donor5 length49, queen eats16 donated pearls and finishes87 vs mirrored02
+queen6; gameplay first diverges at423 after r422 request. Winner unchanged.
+07 Stronghold sandbox pair1–1, zero candidate faults, peak10.34M points.
+06 raw23–21 includes three pre400 invalid deaths and is not clean strength
+evidence. 06 remains local. At explicit user request07 was submitted as**20627/v112**,
+compiled and API-verified sole active; previous20472/02 is inactive. This is
+requested deployment, not strength promotion. [Kuroo notes](docs/kuroo-family.md).
+
+## Local composite Akaashi 12 — 8 October 2026
+
+`akaashi-12-queen-strike-escort` forks the strongest measured 01–06 baseline,
+`akaashi-02-queen-strike`, and ports Akaashi08's nearest-ally queen escort.
+Focused six-map screen vs01–11: **71–61**, zero runner errors; 51–45 against
+01–08. It loses to01,04,05,11 and ties03. A separate 40-game weak-map
+follow-up went **16–24**, so it is not a confirmed family-wide winner.
+Local/experimental; no upload or active-bot change. Full matchup and map
+tables: [Akaashi notes](docs/akaashi-family.md#akaashi-0912-composite-candidates--8-october-2026).
+
+## Local Akaashi 08 escort counterfactual — 8 October 2026
+
+For Australia1418905, `akaashi-08-queen-intercept` adds a nearest ally escort potential when an equal-or-stronger visible pursuer nears the queen. Original replay oracle reproduces with zero mismatches; scripted branch has A21 set up north at protocol r47 and mutually trade with B10 at r48. Queen survives, branch ends A win at r181. Recorded opponents do not adapt and produce invalid commands after board changes; terminal outcome is not strength evidence. Allocation and six safety regressions pass. Local only; 20333 remains active; no upload requested. See [Akaashi notes](docs/akaashi-family.md).
+
+## Akaashi 07 local validation — 8 October 2026
+
+`akaashi-07-hotspot-capacity` forks06 for the latest Team A congestion request. Reserves nearest collectors/defenders around visible resource targets and suppresses surplus routine production. Synthetic allocation plus six inherited safety regressions pass. Native Trophy/Default, seed81014, both seats vs06: **2–2**, zero replay faults. Uploaded as 20333 for the user-requested Heartbreaker retest; experimental, with no strength promotion. Metered Trophy1–1, zero faults, peak9.9M / p99<=8.0M. See [Akaashi notes](docs/akaashi-family.md).
+
+## Current Akaashi 07 test — 8 October 2026
+
+20333 (v109), `akaashi-07-hotspot-capacity`, compiled and verified sole active after user requested seven-map Heartbreaker retest. Seven-map test1418905–1418911 completed **2–5**: won Devil/Trophy; lost Australia, Autarky, Maze, Prisoners Dilemma and Stripes. Zero TLE/invalid faults; loss curves and death/split diagnostics collected under `build/finals/heartbreaker-iteration/akaashi07-series/review/`. Experimental; local comparison was2–2 and server retest does not support promotion. No next iteration until requested.
+
+## Previous Akaashi 06 test — 8 October 2026
+
+20296 (v108), `akaashi-06-late-material-safety`, compiled and was verified sole active. Native screen2–2 vs05; metered Slithery0–2, zero faults, peak13.6M points. Live Heartbreaker test1415322–1415326 completed **1–4** (Default won), zero own runtime faults. Remaining losses: Autarky, Prisoners Dilemma, Slithery Fight, Stripes. Whole-game Slithery oracle did not reproduce, so no counterfactual strength claim. User asks to finish this iteration/test before any further version.
+
+## Latest iteration checkpoint — 8 October 2026
+
+Akaashi 04's six-map Heartbreaker retest completed **1–5**, zero replay
+faults. Around UNSW won; five maps remain. `akaashi-05-sprint-queen-escape`
+adds bounded, legal multi-step queen dodges with endpoint risk and six-step
+continuation checks. Engine branches avoid the observed Around UNSW r388
+and Stripes r38 deaths but queens die later; no general strength claim.
+Synthetic/prior regressions pass; two-map native screen vs04 is 2–2, focused
+metered screen 1–1 with zero faults. Uploaded as **20276 (v107)**, compiled and verified sole active. Queued
+**1413068–1413072** on five remaining losses; that test is superseded by the latest seven-map run. See [campaign review](docs/finals-campaign/HEARTBREAKER_ITERATION.md).
+
+## Heartbreaker iteration evidence — 8 October 2026
+
+Akaashi 03's 11-map Heartbreaker retest completed **5–6**, with zero replay
+faults. Remaining losses: Around UNSW, Autarky, Default, Prisoners Dilemma,
+Slithery Fight and Stripes. All have total/queen/longest length curves and
+linked death/split diagnostics in the [iteration review](docs/finals-campaign/HEARTBREAKER_ITERATION.md).
+
+`akaashi-04-visible-body-safety` fixes ignored visible disconnected own-body
+segments and false partial-tail vacancy. It avoids the observed Around UNSW
+r408 length-37 self-collision; the scripted dragon later dies against a wall
+at r411. Synthetic and prior regressions pass; two-map native screen vs03
+is 2–2, focused metered checks have zero faults. Upload **20265 (v106)** compiled and is verified sole active. Queued
+1412255–1412260 against Heartbreaker on the six losses; outcomes pending.
+This is user-authorized iteration, not confirmed statistical promotion.
+
+## Earlier deployment and validation — 8 October 2026
+
+At the user's explicit request, **Akaashi 03, 20244 (v105)**,
+`LV-akaashi-03-threatened-queen-split-4f229cf2-ai`, compiled successfully and
+was verified sole active. Server sourceHash:
+`23e621f6c2f14deb4f4f3fdc5113751c41e351ccb6b5ef62d7cc18045ca6c92c`.
+Queued and API-verified 11 unranked games against Heartbreaker (team 62),
+one on every map lost in the series containing 1407768: games 1410660–1410670,
+series `05360044-7f0a-42b1-b33e-66de0fdcfa18`. Results pending at readback.
+Deployment is user-selected, not statistical promotion; Bokuto 18 remains
+the supported fallback. See [family notes](docs/akaashi-family.md).
+
+## Earlier deployment — 8 October 2026
+
+At the user's explicit request, Akaashi 01 was uploaded as **20222 (v104)**,
+`LV-akaashi-01-queen-escape-4cf62807-ai`, and verified sole active after server
+compilation. Server sourceHash:
+`188b90bbba4dcc0cd28d69dce51e9e1e4d60415d66a398039c1da1ed18ef0f8f`.
+This deployment does not establish statistical promotion; Bokuto 18 (17791)
+remains the best-supported fallback. See [the family notes](docs/akaashi-family.md).
+
+## Historical finals checkpoint — 6 October 2026
 
 Retained atlas-free qualifier fallback: **`bokuto-18-queenfeed`, submission 17791**.
 After the independent confirmation gate failed for candidate 63, fallback **17791** was activated
@@ -30,6 +146,32 @@ Optional-packet suppression led that four-map screen but lost 83–91 to 18 on a
 promotion. A fresh server check before fallback activation showed 18078 active and 17791 idle;
 the subsequent guarded activation and readback confirmed 17791 as sole active. See the
 [working memory](FINALS_WORKING_MEMORY.md) for hashes, replay diagnostics, and the sonar resource check.
+
+## Akaashi safety family — 8 October 2026
+
+`akaashi-01-queen-escape` forks atlas-disabled Bokuto 18. It strengthens
+queen continuation/head clearance from round zero, validates dodge overrides
+against the full horizon, and enables early teammate yielding. It fixes the
+Trophy 1404793 team-B round-66 alcove trap in an oracle-verified scripted
+branch (queen survives; B wins). A serial three-map, both-seat development
+screen against 18 scored 4–2 with zero runner errors; this is not promotion
+evidence. See [the Akaashi family notes](docs/akaashi-family.md).
+Bokuto 18 remains the supported qualifier fallback.
+
+`akaashi-02-queen-strike` extends 01 with visible, affordable one-to-three-step
+non-queen attacks on enemy queens, including pearl-funded paid steps. An
+oracle-verified branch of Trophy 1407768 confirms dragon 4 kills enemy queen
+at protocol r46 (visualiser r47). One-map development screen: 1–1 vs 01 and
+1–1 vs Bokuto 18, zero replay faults. Experimental local candidate; deployed
+submission 20222 remains Akaashi 01. See [family notes](docs/akaashi-family.md).
+
+`akaashi-03-threatened-queen-split` extends 02: queen splits on enemy-reachable
+cells evaluate a surviving dodge at every round, with conservative incomplete
+body reach and separate per-enemy BFS visitation. In Trophy 1407768, it turns
+north at r109, avoids the recorded queen-killing sprint and wins the scripted
+branch with the queen alive. Trophy/Schooltime screen 2–2 vs 02; focused
+metered/replay audits have zero faults. Local experimental candidate; 20222 stays
+deployed 01. See [family notes](docs/akaashi-family.md).
 
 ## Historical panel — 2 October 2026
 
