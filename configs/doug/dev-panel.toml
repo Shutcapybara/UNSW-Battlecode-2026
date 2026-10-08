@@ -1,0 +1,22 @@
+# Fast Doug iteration panel. The finalist uses the broader early-convergence
+# panel in early-convergence.toml with serial execution.
+bots = [
+  "../../bots/tyr-v12-devil-scout-tiebreak",
+  "../../bots/fenrir-v20-crowded-resource-revalue",
+  "../../bots/bifrost-v01-portal-memory",
+  "../../bots/gavroche-v33-half-support",
+]
+maps = [
+  "../../maps/big_empty.map",
+  "../../maps/devil.map",
+  "../../maps/queen_of_spades.map",
+  "../../maps/schooltime.map",
+  "../../maps/stronghold.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 4
+timeout_seconds = 600
+sandbox = false
+control_every = 10

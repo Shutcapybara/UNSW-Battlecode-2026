@@ -1,0 +1,17 @@
+# Fast Doug gate: direct head-to-head against Tyr V12 on maps that expose the
+# compact opening and large-map length race.
+bots = ["../../bots/tyr-v12-devil-scout-tiebreak"]
+maps = [
+  "../../maps/big_empty.map",
+  "../../maps/devil.map",
+  "../../maps/queen_of_spades.map",
+  "../../maps/schooltime.map",
+  "../../maps/stronghold.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 1
+timeout_seconds = 600
+sandbox = false
+control_every = 10

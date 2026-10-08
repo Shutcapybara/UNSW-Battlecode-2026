@@ -1,0 +1,28 @@
+# Focused Doug development panel: Tyr V12 plus the strongest current frontier
+# controls. Results are development evidence, not a frontier admission.
+bots = [
+  "../../bots/tyr-v12-devil-scout-tiebreak",
+  "../../bots/fenrir-v20-crowded-resource-revalue",
+  "../../bots/bifrost-v01-portal-memory",
+  "../../bots/gavroche-v33-half-support",
+  "../../bots/gavroche-v66-supported-safe",
+  "../../bots/von_neumann-x04-support",
+  "../../bots/skadi-v13-clear-exit-only",
+]
+maps = [
+  "../../maps/Colosseum.map",
+  "../../maps/arena.map",
+  "../../maps/big_empty.map",
+  "../../maps/devil.map",
+  "../../maps/queen_of_spades.map",
+  "../../maps/schooltime.map",
+  "../../maps/stronghold.map",
+  "../../maps/trauma.map",
+]
+
+[run]
+sides = ["A", "B"]
+jobs = 1
+timeout_seconds = 600
+sandbox = false
+control_every = 10

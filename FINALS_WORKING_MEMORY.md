@@ -21,7 +21,7 @@ The objective is **finish top 10 among eligible teams in the GF qualifier on uns
 | Q1 | Protect event entry | 17791 active | Fresh API read before 9 Oct 4:30 pm Adelaide lock |
 | C1 | Verify tournament contract | DONE: OFFICIAL RULES CHECKED | Qualifier is best-of-7 on unseen maps; seeds use ladder rating; top 10 eligible teams advance. GF is best-of-5 and seeded by ladder rating |
 | C2 | Establish qualifier field baseline | In progress: ladder snapshot + 17-series sample | Resolve current bot versions for sampled top eligible teams; update when qualifier seeding/bracket is published |
-| C3 | Shaped joint spatial policy | Shared encoder + conditional action/sonar heads + bounded potential differences implemented; reward math and full-game collection smoke verified, no shaped PPO strength evidence yet | Rebuild binaries/data if absent; run the fresh shaped trainer with `--until-stopped`; inspect terminal outcomes, shaped return, per-head choice rates and periodic fixed-monitor paired score |
+| C3 | Shaped joint spatial policy | Training completed through update 1330 in `build/finals/spatial-joint-shaped-infinite-fixed/`; implementation tests pass, but the fixed monitor is strongly negative: 401–0–1,727 over 2,128 games (18.8% vs cached baseline 50%); no promotion or standalone export | Treat the checkpoint as rejected for strength; diagnose policy collapse/export path before any new training, then rerun a fresh held-out comparison only if the monitor recovers |
 
 Do not change the qualifier artifact without a fresh read, a candidate clearing the evidence/runtime gates, and a verified readback. Continue research toward the campaign target; the detailed cycle is in the [roadmap](docs/finals-campaign/ROADMAP.md).
 

@@ -534,3 +534,22 @@ action-menu coverage. None prevents initial local inspection and bounded baselin
   500-round capture-free maze smoke (seed61611, 20,081 decisions, zero faults; arrays correctly
   omitted) passed. Existing failed runs should be restarted in a fresh output directory because
   the run manifest pins the collector source hash.
+
+- **Shaped joint PPO result (8 Oct):** The completed run in
+  `build/finals/spatial-joint-shaped-infinite-fixed/` reached update 1330 with the pinned joint
+  actor, two training games per update, four isolated workers, and the Heartbreaker potential
+  shaping objective. Its repeated fixed eight-game monitor ran at 266 checkpoints / 2,128 games:
+  candidate **401W–0D–1,727L**, score **0.1884**, against the cached baseline score **0.5000**;
+  mean paired delta was **−0.3116**. The best transient checkpoint was update 460 at 6–0–2
+  (delta +0.25), but its map-cluster interval included zero. The final update 1330 was 0–8
+  (delta −0.50, interval [−0.50, −0.50]); the last ten monitor checkpoints were 2–0–78
+  (2.5%). This is fixed-panel evidence rather than independent confirmation, but it is strong
+  negative evidence of policy collapse; no model was exported, promoted, or submitted.
+
+  Verification after training: the relevant RL/finals Python suite passed **51 tests**; the
+  standard CMake Release build succeeded and CTest passed **19/20**. The only CTest failure was
+  the deterministic pre-existing `hunter_v15_shared_state` reference check, which expected
+  `MOVE N` and received `MOVE E`. A direct `pytest tests` aggregate is not a valid clean gate in
+  this checkout: six modules fail collection because of missing `comms`, changed hub-analysis
+  symbols, or required bot executable arguments. No source or bot snapshot was changed by this
+  measurement.
