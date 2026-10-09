@@ -1,26 +1,83 @@
 # UNSW Battlecode bots
 
-Each directory under `bots/` with a `bot.toml` is a standalone bot snapshot.
-Most are preserved experiment versions so comparisons can use the exact source
-that was measured. See [the artifact policy](docs/artifact-policy.md) and the
-family notes under `docs/` before changing a versioned bot.
+An experimental archive of bots, maps, benchmarking tools, and measured
+results for UNSW Battlecode 2026. The repository keeps versioned bot snapshots
+alongside the tooling used to compare them, so an experiment can be reproduced
+from the same source and map inputs.
 
-[`FRONTIER.md`](FRONTIER.md) is the canonical registry of active candidates,
-frontier status, estimated ELOs, comparison defaults, and deployment status.
+## What is here
 
-## Run a bounded tournament
+- [`bots/`](bots/) contains standalone bot snapshots. Most are frozen controls;
+  copy a snapshot to a new versioned directory before changing its behaviour.
+- [`maps/`](maps/) contains the shared map bundle, including maps under
+  [`maps/new/`](maps/new/).
+- [`tools/`](tools/) contains tournament runners, comparison scripts, replay
+  analysis, statistics, and campaign-specific utilities.
+- [`configs/`](configs/) contains focused comparison rosters and validation
+  fixtures.
+- [`docs/`](docs/) records workflows, experiment protocols, family notes, and
+  artifact rules.
+- [`FRONTIER.md`](FRONTIER.md) is the current candidate and deployment-status
+  registry.
+- [`FINALS_WORKING_MEMORY.md`](FINALS_WORKING_MEMORY.md) is the compact handoff
+  for the active qualifier campaign.
 
-The tournament runner discovers bot manifests under `bots/` and map files
-recursively under `maps/`, including the custom bundle in `maps/new/`. Because
-this repository contains hundreds of historical bot snapshots, select a small
-roster explicitly:
+The repository is intentionally snapshot-heavy: it contains historical
+versions used as exact experimental controls. Routine comparisons should name
+an explicit bot roster and map set rather than discovering every snapshot.
+
+## Requirements
+
+- Python 3
+- CMake 3.16 or newer and a C++17 compiler for the selected C++ reference set
+- [`uv`](https://docs.astral.sh/uv/) or another environment manager for the
+  Python tooling
+- The `unswbc` toolkit for local game execution and optional submissions
+
+Install the pinned Python environment used by the repository with:
+
+```sh
+uv venv
+uv pip install --python .venv/bin/python -r requirements.txt
+```
+
+Some analysis and training tools have additional requirements documented beside
+the tool or in the relevant file under [`docs/`](docs/).
+
+## Build and test
+
+The CMake project deliberately builds a selected C++ reference set, not every
+bot snapshot:
+
+```sh
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+ctest --test-dir build --output-on-failure
+```
+
+Additional Python tests under `tests/` can be run directly, for example:
+
+```sh
+python3 tests/test_von_neumann.py
+```
+
+## Run a bounded comparison
+
+Start with a dry run so the fixture count is visible. The tournament runner
+discovers all bot manifests and maps by default, so select a small roster for
+normal development:
 
 ```sh
 python3 tools/benchmarking/tournament.py \
   --bots hunter-v23-supported-arrival-feed gavroche-v66-supported-safe \
   --maps arena big_empty \
   --dry-run
+```
 
+To execute the same selection and keep output under the ignored `build/`
+directory:
+
+```sh
 python3 tools/benchmarking/tournament.py \
   --bots hunter-v23-supported-arrival-feed gavroche-v66-supported-safe \
   --maps arena big_empty \
@@ -28,64 +85,50 @@ python3 tools/benchmarking/tournament.py \
   --output build/hunter-v23-vs-gavroche-v66
 ```
 
-The dry run prints the match count. Add `--show-schedule` to list matches.
-Runs above 10,000 matches require the explicit `--allow-large` flag; the full
-historical round robin is intentionally not a safe default. Use `--focus-bot`
-with `--bots` to compare one candidate against a selected pool. Results are
-saved after each match and can be resumed with the same selections and
-`--resume`.
-
-## Compare one candidate
-
-[`comparison.toml`](comparison.toml) is the small default opponent roster for
-`tools/compare_bot.py`. Copy it for a custom roster; paths inside a comparison
-file are relative to that file.
-Historical family-specific comparison files are grouped under
-[`configs/`](configs/README.md).
+For a candidate comparison using the default five-opponent roster, see
+[`comparison.toml`](comparison.toml):
 
 ```sh
+uv run tools/compare_bot.py bots/hunter-v23-supported-arrival-feed --dry-run
 uv run tools/compare_bot.py bots/hunter-v23-supported-arrival-feed
-uv run tools/game_stats.py summary --output /tmp/bot-pairs.csv
 ```
 
-See [the bot workflow](docs/bot-workflow.md) and
-[game statistics guide](game_stats/README.md) for experiment and ledger details.
+Read [`docs/benchmarking.md`](docs/benchmarking.md) and
+[`docs/bot-workflow.md`](docs/bot-workflow.md) before starting a larger
+campaign. Results can be resumed with the same selections and `--resume`.
 
-Local multi-agent statistics use append-only queues under
-`game_stats/local/runs/<run-id>/`. Rebuild them after runs with
-`python3 tools/stats_store.py rebuild`; see
-[`docs/local-stats-protocol.md`](docs/local-stats-protocol.md).
+## Run or package a bot
 
-## Adaptive collection benchmarking
-
-The recovered `tools/benchmark.py` and `tools/benchmark_ratings.py` use the
-explicit roster in `benchmark.toml`. See [the adaptive guide](docs/adaptive-benchmarking.md)
-before starting a campaign. Local ratings and real-judge performance are separate
-evidence; a local rating alone is not a deployment gate.
-
-## Build and check the C++ reference set
-
-The CMake project builds a selected set of C++ reference bots. It does not
-build every snapshot in `bots/`; Python bots are packaged from their own
-directories with the installed `unswbc` toolkit.
+Each runnable bot directory has a `bot.toml` at its root. With the `unswbc`
+toolkit installed, a local match can be launched with:
 
 ```sh
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build
-ctest --test-dir build --output-on-failure
-node --test browser-extension/tests/core.test.cjs
+unswbc run maps/arena.map \
+  bots/hunter-v23-supported-arrival-feed \
+  bots/gavroche-v66-supported-safe
 ```
 
-CTest runs the suites registered in `CMakeLists.txt`. Several Python suites in
-`tests/` are standalone and are not included in CTest.
+To create a submission archive for a bot, package the contents of its directory
+with `bot.toml` at the archive root. Server submission commands require your
+own authenticated `unswbc` account and are intentionally not part of the
+automated test suite.
 
-## Play and package
+## Results and generated files
 
-```sh
-unswbc run maps/arena.map bots/hunter-v23-supported-arrival-feed bots/gavroche-v66-supported-safe
-unswbc submit bots/hunter-v23-supported-arrival-feed
-```
+Small shared result contributions live under `game_stats/runs/`. The root
+`game_stats.parquet`, build output, experiment directories, replay payloads,
+and local hub state are generated or machine-specific and are ignored by
+default. See [`docs/artifact-policy.md`](docs/artifact-policy.md) and
+[`game_stats/README.md`](game_stats/README.md) before adding experiment data.
 
-For a submission ZIP, archive the contents of one bot folder with `bot.toml` at
-the ZIP root. Bot README commands should be run from that bot's folder unless
-they explicitly use repository-relative paths.
+Never commit `.battlecode-api-key`, environment secrets, replay credentials,
+or generated run payloads. The local API-key file is ignored by Git.
+
+## Further reading
+
+- [Bot workflow](docs/bot-workflow.md)
+- [Benchmarking and comparisons](docs/benchmarking.md)
+- [Adaptive benchmarking](docs/adaptive-benchmarking.md)
+- [Finals campaign index](docs/finals-campaign/README.md)
+- [Comparison configurations](configs/README.md)
+- [Bot snapshot index](bots/README.md)
